@@ -11,7 +11,12 @@ import { Badge } from "@/components/ui/badge";
 import { ChoiceList } from "@/components/choice-list";
 import { SEED_TEXT_BY_ID } from "@/lib/content/texts";
 import { scoreSession } from "@/lib/scoring/session";
-import { addSession, lastSuccessRate } from "@/lib/student-store";
+import { updateSkillsFromSession } from "@/lib/scoring/skill-estimate";
+import {
+  completeReadingSession,
+  getStudentState,
+  lastSuccessRate,
+} from "@/lib/student-store";
 
 type Phase = "read" | "questions" | "summary" | "retrieval";
 
@@ -58,7 +63,12 @@ export default function ReadingSessionPage() {
       completedAt: new Date().toISOString(),
       previousSuccessRate: lastSuccessRate(),
     });
-    addSession(result, answers);
+    const skills = updateSkillsFromSession(
+      getStudentState().skillEstimates,
+      text,
+      answers
+    );
+    completeReadingSession(result, answers, skills);
     router.push(`/student/results/${text.id}`);
   }
 

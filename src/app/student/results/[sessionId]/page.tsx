@@ -9,10 +9,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ChoiceList } from "@/components/choice-list";
 import { SEED_TEXT_BY_ID } from "@/lib/content/texts";
+import { MICRO_LESSONS } from "@/lib/content/micro-lessons";
 import { NEXT_ACTION_LABEL } from "@/lib/scoring/session";
-import { recommendTextId } from "@/lib/content/recommend";
+import { selectNextStep } from "@/lib/scoring/adaptive";
 import { useStudentState } from "@/lib/student-store";
-import { SUCCESS_ZONE, type ReadingSessionResult, type NextAction } from "@/lib/types";
+import { SUCCESS_ZONE, type ReadingSessionResult } from "@/lib/types";
 
 function findSession(
   sessions: ReadingSessionResult[],
@@ -32,17 +33,6 @@ const CATEGORIES: { key: keyof ReadingSessionResult; label: string }[] = [
   { key: "retrievalScore", label: "Mémoire" },
 ];
 
-function nextCta(action: NextAction, interests: string[]) {
-  const nextText = recommendTextId(interests);
-  switch (action) {
-    case "foundation_repair":
-      return { href: "/student/memory", label: "Renforcer les bases" };
-    case "change_topic":
-      return { href: "/student/onboarding", label: "Choisir un autre sujet" };
-    default:
-      return { href: `/student/read/${nextText}`, label: "Lecture suivante" };
-  }
-}
 
 export default function ResultsPage() {
   const params = useParams<{ sessionId: string }>();
@@ -66,7 +56,27 @@ export default function ResultsPage() {
   const pct = Math.round(result.successRate * 100);
   const inZone =
     result.successRate >= SUCCESS_ZONE.min && result.successRate <= SUCCESS_ZONE.max;
-  const cta = nextCta(result.recommendedNextAction, interests);
+
+  const step = selectNextStep({
+    interests,
+    currentBand: text.difficultyBand,
+    action: result.recommendedNextAction,
+    currentInterest: text.primaryInterest,
+    skills: state.skillEstimates,
+  });
+  const cta =
+    step.type === "repair"
+      ? {
+          href: `/student/repair/${step.skillKey}`,
+          label: `Renforcer : ${MICRO_LESSONS[step.skillKey]?.title ?? "les bases"}`,
+        }
+      : {
+          href: `/student/read/${step.textId}`,
+          label:
+            result.recommendedNextAction === "change_topic"
+              ? "Changer de sujet"
+              : `Lecture suivante (${step.band})`,
+        };
 
   return (
     <>

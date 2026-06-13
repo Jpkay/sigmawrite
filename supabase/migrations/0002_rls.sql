@@ -9,19 +9,20 @@ returns uuid language sql stable security definer set search_path = public as $$
   select id from profiles where auth_user_id = auth.uid()
 $$;
 
-create or replace function public.current_role()
+-- Note: named app_role(), not current_role() — CURRENT_ROLE is a reserved word.
+create or replace function public.app_role()
 returns text language sql stable security definer set search_path = public as $$
   select role from profiles where auth_user_id = auth.uid()
 $$;
 
 create or replace function public.is_platform_admin()
 returns boolean language sql stable security definer set search_path = public as $$
-  select coalesce(public.current_role() = 'platform_admin', false)
+  select coalesce(public.app_role() = 'platform_admin', false)
 $$;
 
 create or replace function public.is_staff()
 returns boolean language sql stable security definer set search_path = public as $$
-  select coalesce(public.current_role() in ('platform_admin','school_admin','content_reviewer'), false)
+  select coalesce(public.app_role() in ('platform_admin','school_admin','content_reviewer'), false)
 $$;
 
 -- Is the current student row owned by the caller?

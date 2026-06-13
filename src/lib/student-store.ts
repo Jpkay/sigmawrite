@@ -2,6 +2,7 @@
 
 import { useSyncExternalStore } from "react";
 import type { DiagnosticResult, ReadingSessionResult } from "@/lib/types";
+import { updateSkillEstimate, type SkillEstimate } from "@/lib/scoring/skill-estimate";
 
 /**
  * Phase 1 client-side store (localStorage). Lets the full student slice —
@@ -20,6 +21,8 @@ export type StudentState = {
   sessions: ReadingSessionResult[];
   /** Raw chosen answers per text, kept so the results page can give per-question feedback. */
   answersByText: Record<string, Record<string, number>>;
+  /** Live adaptive skill estimates, keyed by skill (PRD §J). */
+  skillEstimates: Record<string, SkillEstimate>;
 };
 
 const EMPTY: StudentState = {
@@ -30,6 +33,7 @@ const EMPTY: StudentState = {
   diagnostic: null,
   sessions: [],
   answersByText: {},
+  skillEstimates: {},
 };
 
 function read(): StudentState {
@@ -106,8 +110,35 @@ export function addSession(
   });
 }
 
+/** Completes a session and folds its evidence into the adaptive skill estimates. */
+export function completeReadingSession(
+  result: ReadingSessionResult,
+  answers: Record<string, number>,
+  skillEstimates: Record<string, SkillEstimate>
+): StudentState {
+  const state = getStudentState();
+  return update({
+    sessions: [...state.sessions, result],
+    answersByText: { ...state.answersByText, [result.textVersionId]: answers },
+    skillEstimates,
+  });
+}
+
 export function getAnswers(textVersionId: string): Record<string, number> {
   return getStudentState().answersByText[textVersionId] ?? {};
+}
+
+/** Folds foundation-repair practice results into a skill's estimate. */
+export function applySkillResults(
+  skillKey: string,
+  corrects: boolean[]
+): StudentState {
+  const state = getStudentState();
+  let est = state.skillEstimates[skillKey];
+  for (const c of corrects) est = updateSkillEstimate(est, c);
+  return update({
+    skillEstimates: { ...state.skillEstimates, [skillKey]: est },
+  });
 }
 
 export function getSession(textVersionId: string): ReadingSessionResult | null {
