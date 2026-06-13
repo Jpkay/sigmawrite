@@ -3,9 +3,9 @@
 > Learn to love reading while reading to learn.
 
 A personalized French academic reading platform for secondary students. This
-repo contains the **Phase 0 skeleton + Phase 1 student slice** from
-[`roadmap.md`](./roadmap.md): a running foundation plus a working end-to-end
-reading experience.
+repo contains **Phases 0–2** from [`roadmap.md`](./roadmap.md): a running
+foundation, a working end-to-end student reading experience, and the AI content
+pipeline with admin review.
 
 ## Stack
 
@@ -49,6 +49,26 @@ Phase 3 swaps it for Supabase mechanically.
   band mapping, summary heuristic, diagnostic profile, and the adaptive
   next-action engine. Run with `npm test` (Vitest).
 
+## What's in Phase 2 (AI content pipeline)
+
+The §H pipeline, runnable client-side with the mock provider:
+
+- **Text difficulty engine** (`src/lib/scoring/text-difficulty.ts`) — the §G
+  deterministic scorer: extracts features (sentence length, rare-word ratio,
+  connector/subordinate counts, abstract density…) and produces six difficulty
+  dimensions + an overall band. GenAI writes; this engine judges.
+- **Generation pipeline** (`src/lib/ai/pipeline.ts`) — generate → Zod-validate
+  → score difficulty → moderate → score questions → decide review status.
+  Sensitive domains, factual flags, off-target difficulty, or failed moderation
+  all force human review; nothing else auto-approves (§10, §17).
+- **Admin review** (`/admin/content/review`) — generate a candidate, inspect
+  its difficulty dimensions / moderation / flags / question difficulties, edit
+  the body (re-scores live), then approve or reject.
+- **Content library** (`/admin/content`) — approved texts, with lock-as-benchmark
+  and retire actions. The admin home shows live queue counts.
+- **Tests** — 25 Vitest cases total; the new ones cover the difficulty engine's
+  ordering, the question scorer, and the review-status decision logic.
+
 ## Getting started
 
 ```bash
@@ -81,10 +101,22 @@ supabase/
   seed.sql             reference data: domains, skills, concepts
 ```
 
+## Deferred by design (the standing Phase 0 decisions)
+
+Two things are intentionally not wired yet, consistent with "local migrations
+only" + "AI interface + mock":
+
+- **Real OpenAI provider** — the pipeline is provider-agnostic; `getAIProvider()`
+  returns the mock and throws a clear error for `AI_PROVIDER=openai`. Wiring the
+  Responses API + Structured Outputs behind that flag is a small, isolated step.
+- **Supabase-backed persistence + jobs** — the student and admin flows run on
+  `localStorage` stores whose shapes mirror the DB tables. Production routes
+  generation through the §23 server actions, Supabase Queues/Cron, and the
+  migrations already in `supabase/`.
+
 ## Next
 
-Phase 2 (per `roadmap.md` §25): the AI content pipeline — generation jobs,
-structured outputs + Zod validation, the deterministic text difficulty engine,
-question generation, moderation, and the admin review flow that turns AI
-candidates into assignable content. This also replaces the manual seed texts
-and the `localStorage` store with Supabase-backed data.
+Phase 3 (per `roadmap.md` §25): the adaptive engine v1 — persisted student
+skill estimates, success-zone-driven next-text selection, difficulty
+adjustment, foundation-repair triggers, and the first micro-lessons. This is
+the natural point to wire Supabase and replace both `localStorage` stores.

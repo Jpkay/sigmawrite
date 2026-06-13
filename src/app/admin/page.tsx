@@ -1,15 +1,28 @@
+"use client";
+
 import Link from "next/link";
 import { PageHeader } from "@/components/page";
 import { Card, CardContent } from "@/components/ui/card";
-
-const queues = [
-  { label: "Candidats à réviser", value: "—", href: "/admin/content/review" },
-  { label: "Tâches IA en cours", value: "—", href: "/admin/ai-jobs" },
-  { label: "Signalements de modération", value: "—", href: "/admin/content/review" },
-  { label: "Textes de référence", value: "—", href: "/admin/benchmarks" },
-];
+import { isApproved, useCandidates } from "@/lib/content-store";
 
 export default function AdminHome() {
+  const candidates = useCandidates();
+  const pending = candidates.filter(
+    (c) => c.reviewStatus === "needs_human_review" || c.reviewStatus === "draft"
+  ).length;
+  const flagged = candidates.filter((c) => !c.flags.moderationPassed).length;
+  const approved = candidates.filter((c) => isApproved(c.reviewStatus)).length;
+  const benchmarks = candidates.filter(
+    (c) => c.reviewStatus === "benchmark_locked"
+  ).length;
+
+  const queues = [
+    { label: "Candidats à réviser", value: pending, href: "/admin/content/review" },
+    { label: "Signalements de modération", value: flagged, href: "/admin/content/review" },
+    { label: "Textes approuvés", value: approved, href: "/admin/content" },
+    { label: "Textes de référence", value: benchmarks, href: "/admin/content" },
+  ];
+
   return (
     <>
       <PageHeader
@@ -31,8 +44,9 @@ export default function AdminHome() {
       </div>
 
       <p className="mt-8 text-sm text-muted-foreground">
-        Le pipeline de contenu (génération → validation Zod → scoring → modération
-        → révision) sera implémenté en Phase 2.
+        Pipeline : génération → validation Zod → scoring de difficulté →
+        modération → révision. Démo locale via le fournisseur d&apos;IA simulé ; en
+        production, les actions serveur (§23) appellent OpenAI + Supabase.
       </p>
     </>
   );
