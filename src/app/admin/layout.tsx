@@ -12,6 +12,7 @@ const nav: NavItem[] = [
   { href: "/admin/prompts", label: "Prompts" },
   { href: "/admin/benchmarks", label: "Références" },
   { href: "/admin/schools", label: "Écoles" },
+  { href: "/admin/audit", label: "Journal d'audit" },
 ];
 
 export default async function AdminLayout({

@@ -15,6 +15,7 @@ import {
 import { scoreDiagnostic } from "@/lib/scoring/diagnostic";
 import { getStudentState, saveDiagnostic } from "@/lib/student-store";
 import { recommendTextId } from "@/lib/content/recommend";
+import { track } from "@/lib/analytics";
 import type { DiagnosticResult } from "@/lib/types";
 
 type Phase = "items" | "summary" | "result";
@@ -47,6 +48,10 @@ export default function DiagnosticPage() {
   function finish() {
     const r = scoreDiagnostic("local-student", answers, summary);
     saveDiagnostic(r);
+    track("diagnostic_completed", {
+      band: r.recommendedStartingLevel,
+      confidence: r.overallReadingBand.confidence,
+    });
     setResult(r);
     setPhase("result");
   }

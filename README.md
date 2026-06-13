@@ -3,11 +3,11 @@
 > Learn to love reading while reading to learn.
 
 A personalized French academic reading platform for secondary students. This
-repo contains **Phases 0–5** from [`roadmap.md`](./roadmap.md): a running
+repo contains **Phases 0–6** from [`roadmap.md`](./roadmap.md): a running
 foundation, an end-to-end student reading experience, the AI content pipeline
-with admin review, the adaptive engine, the spaced-retrieval memory system, and
-parent/teacher dashboards — all on a live Supabase project with the student's
-learning data persisted server-side.
+with admin review, the adaptive engine, the spaced-retrieval memory system,
+parent/teacher dashboards, and the pilot-readiness layer (privacy, audit, admin
+tools) — all on a live Supabase project with learning data persisted server-side.
 
 ## Stack
 
@@ -124,6 +124,32 @@ pure reporting core; `src/lib/db/dashboard.ts` the server data layer):
 > child, a teacher only their class's enrolled students, and a parent cannot
 > read classes — all enforced by RLS, not app code.
 
+## What's in Phase 6 (pilot readiness)
+
+The §10 compliance core and admin tools, on real data:
+
+- **Privacy workflows** (`/parent/privacy`) — per child: record guardian
+  consent, export all data (JSON download), and request deletion. Backed by
+  auth-guarded server actions; deletion is recorded as a request for the
+  controller to fulfil (the compliant pattern).
+- **Audit log** (`src/lib/audit.ts`, `/admin/audit`) — sensitive actions are
+  appended to `audit_logs` (any signed-in user may write; only platform admins
+  may read) and shown in an admin viewer.
+- **School admin** (`/admin/schools`) — read-only org → school → class tree,
+  staff-scoped by RLS.
+- **Benchmarks** (`/admin/benchmarks`) — benchmark-locked passages for
+  calibration (§O).
+- **Analytics & monitoring** — dependency-free, env-gated scaffolds
+  (`src/lib/analytics.ts` PostHog capture; `src/lib/observability.ts` error
+  hook); no-op until `NEXT_PUBLIC_POSTHOG_KEY` / `SENTRY_DSN` are set. Two
+  product events (`diagnostic_completed`, `reading_session_completed`) are wired.
+- **Migration 0006** — a consent-insert policy and staff read policies for the
+  org/school tree.
+
+> Verified against the live DB: a parent records consent and writes audit
+> entries, an admin reads the audit log and school tree, and a parent is denied
+> audit reads — all by RLS.
+
 ## Supabase (live)
 
 Project **`reading-to-learn`** (`tkasvcccucpsbjywgdyl`, eu-central-1) is
@@ -138,6 +164,7 @@ learning data so the parent/teacher dashboards show real evidence:
 student:  demo.eleve@reading-to-learn.test
 parent:   parent.demo@reading-to-learn.test   (linked to the student)
 teacher:  prof.demo@reading-to-learn.test      (teaches class "5e A")
+admin:    admin.demo@reading-to-learn.test     (platform_admin)
 ```
 
 > **Note:** learning data (diagnostic, sessions, skill estimates, retrieval
@@ -189,8 +216,10 @@ supabase/
 
 ## Next
 
-Phase 6 (per `roadmap.md` §25): pilot readiness — benchmark passages, school
-admin tools, the privacy workflows (guardian consent, data export/deletion),
-audit logs, usage analytics, and error monitoring. One Phase 5 piece is
-intentionally still light: **assignment creation** (`/teacher/assignments`)
-needs an `assignments` table and student-side display, noted in the UI.
+- **Assignment creation** (the deferred Phase 5 piece): add an `assignments`
+  table + RLS, a teacher create/manage flow, and student-side display so
+  assigned readings appear in the student's queue.
+- **Real OpenAI provider** behind `AI_PROVIDER=openai` (the pipeline is ready).
+- **Normalised evidence projections** — decompose `students.app_state` into the
+  relational `reading_sessions` / `student_skill_estimates` tables for richer
+  SQL aggregation, and wire real PostHog/Sentry.

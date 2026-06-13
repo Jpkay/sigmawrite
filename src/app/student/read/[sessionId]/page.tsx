@@ -13,6 +13,7 @@ import { SEED_TEXT_BY_ID } from "@/lib/content/texts";
 import { scoreSession } from "@/lib/scoring/session";
 import { updateSkillsFromSession } from "@/lib/scoring/skill-estimate";
 import { buildRetrievalCards } from "@/lib/content/retrieval-cards";
+import { track } from "@/lib/analytics";
 import {
   completeReadingSession,
   lastSuccessRate,
@@ -73,6 +74,11 @@ export default function ReadingSessionPage() {
       retrievalSeeds: buildRetrievalCards(text),
       vocabWords: text.targetVocabulary.map((v) => v.word),
       nowMs: Date.now(),
+    });
+    track("reading_session_completed", {
+      textId: text.id,
+      successRate: result.successRate,
+      nextAction: result.recommendedNextAction,
     });
     router.push(`/student/results/${text.id}`);
   }
