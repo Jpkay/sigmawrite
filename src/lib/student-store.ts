@@ -3,6 +3,28 @@
 import { useSyncExternalStore } from "react";
 import type { DiagnosticResult, ReadingSessionResult } from "@/lib/types";
 import { updateSkillEstimate, type SkillEstimate } from "@/lib/scoring/skill-estimate";
+import {
+  scheduleNext,
+  dueAtFrom,
+  INITIAL_SCHEDULE,
+  type RetrievalResult,
+} from "@/lib/scoring/retrieval";
+import type { RetrievalCardSeed } from "@/lib/content/retrieval-cards";
+
+export type RetrievalCard = {
+  id: string;
+  conceptLabel: string;
+  promptFr: string;
+  keywords: string[];
+  sourceTextId: string;
+  intervalDays: number;
+  ease: number;
+  repetitions: number;
+  dueAt: string;
+  lastResult?: RetrievalResult;
+};
+
+export type VocabState = { exposures: number; lastSeenAt: string };
 
 /**
  * Phase 1 client-side store (localStorage). Lets the full student slice —
@@ -23,6 +45,10 @@ export type StudentState = {
   answersByText: Record<string, Record<string, number>>;
   /** Live adaptive skill estimates, keyed by skill (PRD §J). */
   skillEstimates: Record<string, SkillEstimate>;
+  /** Spaced-retrieval cards (PRD §L). */
+  retrievalCards: RetrievalCard[];
+  /** Vocabulary exposure/retention, keyed by word (PRD §L). */
+  vocab: Record<string, VocabState>;
 };
 
 const EMPTY: StudentState = {
@@ -34,6 +60,8 @@ const EMPTY: StudentState = {
   sessions: [],
   answersByText: {},
   skillEstimates: {},
+  retrievalCards: [],
+  vocab: {},
 };
 
 function read(): StudentState {
@@ -110,17 +138,74 @@ export function addSession(
   });
 }
 
-/** Completes a session and folds its evidence into the adaptive skill estimates. */
-export function completeReadingSession(
-  result: ReadingSessionResult,
-  answers: Record<string, number>,
-  skillEstimates: Record<string, SkillEstimate>
+/**
+ * Completes a session: stores the result + answers, folds evidence into skill
+ * estimates, seeds spaced-retrieval cards (first due in 1 day), and records
+ * vocabulary exposure (PRD §I, §L).
+ */
+export function completeReadingSession(input: {
+  result: ReadingSessionResult;
+  answers: Record<string, number>;
+  skillEstimates: Record<string, SkillEstimate>;
+  retrievalSeeds: RetrievalCardSeed[];
+  vocabWords: string[];
+  nowMs: number;
+}): StudentState {
+  const state = getStudentState();
+  const iso = new Date(input.nowMs).toISOString();
+
+  const newCards: RetrievalCard[] = input.retrievalSeeds.map((seed) => ({
+    id: crypto.randomUUID(),
+    ...seed,
+    intervalDays: INITIAL_SCHEDULE.intervalDays,
+    ease: INITIAL_SCHEDULE.ease,
+    repetitions: INITIAL_SCHEDULE.repetitions,
+    dueAt: dueAtFrom(input.nowMs, INITIAL_SCHEDULE.intervalDays),
+  }));
+
+  const vocab = { ...state.vocab };
+  for (const w of input.vocabWords) {
+    const prev = vocab[w];
+    vocab[w] = { exposures: (prev?.exposures ?? 0) + 1, lastSeenAt: iso };
+  }
+
+  return update({
+    sessions: [...state.sessions, input.result],
+    answersByText: { ...state.answersByText, [input.result.textVersionId]: input.answers },
+    skillEstimates: input.skillEstimates,
+    retrievalCards: [...state.retrievalCards, ...newCards],
+    vocab,
+  });
+}
+
+/** Retrieval cards whose due time has passed (PRD §L). */
+export function getDueCards(nowMs: number): RetrievalCard[] {
+  return getStudentState().retrievalCards.filter(
+    (c) => new Date(c.dueAt).getTime() <= nowMs
+  );
+}
+
+/** Records a recall attempt and reschedules the card. */
+export function recordRetrieval(
+  cardId: string,
+  result: RetrievalResult,
+  nowMs: number
 ): StudentState {
   const state = getStudentState();
   return update({
-    sessions: [...state.sessions, result],
-    answersByText: { ...state.answersByText, [result.textVersionId]: answers },
-    skillEstimates,
+    retrievalCards: state.retrievalCards.map((c) => {
+      if (c.id !== cardId) return c;
+      const next = scheduleNext(
+        { intervalDays: c.intervalDays, ease: c.ease, repetitions: c.repetitions },
+        result
+      );
+      return {
+        ...c,
+        ...next,
+        dueAt: dueAtFrom(nowMs, next.intervalDays),
+        lastResult: result,
+      };
+    }),
   });
 }
 

@@ -3,10 +3,10 @@
 > Learn to love reading while reading to learn.
 
 A personalized French academic reading platform for secondary students. This
-repo contains **Phases 0–3** from [`roadmap.md`](./roadmap.md): a running
+repo contains **Phases 0–4** from [`roadmap.md`](./roadmap.md): a running
 foundation, a working end-to-end student reading experience, the AI content
-pipeline with admin review, and the adaptive engine v1 — backed by a live
-Supabase project.
+pipeline with admin review, the adaptive engine v1, and the spaced-retrieval
+memory system — backed by a live Supabase project.
 
 ## Stack
 
@@ -88,6 +88,20 @@ The §H pipeline, runnable client-side with the mock provider:
 - **Tests** — 37 Vitest cases total; the new 12 cover skill convergence, the
   one-step band rule, repair detection, and next-step routing.
 
+## What's in Phase 4 (memory system)
+
+- **Spaced retrieval** (`src/lib/scoring/retrieval.ts`) — the §L ladder
+  (1 → 3 → 7 → 21 → 45 days) with an SM-2-style ease factor that stretches or
+  compresses intervals by recall quality, plus auto-grading of free-text recall.
+- **Cards** — completing a reading seeds one retrieval card per concept (plus
+  the text's authored prompt), first due the next day, and records vocabulary
+  exposure.
+- **Review** (`/student/memory`) — answer due cards, get graded
+  (forgot/hard/good/easy), reschedule; see concept mastery (ladder progress)
+  and vocabulary retention.
+- **Tests** — 45 Vitest cases total; the new 8 cover the ladder, ease
+  clamping/adjustment, the forgot-reset, and recall grading.
+
 ## Supabase (live)
 
 Project **`reading-to-learn`** (`tkasvcccucpsbjywgdyl`, eu-central-1) is
@@ -102,10 +116,11 @@ email:    demo.eleve@reading-to-learn.test
 password: Demo1234!
 ```
 
-> **Note:** learning data (diagnostic, sessions, skill estimates) still lives in
-> a `localStorage` store behind the login wall. Moving those reads/writes onto
-> Supabase via server actions is the next wiring step — the schema, RLS, and
-> typed access path are all in place for it.
+> **Note:** learning data (diagnostic, sessions, skill estimates, retrieval
+> cards) still lives in a `localStorage` store behind the login wall. The
+> authenticated student-owned write/read path is verified end-to-end against the
+> live DB under RLS (login → read own `students` row → insert/read own data), so
+> swapping the store onto the browser Supabase client is the next, de-risked step.
 
 ## Getting started
 
@@ -150,7 +165,7 @@ supabase/
 
 ## Next
 
-Phase 4 (per `roadmap.md` §25): the memory system — retrieval cards, the spaced
-schedule (same-day, 3d, 7d, 21d, 45d), retrieval attempts, concept mastery, and
-vocabulary retention — persisted to Supabase, which also moves the Phase 1–3
-learning data off `localStorage`.
+Phase 5 (per `roadmap.md` §25): parent & teacher dashboards — the weekly parent
+report, the class dashboard with skill gaps, student grouping, assignment
+creation, and report export. This pairs naturally with the de-risked store →
+Supabase migration so parents/teachers read real persisted learning evidence.

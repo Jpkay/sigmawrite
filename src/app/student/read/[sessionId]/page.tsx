@@ -12,6 +12,7 @@ import { ChoiceList } from "@/components/choice-list";
 import { SEED_TEXT_BY_ID } from "@/lib/content/texts";
 import { scoreSession } from "@/lib/scoring/session";
 import { updateSkillsFromSession } from "@/lib/scoring/skill-estimate";
+import { buildRetrievalCards } from "@/lib/content/retrieval-cards";
 import {
   completeReadingSession,
   getStudentState,
@@ -68,7 +69,14 @@ export default function ReadingSessionPage() {
       text,
       answers
     );
-    completeReadingSession(result, answers, skills);
+    completeReadingSession({
+      result,
+      answers,
+      skillEstimates: skills,
+      retrievalSeeds: buildRetrievalCards(text),
+      vocabWords: text.targetVocabulary.map((v) => v.word),
+      nowMs: Date.now(),
+    });
     router.push(`/student/results/${text.id}`);
   }
 
