@@ -9,6 +9,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { SEED_TEXT_BY_ID } from "@/lib/content/texts";
 import { recommendTextId } from "@/lib/content/recommend";
 import { useStudentState } from "@/lib/student-store";
+import { StudentAssignments } from "@/components/student-assignments";
 
 export default function StudentHome() {
   const state = useStudentState();
@@ -79,6 +80,8 @@ export default function StudentHome() {
         title="Bonjour 👋"
         description="Voici ta lecture du jour, choisie selon tes intérêts et ton niveau."
       />
+
+      <StudentAssignments />
 
       <Card className="mb-6 border-primary/40 bg-accent/40">
         <CardHeader>

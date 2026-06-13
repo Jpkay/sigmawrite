@@ -214,11 +214,16 @@ supabase/
   data still uses the `localStorage` stores. Swapping them for server actions
   against the (already-applied) schema + RLS is the next wiring step.
 
+## Assignments (PRD §N)
+
+Teachers assign a reading to a class at `/teacher/assignments` (persisted to the
+`assignments` table, migration 0007); enrolled students see it in an "À faire"
+section on their home and open it directly. RLS enforces that teachers manage
+only their classes and students read only their enrolled classes — verified end
+to end (teacher create 201, student read OK, student create 403).
+
 ## Next
 
-- **Assignment creation** (the deferred Phase 5 piece): add an `assignments`
-  table + RLS, a teacher create/manage flow, and student-side display so
-  assigned readings appear in the student's queue.
 - **Real OpenAI provider** behind `AI_PROVIDER=openai` (the pipeline is ready).
 - **Normalised evidence projections** — decompose `students.app_state` into the
   relational `reading_sessions` / `student_skill_estimates` tables for richer
