@@ -41,6 +41,10 @@ const SKILL_KEY_LABELS: Record<string, string> = {
 export default function ProgressPage() {
   const state = useStudentState();
 
+  if (!state.hydrated) {
+    return <PageHeader title="Progrès" description="Chargement…" />;
+  }
+
   if (!state.diagnostic) {
     return (
       <>

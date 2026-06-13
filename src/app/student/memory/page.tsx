@@ -33,6 +33,10 @@ export default function MemoryPage() {
 
   const card = due[0];
 
+  if (!state.hydrated) {
+    return <PageHeader title="Mémoire" description="Chargement…" />;
+  }
+
   function check() {
     if (!card) return;
     setGraded(gradeRetrieval(answer, card.keywords));

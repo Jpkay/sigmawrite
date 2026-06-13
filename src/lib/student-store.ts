@@ -27,14 +27,21 @@ export type RetrievalCard = {
 export type VocabState = { exposures: number; lastSeenAt: string };
 
 /**
- * Phase 1 client-side store (localStorage). Lets the full student slice —
- * onboarding → diagnostic → reading session → results → progress — run with
- * no backend. Phase 3+ replaces this with Supabase-backed reads/writes; the
- * shape mirrors the DB tables so the swap is mechanical.
+ * Student store. Source of truth is the authenticated student's
+ * `students.app_state` JSON document in Supabase (RLS-protected, readable by
+ * linked guardians/teachers). Falls back to localStorage when Supabase is not
+ * configured, so the app still runs with no backend. Same sync API throughout:
+ * writes update an in-memory cache + notify immediately, then persist async.
  */
 const KEY = "rtl.student.v1";
 
+const configured =
+  !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
+  !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
 export type StudentState = {
+  /** False until the first load from the backend resolves. */
+  hydrated: boolean;
   onboarded: boolean;
   grade: number | null;
   frenchBackground: string | null;
@@ -52,6 +59,7 @@ export type StudentState = {
 };
 
 const EMPTY: StudentState = {
+  hydrated: false,
   onboarded: false,
   grade: null,
   frenchBackground: null,
@@ -64,32 +72,103 @@ const EMPTY: StudentState = {
   vocab: {},
 };
 
-function read(): StudentState {
-  if (typeof window === "undefined") return EMPTY;
+/** Strips runtime-only fields before persisting the document. */
+function toDocument(state: StudentState): Omit<StudentState, "hydrated"> {
+  const { hydrated: _h, ...doc } = state;
+  void _h;
+  return doc;
+}
+
+function readLocal(): StudentState {
   try {
     const raw = window.localStorage.getItem(KEY);
-    return raw ? { ...EMPTY, ...(JSON.parse(raw) as StudentState) } : EMPTY;
+    return raw
+      ? { ...EMPTY, ...(JSON.parse(raw) as StudentState), hydrated: true }
+      : { ...EMPTY, hydrated: true };
   } catch {
-    return EMPTY;
+    return { ...EMPTY, hydrated: true };
   }
 }
 
-// Cached snapshot for useSyncExternalStore: getSnapshot must return a stable
-// reference between writes, so we only swap it inside save().
 let snapshot: StudentState | null = null;
+let studentId: string | null = null;
+let hydratePromise: Promise<void> | null = null;
+let writeChain: Promise<unknown> = Promise.resolve();
 const listeners = new Set<() => void>();
+
+const notify = () => listeners.forEach((l) => l());
+
+function ensureHydrated(): Promise<void> {
+  if (!configured) return Promise.resolve();
+  if (!hydratePromise) hydratePromise = hydrate();
+  return hydratePromise;
+}
 
 export function getStudentState(): StudentState {
   if (typeof window === "undefined") return EMPTY;
-  if (snapshot === null) snapshot = read();
+  if (snapshot === null) {
+    // Local mode resolves synchronously; Supabase mode hydrates via subscribe.
+    snapshot = configured ? { ...EMPTY } : readLocal();
+  }
   return snapshot;
 }
 
-function save(state: StudentState) {
+async function hydrate() {
+  try {
+    const { createClient } = await import("@/lib/supabase/client");
+    const supabase = createClient();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    if (!user) {
+      snapshot = { ...EMPTY, hydrated: true };
+      notify();
+      return;
+    }
+    // RLS returns only the caller's own student row, so no filter is needed.
+    const { data, error } = await supabase
+      .from("students")
+      .select("id, app_state")
+      .limit(1)
+      .maybeSingle();
+    if (error) throw error;
+    studentId = data?.id ?? null;
+    const doc = (data?.app_state as Partial<StudentState> | null) ?? null;
+    snapshot = { ...EMPTY, ...(doc ?? {}), hydrated: true };
+  } catch {
+    snapshot = { ...EMPTY, hydrated: true };
+  }
+  notify();
+}
+
+function persist(state: StudentState) {
   if (typeof window === "undefined") return;
-  window.localStorage.setItem(KEY, JSON.stringify(state));
+  if (!configured) {
+    try {
+      window.localStorage.setItem(KEY, JSON.stringify(toDocument(state)));
+    } catch {
+      /* ignore quota errors */
+    }
+    return;
+  }
+  // Serialize writes; ensure hydration (and studentId) resolved first.
+  writeChain = writeChain
+    .then(() => ensureHydrated())
+    .then(async () => {
+      if (!studentId) return;
+      const { createClient } = await import("@/lib/supabase/client");
+      await createClient()
+        .from("students")
+        .update({ app_state: toDocument(state) })
+        .eq("id", studentId);
+    })
+    .catch(() => {});
+}
+
+function save(state: StudentState) {
   snapshot = state;
-  listeners.forEach((l) => l());
+  notify();
+  persist(state);
 }
 
 export function update(patch: Partial<StudentState>): StudentState {
@@ -98,20 +177,21 @@ export function update(patch: Partial<StudentState>): StudentState {
   return next;
 }
 
-/**
- * Subscribe to the student store. The idiomatic React way to read
- * client-only storage without hydration mismatch or setState-in-effect.
- */
 export function useStudentState(): StudentState {
   return useSyncExternalStore(
     (cb) => {
       listeners.add(cb);
+      ensureHydrated();
       return () => listeners.delete(cb);
     },
     getStudentState,
     () => EMPTY
   );
 }
+
+// Hydrate as early as possible (any student page importing the store), so an
+// imperative getStudentState() in a write path sees real data, not a stale base.
+if (typeof window !== "undefined") ensureHydrated();
 
 export function saveOnboarding(input: {
   grade: number;
@@ -241,7 +321,9 @@ export function lastSuccessRate(): number | undefined {
 
 export function resetStudentState() {
   if (typeof window === "undefined") return;
-  window.localStorage.removeItem(KEY);
-  snapshot = EMPTY;
-  listeners.forEach((l) => l());
+  const cleared = { ...EMPTY, hydrated: true };
+  snapshot = cleared;
+  notify();
+  persist(cleared);
+  if (!configured) window.localStorage.removeItem(KEY);
 }

@@ -43,6 +43,7 @@ export default function ResultsPage() {
   const interests = state.interests;
 
   if (!text) return <PageHeader title="Résultats introuvables" />;
+  if (!state.hydrated) return <PageHeader title="Résultats" description="Chargement…" />;
   if (!result)
     return (
       <>

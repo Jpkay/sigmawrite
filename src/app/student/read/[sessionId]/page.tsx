@@ -15,8 +15,8 @@ import { updateSkillsFromSession } from "@/lib/scoring/skill-estimate";
 import { buildRetrievalCards } from "@/lib/content/retrieval-cards";
 import {
   completeReadingSession,
-  getStudentState,
   lastSuccessRate,
+  useStudentState,
 } from "@/lib/student-store";
 
 type Phase = "read" | "questions" | "summary" | "retrieval";
@@ -25,6 +25,7 @@ export default function ReadingSessionPage() {
   const params = useParams<{ sessionId: string }>();
   const router = useRouter();
   const text = SEED_TEXT_BY_ID[params.sessionId];
+  const state = useStudentState();
 
   const startedAt = useRef(new Date().toISOString());
   const [phase, setPhase] = useState<Phase>("read");
@@ -64,11 +65,7 @@ export default function ReadingSessionPage() {
       completedAt: new Date().toISOString(),
       previousSuccessRate: lastSuccessRate(),
     });
-    const skills = updateSkillsFromSession(
-      getStudentState().skillEstimates,
-      text,
-      answers
-    );
+    const skills = updateSkillsFromSession(state.skillEstimates, text, answers);
     completeReadingSession({
       result,
       answers,
@@ -177,7 +174,7 @@ export default function ReadingSessionPage() {
               placeholder="Réponds avec tes mots…"
               className="w-full rounded-md border border-input bg-background p-3 text-sm outline-none ring-ring focus:ring-2"
             />
-            <Button onClick={finish} disabled={!retrieval.trim()}>
+            <Button onClick={finish} disabled={!retrieval.trim() || !state.hydrated}>
               Terminer la séance <ArrowRight />
             </Button>
           </CardContent>

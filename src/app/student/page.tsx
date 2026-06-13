@@ -13,6 +13,10 @@ import { useStudentState } from "@/lib/student-store";
 export default function StudentHome() {
   const state = useStudentState();
 
+  if (!state.hydrated) {
+    return <PageHeader title="Bonjour 👋" description="Chargement…" />;
+  }
+
   if (!state.onboarded) {
     return (
       <>
