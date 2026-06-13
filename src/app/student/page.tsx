@@ -1,18 +1,74 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { PageHeader } from "@/components/page";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
-
-const stats = [
-  { label: "Bande de lecture", value: "—" },
-  { label: "Textes cette semaine", value: "0" },
-  { label: "Minutes de lecture", value: "0" },
-  { label: "Zone de réussite", value: "—" },
-];
+import { SEED_TEXT_BY_ID } from "@/lib/content/texts";
+import { recommendTextId } from "@/lib/content/recommend";
+import { useStudentState } from "@/lib/student-store";
 
 export default function StudentHome() {
+  const state = useStudentState();
+
+  if (!state.onboarded) {
+    return (
+      <>
+        <PageHeader
+          title="Bonjour 👋"
+          description="Crée ton profil de lecture en quelques minutes."
+        />
+        <Card className="border-primary/40 bg-accent/40">
+          <CardContent className="flex flex-wrap items-center justify-between gap-4 pt-6">
+            <p className="text-lg font-medium">Commençons par te connaître.</p>
+            <Link href="/student/onboarding" className={buttonVariants()}>
+              Démarrer <ArrowRight />
+            </Link>
+          </CardContent>
+        </Card>
+      </>
+    );
+  }
+
+  if (!state.diagnostic) {
+    return (
+      <>
+        <PageHeader title="Bonjour 👋" description="Encore une étape." />
+        <Card className="border-primary/40 bg-accent/40">
+          <CardContent className="flex flex-wrap items-center justify-between gap-4 pt-6">
+            <p className="text-lg font-medium">
+              Fais le diagnostic pour établir ta bande de lecture.
+            </p>
+            <Link href="/student/diagnostic" className={buttonVariants()}>
+              Diagnostic <ArrowRight />
+            </Link>
+          </CardContent>
+        </Card>
+      </>
+    );
+  }
+
+  const recommended = SEED_TEXT_BY_ID[recommendTextId(state.interests)];
+  const completed = state.sessions.length;
+  const avg = completed
+    ? Math.round(
+        (state.sessions.reduce((s, r) => s + r.successRate, 0) / completed) * 100
+      )
+    : 0;
+  const band = state.diagnostic.overallReadingBand;
+
+  const stats = [
+    {
+      label: "Bande de lecture",
+      value: `${band.minGrade.toFixed(1)}–${band.maxGrade.toFixed(1)}`,
+    },
+    { label: "Textes complétés", value: String(completed) },
+    { label: "Réussite moyenne", value: completed ? `${avg}%` : "—" },
+    { label: "Zone cible", value: "80–85%" },
+  ];
+
   return (
     <>
       <PageHeader
@@ -26,16 +82,17 @@ export default function StudentHome() {
         </CardHeader>
         <CardContent className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="text-lg font-medium">
-              « Pourquoi de jeunes footballeurs quittent leur pays »
-            </p>
+            <p className="text-lg font-medium">« {recommended.title} »</p>
             <div className="mt-3 flex flex-wrap gap-2">
-              <Badge>Géographie : migration</Badge>
-              <Badge>Économie : opportunité</Badge>
-              <Badge variant="secondary">Connecteurs de cause</Badge>
+              <Badge>{recommended.difficultyBand}</Badge>
+              {recommended.concepts.map((c) => (
+                <Badge key={c} variant="secondary">
+                  {c}
+                </Badge>
+              ))}
             </div>
           </div>
-          <Link href="/student/diagnostic" className={buttonVariants()}>
+          <Link href={`/student/read/${recommended.id}`} className={buttonVariants()}>
             Commencer <ArrowRight />
           </Link>
         </CardContent>
@@ -51,11 +108,6 @@ export default function StudentHome() {
           </Card>
         ))}
       </div>
-
-      <p className="mt-8 text-sm text-muted-foreground">
-        Commence par le diagnostic pour établir ton profil de lecture. Tu
-        recevras ensuite des textes au bon niveau.
-      </p>
     </>
   );
 }
