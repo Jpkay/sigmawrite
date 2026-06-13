@@ -3,10 +3,11 @@
 > Learn to love reading while reading to learn.
 
 A personalized French academic reading platform for secondary students. This
-repo contains **Phases 0–4** from [`roadmap.md`](./roadmap.md): a running
-foundation, a working end-to-end student reading experience, the AI content
-pipeline with admin review, the adaptive engine v1, and the spaced-retrieval
-memory system — backed by a live Supabase project.
+repo contains **Phases 0–5** from [`roadmap.md`](./roadmap.md): a running
+foundation, an end-to-end student reading experience, the AI content pipeline
+with admin review, the adaptive engine, the spaced-retrieval memory system, and
+parent/teacher dashboards — all on a live Supabase project with the student's
+learning data persisted server-side.
 
 ## Stack
 
@@ -102,6 +103,27 @@ The §H pipeline, runnable client-side with the mock provider:
 - **Tests** — 45 Vitest cases total; the new 8 cover the ladder, ease
   clamping/adjustment, the forgot-reset, and recall grading.
 
+## What's in Phase 5 (parent & teacher dashboards)
+
+Real, RLS-scoped reads of persisted learning data (`src/lib/reports.ts` is the
+pure reporting core; `src/lib/db/dashboard.ts` the server data layer):
+
+- **Parent** (`/parent`, `/parent/students/[id]`) — linked children with their
+  reading band; a weekly report (texts, minutes, success, vocabulary, strengths
+  / needs-work) and the §M "proof layer" (reads comfortably / with support /
+  too hard) from actual session success.
+- **Teacher** (`/teacher`, `/teacher/classes/[id]`, `/teacher/groups`,
+  `/teacher/students/[id]`) — class overview, reading band + success +
+  engagement per student, and **intervention groups** computed from shared
+  skill gaps (§N). Per-student detail reuses the weekly-report view.
+- **Report export** (`/teacher/reports`) — print-to-PDF of the class summary.
+- **Tests** — 50 Vitest cases total; the new 5 cover weekly aggregation, the
+  proof layer, and group formation.
+
+> Verified end-to-end against the live DB: a parent reads only their linked
+> child, a teacher only their class's enrolled students, and a parent cannot
+> read classes — all enforced by RLS, not app code.
+
 ## Supabase (live)
 
 Project **`reading-to-learn`** (`tkasvcccucpsbjywgdyl`, eu-central-1) is
@@ -109,11 +131,13 @@ provisioned with all migrations + RLS + reference seed + the signup trigger
 (`supabase/migrations/0001–0003`). `.env.local` points at it, so the app
 connects and the proxy now enforces auth on every protected route.
 
-A confirmed demo student exists for testing the gated flow:
+Confirmed demo accounts (all password `Demo1234!`) — the student has seeded
+learning data so the parent/teacher dashboards show real evidence:
 
 ```
-email:    demo.eleve@reading-to-learn.test
-password: Demo1234!
+student:  demo.eleve@reading-to-learn.test
+parent:   parent.demo@reading-to-learn.test   (linked to the student)
+teacher:  prof.demo@reading-to-learn.test      (teaches class "5e A")
 ```
 
 > **Note:** learning data (diagnostic, sessions, skill estimates, retrieval
@@ -165,7 +189,8 @@ supabase/
 
 ## Next
 
-Phase 5 (per `roadmap.md` §25): parent & teacher dashboards — the weekly parent
-report, the class dashboard with skill gaps, student grouping, assignment
-creation, and report export. This pairs naturally with the de-risked store →
-Supabase migration so parents/teachers read real persisted learning evidence.
+Phase 6 (per `roadmap.md` §25): pilot readiness — benchmark passages, school
+admin tools, the privacy workflows (guardian consent, data export/deletion),
+audit logs, usage analytics, and error monitoring. One Phase 5 piece is
+intentionally still light: **assignment creation** (`/teacher/assignments`)
+needs an `assignments` table and student-side display, noted in the UI.
