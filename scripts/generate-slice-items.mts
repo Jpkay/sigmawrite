@@ -119,6 +119,27 @@ const overall = yieldReport(all);
 console.log("\n── Overall yield ──");
 console.log(JSON.stringify(overall, null, 2));
 
+// Accumulate across runs (dedupe by node + prompt) so partial runs — e.g. when a
+// daily quota is hit — build up the bank instead of clobbering prior work.
 mkdirSync("./generated", { recursive: true });
-writeFileSync("./generated/past-narration-items.json", JSON.stringify(keep, null, 2));
-console.log(`\nWrote ${keep.length} usable item(s) to ./generated/past-narration-items.json`);
+const outPath = "./generated/past-narration-items.json";
+let bank: GeneratedItem[] = [];
+if (existsSync(outPath)) {
+  try {
+    bank = JSON.parse(readFileSync(outPath, "utf8")) as GeneratedItem[];
+  } catch {
+    bank = [];
+  }
+}
+const seen = new Set(bank.map((i) => `${i.nodeKey}|${i.promptFr}`));
+let added = 0;
+for (const it of keep) {
+  const k = `${it.nodeKey}|${it.promptFr}`;
+  if (!seen.has(k)) {
+    bank.push(it);
+    seen.add(k);
+    added++;
+  }
+}
+writeFileSync(outPath, JSON.stringify(bank, null, 2));
+console.log(`\nAdded ${added} new item(s); bank now ${bank.length} → ${outPath}`);
