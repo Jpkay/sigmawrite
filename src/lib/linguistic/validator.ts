@@ -15,6 +15,14 @@
  * deterministic.
  */
 
+import {
+  conjugate,
+  UnsupportedVerbError,
+  type Agreement,
+  type Gender,
+  type Person,
+  type Tense,
+} from "./conjugation";
 import type {
   FrenchGrammarChecker,
   ValidationResult,
@@ -83,13 +91,40 @@ export async function validateAnswer(
       };
     }
 
-    case "conjugator":
-      // Routed here for a stable contract; deterministic conjugation lands next.
+    case "conjugator": {
+      // config: {verb, tense, person, gender?, codBefore?}. The expected form is
+      // computed deterministically and compared to the student's answer.
+      const c = spec.config ?? {};
+      const verb = c.verb as string | undefined;
+      const tense = c.tense as Tense | undefined;
+      const person = c.person as Person | undefined;
+      if (!verb || !tense || !person) {
+        return {
+          pass: false,
+          validator: "conjugator",
+          reason: "conjugator requires config {verb, tense, person}",
+        };
+      }
+      let expected: string;
+      try {
+        expected = conjugate(verb, tense, person, {
+          gender: c.gender as Gender | undefined,
+          codBefore: c.codBefore as Agreement | undefined,
+        });
+      } catch (e) {
+        if (e instanceof UnsupportedVerbError) {
+          return { pass: false, validator: "conjugator", reason: e.message };
+        }
+        throw e;
+      }
+      const got = normalize(answer);
       return {
-        pass: false,
+        pass: got === normalize(expected),
         validator: "conjugator",
-        reason: "conjugator validator not yet implemented",
+        normalized: got,
+        reason: got === normalize(expected) ? undefined : `attendu: ${expected}`,
       };
+    }
 
     case "rubric":
     case "llm_assisted":
