@@ -69,12 +69,20 @@ export async function runGates(
   let item: GeneratedItem = parsed.data;
 
   // ── Gate 1: graph invariants ──
+  // Node ref and MCQ shape are hard (structural integrity); an invented
+  // misconception tag is repaired (stripped), not rejected — it's metadata, not
+  // correctness, and a good item shouldn't die for a bad label.
   const violations: string[] = [];
   if (!ctx.knownNodeKeys.has(item.nodeKey)) violations.push(`unknown node ${item.nodeKey}`);
-  for (const c of item.choices ?? []) {
-    if (c.misconceptionKey && !ctx.knownMisconceptionKeys.has(c.misconceptionKey)) {
-      violations.push(`unknown misconception ${c.misconceptionKey}`);
-    }
+  if (item.choices?.some((c) => c.misconceptionKey && !ctx.knownMisconceptionKeys.has(c.misconceptionKey))) {
+    item = {
+      ...item,
+      choices: item.choices.map((c) =>
+        c.misconceptionKey && !ctx.knownMisconceptionKeys.has(c.misconceptionKey)
+          ? { ...c, misconceptionKey: undefined }
+          : c
+      ),
+    };
   }
   if (item.responseType === "mcq") {
     const choices = item.choices ?? [];

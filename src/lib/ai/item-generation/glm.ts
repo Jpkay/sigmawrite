@@ -32,7 +32,8 @@ Règles STRICTES :
     "difficulty": number          // 0–100
   }
 - Pour la conjugaison, mets validatorType="conjugator" et fournis validatorConfig {verb, tense (present|imparfait|passe_compose), person (1s|2s|3s|1p|2p|3p)}. NE T'INQUIÈTE PAS de la forme exacte : elle sera recalculée de façon déterministe.
-- Pour un QCM, exactement UNE bonne réponse. Étiquette les distracteurs plausibles avec une "misconceptionKey" de la liste fournie quand c'est pertinent.
+- Pour un QCM, exactement UNE bonne réponse.
+- "misconceptionKey" : utilise UNIQUEMENT une clé de la liste fournie dans le message. Si aucune ne correspond, OMETS complètement le champ (n'invente jamais de clé).
 - Français correct et naturel. Énoncés courts et clairs, adaptés au niveau CEFR indiqué.`;
 
 function userPrompt(spec: ItemGenSpec): string {

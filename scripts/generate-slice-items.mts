@@ -21,12 +21,24 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 // Load .env.local (gitignored) so secrets never live in the shell history.
 function loadEnvLocal() {
   if (!existsSync(".env.local")) return;
+  const vars: Record<string, string> = {};
   for (const line of readFileSync(".env.local", "utf8").split("\n")) {
-    const m = line.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*?)\s*$/);
-    if (m && !process.env[m[1]]) process.env[m[1]] = m[2].replace(/^["']|["']$/g, "");
+    const m = line.match(/^\s*([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*?)\s*$/);
+    if (m) vars[m[1]] = m[2].replace(/^["']|["']$/g, ""); // last occurrence wins
   }
+  // Real pre-existing process env (e.g. inline) still overrides the file.
+  for (const [k, v] of Object.entries(vars)) if (!process.env[k]) process.env[k] = v;
 }
 loadEnvLocal();
+
+// Build the Cloudflare Workers AI base URL from the account id if LLM_BASE_URL is
+// missing or still a placeholder.
+if (
+  (!process.env.LLM_BASE_URL || process.env.LLM_BASE_URL.includes("<")) &&
+  process.env.CLOUDFLARE_ACCOUNT_ID
+) {
+  process.env.LLM_BASE_URL = `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/ai/v1`;
+}
 
 import { MISCONCEPTIONS, NODES } from "@/lib/content/slices/past-narration";
 import { getItemGenerator, getItemJudge } from "@/lib/ai/item-generation/generator";
@@ -87,6 +99,10 @@ for (const node of nodes) {
     );
     for (const res of results) {
       if (res.item && res.gates.verdict !== "rejected") keep.push(res.item);
+      else if (res.gates.verdict === "rejected") {
+        console.log(`     ✗ ${res.gates.rejectionReason ?? "rejected"}`);
+        console.log(`       raw: ${JSON.stringify(res.raw).slice(0, 400)}`);
+      }
     }
   } catch (e) {
     console.log(`  ${node.key.padEnd(28)} ERROR: ${(e as Error).message}`);

@@ -60,7 +60,7 @@ describe("Gate 1 — schema + invariants", () => {
     expect(r.gates.verdict).toBe("rejected");
   });
 
-  it("rejects an unknown misconception tag", async () => {
+  it("repairs (strips) an unknown misconception tag instead of rejecting", async () => {
     const item = goodConjItem({
       responseType: "mcq", validatorType: "exact", correctAnswer: undefined,
       validatorConfig: undefined,
@@ -70,8 +70,9 @@ describe("Gate 1 — schema + invariants", () => {
       ],
     });
     const r = await runGates(item, baseCtx());
-    expect(r.gates.verdict).toBe("rejected");
-    expect(r.gates.gate1_invariants.violations.join()).toMatch(/misconception/);
+    expect(r.gates.verdict).toBe("auto_approved");
+    // the invalid tag is stripped, the good item survives
+    expect(r.item?.choices?.find((c) => c.text === "b")?.misconceptionKey).toBeUndefined();
   });
 
   it("rejects an MCQ without exactly one correct choice", async () => {
