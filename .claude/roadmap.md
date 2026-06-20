@@ -42,7 +42,7 @@ The core is a **shared atomic-competency knowledge graph**. Each competency is a
 ### Landed early (from later phases)
 - [x] D2 (Gate 1): graph invariant checker — cycle detection, framework monotonicity, dangling edges (`src/lib/graph/invariants.ts`) -- Done 2026-06-20
 - [x] E3 (partial): Bayesian Knowledge Tracing estimator (`src/lib/scoring/bkt.ts`) -- Done 2026-06-20
-- [!] DB-APPLY: migrations 0008–0010 are written + locally verified but NOT yet applied to the live Supabase project -- BLOCKED by user confirmation (production DB write)
+- [x] DB-APPLY: migrations 0008–0011 applied to live Supabase (reading-to-learn / tkasvcccucpsbjywgdyl); 10 tables live w/ RLS; traversal smoke-tested on real Postgres; search_path advisor resolved -- Done 2026-06-20
 
 ## Phase 8: Deterministic French linguistic engine (P0, multi-day)
 - [ ] C1: Conjugation engine (all tenses/moods/persons) from a deterministic source (P0, L)
