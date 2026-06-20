@@ -12,9 +12,8 @@ import { readFileSync } from "node:fs";
 import { NODES } from "@/lib/content/slices/past-narration";
 import type { GeneratedItem } from "@/lib/ai/item-generation/schemas";
 
-const items = JSON.parse(
-  readFileSync("./generated/past-narration-items.json", "utf8")
-) as GeneratedItem[];
+const path = process.argv[2] ?? "./generated/past-narration-items.json";
+const items = JSON.parse(readFileSync(path, "utf8")) as GeneratedItem[];
 
 const q = (s: string | undefined | null) =>
   s == null ? "null" : `'${s.replace(/'/g, "''")}'`;
