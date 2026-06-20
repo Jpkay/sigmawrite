@@ -23,13 +23,27 @@ export type ChatConfig = {
   jsonMode?: boolean;
   /** Retries on 429 / 5xx with exponential backoff (default 5). */
   maxRetries?: number;
+  /** Minimum ms between any two calls (proactive rate limiting). Env: LLM_MIN_INTERVAL_MS. */
+  minIntervalMs?: number;
 };
 
 const sleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
 
+// Global call spacer shared across all callers (generator + judge), so total
+// throughput stays under the provider's rate limit rather than just reacting to
+// 429s after the fact.
+let nextSlot = 0;
+async function spaceCalls(minMs: number) {
+  if (minMs <= 0) return;
+  const now = Date.now();
+  const wait = Math.max(0, nextSlot - now);
+  nextSlot = Math.max(now, nextSlot) + minMs;
+  if (wait > 0) await sleep(wait);
+}
+
 export const DEFAULT_MODEL = "@cf/zai-org/glm-5.2";
 
-export function resolveConfig(cfg: ChatConfig = {}): Required<Omit<ChatConfig, "temperature" | "jsonMode" | "maxRetries">> & Pick<ChatConfig, "temperature" | "jsonMode"> {
+export function resolveConfig(cfg: ChatConfig = {}): Required<Omit<ChatConfig, "temperature" | "jsonMode" | "maxRetries" | "minIntervalMs">> & Pick<ChatConfig, "temperature" | "jsonMode"> {
   const baseUrl = (cfg.baseUrl ?? process.env.LLM_BASE_URL ?? "").replace(/\/$/, "");
   const apiKey = cfg.apiKey ?? process.env.LLM_API_KEY ?? "";
   const model = cfg.model ?? process.env.LLM_MODEL ?? DEFAULT_MODEL;
@@ -55,6 +69,8 @@ export async function chatComplete(
 ): Promise<string> {
   const c = resolveConfig(cfg);
   const maxRetries = cfg.maxRetries ?? 5;
+  const minInterval = cfg.minIntervalMs ?? (Number(process.env.LLM_MIN_INTERVAL_MS) || 0);
+  await spaceCalls(minInterval);
   const body = JSON.stringify({
     model: c.model,
     messages,

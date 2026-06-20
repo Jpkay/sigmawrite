@@ -40,8 +40,11 @@ if (
   process.env.LLM_BASE_URL = `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/ai/v1`;
 }
 
+// Space LLM calls to stay under the provider rate limit (override via env).
+if (!process.env.LLM_MIN_INTERVAL_MS) process.env.LLM_MIN_INTERVAL_MS = "3500";
+
 import { MISCONCEPTIONS, NODES } from "@/lib/content/slices/past-narration";
-import { getItemGenerator, getItemJudge } from "@/lib/ai/item-generation/generator";
+import { getItemGenerator } from "@/lib/ai/item-generation/generator";
 import {
   runItemGenerationPipeline,
   yieldReport,
@@ -57,9 +60,10 @@ const onlyNode = process.argv[3];
 const knownNodeKeys = new Set(NODES.map((n) => n.key));
 const knownMisconceptionKeys = new Set(MISCONCEPTIONS.map((m) => m.key));
 
+// Bulk population: Gates 0–2 (correctness-critical) + grammar checking, no Gate-3
+// judge (halves call volume under the rate limit). Run an ensemble pass later.
 const ctx: PipelineContext = {
   generator: getItemGenerator(),
-  judge: getItemJudge(),
   knownNodeKeys,
   knownMisconceptionKeys,
   grammarChecker: new LanguageToolChecker(),

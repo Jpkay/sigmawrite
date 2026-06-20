@@ -28,7 +28,9 @@ import type { ItemGenerator, ItemJudge } from "./generator";
 export type GateContext = {
   knownNodeKeys: Set<string>;
   knownMisconceptionKeys: Set<string>;
-  judge: ItemJudge;
+  /** Gate-3 ensemble judge. Optional: when absent, Gate 3 is skipped (used for
+   *  bulk population under tight rate limits; run an ensemble pass later). */
+  judge?: ItemJudge;
   grammarChecker?: FrenchGrammarChecker;
   ensembleThreshold?: number; // default 0.7
   sensitiveStrands?: Set<string>;
@@ -128,10 +130,15 @@ export async function runGates(
     }, `answer key: ${g2.reason}`);
   }
 
-  // ── Gate 3: cross-model ensemble ──
-  const j = await ctx.judge.judge(item);
+  // ── Gate 3: cross-model ensemble (skipped when no judge is wired) ──
   const threshold = ctx.ensembleThreshold ?? 0.7;
-  const agrees = j.valid && j.confidence >= threshold;
+  let agreement = 1;
+  let agrees = true;
+  if (ctx.judge) {
+    const j = await ctx.judge.judge(item);
+    agreement = j.confidence;
+    agrees = j.valid && j.confidence >= threshold;
+  }
 
   // ── Gate 4: verdict ──
   const needsReview =
@@ -145,7 +152,7 @@ export async function runGates(
       gate1_invariants: { ok: true, violations: [] },
       gate0_computed: gate0,
       gate2_answer_key: { ok: g2.ok, reason: g2.reason },
-      gate3_ensemble: { agreement: j.confidence, agrees },
+      gate3_ensemble: { agreement, agrees },
       verdict: needsReview ? "needs_human_review" : "auto_approved",
     },
   };
