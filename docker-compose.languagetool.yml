@@ -1,0 +1,30 @@
+# Self-hosted LanguageTool — the French grammar-checker service backing QC Gate 2
+# and free-text grading (Roadmap Phase 8).
+#
+#   docker compose -f docker-compose.languagetool.yml up -d
+#   curl -s --data "language=fr" --data "text=Je vais hier au cinéma." \
+#        http://localhost:8010/v2/check | jq
+#
+# Then point the app at it:  LANGUAGETOOL_URL=http://localhost:8010
+# (In production, deploy this alongside the app and set LANGUAGETOOL_URL to its
+#  internal URL. The public api.languagetool.org is rate-limited — dev only.)
+
+services:
+  languagetool:
+    image: erikvl87/languagetool:latest
+    container_name: sigmawrite-languagetool
+    ports:
+      - "8010:8010"
+    environment:
+      - langtool_languageModel=/ngrams       # n-gram data (optional, improves accuracy)
+      - Java_Xms=512m
+      - Java_Xmx=2g
+    # Uncomment and provide n-gram data for higher accuracy (large download):
+    # volumes:
+    #   - ./ngrams:/ngrams
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:8010/v2/languages"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
