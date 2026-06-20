@@ -60,12 +60,13 @@ The core is a **shared atomic-competency knowledge graph**. Each competency is a
 - [ ] D5: Gate 4 — exception queue in existing admin review UI (margins only) (P0, M)
 - [ ] D6: Generation orchestration on existing Zod/AI-pipeline infra (P0, L)
 
-## Phase 10: Goal-conditioned adaptive diagnostic + frontier UI (P0, multi-day)
-- [ ] E1: Learner-profile intake (student_type, grade, target, exposure, home language) (P0, M)
-- [ ] E2: Adaptive diagnostic — goal-conditioned probe high→descend on failure (KST), stop on uncertainty threshold (P0, L)
-- [ ] E3: Bayesian Knowledge Tracing estimate update per item, per mastery dimension (P0, L)
-- [ ] E4: Frontier report — mastered / fragile / missing / ready-to-learn, with blockers (P0, M)
-- [ ] E5: Catch-up path UI — sequenced layers, today's plan (P0, M)
+## Phase 10: Goal-conditioned adaptive diagnostic + frontier UI (P0, multi-day) — IN PROGRESS
+- [ ] E1: Learner-profile intake UI (student_type, grade, target, exposure, home language) (P0, M)
+- [x] E2: Adaptive diagnostic engine — goal-conditioned probe high→descend on failure (KST presumption), stop on uncertainty (`src/lib/diagnostic/engine.ts`) (P0, L) -- Done 2026-06-20
+- [x] E3: BKT estimate update per probe (`src/lib/scoring/bkt.ts`, wired into engine) (P0, L) -- Done 2026-06-20
+- [x] E4: Frontier report — mastered/fragile/missing/ready-to-learn + blockers (`src/lib/diagnostic/report.ts`) (P0, M) -- Done 2026-06-20
+- [ ] E5: Catch-up path UI — sequenced layers, today's plan (logic done via catchUpToTarget; UI pending) (P0, M)
+- [x] E6: End-to-end verified on real seeded slice — COD-gap localized to true root, not surface error (engine.test.ts) -- Done 2026-06-20
 
 ## Phase 11: First production vertical slice — past narration & agreement (P0, multi-day) — IN PROGRESS
 - [x] F1: Author/verify 31-node slice across grammaire/conjugaison/orthographe/expression + 52 edges + 6 misconceptions (`src/lib/content/slices/past-narration.ts`); Gate-1 clean DAG, fully monotone (P0, L) -- Done 2026-06-20
@@ -120,7 +121,7 @@ The core is a **shared atomic-competency knowledge graph**. Each competency is a
 | Phase 8 | IN PROGRESS | 3 | 6 | 2026-06-20 |
 | Phase 11 | IN PROGRESS | 2 | 4 | 2026-06-20 |
 | Phase 9 | NOT STARTED | 0 | 6 | — |
-| Phase 10 | NOT STARTED | 0 | 5 | — |
+| Phase 10 | IN PROGRESS | 4 | 6 | 2026-06-20 |
 | Phase 11 | NOT STARTED | 0 | 4 | — |
 | Phase 12 | NOT STARTED | 0 | 3 | — |
 | Phase 13 | NOT STARTED | 0 | 4 | — |
