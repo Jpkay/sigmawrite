@@ -44,12 +44,13 @@ The core is a **shared atomic-competency knowledge graph**. Each competency is a
 - [x] E3 (partial): Bayesian Knowledge Tracing estimator (`src/lib/scoring/bkt.ts`) -- Done 2026-06-20
 - [x] DB-APPLY: migrations 0008–0011 applied to live Supabase (reading-to-learn / tkasvcccucpsbjywgdyl); 10 tables live w/ RLS; traversal smoke-tested on real Postgres; search_path advisor resolved -- Done 2026-06-20
 
-## Phase 8: Deterministic French linguistic engine (P0, multi-day)
+## Phase 8: Deterministic French linguistic engine (P0, multi-day) — IN PROGRESS
 - [ ] C1: Conjugation engine (all tenses/moods/persons) from a deterministic source (P0, L)
 - [ ] C2: Lexicon ingestion — Lexique3 frequency + Morphalou inflected forms (P0, L)
-- [ ] C3: Agreement validators — gender/number, subject-verb, past-participle (avoir/être/COD-before) (P0, L)
-- [ ] C4: Grammar/spell validation — Grammalecte + LanguageTool integration as graders (P0, M)
-- [ ] C5: Validator interface — unified `validate(answer, rule) → {pass, ruleHit}` for item QC (P0, M)
+- [-] C3: Agreement validators — broadly covered by the grammar service (QUE_AVOIR, ETRE_VPPA live-verified); deterministic in-code validators still TODO for offline/targeted checks (P0, L)
+- [x] C4: Grammar/spell validation — LanguageTool integration as grader; self-host via docker-compose; live-verified on real French (P0, M) -- Done 2026-06-20
+- [x] C5: Validator interface — unified `validateAnswer(answer, spec) → {pass, ruleHits}` routing on validator_type (`src/lib/linguistic/validator.ts`) (P0, M) -- Done 2026-06-20
+- [ ] C6: Deploy self-hosted LanguageTool + set LANGUAGETOOL_URL (ops; user-run `docker compose -f docker-compose.languagetool.yml up`) (P0, S)
 
 ## Phase 9: LLM content-generation pipeline + 6 QC gates (P0, multi-day)
 - [ ] D1: Gate 0 — route computable content to deterministic engines, never LLM (P0, M)
@@ -116,7 +117,7 @@ The core is a **shared atomic-competency knowledge graph**. Each competency is a
 | Phase | Status | Completed | Total | Last Updated |
 |-------|--------|-----------|-------|--------------|
 | Phase 7 | IN PROGRESS | 12 | 12 (code done; DB-apply pending) | 2026-06-20 |
-| Phase 8 | NOT STARTED | 0 | 5 | — |
+| Phase 8 | IN PROGRESS | 2 | 6 | 2026-06-20 |
 | Phase 9 | NOT STARTED | 0 | 6 | — |
 | Phase 10 | NOT STARTED | 0 | 5 | — |
 | Phase 11 | NOT STARTED | 0 | 4 | — |
