@@ -107,6 +107,8 @@ for (const node of nodes) {
   } catch (e) {
     console.log(`  ${node.key.padEnd(28)} ERROR: ${(e as Error).message}`);
   }
+  // Throttle between nodes to stay under the provider's rate limit.
+  await new Promise((r) => setTimeout(r, 1200));
 }
 
 const overall = yieldReport(all);

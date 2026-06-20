@@ -54,9 +54,24 @@ describe("chatComplete", () => {
     expect(body.messages[0].content).toBe("hi");
   });
 
-  it("throws on a non-OK response", async () => {
-    const impl = vi.fn(async () => ({ ok: false, status: 500, statusText: "Err" })) as unknown as typeof fetch;
-    await expect(chatComplete([{ role: "user", content: "x" }], cfg(impl))).rejects.toThrow(/500/);
+  it("throws on a non-OK response (no retries)", async () => {
+    const impl = vi.fn(async () => ({ ok: false, status: 400, statusText: "Bad" })) as unknown as typeof fetch;
+    await expect(
+      chatComplete([{ role: "user", content: "x" }], { ...cfg(impl), maxRetries: 0 })
+    ).rejects.toThrow(/400/);
+  });
+
+  it("retries on 429 then succeeds", async () => {
+    let calls = 0;
+    const impl = vi.fn(async () => {
+      calls++;
+      return calls < 2
+        ? ({ ok: false, status: 429, statusText: "Too Many", headers: { get: () => "0" } } as unknown as Response)
+        : ({ ok: true, status: 200, json: async () => ({ choices: [{ message: { content: "ok" } }] }) } as Response);
+    }) as unknown as typeof fetch;
+    const out = await chatComplete([{ role: "user", content: "x" }], { ...cfg(impl), maxRetries: 3 });
+    expect(out).toBe("ok");
+    expect(calls).toBe(2);
   });
 });
 

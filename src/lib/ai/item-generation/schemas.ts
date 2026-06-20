@@ -30,9 +30,9 @@ export const generatedItemSchema = z.object({
   instructionsFr: z.string().optional(),
   correctAnswer: z.string().optional(),
   acceptableAnswers: z.array(z.string()).default([]),
-  validatorType: z.enum([
-    "exact", "regex", "conjugator", "agreement", "grammalecte", "rubric", "llm_assisted",
-  ]),
+  validatorType: z
+    .enum(["exact", "regex", "conjugator", "agreement", "grammalecte", "rubric", "llm_assisted"])
+    .default("exact"), // models often omit it on MCQs; exact is the safe default
   validatorConfig: z.record(z.string(), z.unknown()).optional(),
   choices: z.array(generatedChoiceSchema).optional(),
   cefrLevel: z.enum(["A1", "A2", "B1", "B2", "C1", "C2"]).optional(),
