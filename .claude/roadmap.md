@@ -59,7 +59,8 @@ The core is a **shared atomic-competency knowledge graph**. Each competency is a
 - [x] D4: Gate 3 — cross-model ensemble (ItemJudge interface + threshold); real 2nd model wires with key (P0, L) -- Done 2026-06-20
 - [-] D5: Gate 4 — verdict routing done (auto/needs_review/rejected); admin exception-queue UI pending (UI track) (P0, M)
 - [x] D6: Generation orchestration (`runItemGenerationPipeline`) + `yieldReport` QC metrics; mock-tested, key-ready (P0, L) -- Done 2026-06-20
-- [ ] D7: Wire real Claude generator + judge (blocked on ANTHROPIC_API_KEY = roadmap K5) (P0, M)
+- [x] D7: Wire GLM 5.2 via Cloudflare (OpenAI-compatible) as generator + judge; turn-key runner verified end-to-end with mock (62 items, all gates); reads .env.local (P0, M) -- Done 2026-06-20
+- [ ] D8: Run REAL generation on the slice + report yield (blocked on Cloudflare creds in .env.local) (P0, S)
 
 ## Phase 10: Goal-conditioned adaptive diagnostic + frontier UI (P0, multi-day) — IN PROGRESS
 - [ ] E1: Learner-profile intake UI (student_type, grade, target, exposure, home language) (P0, M)
@@ -101,7 +102,7 @@ The core is a **shared atomic-competency knowledge graph**. Each competency is a
 - [ ] K2: Performance — CTE traversal latency budgets; indexes on edges/estimates (P1, M)
 - [ ] K3: Privacy/consent extension to new learner-profile + telemetry data (P0, M)
 - [ ] K4: Observability — generation QC pass/fail metrics, diagnostic funnels (P1, M)
-- [ ] K5: Real LLM provider wiring (replace mock) with structured outputs + caching (P0, M)
+- [x] K5: Real LLM provider wiring — GLM 5.2 via Cloudflare (OpenAI-compatible), provider-agnostic factory (P0, M) -- Done 2026-06-20
 
 ## Dependencies
 
