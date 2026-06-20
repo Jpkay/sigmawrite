@@ -52,13 +52,14 @@ The core is a **shared atomic-competency knowledge graph**. Each competency is a
 - [x] C5: Validator interface — unified `validateAnswer(answer, spec) → {pass, ruleHits}` routing on validator_type (`src/lib/linguistic/validator.ts`) (P0, M) -- Done 2026-06-20
 - [ ] C6: Deploy self-hosted LanguageTool + set LANGUAGETOOL_URL (ops; user-run `docker compose -f docker-compose.languagetool.yml up`) (P0, S)
 
-## Phase 9: LLM content-generation pipeline + 6 QC gates (P0, multi-day)
-- [ ] D1: Gate 0 — route computable content to deterministic engines, never LLM (P0, M)
-- [ ] D2: Gate 1 — schema + graph-invariant validation (DAG, framework monotonicity, orphans) (P0, M)
-- [ ] D3: Gate 2 — answer-key self-consistency (correct passes validator, distractors fail) — hard reject (P0, L)
-- [ ] D4: Gate 3 — cross-model ensemble agreement for edges/items; consensus thresholds (P0, L)
-- [ ] D5: Gate 4 — exception queue in existing admin review UI (margins only) (P0, M)
-- [ ] D6: Generation orchestration on existing Zod/AI-pipeline infra (P0, L)
+## Phase 9: LLM content-generation pipeline + 6 QC gates (P0, multi-day) — IN PROGRESS
+- [x] D1: Gate 0 — recompute conjugations deterministically, override the LLM (`pipeline.ts`) (P0, M) -- Done 2026-06-20
+- [x] D2: Gate 1 — schema (Zod) + graph invariants (node/misconception refs, MCQ shape) (P0, M) -- Done 2026-06-20
+- [x] D3: Gate 2 — answer-key self-consistency (conjugator + grammar service), hard reject (P0, L) -- Done 2026-06-20
+- [x] D4: Gate 3 — cross-model ensemble (ItemJudge interface + threshold); real 2nd model wires with key (P0, L) -- Done 2026-06-20
+- [-] D5: Gate 4 — verdict routing done (auto/needs_review/rejected); admin exception-queue UI pending (UI track) (P0, M)
+- [x] D6: Generation orchestration (`runItemGenerationPipeline`) + `yieldReport` QC metrics; mock-tested, key-ready (P0, L) -- Done 2026-06-20
+- [ ] D7: Wire real Claude generator + judge (blocked on ANTHROPIC_API_KEY = roadmap K5) (P0, M)
 
 ## Phase 10: Goal-conditioned adaptive diagnostic + frontier UI (P0, multi-day) — IN PROGRESS
 - [ ] E1: Learner-profile intake UI (student_type, grade, target, exposure, home language) (P0, M)
@@ -120,7 +121,7 @@ The core is a **shared atomic-competency knowledge graph**. Each competency is a
 | Phase 7 | IN PROGRESS | 12 | 12 (code done; DB-apply pending) | 2026-06-20 |
 | Phase 8 | IN PROGRESS | 3 | 6 | 2026-06-20 |
 | Phase 11 | IN PROGRESS | 2 | 4 | 2026-06-20 |
-| Phase 9 | NOT STARTED | 0 | 6 | — |
+| Phase 9 | IN PROGRESS | 5 | 7 | 2026-06-20 |
 | Phase 10 | IN PROGRESS | 4 | 6 | 2026-06-20 |
 | Phase 11 | NOT STARTED | 0 | 4 | — |
 | Phase 12 | NOT STARTED | 0 | 3 | — |
