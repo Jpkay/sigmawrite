@@ -31,9 +31,13 @@ function loadEnvLocal() {
 }
 loadEnvLocal();
 
-// Build the Cloudflare Workers AI base URL from the account id if LLM_BASE_URL is
-// missing or still a placeholder.
-if (
+// Resolve the LLM endpoint. OpenRouter (if a key is present) takes priority;
+// otherwise Cloudflare Workers AI built from the account id.
+if (process.env.OPENROUTER_API_KEY) {
+  process.env.LLM_BASE_URL = "https://openrouter.ai/api/v1";
+  process.env.LLM_API_KEY = process.env.OPENROUTER_API_KEY;
+  process.env.LLM_MODEL = process.env.OPENROUTER_MODEL ?? "z-ai/glm-5.2";
+} else if (
   (!process.env.LLM_BASE_URL || process.env.LLM_BASE_URL.includes("<")) &&
   process.env.CLOUDFLARE_ACCOUNT_ID
 ) {
