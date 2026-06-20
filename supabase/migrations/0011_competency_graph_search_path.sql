@@ -1,13 +1,18 @@
--- French mastery platform — graph traversal (Roadmap Phase 7, Stream B).
--- Recursive-CTE functions over the prerequisite DAG. This is why the graph lives
--- in Postgres: these read the graph and join per-student estimates in one place,
--- under RLS. A depth guard (< 50) defends against accidental cycles (the DAG
--- invariant is enforced at authoring time by QC Gate 1, not by the DB).
+-- French mastery platform — security hardening (Roadmap Phase 7).
+-- Pin search_path on the graph functions (matches the convention of the existing
+-- RLS helpers in 0002). Addresses the function_search_path_mutable advisor.
+-- Definitions are otherwise identical to 0008/0010; create-or-replace is a no-op
+-- on a fresh install that already ran the hardened 0008/0010.
 
--- ───────────────────── Structural traversal (graph only) ───────────────────
+create or replace function public.cefr_rank(level text)
+returns int language sql immutable set search_path = public as $$
+  select case level
+    when 'A1' then 1 when 'A2' then 2
+    when 'B1' then 3 when 'B2' then 4
+    when 'C1' then 5 when 'C2' then 6
+    else null end
+$$;
 
--- All transitive prerequisites of a node (everything that must be mastered
--- before it). depth = shortest hop distance along prerequisite edges.
 create or replace function public.competency_prerequisites(p_node_id uuid)
 returns table(node_id uuid, depth int)
 language sql stable set search_path = public as $$
@@ -24,7 +29,6 @@ language sql stable set search_path = public as $$
   select node_id, min(depth) as depth from walk group by node_id
 $$;
 
--- All transitive dependents of a node (everything it unlocks downstream).
 create or replace function public.competency_dependents(p_node_id uuid)
 returns table(node_id uuid, depth int)
 language sql stable set search_path = public as $$
@@ -41,11 +45,6 @@ language sql stable set search_path = public as $$
   select node_id, min(depth) as depth from walk group by node_id
 $$;
 
--- ─────────────────── Student-conditioned traversal (frontier) ───────────────
-
--- Ready-to-learn frontier: nodes the student has NOT yet mastered but whose
--- direct prerequisites are ALL mastered. This is the KST "fringe" — what to
--- teach next. Optionally scoped to a goal's strands.
 create or replace function public.student_ready_to_learn(
   p_student_id uuid,
   p_threshold numeric default 0.85,
@@ -71,9 +70,6 @@ language sql stable set search_path = public as $$
     )
 $$;
 
--- Catch-up path to a target competency: every unmastered transitive prerequisite
--- plus the target, ordered deepest-foundation-first (a valid topological order
--- for the DAG). This is the sequenced "layers" the learner climbs.
 create or replace function public.student_catch_up_path(
   p_student_id uuid,
   p_target_node_id uuid,

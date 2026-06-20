@@ -30,7 +30,7 @@
 
 -- CEFR rank helper: lets us range/monotonicity-check A1<A2<B1<B2<C1<C2 in SQL.
 create or replace function public.cefr_rank(level text)
-returns int language sql immutable as $$
+returns int language sql immutable set search_path = public as $$
   select case level
     when 'A1' then 1 when 'A2' then 2
     when 'B1' then 3 when 'B2' then 4
