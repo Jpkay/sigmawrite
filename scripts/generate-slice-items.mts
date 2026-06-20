@@ -16,7 +16,18 @@
  * Output: a yield report to stdout + approved/needs-review items written to
  * ./generated/past-narration-items.json for review before DB seeding.
  */
-import { mkdirSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+
+// Load .env.local (gitignored) so secrets never live in the shell history.
+function loadEnvLocal() {
+  if (!existsSync(".env.local")) return;
+  for (const line of readFileSync(".env.local", "utf8").split("\n")) {
+    const m = line.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*?)\s*$/);
+    if (m && !process.env[m[1]]) process.env[m[1]] = m[2].replace(/^["']|["']$/g, "");
+  }
+}
+loadEnvLocal();
+
 import { MISCONCEPTIONS, NODES } from "@/lib/content/slices/past-narration";
 import { getItemGenerator, getItemJudge } from "@/lib/ai/item-generation/generator";
 import {
