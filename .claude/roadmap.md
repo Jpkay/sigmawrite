@@ -45,7 +45,7 @@ The core is a **shared atomic-competency knowledge graph**. Each competency is a
 - [x] DB-APPLY: migrations 0008–0011 applied to live Supabase (reading-to-learn / tkasvcccucpsbjywgdyl); 10 tables live w/ RLS; traversal smoke-tested on real Postgres; search_path advisor resolved -- Done 2026-06-20
 
 ## Phase 8: Deterministic French linguistic engine (P0, multi-day) — IN PROGRESS
-- [ ] C1: Conjugation engine (all tenses/moods/persons) from a deterministic source (P0, L)
+- [x] C1: Conjugation engine — présent/imparfait/passé composé (auxiliary, être-agreement, COD-before, -ger/-cer euphony), wired into validator; slice-scoped, extend via Morphalou later (`src/lib/linguistic/conjugation.ts`, 17 tests) (P0, L) -- Done 2026-06-20
 - [ ] C2: Lexicon ingestion — Lexique3 frequency + Morphalou inflected forms (P0, L)
 - [-] C3: Agreement validators — broadly covered by the grammar service (QUE_AVOIR, ETRE_VPPA live-verified); deterministic in-code validators still TODO for offline/targeted checks (P0, L)
 - [x] C4: Grammar/spell validation — LanguageTool integration as grader; self-host via docker-compose; live-verified on real French (P0, M) -- Done 2026-06-20
@@ -67,10 +67,10 @@ The core is a **shared atomic-competency knowledge graph**. Each competency is a
 - [ ] E4: Frontier report — mastered / fragile / missing / ready-to-learn, with blockers (P0, M)
 - [ ] E5: Catch-up path UI — sequenced layers, today's plan (P0, M)
 
-## Phase 11: First production vertical slice — past narration & agreement (P0, multi-day)
-- [ ] F1: Author/verify ~30–40 node slice (passé composé, imparfait, PC-vs-imparfait, auxiliary avoir/être, participle formation, agreement être, agreement avoir+COD-before, COD/COI id, object pronouns, narrative writing, oral retell, listening) (P0, L)
-- [ ] F2: Human-anchor skeleton edges (~half-day expert pass) (P0, S)
-- [ ] F3: LLM-generate + machine-verify full item bank for the slice (P0, L)
+## Phase 11: First production vertical slice — past narration & agreement (P0, multi-day) — IN PROGRESS
+- [x] F1: Author/verify 31-node slice across grammaire/conjugaison/orthographe/expression + 52 edges + 6 misconceptions (`src/lib/content/slices/past-narration.ts`); Gate-1 clean DAG, fully monotone (P0, L) -- Done 2026-06-20
+- [x] F2: Human-anchored skeleton edges; seeded to live Supabase (migration 0012 + generator script); DB traversal verified to reproduce cross-strand diagnosis (P0, S) -- Done 2026-06-20
+- [ ] F3: LLM-generate + machine-verify full item bank for the slice (depends on Phase 9 + real LLM provider K5) (P0, L)
 - [ ] F4: End-to-end demo — native + FSL learner both diagnosed precisely on the same slice (P0, M)
 
 ## Phase 12: Writing-evaluation engine (P0, multi-day)
@@ -117,7 +117,8 @@ The core is a **shared atomic-competency knowledge graph**. Each competency is a
 | Phase | Status | Completed | Total | Last Updated |
 |-------|--------|-----------|-------|--------------|
 | Phase 7 | IN PROGRESS | 12 | 12 (code done; DB-apply pending) | 2026-06-20 |
-| Phase 8 | IN PROGRESS | 2 | 6 | 2026-06-20 |
+| Phase 8 | IN PROGRESS | 3 | 6 | 2026-06-20 |
+| Phase 11 | IN PROGRESS | 2 | 4 | 2026-06-20 |
 | Phase 9 | NOT STARTED | 0 | 6 | — |
 | Phase 10 | NOT STARTED | 0 | 5 | — |
 | Phase 11 | NOT STARTED | 0 | 4 | — |
