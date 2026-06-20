@@ -9,6 +9,7 @@
  */
 
 import { conjugate, type Person, type Tense } from "@/lib/linguistic/conjugation";
+import { GlmItemGenerator, GlmItemJudge } from "./glm";
 import type { GeneratedItem, ItemGenSpec } from "./schemas";
 
 export interface ItemGenerator {
@@ -89,17 +90,39 @@ export class MockItemJudge implements ItemJudge {
 }
 
 let cachedGenerator: ItemGenerator | null = null;
+let cachedJudge: ItemJudge | null = null;
 
+/**
+ * Provider resolution by AI_PROVIDER:
+ *   mock (default)        — MockItemGenerator/MockItemJudge, no key
+ *   glm | cloudflare      — GLM 5.2 via an OpenAI-compatible endpoint
+ *                           (LLM_BASE_URL, LLM_API_KEY, LLM_MODEL)
+ * The Gate-3 judge defaults to a *different* configuration than the generator
+ * (override via JUDGE_MODEL) to keep the ensemble genuinely independent.
+ */
 export function getItemGenerator(): ItemGenerator {
   if (cachedGenerator) return cachedGenerator;
-  const provider = process.env.AI_PROVIDER ?? "mock";
-  if (provider === "anthropic") {
-    if (!process.env.ANTHROPIC_API_KEY) {
-      throw new Error("AI_PROVIDER=anthropic but ANTHROPIC_API_KEY is not set");
-    }
-    // Real Claude generator wires here once the key is provided.
-    throw new Error("Anthropic item generator not yet wired; set AI_PROVIDER=mock.");
-  }
-  cachedGenerator = new MockItemGenerator();
+  cachedGenerator = buildGenerator(process.env.AI_PROVIDER ?? "mock");
   return cachedGenerator;
+}
+
+export function getItemJudge(): ItemJudge {
+  if (cachedJudge) return cachedJudge;
+  cachedJudge = buildJudge(process.env.AI_PROVIDER ?? "mock");
+  return cachedJudge;
+}
+
+function buildGenerator(provider: string): ItemGenerator {
+  if (provider === "glm" || provider === "cloudflare") return new GlmItemGenerator();
+  return new MockItemGenerator();
+}
+
+function buildJudge(provider: string): ItemJudge {
+  if (provider === "glm" || provider === "cloudflare") {
+    // A distinct model for the second opinion keeps Gate 3 a real ensemble.
+    return new GlmItemJudge(
+      process.env.JUDGE_MODEL ? { model: process.env.JUDGE_MODEL } : {}
+    );
+  }
+  return new MockItemJudge();
 }
