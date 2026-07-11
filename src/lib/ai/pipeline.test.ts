@@ -41,6 +41,8 @@ describe("text difficulty engine (PRD §G)", () => {
   it("detects connectors and counts words", () => {
     const f = extractFeatures(["Il part donc, parce que c'est mieux."]);
     expect(f.connectorCount).toBeGreaterThanOrEqual(2);
+    expect(f.constructionCount).toBeGreaterThanOrEqual(2);
+    expect(f.constructionComplexity).toBeGreaterThan(0);
     expect(f.wordCount).toBeGreaterThan(5);
   });
 });

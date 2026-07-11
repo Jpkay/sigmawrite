@@ -1,5 +1,6 @@
 import type { DifficultyBand } from "@/lib/types";
 import { gradeToBand } from "./band";
+import { analyzeConstructions } from "@/lib/linguistic/construction-features";
 
 /**
  * Deterministic text difficulty engine (PRD §G). GenAI writes; this engine
@@ -36,6 +37,9 @@ export type TextFeatures = {
   connectorCount: number;
   subordinateCount: number;
   abstractDensity: number;
+  constructionCount: number;
+  constructionVariety: number;
+  constructionComplexity: number;
 };
 
 export type TextDifficulty = {
@@ -96,6 +100,7 @@ export function extractFeatures(paragraphs: string[]): TextFeatures {
     const lw = w.toLowerCase();
     return ABSTRACT_SUFFIXES.some((suf) => lw.length > suf.length + 2 && lw.endsWith(suf));
   }).length;
+  const constructions = analyzeConstructions(body);
 
   return {
     wordCount: words.length,
@@ -108,6 +113,9 @@ export function extractFeatures(paragraphs: string[]): TextFeatures {
     connectorCount,
     subordinateCount,
     abstractDensity: Math.round((abstractCount / wordCount) * 1000) / 1000,
+    constructionCount: constructions.totalCount,
+    constructionVariety: constructions.distinctCount,
+    constructionComplexity: constructions.complexityScore,
   };
 }
 
@@ -124,7 +132,8 @@ export function scoreTextDifficulty(
   const syntax = clamp(
     (f.avgSentenceLength - 8) * 4 +
       (f.maxSentenceLength - 15) * 1.5 +
-      (f.subordinateCount / f.sentenceCount) * 40
+      (f.subordinateCount / f.sentenceCount) * 32 +
+      f.constructionComplexity * 0.3
   );
   const stamina = clamp((f.wordCount - 200) / 8);
   const knowledge = clamp(

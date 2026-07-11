@@ -1013,6 +1013,8 @@ Each goal below is intended to be self-contained enough for one focused implemen
 
 #### G10 — Author the grammar, syntax, cohesion, and discourse slice
 
+**Implementation status:** ✅ Implemented, tested, and verified on 2026-07-11. See [`construction-foundation.ts`](../src/lib/taxonomy/slices/construction-foundation.ts), deterministic detectors in [`construction-features.ts`](../src/lib/linguistic/construction-features.ts), and their annotated fixtures. Verification: 33 evidence-bearing construction nodes cover clauses, reference/cohesion, agreement, negation, discourse relations, and reported/narrative discourse; cross-slice prerequisites link rather than duplicate conjugation and reading capabilities, and construction complexity now contributes directly to deterministic text difficulty.
+
 **Outcome:** The system can identify and constrain high-value linguistic constructions beyond vocabulary and raw sentence length.
 
 **Depends on:** G05, G06, G07.
