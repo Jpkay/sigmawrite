@@ -882,6 +882,8 @@ Each goal below is intended to be self-contained enough for one focused implemen
 
 #### G05 — Define L1 and L2 progression matrices
 
+**Implementation status:** ✅ Implemented and verified on 2026-07-11. See [`french-progression-matrices-v1.md`](./french-progression-matrices-v1.md). Verification: separate native-grade and CEFR/FSL matrices cover reading, lexical demand, constructions, and the v1 tense set; twelve calibration examples exercise receptive/productive and learner-mode edge cases, while uncertain mappings remain explicitly provisional.
+
 **Outcome:** A reviewed matrix describes when major competencies, lexical demand, constructions, and verb-tense uses are expected for native-grade and CEFR progressions.
 
 **Depends on:** G01, G02, G04.
