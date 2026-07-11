@@ -798,6 +798,8 @@ Each goal below is intended to be self-contained enough for one focused implemen
 
 #### G02 — Create the source, provenance, and licensing register
 
+**Implementation status:** ✅ Implemented and verified on 2026-07-11. See [`french-source-register.md`](./french-source-register.md). Verification: every planned source class has an owner, status, allowed fields, attribution rule, import decision, derivative-data policy, and fail-closed intake process; no external lexical dataset is marked importable without recorded commercial terms.
+
 **Outcome:** Every planned curriculum, vocabulary, frequency, morphology, grammar, and assessment source has an owner, usage status, permitted fields, required attribution, and import decision.
 
 **Depends on:** G01.
