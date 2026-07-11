@@ -1493,6 +1493,8 @@ Each goal below is intended to be self-contained enough for one focused implemen
 
 #### G27 — Reconfigure human review as sparse calibration and exception handling
 
+**Implementation status:** ✅ Implemented, tested, and verified on 2026-07-11. See deterministic selection/context logic [`sparse-calibration.ts`](../src/lib/review/sparse-calibration.ts), sparse queues/campaigns/evidence/actions [`0054_sparse_human_review.sql`](../supabase/migrations/0054_sparse_human_review.sql), and escalation tests. Verification: low-risk content follows a configurable deterministic sample instead of universal assignment; high risk, empirical anomalies, QA disagreement, benchmark failures, pipeline audits, and explicit requests enter reason-specific queues; every case explains selection and exposes automated claims beside observed evidence; reviewer override/retirement actions snapshot evidence, identity, automated decision, and QA-calibration feedback and are immutable.
+
 **Outcome:** The portal supports sampling, risk escalation, anomaly investigation, pipeline-version audits, and benchmark review rather than mandatory three-reviewer approval for all content.
 
 **Depends on:** G24–G26.
