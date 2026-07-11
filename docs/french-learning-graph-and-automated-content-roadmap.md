@@ -1456,6 +1456,8 @@ Each goal below is intended to be self-contained enough for one focused implemen
 
 #### G26 — Implement empirical quality and psychometric monitoring
 
+**Implementation status:** ✅ Implemented, tested, and verified on 2026-07-11. See thresholded analytics [`psychometrics.ts`](../src/lib/monitoring/psychometrics.ts), append-only metrics/proposals/exceptions [`0053_empirical_monitoring.sql`](../supabase/migrations/0053_empirical_monitoring.sql), and planted anomaly tests. Verification: passage/question quality, diagnostic and quiz calibration, adaptive evidence, ability-conditioned distractors, bounded difficulty proposals, abandonment/latency, conjugation transfer, predicted-versus-observed 75–85% drift, direct/indirect retrieval, lesson/course retention, and edge lift are represented; metrics remain inactive below documented samples; planted bad questions/no-lift edges flag; diagnostic estimates compare to later unaided evidence; completion and later mastery remain separate; monitoring emits explainable review events and cannot directly mutate historical evidence, answer keys, or published releases.
+
 **Outcome:** Usage data detects miscalibrated passages, questions, vocabulary, conjugation targets, and graph edges after minimum evidence thresholds.
 
 **Depends on:** G25.
