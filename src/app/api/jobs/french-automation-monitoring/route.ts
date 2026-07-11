@@ -1,0 +1,2 @@
+import{authorizeJob,runFrenchAutomationMonitoring,withJobRun}from"@/lib/jobs";
+export async function GET(request:Request){if(!authorizeJob(request))return Response.json({error:"unauthorized"},{status:401});const processed=await withJobRun("french_automation_monitoring",async db=>{const count=await runFrenchAutomationMonitoring(db);return{result:count,processed:count};});return Response.json({ok:true,processed});}

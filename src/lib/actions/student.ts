@@ -24,6 +24,8 @@ import { getCatchUpPlan } from "@/lib/db/practice";
 import { evaluateWriting } from "@/lib/writing/evaluate";
 import { calculateStreak } from "@/lib/motivation";
 import { trackServer } from "@/lib/analytics-server";
+import { createHash } from "node:crypto";
+import { sanitizeStudentTopic } from "@/lib/safety/topic";
 
 const answersSchema = z.record(z.string().min(1), z.number().int().min(0).max(20));
 const uuidSchema = z.string().uuid();
@@ -64,6 +66,7 @@ const adaptiveProbeSchema = z.object({
 const practiceAttemptSchema = z.object({ nodeId: uuidSchema, itemId: uuidSchema, selectedChoiceId: uuidSchema.optional(), answerText: z.string().trim().max(2000).optional(), startedAt: dateTimeSchema }).refine((value) => value.selectedChoiceId || value.answerText, "Réponse requise");
 const writingFeedbackSchema = z.object({ textKey: z.string().min(1).max(100) });
 const writingRevisionSchema = writingFeedbackSchema.extend({ revisedText: z.string().trim().min(5).max(5000) });
+const onDemandRequestSchema = z.object({ clientRequestId: uuidSchema, topicKey: z.string().trim().min(1).max(80), topic: z.string().trim().min(1).max(160), textType: z.enum(["narrative", "explanatory", "argumentative", "source_based"]) });
 
 function checked<T>(schema: z.ZodType<T>, input: unknown): T {
   const parsed = schema.safeParse(input);
@@ -265,6 +268,17 @@ export async function loadDiagnosticRequirement(input: unknown) {
   checked(emptySchema, input);
   const { studentId } = await context();
   return diagnosticRequirement(studentId, createServiceClient());
+}
+
+export async function requestOnDemandGeneration(input: unknown) {
+  const data = checked(onDemandRequestSchema, input); const { studentId } = await context();
+  const sanitized = sanitizeStudentTopic(data.topic); if (!sanitized.allowed) throw new Error("Ce sujet ne peut pas être utilisé.");
+  const service = createServiceClient(); const { data: policy } = await service.from("generation_rollout_policies").select("id,stage,enabled,low_risk_topic_allowlist").eq("active", true).order("version", { ascending: false }).limit(1).maybeSingle();
+  if (!policy?.enabled || policy.stage === "off") throw new Error("La création à la demande n’est pas encore disponible.");
+  if (!(policy.low_risk_topic_allowlist as string[]).includes(data.topicKey)) throw new Error("Ce sujet n’est pas encore disponible pendant le déploiement progressif.");
+  const idempotencyKey = createHash("sha256").update(`${studentId}:${data.clientRequestId}`).digest("hex");
+  const { data: run, error } = await service.from("on_demand_workflow_runs").upsert({ student_id: studentId, idempotency_key: idempotencyKey, input_payload: { topicKey: data.topicKey, topic: sanitized.value, textType: data.textType, rolloutPolicyId: policy.id } }, { onConflict: "student_id,idempotency_key", ignoreDuplicates: false }).select("id,status,current_stage,created_at").single();
+  if (error || !run) throw new Error(error?.message ?? "Demande non créée."); await trackServer(studentId, "on_demand_generation_requested", { workflow_run_id: run.id, topic_key: data.topicKey }); return run;
 }
 
 export async function loadStudentCatchUpPlan(input: unknown) {
