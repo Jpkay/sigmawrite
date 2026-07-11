@@ -1556,6 +1556,8 @@ Each goal below is intended to be self-contained enough for one focused implemen
 
 #### G29 — Roll out on-demand generation in measured stages
 
+**Implementation status:** ✅ Implemented, tested, and verified on 2026-07-11. See access/evidence/rollback logic [`measured.ts`](../src/lib/rollout/measured.ts), staged policy/dashboard/decision/audit migration [`0056_measured_generation_rollout.sql`](../supabase/migrations/0056_measured_generation_rollout.sql), and rollback/metric-separation tests. Verification: off/internal/staff/pilot/broader stages are independently controllable; first exposure is restricted to a low-risk allowlist and deterministic cohort; expansion requires minimum sessions plus benchmark, QA, safety, anomaly, escalation, latency, cost, and 75–85% zone evidence rather than elapsed time; safety/anomaly/benchmark breaches roll back; dashboards report generation, reuse, QA yield, escalation, anomaly, cost per completed session, normal-zone share, retrieval completion/retention, and lesson/module/course completion without conflating semantics; immutable weekly audits and launch records retain evidence.
+
 **Outcome:** On-demand content moves from internal tests to a limited student cohort and then broader availability only when quality targets are met.
 
 **Depends on:** G25–G28.
