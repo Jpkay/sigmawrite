@@ -2,7 +2,7 @@
 begin;
 
 insert into competency_nodes
-  (key, strand, label_fr, description_fr, atomicity_level,
+  (key, strand, label_fr, description_fr, "atomicity_level",
    native_grade_min, native_grade_max, cefr_min, cefr_max,
    requires_reading, requires_writing, requires_listening, requires_speaking,
    generation_type, review_status)
@@ -40,7 +40,7 @@ values
   ('ecoute_recit_passe', 'comprehension_orale', 'Écouter un récit au passé', 'Comprendre un court récit oral au passé.', 4, 7, 9, 'A2', 'B1', false, false, true, false, 'human', 'human_approved')
 on conflict (key) do update set
   strand = excluded.strand, label_fr = excluded.label_fr,
-  description_fr = excluded.description_fr, atomicity_level = excluded.atomicity_level,
+  description_fr = excluded.description_fr, "atomicity_level" = excluded."atomicity_level",
   native_grade_min = excluded.native_grade_min, native_grade_max = excluded.native_grade_max,
   cefr_min = excluded.cefr_min, cefr_max = excluded.cefr_max,
   requires_reading = excluded.requires_reading, requires_writing = excluded.requires_writing,

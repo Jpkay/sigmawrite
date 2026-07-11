@@ -10,6 +10,7 @@ import {
   bandTargetOverall,
   isSensitive,
   runGenerationPipeline,
+  hasUncataloguedNumericClaim,
 } from "./pipeline";
 import { SEED_TEXT_BY_ID } from "@/lib/content/texts";
 import type { GenerateTextInput } from "./schemas";
@@ -107,6 +108,14 @@ describe("difficulty / sensitivity helpers", () => {
       tone: "neutral_academic",
     };
     expect(isSensitive(base)).toBe(true);
+  });
+  it("forces review when a number is absent from factual claims", () => {
+    expect(hasUncataloguedNumericClaim("Le projet a réuni 42 élèves en 2025.", [
+      { claim: "Le projet a réuni 42 élèves.", confidence: "high", needsHumanReview: false },
+    ])).toBe(true);
+    expect(hasUncataloguedNumericClaim("Le projet a réuni 42 élèves.", [
+      { claim: "Le projet a réuni 42 élèves.", confidence: "high", needsHumanReview: false },
+    ])).toBe(false);
   });
 });
 

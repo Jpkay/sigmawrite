@@ -21,7 +21,7 @@ export const ROLE_HOME: Record<Role, string> = {
   teacher: "/teacher",
   school_admin: "/admin",
   platform_admin: "/admin",
-  content_reviewer: "/admin",
+  content_reviewer: "/review",
 };
 
 export type Confidence = "low" | "medium" | "high";

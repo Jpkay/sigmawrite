@@ -9,6 +9,8 @@ import { scoreTextDifficulty, type TextDifficulty } from "@/lib/scoring/text-dif
 import { scoreQuestionDifficulty } from "@/lib/scoring/question";
 import type { ReviewStatus, DifficultyBand } from "@/lib/types";
 import { DIFFICULTY_BANDS } from "@/lib/types";
+import type { AIProvider } from "./provider";
+import { paragraphsFromText } from "@/lib/content/text-format";
 
 /**
  * AI content generation pipeline (PRD §H). Orchestrates the constrained
@@ -28,6 +30,7 @@ export type ReviewFlags = {
   factualNeedsReview: boolean;
   sensitive: boolean;
   difficultyMismatch: boolean;
+  nearDuplicate?: boolean;
 };
 
 export type ContentCandidate = {
@@ -59,13 +62,25 @@ export function isSensitive(input: GenerateTextInput): boolean {
   return SENSITIVE.some((s) => hay.includes(s));
 }
 
+/** Numeric claims must be explicitly catalogued so a reviewer can verify them. */
+export function hasUncataloguedNumericClaim(
+  body: string,
+  claims: GeneratedTextCandidate["factualClaims"]
+): boolean {
+  const numbers = body.match(/\b\d+(?:[.,]\d+)?(?:\s?%|\s?000)?\b/g) ?? [];
+  if (numbers.length === 0) return false;
+  const catalog = claims.map((item) => item.claim.replace(/\s+/g, " ")).join(" ");
+  return numbers.some((number) => !catalog.includes(number.replace(/\s+/g, " ")));
+}
+
 /** Pure review-status decision (PRD §H step 13). Easy to unit-test. */
 export function decideReviewStatus(flags: ReviewFlags): ReviewStatus {
   if (
     !flags.moderationPassed ||
     flags.factualNeedsReview ||
     flags.sensitive ||
-    flags.difficultyMismatch
+    flags.difficultyMismatch ||
+    flags.nearDuplicate
   ) {
     return "needs_human_review";
   }
@@ -73,16 +88,17 @@ export function decideReviewStatus(flags: ReviewFlags): ReviewStatus {
 }
 
 export async function runGenerationPipeline(
-  input: GenerateTextInput
+  input: GenerateTextInput,
+  options: { provider?: AIProvider; systemPrompt?: string } = {}
 ): Promise<ContentCandidate> {
-  const provider = getAIProvider();
+  const provider = options.provider ?? getAIProvider();
 
   // 1) generate → 2) validate against the contract (PRD §H steps 5–6).
   const generated = generatedTextCandidateSchema.parse(
-    await provider.generateText(input)
+    await provider.generateText(input, { systemPrompt: options.systemPrompt })
   );
 
-  const paragraphs = generated.body.split(/\n\n+/).filter(Boolean);
+  const paragraphs = paragraphsFromText(generated.body);
 
   // 3) deterministic difficulty scoring (PRD §H step 7).
   const difficulty = scoreTextDifficulty(paragraphs, {
@@ -106,12 +122,15 @@ export async function runGenerationPipeline(
 
   const flags: ReviewFlags = {
     moderationPassed: moderation.passed,
-    factualNeedsReview: generated.factualClaims.some((c) => c.needsHumanReview),
+    factualNeedsReview:
+      generated.factualClaims.some((c) => c.needsHumanReview || c.confidence === "low") ||
+      hasUncataloguedNumericClaim(generated.body, generated.factualClaims),
     sensitive: isSensitive(input),
     difficultyMismatch: isDifficultyMismatch(
       input.targetReadingBand,
       difficulty.overall
     ),
+    nearDuplicate: false,
   };
 
   return {

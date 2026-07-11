@@ -7,7 +7,9 @@ import { PageHeader } from "@/components/page";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { INTERESTS } from "@/lib/content/interests";
-import { saveOnboarding } from "@/lib/student-store";
+import { hasStudentBackend, replaceStudentState, saveOnboarding } from "@/lib/student-store";
+import { selectInterests } from "@/lib/actions/student";
+import { track } from "@/lib/analytics";
 
 const BACKGROUNDS: { key: string; label: string }[] = [
   { key: "native", label: "Français langue maternelle / de scolarisation" },
@@ -23,7 +25,13 @@ export default function OnboardingPage() {
   const [step, setStep] = useState(0);
   const [grade, setGrade] = useState(7);
   const [background, setBackground] = useState("native");
+  const [studentType, setStudentType] = useState("french_first_language");
+  const [homeLanguage, setHomeLanguage] = useState("français");
+  const [exposure, setExposure] = useState("home");
+  const [goalType, setGoalType] = useState("catch_up");
   const [interests, setInterests] = useState<string[]>([]);
+  const [pending, setPending] = useState(false);
+  const [error, setError] = useState("");
 
   function toggleInterest(key: string) {
     setInterests((prev) =>
@@ -31,9 +39,21 @@ export default function OnboardingPage() {
     );
   }
 
-  function finish() {
+  async function finish() {
+    setPending(true);
+    setError("");
     saveOnboarding({ grade, frenchBackground: background, interests });
-    router.push("/student/diagnostic");
+    try {
+      if (hasStudentBackend) {
+        const state = await selectInterests({ grade, frenchBackground: background, interests, studentType, homeLanguage, exposure, goalType, targetLevel: String(grade) });
+        replaceStudentState(state);
+      }
+      track("onboarding_completed", { student_type: studentType, goal_type: goalType });
+      router.push("/student/diagnostic");
+    } catch {
+      setError("Ton profil n'a pas pu être enregistré. Réessaie.");
+      setPending(false);
+    }
   }
 
   return (
@@ -62,6 +82,17 @@ export default function OnboardingPage() {
             </select>
           </div>
 
+          <div className="grid gap-4 sm:grid-cols-2">
+            <label className="block text-sm font-medium">Ton parcours en français
+              <select value={studentType} onChange={(e) => setStudentType(e.target.value)} className="mt-1 h-10 w-full appearance-none rounded-md border border-input bg-background px-3 pr-10 text-sm">
+                <option className="bg-zinc-950" value="french_first_language">Français langue première</option><option className="bg-zinc-950" value="heritage">Français familial / héritage</option><option className="bg-zinc-950" value="immersion">Immersion</option><option className="bg-zinc-950" value="allophone">Une autre langue à la maison</option><option className="bg-zinc-950" value="french_second_language">Français langue seconde</option><option className="bg-zinc-950" value="bilingual">Bilingue</option>
+              </select>
+            </label>
+            <label className="block text-sm font-medium">Langue parlée à la maison<input value={homeLanguage} onChange={(e) => setHomeLanguage(e.target.value)} className="mt-1 h-10 w-full rounded-md border border-input bg-background px-3 text-sm" /></label>
+            <label className="block text-sm font-medium">Exposition au français<select value={exposure} onChange={(e) => setExposure(e.target.value)} className="mt-1 h-10 w-full appearance-none rounded-md border border-input bg-background px-3 pr-10 text-sm"><option className="bg-zinc-950" value="home">À la maison</option><option className="bg-zinc-950" value="school">À l’école</option><option className="bg-zinc-950" value="class_only">Seulement en cours</option><option className="bg-zinc-950" value="immersion">En immersion</option><option className="bg-zinc-950" value="self_study">En autonomie</option></select></label>
+            <label className="block text-sm font-medium">Ton objectif<select value={goalType} onChange={(e) => setGoalType(e.target.value)} className="mt-1 h-10 w-full appearance-none rounded-md border border-input bg-background px-3 pr-10 text-sm"><option className="bg-zinc-950" value="catch_up">Être à niveau dans ma classe</option><option className="bg-zinc-950" value="improve_writing">Mieux écrire</option><option className="bg-zinc-950" value="grammar_spelling">Renforcer grammaire et orthographe</option><option className="bg-zinc-950" value="improve_speaking">Mieux parler</option><option className="bg-zinc-950" value="prepare_delf">Préparer le DELF</option><option className="bg-zinc-950" value="literature_class">Réussir en littérature</option></select></label>
+          </div>
+
           <div>
             <label className="mb-2 block text-sm font-medium">
               Ton rapport au français
@@ -85,7 +116,7 @@ export default function OnboardingPage() {
             </div>
           </div>
 
-          <Button onClick={() => setStep(1)}>
+          <Button onClick={() => { track("onboarding_step_completed", { step: "profile" }); setStep(1); }}>
             Continuer <ArrowRight />
           </Button>
         </div>
@@ -128,7 +159,7 @@ export default function OnboardingPage() {
             <Button variant="outline" onClick={() => setStep(0)}>
               Retour
             </Button>
-            <Button onClick={finish} disabled={interests.length < 3}>
+            <Button onClick={finish} disabled={interests.length < 3 || pending}>
               Commencer le diagnostic <ArrowRight />
             </Button>
             {interests.length < 3 && (
@@ -136,6 +167,7 @@ export default function OnboardingPage() {
                 Encore {3 - interests.length} sujet(s).
               </span>
             )}
+            {error && <span className="text-sm text-destructive">{error}</span>}
           </div>
         </div>
       )}

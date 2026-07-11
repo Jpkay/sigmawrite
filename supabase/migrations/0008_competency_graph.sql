@@ -51,7 +51,7 @@ create table competency_nodes (
   label_fr text not null,
   description_fr text,
   -- Granularity 1 = broad/composite, 5 = atomic single-rule competency.
-  atomicity_level int not null default 3 check (atomicity_level between 1 and 5),
+  "atomicity_level" int not null default 3 check ("atomicity_level" between 1 and 5),
   -- Primary overlays (hot path for goal-conditioned scoping). Extended framework
   -- mappings (ACTFL/AP/DELF/exam) live in framework_mappings to avoid column sprawl.
   native_grade_min numeric,                 -- e.g. 6 = 6e / grade 6

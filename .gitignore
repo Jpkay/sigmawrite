@@ -33,6 +33,7 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 !.env.example
+!.env.staging.example
 
 # vercel
 .vercel
@@ -41,5 +42,11 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Generated content artifacts
-generated/
+# Keep approved item banks reproducible; ignore transient generation reports.
+generated/*
+!generated/past-narration-items.json
+!generated/present-agreement-items.json
+
+# Supabase CLI local state
+/supabase/.branches/
+/supabase/.temp/

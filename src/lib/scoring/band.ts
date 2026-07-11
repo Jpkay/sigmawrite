@@ -16,3 +16,13 @@ export function gradeToBand(grade: number): DifficultyBand {
   if (whole === 10) return half === "A" ? "Secondary 10A" : "Secondary 10B";
   return "Advanced 11-12";
 }
+
+/** Human-facing label; the stored band remains stable for scoring and filters. */
+export function difficultyBandLabel(band: string | null | undefined): string {
+  if (!band) return "Niveau de lecture non défini";
+  if (band === "Advanced 11-12") return "Lecture : 11e–12e année · avancé";
+  const match = /^(?:Foundation|Secondary) (\d+)([AB])$/.exec(band);
+  if (!match) return `Niveau de lecture : ${band}`;
+  const [, grade, step] = match;
+  return `Lecture : ${grade}e année · palier ${step === "A" ? "1" : "2"}`;
+}

@@ -54,6 +54,19 @@ export function bktUpdate(
   return clamp01(posterior + (1 - posterior) * pTransit);
 }
 
+/** Down-weight noisier evidence (for example free writing) without changing BKT's full update. */
+export function bktUpdateWeighted(
+  pKnown: number,
+  correct: boolean,
+  weight: number,
+  params: Partial<BktParams> = {},
+  guessOverride?: number
+): number {
+  const full = bktUpdate(pKnown, correct, params, guessOverride);
+  const boundedWeight = Math.max(0, Math.min(1, weight));
+  return clamp01(pKnown + (full - pKnown) * boundedWeight);
+}
+
 /**
  * Uncertainty proxy in [0,1]: high when little evidence or p(known) is mid-range
  * (least decisive). Used to decide when the adaptive diagnostic can stop probing.

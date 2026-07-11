@@ -48,7 +48,7 @@ describe("adaptive diagnostic on the real past-narration slice", () => {
     ]);
     const known = new Set(NODES.map((n) => n.key).filter((k) => !codGap.has(k)));
 
-    const { state, order, probes } = runDiagnostic(known);
+    const { state, probes } = runDiagnostic(known);
 
     // Terminated by resolution, not by exhausting the budget.
     expect(probes).toBeLessThan(80);

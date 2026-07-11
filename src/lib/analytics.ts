@@ -1,41 +1,8 @@
-/**
- * Product analytics (PRD §18). A dependency-free PostHog capture scaffold:
- * no-op until NEXT_PUBLIC_POSTHOG_KEY is set, at which point events POST to the
- * capture API. Swap in posthog-js later for autocapture/flags/replay. Learning
- * *evidence* lives in Postgres (reading_sessions, etc.), not here.
- */
-const ANON_KEY = "rtl.anon_id";
+"use client";
+import posthog from "posthog-js";
 
-function distinctId(): string {
-  try {
-    let id = window.localStorage.getItem(ANON_KEY);
-    if (!id) {
-      id = crypto.randomUUID();
-      window.localStorage.setItem(ANON_KEY, id);
-    }
-    return id;
-  } catch {
-    return "anonymous";
-  }
-}
-
-export function track(event: string, properties: Record<string, unknown> = {}) {
-  const key = process.env.NEXT_PUBLIC_POSTHOG_KEY;
-  if (!key || typeof window === "undefined") return; // no-op without a key
-  const host = process.env.NEXT_PUBLIC_POSTHOG_HOST ?? "https://eu.i.posthog.com";
-  try {
-    void fetch(`${host}/capture/`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      keepalive: true,
-      body: JSON.stringify({
-        api_key: key,
-        event,
-        distinct_id: distinctId(),
-        properties,
-      }),
-    });
-  } catch {
-    /* analytics must never break the app */
-  }
-}
+let initialized=false;
+function client(){const key=process.env.NEXT_PUBLIC_POSTHOG_KEY;if(!key||typeof window==="undefined")return null;if(!initialized){posthog.init(key,{api_host:process.env.NEXT_PUBLIC_POSTHOG_HOST??"https://eu.i.posthog.com",person_profiles:"identified_only",capture_pageview:true,capture_pageleave:true});initialized=true;}return posthog;}
+export function identifyAnalytics(id:string,role:string){client()?.identify(id,{role});}
+export function track(event:string,properties:Record<string,unknown>={}){client()?.capture(event,properties);}
+export function isFeatureEnabled(flag:string,fallback=true){const instance=client();return instance?instance.isFeatureEnabled(flag)??fallback:fallback;}

@@ -19,10 +19,10 @@ import type {
  * sole source of level decisions, final difficulty, or placement.
  */
 export interface AIProvider {
-  generateText(input: GenerateTextInput): Promise<GeneratedTextCandidate>;
-  generateQuestions(input: GenerateQuestionInput): Promise<GeneratedQuestion[]>;
-  scoreSummary(input: ScoreSummaryInput): Promise<SummaryScore>;
-  tagText(input: TagTextInput): Promise<TextTagResult>;
+  generateText(input: GenerateTextInput, context?: { systemPrompt?: string }): Promise<GeneratedTextCandidate>;
+  generateQuestions(input: GenerateQuestionInput, context?: { systemPrompt?: string }): Promise<GeneratedQuestion[]>;
+  scoreSummary(input: ScoreSummaryInput, context?: { systemPrompt?: string }): Promise<SummaryScore>;
+  tagText(input: TagTextInput, context?: { systemPrompt?: string }): Promise<TextTagResult>;
   moderate(input: ModerationInput): Promise<ModerationResult>;
   embed(input: EmbeddingInput): Promise<number[]>;
 }

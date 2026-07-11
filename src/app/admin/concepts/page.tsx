@@ -1,10 +1,2 @@
-import { PageHeader, ComingSoon } from "@/components/page";
-
-export default function Page() {
-  return (
-    <>
-      <PageHeader title="Concepts" description="Graphe de connaissances : domaines et concepts." />
-      <ComingSoon phase="Phase 2" note="La gestion des concepts arrive en Phase 2." />
-    </>
-  );
-}
+import { PageHeader } from "@/components/page"; import { requireRole } from "@/lib/auth"; import { createClient } from "@/lib/supabase/server"; import { GraphStudio } from "../catalog-clients";
+export default async function ConceptsPage(){await requireRole(["platform_admin","content_reviewer"]);const db=await createClient();const [{data:nodes,error},{data:edges},{data:misconceptions}]=await Promise.all([db.from("competency_nodes").select("id,key,label_fr,description_fr,review_status").order("strand").order("label_fr"),db.from("competency_edges").select("id,source_node_id,target_node_id,edge_type"),db.from("misconceptions").select("id,label_fr,description_fr,primary_node_id,active").order("label_fr")]);if(error)throw new Error(error.message);return <><PageHeader title="Studio du graphe" description="Nœuds, prérequis et erreurs-types. Chaque nouveau lien passe Gate 1."/><GraphStudio nodes={nodes??[]} edges={edges??[]} misconceptions={misconceptions??[]}/></>}

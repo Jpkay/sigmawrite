@@ -5,6 +5,7 @@ import { Download, ShieldCheck, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   giveConsent,
+  revokeConsent,
   requestDataExport,
   requestDataDeletion,
 } from "@/lib/actions/parent";
@@ -35,12 +36,24 @@ export function PrivacyActions({ studentId, name }: { studentId: string; name: s
           disabled={busy}
           onClick={() =>
             run(async () => {
-              await giveConsent(studentId);
+              await giveConsent({ studentId });
               setMsg("Consentement enregistré.");
             })
           }
         >
           <ShieldCheck /> Donner le consentement
+        </Button>
+
+        <Button
+          variant="outline"
+          size="sm"
+          disabled={busy}
+          onClick={() => run(async () => {
+            await revokeConsent({ studentId });
+            setMsg("Consentement révoqué. L'accès aux activités est suspendu.");
+          })}
+        >
+          Révoquer le consentement
         </Button>
 
         <Button

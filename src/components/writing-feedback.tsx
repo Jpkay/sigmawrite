@@ -1,0 +1,27 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { loadWritingFeedback, reviseSummary } from "@/lib/actions/student";
+import { AccentTextarea } from "@/components/accent-textarea";
+
+type Annotation = { offset: number; length: number; explanationFr: string; replacements?: string[]; nodeId?: string | null };
+type Plan = { nodeId: string; nodeLabel: string; explanationFr: string; errorCount: number };
+type Evaluation = { revision_number: number; submitted_text: string; rubric: { score?: number; contentScore?: number; structureScore?: number; languageScore?: number; feedbackFr?: string }; annotations: Annotation[]; revision_plan: Plan[]; degraded: boolean };
+type Feedback = { originalText: string; evaluations: Evaluation[] };
+
+function AnnotatedText({ text, annotations }: { text: string; annotations: Annotation[] }) {
+  const sorted = [...annotations].sort((a,b) => a.offset-b.offset); const parts: React.ReactNode[] = []; let cursor = 0;
+  for (const [index, annotation] of sorted.entries()) { if (annotation.offset < cursor) continue; parts.push(text.slice(cursor, annotation.offset)); parts.push(<span key={index} title={`${annotation.explanationFr}${annotation.replacements?.length ? ` Suggestions : ${annotation.replacements.join(", ")}` : ""}`} className="decoration-wavy underline decoration-amber-500 decoration-2 underline-offset-4">{text.slice(annotation.offset, annotation.offset + annotation.length)}</span>); cursor = annotation.offset + annotation.length; }
+  parts.push(text.slice(cursor)); return <p className="whitespace-pre-wrap text-sm leading-7">{parts}</p>;
+}
+
+export function WritingFeedback({ textKey }: { textKey: string }) {
+  const [data, setData] = useState<Feedback | null>(null); const [revision, setRevision] = useState(""); const [busy, setBusy] = useState(false); const [error, setError] = useState("");
+  useEffect(() => { loadWritingFeedback({ textKey }).then((value) => { setData(value as Feedback | null); if (value) setRevision(value.originalText); }).catch(() => undefined); }, [textKey]);
+  if (!data?.evaluations.length) return null; const evaluation = data.evaluations.at(-1)!; const revised = data.evaluations.some((item) => item.revision_number === 1);
+  async function submitRevision() { setBusy(true); setError(""); try { const value = await reviseSummary({ textKey, revisedText: revision }); setData((current) => current ? { ...current, evaluations: [...current.evaluations, { revision_number: 1, submitted_text: revision, rubric: value.rubric, annotations: value.annotations, revision_plan: value.revisionPlan, degraded: value.degraded }] } : current); } catch { setError("La révision n’a pas pu être enregistrée."); } finally { setBusy(false); } }
+  return <Card className="mb-6"><CardContent className="space-y-5 pt-6"><div><h2 className="font-semibold">Ton résumé annoté</h2><p className="text-xs text-muted-foreground">Score de rubrique : {evaluation.rubric.score ?? "—"}/100{evaluation.degraded ? " · contrôle grammatical indisponible, rubrique conservée" : ""}</p></div><AnnotatedText text={evaluation.submitted_text} annotations={evaluation.annotations} /><div className="grid gap-3 sm:grid-cols-3">{[["Contenu",evaluation.rubric.contentScore],["Structure",evaluation.rubric.structureScore],["Langue",evaluation.rubric.languageScore]].map(([label,value]) => <div key={String(label)} className="rounded-md border border-border p-3 text-sm"><p className="text-muted-foreground">{label}</p><p className="text-lg font-semibold">{value == null ? "—" : `${value}/100`}</p></div>)}</div>{evaluation.rubric.feedbackFr && <p className="text-sm text-muted-foreground">{evaluation.rubric.feedbackFr}</p>}{evaluation.revision_plan.length > 0 && <div><h3 className="mb-2 font-medium">Plan de révision</h3><div className="space-y-2">{evaluation.revision_plan.map((plan) => <div key={plan.nodeId} className="flex flex-wrap items-center justify-between gap-2 rounded-md border border-border p-3 text-sm"><span>{plan.nodeLabel} · {plan.errorCount} point(s)</span><Link className={buttonVariants({ variant: "outline", size: "sm" })} href={`/student/practice/${plan.nodeId}`}>S’entraîner</Link></div>)}</div></div>}{!revised && <div className="space-y-2 border-t border-border pt-4"><h3 className="font-medium">Corrige et renvoie une fois</h3><AccentTextarea value={revision} onChange={setRevision} rows={5} className="w-full rounded-md border border-input bg-background p-3 text-sm" /><Button onClick={submitRevision} disabled={busy || revision.trim() === data.originalText.trim()}>{busy ? "Analyse…" : "Envoyer ma révision"}</Button>{error && <p className="text-sm text-destructive">{error}</p>}</div>}</CardContent></Card>;
+}

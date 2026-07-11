@@ -13,13 +13,17 @@ const inputCls =
 export function AssignmentForm({
   classes,
   texts,
+  nodes,
 }: {
   classes: { id: string; name: string }[];
   texts: { slug: string; title: string }[];
+  nodes: { id: string; label: string }[];
 }) {
   const router = useRouter();
   const [classId, setClassId] = useState(classes[0]?.id ?? "");
   const [textSlug, setTextSlug] = useState(texts[0]?.slug ?? "");
+  const [targetType, setTargetType] = useState<"text" | "competency_node">("text");
+  const [nodeId, setNodeId] = useState(nodes[0]?.id ?? "");
   const [title, setTitle] = useState("");
   const [instructions, setInstructions] = useState("");
   const [dueAt, setDueAt] = useState("");
@@ -43,8 +47,8 @@ export function AssignmentForm({
     try {
       await createAssignment({
         classId,
-        textSlug,
-        title: title || texts.find((t) => t.slug === textSlug)?.title || "Lecture",
+        targetType, textSlug: targetType === "text" ? textSlug : undefined, targetNodeId: targetType === "competency_node" ? nodeId : undefined,
+        title: title || (targetType === "text" ? texts.find((t) => t.slug === textSlug)?.title : nodes.find((node) => node.id === nodeId)?.label) || "Activité",
         instructions,
         dueAt,
       });
@@ -72,12 +76,16 @@ export function AssignmentForm({
             </select>
           </label>
           <label className="block">
+            <span className="mb-1 block text-sm font-medium">Type</span>
+            <select value={targetType} onChange={(e) => setTargetType(e.target.value as "text" | "competency_node")} className={`${inputCls} appearance-none pr-10`}><option className="bg-zinc-950" value="text">Lecture</option><option className="bg-zinc-950" value="competency_node">Micro-session de compétence</option></select>
+          </label>
+          <label className="block">
             <span className="mb-1 block text-sm font-medium">Texte</span>
-            <select value={textSlug} onChange={(e) => setTextSlug(e.target.value)} className={inputCls}>
+            {targetType === "text" ? <select value={textSlug} onChange={(e) => setTextSlug(e.target.value)} className={`${inputCls} appearance-none pr-10`}>
               {texts.map((t) => (
-                <option key={t.slug} value={t.slug}>{t.title}</option>
+                <option className="bg-zinc-950" key={t.slug} value={t.slug}>{t.title}</option>
               ))}
-            </select>
+            </select> : <select value={nodeId} onChange={(e) => setNodeId(e.target.value)} className={`${inputCls} appearance-none pr-10`}>{nodes.map((node) => <option className="bg-zinc-950" key={node.id} value={node.id}>{node.label}</option>)}</select>}
           </label>
           <label className="block">
             <span className="mb-1 block text-sm font-medium">Titre (optionnel)</span>
@@ -93,7 +101,7 @@ export function AssignmentForm({
           </label>
           <div className="sm:col-span-2">
             <Button type="submit" disabled={busy}>
-              <Plus /> {busy ? "Création…" : "Assigner la lecture"}
+              <Plus /> {busy ? "Création…" : "Assigner l’activité"}
             </Button>
             {err && <span className="ml-3 text-sm text-destructive">{err}</span>}
           </div>

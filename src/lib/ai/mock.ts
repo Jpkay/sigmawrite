@@ -66,6 +66,9 @@ export class MockAIProvider implements AIProvider {
     const ok = input.studentSummary.trim().length > 20;
     return {
       score: ok ? 80 : 40,
+      contentScore: ok ? 80 : 40,
+      structureScore: ok ? 80 : 40,
+      languageScore: ok ? 80 : 40,
       capturedMainIdea: ok,
       keptCauseEffect: ok,
       omittedDetails: ok,

@@ -1,5 +1,7 @@
 import type { AIProvider } from "./provider";
 import { MockAIProvider } from "./mock";
+import { OpenAICompatibleAIProvider } from "./openai-compatible-provider";
+import { resolveAIRuntimeConfig } from "./runtime-config";
 
 let cached: AIProvider | null = null;
 
@@ -12,18 +14,19 @@ let cached: AIProvider | null = null;
 export function getAIProvider(): AIProvider {
   if (cached) return cached;
 
-  const provider = process.env.AI_PROVIDER ?? "mock";
-  if (provider === "openai") {
-    if (!process.env.OPENAI_API_KEY) {
-      throw new Error("AI_PROVIDER=openai but OPENAI_API_KEY is not set");
-    }
-    throw new Error(
-      "OpenAI provider not implemented yet (Phase 2). Set AI_PROVIDER=mock for now."
-    );
-  }
-
-  cached = new MockAIProvider();
+  const config = resolveAIRuntimeConfig();
+  cached = config.kind === "mock" ? new MockAIProvider() : new OpenAICompatibleAIProvider(config);
   return cached;
+}
+
+export function getAIProviderInfo() {
+  const config = resolveAIRuntimeConfig();
+  return { provider: config.kind, model: config.model };
+}
+
+export function getAIEmbeddingInfo() {
+  const config = resolveAIRuntimeConfig();
+  return { provider: config.kind, model: config.embeddingModel };
 }
 
 export type { AIProvider } from "./provider";

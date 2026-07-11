@@ -21,6 +21,8 @@ export type ChatConfig = {
   timeoutMs?: number;
   /** Request a JSON object response when the endpoint supports it. */
   jsonMode?: boolean;
+  /** Override the OpenAI-compatible response_format payload. */
+  responseFormat?: unknown;
   /** Retries on 429 / 5xx with exponential backoff (default 5). */
   maxRetries?: number;
   /** Minimum ms between any two calls (proactive rate limiting). Env: LLM_MIN_INTERVAL_MS. */
@@ -43,7 +45,7 @@ async function spaceCalls(minMs: number) {
 
 export const DEFAULT_MODEL = "@cf/zai-org/glm-5.2";
 
-export function resolveConfig(cfg: ChatConfig = {}): Required<Omit<ChatConfig, "temperature" | "jsonMode" | "maxRetries" | "minIntervalMs">> & Pick<ChatConfig, "temperature" | "jsonMode"> {
+export function resolveConfig(cfg: ChatConfig = {}): Required<Omit<ChatConfig, "temperature" | "jsonMode" | "responseFormat" | "maxRetries" | "minIntervalMs">> & Pick<ChatConfig, "temperature" | "jsonMode" | "responseFormat"> {
   const baseUrl = (cfg.baseUrl ?? process.env.LLM_BASE_URL ?? "").replace(/\/$/, "");
   const apiKey = cfg.apiKey ?? process.env.LLM_API_KEY ?? "";
   const model = cfg.model ?? process.env.LLM_MODEL ?? DEFAULT_MODEL;
@@ -57,6 +59,7 @@ export function resolveConfig(cfg: ChatConfig = {}): Required<Omit<ChatConfig, "
     timeoutMs: cfg.timeoutMs ?? 60_000,
     temperature: cfg.temperature,
     jsonMode: cfg.jsonMode,
+    responseFormat: cfg.responseFormat,
   };
 }
 
@@ -75,7 +78,9 @@ export async function chatComplete(
     model: c.model,
     messages,
     ...(c.temperature != null ? { temperature: c.temperature } : {}),
-    ...(c.jsonMode ? { response_format: { type: "json_object" } } : {}),
+    ...(c.responseFormat
+      ? { response_format: c.responseFormat }
+      : c.jsonMode ? { response_format: { type: "json_object" } } : {}),
   });
 
   for (let attempt = 0; ; attempt++) {

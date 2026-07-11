@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { ArrowRight, Target } from "lucide-react";
@@ -9,11 +10,14 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ChoiceList } from "@/components/choice-list";
 import { SEED_TEXT_BY_ID } from "@/lib/content/texts";
+import type { SeedText } from "@/lib/content/types";
 import { MICRO_LESSONS } from "@/lib/content/micro-lessons";
 import { NEXT_ACTION_LABEL } from "@/lib/scoring/session";
 import { selectNextStep } from "@/lib/scoring/adaptive";
-import { useStudentState } from "@/lib/student-store";
+import { hasStudentBackend, useStudentState } from "@/lib/student-store";
+import { loadReadingText } from "@/lib/actions/student";
 import { SUCCESS_ZONE, type ReadingSessionResult } from "@/lib/types";
+import { WritingFeedback } from "@/components/writing-feedback";
 
 function findSession(
   sessions: ReadingSessionResult[],
@@ -36,12 +40,25 @@ const CATEGORIES: { key: keyof ReadingSessionResult; label: string }[] = [
 
 export default function ResultsPage() {
   const params = useParams<{ sessionId: string }>();
-  const text = SEED_TEXT_BY_ID[params.sessionId];
+  const [text, setText] = useState<SeedText | null>(SEED_TEXT_BY_ID[params.sessionId] ?? null);
+  const [textLoaded, setTextLoaded] = useState<boolean>(!hasStudentBackend || !!SEED_TEXT_BY_ID[params.sessionId]);
   const state = useStudentState();
   const result = findSession(state.sessions, params.sessionId);
   const answers = state.answersByText[params.sessionId] ?? {};
   const interests = state.interests;
 
+  useEffect(() => {
+    const fallback = SEED_TEXT_BY_ID[params.sessionId] ?? null;
+    if (!hasStudentBackend) return;
+    let active = true;
+    loadReadingText({ textKey: params.sessionId })
+      .then((loaded) => { if (active) setText(loaded); })
+      .catch(() => { if (active) setText(fallback); })
+      .finally(() => { if (active) setTextLoaded(true); });
+    return () => { active = false; };
+  }, [params.sessionId]);
+
+  if (!textLoaded) return <PageHeader title="Résultats" description="Chargement…" />;
   if (!text) return <PageHeader title="Résultats introuvables" />;
   if (!state.hydrated) return <PageHeader title="Résultats" description="Chargement…" />;
   if (!result)
@@ -119,6 +136,8 @@ export default function ResultsPage() {
           );
         })}
       </div>
+
+      <WritingFeedback textKey={text.id} />
 
       <Card className="mb-6 border-primary/40 bg-accent/40">
         <CardContent className="flex flex-wrap items-center justify-between gap-4 pt-6">

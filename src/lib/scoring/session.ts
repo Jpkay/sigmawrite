@@ -16,6 +16,8 @@ export type SessionInput = {
   abandoned?: boolean;
   /** prior recent success rate, used by the adaptive streak rule (PRD §J) */
   previousSuccessRate?: number;
+  /** Pre-moderated, blended summary result supplied by the server action. */
+  summaryScoreOverride?: number;
 };
 
 const pct = (correct: number, total: number) =>
@@ -60,7 +62,7 @@ export function scoreSession(input: SessionInput): ReadingSessionResult {
     keywords: text.concepts,
     minWords: 12,
   });
-  const summaryScore = summaryEval.score / 100;
+  const summaryScore = (input.summaryScoreOverride ?? summaryEval.score) / 100;
 
   const retrievalScore = input.retrievalText.trim().split(/\s+/).filter(Boolean)
     .length >= 4

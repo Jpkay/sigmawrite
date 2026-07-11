@@ -56,7 +56,7 @@ import {
 } from "@/lib/ai/item-generation/pipeline";
 import type { ItemGenSpec } from "@/lib/ai/item-generation/schemas";
 import { LanguageToolChecker } from "@/lib/linguistic/languagetool";
-import type { GeneratedItem, ItemGenerationResult } from "@/lib/ai/item-generation/schemas";
+import type { GateResults, GeneratedItem, ItemGenerationResult } from "@/lib/ai/item-generation/schemas";
 
 const count = Number(process.argv[2] ?? 3);
 const onlyNode = process.argv[3];
@@ -83,7 +83,8 @@ const modalityFor = (strand: string): ItemGenSpec["modality"] =>
 
 const nodes = NODES.filter((n) => !onlyNode || n.key === onlyNode);
 const all: ItemGenerationResult[] = [];
-const keep: GeneratedItem[] = [];
+type StoredGeneratedItem = GeneratedItem & { qcGates?: GateResults; reviewStatus?: GateResults["verdict"] };
+const keep: StoredGeneratedItem[] = [];
 
 console.log(`Generating ${count} item(s) for ${nodes.length} node(s)…\n`);
 
@@ -106,7 +107,7 @@ for (const node of nodes) {
       `  ${node.key.padEnd(28)} auto:${r.auto_approved} review:${r.needs_human_review} rej:${r.rejected}`
     );
     for (const res of results) {
-      if (res.item && res.gates.verdict !== "rejected") keep.push(res.item);
+      if (res.item && res.gates.verdict !== "rejected") keep.push({ ...res.item, qcGates: res.gates, reviewStatus: res.gates.verdict });
       else if (res.gates.verdict === "rejected") {
         console.log(`     ✗ ${res.gates.rejectionReason ?? "rejected"}`);
         console.log(`       raw: ${JSON.stringify(res.raw).slice(0, 400)}`);
@@ -127,7 +128,7 @@ console.log(JSON.stringify(overall, null, 2));
 // daily quota is hit — build up the bank instead of clobbering prior work.
 mkdirSync("./generated", { recursive: true });
 const outPath = "./generated/past-narration-items.json";
-let bank: GeneratedItem[] = [];
+let bank: StoredGeneratedItem[] = [];
 if (existsSync(outPath)) {
   try {
     bank = JSON.parse(readFileSync(outPath, "utf8")) as GeneratedItem[];
@@ -147,3 +148,25 @@ for (const it of keep) {
 }
 writeFileSync(outPath, JSON.stringify(bank, null, 2));
 console.log(`\nAdded ${added} new item(s); bank now ${bank.length} → ${outPath}`);
+
+const reportPath = `./generated/past-narration-run-${new Date().toISOString().replace(/[:.]/g, "-")}.json`;
+writeFileSync(reportPath, JSON.stringify({ sliceKey: "past_narration", requested: count * nodes.length, report: overall }, null, 2));
+console.log(`Run report → ${reportPath}`);
+
+if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY) {
+  const { createClient } = await import("@supabase/supabase-js");
+  const db = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY, { auth: { persistSession: false } });
+  const { error } = await db.from("generation_runs").insert({
+    slice_key: "past_narration",
+    provider: process.env.AI_PROVIDER ?? "glm",
+    model_id: process.env.LLM_MODEL ?? "z-ai/glm-5.2",
+    prompt_version: process.env.ITEM_PROMPT_VERSION ?? "item-generation-v1",
+    requested_count: count * nodes.length,
+    generated_count: overall.usable,
+    yield_report: overall,
+    estimated_cost_usd: overall.total * Number(process.env.ITEM_ESTIMATED_COST_USD ?? 0.002),
+    completed_at: new Date().toISOString(),
+  });
+  if (error) throw new Error(`generation_runs: ${error.message}`);
+  console.log("Generation run persisted.");
+}

@@ -1,186 +1,58 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, CheckCircle2, XCircle } from "lucide-react";
 import { PageHeader } from "@/components/page";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ChoiceList } from "@/components/choice-list";
-import {
-  DIAGNOSTIC_ITEMS,
-  DIAGNOSTIC_SUMMARY_PROMPT,
-} from "@/lib/content/diagnostic";
-import { scoreDiagnostic } from "@/lib/scoring/diagnostic";
-import { getStudentState, saveDiagnostic } from "@/lib/student-store";
-import { recommendTextId } from "@/lib/content/recommend";
+import { startAdaptiveDiagnostic, submitAdaptiveDiagnosticProbe } from "@/lib/actions/student";
 import { track } from "@/lib/analytics";
-import type { DiagnosticResult } from "@/lib/types";
+import type { LiveDiagnosticItem } from "@/lib/diagnostic/live";
+import type { FrontierReport } from "@/lib/diagnostic/report";
+import type { GoalScope } from "@/lib/graph/types";
+import { AccentTextarea } from "@/components/accent-textarea";
 
-type Phase = "items" | "summary" | "result";
-
-const SKILL_LABELS: Record<keyof DiagnosticResult["skillEstimates"], string> = {
-  literalComprehension: "Compréhension littérale",
-  inference: "Inférence",
-  vocabularyInContext: "Vocabulaire en contexte",
-  sentenceParsing: "Analyse de phrases",
-  summary: "Résumé",
-  argumentStructure: "Structure argumentative",
-  academicConnectors: "Connecteurs académiques",
-};
+type Run = { runId: string; startedAt: string; item: LiveDiagnosticItem };
+type Frontier = { report: FrontierReport; labels: Record<string, { key: string; label: string }>; scope: GoalScope };
 
 export default function DiagnosticPage() {
-  const [phase, setPhase] = useState<Phase>("items");
-  const [index, setIndex] = useState(0);
-  const [answers, setAnswers] = useState<Record<string, number>>({});
-  const [summary, setSummary] = useState("");
-  const [result, setResult] = useState<DiagnosticResult | null>(null);
+  const started = useRef(false);
+  const [run, setRun] = useState<Run | null>(null);
+  const [choice, setChoice] = useState<string | null>(null);
+  const [answer, setAnswer] = useState("");
+  const [probeCount, setProbeCount] = useState(0);
+  const [feedback, setFeedback] = useState<boolean | null>(null);
+  const [frontier, setFrontier] = useState<Frontier | null>(null);
+  const [pending, setPending] = useState(true);
+  const [error, setError] = useState("");
 
-  const item = DIAGNOSTIC_ITEMS[index];
-  const total = DIAGNOSTIC_ITEMS.length;
+  useEffect(() => {
+    if (started.current) return; started.current = true;
+    track("diagnostic_started", {});
+    startAdaptiveDiagnostic({}).then(setRun).catch(() => setError("Le diagnostic ne peut pas démarrer. Vérifie d’abord ton profil.")).finally(() => setPending(false));
+  }, []);
 
-  function next() {
-    if (index + 1 < total) setIndex(index + 1);
-    else setPhase("summary");
+  async function submit() {
+    if (!run) return; setPending(true); setError("");
+    try {
+      const result = await submitAdaptiveDiagnosticProbe({ runId: run.runId, itemId: run.item.id, selectedChoiceId: choice ?? undefined, answerText: choice ? undefined : answer, startedAt: run.startedAt });
+      setFeedback(result.correct); setProbeCount(result.probeCount);
+      await new Promise((resolve) => setTimeout(resolve, 450));
+      if (result.done) {
+        setFrontier(result.frontier as Frontier); setRun(null);
+        track("diagnostic_completed", { goal: "active", duration_seconds: Math.round((Date.now() - Date.parse(run.startedAt)) / 1000), probes_count: result.probeCount });
+      } else {
+        setRun((current) => current ? { ...current, item: result.item } : current); setChoice(null); setAnswer(""); setFeedback(null);
+      }
+    } catch { setError("Ta réponse n’a pas pu être enregistrée. Réessaie."); }
+    finally { setPending(false); }
   }
 
-  function finish() {
-    const r = scoreDiagnostic("local-student", answers, summary);
-    saveDiagnostic(r);
-    track("diagnostic_completed", {
-      band: r.recommendedStartingLevel,
-      confidence: r.overallReadingBand.confidence,
-    });
-    setResult(r);
-    setPhase("result");
-  }
-
-  if (phase === "result" && result) {
-    const strengths = Object.entries(result.skillEstimates)
-      .filter(([, v]) => v >= 65)
-      .map(([k]) => SKILL_LABELS[k as keyof typeof SKILL_LABELS]);
-    const needsWork = Object.entries(result.skillEstimates)
-      .filter(([, v]) => v < 50)
-      .map(([k]) => SKILL_LABELS[k as keyof typeof SKILL_LABELS]);
-    const recommended = recommendTextId(getStudentState().interests);
-
-    return (
-      <>
-        <PageHeader
-          title="Ton profil de lecture"
-          description="Bande de lecture académique française estimée d'après tes réponses."
-        />
-        <Card className="mb-6">
-          <CardContent className="flex flex-wrap items-center gap-4 pt-6">
-            <span className="text-3xl font-semibold">
-              Grade {result.overallReadingBand.minGrade.toFixed(1)}–
-              {result.overallReadingBand.maxGrade.toFixed(1)}
-            </span>
-            <Badge variant="secondary">
-              Confiance : {result.overallReadingBand.confidence}
-            </Badge>
-            <Badge>Zone de départ : {result.recommendedStartingLevel}</Badge>
-          </CardContent>
-        </Card>
-
-        <div className="mb-6 grid gap-4 sm:grid-cols-2">
-          <Card>
-            <CardContent className="pt-6">
-              <h3 className="mb-2 font-semibold">Points forts</h3>
-              {strengths.length ? (
-                <ul className="list-inside list-disc text-sm text-muted-foreground">
-                  {strengths.map((s) => (
-                    <li key={s}>{s}</li>
-                  ))}
-                </ul>
-              ) : (
-                <p className="text-sm text-muted-foreground">À construire ensemble.</p>
-              )}
-            </CardContent>
-          </Card>
-          <Card>
-            <CardContent className="pt-6">
-              <h3 className="mb-2 font-semibold">À travailler</h3>
-              {needsWork.length ? (
-                <ul className="list-inside list-disc text-sm text-muted-foreground">
-                  {needsWork.map((s) => (
-                    <li key={s}>{s}</li>
-                  ))}
-                </ul>
-              ) : (
-                <p className="text-sm text-muted-foreground">Rien d&apos;urgent. Beau travail !</p>
-              )}
-            </CardContent>
-          </Card>
-        </div>
-
-        <p className="mb-4 text-sm text-muted-foreground">
-          Estimation basée sur ta performance dans l&apos;application — ce n&apos;est pas un
-          diagnostic clinique.
-        </p>
-
-        <Link href={`/student/read/${recommended}`} className={buttonVariants()}>
-          Commencer ma première lecture <ArrowRight />
-        </Link>
-      </>
-    );
-  }
-
-  if (phase === "summary") {
-    return (
-      <>
-        <PageHeader title="Dernière étape : un court résumé" />
-        <Card>
-          <CardContent className="space-y-4 pt-6">
-            <p className="text-sm text-muted-foreground">{DIAGNOSTIC_SUMMARY_PROMPT}</p>
-            <textarea
-              value={summary}
-              onChange={(e) => setSummary(e.target.value)}
-              rows={4}
-              placeholder="Écris ton résumé ici…"
-              className="w-full rounded-md border border-input bg-background p-3 text-sm outline-none ring-ring focus:ring-2"
-            />
-            <Button onClick={finish}>
-              Voir mon profil <ArrowRight />
-            </Button>
-          </CardContent>
-        </Card>
-      </>
-    );
-  }
-
-  return (
-    <>
-      <PageHeader
-        title="Diagnostic"
-        description="Réponds du mieux que tu peux. Il n'y a pas de piège."
-      />
-      <div className="mb-4 h-1.5 w-full overflow-hidden rounded-full bg-muted">
-        <div
-          className="h-full bg-primary transition-all"
-          style={{ width: `${(index / total) * 100}%` }}
-        />
-      </div>
-      <p className="mb-3 text-sm text-muted-foreground">
-        Question {index + 1} / {total}
-      </p>
-      <Card>
-        <CardContent className="pt-6">
-          <ChoiceList
-            prompt={item.prompt}
-            passage={item.passage}
-            choices={item.choices}
-            value={answers[item.id] ?? null}
-            onChange={(i) => setAnswers((a) => ({ ...a, [item.id]: i }))}
-          />
-          <div className="mt-5">
-            <Button onClick={next} disabled={answers[item.id] === undefined}>
-              {index + 1 < total ? "Suivant" : "Continuer"} <ArrowRight />
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
-    </>
-  );
+  if (frontier) return <><PageHeader title="Ta frontière d’apprentissage" description="Le diagnostic a localisé ce que tu maîtrises et la prochaine étape utile." /><div className="grid gap-4 sm:grid-cols-4">{([['mastered','Maîtrisé'],['fragile','À consolider'],['missing','À construire'],['readyToLearn','Prêt à apprendre']] as const).map(([key,label]) => <Card key={key}><CardContent className="pt-6"><p className="text-sm text-muted-foreground">{label}</p><p className="mt-1 text-3xl font-semibold">{frontier.report[key].length}</p></CardContent></Card>)}</div><Link href="/student/frontier" className={`${buttonVariants()} mt-6`}>Voir le détail et mon parcours <ArrowRight /></Link></>;
+  if (pending && !run) return <PageHeader title="Diagnostic adaptatif" description="Préparation de la première question…" />;
+  if (!run) return <><PageHeader title="Diagnostic adaptatif" />{error && <p className="text-sm text-destructive">{error}</p>}<Link href="/student/onboarding" className={`${buttonVariants({ variant: "outline" })} mt-4`}>Revoir mon profil</Link></>;
+  const item = run.item; const canSubmit = item.choices.length ? !!choice : !!answer.trim();
+  return <><PageHeader title="Diagnostic adaptatif" description="Les questions s’ajustent à tes réponses. Tu peux simplement faire de ton mieux." /><div className="mb-4 flex items-center justify-between text-sm text-muted-foreground"><span>Question {probeCount + 1} · maximum 15</span><Badge variant="secondary">{item.nodeLabel}</Badge></div><div className="mb-5 h-1.5 overflow-hidden rounded-full bg-muted"><div className="h-full bg-primary transition-all" style={{ width: `${Math.max(5, ((probeCount + 1) / 15) * 100)}%` }} /></div><Card><CardContent className="space-y-4 pt-6">{item.instructionsFr && <p className="text-sm text-muted-foreground">{item.instructionsFr}</p>}<p className="text-lg font-medium">{item.promptFr}</p>{item.choices.length ? <div className="grid gap-2">{item.choices.map((option) => <button key={option.id} onClick={() => setChoice(option.id)} className={`min-h-11 rounded-md border px-4 py-3 text-left text-sm ${choice === option.id ? "border-primary bg-primary/10" : "border-border hover:border-primary/40"}`}>{option.text}</button>)}</div> : <AccentTextarea aria-label="Ta réponse" value={answer} onChange={setAnswer} rows={3} className="w-full rounded-md border border-input bg-background p-3 text-sm" placeholder="Écris ta réponse…" />}{feedback !== null && <p className={`flex items-center gap-2 text-sm ${feedback ? "text-[color:var(--success)]" : "text-muted-foreground"}`}>{feedback ? <CheckCircle2 className="size-4" /> : <XCircle className="size-4" />}{feedback ? "Bonne réponse." : "Cette réponse nous aide à trouver la bonne base à travailler."}</p>}<Button onClick={submit} disabled={pending || !canSubmit}>{pending ? "Analyse…" : "Valider"} <ArrowRight /></Button>{error && <p className="text-sm text-destructive">{error}</p>}</CardContent></Card></>;
 }

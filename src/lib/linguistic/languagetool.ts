@@ -16,7 +16,7 @@ import type {
   GrammarMatch,
 } from "./types";
 
-const PUBLIC_API = "https://api.languagetool.org";
+const LOCAL_SERVICE = "http://127.0.0.1:8010";
 
 type LtReplacement = { value: string };
 type LtMatch = {
@@ -51,7 +51,7 @@ export class LanguageToolChecker implements FrenchGrammarChecker {
     this.baseUrl = (
       config.baseUrl ??
       process.env.LANGUAGETOOL_URL ??
-      PUBLIC_API
+      LOCAL_SERVICE
     ).replace(/\/$/, "");
     this.fetchImpl = config.fetchImpl ?? fetch;
     this.timeoutMs = config.timeoutMs ?? 10_000;

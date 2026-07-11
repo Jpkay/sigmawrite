@@ -1,10 +1,14 @@
 import { DashboardShell, type NavItem } from "@/components/dashboard-shell";
 import { getSessionProfile } from "@/lib/auth";
+import { requireRole } from "@/lib/auth";
 
 const nav: NavItem[] = [
   { href: "/admin", label: "Accueil" },
   { href: "/admin/content", label: "Contenu" },
   { href: "/admin/content/review", label: "Révision" },
+  { href: "/admin/reviews", label: "Évaluations humaines" },
+  { href: "/admin/items", label: "Items" },
+  { href: "/admin/items/review", label: "Exceptions" },
   { href: "/admin/skills", label: "Compétences" },
   { href: "/admin/vocabulary", label: "Vocabulaire" },
   { href: "/admin/concepts", label: "Concepts" },
@@ -20,12 +24,13 @@ export default async function AdminLayout({
 }: {
   children: React.ReactNode;
 }) {
+  await requireRole(["platform_admin"]);
   const session = await getSessionProfile();
   return (
     <DashboardShell
       area="Administration"
       nav={nav}
-      user={{ name: session?.displayName ?? "Admin", role: session?.role ?? "platform_admin" }}
+      user={{ name: session?.displayName ?? "Admin", role: session?.role ?? "platform_admin", analyticsId: session?.id }}
     >
       {children}
     </DashboardShell>

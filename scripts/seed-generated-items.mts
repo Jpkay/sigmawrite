@@ -10,10 +10,11 @@
  */
 import { readFileSync } from "node:fs";
 import { NODES } from "@/lib/content/slices/past-narration";
-import type { GeneratedItem } from "@/lib/ai/item-generation/schemas";
+import type { GateResults, GeneratedItem } from "@/lib/ai/item-generation/schemas";
 
 const path = process.argv[2] ?? "./generated/past-narration-items.json";
-const items = JSON.parse(readFileSync(path, "utf8")) as GeneratedItem[];
+type StoredGeneratedItem = GeneratedItem & { qcGates?: GateResults; reviewStatus?: GateResults["verdict"] };
+const items = JSON.parse(readFileSync(path, "utf8")) as StoredGeneratedItem[];
 
 const q = (s: string | undefined | null) =>
   s == null ? "null" : `'${s.replace(/'/g, "''")}'`;
@@ -34,11 +35,13 @@ const out: string[] = [
 for (const it of items) {
   const cols = `(primary_node_id, strand, modality, learner_mode, response_type,
    prompt_fr, instructions_fr, correct_answer, acceptable_answers, validator_type,
-   validator_config, cefr_level, difficulty, generation_type, generation_model, review_status)`;
+   validator_config, cefr_level, difficulty, generation_type, generation_model, prompt_version, qc_gates, review_status)`;
   const sel = `select n.id, ${q(it.strand)}, ${q(it.modality)}, ${q(it.learnerMode)},
    ${q(it.responseType)}, ${q(it.promptFr)}, ${q(it.instructionsFr)}, ${q(it.correctAnswer)},
    ${textArr(it.acceptableAnswers)}, ${q(it.validatorType)}, ${jsonb(it.validatorConfig)},
-   ${q(it.cefrLevel)}, ${num(it.difficulty)}, 'ai', 'glm-5.2', 'auto_approved'
+   ${q(it.cefrLevel)}, ${num(it.difficulty)}, 'ai', 'glm-5.2', 'item-generation-v1',
+   ${jsonb(it.qcGates ?? { gate1_schema: true, gate1_invariants: { ok: true, violations: [] }, gate2_answer_key: { ok: true }, gate3_ensemble: { agreement: 1, agrees: true }, verdict: it.reviewStatus ?? "auto_approved" })},
+   ${q(it.reviewStatus ?? "auto_approved")}
    from competency_nodes n where n.key = ${q(it.nodeKey)}`;
 
   if (it.choices?.length) {
