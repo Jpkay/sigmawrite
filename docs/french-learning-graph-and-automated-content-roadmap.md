@@ -1211,6 +1211,8 @@ Each goal below is intended to be self-contained enough for one focused implemen
 
 #### G17 — Implement the student target resolver and 80% difficulty zone
 
+**Implementation status:** ✅ Implemented, tested, and verified on 2026-07-11. See resolver [`resolver.ts`](../src/lib/targeting/resolver.ts), versioned decision storage [`0044_target_resolution.sql`](../supabase/migrations/0044_target_resolution.sql), and L1/L2/heritage/immersion tests. Verification: identical versioned state yields identical targets; hard prerequisites block dependents; missing foundations and overdue retrieval outrank downstream work without deleting active-course context; due/new/course/calibration queues are balanced; normal task success is centred at 0.80 within 0.75–0.85, with separate fluency/stretch/conservative policies; cold starts expose low confidence; mastery, completion, percentile, and predicted-success semantics remain distinct; conjugation production gaps receive explicit priority.
+
 **Outcome:** Given a student and active goal or course, the system deterministically balances due retrieval, ready-to-learn competencies, course commitments, vocabulary, constructions, and conjugation targets while normally predicting about 80% success.
 
 **Depends on:** G13–G16.
