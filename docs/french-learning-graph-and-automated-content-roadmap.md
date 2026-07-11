@@ -1268,6 +1268,8 @@ Each goal below is intended to be self-contained enough for one focused implemen
 
 #### G19 — Implement reuse-before-generation matching
 
+**Implementation status:** ✅ Implemented, tested, and verified on 2026-07-11. See fail-closed matcher [`matcher.ts`](../src/lib/content/reuse/matcher.ts), indexed profiles and audit decisions [`0046_reuse_matching.sql`](../supabase/migrations/0046_reuse_matching.sql), and latency/quality tests. Verification: only published, QA-passed, release-compatible, safe passages within lexical, length, tense, and predicted-success constraints are eligible; recent use is excluded; competency/construction/tense/difficulty fit dominates topical similarity; every ranking and exclusion is explained; deterministic no-match results explicitly select generation.
+
 **Outcome:** The system ranks existing eligible passages against the current contract before requesting generation.
 
 **Depends on:** G18.
