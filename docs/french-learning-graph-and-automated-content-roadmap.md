@@ -851,6 +851,8 @@ Each goal below is intended to be self-contained enough for one focused implemen
 
 #### G04 — Build the taxonomy validation and release-manifest pipeline
 
+**Implementation status:** ✅ Implemented and verified on 2026-07-11. See [`validate.ts`](../src/lib/taxonomy/validate.ts), the reproducible CLI [`validate-taxonomy.mts`](../scripts/validate-taxonomy.mts), and CI script `taxonomy:validate`. Verification: automated fixtures plant cycles, dangling edges, self-loops, missing provenance, and atomicity warnings; manifests remain identical across reordered input and taxonomy validation is part of `npm run ci`.
+
 **Outcome:** A candidate taxonomy release cannot publish unless structural, referential, semantic, provenance, and checksum validation succeeds.
 
 **Depends on:** G03.
