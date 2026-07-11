@@ -1243,6 +1243,8 @@ Each goal below is intended to be self-contained enough for one focused implemen
 
 #### G18 — Implement the versioned generation-contract builder
 
+**Implementation status:** ✅ Implemented, tested, and verified on 2026-07-11. See structured validator/builder [`contract.ts`](../src/lib/generation/contract.ts), immutable storage [`0045_generation_contracts.sql`](../supabase/migrations/0045_generation_contracts.sql), and representative fixtures. Verification: every Section 5 vocabulary, construction, conjugation, competency, concept, course, retrieval, predicted-success, question, safety, factuality, and retry constraint is machine-readable; contracts deterministically checksum and pin exact ontology/taxonomy/lexical/resolver/schema context; high-risk topics fail unless current primary sources and citations are required; immutable persistence includes an administrator explanation.
+
 **Outcome:** A student target and topic become a complete immutable contract matching Section 5.
 
 **Depends on:** G17.
