@@ -1180,6 +1180,8 @@ Each goal below is intended to be self-contained enough for one focused implemen
 
 #### G16 — Implement embedded quizzes and continuous mastery recalibration
 
+**Implementation status:** ✅ Implemented, tested, and verified on 2026-07-11. See migration [`0043_continuous_quizzes.sql`](../supabase/migrations/0043_continuous_quizzes.sql) and deterministic lifecycle [`continuous.ts`](../src/lib/quiz/continuous.ts). Verification: resumable audited quizzes can combine retrieval, course-evidence, and calibration purposes; item snapshots retain node, misconception, modality, and prompt-family links; dimension-safe weighted BKT updates cannot overwrite unrelated strands; multiple prompt families are required for transfer; bounded interval/daily policies protect core learning time; persistent gaps create smallest-remediation triggers with later reassessment and deduplicated evidence.
+
 **Outcome:** Short, low-stakes quizzes appear regularly throughout courses and normal app use to reinforce retrieval and refine the mastery and uncertainty estimate of every linked node.
 
 **Depends on:** G13–G15.
