@@ -6,7 +6,7 @@
 
 **Content checksum:** `sha256:9a7a7ebab91005dab88efc75f26d92bb86774c24b8c2cde881e7d42e29e0fd1b`
 
-**French educator sign-off:** pending
+**French educator sign-off:** approved without changes on 2026-07-11
 
 Run `npm run taxonomy:review:conjugation` to produce the complete French-readable review packet. The packet is generated from the source of truth and includes its deterministic content checksum, preventing approval of a stale or altered slice.
 
@@ -31,3 +31,17 @@ The slice supplies 48 atomic nodes, 39 explicit hard/soft prerequisite rationale
 ## Required educator decision
 
 Record reviewer name, role/qualification, review date, decision (`approve`, `approve_with_changes`, or `reject`), requested changes, and the reviewed commit SHA here or in the corresponding controlled review record. G06 must not be described as fully complete until the decision is `approve` and requested changes are resolved.
+
+## Recorded decision
+
+- Reviewer: product owner (user attestation)
+- Qualification: qualified French educator
+- Review date: 2026-07-11
+- Reviewed version: `0.1.0`
+- Reviewed commit: `123ec5f`
+- Content checksum: `sha256:9a7a7ebab91005dab88efc75f26d92bb86774c24b8c2cde881e7d42e29e0fd1b`
+- Decision: `approve`
+- Requested changes: none
+- Attestation: the reviewer stated that they reviewed the identified conjugation foundation and approved it without changes.
+
+Future changes must create a new candidate version and checksum. Approval of v0.1.0 does not silently approve later content.
