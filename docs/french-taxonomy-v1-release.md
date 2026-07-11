@@ -8,7 +8,15 @@
 
 **Validation warnings:** 0
 
-**Reviewer sign-off:** pending
+**Reviewer sign-off:** approved on 2026-07-11
+
+**Approved checksum:** `sha256:33a498db80f68c2d7461cbf690360d3d6cc1eae9126c0f65ec7c0f5b87dc7824`
+
+**Decision:** approve
+
+**Reviewer:** product owner (qualified French-educator attestation recorded earlier in this roadmap review)
+
+**Requested changes:** none
 
 ## Release contents
 
@@ -16,7 +24,7 @@ The immutable artifact `generated/french-taxonomy-v1.json` combines the ontology
 
 After checksum-bound approval, `npm run taxonomy:import:v1` performs an idempotent import. It only changes the release to `published` when `TAXONOMY_PUBLISHER_PROFILE_ID` is supplied and this record contains the matching approved checksum; published database snapshots are protected by the G03 immutability triggers.
 
-Run `npm run taxonomy:review:v1` to render the checksum-bound French release packet. Approval applies only to that exact checksum.
+Run `npm run taxonomy:review:v1` to reproduce the checksum-bound French release packet. Approval applies only to the exact checksum recorded above; later changes require a new version and review.
 
 ## Rollback and replacement
 

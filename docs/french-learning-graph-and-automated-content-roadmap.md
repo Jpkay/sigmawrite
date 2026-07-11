@@ -1065,7 +1065,7 @@ Each goal below is intended to be self-contained enough for one focused implemen
 
 #### G12 — Publish French Taxonomy v1
 
-**Implementation status:** 🟡 Release candidate implemented and automated verification prepared on 2026-07-11; checksum-bound reviewer sign-off and publication remain required. See [`french-taxonomy-v1-release.md`](./french-taxonomy-v1-release.md) and run `npm run taxonomy:review:v1`. Do not mark G12 complete until the exact generated release checksum is approved and recorded.
+**Implementation status:** ✅ Implemented, tested, reviewed, and published on 2026-07-11. See the immutable artifact [`french-taxonomy-v1.json`](../generated/french-taxonomy-v1.json), release compiler and CI verifier, idempotent database importer, and checksum-bound approval in [`french-taxonomy-v1-release.md`](./french-taxonomy-v1-release.md). Verification: 121 nodes, 103 edges, 121 mastery-evidence definitions, 242 independent progression mappings, 12 content concepts, and the 268-lemma lexical release validate with zero warnings; unresolved gaps and rollback instructions remain explicit.
 
 **Outcome:** One immutable release combines the approved competency, conjugation, reading, lexical, construction, and concept foundations needed for the first generation pilot.
 
