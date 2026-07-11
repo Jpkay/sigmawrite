@@ -1519,6 +1519,8 @@ Each goal below is intended to be self-contained enough for one focused implemen
 
 #### G28 — Expand benchmarks into a complete regression and release gate
 
+**Implementation status:** ✅ Implemented, tested, and verified on 2026-07-11. See locked suite [`french-automation-v1.json`](../benchmarks/french-automation-v1.json), deterministic runner/report [`release-gate.ts`](../src/lib/benchmarks/release-gate.ts), CI command `npm run benchmark:learning`, and immutable persistence [`0055_benchmark_release_gate.sql`](../supabase/migrations/0055_benchmark_release_gate.sql). Verification: gold/silver content, jagged initial/re-entry diagnosis, prerequisite remediation, mixed quizzes, good/bad questions, vocabulary boundaries, conjugation sequencing, course/review continuity, direct/indirect retrieval, normal/stretch difficulty, ambiguity, factuality/safety/copyright/injection, and expected failures are represented; suite/case versions are checksummed and immutable; deterministic pipeline comparisons produce release reports; any mismatch or baseline regression blocks rollout.
+
 **Outcome:** Every change to models, prompts, taxonomy releases, lexical data, difficulty rules, or QA logic is evaluated against a stable suite before rollout.
 
 **Depends on:** G12, G21–G27.
