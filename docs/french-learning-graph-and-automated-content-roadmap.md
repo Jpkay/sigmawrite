@@ -1375,6 +1375,8 @@ Each goal below is intended to be self-contained enough for one focused implemen
 
 #### G23 — Implement safety, factuality, copyright, and risk routing
 
+**Implementation status:** ✅ Implemented, tested, and verified on 2026-07-11. See fail-closed router [`risk-routing.ts`](../src/lib/safety/risk-routing.ts), auditable taxonomy/claims/results [`0050_candidate_risk_routing.sql`](../supabase/migrations/0050_candidate_risk_routing.sql), and injection/grounding/copyright fixtures. Verification: student topics are normalized and injection patterns rejected before use; every factual, numerical, and time-sensitive claim retains source, currency, authority, and support evidence; high-risk content requires citations, current primary sources, and human review; unsupported numerical claims reject; factual, fiction, and fiction-with-context modes differ; prohibited safety signals, source continuation/imitation, location reproduction, and excessive overlap fail with structured escalation reasons.
+
 **Outcome:** Every candidate receives a deterministic risk class and the required grounding, review, or rejection policy.
 
 **Depends on:** G11, G20.
