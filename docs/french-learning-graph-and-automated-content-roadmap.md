@@ -1402,6 +1402,8 @@ Each goal below is intended to be self-contained enough for one focused implemen
 
 #### G24 — Implement the automated decision, repair, and quarantine orchestrator
 
+**Implementation status:** ✅ Implemented, tested, and verified on 2026-07-11. See deterministic policy [`orchestrator.ts`](../src/lib/qa/orchestrator.ts), auditable decisions/repairs/quarantines/escalations [`0051_qa_decision_orchestrator.sql`](../supabase/migrations/0051_qa_decision_orchestrator.sql), and termination/ranking tests. Verification: passage, question, and risk hard failures always override quality scores; one repair preserves immutable original, repaired snapshot, lineage, and diff; repair/generation/cost limits terminate repeated failure in quarantine; human-risk states escalate; candidate ranking is deterministic; only the highest-scoring fully eligible candidate receives the set-level provisional-accept decision.
+
 **Outcome:** Passage, question, and risk results produce one auditable decision: accept provisionally, repair once, regenerate, quarantine, or escalate.
 
 **Depends on:** G21–G23.
