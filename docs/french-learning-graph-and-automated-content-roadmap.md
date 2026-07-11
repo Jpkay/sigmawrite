@@ -986,6 +986,8 @@ Each goal below is intended to be self-contained enough for one focused implemen
 
 #### G09 — Import and validate a baseline French lexicon
 
+**Implementation status:** ✅ Implemented, tested, and verified on 2026-07-11. See the licensed source corpus [`sigma-pilot-corpus.json`](../taxonomy/lexicon/sigma-pilot-corpus.json), deterministic builder [`baseline.ts`](../src/lib/lexicon/baseline.ts), generated lexical release manifest, and idempotent database importer [`import-baseline-lexicon.mts`](../scripts/import-baseline-lexicon.mts). Verification: stable checksums and identifiers reproduce across runs; common inflections resolve in fixtures; homographs do not invent senses; proper nouns and unknowns are explicit; held-out literary/informational coverage is measured rather than assumed.
+
 **Outcome:** A documented, licensed baseline lexicon supports real vocabulary-envelope calculations.
 
 **Depends on:** G02, G08.

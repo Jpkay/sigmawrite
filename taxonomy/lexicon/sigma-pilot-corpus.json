@@ -1,0 +1,85 @@
+{
+  "release": { "key": "sigma-french-baseline", "version": "1.0.0" },
+  "source": {
+    "key": "sigma-original-pilot-corpus",
+    "version": "1.0.0",
+    "licenseIdentifier": "Proprietary-SigmaWrite-v1",
+    "terms": "Original SigmaWrite-authored corpus and derived lexical statistics; commercial use and redistribution by SigmaWrite are permitted.",
+    "commercialUseAllowed": true,
+    "attribution": "© SigmaWrite, corpus pilote français v1.0.0."
+  },
+  "documents": [
+    {
+      "id": "info-migration",
+      "textType": "informational",
+      "split": "build",
+      "text": "Chaque année, des élèves quittent leur région pour rejoindre une nouvelle école. Chaque élève découvre une situation différente. Cette migration demande une adaptation. Les élèves découvrent des règles, des lieux et des personnes. Certains trouvent rapidement leurs repères, tandis que d'autres ont besoin de temps. Les enseignants expliquent les habitudes de la classe et proposent une aide concrète. Ainsi, chacun peut comprendre la situation et participer progressivement."
+    },
+    {
+      "id": "info-attention",
+      "textType": "informational",
+      "split": "build",
+      "text": "Quand une application envoie une notification, elle cherche souvent à attirer l'attention. Les entreprises montrent des annonces et observent les réactions. Elles proposent ensuite des contenus semblables. Ce mécanisme peut créer un biais, car une personne voit moins souvent les opinions différentes. Comprendre ce fonctionnement permet de choisir quand regarder un écran et de garder son esprit critique."
+    },
+    {
+      "id": "literary-storm",
+      "textType": "literary",
+      "split": "build",
+      "text": "Amina marchait vers la maison lorsque le ciel est devenu sombre. Elle avait oublié son manteau, mais elle ne voulait pas revenir. Le vent soufflait et les feuilles tournaient sur le chemin. Soudain, une voisine a ouvert sa porte et lui a proposé un abri. Amina est entrée, a remercié la voisine et a attendu que la pluie cesse. Plus tard, elle racontait encore ce geste généreux."
+    },
+    {
+      "id": "literary-library",
+      "textType": "literary",
+      "split": "build",
+      "text": "Les élèves sont arrivés à la bibliothèque avant midi. Ils ont choisi des livres, puis ils se sont assis près des fenêtres. Amina va chercher un dictionnaire et ses amis vont choisir une histoire. Malik lisait un récit de voyage pendant que ses amis comparaient deux bandes dessinées. La bibliothécaire leur a montré un roman ancien. Ils avaient déjà entendu parler de ce livre, mais personne ne connaissait la fin."
+    },
+    {
+      "id": "argument-school-garden",
+      "textType": "argumentative",
+      "split": "build",
+      "text": "Notre école devrait créer un jardin. D'abord, les élèves pourraient observer les plantes et comprendre leur croissance. Ensuite, le jardin offrirait un lieu calme pour lire ou discuter. Certains pensent que son entretien serait difficile. Pourtant, plusieurs classes peuvent partager les tâches. Cette organisation rendrait le projet utile et réaliste."
+    },
+    {
+      "id": "argument-phone",
+      "textType": "argumentative",
+      "split": "build",
+      "text": "Un téléphone peut aider à chercher une information, mais son usage pendant un cours doit rester limité. Une règle claire protège l'attention de tous. Les élèves peuvent utiliser leur appareil quand le professeur le demande, puis le ranger. Cette solution est plus équilibrée qu'une interdiction complète, car elle permet un usage utile sans interrompre le travail."
+    },
+    {
+      "id": "info-water",
+      "textType": "informational",
+      "split": "build",
+      "text": "L'eau tombe sous forme de pluie, rejoint le sol et circule vers les rivières. Une partie entre dans la terre. Une autre partie retourne dans l'air grâce à la chaleur. Ce cycle continue parce que l'eau change de lieu et parfois de forme. Les villes protègent les sources afin de conserver une eau propre."
+    },
+    {
+      "id": "info-reading-evidence",
+      "textType": "informational",
+      "split": "build",
+      "text": "Un texte explique la cause d'un changement et présente une preuve. Après la lecture, les élèves ont comparé leurs réponses et leur opinion. Amina a compris l'idée principale, puis elle a vérifié chaque information dans un exemple. Le professeur avait expliqué que le travail sur un journal était utile et demandait de lire avec attention. Un récit sur le vol des oiseaux décrivait plusieurs vols et un regard attentif."
+    },
+    {
+      "id": "held-reading",
+      "textType": "informational",
+      "split": "held_out",
+      "text": "Les élèves ont lu une information sur les plantes et ils ont comparé leurs réponses. Le professeur a expliqué la cause du changement. Ensuite, la classe a choisi une preuve dans le texte. Amina avait déjà compris l'idée principale, mais elle a vérifié son opinion. Un xylophone apparaissait dans un exemple inattendu."
+    }
+  ],
+  "lemmaOverrides": {
+    "a": "avoir", "ai": "avoir", "avait": "avoir", "avaient": "avoir", "ont": "avoir",
+    "est": "être", "sont": "être", "était": "être", "étaient": "être", "serait": "être",
+    "va": "aller", "vont": "aller", "allait": "aller",
+    "élèves": "élève", "livres": "livre", "plantes": "plante", "classes": "classe",
+    "personnes": "personne", "opinions": "opinion", "réponses": "réponse", "règles": "règle",
+    "lieux": "lieu", "travaux": "travail", "journaux": "journal",
+    "arrivés": "arriver", "choisi": "choisir", "ouvert": "ouvrir", "proposé": "proposer",
+    "montré": "montrer", "entendu": "entendre", "compris": "comprendre", "lu": "lire",
+    "marchait": "marcher", "soufflait": "souffler", "tournaient": "tourner", "racontait": "raconter",
+    "regarder": "regarder", "regarde": "regarder", "regardait": "regarder",
+    "vols": "vol"
+  },
+  "partOfSpeech": {
+    "avoir": "verb", "être": "verb", "aller": "verb", "élève": "noun", "livre": "noun",
+    "plante": "noun", "classe": "noun", "personne": "noun", "opinion": "noun", "vol": "noun"
+  },
+  "properNouns": ["Amina", "Malik"]
+}

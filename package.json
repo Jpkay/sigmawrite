@@ -12,6 +12,8 @@
     "ci": "npm run typecheck && npm run lint && npm run taxonomy:validate && npm test",
     "taxonomy:validate": "tsx scripts/validate-taxonomy.mts taxonomy/french-v1-candidate.json",
     "taxonomy:review:conjugation": "tsx scripts/conjugation-review-packet.mts",
+    "lexicon:build": "tsx scripts/build-baseline-lexicon.mts",
+    "lexicon:import": "tsx scripts/import-baseline-lexicon.mts",
     "seed:demo": "tsx scripts/seed-demo.mts",
     "verify:deletion": "tsx --tsconfig ./tsconfig.json scripts/verify-deletion-job.mts",
     "seed:item-banks": "tsx --tsconfig ./tsconfig.json scripts/seed-item-bank.mts generated/past-narration-items.json && tsx --tsconfig ./tsconfig.json scripts/seed-item-bank.mts generated/present-agreement-items.json"
