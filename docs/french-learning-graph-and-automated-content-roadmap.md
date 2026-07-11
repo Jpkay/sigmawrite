@@ -1039,6 +1039,8 @@ Each goal below is intended to be self-contained enough for one focused implemen
 
 #### G11 — Implement the content-concept and topic model
 
+**Implementation status:** ✅ Implemented, tested, and verified on 2026-07-11. See migration [`0039_content_concept_topic_model.sql`](../supabase/migrations/0039_content_concept_topic_model.sql), runtime catalog and resolver [`concepts.ts`](../src/lib/content/concepts.ts), and fail-closed topic sanitizer [`topic.ts`](../src/lib/safety/topic.ts). Verification: topics map many-to-many to background concepts without becoming language competencies; prerequisite familiarity determines which concepts need explanation; high-risk concepts require current primary sources; prompt-injection fixtures are rejected before any model provider is called.
+
 **Outcome:** Generation distinguishes linguistic difficulty from background-knowledge demand and topic risk.
 
 **Depends on:** G01, G02.

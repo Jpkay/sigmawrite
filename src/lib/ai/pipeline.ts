@@ -11,6 +11,7 @@ import type { ReviewStatus, DifficultyBand } from "@/lib/types";
 import { DIFFICULTY_BANDS } from "@/lib/types";
 import type { AIProvider } from "./provider";
 import { paragraphsFromText } from "@/lib/content/text-format";
+import { sanitizeStudentTopic } from "@/lib/safety/topic";
 
 /**
  * AI content generation pipeline (PRD §H). Orchestrates the constrained
@@ -92,10 +93,13 @@ export async function runGenerationPipeline(
   options: { provider?: AIProvider; systemPrompt?: string } = {}
 ): Promise<ContentCandidate> {
   const provider = options.provider ?? getAIProvider();
+  const sanitizedTopic = sanitizeStudentTopic(input.topic);
+  if (!sanitizedTopic.allowed) throw new Error(`unsafe_topic:${sanitizedTopic.reason}`);
+  const safeInput: GenerateTextInput = { ...input, topic: sanitizedTopic.value };
 
   // 1) generate → 2) validate against the contract (PRD §H steps 5–6).
   const generated = generatedTextCandidateSchema.parse(
-    await provider.generateText(input, { systemPrompt: options.systemPrompt })
+    await provider.generateText(safeInput, { systemPrompt: options.systemPrompt })
   );
 
   const paragraphs = paragraphsFromText(generated.body);
@@ -125,7 +129,7 @@ export async function runGenerationPipeline(
     factualNeedsReview:
       generated.factualClaims.some((c) => c.needsHumanReview || c.confidence === "low") ||
       hasUncataloguedNumericClaim(generated.body, generated.factualClaims),
-    sensitive: isSensitive(input),
+    sensitive: isSensitive(safeInput),
     difficultyMismatch: isDifficultyMismatch(
       input.targetReadingBand,
       difficulty.overall
@@ -136,7 +140,7 @@ export async function runGenerationPipeline(
   return {
     id: crypto.randomUUID(),
     createdAt: new Date().toISOString(),
-    input,
+    input: safeInput,
     generated,
     difficulty,
     moderation,
