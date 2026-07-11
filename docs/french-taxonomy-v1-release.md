@@ -4,7 +4,9 @@
 
 **Technical validation:** passed (`npm run ci`, 247 tests)
 
-**Candidate checksum:** `sha256:c9fbcd3439f6db5429b8de8b74cc35d3adab0be93aecb8a20279f9cce8ef002d`
+**Candidate checksum:** `sha256:33a498db80f68c2d7461cbf690360d3d6cc1eae9126c0f65ec7c0f5b87dc7824`
+
+**Validation warnings:** 0
 
 **Reviewer sign-off:** pending
 

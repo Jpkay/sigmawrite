@@ -79,8 +79,8 @@ function node(
 
 export const CONJUGATION_FOUNDATION_NODES: TaxonomyCandidate["nodes"] = [
   node("identifier_sujet_verbe", "Identifier le sujet du verbe", "Repérer le donneur de personne et de nombre d'un verbe conjugué.", "foundation", "receptive", "reading"),
-  node("distinguer_personne_nombre", "Distinguer la personne et le nombre", "Associer un sujet grammatical à une personne et à un nombre précis.", "foundation", "receptive", "reading"),
-  node("reconnaitre_radical_terminaison", "Reconnaître le radical et la terminaison", "Segmenter une forme verbale simple en radical et terminaison observable.", "foundation", "receptive", "reading"),
+  node("distinguer_personne_nombre", "Identifier les traits de personne-nombre", "Associer un sujet grammatical à une personne et à un nombre précis.", "foundation", "receptive", "reading"),
+  node("reconnaitre_radical_terminaison", "Segmenter une forme verbale", "Segmenter une forme verbale simple en radical et terminaison observable.", "foundation", "receptive", "reading"),
   node("classer_famille_verbale", "Classer une famille verbale", "Reconnaître les régularités utiles des verbes en -er, en -ir et des verbes irréguliers fréquents.", "foundation", "receptive", "reading"),
   node("reconnaitre_auxiliaire", "Reconnaître un auxiliaire", "Identifier avoir ou être comme auxiliaire dans une forme composée.", "foundation", "receptive", "reading"),
   node("choisir_auxiliaire_compose", "Choisir l'auxiliaire d'un temps composé", "Sélectionner avoir ou être pour produire une forme composée courante.", "composed_past", "controlled_production", "writing"),
@@ -108,7 +108,7 @@ export const CONJUGATION_FOUNDATION_NODES: TaxonomyCandidate["nodes"] = [
   node("reconnaitre_imparfait", "Reconnaître l'imparfait", "Identifier une forme à l'imparfait dans une phrase ou un passage.", "imperfect", "receptive", "reading"),
   node("produire_imparfait", "Produire l'imparfait", "Former l'imparfait de verbes fréquents à partir d'un sujet fourni.", "imperfect", "controlled_production", "writing"),
   node("interpreter_imparfait", "Interpréter les valeurs de l'imparfait", "Repérer notamment arrière-plan, description, habitude ou action en cours selon le contexte.", "imperfect", "receptive", "reading"),
-  node("contraster_pc_imparfait", "Contraster passé composé et imparfait", "Choisir ou expliquer le temps qui organise événement et arrière-plan dans un récit.", "contrast", "receptive", "reading", 5),
+  node("contraster_pc_imparfait", "Contraster les temps du récit", "Choisir ou expliquer le passé composé ou l'imparfait qui organise événement et arrière-plan dans un récit.", "contrast", "receptive", "reading", 5),
   node("produire_contraste_pc_imparfait", "Produire le contraste passé composé-imparfait", "Organiser événements et arrière-plan avec les deux temps dans un paragraphe nouveau.", "contrast", "independent_production", "writing", 5),
 
   node("reconnaitre_passe_simple", "Reconnaître le passé simple", "Identifier les formes littéraires fréquentes du passé simple en lecture.", "simple_past", "receptive", "reading"),
@@ -134,7 +134,7 @@ export const CONJUGATION_FOUNDATION_NODES: TaxonomyCandidate["nodes"] = [
   node("produire_imperatif", "Produire l'impératif", "Former une consigne affirmative ou négative avec un verbe fréquent.", "imperative", "controlled_production", "writing"),
   node("interpreter_valeur_imperatif", "Interpréter la valeur de l'impératif", "Distinguer ordre, conseil, instruction et invitation selon le contexte.", "imperative", "receptive", "reading"),
 
-  node("distinguer_infinitif_participe", "Distinguer infinitif et participe passé", "Identifier la fonction d'une forme non finie, notamment dans les finales en -er et -é.", "nonfinite", "receptive", "reading"),
+  node("distinguer_infinitif_participe", "Distinguer infinitif/participe passé", "Identifier la fonction d'une forme non finie, notamment dans les finales en -er et -é.", "nonfinite", "receptive", "reading"),
   node("employer_forme_non_finie", "Employer une forme verbale non finie", "Choisir un infinitif ou un participe dans une construction contrôlée.", "nonfinite", "controlled_production", "writing"),
   node("interpreter_sequence_temporelle", "Interpréter une séquence temporelle", "Reconstruire l'ordre des événements à partir des temps et marqueurs d'un passage.", "sequencing", "receptive", "reading", 5),
   node("produire_sequence_temporelle", "Produire une séquence temporelle cohérente", "Maintenir des repères et relations temporelles cohérents dans un texte connecté.", "sequencing", "independent_production", "writing", 5),
@@ -213,4 +213,3 @@ export const CONJUGATION_FOUNDATION_CANDIDATE: TaxonomyCandidate = {
   nodes: CONJUGATION_FOUNDATION_NODES,
   edges: CONJUGATION_FOUNDATION_EDGES,
 };
-

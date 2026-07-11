@@ -79,13 +79,13 @@
         "key": "distinguer_personne_nombre",
         "strand": "conjugaison",
         "nodeType": "linguistic",
-        "labelFr": "Distinguer la personne et le nombre",
+        "labelFr": "Identifier les traits de personne-nombre",
         "descriptionFr": "Associer un sujet grammatical à une personne et à un nombre précis.",
         "atomicityLevel": 4,
         "evidence": [
           {
             "key": "reading-receptive",
-            "actionFr": "Identifier ou interpréter correctement : distinguer la personne et le nombre.",
+            "actionFr": "Identifier ou interpréter correctement : identifier les traits de personne-nombre.",
             "modality": "reading",
             "expectation": "receptive",
             "successCriteria": {
@@ -122,13 +122,13 @@
         "key": "reconnaitre_radical_terminaison",
         "strand": "conjugaison",
         "nodeType": "linguistic",
-        "labelFr": "Reconnaître le radical et la terminaison",
+        "labelFr": "Segmenter une forme verbale",
         "descriptionFr": "Segmenter une forme verbale simple en radical et terminaison observable.",
         "atomicityLevel": 4,
         "evidence": [
           {
             "key": "reading-receptive",
-            "actionFr": "Identifier ou interpréter correctement : reconnaître le radical et la terminaison.",
+            "actionFr": "Identifier ou interpréter correctement : segmenter une forme verbale.",
             "modality": "reading",
             "expectation": "receptive",
             "successCriteria": {
@@ -1111,13 +1111,13 @@
         "key": "contraster_pc_imparfait",
         "strand": "conjugaison",
         "nodeType": "linguistic",
-        "labelFr": "Contraster passé composé et imparfait",
-        "descriptionFr": "Choisir ou expliquer le temps qui organise événement et arrière-plan dans un récit.",
+        "labelFr": "Contraster les temps du récit",
+        "descriptionFr": "Choisir ou expliquer le passé composé ou l'imparfait qui organise événement et arrière-plan dans un récit.",
         "atomicityLevel": 5,
         "evidence": [
           {
             "key": "reading-receptive",
-            "actionFr": "Identifier ou interpréter correctement : contraster passé composé et imparfait.",
+            "actionFr": "Identifier ou interpréter correctement : contraster les temps du récit.",
             "modality": "reading",
             "expectation": "receptive",
             "successCriteria": {
@@ -1928,13 +1928,13 @@
         "key": "distinguer_infinitif_participe",
         "strand": "conjugaison",
         "nodeType": "linguistic",
-        "labelFr": "Distinguer infinitif et participe passé",
+        "labelFr": "Distinguer infinitif/participe passé",
         "descriptionFr": "Identifier la fonction d'une forme non finie, notamment dans les finales en -er et -é.",
         "atomicityLevel": 4,
         "evidence": [
           {
             "key": "reading-receptive",
-            "actionFr": "Identifier ou interpréter correctement : distinguer infinitif et participe passé.",
+            "actionFr": "Identifier ou interpréter correctement : distinguer infinitif/participe passé.",
             "modality": "reading",
             "expectation": "receptive",
             "successCriteria": {
@@ -2760,14 +2760,14 @@
         "key": "reconnaitre_structure_cause_consequence",
         "strand": "comprehension_ecrite",
         "nodeType": "conceptual",
-        "labelFr": "Reconnaître une structure de cause et conséquence",
+        "labelFr": "Reconnaître une structure causale",
         "descriptionFr": "Identifier comment le texte relie causes, mécanismes et résultats.",
         "atomicityLevel": 4,
         "textApplicability": "informational",
         "evidence": [
           {
             "key": "informational-receptive",
-            "actionFr": "Sélectionner une réponse et une justification textuelle pour : reconnaître une structure de cause et conséquence.",
+            "actionFr": "Sélectionner une réponse et une justification textuelle pour : reconnaître une structure causale.",
             "modality": "reading",
             "expectation": "receptive",
             "successCriteria": {
@@ -3816,14 +3816,14 @@
         "key": "distinguer_preuve_connaissance_externe",
         "strand": "comprehension_ecrite",
         "nodeType": "procedural",
-        "labelFr": "Distinguer preuve textuelle et connaissance externe",
+        "labelFr": "Distinguer preuve textuelle/connaissance externe",
         "descriptionFr": "Écarter une réponse plausible qui n'est pas soutenue par le passage lorsque le texte suffit.",
         "atomicityLevel": 4,
         "textApplicability": "all",
         "evidence": [
           {
             "key": "all-receptive",
-            "actionFr": "Sélectionner une réponse et une justification textuelle pour : distinguer preuve textuelle et connaissance externe.",
+            "actionFr": "Sélectionner une réponse et une justification textuelle pour : distinguer preuve textuelle/connaissance externe.",
             "modality": "reading",
             "expectation": "receptive",
             "successCriteria": {
@@ -4555,16 +4555,16 @@
           {
             "learnerMode": "french_first_language",
             "framework": "native_grade",
-            "levelMin": "6",
-            "levelMax": "6",
+            "levelMin": "8",
+            "levelMax": "8",
             "status": "provisional",
             "sourceKey": "sigma-original-taxonomy"
           },
           {
             "learnerMode": "french_second_language",
             "framework": "cefr",
-            "levelMin": "A1",
-            "levelMax": "A1",
+            "levelMin": "B1",
+            "levelMax": "B1",
             "status": "provisional",
             "sourceKey": "sigma-original-taxonomy"
           }
@@ -6016,7 +6016,7 @@
         "source": "construction_chaine_reference",
         "target": "resoudre_pronom_sujet",
         "type": "prerequisite",
-        "prerequisiteClass": "hard",
+        "prerequisiteClass": "soft",
         "rationale": "La construction source fournit une opération nécessaire à la construction cible.",
         "sourceKey": "sigma-original-taxonomy"
       },
@@ -6024,7 +6024,7 @@
         "source": "construction_chaine_reference",
         "target": "resoudre_pronom_objet",
         "type": "prerequisite",
-        "prerequisiteClass": "hard",
+        "prerequisiteClass": "soft",
         "rationale": "La construction source fournit une opération nécessaire à la construction cible.",
         "sourceKey": "sigma-original-taxonomy"
       },
@@ -6032,7 +6032,7 @@
         "source": "construction_chaine_lexicale",
         "target": "suivre_chaine_lexicale",
         "type": "prerequisite",
-        "prerequisiteClass": "hard",
+        "prerequisiteClass": "soft",
         "rationale": "La construction source fournit une opération nécessaire à la construction cible.",
         "sourceKey": "sigma-original-taxonomy"
       },
@@ -6386,92 +6386,7 @@
   ],
   "validation": {
     "valid": true,
-    "issues": [
-      {
-        "severity": "warning",
-        "code": "atomicity_review",
-        "message": "Node contraster_pc_imparfait may combine independently teachable actions",
-        "recordKeys": [
-          "contraster_pc_imparfait"
-        ]
-      },
-      {
-        "severity": "warning",
-        "code": "atomicity_review",
-        "message": "Node distinguer_infinitif_participe may combine independently teachable actions",
-        "recordKeys": [
-          "distinguer_infinitif_participe"
-        ]
-      },
-      {
-        "severity": "warning",
-        "code": "atomicity_review",
-        "message": "Node distinguer_personne_nombre may combine independently teachable actions",
-        "recordKeys": [
-          "distinguer_personne_nombre"
-        ]
-      },
-      {
-        "severity": "warning",
-        "code": "atomicity_review",
-        "message": "Node distinguer_preuve_connaissance_externe may combine independently teachable actions",
-        "recordKeys": [
-          "distinguer_preuve_connaissance_externe"
-        ]
-      },
-      {
-        "severity": "warning",
-        "code": "atomicity_review",
-        "message": "Node reconnaitre_radical_terminaison may combine independently teachable actions",
-        "recordKeys": [
-          "reconnaitre_radical_terminaison"
-        ]
-      },
-      {
-        "severity": "warning",
-        "code": "atomicity_review",
-        "message": "Node reconnaitre_structure_cause_consequence may combine independently teachable actions",
-        "recordKeys": [
-          "reconnaitre_structure_cause_consequence"
-        ]
-      },
-      {
-        "severity": "warning",
-        "code": "cefr_monotonicity",
-        "message": "Prerequisite construction_chaine_lexicale starts after suivre_chaine_lexicale in CEFR mapping",
-        "recordKeys": [
-          "construction_chaine_lexicale",
-          "suivre_chaine_lexicale"
-        ]
-      },
-      {
-        "severity": "warning",
-        "code": "cefr_monotonicity",
-        "message": "Prerequisite construction_chaine_reference starts after resoudre_pronom_objet in CEFR mapping",
-        "recordKeys": [
-          "construction_chaine_reference",
-          "resoudre_pronom_objet"
-        ]
-      },
-      {
-        "severity": "warning",
-        "code": "cefr_monotonicity",
-        "message": "Prerequisite construction_chaine_reference starts after resoudre_pronom_sujet in CEFR mapping",
-        "recordKeys": [
-          "construction_chaine_reference",
-          "resoudre_pronom_sujet"
-        ]
-      },
-      {
-        "severity": "warning",
-        "code": "cefr_monotonicity",
-        "message": "Prerequisite former_participe_passe starts after construction_accord_participe in CEFR mapping",
-        "recordKeys": [
-          "former_participe_passe",
-          "construction_accord_participe"
-        ]
-      }
-    ],
+    "issues": [],
     "manifest": {
       "schemaVersion": 1,
       "release": {
@@ -6488,9 +6403,9 @@
       },
       "checksums": {
         "sources": "sha256:1f45956c04e99333c18c0d884046a2284c168e2ff80d0c8e12efaa3b4528cbc1",
-        "nodes": "sha256:c04162d2f37858b30fc39d893be2819beee3aa4be7f95ba3b9900bc9804e885c",
-        "edges": "sha256:b01c2cd0fa4053421c485a828a8140f4334aa62b177c03526ad2de881be9d7a7",
-        "content": "sha256:49a44fa05d87d45f71883e397626def0055789c34bb354c1f406572c897391e9"
+        "nodes": "sha256:2373dfebdf1349be702e7156a52400a1a991112bf0c26029cdcd64a0462d905f",
+        "edges": "sha256:954d932d16986be48ca83bdf62ee0c3beef73dd39f10aacd3b555d3d10414b83",
+        "content": "sha256:eaca80e878fd66fbe4224037b757f2dddc5c66bada79296e2da52eb695b98627"
       }
     }
   },
@@ -6511,12 +6426,12 @@
     "componentChecksums": {
       "ontology": "sha256:672651d09be673b2422f514f8f04b8c79fcf2b85d0dcada82d48f53fc3e96173",
       "sources": "sha256:853c0e32aecc5f08c1e75838206d590e86a86347526f30d9546c0e3ed0eb9364",
-      "taxonomy": "sha256:49a44fa05d87d45f71883e397626def0055789c34bb354c1f406572c897391e9",
+      "taxonomy": "sha256:eaca80e878fd66fbe4224037b757f2dddc5c66bada79296e2da52eb695b98627",
       "lexical": "sha256:fdfe07c0dcd3488d829acfcf87a9ab0a56aba341b05c388a1479ca6e85ca9c1e",
       "concepts": "sha256:1d69a75625f5e8040f5ca9243863c9d69a9ab2fae88cc188134d2252e67659f9",
       "gaps": "sha256:6bc0a3699e6f5b0796d9ec6878549d705532dc5d04d28db45eab619d11ba6b19",
       "coverage": "sha256:99eb84d4841c46452131f3bab4b22721c3b61a45b063959787d585b3b222b69f"
     },
-    "contentChecksum": "sha256:c9fbcd3439f6db5429b8de8b74cc35d3adab0be93aecb8a20279f9cce8ef002d"
+    "contentChecksum": "sha256:33a498db80f68c2d7461cbf690360d3d6cc1eae9126c0f65ec7c0f5b87dc7824"
   }
 }

@@ -79,7 +79,7 @@ export const READING_FOUNDATION_NODES = [
   readingNode("identifier_idee_globale", "Identifier l'idée principale d'un texte", "Dégager l'objet et le propos dominants sans choisir un détail isolé.", "main_idea", "all"),
 
   readingNode("reconnaitre_structure_chronologique", "Reconnaître une structure chronologique", "Identifier une organisation fondée sur la succession temporelle.", "structure", "all"),
-  readingNode("reconnaitre_structure_cause_consequence", "Reconnaître une structure de cause et conséquence", "Identifier comment le texte relie causes, mécanismes et résultats.", "structure", "informational"),
+  readingNode("reconnaitre_structure_cause_consequence", "Reconnaître une structure causale", "Identifier comment le texte relie causes, mécanismes et résultats.", "structure", "informational"),
   readingNode("reconnaitre_structure_comparaison", "Reconnaître une structure comparative", "Identifier les critères selon lesquels des éléments sont rapprochés ou opposés.", "structure", "informational"),
   readingNode("reconnaitre_structure_probleme_solution", "Reconnaître une structure problème-solution", "Identifier le problème posé, les réponses proposées et leurs relations.", "structure", "informational"),
   readingNode("identifier_role_paragraphe", "Identifier le rôle d'un paragraphe", "Déterminer si un paragraphe introduit, développe, illustre, nuance ou conclut le propos.", "structure", "all"),
@@ -108,7 +108,7 @@ export const READING_FOUNDATION_NODES = [
 
   readingNode("localiser_span_preuve", "Localiser un passage servant de preuve", "Sélectionner la portion minimale du texte qui soutient une réponse donnée.", "evidence", "all"),
   readingNode("relier_preuve_interpretation", "Relier une preuve à une interprétation", "Expliquer brièvement comment le passage cité soutient l'interprétation proposée.", "evidence", "all", "controlled_production"),
-  readingNode("distinguer_preuve_connaissance_externe", "Distinguer preuve textuelle et connaissance externe", "Écarter une réponse plausible qui n'est pas soutenue par le passage lorsque le texte suffit.", "evidence", "all"),
+  readingNode("distinguer_preuve_connaissance_externe", "Distinguer preuve textuelle/connaissance externe", "Écarter une réponse plausible qui n'est pas soutenue par le passage lorsque le texte suffit.", "evidence", "all"),
 ] satisfies Array<TaxonomyCandidate["nodes"][number] & { textApplicability: ReadingTextApplicability }>;
 
 const edge = (source: string, target: string, prerequisiteClass: "hard" | "soft" = "hard", rationale = "La compétence source fournit une opération nécessaire à l'interprétation cible."): TaxonomyCandidate["edges"][number] => ({
@@ -180,4 +180,3 @@ export const READING_FOUNDATION_CANDIDATE: TaxonomyCandidate = {
   nodes: READING_FOUNDATION_NODES,
   edges: READING_FOUNDATION_EDGES,
 };
-

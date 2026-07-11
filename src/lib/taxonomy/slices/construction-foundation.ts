@@ -1,11 +1,12 @@
 import type { TaxonomyCandidate } from "../validate";
 
 const sourceKey = "sigma-original-taxonomy";
-type Family = "clause" | "reference" | "agreement" | "negation" | "relation" | "discourse";
+type Family = "clause" | "reference" | "agreement" | "agreement_advanced" | "negation" | "relation" | "discourse";
 const placement: Record<Family, { native: string; fsl: string }> = {
   clause: { native: "6", fsl: "A2" },
   reference: { native: "6", fsl: "A2" },
   agreement: { native: "6", fsl: "A1" },
+  agreement_advanced: { native: "8", fsl: "B1" },
   negation: { native: "6", fsl: "A1" },
   relation: { native: "6", fsl: "A2" },
   discourse: { native: "5", fsl: "B1" },
@@ -15,7 +16,7 @@ function node(key: string, labelFr: string, descriptionFr: string, family: Famil
   const levels = placement[family];
   return {
     key,
-    strand: family === "agreement" ? "orthographe_grammaticale" : "grammaire_syntaxe",
+    strand: family === "agreement" || family === "agreement_advanced" ? "orthographe_grammaticale" : "grammaire_syntaxe",
     nodeType: "linguistic",
     labelFr,
     descriptionFr,
@@ -54,7 +55,7 @@ export const CONSTRUCTION_FOUNDATION_NODES: TaxonomyCandidate["nodes"] = [
   node("construction_accord_determinant_nom", "Analyser l'accord déterminant-nom", "Identifier le donneur et les marques de genre ou nombre dans le groupe nominal.", "agreement"),
   node("construction_accord_nom_adjectif", "Analyser l'accord nom-adjectif", "Relier les marques de l'adjectif au nom qui commande son accord.", "agreement"),
   node("construction_accord_sujet_verbe", "Analyser l'accord sujet-verbe", "Relier la personne et le nombre du verbe à son sujet, y compris lorsque les mots sont éloignés.", "agreement"),
-  node("construction_accord_participe", "Analyser l'accord d'un participe passé", "Identifier l'auxiliaire, le donneur d'accord éventuel et la marque réalisée.", "agreement", 5),
+  node("construction_accord_participe", "Analyser l'accord d'un participe passé", "Identifier l'auxiliaire, le donneur d'accord éventuel et la marque réalisée.", "agreement_advanced", 5),
 
   node("construction_negation_simple", "Reconnaître une négation simple", "Identifier l'encadrement négatif courant autour du verbe conjugué.", "negation"),
   node("construction_negation_complexe", "Interpréter une négation complexe", "Distinguer les portées de ne plus, ne jamais, ne rien, ne personne ou ne guère.", "negation"),
@@ -105,9 +106,9 @@ export const CONSTRUCTION_CROSS_SLICE_EDGES: TaxonomyCandidate["edges"] = [
   edge("identifier_sujet_verbe", "construction_accord_sujet_verbe"),
   edge("reconnaitre_auxiliaire", "construction_accord_participe"),
   edge("former_participe_passe", "construction_accord_participe"),
-  edge("construction_chaine_reference", "resoudre_pronom_sujet"),
-  edge("construction_chaine_reference", "resoudre_pronom_objet"),
-  edge("construction_chaine_lexicale", "suivre_chaine_lexicale"),
+  edge("construction_chaine_reference", "resoudre_pronom_sujet", "soft"),
+  edge("construction_chaine_reference", "resoudre_pronom_objet", "soft"),
+  edge("construction_chaine_lexicale", "suivre_chaine_lexicale", "soft"),
   edge("relation_cause", "inferer_cause_locale", "soft"),
   edge("relation_consequence", "inferer_consequence_locale", "soft"),
   edge("relation_chronologie", "inferer_chronologie_implicite", "soft"),
@@ -120,4 +121,3 @@ export const CONSTRUCTION_FOUNDATION_CANDIDATE: TaxonomyCandidate = {
   nodes: CONSTRUCTION_FOUNDATION_NODES,
   edges: CONSTRUCTION_FOUNDATION_EDGES,
 };
-

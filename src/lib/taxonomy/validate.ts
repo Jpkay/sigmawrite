@@ -231,7 +231,7 @@ export function validateTaxonomy(input: unknown): TaxonomyValidation {
     if (!sourceKeys.has(edge.sourceKey)) add("error", "missing_edge_source", `Edge ${edge.source} → ${edge.target} has unknown provenance`, [edge.source, edge.target, edge.sourceKey]);
     if (edge.type === "prerequisite" && !edge.prerequisiteClass) add("error", "missing_prerequisite_class", `Prerequisite ${edge.source} → ${edge.target} is not hard or soft`, [edge.source, edge.target]);
     if (edge.type !== "prerequisite" && edge.prerequisiteClass) add("error", "unexpected_prerequisite_class", `Non-prerequisite edge ${edge.source} → ${edge.target} has a prerequisite class`, [edge.source, edge.target]);
-    if (edge.type === "prerequisite" && nodeKeys.has(edge.source) && nodeKeys.has(edge.target)) {
+    if (edge.type === "prerequisite" && edge.prerequisiteClass === "hard" && nodeKeys.has(edge.source) && nodeKeys.has(edge.target)) {
       const source = candidate.nodes.find((node) => node.key === edge.source)!;
       const target = candidate.nodes.find((node) => node.key === edge.target)!;
       const sourceCefr = source.mappings.find((mapping) => mapping.framework === "cefr")?.levelMin;
@@ -247,4 +247,3 @@ export function validateTaxonomy(input: unknown): TaxonomyValidation {
   issues.sort((left, right) => `${left.severity}:${left.code}:${left.recordKeys.join(":")}`.localeCompare(`${right.severity}:${right.code}:${right.recordKeys.join(":")}`));
   return { valid: !issues.some((issue) => issue.severity === "error"), issues, manifest: buildTaxonomyManifest(candidate) };
 }
-
