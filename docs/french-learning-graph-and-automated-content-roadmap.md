@@ -1152,6 +1152,8 @@ Each goal below is intended to be self-contained enough for one focused implemen
 
 #### G15 — Integrate graph-aware direct and indirect spaced repetition
 
+**Implementation status:** ✅ Implemented, tested, and verified on 2026-07-11. See unified schema [`0042_graph_retrieval.sql`](../supabase/migrations/0042_graph_retrieval.sql) and deterministic scheduler [`graph-scheduler.ts`](../src/lib/retrieval/graph-scheduler.ts). Verification: lessons schedule recognition and production review over shared atomic targets; vocabulary, conjugation, construction, competency, item, and concept targets use one due representation; overdue priority, minimum spacing, lapse repair, interleaving, and exposure caps are deterministic; indirect generation requests and direct prompts share a deduplicated evidence occurrence; immutable package completion is not coupled to later review state.
+
 **Outcome:** The existing retrieval foundation schedules durable review across vocabulary, conjugation, constructions, comprehension competencies, and concepts, both as direct prompts and as planned reappearance in future content.
 
 **Depends on:** G12–G14.
