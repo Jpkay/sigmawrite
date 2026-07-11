@@ -1348,6 +1348,8 @@ Each goal below is intended to be self-contained enough for one focused implemen
 
 #### G22 — Implement automated question and answer QA
 
+**Implementation status:** ✅ Implemented, tested, and verified on 2026-07-11. See independent verifier [`question.ts`](../src/lib/qa/question.ts), versioned evidence schema [`0049_question_answer_qa.sql`](../supabase/migrations/0049_question_answer_qa.sql), and ambiguity/unsupported fixtures. Verification: QA runs only against a passage that passed QA; independent answers, confidence, exact evidence spans, defensible-answer sets, external-knowledge demand, actual competency/demand, distractor defects, and explanation consistency are retained; planted ambiguity and unsupported questions fail; tense questions explicitly distinguish and validate form, meaning, chronology, and discourse effect.
+
 **Outcome:** Every question is independently verified for answerability, uniqueness, competency alignment, distractor quality, and explanation consistency.
 
 **Depends on:** G21.
