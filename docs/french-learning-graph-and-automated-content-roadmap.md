@@ -1321,6 +1321,8 @@ Each goal below is intended to be self-contained enough for one focused implemen
 
 #### G21 — Implement automated passage QA
 
+**Implementation status:** ✅ Implemented, tested, and verified on 2026-07-11. See Gates A–D/H evaluator [`passage.ts`](../src/lib/qa/passage.ts), versioned atomic evidence [`0048_passage_qa.sql`](../supabase/migrations/0048_passage_qa.sql), and planted-violation tests. Verification: structure/format, length, lexical coverage/budget/support, construction and conjugation compliance, verb/agreement issues, multidimensional difficulty and predicted success, competency/prerequisite/retrieval/course alignment, duplicate similarity, naturalness, and engagement are independently reported; planted vocabulary, tense, formatting, and difficulty defects fail with exact explanations; deterministic hard failures cannot be hidden by scores; generator and independent evaluator identities must differ.
+
 **Outcome:** Deterministic and independent model-assisted checks evaluate Gates A–D and H for every passage.
 
 **Depends on:** G20.
