@@ -1124,6 +1124,8 @@ Each goal below is intended to be self-contained enough for one focused implemen
 
 #### G14 — Implement lesson, module, and course packaging
 
+**Implementation status:** ✅ Implemented, tested, and verified on 2026-07-11. See migration [`0041_learning_packages.sql`](../supabase/migrations/0041_learning_packages.sql), explicit completion evaluator [`package-progress.ts`](../src/lib/learning/package-progress.ts), and their tests. Verification: stable packages have immutable published versions; atomic nodes and child packages compose many-to-many with required/optional/remedial/enrichment intent; audience, progression overlay, and completion rules are versioned; completion events snapshot their criteria/evidence and cannot be changed by later course revisions or spaced review; summaries serve students, parents, teachers, and systems.
+
 **Outcome:** Atomic graph learnings can be assembled into finite, versioned lessons, modules, and courses with visible progress and durable completion records.
 
 **Depends on:** G12, G13.

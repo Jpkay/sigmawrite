@@ -1,0 +1,14 @@
+begin;create extension if not exists pgtap with schema extensions;select plan(12);
+select has_table('public','learning_packages','Stable learning-package identities exist');
+select has_table('public','learning_package_versions','Packages have explicit versions');
+select has_table('public','learning_package_node_memberships','Atomic nodes join packages many-to-many');
+select has_table('public','learning_package_child_memberships','Lessons/modules/courses compose many-to-many');
+select has_column('public','learning_package_node_memberships','membership_type','Membership intent is explicit');
+select has_column('public','learning_package_versions','audience_rule','Audience rules are versioned');
+select has_column('public','learning_package_versions','progression_overlay_rule','Progression overlays are versioned');
+select has_column('public','learning_package_versions','completion_criteria','Completion criteria are explicit');
+select has_table('public','student_package_completions','Durable completion events exist');
+select has_trigger('public','student_package_completions','immutable_package_completion','Completion achievements are immutable');
+select has_trigger('public','learning_package_node_memberships','immutable_published_package_nodes','Published node membership is immutable');
+select has_trigger('public','learning_package_child_memberships','immutable_published_package_children','Published composition is immutable');
+select * from finish();rollback;
