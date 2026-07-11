@@ -16,7 +16,8 @@ import { moderateStudentText } from "@/lib/safety/moderate-input";
 import { logAudit } from "@/lib/audit";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { getActivePrompt } from "@/lib/db/ai";
-import { nextDiagnosticItem, frontierForStudent } from "@/lib/diagnostic/live";
+import { nextDiagnosticItem, frontierForStudent, diagnosticRequirement } from "@/lib/diagnostic/live";
+import { diagnosticDimensionPatch } from "@/lib/diagnostic/lifecycle";
 import { bktUpdate, bktUpdateWeighted, guessFromChoices, masteryUncertainty } from "@/lib/scoring/bkt";
 import { validateAnswer } from "@/lib/linguistic/validator";
 import { getCatchUpPlan } from "@/lib/db/practice";
@@ -241,13 +242,29 @@ export async function startAdaptiveDiagnostic(input: unknown) {
   if (process.env.ADAPTIVE_DIAGNOSTIC_ENABLED === "false") throw new Error("Diagnostic adaptatif désactivé pour cet environnement.");
   const { supabase, studentId } = await context();
   await supabase.from("diagnostic_runs").update({ status: "abandoned", completed_at: new Date().toISOString() }).eq("student_id", studentId).eq("status", "running");
-  const { data: goal } = await supabase.from("learning_goals").select("id").eq("student_id", studentId).eq("status", "active").order("created_at", { ascending: false }).limit(1).maybeSingle();
+  const service = createServiceClient();
+  const requirement = await diagnosticRequirement(studentId, service);
+  const [{ data: goal }, { data: release }, { data: estimates }] = await Promise.all([
+    supabase.from("learning_goals").select("id").eq("student_id", studentId).eq("status", "active").order("created_at", { ascending: false }).limit(1).maybeSingle(),
+    service.from("taxonomy_releases").select("id").eq("status", "published").order("published_at", { ascending: false }).limit(1).maybeSingle(),
+    service.from("student_competency_estimates").select("node_id,mastery_probability,uncertainty,evidence_count,receptive_score,productive_score,written_score,oral_score,last_evidence_at").eq("student_id", studentId),
+  ]);
   if (!goal) throw new Error("Choisis d’abord ton objectif.");
-  const { data: run, error } = await supabase.from("diagnostic_runs").insert({ student_id: studentId, learning_goal_id: goal.id }).select("id,started_at").single();
+  const { data: run, error } = await supabase.from("diagnostic_runs").insert({ student_id: studentId, learning_goal_id: goal.id, run_type: requirement.kind === "calibration" ? "calibration" : requirement.kind, trigger_reason: requirement.reason, taxonomy_release_id: release?.id ?? null, config_snapshot: { inactivity_days: 60, uncertainty_threshold: .65, max_probes: 30 }, prior_state_snapshot: estimates ?? [] }).select("id,started_at").single();
   if (error || !run) throw new Error(error?.message ?? "Diagnostic non créé.");
-  const item = await nextDiagnosticItem(studentId, run.id as string, createServiceClient());
+  if (requirement.kind === "reentry" && requirement.targetNodeIds.length) {
+    const { error: targetError } = await service.from("diagnostic_run_targets").insert(requirement.targetNodeIds.map((nodeId) => ({ run_id: run.id, node_id: nodeId, target_reason: requirement.reason === "inactivity" ? "stale" : "uncertain" })));
+    if (targetError) throw new Error(targetError.message);
+  }
+  const item = await nextDiagnosticItem(studentId, run.id as string, service);
   if (!item) throw new Error("La banque d’items ne contient pas encore assez de questions.");
   return { runId: run.id as string, startedAt: run.started_at as string, item };
+}
+
+export async function loadDiagnosticRequirement(input: unknown) {
+  checked(emptySchema, input);
+  const { studentId } = await context();
+  return diagnosticRequirement(studentId, createServiceClient());
 }
 
 export async function loadStudentCatchUpPlan(input: unknown) {
@@ -342,27 +359,31 @@ export async function submitAdaptiveDiagnosticProbe(input: unknown) {
       modality: item.modality, answer_text: data.answerText ?? null, selected_choice_id: data.selectedChoiceId ?? null,
       is_correct: correct, score: correct ? 1 : 0, latency_ms: latencyMs, context: "diagnostic", diagnostic_run_id: data.runId, attempted_at: attemptedAt,
     }),
-    service.from("student_competency_estimates").select("mastery_probability,evidence_count").eq("student_id", studentId).eq("node_id", item.primary_node_id).maybeSingle(),
+    service.from("student_competency_estimates").select("mastery_probability,evidence_count,receptive_score,productive_score,written_score,oral_score").eq("student_id", studentId).eq("node_id", item.primary_node_id).maybeSingle(),
   ]);
   if (attemptError) throw new Error(attemptError.message);
   const evidenceCount = Number(previous?.evidence_count ?? 0) + 1;
   const mastery = bktUpdate(Number(previous?.mastery_probability ?? 0.5), correct, {}, guessFromChoices(choices.length));
   const probeCount = Number(run.probe_count) + 1;
+  const dimensionPatch = diagnosticDimensionPatch(item.modality, correct ? 1 : 0);
   const [{ error: estimateError }] = await Promise.all([
     service.from("student_competency_estimates").upsert({
       student_id: studentId, node_id: item.primary_node_id, mastery_probability: mastery,
       uncertainty: masteryUncertainty(mastery, evidenceCount), evidence_count: evidenceCount,
+      ...Object.fromEntries(Object.entries(dimensionPatch).map(([key, value]) => [key.replace(/[A-Z]/g, letter => `_${letter.toLowerCase()}`), value])),
       last_practiced_at: attemptedAt, last_evidence_at: attemptedAt, updated_at: attemptedAt,
     }, { onConflict: "student_id,node_id" }),
     service.from("diagnostic_runs").update({ probe_count: probeCount }).eq("id", data.runId),
   ]);
   if (estimateError) throw new Error(estimateError.message);
-  const next = probeCount >= 15 ? null : await nextDiagnosticItem(studentId, data.runId, service);
+  const next = probeCount >= 30 ? null : await nextDiagnosticItem(studentId, data.runId, service);
   if (next) return { correct, done: false as const, item: next, probeCount };
   const frontier = await frontierForStudent(studentId, service);
   const tested = [...frontier.report.mastered, ...frontier.report.fragile, ...frontier.report.missing].length || 1;
   const grade = Math.max(5, Math.min(12, 5 + (frontier.report.mastered.length / tested) * 7));
-  await service.from("diagnostic_runs").update({ status: "completed", completed_at: attemptedAt, frontier_report: frontier, derived_reading_band: `Grade ${grade.toFixed(1)}` }).eq("id", data.runId);
+  const summaryPayload = { studentFr: "Ton diagnostic a trouvé tes points forts et tes prochaines étapes.", parentFr: `${frontier.report.missing.length} fondation(s) prioritaire(s) ont été repérées.`, teacherFr: `Profil adaptatif terminé après ${probeCount} sondes.`, system: { mastered: frontier.report.mastered, fragile: frontier.report.fragile, missing: frontier.report.missing } };
+  await service.from("diagnostic_runs").update({ status: "completed", completed_at: attemptedAt, frontier_report: frontier, coverage_report: { tested, mastered: frontier.report.mastered.length, fragile: frontier.report.fragile.length, missing: frontier.report.missing.length }, stopping_reason: probeCount >= 30 ? "max_probes" : "item_exhaustion", summary_payload: summaryPayload, derived_reading_band: `Grade ${grade.toFixed(1)}` }).eq("id", data.runId);
+  if (frontier.report.missing.length) await service.from("diagnostic_recommendations").insert(frontier.report.missing.slice(0, 10).map((nodeId, index) => ({ run_id: data.runId, student_id: studentId, recommendation_type: "remediation", target_node_id: nodeId, priority: index + 1, rationale: "Fondation manquante détectée par le diagnostic adaptatif." })));
   await service.from("student_reading_estimates").insert({ student_id: studentId, estimate_type: "adaptive_diagnostic", grade_min: Math.max(5, grade - 0.5), grade_max: Math.min(12, grade + 0.5), confidence: probeCount >= 8 ? "high" : "medium", evidence_count: probeCount });
   const bandNumber = Math.max(5, Math.min(10, Math.round(grade)));
   await service.from("diagnostic_results").insert({ student_id: studentId, grade_min: Math.max(5, grade - 0.5), grade_max: Math.min(12, grade + 0.5), confidence: probeCount >= 8 ? "high" : "medium", recommended_starting_level: bandNumber <= 6 ? `Foundation ${bandNumber}A` : `Secondary ${bandNumber}A`, narrative_estimate: grade, expository_estimate: grade, argumentative_estimate: Math.max(5, grade - 0.5), source_based_estimate: grade, summary_text: null, completed_at: attemptedAt });

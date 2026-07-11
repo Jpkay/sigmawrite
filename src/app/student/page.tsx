@@ -11,7 +11,7 @@ import { SEED_TEXT_BY_ID } from "@/lib/content/texts";
 import { recommendTextId } from "@/lib/content/recommend";
 import type { SeedText } from "@/lib/content/types";
 import { hasStudentBackend, useStudentState } from "@/lib/student-store";
-import { loadLatestReadingResume, loadStudentCatchUpPlan, loadStudentMotivation, recommendReadingText, recommendReadingTexts } from "@/lib/actions/student";
+import { loadDiagnosticRequirement, loadLatestReadingResume, loadStudentCatchUpPlan, loadStudentMotivation, recommendReadingText, recommendReadingTexts } from "@/lib/actions/student";
 import type { CatchUpStep } from "@/lib/db/practice";
 import { StudentAssignments } from "@/components/student-assignments";
 import { track } from "@/lib/analytics";
@@ -25,6 +25,7 @@ export default function StudentHome() {
   const [plan, setPlan] = useState<CatchUpStep[]>([]);
   const [motivation,setMotivation]=useState<{streak:number;today:unknown;week:unknown[]}|null>(null);
   const [resume,setResume]=useState<{textKey:string;title:string;phase:string}|null>(null);
+  const [assessment,setAssessment]=useState<{required:boolean;kind:string;reason:string}|null>(null);
 
   useEffect(() => {
     const local = SEED_TEXT_BY_ID[recommendTextId(state.interests)];
@@ -37,6 +38,7 @@ export default function StudentHome() {
     loadStudentCatchUpPlan({}).then((steps) => { if (active) setPlan(steps.slice(0, 3)); }).catch(() => undefined);
     loadStudentMotivation({}).then(value=>{if(active)setMotivation(value);}).catch(()=>undefined);
     loadLatestReadingResume({}).then(value=>{if(active)setResume(value);}).catch(()=>undefined);
+    loadDiagnosticRequirement({}).then(value=>{if(active)setAssessment(value);}).catch(()=>undefined);
     return () => { active = false; };
   }, [state.hydrated, state.diagnostic, state.interests]);
 
@@ -111,6 +113,8 @@ export default function StudentHome() {
       />
 
       <StudentAssignments />
+
+      {assessment?.required && assessment.kind === "reentry" && <Card className="mb-6 border-primary/40 bg-accent/40"><CardContent className="flex flex-wrap items-center justify-between gap-4 pt-6"><div><p className="font-medium">Mets ton profil à jour</p><p className="text-sm text-muted-foreground">Quelques questions ciblées suffisent. Tes progrès précédents sont conservés.</p></div><Link href="/student/diagnostic" className={buttonVariants()}>Mettre à jour <ArrowRight /></Link></CardContent></Card>}
 
       <div className="mb-6 grid gap-4 sm:grid-cols-2"><Card><CardContent className="pt-6"><p className="text-sm text-muted-foreground">Objectif du jour</p><p className="mt-1 text-xl font-semibold">{motivation?.today?"Atteint aujourd’hui":"Une lecture ou une étape"}</p><p className="mt-2 text-sm text-muted-foreground">🔥 Série privée : {motivation?.streak??0} jour(s)</p></CardContent></Card>{resume&&<Card className="border-primary/40"><CardContent className="flex flex-wrap items-center justify-between gap-3 pt-6"><div><p className="text-sm text-muted-foreground">Reprendre ta lecture</p><p className="font-medium">{resume.title}</p></div><Link href={`/student/read/${resume.textKey}`} className={buttonVariants()}>Reprendre <ArrowRight/></Link></CardContent></Card>}</div>
 

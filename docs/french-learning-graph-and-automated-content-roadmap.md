@@ -1092,6 +1092,8 @@ Each goal below is intended to be self-contained enough for one focused implemen
 
 #### G13 — Implement the initial and re-entry graph diagnostic
 
+**Implementation status:** ✅ Implemented, tested, and verified on 2026-07-11. See lifecycle logic [`lifecycle.ts`](../src/lib/diagnostic/lifecycle.ts), the existing graph-descent engine, migration [`0040_initial_reentry_diagnostic.sql`](../supabase/migrations/0040_initial_reentry_diagnostic.sql), and realistic jagged-profile tests. Verification: new learners receive initial assessment; inactivity or high uncertainty creates targeted re-entry without deleting evidence; strand/modality estimates remain separate; information-gain and coverage stopping are deterministic; smallest prerequisite remediation roots and audience-specific summaries are produced while historical completion data remains untouched.
+
 **Outcome:** Every new student and every student returning with stale evidence receives an adaptive assessment that produces a granular, non-harmonised mastery profile, uncertainty estimates, missing prerequisites, and recommended remediation paths.
 
 **Depends on:** G12.

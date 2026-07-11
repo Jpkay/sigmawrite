@@ -41,6 +41,9 @@ async function loadGraphData(studentId: string, db: SupabaseClient): Promise<Gra
 }
 
 export async function nextDiagnosticItem(studentId: string, runId: string, db: SupabaseClient): Promise<LiveDiagnosticItem | null> {
+  const targeted = await db.rpc("next_reentry_diagnostic_item", { p_student_id: studentId, p_run_id: runId });
+  if (targeted.error) throw new Error(targeted.error.message);
+  if (targeted.data) return targeted.data as LiveDiagnosticItem;
   const { data, error } = await db.rpc("next_diagnostic_item", {
     p_student_id: studentId,
     p_run_id: runId,
@@ -48,6 +51,12 @@ export async function nextDiagnosticItem(studentId: string, runId: string, db: S
   if (error) throw new Error(error.message);
   if (!data) return null;
   return data as LiveDiagnosticItem;
+}
+
+export async function diagnosticRequirement(studentId: string, db: SupabaseClient) {
+  const { data, error } = await db.rpc("student_diagnostic_requirement", { p_student_id: studentId });
+  if (error) throw new Error(error.message);
+  return data as { required: boolean; kind: "initial" | "reentry" | "calibration"; reason: string; targetNodeIds: string[] };
 }
 
 export async function frontierForStudent(studentId: string, db: SupabaseClient) {
