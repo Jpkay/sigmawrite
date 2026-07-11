@@ -1295,6 +1295,8 @@ Each goal below is intended to be self-contained enough for one focused implemen
 
 #### G20 — Generate multiple candidates from the contract
 
+**Implementation status:** ✅ Implemented, tested, and verified on 2026-07-11. See provider-neutral orchestrator [`candidates.ts`](../src/lib/generation/candidates.ts), private immutable records [`0047_contract_candidate_generation.sql`](../supabase/migrations/0047_contract_candidate_generation.sql), and bounded failure/retry tests. Verification: prompts embed the complete structured contract; every 2–5 candidate set uses explicit timeout and contract-bounded retries; deterministic idempotency keys prevent duplicate retries; candidate content pins contract, prompt, provider/model, request, taxonomy and lexical provenance; token, cost, latency, and failures are recorded; all candidates remain private in `pending_qa`, and generation failure cannot produce visible or accepted content.
+
 **Outcome:** The generation service produces a bounded candidate set with complete provenance but does not make candidates student-visible.
 
 **Depends on:** G18, G19.
