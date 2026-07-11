@@ -959,6 +959,8 @@ Each goal below is intended to be self-contained enough for one focused implemen
 
 #### G08 — Extend the vocabulary catalog into a lexical graph schema
 
+**Implementation status:** ✅ Implemented, tested, and verified on 2026-07-11. See migration [`0037_lexical_graph.sql`](../supabase/migrations/0037_lexical_graph.sql) and [`0037_lexical_graph_test.sql`](../supabase/tests/0037_lexical_graph_test.sql). Verification: lemmas support multiple senses, forms, families, collocations, source-specific frequencies, relationships, and independent progression mappings; legacy `vocabulary_items` remain compatibility anchors for all student mastery, and passage-token coverage resolves against an immutable lexical release.
+
 **Outcome:** The database can represent lemmas, senses, forms, families, frequency, register, collocations, level mappings, and lexical relationships without breaking current word-mastery records.
 
 **Depends on:** G01, G02, G05.
