@@ -823,6 +823,8 @@ Each goal below is intended to be self-contained enough for one focused implemen
 
 #### G03 — Extend the database for versioned taxonomy releases
 
+**Implementation status:** ✅ Implemented and verified on 2026-07-11. See migration [`0036_versioned_french_taxonomy.sql`](../supabase/migrations/0036_versioned_french_taxonomy.sql) and its pgTAP test [`0036_versioned_french_taxonomy_test.sql`](../supabase/tests/0036_versioned_french_taxonomy_test.sql). Verification: the additive schema preserves existing node identifiers and estimates, records structured evidence/provenance and independent mappings, snapshots release members, and rejects mutation of published releases.
+
 **Outcome:** The existing graph supports structured evidence, node types, domains/clusters, edge reasons and hard/soft classification, source links, release membership, and immutable published releases.
 
 **Depends on:** G01, G02.
