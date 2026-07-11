@@ -907,6 +907,8 @@ Each goal below is intended to be self-contained enough for one focused implemen
 
 #### G06 — Author and validate the conjugation foundation slice
 
+**Implementation status:** 🟡 Implemented and automated verification prepared on 2026-07-11; French educator sign-off remains required. See [`conjugation-foundation.ts`](../src/lib/taxonomy/slices/conjugation-foundation.ts), its automated tests, and [`conjugation-foundation-review-v1.md`](./conjugation-foundation-review-v1.md). Do not mark this goal complete until the review record contains an approved educator decision.
+
 **Outcome:** A coherent conjugation subgraph connects subject recognition, person/number, verb families, auxiliaries, forms, tense meanings, agreement, temporal markers, and discourse use.
 
 **Depends on:** G05.
