@@ -934,6 +934,8 @@ Each goal below is intended to be self-contained enough for one focused implemen
 
 #### G07 — Author and validate the reading-comprehension foundation slice
 
+**Implementation status:** ✅ Implemented, tested, and verified on 2026-07-11. See [`reading-comprehension-foundation.ts`](../src/lib/taxonomy/slices/reading-comprehension-foundation.ts) and its automated tests. Verification: 40 evidence-bearing atomic nodes and explicit prerequisite rationales cover all ten required question families with separate L1/FSL mappings; literary, informational, argumentative, and shared evidence paths are distinguished and the full taxonomy validator passes.
+
 **Outcome:** A prerequisite graph covers the high-value reading competencies required for generated passages and questions.
 
 **Depends on:** G05.
