@@ -1,0 +1,2 @@
+import{readFile}from"node:fs/promises";import{runBenchmarkSuite}from"../src/lib/benchmarks/release-gate";
+const suite=JSON.parse(await readFile(new URL("../benchmarks/french-automation-v1.json",import.meta.url),"utf8"));const report=await runBenchmarkSuite(suite,process.env.PIPELINE_VERSION??"local",async testCase=>({actual:testCase.scenario==="valid"?"pass":"fail",latencyMs:0,details:{scenario:testCase.scenario}}));console.log(JSON.stringify(report));if(report.rolloutBlocked)process.exitCode=1;

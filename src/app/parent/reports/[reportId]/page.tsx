@@ -1,10 +1,18 @@
-import { PageHeader, ComingSoon } from "@/components/page";
+import { notFound } from "next/navigation";
+import { PageHeader } from "@/components/page";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { requireRole } from "@/lib/auth";
+import { createClient } from "@/lib/supabase/server";
+import { ReportOpenTracker } from "./report-open-tracker";
+import { getAdultLanguage } from "@/lib/i18n";
 
-export default function Page() {
-  return (
-    <>
-      <PageHeader title="Rapport hebdomadaire" description="Le rapport de progrès détaillé." />
-      <ComingSoon phase="Phase 5" note="Les rapports hebdomadaires arrivent en Phase 5." />
-    </>
-  );
+type Payload = { studentName: string; report: { band: string; confidence: string; textsCompleted: number; minutes: number; avgSuccess: number | null; strengths: string[]; needsWork: string[]; vocabCount: number; retrievalReviewed: number }; proof: Record<string, Array<{ title: string; band: string; success: number }>> };
+
+export default async function ParentReportPage({ params }: { params: Promise<{ reportId: string }> }) {
+  await requireRole(["parent"]); const { reportId } = await params; const supabase = await createClient();
+  const [{ data }, language] = await Promise.all([supabase.from("parent_reports").select("id,report_period_start,report_period_end,report_payload,created_at").eq("id", reportId).maybeSingle(), getAdultLanguage(supabase)]); if (!data) notFound();
+  const payload = data.report_payload as Payload; const report = payload.report;
+  const en = language === "en";
+  return <><ReportOpenTracker reportId={reportId} /><PageHeader title={en ? `${payload.studentName}’s report` : `Rapport de ${payload.studentName}`} description={en ? `Immutable snapshot from ${data.report_period_start} to ${data.report_period_end}.` : `Snapshot immuable du ${data.report_period_start} au ${data.report_period_end}.`} /><Card className="mb-6"><CardContent className="flex flex-wrap items-center gap-3 pt-6"><span className="text-2xl font-semibold">{report.band}</span><Badge variant="secondary">{en ? "Confidence" : "Confiance"} : {report.confidence}</Badge></CardContent></Card><div className="mb-6 grid grid-cols-2 gap-4 lg:grid-cols-4">{[[(en?"Texts":"Textes"),report.textsCompleted],["Minutes",report.minutes],[(en?"Success":"Réussite"),report.avgSuccess == null ? "—" : `${Math.round(report.avgSuccess*100)}%`],[(en?"Memory reviews":"Révisions mémoire"),report.retrievalReviewed]].map(([label,value]) => <Card key={String(label)}><CardContent className="pt-6"><p className="text-sm text-muted-foreground">{label}</p><p className="mt-1 text-2xl font-semibold">{value}</p></CardContent></Card>)}</div><div className="grid gap-4 sm:grid-cols-2"><Card><CardContent className="pt-6"><h2 className="mb-2 font-semibold">{en?"Strengths":"Points forts"}</h2><ul className="list-inside list-disc text-sm text-muted-foreground">{report.strengths.map((item) => <li key={item}>{item}</li>)}</ul></CardContent></Card><Card><CardContent className="pt-6"><h2 className="mb-2 font-semibold">{en?"Focus next":"À travailler"}</h2><ul className="list-inside list-disc text-sm text-muted-foreground">{report.needsWork.map((item) => <li key={item}>{item}</li>)}</ul></CardContent></Card></div></>;
 }

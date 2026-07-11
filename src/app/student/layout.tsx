@@ -1,5 +1,8 @@
 import { DashboardShell, type NavItem } from "@/components/dashboard-shell";
 import { getSessionProfile } from "@/lib/auth";
+import { getStudentConsentGate } from "@/lib/db/lifecycle";
+import { isSupabaseConfigured } from "@/lib/supabase/server";
+import { ConsentPending } from "@/components/consent-pending";
 
 const nav: NavItem[] = [
   { href: "/student", label: "Accueil" },
@@ -8,6 +11,7 @@ const nav: NavItem[] = [
   { href: "/student/vocabulary", label: "Vocabulaire" },
   { href: "/student/memory", label: "Mémoire" },
   { href: "/student/progress", label: "Progrès" },
+  { href: "/student/frontier", label: "Frontière" },
   { href: "/student/settings", label: "Paramètres" },
 ];
 
@@ -17,13 +21,16 @@ export default async function StudentLayout({
   children: React.ReactNode;
 }) {
   const session = await getSessionProfile();
+  const consent = session?.role === "student" && isSupabaseConfigured
+    ? await getStudentConsentGate()
+    : null;
   return (
     <DashboardShell
       area="Élève"
       nav={nav}
-      user={{ name: session?.displayName ?? "Élève", role: session?.role ?? "student" }}
+      user={{ name: session?.displayName ?? "Élève", role: session?.role ?? "student", analyticsId: session?.id }}
     >
-      {children}
+      {consent && !consent.active ? <ConsentPending canSelfConsent={consent.canSelfConsent} /> : children}
     </DashboardShell>
   );
 }

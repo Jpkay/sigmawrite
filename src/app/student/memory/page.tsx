@@ -11,7 +11,10 @@ import {
   RETRIEVAL_RESULT_LABEL,
   type RetrievalResult,
 } from "@/lib/scoring/retrieval";
-import { recordRetrieval, useStudentState } from "@/lib/student-store";
+import { hasStudentBackend, recordRetrieval, replaceStudentState, useStudentState } from "@/lib/student-store";
+import { submitRetrievalAttempt } from "@/lib/actions/student";
+import { AccentTextarea } from "@/components/accent-textarea";
+import { track } from "@/lib/analytics";
 
 const RESULT_VARIANT: Record<RetrievalResult, "success" | "default" | "secondary"> = {
   easy: "success",
@@ -30,6 +33,8 @@ export default function MemoryPage() {
 
   const [answer, setAnswer] = useState("");
   const [graded, setGraded] = useState<RetrievalResult | null>(null);
+  const [pending, setPending] = useState(false);
+  const [error, setError] = useState("");
 
   const card = due[0];
 
@@ -42,10 +47,24 @@ export default function MemoryPage() {
     setGraded(gradeRetrieval(answer, card.keywords));
   }
 
-  function next() {
-    if (card && graded) recordRetrieval(card.id, graded, Date.now());
-    setAnswer("");
-    setGraded(null);
+  async function next() {
+    if (!card || !graded) return;
+    setPending(true);
+    setError("");
+    recordRetrieval(card.id, graded, Date.now());
+    try {
+      if (hasStudentBackend) {
+        const response = await submitRetrievalAttempt({ cardId: card.id, answerText: answer, attemptedAt: new Date().toISOString() });
+        replaceStudentState(response.state);
+      }
+      track("retrieval_completed", { card_id: card.id, result: graded });
+      setAnswer("");
+      setGraded(null);
+    } catch {
+      setError("Ta réponse n'a pas pu être enregistrée. Réessaie plus tard.");
+    } finally {
+      setPending(false);
+    }
   }
 
   // Concept mastery = how far each concept's cards have climbed the ladder.
@@ -90,9 +109,9 @@ export default function MemoryPage() {
               </span>
             </div>
             <p className="font-medium">{card.promptFr}</p>
-            <textarea
+            <AccentTextarea
               value={answer}
-              onChange={(e) => setAnswer(e.target.value)}
+              onChange={setAnswer}
               rows={3}
               disabled={graded !== null}
               placeholder="Réponds avec tes mots…"
@@ -103,7 +122,7 @@ export default function MemoryPage() {
                 <Badge variant={RESULT_VARIANT[graded]}>
                   {RETRIEVAL_RESULT_LABEL[graded]}
                 </Badge>
-                <Button onClick={next} className="ml-2">
+                <Button onClick={next} className="ml-2" disabled={pending}>
                   Carte suivante
                 </Button>
               </div>
@@ -112,6 +131,7 @@ export default function MemoryPage() {
                 Vérifier <Check />
               </Button>
             )}
+            {error && <p className="text-sm text-destructive">{error}</p>}
           </CardContent>
         </Card>
       )}

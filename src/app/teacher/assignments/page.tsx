@@ -5,11 +5,13 @@ import { AssignmentForm } from "@/components/assignment-form";
 import { getTeacherClasses } from "@/lib/db/dashboard";
 import { getTeacherAssignments } from "@/lib/db/assignments";
 import { SEED_TEXTS, SEED_TEXT_BY_ID } from "@/lib/content/texts";
+import { createClient } from "@/lib/supabase/server";
 
 export default async function TeacherAssignmentsPage() {
-  const [classes, assignments] = await Promise.all([
+  const [classes, assignments, nodesResult] = await Promise.all([
     getTeacherClasses(),
     getTeacherAssignments(),
+    (await createClient()).from("competency_nodes").select("id,label_fr").in("review_status", ["auto_approved","human_approved"]).order("label_fr"),
   ]);
   const classNames = new Map(classes.map((c) => [c.id, c.name]));
   const texts = SEED_TEXTS.map((t) => ({ slug: t.id, title: t.title }));
@@ -24,6 +26,7 @@ export default async function TeacherAssignmentsPage() {
       <AssignmentForm
         classes={classes.map((c) => ({ id: c.id, name: c.name }))}
         texts={texts}
+        nodes={(nodesResult.data ?? []).map((node) => ({ id: node.id as string, label: node.label_fr as string }))}
       />
 
       <h2 className="mb-3 text-lg font-semibold">Devoirs assignés</h2>
@@ -38,7 +41,7 @@ export default async function TeacherAssignmentsPage() {
                   <p className="font-medium">{a.title}</p>
                   <p className="text-sm text-muted-foreground">
                     {classNames.get(a.class_id) ?? "Classe"} ·{" "}
-                    {SEED_TEXT_BY_ID[a.text_slug]?.title ?? a.text_slug}
+                    {a.target_type === "text" && a.text_slug ? (SEED_TEXT_BY_ID[a.text_slug]?.title ?? a.text_slug) : "Micro-session de compétence"}
                     {a.due_at ? ` · échéance ${a.due_at}` : ""}
                   </p>
                 </div>

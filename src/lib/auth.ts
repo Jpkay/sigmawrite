@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { createClient, isSupabaseConfigured } from "@/lib/supabase/server";
 import { ROLE_HOME, type Role } from "@/lib/types";
+import { getReviewerAccess } from "@/lib/db/reviews";
 
 export type SessionProfile = {
   id: string;
@@ -50,5 +51,12 @@ export async function requireRole(allowed: Role[]): Promise<SessionProfile> {
   const session = await getSessionProfile();
   if (!session) redirect("/login");
   if (!allowed.includes(session.role)) redirect(ROLE_HOME[session.role]);
+  return session;
+}
+
+export async function requireActiveReviewer(): Promise<SessionProfile> {
+  const session = await requireRole(["platform_admin", "content_reviewer"]);
+  const access = await getReviewerAccess(session.id);
+  if (!access?.active) redirect("/login?error=reviewer_inactive");
   return session;
 }

@@ -3,8 +3,8 @@ import { NextResponse, type NextRequest } from "next/server";
 import { ROLE_HOME, type Role } from "@/lib/types";
 
 const PUBLIC_PREFIXES = ["/about", "/schools", "/parents", "/privacy", "/terms"];
-const AUTH_PREFIXES = ["/login", "/signup", "/join", "/consent", "/reset-password"];
-const PROTECTED_PREFIXES = ["/student", "/parent", "/teacher", "/admin"];
+const AUTH_PREFIXES = ["/login", "/signup", "/join", "/reset-password"];
+const PROTECTED_PREFIXES = ["/student", "/parent", "/teacher", "/admin", "/review"];
 
 const isConfigured =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -72,7 +72,8 @@ export async function updateSession(request: NextRequest) {
     if (role && isProtected) {
       const allowed = home.split("/")[1];
       const target = pathname.split("/")[1];
-      if (allowed !== target) {
+      const platformReviewerAccess = role === "platform_admin" && target === "review";
+      if (allowed !== target && !platformReviewerAccess) {
         const url = request.nextUrl.clone();
         url.pathname = home;
         return NextResponse.redirect(url);

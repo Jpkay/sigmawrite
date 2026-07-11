@@ -2,10 +2,8 @@ import type { DiagnosticResult, ReadingSessionResult } from "@/lib/types";
 import { SEED_TEXT_BY_ID } from "@/lib/content/texts";
 
 /**
- * Parent/teacher reporting (PRD §M, §N). Pure functions over a student's
- * persisted `app_state` document, so they work the same on the server
- * (dashboards) and in tests. No fake precision — bands and confidence come
- * straight from the diagnostic.
+ * Parent/teacher reporting (PRD §M, §N). Pure functions over a relationally
+ * assembled student snapshot, shared by server dashboards and unit tests.
  */
 export type StudentSnapshot = {
   onboarded?: boolean;

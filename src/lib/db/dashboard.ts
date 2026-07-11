@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import type { StudentRow, StudentSnapshot } from "@/lib/reports";
+import { getStudentStateData } from "@/lib/db/student";
 
 /**
  * Server-side dashboard reads. All queries run through the authenticated
@@ -11,32 +12,34 @@ import type { StudentRow, StudentSnapshot } from "@/lib/reports";
 type StudentRecord = {
   id: string;
   display_name: string | null;
-  app_state: StudentSnapshot | null;
 };
 
-const toRow = (r: StudentRecord): StudentRow => ({
+const toRow = (r: StudentRecord, snap: StudentSnapshot): StudentRow => ({
   id: r.id,
   name: r.display_name ?? "Élève",
-  snap: r.app_state ?? {},
+  snap,
 });
 
 /** Students the caller may view (parent → children; teacher → taught). */
 export async function getViewableStudents(): Promise<StudentRow[]> {
   const supabase = await createClient();
-  const { data } = await supabase
-    .from("students")
-    .select("id, display_name, app_state");
-  return ((data as StudentRecord[] | null) ?? []).map(toRow);
+  const { data } = await supabase.from("students").select("id, display_name");
+  const students = (data as StudentRecord[] | null) ?? [];
+  return Promise.all(students.map(async (student) =>
+    toRow(student, await getStudentStateData(student.id, supabase))
+  ));
 }
 
 export async function getStudentRow(studentId: string): Promise<StudentRow | null> {
   const supabase = await createClient();
   const { data } = await supabase
     .from("students")
-    .select("id, display_name, app_state")
+    .select("id, display_name")
     .eq("id", studentId)
     .maybeSingle();
-  return data ? toRow(data as StudentRecord) : null;
+  if (!data) return null;
+  const student = data as StudentRecord;
+  return toRow(student, await getStudentStateData(student.id, supabase));
 }
 
 export type ClassRecord = { id: string; name: string; grade_level: number | null };
@@ -51,11 +54,13 @@ export async function getClassStudents(classId: string): Promise<StudentRow[]> {
   const supabase = await createClient();
   const { data } = await supabase
     .from("enrollments")
-    .select("student:students(id, display_name, app_state)")
+    .select("student:students(id, display_name)")
     .eq("class_id", classId);
   const rows = (data as { student: StudentRecord | StudentRecord[] }[] | null) ?? [];
-  return rows
+  const students = rows
     .map((e) => (Array.isArray(e.student) ? e.student[0] : e.student))
-    .filter((s): s is StudentRecord => !!s)
-    .map(toRow);
+    .filter((s): s is StudentRecord => !!s);
+  return Promise.all(students.map(async (student) =>
+    toRow(student, await getStudentStateData(student.id, supabase))
+  ));
 }

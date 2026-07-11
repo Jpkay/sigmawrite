@@ -1,0 +1,172 @@
+/**
+ * Generate competency items for the past-narration slice through the 6 QC gates
+ * and report the yield (Roadmap Phase 9, D7).
+ *
+ * Requires the LLM env (GLM 5.2 via Cloudflare):
+ *   export AI_PROVIDER=glm
+ *   export LLM_BASE_URL="https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai/v1"
+ *   export LLM_API_KEY="<Cloudflare API token>"
+ *   export LLM_MODEL="@cf/zai-org/glm-5.2"        # optional; this is the default
+ *   # optional: a different judge model for a genuine Gate-3 ensemble
+ *   export JUDGE_MODEL="@cf/zai-org/glm-4.7-flash"
+ *
+ * Run:
+ *   npx tsx --tsconfig ./tsconfig.json scripts/generate-slice-items.mts [countPerNode] [nodeKey]
+ *
+ * Output: a yield report to stdout + approved/needs-review items written to
+ * ./generated/past-narration-items.json for review before DB seeding.
+ */
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+
+// Load .env.local (gitignored) so secrets never live in the shell history.
+function loadEnvLocal() {
+  if (!existsSync(".env.local")) return;
+  const vars: Record<string, string> = {};
+  for (const line of readFileSync(".env.local", "utf8").split("\n")) {
+    const m = line.match(/^\s*([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*?)\s*$/);
+    if (m) vars[m[1]] = m[2].replace(/^["']|["']$/g, ""); // last occurrence wins
+  }
+  // Real pre-existing process env (e.g. inline) still overrides the file.
+  for (const [k, v] of Object.entries(vars)) if (!process.env[k]) process.env[k] = v;
+}
+loadEnvLocal();
+
+// Resolve the LLM endpoint. OpenRouter (if a key is present) takes priority;
+// otherwise Cloudflare Workers AI built from the account id.
+if (process.env.OPENROUTER_API_KEY) {
+  process.env.LLM_BASE_URL = "https://openrouter.ai/api/v1";
+  process.env.LLM_API_KEY = process.env.OPENROUTER_API_KEY;
+  process.env.LLM_MODEL = process.env.OPENROUTER_MODEL ?? "z-ai/glm-5.2";
+} else if (
+  (!process.env.LLM_BASE_URL || process.env.LLM_BASE_URL.includes("<")) &&
+  process.env.CLOUDFLARE_ACCOUNT_ID
+) {
+  process.env.LLM_BASE_URL = `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/ai/v1`;
+}
+
+// Space LLM calls to stay under the provider rate limit (override via env).
+if (!process.env.LLM_MIN_INTERVAL_MS) process.env.LLM_MIN_INTERVAL_MS = "3500";
+
+import { MISCONCEPTIONS, NODES } from "@/lib/content/slices/past-narration";
+import { getItemGenerator } from "@/lib/ai/item-generation/generator";
+import {
+  runItemGenerationPipeline,
+  yieldReport,
+  type PipelineContext,
+} from "@/lib/ai/item-generation/pipeline";
+import type { ItemGenSpec } from "@/lib/ai/item-generation/schemas";
+import { LanguageToolChecker } from "@/lib/linguistic/languagetool";
+import type { GateResults, GeneratedItem, ItemGenerationResult } from "@/lib/ai/item-generation/schemas";
+
+const count = Number(process.argv[2] ?? 3);
+const onlyNode = process.argv[3];
+
+const knownNodeKeys = new Set(NODES.map((n) => n.key));
+const knownMisconceptionKeys = new Set(MISCONCEPTIONS.map((m) => m.key));
+
+// Bulk population: Gates 0–2 (correctness-critical) + grammar checking, no Gate-3
+// judge (halves call volume under the rate limit). Run an ensemble pass later.
+const ctx: PipelineContext = {
+  generator: getItemGenerator(),
+  knownNodeKeys,
+  knownMisconceptionKeys,
+  grammarChecker: new LanguageToolChecker(),
+  ensembleThreshold: 0.7,
+};
+
+const modalityFor = (strand: string): ItemGenSpec["modality"] =>
+  strand === "expression_ecrite" ? "writing"
+  : strand === "comprehension_ecrite" ? "reading"
+  : strand === "comprehension_orale" ? "listening"
+  : strand === "production_orale" ? "speaking"
+  : "grammar_analysis";
+
+const nodes = NODES.filter((n) => !onlyNode || n.key === onlyNode);
+const all: ItemGenerationResult[] = [];
+type StoredGeneratedItem = GeneratedItem & { qcGates?: GateResults; reviewStatus?: GateResults["verdict"] };
+const keep: StoredGeneratedItem[] = [];
+
+console.log(`Generating ${count} item(s) for ${nodes.length} node(s)…\n`);
+
+for (const node of nodes) {
+  const spec: ItemGenSpec = {
+    nodeKey: node.key,
+    strand: node.strand,
+    labelFr: node.labelFr,
+    cefrLevel: node.cefrMin,
+    modality: modalityFor(node.strand),
+    learnerMode: "shared",
+    count,
+    misconceptionKeys: MISCONCEPTIONS.filter((m) => m.primaryNodeKey === node.key).map((m) => m.key),
+  };
+  try {
+    const results = await runItemGenerationPipeline(spec, ctx);
+    all.push(...results);
+    const r = yieldReport(results);
+    console.log(
+      `  ${node.key.padEnd(28)} auto:${r.auto_approved} review:${r.needs_human_review} rej:${r.rejected}`
+    );
+    for (const res of results) {
+      if (res.item && res.gates.verdict !== "rejected") keep.push({ ...res.item, qcGates: res.gates, reviewStatus: res.gates.verdict });
+      else if (res.gates.verdict === "rejected") {
+        console.log(`     ✗ ${res.gates.rejectionReason ?? "rejected"}`);
+        console.log(`       raw: ${JSON.stringify(res.raw).slice(0, 400)}`);
+      }
+    }
+  } catch (e) {
+    console.log(`  ${node.key.padEnd(28)} ERROR: ${(e as Error).message}`);
+  }
+  // Throttle between nodes to stay under the provider's rate limit.
+  await new Promise((r) => setTimeout(r, 1200));
+}
+
+const overall = yieldReport(all);
+console.log("\n── Overall yield ──");
+console.log(JSON.stringify(overall, null, 2));
+
+// Accumulate across runs (dedupe by node + prompt) so partial runs — e.g. when a
+// daily quota is hit — build up the bank instead of clobbering prior work.
+mkdirSync("./generated", { recursive: true });
+const outPath = "./generated/past-narration-items.json";
+let bank: StoredGeneratedItem[] = [];
+if (existsSync(outPath)) {
+  try {
+    bank = JSON.parse(readFileSync(outPath, "utf8")) as GeneratedItem[];
+  } catch {
+    bank = [];
+  }
+}
+const seen = new Set(bank.map((i) => `${i.nodeKey}|${i.promptFr}`));
+let added = 0;
+for (const it of keep) {
+  const k = `${it.nodeKey}|${it.promptFr}`;
+  if (!seen.has(k)) {
+    bank.push(it);
+    seen.add(k);
+    added++;
+  }
+}
+writeFileSync(outPath, JSON.stringify(bank, null, 2));
+console.log(`\nAdded ${added} new item(s); bank now ${bank.length} → ${outPath}`);
+
+const reportPath = `./generated/past-narration-run-${new Date().toISOString().replace(/[:.]/g, "-")}.json`;
+writeFileSync(reportPath, JSON.stringify({ sliceKey: "past_narration", requested: count * nodes.length, report: overall }, null, 2));
+console.log(`Run report → ${reportPath}`);
+
+if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY) {
+  const { createClient } = await import("@supabase/supabase-js");
+  const db = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY, { auth: { persistSession: false } });
+  const { error } = await db.from("generation_runs").insert({
+    slice_key: "past_narration",
+    provider: process.env.AI_PROVIDER ?? "glm",
+    model_id: process.env.LLM_MODEL ?? "z-ai/glm-5.2",
+    prompt_version: process.env.ITEM_PROMPT_VERSION ?? "item-generation-v1",
+    requested_count: count * nodes.length,
+    generated_count: overall.usable,
+    yield_report: overall,
+    estimated_cost_usd: overall.total * Number(process.env.ITEM_ESTIMATED_COST_USD ?? 0.002),
+    completed_at: new Date().toISOString(),
+  });
+  if (error) throw new Error(`generation_runs: ${error.message}`);
+  console.log("Generation run persisted.");
+}

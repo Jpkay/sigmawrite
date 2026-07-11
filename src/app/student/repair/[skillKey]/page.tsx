@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { ArrowRight, Check, Wrench } from "lucide-react";
@@ -10,7 +10,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ChoiceList } from "@/components/choice-list";
 import { MICRO_LESSONS, type MicroQuestion } from "@/lib/content/micro-lessons";
-import { applySkillResults } from "@/lib/student-store";
+import { applySkillResults, hasStudentBackend, replaceStudentState } from "@/lib/student-store";
+import { submitSkillPractice } from "@/lib/actions/student";
+import { track } from "@/lib/analytics";
 
 type Phase = "explain" | "practice" | "return" | "done";
 
@@ -23,6 +25,9 @@ export default function RepairPage() {
   const [picked, setPicked] = useState<number | null>(null);
   const [reveal, setReveal] = useState(false);
   const [corrects, setCorrects] = useState<boolean[]>([]);
+  const [pending, setPending] = useState(false);
+  const [error, setError] = useState("");
+  useEffect(() => { track("repair_triggered", { skill_key: skillKey }); }, [skillKey]);
 
   if (!lesson) {
     return (
@@ -46,7 +51,7 @@ export default function RepairPage() {
     setCorrects((c) => [...c, picked === current.correctIndex]);
   }
 
-  function advance() {
+  async function advance() {
     setReveal(false);
     setPicked(null);
     if (!isReturn) {
@@ -54,7 +59,19 @@ export default function RepairPage() {
       else setPhase("return");
     } else {
       applySkillResults(skillKey, corrects);
-      setPhase("done");
+      setPending(true);
+      setError("");
+      try {
+        if (hasStudentBackend) {
+          const response = await submitSkillPractice({ skillKey, corrects });
+          replaceStudentState(response.state);
+        }
+        setPhase("done");
+      } catch {
+        setError("Le résultat n'a pas pu être enregistré. Réessaie.");
+      } finally {
+        setPending(false);
+      }
     }
   }
 
@@ -133,11 +150,12 @@ export default function RepairPage() {
                 Vérifier <Check />
               </Button>
             ) : (
-              <Button onClick={advance}>
-                {isReturn ? "Terminer" : "Suivant"} <ArrowRight />
+              <Button onClick={advance} disabled={pending}>
+                {pending ? "Enregistrement…" : isReturn ? "Terminer" : "Suivant"} <ArrowRight />
               </Button>
             )}
           </div>
+          {error && <p className="mt-3 text-sm text-destructive">{error}</p>}
         </CardContent>
       </Card>
     </>

@@ -1,0 +1,17 @@
+begin;
+create extension if not exists pgtap with schema extensions;
+select plan(13);
+select has_table('public','content_serving_policies','Serving policy is versioned');
+select has_column('public','content_serving_policies','exposure_cap','Exposure is capped');
+select has_column('public','content_serving_policies','cohort_percent','Cohort is bounded');
+select has_column('public','content_serving_policies','kill_switch','Kill switch exists');
+select has_table('public','generated_content_serving_versions','Serving versions exist');
+select has_column('public','generated_content_serving_versions','payload_checksum','Serving payload is pinned');
+select has_trigger('public','generated_content_serving_versions','immutable_serving_version','Serving content is immutable');
+select has_table('public','generated_content_serving_sessions','Sessions bind immutable versions');
+select has_column('public','generated_content_serving_sessions','state_at_start','Session state is frozen');
+select has_table('public','content_serving_state_events','Lifecycle audit exists');
+select has_column('public','content_serving_state_events','evidence_snapshot','Promotion evidence is retained');
+select col_is_unique('public','generated_content_serving_versions',array['candidate_id'],'Candidate has one serving version');
+select has_function('public','start_generated_content_session',array['uuid','uuid'],'Session admission atomically locks and increments exposure');
+select * from finish();rollback;

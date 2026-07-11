@@ -1,0 +1,66 @@
+{
+  "release": {
+    "key": "french-taxonomy-v1-candidate",
+    "version": "0.1.0",
+    "ontologyVersion": "1.0.0"
+  },
+  "sources": [
+    {
+      "key": "sigma-original-taxonomy",
+      "version": "1.0.0",
+      "rightsStatus": "importable",
+      "checksum": "sha256:original-authoring-source"
+    }
+  ],
+  "nodes": [
+    {
+      "key": "identifier_sujet_ecrit",
+      "strand": "grammaire_syntaxe",
+      "nodeType": "linguistic",
+      "labelFr": "Identifier le sujet d'un verbe à l'écrit",
+      "descriptionFr": "Repérer le groupe qui commande la personne et le nombre du verbe dans une phrase écrite.",
+      "atomicityLevel": 4,
+      "evidence": [
+        {
+          "key": "reading-recognition",
+          "actionFr": "Sélectionner le sujet du verbe dans des phrases nouvelles.",
+          "modality": "reading",
+          "expectation": "receptive",
+          "successCriteria": { "minimumAccuracy": 0.8, "minimumDistinctItems": 3 }
+        }
+      ],
+      "sourceKeys": ["sigma-original-taxonomy"],
+      "mappings": []
+    },
+    {
+      "key": "accorder_sujet_verbe_present_ecrit",
+      "strand": "orthographe_grammaticale",
+      "nodeType": "linguistic",
+      "labelFr": "Accorder le sujet et le verbe au présent à l'écrit",
+      "descriptionFr": "Produire la terminaison verbale correspondant à la personne et au nombre du sujet au présent.",
+      "atomicityLevel": 4,
+      "evidence": [
+        {
+          "key": "controlled-writing",
+          "actionFr": "Compléter des phrases nouvelles avec la forme verbale accordée.",
+          "modality": "writing",
+          "expectation": "controlled_production",
+          "successCriteria": { "minimumAccuracy": 0.8, "minimumDistinctItems": 3 }
+        }
+      ],
+      "sourceKeys": ["sigma-original-taxonomy"],
+      "mappings": []
+    }
+  ],
+  "edges": [
+    {
+      "source": "identifier_sujet_ecrit",
+      "target": "accorder_sujet_verbe_present_ecrit",
+      "type": "prerequisite",
+      "prerequisiteClass": "hard",
+      "rationale": "L'accord contrôlé exige d'abord d'identifier le donneur d'accord.",
+      "sourceKey": "sigma-original-taxonomy"
+    }
+  ]
+}
+

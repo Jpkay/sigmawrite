@@ -7,15 +7,32 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "vitest run"
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "ci": "npm run typecheck && npm run lint && npm run taxonomy:validate && npm run taxonomy:verify:v1 && npm run benchmark:learning && npm test",
+    "benchmark:learning": "tsx scripts/run-french-learning-benchmarks.mts",
+    "taxonomy:validate": "tsx scripts/validate-taxonomy.mts taxonomy/french-v1-candidate.json",
+    "taxonomy:review:conjugation": "tsx scripts/conjugation-review-packet.mts",
+    "lexicon:build": "tsx scripts/build-baseline-lexicon.mts",
+    "lexicon:import": "tsx scripts/import-baseline-lexicon.mts",
+    "taxonomy:build:v1": "tsx scripts/build-french-taxonomy-v1.mts",
+    "taxonomy:verify:v1": "tsx scripts/build-french-taxonomy-v1.mts --check",
+    "taxonomy:review:v1": "tsx scripts/review-french-taxonomy-v1.mts",
+    "taxonomy:import:v1": "tsx scripts/import-french-taxonomy-v1.mts",
+    "seed:demo": "tsx scripts/seed-demo.mts",
+    "verify:deletion": "tsx --tsconfig ./tsconfig.json scripts/verify-deletion-job.mts",
+    "seed:item-banks": "tsx --tsconfig ./tsconfig.json scripts/seed-item-bank.mts generated/past-narration-items.json && tsx --tsconfig ./tsconfig.json scripts/seed-item-bank.mts generated/present-agreement-items.json"
   },
   "dependencies": {
+    "@sentry/nextjs": "^10.64.0",
     "@supabase/ssr": "^0.12.0",
     "@supabase/supabase-js": "^2.108.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^1.18.0",
-    "next": "16.2.9",
+    "next": "^16.2.10",
+    "posthog-js": "^1.399.1",
+    "posthog-node": "^5.40.0",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "tailwind-merge": "^3.6.0",
@@ -26,10 +43,15 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "dotenv": "^17.4.2",
     "eslint": "^9",
-    "eslint-config-next": "16.2.9",
+    "eslint-config-next": "^16.2.10",
     "tailwindcss": "^4",
+    "tsx": "^4.23.0",
     "typescript": "^5",
     "vitest": "^4.1.8"
+  },
+  "overrides": {
+    "postcss": "8.5.16"
   }
 }

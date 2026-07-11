@@ -2,17 +2,34 @@
 
 > Learn to love reading while reading to learn.
 
-A personalized French academic reading platform for secondary students. This
-repo contains **Phases 0–6** from [`roadmap.md`](./roadmap.md): a running
-foundation, an end-to-end student reading experience, the AI content pipeline
-with admin review, the adaptive engine, the spaced-retrieval memory system,
-parent/teacher dashboards, and the pilot-readiness layer (privacy, audit, admin
-tools) — all on a live Supabase project with learning data persisted server-side.
+A personalized French academic reading and competency-mastery platform for
+secondary students. The production roadmap is implemented through its full
+application stack: relational evidence, consent and safety, real AI generation,
+adaptive diagnosis, graph-driven practice, writing feedback, background jobs,
+teacher/admin operations, psychometrics, PWA resilience, accessibility, and
+pilot operations. New work is exercised on the dedicated staging project before
+protected production promotion.
+
+## Human content review
+
+The production review workflow is available at `/review` for French-language
+educators and `/admin/reviews` for platform administrators. It supports three
+independent reviewers per passage, autosaved drafts, immutable submissions,
+normalized question feedback, audited editorial resolution and versioned
+revision, CSV export, in-app notifications, and an exact six-passage gold set.
+See [`docs/content-review-portal.md`](./docs/content-review-portal.md),
+[`docs/reviewer-instructions-fr.md`](./docs/reviewer-instructions-fr.md), and
+[`docs/benchmark-governance.md`](./docs/benchmark-governance.md).
+
+Hosted staging has been technically verified with three isolated QA reviewer
+accounts. The 60 real pilot passages remain unsubmitted and ready for the actual
+educators; QA ratings are confined to a separately retired smoke passage.
 
 ## Stack
 
 Next.js 16 (App Router) · TypeScript · Tailwind v4 · Supabase (Postgres + Auth +
-RLS + pgvector) · Zod · OpenAI (interface + mock for now). See `roadmap.md` §11–20.
+RLS + pgvector) · Zod · GLM/OpenAI-compatible AI · PostHog · Sentry · Resend.
+See [`roadmap-to-production.md`](./roadmap-to-production.md).
 
 ## What's in Phase 0
 
@@ -150,6 +167,150 @@ The §10 compliance core and admin tools, on real data:
 > entries, an admin reads the audit log and school tree, and a parent is denied
 > audit reads — all by RLS.
 
+## Production roadmap — Sprint 1 complete
+
+The repository-side production foundation is now reproducible:
+
+- GitHub Actions runs TypeScript, ESLint, all Vitest tests, and a separate
+  fresh-Postgres migration job on pull requests and pushes to `main`.
+- `npm run typecheck`, `npm run ci`, and `npm run seed:demo` provide the same
+  checks and seed flow locally.
+- `supabase/config.toml` makes local/CI migrations deterministic. The clean
+  migration run also fixed older-CLI parsing of the existing
+  `atomicity_level` competency column without changing its database name.
+- `.env.staging.example` and `supabase/README.md` separate local, staging, and
+  production setup. Hosted staging is the dedicated project
+  `pwztnrirtrnicywvdbpz`.
+- The idempotent demo seed creates the four role accounts, organization,
+  school, class, guardian/enrollment/consent links, interests, and current
+  learning evidence needed by parent and teacher dashboards.
+
+Staging verification: all four demo roles can authenticate; parent and teacher
+RLS reads return the linked student and two seeded sessions; rerunning the demo
+seed produces no duplicate organization, school, class, links, or consent.
+
+## Production roadmap — Sprint 2 complete
+
+Learning evidence now uses the relational schema end to end:
+
+- Student onboarding, diagnostic, reading, summary, retrieval, and repair
+  actions validate input, enforce the student role, and persist server-side.
+- `students.app_state` is deprecated and rejects authenticated writes. The
+  migration projects existing demo state once; the UI store is now only an
+  optimistic cache and local-only fallback when Supabase is not configured.
+- Seed texts, immutable versions, questions, choices, vocabulary, sessions,
+  answers, summaries, estimates, retrieval schedules, and mastery evidence all
+  have stable relational identifiers.
+- Parent and teacher dashboards aggregate the same relational rows through RLS.
+
+Staging verification: the idempotent seed yields 2 sessions, 10 fully linked
+answers, 2 summaries, 1 diagnostic with 7 skill results, 5 current skill
+estimates, 2 retrieval cards/schedules, and 4 word-mastery rows. Student
+cross-access is denied, linked parent/teacher reads succeed, admin reads
+succeed, answer retries work, and no student retains `app_state` data.
+
+## Production roadmap — Sprint 3 complete
+
+Content review and publishing are now shared database workflows:
+
+- Generation jobs, validated candidates, deterministic scoring, moderation,
+  review decisions, and approved immutable versions persist in Postgres.
+- Admin review, library, benchmark, dashboard, and text-detail screens read the
+  same RLS-protected data. Approval creates versioned questions, choices,
+  skills, and vocabulary; rejection, retirement, and benchmark locking are
+  audited.
+- Only platform admins can access the AI workflow and catalog tables. Content
+  reviewers can access only active assignments and their own evaluations.
+  Authenticated students see only active, human-approved or benchmark-locked
+  versions.
+- The student recommender and reading player load approved database texts while
+  retaining the two seed texts as an offline/keyless fallback.
+
+Verified in separate browser sessions locally and on dedicated staging: an
+admin-approved generated text appeared in the shared library and was
+recommended/opened by the demo student; a second reviewer saw the same state;
+teacher workflow-table reads/writes were denied by RLS.
+
+## Production roadmap — Sprint 4 complete
+
+Real student account and consent lifecycles are now available:
+
+- Teachers create or rotate expiring, usage-limited class codes and explicitly
+  choose whether school consent covers the class.
+- `/join` validates a code before signup. The database Auth trigger atomically
+  creates the student, assigns school/grade, enrolls the class, consumes one
+  code use, and records school consent when enabled.
+- Parents can create child credentials without requiring a child email inbox;
+  the account is linked to the guardian and guardian consent is recorded.
+- Missing or revoked consent replaces every student learning route with a
+  waiting screen. Linked parents can grant/revoke consent, while students aged
+  15 or older can self-consent against versioned policy text.
+- Consent policies reject students minting codes and parents consenting for
+  unlinked children. Proxy remains an optimistic session/role boundary; the
+  authoritative consent check runs in the student server layout.
+
+Verified locally through complete browser flows and on dedicated staging
+through Auth/database integration and positive/negative RLS checks.
+
+## Production roadmap — Sprint 5 complete
+
+Student free text now passes through a single minors-safety boundary:
+
+- Diagnostic summaries, reading summaries, initial retrieval, and memory
+  retrieval use provider-agnostic moderation with a conservative French/English
+  fallback for unsafe content, contact details, and prompt injection.
+- Flagged text is rejected before scoring or persistence. Audit entries contain
+  only field, categories, moderation source, and character count—never the text.
+- Direct student REST inserts into diagnostic summaries, reading summaries, and
+  retrieval attempts are denied; only moderated, ownership-checked server
+  actions use the server credential for those writes.
+- Atomic Postgres counters enforce 10 auth attempts per 15 minutes, 60 answer
+  submissions and 15 free-text submissions per 10 minutes, plus 100 student AI
+  units per day. UI failures use neutral French messages.
+- The repeatable checklist lives in `docs/safety-checks.md`.
+
+Verified locally in the browser and by SQL/RLS assertions, then repeated on
+dedicated staging for throttles, daily budget, and direct-write denial.
+
+## Production roadmap — Sprints 6–20 implemented
+
+The remaining roadmap epochs are now represented in the application and its
+numbered migrations (`0018–0034`):
+
+- Real OpenAI-compatible/GLM text, question, moderation, rubric, tagging and
+  embedding operations use versioned prompts and persistent job/gate evidence.
+- Two competency slices contain 61 human-anchored nodes and at least eight
+  machine-verified items per node. Review queues, catalog tools, graph checks,
+  Lexique frequency import and Gate-5 psychometric flags are available to staff.
+- The student experience uses goal-scoped adaptive diagnosis, a shared
+  competency frontier, sequenced catch-up practice, writing annotation and
+  revision, spaced retrieval, streaks, resume, French input helpers, read-aloud,
+  accessible reading controls and offline answer synchronization.
+- Parent and teacher surfaces include FR/EN navigation and reports, immutable
+  weekly evidence, class/join-code/roster/assignment operations, persisted CSV
+  exports and an activation checklist.
+- Cron endpoints have durable run logs for weekly reports, retrieval notices,
+  psychometrics and retention/deletion. The privacy export covers learner
+  profiles and competency evidence; an automated staging test proves that a due
+  deletion removes Auth plus the full student graph while retaining completion
+  evidence.
+- PostHog/Sentry adapters, environment feature gates, PWA assets, CI/deployment
+  workflows, load sanity, runbooks and the bilingual pilot kit are included.
+
+Staging evidence recorded on 2026-07-10: all migrations through `0034` applied;
+488 approved competency items (exactly eight across each of 61 nodes); 50-way
+load sanity p95 1.132 s from the test machine with RLS intact; diagnostic hot-path
+REST calls 0.25–0.52 s on warm requests; mobile width 360 px without overflow;
+offline queue drains on reconnect; Lighthouse accessibility 95 on both reading
+and results; dependency audit reports zero vulnerabilities.
+
+External launch gates are intentionally not faked: generated pilot passages
+remain in `needs_human_review` until a person approves them and locks six
+benchmarks; production PostHog, Sentry, Resend, Google Auth and GitHub/Vercel
+promotion credentials must be supplied in their protected environments;
+production-data promotion and the friendly-family four-week rehearsal require the release owner. See
+[`docs/launch-gates.md`](./docs/launch-gates.md).
+
 ## Supabase (live)
 
 Project **`reading-to-learn`** (`tkasvcccucpsbjywgdyl`, eu-central-1) is
@@ -167,17 +328,16 @@ teacher:  prof.demo@reading-to-learn.test      (teaches class "5e A")
 admin:    admin.demo@reading-to-learn.test     (platform_admin)
 ```
 
-> **Note:** learning data (diagnostic, sessions, skill estimates, retrieval
-> cards) still lives in a `localStorage` store behind the login wall. The
-> authenticated student-owned write/read path is verified end-to-end against the
-> live DB under RLS (login → read own `students` row → insert/read own data), so
-> swapping the store onto the browser Supabase client is the next, de-risked step.
+> **Note:** production has not received the roadmap migrations. New work is
+> applied and verified on the dedicated staging project first; production
+> promotion is reserved for the hardening and release sprints.
 
 ## Getting started
 
 ```bash
 npm install
 npm run dev          # http://localhost:3000
+npm run ci           # typecheck + lint + unit tests
 ```
 
 The app runs **without Supabase configured**: the landing, marketing, and
@@ -187,6 +347,10 @@ fill in `.env.local` (copy from `.env.example`). See `supabase/README.md`.
 ```bash
 cp .env.example .env.local   # then add your Supabase + (optional) OpenAI keys
 ```
+
+For a staging project and reproducible demo accounts, copy
+`.env.staging.example`, fill its staging-only values, apply migrations, and run
+`npm run seed:demo`. See `supabase/README.md` for the guarded workflow.
 
 ## Layout
 

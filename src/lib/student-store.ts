@@ -10,67 +10,28 @@ import {
   type RetrievalResult,
 } from "@/lib/scoring/retrieval";
 import type { RetrievalCardSeed } from "@/lib/content/retrieval-cards";
+import {
+  EMPTY_STUDENT_STATE,
+  type RetrievalCard,
+  type StudentState,
+} from "@/lib/student-state";
 
-export type RetrievalCard = {
-  id: string;
-  conceptLabel: string;
-  promptFr: string;
-  keywords: string[];
-  sourceTextId: string;
-  intervalDays: number;
-  ease: number;
-  repetitions: number;
-  dueAt: string;
-  lastResult?: RetrievalResult;
-};
-
-export type VocabState = { exposures: number; lastSeenAt: string };
+export type { RetrievalCard, StudentState, VocabState } from "@/lib/student-state";
 
 /**
- * Student store. Source of truth is the authenticated student's
- * `students.app_state` JSON document in Supabase (RLS-protected, readable by
- * linked guardians/teachers). Falls back to localStorage when Supabase is not
- * configured, so the app still runs with no backend. Same sync API throughout:
- * writes update an in-memory cache + notify immediately, then persist async.
+ * Optimistic student cache. Postgres relational tables are authoritative when
+ * Supabase is configured; this module hydrates through a guarded Server Action
+ * and keeps synchronous UI updates responsive. Keyless local development keeps
+ * the previous localStorage fallback.
  */
 const KEY = "rtl.student.v1";
 
 const configured =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
   !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+export const hasStudentBackend = configured;
 
-export type StudentState = {
-  /** False until the first load from the backend resolves. */
-  hydrated: boolean;
-  onboarded: boolean;
-  grade: number | null;
-  frenchBackground: string | null;
-  interests: string[];
-  diagnostic: DiagnosticResult | null;
-  sessions: ReadingSessionResult[];
-  /** Raw chosen answers per text, kept so the results page can give per-question feedback. */
-  answersByText: Record<string, Record<string, number>>;
-  /** Live adaptive skill estimates, keyed by skill (PRD §J). */
-  skillEstimates: Record<string, SkillEstimate>;
-  /** Spaced-retrieval cards (PRD §L). */
-  retrievalCards: RetrievalCard[];
-  /** Vocabulary exposure/retention, keyed by word (PRD §L). */
-  vocab: Record<string, VocabState>;
-};
-
-const EMPTY: StudentState = {
-  hydrated: false,
-  onboarded: false,
-  grade: null,
-  frenchBackground: null,
-  interests: [],
-  diagnostic: null,
-  sessions: [],
-  answersByText: {},
-  skillEstimates: {},
-  retrievalCards: [],
-  vocab: {},
-};
+const EMPTY = EMPTY_STUDENT_STATE;
 
 /** Strips runtime-only fields before persisting the document. */
 function toDocument(state: StudentState): Omit<StudentState, "hydrated"> {
@@ -91,9 +52,7 @@ function readLocal(): StudentState {
 }
 
 let snapshot: StudentState | null = null;
-let studentId: string | null = null;
 let hydratePromise: Promise<void> | null = null;
-let writeChain: Promise<unknown> = Promise.resolve();
 const listeners = new Set<() => void>();
 
 const notify = () => listeners.forEach((l) => l());
@@ -115,60 +74,36 @@ export function getStudentState(): StudentState {
 
 async function hydrate() {
   try {
-    const { createClient } = await import("@/lib/supabase/client");
-    const supabase = createClient();
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
-    if (!user) {
-      snapshot = { ...EMPTY, hydrated: true };
-      notify();
-      return;
-    }
-    // RLS returns only the caller's own student row, so no filter is needed.
-    const { data, error } = await supabase
-      .from("students")
-      .select("id, app_state")
-      .limit(1)
-      .maybeSingle();
-    if (error) throw error;
-    studentId = data?.id ?? null;
-    const doc = (data?.app_state as Partial<StudentState> | null) ?? null;
-    snapshot = { ...EMPTY, ...(doc ?? {}), hydrated: true };
+    const { loadStudentState } = await import("@/lib/actions/student");
+    const data = await loadStudentState();
+    snapshot = { ...EMPTY, ...data, hydrated: true };
   } catch {
     snapshot = { ...EMPTY, hydrated: true };
   }
   notify();
 }
 
-function persist(state: StudentState) {
+function persistLocal(state: StudentState) {
   if (typeof window === "undefined") return;
-  if (!configured) {
-    try {
-      window.localStorage.setItem(KEY, JSON.stringify(toDocument(state)));
-    } catch {
-      /* ignore quota errors */
-    }
-    return;
+  if (configured) return;
+  try {
+    window.localStorage.setItem(KEY, JSON.stringify(toDocument(state)));
+  } catch {
+    /* ignore quota errors */
   }
-  // Serialize writes; ensure hydration (and studentId) resolved first.
-  writeChain = writeChain
-    .then(() => ensureHydrated())
-    .then(async () => {
-      if (!studentId) return;
-      const { createClient } = await import("@/lib/supabase/client");
-      await createClient()
-        .from("students")
-        .update({ app_state: toDocument(state) })
-        .eq("id", studentId);
-    })
-    .catch(() => {});
 }
 
 function save(state: StudentState) {
   snapshot = state;
   notify();
-  persist(state);
+  persistLocal(state);
+}
+
+/** Replace the cache with a server-authoritative relational snapshot. */
+export function replaceStudentState(state: Omit<StudentState, "hydrated">): StudentState {
+  const next = { ...state, hydrated: true };
+  save(next);
+  return next;
 }
 
 export function update(patch: Partial<StudentState>): StudentState {
@@ -188,10 +123,6 @@ export function useStudentState(): StudentState {
     () => EMPTY
   );
 }
-
-// Hydrate as early as possible (any student page importing the store), so an
-// imperative getStudentState() in a write path sees real data, not a stale base.
-if (typeof window !== "undefined") ensureHydrated();
 
 export function saveOnboarding(input: {
   grade: number;
@@ -324,6 +255,6 @@ export function resetStudentState() {
   const cleared = { ...EMPTY, hydrated: true };
   snapshot = cleared;
   notify();
-  persist(cleared);
+  persistLocal(cleared);
   if (!configured) window.localStorage.removeItem(KEY);
 }

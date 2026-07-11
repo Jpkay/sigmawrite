@@ -58,6 +58,13 @@ body {
   font-family: var(--font-sans), system-ui, sans-serif;
 }
 
+html, body { overflow-x: clip; }
+.overflow-x-auto { contain: inline-size paint; }
+
+:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+button, a, input, select, textarea { touch-action: manipulation; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; } }
+
 /* Global dropdown/select styling per workspace UI standards:
    custom chevron, dark option backgrounds, generous right padding. */
 select {

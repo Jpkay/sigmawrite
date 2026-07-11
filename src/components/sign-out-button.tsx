@@ -5,7 +5,7 @@ import { LogOut } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 
-export function SignOutButton() {
+export function SignOutButton({ label = "Se déconnecter" }: { label?: string }) {
   const router = useRouter();
 
   async function signOut() {
@@ -20,7 +20,7 @@ export function SignOutButton() {
 
   return (
     <Button variant="ghost" size="sm" onClick={signOut} className="w-full justify-start">
-      <LogOut /> Se déconnecter
+      <LogOut /> {label}
     </Button>
   );
 }

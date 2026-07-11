@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { PageHeader } from "@/components/page";
@@ -8,11 +9,42 @@ import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { SEED_TEXT_BY_ID } from "@/lib/content/texts";
 import { recommendTextId } from "@/lib/content/recommend";
-import { useStudentState } from "@/lib/student-store";
+import type { SeedText } from "@/lib/content/types";
+import { hasStudentBackend, useStudentState } from "@/lib/student-store";
+import { loadDiagnosticRequirement, loadLatestReadingResume, loadStudentCatchUpPlan, loadStudentMotivation, recommendReadingText, recommendReadingTexts } from "@/lib/actions/student";
+import type { CatchUpStep } from "@/lib/db/practice";
 import { StudentAssignments } from "@/components/student-assignments";
+import { track } from "@/lib/analytics";
+import { difficultyBandLabel } from "@/lib/scoring/band";
 
 export default function StudentHome() {
   const state = useStudentState();
+  const fallback = SEED_TEXT_BY_ID[recommendTextId(state.interests)];
+  const [recommended, setRecommended] = useState<SeedText>(fallback);
+  const [recommendations, setRecommendations] = useState<SeedText[]>([fallback]);
+  const [plan, setPlan] = useState<CatchUpStep[]>([]);
+  const [motivation,setMotivation]=useState<{streak:number;today:unknown;week:unknown[]}|null>(null);
+  const [resume,setResume]=useState<{textKey:string;title:string;phase:string}|null>(null);
+  const [assessment,setAssessment]=useState<{required:boolean;kind:string;reason:string}|null>(null);
+
+  useEffect(() => {
+    const local = SEED_TEXT_BY_ID[recommendTextId(state.interests)];
+    if (!hasStudentBackend || !state.hydrated || !state.diagnostic) return;
+    let active = true;
+    recommendReadingText({})
+      .then((text) => { if (active) setRecommended(text); })
+      .catch(() => { if (active) setRecommended(local); });
+    recommendReadingTexts({}).then((texts) => { if (active && texts.length) setRecommendations(texts); }).catch(() => undefined);
+    loadStudentCatchUpPlan({}).then((steps) => { if (active) setPlan(steps.slice(0, 3)); }).catch(() => undefined);
+    loadStudentMotivation({}).then(value=>{if(active)setMotivation(value);}).catch(()=>undefined);
+    loadLatestReadingResume({}).then(value=>{if(active)setResume(value);}).catch(()=>undefined);
+    loadDiagnosticRequirement({}).then(value=>{if(active)setAssessment(value);}).catch(()=>undefined);
+    return () => { active = false; };
+  }, [state.hydrated, state.diagnostic, state.interests]);
+
+  const displayedRecommendation = hasStudentBackend ? recommended : fallback;
+  const displayedRecommendations = useMemo(()=>recommendations.length ? recommendations : [displayedRecommendation],[recommendations,displayedRecommendation]);
+  useEffect(()=>{if(typeof window==="undefined"||!("caches"in window))return;const urls=[...displayedRecommendations.map(text=>`/student/read/${text.id}`),...plan.map(step=>`/student/practice/${step.nodeId}`)];void caches.open("sigmawrite-offline-pack-v1").then(cache=>Promise.all(urls.map(url=>cache.add(url).catch(()=>undefined))));},[displayedRecommendations,plan]);
 
   if (!state.hydrated) {
     return <PageHeader title="Bonjour 👋" description="Chargement…" />;
@@ -55,7 +87,6 @@ export default function StudentHome() {
     );
   }
 
-  const recommended = SEED_TEXT_BY_ID[recommendTextId(state.interests)];
   const completed = state.sessions.length;
   const avg = completed
     ? Math.round(
@@ -83,27 +114,13 @@ export default function StudentHome() {
 
       <StudentAssignments />
 
-      <Card className="mb-6 border-primary/40 bg-accent/40">
-        <CardHeader>
-          <CardTitle>Lecture du jour</CardTitle>
-        </CardHeader>
-        <CardContent className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="text-lg font-medium">« {recommended.title} »</p>
-            <div className="mt-3 flex flex-wrap gap-2">
-              <Badge>{recommended.difficultyBand}</Badge>
-              {recommended.concepts.map((c) => (
-                <Badge key={c} variant="secondary">
-                  {c}
-                </Badge>
-              ))}
-            </div>
-          </div>
-          <Link href={`/student/read/${recommended.id}`} className={buttonVariants()}>
-            Commencer <ArrowRight />
-          </Link>
-        </CardContent>
-      </Card>
+      {assessment?.required && assessment.kind === "reentry" && <Card className="mb-6 border-primary/40 bg-accent/40"><CardContent className="flex flex-wrap items-center justify-between gap-4 pt-6"><div><p className="font-medium">Mets ton profil à jour</p><p className="text-sm text-muted-foreground">Quelques questions ciblées suffisent. Tes progrès précédents sont conservés.</p></div><Link href="/student/diagnostic" className={buttonVariants()}>Mettre à jour <ArrowRight /></Link></CardContent></Card>}
+
+      <div className="mb-6 grid gap-4 sm:grid-cols-2"><Card><CardContent className="pt-6"><p className="text-sm text-muted-foreground">Objectif du jour</p><p className="mt-1 text-xl font-semibold">{motivation?.today?"Atteint aujourd’hui":"Une lecture ou une étape"}</p><p className="mt-2 text-sm text-muted-foreground">🔥 Série privée : {motivation?.streak??0} jour(s)</p></CardContent></Card>{resume&&<Card className="border-primary/40"><CardContent className="flex flex-wrap items-center justify-between gap-3 pt-6"><div><p className="text-sm text-muted-foreground">Reprendre ta lecture</p><p className="font-medium">{resume.title}</p></div><Link href={`/student/read/${resume.textKey}`} className={buttonVariants()}>Reprendre <ArrowRight/></Link></CardContent></Card>}</div>
+
+      {plan.length > 0 && <Card className="mb-6"><CardHeader><CardTitle>Aujourd’hui : {plan.length} étapes</CardTitle></CardHeader><CardContent className="space-y-3">{plan.map((step, index) => <div key={step.nodeId} className="flex flex-wrap items-center justify-between gap-3 rounded-md border border-border p-3"><div><p className="font-medium">{index + 1}. {step.label}</p><p className="text-xs text-muted-foreground">Maîtrise actuelle : {Math.round(step.mastery * 100)}%</p></div><Link href={`/student/practice/${step.nodeId}`} className={buttonVariants({ variant: "outline", size: "sm" })}>S’entraîner <ArrowRight /></Link></div>)}</CardContent></Card>}
+
+      <div className="mb-6 grid gap-4 lg:grid-cols-3">{displayedRecommendations.map((text, index) => <Card key={text.id} className={index === 0 ? "border-primary/40 bg-accent/40" : ""}><CardHeader><CardTitle>{index === 0 ? "Lecture recommandée" : "Autre sujet possible"}</CardTitle></CardHeader><CardContent className="space-y-4"><div><p className="font-medium">« {text.title} »</p><div className="mt-3 flex flex-wrap gap-2"><Badge>{difficultyBandLabel(text.difficultyBand)}</Badge>{text.concepts.slice(0,2).map((concept) => <Badge key={concept} variant="secondary">{concept}</Badge>)}</div></div><Link href={`/student/read/${text.id}`} onClick={() => { if (completed === 0) track("first_session_started", { text_id: text.id }); if (index > 0) track("topic_reselected", { text_id: text.id, interest: text.primaryInterest }); }} className={buttonVariants({ variant: index === 0 ? "default" : "outline" })}>Choisir <ArrowRight /></Link></CardContent></Card>)}</div>
 
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
         {stats.map((s) => (

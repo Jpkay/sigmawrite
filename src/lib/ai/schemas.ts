@@ -94,6 +94,9 @@ export type ScoreSummaryInput = z.infer<typeof scoreSummaryInputSchema>;
 
 export const summaryScoreSchema = z.object({
   score: z.number().min(0).max(100),
+  contentScore: z.number().min(0).max(100).optional(),
+  structureScore: z.number().min(0).max(100).optional(),
+  languageScore: z.number().min(0).max(100).optional(),
   capturedMainIdea: z.boolean(),
   keptCauseEffect: z.boolean(),
   omittedDetails: z.boolean(),

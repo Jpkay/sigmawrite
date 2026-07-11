@@ -36,14 +36,14 @@ insert into skills (key, label_fr, category, grade_band_min, grade_band_max) val
 on conflict (key) do nothing;
 
 -- A few starter concepts mapped to domains.
-insert into knowledge_concepts (domain_id, label_fr, description_fr, grade_band_min, grade_band_max)
-select d.id, c.label_fr, c.description_fr, c.gmin, c.gmax
+insert into knowledge_concepts (concept_key, domain_id, label_fr, description_fr, grade_band_min, grade_band_max)
+select c.concept_key, d.id, c.label_fr, c.description_fr, c.gmin, c.gmax
 from (values
-  ('geography', 'Migration', 'Le déplacement de personnes d''un lieu à un autre.', 6, 10),
-  ('economics', 'Opportunité économique', 'Les chances d''améliorer sa situation économique.', 7, 11),
-  ('environment', 'Changement climatique', 'L''évolution durable du climat de la Terre.', 7, 11),
-  ('media_literacy', 'Biais', 'Une inclination qui influence le jugement.', 8, 12),
-  ('history', 'Colonialisme', 'La domination d''un territoire par une puissance étrangère.', 8, 12)
-) as c(domain_key, label_fr, description_fr, gmin, gmax)
+  ('migration_seed', 'geography', 'Migration', 'Le déplacement de personnes d''un lieu à un autre.', 6, 10),
+  ('opportunite_economique_seed', 'economics', 'Opportunité économique', 'Les chances d''améliorer sa situation économique.', 7, 11),
+  ('changement_climatique_seed', 'environment', 'Changement climatique', 'L''évolution durable du climat de la Terre.', 7, 11),
+  ('biais_seed', 'media_literacy', 'Biais', 'Une inclination qui influence le jugement.', 8, 12),
+  ('colonialisme_seed', 'history', 'Colonialisme', 'La domination d''un territoire par une puissance étrangère.', 8, 12)
+) as c(concept_key, domain_key, label_fr, description_fr, gmin, gmax)
 join knowledge_domains d on d.key = c.domain_key
-on conflict do nothing;
+on conflict (concept_key) do nothing;

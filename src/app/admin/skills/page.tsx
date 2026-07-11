@@ -1,10 +1,2 @@
-import { PageHeader, ComingSoon } from "@/components/page";
-
-export default function Page() {
-  return (
-    <>
-      <PageHeader title="Compétences" description="Taxonomie des compétences de lecture." />
-      <ComingSoon phase="Phase 0" note="La gestion des compétences (données initiales déjà semées) sera enrichie en Phase 2." />
-    </>
-  );
-}
+import { PageHeader } from "@/components/page"; import { requireRole } from "@/lib/auth"; import { createClient } from "@/lib/supabase/server"; import { SkillManager } from "../catalog-clients";
+export default async function SkillsPage(){await requireRole(["platform_admin","content_reviewer"]);const {data,error}=await (await createClient()).from("skills").select("id,key,label_fr,category,description_fr,active").order("category").order("label_fr");if(error)throw new Error(error.message);return <><PageHeader title="Compétences" description="Créer, modifier ou désactiver la taxonomie de lecture."/><SkillManager skills={data??[]}/></>}

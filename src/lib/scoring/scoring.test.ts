@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import { recommendNextAction, scoreSession } from "./session";
 import { estimateReadingGrade } from "./diagnostic";
 import { scoreSummary } from "./summary";
-import { gradeToBand } from "./band";
+import { difficultyBandLabel, gradeToBand } from "./band";
 import { DIAGNOSTIC_ITEMS } from "@/lib/content/diagnostic";
 import { SEED_TEXT_BY_ID } from "@/lib/content/texts";
 
@@ -39,6 +39,11 @@ describe("gradeToBand (PRD §G)", () => {
   });
   it("clamps out-of-range grades", () => {
     expect(gradeToBand(2)).toBe("Foundation 5A");
+  });
+  it("presents internal bands in plain French", () => {
+    expect(difficultyBandLabel("Secondary 7A")).toBe("Lecture : 7e année · palier 1");
+    expect(difficultyBandLabel("Foundation 6B")).toBe("Lecture : 6e année · palier 2");
+    expect(difficultyBandLabel("Advanced 11-12")).toBe("Lecture : 11e–12e année · avancé");
   });
 });
 
