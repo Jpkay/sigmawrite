@@ -1430,6 +1430,8 @@ Each goal below is intended to be self-contained enough for one focused implemen
 
 #### G25 — Add provisional serving and promotion states
 
+**Implementation status:** ✅ Implemented, tested, and verified on 2026-07-11. See serving policy [`provisional.ts`](../src/lib/serving/provisional.ts), lifecycle/session/audit migration [`0052_provisional_serving.sql`](../supabase/migrations/0052_provisional_serving.sql), and cap/withdrawal/promotion tests. Verification: deterministic cohort admission and atomic exposure caps bound provisional content; a policy kill switch blocks new sessions immediately; serving payloads and checksums are immutable; withdrawal blocks future sessions while retaining evidence and existing session bindings; empirical promotion requires configured exposure/completion/issue thresholds, while explicit approval is separately attributable; every state transition is audited.
+
 **Outcome:** Automatically accepted content can be exposed to a bounded audience, monitored, promoted to trusted reusable content, or withdrawn.
 
 **Depends on:** G24.
