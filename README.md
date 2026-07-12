@@ -344,6 +344,18 @@ The app runs **without Supabase configured**: the landing, marketing, and
 dashboard shells all render. To enable auth and data, apply the migrations and
 fill in `.env.local` (copy from `.env.example`). See `supabase/README.md`.
 
+## Branch and deployment workflow
+
+- Create feature branches from `develop` and open pull requests back into
+  `develop`.
+- Vercel deploys `develop` to the Preview environment for staging validation.
+- After CI and staging validation succeed, open a pull request from `develop`
+  into `main`.
+- Vercel deploys `main` to the Production environment at
+  `https://sigmawrite.vercel.app`.
+
+Do not push feature work directly to `main`.
+
 ```bash
 cp .env.example .env.local   # then add your Supabase + (optional) OpenAI keys
 ```
