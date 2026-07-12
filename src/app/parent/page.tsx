@@ -23,6 +23,7 @@ export default async function ParentHome() {
   return (
     <>
       <PageHeader
+        eyebrow={language === "en" ? "Family view" : "Espace famille"}
         title={language==="en"?"Your child’s progress":"Progrès de votre enfant"}
         description={language==="en"?"Concrete evidence without false precision.":"Des preuves concrètes, sans fausse précision."}
       />
@@ -36,13 +37,12 @@ export default async function ParentHome() {
           </CardContent>
         </Card>
       ) : (
-        <div className="space-y-3">
+        <div className="divide-y divide-border border-y border-border">
           {children.map((child) => {
             const r = weeklyReport(child.snap, now);
             return (
               <Link key={child.id} href={`/parent/students/${child.id}`}>
-                <Card className="transition-colors hover:border-primary/50">
-                  <CardContent className="flex flex-wrap items-center justify-between gap-3 pt-6">
+                <div className="group flex flex-wrap items-center justify-between gap-3 px-2 py-5 transition-colors hover:bg-muted/30 sm:px-4">
                     <div>
                       <p className="font-medium">{child.name}</p>
                       <div className="mt-1 flex flex-wrap items-center gap-2">
@@ -55,9 +55,8 @@ export default async function ParentHome() {
                         </span>
                       </div>
                     </div>
-                    <ArrowRight className="size-4 text-muted-foreground" />
-                  </CardContent>
-                </Card>
+                    <span className="grid size-9 place-items-center rounded-full border border-border text-muted-foreground transition-all group-hover:border-primary group-hover:bg-primary group-hover:text-primary-foreground"><ArrowRight className="size-4" /></span>
+                </div>
               </Link>
             );
           })}
