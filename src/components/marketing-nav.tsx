@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { BookOpen } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const links = [
   { href: "/about", label: "À propos" },
@@ -13,7 +14,7 @@ export function MarketingNav() {
   return (
     <header className="border-b border-border">
       <div className="mx-auto flex h-14 w-full max-w-6xl items-center justify-between px-6">
-        <Link href="/" className="flex items-center gap-2 font-semibold">
+        <Link href="/" className="flex items-center gap-2 font-display text-lg font-bold text-foreground hover:text-foreground">
           <BookOpen className="size-5 text-primary" />
           Reading to Learn
         </Link>
@@ -25,6 +26,7 @@ export function MarketingNav() {
           ))}
         </nav>
         <div className="flex items-center gap-2">
+          <ThemeToggle />
           <Link href="/login" className={buttonVariants({ variant: "ghost", size: "sm" })}>
             Se connecter
           </Link>

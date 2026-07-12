@@ -39,30 +39,31 @@ export default async function TeacherHome() {
   return (
     <>
       <PageHeader
+        eyebrow={language === "en" ? "Teaching workspace" : "Espace enseignant"}
         title={language === "en" ? "Class overview" : "Vue de classe"}
         description={language === "en" ? "Act on concrete competency gaps and suggested groups." : "Intervenez avec précision : lacunes de compétences et groupes recommandés."}
       />
 
-      <Card className="mb-8">
-        <CardContent className="pt-6">
+      <Card className="mb-8 overflow-hidden border-border-strong bg-card-elevated">
+        <CardContent className="p-0">
+          <div className="border-b border-border bg-accent px-6 py-5">
           <h2 className="font-semibold">{language === "en" ? "Pilot setup checklist" : "Checklist de démarrage du pilote"}</h2>
-          <div className="mt-3 grid gap-2 text-sm sm:grid-cols-2">
-            <Link href="/teacher/classes" className="rounded-md border p-3 hover:border-primary">{classes.length ? "✓ " : "1. "}{language === "en" ? "Create a class" : "Créer une classe"}</Link>
-            <Link href="/teacher/classes" className="rounded-md border p-3 hover:border-primary">{students.length ? "✓ " : "2. "}{language === "en" ? "Enroll students" : "Inscrire les élèves"}</Link>
-            <Link href="/teacher/assignments" className="rounded-md border p-3 hover:border-primary">3. {language === "en" ? "Assign a text or competency" : "Attribuer un texte ou une compétence"}</Link>
-            <Link href="/teacher/reports" className="rounded-md border p-3 hover:border-primary">4. {language === "en" ? "Review the weekly evidence" : "Consulter les preuves hebdomadaires"}</Link>
+          <p className="mt-1 text-sm text-muted-foreground">{language === "en" ? "Four steps from setup to evidence." : "Quatre étapes, de la classe aux preuves."}</p></div>
+          <div className="grid text-sm sm:grid-cols-2">
+            <Link href="/teacher/classes" className="border-b border-border p-5 transition-colors hover:bg-muted/50 sm:border-r"><span className={classes.length ? "text-success" : "text-primary"}>{classes.length ? "✓" : "01"}</span><span className="ml-3 font-medium">{language === "en" ? "Create a class" : "Créer une classe"}</span></Link>
+            <Link href="/teacher/classes" className="border-b border-border p-5 transition-colors hover:bg-muted/50"><span className={students.length ? "text-success" : "text-primary"}>{students.length ? "✓" : "02"}</span><span className="ml-3 font-medium">{language === "en" ? "Enroll students" : "Inscrire les élèves"}</span></Link>
+            <Link href="/teacher/assignments" className="border-b border-border p-5 transition-colors hover:bg-muted/50 sm:border-b-0 sm:border-r"><span className="text-primary">03</span><span className="ml-3 font-medium">{language === "en" ? "Assign a text or competency" : "Attribuer un texte ou une compétence"}</span></Link>
+            <Link href="/teacher/reports" className="p-5 transition-colors hover:bg-muted/50"><span className="text-primary">04</span><span className="ml-3 font-medium">{language === "en" ? "Review the weekly evidence" : "Consulter les preuves hebdomadaires"}</span></Link>
           </div>
         </CardContent>
       </Card>
 
-      <div className="mb-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
+      <div className="mb-10 grid grid-cols-2 border-y border-border lg:grid-cols-4">
         {stats.map((s) => (
-          <Card key={s.label}>
-            <CardContent className="pt-6">
+          <div key={s.label} className="border-b border-r border-border p-5 last:border-r-0 lg:border-b-0">
               <p className="text-sm text-muted-foreground">{s.label}</p>
-              <p className="mt-1 text-2xl font-semibold">{s.value}</p>
-            </CardContent>
-          </Card>
+              <p className="mt-1 font-display text-3xl font-bold">{s.value}</p>
+          </div>
         ))}
       </div>
 
