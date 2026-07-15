@@ -215,7 +215,32 @@ export async function runItemGenerationPipeline(
 ): Promise<ItemGenerationResult[]> {
   const raws = await ctx.generator.generateItems(spec);
   const out: ItemGenerationResult[] = [];
-  for (const raw of raws) out.push(await runGates(raw, ctx));
+  for (const raw of raws) {
+    const result = await runGates(raw, ctx);
+    if (result.item) {
+      const diagnosticExpectation = spec.hint?.expectation;
+      const mismatches = [
+        result.item.nodeKey !== spec.nodeKey ? `node ${result.item.nodeKey} != ${spec.nodeKey}` : null,
+        result.item.strand !== spec.strand ? `strand ${result.item.strand} != ${spec.strand}` : null,
+        result.item.modality !== spec.modality ? `modality ${result.item.modality} != ${spec.modality}` : null,
+        result.item.learnerMode !== spec.learnerMode ? `learner mode ${result.item.learnerMode} != ${spec.learnerMode}` : null,
+        diagnosticExpectation === "controlled_production" && result.item.responseType === "mcq"
+          ? "controlled production cannot use a multiple-choice response"
+          : null,
+        typeof diagnosticExpectation === "string"
+          && !["exact", "regex", "conjugator"].includes(result.item.validatorType)
+          ? `validator ${result.item.validatorType} is unavailable in the live diagnostic`
+          : null,
+      ].filter((value): value is string => !!value);
+      if (mismatches.length) {
+        out.push(rejected(result.raw, {
+          gate1_invariants: { ok: false, violations: mismatches },
+        }, `generation contract mismatch: ${mismatches.join("; ")}`));
+        continue;
+      }
+    }
+    out.push(result);
+  }
   return out;
 }
 

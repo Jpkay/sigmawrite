@@ -1,0 +1,13 @@
+begin;
+create extension if not exists pgtap with schema extensions;
+select plan(8);
+select has_table('public','student_competency_dimension_estimates','Longitudinal dimensions persist separately');
+select has_table('public','diagnostic_node_dimension_results','Run-level dimensions are auditable');
+select has_column('public','diagnostic_node_dimension_results','mastery_evidence_id','Dimension result keeps its evidence definition');
+select col_is_pk('public','student_competency_dimension_estimates',array['student_id','node_id','dimension'],'One posterior per student, node, and dimension');
+select col_is_pk('public','diagnostic_node_dimension_results',array['run_id','node_id','dimension'],'One run result per node and dimension');
+select fk_ok('public','diagnostic_node_dimension_results','mastery_evidence_id','public','competency_mastery_evidence','id','Dimension result references canonical evidence');
+select policies_are('public','student_competency_dimension_estimates',array['competency_dimension_estimates_select'],'Dimension estimates are RLS protected');
+select policies_are('public','diagnostic_node_dimension_results',array['diagnostic_dimension_results_select'],'Diagnostic dimension results are RLS protected');
+select * from finish();
+rollback;

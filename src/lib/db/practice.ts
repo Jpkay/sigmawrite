@@ -1,10 +1,52 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { createClient } from "@/lib/supabase/server";
 
-export type CatchUpStep = { nodeId: string; key: string; label: string; depth: number; mastery: number };
+export type CatchUpStep = {
+  nodeId: string;
+  key: string;
+  label: string;
+  depth: number;
+  mastery: number;
+  status?: "pending" | "available" | "in_progress";
+  requiredEvidenceExpectation?: "receptive" | "controlled_production" | "independent_production";
+};
 
 export async function getCatchUpPlan(studentId: string, client?: SupabaseClient): Promise<CatchUpStep[]> {
   const supabase = client ?? await createClient();
+  const { data: activePath, error: pathError } = await supabase.from("student_learning_paths")
+    .select("id")
+    .eq("student_id", studentId)
+    .eq("status", "active")
+    .order("created_at", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+  if (pathError) throw new Error(pathError.message);
+  if (activePath) {
+    const { data: steps, error: stepError } = await supabase.from("student_learning_path_steps")
+      .select("node_id,position,mastery_snapshot,status,required_evidence_expectation")
+      .eq("path_id", activePath.id)
+      .in("status", ["available", "pending", "in_progress"])
+      .order("position")
+      .limit(12);
+    if (stepError) throw new Error(stepError.message);
+    const pathNodeIds = (steps ?? []).map((step) => step.node_id as string);
+    const { data: pathNodes, error: pathNodeError } = pathNodeIds.length
+      ? await supabase.from("competency_nodes").select("id,key,label_fr").in("id", pathNodeIds)
+      : { data: [], error: null };
+    if (pathNodeError) throw new Error(pathNodeError.message);
+    const nodeById = new Map((pathNodes ?? []).map((node) => [node.id as string, node]));
+    return (steps ?? []).map((step) => ({
+      nodeId: step.node_id as string,
+      key: nodeById.get(step.node_id as string)?.key as string ?? step.node_id as string,
+      label: nodeById.get(step.node_id as string)?.label_fr as string ?? step.node_id as string,
+      depth: Math.max(0, (steps?.length ?? 1) - Number(step.position)),
+      mastery: Number(step.mastery_snapshot),
+      status: step.status as CatchUpStep["status"],
+      requiredEvidenceExpectation: step.required_evidence_expectation as CatchUpStep["requiredEvidenceExpectation"] ?? undefined,
+    }));
+  }
+  // Backward-compatible fallback for students whose legacy diagnostic predates
+  // persisted graph-derived learning paths.
   const { data: target } = await supabase.from("competency_nodes").select("id")
     .eq("key", "narration_passe").in("review_status", ["auto_approved", "human_approved"]).maybeSingle();
   if (!target) return [];
@@ -17,6 +59,7 @@ export async function getCatchUpPlan(studentId: string, client?: SupabaseClient)
     nodeId: row.node_id, key: byId.get(row.node_id)?.key as string ?? row.node_id,
     label: byId.get(row.node_id)?.label_fr as string ?? row.node_id,
     depth: row.depth, mastery: Number(row.mastery),
+    status: "available",
   }));
 }
 

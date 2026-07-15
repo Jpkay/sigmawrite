@@ -3,6 +3,7 @@ import { getSessionProfile } from "@/lib/auth";
 import { getStudentConsentGate } from "@/lib/db/lifecycle";
 import { isSupabaseConfigured } from "@/lib/supabase/server";
 import { ConsentPending } from "@/components/consent-pending";
+import { StudentAssessmentGate } from "@/components/student-assessment-gate";
 
 const nav: NavItem[] = [
   { href: "/student", label: "Accueil" },
@@ -30,7 +31,9 @@ export default async function StudentLayout({
       nav={nav}
       user={{ name: session?.displayName ?? "Élève", role: session?.role ?? "student", analyticsId: session?.id }}
     >
-      {consent && !consent.active ? <ConsentPending canSelfConsent={consent.canSelfConsent} /> : children}
+      {consent && !consent.active
+        ? <ConsentPending canSelfConsent={consent.canSelfConsent} />
+        : <StudentAssessmentGate>{children}</StudentAssessmentGate>}
     </DashboardShell>
   );
 }

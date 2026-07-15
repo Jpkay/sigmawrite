@@ -49,3 +49,6 @@ jobs:
 
       - name: Apply migrations and reference seed
         run: supabase db start
+
+      - name: Verify sectioned diagnostic database contracts
+        run: supabase test db supabase/tests/0058_sectioned_graph_diagnostic_test.sql supabase/tests/0059_versioned_diagnostic_item_banks_test.sql supabase/tests/0060_dimension_specific_diagnostic_estimates_test.sql supabase/tests/0061_atomic_diagnostic_submission_test.sql supabase/tests/0062_learning_path_progression_test.sql supabase/tests/0063_idempotent_diagnostic_finalization_test.sql supabase/tests/0064_diagnostic_evidence_coverage_test.sql supabase/tests/0065_diagnostic_launch_guards_test.sql supabase/tests/0066_diagnostic_bank_publication_guard_test.sql supabase/tests/0067_learning_path_evidence_guards_test.sql supabase/tests/0068_full_diagnostic_lifecycle_test.sql supabase/tests/0069_assessment_first_server_guard_test.sql

@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { diagnosticSkillsFromDb } from "@/lib/student-state";
+import {
+  diagnosticSectionProfileFromRows,
+  diagnosticSkillsFromDb,
+} from "@/lib/student-state";
 
 describe("diagnosticSkillsFromDb", () => {
   it("maps database skill keys to the diagnostic contract", () => {
@@ -32,5 +35,25 @@ describe("diagnosticSkillsFromDb", () => {
       argumentStructure: 50,
       academicConnectors: 50,
     });
+  });
+});
+
+describe("diagnosticSectionProfileFromRows", () => {
+  it("preserves granular run classifications and counts unprobed targets as unknown", () => {
+    const profile = diagnosticSectionProfileFromRows([
+      { sectionKey: "grammar", classification: "mastered", masteryProbability: .91, evidenceCoverageConfirmed: true, evidenceKind: "direct" },
+      { sectionKey: "grammar", classification: "fragile", masteryProbability: .72, evidenceCoverageConfirmed: true, evidenceKind: "direct" },
+      { sectionKey: "grammar", classification: "missing", masteryProbability: .2, evidenceCoverageConfirmed: true, evidenceKind: "direct" },
+      { sectionKey: "grammar", classification: "mastered", masteryProbability: .88, evidenceCoverageConfirmed: false, evidenceKind: "inferred_prerequisite" },
+    ], { grammar: 6 });
+    expect(profile.grammar).toMatchObject({
+      total: 6,
+      confirmed: 3,
+      mastered: 2,
+      fragile: 1,
+      missing: 1,
+      unknown: 2,
+    });
+    expect(profile.grammar?.meanMastery).toBeCloseTo(.6775);
   });
 });

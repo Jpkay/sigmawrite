@@ -9,6 +9,8 @@ const nav: NavItem[] = [
   { href: "/admin/reviews", label: "Évaluations humaines" },
   { href: "/admin/items", label: "Items" },
   { href: "/admin/items/review", label: "Exceptions" },
+  { href: "/admin/diagnostic-pilot", label: "Essais diagnostic" },
+  { href: "/admin/graph", label: "Inspection du graphe" },
   { href: "/admin/skills", label: "Compétences" },
   { href: "/admin/vocabulary", label: "Vocabulaire" },
   { href: "/admin/concepts", label: "Concepts" },

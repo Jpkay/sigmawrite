@@ -45,7 +45,17 @@ export default function OnboardingPage() {
     saveOnboarding({ grade, frenchBackground: background, interests });
     try {
       if (hasStudentBackend) {
-        const state = await selectInterests({ grade, frenchBackground: background, interests, studentType, homeLanguage, exposure, goalType, targetLevel: String(grade) });
+        const usesCefr = ["french_second_language", "allophone", "immersion"].includes(studentType);
+        const state = await selectInterests({
+          grade,
+          frenchBackground: background,
+          interests,
+          studentType,
+          homeLanguage,
+          exposure,
+          goalType,
+          ...(usesCefr ? {} : { targetLevel: String(grade) }),
+        });
         replaceStudentState(state);
       }
       track("onboarding_completed", { student_type: studentType, goal_type: goalType });
@@ -60,7 +70,7 @@ export default function OnboardingPage() {
     <>
       <PageHeader
         title="Bienvenue 👋"
-        description="Quelques questions pour créer ton profil de lecture."
+        description="Quelques questions pour préparer ton profil de français et ton diagnostic de départ."
       />
 
       {step === 0 && (

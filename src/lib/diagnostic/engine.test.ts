@@ -61,9 +61,10 @@ describe("adaptive diagnostic on the real past-narration slice", () => {
     expect(report.missing).toContain("cod_identification");
     // The surface error node is not mastered…
     expect(report.mastered).not.toContain("accord_pp_avoir_cod");
-    // …but its OTHER prerequisites (which the student knows) are mastered.
-    expect(report.mastered).toContain("passe_compose_avoir");
-    expect(report.mastered).toContain("accord_genre_nombre");
+    // …but its OTHER prerequisites are not marked missing. A single direct
+    // success remains fragile until a second distinct item confirms mastery.
+    expect([...report.mastered, ...report.fragile]).toContain("passe_compose_avoir");
+    expect([...report.mastered, ...report.fragile]).toContain("accord_genre_nombre");
 
     // The catch-up path to the surface node is rooted at the real gap.
     const path = catchUpToTarget(graph, state.estimates, "accord_pp_avoir_cod").map(
@@ -99,7 +100,22 @@ describe("adaptive diagnostic on the real past-narration slice", () => {
 
   it("classify thresholds", () => {
     expect(classify({ masteryProbability: 0.9, uncertainty: 0.2, evidenceCount: 2, presumed: false })).toBe("mastered");
+    expect(classify({ masteryProbability: 0.9, uncertainty: 0.2, evidenceCount: 2, evidenceCoverageConfirmed: false, presumed: false })).toBe("fragile");
     expect(classify({ masteryProbability: 0.6, uncertainty: 0.5, evidenceCount: 1, presumed: false })).toBe("fragile");
-    expect(classify({ masteryProbability: 0.2, uncertainty: 0.5, evidenceCount: 1, presumed: false })).toBe("missing");
+    expect(classify({ masteryProbability: 0.2, uncertainty: 0.5, evidenceCount: 1, presumed: false })).toBe("fragile");
+    expect(classify({ masteryProbability: 0.2, uncertainty: 0.2, evidenceCount: 2, evidenceCoverageConfirmed: true, presumed: false })).toBe("missing");
+    expect(classify({ masteryProbability: 0.5, uncertainty: 1, evidenceCount: 0, presumed: false })).toBe("unknown");
+    expect(classify({ masteryProbability: 0.86, uncertainty: 0.4, evidenceCount: 0, presumed: true })).toBe("mastered");
+  });
+
+  it("uses expectation-aware classification over a misleading aggregate score", () => {
+    expect(classify({
+      masteryProbability: 0.91,
+      uncertainty: 0.2,
+      evidenceCount: 4,
+      evidenceCoverageConfirmed: true,
+      presumed: false,
+      classification: "fragile",
+    })).toBe("fragile");
   });
 });

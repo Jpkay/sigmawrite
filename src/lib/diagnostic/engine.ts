@@ -19,13 +19,27 @@ import { bktUpdate, masteryUncertainty } from "@/lib/scoring/bkt";
 import type { PrereqGraph } from "@/lib/graph/traversal";
 import type { CompetencyEstimate, GoalScope, Strand } from "@/lib/graph/types";
 
+export type DiagnosticNodeClassification = "mastered" | "fragile" | "missing" | "unknown";
+
 export type DiagEstimate = {
   masteryProbability: number;
   uncertainty: number;
   evidenceCount: number;
+  /** True only when the direct probes cover every assessable evidence type
+   * pinned for this node (for example recognition and production). */
+  evidenceCoverageConfirmed?: boolean;
   /** Inferred from a downstream success rather than directly tested (KST). */
   presumed: boolean;
+  /** Expectation-aware persisted classification. Aggregate probability alone
+   * cannot reveal that (for example) production is weaker than recognition. */
+  classification?: DiagnosticNodeClassification;
 };
+
+export function hasConfirmedDirectEvidence(
+  estimate: Pick<DiagEstimate, "evidenceCount" | "evidenceCoverageConfirmed">,
+) {
+  return estimate.evidenceCoverageConfirmed ?? estimate.evidenceCount >= 2;
+}
 
 export const DIAGNOSTIC_PRIOR = 0.5;
 
@@ -128,6 +142,7 @@ export function applyEvidence(
   estimates.set(nodeId, {
     masteryProbability: p,
     evidenceCount,
+    evidenceCoverageConfirmed: evidenceCount >= 2,
     uncertainty: masteryUncertainty(p, evidenceCount),
     presumed: false,
   });
@@ -162,13 +177,19 @@ export function applyEvidence(
 /** Project diagnostic estimates onto the CompetencyEstimate shape the graph
  *  traversal helpers (readyToLearn / catchUpPath) expect. */
 export function toMasteryMap(
-  estimates: Map<string, DiagEstimate>
+  estimates: Map<string, DiagEstimate>,
+  masteryThreshold = 0.85,
 ): Map<string, CompetencyEstimate> {
   const out = new Map<string, CompetencyEstimate>();
   for (const [nodeId, e] of estimates) {
+    const unresolvedByClassification = e.classification !== undefined
+      && e.classification !== "mastered";
     out.set(nodeId, {
       nodeId,
-      masteryProbability: e.masteryProbability,
+      masteryProbability: unresolvedByClassification
+        || (!e.presumed && !hasConfirmedDirectEvidence(e))
+        ? Math.min(e.masteryProbability, Math.max(0, masteryThreshold - 0.01))
+        : e.masteryProbability,
       uncertainty: e.uncertainty,
       evidenceCount: e.evidenceCount,
     });

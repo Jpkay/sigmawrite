@@ -1,0 +1,9 @@
+begin;
+create extension if not exists pgtap with schema extensions;
+select plan(4);
+select has_function('public','advance_student_learning_path',array['uuid','uuid','numeric','timestamp with time zone'],'Learning evidence advances the generated path');
+select function_privs_are('public','advance_student_learning_path',array['uuid','uuid','numeric','timestamp with time zone'],'service_role',array['EXECUTE'],'Only the trusted server may advance a generated path');
+select function_privs_are('public','advance_student_learning_path',array['uuid','uuid','numeric','timestamp with time zone'],'authenticated',array[]::text[],'Students cannot submit their own mastery value');
+select function_privs_are('public','advance_student_learning_path',array['uuid','uuid','numeric','timestamp with time zone'],'anon',array[]::text[],'Anonymous callers cannot advance a path');
+select * from finish();
+rollback;

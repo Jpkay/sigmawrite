@@ -75,4 +75,3 @@ export function buildFrenchTaxonomyV1(input: { ontologyText:string; sourceRegist
     contentConcepts:CONTENT_CONCEPTS,gaps:FRENCH_TAXONOMY_V1_GAPS,validation,coverage};
   return{...content,manifest:{componentChecksums,contentChecksum:checksum(content)}};
 }
-

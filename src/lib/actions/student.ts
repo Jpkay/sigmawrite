@@ -12,12 +12,37 @@ import { scoreSession } from "@/lib/scoring/session";
 import { updateSkillEstimate, updateSkillsFromSession } from "@/lib/scoring/skill-estimate";
 import { buildRetrievalCards } from "@/lib/content/retrieval-cards";
 import { dueAtFrom, gradeRetrieval, INITIAL_SCHEDULE, scheduleNext } from "@/lib/scoring/retrieval";
-import { moderateStudentText } from "@/lib/safety/moderate-input";
+import { fallbackModeration, moderateStudentText } from "@/lib/safety/moderate-input";
 import { logAudit } from "@/lib/audit";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { getActivePrompt } from "@/lib/db/ai";
-import { nextDiagnosticItem, frontierForStudent, diagnosticRequirement } from "@/lib/diagnostic/live";
+import { nextDiagnosticItem, frontierForStudent, diagnosticRequirement, type LiveDiagnosticItem } from "@/lib/diagnostic/live";
 import { diagnosticDimensionPatch } from "@/lib/diagnostic/lifecycle";
+import {
+  assessDiagnosticBankReadiness,
+  diagnosticSection,
+  DIAGNOSTIC_ITEM_BANK_RELEASE_KEY,
+  DIAGNOSTIC_MAX_TOTAL_PROBES,
+  DIAGNOSTIC_MIN_TOTAL_PROBES,
+  DIAGNOSTIC_PROTOCOL_VERSION,
+  DIAGNOSTIC_SECTIONS,
+  DIAGNOSTIC_TAXONOMY_RELEASE_KEY,
+  evaluateDiagnosticSection,
+  nextDiagnosticSection,
+  selectDiagnosticTargets,
+  sectionForStrand,
+  type DiagnosticBankSectionReadiness,
+  type DiagnosticSectionKey,
+  type DiagnosticSectionProgress,
+} from "@/lib/diagnostic/protocol";
+import { buildDiagnosticLearningPath, type DiagnosticPathEstimate } from "@/lib/diagnostic/learning-path";
+import {
+  buildDiagnosticPriorStateSnapshot,
+  mergeDiagnosticHistorySnapshots,
+} from "@/lib/diagnostic/history";
+import type { DiagnosticEvidenceExpectation } from "@/lib/diagnostic/item-bank";
+import { nodePracticeEvidenceExpectation } from "@/lib/diagnostic/practice-evidence";
+import { requireStudentLearningUnlocked } from "@/lib/diagnostic/access";
 import { bktUpdate, bktUpdateWeighted, guessFromChoices, masteryUncertainty } from "@/lib/scoring/bkt";
 import { validateAnswer } from "@/lib/linguistic/validator";
 import { getCatchUpPlan } from "@/lib/db/practice";
@@ -60,8 +85,9 @@ const skillPracticeSchema = z.object({ skillKey: z.string().min(1).max(100), cor
 const textKeySchema = z.object({ textKey: z.string().min(1).max(100) });
 const emptySchema = z.object({}).strict();
 const adaptiveProbeSchema = z.object({
-  runId: uuidSchema, itemId: uuidSchema, selectedChoiceId: uuidSchema.optional(),
-  answerText: z.string().trim().max(2000).optional(), startedAt: dateTimeSchema,
+  runId: uuidSchema, runItemId: uuidSchema, itemId: uuidSchema, idempotencyKey: uuidSchema,
+  selectedChoiceId: uuidSchema.optional(), answerText: z.string().trim().max(2000).optional(),
+  startedAt: dateTimeSchema,
 }).refine((value) => value.selectedChoiceId || value.answerText, "Réponse requise");
 const practiceAttemptSchema = z.object({ nodeId: uuidSchema, itemId: uuidSchema, selectedChoiceId: uuidSchema.optional(), answerText: z.string().trim().max(2000).optional(), startedAt: dateTimeSchema }).refine((value) => value.selectedChoiceId || value.answerText, "Réponse requise");
 const writingFeedbackSchema = z.object({ textKey: z.string().min(1).max(100) });
@@ -81,7 +107,193 @@ async function context() {
   return { supabase, studentId };
 }
 
-async function consumeActionLimit(supabase: SupabaseClient, scope: "submit_answer" | "free_text" | "start_session") {
+type AssignedDiagnosticItem = LiveDiagnosticItem & {
+  runItemId: string;
+  assignedAt: string;
+};
+
+type DiagnosticSectionRow = {
+  section_key: DiagnosticSectionKey;
+  status: DiagnosticSectionProgress["status"];
+  probe_count: number;
+  distinct_nodes_tested: number;
+  confirmed_node_count: number;
+  target_node_count: number;
+  resolved_node_count: number;
+  mean_uncertainty: number | string;
+  confidence: "low" | "medium" | "high";
+  stopping_reason: DiagnosticSectionProgress["stoppingReason"] | null;
+};
+
+async function loadDiagnosticProgress(runId: string, db: SupabaseClient) {
+  const { data, error } = await db.from("diagnostic_run_sections")
+    .select("section_key,status,probe_count,distinct_nodes_tested,confirmed_node_count,target_node_count,resolved_node_count,mean_uncertainty,confidence,stopping_reason")
+    .eq("run_id", runId)
+    .order("position");
+  if (error) throw new Error(error.message);
+  return ((data ?? []) as DiagnosticSectionRow[]).map((row) => ({
+    key: row.section_key,
+    status: row.status,
+    probeCount: Number(row.probe_count),
+    distinctNodesTested: Number(row.distinct_nodes_tested),
+    confirmedNodeCount: Number(row.confirmed_node_count),
+    targetNodeCount: Number(row.target_node_count),
+    resolvedNodeCount: Number(row.resolved_node_count),
+    meanUncertainty: Number(row.mean_uncertainty),
+    nextInformationGain: 0,
+    eligibleItemCount: 1,
+    confidence: row.confidence,
+    stoppingReason: row.stopping_reason ?? undefined,
+  })) satisfies DiagnosticSectionProgress[];
+}
+
+async function assignDiagnosticItem(input: {
+  db: SupabaseClient;
+  studentId: string;
+  runId: string;
+  sectionKey: DiagnosticSectionKey;
+  candidate?: LiveDiagnosticItem | null;
+}): Promise<AssignedDiagnosticItem | null> {
+  const { data: outstanding, error: outstandingError } = await input.db
+    .from("diagnostic_run_items")
+    .select("id,item_snapshot,assigned_at")
+    .eq("run_id", input.runId)
+    .eq("section_key", input.sectionKey)
+    .is("answered_at", null)
+    .order("position")
+    .limit(1)
+    .maybeSingle();
+  if (outstandingError) throw new Error(outstandingError.message);
+  if (outstanding) {
+    return {
+      ...(outstanding.item_snapshot as LiveDiagnosticItem),
+      runItemId: outstanding.id as string,
+      assignedAt: outstanding.assigned_at as string,
+    };
+  }
+  const candidate = input.candidate ?? await nextDiagnosticItem(
+    input.studentId,
+    input.runId,
+    input.sectionKey,
+    input.db,
+  );
+  if (!candidate) return null;
+  const { data: latest, error: latestError } = await input.db.from("diagnostic_run_items")
+    .select("position")
+    .eq("run_id", input.runId)
+    .order("position", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+  if (latestError) throw new Error(latestError.message);
+  const assignedAt = new Date().toISOString();
+  const { data: assignment, error } = await input.db.from("diagnostic_run_items").insert({
+    run_id: input.runId,
+    item_id: candidate.id,
+    node_id: candidate.nodeId,
+    section_key: input.sectionKey,
+    position: Number(latest?.position ?? 0) + 1,
+    item_snapshot: candidate,
+    information_gain: candidate.informationGain,
+    assigned_at: assignedAt,
+  }).select("id").single();
+  if (error || !assignment) throw new Error(error?.message ?? "Question non assignée.");
+  return { ...candidate, runItemId: assignment.id as string, assignedAt };
+}
+
+async function abandonDiagnosticRun(db: SupabaseClient, runId: string) {
+  const { error } = await db.from("diagnostic_runs").update({
+    status: "abandoned",
+    completed_at: new Date().toISOString(),
+  }).eq("id", runId).eq("status", "running");
+  if (error) throw new Error(error.message);
+}
+
+async function refreshSectionProgress(input: {
+  db: SupabaseClient;
+  runId: string;
+  sectionKey: DiagnosticSectionKey;
+  candidate: LiveDiagnosticItem | null;
+}) {
+  const [{ count: probes, error: probeError }, { data: directRows, error: directError }, { data: resultRows, error: resultError }, { data: sectionRow, error: sectionError }] = await Promise.all([
+    input.db.from("diagnostic_run_items").select("id", { count: "exact", head: true }).eq("run_id", input.runId).eq("section_key", input.sectionKey).not("answered_at", "is", null),
+    input.db.from("diagnostic_node_results").select("node_id,direct_evidence_count,evidence_coverage_confirmed").eq("run_id", input.runId).eq("section_key", input.sectionKey).eq("evidence_kind", "direct"),
+    input.db.from("diagnostic_node_results").select("node_id,uncertainty,classification").eq("run_id", input.runId).eq("section_key", input.sectionKey),
+    input.db.from("diagnostic_run_sections").select("target_node_count,status").eq("run_id", input.runId).eq("section_key", input.sectionKey).single(),
+  ]);
+  if (probeError || directError || resultError || sectionError) {
+    throw new Error(probeError?.message ?? directError?.message ?? resultError?.message ?? sectionError?.message);
+  }
+  const uncertainties = (resultRows ?? []).map((row) => Number(row.uncertainty));
+  return {
+    key: input.sectionKey,
+    status: sectionRow.status as DiagnosticSectionProgress["status"],
+    probeCount: probes ?? 0,
+    distinctNodesTested: new Set((directRows ?? []).map((row) => row.node_id as string)).size,
+    confirmedNodeCount: (directRows ?? []).filter((row) => Boolean(row.evidence_coverage_confirmed)).length,
+    targetNodeCount: Number(sectionRow.target_node_count),
+    resolvedNodeCount: (resultRows ?? []).filter((row) => row.classification !== "unknown").length,
+    meanUncertainty: uncertainties.length
+      ? uncertainties.reduce((total, value) => total + value, 0) / uncertainties.length
+      : 1,
+    nextInformationGain: input.candidate?.informationGain ?? 0,
+    eligibleItemCount: input.candidate ? 1 : 0,
+  } satisfies DiagnosticSectionProgress;
+}
+
+async function reconcileDiagnosticSection(input: {
+  db: SupabaseClient;
+  studentId: string;
+  runId: string;
+  sectionKey: DiagnosticSectionKey;
+  at: string;
+}) {
+  const { data: outstanding, error: outstandingError } = await input.db
+    .from("diagnostic_run_items")
+    .select("item_snapshot")
+    .eq("run_id", input.runId)
+    .eq("section_key", input.sectionKey)
+    .is("answered_at", null)
+    .order("position")
+    .limit(1)
+    .maybeSingle();
+  if (outstandingError) throw new Error(outstandingError.message);
+  const candidate = outstanding
+    ? outstanding.item_snapshot as LiveDiagnosticItem
+    : await nextDiagnosticItem(input.studentId, input.runId, input.sectionKey, input.db);
+  const progress = await refreshSectionProgress({
+    db: input.db,
+    runId: input.runId,
+    sectionKey: input.sectionKey,
+    candidate,
+  });
+  const decision = evaluateDiagnosticSection(progress);
+  const status = decision.stop
+    ? decision.reason === "insufficient_items" ? "insufficient_items" : "completed"
+    : "active";
+  const { error } = await input.db.from("diagnostic_run_sections").update({
+    status,
+    probe_count: progress.probeCount,
+    distinct_nodes_tested: progress.distinctNodesTested,
+    confirmed_node_count: progress.confirmedNodeCount,
+    resolved_node_count: progress.resolvedNodeCount,
+    mean_uncertainty: progress.meanUncertainty,
+    coverage_ratio: decision.coverageRatio,
+    confidence: decision.confidence,
+    stopping_reason: decision.stop ? decision.reason : null,
+    completed_at: decision.stop ? input.at : null,
+  }).eq("run_id", input.runId).eq("section_key", input.sectionKey);
+  if (error) throw new Error(error.message);
+  return { candidate, progress, decision };
+}
+
+const DIMENSION_COLUMN = {
+  receptiveScore: "receptive",
+  productiveScore: "productive",
+  writtenScore: "written",
+  oralScore: "oral",
+} as const;
+
+async function consumeActionLimit(supabase: SupabaseClient, scope: "submit_answer" | "diagnostic_answer" | "free_text" | "start_session") {
   const { data, error } = await supabase.rpc("consume_student_action", { p_scope: scope });
   if (error) throw new Error("La vérification de sécurité a échoué. Réessaie.");
   const result = Array.isArray(data) ? data[0] : data;
@@ -118,6 +330,97 @@ async function moderateOrReject(input: {
   throw new Error("Ta réponse n'a pas pu être enregistrée.");
 }
 
+async function moderateDiagnosticAnswer(input: {
+  supabase: SupabaseClient;
+  studentId: string;
+  text?: string;
+}) {
+  // Diagnostic responses are short, deterministically graded, and never sent
+  // to an LLM. Keep the normal answer-rate limit and local safety rules without
+  // consuming the learner's daily AI budget on every controlled-production item.
+  await consumeActionLimit(input.supabase, "diagnostic_answer");
+  if (!input.text) return;
+  const moderation = fallbackModeration(input.text);
+  if (moderation.allowed) return;
+  await logAudit("student.free_text_rejected", {
+    targetType: "student",
+    targetId: input.studentId,
+    metadata: {
+      field: "diagnostic_answer",
+      categories: moderation.categories,
+      moderationSource: moderation.source,
+      characterCount: input.text.length,
+    },
+  });
+  throw new Error("Ta réponse n'a pas pu être enregistrée.");
+}
+
+type DirectEstimateScorePatch = Partial<{
+  receptive_score: number;
+  productive_score: number;
+  written_score: number;
+  oral_score: number;
+  fluency_score: number;
+  accuracy_score: number;
+}>;
+
+/** Persist one trusted, node-aligned observation and notify the active graph
+ * path with its exact evidence channel. Direct evidence must also retract any
+ * stale inference provenance left by a diagnostic projection. */
+async function recordDirectCompetencyEvidence(input: {
+  service: SupabaseClient;
+  studentId: string;
+  nodeId: string;
+  at: string;
+  evidenceExpectation: DiagnosticEvidenceExpectation;
+  updateMastery: (priorMastery: number) => number;
+  scorePatch?: DirectEstimateScorePatch;
+  practiced?: boolean;
+  pathMastery?: (mastery: number) => number;
+}) {
+  const { data: prior, error: priorError } = await input.service
+    .from("student_competency_estimates")
+    .select("mastery_probability,evidence_count,estimate_source")
+    .eq("student_id", input.studentId)
+    .eq("node_id", input.nodeId)
+    .maybeSingle();
+  if (priorError) throw new Error(priorError.message);
+  // A graph inference is useful for selection, but is not a direct prior from
+  // which one ordinary exercise may instantly claim confirmed mastery.
+  const priorMastery = prior?.estimate_source === "diagnostic_inference"
+    ? 0.5
+    : Number(prior?.mastery_probability ?? 0.1);
+  const evidenceCount = Number(prior?.evidence_count ?? 0) + 1;
+  const mastery = input.updateMastery(priorMastery);
+  const { error: estimateError } = await input.service
+    .from("student_competency_estimates")
+    .upsert({
+      student_id: input.studentId,
+      node_id: input.nodeId,
+      mastery_probability: mastery,
+      uncertainty: masteryUncertainty(mastery, evidenceCount),
+      evidence_count: evidenceCount,
+      ...(input.scorePatch ?? {}),
+      ...(input.practiced ? { last_practiced_at: input.at } : {}),
+      estimate_source: "direct",
+      inferred_from_node_id: null,
+      last_diagnostic_run_id: null,
+      last_evidence_at: input.at,
+      updated_at: input.at,
+    }, { onConflict: "student_id,node_id" });
+  if (estimateError) throw new Error(estimateError.message);
+
+  const { error: pathError } = await input.service.rpc("advance_student_learning_path", {
+    p_student_id: input.studentId,
+    p_node_id: input.nodeId,
+    p_mastery: input.pathMastery?.(mastery) ?? mastery,
+    p_completed_at: input.at,
+    p_evidence_expectation: input.evidenceExpectation,
+  });
+  if (pathError) throw new Error(pathError.message);
+  return { mastery, evidenceCount };
+}
+
 async function evaluateAndStoreWriting(input: {
   service: SupabaseClient; studentId: string; summaryId: string; revisionNumber: 0 | 1;
   sourceText: string; studentText: string; keywords: string[]; systemPrompt: string;
@@ -127,10 +430,24 @@ async function evaluateAndStoreWriting(input: {
   const evaluation = await evaluateWriting({ textBody: input.sourceText, studentText: input.studentText, keywords: input.keywords, mappings, systemPrompt: input.systemPrompt });
   const { error } = await input.service.from("writing_evaluations").upsert({ student_summary_id: input.summaryId, student_id: input.studentId, revision_number: input.revisionNumber, submitted_text: input.studentText, rubric: evaluation.rubric, annotations: evaluation.annotations, revision_plan: evaluation.revisionPlan, degraded: evaluation.degraded }, { onConflict: "student_summary_id,revision_number" });
   if (error) throw new Error(error.message);
+  const evaluatedAt = new Date().toISOString();
   for (const plan of evaluation.revisionPlan) {
-    const { data: prior } = await input.service.from("student_competency_estimates").select("mastery_probability,evidence_count").eq("student_id", input.studentId).eq("node_id", plan.nodeId).maybeSingle();
-    const evidenceCount = Number(prior?.evidence_count ?? 0) + 1; const mastery = bktUpdateWeighted(Number(prior?.mastery_probability ?? 0.1), false, plan.evidenceWeight);
-    await input.service.from("student_competency_estimates").upsert({ student_id: input.studentId, node_id: plan.nodeId, mastery_probability: mastery, uncertainty: masteryUncertainty(mastery, evidenceCount), evidence_count: evidenceCount, productive_score: Math.max(0, 1 - plan.errorCount * 0.2), last_evidence_at: new Date().toISOString(), updated_at: new Date().toISOString() }, { onConflict: "student_id,node_id" });
+    await recordDirectCompetencyEvidence({
+      service: input.service,
+      studentId: input.studentId,
+      nodeId: plan.nodeId,
+      at: evaluatedAt,
+      evidenceExpectation: "independent_production",
+      updateMastery: (prior) => bktUpdateWeighted(prior, false, plan.evidenceWeight),
+      scorePatch: {
+        productive_score: Math.max(0, 1 - plan.errorCount * 0.2),
+        written_score: Math.max(0, 1 - plan.errorCount * 0.2),
+      },
+      // The current rubric supplies only an error signal. Even when a strong
+      // historical aggregate remains above threshold, a detected error cannot
+      // be treated as a positive independent-production verification.
+      pathMastery: (mastery) => Math.min(mastery, 0.84),
+    });
   }
   return evaluation;
 }
@@ -229,11 +546,11 @@ export async function selectInterests(input: unknown) {
   const fsl = ["french_second_language", "allophone", "immersion"].includes(studentType);
   const { error: goalError } = await supabase.from("learning_goals").insert({
     student_id: studentId, goal_type: data.goalType ?? "catch_up", target_framework: fsl ? "cefr" : "native_grade",
-    target_level: data.targetLevel ?? (fsl ? "B1" : String(data.grade)), target_grade: fsl ? null : data.grade,
+    target_level: fsl ? "B1" : data.targetLevel ?? String(data.grade), target_grade: fsl ? null : data.grade,
     scope: { strands: fsl
-      ? ["grammaire_syntaxe", "conjugaison", "lexique", "comprehension_orale", "comprehension_ecrite", "expression_ecrite"]
-      : ["grammaire_syntaxe", "conjugaison", "orthographe_grammaticale", "comprehension_ecrite", "expression_ecrite"],
-      modalities: fsl ? ["reading", "listening", "writing", "grammar_analysis"] : ["reading", "writing", "grammar_analysis"], mastery_threshold: 0.85 },
+      ? ["grammaire_syntaxe", "conjugaison", "orthographe_lexicale", "orthographe_grammaticale", "lexique", "comprehension_orale", "comprehension_ecrite", "expression_ecrite"]
+      : ["grammaire_syntaxe", "conjugaison", "orthographe_lexicale", "orthographe_grammaticale", "comprehension_ecrite", "expression_ecrite"],
+      modalities: fsl ? ["reading", "listening", "writing", "grammar_analysis", "dictee"] : ["reading", "writing", "grammar_analysis", "dictee"], mastery_threshold: 0.85 },
   });
   if (goalError) throw new Error(goalError.message);
   revalidatePath("/student");
@@ -244,24 +561,375 @@ export async function startAdaptiveDiagnostic(input: unknown) {
   checked(emptySchema, input);
   if (process.env.ADAPTIVE_DIAGNOSTIC_ENABLED === "false") throw new Error("Diagnostic adaptatif désactivé pour cet environnement.");
   const { supabase, studentId } = await context();
-  await supabase.from("diagnostic_runs").update({ status: "abandoned", completed_at: new Date().toISOString() }).eq("student_id", studentId).eq("status", "running");
   const service = createServiceClient();
-  const requirement = await diagnosticRequirement(studentId, service);
-  const [{ data: goal }, { data: release }, { data: estimates }] = await Promise.all([
-    supabase.from("learning_goals").select("id").eq("student_id", studentId).eq("status", "active").order("created_at", { ascending: false }).limit(1).maybeSingle(),
-    service.from("taxonomy_releases").select("id").eq("status", "published").order("published_at", { ascending: false }).limit(1).maybeSingle(),
-    service.from("student_competency_estimates").select("node_id,mastery_probability,uncertainty,evidence_count,receptive_score,productive_score,written_score,oral_score,last_evidence_at").eq("student_id", studentId),
-  ]);
-  if (!goal) throw new Error("Choisis d’abord ton objectif.");
-  const { data: run, error } = await supabase.from("diagnostic_runs").insert({ student_id: studentId, learning_goal_id: goal.id, run_type: requirement.kind === "calibration" ? "calibration" : requirement.kind, trigger_reason: requirement.reason, taxonomy_release_id: release?.id ?? null, config_snapshot: { inactivity_days: 60, uncertainty_threshold: .65, max_probes: 30 }, prior_state_snapshot: estimates ?? [] }).select("id,started_at").single();
-  if (error || !run) throw new Error(error?.message ?? "Diagnostic non créé.");
-  if (requirement.kind === "reentry" && requirement.targetNodeIds.length) {
-    const { error: targetError } = await service.from("diagnostic_run_targets").insert(requirement.targetNodeIds.map((nodeId) => ({ run_id: run.id, node_id: nodeId, target_reason: requirement.reason === "inactivity" ? "stale" : "uncertain" })));
-    if (targetError) throw new Error(targetError.message);
+  const { data: existingRun } = await supabase.from("diagnostic_runs")
+    .select("id,started_at,current_section,taxonomy_release_id,item_bank_release_id,is_pilot")
+    .eq("student_id", studentId)
+    .eq("status", "running")
+    .eq("protocol_version", DIAGNOSTIC_PROTOCOL_VERSION)
+    .order("started_at", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+  if (existingRun) {
+    const [progress, targetCountResult, releaseIdentity, bankIdentity] = await Promise.all([
+      loadDiagnosticProgress(existingRun.id as string, service),
+      service.from("diagnostic_run_targets")
+        .select("node_id", { count: "exact", head: true })
+        .eq("run_id", existingRun.id),
+      service.from("taxonomy_releases")
+        .select("release_key")
+        .eq("id", existingRun.taxonomy_release_id)
+        .maybeSingle(),
+      service.from("diagnostic_item_bank_releases")
+        .select("bank_key")
+        .eq("id", existingRun.item_bank_release_id)
+        .maybeSingle(),
+    ]);
+    if (targetCountResult.error || releaseIdentity.error || bankIdentity.error) {
+      throw new Error(targetCountResult.error?.message ?? releaseIdentity.error?.message ?? bankIdentity.error?.message);
+    }
+    const targetCount = targetCountResult.count;
+    const expectedTargetCount = progress.reduce((total, section) => total + section.targetNodeCount, 0);
+    const wrongV2Release = releaseIdentity.data?.release_key !== DIAGNOSTIC_TAXONOMY_RELEASE_KEY
+      || bankIdentity.data?.bank_key !== DIAGNOSTIC_ITEM_BANK_RELEASE_KEY;
+    if (wrongV2Release || progress.length !== DIAGNOSTIC_SECTIONS.length || !expectedTargetCount || targetCount !== expectedTargetCount) {
+      await abandonDiagnosticRun(service, existingRun.id as string);
+    } else {
+      let currentProgress = progress;
+      const recordedSection = existingRun.current_section as DiagnosticSectionKey | null;
+      let sectionKey = recordedSection && progress.find((section) => section.key === recordedSection)?.status === "active"
+        ? recordedSection
+        : nextDiagnosticSection(currentProgress);
+      for (let transitionCount = 0; transitionCount <= DIAGNOSTIC_SECTIONS.length; transitionCount += 1) {
+        if (!sectionKey) {
+          if (currentProgress.some((section) => section.status === "insufficient_items")) {
+            throw new Error("Ce diagnostic est suspendu : une section manque encore de questions validées.");
+          }
+          const completed = await finalizeAdaptiveDiagnostic({
+            service,
+            studentId,
+            runId: existingRun.id as string,
+            completedAt: new Date().toISOString(),
+            probeCount: currentProgress.reduce((total, section) => total + section.probeCount, 0),
+          });
+          return { done: true as const, ...completed };
+        }
+        const reconciledAt = new Date().toISOString();
+        const reconciled = await reconcileDiagnosticSection({
+          db: service,
+          studentId,
+          runId: existingRun.id as string,
+          sectionKey,
+          at: reconciledAt,
+        });
+        if (!reconciled.decision.stop) {
+          const item = await assignDiagnosticItem({
+            db: service,
+            studentId,
+            runId: existingRun.id as string,
+            sectionKey,
+            candidate: reconciled.candidate,
+          });
+          if (!item) {
+            await abandonDiagnosticRun(service, existingRun.id as string);
+            throw new Error("La banque ne permet pas de reprendre cette section.");
+          }
+          return {
+            runId: existingRun.id as string,
+            startedAt: existingRun.started_at as string,
+            item,
+            progress: await loadDiagnosticProgress(existingRun.id as string, service),
+            minTotalProbes: DIAGNOSTIC_MIN_TOTAL_PROBES,
+            maxTotalProbes: DIAGNOSTIC_MAX_TOTAL_PROBES,
+            resumed: true,
+            isPilot: Boolean(existingRun.is_pilot),
+            done: false as const,
+          };
+        }
+        if (reconciled.decision.reason === "insufficient_items") {
+          throw new Error("Ce diagnostic est suspendu : une section manque encore de questions validées.");
+        }
+        currentProgress = await loadDiagnosticProgress(existingRun.id as string, service);
+        const nextSectionKey = nextDiagnosticSection(currentProgress);
+        if (!nextSectionKey) {
+          sectionKey = null;
+          continue;
+        }
+        const [runTransition, sectionTransition] = await Promise.all([
+          service.from("diagnostic_runs").update({ current_section: nextSectionKey }).eq("id", existingRun.id),
+          service.from("diagnostic_run_sections").update({
+            status: "active",
+            started_at: reconciledAt,
+          }).eq("run_id", existingRun.id).eq("section_key", nextSectionKey).eq("status", "pending"),
+        ]);
+        if (runTransition.error || sectionTransition.error) {
+          throw new Error(runTransition.error?.message ?? sectionTransition.error?.message);
+        }
+        sectionKey = nextSectionKey;
+      }
+      throw new Error("Le diagnostic n’a pas pu reprendre sa section active.");
+    }
   }
-  const item = await nextDiagnosticItem(studentId, run.id as string, service);
-  if (!item) throw new Error("La banque d’items ne contient pas encore assez de questions.");
-  return { runId: run.id as string, startedAt: run.started_at as string, item };
+  await supabase.from("diagnostic_runs")
+    .update({ status: "abandoned", completed_at: new Date().toISOString() })
+    .eq("student_id", studentId)
+    .eq("status", "running");
+  const requirement = await diagnosticRequirement(studentId, service);
+  const [{ data: goal, error: goalError }, publishedReleaseLookup, { data: estimates, error: estimatesError }, pilotContextLookup] = await Promise.all([
+    supabase.from("learning_goals").select("id,target_framework,target_level,target_grade").eq("student_id", studentId).eq("status", "active").order("created_at", { ascending: false }).limit(1).maybeSingle(),
+    service.from("taxonomy_releases").select("id").eq("release_key", DIAGNOSTIC_TAXONOMY_RELEASE_KEY).eq("status", "published").maybeSingle(),
+    service.from("student_competency_estimates").select("node_id,mastery_probability,uncertainty,evidence_count,receptive_score,productive_score,written_score,oral_score,last_evidence_at").eq("student_id", studentId),
+    service.rpc("diagnostic_pilot_context", { p_student_id: studentId }),
+  ]);
+  if (goalError || estimatesError) throw new Error(goalError?.message ?? estimatesError?.message);
+  if (!goal) throw new Error("Choisis d’abord ton objectif.");
+  if (pilotContextLookup.error) throw new Error(pilotContextLookup.error.message);
+  const pilotContext = pilotContextLookup.data as {
+    enrollmentId: string;
+    taxonomyReleaseId: string;
+    bankReleaseId: string;
+    expiresAt: string;
+  } | null;
+  const isPilot = Boolean(pilotContext);
+  const pilotReleaseLookup = pilotContext
+    ? await service.from("taxonomy_releases")
+      .select("id")
+      .eq("id", pilotContext.taxonomyReleaseId)
+      .eq("release_key", DIAGNOSTIC_TAXONOMY_RELEASE_KEY)
+      .in("status", ["validating", "published"])
+      .maybeSingle()
+    : null;
+  const release = isPilot ? pilotReleaseLookup?.data : publishedReleaseLookup.data;
+  const releaseError = isPilot ? pilotReleaseLookup?.error : publishedReleaseLookup.error;
+  if (releaseError || !release?.id) {
+    throw new Error(`La taxonomie ${DIAGNOSTIC_TAXONOMY_RELEASE_KEY} n’est pas publiée.`);
+  }
+  const [itemBankLookup, priorRunLookup] = await Promise.all([
+    (pilotContext
+      ? service.from("diagnostic_item_bank_releases")
+        .select("id")
+        .eq("id", pilotContext.bankReleaseId)
+        .eq("bank_key", DIAGNOSTIC_ITEM_BANK_RELEASE_KEY)
+        .eq("taxonomy_release_id", release.id)
+        .in("status", ["draft", "validating"])
+      : service.from("diagnostic_item_bank_releases")
+      .select("id")
+      .eq("bank_key", DIAGNOSTIC_ITEM_BANK_RELEASE_KEY)
+      .eq("taxonomy_release_id", release.id)
+      .eq("status", "published"))
+      .maybeSingle(),
+    service.from("diagnostic_runs")
+      .select("id,taxonomy_release_id,protocol_version,completed_at")
+      .eq("student_id", studentId)
+      .eq("status", "completed")
+      .eq("is_pilot", isPilot)
+      .eq("taxonomy_release_id", release.id)
+      .eq("protocol_version", DIAGNOSTIC_PROTOCOL_VERSION)
+      .order("completed_at", { ascending: false })
+      .limit(1)
+      .maybeSingle(),
+  ]);
+  const { data: itemBank, error: itemBankError } = itemBankLookup;
+  const { data: latestCompatibleRun, error: priorRunError } = priorRunLookup;
+  if (itemBankError || priorRunError) {
+    throw new Error(itemBankError?.message ?? priorRunError?.message);
+  }
+  if (!itemBank) {
+    throw new Error(isPilot
+      ? "La banque pilote n’est plus disponible. Contacte l’équipe de test."
+      : `La banque ${DIAGNOSTIC_ITEM_BANK_RELEASE_KEY} n’est pas publiée pour la taxonomie v2.`);
+  }
+  const { data: priorDiagnosticRows, error: priorDiagnosticError } = latestCompatibleRun
+    ? await service.from("diagnostic_node_results")
+      .select("node_id,mastery_probability,uncertainty,direct_evidence_count,evidence_coverage_confirmed,evidence_kind,classification,section_key")
+      .eq("run_id", latestCompatibleRun.id)
+    : { data: [], error: null };
+  if (priorDiagnosticError) throw new Error(priorDiagnosticError.message);
+  const priorStateSnapshot = buildDiagnosticPriorStateSnapshot({
+    taxonomyReleaseId: release.id as string,
+    protocolVersion: DIAGNOSTIC_PROTOCOL_VERSION,
+    globalEstimates: (estimates ?? []) as Record<string, unknown>[],
+    latestCompletedDiagnostic: latestCompatibleRun ? {
+      runId: latestCompatibleRun.id as string,
+      taxonomyReleaseId: latestCompatibleRun.taxonomy_release_id as string,
+      protocolVersion: latestCompatibleRun.protocol_version as string,
+      completedAt: latestCompatibleRun.completed_at as string | null,
+      resultRows: (priorDiagnosticRows ?? []) as Record<string, unknown>[],
+    } : null,
+  });
+  const readinessResult = await service.rpc(isPilot
+    ? "diagnostic_pilot_bank_readiness"
+    : "diagnostic_bank_readiness", {
+    p_taxonomy_release_id: release.id,
+    p_bank_release_id: itemBank.id,
+  });
+  if (readinessResult.error) throw new Error(readinessResult.error.message);
+  const rawReadiness = readinessResult.data as { ready?: boolean; sections?: DiagnosticBankSectionReadiness[] } | null;
+  const readiness = assessDiagnosticBankReadiness(rawReadiness?.sections ?? []);
+  if (!rawReadiness?.ready || !readiness.ready) {
+    const missing = readiness.sections.filter((section) => !section.ready)
+      .map((section) => diagnosticSection(section.key).labelFr)
+      .join(", ");
+    throw new Error(`Le diagnostic n’est pas encore prêt pour : ${missing}.`);
+  }
+  const { data: memberships, error: membershipError } = await service
+    .from("taxonomy_release_memberships")
+    .select("record_id,record_type,stable_key,record_snapshot")
+    .eq("release_id", release.id)
+    .in("record_type", ["competency_node", "progression_mapping", "competency_edge"]);
+  if (membershipError) throw new Error(membershipError.message);
+  const releaseNodeIds = (memberships ?? [])
+    .filter((row) => row.record_type === "competency_node")
+    .map((row) => row.record_id as string);
+  const mappingMemberships = (memberships ?? []).filter((row) => row.record_type === "progression_mapping");
+  const edgeMemberships = (memberships ?? []).filter((row) => row.record_type === "competency_edge");
+  if (!releaseNodeIds.length || !mappingMemberships.length) {
+    throw new Error("La taxonomie v2 publiée ne contient pas la progression requise.");
+  }
+  const diagnosticNodes = (memberships ?? [])
+    .filter((membership) => membership.record_type === "competency_node")
+    .flatMap((membership) => {
+      const snapshot = membership.record_snapshot as Record<string, unknown> | null;
+      const sectionKey = sectionForStrand(
+        snapshot?.strand as Parameters<typeof sectionForStrand>[0],
+      );
+      return sectionKey ? [{ id: membership.record_id as string, sectionKey }] : [];
+    });
+  const releaseNodeByKey = new Map((memberships ?? [])
+    .filter((row) => row.record_type === "competency_node")
+    .map((row) => [row.stable_key as string, row.record_id as string]));
+  const releaseMappings = mappingMemberships.flatMap((membership) => {
+    const snapshot = membership.record_snapshot as Record<string, unknown> | null;
+    const nodeKey = String(membership.stable_key).split(":", 1)[0];
+    const nodeId = releaseNodeByKey.get(nodeKey);
+    return nodeId && snapshot
+      && typeof snapshot.learnerMode === "string"
+      && typeof snapshot.framework === "string"
+      ? [{
+          nodeId,
+          learnerMode: snapshot.learnerMode,
+          framework: snapshot.framework,
+          levelMin: typeof snapshot.levelMin === "string" ? snapshot.levelMin : null,
+        }]
+      : [];
+  });
+  const releaseEdges = edgeMemberships.flatMap((membership) => {
+    const snapshot = membership.record_snapshot as Record<string, unknown> | null;
+    const sourceNodeId = typeof snapshot?.source === "string"
+      ? releaseNodeByKey.get(snapshot.source)
+      : undefined;
+    const targetNodeId = typeof snapshot?.target === "string"
+      ? releaseNodeByKey.get(snapshot.target)
+      : undefined;
+    if (!sourceNodeId || !targetNodeId || snapshot?.type !== "prerequisite") return [];
+    return [{
+      sourceNodeId,
+      targetNodeId,
+      prerequisiteClass: snapshot.prerequisiteClass === "hard"
+        ? "hard" as const
+        : snapshot.prerequisiteClass === "soft"
+          ? "soft" as const
+          : null,
+    }];
+  });
+  const targetFramework = goal.target_framework as string;
+  const targetLevel = String(goal.target_level ?? goal.target_grade ?? "");
+  const targetScope = selectDiagnosticTargets({
+    nodes: diagnosticNodes,
+    mappings: releaseMappings,
+    edges: releaseEdges,
+    goal: {
+      learnerMode: targetFramework === "cefr"
+        ? "french_second_language"
+        : "french_first_language",
+      framework: targetFramework,
+      targetLevel,
+    },
+    assessmentKind: requirement.kind,
+    focusNodeIds: requirement.targetNodeIds,
+    focusReason: requirement.reason === "inactivity" ? "stale" : "uncertain",
+  });
+  if (targetScope.insufficientGoalSections.length) {
+    const missing = targetScope.insufficientGoalSections
+      .map((key) => diagnosticSection(key).labelFr)
+      .join(", ");
+    throw new Error(`L’objectif ${targetLevel || "actif"} ne fournit pas assez de compétences pour : ${missing}.`);
+  }
+  const assessmentNodes = targetScope.targets;
+  const firstSection = DIAGNOSTIC_SECTIONS[0].key;
+  const { data: run, error } = await supabase.from("diagnostic_runs").insert({
+    student_id: studentId,
+    learning_goal_id: goal.id,
+    run_type: requirement.kind === "calibration" ? "calibration" : requirement.kind,
+    trigger_reason: requirement.reason,
+    taxonomy_release_id: release.id,
+    item_bank_release_id: itemBank.id,
+    is_pilot: isPilot,
+    pilot_enrollment_id: pilotContext?.enrollmentId ?? null,
+    protocol_version: DIAGNOSTIC_PROTOCOL_VERSION,
+    current_section: firstSection,
+    total_min_probes: DIAGNOSTIC_MIN_TOTAL_PROBES,
+    total_max_probes: DIAGNOSTIC_MAX_TOTAL_PROBES,
+    config_snapshot: {
+      inactivity_days: 60,
+      uncertainty_threshold: .65,
+      uncertainty_target: .4,
+      graph_coverage_target: .7,
+      target_framework: targetFramework,
+      target_level: targetLevel,
+      target_scope_fallback_sections: targetScope.fallbackSections,
+      sections: DIAGNOSTIC_SECTIONS,
+    },
+    prior_state_snapshot: priorStateSnapshot,
+  }).select("id,started_at").single();
+  if (error?.code === "23505") {
+    throw new Error("Un diagnostic vient déjà de démarrer. Réessaie pour le reprendre.");
+  }
+  if (error || !run) throw new Error(error?.message ?? "Diagnostic non créé.");
+  const { error: targetError } = await service.from("diagnostic_run_targets").insert(
+    assessmentNodes.map((node) => ({
+      run_id: run.id,
+      node_id: node.id,
+      target_reason: node.targetReason,
+    })),
+  );
+  if (targetError) {
+    await abandonDiagnosticRun(service, run.id as string);
+    throw new Error(targetError.message);
+  }
+  const { error: sectionError } = await service.from("diagnostic_run_sections").insert(
+    DIAGNOSTIC_SECTIONS.map((section, index) => ({
+      run_id: run.id,
+      section_key: section.key,
+      position: index + 1,
+      status: index === 0 ? "active" : "pending",
+      min_probes: section.minProbes,
+      max_probes: section.maxProbes,
+      min_distinct_nodes: section.minDistinctNodes,
+      target_node_count: assessmentNodes.filter((node) => node.sectionKey === section.key).length,
+      started_at: index === 0 ? new Date().toISOString() : null,
+    })),
+  );
+  if (sectionError) {
+    await abandonDiagnosticRun(service, run.id as string);
+    throw new Error(sectionError.message);
+  }
+  const item = await assignDiagnosticItem({ db: service, studentId, runId: run.id as string, sectionKey: firstSection });
+  if (!item) {
+    await abandonDiagnosticRun(service, run.id as string);
+    throw new Error("La banque d’items ne contient pas encore assez de questions.");
+  }
+  return {
+    runId: run.id as string,
+    startedAt: run.started_at as string,
+    item,
+    progress: await loadDiagnosticProgress(run.id as string, service),
+    minTotalProbes: DIAGNOSTIC_MIN_TOTAL_PROBES,
+    maxTotalProbes: DIAGNOSTIC_MAX_TOTAL_PROBES,
+    resumed: false,
+    isPilot,
+    done: false as const,
+  };
 }
 
 export async function loadDiagnosticRequirement(input: unknown) {
@@ -271,7 +939,8 @@ export async function loadDiagnosticRequirement(input: unknown) {
 }
 
 export async function requestOnDemandGeneration(input: unknown) {
-  const data = checked(onDemandRequestSchema, input); const { studentId } = await context();
+  const data = checked(onDemandRequestSchema, input); const { supabase, studentId } = await context();
+  await requireStudentLearningUnlocked(supabase, studentId);
   const sanitized = sanitizeStudentTopic(data.topic); if (!sanitized.allowed) throw new Error("Ce sujet ne peut pas être utilisé.");
   const service = createServiceClient(); const { data: policy } = await service.from("generation_rollout_policies").select("id,stage,enabled,low_risk_topic_allowlist").eq("active", true).order("version", { ascending: false }).limit(1).maybeSingle();
   if (!policy?.enabled || policy.stage === "off") throw new Error("La création à la demande n’est pas encore disponible.");
@@ -289,9 +958,10 @@ export async function loadStudentCatchUpPlan(input: unknown) {
 
 export async function submitNodePractice(input: unknown) {
   const data = checked(practiceAttemptSchema, input); const { supabase, studentId } = await context();
+  await requireStudentLearningUnlocked(supabase, studentId);
   if (data.answerText) await moderateOrReject({ supabase, studentId, text: data.answerText, field: "memory_retrieval" });
   const service = createServiceClient();
-  const { data: item } = await service.from("competency_items").select("id,primary_node_id,learner_mode,modality,validator_type,validator_config,correct_answer,acceptable_answers,competency_item_choices(id,is_correct,feedback_fr)").eq("id", data.itemId).eq("primary_node_id", data.nodeId).in("review_status", ["auto_approved", "human_approved"]).single();
+  const { data: item } = await service.from("competency_items").select("id,primary_node_id,learner_mode,modality,response_type,validator_type,validator_config,correct_answer,acceptable_answers,competency_item_choices(id,is_correct,feedback_fr)").eq("id", data.itemId).eq("primary_node_id", data.nodeId).in("review_status", ["auto_approved", "human_approved"]).single();
   if (!item) throw new Error("Exercice introuvable.");
   const choices = item.competency_item_choices as unknown as Array<{ id: string; is_correct: boolean; feedback_fr: string | null }>;
   let correct = false; let feedbackFr: string | null = null;
@@ -299,9 +969,16 @@ export async function submitNodePractice(input: unknown) {
   else { const validation = await validateAnswer(data.answerText ?? "", { validatorType: item.validator_type as "exact" | "regex" | "conjugator", config: item.validator_config as Record<string, unknown> | undefined, correctAnswer: item.correct_answer as string | undefined, acceptableAnswers: item.acceptable_answers as string[] }); correct = validation.pass; feedbackFr = validation.reason ?? null; }
   const now = new Date().toISOString();
   await service.from("competency_attempts").insert({ student_id: studentId, item_id: item.id, node_id: data.nodeId, learner_mode: item.learner_mode, modality: item.modality, answer_text: data.answerText ?? null, selected_choice_id: data.selectedChoiceId ?? null, is_correct: correct, score: correct ? 1 : 0, latency_ms: Math.max(0, Date.now()-Date.parse(data.startedAt)), context: "practice", attempted_at: now });
-  const { data: previous } = await service.from("student_competency_estimates").select("mastery_probability,evidence_count").eq("student_id", studentId).eq("node_id", data.nodeId).maybeSingle();
-  const evidenceCount = Number(previous?.evidence_count ?? 0) + 1; const mastery = bktUpdate(Number(previous?.mastery_probability ?? 0.1), correct, {}, guessFromChoices(choices.length));
-  await service.from("student_competency_estimates").upsert({ student_id: studentId, node_id: data.nodeId, mastery_probability: mastery, uncertainty: masteryUncertainty(mastery, evidenceCount), evidence_count: evidenceCount, last_practiced_at: now, last_evidence_at: now, updated_at: now }, { onConflict: "student_id,node_id" });
+  const { mastery } = await recordDirectCompetencyEvidence({
+    service,
+    studentId,
+    nodeId: data.nodeId,
+    at: now,
+    evidenceExpectation: nodePracticeEvidenceExpectation(item.response_type as string),
+    updateMastery: (prior) => bktUpdate(prior, correct, {}, guessFromChoices(choices.length)),
+    practiced: true,
+    pathMastery: (value) => correct ? value : Math.min(value, 0.84),
+  });
   if (mastery >= 0.85) {
     const { data: node } = await service.from("competency_nodes").select("label_fr").eq("id", data.nodeId).single();
     const { data: card } = await service.from("retrieval_cards").upsert({ student_id: studentId, node_id: data.nodeId, card_type: "competency_node", prompt_fr: `Explique avec tes mots : ${node?.label_fr ?? "cette compétence"}.`, rubric: { node_id: data.nodeId } }, { onConflict: "student_id,node_id" }).select("id").single();
@@ -326,6 +1003,7 @@ export async function loadWritingFeedback(input: unknown) {
 
 export async function reviseSummary(input: unknown) {
   const data = checked(writingRevisionSchema, input); const { supabase, studentId } = await context();
+  await requireStudentLearningUnlocked(supabase, studentId);
   await moderateOrReject({ supabase, studentId, text: data.revisedText, field: "reading_summary" });
   const current = await loadWritingFeedback({ textKey: data.textKey });
   if (!current) throw new Error("Résumé introuvable.");
@@ -337,26 +1015,369 @@ export async function reviseSummary(input: unknown) {
   return evaluation;
 }
 
+async function finalizeAdaptiveDiagnostic(input: {
+  service: SupabaseClient;
+  studentId: string;
+  runId: string;
+  completedAt: string;
+  probeCount: number;
+}) {
+  const { data: run, error: runError } = await input.service.from("diagnostic_runs")
+    .select("id,learning_goal_id,taxonomy_release_id,protocol_version,prior_state_snapshot,is_pilot")
+    .eq("id", input.runId)
+    .eq("student_id", input.studentId)
+    .single();
+  if (runError || !run?.taxonomy_release_id) throw new Error(runError?.message ?? "Version du diagnostic introuvable.");
+  const [{ data: memberships, error: membershipError }, { data: targetRows, error: targetError }, { data: resultRows, error: resultError }, { data: student, error: studentError }, { data: goal, error: goalError }, { data: learnerProfile, error: profileError }, progress] = await Promise.all([
+    input.service.from("taxonomy_release_memberships").select("record_id,record_type,stable_key,record_snapshot").eq("release_id", run.taxonomy_release_id).in("record_type", ["competency_node", "competency_edge", "mastery_evidence", "progression_mapping"]),
+    input.service.from("diagnostic_run_targets").select("node_id").eq("run_id", input.runId),
+    input.service.from("diagnostic_node_results").select("node_id,mastery_probability,uncertainty,direct_evidence_count,evidence_coverage_confirmed,evidence_kind,classification,section_key").eq("run_id", input.runId),
+    input.service.from("students").select("current_grade").eq("id", input.studentId).single(),
+    input.service.from("learning_goals").select("target_framework,target_level,target_grade").eq("id", run.learning_goal_id).single(),
+    input.service.from("learner_profiles").select("student_type").eq("student_id", input.studentId).maybeSingle(),
+    loadDiagnosticProgress(input.runId, input.service),
+  ]);
+  if (membershipError || targetError || resultError || studentError || goalError || profileError) {
+    throw new Error(membershipError?.message ?? targetError?.message ?? resultError?.message ?? studentError?.message ?? goalError?.message ?? profileError?.message);
+  }
+  const releaseNodeIds = new Set((memberships ?? [])
+    .filter((row) => row.record_type === "competency_node")
+    .map((row) => row.record_id as string));
+  const nodeIds = (targetRows ?? []).map((row) => row.node_id as string);
+  if (!nodeIds.length || nodeIds.some((nodeId) => !releaseNodeIds.has(nodeId))) {
+    throw new Error("La portée du diagnostic ne correspond pas à sa taxonomie publiée.");
+  }
+  const nodeIdSet = new Set(nodeIds);
+  const { data: nodeRows, error: nodeError } = await input.service.from("competency_nodes")
+    .select("id,key,label_fr,strand")
+    .in("id", nodeIds);
+  if (nodeError) throw new Error(nodeError.message);
+  const nodeIdByKey = new Map((nodeRows ?? []).map((row) => [row.key as string, row.id as string]));
+  const mergedEstimateSnapshots = mergeDiagnosticHistorySnapshots(
+    run.prior_state_snapshot,
+    (resultRows ?? []) as Record<string, unknown>[],
+    {
+      taxonomyReleaseId: run.taxonomy_release_id as string,
+      protocolVersion: run.protocol_version as string,
+    },
+  );
+  const estimates = new Map([...mergedEstimateSnapshots]
+    .filter(([nodeId]) => nodeIdSet.has(nodeId))
+    .map(([nodeId, estimate]) => [
+      nodeId,
+      {
+        masteryProbability: estimate.masteryProbability,
+        uncertainty: estimate.uncertainty,
+        directEvidenceCount: estimate.directEvidenceCount,
+        evidenceCoverageConfirmed: estimate.evidenceCoverageConfirmed,
+        evidenceKind: estimate.evidenceKind,
+        classification: estimate.classification,
+      } satisfies DiagnosticPathEstimate,
+    ]));
+  const requiresIndependentVerification = new Set((memberships ?? [])
+    .flatMap((membership) => {
+      const snapshot = membership.record_snapshot as Record<string, unknown> | null;
+      const nodeKey = String(membership.stable_key).split(":", 1)[0];
+      const nodeId = nodeIdByKey.get(nodeKey);
+      return membership.record_type === "mastery_evidence"
+        && snapshot?.expectation === "independent_production"
+        && nodeId
+        ? [nodeId]
+        : [];
+    }));
+  const releasePathEdges = (memberships ?? []).flatMap((membership) => {
+    const snapshot = membership.record_snapshot as Record<string, unknown> | null;
+    const sourceNodeId = typeof snapshot?.source === "string"
+      ? nodeIdByKey.get(snapshot.source)
+      : undefined;
+    const targetNodeId = typeof snapshot?.target === "string"
+      ? nodeIdByKey.get(snapshot.target)
+      : undefined;
+    return membership.record_type === "competency_edge"
+      && snapshot?.type === "prerequisite"
+      && sourceNodeId
+      && targetNodeId
+      ? [{
+          sourceNodeId,
+          targetNodeId,
+          prerequisiteClass: snapshot.prerequisiteClass === "soft"
+            ? "soft" as const
+            : snapshot.prerequisiteClass === "hard"
+              ? "hard" as const
+              : null,
+        }]
+      : [];
+  });
+  const path = buildDiagnosticLearningPath({
+    nodes: (nodeRows ?? []).map((node) => ({
+      id: node.id as string,
+      key: node.key as string,
+      label: node.label_fr as string,
+      strand: node.strand as Parameters<typeof sectionForStrand>[0],
+    })),
+    edges: releasePathEdges,
+    estimates,
+    requiresIndependentVerification,
+  });
+  const { data: existingPath, error: existingPathError } = await input.service.from("student_learning_paths")
+    .select("id")
+    .eq("source_diagnostic_run_id", input.runId)
+    .maybeSingle();
+  if (existingPathError) throw new Error(existingPathError.message);
+  let persistedPath = existingPath;
+  if (!persistedPath) {
+    await input.service.from("student_learning_paths")
+      .update({ status: "superseded" })
+      .eq("student_id", input.studentId)
+      .eq("status", "active");
+    const insertedPath = await input.service.from("student_learning_paths")
+      .insert({
+        student_id: input.studentId,
+        source_diagnostic_run_id: input.runId,
+        learning_goal_id: run.learning_goal_id,
+        taxonomy_release_id: run.taxonomy_release_id,
+        provisional: Boolean(run.is_pilot),
+        summary: { sectionCounts: path.sectionCounts, firstStepBySection: path.firstStepBySection },
+      })
+      .select("id")
+      .single();
+    if (insertedPath.error || !insertedPath.data) throw new Error(insertedPath.error?.message ?? "Parcours non créé.");
+    persistedPath = insertedPath.data;
+  }
+  if (path.steps.length) {
+    const { error: stepsError } = await input.service.from("student_learning_path_steps").upsert(
+      path.steps.map((step) => ({
+        path_id: persistedPath.id,
+        node_id: step.nodeId,
+        section_key: step.section,
+        position: step.position,
+        stage: step.stage,
+        mastery_snapshot: step.mastery,
+        uncertainty_snapshot: step.uncertainty,
+        prerequisite_node_ids: step.prerequisiteNodeIds,
+        rationale_fr: step.rationaleFr,
+        required_evidence_expectation: requiresIndependentVerification.has(step.nodeId)
+          ? "independent_production"
+          : null,
+        status: step.prerequisiteNodeIds.length ? "pending" : "available",
+      })), { onConflict: "path_id,node_id", ignoreDuplicates: true },
+    );
+    if (stepsError) throw new Error(stepsError.message);
+    const { error: recommendationError } = await input.service.from("diagnostic_recommendations").upsert(
+      path.steps.slice(0, 24).map((step) => ({
+        run_id: input.runId,
+        student_id: input.studentId,
+        recommendation_type: "starting_pathway",
+        target_node_id: step.nodeId,
+        priority: step.position,
+        rationale: step.rationaleFr,
+        payload: { pathId: persistedPath.id, section: step.section, stage: step.stage },
+      })), { onConflict: "run_id,recommendation_type,target_node_id" },
+    );
+    if (recommendationError) throw new Error(recommendationError.message);
+  }
+  const frontier = await frontierForStudent(input.studentId, input.service, {
+    releaseId: run.taxonomy_release_id as string,
+    runId: input.runId,
+  });
+  const readingNodeIds = new Set((resultRows ?? [])
+    .filter((row) => row.section_key === "reading_comprehension" && row.classification === "mastered")
+    .map((row) => row.node_id as string));
+  const progressionMemberships = (memberships ?? [])
+    .filter((row) => row.record_type === "progression_mapping");
+  const targetFramework = String(goal?.target_framework ?? "native_grade");
+  const targetLevel = String(goal?.target_level ?? goal?.target_grade ?? "");
+  const profileLearnerMode = String(learnerProfile?.student_type ?? "");
+  const canonicalLearnerMode = targetFramework === "cefr"
+    ? "french_second_language"
+    : "french_first_language";
+  const pinnedPlacements = progressionMemberships.flatMap((membership) => {
+    const nodeKey = String(membership.stable_key).split(":", 1)[0];
+    const nodeId = nodeIdByKey.get(nodeKey);
+    const snapshot = membership.record_snapshot as Record<string, unknown> | null;
+    return nodeId && readingNodeIds.has(nodeId) && snapshot?.framework === targetFramework
+      && typeof snapshot.learnerMode === "string"
+      && typeof snapshot.levelMin === "string"
+      ? [{ nodeId, learnerMode: snapshot.learnerMode, level: snapshot.levelMin }]
+      : [];
+  });
+  const exactModePlacements = pinnedPlacements.filter((mapping) =>
+    mapping.learnerMode === profileLearnerMode
+  );
+  const applicablePlacements = exactModePlacements.length
+    ? exactModePlacements
+    : pinnedPlacements.filter((mapping) => mapping.learnerMode === canonicalLearnerMode);
+  const currentGrade = Math.max(5, Math.min(12, Number(student?.current_grade ?? 7)));
+  const nativePlacements = applicablePlacements
+    .map((mapping) => Number(mapping.level))
+    .filter((value) => Number.isFinite(value))
+    .sort((left, right) => left - right);
+  const cefrOrder = ["A1", "A2", "B1", "B2", "C1", "C2"];
+  const cefrPlacements = applicablePlacements
+    .map((mapping) => mapping.level.toUpperCase())
+    .filter((level) => cefrOrder.includes(level))
+    .sort((left, right) => cefrOrder.indexOf(left) - cefrOrder.indexOf(right));
+  const placementLevel = targetFramework === "native_grade"
+    ? String(nativePlacements.length
+        ? nativePlacements[Math.floor((nativePlacements.length - 1) / 2)]
+        : currentGrade)
+    : targetFramework === "cefr" && cefrPlacements.length
+      ? cefrPlacements[Math.floor((cefrPlacements.length - 1) / 2)]
+      : null;
+  const grade = targetFramework === "native_grade"
+    ? Math.max(5, Math.min(12, Number(placementLevel)))
+    : currentGrade;
+  const readingSectionHighConfidence = progress.find(
+    (section) => section.key === "reading_comprehension",
+  )?.confidence === "high";
+  const placementReliable = readingSectionHighConfidence && applicablePlacements.length >= 2;
+  const derivedReadingBand = targetFramework === "native_grade"
+    ? `Grade ${grade.toFixed(1)}`
+    : targetFramework === "cefr"
+      ? placementLevel
+        ? `CEFR ${placementLevel}${placementReliable ? "" : " · à confirmer"}`
+        : `CEFR à confirmer${targetLevel ? ` · objectif ${targetLevel}` : ""}`
+      : `${targetFramework}${placementLevel ? ` ${placementLevel}` : targetLevel ? ` · objectif ${targetLevel}` : ""}`;
+  const allHighConfidence = progress.every((section) =>
+    section.status === "completed" && section.confidence === "high"
+  );
+  const overallConfidence = allHighConfidence
+    ? "high"
+    : progress.some((section) => section.confidence === "low")
+      ? "low"
+      : "medium";
+  const runStoppingReason = progress.some((section) => section.stoppingReason === "max_probes")
+    ? "max_probes"
+    : progress.some((section) => section.stoppingReason === "low_information_gain")
+      ? "low_information_gain"
+      : "resolved";
+  const summaryPayload = {
+    studentFr: "Ton profil par domaine est prêt et ton parcours commence par les prérequis les plus utiles.",
+    parentFr: `${frontier.report.missing.length} fondation(s) et ${frontier.report.fragile.length} compétence(s) à consolider ont été repérées.`,
+    teacherFr: `Diagnostic en quatre sections terminé après ${input.probeCount} questions; parcours de ${path.steps.length} étapes généré.`,
+    system: {
+      provisional: Boolean(run.is_pilot),
+      mastered: frontier.report.mastered,
+      fragile: frontier.report.fragile,
+      missing: frontier.report.missing,
+      unknown: frontier.report.unknown,
+      pathId: persistedPath.id,
+      sectionCounts: path.sectionCounts,
+      placement: {
+        framework: targetFramework,
+        level: placementLevel,
+        targetLevel,
+        learnerMode: exactModePlacements.length ? profileLearnerMode : canonicalLearnerMode,
+        reliable: placementReliable,
+        legacyNumericBand: targetFramework === "native_grade" ? "derived" : "profile_grade_placeholder",
+      },
+    },
+  };
+  const legacyConfidence = targetFramework === "native_grade" ? overallConfidence : "low";
+  const { error: readingEstimateError } = await input.service.from("student_reading_estimates").upsert({
+    student_id: input.studentId,
+    diagnostic_run_id: input.runId,
+    estimate_type: "adaptive_diagnostic",
+    grade_min: Math.max(5, grade - .5),
+    grade_max: Math.min(12, grade + .5),
+    confidence: legacyConfidence,
+    evidence_count: input.probeCount,
+    provisional: Boolean(run.is_pilot),
+  }, { onConflict: "diagnostic_run_id" });
+  if (readingEstimateError) throw new Error(readingEstimateError.message);
+  const { error: diagnosticResultError } = await input.service.from("diagnostic_results").upsert({
+    student_id: input.studentId,
+    diagnostic_run_id: input.runId,
+    grade_min: Math.max(5, grade - .5),
+    grade_max: Math.min(12, grade + .5),
+    confidence: legacyConfidence,
+    recommended_starting_level: `Graph pathway · ${derivedReadingBand}`,
+    narrative_estimate: grade,
+    expository_estimate: grade,
+    argumentative_estimate: grade,
+    source_based_estimate: grade,
+    summary_text: summaryPayload.studentFr,
+    completed_at: input.completedAt,
+    provisional: Boolean(run.is_pilot),
+  }, { onConflict: "diagnostic_run_id" });
+  if (diagnosticResultError) throw new Error(diagnosticResultError.message);
+  // Mark the run complete last. If any derived artifact write above fails, the
+  // still-running assessment can be retried without asking the learner to
+  // repeat the diagnostic.
+  const { error: completionError } = await input.service.from("diagnostic_runs").update({
+    status: "completed",
+    completed_at: input.completedAt,
+    current_section: null,
+    frontier_report: frontier,
+    coverage_report: { sections: progress, pathSteps: path.steps.length },
+    stopping_reason: runStoppingReason,
+    summary_payload: summaryPayload,
+    derived_reading_band: derivedReadingBand,
+  }).eq("id", input.runId).eq("student_id", input.studentId).eq("status", "running");
+  if (completionError) throw new Error(completionError.message);
+  return {
+    isPilot: Boolean(run.is_pilot),
+    frontier,
+    grade,
+    placement: summaryPayload.system.placement,
+    progress,
+    state: await getStudentStateData(input.studentId, input.service),
+    learningPath: {
+      id: persistedPath.id as string,
+      stepCount: path.steps.length,
+      sectionCounts: path.sectionCounts,
+      firstSteps: path.steps.slice(0, 8),
+    },
+  };
+}
+
 export async function submitAdaptiveDiagnosticProbe(input: unknown) {
   const data = checked(adaptiveProbeSchema, input);
   const { supabase, studentId } = await context();
-  if (data.answerText) await moderateOrReject({ supabase, studentId, text: data.answerText, field: "diagnostic_summary" });
   const service = createServiceClient();
-  const [{ data: run }, { data: item, error: itemError }] = await Promise.all([
-    supabase.from("diagnostic_runs").select("id,probe_count,status").eq("id", data.runId).eq("student_id", studentId).eq("status", "running").single(),
+  const { data: run } = await supabase.from("diagnostic_runs")
+    .select("id,probe_count,status,current_section,taxonomy_release_id,is_pilot")
+    .eq("id", data.runId)
+    .eq("student_id", studentId)
+    .eq("status", "running")
+    .single();
+  if (!run) throw new Error("Diagnostic introuvable.");
+  const allowedReviewStatuses = run.is_pilot
+    ? ["needs_human_review", "auto_approved", "human_approved"]
+    : ["auto_approved", "human_approved"];
+  const [{ data: assignment, error: assignmentError }, { data: item, error: itemError }] = await Promise.all([
+    service.from("diagnostic_run_items").select("id,item_id,node_id,section_key,item_snapshot,answered_at").eq("id", data.runItemId).eq("run_id", data.runId).single(),
     service.from("competency_items")
       .select("id,primary_node_id,validator_type,validator_config,correct_answer,acceptable_answers,learner_mode,modality,competency_item_choices(id,is_correct)")
-      .eq("id", data.itemId).in("review_status", ["auto_approved", "human_approved"]).single(),
+      .eq("id", data.itemId).in("review_status", allowedReviewStatuses).single(),
   ]);
-  if (!run) throw new Error("Diagnostic introuvable.");
   if (itemError || !item) throw new Error("Question introuvable.");
+  if (assignmentError || !assignment || assignment.item_id !== data.itemId || assignment.node_id !== item?.primary_node_id) {
+    throw new Error("Cette question n’appartient pas à ce diagnostic.");
+  }
+  const { data: existingResponse } = await service.from("diagnostic_responses")
+    .select("id,is_correct,run_id,run_item_id")
+    .eq("student_id", studentId)
+    .eq("idempotency_key", data.idempotencyKey)
+    .maybeSingle();
+  if (existingResponse && (
+    existingResponse.run_id !== data.runId || existingResponse.run_item_id !== data.runItemId
+  )) {
+    throw new Error("Cette clé de réponse a déjà été utilisée pour une autre question.");
+  }
+  if (assignment.answered_at && !existingResponse) {
+    throw new Error("Cette réponse a déjà été enregistrée.");
+  }
+  if (!existingResponse) {
+    await moderateDiagnosticAnswer({ supabase, studentId, text: data.answerText });
+  }
   const choices = item.competency_item_choices as unknown as Array<{ id: string; is_correct: boolean }>;
-  let correct = false;
-  if (data.selectedChoiceId) {
+  let correct = !!existingResponse?.is_correct;
+  if (!existingResponse && data.selectedChoiceId) {
     const choice = choices.find((row) => row.id === data.selectedChoiceId);
     if (!choice) throw new Error("Choix invalide.");
     correct = choice.is_correct;
-  } else {
+  } else if (!existingResponse) {
     const validation = await validateAnswer(data.answerText ?? "", {
       validatorType: item.validator_type as "exact" | "regex" | "conjugator",
       config: (item.validator_config ?? undefined) as Record<string, unknown> | undefined,
@@ -367,47 +1388,101 @@ export async function submitAdaptiveDiagnosticProbe(input: unknown) {
   }
   const attemptedAt = new Date().toISOString();
   const latencyMs = Math.max(0, Date.now() - Date.parse(data.startedAt));
-  const [{ error: attemptError }, { data: previous }] = await Promise.all([
-    service.from("competency_attempts").insert({
-      student_id: studentId, item_id: data.itemId, node_id: item.primary_node_id, learner_mode: item.learner_mode,
-      modality: item.modality, answer_text: data.answerText ?? null, selected_choice_id: data.selectedChoiceId ?? null,
-      is_correct: correct, score: correct ? 1 : 0, latency_ms: latencyMs, context: "diagnostic", diagnostic_run_id: data.runId, attempted_at: attemptedAt,
-    }),
-    service.from("student_competency_estimates").select("mastery_probability,evidence_count,receptive_score,productive_score,written_score,oral_score").eq("student_id", studentId).eq("node_id", item.primary_node_id).maybeSingle(),
-  ]);
-  if (attemptError) throw new Error(attemptError.message);
-  const evidenceCount = Number(previous?.evidence_count ?? 0) + 1;
-  const mastery = bktUpdate(Number(previous?.mastery_probability ?? 0.5), correct, {}, guessFromChoices(choices.length));
-  const probeCount = Number(run.probe_count) + 1;
-  const dimensionPatch = diagnosticDimensionPatch(item.modality, correct ? 1 : 0);
-  const [{ error: estimateError }] = await Promise.all([
-    service.from("student_competency_estimates").upsert({
-      student_id: studentId, node_id: item.primary_node_id, mastery_probability: mastery,
-      uncertainty: masteryUncertainty(mastery, evidenceCount), evidence_count: evidenceCount,
-      ...Object.fromEntries(Object.entries(dimensionPatch).map(([key, value]) => [key.replace(/[A-Z]/g, letter => `_${letter.toLowerCase()}`), value])),
-      last_practiced_at: attemptedAt, last_evidence_at: attemptedAt, updated_at: attemptedAt,
-    }, { onConflict: "student_id,node_id" }),
-    service.from("diagnostic_runs").update({ probe_count: probeCount }).eq("id", data.runId),
-  ]);
-  if (estimateError) throw new Error(estimateError.message);
-  const next = probeCount >= 30 ? null : await nextDiagnosticItem(studentId, data.runId, service);
-  if (next) return { correct, done: false as const, item: next, probeCount };
-  const frontier = await frontierForStudent(studentId, service);
-  const tested = [...frontier.report.mastered, ...frontier.report.fragile, ...frontier.report.missing].length || 1;
-  const grade = Math.max(5, Math.min(12, 5 + (frontier.report.mastered.length / tested) * 7));
-  const summaryPayload = { studentFr: "Ton diagnostic a trouvé tes points forts et tes prochaines étapes.", parentFr: `${frontier.report.missing.length} fondation(s) prioritaire(s) ont été repérées.`, teacherFr: `Profil adaptatif terminé après ${probeCount} sondes.`, system: { mastered: frontier.report.mastered, fragile: frontier.report.fragile, missing: frontier.report.missing } };
-  await service.from("diagnostic_runs").update({ status: "completed", completed_at: attemptedAt, frontier_report: frontier, coverage_report: { tested, mastered: frontier.report.mastered.length, fragile: frontier.report.fragile.length, missing: frontier.report.missing.length }, stopping_reason: probeCount >= 30 ? "max_probes" : "item_exhaustion", summary_payload: summaryPayload, derived_reading_band: `Grade ${grade.toFixed(1)}` }).eq("id", data.runId);
-  if (frontier.report.missing.length) await service.from("diagnostic_recommendations").insert(frontier.report.missing.slice(0, 10).map((nodeId, index) => ({ run_id: data.runId, student_id: studentId, recommendation_type: "remediation", target_node_id: nodeId, priority: index + 1, rationale: "Fondation manquante détectée par le diagnostic adaptatif." })));
-  await service.from("student_reading_estimates").insert({ student_id: studentId, estimate_type: "adaptive_diagnostic", grade_min: Math.max(5, grade - 0.5), grade_max: Math.min(12, grade + 0.5), confidence: probeCount >= 8 ? "high" : "medium", evidence_count: probeCount });
-  const bandNumber = Math.max(5, Math.min(10, Math.round(grade)));
-  await service.from("diagnostic_results").insert({ student_id: studentId, grade_min: Math.max(5, grade - 0.5), grade_max: Math.min(12, grade + 0.5), confidence: probeCount >= 8 ? "high" : "medium", recommended_starting_level: bandNumber <= 6 ? `Foundation ${bandNumber}A` : `Secondary ${bandNumber}A`, narrative_estimate: grade, expository_estimate: grade, argumentative_estimate: Math.max(5, grade - 0.5), source_based_estimate: grade, summary_text: null, completed_at: attemptedAt });
+  const itemSnapshot = assignment.item_snapshot as Pick<LiveDiagnosticItem, "masteryEvidenceId" | "evidenceExpectation">;
+  const sectionKey = assignment.section_key as DiagnosticSectionKey;
+  const dimensionPatch = diagnosticDimensionPatch(item.modality, correct ? 1 : 0, {
+    sectionKey,
+    expectation: itemSnapshot.evidenceExpectation,
+  });
+  const dimensions = Object.keys(dimensionPatch).map((key) =>
+    DIMENSION_COLUMN[key as keyof typeof DIMENSION_COLUMN]
+  );
+  const submission = await service.rpc("submit_section_diagnostic_response", {
+    p_student_id: studentId,
+    p_run_id: data.runId,
+    p_run_item_id: data.runItemId,
+    p_item_id: data.itemId,
+    p_idempotency_key: data.idempotencyKey,
+    p_selected_choice_id: data.selectedChoiceId ?? null,
+    p_answer_text: data.answerText ?? null,
+    p_is_correct: correct,
+    p_latency_ms: latencyMs,
+    p_dimensions: dimensions,
+    p_mastery_evidence_id: itemSnapshot.masteryEvidenceId,
+  });
+  if (submission.error) throw new Error(submission.error.message);
+  const probeCount = Number((submission.data as { probeCount?: number } | null)?.probeCount ?? run.probe_count);
+  const candidate = await nextDiagnosticItem(studentId, data.runId, sectionKey, service);
+  const sectionProgress = await refreshSectionProgress({ db: service, runId: data.runId, sectionKey, candidate });
+  const decision = evaluateDiagnosticSection(sectionProgress);
+  const sectionStatus = decision.stop
+    ? decision.reason === "insufficient_items" ? "insufficient_items" : "completed"
+    : "active";
+  const { error: sectionUpdateError } = await service.from("diagnostic_run_sections").update({
+    status: sectionStatus,
+    probe_count: sectionProgress.probeCount,
+    distinct_nodes_tested: sectionProgress.distinctNodesTested,
+    confirmed_node_count: sectionProgress.confirmedNodeCount,
+    resolved_node_count: sectionProgress.resolvedNodeCount,
+    mean_uncertainty: sectionProgress.meanUncertainty,
+    coverage_ratio: decision.coverageRatio,
+    confidence: decision.confidence,
+    stopping_reason: decision.stop ? decision.reason : null,
+    completed_at: decision.stop ? attemptedAt : null,
+  }).eq("run_id", data.runId).eq("section_key", sectionKey);
+  if (sectionUpdateError) throw new Error(sectionUpdateError.message);
+  if (!decision.stop) {
+    const nextItem = await assignDiagnosticItem({ db: service, studentId, runId: data.runId, sectionKey, candidate });
+    if (!nextItem) throw new Error("Aucune question adaptée n’est disponible.");
+    return {
+      correct,
+      done: false as const,
+      item: nextItem,
+      probeCount,
+      progress: await loadDiagnosticProgress(data.runId, service),
+      sectionTransition: false,
+    };
+  }
+  if (decision.reason === "insufficient_items") {
+    return {
+      correct,
+      done: false as const,
+      blocked: true as const,
+      reason: "insufficient_items" as const,
+      probeCount,
+      progress: await loadDiagnosticProgress(data.runId, service),
+    };
+  }
+  const progress = await loadDiagnosticProgress(data.runId, service);
+  const nextSectionKey = nextDiagnosticSection(progress);
+  if (nextSectionKey) {
+    const [runTransition, sectionTransition] = await Promise.all([
+      service.from("diagnostic_runs").update({ current_section: nextSectionKey }).eq("id", data.runId),
+      service.from("diagnostic_run_sections").update({ status: "active", started_at: attemptedAt }).eq("run_id", data.runId).eq("section_key", nextSectionKey).eq("status", "pending"),
+    ]);
+    if (runTransition.error || sectionTransition.error) {
+      throw new Error(runTransition.error?.message ?? sectionTransition.error?.message);
+    }
+    const nextItem = await assignDiagnosticItem({ db: service, studentId, runId: data.runId, sectionKey: nextSectionKey });
+    if (!nextItem) throw new Error(`La section ${diagnosticSection(nextSectionKey).labelFr} manque de questions.`);
+    return {
+      correct,
+      done: false as const,
+      item: nextItem,
+      probeCount,
+      progress: await loadDiagnosticProgress(data.runId, service),
+      sectionTransition: true,
+    };
+  }
+  const completed = await finalizeAdaptiveDiagnostic({ service, studentId, runId: data.runId, completedAt: attemptedAt, probeCount });
   revalidatePath("/student"); revalidatePath("/student/frontier"); revalidatePath("/parent");
-  return { correct, done: true as const, frontier, probeCount, grade };
+  return { correct, done: true as const, probeCount, ...completed };
 }
 
 export async function startReadingSession(input: unknown) {
   const data = checked(startSessionSchema, input);
   const { supabase, studentId } = await context();
+  await requireStudentLearningUnlocked(supabase, studentId);
   await consumeActionLimit(supabase, "start_session");
   if (!(await getPublishedReadingText(data.textKey, supabase))) throw new Error("Texte introuvable.");
   const { textVersionId } = await contentIds(supabase, data.textKey);
@@ -428,7 +1503,8 @@ export async function startReadingSession(input: unknown) {
 
 export async function submitAnswer(input: unknown) {
   const data = checked(answerSchema, input);
-  const { supabase } = await context();
+  const { supabase, studentId } = await context();
+  await requireStudentLearningUnlocked(supabase, studentId);
   await consumeActionLimit(supabase, "submit_answer");
   const ids = await contentIds(supabase, data.textKey, data.questionKey, data.choiceIndex);
   const { error } = await supabase.from("student_answers").upsert({
@@ -443,6 +1519,7 @@ export async function submitAnswer(input: unknown) {
 export async function submitSummary(input: unknown) {
   const data = checked(summarySchema, input);
   const { supabase, studentId } = await context();
+  await requireStudentLearningUnlocked(supabase, studentId);
   await moderateOrReject({ supabase, studentId, text: data.summaryText, field: "reading_summary" });
   const text = await getPublishedReadingText(data.textKey, supabase);
   if (!text) throw new Error("Texte introuvable.");
@@ -462,6 +1539,7 @@ export async function submitSummary(input: unknown) {
 export async function completeReadingSession(input: unknown) {
   const data = checked(completeSessionSchema, input);
   const { supabase, studentId } = await context();
+  await requireStudentLearningUnlocked(supabase, studentId);
   await moderateOrReject({ supabase, studentId, text: data.summaryText, field: "reading_summary" });
   await moderateOrReject({ supabase, studentId, text: data.retrievalText, field: "initial_retrieval" });
   const text = await getPublishedReadingText(data.textKey, supabase);
@@ -497,10 +1575,24 @@ export async function completeReadingSession(input: unknown) {
 
   const { data: mappedNodes } = await service.from("text_version_nodes").select("node_id").eq("text_version_id", ownedSession.text_version_id);
   for (const mapping of mappedNodes ?? []) {
-    const { data: prior } = await service.from("student_competency_estimates").select("mastery_probability,evidence_count").eq("student_id", studentId).eq("node_id", mapping.node_id).maybeSingle();
-    const evidenceCount = Number(prior?.evidence_count ?? 0) + 1;
-    const mastery = bktUpdate(Number(prior?.mastery_probability ?? 0.1), result.successRate >= 0.8, { pTransit: 0.08, pSlip: 0.18, pGuess: 0.25 });
-    await service.from("student_competency_estimates").upsert({ student_id: studentId, node_id: mapping.node_id, mastery_probability: mastery, uncertainty: masteryUncertainty(mastery, evidenceCount), evidence_count: evidenceCount, receptive_score: result.successRate, last_practiced_at: data.completedAt, last_evidence_at: data.completedAt, updated_at: data.completedAt }, { onConflict: "student_id,node_id" });
+    const successfulReadingEvidence = result.successRate >= 0.8;
+    await recordDirectCompetencyEvidence({
+      service,
+      studentId,
+      nodeId: mapping.node_id as string,
+      at: data.completedAt,
+      evidenceExpectation: "receptive",
+      updateMastery: (prior) => bktUpdate(prior, successfulReadingEvidence, {
+        pTransit: 0.08,
+        pSlip: 0.18,
+        pGuess: 0.25,
+      }),
+      scorePatch: { receptive_score: result.successRate },
+      practiced: true,
+      pathMastery: (mastery) => successfulReadingEvidence
+        ? mastery
+        : Math.min(mastery, 0.84),
+    });
   }
 
   const { data: skillRows } = await supabase.from("student_skill_estimates").select("skill_id,ability,uncertainty,evidence_count").eq("student_id", studentId);
@@ -585,6 +1677,7 @@ export async function completeReadingSession(input: unknown) {
 export async function submitRetrievalAttempt(input: unknown) {
   const data = checked(retrievalSchema, input);
   const { supabase, studentId } = await context();
+  await requireStudentLearningUnlocked(supabase, studentId);
   await moderateOrReject({ supabase, studentId, text: data.answerText, field: "memory_retrieval" });
   const { data: card, error: cardError } = await supabase.from("retrieval_cards").select("id,rubric").eq("id", data.cardId).eq("student_id", studentId).single();
   if (cardError || !card) throw new Error("Carte introuvable.");
@@ -630,6 +1723,7 @@ export async function loadStudentMotivation(input: unknown) {
 export async function submitSkillPractice(input: unknown) {
   const data = checked(skillPracticeSchema, input);
   const { supabase, studentId } = await context();
+  await requireStudentLearningUnlocked(supabase, studentId);
   const { data: skill, error: skillError } = await supabase.from("skills").select("id").eq("key", data.skillKey).single();
   if (skillError || !skill) throw new Error("Compétence introuvable.");
   const { data: current } = await supabase.from("student_skill_estimates").select("ability,uncertainty,evidence_count").eq("student_id", studentId).eq("skill_id", skill.id).maybeSingle();
