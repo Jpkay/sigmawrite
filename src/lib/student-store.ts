@@ -4,11 +4,11 @@ import { useSyncExternalStore } from "react";
 import type { DiagnosticResult, ReadingSessionResult } from "@/lib/types";
 import { updateSkillEstimate, type SkillEstimate } from "@/lib/scoring/skill-estimate";
 import {
-  scheduleNext,
   dueAtFrom,
   INITIAL_SCHEDULE,
   type RetrievalResult,
 } from "@/lib/scoring/retrieval";
+import { scheduleFsrs } from "@/lib/scoring/fsrs";
 import type { RetrievalCardSeed } from "@/lib/content/retrieval-cards";
 import {
   EMPTY_STUDENT_STATE,
@@ -206,13 +206,21 @@ export function recordRetrieval(
   return update({
     retrievalCards: state.retrievalCards.map((c) => {
       if (c.id !== cardId) return c;
-      const next = scheduleNext(
-        { intervalDays: c.intervalDays, ease: c.ease, repetitions: c.repetitions },
-        result
-      );
+      const prevState =
+        c.stability != null && c.difficulty != null
+          ? { stability: c.stability, difficulty: c.difficulty }
+          : null;
+      const elapsedDays = c.lastReviewedAt
+        ? Math.max(0, (nowMs - Date.parse(c.lastReviewedAt)) / 86_400_000)
+        : c.intervalDays;
+      const next = scheduleFsrs(prevState, result, elapsedDays);
       return {
         ...c,
-        ...next,
+        intervalDays: next.intervalDays,
+        repetitions: result === "forgot" ? 0 : c.repetitions + 1,
+        stability: next.stability,
+        difficulty: next.difficulty,
+        lastReviewedAt: new Date(nowMs).toISOString(),
         dueAt: dueAtFrom(nowMs, next.intervalDays),
         lastResult: result,
       };

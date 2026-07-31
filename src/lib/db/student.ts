@@ -48,7 +48,7 @@ type DiagnosticNodeResultRow = {
 type DiagnosticRunSectionRow = { section_key: DiagnosticSectionProfileKey; target_node_count: number };
 type AnswerRow = { session_id: string; question_id: string; selected_choice_id: string | null };
 type CardRow = { id: string; source_text_version_id: string | null; prompt_fr: string; rubric: unknown };
-type ScheduleRow = { retrieval_card_id: string; due_at: string; interval_days: number | null; ease_factor: number | string; repetitions: number; last_result: RetrievalResult | null };
+type ScheduleRow = { retrieval_card_id: string; due_at: string; interval_days: number | null; ease_factor: number | string; repetitions: number; last_result: RetrievalResult | null; stability: number | string | null; difficulty: number | string | null; last_reviewed_at: string | null };
 type MasteryRow = { vocabulary_item_id: string; exposures: number; last_seen_at: string | null };
 type VocabRow = { id: string; display_word: string };
 
@@ -81,7 +81,7 @@ export async function getStudentStateData(
     supabase.from("questions").select("id,text_version_id,question_key"),
     supabase.from("question_choices").select("id,question_id,choice_index"),
     supabase.from("retrieval_cards").select("id,source_text_version_id,prompt_fr,rubric").eq("student_id", studentId),
-    supabase.from("retrieval_schedules").select("retrieval_card_id,due_at,interval_days,ease_factor,repetitions,last_result"),
+    supabase.from("retrieval_schedules").select("retrieval_card_id,due_at,interval_days,ease_factor,repetitions,last_result,stability,difficulty,last_reviewed_at"),
     supabase.from("student_word_mastery").select("vocabulary_item_id,exposures,last_seen_at").eq("student_id", studentId),
     supabase.from("vocabulary_items").select("id,display_word"),
   ]);
@@ -201,6 +201,9 @@ export async function getStudentStateData(
       sourceTextId: row.source_text_version_id ? versionToKey.get(row.source_text_version_id) ?? row.source_text_version_id : "",
       intervalDays: schedule.interval_days ?? 1, ease: number(schedule.ease_factor, 2.5), repetitions: schedule.repetitions,
       dueAt: schedule.due_at, ...(schedule.last_result ? { lastResult: schedule.last_result } : {}),
+      ...(schedule.stability != null ? { stability: Number(schedule.stability) } : {}),
+      ...(schedule.difficulty != null ? { difficulty: Number(schedule.difficulty) } : {}),
+      ...(schedule.last_reviewed_at ? { lastReviewedAt: schedule.last_reviewed_at } : {}),
     }];
   });
 

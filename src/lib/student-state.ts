@@ -13,6 +13,10 @@ export type RetrievalCard = {
   repetitions: number;
   dueAt: string;
   lastResult?: RetrievalResult;
+  /** FSRS memory state; absent until the first graded review. */
+  stability?: number;
+  difficulty?: number;
+  lastReviewedAt?: string;
 };
 
 export type VocabState = { exposures: number; lastSeenAt: string };

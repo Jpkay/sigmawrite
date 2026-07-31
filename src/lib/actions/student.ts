@@ -11,7 +11,8 @@ import { rankInterestSignals } from "@/lib/content/recommend";
 import { scoreSession } from "@/lib/scoring/session";
 import { updateSkillEstimate, updateSkillsFromSession } from "@/lib/scoring/skill-estimate";
 import { buildRetrievalCards } from "@/lib/content/retrieval-cards";
-import { dueAtFrom, gradeRetrieval, INITIAL_SCHEDULE, scheduleNext } from "@/lib/scoring/retrieval";
+import { dueAtFrom, gradeRetrieval, INITIAL_SCHEDULE } from "@/lib/scoring/retrieval";
+import { scheduleFsrs } from "@/lib/scoring/fsrs";
 import { fallbackModeration, moderateStudentText } from "@/lib/safety/moderate-input";
 import { logAudit } from "@/lib/audit";
 import type { SupabaseClient } from "@supabase/supabase-js";
@@ -1684,9 +1685,16 @@ export async function submitRetrievalAttempt(input: unknown) {
   const rubric = (card.rubric && typeof card.rubric === "object" ? card.rubric : {}) as Record<string, unknown>;
   const keywords = Array.isArray(rubric.keywords) ? rubric.keywords.filter((value): value is string => typeof value === "string") : [];
   const result = gradeRetrieval(data.answerText, keywords);
-  const { data: schedule, error: scheduleError } = await supabase.from("retrieval_schedules").select("interval_days,ease_factor,repetitions").eq("retrieval_card_id", data.cardId).single();
+  const { data: schedule, error: scheduleError } = await supabase.from("retrieval_schedules").select("interval_days,repetitions,stability,difficulty,desired_retention,last_reviewed_at").eq("retrieval_card_id", data.cardId).single();
   if (scheduleError || !schedule) throw new Error("Programme de révision introuvable.");
-  const next = scheduleNext({ intervalDays: schedule.interval_days ?? 1, ease: Number(schedule.ease_factor), repetitions: schedule.repetitions }, result);
+  const attemptedMs = Date.parse(data.attemptedAt);
+  const prevState = schedule.stability != null && schedule.difficulty != null
+    ? { stability: Number(schedule.stability), difficulty: Number(schedule.difficulty) }
+    : null;
+  const elapsedDays = schedule.last_reviewed_at
+    ? Math.max(0, (attemptedMs - Date.parse(schedule.last_reviewed_at)) / 86_400_000)
+    : (schedule.interval_days ?? 1);
+  const next = scheduleFsrs(prevState, result, elapsedDays, Number(schedule.desired_retention ?? 0.9));
   const service = createServiceClient();
   const { error: attemptError } = await service.from("retrieval_attempts").insert({
     retrieval_card_id: data.cardId, student_id: studentId, answer_text: data.answerText,
@@ -1695,8 +1703,9 @@ export async function submitRetrievalAttempt(input: unknown) {
   });
   if (attemptError) throw new Error(attemptError.message);
   const { error: updateError } = await supabase.from("retrieval_schedules").update({
-    due_at: dueAtFrom(Date.parse(data.attemptedAt), next.intervalDays), interval_days: next.intervalDays,
-    ease_factor: next.ease, repetitions: next.repetitions, last_result: result, status: "due",
+    due_at: dueAtFrom(attemptedMs, next.intervalDays), interval_days: next.intervalDays,
+    stability: next.stability, difficulty: next.difficulty, last_reviewed_at: data.attemptedAt,
+    repetitions: result === "forgot" ? 0 : schedule.repetitions + 1, last_result: result, status: "due",
   }).eq("retrieval_card_id", data.cardId);
   if (updateError) throw new Error(updateError.message);
   await recordDailyActivity(service,studentId,data.attemptedAt,"retrieval",false);

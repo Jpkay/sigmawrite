@@ -32,7 +32,11 @@ export const INITIAL_SCHEDULE: Schedule = {
 
 const clampEase = (e: number) => Math.max(1.3, Math.min(3, e));
 
-/** Computes the next schedule from a recall result (SM-2 simplified). */
+/**
+ * Computes the next schedule from a recall result (SM-2 simplified).
+ * @deprecated Scheduling now goes through scheduleFsrs (scoring/fsrs.ts);
+ * kept only for legacy rows without FSRS state and historical tests.
+ */
 export function scheduleNext(prev: Schedule, result: RetrievalResult): Schedule {
   if (result === "forgot") {
     return { intervalDays: 1, ease: clampEase(prev.ease - 0.2), repetitions: 0 };
