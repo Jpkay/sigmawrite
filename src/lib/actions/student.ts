@@ -14,6 +14,8 @@ import { buildRetrievalCards } from "@/lib/content/retrieval-cards";
 import { dueAtFrom, gradeRetrieval, INITIAL_SCHEDULE } from "@/lib/scoring/retrieval";
 import { scheduleFsrs } from "@/lib/scoring/fsrs";
 import { fireImplicitUpdates } from "@/lib/graph/fire";
+import { effectiveMastery } from "@/lib/scoring/decay";
+import { buildSessionPlan } from "@/lib/learning/session-plan";
 import { fallbackModeration, moderateStudentText } from "@/lib/safety/moderate-input";
 import { logAudit } from "@/lib/audit";
 import type { SupabaseClient } from "@supabase/supabase-js";
@@ -1011,6 +1013,109 @@ export async function loadStudentCatchUpPlan(input: unknown) {
   checked(emptySchema, input); const { supabase, studentId } = await context();
   if (process.env.CATCH_UP_PLAN_ENABLED === "false") return [];
   return getCatchUpPlan(studentId, supabase);
+}
+
+export type SessionPlanEntry = {
+  type: "practice" | "review_node" | "review_card";
+  role: "new" | "compression" | "review";
+  nodeId?: string;
+  cardId?: string;
+  label: string;
+  mastery?: number;
+  href: string;
+};
+
+/** Today's itinerary: due reviews (compressed through encompassing tasks),
+ * then new learning, interleaved to keep confusable skills apart. */
+export async function loadStudentSessionPlan(input: unknown): Promise<SessionPlanEntry[]> {
+  checked(emptySchema, input);
+  const { supabase, studentId } = await context();
+  if (process.env.CATCH_UP_PLAN_ENABLED === "false") return [];
+  const service = createServiceClient();
+  const nowMs = Date.now();
+
+  const [steps, edgeRows, estimateRows, dueCardRows] = await Promise.all([
+    getCatchUpPlan(studentId, supabase),
+    service.from("competency_edges").select("source_node_id,target_node_id,edge_type,strength").in("edge_type", ["encompasses", "same_family"]),
+    service.from("student_competency_estimates").select("node_id,mastery_probability,memory_stability,last_evidence_at").eq("student_id", studentId),
+    service.from("retrieval_schedules")
+      .select("retrieval_card_id,due_at,retrieval_cards!inner(id,student_id,node_id)")
+      .eq("retrieval_cards.student_id", studentId)
+      .eq("status", "due")
+      .lte("due_at", new Date(nowMs).toISOString()),
+  ]);
+  if (edgeRows.error) throw new Error(edgeRows.error.message);
+  if (estimateRows.error) throw new Error(estimateRows.error.message);
+  if (dueCardRows.error) throw new Error(dueCardRows.error.message);
+
+  // Nodes whose raw mastery cleared the gate but whose decayed mastery fell
+  // back below it: due for a memory refresh.
+  const dueNodeReviews = (estimateRows.data ?? []).flatMap((row) => {
+    const mastery = Number(row.mastery_probability);
+    const stability = row.memory_stability == null ? null : Number(row.memory_stability);
+    const lastAt = row.last_evidence_at as string | null;
+    if (mastery < 0.85 || stability == null || !lastAt) return [];
+    const effective = effectiveMastery({ mastery, memoryStability: stability, lastEvidenceAt: lastAt }, nowMs);
+    if (effective >= 0.85) return [];
+    const elapsedDays = Math.max(0, (nowMs - Date.parse(lastAt)) / 86_400_000);
+    return [{ nodeId: row.node_id as string, overdueDays: Math.max(0, elapsedDays - stability) }];
+  });
+
+  const dueCards = (dueCardRows.data ?? []).map((row) => {
+    const card = row.retrieval_cards as unknown as { id: string; node_id: string | null };
+    return {
+      cardId: card.id,
+      nodeId: card.node_id,
+      overdueDays: Math.max(0, (nowMs - Date.parse(row.due_at as string)) / 86_400_000),
+    };
+  });
+
+  const availableSteps = steps.filter((step) => step.status !== "pending" && step.requiredEvidenceExpectation !== "independent_production");
+  const plan = buildSessionPlan({
+    dueNodeReviews,
+    dueCards,
+    newSteps: availableSteps.map((step, index) => ({ nodeId: step.nodeId, position: index })),
+    encompassingEdges: (edgeRows.data ?? [])
+      .filter((edge) => edge.edge_type === "encompasses")
+      .map((edge) => ({ sourceNodeId: edge.source_node_id as string, targetNodeId: edge.target_node_id as string, strength: Number(edge.strength) })),
+    familyPairs: (edgeRows.data ?? [])
+      .filter((edge) => edge.edge_type === "same_family")
+      .map((edge) => [edge.source_node_id as string, edge.target_node_id as string] as [string, string]),
+  });
+
+  const nodeIds = [...new Set(plan.flatMap((activity) => "nodeId" in activity && activity.nodeId ? [activity.nodeId] : []))];
+  const { data: nodeRows } = nodeIds.length
+    ? await service.from("competency_nodes").select("id,label_fr").in("id", nodeIds)
+    : { data: [] as Array<{ id: string; label_fr: string }> };
+  const labelById = new Map((nodeRows ?? []).map((node) => [node.id as string, node.label_fr as string]));
+  const masteryByNode = new Map((estimateRows.data ?? []).map((row) => [row.node_id as string, Number(row.mastery_probability)]));
+
+  return plan.map((activity): SessionPlanEntry => {
+    if (activity.type === "review_card") {
+      return {
+        type: "review_card",
+        role: "review",
+        cardId: activity.cardId,
+        nodeId: activity.nodeId ?? undefined,
+        label: activity.nodeId ? `Réactiver : ${labelById.get(activity.nodeId) ?? "notion"}` : "Rappel de lecture",
+        href: "/student/memory",
+      };
+    }
+    const label = labelById.get(activity.nodeId) ?? activity.nodeId;
+    if (activity.type === "review_node") {
+      return {
+        type: "review_node", role: "review", nodeId: activity.nodeId,
+        label: `Réviser : ${label}`,
+        mastery: masteryByNode.get(activity.nodeId),
+        href: `/student/practice/${activity.nodeId}`,
+      };
+    }
+    return {
+      type: "practice", role: activity.role, nodeId: activity.nodeId, label,
+      mastery: masteryByNode.get(activity.nodeId),
+      href: `/student/practice/${activity.nodeId}`,
+    };
+  });
 }
 
 export async function submitNodePractice(input: unknown) {
