@@ -13,6 +13,7 @@ import { updateSkillEstimate, updateSkillsFromSession } from "@/lib/scoring/skil
 import { buildRetrievalCards } from "@/lib/content/retrieval-cards";
 import { dueAtFrom, gradeRetrieval, INITIAL_SCHEDULE } from "@/lib/scoring/retrieval";
 import { scheduleFsrs } from "@/lib/scoring/fsrs";
+import { fireImplicitUpdates } from "@/lib/graph/fire";
 import { fallbackModeration, moderateStudentText } from "@/lib/safety/moderate-input";
 import { logAudit } from "@/lib/audit";
 import type { SupabaseClient } from "@supabase/supabase-js";
@@ -466,6 +467,46 @@ async function evaluateAndStoreWriting(input: {
     });
   }
   return evaluation;
+}
+
+/** FIRe: fold one direct observation into the implicit-repetition credit of
+ * encompassed sub-skills (success) or encompassing skills (failure). Updates
+ * existing estimate rows only; never touches the learning path. */
+async function propagateImplicitRepetitions(service: SupabaseClient, studentId: string, nodeId: string, correct: boolean, at: string) {
+  const { data: edgeRows, error: edgeError } = await service.from("competency_edges")
+    .select("source_node_id,target_node_id,strength").eq("edge_type", "encompasses");
+  if (edgeError) throw new Error(edgeError.message);
+  if (!edgeRows?.length) return;
+  const { data: estimateRows, error: estimateError } = await service.from("student_competency_estimates")
+    .select("node_id,mastery_probability,memory_stability,memory_difficulty,last_evidence_at")
+    .eq("student_id", studentId);
+  if (estimateError) throw new Error(estimateError.message);
+  const updates = fireImplicitUpdates({
+    practicedNodeId: nodeId,
+    correct,
+    nowMs: Date.parse(at),
+    edges: edgeRows.map((edge) => ({
+      sourceNodeId: edge.source_node_id as string,
+      targetNodeId: edge.target_node_id as string,
+      strength: Number(edge.strength),
+    })),
+    estimates: new Map((estimateRows ?? []).map((row) => [row.node_id as string, {
+      mastery: Number(row.mastery_probability),
+      memoryStability: row.memory_stability == null ? null : Number(row.memory_stability),
+      memoryDifficulty: row.memory_difficulty == null ? null : Number(row.memory_difficulty),
+      lastEvidenceAt: row.last_evidence_at as string | null,
+    }])),
+  });
+  for (const update of updates) {
+    const { error } = await service.from("student_competency_estimates").update({
+      mastery_probability: update.mastery,
+      ...(update.memoryStability != null
+        ? { memory_stability: update.memoryStability, memory_difficulty: update.memoryDifficulty, last_evidence_at: at }
+        : {}),
+      updated_at: at,
+    }).eq("student_id", studentId).eq("node_id", update.nodeId);
+    if (error) throw new Error(error.message);
+  }
 }
 
 async function recordDailyActivity(db: SupabaseClient, studentId: string, at: string, kind: "reading" | "practice" | "retrieval", completesGoal: boolean) {
@@ -996,6 +1037,7 @@ export async function submitNodePractice(input: unknown) {
     practiced: true,
     pathMastery: (value) => correct ? value : Math.min(value, 0.84),
   });
+  await propagateImplicitRepetitions(service, studentId, data.nodeId, correct, now);
   if (mastery >= 0.85) {
     const { data: node } = await service.from("competency_nodes").select("label_fr").eq("id", data.nodeId).single();
     const { data: card } = await service.from("retrieval_cards").upsert({ student_id: studentId, node_id: data.nodeId, card_type: "competency_node", prompt_fr: `Explique avec tes mots : ${node?.label_fr ?? "cette compétence"}.`, rubric: { node_id: data.nodeId } }, { onConflict: "student_id,node_id" }).select("id").single();
