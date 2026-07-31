@@ -31,8 +31,8 @@ Règles STRICTES :
     "cefrLevel": "A1"|"A2"|"B1"|"B2"|"C1"|"C2",
     "difficulty": number          // 0–100
   }
-- Pour la conjugaison, mets validatorType="conjugator" et fournis validatorConfig {verb, tense (present|imparfait|passe_compose), person (1s|2s|3s|1p|2p|3p)}. NE T'INQUIÈTE PAS de la forme exacte : elle sera recalculée de façon déterministe.
-- N'utilise "conjugator" QUE pour present, imparfait ou passe_compose et pour un verbe fréquent dont tu es sûr. Pour futur, conditionnel, subjonctif, impératif, passé simple, plus-que-parfait ou périphrases, utilise un QCM ou une réponse exacte qui passera obligatoirement en revue humaine.
+- Pour la conjugaison, mets validatorType="conjugator" et fournis validatorConfig {verb, tense (present|imparfait|passe_compose|futur_simple|futur_proche|conditionnel_present|subjonctif_present|imperatif_present|plus_que_parfait), person (1s|2s|3s|1p|2p|3p)}. NE T'INQUIÈTE PAS de la forme exacte : elle sera recalculée de façon déterministe.
+- N'utilise "conjugator" QUE pour les temps listés ci-dessus et pour un verbe fréquent dont tu es sûr (l'impératif n'existe qu'aux personnes 2s, 1p, 2p). Pour le passé simple ou d'autres périphrases, utilise un QCM ou une réponse exacte qui passera obligatoirement en revue humaine.
 - Pour un QCM, exactement UNE bonne réponse.
 - Pour une preuve "controlled_production", exige une réponse réellement produite (short_answer, cloze ou transform), jamais un simple QCM.
 - Pour la compréhension écrite, inclus dans promptFr un court passage original et toutes les informations nécessaires. Aucune question ne doit dépendre d'un texte absent.
