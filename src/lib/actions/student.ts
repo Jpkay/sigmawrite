@@ -93,7 +93,7 @@ const adaptiveProbeSchema = z.object({
   selectedChoiceId: uuidSchema.optional(), answerText: z.string().trim().max(2000).optional(),
   startedAt: dateTimeSchema,
 }).refine((value) => value.selectedChoiceId || value.answerText, "Réponse requise");
-const practiceAttemptSchema = z.object({ nodeId: uuidSchema, itemId: uuidSchema, selectedChoiceId: uuidSchema.optional(), answerText: z.string().trim().max(2000).optional(), startedAt: dateTimeSchema }).refine((value) => value.selectedChoiceId || value.answerText, "Réponse requise");
+const practiceAttemptSchema = z.object({ nodeId: uuidSchema, itemId: uuidSchema, selectedChoiceId: uuidSchema.optional(), answerText: z.string().trim().max(2000).optional(), startedAt: dateTimeSchema, hintsUsed: z.number().int().min(0).max(2).optional() }).refine((value) => value.selectedChoiceId || value.answerText, "Réponse requise");
 const writingFeedbackSchema = z.object({ textKey: z.string().min(1).max(100) });
 const writingRevisionSchema = writingFeedbackSchema.extend({ revisedText: z.string().trim().min(5).max(5000) });
 const onDemandRequestSchema = z.object({ clientRequestId: uuidSchema, topicKey: z.string().trim().min(1).max(80), topic: z.string().trim().min(1).max(160), textType: z.enum(["narrative", "explanatory", "argumentative", "source_based"]) });
@@ -1130,19 +1130,36 @@ export async function submitNodePractice(input: unknown) {
   if (data.selectedChoiceId) { const selected = choices.find((choice) => choice.id === data.selectedChoiceId); if (!selected) throw new Error("Choix invalide."); correct = selected.is_correct; feedbackFr = selected.feedback_fr; }
   else { const validation = await validateAnswer(data.answerText ?? "", { validatorType: item.validator_type as "exact" | "regex" | "conjugator", config: item.validator_config as Record<string, unknown> | undefined, correctAnswer: item.correct_answer as string | undefined, acceptableAnswers: item.acceptable_answers as string[] }); correct = validation.pass; feedbackFr = validation.reason ?? null; }
   const now = new Date().toISOString();
-  await service.from("competency_attempts").insert({ student_id: studentId, item_id: item.id, node_id: data.nodeId, learner_mode: item.learner_mode, modality: item.modality, answer_text: data.answerText ?? null, selected_choice_id: data.selectedChoiceId ?? null, is_correct: correct, score: correct ? 1 : 0, latency_ms: Math.max(0, Date.now()-Date.parse(data.startedAt)), context: "practice", attempted_at: now });
+  const hintsUsed = data.hintsUsed ?? 0;
+  await service.from("competency_attempts").insert({ student_id: studentId, item_id: item.id, node_id: data.nodeId, learner_mode: item.learner_mode, modality: item.modality, answer_text: data.answerText ?? null, selected_choice_id: data.selectedChoiceId ?? null, is_correct: correct, score: correct ? 1 : 0, latency_ms: Math.max(0, Date.now()-Date.parse(data.startedAt)), hints_used: hintsUsed, context: "practice", attempted_at: now });
   const { mastery } = await recordDirectCompetencyEvidence({
     service,
     studentId,
     nodeId: data.nodeId,
     at: now,
     evidenceExpectation: nodePracticeEvidenceExpectation(item.response_type as string),
-    updateMastery: (prior) => bktUpdate(prior, correct, {}, guessFromChoices(choices.length)),
+    // Hinted successes are weaker evidence: down-weight by the ladder depth.
+    updateMastery: (prior) => correct && hintsUsed > 0
+      ? bktUpdateWeighted(prior, true, 1 / (1 + hintsUsed))
+      : bktUpdate(prior, correct, {}, guessFromChoices(choices.length)),
     correct,
     practiced: true,
-    pathMastery: (value) => correct ? value : Math.min(value, 0.84),
+    // Only unaided successes may confirm the 0.85 mastery gate.
+    pathMastery: (value) => correct && hintsUsed === 0 ? value : Math.min(value, 0.84),
   });
   await propagateImplicitRepetitions(service, studentId, data.nodeId, correct, now);
+  // Failure protocol: a second consecutive miss on this node routes the
+  // student to its weakest prerequisite (graph-guided remediation).
+  let remediation: { nodeId: string; label: string } | null = null;
+  if (!correct) {
+    const { data: previousAttempts } = await service.from("competency_attempts")
+      .select("is_correct").eq("student_id", studentId).eq("node_id", data.nodeId)
+      .eq("context", "practice").lt("attempted_at", now)
+      .order("attempted_at", { ascending: false }).limit(1);
+    if (previousAttempts?.length && previousAttempts[0].is_correct === false) {
+      remediation = await weakestPrerequisite(service, studentId, data.nodeId);
+    }
+  }
   if (mastery >= 0.85) {
     const { data: node } = await service.from("competency_nodes").select("label_fr").eq("id", data.nodeId).single();
     const { data: card } = await service.from("retrieval_cards").upsert({ student_id: studentId, node_id: data.nodeId, card_type: "competency_node", prompt_fr: `Explique avec tes mots : ${node?.label_fr ?? "cette compétence"}.`, rubric: { node_id: data.nodeId } }, { onConflict: "student_id,node_id" }).select("id").single();
@@ -1150,7 +1167,35 @@ export async function submitNodePractice(input: unknown) {
     await recordDailyActivity(service,studentId,now,"practice",true);
   }
   revalidatePath("/student"); revalidatePath("/student/frontier");
-  return { correct, feedbackFr, mastery, mastered: mastery >= 0.85 };
+  return { correct, feedbackFr, mastery, mastered: mastery >= 0.85, remediation };
+}
+
+/** The direct prerequisite the student is weakest on (decayed mastery < 0.85). */
+async function weakestPrerequisite(service: SupabaseClient, studentId: string, nodeId: string) {
+  const { data: prereqEdges } = await service.from("competency_edges")
+    .select("source_node_id").eq("target_node_id", nodeId).eq("edge_type", "prerequisite");
+  const prereqIds = (prereqEdges ?? []).map((edge) => edge.source_node_id as string);
+  if (!prereqIds.length) return null;
+  const [{ data: estimateRows }, { data: nodeRows }] = await Promise.all([
+    service.from("student_competency_estimates")
+      .select("node_id,mastery_probability,memory_stability,last_evidence_at")
+      .eq("student_id", studentId).in("node_id", prereqIds),
+    service.from("competency_nodes").select("id,label_fr").in("id", prereqIds),
+  ]);
+  const nowMs = Date.now();
+  const masteryById = new Map((estimateRows ?? []).map((row) => [row.node_id as string, effectiveMastery({
+    mastery: Number(row.mastery_probability),
+    memoryStability: row.memory_stability == null ? null : Number(row.memory_stability),
+    lastEvidenceAt: row.last_evidence_at as string | null,
+  }, nowMs)]));
+  let weakest: { nodeId: string; mastery: number } | null = null;
+  for (const id of prereqIds) {
+    const value = masteryById.get(id) ?? 0;
+    if (value < 0.85 && (weakest === null || value < weakest.mastery)) weakest = { nodeId: id, mastery: value };
+  }
+  if (!weakest) return null;
+  const label = (nodeRows ?? []).find((node) => node.id === weakest!.nodeId)?.label_fr as string | undefined;
+  return { nodeId: weakest.nodeId, label: label ?? "un prérequis" };
 }
 
 export async function loadWritingFeedback(input: unknown) {
