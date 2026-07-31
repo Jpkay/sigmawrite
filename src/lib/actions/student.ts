@@ -378,10 +378,12 @@ async function recordDirectCompetencyEvidence(input: {
   scorePatch?: DirectEstimateScorePatch;
   practiced?: boolean;
   pathMastery?: (mastery: number) => number;
+  /** When provided, folds the observation into the node's FSRS memory state. */
+  correct?: boolean;
 }) {
   const { data: prior, error: priorError } = await input.service
     .from("student_competency_estimates")
-    .select("mastery_probability,evidence_count,estimate_source")
+    .select("mastery_probability,evidence_count,estimate_source,memory_stability,memory_difficulty,last_evidence_at")
     .eq("student_id", input.studentId)
     .eq("node_id", input.nodeId)
     .maybeSingle();
@@ -393,6 +395,17 @@ async function recordDirectCompetencyEvidence(input: {
     : Number(prior?.mastery_probability ?? 0.1);
   const evidenceCount = Number(prior?.evidence_count ?? 0) + 1;
   const mastery = input.updateMastery(priorMastery);
+  let memoryPatch: { memory_stability: number; memory_difficulty: number } | undefined;
+  if (input.correct !== undefined) {
+    const prevState = prior?.memory_stability != null && prior?.memory_difficulty != null
+      ? { stability: Number(prior.memory_stability), difficulty: Number(prior.memory_difficulty) }
+      : null;
+    const elapsedDays = prior?.last_evidence_at
+      ? Math.max(0, (Date.parse(input.at) - Date.parse(prior.last_evidence_at)) / 86_400_000)
+      : 0;
+    const next = scheduleFsrs(prevState, input.correct ? "good" : "forgot", elapsedDays);
+    memoryPatch = { memory_stability: next.stability, memory_difficulty: next.difficulty };
+  }
   const { error: estimateError } = await input.service
     .from("student_competency_estimates")
     .upsert({
@@ -401,6 +414,7 @@ async function recordDirectCompetencyEvidence(input: {
       mastery_probability: mastery,
       uncertainty: masteryUncertainty(mastery, evidenceCount),
       evidence_count: evidenceCount,
+      ...(memoryPatch ?? {}),
       ...(input.scorePatch ?? {}),
       ...(input.practiced ? { last_practiced_at: input.at } : {}),
       estimate_source: "direct",
@@ -440,6 +454,7 @@ async function evaluateAndStoreWriting(input: {
       at: evaluatedAt,
       evidenceExpectation: "independent_production",
       updateMastery: (prior) => bktUpdateWeighted(prior, false, plan.evidenceWeight),
+      correct: false,
       scorePatch: {
         productive_score: Math.max(0, 1 - plan.errorCount * 0.2),
         written_score: Math.max(0, 1 - plan.errorCount * 0.2),
@@ -977,6 +992,7 @@ export async function submitNodePractice(input: unknown) {
     at: now,
     evidenceExpectation: nodePracticeEvidenceExpectation(item.response_type as string),
     updateMastery: (prior) => bktUpdate(prior, correct, {}, guessFromChoices(choices.length)),
+    correct,
     practiced: true,
     pathMastery: (value) => correct ? value : Math.min(value, 0.84),
   });
@@ -1588,6 +1604,7 @@ export async function completeReadingSession(input: unknown) {
         pSlip: 0.18,
         pGuess: 0.25,
       }),
+      correct: successfulReadingEvidence,
       scorePatch: { receptive_score: result.successRate },
       practiced: true,
       pathMastery: (mastery) => successfulReadingEvidence

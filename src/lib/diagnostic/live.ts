@@ -1,4 +1,5 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { effectiveMastery } from "@/lib/scoring/decay";
 import { PrereqGraph } from "@/lib/graph/traversal";
 import type { CompetencyEdge, GoalScope, Strand } from "@/lib/graph/types";
 import { buildFrontierReport } from "./report";
@@ -177,11 +178,16 @@ async function loadGraphData(
       }]));
   } else {
     const { data: estimateRows, error: estimateError } = await db.from("student_competency_estimates")
-      .select("node_id,mastery_probability,uncertainty,evidence_count,estimate_source")
+      .select("node_id,mastery_probability,uncertainty,evidence_count,estimate_source,memory_stability,last_evidence_at")
       .eq("student_id", studentId);
     if (estimateError) throw new Error(estimateError.message);
+    const nowMs = Date.now();
     estimates = new Map((estimateRows ?? []).map((row) => [row.node_id as string, {
-      masteryProbability: Number(row.mastery_probability),
+      masteryProbability: effectiveMastery({
+        mastery: Number(row.mastery_probability),
+        memoryStability: row.memory_stability == null ? null : Number(row.memory_stability),
+        lastEvidenceAt: row.last_evidence_at as string | null,
+      }, nowMs),
       uncertainty: Number(row.uncertainty),
       evidenceCount: Number(row.evidence_count),
       evidenceCoverageConfirmed: false,
