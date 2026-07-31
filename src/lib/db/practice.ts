@@ -1,5 +1,6 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { createClient } from "@/lib/supabase/server";
+import { itemRatingFromDifficulty, orderByTargetSuccess } from "@/lib/scoring/elo";
 
 export type CatchUpStep = {
   nodeId: string;
@@ -63,15 +64,29 @@ export async function getCatchUpPlan(studentId: string, client?: SupabaseClient)
   }));
 }
 
-export async function getNodePractice(nodeId: string, client?: SupabaseClient) {
+export async function getNodePractice(nodeId: string, client?: SupabaseClient, studentId?: string) {
   const supabase = client ?? await createClient();
-  const { data: node, error: nodeError } = await supabase.from("competency_nodes").select("id,key,label_fr,description_fr").eq("id", nodeId).single();
+  const { data: node, error: nodeError } = await supabase.from("competency_nodes").select("id,key,label_fr,description_fr,strand").eq("id", nodeId).single();
   if (nodeError || !node) throw new Error("Compétence introuvable.");
-  const { data: items, error } = await supabase.from("competency_items")
-    .select("id,prompt_fr,instructions_fr,response_type,validator_type,validator_config,correct_answer,acceptable_answers,difficulty,competency_item_choices(id,choice_text,position,feedback_fr)")
+  const { data: itemRows, error } = await supabase.from("competency_items")
+    .select("id,prompt_fr,instructions_fr,response_type,validator_type,validator_config,correct_answer,acceptable_answers,difficulty,difficulty_rating,competency_item_choices(id,choice_text,position,feedback_fr)")
     .eq("primary_node_id", nodeId).in("review_status", ["auto_approved", "human_approved"]).order("difficulty").limit(8);
   if (error) throw new Error(error.message);
-  return { node: { id: node.id as string, key: node.key as string, label: node.label_fr as string, description: node.description_fr as string | null }, items: (items ?? []).map((item) => ({
+  // Practice targets ~82% predicted success (Elo/1PL) when the learner has a
+  // rating; without one the authored easy→hard order stands.
+  let items = itemRows ?? [];
+  if (studentId && items.length > 1) {
+    const { data: rating } = await supabase.from("student_ability_ratings")
+      .select("rating").eq("student_id", studentId).eq("strand", node.strand as string).maybeSingle();
+    if (rating) {
+      items = orderByTargetSuccess(
+        items,
+        (item) => item.difficulty_rating != null ? Number(item.difficulty_rating) : itemRatingFromDifficulty(item.difficulty == null ? null : Number(item.difficulty)),
+        Number(rating.rating)
+      );
+    }
+  }
+  return { node: { id: node.id as string, key: node.key as string, label: node.label_fr as string, description: node.description_fr as string | null }, items: items.map((item) => ({
     id: item.id as string, promptFr: item.prompt_fr as string, instructionsFr: item.instructions_fr as string | null,
     responseType: item.response_type as string, validatorType: item.validator_type as string,
     validatorConfig: item.validator_config as Record<string, unknown> | null, correctAnswer: item.correct_answer as string | null,

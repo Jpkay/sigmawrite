@@ -16,6 +16,7 @@ import { scheduleFsrs } from "@/lib/scoring/fsrs";
 import { fireImplicitUpdates } from "@/lib/graph/fire";
 import { effectiveMastery } from "@/lib/scoring/decay";
 import { buildSessionPlan } from "@/lib/learning/session-plan";
+import { eloUpdate, itemRatingFromDifficulty } from "@/lib/scoring/elo";
 import { fallbackModeration, moderateStudentText } from "@/lib/safety/moderate-input";
 import { logAudit } from "@/lib/audit";
 import type { SupabaseClient } from "@supabase/supabase-js";
@@ -1148,6 +1149,7 @@ export async function submitNodePractice(input: unknown) {
     pathMastery: (value) => correct && hintsUsed === 0 ? value : Math.min(value, 0.84),
   });
   await propagateImplicitRepetitions(service, studentId, data.nodeId, correct, now);
+  await updateEloRatings(service, studentId, item.id, data.nodeId, correct, now);
   // Failure protocol: a second consecutive miss on this node routes the
   // student to its weakest prerequisite (graph-guided remediation).
   let remediation: { nodeId: string; label: string } | null = null;
@@ -1168,6 +1170,38 @@ export async function submitNodePractice(input: unknown) {
   }
   revalidatePath("/student"); revalidatePath("/student/frontier");
   return { correct, feedbackFr, mastery, mastered: mastery >= 0.85, remediation };
+}
+
+/** Online Elo/1PL calibration: the answer is a match between learner and
+ * item; both ratings move with an uncertainty-decayed K. */
+async function updateEloRatings(service: SupabaseClient, studentId: string, itemId: string, nodeId: string, correct: boolean, at: string) {
+  const [{ data: node }, { data: item }, ] = await Promise.all([
+    service.from("competency_nodes").select("strand").eq("id", nodeId).single(),
+    service.from("competency_items").select("difficulty,difficulty_rating,rating_attempts").eq("id", itemId).single(),
+  ]);
+  if (!node || !item) return;
+  const strand = node.strand as string;
+  const { data: learner } = await service.from("student_ability_ratings")
+    .select("rating,attempts").eq("student_id", studentId).eq("strand", strand).maybeSingle();
+  const theta = Number(learner?.rating ?? 0);
+  const learnerAttempts = Number(learner?.attempts ?? 0);
+  const itemRating = item.difficulty_rating != null
+    ? Number(item.difficulty_rating)
+    : itemRatingFromDifficulty(item.difficulty == null ? null : Number(item.difficulty));
+  const itemAttempts = Number(item.rating_attempts ?? 0);
+
+  const nextTheta = eloUpdate(theta, itemRating, correct, learnerAttempts);
+  // The item's rating moves opposite to the learner's outcome.
+  const nextItemRating = eloUpdate(itemRating, theta, !correct, itemAttempts);
+
+  const { error: learnerError } = await service.from("student_ability_ratings").upsert({
+    student_id: studentId, strand, rating: nextTheta, attempts: learnerAttempts + 1, updated_at: at,
+  }, { onConflict: "student_id,strand" });
+  if (learnerError) throw new Error(learnerError.message);
+  const { error: itemError } = await service.from("competency_items").update({
+    difficulty_rating: nextItemRating, rating_attempts: itemAttempts + 1,
+  }).eq("id", itemId);
+  if (itemError) throw new Error(itemError.message);
 }
 
 /** The direct prerequisite the student is weakest on (decayed mastery < 0.85). */
