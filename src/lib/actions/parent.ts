@@ -6,7 +6,6 @@ import { z } from "zod";
 import { requireRole } from "@/lib/auth";
 import { createClient, createServiceClient } from "@/lib/supabase/server";
 import { logAudit } from "@/lib/audit";
-import { getStudentStateData } from "@/lib/db/student";
 import { CONSENT_VERSION, PRIVACY_POLICY_VERSION } from "@/lib/consent";
 
 /**
@@ -110,24 +109,8 @@ export async function linkStudent(input: unknown) {
   }
 }
 
-/** Returns a child's full data for download (PRD §10 data export). */
-export async function requestDataExport(studentId: string) {
-  await requireRole(["parent"]);
-  parsed(studentInput, { studentId });
-  const supabase = await createClient();
-  const { data, error } = await supabase
-    .from("students")
-    .select("id, display_name, current_grade, french_background, created_at")
-    .eq("id", studentId)
-    .maybeSingle();
-  if (error || !data) throw new Error("Données introuvables.");
-  const learningEvidence = await getStudentStateData(studentId, supabase);
-  const [learnerProfile,goals,competencyAttempts,competencyEstimates,writingEvaluations,interestStats]=await Promise.all([
-    supabase.from("learner_profiles").select("*").eq("student_id",studentId).maybeSingle(),supabase.from("learning_goals").select("*").eq("student_id",studentId),supabase.from("competency_attempts").select("*").eq("student_id",studentId),supabase.from("student_competency_estimates").select("*").eq("student_id",studentId),supabase.from("writing_evaluations").select("*").eq("student_id",studentId),supabase.from("student_interest_stats").select("*").eq("student_id",studentId)
-  ]);
-  await logAudit("data_export", { targetType: "student", targetId: studentId });
-  return { exportedAt: new Date().toISOString(),formatVersion:"2.0",student: data, learningEvidence,learnerProfile:learnerProfile.data,learningGoals:goals.data??[],competencyAttempts:competencyAttempts.data??[],competencyEstimates:competencyEstimates.data??[],writingEvaluations:writingEvaluations.data??[],interestStats:interestStats.data??[] };
-}
+/** Returns a schema-versioned, fail-closed export of every student-owned data category. */
+export async function requestDataExport(studentId:string){await requireRole(["parent"]);parsed(studentInput,{studentId});const client=await createClient();const{data:owned,error:ownedError}=await client.from("students").select("id").eq("id",studentId).maybeSingle();if(ownedError||!owned)throw new Error("Données introuvables.");const service=createServiceClient();async function rows(table:string,column="student_id",value:string|string[]=studentId){let query=service.from(table).select("*");query=Array.isArray(value)?query.in(column,value):query.eq(column,value);const result=await query;if(result.error)throw new Error(`Export incomplet (${table}): ${result.error.message}`);return result.data??[];}const directTables=["benchmark_results","competency_attempts","consent_records","contract_reuse_decisions","deletion_requests","diagnostic_node_dimension_results","diagnostic_node_evidence_results","diagnostic_node_results","diagnostic_pilot_enrollments","diagnostic_recommendations","diagnostic_responses","diagnostic_results","diagnostic_runs","enrollments","generated_content_serving_sessions","generation_contracts","indirect_retrieval_requests","learner_profiles","learning_goals","learning_retrieval_schedules","on_demand_workflow_runs","parent_reports","quiz_remediation_triggers","quiz_responses","quiz_sessions","reading_completion_runs","reading_session_events","reading_sessions","retrieval_attempts","retrieval_cards","retrieval_evidence_occurrences","student_ability_ratings","student_competency_dimension_estimates","student_competency_estimates","student_daily_activity","student_daily_ai_budgets","student_domain_estimates","student_guardians","student_interest_stats","student_interests","student_learning_paths","student_notifications","student_package_completions","student_package_progress","student_reading_estimates","student_skill_estimates","student_target_decisions","student_word_mastery","vocabulary_review_attempts","writing_evaluations"] as const;const pairs=await Promise.all(directTables.map(async table=>[table,await rows(table)]as const));const categories=Object.fromEntries(pairs)as Record<string,unknown[]>;const sessions=(categories.reading_sessions??[])as Array<{id:string}>;const cards=(categories.retrieval_cards??[])as Array<{id:string}>;const diagnosticRuns=(categories.diagnostic_runs??[])as Array<{id:string}>;const diagnosticResults=(categories.diagnostic_results??[])as Array<{id:string}>;const [answers,summaries,schedules,runSections,skillResults]=await Promise.all([sessions.length?rows("student_answers","session_id",sessions.map(row=>row.id)):Promise.resolve([]),sessions.length?rows("student_summaries","session_id",sessions.map(row=>row.id)):Promise.resolve([]),cards.length?rows("retrieval_schedules","retrieval_card_id",cards.map(row=>row.id)):Promise.resolve([]),diagnosticRuns.length?rows("diagnostic_run_sections","run_id",diagnosticRuns.map(row=>row.id)):Promise.resolve([]),diagnosticResults.length?rows("diagnostic_skill_results","diagnostic_result_id",diagnosticResults.map(row=>row.id)):Promise.resolve([])]);categories.student_answers=answers;categories.student_summaries=summaries;categories.retrieval_schedules=schedules;categories.diagnostic_run_sections=runSections;categories.diagnostic_skill_results=skillResults;const{data:student,error:studentError}=await service.from("students").select("id,display_name,current_grade,french_background,created_at,onboarding_completed_at").eq("id",studentId).single();if(studentError||!student)throw new Error("Export incomplet (student).");await logAudit("data_export",{targetType:"student",targetId:studentId});return{exportedAt:new Date().toISOString(),formatVersion:"3.0",student,categories};}
 
 /**
  * Records a data-deletion request (PRD §10). The controller (school/platform
