@@ -1,10 +1,2 @@
-import { PageHeader, ComingSoon } from "@/components/page";
-
-export default function Page() {
-  return (
-    <>
-      <PageHeader title="Vocabulaire" description="Les mots cibles que tu travailles et révises." />
-      <ComingSoon phase="Phase 4" note="La maîtrise et la rétention du vocabulaire arrivent en Phase 4." />
-    </>
-  );
-}
+import{PageHeader}from"@/components/page";import{VocabularyPractice}from"./vocabulary-practice";import{loadVocabularyMemories}from"@/lib/actions/vocabulary";
+export default async function Page(){const memories=await loadVocabularyMemories();return <><PageHeader title="Vocabulaire" description="Retrouve les mots rencontrés en lecture au moment où ta mémoire en a besoin."/><VocabularyPractice initial={memories}/></>}
