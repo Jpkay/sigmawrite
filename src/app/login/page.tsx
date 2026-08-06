@@ -72,7 +72,7 @@ function LoginForm() {
       footer={
         <>
           Pas encore de compte ?{" "}
-          <Link href="/signup" className="text-primary hover:underline">
+          <Link href="/signup" className="text-primary underline underline-offset-2">
             Créer un compte
           </Link>
         </>

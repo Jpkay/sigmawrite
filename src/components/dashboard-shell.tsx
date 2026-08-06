@@ -34,6 +34,7 @@ export function DashboardShell({
 
   return (
     <div className="flex min-h-screen w-full bg-background">
+      <a href="#main-content" className="sr-only z-[100] rounded bg-background p-3 focus:not-sr-only focus:fixed focus:left-3 focus:top-3">Aller au contenu</a>
       <aside className="hidden w-64 shrink-0 flex-col border-r border-border bg-card/80 md:flex">
         <div className="flex h-18 items-center gap-2.5 border-b border-border px-5">
           <span className="grid size-9 place-items-center rounded-full bg-primary text-primary-foreground"><BookOpen className="size-4" /></span>
@@ -43,7 +44,7 @@ export function DashboardShell({
         <div className="px-5 pb-3 pt-6 font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
           {area}
         </div>
-        <nav className="flex-1 space-y-1 px-3">
+        <nav aria-label={area} className="flex-1 space-y-1 px-3">
           {nav.map((item) => {
             const active =
               pathname === item.href ||
@@ -52,6 +53,7 @@ export function DashboardShell({
               <Link
                 key={item.href}
                 href={item.href}
+                aria-current={active ? "page" : undefined}
                 className={cn(
                   "relative block rounded-md px-3 py-2.5 text-sm font-medium transition-all",
                   active
@@ -77,14 +79,14 @@ export function DashboardShell({
         </div>
       </aside>
 
-      <main className="min-w-0 flex-1 overflow-x-hidden">
+      <main id="main-content" className="min-w-0 flex-1 overflow-x-hidden">
         <div className="sticky top-0 z-30 border-b border-border bg-background/90 px-4 py-3 backdrop-blur-xl md:hidden">
           <div className="mb-3 flex items-center justify-between gap-3">
             <Link href={home ?? "/"} className="flex items-center gap-2 font-display font-bold text-foreground hover:text-foreground"><BookOpen className="size-5 text-primary" />SigmaWrite<span className="text-primary">.</span></Link>
             <div className="flex items-center gap-2"><ThemeToggle /><SignOutButton label={signOutLabel} /></div>
           </div>
           <nav aria-label={area} className="flex max-w-[calc(100vw-2rem)] gap-1 overflow-x-auto pb-1">
-            {nav.map((item) => <Link key={item.href} href={item.href} className={cn("shrink-0 rounded-md px-3 py-2 text-sm", pathname === item.href || (item.href !== home && pathname.startsWith(item.href + "/")) ? "bg-primary/15 text-primary" : "text-muted-foreground")}>{item.label}</Link>)}
+            {nav.map((item) => { const active=pathname === item.href || (item.href !== home && pathname.startsWith(item.href + "/")); return <Link key={item.href} href={item.href} aria-current={active?"page":undefined} className={cn("shrink-0 rounded-md px-3 py-2 text-sm",active ? "bg-primary/15 text-primary" : "text-muted-foreground")}>{item.label}</Link>;})}
           </nav>
         </div>
         <div className="mx-auto w-full max-w-7xl px-4 py-7 sm:px-8 sm:py-10 lg:px-10">{children}</div>

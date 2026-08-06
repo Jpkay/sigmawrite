@@ -18,14 +18,20 @@ export function MarketingNav() {
           <BookOpen className="size-5 text-primary" />
           Reading to Learn
         </Link>
-        <nav className="hidden items-center gap-6 text-sm text-muted-foreground md:flex">
+        <nav aria-label="Navigation principale" className="hidden items-center gap-6 text-sm text-muted-foreground md:flex">
           {links.map((l) => (
             <Link key={l.href} href={l.href} className="hover:text-foreground">
               {l.label}
             </Link>
           ))}
         </nav>
-        <div className="flex items-center gap-2">
+        <details className="relative md:hidden">
+          <summary className="cursor-pointer rounded-md border border-border px-3 py-2 text-sm">Menu</summary>
+          <nav aria-label="Navigation mobile" className="absolute right-0 top-12 z-50 grid min-w-48 gap-1 rounded-md border border-border bg-background p-2 shadow-lg">
+            {links.map((link)=><Link key={link.href} href={link.href} className="rounded px-3 py-2 text-sm hover:bg-accent">{link.label}</Link>)}
+          </nav>
+        </details>
+        <div className="hidden items-center gap-2 sm:flex">
           <ThemeToggle />
           <Link href="/login" className={buttonVariants({ variant: "ghost", size: "sm" })}>
             Se connecter
