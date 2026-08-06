@@ -51,6 +51,8 @@ import { nodePracticeEvidenceExpectation } from "@/lib/diagnostic/practice-evide
 import { requireStudentLearningUnlocked } from "@/lib/diagnostic/access";
 import { bktUpdate, bktUpdateWeighted, guessFromChoices, masteryUncertainty } from "@/lib/scoring/bkt";
 import { validateAnswer } from "@/lib/linguistic/validator";
+import { LanguageToolChecker } from "@/lib/linguistic/languagetool";
+import type { ValidatorType } from "@/lib/linguistic/types";
 import { getCatchUpPlan } from "@/lib/db/practice";
 import { evaluateWriting } from "@/lib/writing/evaluate";
 import { calculateStreak } from "@/lib/motivation";
@@ -1130,7 +1132,7 @@ export async function submitNodePractice(input: unknown) {
   const choices = item.competency_item_choices as unknown as Array<{ id: string; is_correct: boolean; feedback_fr: string | null }>;
   let correct = false; let feedbackFr: string | null = null;
   if (data.selectedChoiceId) { const selected = choices.find((choice) => choice.id === data.selectedChoiceId); if (!selected) throw new Error("Choix invalide."); correct = selected.is_correct; feedbackFr = selected.feedback_fr; }
-  else { const validation = await validateAnswer(data.answerText ?? "", { validatorType: item.validator_type as "exact" | "regex" | "conjugator", config: item.validator_config as Record<string, unknown> | undefined, correctAnswer: item.correct_answer as string | undefined, acceptableAnswers: item.acceptable_answers as string[] }); correct = validation.pass; feedbackFr = validation.reason ?? null; }
+  else { const validatorType=item.validator_type as ValidatorType; const grammarChecker=validatorType==="agreement"||validatorType==="grammalecte"?new LanguageToolChecker():undefined; const validation = await validateAnswer(data.answerText ?? "", { validatorType, config: item.validator_config as Record<string, unknown> | undefined, correctAnswer: item.correct_answer as string | undefined, acceptableAnswers: item.acceptable_answers as string[] },{grammarChecker}); correct = validation.pass; feedbackFr = validation.reason ?? null; }
   const now = new Date().toISOString();
   const hintsUsed = data.hintsUsed ?? 0;
   await service.from("competency_attempts").insert({ student_id: studentId, item_id: item.id, node_id: data.nodeId, learner_mode: item.learner_mode, modality: item.modality, answer_text: data.answerText ?? null, selected_choice_id: data.selectedChoiceId ?? null, is_correct: correct, score: correct ? 1 : 0, latency_ms: Math.max(0, Date.now()-Date.parse(data.startedAt)), hints_used: hintsUsed, context: "practice", attempted_at: now });
@@ -1625,12 +1627,13 @@ export async function submitAdaptiveDiagnosticProbe(input: unknown) {
     if (!choice) throw new Error("Choix invalide.");
     correct = choice.is_correct;
   } else if (!existingResponse) {
+    const validatorType=item.validator_type as ValidatorType;
     const validation = await validateAnswer(data.answerText ?? "", {
-      validatorType: item.validator_type as "exact" | "regex" | "conjugator",
+      validatorType,
       config: (item.validator_config ?? undefined) as Record<string, unknown> | undefined,
       correctAnswer: item.correct_answer as string | undefined,
       acceptableAnswers: item.acceptable_answers as string[] | undefined,
-    });
+    },{grammarChecker:validatorType==="agreement"||validatorType==="grammalecte"?new LanguageToolChecker():undefined});
     correct = validation.pass;
   }
   const attemptedAt = new Date().toISOString();
