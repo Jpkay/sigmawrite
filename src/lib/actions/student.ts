@@ -1796,6 +1796,14 @@ export async function completeReadingSession(input: unknown) {
   if (!text) throw new Error("Texte introuvable.");
   const { data: ownedSession, error: sessionError } = await supabase.from("reading_sessions").select("id,text_version_id").eq("id", data.sessionId).eq("student_id", studentId).single();
   if (sessionError || !ownedSession) throw new Error("Séance introuvable.");
+  const service = createServiceClient();
+  const {data:claims,error:claimError}=await service.rpc("claim_reading_completion",{p_session_id:data.sessionId,p_student_id:studentId});
+  if(claimError)throw new Error(claimError.message);
+  const claim=claims?.[0] as{claimed:boolean;status:string;result_payload:unknown}|undefined;
+  if(!claim?.claimed){
+    if(claim?.status==="completed"&&claim.result_payload){const state=await getStudentStateData(studentId,supabase);return{result:claim.result_payload as ReturnType<typeof scoreSession>,state};}
+    throw new Error("Cette séance est déjà en cours de finalisation. Contacte le support si elle reste bloquée.");
+  }
 
   for (const [questionKey, choiceIndex] of Object.entries(data.answers)) {
     const ids = await contentIds(supabase, data.textKey, questionKey, choiceIndex);
@@ -1805,13 +1813,17 @@ export async function completeReadingSession(input: unknown) {
     }, { onConflict: "session_id,question_id" });
     if (error) throw new Error(error.message);
   }
-  const service = createServiceClient();
   const prompt = await getActivePrompt("summary_scoring", service);
-  const { data: summaryRow, error: summaryError } = await service.from("student_summaries").upsert({ session_id: data.sessionId, summary_text: data.summaryText, ai_score: {} }, { onConflict: "session_id" }).select("id").single();
+  const {data:cachedSummary,error:cachedSummaryError}=await service.from("student_summaries").select("id,summary_text,ai_score").eq("session_id",data.sessionId).maybeSingle();
+  if(cachedSummaryError)throw new Error(cachedSummaryError.message);
+  const cachedScore=Number((cachedSummary?.ai_score as{score?:number}|null)?.score);
+  let summaryScore:number;
+  if(cachedSummary&&cachedSummary.summary_text===data.summaryText&&Number.isFinite(cachedScore)){summaryScore=cachedScore;}
+  else{const { data: summaryRow, error: summaryError } = await service.from("student_summaries").upsert({ session_id: data.sessionId, summary_text: data.summaryText, ai_score: {} }, { onConflict: "session_id" }).select("id").single();
   if (summaryError || !summaryRow) throw new Error(summaryError?.message ?? "Résumé non enregistré.");
   const writingEvaluation = await evaluateAndStoreWriting({ service, studentId, summaryId: summaryRow.id as string, revisionNumber: 0, sourceText: text.body.join("\n\n"), studentText: data.summaryText, keywords: text.concepts, systemPrompt: prompt.promptText });
-  const summaryEvaluation = writingEvaluation.rubric;
-  await service.from("student_summaries").update({ ai_score: summaryEvaluation }).eq("id", summaryRow.id);
+  summaryScore=writingEvaluation.rubric.score;
+  const{error:summaryUpdateError}=await service.from("student_summaries").update({ ai_score: writingEvaluation.rubric }).eq("id", summaryRow.id);if(summaryUpdateError)throw new Error(summaryUpdateError.message);}
 
   const { data: previous } = await supabase.from("reading_sessions").select("success_rate")
     .eq("student_id", studentId).neq("id", data.sessionId).not("completed_at", "is", null)
@@ -1820,7 +1832,7 @@ export async function completeReadingSession(input: unknown) {
     studentId, text, answers: data.answers, summaryText: data.summaryText,
     retrievalText: data.retrievalText, startedAt: data.startedAt, completedAt: data.completedAt,
     previousSuccessRate: previous?.success_rate == null ? undefined : Number(previous.success_rate),
-    summaryScoreOverride: summaryEvaluation.score,
+    summaryScoreOverride: summaryScore,
   });
 
   const { data: mappedNodes } = await service.from("text_version_nodes").select("node_id").eq("text_version_id", ownedSession.text_version_id);
@@ -1921,6 +1933,7 @@ export async function completeReadingSession(input: unknown) {
   const since = new Date(Date.parse(data.completedAt) - 7 * 86_400_000).toISOString();
   const { count: sessionsThisWeek } = await service.from("reading_sessions").select("id", { count: "exact", head: true }).eq("student_id", studentId).not("completed_at", "is", null).gte("completed_at", since);
   if (sessionsThisWeek === 3) await trackServer(studentId, "three_sessions_week_1", { window_days: 7 });
+  const{error:finishError}=await service.rpc("finish_reading_completion",{p_session_id:data.sessionId,p_result:result});if(finishError)throw new Error(finishError.message);
   revalidatePath("/student"); revalidatePath("/parent"); revalidatePath("/teacher");
   return { result, state: await getStudentStateData(studentId, supabase) };
 }
