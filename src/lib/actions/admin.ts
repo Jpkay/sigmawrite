@@ -235,8 +235,9 @@ export async function approveTextVersion(input: unknown) {
     primary_domain_id: domain?.id ?? null,
     status: "draft",
   }).select("id").single();
-  if (textError || !text) throw new Error(textError?.message ?? "Texte non créé.");
+  if (textError || !text) {const message=textError?.message??"Texte non créé.";await service.rpc("fail_content_publication",{p_candidate_id:id,p_error:message});throw new Error(message);}
 
+  let createdVersionId:string|null=null;
   try {
     const difficulty = candidate.difficulty;
     const { data: version, error: versionError } = await supabase.from("text_versions").insert({
@@ -259,6 +260,7 @@ export async function approveTextVersion(input: unknown) {
       source_policy: "generated",
     }).select("id").single();
     if (versionError || !version) throw new Error(versionError?.message ?? "Version non créée.");
+    createdVersionId=version.id as string;
     const embedding = await getAIProvider().embed({ text: `${generated.title}\n\n${generated.body}` });
     const { error: embeddingError } = await supabase.from("text_versions").update({ embedding: `[${embedding.join(",")}]`, embedding_model: getAIEmbeddingInfo().model }).eq("id", version.id);
     if (embeddingError) throw new Error(embeddingError.message);
@@ -367,7 +369,10 @@ export async function approveTextVersion(input: unknown) {
     refreshContent();
     return publication;
   } catch (error) {
-    await supabase.from("texts").delete().eq("id", text.id);
+    const message=error instanceof Error?error.message:"Erreur inconnue";
+    if(createdVersionId){const[{error:candidateRollbackError},{error:reviewRollbackError}]=await Promise.all([supabase.from("ai_generated_candidates").update({review_status:"needs_human_review",approved_text_version_id:null,reviewer_profile_id:null,reviewed_at:null}).eq("id",id),supabase.from("content_review_versions").update({workflow_status:"approved",published_text_version_id:null}).eq("id",approvedReview.id)]);if(candidateRollbackError||reviewRollbackError)throw new Error(`Publication interrompue; réconciliation requise: ${candidateRollbackError?.message??reviewRollbackError?.message}`);}
+    const{error:cleanupError}=await supabase.from("texts").delete().eq("id",text.id);if(cleanupError)throw new Error(`Publication interrompue; nettoyage requis: ${cleanupError.message}`);
+    await service.rpc("fail_content_publication",{p_candidate_id:id,p_error:message});
     throw error;
   }
 }

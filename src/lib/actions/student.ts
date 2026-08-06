@@ -1805,6 +1805,7 @@ export async function completeReadingSession(input: unknown) {
     throw new Error("Cette séance est déjà en cours de finalisation. Contacte le support si elle reste bloquée.");
   }
 
+  try {
   for (const [questionKey, choiceIndex] of Object.entries(data.answers)) {
     const ids = await contentIds(supabase, data.textKey, questionKey, choiceIndex);
     const { error } = await supabase.from("student_answers").upsert({
@@ -1936,6 +1937,7 @@ export async function completeReadingSession(input: unknown) {
   const{error:finishError}=await service.rpc("finish_reading_completion",{p_session_id:data.sessionId,p_result:result});if(finishError)throw new Error(finishError.message);
   revalidatePath("/student"); revalidatePath("/parent"); revalidatePath("/teacher");
   return { result, state: await getStudentStateData(studentId, supabase) };
+  } catch(error) { const message=error instanceof Error?error.message:"Erreur inconnue";await service.rpc("fail_reading_completion",{p_session_id:data.sessionId,p_error:message});throw error; }
 }
 
 export async function submitRetrievalAttempt(input: unknown) {
