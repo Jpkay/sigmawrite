@@ -13,6 +13,7 @@
 - Security hardening migrations 0077+, PWA cache isolation, password recovery, job idempotency and dependency remediation.
 - Browser smoke/accessibility checks plus full application and SQL CI gates.
 - Flat per-word vocabulary review and persistent scaffold fading.
+- At-most-once reading/content completion boundaries and parent-mediated child password rotation.
 
 ## Repository verification commands
 
