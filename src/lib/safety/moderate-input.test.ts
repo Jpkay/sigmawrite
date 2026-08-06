@@ -29,10 +29,17 @@ describe("student text moderation", () => {
     expect(result).toEqual({ allowed: false, categories: ["provider_safety"], source: "provider" });
   });
 
-  it("falls back safely when provider output is invalid", async () => {
+  it("fails closed when configured provider output is invalid", async () => {
     const result = await moderateStudentText("Une réponse sûre.", {
       provider: provider(vi.fn().mockResolvedValue({ invalid: true })),
     });
-    expect(result).toEqual({ allowed: true, categories: [], source: "fallback" });
+    expect(result).toEqual({ allowed: false, categories: ["moderation_unavailable"], source: "provider" });
+  });
+
+  it("fails closed when the configured provider is unavailable", async () => {
+    const result = await moderateStudentText("Une réponse sûre.", {
+      provider: provider(vi.fn().mockRejectedValue(new Error("timeout"))),
+    });
+    expect(result).toEqual({ allowed: false, categories: ["moderation_unavailable"], source: "provider" });
   });
 });

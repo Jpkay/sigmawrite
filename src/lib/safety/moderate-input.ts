@@ -49,6 +49,6 @@ export async function moderateStudentText(
       source: "provider",
     };
   } catch {
-    return fallback;
+    return { allowed: false, categories: ["moderation_unavailable"], source: "provider" };
   }
 }
