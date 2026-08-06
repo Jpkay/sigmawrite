@@ -17,6 +17,7 @@ import { fireImplicitUpdates } from "@/lib/graph/fire";
 import { effectiveMastery } from "@/lib/scoring/decay";
 import { buildSessionPlan } from "@/lib/learning/session-plan";
 import { eloUpdate, itemRatingFromDifficulty } from "@/lib/scoring/elo";
+import { nextScaffoldState } from "@/lib/practice/scaffolding";
 import { fallbackModeration, moderateStudentText } from "@/lib/safety/moderate-input";
 import { logAudit } from "@/lib/audit";
 import type { SupabaseClient } from "@supabase/supabase-js";
@@ -1148,6 +1149,9 @@ export async function submitNodePractice(input: unknown) {
     // Only unaided successes may confirm the 0.85 mastery gate.
     pathMastery: (value) => correct && hintsUsed === 0 ? value : Math.min(value, 0.84),
   });
+  const {data:scaffold}=await service.from("student_competency_estimates").select("scaffold_level,unaided_success_streak").eq("student_id",studentId).eq("node_id",data.nodeId).single();
+  const scaffoldState=nextScaffoldState({level:Number(scaffold?.scaffold_level??0),unaidedSuccessStreak:Number(scaffold?.unaided_success_streak??0)},correct,hintsUsed);
+  const{error:scaffoldError}=await service.from("student_competency_estimates").update({scaffold_level:scaffoldState.level,unaided_success_streak:scaffoldState.unaidedSuccessStreak}).eq("student_id",studentId).eq("node_id",data.nodeId);if(scaffoldError)throw new Error(scaffoldError.message);
   await propagateImplicitRepetitions(service, studentId, data.nodeId, correct, now);
   await updateEloRatings(service, studentId, item.id, data.nodeId, correct, now);
   // Failure protocol: a second consecutive miss on this node routes the
@@ -1169,7 +1173,7 @@ export async function submitNodePractice(input: unknown) {
     await recordDailyActivity(service,studentId,now,"practice",true);
   }
   revalidatePath("/student"); revalidatePath("/student/frontier");
-  return { correct, feedbackFr, mastery, mastered: mastery >= 0.85, remediation };
+  return { correct, feedbackFr, mastery, mastered: mastery >= 0.85, remediation, scaffoldLevel: scaffoldState.level };
 }
 
 /** Online Elo/1PL calibration: the answer is a match between learner and

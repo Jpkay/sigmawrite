@@ -86,7 +86,9 @@ export async function getNodePractice(nodeId: string, client?: SupabaseClient, s
       );
     }
   }
-  return { node: { id: node.id as string, key: node.key as string, label: node.label_fr as string, description: node.description_fr as string | null }, items: items.map((item) => ({
+  let scaffoldLevel = 0;
+  if(studentId){const{data:estimate}=await supabase.from("student_competency_estimates").select("scaffold_level").eq("student_id",studentId).eq("node_id",nodeId).maybeSingle();scaffoldLevel=Number(estimate?.scaffold_level??0);}
+  return { node: { id: node.id as string, key: node.key as string, label: node.label_fr as string, description: node.description_fr as string | null }, scaffoldLevel, items: items.map((item) => ({
     id: item.id as string, promptFr: item.prompt_fr as string, instructionsFr: item.instructions_fr as string | null,
     responseType: item.response_type as string, validatorType: item.validator_type as string,
     validatorConfig: item.validator_config as Record<string, unknown> | null, correctAnswer: item.correct_answer as string | null,

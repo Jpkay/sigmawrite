@@ -1,0 +1,1 @@
+begin;create extension if not exists pgtap with schema extensions;select plan(2);select has_column('public','student_competency_estimates','scaffold_level','Scaffold state persists');select has_column('public','student_competency_estimates','unaided_success_streak','Scaffold fading tracks unaided success');select * from finish();rollback;
