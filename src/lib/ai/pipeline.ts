@@ -32,6 +32,7 @@ export type ReviewFlags = {
   sensitive: boolean;
   difficultyMismatch: boolean;
   nearDuplicate?: boolean;
+  duplicateCheckUnavailable?: boolean;
 };
 
 export type ContentCandidate = {
@@ -81,7 +82,8 @@ export function decideReviewStatus(flags: ReviewFlags): ReviewStatus {
     flags.factualNeedsReview ||
     flags.sensitive ||
     flags.difficultyMismatch ||
-    flags.nearDuplicate
+    flags.nearDuplicate ||
+    flags.duplicateCheckUnavailable
   ) {
     return "needs_human_review";
   }

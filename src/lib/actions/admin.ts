@@ -64,7 +64,9 @@ export async function generateTextCandidate(input: unknown) {
       const { data: matches } = await supabase.rpc("match_text_versions", { p_embedding: `[${embedding.join(",")}]`, p_threshold: 0.92, p_limit: 3 });
       if (matches?.length) candidate = { ...candidate, flags: { ...candidate.flags, nearDuplicate: true }, reviewStatus: "needs_human_review" };
     } catch {
-      // Candidate generation remains available if a separately configured embedding provider is down.
+      // Generation may continue, but publication must fail closed when the
+      // duplicate gate could not run.
+      candidate = { ...candidate, flags: { ...candidate.flags, duplicateCheckUnavailable: true }, reviewStatus: "needs_human_review" };
     }
     const { error: candidateError } = await supabase.from("ai_generated_candidates").insert({
       id: candidate.id,
