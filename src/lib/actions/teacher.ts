@@ -109,18 +109,3 @@ export async function setClassEnrollment(input: unknown) {
   const supabase = await createClient(); const { error } = await supabase.rpc("set_class_enrollment", { p_class_id: parsed.data.classId, p_student_id: parsed.data.studentId, p_status: parsed.data.status }); if (error) throw new Error(error.message);
   await logAudit("class.enrollment_changed", { targetType: "class", targetId: parsed.data.classId, metadata: { studentId: parsed.data.studentId, status: parsed.data.status } }); revalidatePath(`/teacher/classes/${parsed.data.classId}`); return { ok: true };
 }
-
-export async function viewClassProgress() {
-  await requireRole(["teacher", "school_admin"]);
-  return { ok: true };
-}
-
-export async function createInterventionGroup() {
-  await requireRole(["teacher"]);
-  return { ok: true };
-}
-
-export async function exportClassReport() {
-  await requireRole(["teacher", "school_admin"]);
-  return { ok: true };
-}
