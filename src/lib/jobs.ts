@@ -10,21 +10,21 @@ import { captureError } from "@/lib/observability";
 
 export async function withJobRun<T>(jobName: string, work: (db: SupabaseClient) => Promise<{ result: T; processed: number }>) {
   const db = createServiceClient();
-  const { data: run, error } = await db.from("job_runs").insert({ job_name: jobName }).select("id").single();
-  if (error || !run) {
-    if (error?.code === "23505") throw new Error(`Job already running: ${jobName}`);
+  const { data: runId, error } = await db.rpc("claim_job_run", { p_job_name: jobName, p_lease_minutes: 120 });
+  if (error || !runId) {
+    if (error?.code === "55000") throw new Error(`Job already running: ${jobName}`);
     throw new Error(error?.message ?? "Job run not created");
   }
   try {
     const output = await work(db);
-    const { error: finishError } = await db.from("job_runs").update({ status: "completed", finished_at: new Date().toISOString(), processed_count: output.processed }).eq("id", run.id);
+    const { error: finishError } = await db.from("job_runs").update({ status: "completed", finished_at: new Date().toISOString(), processed_count: output.processed }).eq("id", runId);
     if (finishError) throw new Error(`Job completion was not recorded: ${finishError.message}`);
     return output.result;
   } catch (cause) {
-    const { error: failureError } = await db.from("job_runs").update({ status: "failed", finished_at: new Date().toISOString(), error_message: cause instanceof Error ? cause.message : "Unknown error" }).eq("id", run.id);
-    captureError(cause,{jobName,jobRunId:run.id});
+    const { error: failureError } = await db.from("job_runs").update({ status: "failed", finished_at: new Date().toISOString(), error_message: cause instanceof Error ? cause.message : "Unknown error" }).eq("id", runId);
+    captureError(cause,{jobName,jobRunId:runId});
     const alertTo=process.env.OPS_ALERT_EMAIL;
-    if(alertTo)void sendEmail({to:alertTo,subject:`SigmaWrite job failed: ${jobName}`,html:`<h1>Background job failed</h1><p>${jobName}</p><p>Run ${run.id}</p>`}).catch(alertError=>captureError(alertError,{jobName,alert:"email"}));
+    if(alertTo)void sendEmail({to:alertTo,subject:`SigmaWrite job failed: ${jobName}`,html:`<h1>Background job failed</h1><p>${jobName}</p><p>Run ${runId}</p>`}).catch(alertError=>captureError(alertError,{jobName,alert:"email"}));
     if (failureError) throw new AggregateError([cause, failureError], "Job failed and its failure state was not recorded");
     throw cause;
   }
