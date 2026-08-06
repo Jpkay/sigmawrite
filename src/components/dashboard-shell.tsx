@@ -20,12 +20,14 @@ export function DashboardShell({
   nav,
   user,
   signOutLabel,
+  language = "fr",
   children,
 }: {
   area: string;
   nav: NavItem[];
   user?: { name: string; role: string; analyticsId?: string };
   signOutLabel?: string;
+  language?: "fr" | "en";
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
@@ -33,8 +35,8 @@ export function DashboardShell({
   useEffect(() => { if (user?.analyticsId) identifyAnalytics(user.analyticsId, user.role); }, [user?.analyticsId, user?.role]);
 
   return (
-    <div className="flex min-h-screen w-full bg-background">
-      <a href="#main-content" className="sr-only z-[100] rounded bg-background p-3 focus:not-sr-only focus:fixed focus:left-3 focus:top-3">Aller au contenu</a>
+    <div lang={language} className="flex min-h-screen w-full bg-background">
+      <a href="#main-content" className="sr-only z-[100] rounded bg-background p-3 focus:not-sr-only focus:fixed focus:left-3 focus:top-3">{language === "en" ? "Skip to content" : "Aller au contenu"}</a>
       <aside className="hidden w-64 shrink-0 flex-col border-r border-border bg-card/80 md:flex">
         <div className="flex h-18 items-center gap-2.5 border-b border-border px-5">
           <span className="grid size-9 place-items-center rounded-full bg-primary text-primary-foreground"><BookOpen className="size-4" /></span>
