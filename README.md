@@ -52,6 +52,7 @@ npm run security:audit
 npm run test:e2e        # requires: npx playwright install chromium
 npm run ci              # application release gates
 npm run launch:verify-env
+npm run launch:audit-content
 supabase test db         # complete database contract suite
 ```
 

@@ -13,11 +13,13 @@
 - Security hardening migrations 0077+, PWA cache isolation, password recovery, job idempotency and dependency remediation.
 - Browser smoke/accessibility checks plus full application and SQL CI gates.
 - Flat per-word vocabulary review and persistent scaffold fading.
-- At-most-once reading/content completion boundaries and parent-mediated child password rotation.
+- Recoverable at-most-once reading/content boundaries, leased jobs, service-only audit writes and parent/student password rotation.
+- Typed vocabulary recall, vocabulary-fit recommendations, lexical launch thresholds, corrective retests and strand-specific scaffolds.
+- Pseudonymous explicit-only analytics, comprehensive guardian export, bilingual parent controls and authenticated pilot-browser CI.
 
 ## Repository verification commands
 
-`npm run ci`, `npm run test:e2e`, `supabase test db`, and `npm run launch:verify-env` are the release contract. Evidence counts should be taken from the latest command output, not copied into long-lived prose.
+`npm run ci`, `npm run test:e2e`, `supabase test db`, `npm run launch:verify-env`, and `npm run launch:audit-content` are the release contract. Evidence counts should be taken from the latest command output, not copied into long-lived prose.
 
 ## External or human gates — not complete in source control
 
