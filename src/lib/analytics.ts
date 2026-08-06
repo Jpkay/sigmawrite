@@ -1,8 +1,1 @@
-"use client";
-import posthog from "posthog-js";
-
-let initialized=false;
-function client(){const key=process.env.NEXT_PUBLIC_POSTHOG_KEY;if(!key||typeof window==="undefined")return null;if(!initialized){posthog.init(key,{api_host:process.env.NEXT_PUBLIC_POSTHOG_HOST??"https://eu.i.posthog.com",person_profiles:"identified_only",capture_pageview:true,capture_pageleave:true});initialized=true;}return posthog;}
-export function identifyAnalytics(id:string,role:string){client()?.identify(id,{role});}
-export function track(event:string,properties:Record<string,unknown>={}){client()?.capture(event,properties);}
-export function isFeatureEnabled(flag:string,fallback=true){const instance=client();return instance?instance.isFeatureEnabled(flag)??fallback:fallback;}
+"use client";import posthog from"posthog-js";import{sanitizeAnalyticsProperties}from"@/lib/analytics-privacy";let initialized=false;function client(){const key=process.env.NEXT_PUBLIC_POSTHOG_KEY;if(!key||typeof window==="undefined")return null;if(!initialized){posthog.init(key,{api_host:process.env.NEXT_PUBLIC_POSTHOG_HOST??"https://eu.i.posthog.com",person_profiles:"identified_only",autocapture:false,disable_session_recording:true,capture_pageview:false,capture_pageleave:false,persistence:"memory"});initialized=true;}return posthog;}export function identifyAnalytics(_id:string,role:string){const instance=client();if(!instance)return;let pseudonym=sessionStorage.getItem("sigmawrite-analytics-session");if(!pseudonym){pseudonym=crypto.randomUUID();sessionStorage.setItem("sigmawrite-analytics-session",pseudonym);}instance.identify(`session:${pseudonym}`,{role});}export function track(event:string,properties:Record<string,unknown>={}){client()?.capture(event,sanitizeAnalyticsProperties(properties));}export function isFeatureEnabled(flag:string,fallback=true){const instance=client();return instance?instance.isFeatureEnabled(flag)??fallback:fallback;}

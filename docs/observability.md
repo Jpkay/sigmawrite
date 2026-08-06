@@ -1,8 +1,7 @@
 # Analytics, feature rollout and error monitoring
 
 PostHog is enabled only when `NEXT_PUBLIC_POSTHOG_KEY` (client) or
-`POSTHOG_KEY` (server) is present. Student identities are pseudonymous profile
-UUIDs; names and free-text answers are never event properties. Instrumented
+`POSTHOG_KEY` (server) is present. Client identities are random per-browser-session pseudonyms; server identities are HMAC pseudonyms keyed by `ANALYTICS_ID_SALT`. Raw profile/student UUIDs, names, free text, report/card/class identifiers, autocapture, and session recording are excluded by the analytics adapter. Instrumented
 events cover onboarding, diagnostic start/finish, reading completion, parent
 report opening, assignment creation and class export.
 
