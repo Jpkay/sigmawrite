@@ -60,11 +60,13 @@ export async function updateSession(request: NextRequest) {
   if (user) {
     const { data: profile } = await supabase.from("profiles").select("role").eq("auth_user_id", user.id).maybeSingle();
     const role = profile?.role as Role | undefined;
-    const home = role ? ROLE_HOME[role] : "/login?error=profile_missing";
+    const home = role ? ROLE_HOME[role] : "/login";
 
     if (isAuthRoute) {
       const url = request.nextUrl.clone();
       url.pathname = home;
+      url.search = "";
+      if (!role) url.searchParams.set("error", "profile_missing");
       return NextResponse.redirect(url);
     }
 
