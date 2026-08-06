@@ -1127,7 +1127,7 @@ export async function submitNodePractice(input: unknown) {
   await requireStudentLearningUnlocked(supabase, studentId);
   if (data.answerText) await moderateOrReject({ supabase, studentId, text: data.answerText, field: "memory_retrieval" });
   const service = createServiceClient();
-  const { data: item } = await service.from("competency_items").select("id,primary_node_id,learner_mode,modality,response_type,validator_type,validator_config,correct_answer,acceptable_answers,competency_item_choices(id,is_correct,feedback_fr)").eq("id", data.itemId).eq("primary_node_id", data.nodeId).in("review_status", ["auto_approved", "human_approved"]).single();
+  const { data: item } = await service.from("competency_items").select("id,primary_node_id,learner_mode,modality,response_type,validator_type,validator_config,correct_answer,acceptable_answers,competency_item_choices(id,is_correct,feedback_fr)").eq("id", data.itemId).eq("primary_node_id", data.nodeId).in("review_status", ["auto_approved", "human_approved"]).in("validator_type", ["exact", "regex", "conjugator", "agreement", "grammalecte"]).single();
   if (!item) throw new Error("Exercice introuvable.");
   const choices = item.competency_item_choices as unknown as Array<{ id: string; is_correct: boolean; feedback_fr: string | null }>;
   let correct = false; let feedbackFr: string | null = null;

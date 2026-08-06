@@ -70,7 +70,8 @@ export async function getNodePractice(nodeId: string, client?: SupabaseClient, s
   if (nodeError || !node) throw new Error("Compétence introuvable.");
   const { data: itemRows, error } = await supabase.from("competency_items")
     .select("id,prompt_fr,instructions_fr,response_type,validator_type,validator_config,correct_answer,acceptable_answers,difficulty,difficulty_rating,competency_item_choices(id,choice_text,position,feedback_fr)")
-    .eq("primary_node_id", nodeId).in("review_status", ["auto_approved", "human_approved"]).order("difficulty").limit(8);
+    .eq("primary_node_id", nodeId).in("review_status", ["auto_approved", "human_approved"])
+    .in("validator_type", ["exact", "regex", "conjugator", "agreement", "grammalecte"]).order("difficulty").limit(8);
   if (error) throw new Error(error.message);
   // Practice targets ~82% predicted success (Elo/1PL) when the learner has a
   // rating; without one the authored easy→hard order stands.
