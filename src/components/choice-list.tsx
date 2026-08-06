@@ -1,6 +1,7 @@
 "use client";
 
 import { Check, X } from "lucide-react";
+import { useId } from "react";
 import { cn } from "@/lib/utils";
 
 /**
@@ -24,6 +25,7 @@ export function ChoiceList({
   reveal?: boolean;
   correctIndex?: number;
 }) {
+  const promptId = useId();
   return (
     <div>
       {passage && (
@@ -31,8 +33,8 @@ export function ChoiceList({
           {passage}
         </p>
       )}
-      <p className="mb-3 font-medium">{prompt}</p>
-      <div className="space-y-2">
+      <p id={promptId} className="mb-3 font-medium">{prompt}</p>
+      <div role="radiogroup" aria-labelledby={promptId} className="space-y-2">
         {choices.map((c, i) => {
           const selected = value === i;
           const isCorrect = reveal && i === correctIndex;
@@ -41,6 +43,9 @@ export function ChoiceList({
             <button
               key={i}
               type="button"
+              role="radio"
+              aria-checked={selected}
+              aria-disabled={reveal || undefined}
               disabled={reveal}
               onClick={() => onChange?.(i)}
               className={cn(
