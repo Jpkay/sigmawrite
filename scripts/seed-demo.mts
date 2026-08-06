@@ -45,7 +45,7 @@ function required(name: string): string {
 
 const supabaseUrl = required("NEXT_PUBLIC_SUPABASE_URL");
 const serviceRoleKey = required("SUPABASE_SERVICE_ROLE_KEY");
-const password = process.env.DEMO_ACCOUNT_PASSWORD ?? "Demo1234!";
+const password = process.env.DEMO_ACCOUNT_PASSWORD ?? "Demo-2026-Strong!";
 const url = new URL(supabaseUrl);
 const isLocal = ["127.0.0.1", "localhost"].includes(url.hostname);
 

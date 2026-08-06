@@ -39,7 +39,7 @@ const accessMode = serviceRoleKey ? "service-read" : "signed-in-student";
 if (!serviceRoleKey) {
   const { error: authError } = await db.auth.signInWithPassword({
     email: process.env.GRAPH_SMOKE_STUDENT_EMAIL ?? "demo.eleve@reading-to-learn.test",
-    password: process.env.GRAPH_SMOKE_STUDENT_PASSWORD ?? "Demo1234!",
+    password: process.env.GRAPH_SMOKE_STUDENT_PASSWORD ?? "Demo-2026-Strong!",
   });
   if (authError) throw new Error(`Unable to start the demo student smoke session: ${authError.message}`);
 }

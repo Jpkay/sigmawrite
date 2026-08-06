@@ -19,7 +19,7 @@ const childInput = z.object({
   displayName: z.string().trim().min(2).max(100),
   dateOfBirth: z.string().date(),
   grade: z.number().int().min(5).max(12),
-  password: z.string().min(8).max(128),
+  password: z.string().min(12).max(128),
 });
 
 function parsed<T>(schema: z.ZodType<T>, input: unknown): T {

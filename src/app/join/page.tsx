@@ -63,8 +63,8 @@ export default function JoinPage() {
         <Field label="Ton nom" required minLength={2} value={name} onChange={(event) => setName(event.target.value)} />
         <Field label="Date de naissance" type="date" required value={dateOfBirth} onChange={(event) => setDateOfBirth(event.target.value)} />
         <Field label="Ton e-mail" type="email" required value={email} onChange={(event) => setEmail(event.target.value)} />
-        <Field label="Mot de passe" type="password" required minLength={8} value={password} onChange={(event) => setPassword(event.target.value)} />
-        <Button type="submit" className="w-full" disabled={busy || !name.trim() || !dateOfBirth || !email.trim() || password.length < 8}>{busy ? "Création…" : "Créer mon compte"}</Button>
+        <Field label="Mot de passe" type="password" required minLength={12} value={password} onChange={(event) => setPassword(event.target.value)} />
+        <Button type="submit" className="w-full" disabled={busy || !name.trim() || !dateOfBirth || !email.trim() || password.length < 12}>{busy ? "Création…" : "Créer mon compte"}</Button>
       </>}
       {error && <p className="text-sm text-destructive">{error}</p>}
     </form>
