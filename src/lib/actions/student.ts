@@ -2009,3 +2009,6 @@ export async function submitSkillPractice(input: unknown) {
   if (error) throw new Error(error.message);
   return { state: await getStudentStateData(studentId, supabase) };
 }
+
+const studentPasswordSchema=z.object({password:z.string().min(12).max(128)});
+export async function updateStudentPassword(input:unknown){const data=checked(studentPasswordSchema,input);const session=await requireRole(["student"]);const supabase=await createClient();const{error}=await supabase.auth.updateUser({password:data.password});if(error)throw new Error(error.message);await logAudit("student.password_rotated",{targetType:"profile",targetId:session.id});return{ok:true};}

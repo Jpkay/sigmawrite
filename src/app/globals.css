@@ -158,3 +158,7 @@ select option { background-color: var(--card) !important; color: var(--foregroun
     transition-duration: 0.01ms !important;
   }
 }
+
+html[data-reading-scale="large"]{font-size:112.5%;}
+html[data-reading-scale="extra"]{font-size:125%;}
+html[data-reduced-motion="true"] *,html[data-reduced-motion="true"] *::before,html[data-reduced-motion="true"] *::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}

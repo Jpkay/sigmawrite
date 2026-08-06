@@ -37,7 +37,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
       <head>
-        <script dangerouslySetInnerHTML={{ __html: `(function(){try{var t=localStorage.getItem('sigmawrite-theme');var d=t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.classList.toggle('dark',d)}catch(e){}})()` }} />
+        <script dangerouslySetInnerHTML={{ __html: `(function(){try{var e=document.documentElement,t=localStorage.getItem('sigmawrite-theme'),d=t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches);e.classList.toggle('dark',d);e.dataset.readingScale=localStorage.getItem('sigmawrite-reading-scale')||'normal';e.dataset.reducedMotion=localStorage.getItem('sigmawrite-reduced-motion')||'false'}catch(e){}})()` }} />
       </head>
       <body className="flex min-h-full flex-col"><PwaRegister />{children}</body>
     </html>

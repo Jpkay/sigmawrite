@@ -1,10 +1,1 @@
-import { PageHeader, ComingSoon } from "@/components/page";
-
-export default function Page() {
-  return (
-    <>
-      <PageHeader title="Paramètres" description="Préférences du compte." />
-      <ComingSoon phase="Phase 0" note="Les paramètres élève seront enrichis au fil des phases." />
-    </>
-  );
-}
+import{PageHeader}from"@/components/page";import{StudentSettings}from"./settings-client";export default function Page(){return <><PageHeader title="Paramètres" description="Confort de lecture et sécurité du compte."/><StudentSettings/></>}
