@@ -1,13 +1,1 @@
-import { MarketingNav } from "@/components/marketing-nav";
-
-export default function Page() {
-  return (
-    <>
-      <MarketingNav />
-      <article className="mx-auto w-full max-w-3xl space-y-4 px-6 py-16 text-muted-foreground">
-        <h1 className="text-3xl font-bold tracking-tight text-foreground">Conditions d'utilisation</h1>
-        <p>Document préliminaire. Les conditions définitives seront publiées avant le pilote.</p>
-      </article>
-    </>
-  );
-}
+import{MarketingNav}from"@/components/marketing-nav";export default function Page(){return <><MarketingNav/><article className="mx-auto w-full max-w-3xl space-y-7 px-6 py-16 text-muted-foreground"><h1 className="text-3xl font-bold tracking-tight text-foreground">Conditions du pilote</h1><p className="text-sm">Version du 6 août 2026. Ces conditions doivent être approuvées par le responsable juridique avant une ouverture publique.</p><section><h2 className="text-xl font-semibold text-foreground">Objet</h2><p className="mt-2">SigmaWrite fournit un accompagnement pédagogique de français. Le diagnostic et les estimations de maîtrise orientent la pratique mais ne constituent ni une évaluation officielle, ni un diagnostic médical, ni une décision scolaire automatisée.</p></section><section><h2 className="text-xl font-semibold text-foreground">Comptes et mineurs</h2><p className="mt-2">Les adultes protègent leurs identifiants. Les élèves rejoignent une classe ou un compte familial autorisé et utilisent le service sous la responsabilité de l’adulte ou de l’établissement. Toute tentative de contourner les rôles, d’accéder aux données d’autrui ou de partager un code d’accès hors de la classe est interdite.</p></section><section><h2 className="text-xl font-semibold text-foreground">Contenu et disponibilité</h2><p className="mt-2">Le contenu généré est soumis à des contrôles déterministes et humains. Une erreur peut être signalée à l’équipe du pilote. Le service peut être interrompu pour sécurité ou maintenance; les enseignants conservent la responsabilité de vérifier l’adéquation d’une activité.</p></section><section><h2 className="text-xl font-semibold text-foreground">Résiliation et données</h2><p className="mt-2">La famille ou l’établissement peut cesser le pilote. Les demandes d’export, de retrait de consentement et de suppression sont décrites dans la politique de confidentialité. Les obligations légales et la protection des élèves prévalent sur ces conditions.</p></section></article></>}
