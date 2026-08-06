@@ -34,7 +34,8 @@
     "diagnostic:verify:v2": "tsx --tsconfig ./tsconfig.json scripts/verify-diagnostic-bank-v2.mts",
     "diagnostic:import:v2": "tsx --tsconfig ./tsconfig.json scripts/import-diagnostic-bank-v2.mts",
     "security:audit": "npm audit --audit-level=high",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "launch:verify-env": "tsx scripts/verify-launch-env.mts"
   },
   "dependencies": {
     "@sentry/nextjs": "^10.64.0",

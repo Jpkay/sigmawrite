@@ -1,9 +1,25 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "crons": [
-    { "path": "/api/jobs/weekly-parent-reports", "schedule": "0 7 * * 1" },
-    { "path": "/api/jobs/retrieval-due", "schedule": "0 18 * * *" }
-    ,{ "path": "/api/jobs/psychometrics", "schedule": "30 2 * * 0" }
-    ,{ "path": "/api/jobs/data-retention", "schedule": "0 3 * * *" }
+    {
+      "path": "/api/jobs/weekly-parent-reports",
+      "schedule": "0 7 * * 1"
+    },
+    {
+      "path": "/api/jobs/retrieval-due",
+      "schedule": "0 18 * * *"
+    },
+    {
+      "path": "/api/jobs/psychometrics",
+      "schedule": "30 2 * * 0"
+    },
+    {
+      "path": "/api/jobs/data-retention",
+      "schedule": "0 3 * * *"
+    },
+    {
+      "path": "/api/jobs/french-automation-monitoring",
+      "schedule": "0 4 * * 0"
+    }
   ]
 }

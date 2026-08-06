@@ -1,14 +1,13 @@
 # Background jobs
 
-Sigmawrite uses Vercel Cron to call two authenticated Route Handlers. Vercel
-sends `Authorization: Bearer $CRON_SECRET`; the handlers reject every request
-when the secret is absent or mismatched.
+SigmaWrite uses authenticated Vercel Cron handlers. Vercel sends `Authorization: Bearer $CRON_SECRET`; handlers fail closed when the secret is absent or mismatched.
 
-- Monday 07:00 UTC: immutable weekly parent reports, followed by transactional
-  email through Resend when `RESEND_API_KEY` and `EMAIL_FROM` are configured.
-- Daily 18:00 UTC: due-retrieval notifications.
+- Monday 07:00 UTC — immutable, idempotent weekly parent reports and Resend delivery.
+- Daily 18:00 UTC — deduplicated due-retrieval notifications.
+- Sunday 02:30 UTC — psychometric item/edge analysis.
+- Daily 03:00 UTC — retention and atomically claimed deletion requests.
+- Sunday 04:00 UTC — French automation quality monitoring and sparse-review cases.
 
-Every attempt first inserts a `job_runs` row, then marks it completed or failed
-with a processed count/error. Email is deliberately a recorded no-op in keyless
-development. Re-running a weekly job creates new report snapshots and never
-rewrites the evidence payload of an old one.
+`job_runs` enforces one running instance per job name. Every run records completion or failure; Sentry receives failures and `OPS_ALERT_EMAIL` receives an operational email when Resend is configured. Report delivery uses a student/period/recipient business key, notifications use a daily dedupe key, and deletion workers claim rows with `FOR UPDATE SKIP LOCKED`.
+
+Run `npm run launch:verify-env` before a hosted rehearsal. Cron success still requires exercising every endpoint in staging and confirming the corresponding `job_runs` row and external alert delivery.

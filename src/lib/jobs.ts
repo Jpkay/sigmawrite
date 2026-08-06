@@ -6,6 +6,7 @@ import { sendEmail } from "@/lib/email";
 import { analyzeItem, boundedDifficultyPrior, predictiveLift } from "@/lib/psychometrics";
 import { edgePredictiveLift, questionQuality } from "@/lib/monitoring/psychometrics";
 import { selectSparseReview } from "@/lib/review/sparse-calibration";
+import { captureError } from "@/lib/observability";
 
 export async function withJobRun<T>(jobName: string, work: (db: SupabaseClient) => Promise<{ result: T; processed: number }>) {
   const db = createServiceClient();
@@ -21,6 +22,9 @@ export async function withJobRun<T>(jobName: string, work: (db: SupabaseClient) 
     return output.result;
   } catch (cause) {
     const { error: failureError } = await db.from("job_runs").update({ status: "failed", finished_at: new Date().toISOString(), error_message: cause instanceof Error ? cause.message : "Unknown error" }).eq("id", run.id);
+    captureError(cause,{jobName,jobRunId:run.id});
+    const alertTo=process.env.OPS_ALERT_EMAIL;
+    if(alertTo)void sendEmail({to:alertTo,subject:`SigmaWrite job failed: ${jobName}`,html:`<h1>Background job failed</h1><p>${jobName}</p><p>Run ${run.id}</p>`}).catch(alertError=>captureError(alertError,{jobName,alert:"email"}));
     if (failureError) throw new AggregateError([cause, failureError], "Job failed and its failure state was not recorded");
     throw cause;
   }
