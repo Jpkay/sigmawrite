@@ -145,3 +145,6 @@ export async function requestDataDeletion(studentId: string) {
   });
   return { ok: true };
 }
+
+const childPasswordInput=z.object({studentId:z.string().uuid(),password:z.string().min(12).max(128)});
+export async function resetChildPassword(input:unknown){const guardian=await requireRole(["parent"]);const data=parsed(childPasswordInput,input);const db=await createClient();const{data:link,error:linkError}=await db.from("student_guardians").select("student_id").eq("student_id",data.studentId).eq("guardian_profile_id",guardian.id).maybeSingle();if(linkError||!link)throw new Error("Enfant non lié à ce compte.");const service=createServiceClient();const{data:student,error:studentError}=await service.from("students").select("profile_id").eq("id",data.studentId).single();if(studentError||!student?.profile_id)throw new Error("Compte élève introuvable.");const{data:profile,error:profileError}=await service.from("profiles").select("auth_user_id").eq("id",student.profile_id).single();if(profileError||!profile?.auth_user_id)throw new Error("Compte élève introuvable.");const{error:updateError}=await service.auth.admin.updateUserById(profile.auth_user_id as string,{password:data.password});if(updateError)throw new Error(updateError.message);await logAudit("child.password_rotated",{targetType:"student",targetId:data.studentId});return{ok:true};}
