@@ -27,14 +27,14 @@ const TEXT_TYPES: TextType[] = ["expository", "argumentative", "biography", "nar
 function buildInput(form: {
   topic: string; interest: string; band: string; textType: TextType; wordCount: number;
 }): GenerateTextInput {
+  const parsedGrade=form.band.startsWith("Advanced")?11:Number(form.band.match(/\d+/)?.[0]??7);const sentenceLength=parsedGrade<=6?15:parsedGrade<=8?18:parsedGrade<=10?22:24;const targetSkills=form.textType==="argumentative"?["inference","argument_structure","academic_connectors"]:form.textType==="expository"?["literal_comprehension","inference","cause_consequence"]:["literal_comprehension","inference","vocabulary_in_context"];
   return {
-    language: "fr", studentGrade: 7, targetReadingBand: form.band, topic: form.topic,
+    language: "fr", studentGrade: parsedGrade, targetReadingBand: form.band, topic: form.topic,
     primaryInterest: form.interest, knowledgeDomains: INTEREST_BY_KEY[form.interest]?.transfer ?? [],
     targetConcepts: [], textType: form.textType as GenerateTextInput["textType"], wordCountTarget: form.wordCount,
-    maxAverageSentenceLength: 18, maxNewAcademicWords: 8,
-    targetVocabulary: ["migration", "opportunité", "phénomène"],
-    targetSkills: ["literal_comprehension", "inference", "cause_consequence"],
-    avoid: [], tone: "curious_explainer",
+    maxAverageSentenceLength: sentenceLength, maxNewAcademicWords: parsedGrade<=6?4:parsedGrade<=8?6:8,
+    targetVocabulary: [], targetSkills,
+    avoid: ["statistiques non sourcées","stéréotypes","publicité"], tone: "curious_explainer",
   };
 }
 
@@ -89,6 +89,7 @@ export function ReviewClient({ initialCandidates }: { initialCandidates: Persist
   const pending = candidates.filter((candidate) => ["needs_human_review", "draft"].includes(candidate.reviewStatus));
   const selected = candidates.find((candidate) => candidate.id === selectedId) ?? null;
   const selectClass = "h-9 w-full appearance-none rounded-md border border-input bg-background px-3 pr-10 text-sm";
+  const frozenInput=buildInput({topic,interest,band,textType,wordCount});
 
   return (
     <>
@@ -127,6 +128,7 @@ export function ReviewClient({ initialCandidates }: { initialCandidates: Persist
             <span className="mb-1 block text-sm font-medium">Nombre de mots</span>
             <input type="number" min={150} max={1500} value={wordCount} onChange={(event) => setWordCount(Number(event.target.value))} className="h-9 w-full rounded-md border border-input bg-background px-3 text-sm" />
           </label>
+          <div className="rounded-md border border-border bg-muted/40 p-3 text-xs text-muted-foreground sm:col-span-2"><p className="font-medium text-foreground">Contrat qui sera figé</p><p>Classe {frozenInput.studentGrade} · phrases ≤ {frozenInput.maxAverageSentenceLength} mots · vocabulaire académique nouveau ≤ {frozenInput.maxNewAcademicWords}</p><p>Compétences : {frozenInput.targetSkills.join(" · ")}. Aucun mot cible arbitraire n’est injecté.</p></div>
           <div className="sm:col-span-2">
             <Button onClick={generate} disabled={busy !== null}>
               {busy === "generate" ? <Loader2 className="animate-spin" /> : <Sparkles />}
