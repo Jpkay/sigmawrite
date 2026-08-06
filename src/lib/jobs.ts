@@ -10,9 +10,20 @@ import { selectSparseReview } from "@/lib/review/sparse-calibration";
 export async function withJobRun<T>(jobName: string, work: (db: SupabaseClient) => Promise<{ result: T; processed: number }>) {
   const db = createServiceClient();
   const { data: run, error } = await db.from("job_runs").insert({ job_name: jobName }).select("id").single();
-  if (error || !run) throw new Error(error?.message ?? "Job run not created");
-  try { const output = await work(db); await db.from("job_runs").update({ status: "completed", finished_at: new Date().toISOString(), processed_count: output.processed }).eq("id", run.id); return output.result; }
-  catch (cause) { await db.from("job_runs").update({ status: "failed", finished_at: new Date().toISOString(), error_message: cause instanceof Error ? cause.message : "Unknown error" }).eq("id", run.id); throw cause; }
+  if (error || !run) {
+    if (error?.code === "23505") throw new Error(`Job already running: ${jobName}`);
+    throw new Error(error?.message ?? "Job run not created");
+  }
+  try {
+    const output = await work(db);
+    const { error: finishError } = await db.from("job_runs").update({ status: "completed", finished_at: new Date().toISOString(), processed_count: output.processed }).eq("id", run.id);
+    if (finishError) throw new Error(`Job completion was not recorded: ${finishError.message}`);
+    return output.result;
+  } catch (cause) {
+    const { error: failureError } = await db.from("job_runs").update({ status: "failed", finished_at: new Date().toISOString(), error_message: cause instanceof Error ? cause.message : "Unknown error" }).eq("id", run.id);
+    if (failureError) throw new AggregateError([cause, failureError], "Job failed and its failure state was not recorded");
+    throw cause;
+  }
 }
 
 export async function generateWeeklyParentReports(db: SupabaseClient) {
@@ -25,10 +36,21 @@ export async function generateWeeklyParentReports(db: SupabaseClient) {
       const guardian = guardianRow.profiles as unknown as { auth_user_id: string; preferred_language: string };
       const { data: auth } = await db.auth.admin.getUserById(guardian.auth_user_id); const email = auth.user?.email; if (!email) continue;
       const language = guardian.preferred_language === "en" ? "en" : "fr";
-      const { data: stored, error: reportError } = await db.from("parent_reports").insert({ student_id: student.id, report_period_start: start.toISOString().slice(0,10), report_period_end: end.toISOString().slice(0,10), report_payload: { studentName: student.display_name ?? "Élève", report, proof }, language, recipient_email: email, delivery_status: "pending" }).select("id").single();
-      if (reportError || !stored) throw new Error(reportError?.message ?? "Report not stored");
+      const periodStart = start.toISOString().slice(0,10), periodEnd = end.toISOString().slice(0,10);
+      const { data: previous, error: previousError } = await db.from("parent_reports").select("id,delivery_status").eq("student_id",student.id).eq("report_period_start",periodStart).eq("report_period_end",periodEnd).eq("recipient_email",email).maybeSingle();
+      if (previousError) throw new Error(previousError.message);
+      if (previous?.delivery_status === "sent") continue;
+      let stored = previous;
+      if (!stored) {
+        const inserted = await db.from("parent_reports").insert({ student_id: student.id, report_period_start: periodStart, report_period_end: periodEnd, report_payload: { studentName: student.display_name ?? "Élève", report, proof }, language, recipient_email: email, delivery_status: "pending" }).select("id,delivery_status").single();
+        if (inserted.error || !inserted.data) {
+          if (inserted.error?.code === "23505") continue;
+          throw new Error(inserted.error?.message ?? "Report not stored");
+        }
+        stored = inserted.data;
+      }
       const base = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000"; const delivery = await sendEmail({ to: email, subject: language === "en" ? `Weekly reading report — ${student.display_name ?? "student"}` : `Rapport de lecture — ${student.display_name ?? "élève"}`, html: `<h1>${language === "en" ? "Weekly progress" : "Progrès de la semaine"}</h1><p>${report.textsCompleted} ${language === "en" ? "texts" : "textes"} · ${report.minutes} min · ${report.avgSuccess == null ? "—" : Math.round(report.avgSuccess*100)+"%"}</p><p><a href="${base}/parent/reports/${stored.id}">${language === "en" ? "View evidence" : "Voir les preuves"}</a></p>` });
-      await db.from("parent_reports").update({ delivery_status: delivery.sent ? "sent" : "no_op" }).eq("id", stored.id); count += 1;
+      const { error: deliveryError } = await db.from("parent_reports").update({ delivery_status: delivery.sent ? "sent" : "no_op" }).eq("id", stored.id); if(deliveryError)throw new Error(deliveryError.message); count += 1;
     }
   }
   return count;
@@ -37,7 +59,8 @@ export async function generateWeeklyParentReports(db: SupabaseClient) {
 export async function refreshRetrievalDue(db: SupabaseClient) {
   const { data, error } = await db.from("retrieval_schedules").select("retrieval_card_id,retrieval_cards!inner(student_id)").lte("due_at", new Date().toISOString()).eq("status", "due"); if (error) throw new Error(error.message);
   const counts = new Map<string,number>(); for (const row of data ?? []) { const card = row.retrieval_cards as unknown as { student_id: string }; counts.set(card.student_id,(counts.get(card.student_id)??0)+1); }
-  for (const [studentId,count] of counts) await db.from("student_notifications").insert({ student_id: studentId, kind: "retrieval_due", message_fr: `${count} carte${count>1?"s":""} à réviser`, payload: { count } });
+  const day = new Date().toISOString().slice(0,10);
+  for (const [studentId,count] of counts) { const {error:noticeError}=await db.from("student_notifications").upsert({ student_id: studentId, kind: "retrieval_due", dedupe_key:`retrieval_due:${day}`, message_fr: `${count} carte${count>1?"s":""} à réviser`, payload: { count } },{onConflict:"student_id,dedupe_key"}); if(noticeError)throw new Error(noticeError.message); }
   return counts.size;
 }
 
@@ -68,7 +91,7 @@ export async function runPsychometricAnalysis(db:SupabaseClient){
   return processed;
 }
 
-export async function fulfillDeletionRequests(db:SupabaseClient){const{data:requests,error}=await db.from("deletion_requests").select("id,student_auth_user_id").eq("status","pending").lte("scheduled_for",new Date().toISOString());if(error)throw new Error(error.message);let completed=0;for(const request of requests??[]){const result=await db.auth.admin.deleteUser(request.student_auth_user_id as string);if(result.error){await db.from("deletion_requests").update({status:"failed",error_message:result.error.message}).eq("id",request.id);continue;}await db.from("deletion_requests").update({status:"completed",completed_at:new Date().toISOString()}).eq("id",request.id);completed++;}return completed;}
+export async function fulfillDeletionRequests(db:SupabaseClient){const{data:requests,error}=await db.rpc("claim_due_deletion_requests",{p_limit:25});if(error)throw new Error(error.message);let completed=0;for(const request of requests??[]){const result=await db.auth.admin.deleteUser(request.student_auth_user_id as string);if(result.error){const{error:updateError}=await db.from("deletion_requests").update({status:"failed",error_message:result.error.message}).eq("id",request.id).eq("status","processing");if(updateError)throw new Error(updateError.message);continue;}const{error:updateError}=await db.from("deletion_requests").update({status:"completed",completed_at:new Date().toISOString()}).eq("id",request.id).eq("status","processing");if(updateError)throw new Error(updateError.message);completed++;}return completed;}
 export async function applyEventRetention(db:SupabaseClient){const cutoff=new Date(Date.now()-730*86_400_000).toISOString();const{data,error}=await db.from("reading_session_events").delete().lt("created_at",cutoff).select("id");if(error)throw new Error(error.message);return data?.length??0;}
 
 export async function runFrenchAutomationMonitoring(db:SupabaseClient){

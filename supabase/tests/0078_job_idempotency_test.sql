@@ -1,0 +1,10 @@
+begin;
+create extension if not exists pgtap with schema extensions;
+select plan(6);
+select has_index('public','job_runs','job_runs_one_running_per_name','Concurrent runs are blocked');
+select has_index('public','parent_reports','parent_reports_delivery_business_key','Report delivery has a business key');
+select has_column('public','student_notifications','dedupe_key','Notifications expose an idempotency key');
+select has_index('public','student_notifications','student_notifications_dedupe_key','Notification dedupe is enforced');
+select has_function('public','claim_due_deletion_requests',array['integer'],'Deletion work is atomically claimed');
+select function_privs_are('public','claim_due_deletion_requests',array['integer'],'authenticated',array[]::text[],'Clients cannot claim deletion work');
+select * from finish();rollback;
