@@ -16,6 +16,7 @@ export default function SignupPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [confirmationSent, setConfirmationSent] = useState(false);
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -23,13 +24,14 @@ export default function SignupPage() {
     setLoading(true);
     try {
       const supabase = createClient();
-      const { error } = await supabase.auth.signUp({
+      const { data, error } = await supabase.auth.signUp({
         email,
         password,
-        options: { data: { role, display_name: name } },
+        options: { data: { role, display_name: name }, emailRedirectTo: `${window.location.origin}/auth/callback?next=/consent` },
       });
       if (error) throw error;
-      router.push("/consent");
+      if (data.session) router.push("/consent");
+      else setConfirmationSent(true);
     } catch (err) {
       setError(
         err instanceof Error
@@ -43,8 +45,8 @@ export default function SignupPage() {
 
   return (
     <AuthCard
-      title="Créer un compte"
-      description="Pour les parents et les enseignants. Les élèves rejoignent avec un code de classe."
+      title={confirmationSent ? "Confirmez votre adresse" : "Créer un compte"}
+      description={confirmationSent ? `Nous avons envoyé un lien à ${email}. Ouvrez-le sur cet appareil pour terminer l’inscription.` : "Pour les parents et les enseignants. Les élèves rejoignent avec un code de classe."}
       footer={
         <>
           Déjà un compte ?{" "}
@@ -54,7 +56,7 @@ export default function SignupPage() {
         </>
       }
     >
-      <form onSubmit={onSubmit} className="space-y-4">
+      {confirmationSent ? <div role="status" className="space-y-4 text-sm"><p>Le lien peut prendre quelques minutes. Vérifiez aussi les courriers indésirables.</p><Button type="button" variant="outline" className="w-full" onClick={() => setConfirmationSent(false)}>Corriger l’adresse</Button></div> : <form onSubmit={onSubmit} className="space-y-4">
         <label className="block">
           <span className="mb-1.5 block text-sm font-medium">Je suis…</span>
           <select
@@ -83,7 +85,7 @@ export default function SignupPage() {
           label="Mot de passe"
           type="password"
           required
-          minLength={8}
+          minLength={12}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
@@ -97,7 +99,7 @@ export default function SignupPage() {
             Rejoindre avec un code de classe
           </Link>
         </p>
-      </form>
+      </form>}
     </AuthCard>
   );
 }
