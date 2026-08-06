@@ -19,7 +19,7 @@ export const ROLE_HOME: Record<Role, string> = {
   student: "/student",
   parent: "/parent",
   teacher: "/teacher",
-  school_admin: "/admin",
+  school_admin: "/teacher",
   platform_admin: "/admin",
   content_reviewer: "/review",
 };

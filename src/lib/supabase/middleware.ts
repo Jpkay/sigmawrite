@@ -58,10 +58,9 @@ export async function updateSession(request: NextRequest) {
   // Authenticated user → send to their role home if they're on an auth page,
   // and keep them out of dashboards that aren't theirs.
   if (user) {
-    const role = (user.app_metadata?.role ?? user.user_metadata?.role) as
-      | Role
-      | undefined;
-    const home = role ? ROLE_HOME[role] : "/student";
+    const { data: profile } = await supabase.from("profiles").select("role").eq("auth_user_id", user.id).maybeSingle();
+    const role = profile?.role as Role | undefined;
+    const home = role ? ROLE_HOME[role] : "/login?error=profile_missing";
 
     if (isAuthRoute) {
       const url = request.nextUrl.clone();

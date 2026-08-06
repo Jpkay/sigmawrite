@@ -7,6 +7,7 @@ import { AuthCard, Field } from "@/components/auth-card";
 import { Button } from "@/components/ui/button";
 import { createClient } from "@/lib/supabase/client";
 import { ROLE_HOME, type Role } from "@/lib/types";
+import { safeAuthRedirect } from "@/lib/auth-redirect";
 
 export default function LoginPage() {
   return (
@@ -48,10 +49,10 @@ function LoginForm() {
         password,
       });
       if (error) throw error;
-      const role = (data.user?.app_metadata?.role ??
-        data.user?.user_metadata?.role) as Role | undefined;
-      const next = params.get("next");
-      router.push(next ?? (role ? ROLE_HOME[role] : "/student"));
+      const { data: profile } = await supabase.from("profiles").select("role").eq("auth_user_id", data.user.id).maybeSingle();
+      const role = profile?.role as Role | undefined;
+      const fallback = role ? ROLE_HOME[role] : "/student";
+      router.push(safeAuthRedirect(params.get("next"), fallback));
       router.refresh();
     } catch (err) {
       setError(

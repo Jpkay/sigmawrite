@@ -40,7 +40,7 @@ export async function inviteStudents(input: unknown) {
   if (revokeError) throw new Error(revokeError.message);
 
   for (let attempt = 0; attempt < 3; attempt += 1) {
-    const code = `SW-${randomBytes(3).toString("hex").toUpperCase()}`;
+    const code = `SW-${randomBytes(16).toString("hex").toUpperCase()}`;
     const { data: created, error } = await supabase.from("class_join_codes").insert({
       code,
       class_id: data.classId,

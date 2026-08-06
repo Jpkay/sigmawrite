@@ -28,9 +28,9 @@ export async function getSessionProfile(): Promise<SessionProfile | null> {
     .eq("auth_user_id", user.id)
     .maybeSingle();
 
-  const role = (profile?.role ??
-    user.app_metadata?.role ??
-    user.user_metadata?.role) as Role | undefined;
+  // Authorization is database-owned. Auth metadata is caller-controlled and
+  // must never be used as a role fallback.
+  const role = profile?.role as Role | undefined;
   if (!role) return null;
 
   return {
