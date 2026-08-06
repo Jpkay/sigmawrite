@@ -35,7 +35,7 @@ export default function SetPasswordPage() {
       }
 
       if (sessionError || !session) {
-        setError("Ce lien d’activation est invalide ou a expiré. Demandez une nouvelle invitation.");
+        setError("Ce lien est invalide ou a expiré. Demandez un nouveau lien sécurisé.");
         return;
       }
 
@@ -77,8 +77,8 @@ export default function SetPasswordPage() {
 
   return (
     <AuthCard
-      title="Finaliser votre accès"
-      description="Choisissez votre mot de passe personnel pour sécuriser votre compte SigmaWrite."
+      title="Choisir un nouveau mot de passe"
+      description="Choisissez un mot de passe personnel pour sécuriser votre compte SigmaWrite."
     >
       <form onSubmit={submit} className="space-y-4">
         <Field
