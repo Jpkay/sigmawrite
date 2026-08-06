@@ -36,7 +36,8 @@
     "security:audit": "npm audit --audit-level=high",
     "test:e2e": "playwright test",
     "launch:verify-env": "tsx scripts/verify-launch-env.mts",
-    "launch:audit-content": "tsx scripts/audit-launch-content.mts"
+    "launch:audit-content": "tsx scripts/audit-launch-content.mts",
+    "launch:generate-library": "tsx scripts/generate-pilot-library.mts"
   },
   "dependencies": {
     "@sentry/nextjs": "^10.64.0",
