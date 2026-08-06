@@ -62,4 +62,6 @@ describe("buildHintLadder", () => {
     const hints = buildHintLadder({ ...base, nodeDescription: null });
     expect(hints[0]).toContain("Relis la consigne");
   });
+  it("uses misconception-specific clues across major strands",()=>{expect(buildHintLadder({...base,nodeLabel:"Inférence implicite",nodeDescription:null,choiceCount:0})[1]).toContain("indice précis");expect(buildHintLadder({...base,nodeLabel:"Accord en genre et nombre",nodeDescription:null,choiceCount:0})[1]).toContain("donneur d’accord");});
+
 });

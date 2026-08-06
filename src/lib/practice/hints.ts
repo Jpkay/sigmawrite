@@ -71,10 +71,15 @@ export function buildHintLadder(source: HintSource): string[] {
       : `Conjugue « ${verb} » au ${tenseLabel}.`;
     const tip = TENSE_TIP_FR[tense] ?? "Décompose : radical, puis terminaison.";
     clue = `${target} ${tip}`;
-  } else if (source.choiceCount > 1) {
-    clue = `Élimine d’abord les réponses qui ne respectent pas la règle (${source.nodeLabel}), puis compare celles qui restent.`;
   } else {
-    clue = "Décompose la phrase : trouve le verbe, son sujet, et vérifie leur accord avant d’écrire ta réponse.";
+    const family=`${source.nodeLabel} ${source.nodeDescription??""}`.toLocaleLowerCase("fr");
+    if(/accord|genre|nombre/.test(family))clue="Repère le donneur d’accord, puis reporte séparément le genre et le nombre sur le mot qui reçoit l’accord.";
+    else if(/homophone|orthograph/.test(family))clue="Remplace mentalement le mot par une forme-test de la même famille grammaticale, puis vérifie si la phrase garde son sens.";
+    else if(/infér|implicite|compréhension/.test(family))clue="Relève un indice précis du texte, relie-le à ce que tu sais, puis choisis seulement la conclusion que les deux autorisent.";
+    else if(/résum|idée principale/.test(family))clue="Formule l’idée commune aux informations importantes; écarte l’exemple isolé et le détail qui ne change pas le message.";
+    else if(/connecteur|cause|conséquence|opposition/.test(family))clue="Nomme la relation logique entre les deux propositions avant de choisir le mot qui l’exprime.";
+    else if(source.choiceCount>1)clue=`Élimine d’abord les réponses qui ne respectent pas la règle (${source.nodeLabel}), puis compare celles qui restent.`;
+    else clue="Décompose la phrase : trouve le verbe, son sujet, et vérifie leur accord avant d’écrire ta réponse.";
   }
 
   return [orientation, clue];
