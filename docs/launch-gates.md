@@ -42,34 +42,12 @@ days of practice/reading/retrieval, weekly email, parent evidence and teacher
 export without manual SQL. Log P0/P1 findings and close them before a school is
 invited.
 
-## Automated evidence already complete
+## Required hosted authentication controls
 
-- Staging migrations through `0035` applied; a fresh local database plus the
-  committed item-bank seed reproduces all 488 approved items.
-- Two slices: 61 nodes, at least eight approved items per node after the final
-  coverage fill; Gate-1 tests pass.
-- Real GLM generation, scoring, moderation, tagging and embeddings exercised.
-- The live pilot review queue contains exactly the 60 planned combinations
-  across 10 interests and three bands; the earlier hosted QA smoke candidate
-  and its linked revision are retained separately as `retired`.
-- Diagnostic next-item database operation measured at 0.25–0.52 seconds on
-  warm end-to-end staging requests from the test machine.
-- 50 concurrent load sanity after the final RLS migrations: p50 0.995 s, p95
-  1.132 s, maximum 1.142 s; RLS scope
-  intact.
-- Mobile 360 px reading loop has no horizontal overflow; reload restores the
-  question and saved answer; offline queue drains on reconnect.
-- Lighthouse accessibility: 95 on reading and results.
-- Due throwaway deletion request removes Auth, profile/student and related graph,
-  and retains a completed request with a null student link.
-- Dependency audit: zero known vulnerabilities; no server credential found in
-  client modules.
-- The assignment-based review portal, independent draft/submission workflow,
-  admin resolution, CSV export, and exact-six benchmark governance are implemented;
-  actual educator ratings remain a human launch action.
-- Hosted staging proved three isolated reviewer sessions, 180 temporary pilot
-  assignments (60 per reviewer), draft restore, immutable submissions, a
-  high-disagreement admin comparison, audited resolution, and version-preserving
-  revision. Temporary pilot assignments were cleaned before any submission.
-- The review database suite passes 34 assertions; the application suite passes
-  204 tests, production build, typecheck, lint, and a zero-vulnerability audit.
+In both staging and production, configure Supabase Auth itself—not merely the browser UX—with email confirmation, a 12-character password minimum, leaked-password protection where available, native password/OTP rate limits, CAPTCHA/Turnstile on public signup and recovery, and an exact redirect allow-list. Direct Auth endpoints remain public by design, so the application `consume_auth_attempt` helper is only defense-in-depth and must never be described as the security boundary. Exercise parallel failures and recovery before promotion.
+
+## Repository evidence (not hosted proof)
+
+The application, SQL contracts, browser projects and launch-verification commands are committed and run in CI. Current command evidence belongs in [`execution-report-2026-08-06.md`](./execution-report-2026-08-06.md); do not preserve mutable test/content counts here. The fail-closed content audit is `npm run launch:audit-content` and requires at least 60 governed passages, 180 submitted assignments, exactly six benchmarks, a published diagnostic/taxonomy release, and a licensed lexical release with at least 2,000 lemmas and 95% held-out coverage.
+
+Historical hosted smoke observations and QA identities are not present-tense production evidence. Re-run migration, RLS, load, deletion, mobile/offline, reviewer-isolation and telemetry checks against the exact release candidate and attach their outputs to the protected promotion record.
