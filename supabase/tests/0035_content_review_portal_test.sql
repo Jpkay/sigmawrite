@@ -8,6 +8,19 @@ values
 ('10000000-0000-4000-8000-000000000002','00000000-0000-0000-0000-000000000000','authenticated','authenticated','a@test.local','',now(),'{}','{"role":"content_reviewer","display_name":"Évaluatrice A"}',now(),now()),
 ('10000000-0000-4000-8000-000000000003','00000000-0000-0000-0000-000000000000','authenticated','authenticated','b@test.local','',now(),'{}','{"role":"content_reviewer","display_name":"Évaluateur B"}',now(),now());
 
+-- 0077 correctly treats Auth metadata as attacker-controlled. Staff promotion
+-- is therefore a trusted database operation in this fixture, as in production.
+update public.profiles
+set role = case auth_user_id
+  when '10000000-0000-4000-8000-000000000001' then 'platform_admin'
+  else 'content_reviewer'
+end
+where auth_user_id in (
+  '10000000-0000-4000-8000-000000000001',
+  '10000000-0000-4000-8000-000000000002',
+  '10000000-0000-4000-8000-000000000003'
+);
+
 insert into public.content_reviewer_profiles(profile_id,active,invite_status,activated_at)
 select id,true,'active',now() from public.profiles where auth_user_id in ('10000000-0000-4000-8000-000000000001','10000000-0000-4000-8000-000000000002','10000000-0000-4000-8000-000000000003');
 
@@ -77,7 +90,7 @@ select is((select workflow_status from public.content_review_versions where id='
 select is((select agreement_classification from public.content_review_versions where id='30000000-0000-4000-8000-000000000001'),'high_disagreement','Opposing decisions and a three-point spread produce high disagreement');
 
 set local request.jwt.claims='{"sub":"10000000-0000-4000-8000-000000000001","role":"authenticated"}';
-select is((select count(*) from public.review_assignments),2::bigint,'Admin sees every assignment');
+select is((select count(*) from public.review_assignments where id in ('40000000-0000-4000-8000-000000000001','40000000-0000-4000-8000-000000000002')),2::bigint,'Admin sees every fixture assignment');
 select lives_ok($$select public.resolve_content_review('30000000-0000-4000-8000-000000000001','send_for_revision','Les avis divergent fortement ; une version révisée est requise.')$$,'Admin can resolve a disagreement with an audited note');
 select is((select workflow_status from public.content_review_versions where id='30000000-0000-4000-8000-000000000001'),'needs_revision','Resolution moves the reviewed snapshot to needs revision');
 select lives_ok($$select public.create_content_review_revision('30000000-0000-4000-8000-000000000001',(select payload from public.content_review_versions where id='30000000-0000-4000-8000-000000000001'),'Version de contrôle après désaccord.')$$,'Admin can create a linked revision without overwriting the reviewed snapshot');

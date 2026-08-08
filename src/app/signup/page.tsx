@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { AuthCard, Field } from "@/components/auth-card";
 import { Button } from "@/components/ui/button";
+import { TurnstileChallenge, turnstileSiteKey } from "@/components/turnstile-challenge";
 import { createClient } from "@/lib/supabase/client";
 
 /** Adults (parents, teachers) self-register. Students join via a class code. */
@@ -17,17 +18,20 @@ export default function SignupPage() {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [confirmationSent, setConfirmationSent] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const [captchaReset, setCaptchaReset] = useState(0);
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError(null);
     setLoading(true);
     try {
+      if (turnstileSiteKey && !captchaToken) throw new Error("Terminez la vérification anti-robot.");
       const supabase = createClient();
       const { data, error } = await supabase.auth.signUp({
         email,
         password,
-        options: { data: { role, display_name: name }, emailRedirectTo: `${window.location.origin}/auth/callback?next=/consent` },
+        options: { data: { role, display_name: name }, emailRedirectTo: `${window.location.origin}/auth/callback?next=/consent`, captchaToken: captchaToken ?? undefined },
       });
       if (error) throw error;
       if (data.session) router.push("/consent");
@@ -40,6 +44,7 @@ export default function SignupPage() {
       );
     } finally {
       setLoading(false);
+      setCaptchaReset((value) => value + 1);
     }
   }
 
@@ -89,8 +94,9 @@ export default function SignupPage() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        <TurnstileChallenge action="adult_signup" onToken={setCaptchaToken} resetSignal={captchaReset} />
         {error && <p className="text-sm text-destructive">{error}</p>}
-        <Button type="submit" className="w-full" disabled={loading}>
+        <Button type="submit" className="w-full" disabled={loading || Boolean(turnstileSiteKey && !captchaToken)}>
           {loading ? "Création…" : "Créer le compte"}
         </Button>
         <p className="text-xs text-muted-foreground">

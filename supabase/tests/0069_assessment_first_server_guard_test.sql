@@ -107,6 +107,9 @@ insert into auth.users(
     '{"role":"platform_admin","display_name":"Assessment publisher"}',now(),now()
   );
 
+update public.profiles set role='platform_admin'
+where auth_user_id='69000000-0000-4000-8000-000000000003';
+
 update public.students set id='69000000-0000-0000-0000-000000000001'
 where profile_id=(
   select id from public.profiles

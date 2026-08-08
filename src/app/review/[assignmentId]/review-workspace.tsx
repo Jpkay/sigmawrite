@@ -1,15 +1,15 @@
 "use client";
 
-import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { CheckCircle2, ChevronLeft, Clock3, Loader2 } from "lucide-react";
+import { CheckCircle2, Clock3, Loader2, Target } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { saveReviewDraft, submitReview } from "@/lib/actions/reviews";
 import { paragraphsFromText } from "@/lib/content/text-format";
 import { ISSUE_TAG_LABELS, ISSUE_TAGS, REVIEW_CRITERIA, reviewValidationError, type QuestionReviewOutcome, type ReviewDraft, type ReviewQueueItem } from "@/lib/review/types";
-import { difficultyBandLabel } from "@/lib/scoring/band";
+import { textTypeLabel } from "@/lib/presentation/french-labels";
+import { targetLevelProfile } from "@/lib/scoring/band";
 
 type QuestionState = { questionIndex: number; outcome: QuestionReviewOutcome | ""; comment: string };
 type WorkspaceDraft = Omit<ReviewDraft, "questionReviews"> & { questionReviews: QuestionState[] };
@@ -27,7 +27,19 @@ function serializableDraft(draft: WorkspaceDraft): ReviewDraft {
   return { ...draft, questionReviews: draft.questionReviews.filter((item): item is QuestionState & { outcome: QuestionReviewOutcome } => Boolean(item.outcome)) };
 }
 
-export function ReviewWorkspace({ assignment }: { assignment: ReviewQueueItem }) {
+const levelColors = {
+  green: "border-emerald-600/30 bg-emerald-500/10 text-emerald-800 dark:text-emerald-200",
+  blue: "border-blue-600/30 bg-blue-500/10 text-blue-800 dark:text-blue-200",
+  violet: "border-violet-600/30 bg-violet-500/10 text-violet-800 dark:text-violet-200",
+  neutral: "border-border bg-muted text-foreground",
+} as const;
+
+export function ReviewWorkspace({ assignment, reviewerName, progress, nextAssignmentId }: {
+  assignment: ReviewQueueItem;
+  reviewerName: string;
+  progress: { current: number; total: number; completed: number };
+  nextAssignmentId: string | null;
+}) {
   const router = useRouter();
   const questions = assignment.candidate.generated.questions;
   const initial: WorkspaceDraft = {
@@ -39,6 +51,7 @@ export function ReviewWorkspace({ assignment }: { assignment: ReviewQueueItem })
   const [saveState, setSaveState] = useState<"idle" | "saving" | "saved" | "error">(assignment.review ? "saved" : "idle");
   const [submitError, setSubmitError] = useState("");
   const [submitted, setSubmitted] = useState(assignment.status === "submitted");
+  const [advancing, setAdvancing] = useState(false);
   const [dirty, setDirty] = useState(false);
   const lastSaved = useRef(JSON.stringify(serializableDraft(initial)));
   const current = useMemo(() => JSON.stringify(serializableDraft(draft)), [draft]);
@@ -75,19 +88,34 @@ export function ReviewWorkspace({ assignment }: { assignment: ReviewQueueItem })
     setSubmitError(""); setSaveState("saving");
     try {
       await submitReview({ assignmentId: assignment.assignmentId, ...clean });
-      lastSaved.current = JSON.stringify(clean); setDirty(false); setSubmitted(true); setSaveState("saved"); router.refresh();
+      lastSaved.current = JSON.stringify(clean); setDirty(false); setSubmitted(true); setSaveState("saved"); setAdvancing(true);
+      window.setTimeout(() => { router.push(nextAssignmentId ? `/review/${nextAssignmentId}` : "/review"); router.refresh(); }, 650);
     } catch (error) { setSaveState("error"); setSubmitError(error instanceof Error ? error.message : "La validation a échoué."); }
   }
 
   const candidate = assignment.candidate;
   const wordCount = candidate.generated.body.trim().split(/\s+/).length;
+  const level = targetLevelProfile(candidate.input.targetReadingBand);
+  const progressPercent = progress.total ? Math.round(progress.completed / progress.total * 100) : 0;
   return <div className="-mx-1">
-    <div className="mb-5 flex flex-wrap items-center justify-between gap-3"><Button asChild variant="ghost"><Link href="/review"><ChevronLeft />Retour à la file</Link></Button><div className="flex items-center gap-2 text-sm" aria-live="polite">{saveState === "saving" && <><Loader2 className="size-4 animate-spin" />Enregistrement…</>}{saveState === "saved" && <><CheckCircle2 className="size-4 text-[color:var(--success)]" />Enregistré</>}{saveState === "error" && <span className="text-destructive">Échec de l’enregistrement</span>}</div></div>
-    {submitted && <div role="status" className="mb-6 flex items-start gap-3 border-l-2 border-[color:var(--success)] bg-[color:color-mix(in_srgb,var(--success)_10%,transparent)] px-4 py-4"><CheckCircle2 className="mt-0.5 size-5 shrink-0 text-[color:var(--success)]" /><div><p className="font-medium">Évaluation validée</p><p className="text-sm text-muted-foreground">Merci. Vos réponses sont maintenant définitives et restent confidentielles.</p></div></div>}
+    <section className="mb-7 border-b border-border pb-5" aria-label="Progression de l’évaluation">
+      <div className="flex flex-wrap items-end justify-between gap-3"><div><p className="text-sm text-muted-foreground">Bonjour {reviewerName}</p><p className="mt-1 font-semibold">Texte {progress.current} sur {progress.total}</p></div><div className="flex items-center gap-2 text-sm" aria-live="polite">{saveState === "saving" && <><Loader2 className="size-4 animate-spin" />Enregistrement…</>}{saveState === "saved" && <><CheckCircle2 className="size-4 text-[color:var(--success)]" />Enregistré</>}{saveState === "error" && <span className="text-destructive">Échec de l’enregistrement</span>}</div></div>
+      <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-muted"><div className="h-full rounded-full bg-primary transition-[width] duration-500" style={{width:`${progressPercent}%`}} /></div>
+    </section>
+    {submitted && <div role="status" className="mb-6 flex items-start gap-3 border-l-2 border-[color:var(--success)] bg-[color:color-mix(in_srgb,var(--success)_10%,transparent)] px-4 py-4"><CheckCircle2 className="mt-0.5 size-5 shrink-0 text-[color:var(--success)]" /><div><p className="font-medium">Évaluation validée</p><p className="text-sm text-muted-foreground">{advancing ? nextAssignmentId ? "Ouverture du texte suivant…" : "Votre travail est terminé…" : "Vos réponses sont définitives et confidentielles."}</p></div></div>}
 
     <div className="grid gap-10 xl:grid-cols-[minmax(0,1.25fr)_minmax(340px,.75fr)]">
       <main className="min-w-0">
-        <header className="border-b border-border pb-6"><div className="flex flex-wrap gap-2"><Badge variant="outline" title={`Code interne : ${candidate.input.targetReadingBand}`}>{difficultyBandLabel(candidate.input.targetReadingBand)}</Badge><Badge variant="secondary">{candidate.input.textType}</Badge></div><h1 className="mt-4 text-3xl font-semibold tracking-tight">{candidate.generated.title}</h1><div className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm text-muted-foreground"><span>{candidate.input.topic}</span><span>{candidate.input.targetSkills.join(" · ") || "Compréhension"}</span><span className="flex items-center gap-1"><Clock3 className="size-4" />{wordCount} mots · env. {Math.max(1,Math.ceil(wordCount/180))} min</span></div></header>
+        <header className="border-b border-border pb-6">
+          <div className={`sticky top-20 z-20 flex flex-wrap items-center gap-x-5 gap-y-2 rounded-lg border px-4 py-3 shadow-sm backdrop-blur-md ${levelColors[level.color]}`}>
+            <Target className="size-5 shrink-0" />
+            <div><p className="text-[10px] font-semibold uppercase tracking-[0.14em] opacity-75">Niveau cible</p><p className="font-semibold">{level.gradeLabel}</p></div>
+            <div className="text-sm"><p className="font-medium">{level.readerLabel}</p><p className="text-xs opacity-80">{level.stageLabel}</p></div>
+            <p className="basis-full text-xs leading-5 opacity-85 sm:ml-auto sm:basis-auto sm:max-w-sm">{level.guidance}</p>
+          </div>
+          <div className="mt-6 flex flex-wrap gap-2"><Badge variant="secondary">{textTypeLabel(candidate.input.textType)}</Badge></div><h1 className="mt-4 text-3xl font-semibold tracking-tight">{candidate.generated.title}</h1><div className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm text-muted-foreground"><span>{candidate.input.topic}</span><span>{candidate.input.targetSkills.join(" · ") || "Compréhension"}</span><span className="flex items-center gap-1"><Clock3 className="size-4" />{wordCount} mots · env. {Math.max(1,Math.ceil(wordCount/180))} min</span></div>
+          <div className="mt-5 grid gap-2 border-t border-border pt-4 text-sm sm:grid-cols-3"><p><span className="font-semibold text-primary">1.</span> Lisez le texte.</p><p><span className="font-semibold text-primary">2.</span> Vérifiez les questions.</p><p><span className="font-semibold text-primary">3.</span> Donnez votre avis.</p></div>
+        </header>
         <article className="prose-review py-8 text-[1.05rem] leading-8">{paragraphsFromText(candidate.generated.body).map((paragraph, index) => <p key={`${index}-${paragraph.slice(0, 20)}`} className="mb-5">{paragraph}</p>)}</article>
         <section aria-labelledby="questions-title" className="border-t border-border pt-8"><h2 id="questions-title" className="text-xl font-semibold">Questions et réponses attendues</h2><p className="mt-1 text-sm text-muted-foreground">Vérifiez que la réponse indiquée est réellement correcte.</p><div className="mt-6 divide-y divide-border border-y border-border">{questions.map((question, index) => {
           const state = draft.questionReviews[index];
@@ -98,12 +126,12 @@ export function ReviewWorkspace({ assignment }: { assignment: ReviewQueueItem })
       </main>
 
       <aside className="min-w-0 xl:sticky xl:top-6 xl:self-start"><div className="border-t-2 border-primary pt-5"><h2 className="text-xl font-semibold">Votre évaluation</h2><p className="mt-1 text-sm text-muted-foreground">Il n’y a pas de note neutre. Choisissez le jugement qui correspond le mieux.</p>
-        <div className="mt-6 space-y-6">{REVIEW_CRITERIA.map(([key,label]) => <fieldset key={key} disabled={submitted}><legend className="text-sm font-medium">{label}</legend><div className="mt-2 grid grid-cols-2 gap-2">{scale.map((item) => <label key={item.value} className={`cursor-pointer rounded-md border px-3 py-2 text-sm has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-ring ${draft.scores[key] === item.value ? "border-primary bg-primary/10" : "border-border"}`}><input className="sr-only" type="radio" name={key} checked={draft.scores[key] === item.value} onChange={() => update((value) => ({ ...value, scores: { ...value.scores, [key]: item.value } }))} /><span className="font-semibold">{item.value}</span><span className="ml-2 text-xs text-muted-foreground">{item.label}</span></label>)}</div></fieldset>)}</div>
+        <div className="mt-6 space-y-6">{REVIEW_CRITERIA.map(([key,label]) => <fieldset key={key} disabled={submitted}><legend className="text-sm font-medium">{key === "difficulty_match" ? `Ce texte convient-il à un élève de ${level.gradeLabel} ?` : label}</legend>{key === "difficulty_match" && <p className="mt-1 text-xs text-muted-foreground">Repère : {level.readerLabel.toLowerCase()}. Si le niveau ne convient pas, précisez « trop facile » ou « trop difficile » ci-dessous.</p>}<div className="mt-2 grid grid-cols-2 gap-2">{scale.map((item) => <label key={item.value} className={`cursor-pointer rounded-md border px-3 py-2 text-sm has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-ring ${draft.scores[key] === item.value ? "border-primary bg-primary/10" : "border-border"}`}><input className="sr-only" type="radio" name={key} checked={draft.scores[key] === item.value} onChange={() => update((value) => ({ ...value, scores: { ...value.scores, [key]: item.value } }))} /><span className="font-semibold">{item.value}</span><span className="ml-2 text-xs text-muted-foreground">{item.label}</span></label>)}</div></fieldset>)}</div>
         <fieldset disabled={submitted} className="mt-8"><legend className="font-medium">Décision globale</legend><div className="mt-2 space-y-2">{[["approve","Approuver"],["approve_minor","Approuver avec changements mineurs"],["needs_revision","À réviser"],["reject","Rejeter"]].map(([value,label]) => <label key={value} className="flex items-center gap-3 rounded-md border border-border px-3 py-3 text-sm"><input type="radio" name="decision" value={value} checked={draft.decision === value} onChange={() => update((draftValue) => ({ ...draftValue, decision: value as ReviewDraft["decision"] }))} className="size-4 accent-primary" />{label}</label>)}</div></fieldset>
         <fieldset disabled={submitted} className="mt-8"><legend className="font-medium">Problèmes repérés</legend><div className="mt-3 grid gap-2 sm:grid-cols-2 xl:grid-cols-1">{ISSUE_TAGS.map((tag) => <label key={tag} className="flex items-start gap-2 text-sm text-muted-foreground"><input type="checkbox" className="mt-0.5 size-4 accent-primary" checked={draft.issueTags.includes(tag)} onChange={(event) => update((value) => ({ ...value, issueTags: event.target.checked ? [...value.issueTags,tag] : value.issueTags.filter((item) => item !== tag) }))} />{ISSUE_TAG_LABELS[tag]}</label>)}</div></fieldset>
         <label className="mt-8 block font-medium">Commentaire général<textarea disabled={submitted} rows={5} value={draft.generalComment} onChange={(event) => update((value) => ({ ...value, generalComment: event.target.value }))} className="mt-2 w-full rounded-md border border-input bg-background p-3 text-sm font-normal" placeholder="Expliquez brièvement les points à conserver ou à corriger." /></label>
         {submitError && <p role="alert" className="mt-4 text-sm text-destructive">{submitError}</p>}
-        {!submitted && <div className="mt-6 grid gap-2 sm:grid-cols-2 xl:grid-cols-1"><Button variant="outline" onClick={() => void persist()} disabled={saveState === "saving"}>Enregistrer le brouillon</Button><Button onClick={() => void finalize()} disabled={saveState === "saving"}>Valider définitivement</Button></div>}
+        {!submitted && <div className="mt-6 grid gap-2 sm:grid-cols-2 xl:grid-cols-1"><Button variant="outline" onClick={() => void persist()} disabled={saveState === "saving"}>Enregistrer le brouillon</Button><Button onClick={() => void finalize()} disabled={saveState === "saving"}>Valider et passer au suivant</Button></div>}
       </div></aside>
     </div>
   </div>;

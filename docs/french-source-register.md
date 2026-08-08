@@ -1,7 +1,7 @@
 # French foundation source, provenance, and licensing register
 
-**Register version:** 1.0.0  
-**Approved:** 2026-07-11  
+**Register version:** 1.1.0
+**Approved:** 2026-08-06
 **Owner:** SigmaWrite taxonomy steward  
 **Review cadence:** before every import and at least annually
 
@@ -24,6 +24,7 @@ This register is an engineering control, not legal advice. “Importable” mean
 | `fr-bo-lycee-current` | French Ministry of National Education, current lycée programme | 2de boundary alignment | **Codes only** | programme identifier, year/grade code, SigmaWrite-authored mapping and rationale | Attribute ministry, exact programme/version, URL, and access date. No copied source prose. |
 | `coe-cefr` | Council of Europe, CEFR and Companion Volume | FSL/CEFR progression alignment | **Codes only** | level code, scale identifier, SigmaWrite-authored paraphrase, mapping confidence and rationale | CEFR copyright belongs to the Council of Europe. Citation is permitted; reuse of scales/publication material requires permission. Attribute publication title, Council of Europe, year, URL. No copied descriptors or scale tables. |
 | `lexique-3` | Boris New and Christophe Pallier, Lexique 3.x | Lemmas, forms, grammatical attributes, book/film frequency | **Permission required** | none until a signed commercial-use permission and exact dataset/version checksum are registered | Official pages currently describe Creative Commons terms inconsistently and at least one states NonCommercial. Treat as non-commercial-only and blocked for SigmaWrite production. Citation alone does not cure the restriction. |
+| `lexique-4` | Boris New, Christophe Pallier, Gauvain Schalchli, Jessica Bourgin, Manuel Gimenes, and contributors, Lexique 4.00 | Lemmas, forms, grammatical attributes and subtitle-corpus frequency | **Importable as a separately governed CC BY-SA lexical release** | lemma, form, part of speech, frequency | Official release page and bundled README identify CC BY-SA 4.0. Commercial reuse is permitted. Preserve attribution, source and licence links, mark transformations, and distribute shared adapted lexical material under CC BY-SA 4.0-compatible terms without DRM. Do not represent frequency as child-directed. Do not redistribute the mixed operational database; export this lexical release separately with its licence manifest. |
 | `emanulex` | Bernard Lété et al., Manulex / Manulex-infra | Child-directed lemma and word-form frequency | **Prohibited for commercial production; permission required for any exception** | none | CC BY-NC-SA 3.0 per the official download page. Written permission is required for use outside that licence. |
 | `lefff` | Original Lefff rights holders / INRIA distribution | Morphology and inflected-form coverage | **Permission required** | none until the precise distribution, LGPLLR text, attribution, redistribution, and database-combination implications are reviewed and recorded | Do not rely on third-party summaries. Attach the authoritative licence supplied with the exact downloaded artifact before approval. |
 | `wiktionary-fr` | Wiktionary contributors / Wikimedia Foundation | Candidate senses, forms, relations, examples | **Reference only for v1** | source URL may appear in an authoring note; no imported entries or examples | CC BY-SA and database/attribution obligations require a deliberate share-alike distribution design. Do not import into the mixed v1 lexical release. |
@@ -36,6 +37,19 @@ This register is an engineering control, not legal advice. “Importable” mean
 | `student-or-teacher-upload` | End user or their institution | Topic inspiration or classroom context | **Prohibited as taxonomy/lexicon source** | minimal user content only under product retention policy; never foundation records | User possession does not establish redistribution rights. Do not add uploads to releases, prompts, benchmarks, or reusable generated content. |
 
 Primary terms checked for this decision include the [Council of Europe permissions policy](https://www.coe.int/en/web/portal/copyright-licensing-permissions), the [official Manulex download terms](https://www.manulex.org/fr/downloads.html), the [Lexique project site](https://www.lexique.org/), and the [French Open Licence 2.0](https://www.data.gouv.fr/pages/legal/licences/etalab-2.0). A link is evidence of the review location, not a substitute for storing the exact terms and artifact checksum at import time.
+
+### Lexique 4.00 approval record
+
+- Artifact: `https://lexique.org/databases/Lexique400/Lexique400.tsv`, retrieved 2026-08-06.
+- TSV SHA-256: `fe333b4f9e1797f23922d5863cde28635ee13685813af0f9b4b4b9f7d4610a5a`.
+- Official archive SHA-256: `8ed5a64373ae798f0485a2a35848c09286b6694c6859abeaab6806594c046993`.
+- Official README SHA-256: `c235151260e7c26d0115331ed417c943c8f8d10d6844f59b5d7f9b1da6b70a26`.
+- Licence: `CC-BY-SA-4.0`; canonical legal-code SHA-256 `28a9529c7d0bb4dc51f4bf5c116a3d16ef247a052f7591466768ddf563fd1cf5`.
+- Approved release: `sigma-french-lexique4@4.00.1`, a frequency-ranked 2,005-lemma / 19,374-form subset with required held-out forms.
+- Release content SHA-256: `27db3978cb462a57de5b14fef1e096eb30c42c90e6a80aa2dfd3a2ffe84cf3dc`; the builder pins the recorded source-retrieval timestamp so the same snapshot reproduces this hash.
+- Validation: 51/52 held-out tokens known, 98.08% coverage. The sole unknown token is the tokenizer compound `l'idée`; this is above the 95% gate without manually inflating coverage.
+- Distribution decision: the lexical release and its export manifest are CC BY-SA 4.0 material. SigmaWrite application code, original pedagogy, private learner data, and operational tables are not part of the lexical export. A redistribution must include the recorded attribution, licence URL, source URL, checksums, and transformation notice.
+- Approval trail: source version and release approved/published in isolated staging by the existing `Jean-Philippe Kayobotsi` platform-admin profile on 2026-08-06. This register records an engineering rights decision under a standard public licence and is not a substitute for counsel on a disputed or novel interpretation.
 
 ## Codes-only and full-text policy
 
@@ -105,6 +119,6 @@ The following are prohibited unless this register is amended with documented rig
 
 ## Immediate enforcement decisions
 
-- The existing `scripts/import-lexique.mts` is a development artifact and is **not approved for production execution**. G09 must replace or guard it with an approved, versioned source before any baseline lexicon is published.
+- The existing `scripts/import-lexique.mts` remains a development-only Lexique 3 artifact and is **not approved for production execution**. Lexique 4 must use `scripts/build-lexique4-release.mts` followed by the governed baseline importer and exact licence snapshot.
 - V1 taxonomy authoring may proceed using original SigmaWrite records and codes-only curriculum/CEFR mappings.
-- No external lexical dataset is approved for production import as of this register version. The v1 baseline uses the approved original SigmaWrite pilot corpus and clearly labels its limited frequency domain.
+- Lexique 4.00 is approved only for the separately governed `sigma-french-lexique4` release under the obligations above. The v1 original baseline remains separately labelled as pilot-corpus frequency.

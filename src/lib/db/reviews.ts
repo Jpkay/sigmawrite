@@ -82,16 +82,21 @@ function mapAssignment(row: AssignmentRow): ReviewQueueItem {
   };
 }
 
-export async function getReviewerQueue(client?: SupabaseClient): Promise<ReviewQueueItem[]> {
+export async function getReviewerQueue(reviewerProfileId: string, client?: SupabaseClient): Promise<ReviewQueueItem[]> {
   const db = client ?? await createClient();
-  const { data, error } = await db.from("review_assignments").select(assignmentSelect).order("assigned_at", { ascending: true });
+  const { data, error } = await db.from("review_assignments").select(assignmentSelect)
+    .eq("reviewer_profile_id", reviewerProfileId)
+    .order("assigned_at", { ascending: true });
   if (error) throw new Error(error.message);
   return ((data ?? []) as unknown as AssignmentRow[]).map(mapAssignment);
 }
 
-export async function getReviewAssignment(assignmentId: string, client?: SupabaseClient): Promise<ReviewQueueItem | null> {
+export async function getReviewAssignment(assignmentId: string, reviewerProfileId: string, client?: SupabaseClient): Promise<ReviewQueueItem | null> {
   const db = client ?? await createClient();
-  const { data, error } = await db.from("review_assignments").select(assignmentSelect).eq("id", assignmentId).maybeSingle();
+  const { data, error } = await db.from("review_assignments").select(assignmentSelect)
+    .eq("id", assignmentId)
+    .eq("reviewer_profile_id", reviewerProfileId)
+    .maybeSingle();
   if (error) throw new Error(error.message);
   return data ? mapAssignment(data as unknown as AssignmentRow) : null;
 }

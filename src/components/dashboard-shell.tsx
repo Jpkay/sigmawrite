@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { identifyAnalytics } from "@/lib/analytics";
 
-export type NavItem = { href: string; label: string };
+export type NavItem = { href: string; label: string; matchPrefixes?: readonly string[] };
 
 /**
  * Shared chrome for every role dashboard: branded sidebar with nav + a
@@ -20,6 +20,7 @@ export function DashboardShell({
   nav,
   user,
   signOutLabel,
+  modeSwitch,
   language = "fr",
   children,
 }: {
@@ -27,6 +28,7 @@ export function DashboardShell({
   nav: NavItem[];
   user?: { name: string; role: string; analyticsId?: string };
   signOutLabel?: string;
+  modeSwitch?: React.ReactNode;
   language?: "fr" | "en";
   children: React.ReactNode;
 }) {
@@ -50,7 +52,8 @@ export function DashboardShell({
           {nav.map((item) => {
             const active =
               pathname === item.href ||
-              (item.href !== home && pathname.startsWith(item.href + "/"));
+              (item.href !== home && pathname.startsWith(item.href + "/")) ||
+              item.matchPrefixes?.some((prefix) => pathname === prefix || pathname.startsWith(prefix + "/"));
             return (
               <Link
                 key={item.href}
@@ -77,6 +80,7 @@ export function DashboardShell({
               </div>
             </div>
           )}
+          {modeSwitch && <div className="mb-2">{modeSwitch}</div>}
           <SignOutButton label={signOutLabel} />
         </div>
       </aside>
@@ -88,8 +92,9 @@ export function DashboardShell({
             <div className="flex items-center gap-2"><ThemeToggle /><SignOutButton label={signOutLabel} /></div>
           </div>
           <nav aria-label={area} className="flex max-w-[calc(100vw-2rem)] gap-1 overflow-x-auto pb-1">
-            {nav.map((item) => { const active=pathname === item.href || (item.href !== home && pathname.startsWith(item.href + "/")); return <Link key={item.href} href={item.href} aria-current={active?"page":undefined} className={cn("shrink-0 rounded-md px-3 py-2 text-sm",active ? "bg-primary/15 text-primary" : "text-muted-foreground")}>{item.label}</Link>;})}
+            {nav.map((item) => { const active=pathname === item.href || (item.href !== home && pathname.startsWith(item.href + "/")) || item.matchPrefixes?.some((prefix) => pathname === prefix || pathname.startsWith(prefix + "/")); return <Link key={item.href} href={item.href} aria-current={active?"page":undefined} className={cn("shrink-0 rounded-md px-3 py-2 text-sm",active ? "bg-primary/15 text-primary" : "text-muted-foreground")}>{item.label}</Link>;})}
           </nav>
+          {modeSwitch && <div className="mt-2">{modeSwitch}</div>}
         </div>
         <div className="mx-auto w-full max-w-7xl px-4 py-7 sm:px-8 sm:py-10 lg:px-10">{children}</div>
       </main>

@@ -60,6 +60,11 @@ insert into auth.users(
   'diagnostic-evidence-admin@test.local','',now(),'{}',
   '{"role":"platform_admin","display_name":"Evidence Admin"}',now(),now()
 );
+-- Authorization hardening deliberately ignores self-asserted signup roles.
+-- Promote the fixture through the trusted profile boundary used by operators.
+update public.profiles
+set role='platform_admin'
+where auth_user_id='64000000-0000-4000-8000-000000000001';
 insert into public.ontology_versions(id,version,document_path,status,approved_at)
 values(pg_temp.fixture_uuid(10),'64.0.0','tests/0064','active',now());
 insert into public.taxonomy_releases(

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { AuthCard, Field } from "@/components/auth-card";
 import { Button } from "@/components/ui/button";
+import { TurnstileChallenge, turnstileSiteKey } from "@/components/turnstile-challenge";
 import { createClient } from "@/lib/supabase/client";
 
 type ValidCode = { class_name: string; school_name: string; school_consent_enabled: boolean };
@@ -20,6 +21,8 @@ export default function JoinPage() {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [confirmation, setConfirmation] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const [captchaReset, setCaptchaReset] = useState(0);
 
   async function verifyCode() {
     setBusy(true); setError("");
@@ -37,10 +40,11 @@ export default function JoinPage() {
     if (!validated) return verifyCode();
     setBusy(true); setError("");
     try {
+      if (turnstileSiteKey && !captchaToken) throw new Error("Termine la vérification anti-robot.");
       const supabase = createClient();
       const { data, error: signupError } = await supabase.auth.signUp({
         email: email.trim(), password,
-        options: { data: { role: "student", display_name: name.trim(), date_of_birth: dateOfBirth, join_code: code.trim().toUpperCase() } },
+        options: { data: { role: "student", display_name: name.trim(), date_of_birth: dateOfBirth, join_code: code.trim().toUpperCase() }, captchaToken: captchaToken ?? undefined },
       });
       if (signupError) throw signupError;
       if (data.session) {
@@ -50,7 +54,7 @@ export default function JoinPage() {
     } catch (reason) {
       const message = reason instanceof Error ? reason.message : "Inscription impossible.";
       setError(message.includes("saving new user") ? "Le code n'est plus disponible. Demande un nouveau code à ton enseignant." : message);
-    } finally { setBusy(false); }
+    } finally { setBusy(false); setCaptchaReset((value) => value + 1); }
   }
 
   if (confirmation) return <AuthCard title="Vérifie ton e-mail" description="Ton compte et ta place dans la classe sont prêts."><p className="text-sm text-muted-foreground">Ouvre le message envoyé à <span className="font-medium text-foreground">{email}</span>, puis connecte-toi.</p><Link href="/login" className="mt-4 inline-block text-sm text-primary hover:underline">Aller à la connexion</Link></AuthCard>;
@@ -64,7 +68,8 @@ export default function JoinPage() {
         <Field label="Date de naissance" type="date" required value={dateOfBirth} onChange={(event) => setDateOfBirth(event.target.value)} />
         <Field label="Ton e-mail" type="email" required value={email} onChange={(event) => setEmail(event.target.value)} />
         <Field label="Mot de passe" type="password" required minLength={12} value={password} onChange={(event) => setPassword(event.target.value)} />
-        <Button type="submit" className="w-full" disabled={busy || !name.trim() || !dateOfBirth || !email.trim() || password.length < 12}>{busy ? "Création…" : "Créer mon compte"}</Button>
+        <TurnstileChallenge action="student_signup" onToken={setCaptchaToken} resetSignal={captchaReset} />
+        <Button type="submit" className="w-full" disabled={busy || !name.trim() || !dateOfBirth || !email.trim() || password.length < 12 || Boolean(turnstileSiteKey && !captchaToken)}>{busy ? "Création…" : "Créer mon compte"}</Button>
       </>}
       {error && <p className="text-sm text-destructive">{error}</p>}
     </form>

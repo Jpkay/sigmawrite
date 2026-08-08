@@ -26,3 +26,56 @@ export function difficultyBandLabel(band: string | null | undefined): string {
   const [, grade, step] = match;
   return `Lecture : ${grade}e année · palier ${step === "A" ? "1" : "2"}`;
 }
+
+export type TargetLevelProfile = {
+  gradeLabel: string;
+  readerLabel: string;
+  stageLabel: string;
+  guidance: string;
+  color: "green" | "blue" | "violet" | "neutral";
+};
+
+/** Reviewer-facing context: explains who the target reader is, not just the scoring code. */
+export function targetLevelProfile(band: string | null | undefined): TargetLevelProfile {
+  if (band === "Advanced 11-12") return {
+    gradeLabel: "11e–12e année",
+    readerLabel: "Lecteur de 16 à 18 ans",
+    stageLabel: "Secondaire avancé",
+    guidance: "Syntaxe élaborée, vocabulaire académique et inférences complexes.",
+    color: "violet",
+  };
+
+  const match = /^(?:Foundation|Secondary) (\d+)([AB])$/.exec(band ?? "");
+  if (!match) return {
+    gradeLabel: "Niveau à confirmer",
+    readerLabel: "Public cible non renseigné",
+    stageLabel: "Niveau de lecture",
+    guidance: "Vérifiez le niveau cible avant de poursuivre l’évaluation.",
+    color: "neutral",
+  };
+
+  const grade = Number(match[1]);
+  const step = match[2] === "A" ? "début d’année" : "fin d’année";
+  const ages = `${grade + 5}–${grade + 6} ans`;
+  if (grade <= 6) return {
+    gradeLabel: `${grade}e année`,
+    readerLabel: `Lecteur de ${ages}`,
+    stageLabel: `Primaire · ${step}`,
+    guidance: "Phrases accessibles, vocabulaire concret et compréhension principalement explicite.",
+    color: "green",
+  };
+  if (grade <= 9) return {
+    gradeLabel: `${grade}e année`,
+    readerLabel: `Lecteur de ${ages}`,
+    stageLabel: `Début du secondaire · ${step}`,
+    guidance: "Vocabulaire scolaire intermédiaire et quelques inférences simples.",
+    color: "blue",
+  };
+  return {
+    gradeLabel: `${grade}e année`,
+    readerLabel: `Lecteur de ${ages}`,
+    stageLabel: `Secondaire avancé · ${step}`,
+    guidance: "Vocabulaire académique, phrases plus longues et raisonnement implicite soutenu.",
+    color: "violet",
+  };
+}

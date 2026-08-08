@@ -38,6 +38,49 @@ export async function acknowledgeReviewInstructions() {
   return { ok: true };
 }
 
+/** Keeps the platform-admin role while enabling the same profile for review assignments. */
+export async function enableAdminReviewerMode() {
+  const admin = await requireRole(["platform_admin"]);
+  const db = await createClient();
+  const { data: existing, error: readError } = await db.from("content_reviewer_profiles")
+    .select("profile_id,active")
+    .eq("profile_id", admin.id)
+    .maybeSingle();
+  if (readError) throw new Error(readError.message);
+
+  const now = new Date().toISOString();
+  if (existing) {
+    const { error } = await db.from("content_reviewer_profiles").update({
+      active: true,
+      invite_status: "active",
+      activated_at: now,
+      deactivated_at: null,
+      updated_at: now,
+    }).eq("profile_id", admin.id);
+    if (error) throw new Error(error.message);
+  } else {
+    const { error } = await db.from("content_reviewer_profiles").insert({
+      profile_id: admin.id,
+      active: true,
+      invite_status: "active",
+      invited_by: admin.id,
+      invited_at: now,
+      activated_at: now,
+    });
+    if (error) throw new Error(error.message);
+  }
+
+  await logAudit("review.admin_reviewer_mode_enabled", {
+    targetType: "profile",
+    targetId: admin.id,
+    metadata: { reviewerProfileCreated: !existing },
+  });
+  revalidatePath("/review");
+  revalidatePath("/admin/reviews/reviewers");
+  revalidatePath("/admin/reviews/assign");
+  return { ok: true, reviewerProfileCreated: !existing };
+}
+
 export async function saveReviewDraft(input: unknown) {
   await requireActiveReviewer();
   const data = reviewInput.parse(input);

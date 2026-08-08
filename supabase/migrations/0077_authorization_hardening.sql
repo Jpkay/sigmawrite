@@ -90,6 +90,10 @@ declare t text;
 begin
   foreach t in array array['skills','knowledge_domains','knowledge_concepts','vocabulary_items','texts','text_versions','questions','question_choices','text_skills','question_skills','text_vocabulary','prompt_versions','ai_generation_jobs','ai_generated_candidates','ai_scoring_results','ai_moderation_results'] loop
     execute format('drop policy if exists %I on %I', t || '_staff_write', t);
+    -- Some catalog tables acquired the target policy name in later migrations.
+    -- Drop it as well so this hardening migration works on both a fresh schema
+    -- and long-lived environments with the complete pre-0077 history.
+    execute format('drop policy if exists %I on %I', t || '_content_write', t);
     execute format('create policy %I on %I for all using (public.is_content_staff()) with check (public.is_content_staff())', t || '_content_write', t);
   end loop;
 end $$;

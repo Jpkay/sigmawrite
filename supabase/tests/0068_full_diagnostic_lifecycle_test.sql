@@ -45,6 +45,8 @@ insert into auth.users(
   'full-diagnostic-admin@test.local','',now(),'{}',
   '{"role":"platform_admin","display_name":"Full Diagnostic Admin"}',now(),now()
 );
+update public.profiles set role='platform_admin'
+where auth_user_id='68000000-0000-4000-8000-000000000001';
 
 insert into public.ontology_versions(id,version,document_path,status,approved_at)
 values(pg_temp.fixture_uuid(10),'68.0.0','tests/0068','active',now());
@@ -53,7 +55,7 @@ insert into public.taxonomy_releases(
   id,release_key,version,ontology_version_id,status,manifest,
   manifest_checksum,validation_report
 ) values (
-  pg_temp.fixture_uuid(20),'french-taxonomy-v2','2.0.0',
+  pg_temp.fixture_uuid(20),'pgtap-full-diagnostic-taxonomy','68.0.0',
   pg_temp.fixture_uuid(10),'draft','{"fixture":true}',
   'sha256:809df529f0934fc8b68dcf23d00a18238a9c01490f4a985b4fa4246751a1fc4b',
   '{"valid":true}'

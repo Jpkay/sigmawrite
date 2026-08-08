@@ -5,8 +5,19 @@ import { checksum, stableJson } from "../taxonomy/validate";
 const sourceSchema = z.object({
   key: z.string().min(1),
   version: z.string().min(1),
+  title: z.string().min(1).optional(),
+  ownerName: z.string().min(1).optional(),
+  sourceKind: z.enum(["lexicon", "frequency", "morphology", "original"]).optional(),
+  artifactUrl: z.string().url().optional(),
+  retrievedAt: z.string().datetime().optional(),
   licenseIdentifier: z.string().min(1),
+  licenseUrl: z.string().url().optional(),
+  licenseTextChecksum: z.string().min(1).optional(),
   terms: z.string().min(1),
+  permittedFields: z.array(z.string().min(1)).min(1).optional(),
+  derivativeObligations: z.string().min(1).optional(),
+  redistributionObligations: z.string().min(1).optional(),
+  decisionNotes: z.string().min(1).optional(),
   commercialUseAllowed: z.literal(true),
   attribution: z.string().min(1),
 });
@@ -187,4 +198,3 @@ export function verifyBaselineArtifact(artifact: BaselineLexiconArtifact): boole
     && manifest.contentChecksum === checksum(content)
     && stableJson(artifact) === stableJson(JSON.parse(JSON.stringify(artifact)));
 }
-

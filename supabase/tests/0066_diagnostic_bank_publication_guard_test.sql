@@ -44,6 +44,14 @@ insert into auth.users(
   '{}','{"role":"teacher","display_name":"Not an item reviewer"}',
   now(),now()
 );
+-- Signup metadata is untrusted after migration 0077. Assign fixture roles as a
+-- privileged operator would so reviewer provenance tests the intended boundary.
+update public.profiles
+set role='platform_admin'
+where auth_user_id='66000000-0000-4000-8000-000000000001';
+update public.profiles
+set role='teacher'
+where auth_user_id='66000000-0000-4000-8000-000000000002';
 
 insert into public.ontology_versions(
   id,version,document_path,status,approved_at
