@@ -9,6 +9,7 @@ import { FRENCH_BACKGROUNDS } from "@/lib/types";
 import { getContentLibrary, getPublishedReadingText, recommendPublishedTextKey } from "@/lib/db/content";
 import { rankInterestSignals } from "@/lib/content/recommend";
 import { rankByInterestAndVocabulary } from "@/lib/content/vocabulary-fit";
+import { planVocabularyReuse, type VocabularyStatus } from "@/lib/vocabulary/learning";
 import { scoreSession } from "@/lib/scoring/session";
 import { updateSkillEstimate, updateSkillsFromSession } from "@/lib/scoring/skill-estimate";
 import { buildRetrievalCards } from "@/lib/content/retrieval-cards";
@@ -668,7 +669,57 @@ export async function recommendReadingTexts(input: unknown) {
   ]);
   const statsByKey = new Map((stats ?? []).map((row) => [row.interest_key as string, row]));
   const ranked = rankInterestSignals((declared ?? []).map((row) => { const stat = statsByKey.get(row.interest_key as string); return { interestKey: row.interest_key as string, declaredStrength: Number(row.declared_strength ?? 0), inferredStrength: Number(stat?.inferred_strength ?? row.inferred_strength ?? 0), completionRate: Number(stat?.completion_rate ?? 0), avgSuccess: Number(stat?.avg_success ?? 0.75), avgTimeOnTask: Number(stat?.avg_time_on_task ?? 0), abandonCount: Number(stat?.abandon_count ?? 0) }; }));
-  const versionIds=library.map(item=>item.id);const[{data:links,error:linksError},{data:mastery,error:masteryError}]=await Promise.all([versionIds.length?supabase.from("text_vocabulary").select("text_version_id,vocabulary_item_id").in("text_version_id",versionIds):Promise.resolve({data:[],error:null}),supabase.from("student_word_mastery").select("vocabulary_item_id,mastery").eq("student_id",studentId)]);if(linksError||masteryError)throw new Error(linksError?.message??masteryError?.message);const targets=new Map<string,string[]>();for(const link of links??[]){const id=link.text_version_id as string;targets.set(id,[...(targets.get(id)??[]),link.vocabulary_item_id as string]);}const known=new Set((mastery??[]).filter(row=>Number(row.mastery)>=.6).map(row=>row.vocabulary_item_id as string));const ordered=rankByInterestAndVocabulary(library,ranked.map(item=>item.interestKey),targets,known);
+  const versionIds = library.map((item) => item.id);
+  const [linksResult, masteryResult] = await Promise.all([
+    versionIds.length
+      ? supabase.from("text_vocabulary").select("text_version_id,vocabulary_item_id").in("text_version_id", versionIds)
+      : Promise.resolve({ data: [], error: null }),
+    supabase.from("student_word_mastery")
+      .select("vocabulary_item_id,mastery,next_review_at,learning_status,vocabulary_items!inner(related_topics)")
+      .eq("student_id", studentId),
+  ]);
+  if (linksResult.error || masteryResult.error) {
+    throw new Error(linksResult.error?.message ?? masteryResult.error?.message);
+  }
+  const targets = new Map<string, string[]>();
+  for (const link of linksResult.data ?? []) {
+    const id = link.text_version_id as string;
+    targets.set(id, [...(targets.get(id) ?? []), link.vocabulary_item_id as string]);
+  }
+  const masteryRows = masteryResult.data ?? [];
+  const mastered = new Set(
+    masteryRows
+      .filter((row) => row.learning_status === "maintenance" && Number(row.mastery) >= 0.85)
+      .map((row) => row.vocabulary_item_id as string),
+  );
+  const now = new Date().toISOString();
+  const dueCandidates = masteryRows.flatMap((row) => {
+    if (!row.next_review_at || Date.parse(row.next_review_at as string) > Date.parse(now)) return [];
+    const vocabulary = row.vocabulary_items as unknown as { related_topics: unknown };
+    return [{
+      word: row.vocabulary_item_id as string,
+      dueAt: row.next_review_at as string,
+      relatedTopics: Array.isArray(vocabulary.related_topics)
+        ? vocabulary.related_topics.filter((value): value is string => typeof value === "string")
+        : [],
+      status: (row.learning_status ?? "new") as VocabularyStatus,
+    }];
+  });
+  const plannedReuseCount = new Map<string, number>();
+  for (const item of library) {
+    const plannedIds = new Set(
+      planVocabularyReuse(dueCandidates, item.primaryInterest ?? "", now).map((candidate) => candidate.word),
+    );
+    const count = (targets.get(item.id) ?? []).filter((id) => plannedIds.has(id)).length;
+    if (count) plannedReuseCount.set(item.id, count);
+  }
+  const ordered = rankByInterestAndVocabulary(
+    library,
+    ranked.map((item) => item.interestKey),
+    targets,
+    mastered,
+    plannedReuseCount,
+  );
   const selected = ordered.slice(0,3); return Promise.all(selected.map((item) => getPublishedReadingText(item.slug, supabase))).then((rows) => rows.filter((row): row is NonNullable<typeof row> => !!row));
 }
 
