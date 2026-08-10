@@ -62,6 +62,16 @@ describe("buildHintLadder", () => {
     const hints = buildHintLadder({ ...base, nodeDescription: null });
     expect(hints[0]).toContain("Relis la consigne");
   });
+  it("distinguishes recipient number from gender for lui and leur", () => {
+    const hints = buildHintLadder({
+      ...base,
+      nodeLabel: "Pronoms compléments",
+      validatorConfig: { practiceModule: "indirect_people" },
+    });
+    expect(hints[1]).toContain("sans regarder leur genre");
+    expect(hints[1]).toContain("lui");
+    expect(hints[1]).toContain("leur");
+  });
   it("uses misconception-specific clues across major strands",()=>{expect(buildHintLadder({...base,nodeLabel:"Inférence implicite",nodeDescription:null,choiceCount:0})[1]).toContain("indice précis");expect(buildHintLadder({...base,nodeLabel:"Accord en genre et nombre",nodeDescription:null,choiceCount:0})[1]).toContain("donneur d’accord");});
 
 });

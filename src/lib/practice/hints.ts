@@ -43,6 +43,15 @@ const PERSON_LABEL_FR: Record<string, string> = {
   "1s": "je", "2s": "tu", "3s": "il/elle", "1p": "nous", "2p": "vous", "3p": "ils/elles",
 };
 
+const PRONOUN_TIP_FR: Record<string, string> = {
+  direct_objects: "Cherche le complément sans préposition, puis vérifie son genre et son nombre : le, la, l’ ou les.",
+  indirect_people: "Compte les destinataires, sans regarder leur genre : une personne donne lui ; plusieurs donnent leur.",
+  direct_or_indirect: "Regarde la construction du verbe : quelqu’un sans préposition donne le/la/les ; à quelqu’un donne lui/leur.",
+  y_and_en: "Repère la préposition : à, dans ou sur une chose mène souvent à y ; de ou une quantité mène à en.",
+  position_and_agreement: "Place le pronom avant l’auxiliaire. Fais l’accord seulement si le pronom est COD, jamais parce que lui désigne une femme.",
+  double_pronouns: "Avant le verbe, place le/la/les avant lui/leur. À l’impératif affirmatif, pense aux traits d’union.",
+};
+
 export type HintSource = {
   nodeLabel: string;
   nodeDescription: string | null;
@@ -62,8 +71,11 @@ export function buildHintLadder(source: HintSource): string[] {
   const verb = typeof config.verb === "string" ? config.verb : null;
   const tense = typeof config.tense === "string" ? config.tense : null;
   const person = typeof config.person === "string" ? config.person : null;
+  const practiceModule = typeof config.practiceModule === "string" ? config.practiceModule : null;
 
-  if (source.validatorType === "conjugator" && verb && tense) {
+  if (practiceModule && PRONOUN_TIP_FR[practiceModule]) {
+    clue = PRONOUN_TIP_FR[practiceModule];
+  } else if (source.validatorType === "conjugator" && verb && tense) {
     const tenseLabel = TENSE_LABEL_FR[tense] ?? tense;
     const personLabel = person ? PERSON_LABEL_FR[person] ?? person : null;
     const target = personLabel
