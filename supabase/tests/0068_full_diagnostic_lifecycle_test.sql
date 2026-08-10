@@ -4,6 +4,20 @@ set local search_path = public, extensions;
 create extension if not exists pgtap with schema extensions;
 select plan(45);
 
+-- Keep populated staging state intact while reserving the exact v2 identities
+-- for this transaction's production unlock fixture. The outer rollback restores
+-- any unpublished candidate names and concurrent sessions never see the rename.
+update public.diagnostic_item_bank_releases
+set bank_key='pgtap-existing-bank-'||id::text,
+    version='pgtap-existing-bank-'||id::text
+where bank_key='french-diagnostic-bank-v2' and version='2.0.0'
+  and status not in ('published','withdrawn');
+update public.taxonomy_releases
+set release_key='pgtap-existing-taxonomy-'||id::text,
+    version='pgtap-existing-taxonomy-'||id::text
+where release_key='french-taxonomy-v2' and version='2.0.0'
+  and status not in ('published','withdrawn');
+
 -- This fixture deliberately starts from published release artifacts and an empty
 -- learner history. Every response is created by the public atomic writer after
 -- the selector issues a fresh item; no response or attempt is pre-seeded.
@@ -57,7 +71,11 @@ insert into public.taxonomy_releases(
   id,release_key,version,ontology_version_id,status,manifest,
   manifest_checksum,validation_report
 ) values (
-  pg_temp.fixture_uuid(20),'french-taxonomy-v2','2.0.0',
+  pg_temp.fixture_uuid(20),
+  case when exists(select 1 from public.taxonomy_releases where release_key='french-taxonomy-v2' and version='2.0.0')
+    then 'pgtap-full-diagnostic-v2' else 'french-taxonomy-v2' end,
+  case when exists(select 1 from public.taxonomy_releases where version='2.0.0')
+    then 'pgtap-68-taxonomy-v2' else '2.0.0' end,
   pg_temp.fixture_uuid(10),'draft','{"fixture":true}',
   'sha256:809df529f0934fc8b68dcf23d00a18238a9c01490f4a985b4fa4246751a1fc4b',
   '{"valid":true}'
@@ -194,7 +212,11 @@ insert into public.diagnostic_item_bank_releases(
   id,bank_key,version,taxonomy_release_id,status,manifest,
   manifest_checksum,validation_report
 ) values (
-  pg_temp.fixture_uuid(30),'french-diagnostic-bank-v2','2.0.0',
+  pg_temp.fixture_uuid(30),
+  case when exists(select 1 from public.diagnostic_item_bank_releases where bank_key='french-diagnostic-bank-v2' and version='2.0.0')
+    then 'pgtap-full-diagnostic-bank-v2' else 'french-diagnostic-bank-v2' end,
+  case when exists(select 1 from public.diagnostic_item_bank_releases where version='2.0.0')
+    then 'pgtap-68-bank-v2' else '2.0.0' end,
   pg_temp.fixture_uuid(20),'draft',
   jsonb_build_object(
     'fixture',true,'sections',4,'items',48,
@@ -711,6 +733,33 @@ select pg_temp.fixture_uuid(40),pg_temp.fixture_uuid(50),6.5,7.5,'high',
   'Graph pathway',7,7,7,7,run.completed_at
 from public.diagnostic_runs run where run.id=pg_temp.fixture_uuid(50);
 
+-- A populated staging database already owns the immutable exact v2 release
+-- identities. Reuse those identities for the production unlock assertion;
+-- a clean test database continues to use the exact fixture created above.
+do $$
+declare v_taxonomy_id uuid; v_bank_id uuid;
+begin
+  select taxonomy.id,bank.id into v_taxonomy_id,v_bank_id
+  from public.taxonomy_releases taxonomy
+  join public.diagnostic_item_bank_releases bank
+    on bank.taxonomy_release_id=taxonomy.id
+  where taxonomy.release_key='french-taxonomy-v2'
+    and taxonomy.version='2.0.0'
+    and taxonomy.status='published'
+    and bank.bank_key='french-diagnostic-bank-v2'
+    and bank.version='2.0.0'
+    and bank.status='published'
+  limit 1;
+  if v_taxonomy_id is not null then
+    update public.diagnostic_runs
+    set taxonomy_release_id=v_taxonomy_id,item_bank_release_id=v_bank_id
+    where id=pg_temp.fixture_uuid(50);
+    update public.student_learning_paths set taxonomy_release_id=v_taxonomy_id
+    where id=pg_temp.fixture_uuid(60);
+  end if;
+end
+$$;
+
 select is(
   public.student_learning_is_unlocked(pg_temp.fixture_uuid(40)),
   true,
@@ -736,6 +785,32 @@ create temporary table fresh_path_observation(
   dependent_unlocked boolean not null,
   dependent_completed integer not null
 ) on commit drop;
+
+insert into public.competency_items(
+  id,primary_node_id,strand,modality,response_type,prompt_fr,
+  correct_answer,validator_type,review_status
+)
+select pg_temp.fixture_uuid(8000+node_offset*10+item_number),
+       pg_temp.fixture_uuid(1000+2*100+3+node_offset),
+       'grammaire_syntaxe','writing','cloze',
+       'Preuve contrôlée '||node_offset||'-'||item_number,
+       item_number::text,'exact','human_approved'
+from generate_series(0,1) node_offset
+cross join generate_series(1,3) item_number;
+
+insert into public.competency_mastery_evidence_occurrences(
+  student_id,node_id,occurrence_key,source_type,source_id,item_id,
+  evidence_expectation,successful,hints_used,occurred_at
+)
+select pg_temp.fixture_uuid(40),
+       pg_temp.fixture_uuid(1000+2*100+3+node_offset),
+       'pgtap-full-path-'||node_offset||'-'||item_number,
+       'practice','pgtap-practice-session-'||least(item_number,2),
+       pg_temp.fixture_uuid(8000+node_offset*10+item_number),
+       'controlled_production',true,0,
+       '2026-07-13 09:00:00+00'::timestamptz + item_number*interval '1 minute'
+from generate_series(0,1) node_offset
+cross join generate_series(1,3) item_number;
 
 do $$
 declare
@@ -768,11 +843,11 @@ $$;
 select is((select wrong_evidence_completed from fresh_path_observation),0,
   'A path step cannot complete from the wrong evidence expectation');
 select is((select root_completed from fresh_path_observation),1,
-  'Matching post-diagnostic evidence completes the available root step');
+  'Repeated matching post-diagnostic evidence completes the available root step');
 select is((select dependent_unlocked from fresh_path_observation),true,
   'Completing the retained prerequisite unlocks its dependent');
 select is((select dependent_completed from fresh_path_observation),1,
-  'Matching evidence completes the newly available dependent step');
+  'Repeated matching evidence completes the newly available dependent step');
 select is(
   (select status from public.student_learning_paths where id=pg_temp.fixture_uuid(60)),
   'completed',

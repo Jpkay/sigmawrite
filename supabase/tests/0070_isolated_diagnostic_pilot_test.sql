@@ -23,7 +23,10 @@ select has_trigger('public','student_competency_estimates','suppress_pilot_compe
 select has_trigger('public','diagnostic_responses','mark_pilot_diagnostic_response_trigger','Pilot responses are marked provisional');
 select has_trigger('public','competency_attempts','mark_pilot_competency_attempt_trigger','Pilot attempts are marked provisional');
 
-select is((select enabled from public.diagnostic_pilot_settings where singleton),false,'Pilot defaults fail closed');
+select col_default_is(
+  'public','diagnostic_pilot_settings','enabled',false,
+  'Pilot settings default fail closed even when staging has been explicitly enabled'
+);
 select extensions.ok(
   pg_get_functiondef('public.student_learning_is_unlocked(uuid)'::regprocedure)
     like '%bank.status=''published''%',

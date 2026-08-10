@@ -4,6 +4,19 @@ set local search_path = public, extensions;
 create extension if not exists pgtap with schema extensions;
 select plan(22);
 
+-- Reserve the exact v2 identities inside this rolled-back transaction when a
+-- populated staging database contains only unpublished candidates.
+update public.diagnostic_item_bank_releases
+set bank_key='pgtap-existing-bank-'||id::text,
+    version='pgtap-existing-bank-'||id::text
+where bank_key='french-diagnostic-bank-v2' and version='2.0.0'
+  and status not in ('published','withdrawn');
+update public.taxonomy_releases
+set release_key='pgtap-existing-taxonomy-'||id::text,
+    version='pgtap-existing-taxonomy-'||id::text
+where release_key='french-taxonomy-v2' and version='2.0.0'
+  and status not in ('published','withdrawn');
+
 select has_function(
   'public','student_learning_is_unlocked',array['uuid'],
   'Post-diagnostic learning has a server-side gate'
@@ -133,8 +146,12 @@ insert into public.taxonomy_releases(
   id,release_key,version,ontology_version_id,status,manifest,
   manifest_checksum,validation_report
 ) values (
-  '69000000-0000-0000-0000-000000000020','french-taxonomy-v2',
-  '2.0.0','69000000-0000-0000-0000-000000000010','draft',
+  '69000000-0000-0000-0000-000000000020',
+  case when exists(select 1 from public.taxonomy_releases where release_key='french-taxonomy-v2' and version='2.0.0')
+    then 'pgtap-assessment-first-v2' else 'french-taxonomy-v2' end,
+  case when exists(select 1 from public.taxonomy_releases where version='2.0.0')
+    then 'pgtap-69-taxonomy-v2' else '2.0.0' end,
+  '69000000-0000-0000-0000-000000000010','draft',
   '{"fixture":true}',
   'sha256:809df529f0934fc8b68dcf23d00a18238a9c01490f4a985b4fa4246751a1fc4b',
   '{"valid":true}'
@@ -273,8 +290,12 @@ insert into public.diagnostic_item_bank_releases(
   id,bank_key,version,taxonomy_release_id,status,manifest,
   manifest_checksum,validation_report
 ) values (
-  '69000000-0000-0000-0000-000000000030','french-diagnostic-bank-v2',
-  '2.0.0','69000000-0000-0000-0000-000000000020','draft',
+  '69000000-0000-0000-0000-000000000030',
+  case when exists(select 1 from public.diagnostic_item_bank_releases where bank_key='french-diagnostic-bank-v2' and version='2.0.0')
+    then 'pgtap-assessment-first-bank-v2' else 'french-diagnostic-bank-v2' end,
+  case when exists(select 1 from public.diagnostic_item_bank_releases where version='2.0.0')
+    then 'pgtap-69-bank-v2' else '2.0.0' end,
+  '69000000-0000-0000-0000-000000000020','draft',
   '{"checksum":"sha256:pgtap-assessment-bank","itemCount":48}',
   'sha256:pgtap-assessment-bank','{"valid":true}'
 );
@@ -372,6 +393,32 @@ insert into public.student_learning_paths(
   '69000000-0000-0000-0000-000000000035',
   '69000000-0000-0000-0000-000000000020','active'
 );
+
+-- Reuse the immutable production v2 identities when this contract runs on a
+-- populated staging project; on a clean database the exact fixture is used.
+do $$
+declare v_taxonomy_id uuid; v_bank_id uuid;
+begin
+  select taxonomy.id,bank.id into v_taxonomy_id,v_bank_id
+  from public.taxonomy_releases taxonomy
+  join public.diagnostic_item_bank_releases bank
+    on bank.taxonomy_release_id=taxonomy.id
+  where taxonomy.release_key='french-taxonomy-v2'
+    and taxonomy.version='2.0.0'
+    and taxonomy.status='published'
+    and bank.bank_key='french-diagnostic-bank-v2'
+    and bank.version='2.0.0'
+    and bank.status='published'
+  limit 1;
+  if v_taxonomy_id is not null then
+    update public.diagnostic_runs
+    set taxonomy_release_id=v_taxonomy_id,item_bank_release_id=v_bank_id
+    where id='69000000-0000-0000-0000-000000000040';
+    update public.student_learning_paths set taxonomy_release_id=v_taxonomy_id
+    where id='69000000-0000-0000-0000-000000000050';
+  end if;
+end
+$$;
 
 select set_config('request.jwt.claim.role','service_role',true);
 select ok(

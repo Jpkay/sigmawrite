@@ -186,8 +186,8 @@ select is(
 select is(
   (select status from public.student_learning_path_steps
    where id='65000000-0000-0000-0000-000000000502'),
-  'pending',
-  'Aggregate mastery does not bypass a retained prerequisite step'
+  'available',
+  'Readiness opens the dependent while the retained prerequisite stays active for review'
 );
 
 select is(
@@ -205,13 +205,31 @@ select is(
   'A skipped step remains skipped'
 );
 
+insert into public.competency_mastery_evidence_occurrences(
+  student_id,node_id,occurrence_key,source_type,source_id,
+  evidence_expectation,successful,hints_used,occurred_at
+) values
+  (
+    '65000000-0000-0000-0000-000000000002',
+    '65000000-0000-0000-0000-000000000301',
+    'pgtap-launch-guard-reading-1','reading','reading-session-1',
+    'receptive',true,0,'2026-07-12 12:00:00+00'
+  ),
+  (
+    '65000000-0000-0000-0000-000000000002',
+    '65000000-0000-0000-0000-000000000301',
+    'pgtap-launch-guard-reading-2','reading','reading-session-2',
+    'receptive',true,0,'2026-07-13 12:00:00+00'
+  );
+
 select is(
   public.advance_student_learning_path(
     '65000000-0000-0000-0000-000000000002',
-    '65000000-0000-0000-0000-000000000301',.90
+    '65000000-0000-0000-0000-000000000301',.90,
+    '2026-07-13 12:01:00+00','receptive'
   )->>'completed',
   '1',
-  'An available retained prerequisite can complete'
+  'Repeated unaided evidence can complete an available retained prerequisite'
 );
 select is(
   (select status from public.student_learning_path_steps

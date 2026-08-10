@@ -66,6 +66,7 @@ import { trackServer } from "@/lib/analytics-server";
 import { createHash } from "node:crypto";
 import { sanitizeStudentTopic } from "@/lib/safety/topic";
 import { plannedExerciseCount } from "@/lib/practice/session";
+import { hasStudentPathCoverage } from "@/lib/taxonomy/activation";
 
 const answersSchema = z.record(z.string().min(1), z.number().int().min(0).max(20));
 const uuidSchema = z.string().uuid();
@@ -1586,7 +1587,30 @@ async function finalizeAdaptiveDiagnostic(input: {
   const { data: v3PathRelease, error: v3PathReleaseError } = await input.service.from("taxonomy_releases")
     .select("id").eq("release_key", "french-taxonomy-v3").eq("status", "published").maybeSingle();
   if (v3PathReleaseError) throw new Error(v3PathReleaseError.message);
-  const pathTaxonomyReleaseId = (v3PathRelease?.id ?? run.taxonomy_release_id) as string;
+  let pathTaxonomyReleaseId = run.taxonomy_release_id as string;
+  if (v3PathRelease?.id) {
+    const { data: v3Nodes, error: v3NodesError } = await input.service
+      .from("taxonomy_release_memberships")
+      .select("record_id,record_snapshot")
+      .eq("release_id", v3PathRelease.id)
+      .eq("record_type", "competency_node");
+    if (!v3NodesError && v3Nodes?.length) {
+      const nodeIds = v3Nodes.map((node) => node.record_id as string);
+      const [{ data: lessons, error: lessonsError }, { data: items, error: itemsError }] = await Promise.all([
+        input.service.from("competency_lessons").select("node_id")
+          .in("node_id", nodeIds).in("review_status", ["auto_approved", "human_approved"]),
+        input.service.from("competency_items").select("id,primary_node_id")
+          .in("primary_node_id", nodeIds).in("review_status", ["auto_approved", "human_approved"]),
+      ]);
+      if (!lessonsError && !itemsError && hasStudentPathCoverage({
+        nodes: v3Nodes as Array<{ record_id: string; record_snapshot: Record<string, unknown> | null }>,
+        approvedLessonNodeIds: (lessons ?? []).map((lesson) => lesson.node_id as string),
+        approvedItems: (items ?? []) as Array<{ id: string; primary_node_id: string }>,
+      })) {
+        pathTaxonomyReleaseId = v3PathRelease.id as string;
+      }
+    }
+  }
   const [{ data: memberships, error: membershipError }, { data: targetRows, error: targetError }, { data: resultRows, error: resultError }, { data: student, error: studentError }, { data: goal, error: goalError }, { data: learnerProfile, error: profileError }, progress] = await Promise.all([
     input.service.from("taxonomy_release_memberships").select("record_id,record_type,stable_key,record_snapshot").eq("release_id", pathTaxonomyReleaseId).in("record_type", ["competency_node", "competency_edge", "mastery_evidence", "progression_mapping"]),
     input.service.from("diagnostic_run_targets").select("node_id").eq("run_id", input.runId),

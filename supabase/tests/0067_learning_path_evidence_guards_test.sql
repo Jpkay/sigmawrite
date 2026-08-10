@@ -133,6 +133,24 @@ select is(
   0,
   'Matching but sub-threshold evidence does not complete a step'
 );
+
+insert into public.competency_mastery_evidence_occurrences(
+  student_id,node_id,occurrence_key,source_type,source_id,
+  evidence_expectation,successful,hints_used,occurred_at
+) values
+  (
+    '67000000-0000-0000-0000-000000000001',
+    '67000000-0000-0000-0000-000000000201',
+    'pgtap-independent-writing-1','writing','writing-submission-1',
+    'independent_production',true,0,'2026-07-12 12:02:30+00'
+  ),
+  (
+    '67000000-0000-0000-0000-000000000001',
+    '67000000-0000-0000-0000-000000000201',
+    'pgtap-independent-writing-2','writing','writing-submission-2',
+    'independent_production',true,0,'2026-07-12 12:03:00+00'
+  );
+
 select is(
   (public.advance_student_learning_path(
     '67000000-0000-0000-0000-000000000001',
@@ -154,6 +172,23 @@ select is(
   'available',
   'Completing the guarded prerequisite unlocks its dependent'
 );
+
+insert into public.competency_items(
+  id,primary_node_id,strand,modality,response_type,prompt_fr,
+  correct_answer,validator_type,review_status
+) values
+  ('67000000-0000-0000-0000-000000000501','67000000-0000-0000-0000-000000000202','orthographe_grammaticale','writing','cloze','Item contrôlé 1','un','exact','human_approved'),
+  ('67000000-0000-0000-0000-000000000502','67000000-0000-0000-0000-000000000202','orthographe_grammaticale','writing','cloze','Item contrôlé 2','deux','exact','human_approved'),
+  ('67000000-0000-0000-0000-000000000503','67000000-0000-0000-0000-000000000202','orthographe_grammaticale','writing','cloze','Item contrôlé 3','trois','exact','human_approved');
+
+insert into public.competency_mastery_evidence_occurrences(
+  student_id,node_id,occurrence_key,source_type,source_id,item_id,
+  evidence_expectation,successful,hints_used,occurred_at
+) values
+  ('67000000-0000-0000-0000-000000000001','67000000-0000-0000-0000-000000000202','pgtap-controlled-1','practice','practice-session-1','67000000-0000-0000-0000-000000000501','controlled_production',true,0,'2026-07-12 12:03:30+00'),
+  ('67000000-0000-0000-0000-000000000001','67000000-0000-0000-0000-000000000202','pgtap-controlled-2','practice','practice-session-2','67000000-0000-0000-0000-000000000502','controlled_production',true,0,'2026-07-12 12:03:40+00'),
+  ('67000000-0000-0000-0000-000000000001','67000000-0000-0000-0000-000000000202','pgtap-controlled-3','practice','practice-session-2','67000000-0000-0000-0000-000000000503','controlled_production',true,0,'2026-07-12 12:03:50+00');
+
 select is(
   (public.advance_student_learning_path(
     '67000000-0000-0000-0000-000000000001',
@@ -161,7 +196,7 @@ select is(
     '2026-07-12 12:04:00+00','controlled_production'
   )->>'completed')::integer,
   1,
-  'Typed controlled practice still completes an unguarded path step'
+  'Repeated typed controlled practice completes an unguarded path step'
 );
 select is(
   (select status from public.student_learning_paths
