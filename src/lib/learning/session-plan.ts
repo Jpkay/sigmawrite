@@ -36,12 +36,13 @@ export type SessionPlanInput = {
   /** same_family edges: pairs of confusable nodes to keep apart. */
   familyPairs: Array<[string, string]>;
   strandByNode?: Map<string, string>;
+  /** Mean mastery of the currently introduced, unfinished frontier. */
+  progressMastery?: number;
   /** Total activities in the plan (default 6). */
   budget?: number;
 };
 
 const DEFAULT_BUDGET = 6;
-const NEW_LEARNING_FLOOR = 0.25;
 const COMPRESSION_MIN_WEIGHT = 0.3;
 const COMPRESSION_MAX_DEPTH = 3;
 
@@ -105,7 +106,7 @@ function interleave(
 
 export function buildSessionPlan(input: SessionPlanInput): SessionActivity[] {
   const budget = input.budget ?? DEFAULT_BUDGET;
-  const newFloor = Math.max(1, Math.ceil(budget * NEW_LEARNING_FLOOR));
+  const newFloor = newLearningSlots(input.progressMastery ?? 0.5, budget);
 
   const dueNodes = new Set(input.dueNodeReviews.map((review) => review.nodeId));
   for (const card of input.dueCards) if (card.nodeId) dueNodes.add(card.nodeId);
@@ -176,4 +177,13 @@ export function buildSessionPlan(input: SessionPlanInput): SessionActivity[] {
 
   // 4. Space confusable skills apart.
   return interleave(activities, input.familyPairs, input.strandByNode);
+}
+
+/** A weak frontier is review-heavy but never frozen; a strong frontier moves
+ * faster but always retains at least one review slot while unfinished skills
+ * remain due. */
+export function newLearningSlots(progressMastery: number, budget = DEFAULT_BUDGET): number {
+  const mastery = Math.max(0, Math.min(1, progressMastery));
+  const share = mastery < 0.45 ? 0.17 : mastery < 0.65 ? 0.34 : mastery < 0.85 ? 0.5 : 0.67;
+  return Math.max(1, Math.min(Math.max(1, budget - 1), Math.round(budget * share)));
 }

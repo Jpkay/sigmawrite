@@ -1088,9 +1088,32 @@ export async function loadStudentSessionPlan(input: unknown): Promise<SessionPla
     };
   });
 
-  const availableSteps = steps.filter((step) => step.status !== "pending" && step.requiredEvidenceExpectation !== "independent_production");
+  const estimateMasteryByNode = new Map((estimateRows.data ?? []).map((row) => [row.node_id as string, Number(row.mastery_probability)]));
+  const practiceCandidateIds = [...new Set([...steps.map((step) => step.nodeId), ...dueNodeReviews.map((review) => review.nodeId)])];
+  const { data: approvedPracticeRows, error: approvedPracticeError } = practiceCandidateIds.length
+    ? await service.from("competency_items").select("primary_node_id").in("primary_node_id", practiceCandidateIds)
+      .in("review_status", ["auto_approved", "human_approved"])
+      .in("validator_type", ["exact", "regex", "conjugator", "agreement", "grammalecte"])
+      .limit(5000)
+    : { data: [] as Array<{ primary_node_id: string }>, error: null };
+  if (approvedPracticeError) throw new Error(approvedPracticeError.message);
+  const approvedCounts = new Map<string, number>();
+  for (const row of approvedPracticeRows ?? []) {
+    const nodeId = row.primary_node_id as string;
+    approvedCounts.set(nodeId, (approvedCounts.get(nodeId) ?? 0) + 1);
+  }
+  const practiceReady = new Set([...approvedCounts].filter(([, count]) => count >= 2).map(([nodeId]) => nodeId));
+  const availableSteps = steps.filter((step) =>
+    step.status !== "pending"
+    && step.requiredEvidenceExpectation !== "independent_production"
+    && practiceReady.has(step.nodeId)
+  );
+  const unfinishedMasteries = availableSteps.map((step) => estimateMasteryByNode.get(step.nodeId) ?? step.mastery);
+  const progressMastery = unfinishedMasteries.length
+    ? unfinishedMasteries.reduce((sum, mastery) => sum + mastery, 0) / unfinishedMasteries.length
+    : 0.5;
   const plan = buildSessionPlan({
-    dueNodeReviews,
+    dueNodeReviews: dueNodeReviews.filter((review) => practiceReady.has(review.nodeId)),
     dueCards,
     newSteps: availableSteps.map((step, index) => ({ nodeId: step.nodeId, position: index })),
     encompassingEdges: (edgeRows.data ?? [])
@@ -1099,6 +1122,7 @@ export async function loadStudentSessionPlan(input: unknown): Promise<SessionPla
     familyPairs: (edgeRows.data ?? [])
       .filter((edge) => edge.edge_type === "same_family")
       .map((edge) => [edge.source_node_id as string, edge.target_node_id as string] as [string, string]),
+    progressMastery,
   });
 
   const nodeIds = [...new Set(plan.flatMap((activity) => "nodeId" in activity && activity.nodeId ? [activity.nodeId] : []))];
@@ -1106,7 +1130,7 @@ export async function loadStudentSessionPlan(input: unknown): Promise<SessionPla
     ? await service.from("competency_nodes").select("id,label_fr").in("id", nodeIds)
     : { data: [] as Array<{ id: string; label_fr: string }> };
   const labelById = new Map((nodeRows ?? []).map((node) => [node.id as string, node.label_fr as string]));
-  const masteryByNode = new Map((estimateRows.data ?? []).map((row) => [row.node_id as string, Number(row.mastery_probability)]));
+  const masteryByNode = estimateMasteryByNode;
 
   return plan.map((activity): SessionPlanEntry => {
     if (activity.type === "review_card") {
@@ -1353,8 +1377,12 @@ async function finalizeAdaptiveDiagnostic(input: {
     .eq("student_id", input.studentId)
     .single();
   if (runError || !run?.taxonomy_release_id) throw new Error(runError?.message ?? "Version du diagnostic introuvable.");
+  const { data: v3PathRelease, error: v3PathReleaseError } = await input.service.from("taxonomy_releases")
+    .select("id").eq("release_key", "french-taxonomy-v3").eq("status", "published").maybeSingle();
+  if (v3PathReleaseError) throw new Error(v3PathReleaseError.message);
+  const pathTaxonomyReleaseId = (v3PathRelease?.id ?? run.taxonomy_release_id) as string;
   const [{ data: memberships, error: membershipError }, { data: targetRows, error: targetError }, { data: resultRows, error: resultError }, { data: student, error: studentError }, { data: goal, error: goalError }, { data: learnerProfile, error: profileError }, progress] = await Promise.all([
-    input.service.from("taxonomy_release_memberships").select("record_id,record_type,stable_key,record_snapshot").eq("release_id", run.taxonomy_release_id).in("record_type", ["competency_node", "competency_edge", "mastery_evidence", "progression_mapping"]),
+    input.service.from("taxonomy_release_memberships").select("record_id,record_type,stable_key,record_snapshot").eq("release_id", pathTaxonomyReleaseId).in("record_type", ["competency_node", "competency_edge", "mastery_evidence", "progression_mapping"]),
     input.service.from("diagnostic_run_targets").select("node_id").eq("run_id", input.runId),
     input.service.from("diagnostic_node_results").select("node_id,mastery_probability,uncertainty,direct_evidence_count,evidence_coverage_confirmed,evidence_kind,classification,section_key").eq("run_id", input.runId),
     input.service.from("students").select("current_grade").eq("id", input.studentId).single(),
@@ -1368,10 +1396,40 @@ async function finalizeAdaptiveDiagnostic(input: {
   const releaseNodeIds = new Set((memberships ?? [])
     .filter((row) => row.record_type === "competency_node")
     .map((row) => row.record_id as string));
-  const nodeIds = (targetRows ?? []).map((row) => row.node_id as string);
-  if (!nodeIds.length || nodeIds.some((nodeId) => !releaseNodeIds.has(nodeId))) {
-    throw new Error("La portée du diagnostic ne correspond pas à sa taxonomie publiée.");
-  }
+  if (!releaseNodeIds.size || !(targetRows ?? []).length) throw new Error("La taxonomie du parcours ne contient aucune compétence exploitable.");
+  const releaseNodeByKey = new Map((memberships ?? [])
+    .filter((row) => row.record_type === "competency_node")
+    .map((row) => [row.stable_key as string, row.record_id as string]));
+  const pathScope = selectDiagnosticTargets({
+    nodes: (memberships ?? []).filter((row) => row.record_type === "competency_node").flatMap((membership) => {
+      const snapshot = membership.record_snapshot as Record<string, unknown> | null;
+      const sectionKey = sectionForStrand(snapshot?.strand as Parameters<typeof sectionForStrand>[0]);
+      return sectionKey ? [{ id: membership.record_id as string, sectionKey }] : [];
+    }),
+    mappings: (memberships ?? []).filter((row) => row.record_type === "progression_mapping").flatMap((membership) => {
+      const snapshot = membership.record_snapshot as Record<string, unknown> | null;
+      const nodeId = releaseNodeByKey.get(String(membership.stable_key).split(":", 1)[0]);
+      return nodeId && snapshot && typeof snapshot.learnerMode === "string" && typeof snapshot.framework === "string"
+        ? [{ nodeId, learnerMode: snapshot.learnerMode, framework: snapshot.framework, levelMin: typeof snapshot.levelMin === "string" ? snapshot.levelMin : null }]
+        : [];
+    }),
+    edges: (memberships ?? []).filter((row) => row.record_type === "competency_edge").flatMap((membership) => {
+      const snapshot = membership.record_snapshot as Record<string, unknown> | null;
+      const sourceNodeId = typeof snapshot?.source === "string" ? releaseNodeByKey.get(snapshot.source) : undefined;
+      const targetNodeId = typeof snapshot?.target === "string" ? releaseNodeByKey.get(snapshot.target) : undefined;
+      return sourceNodeId && targetNodeId && snapshot?.type === "prerequisite"
+        ? [{ sourceNodeId, targetNodeId, prerequisiteClass: snapshot.prerequisiteClass === "soft" ? "soft" as const : "hard" as const }]
+        : [];
+    }),
+    goal: {
+      learnerMode: goal.target_framework === "cefr" ? "french_second_language" : "french_first_language",
+      framework: goal.target_framework as string,
+      targetLevel: String(goal.target_level ?? goal.target_grade ?? student.current_grade ?? ""),
+    },
+    assessmentKind: "initial",
+  });
+  const nodeIds = pathScope.targets.map((target) => target.id);
+  if (!nodeIds.length) throw new Error("L’objectif actif ne correspond à aucune compétence de la taxonomie du parcours.");
   const nodeIdSet = new Set(nodeIds);
   const { data: nodeRows, error: nodeError } = await input.service.from("competency_nodes")
     .select("id,key,label_fr,strand")
@@ -1460,7 +1518,7 @@ async function finalizeAdaptiveDiagnostic(input: {
         student_id: input.studentId,
         source_diagnostic_run_id: input.runId,
         learning_goal_id: run.learning_goal_id,
-        taxonomy_release_id: run.taxonomy_release_id,
+        taxonomy_release_id: pathTaxonomyReleaseId,
         provisional: Boolean(run.is_pilot),
         summary: { sectionCounts: path.sectionCounts, firstStepBySection: path.firstStepBySection },
       })

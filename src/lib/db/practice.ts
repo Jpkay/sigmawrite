@@ -1,12 +1,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { createClient } from "@/lib/supabase/server";
 import { itemRatingFromDifficulty, orderByTargetSuccess } from "@/lib/scoring/elo";
-import { conjugationLesson } from "@/lib/conjugation/lessons";
-import {
-  PRONOUN_PRACTICE_NODE_KEY,
-  pronounLesson,
-  selectPronounPracticeItems,
-} from "@/lib/grammar/pronouns";
+import { lessonForPracticeNode } from "@/lib/practice/lessons";
 import { predictedSuccess, selectOptimalPracticeItems } from "@/lib/practice/session";
 
 export type CatchUpStep = {
@@ -80,23 +75,17 @@ export async function getNodePractice(nodeId: string, client?: SupabaseClient, s
     .eq("primary_node_id", nodeId).in("review_status", ["auto_approved", "human_approved"])
     .in("validator_type", ["exact", "regex", "conjugator", "agreement", "grammalecte"]).order("difficulty").limit(80);
   if (error) throw new Error(error.message);
+  const { data: approvedLesson, error: lessonError } = await supabase.from("competency_lessons")
+    .select("explanation_fr,pattern_fr,examples_fr,exceptions_fr")
+    .eq("node_id", nodeId).eq("review_status", "human_approved").maybeSingle();
+  if (lessonError) throw new Error(lessonError.message);
   // Practice targets ~82% predicted success (Elo/1PL) when the learner has a
   // rating; without one the authored easy→hard order stands.
   let learnerRating = 0;
-  let completedPracticeSessions = 0;
   if (studentId && (itemRows?.length ?? 0) > 0) {
     const { data: rating } = await supabase.from("student_ability_ratings")
       .select("rating").eq("student_id", studentId).eq("strand", node.strand as string).maybeSingle();
     learnerRating = Number(rating?.rating ?? 0);
-    if (node.key === PRONOUN_PRACTICE_NODE_KEY) {
-      const { count, error: sessionError } = await supabase.from("practice_learning_sessions")
-        .select("id", { count: "exact", head: true })
-        .eq("student_id", studentId)
-        .eq("node_id", nodeId)
-        .eq("status", "completed");
-      if (sessionError) throw new Error(sessionError.message);
-      completedPracticeSessions = count ?? 0;
-    }
   }
   const ratedItems = (itemRows ?? []).map((item) => ({
     ...item,
@@ -106,20 +95,22 @@ export async function getNodePractice(nodeId: string, client?: SupabaseClient, s
     responseType: item.response_type as string,
     validatorConfig: item.validator_config as Record<string, unknown> | null,
   }));
-  const items = node.key === PRONOUN_PRACTICE_NODE_KEY
-    ? selectPronounPracticeItems(ratedItems, completedPracticeSessions, learnerRating)
-    : selectOptimalPracticeItems(
+  const items = selectOptimalPracticeItems(
       studentId ? orderByTargetSuccess(ratedItems, (item) => item.difficultyRating, learnerRating) : ratedItems,
       learnerRating,
     );
   let scaffoldLevel = 0;
   if(studentId){const{data:estimate}=await supabase.from("student_competency_estimates").select("scaffold_level").eq("student_id",studentId).eq("node_id",nodeId).maybeSingle();scaffoldLevel=Number(estimate?.scaffold_level??0);}
   return { node: { id: node.id as string, key: node.key as string, label: node.label_fr as string, description: node.description_fr as string | null, strand: node.strand as string }, scaffoldLevel,
-    lesson: node.strand === "conjugaison"
-      ? conjugationLesson(node.key as string, node.label_fr as string)
-      : node.key === PRONOUN_PRACTICE_NODE_KEY
-        ? pronounLesson(completedPracticeSessions, node.label_fr as string)
-        : null,
+    lesson: lessonForPracticeNode(
+      { key: node.key as string, label: node.label_fr as string, description: node.description_fr as string | null, strand: node.strand as string },
+      approvedLesson ? {
+        explanation: approvedLesson.explanation_fr as string,
+        pattern: approvedLesson.pattern_fr as string,
+        examples: approvedLesson.examples_fr as string[],
+        exceptions: approvedLesson.exceptions_fr as string[],
+      } : undefined,
+    ),
     items: items.map((item) => ({
     id: item.id as string, promptFr: item.prompt_fr as string, instructionsFr: item.instructions_fr as string | null,
     responseType: item.response_type as string, validatorType: item.validator_type as string,

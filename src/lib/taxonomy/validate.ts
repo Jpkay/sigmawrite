@@ -77,6 +77,11 @@ export type TaxonomyValidation = {
   manifest: TaxonomyManifest;
 };
 
+export type InstructionalProgressionOptions = {
+  /** Genuine entry competencies may be productive while having no prerequisite. */
+  productiveRootKeys?: ReadonlySet<string>;
+};
+
 export type TaxonomyManifest = {
   schemaVersion: 1;
   release: TaxonomyCandidate["release"];
@@ -246,4 +251,42 @@ export function validateTaxonomy(input: unknown): TaxonomyValidation {
 
   issues.sort((left, right) => `${left.severity}:${left.code}:${left.recordKeys.join(":")}`.localeCompare(`${right.severity}:${right.code}:${right.recordKeys.join(":")}`));
   return { valid: !issues.some((issue) => issue.severity === "error"), issues, manifest: buildTaxonomyManifest(candidate) };
+}
+
+/** Additional release gate for a teachable learning graph. The general
+ * validator deliberately permits disconnected taxonomies; a published
+ * instructional release must not. */
+export function validateInstructionalProgression(
+  candidate: TaxonomyCandidate,
+  options: InstructionalProgressionOptions = {},
+): TaxonomyIssue[] {
+  const incoming = new Map(candidate.nodes.map((node) => [node.key, 0]));
+  const outgoing = new Map(candidate.nodes.map((node) => [node.key, 0]));
+  for (const edge of candidate.edges) {
+    if (edge.type !== "prerequisite") continue;
+    incoming.set(edge.target, (incoming.get(edge.target) ?? 0) + 1);
+    outgoing.set(edge.source, (outgoing.get(edge.source) ?? 0) + 1);
+  }
+  const issues: TaxonomyIssue[] = [];
+  for (const node of candidate.nodes) {
+    const hasIncoming = (incoming.get(node.key) ?? 0) > 0;
+    const hasOutgoing = (outgoing.get(node.key) ?? 0) > 0;
+    const productive = node.evidence.some((evidence) =>
+      evidence.expectation === "controlled_production" || evidence.expectation === "independent_production"
+    );
+    const advanced = node.mappings.some((mapping) =>
+      (mapping.framework === "cefr" && ["B1", "B2", "C1", "C2"].includes(mapping.levelMin ?? ""))
+      || (mapping.framework === "native_grade" && Number(mapping.levelMin ?? 0) >= 8)
+    );
+    if (!hasIncoming && !hasOutgoing) {
+      issues.push({ severity: "error", code: "isolated_instructional_node", message: `Instructional node ${node.key} is isolated`, recordKeys: [node.key] });
+    }
+    if (advanced && !hasIncoming) {
+      issues.push({ severity: "error", code: "advanced_node_without_prerequisite", message: `Advanced node ${node.key} has no prerequisite`, recordKeys: [node.key] });
+    }
+    if (productive && !hasIncoming && !options.productiveRootKeys?.has(node.key)) {
+      issues.push({ severity: "error", code: "productive_node_without_prerequisite", message: `Productive node ${node.key} has no prerequisite`, recordKeys: [node.key] });
+    }
+  }
+  return issues.sort((left, right) => `${left.code}:${left.recordKeys.join(":")}`.localeCompare(`${right.code}:${right.recordKeys.join(":")}`));
 }

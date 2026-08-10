@@ -3,17 +3,15 @@ import {
   indirectPersonPronoun,
   PRONOUN_LESSON_MODULES,
   PRONOUN_MODULE_KEYS,
-  pronounLesson,
-  pronounModuleForCompletedSessions,
-  selectPronounPracticeItems,
+  pronounLessonForNode,
 } from "./pronouns";
 
 describe("object-pronoun practice progression", () => {
-  it("teaches six small concepts in a repeating sequence", () => {
+  it("keeps the six authored lesson families without session-count advancement", () => {
     expect(PRONOUN_MODULE_KEYS).toHaveLength(6);
-    expect(pronounModuleForCompletedSessions(0)).toBe("direct_objects");
-    expect(pronounModuleForCompletedSessions(1)).toBe("indirect_people");
-    expect(pronounModuleForCompletedSessions(6)).toBe("direct_objects");
+    expect(pronounLessonForNode("produire_pronom_cod", "COD")?.family).toBe("Pronoms COD");
+    expect(pronounLessonForNode("produire_pronom_coi_personne", "COI")?.family).toBe("Lui ou leur");
+    expect(pronounLessonForNode("ordonner_doubles_pronoms", "Deux pronoms")?.family).toBe("Deux pronoms");
   });
 
   it("states the lui/leur rule without inventing gender agreement", () => {
@@ -29,25 +27,6 @@ describe("object-pronoun practice progression", () => {
       expect(lesson.examples).toHaveLength(2);
       expect(lesson.exceptions.length).toBeGreaterThanOrEqual(2);
     }
-    expect(pronounLesson(1, "Pronoms").explanation).toContain("genre ne change rien");
-  });
-
-  it("uses four new exercises and two retrieval exercises after the first concept", () => {
-    const items = PRONOUN_MODULE_KEYS.flatMap((practiceModule, moduleIndex) =>
-      Array.from({ length: 6 }, (_, index) => ({
-        id: `${practiceModule}-${index}`,
-        difficultyRating: (index - 3) / 2,
-        validatorConfig: { practiceModule },
-        moduleIndex,
-      })),
-    );
-    const first = selectPronounPracticeItems(items, 0, 0);
-    expect(first).toHaveLength(6);
-    expect(new Set(first.map((item) => item.validatorConfig.practiceModule))).toEqual(new Set(["direct_objects"]));
-
-    const third = selectPronounPracticeItems(items, 2, 0);
-    expect(third).toHaveLength(6);
-    expect(third.filter((item) => item.validatorConfig.practiceModule === "direct_or_indirect")).toHaveLength(4);
-    expect(third.filter((item) => item.validatorConfig.practiceModule !== "direct_or_indirect")).toHaveLength(2);
+    expect(pronounLessonForNode("produire_pronom_coi_personne", "Pronoms")?.explanation).toContain("genre ne change rien");
   });
 });

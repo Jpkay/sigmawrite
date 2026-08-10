@@ -15,7 +15,7 @@ const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
 if (!url || !key) throw new Error("Supabase service environment is required.");
 const db = createClient(url, key, { auth: { persistSession: false } });
-const taxonomy = JSON.parse(readFileSync("generated/french-taxonomy-v2.json", "utf8")) as FrenchTaxonomyV2Artifact;
+const taxonomy = JSON.parse(readFileSync(process.env.DIAGNOSTIC_TAXONOMY_PATH ?? "generated/french-taxonomy-v2.json", "utf8")) as FrenchTaxonomyV2Artifact;
 const bank = JSON.parse(readFileSync(process.argv[2] ?? "generated/diagnostic-bank-v2.json", "utf8")) as CanonicalDiagnosticBankArtifact;
 const validation = validateCanonicalDiagnosticBank(bank, taxonomy.taxonomy);
 const fail = (message?: string) => { if (message) throw new Error(message); };
@@ -103,7 +103,7 @@ await mapWithConcurrency(importableItems, importConcurrency, async (entry) => {
       cefr_level: entry.item.cefrLevel ?? null,
       generation_type: entry.reviewStatus === "human_approved" ? "ai_human_reviewed" : "ai",
       generation_model: process.env.LLM_MODEL ?? "unknown",
-      prompt_version: "diagnostic-bank-v2",
+      prompt_version: bank.bank.key,
       qc_gates: entry.qcGates,
       review_status: entry.reviewStatus,
       reviewer_profile_id: entry.review?.reviewerProfileId ?? null,
@@ -146,7 +146,7 @@ await mapWithConcurrency(importableItems, importConcurrency, async (entry) => {
         cefr_level: entry.item.cefrLevel ?? null,
         generation_type: entry.reviewStatus === "human_approved" ? "ai_human_reviewed" : "ai",
         generation_model: process.env.LLM_MODEL ?? "local-authoring",
-        prompt_version: "diagnostic-bank-v2",
+        prompt_version: bank.bank.key,
         qc_gates: entry.qcGates,
         review_status: entry.reviewStatus,
         reviewer_profile_id: entry.review?.reviewerProfileId ?? null,
@@ -218,7 +218,7 @@ const publisher = process.env.DIAGNOSTIC_BANK_PUBLISHER_PROFILE_ID;
 if (publisher) {
   if (!validation.valid) throw new Error("Diagnostic bank cannot be published until every section passes.");
   if (taxonomyRelease!.status !== "published") throw new Error("Taxonomy must be published before its diagnostic bank.");
-  const releaseReview = readFileSync("docs/french-diagnostic-bank-v2-release.md", "utf8");
+  const releaseReview = readFileSync(`docs/${bank.bank.key}-release.md`, "utf8");
   if (
     !releaseReview.includes("**Decision:** approve")
     || !releaseReview.includes(`**Approved checksum:** \`${validation.manifest.checksum}\``)

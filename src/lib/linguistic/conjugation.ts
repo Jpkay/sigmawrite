@@ -21,6 +21,7 @@ export type Tense =
   | "passe_compose"
   | "futur_simple"
   | "futur_proche"
+  | "passe_simple"
   | "conditionnel_present"
   | "subjonctif_present"
   | "imperatif_present"
@@ -296,6 +297,39 @@ export function futurProche(infinitive: string, person: Person): string {
   return `${present("aller", person)} ${infinitive.toLowerCase()}`;
 }
 
+const PASSE_SIMPLE_IRREGULAR: Record<string, string[]> = {
+  "être": ["fus", "fus", "fut", "fûmes", "fûtes", "furent"],
+  "avoir": ["eus", "eus", "eut", "eûmes", "eûtes", "eurent"],
+  "faire": ["fis", "fis", "fit", "fîmes", "fîtes", "firent"],
+  "venir": ["vins", "vins", "vint", "vînmes", "vîntes", "vinrent"],
+  "tenir": ["tins", "tins", "tint", "tînmes", "tîntes", "tinrent"],
+  "prendre": ["pris", "pris", "prit", "prîmes", "prîtes", "prirent"],
+  "mettre": ["mis", "mis", "mit", "mîmes", "mîtes", "mirent"],
+  "voir": ["vis", "vis", "vit", "vîmes", "vîtes", "virent"],
+  "pouvoir": ["pus", "pus", "put", "pûmes", "pûtes", "purent"],
+  "vouloir": ["voulus", "voulus", "voulut", "voulûmes", "voulûtes", "voulurent"],
+  "devoir": ["dus", "dus", "dut", "dûmes", "dûtes", "durent"],
+  "savoir": ["sus", "sus", "sut", "sûmes", "sûtes", "surent"],
+  "lire": ["lus", "lus", "lut", "lûmes", "lûtes", "lurent"],
+  "dire": ["dis", "dis", "dit", "dîmes", "dîtes", "dirent"],
+  "boire": ["bus", "bus", "but", "bûmes", "bûtes", "burent"],
+  "courir": ["courus", "courus", "courut", "courûmes", "courûtes", "coururent"],
+  "mourir": ["mourus", "mourus", "mourut", "mourûmes", "mourûtes", "moururent"],
+  "naître": ["naquis", "naquis", "naquit", "naquîmes", "naquîtes", "naquirent"],
+};
+
+/** Passé simple for regular -er/-ir/-re verbs and the frequent irregular set
+ * used by the approved item bank. Unsupported forms fail closed. */
+export function passeSimple(infinitive: string, person: Person): string {
+  const verb = infinitive.toLocaleLowerCase("fr");
+  const irregular = PASSE_SIMPLE_IRREGULAR[verb];
+  if (irregular) return irregular[PERSON_INDEX[person]];
+  if (verb.endsWith("er")) return verb.slice(0, -2) + ["ai", "as", "a", "âmes", "âtes", "èrent"][PERSON_INDEX[person]];
+  if (verb.endsWith("ir")) return verb.slice(0, -2) + ["is", "is", "it", "îmes", "îtes", "irent"][PERSON_INDEX[person]];
+  if (verb.endsWith("re")) return verb.slice(0, -2) + ["is", "is", "it", "îmes", "îtes", "irent"][PERSON_INDEX[person]];
+  throw new UnsupportedVerbError(`passeSimple: unsupported verb "${infinitive}"`);
+}
+
 /** Unified dispatcher matching item validator_config {verb,tense,person,...}. */
 export function conjugate(
   infinitive: string,
@@ -316,6 +350,8 @@ export function conjugate(
       return futurSimple(infinitive, person);
     case "futur_proche":
       return futurProche(infinitive, person);
+    case "passe_simple":
+      return passeSimple(infinitive, person);
     case "conditionnel_present":
       return conditionnelPresent(infinitive, person);
     case "subjonctif_present":

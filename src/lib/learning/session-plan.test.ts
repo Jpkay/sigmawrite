@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildSessionPlan, type SessionActivity } from "./session-plan";
+import { buildSessionPlan, newLearningSlots, type SessionActivity } from "./session-plan";
 import type { EncompassingEdge } from "@/lib/graph/fire";
 
 const edges: EncompassingEdge[] = [
@@ -151,5 +151,14 @@ describe("buildSessionPlan — edge cases", () => {
     });
     expect(plan).toHaveLength(2);
     expect(plan.every((a) => a.type === "practice" && a.role === "new")).toBe(true);
+  });
+});
+
+describe("mastery-weighted spiral", () => {
+  it("increases advancement as mastery grows without eliminating review", () => {
+    expect(newLearningSlots(0.3, 6)).toBe(1);
+    expect(newLearningSlots(0.55, 6)).toBe(2);
+    expect(newLearningSlots(0.75, 6)).toBe(3);
+    expect(newLearningSlots(0.9, 6)).toBe(4);
   });
 });

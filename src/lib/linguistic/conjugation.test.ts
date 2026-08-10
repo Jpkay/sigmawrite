@@ -9,6 +9,7 @@ import {
   imperatifPresent,
   participePasse,
   passeCompose,
+  passeSimple,
   plusQueParfait,
   present,
   subjonctifPresent,
@@ -235,6 +236,15 @@ describe("futur proche", () => {
   });
 });
 
+describe("passé simple", () => {
+  it("covers regular and frequent irregular paradigms", () => {
+    expect(passeSimple("parler", "3p")).toBe("parlèrent");
+    expect(passeSimple("finir", "1p")).toBe("finîmes");
+    expect(passeSimple("être", "3p")).toBe("furent");
+    expect(passeSimple("venir", "3s")).toBe("vint");
+  });
+});
+
 describe("conjugate dispatcher", () => {
   it("routes by tense", () => {
     expect(conjugate("parler", "present", "2s")).toBe("parles");
@@ -244,6 +254,7 @@ describe("conjugate dispatcher", () => {
     );
     expect(conjugate("parler", "futur_simple", "1s")).toBe("parlerai");
     expect(conjugate("parler", "futur_proche", "1s")).toBe("vais parler");
+    expect(conjugate("parler", "passe_simple", "3s")).toBe("parla");
     expect(conjugate("vouloir", "conditionnel_present", "1p")).toBe("voudrions");
     expect(conjugate("être", "subjonctif_present", "3s")).toBe("soit");
     expect(conjugate("aller", "imperatif_present", "2s")).toBe("va");

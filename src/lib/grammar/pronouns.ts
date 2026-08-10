@@ -1,5 +1,3 @@
-import { selectOptimalPracticeItems, type RatedPracticeItem } from "@/lib/practice/session";
-
 export const PRONOUN_PRACTICE_NODE_KEY = "construction_pronom_objet";
 
 export const PRONOUN_MODULE_KEYS = [
@@ -67,49 +65,28 @@ const MODULES: Record<PronounModuleKey, Omit<PronounLesson, "eyebrow">> = {
   },
 };
 
-export function pronounModuleForCompletedSessions(completedSessions: number): PronounModuleKey {
-  return PRONOUN_MODULE_KEYS[Math.max(0, Math.floor(completedSessions)) % PRONOUN_MODULE_KEYS.length];
-}
+const NODE_MODULE: Record<string, PronounModuleKey> = {
+  identifier_complement_direct: "direct_objects",
+  produire_pronom_cod: "direct_objects",
+  produire_pronom_coi_personne: "indirect_people",
+  distinguer_pronom_cod_coi: "direct_or_indirect",
+  produire_pronoms_y_en: "y_and_en",
+  placer_pronom_complement: "position_and_agreement",
+  accorder_participe_cod_antepose: "position_and_agreement",
+  ordonner_doubles_pronoms: "double_pronouns",
+  construction_pronom_objet: "direct_or_indirect",
+};
 
-export function pronounLesson(completedSessions: number, nodeLabel: string): PronounLesson {
-  const lesson = MODULES[pronounModuleForCompletedSessions(completedSessions)];
+export function pronounLessonForNode(nodeKey: string, nodeLabel: string): PronounLesson | null {
+  const moduleKey = NODE_MODULE[nodeKey];
+  if (!moduleKey) return null;
+  const lesson = MODULES[moduleKey];
   return { ...lesson, eyebrow: `Leçon express · ${nodeLabel} · ${lesson.family}` };
 }
 
 export function indirectPersonPronoun(number: "singular" | "plural", gender: "masculine" | "feminine") {
   void gender;
   return number === "singular" ? "lui" : "leur";
-}
-
-type ModularPracticeItem = RatedPracticeItem & {
-  validatorConfig: Record<string, unknown> | null;
-};
-
-function moduleOf(item: ModularPracticeItem): PronounModuleKey | null {
-  const value = item.validatorConfig?.practiceModule;
-  return PRONOUN_MODULE_KEYS.includes(value as PronounModuleKey) ? value as PronounModuleKey : null;
-}
-
-/** Four new-concept exercises plus two retrieval exercises once prior concepts exist. */
-export function selectPronounPracticeItems<T extends ModularPracticeItem>(
-  items: T[],
-  completedSessions: number,
-  learnerRating: number,
-  limit = 6,
-): T[] {
-  const current = pronounModuleForCompletedSessions(completedSessions);
-  const introducedCount = Math.min(PRONOUN_MODULE_KEYS.length, Math.max(1, Math.floor(completedSessions) + 1));
-  const introduced = new Set(PRONOUN_MODULE_KEYS.slice(0, introducedCount));
-  const currentItems = items.filter((item) => moduleOf(item) === current);
-  const reviewItems = items.filter((item) => {
-    const candidateModule = moduleOf(item);
-    return candidateModule !== null && candidateModule !== current && introduced.has(candidateModule);
-  });
-  if (!currentItems.length) return selectOptimalPracticeItems(items, learnerRating, limit);
-  const reviewCount = reviewItems.length ? Math.min(2, limit) : 0;
-  const selectedCurrent = selectOptimalPracticeItems(currentItems, learnerRating, limit - reviewCount);
-  const selectedReview = selectOptimalPracticeItems(reviewItems, learnerRating, reviewCount);
-  return [...selectedCurrent, ...selectedReview];
 }
 
 export const PRONOUN_LESSON_MODULES = Object.values(MODULES);
