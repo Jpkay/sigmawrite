@@ -21,6 +21,7 @@ export type Tense =
   | "passe_compose"
   | "futur_simple"
   | "futur_proche"
+  | "passe_recent"
   | "passe_simple"
   | "conditionnel_present"
   | "subjonctif_present"
@@ -330,6 +331,13 @@ export function passeSimple(infinitive: string, person: Person): string {
   throw new UnsupportedVerbError(`passeSimple: unsupported verb "${infinitive}"`);
 }
 
+/** Passé récent: venir au présent + de + infinitif. */
+export function passeRecent(infinitive: string, person: Person): string {
+  const verb = infinitive.toLocaleLowerCase("fr");
+  const connector = /^[aeiouyàâäéèêëîïôöùûü]/i.test(verb) ? "d’" : "de ";
+  return `${present("venir", person)} ${connector}${verb}`;
+}
+
 /** Unified dispatcher matching item validator_config {verb,tense,person,...}. */
 export function conjugate(
   infinitive: string,
@@ -350,6 +358,8 @@ export function conjugate(
       return futurSimple(infinitive, person);
     case "futur_proche":
       return futurProche(infinitive, person);
+    case "passe_recent":
+      return passeRecent(infinitive, person);
     case "passe_simple":
       return passeSimple(infinitive, person);
     case "conditionnel_present":

@@ -12,8 +12,8 @@ create table if not exists public.competency_lessons (
   pattern_fr text not null,
   examples_fr jsonb not null default '[]'::jsonb,
   exceptions_fr jsonb not null default '[]'::jsonb,
-  review_status text not null default 'human_approved'
-    check (review_status in ('draft','human_approved','rejected','retired')),
+  review_status text not null default 'auto_approved'
+    check (review_status in ('draft','auto_approved','human_approved','rejected','retired')),
   version integer not null default 1 check (version > 0),
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now(),
@@ -24,7 +24,7 @@ create table if not exists public.competency_lessons (
 alter table public.competency_lessons enable row level security;
 drop policy if exists competency_lessons_read on public.competency_lessons;
 create policy competency_lessons_read on public.competency_lessons for select
-  using (review_status = 'human_approved' and auth.role() = 'authenticated');
+  using (review_status in ('auto_approved','human_approved') and auth.role() = 'authenticated');
 grant select on public.competency_lessons to authenticated;
 
 insert into public.competency_lessons(node_id,explanation_fr,pattern_fr,examples_fr,exceptions_fr,review_status)
@@ -39,7 +39,7 @@ select node.id,
          'Le sens de la phrase reste prioritaire : une forme ressemblante ne suffit pas.',
          'Une réponse avec indice aide à apprendre, mais seule une réponse autonome confirme la maîtrise.'
        ),
-       'human_approved'
+       'auto_approved'
 from public.competency_nodes node
 where node.review_status in ('auto_approved','human_approved')
 on conflict(node_id) do nothing;
@@ -55,7 +55,7 @@ begin
       'Observe le repère → explique ton choix → applique-le dans une phrase nouvelle.',
       jsonb_build_array('Je repère précisément la compétence demandée avant de répondre.','Je vérifie mon choix dans un nouvel exemple sans recopier le modèle.'),
       jsonb_build_array('Le sens de la phrase reste prioritaire : une forme ressemblante ne suffit pas.','Une réponse avec indice aide à apprendre, mais seule une réponse autonome confirme la maîtrise.'),
-      'human_approved'
+      'auto_approved'
     ) on conflict(node_id) do update set
       explanation_fr=excluded.explanation_fr,
       updated_at=now()
@@ -70,6 +70,56 @@ create trigger competency_nodes_ensure_lesson
 after insert or update of description_fr,review_status on public.competency_nodes
 for each row execute function public.ensure_approved_competency_lesson();
 
+-- Append-only, idempotent evidence ledger. Mastery probability alone is not
+-- enough to complete a step: the learner must succeed on at least two distinct
+-- unaided occasions in the evidence channel required by that graph node.
+create table if not exists public.competency_mastery_evidence_occurrences (
+  id uuid primary key default gen_random_uuid(),
+  student_id uuid not null references public.students(id) on delete cascade,
+  node_id uuid not null references public.competency_nodes(id) on delete cascade,
+  occurrence_key text not null,
+  source_type text not null check (source_type in ('practice','reading','writing')),
+  source_id text not null,
+  item_id uuid references public.competency_items(id) on delete set null,
+  evidence_expectation text not null check (evidence_expectation in (
+    'receptive','controlled_production','independent_production'
+  )),
+  successful boolean not null,
+  hints_used integer not null default 0 check (hints_used >= 0),
+  occurred_at timestamptz not null,
+  metadata jsonb not null default '{}'::jsonb,
+  created_at timestamptz not null default now(),
+  unique(student_id,node_id,occurrence_key)
+);
+
+alter table public.competency_mastery_evidence_occurrences enable row level security;
+drop policy if exists competency_mastery_evidence_read on public.competency_mastery_evidence_occurrences;
+create policy competency_mastery_evidence_read on public.competency_mastery_evidence_occurrences for select
+  using (public.can_view_student(student_id));
+grant select on public.competency_mastery_evidence_occurrences to authenticated;
+create index if not exists competency_mastery_evidence_lookup_idx
+  on public.competency_mastery_evidence_occurrences(student_id,node_id,evidence_expectation,successful,occurred_at desc);
+
+create table if not exists public.independent_production_submissions (
+  id uuid primary key default gen_random_uuid(),
+  student_id uuid not null references public.students(id) on delete cascade,
+  node_id uuid not null references public.competency_nodes(id) on delete cascade,
+  content text not null check (char_length(content) between 40 and 5000),
+  content_checksum text not null,
+  matched_forms jsonb not null default '[]'::jsonb check (jsonb_typeof(matched_forms)='array'),
+  grammar_matches jsonb not null default '[]'::jsonb check (jsonb_typeof(grammar_matches)='array'),
+  demonstrated boolean not null,
+  verified boolean not null,
+  submitted_at timestamptz not null default now(),
+  unique(student_id,node_id,content_checksum)
+);
+
+alter table public.independent_production_submissions enable row level security;
+drop policy if exists independent_production_submissions_read on public.independent_production_submissions;
+create policy independent_production_submissions_read on public.independent_production_submissions for select
+  using (public.owns_student(student_id));
+grant select on public.independent_production_submissions to authenticated;
+
 create or replace function public.advance_student_learning_path(
   p_student_id uuid,
   p_node_id uuid,
@@ -82,6 +132,9 @@ declare
   v_path_id uuid;
   v_completed integer:=0;
   v_unlocked integer:=0;
+  v_successes integer:=0;
+  v_distinct_sources integer:=0;
+  v_distinct_items integer:=0;
 begin
   if auth.role()<>'service_role' then raise exception 'service_role_required'; end if;
   if p_evidence_expectation is not null and p_evidence_expectation not in ('receptive','controlled_production','independent_production') then
@@ -92,8 +145,21 @@ begin
   order by created_at desc limit 1 for update;
   if v_path_id is null then return jsonb_build_object('pathId',null,'completed',0,'unlocked',0); end if;
 
-  -- Completion is still evidence-aware and mastery-gated.
-  if p_mastery>=.85 then
+  select count(*),count(distinct evidence.source_id),count(distinct evidence.item_id)
+  into v_successes,v_distinct_sources,v_distinct_items
+  from public.competency_mastery_evidence_occurrences evidence
+  where evidence.student_id=p_student_id
+    and evidence.node_id=p_node_id
+    and evidence.evidence_expectation=p_evidence_expectation
+    and evidence.successful
+    and evidence.hints_used=0;
+
+  -- Completion is mastery-gated, evidence-channel aware, repeated and unaided.
+  if p_mastery>=.85
+    and v_successes>=2
+    and v_distinct_sources>=2
+    and (p_evidence_expectation<>'controlled_production' or v_distinct_items>=3)
+  then
     update public.student_learning_path_steps set status='completed',completed_at=p_completed_at
     where path_id=v_path_id and node_id=p_node_id and status in ('available','in_progress')
       and (required_evidence_expectation is null or required_evidence_expectation=p_evidence_expectation);
@@ -119,14 +185,14 @@ begin
   if not exists(select 1 from public.student_learning_path_steps where path_id=v_path_id and status not in ('completed','skipped')) then
     update public.student_learning_paths set status='completed',completed_at=p_completed_at where id=v_path_id;
   end if;
-  return jsonb_build_object('pathId',v_path_id,'completed',v_completed,'unlocked',v_unlocked,'readinessThreshold',.65,'masteryThreshold',.85);
+  return jsonb_build_object('pathId',v_path_id,'completed',v_completed,'unlocked',v_unlocked,'readinessThreshold',.65,'masteryThreshold',.85,'successfulEvidenceOccasions',v_successes,'distinctEvidenceSources',v_distinct_sources,'distinctControlledItems',v_distinct_items,'requiredEvidenceOccasions',2);
 end
 $$;
 
 revoke all on function public.advance_student_learning_path(uuid,uuid,numeric,timestamptz,text) from public,anon,authenticated;
 grant execute on function public.advance_student_learning_path(uuid,uuid,numeric,timestamptz,text) to service_role;
 comment on function public.advance_student_learning_path(uuid,uuid,numeric,timestamptz,text) is
-  'Mastery spiral: 0.65 unlocks adjacent progress, 0.85 plus matching evidence completes; unfinished skills remain in FSRS review.';
+  'Mastery spiral: 0.65 unlocks adjacent progress; completion needs 0.85, two distinct matching unaided sources, and three distinct items for controlled production; unfinished skills remain in FSRS review.';
 
 -- Once v3 has been imported, split the v1 pronoun bank across its atomic nodes.
 update public.competency_items item

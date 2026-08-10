@@ -42,7 +42,7 @@ export function remainingSessionSeconds(startedAtMs: number, nowMs: number): num
 
 export function plannedExerciseCount(approvedItemCount: number): number {
   const approved = Math.max(0, Math.floor(approvedItemCount));
-  return approved >= 2 ? PRACTICE_EXERCISE_TARGET : approved;
+  return approved >= 3 ? PRACTICE_EXERCISE_TARGET : approved;
 }
 
 /** Revisit a small reviewed bank within the session instead of inventing content. */

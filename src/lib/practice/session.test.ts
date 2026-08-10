@@ -40,6 +40,7 @@ describe("seven-minute practice session", () => {
 
   it("turns a small reviewed bank into six practice opportunities", () => {
     expect(plannedExerciseCount(3)).toBe(6);
+    expect(plannedExerciseCount(2)).toBe(2);
     expect(expandReviewedPractice(["a", "b", "c"], 6)).toEqual(["a", "b", "c", "a", "b", "c"]);
     expect(plannedExerciseCount(1)).toBe(1);
   });

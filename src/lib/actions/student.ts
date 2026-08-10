@@ -53,6 +53,11 @@ import { requireStudentLearningUnlocked } from "@/lib/diagnostic/access";
 import { bktUpdate, bktUpdateWeighted, guessFromChoices, masteryUncertainty } from "@/lib/scoring/bkt";
 import { validateAnswer } from "@/lib/linguistic/validator";
 import { LanguageToolChecker } from "@/lib/linguistic/languagetool";
+import {
+  detectIndependentProduction,
+  independentProductionPrompt,
+  supportsIndependentProductionNode,
+} from "@/lib/linguistic/independent-production";
 import type { ValidatorType } from "@/lib/linguistic/types";
 import { getCatchUpPlan } from "@/lib/db/practice";
 import { evaluateWriting } from "@/lib/writing/evaluate";
@@ -81,6 +86,7 @@ const answerSchema = z.object({
   sessionId: uuidSchema, textKey: z.string().min(1).max(100), questionKey: z.string().min(1).max(40), choiceIndex: z.number().int().min(0).max(20), nextPhase: z.enum(["questions", "summary"]).optional(),
 });
 const summarySchema = z.object({ sessionId: uuidSchema, textKey: z.string().min(1).max(100), summaryText: z.string().trim().min(1).max(5000) });
+const independentProductionSchema = z.object({ nodeId: uuidSchema, text: z.string().trim().min(40).max(5000) });
 const completeSessionSchema = z.object({
   sessionId: uuidSchema,
   textKey: z.string().min(1).max(100),
@@ -393,6 +399,12 @@ async function recordDirectCompetencyEvidence(input: {
   /** When provided, folds the observation into the node's FSRS memory state. */
   correct?: boolean;
   memoryResult?: RetrievalResult;
+  /** Stable source identity; retries must not create an extra mastery occasion. */
+  occurrenceKey: string;
+  sourceType: "practice" | "reading" | "writing";
+  sourceId: string;
+  itemId?: string;
+  hintsUsed?: number;
 }) {
   const { data: prior, error: priorError } = await input.service
     .from("student_competency_estimates")
@@ -442,6 +454,24 @@ async function recordDirectCompetencyEvidence(input: {
     }, { onConflict: "student_id,node_id" });
   if (estimateError) throw new Error(estimateError.message);
 
+  if (input.correct !== undefined) {
+    const { error: evidenceError } = await input.service
+      .from("competency_mastery_evidence_occurrences")
+      .upsert({
+        student_id: input.studentId,
+        node_id: input.nodeId,
+        occurrence_key: input.occurrenceKey,
+        source_type: input.sourceType,
+        source_id: input.sourceId,
+        item_id: input.itemId ?? null,
+        evidence_expectation: input.evidenceExpectation,
+        successful: input.correct,
+        hints_used: input.hintsUsed ?? 0,
+        occurred_at: input.at,
+      }, { onConflict: "student_id,node_id,occurrence_key", ignoreDuplicates: true });
+    if (evidenceError) throw new Error(evidenceError.message);
+  }
+
   const { error: pathError } = await input.service.rpc("advance_student_learning_path", {
     p_student_id: input.studentId,
     p_node_id: input.nodeId,
@@ -470,6 +500,9 @@ async function evaluateAndStoreWriting(input: {
       nodeId: plan.nodeId,
       at: evaluatedAt,
       evidenceExpectation: "independent_production",
+      occurrenceKey: `writing:${input.summaryId}:${input.revisionNumber}:${plan.nodeId}`,
+      sourceType: "writing",
+      sourceId: `${input.summaryId}:${input.revisionNumber}`,
       updateMastery: (prior) => bktUpdateWeighted(prior, false, plan.evidenceWeight),
       correct: false,
       scorePatch: {
@@ -481,6 +514,49 @@ async function evaluateAndStoreWriting(input: {
       // be treated as a positive independent-production verification.
       pathMastery: (mastery) => Math.min(mastery, 0.84),
     });
+  }
+
+  // Positive independent-production evidence is deliberately conservative:
+  // the active graph step must require it, the learner's connected writing
+  // must contain two distinct target forms, and the independent language
+  // rubric must be available and clean enough. Two separate texts are still
+  // required by the database completion guard.
+  const languageScore = Number(evaluation.rubric.rubric.language);
+  if (!evaluation.degraded && evaluation.rubric.source === "blended" && evaluation.rubric.score >= 75 && languageScore >= 70) {
+    const { data: activePath } = await input.service.from("student_learning_paths")
+      .select("id").eq("student_id", input.studentId).eq("status", "active")
+      .order("created_at", { ascending: false }).limit(1).maybeSingle();
+    const { data: independentSteps } = activePath
+      ? await input.service.from("student_learning_path_steps")
+        .select("node_id,competency_nodes!inner(key)")
+        .eq("path_id", activePath.id)
+        .in("status", ["available", "in_progress"])
+        .eq("required_evidence_expectation", "independent_production")
+      : { data: [] as Array<{ node_id: string; competency_nodes: { key: string } }> };
+    const failedNodeIds = new Set(evaluation.revisionPlan.map((plan) => plan.nodeId));
+    for (const step of independentSteps ?? []) {
+      const node = step.competency_nodes as unknown as { key: string };
+      const match = detectIndependentProduction(node.key, input.studentText);
+      if (!match.demonstrated || failedNodeIds.has(step.node_id as string)) continue;
+      await recordDirectCompetencyEvidence({
+        service: input.service,
+        studentId: input.studentId,
+        nodeId: step.node_id as string,
+        at: evaluatedAt,
+        evidenceExpectation: "independent_production",
+        occurrenceKey: `writing:${input.summaryId}:${input.revisionNumber}:${step.node_id as string}`,
+        sourceType: "writing",
+        sourceId: input.summaryId,
+        updateMastery: (prior) => bktUpdateWeighted(prior, true, 0.7, { pGuess: 0.02, pSlip: 0.12 }),
+        correct: true,
+        memoryResult: "good",
+        practiced: true,
+        scorePatch: {
+          productive_score: Math.min(1, evaluation.rubric.score / 100),
+          written_score: Math.min(1, languageScore / 100),
+        },
+      });
+    }
   }
   return evaluation;
 }
@@ -1030,7 +1106,7 @@ export async function loadStudentCatchUpPlan(input: unknown) {
 }
 
 export type SessionPlanEntry = {
-  type: "practice" | "review_node" | "review_card";
+  type: "practice" | "production" | "review_node" | "review_card";
   role: "new" | "compression" | "review";
   nodeId?: string;
   cardId?: string;
@@ -1090,30 +1166,39 @@ export async function loadStudentSessionPlan(input: unknown): Promise<SessionPla
 
   const estimateMasteryByNode = new Map((estimateRows.data ?? []).map((row) => [row.node_id as string, Number(row.mastery_probability)]));
   const practiceCandidateIds = [...new Set([...steps.map((step) => step.nodeId), ...dueNodeReviews.map((review) => review.nodeId)])];
-  const { data: approvedPracticeRows, error: approvedPracticeError } = practiceCandidateIds.length
-    ? await service.from("competency_items").select("primary_node_id").in("primary_node_id", practiceCandidateIds)
-      .in("review_status", ["auto_approved", "human_approved"])
-      .in("validator_type", ["exact", "regex", "conjugator", "agreement", "grammalecte"])
-      .limit(5000)
-    : { data: [] as Array<{ primary_node_id: string }>, error: null };
+  const [{ data: approvedPracticeRows, error: approvedPracticeError }, { data: candidateNodes, error: candidateNodeError }] = practiceCandidateIds.length
+    ? await Promise.all([
+      service.from("competency_items").select("primary_node_id").in("primary_node_id", practiceCandidateIds)
+        .in("review_status", ["auto_approved", "human_approved"])
+        .in("validator_type", ["exact", "regex", "conjugator", "agreement", "grammalecte"])
+        .limit(5000),
+      service.from("competency_nodes").select("id,key").in("id", practiceCandidateIds),
+    ])
+    : [{ data: [] as Array<{ primary_node_id: string }>, error: null }, { data: [] as Array<{ id: string; key: string }>, error: null }];
   if (approvedPracticeError) throw new Error(approvedPracticeError.message);
+  if (candidateNodeError) throw new Error(candidateNodeError.message);
   const approvedCounts = new Map<string, number>();
   for (const row of approvedPracticeRows ?? []) {
     const nodeId = row.primary_node_id as string;
     approvedCounts.set(nodeId, (approvedCounts.get(nodeId) ?? 0) + 1);
   }
-  const practiceReady = new Set([...approvedCounts].filter(([, count]) => count >= 2).map(([nodeId]) => nodeId));
+  const practiceReady = new Set([...approvedCounts].filter(([, count]) => count >= 3).map(([nodeId]) => nodeId));
+  const productionReady = new Set((candidateNodes ?? [])
+    .filter((node) => supportsIndependentProductionNode(node.key as string))
+    .map((node) => node.id as string));
+  const schedulable = new Set([...practiceReady, ...productionReady]);
   const availableSteps = steps.filter((step) =>
     step.status !== "pending"
-    && step.requiredEvidenceExpectation !== "independent_production"
-    && practiceReady.has(step.nodeId)
+    && (step.requiredEvidenceExpectation === "independent_production"
+      ? productionReady.has(step.nodeId)
+      : practiceReady.has(step.nodeId))
   );
   const unfinishedMasteries = availableSteps.map((step) => estimateMasteryByNode.get(step.nodeId) ?? step.mastery);
   const progressMastery = unfinishedMasteries.length
     ? unfinishedMasteries.reduce((sum, mastery) => sum + mastery, 0) / unfinishedMasteries.length
     : 0.5;
   const plan = buildSessionPlan({
-    dueNodeReviews: dueNodeReviews.filter((review) => practiceReady.has(review.nodeId)),
+    dueNodeReviews: dueNodeReviews.filter((review) => schedulable.has(review.nodeId)),
     dueCards,
     newSteps: availableSteps.map((step, index) => ({ nodeId: step.nodeId, position: index })),
     encompassingEdges: (edgeRows.data ?? [])
@@ -1145,19 +1230,134 @@ export async function loadStudentSessionPlan(input: unknown): Promise<SessionPla
     }
     const label = labelById.get(activity.nodeId) ?? activity.nodeId;
     if (activity.type === "review_node") {
+      const production = productionReady.has(activity.nodeId);
       return {
-        type: "review_node", role: "review", nodeId: activity.nodeId,
-        label: `Réviser : ${label}`,
+        type: production ? "production" : "review_node", role: "review", nodeId: activity.nodeId,
+        label: production ? `Réécrire : ${label}` : `Réviser : ${label}`,
         mastery: masteryByNode.get(activity.nodeId),
-        href: `/student/practice/${activity.nodeId}`,
+        href: production ? `/student/production/${activity.nodeId}` : `/student/practice/${activity.nodeId}`,
       };
     }
+    const production = productionReady.has(activity.nodeId);
     return {
-      type: "practice", role: activity.role, nodeId: activity.nodeId, label,
+      type: production ? "production" : "practice", role: activity.role, nodeId: activity.nodeId,
+      label: production ? `Écrire : ${label}` : label,
       mastery: masteryByNode.get(activity.nodeId),
-      href: `/student/practice/${activity.nodeId}`,
+      href: production ? `/student/production/${activity.nodeId}` : `/student/practice/${activity.nodeId}`,
     };
   });
+}
+
+async function independentProductionNode(service: SupabaseClient, studentId: string, nodeId: string) {
+  const { data: activePath, error: pathError } = await service.from("student_learning_paths")
+    .select("id").eq("student_id", studentId).eq("status", "active")
+    .order("created_at", { ascending: false }).limit(1).maybeSingle();
+  if (pathError) throw new Error(pathError.message);
+  if (!activePath) throw new Error("Aucun parcours actif.");
+  const { data: step, error: stepError } = await service.from("student_learning_path_steps")
+    .select("node_id,status,required_evidence_expectation")
+    .eq("path_id", activePath.id).eq("node_id", nodeId)
+    .in("status", ["available", "in_progress"])
+    .eq("required_evidence_expectation", "independent_production").maybeSingle();
+  if (stepError) throw new Error(stepError.message);
+  if (!step) throw new Error("Cette production autonome n’est pas encore disponible.");
+  const { data: node, error: nodeError } = await service.from("competency_nodes")
+    .select("id,key,label_fr,description_fr").eq("id", nodeId).single();
+  if (nodeError || !node || !supportsIndependentProductionNode(node.key as string)) {
+    throw new Error("Cette production autonome n’est pas encore vérifiable automatiquement.");
+  }
+  return node as { id: string; key: string; label_fr: string; description_fr: string | null };
+}
+
+export async function loadIndependentProductionTask(input: unknown) {
+  const data = checked(z.object({ nodeId: uuidSchema }), input);
+  const { studentId } = await context();
+  const node = await independentProductionNode(createServiceClient(), studentId, data.nodeId);
+  return {
+    nodeId: node.id,
+    nodeKey: node.key,
+    label: node.label_fr,
+    description: node.description_fr,
+    prompt: independentProductionPrompt(node.key, node.label_fr),
+    minimumWords: 50,
+    maximumWords: 100,
+  };
+}
+
+export async function submitIndependentProduction(input: unknown) {
+  const data = checked(independentProductionSchema, input);
+  const { supabase, studentId } = await context();
+  await requireStudentLearningUnlocked(supabase, studentId);
+  await moderateOrReject({ supabase, studentId, text: data.text, field: "memory_retrieval" });
+  const words = data.text.trim().split(/\s+/u).filter(Boolean).length;
+  if (words < 50 || words > 100) throw new Error("Écris entre 50 et 100 mots pour que la production soit vérifiable.");
+  const service = createServiceClient();
+  const node = await independentProductionNode(service, studentId, data.nodeId);
+  const target = detectIndependentProduction(node.key, data.text);
+  let grammarMatches: Awaited<ReturnType<LanguageToolChecker["check"]>>["matches"] = [];
+  let verified = true;
+  try {
+    grammarMatches = (await new LanguageToolChecker().check(data.text, { language: "fr", level: "picky" })).matches;
+  } catch {
+    verified = false;
+  }
+  const grammarErrorRate = grammarMatches.length / Math.max(1, words);
+  const demonstrated = verified && target.demonstrated && grammarErrorRate <= 0.05;
+  const checksum = createHash("sha256").update(data.text.normalize("NFC")).digest("hex");
+  const submittedAt = new Date().toISOString();
+  const { data: submission, error: submissionError } = await service.from("independent_production_submissions")
+    .insert({
+      student_id: studentId,
+      node_id: data.nodeId,
+      content: data.text,
+      content_checksum: checksum,
+      matched_forms: target.matchedForms,
+      grammar_matches: grammarMatches,
+      demonstrated,
+      verified,
+      submitted_at: submittedAt,
+    }).select("id").single();
+  if (submissionError?.code === "23505") throw new Error("Ce texte a déjà été évalué. Écris un nouveau paragraphe pour démontrer la maîtrise une autre fois.");
+  if (submissionError || !submission) throw new Error(submissionError?.message ?? "La production n’a pas pu être enregistrée.");
+  let mastery: number | null = null;
+  if (verified) {
+    const result = await recordDirectCompetencyEvidence({
+      service,
+      studentId,
+      nodeId: data.nodeId,
+      at: submittedAt,
+      evidenceExpectation: "independent_production",
+      occurrenceKey: `production:${submission.id as string}`,
+      sourceType: "writing",
+      sourceId: submission.id as string,
+      updateMastery: (prior) => bktUpdateWeighted(prior, demonstrated, 0.7, { pGuess: 0.02, pSlip: 0.12 }),
+      correct: demonstrated,
+      memoryResult: demonstrated ? "good" : "forgot",
+      practiced: true,
+      scorePatch: {
+        productive_score: demonstrated ? 1 : Math.max(0, 1 - grammarErrorRate * 10),
+        written_score: Math.max(0, 1 - grammarErrorRate * 10),
+      },
+      pathMastery: (value) => demonstrated ? value : Math.min(value, 0.84),
+    });
+    mastery = result.mastery;
+  }
+  revalidatePath("/student");
+  revalidatePath("/student/frontier");
+  return {
+    demonstrated,
+    verified,
+    mastery,
+    matchedForms: target.matchedForms,
+    grammarErrorCount: grammarMatches.length,
+    feedback: !verified
+      ? "La vérification linguistique est momentanément indisponible. Ton texte est conservé, mais il ne compte pas encore comme preuve de maîtrise."
+      : !target.demonstrated
+        ? "Utilise au moins deux formes différentes de la compétence demandée."
+        : grammarErrorRate > 0.05
+          ? "Le texte utilise bien la compétence, mais corrige encore les erreurs signalées avant qu’il compte comme preuve."
+          : "Cette production compte comme une preuve autonome. Une seconde production réussie, dans un autre texte, confirmera la maîtrise.",
+  };
 }
 
 export async function startNodePracticeSession(input: unknown) {
@@ -1171,7 +1371,7 @@ export async function startNodePracticeSession(input: unknown) {
     .in("validator_type", ["exact", "regex", "conjugator", "agreement", "grammalecte"]);
   if (countError) throw new Error(countError.message);
   const plannedExercises = plannedExerciseCount(count ?? 0);
-  if (plannedExercises < 1) throw new Error("Aucun exercice approuvé pour cette leçon.");
+  if ((count ?? 0) < 3) throw new Error("Cette leçon attend encore trois exercices approuvés distincts.");
   const existing = await service.from("practice_learning_sessions")
     .select("id,started_at,expires_at,planned_exercises")
     .eq("student_id", studentId).eq("client_request_id", data.clientRequestId).maybeSingle();
@@ -1235,13 +1435,19 @@ export async function submitNodePractice(input: unknown) {
   else { const validatorType=item.validator_type as ValidatorType; const grammarChecker=validatorType==="agreement"||validatorType==="grammalecte"?new LanguageToolChecker():undefined; const validation = await validateAnswer(data.answerText ?? "", { validatorType, config: item.validator_config as Record<string, unknown> | undefined, correctAnswer: item.correct_answer as string | undefined, acceptableAnswers: item.acceptable_answers as string[] },{grammarChecker}); correct = validation.pass; feedbackFr = validation.reason ?? null; }
   const now = new Date().toISOString();
   const hintsUsed = data.hintsUsed ?? 0;
-  await service.from("competency_attempts").insert({ student_id: studentId, item_id: item.id, node_id: data.nodeId, practice_session_id: data.practiceSessionId, exercise_position: data.exercisePosition, learner_mode: item.learner_mode, modality: item.modality, answer_text: data.answerText ?? null, selected_choice_id: data.selectedChoiceId ?? null, is_correct: correct, score: correct ? 1 : 0, latency_ms: Math.max(0, Date.now()-Date.parse(data.startedAt)), hints_used: hintsUsed, context: "practice", attempted_at: now });
+  const { data: attempt, error: attemptError } = await service.from("competency_attempts").insert({ student_id: studentId, item_id: item.id, node_id: data.nodeId, practice_session_id: data.practiceSessionId, exercise_position: data.exercisePosition, learner_mode: item.learner_mode, modality: item.modality, answer_text: data.answerText ?? null, selected_choice_id: data.selectedChoiceId ?? null, is_correct: correct, score: correct ? 1 : 0, latency_ms: Math.max(0, Date.now()-Date.parse(data.startedAt)), hints_used: hintsUsed, context: "practice", attempted_at: now }).select("id").single();
+  if (attemptError || !attempt) throw new Error(attemptError?.message ?? "La réponse n’a pas pu être enregistrée.");
   const { mastery } = await recordDirectCompetencyEvidence({
     service,
     studentId,
     nodeId: data.nodeId,
     at: now,
     evidenceExpectation: nodePracticeEvidenceExpectation(item.response_type as string),
+    occurrenceKey: `practice:${attempt.id as string}`,
+    sourceType: "practice",
+    sourceId: data.practiceSessionId,
+    itemId: item.id as string,
+    hintsUsed,
     // Hinted successes are weaker evidence: down-weight by the ladder depth.
     updateMastery: (prior) => correct && hintsUsed > 0
       ? bktUpdateWeighted(prior, true, 1 / (1 + hintsUsed))
@@ -1979,6 +2185,9 @@ export async function completeReadingSession(input: unknown) {
       nodeId: mapping.node_id as string,
       at: data.completedAt,
       evidenceExpectation: "receptive",
+      occurrenceKey: `reading:${data.sessionId}:${mapping.node_id as string}`,
+      sourceType: "reading",
+      sourceId: data.sessionId,
       updateMastery: (prior) => bktUpdate(prior, successfulReadingEvidence, {
         pTransit: 0.08,
         pSlip: 0.18,

@@ -77,7 +77,7 @@ export async function getNodePractice(nodeId: string, client?: SupabaseClient, s
   if (error) throw new Error(error.message);
   const { data: approvedLesson, error: lessonError } = await supabase.from("competency_lessons")
     .select("explanation_fr,pattern_fr,examples_fr,exceptions_fr")
-    .eq("node_id", nodeId).eq("review_status", "human_approved").maybeSingle();
+    .eq("node_id", nodeId).in("review_status", ["auto_approved", "human_approved"]).maybeSingle();
   if (lessonError) throw new Error(lessonError.message);
   // Practice targets ~82% predicted success (Elo/1PL) when the learner has a
   // rating; without one the authored easy→hard order stands.
