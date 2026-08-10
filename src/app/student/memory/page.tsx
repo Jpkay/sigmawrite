@@ -84,7 +84,7 @@ export default function MemoryPage() {
     <>
       <PageHeader
         title="Mémoire"
-        description="Les notions reviennent à intervalles croissants : 1, 3, 7, 21 puis 45 jours."
+        description="Les mots et notions reviennent quand le programme FSRS les estime utiles. Une réponse écrite est nécessaire pour progresser."
       />
 
       {/* Review */}

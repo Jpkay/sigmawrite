@@ -67,8 +67,10 @@ import { createHash } from "node:crypto";
 import { sanitizeStudentTopic } from "@/lib/safety/topic";
 import { plannedExerciseCount } from "@/lib/practice/session";
 import { hasStudentPathCoverage } from "@/lib/taxonomy/activation";
+import { evaluateConceptAnswer, scoreSeedQuestion } from "@/lib/scoring/short-answer";
+import { EMPTY_VOCABULARY_EVIDENCE, recordVocabularyEvidence, vocabularyLearningState, type VocabularyEvidenceKind } from "@/lib/vocabulary/learning";
 
-const answersSchema = z.record(z.string().min(1), z.number().int().min(0).max(20));
+const answersSchema = z.record(z.string().min(1), z.union([z.number().int().min(0).max(20), z.string().trim().min(1).max(1500)]));
 const uuidSchema = z.string().uuid();
 const dateTimeSchema = z.string().datetime({ offset: true });
 
@@ -84,8 +86,8 @@ const onboardingSchema = z.object({
 });
 const startSessionSchema = z.object({ textKey: z.string().min(1).max(100), startedAt: dateTimeSchema });
 const answerSchema = z.object({
-  sessionId: uuidSchema, textKey: z.string().min(1).max(100), questionKey: z.string().min(1).max(40), choiceIndex: z.number().int().min(0).max(20), nextPhase: z.enum(["questions", "summary"]).optional(),
-});
+  sessionId: uuidSchema, textKey: z.string().min(1).max(100), questionKey: z.string().min(1).max(40), choiceIndex: z.number().int().min(0).max(20).optional(), answerText: z.string().trim().min(1).max(1500).optional(), nextPhase: z.enum(["questions", "summary"]).optional(),
+}).refine((value) => value.choiceIndex !== undefined || value.answerText, "Réponse requise");
 const summarySchema = z.object({ sessionId: uuidSchema, textKey: z.string().min(1).max(100), summaryText: z.string().trim().min(1).max(5000) });
 const independentProductionSchema = z.object({ nodeId: uuidSchema, text: z.string().trim().min(40).max(5000) });
 const completeSessionSchema = z.object({
@@ -98,6 +100,7 @@ const completeSessionSchema = z.object({
   completedAt: dateTimeSchema,
 });
 const retrievalSchema = z.object({ cardId: uuidSchema, answerText: z.string().trim().min(1).max(5000), attemptedAt: dateTimeSchema });
+const vocabularyHelpSchema = z.object({ word: z.string().trim().min(1).max(100), occurredAt: dateTimeSchema });
 const skillPracticeSchema = z.object({ skillKey: z.string().min(1).max(100), corrects: z.array(z.boolean()).min(1).max(30) });
 const textKeySchema = z.object({ textKey: z.string().min(1).max(100) });
 const emptySchema = z.object({}).strict();
@@ -625,12 +628,12 @@ async function contentIds(
     .in("review_status", ["human_approved", "benchmark_locked"]).order("version_number", { ascending: false }).limit(1).single();
   if (versionError || !version) throw new Error("Version du texte introuvable.");
   if (questionKey === undefined) return { textVersionId: version.id as string };
-  const { data: question, error: questionError } = await supabase.from("questions").select("id").eq("text_version_id", version.id).eq("question_key", questionKey).single();
+  const { data: question, error: questionError } = await supabase.from("questions").select("id,answer_format,correct_answer,rubric").eq("text_version_id", version.id).eq("question_key", questionKey).single();
   if (questionError || !question) throw new Error("Question introuvable.");
-  if (choiceIndex === undefined) return { textVersionId: version.id as string, questionId: question.id as string };
+  if (choiceIndex === undefined) return { textVersionId: version.id as string, questionId: question.id as string, question };
   const { data: choice, error: choiceError } = await supabase.from("question_choices").select("id,is_correct").eq("question_id", question.id).eq("choice_index", choiceIndex).single();
   if (choiceError || !choice) throw new Error("Réponse introuvable.");
-  return { textVersionId: version.id as string, questionId: question.id as string, choiceId: choice.id as string, isCorrect: !!choice.is_correct };
+  return { textVersionId: version.id as string, questionId: question.id as string, choiceId: choice.id as string, isCorrect: !!choice.is_correct, question };
 }
 
 export async function loadStudentState() {
@@ -2121,9 +2124,15 @@ export async function submitAnswer(input: unknown) {
   await requireStudentLearningUnlocked(supabase, studentId);
   await consumeActionLimit(supabase, "submit_answer");
   const ids = await contentIds(supabase, data.textKey, data.questionKey, data.choiceIndex);
+  if (!ids.question) throw new Error("Question introuvable.");
+  const rubric = (ids.question.rubric && typeof ids.question.rubric === "object" ? ids.question.rubric : {}) as Record<string, unknown>;
+  const acceptedConcepts = Array.isArray(rubric.accepted_concepts) ? rubric.accepted_concepts.filter((value): value is string => typeof value === "string") : [];
+  const criteria = Array.isArray(rubric.scoring_criteria) ? rubric.scoring_criteria as Array<{label:string;conceptIds:string[];points:number}> : [];
+  const conceptEvaluation = data.answerText ? evaluateConceptAnswer(data.answerText, acceptedConcepts, criteria) : null;
+  const isCorrect = data.choiceIndex !== undefined ? ids.isCorrect : conceptEvaluation?.pass ?? false;
   const { error } = await supabase.from("student_answers").upsert({
-    session_id: data.sessionId, question_id: ids.questionId, selected_choice_id: ids.choiceId,
-    is_correct: ids.isCorrect, score: ids.isCorrect ? 1 : 0,
+    session_id: data.sessionId, question_id: ids.questionId, selected_choice_id: ids.choiceId ?? null, answer_text: data.answerText ?? null,
+    is_correct: isCorrect, score: data.choiceIndex !== undefined ? (isCorrect ? 1 : 0) : conceptEvaluation?.score ?? 0,
   }, { onConflict: "session_id,question_id" });
   if (error) throw new Error(error.message);
   if (data.nextPhase) await supabase.from("reading_sessions").update({ current_phase: data.nextPhase }).eq("id", data.sessionId);
@@ -2171,10 +2180,16 @@ export async function completeReadingSession(input: unknown) {
 
   try {
   for (const [questionKey, choiceIndex] of Object.entries(data.answers)) {
-    const ids = await contentIds(supabase, data.textKey, questionKey, choiceIndex);
+    const ids = await contentIds(supabase, data.textKey, questionKey, typeof choiceIndex === "number" ? choiceIndex : undefined);
+    if (!ids.question) throw new Error("Question introuvable.");
+    const rubric = (ids.question.rubric && typeof ids.question.rubric === "object" ? ids.question.rubric : {}) as Record<string, unknown>;
+    const acceptedConcepts = Array.isArray(rubric.accepted_concepts) ? rubric.accepted_concepts.filter((value): value is string => typeof value === "string") : [];
+    const criteria = Array.isArray(rubric.scoring_criteria) ? rubric.scoring_criteria as Array<{label:string;conceptIds:string[];points:number}> : [];
+    const evaluation = typeof choiceIndex === "string" ? evaluateConceptAnswer(choiceIndex, acceptedConcepts, criteria) : null;
+    const isCorrect = typeof choiceIndex === "number" ? ids.isCorrect : evaluation?.pass ?? false;
     const { error } = await supabase.from("student_answers").upsert({
-      session_id: data.sessionId, question_id: ids.questionId, selected_choice_id: ids.choiceId,
-      is_correct: ids.isCorrect, score: ids.isCorrect ? 1 : 0,
+      session_id: data.sessionId, question_id: ids.questionId, selected_choice_id: ids.choiceId ?? null, answer_text: typeof choiceIndex === "string" ? choiceIndex : null,
+      is_correct: isCorrect, score: typeof choiceIndex === "number" ? (isCorrect ? 1 : 0) : evaluation?.score ?? 0,
     }, { onConflict: "session_id,question_id" });
     if (error) throw new Error(error.message);
   }
@@ -2260,7 +2275,7 @@ export async function completeReadingSession(input: unknown) {
       student_id: studentId, source_session_id: data.sessionId,
       source_text_version_id: ownedSession.text_version_id, card_type: "concept",
       prompt_fr: seed.promptFr,
-      rubric: { keywords: seed.keywords, concept_label: seed.conceptLabel, source_text_key: seed.sourceTextId },
+      rubric: { keywords: seed.keywords, concept_label: seed.conceptLabel, source_text_key: seed.sourceTextId, vocabulary_word: seed.vocabularyWord ?? null, retrieval_mode: "typed_production" },
     }, { onConflict: "source_session_id,prompt_fr" }).select("id").single();
     if (error || !card) throw new Error(error?.message ?? "Carte non créée.");
     firstCardId ??= card.id as string;
@@ -2282,13 +2297,26 @@ export async function completeReadingSession(input: unknown) {
 
   const { data: vocabulary } = await supabase.from("vocabulary_items").select("id,display_word").in("display_word", text.targetVocabulary.map((item) => item.word));
   for (const item of vocabulary ?? []) {
-    const { data: existing } = await supabase.from("student_word_mastery").select("exposures").eq("student_id", studentId).eq("vocabulary_item_id", item.id).maybeSingle();
+    const { data: existing } = await supabase.from("student_word_mastery").select("exposures,evidence_counts").eq("student_id", studentId).eq("vocabulary_item_id", item.id).maybeSingle();
     const exposures = Number(existing?.exposures ?? 0) + 1;
+    const previousEvidence = existing?.evidence_counts && typeof existing.evidence_counts === "object" ? existing.evidence_counts as typeof EMPTY_VOCABULARY_EVIDENCE : { ...EMPTY_VOCABULARY_EVIDENCE, exposure: exposures - 1 };
+    let evidence = recordVocabularyEvidence(previousEvidence, "exposure", { occurredAt: data.completedAt });
+    const recognized = text.questions.some((question) => question.type === "vocabulary_in_context" && question.prompt.toLocaleLowerCase("fr").includes(String(item.display_word).toLocaleLowerCase("fr")) && scoreSeedQuestion(question, data.answers[question.id]) >= .6);
+    if (recognized) evidence = recordVocabularyEvidence(evidence, "recognition", { successful: true, occurredAt: data.completedAt });
+    const { error: evidenceError } = await service.from("vocabulary_learning_evidence").insert([{ student_id: studentId, vocabulary_item_id: item.id, evidence_kind: "exposure", successful: false, typed_production: false, evidence_payload: { text_version_id: ownedSession.text_version_id }, occurred_at: data.completedAt }, ...(recognized ? [{ student_id: studentId, vocabulary_item_id: item.id, evidence_kind: "recognition", successful: true, typed_production: false, evidence_payload: { question_type: "vocabulary_in_context" }, occurred_at: data.completedAt }] : [])]);
+    if (evidenceError) throw new Error(evidenceError.message);
     const { error } = await supabase.from("student_word_mastery").upsert({
       student_id: studentId, vocabulary_item_id: item.id, exposures,
-      mastery: Math.min(1, exposures / 5), last_seen_at: data.completedAt,
+      mastery: 0, learning_status: "new", evidence_counts: evidence, last_seen_at: data.completedAt,
     }, { onConflict: "student_id,vocabulary_item_id" });
     if (error) throw new Error(error.message);
+    const { data: lemma } = await service.from("lexical_lemmas").select("id").eq("vocabulary_item_id", item.id).maybeSingle();
+    const { data: sense } = lemma ? await service.from("lexical_senses").select("id").eq("lemma_id", lemma.id).eq("is_teachable", true).order("is_expected", { ascending: false }).limit(1).maybeSingle() : { data: null };
+    if (sense) {
+      const schedules = (["recognition", "production"] as const).map((mode, index) => ({ student_id: studentId, target_type: "lexical_sense", target_id: sense.id, retrieval_mode: mode, due_at: dueAtFrom(Date.parse(data.completedAt), index + 1), interval_days: index + 1, ease_factor: 2.5, repetitions: 0, exposure_count: 1, status: "scheduled", fsrs_state: { scheduler: "fsrs", stability: index + 1, difficulty: 5, last_evidence: "exposure" } }));
+      const { error: unifiedScheduleError } = await service.from("learning_retrieval_schedules").upsert(schedules, { onConflict: "student_id,target_type,target_id,retrieval_mode" });
+      if (unifiedScheduleError) throw new Error(unifiedScheduleError.message);
+    }
   }
   const { error: eventError } = await supabase.from("reading_session_events").insert({
     session_id: data.sessionId, student_id: studentId, event_type: "completed",
@@ -2340,15 +2368,62 @@ export async function submitRetrievalAttempt(input: unknown) {
     repetitions: result === "forgot" ? 0 : schedule.repetitions + 1, last_result: result, status: "due",
   }).eq("retrieval_card_id", data.cardId);
   if (updateError) throw new Error(updateError.message);
+  const vocabularyWord = typeof rubric.vocabulary_word === "string" ? rubric.vocabulary_word : null;
+  if (vocabularyWord) {
+    const { data: vocabularyItem } = await service.from("vocabulary_items").select("id").ilike("display_word", vocabularyWord).limit(1).maybeSingle();
+    if (vocabularyItem) {
+      const { data: lemma } = await service.from("lexical_lemmas").select("id").eq("vocabulary_item_id", vocabularyItem.id).maybeSingle();
+      const { data: sense } = lemma ? await service.from("lexical_senses").select("id").eq("lemma_id", lemma.id).eq("is_teachable", true).order("is_expected", { ascending: false }).limit(1).maybeSingle() : { data: null };
+      const { data: unifiedSchedule } = sense ? await service.from("learning_retrieval_schedules").select("id,lapse_count,exposure_count,repetitions").eq("student_id", studentId).eq("target_type", "lexical_sense").eq("target_id", sense.id).eq("retrieval_mode", "production").maybeSingle() : { data: null };
+      const successful = result === "good" || result === "easy";
+      const normalizedAnswer = data.answerText.toLocaleLowerCase("fr").normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+      const normalizedWord = vocabularyWord.toLocaleLowerCase("fr").normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+      const evidenceRows: Array<{ evidence_kind: VocabularyEvidenceKind; successful: boolean; typed_production: boolean }> = [
+        { evidence_kind: "meaning_recall", successful, typed_production: true },
+        { evidence_kind: "contextual_use", successful: successful && data.answerText.trim().split(/\s+/).length >= 6, typed_production: true },
+        { evidence_kind: "correct_spelling", successful: successful && normalizedAnswer.includes(normalizedWord), typed_production: true },
+      ];
+      const { error: evidenceError } = await service.from("vocabulary_learning_evidence").insert(evidenceRows.map((row) => ({ ...row, student_id: studentId, vocabulary_item_id: vocabularyItem.id, schedule_id: unifiedSchedule?.id ?? null, evidence_payload: { retrieval_card_id: data.cardId, result }, occurred_at: data.attemptedAt })));
+      if (evidenceError) throw new Error(evidenceError.message);
+      const { data: history } = await service.from("vocabulary_learning_evidence").select("evidence_kind,successful,occurred_at").eq("student_id", studentId).eq("vocabulary_item_id", vocabularyItem.id).order("occurred_at");
+      let evidence = { ...EMPTY_VOCABULARY_EVIDENCE };
+      for (const row of history ?? []) evidence = recordVocabularyEvidence(evidence, row.evidence_kind as VocabularyEvidenceKind, { successful: !!row.successful, occurredAt: row.occurred_at as string });
+      const learning = vocabularyLearningState(evidence);
+      const { error: masteryError } = await service.from("student_word_mastery").upsert({ student_id: studentId, vocabulary_item_id: vocabularyItem.id, mastery: learning.mastery, learning_status: learning.status, evidence_counts: evidence, exposures: evidence.exposure, retrieval_successes: evidence.successfulProductionDates.length, next_review_at: dueAtFrom(Date.parse(data.attemptedAt), next.intervalDays), last_seen_at: data.attemptedAt }, { onConflict: "student_id,vocabulary_item_id" });
+      if (masteryError) throw new Error(masteryError.message);
+      if (unifiedSchedule) {
+        const { error: unifiedUpdateError } = await service.from("learning_retrieval_schedules").update({ due_at: dueAtFrom(Date.parse(data.attemptedAt), next.intervalDays), interval_days: next.intervalDays, repetitions: result === "forgot" ? 0 : Number(unifiedSchedule.repetitions) + 1, lapse_count: Number(unifiedSchedule.lapse_count) + (result === "forgot" ? 1 : 0), last_reviewed_at: data.attemptedAt, status: "scheduled", fsrs_state: { scheduler: "fsrs-6", stability: next.stability, difficulty: next.difficulty, last_result: result } }).eq("id", unifiedSchedule.id);
+        if (unifiedUpdateError) throw new Error(unifiedUpdateError.message);
+        const { error: occurrenceError } = await service.from("retrieval_evidence_occurrences").insert({ student_id: studentId, schedule_id: unifiedSchedule.id, occurrence_key: `vocabulary:${data.cardId}:${data.attemptedAt}`, evidence_channel: "direct", score: result === "easy" ? 1 : result === "good" ? .8 : result === "hard" ? .5 : 0, result, occurred_at: data.attemptedAt, metadata: { typed_production: true, vocabulary_word: vocabularyWord } });
+        if (occurrenceError) throw new Error(occurrenceError.message);
+      }
+    }
+  }
   await recordDailyActivity(service,studentId,data.attemptedAt,"retrieval",false);
   return { result, state: await getStudentStateData(studentId, supabase) };
+}
+
+export async function recordVocabularyHelp(input: unknown) {
+  const data = checked(vocabularyHelpSchema, input);
+  const { supabase, studentId } = await context();
+  const { data: vocabularyItem } = await supabase.from("vocabulary_items").select("id").ilike("display_word", data.word).limit(1).maybeSingle();
+  if (!vocabularyItem) return { ok: true };
+  const service = createServiceClient();
+  const { error: evidenceError } = await service.from("vocabulary_learning_evidence").insert({ student_id: studentId, vocabulary_item_id: vocabularyItem.id, evidence_kind: "help_lookup", successful: false, typed_production: false, occurred_at: data.occurredAt });
+  if (evidenceError) throw new Error(evidenceError.message);
+  const { data: mastery } = await service.from("student_word_mastery").select("mastery,learning_status,exposures,evidence_counts,last_seen_at,next_review_at").eq("student_id", studentId).eq("vocabulary_item_id", vocabularyItem.id).maybeSingle();
+  const previous = mastery?.evidence_counts && typeof mastery.evidence_counts === "object" ? mastery.evidence_counts as typeof EMPTY_VOCABULARY_EVIDENCE : { ...EMPTY_VOCABULARY_EVIDENCE, exposure: Number(mastery?.exposures ?? 0) };
+  const evidence = recordVocabularyEvidence(previous, "help_lookup", { occurredAt: data.occurredAt });
+  const { error: updateError } = await service.from("student_word_mastery").upsert({ student_id: studentId, vocabulary_item_id: vocabularyItem.id, mastery: Number(mastery?.mastery ?? 0), learning_status: mastery?.learning_status ?? "new", exposures: evidence.exposure, evidence_counts: evidence, last_seen_at: mastery?.last_seen_at ?? data.occurredAt, next_review_at: mastery?.next_review_at ?? null }, { onConflict: "student_id,vocabulary_item_id" });
+  if (updateError) throw new Error(updateError.message);
+  return { ok: true };
 }
 
 export async function loadReadingResume(input: unknown) {
   const data=checked(textKeySchema,input);const{supabase,studentId}=await context();const{textVersionId}=await contentIds(supabase,data.textKey);
   const{data:session}=await supabase.from("reading_sessions").select("id,started_at,current_phase").eq("student_id",studentId).eq("text_version_id",textVersionId).is("completed_at",null).order("started_at",{ascending:false}).limit(1).maybeSingle();if(!session)return null;
-  const[{data:answers},{data:summary}]=await Promise.all([supabase.from("student_answers").select("questions!inner(question_key),question_choices!inner(choice_index)").eq("session_id",session.id),supabase.from("student_summaries").select("summary_text").eq("session_id",session.id).maybeSingle()]);
-  const answerMap=Object.fromEntries((answers??[]).map(row=>{const q=row.questions as unknown as{question_key:string};const c=row.question_choices as unknown as{choice_index:number};return[q.question_key,c.choice_index];}));
+  const[{data:answers},{data:summary}]=await Promise.all([supabase.from("student_answers").select("answer_text,questions!inner(question_key),question_choices(choice_index)").eq("session_id",session.id),supabase.from("student_summaries").select("summary_text").eq("session_id",session.id).maybeSingle()]);
+  const answerMap=Object.fromEntries((answers??[]).map(row=>{const q=row.questions as unknown as{question_key:string};const c=row.question_choices as unknown as{choice_index:number}|null;return[q.question_key,(row.answer_text as string|null)??c?.choice_index??""];}).filter(([,answer])=>answer!==""));
   return{sessionId:session.id as string,startedAt:session.started_at as string,phase:session.current_phase as "read"|"questions"|"summary"|"retrieval",answers:answerMap,summary:summary?.summary_text as string|undefined};
 }
 

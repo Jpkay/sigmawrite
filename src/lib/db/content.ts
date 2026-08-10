@@ -189,8 +189,8 @@ export async function getPublishedReadingText(
     .single();
   if (error || !version) return seed ?? null;
   const [{ data: questionRows }, { data: vocabRows }, { data: domain }] = await Promise.all([
-    supabase.from("questions").select("id,question_key,question_text,question_type,rubric,question_choices(id,choice_index,choice_text,is_correct)").eq("text_version_id", version.id).order("created_at"),
-    supabase.from("text_vocabulary").select("vocabulary_items(display_word,definition_fr)").eq("text_version_id", version.id),
+    supabase.from("questions").select("id,question_key,question_text,question_type,answer_format,correct_answer,rubric,question_choices(id,choice_index,choice_text,is_correct)").eq("text_version_id", version.id).order("created_at"),
+    supabase.from("text_vocabulary").select("vocabulary_items(display_word,definition_fr,example_fr,examples_fr,grade_level,related_topics)").eq("text_version_id", version.id),
     textRow.primary_domain_id
       ? supabase.from("knowledge_domains").select("key").eq("id", textRow.primary_domain_id).maybeSingle()
       : Promise.resolve({ data: null }),
@@ -204,16 +204,24 @@ export async function getPublishedReadingText(
       type: asQuestionType(row.question_type as string),
       skillKey: typeof rubric.skill_key === "string" ? rubric.skill_key : row.question_type as string,
       prompt: row.question_text as string,
+      answerFormat: row.answer_format === "short_answer" ? "short_answer" as const : "multiple_choice" as const,
+      studentInstruction: typeof rubric.student_instruction === "string" ? rubric.student_instruction : "Réponds brièvement avec tes mots en t’appuyant sur le texte.",
       choices: choices.map((choice) => choice.choice_text),
       correctIndex: Math.max(0, choices.findIndex((choice) => choice.is_correct)),
+      acceptedConcepts: Array.isArray(rubric.accepted_concepts) ? rubric.accepted_concepts.filter((value): value is string => typeof value === "string") : [],
+      modelAnswer: typeof rubric.model_answer === "string" ? rubric.model_answer : (row.correct_answer as string | null) ?? "Réponse selon les concepts attendus.",
+      scoringCriteria: Array.isArray(rubric.scoring_criteria) ? rubric.scoring_criteria as Array<{ label: string; conceptIds: string[]; points: number }> : [],
       explanationFr: typeof rubric.explanation_fr === "string"
         ? rubric.explanation_fr
         : "La réponse correcte s'appuie directement sur le texte.",
     };
   });
   const targetVocabulary = (vocabRows ?? []).flatMap((row) => {
-    const item = row.vocabulary_items as unknown as { display_word: string; definition_fr: string | null } | null;
-    return item ? [{ word: item.display_word, definitionFr: item.definition_fr ?? "Mot important du texte." }] : [];
+    const item = row.vocabulary_items as unknown as { display_word: string; definition_fr: string | null; example_fr: string | null; examples_fr: unknown; grade_level: number | null; related_topics: unknown } | null;
+    if (!item) return [];
+    const examples = Array.isArray(item.examples_fr) ? item.examples_fr.filter((value): value is string => typeof value === "string") : item.example_fr ? [item.example_fr] : [];
+    while (examples.length < 2) examples.push(`Dans ce texte, « ${item.display_word} » décrit une situation concrète.`);
+    return [{ word: item.display_word, definitionFr: item.definition_fr ?? "Un mot important expliqué par la situation du texte.", examplesFr: examples, grade: item.grade_level ?? 7, relatedTopics: Array.isArray(item.related_topics) ? item.related_topics.filter((value): value is string => typeof value === "string") : [] }];
   });
   const concepts = targetVocabulary.slice(0, 3).map((item) => item.word);
   return {

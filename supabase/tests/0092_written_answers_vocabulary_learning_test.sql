@@ -1,0 +1,17 @@
+begin;
+create extension if not exists pgtap with schema extensions;
+select plan(12);
+select has_column('public','vocabulary_items','examples_fr','Vocabulary has multiple examples');
+select has_column('public','vocabulary_items','definition_validation','Definition validation is reviewable');
+select has_column('public','student_word_mastery','evidence_counts','Evidence channels remain separate');
+select has_column('public','student_word_mastery','learning_status','Vocabulary learning status is explicit');
+select has_column('public','retrieval_schedules','stability','Existing FSRS stability remains authoritative');
+select has_column('public','learning_retrieval_schedules','fsrs_state','Unified schedules persist FSRS state');
+select has_table('public','vocabulary_learning_evidence','Vocabulary evidence ledger exists');
+select has_column('public','vocabulary_learning_evidence','typed_production','Typed production is explicit');
+select has_column('public','vocabulary_learning_evidence','evidence_kind','Evidence kind is explicit');
+select has_column('public','vocabulary_learning_evidence','schedule_id','Evidence links to spaced schedule');
+select has_index('public','vocabulary_learning_evidence','vocabulary_learning_evidence_student_word_idx','Evidence review is indexed');
+select col_is_fk('public','vocabulary_learning_evidence','vocabulary_item_id','Evidence targets vocabulary');
+select * from finish();
+rollback;

@@ -17,9 +17,12 @@ export type RetrievalCard = {
   stability?: number;
   difficulty?: number;
   lastReviewedAt?: string;
+  vocabularyWord?: string;
 };
 
-export type VocabState = { exposures: number; lastSeenAt: string };
+import type { VocabularyEvidence } from "@/lib/vocabulary/learning";
+
+export type VocabState = { exposures: number; lastSeenAt: string; evidence?: VocabularyEvidence; nextReviewAt?: string };
 
 export type DiagnosticSectionProfileKey =
   | "reading_comprehension"
@@ -47,7 +50,7 @@ export type StudentState = {
   diagnosticProvisional: boolean;
   diagnosticSectionProfile: Partial<Record<DiagnosticSectionProfileKey, DiagnosticSectionProfile>>;
   sessions: ReadingSessionResult[];
-  answersByText: Record<string, Record<string, number>>;
+  answersByText: Record<string, Record<string, number | string>>;
   skillEstimates: Record<string, SkillEstimate>;
   retrievalCards: RetrievalCard[];
   vocab: Record<string, VocabState>;

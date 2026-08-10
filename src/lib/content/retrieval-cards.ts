@@ -10,6 +10,7 @@ export type RetrievalCardSeed = {
   promptFr: string;
   keywords: string[];
   sourceTextId: string;
+  vocabularyWord?: string;
 };
 
 export function buildRetrievalCards(text: SeedText): RetrievalCardSeed[] {
@@ -27,6 +28,16 @@ export function buildRetrievalCards(text: SeedText): RetrievalCardSeed[] {
     keywords: (text.concepts[0] ?? "").split(/\s+/).filter((w) => w.length > 3),
     sourceTextId: text.id,
   });
+
+  for (const vocabulary of text.targetVocabulary) {
+    cards.push({
+      conceptLabel: vocabulary.word,
+      vocabularyWord: vocabulary.word,
+      promptFr: `Sans regarder l’aide, explique « ${vocabulary.word} » avec tes mots et écris une phrase où ce mot convient.`,
+      keywords: vocabulary.definitionFr.split(/\s+/).filter((word) => word.length > 5).slice(0, 4),
+      sourceTextId: text.id,
+    });
+  }
 
   return cards;
 }

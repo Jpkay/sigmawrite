@@ -15,6 +15,7 @@ import {
   type RetrievalCard,
   type StudentState,
 } from "@/lib/student-state";
+import { EMPTY_VOCABULARY_EVIDENCE, recordVocabularyEvidence, type VocabularyEvidenceKind } from "@/lib/vocabulary/learning";
 
 export type { RetrievalCard, StudentState, VocabState } from "@/lib/student-state";
 
@@ -138,7 +139,7 @@ export function saveDiagnostic(result: DiagnosticResult): StudentState {
 
 export function addSession(
   result: ReadingSessionResult,
-  answers?: Record<string, number>
+  answers?: Record<string, number | string>
 ): StudentState {
   const state = getStudentState();
   return update({
@@ -156,10 +157,11 @@ export function addSession(
  */
 export function completeReadingSession(input: {
   result: ReadingSessionResult;
-  answers: Record<string, number>;
+  answers: Record<string, number | string>;
   skillEstimates: Record<string, SkillEstimate>;
   retrievalSeeds: RetrievalCardSeed[];
   vocabWords: string[];
+  recognizedVocabWords?: string[];
   nowMs: number;
 }): StudentState {
   const state = getStudentState();
@@ -177,7 +179,9 @@ export function completeReadingSession(input: {
   const vocab = { ...state.vocab };
   for (const w of input.vocabWords) {
     const prev = vocab[w];
-    vocab[w] = { exposures: (prev?.exposures ?? 0) + 1, lastSeenAt: iso };
+    const evidence = recordVocabularyEvidence(prev?.evidence ?? EMPTY_VOCABULARY_EVIDENCE, "exposure", { occurredAt: iso });
+    const withRecognition = input.recognizedVocabWords?.includes(w) ? recordVocabularyEvidence(evidence, "recognition", { successful: true, occurredAt: iso }) : evidence;
+    vocab[w] = { exposures: withRecognition.exposure, lastSeenAt: iso, evidence: withRecognition, nextReviewAt: dueAtFrom(input.nowMs, 1) };
   }
 
   return update({
@@ -203,9 +207,10 @@ export function recordRetrieval(
   nowMs: number
 ): StudentState {
   const state = getStudentState();
-  return update({
-    retrievalCards: state.retrievalCards.map((c) => {
+  let reviewedWord: string | undefined;
+  const retrievalCards = state.retrievalCards.map((c) => {
       if (c.id !== cardId) return c;
+      reviewedWord = c.vocabularyWord;
       const prevState =
         c.stability != null && c.difficulty != null
           ? { stability: c.stability, difficulty: c.difficulty }
@@ -224,11 +229,25 @@ export function recordRetrieval(
         dueAt: dueAtFrom(nowMs, next.intervalDays),
         lastResult: result,
       };
-    }),
-  });
+    });
+  const vocab = { ...state.vocab };
+  if (reviewedWord) {
+    const previous = vocab[reviewedWord];
+    const evidence = recordVocabularyEvidence(previous?.evidence ?? EMPTY_VOCABULARY_EVIDENCE, "meaning_recall", { successful: result === "good" || result === "easy", occurredAt: new Date(nowMs).toISOString() });
+    vocab[reviewedWord] = { exposures: evidence.exposure, lastSeenAt: previous?.lastSeenAt ?? "", evidence, nextReviewAt: retrievalCards.find((card) => card.id === cardId)?.dueAt };
+  }
+  return update({ retrievalCards, vocab });
 }
 
-export function getAnswers(textVersionId: string): Record<string, number> {
+export function recordWordInteraction(word: string, kind: VocabularyEvidenceKind, successful = false): StudentState {
+  const state = getStudentState();
+  const previous = state.vocab[word];
+  const now = new Date().toISOString();
+  const evidence = recordVocabularyEvidence(previous?.evidence ?? EMPTY_VOCABULARY_EVIDENCE, kind, { successful, occurredAt: now });
+  return update({ vocab: { ...state.vocab, [word]: { exposures: evidence.exposure, lastSeenAt: previous?.lastSeenAt ?? now, evidence, nextReviewAt: previous?.nextReviewAt } } });
+}
+
+export function getAnswers(textVersionId: string): Record<string, number | string> {
   return getStudentState().answersByText[textVersionId] ?? {};
 }
 

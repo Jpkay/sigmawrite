@@ -13,7 +13,7 @@ const input = {
 const validCandidate = {
   title: "Les volcans", body: "Le magma remonte et forme parfois un volcan.",
   estimatedReadingBand: "Secondary 7A",
-  targetVocabulary: [{ word: "magma", definitionFr: "Roche fondue.", exampleSentenceFr: "Le magma remonte." }],
+  targetVocabulary: [{ word: "magma", definitionFr: "Une roche devenue liquide parce qu’elle est très chaude.", examplesFr: ["Le magma remonte sous le volcan avant une éruption.", "En refroidissant, le magma devient une roche solide."], grade: 7, status: "new", evidence: { exposures: 0, helpLookups: 0, successfulTypedRetrievals: 0 }, plannedReuse: ["Réemploi dans un futur texte sur les volcans."] }],
   knowledgeConcepts: ["magma"], skillsPracticed: ["inference"],
   questions: [{ questionText: "Que remonte-t-il ?", questionType: "literal", answerFormat: "multiple_choice", choices: ["Le magma", "La pluie"], correctAnswer: "Le magma", skillIds: ["inference"], difficulty: 30 }],
   safetyNotes: [], factualClaims: [],

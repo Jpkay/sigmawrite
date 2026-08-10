@@ -162,13 +162,13 @@ export default function ResultsPage() {
         {text.questions.map((q) => (
           <Card key={q.id}>
             <CardContent className="pt-6">
-              <ChoiceList
+              {q.answerFormat === "short_answer" ? <div><p className="font-medium">{q.prompt}</p><p className="mt-3 rounded-md bg-muted p-3 text-sm"><span className="text-muted-foreground">Ta réponse : </span>{typeof answers[q.id] === "string" ? answers[q.id] : "Aucune réponse"}</p><p className="mt-2 text-sm"><span className="text-muted-foreground">Réponse modèle : </span>{q.modelAnswer}</p></div> : <ChoiceList
                 prompt={q.prompt}
-                choices={q.choices}
-                value={answers[q.id] ?? null}
+                choices={q.choices ?? []}
+                value={typeof answers[q.id] === "number" ? answers[q.id] as number : null}
                 reveal
                 correctIndex={q.correctIndex}
-              />
+              />}
               <p className="mt-3 text-sm text-muted-foreground">{q.explanationFr}</p>
             </CardContent>
           </Card>

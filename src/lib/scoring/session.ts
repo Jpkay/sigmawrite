@@ -2,12 +2,13 @@ import type { NextAction, ReadingSessionResult } from "@/lib/types";
 import { SUCCESS_ZONE } from "@/lib/types";
 import type { SeedText } from "@/lib/content/types";
 import { scoreSummary } from "./summary";
+import { scoreSeedQuestion } from "./short-answer";
 
 export type SessionInput = {
   studentId: string;
   text: SeedText;
   /** questionId → selected choice index */
-  answers: Record<string, number>;
+  answers: Record<string, number | string>;
   summaryText: string;
   retrievalText: string;
   startedAt: string;
@@ -48,11 +49,9 @@ export function scoreSession(input: SessionInput): ReadingSessionResult {
   const byType = (types: string[]) =>
     text.questions.filter((q) => types.includes(q.type));
   const correctIn = (qs: typeof text.questions) =>
-    pct(qs.filter((q) => answers[q.id] === q.correctIndex).length, qs.length);
+    pct(qs.reduce((sum, q) => sum + scoreSeedQuestion(q, answers[q.id]), 0), qs.length);
 
-  const allCorrect = text.questions.filter(
-    (q) => answers[q.id] === q.correctIndex
-  ).length;
+  const allCorrect = text.questions.reduce((sum, q) => sum + scoreSeedQuestion(q, answers[q.id]), 0);
 
   const literalScore = correctIn(byType(["literal", "main_idea"]));
   const inferenceScore = correctIn(byType(["inference", "cause_consequence", "compare_contrast"]));

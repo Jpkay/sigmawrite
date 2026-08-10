@@ -12,6 +12,7 @@ import { DIFFICULTY_BANDS } from "@/lib/types";
 import type { AIProvider } from "./provider";
 import { paragraphsFromText } from "@/lib/content/text-format";
 import { sanitizeStudentTopic } from "@/lib/safety/topic";
+import { validateVocabularyDefinition, type DefinitionIssue } from "@/lib/vocabulary/contract";
 
 /**
  * AI content generation pipeline (PRD §H). Orchestrates the constrained
@@ -33,6 +34,7 @@ export type ReviewFlags = {
   difficultyMismatch: boolean;
   nearDuplicate?: boolean;
   duplicateCheckUnavailable?: boolean;
+  vocabularyDefinitionIssues?: Array<{ word: string; issues: DefinitionIssue[] }>;
 };
 
 export type ContentCandidate = {
@@ -83,7 +85,8 @@ export function decideReviewStatus(flags: ReviewFlags): ReviewStatus {
     flags.sensitive ||
     flags.difficultyMismatch ||
     flags.nearDuplicate ||
-    flags.duplicateCheckUnavailable
+    flags.duplicateCheckUnavailable ||
+    (flags.vocabularyDefinitionIssues?.length ?? 0) > 0
   ) {
     return "needs_human_review";
   }
@@ -137,6 +140,13 @@ export async function runGenerationPipeline(
       difficulty.overall
     ),
     nearDuplicate: false,
+    vocabularyDefinitionIssues: generated.targetVocabulary.map((entry) => ({
+      word: entry.word,
+      issues: validateVocabularyDefinition({ word: entry.word, definitionFr: entry.definitionFr, examplesFr: entry.examplesFr }, {
+        ...(safeInput.supportedVocabulary ? { supportedVocabulary: safeInput.supportedVocabulary } : {}),
+        concretelyExplainedWords: safeInput.concretelyExplainedDefinitionWords,
+      }),
+    })).filter((entry) => entry.issues.length > 0),
   };
 
   return {

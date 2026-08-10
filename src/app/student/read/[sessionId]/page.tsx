@@ -17,9 +17,11 @@ import { updateSkillsFromSession } from "@/lib/scoring/skill-estimate";
 import { buildRetrievalCards } from "@/lib/content/retrieval-cards";
 import { track } from "@/lib/analytics";
 import { AccentTextarea } from "@/components/accent-textarea";
+import { InlineWordHelp } from "@/components/inline-word-help";
 import { flushQueue, queueAnswer } from "@/lib/offline-queue";
+import { scoreSeedQuestion } from "@/lib/scoring/short-answer";
 import {
-  completeReadingSession as updateReadingCache,
+  completeReadingSession as updateReadingCache, recordWordInteraction,
   hasStudentBackend,
   lastSuccessRate,
   replaceStudentState,
@@ -32,6 +34,7 @@ import {
   startReadingSession,
   submitAnswer,
   submitSummary,
+  recordVocabularyHelp,
 } from "@/lib/actions/student";
 
 type Phase = "read" | "questions" | "summary" | "retrieval";
@@ -46,7 +49,7 @@ export default function ReadingSessionPage() {
   const [phase, setPhase] = useState<Phase>("read");
   const phaseRef = useRef<Phase>("read");
   const [qIndex, setQIndex] = useState(0);
-  const [answers, setAnswers] = useState<Record<string, number>>({});
+  const [answers, setAnswers] = useState<Record<string, number | string>>({});
   const [summary, setSummary] = useState("");
   const [retrieval, setRetrieval] = useState("");
   const [dbSessionId, setDbSessionId] = useState<string | null>(null);
@@ -119,12 +122,13 @@ export default function ReadingSessionPage() {
     try {
       if (hasStudentBackend) {
         if (!dbSessionId) throw new Error("missing session");
-        await submitAnswer({ sessionId: dbSessionId, textKey: activeText.id, questionKey: question.id, choiceIndex: answers[question.id], nextPhase: qIndex + 1 < activeText.questions.length ? "questions" : "summary" });
+        const answer = answers[question.id];
+        await submitAnswer({ sessionId: dbSessionId, textKey: activeText.id, questionKey: question.id, ...(typeof answer === "number" ? { choiceIndex: answer } : { answerText: answer }), nextPhase: qIndex + 1 < activeText.questions.length ? "questions" : "summary" });
       }
       if (qIndex + 1 < activeText.questions.length) setQIndex(qIndex + 1);
       else setPhase("summary");
     } catch {
-      if(hasStudentBackend&&dbSessionId&&typeof navigator!=="undefined"&&!navigator.onLine){queueAnswer({sessionId:dbSessionId,textKey:activeText.id,questionKey:question.id,choiceIndex:answers[question.id],nextPhase:qIndex+1<activeText.questions.length?"questions":"summary"});setError("Réponse gardée hors connexion. Elle sera envoyée automatiquement.");if(qIndex+1<activeText.questions.length)setQIndex(qIndex+1);else setPhase("summary");}else setError("Ta réponse n'a pas pu être enregistrée. Réessaie.");
+      if(hasStudentBackend&&dbSessionId&&typeof navigator!=="undefined"&&!navigator.onLine){const answer=answers[question.id];queueAnswer({sessionId:dbSessionId,textKey:activeText.id,questionKey:question.id,...(typeof answer==="number"?{choiceIndex:answer}:{answerText:String(answer??"")}),nextPhase:qIndex+1<activeText.questions.length?"questions":"summary"});setError("Réponse gardée hors connexion. Elle sera envoyée automatiquement.");if(qIndex+1<activeText.questions.length)setQIndex(qIndex+1);else setPhase("summary");}else setError("Ta réponse n'a pas pu être enregistrée. Réessaie.");
     } finally {
       setPending(false);
     }
@@ -167,6 +171,7 @@ export default function ReadingSessionPage() {
       skillEstimates: skills,
       retrievalSeeds: buildRetrievalCards(activeText),
       vocabWords: activeText.targetVocabulary.map((v) => v.word),
+      recognizedVocabWords: activeText.targetVocabulary.filter((v) => activeText.questions.some((q) => q.type === "vocabulary_in_context" && q.prompt.toLocaleLowerCase("fr").includes(v.word.toLocaleLowerCase("fr")) && scoreSeedQuestion(q, answers[q.id]) >= .6)).map((v) => v.word),
       nowMs: Date.now(),
     });
     try {
@@ -212,7 +217,7 @@ export default function ReadingSessionPage() {
             <div className="flex flex-wrap gap-2 rounded-md border border-border p-3 text-sm"><button aria-pressed={readerMode.friendly} onClick={()=>setReaderMode(value=>({...value,friendly:!value.friendly}))} className="min-h-11 rounded-md border border-border px-3">Police lisible</button><button aria-pressed={readerMode.spacing} onClick={()=>setReaderMode(value=>({...value,spacing:!value.spacing}))} className="min-h-11 rounded-md border border-border px-3">Espacement</button><button aria-pressed={readerMode.lineFocus} onClick={()=>setReaderMode(value=>({...value,lineFocus:!value.lineFocus}))} className="min-h-11 rounded-md border border-border px-3">Focus ligne</button></div>
             <div className={`space-y-4 leading-relaxed ${readerMode.friendly?"font-[Arial]":""} ${readerMode.spacing?"text-lg leading-9 tracking-wide":""}`}>
               {activeText.body.map((p, i) => (
-                <div key={i} className={`group flex items-start gap-2 rounded-md p-2 ${readerMode.lineFocus&&focusedParagraph!==null&&focusedParagraph!==i?"opacity-30":""}`}><p tabIndex={readerMode.lineFocus?0:undefined} onClick={()=>setFocusedParagraph(i)} onKeyDown={event=>{if(event.key==="Enter"||event.key===" "){event.preventDefault();setFocusedParagraph(i);}}} className="flex-1">{p}</p><button aria-label={`Lire le paragraphe ${i+1}`} onClick={()=>readAloud(p)} className="min-h-11 min-w-11 rounded-md border border-border p-2 opacity-70 hover:opacity-100"><Volume2 className="size-4"/></button></div>
+                <div key={i} className={`group flex items-start gap-2 rounded-md p-2 ${readerMode.lineFocus&&focusedParagraph!==null&&focusedParagraph!==i?"opacity-30":""}`}><p tabIndex={readerMode.lineFocus?0:undefined} onClick={()=>setFocusedParagraph(i)} onKeyDown={event=>{if(event.key==="Enter"||event.key===" "){event.preventDefault();setFocusedParagraph(i);}}} className="min-w-0 flex-1"><InlineWordHelp text={p} vocabulary={activeText.targetVocabulary} onLookup={(word)=>{recordWordInteraction(word,"help_lookup");if(hasStudentBackend)void recordVocabularyHelp({word,occurredAt:new Date().toISOString()});}}/></p><button aria-label={`Lire le paragraphe ${i+1}`} onClick={()=>readAloud(p)} className="min-h-11 min-w-11 rounded-md border border-border p-2 opacity-70 hover:opacity-100"><Volume2 className="size-4"/></button></div>
               ))}
             </div>
             <div className="rounded-md border border-border bg-muted/40 p-4">
@@ -224,6 +229,7 @@ export default function ReadingSessionPage() {
                   <li key={v.word}>
                     <span className="font-medium text-foreground">{v.word}</span> —{" "}
                     {v.definitionFr}
+                    <ul className="ml-4 mt-1 list-disc text-xs">{v.examplesFr.map((example)=><li key={example}>{example}</li>)}</ul>
                   </li>
                 ))}
               </ul>
@@ -242,16 +248,13 @@ export default function ReadingSessionPage() {
           </p>
           <Card>
             <CardContent className="pt-6">
-              <ChoiceList
-                prompt={question.prompt}
-                choices={question.choices}
-                value={answers[question.id] ?? null}
-                onChange={(i) => setAnswers((a) => ({ ...a, [question.id]: i }))}
-              />
+              <p className="font-medium">{question.prompt}</p>
+              <p id={`instruction-${question.id}`} className="mt-2 text-sm text-muted-foreground">{question.studentInstruction ?? (question.answerFormat === "short_answer" ? "Réponds en une ou deux phrases avec tes mots." : "Choisis la meilleure réponse.")}</p>
+              {question.answerFormat === "short_answer" ? <AccentTextarea value={typeof answers[question.id] === "string" ? answers[question.id] as string : ""} onChange={(value)=>setAnswers((current)=>({...current,[question.id]:value}))} rows={3} aria-describedby={`instruction-${question.id}`} placeholder="Écris une réponse courte…" className="mt-4 w-full rounded-md border border-input bg-background p-3 text-sm outline-none ring-ring focus:ring-2"/> : <div className="mt-4"><ChoiceList prompt="" choices={question.choices ?? []} value={typeof answers[question.id] === "number" ? answers[question.id] as number : null} onChange={(i) => setAnswers((a) => ({ ...a, [question.id]: i }))}/></div>}
               <div className="mt-5">
                 <Button
                   onClick={nextQuestion}
-                  disabled={answers[question.id] === undefined || pending}
+                  disabled={answers[question.id] === undefined || String(answers[question.id]).trim() === "" || pending}
                 >
                   {qIndex + 1 < text.questions.length ? "Suivant" : "Continuer"}{" "}
                   <ArrowRight />

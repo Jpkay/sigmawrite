@@ -46,10 +46,10 @@ type DiagnosticNodeResultRow = {
   evidence_kind: string;
 };
 type DiagnosticRunSectionRow = { section_key: DiagnosticSectionProfileKey; target_node_count: number };
-type AnswerRow = { session_id: string; question_id: string; selected_choice_id: string | null };
+type AnswerRow = { session_id: string; question_id: string; selected_choice_id: string | null; answer_text: string | null };
 type CardRow = { id: string; source_text_version_id: string | null; prompt_fr: string; rubric: unknown };
 type ScheduleRow = { retrieval_card_id: string; due_at: string; interval_days: number | null; ease_factor: number | string; repetitions: number; last_result: RetrievalResult | null; stability: number | string | null; difficulty: number | string | null; last_reviewed_at: string | null };
-type MasteryRow = { vocabulary_item_id: string; exposures: number; last_seen_at: string | null };
+type MasteryRow = { vocabulary_item_id: string; exposures: number; last_seen_at: string | null; next_review_at?: string | null; evidence_counts?: unknown };
 type VocabRow = { id: string; display_word: string };
 
 const number = (value: number | string | null | undefined, fallback = 0) =>
@@ -82,7 +82,7 @@ export async function getStudentStateData(
     supabase.from("question_choices").select("id,question_id,choice_index"),
     supabase.from("retrieval_cards").select("id,source_text_version_id,prompt_fr,rubric").eq("student_id", studentId),
     supabase.from("retrieval_schedules").select("retrieval_card_id,due_at,interval_days,ease_factor,repetitions,last_result,stability,difficulty,last_reviewed_at"),
-    supabase.from("student_word_mastery").select("vocabulary_item_id,exposures,last_seen_at").eq("student_id", studentId),
+    supabase.from("student_word_mastery").select("vocabulary_item_id,exposures,last_seen_at,next_review_at,evidence_counts").eq("student_id", studentId),
     supabase.from("vocabulary_items").select("id,display_word"),
   ]);
   if (studentResult.error || !studentResult.data) throw new Error("Profil élève introuvable.");
@@ -177,14 +177,14 @@ export async function getStudentStateData(
   const answersByText: StudentState["answersByText"] = {};
   const sessionIds = [...sessionById.keys()];
   if (sessionIds.length) {
-    const { data } = await supabase.from("student_answers").select("session_id,question_id,selected_choice_id").in("session_id", sessionIds);
+    const { data } = await supabase.from("student_answers").select("session_id,question_id,selected_choice_id,answer_text").in("session_id", sessionIds);
     for (const row of (data ?? []) as AnswerRow[]) {
       const session = sessionById.get(row.session_id);
       const question = questionById.get(row.question_id);
       const choice = row.selected_choice_id ? choiceById.get(row.selected_choice_id) : null;
-      if (!session || !question?.question_key || choice?.choice_index == null) continue;
+      if (!session || !question?.question_key || (choice?.choice_index == null && !row.answer_text)) continue;
       const textKey = versionToKey.get(session.text_version_id) ?? session.text_version_id;
-      (answersByText[textKey] ??= {})[question.question_key] = choice.choice_index;
+      (answersByText[textKey] ??= {})[question.question_key] = row.answer_text ?? choice!.choice_index!;
     }
   }
 
@@ -199,6 +199,7 @@ export async function getStudentStateData(
       promptFr: row.prompt_fr,
       keywords: Array.isArray(rubric.keywords) ? rubric.keywords.filter((v): v is string => typeof v === "string") : [],
       sourceTextId: row.source_text_version_id ? versionToKey.get(row.source_text_version_id) ?? row.source_text_version_id : "",
+      ...(typeof rubric.vocabulary_word === "string" ? { vocabularyWord: rubric.vocabulary_word } : {}),
       intervalDays: schedule.interval_days ?? 1, ease: number(schedule.ease_factor, 2.5), repetitions: schedule.repetitions,
       dueAt: schedule.due_at, ...(schedule.last_result ? { lastResult: schedule.last_result } : {}),
       ...(schedule.stability != null ? { stability: Number(schedule.stability) } : {}),
@@ -211,7 +212,7 @@ export async function getStudentStateData(
   const vocab: StudentState["vocab"] = {};
   for (const row of (masteryResult.data ?? []) as MasteryRow[]) {
     const word = vocabById.get(row.vocabulary_item_id);
-    if (word) vocab[word] = { exposures: row.exposures, lastSeenAt: row.last_seen_at ?? "" };
+    if (word) vocab[word] = { exposures: row.exposures, lastSeenAt: row.last_seen_at ?? "", nextReviewAt: row.next_review_at ?? undefined, evidence: row.evidence_counts && typeof row.evidence_counts === "object" ? row.evidence_counts as StudentState["vocab"][string]["evidence"] : undefined };
   }
 
   return {

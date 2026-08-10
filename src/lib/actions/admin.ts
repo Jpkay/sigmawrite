@@ -277,7 +277,7 @@ export async function approveTextVersion(input: unknown) {
         question_type: question.questionType,
         answer_format: question.answerFormat,
         correct_answer: question.correctAnswer ?? null,
-        rubric: { rubric: question.rubric ?? null, skill_key: primarySkill },
+        rubric: { rubric: question.rubric ?? null, skill_key: primarySkill, student_instruction: question.studentInstruction, accepted_concepts: question.acceptedConcepts, model_answer: question.modelAnswer, scoring_criteria: question.scoringCriteria },
         difficulty: candidate.questionDifficulties[index] ?? question.difficulty,
       }).select("id").single();
       if (questionError || !questionRow) throw new Error(questionError?.message ?? "Question non créée.");
@@ -332,7 +332,11 @@ export async function approveTextVersion(input: unknown) {
           lemma,
           display_word: vocabulary.word,
           definition_fr: vocabulary.definitionFr,
-          example_fr: vocabulary.exampleSentenceFr,
+          example_fr: vocabulary.examplesFr[0],
+          examples_fr: vocabulary.examplesFr,
+          grade_level: vocabulary.grade,
+          related_topics: candidate.input.knowledgeDomains,
+          definition_validation: [],
         }).select("id").single();
         if (result.error || !result.data) throw new Error(result.error?.message ?? "Vocabulaire non créé.");
         item = result.data;

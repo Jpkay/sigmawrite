@@ -1,4 +1,5 @@
 import type { SeedText } from "@/lib/content/types";
+import { scoreSeedQuestion } from "@/lib/scoring/short-answer";
 
 /**
  * Adaptive skill-estimate engine v1 (PRD §J). A lightweight evidence-weighted
@@ -42,11 +43,11 @@ export function updateSkillEstimate(
 export function updateSkillsFromSession(
   prev: Record<string, SkillEstimate>,
   text: SeedText,
-  answers: Record<string, number>
+  answers: Record<string, number | string>
 ): Record<string, SkillEstimate> {
   const next = { ...prev };
   for (const q of text.questions) {
-    const correct = answers[q.id] === q.correctIndex;
+    const correct = scoreSeedQuestion(q, answers[q.id]) >= 0.6;
     next[q.skillKey] = updateSkillEstimate(next[q.skillKey], correct);
   }
   return next;

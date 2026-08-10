@@ -81,7 +81,7 @@ describe("scoreSession (PRD §I)", () => {
 
   it("scores a perfect session in the high range and recommends progress", () => {
     const answers = Object.fromEntries(
-      text.questions.map((q) => [q.id, q.correctIndex])
+      text.questions.map((q) => [q.id, q.answerFormat === "short_answer" ? q.modelAnswer! : q.correctIndex])
     );
     const result = scoreSession({
       studentId: "t",

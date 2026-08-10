@@ -22,10 +22,10 @@ export const SEED_TEXTS: SeedText[] = [
       "Le football ressemble ainsi à d'autres formes de migration. Partout dans le monde, des personnes quittent leur région pour chercher du travail, souvent dans les grandes villes. Comprendre la migration des footballeurs aide donc à comprendre un phénomène bien plus large.",
     ],
     targetVocabulary: [
-      { word: "migration", definitionFr: "Le déplacement de personnes d'un lieu vers un autre." },
-      { word: "opportunité", definitionFr: "Une occasion favorable d'améliorer sa situation." },
-      { word: "s'adapter", definitionFr: "Se modifier pour convenir à une nouvelle situation." },
-      { word: "phénomène", definitionFr: "Un fait que l'on peut observer et étudier." },
+      { word: "migration", definitionFr: "Quand des personnes quittent un lieu pour aller vivre ou travailler ailleurs.", examplesFr: ["Une famille part de son village pour habiter en ville : c’est une migration.", "Un joueur quitte son pays pour rejoindre un club étranger."], grade: 7, relatedTopics: ["football", "géographie", "travail"] },
+      { word: "opportunité", definitionFr: "Une bonne occasion qui permet d’essayer, de réussir ou d’améliorer sa situation.", examplesFr: ["Le club lui propose un essai : c’est une opportunité de montrer son talent.", "Une formation gratuite est une opportunité d’apprendre un métier."], grade: 7, relatedTopics: ["football", "travail", "école"] },
+      { word: "s'adapter", definitionFr: "Changer certaines habitudes pour être à l’aise dans une situation nouvelle.", examplesFr: ["Le joueur apprend la langue de ses coéquipiers pour s’adapter.", "Dans une nouvelle école, Amina observe les règles puis adapte ses habitudes."], grade: 7, relatedTopics: ["football", "école", "voyage"] },
+      { word: "phénomène", definitionFr: "Un fait que plusieurs personnes peuvent observer et chercher à comprendre.", examplesFr: ["La pluie qui tombe chaque saison est un phénomène naturel.", "Le départ de nombreux jeunes vers les villes est un phénomène social."], grade: 7, relatedTopics: ["science", "géographie", "société"] },
     ],
     questions: [
       {
@@ -47,6 +47,11 @@ export const SEED_TEXTS: SeedText[] = [
         type: "cause_consequence",
         skillKey: "cause_consequence",
         prompt: "Quelle est la raison principale pour laquelle ces jeunes partent ?",
+        answerFormat: "short_answer",
+        studentInstruction: "Écris une ou deux phrases. Nomme la raison et explique ce qu’elle peut améliorer.",
+        acceptedConcepts: ["opportunité économique", "meilleures chances", "réussir", "salaires plus élevés"],
+        modelAnswer: "Ils partent surtout pour une opportunité économique : ils espèrent être mieux payés et avoir de meilleures chances de réussir.",
+        scoringCriteria: [{ label: "Nomme la raison économique", conceptIds: ["opportunité économique", "salaires plus élevés"], points: 1 }, { label: "Explique le bénéfice attendu", conceptIds: ["meilleures chances", "réussir"], points: 1 }],
         choices: [
           "Ils n'aiment pas leur pays",
           "L'opportunité économique : de meilleures chances de réussir",
@@ -119,10 +124,10 @@ export const SEED_TEXTS: SeedText[] = [
       "Comprendre ce fonctionnement ne signifie pas qu'il faut tout supprimer. Cela permet plutôt de choisir : décider quand utiliser ces applications, et garder ton esprit critique face à ce qu'elles te montrent.",
     ],
     targetVocabulary: [
-      { word: "capter", definitionFr: "Attirer et retenir, par exemple l'attention." },
-      { word: "biais", definitionFr: "Une inclination qui déforme le jugement." },
-      { word: "esprit critique", definitionFr: "La capacité à analyser une information avant de l'accepter." },
-      { word: "notification", definitionFr: "Un message qui signale une nouveauté dans une application." },
+      { word: "capter", definitionFr: "Attirer quelque chose puis le garder, comme le regard ou l’attention d’une personne.", examplesFr: ["Une vidéo colorée capte ton regard quand tu ouvres l’application.", "Le professeur pose une question surprenante pour capter l’attention de la classe."], grade: 7, relatedTopics: ["réseaux sociaux", "médias", "école"] },
+      { word: "biais", definitionFr: "Une façon de penser qui pousse le jugement dans une direction sans montrer toute la réalité.", examplesFr: ["Si l’application ne montre que les avis que tu aimes, elle crée un biais.", "Interroger seulement ses amis donne une réponse avec un biais, car d’autres avis manquent."], grade: 7, relatedTopics: ["réseaux sociaux", "médias", "information"] },
+      { word: "esprit critique", definitionFr: "L’habitude de vérifier une information, de demander des preuves et de comparer plusieurs points de vue avant de la croire.", examplesFr: ["Aline cherche la source d’une vidéo avant de la partager : elle utilise son esprit critique.", "Comparer deux articles aide à garder son esprit critique face à une rumeur."], grade: 7, relatedTopics: ["réseaux sociaux", "information", "école"] },
+      { word: "notification", definitionFr: "Un petit message affiché par un appareil pour signaler qu’une chose nouvelle vient d’arriver.", examplesFr: ["Mon téléphone affiche une notification quand je reçois un message.", "L’application envoie une notification pour annoncer une nouvelle vidéo."], grade: 7, relatedTopics: ["réseaux sociaux", "technologie", "médias"] },
     ],
     questions: [
       {
@@ -172,6 +177,11 @@ export const SEED_TEXTS: SeedText[] = [
         type: "inference",
         skillKey: "inference",
         prompt: "Que suggère le texte sur la solution à adopter ?",
+        answerFormat: "short_answer",
+        studentInstruction: "Réponds en une ou deux phrases. Donne l’action proposée et l’attitude à garder.",
+        acceptedConcepts: ["choisir quand", "utiliser", "esprit critique", "vérifier"],
+        modelAnswer: "Le texte conseille de choisir quand utiliser les réseaux sociaux et de garder son esprit critique face aux contenus.",
+        scoringCriteria: [{ label: "Donne une action concrète", conceptIds: ["choisir quand", "utiliser"], points: 1 }, { label: "Nomme l’attitude de vérification", conceptIds: ["esprit critique", "vérifier"], points: 1 }],
         choices: [
           "Tout supprimer immédiatement",
           "Ne jamais utiliser de réseaux sociaux",

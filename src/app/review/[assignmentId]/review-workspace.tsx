@@ -27,6 +27,7 @@ import {
 } from "@/lib/review/types";
 import { textTypeLabel } from "@/lib/presentation/french-labels";
 import { targetLevelProfile } from "@/lib/scoring/band";
+import { validateVocabularyDefinition } from "@/lib/vocabulary/contract";
 
 type QuestionState = {
   questionIndex: number;
@@ -80,6 +81,48 @@ function serializableDraft(draft: WorkspaceDraft): ReviewDraft {
   };
 }
 
+function normalizeCandidate(
+  candidate: ReviewQueueItem["candidate"],
+): ReviewQueueItem["candidate"] {
+  return {
+    ...candidate,
+    generated: {
+      ...candidate.generated,
+      targetVocabulary: candidate.generated.targetVocabulary.map((word) => {
+        const legacy = word as typeof word & { exampleSentenceFr?: string };
+        return {
+          ...word,
+          examplesFr: word.examplesFr ?? [
+            legacy.exampleSentenceFr ??
+              `« ${word.word} » apparaît dans une situation concrète.`,
+            `L’élève réemploie « ${word.word} » dans une autre situation.`,
+          ],
+          grade: word.grade ?? candidate.input.studentGrade,
+          status: word.status ?? "new",
+          evidence: word.evidence ?? {
+            exposures: 0,
+            helpLookups: 0,
+            successfulTypedRetrievals: 0,
+          },
+          plannedReuse: word.plannedReuse ?? [
+            "Révision espacée dans un texte lié au même thème.",
+          ],
+        };
+      }),
+      questions: candidate.generated.questions.map((question) => ({
+        ...question,
+        studentInstruction:
+          question.studentInstruction ??
+          (question.answerFormat === "multiple_choice"
+            ? "Choisis la réponse qui s’appuie sur le texte."
+            : "Réponds brièvement avec tes mots."),
+        acceptedConcepts: question.acceptedConcepts ?? [],
+        scoringCriteria: question.scoringCriteria ?? [],
+      })),
+    },
+  };
+}
+
 export function ReviewWorkspace({
   assignment,
   reviewerName,
@@ -92,7 +135,8 @@ export function ReviewWorkspace({
   nextAssignmentId: string | null;
 }) {
   const router = useRouter();
-  const questions = assignment.candidate.generated.questions;
+  const candidate = normalizeCandidate(assignment.candidate);
+  const questions = candidate.generated.questions;
   const initial: WorkspaceDraft = {
     scores: assignment.review?.scores ?? {},
     decision: assignment.review?.decision ?? "",
@@ -194,7 +238,6 @@ export function ReviewWorkspace({
     }
   }
 
-  const candidate = assignment.candidate;
   const wordCount = candidate.generated.body.trim().split(/\s+/).length;
   const level = targetLevelProfile(candidate.input.targetReadingBand);
   const progressPercent = progress.total
@@ -321,6 +364,88 @@ export function ReviewWorkspace({
             )}
           </article>
 
+          <section
+            aria-labelledby="vocabulary-title"
+            className="border-t border-border py-8"
+          >
+            <h2 id="vocabulary-title" className="text-xl font-semibold">
+              Vocabulaire cible et preuves
+            </h2>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Une exposition seule ne compte jamais comme maîtrise. Le statut
+              repose sur des rappels écrits espacés.
+            </p>
+            <div className="mt-5 grid gap-4">
+              {candidate.generated.targetVocabulary.map((word) => {
+                const issues = validateVocabularyDefinition({
+                  word: word.word,
+                  definitionFr: word.definitionFr,
+                  examplesFr: word.examplesFr,
+                });
+                return (
+                  <article
+                    key={word.word}
+                    className="rounded-xl border border-border bg-card p-4"
+                  >
+                    <div className="flex flex-wrap items-center gap-2">
+                      <h3 className="font-semibold">{word.word}</h3>
+                      <Badge variant="outline">Classe {word.grade}</Badge>
+                      <Badge
+                        variant={
+                          word.status === "maintenance" ? "success" : "secondary"
+                        }
+                      >
+                        {word.status === "new"
+                          ? "Nouveau"
+                          : word.status === "review"
+                            ? "Révision"
+                            : "Entretien"}
+                      </Badge>
+                      <Badge variant={issues.length ? "destructive" : "success"}>
+                        {issues.length ? `${issues.length} alerte(s)` : "Contrat valide"}
+                      </Badge>
+                    </div>
+                    <p className="mt-3 text-sm">
+                      <span className="font-medium">Explication simple : </span>
+                      {word.definitionFr}
+                    </p>
+                    <div className="mt-2 text-sm text-muted-foreground">
+                      <span className="font-medium text-foreground">Exemples concrets</span>
+                      <ul className="ml-5 mt-1 list-disc">
+                        {word.examplesFr.map((example) => (
+                          <li key={example}>{example}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <dl className="mt-3 grid gap-2 text-sm sm:grid-cols-2">
+                      <div>
+                        <dt className="font-medium">Preuves</dt>
+                        <dd className="text-muted-foreground">
+                          {word.evidence.exposures} vue(s) · {word.evidence.helpLookups} aide(s) · {word.evidence.successfulTypedRetrievals} rappel(s) écrit(s)
+                        </dd>
+                      </div>
+                      <div>
+                        <dt className="font-medium">Réemploi prévu</dt>
+                        <dd className="text-muted-foreground">
+                          {word.plannedReuse.join(" · ")}
+                        </dd>
+                      </div>
+                    </dl>
+                    {issues.length > 0 && (
+                      <ul className="mt-3 text-sm text-destructive">
+                        {issues.map((issue) => (
+                          <li key={`${issue.code}-${issue.word ?? ""}`}>
+                            {issue.message}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </article>
+                );
+              })}
+            </div>
+          </section>
+
           <a
             href="#questions"
             className="mb-9 flex min-h-12 w-full items-center justify-center gap-2 rounded-md border border-border font-display text-[15px] font-bold hover:bg-muted xl:hidden"
@@ -350,12 +475,25 @@ export function ReviewWorkspace({
                     key={`${question.questionText}-${index}`}
                     className="rounded-xl border border-border bg-card p-4 sm:p-5"
                   >
-                    <p className="text-xs font-semibold uppercase tracking-wide text-primary">
-                      Question {index + 1} sur {questions.length}
-                    </p>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <p className="text-xs font-semibold uppercase tracking-wide text-primary">
+                        Question {index + 1} sur {questions.length}
+                      </p>
+                      <Badge variant="outline">
+                        {question.answerFormat === "short_answer"
+                          ? "Réponse courte écrite"
+                          : question.answerFormat === "written_summary"
+                            ? "Résumé écrit"
+                            : "Choix multiple"}
+                      </Badge>
+                    </div>
                     <h3 className="mt-2 font-medium leading-6">
                       {question.questionText}
                     </h3>
+                    <p className="mt-2 text-sm">
+                      <span className="font-medium">Consigne élève : </span>
+                      {question.studentInstruction}
+                    </p>
                     {question.choices?.length ? (
                       <ol className="mt-4 space-y-2 text-sm">
                         {question.choices.map((choice, choiceIndex) => {
@@ -380,10 +518,23 @@ export function ReviewWorkspace({
                         })}
                       </ol>
                     ) : (
-                      <p className="mt-3 rounded-md bg-muted p-3 text-sm leading-6">
-                        <span className="text-muted-foreground">Réponse attendue : </span>
-                        {question.correctAnswer ?? "Réponse ouverte selon la grille."}
-                      </p>
+                      <div className="mt-3 rounded-md bg-muted p-3 text-sm leading-6">
+                        <p>
+                          <span className="text-muted-foreground">Réponse modèle : </span>
+                          {question.modelAnswer ?? question.correctAnswer ?? "Réponse ouverte selon la grille."}
+                        </p>
+                        <p className="mt-2">
+                          <span className="text-muted-foreground">Concepts acceptés : </span>
+                          {question.acceptedConcepts.join(" · ") || "À préciser"}
+                        </p>
+                        <ul className="mt-2 list-disc pl-5">
+                          {question.scoringCriteria.map((criterion) => (
+                            <li key={criterion.label}>
+                              {criterion.label} — {criterion.points} point(s)
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     )}
                     {question.rubric && (
                       <p className="mt-2 text-sm text-muted-foreground">
