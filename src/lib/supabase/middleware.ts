@@ -44,7 +44,8 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const isProtected = PROTECTED_PREFIXES.some((p) => pathname.startsWith(p));
+  const isProtected = pathname !== "/review/manifest.webmanifest"
+    && PROTECTED_PREFIXES.some((p) => pathname.startsWith(p));
   const isAuthRoute = AUTH_PREFIXES.some((p) => pathname.startsWith(p));
 
   // Unauthenticated user hitting a protected route → login.
