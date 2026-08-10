@@ -1,4 +1,6 @@
 begin;
+set local role postgres;
+set local search_path = public, extensions;
 create extension if not exists pgtap with schema extensions;
 select plan(13);
 select has_table('public','content_serving_policies','Serving policy is versioned');

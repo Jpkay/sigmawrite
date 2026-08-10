@@ -37,7 +37,6 @@ const PLANS: readonly ReusePlan[] = [
   { targetNodeKey: "reconnaitre_imparfait", expectation: "receptive", sourceNodeKeys: ["imparfait_formation"] },
   { targetNodeKey: "contraster_pc_imparfait", expectation: "receptive", sourceNodeKeys: ["pc_vs_imparfait"] },
   { targetNodeKey: "reconnaitre_plus_que_parfait", expectation: "receptive", sourceNodeKeys: ["plus_que_parfait"] },
-  { targetNodeKey: "produire_plus_que_parfait", expectation: "controlled_production", sourceNodeKeys: ["plus_que_parfait"] },
   { targetNodeKey: "interpreter_sequence_temporelle", expectation: "receptive", sourceNodeKeys: ["concordance_temps_recit"] },
 
   { targetNodeKey: "construction_accord_determinant_nom", expectation: "receptive", sourceNodeKeys: ["accord_determinant_nom", "accord_gn_complet"] },

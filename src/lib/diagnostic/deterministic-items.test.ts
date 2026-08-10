@@ -13,7 +13,7 @@ describe("deterministic diagnostic items", () => {
   it("authors a reproducible three-tier set for every supported node", async () => {
     const items = await buildDeterministicDiagnosticItems(taxonomyArtifact.taxonomy);
 
-    expect(items).toHaveLength(15);
+    expect(items).toHaveLength(33);
     expect(new Set(items.map((entry) => entry.itemKey)).size).toBe(items.length);
     expect(new Set(items.map((entry) => entry.item.promptFr)).size).toBe(items.length);
     expect(new Set(items.map((entry) => entry.item.nodeKey))).toEqual(new Set([
@@ -22,6 +22,12 @@ describe("deterministic diagnostic items", () => {
       "produire_passe_compose",
       "accorder_participe_etre",
       "accorder_participe_avoir_cod",
+      "produire_futur_proche",
+      "produire_futur_simple",
+      "produire_plus_que_parfait",
+      "produire_conditionnel_present",
+      "produire_subjonctif_present_frequent",
+      "produire_imperatif",
     ]));
     expect(items.every((entry) =>
       entry.itemKey.startsWith(DETERMINISTIC_DIAGNOSTIC_ITEM_PREFIX)
@@ -53,6 +59,6 @@ describe("deterministic diagnostic items", () => {
     expect(validation.issues).not.toContainEqual(
       expect.stringContaining("item is not release-approved"),
     );
-    expect(validation.manifest.eligibleItemCount).toBe(15);
+    expect(validation.manifest.eligibleItemCount).toBe(33);
   });
 });

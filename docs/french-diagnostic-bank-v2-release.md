@@ -5,8 +5,8 @@
 **Taxonomy:** `french-taxonomy-v2`
 **Decision:** pending human item review
 **Approved checksum:** pending
-**Current candidate checksum:** `sha256:09269421bb986158fda2a67c916e93475fceb0dc613080dee79fcf3ccaf1eabd`
-**Candidate inventory:** 696 items — 15 reproducibly computed and 681 awaiting human review
+**Current candidate checksum:** `sha256:74efcf0e259cac4c5d598eb10d2d741891700c171de9a96789147b8ad5840042`
+**Candidate inventory:** 696 items — 33 reproducibly computed and 663 awaiting human review
 
 The complete candidate was authored locally without external model-generation
 calls. `npm run diagnostic:audit:v2` confirms exact three-item coverage for all

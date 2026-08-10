@@ -1,4 +1,6 @@
 begin;
+set local role postgres;
+set local search_path = public, extensions;
 create extension if not exists pgtap with schema extensions;
 select plan(18);
 
@@ -22,9 +24,9 @@ select has_trigger('public','diagnostic_responses','mark_pilot_diagnostic_respon
 select has_trigger('public','competency_attempts','mark_pilot_competency_attempt_trigger','Pilot attempts are marked provisional');
 
 select is((select enabled from public.diagnostic_pilot_settings where singleton),false,'Pilot defaults fail closed');
-select like(
-  pg_get_functiondef('public.student_learning_is_unlocked(uuid)'::regprocedure),
-  '%bank.status=''published''%',
+select extensions.ok(
+  pg_get_functiondef('public.student_learning_is_unlocked(uuid)'::regprocedure)
+    like '%bank.status=''published''%',
   'Production learning unlock still requires a published bank'
 );
 

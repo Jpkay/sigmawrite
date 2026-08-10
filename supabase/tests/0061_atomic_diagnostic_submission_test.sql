@@ -1,4 +1,6 @@
 begin;
+set local role postgres;
+set local search_path = public, extensions;
 create extension if not exists pgtap with schema extensions;
 select plan(10);
 select has_function('public','diagnostic_bkt_update',array['numeric','boolean','numeric','numeric','numeric'],'Database BKT matches the trusted scoring contract');

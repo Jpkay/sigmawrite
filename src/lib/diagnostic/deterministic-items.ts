@@ -166,6 +166,96 @@ const PLANS: readonly ComputedConjugationPlan[] = [
     person: "2s",
     codBefore: { gender: "m", number: "p" },
   },
+  {
+    nodeKey: "produire_futur_proche", difficultyTier: "foundation", responseType: "short_answer",
+    promptFr: "Conjugue « parler » au futur proche avec « je ». Écris seulement le groupe verbal.",
+    verb: "parler", tense: "futur_proche", person: "1s",
+  },
+  {
+    nodeKey: "produire_futur_proche", difficultyTier: "core", responseType: "cloze",
+    promptFr: "Complète au futur proche : Nous ___ ce soir. (finir) Écris seulement le groupe verbal.",
+    verb: "finir", tense: "futur_proche", person: "1p",
+  },
+  {
+    nodeKey: "produire_futur_proche", difficultyTier: "stretch", responseType: "transform",
+    promptFr: "Mets « ils partent » au futur proche. Écris seulement le groupe verbal.",
+    verb: "partir", tense: "futur_proche", person: "3p",
+  },
+  {
+    nodeKey: "produire_futur_simple", difficultyTier: "foundation", responseType: "short_answer",
+    promptFr: "Conjugue « parler » au futur simple avec « je ». Écris seulement la forme verbale.",
+    verb: "parler", tense: "futur_simple", person: "1s",
+  },
+  {
+    nodeKey: "produire_futur_simple", difficultyTier: "core", responseType: "cloze",
+    promptFr: "Complète au futur simple : Vous ___ demain. (finir) Écris seulement la forme verbale.",
+    verb: "finir", tense: "futur_simple", person: "2p",
+  },
+  {
+    nodeKey: "produire_futur_simple", difficultyTier: "stretch", responseType: "transform",
+    promptFr: "Mets « ils viennent » au futur simple. Écris seulement la forme verbale.",
+    verb: "venir", tense: "futur_simple", person: "3p",
+  },
+  {
+    nodeKey: "produire_plus_que_parfait", difficultyTier: "foundation", responseType: "short_answer",
+    promptFr: "Conjugue « parler » au plus-que-parfait avec « je ». Écris seulement le groupe verbal.",
+    verb: "parler", tense: "plus_que_parfait", person: "1s",
+  },
+  {
+    nodeKey: "produire_plus_que_parfait", difficultyTier: "core", responseType: "cloze",
+    promptFr: "Complète : Elle ___ avant midi. (venir, plus-que-parfait) Écris seulement le groupe verbal.",
+    verb: "venir", tense: "plus_que_parfait", person: "3s", gender: "f",
+  },
+  {
+    nodeKey: "produire_plus_que_parfait", difficultyTier: "stretch", responseType: "transform",
+    promptFr: "Mets « ils prennent » au plus-que-parfait. Écris seulement le groupe verbal.",
+    verb: "prendre", tense: "plus_que_parfait", person: "3p",
+  },
+  {
+    nodeKey: "produire_conditionnel_present", difficultyTier: "foundation", responseType: "short_answer",
+    promptFr: "Conjugue « parler » au conditionnel présent avec « je ». Écris seulement la forme verbale.",
+    verb: "parler", tense: "conditionnel_present", person: "1s",
+  },
+  {
+    nodeKey: "produire_conditionnel_present", difficultyTier: "core", responseType: "cloze",
+    promptFr: "Complète au conditionnel présent : Nous ___ plus tôt. (finir) Écris seulement la forme verbale.",
+    verb: "finir", tense: "conditionnel_present", person: "1p",
+  },
+  {
+    nodeKey: "produire_conditionnel_present", difficultyTier: "stretch", responseType: "transform",
+    promptFr: "Mets « il vient » au conditionnel présent. Écris seulement la forme verbale.",
+    verb: "venir", tense: "conditionnel_present", person: "3s",
+  },
+  {
+    nodeKey: "produire_subjonctif_present_frequent", difficultyTier: "foundation", responseType: "short_answer",
+    promptFr: "Complète : Il faut que tu ___ prêt. (être, subjonctif présent) Écris seulement la forme verbale.",
+    verb: "être", tense: "subjonctif_present", person: "2s",
+  },
+  {
+    nodeKey: "produire_subjonctif_present_frequent", difficultyTier: "core", responseType: "cloze",
+    promptFr: "Complète : Je veux qu’elle ___ le temps. (avoir, subjonctif présent) Écris seulement la forme verbale.",
+    verb: "avoir", tense: "subjonctif_present", person: "3s",
+  },
+  {
+    nodeKey: "produire_subjonctif_present_frequent", difficultyTier: "stretch", responseType: "transform",
+    promptFr: "Complète : Bien qu’il ___ froid, nous sortons. (faire, subjonctif présent) Écris seulement la forme verbale.",
+    verb: "faire", tense: "subjonctif_present", person: "3s",
+  },
+  {
+    nodeKey: "produire_imperatif", difficultyTier: "foundation", responseType: "short_answer",
+    promptFr: "Mets « tu parles doucement » à l’impératif. Écris seulement le verbe.",
+    verb: "parler", tense: "imperatif_present", person: "2s",
+  },
+  {
+    nodeKey: "produire_imperatif", difficultyTier: "core", responseType: "cloze",
+    promptFr: "Mets « nous finissons » à l’impératif. Écris seulement le verbe.",
+    verb: "finir", tense: "imperatif_present", person: "1p",
+  },
+  {
+    nodeKey: "produire_imperatif", difficultyTier: "stretch", responseType: "transform",
+    promptFr: "Mets « vous prenez » à l’impératif. Écris seulement le verbe.",
+    verb: "prendre", tense: "imperatif_present", person: "2p",
+  },
 ] as const;
 
 export const DETERMINISTIC_DIAGNOSTIC_ITEM_PREFIX = "computed-conjugation-v1";

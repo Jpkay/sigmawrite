@@ -36,11 +36,6 @@ const PLANS: readonly Plan[] = [
     ["Quelle phrase contient un futur proche ?", "Il va pleuvoir.", ["Il pleuvra.", "Il pleuvait."]],
     ["Quelle forme est construite avec aller au présent et un infinitif ?", "elles vont commencer", ["elles commenceront", "elles viennent de commencer"]],
   ]),
-  production("produire_futur_proche", [
-    ["Conjugue « parler » au futur proche avec « je ». Écris seulement le groupe verbal.", "vais parler"],
-    ["Conjugue « finir » au futur proche avec « nous ». Écris seulement le groupe verbal.", "allons finir"],
-    ["Conjugue « partir » au futur proche avec « ils ». Écris seulement le groupe verbal.", "vont partir"],
-  ]),
   receptive("interpreter_futur_proche", [
     ["Dans « Le train va partir », que signale le futur proche ?", "un départ imminent", ["un départ ancien", "une habitude"]],
     ["Dans « Je vais apprendre le japonais », quelle valeur domine ?", "une intention", ["un souvenir", "une vérité générale"]],
@@ -86,11 +81,6 @@ const PLANS: readonly Plan[] = [
     ["Quelle phrase contient un futur simple ?", "Nous finirons demain.", ["Nous finissons maintenant.", "Nous venons de finir."]],
     ["Quelle forme verbale est au futur simple ?", "ils viendront", ["ils viennent", "ils viendraient"]],
   ]),
-  production("produire_futur_simple", [
-    ["Conjugue « parler » au futur simple avec « je ».", "parlerai"],
-    ["Conjugue « finir » au futur simple avec « vous ».", "finirez"],
-    ["Conjugue « venir » au futur simple avec « ils ».", "viendront"],
-  ]),
   receptive("interpreter_futur_simple", [
     ["Dans « Demain, nous partirons tôt », quelle valeur a le futur ?", "prévision ou projet futur", ["souvenir", "habitude passée"]],
     ["Dans « Tu rangeras ta chambre », quelle valeur peut prendre le futur ?", "ordre atténué", ["action achevée", "description"]],
@@ -106,11 +96,6 @@ const PLANS: readonly Plan[] = [
     ["Quelle phrase contient un conditionnel présent ?", "Nous voudrions réserver une table.", ["Nous voulons réserver.", "Nous voudrons réserver."]],
     ["Quelle forme verbale est au conditionnel présent ?", "ils seraient", ["ils seront", "ils étaient"]],
   ]),
-  production("produire_conditionnel_present", [
-    ["Conjugue « parler » au conditionnel présent avec « je ».", "parlerais"],
-    ["Conjugue « finir » au conditionnel présent avec « nous ».", "finirions"],
-    ["Conjugue « venir » au conditionnel présent avec « il ».", "viendrait"],
-  ]),
   receptive("interpreter_conditionnel_present", [
     ["Dans « Je voyagerais si j’avais le temps », quelle valeur a le conditionnel ?", "conséquence soumise à une condition", ["fait certain", "ordre"]],
     ["Dans « Pourriez-vous fermer la porte ? », quelle valeur a le conditionnel ?", "demande polie", ["récit passé", "habitude"]],
@@ -121,11 +106,6 @@ const PLANS: readonly Plan[] = [
     ["Quelle phrase contient un subjonctif présent ?", "Il faut qu’il fasse attention.", ["Il fait attention.", "Il fera attention."]],
     ["Quelle forme verbale est au subjonctif présent ?", "que nous soyons", ["nous sommes", "nous serons"]],
   ]),
-  production("produire_subjonctif_present_frequent", [
-    ["Complète au subjonctif présent : « Il faut que tu ___ prêt. » (être)", "sois"],
-    ["Complète au subjonctif présent : « Je veux qu’elle ___ le temps. » (avoir)", "ait"],
-    ["Complète au subjonctif présent : « Bien qu’il ___ froid, nous sortons. » (faire)", "fasse"],
-  ]),
   receptive("interpreter_declencheur_subjonctif", [
     ["Quelle expression déclenche normalement le subjonctif ?", "il faut que", ["je constate que", "il est certain que"]],
     ["Pourquoi emploie-t-on le subjonctif après « bien que » ?", "l’expression introduit une concession", ["elle affirme une certitude", "elle situe une date"]],
@@ -135,11 +115,6 @@ const PLANS: readonly Plan[] = [
     ["Quelle forme est à l’impératif ?", "Ferme la porte !", ["Tu fermes la porte.", "Tu fermeras la porte."]],
     ["Quelle phrase contient un impératif à la 1re personne du pluriel ?", "Allons au marché !", ["Nous allons au marché.", "Nous irons au marché."]],
     ["Quelle forme verbale est à l’impératif ?", "Prenez vos cahiers !", ["Vous prenez vos cahiers.", "Vous prendrez vos cahiers."]],
-  ]),
-  production("produire_imperatif", [
-    ["Mets « tu parles doucement » à l’impératif. Écris seulement le verbe.", "parle"],
-    ["Mets « nous finissons le travail » à l’impératif. Écris seulement le verbe.", "finissons"],
-    ["Mets « vous prenez le bus » à l’impératif. Écris seulement le verbe.", "prenez"],
   ]),
   receptive("interpreter_valeur_imperatif", [
     ["Dans « Sortez immédiatement ! », quelle valeur a l’impératif ?", "ordre", ["hypothèse", "souvenir"]],

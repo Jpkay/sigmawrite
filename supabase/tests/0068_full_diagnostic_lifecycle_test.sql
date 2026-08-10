@@ -1,4 +1,6 @@
 begin;
+set local role postgres;
+set local search_path = public, extensions;
 create extension if not exists pgtap with schema extensions;
 select plan(45);
 
@@ -55,7 +57,7 @@ insert into public.taxonomy_releases(
   id,release_key,version,ontology_version_id,status,manifest,
   manifest_checksum,validation_report
 ) values (
-  pg_temp.fixture_uuid(20),'pgtap-full-diagnostic-taxonomy','68.0.0',
+  pg_temp.fixture_uuid(20),'french-taxonomy-v2','2.0.0',
   pg_temp.fixture_uuid(10),'draft','{"fixture":true}',
   'sha256:809df529f0934fc8b68dcf23d00a18238a9c01490f4a985b4fa4246751a1fc4b',
   '{"valid":true}'

@@ -12,7 +12,7 @@ import { rankByInterestAndVocabulary } from "@/lib/content/vocabulary-fit";
 import { scoreSession } from "@/lib/scoring/session";
 import { updateSkillEstimate, updateSkillsFromSession } from "@/lib/scoring/skill-estimate";
 import { buildRetrievalCards } from "@/lib/content/retrieval-cards";
-import { dueAtFrom, gradeRetrieval, INITIAL_SCHEDULE } from "@/lib/scoring/retrieval";
+import { dueAtFrom, gradeRetrieval, INITIAL_SCHEDULE, type RetrievalResult } from "@/lib/scoring/retrieval";
 import { scheduleFsrs } from "@/lib/scoring/fsrs";
 import { fireImplicitUpdates } from "@/lib/graph/fire";
 import { effectiveMastery } from "@/lib/scoring/decay";
@@ -60,6 +60,7 @@ import { calculateStreak } from "@/lib/motivation";
 import { trackServer } from "@/lib/analytics-server";
 import { createHash } from "node:crypto";
 import { sanitizeStudentTopic } from "@/lib/safety/topic";
+import { plannedExerciseCount } from "@/lib/practice/session";
 
 const answersSchema = z.record(z.string().min(1), z.number().int().min(0).max(20));
 const uuidSchema = z.string().uuid();
@@ -99,6 +100,9 @@ const adaptiveProbeSchema = z.object({
   startedAt: dateTimeSchema,
 }).refine((value) => value.selectedChoiceId || value.answerText, "Réponse requise");
 const practiceAttemptSchema = z.object({ nodeId: uuidSchema, itemId: uuidSchema, selectedChoiceId: uuidSchema.optional(), answerText: z.string().trim().max(2000).optional(), startedAt: dateTimeSchema, hintsUsed: z.number().int().min(0).max(2).optional() }).refine((value) => value.selectedChoiceId || value.answerText, "Réponse requise");
+const timedPracticeAttemptSchema = practiceAttemptSchema.and(z.object({ practiceSessionId: uuidSchema, exercisePosition: z.number().int().min(0).max(5) }));
+const startPracticeSessionSchema = z.object({ nodeId: uuidSchema, clientRequestId: uuidSchema });
+const completePracticeSessionSchema = z.object({ practiceSessionId: uuidSchema });
 const writingFeedbackSchema = z.object({ textKey: z.string().min(1).max(100) });
 const writingRevisionSchema = writingFeedbackSchema.extend({ revisedText: z.string().trim().min(5).max(5000) });
 const onDemandRequestSchema = z.object({ clientRequestId: uuidSchema, topicKey: z.string().trim().min(1).max(80), topic: z.string().trim().min(1).max(160), textType: z.enum(["narrative", "explanatory", "argumentative", "source_based"]) });
@@ -388,6 +392,7 @@ async function recordDirectCompetencyEvidence(input: {
   pathMastery?: (mastery: number) => number;
   /** When provided, folds the observation into the node's FSRS memory state. */
   correct?: boolean;
+  memoryResult?: RetrievalResult;
 }) {
   const { data: prior, error: priorError } = await input.service
     .from("student_competency_estimates")
@@ -403,7 +408,7 @@ async function recordDirectCompetencyEvidence(input: {
     : Number(prior?.mastery_probability ?? 0.1);
   const evidenceCount = Number(prior?.evidence_count ?? 0) + 1;
   const mastery = input.updateMastery(priorMastery);
-  let memoryPatch: { memory_stability: number; memory_difficulty: number } | undefined;
+  let memoryPatch: { memory_stability: number; memory_difficulty: number; next_review_at: string } | undefined;
   if (input.correct !== undefined) {
     const prevState = prior?.memory_stability != null && prior?.memory_difficulty != null
       ? { stability: Number(prior.memory_stability), difficulty: Number(prior.memory_difficulty) }
@@ -411,8 +416,12 @@ async function recordDirectCompetencyEvidence(input: {
     const elapsedDays = prior?.last_evidence_at
       ? Math.max(0, (Date.parse(input.at) - Date.parse(prior.last_evidence_at)) / 86_400_000)
       : 0;
-    const next = scheduleFsrs(prevState, input.correct ? "good" : "forgot", elapsedDays);
-    memoryPatch = { memory_stability: next.stability, memory_difficulty: next.difficulty };
+    const next = scheduleFsrs(prevState, input.memoryResult ?? (input.correct ? "good" : "forgot"), elapsedDays);
+    memoryPatch = {
+      memory_stability: next.stability,
+      memory_difficulty: next.difficulty,
+      next_review_at: dueAtFrom(Date.parse(input.at), next.intervalDays),
+    };
   }
   const { error: estimateError } = await input.service
     .from("student_competency_estimates")
@@ -1042,7 +1051,7 @@ export async function loadStudentSessionPlan(input: unknown): Promise<SessionPla
   const [steps, edgeRows, estimateRows, dueCardRows] = await Promise.all([
     getCatchUpPlan(studentId, supabase),
     service.from("competency_edges").select("source_node_id,target_node_id,edge_type,strength").in("edge_type", ["encompasses", "same_family"]),
-    service.from("student_competency_estimates").select("node_id,mastery_probability,memory_stability,last_evidence_at").eq("student_id", studentId),
+    service.from("student_competency_estimates").select("node_id,mastery_probability,memory_stability,last_evidence_at,next_review_at").eq("student_id", studentId),
     service.from("retrieval_schedules")
       .select("retrieval_card_id,due_at,retrieval_cards!inner(id,student_id,node_id)")
       .eq("retrieval_cards.student_id", studentId)
@@ -1059,6 +1068,10 @@ export async function loadStudentSessionPlan(input: unknown): Promise<SessionPla
     const mastery = Number(row.mastery_probability);
     const stability = row.memory_stability == null ? null : Number(row.memory_stability);
     const lastAt = row.last_evidence_at as string | null;
+    const explicitDueAt = row.next_review_at as string | null;
+    if (explicitDueAt && Date.parse(explicitDueAt) <= nowMs) {
+      return [{ nodeId: row.node_id as string, overdueDays: Math.max(0, (nowMs - Date.parse(explicitDueAt)) / 86_400_000) }];
+    }
     if (mastery < 0.85 || stability == null || !lastAt) return [];
     const effective = effectiveMastery({ mastery, memoryStability: stability, lastEvidenceAt: lastAt }, nowMs);
     if (effective >= 0.85) return [];
@@ -1123,11 +1136,73 @@ export async function loadStudentSessionPlan(input: unknown): Promise<SessionPla
   });
 }
 
+export async function startNodePracticeSession(input: unknown) {
+  const data = checked(startPracticeSessionSchema, input); const { supabase, studentId } = await context();
+  await requireStudentLearningUnlocked(supabase, studentId);
+  const service = createServiceClient();
+  const { data: node } = await service.from("competency_nodes").select("id").eq("id", data.nodeId).single();
+  if (!node) throw new Error("Leçon introuvable.");
+  const { count, error: countError } = await service.from("competency_items").select("id", { count: "exact", head: true })
+    .eq("primary_node_id", data.nodeId).in("review_status", ["auto_approved", "human_approved"])
+    .in("validator_type", ["exact", "regex", "conjugator", "agreement", "grammalecte"]);
+  if (countError) throw new Error(countError.message);
+  const plannedExercises = plannedExerciseCount(count ?? 0);
+  if (plannedExercises < 1) throw new Error("Aucun exercice approuvé pour cette leçon.");
+  const existing = await service.from("practice_learning_sessions")
+    .select("id,started_at,expires_at,planned_exercises")
+    .eq("student_id", studentId).eq("client_request_id", data.clientRequestId).maybeSingle();
+  if (existing.error) throw new Error(existing.error.message);
+  if (existing.data) return {
+    id: existing.data.id as string,
+    startedAt: existing.data.started_at as string,
+    expiresAt: existing.data.expires_at as string,
+    plannedExercises: Number(existing.data.planned_exercises),
+  };
+  const startedAt = new Date();
+  const expiresAt = new Date(startedAt.getTime() + 7 * 60_000);
+  const { data: session, error } = await service.from("practice_learning_sessions").insert({
+    student_id: studentId, node_id: data.nodeId, client_request_id: data.clientRequestId,
+    started_at: startedAt.toISOString(), expires_at: expiresAt.toISOString(), planned_exercises: plannedExercises,
+  }).select("id,started_at,expires_at,planned_exercises").single();
+  if (error?.code === "23505") {
+    const { data: raced } = await service.from("practice_learning_sessions")
+      .select("id,started_at,expires_at,planned_exercises")
+      .eq("student_id", studentId).eq("client_request_id", data.clientRequestId).single();
+    if (raced) return { id: raced.id as string, startedAt: raced.started_at as string, expiresAt: raced.expires_at as string, plannedExercises: Number(raced.planned_exercises) };
+  }
+  if (error || !session) throw new Error(error?.message ?? "La leçon n’a pas pu démarrer.");
+  return {
+    id: session.id as string,
+    startedAt: session.started_at as string,
+    expiresAt: session.expires_at as string,
+    plannedExercises: Number(session.planned_exercises),
+  };
+}
+
+export async function completeNodePracticeSession(input: unknown) {
+  const data = checked(completePracticeSessionSchema, input); const { supabase, studentId } = await context();
+  await requireStudentLearningUnlocked(supabase, studentId);
+  const service = createServiceClient();
+  const { data: result, error } = await service.rpc("complete_practice_learning_session", {
+    p_session_id: data.practiceSessionId, p_student_id: studentId, p_completed_at: new Date().toISOString(),
+  });
+  if (error) throw new Error(error.message);
+  revalidatePath("/student");
+  return result as {
+    completed: boolean; expired: boolean; exercisesCompleted: number; plannedExercises: number;
+    firstTryCorrect: number; baseXp: number; bonusXp: number; totalXp: number;
+  };
+}
+
 export async function submitNodePractice(input: unknown) {
-  const data = checked(practiceAttemptSchema, input); const { supabase, studentId } = await context();
+  const data = checked(timedPracticeAttemptSchema, input); const { supabase, studentId } = await context();
   await requireStudentLearningUnlocked(supabase, studentId);
   if (data.answerText) await moderateOrReject({ supabase, studentId, text: data.answerText, field: "memory_retrieval" });
   const service = createServiceClient();
+  const { data: practiceSession } = await service.from("practice_learning_sessions")
+    .select("id,node_id,status,expires_at").eq("id", data.practiceSessionId).eq("student_id", studentId).single();
+  if (!practiceSession || practiceSession.node_id !== data.nodeId || practiceSession.status !== "active") throw new Error("Cette leçon n’est plus active.");
+  if (Date.parse(practiceSession.expires_at as string) <= Date.now()) throw new Error("Les sept minutes sont écoulées.");
   const { data: item } = await service.from("competency_items").select("id,primary_node_id,learner_mode,modality,response_type,validator_type,validator_config,correct_answer,acceptable_answers,competency_item_choices(id,is_correct,feedback_fr)").eq("id", data.itemId).eq("primary_node_id", data.nodeId).in("review_status", ["auto_approved", "human_approved"]).in("validator_type", ["exact", "regex", "conjugator", "agreement", "grammalecte"]).single();
   if (!item) throw new Error("Exercice introuvable.");
   const choices = item.competency_item_choices as unknown as Array<{ id: string; is_correct: boolean; feedback_fr: string | null }>;
@@ -1136,7 +1211,7 @@ export async function submitNodePractice(input: unknown) {
   else { const validatorType=item.validator_type as ValidatorType; const grammarChecker=validatorType==="agreement"||validatorType==="grammalecte"?new LanguageToolChecker():undefined; const validation = await validateAnswer(data.answerText ?? "", { validatorType, config: item.validator_config as Record<string, unknown> | undefined, correctAnswer: item.correct_answer as string | undefined, acceptableAnswers: item.acceptable_answers as string[] },{grammarChecker}); correct = validation.pass; feedbackFr = validation.reason ?? null; }
   const now = new Date().toISOString();
   const hintsUsed = data.hintsUsed ?? 0;
-  await service.from("competency_attempts").insert({ student_id: studentId, item_id: item.id, node_id: data.nodeId, learner_mode: item.learner_mode, modality: item.modality, answer_text: data.answerText ?? null, selected_choice_id: data.selectedChoiceId ?? null, is_correct: correct, score: correct ? 1 : 0, latency_ms: Math.max(0, Date.now()-Date.parse(data.startedAt)), hints_used: hintsUsed, context: "practice", attempted_at: now });
+  await service.from("competency_attempts").insert({ student_id: studentId, item_id: item.id, node_id: data.nodeId, practice_session_id: data.practiceSessionId, exercise_position: data.exercisePosition, learner_mode: item.learner_mode, modality: item.modality, answer_text: data.answerText ?? null, selected_choice_id: data.selectedChoiceId ?? null, is_correct: correct, score: correct ? 1 : 0, latency_ms: Math.max(0, Date.now()-Date.parse(data.startedAt)), hints_used: hintsUsed, context: "practice", attempted_at: now });
   const { mastery } = await recordDirectCompetencyEvidence({
     service,
     studentId,
@@ -1148,6 +1223,7 @@ export async function submitNodePractice(input: unknown) {
       ? bktUpdateWeighted(prior, true, 1 / (1 + hintsUsed))
       : bktUpdate(prior, correct, {}, guessFromChoices(choices.length)),
     correct,
+    memoryResult: correct ? (hintsUsed > 0 ? "hard" : "good") : "forgot",
     practiced: true,
     // Only unaided successes may confirm the 0.85 mastery gate.
     pathMastery: (value) => correct && hintsUsed === 0 ? value : Math.min(value, 0.84),
@@ -1173,7 +1249,6 @@ export async function submitNodePractice(input: unknown) {
     const { data: node } = await service.from("competency_nodes").select("label_fr").eq("id", data.nodeId).single();
     const { data: card } = await service.from("retrieval_cards").upsert({ student_id: studentId, node_id: data.nodeId, card_type: "competency_node", prompt_fr: `Explique avec tes mots : ${node?.label_fr ?? "cette compétence"}.`, rubric: { node_id: data.nodeId } }, { onConflict: "student_id,node_id" }).select("id").single();
     if (card) await service.from("retrieval_schedules").upsert({ retrieval_card_id: card.id, due_at: dueAtFrom(Date.now(), 1), interval_days: 1, ease_factor: 2.5, repetitions: 0, status: "due" }, { onConflict: "retrieval_card_id" });
-    await recordDailyActivity(service,studentId,now,"practice",true);
   }
   revalidatePath("/student"); revalidatePath("/student/frontier");
   return { correct, feedbackFr, mastery, mastered: mastery >= 0.85, remediation, scaffoldLevel: scaffoldState.level };
@@ -1991,8 +2066,9 @@ export async function loadLatestReadingResume(input: unknown) {
 }
 
 export async function loadStudentMotivation(input: unknown) {
-  checked(emptySchema,input);const{supabase,studentId}=await context();const{data}=await supabase.from("student_daily_activity").select("activity_date,goal_completed,reading_sessions,practice_steps,retrieval_reviews").eq("student_id",studentId).order("activity_date",{ascending:false}).limit(14);const rows=data??[];const todayKey=new Date().toISOString().slice(0,10);
-  return{streak:calculateStreak(rows.filter(row=>row.goal_completed).map(row=>row.activity_date as string),Date.now()),today:rows.find(row=>row.activity_date===todayKey)??null,week:rows.slice(0,7)};
+  checked(emptySchema,input);const{supabase,studentId}=await context();const[{data},{data:xpRows}]=await Promise.all([supabase.from("student_daily_activity").select("activity_date,goal_completed,reading_sessions,practice_steps,retrieval_reviews").eq("student_id",studentId).order("activity_date",{ascending:false}).limit(14),supabase.from("student_xp_ledger").select("base_xp,bonus_xp").eq("student_id",studentId)]);const rows=data??[];const todayKey=new Date().toISOString().slice(0,10);
+  const totalXp=(xpRows??[]).reduce((total,row)=>total+Number(row.base_xp)+Number(row.bonus_xp),0);
+  return{streak:calculateStreak(rows.filter(row=>row.goal_completed).map(row=>row.activity_date as string),Date.now()),today:rows.find(row=>row.activity_date===todayKey)??null,week:rows.slice(0,7),totalXp};
 }
 
 export async function submitSkillPractice(input: unknown) {

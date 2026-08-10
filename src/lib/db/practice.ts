@@ -1,6 +1,8 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { createClient } from "@/lib/supabase/server";
 import { itemRatingFromDifficulty, orderByTargetSuccess } from "@/lib/scoring/elo";
+import { conjugationLesson } from "@/lib/conjugation/lessons";
+import { predictedSuccess, selectOptimalPracticeItems } from "@/lib/practice/session";
 
 export type CatchUpStep = {
   nodeId: string;
@@ -71,29 +73,37 @@ export async function getNodePractice(nodeId: string, client?: SupabaseClient, s
   const { data: itemRows, error } = await supabase.from("competency_items")
     .select("id,prompt_fr,instructions_fr,response_type,validator_type,validator_config,correct_answer,acceptable_answers,difficulty,difficulty_rating,competency_item_choices(id,choice_text,position,feedback_fr)")
     .eq("primary_node_id", nodeId).in("review_status", ["auto_approved", "human_approved"])
-    .in("validator_type", ["exact", "regex", "conjugator", "agreement", "grammalecte"]).order("difficulty").limit(8);
+    .in("validator_type", ["exact", "regex", "conjugator", "agreement", "grammalecte"]).order("difficulty").limit(24);
   if (error) throw new Error(error.message);
   // Practice targets ~82% predicted success (Elo/1PL) when the learner has a
   // rating; without one the authored easy→hard order stands.
-  let items = itemRows ?? [];
-  if (studentId && items.length > 1) {
+  let learnerRating = 0;
+  if (studentId && (itemRows?.length ?? 0) > 0) {
     const { data: rating } = await supabase.from("student_ability_ratings")
       .select("rating").eq("student_id", studentId).eq("strand", node.strand as string).maybeSingle();
-    if (rating) {
-      items = orderByTargetSuccess(
-        items,
-        (item) => item.difficulty_rating != null ? Number(item.difficulty_rating) : itemRatingFromDifficulty(item.difficulty == null ? null : Number(item.difficulty)),
-        Number(rating.rating)
-      );
-    }
+    learnerRating = Number(rating?.rating ?? 0);
   }
+  const ratedItems = (itemRows ?? []).map((item) => ({
+    ...item,
+    difficultyRating: item.difficulty_rating != null
+      ? Number(item.difficulty_rating)
+      : itemRatingFromDifficulty(item.difficulty == null ? null : Number(item.difficulty)),
+    responseType: item.response_type as string,
+  }));
+  const items = selectOptimalPracticeItems(
+    studentId ? orderByTargetSuccess(ratedItems, (item) => item.difficultyRating, learnerRating) : ratedItems,
+    learnerRating,
+  );
   let scaffoldLevel = 0;
   if(studentId){const{data:estimate}=await supabase.from("student_competency_estimates").select("scaffold_level").eq("student_id",studentId).eq("node_id",nodeId).maybeSingle();scaffoldLevel=Number(estimate?.scaffold_level??0);}
-  return { node: { id: node.id as string, key: node.key as string, label: node.label_fr as string, description: node.description_fr as string | null }, scaffoldLevel, items: items.map((item) => ({
+  return { node: { id: node.id as string, key: node.key as string, label: node.label_fr as string, description: node.description_fr as string | null, strand: node.strand as string }, scaffoldLevel,
+    lesson: node.strand === "conjugaison" ? conjugationLesson(node.key as string, node.label_fr as string) : null,
+    items: items.map((item) => ({
     id: item.id as string, promptFr: item.prompt_fr as string, instructionsFr: item.instructions_fr as string | null,
     responseType: item.response_type as string, validatorType: item.validator_type as string,
     validatorConfig: item.validator_config as Record<string, unknown> | null, correctAnswer: item.correct_answer as string | null,
     acceptableAnswers: item.acceptable_answers as string[], difficulty: item.difficulty == null ? null : Number(item.difficulty),
+    predictedSuccess: predictedSuccess(learnerRating, item.difficultyRating),
     choices: ((item.competency_item_choices ?? []) as Array<{ id: string; choice_text: string; position: number | null; feedback_fr: string | null }>).sort((a,b) => (a.position ?? 0)-(b.position ?? 0)).map((choice) => ({ id: choice.id, text: choice.choice_text, feedbackFr: choice.feedback_fr })),
   })) };
 }

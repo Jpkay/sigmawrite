@@ -22,7 +22,7 @@ export default function StudentHome() {
   const [recommended, setRecommended] = useState<SeedText>(fallback);
   const [recommendations, setRecommendations] = useState<SeedText[]>([fallback]);
   const [plan, setPlan] = useState<SessionPlanEntry[]>([]);
-  const [motivation,setMotivation]=useState<{streak:number;today:unknown;week:unknown[]}|null>(null);
+  const [motivation,setMotivation]=useState<{streak:number;today:unknown;week:unknown[];totalXp:number}|null>(null);
   const [resume,setResume]=useState<{textKey:string;title:string;phase:string}|null>(null);
   const [assessment,setAssessment]=useState<{required:boolean;kind:string;reason:string}|null>(null);
 
@@ -120,7 +120,7 @@ export default function StudentHome() {
         eyebrow="Ton espace de lecture"
         title="Bonjour 👋"
         description="Ta prochaine étape est prête. Avance à ton rythme, une lecture après l’autre."
-        action={<div className="flex items-center gap-2 rounded-full bg-secondary/15 px-4 py-2 font-display text-sm font-semibold text-secondary"><Flame className="size-4" />{motivation?.streak ?? 0} jour(s)</div>}
+        action={<div className="flex items-center gap-3 rounded-full bg-secondary/15 px-4 py-2 font-display text-sm font-semibold text-secondary"><span className="inline-flex items-center gap-1.5"><Flame className="size-4" />{motivation?.streak ?? 0} jour(s)</span><span className="text-foreground">{motivation?.totalXp ?? 0} XP</span></div>}
       />
 
       <StudentAssignments />

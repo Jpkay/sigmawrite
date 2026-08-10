@@ -9,7 +9,7 @@
     "releaseVersion": "2.0.0",
     "checksum": "sha256:809df529f0934fc8b68dcf23d00a18238a9c01490f4a985b4fa4246751a1fc4b"
   },
-  "generatedAt": "2026-07-12T14:37:37.347Z",
+  "generatedAt": "2026-08-10T11:32:21.810Z",
   "items": [
     {
       "itemKey": "computed-conjugation-v1:produire_present_indicatif:foundation",
@@ -720,6 +720,853 @@
         "gate0_computed": {
           "applied": true,
           "correctedAnswer": "as finis"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agreement": 1,
+          "agrees": true
+        },
+        "verdict": "auto_approved"
+      },
+      "reviewStatus": "auto_approved"
+    },
+    {
+      "itemKey": "computed-conjugation-v1:produire_futur_proche:foundation",
+      "item": {
+        "nodeKey": "produire_futur_proche",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Conjugue « parler » au futur proche avec « je ». Écris seulement le groupe verbal.",
+        "instructionsFr": "Respecte les accents et écris uniquement la forme demandée.",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "parler",
+          "tense": "futur_proche",
+          "person": "1s"
+        },
+        "cefrLevel": "A1",
+        "difficulty": 25,
+        "correctAnswer": "vais parler"
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "controlled-form",
+      "difficultyTier": "foundation",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "vais parler"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agreement": 1,
+          "agrees": true
+        },
+        "verdict": "auto_approved"
+      },
+      "reviewStatus": "auto_approved"
+    },
+    {
+      "itemKey": "computed-conjugation-v1:produire_futur_proche:core",
+      "item": {
+        "nodeKey": "produire_futur_proche",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète au futur proche : Nous ___ ce soir. (finir) Écris seulement le groupe verbal.",
+        "instructionsFr": "Respecte les accents et écris uniquement la forme demandée.",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "finir",
+          "tense": "futur_proche",
+          "person": "1p"
+        },
+        "cefrLevel": "A1",
+        "difficulty": 50,
+        "correctAnswer": "allons finir"
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-completion",
+      "difficultyTier": "core",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "allons finir"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agreement": 1,
+          "agrees": true
+        },
+        "verdict": "auto_approved"
+      },
+      "reviewStatus": "auto_approved"
+    },
+    {
+      "itemKey": "computed-conjugation-v1:produire_futur_proche:stretch",
+      "item": {
+        "nodeKey": "produire_futur_proche",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "transform",
+        "promptFr": "Mets « ils partent » au futur proche. Écris seulement le groupe verbal.",
+        "instructionsFr": "Respecte les accents et écris uniquement la forme demandée.",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "partir",
+          "tense": "futur_proche",
+          "person": "3p"
+        },
+        "cefrLevel": "A1",
+        "difficulty": 75,
+        "correctAnswer": "vont partir"
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-transformation",
+      "difficultyTier": "stretch",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "vont partir"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agreement": 1,
+          "agrees": true
+        },
+        "verdict": "auto_approved"
+      },
+      "reviewStatus": "auto_approved"
+    },
+    {
+      "itemKey": "computed-conjugation-v1:produire_futur_simple:foundation",
+      "item": {
+        "nodeKey": "produire_futur_simple",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Conjugue « parler » au futur simple avec « je ». Écris seulement la forme verbale.",
+        "instructionsFr": "Respecte les accents et écris uniquement la forme demandée.",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "parler",
+          "tense": "futur_simple",
+          "person": "1s"
+        },
+        "cefrLevel": "A2",
+        "difficulty": 25,
+        "correctAnswer": "parlerai"
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "controlled-form",
+      "difficultyTier": "foundation",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "parlerai"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agreement": 1,
+          "agrees": true
+        },
+        "verdict": "auto_approved"
+      },
+      "reviewStatus": "auto_approved"
+    },
+    {
+      "itemKey": "computed-conjugation-v1:produire_futur_simple:core",
+      "item": {
+        "nodeKey": "produire_futur_simple",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète au futur simple : Vous ___ demain. (finir) Écris seulement la forme verbale.",
+        "instructionsFr": "Respecte les accents et écris uniquement la forme demandée.",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "finir",
+          "tense": "futur_simple",
+          "person": "2p"
+        },
+        "cefrLevel": "A2",
+        "difficulty": 50,
+        "correctAnswer": "finirez"
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-completion",
+      "difficultyTier": "core",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "finirez"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agreement": 1,
+          "agrees": true
+        },
+        "verdict": "auto_approved"
+      },
+      "reviewStatus": "auto_approved"
+    },
+    {
+      "itemKey": "computed-conjugation-v1:produire_futur_simple:stretch",
+      "item": {
+        "nodeKey": "produire_futur_simple",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "transform",
+        "promptFr": "Mets « ils viennent » au futur simple. Écris seulement la forme verbale.",
+        "instructionsFr": "Respecte les accents et écris uniquement la forme demandée.",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "venir",
+          "tense": "futur_simple",
+          "person": "3p"
+        },
+        "cefrLevel": "A2",
+        "difficulty": 75,
+        "correctAnswer": "viendront"
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-transformation",
+      "difficultyTier": "stretch",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "viendront"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agreement": 1,
+          "agrees": true
+        },
+        "verdict": "auto_approved"
+      },
+      "reviewStatus": "auto_approved"
+    },
+    {
+      "itemKey": "computed-conjugation-v1:produire_plus_que_parfait:foundation",
+      "item": {
+        "nodeKey": "produire_plus_que_parfait",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Conjugue « parler » au plus-que-parfait avec « je ». Écris seulement le groupe verbal.",
+        "instructionsFr": "Respecte les accents et écris uniquement la forme demandée.",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "parler",
+          "tense": "plus_que_parfait",
+          "person": "1s"
+        },
+        "cefrLevel": "B1",
+        "difficulty": 25,
+        "correctAnswer": "avais parlé"
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "controlled-form",
+      "difficultyTier": "foundation",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "avais parlé"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agreement": 1,
+          "agrees": true
+        },
+        "verdict": "auto_approved"
+      },
+      "reviewStatus": "auto_approved"
+    },
+    {
+      "itemKey": "computed-conjugation-v1:produire_plus_que_parfait:core",
+      "item": {
+        "nodeKey": "produire_plus_que_parfait",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète : Elle ___ avant midi. (venir, plus-que-parfait) Écris seulement le groupe verbal.",
+        "instructionsFr": "Respecte les accents et écris uniquement la forme demandée.",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "venir",
+          "tense": "plus_que_parfait",
+          "person": "3s",
+          "gender": "f"
+        },
+        "cefrLevel": "B1",
+        "difficulty": 50,
+        "correctAnswer": "était venue"
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-completion",
+      "difficultyTier": "core",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "était venue"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agreement": 1,
+          "agrees": true
+        },
+        "verdict": "auto_approved"
+      },
+      "reviewStatus": "auto_approved"
+    },
+    {
+      "itemKey": "computed-conjugation-v1:produire_plus_que_parfait:stretch",
+      "item": {
+        "nodeKey": "produire_plus_que_parfait",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "transform",
+        "promptFr": "Mets « ils prennent » au plus-que-parfait. Écris seulement le groupe verbal.",
+        "instructionsFr": "Respecte les accents et écris uniquement la forme demandée.",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "prendre",
+          "tense": "plus_que_parfait",
+          "person": "3p"
+        },
+        "cefrLevel": "B1",
+        "difficulty": 75,
+        "correctAnswer": "avaient pris"
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-transformation",
+      "difficultyTier": "stretch",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "avaient pris"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agreement": 1,
+          "agrees": true
+        },
+        "verdict": "auto_approved"
+      },
+      "reviewStatus": "auto_approved"
+    },
+    {
+      "itemKey": "computed-conjugation-v1:produire_conditionnel_present:foundation",
+      "item": {
+        "nodeKey": "produire_conditionnel_present",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Conjugue « parler » au conditionnel présent avec « je ». Écris seulement la forme verbale.",
+        "instructionsFr": "Respecte les accents et écris uniquement la forme demandée.",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "parler",
+          "tense": "conditionnel_present",
+          "person": "1s"
+        },
+        "cefrLevel": "A2",
+        "difficulty": 25,
+        "correctAnswer": "parlerais"
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "controlled-form",
+      "difficultyTier": "foundation",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "parlerais"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agreement": 1,
+          "agrees": true
+        },
+        "verdict": "auto_approved"
+      },
+      "reviewStatus": "auto_approved"
+    },
+    {
+      "itemKey": "computed-conjugation-v1:produire_conditionnel_present:core",
+      "item": {
+        "nodeKey": "produire_conditionnel_present",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète au conditionnel présent : Nous ___ plus tôt. (finir) Écris seulement la forme verbale.",
+        "instructionsFr": "Respecte les accents et écris uniquement la forme demandée.",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "finir",
+          "tense": "conditionnel_present",
+          "person": "1p"
+        },
+        "cefrLevel": "A2",
+        "difficulty": 50,
+        "correctAnswer": "finirions"
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-completion",
+      "difficultyTier": "core",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "finirions"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agreement": 1,
+          "agrees": true
+        },
+        "verdict": "auto_approved"
+      },
+      "reviewStatus": "auto_approved"
+    },
+    {
+      "itemKey": "computed-conjugation-v1:produire_conditionnel_present:stretch",
+      "item": {
+        "nodeKey": "produire_conditionnel_present",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "transform",
+        "promptFr": "Mets « il vient » au conditionnel présent. Écris seulement la forme verbale.",
+        "instructionsFr": "Respecte les accents et écris uniquement la forme demandée.",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "venir",
+          "tense": "conditionnel_present",
+          "person": "3s"
+        },
+        "cefrLevel": "A2",
+        "difficulty": 75,
+        "correctAnswer": "viendrait"
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-transformation",
+      "difficultyTier": "stretch",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "viendrait"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agreement": 1,
+          "agrees": true
+        },
+        "verdict": "auto_approved"
+      },
+      "reviewStatus": "auto_approved"
+    },
+    {
+      "itemKey": "computed-conjugation-v1:produire_subjonctif_present_frequent:foundation",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète : Il faut que tu ___ prêt. (être, subjonctif présent) Écris seulement la forme verbale.",
+        "instructionsFr": "Respecte les accents et écris uniquement la forme demandée.",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "être",
+          "tense": "subjonctif_present",
+          "person": "2s"
+        },
+        "cefrLevel": "B1",
+        "difficulty": 25,
+        "correctAnswer": "sois"
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "controlled-form",
+      "difficultyTier": "foundation",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "sois"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agreement": 1,
+          "agrees": true
+        },
+        "verdict": "auto_approved"
+      },
+      "reviewStatus": "auto_approved"
+    },
+    {
+      "itemKey": "computed-conjugation-v1:produire_subjonctif_present_frequent:core",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète : Je veux qu’elle ___ le temps. (avoir, subjonctif présent) Écris seulement la forme verbale.",
+        "instructionsFr": "Respecte les accents et écris uniquement la forme demandée.",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "avoir",
+          "tense": "subjonctif_present",
+          "person": "3s"
+        },
+        "cefrLevel": "B1",
+        "difficulty": 50,
+        "correctAnswer": "ait"
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-completion",
+      "difficultyTier": "core",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "ait"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agreement": 1,
+          "agrees": true
+        },
+        "verdict": "auto_approved"
+      },
+      "reviewStatus": "auto_approved"
+    },
+    {
+      "itemKey": "computed-conjugation-v1:produire_subjonctif_present_frequent:stretch",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "transform",
+        "promptFr": "Complète : Bien qu’il ___ froid, nous sortons. (faire, subjonctif présent) Écris seulement la forme verbale.",
+        "instructionsFr": "Respecte les accents et écris uniquement la forme demandée.",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "faire",
+          "tense": "subjonctif_present",
+          "person": "3s"
+        },
+        "cefrLevel": "B1",
+        "difficulty": 75,
+        "correctAnswer": "fasse"
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-transformation",
+      "difficultyTier": "stretch",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "fasse"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agreement": 1,
+          "agrees": true
+        },
+        "verdict": "auto_approved"
+      },
+      "reviewStatus": "auto_approved"
+    },
+    {
+      "itemKey": "computed-conjugation-v1:produire_imperatif:foundation",
+      "item": {
+        "nodeKey": "produire_imperatif",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Mets « tu parles doucement » à l’impératif. Écris seulement le verbe.",
+        "instructionsFr": "Respecte les accents et écris uniquement la forme demandée.",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "parler",
+          "tense": "imperatif_present",
+          "person": "2s"
+        },
+        "cefrLevel": "A1",
+        "difficulty": 25,
+        "correctAnswer": "parle"
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "controlled-form",
+      "difficultyTier": "foundation",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "parle"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agreement": 1,
+          "agrees": true
+        },
+        "verdict": "auto_approved"
+      },
+      "reviewStatus": "auto_approved"
+    },
+    {
+      "itemKey": "computed-conjugation-v1:produire_imperatif:core",
+      "item": {
+        "nodeKey": "produire_imperatif",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Mets « nous finissons » à l’impératif. Écris seulement le verbe.",
+        "instructionsFr": "Respecte les accents et écris uniquement la forme demandée.",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "finir",
+          "tense": "imperatif_present",
+          "person": "1p"
+        },
+        "cefrLevel": "A1",
+        "difficulty": 50,
+        "correctAnswer": "finissons"
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-completion",
+      "difficultyTier": "core",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "finissons"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agreement": 1,
+          "agrees": true
+        },
+        "verdict": "auto_approved"
+      },
+      "reviewStatus": "auto_approved"
+    },
+    {
+      "itemKey": "computed-conjugation-v1:produire_imperatif:stretch",
+      "item": {
+        "nodeKey": "produire_imperatif",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "transform",
+        "promptFr": "Mets « vous prenez » à l’impératif. Écris seulement le verbe.",
+        "instructionsFr": "Respecte les accents et écris uniquement la forme demandée.",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "prendre",
+          "tense": "imperatif_present",
+          "person": "2p"
+        },
+        "cefrLevel": "A1",
+        "difficulty": 75,
+        "correctAnswer": "prenez"
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-transformation",
+      "difficultyTier": "stretch",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "prenez"
         },
         "gate2_answer_key": {
           "ok": true
@@ -3217,138 +4064,6 @@
       "evidenceExpectation": "receptive",
       "sectionKey": "conjugation",
       "promptFamily": "chronology-choice",
-      "difficultyTier": "stretch",
-      "qcGates": {
-        "gate1_schema": true,
-        "gate1_invariants": {
-          "ok": true,
-          "violations": []
-        },
-        "gate0_computed": {
-          "applied": false
-        },
-        "gate2_answer_key": {
-          "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 1,
-          "agrees": true
-        },
-        "verdict": "auto_approved"
-      },
-      "reviewStatus": "needs_human_review"
-    },
-    {
-      "itemKey": "review-draft-v1:produire_plus_que_parfait:controlled_production:foundation",
-      "item": {
-        "nodeKey": "produire_plus_que_parfait",
-        "strand": "conjugaison",
-        "modality": "writing",
-        "learnerMode": "shared",
-        "responseType": "cloze",
-        "promptFr": "Conjugue le verbe entre parenthèses au plus-que-parfait : « Avant de partir en vacances, j'______ (finir) tous mes projets. »",
-        "correctAnswer": "avais fini",
-        "acceptableAnswers": [
-          "avais fini",
-          "avaisfini"
-        ],
-        "validatorType": "exact",
-        "choices": [],
-        "cefrLevel": "B1",
-        "difficulty": 25
-      },
-      "evidenceKey": "writing-controlled-production",
-      "evidenceExpectation": "controlled_production",
-      "sectionKey": "conjugation",
-      "promptFamily": "controlled-form",
-      "difficultyTier": "foundation",
-      "qcGates": {
-        "gate1_schema": true,
-        "gate1_invariants": {
-          "ok": true,
-          "violations": []
-        },
-        "gate0_computed": {
-          "applied": false
-        },
-        "gate2_answer_key": {
-          "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 1,
-          "agrees": true
-        },
-        "verdict": "auto_approved"
-      },
-      "reviewStatus": "needs_human_review"
-    },
-    {
-      "itemKey": "review-draft-v1:produire_plus_que_parfait:controlled_production:core",
-      "item": {
-        "nodeKey": "produire_plus_que_parfait",
-        "strand": "conjugaison",
-        "modality": "writing",
-        "learnerMode": "shared",
-        "responseType": "transform",
-        "promptFr": "Mets le verbe entre parenthèses au plus-que-parfait : « Elle m'a dit qu'elle (finir) ses devoirs. »",
-        "correctAnswer": "avait fini",
-        "acceptableAnswers": [
-          "avait fini",
-          "elle avait fini"
-        ],
-        "validatorType": "exact",
-        "choices": [],
-        "cefrLevel": "B1",
-        "difficulty": 50
-      },
-      "evidenceKey": "writing-controlled-production",
-      "evidenceExpectation": "controlled_production",
-      "sectionKey": "conjugation",
-      "promptFamily": "sentence-completion",
-      "difficultyTier": "core",
-      "qcGates": {
-        "gate1_schema": true,
-        "gate1_invariants": {
-          "ok": true,
-          "violations": []
-        },
-        "gate0_computed": {
-          "applied": false
-        },
-        "gate2_answer_key": {
-          "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 1,
-          "agrees": true
-        },
-        "verdict": "auto_approved"
-      },
-      "reviewStatus": "needs_human_review"
-    },
-    {
-      "itemKey": "review-draft-v1:produire_plus_que_parfait:controlled_production:stretch",
-      "item": {
-        "nodeKey": "produire_plus_que_parfait",
-        "strand": "conjugaison",
-        "modality": "writing",
-        "learnerMode": "shared",
-        "responseType": "short_answer",
-        "promptFr": "Conjugue le verbe « aller » au plus-que-parfait à la 3e personne du singulier (féminin) : « Elle ______ au marché. »",
-        "correctAnswer": "était allée",
-        "acceptableAnswers": [
-          "était allée",
-          "étaitallée"
-        ],
-        "validatorType": "exact",
-        "choices": [],
-        "cefrLevel": "B1",
-        "difficulty": 75
-      },
-      "evidenceKey": "writing-controlled-production",
-      "evidenceExpectation": "controlled_production",
-      "sectionKey": "conjugation",
-      "promptFamily": "sentence-transformation",
       "difficultyTier": "stretch",
       "qcGates": {
         "gate1_schema": true,
@@ -24177,126 +24892,6 @@
       "reviewStatus": "needs_human_review"
     },
     {
-      "itemKey": "local-conjugation-gap-v1:produire_futur_proche:controlled_production:foundation",
-      "item": {
-        "nodeKey": "produire_futur_proche",
-        "strand": "conjugaison",
-        "modality": "writing",
-        "learnerMode": "shared",
-        "responseType": "short_answer",
-        "promptFr": "Conjugue « parler » au futur proche avec « je ». Écris seulement le groupe verbal.",
-        "instructionsFr": "Écris uniquement la forme ou le groupe verbal demandé.",
-        "correctAnswer": "vais parler",
-        "acceptableAnswers": [],
-        "validatorType": "exact",
-        "difficulty": 25
-      },
-      "evidenceKey": "writing-controlled-production",
-      "evidenceExpectation": "controlled_production",
-      "sectionKey": "conjugation",
-      "promptFamily": "controlled-form",
-      "difficultyTier": "foundation",
-      "qcGates": {
-        "gate1_schema": true,
-        "gate1_invariants": {
-          "ok": true,
-          "violations": []
-        },
-        "gate0_computed": {
-          "applied": false
-        },
-        "gate2_answer_key": {
-          "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 1,
-          "agrees": true
-        },
-        "verdict": "auto_approved"
-      },
-      "reviewStatus": "needs_human_review"
-    },
-    {
-      "itemKey": "local-conjugation-gap-v1:produire_futur_proche:controlled_production:core",
-      "item": {
-        "nodeKey": "produire_futur_proche",
-        "strand": "conjugaison",
-        "modality": "writing",
-        "learnerMode": "shared",
-        "responseType": "cloze",
-        "promptFr": "Conjugue « finir » au futur proche avec « nous ». Écris seulement le groupe verbal.",
-        "instructionsFr": "Écris uniquement la forme ou le groupe verbal demandé.",
-        "correctAnswer": "allons finir",
-        "acceptableAnswers": [],
-        "validatorType": "exact",
-        "difficulty": 50
-      },
-      "evidenceKey": "writing-controlled-production",
-      "evidenceExpectation": "controlled_production",
-      "sectionKey": "conjugation",
-      "promptFamily": "sentence-completion",
-      "difficultyTier": "core",
-      "qcGates": {
-        "gate1_schema": true,
-        "gate1_invariants": {
-          "ok": true,
-          "violations": []
-        },
-        "gate0_computed": {
-          "applied": false
-        },
-        "gate2_answer_key": {
-          "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 1,
-          "agrees": true
-        },
-        "verdict": "auto_approved"
-      },
-      "reviewStatus": "needs_human_review"
-    },
-    {
-      "itemKey": "local-conjugation-gap-v1:produire_futur_proche:controlled_production:stretch",
-      "item": {
-        "nodeKey": "produire_futur_proche",
-        "strand": "conjugaison",
-        "modality": "writing",
-        "learnerMode": "shared",
-        "responseType": "transform",
-        "promptFr": "Conjugue « partir » au futur proche avec « ils ». Écris seulement le groupe verbal.",
-        "instructionsFr": "Écris uniquement la forme ou le groupe verbal demandé.",
-        "correctAnswer": "vont partir",
-        "acceptableAnswers": [],
-        "validatorType": "exact",
-        "difficulty": 75
-      },
-      "evidenceKey": "writing-controlled-production",
-      "evidenceExpectation": "controlled_production",
-      "sectionKey": "conjugation",
-      "promptFamily": "sentence-transformation",
-      "difficultyTier": "stretch",
-      "qcGates": {
-        "gate1_schema": true,
-        "gate1_invariants": {
-          "ok": true,
-          "violations": []
-        },
-        "gate0_computed": {
-          "applied": false
-        },
-        "gate2_answer_key": {
-          "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 1,
-          "agrees": true
-        },
-        "verdict": "auto_approved"
-      },
-      "reviewStatus": "needs_human_review"
-    },
-    {
       "itemKey": "local-conjugation-gap-v1:interpreter_futur_proche:receptive:foundation",
       "item": {
         "nodeKey": "interpreter_futur_proche",
@@ -25665,126 +26260,6 @@
       "reviewStatus": "needs_human_review"
     },
     {
-      "itemKey": "local-conjugation-gap-v1:produire_futur_simple:controlled_production:foundation",
-      "item": {
-        "nodeKey": "produire_futur_simple",
-        "strand": "conjugaison",
-        "modality": "writing",
-        "learnerMode": "shared",
-        "responseType": "short_answer",
-        "promptFr": "Conjugue « parler » au futur simple avec « je ».",
-        "instructionsFr": "Écris uniquement la forme ou le groupe verbal demandé.",
-        "correctAnswer": "parlerai",
-        "acceptableAnswers": [],
-        "validatorType": "exact",
-        "difficulty": 25
-      },
-      "evidenceKey": "writing-controlled-production",
-      "evidenceExpectation": "controlled_production",
-      "sectionKey": "conjugation",
-      "promptFamily": "controlled-form",
-      "difficultyTier": "foundation",
-      "qcGates": {
-        "gate1_schema": true,
-        "gate1_invariants": {
-          "ok": true,
-          "violations": []
-        },
-        "gate0_computed": {
-          "applied": false
-        },
-        "gate2_answer_key": {
-          "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 1,
-          "agrees": true
-        },
-        "verdict": "auto_approved"
-      },
-      "reviewStatus": "needs_human_review"
-    },
-    {
-      "itemKey": "local-conjugation-gap-v1:produire_futur_simple:controlled_production:core",
-      "item": {
-        "nodeKey": "produire_futur_simple",
-        "strand": "conjugaison",
-        "modality": "writing",
-        "learnerMode": "shared",
-        "responseType": "cloze",
-        "promptFr": "Conjugue « finir » au futur simple avec « vous ».",
-        "instructionsFr": "Écris uniquement la forme ou le groupe verbal demandé.",
-        "correctAnswer": "finirez",
-        "acceptableAnswers": [],
-        "validatorType": "exact",
-        "difficulty": 50
-      },
-      "evidenceKey": "writing-controlled-production",
-      "evidenceExpectation": "controlled_production",
-      "sectionKey": "conjugation",
-      "promptFamily": "sentence-completion",
-      "difficultyTier": "core",
-      "qcGates": {
-        "gate1_schema": true,
-        "gate1_invariants": {
-          "ok": true,
-          "violations": []
-        },
-        "gate0_computed": {
-          "applied": false
-        },
-        "gate2_answer_key": {
-          "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 1,
-          "agrees": true
-        },
-        "verdict": "auto_approved"
-      },
-      "reviewStatus": "needs_human_review"
-    },
-    {
-      "itemKey": "local-conjugation-gap-v1:produire_futur_simple:controlled_production:stretch",
-      "item": {
-        "nodeKey": "produire_futur_simple",
-        "strand": "conjugaison",
-        "modality": "writing",
-        "learnerMode": "shared",
-        "responseType": "transform",
-        "promptFr": "Conjugue « venir » au futur simple avec « ils ».",
-        "instructionsFr": "Écris uniquement la forme ou le groupe verbal demandé.",
-        "correctAnswer": "viendront",
-        "acceptableAnswers": [],
-        "validatorType": "exact",
-        "difficulty": 75
-      },
-      "evidenceKey": "writing-controlled-production",
-      "evidenceExpectation": "controlled_production",
-      "sectionKey": "conjugation",
-      "promptFamily": "sentence-transformation",
-      "difficultyTier": "stretch",
-      "qcGates": {
-        "gate1_schema": true,
-        "gate1_invariants": {
-          "ok": true,
-          "violations": []
-        },
-        "gate0_computed": {
-          "applied": false
-        },
-        "gate2_answer_key": {
-          "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 1,
-          "agrees": true
-        },
-        "verdict": "auto_approved"
-      },
-      "reviewStatus": "needs_human_review"
-    },
-    {
       "itemKey": "local-conjugation-gap-v1:interpreter_futur_simple:receptive:foundation",
       "item": {
         "nodeKey": "interpreter_futur_simple",
@@ -26253,126 +26728,6 @@
       "reviewStatus": "needs_human_review"
     },
     {
-      "itemKey": "local-conjugation-gap-v1:produire_conditionnel_present:controlled_production:foundation",
-      "item": {
-        "nodeKey": "produire_conditionnel_present",
-        "strand": "conjugaison",
-        "modality": "writing",
-        "learnerMode": "shared",
-        "responseType": "short_answer",
-        "promptFr": "Conjugue « parler » au conditionnel présent avec « je ».",
-        "instructionsFr": "Écris uniquement la forme ou le groupe verbal demandé.",
-        "correctAnswer": "parlerais",
-        "acceptableAnswers": [],
-        "validatorType": "exact",
-        "difficulty": 25
-      },
-      "evidenceKey": "writing-controlled-production",
-      "evidenceExpectation": "controlled_production",
-      "sectionKey": "conjugation",
-      "promptFamily": "controlled-form",
-      "difficultyTier": "foundation",
-      "qcGates": {
-        "gate1_schema": true,
-        "gate1_invariants": {
-          "ok": true,
-          "violations": []
-        },
-        "gate0_computed": {
-          "applied": false
-        },
-        "gate2_answer_key": {
-          "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 1,
-          "agrees": true
-        },
-        "verdict": "auto_approved"
-      },
-      "reviewStatus": "needs_human_review"
-    },
-    {
-      "itemKey": "local-conjugation-gap-v1:produire_conditionnel_present:controlled_production:core",
-      "item": {
-        "nodeKey": "produire_conditionnel_present",
-        "strand": "conjugaison",
-        "modality": "writing",
-        "learnerMode": "shared",
-        "responseType": "cloze",
-        "promptFr": "Conjugue « finir » au conditionnel présent avec « nous ».",
-        "instructionsFr": "Écris uniquement la forme ou le groupe verbal demandé.",
-        "correctAnswer": "finirions",
-        "acceptableAnswers": [],
-        "validatorType": "exact",
-        "difficulty": 50
-      },
-      "evidenceKey": "writing-controlled-production",
-      "evidenceExpectation": "controlled_production",
-      "sectionKey": "conjugation",
-      "promptFamily": "sentence-completion",
-      "difficultyTier": "core",
-      "qcGates": {
-        "gate1_schema": true,
-        "gate1_invariants": {
-          "ok": true,
-          "violations": []
-        },
-        "gate0_computed": {
-          "applied": false
-        },
-        "gate2_answer_key": {
-          "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 1,
-          "agrees": true
-        },
-        "verdict": "auto_approved"
-      },
-      "reviewStatus": "needs_human_review"
-    },
-    {
-      "itemKey": "local-conjugation-gap-v1:produire_conditionnel_present:controlled_production:stretch",
-      "item": {
-        "nodeKey": "produire_conditionnel_present",
-        "strand": "conjugaison",
-        "modality": "writing",
-        "learnerMode": "shared",
-        "responseType": "transform",
-        "promptFr": "Conjugue « venir » au conditionnel présent avec « il ».",
-        "instructionsFr": "Écris uniquement la forme ou le groupe verbal demandé.",
-        "correctAnswer": "viendrait",
-        "acceptableAnswers": [],
-        "validatorType": "exact",
-        "difficulty": 75
-      },
-      "evidenceKey": "writing-controlled-production",
-      "evidenceExpectation": "controlled_production",
-      "sectionKey": "conjugation",
-      "promptFamily": "sentence-transformation",
-      "difficultyTier": "stretch",
-      "qcGates": {
-        "gate1_schema": true,
-        "gate1_invariants": {
-          "ok": true,
-          "violations": []
-        },
-        "gate0_computed": {
-          "applied": false
-        },
-        "gate2_answer_key": {
-          "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 1,
-          "agrees": true
-        },
-        "verdict": "auto_approved"
-      },
-      "reviewStatus": "needs_human_review"
-    },
-    {
       "itemKey": "local-conjugation-gap-v1:interpreter_conditionnel_present:receptive:foundation",
       "item": {
         "nodeKey": "interpreter_conditionnel_present",
@@ -26685,126 +27040,6 @@
       "reviewStatus": "needs_human_review"
     },
     {
-      "itemKey": "local-conjugation-gap-v1:produire_subjonctif_present_frequent:controlled_production:foundation",
-      "item": {
-        "nodeKey": "produire_subjonctif_present_frequent",
-        "strand": "conjugaison",
-        "modality": "writing",
-        "learnerMode": "shared",
-        "responseType": "short_answer",
-        "promptFr": "Complète au subjonctif présent : « Il faut que tu ___ prêt. » (être)",
-        "instructionsFr": "Écris uniquement la forme ou le groupe verbal demandé.",
-        "correctAnswer": "sois",
-        "acceptableAnswers": [],
-        "validatorType": "exact",
-        "difficulty": 25
-      },
-      "evidenceKey": "writing-controlled-production",
-      "evidenceExpectation": "controlled_production",
-      "sectionKey": "conjugation",
-      "promptFamily": "controlled-form",
-      "difficultyTier": "foundation",
-      "qcGates": {
-        "gate1_schema": true,
-        "gate1_invariants": {
-          "ok": true,
-          "violations": []
-        },
-        "gate0_computed": {
-          "applied": false
-        },
-        "gate2_answer_key": {
-          "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 1,
-          "agrees": true
-        },
-        "verdict": "auto_approved"
-      },
-      "reviewStatus": "needs_human_review"
-    },
-    {
-      "itemKey": "local-conjugation-gap-v1:produire_subjonctif_present_frequent:controlled_production:core",
-      "item": {
-        "nodeKey": "produire_subjonctif_present_frequent",
-        "strand": "conjugaison",
-        "modality": "writing",
-        "learnerMode": "shared",
-        "responseType": "cloze",
-        "promptFr": "Complète au subjonctif présent : « Je veux qu’elle ___ le temps. » (avoir)",
-        "instructionsFr": "Écris uniquement la forme ou le groupe verbal demandé.",
-        "correctAnswer": "ait",
-        "acceptableAnswers": [],
-        "validatorType": "exact",
-        "difficulty": 50
-      },
-      "evidenceKey": "writing-controlled-production",
-      "evidenceExpectation": "controlled_production",
-      "sectionKey": "conjugation",
-      "promptFamily": "sentence-completion",
-      "difficultyTier": "core",
-      "qcGates": {
-        "gate1_schema": true,
-        "gate1_invariants": {
-          "ok": true,
-          "violations": []
-        },
-        "gate0_computed": {
-          "applied": false
-        },
-        "gate2_answer_key": {
-          "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 1,
-          "agrees": true
-        },
-        "verdict": "auto_approved"
-      },
-      "reviewStatus": "needs_human_review"
-    },
-    {
-      "itemKey": "local-conjugation-gap-v1:produire_subjonctif_present_frequent:controlled_production:stretch",
-      "item": {
-        "nodeKey": "produire_subjonctif_present_frequent",
-        "strand": "conjugaison",
-        "modality": "writing",
-        "learnerMode": "shared",
-        "responseType": "transform",
-        "promptFr": "Complète au subjonctif présent : « Bien qu’il ___ froid, nous sortons. » (faire)",
-        "instructionsFr": "Écris uniquement la forme ou le groupe verbal demandé.",
-        "correctAnswer": "fasse",
-        "acceptableAnswers": [],
-        "validatorType": "exact",
-        "difficulty": 75
-      },
-      "evidenceKey": "writing-controlled-production",
-      "evidenceExpectation": "controlled_production",
-      "sectionKey": "conjugation",
-      "promptFamily": "sentence-transformation",
-      "difficultyTier": "stretch",
-      "qcGates": {
-        "gate1_schema": true,
-        "gate1_invariants": {
-          "ok": true,
-          "violations": []
-        },
-        "gate0_computed": {
-          "applied": false
-        },
-        "gate2_answer_key": {
-          "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 1,
-          "agrees": true
-        },
-        "verdict": "auto_approved"
-      },
-      "reviewStatus": "needs_human_review"
-    },
-    {
       "itemKey": "local-conjugation-gap-v1:interpreter_declencheur_subjonctif:receptive:foundation",
       "item": {
         "nodeKey": "interpreter_declencheur_subjonctif",
@@ -27095,126 +27330,6 @@
       "evidenceExpectation": "receptive",
       "sectionKey": "conjugation",
       "promptFamily": "chronology-choice",
-      "difficultyTier": "stretch",
-      "qcGates": {
-        "gate1_schema": true,
-        "gate1_invariants": {
-          "ok": true,
-          "violations": []
-        },
-        "gate0_computed": {
-          "applied": false
-        },
-        "gate2_answer_key": {
-          "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 1,
-          "agrees": true
-        },
-        "verdict": "auto_approved"
-      },
-      "reviewStatus": "needs_human_review"
-    },
-    {
-      "itemKey": "local-conjugation-gap-v1:produire_imperatif:controlled_production:foundation",
-      "item": {
-        "nodeKey": "produire_imperatif",
-        "strand": "conjugaison",
-        "modality": "writing",
-        "learnerMode": "shared",
-        "responseType": "short_answer",
-        "promptFr": "Mets « tu parles doucement » à l’impératif. Écris seulement le verbe.",
-        "instructionsFr": "Écris uniquement la forme ou le groupe verbal demandé.",
-        "correctAnswer": "parle",
-        "acceptableAnswers": [],
-        "validatorType": "exact",
-        "difficulty": 25
-      },
-      "evidenceKey": "writing-controlled-production",
-      "evidenceExpectation": "controlled_production",
-      "sectionKey": "conjugation",
-      "promptFamily": "controlled-form",
-      "difficultyTier": "foundation",
-      "qcGates": {
-        "gate1_schema": true,
-        "gate1_invariants": {
-          "ok": true,
-          "violations": []
-        },
-        "gate0_computed": {
-          "applied": false
-        },
-        "gate2_answer_key": {
-          "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 1,
-          "agrees": true
-        },
-        "verdict": "auto_approved"
-      },
-      "reviewStatus": "needs_human_review"
-    },
-    {
-      "itemKey": "local-conjugation-gap-v1:produire_imperatif:controlled_production:core",
-      "item": {
-        "nodeKey": "produire_imperatif",
-        "strand": "conjugaison",
-        "modality": "writing",
-        "learnerMode": "shared",
-        "responseType": "cloze",
-        "promptFr": "Mets « nous finissons le travail » à l’impératif. Écris seulement le verbe.",
-        "instructionsFr": "Écris uniquement la forme ou le groupe verbal demandé.",
-        "correctAnswer": "finissons",
-        "acceptableAnswers": [],
-        "validatorType": "exact",
-        "difficulty": 50
-      },
-      "evidenceKey": "writing-controlled-production",
-      "evidenceExpectation": "controlled_production",
-      "sectionKey": "conjugation",
-      "promptFamily": "sentence-completion",
-      "difficultyTier": "core",
-      "qcGates": {
-        "gate1_schema": true,
-        "gate1_invariants": {
-          "ok": true,
-          "violations": []
-        },
-        "gate0_computed": {
-          "applied": false
-        },
-        "gate2_answer_key": {
-          "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 1,
-          "agrees": true
-        },
-        "verdict": "auto_approved"
-      },
-      "reviewStatus": "needs_human_review"
-    },
-    {
-      "itemKey": "local-conjugation-gap-v1:produire_imperatif:controlled_production:stretch",
-      "item": {
-        "nodeKey": "produire_imperatif",
-        "strand": "conjugaison",
-        "modality": "writing",
-        "learnerMode": "shared",
-        "responseType": "transform",
-        "promptFr": "Mets « vous prenez le bus » à l’impératif. Écris seulement le verbe.",
-        "instructionsFr": "Écris uniquement la forme ou le groupe verbal demandé.",
-        "correctAnswer": "prenez",
-        "acceptableAnswers": [],
-        "validatorType": "exact",
-        "difficulty": 75
-      },
-      "evidenceKey": "writing-controlled-production",
-      "evidenceExpectation": "controlled_production",
-      "sectionKey": "conjugation",
-      "promptFamily": "sentence-transformation",
       "difficultyTier": "stretch",
       "qcGates": {
         "gate1_schema": true,
@@ -34211,8 +34326,8 @@
   ],
   "manifest": {
     "itemCount": 696,
-    "eligibleItemCount": 15,
-    "nodeCount": 5,
+    "eligibleItemCount": 33,
+    "nodeCount": 11,
     "sectionReadiness": [
       {
         "key": "reading_comprehension",
@@ -34250,15 +34365,15 @@
       {
         "key": "conjugation",
         "targetNodeCount": 48,
-        "nodesWithItems": 5,
-        "approvedItemCount": 15,
-        "ready": false,
-        "confirmableNodeCount": 5,
-        "productionItemCount": 15,
+        "nodesWithItems": 11,
+        "approvedItemCount": 33,
+        "ready": true,
+        "confirmableNodeCount": 11,
+        "productionItemCount": 33,
         "promptFamilyCount": 3,
         "difficultyTierCount": 3
       }
     ],
-    "checksum": "sha256:09269421bb986158fda2a67c916e93475fceb0dc613080dee79fcf3ccaf1eabd"
+    "checksum": "sha256:74efcf0e259cac4c5d598eb10d2d741891700c171de9a96789147b8ad5840042"
   }
 }

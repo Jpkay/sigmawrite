@@ -1,4 +1,6 @@
-begin;create extension if not exists pgtap with schema extensions;select plan(9);
+begin;
+set local role postgres;
+set local search_path = public, extensions;create extension if not exists pgtap with schema extensions;select plan(9);
 select has_column('public','diagnostic_runs','run_type','Run distinguishes initial/re-entry');
 select has_column('public','diagnostic_runs','taxonomy_release_id','Run pins taxonomy release');
 select has_column('public','diagnostic_runs','prior_state_snapshot','Prior history snapshot is preserved');

@@ -1,4 +1,6 @@
-begin;create extension if not exists pgtap with schema extensions;select plan(12);
+begin;
+set local role postgres;
+set local search_path = public, extensions;create extension if not exists pgtap with schema extensions;select plan(12);
 select has_table('public','learning_packages','Stable learning-package identities exist');
 select has_table('public','learning_package_versions','Packages have explicit versions');
 select has_table('public','learning_package_node_memberships','Atomic nodes join packages many-to-many');

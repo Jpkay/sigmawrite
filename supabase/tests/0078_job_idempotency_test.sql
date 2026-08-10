@@ -1,4 +1,6 @@
 begin;
+set local role postgres;
+set local search_path = public, extensions;
 create extension if not exists pgtap with schema extensions;
 select plan(6);
 select has_index('public','job_runs','job_runs_one_running_per_name','Concurrent runs are blocked');
