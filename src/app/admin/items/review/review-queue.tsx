@@ -15,9 +15,11 @@ type ReviewProgress = {
   humanApproved: number;
   autoApproved: number;
   rejected: number;
+  readyNodes?: number;
+  totalNodes?: number;
 };
 
-export function ItemReviewQueue({ initialItems, progress, filters, pagination }: { initialItems: CompetencyItemRow[]; progress: ReviewProgress; filters: { section: string; tier: string }; pagination: { page: number; pageCount: number; filteredTotal: number } }) {
+export function ItemReviewQueue({ scope, initialItems, progress, filters, pagination }: { scope: "diagnostic" | "practice-v3"; initialItems: CompetencyItemRow[]; progress: ReviewProgress; filters: { section: string; tier: string }; pagination: { page: number; pageCount: number; filteredTotal: number } }) {
   const router = useRouter();
   const [dismissed, setDismissed] = useState<string[]>([]);
   const [busy, setBusy] = useState<string | null>(null);
@@ -30,10 +32,30 @@ export function ItemReviewQueue({ initialItems, progress, filters, pagination }:
     finally { setBusy(null); }
   }
   const reviewed = progress.humanApproved + progress.autoApproved + progress.rejected;
-  const selectionParams = { ...(filters.section ? { section: filters.section } : {}), ...(filters.tier ? { tier: filters.tier } : {}) };
+  const selectionParams = { ...(scope === "practice-v3" ? { scope: "practice-v3" } : {}), ...(filters.section ? { section: filters.section } : {}), ...(filters.tier ? { tier: filters.tier } : {}) };
   const href = (page: number) => `/admin/items/review?${new URLSearchParams({ ...selectionParams, page: String(page) })}`;
   const exportHref = `/admin/items/review/export?${new URLSearchParams(selectionParams)}`;
-  return <div className="space-y-5"><div className="grid border-y border-border sm:grid-cols-4"><ReviewMetric label="À examiner" value={progress.needsReview} /><ReviewMetric label="Approuvés humainement" value={progress.humanApproved} /><ReviewMetric label="Calculés automatiquement" value={progress.autoApproved} /><ReviewMetric label="Progression" value={progress.total ? `${Math.round(reviewed / progress.total * 100)}%` : "—"} /></div><form className="grid gap-3 rounded-md border border-border p-4 sm:grid-cols-[1fr_1fr_auto]"><label className="text-sm">Section<select name="section" defaultValue={filters.section} className="mt-1 h-9 w-full rounded-md border border-input bg-background px-3"><option value="">Toutes</option><option value="reading_comprehension">Compréhension écrite</option><option value="grammar">Grammaire</option><option value="spelling">Orthographe</option><option value="conjugation">Conjugaison</option></select></label><label className="text-sm">Niveau de difficulté<select name="tier" defaultValue={filters.tier} className="mt-1 h-9 w-full rounded-md border border-input bg-background px-3"><option value="">Tous</option><option value="foundation">Fondation</option><option value="core">Central</option><option value="stretch">Avancé</option></select></label><Button type="submit" variant="outline" className="self-end">Filtrer</Button></form><div className="flex flex-wrap items-center justify-between gap-3 text-sm text-muted-foreground"><span>{pagination.filteredTotal} item{pagination.filteredTotal === 1 ? "" : "s"} dans cette sélection · page {pagination.page}/{pagination.pageCount}</span><div className="flex gap-2"><Button asChild size="sm" variant="outline"><Link href={exportHref}>Exporter la sélection</Link></Button>{pagination.page > 1 && <Button asChild size="sm" variant="outline"><Link href={href(pagination.page - 1)}>Précédente</Link></Button>}{pagination.page < pagination.pageCount && <Button asChild size="sm" variant="outline"><Link href={href(pagination.page + 1)}>Suivante</Link></Button>}</div></div>{error && <p className="text-sm text-destructive">{error}</p>}{items.length === 0 ? <p className="text-sm text-muted-foreground">Aucun item en attente dans cette sélection.</p> : items.map((item) => <ReviewCard key={item.id} item={item} busy={busy === item.id} onDecide={decide} />)}</div>;
+  return <div className="space-y-5">
+    <div className="flex flex-wrap gap-2">
+      <Button asChild size="sm" variant={scope === "practice-v3" ? "default" : "outline"}><Link href="/admin/items/review?scope=practice-v3">Pratique v3</Link></Button>
+      <Button asChild size="sm" variant={scope === "diagnostic" ? "default" : "outline"}><Link href="/admin/items/review">Diagnostic v2</Link></Button>
+    </div>
+    <div className="grid border-y border-border sm:grid-cols-4">
+      <ReviewMetric label={scope === "practice-v3" ? "Validations restantes" : "À examiner"} value={progress.needsReview} />
+      <ReviewMetric label={scope === "practice-v3" ? "Places validées" : "Approuvés humainement"} value={progress.humanApproved} />
+      <ReviewMetric label={scope === "practice-v3" ? "Compétences prêtes" : "Calculés automatiquement"} value={scope === "practice-v3" ? `${progress.readyNodes ?? 0}/${progress.totalNodes ?? 0}` : progress.autoApproved} />
+      <ReviewMetric label="Progression" value={progress.total ? `${Math.round(reviewed / progress.total * 100)}%` : "—"} />
+    </div>
+    <form className="grid gap-3 rounded-md border border-border p-4 sm:grid-cols-[1fr_1fr_auto]">
+      {scope === "practice-v3" && <input type="hidden" name="scope" value="practice-v3" />}
+      <label className="text-sm">Section<select name="section" defaultValue={filters.section} className="mt-1 h-9 w-full rounded-md border border-input bg-background px-3"><option value="">Toutes</option><option value="reading_comprehension">Compréhension écrite</option><option value="grammar">Grammaire</option><option value="spelling">Orthographe</option><option value="conjugation">Conjugaison</option></select></label>
+      <label className="text-sm">Niveau de difficulté<select name="tier" defaultValue={filters.tier} className="mt-1 h-9 w-full rounded-md border border-input bg-background px-3"><option value="">Tous</option><option value="foundation">Fondation</option><option value="core">Central</option><option value="stretch">Avancé</option></select></label>
+      <Button type="submit" variant="outline" className="self-end">Filtrer</Button>
+    </form>
+    <div className="flex flex-wrap items-center justify-between gap-3 text-sm text-muted-foreground"><span>{pagination.filteredTotal} item{pagination.filteredTotal === 1 ? "" : "s"} dans cette sélection · page {pagination.page}/{pagination.pageCount}</span><div className="flex gap-2">{scope === "diagnostic" && <Button asChild size="sm" variant="outline"><Link href={exportHref}>Exporter la sélection</Link></Button>}{pagination.page > 1 && <Button asChild size="sm" variant="outline"><Link href={href(pagination.page - 1)}>Précédente</Link></Button>}{pagination.page < pagination.pageCount && <Button asChild size="sm" variant="outline"><Link href={href(pagination.page + 1)}>Suivante</Link></Button>}</div></div>
+    {error && <p className="text-sm text-destructive">{error}</p>}
+    {items.length === 0 ? <p className="text-sm text-muted-foreground">Aucun item en attente dans cette sélection.</p> : items.map((item) => <ReviewCard key={item.id} item={item} busy={busy === item.id} onDecide={decide} />)}
+  </div>;
 }
 
 function ReviewMetric({ label, value }: { label: string; value: number | string }) {

@@ -14,6 +14,8 @@ const reviewSchema = z.object({
   note: z.string().trim().max(1000).optional(),
 });
 
+const reviewablePromptVersions = ["diagnostic-bank-v2", "taxonomy-v3-practice-v1"] as const;
+
 export async function reviewCompetencyItem(input: unknown) {
   const reviewer = await requireRole(["platform_admin", "content_reviewer"]);
   if (reviewer.role === "content_reviewer") await requireActiveReviewer();
@@ -34,7 +36,7 @@ export async function reviewCompetencyItem(input: unknown) {
   const { data: updated, error } = await supabase.from("competency_items")
     .update(update)
     .eq("id", data.id)
-    .eq("prompt_version", "diagnostic-bank-v2")
+    .in("prompt_version", reviewablePromptVersions)
     .eq("review_status", "needs_human_review")
     .select("id")
     .maybeSingle();

@@ -144,3 +144,84 @@ export async function getDiagnosticItemReviewProgress(client?: SupabaseClient) {
     rejected: counts.rejected,
   };
 }
+
+export async function getTaxonomyV3PracticeReviewData(filters: {
+  section?: string;
+  difficultyTier?: string;
+  offset?: number;
+  limit?: number;
+} = {}, client?: SupabaseClient) {
+  const supabase = client ?? await createClient();
+  const { data: release, error: releaseError } = await supabase.from("taxonomy_releases")
+    .select("id").eq("release_key", "french-taxonomy-v3").eq("status", "published").single();
+  if (releaseError) throw new Error(releaseError.message);
+  const { data: memberships, error: membershipError } = await supabase.from("taxonomy_release_memberships")
+    .select("record_id,record_snapshot")
+    .eq("release_id", release.id).eq("record_type", "competency_node");
+  if (membershipError) throw new Error(membershipError.message);
+  const controlledNodeIds = (memberships ?? []).flatMap((membership) => {
+    const snapshot = membership.record_snapshot as { evidence?: Array<{ expectation?: string }> } | null;
+    return snapshot?.evidence?.some((evidence) => evidence.expectation === "controlled_production")
+      ? [membership.record_id as string]
+      : [];
+  });
+  const [{ data: approvedRows, error: approvedError }, candidates] = await Promise.all([
+    supabase.from("competency_items").select("id,primary_node_id,review_status")
+      .in("primary_node_id", controlledNodeIds)
+      .in("review_status", ["auto_approved", "human_approved"])
+      .limit(2_000),
+    getCompetencyItems({ status: "needs_human_review", offset: 0, limit: 1_000 }, supabase),
+  ]);
+  if (approvedError) throw new Error(approvedError.message);
+  const approvedByNode = new Map<string, Array<{ id: string; status: string }>>();
+  for (const row of approvedRows ?? []) {
+    const nodeId = row.primary_node_id as string;
+    const values = approvedByNode.get(nodeId) ?? [];
+    values.push({ id: row.id as string, status: row.review_status as string });
+    approvedByNode.set(nodeId, values);
+  }
+  const controlled = new Set(controlledNodeIds);
+  const candidateByNode = new Map<string, CompetencyItemRow[]>();
+  for (const item of candidates) {
+    if (!controlled.has(item.nodeId)) continue;
+    const values = candidateByNode.get(item.nodeId) ?? [];
+    values.push(item);
+    candidateByNode.set(item.nodeId, values);
+  }
+  const activationQueue: CompetencyItemRow[] = [];
+  let readyNodes = 0;
+  let approvedSlots = 0;
+  for (const nodeId of controlledNodeIds) {
+    const approved = approvedByNode.get(nodeId) ?? [];
+    const covered = Math.min(3, approved.length);
+    approvedSlots += covered;
+    if (covered === 3) {
+      readyNodes += 1;
+      continue;
+    }
+    const needed = 3 - covered;
+    const options = (candidateByNode.get(nodeId) ?? []).sort((a, b) =>
+      (a.difficulty ?? 50) - (b.difficulty ?? 50) || a.id.localeCompare(b.id)
+    );
+    activationQueue.push(...options.slice(0, needed));
+  }
+  const filtered = activationQueue.filter((item) =>
+    (!filters.section || item.diagnostic?.sectionKey === filters.section)
+    && (!filters.difficultyTier || item.diagnostic?.difficultyTier === filters.difficultyTier)
+  );
+  const offset = Math.max(0, filters.offset ?? 0);
+  const limit = Math.max(1, filters.limit ?? 24);
+  return {
+    items: filtered.slice(offset, offset + limit),
+    filteredTotal: filtered.length,
+    progress: {
+      total: controlledNodeIds.length * 3,
+      needsReview: controlledNodeIds.length * 3 - approvedSlots,
+      humanApproved: approvedSlots,
+      autoApproved: 0,
+      rejected: 0,
+      readyNodes,
+      totalNodes: controlledNodeIds.length,
+    },
+  };
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "nodeKey": "placer_pronom_complement",
+    "strand": "grammaire_syntaxe",
+    "modality": "writing",
+    "learnerMode": "shared",
+    "responseType": "transform",
+    "promptFr": "Remplace le groupe entre crochets par un pronom et réécris la phrase : « Nous parlons [à notre professeur] après le cours. »",
+    "instructionsFr": "Conserve le sens et place le pronom au bon endroit.",
+    "correctAnswer": "Nous lui parlons après le cours.",
+    "acceptableAnswers": ["Nous lui parlons après le cours"],
+    "validatorType": "exact",
+    "validatorConfig": {},
+    "cefrLevel": "A2",
+    "difficulty": 42,
+    "generationModel": "codex-taxonomy-v3",
+    "promptVersion": "taxonomy-v3-practice-v1",
+    "qcGates": {
+      "gate1_schema": true,
+      "gate1_invariants": { "ok": true, "violations": [] },
+      "gate2_answer_key": { "ok": true },
+      "verdict": "needs_human_review"
+    },
+    "reviewStatus": "needs_human_review"
+  }
+]
