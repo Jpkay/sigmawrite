@@ -53,7 +53,7 @@ export default function StudentHome() {
 
   const displayedRecommendation = hasStudentBackend ? recommended : fallback;
   const displayedRecommendations = useMemo(()=>recommendations.length ? recommendations : [displayedRecommendation],[recommendations,displayedRecommendation]);
-  useEffect(()=>{if(typeof window==="undefined"||!("caches"in window))return;const urls=[...displayedRecommendations.map(text=>`/student/read/${text.id}`),...plan.filter(entry=>entry.type!=="review_card").map(entry=>entry.href)];void caches.open("sigmawrite-offline-pack-v1").then(cache=>Promise.all(urls.map(url=>cache.add(url).catch(()=>undefined))));},[displayedRecommendations,plan]);
+  useEffect(()=>{if(typeof window==="undefined"||!("caches"in window))return;const urls=[...displayedRecommendations.map(text=>`/student/read/${text.id}`),...plan.filter(entry=>entry.type!=="review_card").map(entry=>entry.href)];void caches.open("plume-offline-pack-v1").then(cache=>Promise.all(urls.map(url=>cache.add(url).catch(()=>undefined))));},[displayedRecommendations,plan]);
 
   if (!state.hydrated) {
     return <PageHeader title="Bonjour 👋" description="Chargement…" />;

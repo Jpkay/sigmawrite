@@ -20,9 +20,18 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Reading to Learn — Personalized French academic reading",
+  applicationName: "Plume",
+  title: {
+    default: "Plume — Lecture et maîtrise du français",
+    template: "%s · Plume",
+  },
   description:
-    "Learn to love reading while reading to learn. Personalized French academic reading for secondary students.",
+    "Lecture académique française personnalisée pour les élèves du secondaire.",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Plume",
+  },
 };
 
 export default function RootLayout({
@@ -37,7 +46,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
       <head>
-        <script dangerouslySetInnerHTML={{ __html: `(function(){try{var e=document.documentElement,t=localStorage.getItem('sigmawrite-theme'),d=t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches);e.classList.toggle('dark',d);e.dataset.readingScale=localStorage.getItem('sigmawrite-reading-scale')||'normal';e.dataset.reducedMotion=localStorage.getItem('sigmawrite-reduced-motion')||'false'}catch(e){}})()` }} />
+        <script dangerouslySetInnerHTML={{ __html: `(function(){try{var e=document.documentElement,t=localStorage.getItem('plume-theme')||localStorage.getItem('sigmawrite-theme'),s=localStorage.getItem('plume-reading-scale')||localStorage.getItem('sigmawrite-reading-scale')||'normal',r=localStorage.getItem('plume-reduced-motion')||localStorage.getItem('sigmawrite-reduced-motion')||'false',d=t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches);e.classList.toggle('dark',d);e.dataset.readingScale=s;e.dataset.reducedMotion=r}catch(e){}})()` }} />
       </head>
       <body className="flex min-h-full flex-col"><PwaRegister />{children}</body>
     </html>

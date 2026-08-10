@@ -2,14 +2,14 @@ export function GET() {
   return Response.json(
     {
       id: "/review",
-      name: "SigmaWrite — Évaluation",
-      short_name: "SigmaWrite",
-      description: "Espace d’évaluation des contenus SigmaWrite",
+      name: "Plume — Évaluation",
+      short_name: "Plume",
+      description: "Espace d’évaluation des contenus Plume",
       start_url: "/review",
       scope: "/review",
       display: "standalone",
       background_color: "#F7F2E6",
-      theme_color: "#FF3F8E",
+      theme_color: "#A80049",
       lang: "fr",
       icons: [
         {

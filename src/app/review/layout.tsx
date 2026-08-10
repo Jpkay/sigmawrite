@@ -3,8 +3,8 @@ import { ReviewerShell } from "@/components/reviewer-shell";
 import { requireActiveReviewer } from "@/lib/auth";
 
 export const metadata: Metadata = {
-  title: "Espace d’évaluation — SigmaWrite",
-  description: "Évaluez les textes SigmaWrite simplement, depuis votre téléphone ou votre ordinateur.",
+  title: "Espace d’évaluation",
+  description: "Évaluez les textes Plume simplement, depuis votre téléphone ou votre ordinateur.",
   manifest: "/review/manifest.webmanifest",
 };
 

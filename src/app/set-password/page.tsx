@@ -78,7 +78,7 @@ export default function SetPasswordPage() {
   return (
     <AuthCard
       title="Choisir un nouveau mot de passe"
-      description="Choisissez un mot de passe personnel pour sécuriser votre compte SigmaWrite."
+      description="Choisissez un mot de passe personnel pour sécuriser votre compte Plume."
     >
       <form onSubmit={submit} className="space-y-4">
         <Field

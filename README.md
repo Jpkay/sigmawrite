@@ -1,6 +1,6 @@
-# SigmaWrite — French mastery platform
+# Plume — French mastery platform
 
-SigmaWrite is a minors-first French learning platform for secondary students. It combines an atomic competency graph, adaptive diagnostics, graph-driven practice, controlled reading, writing feedback, retrieval scheduling, a flat vocabulary-memory tier, parent/teacher evidence, and human-governed AI content operations.
+Plume is a minors-first French learning platform for secondary students. It combines an atomic competency graph, adaptive diagnostics, graph-driven practice, controlled reading, writing feedback, retrieval scheduling, a flat vocabulary-memory tier, parent/teacher evidence, and human-governed AI content operations.
 
 ## Current engineering state
 

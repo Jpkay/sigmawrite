@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
-import { BookOpen } from "lucide-react";
+import { Feather } from "lucide-react";
 import { SignOutButton } from "@/components/sign-out-button";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -41,8 +41,8 @@ export function DashboardShell({
       <a href="#main-content" className="sr-only z-[100] rounded bg-background p-3 focus:not-sr-only focus:fixed focus:left-3 focus:top-3">{language === "en" ? "Skip to content" : "Aller au contenu"}</a>
       <aside className="hidden w-64 shrink-0 flex-col border-r border-border bg-card/80 md:flex">
         <div className="flex h-18 items-center gap-2.5 border-b border-border px-5">
-          <span className="grid size-9 place-items-center rounded-full bg-primary text-primary-foreground"><BookOpen className="size-4" /></span>
-          <span className="font-display text-lg font-bold tracking-tight">SigmaWrite<span className="text-primary">.</span></span>
+          <span className="grid size-9 place-items-center rounded-full bg-primary text-primary-foreground"><Feather className="size-4" /></span>
+          <span className="font-display text-lg font-bold tracking-tight">Plume<span className="text-primary">.</span></span>
           <div className="ml-auto"><ThemeToggle /></div>
         </div>
         <div className="px-5 pb-3 pt-6 font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
@@ -88,7 +88,7 @@ export function DashboardShell({
       <main id="main-content" className="min-w-0 flex-1 overflow-x-hidden">
         <div className="sticky top-0 z-30 border-b border-border bg-background/90 px-4 py-3 backdrop-blur-xl md:hidden">
           <div className="mb-3 flex items-center justify-between gap-3">
-            <Link href={home ?? "/"} className="flex items-center gap-2 font-display font-bold text-foreground hover:text-foreground"><BookOpen className="size-5 text-primary" />SigmaWrite<span className="text-primary">.</span></Link>
+            <Link href={home ?? "/"} className="flex items-center gap-2 font-display font-bold text-foreground hover:text-foreground"><Feather className="size-5 text-primary" /><span>Plume<span className="text-primary">.</span></span></Link>
             <div className="flex items-center gap-2"><ThemeToggle /><SignOutButton label={signOutLabel} /></div>
           </div>
           <nav aria-label={area} className="flex max-w-[calc(100vw-2rem)] gap-1 overflow-x-auto pb-1">

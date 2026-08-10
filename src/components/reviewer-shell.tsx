@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { BookOpen, CircleHelp, LayoutDashboard } from "lucide-react";
+import { CircleHelp, Feather, LayoutDashboard } from "lucide-react";
 import { useEffect } from "react";
 import { SignOutButton } from "@/components/sign-out-button";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -23,8 +23,8 @@ export function ReviewerShell({
     <header className="sticky top-0 z-40 border-b border-border/80 bg-background/92 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-6xl items-center gap-3 px-4 sm:px-6">
         <Link href="/review" className="flex items-center gap-2 font-display text-base font-bold text-foreground hover:text-foreground">
-          <span className="grid size-8 place-items-center rounded-full bg-primary text-primary-foreground"><BookOpen className="size-4" /></span>
-          SigmaWrite<span className="-ml-1.5 text-primary">.</span>
+          <span className="grid size-8 place-items-center rounded-full bg-primary text-primary-foreground"><Feather className="size-4" /></span>
+          <span>Plume<span className="text-primary">.</span></span>
         </Link>
         <span className="hidden text-sm text-muted-foreground sm:inline">Espace d’évaluation</span>
         <div className="ml-auto flex items-center gap-1">

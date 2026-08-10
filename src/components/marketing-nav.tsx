@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BookOpen } from "lucide-react";
+import { Feather } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 
@@ -15,8 +15,8 @@ export function MarketingNav() {
     <header className="border-b border-border">
       <div className="mx-auto flex h-14 w-full max-w-6xl items-center justify-between px-6">
         <Link href="/" className="flex items-center gap-2 font-display text-lg font-bold text-foreground hover:text-foreground">
-          <BookOpen className="size-5 text-primary" />
-          Reading to Learn
+          <Feather className="size-5 text-primary" />
+          <span>Plume<span className="text-primary">.</span></span>
         </Link>
         <nav aria-label="Navigation principale" className="hidden items-center gap-6 text-sm text-muted-foreground md:flex">
           {links.map((l) => (

@@ -52,7 +52,7 @@ export async function GET(request: NextRequest) {
   return new Response(reviewRowsToCsv([headers, ...rows]), {
     headers: {
       "content-type": "text/csv; charset=utf-8",
-      "content-disposition": `attachment; filename="sigmawrite-diagnostic-v2-review-${suffix}-${new Date().toISOString().slice(0, 10)}.csv"`,
+      "content-disposition": `attachment; filename="plume-diagnostic-v2-review-${suffix}-${new Date().toISOString().slice(0, 10)}.csv"`,
       "cache-control": "no-store",
     },
   });

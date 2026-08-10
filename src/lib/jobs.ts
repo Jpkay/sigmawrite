@@ -24,7 +24,7 @@ export async function withJobRun<T>(jobName: string, work: (db: SupabaseClient) 
     const { error: failureError } = await db.from("job_runs").update({ status: "failed", finished_at: new Date().toISOString(), error_message: cause instanceof Error ? cause.message : "Unknown error" }).eq("id", runId);
     captureError(cause,{jobName,jobRunId:runId});
     const alertTo=process.env.OPS_ALERT_EMAIL;
-    if(alertTo)void sendEmail({to:alertTo,subject:`SigmaWrite job failed: ${jobName}`,html:`<h1>Background job failed</h1><p>${jobName}</p><p>Run ${runId}</p>`}).catch(alertError=>captureError(alertError,{jobName,alert:"email"}));
+    if(alertTo)void sendEmail({to:alertTo,subject:`Plume job failed: ${jobName}`,html:`<h1>Background job failed</h1><p>${jobName}</p><p>Run ${runId}</p>`}).catch(alertError=>captureError(alertError,{jobName,alert:"email"}));
     if (failureError) throw new AggregateError([cause, failureError], "Job failed and its failure state was not recorded");
     throw cause;
   }

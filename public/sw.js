@@ -1,12 +1,13 @@
-const CACHE="sigmawrite-public-v2";
+const CACHE="plume-public-v3";
+const PRIVATE_CACHE_PREFIXES=["plume-","sigmawrite-"];
 const PUBLIC_ASSET=/^\/_next\/static\/|\.(?:css|js|woff2?|png|jpg|jpeg|gif|webp|svg|ico)$/i;
 
 self.addEventListener("install",event=>event.waitUntil(self.skipWaiting()));
 self.addEventListener("activate",event=>event.waitUntil(
-  caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith("sigmawrite-")&&key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim())
+  caches.keys().then(keys=>Promise.all(keys.filter(key=>PRIVATE_CACHE_PREFIXES.some(prefix=>key.startsWith(prefix))&&key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim())
 ));
 self.addEventListener("message",event=>{
-  if(event.data?.type==="CLEAR_PRIVATE_STATE") event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith("sigmawrite-")).map(key=>caches.delete(key)))));
+  if(event.data?.type==="CLEAR_PRIVATE_STATE") event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>PRIVATE_CACHE_PREFIXES.some(prefix=>key.startsWith(prefix))).map(key=>caches.delete(key)))));
 });
 self.addEventListener("fetch",event=>{
   const request=event.request;

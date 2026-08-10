@@ -10,7 +10,7 @@ const DEMO = {
   schoolId: "10000000-0000-4000-8000-000000000002",
   classId: "10000000-0000-4000-8000-000000000003",
   learningGoalId: "10000000-0000-4000-8000-000000000004",
-  organizationName: "Organisation Démo Reading to Learn",
+  organizationName: "Organisation Démo Plume",
   schoolName: "Collège Démo",
   className: "5e A",
   accounts: {
