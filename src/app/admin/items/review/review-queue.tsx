@@ -19,7 +19,7 @@ type ReviewProgress = {
   totalNodes?: number;
 };
 
-export function ItemReviewQueue({ scope, initialItems, progress, filters, pagination }: { scope: "diagnostic" | "practice-v3"; initialItems: CompetencyItemRow[]; progress: ReviewProgress; filters: { section: string; tier: string }; pagination: { page: number; pageCount: number; filteredTotal: number } }) {
+export function ItemReviewQueue({ scope, initialItems, progress, filters, pagination, basePath = "/admin/items/review", showExport = true, showScopeSwitch = true }: { scope: "diagnostic" | "practice-v3"; initialItems: CompetencyItemRow[]; progress: ReviewProgress; filters: { section: string; tier: string }; pagination: { page: number; pageCount: number; filteredTotal: number }; basePath?: string; showExport?: boolean; showScopeSwitch?: boolean }) {
   const router = useRouter();
   const [dismissed, setDismissed] = useState<string[]>([]);
   const [busy, setBusy] = useState<string | null>(null);
@@ -33,13 +33,13 @@ export function ItemReviewQueue({ scope, initialItems, progress, filters, pagina
   }
   const reviewed = progress.humanApproved + progress.autoApproved + progress.rejected;
   const selectionParams = { ...(scope === "practice-v3" ? { scope: "practice-v3" } : {}), ...(filters.section ? { section: filters.section } : {}), ...(filters.tier ? { tier: filters.tier } : {}) };
-  const href = (page: number) => `/admin/items/review?${new URLSearchParams({ ...selectionParams, page: String(page) })}`;
+  const href = (page: number) => `${basePath}?${new URLSearchParams({ ...selectionParams, page: String(page) })}`;
   const exportHref = `/admin/items/review/export?${new URLSearchParams(selectionParams)}`;
   return <div className="space-y-5">
-    <div className="flex flex-wrap gap-2">
-      <Button asChild size="sm" variant={scope === "practice-v3" ? "default" : "outline"}><Link href="/admin/items/review?scope=practice-v3">Pratique v3</Link></Button>
-      <Button asChild size="sm" variant={scope === "diagnostic" ? "default" : "outline"}><Link href="/admin/items/review">Diagnostic v2</Link></Button>
-    </div>
+    {showScopeSwitch && <div className="flex flex-wrap gap-2">
+      <Button asChild size="sm" variant={scope === "practice-v3" ? "default" : "outline"}><Link href={`${basePath}?scope=practice-v3`}>Pratique v3</Link></Button>
+      <Button asChild size="sm" variant={scope === "diagnostic" ? "default" : "outline"}><Link href={basePath}>Diagnostic v2</Link></Button>
+    </div>}
     <div className="grid border-y border-border sm:grid-cols-4">
       <ReviewMetric label={scope === "practice-v3" ? "Validations restantes" : "À examiner"} value={progress.needsReview} />
       <ReviewMetric label={scope === "practice-v3" ? "Places validées" : "Approuvés humainement"} value={progress.humanApproved} />
@@ -52,7 +52,7 @@ export function ItemReviewQueue({ scope, initialItems, progress, filters, pagina
       <label className="text-sm">Niveau de difficulté<select name="tier" defaultValue={filters.tier} className="mt-1 h-9 w-full rounded-md border border-input bg-background px-3"><option value="">Tous</option><option value="foundation">Fondation</option><option value="core">Central</option><option value="stretch">Avancé</option></select></label>
       <Button type="submit" variant="outline" className="self-end">Filtrer</Button>
     </form>
-    <div className="flex flex-wrap items-center justify-between gap-3 text-sm text-muted-foreground"><span>{pagination.filteredTotal} item{pagination.filteredTotal === 1 ? "" : "s"} dans cette sélection · page {pagination.page}/{pagination.pageCount}</span><div className="flex gap-2">{scope === "diagnostic" && <Button asChild size="sm" variant="outline"><Link href={exportHref}>Exporter la sélection</Link></Button>}{pagination.page > 1 && <Button asChild size="sm" variant="outline"><Link href={href(pagination.page - 1)}>Précédente</Link></Button>}{pagination.page < pagination.pageCount && <Button asChild size="sm" variant="outline"><Link href={href(pagination.page + 1)}>Suivante</Link></Button>}</div></div>
+    <div className="flex flex-wrap items-center justify-between gap-3 text-sm text-muted-foreground"><span>{pagination.filteredTotal} item{pagination.filteredTotal === 1 ? "" : "s"} dans cette sélection · page {pagination.page}/{pagination.pageCount}</span><div className="flex gap-2">{showExport && scope === "diagnostic" && <Button asChild size="sm" variant="outline"><Link href={exportHref}>Exporter la sélection</Link></Button>}{pagination.page > 1 && <Button asChild size="sm" variant="outline"><Link href={href(pagination.page - 1)}>Précédente</Link></Button>}{pagination.page < pagination.pageCount && <Button asChild size="sm" variant="outline"><Link href={href(pagination.page + 1)}>Suivante</Link></Button>}</div></div>
     {error && <p className="text-sm text-destructive">{error}</p>}
     {items.length === 0 ? <p className="text-sm text-muted-foreground">Aucun item en attente dans cette sélection.</p> : items.map((item) => <ReviewCard key={item.id} item={item} busy={busy === item.id} onDecide={decide} />)}
   </div>;

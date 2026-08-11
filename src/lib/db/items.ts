@@ -18,19 +18,24 @@ export type CompetencyItemRow = {
   choices: Array<{ id: string; text: string; correct: boolean; feedbackFr: string | null }>;
 };
 
-export async function getCompetencyItems(filters: { status?: string; node?: string; promptVersion?: string; section?: string; difficultyTier?: string; offset?: number; limit?: number } = {}, client?: SupabaseClient) {
+export async function getCompetencyItems(filters: { status?: string; node?: string; promptVersion?: string; section?: string; difficultyTier?: string; reviewerProfileId?: string; ids?: string[]; offset?: number; limit?: number } = {}, client?: SupabaseClient) {
   const supabase = client ?? await createClient();
   const membershipJoin = filters.section || filters.difficultyTier
     ? "diagnostic_item_bank_memberships!inner"
     : "diagnostic_item_bank_memberships";
   const limit = filters.limit ?? 500;
   const offset = Math.max(0, filters.offset ?? 0);
-  let query = supabase.from("competency_items").select(`id,primary_node_id,strand,prompt_fr,correct_answer,response_type,validator_type,difficulty,review_status,qc_gates,psychometric_flags,generation_model,prompt_version,competency_nodes!inner(key,label_fr),competency_item_choices(id,choice_text,is_correct,feedback_fr),${membershipJoin}(bank_release_id,mastery_evidence_id,section_key,evidence_expectation,prompt_family,difficulty_tier)`).order("updated_at", { ascending: false }).range(offset, offset + limit - 1);
+  const itemSelect: string = `id,primary_node_id,strand,prompt_fr,correct_answer,response_type,validator_type,difficulty,review_status,qc_gates,psychometric_flags,generation_model,prompt_version,competency_nodes!inner(key,label_fr),competency_item_choices(id,choice_text,is_correct,feedback_fr),${membershipJoin}(bank_release_id,mastery_evidence_id,section_key,evidence_expectation,prompt_family,difficulty_tier)${filters.reviewerProfileId ? ",competency_item_review_assignments!inner(reviewer_profile_id,status)" : ""}`;
+  let query = supabase.from("competency_items").select(itemSelect).order("updated_at", { ascending: false }).range(offset, offset + limit - 1);
   if (filters.status) query = query.eq("review_status", filters.status);
   if (filters.node) query = query.eq("competency_nodes.key", filters.node);
   if (filters.promptVersion) query = query.eq("prompt_version", filters.promptVersion);
+  if (filters.ids) query = query.in("id", filters.ids);
   if (filters.section) query = query.eq("diagnostic_item_bank_memberships.section_key", filters.section);
   if (filters.difficultyTier) query = query.eq("diagnostic_item_bank_memberships.difficulty_tier", filters.difficultyTier);
+  if (filters.reviewerProfileId) query = query
+    .eq("competency_item_review_assignments.reviewer_profile_id", filters.reviewerProfileId)
+    .eq("competency_item_review_assignments.status", "assigned");
   const { data, error } = await query;
   if (error) throw new Error(error.message);
   type DiagnosticMembership = {
@@ -41,7 +46,8 @@ export async function getCompetencyItems(filters: { status?: string; node?: stri
     prompt_family: string;
     difficulty_tier: string;
   };
-  const diagnosticMemberships = (data ?? []).flatMap((row) =>
+  const rows = (data ?? []) as unknown as Array<Record<string, unknown>>;
+  const diagnosticMemberships = rows.flatMap((row) =>
     (row.diagnostic_item_bank_memberships ?? []) as unknown as DiagnosticMembership[]
   );
   const bankReleaseIds = [...new Set(diagnosticMemberships.map((row) => row.bank_release_id))];
@@ -68,7 +74,7 @@ export async function getCompetencyItems(filters: { status?: string; node?: stri
       );
     }
   }
-  return (data ?? []).map((row) => {
+  return rows.map((row) => {
     const node = row.competency_nodes as unknown as { key: string; label_fr: string };
     const choices = row.competency_item_choices as unknown as Array<{ id: string; choice_text: string; is_correct: boolean; feedback_fr: string | null }>;
     const diagnostic = ((row.diagnostic_item_bank_memberships ?? []) as unknown as DiagnosticMembership[])[0];
@@ -104,14 +110,53 @@ export async function getCompetencyItems(filters: { status?: string; node?: stri
   });
 }
 
-export async function getDiagnosticItemReviewCount(filters: { section?: string; difficultyTier?: string } = {}, client?: SupabaseClient) {
+export async function getAssignedCompetencyItems(filters: {
+  reviewerProfileId: string;
+  section?: string;
+  difficultyTier?: string;
+  offset?: number;
+  limit?: number;
+}, client?: SupabaseClient) {
   const supabase = client ?? await createClient();
+  const offset = Math.max(0, filters.offset ?? 0);
+  const limit = Math.max(1, filters.limit ?? 24);
+  let query = supabase.from("competency_item_review_assignments")
+    .select("item_id,queue_position,competency_items!inner(review_status,prompt_version,diagnostic_item_bank_memberships!inner(section_key,difficulty_tier))")
+    .eq("reviewer_profile_id", filters.reviewerProfileId)
+    .eq("status", "assigned")
+    .eq("competency_items.review_status", "needs_human_review")
+    .eq("competency_items.prompt_version", "diagnostic-bank-v2")
+    .order("queue_position", { ascending: true })
+    .range(offset, offset + limit - 1);
+  if (filters.section) {
+    query = query.eq("competency_items.diagnostic_item_bank_memberships.section_key", filters.section);
+  }
+  if (filters.difficultyTier) {
+    query = query.eq("competency_items.diagnostic_item_bank_memberships.difficulty_tier", filters.difficultyTier);
+  }
+  const { data, error } = await query;
+  if (error) throw new Error(error.message);
+  const itemIds = (data ?? []).map((row) => row.item_id as string);
+  if (!itemIds.length) return [];
+  const items = await getCompetencyItems({ ids: itemIds, limit: itemIds.length }, supabase);
+  const positionById = new Map(itemIds.map((id, index) => [id, index]));
+  return items.sort((a, b) => (positionById.get(a.id) ?? 0) - (positionById.get(b.id) ?? 0));
+}
+
+export async function getDiagnosticItemReviewCount(filters: { section?: string; difficultyTier?: string; reviewerProfileId?: string } = {}, client?: SupabaseClient) {
+  const supabase = client ?? await createClient();
+  const assignmentJoin = filters.reviewerProfileId
+    ? ",competency_item_review_assignments!inner(reviewer_profile_id,status)"
+    : "";
   let query = supabase.from("competency_items")
-    .select("id,diagnostic_item_bank_memberships!inner(section_key,difficulty_tier)", { count: "exact", head: true })
+    .select(`id,diagnostic_item_bank_memberships!inner(section_key,difficulty_tier)${assignmentJoin}`, { count: "exact", head: true })
     .eq("prompt_version", "diagnostic-bank-v2")
     .eq("review_status", "needs_human_review");
   if (filters.section) query = query.eq("diagnostic_item_bank_memberships.section_key", filters.section);
   if (filters.difficultyTier) query = query.eq("diagnostic_item_bank_memberships.difficulty_tier", filters.difficultyTier);
+  if (filters.reviewerProfileId) query = query
+    .eq("competency_item_review_assignments.reviewer_profile_id", filters.reviewerProfileId)
+    .eq("competency_item_review_assignments.status", "assigned");
   const { count, error } = await query;
   if (error) throw new Error(error.message);
   return count ?? 0;
@@ -124,8 +169,30 @@ export async function getGenerationRuns(client?: SupabaseClient) {
   return data ?? [];
 }
 
-export async function getDiagnosticItemReviewProgress(client?: SupabaseClient) {
+export async function getDiagnosticItemReviewProgress(client?: SupabaseClient, reviewerProfileId?: string) {
   const supabase = client ?? await createClient();
+  if (reviewerProfileId) {
+    async function countAssignments(status: "assigned" | "submitted", decision?: "human_approved" | "rejected") {
+      let query = supabase.from("competency_item_review_assignments").select("id", { count: "exact", head: true }).eq("reviewer_profile_id", reviewerProfileId);
+      query = query.eq("status", status);
+      if (decision) query = query.eq("decision", decision);
+      const { count, error } = await query;
+      if (error) throw new Error(error.message);
+      return count ?? 0;
+    }
+    const [needsReview, humanApproved, rejected] = await Promise.all([
+      countAssignments("assigned"),
+      countAssignments("submitted", "human_approved"),
+      countAssignments("submitted", "rejected"),
+    ]);
+    return {
+      total: needsReview + humanApproved + rejected,
+      needsReview,
+      humanApproved,
+      autoApproved: 0,
+      rejected,
+    };
+  }
   const statuses = ["needs_human_review", "human_approved", "auto_approved", "rejected"] as const;
   const results = await Promise.all(statuses.map(async (status) => {
     const { count, error } = await supabase.from("competency_items")

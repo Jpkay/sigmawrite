@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { CircleHelp, Feather, LayoutDashboard } from "lucide-react";
+import { CircleHelp, Feather, LayoutDashboard, ListChecks } from "lucide-react";
 import { useEffect } from "react";
 import { SignOutButton } from "@/components/sign-out-button";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -28,6 +28,7 @@ export function ReviewerShell({
         </Link>
         <span className="hidden text-sm text-muted-foreground sm:inline">Espace d’évaluation</span>
         <div className="ml-auto flex items-center gap-1">
+          <Link href="/review/exercises" className="inline-flex h-9 items-center gap-2 rounded-md px-3 text-sm text-muted-foreground hover:bg-muted hover:text-foreground"><ListChecks className="size-4" /><span className="hidden sm:inline">Exercices</span></Link>
           {user.role === "platform_admin" && <Link href="/admin" aria-label="Retour à l’administration" className="inline-flex h-9 items-center gap-2 rounded-md px-3 text-sm font-medium text-primary hover:bg-primary/10 hover:text-primary"><LayoutDashboard className="size-4" /><span className="hidden sm:inline">Administration</span></Link>}
           <Link href="/review/instructions" className="inline-flex h-9 items-center gap-2 rounded-md px-3 text-sm text-muted-foreground hover:bg-muted hover:text-foreground"><CircleHelp className="size-4" /><span className="hidden sm:inline">Consignes</span></Link>
           <ThemeToggle />

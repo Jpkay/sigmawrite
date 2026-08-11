@@ -46,7 +46,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
       <head>
-        <script dangerouslySetInnerHTML={{ __html: `(function(){try{var e=document.documentElement,t=localStorage.getItem('plume-theme')||localStorage.getItem('sigmawrite-theme'),s=localStorage.getItem('plume-reading-scale')||localStorage.getItem('sigmawrite-reading-scale')||'normal',r=localStorage.getItem('plume-reduced-motion')||localStorage.getItem('sigmawrite-reduced-motion')||'false',d=t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches);e.classList.toggle('dark',d);e.dataset.readingScale=s;e.dataset.reducedMotion=r}catch(e){}})()` }} />
+        <script dangerouslySetInnerHTML={{ __html: `(function(){try{var e=document.documentElement,t=localStorage.getItem('plume-theme')||localStorage.getItem('sigmawrite-theme'),s=localStorage.getItem('plume-reading-scale')||localStorage.getItem('sigmawrite-reading-scale')||'normal',r=localStorage.getItem('plume-reduced-motion')||localStorage.getItem('sigmawrite-reduced-motion')||'false',d=t==='dark';e.classList.toggle('dark',d);e.dataset.readingScale=s;e.dataset.reducedMotion=r}catch(e){}})()` }} />
       </head>
       <body className="flex min-h-full flex-col"><PwaRegister />{children}</body>
     </html>
