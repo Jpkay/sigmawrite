@@ -36,7 +36,7 @@ export default async function ExerciseReviewPage({ searchParams }: ExerciseRevie
     <PageHeader
       eyebrow="Qualité pédagogique"
       title="Revue des exercices"
-      description="Vérifiez l’énoncé, la réponse, le niveau et les contrôles des exercices de grammaire, conjugaison, orthographe et compréhension."
+      description="Un exercice à la fois. Vérifiez sa clarté, sa réponse et son niveau, puis passez au suivant."
     />
     <ItemReviewQueue
       scope={scope}
@@ -47,6 +47,7 @@ export default async function ExerciseReviewPage({ searchParams }: ExerciseRevie
       basePath="/review/exercises"
       showExport={false}
       showScopeSwitch={false}
+      reviewerMode
     />
   </>;
 }

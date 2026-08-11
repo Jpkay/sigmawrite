@@ -12,18 +12,19 @@ const reviewSchema = z.object({
   promptFr: z.string().trim().min(5).max(4000).optional(),
   correctAnswer: z.string().trim().max(1000).nullable().optional(),
   note: z.string().trim().max(1000).optional(),
+  assignmentMode: z.boolean().optional(),
 });
 
 const reviewablePromptVersions = ["diagnostic-bank-v2", "taxonomy-v3-practice-v1"] as const;
 
 export async function reviewCompetencyItem(input: unknown) {
   const reviewer = await requireRole(["platform_admin", "content_reviewer"]);
-  if (reviewer.role === "content_reviewer") await requireActiveReviewer();
   const parsed = reviewSchema.safeParse(input);
   if (!parsed.success) throw new Error("Données invalides.");
   const data = parsed.data;
   const supabase = await createClient();
-  if (reviewer.role === "content_reviewer") {
+  if (reviewer.role === "content_reviewer" || data.assignmentMode) {
+    await requireActiveReviewer();
     const { data: updated, error } = await supabase.rpc("submit_competency_item_review", {
       p_item_id: data.id,
       p_decision: data.decision,
