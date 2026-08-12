@@ -5,6 +5,7 @@ export type CompetencyItemRow = {
   id: string; nodeId: string; nodeKey: string; nodeLabel: string; strand: string;
   promptFr: string; correctAnswer: string | null; responseType: string; validatorType: string;
   difficulty: number | null; reviewStatus: string; qcGates: Record<string, unknown>;
+  reviewNote: string | null;
   psychometricFlags: unknown[]; generationModel: string | null; promptVersion: string | null;
   diagnostic: {
     sectionKey: string;
@@ -25,7 +26,7 @@ export async function getCompetencyItems(filters: { status?: string; node?: stri
     : "diagnostic_item_bank_memberships";
   const limit = filters.limit ?? 500;
   const offset = Math.max(0, filters.offset ?? 0);
-  const itemSelect: string = `id,primary_node_id,strand,prompt_fr,correct_answer,response_type,validator_type,difficulty,review_status,qc_gates,psychometric_flags,generation_model,prompt_version,competency_nodes!inner(key,label_fr),competency_item_choices(id,choice_text,is_correct,feedback_fr),${membershipJoin}(bank_release_id,mastery_evidence_id,section_key,evidence_expectation,prompt_family,difficulty_tier)${filters.reviewerProfileId ? ",competency_item_review_assignments!inner(reviewer_profile_id,status)" : ""}`;
+  const itemSelect: string = `id,primary_node_id,strand,prompt_fr,correct_answer,response_type,validator_type,difficulty,review_status,review_note,qc_gates,psychometric_flags,generation_model,prompt_version,competency_nodes!inner(key,label_fr),competency_item_choices(id,choice_text,is_correct,feedback_fr),${membershipJoin}(bank_release_id,mastery_evidence_id,section_key,evidence_expectation,prompt_family,difficulty_tier)${filters.reviewerProfileId ? ",competency_item_review_assignments!inner(reviewer_profile_id,status)" : ""}`;
   let query = supabase.from("competency_items").select(itemSelect).order("updated_at", { ascending: false }).range(offset, offset + limit - 1);
   if (filters.status) query = query.eq("review_status", filters.status);
   if (filters.node) query = query.eq("competency_nodes.key", filters.node);
@@ -87,6 +88,7 @@ export async function getCompetencyItems(filters: { status?: string; node?: stri
       strand: row.strand as string, promptFr: row.prompt_fr as string, correctAnswer: row.correct_answer as string | null,
       responseType: row.response_type as string, validatorType: row.validator_type as string,
       difficulty: row.difficulty == null ? null : Number(row.difficulty), reviewStatus: row.review_status as string,
+      reviewNote: row.review_note as string | null,
       qcGates: (row.qc_gates ?? {}) as Record<string, unknown>, psychometricFlags: (row.psychometric_flags ?? []) as unknown[],
       generationModel: row.generation_model as string | null, promptVersion: row.prompt_version as string | null,
       diagnostic: diagnostic ? {
