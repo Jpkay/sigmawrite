@@ -114,6 +114,8 @@ export async function getAssignedCompetencyItems(filters: {
   reviewerProfileId: string;
   section?: string;
   difficultyTier?: string;
+  itemId?: string;
+  includeSubmitted?: boolean;
   offset?: number;
   limit?: number;
 }, client?: SupabaseClient) {
@@ -123,11 +125,13 @@ export async function getAssignedCompetencyItems(filters: {
   let query = supabase.from("competency_item_review_assignments")
     .select("item_id,queue_position,competency_items!inner(review_status,prompt_version,diagnostic_item_bank_memberships!inner(section_key,difficulty_tier))")
     .eq("reviewer_profile_id", filters.reviewerProfileId)
-    .eq("status", "assigned")
-    .eq("competency_items.review_status", "needs_human_review")
     .eq("competency_items.prompt_version", "diagnostic-bank-v2")
     .order("queue_position", { ascending: true })
     .range(offset, offset + limit - 1);
+  if (!filters.includeSubmitted) {
+    query = query.eq("status", "assigned").eq("competency_items.review_status", "needs_human_review");
+  }
+  if (filters.itemId) query = query.eq("item_id", filters.itemId);
   if (filters.section) {
     query = query.eq("competency_items.diagnostic_item_bank_memberships.section_key", filters.section);
   }
@@ -141,6 +145,35 @@ export async function getAssignedCompetencyItems(filters: {
   const items = await getCompetencyItems({ ids: itemIds, limit: itemIds.length }, supabase);
   const positionById = new Map(itemIds.map((id, index) => [id, index]));
   return items.sort((a, b) => (positionById.get(a.id) ?? 0) - (positionById.get(b.id) ?? 0));
+}
+
+export type ReviewerExerciseHistoryRow = {
+  itemId: string;
+  sectionKey: string;
+  nodeLabel: string;
+  decision: "human_approved" | "rejected";
+  submittedAt: string;
+};
+
+export async function getReviewerExerciseHistory(reviewerProfileId: string, client?: SupabaseClient): Promise<ReviewerExerciseHistoryRow[]> {
+  const supabase = client ?? await createClient();
+  const { data, error } = await supabase.from("competency_item_review_assignments")
+    .select("item_id,decision,submitted_at,competency_items!inner(competency_nodes!inner(label_fr),diagnostic_item_bank_memberships!inner(section_key))")
+    .eq("reviewer_profile_id", reviewerProfileId)
+    .eq("status", "submitted")
+    .order("submitted_at", { ascending: false })
+    .limit(200);
+  if (error) throw new Error(error.message);
+  return (data ?? []).map((row) => {
+    const item = row.competency_items as unknown as { competency_nodes: { label_fr: string }; diagnostic_item_bank_memberships: Array<{ section_key: string }> };
+    return {
+      itemId: row.item_id as string,
+      sectionKey: item.diagnostic_item_bank_memberships[0]?.section_key ?? "",
+      nodeLabel: item.competency_nodes.label_fr,
+      decision: row.decision as "human_approved" | "rejected",
+      submittedAt: row.submitted_at as string,
+    };
+  });
 }
 
 export async function getDiagnosticItemReviewCount(filters: { section?: string; difficultyTier?: string; reviewerProfileId?: string } = {}, client?: SupabaseClient) {

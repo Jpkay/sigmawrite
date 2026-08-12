@@ -21,6 +21,7 @@ const reviewInput = z.object({
     outcome: z.enum(["correct_clear", "minor_issue", "ambiguous", "incorrect"]),
     comment: z.string().max(2000),
   })).max(30),
+  revision: z.boolean().optional(),
 });
 
 function refreshReviewPages() {
@@ -102,15 +103,17 @@ export async function saveReviewDraft(input: unknown) {
 export async function submitReview(input: unknown) {
   await requireActiveReviewer();
   const data = reviewInput.parse(input);
-  const { data: reviewId, error } = await (await createClient()).rpc("save_content_review", {
+  const rpc = data.revision ? "revise_content_review" : "save_content_review";
+  const args = {
     p_assignment_id: data.assignmentId,
     p_scores: data.scores,
     p_decision: data.decision,
     p_general_comment: data.generalComment,
     p_issue_tags: data.issueTags,
     p_question_reviews: data.questionReviews,
-    p_submit: true,
-  });
+    ...(data.revision ? {} : { p_submit: true }),
+  };
+  const { data: reviewId, error } = await (await createClient()).rpc(rpc, args);
   if (error) throw new Error(error.message);
   refreshReviewPages();
   return { reviewId };

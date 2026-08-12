@@ -128,11 +128,14 @@ export async function getReviewerAccess(profileId: string, client?: SupabaseClie
   } : null;
 }
 
-export async function getReviewNotifications(client?: SupabaseClient) {
+export async function getReviewNotifications(client?: SupabaseClient, includeRead = false, recipientProfileId?: string) {
   const db = client ?? await createClient();
-  const { data, error } = await db.from("review_notifications")
+  let query = db.from("review_notifications")
     .select("id,notification_type,title,body,review_version_id,read_at,created_at")
-    .is("read_at", null).order("created_at", { ascending: false }).limit(5);
+    .order("created_at", { ascending: false }).limit(8);
+  if (!includeRead) query = query.is("read_at", null);
+  if (recipientProfileId) query = query.eq("recipient_profile_id", recipientProfileId);
+  const { data, error } = await query;
   if (error) throw new Error(error.message);
   return data ?? [];
 }

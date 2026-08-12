@@ -84,12 +84,10 @@ export function ReviewWorkspace({
   assignment,
   reviewerName,
   progress,
-  nextAssignmentId,
 }: {
   assignment: ReviewQueueItem;
   reviewerName: string;
   progress: { current: number; total: number; completed: number };
-  nextAssignmentId: string | null;
 }) {
   const router = useRouter();
   const questions = assignment.candidate.generated.questions;
@@ -113,6 +111,7 @@ export function ReviewWorkspace({
   const [submitted, setSubmitted] = useState(
     assignment.status === "submitted",
   );
+  const [editing, setEditing] = useState(false);
   const [advancing, setAdvancing] = useState(false);
   const [dirty, setDirty] = useState(false);
   const lastSaved = useRef(JSON.stringify(serializableDraft(initial)));
@@ -143,13 +142,13 @@ export function ReviewWorkspace({
 
   useEffect(() => {
     const warn = (event: BeforeUnloadEvent) => {
-      if (!submitted && (dirty || saveState === "saving")) {
+      if ((!submitted || editing) && (dirty || saveState === "saving")) {
         event.preventDefault();
       }
     };
     window.addEventListener("beforeunload", warn);
     return () => window.removeEventListener("beforeunload", warn);
-  }, [dirty, saveState, submitted]);
+  }, [dirty, editing, saveState, submitted]);
 
   function update(mutator: (value: WorkspaceDraft) => WorkspaceDraft) {
     setDraft((value) => mutator(value));
@@ -168,7 +167,7 @@ export function ReviewWorkspace({
     }
     if (
       !window.confirm(
-        "Valider définitivement cette évaluation ? Elle ne pourra plus être modifiée.",
+        editing ? "Enregistrer les modifications apportées à votre avis ?" : "Valider cette évaluation ? Vous pourrez la retrouver dans votre historique.",
       )
     ) {
       return;
@@ -176,14 +175,15 @@ export function ReviewWorkspace({
     setSubmitError("");
     setSaveState("saving");
     try {
-      await submitReview({ assignmentId: assignment.assignmentId, ...clean });
+      await submitReview({ assignmentId: assignment.assignmentId, ...clean, revision: assignment.status === "submitted" });
       lastSaved.current = JSON.stringify(clean);
       setDirty(false);
       setSubmitted(true);
+      setEditing(false);
       setSaveState("saved");
       setAdvancing(true);
       window.setTimeout(() => {
-        router.push(nextAssignmentId ? `/review/${nextAssignmentId}` : "/review");
+        router.push("/review?thanks=passage");
         router.refresh();
       }, 650);
     } catch (error) {
@@ -200,6 +200,8 @@ export function ReviewWorkspace({
   const progressPercent = progress.total
     ? Math.round((progress.completed / progress.total) * 100)
     : 0;
+  const locked = submitted && !editing;
+  const canRevise = ["in_review", "review_complete"].includes(assignment.workflowStatus);
 
   return (
     <div className="pb-28 xl:pb-0">
@@ -259,12 +261,10 @@ export function ReviewWorkspace({
           <div>
             <p className="font-medium">Évaluation validée</p>
             <p className="text-sm text-muted-foreground">
-              {advancing
-                ? nextAssignmentId
-                  ? "Ouverture du texte suivant…"
-                  : "Votre travail est terminé…"
-                : "Vos réponses sont définitives et confidentielles."}
+              {advancing ? "Retour à votre file variée…" : "Votre avis est enregistré et reste accessible dans votre historique."}
             </p>
+            {!advancing && !editing && canRevise && <Button type="button" size="sm" variant="outline" className="mt-3" onClick={() => setEditing(true)}>Modifier mon avis</Button>}
+            {!advancing && !canRevise && <p className="mt-2 text-xs text-muted-foreground">Ce contenu a été finalisé : votre avis reste consultable en lecture seule.</p>}
           </div>
         </div>
       )}
@@ -390,7 +390,7 @@ export function ReviewWorkspace({
                         Repère : {question.rubric}
                       </p>
                     )}
-                    <fieldset disabled={submitted} className="mt-5">
+                    <fieldset disabled={locked} className="mt-5">
                       <legend className="text-sm font-medium">
                         Cette question est-elle correcte ?
                       </legend>
@@ -474,7 +474,7 @@ export function ReviewWorkspace({
                       ? `Adapté à la ${level.gradeLabel}`
                       : label;
                   return (
-                    <fieldset key={key} disabled={submitted} className="p-3">
+                    <fieldset key={key} disabled={locked} className="p-3">
                       <legend className="mb-2 text-sm font-medium">
                         {criterionLabel}
                       </legend>
@@ -513,7 +513,7 @@ export function ReviewWorkspace({
               </div>
             </div>
 
-            <fieldset disabled={submitted} className="mt-8">
+            <fieldset disabled={locked} className="mt-8">
               <legend className="font-medium">Décision globale</legend>
               <div className="mt-3 grid gap-2 sm:grid-cols-2 xl:grid-cols-1">
                 {decisions.map((decision) => (
@@ -544,7 +544,7 @@ export function ReviewWorkspace({
               <summary className="flex min-h-12 cursor-pointer items-center px-4 font-medium">
                 Problèmes repérés <span className="ml-2 text-sm font-normal text-muted-foreground">(facultatif)</span>
               </summary>
-              <fieldset disabled={submitted} className="grid gap-2 px-3 sm:grid-cols-2 xl:grid-cols-1">
+              <fieldset disabled={locked} className="grid gap-2 px-3 sm:grid-cols-2 xl:grid-cols-1">
                 {ISSUE_TAGS.map((tag) => (
                   <label
                     key={tag}
@@ -572,7 +572,7 @@ export function ReviewWorkspace({
             <label className="mt-8 block font-medium">
               Commentaire général
               <textarea
-                disabled={submitted}
+                disabled={locked}
                 rows={4}
                 value={draft.generalComment}
                 onChange={(event) =>
@@ -595,7 +595,7 @@ export function ReviewWorkspace({
               </p>
             )}
 
-            {!submitted && (
+            {!locked && (
               <div className="mt-6 hidden gap-2 xl:grid">
                 <Button
                   variant="outline"
@@ -608,7 +608,7 @@ export function ReviewWorkspace({
                   onClick={() => void finalize()}
                   disabled={saveState === "saving"}
                 >
-                  Valider et passer au suivant
+                  {editing ? "Enregistrer les modifications" : "Valider et continuer"}
                 </Button>
               </div>
             )}
@@ -616,7 +616,7 @@ export function ReviewWorkspace({
         </aside>
       </div>
 
-      {!submitted && (
+      {!locked && (
         <div className="fixed inset-x-0 bottom-0 z-50 border-t border-border bg-background/95 px-3 pt-3 pb-[max(.75rem,env(safe-area-inset-bottom))] shadow-[0_-8px_30px_rgba(0,0,0,.08)] backdrop-blur-xl xl:hidden">
           <div className="mx-auto flex max-w-2xl items-center gap-2">
             <Button
@@ -640,7 +640,7 @@ export function ReviewWorkspace({
               onClick={() => void finalize()}
               disabled={saveState === "saving"}
             >
-              Valider et continuer
+              {editing ? "Enregistrer les modifications" : "Valider et continuer"}
             </Button>
           </div>
         </div>

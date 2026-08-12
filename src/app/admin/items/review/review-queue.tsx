@@ -46,6 +46,11 @@ export function ItemReviewQueue({ scope, initialItems, progress, filters, pagina
     setError("");
     try {
       await reviewCompetencyItem({ id: item.id, decision, promptFr, correctAnswer: correctAnswer || null, note: note || undefined, assignmentMode: reviewerMode });
+      if (reviewerMode) {
+        router.push("/review?thanks=exercise");
+        router.refresh();
+        return;
+      }
       setDismissed((ids) => [...ids, item.id]);
       router.refresh();
     } catch {

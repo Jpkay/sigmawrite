@@ -21,12 +21,13 @@ export default async function ExerciseReviewPage({ searchParams }: ExerciseRevie
   const query = await searchParams;
   const section = typeof query.section === "string" && sections.has(query.section) ? query.section : undefined;
   const difficultyTier = typeof query.tier === "string" && tiers.has(query.tier) ? query.tier : undefined;
+  const itemId = typeof query.item === "string" ? query.item : undefined;
   const scope = "diagnostic" as const;
   const requestedPage = typeof query.page === "string" ? Number.parseInt(query.page, 10) : 1;
   const page = Number.isFinite(requestedPage) ? Math.max(1, requestedPage) : 1;
   const service = createServiceClient();
   const [items, filteredTotal, progress] = await Promise.all([
-    getAssignedCompetencyItems({ reviewerProfileId: reviewer.id, section, difficultyTier, offset: (page - 1) * PAGE_SIZE, limit: PAGE_SIZE }, service),
+    getAssignedCompetencyItems({ reviewerProfileId: reviewer.id, section, difficultyTier, itemId, includeSubmitted: Boolean(itemId), offset: itemId ? 0 : (page - 1) * PAGE_SIZE, limit: itemId ? 1 : PAGE_SIZE }, service),
     getDiagnosticItemReviewCount({ section, difficultyTier, reviewerProfileId: reviewer.id }, service),
     getDiagnosticItemReviewProgress(service, reviewer.id),
   ]);
@@ -35,8 +36,8 @@ export default async function ExerciseReviewPage({ searchParams }: ExerciseRevie
   return <>
     <PageHeader
       eyebrow="Qualité pédagogique"
-      title="Revue des exercices"
-      description="Un exercice à la fois. Vérifiez sa clarté, sa réponse et son niveau, puis passez au suivant."
+      title={itemId ? "Revoir ma décision" : "Revue des exercices"}
+      description={itemId ? "Corrigez votre avis puis enregistrez-le de nouveau." : "Un exercice à la fois. Vérifiez sa clarté, sa réponse et son niveau, puis passez au suivant."}
     />
     <ItemReviewQueue
       scope={scope}

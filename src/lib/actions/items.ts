@@ -25,7 +25,14 @@ export async function reviewCompetencyItem(input: unknown) {
   const supabase = await createClient();
   if (reviewer.role === "content_reviewer" || data.assignmentMode) {
     await requireActiveReviewer();
-    const { data: updated, error } = await supabase.rpc("submit_competency_item_review", {
+    const { data: assignment, error: assignmentError } = await supabase.from("competency_item_review_assignments")
+      .select("status")
+      .eq("item_id", data.id)
+      .eq("reviewer_profile_id", reviewer.id)
+      .maybeSingle();
+    if (assignmentError) throw new Error(assignmentError.message);
+    const rpc = assignment?.status === "submitted" ? "revise_competency_item_review" : "submit_competency_item_review";
+    const { data: updated, error } = await supabase.rpc(rpc, {
       p_item_id: data.id,
       p_decision: data.decision,
       p_prompt_fr: data.promptFr ?? "",
