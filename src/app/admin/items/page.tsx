@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { requireRole } from "@/lib/auth";
 import { getCompetencyItems, getGenerationRuns } from "@/lib/db/items";
 import { responseTypeLabel, reviewStatusLabel, validatorTypeLabel } from "@/lib/presentation/french-labels";
+import { ItemAdminNav } from "./item-admin-nav";
 
 export default async function ItemBankPage({ searchParams }: { searchParams: Promise<{ status?: string; node?: string }> }) {
   await requireRole(["platform_admin", "content_reviewer"]);
@@ -14,6 +15,7 @@ export default async function ItemBankPage({ searchParams }: { searchParams: Pro
   const nodeOptions = [...new Map(items.map((item) => [item.nodeKey, item.nodeLabel])).entries()].sort();
   return <>
     <PageHeader title="Banque d’items" description={`${items.length} items visibles. Filtre par nœud, statut de contrôle ou signal psychométrique.`} />
+    <ItemAdminNav />
     <form className="mb-5 grid gap-3 rounded-md border border-border p-4 sm:grid-cols-3">
       <label className="text-sm">Statut<select name="status" defaultValue={filters.status ?? ""} className="mt-1 h-9 w-full appearance-none rounded-md border border-input bg-background px-3 pr-10"><option className="bg-zinc-950" value="">Tous</option>{["draft","auto_approved","needs_human_review","human_approved","rejected","retired"].map((status) => <option className="bg-zinc-950" key={status} value={status}>{reviewStatusLabel(status)}</option>)}</select></label>
       <label className="text-sm">Nœud<select name="node" defaultValue={filters.node ?? ""} className="mt-1 h-9 w-full appearance-none rounded-md border border-input bg-background px-3 pr-10"><option className="bg-zinc-950" value="">Tous</option>{nodeOptions.map(([key,label]) => <option className="bg-zinc-950" key={key} value={key}>{label}</option>)}</select></label>

@@ -2,6 +2,7 @@ import { PageHeader } from "@/components/page";
 import { requireActiveReviewer, requireRole } from "@/lib/auth";
 import { getCompetencyItems, getDiagnosticItemReviewCount, getDiagnosticItemReviewProgress, getTaxonomyV3PracticeReviewData } from "@/lib/db/items";
 import { ItemReviewQueue } from "./review-queue";
+import { ItemAdminNav } from "../item-admin-nav";
 
 const PAGE_SIZE = 24;
 const sections = new Set(["reading_comprehension", "grammar", "spelling", "conjugation"]);
@@ -30,5 +31,5 @@ export default async function ItemReviewPage({ searchParams }: ReviewPageProps) 
       getDiagnosticItemReviewProgress(),
     ]);
   const pageCount = Math.max(1, Math.ceil(filteredTotal / PAGE_SIZE));
-  return <><PageHeader title={scope === "practice-v3" ? "Validation de la pratique v3" : "Revue du diagnostic v2"} description={scope === "practice-v3" ? "Valide uniquement les exercices nécessaires pour ouvrir chaque compétence contrôlée aux élèves." : "Vérifie l’énoncé, la réponse, le niveau et les contrôles avant toute publication aux élèves."} /><ItemReviewQueue scope={scope} initialItems={items} progress={progress} filters={{ section: section ?? "", tier: difficultyTier ?? "" }} pagination={{ page: Math.min(page, pageCount), pageCount, filteredTotal }} /></>;
+  return <><PageHeader title={scope === "practice-v3" ? "Validation de la pratique v3" : "Revue du diagnostic v2"} description={scope === "practice-v3" ? "Valide uniquement les exercices nécessaires pour ouvrir chaque compétence contrôlée aux élèves." : "Vérifie l’énoncé, la réponse, le niveau et les contrôles avant toute publication aux élèves."} /><ItemAdminNav /><ItemReviewQueue scope={scope} initialItems={items} progress={progress} filters={{ section: section ?? "", tier: difficultyTier ?? "" }} pagination={{ page: Math.min(page, pageCount), pageCount, filteredTotal }} /></>;
 }

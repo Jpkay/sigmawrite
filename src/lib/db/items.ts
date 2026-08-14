@@ -157,6 +157,79 @@ export type ReviewerExerciseHistoryRow = {
   submittedAt: string;
 };
 
+export type AdminCompetencyReviewResult = {
+  assignmentId: string;
+  itemId: string;
+  reviewerProfileId: string;
+  reviewerName: string;
+  decision: "human_approved" | "rejected";
+  submittedAt: string;
+  sectionKey: string;
+  difficultyTier: string;
+  nodeLabel: string;
+  promptFr: string;
+  correctAnswer: string | null;
+  reviewNote: string | null;
+};
+
+export async function getAdminCompetencyReviewResults(filters: {
+  reviewerProfileId?: string;
+  decision?: "human_approved" | "rejected";
+  section?: string;
+  offset?: number;
+  limit?: number;
+} = {}, client?: SupabaseClient): Promise<{ rows: AdminCompetencyReviewResult[]; total: number }> {
+  const supabase = client ?? await createClient();
+  const offset = Math.max(0, filters.offset ?? 0);
+  const limit = Math.max(1, filters.limit ?? 50);
+  let query = supabase.from("competency_item_review_assignments")
+    .select(`
+      id,item_id,reviewer_profile_id,decision,submitted_at,
+      profiles!competency_item_review_assignments_reviewer_profile_id_fkey(display_name),
+      competency_items!inner(
+        prompt_fr,correct_answer,review_note,
+        competency_nodes!inner(label_fr),
+        diagnostic_item_bank_memberships!inner(section_key,difficulty_tier)
+      )
+    `, { count: "exact" })
+    .eq("status", "submitted")
+    .order("submitted_at", { ascending: false })
+    .range(offset, offset + limit - 1);
+  if (filters.reviewerProfileId) query = query.eq("reviewer_profile_id", filters.reviewerProfileId);
+  if (filters.decision) query = query.eq("decision", filters.decision);
+  if (filters.section) query = query.eq("competency_items.diagnostic_item_bank_memberships.section_key", filters.section);
+  const { data, count, error } = await query;
+  if (error) throw new Error(error.message);
+  return {
+    total: count ?? 0,
+    rows: (data ?? []).map((row) => {
+      const profile = row.profiles as unknown as { display_name: string | null } | null;
+      const item = row.competency_items as unknown as {
+        prompt_fr: string;
+        correct_answer: string | null;
+        review_note: string | null;
+        competency_nodes: { label_fr: string };
+        diagnostic_item_bank_memberships: Array<{ section_key: string; difficulty_tier: string }>;
+      };
+      const membership = item.diagnostic_item_bank_memberships[0];
+      return {
+        assignmentId: row.id as string,
+        itemId: row.item_id as string,
+        reviewerProfileId: row.reviewer_profile_id as string,
+        reviewerName: profile?.display_name ?? "Évaluateur",
+        decision: row.decision as "human_approved" | "rejected",
+        submittedAt: row.submitted_at as string,
+        sectionKey: membership?.section_key ?? "",
+        difficultyTier: membership?.difficulty_tier ?? "",
+        nodeLabel: item.competency_nodes.label_fr,
+        promptFr: item.prompt_fr,
+        correctAnswer: item.correct_answer,
+        reviewNote: item.review_note,
+      };
+    }),
+  };
+}
+
 export async function getReviewerExerciseHistory(reviewerProfileId: string, client?: SupabaseClient): Promise<ReviewerExerciseHistoryRow[]> {
   const supabase = client ?? await createClient();
   const { data, error } = await supabase.from("competency_item_review_assignments")
