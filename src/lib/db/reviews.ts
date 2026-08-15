@@ -2,7 +2,7 @@ import "server-only";
 
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { ContentCandidate } from "@/lib/ai/pipeline";
-import type { ReviewDecision, ReviewDraft, ReviewQueueItem, ReviewScores } from "@/lib/review/types";
+import { hasReviewablePassageBody, type ReviewDecision, type ReviewDraft, type ReviewQueueItem, type ReviewScores } from "@/lib/review/types";
 import { createClient } from "@/lib/supabase/server";
 import { oneToOne } from "@/lib/supabase/relations";
 
@@ -88,7 +88,9 @@ export async function getReviewerQueue(reviewerProfileId: string, client?: Supab
     .eq("reviewer_profile_id", reviewerProfileId)
     .order("assigned_at", { ascending: true });
   if (error) throw new Error(error.message);
-  return ((data ?? []) as unknown as AssignmentRow[]).map(mapAssignment);
+  return ((data ?? []) as unknown as AssignmentRow[])
+    .map(mapAssignment)
+    .filter((item) => item.status === "submitted" || hasReviewablePassageBody(item.candidate));
 }
 
 export async function getReviewAssignment(assignmentId: string, reviewerProfileId: string, client?: SupabaseClient): Promise<ReviewQueueItem | null> {
