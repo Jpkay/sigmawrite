@@ -118,6 +118,7 @@ export async function getAssignedCompetencyItems(filters: {
   difficultyTier?: string;
   itemId?: string;
   includeSubmitted?: boolean;
+  order?: "queue" | "difficulty";
   offset?: number;
   limit?: number;
 }, client?: SupabaseClient) {
@@ -128,8 +129,8 @@ export async function getAssignedCompetencyItems(filters: {
     .select("item_id,queue_position,competency_items!inner(review_status,prompt_version,diagnostic_item_bank_memberships!inner(section_key,difficulty_tier))")
     .eq("reviewer_profile_id", filters.reviewerProfileId)
     .eq("competency_items.prompt_version", "diagnostic-bank-v2")
-    .order("queue_position", { ascending: true })
-    .range(offset, offset + limit - 1);
+    .order("queue_position", { ascending: true });
+  if (filters.order !== "difficulty") query = query.range(offset, offset + limit - 1);
   if (!filters.includeSubmitted) {
     query = query.eq("status", "assigned").eq("competency_items.review_status", "needs_human_review");
   }
@@ -142,11 +143,41 @@ export async function getAssignedCompetencyItems(filters: {
   }
   const { data, error } = await query;
   if (error) throw new Error(error.message);
-  const itemIds = (data ?? []).map((row) => row.item_id as string);
-  if (!itemIds.length) return [];
-  const items = await getCompetencyItems({ ids: itemIds, limit: itemIds.length }, supabase);
-  const positionById = new Map(itemIds.map((id, index) => [id, index]));
-  return items.sort((a, b) => (positionById.get(a.id) ?? 0) - (positionById.get(b.id) ?? 0));
+  const allItemIds = (data ?? []).map((row) => row.item_id as string);
+  if (!allItemIds.length) return [];
+  const allItems = await getCompetencyItems({ ids: allItemIds, limit: allItemIds.length }, supabase);
+  const queuePositionById = new Map((data ?? []).map((row) => [row.item_id as string, Number(row.queue_position)]));
+  const orderedItems = allItems.sort((a, b) => filters.order === "difficulty"
+    ? (a.difficulty ?? 101) - (b.difficulty ?? 101)
+      || a.nodeLabel.localeCompare(b.nodeLabel, "fr")
+      || (queuePositionById.get(a.id) ?? 0) - (queuePositionById.get(b.id) ?? 0)
+    : (queuePositionById.get(a.id) ?? 0) - (queuePositionById.get(b.id) ?? 0));
+  return filters.order === "difficulty" ? orderedItems.slice(offset, offset + limit) : orderedItems;
+}
+
+export type ReviewerExerciseSectionProgress = {
+  sectionKey: string;
+  total: number;
+  remaining: number;
+  completed: number;
+};
+
+export async function getReviewerExerciseSectionProgress(reviewerProfileId: string, client?: SupabaseClient): Promise<ReviewerExerciseSectionProgress[]> {
+  const supabase = client ?? await createClient();
+  const { data, error } = await supabase.from("competency_item_review_assignments")
+    .select("status,competency_items!inner(prompt_version,diagnostic_item_bank_memberships!inner(section_key))")
+    .eq("reviewer_profile_id", reviewerProfileId)
+    .eq("competency_items.prompt_version", "diagnostic-bank-v2");
+  if (error) throw new Error(error.message);
+  const sections = ["reading_comprehension", "grammar", "spelling", "conjugation"];
+  return sections.map((sectionKey) => {
+    const rows = (data ?? []).filter((row) => {
+      const item = row.competency_items as unknown as { diagnostic_item_bank_memberships: Array<{ section_key: string }> };
+      return item.diagnostic_item_bank_memberships[0]?.section_key === sectionKey;
+    });
+    const remaining = rows.filter((row) => row.status === "assigned").length;
+    return { sectionKey, total: rows.length, remaining, completed: rows.length - remaining };
+  });
 }
 
 export type ReviewerExerciseHistoryRow = {
