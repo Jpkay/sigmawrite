@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import type { CompetencyItemRow, ReviewerExerciseSectionProgress } from "@/lib/db/items";
 import { reviewCompetencyItem } from "@/lib/actions/items";
+import { formatFrameworkRange, formatNativeGradeRange } from "@/lib/content/exercise-presentation";
 
 type ReviewProgress = {
   total: number;
@@ -157,7 +158,7 @@ function ReviewerWorkflow({ item, items, activeIndex, itemPosition, visibleCount
       <div className="flex items-center gap-1"><Button type="button" size="sm" variant="ghost" disabled={!canPrevious} onClick={onPrevious}><ChevronLeft />Précédent</Button><Button type="button" size="sm" variant="ghost" disabled={!canNext} onClick={onNext}>Passer<ChevronRight /></Button></div>
     </div>
     <details className="group mt-3 border-b border-border pb-3">
-      <summary className="flex cursor-pointer list-none items-center gap-2 py-2 text-sm font-medium text-muted-foreground marker:content-none hover:text-foreground"><SlidersHorizontal className="size-4" /> Affiner par niveau<span className="ml-auto text-xs font-normal group-open:hidden">Afficher</span><span className="ml-auto hidden text-xs font-normal group-open:inline">Masquer</span></summary>
+      <summary className="flex cursor-pointer list-none items-center gap-2 py-2 text-sm font-medium text-muted-foreground marker:content-none hover:text-foreground"><SlidersHorizontal className="size-4" /> Affiner par difficulté<span className="ml-auto text-xs font-normal group-open:hidden">Afficher</span><span className="ml-auto hidden text-xs font-normal group-open:inline">Masquer</span></summary>
       <QueueFilters scope="diagnostic" filters={filters} compact reviewerMode />
     </details>
     {reviewMode === "focus" && item && <DifficultyComparison items={items} activeIndex={activeIndex} onSelect={onSelect} />}
@@ -205,7 +206,7 @@ function DifficultyComparison({ items, activeIndex, onSelect }: { items: Compete
         const index = start + offset;
         const active = index === activeIndex;
         return <button key={candidate.id} type="button" onClick={() => onSelect(index)} aria-current={active ? "true" : undefined} className={`min-w-40 snap-start border-l-2 px-3 py-2 text-left transition-colors sm:min-w-0 ${active ? "border-primary bg-primary/8" : "border-border hover:border-primary/40 hover:bg-muted/50"}`}>
-          <span className={`text-[10px] font-semibold uppercase tracking-[0.08em] ${active ? "text-primary" : "text-muted-foreground"}`}>{tierLabels[candidate.diagnostic?.difficultyTier ?? ""] ?? "Niveau"} · {candidate.difficulty ?? "—"}/100</span>
+          <span className={`text-[10px] font-semibold uppercase tracking-[0.08em] ${active ? "text-primary" : "text-muted-foreground"}`}>Difficulté {tierLabels[candidate.diagnostic?.difficultyTier ?? ""] ?? "—"} · {candidate.difficulty ?? "—"}/100</span>
           <span className="mt-1 line-clamp-2 block text-xs font-medium leading-4">{candidate.nodeLabel}</span>
         </button>;
       })}
@@ -219,11 +220,26 @@ function ReviewerExercise({ item, busy, onDecide }: { item: CompetencyItemRow; b
   const [note, setNote] = useState(item.reviewNote ?? "");
   const section = sectionLabels[item.diagnostic?.sectionKey ?? ""] ?? "Exercice de français";
   const tier = tierLabels[item.diagnostic?.difficultyTier ?? ""] ?? item.diagnostic?.difficultyTier;
+  const nativeGrade = formatNativeGradeRange(
+    item.levelGuidance?.nativeGrade?.levelMin ?? null,
+    item.levelGuidance?.nativeGrade?.levelMax ?? null,
+  );
+  const cefr = formatFrameworkRange(
+    item.levelGuidance?.cefr?.levelMin ?? null,
+    item.levelGuidance?.cefr?.levelMax ?? null,
+  );
   const promptRows = Math.min(18, Math.max(6, Math.ceil(prompt.length / 105)));
   return <article className="animate-in fade-in slide-in-from-bottom-2 duration-300">
     <header className="pb-6 pt-8">
-      <div className="flex flex-wrap items-center gap-x-3 gap-y-2"><p className="font-display text-xs font-semibold uppercase tracking-[0.15em] text-primary">{section}</p>{tier && <><span className="text-border">/</span><p className="text-xs font-medium text-muted-foreground">Niveau {tier}{item.difficulty == null ? "" : ` · ${item.difficulty}/100`}</p></>}</div>
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-2"><p className="font-display text-xs font-semibold uppercase tracking-[0.15em] text-primary">{section}</p>{tier && <><span className="text-border">/</span><p className="text-xs font-medium text-muted-foreground">Difficulté de l’exercice · {tier}{item.difficulty == null ? "" : ` · ${item.difficulty}/100`}</p></>}</div>
       <h2 className="mt-3 max-w-3xl font-display text-2xl font-semibold leading-tight tracking-[-0.025em] sm:text-3xl">{item.nodeLabel}</h2>
+      <section aria-label="Repères de niveau" className="mt-5 border-y border-border">
+        <div className="grid grid-cols-2">
+          <div className="border-r border-border px-3 py-4 sm:px-4"><p className="text-[10px] font-semibold uppercase tracking-[0.11em] text-muted-foreground">Français langue première</p><p className="mt-1 font-display text-xl font-semibold text-foreground">{nativeGrade ?? "Non renseigné"}</p></div>
+          <div className="px-3 py-4 sm:px-4"><p className="text-[10px] font-semibold uppercase tracking-[0.11em] text-muted-foreground">Français langue seconde</p><p className="mt-1 font-display text-xl font-semibold text-foreground">{cefr ? `${cefr} · CECRL` : "Non renseigné"}</p></div>
+        </div>
+        <p className="border-t border-border px-3 py-2 text-[11px] leading-5 text-muted-foreground sm:px-4">Repères curriculaires indicatifs. Ces deux cadres sont indépendants et ne constituent pas une équivalence.</p>
+      </section>
       {item.diagnostic?.observableActionFr && <div className="mt-5 border-l-2 border-primary pl-4"><p className="text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">Objectif évalué</p><p className="mt-1 text-sm leading-6 text-foreground">{item.diagnostic.observableActionFr}</p></div>}
     </header>
     <section className="border-y border-border py-6">
@@ -244,7 +260,7 @@ function ReviewerExercise({ item, busy, onDecide }: { item: CompetencyItemRow; b
 }
 
 function QueueFilters({ scope, filters, compact = false, reviewerMode = false }: { scope: "diagnostic" | "practice-v3"; filters: { section: string; tier: string }; compact?: boolean; reviewerMode?: boolean }) {
-  return <form className={`grid gap-3 ${reviewerMode ? "sm:grid-cols-[1fr_auto]" : "sm:grid-cols-[1fr_1fr_auto]"} ${compact ? "py-3" : "rounded-md border border-border p-4"}`}>{scope === "practice-v3" && <input type="hidden" name="scope" value="practice-v3" />}{reviewerMode && <input type="hidden" name="mode" value={filters.section ? "focus" : "mixed"} />}{reviewerMode && filters.section && <input type="hidden" name="section" value={filters.section} />}{!reviewerMode && <label className="text-sm">Section<select name="section" defaultValue={filters.section} className="mt-1 h-9 w-full rounded-md border border-input bg-background px-3"><option value="">Toutes</option><option value="reading_comprehension">Compréhension écrite</option><option value="grammar">Grammaire</option><option value="spelling">Orthographe</option><option value="conjugation">Conjugaison</option></select></label>}<label className="text-sm">Niveau de difficulté<select name="tier" defaultValue={filters.tier} className="mt-1 h-9 w-full rounded-md border border-input bg-background px-3"><option value="">Tous les niveaux</option><option value="foundation">Fondation</option><option value="core">Intermédiaire</option><option value="stretch">Avancé</option></select></label><Button type="submit" variant="outline" className="self-end">Appliquer</Button></form>;
+  return <form className={`grid gap-3 ${reviewerMode ? "sm:grid-cols-[1fr_auto]" : "sm:grid-cols-[1fr_1fr_auto]"} ${compact ? "py-3" : "rounded-md border border-border p-4"}`}>{scope === "practice-v3" && <input type="hidden" name="scope" value="practice-v3" />}{reviewerMode && <input type="hidden" name="mode" value={filters.section ? "focus" : "mixed"} />}{reviewerMode && filters.section && <input type="hidden" name="section" value={filters.section} />}{!reviewerMode && <label className="text-sm">Section<select name="section" defaultValue={filters.section} className="mt-1 h-9 w-full rounded-md border border-input bg-background px-3"><option value="">Toutes</option><option value="reading_comprehension">Compréhension écrite</option><option value="grammar">Grammaire</option><option value="spelling">Orthographe</option><option value="conjugation">Conjugaison</option></select></label>}<label className="text-sm">Difficulté de l’exercice<select name="tier" defaultValue={filters.tier} className="mt-1 h-9 w-full rounded-md border border-input bg-background px-3"><option value="">Toutes les difficultés</option><option value="foundation">Fondation</option><option value="core">Intermédiaire</option><option value="stretch">Avancé</option></select></label><Button type="submit" variant="outline" className="self-end">Appliquer</Button></form>;
 }
 
 function ReviewMetric({ label, value }: { label: string; value: number | string }) {

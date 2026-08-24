@@ -1,5 +1,12 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { createClient } from "@/lib/supabase/server";
+import { stripAuthoringVariantPrefix } from "@/lib/content/exercise-presentation";
+
+type ProgressionLevel = {
+  levelMin: string | null;
+  levelMax: string | null;
+  status: string;
+};
 
 export type CompetencyItemRow = {
   id: string; nodeId: string; nodeKey: string; nodeLabel: string; strand: string;
@@ -7,6 +14,10 @@ export type CompetencyItemRow = {
   difficulty: number | null; reviewStatus: string; qcGates: Record<string, unknown>;
   reviewNote: string | null;
   psychometricFlags: unknown[]; generationModel: string | null; promptVersion: string | null;
+  levelGuidance: {
+    nativeGrade: ProgressionLevel | null;
+    cefr: ProgressionLevel | null;
+  } | null;
   diagnostic: {
     sectionKey: string;
     evidenceExpectation: string;
@@ -54,6 +65,7 @@ export async function getCompetencyItems(filters: { status?: string; node?: stri
   const bankReleaseIds = [...new Set(diagnosticMemberships.map((row) => row.bank_release_id))];
   const bankTaxonomyById = new Map<string, string>();
   const evidenceSnapshotByReleaseAndId = new Map<string, Record<string, unknown>>();
+  const progressionByReleaseAndNodeKey = new Map<string, Array<Record<string, unknown>>>();
   if (bankReleaseIds.length) {
     const { data: bankRows, error: bankError } = await supabase.from("diagnostic_item_bank_releases")
       .select("id,taxonomy_release_id")
@@ -74,6 +86,19 @@ export async function getCompetencyItems(filters: { status?: string; node?: stri
         row.record_snapshot as Record<string, unknown>,
       );
     }
+    const { data: progressionRows, error: progressionError } = await supabase.from("taxonomy_release_memberships")
+      .select("release_id,stable_key,record_snapshot")
+      .in("release_id", taxonomyReleaseIds)
+      .eq("record_type", "progression_mapping");
+    if (progressionError) throw new Error(progressionError.message);
+    for (const row of progressionRows ?? []) {
+      const nodeKey = String(row.stable_key).split(":", 1)[0];
+      const key = `${row.release_id}:${nodeKey}`;
+      progressionByReleaseAndNodeKey.set(key, [
+        ...(progressionByReleaseAndNodeKey.get(key) ?? []),
+        row.record_snapshot as Record<string, unknown>,
+      ]);
+    }
   }
   return rows.map((row) => {
     const node = row.competency_nodes as unknown as { key: string; label_fr: string };
@@ -83,14 +108,31 @@ export async function getCompetencyItems(filters: { status?: string; node?: stri
     const evidenceSnapshot = diagnostic && taxonomyReleaseId
       ? evidenceSnapshotByReleaseAndId.get(`${taxonomyReleaseId}:${diagnostic.mastery_evidence_id}`)
       : null;
+    const progression = taxonomyReleaseId
+      ? progressionByReleaseAndNodeKey.get(`${taxonomyReleaseId}:${node.key}`) ?? []
+      : [];
+    const progressionLevel = (learnerMode: string, framework: string): ProgressionLevel | null => {
+      const mapping = progression.find((candidate) =>
+        candidate.learnerMode === learnerMode && candidate.framework === framework
+      );
+      return mapping ? {
+        levelMin: typeof mapping.levelMin === "string" ? mapping.levelMin : null,
+        levelMax: typeof mapping.levelMax === "string" ? mapping.levelMax : null,
+        status: typeof mapping.status === "string" ? mapping.status : "provisional",
+      } : null;
+    };
     return {
       id: row.id as string, nodeId: row.primary_node_id as string, nodeKey: node.key, nodeLabel: node.label_fr,
-      strand: row.strand as string, promptFr: row.prompt_fr as string, correctAnswer: row.correct_answer as string | null,
+      strand: row.strand as string, promptFr: stripAuthoringVariantPrefix(row.prompt_fr as string), correctAnswer: row.correct_answer as string | null,
       responseType: row.response_type as string, validatorType: row.validator_type as string,
       difficulty: row.difficulty == null ? null : Number(row.difficulty), reviewStatus: row.review_status as string,
       reviewNote: row.review_note as string | null,
       qcGates: (row.qc_gates ?? {}) as Record<string, unknown>, psychometricFlags: (row.psychometric_flags ?? []) as unknown[],
       generationModel: row.generation_model as string | null, promptVersion: row.prompt_version as string | null,
+      levelGuidance: diagnostic ? {
+        nativeGrade: progressionLevel("french_first_language", "native_grade"),
+        cefr: progressionLevel("french_second_language", "cefr"),
+      } : null,
       diagnostic: diagnostic ? {
         sectionKey: diagnostic.section_key,
         evidenceExpectation: typeof evidenceSnapshot?.expectation === "string"

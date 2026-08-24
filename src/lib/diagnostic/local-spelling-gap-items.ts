@@ -129,7 +129,7 @@ export async function buildLocalSpellingGapDraftItems(
         ? {
             nodeKey: node.key, strand: node.strand, modality: "grammar_analysis",
             learnerMode: "shared", responseType: "mcq",
-            promptFr: `Cas ${index + 1} — ${sample.prompt}`,
+            promptFr: sample.prompt,
             acceptableAnswers: [], validatorType: "exact",
             choices: [
               { text: sample.answer, correct: true },

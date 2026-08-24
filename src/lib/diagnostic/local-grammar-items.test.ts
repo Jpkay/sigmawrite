@@ -14,6 +14,7 @@ describe("local grammar diagnostic authoring", () => {
     expect(items).toHaveLength(162);
     expect(new Set(items.map((entry) => entry.itemKey)).size).toBe(162);
     expect(new Set(items.map((entry) => `${entry.item.nodeKey}\0${entry.item.promptFr}`)).size).toBe(162);
+    expect(items.every((entry) => !/^Cas\s+[1-3]\s*[—–-]/u.test(entry.item.promptFr))).toBe(true);
     expect(items.every((entry) =>
       entry.reviewStatus === "needs_human_review"
       && entry.qcGates.gate1_schema

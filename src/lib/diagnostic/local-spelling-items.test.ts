@@ -13,7 +13,8 @@ describe("local spelling diagnostic authoring", () => {
 
     expect(items).toHaveLength(126);
     expect(new Set(items.map((entry) => entry.itemKey)).size).toBe(126);
-    expect(new Set(items.map((entry) => `${entry.item.nodeKey}\0${entry.item.promptFr}`)).size).toBe(126);
+    expect(new Set(items.map((entry) => `${entry.item.nodeKey}\0${entry.item.promptFr}\0${JSON.stringify(entry.item.choices ?? [])}`)).size).toBe(126);
+    expect(items.every((entry) => !/^Cas\s+[1-3]\s*[—–-]/u.test(entry.item.promptFr))).toBe(true);
     expect(items.every((entry) =>
       entry.reviewStatus === "needs_human_review"
       && entry.qcGates.gate1_schema

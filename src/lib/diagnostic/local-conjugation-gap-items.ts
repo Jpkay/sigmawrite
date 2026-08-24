@@ -152,7 +152,7 @@ export async function buildLocalConjugationGapDraftItems(
       const raw: GeneratedItem = plan.expectation === "receptive"
         ? {
             nodeKey: node.key, strand: node.strand, modality: "grammar_analysis",
-            learnerMode: "shared", responseType: "mcq", promptFr: `Cas ${index + 1} — ${sample.prompt}`,
+            learnerMode: "shared", responseType: "mcq", promptFr: sample.prompt,
             acceptableAnswers: [], validatorType: "exact",
             choices: [{ text: sample.answer, correct: true }, ...(sample.distractors ?? []).map((text) => ({ text, correct: false }))],
             difficulty: diagnosticDifficultyForTier(tier),

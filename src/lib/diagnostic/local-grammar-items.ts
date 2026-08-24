@@ -164,7 +164,7 @@ export async function buildLocalGrammarDraftItems(
               modality: "grammar_analysis",
               learnerMode: "shared",
               responseType: "mcq",
-              promptFr: `Cas ${index + 1} — ${sample.receptivePrompt}`,
+              promptFr: sample.receptivePrompt,
               acceptableAnswers: [],
               validatorType: "exact",
               choices: [
