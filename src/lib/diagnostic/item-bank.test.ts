@@ -153,6 +153,54 @@ describe("canonical diagnostic item-bank gate", () => {
     expect(validateCanonicalDiagnosticBank(changedReviewer, taxonomy).manifest.checksum).not.toBe(original);
   });
 
+  it("distinguishes MCQs by their complete visible surface while preserving strict open-prompt uniqueness", () => {
+    const entries = DIAGNOSTIC_SECTIONS.flatMap((section) => Array.from({ length: 12 }, (_, index) =>
+      item(`${section.key}-${nodeIndex(index)}`, strands[section.key], section.key, index)
+    ));
+    const first = entries[0];
+    const second = entries[2];
+    first.item = {
+      ...first.item,
+      responseType: "mcq",
+      promptFr: "Quel mot est correctement orthographié ?",
+      choices: [
+        { text: "bateau", correct: true },
+        { text: "bato", correct: false },
+      ],
+    };
+    second.item = {
+      ...second.item,
+      responseType: "mcq",
+      promptFr: "  QUEL mot est correctement   orthographié ? ",
+      choices: [
+        { text: "vélo", correct: true },
+        { text: "vélau", correct: false },
+      ],
+    };
+    const artifact = {
+      schemaVersion: 1 as const,
+      bank: { key: "test", version: "1" },
+      taxonomy: { releaseKey: "test", releaseVersion: "1", checksum: "sha256:test" },
+      generatedAt: "2026-07-12T00:00:00Z",
+      items: entries,
+    };
+
+    expect(validateCanonicalDiagnosticBank(artifact, taxonomy).issues)
+      .not.toContain("items.2: duplicate student surface for reading_comprehension-0");
+
+    second.item.choices = [
+      { text: " BATO ", correct: false },
+      { text: "BATEAU", correct: true },
+    ];
+    expect(validateCanonicalDiagnosticBank(artifact, taxonomy).issues)
+      .toContain("items.2: duplicate student surface for reading_comprehension-0");
+
+    first.item = { ...first.item, responseType: "short_answer", choices: undefined };
+    second.item = { ...second.item, responseType: "cloze", choices: undefined };
+    expect(validateCanonicalDiagnosticBank(artifact, taxonomy).issues)
+      .toContain("items.2: duplicate student surface for reading_comprehension-0");
+  });
+
   it("does not trust a human-approved label without reviewer provenance", () => {
     const entries = DIAGNOSTIC_SECTIONS.flatMap((section) => Array.from({ length: 12 }, (_, index) =>
       item(`${section.key}-${nodeIndex(index)}`, strands[section.key], section.key, index)

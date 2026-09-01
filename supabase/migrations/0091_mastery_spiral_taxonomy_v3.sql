@@ -5,6 +5,40 @@
 
 begin;
 
+-- Keep a clean migration replay self-contained. Production imports the complete
+-- checksum-bound v3 artifact, but these atomic nodes are also required by the
+-- reviewed practice content below. Upserting by stable key lets the artifact
+-- importer enrich the same rows with ontology, evidence, and release metadata.
+with seed(key,strand,label_fr,description_fr,atomicity_level,native_grade,cefr,expectation) as (
+  values
+    ('identifier_complement_direct','grammaire_syntaxe','Identifier un complément direct','Reconnaître un complément construit sans préposition afin de pouvoir le reprendre par le, la, l’ ou les.',4,6,'A1','receptive'),
+    ('produire_pronom_cod','grammaire_syntaxe','Employer le, la, l’ ou les','Remplacer un complément direct par le pronom correspondant à son genre et à son nombre.',4,6,'A1','controlled_production'),
+    ('produire_pronom_coi_personne','grammaire_syntaxe','Employer lui ou leur','Remplacer un complément introduit par à et désignant une personne par lui ou leur, indépendamment du genre.',4,6,'A1','controlled_production'),
+    ('distinguer_pronom_cod_coi','grammaire_syntaxe','Choisir entre COD et COI','Choisir le, la ou les, ou bien lui ou leur, à partir de la construction exacte du verbe.',4,6,'A2','controlled_production'),
+    ('produire_pronoms_y_en','grammaire_syntaxe','Employer y et en','Reprendre un lieu, à plus une chose, de plus une chose ou une quantité avec y ou en.',4,6,'A2','controlled_production'),
+    ('placer_pronom_complement','grammaire_syntaxe','Placer un pronom complément','Placer correctement un pronom complément devant un verbe simple ou l’auxiliaire d’un temps composé.',4,6,'A2','controlled_production'),
+    ('accorder_participe_cod_antepose','grammaire_syntaxe','Accorder avec un COD antéposé','Réaliser l’accord du participe passé avec avoir lorsque le complément direct repris est placé avant.',5,8,'B1','controlled_production'),
+    ('ordonner_doubles_pronoms','grammaire_syntaxe','Ordonner deux pronoms compléments','Ordonner deux pronoms avant le verbe et adapter leur place à l’impératif affirmatif ou négatif.',5,8,'B1','controlled_production'),
+    ('employer_pronoms_complements_en_contexte','grammaire_syntaxe','Employer les pronoms compléments en contexte','Employer de manière autonome les pronoms compléments appropriés dans un court texte cohérent.',5,8,'B1','independent_production'),
+    ('produire_passe_simple','conjugaison','Produire le passé simple','Former les personnes et verbes fréquents du passé simple dans une phrase contrôlée.',4,8,'B1','controlled_production')
+)
+insert into public.competency_nodes(
+  id,key,strand,label_fr,description_fr,atomicity_level,
+  native_grade_min,native_grade_max,cefr_min,cefr_max,
+  requires_reading,requires_writing,modality_scope,expectation_scope,
+  generation_type,review_status
+)
+select
+  md5('sigmawrite-migration-node:'||seed.key)::uuid,
+  seed.key,seed.strand,seed.label_fr,seed.description_fr,seed.atomicity_level,
+  seed.native_grade,seed.native_grade,seed.cefr,seed.cefr,
+  seed.expectation='receptive',seed.expectation<>'receptive',
+  case when seed.expectation='receptive' then array['reading']::text[] else array['writing']::text[] end,
+  array[seed.expectation]::text[],
+  'human','human_approved'
+from seed
+on conflict(key) do nothing;
+
 create table if not exists public.competency_lessons (
   id uuid primary key default gen_random_uuid(),
   node_id uuid not null unique references public.competency_nodes(id) on delete cascade,

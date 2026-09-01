@@ -19,11 +19,14 @@ jobs:
     runs-on: ubuntu-latest
     environment: ${{ github.event.inputs.environment || 'staging' }}
     env:
+      DEPLOY_ENV: ${{ github.event.inputs.environment || 'staging' }}
       NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
       NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
       SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+      SUPABASE_PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_REF }}
       CRON_SECRET: ${{ secrets.CRON_SECRET }}
       NEXT_PUBLIC_APP_URL: ${{ secrets.NEXT_PUBLIC_APP_URL }}
+      NEXT_PUBLIC_TURNSTILE_SITE_KEY: ${{ secrets.NEXT_PUBLIC_TURNSTILE_SITE_KEY }}
       NEXT_PUBLIC_POSTHOG_KEY: ${{ secrets.NEXT_PUBLIC_POSTHOG_KEY }}
       POSTHOG_KEY: ${{ secrets.POSTHOG_KEY }}
       ANALYTICS_ID_SALT: ${{ secrets.ANALYTICS_ID_SALT }}
@@ -72,6 +75,22 @@ jobs:
           supabase db push --password "$SUPABASE_DB_PASSWORD"
       - name: Seed approved competency item banks
         run: npm run seed:item-banks
+      - name: Prepare the isolated feedback-student pilot
+        env:
+          TAXONOMY_IMPORT_IF_MISSING: "true"
+          DIAGNOSTIC_IMPORT_IF_MISSING: "true"
+        run: |
+          npm run taxonomy:import:v2
+          npm run diagnostic:import:v2
+          npm run diagnostic:prepare-pilot:v2
+      - name: Report governed launch-content readiness in staging
+        if: env.DEPLOY_ENV == 'staging'
+        continue-on-error: true
+        run: npm run launch:audit-content
+      - name: Report governed launch-content readiness in production
+        if: env.DEPLOY_ENV == 'production'
+        continue-on-error: true
+        run: npm run launch:audit-content
       - name: Deploy prebuilt artifact
         id: deploy
         run: |

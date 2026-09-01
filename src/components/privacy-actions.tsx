@@ -38,11 +38,11 @@ export function PrivacyActions({ studentId, name, language="fr" }: { studentId: 
           onClick={() =>
             run(async () => {
               await giveConsent({ studentId });
-              setMsg(en?"Consent recorded.":"Consentement enregistré.");
+              setMsg(en?"Family authorization recorded.":"Autorisation familiale enregistrée.");
             })
           }
         >
-          <ShieldCheck /> {en?"Give consent":"Donner le consentement"}
+          <ShieldCheck /> {en?"Authorize family access":"Autoriser l’accès familial"}
         </Button>
 
         <Button
@@ -51,10 +51,10 @@ export function PrivacyActions({ studentId, name, language="fr" }: { studentId: 
           disabled={busy}
           onClick={() => run(async () => {
             await revokeConsent({ studentId });
-            setMsg(en?"Consent revoked. Learning access is suspended.":"Consentement révoqué. L'accès aux activités est suspendu.");
+            setMsg(en?"Family authorization revoked. Active school enrollment, if any, remains authoritative.":"Autorisation familiale retirée. Une inscription scolaire active, le cas échéant, reste valable.");
           })}
         >
-          {en?"Revoke consent":"Révoquer le consentement"}
+          {en?"Revoke family authorization":"Retirer l’autorisation familiale"}
         </Button>
 
         <Button

@@ -4,7 +4,7 @@ import { ROLE_HOME, type Role } from "@/lib/types";
 
 const PUBLIC_PREFIXES = ["/about", "/schools", "/parents", "/privacy", "/terms"];
 const AUTH_PREFIXES = ["/login", "/signup", "/join", "/reset-password"];
-const PROTECTED_PREFIXES = ["/student", "/parent", "/teacher", "/admin", "/review"];
+const PROTECTED_PREFIXES = ["/student", "/parent", "/teacher", "/supervisor", "/admin", "/review"];
 
 const isConfigured =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -59,9 +59,16 @@ export async function updateSession(request: NextRequest) {
   // Authenticated user → send to their role home if they're on an auth page,
   // and keep them out of dashboards that aren't theirs.
   if (user) {
-    const { data: profile } = await supabase.from("profiles").select("role").eq("auth_user_id", user.id).maybeSingle();
+    const { data: profile } = await supabase.from("profiles").select("role,must_change_password").eq("auth_user_id", user.id).maybeSingle();
     const role = profile?.role as Role | undefined;
     const home = role ? ROLE_HOME[role] : "/login";
+
+    if (profile?.must_change_password && pathname !== "/set-password") {
+      const url = request.nextUrl.clone();
+      url.pathname = "/set-password";
+      url.search = "?first=1";
+      return NextResponse.redirect(url);
+    }
 
     if (isAuthRoute) {
       const url = request.nextUrl.clone();

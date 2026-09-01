@@ -34,6 +34,10 @@ let release = await db.from("diagnostic_item_bank_releases")
   .eq("bank_key", bank.bank.key)
   .maybeSingle();
 fail(release.error?.message);
+if (process.env.DIAGNOSTIC_IMPORT_IF_MISSING === "true" && release.data) {
+  process.stdout.write(`${JSON.stringify({ ok: true, unchanged: true, bankReleaseId: release.data.id, status: release.data.status })}\n`);
+  process.exit(0);
+}
 if (
   release.data?.manifest_checksum
   && release.data.manifest_checksum !== validation.manifest.checksum

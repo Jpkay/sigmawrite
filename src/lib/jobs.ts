@@ -24,7 +24,7 @@ export async function withJobRun<T>(jobName: string, work: (db: SupabaseClient) 
     const { error: failureError } = await db.from("job_runs").update({ status: "failed", finished_at: new Date().toISOString(), error_message: cause instanceof Error ? cause.message : "Unknown error" }).eq("id", runId);
     captureError(cause,{jobName,jobRunId:runId});
     const alertTo=process.env.OPS_ALERT_EMAIL;
-    if(alertTo)void sendEmail({to:alertTo,subject:`Plume job failed: ${jobName}`,html:`<h1>Background job failed</h1><p>${jobName}</p><p>Run ${runId}</p>`}).catch(alertError=>captureError(alertError,{jobName,alert:"email"}));
+    if(alertTo)void sendEmail({to:alertTo,subject:`Plume job failed: ${jobName}`,html:`<h1>Background job failed</h1><p>${jobName}</p><p>Run ${runId}</p>`,text:`Background job failed\n\n${jobName}\nRun ${runId}`}).catch(alertError=>captureError(alertError,{jobName,alert:"email"}));
     if (failureError) throw new AggregateError([cause, failureError], "Job failed and its failure state was not recorded");
     throw cause;
   }
@@ -53,7 +53,7 @@ export async function generateWeeklyParentReports(db: SupabaseClient) {
         }
         stored = inserted.data;
       }
-      const base = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000"; const delivery = await sendEmail({ to: email, subject: language === "en" ? `Weekly reading report — ${student.display_name ?? "student"}` : `Rapport de lecture — ${student.display_name ?? "élève"}`, html: `<h1>${language === "en" ? "Weekly progress" : "Progrès de la semaine"}</h1><p>${report.textsCompleted} ${language === "en" ? "texts" : "textes"} · ${report.minutes} min · ${report.avgSuccess == null ? "—" : Math.round(report.avgSuccess*100)+"%"}</p><p><a href="${base}/parent/reports/${stored.id}">${language === "en" ? "View evidence" : "Voir les preuves"}</a></p>` });
+      const base = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000"; const reportUrl = `${base}/parent/reports/${stored.id}`; const reportSummary = `${report.textsCompleted} ${language === "en" ? "texts" : "textes"} · ${report.minutes} min · ${report.avgSuccess == null ? "—" : Math.round(report.avgSuccess*100)+"%"}`; const delivery = await sendEmail({ to: email, subject: language === "en" ? `Weekly reading report — ${student.display_name ?? "student"}` : `Rapport de lecture — ${student.display_name ?? "élève"}`, html: `<h1>${language === "en" ? "Weekly progress" : "Progrès de la semaine"}</h1><p>${reportSummary}</p><p><a href="${reportUrl}">${language === "en" ? "View evidence" : "Voir les preuves"}</a></p>`, text: `${language === "en" ? "Weekly progress" : "Progrès de la semaine"}\n\n${reportSummary}\n\n${language === "en" ? "View evidence" : "Voir les preuves"}: ${reportUrl}` });
       const { error: deliveryError } = await db.from("parent_reports").update({ delivery_status: delivery.sent ? "sent" : "no_op" }).eq("id", stored.id); if(deliveryError)throw new Error(deliveryError.message); count += 1;
     }
   }

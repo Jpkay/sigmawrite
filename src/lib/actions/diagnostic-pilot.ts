@@ -6,15 +6,21 @@ import { logAudit } from "@/lib/audit";
 import { requireRole } from "@/lib/auth";
 import { createClient } from "@/lib/supabase/server";
 import {
-  DIAGNOSTIC_ITEM_BANK_RELEASE_KEY,
-  DIAGNOSTIC_TAXONOMY_RELEASE_KEY,
-} from "@/lib/diagnostic/protocol";
+  createDiagnosticPilotEnrollment,
+} from "@/lib/diagnostic/pilot-enrollment";
 
 const toggleSchema = z.object({ enabled: z.boolean() });
 const enrollSchema = z.object({
   studentId: z.string().uuid(),
   durationDays: z.number().int().min(1).max(30),
   note: z.string().trim().max(500).optional(),
+  cohortKind: z.enum(["internal_test", "feedback_participant"]).default("internal_test"),
+  feedbackAgreementSource: z.enum(["student", "guardian"]).optional(),
+  agreementConfirmed: z.boolean().optional(),
+}).superRefine((value, context) => {
+  if (value.cohortKind === "feedback_participant" && (!value.agreementConfirmed || !value.feedbackAgreementSource)) {
+    context.addIssue({ code: "custom", message: "Confirmez l’accord de participation au pilote de feedback." });
+  }
 });
 const revokeSchema = z.object({ enrollmentId: z.string().uuid() });
 
@@ -46,33 +52,30 @@ export async function setDiagnosticPilotEnabled(input: unknown) {
 export async function enrollDiagnosticPilotStudent(input: unknown) {
   const admin = await requireRole(["platform_admin"]);
   const parsed = enrollSchema.safeParse(input);
-  if (!parsed.success) throw new Error("Données invalides.");
-  const db = await createClient();
-  const [{ data: taxonomy, error: taxonomyError }, { data: bank, error: bankError }] = await Promise.all([
-    db.from("taxonomy_releases").select("id").eq("release_key", DIAGNOSTIC_TAXONOMY_RELEASE_KEY).in("status", ["validating", "published"]).maybeSingle(),
-    db.from("diagnostic_item_bank_releases").select("id,taxonomy_release_id").eq("bank_key", DIAGNOSTIC_ITEM_BANK_RELEASE_KEY).in("status", ["draft", "validating"]).maybeSingle(),
-  ]);
-  if (taxonomyError || bankError) throw new Error(taxonomyError?.message ?? bankError?.message);
-  if (!taxonomy || !bank || bank.taxonomy_release_id !== taxonomy.id) {
-    throw new Error("La taxonomie et la banque pilote ne sont pas disponibles.");
-  }
-  const expiresAt = new Date(Date.now() + parsed.data.durationDays * 86_400_000).toISOString();
-  const { data: enrollment, error } = await db.from("diagnostic_pilot_enrollments").insert({
-    student_id: parsed.data.studentId,
-    taxonomy_release_id: taxonomy.id,
-    bank_release_id: bank.id,
-    expires_at: expiresAt,
-    enrolled_by: admin.id,
-    note: parsed.data.note || null,
-  }).select("id").single();
-  if (error || !enrollment) {
-    if (error?.code === "23505") throw new Error("Cet élève possède déjà un accès pilote actif.");
-    throw new Error(error?.message ?? "Inscription pilote impossible.");
-  }
-  await logAudit("diagnostic.pilot_student_enrolled", {
+  if (!parsed.success) throw new Error(parsed.error.issues[0]?.message ?? "Données invalides.");
+  const feedbackAgreedAt = parsed.data.cohortKind === "feedback_participant"
+    ? new Date().toISOString()
+    : null;
+  const enrollment = await createDiagnosticPilotEnrollment({
+    studentId: parsed.data.studentId,
+    enrolledBy: admin.id,
+    durationDays: parsed.data.durationDays,
+    note: parsed.data.note,
+    cohortKind: parsed.data.cohortKind,
+    feedbackAgreementSource: parsed.data.feedbackAgreementSource,
+    feedbackAgreedAt,
+  });
+  await logAudit(parsed.data.cohortKind === "feedback_participant"
+    ? "diagnostic.feedback_participant_enrolled"
+    : "diagnostic.pilot_student_enrolled", {
     targetType: "student",
     targetId: parsed.data.studentId,
-    metadata: { enrollmentId: enrollment.id, expiresAt },
+    metadata: {
+      enrollmentId: enrollment.enrollmentId,
+      expiresAt: enrollment.expiresAt,
+      cohortKind: parsed.data.cohortKind,
+      feedbackAgreementSource: parsed.data.feedbackAgreementSource,
+    },
   });
   refresh();
   return { ok: true };

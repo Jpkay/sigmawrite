@@ -1,12 +1,12 @@
 "use server";
 
-import { randomUUID } from "node:crypto";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { requireRole } from "@/lib/auth";
 import { createClient, createServiceClient } from "@/lib/supabase/server";
 import { logAudit } from "@/lib/audit";
 import { CONSENT_VERSION, PRIVACY_POLICY_VERSION } from "@/lib/consent";
+import { deliverProvisionedCredentials, provisionManagedAccount, rotateManagedPassword } from "@/lib/user-provisioning";
 
 /**
  * Parent server actions (PRD §23). Each verifies auth+role server-side; RLS
@@ -19,7 +19,8 @@ const childInput = z.object({
   displayName: z.string().trim().min(2).max(100),
   dateOfBirth: z.string().date(),
   grade: z.number().int().min(5).max(12),
-  password: z.string().min(12).max(128),
+  username: z.string().trim().max(32).optional(),
+  email: z.union([z.string().trim().email(), z.literal("")]).optional(),
 });
 
 function parsed<T>(schema: z.ZodType<T>, input: unknown): T {
@@ -65,31 +66,26 @@ export async function linkStudent(input: unknown) {
   const session = await requireRole(["parent"]);
   const data = parsed(childInput, input);
   const service = createServiceClient();
-  const email = `child+${randomUUID()}@students.sigmawrite.app`;
-  const { data: created, error: authError } = await service.auth.admin.createUser({
-    email,
-    password: data.password,
-    email_confirm: true,
-    user_metadata: { role: "student", display_name: data.displayName, date_of_birth: data.dateOfBirth },
+  const credentials = await provisionManagedAccount({
+    role: "student",
+    displayName: data.displayName,
+    requestedUsername: data.username || null,
+    email: data.email || null,
+    dateOfBirth: data.dateOfBirth,
+    grade: data.grade,
+    provisionedByProfileId: session.id,
+    deliverEmail: false,
   });
-  if (authError || !created.user) throw new Error(authError?.message ?? "Compte enfant non créé.");
   try {
-    const { data: profile, error: profileError } = await service.from("profiles").select("id").eq("auth_user_id", created.user.id).single();
-    if (profileError || !profile) throw new Error(profileError?.message ?? "Profil enfant non créé.");
-    const { data: student, error: studentError } = await service.from("students").update({
-      current_grade: data.grade,
-      display_name: data.displayName,
-      date_of_birth: data.dateOfBirth,
-    }).eq("profile_id", profile.id).select("id").single();
-    if (studentError || !student) throw new Error(studentError?.message ?? "Élève non créé.");
+    if (!credentials.studentId) throw new Error("Élève non créé.");
     const [{ error: guardianError }, { error: consentError }] = await Promise.all([
       service.from("student_guardians").insert({
-        student_id: student.id,
+        student_id: credentials.studentId,
         guardian_profile_id: session.id,
         relationship: "parent",
       }),
       service.from("consent_records").insert({
-        student_id: student.id,
+        student_id: credentials.studentId,
         guardian_profile_id: session.id,
         consent_type: "guardian",
         consent_version: CONSENT_VERSION,
@@ -98,13 +94,20 @@ export async function linkStudent(input: unknown) {
     ]);
     if (guardianError || consentError) throw new Error(guardianError?.message ?? consentError?.message);
     await logAudit("student.child_account_created", {
-      targetType: "student", targetId: student.id,
+      targetType: "student", targetId: credentials.studentId,
       metadata: { grade: data.grade },
     });
+    const emailDelivered = await deliverProvisionedCredentials(credentials, data.displayName);
     revalidatePath("/parent"); revalidatePath("/parent/privacy");
-    return { studentId: student.id as string, email, password: data.password };
+    return {
+      studentId: credentials.studentId,
+      username: credentials.username,
+      password: credentials.temporaryPassword,
+      email: credentials.email,
+      emailDelivered,
+    };
   } catch (error) {
-    await service.auth.admin.deleteUser(created.user.id);
+    await service.auth.admin.deleteUser(credentials.authUserId);
     throw error;
   }
 }
@@ -129,5 +132,5 @@ export async function requestDataDeletion(studentId: string) {
   return { ok: true };
 }
 
-const childPasswordInput=z.object({studentId:z.string().uuid(),password:z.string().min(12).max(128)});
-export async function resetChildPassword(input:unknown){const guardian=await requireRole(["parent"]);const data=parsed(childPasswordInput,input);const db=await createClient();const{data:link,error:linkError}=await db.from("student_guardians").select("student_id").eq("student_id",data.studentId).eq("guardian_profile_id",guardian.id).maybeSingle();if(linkError||!link)throw new Error("Enfant non lié à ce compte.");const service=createServiceClient();const{data:student,error:studentError}=await service.from("students").select("profile_id").eq("id",data.studentId).single();if(studentError||!student?.profile_id)throw new Error("Compte élève introuvable.");const{data:profile,error:profileError}=await service.from("profiles").select("auth_user_id").eq("id",student.profile_id).single();if(profileError||!profile?.auth_user_id)throw new Error("Compte élève introuvable.");const{error:updateError}=await service.auth.admin.updateUserById(profile.auth_user_id as string,{password:data.password});if(updateError)throw new Error(updateError.message);await logAudit("child.password_rotated",{targetType:"student",targetId:data.studentId});return{ok:true};}
+const childPasswordInput=z.object({studentId:z.string().uuid()});
+export async function resetChildPassword(input:unknown){const guardian=await requireRole(["parent"]);const data=parsed(childPasswordInput,input);const db=await createClient();const{data:link,error:linkError}=await db.from("student_guardians").select("student_id").eq("student_id",data.studentId).eq("guardian_profile_id",guardian.id).maybeSingle();if(linkError||!link)throw new Error("Enfant non lié à ce compte.");const service=createServiceClient();const{data:student,error:studentError}=await service.from("students").select("profile_id").eq("id",data.studentId).single();if(studentError||!student?.profile_id)throw new Error("Compte élève introuvable.");const credentials=await rotateManagedPassword(student.profile_id as string);await logAudit("child.password_rotated",{targetType:"student",targetId:data.studentId,metadata:{emailDelivered:credentials.emailDelivered}});return{username:credentials.username,password:credentials.temporaryPassword,emailDelivered:credentials.emailDelivered};}

@@ -16,7 +16,7 @@ import { dueAtFrom, gradeRetrieval, INITIAL_SCHEDULE, type RetrievalResult } fro
 import { scheduleFsrs } from "@/lib/scoring/fsrs";
 import { fireImplicitUpdates } from "@/lib/graph/fire";
 import { effectiveMastery } from "@/lib/scoring/decay";
-import { buildSessionPlan } from "@/lib/learning/session-plan";
+import { activityMinutes, buildSessionPlan } from "@/lib/learning/session-plan";
 import { eloUpdate, itemRatingFromDifficulty } from "@/lib/scoring/elo";
 import { nextScaffoldState } from "@/lib/practice/scaffolding";
 import { fallbackModeration, moderateStudentText } from "@/lib/safety/moderate-input";
@@ -49,7 +49,7 @@ import {
 } from "@/lib/diagnostic/history";
 import type { DiagnosticEvidenceExpectation } from "@/lib/diagnostic/item-bank";
 import { nodePracticeEvidenceExpectation } from "@/lib/diagnostic/practice-evidence";
-import { requireStudentLearningUnlocked } from "@/lib/diagnostic/access";
+import { requireStudentAccessAuthorized, requireStudentLearningUnlocked } from "@/lib/diagnostic/access";
 import { bktUpdate, bktUpdateWeighted, guessFromChoices, masteryUncertainty } from "@/lib/scoring/bkt";
 import { validateAnswer } from "@/lib/linguistic/validator";
 import { LanguageToolChecker } from "@/lib/linguistic/languagetool";
@@ -67,6 +67,7 @@ import { createHash } from "node:crypto";
 import { sanitizeStudentTopic } from "@/lib/safety/topic";
 import { plannedExerciseCount } from "@/lib/practice/session";
 import { hasStudentPathCoverage } from "@/lib/taxonomy/activation";
+import { INTEREST_BY_KEY } from "@/lib/content/interests";
 
 const answersSchema = z.record(z.string().min(1), z.number().int().min(0).max(20));
 const uuidSchema = z.string().uuid();
@@ -75,12 +76,18 @@ const dateTimeSchema = z.string().datetime({ offset: true });
 const onboardingSchema = z.object({
   grade: z.number().int().min(5).max(12),
   frenchBackground: z.enum(FRENCH_BACKGROUNDS),
-  interests: z.array(z.string().min(1).max(64)).min(3).max(20),
+  interests: z.array(z.string().min(1).max(64)).min(3).max(20)
+    .refine((values) => values.every((value) => value in INTEREST_BY_KEY), "Centre d’intérêt inconnu."),
   studentType: z.enum(["french_first_language", "french_second_language", "heritage", "bilingual", "allophone", "immersion"]).optional(),
   homeLanguage: z.string().trim().max(100).optional(),
   exposure: z.enum(["home", "school", "class_only", "immersion", "self_study"]).optional(),
-  goalType: z.enum(["catch_up", "improve_writing", "grammar_spelling", "improve_speaking", "prepare_delf", "prepare_ap_ib", "enter_french_school", "literature_class"]).optional(),
-  targetLevel: z.string().trim().max(30).optional(),
+  goalType: z.enum(["catch_up", "improve_writing", "grammar_spelling", "prepare_delf", "prepare_ap_ib", "enter_french_school", "literature_class"]).optional(),
+  targetLevel: z.enum(["A1", "A2", "B1", "B2", "C1", "C2"]).optional(),
+}).superRefine((value, context) => {
+  const studentType = value.studentType ?? (value.frenchBackground === "native" ? "french_first_language" : value.frenchBackground === "bilingual" ? "bilingual" : "french_second_language");
+  if (["french_second_language", "allophone", "immersion"].includes(studentType) && !value.targetLevel) {
+    context.addIssue({ code: "custom", path: ["targetLevel"], message: "Choisis explicitement un objectif CECRL." });
+  }
 });
 const startSessionSchema = z.object({ textKey: z.string().min(1).max(100), startedAt: dateTimeSchema });
 const answerSchema = z.object({
@@ -124,6 +131,7 @@ async function context() {
   await requireRole(["student"]);
   const supabase = await createClient();
   const studentId = await getCurrentStudentId(supabase);
+  await requireStudentAccessAuthorized(supabase, studentId);
   return { supabase, studentId };
 }
 
@@ -672,37 +680,32 @@ export async function recommendReadingTexts(input: unknown) {
 export async function selectInterests(input: unknown) {
   const data = checked(onboardingSchema, input);
   const { supabase, studentId } = await context();
-  const { error: studentError } = await supabase.from("students").update({
-    current_grade: data.grade,
-    french_background: data.frenchBackground,
-    onboarding_completed_at: new Date().toISOString(),
-  }).eq("id", studentId);
-  if (studentError) throw new Error(studentError.message);
-  const { error: deleteError } = await supabase.from("student_interests").delete().eq("student_id", studentId);
-  if (deleteError) throw new Error(deleteError.message);
-  const { error: interestsError } = await supabase.from("student_interests").insert(
-    data.interests.map((interestKey) => ({ student_id: studentId, interest_key: interestKey, declared_strength: 1 }))
-  );
-  if (interestsError) throw new Error(interestsError.message);
   const studentType = data.studentType ?? (data.frenchBackground === "native" ? "french_first_language" : data.frenchBackground === "bilingual" ? "bilingual" : "french_second_language");
-  const { error: profileError } = await supabase.from("learner_profiles").upsert({
-    student_id: studentId, student_type: studentType,
-    home_language: data.homeLanguage || null,
-    exposure: data.exposure ?? (studentType === "french_first_language" ? "home" : "school"),
-    updated_at: new Date().toISOString(),
-  }, { onConflict: "student_id" });
-  if (profileError) throw new Error(profileError.message);
-  await supabase.from("learning_goals").update({ status: "paused" }).eq("student_id", studentId).eq("status", "active");
   const fsl = ["french_second_language", "allophone", "immersion"].includes(studentType);
-  const { error: goalError } = await supabase.from("learning_goals").insert({
-    student_id: studentId, goal_type: data.goalType ?? "catch_up", target_framework: fsl ? "cefr" : "native_grade",
-    target_level: fsl ? "B1" : data.targetLevel ?? String(data.grade), target_grade: fsl ? null : data.grade,
-    scope: { strands: fsl
-      ? ["grammaire_syntaxe", "conjugaison", "orthographe_lexicale", "orthographe_grammaticale", "lexique", "comprehension_orale", "comprehension_ecrite", "expression_ecrite"]
+  const scope = { strands: fsl
+      ? ["grammaire_syntaxe", "conjugaison", "orthographe_lexicale", "orthographe_grammaticale", "lexique", "comprehension_ecrite", "expression_ecrite"]
       : ["grammaire_syntaxe", "conjugaison", "orthographe_lexicale", "orthographe_grammaticale", "comprehension_ecrite", "expression_ecrite"],
-      modalities: fsl ? ["reading", "listening", "writing", "grammar_analysis", "dictee"] : ["reading", "writing", "grammar_analysis", "dictee"], mastery_threshold: 0.85 },
+      modalities: ["reading", "writing", "grammar_analysis"], mastery_threshold: 0.85 };
+  const { error } = await supabase.rpc("complete_student_onboarding", {
+    p_student_id: studentId,
+    p_grade: data.grade,
+    p_french_background: data.frenchBackground,
+    p_interests: [...new Set(data.interests)],
+    p_student_type: studentType,
+    p_home_language: data.homeLanguage ?? "",
+    p_exposure: data.exposure ?? (studentType === "french_first_language" ? "home" : "school"),
+    p_goal_type: data.goalType ?? "catch_up",
+    p_target_framework: fsl ? "cefr" : "native_grade",
+    p_target_level: fsl ? data.targetLevel : String(data.grade),
+    p_target_grade: fsl ? null : data.grade,
+    p_scope: scope,
   });
-  if (goalError) throw new Error(goalError.message);
+  if (error) throw new Error(error.message);
+  await logAudit("student.onboarding_completed", {
+    targetType: "student",
+    targetId: studentId,
+    metadata: { studentType, targetFramework: fsl ? "cefr" : "native_grade", targetLevel: fsl ? data.targetLevel : String(data.grade) },
+  });
   revalidatePath("/student");
   return getStudentStateData(studentId, supabase);
 }
@@ -1113,6 +1116,7 @@ export type SessionPlanEntry = {
   cardId?: string;
   label: string;
   mastery?: number;
+  estimatedMinutes: number;
   href: string;
 };
 
@@ -1209,6 +1213,8 @@ export async function loadStudentSessionPlan(input: unknown): Promise<SessionPla
       .filter((edge) => edge.edge_type === "same_family")
       .map((edge) => [edge.source_node_id as string, edge.target_node_id as string] as [string, string]),
     progressMastery,
+    durationBudgetMinutes: 28,
+    minutesByNode: new Map([...productionReady].map((nodeId) => [nodeId, 10])),
   });
 
   const nodeIds = [...new Set(plan.flatMap((activity) => "nodeId" in activity && activity.nodeId ? [activity.nodeId] : []))];
@@ -1226,6 +1232,7 @@ export async function loadStudentSessionPlan(input: unknown): Promise<SessionPla
         cardId: activity.cardId,
         nodeId: activity.nodeId ?? undefined,
         label: activity.nodeId ? `Réactiver : ${labelById.get(activity.nodeId) ?? "notion"}` : "Rappel de lecture",
+        estimatedMinutes: activityMinutes(activity),
         href: "/student/memory",
       };
     }
@@ -1236,6 +1243,7 @@ export async function loadStudentSessionPlan(input: unknown): Promise<SessionPla
         type: production ? "production" : "review_node", role: "review", nodeId: activity.nodeId,
         label: production ? `Réécrire : ${label}` : `Réviser : ${label}`,
         mastery: masteryByNode.get(activity.nodeId),
+        estimatedMinutes: production ? 10 : activityMinutes(activity),
         href: production ? `/student/production/${activity.nodeId}` : `/student/practice/${activity.nodeId}`,
       };
     }
@@ -1244,6 +1252,7 @@ export async function loadStudentSessionPlan(input: unknown): Promise<SessionPla
       type: production ? "production" : "practice", role: activity.role, nodeId: activity.nodeId,
       label: production ? `Écrire : ${label}` : label,
       mastery: masteryByNode.get(activity.nodeId),
+      estimatedMinutes: production ? 10 : activityMinutes(activity),
       href: production ? `/student/production/${activity.nodeId}` : `/student/practice/${activity.nodeId}`,
     };
   });
@@ -1749,6 +1758,10 @@ async function finalizeAdaptiveDiagnostic(input: {
         source_diagnostic_run_id: input.runId,
         learning_goal_id: run.learning_goal_id,
         taxonomy_release_id: pathTaxonomyReleaseId,
+        diagnostic_taxonomy_release_id: run.taxonomy_release_id,
+        taxonomy_transition_key: pathTaxonomyReleaseId === run.taxonomy_release_id
+          ? null
+          : "french-v2-to-v3-stable-key-v1",
         provisional: Boolean(run.is_pilot),
         summary: { sectionCounts: path.sectionCounts, firstStepBySection: path.firstStepBySection },
       })

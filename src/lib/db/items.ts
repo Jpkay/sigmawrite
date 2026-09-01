@@ -204,6 +204,49 @@ export type ReviewerExerciseSectionProgress = {
   completed: number;
 };
 
+export type DiagnosticItemAssignmentOverview = {
+  unassigned: number;
+  reviewers: Array<{
+    id: string;
+    name: string;
+    assigned: number;
+    submitted: number;
+  }>;
+};
+
+export async function getDiagnosticItemAssignmentOverview(client?: SupabaseClient): Promise<DiagnosticItemAssignmentOverview> {
+  const supabase = client ?? await createClient();
+  const [{ data: reviewerRows, error: reviewerError }, { data: assignmentRows, error: assignmentError }, pending] = await Promise.all([
+    supabase.from("content_reviewer_profiles")
+      .select("profile_id,profiles!content_reviewer_profiles_profile_id_fkey(display_name,role)")
+      .eq("active", true)
+      .order("created_at"),
+    supabase.from("competency_item_review_assignments")
+      .select("reviewer_profile_id,status,competency_items!inner(prompt_version)")
+      .eq("competency_items.prompt_version", "diagnostic-bank-v2"),
+    getDiagnosticItemReviewCount({}, supabase),
+  ]);
+  if (reviewerError) throw new Error(reviewerError.message);
+  if (assignmentError) throw new Error(assignmentError.message);
+
+  const assignments = assignmentRows ?? [];
+  const assignedPending = assignments.filter((row) => row.status === "assigned").length;
+  return {
+    unassigned: Math.max(0, pending - assignedPending),
+    reviewers: (reviewerRows ?? []).flatMap((row) => {
+      const profile = row.profiles as unknown as { display_name: string | null; role: string } | null;
+      if (!profile || !["platform_admin", "content_reviewer"].includes(profile.role)) return [];
+      const own = assignments.filter((assignment) => assignment.reviewer_profile_id === row.profile_id);
+      return [{
+        id: row.profile_id as string,
+        name: profile.display_name ?? "Évaluateur",
+        assigned: own.filter((assignment) => assignment.status === "assigned").length,
+        submitted: own.filter((assignment) => assignment.status === "submitted").length,
+      }];
+    }),
+  };
+}
+
 export async function getReviewerExerciseSectionProgress(reviewerProfileId: string, client?: SupabaseClient): Promise<ReviewerExerciseSectionProgress[]> {
   const supabase = client ?? await createClient();
   const { data, error } = await supabase.from("competency_item_review_assignments")

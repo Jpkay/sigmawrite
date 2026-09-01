@@ -1,8 +1,8 @@
 import { DashboardShell, type NavItem } from "@/components/dashboard-shell";
-import { getSessionProfile } from "@/lib/auth";
-import { getStudentConsentGate } from "@/lib/db/lifecycle";
+import { getSessionProfile, requireRole } from "@/lib/auth";
+import { getStudentAccessGate } from "@/lib/db/lifecycle";
 import { isSupabaseConfigured } from "@/lib/supabase/server";
-import { ConsentPending } from "@/components/consent-pending";
+import { StudentAccessPending } from "@/components/student-access-pending";
 import { StudentAssessmentGate } from "@/components/student-assessment-gate";
 
 const nav: NavItem[] = [
@@ -21,9 +21,11 @@ export default async function StudentLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const session = await getSessionProfile();
-  const consent = session?.role === "student" && isSupabaseConfigured
-    ? await getStudentConsentGate()
+  const session = isSupabaseConfigured
+    ? await requireRole(["student"])
+    : await getSessionProfile();
+  const access = session?.role === "student" && isSupabaseConfigured
+    ? await getStudentAccessGate()
     : null;
   return (
     <DashboardShell
@@ -31,9 +33,9 @@ export default async function StudentLayout({
       nav={nav}
       user={{ name: session?.displayName ?? "Élève", role: session?.role ?? "student", analyticsId: session?.id }}
     >
-      {consent && !consent.active
-        ? <ConsentPending canSelfConsent={consent.canSelfConsent} />
-        : <StudentAssessmentGate>{children}</StudentAssessmentGate>}
+      {access && !access.authorized
+        ? <StudentAccessPending />
+        : <StudentAssessmentGate ownerKey={session?.authUserId}>{children}</StudentAssessmentGate>}
     </DashboardShell>
   );
 }

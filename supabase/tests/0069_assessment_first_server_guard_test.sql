@@ -136,6 +136,11 @@ where profile_id=(
   where auth_user_id='69000000-0000-4000-8000-000000000002'
 );
 
+insert into public.consent_records(student_id,consent_type,consent_version,privacy_policy_version)
+values
+  ('69000000-0000-0000-0000-000000000001','school','pgtap-invitation-v1','privacy-v1'),
+  ('69000000-0000-0000-0000-000000000002','school','pgtap-invitation-v1','privacy-v1');
+
 insert into public.ontology_versions(
   id,version,document_path,status,approved_at
 ) values (

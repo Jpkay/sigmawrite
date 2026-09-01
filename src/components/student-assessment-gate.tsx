@@ -26,8 +26,8 @@ export function studentAssessmentRedirect(input: {
   return null;
 }
 
-export function StudentAssessmentGate({ children }: { children: React.ReactNode }) {
-  const state = useStudentState();
+export function StudentAssessmentGate({ children, ownerKey }: { children: React.ReactNode; ownerKey?: string }) {
+  const state = useStudentState(ownerKey);
   const pathname = usePathname();
   const router = useRouter();
   const destination = state.hydrated

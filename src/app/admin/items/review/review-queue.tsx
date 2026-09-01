@@ -58,8 +58,8 @@ export function ItemReviewQueue({ scope, initialItems, progress, filters, pagina
       }
       setDismissed((ids) => [...ids, item.id]);
       router.refresh();
-    } catch {
-      setError("La décision n’a pas pu être enregistrée. Réessayez dans un instant.");
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : "La décision n’a pas pu être enregistrée. Réessayez dans un instant.");
     } finally {
       setBusy(null);
     }

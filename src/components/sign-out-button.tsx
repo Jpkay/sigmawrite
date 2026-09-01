@@ -5,11 +5,13 @@ import { LogOut } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 import { clearOfflineQueue } from "@/lib/offline-queue";
+import { resetStudentState } from "@/lib/student-store";
 
 export function SignOutButton({ label = "Se déconnecter" }: { label?: string }) {
   const router = useRouter();
 
   async function signOut() {
+    resetStudentState();
     try {
       await createClient().auth.signOut();
     } catch {

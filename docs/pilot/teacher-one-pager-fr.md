@@ -3,7 +3,7 @@
 ## En 10 minutes
 
 1. Créez votre classe, puis affichez le code d’inscription.
-2. Les élèves rejoignent la classe avec consentement école/parent.
+2. Le code de classe autorise immédiatement les élèves invités, quel que soit leur âge.
 3. Le diagnostic adaptatif localise les prérequis maîtrisés, fragiles et manquants.
 4. Assignez une lecture ou une micro-session de compétence.
 5. Consultez les preuves et exportez le rapport CSV.

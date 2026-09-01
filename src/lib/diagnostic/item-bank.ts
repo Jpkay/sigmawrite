@@ -39,6 +39,25 @@ export type CanonicalDiagnosticBankArtifact = {
   manifest?: ReturnType<typeof validateCanonicalDiagnosticBank>["manifest"];
 };
 
+function normalizeStudentFacingText(value: string): string {
+  return value.normalize("NFKC").trim().replace(/\s+/gu, " ").toLocaleLowerCase("fr");
+}
+
+/**
+ * Duplicate identity for what the learner can actually see. A repeated generic
+ * MCQ stem is legitimate when its answer set is different; an open-response
+ * prompt has no visible choices and therefore remains unique by prompt alone.
+ * Choice order is ignored so shuffling cannot disguise duplicated content.
+ */
+export function diagnosticItemSurfaceIdentity(item: GeneratedItem): string {
+  const prompt = normalizeStudentFacingText(item.promptFr);
+  if (item.responseType !== "mcq") return `open\u0000${prompt}`;
+  const choices = (item.choices ?? [])
+    .map((choice) => normalizeStudentFacingText(choice.text))
+    .sort((left, right) => left.localeCompare(right, "fr"));
+  return `mcq\u0000${prompt}\u0000${choices.join("\u001f")}`;
+}
+
 export function validateCanonicalDiagnosticBank(
   artifact: Omit<CanonicalDiagnosticBankArtifact, "manifest"> | CanonicalDiagnosticBankArtifact,
   taxonomy: TaxonomyCandidate,
@@ -71,8 +90,8 @@ export function validateCanonicalDiagnosticBank(
         }
       }
     }
-    const identity = `${entry.item.nodeKey}\u0000${entry.item.promptFr}`;
-    if (seen.has(identity)) issues.push(`items.${index}: duplicate prompt for ${entry.item.nodeKey}`);
+    const identity = `${entry.item.nodeKey}\u0000${diagnosticItemSurfaceIdentity(entry.item)}`;
+    if (seen.has(identity)) issues.push(`items.${index}: duplicate student surface for ${entry.item.nodeKey}`);
     seen.add(identity);
     if (!entry.promptFamily.trim()) issues.push(`items.${index}: prompt family is required`);
     if (!entry.qcGates.gate1_schema || !entry.qcGates.gate1_invariants.ok || !entry.qcGates.gate2_answer_key.ok) {

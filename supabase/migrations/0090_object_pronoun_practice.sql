@@ -1,12 +1,25 @@
-do $$
-begin
-  if not exists (
-    select 1 from public.competency_nodes where key = 'construction_pronom_objet'
-  ) then
-    raise exception 'construction_pronom_objet competency is required';
-  end if;
-end
-$$;
+-- Hosted environments import the versioned taxonomy artifact before this
+-- content migration. A clean database reset has no opportunity to run that
+-- external importer between migrations, so retain the v2 source node as a
+-- deterministic compatibility anchor. The importer reuses existing node ids by
+-- stable key and migration 0091 remaps every item to the atomic v3 nodes.
+insert into public.competency_nodes(
+  id,key,strand,label_fr,description_fr,atomicity_level,
+  native_grade_min,native_grade_max,cefr_min,cefr_max,
+  requires_reading,requires_writing,modality_scope,expectation_scope,
+  generation_type,review_status
+)
+values(
+  md5('sigmawrite-migration-node:construction_pronom_objet')::uuid,
+  'construction_pronom_objet','grammaire_syntaxe',
+  'Interpréter un pronom complément',
+  'Relier un pronom objet, datif, en ou y à l''élément repris.',
+  4,6,6,'A2','A2',true,true,
+  array['reading','writing']::text[],
+  array['receptive','controlled_production']::text[],
+  'human','human_approved'
+)
+on conflict(key) do nothing;
 
 with target as (
   select id from public.competency_nodes where key = 'construction_pronom_objet'

@@ -7,7 +7,7 @@ import { PageHeader } from "@/components/page";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { INTERESTS } from "@/lib/content/interests";
-import { hasStudentBackend, replaceStudentState, saveOnboarding } from "@/lib/student-store";
+import { hasStudentBackend, replaceStudentState, saveOnboarding, useStudentState } from "@/lib/student-store";
 import { selectInterests } from "@/lib/actions/student";
 import { track } from "@/lib/analytics";
 
@@ -22,16 +22,21 @@ const BACKGROUNDS: { key: string; label: string }[] = [
 
 export default function OnboardingPage() {
   const router = useRouter();
+  const studentState = useStudentState();
   const [step, setStep] = useState(0);
-  const [grade, setGrade] = useState(7);
+  const [gradeOverride, setGradeOverride] = useState<number | null>(null);
   const [background, setBackground] = useState("native");
   const [studentType, setStudentType] = useState("french_first_language");
   const [homeLanguage, setHomeLanguage] = useState("français");
   const [exposure, setExposure] = useState("home");
   const [goalType, setGoalType] = useState("catch_up");
+  const [cefrTarget, setCefrTarget] = useState("B1");
   const [interests, setInterests] = useState<string[]>([]);
   const [pending, setPending] = useState(false);
   const [error, setError] = useState("");
+  const authoritativeGrade = hasStudentBackend && studentState.grade != null;
+  const usesCefr = ["french_second_language", "allophone", "immersion"].includes(studentType);
+  const grade = gradeOverride ?? studentState.grade ?? 7;
 
   function toggleInterest(key: string) {
     setInterests((prev) =>
@@ -42,10 +47,8 @@ export default function OnboardingPage() {
   async function finish() {
     setPending(true);
     setError("");
-    saveOnboarding({ grade, frenchBackground: background, interests });
     try {
       if (hasStudentBackend) {
-        const usesCefr = ["french_second_language", "allophone", "immersion"].includes(studentType);
         const state = await selectInterests({
           grade,
           frenchBackground: background,
@@ -54,10 +57,10 @@ export default function OnboardingPage() {
           homeLanguage,
           exposure,
           goalType,
-          ...(usesCefr ? {} : { targetLevel: String(grade) }),
+          ...(usesCefr ? { targetLevel: cefrTarget } : {}),
         });
         replaceStudentState(state);
-      }
+      } else saveOnboarding({ grade, frenchBackground: background, interests });
       track("onboarding_completed", { student_type: studentType, goal_type: goalType });
       router.push("/student/diagnostic");
     } catch {
@@ -76,10 +79,12 @@ export default function OnboardingPage() {
       {step === 0 && (
         <div className="space-y-6">
           <div>
-            <label className="mb-1.5 block text-sm font-medium">Ta classe</label>
+            <label htmlFor="onboarding-grade" className="mb-1.5 block text-sm font-medium">Ta classe</label>
             <select
-              value={grade}
-              onChange={(e) => setGrade(Number(e.target.value))}
+              id="onboarding-grade"
+              value={grade ?? ""}
+              onChange={(e) => setGradeOverride(Number(e.target.value))}
+              disabled={(hasStudentBackend && !studentState.hydrated) || authoritativeGrade}
               className="h-10 w-full max-w-xs rounded-md border border-input bg-background px-3 text-sm"
             >
               <option value={5}>5e année (CM2)</option>
@@ -89,7 +94,9 @@ export default function OnboardingPage() {
               <option value={9}>3e (Grade 9)</option>
               <option value={10}>2nde (Grade 10)</option>
               <option value={11}>1re (Grade 11)</option>
+              <option value={12}>Terminale (Grade 12)</option>
             </select>
+            {authoritativeGrade && <p className="mt-2 text-xs text-muted-foreground">Niveau transmis par ta classe. Ton établissement peut le corriger si nécessaire.</p>}
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
@@ -100,7 +107,17 @@ export default function OnboardingPage() {
             </label>
             <label className="block text-sm font-medium">Langue parlée à la maison<input value={homeLanguage} onChange={(e) => setHomeLanguage(e.target.value)} className="mt-1 h-10 w-full rounded-md border border-input bg-background px-3 text-sm" /></label>
             <label className="block text-sm font-medium">Exposition au français<select value={exposure} onChange={(e) => setExposure(e.target.value)} className="mt-1 h-10 w-full appearance-none rounded-md border border-input bg-background px-3 pr-10 text-sm"><option className="bg-zinc-950" value="home">À la maison</option><option className="bg-zinc-950" value="school">À l’école</option><option className="bg-zinc-950" value="class_only">Seulement en cours</option><option className="bg-zinc-950" value="immersion">En immersion</option><option className="bg-zinc-950" value="self_study">En autonomie</option></select></label>
-            <label className="block text-sm font-medium">Ton objectif<select value={goalType} onChange={(e) => setGoalType(e.target.value)} className="mt-1 h-10 w-full appearance-none rounded-md border border-input bg-background px-3 pr-10 text-sm"><option className="bg-zinc-950" value="catch_up">Être à niveau dans ma classe</option><option className="bg-zinc-950" value="improve_writing">Mieux écrire</option><option className="bg-zinc-950" value="grammar_spelling">Renforcer grammaire et orthographe</option><option className="bg-zinc-950" value="improve_speaking">Mieux parler</option><option className="bg-zinc-950" value="prepare_delf">Préparer le DELF</option><option className="bg-zinc-950" value="literature_class">Réussir en littérature</option></select></label>
+            <label className="block text-sm font-medium">Ton objectif
+              <select value={goalType} onChange={(e) => setGoalType(e.target.value)} className="mt-1 h-10 w-full appearance-none rounded-md border border-input bg-background px-3 pr-10 text-sm">
+                <option className="bg-zinc-950" value="catch_up">Être à niveau dans ma classe</option>
+                <option className="bg-zinc-950" value="improve_writing">Mieux écrire</option>
+                <option className="bg-zinc-950" value="grammar_spelling">Renforcer grammaire et orthographe</option>
+                <option className="bg-zinc-950" value="prepare_delf">Préparer les épreuves écrites du DELF</option>
+                <option className="bg-zinc-950" value="literature_class">Réussir en littérature</option>
+              </select>
+              <span className="mt-1.5 block text-xs font-normal text-muted-foreground">Le diagnostic actuel mesure la lecture et l’écriture. L’oral n’est pas encore évalué.</span>
+            </label>
+            {usesCefr && <label className="block text-sm font-medium">Niveau CECRL visé<select value={cefrTarget} onChange={(e) => setCefrTarget(e.target.value)} className="mt-1 h-10 w-full appearance-none rounded-md border border-input bg-background px-3 pr-10 text-sm">{["A1", "A2", "B1", "B2", "C1", "C2"].map((level) => <option className="bg-zinc-950" key={level} value={level}>{level}</option>)}</select></label>}
           </div>
 
           <div>

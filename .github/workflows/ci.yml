@@ -82,5 +82,6 @@ jobs:
       - name: Run browser and accessibility checks
         env:
           E2E_AUTHENTICATED: "true"
+          E2E_INCOMING_STUDENT: "true"
           E2E_DEMO_PASSWORD: Demo-2026-Strong!
         run: npm run test:e2e

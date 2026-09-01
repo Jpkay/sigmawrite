@@ -17,6 +17,25 @@ const reviewSchema = z.object({
 
 const reviewablePromptVersions = ["diagnostic-bank-v2", "taxonomy-v3-practice-v1"] as const;
 
+const diagnosticAssignmentSchema = z.object({
+  reviewerIds: z.array(z.string().uuid()).min(1).max(20),
+});
+
+export async function assignDiagnosticItemReviews(input: unknown) {
+  await requireRole(["platform_admin"]);
+  const parsed = diagnosticAssignmentSchema.safeParse(input);
+  if (!parsed.success) throw new Error("Sélection d’évaluateurs invalide.");
+  const reviewerIds = [...new Set(parsed.data.reviewerIds)];
+  const { data, error } = await (await createClient()).rpc("assign_diagnostic_item_reviews", {
+    p_reviewer_ids: reviewerIds,
+  });
+  if (error) throw new Error(error.message);
+  revalidatePath("/admin/items/review");
+  revalidatePath("/review");
+  revalidatePath("/review/exercises");
+  return { ok: true, assigned: Number(data ?? 0) };
+}
+
 export async function reviewCompetencyItem(input: unknown) {
   const reviewer = await requireRole(["platform_admin", "content_reviewer"]);
   const parsed = reviewSchema.safeParse(input);
@@ -39,6 +58,9 @@ export async function reviewCompetencyItem(input: unknown) {
       p_correct_answer: data.correctAnswer ?? null,
       p_note: data.note ?? null,
     });
+    if (error?.message.includes("duplicate_diagnostic_prompt")) {
+      throw new Error("Un autre exercice vivant utilise déjà cet énoncé pour la même compétence. Modifiez l’énoncé avant de l’approuver.");
+    }
     if (error) throw new Error(error.message);
     if (!updated) throw new Error("Cet item n’est plus en attente de revue.");
     revalidatePath("/admin/items"); revalidatePath("/admin/items/review"); revalidatePath("/review/exercises");
@@ -61,6 +83,9 @@ export async function reviewCompetencyItem(input: unknown) {
     .eq("review_status", "needs_human_review")
     .select("id")
     .maybeSingle();
+  if (error?.message.includes("duplicate_diagnostic_prompt")) {
+    throw new Error("Un autre exercice vivant utilise déjà cet énoncé pour la même compétence. Modifiez l’énoncé avant de l’approuver.");
+  }
   if (error) throw new Error(error.message);
   if (!updated) throw new Error("Cet item n’est plus en attente de revue.");
   await logAudit(`competency_item.${data.decision === "human_approved" ? "approved" : "rejected"}`, { targetType: "competency_item", targetId: data.id, metadata: data.note ? { note: data.note } : {} });

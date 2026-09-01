@@ -53,14 +53,24 @@ function readLocal(): StudentState {
 
 let snapshot: StudentState | null = null;
 let hydratePromise: Promise<void> | null = null;
+let ownerKey: string | null = null;
+let hydrationVersion = 0;
 const listeners = new Set<() => void>();
 
 const notify = () => listeners.forEach((l) => l());
 
 function ensureHydrated(): Promise<void> {
   if (!configured) return Promise.resolve();
-  if (!hydratePromise) hydratePromise = hydrate();
+  if (!hydratePromise) hydratePromise = hydrate(hydrationVersion);
   return hydratePromise;
+}
+
+function bindOwner(nextOwnerKey?: string) {
+  if (!nextOwnerKey || nextOwnerKey === ownerKey) return;
+  ownerKey = nextOwnerKey;
+  hydrationVersion += 1;
+  hydratePromise = null;
+  snapshot = configured ? { ...EMPTY } : readLocal();
 }
 
 export function getStudentState(): StudentState {
@@ -72,12 +82,14 @@ export function getStudentState(): StudentState {
   return snapshot;
 }
 
-async function hydrate() {
+async function hydrate(version: number) {
   try {
     const { loadStudentState } = await import("@/lib/actions/student");
     const data = await loadStudentState();
+    if (version !== hydrationVersion) return;
     snapshot = { ...EMPTY, ...data, hydrated: true };
   } catch {
+    if (version !== hydrationVersion) return;
     snapshot = { ...EMPTY, hydrated: true };
   }
   notify();
@@ -112,7 +124,8 @@ export function update(patch: Partial<StudentState>): StudentState {
   return next;
 }
 
-export function useStudentState(): StudentState {
+export function useStudentState(nextOwnerKey?: string): StudentState {
+  bindOwner(nextOwnerKey);
   return useSyncExternalStore(
     (cb) => {
       listeners.add(cb);
@@ -260,9 +273,11 @@ export function lastSuccessRate(): number | undefined {
 
 export function resetStudentState() {
   if (typeof window === "undefined") return;
-  const cleared = { ...EMPTY, hydrated: true };
+  hydrationVersion += 1;
+  hydratePromise = null;
+  ownerKey = null;
+  const cleared = { ...EMPTY };
   snapshot = cleared;
   notify();
-  persistLocal(cleared);
-  if (!configured) window.localStorage.removeItem(KEY);
+  window.localStorage.removeItem(KEY);
 }

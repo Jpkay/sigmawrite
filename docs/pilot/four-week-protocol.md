@@ -2,7 +2,7 @@
 
 ## Week 0 — readiness
 
-Verify consent, adult logins, class codes, two competency slices, content
+Verify invitation/guardian authorization, adult logins, class codes, two competency slices, content
 coverage, moderation, email delivery and rollback contacts. Record baseline
 reading band and diagnostic frontier.
 
@@ -25,4 +25,4 @@ ready-to-learn nodes. Collect structured teacher/parent feedback without adding
 student free text to analytics.
 
 Stop conditions: critical privacy/security finding, unsafe published content,
-systematic scoring defect, or consent-gate bypass.
+systematic scoring defect, or authorization-gate bypass.

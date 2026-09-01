@@ -4,10 +4,10 @@ import { useState } from "react";
 import { AuthCard, Field } from "@/components/auth-card";
 import { Button } from "@/components/ui/button";
 import { TurnstileChallenge, turnstileSiteKey } from "@/components/turnstile-challenge";
-import { createClient } from "@/lib/supabase/client";
+import { requestPasswordRecovery } from "@/lib/actions/auth";
 
 export default function ResetPasswordPage() {
-  const [email,setEmail]=useState("");
+  const [identifier,setIdentifier]=useState("");
   const [busy,setBusy]=useState(false);
   const [message,setMessage]=useState("");
   const [error,setError]=useState("");
@@ -17,16 +17,14 @@ export default function ResetPasswordPage() {
     event.preventDefault();setBusy(true);setError("");setMessage("");
     try{
       if(turnstileSiteKey&&!captchaToken)throw new Error("Terminez la vérification anti-robot.");
-      const redirectTo=`${window.location.origin}/set-password?recovery=1`;
-      const {error:resetError}=await createClient().auth.resetPasswordForEmail(email.trim(),{redirectTo,captchaToken:captchaToken??undefined});
-      if(resetError)throw resetError;
-      setMessage("Si ce compte existe, un lien de réinitialisation vient d’être envoyé.");
+      const result=await requestPasswordRecovery({identifier,captchaToken});
+      setMessage(result.message);
     }catch(caught){setError(caught instanceof Error?caught.message:"Le lien n’a pas pu être envoyé.");}
     finally{setBusy(false);setCaptchaReset(value=>value+1);}
   }
-  return <AuthCard title="Réinitialiser le mot de passe" description="Recevez un lien sécurisé par e-mail.">
+  return <AuthCard title="Réinitialiser le mot de passe" description="Utilisez votre e-mail ou votre nom d’utilisateur.">
     <form onSubmit={submit} className="space-y-4">
-      <Field label="E-mail" type="email" name="email" required autoComplete="email" value={email} onChange={event=>setEmail(event.target.value)}/>
+      <Field label="E-mail ou nom d’utilisateur" name="identifier" required autoComplete="username" value={identifier} onChange={event=>setIdentifier(event.target.value)}/>
       <TurnstileChallenge action="password_recovery" onToken={setCaptchaToken} resetSignal={captchaReset}/>
       {message&&<p role="status" className="text-sm text-[color:var(--success)]">{message}</p>}
       {error&&<p role="alert" className="text-sm text-destructive">{error}</p>}

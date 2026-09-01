@@ -59,6 +59,16 @@ for (const choice of choiceRows) {
   choicesByItem.set(choice.item_id as string, values);
 }
 const membershipByItem = new Map(memberships.map((row) => [row.item_id as string, row]));
+const workspaceItemIds = new Set(source.items.map((entry) =>
+  stableUuid("sigmawrite-diagnostic-item", `${source.bank.key}:${entry.itemKey}`)
+));
+const stagedItemsOutsideWorkspace = itemIds.filter((itemId) => !workspaceItemIds.has(itemId));
+const stagedOutsideStatusCounts = Object.fromEntries(
+  ["human_approved", "auto_approved", "needs_human_review", "rejected", "retired"].map((status) => [
+    status,
+    stagedItemsOutsideWorkspace.filter((itemId) => itemById.get(itemId)?.review_status === status).length,
+  ]),
+);
 
 const synchronized = source.items.map((entry) => {
   const itemId = stableUuid("sigmawrite-diagnostic-item", `${source.bank.key}:${entry.itemKey}`);
@@ -152,6 +162,13 @@ process.stdout.write(`${JSON.stringify({
   issues: finalValidation.issues,
   sections: finalValidation.sections,
   statusCounts,
+  stagedItemsOutsideWorkspace: {
+    total: stagedItemsOutsideWorkspace.length,
+    statusCounts: stagedOutsideStatusCounts,
+    note: stagedItemsOutsideWorkspace.length
+      ? "These older staged identities are not approvals of their replacement workspace items; a later import removes their draft memberships without rewriting review history."
+      : "Every staged membership belongs to the current workspace.",
+  },
   rejectedPruned: candidateValidation.valid && synchronized.length !== finalItems.length,
 }, null, 2)}\n`);
 

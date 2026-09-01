@@ -256,6 +256,8 @@ where id=pg_temp.fixture_uuid(30);
 
 insert into public.students(id,display_name,current_grade)
 values(pg_temp.fixture_uuid(40),'Fresh diagnostic learner',7);
+insert into public.consent_records(student_id,consent_type,consent_version,privacy_policy_version)
+values(pg_temp.fixture_uuid(40),'school','pgtap-invitation-v1','privacy-v1');
 insert into public.learner_profiles(student_id,student_type,home_language,exposure)
 values(pg_temp.fixture_uuid(40),'french_first_language','fr','school');
 insert into public.learning_goals(

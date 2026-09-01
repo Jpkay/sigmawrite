@@ -25,8 +25,8 @@ describe("buildSessionPlan — repetition compression", () => {
       familyPairs: [],
       budget: 4,
     });
-    // pc_avoir covers both dues → one compression task, no explicit reviews
-    const compression = plan.find((a) => a.type === "practice" && a.role === "compression");
+    // pc_avoir covers both dues and is still counted as a new frontier step.
+    const compression = plan.find((a) => a.type === "practice" && a.role === "new");
     expect(compression).toBeDefined();
     expect(nodesOf(plan)).not.toContain("present_aux");
     expect(nodesOf(plan)).not.toContain("pp_formation");
@@ -79,6 +79,85 @@ describe("buildSessionPlan — explicit reviews and ordering", () => {
     const news = plan.filter((a) => a.type === "practice" && a.role === "new");
     expect(plan.length).toBeLessThanOrEqual(8);
     expect(news.length).toBeGreaterThanOrEqual(2); // ceil(8 × 0.25)
+  });
+
+  it("keeps the ≥25% floor for the default six-activity budget", () => {
+    expect(newLearningSlots(0.2, 6)).toBe(2);
+  });
+
+  it("uses the full review budget when no frontier work is available", () => {
+    const plan = buildSessionPlan({
+      dueNodeReviews: Array.from({ length: 10 }, (_, i) => ({ nodeId: `due_${i}`, overdueDays: i })),
+      dueCards: [],
+      newSteps: [],
+      encompassingEdges: [],
+      familyPairs: [],
+      budget: 6,
+    });
+    expect(plan).toHaveLength(6);
+    expect(plan.every((activity) => activity.type === "review_node")).toBe(true);
+  });
+
+  it("shortens the itinerary instead of repeating a lone frontier step", () => {
+    const plan = buildSessionPlan({
+      dueNodeReviews: Array.from({ length: 10 }, (_, i) => ({ nodeId: `due_${i}`, overdueDays: i })),
+      dueCards: [],
+      newSteps: [{ nodeId: "only_new", position: 1 }],
+      encompassingEdges: [],
+      familyPairs: [],
+      budget: 6,
+    });
+    expect(plan).toHaveLength(4);
+    expect(plan.filter((activity) => activity.type === "practice" && activity.role === "new")).toHaveLength(1);
+  });
+
+  it("fits the complete itinerary inside a wall-clock budget without dropping new learning", () => {
+    const plan = buildSessionPlan({
+      dueNodeReviews: Array.from({ length: 8 }, (_, i) => ({ nodeId: `due_${i}`, overdueDays: i })),
+      dueCards: [],
+      newSteps: [{ nodeId: "new_1", position: 1 }, { nodeId: "new_2", position: 2 }],
+      encompassingEdges: [],
+      familyPairs: [],
+      budget: 6,
+      durationBudgetMinutes: 28,
+      progressMastery: 0.2,
+    });
+    expect(plan.reduce((minutes, activity) => minutes + (activity.type === "review_card" ? 3 : 7), 0)).toBeLessThanOrEqual(28);
+    expect(plan.filter((activity) => activity.type === "practice" && activity.role === "new")).toHaveLength(2);
+  });
+
+  it("keeps at least 25% new work after cheap reviews are fitted to time", () => {
+    const plan = buildSessionPlan({
+      dueNodeReviews: [],
+      dueCards: Array.from({ length: 8 }, (_, i) => ({ cardId: `card_${i}`, nodeId: null, overdueDays: i })),
+      newSteps: [{ nodeId: "new_long", position: 1 }],
+      encompassingEdges: [],
+      familyPairs: [],
+      budget: 8,
+      durationBudgetMinutes: 28,
+      minutesByNode: new Map([["new_long", 10]]),
+    });
+    const news = plan.filter((activity) => activity.type === "practice" && activity.role === "new");
+    expect(news).toHaveLength(1);
+    expect(news.length / plan.length).toBeGreaterThanOrEqual(0.25);
+    expect(plan.reduce((minutes, activity) => minutes + (activity.type === "review_card" ? 3 : 10), 0)).toBeLessThanOrEqual(28);
+  });
+
+  it("preserves as much mastery-weighted advancement as the time cap permits", () => {
+    const newSteps = Array.from({ length: 6 }, (_, i) => ({ nodeId: `new_${i}`, position: i }));
+    const plan = buildSessionPlan({
+      dueNodeReviews: [{ nodeId: "due", overdueDays: 4 }],
+      dueCards: [],
+      newSteps,
+      encompassingEdges: [],
+      familyPairs: [],
+      budget: 6,
+      progressMastery: 0.9,
+      durationBudgetMinutes: 28,
+      minutesByNode: new Map(newSteps.map((step) => [step.nodeId, 10])),
+    });
+    expect(plan.filter((activity) => activity.type === "practice" && activity.role === "new")).toHaveLength(2);
+    expect(plan.reduce((minutes, activity) => minutes + (activity.type === "practice" ? 10 : 7), 0)).toBeLessThanOrEqual(28);
   });
 
   it("respects the total budget", () => {
@@ -156,7 +235,7 @@ describe("buildSessionPlan — edge cases", () => {
 
 describe("mastery-weighted spiral", () => {
   it("increases advancement as mastery grows without eliminating review", () => {
-    expect(newLearningSlots(0.3, 6)).toBe(1);
+    expect(newLearningSlots(0.3, 6)).toBe(2);
     expect(newLearningSlots(0.55, 6)).toBe(2);
     expect(newLearningSlots(0.75, 6)).toBe(3);
     expect(newLearningSlots(0.9, 6)).toBe(4);

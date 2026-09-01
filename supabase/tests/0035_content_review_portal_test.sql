@@ -30,7 +30,7 @@ insert into public.ai_generated_candidates(id,candidate_type,payload,review_stat
 values('20000000-0000-4000-8000-000000000001','reading_text','{
   "id":"20000000-0000-4000-8000-000000000001","createdAt":"2026-07-10T00:00:00Z","reviewStatus":"needs_human_review",
   "input":{"language":"fr","studentGrade":7,"targetReadingBand":"Secondary 7A","topic":"Les volcans du Rwanda","primaryInterest":"science","knowledgeDomains":["science"],"targetConcepts":[],"textType":"expository","wordCountTarget":200,"maxAverageSentenceLength":18,"maxNewAcademicWords":8,"targetVocabulary":[],"targetSkills":["inference"],"avoid":[],"tone":"curious_explainer"},
-  "generated":{"title":"Les volcans du Rwanda","body":"Un texte réaliste en français pour vérifier le portail de révision humaine.","estimatedReadingBand":"Secondary 7A","targetVocabulary":[],"knowledgeConcepts":[],"skillsPracticed":["inference"],"questions":[{"questionText":"Quelle est l’idée principale ?","questionType":"main_idea","answerFormat":"multiple_choice","choices":["Les volcans","La mer"],"correctAnswer":"Les volcans","rubric":"Réponse explicite","skillIds":["inference"],"difficulty":40}],"safetyNotes":[],"factualClaims":[]},
+  "generated":{"title":"Les volcans du Rwanda","body":"Un texte réaliste en français pour vérifier le portail de révision humaine. Il présente clairement le paysage volcanique et donne assez de matière pour une lecture attentive.","estimatedReadingBand":"Secondary 7A","targetVocabulary":[],"knowledgeConcepts":[],"skillsPracticed":["inference"],"questions":[{"questionText":"Quelle est l’idée principale ?","questionType":"main_idea","answerFormat":"multiple_choice","choices":["Les volcans","La mer"],"correctAnswer":"Les volcans","rubric":"Réponse explicite","skillIds":["inference"],"difficulty":40}],"safetyNotes":[],"factualClaims":[]},
   "difficulty":{"lexical":30,"syntax":30,"knowledge":30,"inference":30,"stamina":20,"overall":30,"band":"Secondary 7A","features":{"wordCount":12,"avgSentenceLength":12,"connectorCount":0}},
   "moderation":{"passed":true,"flaggedCategories":[],"needsHumanReview":false},"questionDifficulties":[40],"flags":{"moderationPassed":true,"factualNeedsReview":false,"sensitive":false,"difficultyMismatch":false}
 }'::jsonb,'needs_human_review');
@@ -116,7 +116,14 @@ select format('62000000-0000-4000-8000-%s',lpad(g::text,12,'0'))::uuid,
 from generate_series(1,6) g;
 insert into public.ai_generated_candidates(id,candidate_type,payload,review_status)
 select format('63000000-0000-4000-8000-%s',lpad(g::text,12,'0'))::uuid,'benchmark_test',
-  jsonb_build_object('generated',jsonb_build_object('title',format('Référence QA %s',g),'questions',jsonb_build_array()),'input',jsonb_build_object('topic',format('Sujet %s',g),'targetReadingBand','Secondary 7A','textType','expository','targetSkills',jsonb_build_array('main_idea'))),
+  jsonb_build_object(
+    'generated',jsonb_build_object(
+      'title',format('Référence QA %s',g),
+      'body','Ce passage français complet sert de référence immuable pour vérifier le verrouillage des évaluations humaines et la constitution transactionnelle du jeu de référence.',
+      'questions',jsonb_build_array(jsonb_build_object('questionText','Quelle idée est correcte ?','correctAnswer','La réponse attendue.'))
+    ),
+    'input',jsonb_build_object('topic',format('Sujet %s',g),'targetReadingBand','Secondary 7A','textType','expository','targetSkills',jsonb_build_array('main_idea'))
+  ),
   'human_approved'
 from generate_series(1,6) g;
 insert into public.content_review_versions(id,candidate_id,version_number,payload,workflow_status,required_reviewers,published_text_version_id)

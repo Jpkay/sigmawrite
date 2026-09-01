@@ -40,6 +40,10 @@ export type SessionPlanInput = {
   progressMastery?: number;
   /** Total activities in the plan (default 6). */
   budget?: number;
+  /** Optional wall-clock cap for the complete daily itinerary. */
+  durationBudgetMinutes?: number;
+  /** Per-node override for longer activities such as independent production. */
+  minutesByNode?: ReadonlyMap<string, number>;
 };
 
 const DEFAULT_BUDGET = 6;
@@ -106,13 +110,23 @@ function interleave(
 
 export function buildSessionPlan(input: SessionPlanInput): SessionActivity[] {
   const budget = input.budget ?? DEFAULT_BUDGET;
-  const newFloor = newLearningSlots(input.progressMastery ?? 0.5, budget);
+  const newTarget = Math.min(
+    input.newSteps.length,
+    newLearningSlots(input.progressMastery ?? 0.5, budget),
+  );
+  // With only one unique frontier step, showing at most three reviews keeps
+  // the visible itinerary honest about the 25% new-learning promise. When no
+  // frontier exists, all slots remain available for due review.
+  const totalTarget = newTarget === 0 ? budget : Math.min(budget, newTarget * 4);
+  const reviewBudget = totalTarget - newTarget;
 
   const dueNodes = new Set(input.dueNodeReviews.map((review) => review.nodeId));
   for (const card of input.dueCards) if (card.nodeId) dueNodes.add(card.nodeId);
 
   const activities: SessionActivity[] = [];
   const planned = new Set<string>();
+  let plannedNew = 0;
+  let plannedReviews = 0;
 
   // 1. Repetition compression: greedy max-cover over due nodes. Candidates
   //    are frontier steps and the due nodes themselves (an advanced due skill
@@ -121,11 +135,11 @@ export function buildSessionPlan(input: SessionPlanInput): SessionActivity[] {
     ...input.newSteps.map((step) => ({ nodeId: step.nodeId, isNew: true })),
     ...input.dueNodeReviews.map((review) => ({ nodeId: review.nodeId, isNew: false })),
   ];
-  const reviewBudget = budget - newFloor;
-  while (activities.length < reviewBudget) {
+  while (activities.length < totalTarget) {
     let best: { nodeId: string; isNew: boolean; covers: Set<string> } | null = null;
     for (const candidate of candidates) {
       if (planned.has(candidate.nodeId)) continue;
+      if (candidate.isNew ? plannedNew >= newTarget : plannedReviews >= reviewBudget) continue;
       const closure = encompassingClosure(candidate.nodeId, input.encompassingEdges);
       const covers = new Set([...closure].filter((node) => dueNodes.has(node)));
       if (dueNodes.has(candidate.nodeId)) covers.add(candidate.nodeId);
@@ -137,9 +151,13 @@ export function buildSessionPlan(input: SessionPlanInput): SessionActivity[] {
     planned.add(best.nodeId);
     activities.push(
       best.isNew
-        ? { type: "practice", nodeId: best.nodeId, role: "compression" }
+        // It may also compress several reviews, but it still introduces a
+        // frontier skill and therefore counts toward the new-learning promise.
+        ? { type: "practice", nodeId: best.nodeId, role: "new" }
         : { type: "review_node", nodeId: best.nodeId }
     );
+    if (best.isNew) plannedNew += 1;
+    else plannedReviews += 1;
     for (const node of best.covers) dueNodes.delete(node);
     dueNodes.delete(best.nodeId);
   }
@@ -160,23 +178,72 @@ export function buildSessionPlan(input: SessionPlanInput): SessionActivity[] {
       })),
   ].sort((a, b) => b.overdueDays - a.overdueDays);
   for (const { activity } of explicit) {
-    if (activities.length >= reviewBudget) break;
+    if (plannedReviews >= reviewBudget) break;
     const node = nodeOf(activity);
     if (node && planned.has(node)) continue;
     if (node) planned.add(node);
     activities.push(activity);
+    plannedReviews += 1;
   }
 
   // 3. New learning fills the rest (≥ the floor by construction).
   for (const step of input.newSteps) {
-    if (activities.length >= budget) break;
+    if (plannedNew >= newTarget || activities.length >= totalTarget) break;
     if (planned.has(step.nodeId)) continue;
     planned.add(step.nodeId);
     activities.push({ type: "practice", nodeId: step.nodeId, role: "new" });
+    plannedNew += 1;
   }
 
-  // 4. Space confusable skills apart.
-  return interleave(activities, input.familyPairs, input.strandByNode);
+  // 4. Space confusable skills apart, then fit the actual daily time promise.
+  const ordered = interleave(activities, input.familyPairs, input.strandByNode);
+  return input.durationBudgetMinutes == null
+    ? ordered
+    : fitDurationBudget(ordered, newTarget, input.durationBudgetMinutes, input.minutesByNode);
+}
+
+export function activityMinutes(activity: SessionActivity, minutesByNode?: ReadonlyMap<string, number>): number {
+  const nodeId = nodeOf(activity);
+  if (nodeId && minutesByNode?.has(nodeId)) return minutesByNode.get(nodeId) as number;
+  return activity.type === "review_card" ? 3 : 7;
+}
+
+function fitDurationBudget(
+  activities: SessionActivity[],
+  newFloor: number,
+  durationBudgetMinutes: number,
+  minutesByNode?: ReadonlyMap<string, number>,
+): SessionActivity[] {
+  const budget = Math.max(1, Math.floor(durationBudgetMinutes));
+  const requiredNew = activities
+    .filter((activity) => activity.type === "practice" && activity.role === "new")
+    .slice(0, newFloor);
+  const selected = new Set<SessionActivity>();
+  let used = 0;
+  let selectedNew = 0;
+  for (const activity of requiredNew) {
+    const minutes = activityMinutes(activity, minutesByNode);
+    if (used + minutes <= budget) {
+      selected.add(activity);
+      used += minutes;
+      selectedNew += 1;
+    }
+  }
+  for (const activity of activities) {
+    if (selected.has(activity)) continue;
+    const minutes = activityMinutes(activity, minutesByNode);
+    if (used + minutes > budget) continue;
+    const activityIsNew = activity.type === "practice" && activity.role === "new";
+    const nextNew = selectedNew + Number(activityIsNew);
+    const newCandidatesExist = activities.some((candidate) => candidate.type === "practice" && candidate.role === "new");
+    // A wall-clock cap can reduce the original activity count, so enforce the
+    // 25% contract against the itinerary that will actually be shown.
+    if (newCandidatesExist && nextNew < Math.ceil((selected.size + 1) * 0.25)) continue;
+    selected.add(activity);
+    used += minutes;
+    selectedNew = nextNew;
+  }
+  return activities.filter((activity) => selected.has(activity));
 }
 
 /** A weak frontier is review-heavy but never frozen; a strong frontier moves
@@ -185,5 +252,6 @@ export function buildSessionPlan(input: SessionPlanInput): SessionActivity[] {
 export function newLearningSlots(progressMastery: number, budget = DEFAULT_BUDGET): number {
   const mastery = Math.max(0, Math.min(1, progressMastery));
   const share = mastery < 0.45 ? 0.17 : mastery < 0.65 ? 0.34 : mastery < 0.85 ? 0.5 : 0.67;
-  return Math.max(1, Math.min(Math.max(1, budget - 1), Math.round(budget * share)));
+  const documentedFloor = Math.ceil(budget * 0.25);
+  return Math.max(documentedFloor, Math.min(Math.max(1, budget - 1), Math.round(budget * share)));
 }

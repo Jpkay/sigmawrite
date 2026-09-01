@@ -9,6 +9,9 @@ The repository contains the production application and its staging/pilot hardeni
 Recent hardening includes:
 
 - database-owned authorization roles and least-privilege RLS;
+- immediate class-invitation authorization at every student age, with no second consent waiting screen;
+- username-or-email login, managed temporary credentials, forced first-login password rotation, and recovery handoff for accounts without email;
+- school-scoped supervisor visibility plus optional class/student assignments;
 - authenticated-cache isolation and functional password recovery;
 - idempotent background reports, notices and deletion claiming;
 - Next.js dependency security updates and zero known `npm audit` findings;
@@ -73,12 +76,21 @@ CI runs the application gates, a fresh Supabase migration plus the complete SQL 
 - `/student` — diagnostic, daily session plan, practice, reading, memory, vocabulary, progress.
 - `/parent` — linked children, weekly evidence, consent/privacy workflows.
 - `/teacher` — classes, join codes, assignments, intervention groups and exports.
+- `/supervisor` — privacy-scoped student progress overview and individual evidence.
 - `/review` — independent educator review workspace.
+- `/admin/users` — managed student, teacher and supervisor credentials and assignments.
+- `/admin/diagnostic-pilot` — expiring internal/feedback pilot access, agreement provenance, revocation and the global kill switch.
 - `/admin` — content, diagnostic pilot, graph, item review, prompts, jobs, schools, audit and benchmark governance.
 
 ## Environments and promotion
 
 Feature branch → `develop` staging/preview → protected PR → `main` production.
+
+Editorial review can continue after the application is deployed. The production
+content audit reports the remaining general-availability work but does not block
+the deploy. Unpublished material is still unavailable to ordinary students;
+only explicitly enrolled feedback participants can use the isolated provisional
+diagnostic, whose evidence cannot unlock the normal learning path.
 
 Each environment must use separate Supabase credentials and isolated PostHog, Sentry, Resend, OAuth and Vercel configuration. Run `npm run launch:verify-env`, then execute the human checks in `docs/launch-gates.md`. Never treat placeholder credentials, QA reviewers or mock content as satisfying launch acceptance.
 
@@ -86,6 +98,7 @@ Each environment must use separate Supabase credentials and isolated PostHog, Se
 
 - [`docs/implementation-status.md`](./docs/implementation-status.md) — living engineering/launch status.
 - [`docs/launch-gates.md`](./docs/launch-gates.md) — protected credentials and human acceptance.
+- [`docs/execution-report-2026-09-01.md`](./docs/execution-report-2026-09-01.md) — latest incoming-student and release evidence.
 - [`roadmap-to-production.md`](./roadmap-to-production.md) — historical sprint specification.
 - [`docs/french-learning-graph-and-automated-content-roadmap.md`](./docs/french-learning-graph-and-automated-content-roadmap.md) — graph/content design history.
 - [`docs/pilot/four-week-protocol.md`](./docs/pilot/four-week-protocol.md) — friendly-family rehearsal.

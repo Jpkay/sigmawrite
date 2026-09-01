@@ -38,11 +38,24 @@ describe("seven-minute practice session", () => {
     expect(remainingSessionSeconds(1_000, 421_000)).toBe(0);
   });
 
-  it("turns a small reviewed bank into six practice opportunities", () => {
-    expect(plannedExerciseCount(3)).toBe(6);
+  it("never repeats a reviewed item to inflate the exercise count", () => {
+    expect(plannedExerciseCount(3)).toBe(3);
     expect(plannedExerciseCount(2)).toBe(2);
-    expect(expandReviewedPractice(["a", "b", "c"], 6)).toEqual(["a", "b", "c", "a", "b", "c"]);
+    expect(expandReviewedPractice(["a", "b", "c"], 6)).toEqual(["a", "b", "c"]);
     expect(plannedExerciseCount(1)).toBe(1);
+  });
+
+  it("interleaves response types when the reviewed bank permits it", () => {
+    const items = [
+      { difficultyRating: -1.5, responseType: "multiple_choice", id: "mc-1" },
+      { difficultyRating: -1.4, responseType: "multiple_choice", id: "mc-2" },
+      { difficultyRating: -1.3, responseType: "free_text", id: "text-1" },
+      { difficultyRating: -1.2, responseType: "free_text", id: "text-2" },
+    ];
+    const selected = selectOptimalPracticeItems(items, 0, 4);
+    expect(selected.map((item) => item.responseType)).toEqual([
+      "multiple_choice", "free_text", "multiple_choice", "free_text",
+    ]);
   });
 
   it("awards seven XP plus a perfect bonus exactly once per completion result", () => {

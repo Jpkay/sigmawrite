@@ -1,0 +1,45 @@
+-- PostgREST exposes JWT claims through request.jwt.claims. The legacy
+-- request.jwt.claim.role setting is not populated, so service-role RPC calls
+-- were incorrectly rejected even though EXECUTE remained service-only.
+create or replace function public.write_audit_log(
+  p_auth_user_id uuid,
+  p_action text,
+  p_target_type text default null,
+  p_target_id uuid default null,
+  p_metadata jsonb default null
+) returns uuid
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  v_actor uuid;
+  v_id uuid;
+begin
+  if auth.jwt()->>'role' is distinct from 'service_role' then
+    raise exception 'service role required' using errcode = '42501';
+  end if;
+  if p_action !~ '^[a-z0-9_.-]{1,100}$' then
+    raise exception 'invalid audit action';
+  end if;
+  if p_target_type is not null and p_target_type !~ '^[a-z0-9_.-]{1,80}$' then
+    raise exception 'invalid audit target type';
+  end if;
+  if pg_column_size(coalesce(p_metadata, '{}'::jsonb)) > 32768 then
+    raise exception 'audit metadata too large';
+  end if;
+
+  select id into v_actor from public.profiles where auth_user_id = p_auth_user_id;
+  if v_actor is null then
+    raise exception 'actor profile missing';
+  end if;
+
+  insert into public.audit_logs(actor_profile_id, action, target_type, target_id, metadata)
+  values (v_actor, p_action, p_target_type, p_target_id, p_metadata)
+  returning id into v_id;
+  return v_id;
+end;
+$$;
+
+revoke all on function public.write_audit_log(uuid,text,text,uuid,jsonb) from public, anon, authenticated;
+grant execute on function public.write_audit_log(uuid,text,text,uuid,jsonb) to service_role;

@@ -7,7 +7,7 @@ const groups = [
   { title: "Contenu pédagogique", links: [["Textes approuvés", "/admin/content"], ["Banque d’exercices", "/admin/items"], ["Références", "/admin/benchmarks"]] },
   { title: "Modèle pédagogique", links: [["Compétences", "/admin/skills"], ["Vocabulaire", "/admin/vocabulary"], ["Concepts", "/admin/concepts"], ["Graphe", "/admin/graph"]] },
   { title: "Automatisation", links: [["Tâches d’intelligence artificielle", "/admin/ai-jobs"], ["Prompts", "/admin/prompts"], ["Essais diagnostiques", "/admin/diagnostic-pilot"]] },
-  { title: "Organisation", links: [["Écoles", "/admin/schools"], ["Journal d’audit", "/admin/audit"]] },
+  { title: "Organisation", links: [["Utilisateurs et accès", "/admin/users"], ["Écoles", "/admin/schools"], ["Journal d’audit", "/admin/audit"]] },
 ] as const;
 
 export default async function ConfigurationPage() {

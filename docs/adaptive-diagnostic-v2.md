@@ -73,10 +73,10 @@ back to the goal scope only when a section would otherwise lose required breadth
 The student action fails closed until a matching v2 taxonomy and diagnostic bank
 are both published.
 
-1. Build and verify the immutable taxonomy candidate:
+1. Verify the already-frozen v1/v2 taxonomy artifacts. Do not rebuild an
+   approved release from a later mutable source register:
 
    ```sh
-   npm run taxonomy:build:v2
    npm run taxonomy:verify:v1
    npm run taxonomy:verify:v2
    ```
@@ -100,8 +100,12 @@ are both published.
    npm run diagnostic:import:v2
    ```
 
-5. Review every `needs_human_review` item in the admin item-review queue. Reject
-   any ambiguous, unsupported, non-self-contained, or answer-key-unsafe item.
+5. In `/admin/items/review`, select active real educators and assign all
+   unowned items. The guarded allocator gives each item one accountable owner,
+   balances the selected workloads, alternates sections in personal queues,
+   notifies reviewers and records one audit event. Review every
+   `needs_human_review` item; reject any ambiguous, unsupported,
+   non-self-contained, duplicate or answer-key-unsafe item.
 6. Synchronize reviewer edits and decisions back into the canonical artifact:
 
    ```sh
@@ -118,20 +122,24 @@ are both published.
 8. Record the exact taxonomy and bank checksums in their release-review files,
    change each decision to `approve`, then import with the corresponding
    publisher profile IDs. The bank cannot publish before its taxonomy.
-9. Apply migrations through `0069`, run the database tests, and execute a staged
+9. Apply migrations through `0106`, run the database tests, and execute a staged
    student sign-in → onboarding → diagnostic → generated-path end-to-end test.
 
 ## Current launch gate
 
 The engine, persistence model, assessment-first student UI, taxonomy v2,
-generation/review tools, and automated checks are implemented. The canonical
-bank artifact is now fully authored locally with 696 items: 120 reading, 174
-grammar, 264 spelling, and 138 conjugation. It covers every one of the 232 live
-evidence definitions with three difficulty/prompt-family variants and requires
-no external model-generation calls. Fifteen computed conjugation items are
-reproducibly auto-approved; the remaining 681 items are staged for human review.
-The release documents intentionally remain pending, so a student-facing v2 run
-must not be presented as available yet.
+generation/review tools, guarded workload allocator and automated checks are
+implemented. The 2026-09-01 candidate records 198 human approvals, 33
+reproducibly computed approvals and 465 pending reviews in a complete 696-item
+workspace. All eight formerly rejected slots now have new locally authored
+identities that incorporate the reviewer notes and remain pending human
+approval. The audit is structurally ready with no missing slot. Migration
+`0106` supersedes the prompt-only false positives from `0105`: MCQ uniqueness
+now includes the order-insensitive visible choices, while open-response prompts
+remain strictly unique and choice mutations are guarded at the database
+boundary. The release documents intentionally remain pending, so a
+student-facing v2 run must not be presented as available yet; always use current
+command output as the authoritative count.
 
 Run `npm run diagnostic:audit:v2` for the non-mutating candidate audit. It
 verifies hard QC, exact evidence slots, reading text and text-type diversity,

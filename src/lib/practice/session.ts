@@ -25,15 +25,22 @@ export function selectOptimalPracticeItems<T extends RatedPracticeItem>(
   learnerRating: number,
   limit = PRACTICE_EXERCISE_TARGET,
 ): T[] {
-  return items
+  const ranked = items
     .map((item, index) => {
       const success = predictedSuccess(learnerRating, item.difficultyRating);
       const inZone = success >= OPTIMAL_SUCCESS_ZONE.min && success <= OPTIMAL_SUCCESS_ZONE.max;
       return { item, index, success, inZone, gap: Math.abs(success - TARGET_SUCCESS) };
     })
     .sort((a, b) => Number(b.inZone) - Number(a.inZone) || a.gap - b.gap || a.index - b.index)
-    .slice(0, Math.max(0, limit))
-    .map(({ item }) => item);
+  const selected: typeof ranked = [];
+  while (ranked.length && selected.length < Math.max(0, limit)) {
+    const previousType = selected.at(-1)?.item.responseType;
+    const differentTypeIndex = previousType
+      ? ranked.findIndex((candidate) => candidate.item.responseType && candidate.item.responseType !== previousType)
+      : -1;
+    selected.push(...ranked.splice(differentTypeIndex >= 0 ? differentTypeIndex : 0, 1));
+  }
+  return selected.map(({ item }) => item);
 }
 
 export function remainingSessionSeconds(startedAtMs: number, nowMs: number): number {
@@ -42,13 +49,13 @@ export function remainingSessionSeconds(startedAtMs: number, nowMs: number): num
 
 export function plannedExerciseCount(approvedItemCount: number): number {
   const approved = Math.max(0, Math.floor(approvedItemCount));
-  return approved >= 3 ? PRACTICE_EXERCISE_TARGET : approved;
+  return Math.min(PRACTICE_EXERCISE_TARGET, approved);
 }
 
-/** Revisit a small reviewed bank within the session instead of inventing content. */
+/** Never repeat an identical reviewed item inside one practice session. */
 export function expandReviewedPractice<T>(items: readonly T[], count: number): T[] {
   if (!items.length || count <= 0) return [];
-  return Array.from({ length: count }, (_, index) => items[index % items.length]);
+  return items.slice(0, count);
 }
 
 export function xpForPractice(input: { completed: boolean; perfect: boolean }) {

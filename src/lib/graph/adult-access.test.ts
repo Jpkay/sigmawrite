@@ -3,7 +3,7 @@ import { loadAdultStudentGraphWith } from "./adult-access-policy";
 import type { SessionProfile } from "@/lib/auth";
 import type { StudentRow } from "@/lib/reports";
 
-const profile = (role: SessionProfile["role"]): SessionProfile => ({ id: "profile", authUserId: "auth", displayName: "Adult", role });
+const profile = (role: SessionProfile["role"]): SessionProfile => ({ id: "profile", authUserId: "auth", displayName: "Adult", role, mustChangePassword: false });
 const student: StudentRow = { id: "visible-student", name: "Élève", snap: { sessions: [], skillEstimates: {} } };
 const frontier = { report: {}, labels: {}, scope: {}, evidenceProfile: [], graphView: {} } as never;
 
@@ -16,14 +16,25 @@ describe("adult graph access", () => {
     expect(guard).toHaveBeenCalledWith(["parent"]);
   });
 
-  it("allows teacher and school-admin roles for the teacher view", async () => {
+  it("allows teacher, supervisor, and school-admin roles for the teacher view", async () => {
     const guard = vi.fn(async () => profile("teacher"));
     await loadAdultStudentGraphWith("requested", "teacher", {
       guard,
       findViewableStudent: async () => student,
       loadGraph: async () => frontier,
     });
-    expect(guard).toHaveBeenCalledWith(["teacher", "school_admin"]);
+    expect(guard).toHaveBeenCalledWith(["teacher", "supervisor", "school_admin"]);
+  });
+
+  it("allows a supervisor to load a student returned by the scoped lookup", async () => {
+    const guard = vi.fn(async () => profile("supervisor"));
+    const result = await loadAdultStudentGraphWith("requested", "teacher", {
+      guard,
+      findViewableStudent: async () => student,
+      loadGraph: async () => ({ ok: true }),
+    });
+    expect(guard).toHaveBeenCalledWith(["teacher", "supervisor", "school_admin"]);
+    expect(result?.student.id).toBe("visible-student");
   });
 
   it("never loads graph data when the RLS-scoped student lookup is hidden", async () => {

@@ -1,4 +1,7 @@
 begin;
+set local role postgres;
+set local search_path=public,extensions;
+create extension if not exists pgtap with schema extensions;
 select plan(11);
 
 select has_table('public','competency_lessons','approved micro-lessons table exists');

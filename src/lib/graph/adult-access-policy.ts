@@ -14,7 +14,7 @@ export async function loadAdultStudentGraphWith<Frontier>(
   audience: AdultGraphAudience,
   dependencies: AdultGraphAccessDependencies<Frontier>,
 ) {
-  const roles: Role[] = audience === "parent" ? ["parent"] : ["teacher", "school_admin"];
+  const roles: Role[] = audience === "parent" ? ["parent"] : ["teacher", "supervisor", "school_admin"];
   await dependencies.guard(roles);
   const student = await dependencies.findViewableStudent(studentId);
   if (!student) return null;

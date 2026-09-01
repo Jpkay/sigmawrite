@@ -9,6 +9,10 @@ import { getActiveJoinCode } from "@/lib/db/lifecycle";
 import { JoinCodePanel } from "@/components/join-code-panel";
 import { EnrollmentControl } from "@/components/enrollment-control";
 import { buttonVariants } from "@/components/ui/button";
+import { ClassStudentAccountForm } from "@/components/class-student-account-form";
+import { ClassCredentialList } from "@/components/class-credential-list";
+import { getClassManagedAccounts } from "@/lib/db/users";
+import { requireRole } from "@/lib/auth";
 
 export default async function ClassDetailPage({
   params,
@@ -16,9 +20,11 @@ export default async function ClassDetailPage({
   params: Promise<{ classId: string }>;
 }) {
   const { classId } = await params;
-  const [students, joinCode] = await Promise.all([
+  const session = await requireRole(["teacher", "school_admin"]);
+  const [students, joinCode, managedAccounts] = await Promise.all([
     getClassStudents(classId),
     getActiveJoinCode(classId),
+    getClassManagedAccounts(classId),
   ]);
   const now = nowMs();
   const summary = classSummary(students, now);
@@ -31,6 +37,7 @@ export default async function ClassDetailPage({
         description="Bande de lecture, réussite et engagement par élève."
       />
 
+      {session.role === "teacher" && <ClassStudentAccountForm classId={classId} />}
       <JoinCodePanel classId={classId} initial={joinCode} />
       <div className="mb-5"><Link prefetch={false} href={`/api/teacher/classes/${classId}/export`} className={buttonVariants({ variant: "outline" })}>Télécharger le rapport CSV</Link></div>
 
@@ -58,6 +65,8 @@ export default async function ClassDetailPage({
           ))}
         </div>
       )}
+
+      <ClassCredentialList accounts={managedAccounts} />
 
       <h2 className="mb-3 text-lg font-semibold">Groupes d&apos;intervention recommandés</h2>
       {groups.length === 0 ? (

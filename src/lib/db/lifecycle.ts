@@ -1,5 +1,4 @@
 import { createClient } from "@/lib/supabase/server";
-import { canSelfConsent } from "@/lib/consent";
 
 export type JoinCodeInfo = {
   id: string;
@@ -25,28 +24,39 @@ export async function getActiveJoinCode(classId: string): Promise<JoinCodeInfo |
   } : null;
 }
 
-export type ConsentGate = {
+export type StudentAccessGate = {
   studentId: string;
-  dateOfBirth: string | null;
-  active: boolean;
-  consentType: "guardian" | "school" | "student_over_15" | null;
-  canSelfConsent: boolean;
+  authorized: boolean;
+  basis: "school_invitation" | "guardian" | "legacy_student_consent" | null;
 };
 
-export async function getStudentConsentGate(): Promise<ConsentGate | null> {
+export async function getStudentAccessGate(): Promise<StudentAccessGate> {
   const supabase = await createClient();
-  const { data: student, error } = await supabase.from("students").select("id,date_of_birth").limit(1).maybeSingle();
-  if (error || !student) return null;
-  const { data: consent } = await supabase.from("consent_records")
-    .select("consent_type").eq("student_id", student.id).is("revoked_at", null)
-    .order("accepted_at", { ascending: false }).limit(1).maybeSingle();
-  const dateOfBirth = student.date_of_birth as string | null;
+  const { data: student, error: studentError } = await supabase.from("students").select("id").limit(1).maybeSingle();
+  if (studentError) throw new Error(studentError.message);
+  if (!student) throw new Error("Profil élève introuvable.");
+  const [authorization, enrollment, consent] = await Promise.all([
+    supabase.rpc("student_access_is_authorized", { p_student_id: student.id }),
+    supabase.from("enrollments").select("student_id").eq("student_id", student.id).eq("status", "active").limit(1).maybeSingle(),
+    supabase.from("consent_records").select("consent_type").eq("student_id", student.id).is("revoked_at", null)
+      .order("accepted_at", { ascending: false }).limit(1).maybeSingle(),
+  ]);
+  if (authorization.error || enrollment.error || consent.error) {
+    throw new Error(authorization.error?.message ?? enrollment.error?.message ?? consent.error?.message);
+  }
+  const consentType = consent.data?.consent_type as "guardian" | "school" | "student_over_15" | undefined;
   return {
     studentId: student.id as string,
-    dateOfBirth,
-    active: !!consent,
-    consentType: (consent?.consent_type as ConsentGate["consentType"]) ?? null,
-    canSelfConsent: canSelfConsent(dateOfBirth),
+    authorized: authorization.data === true,
+    basis: enrollment.data
+      ? "school_invitation"
+      : consentType === "guardian"
+        ? "guardian"
+        : consentType === "student_over_15"
+          ? "legacy_student_consent"
+          : consentType === "school"
+            ? "school_invitation"
+            : null,
   };
 }
 
@@ -57,9 +67,15 @@ export async function getPendingConsentChildren(): Promise<Array<{ id: string; n
   if (error) return [];
   const ids = (links ?? []).map((row) => row.student_id as string);
   if (!ids.length) return [];
-  const { data: active } = await supabase.from("consent_records")
-    .select("student_id").in("student_id", ids).is("revoked_at", null);
-  const activeIds = new Set((active ?? []).map((row) => row.student_id as string));
+  const [{ data: active, error: consentError }, { data: enrollments, error: enrollmentError }] = await Promise.all([
+    supabase.from("consent_records").select("student_id").in("student_id", ids).is("revoked_at", null),
+    supabase.from("enrollments").select("student_id").in("student_id", ids).eq("status", "active"),
+  ]);
+  if (consentError || enrollmentError) throw new Error(consentError?.message ?? enrollmentError?.message);
+  const activeIds = new Set([
+    ...(active ?? []).map((row) => row.student_id as string),
+    ...(enrollments ?? []).map((row) => row.student_id as string),
+  ]);
   return (links ?? []).flatMap((row) => {
     if (activeIds.has(row.student_id as string)) return [];
     const student = row.students as unknown as { display_name: string | null } | null;

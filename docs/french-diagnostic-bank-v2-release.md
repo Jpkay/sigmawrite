@@ -5,14 +5,18 @@
 **Taxonomy:** `french-taxonomy-v2`
 **Decision:** pending human item review
 **Approved checksum:** pending
-**Current candidate checksum:** `sha256:74efcf0e259cac4c5d598eb10d2d741891700c171de9a96789147b8ad5840042`
-**Candidate inventory:** 696 items — 33 reproducibly computed and 663 awaiting human review
+**Current candidate checksum:** `sha256:9a2380913405ee4110c898767ca848ed95922ed060387c250f1c4e4fe317fd24`
+**Candidate inventory:** 696 items — 33 reproducibly computed, 198 human-approved, 465 awaiting human review, and none rejected
 
 The complete candidate was authored locally without external model-generation
-calls. `npm run diagnostic:audit:v2` confirms exact three-item coverage for all
-232 live evidence definitions, three reading sources per reading evidence,
-required text-type diversity, hard QC, and projected four-section readiness.
-This structural audit is not a substitute for the pending human review.
+calls. After synchronizing 214 attributable staging decisions, the eight
+rejected slots were replaced with new identities and wording based on the
+reviewer notes. Those replacements remain unapproved. The planner now reports
+696/696 slots and no generation request; `npm run diagnostic:audit:v2` reports
+structural readiness with no hard, slot or projected issue. Migration `0106`
+also corrects the former prompt-only duplicate false positives by comparing the
+complete visible MCQ surface. This record must not be approved until all 465
+pending items receive attributable human review and verification passes.
 
 ## Publication gate
 
