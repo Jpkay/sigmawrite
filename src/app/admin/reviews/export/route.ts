@@ -25,5 +25,5 @@ export async function GET() {
     return [version.id,version.version_number,payload.generated?.title,profile?.display_name,row.status,review.naturalness_score,review.pedagogical_quality_score,review.engagement_score,review.difficulty_match_score,review.vocabulary_score,review.grammar_score,review.question_quality_score,review.cultural_age_score,review.overall_decision,review.passage_review_issue_tags,review.question_reviews,review.general_comment,row.submitted_at,review.duration_seconds,version.agreement_classification,resolutions.at(-1),benchmarks.filter((item)=>item.locked)];
   });
   const csv = reviewRowsToCsv([headers, ...rows]);
-  return new Response(csv, { headers: { "content-type": "text/csv; charset=utf-8", "content-disposition": `attachment; filename="sigmawrite-content-reviews-${new Date().toISOString().slice(0,10)}.csv"`, "cache-control": "no-store" } });
+  return new Response(csv, { headers: { "content-type": "text/csv; charset=utf-8", "content-disposition": `attachment; filename="plume-content-reviews-${new Date().toISOString().slice(0,10)}.csv"`, "cache-control": "no-store" } });
 }

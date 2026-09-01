@@ -2,11 +2,11 @@ import Link from "next/link";
 import { PageHeader } from "@/components/page";
 import { buttonVariants } from "@/components/ui/button";
 import { WeeklyReportView } from "@/components/weekly-report";
-import { getStudentRow } from "@/lib/db/dashboard";
 import { nowMs } from "@/lib/clock";
-import { createClient } from "@/lib/supabase/server";
-import { frontierForStudent } from "@/lib/diagnostic/live";
 import { FrontierReportView } from "@/components/frontier-report";
+import { AdultCompetencyGraph } from "@/components/adult-competency-graph";
+import { getAdultLanguage } from "@/lib/i18n";
+import { loadAdultStudentGraph } from "@/lib/graph/adult-access";
 
 export default async function ParentStudentPage({
   params,
@@ -14,30 +14,35 @@ export default async function ParentStudentPage({
   params: Promise<{ studentId: string }>;
 }) {
   const { studentId } = await params;
-  const child = await getStudentRow(studentId);
+  const bundle = await loadAdultStudentGraph(studentId, "parent");
+  const language = await getAdultLanguage();
 
-  if (!child) {
+  if (!bundle) {
     return (
       <>
-        <PageHeader title="Enfant introuvable" />
+        <PageHeader title={language === "en" ? "Child not found" : "Enfant introuvable"} />
         <Link href="/parent" className={buttonVariants({ variant: "outline" })}>
-          Retour
+          {language === "en" ? "Back" : "Retour"}
         </Link>
       </>
     );
   }
-  const frontier = await frontierForStudent(studentId, await createClient());
+  const { student: child, frontier } = bundle;
 
   return (
     <>
       <PageHeader
         title={child.name}
-        description="Rapport hebdomadaire — estimation basée sur l'usage de l'application."
+        description={language === "en" ? "Learning pathway and weekly evidence." : "Parcours d'apprentissage et preuves hebdomadaires."}
       />
+      <AdultCompetencyGraph graph={frontier.graphView} audience="parent" language={language} studentName={child.name} />
+      <h2 className="mb-3 mt-9 text-lg font-semibold">{language === "en" ? "Weekly activity" : "Activité de la semaine"}</h2>
       <WeeklyReportView snap={child.snap} nowMs={nowMs()} />
-      <h2 className="mb-3 mt-8 text-lg font-semibold">Frontière des compétences</h2>
-      <p className="mb-4 text-sm text-muted-foreground">Preuves observées : ce que votre enfant peut faire, ce qui est en cours et les bases qui bloquent la suite.</p>
-      <FrontierReportView data={frontier} audience="parent" />
+      <details className="mt-9 border-y border-border py-4">
+        <summary className="cursor-pointer text-sm font-semibold">{language === "en" ? "Detailed competency evidence" : "Détail des preuves par compétence"}</summary>
+        <p className="mb-4 mt-3 text-sm text-muted-foreground">{language === "en" ? "Observed evidence behind the map, including foundations still being consolidated." : "Les preuves observées derrière la carte, y compris les bases encore en consolidation."}</p>
+        <FrontierReportView data={frontier} audience="parent" language={language} />
+      </details>
     </>
   );
 }

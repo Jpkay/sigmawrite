@@ -4,7 +4,7 @@ import { ROLE_HOME, type Role } from "@/lib/types";
 
 const PUBLIC_PREFIXES = ["/about", "/schools", "/parents", "/privacy", "/terms"];
 const AUTH_PREFIXES = ["/login", "/signup", "/join", "/reset-password"];
-const PROTECTED_PREFIXES = ["/student", "/parent", "/teacher", "/admin", "/review"];
+const PROTECTED_PREFIXES = ["/student", "/parent", "/teacher", "/supervisor", "/admin", "/review"];
 
 const isConfigured =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -44,7 +44,8 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const isProtected = PROTECTED_PREFIXES.some((p) => pathname.startsWith(p));
+  const isProtected = pathname !== "/review/manifest.webmanifest"
+    && PROTECTED_PREFIXES.some((p) => pathname.startsWith(p));
   const isAuthRoute = AUTH_PREFIXES.some((p) => pathname.startsWith(p));
 
   // Unauthenticated user hitting a protected route → login.
@@ -58,14 +59,22 @@ export async function updateSession(request: NextRequest) {
   // Authenticated user → send to their role home if they're on an auth page,
   // and keep them out of dashboards that aren't theirs.
   if (user) {
-    const role = (user.app_metadata?.role ?? user.user_metadata?.role) as
-      | Role
-      | undefined;
-    const home = role ? ROLE_HOME[role] : "/student";
+    const { data: profile } = await supabase.from("profiles").select("role,must_change_password").eq("auth_user_id", user.id).maybeSingle();
+    const role = profile?.role as Role | undefined;
+    const home = role ? ROLE_HOME[role] : "/login";
+
+    if (profile?.must_change_password && pathname !== "/set-password") {
+      const url = request.nextUrl.clone();
+      url.pathname = "/set-password";
+      url.search = "?first=1";
+      return NextResponse.redirect(url);
+    }
 
     if (isAuthRoute) {
       const url = request.nextUrl.clone();
       url.pathname = home;
+      url.search = "";
+      if (!role) url.searchParams.set("error", "profile_missing");
       return NextResponse.redirect(url);
     }
 

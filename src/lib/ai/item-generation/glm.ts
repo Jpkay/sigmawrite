@@ -25,14 +25,22 @@ Règles STRICTES :
     "promptFr": string,           // l'énoncé en français
     "correctAnswer": string,      // pour short_answer/cloze/transform
     "acceptableAnswers": string[],
-    "validatorType": "exact"|"regex"|"conjugator"|"agreement"|"grammalecte",
+    "validatorType": "exact"|"regex"|"conjugator",
     "validatorConfig": object,    // pour conjugator: {verb, tense, person, gender?, codBefore?}
     "choices": [ {"text": string, "correct": boolean, "misconceptionKey"?: string, "feedbackFr"?: string} ],
     "cefrLevel": "A1"|"A2"|"B1"|"B2"|"C1"|"C2",
     "difficulty": number          // 0–100
   }
-- Pour la conjugaison, mets validatorType="conjugator" et fournis validatorConfig {verb, tense (present|imparfait|passe_compose), person (1s|2s|3s|1p|2p|3p)}. NE T'INQUIÈTE PAS de la forme exacte : elle sera recalculée de façon déterministe.
+- Pour la conjugaison, mets validatorType="conjugator" et fournis validatorConfig {verb, tense (present|imparfait|passe_compose|futur_simple|futur_proche|conditionnel_present|subjonctif_present|imperatif_present|plus_que_parfait), person (1s|2s|3s|1p|2p|3p)}. NE T'INQUIÈTE PAS de la forme exacte : elle sera recalculée de façon déterministe.
+- N'utilise "conjugator" QUE pour les temps listés ci-dessus et pour un verbe fréquent dont tu es sûr (l'impératif n'existe qu'aux personnes 2s, 1p, 2p). Pour le passé simple ou d'autres périphrases, utilise un QCM ou une réponse exacte qui passera obligatoirement en revue humaine.
 - Pour un QCM, exactement UNE bonne réponse.
+- Pour une preuve "controlled_production", exige une réponse réellement produite (short_answer, cloze ou transform), jamais un simple QCM.
+- Pour la compréhension écrite, inclus dans promptFr un court passage original et toutes les informations nécessaires. Aucune question ne doit dépendre d'un texte absent.
+- Pour l'orthographe productive, donne un contexte ou un indice qui ne révèle jamais la graphie attendue. N'annonce pas une dictée sans ressource audio.
+- Respecte exactement requestedPromptFamilies et requestedDifficultyTiers, dans l'ordre fourni. Foundation, core et stretch doivent modifier la complexité réelle, pas seulement le nombre "difficulty".
+- N'utilise jamais rubric ou llm_assisted pour ces items diagnostiques.
+- N'utilise jamais agreement ou grammalecte : le diagnostic en direct doit rester validable sans service externe.
+- Chaque contexte doit être nouveau, autosuffisant, sans citation ni extrait protégé.
 - "misconceptionKey" : utilise UNIQUEMENT une clé de la liste fournie dans le message. Si aucune ne correspond, OMETS complètement le champ (n'invente jamais de clé).
 - Français correct et naturel. Énoncés courts et clairs, adaptés au niveau CEFR indiqué.`;
 

@@ -62,6 +62,11 @@ export type ReviewQueueItem = {
   review: (ReviewDraft & { id: string; durationSeconds: number | null }) | null;
 };
 
+export function hasReviewablePassageBody(candidate: ContentCandidate): boolean {
+  const body = candidate.generated.body.trim();
+  return body.length >= 100 && body.split(/\s+/).length >= 20;
+}
+
 export function classifyAgreement(
   reviews: Array<{ decision: ReviewDecision; scores: number[] }>
 ): AgreementClassification {

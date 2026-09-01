@@ -10,7 +10,7 @@ import { generateTextInputSchema } from "@/lib/ai/schemas";
 import { contentSlug, rescoreCandidateBody } from "@/lib/content/workflow";
 import { getContentCandidate } from "@/lib/db/content";
 import { getActivePrompt } from "@/lib/db/ai";
-import { createClient } from "@/lib/supabase/server";
+import { createClient, createServiceClient } from "@/lib/supabase/server";
 
 const idInput = z.object({ id: z.string().uuid() });
 const reviewInput = z.object({
@@ -64,7 +64,9 @@ export async function generateTextCandidate(input: unknown) {
       const { data: matches } = await supabase.rpc("match_text_versions", { p_embedding: `[${embedding.join(",")}]`, p_threshold: 0.92, p_limit: 3 });
       if (matches?.length) candidate = { ...candidate, flags: { ...candidate.flags, nearDuplicate: true }, reviewStatus: "needs_human_review" };
     } catch {
-      // Candidate generation remains available if a separately configured embedding provider is down.
+      // Generation may continue, but publication must fail closed when the
+      // duplicate gate could not run.
+      candidate = { ...candidate, flags: { ...candidate.flags, duplicateCheckUnavailable: true }, reviewStatus: "needs_human_review" };
     }
     const { error: candidateError } = await supabase.from("ai_generated_candidates").insert({
       id: candidate.id,
@@ -216,6 +218,7 @@ export async function approveTextVersion(input: unknown) {
     .order("version_number", { ascending: false }).limit(1).maybeSingle();
   if (!approvedReview) throw new Error("Une décision éditoriale approuvée est requise avant publication.");
   if (candidate.approvedTextVersionId) return { textVersionId: candidate.approvedTextVersionId };
+  const service=createServiceClient();const{data:claims,error:claimError}=await service.rpc("claim_content_publication",{p_candidate_id:id});if(claimError)throw new Error(claimError.message);const claim=claims?.[0] as{claimed:boolean;status:string;result_payload:unknown}|undefined;if(!claim?.claimed){if(claim?.status==="completed"&&claim.result_payload)return claim.result_payload as{textId:string;textVersionId:string;slug:string};throw new Error("La publication de ce candidat est déjà en cours.");}
 
   const generated = candidate.generated;
   const desiredSlug = contentSlug(generated.title);
@@ -230,10 +233,11 @@ export async function approveTextVersion(input: unknown) {
     canonical_title: generated.title,
     primary_interest: candidate.input.primaryInterest,
     primary_domain_id: domain?.id ?? null,
-    status: "active",
+    status: "draft",
   }).select("id").single();
-  if (textError || !text) throw new Error(textError?.message ?? "Texte non créé.");
+  if (textError || !text) {const message=textError?.message??"Texte non créé.";await service.rpc("fail_content_publication",{p_candidate_id:id,p_error:message});throw new Error(message);}
 
+  let createdVersionId:string|null=null;
   try {
     const difficulty = candidate.difficulty;
     const { data: version, error: versionError } = await supabase.from("text_versions").insert({
@@ -252,10 +256,11 @@ export async function approveTextVersion(input: unknown) {
       stamina_difficulty: difficulty.stamina,
       overall_difficulty: difficulty.overall,
       generation_type: "ai_human_reviewed",
-      review_status: "human_approved",
+      review_status: "draft",
       source_policy: "generated",
     }).select("id").single();
     if (versionError || !version) throw new Error(versionError?.message ?? "Version non créée.");
+    createdVersionId=version.id as string;
     const embedding = await getAIProvider().embed({ text: `${generated.title}\n\n${generated.body}` });
     const { error: embeddingError } = await supabase.from("text_versions").update({ embedding: `[${embedding.join(",")}]`, embedding_model: getAIEmbeddingInfo().model }).eq("id", version.id);
     if (embeddingError) throw new Error(embeddingError.message);
@@ -353,15 +358,21 @@ export async function approveTextVersion(input: unknown) {
       workflow_status: "published", published_text_version_id: version.id, updated_at: now,
     }).eq("id", approvedReview.id);
     if (reviewVersionError) throw new Error(reviewVersionError.message);
+    const{error:versionPublishError}=await supabase.from("text_versions").update({review_status:"human_approved"}).eq("id",version.id);if(versionPublishError)throw new Error(versionPublishError.message);
+    const{error:textPublishError}=await supabase.from("texts").update({status:"active",updated_at:now}).eq("id",text.id);if(textPublishError)throw new Error(textPublishError.message);
+    const publication={textId:text.id as string,textVersionId:version.id as string,slug};const{error:finishError}=await service.rpc("finish_content_publication",{p_candidate_id:id,p_result:publication});if(finishError)throw new Error(finishError.message);
     await logAudit("content.text_approved", {
       targetType: "text_version",
       targetId: version.id,
       metadata: { candidateId: id, textId: text.id },
     });
     refreshContent();
-    return { textId: text.id as string, textVersionId: version.id as string, slug };
+    return publication;
   } catch (error) {
-    await supabase.from("texts").delete().eq("id", text.id);
+    const message=error instanceof Error?error.message:"Erreur inconnue";
+    if(createdVersionId){const[{error:candidateRollbackError},{error:reviewRollbackError}]=await Promise.all([supabase.from("ai_generated_candidates").update({review_status:"needs_human_review",approved_text_version_id:null,reviewer_profile_id:null,reviewed_at:null}).eq("id",id),supabase.from("content_review_versions").update({workflow_status:"approved",published_text_version_id:null}).eq("id",approvedReview.id)]);if(candidateRollbackError||reviewRollbackError)throw new Error(`Publication interrompue; réconciliation requise: ${candidateRollbackError?.message??reviewRollbackError?.message}`);}
+    const{error:cleanupError}=await supabase.from("texts").delete().eq("id",text.id);if(cleanupError)throw new Error(`Publication interrompue; nettoyage requis: ${cleanupError.message}`);
+    await service.rpc("fail_content_publication",{p_candidate_id:id,p_error:message});
     throw error;
   }
 }

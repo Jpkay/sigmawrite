@@ -10,7 +10,7 @@ import { trackServer } from "@/lib/analytics-server";
 
 /** Teacher server actions (PRD §23). Auth+role verified before any work. */
 
-const classSchema = z.object({ name: z.string().trim().min(2).max(100), grade: z.number().int().min(1).max(12), academicYear: z.string().trim().min(4).max(20) });
+const classSchema = z.object({ name: z.string().trim().min(2).max(100), grade: z.number().int().min(5).max(12), academicYear: z.string().trim().min(4).max(20) });
 
 export async function createClass(input: unknown) {
   await requireRole(["teacher", "school_admin"]); const parsed = classSchema.safeParse(input); if (!parsed.success) throw new Error("Paramètres de classe invalides.");
@@ -23,7 +23,6 @@ const inviteSchema = z.object({
   classId: z.string().uuid(),
   expiresInDays: z.number().int().min(1).max(90),
   maxUses: z.number().int().min(1).max(500),
-  schoolConsentEnabled: z.boolean(),
 });
 
 export async function inviteStudents(input: unknown) {
@@ -40,19 +39,19 @@ export async function inviteStudents(input: unknown) {
   if (revokeError) throw new Error(revokeError.message);
 
   for (let attempt = 0; attempt < 3; attempt += 1) {
-    const code = `SW-${randomBytes(3).toString("hex").toUpperCase()}`;
+    const code = `SW-${randomBytes(16).toString("hex").toUpperCase()}`;
     const { data: created, error } = await supabase.from("class_join_codes").insert({
       code,
       class_id: data.classId,
       expires_at: expiresAt,
       max_uses: data.maxUses,
-      school_consent_enabled: data.schoolConsentEnabled,
+      school_consent_enabled: true,
       created_by_profile_id: session.id,
     }).select("id,code,expires_at,max_uses,uses,school_consent_enabled").single();
     if (!error && created) {
       await logAudit("class.join_code_rotated", {
         targetType: "class", targetId: data.classId,
-        metadata: { expiresAt, maxUses: data.maxUses, schoolConsentEnabled: data.schoolConsentEnabled },
+        metadata: { expiresAt, maxUses: data.maxUses, accessBasis: "school_invitation" },
       });
       revalidatePath(`/teacher/classes/${data.classId}`);
       return {
@@ -108,19 +107,4 @@ export async function setClassEnrollment(input: unknown) {
   await requireRole(["teacher"]); const parsed = enrollmentSchema.safeParse(input); if (!parsed.success) throw new Error("Élève invalide.");
   const supabase = await createClient(); const { error } = await supabase.rpc("set_class_enrollment", { p_class_id: parsed.data.classId, p_student_id: parsed.data.studentId, p_status: parsed.data.status }); if (error) throw new Error(error.message);
   await logAudit("class.enrollment_changed", { targetType: "class", targetId: parsed.data.classId, metadata: { studentId: parsed.data.studentId, status: parsed.data.status } }); revalidatePath(`/teacher/classes/${parsed.data.classId}`); return { ok: true };
-}
-
-export async function viewClassProgress() {
-  await requireRole(["teacher", "school_admin"]);
-  return { ok: true };
-}
-
-export async function createInterventionGroup() {
-  await requireRole(["teacher"]);
-  return { ok: true };
-}
-
-export async function exportClassReport() {
-  await requireRole(["teacher", "school_admin"]);
-  return { ok: true };
 }

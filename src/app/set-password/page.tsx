@@ -3,9 +3,11 @@
 import { useEffect, useRef, useState } from "react";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { useRouter } from "next/navigation";
-import { AuthCard, Field } from "@/components/auth-card";
+import { AuthCard } from "@/components/auth-card";
+import { PasswordField } from "@/components/password-field";
 import { Button } from "@/components/ui/button";
-import { invitedUserHome, sessionTokensFromAuthFragment } from "@/lib/auth-invite";
+import { sessionTokensFromAuthFragment } from "@/lib/auth-invite";
+import { completePasswordSetup } from "@/lib/actions/auth";
 import { createClient } from "@/lib/supabase/client";
 
 export default function SetPasswordPage() {
@@ -35,7 +37,7 @@ export default function SetPasswordPage() {
       }
 
       if (sessionError || !session) {
-        setError("Ce lien d’activation est invalide ou a expiré. Demandez une nouvelle invitation.");
+        setError("Ce lien est invalide ou a expiré. Demandez un nouveau lien sécurisé.");
         return;
       }
 
@@ -60,14 +62,8 @@ export default function SetPasswordPage() {
     try {
       const db = client.current;
       if (!db || !ready) throw new Error("Le lien d’activation n’est pas encore prêt.");
-      const { data: current, error: sessionError } = await db.auth.getUser();
-      if (sessionError || !current.user) throw sessionError ?? new Error("Session introuvable.");
-      const { data, error: updateError } = await db.auth.updateUser({
-        password,
-        data: { ...current.user.user_metadata, password_set: true },
-      });
-      if (updateError || !data.user) throw updateError ?? new Error("Session introuvable.");
-      router.replace(invitedUserHome(data.user.user_metadata?.role));
+      const result = await completePasswordSetup({ password, confirmation });
+      router.replace(result.redirectTo);
       router.refresh();
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Le mot de passe n’a pas pu être enregistré.");
@@ -77,22 +73,20 @@ export default function SetPasswordPage() {
 
   return (
     <AuthCard
-      title="Finaliser votre accès"
-      description="Choisissez votre mot de passe personnel pour sécuriser votre compte SigmaWrite."
+      title="Choisir un nouveau mot de passe"
+      description="Choisissez un mot de passe personnel pour sécuriser votre compte Plume."
     >
       <form onSubmit={submit} className="space-y-4">
-        <Field
+        <PasswordField
           label="Nouveau mot de passe"
-          type="password"
           required
           minLength={12}
           autoComplete="new-password"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
         />
-        <Field
+        <PasswordField
           label="Confirmer le mot de passe"
-          type="password"
           required
           minLength={12}
           autoComplete="new-password"

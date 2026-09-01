@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
-import { requireRole } from "@/lib/auth";
+import { requireActiveReviewer, requireRole } from "@/lib/auth";
 import { createClient } from "@/lib/supabase/server";
 import { logAudit } from "@/lib/audit";
 
@@ -12,14 +12,60 @@ const reviewSchema = z.object({
   promptFr: z.string().trim().min(5).max(4000).optional(),
   correctAnswer: z.string().trim().max(1000).nullable().optional(),
   note: z.string().trim().max(1000).optional(),
+  assignmentMode: z.boolean().optional(),
 });
 
+const reviewablePromptVersions = ["diagnostic-bank-v2", "taxonomy-v3-practice-v1"] as const;
+
+const diagnosticAssignmentSchema = z.object({
+  reviewerIds: z.array(z.string().uuid()).min(1).max(20),
+});
+
+export async function assignDiagnosticItemReviews(input: unknown) {
+  await requireRole(["platform_admin"]);
+  const parsed = diagnosticAssignmentSchema.safeParse(input);
+  if (!parsed.success) throw new Error("Sélection d’évaluateurs invalide.");
+  const reviewerIds = [...new Set(parsed.data.reviewerIds)];
+  const { data, error } = await (await createClient()).rpc("assign_diagnostic_item_reviews", {
+    p_reviewer_ids: reviewerIds,
+  });
+  if (error) throw new Error(error.message);
+  revalidatePath("/admin/items/review");
+  revalidatePath("/review");
+  revalidatePath("/review/exercises");
+  return { ok: true, assigned: Number(data ?? 0) };
+}
+
 export async function reviewCompetencyItem(input: unknown) {
-  const reviewer = await requireRole(["platform_admin"]);
+  const reviewer = await requireRole(["platform_admin", "content_reviewer"]);
   const parsed = reviewSchema.safeParse(input);
   if (!parsed.success) throw new Error("Données invalides.");
   const data = parsed.data;
   const supabase = await createClient();
+  if (reviewer.role === "content_reviewer" || data.assignmentMode) {
+    await requireActiveReviewer();
+    const { data: assignment, error: assignmentError } = await supabase.from("competency_item_review_assignments")
+      .select("status")
+      .eq("item_id", data.id)
+      .eq("reviewer_profile_id", reviewer.id)
+      .maybeSingle();
+    if (assignmentError) throw new Error(assignmentError.message);
+    const rpc = assignment?.status === "submitted" ? "revise_competency_item_review" : "submit_competency_item_review";
+    const { data: updated, error } = await supabase.rpc(rpc, {
+      p_item_id: data.id,
+      p_decision: data.decision,
+      p_prompt_fr: data.promptFr ?? "",
+      p_correct_answer: data.correctAnswer ?? null,
+      p_note: data.note ?? null,
+    });
+    if (error?.message.includes("duplicate_diagnostic_prompt")) {
+      throw new Error("Un autre exercice vivant utilise déjà cet énoncé pour la même compétence. Modifiez l’énoncé avant de l’approuver.");
+    }
+    if (error) throw new Error(error.message);
+    if (!updated) throw new Error("Cet item n’est plus en attente de revue.");
+    revalidatePath("/admin/items"); revalidatePath("/admin/items/review"); revalidatePath("/review/exercises");
+    return { ok: true };
+  }
   const update: Record<string, unknown> = {
     review_status: data.decision,
     reviewer_profile_id: reviewer.id,
@@ -30,9 +76,19 @@ export async function reviewCompetencyItem(input: unknown) {
   };
   if (data.promptFr !== undefined) update.prompt_fr = data.promptFr;
   if (data.correctAnswer !== undefined) update.correct_answer = data.correctAnswer;
-  const { error } = await supabase.from("competency_items").update(update).eq("id", data.id);
+  const { data: updated, error } = await supabase.from("competency_items")
+    .update(update)
+    .eq("id", data.id)
+    .in("prompt_version", reviewablePromptVersions)
+    .eq("review_status", "needs_human_review")
+    .select("id")
+    .maybeSingle();
+  if (error?.message.includes("duplicate_diagnostic_prompt")) {
+    throw new Error("Un autre exercice vivant utilise déjà cet énoncé pour la même compétence. Modifiez l’énoncé avant de l’approuver.");
+  }
   if (error) throw new Error(error.message);
+  if (!updated) throw new Error("Cet item n’est plus en attente de revue.");
   await logAudit(`competency_item.${data.decision === "human_approved" ? "approved" : "rejected"}`, { targetType: "competency_item", targetId: data.id, metadata: data.note ? { note: data.note } : {} });
-  revalidatePath("/admin/items"); revalidatePath("/admin/items/review");
+  revalidatePath("/admin/items"); revalidatePath("/admin/items/review"); revalidatePath("/review/exercises");
   return { ok: true };
 }

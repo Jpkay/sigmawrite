@@ -93,7 +93,7 @@ export default function Home() {
 
       <footer className="border-t border-border">
         <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-between gap-2 px-6 py-6 text-sm text-muted-foreground sm:flex-row">
-          <span>© Reading to Learn</span>
+          <span>© Plume</span>
           <div className="flex gap-4">
             <Link href="/privacy" className="hover:text-foreground">
               Confidentialité

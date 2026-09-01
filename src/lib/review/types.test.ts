@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { classifyAgreement, reviewValidationError, type ReviewDraft } from "./types";
+import { classifyAgreement, hasReviewablePassageBody, reviewValidationError, type ReviewDraft } from "./types";
 
 const complete: ReviewDraft = {
   scores: { naturalness: 4, pedagogical_quality: 4, engagement: 3, difficulty_match: 4, vocabulary: 3, grammar: 4, question_quality: 4, cultural_age: 4 },
@@ -22,5 +22,11 @@ describe("human review rules", () => {
     expect(reviewValidationError({ ...complete, decision: "reject" }, 1)).toMatch(/commentaire/);
     expect(reviewValidationError({ ...complete, scores: { ...complete.scores, grammar: 1 } }, 1)).toMatch(/commentaire/);
     expect(reviewValidationError({ ...complete, questionReviews: [{ questionIndex: 0, outcome: "ambiguous", comment: "" }] }, 1)).toMatch(/ambiguë/);
+  });
+
+  it("refuses to expose questions when the passage body is only a placeholder", () => {
+    const candidate = { generated: { body: "..." } } as Parameters<typeof hasReviewablePassageBody>[0];
+    expect(hasReviewablePassageBody(candidate)).toBe(false);
+    expect(hasReviewablePassageBody({ generated: { body: "Un texte complet permet aux évaluateurs de lire le passage avant de contrôler précisément toutes les questions proposées aux élèves." } } as Parameters<typeof hasReviewablePassageBody>[0])).toBe(true);
   });
 });

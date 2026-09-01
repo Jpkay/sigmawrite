@@ -1,10 +1,1 @@
-import { PageHeader, ComingSoon } from "@/components/page";
-
-export default function Page() {
-  return (
-    <>
-      <PageHeader title="Paramètres" description="Compte et enfants liés." />
-      <ComingSoon phase="Phase 0" note="Les paramètres parent seront enrichis au fil des phases." />
-    </>
-  );
-}
+import{PageHeader}from"@/components/page";import{getViewableStudents}from"@/lib/db/dashboard";import{getAdultLanguage}from"@/lib/i18n";import{ChildPasswordForm}from"./child-password-form";export default async function Page(){const[children,language]=await Promise.all([getViewableStudents(),getAdultLanguage()]);return <><PageHeader title={language==="en"?"Settings":"Paramètres"} description={language==="en"?"Account security and linked children.":"Sécurité du compte et des enfants liés."}/><ChildPasswordForm students={children.map(child=>({id:child.id,name:child.name}))} language={language}/></>}

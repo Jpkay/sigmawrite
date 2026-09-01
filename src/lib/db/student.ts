@@ -2,7 +2,12 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import type { DiagnosticResult, ReadingSessionResult } from "@/lib/types";
 import { SUCCESS_ZONE } from "@/lib/types";
 import { createClient } from "@/lib/supabase/server";
-import { diagnosticSkillsFromDb, type StudentState } from "@/lib/student-state";
+import {
+  diagnosticSectionProfileFromRows,
+  diagnosticSkillsFromDb,
+  type DiagnosticSectionProfileKey,
+  type StudentState,
+} from "@/lib/student-state";
 import type { RetrievalResult } from "@/lib/scoring/retrieval";
 
 type StudentRow = {
@@ -25,16 +30,25 @@ type SessionRow = {
 type SkillRow = { id: string; key: string };
 type SkillEstimateRow = { skill_id: string; ability: number | string; uncertainty: number | string; evidence_count: number };
 type DiagnosticRow = {
-  id: string; grade_min: number | string; grade_max: number | string;
+  id: string; diagnostic_run_id: string | null; grade_min: number | string; grade_max: number | string;
   confidence: DiagnosticResult["overallReadingBand"]["confidence"];
   recommended_starting_level: string; narrative_estimate: number | string;
   expository_estimate: number | string; argumentative_estimate: number | string;
+  provisional: boolean;
   source_based_estimate: number | string;
 };
 type DiagnosticSkillRow = { skill_id: string; ability: number | string; is_foundation_gap: boolean };
+type DiagnosticNodeResultRow = {
+  section_key: DiagnosticSectionProfileKey;
+  classification: "mastered" | "fragile" | "missing" | "unknown";
+  mastery_probability: number | string;
+  evidence_coverage_confirmed: boolean;
+  evidence_kind: string;
+};
+type DiagnosticRunSectionRow = { section_key: DiagnosticSectionProfileKey; target_node_count: number };
 type AnswerRow = { session_id: string; question_id: string; selected_choice_id: string | null };
 type CardRow = { id: string; source_text_version_id: string | null; prompt_fr: string; rubric: unknown };
-type ScheduleRow = { retrieval_card_id: string; due_at: string; interval_days: number | null; ease_factor: number | string; repetitions: number; last_result: RetrievalResult | null };
+type ScheduleRow = { retrieval_card_id: string; due_at: string; interval_days: number | null; ease_factor: number | string; repetitions: number; last_result: RetrievalResult | null; stability: number | string | null; difficulty: number | string | null; last_reviewed_at: string | null };
 type MasteryRow = { vocabulary_item_id: string; exposures: number; last_seen_at: string | null };
 type VocabRow = { id: string; display_word: string };
 
@@ -61,13 +75,13 @@ export async function getStudentStateData(
     supabase.from("reading_sessions").select("id,text_version_id,started_at,completed_at,abandoned,success_rate,literal_score,inference_score,vocabulary_score,summary_score,retrieval_score,time_on_task_seconds,hints_used,recommended_next_action").eq("student_id", studentId).order("started_at"),
     supabase.from("skills").select("id,key"),
     supabase.from("student_skill_estimates").select("skill_id,ability,uncertainty,evidence_count").eq("student_id", studentId),
-    supabase.from("diagnostic_results").select("id,grade_min,grade_max,confidence,recommended_starting_level,narrative_estimate,expository_estimate,argumentative_estimate,source_based_estimate").eq("student_id", studentId).order("completed_at", { ascending: false }).limit(1).maybeSingle(),
+    supabase.from("diagnostic_results").select("id,diagnostic_run_id,grade_min,grade_max,confidence,recommended_starting_level,narrative_estimate,expository_estimate,argumentative_estimate,source_based_estimate,provisional").eq("student_id", studentId).order("completed_at", { ascending: false }).limit(1).maybeSingle(),
     supabase.from("texts").select("id,slug"),
     supabase.from("text_versions").select("id,text_id"),
     supabase.from("questions").select("id,text_version_id,question_key"),
     supabase.from("question_choices").select("id,question_id,choice_index"),
     supabase.from("retrieval_cards").select("id,source_text_version_id,prompt_fr,rubric").eq("student_id", studentId),
-    supabase.from("retrieval_schedules").select("retrieval_card_id,due_at,interval_days,ease_factor,repetitions,last_result"),
+    supabase.from("retrieval_schedules").select("retrieval_card_id,due_at,interval_days,ease_factor,repetitions,last_result,stability,difficulty,last_reviewed_at"),
     supabase.from("student_word_mastery").select("vocabulary_item_id,exposures,last_seen_at").eq("student_id", studentId),
     supabase.from("vocabulary_items").select("id,display_word"),
   ]);
@@ -89,10 +103,26 @@ export async function getStudentStateData(
   }
 
   let diagnostic: DiagnosticResult | null = null;
+  let diagnosticSectionProfile: StudentState["diagnosticSectionProfile"] = {};
   const diagnosticRow = diagnosticResult.data as DiagnosticRow | null;
   if (diagnosticRow) {
-    const { data } = await supabase.from("diagnostic_skill_results")
-      .select("skill_id,ability,is_foundation_gap").eq("diagnostic_result_id", diagnosticRow.id);
+    const [{ data }, nodeResults, runSections] = await Promise.all([
+      supabase.from("diagnostic_skill_results")
+        .select("skill_id,ability,is_foundation_gap").eq("diagnostic_result_id", diagnosticRow.id),
+      diagnosticRow.diagnostic_run_id
+        ? supabase.from("diagnostic_node_results")
+          .select("section_key,classification,mastery_probability,evidence_coverage_confirmed,evidence_kind")
+          .eq("run_id", diagnosticRow.diagnostic_run_id)
+        : Promise.resolve({ data: [], error: null }),
+      diagnosticRow.diagnostic_run_id
+        ? supabase.from("diagnostic_run_sections")
+          .select("section_key,target_node_count")
+          .eq("run_id", diagnosticRow.diagnostic_run_id)
+        : Promise.resolve({ data: [], error: null }),
+    ]);
+    if (nodeResults.error || runSections.error) {
+      throw new Error(nodeResults.error?.message ?? runSections.error?.message);
+    }
     const byKey: Record<string, number> = {};
     const gaps: string[] = [];
     for (const row of (data ?? []) as DiagnosticSkillRow[]) {
@@ -112,6 +142,22 @@ export async function getStudentStateData(
       recommendedStartingLevel: diagnosticRow.recommended_starting_level,
       foundationGaps: gaps,
     };
+    const targetCounts = Object.fromEntries(
+      ((runSections.data ?? []) as DiagnosticRunSectionRow[]).map((row) => [
+        row.section_key,
+        Number(row.target_node_count),
+      ]),
+    ) as Partial<Record<DiagnosticSectionProfileKey, number>>;
+    diagnosticSectionProfile = diagnosticSectionProfileFromRows(
+      ((nodeResults.data ?? []) as DiagnosticNodeResultRow[]).map((row) => ({
+        sectionKey: row.section_key,
+        classification: row.classification,
+        masteryProbability: number(row.mastery_probability, .5),
+        evidenceCoverageConfirmed: Boolean(row.evidence_coverage_confirmed),
+        evidenceKind: row.evidence_kind,
+      })),
+      targetCounts,
+    );
   }
 
   const sessions: ReadingSessionResult[] = ((sessionsResult.data ?? []) as SessionRow[]).map((row) => ({
@@ -155,6 +201,9 @@ export async function getStudentStateData(
       sourceTextId: row.source_text_version_id ? versionToKey.get(row.source_text_version_id) ?? row.source_text_version_id : "",
       intervalDays: schedule.interval_days ?? 1, ease: number(schedule.ease_factor, 2.5), repetitions: schedule.repetitions,
       dueAt: schedule.due_at, ...(schedule.last_result ? { lastResult: schedule.last_result } : {}),
+      ...(schedule.stability != null ? { stability: Number(schedule.stability) } : {}),
+      ...(schedule.difficulty != null ? { difficulty: Number(schedule.difficulty) } : {}),
+      ...(schedule.last_reviewed_at ? { lastReviewedAt: schedule.last_reviewed_at } : {}),
     }];
   });
 
@@ -170,6 +219,6 @@ export async function getStudentStateData(
     grade: student.current_grade,
     frenchBackground: student.french_background,
     interests: (interestsResult.data ?? []).map((row) => row.interest_key as string),
-    diagnostic, sessions, answersByText, skillEstimates, retrievalCards, vocab,
+    diagnostic, diagnosticProvisional: Boolean(diagnosticRow?.provisional), diagnosticSectionProfile, sessions, answersByText, skillEstimates, retrievalCards, vocab,
   };
 }

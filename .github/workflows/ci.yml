@@ -3,7 +3,7 @@ name: CI
 on:
   pull_request:
   push:
-    branches: [main]
+    branches: [main, develop]
 
 permissions:
   contents: read
@@ -49,3 +49,46 @@ jobs:
 
       - name: Apply migrations and reference seed
         run: supabase db start
+
+      - name: Verify all database contracts
+        run: supabase test db
+
+  browser:
+    name: Browser journeys and accessibility
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - uses: supabase/setup-cli@v2
+        with:
+          version: 2.109.1
+          github-token: ${{ github.token }}
+      - name: Start and seed isolated browser backend
+        run: |
+          supabase start
+          eval "$(supabase status -o env)"
+          export NEXT_PUBLIC_SUPABASE_URL="$API_URL"
+          export NEXT_PUBLIC_SUPABASE_ANON_KEY="$ANON_KEY"
+          export SUPABASE_SERVICE_ROLE_KEY="$SERVICE_ROLE_KEY"
+          export SUPABASE_PROJECT_REF=local
+          echo "NEXT_PUBLIC_SUPABASE_URL=$API_URL" >> "$GITHUB_ENV"
+          echo "NEXT_PUBLIC_SUPABASE_ANON_KEY=$ANON_KEY" >> "$GITHUB_ENV"
+          echo "SUPABASE_SERVICE_ROLE_KEY=$SERVICE_ROLE_KEY" >> "$GITHUB_ENV"
+          echo "SUPABASE_PROJECT_REF=local" >> "$GITHUB_ENV"
+          npm run taxonomy:import:v2
+          npm run diagnostic:import:v2
+          npm run diagnostic:prepare-pilot:v2
+          npm run seed:demo
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Run browser and accessibility checks
+        env:
+          E2E_AUTHENTICATED: "true"
+          E2E_INCOMING_STUDENT: "true"
+          E2E_DEMO_PASSWORD: Demo-2026-Strong!
+        run: npm run test:e2e

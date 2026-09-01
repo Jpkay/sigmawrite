@@ -1,0 +1,3 @@
+begin;
+set local role postgres;
+set local search_path = public, extensions;create extension if not exists pgtap with schema extensions;select plan(5);select has_table('public','reading_completion_runs','Reading completion has durable claim');select col_is_pk('public','reading_completion_runs','session_id','One completion per session');select has_function('public','claim_reading_completion',array['uuid','uuid'],'Claim function exists');select function_privs_are('public','claim_reading_completion',array['uuid','uuid'],'authenticated',array[]::text[],'Clients cannot claim completion');select function_privs_are('public','finish_reading_completion',array['uuid','jsonb'],'authenticated',array[]::text[],'Clients cannot forge completion');select * from finish();rollback;

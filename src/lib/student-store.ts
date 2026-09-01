@@ -4,11 +4,11 @@ import { useSyncExternalStore } from "react";
 import type { DiagnosticResult, ReadingSessionResult } from "@/lib/types";
 import { updateSkillEstimate, type SkillEstimate } from "@/lib/scoring/skill-estimate";
 import {
-  scheduleNext,
   dueAtFrom,
   INITIAL_SCHEDULE,
   type RetrievalResult,
 } from "@/lib/scoring/retrieval";
+import { scheduleFsrs } from "@/lib/scoring/fsrs";
 import type { RetrievalCardSeed } from "@/lib/content/retrieval-cards";
 import {
   EMPTY_STUDENT_STATE,
@@ -53,14 +53,24 @@ function readLocal(): StudentState {
 
 let snapshot: StudentState | null = null;
 let hydratePromise: Promise<void> | null = null;
+let ownerKey: string | null = null;
+let hydrationVersion = 0;
 const listeners = new Set<() => void>();
 
 const notify = () => listeners.forEach((l) => l());
 
 function ensureHydrated(): Promise<void> {
   if (!configured) return Promise.resolve();
-  if (!hydratePromise) hydratePromise = hydrate();
+  if (!hydratePromise) hydratePromise = hydrate(hydrationVersion);
   return hydratePromise;
+}
+
+function bindOwner(nextOwnerKey?: string) {
+  if (!nextOwnerKey || nextOwnerKey === ownerKey) return;
+  ownerKey = nextOwnerKey;
+  hydrationVersion += 1;
+  hydratePromise = null;
+  snapshot = configured ? { ...EMPTY } : readLocal();
 }
 
 export function getStudentState(): StudentState {
@@ -72,12 +82,14 @@ export function getStudentState(): StudentState {
   return snapshot;
 }
 
-async function hydrate() {
+async function hydrate(version: number) {
   try {
     const { loadStudentState } = await import("@/lib/actions/student");
     const data = await loadStudentState();
+    if (version !== hydrationVersion) return;
     snapshot = { ...EMPTY, ...data, hydrated: true };
   } catch {
+    if (version !== hydrationVersion) return;
     snapshot = { ...EMPTY, hydrated: true };
   }
   notify();
@@ -112,7 +124,8 @@ export function update(patch: Partial<StudentState>): StudentState {
   return next;
 }
 
-export function useStudentState(): StudentState {
+export function useStudentState(nextOwnerKey?: string): StudentState {
+  bindOwner(nextOwnerKey);
   return useSyncExternalStore(
     (cb) => {
       listeners.add(cb);
@@ -206,13 +219,21 @@ export function recordRetrieval(
   return update({
     retrievalCards: state.retrievalCards.map((c) => {
       if (c.id !== cardId) return c;
-      const next = scheduleNext(
-        { intervalDays: c.intervalDays, ease: c.ease, repetitions: c.repetitions },
-        result
-      );
+      const prevState =
+        c.stability != null && c.difficulty != null
+          ? { stability: c.stability, difficulty: c.difficulty }
+          : null;
+      const elapsedDays = c.lastReviewedAt
+        ? Math.max(0, (nowMs - Date.parse(c.lastReviewedAt)) / 86_400_000)
+        : c.intervalDays;
+      const next = scheduleFsrs(prevState, result, elapsedDays);
       return {
         ...c,
-        ...next,
+        intervalDays: next.intervalDays,
+        repetitions: result === "forgot" ? 0 : c.repetitions + 1,
+        stability: next.stability,
+        difficulty: next.difficulty,
+        lastReviewedAt: new Date(nowMs).toISOString(),
         dueAt: dueAtFrom(nowMs, next.intervalDays),
         lastResult: result,
       };
@@ -252,9 +273,11 @@ export function lastSuccessRate(): number | undefined {
 
 export function resetStudentState() {
   if (typeof window === "undefined") return;
-  const cleared = { ...EMPTY, hydrated: true };
+  hydrationVersion += 1;
+  hydratePromise = null;
+  ownerKey = null;
+  const cleared = { ...EMPTY };
   snapshot = cleared;
   notify();
-  persistLocal(cleared);
-  if (!configured) window.localStorage.removeItem(KEY);
+  window.localStorage.removeItem(KEY);
 }

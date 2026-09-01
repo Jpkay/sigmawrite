@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { needsInvitedPasswordSetup } from "@/lib/auth-invite";
+import { safeAuthRedirect } from "@/lib/auth-redirect";
 import { createClient } from "@/lib/supabase/server";
 import { ROLE_HOME, type Role } from "@/lib/types";
 
@@ -12,15 +13,16 @@ export async function GET(request: NextRequest) {
   const { data, error } = await db.auth.exchangeCodeForSession(code);
   if (error || !data.user) return NextResponse.redirect(`${origin}/login?error=auth_callback`);
 
-  const { data: profile } = await db.from("profiles").select("role").eq("auth_user_id", data.user.id).maybeSingle();
+  const { data: profile } = await db.from("profiles").select("role,must_change_password").eq("auth_user_id", data.user.id).maybeSingle();
   const role = profile?.role as Role | undefined;
-  if (!role || !["parent", "teacher", "school_admin", "platform_admin", "content_reviewer"].includes(role)) {
+  if (!role || !(role in ROLE_HOME)) {
     await db.auth.signOut();
-    return NextResponse.redirect(`${origin}/login?error=adult_only`);
+    return NextResponse.redirect(`${origin}/login?error=profile_missing`);
   }
 
-  if (needsInvitedPasswordSetup(data.user)) {
-    return NextResponse.redirect(`${origin}/set-password`);
+  const next = safeAuthRedirect(request.nextUrl.searchParams.get("next"), ROLE_HOME[role]);
+  if (needsInvitedPasswordSetup(data.user) || profile?.must_change_password || next.startsWith("/set-password")) {
+    return NextResponse.redirect(`${origin}${next.startsWith("/set-password") ? next : "/set-password"}`);
   }
-  return NextResponse.redirect(`${origin}${ROLE_HOME[role]}`);
+  return NextResponse.redirect(`${origin}${next}`);
 }

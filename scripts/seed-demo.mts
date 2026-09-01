@@ -1,6 +1,10 @@
 import { existsSync } from "node:fs";
 import { config as loadEnv } from "dotenv";
 import { createClient, type User } from "@supabase/supabase-js";
+import {
+  DIAGNOSTIC_ITEM_BANK_RELEASE_KEY,
+  DIAGNOSTIC_TAXONOMY_RELEASE_KEY,
+} from "../src/lib/diagnostic/protocol";
 
 const envFile = process.env.DEMO_ENV_FILE ?? ".env.staging";
 if (existsSync(envFile)) loadEnv({ path: envFile, quiet: true });
@@ -10,7 +14,7 @@ const DEMO = {
   schoolId: "10000000-0000-4000-8000-000000000002",
   classId: "10000000-0000-4000-8000-000000000003",
   learningGoalId: "10000000-0000-4000-8000-000000000004",
-  organizationName: "Organisation Démo Reading to Learn",
+  organizationName: "Organisation Démo Plume",
   schoolName: "Collège Démo",
   className: "5e A",
   accounts: {
@@ -45,7 +49,7 @@ function required(name: string): string {
 
 const supabaseUrl = required("NEXT_PUBLIC_SUPABASE_URL");
 const serviceRoleKey = required("SUPABASE_SERVICE_ROLE_KEY");
-const password = process.env.DEMO_ACCOUNT_PASSWORD ?? "Demo1234!";
+const password = process.env.DEMO_ACCOUNT_PASSWORD ?? "Demo-2026-Strong!";
 const url = new URL(supabaseUrl);
 const isLocal = ["127.0.0.1", "localhost"].includes(url.hostname);
 
@@ -106,6 +110,7 @@ async function ensureProfile(user: User, account: (typeof DEMO.accounts)[keyof t
         auth_user_id: user.id,
         role: account.role,
         display_name: account.displayName,
+        username: account.email.split("@", 1)[0],
         preferred_language: "fr",
       },
       { onConflict: "auth_user_id" }
@@ -423,6 +428,46 @@ async function seedRelationalLearningData(studentId: string) {
   if (masteryError) fail("Impossible de créer la maîtrise du vocabulaire", masteryError);
 }
 
+async function ensureInternalDiagnosticPilotEnrollment(studentId: string, adminProfileId: string) {
+  const [setting, taxonomy, bank] = await Promise.all([
+    supabase.from("diagnostic_pilot_settings").select("enabled").eq("singleton", true).maybeSingle(),
+    supabase.from("taxonomy_releases").select("id").eq("release_key", DIAGNOSTIC_TAXONOMY_RELEASE_KEY).in("status", ["validating", "published"]).maybeSingle(),
+    supabase.from("diagnostic_item_bank_releases").select("id,taxonomy_release_id").eq("bank_key", DIAGNOSTIC_ITEM_BANK_RELEASE_KEY).in("status", ["draft", "validating"]).maybeSingle(),
+  ]);
+  if (setting.error || taxonomy.error || bank.error) {
+    fail("Impossible de vérifier le pilote diagnostique démo", setting.error ?? taxonomy.error ?? bank.error);
+  }
+  if (!setting.data?.enabled || !taxonomy.data || !bank.data || bank.data.taxonomy_release_id !== taxonomy.data.id) return;
+
+  const { data: existing, error: existingError } = await supabase
+    .from("diagnostic_pilot_enrollments")
+    .select("id,cohort_kind")
+    .eq("student_id", studentId)
+    .eq("active", true)
+    .maybeSingle();
+  if (existingError) fail("Impossible de vérifier l'inscription pilote démo", existingError);
+  if (existing?.cohort_kind === "feedback_participant") return;
+
+  const enrollment = {
+    student_id: studentId,
+    taxonomy_release_id: taxonomy.data.id,
+    bank_release_id: bank.data.id,
+    active: true,
+    expires_at: new Date(Date.now() + 30 * 86_400_000).toISOString(),
+    enrolled_by: adminProfileId,
+    revoked_at: null,
+    note: "Compte de test interne créé par le seed démo.",
+    cohort_kind: "internal_test",
+    feedback_agreement_source: null,
+    feedback_agreement_version: null,
+    feedback_agreed_at: null,
+  };
+  const write = existing
+    ? await supabase.from("diagnostic_pilot_enrollments").update(enrollment).eq("id", existing.id)
+    : await supabase.from("diagnostic_pilot_enrollments").insert(enrollment);
+  if (write.error) fail("Impossible de créer l'inscription pilote démo", write.error);
+}
+
 async function main() {
   const users = {
     student: await ensureUser(DEMO.accounts.student),
@@ -550,7 +595,6 @@ async function main() {
     .from("consent_records")
     .select("id")
     .eq("student_id", studentId)
-    .eq("guardian_profile_id", profiles.parent)
     .is("revoked_at", null)
     .limit(1)
     .maybeSingle();
@@ -566,6 +610,7 @@ async function main() {
     if (error) fail("Impossible de créer le consentement démo", error);
   }
 
+  await ensureInternalDiagnosticPilotEnrollment(studentId, profiles.admin);
   await seedRelationalLearningData(studentId);
 
   console.log(`Données démo prêtes sur ${isLocal ? "Supabase local" : url.hostname}.`);

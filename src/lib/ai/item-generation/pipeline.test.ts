@@ -189,6 +189,54 @@ describe("full pipeline + yield report", () => {
     expect(report.yieldRate).toBe(1);
   });
 
+  it("rejects a model response that drifts away from the requested node or modality", async () => {
+    const ctx: PipelineContext = {
+      ...baseCtx(),
+      generator: { generateItems: async () => [goodConjItem({ nodeKey: "accord_pp_etre", modality: "writing" })] },
+    };
+    const [result] = await runItemGenerationPipeline({
+      nodeKey: "present_indicatif",
+      strand: "conjugaison",
+      labelFr: "Le présent",
+      modality: "grammar_analysis",
+      learnerMode: "shared",
+      count: 1,
+    }, ctx);
+    expect(result.gates.verdict).toBe("rejected");
+    expect(result.gates.rejectionReason).toMatch(/generation contract mismatch/);
+  });
+
+  it("rejects an MCQ pretending to provide controlled-production evidence", async () => {
+    const item = goodConjItem({
+      nodeKey: "accord_pp_etre",
+      strand: "orthographe_grammaticale",
+      modality: "writing",
+      responseType: "mcq",
+      validatorType: "exact",
+      validatorConfig: undefined,
+      correctAnswer: undefined,
+      choices: [
+        { text: "est allée", correct: true },
+        { text: "est allé", correct: false },
+      ],
+    });
+    const ctx: PipelineContext = {
+      ...baseCtx(),
+      generator: { generateItems: async () => [item] },
+    };
+    const [result] = await runItemGenerationPipeline({
+      nodeKey: item.nodeKey,
+      strand: item.strand,
+      labelFr: "Accord du participe passé",
+      modality: "writing",
+      learnerMode: "shared",
+      count: 1,
+      hint: { expectation: "controlled_production", evidenceKey: "production" },
+    }, ctx);
+    expect(result.gates.verdict).toBe("rejected");
+    expect(result.gates.rejectionReason).toContain("controlled production cannot use a multiple-choice response");
+  });
+
   it("yieldReport tallies a mixed batch", () => {
     const mk = (verdict: "auto_approved" | "needs_human_review" | "rejected") => ({
       item: null, raw: {}, gates: {

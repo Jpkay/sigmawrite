@@ -1,66 +1,80 @@
 import Link from "next/link";
-import { ArrowRight, BookOpenCheck, Clock3 } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { ArrowRight, BookOpenCheck, CheckCircle2, History, Languages, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { PageHeader } from "@/components/page";
 import { requireActiveReviewer } from "@/lib/auth";
+import { getReviewerExerciseHistory, getDiagnosticItemReviewProgress } from "@/lib/db/items";
 import { getReviewNotifications, getReviewerAccess, getReviewerQueue } from "@/lib/db/reviews";
-import { difficultyBandLabel } from "@/lib/scoring/band";
+import { createServiceClient } from "@/lib/supabase/server";
+import { targetLevelProfile } from "@/lib/scoring/band";
 
-const statusLabel = { assigned: "À commencer", draft: "Brouillon", submitted: "Validée" } as const;
+type ReviewHomeProps = { searchParams: Promise<Record<string, string | string[] | undefined>> };
 
-export default async function ReviewQueuePage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+export default async function ReviewHomePage({ searchParams }: ReviewHomeProps) {
   const session = await requireActiveReviewer();
-  const [queue, access, notifications, params] = await Promise.all([getReviewerQueue(), getReviewerAccess(session.id), getReviewNotifications(), searchParams]);
-  const filter = typeof params.status === "string" ? params.status : "pending";
-  const band = typeof params.band === "string" ? params.band : "";
-  const topic = typeof params.topic === "string" ? params.topic : "";
-  const competency = typeof params.competency === "string" ? params.competency : "";
-  const pending = queue.filter((item) => item.status === "assigned").length;
-  const drafts = queue.filter((item) => item.status === "draft").length;
-  const submitted = queue.filter((item) => item.status === "submitted").length;
-  const durations = queue.flatMap((item) => item.review?.durationSeconds ? [item.review.durationSeconds] : []);
-  const averageSeconds = durations.length ? durations.reduce((sum, value) => sum + value, 0) / durations.length : 8 * 60;
-  const remainingMinutes = Math.ceil((pending + drafts) * averageSeconds / 60);
-  const filters = queue.filter((item) => {
-    if (filter === "pending" && item.status === "submitted") return false;
-    if (["assigned", "draft", "submitted"].includes(filter) && item.status !== filter) return false;
-    if (band && item.candidate.input.targetReadingBand !== band) return false;
-    if (topic && item.candidate.input.topic !== topic) return false;
-    if (competency && !item.candidate.input.targetSkills.includes(competency)) return false;
-    return true;
-  });
-  const unique = (values: string[]) => [...new Set(values)].sort();
-  const acknowledged = Boolean(access?.acknowledgedAt);
+  const service = createServiceClient();
+  const [queue, access, exerciseProgress, exerciseHistory, notifications, query] = await Promise.all([
+    getReviewerQueue(session.id, service),
+    getReviewerAccess(session.id, service),
+    getDiagnosticItemReviewProgress(service, session.id),
+    getReviewerExerciseHistory(session.id, service),
+    getReviewNotifications(undefined, true, session.id),
+    searchParams,
+  ]);
+  const unfinishedPassages = queue.filter((item) => item.status !== "submitted");
+  const passageHistory = queue.filter((item) => item.status === "submitted");
+  const draft = unfinishedPassages.find((item) => item.status === "draft");
 
-  return <>
-    <PageHeader title="Mes textes à évaluer" description="Lisez chaque texte comme si vous le prépariez pour un élève. Votre travail reste indépendant de celui des autres évaluateurs." />
-    {!acknowledged && <section className="mb-7 border-l-2 border-primary bg-primary/10 px-4 py-4" aria-label="Consignes requises"><p className="font-medium">Avant de commencer</p><p className="mt-1 text-sm text-muted-foreground">Prenez quelques minutes pour lire les consignes et confirmer que vous les avez comprises.</p><Button asChild className="mt-3"><Link href="/review/instructions">Lire les consignes</Link></Button></section>}
-    {notifications.length>0&&<aside aria-label="Notifications" className="mb-7 divide-y divide-border border-y border-border">{notifications.map((notification)=><div key={notification.id} className="py-3"><p className="text-sm font-medium">{notification.title}</p><p className="mt-0.5 text-xs text-muted-foreground">{notification.body}</p></div>)}</aside>}
+  if (!access?.acknowledgedAt) {
+    const first = draft ?? unfinishedPassages[0] ?? queue[0];
+    const level = targetLevelProfile(first?.candidate.input.targetReadingBand);
+    const excerpt = first?.candidate.generated.body.trim().split(/\s+/).slice(0, 48).join(" ");
+    return <div className="mx-auto max-w-3xl py-5 sm:py-10">
+      <p className="text-sm font-medium text-primary">Bienvenue {session.displayName ?? ""}</p>
+      <h1 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">Votre première évaluation est prête</h1>
+      <p className="mt-3 max-w-2xl text-muted-foreground">Textes, grammaire, orthographe et conjugaison seront alternés dans une même mission.</p>
+      <ol className="mt-8 grid gap-4 border-y border-border py-5 sm:grid-cols-3">{["Le français est-il naturel et clair ?", `Le contenu convient-il à la ${level.gradeLabel} ?`, "La réponse indiquée est-elle exacte ?"].map((item, index) => <li key={item} className="flex gap-3 text-sm leading-6"><span className="grid size-6 shrink-0 place-items-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">{index + 1}</span><span>{item}</span></li>)}</ol>
+      {first ? <section className="mt-9 border-l-2 border-primary pl-5 sm:pl-7"><div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm"><span className="font-semibold text-primary">Niveau cible · {level.gradeLabel}</span><span className="text-muted-foreground">{level.readerLabel}</span></div><h2 className="mt-3 text-2xl font-semibold">{first.candidate.generated.title}</h2><p className="mt-3 text-base leading-7 text-muted-foreground">{excerpt}{excerpt ? "…" : ""}</p></section> : <div className="mt-10 text-center"><BookOpenCheck className="mx-auto size-8 text-muted-foreground" /><p className="mt-3">Votre file d’évaluation est en préparation.</p></div>}
+      <div className="mt-9 flex flex-wrap items-center gap-4"><Button asChild><Link href="/review/instructions">Lire les consignes et commencer <ArrowRight /></Link></Button><p className="text-xs text-muted-foreground">Une seule confirmation est nécessaire.</p></div>
+    </div>;
+  }
 
-    <section aria-label="Progression" className="mb-8 grid grid-cols-2 gap-x-6 gap-y-4 border-y border-border py-5 sm:grid-cols-5">
-      {[['Attribués',queue.length],['À commencer',pending],['Brouillons',drafts],['Validés',submitted],['Progression',`${queue.length ? Math.round(submitted/queue.length*100) : 0}%`]].map(([label,value]) => <div key={label}><p className="text-2xl font-semibold tabular-nums">{value}</p><p className="text-xs text-muted-foreground">{label}</p></div>)}
+  const latestPassageAt = passageHistory.map((item) => item.submittedAt ?? "").sort().at(-1) ?? "";
+  const latestExerciseAt = exerciseHistory[0]?.submittedAt ?? "";
+  const hasPassage = unfinishedPassages.length > 0;
+  const hasExercise = exerciseProgress.needsReview > 0;
+  const recommendExercise = hasExercise && (!hasPassage || latestPassageAt >= latestExerciseAt);
+  const nextPassage = draft ?? unfinishedPassages[0];
+  const nextHref = recommendExercise ? "/review/exercises" : nextPassage ? `/review/${nextPassage.assignmentId}` : "/review/history";
+  const completed = passageHistory.length + exerciseHistory.length;
+  const total = queue.length + exerciseProgress.total;
+  const remaining = unfinishedPassages.length + exerciseProgress.needsReview;
+  const nextMilestone = Math.max(5, Math.ceil((completed + 1) / 5) * 5);
+  const thanks = typeof query.thanks === "string";
+  const recentNotification = notifications.find((item) => item.notification_type === "review_thanks");
+
+  return <div className="mx-auto max-w-4xl pb-12 pt-3 sm:pt-7">
+    {thanks && <div role="status" className="animate-in fade-in slide-in-from-top-2 mb-6 flex gap-3 border-l-2 border-[color:var(--success)] bg-[color:var(--success)]/8 px-4 py-4"><CheckCircle2 className="mt-0.5 size-5 shrink-0 text-[color:var(--success)]" /><div><p className="font-semibold">Merci pour votre revue.</p><p className="mt-1 text-sm leading-6 text-muted-foreground">Votre regard aide Plume à proposer un français plus juste aux enfants. Chaque avis compte réellement.</p></div></div>}
+
+    <header className="border-b border-border pb-7">
+      <p className="font-display text-xs font-semibold uppercase tracking-[0.15em] text-primary">Votre mission</p>
+      <div className="mt-3 flex flex-wrap items-end justify-between gap-4"><div><h1 className="text-3xl font-semibold tracking-[-0.035em] sm:text-4xl">Bonjour {session.displayName?.split(" ")[0] ?? ""}</h1><p className="mt-2 text-sm leading-6 text-muted-foreground">Une file variée, un contenu à la fois.</p></div><Button asChild variant="outline" size="sm"><Link href="/review/history"><History />Voir mon historique</Link></Button></div>
+    </header>
+
+    <section className="py-7" aria-label="Progression globale">
+      <div className="flex items-end justify-between gap-4"><div><p className="text-3xl font-semibold tracking-tight">{completed}</p><p className="mt-1 text-sm text-muted-foreground">revue{completed === 1 ? "" : "s"} terminée{completed === 1 ? "" : "s"}</p></div><div className="text-right"><p className="text-sm font-semibold text-primary">{remaining} à découvrir</p><p className="mt-1 text-xs text-muted-foreground">sur {total} contenus attribués</p></div></div>
+      <div className="mt-4 h-2 overflow-hidden rounded-full bg-muted"><div className="h-full rounded-full bg-primary transition-[width] duration-700" style={{ width: `${total ? Math.round(completed / total * 100) : 100}%` }} /></div>
+      <p className="mt-3 text-xs font-medium text-primary">Encore {nextMilestone - completed} revue{nextMilestone - completed === 1 ? "" : "s"} avant votre prochain cap de {nextMilestone}.</p>
+      <div className="mt-5 grid grid-cols-2 gap-x-6 gap-y-3 border-t border-border pt-4 text-sm sm:grid-cols-5"><ProgressLabel label="Textes" done={passageHistory.length} /><ProgressLabel label="Compréhension" done={exerciseHistory.filter((item) => item.sectionKey === "reading_comprehension").length} /><ProgressLabel label="Grammaire" done={exerciseHistory.filter((item) => item.sectionKey === "grammar").length} /><ProgressLabel label="Orthographe" done={exerciseHistory.filter((item) => item.sectionKey === "spelling").length} /><ProgressLabel label="Conjugaison" done={exerciseHistory.filter((item) => item.sectionKey === "conjugation").length} /></div>
     </section>
 
-    <div className="mb-5 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-      <div><h2 className="text-lg font-semibold">File de travail</h2><p className="mt-1 flex items-center gap-2 text-sm text-muted-foreground"><Clock3 className="size-4" />Environ {remainingMinutes} min restantes</p></div>
-      <form className="grid gap-2 sm:grid-cols-4" aria-label="Filtres">
-        <select name="status" defaultValue={filter} aria-label="État" className="h-10 rounded-md border border-input bg-background px-3 text-sm"><option value="pending">À faire</option><option value="assigned">À commencer</option><option value="draft">Brouillons</option><option value="submitted">Validés</option><option value="all">Tous</option></select>
-        <select name="band" defaultValue={band} aria-label="Niveau" className="h-10 rounded-md border border-input bg-background px-3 text-sm"><option value="">Tous les niveaux</option>{unique(queue.map((item) => item.candidate.input.targetReadingBand)).map((value) => <option key={value} value={value}>{difficultyBandLabel(value)}</option>)}</select>
-        <select name="topic" defaultValue={topic} aria-label="Sujet" className="h-10 rounded-md border border-input bg-background px-3 text-sm"><option value="">Tous les sujets</option>{unique(queue.map((item) => item.candidate.input.topic)).map((value) => <option key={value}>{value}</option>)}</select>
-        <select name="competency" defaultValue={competency} aria-label="Compétence" className="h-10 rounded-md border border-input bg-background px-3 text-sm"><option value="">Toutes les compétences</option>{unique(queue.flatMap((item) => item.candidate.input.targetSkills)).map((value) => <option key={value}>{value}</option>)}</select>
-        <Button type="submit" variant="outline" className="sm:col-start-4">Filtrer</Button>
-      </form>
-    </div>
+    {remaining > 0 ? <section className="border-y border-border py-7">
+      <div className="flex items-start gap-4"><span className="grid size-11 shrink-0 place-items-center rounded-full bg-primary/10 text-primary">{recommendExercise ? <Languages /> : <BookOpenCheck />}</span><div className="min-w-0 flex-1"><p className="text-xs font-semibold uppercase tracking-[0.14em] text-primary">Prochaine revue recommandée</p><h2 className="mt-2 text-2xl font-semibold">{recommendExercise ? "Un exercice de français" : "Un texte et ses questions"}</h2><p className="mt-2 text-sm leading-6 text-muted-foreground">{recommendExercise ? "La catégorie change au fil de la file : compréhension, grammaire, orthographe puis conjugaison." : draft ? "Votre brouillon vous attend exactement là où vous l’avez laissé." : "Lisez le passage comme un élève, puis évaluez sa clarté et ses questions."}</p><Button asChild className="mt-5"><Link href={nextHref}>{draft && !recommendExercise ? "Reprendre mon brouillon" : "Commencer cette revue"}<ArrowRight /></Link></Button></div></div>
+    </section> : <section className="border-y border-border py-10 text-center"><CheckCircle2 className="mx-auto size-10 text-[color:var(--success)]" /><h2 className="mt-4 text-2xl font-semibold">Tout est terminé</h2><p className="mx-auto mt-2 max-w-lg text-sm leading-6 text-muted-foreground">Merci. Votre contribution protège la qualité du français proposé aux enfants.</p></section>}
 
-    {filters.length === 0 ? <div className="py-14 text-center"><BookOpenCheck className="mx-auto size-8 text-muted-foreground" /><p className="mt-3 font-medium">Aucun texte dans cette vue</p><p className="mt-1 text-sm text-muted-foreground">Modifiez les filtres ou revenez plus tard.</p></div> : <div className="divide-y divide-border border-y border-border">{filters.map((item) => {
-      const words = item.candidate.generated.body.trim().split(/\s+/).length;
-      const minutes = Math.max(1, Math.ceil(words / 180));
-      const href = acknowledged ? `/review/${item.assignmentId}` : "/review/instructions";
-      return <article key={item.assignmentId} className="grid gap-3 py-5 sm:grid-cols-[1fr_auto] sm:items-center">
-        <div><div className="flex flex-wrap items-center gap-2"><h3 className="font-medium">{item.candidate.generated.title}</h3><Badge variant={item.status === "submitted" ? "success" : item.status === "draft" ? "secondary" : "outline"}>{statusLabel[item.status]}</Badge></div><p className="mt-2 text-sm text-muted-foreground">{difficultyBandLabel(item.candidate.input.targetReadingBand)} · {item.candidate.input.topic} · {item.candidate.input.targetSkills[0] ?? "Compréhension"}</p><p className="mt-1 text-xs text-muted-foreground">Lecture ≈ {minutes} min · attribué le {new Intl.DateTimeFormat("fr-FR", { dateStyle: "medium" }).format(new Date(item.assignedAt))}</p></div>
-        <Button asChild variant={item.status === "submitted" ? "outline" : "default"}><Link href={href}>{item.status === "assigned" ? "Commencer" : item.status === "draft" ? "Continuer" : "Consulter"}<ArrowRight /></Link></Button>
-      </article>;
-    })}</div>}
-  </>;
+    <section className="mt-7 flex gap-3 rounded-lg bg-primary/7 px-4 py-4"><Sparkles className="mt-0.5 size-5 shrink-0 text-primary" /><div><p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-primary">Message de Plume</p><p className="mt-1 text-sm font-semibold">{recentNotification?.title ?? "Votre expertise a un impact concret"}</p><p className="mt-1 text-sm leading-6 text-muted-foreground">{recentNotification?.body ?? "Quelques minutes de votre temps peuvent éviter qu’une erreur soit répétée par des centaines d’enfants. Merci de continuer."}</p></div></section>
+  </div>;
+}
+
+function ProgressLabel({ label, done }: { label: string; done: number }) {
+  return <div><p className="font-semibold">{done}</p><p className="text-xs text-muted-foreground">{label}</p></div>;
 }

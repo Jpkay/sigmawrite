@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BookOpen, Check } from "lucide-react";
+import { Check, Feather } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 export function AuthCard({
@@ -17,8 +17,8 @@ export function AuthCard({
     <main className="grid min-h-screen lg:grid-cols-[minmax(0,1.08fr)_minmax(420px,.92fr)]">
       <section className="relative hidden overflow-hidden border-r border-border bg-muted/50 p-12 lg:flex lg:flex-col lg:justify-between">
         <Link href="/" className="relative z-10 flex items-center gap-3 font-display text-xl font-bold text-foreground hover:text-foreground">
-          <span className="grid size-10 place-items-center rounded-full bg-primary text-primary-foreground"><BookOpen className="size-5" /></span>
-          SigmaWrite<span className="-ml-2.5 text-primary">.</span>
+          <span className="grid size-10 place-items-center rounded-full bg-primary text-primary-foreground"><Feather className="size-5" /></span>
+          <span>Plume<span className="text-primary">.</span></span>
         </Link>
         <div className="relative z-10 max-w-xl py-16">
           <p className="mb-5 font-display text-xs font-semibold uppercase tracking-[0.18em] text-primary">Lire · comprendre · progresser</p>
@@ -33,7 +33,7 @@ export function AuthCard({
       <section className="relative flex min-h-screen items-center justify-center px-6 py-14 sm:px-12">
         <div className="absolute right-5 top-5"><ThemeToggle /></div>
         <div className="w-full max-w-md">
-          <Link href="/" className="mb-10 flex items-center gap-2 font-display text-lg font-bold text-foreground hover:text-foreground lg:hidden"><BookOpen className="size-5 text-primary" />SigmaWrite<span className="-ml-1.5 text-primary">.</span></Link>
+          <Link href="/" className="mb-10 flex items-center gap-2 font-display text-lg font-bold text-foreground hover:text-foreground lg:hidden"><Feather className="size-5 text-primary" /><span>Plume<span className="text-primary">.</span></span></Link>
           <p className="mb-3 font-display text-xs font-semibold uppercase tracking-[0.16em] text-primary">Bienvenue</p>
           <h1 className="font-display text-4xl font-semibold tracking-[-0.04em]">{title}</h1>
         {description && (

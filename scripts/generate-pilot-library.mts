@@ -7,6 +7,8 @@ process.env.AI_PROVIDER = process.env.REAL_AI_PROVIDER ?? "glm";
 const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
 if (!url || !key) throw new Error("Staging Supabase service environment required");
+const target=new URL(url);if(!["127.0.0.1","localhost"].includes(target.hostname)){const expected=process.env.SUPABASE_PROJECT_REF;if(!expected||target.hostname.split(".")[0]!==expected)throw new Error("SUPABASE_PROJECT_REF does not match the target URL; refusing generation.");}
+const dryRun=process.argv.includes("--dry-run");
 
 const db = createClient(url, key, { auth: { persistSession: false } });
 const { runGenerationPipeline } = await import("../src/lib/ai/pipeline.ts");
@@ -17,7 +19,7 @@ const { data: prompt, error: promptError } = await db.from("prompt_versions")
   .eq("prompt_key", "text_generation").eq("active", true).single();
 if (promptError || !prompt) throw new Error("Active text prompt missing");
 
-await db.from("ai_generation_jobs").update({
+const staleResult=dryRun?{error:null}:await db.from("ai_generation_jobs").update({
   status: "failed",
   error_message: "Stale resumable pilot generation was superseded",
   completed_at: new Date().toISOString(),
@@ -61,8 +63,9 @@ const requestKey = (request: { primaryInterest: string; topic: string; targetRea
 
 // A batch is intentionally resumable. Successful combinations are never paid
 // for twice; failed jobs remain in the operational history and are retried.
-const { data: completedJobs } = await db.from("ai_generation_jobs")
+const { data: completedJobs,error:completedJobsError } = await db.from("ai_generation_jobs")
   .select("input_payload").eq("job_type", "text_generation").eq("status", "completed");
+if(completedJobsError)throw new Error(completedJobsError.message);
 const completedKeys = new Set((completedJobs ?? []).flatMap((row) => {
   const payload = row.input_payload as { request?: { primaryInterest?: string; topic?: string; targetReadingBand?: string } } | null;
   const request = payload?.request;
@@ -72,6 +75,7 @@ const completedKeys = new Set((completedJobs ?? []).flatMap((row) => {
 }));
 const pending = requests.filter((request) => !completedKeys.has(requestKey(request)));
 
+if(dryRun){console.log(JSON.stringify({dryRun:true,total:requests.length,alreadyCompleted:completedKeys.size,pending:pending.map(request=>requestKey(request))},null,2));process.exit(0);}
 const info = getAIProviderInfo();
 let next = 0;
 let completed = 0;
@@ -99,7 +103,7 @@ async function worker() {
       prompt_key: prompt.prompt_key,
       prompt_version: prompt.version_number,
     }).select("id").single();
-    if (error || !job) { failed += 1; continue; }
+    if (error || !job) { if(error?.code==="23505")continue;failed += 1;console.error(error?.message??"job claim failed");continue; }
 
     try {
       let candidate: Awaited<ReturnType<typeof runGenerationPipeline>> | null = null;
@@ -122,17 +126,17 @@ async function worker() {
         review_status: "needs_human_review",
       });
       if (candidateError) throw candidateError;
-      await Promise.all([
+      const [scoreWrite,moderationWrite]=await Promise.all([
         db.from("ai_scoring_results").insert({ candidate_id: candidate.id, score_payload: { difficulty: candidate.difficulty, question_difficulties: candidate.questionDifficulties, flags: candidate.flags } }),
         db.from("ai_moderation_results").insert({ candidate_id: candidate.id, moderation_payload: candidate.moderation, passed: candidate.moderation.passed }),
-      ]);
-      await db.from("ai_generation_jobs").update({
+      ]);if(scoreWrite.error||moderationWrite.error)throw new Error(scoreWrite.error?.message??moderationWrite.error?.message);
+      const completionWrite=await db.from("ai_generation_jobs").update({
         status: "completed",
         output_payload: { candidate_id: candidate.id, review_status: "needs_human_review" },
         duration_ms: Date.now() - started,
         gate_outcomes: { schema_valid: true, moderation_passed: candidate.flags.moderationPassed, factual_review: candidate.flags.factualNeedsReview, difficulty_mismatch: candidate.flags.difficultyMismatch },
         completed_at: new Date().toISOString(),
-      }).eq("id", job.id);
+      }).eq("id", job.id);if(completionWrite.error)throw new Error(completionWrite.error.message);
       completed += 1;
       console.log(`${completed}/${pending.length} ${request.primaryInterest.replace(/_/g, " ")} · ${request.targetReadingBand}`);
     } catch (cause) {

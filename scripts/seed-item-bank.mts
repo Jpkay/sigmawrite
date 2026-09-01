@@ -11,7 +11,12 @@ const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
 if (!url || !key) throw new Error("Supabase service environment required");
 
 const db = createClient(url, key, { auth: { persistSession: false } });
-type Stored = GeneratedItem & { qcGates?: GateResults; reviewStatus?: GateResults["verdict"] };
+type Stored = GeneratedItem & {
+  qcGates?: GateResults;
+  reviewStatus?: GateResults["verdict"];
+  generationModel?: string;
+  promptVersion?: string;
+};
 const items = JSON.parse(readFileSync(path, "utf8")) as Stored[];
 const nodeKeys = [...new Set(items.map((item) => item.nodeKey))];
 const { data: nodes, error: nodeError } = await db.from("competency_nodes").select("id,key").in("key", nodeKeys);
@@ -52,8 +57,8 @@ for (const batch of chunks(missing, 100)) {
     cefr_level: item.cefrLevel ?? null,
     difficulty: item.difficulty ?? 50,
     generation_type: "ai",
-    generation_model: "glm-5.2",
-    prompt_version: "item-generation-v1",
+    generation_model: item.generationModel ?? "glm-5.2",
+    prompt_version: item.promptVersion ?? "item-generation-v1",
     qc_gates: item.qcGates ?? {},
     review_status: item.reviewStatus ?? "auto_approved",
   }))).select("id,primary_node_id,prompt_fr");

@@ -1,12 +1,14 @@
 begin;
+set local role postgres;
+set local search_path = public, extensions;
 create extension if not exists pgtap with schema extensions;
 select plan(16);
 
 insert into public.ontology_versions(id,version,document_path,status,approved_at)
-values('71000000-0000-4000-8000-000000000001','1.0.0','docs/french-ontology-v1.md','active',now());
+values('71000000-0000-4000-8000-000000000001','test-1.0.0','docs/french-ontology-v1.md','active',now());
 
 insert into public.taxonomy_sources(id,source_key,title,owner_name,source_kind,steward)
-values('72000000-0000-4000-8000-000000000001','sigma-original-taxonomy','SigmaWrite French Taxonomy','SigmaWrite','original','taxonomy-steward');
+values('72000000-0000-4000-8000-000000000001','test-sigma-original-taxonomy','SigmaWrite French Taxonomy test fixture','SigmaWrite','original','taxonomy-steward');
 
 select throws_ok(
   $$insert into public.taxonomy_source_versions(source_id,version_label,rights_status,attribution_template,commercial_use_allowed,decision_notes) values('72000000-0000-4000-8000-000000000001','bad','importable','© SigmaWrite',true,'Missing exact terms')$$,
@@ -19,7 +21,7 @@ insert into public.taxonomy_source_versions(
   decision_notes,approved_at
 ) values (
   '73000000-0000-4000-8000-000000000001','72000000-0000-4000-8000-000000000001',
-  '1.0.0','sha256:test','importable','Proprietary-SigmaWrite-v1','Original SigmaWrite records',
+  'test-1.0.0','sha256:test','importable','Proprietary-SigmaWrite-v1','Original SigmaWrite records',
   array['competency_nodes','competency_edges','mastery_evidence'],
   '© SigmaWrite, French Taxonomy {release_version}.',true,'Original taxonomy source.',now()
 );
@@ -43,7 +45,7 @@ insert into public.taxonomy_releases(
   id,release_key,version,ontology_version_id,status,manifest,manifest_checksum,
   validation_report,published_at
 ) values (
-  '74000000-0000-4000-8000-000000000001','test-release','0.0.1',
+  '74000000-0000-4000-8000-000000000001','test-release','test-0.0.1',
   '71000000-0000-4000-8000-000000000001','draft','{"counts":{"competency_node":1}}',
   'sha256:manifest','{"valid":true}',now()
 );
@@ -59,6 +61,8 @@ insert into public.taxonomy_release_memberships(
 -- published_by is nullable at draft time but required by the publication check.
 insert into auth.users(id,instance_id,aud,role,email,encrypted_password,email_confirmed_at,raw_app_meta_data,raw_user_meta_data,created_at,updated_at)
 values('76000000-0000-4000-8000-000000000001','00000000-0000-0000-0000-000000000000','authenticated','authenticated','taxonomy-admin@test.local','',now(),'{}','{"role":"platform_admin","display_name":"Taxonomy Admin"}',now(),now());
+update public.profiles set role='platform_admin'
+where auth_user_id='76000000-0000-4000-8000-000000000001';
 
 update public.taxonomy_releases
 set status='published', published_by=(select id from public.profiles where auth_user_id='76000000-0000-4000-8000-000000000001')
@@ -92,4 +96,3 @@ select is(
 
 select * from finish();
 rollback;
-

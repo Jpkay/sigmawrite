@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildTaxonomyManifest, validateTaxonomy, type TaxonomyCandidate } from "./validate";
+import { buildTaxonomyManifest, validateInstructionalProgression, validateTaxonomy, type TaxonomyCandidate } from "./validate";
 
 const node = (key: string, level = "A1") => ({
   key,
@@ -54,3 +54,17 @@ describe("taxonomy release validation", () => {
   });
 });
 
+describe("instructional progression validation", () => {
+  it("rejects isolated advanced and productive nodes without prerequisites", () => {
+    const input = candidate();
+    input.nodes.push({
+      ...node("advanced", "B1"),
+      labelFr: "Produire seul",
+      evidence: [{ ...node("advanced").evidence[0], expectation: "controlled_production" }],
+    });
+    const codes = validateInstructionalProgression(input).map((issue) => issue.code);
+    expect(codes).toContain("isolated_instructional_node");
+    expect(codes).toContain("advanced_node_without_prerequisite");
+    expect(codes).toContain("productive_node_without_prerequisite");
+  });
+});

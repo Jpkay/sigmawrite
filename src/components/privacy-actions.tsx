@@ -11,7 +11,8 @@ import {
 } from "@/lib/actions/parent";
 
 /** Per-child privacy controls (PRD §10): consent, data export, deletion request. */
-export function PrivacyActions({ studentId, name }: { studentId: string; name: string }) {
+export function PrivacyActions({ studentId, name, language="fr" }: { studentId: string; name: string; language?:"fr"|"en" }) {
+  const en=language==="en";
   const [msg, setMsg] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
 
@@ -21,7 +22,7 @@ export function PrivacyActions({ studentId, name }: { studentId: string; name: s
     try {
       await fn();
     } catch (e) {
-      setMsg(e instanceof Error ? e.message : "Erreur.");
+      setMsg(e instanceof Error ? e.message : en ? "Error." : "Erreur.");
     } finally {
       setBusy(false);
     }
@@ -37,11 +38,11 @@ export function PrivacyActions({ studentId, name }: { studentId: string; name: s
           onClick={() =>
             run(async () => {
               await giveConsent({ studentId });
-              setMsg("Consentement enregistré.");
+              setMsg(en?"Family authorization recorded.":"Autorisation familiale enregistrée.");
             })
           }
         >
-          <ShieldCheck /> Donner le consentement
+          <ShieldCheck /> {en?"Authorize family access":"Autoriser l’accès familial"}
         </Button>
 
         <Button
@@ -50,10 +51,10 @@ export function PrivacyActions({ studentId, name }: { studentId: string; name: s
           disabled={busy}
           onClick={() => run(async () => {
             await revokeConsent({ studentId });
-            setMsg("Consentement révoqué. L'accès aux activités est suspendu.");
+            setMsg(en?"Family authorization revoked. Active school enrollment, if any, remains authoritative.":"Autorisation familiale retirée. Une inscription scolaire active, le cas échéant, reste valable.");
           })}
         >
-          Révoquer le consentement
+          {en?"Revoke family authorization":"Retirer l’autorisation familiale"}
         </Button>
 
         <Button
@@ -72,11 +73,11 @@ export function PrivacyActions({ studentId, name }: { studentId: string; name: s
               a.download = `donnees-${name.replace(/\s+/g, "-").toLowerCase()}.json`;
               a.click();
               URL.revokeObjectURL(url);
-              setMsg("Export téléchargé.");
+              setMsg(en?"Export downloaded.":"Export téléchargé.");
             })
           }
         >
-          <Download /> Exporter les données
+          <Download /> {en?"Export data":"Exporter les données"}
         </Button>
 
         <Button
@@ -86,11 +87,11 @@ export function PrivacyActions({ studentId, name }: { studentId: string; name: s
           onClick={() =>
             run(async () => {
               await requestDataDeletion(studentId);
-              setMsg("Demande de suppression enregistrée. L'établissement la traitera.");
+              setMsg(en?"Deletion request recorded. The controller will process it.":"Demande de suppression enregistrée. L'établissement la traitera.");
             })
           }
         >
-          <Trash2 /> Demander la suppression
+          <Trash2 /> {en?"Request deletion":"Demander la suppression"}
         </Button>
       </div>
       {msg && <p className="text-sm text-muted-foreground">{msg}</p>}

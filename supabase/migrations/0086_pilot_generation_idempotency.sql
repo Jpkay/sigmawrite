@@ -1,0 +1,1 @@
+create unique index if not exists ai_generation_jobs_active_pilot_key on public.ai_generation_jobs((input_payload->>'pilot_key')) where job_type='text_generation' and status in('running','completed') and input_payload ? 'pilot_key';

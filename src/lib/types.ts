@@ -8,6 +8,7 @@ export const ROLES = [
   "student",
   "parent",
   "teacher",
+  "supervisor",
   "school_admin",
   "platform_admin",
   "content_reviewer",
@@ -19,7 +20,8 @@ export const ROLE_HOME: Record<Role, string> = {
   student: "/student",
   parent: "/parent",
   teacher: "/teacher",
-  school_admin: "/admin",
+  supervisor: "/supervisor",
+  school_admin: "/teacher",
   platform_admin: "/admin",
   content_reviewer: "/review",
 };

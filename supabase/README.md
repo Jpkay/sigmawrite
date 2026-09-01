@@ -114,7 +114,7 @@ only when intentional:
 DEMO_ENV_FILE=.env.my-preview npm run seed:demo
 ```
 
-The default demo password is `Demo1234!`; set `DEMO_ACCOUNT_PASSWORD` in the
+The default demo password is `Demo-2026-Strong!`; set `DEMO_ACCOUNT_PASSWORD` in the
 ignored env file to rotate it. The script does not print service keys or the
 password.
 

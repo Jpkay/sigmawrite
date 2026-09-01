@@ -21,6 +21,7 @@ const reviewInput = z.object({
     outcome: z.enum(["correct_clear", "minor_issue", "ambiguous", "incorrect"]),
     comment: z.string().max(2000),
   })).max(30),
+  revision: z.boolean().optional(),
 });
 
 function refreshReviewPages() {
@@ -36,6 +37,49 @@ export async function acknowledgeReviewInstructions() {
   if (error) throw new Error(error.message);
   revalidatePath("/review");
   return { ok: true };
+}
+
+/** Keeps the platform-admin role while enabling the same profile for review assignments. */
+export async function enableAdminReviewerMode() {
+  const admin = await requireRole(["platform_admin"]);
+  const db = await createClient();
+  const { data: existing, error: readError } = await db.from("content_reviewer_profiles")
+    .select("profile_id,active")
+    .eq("profile_id", admin.id)
+    .maybeSingle();
+  if (readError) throw new Error(readError.message);
+
+  const now = new Date().toISOString();
+  if (existing) {
+    const { error } = await db.from("content_reviewer_profiles").update({
+      active: true,
+      invite_status: "active",
+      activated_at: now,
+      deactivated_at: null,
+      updated_at: now,
+    }).eq("profile_id", admin.id);
+    if (error) throw new Error(error.message);
+  } else {
+    const { error } = await db.from("content_reviewer_profiles").insert({
+      profile_id: admin.id,
+      active: true,
+      invite_status: "active",
+      invited_by: admin.id,
+      invited_at: now,
+      activated_at: now,
+    });
+    if (error) throw new Error(error.message);
+  }
+
+  await logAudit("review.admin_reviewer_mode_enabled", {
+    targetType: "profile",
+    targetId: admin.id,
+    metadata: { reviewerProfileCreated: !existing },
+  });
+  revalidatePath("/review");
+  revalidatePath("/admin/reviews/reviewers");
+  revalidatePath("/admin/reviews/assign");
+  return { ok: true, reviewerProfileCreated: !existing };
 }
 
 export async function saveReviewDraft(input: unknown) {
@@ -59,15 +103,17 @@ export async function saveReviewDraft(input: unknown) {
 export async function submitReview(input: unknown) {
   await requireActiveReviewer();
   const data = reviewInput.parse(input);
-  const { data: reviewId, error } = await (await createClient()).rpc("save_content_review", {
+  const rpc = data.revision ? "revise_content_review" : "save_content_review";
+  const args = {
     p_assignment_id: data.assignmentId,
     p_scores: data.scores,
     p_decision: data.decision,
     p_general_comment: data.generalComment,
     p_issue_tags: data.issueTags,
     p_question_reviews: data.questionReviews,
-    p_submit: true,
-  });
+    ...(data.revision ? {} : { p_submit: true }),
+  };
+  const { data: reviewId, error } = await (await createClient()).rpc(rpc, args);
   if (error) throw new Error(error.message);
   refreshReviewPages();
   return { reviewId };

@@ -166,4 +166,6 @@ describe("runGenerationPipeline (mock provider)", () => {
       "needs_human_review",
     ]).toContain(candidate.reviewStatus);
   });
+  it("requires human review when duplicate checking is unavailable",()=>{expect(decideReviewStatus({moderationPassed:true,factualNeedsReview:false,sensitive:false,difficultyMismatch:false,duplicateCheckUnavailable:true})).toBe("needs_human_review");});
+
 });

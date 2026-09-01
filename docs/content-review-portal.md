@@ -47,6 +47,18 @@ The first immutable review snapshot is created from every candidate in
 `needs_human_review`. The initial screen selects the 60 newest pilot passages;
 the earlier smoke candidate remains available but unselected.
 
+Diagnostic exercises use a separate one-owner workload. Open
+`/admin/items/review`, select the active real educators, and use **Attribuer les
+exercices restants**. The guarded allocator is idempotent, balances every
+section across the selected reviewers, creates a varied personal queue, sends
+one aggregate notification per reviewer, and writes an attributable audit
+event. It never changes an existing owner. Database triggers also refuse an
+auto- or human-approved learner-visible surface that duplicates another live
+item for the same competency node. For MCQs, migration `0106` includes the
+normalized, order-insensitive answer set; generic stems with different choices
+are distinct exercises. Open responses remain unique by normalized prompt, and
+choice mutations are guarded too.
+
 ## Reviewer workflow
 
 First-time reviewers acknowledge `/review/instructions`. They then open an

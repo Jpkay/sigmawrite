@@ -3,13 +3,13 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
-import { BookOpen } from "lucide-react";
+import { Feather } from "lucide-react";
 import { SignOutButton } from "@/components/sign-out-button";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { identifyAnalytics } from "@/lib/analytics";
 
-export type NavItem = { href: string; label: string };
+export type NavItem = { href: string; label: string; matchPrefixes?: readonly string[] };
 
 /**
  * Shared chrome for every role dashboard: branded sidebar with nav + a
@@ -20,12 +20,16 @@ export function DashboardShell({
   nav,
   user,
   signOutLabel,
+  modeSwitch,
+  language = "fr",
   children,
 }: {
   area: string;
   nav: NavItem[];
   user?: { name: string; role: string; analyticsId?: string };
   signOutLabel?: string;
+  modeSwitch?: React.ReactNode;
+  language?: "fr" | "en";
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
@@ -33,25 +37,28 @@ export function DashboardShell({
   useEffect(() => { if (user?.analyticsId) identifyAnalytics(user.analyticsId, user.role); }, [user?.analyticsId, user?.role]);
 
   return (
-    <div className="flex min-h-screen w-full bg-background">
+    <div lang={language} className="flex min-h-screen w-full bg-background">
+      <a href="#main-content" className="sr-only z-[100] rounded bg-background p-3 focus:not-sr-only focus:fixed focus:left-3 focus:top-3">{language === "en" ? "Skip to content" : "Aller au contenu"}</a>
       <aside className="hidden w-64 shrink-0 flex-col border-r border-border bg-card/80 md:flex">
         <div className="flex h-18 items-center gap-2.5 border-b border-border px-5">
-          <span className="grid size-9 place-items-center rounded-full bg-primary text-primary-foreground"><BookOpen className="size-4" /></span>
-          <span className="font-display text-lg font-bold tracking-tight">SigmaWrite<span className="text-primary">.</span></span>
+          <span className="grid size-9 place-items-center rounded-full bg-primary text-primary-foreground"><Feather className="size-4" /></span>
+          <span className="font-display text-lg font-bold tracking-tight">Plume<span className="text-primary">.</span></span>
           <div className="ml-auto"><ThemeToggle /></div>
         </div>
         <div className="px-5 pb-3 pt-6 font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
           {area}
         </div>
-        <nav className="flex-1 space-y-1 px-3">
+        <nav aria-label={area} className="flex-1 space-y-1 px-3">
           {nav.map((item) => {
             const active =
               pathname === item.href ||
-              (item.href !== home && pathname.startsWith(item.href + "/"));
+              (item.href !== home && pathname.startsWith(item.href + "/")) ||
+              item.matchPrefixes?.some((prefix) => pathname === prefix || pathname.startsWith(prefix + "/"));
             return (
               <Link
                 key={item.href}
                 href={item.href}
+                aria-current={active ? "page" : undefined}
                 className={cn(
                   "relative block rounded-md px-3 py-2.5 text-sm font-medium transition-all",
                   active
@@ -73,19 +80,21 @@ export function DashboardShell({
               </div>
             </div>
           )}
+          {modeSwitch && <div className="mb-2">{modeSwitch}</div>}
           <SignOutButton label={signOutLabel} />
         </div>
       </aside>
 
-      <main className="min-w-0 flex-1 overflow-x-hidden">
+      <main id="main-content" className="min-w-0 flex-1 overflow-x-hidden">
         <div className="sticky top-0 z-30 border-b border-border bg-background/90 px-4 py-3 backdrop-blur-xl md:hidden">
           <div className="mb-3 flex items-center justify-between gap-3">
-            <Link href={home ?? "/"} className="flex items-center gap-2 font-display font-bold text-foreground hover:text-foreground"><BookOpen className="size-5 text-primary" />SigmaWrite<span className="text-primary">.</span></Link>
+            <Link href={home ?? "/"} className="flex items-center gap-2 font-display font-bold text-foreground hover:text-foreground"><Feather className="size-5 text-primary" /><span>Plume<span className="text-primary">.</span></span></Link>
             <div className="flex items-center gap-2"><ThemeToggle /><SignOutButton label={signOutLabel} /></div>
           </div>
           <nav aria-label={area} className="flex max-w-[calc(100vw-2rem)] gap-1 overflow-x-auto pb-1">
-            {nav.map((item) => <Link key={item.href} href={item.href} className={cn("shrink-0 rounded-md px-3 py-2 text-sm", pathname === item.href || (item.href !== home && pathname.startsWith(item.href + "/")) ? "bg-primary/15 text-primary" : "text-muted-foreground")}>{item.label}</Link>)}
+            {nav.map((item) => { const active=pathname === item.href || (item.href !== home && pathname.startsWith(item.href + "/")) || item.matchPrefixes?.some((prefix) => pathname === prefix || pathname.startsWith(prefix + "/")); return <Link key={item.href} href={item.href} aria-current={active?"page":undefined} className={cn("shrink-0 rounded-md px-3 py-2 text-sm",active ? "bg-primary/15 text-primary" : "text-muted-foreground")}>{item.label}</Link>;})}
           </nav>
+          {modeSwitch && <div className="mt-2">{modeSwitch}</div>}
         </div>
         <div className="mx-auto w-full max-w-7xl px-4 py-7 sm:px-8 sm:py-10 lg:px-10">{children}</div>
       </main>

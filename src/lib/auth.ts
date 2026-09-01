@@ -8,6 +8,7 @@ export type SessionProfile = {
   authUserId: string;
   role: Role;
   displayName: string | null;
+  mustChangePassword: boolean;
 };
 
 /** Returns the current user + profile, or null if unauthenticated. */
@@ -24,13 +25,13 @@ export async function getSessionProfile(): Promise<SessionProfile | null> {
 
   const { data: profile } = await supabase
     .from("profiles")
-    .select("id, auth_user_id, role, display_name")
+    .select("id, auth_user_id, role, display_name, must_change_password")
     .eq("auth_user_id", user.id)
     .maybeSingle();
 
-  const role = (profile?.role ??
-    user.app_metadata?.role ??
-    user.user_metadata?.role) as Role | undefined;
+  // Authorization is database-owned. Auth metadata is caller-controlled and
+  // must never be used as a role fallback.
+  const role = profile?.role as Role | undefined;
   if (!role) return null;
 
   return {
@@ -38,6 +39,7 @@ export async function getSessionProfile(): Promise<SessionProfile | null> {
     authUserId: user.id,
     role,
     displayName: profile?.display_name ?? null,
+    mustChangePassword: Boolean(profile?.must_change_password),
   };
 }
 
@@ -50,6 +52,7 @@ export async function getSessionProfile(): Promise<SessionProfile | null> {
 export async function requireRole(allowed: Role[]): Promise<SessionProfile> {
   const session = await getSessionProfile();
   if (!session) redirect("/login");
+  if (session.mustChangePassword) redirect("/set-password?first=1");
   if (!allowed.includes(session.role)) redirect(ROLE_HOME[session.role]);
   return session;
 }

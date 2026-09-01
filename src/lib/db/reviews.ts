@@ -2,7 +2,7 @@ import "server-only";
 
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { ContentCandidate } from "@/lib/ai/pipeline";
-import type { ReviewDecision, ReviewDraft, ReviewQueueItem, ReviewScores } from "@/lib/review/types";
+import { hasReviewablePassageBody, type ReviewDecision, type ReviewDraft, type ReviewQueueItem, type ReviewScores } from "@/lib/review/types";
 import { createClient } from "@/lib/supabase/server";
 import { oneToOne } from "@/lib/supabase/relations";
 
@@ -82,16 +82,23 @@ function mapAssignment(row: AssignmentRow): ReviewQueueItem {
   };
 }
 
-export async function getReviewerQueue(client?: SupabaseClient): Promise<ReviewQueueItem[]> {
+export async function getReviewerQueue(reviewerProfileId: string, client?: SupabaseClient): Promise<ReviewQueueItem[]> {
   const db = client ?? await createClient();
-  const { data, error } = await db.from("review_assignments").select(assignmentSelect).order("assigned_at", { ascending: true });
+  const { data, error } = await db.from("review_assignments").select(assignmentSelect)
+    .eq("reviewer_profile_id", reviewerProfileId)
+    .order("assigned_at", { ascending: true });
   if (error) throw new Error(error.message);
-  return ((data ?? []) as unknown as AssignmentRow[]).map(mapAssignment);
+  return ((data ?? []) as unknown as AssignmentRow[])
+    .map(mapAssignment)
+    .filter((item) => item.status === "submitted" || hasReviewablePassageBody(item.candidate));
 }
 
-export async function getReviewAssignment(assignmentId: string, client?: SupabaseClient): Promise<ReviewQueueItem | null> {
+export async function getReviewAssignment(assignmentId: string, reviewerProfileId: string, client?: SupabaseClient): Promise<ReviewQueueItem | null> {
   const db = client ?? await createClient();
-  const { data, error } = await db.from("review_assignments").select(assignmentSelect).eq("id", assignmentId).maybeSingle();
+  const { data, error } = await db.from("review_assignments").select(assignmentSelect)
+    .eq("id", assignmentId)
+    .eq("reviewer_profile_id", reviewerProfileId)
+    .maybeSingle();
   if (error) throw new Error(error.message);
   return data ? mapAssignment(data as unknown as AssignmentRow) : null;
 }
@@ -123,11 +130,14 @@ export async function getReviewerAccess(profileId: string, client?: SupabaseClie
   } : null;
 }
 
-export async function getReviewNotifications(client?: SupabaseClient) {
+export async function getReviewNotifications(client?: SupabaseClient, includeRead = false, recipientProfileId?: string) {
   const db = client ?? await createClient();
-  const { data, error } = await db.from("review_notifications")
+  let query = db.from("review_notifications")
     .select("id,notification_type,title,body,review_version_id,read_at,created_at")
-    .is("read_at", null).order("created_at", { ascending: false }).limit(5);
+    .order("created_at", { ascending: false }).limit(8);
+  if (!includeRead) query = query.is("read_at", null);
+  if (recipientProfileId) query = query.eq("recipient_profile_id", recipientProfileId);
+  const { data, error } = await query;
   if (error) throw new Error(error.message);
   return data ?? [];
 }

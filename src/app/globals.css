@@ -53,13 +53,13 @@
   --border: #ece2ce;
   --border-strong: #e3d6bc;
   --input: #ece2ce;
-  --ring: #ff3f8e;
+  --ring: #a80049;
   --rail: #e7dcc4;
   --locked: #aea591;
   --locked-border: #d3c7ac;
-  --primary: #ff3f8e;
-  --primary-foreground: #2a0a18;
-  --primary-soft: #ff7db1;
+  --primary: #a80049;
+  --primary-foreground: #ffffff;
+  --primary-soft: #8b003d;
   --secondary: #f5a300;
   --secondary-foreground: #2a1a00;
   --accent: #fbe3ec;
@@ -158,3 +158,7 @@ select option { background-color: var(--card) !important; color: var(--foregroun
     transition-duration: 0.01ms !important;
   }
 }
+
+html[data-reading-scale="large"]{font-size:112.5%;}
+html[data-reading-scale="extra"]{font-size:125%;}
+html[data-reduced-motion="true"] *,html[data-reduced-motion="true"] *::before,html[data-reduced-motion="true"] *::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}

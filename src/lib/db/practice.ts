@@ -1,10 +1,55 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { createClient } from "@/lib/supabase/server";
+import { itemRatingFromDifficulty, orderByTargetSuccess } from "@/lib/scoring/elo";
+import { lessonForPracticeNode } from "@/lib/practice/lessons";
+import { predictedSuccess, selectOptimalPracticeItems } from "@/lib/practice/session";
 
-export type CatchUpStep = { nodeId: string; key: string; label: string; depth: number; mastery: number };
+export type CatchUpStep = {
+  nodeId: string;
+  key: string;
+  label: string;
+  depth: number;
+  mastery: number;
+  status?: "pending" | "available" | "in_progress";
+  requiredEvidenceExpectation?: "receptive" | "controlled_production" | "independent_production";
+};
 
 export async function getCatchUpPlan(studentId: string, client?: SupabaseClient): Promise<CatchUpStep[]> {
   const supabase = client ?? await createClient();
+  const { data: activePath, error: pathError } = await supabase.from("student_learning_paths")
+    .select("id")
+    .eq("student_id", studentId)
+    .eq("status", "active")
+    .order("created_at", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+  if (pathError) throw new Error(pathError.message);
+  if (activePath) {
+    const { data: steps, error: stepError } = await supabase.from("student_learning_path_steps")
+      .select("node_id,position,mastery_snapshot,status,required_evidence_expectation")
+      .eq("path_id", activePath.id)
+      .in("status", ["available", "pending", "in_progress"])
+      .order("position")
+      .limit(12);
+    if (stepError) throw new Error(stepError.message);
+    const pathNodeIds = (steps ?? []).map((step) => step.node_id as string);
+    const { data: pathNodes, error: pathNodeError } = pathNodeIds.length
+      ? await supabase.from("competency_nodes").select("id,key,label_fr").in("id", pathNodeIds)
+      : { data: [], error: null };
+    if (pathNodeError) throw new Error(pathNodeError.message);
+    const nodeById = new Map((pathNodes ?? []).map((node) => [node.id as string, node]));
+    return (steps ?? []).map((step) => ({
+      nodeId: step.node_id as string,
+      key: nodeById.get(step.node_id as string)?.key as string ?? step.node_id as string,
+      label: nodeById.get(step.node_id as string)?.label_fr as string ?? step.node_id as string,
+      depth: Math.max(0, (steps?.length ?? 1) - Number(step.position)),
+      mastery: Number(step.mastery_snapshot),
+      status: step.status as CatchUpStep["status"],
+      requiredEvidenceExpectation: step.required_evidence_expectation as CatchUpStep["requiredEvidenceExpectation"] ?? undefined,
+    }));
+  }
+  // Backward-compatible fallback for students whose legacy diagnostic predates
+  // persisted graph-derived learning paths.
   const { data: target } = await supabase.from("competency_nodes").select("id")
     .eq("key", "narration_passe").in("review_status", ["auto_approved", "human_approved"]).maybeSingle();
   if (!target) return [];
@@ -17,22 +62,61 @@ export async function getCatchUpPlan(studentId: string, client?: SupabaseClient)
     nodeId: row.node_id, key: byId.get(row.node_id)?.key as string ?? row.node_id,
     label: byId.get(row.node_id)?.label_fr as string ?? row.node_id,
     depth: row.depth, mastery: Number(row.mastery),
+    status: "available",
   }));
 }
 
-export async function getNodePractice(nodeId: string, client?: SupabaseClient) {
+export async function getNodePractice(nodeId: string, client?: SupabaseClient, studentId?: string) {
   const supabase = client ?? await createClient();
-  const { data: node, error: nodeError } = await supabase.from("competency_nodes").select("id,key,label_fr,description_fr").eq("id", nodeId).single();
+  const { data: node, error: nodeError } = await supabase.from("competency_nodes").select("id,key,label_fr,description_fr,strand").eq("id", nodeId).single();
   if (nodeError || !node) throw new Error("Compétence introuvable.");
-  const { data: items, error } = await supabase.from("competency_items")
-    .select("id,prompt_fr,instructions_fr,response_type,validator_type,validator_config,correct_answer,acceptable_answers,difficulty,competency_item_choices(id,choice_text,position,feedback_fr)")
-    .eq("primary_node_id", nodeId).in("review_status", ["auto_approved", "human_approved"]).order("difficulty").limit(8);
+  const { data: itemRows, error } = await supabase.from("competency_items")
+    .select("id,prompt_fr,instructions_fr,response_type,validator_type,validator_config,correct_answer,acceptable_answers,difficulty,difficulty_rating,competency_item_choices(id,choice_text,position,feedback_fr)")
+    .eq("primary_node_id", nodeId).in("review_status", ["auto_approved", "human_approved"])
+    .in("validator_type", ["exact", "regex", "conjugator", "agreement", "grammalecte"]).order("difficulty").limit(80);
   if (error) throw new Error(error.message);
-  return { node: { id: node.id as string, key: node.key as string, label: node.label_fr as string, description: node.description_fr as string | null }, items: (items ?? []).map((item) => ({
+  const { data: approvedLesson, error: lessonError } = await supabase.from("competency_lessons")
+    .select("explanation_fr,pattern_fr,examples_fr,exceptions_fr")
+    .eq("node_id", nodeId).in("review_status", ["auto_approved", "human_approved"]).maybeSingle();
+  if (lessonError) throw new Error(lessonError.message);
+  // Practice targets ~82% predicted success (Elo/1PL) when the learner has a
+  // rating; without one the authored easy→hard order stands.
+  let learnerRating = 0;
+  if (studentId && (itemRows?.length ?? 0) > 0) {
+    const { data: rating } = await supabase.from("student_ability_ratings")
+      .select("rating").eq("student_id", studentId).eq("strand", node.strand as string).maybeSingle();
+    learnerRating = Number(rating?.rating ?? 0);
+  }
+  const ratedItems = (itemRows ?? []).map((item) => ({
+    ...item,
+    difficultyRating: item.difficulty_rating != null
+      ? Number(item.difficulty_rating)
+      : itemRatingFromDifficulty(item.difficulty == null ? null : Number(item.difficulty)),
+    responseType: item.response_type as string,
+    validatorConfig: item.validator_config as Record<string, unknown> | null,
+  }));
+  const items = selectOptimalPracticeItems(
+      studentId ? orderByTargetSuccess(ratedItems, (item) => item.difficultyRating, learnerRating) : ratedItems,
+      learnerRating,
+    );
+  let scaffoldLevel = 0;
+  if(studentId){const{data:estimate}=await supabase.from("student_competency_estimates").select("scaffold_level").eq("student_id",studentId).eq("node_id",nodeId).maybeSingle();scaffoldLevel=Number(estimate?.scaffold_level??0);}
+  return { node: { id: node.id as string, key: node.key as string, label: node.label_fr as string, description: node.description_fr as string | null, strand: node.strand as string }, scaffoldLevel,
+    lesson: lessonForPracticeNode(
+      { key: node.key as string, label: node.label_fr as string, description: node.description_fr as string | null, strand: node.strand as string },
+      approvedLesson ? {
+        explanation: approvedLesson.explanation_fr as string,
+        pattern: approvedLesson.pattern_fr as string,
+        examples: approvedLesson.examples_fr as string[],
+        exceptions: approvedLesson.exceptions_fr as string[],
+      } : undefined,
+    ),
+    items: items.map((item) => ({
     id: item.id as string, promptFr: item.prompt_fr as string, instructionsFr: item.instructions_fr as string | null,
     responseType: item.response_type as string, validatorType: item.validator_type as string,
-    validatorConfig: item.validator_config as Record<string, unknown> | null, correctAnswer: item.correct_answer as string | null,
+    validatorConfig: item.validatorConfig, correctAnswer: item.correct_answer as string | null,
     acceptableAnswers: item.acceptable_answers as string[], difficulty: item.difficulty == null ? null : Number(item.difficulty),
+    predictedSuccess: predictedSuccess(learnerRating, item.difficultyRating),
     choices: ((item.competency_item_choices ?? []) as Array<{ id: string; choice_text: string; position: number | null; feedback_fr: string | null }>).sort((a,b) => (a.position ?? 0)-(b.position ?? 0)).map((choice) => ({ id: choice.id, text: choice.choice_text, feedbackFr: choice.feedback_fr })),
   })) };
 }

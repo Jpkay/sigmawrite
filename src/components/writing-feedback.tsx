@@ -13,9 +13,9 @@ type Evaluation = { revision_number: number; submitted_text: string; rubric: { s
 type Feedback = { originalText: string; evaluations: Evaluation[] };
 
 function AnnotatedText({ text, annotations }: { text: string; annotations: Annotation[] }) {
-  const sorted = [...annotations].sort((a,b) => a.offset-b.offset); const parts: React.ReactNode[] = []; let cursor = 0;
-  for (const [index, annotation] of sorted.entries()) { if (annotation.offset < cursor) continue; parts.push(text.slice(cursor, annotation.offset)); parts.push(<span key={index} title={`${annotation.explanationFr}${annotation.replacements?.length ? ` Suggestions : ${annotation.replacements.join(", ")}` : ""}`} className="decoration-wavy underline decoration-amber-500 decoration-2 underline-offset-4">{text.slice(annotation.offset, annotation.offset + annotation.length)}</span>); cursor = annotation.offset + annotation.length; }
-  parts.push(text.slice(cursor)); return <p className="whitespace-pre-wrap text-sm leading-7">{parts}</p>;
+  const sorted = [...annotations].sort((a,b) => a.offset-b.offset); const parts: React.ReactNode[] = []; const visible: Array<{annotation:Annotation;excerpt:string;index:number}>=[]; let cursor = 0;
+  for (const [index, annotation] of sorted.entries()) { if (annotation.offset < cursor) continue; const excerpt=text.slice(annotation.offset,annotation.offset+annotation.length);visible.push({annotation,excerpt,index});parts.push(text.slice(cursor, annotation.offset)); parts.push(<button type="button" key={index} aria-describedby={`writing-annotation-${index}`} className="rounded-sm decoration-wavy underline decoration-amber-500 decoration-2 underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">{excerpt}</button>); cursor = annotation.offset + annotation.length; }
+  parts.push(text.slice(cursor)); return <div><p className="whitespace-pre-wrap text-sm leading-7">{parts}</p>{visible.length>0&&<ol aria-label="Explications des corrections" className="mt-4 space-y-2">{visible.map(({annotation,excerpt,index})=><li id={`writing-annotation-${index}`} key={index} className="rounded-md border border-border p-3 text-sm"><span className="font-medium">« {excerpt} »</span><span className="ml-2 text-muted-foreground">{annotation.explanationFr}</span>{annotation.replacements?.length?<span className="block text-xs text-muted-foreground">Suggestions : {annotation.replacements.join(", ")}</span>:null}</li>)}</ol>}</div>;
 }
 
 export function WritingFeedback({ textKey }: { textKey: string }) {
