@@ -106,6 +106,7 @@ async function ensureProfile(user: User, account: (typeof DEMO.accounts)[keyof t
         auth_user_id: user.id,
         role: account.role,
         display_name: account.displayName,
+        username: account.email.split("@", 1)[0],
         preferred_language: "fr",
       },
       { onConflict: "auth_user_id" }
