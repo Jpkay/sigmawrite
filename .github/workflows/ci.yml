@@ -72,11 +72,18 @@ jobs:
         run: |
           supabase start
           eval "$(supabase status -o env)"
+          export NEXT_PUBLIC_SUPABASE_URL="$API_URL"
+          export NEXT_PUBLIC_SUPABASE_ANON_KEY="$ANON_KEY"
+          export SUPABASE_SERVICE_ROLE_KEY="$SERVICE_ROLE_KEY"
+          export SUPABASE_PROJECT_REF=local
           echo "NEXT_PUBLIC_SUPABASE_URL=$API_URL" >> "$GITHUB_ENV"
           echo "NEXT_PUBLIC_SUPABASE_ANON_KEY=$ANON_KEY" >> "$GITHUB_ENV"
           echo "SUPABASE_SERVICE_ROLE_KEY=$SERVICE_ROLE_KEY" >> "$GITHUB_ENV"
           echo "SUPABASE_PROJECT_REF=local" >> "$GITHUB_ENV"
-          NEXT_PUBLIC_SUPABASE_URL="$API_URL" NEXT_PUBLIC_SUPABASE_ANON_KEY="$ANON_KEY" SUPABASE_SERVICE_ROLE_KEY="$SERVICE_ROLE_KEY" npm run seed:demo
+          npm run taxonomy:import:v2
+          npm run diagnostic:import:v2
+          npm run diagnostic:prepare-pilot:v2
+          npm run seed:demo
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
       - name: Run browser and accessibility checks

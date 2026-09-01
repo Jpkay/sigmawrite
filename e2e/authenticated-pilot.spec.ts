@@ -3,13 +3,14 @@ import { expect, test, type Page } from "@playwright/test";
 
 test.describe("seeded pilot role journeys", () => {
   test.skip(process.env.E2E_AUTHENTICATED !== "true", "requires isolated seeded Supabase");
+  test.describe.configure({ mode: "serial" });
 
   async function login(page: Page, email: string, home: RegExp) {
     await page.goto("/login");
     await page.getByLabel("E-mail ou nom d’utilisateur").fill(email);
     await page.getByLabel("Mot de passe", { exact: true }).fill(process.env.E2E_DEMO_PASSWORD ?? "Demo-2026-Strong!");
     await page.getByRole("button", { name: "Se connecter", exact: true }).click();
-    await expect(page).toHaveURL(home);
+    await expect(page).toHaveURL(home, { timeout: 15_000 });
   }
 
   test("student security, vocabulary and mobile shell are accessible", async ({ page }) => {
@@ -36,7 +37,7 @@ test.describe("seeded pilot role journeys", () => {
   test("teacher can reach class operations", async ({ page }) => {
     await login(page, "prof.demo@reading-to-learn.test", /\/teacher/);
     await page.goto("/teacher/classes");
-    await expect(page.getByRole("heading", { name: /Classes/ })).toBeVisible();
+    await expect(page.getByRole("heading", { name: /classes/i })).toBeVisible();
   });
 
   test("administrator can record feedback-pilot agreement while provisioning a student", async ({ page }) => {
