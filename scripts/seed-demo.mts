@@ -551,7 +551,6 @@ async function main() {
     .from("consent_records")
     .select("id")
     .eq("student_id", studentId)
-    .eq("guardian_profile_id", profiles.parent)
     .is("revoked_at", null)
     .limit(1)
     .maybeSingle();
