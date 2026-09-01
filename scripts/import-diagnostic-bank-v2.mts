@@ -65,6 +65,32 @@ if (["published", "withdrawn"].includes(release.data!.status as string)) {
 const importableItems = bank.items.filter((entry) =>
   entry.reviewStatus !== "rejected" && entry.qcGates.verdict !== "rejected"
 );
+const declaredReviewerIds = [...new Set(importableItems.flatMap((entry) =>
+  entry.review?.reviewerProfileId ? [entry.review.reviewerProfileId] : []
+))];
+const availableReviewerIds = new Set<string>();
+for (let offset = 0; offset < declaredReviewerIds.length; offset += 100) {
+  const { data, error } = await db.from("profiles")
+    .select("id")
+    .in("id", declaredReviewerIds.slice(offset, offset + 100));
+  fail(error?.message);
+  for (const row of data ?? []) availableReviewerIds.add(row.id as string);
+}
+// A profile UUID belongs to one Supabase environment. When a reviewed artifact
+// is installed in another environment, never fabricate that reviewer or claim
+// an approval whose FK cannot be resolved. Keep the structurally valid item in
+// the feedback pilot and return it to the local human-review queue instead.
+const materializedItems = importableItems.map((entry): CanonicalDiagnosticBankItem => {
+  if (
+    entry.reviewStatus !== "human_approved"
+    || !entry.review
+    || availableReviewerIds.has(entry.review.reviewerProfileId)
+  ) return entry;
+  return { ...entry, reviewStatus: "needs_human_review", review: undefined };
+});
+const missingReviewerProvenanceCount = materializedItems.filter((entry, index) =>
+  entry.reviewStatus !== importableItems[index].reviewStatus
+).length;
 const { data: pinnedRecords, error: pinnedRecordError } = await db.from("taxonomy_release_memberships")
   .select("record_type,record_id,stable_key")
   .eq("release_id", taxonomyRelease!.id)
@@ -81,7 +107,7 @@ const importConcurrency = Math.max(
   1,
   Math.min(12, Number(process.env.DIAGNOSTIC_IMPORT_CONCURRENCY ?? 6)),
 );
-await mapWithConcurrency(importableItems, importConcurrency, async (entry) => {
+await mapWithConcurrency(materializedItems, importConcurrency, async (entry) => {
   const nodeId = nodeByKey.get(entry.item.nodeKey);
   if (!nodeId) throw new Error(`Unknown node ${entry.item.nodeKey}`);
   const itemId = stableUuid("sigmawrite-diagnostic-item", `${bank.bank.key}:${entry.itemKey}`);
@@ -191,7 +217,7 @@ await mapWithConcurrency(importableItems, importConcurrency, async (entry) => {
   fail(membershipError?.message);
 });
 
-const expectedItemIds = new Set(importableItems.map((entry) =>
+const expectedItemIds = new Set(materializedItems.map((entry) =>
   stableUuid("sigmawrite-diagnostic-item", `${bank.bank.key}:${entry.itemKey}`)
 ));
 const { data: existingMemberships, error: existingMembershipError } = await db
@@ -215,7 +241,12 @@ const { error: updateError } = await db.from("diagnostic_item_bank_releases").up
   status: nextStatus,
   manifest: validation.manifest,
   manifest_checksum: validation.manifest.checksum,
-  validation_report: { valid: validation.valid, issues: validation.issues, sections: validation.sections },
+  validation_report: {
+    valid: validation.valid,
+    issues: validation.issues,
+    sections: validation.sections,
+    importAdjustments: { missingReviewerProvenanceCount },
+  },
 }).eq("id", release.data!.id).eq("status", "draft");
 fail(updateError?.message);
 const publisher = process.env.DIAGNOSTIC_BANK_PUBLISHER_PROFILE_ID;
@@ -234,7 +265,13 @@ if (publisher) {
   }).eq("id", release.data!.id).eq("status", "validating");
   fail(publishError?.message);
 }
-process.stdout.write(`${JSON.stringify({ ok: true, bankReleaseId: release.data!.id, status: publisher ? "published" : nextStatus, validation })}\n`);
+process.stdout.write(`${JSON.stringify({
+  ok: true,
+  bankReleaseId: release.data!.id,
+  status: publisher ? "published" : nextStatus,
+  importAdjustments: { missingReviewerProvenanceCount },
+  validation,
+})}\n`);
 
 async function mapWithConcurrency<T>(
   values: readonly T[],
