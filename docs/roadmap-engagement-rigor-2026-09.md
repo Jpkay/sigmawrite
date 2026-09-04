@@ -71,9 +71,9 @@ acceptance test.
 
 ## Phase 3 — Reference material (rigor, cheap)
 
-- [ ] **3.1** Conjugation table page generated from `src/lib/linguistic/conjugation.ts` for any supported verb, all 11 tenses, with exceptions. **S**. *Accept:* route `/student/reference/verbe/[verb]`, fails closed on `UnsupportedVerbError`.
-- [ ] **3.2** Rule card per node (rule, exceptions, 2 examples, manipulation) reusing `src/lib/practice/lessons.ts`; reachable from every feedback screen. **S**.
-- [ ] **3.3** "Voir la règle" affordance inside hints, dictée corrections and writing feedback. **S**.
+- [x] **3.1** Conjugation table page generated from `src/lib/linguistic/conjugation.ts` for any supported verb, all 11 tenses, with exceptions. **S**. *Accept:* route `/student/reference/verbe/[verb]`, fails closed on `UnsupportedVerbError`.
+- [x] **3.2** Rule card per node (rule, exceptions, 2 examples, manipulation) reusing `src/lib/practice/lessons.ts`; reachable from every feedback screen. **S**.
+- [x] **3.3** "Voir la règle" affordance inside hints, dictée corrections and writing feedback. **S**.
 
 ## Phase 4 — Curriculum alignment (rigor, trust)
 

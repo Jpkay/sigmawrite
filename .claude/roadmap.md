@@ -22,11 +22,11 @@ Detailed atomic goals: [`docs/roadmap-engagement-rigor-2026-09.md`](../docs/road
 - [ ] Phase 0: publish the v2 diagnostic bank, 60 approved passages, 6 locked benchmarks, 12 repair micro-lessons.
 - [ ] Phase 1: dictée (flash, à choix, à trous, négociée, Brevet-length) with server TTS and a Catach error profile.
 - [ ] Phase 2: click-the-error, réécriture, justified-answer, sentence-combining and ordering widgets, interleaving confusable contrasts.
-- [ ] Phase 3: conjugation tables and rule cards from the existing engine.
+- [x] Phase 3: conjugation tables and rule cards from the existing engine (2026-09-04).
 - [ ] Phase 4: versioned mapping of every node to cycle 3/4 attendus, 6e evaluation domains and Brevet skills.
 - [ ] Phase 5: genre-by-grade writing, multi-revision loop, rubric AI feedback with vetted rule citations, teacher comments.
 - [ ] Phase 6: XP for all activities, settable daily goal, streak freeze, weekly recap (done 2026-09-04); class cooperative goal, story-arc plan, badges pending.
-- [ ] Phase 7: student inbox, opt-in push, class dictée challenge, richer parent email.
+- [ ] Phase 7: student inbox (done 2026-09-04); opt-in push, class dictée challenge, richer parent email pending.
 - [ ] Phase 8: shorter diagnostic, wire continuous quizzes, delete dead modules, offline sessions, mobile tab bar, dyslexia options.
 - [ ] Phase 9: DPIA and teacher override before AI writing feedback reaches general availability.
 
