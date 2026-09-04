@@ -85,7 +85,7 @@ acceptance test.
 
 ## Phase 5 — Writing v2 (rigor + engagement)
 
-- [ ] **5.1** Genre-by-grade production tasks: narration (6e/5e), argumentation (4e/3e), lettre, résumé; length bands per grade replace the fixed 50–100 words in `loadIndependentProductionTask`. **M**.
+- [x] **5.1** Genre-by-grade production tasks: narration (6e/5e), argumentation (4e/3e), lettre, résumé; length bands per grade replace the fixed 50–100 words in `loadIndependentProductionTask`. **M**.
 - [x] **5.2** Multi-revision loop: up to 3 revisions, one priority per pass ("one thing to fix"), diff shown between drafts; remove the single-revision throw in `reviseSummary`. **M**. Done 2026-09-04; each revision records its own writing evidence occasion.
 - [ ] **5.3** Rubric LLM feedback for production tasks (extend `src/lib/scoring/summary-ai.ts`): rubric-grounded, specific praise only, rule citations restricted to node IDs from the vetted base, answer-leakage test, clamped to the deterministic score as today. **M**. *Accept:* golden set of 30 essays; no rule text outside the base; kill switch `WRITING_EVALUATION_ENABLED` honoured.
 - [x] **5.4** Teacher comment on a student text, visible to the student, moderated and audited. **S**.

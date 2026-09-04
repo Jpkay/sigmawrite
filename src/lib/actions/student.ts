@@ -65,6 +65,7 @@ import { buildTemplate, publicTemplate, reconstruct, type DictationMode, type Se
 import { classifyDictation, CATEGORY_LABELS, type DictationError, type ErrorCategory } from "@/lib/dictation/classify";
 import { signDictationAudio } from "@/lib/dictation/audio";
 import { BADGE_BY_KEY, earnedBadges, type BadgeKey } from "@/lib/badges";
+import { genrePrompt, genreSpec, genresForGrade, isWritingGenre, type WritingGenre } from "@/lib/writing/genres";
 import { calculateStreak, freezeCandidate, isDailyXpGoal, unrewardedMilestone, weekStrip, XP_AWARDS, type ActivityDay } from "@/lib/motivation";
 import { trackServer } from "@/lib/analytics-server";
 import { createHash } from "node:crypto";
@@ -100,7 +101,7 @@ const answerSchema = z.object({
   sessionId: uuidSchema, textKey: z.string().min(1).max(100), questionKey: z.string().min(1).max(40), choiceIndex: z.number().int().min(0).max(20), nextPhase: z.enum(["questions", "summary"]).optional(),
 });
 const summarySchema = z.object({ sessionId: uuidSchema, textKey: z.string().min(1).max(100), summaryText: z.string().trim().min(1).max(5000) });
-const independentProductionSchema = z.object({ nodeId: uuidSchema, text: z.string().trim().min(40).max(5000) });
+const independentProductionSchema = z.object({ nodeId: uuidSchema, text: z.string().trim().min(40).max(5000), genre: z.string().max(20).optional() });
 const completeSessionSchema = z.object({
   sessionId: uuidSchema,
   textKey: z.string().min(1).max(100),
@@ -1340,18 +1341,33 @@ async function independentProductionNode(service: SupabaseClient, studentId: str
   return node as { id: string; key: string; label_fr: string; description_fr: string | null };
 }
 
+/** Genres offered depend on the class-owned grade (roadmap 5.1); the default is the first one. */
+async function productionGenreContext(service: SupabaseClient, studentId: string, requested?: string) {
+  const { data: student } = await service.from("students").select("current_grade").eq("id", studentId).single();
+  const grade = Math.max(4, Math.min(9, Number(student?.current_grade ?? 7)));
+  const genres = genresForGrade(grade);
+  const genre: WritingGenre = requested && isWritingGenre(requested) && genres.includes(requested) ? requested : genres[0];
+  return { grade, genres, genre, spec: genreSpec(genre) };
+}
+
 export async function loadIndependentProductionTask(input: unknown) {
-  const data = checked(z.object({ nodeId: uuidSchema }), input);
+  const data = checked(z.object({ nodeId: uuidSchema, genre: z.string().max(20).optional() }), input);
   const { studentId } = await context();
-  const node = await independentProductionNode(createServiceClient(), studentId, data.nodeId);
+  const service = createServiceClient();
+  const node = await independentProductionNode(service, studentId, data.nodeId);
+  const { genres, genre, spec } = await productionGenreContext(service, studentId, data.genre);
   return {
     nodeId: node.id,
     nodeKey: node.key,
     label: node.label_fr,
     description: node.description_fr,
-    prompt: independentProductionPrompt(node.key, node.label_fr),
-    minimumWords: 50,
-    maximumWords: 100,
+    genre,
+    genreLabel: spec.label,
+    genres: genres.map((key) => ({ key, label: genreSpec(key).label })),
+    prompt: genrePrompt(genre, node.key, node.label_fr),
+    legacyPrompt: independentProductionPrompt(node.key, node.label_fr),
+    minimumWords: spec.minimumWords,
+    maximumWords: spec.maximumWords,
   };
 }
 
@@ -1361,8 +1377,9 @@ export async function submitIndependentProduction(input: unknown) {
   await requireStudentLearningUnlocked(supabase, studentId);
   await moderateOrReject({ supabase, studentId, text: data.text, field: "memory_retrieval" });
   const words = data.text.trim().split(/\s+/u).filter(Boolean).length;
-  if (words < 50 || words > 100) throw new Error("Écris entre 50 et 100 mots pour que la production soit vérifiable.");
   const service = createServiceClient();
+  const { spec } = await productionGenreContext(service, studentId, data.genre);
+  if (words < spec.minimumWords || words > spec.maximumWords) throw new Error(`Écris entre ${spec.minimumWords} et ${spec.maximumWords} mots pour que la production soit vérifiable.`);
   const node = await independentProductionNode(service, studentId, data.nodeId);
   const target = detectIndependentProduction(node.key, data.text);
   let grammarMatches: Awaited<ReturnType<LanguageToolChecker["check"]>>["matches"] = [];
