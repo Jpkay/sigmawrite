@@ -1,5 +1,5 @@
 import { z, type ZodType } from "zod";
-import type { AIProvider } from "@/lib/ai/provider";
+import type { AIProvider, SpeechInput, SpeechResult } from "@/lib/ai/provider";
 import {
   generatedTextCandidateSchema,
   generatedQuestionSchema,
@@ -105,6 +105,21 @@ export class OpenAICompatibleAIProvider implements AIProvider {
       });
     }
     return this.structured(MODERATION_SYSTEM, JSON.stringify(input), moderationResultSchema);
+  }
+
+  async synthesizeSpeech(input: SpeechInput): Promise<SpeechResult> {
+    const speech = this.config.speech;
+    if (!speech) throw new Error("Speech synthesis is not configured (TTS_API_KEY / TTS_BASE_URL).");
+    const voice = input.voice ?? speech.voice;
+    const response = await this.fetchImpl(`${speech.baseUrl}/audio/speech`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${speech.apiKey}` },
+      body: JSON.stringify({ model: speech.model, input: input.text, voice, response_format: "mp3", speed: input.speed ?? 0.9 }),
+    });
+    if (!response.ok) throw new Error(`Speech request failed (${response.status})`);
+    const audio = new Uint8Array(await response.arrayBuffer());
+    if (audio.byteLength < 100) throw new Error("Speech response was empty");
+    return { audio, mimeType: "audio/mpeg", provider: this.config.kind, model: speech.model, voice };
   }
 
   async embed(input: EmbeddingInput): Promise<number[]> {

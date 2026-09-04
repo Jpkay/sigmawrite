@@ -25,4 +25,9 @@ export interface AIProvider {
   tagText(input: TagTextInput, context?: { systemPrompt?: string }): Promise<TextTagResult>;
   moderate(input: ModerationInput): Promise<ModerationResult>;
   embed(input: EmbeddingInput): Promise<number[]>;
+  /** Render French speech for dictée segments. Must throw when no speech backend is configured. */
+  synthesizeSpeech(input: SpeechInput): Promise<SpeechResult>;
 }
+
+export type SpeechInput = { text: string; voice?: string; speed?: number };
+export type SpeechResult = { audio: Uint8Array; mimeType: string; provider: string; model: string; voice: string };

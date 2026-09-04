@@ -61,6 +61,9 @@ import {
 import type { ValidatorType } from "@/lib/linguistic/types";
 import { getCatchUpPlan } from "@/lib/db/practice";
 import { evaluateWriting } from "@/lib/writing/evaluate";
+import { buildTemplate, publicTemplate, reconstruct, type DictationMode, type SegmentTemplate } from "@/lib/dictation/modes";
+import { classifyDictation, CATEGORY_LABELS, type DictationError, type ErrorCategory } from "@/lib/dictation/classify";
+import { signDictationAudio } from "@/lib/dictation/audio";
 import { calculateStreak, freezeCandidate, isDailyXpGoal, unrewardedMilestone, weekStrip, XP_AWARDS, type ActivityDay } from "@/lib/motivation";
 import { trackServer } from "@/lib/analytics-server";
 import { createHash } from "node:crypto";
@@ -412,7 +415,7 @@ async function recordDirectCompetencyEvidence(input: {
   memoryResult?: RetrievalResult;
   /** Stable source identity; retries must not create an extra mastery occasion. */
   occurrenceKey: string;
-  sourceType: "practice" | "reading" | "writing";
+  sourceType: "practice" | "reading" | "writing" | "dictation";
   sourceId: string;
   itemId?: string;
   hintsUsed?: number;
@@ -2540,4 +2543,188 @@ export async function markStudentNotificationsRead(input: unknown) {
   const { error } = await query; if (error) throw new Error(error.message);
   revalidatePath("/student/inbox"); revalidatePath("/student");
   return { ok: true };
+}
+
+// ---------------------------------------------------------------------------
+// Dictée (roadmap 1.4–1.7)
+// ---------------------------------------------------------------------------
+
+
+const DICTATION_MODES = ["flash", "trous", "choix", "negociee", "brevet"] as const;
+const browserTtsFallbackAllowed = () => process.env.DICTATION_BROWSER_TTS_FALLBACK === "true" && process.env.NODE_ENV !== "production";
+
+type DictationRow = { id: string; key: string; title_fr: string; kind: DictationMode; text_fr: string; segments: { text: string; audioPath: string | null }[]; word_count: number; grade_min: number; grade_max: number; target_node_keys: string[]; focus_fr: string | null; review_status: string; audio_status: string };
+
+async function visibleDictations(service: SupabaseClient, filter?: { id?: string }) {
+  let query = service.from("dictations").select("id,key,title_fr,kind,text_fr,segments,word_count,grade_min,grade_max,target_node_keys,focus_fr,review_status,audio_status").eq("review_status", "human_approved");
+  if (!browserTtsFallbackAllowed()) query = query.eq("audio_status", "ready");
+  if (filter?.id) query = query.eq("id", filter.id);
+  const { data, error } = await query.order("grade_min").order("word_count");
+  if (error) throw new Error(error.message);
+  return (data ?? []) as DictationRow[];
+}
+
+export type DictationCatalogEntry = { id: string; key: string; title: string; kind: DictationMode; wordCount: number; gradeMin: number; gradeMax: number; focus: string | null; estimatedMinutes: number; lastScore: number | null; lastAt: string | null; attempts: number; audioMode: "server" | "browser" };
+
+export async function loadDictationCatalog(input: unknown): Promise<DictationCatalogEntry[]> {
+  checked(emptySchema, input); const { supabase, studentId } = await context();
+  await requireStudentLearningUnlocked(supabase, studentId);
+  const service = createServiceClient();
+  const [rows, { data: attempts }] = await Promise.all([
+    visibleDictations(service),
+    service.from("dictation_attempts").select("dictation_id,score,submitted_at").eq("student_id", studentId).not("submitted_at", "is", null).order("submitted_at", { ascending: false }),
+  ]);
+  const byDictation = new Map<string, { score: number | null; at: string; count: number }>();
+  for (const attempt of attempts ?? []) {
+    const id = attempt.dictation_id as string; const existing = byDictation.get(id);
+    if (existing) existing.count++; else byDictation.set(id, { score: attempt.score == null ? null : Number(attempt.score), at: attempt.submitted_at as string, count: 1 });
+  }
+  return rows.map((row) => ({
+    id: row.id, key: row.key, title: row.title_fr, kind: row.kind, wordCount: row.word_count, gradeMin: row.grade_min, gradeMax: row.grade_max, focus: row.focus_fr,
+    estimatedMinutes: row.kind === "brevet" ? 20 : Math.max(5, Math.min(10, Math.round(row.word_count / 8))),
+    lastScore: byDictation.get(row.id)?.score ?? null, lastAt: byDictation.get(row.id)?.at ?? null, attempts: byDictation.get(row.id)?.count ?? 0,
+    audioMode: row.audio_status === "ready" ? "server" : "browser",
+  }));
+}
+
+const startDictationSchema = z.object({ dictationId: z.string().uuid(), mode: z.enum(DICTATION_MODES).optional(), clientRequestId: z.string().uuid() });
+
+export type DictationSession = {
+  attemptId: string; dictationId: string; title: string; mode: DictationMode; focus: string | null; wordCount: number; audioMode: "server" | "browser";
+  fullAudioUrl: string | null;
+  segments: { index: number; audioUrl: string | null; browserText: string | null; template: ReturnType<typeof publicTemplate> | null }[];
+};
+
+/** Opens (or resumes) a dictée attempt. Target text never reaches the client except as browser-TTS input in the non-production fallback. */
+export async function startDictation(input: unknown): Promise<DictationSession> {
+  const data = checked(startDictationSchema, input); const { supabase, studentId } = await context();
+  await requireStudentLearningUnlocked(supabase, studentId);
+  const service = createServiceClient();
+  const [row] = await visibleDictations(service, { id: data.dictationId });
+  if (!row) throw new Error("Cette dictée n’est pas disponible.");
+  const mode: DictationMode = data.mode ?? row.kind;
+  const { data: attempt, error } = await service.from("dictation_attempts").upsert({ student_id: studentId, dictation_id: row.id, client_request_id: data.clientRequestId, mode }, { onConflict: "student_id,client_request_id", ignoreDuplicates: false }).select("id,submitted_at").single();
+  if (error || !attempt) throw new Error(error?.message ?? "La dictée n’a pas pu démarrer.");
+  if (attempt.submitted_at) throw new Error("Cette dictée est déjà terminée. Relance-la pour recommencer.");
+  const audioMode: "server" | "browser" = row.audio_status === "ready" ? "server" : "browser";
+  const paths = audioMode === "server" ? [...row.segments.map((segment) => segment.audioPath), `${row.key}/full.mp3`] : [];
+  const urls = audioMode === "server" ? await signDictationAudio(service, paths) : [];
+  const withTemplates = mode === "trous" || mode === "choix";
+  return {
+    attemptId: attempt.id as string, dictationId: row.id, title: row.title_fr, mode, focus: row.focus_fr, wordCount: row.word_count, audioMode,
+    fullAudioUrl: audioMode === "server" ? urls[urls.length - 1] ?? null : null,
+    segments: row.segments.map((segment, index) => ({
+      index,
+      audioUrl: audioMode === "server" ? urls[index] ?? null : null,
+      browserText: audioMode === "browser" ? segment.text : null,
+      template: withTemplates ? publicTemplate(buildTemplate(segment.text, index), mode === "choix") : null,
+    })),
+  };
+}
+
+const submitDictationSchema = z.object({
+  attemptId: z.string().uuid(),
+  answers: z.array(z.string().max(600)).max(40),
+  fills: z.array(z.record(z.string(), z.string().max(60))).max(40).optional(),
+  replays: z.number().int().min(0).max(500).optional(),
+});
+
+export type DictationResult = {
+  attemptId: string; score: number; accuracy: number; words: number; xp: XpAward | null;
+  profile: Record<ErrorCategory, number>;
+  segments: { index: number; expected: string; actual: string; errors: DictationError[] }[];
+  justification: { errorIndex: number; options: { key: string; label: string }[] }[];
+  categoryLabels: Record<ErrorCategory, string>;
+};
+
+/** Scores a dictée deterministically, records evidence per competency and awards XP (idempotent per attempt). */
+export async function submitDictation(input: unknown): Promise<DictationResult> {
+  const data = checked(submitDictationSchema, input); const { supabase, studentId } = await context();
+  const service = createServiceClient();
+  const { data: attempt, error } = await service.from("dictation_attempts").select("id,dictation_id,mode,submitted_at,errors,score,accuracy,answers,xp_awarded,error_profile").eq("id", data.attemptId).eq("student_id", studentId).single();
+  if (error || !attempt) throw new Error("Tentative introuvable.");
+  const [row] = await visibleDictations(service, { id: attempt.dictation_id as string });
+  if (!row) throw new Error("Cette dictée n’est pas disponible.");
+  const mode = attempt.mode as DictationMode;
+  let answers: string[];
+  if (mode === "trous" || mode === "choix") {
+    answers = row.segments.map((segment, index) => reconstruct(buildTemplate(segment.text, index) as SegmentTemplate, Object.fromEntries(Object.entries(data.fills?.[index] ?? {}).map(([k, v]) => [Number(k), v]))));
+  } else {
+    answers = row.segments.map((_, index) => data.answers[index] ?? "");
+  }
+  const joined = answers.join(" ").trim();
+  if (joined.length > 0) await moderateOrReject({ supabase, studentId, text: joined, field: "memory_retrieval" });
+  if (attempt.submitted_at) {
+    return buildDictationResult(attempt.id as string, row, attempt.answers as string[], attempt.errors as DictationError[], Number(attempt.score), Number(attempt.accuracy), null);
+  }
+  const outcome = classifyDictation(row.segments.map((segment) => segment.text), answers);
+  const submittedAt = new Date().toISOString();
+  const { error: updateError } = await service.from("dictation_attempts").update({
+    submitted_at: submittedAt, answers, errors: outcome.errors, error_profile: outcome.profile, score: outcome.score, accuracy: outcome.accuracy, replays: data.replays ?? 0,
+  }).eq("id", attempt.id).is("submitted_at", null);
+  if (updateError) throw new Error(updateError.message);
+
+  // Evidence: each targeted node is one controlled-production occasion; nodes with an error fail, the rest succeed.
+  const nodeKeys = [...new Set([...row.target_node_keys, ...outcome.errors.map((e) => e.nodeKey)])];
+  const { data: nodes } = await service.from("competency_nodes").select("id,key").in("key", nodeKeys);
+  const erroredKeys = new Set(outcome.errors.map((e) => e.nodeKey));
+  for (const node of nodes ?? []) {
+    const correct = !erroredKeys.has(node.key as string);
+    await recordDirectCompetencyEvidence({
+      service, studentId, nodeId: node.id as string, at: submittedAt, evidenceExpectation: "controlled_production",
+      occurrenceKey: `dictation:${attempt.id as string}`, sourceType: "dictation", sourceId: attempt.id as string,
+      updateMastery: (prior) => bktUpdateWeighted(prior, correct, 0.8, { pGuess: 0.05, pSlip: 0.15 }), correct, memoryResult: correct ? "good" : "forgot", practiced: true,
+      scorePatch: { productive_score: correct ? 1 : 0.4, written_score: Math.max(0, outcome.accuracy) },
+      pathMastery: (value) => (correct ? value : Math.min(value, 0.84)),
+    });
+  }
+  await recordDailyActivity(service, studentId, submittedAt, "writing");
+  const xp = await awardXp(service, { studentId, eventKey: `dictation:${attempt.id as string}`, sourceType: "dictation", sourceId: attempt.id as string, baseXp: mode === "brevet" ? XP_AWARDS.dictationBase * 2 : XP_AWARDS.dictationBase, bonusXp: outcome.errors.length === 0 ? XP_AWARDS.dictationCleanBonus : 0, at: submittedAt });
+  await service.from("dictation_attempts").update({ xp_awarded: xp.xp }).eq("id", attempt.id);
+  revalidatePath("/student"); revalidatePath("/student/dictee");
+  return buildDictationResult(attempt.id as string, row, answers, outcome.errors, outcome.score, outcome.accuracy, xp);
+}
+
+function buildDictationResult(attemptId: string, row: DictationRow, answers: string[], errors: DictationError[], score: number, accuracy: number, xp: XpAward | null): DictationResult {
+  const profile = { phonogrammique: 0, morphogrammique_grammaticale: 0, morphogrammique_lexicale: 0, logogrammique: 0, ideogrammique: 0, extragraphique: 0 } as Record<ErrorCategory, number>;
+  for (const e of errors) profile[e.category]++;
+  const words = row.word_count;
+  // Justification step (dictée négociée): the learner names the rule behind each of the first six errors before seeing the correction.
+  const pool = (Object.keys(CATEGORY_LABELS) as ErrorCategory[]);
+  const justification = errors.slice(0, 6).map((error, errorIndex) => {
+    const others = pool.filter((category) => category !== error.category).sort(() => (hashString(`${attemptId}:${errorIndex}`) % 2 ? 1 : -1)).slice(0, 3);
+    const options = [error.category, ...others].map((category) => ({ key: category, label: CATEGORY_LABELS[category] }));
+    return { errorIndex, options: options.sort((a, b) => hashString(`${attemptId}:${a.key}`) - hashString(`${attemptId}:${b.key}`)) };
+  });
+  return {
+    attemptId, score, accuracy, words, xp, profile,
+    segments: row.segments.map((segment, index) => ({ index, expected: segment.text, actual: answers[index] ?? "", errors: errors.filter((e) => e.segment === index) })),
+    justification, categoryLabels: CATEGORY_LABELS,
+  };
+}
+
+function hashString(text: string): number { let h = 2166136261; for (const char of text) { h ^= char.codePointAt(0)!; h = Math.imul(h, 16777619) >>> 0; } return h; }
+
+const justifySchema = z.object({ attemptId: z.string().uuid(), choices: z.array(z.object({ errorIndex: z.number().int().min(0).max(40), category: z.string().max(40) })).max(6) });
+
+/** Records the négociée justifications; a correct justification is a hinted success on the node, down-weighted like a hinted practice answer. */
+export async function submitDictationJustifications(input: unknown) {
+  const data = checked(justifySchema, input); const { studentId } = await context();
+  const service = createServiceClient();
+  const { data: attempt, error } = await service.from("dictation_attempts").select("id,errors,submitted_at,justifications").eq("id", data.attemptId).eq("student_id", studentId).single();
+  if (error || !attempt || !attempt.submitted_at) throw new Error("Tentative introuvable.");
+  if ((attempt.justifications as unknown[]).length > 0) return { correct: Number((attempt as { justification_correct?: number }).justification_correct ?? 0), total: (attempt.justifications as unknown[]).length };
+  const errors = attempt.errors as DictationError[];
+  const results = data.choices.map((choice) => ({ ...choice, correct: errors[choice.errorIndex]?.category === choice.category }));
+  const correct = results.filter((r) => r.correct).length;
+  await service.from("dictation_attempts").update({ justifications: results, justification_correct: correct }).eq("id", attempt.id);
+  const justifiedKeys = [...new Set(results.filter((r) => r.correct).map((r) => errors[r.errorIndex].nodeKey))];
+  if (justifiedKeys.length) {
+    const { data: nodes } = await service.from("competency_nodes").select("id,key").in("key", justifiedKeys);
+    const at = new Date().toISOString();
+    for (const node of nodes ?? []) {
+      await recordDirectCompetencyEvidence({ service, studentId, nodeId: node.id as string, at, evidenceExpectation: "receptive", occurrenceKey: `dictation:${attempt.id as string}:justified`, sourceType: "dictation", sourceId: attempt.id as string, hintsUsed: 1, updateMastery: (prior) => bktUpdateWeighted(prior, true, 0.5), correct: true, memoryResult: "hard", pathMastery: (value) => Math.min(value, 0.84) });
+    }
+  }
+  return { correct, total: results.length };
 }

@@ -1,4 +1,4 @@
-import type { AIProvider } from "./provider";
+import type { AIProvider, SpeechInput, SpeechResult } from "./provider";
 import {
   generatedTextCandidateSchema,
   type GenerateTextInput,
@@ -91,6 +91,11 @@ export class MockAIProvider implements AIProvider {
   async moderate(_input: ModerationInput): Promise<ModerationResult> {
     void _input;
     return { passed: true, flaggedCategories: [], needsHumanReview: false };
+  }
+
+  async synthesizeSpeech(input: SpeechInput): Promise<SpeechResult> {
+    void input;
+    throw new Error("Speech synthesis is unavailable on the mock provider; configure TTS_API_KEY.");
   }
 
   async embed(_input: EmbeddingInput): Promise<number[]> {
