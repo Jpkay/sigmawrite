@@ -93,10 +93,10 @@ acceptance test.
 
 ## Phase 6 — Motivation v1 (engagement, minors-safe)
 
-- [ ] **6.1** XP for reading, retrieval, dictée and writing, effort-calibrated (≈1 XP per focused minute, bonus only on unaided mastery), extending the trigger in migration `0088`. **S**.
-- [ ] **6.2** Settable daily XP goal (10/15/20 min presets) replacing the binary `goal_completed`; render the fetched 7-day `motivation.week` array on the home page. **S**.
-- [ ] **6.3** Streak freeze: one earned per 7-day streak, auto-applied; no purchase, no wager. **S**. *Accept:* `calculateStreak` unit tests for freeze consumption.
-- [ ] **6.4** Weekly recap card for the student (Sunday): nodes secured, errors retired, dictée score trend; same data as the parent email. **S**.
+- [x] **6.1** XP for reading, retrieval, dictée and writing, effort-calibrated (≈1 XP per focused minute, bonus only on unaided mastery), extending the trigger in migration `0088`. **S**.
+- [x] **6.2** Settable daily XP goal (10/15/20 min presets) replacing the binary `goal_completed`; render the fetched 7-day `motivation.week` array on the home page. **S**.
+- [x] **6.3** Streak freeze: one earned per 7-day streak, auto-applied; no purchase, no wager. **S**. *Accept:* `calculateStreak` unit tests for freeze consumption.
+- [x] **6.4** Weekly recap card for the student (Sunday): nodes secured, errors retired, dictée score trend; same data as the parent email. **S**.
 - [ ] **6.5** Class cooperative goal (teacher-set, e.g. "500 XP cette semaine"), no individual ranking. **M**. *Accept:* only class aggregate exposed to students; RLS test.
 - [ ] **6.6** Ability-banded, opt-in, pseudonymous weekly league within a class (teacher enables; off by default; rank hidden below top 3). **M**. Ship only after 6.5 data shows no drop in low-mastery engagement.
 - [ ] **6.7** Story-arc framing for the daily plan: 7-day "chapitre" with a light narrative per interest chosen at onboarding; completion unlocks the next chapter. **L**. Content from the passage pipeline, human-reviewed.
@@ -114,7 +114,7 @@ acceptance test.
 - [ ] **8.1** Shorten the diagnostic: minimal covering set per section, per-section `maxProbes` 20 → 12 in `src/lib/diagnostic/protocol.ts`, latency-weighted evidence. **M**. *Accept:* benchmark scenarios keep the 19/19 expected outcomes; median run ≤ 35 probes.
 - [ ] **8.2** Wire `src/lib/quiz/continuous.ts` as the formative layer (quiz after ~7 days on a node; miss → immediate targeted review). **M**.
 - [ ] **8.3** Delete or wire each dead module: `graph-scheduler.ts`, `serving/provisional.ts`, `learning/package-progress.ts`, `generation/on-demand-workflow.ts`, `ComingSoon`. One decision per PR. **S** each.
-- [ ] **8.4** Home page: replace the 5 sequential server actions with one server-rendered plan loader. **S**. *Accept:* Playwright timing budget on `/student`.
+- [x] **8.4** Home page: replace the 5 sequential server actions with one loader. **S**. Done 2026-09-04 as a single `loadStudentHome` action with per-part degradation; the page stays a client component.
 - [ ] **8.5** Service worker serves cached navigations for the prefetched plan URLs and replays the offline queue; remove the dead `plume-offline-pack-v1` prefetch if 8.5 is not taken. **M**. *Accept:* offline Playwright run completes one practice session.
 - [ ] **8.6** Accent helper on single-line inputs (vocabulary recall uses a plain input). **S**.
 - [ ] **8.7** Mobile bottom tab bar for the five student surfaces; maskable 192/512 PNG icons in `manifest.ts`. **S**.

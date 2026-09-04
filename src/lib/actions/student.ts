@@ -61,7 +61,7 @@ import {
 import type { ValidatorType } from "@/lib/linguistic/types";
 import { getCatchUpPlan } from "@/lib/db/practice";
 import { evaluateWriting } from "@/lib/writing/evaluate";
-import { calculateStreak } from "@/lib/motivation";
+import { calculateStreak, freezeCandidate, isDailyXpGoal, unrewardedMilestone, weekStrip, XP_AWARDS, type ActivityDay } from "@/lib/motivation";
 import { trackServer } from "@/lib/analytics-server";
 import { createHash } from "node:crypto";
 import { sanitizeStudentTopic } from "@/lib/safety/topic";
@@ -612,10 +612,20 @@ async function propagateImplicitRepetitions(service: SupabaseClient, studentId: 
   }
 }
 
-async function recordDailyActivity(db: SupabaseClient, studentId: string, at: string, kind: "reading" | "practice" | "retrieval", completesGoal: boolean) {
-  const day=at.slice(0,10);const {data:row}=await db.from("student_daily_activity").select("reading_sessions,practice_steps,retrieval_reviews,goal_completed").eq("student_id",studentId).eq("activity_date",day).maybeSingle();
-  const values={student_id:studentId,activity_date:day,reading_sessions:Number(row?.reading_sessions??0)+(kind==="reading"?1:0),practice_steps:Number(row?.practice_steps??0)+(kind==="practice"?1:0),retrieval_reviews:Number(row?.retrieval_reviews??0)+(kind==="retrieval"?1:0),goal_completed:!!row?.goal_completed||completesGoal};
+async function recordDailyActivity(db: SupabaseClient, studentId: string, at: string, kind: "reading" | "practice" | "retrieval" | "writing") {
+  const day=at.slice(0,10);const {data:row}=await db.from("student_daily_activity").select("reading_sessions,practice_steps,retrieval_reviews,writing_tasks").eq("student_id",studentId).eq("activity_date",day).maybeSingle();
+  const values={student_id:studentId,activity_date:day,reading_sessions:Number(row?.reading_sessions??0)+(kind==="reading"?1:0),practice_steps:Number(row?.practice_steps??0)+(kind==="practice"?1:0),retrieval_reviews:Number(row?.retrieval_reviews??0)+(kind==="retrieval"?1:0),writing_tasks:Number(row?.writing_tasks??0)+(kind==="writing"?1:0)};
   const {error}=await db.from("student_daily_activity").upsert(values,{onConflict:"student_id,activity_date"});if(error)throw new Error(error.message);
+}
+
+export type XpAward = { awarded: boolean; xp: number; dayXp: number; goalXp: number; goalCompleted: boolean };
+
+/** Idempotent, effort-calibrated XP through the shared SQL function (roadmap 6.1). */
+async function awardXp(db: SupabaseClient, input: { studentId: string; eventKey: string; sourceType: "reading_session" | "retrieval_review" | "vocabulary_review" | "independent_production" | "dictation"; sourceId: string; baseXp: number; bonusXp?: number; at: string }): Promise<XpAward> {
+  const { data, error } = await db.rpc("award_student_xp", { p_student_id: input.studentId, p_event_key: input.eventKey, p_source_type: input.sourceType, p_source_id: input.sourceId, p_base_xp: input.baseXp, p_bonus_xp: input.bonusXp ?? 0, p_awarded_at: input.at });
+  if (error) throw new Error(error.message);
+  const value = (data ?? {}) as Partial<XpAward>;
+  return { awarded: !!value.awarded, xp: Number(value.xp ?? 0), dayXp: Number(value.dayXp ?? 0), goalXp: Number(value.goalXp ?? 10), goalCompleted: !!value.goalCompleted };
 }
 
 async function contentIds(
@@ -1368,9 +1378,14 @@ export async function submitIndependentProduction(input: unknown) {
     });
     mastery = result.mastery;
   }
+  await recordDailyActivity(service, studentId, submittedAt, "writing");
+  const xp = verified
+    ? await awardXp(service, { studentId, eventKey: `independent_production:${submission.id as string}`, sourceType: "independent_production", sourceId: submission.id as string, baseXp: XP_AWARDS.productionBase, bonusXp: demonstrated ? XP_AWARDS.productionDemonstratedBonus : 0, at: submittedAt })
+    : null;
   revalidatePath("/student");
   revalidatePath("/student/frontier");
   return {
+    xp,
     demonstrated,
     verified,
     mastery,
@@ -2326,13 +2341,14 @@ export async function completeReadingSession(input: unknown) {
   if (eventError) throw new Error(eventError.message);
   const { error: interestError } = await service.rpc("record_interest_session", { p_student_id: studentId, p_interest_key: text.primaryInterest, p_completed: true, p_success: result.successRate, p_time_seconds: result.timeOnTaskSeconds });
   if (interestError) throw new Error(interestError.message);
-  await recordDailyActivity(service,studentId,data.completedAt,"reading",true);
+  await recordDailyActivity(service,studentId,data.completedAt,"reading");
+  const readingXp = await awardXp(service,{studentId,eventKey:`reading_session:${data.sessionId}`,sourceType:"reading_session",sourceId:data.sessionId,baseXp:XP_AWARDS.readingBase,bonusXp:result.successRate>=0.85?XP_AWARDS.readingSuccessBonus:0,at:data.completedAt});
   const since = new Date(Date.parse(data.completedAt) - 7 * 86_400_000).toISOString();
   const { count: sessionsThisWeek } = await service.from("reading_sessions").select("id", { count: "exact", head: true }).eq("student_id", studentId).not("completed_at", "is", null).gte("completed_at", since);
   if (sessionsThisWeek === 3) await trackServer(studentId, "three_sessions_week_1", { window_days: 7 });
   const{error:finishError}=await service.rpc("finish_reading_completion",{p_session_id:data.sessionId,p_result:result});if(finishError)throw new Error(finishError.message);
   revalidatePath("/student"); revalidatePath("/parent"); revalidatePath("/teacher");
-  return { result, state: await getStudentStateData(studentId, supabase) };
+  return { result, xp: readingXp, state: await getStudentStateData(studentId, supabase) };
   } catch(error) { const message=error instanceof Error?error.message:"Erreur inconnue";await service.rpc("fail_reading_completion",{p_session_id:data.sessionId,p_error:message});throw error; }
 }
 
@@ -2369,8 +2385,9 @@ export async function submitRetrievalAttempt(input: unknown) {
     repetitions: result === "forgot" ? 0 : schedule.repetitions + 1, last_result: result, status: "due",
   }).eq("retrieval_card_id", data.cardId);
   if (updateError) throw new Error(updateError.message);
-  await recordDailyActivity(service,studentId,data.attemptedAt,"retrieval",false);
-  return { result, state: await getStudentStateData(studentId, supabase) };
+  await recordDailyActivity(service,studentId,data.attemptedAt,"retrieval");
+  const xp = await awardXp(service,{studentId,eventKey:`retrieval_review:${data.cardId}:${data.attemptedAt.slice(0,10)}`,sourceType:"retrieval_review",sourceId:data.cardId,baseXp:XP_AWARDS.retrievalReview,at:data.attemptedAt});
+  return { result, xp, state: await getStudentStateData(studentId, supabase) };
 }
 
 export async function loadReadingResume(input: unknown) {
@@ -2385,10 +2402,77 @@ export async function loadLatestReadingResume(input: unknown) {
   checked(emptySchema,input);const{supabase,studentId}=await context();const{data}=await supabase.from("reading_sessions").select("id,current_phase,text_versions!inner(title,texts!inner(slug))").eq("student_id",studentId).is("completed_at",null).order("started_at",{ascending:false}).limit(1).maybeSingle();if(!data)return null;const version=data.text_versions as unknown as{title:string;texts:{slug:string}};return{sessionId:data.id as string,textKey:version.texts.slug,title:version.title,phase:data.current_phase as string};
 }
 
-export async function loadStudentMotivation(input: unknown) {
-  checked(emptySchema,input);const{supabase,studentId}=await context();const[{data},{data:xpRows}]=await Promise.all([supabase.from("student_daily_activity").select("activity_date,goal_completed,reading_sessions,practice_steps,retrieval_reviews").eq("student_id",studentId).order("activity_date",{ascending:false}).limit(14),supabase.from("student_xp_ledger").select("base_xp,bonus_xp").eq("student_id",studentId)]);const rows=data??[];const todayKey=new Date().toISOString().slice(0,10);
+export type StudentMotivation = {
+  streak: number;
+  todayXp: number;
+  goalXp: number;
+  goalCompleted: boolean;
+  totalXp: number;
+  freezesAvailable: number;
+  freezeAppliedFor: string | null;
+  week: ReturnType<typeof weekStrip>;
+};
+
+/**
+ * Streak, XP and goal state for the student home. Applies a banked freeze to
+ * yesterday when it protects a real streak and grants a freeze at each new
+ * seven-day milestone (roadmap 6.2, 6.3). Both writes are idempotent.
+ */
+export async function loadStudentMotivation(input: unknown): Promise<StudentMotivation> {
+  checked(emptySchema,input);const{supabase,studentId}=await context();const service=createServiceClient();
+  const nowMs=Date.now();
+  const since=new Date(nowMs-30*86_400_000).toISOString().slice(0,10);
+  const load=async()=>{const[{data:days},{data:settings}]=await Promise.all([
+    supabase.from("student_daily_activity").select("activity_date,goal_completed,streak_freeze_used,xp_earned").eq("student_id",studentId).gte("activity_date",since).order("activity_date",{ascending:false}),
+    supabase.from("student_motivation_settings").select("daily_xp_goal,streak_freezes_available,last_freeze_milestone").eq("student_id",studentId).maybeSingle(),
+  ]);
+    const activity:ActivityDay[]=(days??[]).map(row=>({date:row.activity_date as string,goalCompleted:!!row.goal_completed,freezeUsed:!!row.streak_freeze_used}));
+    const xpByDate=Object.fromEntries((days??[]).map(row=>[row.activity_date as string,Number(row.xp_earned??0)]));
+    return{activity,xpByDate,goalXp:Number(settings?.daily_xp_goal??10),freezes:Number(settings?.streak_freezes_available??0),lastMilestone:Number(settings?.last_freeze_milestone??0)};};
+  let current=await load();
+  let freezeAppliedFor:string|null=null;
+  const candidate=freezeCandidate(current.activity,nowMs,current.freezes);
+  if(candidate){const{data:applied}=await service.rpc("apply_streak_freeze",{p_student_id:studentId,p_missed_day:candidate});if(applied){freezeAppliedFor=candidate;current=await load();}}
+  const streak=calculateStreak(current.activity,nowMs);
+  if(unrewardedMilestone(streak,current.lastMilestone)!==null){const{data:granted}=await service.rpc("grant_streak_freeze_for_milestone",{p_student_id:studentId,p_streak:streak});if(granted)current=await load();}
+  const{data:xpRows}=await supabase.from("student_xp_ledger").select("base_xp,bonus_xp").eq("student_id",studentId);
   const totalXp=(xpRows??[]).reduce((total,row)=>total+Number(row.base_xp)+Number(row.bonus_xp),0);
-  return{streak:calculateStreak(rows.filter(row=>row.goal_completed).map(row=>row.activity_date as string),Date.now()),today:rows.find(row=>row.activity_date===todayKey)??null,week:rows.slice(0,7),totalXp};
+  const todayKey=new Date(nowMs).toISOString().slice(0,10);const today=current.activity.find(day=>day.date===todayKey);
+  return{streak,todayXp:current.xpByDate[todayKey]??0,goalXp:current.goalXp,goalCompleted:!!today?.goalCompleted,totalXp,freezesAvailable:current.freezes,freezeAppliedFor,week:weekStrip(current.activity,nowMs,current.xpByDate)};
+}
+
+const dailyXpGoalSchema = z.object({ goal: z.number().int() });
+
+export async function setDailyXpGoal(input: unknown) {
+  const data = checked(dailyXpGoalSchema, input);
+  if (!isDailyXpGoal(data.goal)) throw new Error("Choisis un objectif de 10, 15 ou 20 XP.");
+  const { studentId } = await context();
+  const { error } = await createServiceClient().rpc("set_daily_xp_goal", { p_student_id: studentId, p_goal: data.goal });
+  if (error) throw new Error(error.message);
+  revalidatePath("/student");
+  return { goal: data.goal };
+}
+
+/** Sunday-to-today summary for the student weekly recap card (roadmap 6.4). */
+export async function loadStudentWeeklyRecap(input: unknown) {
+  checked(emptySchema,input);const{supabase,studentId}=await context();
+  const now=new Date();const weekStart=new Date(now);weekStart.setUTCDate(now.getUTCDate()-6);const sinceDay=weekStart.toISOString().slice(0,10);const sinceIso=`${sinceDay}T00:00:00.000Z`;
+  const[{data:days},{data:secured},{data:reviews},{count:readingCount},{data:xp}]=await Promise.all([
+    supabase.from("student_daily_activity").select("activity_date,goal_completed,xp_earned").eq("student_id",studentId).gte("activity_date",sinceDay),
+    supabase.from("student_competency_estimates").select("node_id,competency_nodes!inner(label_fr)").eq("student_id",studentId).gte("mastery_probability",0.85).gte("updated_at",sinceIso).limit(12),
+    supabase.from("student_daily_activity").select("retrieval_reviews").eq("student_id",studentId).gte("activity_date",sinceDay),
+    supabase.from("reading_sessions").select("id",{count:"exact",head:true}).eq("student_id",studentId).gte("completed_at",sinceIso),
+    supabase.from("student_xp_ledger").select("base_xp,bonus_xp").eq("student_id",studentId).gte("awarded_at",sinceIso),
+  ]);
+  return{
+    since:sinceDay,
+    activeDays:(days??[]).filter(row=>Number(row.xp_earned??0)>0).length,
+    goalDays:(days??[]).filter(row=>row.goal_completed).length,
+    xp:(xp??[]).reduce((total,row)=>total+Number(row.base_xp)+Number(row.bonus_xp),0),
+    securedNodes:(secured??[]).map(row=>(row.competency_nodes as unknown as{label_fr:string}).label_fr),
+    reviews:(reviews??[]).reduce((total,row)=>total+Number(row.retrieval_reviews??0),0),
+    readingSessions:Number(readingCount??0),
+  };
 }
 
 export async function submitSkillPractice(input: unknown) {
@@ -2411,3 +2495,22 @@ export async function submitSkillPractice(input: unknown) {
 
 const studentPasswordSchema=z.object({password:z.string().min(12).max(128)});
 export async function updateStudentPassword(input:unknown){const data=checked(studentPasswordSchema,input);const session=await requireRole(["student"]);const supabase=await createClient();const{error}=await supabase.auth.updateUser({password:data.password});if(error)throw new Error(error.message);await logAudit("student.password_rotated",{targetType:"profile",targetId:session.id});return{ok:true};}
+
+/**
+ * One round trip for the student home (roadmap 8.4). Each part degrades
+ * independently so a failing recommendation never hides the plan.
+ */
+export async function loadStudentHome(input: unknown) {
+  checked(emptySchema, input);
+  const settle = async <T,>(promise: Promise<T>): Promise<T | null> => { try { return await promise; } catch { return null; } };
+  const [texts, plan, motivation, resume, assessment, recap] = await Promise.all([
+    settle(recommendReadingTexts({})),
+    settle(loadStudentSessionPlan({})),
+    settle(loadStudentMotivation({})),
+    settle(loadLatestReadingResume({})),
+    settle(loadDiagnosticRequirement({})),
+    settle(loadStudentWeeklyRecap({})),
+  ]);
+  const fallbackPlan = plan ? null : await settle(loadStudentCatchUpPlan({}));
+  return { texts, plan, fallbackPlan, motivation, resume, assessment, recap };
+}
