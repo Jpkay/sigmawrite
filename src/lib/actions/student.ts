@@ -2920,3 +2920,13 @@ export async function loadStudentRecueil(input: unknown): Promise<{ since: strin
   ].sort((a, b) => Date.parse(a.at) - Date.parse(b.at));
   return { since: since.slice(0, 10), entries };
 }
+
+const justificationEventSchema = z.object({ sessionId: uuidSchema, questionKey: z.string().min(1).max(120), correct: z.boolean(), answerCorrect: z.boolean() });
+
+/** Records the cited-justification step of a reading question as a session event (roadmap 5.5). */
+export async function recordReadingJustification(input: unknown) {
+  const data = checked(justificationEventSchema, input); const { supabase, studentId } = await context();
+  const { error } = await supabase.from("reading_session_events").insert({ session_id: data.sessionId, student_id: studentId, event_type: "justification", event_payload: { question_key: data.questionKey, correct: data.correct, answer_correct: data.answerCorrect } });
+  if (error) throw new Error(error.message);
+  return { ok: true };
+}

@@ -1,6 +1,8 @@
 "use client";
 
 import { SyllableText } from "@/components/syllable-text";
+import { buildEvidenceChallenge } from "@/lib/content/evidence";
+import { recordReadingJustification } from "@/lib/actions/student";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
@@ -55,7 +57,7 @@ export default function ReadingSessionPage() {
   const [error, setError] = useState("");
   const [text, setText] = useState<SeedText | null>(SEED_TEXT_BY_ID[params.sessionId] ?? null);
   const [textLoaded, setTextLoaded] = useState<boolean>(!hasStudentBackend || !!SEED_TEXT_BY_ID[params.sessionId]);
-  const [readerMode,setReaderMode]=useState({friendly:false,spacing:false,lineFocus:false,syllables:false});const [spoken,setSpoken]=useState<{paragraph:number;char:number}|null>(null);
+  const [readerMode,setReaderMode]=useState({friendly:false,spacing:false,lineFocus:false,syllables:false});const [spoken,setSpoken]=useState<{paragraph:number;char:number}|null>(null);const [checked,setChecked]=useState<Record<string,boolean>>({});const [evidencePick,setEvidencePick]=useState<Record<string,number>>({});const [evidenceDone,setEvidenceDone]=useState<Record<string,boolean>>({});
   const [focusedParagraph,setFocusedParagraph]=useState<number|null>(null);
 
   function readAloud(paragraph:string,index:number){if(typeof window==="undefined"||!("speechSynthesis" in window))return;window.speechSynthesis.cancel();const utterance=new SpeechSynthesisUtterance(paragraph);utterance.lang="fr-FR";utterance.rate=0.95;utterance.onboundary=(event)=>{if(event.name==="word")setSpoken({paragraph:index,char:event.charIndex});};utterance.onend=()=>setSpoken(null);utterance.onerror=()=>setSpoken(null);window.speechSynthesis.speak(utterance);}
@@ -247,16 +249,39 @@ export default function ReadingSessionPage() {
                 prompt={question.prompt}
                 choices={question.choices}
                 value={answers[question.id] ?? null}
-                onChange={(i) => setAnswers((a) => ({ ...a, [question.id]: i }))}
+                onChange={(i) => { if (!checked[question.id]) setAnswers((a) => ({ ...a, [question.id]: i })); }}
               />
+              {checked[question.id] && (() => {
+                const answerCorrect = answers[question.id] === question.correctIndex;
+                const challenge = buildEvidenceChallenge(activeText.body, question.choices[question.correctIndex] ?? "", question.explanationFr, `${activeText.id}:${question.id}`);
+                const picked = evidencePick[question.id];
+                return (
+                  <div className="mt-5 space-y-4">
+                    <div className={`flex gap-3 border-l-2 py-2 pl-3 text-sm ${answerCorrect ? "border-emerald-500" : "border-amber-500"}`} role="status">
+                      <div><p className="font-medium">{answerCorrect ? "Bonne réponse." : `Pas tout à fait : la bonne réponse est « ${question.choices[question.correctIndex]} ».`}</p><p className="mt-1 text-muted-foreground">{question.explanationFr}</p></div>
+                    </div>
+                    {challenge && !evidenceDone[question.id] && (
+                      <div>
+                        <p className="text-sm font-medium">Quelle phrase du texte justifie cette réponse ?</p>
+                        <div role="radiogroup" aria-label="Phrase justificative" className="mt-2 grid gap-2">
+                          {challenge.candidates.map((sentence, index) => <button key={index} type="button" role="radio" aria-checked={picked === index} onClick={() => setEvidencePick((current) => ({ ...current, [question.id]: index }))} className={`rounded-md border px-3 py-2 text-left text-sm leading-6 ${picked === index ? "border-primary bg-primary/10" : "border-border hover:border-primary/50"}`}>« {sentence} »</button>)}
+                        </div>
+                        <Button className="mt-3" variant="outline" disabled={picked === undefined} onClick={() => { const correct = picked === challenge.answerIndex; setEvidenceDone((current) => ({ ...current, [question.id]: true })); if (hasStudentBackend && dbSessionId) void recordReadingJustification({ sessionId: dbSessionId, questionKey: question.id, correct, answerCorrect }).catch(() => undefined); }}>Valider la justification</Button>
+                      </div>
+                    )}
+                    {challenge && evidenceDone[question.id] && <p className="text-sm" role="status">{picked === challenge.answerIndex ? "Justification exacte : c’est bien cette phrase qui porte l’information." : <>La phrase qui justifie la réponse est : <span className="font-medium">« {challenge.candidates[challenge.answerIndex]} »</span>.</>}</p>}
+                  </div>
+                );
+              })()}
               <div className="mt-5">
-                <Button
-                  onClick={nextQuestion}
-                  disabled={answers[question.id] === undefined || pending}
-                >
-                  {qIndex + 1 < text.questions.length ? "Suivant" : "Continuer"}{" "}
-                  <ArrowRight />
-                </Button>
+                {!checked[question.id] ? (
+                  <Button onClick={() => setChecked((current) => ({ ...current, [question.id]: true }))} disabled={answers[question.id] === undefined || pending}>Vérifier</Button>
+                ) : (
+                  <Button onClick={nextQuestion} disabled={pending}>
+                    {qIndex + 1 < text.questions.length ? "Suivant" : "Continuer"}{" "}
+                    <ArrowRight />
+                  </Button>
+                )}
               </div>
             </CardContent>
           </Card>
