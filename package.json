@@ -31,6 +31,7 @@
     "taxonomy:import:v3": "tsx scripts/import-french-taxonomy-v1.mts generated/french-taxonomy-v3.json",
     "seed:demo": "tsx scripts/seed-demo.mts",
     "seed:dictations": "tsx --tsconfig ./tsconfig.json scripts/seed-dictations.mts",
+    "dictations:render-audio": "tsx --tsconfig ./tsconfig.json scripts/render-dictation-audio.mts",
     "verify:deletion": "tsx --tsconfig ./tsconfig.json scripts/verify-deletion-job.mts",
     "graph:smoke": "tsx --tsconfig ./tsconfig.json scripts/verify-student-graph.mts",
     "seed:item-banks": "tsx --tsconfig ./tsconfig.json scripts/seed-item-bank.mts generated/past-narration-items.json && tsx --tsconfig ./tsconfig.json scripts/seed-item-bank.mts generated/present-agreement-items.json",
