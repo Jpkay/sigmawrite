@@ -64,6 +64,7 @@ import { evaluateWriting } from "@/lib/writing/evaluate";
 import { buildTemplate, publicTemplate, reconstruct, type DictationMode, type SegmentTemplate } from "@/lib/dictation/modes";
 import { classifyDictation, CATEGORY_LABELS, type DictationError, type ErrorCategory } from "@/lib/dictation/classify";
 import { signDictationAudio } from "@/lib/dictation/audio";
+import { speakableSegment } from "@/lib/dictation/speech-text";
 import { BADGE_BY_KEY, earnedBadges, type BadgeKey } from "@/lib/badges";
 import { genrePrompt, genreSpec, genresForGrade, isWritingGenre, type WritingGenre } from "@/lib/writing/genres";
 import { scoreProductionWithAI, type ProductionRubric } from "@/lib/scoring/production-ai";
@@ -2766,7 +2767,7 @@ export async function startDictation(input: unknown): Promise<DictationSession> 
     segments: row.segments.map((segment, index) => ({
       index,
       audioUrl: audioMode === "server" ? urls[index] ?? null : null,
-      browserText: audioMode === "browser" ? segment.text : null,
+      browserText: audioMode === "browser" ? speakableSegment(segment.text) : null,
       template: withTemplates ? publicTemplate(buildTemplate(segment.text, index), mode === "choix") : null,
     })),
   };

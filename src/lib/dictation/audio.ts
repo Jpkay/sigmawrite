@@ -1,5 +1,6 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { getAIProvider } from "@/lib/ai";
+import { speakableFullText, speakableSegment } from "./speech-text";
 
 export const DICTATION_AUDIO_BUCKET = "dictation-audio";
 
@@ -29,13 +30,13 @@ export async function renderPendingDictationAudio(db: SupabaseClient, options: {
       const segments = (row.segments as Segment[]).map((segment) => ({ ...segment }));
       let provenance: { provider: string; model: string; voice: string } | null = null;
       for (let index = 0; index < segments.length; index++) {
-        const speech = await provider.synthesizeSpeech({ text: segments[index].text, speed: 0.85 });
+        const speech = await provider.synthesizeSpeech({ text: speakableSegment(segments[index].text), speed: 0.85 });
         const path = `${row.key as string}/segment-${String(index).padStart(2, "0")}.mp3`;
         await upload(db, path, speech.audio, speech.mimeType);
         segments[index].audioPath = path;
         provenance = { provider: speech.provider, model: speech.model, voice: speech.voice };
       }
-      const full = await provider.synthesizeSpeech({ text: segments.map((segment) => segment.text).join(" "), speed: 0.9 });
+      const full = await provider.synthesizeSpeech({ text: speakableFullText(segments.map((segment) => segment.text)), speed: 0.9 });
       const fullPath = `${row.key as string}/full.mp3`;
       await upload(db, fullPath, full.audio, full.mimeType);
       const { error: doneError } = await db.from("dictations").update({
