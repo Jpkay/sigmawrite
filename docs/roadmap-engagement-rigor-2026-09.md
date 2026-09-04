@@ -112,8 +112,9 @@ acceptance test.
 
 ## Phase 8 — Efficiency and platform
 
-- [ ] **8.1** Shorten the diagnostic: minimal covering set per section, per-section `maxProbes` 20 → 12 in `src/lib/diagnostic/protocol.ts`, latency-weighted evidence. **M**. *Accept:* benchmark scenarios keep the 19/19 expected outcomes; median run ≤ 35 probes.
-- [ ] **8.2** Wire `src/lib/quiz/continuous.ts` as the formative layer (quiz after ~7 days on a node; miss → immediate targeted review). **M**.
+- [x] **8.1** Shorten the diagnostic: protocol v3 runs 6–12 probes per section (24–48 total) and the server unlock guard accepts v2 and v3 runs. **M**. Done 2026-09-04; benchmark 19/19 unchanged. Latency-weighted evidence and a minimal covering set remain open (tracked as 8.10).
+- [ ] **8.10** Use stored probe latency as evidence weight (slow-correct is weaker) and a minimal covering set to cut probes further. **M**.
+- [ ] **8.2** Wire `src/lib/quiz/continuous.ts` as the formative layer (quiz after ~7 days on a node; miss → immediate targeted review). **M**. 2026-09-04 note: the module depends on learning packages and the quiz session tables; needs a quiz player and a default policy row before it can be wired.
 - [ ] **8.3** Delete or wire each dead module: `graph-scheduler.ts`, `serving/provisional.ts`, `learning/package-progress.ts`, `generation/on-demand-workflow.ts`, `ComingSoon`. One decision per PR. **S** each.
 - [x] **8.4** Home page: replace the 5 sequential server actions with one loader. **S**. Done 2026-09-04 as a single `loadStudentHome` action with per-part degradation; the page stays a client component.
 - [ ] **8.5** Service worker serves cached navigations for the prefetched plan URLs and replays the offline queue; remove the dead `plume-offline-pack-v1` prefetch if 8.5 is not taken. **M**. *Accept:* offline Playwright run completes one practice session.

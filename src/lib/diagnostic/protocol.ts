@@ -13,9 +13,9 @@ export const DIAGNOSTIC_SECTIONS = [
     shortLabelFr: "Lecture",
     descriptionFr: "Comprendre, relier et justifier les informations d’un texte.",
     strands: ["comprehension_ecrite"],
-    minProbes: 8,
-    maxProbes: 20,
-    minDistinctNodes: 6,
+    minProbes: 6,
+    maxProbes: 12,
+    minDistinctNodes: 5,
   },
   {
     key: "grammar",
@@ -23,9 +23,9 @@ export const DIAGNOSTIC_SECTIONS = [
     shortLabelFr: "Grammaire",
     descriptionFr: "Analyser la phrase, ses groupes et leurs relations.",
     strands: ["grammaire_syntaxe"],
-    minProbes: 8,
-    maxProbes: 20,
-    minDistinctNodes: 6,
+    minProbes: 6,
+    maxProbes: 12,
+    minDistinctNodes: 5,
   },
   {
     key: "spelling",
@@ -33,9 +33,9 @@ export const DIAGNOSTIC_SECTIONS = [
     shortLabelFr: "Orthographe",
     descriptionFr: "Maîtriser l’orthographe lexicale et les accords grammaticaux.",
     strands: ["orthographe_lexicale", "orthographe_grammaticale"],
-    minProbes: 8,
-    maxProbes: 20,
-    minDistinctNodes: 6,
+    minProbes: 6,
+    maxProbes: 12,
+    minDistinctNodes: 5,
   },
   {
     key: "conjugation",
@@ -43,9 +43,9 @@ export const DIAGNOSTIC_SECTIONS = [
     shortLabelFr: "Conjugaison",
     descriptionFr: "Reconnaître, former et interpréter les temps et les modes.",
     strands: ["conjugaison"],
-    minProbes: 8,
-    maxProbes: 20,
-    minDistinctNodes: 6,
+    minProbes: 6,
+    maxProbes: 12,
+    minDistinctNodes: 5,
   },
 ] as const satisfies ReadonlyArray<{
   key: string;
@@ -61,7 +61,8 @@ export const DIAGNOSTIC_SECTIONS = [
 export type DiagnosticSectionKey = (typeof DIAGNOSTIC_SECTIONS)[number]["key"];
 export type DiagnosticSection = (typeof DIAGNOSTIC_SECTIONS)[number];
 
-export const DIAGNOSTIC_PROTOCOL_VERSION = "graph-sections-v2";
+/** v3 (2026-09-04): 6–12 probes per section, 24–48 in total, so a placement fits in one sitting (roadmap 8.1). */
+export const DIAGNOSTIC_PROTOCOL_VERSION = "graph-sections-v3";
 export const DIAGNOSTIC_TAXONOMY_RELEASE_KEY = "french-taxonomy-v2";
 export const DIAGNOSTIC_ITEM_BANK_RELEASE_KEY = "french-diagnostic-bank-v2";
 export const DIAGNOSTIC_MIN_TOTAL_PROBES = DIAGNOSTIC_SECTIONS.reduce(
