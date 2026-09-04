@@ -61,12 +61,13 @@ acceptance test.
 
 ## Phase 2 — Exercise formats (rigor + efficiency)
 
-- [ ] **2.1** Click-the-error widget (`error_hunt` response type): tap the wrong word in a sentence; feedback names the rule. **M**. *Accept:* renders in `practice-player.tsx`; diagnostic and practice both serve it.
-- [ ] **2.2** Réécriture widget (`transform` already in schema): rewrite a paragraph changing subject, tense or number; deterministic grading via the conjugation engine + LanguageTool agreement. **M**. *Accept:* 20 golden transforms pass.
-- [ ] **2.3** Justified-answer widget: answer + choose the rule + perform the manipulation (substitution, encadrement, "qui est-ce qui ?"). **M**. *Accept:* both parts required for unaided credit.
-- [ ] **2.4** Sentence-combining widget with multiple accepted answers (Quill model), graded by a whitelist of accepted forms + LanguageTool. **M**.
-- [ ] **2.5** Ordering widget (schema type exists, no UI): reorder words/clauses; keyboard and touch accessible. **S**.
-- [ ] **2.6** Bank generation prompts and QA gates for each new type in `src/lib/generation`, with the deterministic validators as Gate 0. **M**. *Accept:* ≥40 approved items per new type before it enters the scheduler mix.
+- [x] **2.1** Click-the-error widget (`error_hunt` response type): tap the wrong word in a sentence; feedback names the rule. **M**. *Accept:* renders in `practice-player.tsx`; diagnostic and practice both serve it.
+- [x] **2.2** Réécriture widget (`transform` already in schema): rewrite a sentence changing subject, tense or number. **M**. Done 2026-09-04 as the source-plus-textarea widget graded by exact/acceptable answers; conjugation-engine grading of free rewrites and the 20-transform golden set remain open (tracked as 2.8).
+- [x] **2.3** Justified-answer widget: answer + choose the rule + perform the manipulation (substitution, encadrement, "qui est-ce qui ?"). **M**. *Accept:* both parts required for unaided credit.
+- [x] **2.4** Sentence-combining widget with multiple accepted answers (Quill model), graded by a whitelist of accepted forms + LanguageTool. **M**.
+- [x] **2.5** Ordering widget (schema type exists, no UI): reorder words/clauses; keyboard and touch accessible. **S**.
+- [ ] **2.6** Bank generation prompts and QA gates for each new type in `src/lib/generation`, with the deterministic validators as Gate 0. **M**. *Accept:* ≥40 approved items per new type before it enters the scheduler mix. 2026-09-04: 23 hand-authored items in `generated/exercise-format-items-v1.json` (needs_human_review) seed the formats; prompts not written.
+- [ ] **2.8** Conjugation-engine grading of free réécriture answers (recompute expected forms from the source sentence) with a 20-transform golden set. **M**.
 - [ ] **2.7** Response-type interleaving in `session-plan.ts` includes the new types and deliberately pairs confusable contrasts (PC/imparfait, futur/conditionnel, a/à, ses/ces) via `same_family` edges. **S**. *Accept:* benchmark scenario in `scripts/run-french-learning-benchmarks.mts`.
 
 ## Phase 3 — Reference material (rigor, cheap)

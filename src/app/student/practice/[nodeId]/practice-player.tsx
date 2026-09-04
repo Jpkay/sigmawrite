@@ -11,6 +11,7 @@ import {
 } from "@/lib/actions/student";
 import type { getNodePractice } from "@/lib/db/practice";
 import { AccentTextarea } from "@/components/accent-textarea";
+import { ErrorHuntWidget, JustifiedWidget, OrderingWidget, RewriteWidget, shuffledOrder } from "@/components/exercise-widgets";
 import { buildHintLadder } from "@/lib/practice/hints";
 import { workedExample } from "@/lib/practice/scaffolding";
 import { expandReviewedPractice, PRACTICE_BASE_XP, PRACTICE_PERFECT_BONUS_XP } from "@/lib/practice/session";
@@ -29,6 +30,8 @@ export function PracticePlayer({ practice }: { practice: Practice }) {
   const [index, setIndex] = useState(0);
   const [choice, setChoice] = useState<string | null>(null);
   const [answer, setAnswer] = useState("");
+  const [order, setOrder] = useState<string[]>([]);
+  const [rule, setRule] = useState("");
   const [busy, setBusy] = useState(false);
   const [feedback, setFeedback] = useState<{ correct: boolean; text: string | null; mastery: number } | null>(null);
   const [completion, setCompletion] = useState<Completion | null>(null);
@@ -101,7 +104,7 @@ export function PracticePlayer({ practice }: { practice: Practice }) {
         practiceSessionId: session.id,
         exercisePosition: index,
         selectedChoiceId: choice ?? undefined,
-        answerText: choice ? undefined : answer,
+        answerText: item.responseType === "justified" ? rule : choice ? undefined : answer,
         startedAt: itemStartedAt,
         hintsUsed: hintsShown,
       });
@@ -119,13 +122,13 @@ export function PracticePlayer({ practice }: { practice: Practice }) {
   async function next() {
     if (index + 1 >= plannedExercises) { await finish(); return; }
     setIndex((value) => value + 1);
-    setChoice(null); setAnswer(""); setFeedback(null); setRemediation(null); setAttemptsOnItem(0);
+    setChoice(null); setAnswer(""); setOrder([]); setRule(""); setFeedback(null); setRemediation(null); setAttemptsOnItem(0);
     setHintsShown(Math.min(2, scaffoldLevel));
     setItemStartedAt(new Date().toISOString());
   }
 
   function retry() {
-    setChoice(null); setAnswer(""); setFeedback(null);
+    setChoice(null); setAnswer(""); setOrder([]); setRule(""); setFeedback(null);
     setHintsShown((value) => Math.min(support.length, Math.max(value + 1, scaffoldLevel)));
     setItemStartedAt(new Date().toISOString());
   }
@@ -184,7 +187,11 @@ export function PracticePlayer({ practice }: { practice: Practice }) {
       <div className="mt-8 border-y border-border py-7">
         {item.instructionsFr && <p className="text-sm text-muted-foreground">{item.instructionsFr}</p>}
         <p className="mt-2 text-xl font-medium leading-8">{item.promptFr}</p>
-        {item.choices.length ? <div role="radiogroup" aria-label="Choix de réponse" className="mt-6 grid gap-3">{item.choices.map((option) => <button type="button" role="radio" aria-checked={choice === option.id} key={option.id} disabled={!!feedback} onClick={() => setChoice(option.id)} className={`min-h-12 rounded-lg border px-4 py-3 text-left text-base transition-colors ${choice === option.id ? "border-primary bg-primary/10" : "border-border hover:border-primary/50"}`}>{option.text}</button>)}</div> : <AccentTextarea disabled={!!feedback} value={answer} onChange={setAnswer} rows={3} autoCapitalize="none" autoCorrect="off" className="mt-6 w-full rounded-lg border border-input bg-background p-4 text-base" />}
+        {item.responseType === "error_hunt" ? <ErrorHuntWidget sentence={item.promptFr} value={answer} onChange={setAnswer} disabled={!!feedback} />
+          : item.responseType === "ordering" ? <OrderingWidget order={order.length ? order : shuffledOrder(((item.validatorConfig?.tokens as string[] | undefined) ?? []), item.id)} onChange={(next) => { setOrder(next); setAnswer(next.join(" ")); }} disabled={!!feedback} />
+          : item.responseType === "justified" ? <JustifiedWidget choices={item.choices} rules={((item.validatorConfig?.rules as { key: string; label: string }[] | undefined) ?? [])} choice={choice} rule={rule} onChoice={setChoice} onRule={(key) => { setRule(key); setAnswer(key); }} disabled={!!feedback} />
+          : item.responseType === "combine" || (item.responseType === "transform" && Array.isArray(item.validatorConfig?.sources)) ? <RewriteWidget sources={item.responseType === "combine" ? ((item.validatorConfig?.sentences as string[] | undefined) ?? []) : ((item.validatorConfig?.sources as string[] | undefined) ?? [])} value={answer} onChange={setAnswer} disabled={!!feedback} placeholder={item.responseType === "combine" ? "Une seule phrase qui garde toutes les informations." : "Réécris la phrase en suivant la consigne."} />
+          : item.choices.length ? <div role="radiogroup" aria-label="Choix de réponse" className="mt-6 grid gap-3">{item.choices.map((option) => <button type="button" role="radio" aria-checked={choice === option.id} key={option.id} disabled={!!feedback} onClick={() => setChoice(option.id)} className={`min-h-12 rounded-lg border px-4 py-3 text-left text-base transition-colors ${choice === option.id ? "border-primary bg-primary/10" : "border-border hover:border-primary/50"}`}>{option.text}</button>)}</div> : <AccentTextarea disabled={!!feedback} value={answer} onChange={setAnswer} rows={3} autoCapitalize="none" autoCorrect="off" className="mt-6 w-full rounded-lg border border-input bg-background p-4 text-base" />}
       </div>
 
       {hintsShown > 0 && <div className="mt-5 space-y-2">{support.slice(0, hintsShown).map((hint, hintIndex) => <div key={hintIndex} className="flex gap-3 border-l-2 border-secondary py-1 pl-3 text-sm"><Lightbulb className="mt-0.5 size-4 shrink-0 text-secondary" /><p>{hint}</p></div>)}</div>}
@@ -195,7 +202,7 @@ export function PracticePlayer({ practice }: { practice: Practice }) {
       <div className="fixed inset-x-0 bottom-0 z-30 border-t border-border bg-background/95 p-3 pb-[max(.75rem,env(safe-area-inset-bottom))] backdrop-blur-xl sm:static sm:mt-7 sm:border-0 sm:bg-transparent sm:p-0">
         <div className="mx-auto flex max-w-3xl items-center gap-2">
           {feedback ? (feedback.correct ? <Button onClick={() => void next()} disabled={busy}>{index + 1 >= plannedExercises ? "Terminer la leçon" : "Exercice suivant"} <ArrowRight /></Button> : <Button onClick={retry}>Réessayer avec un indice</Button>) : <>
-            <Button disabled={busy || !session || (!choice && !answer.trim())} onClick={() => void submit()}>{busy ? "Vérification…" : attemptsOnItem ? "Valider la correction" : "Valider"}</Button>
+            <Button disabled={busy || !session || (item.responseType === "justified" ? !choice || !rule : item.responseType === "ordering" ? order.length === 0 : !choice && !answer.trim())} onClick={() => void submit()}>{busy ? "Vérification…" : attemptsOnItem ? "Valider la correction" : "Valider"}</Button>
             {hintsShown < support.length && <Button variant="outline" onClick={() => setHintsShown((value) => value + 1)}><Lightbulb /> Indice</Button>}
           </>}
         </div>
