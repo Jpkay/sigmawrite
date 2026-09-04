@@ -1,4 +1,4 @@
-import { DashboardShell, type NavItem } from "@/components/dashboard-shell";
+import { DashboardShell, type NavItem, type TabItem } from "@/components/dashboard-shell";
 import { getSessionProfile, requireRole } from "@/lib/auth";
 import { getStudentAccessGate } from "@/lib/db/lifecycle";
 import { isSupabaseConfigured } from "@/lib/supabase/server";
@@ -13,7 +13,16 @@ const nav: NavItem[] = [
   { href: "/student/memory", label: "Mémoire" },
   { href: "/student/progress", label: "Progrès" },
   { href: "/student/frontier", label: "Frontière" },
+  { href: "/student/inbox", label: "Messages" },
   { href: "/student/settings", label: "Paramètres" },
+];
+
+const tabs: TabItem[] = [
+  { href: "/student", label: "Accueil", icon: "home" },
+  { href: "/student/vocabulary", label: "Mots", icon: "book" },
+  { href: "/student/memory", label: "Mémoire", icon: "brain" },
+  { href: "/student/progress", label: "Progrès", icon: "progress" },
+  { href: "/student/inbox", label: "Messages", icon: "inbox" },
 ];
 
 export default async function StudentLayout({
@@ -31,6 +40,7 @@ export default async function StudentLayout({
     <DashboardShell
       area="Élève"
       nav={nav}
+      tabs={tabs}
       user={{ name: session?.displayName ?? "Élève", role: session?.role ?? "student", analyticsId: session?.id }}
     >
       {access && !access.authorized

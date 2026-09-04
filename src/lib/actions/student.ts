@@ -2514,3 +2514,30 @@ export async function loadStudentHome(input: unknown) {
   const fallbackPlan = plan ? null : await settle(loadStudentCatchUpPlan({}));
   return { texts, plan, fallbackPlan, motivation, resume, assessment, recap };
 }
+
+export type StudentNotification = { id: string; kind: string; message: string; payload: Record<string, unknown>; readAt: string | null; createdAt: string };
+
+/** Inbox reader for the rows the retrieval cron and teacher comments write (roadmap 7.1). */
+export async function loadStudentNotifications(input: unknown): Promise<StudentNotification[]> {
+  checked(emptySchema, input); const { supabase, studentId } = await context();
+  const { data, error } = await supabase.from("student_notifications").select("id,kind,message_fr,payload,read_at,created_at").eq("student_id", studentId).order("created_at", { ascending: false }).limit(50);
+  if (error) throw new Error(error.message);
+  return (data ?? []).map((row) => ({ id: row.id as string, kind: row.kind as string, message: row.message_fr as string, payload: (row.payload ?? {}) as Record<string, unknown>, readAt: row.read_at as string | null, createdAt: row.created_at as string }));
+}
+
+export async function countUnreadStudentNotifications(): Promise<number> {
+  const { supabase, studentId } = await context();
+  const { count } = await supabase.from("student_notifications").select("id", { count: "exact", head: true }).eq("student_id", studentId).is("read_at", null);
+  return Number(count ?? 0);
+}
+
+const markNotificationsSchema = z.object({ ids: z.array(z.string().uuid()).max(100).optional() });
+
+export async function markStudentNotificationsRead(input: unknown) {
+  const data = checked(markNotificationsSchema, input); const { supabase, studentId } = await context();
+  let query = supabase.from("student_notifications").update({ read_at: new Date().toISOString() }).eq("student_id", studentId).is("read_at", null);
+  if (data.ids?.length) query = query.in("id", data.ids);
+  const { error } = await query; if (error) throw new Error(error.message);
+  revalidatePath("/student/inbox"); revalidatePath("/student");
+  return { ok: true };
+}

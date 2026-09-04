@@ -3,13 +3,18 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
-import { Feather } from "lucide-react";
+import { BookOpen, Brain, Feather, Home, Inbox, TrendingUp, type LucideIcon } from "lucide-react";
 import { SignOutButton } from "@/components/sign-out-button";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { identifyAnalytics } from "@/lib/analytics";
 
 export type NavItem = { href: string; label: string; matchPrefixes?: readonly string[] };
+/** Bottom tab for phones; icon keys stay serializable across the server boundary. */
+export type TabItem = { href: string; label: string; icon: "home" | "book" | "brain" | "progress" | "inbox" };
+/** Focus surfaces own the bottom of the screen (timers, submit bars); the tab bar steps aside there. */
+const FOCUS_PREFIXES = ["/student/practice/", "/student/production/", "/student/read/", "/student/diagnostic", "/student/dictee/"];
+const TAB_ICONS: Record<TabItem["icon"], LucideIcon> = { home: Home, book: BookOpen, brain: Brain, progress: TrendingUp, inbox: Inbox };
 
 /**
  * Shared chrome for every role dashboard: branded sidebar with nav + a
@@ -22,6 +27,7 @@ export function DashboardShell({
   signOutLabel,
   modeSwitch,
   language = "fr",
+  tabs,
   children,
 }: {
   area: string;
@@ -30,10 +36,12 @@ export function DashboardShell({
   signOutLabel?: string;
   modeSwitch?: React.ReactNode;
   language?: "fr" | "en";
+  tabs?: TabItem[];
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
   const home = nav[0]?.href;
+  const showTabs = !!tabs && !FOCUS_PREFIXES.some((prefix) => pathname.startsWith(prefix));
   useEffect(() => { if (user?.analyticsId) identifyAnalytics(user.analyticsId, user.role); }, [user?.analyticsId, user?.role]);
 
   return (
@@ -96,7 +104,21 @@ export function DashboardShell({
           </nav>
           {modeSwitch && <div className="mt-2">{modeSwitch}</div>}
         </div>
-        <div className="mx-auto w-full max-w-7xl px-4 py-7 sm:px-8 sm:py-10 lg:px-10">{children}</div>
+        <div className={cn("mx-auto w-full max-w-7xl px-4 py-7 sm:px-8 sm:py-10 lg:px-10", showTabs && "pb-24 md:pb-10")}>{children}</div>
+        {showTabs && tabs && (
+          <nav aria-label={language === "en" ? "Quick navigation" : "Navigation rapide"} className="fixed inset-x-0 bottom-0 z-40 grid border-t border-border bg-background/95 backdrop-blur-xl md:hidden" style={{ gridTemplateColumns: `repeat(${tabs.length}, minmax(0, 1fr))`, paddingBottom: "env(safe-area-inset-bottom)" }}>
+            {tabs.map((tab) => {
+              const Icon = TAB_ICONS[tab.icon];
+              const active = pathname === tab.href || (tab.href !== home && pathname.startsWith(tab.href + "/"));
+              return (
+                <Link key={tab.href} href={tab.href} aria-current={active ? "page" : undefined} className={cn("flex min-h-14 flex-col items-center justify-center gap-0.5 text-[11px] font-medium", active ? "text-primary" : "text-muted-foreground")}>
+                  <Icon className="size-5" aria-hidden />
+                  {tab.label}
+                </Link>
+              );
+            })}
+          </nav>
+        )}
       </main>
     </div>
   );

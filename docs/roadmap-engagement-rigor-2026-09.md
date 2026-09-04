@@ -104,7 +104,7 @@ acceptance test.
 
 ## Phase 7 — Notifications and loops (engagement)
 
-- [ ] **7.1** Student in-app inbox reading `student_notifications` (due reviews, teacher comments, weekly recap). **S**.
+- [x] **7.1** Student in-app inbox reading `student_notifications` (due reviews, teacher comments, weekly recap). **S**.
 - [ ] **7.2** Web push (PWA) opt-in, parent-controllable for under-15, capped at 1/day, copy A/B-tested via PostHog. **M**.
 - [ ] **7.3** Teacher class dictée challenge: assign a dictée to the class with a due date; class-level results view. **M**.
 - [ ] **7.4** Parent weekly email includes error types and time on task (Kartable parents' top request). **S**.
@@ -116,8 +116,8 @@ acceptance test.
 - [ ] **8.3** Delete or wire each dead module: `graph-scheduler.ts`, `serving/provisional.ts`, `learning/package-progress.ts`, `generation/on-demand-workflow.ts`, `ComingSoon`. One decision per PR. **S** each.
 - [x] **8.4** Home page: replace the 5 sequential server actions with one loader. **S**. Done 2026-09-04 as a single `loadStudentHome` action with per-part degradation; the page stays a client component.
 - [ ] **8.5** Service worker serves cached navigations for the prefetched plan URLs and replays the offline queue; remove the dead `plume-offline-pack-v1` prefetch if 8.5 is not taken. **M**. *Accept:* offline Playwright run completes one practice session.
-- [ ] **8.6** Accent helper on single-line inputs (vocabulary recall uses a plain input). **S**.
-- [ ] **8.7** Mobile bottom tab bar for the five student surfaces; maskable 192/512 PNG icons in `manifest.ts`. **S**.
+- [x] **8.6** Accent helper on single-line inputs (vocabulary recall uses a plain input). **S**.
+- [x] **8.7** Mobile bottom tab bar for the five student surfaces; maskable 192/512 PNG icons in `manifest.ts`. **S**.
 - [ ] **8.8** Dyslexia options: OpenDyslexic or Luciole font, syllable colouring in the reader, TTS word highlighting. **M**.
 
 ## Phase 9 — Compliance for AI feedback (must land before 5.3 reaches general availability)
