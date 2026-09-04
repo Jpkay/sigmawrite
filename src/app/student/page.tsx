@@ -11,7 +11,7 @@ import { SEED_TEXT_BY_ID } from "@/lib/content/texts";
 import { recommendTextId } from "@/lib/content/recommend";
 import type { SeedText } from "@/lib/content/types";
 import { hasStudentBackend, useStudentState } from "@/lib/student-store";
-import { loadDiagnosticRequirement, loadLatestReadingResume, loadStudentCatchUpPlan, loadStudentMotivation, loadStudentSessionPlan, recommendReadingText, recommendReadingTexts, type SessionPlanEntry } from "@/lib/actions/student";
+import { loadDiagnosticRequirement, loadLatestReadingResume, loadStudentCatchUpPlan, loadStudentMotivation, loadStudentSessionPlan, recommendReadingTexts, type SessionPlanEntry } from "@/lib/actions/student";
 import { StudentAssignments } from "@/components/student-assignments";
 import { track } from "@/lib/analytics";
 import { difficultyBandLabel } from "@/lib/scoring/band";
@@ -30,10 +30,12 @@ export default function StudentHome() {
     const local = SEED_TEXT_BY_ID[recommendTextId(state.interests)];
     if (!hasStudentBackend || !state.hydrated || !state.diagnostic) return;
     let active = true;
-    recommendReadingText({})
-      .then((text) => { if (active) setRecommended(text); })
-      .catch(() => { if (active) setRecommended(local); });
-    recommendReadingTexts({}).then((texts) => { if (active && texts.length) setRecommendations(texts); }).catch(() => undefined);
+    recommendReadingTexts({}).then((texts) => {
+      if (active && texts.length) {
+        setRecommended(texts[0]);
+        setRecommendations(texts);
+      }
+    }).catch(() => { if (active) setRecommended(local); });
     loadStudentSessionPlan({})
       .then((entries) => { if (active) setPlan(entries.slice(0, 6)); })
       .catch(() => {

@@ -12,6 +12,7 @@ import { DIFFICULTY_BANDS } from "@/lib/types";
 import type { AIProvider } from "./provider";
 import { paragraphsFromText } from "@/lib/content/text-format";
 import { sanitizeStudentTopic } from "@/lib/safety/topic";
+import { assertGroundingPacketsUsable, knowledgePacketPromptBoundary } from "@/lib/content/knowledge-packets";
 
 /**
  * AI content generation pipeline (PRD §H). Orchestrates the constrained
@@ -75,6 +76,16 @@ export function hasUncataloguedNumericClaim(
   return numbers.some((number) => !catalog.includes(number.replace(/\s+/g, " ")));
 }
 
+export function hasUnknownGroundingReference(
+  claims: GeneratedTextCandidate["factualClaims"],
+  packets: GenerateTextInput["groundingPackets"],
+): boolean {
+  const allowed = new Set((packets ?? []).map((packet) => packet.packetVersionId));
+  return claims.some((claim) =>
+    (claim.sourcePacketIds ?? []).some((packetId) => !allowed.has(packetId))
+  );
+}
+
 /** Pure review-status decision (PRD §H step 13). Easy to unit-test. */
 export function decideReviewStatus(flags: ReviewFlags): ReviewStatus {
   if (
@@ -92,16 +103,20 @@ export function decideReviewStatus(flags: ReviewFlags): ReviewStatus {
 
 export async function runGenerationPipeline(
   input: GenerateTextInput,
-  options: { provider?: AIProvider; systemPrompt?: string } = {}
+  options: { provider?: AIProvider; systemPrompt?: string; now?: string } = {}
 ): Promise<ContentCandidate> {
   const provider = options.provider ?? getAIProvider();
   const sanitizedTopic = sanitizeStudentTopic(input.topic);
   if (!sanitizedTopic.allowed) throw new Error(`unsafe_topic:${sanitizedTopic.reason}`);
+  assertGroundingPacketsUsable(input.groundingPackets ?? [], options.now ?? new Date().toISOString());
   const safeInput: GenerateTextInput = { ...input, topic: sanitizedTopic.value };
+  const systemPrompt = input.groundingPackets?.length && options.systemPrompt
+    ? `${options.systemPrompt}\n\n${knowledgePacketPromptBoundary()}`
+    : options.systemPrompt;
 
   // 1) generate → 2) validate against the contract (PRD §H steps 5–6).
   const generated = generatedTextCandidateSchema.parse(
-    await provider.generateText(safeInput, { systemPrompt: options.systemPrompt })
+    await provider.generateText(safeInput, { systemPrompt })
   );
 
   const paragraphs = paragraphsFromText(generated.body);
@@ -130,7 +145,8 @@ export async function runGenerationPipeline(
     moderationPassed: moderation.passed,
     factualNeedsReview:
       generated.factualClaims.some((c) => c.needsHumanReview || c.confidence === "low") ||
-      hasUncataloguedNumericClaim(generated.body, generated.factualClaims),
+      hasUncataloguedNumericClaim(generated.body, generated.factualClaims) ||
+      hasUnknownGroundingReference(generated.factualClaims, safeInput.groundingPackets),
     sensitive: isSensitive(safeInput),
     difficultyMismatch: isDifficultyMismatch(
       input.targetReadingBand,

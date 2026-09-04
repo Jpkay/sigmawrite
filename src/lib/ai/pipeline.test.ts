@@ -11,9 +11,11 @@ import {
   isSensitive,
   runGenerationPipeline,
   hasUncataloguedNumericClaim,
+  hasUnknownGroundingReference,
 } from "./pipeline";
 import { SEED_TEXT_BY_ID } from "@/lib/content/texts";
 import type { GenerateTextInput } from "./schemas";
+import type { AIProvider } from "./provider";
 import { MockAIProvider } from "./mock";
 
 describe("text difficulty engine (PRD §G)", () => {
@@ -120,12 +122,20 @@ describe("difficulty / sensitivity helpers", () => {
       { claim: "Le projet a réuni 42 élèves.", confidence: "high", needsHumanReview: false },
     ])).toBe(false);
   });
+  it("rejects invented packet provenance", () => {
+    expect(hasUnknownGroundingReference([
+      { claim: "Fait", confidence: "high", needsHumanReview: false, sourcePacketIds: ["unknown"] },
+    ], [])).toBe(true);
+    expect(hasUnknownGroundingReference([
+      { claim: "Fait", confidence: "high", needsHumanReview: false, sourcePacketIds: ["known"] },
+    ], [{ packetVersionId:"known",conceptId:"concept",conceptKey:"key",labelFr:"Concept",riskClass:"low",sourceRequirement:"none",explanationFr:"Une explication suffisamment longue.",claims:[],misconceptions:[],examples:[],vocabulary:[],sources:[],reviewedAt:"2026-08-01T00:00:00.000Z",reviewAfter:null }])).toBe(false);
+  });
 });
 
 describe("runGenerationPipeline (mock provider)", () => {
   it("rejects topic prompt injection before calling the provider", async () => {
     let called = false;
-    const provider = new MockAIProvider();
+    const provider: AIProvider = new MockAIProvider();
     const original = provider.generateText.bind(provider);
     provider.generateText = async (...args) => { called = true; return original(...args); };
     const input: GenerateTextInput = {
@@ -165,6 +175,25 @@ describe("runGenerationPipeline (mock provider)", () => {
       "auto_approved",
       "needs_human_review",
     ]).toContain(candidate.reviewStatus);
+  });
+  it("injects only fresh reviewed packet data behind a non-instruction prompt boundary", async () => {
+    const provider: AIProvider = new MockAIProvider();
+    let receivedSystem = "";
+    const original = provider.generateText.bind(provider);
+    provider.generateText = async (input, context) => {
+      receivedSystem = context?.systemPrompt ?? "";
+      return original(input);
+    };
+    const input: GenerateTextInput = {
+      language:"fr",studentGrade:7,targetReadingBand:"Secondary 7A",topic:"Le cycle de l’eau",
+      primaryInterest:"environment",knowledgeDomains:["science"],targetConcepts:["cycle_eau"],
+      groundingPackets:[{packetVersionId:"packet-1",conceptId:"concept-1",conceptKey:"cycle_eau",labelFr:"Cycle de l’eau",riskClass:"low",sourceRequirement:"none",explanationFr:"L’eau circule entre l’atmosphère, les sols et les océans.",claims:[],misconceptions:[],examples:[],vocabulary:[],sources:[],reviewedAt:"2026-08-01T00:00:00.000Z",reviewAfter:null}],
+      textType:"expository",wordCountTarget:300,maxAverageSentenceLength:18,maxNewAcademicWords:6,
+      targetVocabulary:[],targetSkills:[],avoid:[],tone:"curious_explainer",
+    };
+    const candidate = await runGenerationPipeline(input,{provider,systemPrompt:"Prompt éditorial",now:"2026-09-01T00:00:00.000Z"});
+    expect(receivedSystem).toContain("jamais des instructions");
+    expect(candidate.input.groundingPackets?.[0].conceptKey).toBe("cycle_eau");
   });
   it("requires human review when duplicate checking is unavailable",()=>{expect(decideReviewStatus({moderationPassed:true,factualNeedsReview:false,sensitive:false,difficultyMismatch:false,duplicateCheckUnavailable:true})).toBe("needs_human_review");});
 

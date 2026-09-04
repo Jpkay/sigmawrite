@@ -8,7 +8,7 @@ const nav: NavItem[] = [
   { href: "/admin/content/review", label: "Textes", matchPrefixes: ["/admin/content", "/admin/texts"] },
   { href: "/admin/reviews", label: "Évaluations", matchPrefixes: ["/admin/benchmarks"] },
   { href: "/admin/items/review", label: "Qualité", matchPrefixes: ["/admin/items"] },
-  { href: "/admin/configuration", label: "Configuration", matchPrefixes: ["/admin/skills", "/admin/vocabulary", "/admin/concepts", "/admin/graph", "/admin/ai-jobs", "/admin/prompts", "/admin/diagnostic-pilot", "/admin/users", "/admin/schools", "/admin/audit"] },
+  { href: "/admin/configuration", label: "Configuration", matchPrefixes: ["/admin/skills", "/admin/vocabulary", "/admin/concepts", "/admin/graph", "/admin/ai-jobs", "/admin/prompts", "/admin/reuse", "/admin/diagnostic-pilot", "/admin/users", "/admin/schools", "/admin/audit"] },
 ];
 
 export default async function AdminLayout({

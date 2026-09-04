@@ -68,6 +68,8 @@ import { sanitizeStudentTopic } from "@/lib/safety/topic";
 import { plannedExerciseCount } from "@/lib/practice/session";
 import { hasStudentPathCoverage } from "@/lib/taxonomy/activation";
 import { INTEREST_BY_KEY } from "@/lib/content/interests";
+import { recommendWithCalibratedReuse } from "@/lib/content/reuse/runtime";
+import { captureError } from "@/lib/observability";
 
 const answersSchema = z.record(z.string().min(1), z.number().int().min(0).max(20));
 const uuidSchema = z.string().uuid();
@@ -674,7 +676,21 @@ export async function recommendReadingTexts(input: unknown) {
   const statsByKey = new Map((stats ?? []).map((row) => [row.interest_key as string, row]));
   const ranked = rankInterestSignals((declared ?? []).map((row) => { const stat = statsByKey.get(row.interest_key as string); return { interestKey: row.interest_key as string, declaredStrength: Number(row.declared_strength ?? 0), inferredStrength: Number(stat?.inferred_strength ?? row.inferred_strength ?? 0), completionRate: Number(stat?.completion_rate ?? 0), avgSuccess: Number(stat?.avg_success ?? 0.75), avgTimeOnTask: Number(stat?.avg_time_on_task ?? 0), abandonCount: Number(stat?.abandon_count ?? 0) }; }));
   const versionIds=library.map(item=>item.id);const[{data:links,error:linksError},{data:mastery,error:masteryError}]=await Promise.all([versionIds.length?supabase.from("text_vocabulary").select("text_version_id,vocabulary_item_id").in("text_version_id",versionIds):Promise.resolve({data:[],error:null}),supabase.from("student_word_mastery").select("vocabulary_item_id,mastery").eq("student_id",studentId)]);if(linksError||masteryError)throw new Error(linksError?.message??masteryError?.message);const targets=new Map<string,string[]>();for(const link of links??[]){const id=link.text_version_id as string;targets.set(id,[...(targets.get(id)??[]),link.vocabulary_item_id as string]);}const known=new Set((mastery??[]).filter(row=>Number(row.mastery)>=.6).map(row=>row.vocabulary_item_id as string));const ordered=rankByInterestAndVocabulary(library,ranked.map(item=>item.interestKey),targets,known);
-  const selected = ordered.slice(0,3); return Promise.all(selected.map((item) => getPublishedReadingText(item.slug, supabase))).then((rows) => rows.filter((row): row is NonNullable<typeof row> => !!row));
+  let selected = ordered.slice(0,3);
+  try {
+    const calibrated = await recommendWithCalibratedReuse({
+      db: createServiceClient(),
+      studentId,
+      interests: ranked.map((item) => item.interestKey),
+      baseline: ordered,
+      displayLimit: 3,
+    });
+    selected = calibrated.items;
+  } catch (error) {
+    captureError(error, { operation: "calibrated_reuse_recommendation", studentId });
+  }
+  return Promise.all(selected.map((item) => getPublishedReadingText(item.slug, supabase)))
+    .then((rows) => rows.filter((row): row is NonNullable<typeof row> => !!row));
 }
 
 export async function selectInterests(input: unknown) {
