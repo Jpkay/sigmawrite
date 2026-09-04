@@ -5,6 +5,8 @@ import { buttonVariants } from "@/components/ui/button";
 import { requireRole } from "@/lib/auth";
 import { createClient } from "@/lib/supabase/server";
 import { lessonForPracticeNode } from "@/lib/practice/lessons";
+import { curriculumTagsFor } from "@/lib/curriculum/tags";
+import { CurriculumTags } from "@/components/curriculum-tags";
 
 /** One rule card per competency: rule, pattern, examples, exceptions (roadmap 3.2). */
 export default async function Page({ params }: { params: Promise<{ nodeKey: string }> }) {
@@ -22,10 +24,12 @@ export default async function Page({ params }: { params: Promise<{ nodeKey: stri
     approved ? { explanation: approved.explanation_fr as string, pattern: approved.pattern_fr as string, examples: approved.examples_fr as string[], exceptions: approved.exceptions_fr as string[] } : undefined,
   );
   const isConjugation = node.strand === "conjugaison";
+  const tags = (await curriculumTagsFor(supabase, [node.key as string])).get(node.key as string) ?? [];
   return (
     <>
       <PageHeader eyebrow={`Référence · ${lesson.family}`} title={node.label_fr as string} description={node.description_fr as string | undefined} action={<Link href={`/student/practice/${node.id as string}`} className={buttonVariants()}><BookOpenCheck className="size-4" />S’entraîner</Link>} />
       <article className="max-w-3xl">
+        <div className="mb-4"><CurriculumTags tags={tags} /></div>
         <p className="text-lg leading-8">{lesson.explanation}</p>
         <section className="mt-6 rounded-lg border border-border bg-card p-5">
           <p className="text-xs font-semibold uppercase tracking-[.14em] text-primary">La règle en une ligne</p>

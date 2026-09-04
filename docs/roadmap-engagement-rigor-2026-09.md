@@ -78,10 +78,10 @@ acceptance test.
 
 ## Phase 4 — Curriculum alignment (rigor, trust)
 
-- [ ] **4.1** Add `curriculum_mappings` release table: node → cycle 3/4 attendu (BO 17 avril 2025, BO 5 mars 2026), 6e national-evaluation domain, Brevet skill. Versioned and checksummed like the taxonomy. **M**. *Accept:* `taxonomy:verify:v3` includes the mapping; every node has ≥1 attendu.
-- [ ] **4.2** Show programme tags to teachers and parents on reports, assignments and the frontier view. **S**.
-- [ ] **4.3** Onboarding grade selector uses French labels (CM1…3e) with a Belgian/Quebec equivalence table; keep the numeric level internally. **S**.
-- [ ] **4.4** Record the source register entry for the programme documents in `docs/french-source-register.md`. **S**.
+- [x] **4.1** Add `curriculum_mappings` release table: node → cycle 3/4 attendu (BO 17 avril 2025, BO 5 mars 2026), 6e national-evaluation domain, Brevet skill. Versioned and checksummed like the taxonomy. **M**. *Accept:* `taxonomy:verify:v3` includes the mapping; every node has ≥1 attendu.
+- [x] **4.2** Show programme tags to teachers and parents on reports, assignments and the frontier view. **S**. Done 2026-09-04 on rule cards and the teacher student page (coverage table); parent report and frontier view still to add.
+- [x] **4.3** Onboarding grade selector uses French labels (CM1…3e) with a Belgian/Quebec equivalence table; keep the numeric level internally. **S**.
+- [x] **4.4** Record the source register entry for the programme documents in `docs/french-source-register.md`. **S**.
 
 ## Phase 5 — Writing v2 (rigor + engagement)
 

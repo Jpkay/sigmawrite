@@ -87,14 +87,14 @@ export default function OnboardingPage() {
               disabled={(hasStudentBackend && !studentState.hydrated) || authoritativeGrade}
               className="h-10 w-full max-w-xs rounded-md border border-input bg-background px-3 text-sm"
             >
-              <option value={5}>5e année (CM2)</option>
-              <option value={6}>6e</option>
-              <option value={7}>5e (Grade 7)</option>
-              <option value={8}>4e (Grade 8)</option>
-              <option value={9}>3e (Grade 9)</option>
-              <option value={10}>2nde (Grade 10)</option>
-              <option value={11}>1re (Grade 11)</option>
-              <option value={12}>Terminale (Grade 12)</option>
+              <option value={5}>CM2 · 5e année (BE) · 5e année (QC)</option>
+              <option value={6}>6e · 6e année (BE) · 6e année (QC)</option>
+              <option value={7}>5e · 1re secondaire (BE) · 1re secondaire (QC)</option>
+              <option value={8}>4e · 2e secondaire (BE) · 2e secondaire (QC)</option>
+              <option value={9}>3e · 3e secondaire (BE) · 3e secondaire (QC)</option>
+              <option value={10}>2de · 4e secondaire (BE) · 4e secondaire (QC)</option>
+              <option value={11}>1re · 5e secondaire (BE) · 5e secondaire (QC)</option>
+              <option value={12}>Terminale · 6e secondaire (BE) · Cégep 1 (QC)</option>
             </select>
             {authoritativeGrade && <p className="mt-2 text-xs text-muted-foreground">Niveau transmis par ta classe. Ton établissement peut le corriger si nécessaire.</p>}
           </div>

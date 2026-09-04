@@ -8,6 +8,9 @@ import { AdultCompetencyGraph } from "@/components/adult-competency-graph";
 import { getAdultLanguage } from "@/lib/i18n";
 import { loadAdultStudentGraph } from "@/lib/graph/adult-access";
 import { TeacherCommentPanel } from "@/components/teacher-comment-panel";
+import { CurriculumCoverage } from "@/components/curriculum-coverage";
+import { curriculumCoverage } from "@/lib/curriculum/tags";
+import { createClient } from "@/lib/supabase/server";
 import { loadStudentWritingSamples, loadTeacherComments } from "@/lib/actions/teacher";
 
 export default async function TeacherStudentPage({
@@ -30,12 +33,13 @@ export default async function TeacherStudentPage({
     );
   }
   const { student, frontier } = bundle;
-  const [samples, comments] = await Promise.all([loadStudentWritingSamples(studentId).catch(() => []), loadTeacherComments(studentId).catch(() => [])]);
+  const [samples, comments, coverage] = await Promise.all([loadStudentWritingSamples(studentId).catch(() => []), loadTeacherComments(studentId).catch(() => []), createClient().then((db) => curriculumCoverage(db, studentId)).catch(() => [])]);
 
   return (
     <>
       <PageHeader title={student.name} description={language === "en" ? "Competency pathway, evidence, and weekly reading activity." : "Parcours de compétences, preuves et activité de lecture hebdomadaire."} />
       <AdultCompetencyGraph graph={frontier.graphView} audience="teacher" language={language} studentName={student.name} />
+      <CurriculumCoverage rows={coverage} language={language} />
       <TeacherCommentPanel studentId={studentId} samples={samples} comments={comments} language={language} />
       <h2 className="mb-3 mt-9 text-lg font-semibold">{language === "en" ? "Weekly activity" : "Activité de la semaine"}</h2>
       <WeeklyReportView snap={student.snap} nowMs={nowMs()} />

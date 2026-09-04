@@ -23,7 +23,7 @@ Detailed atomic goals: [`docs/roadmap-engagement-rigor-2026-09.md`](../docs/road
 - [x] Phase 1: dictée (flash, à choix, à trous, négociée, Brevet-length) with server TTS and a Catach error profile (2026-09-04; content awaits admin approval and a TTS key).
 - [ ] Phase 2: click-the-error, réécriture, justified-answer, sentence-combining and ordering widgets (done 2026-09-04); generation prompts and confusable-contrast interleaving pending.
 - [x] Phase 3: conjugation tables and rule cards from the existing engine (2026-09-04).
-- [ ] Phase 4: versioned mapping of every node to cycle 3/4 attendus, 6e evaluation domains and Brevet skills.
+- [x] Phase 4: versioned mapping of every node to cycle 3/4 attendus, 6e evaluation domains and Brevet skills (2026-09-04).
 - [ ] Phase 5: genre-by-grade writing, multi-revision loop, rubric AI feedback with vetted rule citations, teacher comments.
 - [ ] Phase 6: XP for all activities, settable daily goal, streak freeze, weekly recap (done 2026-09-04); class cooperative goal, story-arc plan, badges pending.
 - [ ] Phase 7: student inbox (done 2026-09-04); opt-in push, class dictée challenge, richer parent email pending.
