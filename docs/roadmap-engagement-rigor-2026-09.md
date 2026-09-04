@@ -126,7 +126,7 @@ acceptance test.
 ## Phase 9 — Compliance for AI feedback (must land before 5.3 reaches general availability)
 
 - [ ] **9.1** DPIA covering LLM writing feedback for minors; EU hosting or documented transfer basis; no demographic cues in prompts. **M** (legal + engineering).
-- [ ] **9.2** Human-oversight path: teacher can see and override any AI rubric score; logs retained per `docs/observability.md`. **S**.
+- [x] **9.2** Human-oversight path: teacher can see and override any AI rubric score; logs retained per `docs/observability.md`. **S**.
 
 ---
 

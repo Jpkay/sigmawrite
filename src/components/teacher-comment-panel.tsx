@@ -5,7 +5,7 @@ import { MessageSquareText, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { AccentTextarea } from "@/components/accent-textarea";
-import { postTeacherComment, type StudentWritingSample } from "@/lib/actions/teacher";
+import { overrideWritingScore, postTeacherComment, type StudentWritingSample } from "@/lib/actions/teacher";
 
 type Comment = { id: string; targetType: string; targetId: string | null; body: string; createdAt: string; readAt: string | null };
 
@@ -19,6 +19,15 @@ export function TeacherCommentPanel({ studentId, samples, comments: initial, lan
   const [comments, setComments] = useState(initial);
   const [message, setMessage] = useState("");
   const [pending, start] = useTransition();
+  const [override, setOverride] = useState<{ id: string; score: number } | null>(null);
+  function applyOverride() {
+    if (!override) return;
+    setMessage("");
+    start(async () => {
+      try { await overrideWritingScore({ studentId, evaluationId: override.id, score: override.score }); setMessage(en ? `Score set to ${override.score}/100 for the student and reports.` : `Note ${override.score}/100 enregistrée pour l’élève et les rapports.`); setOverride(null); }
+      catch (caught) { setMessage(caught instanceof Error ? caught.message : (en ? "Could not save." : "Enregistrement impossible.")); }
+    });
+  }
   function send() {
     const [targetType, targetId] = target.split(":");
     setMessage("");
@@ -40,7 +49,7 @@ export function TeacherCommentPanel({ studentId, samples, comments: initial, lan
             <ul className="grid gap-3">
               {samples.map((sample) => {
                 const key = `${sample.kind}:${sample.id}`;
-                return <li key={key}><label className={`block cursor-pointer rounded-md border p-3 text-sm ${target === key ? "border-primary bg-accent/40" : "border-border"}`}><input type="radio" name="target" className="mr-2 accent-primary" checked={target === key} onChange={() => setTarget(key)} /><span className="font-medium">{sample.title}</span><span className="ml-2 text-xs text-muted-foreground">{when(sample.at)}{sample.score ? ` · ${sample.score}` : ""}</span>{sample.excerpt && <p className="mt-1 text-muted-foreground">{sample.excerpt}</p>}</label></li>;
+                return <li key={key}><label className={`block cursor-pointer rounded-md border p-3 text-sm ${target === key ? "border-primary bg-accent/40" : "border-border"}`}><input type="radio" name="target" className="mr-2 accent-primary" checked={target === key} onChange={() => setTarget(key)} /><span className="font-medium">{sample.title}</span><span className="ml-2 text-xs text-muted-foreground">{when(sample.at)}{sample.score ? ` · ${sample.score}` : ""}</span>{sample.excerpt && <p className="mt-1 text-muted-foreground">{sample.excerpt}</p>}{sample.kind === "summary" && <span className="mt-2 flex flex-wrap items-center gap-2 text-xs"><span className="text-muted-foreground">{en ? "Override AI score" : "Remplacer la note IA"}</span><input type="number" min={0} max={100} value={override?.id === sample.id ? override.score : ""} onChange={(event) => setOverride({ id: sample.id, score: Number(event.target.value) })} className="h-8 w-20 rounded-md border border-input bg-background px-2" aria-label={en ? "Teacher score" : "Note enseignant"} /><Button type="button" size="sm" variant="outline" disabled={pending || override?.id !== sample.id} onClick={applyOverride}>{en ? "Apply" : "Appliquer"}</Button></span>}</label></li>;
               })}
               <li><label className={`block cursor-pointer rounded-md border p-3 text-sm ${target === "general:" ? "border-primary bg-accent/40" : "border-border"}`}><input type="radio" name="target" className="mr-2 accent-primary" checked={target === "general:"} onChange={() => setTarget("general:")} />{en ? "General encouragement" : "Encouragement général"}</label></li>
             </ul>

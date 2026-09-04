@@ -223,3 +223,26 @@ export async function loadDictationAssignmentResults(assignmentId: string): Prom
   if (!row) return null;
   return { members: Number(row.members ?? 0), attempted: Number(row.attempted ?? 0), averageScore: row.average_score == null ? null : Number(row.average_score), clean: Number(row.clean ?? 0) };
 }
+
+// ---------------------------------------------------------------------------
+// Human oversight of AI rubric scores (roadmap 9.2)
+// ---------------------------------------------------------------------------
+
+const overrideSchema = z.object({ studentId: z.string().uuid(), evaluationId: z.string().uuid(), score: z.number().int().min(0).max(100), commentFr: z.string().trim().max(300).optional() });
+
+/** A teacher's score replaces the AI rubric for the student and the reports; the AI value stays in writing_evaluations for audit. */
+export async function overrideWritingScore(input: unknown) {
+  const session = await requireRole(["teacher"]);
+  const data = overrideSchema.parse(input);
+  const supabase = await createClient();
+  const { data: allowed } = await supabase.rpc("teaches_student", { p_student_id: data.studentId });
+  if (!allowed) throw new Error("Cet élève n’est pas dans vos classes.");
+  const service = createServiceClient();
+  const { data: evaluation } = await service.from("writing_evaluations").select("student_summary_id,rubric").eq("id", data.evaluationId).eq("student_id", data.studentId).single();
+  if (!evaluation) throw new Error("Évaluation introuvable.");
+  const { error } = await service.from("student_summaries").update({ teacher_score: { score: data.score, commentFr: data.commentFr ?? null, byProfileId: session.id, evaluationId: data.evaluationId, aiScore: (evaluation.rubric as { score?: number } | null)?.score ?? null, at: new Date().toISOString() } }).eq("id", evaluation.student_summary_id as string);
+  if (error) throw new Error(error.message);
+  await logAudit("teacher.writing_score_overridden", { targetType: "student", targetId: data.studentId, metadata: { evaluationId: data.evaluationId, score: data.score } });
+  revalidatePath(`/teacher/students/${data.studentId}`);
+  return { ok: true };
+}

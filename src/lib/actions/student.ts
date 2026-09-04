@@ -1664,10 +1664,11 @@ export async function loadWritingFeedback(input: unknown) {
   const { textVersionId } = await contentIds(supabase, data.textKey);
   const { data: session } = await supabase.from("reading_sessions").select("id").eq("student_id", studentId).eq("text_version_id", textVersionId).not("completed_at", "is", null).order("completed_at", { ascending: false }).limit(1).maybeSingle();
   if (!session) return null;
-  const { data: summary } = await supabase.from("student_summaries").select("id,summary_text").eq("session_id", session.id).maybeSingle();
+  const { data: summary } = await supabase.from("student_summaries").select("id,summary_text,teacher_score").eq("session_id", session.id).maybeSingle();
   if (!summary) return null;
   const { data: evaluations } = await supabase.from("writing_evaluations").select("revision_number,submitted_text,rubric,annotations,revision_plan,degraded,created_at").eq("student_summary_id", summary.id).order("revision_number");
-  return { summaryId: summary.id as string, originalText: summary.summary_text as string, evaluations: evaluations ?? [] };
+  const teacherScore = summary.teacher_score as { score?: number; commentFr?: string; at?: string } | null;
+  return { summaryId: summary.id as string, originalText: summary.summary_text as string, evaluations: evaluations ?? [], teacherScore: teacherScore?.score != null ? { score: Number(teacherScore.score), commentFr: teacherScore.commentFr ?? null, at: teacherScore.at ?? null } : null };
 }
 
 /** Up to three revision passes; each pass focuses on one priority (roadmap 5.2). */
