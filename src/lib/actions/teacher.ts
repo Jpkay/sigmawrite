@@ -4,7 +4,8 @@ import { revalidatePath } from "next/cache";
 import { randomBytes } from "node:crypto";
 import { z } from "zod";
 import { requireRole } from "@/lib/auth";
-import { createClient } from "@/lib/supabase/server";
+import { createClient, createServiceClient } from "@/lib/supabase/server";
+import { moderateStudentText } from "@/lib/safety/moderate-input";
 import { logAudit } from "@/lib/audit";
 import { trackServer } from "@/lib/analytics-server";
 
@@ -107,4 +108,62 @@ export async function setClassEnrollment(input: unknown) {
   await requireRole(["teacher"]); const parsed = enrollmentSchema.safeParse(input); if (!parsed.success) throw new Error("Élève invalide.");
   const supabase = await createClient(); const { error } = await supabase.rpc("set_class_enrollment", { p_class_id: parsed.data.classId, p_student_id: parsed.data.studentId, p_status: parsed.data.status }); if (error) throw new Error(error.message);
   await logAudit("class.enrollment_changed", { targetType: "class", targetId: parsed.data.classId, metadata: { studentId: parsed.data.studentId, status: parsed.data.status } }); revalidatePath(`/teacher/classes/${parsed.data.classId}`); return { ok: true };
+}
+
+// ---------------------------------------------------------------------------
+// Teacher comments on student writing (roadmap 5.4)
+// ---------------------------------------------------------------------------
+
+const teacherCommentSchema = z.object({
+  studentId: z.string().uuid(),
+  targetType: z.enum(["summary", "production", "dictation", "general"]),
+  targetId: z.string().uuid().optional(),
+  body: z.string().trim().min(1).max(1000),
+});
+
+export type StudentWritingSample = { kind: "summary" | "production" | "dictation"; id: string; at: string; title: string; excerpt: string; score: string | null };
+
+/** Recent writing by one student for the teacher's comment panel. RLS scopes the reads. */
+export async function loadStudentWritingSamples(studentId: string): Promise<StudentWritingSample[]> {
+  await requireRole(["teacher"]);
+  const supabase = await createClient();
+  const [{ data: productions }, { data: evaluations }, { data: dictations }] = await Promise.all([
+    supabase.from("independent_production_submissions").select("id,content,submitted_at,demonstrated,competency_nodes!inner(label_fr)").eq("student_id", studentId).order("submitted_at", { ascending: false }).limit(5),
+    supabase.from("writing_evaluations").select("id,submitted_text,revision_number,rubric,created_at").eq("student_id", studentId).order("created_at", { ascending: false }).limit(5),
+    supabase.from("dictation_attempts").select("id,score,submitted_at,dictations!inner(title_fr)").eq("student_id", studentId).not("submitted_at", "is", null).order("submitted_at", { ascending: false }).limit(5),
+  ]);
+  const excerpt = (text: string) => (text.length > 220 ? `${text.slice(0, 220)}…` : text);
+  const samples: StudentWritingSample[] = [
+    ...(productions ?? []).map((row) => ({ kind: "production" as const, id: row.id as string, at: row.submitted_at as string, title: `Production : ${(row.competency_nodes as unknown as { label_fr: string }).label_fr}`, excerpt: excerpt(row.content as string), score: row.demonstrated ? "Maîtrise démontrée" : "À retravailler" })),
+    ...(evaluations ?? []).map((row) => ({ kind: "summary" as const, id: row.id as string, at: row.created_at as string, title: `Résumé (révision ${row.revision_number})`, excerpt: excerpt(row.submitted_text as string), score: (row.rubric as { score?: number } | null)?.score != null ? `${(row.rubric as { score: number }).score}/100` : null })),
+    ...(dictations ?? []).map((row) => ({ kind: "dictation" as const, id: row.id as string, at: row.submitted_at as string, title: `Dictée : ${(row.dictations as unknown as { title_fr: string }).title_fr}`, excerpt: "", score: row.score == null ? null : `${Number(row.score)}/10` })),
+  ];
+  return samples.sort((a, b) => Date.parse(b.at) - Date.parse(a.at)).slice(0, 8);
+}
+
+export async function loadTeacherComments(studentId: string) {
+  await requireRole(["teacher"]);
+  const supabase = await createClient();
+  const { data, error } = await supabase.from("teacher_comments").select("id,target_type,target_id,body_fr,created_at,read_at").eq("student_id", studentId).order("created_at", { ascending: false }).limit(20);
+  if (error) throw new Error(error.message);
+  return (data ?? []).map((row) => ({ id: row.id as string, targetType: row.target_type as string, targetId: row.target_id as string | null, body: row.body_fr as string, createdAt: row.created_at as string, readAt: row.read_at as string | null }));
+}
+
+/** Posts a short comment, moderated and audited, and drops it into the student's inbox. */
+export async function postTeacherComment(input: unknown) {
+  const session = await requireRole(["teacher"]);
+  const data = teacherCommentSchema.parse(input);
+  const supabase = await createClient();
+  const { data: allowed } = await supabase.rpc("teaches_student", { p_student_id: data.studentId });
+  if (!allowed) throw new Error("Cet élève n’est pas dans vos classes.");
+  const moderation = await moderateStudentText(data.body);
+  if (!moderation.allowed) throw new Error("Ce commentaire ne peut pas être envoyé tel quel.");
+  const service = createServiceClient();
+  const { data: comment, error } = await service.from("teacher_comments").insert({ student_id: data.studentId, teacher_profile_id: session.id, target_type: data.targetType, target_id: data.targetId ?? null, body_fr: data.body }).select("id").single();
+  if (error || !comment) throw new Error(error?.message ?? "Commentaire non enregistré.");
+  const preview = data.body.length > 140 ? `${data.body.slice(0, 140)}…` : data.body;
+  await service.from("student_notifications").insert({ student_id: data.studentId, kind: "teacher_comment", dedupe_key: `teacher_comment:${comment.id as string}`, message_fr: `Message de ton enseignant : « ${preview} »`, payload: { commentId: comment.id, targetType: data.targetType, targetId: data.targetId ?? null } });
+  await logAudit("teacher.comment_posted", { targetType: "student", targetId: data.studentId, metadata: { commentId: comment.id, targetType: data.targetType } });
+  revalidatePath(`/teacher/students/${data.studentId}`); revalidatePath("/student/inbox");
+  return { id: comment.id as string };
 }

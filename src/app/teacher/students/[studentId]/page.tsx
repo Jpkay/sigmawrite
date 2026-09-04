@@ -7,6 +7,8 @@ import { FrontierReportView } from "@/components/frontier-report";
 import { AdultCompetencyGraph } from "@/components/adult-competency-graph";
 import { getAdultLanguage } from "@/lib/i18n";
 import { loadAdultStudentGraph } from "@/lib/graph/adult-access";
+import { TeacherCommentPanel } from "@/components/teacher-comment-panel";
+import { loadStudentWritingSamples, loadTeacherComments } from "@/lib/actions/teacher";
 
 export default async function TeacherStudentPage({
   params,
@@ -28,11 +30,13 @@ export default async function TeacherStudentPage({
     );
   }
   const { student, frontier } = bundle;
+  const [samples, comments] = await Promise.all([loadStudentWritingSamples(studentId).catch(() => []), loadTeacherComments(studentId).catch(() => [])]);
 
   return (
     <>
       <PageHeader title={student.name} description={language === "en" ? "Competency pathway, evidence, and weekly reading activity." : "Parcours de compétences, preuves et activité de lecture hebdomadaire."} />
       <AdultCompetencyGraph graph={frontier.graphView} audience="teacher" language={language} studentName={student.name} />
+      <TeacherCommentPanel studentId={studentId} samples={samples} comments={comments} language={language} />
       <h2 className="mb-3 mt-9 text-lg font-semibold">{language === "en" ? "Weekly activity" : "Activité de la semaine"}</h2>
       <WeeklyReportView snap={student.snap} nowMs={nowMs()} />
       <section className="mt-9 border-t border-border pt-7">

@@ -1,0 +1,11 @@
+begin;
+set local role postgres;
+set local search_path = public, extensions;
+create extension if not exists pgtap with schema extensions;
+select plan(4);
+select has_table('public','teacher_comments','Teacher comments are persisted');
+select policies_are('public','teacher_comments',array['teacher_comments_read'],'Comments are read-only through RLS');
+select col_is_fk('public','teacher_comments','teacher_profile_id','Comment author is a profile');
+select is((select relrowsecurity from pg_class where oid='public.teacher_comments'::regclass),true,'RLS enabled');
+select * from finish();
+rollback;
