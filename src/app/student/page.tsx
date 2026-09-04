@@ -12,7 +12,7 @@ import { recommendTextId } from "@/lib/content/recommend";
 import type { SeedText } from "@/lib/content/types";
 import { hasStudentBackend, useStudentState } from "@/lib/student-store";
 import { loadStudentHome, markBadgesSeen, type SessionPlanEntry, type StudentMotivation } from "@/lib/actions/student";
-import { BadgeShelf, WeekStrip, WeeklyRecapCard, type WeeklyRecap } from "@/components/motivation";
+import { BadgeShelf, ClassGoalCard, WeekStrip, WeeklyRecapCard, type WeeklyRecap } from "@/components/motivation";
 import { StudentAssignments } from "@/components/student-assignments";
 import { track } from "@/lib/analytics";
 import { difficultyBandLabel } from "@/lib/scoring/band";
@@ -25,6 +25,7 @@ export default function StudentHome() {
   const [plan, setPlan] = useState<SessionPlanEntry[]>([]);
   const [motivation,setMotivation]=useState<StudentMotivation|null>(null);
   const [recap,setRecap]=useState<WeeklyRecap|null>(null);
+  const [classGoal,setClassGoal]=useState<{className:string;targetXp:number;earnedXp:number;activeMembers:number;members:number}|null>(null);
   const [resume,setResume]=useState<{textKey:string;title:string;phase:string}|null>(null);
   const [assessment,setAssessment]=useState<{required:boolean;kind:string;reason:string}|null>(null);
 
@@ -40,7 +41,7 @@ export default function StudentHome() {
         type: "practice", role: "new", nodeId: step.nodeId, label: step.label,
         mastery: step.mastery, estimatedMinutes: 7, href: `/student/practice/${step.nodeId}`,
       })));
-      setMotivation(home.motivation); setResume(home.resume); setAssessment(home.assessment); setRecap(home.recap);
+      setMotivation(home.motivation); setResume(home.resume); setAssessment(home.assessment); setRecap(home.recap); setClassGoal(home.classGoal);
     }).catch(() => { if (active) setRecommended(local); });
     return () => { active = false; };
   }, [state.hydrated, state.diagnostic, state.interests]);
@@ -136,7 +137,7 @@ export default function StudentHome() {
         </div>
       </section>
 
-      {motivation && <section className="mb-8 grid gap-4 lg:grid-cols-[1fr_20rem]"><WeekStrip week={motivation.week} goalXp={motivation.goalXp} freezeAppliedFor={motivation.freezeAppliedFor} /><div className="grid gap-4">{recap && <WeeklyRecapCard recap={recap} />}<BadgeShelf badges={motivation.badges} onSeen={() => { setMotivation((current) => current ? { ...current, badges: current.badges.map((badge) => ({ ...badge, isNew: false })) } : current); void markBadgesSeen({}).catch(() => undefined); }} /></div></section>}
+      {motivation && <section className="mb-8 grid gap-4 lg:grid-cols-[1fr_20rem]"><WeekStrip week={motivation.week} goalXp={motivation.goalXp} freezeAppliedFor={motivation.freezeAppliedFor} /><div className="grid gap-4">{classGoal && <ClassGoalCard goal={classGoal} />}{recap && <WeeklyRecapCard recap={recap} />}<BadgeShelf badges={motivation.badges} onSeen={() => { setMotivation((current) => current ? { ...current, badges: current.badges.map((badge) => ({ ...badge, isNew: false })) } : current); void markBadgesSeen({}).catch(() => undefined); }} /></div></section>}
 
       {plan.length > 0 && <section className="mb-10"><div className="mb-4 flex items-end justify-between"><div><p className="font-display text-xs font-semibold uppercase tracking-[0.16em] text-success">Plan du jour</p><h2 className="mt-1 text-xl font-semibold">Révisions et nouvelles étapes, dans le bon ordre</h2></div><span className="text-sm text-muted-foreground">{plan.length} activité(s) · environ {planMinutes} min</span></div><div className="border-y border-border">{plan.map((entry, index) => {const isReview=entry.role==="review";const isCompression=entry.role==="compression";return <div key={entry.cardId ?? entry.nodeId ?? index} className="group grid gap-4 border-b border-border py-4 last:border-0 sm:grid-cols-[3rem_1fr_auto] sm:items-center"><span className={`grid size-10 place-items-center rounded-full border-2 font-display text-sm font-bold ${isReview?"border-secondary bg-secondary/15 text-secondary":"border-primary bg-primary text-primary-foreground"}`}>{index + 1}</span><div><p className="font-semibold">{entry.label}</p>{entry.mastery != null && <div className="mt-2 h-1.5 max-w-sm overflow-hidden rounded-full bg-rail"><div className="h-full rounded-full bg-success" style={{width:`${Math.round(entry.mastery*100)}%`}} /></div>}<p className="mt-1.5 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">{isReview?`Révision · ${entry.estimatedMinutes} min`:isCompression?`Réactive plusieurs notions · ${entry.estimatedMinutes} min`:entry.mastery!=null?`Nouvelle étape · ${entry.estimatedMinutes} min · maîtrise ${Math.round(entry.mastery*100)}%`:`Nouvelle étape · ${entry.estimatedMinutes} min`}</p></div><Link href={entry.href} className={buttonVariants({variant:index===0?"default":"outline",size:"sm"})}>{entry.type==="review_card"?"Mémoire":entry.type==="dictation"?"Dictée":entry.type==="production"?"Écrire":isReview?"Réviser":"S’entraîner"} <ArrowRight /></Link></div>})}</div></section>}
 

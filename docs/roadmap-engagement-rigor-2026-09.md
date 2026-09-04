@@ -98,7 +98,7 @@ acceptance test.
 - [x] **6.2** Settable daily XP goal (10/15/20 min presets) replacing the binary `goal_completed`; render the fetched 7-day `motivation.week` array on the home page. **S**.
 - [x] **6.3** Streak freeze: one earned per 7-day streak, auto-applied; no purchase, no wager. **S**. *Accept:* `calculateStreak` unit tests for freeze consumption.
 - [x] **6.4** Weekly recap card for the student (Sunday): nodes secured, errors retired, dictée score trend; same data as the parent email. **S**.
-- [ ] **6.5** Class cooperative goal (teacher-set, e.g. "500 XP cette semaine"), no individual ranking. **M**. *Accept:* only class aggregate exposed to students; RLS test.
+- [x] **6.5** Class cooperative goal (teacher-set, e.g. "500 XP cette semaine"), no individual ranking. **M**. *Accept:* only class aggregate exposed to students; RLS test.
 - [ ] **6.6** Ability-banded, opt-in, pseudonymous weekly league within a class (teacher enables; off by default; rank hidden below top 3). **M**. Ship only after 6.5 data shows no drop in low-mastery engagement.
 - [ ] **6.7** Story-arc framing for the daily plan: 7-day "chapitre" with a light narrative per interest chosen at onboarding; completion unlocks the next chapter. **L**. Content from the passage pipeline, human-reviewed.
 - [x] **6.8** Celebrations: end-of-session confetti (respects reduce-motion), sound off by default, first-mastery badge set (≤12 badges tied to nodes, none to time spent). **S**.

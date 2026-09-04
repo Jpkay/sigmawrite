@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckCircle2, Snowflake } from "lucide-react";
+import { CheckCircle2, Snowflake, Users } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
@@ -98,5 +98,21 @@ export function Confetti() {
       <style>{`@keyframes plume-confetti{0%{transform:translateY(-10px) rotate(0);opacity:1}100%{transform:translateY(90px) rotate(540deg);opacity:0}}`}</style>
       {pieces.map((index) => <span key={index} className="absolute top-0 block h-2 w-1.5 rounded-sm" style={{ left: `${(index * 53) % 100}%`, background: ["var(--primary)", "var(--secondary)", "var(--success)"][index % 3], animation: `plume-confetti ${1.4 + (index % 5) * 0.2}s ease-out ${(index % 6) * 0.08}s 1 both` }} />)}
     </div>
+  );
+}
+
+/** Class cooperative goal: the class total only, never a ranking (roadmap 6.5). */
+export function ClassGoalCard({ goal }: { goal: { className: string; targetXp: number; earnedXp: number; activeMembers: number; members: number } }) {
+  const ratio = Math.min(1, goal.earnedXp / Math.max(1, goal.targetXp));
+  const reached = goal.earnedXp >= goal.targetXp;
+  return (
+    <Card className={reached ? "border-success/50 bg-success/5" : undefined}>
+      <CardContent className="pt-6">
+        <h2 className="flex items-center gap-2 font-semibold"><Users className="size-4 text-primary" />Objectif de classe · {goal.className}</h2>
+        <p className="mt-2 font-display text-2xl font-bold tabular-nums">{goal.earnedXp}<span className="text-base font-semibold text-muted-foreground"> / {goal.targetXp} XP cette semaine</span></p>
+        <div className="mt-2 h-2 overflow-hidden rounded-full bg-border" role="progressbar" aria-valuemin={0} aria-valuemax={goal.targetXp} aria-valuenow={goal.earnedXp} aria-label="Objectif de classe"><div className="h-full rounded-full bg-success transition-[width]" style={{ width: `${Math.round(ratio * 100)}%` }} /></div>
+        <p className="mt-2 text-xs text-muted-foreground">{reached ? "Objectif atteint ensemble. Bravo à toute la classe." : `${goal.activeMembers} élève(s) sur ${goal.members} ont déjà contribué. Chaque XP compte, le tien aussi.`}</p>
+      </CardContent>
+    </Card>
   );
 }

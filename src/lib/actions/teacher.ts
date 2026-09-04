@@ -167,3 +167,39 @@ export async function postTeacherComment(input: unknown) {
   revalidatePath(`/teacher/students/${data.studentId}`); revalidatePath("/student/inbox");
   return { id: comment.id as string };
 }
+
+// ---------------------------------------------------------------------------
+// Class cooperative goal (roadmap 6.5)
+// ---------------------------------------------------------------------------
+
+const classGoalSchema = z.object({ classId: z.string().uuid(), targetXp: z.number().int().min(50).max(20000) });
+
+/** Monday of the current ISO week, UTC. */
+export async function currentWeekStart(now = new Date()): Promise<string> {
+  const day = now.getUTCDay(); const diff = (day + 6) % 7;
+  const monday = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() - diff));
+  return monday.toISOString().slice(0, 10);
+}
+
+export type ClassGoalProgress = { weekStart: string; targetXp: number; earnedXp: number; members: number; activeMembers: number } | null;
+
+export async function loadClassGoal(classId: string): Promise<ClassGoalProgress> {
+  await requireRole(["teacher", "school_admin"]);
+  const supabase = await createClient(); const weekStart = await currentWeekStart();
+  const { data, error } = await supabase.rpc("class_goal_progress", { p_class_id: classId, p_week_start: weekStart });
+  if (error) throw new Error(error.message);
+  const row = Array.isArray(data) ? data[0] : data;
+  if (!row) return null;
+  return { weekStart, targetXp: Number(row.target_xp), earnedXp: Number(row.earned_xp), members: Number(row.members), activeMembers: Number(row.active_members) };
+}
+
+export async function setClassGoal(input: unknown) {
+  await requireRole(["teacher"]);
+  const data = classGoalSchema.parse(input);
+  const supabase = await createClient(); const weekStart = await currentWeekStart();
+  const { error } = await supabase.rpc("set_class_goal", { p_class_id: data.classId, p_week_start: weekStart, p_target_xp: data.targetXp });
+  if (error) throw new Error(error.message);
+  await logAudit("teacher.class_goal_set", { targetType: "class", targetId: data.classId, metadata: { weekStart, targetXp: data.targetXp } });
+  revalidatePath(`/teacher/classes/${data.classId}`); revalidatePath("/student");
+  return { weekStart, targetXp: data.targetXp };
+}

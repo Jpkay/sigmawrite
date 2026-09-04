@@ -2626,16 +2626,17 @@ export async function updateStudentPassword(input:unknown){const data=checked(st
 export async function loadStudentHome(input: unknown) {
   checked(emptySchema, input);
   const settle = async <T,>(promise: Promise<T>): Promise<T | null> => { try { return await promise; } catch { return null; } };
-  const [texts, plan, motivation, resume, assessment, recap] = await Promise.all([
+  const [texts, plan, motivation, resume, assessment, recap, classGoal] = await Promise.all([
     settle(recommendReadingTexts({})),
     settle(loadStudentSessionPlan({})),
     settle(loadStudentMotivation({})),
     settle(loadLatestReadingResume({})),
     settle(loadDiagnosticRequirement({})),
     settle(loadStudentWeeklyRecap({})),
+    settle(loadStudentClassGoal({})),
   ]);
   const fallbackPlan = plan ? null : await settle(loadStudentCatchUpPlan({}));
-  return { texts, plan, fallbackPlan, motivation, resume, assessment, recap };
+  return { texts, plan, fallbackPlan, motivation, resume, assessment, recap, classGoal };
 }
 
 export type StudentNotification = { id: string; kind: string; message: string; payload: Record<string, unknown>; readAt: string | null; createdAt: string };
@@ -2849,4 +2850,20 @@ export async function submitDictationJustifications(input: unknown) {
     }
   }
   return { correct, total: results.length };
+}
+
+/** Class aggregate for the cooperative goal; no per-student figures leave the server (roadmap 6.5). */
+export async function loadStudentClassGoal(input: unknown) {
+  checked(emptySchema, input); const { supabase, studentId } = await context();
+  const { data: enrollments } = await supabase.from("enrollments").select("class_id,classes!inner(name)").eq("student_id", studentId).eq("status", "active").limit(3);
+  if (!enrollments?.length) return null;
+  const now = new Date(); const diff = (now.getUTCDay() + 6) % 7;
+  const weekStart = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() - diff)).toISOString().slice(0, 10);
+  const service = createServiceClient();
+  for (const enrollment of enrollments) {
+    const { data } = await service.rpc("class_goal_progress", { p_class_id: enrollment.class_id as string, p_week_start: weekStart });
+    const row = Array.isArray(data) ? data[0] : data;
+    if (row) return { className: (enrollment.classes as unknown as { name: string }).name, targetXp: Number(row.target_xp), earnedXp: Number(row.earned_xp), activeMembers: Number(row.active_members), members: Number(row.members) };
+  }
+  return null;
 }
