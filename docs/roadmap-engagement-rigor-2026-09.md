@@ -121,7 +121,7 @@ acceptance test.
 - [x] **8.6** Accent helper on single-line inputs (vocabulary recall uses a plain input). **S**.
 - [x] **8.7** Mobile bottom tab bar for the five student surfaces; maskable 192/512 PNG icons in `manifest.ts`. **S**.
 - [ ] **8.9** Playwright journey for the dictée flow (start → transcribe → justify → result) against the seeded local stack. **S**.
-- [ ] **8.8** Dyslexia options: OpenDyslexic or Luciole font, syllable colouring in the reader, TTS word highlighting. **M**.
+- [x] **8.8** Dyslexia options: Atkinson Hyperlegible reading face, syllable colouring in the reader, spoken-word highlight for browser read-aloud. **M**. Done 2026-09-04.
 
 ## Phase 9 — Compliance for AI feedback (must land before 5.3 reaches general availability)
 
