@@ -165,7 +165,7 @@ describe("runGenerationPipeline (mock provider)", () => {
       avoid: [],
       tone: "curious_explainer",
     };
-    const candidate = await runGenerationPipeline(input);
+    const candidate = await runGenerationPipeline(input, { provider: new MockAIProvider() });
     expect(candidate.generated.questions.length).toBeGreaterThan(0);
     expect(candidate.questionDifficulties.length).toBe(
       candidate.generated.questions.length
