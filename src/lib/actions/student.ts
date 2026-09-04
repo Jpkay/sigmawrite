@@ -2867,3 +2867,27 @@ export async function loadStudentClassGoal(input: unknown) {
   }
   return null;
 }
+
+export type RecueilEntry = { kind: "production" | "summary"; id: string; at: string; title: string; text: string; note: string | null };
+
+/** Final drafts of the trimester for the printable recueil (roadmap 5.6): demonstrated productions and last summary revisions. */
+export async function loadStudentRecueil(input: unknown): Promise<{ since: string; entries: RecueilEntry[] }> {
+  checked(emptySchema, input); const { supabase, studentId } = await context();
+  // French school trimesters: September–December, January–March, April–August.
+  const now = new Date(); const month = now.getUTCMonth();
+  const since = new Date(Date.UTC(now.getUTCFullYear(), month >= 8 ? 8 : month >= 3 ? 3 : 0, 1)).toISOString();
+  const [{ data: productions }, { data: evaluations }] = await Promise.all([
+    supabase.from("independent_production_submissions").select("id,content,submitted_at,demonstrated,competency_nodes!inner(label_fr)").eq("student_id", studentId).gte("submitted_at", since).order("submitted_at", { ascending: true }),
+    supabase.from("writing_evaluations").select("id,student_summary_id,submitted_text,revision_number,rubric,created_at").eq("student_id", studentId).gte("created_at", since).order("created_at", { ascending: true }),
+  ]);
+  const lastBySummary = new Map<string, { id: string; text: string; at: string; revision: number; score: number | null }>();
+  for (const row of evaluations ?? []) {
+    const key = row.student_summary_id as string; const current = lastBySummary.get(key);
+    if (!current || Number(row.revision_number) >= current.revision) lastBySummary.set(key, { id: row.id as string, text: row.submitted_text as string, at: row.created_at as string, revision: Number(row.revision_number), score: (row.rubric as { score?: number } | null)?.score ?? null });
+  }
+  const entries: RecueilEntry[] = [
+    ...(productions ?? []).filter((row) => row.demonstrated).map((row) => ({ kind: "production" as const, id: row.id as string, at: row.submitted_at as string, title: (row.competency_nodes as unknown as { label_fr: string }).label_fr, text: row.content as string, note: "Production libre · maîtrise démontrée" })),
+    ...[...lastBySummary.values()].map((entry) => ({ kind: "summary" as const, id: entry.id, at: entry.at, title: `Résumé de lecture (version ${entry.revision + 1})`, text: entry.text, note: entry.score != null ? `Rubrique ${entry.score}/100` : null })),
+  ].sort((a, b) => Date.parse(a.at) - Date.parse(b.at));
+  return { since: since.slice(0, 10), entries };
+}

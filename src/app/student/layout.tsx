@@ -13,6 +13,7 @@ const nav: NavItem[] = [
   { href: "/student/vocabulary", label: "Vocabulaire" },
   { href: "/student/memory", label: "Mémoire" },
   { href: "/student/progress", label: "Progrès" },
+  { href: "/student/recueil", label: "Mon recueil" },
   { href: "/student/frontier", label: "Frontière" },
   { href: "/student/inbox", label: "Messages" },
   { href: "/student/reference/verbe", label: "Référence", matchPrefixes: ["/student/reference"] },
