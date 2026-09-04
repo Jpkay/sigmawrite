@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
-import { BookOpen, Brain, Feather, Home, Inbox, TrendingUp, type LucideIcon } from "lucide-react";
+import { BookOpen, Brain, Feather, Home, Inbox, PenLine, TrendingUp, type LucideIcon } from "lucide-react";
 import { SignOutButton } from "@/components/sign-out-button";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -11,10 +11,10 @@ import { identifyAnalytics } from "@/lib/analytics";
 
 export type NavItem = { href: string; label: string; matchPrefixes?: readonly string[] };
 /** Bottom tab for phones; icon keys stay serializable across the server boundary. */
-export type TabItem = { href: string; label: string; icon: "home" | "book" | "brain" | "progress" | "inbox" };
+export type TabItem = { href: string; label: string; icon: "home" | "book" | "brain" | "progress" | "inbox" | "pen" };
 /** Focus surfaces own the bottom of the screen (timers, submit bars); the tab bar steps aside there. */
 const FOCUS_PREFIXES = ["/student/practice/", "/student/production/", "/student/read/", "/student/diagnostic", "/student/dictee/"];
-const TAB_ICONS: Record<TabItem["icon"], LucideIcon> = { home: Home, book: BookOpen, brain: Brain, progress: TrendingUp, inbox: Inbox };
+const TAB_ICONS: Record<TabItem["icon"], LucideIcon> = { home: Home, book: BookOpen, brain: Brain, progress: TrendingUp, inbox: Inbox, pen: PenLine };
 
 /**
  * Shared chrome for every role dashboard: branded sidebar with nav + a

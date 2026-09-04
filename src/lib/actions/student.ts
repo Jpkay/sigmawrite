@@ -1139,7 +1139,7 @@ export async function loadStudentCatchUpPlan(input: unknown) {
 }
 
 export type SessionPlanEntry = {
-  type: "practice" | "production" | "review_node" | "review_card";
+  type: "practice" | "production" | "review_node" | "review_card" | "dictation";
   role: "new" | "compression" | "review";
   nodeId?: string;
   cardId?: string;
@@ -1253,7 +1253,8 @@ export async function loadStudentSessionPlan(input: unknown): Promise<SessionPla
   const labelById = new Map((nodeRows ?? []).map((node) => [node.id as string, node.label_fr as string]));
   const masteryByNode = estimateMasteryByNode;
 
-  return plan.map((activity): SessionPlanEntry => {
+  const dictationEntry = await dictationPlanEntry(service, studentId, nowMs);
+  const entries = plan.map((activity): SessionPlanEntry => {
     if (activity.type === "review_card") {
       return {
         type: "review_card",
@@ -1285,6 +1286,36 @@ export async function loadStudentSessionPlan(input: unknown): Promise<SessionPla
       href: production ? `/student/production/${activity.nodeId}` : `/student/practice/${activity.nodeId}`,
     };
   });
+  // A short dictée sits after the first review so the plan opens with due work (roadmap 1.7).
+  if (dictationEntry) entries.splice(Math.min(1, entries.length), 0, dictationEntry);
+  return entries;
+}
+
+/**
+ * One flash dictée every second day within the student's grade band, and a
+ * Brevet-length dictée once per trimester for 3e. Nothing when no published
+ * dictée exists or the student did one yesterday.
+ */
+async function dictationPlanEntry(service: SupabaseClient, studentId: string, nowMs: number): Promise<SessionPlanEntry | null> {
+  const [{ data: student }, { data: recent }] = await Promise.all([
+    service.from("students").select("current_grade").eq("id", studentId).single(),
+    service.from("dictation_attempts").select("dictation_id,mode,submitted_at").eq("student_id", studentId).not("submitted_at", "is", null).gte("submitted_at", new Date(nowMs - 120 * 86_400_000).toISOString()).order("submitted_at", { ascending: false }),
+  ]);
+  const grade = Math.max(4, Math.min(9, Number(student?.current_grade ?? 7)));
+  const attempts = recent ?? [];
+  const lastAt = attempts[0]?.submitted_at ? Date.parse(attempts[0].submitted_at as string) : 0;
+  if (nowMs - lastAt < 36 * 3_600_000) return null;
+  const brevetDone = attempts.some((a) => a.mode === "brevet" && nowMs - Date.parse(a.submitted_at as string) < 90 * 86_400_000);
+  const done = new Set(attempts.map((a) => a.dictation_id as string));
+  let query = service.from("dictations").select("id,title_fr,kind,word_count").eq("review_status", "human_approved").lte("grade_min", grade).gte("grade_max", grade);
+  if (!browserTtsFallbackAllowed()) query = query.eq("audio_status", "ready");
+  const { data: rows } = await query.order("word_count");
+  const candidates = (rows ?? []) as { id: string; title_fr: string; kind: string; word_count: number }[];
+  if (candidates.length === 0) return null;
+  const brevet = !brevetDone && grade === 9 ? candidates.find((row) => row.kind === "brevet") : undefined;
+  const pick = brevet ?? candidates.find((row) => row.kind !== "brevet" && !done.has(row.id)) ?? candidates.find((row) => row.kind !== "brevet") ?? null;
+  if (!pick) return null;
+  return { type: "dictation", role: "new", label: `${pick.kind === "brevet" ? "Dictée type brevet" : "Dictée"} : ${pick.title_fr}`, estimatedMinutes: pick.kind === "brevet" ? 20 : Math.max(5, Math.min(10, Math.round(pick.word_count / 8))), href: `/student/dictee/${pick.id}` };
 }
 
 async function independentProductionNode(service: SupabaseClient, studentId: string, nodeId: string) {

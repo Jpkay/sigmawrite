@@ -51,13 +51,13 @@ acceptance test.
 
 ## Phase 1 — Dictée (rigor)
 
-- [ ] **1.1** Add `dictee` response type to the item schema and validator (`supabase/migrations`, `src/lib/linguistic/validator.ts`): target text, segment boundaries, allowed variants. **M**. *Accept:* pgTAP contract + Vitest for segment scoring.
-- [ ] **1.2** Server-side TTS rendering job for dictée audio (provider behind `src/lib/ai`, cached per text version, fails closed without key). **M**. *Accept:* audio asset stored and referenced by `text_version_id`; no browser-only synthesis in the graded path.
-- [ ] **1.3** Catach-based error classifier for dictée diffs: phonogrammique, morphogrammique grammatical/lexical, logogrammique (homophones), idéogrammique, extragraphique. Map each class to existing orthographe nodes via `error_node_mappings`. **M**. *Accept:* golden test file of 40 learner errors classified correctly.
-- [ ] **1.4** Dictée flash player (5–10 min): segment replay, accent textarea, per-segment reveal, error profile screen with rule and manipulation. **M**. *Accept:* Playwright journey; evidence written as `controlled_production`.
-- [ ] **1.5** Dictée à choix and dictée à trous variants reusing 1.3 and the existing MCQ/cloze widgets. **S**.
-- [ ] **1.6** Dictée négociée: after scoring, the student must justify each flagged segment (pick rule + manipulation) before the correction is shown. **M**. *Accept:* justification recorded as evidence; hinted justifications down-weighted in BKT as in `src/lib/practice/scaffolding.ts`.
-- [ ] **1.7** Brevet-length dictée once per trimester in the scheduler (`src/lib/learning/session-plan.ts`), scored /10. **S**.
+- [x] **1.1** Add `dictee` response type to the item schema and validator (`supabase/migrations`, `src/lib/linguistic/validator.ts`): target text, segment boundaries, allowed variants. **M**. *Accept:* pgTAP contract + Vitest for segment scoring.
+- [x] **1.2** Server-side TTS rendering job for dictée audio (provider behind `src/lib/ai`, cached per text version, fails closed without key). **M**. *Accept:* audio asset stored and referenced by `text_version_id`; no browser-only synthesis in the graded path.
+- [x] **1.3** Catach-based error classifier for dictée diffs: phonogrammique, morphogrammique grammatical/lexical, logogrammique (homophones), idéogrammique, extragraphique. Map each class to existing orthographe nodes via `error_node_mappings`. **M**. *Accept:* golden test file of 40 learner errors classified correctly.
+- [x] **1.4** Dictée flash player (5–10 min): segment replay, accent textarea, per-segment reveal, error profile screen with rule and manipulation. **M**. Done 2026-09-04 (`/student/dictee`); evidence written as `controlled_production`. Playwright journey still to add (see 8.9).
+- [x] **1.5** Dictée à choix and dictée à trous variants reusing 1.3 and the existing MCQ/cloze widgets. **S**.
+- [x] **1.6** Dictée négociée: after scoring, the student must justify each flagged segment (pick rule + manipulation) before the correction is shown. **M**. *Accept:* justification recorded as evidence; hinted justifications down-weighted in BKT as in `src/lib/practice/scaffolding.ts`.
+- [x] **1.7** Brevet-length dictée once per trimester in the scheduler (`src/lib/learning/session-plan.ts`), scored /10. **S**.
 
 ## Phase 2 — Exercise formats (rigor + efficiency)
 
@@ -118,6 +118,7 @@ acceptance test.
 - [ ] **8.5** Service worker serves cached navigations for the prefetched plan URLs and replays the offline queue; remove the dead `plume-offline-pack-v1` prefetch if 8.5 is not taken. **M**. *Accept:* offline Playwright run completes one practice session.
 - [x] **8.6** Accent helper on single-line inputs (vocabulary recall uses a plain input). **S**.
 - [x] **8.7** Mobile bottom tab bar for the five student surfaces; maskable 192/512 PNG icons in `manifest.ts`. **S**.
+- [ ] **8.9** Playwright journey for the dictée flow (start → transcribe → justify → result) against the seeded local stack. **S**.
 - [ ] **8.8** Dyslexia options: OpenDyslexic or Luciole font, syllable colouring in the reader, TTS word highlighting. **M**.
 
 ## Phase 9 — Compliance for AI feedback (must land before 5.3 reaches general availability)

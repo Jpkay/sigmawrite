@@ -9,6 +9,7 @@ const nav: NavItem[] = [
   { href: "/student", label: "Accueil" },
   { href: "/student/onboarding", label: "Découverte" },
   { href: "/student/diagnostic", label: "Diagnostic" },
+  { href: "/student/dictee", label: "Dictées" },
   { href: "/student/vocabulary", label: "Vocabulaire" },
   { href: "/student/memory", label: "Mémoire" },
   { href: "/student/progress", label: "Progrès" },
@@ -20,7 +21,7 @@ const nav: NavItem[] = [
 
 const tabs: TabItem[] = [
   { href: "/student", label: "Accueil", icon: "home" },
-  { href: "/student/vocabulary", label: "Mots", icon: "book" },
+  { href: "/student/dictee", label: "Dictées", icon: "pen" },
   { href: "/student/memory", label: "Mémoire", icon: "brain" },
   { href: "/student/progress", label: "Progrès", icon: "progress" },
   { href: "/student/inbox", label: "Messages", icon: "inbox" },
