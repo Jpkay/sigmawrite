@@ -11,6 +11,7 @@ const inputCls =
   "h-9 w-full rounded-md border border-input bg-background px-3 text-sm outline-none ring-ring focus:ring-2";
 
 export function AssignmentForm({
+  dictations = [],
   classes,
   texts,
   nodes,
@@ -19,13 +20,15 @@ export function AssignmentForm({
   classes: { id: string; name: string }[];
   texts: { slug: string; title: string }[];
   nodes: { id: string; label: string }[];
+  dictations?: { id: string; title: string; kind: string; gradeMin: number; gradeMax: number; wordCount: number }[];
   language?: "fr" | "en";
 }) {
   const en=language==="en";
   const router = useRouter();
   const [classId, setClassId] = useState(classes[0]?.id ?? "");
   const [textSlug, setTextSlug] = useState(texts[0]?.slug ?? "");
-  const [targetType, setTargetType] = useState<"text" | "competency_node">("text");
+  const [targetType, setTargetType] = useState<"text" | "competency_node" | "dictation">("text");
+  const [dictationId, setDictationId] = useState(dictations[0]?.id ?? "");
   const [nodeId, setNodeId] = useState(nodes[0]?.id ?? "");
   const [title, setTitle] = useState("");
   const [instructions, setInstructions] = useState("");
@@ -50,8 +53,8 @@ export function AssignmentForm({
     try {
       await createAssignment({
         classId,
-        targetType, textSlug: targetType === "text" ? textSlug : undefined, targetNodeId: targetType === "competency_node" ? nodeId : undefined,
-        title: title || (targetType === "text" ? texts.find((t) => t.slug === textSlug)?.title : nodes.find((node) => node.id === nodeId)?.label) || (en?"Activity":"Activité"),
+        targetType, textSlug: targetType === "text" ? textSlug : undefined, targetNodeId: targetType === "competency_node" ? nodeId : undefined, targetDictationId: targetType === "dictation" ? dictationId : undefined,
+        title: title || (targetType === "text" ? texts.find((t) => t.slug === textSlug)?.title : targetType === "dictation" ? `${en ? "Dictée challenge" : "Défi dictée"} : ${dictations.find((d) => d.id === dictationId)?.title ?? ""}` : nodes.find((node) => node.id === nodeId)?.label) || (en?"Activity":"Activité"),
         instructions,
         dueAt,
       });
@@ -80,7 +83,7 @@ export function AssignmentForm({
           </label>
           <label className="block">
             <span className="mb-1 block text-sm font-medium">Type</span>
-            <select value={targetType} onChange={(e) => setTargetType(e.target.value as "text" | "competency_node")} className={`${inputCls} appearance-none pr-10`}><option className="bg-zinc-950" value="text">{en?"Reading":"Lecture"}</option><option className="bg-zinc-950" value="competency_node">{en?"Competency micro-session":"Micro-session de compétence"}</option></select>
+            <select value={targetType} onChange={(e) => setTargetType(e.target.value as "text" | "competency_node" | "dictation")} className={`${inputCls} appearance-none pr-10`}><option className="bg-zinc-950" value="text">{en?"Reading":"Lecture"}</option><option className="bg-zinc-950" value="competency_node">{en?"Competency micro-session":"Micro-session de compétence"}</option>{dictations.length > 0 && <option className="bg-zinc-950" value="dictation">{en?"Class dictée challenge":"Défi dictée de classe"}</option>}</select>
           </label>
           <label className="block">
             <span className="mb-1 block text-sm font-medium">{en?"Text":"Texte"}</span>
@@ -88,7 +91,7 @@ export function AssignmentForm({
               {texts.map((t) => (
                 <option className="bg-zinc-950" key={t.slug} value={t.slug}>{t.title}</option>
               ))}
-            </select> : <select value={nodeId} onChange={(e) => setNodeId(e.target.value)} className={`${inputCls} appearance-none pr-10`}>{nodes.map((node) => <option className="bg-zinc-950" key={node.id} value={node.id}>{node.label}</option>)}</select>}
+            </select> : targetType === "dictation" ? <select value={dictationId} onChange={(e) => setDictationId(e.target.value)} className={`${inputCls} appearance-none pr-10`}>{dictations.map((d) => <option className="bg-zinc-950" key={d.id} value={d.id}>{d.title} · {d.wordCount} mots</option>)}</select> : <select value={nodeId} onChange={(e) => setNodeId(e.target.value)} className={`${inputCls} appearance-none pr-10`}>{nodes.map((node) => <option className="bg-zinc-950" key={node.id} value={node.id}>{node.label}</option>)}</select>}
           </label>
           <label className="block">
             <span className="mb-1 block text-sm font-medium">{en?"Title (optional)":"Titre (optionnel)"}</span>

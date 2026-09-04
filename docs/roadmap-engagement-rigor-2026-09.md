@@ -107,7 +107,7 @@ acceptance test.
 
 - [x] **7.1** Student in-app inbox reading `student_notifications` (due reviews, teacher comments, weekly recap). **S**.
 - [ ] **7.2** Web push (PWA) opt-in, parent-controllable for under-15, capped at 1/day, copy A/B-tested via PostHog. **M**.
-- [ ] **7.3** Teacher class dictée challenge: assign a dictée to the class with a due date; class-level results view. **M**.
+- [x] **7.3** Teacher class dictée challenge: assign a dictée to the class with a due date; class-level results view. **M**.
 - [x] **7.4** Parent weekly email includes error types and time on task (Kartable parents' top request). **S**.
 
 ## Phase 8 — Efficiency and platform

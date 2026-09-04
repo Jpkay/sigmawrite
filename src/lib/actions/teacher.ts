@@ -70,7 +70,7 @@ export async function inviteStudents(input: unknown) {
 }
 
 /** Assigns a reading to a class (PRD §N). RLS enforces the teacher owns the class. */
-const assignmentSchema = z.object({ classId: z.string().uuid(), targetType: z.enum(["text","competency_node","catch_up_step"]).default("text"), textSlug: z.string().min(1).max(150).optional(), targetNodeId: z.string().uuid().optional(), title: z.string().trim().min(1).max(200), instructions: z.string().trim().max(1000).optional(), dueAt: z.string().date().optional().or(z.literal("")) }).refine((value) => value.targetType === "text" ? !!value.textSlug : !!value.targetNodeId, "Cible requise");
+const assignmentSchema = z.object({ classId: z.string().uuid(), targetType: z.enum(["text","competency_node","catch_up_step","dictation"]).default("text"), textSlug: z.string().min(1).max(150).optional(), targetNodeId: z.string().uuid().optional(), targetDictationId: z.string().uuid().optional(), title: z.string().trim().min(1).max(200), instructions: z.string().trim().max(1000).optional(), dueAt: z.string().date().optional().or(z.literal("")) }).refine((value) => value.targetType === "text" ? !!value.textSlug : value.targetType === "dictation" ? !!value.targetDictationId : !!value.targetNodeId, "Cible requise");
 
 export async function createAssignment(input: unknown) {
   const session = await requireRole(["teacher"]);
@@ -79,7 +79,7 @@ export async function createAssignment(input: unknown) {
   const { error } = await supabase.from("assignments").insert({
     class_id: data.classId,
     teacher_profile_id: session.id,
-    target_type: data.targetType, text_slug: data.textSlug ?? null, target_node_id: data.targetNodeId ?? null,
+    target_type: data.targetType, text_slug: data.textSlug ?? null, target_node_id: data.targetNodeId ?? null, target_dictation_id: data.targetDictationId ?? null,
     title: data.title, instructions: data.instructions || null, due_at: data.dueAt || null,
   });
   if (error) throw new Error(error.message);
@@ -202,4 +202,24 @@ export async function setClassGoal(input: unknown) {
   await logAudit("teacher.class_goal_set", { targetType: "class", targetId: data.classId, metadata: { weekStart, targetXp: data.targetXp } });
   revalidatePath(`/teacher/classes/${data.classId}`); revalidatePath("/student");
   return { weekStart, targetXp: data.targetXp };
+}
+
+/** Published dictées a teacher can assign (roadmap 7.3). */
+export async function loadAssignableDictations() {
+  await requireRole(["teacher"]);
+  const supabase = await createClient();
+  const { data } = await supabase.from("dictations").select("id,title_fr,kind,grade_min,grade_max,word_count").eq("review_status", "human_approved").eq("audio_status", "ready").order("grade_min").order("title_fr");
+  return (data ?? []).map((row) => ({ id: row.id as string, title: row.title_fr as string, kind: row.kind as string, gradeMin: Number(row.grade_min), gradeMax: Number(row.grade_max), wordCount: Number(row.word_count) }));
+}
+
+export type DictationAssignmentResults = { members: number; attempted: number; averageScore: number | null; clean: number };
+
+export async function loadDictationAssignmentResults(assignmentId: string): Promise<DictationAssignmentResults | null> {
+  await requireRole(["teacher", "school_admin"]);
+  const supabase = await createClient();
+  const { data, error } = await supabase.rpc("dictation_assignment_results", { p_assignment_id: assignmentId });
+  if (error) throw new Error(error.message);
+  const row = Array.isArray(data) ? data[0] : data;
+  if (!row) return null;
+  return { members: Number(row.members ?? 0), attempted: Number(row.attempted ?? 0), averageScore: row.average_score == null ? null : Number(row.average_score), clean: Number(row.clean ?? 0) };
 }
