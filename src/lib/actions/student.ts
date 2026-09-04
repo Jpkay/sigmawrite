@@ -66,6 +66,8 @@ import { classifyDictation, CATEGORY_LABELS, type DictationError, type ErrorCate
 import { signDictationAudio } from "@/lib/dictation/audio";
 import { BADGE_BY_KEY, earnedBadges, type BadgeKey } from "@/lib/badges";
 import { genrePrompt, genreSpec, genresForGrade, isWritingGenre, type WritingGenre } from "@/lib/writing/genres";
+import { scoreProductionWithAI, type ProductionRubric } from "@/lib/scoring/production-ai";
+import { lessonForPracticeNode } from "@/lib/practice/lessons";
 import { calculateStreak, freezeCandidate, isDailyXpGoal, unrewardedMilestone, weekStrip, XP_AWARDS, type ActivityDay } from "@/lib/motivation";
 import { trackServer } from "@/lib/analytics-server";
 import { createHash } from "node:crypto";
@@ -1334,11 +1336,11 @@ async function independentProductionNode(service: SupabaseClient, studentId: str
   if (stepError) throw new Error(stepError.message);
   if (!step) throw new Error("Cette production autonome n’est pas encore disponible.");
   const { data: node, error: nodeError } = await service.from("competency_nodes")
-    .select("id,key,label_fr,description_fr").eq("id", nodeId).single();
+    .select("id,key,label_fr,description_fr,strand").eq("id", nodeId).single();
   if (nodeError || !node || !supportsIndependentProductionNode(node.key as string)) {
     throw new Error("Cette production autonome n’est pas encore vérifiable automatiquement.");
   }
-  return node as { id: string; key: string; label_fr: string; description_fr: string | null };
+  return node as { id: string; key: string; label_fr: string; description_fr: string | null; strand: string };
 }
 
 /** Genres offered depend on the class-owned grade (roadmap 5.1); the default is the first one. */
@@ -1393,6 +1395,12 @@ export async function submitIndependentProduction(input: unknown) {
   const demonstrated = verified && target.demonstrated && grammarErrorRate <= 0.05;
   const checksum = createHash("sha256").update(data.text.normalize("NFC")).digest("hex");
   const submittedAt = new Date().toISOString();
+  // Rubric feedback: deterministic anchor, model clamped, one grounded priority (roadmap 5.3). Skipped when the writing kill switch is off.
+  let rubric: ProductionRubric | null = null;
+  if (process.env.WRITING_EVALUATION_ENABLED !== "false") {
+    const lesson = lessonForPracticeNode({ key: node.key, label: node.label_fr, description: node.description_fr, strand: node.strand });
+    rubric = await scoreProductionWithAI({ text: data.text, genreLabel: spec.label, genreBrief: spec.brief, nodeLabel: node.label_fr, rulePattern: lesson.pattern, demonstrated, grammarErrorCount: grammarMatches.length, words, minimumWords: spec.minimumWords, maximumWords: spec.maximumWords });
+  }
   const { data: submission, error: submissionError } = await service.from("independent_production_submissions")
     .insert({
       student_id: studentId,
@@ -1404,6 +1412,8 @@ export async function submitIndependentProduction(input: unknown) {
       demonstrated,
       verified,
       submitted_at: submittedAt,
+      rubric,
+      genre: spec.genre,
     }).select("id").single();
   if (submissionError?.code === "23505") throw new Error("Ce texte a déjà été évalué. Écris un nouveau paragraphe pour démontrer la maîtrise une autre fois.");
   if (submissionError || !submission) throw new Error(submissionError?.message ?? "La production n’a pas pu être enregistrée.");
@@ -1438,6 +1448,7 @@ export async function submitIndependentProduction(input: unknown) {
   revalidatePath("/student/frontier");
   return {
     xp,
+    rubric,
     demonstrated,
     verified,
     mastery,
