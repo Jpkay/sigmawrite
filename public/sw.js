@@ -1,4 +1,7 @@
-const CACHE="plume-public-v3";
+const CACHE="plume-public-v4";
+// Student-initiated offline pack (home page prefetch). Never written by the
+// worker; cleared with the other private caches on sign-out.
+const OFFLINE_PACK="plume-offline-pack-v1";
 const PRIVATE_CACHE_PREFIXES=["plume-","sigmawrite-"];
 const PUBLIC_ASSET=/^\/_next\/static\/|\.(?:css|js|woff2?|png|jpg|jpeg|gif|webp|svg|ico)$/i;
 
@@ -15,10 +18,17 @@ self.addEventListener("fetch",event=>{
   const url=new URL(request.url);
   const isRsc=request.headers.has("RSC")||url.searchParams.has("_rsc");
   if(request.mode==="navigate"||isRsc||url.pathname.startsWith("/api/")){
-    event.respondWith(fetch(request).catch(()=>new Response(
+    event.respondWith(fetch(request).catch(async()=>{
+      // Offline: serve a page the signed-in student prefetched into their own pack, if any.
+      if(request.mode==="navigate"&&!url.pathname.startsWith("/api/")){
+        const pack=await caches.open(OFFLINE_PACK);
+        const packed=await pack.match(url.pathname,{ignoreSearch:true});
+        if(packed)return packed;
+      }
+      return new Response(
       "<!doctype html><html lang=fr><meta charset=utf-8><meta name=viewport content='width=device-width'><title>Hors ligne</title><main><h1>Connexion indisponible</h1><p>Reconnecte-toi pour accéder en toute sécurité à tes données.</p></main>",
       {status:503,headers:{"Content-Type":"text/html; charset=utf-8","Cache-Control":"no-store"}}
-    )));return;
+    );}));return;
   }
   if(!PUBLIC_ASSET.test(url.pathname))return;
   event.respondWith(caches.open(CACHE).then(async cache=>{
