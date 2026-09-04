@@ -101,7 +101,7 @@ acceptance test.
 - [ ] **6.5** Class cooperative goal (teacher-set, e.g. "500 XP cette semaine"), no individual ranking. **M**. *Accept:* only class aggregate exposed to students; RLS test.
 - [ ] **6.6** Ability-banded, opt-in, pseudonymous weekly league within a class (teacher enables; off by default; rank hidden below top 3). **M**. Ship only after 6.5 data shows no drop in low-mastery engagement.
 - [ ] **6.7** Story-arc framing for the daily plan: 7-day "chapitre" with a light narrative per interest chosen at onboarding; completion unlocks the next chapter. **L**. Content from the passage pipeline, human-reviewed.
-- [ ] **6.8** Celebrations: end-of-session confetti (respects reduce-motion), sound off by default, first-mastery badge set (≤12 badges tied to nodes, none to time spent). **S**.
+- [x] **6.8** Celebrations: end-of-session confetti (respects reduce-motion), sound off by default, first-mastery badge set (≤12 badges tied to nodes, none to time spent). **S**.
 
 ## Phase 7 — Notifications and loops (engagement)
 

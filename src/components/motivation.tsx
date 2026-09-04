@@ -65,3 +65,38 @@ export function WeeklyRecapCard({ recap }: { recap: WeeklyRecap }) {
     </Card>
   );
 }
+
+/** Badge shelf: newly earned badges get a short, reduced-motion-aware celebration once (roadmap 6.8). */
+export function BadgeShelf({ badges, onSeen }: { badges: { key: string; label: string; description: string; emoji: string; awardedAt: string; isNew: boolean }[]; onSeen: () => void }) {
+  const fresh = badges.filter((badge) => badge.isNew);
+  return (
+    <Card>
+      <CardContent className="pt-6">
+        <div className="flex items-baseline justify-between gap-3"><h2 className="font-semibold">Badges</h2><span className="text-xs text-muted-foreground">{badges.length} / 12</span></div>
+        {fresh.length > 0 && (
+          <div role="status" className="relative mt-3 overflow-hidden rounded-md border border-primary/40 bg-accent/40 px-3 py-2 text-sm">
+            <Confetti />
+            <p className="relative font-medium">Nouveau badge : {fresh.map((badge) => `${badge.emoji} ${badge.label}`).join(" · ")}</p>
+            <button type="button" onClick={onSeen} className="relative mt-1 text-xs text-primary underline-offset-4 hover:underline">Merci, c’est vu</button>
+          </div>
+        )}
+        {badges.length === 0 ? <p className="mt-3 text-sm text-muted-foreground">Ton premier badge arrive avec ta première compétence sécurisée.</p> : (
+          <ul className="mt-3 grid grid-cols-4 gap-2 sm:grid-cols-6">
+            {badges.map((badge) => <li key={badge.key} title={badge.description} className={cn("grid aspect-square place-items-center rounded-lg border text-2xl", badge.isNew ? "border-primary bg-primary/10" : "border-border bg-muted/40")} aria-label={`${badge.label} : ${badge.description}`}>{badge.emoji}</li>)}
+          </ul>
+        )}
+      </CardContent>
+    </Card>
+  );
+}
+
+/** Pure-CSS confetti burst; disabled under prefers-reduced-motion. */
+export function Confetti() {
+  const pieces = Array.from({ length: 18 }, (_, index) => index);
+  return (
+    <div aria-hidden className="pointer-events-none absolute inset-0 motion-reduce:hidden">
+      <style>{`@keyframes plume-confetti{0%{transform:translateY(-10px) rotate(0);opacity:1}100%{transform:translateY(90px) rotate(540deg);opacity:0}}`}</style>
+      {pieces.map((index) => <span key={index} className="absolute top-0 block h-2 w-1.5 rounded-sm" style={{ left: `${(index * 53) % 100}%`, background: ["var(--primary)", "var(--secondary)", "var(--success)"][index % 3], animation: `plume-confetti ${1.4 + (index % 5) * 0.2}s ease-out ${(index % 6) * 0.08}s 1 both` }} />)}
+    </div>
+  );
+}

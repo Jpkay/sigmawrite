@@ -11,6 +11,7 @@ import {
 } from "@/lib/actions/student";
 import type { getNodePractice } from "@/lib/db/practice";
 import { AccentTextarea } from "@/components/accent-textarea";
+import { Confetti } from "@/components/motivation";
 import { ErrorHuntWidget, JustifiedWidget, OrderingWidget, RewriteWidget, shuffledOrder } from "@/components/exercise-widgets";
 import { buildHintLadder } from "@/lib/practice/hints";
 import { workedExample } from "@/lib/practice/scaffolding";
@@ -136,8 +137,9 @@ export function PracticePlayer({ practice }: { practice: Practice }) {
   if (!practice.items.length) return <p className="text-sm text-muted-foreground">Aucun exercice approuvé pour cette compétence.</p>;
 
   if (phase === "done" && completion) return <section className="mx-auto max-w-2xl py-8 sm:py-14">
-    <div className="border-y border-border py-10 text-center">
-      {completion.completed ? <Trophy className="mx-auto size-10 text-primary" /> : <Clock3 className="mx-auto size-10 text-muted-foreground" />}
+    <div className="relative overflow-hidden border-y border-border py-10 text-center">
+      {completion.completed && <Confetti />}
+      {completion.completed ? <Trophy className="relative mx-auto size-10 text-primary" /> : <Clock3 className="mx-auto size-10 text-muted-foreground" />}
       <p className="mt-5 text-xs font-semibold uppercase tracking-[0.16em] text-primary">{completion.completed ? "Leçon terminée" : "Temps écoulé"}</p>
       <h1 className="mt-2 text-3xl font-semibold tracking-tight">{completion.completed ? `+${completion.totalXp} XP` : "On s’arrête ici pour aujourd’hui"}</h1>
       <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-muted-foreground">

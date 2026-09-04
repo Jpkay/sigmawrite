@@ -64,6 +64,7 @@ import { evaluateWriting } from "@/lib/writing/evaluate";
 import { buildTemplate, publicTemplate, reconstruct, type DictationMode, type SegmentTemplate } from "@/lib/dictation/modes";
 import { classifyDictation, CATEGORY_LABELS, type DictationError, type ErrorCategory } from "@/lib/dictation/classify";
 import { signDictationAudio } from "@/lib/dictation/audio";
+import { BADGE_BY_KEY, earnedBadges, type BadgeKey } from "@/lib/badges";
 import { calculateStreak, freezeCandidate, isDailyXpGoal, unrewardedMilestone, weekStrip, XP_AWARDS, type ActivityDay } from "@/lib/motivation";
 import { trackServer } from "@/lib/analytics-server";
 import { createHash } from "node:crypto";
@@ -2480,7 +2481,10 @@ export async function loadLatestReadingResume(input: unknown) {
   checked(emptySchema,input);const{supabase,studentId}=await context();const{data}=await supabase.from("reading_sessions").select("id,current_phase,text_versions!inner(title,texts!inner(slug))").eq("student_id",studentId).is("completed_at",null).order("started_at",{ascending:false}).limit(1).maybeSingle();if(!data)return null;const version=data.text_versions as unknown as{title:string;texts:{slug:string}};return{sessionId:data.id as string,textKey:version.texts.slug,title:version.title,phase:data.current_phase as string};
 }
 
+export type StudentBadge = { key: BadgeKey; label: string; description: string; emoji: string; awardedAt: string; isNew: boolean };
+
 export type StudentMotivation = {
+  badges: StudentBadge[];
   streak: number;
   todayXp: number;
   goalXp: number;
@@ -2516,7 +2520,48 @@ export async function loadStudentMotivation(input: unknown): Promise<StudentMoti
   const{data:xpRows}=await supabase.from("student_xp_ledger").select("base_xp,bonus_xp").eq("student_id",studentId);
   const totalXp=(xpRows??[]).reduce((total,row)=>total+Number(row.base_xp)+Number(row.bonus_xp),0);
   const todayKey=new Date(nowMs).toISOString().slice(0,10);const today=current.activity.find(day=>day.date===todayKey);
-  return{streak,todayXp:current.xpByDate[todayKey]??0,goalXp:current.goalXp,goalCompleted:!!today?.goalCompleted,totalXp,freezesAvailable:current.freezes,freezeAppliedFor,week:weekStrip(current.activity,nowMs,current.xpByDate)};
+  const week=weekStrip(current.activity,nowMs,current.xpByDate);
+  const badges=await syncStudentBadges(service,studentId,{streak,activeDaysThisWeek:week.filter(day=>day.xp>0).length});
+  return{badges,streak,todayXp:current.xpByDate[todayKey]??0,goalXp:current.goalXp,goalCompleted:!!today?.goalCompleted,totalXp,freezesAvailable:current.freezes,freezeAppliedFor,week};
+}
+
+/** Awards any newly earned milestone badges (roadmap 6.8); idempotent, returns the full shelf with unseen ones flagged. */
+async function syncStudentBadges(service: SupabaseClient, studentId: string, live: { streak: number; activeDaysThisWeek: number }): Promise<StudentBadge[]> {
+  const [{ data: mastered }, { data: dictations }, { data: productions }, { data: activity }, { data: owned }] = await Promise.all([
+    service.from("student_competency_estimates").select("node_id,competency_nodes!inner(strand)").eq("student_id", studentId).gte("mastery_probability", 0.85),
+    service.from("dictation_attempts").select("errors,score").eq("student_id", studentId).not("submitted_at", "is", null),
+    service.from("independent_production_submissions").select("id").eq("student_id", studentId).eq("demonstrated", true),
+    service.from("student_daily_activity").select("retrieval_reviews").eq("student_id", studentId),
+    service.from("student_badges").select("badge_key,awarded_at,seen_at").eq("student_id", studentId),
+  ]);
+  const facts = {
+    masteredNodes: mastered?.length ?? 0,
+    masteredStrands: new Set((mastered ?? []).map((row) => (row.competency_nodes as unknown as { strand: string }).strand)).size,
+    cleanDictations: (dictations ?? []).filter((row) => Array.isArray(row.errors) && row.errors.length === 0).length,
+    dictations: dictations?.length ?? 0,
+    demonstratedProductions: productions?.length ?? 0,
+    streak: live.streak,
+    reviews: (activity ?? []).reduce((total, row) => total + Number(row.retrieval_reviews ?? 0), 0),
+    activeDaysThisWeek: live.activeDaysThisWeek,
+  };
+  const have = new Map((owned ?? []).map((row) => [row.badge_key as BadgeKey, row]));
+  const missing = earnedBadges(facts).filter((key) => !have.has(key));
+  const now = new Date().toISOString();
+  if (missing.length) {
+    const { error } = await service.from("student_badges").upsert(missing.map((key) => ({ student_id: studentId, badge_key: key, awarded_at: now })), { onConflict: "student_id,badge_key", ignoreDuplicates: true });
+    if (error) throw new Error(error.message);
+  }
+  const shelf: StudentBadge[] = [];
+  for (const [key, row] of have) { const def = BADGE_BY_KEY.get(key); if (def) shelf.push({ ...def, awardedAt: row.awarded_at as string, isNew: !row.seen_at }); }
+  for (const key of missing) { const def = BADGE_BY_KEY.get(key); if (def) shelf.push({ ...def, awardedAt: now, isNew: true }); }
+  return shelf.sort((a, b) => Date.parse(b.awardedAt) - Date.parse(a.awardedAt));
+}
+
+export async function markBadgesSeen(input: unknown) {
+  checked(emptySchema, input); const { studentId } = await context();
+  const { error } = await createServiceClient().from("student_badges").update({ seen_at: new Date().toISOString() }).eq("student_id", studentId).is("seen_at", null);
+  if (error) throw new Error(error.message);
+  return { ok: true };
 }
 
 const dailyXpGoalSchema = z.object({ goal: z.number().int() });
