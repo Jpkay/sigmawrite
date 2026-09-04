@@ -498,7 +498,7 @@ async function recordDirectCompetencyEvidence(input: {
 }
 
 async function evaluateAndStoreWriting(input: {
-  service: SupabaseClient; studentId: string; summaryId: string; revisionNumber: 0 | 1;
+  service: SupabaseClient; studentId: string; summaryId: string; revisionNumber: number;
   sourceText: string; studentText: string; keywords: string[]; systemPrompt: string;
 }) {
   const { data: rows } = await input.service.from("error_node_mappings").select("rule_id,node_id,explanation_fr,evidence_weight,competency_nodes!inner(key,label_fr)");
@@ -1669,16 +1669,22 @@ export async function loadWritingFeedback(input: unknown) {
   return { summaryId: summary.id as string, originalText: summary.summary_text as string, evaluations: evaluations ?? [] };
 }
 
+/** Up to three revision passes; each pass focuses on one priority (roadmap 5.2). */
+const MAX_WRITING_REVISIONS = 3;
+
 export async function reviseSummary(input: unknown) {
   const data = checked(writingRevisionSchema, input); const { supabase, studentId } = await context();
   await requireStudentLearningUnlocked(supabase, studentId);
   await moderateOrReject({ supabase, studentId, text: data.revisedText, field: "reading_summary" });
   const current = await loadWritingFeedback({ textKey: data.textKey });
   if (!current) throw new Error("Résumé introuvable.");
-  if (current.evaluations.some((evaluation) => Number(evaluation.revision_number) === 1)) throw new Error("La révision a déjà été envoyée.");
+  const revisionNumber = Math.max(0, ...current.evaluations.map((evaluation) => Number(evaluation.revision_number))) + 1;
+  if (revisionNumber > MAX_WRITING_REVISIONS) throw new Error("Tu as déjà fait trois révisions. Passe à la suite : ton dernier texte est conservé.");
+  const previous = current.evaluations.at(-1);
+  if (previous && previous.submitted_text.trim() === data.revisedText.trim()) throw new Error("Modifie ton texte avant de le renvoyer.");
   const text = await getPublishedReadingText(data.textKey, supabase); if (!text) throw new Error("Texte introuvable.");
   const service = createServiceClient(); const prompt = await getActivePrompt("summary_scoring", service);
-  const evaluation = await evaluateAndStoreWriting({ service, studentId, summaryId: current.summaryId, revisionNumber: 1, sourceText: text.body.join("\n\n"), studentText: data.revisedText, keywords: text.concepts, systemPrompt: prompt.promptText });
+  const evaluation = await evaluateAndStoreWriting({ service, studentId, summaryId: current.summaryId, revisionNumber, sourceText: text.body.join("\n\n"), studentText: data.revisedText, keywords: text.concepts, systemPrompt: prompt.promptText });
   revalidatePath(`/student/results/${data.textKey}`); revalidatePath("/student/frontier");
   return evaluation;
 }
