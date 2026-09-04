@@ -25,10 +25,10 @@ Detailed atomic goals: [`docs/roadmap-engagement-rigor-2026-09.md`](../docs/road
 - [x] Phase 3: conjugation tables and rule cards from the existing engine (2026-09-04).
 - [x] Phase 4: versioned mapping of every node to cycle 3/4 attendus, 6e evaluation domains and Brevet skills (2026-09-04).
 - [x] Phase 5: genre-by-grade writing, multi-revision loop, rubric AI feedback with vetted rule citations, teacher comments, printable recueil (2026-09-04; cited-justification reading questions pending).
-- [ ] Phase 6: XP for all activities, settable daily goal, streak freeze, weekly recap (done 2026-09-04); class cooperative goal, story-arc plan, badges pending.
-- [ ] Phase 7: student inbox (done 2026-09-04); opt-in push, class dictée challenge, richer parent email pending.
-- [ ] Phase 8: shorter diagnostic, wire continuous quizzes, delete dead modules, offline sessions, mobile tab bar, dyslexia options.
-- [ ] Phase 9: DPIA and teacher override before AI writing feedback reaches general availability.
+- [ ] Phase 6: XP for all activities, settable daily goal, streak freeze, weekly recap, class cooperative goal, badges (done 2026-09-04); opt-in league and story-arc plan pending.
+- [ ] Phase 7: student inbox, class dictée challenge, richer parent email (done 2026-09-04); opt-in push pending.
+- [ ] Phase 8: shorter diagnostic, offline fallback, mobile tab bar, dyslexia options, single home loader, accent input (done 2026-09-04); continuous quizzes, dead-module decisions, dictée Playwright journey, latency-weighted evidence pending.
+- [ ] Phase 9: teacher override done (2026-09-04); DPIA and hosting/transfer basis pending (legal).
 
 ## Post-pilot
 
