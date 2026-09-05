@@ -2,6 +2,8 @@ import { PageHeader } from "@/components/page";
 import { requireActiveReviewer, requireRole } from "@/lib/auth";
 import { getCompetencyItems, getDiagnosticItemAssignmentOverview, getDiagnosticItemReviewCount, getDiagnosticItemReviewProgress, getTaxonomyV3PracticeReviewData } from "@/lib/db/items";
 import { ItemReviewQueue } from "./review-queue";
+import { curriculumTagsFor } from "@/lib/curriculum/tags";
+import { createClient } from "@/lib/supabase/server";
 import { ItemAssignmentManager } from "./item-assignment-manager";
 import { ItemAdminNav } from "../item-admin-nav";
 
@@ -31,9 +33,12 @@ export default async function ItemReviewPage({ searchParams }: ReviewPageProps) 
       getDiagnosticItemReviewCount({ section, difficultyTier }),
       getDiagnosticItemReviewProgress(),
     ]);
+  // Reviewers asked "for which level is this?": attach the programme attendus to every item (roadmap 4.2).
+  const tagsByNode = await createClient().then((db) => curriculumTagsFor(db, [...new Set(items.map((item) => item.nodeKey))])).catch(() => new Map());
+  const taggedItems = items.map((item) => ({ ...item, curriculumTags: tagsByNode.get(item.nodeKey) ?? [] }));
   const pageCount = Math.max(1, Math.ceil(filteredTotal / PAGE_SIZE));
   const assignmentOverview = reviewer.role === "platform_admin" && scope === "diagnostic"
     ? await getDiagnosticItemAssignmentOverview()
     : null;
-  return <><PageHeader title={scope === "practice-v3" ? "Validation de la pratique v3" : "Revue du diagnostic v2"} description={scope === "practice-v3" ? "Valide uniquement les exercices nécessaires pour ouvrir chaque compétence contrôlée aux élèves." : "Vérifie l’énoncé, la réponse, le niveau et les contrôles avant toute publication aux élèves."} /><ItemAdminNav />{assignmentOverview && <ItemAssignmentManager overview={assignmentOverview} />}<ItemReviewQueue scope={scope} initialItems={items} progress={progress} filters={{ section: section ?? "", tier: difficultyTier ?? "" }} pagination={{ page: Math.min(page, pageCount), pageCount, filteredTotal }} /></>;
+  return <><PageHeader title={scope === "practice-v3" ? "Validation de la pratique v3" : "Revue du diagnostic v2"} description={scope === "practice-v3" ? "Valide uniquement les exercices nécessaires pour ouvrir chaque compétence contrôlée aux élèves." : "Vérifie l’énoncé, la réponse, le niveau et les contrôles avant toute publication aux élèves."} /><ItemAdminNav />{assignmentOverview && <ItemAssignmentManager overview={assignmentOverview} />}<ItemReviewQueue scope={scope} initialItems={taggedItems} progress={progress} filters={{ section: section ?? "", tier: difficultyTier ?? "" }} pagination={{ page: Math.min(page, pageCount), pageCount, filteredTotal }} /></>;
 }

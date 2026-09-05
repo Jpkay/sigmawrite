@@ -9,7 +9,7 @@
     "releaseVersion": "2.0.0",
     "checksum": "sha256:809df529f0934fc8b68dcf23d00a18238a9c01490f4a985b4fa4246751a1fc4b"
   },
-  "generatedAt": "2026-09-01T17:31:39.953Z",
+  "generatedAt": "2026-09-05T19:06:20.620Z",
   "items": [
     {
       "itemKey": "computed-conjugation-v1:produire_present_indicatif:foundation",
@@ -742,6 +742,7 @@
         "responseType": "short_answer",
         "promptFr": "Conjugue « parler » au futur proche avec « je ». Écris seulement le groupe verbal.",
         "instructionsFr": "Respecte les accents et écris uniquement la forme demandée.",
+        "correctAnswer": "vais parler",
         "acceptableAnswers": [],
         "validatorType": "conjugator",
         "validatorConfig": {
@@ -750,8 +751,7 @@
           "person": "1s"
         },
         "cefrLevel": "A1",
-        "difficulty": 25,
-        "correctAnswer": "vais parler"
+        "difficulty": 25
       },
       "evidenceKey": "writing-controlled-production",
       "evidenceExpectation": "controlled_production",
@@ -759,23 +759,23 @@
       "promptFamily": "controlled-form",
       "difficultyTier": "foundation",
       "qcGates": {
+        "verdict": "auto_approved",
         "gate1_schema": true,
-        "gate1_invariants": {
-          "ok": true,
-          "violations": []
-        },
         "gate0_computed": {
           "applied": true,
           "correctedAnswer": "vais parler"
         },
+        "gate3_ensemble": {
+          "agrees": true,
+          "agreement": 1
+        },
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
         "gate2_answer_key": {
           "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 1,
-          "agrees": true
-        },
-        "verdict": "auto_approved"
+        }
       },
       "reviewStatus": "auto_approved"
     },
@@ -789,6 +789,7 @@
         "responseType": "cloze",
         "promptFr": "Complète au futur proche : Nous ___ ce soir. (finir) Écris seulement le groupe verbal.",
         "instructionsFr": "Respecte les accents et écris uniquement la forme demandée.",
+        "correctAnswer": "allons finir",
         "acceptableAnswers": [],
         "validatorType": "conjugator",
         "validatorConfig": {
@@ -797,8 +798,7 @@
           "person": "1p"
         },
         "cefrLevel": "A1",
-        "difficulty": 50,
-        "correctAnswer": "allons finir"
+        "difficulty": 50
       },
       "evidenceKey": "writing-controlled-production",
       "evidenceExpectation": "controlled_production",
@@ -806,23 +806,23 @@
       "promptFamily": "sentence-completion",
       "difficultyTier": "core",
       "qcGates": {
+        "verdict": "auto_approved",
         "gate1_schema": true,
-        "gate1_invariants": {
-          "ok": true,
-          "violations": []
-        },
         "gate0_computed": {
           "applied": true,
           "correctedAnswer": "allons finir"
         },
+        "gate3_ensemble": {
+          "agrees": true,
+          "agreement": 1
+        },
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
         "gate2_answer_key": {
           "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 1,
-          "agrees": true
-        },
-        "verdict": "auto_approved"
+        }
       },
       "reviewStatus": "auto_approved"
     },
@@ -836,6 +836,7 @@
         "responseType": "transform",
         "promptFr": "Mets « ils partent » au futur proche. Écris seulement le groupe verbal.",
         "instructionsFr": "Respecte les accents et écris uniquement la forme demandée.",
+        "correctAnswer": "vont partir",
         "acceptableAnswers": [],
         "validatorType": "conjugator",
         "validatorConfig": {
@@ -844,8 +845,7 @@
           "person": "3p"
         },
         "cefrLevel": "A1",
-        "difficulty": 75,
-        "correctAnswer": "vont partir"
+        "difficulty": 75
       },
       "evidenceKey": "writing-controlled-production",
       "evidenceExpectation": "controlled_production",
@@ -853,23 +853,23 @@
       "promptFamily": "sentence-transformation",
       "difficultyTier": "stretch",
       "qcGates": {
+        "verdict": "auto_approved",
         "gate1_schema": true,
-        "gate1_invariants": {
-          "ok": true,
-          "violations": []
-        },
         "gate0_computed": {
           "applied": true,
           "correctedAnswer": "vont partir"
         },
+        "gate3_ensemble": {
+          "agrees": true,
+          "agreement": 1
+        },
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
         "gate2_answer_key": {
           "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 1,
-          "agrees": true
-        },
-        "verdict": "auto_approved"
+        }
       },
       "reviewStatus": "auto_approved"
     },
@@ -883,6 +883,7 @@
         "responseType": "short_answer",
         "promptFr": "Conjugue « parler » au futur simple avec « je ». Écris seulement la forme verbale.",
         "instructionsFr": "Respecte les accents et écris uniquement la forme demandée.",
+        "correctAnswer": "parlerai",
         "acceptableAnswers": [],
         "validatorType": "conjugator",
         "validatorConfig": {
@@ -891,8 +892,7 @@
           "person": "1s"
         },
         "cefrLevel": "A2",
-        "difficulty": 25,
-        "correctAnswer": "parlerai"
+        "difficulty": 25
       },
       "evidenceKey": "writing-controlled-production",
       "evidenceExpectation": "controlled_production",
@@ -900,23 +900,23 @@
       "promptFamily": "controlled-form",
       "difficultyTier": "foundation",
       "qcGates": {
+        "verdict": "auto_approved",
         "gate1_schema": true,
-        "gate1_invariants": {
-          "ok": true,
-          "violations": []
-        },
         "gate0_computed": {
           "applied": true,
           "correctedAnswer": "parlerai"
         },
+        "gate3_ensemble": {
+          "agrees": true,
+          "agreement": 1
+        },
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
         "gate2_answer_key": {
           "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 1,
-          "agrees": true
-        },
-        "verdict": "auto_approved"
+        }
       },
       "reviewStatus": "auto_approved"
     },
@@ -930,6 +930,7 @@
         "responseType": "cloze",
         "promptFr": "Complète au futur simple : Vous ___ demain. (finir) Écris seulement la forme verbale.",
         "instructionsFr": "Respecte les accents et écris uniquement la forme demandée.",
+        "correctAnswer": "finirez",
         "acceptableAnswers": [],
         "validatorType": "conjugator",
         "validatorConfig": {
@@ -938,8 +939,7 @@
           "person": "2p"
         },
         "cefrLevel": "A2",
-        "difficulty": 50,
-        "correctAnswer": "finirez"
+        "difficulty": 50
       },
       "evidenceKey": "writing-controlled-production",
       "evidenceExpectation": "controlled_production",
@@ -947,23 +947,23 @@
       "promptFamily": "sentence-completion",
       "difficultyTier": "core",
       "qcGates": {
+        "verdict": "auto_approved",
         "gate1_schema": true,
-        "gate1_invariants": {
-          "ok": true,
-          "violations": []
-        },
         "gate0_computed": {
           "applied": true,
           "correctedAnswer": "finirez"
         },
+        "gate3_ensemble": {
+          "agrees": true,
+          "agreement": 1
+        },
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
         "gate2_answer_key": {
           "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 1,
-          "agrees": true
-        },
-        "verdict": "auto_approved"
+        }
       },
       "reviewStatus": "auto_approved"
     },
@@ -977,6 +977,7 @@
         "responseType": "transform",
         "promptFr": "Mets « ils viennent » au futur simple. Écris seulement la forme verbale.",
         "instructionsFr": "Respecte les accents et écris uniquement la forme demandée.",
+        "correctAnswer": "viendront",
         "acceptableAnswers": [],
         "validatorType": "conjugator",
         "validatorConfig": {
@@ -985,8 +986,7 @@
           "person": "3p"
         },
         "cefrLevel": "A2",
-        "difficulty": 75,
-        "correctAnswer": "viendront"
+        "difficulty": 75
       },
       "evidenceKey": "writing-controlled-production",
       "evidenceExpectation": "controlled_production",
@@ -994,23 +994,23 @@
       "promptFamily": "sentence-transformation",
       "difficultyTier": "stretch",
       "qcGates": {
+        "verdict": "auto_approved",
         "gate1_schema": true,
-        "gate1_invariants": {
-          "ok": true,
-          "violations": []
-        },
         "gate0_computed": {
           "applied": true,
           "correctedAnswer": "viendront"
         },
+        "gate3_ensemble": {
+          "agrees": true,
+          "agreement": 1
+        },
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
         "gate2_answer_key": {
           "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 1,
-          "agrees": true
-        },
-        "verdict": "auto_approved"
+        }
       },
       "reviewStatus": "auto_approved"
     },
@@ -1024,6 +1024,7 @@
         "responseType": "short_answer",
         "promptFr": "Conjugue « parler » au plus-que-parfait avec « je ». Écris seulement le groupe verbal.",
         "instructionsFr": "Respecte les accents et écris uniquement la forme demandée.",
+        "correctAnswer": "avais parlé",
         "acceptableAnswers": [],
         "validatorType": "conjugator",
         "validatorConfig": {
@@ -1032,8 +1033,7 @@
           "person": "1s"
         },
         "cefrLevel": "B1",
-        "difficulty": 25,
-        "correctAnswer": "avais parlé"
+        "difficulty": 25
       },
       "evidenceKey": "writing-controlled-production",
       "evidenceExpectation": "controlled_production",
@@ -1041,23 +1041,23 @@
       "promptFamily": "controlled-form",
       "difficultyTier": "foundation",
       "qcGates": {
+        "verdict": "auto_approved",
         "gate1_schema": true,
-        "gate1_invariants": {
-          "ok": true,
-          "violations": []
-        },
         "gate0_computed": {
           "applied": true,
           "correctedAnswer": "avais parlé"
         },
+        "gate3_ensemble": {
+          "agrees": true,
+          "agreement": 1
+        },
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
         "gate2_answer_key": {
           "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 1,
-          "agrees": true
-        },
-        "verdict": "auto_approved"
+        }
       },
       "reviewStatus": "auto_approved"
     },
@@ -1071,17 +1071,17 @@
         "responseType": "cloze",
         "promptFr": "Complète : Elle ___ avant midi. (venir, plus-que-parfait) Écris seulement le groupe verbal.",
         "instructionsFr": "Respecte les accents et écris uniquement la forme demandée.",
+        "correctAnswer": "était venue",
         "acceptableAnswers": [],
         "validatorType": "conjugator",
         "validatorConfig": {
           "verb": "venir",
           "tense": "plus_que_parfait",
-          "person": "3s",
-          "gender": "f"
+          "gender": "f",
+          "person": "3s"
         },
         "cefrLevel": "B1",
-        "difficulty": 50,
-        "correctAnswer": "était venue"
+        "difficulty": 50
       },
       "evidenceKey": "writing-controlled-production",
       "evidenceExpectation": "controlled_production",
@@ -1089,23 +1089,23 @@
       "promptFamily": "sentence-completion",
       "difficultyTier": "core",
       "qcGates": {
+        "verdict": "auto_approved",
         "gate1_schema": true,
-        "gate1_invariants": {
-          "ok": true,
-          "violations": []
-        },
         "gate0_computed": {
           "applied": true,
           "correctedAnswer": "était venue"
         },
+        "gate3_ensemble": {
+          "agrees": true,
+          "agreement": 1
+        },
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
         "gate2_answer_key": {
           "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 1,
-          "agrees": true
-        },
-        "verdict": "auto_approved"
+        }
       },
       "reviewStatus": "auto_approved"
     },
@@ -1119,6 +1119,7 @@
         "responseType": "transform",
         "promptFr": "Mets « ils prennent » au plus-que-parfait. Écris seulement le groupe verbal.",
         "instructionsFr": "Respecte les accents et écris uniquement la forme demandée.",
+        "correctAnswer": "avaient pris",
         "acceptableAnswers": [],
         "validatorType": "conjugator",
         "validatorConfig": {
@@ -1127,8 +1128,7 @@
           "person": "3p"
         },
         "cefrLevel": "B1",
-        "difficulty": 75,
-        "correctAnswer": "avaient pris"
+        "difficulty": 75
       },
       "evidenceKey": "writing-controlled-production",
       "evidenceExpectation": "controlled_production",
@@ -1136,23 +1136,23 @@
       "promptFamily": "sentence-transformation",
       "difficultyTier": "stretch",
       "qcGates": {
+        "verdict": "auto_approved",
         "gate1_schema": true,
-        "gate1_invariants": {
-          "ok": true,
-          "violations": []
-        },
         "gate0_computed": {
           "applied": true,
           "correctedAnswer": "avaient pris"
         },
+        "gate3_ensemble": {
+          "agrees": true,
+          "agreement": 1
+        },
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
         "gate2_answer_key": {
           "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 1,
-          "agrees": true
-        },
-        "verdict": "auto_approved"
+        }
       },
       "reviewStatus": "auto_approved"
     },
@@ -1166,6 +1166,7 @@
         "responseType": "short_answer",
         "promptFr": "Conjugue « parler » au conditionnel présent avec « je ». Écris seulement la forme verbale.",
         "instructionsFr": "Respecte les accents et écris uniquement la forme demandée.",
+        "correctAnswer": "parlerais",
         "acceptableAnswers": [],
         "validatorType": "conjugator",
         "validatorConfig": {
@@ -1174,8 +1175,7 @@
           "person": "1s"
         },
         "cefrLevel": "A2",
-        "difficulty": 25,
-        "correctAnswer": "parlerais"
+        "difficulty": 25
       },
       "evidenceKey": "writing-controlled-production",
       "evidenceExpectation": "controlled_production",
@@ -1183,23 +1183,23 @@
       "promptFamily": "controlled-form",
       "difficultyTier": "foundation",
       "qcGates": {
+        "verdict": "auto_approved",
         "gate1_schema": true,
-        "gate1_invariants": {
-          "ok": true,
-          "violations": []
-        },
         "gate0_computed": {
           "applied": true,
           "correctedAnswer": "parlerais"
         },
+        "gate3_ensemble": {
+          "agrees": true,
+          "agreement": 1
+        },
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
         "gate2_answer_key": {
           "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 1,
-          "agrees": true
-        },
-        "verdict": "auto_approved"
+        }
       },
       "reviewStatus": "auto_approved"
     },
@@ -1213,6 +1213,7 @@
         "responseType": "cloze",
         "promptFr": "Complète au conditionnel présent : Nous ___ plus tôt. (finir) Écris seulement la forme verbale.",
         "instructionsFr": "Respecte les accents et écris uniquement la forme demandée.",
+        "correctAnswer": "finirions",
         "acceptableAnswers": [],
         "validatorType": "conjugator",
         "validatorConfig": {
@@ -1221,8 +1222,7 @@
           "person": "1p"
         },
         "cefrLevel": "A2",
-        "difficulty": 50,
-        "correctAnswer": "finirions"
+        "difficulty": 50
       },
       "evidenceKey": "writing-controlled-production",
       "evidenceExpectation": "controlled_production",
@@ -1230,23 +1230,23 @@
       "promptFamily": "sentence-completion",
       "difficultyTier": "core",
       "qcGates": {
+        "verdict": "auto_approved",
         "gate1_schema": true,
-        "gate1_invariants": {
-          "ok": true,
-          "violations": []
-        },
         "gate0_computed": {
           "applied": true,
           "correctedAnswer": "finirions"
         },
+        "gate3_ensemble": {
+          "agrees": true,
+          "agreement": 1
+        },
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
         "gate2_answer_key": {
           "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 1,
-          "agrees": true
-        },
-        "verdict": "auto_approved"
+        }
       },
       "reviewStatus": "auto_approved"
     },
@@ -1260,6 +1260,7 @@
         "responseType": "transform",
         "promptFr": "Mets « il vient » au conditionnel présent. Écris seulement la forme verbale.",
         "instructionsFr": "Respecte les accents et écris uniquement la forme demandée.",
+        "correctAnswer": "viendrait",
         "acceptableAnswers": [],
         "validatorType": "conjugator",
         "validatorConfig": {
@@ -1268,8 +1269,7 @@
           "person": "3s"
         },
         "cefrLevel": "A2",
-        "difficulty": 75,
-        "correctAnswer": "viendrait"
+        "difficulty": 75
       },
       "evidenceKey": "writing-controlled-production",
       "evidenceExpectation": "controlled_production",
@@ -1277,23 +1277,23 @@
       "promptFamily": "sentence-transformation",
       "difficultyTier": "stretch",
       "qcGates": {
+        "verdict": "auto_approved",
         "gate1_schema": true,
-        "gate1_invariants": {
-          "ok": true,
-          "violations": []
-        },
         "gate0_computed": {
           "applied": true,
           "correctedAnswer": "viendrait"
         },
+        "gate3_ensemble": {
+          "agrees": true,
+          "agreement": 1
+        },
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
         "gate2_answer_key": {
           "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 1,
-          "agrees": true
-        },
-        "verdict": "auto_approved"
+        }
       },
       "reviewStatus": "auto_approved"
     },
@@ -1307,6 +1307,7 @@
         "responseType": "short_answer",
         "promptFr": "Complète : Il faut que tu ___ prêt. (être, subjonctif présent) Écris seulement la forme verbale.",
         "instructionsFr": "Respecte les accents et écris uniquement la forme demandée.",
+        "correctAnswer": "sois",
         "acceptableAnswers": [],
         "validatorType": "conjugator",
         "validatorConfig": {
@@ -1315,8 +1316,7 @@
           "person": "2s"
         },
         "cefrLevel": "B1",
-        "difficulty": 25,
-        "correctAnswer": "sois"
+        "difficulty": 25
       },
       "evidenceKey": "writing-controlled-production",
       "evidenceExpectation": "controlled_production",
@@ -1324,23 +1324,23 @@
       "promptFamily": "controlled-form",
       "difficultyTier": "foundation",
       "qcGates": {
+        "verdict": "auto_approved",
         "gate1_schema": true,
-        "gate1_invariants": {
-          "ok": true,
-          "violations": []
-        },
         "gate0_computed": {
           "applied": true,
           "correctedAnswer": "sois"
         },
+        "gate3_ensemble": {
+          "agrees": true,
+          "agreement": 1
+        },
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
         "gate2_answer_key": {
           "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 1,
-          "agrees": true
-        },
-        "verdict": "auto_approved"
+        }
       },
       "reviewStatus": "auto_approved"
     },
@@ -1354,6 +1354,7 @@
         "responseType": "cloze",
         "promptFr": "Complète : Je veux qu’elle ___ le temps. (avoir, subjonctif présent) Écris seulement la forme verbale.",
         "instructionsFr": "Respecte les accents et écris uniquement la forme demandée.",
+        "correctAnswer": "ait",
         "acceptableAnswers": [],
         "validatorType": "conjugator",
         "validatorConfig": {
@@ -1362,8 +1363,7 @@
           "person": "3s"
         },
         "cefrLevel": "B1",
-        "difficulty": 50,
-        "correctAnswer": "ait"
+        "difficulty": 50
       },
       "evidenceKey": "writing-controlled-production",
       "evidenceExpectation": "controlled_production",
@@ -1371,23 +1371,23 @@
       "promptFamily": "sentence-completion",
       "difficultyTier": "core",
       "qcGates": {
+        "verdict": "auto_approved",
         "gate1_schema": true,
-        "gate1_invariants": {
-          "ok": true,
-          "violations": []
-        },
         "gate0_computed": {
           "applied": true,
           "correctedAnswer": "ait"
         },
+        "gate3_ensemble": {
+          "agrees": true,
+          "agreement": 1
+        },
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
         "gate2_answer_key": {
           "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 1,
-          "agrees": true
-        },
-        "verdict": "auto_approved"
+        }
       },
       "reviewStatus": "auto_approved"
     },
@@ -1401,6 +1401,7 @@
         "responseType": "transform",
         "promptFr": "Complète : Bien qu’il ___ froid, nous sortons. (faire, subjonctif présent) Écris seulement la forme verbale.",
         "instructionsFr": "Respecte les accents et écris uniquement la forme demandée.",
+        "correctAnswer": "fasse",
         "acceptableAnswers": [],
         "validatorType": "conjugator",
         "validatorConfig": {
@@ -1409,8 +1410,7 @@
           "person": "3s"
         },
         "cefrLevel": "B1",
-        "difficulty": 75,
-        "correctAnswer": "fasse"
+        "difficulty": 75
       },
       "evidenceKey": "writing-controlled-production",
       "evidenceExpectation": "controlled_production",
@@ -1418,23 +1418,23 @@
       "promptFamily": "sentence-transformation",
       "difficultyTier": "stretch",
       "qcGates": {
+        "verdict": "auto_approved",
         "gate1_schema": true,
-        "gate1_invariants": {
-          "ok": true,
-          "violations": []
-        },
         "gate0_computed": {
           "applied": true,
           "correctedAnswer": "fasse"
         },
+        "gate3_ensemble": {
+          "agrees": true,
+          "agreement": 1
+        },
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
         "gate2_answer_key": {
           "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 1,
-          "agrees": true
-        },
-        "verdict": "auto_approved"
+        }
       },
       "reviewStatus": "auto_approved"
     },
@@ -1448,6 +1448,7 @@
         "responseType": "short_answer",
         "promptFr": "Mets « tu parles doucement » à l’impératif. Écris seulement le verbe.",
         "instructionsFr": "Respecte les accents et écris uniquement la forme demandée.",
+        "correctAnswer": "parle",
         "acceptableAnswers": [],
         "validatorType": "conjugator",
         "validatorConfig": {
@@ -1456,8 +1457,7 @@
           "person": "2s"
         },
         "cefrLevel": "A1",
-        "difficulty": 25,
-        "correctAnswer": "parle"
+        "difficulty": 25
       },
       "evidenceKey": "writing-controlled-production",
       "evidenceExpectation": "controlled_production",
@@ -1465,23 +1465,23 @@
       "promptFamily": "controlled-form",
       "difficultyTier": "foundation",
       "qcGates": {
+        "verdict": "auto_approved",
         "gate1_schema": true,
-        "gate1_invariants": {
-          "ok": true,
-          "violations": []
-        },
         "gate0_computed": {
           "applied": true,
           "correctedAnswer": "parle"
         },
+        "gate3_ensemble": {
+          "agrees": true,
+          "agreement": 1
+        },
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
         "gate2_answer_key": {
           "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 1,
-          "agrees": true
-        },
-        "verdict": "auto_approved"
+        }
       },
       "reviewStatus": "auto_approved"
     },
@@ -1495,6 +1495,7 @@
         "responseType": "cloze",
         "promptFr": "Mets « nous finissons » à l’impératif. Écris seulement le verbe.",
         "instructionsFr": "Respecte les accents et écris uniquement la forme demandée.",
+        "correctAnswer": "finissons",
         "acceptableAnswers": [],
         "validatorType": "conjugator",
         "validatorConfig": {
@@ -1503,8 +1504,7 @@
           "person": "1p"
         },
         "cefrLevel": "A1",
-        "difficulty": 50,
-        "correctAnswer": "finissons"
+        "difficulty": 50
       },
       "evidenceKey": "writing-controlled-production",
       "evidenceExpectation": "controlled_production",
@@ -1512,23 +1512,23 @@
       "promptFamily": "sentence-completion",
       "difficultyTier": "core",
       "qcGates": {
+        "verdict": "auto_approved",
         "gate1_schema": true,
-        "gate1_invariants": {
-          "ok": true,
-          "violations": []
-        },
         "gate0_computed": {
           "applied": true,
           "correctedAnswer": "finissons"
         },
+        "gate3_ensemble": {
+          "agrees": true,
+          "agreement": 1
+        },
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
         "gate2_answer_key": {
           "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 1,
-          "agrees": true
-        },
-        "verdict": "auto_approved"
+        }
       },
       "reviewStatus": "auto_approved"
     },
@@ -1542,6 +1542,7 @@
         "responseType": "transform",
         "promptFr": "Mets « vous prenez » à l’impératif. Écris seulement le verbe.",
         "instructionsFr": "Respecte les accents et écris uniquement la forme demandée.",
+        "correctAnswer": "prenez",
         "acceptableAnswers": [],
         "validatorType": "conjugator",
         "validatorConfig": {
@@ -1550,8 +1551,7 @@
           "person": "2p"
         },
         "cefrLevel": "A1",
-        "difficulty": 75,
-        "correctAnswer": "prenez"
+        "difficulty": 75
       },
       "evidenceKey": "writing-controlled-production",
       "evidenceExpectation": "controlled_production",
@@ -1559,23 +1559,23 @@
       "promptFamily": "sentence-transformation",
       "difficultyTier": "stretch",
       "qcGates": {
+        "verdict": "auto_approved",
         "gate1_schema": true,
-        "gate1_invariants": {
-          "ok": true,
-          "violations": []
-        },
         "gate0_computed": {
           "applied": true,
           "correctedAnswer": "prenez"
         },
+        "gate3_ensemble": {
+          "agrees": true,
+          "agreement": 1
+        },
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
         "gate2_answer_key": {
           "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 1,
-          "agrees": true
-        },
-        "verdict": "auto_approved"
+        }
       },
       "reviewStatus": "auto_approved"
     },
@@ -6272,22 +6272,22 @@
       "promptFamily": "contextual-choice",
       "difficultyTier": "stretch",
       "qcGates": {
+        "verdict": "needs_human_review",
         "gate1_schema": true,
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
         "gate1_invariants": {
           "ok": true,
           "violations": []
         },
-        "gate0_computed": {
-          "applied": false
-        },
         "gate2_answer_key": {
           "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 0,
-          "agrees": false
-        },
-        "verdict": "needs_human_review"
+        }
       },
       "reviewStatus": "needs_human_review"
     },
@@ -14952,7 +14952,7 @@
         "modality": "writing",
         "learnerMode": "shared",
         "responseType": "short_answer",
-        "promptFr": "Remets dans l’ordre canonique : « le repas / prépare / Lina ».",
+        "promptFr": "Remets dans l’ordre grammatical (sujet, verbe, complément) : « le repas / prépare / Lina ».",
         "instructionsFr": "Écris une phrase complète avec la ponctuation demandée.",
         "correctAnswer": "Lina prépare le repas.",
         "acceptableAnswers": [],
@@ -14982,11 +14982,7 @@
           "ok": true
         }
       },
-      "reviewStatus": "human_approved",
-      "review": {
-        "reviewerProfileId": "74658cfd-793d-4dc6-999d-ad5c9f2d0618",
-        "reviewedAt": "2026-08-20T15:50:14.049143+00:00"
-      }
+      "reviewStatus": "needs_human_review"
     },
     {
       "itemKey": "local-grammar-v1:construction_phrase_canonique:controlled_production:core",
@@ -15539,22 +15535,22 @@
       "promptFamily": "sentence-completion",
       "difficultyTier": "foundation",
       "qcGates": {
+        "verdict": "needs_human_review",
         "gate1_schema": true,
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
         "gate1_invariants": {
           "ok": true,
           "violations": []
         },
-        "gate0_computed": {
-          "applied": false
-        },
         "gate2_answer_key": {
           "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 0,
-          "agrees": false
-        },
-        "verdict": "needs_human_review"
+        }
       },
       "reviewStatus": "needs_human_review"
     },
@@ -16681,22 +16677,22 @@
       "promptFamily": "sentence-completion",
       "difficultyTier": "foundation",
       "qcGates": {
+        "verdict": "needs_human_review",
         "gate1_schema": true,
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
         "gate1_invariants": {
           "ok": true,
           "violations": []
         },
-        "gate0_computed": {
-          "applied": false
-        },
         "gate2_answer_key": {
           "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 0,
-          "agrees": false
-        },
-        "verdict": "needs_human_review"
+        }
       },
       "reviewStatus": "needs_human_review"
     },
@@ -17592,10 +17588,12 @@
         "modality": "writing",
         "learnerMode": "shared",
         "responseType": "transform",
-        "promptFr": "Réécris avec des pronoms : « Les guides accueillent les visiteurs. Les guides accompagnent les visiteurs. »",
+        "promptFr": "Réécris la deuxième phrase avec des pronoms : « Les guides accueillent les visiteurs. Les guides accompagnent les visiteurs. »",
         "instructionsFr": "Écris une phrase complète avec la ponctuation demandée.",
-        "correctAnswer": "Les guides accueillent les visiteurs. Ils les accompagnent.",
-        "acceptableAnswers": [],
+        "correctAnswer": "Ils les accompagnent.",
+        "acceptableAnswers": [
+          "Les guides accueillent les visiteurs. Ils les accompagnent."
+        ],
         "validatorType": "exact",
         "difficulty": 75
       },
@@ -17622,11 +17620,7 @@
           "ok": true
         }
       },
-      "reviewStatus": "human_approved",
-      "review": {
-        "reviewerProfileId": "74658cfd-793d-4dc6-999d-ad5c9f2d0618",
-        "reviewedAt": "2026-08-18T07:16:09.15792+00:00"
-      }
+      "reviewStatus": "needs_human_review"
     },
     {
       "itemKey": "local-grammar-v1:construction_chaine_lexicale:receptive:foundation",
@@ -18484,7 +18478,7 @@
         "modality": "grammar_analysis",
         "learnerMode": "shared",
         "responseType": "mcq",
-        "promptFr": "Que nie la phrase « Tous les élèves ne sont pas arrivés » dans l’interprétation partielle ?",
+        "promptFr": "Dans la phrase « Tous les élèves ne sont pas arrivés », la négation sert à indiquer que…",
         "acceptableAnswers": [],
         "validatorType": "exact",
         "choices": [
@@ -18526,11 +18520,7 @@
           "ok": true
         }
       },
-      "reviewStatus": "human_approved",
-      "review": {
-        "reviewerProfileId": "74658cfd-793d-4dc6-999d-ad5c9f2d0618",
-        "reviewedAt": "2026-08-20T11:42:30.237265+00:00"
-      }
+      "reviewStatus": "needs_human_review"
     },
     {
       "itemKey": "local-grammar-v1:construction_portee_negation:receptive:core",
@@ -19461,22 +19451,22 @@
       "promptFamily": "role-analysis",
       "difficultyTier": "stretch",
       "qcGates": {
+        "verdict": "needs_human_review",
         "gate1_schema": true,
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
         "gate1_invariants": {
           "ok": true,
           "violations": []
         },
-        "gate0_computed": {
-          "applied": false
-        },
         "gate2_answer_key": {
           "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 0,
-          "agrees": false
-        },
-        "verdict": "needs_human_review"
+        }
       },
       "reviewStatus": "needs_human_review"
     },
@@ -20636,22 +20626,22 @@
       "promptFamily": "sentence-completion",
       "difficultyTier": "foundation",
       "qcGates": {
+        "verdict": "needs_human_review",
         "gate1_schema": true,
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
         "gate1_invariants": {
           "ok": true,
           "violations": []
         },
-        "gate0_computed": {
-          "applied": false
-        },
         "gate2_answer_key": {
           "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 0,
-          "agrees": false
-        },
-        "verdict": "needs_human_review"
+        }
       },
       "reviewStatus": "needs_human_review"
     },
@@ -20709,8 +20699,10 @@
         "responseType": "transform",
         "promptFr": "Relie avec « par exemple » : « Des gestes réduisent les déchets. Réutiliser un sac. »",
         "instructionsFr": "Écris une phrase complète avec la ponctuation demandée.",
-        "correctAnswer": "Des gestes réduisent les déchets par exemple réutiliser un sac.",
-        "acceptableAnswers": [],
+        "correctAnswer": "Des gestes réduisent les déchets, par exemple réutiliser un sac.",
+        "acceptableAnswers": [
+          "Des gestes réduisent les déchets par exemple réutiliser un sac."
+        ],
         "validatorType": "exact",
         "difficulty": 75
       },
@@ -20737,11 +20729,7 @@
           "ok": true
         }
       },
-      "reviewStatus": "human_approved",
-      "review": {
-        "reviewerProfileId": "74658cfd-793d-4dc6-999d-ad5c9f2d0618",
-        "reviewedAt": "2026-08-20T16:13:56.972117+00:00"
-      }
+      "reviewStatus": "needs_human_review"
     },
     {
       "itemKey": "local-grammar-v1:relation_condition:receptive:foundation",
@@ -21199,7 +21187,7 @@
         "modality": "writing",
         "learnerMode": "shared",
         "responseType": "short_answer",
-        "promptFr": "Relie avec « afin que » : « Nous parlons doucement. Le bébé puisse dormir. »",
+        "promptFr": "Relie avec « afin que » et adapte le verbe : « Nous parlons doucement. Le bébé peut dormir. »",
         "instructionsFr": "Écris une phrase complète avec la ponctuation demandée.",
         "correctAnswer": "Nous parlons doucement afin que le bébé puisse dormir.",
         "acceptableAnswers": [],
@@ -21229,11 +21217,7 @@
           "ok": true
         }
       },
-      "reviewStatus": "human_approved",
-      "review": {
-        "reviewerProfileId": "74658cfd-793d-4dc6-999d-ad5c9f2d0618",
-        "reviewedAt": "2026-08-20T11:55:26.930914+00:00"
-      }
+      "reviewStatus": "needs_human_review"
     },
     {
       "itemKey": "local-grammar-v1:relation_but:controlled_production:core",
@@ -21904,11 +21888,11 @@
             "correct": true
           },
           {
-            "text": "La caméra montre la rue entière sans entrer dans les pensées.",
+            "text": "Marie avançait dans la rue sombre et regardait souvent derrière elle.",
             "correct": false
           },
           {
-            "text": "Tous les personnages et leurs pensées sont décrits.",
+            "text": "Marie avait peur ; Paul, lui, savait déjà qu’il fuirait.",
             "correct": false
           }
         ],
@@ -21937,11 +21921,7 @@
           "ok": true
         }
       },
-      "reviewStatus": "human_approved",
-      "review": {
-        "reviewerProfileId": "74658cfd-793d-4dc6-999d-ad5c9f2d0618",
-        "reviewedAt": "2026-08-20T11:52:43.735483+00:00"
-      }
+      "reviewStatus": "needs_human_review"
     },
     {
       "itemKey": "local-grammar-v1:construction_point_de_vue_narratif:receptive:core",
@@ -22256,22 +22236,22 @@
       "promptFamily": "contrast-analysis",
       "difficultyTier": "core",
       "qcGates": {
+        "verdict": "needs_human_review",
         "gate1_schema": true,
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
         "gate1_invariants": {
           "ok": true,
           "violations": []
         },
-        "gate0_computed": {
-          "applied": false
-        },
         "gate2_answer_key": {
           "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 0,
-          "agrees": false
-        },
-        "verdict": "needs_human_review"
+        }
       },
       "reviewStatus": "needs_human_review"
     },
@@ -22391,22 +22371,22 @@
       "promptFamily": "targeted-correction",
       "difficultyTier": "core",
       "qcGates": {
+        "verdict": "needs_human_review",
         "gate1_schema": true,
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
         "gate1_invariants": {
           "ok": true,
           "violations": []
         },
-        "gate0_computed": {
-          "applied": false
-        },
         "gate2_answer_key": {
           "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 0,
-          "agrees": false
-        },
-        "verdict": "needs_human_review"
+        }
       },
       "reviewStatus": "needs_human_review"
     },
@@ -22434,22 +22414,22 @@
       "promptFamily": "sentence-transformation",
       "difficultyTier": "stretch",
       "qcGates": {
+        "verdict": "needs_human_review",
         "gate1_schema": true,
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
         "gate1_invariants": {
           "ok": true,
           "violations": []
         },
-        "gate0_computed": {
-          "applied": false
-        },
         "gate2_answer_key": {
           "ok": true
-        },
-        "gate3_ensemble": {
-          "agreement": 0,
-          "agrees": false
-        },
-        "verdict": "needs_human_review"
+        }
       },
       "reviewStatus": "needs_human_review"
     },
@@ -26130,15 +26110,15 @@
         "validatorType": "exact",
         "choices": [
           {
-            "text": "action achevée",
+            "text": "C’est une action achevée.",
             "correct": true
           },
           {
-            "text": "habitude passée",
+            "text": "C’est une habitude passée.",
             "correct": false
           },
           {
-            "text": "action future",
+            "text": "C’est une action future.",
             "correct": false
           }
         ],
@@ -26167,11 +26147,7 @@
           "ok": true
         }
       },
-      "reviewStatus": "human_approved",
-      "review": {
-        "reviewerProfileId": "b4cd70c7-55bd-45cc-ba21-b47ea038b0f6",
-        "reviewedAt": "2026-09-01T13:15:56.832353+00:00"
-      }
+      "reviewStatus": "needs_human_review"
     },
     {
       "itemKey": "local-conjugation-gap-v1:interpreter_passe_compose:receptive:core",
@@ -35088,8 +35064,10 @@
   ],
   "manifest": {
     "itemCount": 696,
-    "eligibleItemCount": 231,
-    "nodeCount": 111,
+    "eligibleItemCount": 224,
+    "pendingItemCount": 472,
+    "publicationMode": "partial",
+    "nodeCount": 109,
     "sectionReadiness": [
       {
         "key": "reading_comprehension",
@@ -35105,11 +35083,11 @@
       {
         "key": "grammar",
         "targetNodeCount": 29,
-        "nodesWithItems": 27,
-        "approvedItemCount": 55,
+        "nodesWithItems": 25,
+        "approvedItemCount": 49,
         "ready": false,
         "confirmableNodeCount": 0,
-        "productionItemCount": 25,
+        "productionItemCount": 21,
         "promptFamilyCount": 6,
         "difficultyTierCount": 3
       },
@@ -35128,7 +35106,7 @@
         "key": "conjugation",
         "targetNodeCount": 48,
         "nodesWithItems": 40,
-        "approvedItemCount": 78,
+        "approvedItemCount": 77,
         "ready": true,
         "confirmableNodeCount": 12,
         "productionItemCount": 36,
@@ -35136,6 +35114,6 @@
         "difficultyTierCount": 3
       }
     ],
-    "checksum": "sha256:9a2380913405ee4110c898767ca848ed95922ed060387c250f1c4e4fe317fd24"
+    "checksum": "sha256:f0e3ca12632efbd82d9074a65483ade9f99c81011101a5b0048cf238e96f6eec"
   }
 }

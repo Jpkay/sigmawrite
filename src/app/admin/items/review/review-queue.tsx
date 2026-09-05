@@ -6,6 +6,7 @@ import Link from "next/link";
 import { BookOpenText, Check, CheckCircle2, ChevronLeft, ChevronRight, CircleX, Languages, ListTree, Shuffle, SlidersHorizontal, SpellCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { CurriculumTags } from "@/components/curriculum-tags";
 import { Card, CardContent } from "@/components/ui/card";
 import type { CompetencyItemRow, ReviewerExerciseSectionProgress } from "@/lib/db/items";
 import { reviewCompetencyItem } from "@/lib/actions/items";
@@ -233,6 +234,7 @@ function ReviewerExercise({ item, busy, onDecide }: { item: CompetencyItemRow; b
     <header className="pb-6 pt-8">
       <div className="flex flex-wrap items-center gap-x-3 gap-y-2"><p className="font-display text-xs font-semibold uppercase tracking-[0.15em] text-primary">{section}</p>{tier && <><span className="text-border">/</span><p className="text-xs font-medium text-muted-foreground">Difficulté de l’exercice · {tier}{item.difficulty == null ? "" : ` · ${item.difficulty}/100`}</p></>}</div>
       <h2 className="mt-3 max-w-3xl font-display text-2xl font-semibold leading-tight tracking-[-0.025em] sm:text-3xl">{item.nodeLabel}</h2>
+      {item.curriculumTags && item.curriculumTags.length > 0 && <div className="mt-3"><CurriculumTags tags={item.curriculumTags} /></div>}
       <section aria-label="Repères de niveau" className="mt-5 border-y border-border">
         <div className="grid grid-cols-2">
           <div className="border-r border-border px-3 py-4 sm:px-4"><p className="text-[10px] font-semibold uppercase tracking-[0.11em] text-muted-foreground">Français langue première</p><p className="mt-1 font-display text-xl font-semibold text-foreground">{nativeGrade ?? "Non renseigné"}</p></div>
