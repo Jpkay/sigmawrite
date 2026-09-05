@@ -35,6 +35,7 @@ export async function generateWeeklyParentReports(db: SupabaseClient) {
   const end = new Date(); const start = new Date(end.getTime() - 7*86_400_000); let count = 0;
   for (const student of students ?? []) {
     const snapshot = await getStudentStateData(student.id as string, db); const report = weeklyReport(snapshot, end.getTime()); const proof = proofLayer(snapshot);
+    const weekActivity = await weeklyActivitySummary(db, student.id as string, start, end);
     const { data: guardians } = await db.from("student_guardians").select("profiles!inner(auth_user_id,preferred_language)").eq("student_id", student.id);
     for (const guardianRow of guardians ?? []) {
       const guardian = guardianRow.profiles as unknown as { auth_user_id: string; preferred_language: string };
@@ -46,14 +47,14 @@ export async function generateWeeklyParentReports(db: SupabaseClient) {
       if (previous?.delivery_status === "sent") continue;
       let stored = previous;
       if (!stored) {
-        const inserted = await db.from("parent_reports").insert({ student_id: student.id, report_period_start: periodStart, report_period_end: periodEnd, report_payload: { studentName: student.display_name ?? "Élève", report, proof }, language, recipient_email: email, delivery_status: "pending" }).select("id,delivery_status").single();
+        const inserted = await db.from("parent_reports").insert({ student_id: student.id, report_period_start: periodStart, report_period_end: periodEnd, report_payload: { studentName: student.display_name ?? "Élève", report, proof, activity: weekActivity.activity, errorTypes: weekActivity.errorTypes }, language, recipient_email: email, delivery_status: "pending" }).select("id,delivery_status").single();
         if (inserted.error || !inserted.data) {
           if (inserted.error?.code === "23505") continue;
           throw new Error(inserted.error?.message ?? "Report not stored");
         }
         stored = inserted.data;
       }
-      const base = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000"; const reportUrl = `${base}/parent/reports/${stored.id}`; const reportSummary = `${report.textsCompleted} ${language === "en" ? "texts" : "textes"} · ${report.minutes} min · ${report.avgSuccess == null ? "—" : Math.round(report.avgSuccess*100)+"%"}`; const delivery = await sendEmail({ to: email, subject: language === "en" ? `Weekly reading report — ${student.display_name ?? "student"}` : `Rapport de lecture — ${student.display_name ?? "élève"}`, html: `<h1>${language === "en" ? "Weekly progress" : "Progrès de la semaine"}</h1><p>${reportSummary}</p><p><a href="${reportUrl}">${language === "en" ? "View evidence" : "Voir les preuves"}</a></p>`, text: `${language === "en" ? "Weekly progress" : "Progrès de la semaine"}\n\n${reportSummary}\n\n${language === "en" ? "View evidence" : "Voir les preuves"}: ${reportUrl}` });
+      const base = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000"; const reportUrl = `${base}/parent/reports/${stored.id}`; const reportSummary = `${report.textsCompleted} ${language === "en" ? "texts" : "textes"} · ${report.minutes} min · ${report.avgSuccess == null ? "—" : Math.round(report.avgSuccess*100)+"%"}`; const activityLine = language === "en" ? `${weekActivity.activity.activeDays} active day(s) · ${weekActivity.activity.goalDays} daily goal(s) reached · ${weekActivity.activity.xp} XP` : `${weekActivity.activity.activeDays} jour(s) actif(s) · ${weekActivity.activity.goalDays} objectif(s) atteint(s) · ${weekActivity.activity.xp} XP`; const errorLine = weekActivity.errorTypes.length ? (language === "en" ? "Error types this week: " : "Types d’erreurs cette semaine : ") + weekActivity.errorTypes.map((entry) => `${entry.label} (${entry.count})`).join(", ") : ""; const delivery = await sendEmail({ to: email, subject: language === "en" ? `Weekly reading report — ${student.display_name ?? "student"}` : `Rapport de lecture — ${student.display_name ?? "élève"}`, html: `<h1>${language === "en" ? "Weekly progress" : "Progrès de la semaine"}</h1><p>${reportSummary}</p><p>${activityLine}</p>${errorLine ? `<p>${errorLine}</p>` : ""}<p><a href="${reportUrl}">${language === "en" ? "View evidence" : "Voir les preuves"}</a></p>`, text: `${language === "en" ? "Weekly progress" : "Progrès de la semaine"}\n\n${reportSummary}\n${activityLine}${errorLine ? `\n${errorLine}` : ""}\n\n${language === "en" ? "View evidence" : "Voir les preuves"}: ${reportUrl}` });
       const { error: deliveryError } = await db.from("parent_reports").update({ delivery_status: delivery.sent ? "sent" : "no_op" }).eq("id", stored.id); if(deliveryError)throw new Error(deliveryError.message); count += 1;
     }
   }
@@ -104,4 +105,19 @@ export async function runFrenchAutomationMonitoring(db:SupabaseClient){
   const record=async(metricKey:string,entityType:string,entityId:string,metric:{status:string;flag:string|null;[key:string]:unknown})=>{const{data:snapshot,error:snapshotError}=await db.from("empirical_metric_snapshots").insert({metric_key:metricKey,entity_type:entityType,entity_id:entityId,sample_size:Number(metric.n??0),status:metric.status,metric_payload:metric,calculation_version:"1.0.0"}).select("id").single();if(snapshotError||!snapshot)throw new Error(snapshotError?.message??"Metric snapshot missing");if(metric.status==="active"&&metric.flag){const{data:event,error:eventError}=await db.from("empirical_review_events").insert({metric_snapshot_id:snapshot.id,event_type:metric.flag==="no_predictive_lift"?"no_lift":"empirical_anomaly",reason_key:metric.flag,explanation:metric}).select("id").single();if(eventError||!event)throw new Error(eventError?.message??"Review event missing");const selection=selectSparseReview({candidateId:entityId,riskClass:"low",riskDecision:"pass",anomalyReasonKeys:[metric.flag],qaDisagreement:false,benchmarkFailed:false,pipelineVersion:"monitoring-1.0.0"},{lowRiskSamplePercent:Number(policy.low_risk_sample_percent),mediumRiskSamplePercent:Number(policy.medium_risk_sample_percent),alwaysReviewHighRisk:!!policy.always_review_high_risk,pipelineVersions:[]});await db.from("sparse_review_cases").insert({subject_type:entityType,subject_id:entityId,policy_id:policy.id,source_empirical_event_id:event.id,primary_reason:"empirical_anomaly",reason_keys:selection.reasons,selection_explanation:selection.explanation,queue_key:"empirical_anomaly",pipeline_version:"monitoring-1.0.0"});}processed++;};
   const byItem=new Map<string,typeof rows>();for(const row of rows){const id=row.item_id as string,list=byItem.get(id)??[];list.push(row);byItem.set(id,list);}for(const[id,itemRows]of byItem){const metric=questionQuality(itemRows.map(row=>({correct:!!row.is_correct,ability:ability.get(row.student_id as string)??0})));await record("question_quality","competency_item",id,metric);}
   for(const edge of edges??[]){const targetRows=rows.filter(row=>row.node_id===edge.target_node_id),metric=edgePredictiveLift(targetRows.map(row=>({prerequisiteMastered:(mastery.get(`${row.student_id}:${edge.source_node_id}`)??0)>=.85,targetSuccess:!!row.is_correct})));await record("edge_predictive_lift","competency_edge",edge.id as string,metric);}return processed;
+}
+
+const ERROR_TYPE_LABELS: Record<string, string> = { phonogrammique: "Son et graphie", morphogrammique_grammaticale: "Accords et terminaisons", morphogrammique_lexicale: "Lettres muettes", logogrammique: "Homophones", ideogrammique: "Majuscules et ponctuation", extragraphique: "Mots oubliés" };
+
+/** Time on task, goal days and dictée error types for the parent email (roadmap 7.4). */
+export async function weeklyActivitySummary(db: SupabaseClient, studentId: string, start: Date, end: Date) {
+  const [{ data: days }, { data: attempts }] = await Promise.all([
+    db.from("student_daily_activity").select("xp_earned,goal_completed").eq("student_id", studentId).gte("activity_date", start.toISOString().slice(0, 10)).lte("activity_date", end.toISOString().slice(0, 10)),
+    db.from("dictation_attempts").select("error_profile").eq("student_id", studentId).gte("submitted_at", start.toISOString()).lte("submitted_at", end.toISOString()),
+  ]);
+  const activity = { activeDays: (days ?? []).filter((row) => Number(row.xp_earned ?? 0) > 0).length, goalDays: (days ?? []).filter((row) => row.goal_completed).length, xp: (days ?? []).reduce((total, row) => total + Number(row.xp_earned ?? 0), 0) };
+  const counts = new Map<string, number>();
+  for (const attempt of attempts ?? []) for (const [category, count] of Object.entries((attempt.error_profile ?? {}) as Record<string, number>)) counts.set(category, (counts.get(category) ?? 0) + Number(count));
+  const errorTypes = [...counts.entries()].filter(([, count]) => count > 0).sort((a, b) => b[1] - a[1]).map(([category, count]) => ({ category, label: ERROR_TYPE_LABELS[category] ?? category, count }));
+  return { activity, errorTypes };
 }

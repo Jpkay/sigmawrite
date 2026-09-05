@@ -5,12 +5,13 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2, PenLine } from "lucide-react";
 import { AccentTextarea } from "@/components/accent-textarea";
 import { Button, buttonVariants } from "@/components/ui/button";
-import { submitIndependentProduction } from "@/lib/actions/student";
+import { loadIndependentProductionTask, submitIndependentProduction } from "@/lib/actions/student";
 
 type Task = Awaited<ReturnType<typeof import("@/lib/actions/student").loadIndependentProductionTask>>;
 type Result = Awaited<ReturnType<typeof submitIndependentProduction>>;
 
-export function IndependentProductionPlayer({ task }: { task: Task }) {
+export function IndependentProductionPlayer({ task: initialTask }: { task: Task }) {
+  const [task, setTask] = useState(initialTask);
   const [text, setText] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
@@ -21,7 +22,7 @@ export function IndependentProductionPlayer({ task }: { task: Task }) {
   async function submit() {
     setBusy(true); setError("");
     try {
-      setResult(await submitIndependentProduction({ nodeId: task.nodeId, text }));
+      setResult(await submitIndependentProduction({ nodeId: task.nodeId, text, genre: task.genre }));
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Le texte n’a pas pu être évalué.");
     } finally {
@@ -36,6 +37,7 @@ export function IndependentProductionPlayer({ task }: { task: Task }) {
       <h1 className="mt-2 text-3xl font-semibold tracking-tight">{result.demonstrated ? "Preuve autonome réussie" : "Encore un ajustement"}</h1>
       <p className="mx-auto mt-4 max-w-lg text-sm leading-6 text-muted-foreground">{result.feedback}</p>
       {result.matchedForms.length > 0 && <p className="mt-4 text-sm">Formes repérées : <span className="font-medium">{result.matchedForms.join(", ")}</span></p>}
+      {result.rubric && <div className="mx-auto mt-6 max-w-lg rounded-lg border border-border bg-card p-4 text-left"><div className="flex items-baseline justify-between"><p className="text-xs font-semibold uppercase tracking-[.14em] text-muted-foreground">Rubrique</p><p className="font-display text-2xl font-bold tabular-nums">{result.rubric.score}<span className="text-sm text-muted-foreground"> / 100</span></p></div>{(result.rubric.content != null || result.rubric.structure != null || result.rubric.language != null) && <dl className="mt-2 grid grid-cols-3 gap-2 text-sm">{[["Contenu", result.rubric.content], ["Structure", result.rubric.structure], ["Langue", result.rubric.language]].map(([label, value]) => <div key={String(label)} className="rounded-md border border-border p-2"><dt className="text-muted-foreground">{label}</dt><dd className="font-semibold tabular-nums">{value == null ? "—" : `${value}/100`}</dd></div>)}</dl>}<p className="mt-3 text-sm leading-6"><span className="font-medium">Ta priorité :</span> {result.rubric.priorityFr}</p>{result.rubric.source === "deterministic" && <p className="mt-1 text-xs text-muted-foreground">Rubrique calculée sans modèle.</p>}</div>}
       <div className="mt-7 flex flex-wrap justify-center gap-3">
         {!result.demonstrated && <Button onClick={() => { setResult(null); setText(""); }}>Écrire un nouveau texte</Button>}
         <Link href="/student" className={buttonVariants({ variant: result.demonstrated ? "default" : "outline" })}>Retour au programme <ArrowRight /></Link>
@@ -50,6 +52,7 @@ export function IndependentProductionPlayer({ task }: { task: Task }) {
       {task.description && <p className="mt-3 max-w-2xl text-muted-foreground">{task.description}</p>}
     </header>
     <div className="py-7 sm:py-10">
+      {task.genres.length > 1 && <div role="radiogroup" aria-label="Genre du texte" className="mb-5 flex flex-wrap gap-2">{task.genres.map((genre) => <button key={genre.key} type="button" role="radio" aria-checked={task.genre === genre.key} disabled={busy} onClick={() => { void loadIndependentProductionTask({ nodeId: task.nodeId, genre: genre.key }).then((next) => { setTask(next); setResult(null); }).catch(() => undefined); }} className={`rounded-full border px-3 py-1.5 text-sm ${task.genre === genre.key ? "border-primary bg-primary/10 text-primary" : "border-border hover:border-primary/50"}`}>{genre.label}</button>)}</div>}
       <div className="border-l-2 border-primary pl-4">
         <p className="font-medium leading-7">{task.prompt}</p>
         <p className="mt-2 text-sm text-muted-foreground">Deux textes réussis à des moments différents sont nécessaires pour confirmer la maîtrise.</p>

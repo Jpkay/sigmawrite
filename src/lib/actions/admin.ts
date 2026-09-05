@@ -6,11 +6,12 @@ import { requireRole } from "@/lib/auth";
 import { logAudit } from "@/lib/audit";
 import { runGenerationPipeline } from "@/lib/ai/pipeline";
 import { getAIEmbeddingInfo, getAIProvider, getAIProviderInfo } from "@/lib/ai";
-import { generateTextInputSchema } from "@/lib/ai/schemas";
+import { generateTextRequestSchema } from "@/lib/ai/schemas";
 import { contentSlug, rescoreCandidateBody } from "@/lib/content/workflow";
 import { getContentCandidate } from "@/lib/db/content";
 import { getActivePrompt } from "@/lib/db/ai";
 import { createClient, createServiceClient } from "@/lib/supabase/server";
+import { getPublishedKnowledgePackets } from "@/lib/db/knowledge";
 
 const idInput = z.object({ id: z.string().uuid() });
 const reviewInput = z.object({
@@ -37,9 +38,14 @@ function refreshContent() {
 
 export async function generateTextCandidate(input: unknown) {
   await requireRole(["platform_admin"]);
-  const data = checked(generateTextInputSchema, input);
+  const data = checked(generateTextRequestSchema, input);
   const supabase = await createClient();
   const prompt = await getActivePrompt("text_generation", supabase);
+  const groundingPackets = await getPublishedKnowledgePackets({
+    interestKey: data.primaryInterest,
+    conceptTerms: data.targetConcepts,
+  }, supabase);
+  const groundedInput = { ...data, groundingPackets };
   const providerInfo = getAIProviderInfo();
   const startedAt = Date.now();
   const { data: job, error: jobError } = await supabase.from("ai_generation_jobs").insert({
@@ -47,6 +53,7 @@ export async function generateTextCandidate(input: unknown) {
     status: "running",
     input_payload: {
       request: data,
+      groundingPacketIds: groundingPackets.map((packet) => packet.packetVersionId),
       prompt: { key: prompt.promptKey, version: prompt.versionNumber },
       provider: providerInfo.provider,
       model: providerInfo.model,
@@ -58,7 +65,7 @@ export async function generateTextCandidate(input: unknown) {
   }).select("id").single();
   if (jobError || !job) throw new Error(jobError?.message ?? "Tâche de génération non créée.");
   try {
-    let candidate = await runGenerationPipeline(data, { systemPrompt: prompt.promptText });
+    let candidate = await runGenerationPipeline(groundedInput, { systemPrompt: prompt.promptText });
     try {
       const embedding = await getAIProvider().embed({ text: `${candidate.generated.title}\n\n${candidate.generated.body}` });
       const { data: matches } = await supabase.rpc("match_text_versions", { p_embedding: `[${embedding.join(",")}]`, p_threshold: 0.92, p_limit: 3 });
@@ -322,6 +329,38 @@ export async function approveTextVersion(input: unknown) {
     if (nodeLinks.length) {
       const { error: nodeLinkError } = await supabase.from("text_version_nodes").insert(nodeLinks.map((node) => ({ text_version_id: version.id, node_id: node.id, source: "human_confirmed", confidence: 1, confirmed_by: reviewer.id })));
       if (nodeLinkError) throw new Error(nodeLinkError.message);
+    }
+
+    const citedPacketIds = new Set(candidate.generated.factualClaims
+      .flatMap((claim) => claim.sourcePacketIds ?? []));
+    const groundedConceptIds = new Set((candidate.input.groundingPackets ?? [])
+      .filter((packet) => citedPacketIds.has(packet.packetVersionId))
+      .map((packet) => packet.conceptId));
+    const { data: interestConcepts, error: interestConceptError } = await supabase.from("interest_concepts")
+      .select("concept_id,relevance")
+      .eq("interest_key", candidate.input.primaryInterest);
+    if (interestConceptError) throw new Error(interestConceptError.message);
+    const conceptLinks = [
+      ...[...groundedConceptIds].map((conceptId) => ({
+        text_version_id: version.id,
+        concept_id: conceptId,
+        source: "packet_grounding",
+        confidence: 1,
+        confirmed_by: reviewer.id,
+      })),
+      ...(interestConcepts ?? [])
+        .filter((row) => !groundedConceptIds.has(row.concept_id as string))
+        .map((row) => ({
+          text_version_id: version.id,
+          concept_id: row.concept_id,
+          source: "interest_backfill",
+          confidence: Number(row.relevance),
+          confirmed_by: reviewer.id,
+        })),
+    ];
+    if (conceptLinks.length) {
+      const { error: conceptLinkError } = await supabase.from("text_version_concepts").insert(conceptLinks);
+      if (conceptLinkError) throw new Error(conceptLinkError.message);
     }
 
     for (const vocabulary of generated.targetVocabulary) {

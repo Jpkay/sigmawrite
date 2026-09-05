@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { ArrowRight, BookOpen, Flame, Sparkles, Target } from "lucide-react";
+import { ArrowRight, BookOpen, Flame, Snowflake, Sparkles, Target } from "lucide-react";
 import { PageHeader } from "@/components/page";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -11,7 +11,8 @@ import { SEED_TEXT_BY_ID } from "@/lib/content/texts";
 import { recommendTextId } from "@/lib/content/recommend";
 import type { SeedText } from "@/lib/content/types";
 import { hasStudentBackend, useStudentState } from "@/lib/student-store";
-import { loadDiagnosticRequirement, loadLatestReadingResume, loadStudentCatchUpPlan, loadStudentMotivation, loadStudentSessionPlan, recommendReadingText, recommendReadingTexts, type SessionPlanEntry } from "@/lib/actions/student";
+import { loadStudentHome, markBadgesSeen, type SessionPlanEntry, type StudentMotivation } from "@/lib/actions/student";
+import { BadgeShelf, ClassGoalCard, WeekStrip, WeeklyRecapCard, type WeeklyRecap } from "@/components/motivation";
 import { StudentAssignments } from "@/components/student-assignments";
 import { track } from "@/lib/analytics";
 import { difficultyBandLabel } from "@/lib/scoring/band";
@@ -22,7 +23,9 @@ export default function StudentHome() {
   const [recommended, setRecommended] = useState<SeedText>(fallback);
   const [recommendations, setRecommendations] = useState<SeedText[]>([fallback]);
   const [plan, setPlan] = useState<SessionPlanEntry[]>([]);
-  const [motivation,setMotivation]=useState<{streak:number;today:unknown;week:unknown[];totalXp:number}|null>(null);
+  const [motivation,setMotivation]=useState<StudentMotivation|null>(null);
+  const [recap,setRecap]=useState<WeeklyRecap|null>(null);
+  const [classGoal,setClassGoal]=useState<{className:string;targetXp:number;earnedXp:number;activeMembers:number;members:number}|null>(null);
   const [resume,setResume]=useState<{textKey:string;title:string;phase:string}|null>(null);
   const [assessment,setAssessment]=useState<{required:boolean;kind:string;reason:string}|null>(null);
 
@@ -30,24 +33,16 @@ export default function StudentHome() {
     const local = SEED_TEXT_BY_ID[recommendTextId(state.interests)];
     if (!hasStudentBackend || !state.hydrated || !state.diagnostic) return;
     let active = true;
-    recommendReadingText({})
-      .then((text) => { if (active) setRecommended(text); })
-      .catch(() => { if (active) setRecommended(local); });
-    recommendReadingTexts({}).then((texts) => { if (active && texts.length) setRecommendations(texts); }).catch(() => undefined);
-    loadStudentSessionPlan({})
-      .then((entries) => { if (active) setPlan(entries.slice(0, 6)); })
-      .catch(() => {
-        // Fallback: raw path steps if the scheduler is unavailable.
-        loadStudentCatchUpPlan({}).then((steps) => {
-          if (active) setPlan(steps.slice(0, 3).map((step) => ({
-            type: "practice", role: "new", nodeId: step.nodeId, label: step.label,
-            mastery: step.mastery, estimatedMinutes: 7, href: `/student/practice/${step.nodeId}`,
-          })));
-        }).catch(() => undefined);
-      });
-    loadStudentMotivation({}).then(value=>{if(active)setMotivation(value);}).catch(()=>undefined);
-    loadLatestReadingResume({}).then(value=>{if(active)setResume(value);}).catch(()=>undefined);
-    loadDiagnosticRequirement({}).then(value=>{if(active)setAssessment(value);}).catch(()=>undefined);
+    loadStudentHome({}).then((home) => {
+      if (!active) return;
+      if (home.texts?.length) { setRecommended(home.texts[0]); setRecommendations(home.texts); } else setRecommended(local);
+      if (home.plan) setPlan(home.plan.slice(0, 6));
+      else if (home.fallbackPlan) setPlan(home.fallbackPlan.slice(0, 3).map((step) => ({
+        type: "practice", role: "new", nodeId: step.nodeId, label: step.label,
+        mastery: step.mastery, estimatedMinutes: 7, href: `/student/practice/${step.nodeId}`,
+      })));
+      setMotivation(home.motivation); setResume(home.resume); setAssessment(home.assessment); setRecap(home.recap); setClassGoal(home.classGoal);
+    }).catch(() => { if (active) setRecommended(local); });
     return () => { active = false; };
   }, [state.hydrated, state.diagnostic, state.interests]);
 
@@ -121,7 +116,7 @@ export default function StudentHome() {
         eyebrow="Ton espace de lecture"
         title="Bonjour 👋"
         description="Ta prochaine étape est prête. Avance à ton rythme, une lecture après l’autre."
-        action={<div className="flex items-center gap-3 rounded-full bg-secondary/15 px-4 py-2 font-display text-sm font-semibold text-secondary"><span className="inline-flex items-center gap-1.5"><Flame className="size-4" />{motivation?.streak ?? 0} jour(s)</span><span className="text-foreground">{motivation?.totalXp ?? 0} XP</span></div>}
+        action={<div className="flex items-center gap-3 rounded-full bg-secondary/15 px-4 py-2 font-display text-sm font-semibold text-secondary"><span className="inline-flex items-center gap-1.5"><Flame className="size-4" />{motivation?.streak ?? 0} jour(s)</span>{(motivation?.freezesAvailable ?? 0) > 0 && <span className="inline-flex items-center gap-1 text-secondary" title="Gel de série disponible"><Snowflake className="size-4" />{motivation?.freezesAvailable}</span>}<span className="text-foreground">{motivation?.totalXp ?? 0} XP</span></div>}
       />
 
       <StudentAssignments />
@@ -132,17 +127,19 @@ export default function StudentHome() {
         <div className="relative p-7 sm:p-9">
           <div className="absolute right-0 top-0 size-48 bg-[radial-gradient(circle,rgba(255,63,142,.16),transparent_68%)]" />
           <p className="relative font-display text-xs font-semibold uppercase tracking-[0.16em] text-primary">Mission du jour</p>
-          <h2 className="relative mt-3 max-w-xl font-display text-3xl font-semibold leading-tight tracking-[-0.035em]">{resume ? "Continue là où tu t’es arrêté." : motivation?.today ? "Mission accomplie. Bien joué !" : "Une étape suffit pour avancer."}</h2>
+          <h2 className="relative mt-3 max-w-xl font-display text-3xl font-semibold leading-tight tracking-[-0.035em]">{resume ? "Continue là où tu t’es arrêté." : motivation?.goalCompleted ? "Objectif du jour atteint. Bien joué !" : "Une étape suffit pour avancer."}</h2>
           <p className="relative mt-3 max-w-lg text-[15px] leading-6 text-muted-foreground">{resume ? resume.title : "Lis un texte ou entraîne une compétence. Ton parcours s’ajuste après chaque réponse."}</p>
           <div className="relative mt-7">{resume ? <Link href={`/student/read/${resume.textKey}`} className={buttonVariants({size:"lg"})}>Reprendre la lecture <ArrowRight /></Link> : <Link href={`/student/read/${displayedRecommendation.id}`} className={buttonVariants({size:"lg"})}>Commencer aujourd’hui <ArrowRight /></Link>}</div>
         </div>
         <div className="grid grid-cols-2 border-t border-border bg-muted/35 lg:grid-cols-1 lg:border-l lg:border-t-0">
-          <div className="flex flex-col justify-center p-6 sm:p-7"><Target className="mb-3 size-5 text-success" /><p className="font-display text-2xl font-bold">{motivation?.today ? "Fait" : "1 étape"}</p><p className="mt-1 text-xs text-muted-foreground">Objectif quotidien</p></div>
+          <div className="flex flex-col justify-center p-6 sm:p-7"><Target className="mb-3 size-5 text-success" /><p className="font-display text-2xl font-bold tabular-nums">{Math.min(motivation?.todayXp ?? 0, motivation?.goalXp ?? 10)}<span className="text-base font-semibold text-muted-foreground"> / {motivation?.goalXp ?? 10} XP</span></p><div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-border" role="progressbar" aria-valuemin={0} aria-valuemax={motivation?.goalXp ?? 10} aria-valuenow={Math.min(motivation?.todayXp ?? 0, motivation?.goalXp ?? 10)} aria-label="Objectif quotidien"><div className="h-full rounded-full bg-success transition-[width]" style={{width:`${Math.min(100,Math.round(((motivation?.todayXp ?? 0)/(motivation?.goalXp ?? 10))*100))}%`}} /></div><p className="mt-1 text-xs text-muted-foreground">Objectif quotidien · <Link href="/student/settings" className="underline-offset-2 hover:underline">modifier</Link></p></div>
           <div className="flex flex-col justify-center border-l border-border p-6 sm:p-7 lg:border-l-0 lg:border-t"><BookOpen className="mb-3 size-5 text-secondary" /><p className="font-display text-2xl font-bold">{completed}</p><p className="mt-1 text-xs text-muted-foreground">Textes terminés</p></div>
         </div>
       </section>
 
-      {plan.length > 0 && <section className="mb-10"><div className="mb-4 flex items-end justify-between"><div><p className="font-display text-xs font-semibold uppercase tracking-[0.16em] text-success">Plan du jour</p><h2 className="mt-1 text-xl font-semibold">Révisions et nouvelles étapes, dans le bon ordre</h2></div><span className="text-sm text-muted-foreground">{plan.length} activité(s) · environ {planMinutes} min</span></div><div className="border-y border-border">{plan.map((entry, index) => {const isReview=entry.role==="review";const isCompression=entry.role==="compression";return <div key={entry.cardId ?? entry.nodeId ?? index} className="group grid gap-4 border-b border-border py-4 last:border-0 sm:grid-cols-[3rem_1fr_auto] sm:items-center"><span className={`grid size-10 place-items-center rounded-full border-2 font-display text-sm font-bold ${isReview?"border-secondary bg-secondary/15 text-secondary":"border-primary bg-primary text-primary-foreground"}`}>{index + 1}</span><div><p className="font-semibold">{entry.label}</p>{entry.mastery != null && <div className="mt-2 h-1.5 max-w-sm overflow-hidden rounded-full bg-rail"><div className="h-full rounded-full bg-success" style={{width:`${Math.round(entry.mastery*100)}%`}} /></div>}<p className="mt-1.5 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">{isReview?`Révision · ${entry.estimatedMinutes} min`:isCompression?`Réactive plusieurs notions · ${entry.estimatedMinutes} min`:entry.mastery!=null?`Nouvelle étape · ${entry.estimatedMinutes} min · maîtrise ${Math.round(entry.mastery*100)}%`:`Nouvelle étape · ${entry.estimatedMinutes} min`}</p></div><Link href={entry.href} className={buttonVariants({variant:index===0?"default":"outline",size:"sm"})}>{entry.type==="review_card"?"Mémoire":entry.type==="production"?"Écrire":isReview?"Réviser":"S’entraîner"} <ArrowRight /></Link></div>})}</div></section>}
+      {motivation && <section className="mb-8 grid gap-4 lg:grid-cols-[1fr_20rem]"><WeekStrip week={motivation.week} goalXp={motivation.goalXp} freezeAppliedFor={motivation.freezeAppliedFor} /><div className="grid gap-4">{classGoal && <ClassGoalCard goal={classGoal} />}{recap && <WeeklyRecapCard recap={recap} />}<BadgeShelf badges={motivation.badges} onSeen={() => { setMotivation((current) => current ? { ...current, badges: current.badges.map((badge) => ({ ...badge, isNew: false })) } : current); void markBadgesSeen({}).catch(() => undefined); }} /></div></section>}
+
+      {plan.length > 0 && <section className="mb-10"><div className="mb-4 flex items-end justify-between"><div><p className="font-display text-xs font-semibold uppercase tracking-[0.16em] text-success">Plan du jour</p><h2 className="mt-1 text-xl font-semibold">Révisions et nouvelles étapes, dans le bon ordre</h2></div><span className="text-sm text-muted-foreground">{plan.length} activité(s) · environ {planMinutes} min</span></div><div className="border-y border-border">{plan.map((entry, index) => {const isReview=entry.role==="review";const isCompression=entry.role==="compression";return <div key={entry.cardId ?? entry.nodeId ?? index} className="group grid gap-4 border-b border-border py-4 last:border-0 sm:grid-cols-[3rem_1fr_auto] sm:items-center"><span className={`grid size-10 place-items-center rounded-full border-2 font-display text-sm font-bold ${isReview?"border-secondary bg-secondary/15 text-secondary":"border-primary bg-primary text-primary-foreground"}`}>{index + 1}</span><div><p className="font-semibold">{entry.label}</p>{entry.mastery != null && <div className="mt-2 h-1.5 max-w-sm overflow-hidden rounded-full bg-rail"><div className="h-full rounded-full bg-success" style={{width:`${Math.round(entry.mastery*100)}%`}} /></div>}<p className="mt-1.5 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">{isReview?`Révision · ${entry.estimatedMinutes} min`:isCompression?`Réactive plusieurs notions · ${entry.estimatedMinutes} min`:entry.mastery!=null?`Nouvelle étape · ${entry.estimatedMinutes} min · maîtrise ${Math.round(entry.mastery*100)}%`:`Nouvelle étape · ${entry.estimatedMinutes} min`}</p></div><Link href={entry.href} className={buttonVariants({variant:index===0?"default":"outline",size:"sm"})}>{entry.type==="review_card"?"Mémoire":entry.type==="dictation"?"Dictée":entry.type==="production"?"Écrire":isReview?"Réviser":"S’entraîner"} <ArrowRight /></Link></div>})}</div></section>}
 
       <section className="mb-10"><div className="mb-5 flex items-center gap-3"><Sparkles className="size-5 text-primary"/><h2 className="text-xl font-semibold">Choisis ta prochaine lecture</h2></div><div className="grid gap-4 lg:grid-cols-3">{displayedRecommendations.map((text, index) => <article key={text.id} className={`group flex min-h-64 flex-col justify-between rounded-lg border p-6 transition-all hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(60,50,30,.08)] ${index === 0 ? "border-primary/40 bg-accent" : "border-border bg-card"}`}><div><p className={`font-display text-[11px] font-semibold uppercase tracking-[.14em] ${index===0?"text-primary":"text-muted-foreground"}`}>{index === 0 ? "Recommandée pour toi" : "Autre piste"}</p><h3 className="mt-4 text-xl font-semibold leading-snug">{text.title}</h3><div className="mt-4 flex flex-wrap gap-2"><Badge>{difficultyBandLabel(text.difficultyBand)}</Badge>{text.concepts.slice(0,2).map((concept) => <Badge key={concept} variant="secondary">{concept}</Badge>)}</div></div><Link href={`/student/read/${text.id}`} onClick={() => { if (completed === 0) track("first_session_started", { text_id: text.id }); if (index > 0) track("topic_reselected", { text_id: text.id, interest: text.primaryInterest }); }} className="mt-8 flex items-center justify-between border-t border-current/10 pt-4 font-display text-sm font-bold text-foreground hover:text-primary">Choisir ce texte <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" /></Link></article>)}</div></section>
 

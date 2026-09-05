@@ -383,7 +383,7 @@ select is(
   (public.diagnostic_bank_readiness(
     pg_temp.publication_uuid(20),pg_temp.publication_uuid(32)
   )->>'ready')::boolean,false,
-  'One unreviewed extra membership makes the entire bank unready'
+  'One pending membership leaves the bank unready while the partial floors are unmet'
 );
 
 select throws_ok(
@@ -399,8 +399,8 @@ select throws_ok(
       status='published',published_at=now(),
       published_by=(select id from public.profiles where auth_user_id='66000000-0000-4000-8000-000000000001')
     where id=pg_temp.publication_uuid(32)$$,
-  'diagnostic_bank_contains_unapproved_items',
-  'A privileged direct update cannot publish an unreviewed membership'
+  'diagnostic_bank_not_ready',
+  'A pending membership no longer blocks by itself (partial publication, 0124); the bank still fails the section floors'
 );
 select throws_ok(
   $$update public.diagnostic_item_bank_releases set

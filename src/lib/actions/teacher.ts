@@ -4,7 +4,8 @@ import { revalidatePath } from "next/cache";
 import { randomBytes } from "node:crypto";
 import { z } from "zod";
 import { requireRole } from "@/lib/auth";
-import { createClient } from "@/lib/supabase/server";
+import { createClient, createServiceClient } from "@/lib/supabase/server";
+import { moderateStudentText } from "@/lib/safety/moderate-input";
 import { logAudit } from "@/lib/audit";
 import { trackServer } from "@/lib/analytics-server";
 
@@ -69,7 +70,7 @@ export async function inviteStudents(input: unknown) {
 }
 
 /** Assigns a reading to a class (PRD §N). RLS enforces the teacher owns the class. */
-const assignmentSchema = z.object({ classId: z.string().uuid(), targetType: z.enum(["text","competency_node","catch_up_step"]).default("text"), textSlug: z.string().min(1).max(150).optional(), targetNodeId: z.string().uuid().optional(), title: z.string().trim().min(1).max(200), instructions: z.string().trim().max(1000).optional(), dueAt: z.string().date().optional().or(z.literal("")) }).refine((value) => value.targetType === "text" ? !!value.textSlug : !!value.targetNodeId, "Cible requise");
+const assignmentSchema = z.object({ classId: z.string().uuid(), targetType: z.enum(["text","competency_node","catch_up_step","dictation"]).default("text"), textSlug: z.string().min(1).max(150).optional(), targetNodeId: z.string().uuid().optional(), targetDictationId: z.string().uuid().optional(), title: z.string().trim().min(1).max(200), instructions: z.string().trim().max(1000).optional(), dueAt: z.string().date().optional().or(z.literal("")) }).refine((value) => value.targetType === "text" ? !!value.textSlug : value.targetType === "dictation" ? !!value.targetDictationId : !!value.targetNodeId, "Cible requise");
 
 export async function createAssignment(input: unknown) {
   const session = await requireRole(["teacher"]);
@@ -78,7 +79,7 @@ export async function createAssignment(input: unknown) {
   const { error } = await supabase.from("assignments").insert({
     class_id: data.classId,
     teacher_profile_id: session.id,
-    target_type: data.targetType, text_slug: data.textSlug ?? null, target_node_id: data.targetNodeId ?? null,
+    target_type: data.targetType, text_slug: data.textSlug ?? null, target_node_id: data.targetNodeId ?? null, target_dictation_id: data.targetDictationId ?? null,
     title: data.title, instructions: data.instructions || null, due_at: data.dueAt || null,
   });
   if (error) throw new Error(error.message);
@@ -107,4 +108,141 @@ export async function setClassEnrollment(input: unknown) {
   await requireRole(["teacher"]); const parsed = enrollmentSchema.safeParse(input); if (!parsed.success) throw new Error("Élève invalide.");
   const supabase = await createClient(); const { error } = await supabase.rpc("set_class_enrollment", { p_class_id: parsed.data.classId, p_student_id: parsed.data.studentId, p_status: parsed.data.status }); if (error) throw new Error(error.message);
   await logAudit("class.enrollment_changed", { targetType: "class", targetId: parsed.data.classId, metadata: { studentId: parsed.data.studentId, status: parsed.data.status } }); revalidatePath(`/teacher/classes/${parsed.data.classId}`); return { ok: true };
+}
+
+// ---------------------------------------------------------------------------
+// Teacher comments on student writing (roadmap 5.4)
+// ---------------------------------------------------------------------------
+
+const teacherCommentSchema = z.object({
+  studentId: z.string().uuid(),
+  targetType: z.enum(["summary", "production", "dictation", "general"]),
+  targetId: z.string().uuid().optional(),
+  body: z.string().trim().min(1).max(1000),
+});
+
+export type StudentWritingSample = { kind: "summary" | "production" | "dictation"; id: string; at: string; title: string; excerpt: string; score: string | null };
+
+/** Recent writing by one student for the teacher's comment panel. RLS scopes the reads. */
+export async function loadStudentWritingSamples(studentId: string): Promise<StudentWritingSample[]> {
+  await requireRole(["teacher"]);
+  const supabase = await createClient();
+  const [{ data: productions }, { data: evaluations }, { data: dictations }] = await Promise.all([
+    supabase.from("independent_production_submissions").select("id,content,submitted_at,demonstrated,competency_nodes!inner(label_fr)").eq("student_id", studentId).order("submitted_at", { ascending: false }).limit(5),
+    supabase.from("writing_evaluations").select("id,submitted_text,revision_number,rubric,created_at").eq("student_id", studentId).order("created_at", { ascending: false }).limit(5),
+    supabase.from("dictation_attempts").select("id,score,submitted_at,dictations!inner(title_fr)").eq("student_id", studentId).not("submitted_at", "is", null).order("submitted_at", { ascending: false }).limit(5),
+  ]);
+  const excerpt = (text: string) => (text.length > 220 ? `${text.slice(0, 220)}…` : text);
+  const samples: StudentWritingSample[] = [
+    ...(productions ?? []).map((row) => ({ kind: "production" as const, id: row.id as string, at: row.submitted_at as string, title: `Production : ${(row.competency_nodes as unknown as { label_fr: string }).label_fr}`, excerpt: excerpt(row.content as string), score: row.demonstrated ? "Maîtrise démontrée" : "À retravailler" })),
+    ...(evaluations ?? []).map((row) => ({ kind: "summary" as const, id: row.id as string, at: row.created_at as string, title: `Résumé (révision ${row.revision_number})`, excerpt: excerpt(row.submitted_text as string), score: (row.rubric as { score?: number } | null)?.score != null ? `${(row.rubric as { score: number }).score}/100` : null })),
+    ...(dictations ?? []).map((row) => ({ kind: "dictation" as const, id: row.id as string, at: row.submitted_at as string, title: `Dictée : ${(row.dictations as unknown as { title_fr: string }).title_fr}`, excerpt: "", score: row.score == null ? null : `${Number(row.score)}/10` })),
+  ];
+  return samples.sort((a, b) => Date.parse(b.at) - Date.parse(a.at)).slice(0, 8);
+}
+
+export async function loadTeacherComments(studentId: string) {
+  await requireRole(["teacher"]);
+  const supabase = await createClient();
+  const { data, error } = await supabase.from("teacher_comments").select("id,target_type,target_id,body_fr,created_at,read_at").eq("student_id", studentId).order("created_at", { ascending: false }).limit(20);
+  if (error) throw new Error(error.message);
+  return (data ?? []).map((row) => ({ id: row.id as string, targetType: row.target_type as string, targetId: row.target_id as string | null, body: row.body_fr as string, createdAt: row.created_at as string, readAt: row.read_at as string | null }));
+}
+
+/** Posts a short comment, moderated and audited, and drops it into the student's inbox. */
+export async function postTeacherComment(input: unknown) {
+  const session = await requireRole(["teacher"]);
+  const data = teacherCommentSchema.parse(input);
+  const supabase = await createClient();
+  const { data: allowed } = await supabase.rpc("teaches_student", { p_student_id: data.studentId });
+  if (!allowed) throw new Error("Cet élève n’est pas dans vos classes.");
+  const moderation = await moderateStudentText(data.body);
+  if (!moderation.allowed) throw new Error("Ce commentaire ne peut pas être envoyé tel quel.");
+  const service = createServiceClient();
+  const { data: comment, error } = await service.from("teacher_comments").insert({ student_id: data.studentId, teacher_profile_id: session.id, target_type: data.targetType, target_id: data.targetId ?? null, body_fr: data.body }).select("id").single();
+  if (error || !comment) throw new Error(error?.message ?? "Commentaire non enregistré.");
+  const preview = data.body.length > 140 ? `${data.body.slice(0, 140)}…` : data.body;
+  await service.from("student_notifications").insert({ student_id: data.studentId, kind: "teacher_comment", dedupe_key: `teacher_comment:${comment.id as string}`, message_fr: `Message de ton enseignant : « ${preview} »`, payload: { commentId: comment.id, targetType: data.targetType, targetId: data.targetId ?? null } });
+  await logAudit("teacher.comment_posted", { targetType: "student", targetId: data.studentId, metadata: { commentId: comment.id, targetType: data.targetType } });
+  revalidatePath(`/teacher/students/${data.studentId}`); revalidatePath("/student/inbox");
+  return { id: comment.id as string };
+}
+
+// ---------------------------------------------------------------------------
+// Class cooperative goal (roadmap 6.5)
+// ---------------------------------------------------------------------------
+
+const classGoalSchema = z.object({ classId: z.string().uuid(), targetXp: z.number().int().min(50).max(20000) });
+
+/** Monday of the current ISO week, UTC. */
+export async function currentWeekStart(now = new Date()): Promise<string> {
+  const day = now.getUTCDay(); const diff = (day + 6) % 7;
+  const monday = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() - diff));
+  return monday.toISOString().slice(0, 10);
+}
+
+export type ClassGoalProgress = { weekStart: string; targetXp: number; earnedXp: number; members: number; activeMembers: number } | null;
+
+export async function loadClassGoal(classId: string): Promise<ClassGoalProgress> {
+  await requireRole(["teacher", "school_admin"]);
+  const supabase = await createClient(); const weekStart = await currentWeekStart();
+  const { data, error } = await supabase.rpc("class_goal_progress", { p_class_id: classId, p_week_start: weekStart });
+  if (error) throw new Error(error.message);
+  const row = Array.isArray(data) ? data[0] : data;
+  if (!row) return null;
+  return { weekStart, targetXp: Number(row.target_xp), earnedXp: Number(row.earned_xp), members: Number(row.members), activeMembers: Number(row.active_members) };
+}
+
+export async function setClassGoal(input: unknown) {
+  await requireRole(["teacher"]);
+  const data = classGoalSchema.parse(input);
+  const supabase = await createClient(); const weekStart = await currentWeekStart();
+  const { error } = await supabase.rpc("set_class_goal", { p_class_id: data.classId, p_week_start: weekStart, p_target_xp: data.targetXp });
+  if (error) throw new Error(error.message);
+  await logAudit("teacher.class_goal_set", { targetType: "class", targetId: data.classId, metadata: { weekStart, targetXp: data.targetXp } });
+  revalidatePath(`/teacher/classes/${data.classId}`); revalidatePath("/student");
+  return { weekStart, targetXp: data.targetXp };
+}
+
+/** Published dictées a teacher can assign (roadmap 7.3). */
+export async function loadAssignableDictations() {
+  await requireRole(["teacher"]);
+  const supabase = await createClient();
+  const { data } = await supabase.from("dictations").select("id,title_fr,kind,grade_min,grade_max,word_count").eq("review_status", "human_approved").eq("audio_status", "ready").order("grade_min").order("title_fr");
+  return (data ?? []).map((row) => ({ id: row.id as string, title: row.title_fr as string, kind: row.kind as string, gradeMin: Number(row.grade_min), gradeMax: Number(row.grade_max), wordCount: Number(row.word_count) }));
+}
+
+export type DictationAssignmentResults = { members: number; attempted: number; averageScore: number | null; clean: number };
+
+export async function loadDictationAssignmentResults(assignmentId: string): Promise<DictationAssignmentResults | null> {
+  await requireRole(["teacher", "school_admin"]);
+  const supabase = await createClient();
+  const { data, error } = await supabase.rpc("dictation_assignment_results", { p_assignment_id: assignmentId });
+  if (error) throw new Error(error.message);
+  const row = Array.isArray(data) ? data[0] : data;
+  if (!row) return null;
+  return { members: Number(row.members ?? 0), attempted: Number(row.attempted ?? 0), averageScore: row.average_score == null ? null : Number(row.average_score), clean: Number(row.clean ?? 0) };
+}
+
+// ---------------------------------------------------------------------------
+// Human oversight of AI rubric scores (roadmap 9.2)
+// ---------------------------------------------------------------------------
+
+const overrideSchema = z.object({ studentId: z.string().uuid(), evaluationId: z.string().uuid(), score: z.number().int().min(0).max(100), commentFr: z.string().trim().max(300).optional() });
+
+/** A teacher's score replaces the AI rubric for the student and the reports; the AI value stays in writing_evaluations for audit. */
+export async function overrideWritingScore(input: unknown) {
+  const session = await requireRole(["teacher"]);
+  const data = overrideSchema.parse(input);
+  const supabase = await createClient();
+  const { data: allowed } = await supabase.rpc("teaches_student", { p_student_id: data.studentId });
+  if (!allowed) throw new Error("Cet élève n’est pas dans vos classes.");
+  const service = createServiceClient();
+  const { data: evaluation } = await service.from("writing_evaluations").select("student_summary_id,rubric").eq("id", data.evaluationId).eq("student_id", data.studentId).single();
+  if (!evaluation) throw new Error("Évaluation introuvable.");
+  const { error } = await service.from("student_summaries").update({ teacher_score: { score: data.score, commentFr: data.commentFr ?? null, byProfileId: session.id, evaluationId: data.evaluationId, aiScore: (evaluation.rubric as { score?: number } | null)?.score ?? null, at: new Date().toISOString() } }).eq("id", evaluation.student_summary_id as string);
+  if (error) throw new Error(error.message);
+  await logAudit("teacher.writing_score_overridden", { targetType: "student", targetId: data.studentId, metadata: { evaluationId: data.evaluationId, score: data.score } });
+  revalidatePath(`/teacher/students/${data.studentId}`);
+  return { ok: true };
 }

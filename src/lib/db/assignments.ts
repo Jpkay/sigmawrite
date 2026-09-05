@@ -5,15 +5,16 @@ export type Assignment = {
   id: string;
   class_id: string;
   text_slug: string | null;
-  target_type: "text" | "competency_node" | "catch_up_step";
+  target_type: "text" | "competency_node" | "catch_up_step" | "dictation";
   target_node_id: string | null;
+  target_dictation_id?: string | null;
   title: string;
   instructions: string | null;
   due_at: string | null;
   created_at: string;
 };
 
-const COLS = "id, class_id, text_slug, target_type, target_node_id, title, instructions, due_at, created_at";
+const COLS = "id, class_id, text_slug, target_type, target_node_id, target_dictation_id, title, instructions, due_at, created_at";
 
 export async function getTeacherAssignments(): Promise<Assignment[]> {
   const supabase = await createClient();

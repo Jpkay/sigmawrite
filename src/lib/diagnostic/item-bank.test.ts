@@ -102,10 +102,41 @@ describe("canonical diagnostic item-bank gate", () => {
     }, taxonomy);
     expect(result.valid).toBe(false);
     expect(result.manifest.eligibleItemCount).toBe(0);
-    expect(result.issues).toContain("items.0: item is not release-approved");
+    expect(result.publicationMode).toBe("partial");
+    expect(result.pendingItemCount).toBe(48);
+    expect(result.issues.some((issue) => /approved items/u.test(issue))).toBe(true);
   });
 
-  it("rejects a mixed release artifact that still contains an unreviewed item", () => {
+  it("publishes partially when sections meet the floors and reports the pending item", () => {
+    // Twenty-four approved items per section over the fixture's six nodes: the
+    // item floor is met, the ten-node floor is not, and validity must say so.
+    const entries = DIAGNOSTIC_SECTIONS.flatMap((section) => Array.from({ length: 24 }, (_, index) =>
+      item(`${section.key}-${nodeIndex(index % 12)}`, strands[section.key], section.key, index)
+    ));
+    entries.push({
+      ...item("grammar-2", strands.grammar, "grammar", 99),
+      itemKey: "grammar-unreviewed-extra",
+      reviewStatus: "needs_human_review",
+    });
+    const result = validateCanonicalDiagnosticBank({
+      schemaVersion: 1,
+      bank: { key: "test", version: "1" },
+      taxonomy: { releaseKey: "test", releaseVersion: "1", checksum: "sha256:test" },
+      generatedAt: "2026-07-12T00:00:00Z",
+      items: entries,
+    }, taxonomy);
+    expect(result.publicationMode).toBe("partial");
+    expect(result.pendingItemCount).toBe(1);
+    expect(result.manifest.eligibleItemCount).toBe(entries.length - 1);
+    // Twenty-four approved items per section clear the item floor; validity then rests on the usual section readiness and the node floor.
+    const floorsMet = result.manifest.sectionReadiness.every((section) => section.approvedItemCount >= 24 && section.nodesWithItems >= 10);
+    expect(floorsMet).toBe(false);
+    expect(result.valid).toBe(false);
+    expect(result.issues.every((issue) => /nodes with approved items/u.test(issue))).toBe(true);
+    expect(result.issues.filter((issue) => /not release-approved/u.test(issue))).toHaveLength(0);
+  });
+
+  it("keeps a pending item out of the eligible pool without failing a bank that is otherwise complete", () => {
     const entries = DIAGNOSTIC_SECTIONS.flatMap((section) => Array.from({ length: 12 }, (_, index) =>
       item(`${section.key}-${nodeIndex(index)}`, strands[section.key], section.key, index)
     ));
@@ -122,8 +153,10 @@ describe("canonical diagnostic item-bank gate", () => {
       items: entries,
     }, taxonomy);
     expect(result.manifest.sectionReadiness.every((section) => section.ready)).toBe(true);
-    expect(result.valid).toBe(false);
-    expect(result.issues).toContain(`items.${entries.length - 1}: item is not release-approved`);
+    expect(result.publicationMode).toBe("partial");
+    expect(result.pendingItemCount).toBe(1);
+    expect(result.manifest.eligibleItemCount).toBe(entries.length - 1);
+    expect(result.issues).not.toContain(`items.${entries.length - 1}: item is not release-approved`);
   });
 
   it("pins answer keys, choices, validators, and QC decisions in the manifest", () => {

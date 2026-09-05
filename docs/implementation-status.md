@@ -1,6 +1,6 @@
 # Implementation and launch status
 
-> Living source of truth. Updated 2026-09-01. Historical roadmaps describe design intent and must not override current code, tests, or this status.
+> Living source of truth. Updated 2026-09-04. Historical roadmaps describe design intent and must not override current code, tests, or this status.
 
 ## Repository-implemented
 
@@ -20,6 +20,7 @@
 - Recoverable at-most-once reading/content boundaries, leased jobs, service-only audit writes and parent/student password rotation.
 - Typed vocabulary recall, vocabulary-fit recommendations, lexical launch thresholds, corrective retests and strand-specific scaffolds.
 - Pseudonymous explicit-only analytics, comprehensive guardian export, bilingual parent controls and authenticated pilot-browser CI.
+- 2026-09-04 engagement/rigor batch (migrations `0112`–`0123`, see `docs/roadmap-engagement-rigor-2026-09.md`): XP for every activity with a settable daily goal and earned streak freezes; badges, weekly recap and class cooperative goals; student inbox, mobile tab bar and maskable icons; dictée module (flash, à trous, à choix, négociée, brevet) with server-rendered audio, a deterministic Catach error classifier and a daily-plan slot; click-the-error, ordering, justified-answer, sentence-combining and réécriture exercises; conjugation tables and rule cards; programme mapping of all 181 nodes to cycle 3/4, 6e evaluation and Brevet codes; writing genres by grade, three revisions with diff, rubric-grounded production feedback with teacher override, teacher comments, printable recueil; verify-then-justify reading questions; shorter diagnostic protocol v3 (24–48 probes); dyslexia reader options; offline fallback to the student-prefetched pack.
 
 ## Repository verification commands
 
@@ -29,10 +30,11 @@
 
 1. Migrations through `0106` and the graph smoke check are applied/passing in isolated staging. Migration `0107` adds feedback-participant agreement provenance and must be promoted with the matching application build, then exercised through the hosted admin and student journeys.
 2. Configure and exercise PostHog, Sentry, Resend, Google adult OAuth, LanguageTool and protected Vercel environments with real credentials.
-3. Allocate and review the 8 imported replacement candidates, complete all 465 pending diagnostic reviews, then publish the exact approved checksum. The bank has all 696 slots and no structural issue; generic MCQ stems are compared with their complete visible choices by migration `0106`. Have three real educators independently review the pilot passage set; resolve and publish the required passages and lock exactly six benchmarks.
+3. Publish the diagnostic bank in partial mode (migration `0124`, decision 2026-09-05): approve the 25 items listed by `npm run diagnostic:plan-review-hour`, sync reviews, rebuild the manifest and publish the exact checksum; the remaining ~440 pending items are reviewed while the app is in use and are never served before approval. Allocate the 8 replacement candidates alongside. The bank has all 696 slots and no structural issue; generic MCQ stems are compared with their complete visible choices by migration `0106`. Have three real educators independently review the pilot passage set; resolve and publish the required passages and lock exactly six benchmarks.
 4. Run the friendly-family protocol without manual SQL, including class invitation, immediate under-15 access, password recovery, account switching, diagnostic, practice, reading, vocabulary, retrieval, weekly email, privacy/export/deletion, parent evidence and teacher export.
 5. Obtain controller/legal approval for privacy terms, processor agreements, region/transfers, retention and the institution's authority to invite and supervise pupils. Guardian authorization remains the fallback for students without an active institutional invitation.
 6. Close rehearsal P0/P1 findings before general school availability. They do not block deploying the application and its explicitly isolated feedback cohort to production.
+7. Promote migrations `0112`–`0123` with the matching build; import `generated/curriculum-mappings-v1.json` (`npm run curriculum:import`) and `generated/dictations-v1.json` (`npm run seed:dictations`); approve the eight dictée texts in `/admin/dictations`; configure `TTS_API_KEY` (and optionally `TTS_BASE_URL`, `TTS_MODEL`, `TTS_VOICE`) so the hourly `dictation-audio` job can render audio, or render from a workstation running Kokoro-FastAPI with `npm run dictations:render-audio` (see `docs/languagetool.md` for the same self-hosting pattern). Without a speech key no dictée is served. 2026-09-04: migrations `0112`–`0123`, the curriculum mappings, the dictée texts and the 23 exercise-format items are in staging; the texts await approval in `/admin/dictations`. Seed `generated/exercise-format-items-v1.json` and review its 23 items before the new formats reach students.
 
 These gates cannot be honestly replaced by automated commits or QA identities, and remain publication/general-availability gates rather than application-deployment gates.
 

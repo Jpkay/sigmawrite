@@ -41,8 +41,8 @@ describe("section-aware diagnostic protocol", () => {
       "spelling",
       "conjugation",
     ]);
-    expect(DIAGNOSTIC_MIN_TOTAL_PROBES).toBe(32);
-    expect(DIAGNOSTIC_MAX_TOTAL_PROBES).toBe(80);
+    expect(DIAGNOSTIC_MIN_TOTAL_PROBES).toBe(24);
+    expect(DIAGNOSTIC_MAX_TOTAL_PROBES).toBe(48);
     expect(sectionForStrand("orthographe_lexicale")).toBe("spelling");
     expect(sectionForStrand("orthographe_grammaticale")).toBe("spelling");
     expect(DIAGNOSTIC_TAXONOMY_RELEASE_KEY).toBe("french-taxonomy-v2");

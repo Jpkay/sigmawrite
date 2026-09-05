@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { generationGroundingPacketSchema } from "@/lib/content/knowledge-packets";
 
 /**
  * Zod schemas for the AI content pipeline (PRD §H, §17).
@@ -14,6 +15,7 @@ export const generateTextInputSchema = z.object({
   primaryInterest: z.string().min(1),
   knowledgeDomains: z.array(z.string()),
   targetConcepts: z.array(z.string()),
+  groundingPackets: z.array(generationGroundingPacketSchema).max(12).optional(),
   textType: z.enum([
     "expository",
     "argumentative",
@@ -29,6 +31,7 @@ export const generateTextInputSchema = z.object({
   tone: z.enum(["respectful_teen", "neutral_academic", "curious_explainer"]),
 });
 export type GenerateTextInput = z.infer<typeof generateTextInputSchema>;
+export const generateTextRequestSchema = generateTextInputSchema.omit({ groundingPackets: true });
 
 export const generatedQuestionSchema = z.object({
   questionText: z.string().min(1),
@@ -72,6 +75,7 @@ export const generatedTextCandidateSchema = z.object({
       claim: z.string(),
       confidence: z.enum(["low", "medium", "high"]),
       needsHumanReview: z.boolean(),
+      sourcePacketIds: z.array(z.string().min(1)).optional(),
     })
   ),
 });

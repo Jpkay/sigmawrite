@@ -1,6 +1,6 @@
 # SigmaWrite living roadmap
 
-> Updated 2026-08-06. Authoritative status: [`docs/implementation-status.md`](../docs/implementation-status.md). The archived and production sprint roadmaps are historical specifications.
+> Updated 2026-09-04. Authoritative status: [`docs/implementation-status.md`](../docs/implementation-status.md). The archived and production sprint roadmaps are historical specifications.
 
 ## Active phase — staging hardening and pilot acceptance
 
@@ -14,6 +14,21 @@
 - [ ] Complete real educator diagnostic/passage reviews and lock six benchmarks.
 - [ ] Run the four-week friendly-family protocol; close P0/P1 findings.
 - [ ] Obtain legal/controller approval, then promote `develop` to protected production.
+
+## Next phase — engagement, rigor and efficiency (written French)
+
+Detailed atomic goals: [`docs/roadmap-engagement-rigor-2026-09.md`](../docs/roadmap-engagement-rigor-2026-09.md).
+
+- [ ] Phase 0: publish the v2 diagnostic bank, 60 approved passages, 6 locked benchmarks, 12 repair micro-lessons.
+- [x] Phase 1: dictée (flash, à choix, à trous, négociée, Brevet-length) with server TTS and a Catach error profile (2026-09-04; content awaits admin approval and a TTS key).
+- [ ] Phase 2: click-the-error, réécriture, justified-answer, sentence-combining and ordering widgets (done 2026-09-04); generation prompts and confusable-contrast interleaving pending.
+- [x] Phase 3: conjugation tables and rule cards from the existing engine (2026-09-04).
+- [x] Phase 4: versioned mapping of every node to cycle 3/4 attendus, 6e evaluation domains and Brevet skills (2026-09-04).
+- [x] Phase 5: genre-by-grade writing, multi-revision loop, rubric AI feedback with vetted rule citations, teacher comments, printable recueil (2026-09-04; cited-justification reading questions pending).
+- [ ] Phase 6: XP for all activities, settable daily goal, streak freeze, weekly recap, class cooperative goal, badges (done 2026-09-04); opt-in league and story-arc plan pending.
+- [ ] Phase 7: student inbox, class dictée challenge, richer parent email (done 2026-09-04); opt-in push pending.
+- [ ] Phase 8: shorter diagnostic, offline fallback, mobile tab bar, dyslexia options, single home loader, accent input (done 2026-09-04); continuous quizzes, dead-module decisions, dictée Playwright journey, latency-weighted evidence pending.
+- [ ] Phase 9: teacher override done (2026-09-04); DPIA and hosting/transfer basis pending (legal).
 
 ## Post-pilot
 

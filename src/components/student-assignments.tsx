@@ -10,8 +10,9 @@ import { SEED_TEXT_BY_ID } from "@/lib/content/texts";
 type Assignment = {
   id: string;
   text_slug: string | null;
-  target_type: "text" | "competency_node" | "catch_up_step";
+  target_type: "text" | "competency_node" | "catch_up_step" | "dictation";
   target_node_id: string | null;
+  target_dictation_id?: string | null;
   title: string;
   instructions: string | null;
   due_at: string | null;
@@ -33,7 +34,7 @@ async function load() {
     const { createClient } = await import("@/lib/supabase/client");
     const { data } = await createClient()
       .from("assignments")
-      .select("id, text_slug, target_type, target_node_id, title, instructions, due_at")
+      .select("id, text_slug, target_type, target_node_id, target_dictation_id, title, instructions, due_at")
       .order("due_at", { ascending: true, nullsFirst: false });
     snap = (data as Assignment[] | null) ?? [];
   } catch {
@@ -71,13 +72,13 @@ export function StudentAssignments() {
               <div>
                 <p className="font-medium">{a.title}</p>
                 <p className="text-sm text-muted-foreground">
-                  {a.target_type === "text" ? (a.text_slug ? SEED_TEXT_BY_ID[a.text_slug]?.title ?? a.text_slug : "Lecture") : "Micro-session de compétence"}
+                  {a.target_type === "text" ? (a.text_slug ? SEED_TEXT_BY_ID[a.text_slug]?.title ?? a.text_slug : "Lecture") : a.target_type === "dictation" ? "Défi dictée de classe" : "Micro-session de compétence"}
                   {a.due_at ? ` · échéance ${a.due_at}` : ""}
                 </p>
               </div>
-              {((a.target_type === "text" && a.text_slug) || (a.target_type !== "text" && a.target_node_id)) && (
+              {((a.target_type === "text" && a.text_slug) || (a.target_type === "dictation" && a.target_dictation_id) || (a.target_type !== "text" && a.target_type !== "dictation" && a.target_node_id)) && (
                 <Link
-                  href={a.target_type === "text" ? `/student/read/${a.text_slug}` : `/student/practice/${a.target_node_id}`}
+                  href={a.target_type === "text" ? `/student/read/${a.text_slug}` : a.target_type === "dictation" ? `/student/dictee/${a.target_dictation_id}` : `/student/practice/${a.target_node_id}`}
                   className={buttonVariants({ size: "sm" })}
                 >
                   Commencer

@@ -21,13 +21,3 @@ export function PageHeader({
     </div>
   );
 }
-
-/** Placeholder block for routes whose feature lands in a later phase. */
-export function ComingSoon({ phase, note }: { phase: string; note: string }) {
-  return (
-    <div className="rounded-lg border border-dashed border-border bg-card/50 p-8 text-center">
-      <p className="text-sm font-medium text-primary">{phase}</p>
-      <p className="mt-1 text-sm text-muted-foreground">{note}</p>
-    </div>
-  );
-}

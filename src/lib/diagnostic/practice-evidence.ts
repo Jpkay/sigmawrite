@@ -4,6 +4,8 @@ const CONTROLLED_RESPONSE_TYPES = new Set([
   "short_answer",
   "cloze",
   "transform",
+  "ordering",
+  "combine",
 ]);
 
 /**

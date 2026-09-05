@@ -61,13 +61,23 @@ import {
 import type { ValidatorType } from "@/lib/linguistic/types";
 import { getCatchUpPlan } from "@/lib/db/practice";
 import { evaluateWriting } from "@/lib/writing/evaluate";
-import { calculateStreak } from "@/lib/motivation";
+import { buildTemplate, publicTemplate, reconstruct, type DictationMode, type SegmentTemplate } from "@/lib/dictation/modes";
+import { classifyDictation, CATEGORY_LABELS, type DictationError, type ErrorCategory } from "@/lib/dictation/classify";
+import { signDictationAudio } from "@/lib/dictation/audio";
+import { speakableSegment } from "@/lib/dictation/speech-text";
+import { BADGE_BY_KEY, earnedBadges, type BadgeKey } from "@/lib/badges";
+import { genrePrompt, genreSpec, genresForGrade, isWritingGenre, type WritingGenre } from "@/lib/writing/genres";
+import { scoreProductionWithAI, type ProductionRubric } from "@/lib/scoring/production-ai";
+import { lessonForPracticeNode } from "@/lib/practice/lessons";
+import { calculateStreak, freezeCandidate, isDailyXpGoal, unrewardedMilestone, weekStrip, XP_AWARDS, type ActivityDay } from "@/lib/motivation";
 import { trackServer } from "@/lib/analytics-server";
 import { createHash } from "node:crypto";
 import { sanitizeStudentTopic } from "@/lib/safety/topic";
 import { plannedExerciseCount } from "@/lib/practice/session";
 import { hasStudentPathCoverage } from "@/lib/taxonomy/activation";
 import { INTEREST_BY_KEY } from "@/lib/content/interests";
+import { recommendWithCalibratedReuse } from "@/lib/content/reuse/runtime";
+import { captureError } from "@/lib/observability";
 
 const answersSchema = z.record(z.string().min(1), z.number().int().min(0).max(20));
 const uuidSchema = z.string().uuid();
@@ -94,7 +104,7 @@ const answerSchema = z.object({
   sessionId: uuidSchema, textKey: z.string().min(1).max(100), questionKey: z.string().min(1).max(40), choiceIndex: z.number().int().min(0).max(20), nextPhase: z.enum(["questions", "summary"]).optional(),
 });
 const summarySchema = z.object({ sessionId: uuidSchema, textKey: z.string().min(1).max(100), summaryText: z.string().trim().min(1).max(5000) });
-const independentProductionSchema = z.object({ nodeId: uuidSchema, text: z.string().trim().min(40).max(5000) });
+const independentProductionSchema = z.object({ nodeId: uuidSchema, text: z.string().trim().min(40).max(5000), genre: z.string().max(20).optional() });
 const completeSessionSchema = z.object({
   sessionId: uuidSchema,
   textKey: z.string().min(1).max(100),
@@ -410,7 +420,7 @@ async function recordDirectCompetencyEvidence(input: {
   memoryResult?: RetrievalResult;
   /** Stable source identity; retries must not create an extra mastery occasion. */
   occurrenceKey: string;
-  sourceType: "practice" | "reading" | "writing";
+  sourceType: "practice" | "reading" | "writing" | "dictation";
   sourceId: string;
   itemId?: string;
   hintsUsed?: number;
@@ -493,7 +503,7 @@ async function recordDirectCompetencyEvidence(input: {
 }
 
 async function evaluateAndStoreWriting(input: {
-  service: SupabaseClient; studentId: string; summaryId: string; revisionNumber: 0 | 1;
+  service: SupabaseClient; studentId: string; summaryId: string; revisionNumber: number;
   sourceText: string; studentText: string; keywords: string[]; systemPrompt: string;
 }) {
   const { data: rows } = await input.service.from("error_node_mappings").select("rule_id,node_id,explanation_fr,evidence_weight,competency_nodes!inner(key,label_fr)");
@@ -610,10 +620,20 @@ async function propagateImplicitRepetitions(service: SupabaseClient, studentId: 
   }
 }
 
-async function recordDailyActivity(db: SupabaseClient, studentId: string, at: string, kind: "reading" | "practice" | "retrieval", completesGoal: boolean) {
-  const day=at.slice(0,10);const {data:row}=await db.from("student_daily_activity").select("reading_sessions,practice_steps,retrieval_reviews,goal_completed").eq("student_id",studentId).eq("activity_date",day).maybeSingle();
-  const values={student_id:studentId,activity_date:day,reading_sessions:Number(row?.reading_sessions??0)+(kind==="reading"?1:0),practice_steps:Number(row?.practice_steps??0)+(kind==="practice"?1:0),retrieval_reviews:Number(row?.retrieval_reviews??0)+(kind==="retrieval"?1:0),goal_completed:!!row?.goal_completed||completesGoal};
+async function recordDailyActivity(db: SupabaseClient, studentId: string, at: string, kind: "reading" | "practice" | "retrieval" | "writing") {
+  const day=at.slice(0,10);const {data:row}=await db.from("student_daily_activity").select("reading_sessions,practice_steps,retrieval_reviews,writing_tasks").eq("student_id",studentId).eq("activity_date",day).maybeSingle();
+  const values={student_id:studentId,activity_date:day,reading_sessions:Number(row?.reading_sessions??0)+(kind==="reading"?1:0),practice_steps:Number(row?.practice_steps??0)+(kind==="practice"?1:0),retrieval_reviews:Number(row?.retrieval_reviews??0)+(kind==="retrieval"?1:0),writing_tasks:Number(row?.writing_tasks??0)+(kind==="writing"?1:0)};
   const {error}=await db.from("student_daily_activity").upsert(values,{onConflict:"student_id,activity_date"});if(error)throw new Error(error.message);
+}
+
+export type XpAward = { awarded: boolean; xp: number; dayXp: number; goalXp: number; goalCompleted: boolean };
+
+/** Idempotent, effort-calibrated XP through the shared SQL function (roadmap 6.1). */
+async function awardXp(db: SupabaseClient, input: { studentId: string; eventKey: string; sourceType: "reading_session" | "retrieval_review" | "vocabulary_review" | "independent_production" | "dictation"; sourceId: string; baseXp: number; bonusXp?: number; at: string }): Promise<XpAward> {
+  const { data, error } = await db.rpc("award_student_xp", { p_student_id: input.studentId, p_event_key: input.eventKey, p_source_type: input.sourceType, p_source_id: input.sourceId, p_base_xp: input.baseXp, p_bonus_xp: input.bonusXp ?? 0, p_awarded_at: input.at });
+  if (error) throw new Error(error.message);
+  const value = (data ?? {}) as Partial<XpAward>;
+  return { awarded: !!value.awarded, xp: Number(value.xp ?? 0), dayXp: Number(value.dayXp ?? 0), goalXp: Number(value.goalXp ?? 10), goalCompleted: !!value.goalCompleted };
 }
 
 async function contentIds(
@@ -674,7 +694,21 @@ export async function recommendReadingTexts(input: unknown) {
   const statsByKey = new Map((stats ?? []).map((row) => [row.interest_key as string, row]));
   const ranked = rankInterestSignals((declared ?? []).map((row) => { const stat = statsByKey.get(row.interest_key as string); return { interestKey: row.interest_key as string, declaredStrength: Number(row.declared_strength ?? 0), inferredStrength: Number(stat?.inferred_strength ?? row.inferred_strength ?? 0), completionRate: Number(stat?.completion_rate ?? 0), avgSuccess: Number(stat?.avg_success ?? 0.75), avgTimeOnTask: Number(stat?.avg_time_on_task ?? 0), abandonCount: Number(stat?.abandon_count ?? 0) }; }));
   const versionIds=library.map(item=>item.id);const[{data:links,error:linksError},{data:mastery,error:masteryError}]=await Promise.all([versionIds.length?supabase.from("text_vocabulary").select("text_version_id,vocabulary_item_id").in("text_version_id",versionIds):Promise.resolve({data:[],error:null}),supabase.from("student_word_mastery").select("vocabulary_item_id,mastery").eq("student_id",studentId)]);if(linksError||masteryError)throw new Error(linksError?.message??masteryError?.message);const targets=new Map<string,string[]>();for(const link of links??[]){const id=link.text_version_id as string;targets.set(id,[...(targets.get(id)??[]),link.vocabulary_item_id as string]);}const known=new Set((mastery??[]).filter(row=>Number(row.mastery)>=.6).map(row=>row.vocabulary_item_id as string));const ordered=rankByInterestAndVocabulary(library,ranked.map(item=>item.interestKey),targets,known);
-  const selected = ordered.slice(0,3); return Promise.all(selected.map((item) => getPublishedReadingText(item.slug, supabase))).then((rows) => rows.filter((row): row is NonNullable<typeof row> => !!row));
+  let selected = ordered.slice(0,3);
+  try {
+    const calibrated = await recommendWithCalibratedReuse({
+      db: createServiceClient(),
+      studentId,
+      interests: ranked.map((item) => item.interestKey),
+      baseline: ordered,
+      displayLimit: 3,
+    });
+    selected = calibrated.items;
+  } catch (error) {
+    captureError(error, { operation: "calibrated_reuse_recommendation", studentId });
+  }
+  return Promise.all(selected.map((item) => getPublishedReadingText(item.slug, supabase)))
+    .then((rows) => rows.filter((row): row is NonNullable<typeof row> => !!row));
 }
 
 export async function selectInterests(input: unknown) {
@@ -1110,7 +1144,7 @@ export async function loadStudentCatchUpPlan(input: unknown) {
 }
 
 export type SessionPlanEntry = {
-  type: "practice" | "production" | "review_node" | "review_card";
+  type: "practice" | "production" | "review_node" | "review_card" | "dictation";
   role: "new" | "compression" | "review";
   nodeId?: string;
   cardId?: string;
@@ -1224,7 +1258,8 @@ export async function loadStudentSessionPlan(input: unknown): Promise<SessionPla
   const labelById = new Map((nodeRows ?? []).map((node) => [node.id as string, node.label_fr as string]));
   const masteryByNode = estimateMasteryByNode;
 
-  return plan.map((activity): SessionPlanEntry => {
+  const dictationEntry = await dictationPlanEntry(service, studentId, nowMs);
+  const entries = plan.map((activity): SessionPlanEntry => {
     if (activity.type === "review_card") {
       return {
         type: "review_card",
@@ -1256,6 +1291,36 @@ export async function loadStudentSessionPlan(input: unknown): Promise<SessionPla
       href: production ? `/student/production/${activity.nodeId}` : `/student/practice/${activity.nodeId}`,
     };
   });
+  // A short dictée sits after the first review so the plan opens with due work (roadmap 1.7).
+  if (dictationEntry) entries.splice(Math.min(1, entries.length), 0, dictationEntry);
+  return entries;
+}
+
+/**
+ * One flash dictée every second day within the student's grade band, and a
+ * Brevet-length dictée once per trimester for 3e. Nothing when no published
+ * dictée exists or the student did one yesterday.
+ */
+async function dictationPlanEntry(service: SupabaseClient, studentId: string, nowMs: number): Promise<SessionPlanEntry | null> {
+  const [{ data: student }, { data: recent }] = await Promise.all([
+    service.from("students").select("current_grade").eq("id", studentId).single(),
+    service.from("dictation_attempts").select("dictation_id,mode,submitted_at").eq("student_id", studentId).not("submitted_at", "is", null).gte("submitted_at", new Date(nowMs - 120 * 86_400_000).toISOString()).order("submitted_at", { ascending: false }),
+  ]);
+  const grade = Math.max(4, Math.min(9, Number(student?.current_grade ?? 7)));
+  const attempts = recent ?? [];
+  const lastAt = attempts[0]?.submitted_at ? Date.parse(attempts[0].submitted_at as string) : 0;
+  if (nowMs - lastAt < 36 * 3_600_000) return null;
+  const brevetDone = attempts.some((a) => a.mode === "brevet" && nowMs - Date.parse(a.submitted_at as string) < 90 * 86_400_000);
+  const done = new Set(attempts.map((a) => a.dictation_id as string));
+  let query = service.from("dictations").select("id,title_fr,kind,word_count").eq("review_status", "human_approved").lte("grade_min", grade).gte("grade_max", grade);
+  if (!browserTtsFallbackAllowed()) query = query.eq("audio_status", "ready");
+  const { data: rows } = await query.order("word_count");
+  const candidates = (rows ?? []) as { id: string; title_fr: string; kind: string; word_count: number }[];
+  if (candidates.length === 0) return null;
+  const brevet = !brevetDone && grade === 9 ? candidates.find((row) => row.kind === "brevet") : undefined;
+  const pick = brevet ?? candidates.find((row) => row.kind !== "brevet" && !done.has(row.id)) ?? candidates.find((row) => row.kind !== "brevet") ?? null;
+  if (!pick) return null;
+  return { type: "dictation", role: "new", label: `${pick.kind === "brevet" ? "Dictée type brevet" : "Dictée"} : ${pick.title_fr}`, estimatedMinutes: pick.kind === "brevet" ? 20 : Math.max(5, Math.min(10, Math.round(pick.word_count / 8))), href: `/student/dictee/${pick.id}` };
 }
 
 async function independentProductionNode(service: SupabaseClient, studentId: string, nodeId: string) {
@@ -1272,25 +1337,40 @@ async function independentProductionNode(service: SupabaseClient, studentId: str
   if (stepError) throw new Error(stepError.message);
   if (!step) throw new Error("Cette production autonome n’est pas encore disponible.");
   const { data: node, error: nodeError } = await service.from("competency_nodes")
-    .select("id,key,label_fr,description_fr").eq("id", nodeId).single();
+    .select("id,key,label_fr,description_fr,strand").eq("id", nodeId).single();
   if (nodeError || !node || !supportsIndependentProductionNode(node.key as string)) {
     throw new Error("Cette production autonome n’est pas encore vérifiable automatiquement.");
   }
-  return node as { id: string; key: string; label_fr: string; description_fr: string | null };
+  return node as { id: string; key: string; label_fr: string; description_fr: string | null; strand: string };
+}
+
+/** Genres offered depend on the class-owned grade (roadmap 5.1); the default is the first one. */
+async function productionGenreContext(service: SupabaseClient, studentId: string, requested?: string) {
+  const { data: student } = await service.from("students").select("current_grade").eq("id", studentId).single();
+  const grade = Math.max(4, Math.min(9, Number(student?.current_grade ?? 7)));
+  const genres = genresForGrade(grade);
+  const genre: WritingGenre = requested && isWritingGenre(requested) && genres.includes(requested) ? requested : genres[0];
+  return { grade, genres, genre, spec: genreSpec(genre) };
 }
 
 export async function loadIndependentProductionTask(input: unknown) {
-  const data = checked(z.object({ nodeId: uuidSchema }), input);
+  const data = checked(z.object({ nodeId: uuidSchema, genre: z.string().max(20).optional() }), input);
   const { studentId } = await context();
-  const node = await independentProductionNode(createServiceClient(), studentId, data.nodeId);
+  const service = createServiceClient();
+  const node = await independentProductionNode(service, studentId, data.nodeId);
+  const { genres, genre, spec } = await productionGenreContext(service, studentId, data.genre);
   return {
     nodeId: node.id,
     nodeKey: node.key,
     label: node.label_fr,
     description: node.description_fr,
-    prompt: independentProductionPrompt(node.key, node.label_fr),
-    minimumWords: 50,
-    maximumWords: 100,
+    genre,
+    genreLabel: spec.label,
+    genres: genres.map((key) => ({ key, label: genreSpec(key).label })),
+    prompt: genrePrompt(genre, node.key, node.label_fr),
+    legacyPrompt: independentProductionPrompt(node.key, node.label_fr),
+    minimumWords: spec.minimumWords,
+    maximumWords: spec.maximumWords,
   };
 }
 
@@ -1300,8 +1380,9 @@ export async function submitIndependentProduction(input: unknown) {
   await requireStudentLearningUnlocked(supabase, studentId);
   await moderateOrReject({ supabase, studentId, text: data.text, field: "memory_retrieval" });
   const words = data.text.trim().split(/\s+/u).filter(Boolean).length;
-  if (words < 50 || words > 100) throw new Error("Écris entre 50 et 100 mots pour que la production soit vérifiable.");
   const service = createServiceClient();
+  const { spec } = await productionGenreContext(service, studentId, data.genre);
+  if (words < spec.minimumWords || words > spec.maximumWords) throw new Error(`Écris entre ${spec.minimumWords} et ${spec.maximumWords} mots pour que la production soit vérifiable.`);
   const node = await independentProductionNode(service, studentId, data.nodeId);
   const target = detectIndependentProduction(node.key, data.text);
   let grammarMatches: Awaited<ReturnType<LanguageToolChecker["check"]>>["matches"] = [];
@@ -1315,6 +1396,12 @@ export async function submitIndependentProduction(input: unknown) {
   const demonstrated = verified && target.demonstrated && grammarErrorRate <= 0.05;
   const checksum = createHash("sha256").update(data.text.normalize("NFC")).digest("hex");
   const submittedAt = new Date().toISOString();
+  // Rubric feedback: deterministic anchor, model clamped, one grounded priority (roadmap 5.3). Skipped when the writing kill switch is off.
+  let rubric: ProductionRubric | null = null;
+  if (process.env.WRITING_EVALUATION_ENABLED !== "false") {
+    const lesson = lessonForPracticeNode({ key: node.key, label: node.label_fr, description: node.description_fr, strand: node.strand });
+    rubric = await scoreProductionWithAI({ text: data.text, genreLabel: spec.label, genreBrief: spec.brief, nodeLabel: node.label_fr, rulePattern: lesson.pattern, demonstrated, grammarErrorCount: grammarMatches.length, words, minimumWords: spec.minimumWords, maximumWords: spec.maximumWords });
+  }
   const { data: submission, error: submissionError } = await service.from("independent_production_submissions")
     .insert({
       student_id: studentId,
@@ -1326,6 +1413,8 @@ export async function submitIndependentProduction(input: unknown) {
       demonstrated,
       verified,
       submitted_at: submittedAt,
+      rubric,
+      genre: spec.genre,
     }).select("id").single();
   if (submissionError?.code === "23505") throw new Error("Ce texte a déjà été évalué. Écris un nouveau paragraphe pour démontrer la maîtrise une autre fois.");
   if (submissionError || !submission) throw new Error(submissionError?.message ?? "La production n’a pas pu être enregistrée.");
@@ -1352,9 +1441,15 @@ export async function submitIndependentProduction(input: unknown) {
     });
     mastery = result.mastery;
   }
+  await recordDailyActivity(service, studentId, submittedAt, "writing");
+  const xp = verified
+    ? await awardXp(service, { studentId, eventKey: `independent_production:${submission.id as string}`, sourceType: "independent_production", sourceId: submission.id as string, baseXp: XP_AWARDS.productionBase, bonusXp: demonstrated ? XP_AWARDS.productionDemonstratedBonus : 0, at: submittedAt })
+    : null;
   revalidatePath("/student");
   revalidatePath("/student/frontier");
   return {
+    xp,
+    rubric,
     demonstrated,
     verified,
     mastery,
@@ -1441,7 +1536,45 @@ export async function submitNodePractice(input: unknown) {
   if (!item) throw new Error("Exercice introuvable.");
   const choices = item.competency_item_choices as unknown as Array<{ id: string; is_correct: boolean; feedback_fr: string | null }>;
   let correct = false; let feedbackFr: string | null = null;
-  if (data.selectedChoiceId) { const selected = choices.find((choice) => choice.id === data.selectedChoiceId); if (!selected) throw new Error("Choix invalide."); correct = selected.is_correct; feedbackFr = selected.feedback_fr; }
+  const responseType = item.response_type as string;
+  const validatorConfig = (item.validator_config ?? {}) as Record<string, unknown>;
+  if (responseType === "justified") {
+    // Both halves are required: the right form and the rule that proves it (roadmap 2.3).
+    const selected = choices.find((choice) => choice.id === data.selectedChoiceId); if (!selected) throw new Error("Choix invalide.");
+    const ruleKey = String(validatorConfig.ruleKey ?? ""); const chosenRule = (data.answerText ?? "").trim();
+    const formCorrect = selected.is_correct; const ruleCorrect = chosenRule.length > 0 && chosenRule === ruleKey;
+    correct = formCorrect && ruleCorrect;
+    const rules = (validatorConfig.rules as { key: string; label: string }[] | undefined) ?? [];
+    const ruleLabel = rules.find((rule) => rule.key === ruleKey)?.label ?? ruleKey;
+    feedbackFr = correct ? (selected.feedback_fr ?? `Bonne forme et bonne justification : ${ruleLabel}.`) : !formCorrect ? (selected.feedback_fr ?? "La forme choisie n’est pas la bonne.") : `La forme est juste, mais la règle qui la justifie est : ${ruleLabel}.`;
+  }
+  else if (data.selectedChoiceId) { const selected = choices.find((choice) => choice.id === data.selectedChoiceId); if (!selected) throw new Error("Choix invalide."); correct = selected.is_correct; feedbackFr = selected.feedback_fr; }
+  else if (responseType === "error_hunt") {
+    const target = String(item.correct_answer ?? "");
+    // Position-aware when the key lists "index:word" (a sentence may repeat the word); otherwise compare the word.
+    const indexedKeys = (item.acceptable_answers as string[]).filter((entry) => /^\d+:/u.test(entry));
+    const given = (data.answerText ?? "").trim();
+    correct = indexedKeys.length > 0
+      ? indexedKeys.some((entry) => entry.split(":")[0] === given.split(":")[0] && normalizeAnswerWord(entry) === normalizeAnswerWord(given))
+      : normalizeAnswerWord(given) === normalizeAnswerWord(target);
+    feedbackFr = correct ? String(validatorConfig.correctionFr ?? "C’est bien ce mot qui était mal écrit.") : `Le mot fautif était « ${target} ». ${String(validatorConfig.correctionFr ?? "")}`.trim();
+  }
+  else if (responseType === "combine") {
+    // Sentence combining (roadmap 2.4): any listed merge, or a clean single sentence that keeps every content word.
+    const validation = await validateAnswer(data.answerText ?? "", { validatorType: "exact", config: { ignorePunctuation: true }, correctAnswer: item.correct_answer as string | undefined, acceptableAnswers: item.acceptable_answers as string[] });
+    correct = validation.pass;
+    if (!correct) {
+      const sentences = (validatorConfig.sentences as string[] | undefined) ?? [];
+      const contentWords = sentences.flatMap((sentence) => sentence.toLocaleLowerCase("fr").match(/[\p{L}’']{4,}/gu) ?? []).map((word) => word.replace(/^[a-zçdjlmnst]’/u, ""));
+      const answer = (data.answerText ?? "").toLocaleLowerCase("fr");
+      const coversContent = contentWords.every((word) => answer.includes(word));
+      const singleSentence = (data.answerText ?? "").trim().split(/[.!?]\s+/u).filter(Boolean).length === 1;
+      if (coversContent && singleSentence) {
+        try { const check = await new LanguageToolChecker().check(data.answerText ?? "", { language: "fr", level: "picky" }); correct = check.matches.length === 0; feedbackFr = correct ? "Phrase unique, complète et correcte." : `Une phrase unique, mais ${check.matches.length} erreur(s) de langue : ${check.matches[0]?.message ?? ""}`; }
+        catch { feedbackFr = "La vérification grammaticale est indisponible ; seules les combinaisons attendues sont acceptées pour l’instant."; }
+      } else feedbackFr = !singleSentence ? "Il faut une seule phrase." : "Ta phrase oublie une information des phrases de départ.";
+    } else feedbackFr = "Phrase bien combinée.";
+  }
   else { const validatorType=item.validator_type as ValidatorType; const grammarChecker=validatorType==="agreement"||validatorType==="grammalecte"?new LanguageToolChecker():undefined; const validation = await validateAnswer(data.answerText ?? "", { validatorType, config: item.validator_config as Record<string, unknown> | undefined, correctAnswer: item.correct_answer as string | undefined, acceptableAnswers: item.acceptable_answers as string[] },{grammarChecker}); correct = validation.pass; feedbackFr = validation.reason ?? null; }
   const now = new Date().toISOString();
   const hintsUsed = data.hintsUsed ?? 0;
@@ -1560,11 +1693,15 @@ export async function loadWritingFeedback(input: unknown) {
   const { textVersionId } = await contentIds(supabase, data.textKey);
   const { data: session } = await supabase.from("reading_sessions").select("id").eq("student_id", studentId).eq("text_version_id", textVersionId).not("completed_at", "is", null).order("completed_at", { ascending: false }).limit(1).maybeSingle();
   if (!session) return null;
-  const { data: summary } = await supabase.from("student_summaries").select("id,summary_text").eq("session_id", session.id).maybeSingle();
+  const { data: summary } = await supabase.from("student_summaries").select("id,summary_text,teacher_score").eq("session_id", session.id).maybeSingle();
   if (!summary) return null;
   const { data: evaluations } = await supabase.from("writing_evaluations").select("revision_number,submitted_text,rubric,annotations,revision_plan,degraded,created_at").eq("student_summary_id", summary.id).order("revision_number");
-  return { summaryId: summary.id as string, originalText: summary.summary_text as string, evaluations: evaluations ?? [] };
+  const teacherScore = summary.teacher_score as { score?: number; commentFr?: string; at?: string } | null;
+  return { summaryId: summary.id as string, originalText: summary.summary_text as string, evaluations: evaluations ?? [], teacherScore: teacherScore?.score != null ? { score: Number(teacherScore.score), commentFr: teacherScore.commentFr ?? null, at: teacherScore.at ?? null } : null };
 }
+
+/** Up to three revision passes; each pass focuses on one priority (roadmap 5.2). */
+const MAX_WRITING_REVISIONS = 3;
 
 export async function reviseSummary(input: unknown) {
   const data = checked(writingRevisionSchema, input); const { supabase, studentId } = await context();
@@ -1572,10 +1709,13 @@ export async function reviseSummary(input: unknown) {
   await moderateOrReject({ supabase, studentId, text: data.revisedText, field: "reading_summary" });
   const current = await loadWritingFeedback({ textKey: data.textKey });
   if (!current) throw new Error("Résumé introuvable.");
-  if (current.evaluations.some((evaluation) => Number(evaluation.revision_number) === 1)) throw new Error("La révision a déjà été envoyée.");
+  const revisionNumber = Math.max(0, ...current.evaluations.map((evaluation) => Number(evaluation.revision_number))) + 1;
+  if (revisionNumber > MAX_WRITING_REVISIONS) throw new Error("Tu as déjà fait trois révisions. Passe à la suite : ton dernier texte est conservé.");
+  const previous = current.evaluations.at(-1);
+  if (previous && previous.submitted_text.trim() === data.revisedText.trim()) throw new Error("Modifie ton texte avant de le renvoyer.");
   const text = await getPublishedReadingText(data.textKey, supabase); if (!text) throw new Error("Texte introuvable.");
   const service = createServiceClient(); const prompt = await getActivePrompt("summary_scoring", service);
-  const evaluation = await evaluateAndStoreWriting({ service, studentId, summaryId: current.summaryId, revisionNumber: 1, sourceText: text.body.join("\n\n"), studentText: data.revisedText, keywords: text.concepts, systemPrompt: prompt.promptText });
+  const evaluation = await evaluateAndStoreWriting({ service, studentId, summaryId: current.summaryId, revisionNumber, sourceText: text.body.join("\n\n"), studentText: data.revisedText, keywords: text.concepts, systemPrompt: prompt.promptText });
   revalidatePath(`/student/results/${data.textKey}`); revalidatePath("/student/frontier");
   return evaluation;
 }
@@ -2310,13 +2450,14 @@ export async function completeReadingSession(input: unknown) {
   if (eventError) throw new Error(eventError.message);
   const { error: interestError } = await service.rpc("record_interest_session", { p_student_id: studentId, p_interest_key: text.primaryInterest, p_completed: true, p_success: result.successRate, p_time_seconds: result.timeOnTaskSeconds });
   if (interestError) throw new Error(interestError.message);
-  await recordDailyActivity(service,studentId,data.completedAt,"reading",true);
+  await recordDailyActivity(service,studentId,data.completedAt,"reading");
+  const readingXp = await awardXp(service,{studentId,eventKey:`reading_session:${data.sessionId}`,sourceType:"reading_session",sourceId:data.sessionId,baseXp:XP_AWARDS.readingBase,bonusXp:result.successRate>=0.85?XP_AWARDS.readingSuccessBonus:0,at:data.completedAt});
   const since = new Date(Date.parse(data.completedAt) - 7 * 86_400_000).toISOString();
   const { count: sessionsThisWeek } = await service.from("reading_sessions").select("id", { count: "exact", head: true }).eq("student_id", studentId).not("completed_at", "is", null).gte("completed_at", since);
   if (sessionsThisWeek === 3) await trackServer(studentId, "three_sessions_week_1", { window_days: 7 });
   const{error:finishError}=await service.rpc("finish_reading_completion",{p_session_id:data.sessionId,p_result:result});if(finishError)throw new Error(finishError.message);
   revalidatePath("/student"); revalidatePath("/parent"); revalidatePath("/teacher");
-  return { result, state: await getStudentStateData(studentId, supabase) };
+  return { result, xp: readingXp, state: await getStudentStateData(studentId, supabase) };
   } catch(error) { const message=error instanceof Error?error.message:"Erreur inconnue";await service.rpc("fail_reading_completion",{p_session_id:data.sessionId,p_error:message});throw error; }
 }
 
@@ -2353,8 +2494,9 @@ export async function submitRetrievalAttempt(input: unknown) {
     repetitions: result === "forgot" ? 0 : schedule.repetitions + 1, last_result: result, status: "due",
   }).eq("retrieval_card_id", data.cardId);
   if (updateError) throw new Error(updateError.message);
-  await recordDailyActivity(service,studentId,data.attemptedAt,"retrieval",false);
-  return { result, state: await getStudentStateData(studentId, supabase) };
+  await recordDailyActivity(service,studentId,data.attemptedAt,"retrieval");
+  const xp = await awardXp(service,{studentId,eventKey:`retrieval_review:${data.cardId}:${data.attemptedAt.slice(0,10)}`,sourceType:"retrieval_review",sourceId:data.cardId,baseXp:XP_AWARDS.retrievalReview,at:data.attemptedAt});
+  return { result, xp, state: await getStudentStateData(studentId, supabase) };
 }
 
 export async function loadReadingResume(input: unknown) {
@@ -2369,10 +2511,121 @@ export async function loadLatestReadingResume(input: unknown) {
   checked(emptySchema,input);const{supabase,studentId}=await context();const{data}=await supabase.from("reading_sessions").select("id,current_phase,text_versions!inner(title,texts!inner(slug))").eq("student_id",studentId).is("completed_at",null).order("started_at",{ascending:false}).limit(1).maybeSingle();if(!data)return null;const version=data.text_versions as unknown as{title:string;texts:{slug:string}};return{sessionId:data.id as string,textKey:version.texts.slug,title:version.title,phase:data.current_phase as string};
 }
 
-export async function loadStudentMotivation(input: unknown) {
-  checked(emptySchema,input);const{supabase,studentId}=await context();const[{data},{data:xpRows}]=await Promise.all([supabase.from("student_daily_activity").select("activity_date,goal_completed,reading_sessions,practice_steps,retrieval_reviews").eq("student_id",studentId).order("activity_date",{ascending:false}).limit(14),supabase.from("student_xp_ledger").select("base_xp,bonus_xp").eq("student_id",studentId)]);const rows=data??[];const todayKey=new Date().toISOString().slice(0,10);
+export type StudentBadge = { key: BadgeKey; label: string; description: string; emoji: string; awardedAt: string; isNew: boolean };
+
+export type StudentMotivation = {
+  badges: StudentBadge[];
+  streak: number;
+  todayXp: number;
+  goalXp: number;
+  goalCompleted: boolean;
+  totalXp: number;
+  freezesAvailable: number;
+  freezeAppliedFor: string | null;
+  week: ReturnType<typeof weekStrip>;
+};
+
+/**
+ * Streak, XP and goal state for the student home. Applies a banked freeze to
+ * yesterday when it protects a real streak and grants a freeze at each new
+ * seven-day milestone (roadmap 6.2, 6.3). Both writes are idempotent.
+ */
+export async function loadStudentMotivation(input: unknown): Promise<StudentMotivation> {
+  checked(emptySchema,input);const{supabase,studentId}=await context();const service=createServiceClient();
+  const nowMs=Date.now();
+  const since=new Date(nowMs-30*86_400_000).toISOString().slice(0,10);
+  const load=async()=>{const[{data:days},{data:settings}]=await Promise.all([
+    supabase.from("student_daily_activity").select("activity_date,goal_completed,streak_freeze_used,xp_earned").eq("student_id",studentId).gte("activity_date",since).order("activity_date",{ascending:false}),
+    supabase.from("student_motivation_settings").select("daily_xp_goal,streak_freezes_available,last_freeze_milestone").eq("student_id",studentId).maybeSingle(),
+  ]);
+    const activity:ActivityDay[]=(days??[]).map(row=>({date:row.activity_date as string,goalCompleted:!!row.goal_completed,freezeUsed:!!row.streak_freeze_used}));
+    const xpByDate=Object.fromEntries((days??[]).map(row=>[row.activity_date as string,Number(row.xp_earned??0)]));
+    return{activity,xpByDate,goalXp:Number(settings?.daily_xp_goal??10),freezes:Number(settings?.streak_freezes_available??0),lastMilestone:Number(settings?.last_freeze_milestone??0)};};
+  let current=await load();
+  let freezeAppliedFor:string|null=null;
+  const candidate=freezeCandidate(current.activity,nowMs,current.freezes);
+  if(candidate){const{data:applied}=await service.rpc("apply_streak_freeze",{p_student_id:studentId,p_missed_day:candidate});if(applied){freezeAppliedFor=candidate;current=await load();}}
+  const streak=calculateStreak(current.activity,nowMs);
+  if(unrewardedMilestone(streak,current.lastMilestone)!==null){const{data:granted}=await service.rpc("grant_streak_freeze_for_milestone",{p_student_id:studentId,p_streak:streak});if(granted)current=await load();}
+  const{data:xpRows}=await supabase.from("student_xp_ledger").select("base_xp,bonus_xp").eq("student_id",studentId);
   const totalXp=(xpRows??[]).reduce((total,row)=>total+Number(row.base_xp)+Number(row.bonus_xp),0);
-  return{streak:calculateStreak(rows.filter(row=>row.goal_completed).map(row=>row.activity_date as string),Date.now()),today:rows.find(row=>row.activity_date===todayKey)??null,week:rows.slice(0,7),totalXp};
+  const todayKey=new Date(nowMs).toISOString().slice(0,10);const today=current.activity.find(day=>day.date===todayKey);
+  const week=weekStrip(current.activity,nowMs,current.xpByDate);
+  const badges=await syncStudentBadges(service,studentId,{streak,activeDaysThisWeek:week.filter(day=>day.xp>0).length});
+  return{badges,streak,todayXp:current.xpByDate[todayKey]??0,goalXp:current.goalXp,goalCompleted:!!today?.goalCompleted,totalXp,freezesAvailable:current.freezes,freezeAppliedFor,week};
+}
+
+/** Awards any newly earned milestone badges (roadmap 6.8); idempotent, returns the full shelf with unseen ones flagged. */
+async function syncStudentBadges(service: SupabaseClient, studentId: string, live: { streak: number; activeDaysThisWeek: number }): Promise<StudentBadge[]> {
+  const [{ data: mastered }, { data: dictations }, { data: productions }, { data: activity }, { data: owned }] = await Promise.all([
+    service.from("student_competency_estimates").select("node_id,competency_nodes!inner(strand)").eq("student_id", studentId).gte("mastery_probability", 0.85),
+    service.from("dictation_attempts").select("errors,score").eq("student_id", studentId).not("submitted_at", "is", null),
+    service.from("independent_production_submissions").select("id").eq("student_id", studentId).eq("demonstrated", true),
+    service.from("student_daily_activity").select("retrieval_reviews").eq("student_id", studentId),
+    service.from("student_badges").select("badge_key,awarded_at,seen_at").eq("student_id", studentId),
+  ]);
+  const facts = {
+    masteredNodes: mastered?.length ?? 0,
+    masteredStrands: new Set((mastered ?? []).map((row) => (row.competency_nodes as unknown as { strand: string }).strand)).size,
+    cleanDictations: (dictations ?? []).filter((row) => Array.isArray(row.errors) && row.errors.length === 0).length,
+    dictations: dictations?.length ?? 0,
+    demonstratedProductions: productions?.length ?? 0,
+    streak: live.streak,
+    reviews: (activity ?? []).reduce((total, row) => total + Number(row.retrieval_reviews ?? 0), 0),
+    activeDaysThisWeek: live.activeDaysThisWeek,
+  };
+  const have = new Map((owned ?? []).map((row) => [row.badge_key as BadgeKey, row]));
+  const missing = earnedBadges(facts).filter((key) => !have.has(key));
+  const now = new Date().toISOString();
+  if (missing.length) {
+    const { error } = await service.from("student_badges").upsert(missing.map((key) => ({ student_id: studentId, badge_key: key, awarded_at: now })), { onConflict: "student_id,badge_key", ignoreDuplicates: true });
+    if (error) throw new Error(error.message);
+  }
+  const shelf: StudentBadge[] = [];
+  for (const [key, row] of have) { const def = BADGE_BY_KEY.get(key); if (def) shelf.push({ ...def, awardedAt: row.awarded_at as string, isNew: !row.seen_at }); }
+  for (const key of missing) { const def = BADGE_BY_KEY.get(key); if (def) shelf.push({ ...def, awardedAt: now, isNew: true }); }
+  return shelf.sort((a, b) => Date.parse(b.awardedAt) - Date.parse(a.awardedAt));
+}
+
+export async function markBadgesSeen(input: unknown) {
+  checked(emptySchema, input); const { studentId } = await context();
+  const { error } = await createServiceClient().from("student_badges").update({ seen_at: new Date().toISOString() }).eq("student_id", studentId).is("seen_at", null);
+  if (error) throw new Error(error.message);
+  return { ok: true };
+}
+
+const dailyXpGoalSchema = z.object({ goal: z.number().int() });
+
+export async function setDailyXpGoal(input: unknown) {
+  const data = checked(dailyXpGoalSchema, input);
+  if (!isDailyXpGoal(data.goal)) throw new Error("Choisis un objectif de 10, 15 ou 20 XP.");
+  const { studentId } = await context();
+  const { error } = await createServiceClient().rpc("set_daily_xp_goal", { p_student_id: studentId, p_goal: data.goal });
+  if (error) throw new Error(error.message);
+  revalidatePath("/student");
+  return { goal: data.goal };
+}
+
+/** Sunday-to-today summary for the student weekly recap card (roadmap 6.4). */
+export async function loadStudentWeeklyRecap(input: unknown) {
+  checked(emptySchema,input);const{supabase,studentId}=await context();
+  const now=new Date();const weekStart=new Date(now);weekStart.setUTCDate(now.getUTCDate()-6);const sinceDay=weekStart.toISOString().slice(0,10);const sinceIso=`${sinceDay}T00:00:00.000Z`;
+  const[{data:days},{data:secured},{data:reviews},{count:readingCount},{data:xp}]=await Promise.all([
+    supabase.from("student_daily_activity").select("activity_date,goal_completed,xp_earned").eq("student_id",studentId).gte("activity_date",sinceDay),
+    supabase.from("student_competency_estimates").select("node_id,competency_nodes!inner(label_fr)").eq("student_id",studentId).gte("mastery_probability",0.85).gte("updated_at",sinceIso).limit(12),
+    supabase.from("student_daily_activity").select("retrieval_reviews").eq("student_id",studentId).gte("activity_date",sinceDay),
+    supabase.from("reading_sessions").select("id",{count:"exact",head:true}).eq("student_id",studentId).gte("completed_at",sinceIso),
+    supabase.from("student_xp_ledger").select("base_xp,bonus_xp").eq("student_id",studentId).gte("awarded_at",sinceIso),
+  ]);
+  return{
+    since:sinceDay,
+    activeDays:(days??[]).filter(row=>Number(row.xp_earned??0)>0).length,
+    goalDays:(days??[]).filter(row=>row.goal_completed).length,
+    xp:(xp??[]).reduce((total,row)=>total+Number(row.base_xp)+Number(row.bonus_xp),0),
+    securedNodes:(secured??[]).map(row=>(row.competency_nodes as unknown as{label_fr:string}).label_fr),
+    reviews:(reviews??[]).reduce((total,row)=>total+Number(row.retrieval_reviews??0),0),
+    readingSessions:Number(readingCount??0),
+  };
 }
 
 export async function submitSkillPractice(input: unknown) {
@@ -2395,3 +2648,286 @@ export async function submitSkillPractice(input: unknown) {
 
 const studentPasswordSchema=z.object({password:z.string().min(12).max(128)});
 export async function updateStudentPassword(input:unknown){const data=checked(studentPasswordSchema,input);const session=await requireRole(["student"]);const supabase=await createClient();const{error}=await supabase.auth.updateUser({password:data.password});if(error)throw new Error(error.message);await logAudit("student.password_rotated",{targetType:"profile",targetId:session.id});return{ok:true};}
+
+/**
+ * One round trip for the student home (roadmap 8.4). Each part degrades
+ * independently so a failing recommendation never hides the plan.
+ */
+export async function loadStudentHome(input: unknown) {
+  checked(emptySchema, input);
+  const settle = async <T,>(promise: Promise<T>): Promise<T | null> => { try { return await promise; } catch { return null; } };
+  const [texts, plan, motivation, resume, assessment, recap, classGoal] = await Promise.all([
+    settle(recommendReadingTexts({})),
+    settle(loadStudentSessionPlan({})),
+    settle(loadStudentMotivation({})),
+    settle(loadLatestReadingResume({})),
+    settle(loadDiagnosticRequirement({})),
+    settle(loadStudentWeeklyRecap({})),
+    settle(loadStudentClassGoal({})),
+  ]);
+  const fallbackPlan = plan ? null : await settle(loadStudentCatchUpPlan({}));
+  return { texts, plan, fallbackPlan, motivation, resume, assessment, recap, classGoal };
+}
+
+export type StudentNotification = { id: string; kind: string; message: string; payload: Record<string, unknown>; readAt: string | null; createdAt: string };
+
+/** Inbox reader for the rows the retrieval cron and teacher comments write (roadmap 7.1). */
+export async function loadStudentNotifications(input: unknown): Promise<StudentNotification[]> {
+  checked(emptySchema, input); const { supabase, studentId } = await context();
+  const { data, error } = await supabase.from("student_notifications").select("id,kind,message_fr,payload,read_at,created_at").eq("student_id", studentId).order("created_at", { ascending: false }).limit(50);
+  if (error) throw new Error(error.message);
+  return (data ?? []).map((row) => ({ id: row.id as string, kind: row.kind as string, message: row.message_fr as string, payload: (row.payload ?? {}) as Record<string, unknown>, readAt: row.read_at as string | null, createdAt: row.created_at as string }));
+}
+
+export async function countUnreadStudentNotifications(): Promise<number> {
+  const { supabase, studentId } = await context();
+  const { count } = await supabase.from("student_notifications").select("id", { count: "exact", head: true }).eq("student_id", studentId).is("read_at", null);
+  return Number(count ?? 0);
+}
+
+const markNotificationsSchema = z.object({ ids: z.array(z.string().uuid()).max(100).optional() });
+
+export async function markStudentNotificationsRead(input: unknown) {
+  const data = checked(markNotificationsSchema, input); const { supabase, studentId } = await context();
+  let query = supabase.from("student_notifications").update({ read_at: new Date().toISOString() }).eq("student_id", studentId).is("read_at", null);
+  if (data.ids?.length) query = query.in("id", data.ids);
+  const { error } = await query; if (error) throw new Error(error.message);
+  revalidatePath("/student/inbox"); revalidatePath("/student");
+  return { ok: true };
+}
+
+// ---------------------------------------------------------------------------
+// Dictée (roadmap 1.4–1.7)
+// ---------------------------------------------------------------------------
+
+
+const DICTATION_MODES = ["flash", "trous", "choix", "negociee", "brevet"] as const;
+const browserTtsFallbackAllowed = () => process.env.DICTATION_BROWSER_TTS_FALLBACK === "true" && process.env.NODE_ENV !== "production";
+
+type DictationRow = { id: string; key: string; title_fr: string; kind: DictationMode; text_fr: string; segments: { text: string; audioPath: string | null }[]; word_count: number; grade_min: number; grade_max: number; target_node_keys: string[]; focus_fr: string | null; review_status: string; audio_status: string };
+
+async function visibleDictations(service: SupabaseClient, filter?: { id?: string }) {
+  let query = service.from("dictations").select("id,key,title_fr,kind,text_fr,segments,word_count,grade_min,grade_max,target_node_keys,focus_fr,review_status,audio_status").eq("review_status", "human_approved");
+  if (!browserTtsFallbackAllowed()) query = query.eq("audio_status", "ready");
+  if (filter?.id) query = query.eq("id", filter.id);
+  const { data, error } = await query.order("grade_min").order("word_count");
+  if (error) throw new Error(error.message);
+  return (data ?? []) as DictationRow[];
+}
+
+export type DictationCatalogEntry = { id: string; key: string; title: string; kind: DictationMode; wordCount: number; gradeMin: number; gradeMax: number; focus: string | null; estimatedMinutes: number; lastScore: number | null; lastAt: string | null; attempts: number; audioMode: "server" | "browser" };
+
+export async function loadDictationCatalog(input: unknown): Promise<DictationCatalogEntry[]> {
+  checked(emptySchema, input); const { supabase, studentId } = await context();
+  await requireStudentLearningUnlocked(supabase, studentId);
+  const service = createServiceClient();
+  const [rows, { data: attempts }] = await Promise.all([
+    visibleDictations(service),
+    service.from("dictation_attempts").select("dictation_id,score,submitted_at").eq("student_id", studentId).not("submitted_at", "is", null).order("submitted_at", { ascending: false }),
+  ]);
+  const byDictation = new Map<string, { score: number | null; at: string; count: number }>();
+  for (const attempt of attempts ?? []) {
+    const id = attempt.dictation_id as string; const existing = byDictation.get(id);
+    if (existing) existing.count++; else byDictation.set(id, { score: attempt.score == null ? null : Number(attempt.score), at: attempt.submitted_at as string, count: 1 });
+  }
+  return rows.map((row) => ({
+    id: row.id, key: row.key, title: row.title_fr, kind: row.kind, wordCount: row.word_count, gradeMin: row.grade_min, gradeMax: row.grade_max, focus: row.focus_fr,
+    estimatedMinutes: row.kind === "brevet" ? 20 : Math.max(5, Math.min(10, Math.round(row.word_count / 8))),
+    lastScore: byDictation.get(row.id)?.score ?? null, lastAt: byDictation.get(row.id)?.at ?? null, attempts: byDictation.get(row.id)?.count ?? 0,
+    audioMode: row.audio_status === "ready" ? "server" : "browser",
+  }));
+}
+
+const startDictationSchema = z.object({ dictationId: z.string().uuid(), mode: z.enum(DICTATION_MODES).optional(), clientRequestId: z.string().uuid() });
+
+export type DictationSession = {
+  attemptId: string; dictationId: string; title: string; mode: DictationMode; focus: string | null; wordCount: number; audioMode: "server" | "browser";
+  fullAudioUrl: string | null;
+  segments: { index: number; audioUrl: string | null; browserText: string | null; template: ReturnType<typeof publicTemplate> | null }[];
+};
+
+/** Opens (or resumes) a dictée attempt. Target text never reaches the client except as browser-TTS input in the non-production fallback. */
+export async function startDictation(input: unknown): Promise<DictationSession> {
+  const data = checked(startDictationSchema, input); const { supabase, studentId } = await context();
+  await requireStudentLearningUnlocked(supabase, studentId);
+  const service = createServiceClient();
+  const [row] = await visibleDictations(service, { id: data.dictationId });
+  if (!row) throw new Error("Cette dictée n’est pas disponible.");
+  const mode: DictationMode = data.mode ?? row.kind;
+  const { data: attempt, error } = await service.from("dictation_attempts").upsert({ student_id: studentId, dictation_id: row.id, client_request_id: data.clientRequestId, mode }, { onConflict: "student_id,client_request_id", ignoreDuplicates: false }).select("id,submitted_at").single();
+  if (error || !attempt) throw new Error(error?.message ?? "La dictée n’a pas pu démarrer.");
+  if (attempt.submitted_at) throw new Error("Cette dictée est déjà terminée. Relance-la pour recommencer.");
+  const audioMode: "server" | "browser" = row.audio_status === "ready" ? "server" : "browser";
+  const paths = audioMode === "server" ? [...row.segments.map((segment) => segment.audioPath), `${row.key}/full.mp3`] : [];
+  const urls = audioMode === "server" ? await signDictationAudio(service, paths) : [];
+  const withTemplates = mode === "trous" || mode === "choix";
+  return {
+    attemptId: attempt.id as string, dictationId: row.id, title: row.title_fr, mode, focus: row.focus_fr, wordCount: row.word_count, audioMode,
+    fullAudioUrl: audioMode === "server" ? urls[urls.length - 1] ?? null : null,
+    segments: row.segments.map((segment, index) => ({
+      index,
+      audioUrl: audioMode === "server" ? urls[index] ?? null : null,
+      browserText: audioMode === "browser" ? speakableSegment(segment.text) : null,
+      template: withTemplates ? publicTemplate(buildTemplate(segment.text, index), mode === "choix") : null,
+    })),
+  };
+}
+
+const submitDictationSchema = z.object({
+  attemptId: z.string().uuid(),
+  answers: z.array(z.string().max(600)).max(40),
+  fills: z.array(z.record(z.string(), z.string().max(60))).max(40).optional(),
+  replays: z.number().int().min(0).max(500).optional(),
+});
+
+export type DictationResult = {
+  attemptId: string; score: number; accuracy: number; words: number; xp: XpAward | null;
+  profile: Record<ErrorCategory, number>;
+  segments: { index: number; expected: string; actual: string; errors: DictationError[] }[];
+  justification: { errorIndex: number; options: { key: string; label: string }[] }[];
+  categoryLabels: Record<ErrorCategory, string>;
+};
+
+/** Scores a dictée deterministically, records evidence per competency and awards XP (idempotent per attempt). */
+export async function submitDictation(input: unknown): Promise<DictationResult> {
+  const data = checked(submitDictationSchema, input); const { supabase, studentId } = await context();
+  const service = createServiceClient();
+  const { data: attempt, error } = await service.from("dictation_attempts").select("id,dictation_id,mode,submitted_at,errors,score,accuracy,answers,xp_awarded,error_profile").eq("id", data.attemptId).eq("student_id", studentId).single();
+  if (error || !attempt) throw new Error("Tentative introuvable.");
+  const [row] = await visibleDictations(service, { id: attempt.dictation_id as string });
+  if (!row) throw new Error("Cette dictée n’est pas disponible.");
+  const mode = attempt.mode as DictationMode;
+  let answers: string[];
+  if (mode === "trous" || mode === "choix") {
+    answers = row.segments.map((segment, index) => reconstruct(buildTemplate(segment.text, index) as SegmentTemplate, Object.fromEntries(Object.entries(data.fills?.[index] ?? {}).map(([k, v]) => [Number(k), v]))));
+  } else {
+    answers = row.segments.map((_, index) => data.answers[index] ?? "");
+  }
+  const joined = answers.join(" ").trim();
+  if (joined.length > 0) await moderateOrReject({ supabase, studentId, text: joined, field: "memory_retrieval" });
+  if (attempt.submitted_at) {
+    return buildDictationResult(attempt.id as string, row, attempt.answers as string[], attempt.errors as DictationError[], Number(attempt.score), Number(attempt.accuracy), null);
+  }
+  const outcome = classifyDictation(row.segments.map((segment) => segment.text), answers);
+  const submittedAt = new Date().toISOString();
+  const { error: updateError } = await service.from("dictation_attempts").update({
+    submitted_at: submittedAt, answers, errors: outcome.errors, error_profile: outcome.profile, score: outcome.score, accuracy: outcome.accuracy, replays: data.replays ?? 0,
+  }).eq("id", attempt.id).is("submitted_at", null);
+  if (updateError) throw new Error(updateError.message);
+
+  // Evidence: each targeted node is one controlled-production occasion; nodes with an error fail, the rest succeed.
+  const nodeKeys = [...new Set([...row.target_node_keys, ...outcome.errors.map((e) => e.nodeKey)])];
+  const { data: nodes } = await service.from("competency_nodes").select("id,key").in("key", nodeKeys);
+  const erroredKeys = new Set(outcome.errors.map((e) => e.nodeKey));
+  for (const node of nodes ?? []) {
+    const correct = !erroredKeys.has(node.key as string);
+    await recordDirectCompetencyEvidence({
+      service, studentId, nodeId: node.id as string, at: submittedAt, evidenceExpectation: "controlled_production",
+      occurrenceKey: `dictation:${attempt.id as string}`, sourceType: "dictation", sourceId: attempt.id as string,
+      updateMastery: (prior) => bktUpdateWeighted(prior, correct, 0.8, { pGuess: 0.05, pSlip: 0.15 }), correct, memoryResult: correct ? "good" : "forgot", practiced: true,
+      scorePatch: { productive_score: correct ? 1 : 0.4, written_score: Math.max(0, outcome.accuracy) },
+      pathMastery: (value) => (correct ? value : Math.min(value, 0.84)),
+    });
+  }
+  await recordDailyActivity(service, studentId, submittedAt, "writing");
+  const xp = await awardXp(service, { studentId, eventKey: `dictation:${attempt.id as string}`, sourceType: "dictation", sourceId: attempt.id as string, baseXp: mode === "brevet" ? XP_AWARDS.dictationBase * 2 : XP_AWARDS.dictationBase, bonusXp: outcome.errors.length === 0 ? XP_AWARDS.dictationCleanBonus : 0, at: submittedAt });
+  await service.from("dictation_attempts").update({ xp_awarded: xp.xp }).eq("id", attempt.id);
+  revalidatePath("/student"); revalidatePath("/student/dictee");
+  return buildDictationResult(attempt.id as string, row, answers, outcome.errors, outcome.score, outcome.accuracy, xp);
+}
+
+function buildDictationResult(attemptId: string, row: DictationRow, answers: string[], errors: DictationError[], score: number, accuracy: number, xp: XpAward | null): DictationResult {
+  const profile = { phonogrammique: 0, morphogrammique_grammaticale: 0, morphogrammique_lexicale: 0, logogrammique: 0, ideogrammique: 0, extragraphique: 0 } as Record<ErrorCategory, number>;
+  for (const e of errors) profile[e.category]++;
+  const words = row.word_count;
+  // Justification step (dictée négociée): the learner names the rule behind each of the first six errors before seeing the correction.
+  const pool = (Object.keys(CATEGORY_LABELS) as ErrorCategory[]);
+  const justification = errors.slice(0, 6).map((error, errorIndex) => {
+    const others = pool.filter((category) => category !== error.category).sort(() => (hashString(`${attemptId}:${errorIndex}`) % 2 ? 1 : -1)).slice(0, 3);
+    const options = [error.category, ...others].map((category) => ({ key: category, label: CATEGORY_LABELS[category] }));
+    return { errorIndex, options: options.sort((a, b) => hashString(`${attemptId}:${a.key}`) - hashString(`${attemptId}:${b.key}`)) };
+  });
+  return {
+    attemptId, score, accuracy, words, xp, profile,
+    segments: row.segments.map((segment, index) => ({ index, expected: segment.text, actual: answers[index] ?? "", errors: errors.filter((e) => e.segment === index) })),
+    justification, categoryLabels: CATEGORY_LABELS,
+  };
+}
+
+const normalizeAnswerWord = (word: string) => word.normalize("NFC").trim().replace(/^\d+:/u, "").replace(/[.,;:!?«»"()\[\]…]/gu, "").toLocaleLowerCase("fr");
+
+function hashString(text: string): number { let h = 2166136261; for (const char of text) { h ^= char.codePointAt(0)!; h = Math.imul(h, 16777619) >>> 0; } return h; }
+
+const justifySchema = z.object({ attemptId: z.string().uuid(), choices: z.array(z.object({ errorIndex: z.number().int().min(0).max(40), category: z.string().max(40) })).max(6) });
+
+/** Records the négociée justifications; a correct justification is a hinted success on the node, down-weighted like a hinted practice answer. */
+export async function submitDictationJustifications(input: unknown) {
+  const data = checked(justifySchema, input); const { studentId } = await context();
+  const service = createServiceClient();
+  const { data: attempt, error } = await service.from("dictation_attempts").select("id,errors,submitted_at,justifications").eq("id", data.attemptId).eq("student_id", studentId).single();
+  if (error || !attempt || !attempt.submitted_at) throw new Error("Tentative introuvable.");
+  if ((attempt.justifications as unknown[]).length > 0) return { correct: Number((attempt as { justification_correct?: number }).justification_correct ?? 0), total: (attempt.justifications as unknown[]).length };
+  const errors = attempt.errors as DictationError[];
+  const results = data.choices.map((choice) => ({ ...choice, correct: errors[choice.errorIndex]?.category === choice.category }));
+  const correct = results.filter((r) => r.correct).length;
+  await service.from("dictation_attempts").update({ justifications: results, justification_correct: correct }).eq("id", attempt.id);
+  const justifiedKeys = [...new Set(results.filter((r) => r.correct).map((r) => errors[r.errorIndex].nodeKey))];
+  if (justifiedKeys.length) {
+    const { data: nodes } = await service.from("competency_nodes").select("id,key").in("key", justifiedKeys);
+    const at = new Date().toISOString();
+    for (const node of nodes ?? []) {
+      await recordDirectCompetencyEvidence({ service, studentId, nodeId: node.id as string, at, evidenceExpectation: "receptive", occurrenceKey: `dictation:${attempt.id as string}:justified`, sourceType: "dictation", sourceId: attempt.id as string, hintsUsed: 1, updateMastery: (prior) => bktUpdateWeighted(prior, true, 0.5), correct: true, memoryResult: "hard", pathMastery: (value) => Math.min(value, 0.84) });
+    }
+  }
+  return { correct, total: results.length };
+}
+
+/** Class aggregate for the cooperative goal; no per-student figures leave the server (roadmap 6.5). */
+export async function loadStudentClassGoal(input: unknown) {
+  checked(emptySchema, input); const { supabase, studentId } = await context();
+  const { data: enrollments } = await supabase.from("enrollments").select("class_id,classes!inner(name)").eq("student_id", studentId).eq("status", "active").limit(3);
+  if (!enrollments?.length) return null;
+  const now = new Date(); const diff = (now.getUTCDay() + 6) % 7;
+  const weekStart = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() - diff)).toISOString().slice(0, 10);
+  const service = createServiceClient();
+  for (const enrollment of enrollments) {
+    const { data } = await service.rpc("class_goal_progress", { p_class_id: enrollment.class_id as string, p_week_start: weekStart });
+    const row = Array.isArray(data) ? data[0] : data;
+    if (row) return { className: (enrollment.classes as unknown as { name: string }).name, targetXp: Number(row.target_xp), earnedXp: Number(row.earned_xp), activeMembers: Number(row.active_members), members: Number(row.members) };
+  }
+  return null;
+}
+
+export type RecueilEntry = { kind: "production" | "summary"; id: string; at: string; title: string; text: string; note: string | null };
+
+/** Final drafts of the trimester for the printable recueil (roadmap 5.6): demonstrated productions and last summary revisions. */
+export async function loadStudentRecueil(input: unknown): Promise<{ since: string; entries: RecueilEntry[] }> {
+  checked(emptySchema, input); const { supabase, studentId } = await context();
+  // French school trimesters: September–December, January–March, April–August.
+  const now = new Date(); const month = now.getUTCMonth();
+  const since = new Date(Date.UTC(now.getUTCFullYear(), month >= 8 ? 8 : month >= 3 ? 3 : 0, 1)).toISOString();
+  const [{ data: productions }, { data: evaluations }] = await Promise.all([
+    supabase.from("independent_production_submissions").select("id,content,submitted_at,demonstrated,competency_nodes!inner(label_fr)").eq("student_id", studentId).gte("submitted_at", since).order("submitted_at", { ascending: true }),
+    supabase.from("writing_evaluations").select("id,student_summary_id,submitted_text,revision_number,rubric,created_at").eq("student_id", studentId).gte("created_at", since).order("created_at", { ascending: true }),
+  ]);
+  const lastBySummary = new Map<string, { id: string; text: string; at: string; revision: number; score: number | null }>();
+  for (const row of evaluations ?? []) {
+    const key = row.student_summary_id as string; const current = lastBySummary.get(key);
+    if (!current || Number(row.revision_number) >= current.revision) lastBySummary.set(key, { id: row.id as string, text: row.submitted_text as string, at: row.created_at as string, revision: Number(row.revision_number), score: (row.rubric as { score?: number } | null)?.score ?? null });
+  }
+  const entries: RecueilEntry[] = [
+    ...(productions ?? []).filter((row) => row.demonstrated).map((row) => ({ kind: "production" as const, id: row.id as string, at: row.submitted_at as string, title: (row.competency_nodes as unknown as { label_fr: string }).label_fr, text: row.content as string, note: "Production libre · maîtrise démontrée" })),
+    ...[...lastBySummary.values()].map((entry) => ({ kind: "summary" as const, id: entry.id, at: entry.at, title: `Résumé de lecture (version ${entry.revision + 1})`, text: entry.text, note: entry.score != null ? `Rubrique ${entry.score}/100` : null })),
+  ].sort((a, b) => Date.parse(a.at) - Date.parse(b.at));
+  return { since: since.slice(0, 10), entries };
+}
+
+const justificationEventSchema = z.object({ sessionId: uuidSchema, questionKey: z.string().min(1).max(120), correct: z.boolean(), answerCorrect: z.boolean() });
+
+/** Records the cited-justification step of a reading question as a session event (roadmap 5.5). */
+export async function recordReadingJustification(input: unknown) {
+  const data = checked(justificationEventSchema, input); const { supabase, studentId } = await context();
+  const { error } = await supabase.from("reading_session_events").insert({ session_id: data.sessionId, student_id: studentId, event_type: "justification", event_payload: { question_key: data.questionKey, correct: data.correct, answer_correct: data.answerCorrect } });
+  if (error) throw new Error(error.message);
+  return { ok: true };
+}

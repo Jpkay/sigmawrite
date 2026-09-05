@@ -1,4 +1,4 @@
-import { DashboardShell, type NavItem } from "@/components/dashboard-shell";
+import { DashboardShell, type NavItem, type TabItem } from "@/components/dashboard-shell";
 import { getSessionProfile, requireRole } from "@/lib/auth";
 import { getStudentAccessGate } from "@/lib/db/lifecycle";
 import { isSupabaseConfigured } from "@/lib/supabase/server";
@@ -9,11 +9,23 @@ const nav: NavItem[] = [
   { href: "/student", label: "Accueil" },
   { href: "/student/onboarding", label: "Découverte" },
   { href: "/student/diagnostic", label: "Diagnostic" },
+  { href: "/student/dictee", label: "Dictées" },
   { href: "/student/vocabulary", label: "Vocabulaire" },
   { href: "/student/memory", label: "Mémoire" },
   { href: "/student/progress", label: "Progrès" },
+  { href: "/student/recueil", label: "Mon recueil" },
   { href: "/student/frontier", label: "Frontière" },
+  { href: "/student/inbox", label: "Messages" },
+  { href: "/student/reference/verbe", label: "Référence", matchPrefixes: ["/student/reference"] },
   { href: "/student/settings", label: "Paramètres" },
+];
+
+const tabs: TabItem[] = [
+  { href: "/student", label: "Accueil", icon: "home" },
+  { href: "/student/dictee", label: "Dictées", icon: "pen" },
+  { href: "/student/memory", label: "Mémoire", icon: "brain" },
+  { href: "/student/progress", label: "Progrès", icon: "progress" },
+  { href: "/student/inbox", label: "Messages", icon: "inbox" },
 ];
 
 export default async function StudentLayout({
@@ -31,6 +43,7 @@ export default async function StudentLayout({
     <DashboardShell
       area="Élève"
       nav={nav}
+      tabs={tabs}
       user={{ name: session?.displayName ?? "Élève", role: session?.role ?? "student", analyticsId: session?.id }}
     >
       {access && !access.authorized

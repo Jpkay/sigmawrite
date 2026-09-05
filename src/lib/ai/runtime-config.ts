@@ -8,7 +8,16 @@ export type AIRuntimeConfig = {
   embeddingBaseUrl: string;
   embeddingApiKey: string;
   embeddingModel: string;
+  /** Text-to-speech for dictée audio; null when no key is configured so callers fail closed. */
+  speech?: { baseUrl: string; apiKey: string; model: string; voice: string } | null;
 };
+
+function resolveSpeech(env: Record<string, string | undefined>, fallbackBase: string, fallbackKey: string) {
+  const apiKey = env.TTS_API_KEY ?? fallbackKey;
+  const baseUrl = (env.TTS_BASE_URL ?? fallbackBase).replace(/\/$/, "");
+  if (!apiKey || !baseUrl) return null;
+  return { baseUrl, apiKey, model: env.TTS_MODEL ?? "gpt-4o-mini-tts", voice: env.TTS_VOICE ?? "alloy" };
+}
 
 export function resolveAIRuntimeConfig(env: Record<string, string | undefined> = process.env): AIRuntimeConfig {
   const kind = (env.AI_PROVIDER ?? "mock") as AIProviderKind;
@@ -23,6 +32,7 @@ export function resolveAIRuntimeConfig(env: Record<string, string | undefined> =
     embeddingBaseUrl: "",
     embeddingApiKey: "",
     embeddingModel: "mock-embedding-v1",
+    speech: resolveSpeech(env, env.TTS_BASE_URL ?? "", ""),
   };
   if (kind === "openai") {
     const apiKey = env.OPENAI_API_KEY ?? "";
@@ -35,6 +45,7 @@ export function resolveAIRuntimeConfig(env: Record<string, string | undefined> =
       embeddingBaseUrl: (env.EMBEDDING_BASE_URL ?? env.OPENAI_BASE_URL ?? "https://api.openai.com/v1").replace(/\/$/, ""),
       embeddingApiKey: env.EMBEDDING_API_KEY ?? apiKey,
       embeddingModel: env.EMBEDDING_MODEL ?? "text-embedding-3-small",
+      speech: resolveSpeech(env, env.OPENAI_BASE_URL ?? "https://api.openai.com/v1", apiKey),
     };
   }
   const openRouterKey = env.OPENROUTER_API_KEY ?? "";
@@ -53,5 +64,6 @@ export function resolveAIRuntimeConfig(env: Record<string, string | undefined> =
     embeddingBaseUrl: (env.EMBEDDING_BASE_URL ?? (openRouterKey ? "https://openrouter.ai/api/v1" : "")).replace(/\/$/, ""),
     embeddingApiKey: env.EMBEDDING_API_KEY ?? openRouterKey,
     embeddingModel: env.EMBEDDING_MODEL ?? (openRouterKey ? "openai/text-embedding-3-small" : "text-embedding-3-small"),
+    speech: resolveSpeech(env, env.TTS_BASE_URL ?? "", ""),
   };
 }

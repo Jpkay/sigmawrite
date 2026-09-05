@@ -16,6 +16,7 @@ type Stored = GeneratedItem & {
   reviewStatus?: GateResults["verdict"];
   generationModel?: string;
   promptVersion?: string;
+  generationType?: "human" | "ai" | "ai_human_reviewed";
 };
 const items = JSON.parse(readFileSync(path, "utf8")) as Stored[];
 const nodeKeys = [...new Set(items.map((item) => item.nodeKey))];
@@ -51,13 +52,13 @@ for (const batch of chunks(missing, 100)) {
     prompt_fr: item.promptFr,
     instructions_fr: item.instructionsFr ?? null,
     correct_answer: item.correctAnswer ?? null,
-    acceptable_answers: item.acceptableAnswers,
+    acceptable_answers: item.acceptableAnswers ?? [],
     validator_type: item.validatorType,
     validator_config: item.validatorConfig ?? null,
     cefr_level: item.cefrLevel ?? null,
     difficulty: item.difficulty ?? 50,
-    generation_type: "ai",
-    generation_model: item.generationModel ?? "glm-5.2",
+    generation_type: item.generationType ?? "ai",
+    generation_model: item.generationModel ?? (item.generationType === "human" ? "human" : "glm-5.2"),
     prompt_version: item.promptVersion ?? "item-generation-v1",
     qc_gates: item.qcGates ?? {},
     review_status: item.reviewStatus ?? "auto_approved",
