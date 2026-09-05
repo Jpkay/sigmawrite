@@ -5,6 +5,7 @@ import {
 } from "@/lib/ai/item-generation/schemas";
 import { checksum, type TaxonomyCandidate } from "@/lib/taxonomy/validate";
 import { conjugate, type Person, type Tense } from "@/lib/linguistic/conjugation";
+import { PARTIAL_PUBLICATION_FLOORS, type DiagnosticPublicationMode } from "./protocol";
 import {
   assessDiagnosticBankReadiness,
   DIAGNOSTIC_SECTIONS,
@@ -63,6 +64,7 @@ export function validateCanonicalDiagnosticBank(
   taxonomy: TaxonomyCandidate,
 ) {
   const issues: string[] = [];
+  const pendingItemKeys = new Set<string>();
   const nodeByKey = new Map(taxonomy.nodes.map((node) => [node.key, node]));
   const seen = new Set<string>();
   const seenItemKeys = new Set<string>();
@@ -122,7 +124,10 @@ export function validateCanonicalDiagnosticBank(
     }
     const releaseEligible = hasHumanReview
       || computedConjugationApproved;
-    if (!releaseEligible && entry.reviewStatus !== "rejected") {
+    // Items still awaiting review are excluded from the served pool rather than
+    // blocking publication; they are counted so the readout stays honest.
+    if (!releaseEligible && entry.reviewStatus === "needs_human_review") pendingItemKeys.add(entry.itemKey);
+    else if (!releaseEligible && entry.reviewStatus !== "rejected") {
       issues.push(`items.${index}: item is not release-approved`);
     }
     return releaseEligible;
@@ -203,17 +208,30 @@ export function validateCanonicalDiagnosticBank(
     .sort((left, right) =>
       `${left.item.nodeKey}:${left.item.promptFr}`.localeCompare(`${right.item.nodeKey}:${right.item.promptFr}`)
     );
+  const publicationMode: DiagnosticPublicationMode = pendingItemKeys.size === 0 ? "complete" : "partial";
+  const partialShortfalls = publicationMode === "partial"
+    ? sections.flatMap((section) => {
+      const gaps: string[] = [];
+      if (section.approvedItemCount < PARTIAL_PUBLICATION_FLOORS.minApprovedItems) gaps.push(`${section.key}: ${section.approvedItemCount}/${PARTIAL_PUBLICATION_FLOORS.minApprovedItems} approved items`);
+      if (section.nodesWithItems < PARTIAL_PUBLICATION_FLOORS.minNodesWithItems) gaps.push(`${section.key}: ${section.nodesWithItems}/${PARTIAL_PUBLICATION_FLOORS.minNodesWithItems} nodes with approved items`);
+      return gaps;
+    })
+    : [];
   const manifest = {
     itemCount: artifact.items.length,
     eligibleItemCount: eligible.length,
+    pendingItemCount: pendingItemKeys.size,
+    publicationMode,
     nodeCount: new Set(eligible.map((entry) => entry.item.nodeKey)).size,
     sectionReadiness: sections,
     checksum: checksum({ bank: artifact.bank, taxonomy: artifact.taxonomy, items: content }),
   };
   return {
-    valid: issues.length === 0 && sections.every((section) => section.ready),
-    issues,
+    valid: issues.length === 0 && sections.every((section) => section.ready) && partialShortfalls.length === 0,
+    issues: [...issues, ...partialShortfalls],
     sections,
+    publicationMode,
+    pendingItemCount: pendingItemKeys.size,
     manifest,
   };
 }

@@ -208,6 +208,20 @@ export type DiagnosticBankSectionReadiness = {
   ready?: boolean;
 };
 
+/**
+ * Partial publication (approved 2026-09-05): a bank may publish while items are
+ * still pending review when every section already holds enough approved items
+ * to place a student without repeating probes. Pending items are never served;
+ * they join the live pool as reviewers approve them. Floors are twice the
+ * protocol's per-section maximum so no run exhausts a section.
+ */
+export const PARTIAL_PUBLICATION_FLOORS = {
+  minApprovedItems: 24,
+  minNodesWithItems: 10,
+} as const;
+
+export type DiagnosticPublicationMode = "complete" | "partial";
+
 export function assessDiagnosticBankReadiness(
   sections: DiagnosticBankSectionReadiness[],
 ) {

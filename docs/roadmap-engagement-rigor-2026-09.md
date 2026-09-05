@@ -45,7 +45,7 @@ acceptance test.
 
 ## Phase 0 — Content unblock (blocks everything; not code)
 
-- [ ] **0.1** Allocate the 8 replacement diagnostic candidates and finish the 465 pending reviews; publish the exact v2 bank checksum. *Accept:* `npm run diagnostic:verify:v2` passes.
+- [ ] **0.1** Publish the v2 bank. Decision 2026-09-05: partial publication is allowed (migration `0124`): every section needs ≥24 approved items over ≥10 nodes, two confirmable nodes and the production minimums; pending items are never served and join the pool as approved. `npm run diagnostic:plan-review-hour` lists the 25 items whose approval makes the bank publishable (`docs/pilot/review-hour-plan.md`); the other 440 continue after launch. *Accept:* `npm run diagnostic:verify:v2` passes.
 - [ ] **0.2** Reach 60 human-approved passages with 3 independent reviews each; lock 6 benchmarks. *Accept:* `npm run launch:audit-content` reports 0 blocking gaps.
 - [ ] **0.3** Author repair micro-lessons per strand family (target 12, up from 3 in `src/lib/content/micro-lessons.ts`). *Accept:* every `repair/[skillKey]` reachable from a failure remediation link resolves.
 
