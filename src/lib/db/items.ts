@@ -45,6 +45,7 @@ export async function getCompetencyItems(filters: { status?: string; node?: stri
   if (filters.node) query = query.eq("competency_nodes.key", filters.node);
   if (filters.promptVersion) query = query.eq("prompt_version", filters.promptVersion);
   if (filters.ids) query = query.in("id", filters.ids);
+  if (filters.ids) query = query.in("id", filters.ids);
   if (filters.section) query = query.eq("diagnostic_item_bank_memberships.section_key", filters.section);
   if (filters.difficultyTier) query = query.eq("diagnostic_item_bank_memberships.difficulty_tier", filters.difficultyTier);
   if (filters.reviewerProfileId) query = query
@@ -369,7 +370,7 @@ export async function getReviewerExerciseHistory(reviewerProfileId: string, clie
   });
 }
 
-export async function getDiagnosticItemReviewCount(filters: { section?: string; difficultyTier?: string; reviewerProfileId?: string } = {}, client?: SupabaseClient) {
+export async function getDiagnosticItemReviewCount(filters: { section?: string; difficultyTier?: string; reviewerProfileId?: string; ids?: string[] } = {}, client?: SupabaseClient) {
   const supabase = client ?? await createClient();
   const assignmentJoin = filters.reviewerProfileId
     ? ",competency_item_review_assignments!inner(reviewer_profile_id,status)"
@@ -378,6 +379,7 @@ export async function getDiagnosticItemReviewCount(filters: { section?: string; 
     .select(`id,diagnostic_item_bank_memberships!inner(section_key,difficulty_tier)${assignmentJoin}`, { count: "exact", head: true })
     .eq("prompt_version", "diagnostic-bank-v2")
     .eq("review_status", "needs_human_review");
+  if (filters.ids) query = query.in("id", filters.ids);
   if (filters.section) query = query.eq("diagnostic_item_bank_memberships.section_key", filters.section);
   if (filters.difficultyTier) query = query.eq("diagnostic_item_bank_memberships.difficulty_tier", filters.difficultyTier);
   if (filters.reviewerProfileId) query = query

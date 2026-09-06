@@ -6,6 +6,8 @@ import { curriculumTagsFor } from "@/lib/curriculum/tags";
 import { createClient } from "@/lib/supabase/server";
 import { ItemAssignmentManager } from "./item-assignment-manager";
 import { ItemAdminNav } from "../item-admin-nav";
+import { stableUuid } from "@/lib/lexicon/baseline";
+import reviewHourPlan from "../../../../../generated/review-hour-plan.json";
 
 const PAGE_SIZE = 24;
 const sections = new Set(["reading_comprehension", "grammar", "spelling", "conjugation"]);
@@ -21,6 +23,9 @@ export default async function ItemReviewPage({ searchParams }: ReviewPageProps) 
   const section = typeof query.section === "string" && sections.has(query.section) ? query.section : undefined;
   const difficultyTier = typeof query.tier === "string" && tiers.has(query.tier) ? query.tier : undefined;
   const scope = query.scope === "practice-v3" ? "practice-v3" : "diagnostic";
+  // `?plan=review-hour`: only the items from docs/pilot/review-hour-plan.md (ids are deterministic from the item key).
+  const plan = query.plan === "review-hour" && scope === "diagnostic";
+  const planIds = plan ? reviewHourPlan.items.filter((entry) => !section || entry.section === section).map((entry) => stableUuid("sigmawrite-diagnostic-item", `${reviewHourPlan.bankKey}:${entry.itemKey}`)) : undefined;
   const requestedPage = typeof query.page === "string" ? Number.parseInt(query.page, 10) : 1;
   const page = Number.isFinite(requestedPage) ? Math.max(1, requestedPage) : 1;
   const reviewData = scope === "practice-v3"
@@ -29,8 +34,8 @@ export default async function ItemReviewPage({ searchParams }: ReviewPageProps) 
   const [items, filteredTotal, progress] = reviewData
     ? [reviewData.items, reviewData.filteredTotal, reviewData.progress]
     : await Promise.all([
-      getCompetencyItems({ status: "needs_human_review", promptVersion: "diagnostic-bank-v2", section, difficultyTier, offset: (page - 1) * PAGE_SIZE, limit: PAGE_SIZE }),
-      getDiagnosticItemReviewCount({ section, difficultyTier }),
+      getCompetencyItems({ status: "needs_human_review", promptVersion: "diagnostic-bank-v2", section, difficultyTier, ids: planIds, offset: (page - 1) * PAGE_SIZE, limit: PAGE_SIZE }),
+      getDiagnosticItemReviewCount({ section, difficultyTier, ids: planIds }),
       getDiagnosticItemReviewProgress(),
     ]);
   // Reviewers asked "for which level is this?": attach the programme attendus to every item (roadmap 4.2).
@@ -40,5 +45,5 @@ export default async function ItemReviewPage({ searchParams }: ReviewPageProps) 
   const assignmentOverview = reviewer.role === "platform_admin" && scope === "diagnostic"
     ? await getDiagnosticItemAssignmentOverview()
     : null;
-  return <><PageHeader title={scope === "practice-v3" ? "Validation de la pratique v3" : "Revue du diagnostic v2"} description={scope === "practice-v3" ? "Valide uniquement les exercices nécessaires pour ouvrir chaque compétence contrôlée aux élèves." : "Vérifie l’énoncé, la réponse, le niveau et les contrôles avant toute publication aux élèves."} /><ItemAdminNav />{assignmentOverview && <ItemAssignmentManager overview={assignmentOverview} />}<ItemReviewQueue scope={scope} initialItems={taggedItems} progress={progress} filters={{ section: section ?? "", tier: difficultyTier ?? "" }} pagination={{ page: Math.min(page, pageCount), pageCount, filteredTotal }} /></>;
+  return <><PageHeader title={scope === "practice-v3" ? "Validation de la pratique v3" : "Revue du diagnostic v2"} description={scope === "practice-v3" ? "Valide uniquement les exercices nécessaires pour ouvrir chaque compétence contrôlée aux élèves." : "Vérifie l’énoncé, la réponse, le niveau et les contrôles avant toute publication aux élèves."} /><ItemAdminNav />{assignmentOverview && <ItemAssignmentManager overview={assignmentOverview} />}<ItemReviewQueue scope={scope} initialItems={taggedItems} progress={progress} filters={{ section: section ?? "", tier: difficultyTier ?? "", plan }} planTotal={planIds?.length ?? reviewHourPlan.total} pagination={{ page: Math.min(page, pageCount), pageCount, filteredTotal }} /></>;
 }

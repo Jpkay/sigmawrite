@@ -89,5 +89,10 @@ for (const [section, picks] of Object.entries(plan)) {
   lines.push("");
 }
 writeFileSync(output, `${lines.join("\n")}\n`);
+// Machine-readable copy for the portal filter `/admin/items/review?plan=review-hour`.
+writeFileSync("generated/review-hour-plan.json", `${JSON.stringify({
+  generatedAt: new Date().toISOString(), bankKey: bank.bank.key, total,
+  items: Object.entries(plan).flatMap(([section, picks]) => picks.map((entry) => ({ section, itemKey: entry.itemKey, nodeKey: entry.nodeKey, reason: entry.reason }))),
+}, null, 2)}\n`);
 console.log(JSON.stringify({ total, perSection: Object.fromEntries(Object.entries(plan).map(([key, value]) => [key, value.length])), simulatedValid: result.valid && sectionsReady, output }));
 if (!(result.valid && sectionsReady)) process.exit(1);
