@@ -1,6 +1,6 @@
 # Plan de relecture prioritaire — 2026-09-05
 
-25 items à relire pour publier la banque diagnostique v2 en mode partiel (planchers : 24 items approuvés et 10 nœuds par section, deux nœuds confirmables, items de production). Les 415 autres items en attente continuent d’être relus après la mise en service ; ils ne sont jamais servis avant approbation.
+26 items à relire pour publier la banque diagnostique v2 en mode partiel (planchers : 24 items approuvés et 10 nœuds par section, deux nœuds confirmables, items de production). Les 446 autres items en attente continuent d’être relus après la mise en service ; ils ne sont jamais servis avant approbation.
 
 Vérification par simulation : toutes les sections sont prêtes une fois ces items approuvés.
 
@@ -59,17 +59,18 @@ En rangeant une étagère de la bibliothèque, Malik découvrit un vieux carnet 
 
 Dans certains quartiers, les abeilles trouvent beaucoup de fleurs au printemps, puis presque plus rien en été. Cette rupture  |
 
-## grammar — 5 item(s)
+## grammar — 6 item(s)
 
 | Clé | Nœud | Preuve | Pourquoi | Énoncé |
 | --- | --- | --- | --- | --- |
-| `local-grammar-v1:relation_but:receptive:stretch` | relation_but | reading-analysis (receptive) | rend le nœud relation_but confirmable | Quelle relation exprime « Ils protègent la rive ; la végétation se développe » lorsqu’on les relie avec « afin que » ? |
-| `local-grammar-v1:relation_but:controlled_production:stretch` | relation_but | writing-controlled-production (controlled_production) | rend le nœud relation_but confirmable | Relie avec « afin que » : « Ils protègent la rive. La végétation se développe. » |
 | `review-draft-v1:construction_pronom_relatif:receptive:stretch` | construction_pronom_relatif | reading-analysis (receptive) | rend le nœud construction_pronom_relatif confirmable | Dans la phrase « La pomme que j'ai mangée était délicieuse », quelle est la fonction du pronom relatif « que » ? |
 | `review-draft-v1:construction_pronom_relatif:controlled_production:core` | construction_pronom_relatif | writing-controlled-production (controlled_production) | rend le nœud construction_pronom_relatif confirmable | Relie les deux phrases avec un pronom relatif. Écris la phrase complète.
 
 Voici la lettre. Je l'ai reçue hier. |
 | `review-draft-v1:construction_pronom_relatif:controlled_production:stretch` | construction_pronom_relatif | writing-controlled-production (controlled_production) | rend le nœud construction_pronom_relatif confirmable | Réécris la phrase en remplaçant le groupe souligné par le pronom relatif « que » : « Je regarde le film ___ tu m'as recommandé. » |
+| `local-grammar-v1:construction_subordonnee_circonstancielle:receptive:core` | construction_subordonnee_circonstancielle | reading-analysis (receptive) | rend le nœud construction_subordonnee_circonstancielle confirmable | Quelle phrase contient une subordonnée circonstancielle de cause ? |
+| `local-grammar-v1:construction_subordonnee_circonstancielle:receptive:stretch` | construction_subordonnee_circonstancielle | reading-analysis (receptive) | rend le nœud construction_subordonnee_circonstancielle confirmable | Quelle phrase contient une subordonnée circonstancielle de condition ? |
+| `local-grammar-v1:construction_subordonnee_circonstancielle:controlled_production:stretch` | construction_subordonnee_circonstancielle | writing-controlled-production (controlled_production) | rend le nœud construction_subordonnee_circonstancielle confirmable | Réunis avec « si » : « Vous suivez le plan. Vous trouverez la sortie. » |
 
 ## spelling — 4 item(s)
 

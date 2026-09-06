@@ -1,5 +1,6 @@
 import { z, type ZodType } from "zod";
-import type { AIProvider, SpeechInput, SpeechResult } from "@/lib/ai/provider";
+import { planToText, type AIProvider, type SpeechInput, type SpeechPart, type SpeechResult } from "@/lib/ai/provider";
+import { encodeWav, parseWav, silence } from "@/lib/ai/wav";
 import {
   generatedTextCandidateSchema,
   generatedQuestionSchema,
@@ -120,6 +121,32 @@ export class OpenAICompatibleAIProvider implements AIProvider {
     const audio = new Uint8Array(await response.arrayBuffer());
     if (audio.byteLength < 100) throw new Error("Speech response was empty");
     return { audio, mimeType: "audio/mpeg", provider: this.config.kind, model: speech.model, voice };
+  }
+
+  /**
+   * Kokoro-FastAPI (TTS_MODEL=kokoro) exposes raw WAV and a phoneme endpoint,
+   * so a plan is rendered chunk by chunk and spliced with exact silences.
+   * Other speech backends receive the plan's text form.
+   */
+  async synthesizeSpeechPlan(parts: SpeechPart[], input: Omit<SpeechInput, "text"> = {}): Promise<SpeechResult> {
+    const speech = this.config.speech;
+    if (!speech) throw new Error("Speech synthesis is not configured (TTS_API_KEY / TTS_BASE_URL).");
+    const voice = input.voice ?? speech.voice;
+    if (!/kokoro/iu.test(speech.model)) return this.synthesizeSpeech({ ...input, text: planToText(parts) });
+    const headers = { "Content-Type": "application/json", Authorization: `Bearer ${speech.apiKey}` };
+    const root = speech.baseUrl.replace(/\/v1$/u, "");
+    const rendered: ({ kind: "audio"; chunk: ReturnType<typeof parseWav> } | { kind: "silence"; seconds: number })[] = [];
+    for (const part of parts) {
+      if (part.kind === "silence") { rendered.push({ kind: "silence", seconds: part.seconds }); continue; }
+      const response = part.kind === "text"
+        ? await this.fetchImpl(`${speech.baseUrl}/audio/speech`, { method: "POST", headers, body: JSON.stringify({ model: speech.model, input: part.text, voice, response_format: "wav", speed: input.speed ?? 0.9, lang_code: voice.charAt(0) }) })
+        : await this.fetchImpl(`${root}/dev/generate_from_phonemes`, { method: "POST", headers, body: JSON.stringify({ phonemes: part.phonemes, voice }) });
+      if (!response.ok) throw new Error(`Speech request failed (${response.status}) for ${part.kind}`);
+      rendered.push({ kind: "audio", chunk: parseWav(new Uint8Array(await response.arrayBuffer())) });
+    }
+    const rate = rendered.find((entry): entry is { kind: "audio"; chunk: ReturnType<typeof parseWav> } => entry.kind === "audio")?.chunk.sampleRate ?? 24000;
+    const audio = encodeWav(rendered.map((entry) => (entry.kind === "audio" ? entry.chunk : silence(rate, entry.seconds))));
+    return { audio, mimeType: "audio/wav", provider: this.config.kind, model: speech.model, voice };
   }
 
   async embed(input: EmbeddingInput): Promise<number[]> {

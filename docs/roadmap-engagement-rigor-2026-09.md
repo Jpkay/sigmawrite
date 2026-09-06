@@ -67,6 +67,7 @@ acceptance test.
 - [x] **2.4** Sentence-combining widget with multiple accepted answers (Quill model), graded by a whitelist of accepted forms + LanguageTool. **M**.
 - [x] **2.5** Ordering widget (schema type exists, no UI): reorder words/clauses; keyboard and touch accessible. **S**.
 - [ ] **2.6** Bank generation prompts and QA gates for each new type in `src/lib/generation`, with the deterministic validators as Gate 0. **M**. *Accept:* ≥40 approved items per new type before it enters the scheduler mix. 2026-09-04: 23 hand-authored items in `generated/exercise-format-items-v1.json` (needs_human_review) seed the formats; prompts not written.
+- [ ] **1.8** Hosted French voice (ElevenLabs or OpenAI `gpt-4o-mini-tts`) as an alternative speech backend: implement the speech-plan interface with `<break>` tags, render side by side with Kokoro, pick by ear. Not urgent (decision 2026-09-06); Kokoro with the spliced pipeline stays the default. **S**.
 - [ ] **2.8** Conjugation-engine grading of free réécriture answers (recompute expected forms from the source sentence) with a 20-transform golden set. **M**.
 - [ ] **2.7** Response-type interleaving in `session-plan.ts` includes the new types and deliberately pairs confusable contrasts (PC/imparfait, futur/conditionnel, a/à, ses/ces) via `same_family` edges. **S**. *Accept:* benchmark scenario in `scripts/run-french-learning-benchmarks.mts`.
 

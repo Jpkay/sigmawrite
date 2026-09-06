@@ -27,7 +27,22 @@ export interface AIProvider {
   embed(input: EmbeddingInput): Promise<number[]>;
   /** Render French speech for dictée segments. Must throw when no speech backend is configured. */
   synthesizeSpeech(input: SpeechInput): Promise<SpeechResult>;
+  /**
+   * Render a dictée plan: text chunks, phoneme-spelled words and exact silences.
+   * Backends without phoneme or silence control fall back to the plan's text form.
+   */
+  synthesizeSpeechPlan(parts: SpeechPart[], input?: Omit<SpeechInput, "text">): Promise<SpeechResult>;
 }
 
+export type SpeechPart =
+  | { kind: "text"; text: string }
+  | { kind: "phonemes"; phonemes: string; text: string }
+  | { kind: "silence"; seconds: number };
+
 export type SpeechInput = { text: string; voice?: string; speed?: number };
+
+/** Text-only rendering of a speech plan for backends without phoneme or silence control. */
+export function planToText(parts: SpeechPart[]): string {
+  return parts.map((part) => (part.kind === "silence" ? (part.seconds >= 0.4 ? "…" : ",") : part.text)).join(" ").replace(/\s+([,…])/gu, "$1").replace(/,\s*,/gu, ",").replace(/\s{2,}/gu, " ").trim();
+}
 export type SpeechResult = { audio: Uint8Array; mimeType: string; provider: string; model: string; voice: string };

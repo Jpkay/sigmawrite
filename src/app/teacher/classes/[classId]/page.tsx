@@ -14,7 +14,8 @@ import { ClassCredentialList } from "@/components/class-credential-list";
 import { getClassManagedAccounts } from "@/lib/db/users";
 import { requireRole } from "@/lib/auth";
 import { ClassGoalControl } from "@/components/class-goal-control";
-import { loadClassGoal } from "@/lib/actions/teacher";
+import { loadClassGoal, loadClassLeague } from "@/lib/actions/teacher";
+import { ClassLeagueControl } from "@/components/class-league-control";
 
 export default async function ClassDetailPage({
   params,
@@ -23,7 +24,7 @@ export default async function ClassDetailPage({
 }) {
   const { classId } = await params;
   const session = await requireRole(["teacher", "school_admin"]);
-  const classGoal = await loadClassGoal(classId).catch(() => null);
+  const [classGoal, classLeague] = await Promise.all([loadClassGoal(classId).catch(() => null), loadClassLeague(classId).catch(() => null)]);
   const [students, joinCode, managedAccounts] = await Promise.all([
     getClassStudents(classId),
     getActiveJoinCode(classId),
@@ -42,6 +43,7 @@ export default async function ClassDetailPage({
 
       {session.role === "teacher" && <ClassStudentAccountForm classId={classId} />}
       <ClassGoalControl classId={classId} initial={classGoal} memberCount={students.length} />
+      {classLeague && <ClassLeagueControl classId={classId} initial={classLeague} />}
       <JoinCodePanel classId={classId} initial={joinCode} />
       <div className="mb-5"><Link prefetch={false} href={`/api/teacher/classes/${classId}/export`} className={buttonVariants({ variant: "outline" })}>Télécharger le rapport CSV</Link></div>
 

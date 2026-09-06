@@ -246,3 +246,32 @@ export async function overrideWritingScore(input: unknown) {
   revalidatePath(`/teacher/students/${data.studentId}`);
   return { ok: true };
 }
+
+// ---------------------------------------------------------------------------
+// Class league controls (roadmap 6.6)
+// ---------------------------------------------------------------------------
+
+export async function loadClassLeague(classId: string) {
+  await requireRole(["teacher", "school_admin"]);
+  const supabase = await createClient(); const weekStart = await currentWeekStart();
+  const [{ data: cls }, { data, error }] = await Promise.all([
+    supabase.from("classes").select("league_enabled").eq("id", classId).maybeSingle(),
+    supabase.rpc("class_league", { p_class_id: classId, p_week_start: weekStart }),
+  ]);
+  if (error) throw new Error(error.message);
+  return {
+    enabled: cls?.league_enabled !== false, weekStart,
+    rows: ((data ?? []) as Record<string, unknown>[]).map((row) => ({ studentId: row.student_id as string, name: row.display_name as string, visible: !!row.visible, weekXp: Number(row.week_xp), streak: Number(row.streak), totalXp: Number(row.total_xp), tier: row.tier as string, rank: Number(row.rank) })),
+  };
+}
+
+export async function setClassLeagueEnabled(input: unknown) {
+  await requireRole(["teacher", "school_admin"]);
+  const data = z.object({ classId: z.string().uuid(), enabled: z.boolean() }).parse(input);
+  const supabase = await createClient();
+  const { error } = await supabase.rpc("set_class_league_enabled", { p_class_id: data.classId, p_enabled: data.enabled });
+  if (error) throw new Error(error.message);
+  await logAudit("teacher.class_league_toggled", { targetType: "class", targetId: data.classId, metadata: { enabled: data.enabled } });
+  revalidatePath(`/teacher/classes/${data.classId}`); revalidatePath("/student");
+  return { enabled: data.enabled };
+}

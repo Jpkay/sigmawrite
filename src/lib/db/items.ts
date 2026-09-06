@@ -10,6 +10,8 @@ type ProgressionLevel = {
 
 export type CompetencyItemRow = {
   id: string; nodeId: string; nodeKey: string; nodeLabel: string; strand: string;
+  /** Programme alignment chips for reviewers (cycle, 6e evaluation, Brevet), filled by the page. */
+  curriculumTags?: { framework: "cycle3" | "cycle4" | "eval6e" | "brevet"; code: string; labelFr: string }[];
   promptFr: string; correctAnswer: string | null; responseType: string; validatorType: string;
   difficulty: number | null; reviewStatus: string; qcGates: Record<string, unknown>;
   reviewNote: string | null;
