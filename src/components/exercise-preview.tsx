@@ -1,5 +1,6 @@
 "use client";
 
+import { shuffleChoices } from "@/lib/content/choice-order";
 import { useState } from "react";
 import { ExerciseSurface, type ExerciseSurfaceItem } from "@/components/exercise-surface";
 import { Button } from "@/components/ui/button";
@@ -13,6 +14,7 @@ export type PreviewCheck = (response: { selectedChoiceId?: string; answerText?: 
 
 /** Local rehearsal only: saving a review is a separate, explicit action. */
 export function ExercisePreview({ item, onCheck }: { item: PreviewItem; onCheck?: PreviewCheck }) {
+  const choices = shuffleChoices(item.choices, item.choiceOrderSeed ?? `exercise:${item.id}`);
   const [choice, setChoice] = useState<string | null>(null);
   const [answer, setAnswer] = useState("");
   const [order, setOrder] = useState<string[]>([]);
@@ -47,7 +49,7 @@ export function ExercisePreview({ item, onCheck }: { item: PreviewItem; onCheck?
     </div>
     {revealed && <div className="mb-6 border-l-2 border-primary bg-primary/5 p-4 text-sm leading-6">
       <p className="font-semibold">Corrigé</p>
-      {item.choices.length ? <ul className="mt-2 space-y-3">{item.choices.map((entry) => <li key={entry.id}><p><span className="font-semibold">{entry.correct ? "Réponse attendue : " : "Autre proposition : "}</span>{entry.text}</p>{entry.feedbackFr && <p className="text-muted-foreground">{entry.feedbackFr}</p>}</li>)}</ul> : <p className="mt-2 whitespace-pre-wrap">{item.correctAnswer || "Réponse ouverte à examiner avec la grille de correction."}</p>}
+      {item.choices.length ? <ul className="mt-2 space-y-3">{choices.map((entry) => <li key={entry.id}><p><span className="font-semibold">{entry.correct ? "Réponse attendue : " : "Autre proposition : "}</span>{entry.text}</p>{entry.feedbackFr && <p className="text-muted-foreground">{entry.feedbackFr}</p>}</li>)}</ul> : <p className="mt-2 whitespace-pre-wrap">{item.correctAnswer || "Réponse ouverte à examiner avec la grille de correction."}</p>}
       {item.responseType === "justified" && <p className="mt-3">Justification : {((item.validatorConfig?.rules as { key: string; label: string }[] | undefined) ?? []).find((entry) => entry.key === item.validatorConfig?.ruleKey)?.label ?? "À renseigner"}</p>}
       {item.rubric && <p className="mt-3 whitespace-pre-wrap">{item.rubric}</p>}
     </div>}

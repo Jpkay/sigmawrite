@@ -1,5 +1,7 @@
 "use client";
 
+import { readingChoiceSeed } from "@/lib/content/choice-order";
+
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import {
@@ -328,7 +330,7 @@ export function ReviewWorkspace({
                     <p className="text-xs font-semibold uppercase tracking-wide text-primary">
                       Question {index + 1} sur {questions.length}
                     </p>
-                    <div className="mt-4"><ExercisePreview item={{ id: `${assignment.assignmentId}-${index}`, promptFr: question.questionText, responseType: question.choices?.length ? "mcq" : "free_text", correctAnswer: question.correctAnswer, rubric: question.rubric, choices: (question.choices ?? []).map((text, choiceIndex) => ({ id: String(choiceIndex), text, correct: text === question.correctAnswer })) }} /></div>
+                    <div className="mt-4"><ExercisePreview item={{ id: `${assignment.assignmentId}-${index}`, promptFr: question.questionText, choiceOrderSeed: readingChoiceSeed(question.questionText, question.choices ?? []), responseType: question.choices?.length ? "mcq" : "free_text", correctAnswer: question.correctAnswer, rubric: question.rubric, choices: (question.choices ?? []).map((text, choiceIndex) => ({ id: String(choiceIndex), text, correct: text === question.correctAnswer })) }} /></div>
                     <fieldset disabled={locked} className="mt-5">
                       <legend className="text-sm font-medium">
                         Cette question est-elle correcte ?

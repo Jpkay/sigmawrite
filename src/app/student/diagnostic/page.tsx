@@ -1,5 +1,6 @@
 "use client";
 
+import { shuffleChoices } from "@/lib/content/choice-order";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, Check, CheckCircle2, Circle, LoaderCircle, XCircle } from "lucide-react";
@@ -221,6 +222,7 @@ export default function DiagnosticPage() {
   }
 
   const item = run.item;
+  const choices = shuffleChoices(item.choices, `exercise:${item.id}`);
   const currentSection = diagnosticSection(item.sectionKey);
   const currentProgress = run.progress.find((section) => section.key === item.sectionKey);
   const canSubmit = item.choices.length ? !!choice : !!answer.trim();
@@ -278,7 +280,7 @@ export default function DiagnosticPage() {
             <h2 className="max-w-3xl text-lg font-medium leading-7 sm:text-xl">{item.promptFr}</h2>
             {item.choices.length ? (
               <div className="mt-6 grid gap-2.5">
-                {item.choices.map((option) => (
+                {choices.map((option) => (
                   <button
                     key={option.id}
                     type="button"

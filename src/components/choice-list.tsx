@@ -1,5 +1,6 @@
 "use client";
 
+import { readingChoiceSeed, shuffleChoices } from "@/lib/content/choice-order";
 import { Check, X } from "lucide-react";
 import { useId } from "react";
 import { cn } from "@/lib/utils";
@@ -26,6 +27,8 @@ export function ChoiceList({
   correctIndex?: number;
 }) {
   const promptId = useId();
+  // Keep the original index as the answer value, even when displayed elsewhere.
+  const ordered = shuffleChoices(choices.map((text, index) => ({ text, index })), readingChoiceSeed(prompt, choices));
   return (
     <div>
       {passage && (
@@ -35,7 +38,7 @@ export function ChoiceList({
       )}
       <fieldset aria-labelledby={promptId}><legend id={promptId} className="mb-3 font-medium">{prompt}</legend>
       <div className="space-y-2">
-        {choices.map((c, i) => {
+        {ordered.map(({ text: c, index: i }) => {
           const selected = value === i;
           const isCorrect = reveal && i === correctIndex;
           const isWrongPick = reveal && selected && i !== correctIndex;

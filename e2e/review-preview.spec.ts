@@ -13,12 +13,14 @@ test.describe("student previews in content review", () => {
     await page.goto("/admin/items/review");
     await page.getByRole("button", { name: "Voir le corrigé", exact: true }).waitFor();
     if (!await page.getByRole("radio").count()) await page.getByRole("button", { name: "Passer", exact: true }).click();
+    const choiceOrder = await page.getByRole("radio").allTextContents();
     await expect(page.getByText("On observe Marie de l’extérieur.", { exact: true })).toBeHidden();
-    await page.getByRole("radio").first().click();
+    await page.getByRole("radio", { name: /Marie avançait/ }).click();
     await page.getByRole("button", { name: "Vérifier ma réponse", exact: true }).click();
     await expect(page.getByText("Pas encore — essaie à nouveau.", { exact: true })).toBeVisible();
+    expect(await page.getByRole("radio").allTextContents()).toEqual(choiceOrder);
     await page.getByRole("button", { name: "Réessayer", exact: true }).click();
-    await page.getByRole("radio").last().click();
+    await page.getByRole("radio", { name: "Je sentais mon cœur battre et j’ignorais ce qui m’attendait.", exact: true }).click();
     await page.getByRole("button", { name: "Vérifier ma réponse", exact: true }).click();
     await expect(page.getByText("Bonne réponse.", { exact: true })).toBeVisible();
     await page.getByRole("button", { name: "Voir le corrigé", exact: true }).click();
