@@ -7,6 +7,7 @@ import { AuthCard, Field } from "@/components/auth-card";
 import { PasswordField } from "@/components/password-field";
 import { Button } from "@/components/ui/button";
 import { TurnstileChallenge, turnstileSiteKey } from "@/components/turnstile-challenge";
+import { joinClassWithoutEmail } from "@/lib/actions/auth";
 import { createClient } from "@/lib/supabase/client";
 
 type ValidCode = { class_name: string; school_name: string; school_consent_enabled: boolean };
@@ -44,6 +45,11 @@ export default function JoinPage() {
     try {
       if (turnstileSiteKey && !captchaToken) throw new Error("Termine la vérification anti-robot.");
       const supabase = createClient();
+      if (!email.trim()) {
+        // No inbox: the server creates the account with an internal address and the student signs in by username.
+        const created = await joinClassWithoutEmail({ code: code.trim(), displayName: name.trim(), username: username.trim().toLowerCase(), dateOfBirth, password, captchaToken });
+        router.push(created.signedIn ? "/student" : "/login?joined=1"); router.refresh(); return;
+      }
       const { data, error: signupError } = await supabase.auth.signUp({
         email: email.trim(), password,
         options: { data: { role: "student", display_name: name.trim(), username: username.trim().toLowerCase(), date_of_birth: dateOfBirth, join_code: code.trim().toUpperCase() }, captchaToken: captchaToken ?? undefined },
@@ -69,10 +75,11 @@ export default function JoinPage() {
         <Field label="Ton nom" required minLength={2} value={name} onChange={(event) => setName(event.target.value)} />
         <Field label="Date de naissance" type="date" required value={dateOfBirth} onChange={(event) => setDateOfBirth(event.target.value)} />
         <Field label="Nom d’utilisateur" name="username" autoComplete="username" pattern="[a-z0-9][a-z0-9._-]{1,30}[a-z0-9]" minLength={3} maxLength={32} required value={username} onChange={(event) => setUsername(event.target.value.toLowerCase())} />
-        <Field label="Ton e-mail" type="email" required value={email} onChange={(event) => setEmail(event.target.value)} />
+        <Field label="Ton e-mail (facultatif)" type="email" value={email} onChange={(event) => setEmail(event.target.value)} />
+        {!email.trim() && <p className="-mt-2 text-xs text-muted-foreground">Sans e-mail, tu te connecteras avec ton nom d’utilisateur. Seul ton enseignant pourra réinitialiser ton mot de passe.</p>}
         <PasswordField label="Mot de passe" required minLength={12} autoComplete="new-password" value={password} onChange={(event) => setPassword(event.target.value)} />
         <TurnstileChallenge action="student_signup" onToken={setCaptchaToken} resetSignal={captchaReset} />
-        <Button type="submit" className="w-full" disabled={busy || !name.trim() || !dateOfBirth || username.length < 3 || !email.trim() || password.length < 12 || Boolean(turnstileSiteKey && !captchaToken)}>{busy ? "Création…" : "Créer mon compte"}</Button>
+        <Button type="submit" className="w-full" disabled={busy || !name.trim() || !dateOfBirth || username.length < 3 || password.length < 12 || Boolean(turnstileSiteKey && !captchaToken)}>{busy ? "Création…" : "Créer mon compte"}</Button>
       </>}
       {error && <p className="text-sm text-destructive">{error}</p>}
     </form>

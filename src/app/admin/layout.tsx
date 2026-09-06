@@ -17,12 +17,12 @@ export default async function AdminLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const session = await requireRole(["platform_admin"]);
+  const session = await requireRole(["platform_admin", "school_admin"]);
   const reviewerAccess = await getReviewerAccess(session.id);
   return (
     <DashboardShell
       area="Administration"
-      nav={nav}
+      nav={session.role === "school_admin" ? [{ href: "/admin/users", label: "Comptes et accès" }, { href: "/teacher", label: "Établissement" }] : nav}
       user={{ name: session.displayName ?? "Admin", role: session.role, analyticsId: session.id }}
       modeSwitch={<AdminReviewerSwitch reviewerActive={Boolean(reviewerAccess?.active)} />}
     >

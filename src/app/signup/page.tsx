@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { AuthCard, Field } from "@/components/auth-card";
+import { PasswordField } from "@/components/password-field";
 import { Button } from "@/components/ui/button";
 import { TurnstileChallenge, turnstileSiteKey } from "@/components/turnstile-challenge";
 import { createClient } from "@/lib/supabase/client";
@@ -19,6 +20,17 @@ export default function SignupPage() {
   const [loading, setLoading] = useState(false);
   const [confirmationSent, setConfirmationSent] = useState(false);
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const [teacherCode, setTeacherCode] = useState("");
+  const [teacherSchool, setTeacherSchool] = useState<string | null>(null);
+  const [teacherCodeError, setTeacherCodeError] = useState("");
+
+  async function checkTeacherCode(code: string) {
+    setTeacherSchool(null); setTeacherCodeError("");
+    if (code.trim().length < 4) return;
+    const { data } = await createClient().rpc("validate_teacher_code", { p_code: code.trim() });
+    const row = Array.isArray(data) ? data[0] : data;
+    if (row?.school_name) setTeacherSchool(row.school_name as string); else setTeacherCodeError("Code inconnu. Demandez-le à l’administration de votre établissement.");
+  }
   const [captchaReset, setCaptchaReset] = useState(0);
 
   async function onSubmit(e: React.FormEvent) {
@@ -27,11 +39,12 @@ export default function SignupPage() {
     setLoading(true);
     try {
       if (turnstileSiteKey && !captchaToken) throw new Error("Terminez la vérification anti-robot.");
+      if (role === "teacher" && !teacherSchool) throw new Error("Un code établissement valide est requis pour un compte enseignant.");
       const supabase = createClient();
       const { data, error } = await supabase.auth.signUp({
         email,
         password,
-        options: { data: { role, display_name: name }, emailRedirectTo: `${window.location.origin}/auth/callback?next=/consent`, captchaToken: captchaToken ?? undefined },
+        options: { data: { role, display_name: name, teacher_code: role === "teacher" ? teacherCode.trim() : undefined }, emailRedirectTo: `${window.location.origin}/auth/callback?next=/consent`, captchaToken: captchaToken ?? undefined },
       });
       if (error) throw error;
       if (data.session) router.push("/consent");
@@ -73,6 +86,16 @@ export default function SignupPage() {
             <option value="teacher">Un enseignant</option>
           </select>
         </label>
+        {role === "teacher" && (
+          <Field
+            label="Code établissement"
+            required
+            autoComplete="off"
+            value={teacherCode}
+            onChange={(e) => { setTeacherCode(e.target.value.toUpperCase()); void checkTeacherCode(e.target.value); }}
+          />
+        )}
+        {role === "teacher" && <p className={`-mt-2 text-xs ${teacherSchool ? "text-success" : teacherCodeError ? "text-destructive" : "text-muted-foreground"}`} role="status">{teacherSchool ? `Établissement reconnu : ${teacherSchool}` : teacherCodeError || "Fourni par l’administration de votre établissement."}</p>}
         <Field
           label="Nom complet"
           required
@@ -86,11 +109,11 @@ export default function SignupPage() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <Field
+        <PasswordField
           label="Mot de passe"
-          type="password"
           required
           minLength={12}
+          autoComplete="new-password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
