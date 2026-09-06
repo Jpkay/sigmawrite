@@ -28,6 +28,7 @@ import type {
   ValidationResult,
   ValidationSpec,
 } from "./types";
+import { OPTIONAL_PERIOD_FEEDBACK, withOptionalFinalPeriod } from "./assessment-policy";
 
 /** Lowercase, collapse whitespace, optional case/punctuation. Accents kept —
  *  they are meaningful in French and frequently the thing under test. */
@@ -57,8 +58,14 @@ export async function validateAnswer(
     case "regex": {
       const pattern = spec.correctAnswer ?? "";
       let pass = false;
+      let toleratedPeriod = false;
       try {
         pass = new RegExp(pattern).test(answer.trim());
+        const alternative = withOptionalFinalPeriod(answer, spec.assessment, spec.config);
+        if (!pass && alternative) {
+          pass = new RegExp(pattern).test(alternative);
+          toleratedPeriod = pass;
+        }
       } catch {
         return {
           pass: false,
@@ -66,7 +73,7 @@ export async function validateAnswer(
           reason: `invalid regex: ${pattern}`,
         };
       }
-      return { pass, validator: "regex", normalized: answer.trim() };
+      return { pass, validator: "regex", normalized: answer.trim(), ...(toleratedPeriod ? { reason: OPTIONAL_PERIOD_FEEDBACK } : {}) };
     }
 
     case "grammalecte":
@@ -82,6 +89,14 @@ export async function validateAnswer(
       const hits = targetCategory
         ? result.matches.filter((m) => m.category === targetCategory)
         : result.matches;
+      const alternative = withOptionalFinalPeriod(answer, spec.assessment, spec.config);
+      if (hits.length && alternative) {
+        // Recheck the full answer: adding a period must resolve every targeted
+        // error, so spelling/agreement errors cannot be hidden by this rule.
+        const checked = await deps.grammarChecker.check(alternative);
+        const remaining = targetCategory ? checked.matches.filter((match) => match.category === targetCategory) : checked.matches;
+        if (!remaining.length) return { pass: true, validator: spec.validatorType, normalized: answer.trim(), ruleHits: [], reason: OPTIONAL_PERIOD_FEEDBACK };
+      }
       return {
         pass: hits.length === 0,
         validator: spec.validatorType,
@@ -152,9 +167,13 @@ function exactMatch(answer: string, spec: ValidationSpec): ValidationResult {
   const candidates = [spec.correctAnswer, ...(spec.acceptableAnswers ?? [])]
     .filter((c): c is string => typeof c === "string")
     .map((c) => normalize(c, opts));
+  const exact = candidates.includes(got);
+  const alternative = withOptionalFinalPeriod(answer, spec.assessment, spec.config);
+  const toleratedPeriod = !exact && alternative !== null && candidates.includes(normalize(alternative, opts));
   return {
-    pass: candidates.includes(got),
+    pass: exact || toleratedPeriod,
     validator: "exact",
     normalized: got,
+    ...(toleratedPeriod ? { reason: OPTIONAL_PERIOD_FEEDBACK } : {}),
   };
 }

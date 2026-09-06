@@ -1,13 +1,15 @@
+import { assessmentFromRow, type AssessmentRow } from "@/lib/linguistic/assessment-policy";
 import { validateAnswer } from "@/lib/linguistic/validator";
 import { LanguageToolChecker } from "@/lib/linguistic/languagetool";
 import type { ValidatorType } from "@/lib/linguistic/types";
 
-export type GradingItem = {
+export type GradingItem = AssessmentRow & {
   response_type: string; validator_type: string; validator_config: Record<string, unknown> | null;
   correct_answer: string | null; acceptable_answers: string[];
 };
 export async function gradePracticeResponse(item: GradingItem, choices: { id: string; is_correct: boolean; feedback_fr: string | null }[], data: { selectedChoiceId?: string; answerText?: string }) {
   let correct = false; let feedbackFr: string | null = null;
+  const assessment = assessmentFromRow(item);
   const responseType = item.response_type as string;
   const validatorConfig = (item.validator_config ?? {}) as Record<string, unknown>;
   if (responseType === "justified") {
@@ -33,7 +35,7 @@ export async function gradePracticeResponse(item: GradingItem, choices: { id: st
   }
   else if (responseType === "combine") {
     // Sentence combining (roadmap 2.4): any listed merge, or a clean single sentence that keeps every content word.
-    const validation = await validateAnswer(data.answerText ?? "", { validatorType: "exact", config: { ignorePunctuation: true }, correctAnswer: item.correct_answer as string | undefined, acceptableAnswers: item.acceptable_answers as string[] });
+    const validation = await validateAnswer(data.answerText ?? "", { validatorType: "exact", assessment, config: validatorConfig, correctAnswer: item.correct_answer as string | undefined, acceptableAnswers: item.acceptable_answers as string[] });
     correct = validation.pass;
     if (!correct) {
       const sentences = (validatorConfig.sentences as string[] | undefined) ?? [];
@@ -47,7 +49,7 @@ export async function gradePracticeResponse(item: GradingItem, choices: { id: st
       } else feedbackFr = !singleSentence ? "Il faut une seule phrase." : "Ta phrase oublie une information des phrases de départ.";
     } else feedbackFr = "Phrase bien combinée.";
   }
-  else { const validatorType=item.validator_type as ValidatorType; const grammarChecker=validatorType==="agreement"||validatorType==="grammalecte"?new LanguageToolChecker():undefined; const validation = await validateAnswer(data.answerText ?? "", { validatorType, config: item.validator_config as Record<string, unknown> | undefined, correctAnswer: item.correct_answer as string | undefined, acceptableAnswers: item.acceptable_answers as string[] },{grammarChecker}); correct = validation.pass; feedbackFr = validation.reason ?? null; }
+  else { const validatorType=item.validator_type as ValidatorType; const grammarChecker=validatorType==="agreement"||validatorType==="grammalecte"?new LanguageToolChecker():undefined; const validation = await validateAnswer(data.answerText ?? "", { validatorType, assessment, config: item.validator_config as Record<string, unknown> | undefined, correctAnswer: item.correct_answer as string | undefined, acceptableAnswers: item.acceptable_answers as string[] },{grammarChecker}); correct = validation.pass; feedbackFr = validation.reason ?? null; }
   return { correct, feedbackFr };
 }
 

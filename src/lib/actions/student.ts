@@ -52,6 +52,7 @@ import { nodePracticeEvidenceExpectation } from "@/lib/diagnostic/practice-evide
 import { requireStudentAccessAuthorized, requireStudentLearningUnlocked } from "@/lib/diagnostic/access";
 import { bktUpdate, bktUpdateWeighted, guessFromChoices, masteryUncertainty } from "@/lib/scoring/bkt";
 import { gradePracticeResponse } from "@/lib/practice/grade-response";
+import { assessmentFromRow } from "@/lib/linguistic/assessment-policy";
 import { validateAnswer } from "@/lib/linguistic/validator";
 import { LanguageToolChecker } from "@/lib/linguistic/languagetool";
 import {
@@ -1533,11 +1534,11 @@ export async function submitNodePractice(input: unknown) {
     .select("id,node_id,status,expires_at").eq("id", data.practiceSessionId).eq("student_id", studentId).single();
   if (!practiceSession || practiceSession.node_id !== data.nodeId || practiceSession.status !== "active") throw new Error("Cette leçon n’est plus active.");
   if (Date.parse(practiceSession.expires_at as string) <= Date.now()) throw new Error("Les sept minutes sont écoulées.");
-  const { data: item } = await service.from("competency_items").select("id,primary_node_id,learner_mode,modality,response_type,validator_type,validator_config,correct_answer,acceptable_answers,competency_item_choices(id,is_correct,feedback_fr)").eq("id", data.itemId).eq("primary_node_id", data.nodeId).in("review_status", ["auto_approved", "human_approved"]).in("validator_type", ["exact", "regex", "conjugator", "agreement", "grammalecte"]).single();
+  const { data: item } = await service.from("competency_items").select("id,primary_node_id,prompt_fr,instructions_fr,learner_mode,modality,response_type,validator_type,validator_config,correct_answer,acceptable_answers,competency_nodes(key),competency_item_choices(id,is_correct,feedback_fr)").eq("id", data.itemId).eq("primary_node_id", data.nodeId).in("review_status", ["auto_approved", "human_approved"]).in("validator_type", ["exact", "regex", "conjugator", "agreement", "grammalecte"]).single();
   if (!item) throw new Error("Exercice introuvable.");
   const choices = item.competency_item_choices as unknown as Array<{ id: string; is_correct: boolean; feedback_fr: string | null }>;
   const { correct, feedbackFr } = await gradePracticeResponse({
-    response_type: item.response_type, validator_type: item.validator_type,
+    ...item, response_type: item.response_type, validator_type: item.validator_type,
     validator_config: item.validator_config, correct_answer: item.correct_answer,
     acceptable_answers: item.acceptable_answers ?? [],
   }, choices, data);
@@ -2079,7 +2080,7 @@ export async function submitAdaptiveDiagnosticProbe(input: unknown) {
   const [{ data: assignment, error: assignmentError }, { data: item, error: itemError }] = await Promise.all([
     service.from("diagnostic_run_items").select("id,item_id,node_id,section_key,item_snapshot,answered_at").eq("id", data.runItemId).eq("run_id", data.runId).single(),
     service.from("competency_items")
-      .select("id,primary_node_id,validator_type,validator_config,correct_answer,acceptable_answers,learner_mode,modality,competency_item_choices(id,is_correct)")
+      .select("id,primary_node_id,prompt_fr,instructions_fr,response_type,validator_type,validator_config,correct_answer,acceptable_answers,learner_mode,modality,competency_nodes(key),competency_item_choices(id,is_correct)")
       .eq("id", data.itemId).in("review_status", allowedReviewStatuses).single(),
   ]);
   if (itemError || !item) throw new Error("Question introuvable.");
@@ -2112,6 +2113,7 @@ export async function submitAdaptiveDiagnosticProbe(input: unknown) {
     const validatorType=item.validator_type as ValidatorType;
     const validation = await validateAnswer(data.answerText ?? "", {
       validatorType,
+      assessment: assessmentFromRow(item),
       config: (item.validator_config ?? undefined) as Record<string, unknown> | undefined,
       correctAnswer: item.correct_answer as string | undefined,
       acceptableAnswers: item.acceptable_answers as string[] | undefined,
