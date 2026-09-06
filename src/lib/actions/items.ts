@@ -92,3 +92,19 @@ export async function reviewCompetencyItem(input: unknown) {
   revalidatePath("/admin/items"); revalidatePath("/admin/items/review"); revalidatePath("/review/exercises");
   return { ok: true };
 }
+
+/** Edits remain pending until the reviewer explicitly approves or rejects. */
+export async function saveReviewExercise(input: unknown) {
+  const reviewer = await requireRole(["platform_admin", "content_reviewer"]);
+  if (reviewer.role === "content_reviewer") await requireActiveReviewer();
+  const { reviewEditSchema } = await import("@/lib/content/review-edit");
+  const parsed = reviewEditSchema.safeParse(input);
+  if (!parsed.success) throw new Error(parsed.error.issues[0]?.message ?? "Vérifiez les champs de l’exercice.");
+  const data = parsed.data;
+  const { error } = await (await createClient()).rpc("save_review_exercise_content", {
+    p_item_id: data.id, p_prompt_fr: data.promptFr, p_correct_answer: data.correctAnswer, p_choices: data.choices,
+  });
+  if (error) throw new Error("Les modifications n’ont pas pu être enregistrées. L’exercice doit encore être en attente de relecture.");
+  revalidatePath("/admin/items/review"); revalidatePath("/review/exercises");
+  return data;
+}

@@ -1,5 +1,7 @@
 "use client";
 
+import { ExercisePreview } from "@/components/exercise-preview";
+import { paragraphsFromText } from "@/lib/content/text-format";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { AlertTriangle, Check, ChevronDown, Loader2, Sparkles, X } from "lucide-react";
@@ -85,7 +87,8 @@ export function ReviewClient({ initialCandidates }: { initialCandidates: Persist
       const updated = await runDifficultyScoring({ id, body });
       setCandidates((rows) => rows.map((row) => row.id === id ? { ...row, ...updated } : row));
       router.refresh();
-    } catch { setError("Le texte modifié n'a pas pu être enregistré."); }
+      return true;
+    } catch { setError("Le texte modifié n'a pas pu être enregistré."); return false; }
     finally { setBusy(null); }
   }
 
@@ -189,22 +192,21 @@ export function ReviewClient({ initialCandidates }: { initialCandidates: Persist
 
 function CandidateDetail({ candidate, busy, onApprove, onReject, onModerate, onSaveBody }: {
   candidate: PersistedCandidate; busy: boolean; onApprove: () => void; onReject: () => void;
-  onModerate: () => void; onSaveBody: (body: string) => void;
+  onModerate: () => void; onSaveBody: (body: string) => Promise<boolean>;
 }) {
   const [body, setBody] = useState(candidate.generated.body);
+  const [editing, setEditing] = useState(false);
   const decided = ["human_approved", "rejected"].includes(candidate.reviewStatus);
   return (
     <section className="border-t-2 border-primary pt-5">
       <div className="flex flex-wrap items-start justify-between gap-3"><div><h3 className="text-xl font-semibold">{candidate.generated.title}</h3><p className="mt-1 text-xs text-muted-foreground">{textTypeLabel(candidate.input.textType)} · {difficultyBandLabel(candidate.input.targetReadingBand)}</p></div><Badge variant={REVIEW_STATUS_VARIANT[candidate.reviewStatus]}>{REVIEW_STATUS_LABEL[candidate.reviewStatus]}</Badge></div>
 
-      <label className="mt-6 block"><span className="text-sm font-medium">Texte à examiner</span><textarea value={body} onChange={(event) => setBody(event.target.value)} rows={14} className="mt-2 w-full rounded-md border border-input bg-background p-4 text-sm leading-6 outline-none ring-ring focus:ring-2" /></label>
-      <Button className="mt-2" variant="outline" size="sm" onClick={() => onSaveBody(body)} disabled={busy || body === candidate.generated.body}>Enregistrer les modifications</Button>
-
-      <section className="mt-7 border-t border-border pt-5"><h4 className="text-sm font-semibold">Questions à vérifier ({candidate.generated.questions.length})</h4><ol className="mt-3 divide-y divide-border border-y border-border text-sm">{candidate.generated.questions.map((question, index) => <li key={`${question.questionText}-${index}`} className="py-3"><span className="mr-2 font-semibold text-primary">{index + 1}.</span>{question.questionText}</li>)}</ol></section>
+      {editing ? <div className="mt-6"><label className="block text-sm font-medium">Texte à modifier<textarea value={body} onChange={(event) => setBody(event.target.value)} rows={14} className="mt-2 w-full rounded-md border border-input bg-background p-4 text-base leading-7" /></label><div className="mt-3 flex gap-2"><Button disabled={busy || body === candidate.generated.body} onClick={async () => { if (await onSaveBody(body)) setEditing(false); }}>Enregistrer et voir l’aperçu</Button><Button variant="ghost" onClick={() => { setBody(candidate.generated.body); setEditing(false); }}>Annuler</Button></div></div> : <><article className="prose-review mx-auto max-w-[68ch] py-8 text-lg leading-9">{paragraphsFromText(candidate.generated.body).map((paragraph, index) => <p key={index} className="mb-5">{paragraph}</p>)}</article><Button variant="ghost" size="sm" disabled={busy || decided || editing} onClick={() => setEditing(true)}>Modifier le texte</Button></>}
+      <section className="mt-7 border-t border-border pt-5"><h4 className="text-lg font-semibold">Questions ({candidate.generated.questions.length})</h4><div className="mt-5 space-y-8">{candidate.generated.questions.map((question, index) => <ExercisePreview key={`${candidate.updatedAt}-${index}`} item={{ id: `${candidate.id}-${index}`, promptFr: question.questionText, responseType: question.choices?.length ? "mcq" : "free_text", correctAnswer: question.correctAnswer, rubric: question.rubric, choices: (question.choices ?? []).map((text, choiceIndex) => ({ id: String(choiceIndex), text, correct: text === question.correctAnswer })) }} />)}</div></section>
 
       <details className="group mt-6 border-y border-border py-3"><summary className="flex cursor-pointer list-none items-center justify-between font-medium marker:content-none">Analyse technique <span className="text-xs font-normal text-muted-foreground group-open:hidden">Afficher</span><span className="hidden text-xs font-normal text-muted-foreground group-open:inline">Masquer</span></summary><div className="mt-5 space-y-5"><div><p className="mb-2 text-sm font-medium">Difficulté calculée</p><DifficultyBars difficulty={candidate.difficulty} /><p className="mt-2 text-xs text-muted-foreground">{candidate.difficulty.features.wordCount} mots · {candidate.difficulty.features.avgSentenceLength} mots/phrase · {candidate.difficulty.features.connectorCount} connecteurs</p></div><div className="flex flex-wrap gap-2"><Badge variant={candidate.flags.moderationPassed ? "success" : "outline"}>Modération : {candidate.flags.moderationPassed ? "OK" : "à revoir"}</Badge>{candidate.flags.sensitive && <Badge>Domaine sensible</Badge>}{candidate.flags.factualNeedsReview && <Badge>Factualité à vérifier</Badge>}{candidate.flags.difficultyMismatch && <Badge>Difficulté hors cible</Badge>}{candidate.flags.nearDuplicate && <Badge>Texte très proche d’un texte approuvé</Badge>}</div><Button variant="outline" size="sm" onClick={onModerate} disabled={busy}>Relancer la modération</Button></div></details>
 
-      <div className="sticky bottom-0 mt-6 flex gap-2 border-t border-border bg-background/95 py-4 backdrop-blur"><Button onClick={onApprove} disabled={busy || decided}><Check /> Approuver</Button><Button variant="destructive" onClick={onReject} disabled={busy || decided}><X /> Rejeter</Button></div>
+      <div className="sticky bottom-0 mt-6 flex gap-2 border-t border-border bg-background/95 py-4 backdrop-blur"><Button onClick={onApprove} disabled={busy || decided || editing}><Check /> Approuver</Button><Button variant="destructive" onClick={onReject} disabled={busy || decided || editing}><X /> Rejeter</Button></div>
     </section>
   );
 }

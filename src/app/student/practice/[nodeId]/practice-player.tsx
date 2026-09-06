@@ -10,9 +10,8 @@ import {
   submitNodePractice,
 } from "@/lib/actions/student";
 import type { getNodePractice } from "@/lib/db/practice";
-import { AccentTextarea } from "@/components/accent-textarea";
 import { Confetti } from "@/components/motivation";
-import { ErrorHuntWidget, JustifiedWidget, OrderingWidget, RewriteWidget, shuffledOrder } from "@/components/exercise-widgets";
+import { ExerciseSurface } from "@/components/exercise-surface";
 import { buildHintLadder } from "@/lib/practice/hints";
 import { workedExample } from "@/lib/practice/scaffolding";
 import { expandReviewedPractice, PRACTICE_BASE_XP, PRACTICE_PERFECT_BONUS_XP } from "@/lib/practice/session";
@@ -186,15 +185,7 @@ export function PracticePlayer({ practice }: { practice: Practice }) {
         <span className="hidden text-xs text-muted-foreground sm:inline">Difficulté adaptée à ton niveau</span>
       </div>
 
-      <div className="mt-8 border-y border-border py-7">
-        {item.instructionsFr && <p className="text-sm text-muted-foreground">{item.instructionsFr}</p>}
-        <p className="mt-2 text-xl font-medium leading-8">{item.promptFr}</p>
-        {item.responseType === "error_hunt" ? <ErrorHuntWidget sentence={item.promptFr} value={answer} onChange={setAnswer} disabled={!!feedback} />
-          : item.responseType === "ordering" ? <OrderingWidget order={order.length ? order : shuffledOrder(((item.validatorConfig?.tokens as string[] | undefined) ?? []), item.id)} onChange={(next) => { setOrder(next); setAnswer(next.join(" ")); }} disabled={!!feedback} />
-          : item.responseType === "justified" ? <JustifiedWidget choices={item.choices} rules={((item.validatorConfig?.rules as { key: string; label: string }[] | undefined) ?? [])} choice={choice} rule={rule} onChoice={setChoice} onRule={(key) => { setRule(key); setAnswer(key); }} disabled={!!feedback} />
-          : item.responseType === "combine" || (item.responseType === "transform" && Array.isArray(item.validatorConfig?.sources)) ? <RewriteWidget sources={item.responseType === "combine" ? ((item.validatorConfig?.sentences as string[] | undefined) ?? []) : ((item.validatorConfig?.sources as string[] | undefined) ?? [])} value={answer} onChange={setAnswer} disabled={!!feedback} placeholder={item.responseType === "combine" ? "Une seule phrase qui garde toutes les informations." : "Réécris la phrase en suivant la consigne."} />
-          : item.choices.length ? <div role="radiogroup" aria-label="Choix de réponse" className="mt-6 grid gap-3">{item.choices.map((option) => <button type="button" role="radio" aria-checked={choice === option.id} key={option.id} disabled={!!feedback} onClick={() => setChoice(option.id)} className={`min-h-12 rounded-lg border px-4 py-3 text-left text-base transition-colors ${choice === option.id ? "border-primary bg-primary/10" : "border-border hover:border-primary/50"}`}>{option.text}</button>)}</div> : <AccentTextarea disabled={!!feedback} value={answer} onChange={setAnswer} rows={3} autoCapitalize="none" autoCorrect="off" className="mt-6 w-full rounded-lg border border-input bg-background p-4 text-base" />}
-      </div>
+      <div className="mt-8"><ExerciseSurface item={item} choice={choice} answer={answer} order={order} rule={rule} setChoice={setChoice} setAnswer={setAnswer} setOrder={setOrder} setRule={setRule} disabled={!!feedback} /></div>
 
       {hintsShown > 0 && <div className="mt-5 space-y-2">{support.slice(0, hintsShown).map((hint, hintIndex) => <div key={hintIndex} className="flex gap-3 border-l-2 border-secondary py-1 pl-3 text-sm"><Lightbulb className="mt-0.5 size-4 shrink-0 text-secondary" /><p>{hint}</p></div>)}</div>}
       {feedback && <div className={`mt-5 flex gap-3 border-l-2 py-3 pl-4 text-sm ${feedback.correct ? "border-emerald-500" : "border-amber-500"}`}><CheckCircle2 className={`mt-0.5 size-5 shrink-0 ${feedback.correct ? "text-emerald-600" : "text-amber-600"}`} /><div><p className="font-medium">{feedback.correct ? "Bonne réponse." : "Pas encore — essaie avec l’indice."}</p>{feedback.text && <p className="mt-1 text-muted-foreground">{feedback.text}</p>}<p className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs"><Link className="font-medium text-primary underline-offset-4 hover:underline" href={`/student/reference/regle/${encodeURIComponent(practice.node.key)}`}>Voir la règle</Link>{practice.node.strand === "conjugaison" && <Link className="font-medium text-primary underline-offset-4 hover:underline" href="/student/reference/verbe">Tables de conjugaison</Link>}</p></div></div>}

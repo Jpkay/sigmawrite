@@ -4,13 +4,12 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import {
   ArrowDown,
-  Check,
   CheckCircle2,
   Clock3,
   Loader2,
   Save,
-  Target,
 } from "lucide-react";
+import { ExercisePreview } from "@/components/exercise-preview";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { saveReviewDraft, submitReview } from "@/lib/actions/reviews";
@@ -60,15 +59,6 @@ const decisions: Array<{ value: ReviewDecision; label: string }> = [
   { value: "needs_revision", label: "À réviser" },
   { value: "reject", label: "Rejeté" },
 ];
-
-const levelColors = {
-  green:
-    "border-emerald-600/30 bg-emerald-500/10 text-emerald-800 dark:text-emerald-200",
-  blue: "border-blue-600/30 bg-blue-500/10 text-blue-800 dark:text-blue-200",
-  violet:
-    "border-violet-600/30 bg-violet-500/10 text-violet-800 dark:text-violet-200",
-  neutral: "border-border bg-muted text-foreground",
-} as const;
 
 function serializableDraft(draft: WorkspaceDraft): ReviewDraft {
   return {
@@ -272,23 +262,8 @@ export function ReviewWorkspace({
       <div className="grid gap-12 xl:grid-cols-[minmax(0,1.25fr)_minmax(360px,.75fr)]">
         <main id="texte" className="min-w-0 scroll-mt-36 xl:scroll-mt-8">
           <header className="border-b border-border pb-6">
-            <div
-              className={`flex items-start gap-3 rounded-xl border p-4 shadow-sm ${levelColors[level.color]}`}
-            >
-              <Target className="mt-0.5 size-5 shrink-0" />
-              <div className="min-w-0 flex-1">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.14em] opacity-75">
-                  Niveau cible
-                </p>
-                <div className="mt-1 flex flex-wrap items-baseline gap-x-2 gap-y-1">
-                  <p className="text-lg font-bold">{level.gradeLabel}</p>
-                  <p className="text-sm font-medium">{level.readerLabel}</p>
-                </div>
-                <p className="mt-1 text-xs leading-5 opacity-85">
-                  {level.stageLabel} · {level.guidance}
-                </p>
-              </div>
-            </div>
+            <p className="text-sm font-medium text-muted-foreground">Niveau cible · {level.gradeLabel} · {level.readerLabel}</p>
+            <details className="mt-3 text-sm"><summary className="cursor-pointer font-medium">Repères pédagogiques</summary><p className="mt-3 leading-6 text-muted-foreground">{level.stageLabel} · {level.guidance}</p></details>
 
             <div className="mt-6 flex flex-wrap gap-2">
               <Badge variant="secondary">
@@ -337,10 +312,10 @@ export function ReviewWorkspace({
               Étape 2
             </p>
             <h2 id="questions-title" className="mt-2 text-2xl font-semibold">
-              Questions et réponses
+              Questions
             </h2>
             <p className="mt-1 text-sm leading-6 text-muted-foreground">
-              Vérifiez que chaque question est claire et que la réponse indiquée est correcte.
+              Essayez les questions, puis ouvrez le corrigé pour vérifier les réponses.
             </p>
             <div className="mt-6 space-y-4">
               {questions.map((question, index) => {
@@ -353,43 +328,7 @@ export function ReviewWorkspace({
                     <p className="text-xs font-semibold uppercase tracking-wide text-primary">
                       Question {index + 1} sur {questions.length}
                     </p>
-                    <h3 className="mt-2 font-medium leading-6">
-                      {question.questionText}
-                    </h3>
-                    {question.choices?.length ? (
-                      <ol className="mt-4 space-y-2 text-sm">
-                        {question.choices.map((choice, choiceIndex) => {
-                          const correct = choice === question.correctAnswer;
-                          return (
-                            <li
-                              key={choice}
-                              className={`flex gap-3 rounded-md px-3 py-2 ${correct ? "bg-emerald-500/10 text-foreground" : "text-muted-foreground"}`}
-                            >
-                              <span className="font-medium">
-                                {String.fromCharCode(65 + choiceIndex)}.
-                              </span>
-                              <span className="flex-1">{choice}</span>
-                              {correct && (
-                                <Check
-                                  aria-label="Réponse attendue"
-                                  className="size-4 shrink-0 text-[color:var(--success)]"
-                                />
-                              )}
-                            </li>
-                          );
-                        })}
-                      </ol>
-                    ) : (
-                      <p className="mt-3 rounded-md bg-muted p-3 text-sm leading-6">
-                        <span className="text-muted-foreground">Réponse attendue : </span>
-                        {question.correctAnswer ?? "Réponse ouverte selon la grille."}
-                      </p>
-                    )}
-                    {question.rubric && (
-                      <p className="mt-2 text-sm text-muted-foreground">
-                        Repère : {question.rubric}
-                      </p>
-                    )}
+                    <div className="mt-4"><ExercisePreview item={{ id: `${assignment.assignmentId}-${index}`, promptFr: question.questionText, responseType: question.choices?.length ? "mcq" : "free_text", correctAnswer: question.correctAnswer, rubric: question.rubric, choices: (question.choices ?? []).map((text, choiceIndex) => ({ id: String(choiceIndex), text, correct: text === question.correctAnswer })) }} /></div>
                     <fieldset disabled={locked} className="mt-5">
                       <legend className="text-sm font-medium">
                         Cette question est-elle correcte ?

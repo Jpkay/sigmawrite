@@ -42,7 +42,7 @@ export default async function ExerciseReviewPage({ searchParams }: ExerciseRevie
       title={itemId ? "Revoir ma décision" : "Revue des exercices"}
       description={itemId ? "Corrigez votre avis puis enregistrez-le de nouveau." : mode === "focus" ? "Comparez les exercices d’une même catégorie, du plus accessible au plus exigeant." : "Les catégories alternent automatiquement pour garder une revue variée."}
     />
-    <ItemReviewQueue
+    <ItemReviewQueue key={JSON.stringify(query)}
       scope={scope}
       initialItems={items}
       progress={progress}

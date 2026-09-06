@@ -45,5 +45,9 @@ export default async function ItemReviewPage({ searchParams }: ReviewPageProps) 
   const assignmentOverview = reviewer.role === "platform_admin" && scope === "diagnostic"
     ? await getDiagnosticItemAssignmentOverview()
     : null;
-  return <><PageHeader title={scope === "practice-v3" ? "Validation de la pratique v3" : "Revue du diagnostic v2"} description={scope === "practice-v3" ? "Valide uniquement les exercices nécessaires pour ouvrir chaque compétence contrôlée aux élèves." : "Vérifie l’énoncé, la réponse, le niveau et les contrôles avant toute publication aux élèves."} /><ItemAdminNav />{assignmentOverview && <ItemAssignmentManager overview={assignmentOverview} />}<ItemReviewQueue scope={scope} initialItems={taggedItems} progress={progress} filters={{ section: section ?? "", tier: difficultyTier ?? "", plan }} planTotal={planIds?.length ?? reviewHourPlan.total} pagination={{ page: Math.min(page, pageCount), pageCount, filteredTotal }} /></>;
+  return <>
+    <PageHeader title={scope === "practice-v3" ? "Relire les exercices d’entraînement" : "Relire les exercices du diagnostic"} description="Essayez chaque exercice, consultez le corrigé, puis donnez votre avis." />
+    <ItemReviewQueue key={`${scope}:${section}:${difficultyTier}:${plan}:${page}:${query.batch ?? ""}`} scope={scope} initialItems={taggedItems} progress={progress} filters={{ section: section ?? "", tier: difficultyTier ?? "", plan }} pagination={{ page: Math.min(page, pageCount), pageCount, filteredTotal }} />
+    <details className="mx-auto mt-6 max-w-3xl border-t border-border py-4"><summary className="cursor-pointer text-sm text-muted-foreground">Gérer la banque et les attributions</summary><ItemAdminNav />{assignmentOverview && <ItemAssignmentManager overview={assignmentOverview} />}</details>
+  </>;
 }

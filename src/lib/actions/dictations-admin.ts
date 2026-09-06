@@ -48,3 +48,17 @@ export async function renderDictationAudioNow() {
   revalidatePath("/admin/dictations"); revalidatePath("/student/dictee");
   return result;
 }
+
+/** Private audio preview, authorized independently of the student attempt flow. */
+export async function loadDictationReviewAudio(input: unknown) {
+  await requireRole(["platform_admin"]);
+  const id = z.string().uuid().parse(input);
+  const service = createServiceClient();
+  const { data: row, error } = await service.from("dictations").select("key,segments,audio_status").eq("id", id).single();
+  if (error || !row) throw new Error("Dictée introuvable.");
+  if (row.audio_status !== "ready") return null;
+  const { signDictationAudio } = await import("@/lib/dictation/audio");
+  const segments = row.segments as { audioPath: string | null }[];
+  const [full, ...urls] = await signDictationAudio(service, [`${row.key}/full.mp3`, ...segments.map((segment) => segment.audioPath)]);
+  return { full, segments: urls };
+}

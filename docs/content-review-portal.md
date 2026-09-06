@@ -123,3 +123,13 @@ On 2026-07-10 the hosted staging workflow was also exercised end to end:
 - both smoke versions were retired afterward. The live pilot state is exactly
   60 `needs_human_review` candidates and 60 `ready_for_review` snapshots with no
   fake completed reviews.
+
+## Student previews in review
+
+Exercise queues show one exercise at a time, with the same `ExerciseSurface` controls as student practice. Answers and feedback stay hidden until the reviewer checks an attempt or opens the correction. Preview checks use the shared practice grader through an authenticated, read-only action; they do not create student sessions, attempts, XP, or mastery updates. Open reading questions expose the correction rubric without pretending to grade free text automatically.
+
+The explicit exercise editor saves pending prompts, existing choices, answer keys, and choice feedback atomically. Saving does not approve the exercise. Apply `0128_review_exercise_editor.sql` to the deployment database before releasing the editor. The RPC checks active reviewer assignments, preserves choice IDs, requires one correct choice, and retains existing published-content protections. An exercise decision has a five-second cancellation window before submission. Queue position is retained in the current browser tab; unfinished editor changes should be saved before leaving the page.
+
+Reading reviews render formatted passages and interactive questions. Dictation reviews load private signed audio URLs on demand, provide segment writing controls, and reveal the transcript separately. Audio must have been generated before it can be previewed; opening a preview never generates audio.
+
+For local verification, apply `scripts/fixtures/review-browser.sql` only to local Supabase, run the app against that local instance, then run `E2E_REVIEW_PREVIEW=true npx playwright test e2e/review-preview.spec.ts`. The editor permission and atomicity checks are in `supabase/tests/0128_review_exercise_editor_test.sql` and roll back their fixtures.

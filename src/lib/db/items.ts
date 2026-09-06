@@ -12,6 +12,7 @@ export type CompetencyItemRow = {
   id: string; nodeId: string; nodeKey: string; nodeLabel: string; strand: string;
   /** Programme alignment chips for reviewers (cycle, 6e evaluation, Brevet), filled by the page. */
   curriculumTags?: { framework: "cycle3" | "cycle4" | "eval6e" | "brevet"; code: string; labelFr: string }[];
+  instructionsFr?: string | null; validatorConfig?: Record<string, unknown> | null; acceptableAnswers?: string[];
   promptFr: string; correctAnswer: string | null; responseType: string; validatorType: string;
   difficulty: number | null; reviewStatus: string; qcGates: Record<string, unknown>;
   reviewNote: string | null;
@@ -39,7 +40,7 @@ export async function getCompetencyItems(filters: { status?: string; node?: stri
     : "diagnostic_item_bank_memberships";
   const limit = filters.limit ?? 500;
   const offset = Math.max(0, filters.offset ?? 0);
-  const itemSelect: string = `id,primary_node_id,strand,prompt_fr,correct_answer,response_type,validator_type,difficulty,review_status,review_note,qc_gates,psychometric_flags,generation_model,prompt_version,competency_nodes!inner(key,label_fr),competency_item_choices(id,choice_text,is_correct,feedback_fr),${membershipJoin}(bank_release_id,mastery_evidence_id,section_key,evidence_expectation,prompt_family,difficulty_tier)${filters.reviewerProfileId ? ",competency_item_review_assignments!inner(reviewer_profile_id,status)" : ""}`;
+  const itemSelect: string = `id,primary_node_id,strand,prompt_fr,instructions_fr,validator_config,acceptable_answers,correct_answer,response_type,validator_type,difficulty,review_status,review_note,qc_gates,psychometric_flags,generation_model,prompt_version,competency_nodes!inner(key,label_fr),competency_item_choices(id,choice_text,is_correct,feedback_fr,position),${membershipJoin}(bank_release_id,mastery_evidence_id,section_key,evidence_expectation,prompt_family,difficulty_tier)${filters.reviewerProfileId ? ",competency_item_review_assignments!inner(reviewer_profile_id,status)" : ""}`;
   let query = supabase.from("competency_items").select(itemSelect).order("updated_at", { ascending: false }).range(offset, offset + limit - 1);
   if (filters.status) query = query.eq("review_status", filters.status);
   if (filters.node) query = query.eq("competency_nodes.key", filters.node);
@@ -105,7 +106,7 @@ export async function getCompetencyItems(filters: { status?: string; node?: stri
   }
   return rows.map((row) => {
     const node = row.competency_nodes as unknown as { key: string; label_fr: string };
-    const choices = row.competency_item_choices as unknown as Array<{ id: string; choice_text: string; is_correct: boolean; feedback_fr: string | null }>;
+    const choices = row.competency_item_choices as unknown as Array<{ id: string; choice_text: string; is_correct: boolean; feedback_fr: string | null; position: number }>;
     const diagnostic = ((row.diagnostic_item_bank_memberships ?? []) as unknown as DiagnosticMembership[])[0];
     const taxonomyReleaseId = diagnostic ? bankTaxonomyById.get(diagnostic.bank_release_id) : null;
     const evidenceSnapshot = diagnostic && taxonomyReleaseId
@@ -127,6 +128,7 @@ export async function getCompetencyItems(filters: { status?: string; node?: stri
     return {
       id: row.id as string, nodeId: row.primary_node_id as string, nodeKey: node.key, nodeLabel: node.label_fr,
       strand: row.strand as string, promptFr: stripAuthoringVariantPrefix(row.prompt_fr as string), correctAnswer: row.correct_answer as string | null,
+      instructionsFr: row.instructions_fr as string | null, validatorConfig: row.validator_config as Record<string, unknown> | null, acceptableAnswers: (row.acceptable_answers ?? []) as string[],
       responseType: row.response_type as string, validatorType: row.validator_type as string,
       difficulty: row.difficulty == null ? null : Number(row.difficulty), reviewStatus: row.review_status as string,
       reviewNote: row.review_note as string | null,
@@ -152,7 +154,7 @@ export async function getCompetencyItems(filters: { status?: string; node?: stri
         promptFamily: diagnostic.prompt_family,
         difficultyTier: diagnostic.difficulty_tier,
       } : null,
-      choices: choices.map((choice) => ({ id: choice.id, text: choice.choice_text, correct: choice.is_correct, feedbackFr: choice.feedback_fr })),
+      choices: [...choices].sort((a, b) => a.position - b.position).map((choice) => ({ id: choice.id, text: choice.choice_text, correct: choice.is_correct, feedbackFr: choice.feedback_fr })),
     } satisfies CompetencyItemRow;
   });
 }
