@@ -2656,7 +2656,7 @@ export async function updateStudentPassword(input:unknown){const data=checked(st
 export async function loadStudentHome(input: unknown) {
   checked(emptySchema, input);
   const settle = async <T,>(promise: Promise<T>): Promise<T | null> => { try { return await promise; } catch { return null; } };
-  const [texts, plan, motivation, resume, assessment, recap, classGoal] = await Promise.all([
+  const [texts, plan, motivation, resume, assessment, recap, classGoal, league] = await Promise.all([
     settle(recommendReadingTexts({})),
     settle(loadStudentSessionPlan({})),
     settle(loadStudentMotivation({})),
@@ -2664,9 +2664,10 @@ export async function loadStudentHome(input: unknown) {
     settle(loadDiagnosticRequirement({})),
     settle(loadStudentWeeklyRecap({})),
     settle(loadStudentClassGoal({})),
+    settle(loadStudentLeague({})),
   ]);
   const fallbackPlan = plan ? null : await settle(loadStudentCatchUpPlan({}));
-  return { texts, plan, fallbackPlan, motivation, resume, assessment, recap, classGoal };
+  return { texts, plan, fallbackPlan, motivation, resume, assessment, recap, classGoal, league };
 }
 
 export type StudentNotification = { id: string; kind: string; message: string; payload: Record<string, unknown>; readAt: string | null; createdAt: string };
@@ -2930,4 +2931,34 @@ export async function recordReadingJustification(input: unknown) {
   const { error } = await supabase.from("reading_session_events").insert({ session_id: data.sessionId, student_id: studentId, event_type: "justification", event_payload: { question_key: data.questionKey, correct: data.correct, answer_correct: data.answerCorrect } });
   if (error) throw new Error(error.message);
   return { ok: true };
+}
+
+// ---------------------------------------------------------------------------
+// Class league (roadmap 6.6, decision 2026-09-06)
+// ---------------------------------------------------------------------------
+
+export type LeagueRow = { studentId: string; name: string; visible: boolean; isMe: boolean; weekXp: number; streak: number; totalXp: number; tier: string; rank: number };
+export type ClassLeague = { className: string; weekStart: string; rows: LeagueRow[]; me: LeagueRow | null; myVisible: boolean } | null;
+
+/** Weekly class ranking by XP then streak; names hidden on request; nothing beyond the class ever leaves the server. */
+export async function loadStudentLeague(input: unknown): Promise<ClassLeague> {
+  checked(emptySchema, input); const { supabase, studentId } = await context();
+  const { data: enrollments } = await supabase.from("enrollments").select("class_id,classes!inner(name,league_enabled)").eq("student_id", studentId).eq("status", "active").limit(3);
+  const enrollment = (enrollments ?? []).find((row) => (row.classes as unknown as { league_enabled: boolean }).league_enabled);
+  if (!enrollment) return null;
+  const now = new Date(); const diff = (now.getUTCDay() + 6) % 7;
+  const weekStart = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() - diff)).toISOString().slice(0, 10);
+  const { data, error } = await supabase.rpc("class_league", { p_class_id: enrollment.class_id as string, p_week_start: weekStart });
+  if (error) throw new Error(error.message);
+  const rows: LeagueRow[] = ((data ?? []) as Record<string, unknown>[]).map((row) => ({ studentId: row.student_id as string, name: row.display_name as string, visible: !!row.visible, isMe: !!row.is_me, weekXp: Number(row.week_xp), streak: Number(row.streak), totalXp: Number(row.total_xp), tier: row.tier as string, rank: Number(row.rank) }));
+  const me = rows.find((row) => row.isMe) ?? null;
+  return { className: (enrollment.classes as unknown as { name: string }).name, weekStart, rows, me, myVisible: me?.visible ?? true };
+}
+
+export async function setLeagueVisibility(input: unknown) {
+  const data = checked(z.object({ visible: z.boolean() }), input); const { supabase, studentId } = await context();
+  const { error } = await supabase.rpc("set_league_visibility", { p_student_id: studentId, p_visible: data.visible });
+  if (error) throw new Error(error.message);
+  revalidatePath("/student");
+  return { visible: data.visible };
 }
