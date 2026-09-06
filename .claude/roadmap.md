@@ -1,6 +1,6 @@
 # SigmaWrite living roadmap
 
-> Updated 2026-09-04. Authoritative status: [`docs/implementation-status.md`](../docs/implementation-status.md). The archived and production sprint roadmaps are historical specifications.
+> Updated 2026-09-06. Authoritative status: [`docs/implementation-status.md`](../docs/implementation-status.md). The archived and production sprint roadmaps are historical specifications.
 
 ## Active phase — staging hardening and pilot acceptance
 
@@ -9,7 +9,7 @@
 - [x] Upgrade vulnerable dependencies; add full application/build/audit, database and browser/a11y CI gates.
 - [x] Ship flat vocabulary memory practice and adaptive scaffold fading.
 - [x] Wire agreement validation into live practice/diagnostic flows.
-- [ ] Apply migrations through the current head to isolated staging and run all SQL tests.
+- [x] Apply migrations through the current head to isolated staging and run all SQL tests (head 0127 on staging, 2026-09-06).
 - [ ] Configure and exercise protected PostHog, Sentry, Resend, OAuth, LanguageTool and Vercel credentials.
 - [ ] Complete real educator diagnostic/passage reviews and lock six benchmarks.
 - [ ] Run the four-week friendly-family protocol; close P0/P1 findings.
@@ -25,10 +25,20 @@ Detailed atomic goals: [`docs/roadmap-engagement-rigor-2026-09.md`](../docs/road
 - [x] Phase 3: conjugation tables and rule cards from the existing engine (2026-09-04).
 - [x] Phase 4: versioned mapping of every node to cycle 3/4 attendus, 6e evaluation domains and Brevet skills (2026-09-04).
 - [x] Phase 5: genre-by-grade writing, multi-revision loop, rubric AI feedback with vetted rule citations, teacher comments, printable recueil (2026-09-04; cited-justification reading questions pending).
-- [ ] Phase 6: XP for all activities, settable daily goal, streak freeze, weekly recap, class cooperative goal, badges (done 2026-09-04); opt-in league and story-arc plan pending.
+- [ ] Phase 6: XP for all activities, settable daily goal, streak freeze, weekly recap, class cooperative goal, badges (done 2026-09-04); weekly class leagues with tiers, streaks and name hiding (done 2026-09-06); story-arc plan pending.
 - [ ] Phase 7: student inbox, class dictée challenge, richer parent email (done 2026-09-04); opt-in push pending.
 - [ ] Phase 8: shorter diagnostic, offline fallback, mobile tab bar, dyslexia options, single home loader, accent input (done 2026-09-04); continuous quizzes, dead-module decisions, dictée Playwright journey, latency-weighted evidence pending.
 - [ ] Phase 9: teacher override done (2026-09-04); DPIA and hosting/transfer basis pending (legal).
+
+## Accounts and access (audit 2026-09-06)
+
+Done: student / teacher / school admin / platform admin / parent roles, school-scoped administration, teacher ↔ class assignment, several guardians per child, teacher sign-up code, deactivation, e-mail attachment, password reset for every role, magic link, recovery, show/hide password, class join with or without e-mail, invitations by e-mail.
+
+- [ ] Parent side: attach an existing child by class code, invite a second guardian.
+- [ ] Parent-facing toggle to hide a child's name in the class league.
+- [ ] Google sign-in: ask the role (parent / teacher with code) on first login instead of defaulting to parent.
+- [ ] Browser journeys for recovery, forced password rotation and a cross-school negative test.
+- [ ] Hosted Supabase settings: minimum password length 12, captcha secret, custom SMTP (Resend) so invitations and magic links leave the sandbox.
 
 ## Post-pilot
 
