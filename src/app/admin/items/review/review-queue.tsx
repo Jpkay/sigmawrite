@@ -26,8 +26,9 @@ type QueueProps = {
   scope: "diagnostic" | "practice-v3";
   initialItems: CompetencyItemRow[];
   progress: ReviewProgress;
-  filters: { section: string; tier: string };
+  filters: { section: string; tier: string; plan?: boolean };
   pagination: { page: number; pageCount: number; filteredTotal: number };
+  planTotal?: number;
   basePath?: string;
   showExport?: boolean;
   showScopeSwitch?: boolean;
@@ -36,7 +37,7 @@ type QueueProps = {
   sectionProgress?: ReviewerExerciseSectionProgress[];
 };
 
-export function ItemReviewQueue({ scope, initialItems, progress, filters, pagination, basePath = "/admin/items/review", showExport = true, showScopeSwitch = true, reviewerMode = false, reviewMode = "mixed", sectionProgress = [] }: QueueProps) {
+export function ItemReviewQueue({ scope, initialItems, progress, filters, pagination, planTotal, basePath = "/admin/items/review", showExport = true, showScopeSwitch = true, reviewerMode = false, reviewMode = "mixed", sectionProgress = [] }: QueueProps) {
   const router = useRouter();
   const [dismissed, setDismissed] = useState<string[]>([]);
   const [busy, setBusy] = useState<string | null>(null);
@@ -67,7 +68,7 @@ export function ItemReviewQueue({ scope, initialItems, progress, filters, pagina
   }
 
   const reviewed = progress.humanApproved + progress.autoApproved + progress.rejected;
-  const selectionParams = { ...(scope === "practice-v3" ? { scope: "practice-v3" } : {}), ...(reviewerMode && reviewMode === "focus" ? { mode: "focus" } : {}), ...(filters.section ? { section: filters.section } : {}), ...(filters.tier ? { tier: filters.tier } : {}) };
+  const selectionParams = { ...(scope === "practice-v3" ? { scope: "practice-v3" } : {}), ...(reviewerMode && reviewMode === "focus" ? { mode: "focus" } : {}), ...(filters.section ? { section: filters.section } : {}), ...(filters.tier ? { tier: filters.tier } : {}), ...(filters.plan ? { plan: "review-hour" } : {}) };
   const href = (page: number) => `${basePath}?${new URLSearchParams({ ...selectionParams, page: String(page) })}`;
   const exportHref = `/admin/items/review/export?${new URLSearchParams(selectionParams)}`;
 
@@ -108,6 +109,9 @@ export function ItemReviewQueue({ scope, initialItems, progress, filters, pagina
       <ReviewMetric label="Progression" value={progress.total ? `${Math.round(reviewed / progress.total * 100)}%` : "—"} />
     </div>
     <QueueFilters scope={scope} filters={filters} />
+    {scope === "diagnostic" && !reviewerMode && (filters.plan
+      ? <div className="flex flex-wrap items-center justify-between gap-3 rounded-md border border-primary/40 bg-primary/5 p-3 text-sm"><p><span className="font-medium">Plan de relecture prioritaire</span> : {pagination.filteredTotal} item{pagination.filteredTotal === 1 ? "" : "s"} encore à traiter sur {planTotal ?? "—"}. Une fois tous approuvés, la banque peut être publiée en mode partiel.</p><Button asChild size="sm" variant="outline"><Link href={`${basePath}?${new URLSearchParams(Object.fromEntries(Object.entries(selectionParams).filter(([key]) => key !== "plan")))}`}>Voir toute la file</Link></Button></div>
+      : <div className="flex flex-wrap items-center justify-between gap-3 rounded-md border border-border p-3 text-sm text-muted-foreground"><p>{planTotal ?? 0} items suffisent pour publier la banque en mode partiel (docs/pilot/review-hour-plan.md).</p><Button asChild size="sm"><Link href={`${basePath}?${new URLSearchParams({ ...selectionParams, plan: "review-hour" })}`}>Relire ces items d’abord</Link></Button></div>)}
     <div className="flex flex-wrap items-center justify-between gap-3 text-sm text-muted-foreground"><span>{pagination.filteredTotal} item{pagination.filteredTotal === 1 ? "" : "s"} dans cette sélection · page {pagination.page}/{pagination.pageCount}</span><div className="flex gap-2">{showExport && scope === "diagnostic" && <Button asChild size="sm" variant="outline"><Link href={exportHref}>Exporter la sélection</Link></Button>}{pagination.page > 1 && <Button asChild size="sm" variant="outline"><Link href={href(pagination.page - 1)}>Précédente</Link></Button>}{pagination.page < pagination.pageCount && <Button asChild size="sm" variant="outline"><Link href={href(pagination.page + 1)}>Suivante</Link></Button>}</div></div>
     {error && <p role="alert" className="text-sm text-destructive">{error}</p>}
     {items.length === 0 ? <p className="text-sm text-muted-foreground">Aucun item en attente dans cette sélection.</p> : items.map((item) => <ReviewCard key={item.id} item={item} busy={busy === item.id} onDecide={decide} />)}
@@ -261,8 +265,8 @@ function ReviewerExercise({ item, busy, onDecide }: { item: CompetencyItemRow; b
   </article>;
 }
 
-function QueueFilters({ scope, filters, compact = false, reviewerMode = false }: { scope: "diagnostic" | "practice-v3"; filters: { section: string; tier: string }; compact?: boolean; reviewerMode?: boolean }) {
-  return <form className={`grid gap-3 ${reviewerMode ? "sm:grid-cols-[1fr_auto]" : "sm:grid-cols-[1fr_1fr_auto]"} ${compact ? "py-3" : "rounded-md border border-border p-4"}`}>{scope === "practice-v3" && <input type="hidden" name="scope" value="practice-v3" />}{reviewerMode && <input type="hidden" name="mode" value={filters.section ? "focus" : "mixed"} />}{reviewerMode && filters.section && <input type="hidden" name="section" value={filters.section} />}{!reviewerMode && <label className="text-sm">Section<select name="section" defaultValue={filters.section} className="mt-1 h-9 w-full rounded-md border border-input bg-background px-3"><option value="">Toutes</option><option value="reading_comprehension">Compréhension écrite</option><option value="grammar">Grammaire</option><option value="spelling">Orthographe</option><option value="conjugation">Conjugaison</option></select></label>}<label className="text-sm">Difficulté de l’exercice<select name="tier" defaultValue={filters.tier} className="mt-1 h-9 w-full rounded-md border border-input bg-background px-3"><option value="">Toutes les difficultés</option><option value="foundation">Fondation</option><option value="core">Intermédiaire</option><option value="stretch">Avancé</option></select></label><Button type="submit" variant="outline" className="self-end">Appliquer</Button></form>;
+function QueueFilters({ scope, filters, compact = false, reviewerMode = false }: { scope: "diagnostic" | "practice-v3"; filters: { section: string; tier: string; plan?: boolean }; compact?: boolean; reviewerMode?: boolean }) {
+  return <form className={`grid gap-3 ${reviewerMode ? "sm:grid-cols-[1fr_auto]" : "sm:grid-cols-[1fr_1fr_auto]"} ${compact ? "py-3" : "rounded-md border border-border p-4"}`}>{scope === "practice-v3" && <input type="hidden" name="scope" value="practice-v3" />}{reviewerMode && <input type="hidden" name="mode" value={filters.section ? "focus" : "mixed"} />}{filters.plan && <input type="hidden" name="plan" value="review-hour" />}{reviewerMode && filters.section && <input type="hidden" name="section" value={filters.section} />}{!reviewerMode && <label className="text-sm">Section<select name="section" defaultValue={filters.section} className="mt-1 h-9 w-full rounded-md border border-input bg-background px-3"><option value="">Toutes</option><option value="reading_comprehension">Compréhension écrite</option><option value="grammar">Grammaire</option><option value="spelling">Orthographe</option><option value="conjugation">Conjugaison</option></select></label>}<label className="text-sm">Difficulté de l’exercice<select name="tier" defaultValue={filters.tier} className="mt-1 h-9 w-full rounded-md border border-input bg-background px-3"><option value="">Toutes les difficultés</option><option value="foundation">Fondation</option><option value="core">Intermédiaire</option><option value="stretch">Avancé</option></select></label><Button type="submit" variant="outline" className="self-end">Appliquer</Button></form>;
 }
 
 function ReviewMetric({ label, value }: { label: string; value: number | string }) {

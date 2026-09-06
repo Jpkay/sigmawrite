@@ -1,4 +1,4 @@
-# Plan de relecture prioritaire — 2026-09-05
+# Plan de relecture prioritaire — 2026-09-06
 
 26 items à relire pour publier la banque diagnostique v2 en mode partiel (planchers : 24 items approuvés et 10 nœuds par section, deux nœuds confirmables, items de production). Les 446 autres items en attente continuent d’être relus après la mise en service ; ils ne sont jamais servis avant approbation.
 
