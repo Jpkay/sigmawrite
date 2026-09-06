@@ -157,6 +157,7 @@ export async function buildLocalGrammarDraftItems(
       for (let index = 0; index < examples.length; index += 1) {
         const sample = examples[index];
         const tier = DIAGNOSTIC_DIFFICULTY_TIERS[index];
+        const wordOrderOnly = nodeKey === "construction_phrase_canonique";
         const raw: GeneratedItem = expectation === "receptive"
           ? {
               nodeKey,
@@ -180,9 +181,11 @@ export async function buildLocalGrammarDraftItems(
               learnerMode: "shared",
               responseType: index === 0 ? "short_answer" : index === 1 ? "cloze" : "transform",
               promptFr: sample.productionPrompt,
-              instructionsFr: "Écris une phrase complète avec la ponctuation demandée.",
+              instructionsFr: wordOrderOnly
+                ? "Remets les groupes de mots dans l’ordre sujet-verbe-complément. Le point final est facultatif pour cet exercice."
+                : "Écris une phrase complète avec la ponctuation demandée.",
               correctAnswer: sample.productionAnswer,
-              acceptableAnswers: [...(sample.acceptableAnswers ?? [])],
+              acceptableAnswers: [...(sample.acceptableAnswers ?? []), ...(wordOrderOnly ? [sample.productionAnswer.replace(/\.$/u, "")] : [])],
               validatorType: "exact",
               difficulty: diagnosticDifficultyForTier(tier),
             };
