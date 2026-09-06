@@ -25,7 +25,7 @@ export async function getSessionProfile(): Promise<SessionProfile | null> {
 
   const { data: profile } = await supabase
     .from("profiles")
-    .select("id, auth_user_id, role, display_name, must_change_password")
+    .select("id, auth_user_id, role, display_name, must_change_password, deactivated_at")
     .eq("auth_user_id", user.id)
     .maybeSingle();
 
@@ -33,6 +33,8 @@ export async function getSessionProfile(): Promise<SessionProfile | null> {
   // must never be used as a role fallback.
   const role = profile?.role as Role | undefined;
   if (!role) return null;
+  // A deactivated account keeps its history but no longer authenticates anywhere.
+  if (profile?.deactivated_at) return null;
 
   return {
     id: profile?.id ?? user.id,

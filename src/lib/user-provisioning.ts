@@ -8,7 +8,7 @@ import {
   usernameBase,
 } from "@/lib/user-credentials";
 
-export type ManagedAccountRole = "student" | "teacher" | "supervisor";
+export type ManagedAccountRole = "student" | "teacher" | "supervisor" | "school_admin" | "parent";
 
 export type ProvisionedCredentials = {
   authUserId: string;
@@ -28,6 +28,8 @@ type ProvisionManagedAccountInput = {
   dateOfBirth?: string | null;
   grade?: number | null;
   provisionedByProfileId: string;
+  /** School the account belongs to (teachers, school administrators). */
+  schoolId?: string | null;
   deliverEmail?: boolean;
 };
 
@@ -89,7 +91,7 @@ export async function provisionManagedAccount(input: ProvisionManagedAccountInpu
   const email = input.email?.trim().toLowerCase() || null;
   const authEmail = email ?? internalAuthEmail();
   const temporaryPassword = generateTemporaryPassword();
-  const triggerRole = input.role === "supervisor" ? "parent" : input.role;
+  const triggerRole = input.role === "supervisor" || input.role === "school_admin" ? "parent" : input.role;
   const { data: created, error: authError } = await service.auth.admin.createUser({
     email: authEmail,
     password: temporaryPassword,
@@ -122,6 +124,7 @@ export async function provisionManagedAccount(input: ProvisionManagedAccountInpu
       must_change_password: true,
       email_recovery_enabled: Boolean(email),
       provisioned_by_profile_id: input.provisionedByProfileId,
+      school_id: input.schoolId ?? null,
     }).eq("auth_user_id", created.user.id).select("id").single();
     if (profileError || !profile) throw new Error(profileError?.message ?? "Le profil n’a pas pu être créé.");
 

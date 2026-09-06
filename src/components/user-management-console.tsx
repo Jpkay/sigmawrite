@@ -1,13 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { Check, Copy, KeyRound, UserPlus } from "lucide-react";
-import { assignStudentAccess, createManagedUser, resetManagedUserPassword } from "@/lib/actions/users";
+import { Check, Copy, UserPlus } from "lucide-react";
+import { AccountRow } from "@/components/account-row";
+import { assignStudentAccess, attachEmailToAccount, changeUserRole, createManagedUser, linkGuardian, resetManagedUserPassword, rotateSchoolTeacherCode, setTeacherClass, setUserDeactivated } from "@/lib/actions/users";
 import type { UserManagementData } from "@/lib/db/users";
 import type { ManagedAccountRole } from "@/lib/user-provisioning";
 import type { FeedbackAgreementSource } from "@/lib/diagnostic/pilot-enrollment";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 
 type VisibleCredentials = {
   label: string;
@@ -77,7 +77,7 @@ export function UserManagementConsole({ data }: { data: UserManagementData }) {
         email,
         dateOfBirth: role === "student" ? dateOfBirth : "",
         grade: role === "student" ? grade : null,
-        schoolIds: role === "supervisor" && schoolId ? [schoolId] : [],
+        schoolIds: (role === "supervisor" || role === "school_admin") && schoolId ? [schoolId] : [],
         classIds: classId ? [classId] : [],
         teacherIds: role === "student" && teacherId ? [teacherId] : [],
         studentIds: role === "supervisor" && supervisedStudentId ? [supervisedStudentId] : [],
@@ -125,13 +125,14 @@ export function UserManagementConsole({ data }: { data: UserManagementData }) {
       <section className="border-t border-border pt-7">
         <div className="mb-5 flex items-center gap-3"><UserPlus className="size-5 text-primary" /><div><h2 className="text-lg font-semibold">Créer ou inviter un utilisateur</h2><p className="text-sm text-muted-foreground">L’e-mail est facultatif. Un nom d’utilisateur et un mot de passe temporaire sont toujours fournis.</p></div></div>
         <form onSubmit={createAccount} className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          <label className="text-sm">Rôle<select className={inputClass} value={role} onChange={(event) => setRole(event.target.value as ManagedAccountRole)}><option value="student">Élève</option><option value="teacher">Enseignant</option><option value="supervisor">Superviseur</option></select></label>
+          <label className="text-sm">Rôle<select className={inputClass} value={role} onChange={(event) => setRole(event.target.value as ManagedAccountRole)}><option value="student">Élève</option><option value="teacher">Enseignant</option><option value="parent">Parent</option>{data.viewerRole === "platform_admin" && <option value="supervisor">Superviseur</option>}{data.viewerRole === "platform_admin" && <option value="school_admin">Administrateur d’établissement</option>}</select></label>
           <label className="text-sm">Nom complet<input className={inputClass} required minLength={2} value={displayName} onChange={(event) => setDisplayName(event.target.value)} /></label>
           <label className="text-sm">Nom d’utilisateur <span className="text-muted-foreground">(facultatif)</span><input className={inputClass} pattern="[a-z0-9][a-z0-9._-]{1,30}[a-z0-9]" value={username} onChange={(event) => setUsername(event.target.value.toLowerCase())} placeholder="Généré automatiquement" /></label>
-          <label className="text-sm">E-mail <span className="text-muted-foreground">(facultatif)</span><input className={inputClass} type="email" value={email} onChange={(event) => setEmail(event.target.value)} /></label>
+          <label className="text-sm">E-mail <span className="text-muted-foreground">{role === "parent" || role === "school_admin" ? "(requis)" : "(facultatif)"}</span><input className={inputClass} type="email" required={role === "parent" || role === "school_admin"} value={email} onChange={(event) => setEmail(event.target.value)} /></label>
           {role === "student" && <><label className="text-sm">Date de naissance<input className={inputClass} type="date" required value={dateOfBirth} onChange={(event) => setDateOfBirth(event.target.value)} /></label><label className="text-sm">Niveau<input className={inputClass} type="number" min={5} max={12} required value={grade} onChange={(event) => setGrade(Number(event.target.value))} /></label></>}
+          {role === "school_admin" && <label className="text-sm">École administrée<select className={inputClass} required value={schoolId} onChange={(event) => setSchoolId(event.target.value)}><option value="">Choisir une école</option>{data.schools.map((school) => <option key={school.id} value={school.id}>{school.name}</option>)}</select></label>}
           {role === "supervisor" && <label className="text-sm">École supervisée<select className={inputClass} value={schoolId} onChange={(event) => setSchoolId(event.target.value)}><option value="">Aucune</option>{data.schools.map((school) => <option key={school.id} value={school.id}>{school.name}</option>)}</select></label>}
-          <label className="text-sm">{role === "teacher" ? "Classe enseignée" : role === "supervisor" ? "Classe suivie (facultatif)" : "Classe"}<select className={inputClass} required={role === "student"} value={classId} onChange={(event) => setClassId(event.target.value)}><option value="">Aucune</option>{data.classes.map((selectedClass) => <option key={selectedClass.id} value={selectedClass.id}>{selectedClass.name}</option>)}</select></label>
+          {role !== "parent" && role !== "school_admin" && <label className="text-sm">{role === "teacher" ? "Classe enseignée" : role === "supervisor" ? "Classe suivie (facultatif)" : "Classe"}<select className={inputClass} required={role === "student"} value={classId} onChange={(event) => setClassId(event.target.value)}><option value="">Aucune</option>{data.classes.map((selectedClass) => <option key={selectedClass.id} value={selectedClass.id}>{selectedClass.name}</option>)}</select></label>}
           {role === "student" && <label className="text-sm">Enseignant direct <span className="text-muted-foreground">(facultatif)</span><select className={inputClass} value={teacherId} onChange={(event) => setTeacherId(event.target.value)}><option value="">Aucun</option>{data.teachers.map((teacher) => <option key={teacher.id} value={teacher.id}>{teacher.name}</option>)}</select></label>}
           {role === "supervisor" && <label className="text-sm">Élève suivi <span className="text-muted-foreground">(facultatif)</span><select className={inputClass} value={supervisedStudentId} onChange={(event) => setSupervisedStudentId(event.target.value)}><option value="">Aucun</option>{data.students.map((student) => <option key={student.id} value={student.id}>{student.name}</option>)}</select></label>}
           {role === "student" && <p className="text-sm text-muted-foreground md:col-span-2 xl:col-span-3">L’affectation à la classe active immédiatement l’accès de l’élève.</p>}
@@ -154,9 +155,18 @@ export function UserManagementConsole({ data }: { data: UserManagementData }) {
       </section>
 
       <section className="border-t border-border pt-7">
+        <h2 className="text-lg font-semibold">Code enseignant de l’école</h2>
+        <p className="mt-1 text-sm text-muted-foreground">Un enseignant qui s’inscrit lui-même doit saisir ce code ; sans code valide, le compte est créé comme parent et peut être promu ici.</p>
+        <div className="mt-4 grid gap-3 md:grid-cols-2">
+          {data.schools.map((school) => <div key={school.id} className="flex flex-wrap items-center justify-between gap-3 rounded-md border border-border p-3 text-sm"><span className="font-medium">{school.name}</span><span className="font-mono">{school.teacherCode ?? "aucun code"}</span><Button type="button" size="sm" variant="outline" disabled={busy} onClick={async () => { setBusy(true); setError(""); try { const result = await rotateSchoolTeacherCode({ schoolId: school.id }); setAssignmentMessage(`Nouveau code pour ${school.name} : ${result.code}`); } catch (caught) { setError(caught instanceof Error ? caught.message : "Rotation impossible."); } finally { setBusy(false); } }}>{school.teacherCode ? "Renouveler" : "Générer"}</Button></div>)}
+        </div>
+      </section>
+
+      <section className="border-t border-border pt-7">
         <h2 className="text-lg font-semibold">Comptes gérés</h2>
+        <p className="mt-1 text-sm text-muted-foreground">{data.accounts.length} compte(s){data.viewerSchoolId ? " de votre école" : ""}. Chaque action est journalisée.</p>
         <div className="mt-4 divide-y divide-border border-y border-border">
-          {data.accounts.map((account) => <div key={account.profileId} className="flex flex-wrap items-center justify-between gap-3 py-4"><div><div className="flex flex-wrap items-center gap-2"><p className="font-medium">{account.displayName}</p><Badge variant="secondary">{account.role === "student" ? "Élève" : account.role === "teacher" ? "Enseignant" : "Superviseur"}</Badge>{account.feedbackPilotActive && <Badge variant="success">Pilote feedback</Badge>}{account.mustChangePassword && <Badge>Mot de passe à changer</Badge>}</div><p className="mt-1 font-mono text-xs text-muted-foreground">{account.username}</p></div><Button type="button" size="sm" variant="outline" disabled={busy} onClick={() => resetPassword(account)}><KeyRound /> Nouveau mot de passe temporaire</Button></div>)}
+          {data.accounts.map((account) => <AccountRow key={account.profileId} account={account} data={data} busy={busy} onBusy={setBusy} onError={setError} onCredentials={(value) => setCredentials(value)} onResetPassword={() => resetPassword(account)} actions={{ setTeacherClass, changeUserRole, setUserDeactivated, attachEmailToAccount, linkGuardian }} />)}
           {!data.accounts.length && <p className="py-5 text-sm text-muted-foreground">Aucun compte géré.</p>}
         </div>
       </section>

@@ -82,7 +82,9 @@ export async function updateSession(request: NextRequest) {
       const allowed = home.split("/")[1];
       const target = pathname.split("/")[1];
       const platformReviewerAccess = role === "platform_admin" && target === "review";
-      if (allowed !== target && !platformReviewerAccess) {
+      // A school administrator works from the teacher area and manages accounts in /admin/users only.
+      const schoolAdminAccess = role === "school_admin" && pathname.startsWith("/admin/users");
+      if (allowed !== target && !platformReviewerAccess && !schoolAdminAccess) {
         const url = request.nextUrl.clone();
         url.pathname = home;
         return NextResponse.redirect(url);
