@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { BookOpenText, CheckCircle2, ChevronLeft, ChevronRight, Languages, ListTree, Shuffle, SlidersHorizontal, SpellCheck } from "lucide-react";
@@ -43,8 +43,9 @@ export function ItemReviewQueue({ scope, initialItems, progress, filters, pagina
   const [cursorId, setCursorId] = useState("");
   const positionKey = `review-position:${basePath}:${scope}:${filters.section}:${filters.tier}:${filters.plan}:${pagination.page}`;
   const storedId = useSyncExternalStore(subscribePosition, () => readPosition(positionKey), () => "");
-  const [batch] = useState(initialItems);
-  const items = batch.filter((item) => !dismissed.includes(item.id)).map((item) => initialItems.find((fresh) => fresh.id === item.id) ?? item);
+  const submitting = useRef(false);
+  const workspace = useRef<HTMLDivElement>(null);
+  const items = initialItems.filter((item) => !dismissed.includes(item.id));
   const activeIndex = Math.max(0, items.findIndex((item) => item.id === (cursorId || storedId)));
   function setCursor(index: number) {
     const id = items[Math.max(0, Math.min(index, items.length - 1))]?.id ?? "";
@@ -54,32 +55,42 @@ export function ItemReviewQueue({ scope, initialItems, progress, filters, pagina
   }
 
   async function decide(item: CompetencyItemRow, decision: "human_approved" | "rejected", promptFr: string, correctAnswer: string, note = "") {
+    if (submitting.current) return;
+    submitting.current = true;
     setBusy(item.id);
     setError("");
     try {
-      await reviewCompetencyItem({ id: item.id, decision, promptFr, correctAnswer: correctAnswer || null, note: note || undefined, assignmentMode: reviewerMode });
-      setCursor(activeIndex + 1);
-      if (reviewerMode) {
-        setDismissed((ids) => [...ids, item.id]);
-        setThanks(true);
-        router.refresh();
-        return;
-      }
+      const result = await reviewCompetencyItem({ id: item.id, decision, promptFr, correctAnswer: correctAnswer || null, note: note || undefined, assignmentMode: reviewerMode });
+      if (!result.ok) { setError(result.error); return; }
+      const nextIndex = items.findIndex((candidate, index) => index > activeIndex && candidate.id !== item.id);
+      setCursor(nextIndex >= 0 ? nextIndex : items.findIndex((candidate) => candidate.id !== item.id));
       setDismissed((ids) => [...ids, item.id]);
-      router.refresh();
-    } catch (caught) {
-      setError(caught instanceof Error ? caught.message : "La décision n’a pas pu être enregistrée. Réessayez dans un instant.");
+      setThanks(true);
+      // A history detail or exhausted later page must resume at the start of
+      // the shrinking pending queue, never the next offset page.
+      if (items.length === 1) router.replace(href(1), { scroll: false });
+      workspace.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    } catch {
+      setError("La décision n’a pas pu être confirmée. Réessayez dans un instant.");
     } finally {
+      submitting.current = false;
       setBusy(null);
     }
   }
 
   const selectionParams = { ...(scope === "practice-v3" ? { scope: "practice-v3" } : {}), ...(reviewerMode && reviewMode === "focus" ? { mode: "focus" } : {}), ...(filters.section ? { section: filters.section } : {}), ...(filters.tier ? { tier: filters.tier } : {}), ...(filters.plan ? { plan: "review-hour" } : {}) };
   const href = (page: number) => `${basePath}?${new URLSearchParams({ ...selectionParams, page: String(page) })}`;
+  const firstPageHref = href(1);
+  useEffect(() => {
+    if (!items.length && pagination.filteredTotal > 0 && pagination.page > 1) {
+      router.replace(firstPageHref, { scroll: false });
+    }
+  }, [items.length, pagination.filteredTotal, pagination.page, firstPageHref, router]);
+  const loadingNext = !items.length && pagination.filteredTotal > 0;
   const exportHref = `/admin/items/review/export?${new URLSearchParams(selectionParams)}`;
 
   if (reviewerMode) {
-    return <ReviewerWorkflow
+    return <div ref={workspace} className="scroll-mt-5"><ReviewerWorkflow
       item={items[activeIndex]}
       items={items}
       activeIndex={activeIndex}
@@ -101,10 +112,11 @@ export function ItemReviewQueue({ scope, initialItems, progress, filters, pagina
       canPrevious={!busy && !navigationLocked && activeIndex > 0}
       canNext={!busy && !navigationLocked && activeIndex < items.length - 1}
       onDecide={decide}
-    />;
+      loadingNext={loadingNext}
+    /></div>;
   }
 
-  return <div className="mx-auto max-w-3xl space-y-3">
+  return <div ref={workspace} className="mx-auto max-w-3xl scroll-mt-5 space-y-3">
     <div className="flex flex-wrap items-center justify-between gap-3 border-y border-border py-4 text-sm"><p><strong>{progress.humanApproved + progress.rejected}</strong> exercices examinés · {progress.needsReview} à relire</p><div className="flex gap-2"><Button variant="ghost" disabled={navigationLocked || busy !== null || activeIndex === 0} onClick={() => setCursor(activeIndex - 1)}>Précédent</Button><Button variant="ghost" disabled={navigationLocked || busy !== null || activeIndex >= items.length - 1} onClick={() => setCursor(activeIndex + 1)}>Passer</Button></div></div>
     <details className="border-b border-border pb-3"><summary className="cursor-pointer text-sm font-medium">Choisir les exercices</summary><div className="mt-4 space-y-4">
       {showScopeSwitch && <div className="flex gap-2"><Button asChild size="sm" variant={scope === "practice-v3" ? "default" : "outline"}><Link href={`${basePath}?scope=practice-v3`}>Entraînement</Link></Button><Button asChild size="sm" variant={scope === "diagnostic" ? "default" : "outline"}><Link href={basePath}>Diagnostic</Link></Button></div>}
@@ -113,11 +125,11 @@ export function ItemReviewQueue({ scope, initialItems, progress, filters, pagina
       <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground"><span>{pagination.filteredTotal} exercices dans la sélection</span>{showExport && scope === "diagnostic" && <Link href={exportHref}>Exporter la sélection</Link>}{pagination.page > 1 && <Link href={href(pagination.page - 1)}>Série précédente</Link>}{pagination.page < pagination.pageCount && <Link href={href(pagination.page + 1)}>Série suivante</Link>}</div>
     </div></details>
     {error && <p role="alert" className="text-sm text-destructive">{error}</p>}
-    {items.length === 0 ? <div className="py-12 text-center"><p className="text-lg font-semibold">Cette série est terminée.</p><Button className="mt-4" onClick={() => router.push(`${href(1)}&batch=${Date.now()}`)}>Continuer la relecture</Button></div> : <ReviewExercise key={items[activeIndex].id} item={items[activeIndex]} technical onLockChange={setNavigationLocked} busy={busy === items[activeIndex].id} onDecide={decide} />}
+    {items.length === 0 ? <div role="status" className="py-12 text-center"><p className="text-lg font-semibold">{loadingNext ? "Chargement de l’exercice suivant…" : "Tous les exercices de cette sélection ont été examinés."}</p></div> : <ReviewExercise key={items[activeIndex].id} item={items[activeIndex]} technical onLockChange={setNavigationLocked} busy={busy === items[activeIndex].id} onDecide={decide} />}
   </div>;
 }
 
-function ReviewerWorkflow({ item, items, activeIndex, visibleCount, progress, filters, reviewMode, sectionProgress, basePath, busy, error, thanks, onPrevious, onNext, onSelect, canPrevious, canNext, onDecide, onLockChange }: {
+function ReviewerWorkflow({ item, items, activeIndex, visibleCount, progress, filters, reviewMode, sectionProgress, busy, error, thanks, onPrevious, onNext, onSelect, canPrevious, canNext, onDecide, onLockChange, loadingNext }: {
   item?: CompetencyItemRow;
   items: CompetencyItemRow[];
   activeIndex: number;
@@ -132,23 +144,17 @@ function ReviewerWorkflow({ item, items, activeIndex, visibleCount, progress, fi
   busy: string | null;
   error: string;
   thanks: boolean;
+  loadingNext: boolean;
   onLockChange: (locked: boolean) => void;
   onPrevious: () => void;
   onNext: () => void;
   onSelect: (index: number) => void;
   canPrevious: boolean;
   canNext: boolean;
-  onDecide: (item: CompetencyItemRow, decision: "human_approved" | "rejected", prompt: string, answer: string, note?: string) => void;
+  onDecide: (item: CompetencyItemRow, decision: "human_approved" | "rejected", prompt: string, answer: string, note?: string) => Promise<void>;
 }) {
-  const router = useRouter();
   const completed = progress.humanApproved + progress.rejected;
   const completion = progress.total ? Math.round(completed / progress.total * 100) : 0;
-  const nextPageParams = new URLSearchParams({
-    ...(reviewMode === "focus" ? { mode: "focus" } : {}),
-    ...(filters.section ? { section: filters.section } : {}),
-    ...(filters.tier ? { tier: filters.tier } : {}),
-    page: "1",
-  });
   return <div className="mx-auto max-w-4xl">
     <details className="mb-4 border-b border-border pb-3"><summary className="cursor-pointer text-sm font-medium">Choisir le parcours et la catégorie</summary><div className="mt-4"><ReviewerModePicker mode={reviewMode} selectedSection={filters.section} sections={sectionProgress} /></div></details>
     <section aria-label="Progression de la revue" className="border-y border-border py-4">
@@ -158,7 +164,7 @@ function ReviewerWorkflow({ item, items, activeIndex, visibleCount, progress, fi
       </div>
       <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-muted" aria-hidden="true"><div className="h-full rounded-full bg-primary transition-[width] duration-500" style={{ width: `${completion}%` }} /></div>
     </section>
-    {thanks && <div role="status" className="animate-in fade-in slide-in-from-top-2 mt-5 flex gap-3 border-l-2 border-[color:var(--success)] bg-[color:var(--success)]/8 px-4 py-3"><CheckCircle2 className="mt-0.5 size-5 shrink-0 text-[color:var(--success)]" /><div><p className="text-sm font-semibold">Avis enregistré. Merci.</p><p className="mt-0.5 text-xs leading-5 text-muted-foreground">L’exercice suivant est prêt : votre contribution améliore directement le français proposé aux enfants.</p></div></div>}
+    {thanks && <div role="status" className="animate-in fade-in slide-in-from-top-2 mt-5 flex gap-3 border-l-2 border-[color:var(--success)] bg-[color:var(--success)]/8 px-4 py-3"><CheckCircle2 className="mt-0.5 size-5 shrink-0 text-[color:var(--success)]" /><div><p className="text-sm font-semibold">Avis enregistré. Merci.</p><p className="mt-0.5 text-xs leading-5 text-muted-foreground">Votre contribution améliore directement le français proposé aux enfants.</p></div></div>}
     <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
       <p className="text-sm text-muted-foreground">{visibleCount} exercices restants dans cette série</p>
       <div className="flex items-center gap-1"><Button type="button" size="sm" variant="ghost" disabled={!canPrevious} onClick={onPrevious}><ChevronLeft />Précédent</Button><Button type="button" size="sm" variant="ghost" disabled={!canNext} onClick={onNext}>Passer<ChevronRight /></Button></div>
@@ -169,7 +175,7 @@ function ReviewerWorkflow({ item, items, activeIndex, visibleCount, progress, fi
     </details>
     {reviewMode === "focus" && item && <DifficultyComparison items={items} activeIndex={activeIndex} onSelect={onSelect} />}
     {error && <p role="alert" className="mt-5 rounded-md bg-destructive/10 px-4 py-3 text-sm font-medium text-destructive">{error}</p>}
-    {!item ? <div className="py-20 text-center"><CheckCircle2 className="mx-auto size-10 text-[color:var(--success)]" /><h2 className="mt-4 text-2xl font-semibold">Cette page est terminée</h2><p className="mt-2 text-sm text-muted-foreground">Vos décisions ont bien été enregistrées.</p><Button className="mt-6" onClick={() => router.push(`${basePath}?${nextPageParams}&batch=${Date.now()}`)}>Continuer la relecture</Button></div> : <ReviewExercise key={item.id} item={item} onLockChange={onLockChange} busy={busy === item.id} onDecide={onDecide} />}
+    {!item ? <div role="status" className="py-20 text-center"><CheckCircle2 className="mx-auto size-10 text-[color:var(--success)]" /><h2 className="mt-4 text-2xl font-semibold">{loadingNext ? "Chargement de l’exercice suivant…" : "Tous les exercices de cette sélection ont été examinés."}</h2><p className="mt-2 text-sm text-muted-foreground">Vos décisions ont bien été enregistrées.</p></div> : <ReviewExercise key={item.id} item={item} onLockChange={onLockChange} busy={busy === item.id} onDecide={onDecide} />}
   </div>;
 }
 

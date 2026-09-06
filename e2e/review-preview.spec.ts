@@ -4,7 +4,7 @@ import { expect, test } from "@playwright/test";
 // Requires local scripts/fixtures/review-browser.sql; never enable against production.
 test.describe("student previews in content review", () => {
   test.skip(process.env.E2E_REVIEW_PREVIEW !== "true", "requires local review fixtures");
-  test("can try, reveal, edit and cancel without approving an exercise", async ({ page }) => {
+  test("can try, reveal, edit, then approve and reject with automatic advancement", async ({ page }) => {
     await page.goto("/login");
     await page.getByLabel("E-mail ou nom d’utilisateur").fill("review-admin@local.test");
     await page.getByLabel("Mot de passe", { exact: true }).fill("Review1234!");
@@ -29,15 +29,18 @@ test.describe("student previews in content review", () => {
     await prompt.fill(`${originalPrompt} `);
     await page.getByRole("button", { name: "Enregistrer et voir l’aperçu" }).click();
     await expect(page.getByText("Modifications enregistrées. L’exercice reste à approuver.")).toBeVisible();
-    await page.getByRole("button", { name: "Approuver et continuer", exact: true }).click();
-    await expect(page.getByRole("button", { name: "Précédent", exact: true })).toBeDisabled();
-    await page.getByRole("button", { name: "Annuler la décision", exact: true }).click();
-    await page.reload();
-    await expect(page.getByRole("radio")).toHaveCount(3);
     await page.setViewportSize({ width: 390, height: 844 });
     expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false);
     const axe = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa"]).analyze();
     expect(axe.violations.filter((violation) => ["critical", "serious"].includes(violation.impact ?? ""))).toEqual([]);
+    await page.getByRole("button", { name: "Approuver et continuer", exact: true }).click();
+    await expect(page.getByText("Complète : Hier, nous ___ au cinéma. (aller)", { exact: true })).toBeVisible();
+    await expect(page.getByRole("main").getByRole("alert")).toHaveCount(0);
+    await page.getByRole("button", { name: "Signaler un problème", exact: true }).click();
+    await page.getByLabel("Précisions", { exact: true }).fill("Préciser le sujet de la phrase pour ce test de relecture.");
+    await page.getByRole("button", { name: "Envoyer le signalement", exact: true }).click();
+    await expect(page.getByText("Tous les exercices de cette sélection ont été examinés.", { exact: true })).toBeVisible();
+    await expect(page.getByRole("main").getByRole("alert")).toHaveCount(0);
     await page.goto("/admin/content/review");
     await expect(page.getByRole("button", { name: "Voir le corrigé", exact: true }).first()).toBeVisible();
     await page.goto("/admin/dictations");

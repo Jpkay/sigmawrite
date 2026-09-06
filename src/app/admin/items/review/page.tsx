@@ -47,7 +47,7 @@ export default async function ItemReviewPage({ searchParams }: ReviewPageProps) 
     : null;
   return <>
     <PageHeader title={scope === "practice-v3" ? "Relire les exercices d’entraînement" : "Relire les exercices du diagnostic"} description="Essayez chaque exercice, consultez le corrigé, puis donnez votre avis." />
-    <ItemReviewQueue key={`${scope}:${section}:${difficultyTier}:${plan}:${page}:${query.batch ?? ""}`} scope={scope} initialItems={taggedItems} progress={progress} filters={{ section: section ?? "", tier: difficultyTier ?? "", plan }} pagination={{ page: Math.min(page, pageCount), pageCount, filteredTotal }} />
+    <ItemReviewQueue key={`${scope}:${section}:${difficultyTier}:${plan}:${page}:${query.batch ?? ""}`} scope={scope} initialItems={taggedItems} progress={progress} filters={{ section: section ?? "", tier: difficultyTier ?? "", plan }} pagination={{ page, pageCount, filteredTotal }} />
     <details className="mx-auto mt-6 max-w-3xl border-t border-border py-4"><summary className="cursor-pointer text-sm text-muted-foreground">Gérer la banque et les attributions</summary><ItemAdminNav />{assignmentOverview && <ItemAssignmentManager overview={assignmentOverview} />}</details>
   </>;
 }

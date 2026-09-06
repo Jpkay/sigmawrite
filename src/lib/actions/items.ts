@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { requireActiveReviewer, requireRole } from "@/lib/auth";
 import { createClient } from "@/lib/supabase/server";
+import { reviewErrorMessage } from "@/lib/content/review-errors";
 import { logAudit } from "@/lib/audit";
 
 const reviewSchema = z.object({
@@ -36,10 +37,10 @@ export async function assignDiagnosticItemReviews(input: unknown) {
   return { ok: true, assigned: Number(data ?? 0) };
 }
 
-export async function reviewCompetencyItem(input: unknown) {
+export async function reviewCompetencyItem(input: unknown): Promise<{ ok: true } | { ok: false; error: string }> {
   const reviewer = await requireRole(["platform_admin", "content_reviewer"]);
   const parsed = reviewSchema.safeParse(input);
-  if (!parsed.success) throw new Error("Données invalides.");
+  if (!parsed.success) return { ok: false, error: "Vérifiez l’énoncé et la réponse avant d’enregistrer votre avis." };
   const data = parsed.data;
   const supabase = await createClient();
   if (reviewer.role === "content_reviewer" || data.assignmentMode) {
@@ -49,7 +50,7 @@ export async function reviewCompetencyItem(input: unknown) {
       .eq("item_id", data.id)
       .eq("reviewer_profile_id", reviewer.id)
       .maybeSingle();
-    if (assignmentError) throw new Error(assignmentError.message);
+    if (assignmentError) return { ok: false, error: reviewErrorMessage(assignmentError.message) };
     const rpc = assignment?.status === "submitted" ? "revise_competency_item_review" : "submit_competency_item_review";
     const { data: updated, error } = await supabase.rpc(rpc, {
       p_item_id: data.id,
@@ -58,11 +59,8 @@ export async function reviewCompetencyItem(input: unknown) {
       p_correct_answer: data.correctAnswer ?? null,
       p_note: data.note ?? null,
     });
-    if (error?.message.includes("duplicate_diagnostic_prompt")) {
-      throw new Error("Un autre exercice vivant utilise déjà cet énoncé pour la même compétence. Modifiez l’énoncé avant de l’approuver.");
-    }
-    if (error) throw new Error(error.message);
-    if (!updated) throw new Error("Cet item n’est plus en attente de revue.");
+    if (error) return { ok: false, error: reviewErrorMessage(error.message) };
+    if (!updated) return { ok: false, error: reviewErrorMessage("item_not_reviewable") };
     revalidatePath("/admin/items"); revalidatePath("/admin/items/review"); revalidatePath("/review/exercises");
     return { ok: true };
   }
@@ -83,11 +81,8 @@ export async function reviewCompetencyItem(input: unknown) {
     .eq("review_status", "needs_human_review")
     .select("id")
     .maybeSingle();
-  if (error?.message.includes("duplicate_diagnostic_prompt")) {
-    throw new Error("Un autre exercice vivant utilise déjà cet énoncé pour la même compétence. Modifiez l’énoncé avant de l’approuver.");
-  }
-  if (error) throw new Error(error.message);
-  if (!updated) throw new Error("Cet item n’est plus en attente de revue.");
+  if (error) return { ok: false, error: reviewErrorMessage(error.message) };
+  if (!updated) return { ok: false, error: reviewErrorMessage("item_not_reviewable") };
   await logAudit(`competency_item.${data.decision === "human_approved" ? "approved" : "rejected"}`, { targetType: "competency_item", targetId: data.id, metadata: data.note ? { note: data.note } : {} });
   revalidatePath("/admin/items"); revalidatePath("/admin/items/review"); revalidatePath("/review/exercises");
   return { ok: true };

@@ -47,7 +47,7 @@ export default async function ExerciseReviewPage({ searchParams }: ExerciseRevie
       initialItems={items}
       progress={progress}
       filters={{ section: section ?? "", tier: difficultyTier ?? "" }}
-      pagination={{ page: Math.min(page, pageCount), pageCount, filteredTotal }}
+      pagination={{ page, pageCount, filteredTotal }}
       basePath="/review/exercises"
       showExport={false}
       showScopeSwitch={false}
