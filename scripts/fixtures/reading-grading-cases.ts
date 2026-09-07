@@ -1,7 +1,11 @@
 /** Human-authored expectations; live model evaluation is opt-in, never a CI dependency. */
-export const READING_GRADING_CASES = [
+export const READING_GRADING_CASES: ReadonlyArray<readonly [string, string, boolean, RegExp?]> = [
   ["reformuler_sans_copier:mangrove", "Les petits poissons trouvent une protection parmi les racines et peuvent y grandir.", true],
   ["reformuler_sans_copier:solar", "En douze mois, la quantité d’électricité que l’école A achète a reculé de trente-huit pour cent.", true],
+  ["reformuler_sans_copier:solar", "La facture d'électricité de l'école a diminué de 38% en un an", false, /quantité/i],
+  ["reformuler_sans_copier:solar", "La quantité d'électricité achetée par l'école a diminué de 38% en un an", true],
+  ["reformuler_sans_copier:solar", "L’école s’est procuré 38 % d’électricité de moins sur une année.", true],
+  ["reformuler_sans_copier:solar", "La consommation totale d’électricité de l’école a diminué de 38 % en un an.", false],
   ["reformuler_sans_copier:library", "Garder les supports imprimés avec les ressources sur écran permet de satisfaire des lecteurs aux attentes variées.", true],
   ["organiser_resume_informatif:mangrove", "Les sols s’érodent davantage depuis que les mangroves ont été coupées, ce qui pousse les habitants à replanter et à protéger ces arbres.", true],
   ["organiser_resume_informatif:solar", "Le solaire permet à l’école de moins acheter au réseau, même si la mise en place des panneaux représente une grosse dépense.", true],
