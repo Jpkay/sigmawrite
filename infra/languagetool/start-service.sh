@@ -19,7 +19,8 @@ children+=("$!")
 # Load the French rules before exposing readiness. The first Java check can
 # take longer than an ordinary submission, especially after a machine restart.
 ready=false
-for attempt in {1..12}; do
+deadline=$((SECONDS + 180))
+while (( SECONDS < deadline )); do
   if curl --fail --silent --max-time 10 \
     --data-urlencode 'language=fr' --data-urlencode 'level=picky' \
     --data-urlencode 'text=Les enfants jouent dans la cour.' \
@@ -28,7 +29,7 @@ for attempt in {1..12}; do
     break
   fi
   kill -0 "${children[0]}" 2>/dev/null || exit 1
-  sleep 1
+  sleep 2
 done
 if [[ "$ready" != true ]]; then
   echo "French grammar service did not become ready." >&2
