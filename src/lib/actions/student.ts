@@ -1590,7 +1590,7 @@ export async function submitNodePractice(input: unknown) {
     if (card) await service.from("retrieval_schedules").upsert({ retrieval_card_id: card.id, due_at: dueAtFrom(Date.now(), 1), interval_days: 1, ease_factor: 2.5, repetitions: 0, status: "due" }, { onConflict: "retrieval_card_id" });
   }
   revalidatePath("/student"); revalidatePath("/student/frontier");
-  return { correct, feedbackFr, mastery, mastered: mastery >= 0.85, remediation, scaffoldLevel: scaffoldState.level };
+  return { correct, feedbackFr, attemptId: attempt.id as string, mastery, mastered: mastery >= 0.85, remediation, scaffoldLevel: scaffoldState.level };
 }
 
 /** Online Elo/1PL calibration: the answer is a match between learner and

@@ -33,7 +33,7 @@ export type CompetencyItemRow = {
   choices: Array<{ id: string; text: string; correct: boolean; feedbackFr: string | null }>;
 };
 
-export async function getCompetencyItems(filters: { status?: string; node?: string; promptVersion?: string; section?: string; difficultyTier?: string; reviewerProfileId?: string; ids?: string[]; offset?: number; limit?: number } = {}, client?: SupabaseClient) {
+export async function getCompetencyItems(filters: { interestOnly?: boolean; status?: string; node?: string; promptVersion?: string; section?: string; difficultyTier?: string; reviewerProfileId?: string; ids?: string[]; offset?: number; limit?: number } = {}, client?: SupabaseClient) {
   const supabase = client ?? await createClient();
   const membershipJoin = filters.section || filters.difficultyTier
     ? "diagnostic_item_bank_memberships!inner"
@@ -42,6 +42,7 @@ export async function getCompetencyItems(filters: { status?: string; node?: stri
   const offset = Math.max(0, filters.offset ?? 0);
   const itemSelect: string = `id,primary_node_id,strand,prompt_fr,instructions_fr,validator_config,acceptable_answers,correct_answer,response_type,validator_type,difficulty,review_status,review_note,qc_gates,psychometric_flags,generation_model,prompt_version,competency_nodes!inner(key,label_fr),competency_item_choices(id,choice_text,is_correct,feedback_fr,position),${membershipJoin}(bank_release_id,mastery_evidence_id,section_key,evidence_expectation,prompt_family,difficulty_tier)${filters.reviewerProfileId ? ",competency_item_review_assignments!inner(reviewer_profile_id,status)" : ""}`;
   let query = supabase.from("competency_items").select(itemSelect).order("updated_at", { ascending: false }).range(offset, offset + limit - 1);
+  if (filters.interestOnly) query = query.eq("validator_config->>contentFamily", "interest-reading-v1");
   if (filters.status) query = query.eq("review_status", filters.status);
   if (filters.node) query = query.eq("competency_nodes.key", filters.node);
   if (filters.promptVersion) query = query.eq("prompt_version", filters.promptVersion);

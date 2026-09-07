@@ -11,6 +11,7 @@ import {
 } from "@/lib/actions/student";
 import type { getNodePractice } from "@/lib/db/practice";
 import { Confetti } from "@/components/motivation";
+import { LanguageCoaching } from "@/components/language-coaching";
 import { ExerciseSurface } from "@/components/exercise-surface";
 import { buildHintLadder } from "@/lib/practice/hints";
 import { workedExample } from "@/lib/practice/scaffolding";
@@ -33,7 +34,7 @@ export function PracticePlayer({ practice }: { practice: Practice }) {
   const [order, setOrder] = useState<string[]>([]);
   const [rule, setRule] = useState("");
   const [busy, setBusy] = useState(false);
-  const [feedback, setFeedback] = useState<{ correct: boolean; text: string | null; mastery: number } | null>(null);
+  const [feedback, setFeedback] = useState<{ correct: boolean; text: string | null; mastery: number; attemptId: string } | null>(null);
   const [completion, setCompletion] = useState<Completion | null>(null);
   const [error, setError] = useState("");
   const [scaffoldLevel, setScaffoldLevel] = useState(practice.scaffoldLevel);
@@ -108,7 +109,7 @@ export function PracticePlayer({ practice }: { practice: Practice }) {
         startedAt: itemStartedAt,
         hintsUsed: hintsShown,
       });
-      setFeedback({ correct: result.correct, text: result.feedbackFr, mastery: result.mastery });
+      setFeedback({ correct: result.correct, text: result.feedbackFr, mastery: result.mastery, attemptId: result.attemptId });
       setRemediation(result.remediation ?? null);
       setScaffoldLevel(result.scaffoldLevel);
       setAttemptsOnItem((value) => value + 1);
@@ -189,6 +190,7 @@ export function PracticePlayer({ practice }: { practice: Practice }) {
 
       {hintsShown > 0 && <div className="mt-5 space-y-2">{support.slice(0, hintsShown).map((hint, hintIndex) => <div key={hintIndex} className="flex gap-3 border-l-2 border-secondary py-1 pl-3 text-sm"><Lightbulb className="mt-0.5 size-4 shrink-0 text-secondary" /><p>{hint}</p></div>)}</div>}
       {feedback && <div className={`mt-5 flex gap-3 border-l-2 py-3 pl-4 text-sm ${feedback.correct ? "border-emerald-500" : "border-amber-500"}`}><CheckCircle2 className={`mt-0.5 size-5 shrink-0 ${feedback.correct ? "text-emerald-600" : "text-amber-600"}`} /><div><p className="font-medium">{feedback.correct ? "Bonne réponse." : "Pas encore — essaie avec l’indice."}</p>{feedback.text && <p className="mt-1 text-muted-foreground">{feedback.text}</p>}<p className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs"><Link className="font-medium text-primary underline-offset-4 hover:underline" href={`/student/reference/regle/${encodeURIComponent(practice.node.key)}`}>Voir la règle</Link>{practice.node.strand === "conjugaison" && <Link className="font-medium text-primary underline-offset-4 hover:underline" href="/student/reference/verbe">Tables de conjugaison</Link>}</p></div></div>}
+      {feedback?.correct && !!item.validatorConfig?.readingRubric && <LanguageCoaching key={feedback.attemptId} attemptId={feedback.attemptId} />}
       {feedback && remediation && <p className="mt-4 text-sm text-muted-foreground">Après cette session, révise aussi <Link className="font-medium text-primary underline-offset-4 hover:underline" href={`/student/practice/${remediation.nodeId}`}>{remediation.label}</Link>.</p>}
       {error && <p role="alert" className="mt-5 text-sm text-destructive">{error}</p>}
 

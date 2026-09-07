@@ -25,4 +25,7 @@ export const READING_GRADING_CASES = [
   ["comparer_points_de_vue:street", "L’auteur est contre la rue piétonne, tandis que les commerçants la soutiennent.", false],
   ["organiser_resume_informatif:solar", "Les panneaux ont réduit les achats d’électricité de l’école A.", false],
   ["organiser_resume_narratif:notebook", "Malik découvre un carnet de pluie et le cache pour le garder pour lui.", false],
+  ["organiser_resume_narratif:notebook", "Malik a découvert un vieux carnet contenant des mesures de pluies très anciennes et a décidé, avec la bibliothécaire, de les numériser avec une équipe scientifique pour comparer les pluies d’autrefois à celles d’aujourd’hui.", false],
+  ["organiser_resume_narratif:notebook", "Malik trouve un carnet de pluie, le remet aux archives et le numérise avec la bibliothécaire afin que les chercheurs comparent les relevés anciens et récents.", true],
+  ["organiser_resume_narratif:lighthouse", "Inès attend pendant que le marin rallume le phare, puis le bateau change de direction.", false],
 ] as const;

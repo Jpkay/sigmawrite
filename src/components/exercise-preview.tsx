@@ -3,6 +3,7 @@
 import { shuffleChoices } from "@/lib/content/choice-order";
 import { useState } from "react";
 import { ExerciseSurface, type ExerciseSurfaceItem } from "@/components/exercise-surface";
+import { LanguageCoaching } from "@/components/language-coaching";
 import { Button } from "@/components/ui/button";
 
 export type PreviewItem = Omit<ExerciseSurfaceItem, "choices"> & {
@@ -41,6 +42,7 @@ export function ExercisePreview({ item, onCheck }: { item: PreviewItem; onCheck?
     <p className="mb-3 text-xs font-medium text-muted-foreground">Aperçu élève · les essais ne sont pas enregistrés</p>
     <ExerciseSurface item={item} choice={choice} answer={answer} order={order} rule={rule} setChoice={setChoice} setAnswer={setAnswer} setOrder={setOrder} setRule={setRule} disabled={busy || !!feedback || revealed} />
     {feedback && <div role="status" className={`mt-4 border-l-2 py-2 pl-4 text-sm ${feedback.correct ? "border-emerald-600" : "border-amber-600"}`}><p className="font-semibold">{feedback.correct ? "Bonne réponse." : "Pas encore — essaie à nouveau."}</p>{feedback.feedbackFr && <p className="mt-1 leading-6">{feedback.feedbackFr}</p>}</div>}
+    {feedback?.correct && !!item.validatorConfig?.readingRubric && !!onCheck && <LanguageCoaching key={answer} preview={{ id: item.id, answerText: answer }} />}
     {error && <p role="alert" className="mt-3 text-sm text-destructive">{error}</p>}
     <div className="my-5 flex flex-wrap gap-2">
       {canCheck && !feedback && !revealed && <Button type="button" disabled={!answered || busy} onClick={() => void check()}>{busy ? "Vérification…" : "Vérifier ma réponse"}</Button>}

@@ -62,6 +62,7 @@ export function ReviewExercise({ item: original, busy, technical = false, onDeci
   return <article className="min-w-0 pb-6">
     <header className="py-5">
       <p className="text-sm text-muted-foreground">{sections[item.diagnostic?.sectionKey ?? ""] ?? "Français"}{nativeGrade ? ` · ${nativeGrade}` : ""}{item.diagnostic?.difficultyTier ? ` · ${tiers[item.diagnostic.difficultyTier] ?? ""}` : ""}</p>
+      {typeof item.validatorConfig?.interestLabelFr === "string" && <p className="mt-2 text-sm font-medium">Thème : {item.validatorConfig.interestLabelFr}</p>}
       <details className="mt-3 border-b border-border pb-3">
         <summary className="cursor-pointer text-sm font-medium">Repères pédagogiques</summary>
         <div className="mt-4 space-y-3 text-sm leading-6"><h2 className="font-semibold">{item.nodeLabel}</h2>{item.diagnostic?.observableActionFr && <p>{item.diagnostic.observableActionFr}</p>}{item.curriculumTags?.length ? <CurriculumTags tags={item.curriculumTags} /> : null}<p>Français langue première : {nativeGrade ?? "Niveau à préciser"}<br />Français langue seconde : {cefr ? `${cefr} · CECRL` : "Niveau à préciser"}</p><p className="text-xs text-muted-foreground">Ces repères sont indicatifs. Les deux cadres ne constituent pas une équivalence.</p></div>

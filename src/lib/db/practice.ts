@@ -82,9 +82,13 @@ export async function getNodePractice(nodeId: string, client?: SupabaseClient, s
   // Practice targets ~82% predicted success (Elo/1PL) when the learner has a
   // rating; without one the authored easy→hard order stands.
   let learnerRating = 0;
+  let interests: string[] = [];
   if (studentId && (itemRows?.length ?? 0) > 0) {
-    const { data: rating } = await supabase.from("student_ability_ratings")
-      .select("rating").eq("student_id", studentId).eq("strand", node.strand as string).maybeSingle();
+    const [{ data: rating }, { data: preferences }] = await Promise.all([
+      supabase.from("student_ability_ratings").select("rating").eq("student_id", studentId).eq("strand", node.strand as string).maybeSingle(),
+      supabase.from("student_interests").select("interest_key").eq("student_id", studentId),
+    ]);
+    interests = (preferences ?? []).map((row) => row.interest_key as string);
     learnerRating = Number(rating?.rating ?? 0);
   }
   const ratedItems = (itemRows ?? []).map((item) => ({
@@ -93,11 +97,14 @@ export async function getNodePractice(nodeId: string, client?: SupabaseClient, s
       ? Number(item.difficulty_rating)
       : itemRatingFromDifficulty(item.difficulty == null ? null : Number(item.difficulty)),
     responseType: item.response_type as string,
+    interestKeys: Array.isArray(item.validator_config?.interestKeys) ? item.validator_config.interestKeys.filter((key: unknown): key is string => typeof key === "string") : [],
     validatorConfig: item.validator_config as Record<string, unknown> | null,
   }));
   const items = selectOptimalPracticeItems(
       studentId ? orderByTargetSuccess(ratedItems, (item) => item.difficultyRating, learnerRating) : ratedItems,
       learnerRating,
+      undefined,
+      interests,
     );
   let scaffoldLevel = 0;
   if(studentId){const{data:estimate}=await supabase.from("student_competency_estimates").select("scaffold_level").eq("student_id",studentId).eq("node_id",nodeId).maybeSingle();scaffoldLevel=Number(estimate?.scaffold_level??0);}

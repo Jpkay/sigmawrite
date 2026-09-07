@@ -64,3 +64,13 @@ describe("seven-minute practice session", () => {
     expect(xpForPractice({ completed: true, perfect: true }).total).toBe(10);
   });
 });
+
+it("uses interests among similarly suitable exercises and never crosses a difficulty band for a theme", () => {
+  const items = [
+    { id: "neutral", difficultyRating: -1.5, interestKeys: [] },
+    { id: "football", difficultyRating: -1.5, interestKeys: ["football"] },
+    { id: "too-hard", difficultyRating: 3, interestKeys: ["football"], responseType: "other" },
+  ];
+  expect(selectOptimalPracticeItems(items, 0, 3, ["football"]).map((item) => item.id)).toEqual(["football", "neutral", "too-hard"]);
+  expect(selectOptimalPracticeItems(items, 0, 1, []).map((item) => item.id)).toEqual(["neutral"]);
+});

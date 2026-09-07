@@ -61,7 +61,7 @@ export async function reviewCompetencyItem(input: unknown): Promise<{ ok: true }
     });
     if (error) return { ok: false, error: reviewErrorMessage(error.message) };
     if (!updated) return { ok: false, error: reviewErrorMessage("item_not_reviewable") };
-    revalidatePath("/admin/items"); revalidatePath("/admin/items/review"); revalidatePath("/review/exercises");
+    revalidatePath("/admin/items/themes"); revalidatePath("/admin/items"); revalidatePath("/admin/items/review"); revalidatePath("/review/exercises");
     return { ok: true };
   }
   const update: Record<string, unknown> = {
@@ -84,7 +84,7 @@ export async function reviewCompetencyItem(input: unknown): Promise<{ ok: true }
   if (error) return { ok: false, error: reviewErrorMessage(error.message) };
   if (!updated) return { ok: false, error: reviewErrorMessage("item_not_reviewable") };
   await logAudit(`competency_item.${data.decision === "human_approved" ? "approved" : "rejected"}`, { targetType: "competency_item", targetId: data.id, metadata: data.note ? { note: data.note } : {} });
-  revalidatePath("/admin/items"); revalidatePath("/admin/items/review"); revalidatePath("/review/exercises");
+  revalidatePath("/admin/items/themes"); revalidatePath("/admin/items"); revalidatePath("/admin/items/review"); revalidatePath("/review/exercises");
   return { ok: true };
 }
 
@@ -101,6 +101,6 @@ export async function saveReviewExercise(input: unknown) {
     p_acceptable_answers: data.acceptableAnswers ?? null, p_required_ideas: data.requiredIdeas ?? null,
   });
   if (error) throw new Error("Les modifications n’ont pas pu être enregistrées. L’exercice doit encore être en attente de relecture.");
-  revalidatePath("/admin/items/review"); revalidatePath("/review/exercises");
+  revalidatePath("/admin/items/themes"); revalidatePath("/admin/items/review"); revalidatePath("/review/exercises");
   return data;
 }

@@ -28,12 +28,13 @@ type QueueProps = {
   basePath?: string;
   showExport?: boolean;
   showScopeSwitch?: boolean;
+  showFilters?: boolean;
   reviewerMode?: boolean;
   reviewMode?: "mixed" | "focus";
   sectionProgress?: ReviewerExerciseSectionProgress[];
 };
 
-export function ItemReviewQueue({ scope, initialItems, progress, filters, pagination, basePath = "/admin/items/review", showExport = true, showScopeSwitch = true, reviewerMode = false, reviewMode = "mixed", sectionProgress = [] }: QueueProps) {
+export function ItemReviewQueue({ scope, initialItems, progress, filters, pagination, basePath = "/admin/items/review", showExport = true, showScopeSwitch = true, showFilters = true, reviewerMode = false, reviewMode = "mixed", sectionProgress = [] }: QueueProps) {
   const router = useRouter();
   const [dismissed, setDismissed] = useState<string[]>([]);
   const [busy, setBusy] = useState<string | null>(null);
@@ -120,7 +121,7 @@ export function ItemReviewQueue({ scope, initialItems, progress, filters, pagina
     <div className="flex flex-wrap items-center justify-between gap-3 border-y border-border py-4 text-sm"><p><strong>{progress.humanApproved + progress.rejected}</strong> exercices examinés · {progress.needsReview} à relire</p><div className="flex gap-2"><Button variant="ghost" disabled={navigationLocked || busy !== null || activeIndex === 0} onClick={() => setCursor(activeIndex - 1)}>Précédent</Button><Button variant="ghost" disabled={navigationLocked || busy !== null || activeIndex >= items.length - 1} onClick={() => setCursor(activeIndex + 1)}>Passer</Button></div></div>
     <details className="border-b border-border pb-3"><summary className="cursor-pointer text-sm font-medium">Choisir les exercices</summary><div className="mt-4 space-y-4">
       {showScopeSwitch && <div className="flex gap-2"><Button asChild size="sm" variant={scope === "practice-v3" ? "default" : "outline"}><Link href={`${basePath}?scope=practice-v3`}>Entraînement</Link></Button><Button asChild size="sm" variant={scope === "diagnostic" ? "default" : "outline"}><Link href={basePath}>Diagnostic</Link></Button></div>}
-      <QueueFilters scope={scope} filters={filters} />
+      {showFilters && <QueueFilters scope={scope} filters={filters} />}
       {scope === "diagnostic" && <Button asChild size="sm" variant="outline"><Link href={`${basePath}?${new URLSearchParams({ ...selectionParams, plan: "review-hour" })}`}>Exercices prioritaires</Link></Button>}
       <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground"><span>{pagination.filteredTotal} exercices dans la sélection</span>{showExport && scope === "diagnostic" && <Link href={exportHref}>Exporter la sélection</Link>}{pagination.page > 1 && <Link href={href(pagination.page - 1)}>Série précédente</Link>}{pagination.page < pagination.pageCount && <Link href={href(pagination.page + 1)}>Série suivante</Link>}</div>
     </div></details>
