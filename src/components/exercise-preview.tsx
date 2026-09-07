@@ -44,11 +44,12 @@ export function ExercisePreview({ item, onCheck }: { item: PreviewItem; onCheck?
     {error && <p role="alert" className="mt-3 text-sm text-destructive">{error}</p>}
     <div className="my-5 flex flex-wrap gap-2">
       {canCheck && !feedback && !revealed && <Button type="button" disabled={!answered || busy} onClick={() => void check()}>{busy ? "Vérification…" : "Vérifier ma réponse"}</Button>}
-      {!revealed && <Button type="button" variant="outline" disabled={busy} onClick={() => setRevealed(true)}>Voir le corrigé</Button>}
+      {!revealed && <Button type="button" variant="outline" disabled={busy} onClick={() => setRevealed(true)}>{item.validatorConfig?.readingRubric ? "Voir un exemple de réponse" : "Voir le corrigé"}</Button>}
       {(feedback || revealed || answered) && <Button type="button" variant="ghost" disabled={busy} onClick={reset}>Réessayer</Button>}
     </div>
     {revealed && <div className="mb-6 border-l-2 border-primary bg-primary/5 p-4 text-sm leading-6">
-      <p className="font-semibold">Corrigé</p>
+      <p className="font-semibold">{item.validatorConfig?.readingRubric ? "Exemple de réponse" : "Corrigé"}</p>
+      {!!item.validatorConfig?.readingRubric && <p className="mt-1 text-muted-foreground">D’autres formulations sont possibles si elles expriment les idées attendues.</p>}
       {item.choices.length ? <ul className="mt-2 space-y-3">{choices.map((entry) => <li key={entry.id}><p><span className="font-semibold">{entry.correct ? "Réponse attendue : " : "Autre proposition : "}</span>{entry.text}</p>{entry.feedbackFr && <p className="text-muted-foreground">{entry.feedbackFr}</p>}</li>)}</ul> : <p className="mt-2 whitespace-pre-wrap">{item.correctAnswer || "Réponse ouverte à examiner avec la grille de correction."}</p>}
       {item.responseType === "justified" && <p className="mt-3">Justification : {((item.validatorConfig?.rules as { key: string; label: string }[] | undefined) ?? []).find((entry) => entry.key === item.validatorConfig?.ruleKey)?.label ?? "À renseigner"}</p>}
       {item.rubric && <p className="mt-3 whitespace-pre-wrap">{item.rubric}</p>}

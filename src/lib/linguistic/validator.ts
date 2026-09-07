@@ -44,6 +44,7 @@ export function normalize(
 
 export type ValidatorDeps = {
   grammarChecker?: FrenchGrammarChecker;
+  readingJudge?: import("./reading-ideas").ReadingJudge;
 };
 
 export async function validateAnswer(
@@ -52,8 +53,15 @@ export async function validateAnswer(
   deps: ValidatorDeps = {}
 ): Promise<ValidationResult> {
   switch (spec.validatorType) {
-    case "exact":
-      return exactMatch(answer, spec);
+    case "exact": {
+      const exact = exactMatch(answer, spec);
+      if (!spec.config?.readingRubric) return exact;
+      // Listed answers have already been approved. Unlisted wording is assessed
+      // against the same authored ideas in review, practice and diagnostics.
+      if (exact.pass) return { ...exact, reason: "Ta réponse exprime les idées attendues." };
+      const { assessReadingIdeas } = await import("./reading-ideas");
+      return assessReadingIdeas(answer, spec, deps.readingJudge);
+    }
 
     case "regex": {
       const pattern = spec.correctAnswer ?? "";

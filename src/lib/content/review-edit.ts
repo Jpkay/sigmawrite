@@ -4,6 +4,8 @@ export const reviewEditSchema = z.object({
   id: z.string().uuid(),
   promptFr: z.string().trim().min(5).max(4000),
   correctAnswer: z.string().trim().max(1000).nullable(),
+  acceptableAnswers: z.array(z.string().trim().min(1).max(1000)).max(30).optional(),
+  requiredIdeas: z.array(z.string().trim().min(10).max(600)).min(1).max(8).optional(),
   choices: z.array(z.object({ id: z.string().uuid(), text: z.string().trim().min(1).max(2000), correct: z.boolean(), feedbackFr: z.string().trim().max(2000).nullable() })).max(20),
 }).superRefine((value, ctx) => {
   if (new Set(value.choices.map((choice) => choice.id)).size !== value.choices.length) ctx.addIssue({ code: "custom", message: "Chaque proposition doit être unique." });

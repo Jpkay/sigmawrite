@@ -7,6 +7,7 @@ import { ExercisePreview } from "@/components/exercise-preview";
 import { checkReviewPreview } from "@/lib/actions/review-preview";
 import { saveReviewExercise } from "@/lib/actions/items";
 import { formatFrameworkRange, formatNativeGradeRange } from "@/lib/content/exercise-presentation";
+import { readingRubricSchema } from "@/lib/content/reading-rubric";
 import type { CompetencyItemRow } from "@/lib/db/items";
 
 type Decision = "human_approved" | "rejected";
@@ -22,6 +23,10 @@ const issues = ["Consigne ambiguë", "Réponse incorrecte", "Niveau inadapté", 
 export function ReviewExercise({ item: original, busy, technical = false, onDecide, onLockChange }: ReviewExerciseProps) {
   const [item, setItem] = useState(original);
   const [draft, setDraft] = useState(original);
+  const [alternativesText, setAlternativesText] = useState((original.acceptableAnswers ?? []).join("\n"));
+  const initialRubric = readingRubricSchema.safeParse(original.validatorConfig?.readingRubric);
+  const [ideasText, setIdeasText] = useState(initialRubric.success ? initialRubric.data.requiredIdeas.join("\n") : "");
+  const hasReadingRubric = !!item.validatorConfig?.readingRubric;
   const [editing, setEditing] = useState(false);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
@@ -36,8 +41,13 @@ export function ReviewExercise({ item: original, busy, technical = false, onDeci
   async function save() {
     setSaving(true); setError("");
     try {
-      const result = await saveReviewExercise({ id: item.id, promptFr: draft.promptFr, correctAnswer: draft.correctAnswer, choices: draft.choices });
-      const next = { ...draft, ...result, correctAnswer: result.choices.find((choice) => choice.correct)?.text ?? result.correctAnswer };
+      const result = await saveReviewExercise({ id: item.id, promptFr: draft.promptFr, correctAnswer: draft.correctAnswer, choices: draft.choices,
+        acceptableAnswers: alternativesText.split("\n").map((line) => line.trim()).filter(Boolean),
+        requiredIdeas: hasReadingRubric ? ideasText.split("\n").map((line) => line.trim()).filter(Boolean) : undefined,
+      });
+      const next = { ...draft, ...result,
+        validatorConfig: result.requiredIdeas ? { ...draft.validatorConfig, readingRubric: { version: 1, requiredIdeas: result.requiredIdeas } } : draft.validatorConfig,
+        correctAnswer: result.choices.find((choice) => choice.correct)?.text ?? result.correctAnswer };
       setItem(next); setDraft(next); setEditing(false); setSaved(true);
     } catch (caught) { setError(caught instanceof Error ? caught.message : "Enregistrement impossible."); }
     finally { setSaving(false); }
@@ -61,9 +71,19 @@ export function ReviewExercise({ item: original, busy, technical = false, onDeci
     {editing ? <section aria-label="Modifier l’exercice" className="space-y-5 border-y border-border py-6">
       <h2 className="text-xl font-semibold">Modifier l’exercice</h2>
       <label className="block text-sm font-medium">Énoncé<textarea value={draft.promptFr} onChange={(event) => setDraft({ ...draft, promptFr: event.target.value })} rows={5} maxLength={4000} disabled={saving} className="mt-2 w-full rounded-md border bg-background p-3 text-base leading-7" /></label>
-      {draft.choices.length ? <fieldset disabled={saving} className="space-y-4"><legend className="mb-3 text-sm font-medium">Propositions · sélectionnez la bonne réponse</legend>{draft.choices.map((choice, index) => <div key={choice.id} className="border-l-2 border-border pl-4"><label className="flex items-center gap-2 text-sm"><input type="radio" name={`correct-${item.id}`} checked={choice.correct} onChange={() => setDraft({ ...draft, choices: draft.choices.map((entry) => ({ ...entry, correct: entry.id === choice.id })) })} />Bonne réponse · proposition {index + 1}</label><label className="mt-2 block text-sm">Proposition {index + 1}<textarea value={choice.text} maxLength={2000} rows={2} onChange={(event) => setDraft({ ...draft, choices: draft.choices.map((entry) => entry.id === choice.id ? { ...entry, text: event.target.value } : entry) })} className="mt-1 w-full rounded-md border bg-background p-3 text-base" /></label><label className="mt-2 block text-sm">Explication pour l’élève<textarea value={choice.feedbackFr ?? ""} maxLength={2000} rows={2} onChange={(event) => setDraft({ ...draft, choices: draft.choices.map((entry) => entry.id === choice.id ? { ...entry, feedbackFr: event.target.value } : entry) })} className="mt-1 w-full rounded-md border bg-background p-3 text-base" /></label></div>)}</fieldset> : <label className="block text-sm font-medium">Réponse attendue<input value={draft.correctAnswer ?? ""} maxLength={1000} disabled={saving} onChange={(event) => setDraft({ ...draft, correctAnswer: event.target.value })} className="mt-2 w-full rounded-md border bg-background p-3 text-base" /></label>}
+      {draft.choices.length ? <fieldset disabled={saving} className="space-y-4"><legend className="mb-3 text-sm font-medium">Propositions · sélectionnez la bonne réponse</legend>{draft.choices.map((choice, index) => <div key={choice.id} className="border-l-2 border-border pl-4"><label className="flex items-center gap-2 text-sm"><input type="radio" name={`correct-${item.id}`} checked={choice.correct} onChange={() => setDraft({ ...draft, choices: draft.choices.map((entry) => ({ ...entry, correct: entry.id === choice.id })) })} />Bonne réponse · proposition {index + 1}</label><label className="mt-2 block text-sm">Proposition {index + 1}<textarea value={choice.text} maxLength={2000} rows={2} onChange={(event) => setDraft({ ...draft, choices: draft.choices.map((entry) => entry.id === choice.id ? { ...entry, text: event.target.value } : entry) })} className="mt-1 w-full rounded-md border bg-background p-3 text-base" /></label><label className="mt-2 block text-sm">Explication pour l’élève<textarea value={choice.feedbackFr ?? ""} maxLength={2000} rows={2} onChange={(event) => setDraft({ ...draft, choices: draft.choices.map((entry) => entry.id === choice.id ? { ...entry, feedbackFr: event.target.value } : entry) })} className="mt-1 w-full rounded-md border bg-background p-3 text-base" /></label></div>)}</fieldset> : <label className="block text-sm font-medium">{hasReadingRubric ? "Exemple de réponse" : "Réponse attendue"}<input value={draft.correctAnswer ?? ""} maxLength={1000} disabled={saving} onChange={(event) => setDraft({ ...draft, correctAnswer: event.target.value })} className="mt-2 w-full rounded-md border bg-background p-3 text-base" /></label>}
+      {!draft.choices.length && <>
+        <label className="block text-sm font-medium">Autres réponses acceptées
+          <span className="mt-1 block text-sm font-normal text-muted-foreground">Une formulation par ligne.{hasReadingRubric ? " Les formulations équivalentes sont aussi évaluées selon les idées attendues." : " Chaque formulation ajoutée sera acceptée."}</span>
+          <textarea value={alternativesText} onChange={(event) => setAlternativesText(event.target.value)} disabled={saving} rows={3} maxLength={30000} className="mt-2 w-full rounded-md border bg-background p-3 text-base" />
+        </label>
+        {hasReadingRubric && <label className="block text-sm font-medium">Idées attendues
+          <span className="mt-1 block text-sm font-normal text-muted-foreground">Une idée par ligne. Toutes sont nécessaires ; les mots exacts du corrigé ne sont pas exigés. Vérifiez que les réponses acceptées les respectent.</span>
+          <textarea value={ideasText} onChange={(event) => setIdeasText(event.target.value)} disabled={saving} rows={5} maxLength={4800} className="mt-2 w-full rounded-md border bg-background p-3 text-base leading-7" />
+        </label>}
+      </>}
       <div className="flex flex-wrap gap-2"><Button type="button" disabled={saving} onClick={() => startTransition(async () => { await save(); })}>{saving ? "Enregistrement…" : "Enregistrer et voir l’aperçu"}</Button><Button type="button" variant="ghost" disabled={saving} onClick={() => { setEditing(false); setDraft(item); setError(""); }}>Annuler</Button></div>
-    </section> : <><ExercisePreview key={JSON.stringify([item.promptFr, item.correctAnswer, item.choices])} item={item} onCheck={["rubric", "llm_assisted"].includes(item.validatorType) ? undefined : (response) => checkReviewPreview({ id: item.id, ...response })} /><Button type="button" variant="ghost" size="sm" disabled={locked || item.reviewStatus !== "needs_human_review"} onClick={() => { setEditing(true); setSaved(false); }}>Modifier l’exercice</Button></>}
+    </section> : <><ExercisePreview key={JSON.stringify([item.promptFr, item.correctAnswer, item.choices, item.acceptableAnswers, item.validatorConfig])} item={item} onCheck={["rubric", "llm_assisted"].includes(item.validatorType) ? undefined : (response) => checkReviewPreview({ id: item.id, ...response })} /><Button type="button" variant="ghost" size="sm" disabled={locked || item.reviewStatus !== "needs_human_review"} onClick={() => { setEditing(true); setSaved(false); setAlternativesText((item.acceptableAnswers ?? []).join("\n")); const rubric = readingRubricSchema.safeParse(item.validatorConfig?.readingRubric); setIdeasText(rubric.success ? rubric.data.requiredIdeas.join("\n") : ""); }}>Modifier l’exercice</Button></>}
     {saved && <p role="status" className="mt-3 text-sm text-muted-foreground">Modifications enregistrées. L’exercice reste à approuver.</p>}
     {error && <p role="alert" className="mt-3 text-sm text-destructive">{error}</p>}
     {technical && <details className="mt-5 border-t border-border py-3"><summary className="cursor-pointer text-xs text-muted-foreground">Détails techniques</summary><div className="mt-3 space-y-3 text-xs text-muted-foreground"><p>{item.generationModel} · {item.promptVersion}</p><pre className="max-h-60 overflow-auto whitespace-pre-wrap break-all">{JSON.stringify(item.qcGates, null, 2)}</pre></div></details>}

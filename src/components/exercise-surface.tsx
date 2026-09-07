@@ -22,6 +22,7 @@ export function ExerciseSurface({ item, choice, answer, order, rule, setChoice, 
   return (
       <div className="border-y border-border py-7">
         <ExercisePrompt promptFr={item.promptFr} instructionsFr={item.instructionsFr} />
+        {!!item.validatorConfig?.readingRubric && <p className="text-sm text-muted-foreground">Réponds avec tes mots : ce sont les idées et leur lien avec le texte qui comptent.</p>}
         {item.responseType === "error_hunt" ? <ErrorHuntWidget sentence={item.promptFr} value={answer} onChange={setAnswer} disabled={disabled} />
           : item.responseType === "ordering" ? <OrderingWidget order={order.length ? order : shuffledOrder(((item.validatorConfig?.tokens as string[] | undefined) ?? []), item.id)} onChange={(next) => { setOrder(next); setAnswer(next.join(" ")); }} disabled={disabled} />
           : item.responseType === "justified" ? <JustifiedWidget choices={choices} rules={shuffleChoices((item.validatorConfig?.rules as { key: string; label: string }[] | undefined) ?? [], `rules:${item.id}`)} choice={choice} rule={rule} onChoice={setChoice} onRule={(key) => { setRule(key); setAnswer(key); }} disabled={disabled} />
