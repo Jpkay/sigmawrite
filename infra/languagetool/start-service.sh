@@ -21,7 +21,7 @@ children+=("$!")
 ready=false
 deadline=$((SECONDS + 180))
 while (( SECONDS < deadline )); do
-  if curl --fail --silent --max-time 10 \
+  if curl --fail --silent --max-time 65 \
     --data-urlencode 'language=fr' --data-urlencode 'level=picky' \
     --data-urlencode 'text=Les enfants jouent dans la cour.' \
     http://127.0.0.1:8010/v2/check > /dev/null; then
