@@ -5,6 +5,7 @@ import { requireActiveReviewer } from "@/lib/auth";
 import { getReviewerExerciseHistory, getDiagnosticItemReviewProgress } from "@/lib/db/items";
 import { getReviewerAccess, getReviewerQueue } from "@/lib/db/reviews";
 import { createServiceClient } from "@/lib/supabase/server";
+import { reviewHourHref, reviewHourItemIds } from "@/lib/diagnostic/review-hour-plan";
 import { targetLevelProfile } from "@/lib/scoring/band";
 
 type ReviewHomeProps = { searchParams: Promise<Record<string, string | string[] | undefined>> };
@@ -12,12 +13,13 @@ type ReviewHomeProps = { searchParams: Promise<Record<string, string | string[] 
 export default async function ReviewHomePage({ searchParams }: ReviewHomeProps) {
   const session = await requireActiveReviewer();
   const service = createServiceClient();
-  const [queue, access, exerciseProgress, exerciseHistory, query] = await Promise.all([
+  const [queue, access, exerciseProgress, exerciseHistory, query, launchProgress] = await Promise.all([
     getReviewerQueue(session.id, service),
     getReviewerAccess(session.id, service),
     getDiagnosticItemReviewProgress(service, session.id),
     getReviewerExerciseHistory(session.id, service),
     searchParams,
+    session.role === "platform_admin" ? getDiagnosticItemReviewProgress(service, undefined, reviewHourItemIds) : Promise.resolve(null),
   ]);
   const unfinishedPassages = queue.filter((item) => item.status !== "submitted");
   const passageHistory = queue.filter((item) => item.status === "submitted");
@@ -56,6 +58,8 @@ export default async function ReviewHomePage({ searchParams }: ReviewHomeProps) 
       <p className="font-display text-xs font-semibold uppercase tracking-[0.15em] text-primary">Votre mission</p>
       <div className="mt-3 flex flex-wrap items-end justify-between gap-4"><div><h1 className="text-3xl font-semibold tracking-[-0.035em] sm:text-4xl">Bonjour {session.displayName?.split(" ")[0] ?? ""}</h1><p className="mt-2 text-sm leading-6 text-muted-foreground">Une file variée, un contenu à la fois.</p></div><Button asChild variant="outline" size="sm"><Link href="/review/history"><History />Voir mon historique</Link></Button></div>
     </header>
+
+    {launchProgress && <section aria-label="Priorité lancement" className="my-6 border-l-2 border-primary bg-primary/5 px-5 py-5"><p className="text-xs font-semibold uppercase tracking-[0.14em] text-primary">Priorité lancement · Parcours d’une heure</p><h2 className="mt-2 text-xl font-semibold">{launchProgress.needsReview > 0 ? `${launchProgress.needsReview} exercices prioritaires restent à relire` : "La sélection de lancement a été examinée"}</h2><p className="mt-2 text-sm leading-6 text-muted-foreground">{launchProgress.humanApproved} approuvés sur {launchProgress.total}. Cette sélection couvre le minimum de relecture du diagnostic pour un lancement partiel.</p>{launchProgress.rejected > 0 && <p className="mt-2 text-sm">{launchProgress.rejected} exercice(s) signalé(s) restent à remplacer.</p>}<Button asChild className="mt-4"><Link href={reviewHourHref}>{launchProgress.needsReview > 0 ? "Terminer la relecture de lancement" : "Voir la sélection de lancement"}<ArrowRight /></Link></Button></section>}
 
     {remaining > 0 ? <section className="border-y border-border py-7">
       <div className="flex items-start gap-4"><span className="grid size-11 shrink-0 place-items-center rounded-full bg-primary/10 text-primary">{recommendExercise ? <Languages /> : <BookOpenCheck />}</span><div className="min-w-0 flex-1"><p className="text-xs font-semibold uppercase tracking-[0.14em] text-primary">Prochaine revue recommandée</p><h2 className="mt-2 text-2xl font-semibold">{recommendExercise ? "Un exercice de français" : "Un texte et ses questions"}</h2><p className="mt-2 text-sm leading-6 text-muted-foreground">{recommendExercise ? "La catégorie change au fil de la file : compréhension, grammaire, orthographe puis conjugaison." : draft ? "Votre brouillon vous attend exactement là où vous l’avez laissé." : "Lisez le passage comme un élève, puis évaluez sa clarté et ses questions."}</p><Button asChild className="mt-5"><Link href={nextHref}>{completed > 0 || draft ? "Reprendre la relecture" : "Commencer la relecture"}<ArrowRight /></Link></Button></div></div>

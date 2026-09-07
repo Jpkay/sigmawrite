@@ -400,13 +400,14 @@ export async function getGenerationRuns(client?: SupabaseClient) {
   return data ?? [];
 }
 
-export async function getDiagnosticItemReviewProgress(client?: SupabaseClient, reviewerProfileId?: string) {
+export async function getDiagnosticItemReviewProgress(client?: SupabaseClient, reviewerProfileId?: string, ids?: string[]) {
   const supabase = client ?? await createClient();
   if (reviewerProfileId) {
     async function countAssignments(status: "assigned" | "submitted", decision?: "human_approved" | "rejected") {
       let query = supabase.from("competency_item_review_assignments").select("id", { count: "exact", head: true }).eq("reviewer_profile_id", reviewerProfileId);
       query = query.eq("status", status);
       if (decision) query = query.eq("decision", decision);
+      if (ids) query = query.in("item_id", ids);
       const { count, error } = await query;
       if (error) throw new Error(error.message);
       return count ?? 0;
@@ -426,10 +427,12 @@ export async function getDiagnosticItemReviewProgress(client?: SupabaseClient, r
   }
   const statuses = ["needs_human_review", "human_approved", "auto_approved", "rejected"] as const;
   const results = await Promise.all(statuses.map(async (status) => {
-    const { count, error } = await supabase.from("competency_items")
+    let query = supabase.from("competency_items")
       .select("id", { count: "exact", head: true })
       .eq("prompt_version", "diagnostic-bank-v2")
       .eq("review_status", status);
+    if (ids) query = query.in("id", ids);
+    const { count, error } = await query;
     if (error) throw new Error(error.message);
     return [status, count ?? 0] as const;
   }));
