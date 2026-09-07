@@ -18,11 +18,12 @@ children+=("$!")
 
 # Load the French rules before exposing readiness. The first Java check can
 # take longer than an ordinary submission, especially after a machine restart.
-ready=false
-deadline=$((SECONDS + 180))
-while (( SECONDS < deadline )); do
+for level in default picky; do
+  ready=false
+  deadline=$((SECONDS + 180))
+  while (( SECONDS < deadline )); do
   if curl --fail --silent --max-time 65 \
-    --data-urlencode 'language=fr' --data-urlencode 'level=picky' \
+    --data-urlencode 'language=fr' --data-urlencode "level=$level" \
     --data-urlencode 'text=Les enfants jouent dans la cour.' \
     http://127.0.0.1:8010/v2/check > /dev/null; then
     ready=true
@@ -30,11 +31,12 @@ while (( SECONDS < deadline )); do
   fi
   kill -0 "${children[0]}" 2>/dev/null || exit 1
   sleep 2
+  done
+  if [[ "$ready" != true ]]; then
+    echo "French grammar service did not become ready ($level)." >&2
+    exit 1
+  fi
 done
-if [[ "$ready" != true ]]; then
-  echo "French grammar service did not become ready." >&2
-  exit 1
-fi
 nginx -e /dev/stderr -c /tmp/nginx.conf -g 'daemon off;' &
 children+=("$!")
 wait -n "${children[@]}"
