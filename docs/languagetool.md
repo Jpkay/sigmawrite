@@ -65,6 +65,10 @@ to `/opt/sovgraph/deploy/Caddyfile` on the shared host. Preserve it when updatin
 that file. Caddy 2.11 can reload this file with `docker kill --signal=USR1
 sovgraph-caddy`; validate its configuration first. The deploy helper reconnects
 Caddy to the grammar network if the gateway container was recreated.
+That connection uses gateway priority 1: the older gateway network has missing
+Docker forwarding rules on this host, while the grammar network has working
+outbound routing for certificate renewal. Builds use host networking for package
+downloads; the running checker remains on its isolated Docker bridge.
 
 Changing the Vercel endpoint or key requires redeploying the existing app.
 Coordinate key rotation across the host, Vercel and the GitHub smoke-test secret.

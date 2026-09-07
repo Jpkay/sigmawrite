@@ -16,7 +16,7 @@ docker compose --project-name sigmawrite-grammar \
   up --detach --build --wait --wait-timeout 300
 # Reconnect the shared HTTPS gateway if it was recreated by its owner.
 if ! docker network inspect sigmawrite_grammar --format '{{range .Containers}}{{println .Name}}{{end}}' | grep -qx sovgraph-caddy; then
-  docker network connect sigmawrite_grammar sovgraph-caddy
+  docker network connect --gw-priority 1 sigmawrite_grammar sovgraph-caddy
 fi
 printf '%s\n' "$release" > /opt/sigmawrite-grammar/current-release
 echo "Grammar deployment ready: $release"
