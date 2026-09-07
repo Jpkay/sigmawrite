@@ -8,62 +8,69 @@ The same key must be available to the Next.js server and the container.
 
 ## Hosted pilot
 
-The hosted service is the `sigmawrite-grammar` Fly.io app in Frankfurt (`fra`).
-Its deployment source is `infra/languagetool/`. It runs one performance CPU with
-2 GB of memory and a 1 GB Java heap. The machine stays running to avoid Java
-cold starts inside the application's ten-second request timeout.
-Startup also warms the French rules using a synthetic sentence before exposing
-the health endpoint. The image explicitly installs Java 17, which is required
-by this LanguageTool distribution.
-French checking pipelines are cached so submissions reuse the loaded rules
-instead of rebuilding the checking pipeline on every request. LanguageTool 6.6
-retains idle pipelines in its pool; its legacy expiration setting is unused.
-The engine allows 60 seconds for its first pipeline to initialize. The private
-gateway still limits student requests to nine seconds, and the app to ten.
-Only the French submission pipeline is warmed; the engine's broader native
-prewarming would initialize unused language and checking-mode combinations.
+The web app stays on Vercel. The grammar container runs on the existing Hetzner
+host `hetzner` (46.225.120.145, Nuremberg), at `/opt/sigmawrite-grammar`.
+It is limited to one CPU and 2 GB RAM, with a 1 GB Java heap, no additional
+swap, dropped capabilities and no published host port. The existing Caddy
+container `sovgraph-caddy` connects to the separate `sigmawrite_grammar` network
+and serves `https://grammar.trouvetaplume.com` with automatic HTTPS.
+The DNS A record is DNS-only; traffic goes directly to the Hetzner HTTPS gateway.
+No additional Hetzner server is required for this pilot.
+
+The source is `infra/languagetool/compose.hetzner.yml`. The checker stays running
+and warms both default and picky French modes before exposing readiness.
+The engine allows 60 seconds for initial pipeline construction; the private
+nginx gateway still limits student requests to nine seconds and the app to ten.
+Pipelines are cached for reuse. LanguageTool 6.6 retains idle pipelines in its
+pool; its legacy expiration setting is unused. Java 17 is explicitly installed.
 
 The app uses these server-only Vercel production variables:
 
-- `LANGUAGETOOL_URL=https://sigmawrite-grammar.fly.dev`
-- `LANGUAGETOOL_API_KEY`: a random 64-character hexadecimal secret, also stored
-  as a Fly secret with the same name.
+- `LANGUAGETOOL_URL=https://grammar.trouvetaplume.com`
+- `LANGUAGETOOL_API_KEY`: the same 64-character hexadecimal key stored in
+  `/opt/sigmawrite-grammar/.env` (root-only, mode 600).
 
-An nginx gateway checks the bearer secret before forwarding `POST /v2/check`
-to LanguageTool. Other application paths are closed; `/healthz` checks the
-upstream language endpoint without requiring a secret. Request access logging
-is disabled. Student text travels in the HTTPS request body, never a URL.
-The service does not rewrite the student's text: it returns annotations for
-the existing submission handlers. No typing-box integration is installed.
+The nginx gateway requires the bearer key for `POST /v2/check`; other application
+paths are closed. `/healthz` verifies the upstream language endpoint. Request
+access logging is disabled, and student text travels in the HTTPS POST body.
+The service returns annotations after explicit submission and never rewrites
+what the student typed. No typing-box integration is installed.
 
-The **Deploy grammar service** GitHub workflow deploys changes to
-`infra/languagetool/` on `develop`, and supports manual dispatch. It builds on
-the runner and performs the authenticated smoke check after deployment. It uses
-`SIGMAWRITE_GRAMMAR_FLY_TOKEN` (a Fly deploy token scoped to this app) and
-`SIGMAWRITE_GRAMMAR_API_KEY` (the same checker key). The initial deploy token
-expires after 90 days; replace that repository secret before expiry.
+## Deployment and recovery
 
-Alternatively, deploy updates from the service directory:
+The **Deploy grammar service** workflow deploys changes on `develop` and supports
+manual dispatch. The `sigmawrite-deploy` account uses a forced SSH command and
+cannot open an interactive shell or forward ports. It can invoke only the
+root-owned `/usr/local/sbin/sigmawrite-grammar-deploy`, installed from
+`infra/languagetool/deploy-hetzner.sh`. The command reads one commit hash, fetches
+it from the fixed public repository, builds the grammar image, and waits for
+container health. Deployments are serialized. CI then checks public HTTPS,
+authentication, and correct/incorrect synthetic French sentences.
 
-```sh
-cd infra/languagetool
-fly deploy --remote-only --ha=false --yes
-```
+GitHub configuration:
 
-Keep the same checker secret on Fly, Vercel and the GitHub smoke-check secret.
-Changing a Vercel environment variable
-requires a new application deployment. When rotating the key, coordinate the
-service and app deployments so they do not use different credentials.
+- Secret `SIGMAWRITE_GRAMMAR_SSH_KEY`: dedicated restricted deployment key.
+- Secret `SIGMAWRITE_GRAMMAR_KNOWN_HOSTS`: host key obtained over existing trusted SSH.
+- Secret `SIGMAWRITE_GRAMMAR_API_KEY`: checker key for the smoke test.
+- Variable `SIGMAWRITE_GRAMMAR_HOST`: Hetzner host address.
 
-Before connecting an application release, verify that an unauthenticated check
-returns 401, an authenticated correct French sentence produces no errors, and
-an agreement error produces a correction. Only synthetic test text is needed.
-With the two service variables loaded, run `node infra/languagetool/smoke.mjs`
-to exercise these checks against either the local or hosted endpoint.
+To deploy or restore a known-good committed version, send its full SHA on stdin
+through the restricted SSH account, or run the helper as root on the server.
+`/opt/sigmawrite-grammar/current-release` records the last healthy deployment.
+The helper itself is installed separately; editing it in Git does not silently
+replace the root-owned host command. Docker images are retained for recovery.
 
-Verified on 7 September 2026: hosted authentication and French correction checks
-passed, and the application's own client passed both default and picky modes
-in 0.38–0.98 seconds per synthetic submission, preserving the original text.
+Caddy's site block is stored in `infra/languagetool/Caddyfile.hetzner` and appended
+to `/opt/sovgraph/deploy/Caddyfile` on the shared host. Preserve it when updating
+that file. Caddy 2.11 can reload this file with `docker kill --signal=USR1
+sovgraph-caddy`; validate its configuration first. The deploy helper reconnects
+Caddy to the grammar network if the gateway container was recreated.
+
+Changing the Vercel endpoint or key requires redeploying the existing app.
+Coordinate key rotation across the host, Vercel and the GitHub smoke-test secret.
+With both service variables loaded, run `node infra/languagetool/smoke.mjs`.
+Use synthetic text only. Monitor response times and host resource pressure
+before expanding the school pilot; this host also runs other services.
 
 The application uses a ten-second timeout. If the service is unavailable, the
 summary still completes with the blended rubric, the evaluation is stored with

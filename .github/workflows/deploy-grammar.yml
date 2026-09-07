@@ -20,16 +20,22 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - uses: superfly/flyctl-actions/setup-flyctl@ed8efb33836e8b2096c7fd3ba1c8afe303ebbff1
-        with:
-          version: 0.4.97
-      - name: Build and deploy the grammar container
-        working-directory: infra/languagetool
+      - name: Deploy the grammar container to Hetzner
         env:
-          FLY_API_TOKEN: ${{ secrets.SIGMAWRITE_GRAMMAR_FLY_TOKEN }}
-        run: flyctl deploy --local-only --ha=false --yes
+          DEPLOY_KEY: ${{ secrets.SIGMAWRITE_GRAMMAR_SSH_KEY }}
+          KNOWN_HOSTS: ${{ secrets.SIGMAWRITE_GRAMMAR_KNOWN_HOSTS }}
+          DEPLOY_HOST: ${{ vars.SIGMAWRITE_GRAMMAR_HOST }}
+        run: |
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/grammar_key
+          printf '%s\n' "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/grammar_key ~/.ssh/known_hosts
+          trap 'rm -f ~/.ssh/grammar_key' EXIT
+          printf '%s\n' "$GITHUB_SHA" | ssh -i ~/.ssh/grammar_key \
+            -o BatchMode=yes -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes \
+            "sigmawrite-deploy@$DEPLOY_HOST"
       - name: Verify the hosted French checker and authentication
         env:
-          LANGUAGETOOL_URL: https://sigmawrite-grammar.fly.dev
+          LANGUAGETOOL_URL: https://grammar.trouvetaplume.com
           LANGUAGETOOL_API_KEY: ${{ secrets.SIGMAWRITE_GRAMMAR_API_KEY }}
         run: node infra/languagetool/smoke.mjs

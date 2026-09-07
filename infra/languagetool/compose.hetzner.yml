@@ -1,0 +1,40 @@
+services:
+  grammar:
+    build: .
+    image: sigmawrite-grammar:${GRAMMAR_RELEASE:?Set GRAMMAR_RELEASE}
+    restart: unless-stopped
+    cpus: 1.0
+    mem_limit: 2g
+    memswap_limit: 2g
+    pids_limit: 128
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    environment:
+      LANGUAGETOOL_API_KEY: ${LANGUAGETOOL_API_KEY:?Set the private checker key}
+      Java_Xms: 256m
+      Java_Xmx: 1024m
+      langtool_maxCheckThreads: "2"
+      langtool_maxCheckTimeMillis: "60000"
+      langtool_maxTextLength: "30000"
+      langtool_pipelineCaching: "true"
+      langtool_maxPipelinePoolSize: "4"
+    expose: ["8080"]
+    networks:
+      grammar:
+        aliases: [sigmawrite-grammar]
+    healthcheck:
+      test: [CMD, curl, --fail, --silent, http://127.0.0.1:8080/healthz]
+      interval: 15s
+      timeout: 5s
+      retries: 4
+      start_period: 240s
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
+
+networks:
+  grammar:
+    name: sigmawrite_grammar
+
