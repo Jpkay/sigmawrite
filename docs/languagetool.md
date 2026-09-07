@@ -1,9 +1,10 @@
 # LanguageTool
 
-The writing layer uses a self-hosted LanguageTool HTTP service. Start it with
-`docker compose -f docker-compose.languagetool.yml up -d` and set
-`LANGUAGETOOL_URL=http://localhost:8010` locally or to the private service URL
-in staging/production.
+The writing layer uses a self-hosted LanguageTool HTTP service. For local use,
+set `LANGUAGETOOL_URL=http://localhost:8010` and a random 64-character hexadecimal
+`LANGUAGETOOL_API_KEY` in `.env.local`, then start the tested service image with
+`docker compose --env-file .env.local -f docker-compose.languagetool.yml up -d --build`.
+The same key must be available to the Next.js server and the container.
 
 ## Hosted pilot
 
@@ -11,6 +12,9 @@ The hosted service is the `sigmawrite-grammar` Fly.io app in Frankfurt (`fra`).
 Its deployment source is `infra/languagetool/`. It runs one shared CPU with
 2 GB of memory and a 1 GB Java heap. The machine stays running to avoid Java
 cold starts inside the application's ten-second request timeout.
+Startup also warms the French rules using a synthetic sentence before exposing
+the health endpoint. The image explicitly installs Java 17, which is required
+by this LanguageTool distribution.
 
 The app uses these server-only Vercel production variables:
 
@@ -39,6 +43,8 @@ service and app deployments so they do not use different credentials.
 Before connecting an application release, verify that an unauthenticated check
 returns 401, an authenticated correct French sentence produces no errors, and
 an agreement error produces a correction. Only synthetic test text is needed.
+With the two service variables loaded, run `node infra/languagetool/smoke.mjs`
+to exercise these checks against either the local or hosted endpoint.
 
 The application uses a ten-second timeout. If the service is unavailable, the
 summary still completes with the blended rubric, the evaluation is stored with
