@@ -1,0 +1,35 @@
+name: Deploy grammar service
+on:
+  workflow_dispatch:
+  push:
+    branches: [develop]
+    paths:
+      - infra/languagetool/**
+      - .github/workflows/deploy-grammar.yml
+permissions:
+  contents: read
+concurrency:
+  group: sigmawrite-grammar-deploy
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: superfly/flyctl-actions/setup-flyctl@ed8efb33836e8b2096c7fd3ba1c8afe303ebbff1
+        with:
+          version: 0.4.97
+      - name: Build and deploy the grammar container
+        working-directory: infra/languagetool
+        env:
+          FLY_API_TOKEN: ${{ secrets.SIGMAWRITE_GRAMMAR_FLY_TOKEN }}
+        run: flyctl deploy --local-only --ha=false --yes
+      - name: Verify the hosted French checker and authentication
+        env:
+          LANGUAGETOOL_URL: https://sigmawrite-grammar.fly.dev
+          LANGUAGETOOL_API_KEY: ${{ secrets.SIGMAWRITE_GRAMMAR_API_KEY }}
+        run: node infra/languagetool/smoke.mjs

@@ -29,14 +29,22 @@ is disabled. Student text travels in the HTTPS request body, never a URL.
 The service does not rewrite the student's text: it returns annotations for
 the existing submission handlers. No typing-box integration is installed.
 
-Deploy updates from the service directory:
+The **Deploy grammar service** GitHub workflow deploys changes to
+`infra/languagetool/` on `develop`, and supports manual dispatch. It builds on
+the runner and performs the authenticated smoke check after deployment. It uses
+`SIGMAWRITE_GRAMMAR_FLY_TOKEN` (a Fly deploy token scoped to this app) and
+`SIGMAWRITE_GRAMMAR_API_KEY` (the same checker key). The initial deploy token
+expires after 90 days; replace that repository secret before expiry.
+
+Alternatively, deploy updates from the service directory:
 
 ```sh
 cd infra/languagetool
 fly deploy --remote-only --ha=false --yes
 ```
 
-Keep the same secret on Fly and Vercel. Changing a Vercel environment variable
+Keep the same checker secret on Fly, Vercel and the GitHub smoke-check secret.
+Changing a Vercel environment variable
 requires a new application deployment. When rotating the key, coordinate the
 service and app deployments so they do not use different credentials.
 
