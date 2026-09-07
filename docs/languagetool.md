@@ -9,7 +9,7 @@ The same key must be available to the Next.js server and the container.
 ## Hosted pilot
 
 The hosted service is the `sigmawrite-grammar` Fly.io app in Frankfurt (`fra`).
-Its deployment source is `infra/languagetool/`. It runs two shared CPUs with
+Its deployment source is `infra/languagetool/`. It runs one performance CPU with
 2 GB of memory and a 1 GB Java heap. The machine stays running to avoid Java
 cold starts inside the application's ten-second request timeout.
 Startup also warms the French rules using a synthetic sentence before exposing
