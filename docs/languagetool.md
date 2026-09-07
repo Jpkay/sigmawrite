@@ -69,12 +69,29 @@ That connection uses gateway priority 1: the older gateway network has missing
 Docker forwarding rules on this host, while the grammar network has working
 outbound routing for certificate renewal. Builds use host networking for package
 downloads; the running checker remains on its isolated Docker bridge.
+The migration also restored four narrowly scoped `DOCKER-USER` rules for the
+existing gateway (172.19.0.2) to reach its existing backends (172.19.0.4:8000 and
+172.19.0.3:3000), plus their established replies. They carry the comment
+`sigmawrite-shared-gateway-continuity`. Recheck these routes if Docker networks
+are recreated; do not flush the host firewall while deploying this service.
 
 Changing the Vercel endpoint or key requires redeploying the existing app.
 Coordinate key rotation across the host, Vercel and the GitHub smoke-test secret.
 With both service variables loaded, run `node infra/languagetool/smoke.mjs`.
 Use synthetic text only. Monitor response times and host resource pressure
 before expanding the school pilot; this host also runs other services.
+
+## Migration verification — 7 September 2026
+
+The Hetzner deployment workflow passed HTTPS, authentication and French grammar
+checks. The app client passed 12 synthetic submissions at concurrency four in
+217–2,867 ms, with submitted text preserved. Existing SovGraph and Langfuse
+health routes also returned 200 after the gateway update.
+
+The existing Vercel app was redeployed with the new endpoint as
+`dpl_8KLV5ZZoAZo7m48x97vsAzZbTZYP`; the live site and authentication pages passed
+HTTP checks. The former Fly app `sigmawrite-grammar` and its GitHub deploy-token
+secret were retired after cutover. Vercel and Supabase remain in place.
 
 The application uses a ten-second timeout. If the service is unavailable, the
 summary still completes with the blended rubric, the evaluation is stored with
