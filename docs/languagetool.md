@@ -15,8 +15,9 @@ cold starts inside the application's ten-second request timeout.
 Startup also warms the French rules using a synthetic sentence before exposing
 the health endpoint. The image explicitly installs Java 17, which is required
 by this LanguageTool distribution.
-French checking pipelines are cached for one hour so submissions reuse the
-loaded rules instead of rebuilding the checking pipeline on every request.
+French checking pipelines are cached so submissions reuse the loaded rules
+instead of rebuilding the checking pipeline on every request. LanguageTool 6.6
+retains idle pipelines in its pool; its legacy expiration setting is unused.
 The engine allows 60 seconds for its first pipeline to initialize. The private
 gateway still limits student requests to nine seconds, and the app to ten.
 Only the French submission pipeline is warmed; the engine's broader native
@@ -59,6 +60,10 @@ returns 401, an authenticated correct French sentence produces no errors, and
 an agreement error produces a correction. Only synthetic test text is needed.
 With the two service variables loaded, run `node infra/languagetool/smoke.mjs`
 to exercise these checks against either the local or hosted endpoint.
+
+Verified on 7 September 2026: hosted authentication and French correction checks
+passed, and the application's own client passed both default and picky modes
+in 0.38–0.98 seconds per synthetic submission, preserving the original text.
 
 The application uses a ten-second timeout. If the service is unavailable, the
 summary still completes with the blended rubric, the evaluation is stored with
