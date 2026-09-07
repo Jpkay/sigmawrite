@@ -1,6 +1,7 @@
 "use client";
 
 import { shuffleChoices } from "@/lib/content/choice-order";
+import { ExercisePrompt } from "@/components/exercise-prompt";
 import { AccentTextarea } from "@/components/accent-textarea";
 import { ErrorHuntWidget, JustifiedWidget, OrderingWidget, RewriteWidget, shuffledOrder } from "@/components/exercise-widgets";
 
@@ -20,8 +21,7 @@ export function ExerciseSurface({ item, choice, answer, order, rule, setChoice, 
   const choices = shuffleChoices(item.choices, item.choiceOrderSeed ?? `exercise:${item.id}`);
   return (
       <div className="border-y border-border py-7">
-        {item.instructionsFr && <p className="text-sm text-muted-foreground">{item.instructionsFr}</p>}
-        <p className="mt-2 text-xl font-medium leading-8">{item.promptFr}</p>
+        <ExercisePrompt promptFr={item.promptFr} instructionsFr={item.instructionsFr} />
         {item.responseType === "error_hunt" ? <ErrorHuntWidget sentence={item.promptFr} value={answer} onChange={setAnswer} disabled={disabled} />
           : item.responseType === "ordering" ? <OrderingWidget order={order.length ? order : shuffledOrder(((item.validatorConfig?.tokens as string[] | undefined) ?? []), item.id)} onChange={(next) => { setOrder(next); setAnswer(next.join(" ")); }} disabled={disabled} />
           : item.responseType === "justified" ? <JustifiedWidget choices={choices} rules={shuffleChoices((item.validatorConfig?.rules as { key: string; label: string }[] | undefined) ?? [], `rules:${item.id}`)} choice={choice} rule={rule} onChoice={setChoice} onRule={(key) => { setRule(key); setAnswer(key); }} disabled={disabled} />

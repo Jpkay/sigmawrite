@@ -18,6 +18,7 @@ import {
 } from "@/lib/diagnostic/protocol";
 import type { DiagnosticLearningPathStep } from "@/lib/diagnostic/learning-path";
 import type { GoalScope } from "@/lib/graph/types";
+import { ExercisePrompt } from "@/components/exercise-prompt";
 import { AccentTextarea } from "@/components/accent-textarea";
 import { replaceStudentState } from "@/lib/student-store";
 
@@ -276,8 +277,7 @@ export default function DiagnosticPage() {
           </div>
 
           <section className="rounded-lg border border-border bg-card p-6 shadow-[0_2px_12px_rgba(60,50,30,.05)] sm:p-8">
-            {item.instructionsFr && <p className="mb-3 text-sm leading-6 text-muted-foreground">{item.instructionsFr}</p>}
-            <h2 className="max-w-3xl text-lg font-medium leading-7 sm:text-xl">{item.promptFr}</h2>
+            <ExercisePrompt promptFr={item.promptFr} instructionsFr={item.instructionsFr} />
             {item.choices.length ? (
               <div className="mt-6 grid gap-2.5">
                 {choices.map((option) => (
