@@ -86,7 +86,7 @@ export function RewriteWidget({ sources, value, onChange, disabled, placeholder 
   return (
     <div className="mt-6">
       <ul className="grid gap-2">{sources.map((source, index) => <li key={index} className="border-l-2 border-secondary pl-3 text-base leading-7">{source}</li>)}</ul>
-      <AccentTextarea disabled={disabled} value={value} onChange={onChange} rows={3} autoCapitalize="sentences" autoCorrect="off" placeholder={placeholder} className="mt-4 w-full rounded-lg border border-input bg-background p-4 text-base" />
+      <AccentTextarea disabled={disabled} value={value} onChange={onChange} rows={3} autoCorrect="off" placeholder={placeholder} className="mt-4 w-full rounded-lg border border-input bg-background p-4 text-base" />
     </div>
   );
 }

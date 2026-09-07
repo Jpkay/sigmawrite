@@ -9,6 +9,7 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { startDictation, submitDictation, submitDictationJustifications, type DictationResult, type DictationSession } from "@/lib/actions/student";
 import type { ErrorCategory } from "@/lib/dictation/classify";
 import { cn } from "@/lib/utils";
+import { unassistedInputProps } from "@/lib/unassisted-input";
 
 type Phase = "loading" | "intro" | "write" | "scoring" | "justify" | "result";
 
@@ -131,11 +132,11 @@ export function DictationPlayer({ dictationId }: { dictationId: string }) {
                     {blank.choices.map((choice) => <button key={choice} type="button" role="radio" aria-checked={value === choice} onClick={() => setFills((current) => current.map((entry, index) => index === segment ? { ...entry, [position]: choice } : entry))} className={cn("rounded px-2 py-0.5 text-base", value === choice ? "bg-primary text-primary-foreground" : "bg-muted hover:bg-accent")}>{choice}</button>)}
                   </span>
                 );
-                return <input key={position} aria-label={`Mot ${position + 1}`} value={value} autoComplete="off" spellCheck={false} onFocus={() => setFocusedBlank(position)} onChange={(event) => setFills((current) => current.map((entry, index) => index === segment ? { ...entry, [position]: event.target.value } : entry))} className="inline-block h-9 w-28 rounded-md border border-dashed border-primary/60 bg-background px-2 text-base" />;
+                return <input key={position} aria-label={`Mot ${position + 1}`} value={value} {...unassistedInputProps} onFocus={() => setFocusedBlank(position)} onChange={(event) => setFills((current) => current.map((entry, index) => index === segment ? { ...entry, [position]: event.target.value } : entry))} className="inline-block h-9 w-28 rounded-md border border-dashed border-primary/60 bg-background px-2 text-base" />;
               })}
             </p>
           ) : (
-            <AccentTextarea value={answers[segment]} onChange={(value) => setAnswers((current) => current.map((entry, index) => index === segment ? value : entry))} rows={3} spellCheck={false} autoCorrect="off" autoCapitalize="sentences" aria-label={`Segment ${segment + 1}`} placeholder="Écris exactement ce que tu entends, avec la ponctuation." className="mt-5 w-full rounded-md border border-input bg-background p-3 text-lg leading-8" />
+            <AccentTextarea value={answers[segment]} onChange={(value) => setAnswers((current) => current.map((entry, index) => index === segment ? value : entry))} rows={3} spellCheck={false} autoCorrect="off" aria-label={`Segment ${segment + 1}`} placeholder="Écris exactement ce que tu entends, avec la ponctuation." className="mt-5 w-full rounded-md border border-input bg-background p-3 text-lg leading-8" />
           )}
           {withTemplate && current.template!.blanks.some((blank) => !blank.choices) && (
             <div className="mt-3 flex flex-wrap gap-1" aria-label="Caractères français">

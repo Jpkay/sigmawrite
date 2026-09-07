@@ -58,7 +58,7 @@ export function IndependentProductionPlayer({ task: initialTask }: { task: Task 
         <p className="mt-2 text-sm text-muted-foreground">Deux textes réussis à des moments différents sont nécessaires pour confirmer la maîtrise.</p>
       </div>
       <div className="mt-7">
-        <AccentTextarea value={text} onChange={(value) => { setText(value); setResult(null); }} rows={10} autoCapitalize="sentences" className="w-full rounded-xl border border-input bg-background p-4 text-base leading-7" placeholder="Écris ton paragraphe ici…" />
+        <AccentTextarea value={text} onChange={(value) => { setText(value); setResult(null); }} rows={10} className="w-full rounded-xl border border-input bg-background p-4 text-base leading-7" placeholder="Écris ton paragraphe ici…" />
         <div className="mt-2 flex items-center justify-between text-sm">
           <span className={words > task.maximumWords ? "text-destructive" : "text-muted-foreground"}>{words} mot{words === 1 ? "" : "s"}</span>
           <span className="text-muted-foreground">Objectif : {task.minimumWords}–{task.maximumWords}</span>

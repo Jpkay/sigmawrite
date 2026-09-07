@@ -49,6 +49,7 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
+      spellCheck={false}
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} ${atkinson.variable} h-full antialiased`}
     >
