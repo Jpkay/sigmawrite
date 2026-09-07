@@ -17,6 +17,8 @@ the health endpoint. The image explicitly installs Java 17, which is required
 by this LanguageTool distribution.
 French checking pipelines are cached for one hour so submissions reuse the
 loaded rules instead of rebuilding the checking pipeline on every request.
+Native pipeline prewarming loads French before the HTTP server starts, outside
+the per-submission timeout; the startup sentence then verifies readiness.
 
 The app uses these server-only Vercel production variables:
 

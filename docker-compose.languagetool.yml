@@ -9,6 +9,8 @@ services:
       Java_Xms: 256m
       Java_Xmx: 1024m
       langtool_pipelineCaching: "true"
+      langtool_pipelinePrewarming: "true"
+      langtool_preferredLanguages: "fr"
       langtool_pipelineExpireTimeInSeconds: "3600"
       langtool_maxPipelinePoolSize: "4"
     healthcheck:
