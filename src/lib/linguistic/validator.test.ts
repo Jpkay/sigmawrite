@@ -43,6 +43,14 @@ describe("normalize", () => {
 });
 
 describe("validateAnswer — exact", () => {
+  it.each([
+    ["L'élève arrive.", "L’élève arrive."],
+    ["L’élève arrive.", "L'élève arrive."],
+  ])("accepts equivalent apostrophes in %s", async (answer, correctAnswer) => {
+    expect((await validateAnswer(answer, {
+      validatorType: "exact", correctAnswer, caseSensitive: true,
+    })).pass).toBe(true);
+  });
   it("accepts the correct answer (accent- and case-insensitive trim)", async () => {
     const r = await validateAnswer("  Allé ", {
       validatorType: "exact",

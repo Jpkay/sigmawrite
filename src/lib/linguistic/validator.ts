@@ -30,13 +30,14 @@ import type {
 } from "./types";
 import { OPTIONAL_PERIOD_FEEDBACK, withOptionalFinalPeriod } from "./assessment-policy";
 
-/** Lowercase, collapse whitespace, optional case/punctuation. Accents kept —
+/** Lowercase, collapse whitespace, unify apostrophe typography, optional case/punctuation. Accents kept —
  *  they are meaningful in French and frequently the thing under test. */
 export function normalize(
   s: string,
   { caseSensitive = false, ignorePunctuation = false } = {}
 ): string {
   let out = s.normalize("NFC").trim().replace(/\s+/g, " ");
+  out = out.replace(/’/g, "'");
   if (ignorePunctuation) out = out.replace(/[.,;:!?«»"'’]/g, "").replace(/\s+/g, " ").trim();
   if (!caseSensitive) out = out.toLocaleLowerCase("fr");
   return out;
