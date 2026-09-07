@@ -1,6 +1,8 @@
 services:
   grammar:
-    build: .
+    build:
+      context: .
+      network: host
     image: sigmawrite-grammar:${GRAMMAR_RELEASE:?Set GRAMMAR_RELEASE}
     restart: unless-stopped
     cpus: 1.0
@@ -37,4 +39,3 @@ services:
 networks:
   grammar:
     name: sigmawrite_grammar
-
