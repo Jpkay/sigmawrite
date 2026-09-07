@@ -9,12 +9,14 @@ The same key must be available to the Next.js server and the container.
 ## Hosted pilot
 
 The hosted service is the `sigmawrite-grammar` Fly.io app in Frankfurt (`fra`).
-Its deployment source is `infra/languagetool/`. It runs one shared CPU with
+Its deployment source is `infra/languagetool/`. It runs two shared CPUs with
 2 GB of memory and a 1 GB Java heap. The machine stays running to avoid Java
 cold starts inside the application's ten-second request timeout.
 Startup also warms the French rules using a synthetic sentence before exposing
 the health endpoint. The image explicitly installs Java 17, which is required
 by this LanguageTool distribution.
+French checking pipelines are cached for one hour so submissions reuse the
+loaded rules instead of rebuilding the checking pipeline on every request.
 
 The app uses these server-only Vercel production variables:
 

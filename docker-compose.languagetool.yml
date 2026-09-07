@@ -8,6 +8,9 @@ services:
       LANGUAGETOOL_API_KEY: ${LANGUAGETOOL_API_KEY:?Set a 64-character hexadecimal service key}
       Java_Xms: 256m
       Java_Xmx: 1024m
+      langtool_pipelineCaching: "true"
+      langtool_pipelineExpireTimeInSeconds: "3600"
+      langtool_maxPipelinePoolSize: "4"
     healthcheck:
       test: ["CMD", "curl", "--fail", "http://localhost:8080/healthz"]
       interval: 30s

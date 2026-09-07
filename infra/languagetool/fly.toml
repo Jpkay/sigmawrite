@@ -10,6 +10,9 @@ primary_region = "fra"
   langtool_maxCheckThreads = "2"
   langtool_maxCheckTimeMillis = "8000"
   langtool_maxTextLength = "30000"
+  langtool_pipelineCaching = "true"
+  langtool_pipelineExpireTimeInSeconds = "3600"
+  langtool_maxPipelinePoolSize = "4"
 
 [http_service]
   internal_port = 8080
@@ -27,5 +30,5 @@ primary_region = "fra"
 
 [[vm]]
   cpu_kind = "shared"
-  cpus = 1
+  cpus = 2
   memory = "2gb"
