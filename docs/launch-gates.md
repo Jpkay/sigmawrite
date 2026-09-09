@@ -4,7 +4,9 @@ Application engineering is complete through Sprint 20. The items below require
 a human decision, a protected third-party credential, or real pilot participants;
 automation must not pretend to satisfy them.
 
-## Human content sign-off for general availability
+## Passage publication and continuing independent review
+
+Policy changed on 2026-09-09: human review is selective. Low-risk generated passages may use the independently calibrated automated path described in [selective passage automation](./selective-passage-automation.md). Exceptions and a 5% sample receive human review. For passages in the manual editorial workflow, two favorable independent reviews unlock final editorial approval. Additional assigned reviews continue after publication; their feedback alerts the editor without resetting publication. Explicit editorial requests for further evidence remain binding. The 60-passage corpus and six benchmarks are library-development targets, not a requirement to wait before deploying the app or publishing an individually approved passage.
 
 1. In `/admin/items/review`, select active real educators and use **Attribuer les
    exercices restants** so every diagnostic item has one accountable owner.
@@ -12,13 +14,13 @@ automation must not pretend to satisfy them.
    replacement candidates, resolve audit findings, and require
    `npm run diagnostic:verify:v2` to pass before publishing the bank. Never
    bulk-promote generated candidates.
-2. In `/admin/reviews/reviewers`, invite the two real educators. The principal
+2. In `/admin/reviews/reviewers`, invite at least one other real educator. The principal
    admin account is prepared as the first reviewer. Staging QA identities exist
    only for technical smoke tests and do not satisfy this gate.
-3. In `/admin/reviews/assign`, assign the 60 pilot passages to all three reviewers.
-4. Each reviewer acknowledges `/review/instructions` and submits an independent
+3. In `/admin/reviews/assign`, assign exception, sample, or reference passages to two independent reviewers. A third reviewer may continue in parallel and after publication.
+4. Each assigned reviewer acknowledges `/review/instructions` and submits an independent
    rubric through `/review`; do not share ratings before submission.
-5. Resolve completed passages in `/admin/reviews`, publish at least 60 passages,
+5. After two favorable independent reviews, resolve passages in `/admin/reviews`, publish the approved passages as they become ready; grow the library toward 60 passages,
    then select exactly six diverse passages in `/admin/benchmarks` and lock them.
 
 Do not bulk-promote `needs_human_review` rows in SQL. The review trail is a
@@ -67,6 +69,6 @@ In both staging and production, configure Supabase Auth itself—not merely the 
 
 ## Repository evidence (not hosted proof)
 
-The application, SQL contracts, browser projects and launch-verification commands are committed and run in CI. Current command evidence belongs in [`execution-report-2026-09-01.md`](./execution-report-2026-09-01.md); do not preserve mutable test/content counts here. The content audit is `npm run launch:audit-content` and requires at least 60 governed passages, 180 submitted assignments, exactly six benchmarks, a published diagnostic/taxonomy release, and a licensed lexical release with at least 2,000 lemmas and 95% held-out coverage. Both staging and production report this audit without blocking application deployment so administration and reviewer work can continue. The ordinary student runtime still fails closed on unpublished content. Only explicitly enrolled, expiring feedback participants may use the isolated provisional diagnostic; their results cannot unlock the normal learning path.
+The application, SQL contracts, browser projects and launch-verification commands are committed and run in CI. Current command evidence belongs in [`execution-report-2026-09-01.md`](./execution-report-2026-09-01.md); do not preserve mutable test/content counts here. The content audit is `npm run launch:audit-content` and requires an available human-approved fallback passage, exactly six benchmarks, a published diagnostic/taxonomy release, and a licensed lexical release with at least 2,000 lemmas and 95% held-out coverage. Both staging and production report this audit without blocking application deployment so administration and reviewer work can continue. The ordinary student runtime still fails closed on unpublished content. Only explicitly enrolled, expiring feedback participants may use the isolated provisional diagnostic; their results cannot unlock the normal learning path.
 
 Historical hosted smoke observations and QA identities are not present-tense production evidence. Re-run migration, RLS, load, deletion, mobile/offline, reviewer-isolation and telemetry checks against the exact release candidate and attach their outputs to the protected promotion record.

@@ -4,6 +4,8 @@
 
 ## Repository-implemented
 
+- 2026-09-09 passage policy: two favorable independent reviews unlock final editorial approval. Existing third-reviewer assignments remain available after publication; additional feedback updates agreement and alerts editors without resetting publication. Migration `0134` preserves explicit editorial escalations.
+
 - Relational learner evidence, invitation/guardian authorization gates, deletion/export workflows and audit history. A valid class invitation authorizes access immediately at every age; an uninvited student still fails closed.
 - Transactional student onboarding with class-owned grade preservation, explicit CEFR targets and account-scoped browser state.
 - Versioned French taxonomy, diagnostic-bank release machinery and graph-driven learning paths.
@@ -31,7 +33,7 @@
 
 1. Migrations through `0106` and the graph smoke check are applied/passing in isolated staging. Migration `0107` adds feedback-participant agreement provenance and must be promoted with the matching application build, then exercised through the hosted admin and student journeys.
 2. Configure and exercise PostHog, Sentry, Resend, Google adult OAuth, LanguageTool and protected Vercel environments with real credentials.
-3. Publish the diagnostic bank in partial mode (migration `0124`, decision 2026-09-05): approve the 25 items listed by `npm run diagnostic:plan-review-hour`, sync reviews, rebuild the manifest and publish the exact checksum; the remaining ~440 pending items are reviewed while the app is in use and are never served before approval. Allocate the 8 replacement candidates alongside. The bank has all 696 slots and no structural issue; generic MCQ stems are compared with their complete visible choices by migration `0106`. Have three real educators independently review the pilot passage set; resolve and publish the required passages and lock exactly six benchmarks.
+3. Publish the diagnostic bank in partial mode (migration `0124`, decision 2026-09-05): approve the 25 items listed by `npm run diagnostic:plan-review-hour`, sync reviews, rebuild the manifest and publish the exact checksum; the remaining ~440 pending items are reviewed while the app is in use and are never served before approval. Allocate the 8 replacement candidates alongside. The bank has all 696 slots and no structural issue; generic MCQ stems are compared with their complete visible choices by migration `0106`. Have at least two real educators independently review each passage, with additional reviews continuing after publication; resolve and publish the required passages and lock exactly six benchmarks.
 4. Run the friendly-family protocol without manual SQL, including class invitation, immediate under-15 access, password recovery, account switching, diagnostic, practice, reading, vocabulary, retrieval, weekly email, privacy/export/deletion, parent evidence and teacher export.
 5. Obtain controller/legal approval for privacy terms, processor agreements, region/transfers, retention and the institution's authority to invite and supervise pupils. Guardian authorization remains the fallback for students without an active institutional invitation.
 6. Close rehearsal P0/P1 findings before general school availability. They do not block deploying the application and its explicitly isolated feedback cohort to production.
@@ -42,3 +44,7 @@ These gates cannot be honestly replaced by automated commits or QA identities, a
 ## Next evidence-driven work
 
 After pilot activation: grow licensed vocabulary/content coverage, calibrate the custom FSRS parameters and Elo ratings on real exposure data, act on psychometric anomalies through human review, and expand oral modalities only after the core loop demonstrates retention lift.
+
+Selective passage automation (9 September 2026): the actual passage publication path now supports independent automated QA, exception/sample routing, distinct automated provenance and bounded cohort/exposure enforcement. Migration 0135 is applied to the current review database with automation off. No automatic publication was enabled: the first real calibration did not contain an accepted in-scope reference. Application deployment and MCQ calibration remain pending. See [rollout evidence and remaining steps](./selective-passage-automation.md).
+
+Deployment follow-up: the selective-review workflow is live on https://app.trouvetaplume.com with QA v2 in shadow mode, three generated reference samples, 791 passing tests and zero audited dependency vulnerabilities. Automatic publication is still disabled pending successful calibration. See [release report](./release-selective-review-2026-09-09.md).

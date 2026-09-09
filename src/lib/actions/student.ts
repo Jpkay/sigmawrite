@@ -652,7 +652,7 @@ async function contentIds(
   }
   if (textError || !text) throw new Error("Texte introuvable.");
   const { data: version, error: versionError } = await supabase.from("text_versions").select("id").eq("text_id", text.id)
-    .in("review_status", ["human_approved", "benchmark_locked"]).order("version_number", { ascending: false }).limit(1).single();
+    .in("review_status", ["human_approved", "benchmark_locked", "auto_approved"]).order("version_number", { ascending: false }).limit(1).single();
   if (versionError || !version) throw new Error("Version du texte introuvable.");
   if (questionKey === undefined) return { textVersionId: version.id as string };
   const { data: question, error: questionError } = await supabase.from("questions").select("id").eq("text_version_id", version.id).eq("question_key", questionKey).single();
