@@ -6,7 +6,7 @@ import { isSensitive, hasUncataloguedNumericClaim, hasUnknownGroundingReference,
 import { scoreTextDifficulty } from "@/lib/scoring/text-difficulty";
 import { paragraphsFromText } from "@/lib/content/text-format";
 
-export const PASSAGE_QA_VERSION = "selective-passage-2";
+export const PASSAGE_QA_VERSION = "selective-passage-3";
 export const judgmentSchema = z.object({
   risk: z.enum(["low", "medium", "high", "prohibited"]),
   naturalness: z.number().min(0).max(1),

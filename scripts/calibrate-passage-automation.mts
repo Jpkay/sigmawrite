@@ -5,7 +5,7 @@ import { evaluateAutomatedPassage, evaluatorConfig } from '../src/lib/content/au
 import { PASSAGE_QA_VERSION } from '../src/lib/content/automation/policy';
 import type { ContentCandidate } from '../src/lib/ai/pipeline';
 const db = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!,process.env.SUPABASE_SERVICE_ROLE_KEY!,{auth:{persistSession:false}});
-const {data:versions,error}=await db.from('content_review_versions').select('id,candidate_id,payload,review_assignments(passage_reviews(status,overall_decision,reviewer_profile_id))').not('workflow_status','in','(retired,rejected)').order('created_at');
+const {data:versions,error}=await db.from('content_review_versions').select('id,candidate_id,payload,review_assignments(passage_reviews(status,overall_decision,reviewer_profile_id))').not('workflow_status','in','(retired,rejected,needs_revision)').order('created_at');
 if(error) throw error;
 const references=(versions??[]).filter(v=>new Set(v.review_assignments.flatMap(a=>a.passage_reviews??[]).filter(r=>r.status==='submitted'&&['approve','approve_minor'].includes(r.overall_decision)).map(r=>r.reviewer_profile_id)).size>=1).sort((a,b)=>{const eligible=(v:typeof a)=>{const c=v.payload as ContentCandidate;return Number(c.input.textType==='expository'&&c.generated.questions.every(q=>q.answerFormat==='multiple_choice'));};return eligible(b)-eligible(a);}).slice(0,6);
 if(references.length<6) throw new Error('Six reference versions with at least one favorable human review each required');
