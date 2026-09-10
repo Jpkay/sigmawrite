@@ -79,6 +79,7 @@ import { plannedExerciseCount } from "@/lib/practice/session";
 import { hasStudentPathCoverage } from "@/lib/taxonomy/activation";
 import { recommendWithCalibratedReuse } from "@/lib/content/reuse/runtime";
 import { captureError } from "@/lib/observability";
+import { DIAGNOSTIC_UNAVAILABLE_MESSAGE } from "@/lib/diagnostic/startup";
 
 const answersSchema = z.record(z.string().min(1), z.number().int().min(0).max(20));
 const uuidSchema = z.string().uuid();
@@ -874,8 +875,9 @@ export async function startAdaptiveDiagnostic(input: unknown) {
     : null;
   const release = isPilot ? pilotReleaseLookup?.data : publishedReleaseLookup.data;
   const releaseError = isPilot ? pilotReleaseLookup?.error : publishedReleaseLookup.error;
-  if (releaseError || !release?.id) {
-    throw new Error(`La taxonomie ${DIAGNOSTIC_TAXONOMY_RELEASE_KEY} n’est pas publiée.`);
+  if (releaseError) throw new Error(releaseError.message);
+  if (!release?.id) {
+    return { startupError: DIAGNOSTIC_UNAVAILABLE_MESSAGE };
   }
   const [itemBankLookup, priorRunLookup] = await Promise.all([
     (pilotContext
@@ -908,9 +910,7 @@ export async function startAdaptiveDiagnostic(input: unknown) {
     throw new Error(itemBankError?.message ?? priorRunError?.message);
   }
   if (!itemBank) {
-    throw new Error(isPilot
-      ? "La banque pilote n’est plus disponible. Contacte l’équipe de test."
-      : `La banque ${DIAGNOSTIC_ITEM_BANK_RELEASE_KEY} n’est pas publiée pour la taxonomie v2.`);
+    return { startupError: DIAGNOSTIC_UNAVAILABLE_MESSAGE };
   }
   const { data: priorDiagnosticRows, error: priorDiagnosticError } = latestCompatibleRun
     ? await service.from("diagnostic_node_results")
@@ -940,10 +940,7 @@ export async function startAdaptiveDiagnostic(input: unknown) {
   const rawReadiness = readinessResult.data as { ready?: boolean; sections?: DiagnosticBankSectionReadiness[] } | null;
   const readiness = assessDiagnosticBankReadiness(rawReadiness?.sections ?? []);
   if (!rawReadiness?.ready || !readiness.ready) {
-    const missing = readiness.sections.filter((section) => !section.ready)
-      .map((section) => diagnosticSection(section.key).labelFr)
-      .join(", ");
-    throw new Error(`Le diagnostic n’est pas encore prêt pour : ${missing}.`);
+    return { startupError: DIAGNOSTIC_UNAVAILABLE_MESSAGE };
   }
   const { data: memberships, error: membershipError } = await service
     .from("taxonomy_release_memberships")
