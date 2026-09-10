@@ -47,7 +47,7 @@ export function DashboardShell({
   return (
     <div lang={language} className="flex min-h-screen w-full bg-background">
       <a href="#main-content" className="sr-only z-[100] rounded bg-background p-3 focus:not-sr-only focus:fixed focus:left-3 focus:top-3">{language === "en" ? "Skip to content" : "Aller au contenu"}</a>
-      <aside className="hidden w-64 shrink-0 flex-col border-r border-border bg-card/80 md:flex">
+      <aside className="sticky top-0 hidden h-dvh w-64 shrink-0 flex-col self-start overflow-y-auto border-r border-border bg-card/80 md:flex">
         <div className="flex h-18 items-center gap-2.5 border-b border-border px-5">
           <span className="grid size-9 place-items-center rounded-full bg-primary text-primary-foreground"><Feather className="size-4" /></span>
           <span className="font-display text-lg font-bold tracking-tight">Plume<span className="text-primary">.</span></span>
@@ -56,7 +56,7 @@ export function DashboardShell({
         <div className="px-5 pb-3 pt-6 font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
           {area}
         </div>
-        <nav aria-label={area} className="flex-1 space-y-1 px-3">
+        <nav aria-label={area} className="space-y-1 px-3">
           {nav.map((item) => {
             const active =
               pathname === item.href ||
@@ -79,7 +79,7 @@ export function DashboardShell({
             );
           })}
         </nav>
-        <div className="border-t border-border bg-muted/30 p-3">
+        <div className="mt-5 border-t border-border bg-muted/30 p-3">
           {user && (
             <div className="mb-2 px-3 py-1 text-sm">
               <div className="font-medium">{user.name}</div>
