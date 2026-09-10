@@ -5,7 +5,7 @@ import { z } from "zod";
 import { requireRole } from "@/lib/auth";
 import { createClient, createServiceClient } from "@/lib/supabase/server";
 import { getCurrentStudentId, getStudentStateData } from "@/lib/db/student";
-import { FRENCH_BACKGROUNDS } from "@/lib/types";
+import { onboardingSchema, onboardingTarget } from "@/lib/onboarding";
 import { getContentLibrary, getPublishedReadingText, recommendPublishedTextKey } from "@/lib/db/content";
 import { rankInterestSignals } from "@/lib/content/recommend";
 import { rankByInterestAndVocabulary } from "@/lib/content/vocabulary-fit";
@@ -77,7 +77,6 @@ import { createHash } from "node:crypto";
 import { sanitizeStudentTopic } from "@/lib/safety/topic";
 import { plannedExerciseCount } from "@/lib/practice/session";
 import { hasStudentPathCoverage } from "@/lib/taxonomy/activation";
-import { INTEREST_BY_KEY } from "@/lib/content/interests";
 import { recommendWithCalibratedReuse } from "@/lib/content/reuse/runtime";
 import { captureError } from "@/lib/observability";
 
@@ -85,22 +84,6 @@ const answersSchema = z.record(z.string().min(1), z.number().int().min(0).max(20
 const uuidSchema = z.string().uuid();
 const dateTimeSchema = z.string().datetime({ offset: true });
 
-const onboardingSchema = z.object({
-  grade: z.number().int().min(5).max(12),
-  frenchBackground: z.enum(FRENCH_BACKGROUNDS),
-  interests: z.array(z.string().min(1).max(64)).min(3).max(20)
-    .refine((values) => values.every((value) => value in INTEREST_BY_KEY), "Centre d’intérêt inconnu."),
-  studentType: z.enum(["french_first_language", "french_second_language", "heritage", "bilingual", "allophone", "immersion"]).optional(),
-  homeLanguage: z.string().trim().max(100).optional(),
-  exposure: z.enum(["home", "school", "class_only", "immersion", "self_study"]).optional(),
-  goalType: z.enum(["catch_up", "improve_writing", "grammar_spelling", "prepare_delf", "prepare_ap_ib", "enter_french_school", "literature_class"]).optional(),
-  targetLevel: z.enum(["A1", "A2", "B1", "B2", "C1", "C2"]).optional(),
-}).superRefine((value, context) => {
-  const studentType = value.studentType ?? (value.frenchBackground === "native" ? "french_first_language" : value.frenchBackground === "bilingual" ? "bilingual" : "french_second_language");
-  if (["french_second_language", "allophone", "immersion"].includes(studentType) && !value.targetLevel) {
-    context.addIssue({ code: "custom", path: ["targetLevel"], message: "Choisis explicitement un objectif CECRL." });
-  }
-});
 const startSessionSchema = z.object({ textKey: z.string().min(1).max(100), startedAt: dateTimeSchema });
 const answerSchema = z.object({
   sessionId: uuidSchema, textKey: z.string().min(1).max(100), questionKey: z.string().min(1).max(40), choiceIndex: z.number().int().min(0).max(20), nextPhase: z.enum(["questions", "summary"]).optional(),
@@ -715,6 +698,7 @@ export async function recommendReadingTexts(input: unknown) {
 
 export async function selectInterests(input: unknown) {
   const data = checked(onboardingSchema, input);
+  const target = onboardingTarget(data);
   const { supabase, studentId } = await context();
   const studentType = data.studentType ?? (data.frenchBackground === "native" ? "french_first_language" : data.frenchBackground === "bilingual" ? "bilingual" : "french_second_language");
   const fsl = ["french_second_language", "allophone", "immersion"].includes(studentType);
@@ -722,25 +706,25 @@ export async function selectInterests(input: unknown) {
       ? ["grammaire_syntaxe", "conjugaison", "orthographe_lexicale", "orthographe_grammaticale", "lexique", "comprehension_ecrite", "expression_ecrite"]
       : ["grammaire_syntaxe", "conjugaison", "orthographe_lexicale", "orthographe_grammaticale", "comprehension_ecrite", "expression_ecrite"],
       modalities: ["reading", "writing", "grammar_analysis"], mastery_threshold: 0.85 };
-  const { error } = await supabase.rpc("complete_student_onboarding", {
+  const { error } = await supabase.rpc("complete_student_onboarding_with_exposures", {
     p_student_id: studentId,
     p_grade: data.grade,
     p_french_background: data.frenchBackground,
     p_interests: [...new Set(data.interests)],
     p_student_type: studentType,
     p_home_language: data.homeLanguage ?? "",
-    p_exposure: data.exposure ?? (studentType === "french_first_language" ? "home" : "school"),
+    p_exposures: [...new Set(data.exposures ?? [data.exposure ?? (studentType === "french_first_language" ? "home" : "school")])],
     p_goal_type: data.goalType ?? "catch_up",
-    p_target_framework: fsl ? "cefr" : "native_grade",
-    p_target_level: fsl ? data.targetLevel : String(data.grade),
-    p_target_grade: fsl ? null : data.grade,
+    p_target_framework: target.framework,
+    p_target_level: target.level,
+    p_target_grade: target.grade,
     p_scope: scope,
   });
   if (error) throw new Error(error.message);
   await logAudit("student.onboarding_completed", {
     targetType: "student",
     targetId: studentId,
-    metadata: { studentType, targetFramework: fsl ? "cefr" : "native_grade", targetLevel: fsl ? data.targetLevel : String(data.grade) },
+    metadata: { studentType, targetFramework: target.framework, targetLevel: target.level },
   });
   revalidatePath("/student");
   return getStudentStateData(studentId, supabase);

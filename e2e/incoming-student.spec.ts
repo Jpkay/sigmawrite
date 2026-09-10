@@ -96,6 +96,16 @@ test.describe("incoming invited student", () => {
     await expect(grade).toHaveValue("8");
     await expect(grade).toBeDisabled();
 
+    await page.getByLabel("Ton parcours en français").selectOption("french_second_language");
+    await expect(page.getByText("Ton rapport au français", { exact: true })).toHaveCount(0);
+    await expect(page.getByLabel("Langue parlée à la maison")).toHaveCount(0);
+    await expect(page.getByLabel("Ton objectif", { exact: true })).toHaveCount(0);
+    await expect(page.getByLabel("Niveau CECRL visé")).toHaveCount(0);
+    const exposures = page.getByRole("group", { name: "Où utilises-tu le français ?" });
+    await exposures.getByRole("checkbox", { name: "À la maison", exact: true }).check();
+    await exposures.getByRole("checkbox", { name: "À l’école, dans plusieurs matières", exact: true }).check();
+    await expect(exposures.getByRole("checkbox", { name: "À la maison", exact: true })).toBeChecked();
+    await expect(exposures.getByRole("checkbox", { name: "À l’école, dans plusieurs matières", exact: true })).toBeChecked();
     await page.getByRole("button", { name: /Continuer/ }).click();
     for (const interest of ["Football", "Musique", "Technologie"]) {
       await page.getByRole("button", { name: new RegExp(interest) }).click();
@@ -112,8 +122,12 @@ test.describe("incoming invited student", () => {
     const { data: student } = await service.from("students").select("id,current_grade,onboarding_completed_at").eq("profile_id", profile!.id).single();
     expect(student!.current_grade).toBe(8);
     expect(student!.onboarding_completed_at).toBeTruthy();
-    const { data: goal, error: goalError } = await service.from("learning_goals").select("scope").eq("student_id", student!.id).eq("status", "active").single();
+    const { data: learnerProfile, error: learnerProfileError } = await service.from("learner_profiles").select("exposures").eq("student_id", student!.id).single();
+    expect(learnerProfileError).toBeNull();
+    expect(learnerProfile!.exposures).toEqual(["home", "school"]);
+    const { data: goal, error: goalError } = await service.from("learning_goals").select("scope,goal_type,target_framework,target_grade").eq("student_id", student!.id).eq("status", "active").single();
     expect(goalError).toBeNull();
+    expect(goal).toMatchObject({ goal_type: "catch_up", target_framework: "native_grade", target_grade: 8 });
     expect((goal!.scope as { modalities: string[] }).modalities).toEqual(["reading", "writing", "grammar_analysis"]);
     const [enrollments, authorizations, savedInterests] = await Promise.all([
       service.from("enrollments").select("student_id", { count: "exact", head: true }).eq("student_id", student!.id).eq("class_id", firstClassId).eq("status", "active"),
