@@ -5,6 +5,7 @@ import { readingChoiceSeed } from "@/lib/content/choice-order";
 import { ExercisePreview } from "@/components/exercise-preview";
 import { paragraphsFromText } from "@/lib/content/text-format";
 import { useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { AlertTriangle, Check, ChevronDown, Loader2, Sparkles, X } from "lucide-react";
 import { PageHeader } from "@/components/page";
@@ -47,7 +48,9 @@ function SelectChevron() {
   return <ChevronDown className="pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />;
 }
 
-export function ReviewClient({ initialCandidates }: { initialCandidates: PersistedCandidate[] }) {
+export type ReviewNextStep = { canPublish: boolean; href: string; label: string; explanation: string };
+
+export function ReviewClient({ initialCandidates, nextSteps }: { initialCandidates: PersistedCandidate[]; nextSteps: Record<string, ReviewNextStep> }) {
   const router = useRouter();
   const [candidates, setCandidates] = useState(initialCandidates);
   const [topic, setTopic] = useState("La migration des jeunes footballeurs");
@@ -60,6 +63,7 @@ export function ReviewClient({ initialCandidates }: { initialCandidates: Persist
   const [selectedId, setSelectedId] = useState<string | null>(firstActionable?.id ?? initialCandidates[0]?.id ?? null);
   const [view, setView] = useState<"pending" | "flagged" | "all">("pending");
   const [error, setError] = useState("");
+  const [notice, setNotice] = useState("");
 
   async function generate() {
     setBusy("generate"); setError("");
@@ -73,10 +77,18 @@ export function ReviewClient({ initialCandidates }: { initialCandidates: Persist
   }
 
   async function act(id: string, operation: "approve" | "reject" | "moderate") {
-    setBusy(`${operation}:${id}`); setError("");
+    setBusy(`${operation}:${id}`); setError(""); setNotice("");
     try {
-      if (operation === "approve") await approveTextVersion({ id });
-      else if (operation === "reject") await reviewTextCandidate({ id, decision: "reject" });
+      if (operation === "approve") {
+        const result = await approveTextVersion({ id });
+        setCandidates(rows => rows.map(row => row.id === id ? { ...row, reviewStatus: "human_approved", approvedTextVersionId: result.textVersionId } : row));
+        setNotice("Texte publié. Il est maintenant disponible dans la bibliothèque.");
+      }
+      else if (operation === "reject") {
+        await reviewTextCandidate({ id, decision: "reject" });
+        setCandidates(rows => rows.map(row => row.id === id ? { ...row, reviewStatus: "rejected" } : row));
+        setNotice("Rejet enregistré.");
+      }
       else await runModeration({ id });
       router.refresh();
     } catch { setError("La décision n'a pas pu être enregistrée. Réessaie."); }
@@ -104,7 +116,8 @@ export function ReviewClient({ initialCandidates }: { initialCandidates: Persist
 
   return (
     <>
-      <PageHeader title="Textes à traiter" description="Commencez par les textes qui attendent une décision. Les outils de création et les diagnostics détaillés restent disponibles à la demande." />
+      <PageHeader title="Catalogue des textes" description="Consultez les textes et leur état de publication. Pour donner votre avis sur un passage, ouvrez son formulaire d’évaluation." />
+      <p className="mb-5 text-sm"><Link href="/review" className="font-medium text-primary underline underline-offset-4">Ouvrir mes évaluations</Link> · Retrouvez ici les textes qui vous sont attribués.</p>
       <section aria-label="État de la file" className="mb-7 grid grid-cols-3 gap-5 border-y border-border py-5">
         <div><p className="text-2xl font-semibold tabular-nums">{pending.length}</p><p className="text-xs text-muted-foreground">À traiter</p></div>
         <div><p className="text-2xl font-semibold tabular-nums">{flagged.length}</p><p className="text-xs text-muted-foreground">Signalés</p></div>
@@ -153,18 +166,19 @@ export function ReviewClient({ initialCandidates }: { initialCandidates: Persist
               {busy === "generate" ? "Génération…" : "Générer un candidat"}
             </Button>
           </div>
-          {error && <p className="text-sm text-destructive sm:col-span-2">{error}</p>}
+
         </CardContent>
       </Card>
       </details>
 
+      {error && !selected && <p role="alert" className="mb-4 text-sm text-destructive">{error}</p>}
       <div className="grid gap-6 lg:grid-cols-2">
         <div>
           <div className="mb-4 flex flex-wrap items-end justify-between gap-3"><div><h2 className="text-lg font-semibold">Décisions en attente</h2><p className="mt-1 text-sm text-muted-foreground">Sélectionnez un texte pour l’examiner.</p></div><div className="flex rounded-md bg-muted p-1 text-xs">{([["pending","À traiter"],["flagged","Signalés"],["all","Tous"]] as const).map(([value,label])=><button key={value} onClick={()=>{setView(value);const rows=value==="pending"?pending:value==="flagged"?flagged:candidates;setSelectedId(rows[0]?.id??null);}} className={`rounded px-2.5 py-1.5 transition-colors ${view===value?"bg-background font-medium shadow-sm":"text-muted-foreground hover:text-foreground"}`}>{label}</button>)}</div></div>
           {candidates.length === 0 ? <p className="text-sm text-muted-foreground">Aucun candidat. Génère-en un ci-dessus.</p> : (
             <div className="divide-y divide-border border-y border-border">
               {visibleCandidates.length === 0 ? <p className="py-10 text-center text-sm text-muted-foreground">Aucun texte dans cette vue.</p> : visibleCandidates.map((candidate) => (
-                <button key={candidate.id} onClick={() => setSelectedId(candidate.id)} className={`w-full px-3 py-4 text-left transition-colors ${selectedId === candidate.id ? "bg-primary/10" : "hover:bg-muted/60"}`}>
+                <button key={candidate.id} onClick={() => { setSelectedId(candidate.id); setError(""); setNotice(""); }} className={`w-full px-3 py-4 text-left transition-colors ${selectedId === candidate.id ? "bg-primary/10" : "hover:bg-muted/60"}`}>
                   <div className="flex items-center justify-between gap-2">
                     <span className="truncate text-sm font-medium">{candidate.generated.title}</span>
                     <Badge variant={REVIEW_STATUS_VARIANT[candidate.reviewStatus]}>{REVIEW_STATUS_LABEL[candidate.reviewStatus]}</Badge>
@@ -180,7 +194,7 @@ export function ReviewClient({ initialCandidates }: { initialCandidates: Persist
         </div>
         <div>
           {selected ? (
-            <CandidateDetail key={`${selected.id}:${selected.updatedAt}`} candidate={selected} busy={busy !== null}
+            <CandidateDetail key={`${selected.id}:${selected.updatedAt}`} candidate={selected} busy={busy !== null} nextStep={nextSteps[selected.id]} error={error} notice={notice}
               onApprove={() => act(selected.id, "approve")}
               onReject={() => act(selected.id, "reject")}
               onModerate={() => act(selected.id, "moderate")}
@@ -192,13 +206,14 @@ export function ReviewClient({ initialCandidates }: { initialCandidates: Persist
   );
 }
 
-function CandidateDetail({ candidate, busy, onApprove, onReject, onModerate, onSaveBody }: {
+function CandidateDetail({ candidate, busy, nextStep, error, notice, onApprove, onReject, onModerate, onSaveBody }: {
+  nextStep?: ReviewNextStep; error: string; notice: string;
   candidate: PersistedCandidate; busy: boolean; onApprove: () => void; onReject: () => void;
   onModerate: () => void; onSaveBody: (body: string) => Promise<boolean>;
 }) {
   const [body, setBody] = useState(candidate.generated.body);
   const [editing, setEditing] = useState(false);
-  const decided = ["human_approved", "rejected"].includes(candidate.reviewStatus);
+  const decided = ["human_approved", "auto_approved", "benchmark_locked", "retired", "rejected"].includes(candidate.reviewStatus);
   return (
     <section className="border-t-2 border-primary pt-5">
       <div className="flex flex-wrap items-start justify-between gap-3"><div><h3 className="text-xl font-semibold">{candidate.generated.title}</h3><p className="mt-1 text-xs text-muted-foreground">{textTypeLabel(candidate.input.textType)} · {difficultyBandLabel(candidate.input.targetReadingBand)}</p></div><Badge variant={REVIEW_STATUS_VARIANT[candidate.reviewStatus]}>{REVIEW_STATUS_LABEL[candidate.reviewStatus]}</Badge></div>
@@ -208,7 +223,17 @@ function CandidateDetail({ candidate, busy, onApprove, onReject, onModerate, onS
 
       <details className="group mt-6 border-y border-border py-3"><summary className="flex cursor-pointer list-none items-center justify-between font-medium marker:content-none">Analyse technique <span className="text-xs font-normal text-muted-foreground group-open:hidden">Afficher</span><span className="hidden text-xs font-normal text-muted-foreground group-open:inline">Masquer</span></summary><div className="mt-5 space-y-5"><div><p className="mb-2 text-sm font-medium">Difficulté calculée</p><DifficultyBars difficulty={candidate.difficulty} /><p className="mt-2 text-xs text-muted-foreground">{candidate.difficulty.features.wordCount} mots · {candidate.difficulty.features.avgSentenceLength} mots/phrase · {candidate.difficulty.features.connectorCount} connecteurs</p></div><div className="flex flex-wrap gap-2"><Badge variant={candidate.flags.moderationPassed ? "success" : "outline"}>Modération : {candidate.flags.moderationPassed ? "OK" : "à revoir"}</Badge>{candidate.flags.sensitive && <Badge>Domaine sensible</Badge>}{candidate.flags.factualNeedsReview && <Badge>Factualité à vérifier</Badge>}{candidate.flags.difficultyMismatch && <Badge>Difficulté hors cible</Badge>}{candidate.flags.nearDuplicate && <Badge>Texte très proche d’un texte approuvé</Badge>}</div><Button variant="outline" size="sm" onClick={onModerate} disabled={busy}>Relancer la modération</Button></div></details>
 
-      <div className="sticky bottom-0 mt-6 flex gap-2 border-t border-border bg-background/95 py-4 backdrop-blur"><Button onClick={onApprove} disabled={busy || decided || editing}><Check /> Approuver</Button><Button variant="destructive" onClick={onReject} disabled={busy || decided || editing}><X /> Rejeter</Button></div>
+      <div className="sticky bottom-0 mt-6 space-y-3 border-t border-border bg-background/95 py-4 backdrop-blur">
+        {error && <p role="alert" className="text-sm text-destructive">{error}</p>}
+        {notice && <p role="status" className="text-sm font-medium">{notice}</p>}
+        {!decided && !nextStep?.canPublish && <p className="text-sm text-muted-foreground">{nextStep?.explanation ?? "Ce texte doit passer par l’évaluation avant publication."}</p>}
+        <div className="flex flex-wrap gap-2">
+          {decided ? <p className="text-sm font-medium">{REVIEW_STATUS_LABEL[candidate.reviewStatus]}</p>
+            : nextStep?.canPublish ? <Button onClick={onApprove} disabled={busy || editing}>{busy ? <Loader2 className="animate-spin" /> : <Check />} {busy ? "Publication…" : "Publier le texte"}</Button>
+            : <Button asChild><Link href={nextStep?.href ?? "/review"}>{nextStep?.label ?? "Ouvrir mes évaluations"}</Link></Button>}
+          {!decided && <Button variant="destructive" onClick={onReject} disabled={busy || editing}><X /> Rejeter</Button>}
+        </div>
+      </div>
     </section>
   );
 }
