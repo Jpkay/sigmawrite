@@ -2,7 +2,7 @@ begin;
 set local role postgres;
 set local search_path=public,extensions;
 create extension if not exists pgtap with schema extensions;
-select plan(26);
+select plan(29);
 
 select has_function('public','student_access_is_authorized',array['uuid'],'Student access has one authoritative database predicate');
 select function_privs_are('public','student_access_is_authorized',array['uuid'],'anon',array[]::text[],'Anonymous callers cannot inspect student access');
@@ -98,6 +98,29 @@ select is(
 select ok(
   (select student.onboarding_completed_at is not null from public.students student join public.profiles profile on profile.id=student.profile_id where profile.auth_user_id='a3000000-0000-4000-8000-000000000010'),
   'Onboarding is marked complete only after the profile and goal transaction succeeds'
+);
+
+-- Multiple exposure choices are persisted together, and invalid choices cannot
+-- partially overwrite an already completed profile.
+select lives_ok(
+  $$select public.complete_student_onboarding_with_exposures(
+    (select student.id from public.students student join public.profiles profile on profile.id=student.profile_id where profile.auth_user_id='a3000000-0000-4000-8000-000000000010'),
+    7,'bilingual',array['music','history','technology'],'immersion','anglais',array['home','school','home'],'prepare_delf','cefr','B2',null,
+    '{"modalities":["reading","writing"]}'::jsonb
+  )$$,
+  'Onboarding accepts multiple exposure choices'
+);
+select throws_ok(
+  $$select public.complete_student_onboarding_with_exposures(
+    (select student.id from public.students student join public.profiles profile on profile.id=student.profile_id where profile.auth_user_id='a3000000-0000-4000-8000-000000000010'),
+    7,'bilingual',array['music','history','technology'],'immersion','anglais',array['invalid'],'prepare_delf','cefr','B2',null,'{}'::jsonb
+  )$$,
+  '22023','invalid_exposures','Unknown exposure choices are rejected'
+);
+select is(
+  (select learner.exposures from public.learner_profiles learner join public.students student on student.id=learner.student_id join public.profiles profile on profile.id=student.profile_id where profile.auth_user_id='a3000000-0000-4000-8000-000000000010'),
+  array['home','school']::text[],
+  'All choices survive an invalid save, with duplicates removed'
 );
 
 select set_config('request.jwt.claim.role','service_role',true);

@@ -42,6 +42,7 @@ export type StudentState = {
   onboarded: boolean;
   grade: number | null;
   frenchBackground: string | null;
+  exposures?: string[];
   interests: string[];
   diagnostic: DiagnosticResult | null;
   diagnosticProvisional: boolean;

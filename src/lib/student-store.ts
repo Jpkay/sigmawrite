@@ -138,6 +138,7 @@ export function useStudentState(nextOwnerKey?: string): StudentState {
 }
 
 export function saveOnboarding(input: {
+  exposures?: string[];
   grade: number;
   frenchBackground: string;
   interests: string[];
