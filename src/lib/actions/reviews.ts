@@ -211,7 +211,7 @@ export async function resendReviewerInvite(input: unknown) {
 
 export async function assignReviewVersions(input: unknown) {
   await requireRole(["platform_admin"]);
-  const data = z.object({ versionIds: z.array(uuid).min(1).max(100), reviewerIds: z.array(uuid).min(2).max(3) }).parse(input);
+  const data = z.object({ versionIds: z.array(uuid).min(1).max(100), reviewerIds: z.array(uuid).min(1).max(3) }).parse(input);
   const { data: created, error } = await (await createClient()).rpc("assign_content_reviews", { p_review_version_ids: data.versionIds, p_reviewer_ids: data.reviewerIds });
   if (error) throw new Error(error.message);
   refreshReviewPages();

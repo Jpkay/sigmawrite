@@ -12,7 +12,7 @@ export async function queueReview(db: SupabaseClient, candidate: ContentCandidat
   if (!version) {
     const { data: last, error: lastError } = await db.from("content_review_versions").select("version_number").eq("candidate_id",candidate.id).order("version_number",{ascending:false}).limit(1).maybeSingle();
     if (lastError) throw new Error(lastError.message);
-    const inserted = await db.from("content_review_versions").insert({candidate_id:candidate.id,version_number:(last?.version_number??0)+1,payload:candidate,workflow_status:"in_review",required_reviewers:2}).select("id").single();
+    const inserted = await db.from("content_review_versions").insert({candidate_id:candidate.id,version_number:(last?.version_number??0)+1,payload:candidate,workflow_status:"in_review",required_reviewers:1}).select("id").single();
     if (inserted.error) throw new Error(inserted.error.message);
     version = inserted.data;
   }

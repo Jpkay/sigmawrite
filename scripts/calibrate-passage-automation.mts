@@ -7,8 +7,8 @@ import type { ContentCandidate } from '../src/lib/ai/pipeline';
 const db = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!,process.env.SUPABASE_SERVICE_ROLE_KEY!,{auth:{persistSession:false}});
 const {data:versions,error}=await db.from('content_review_versions').select('id,candidate_id,payload,review_assignments(passage_reviews(status,overall_decision,reviewer_profile_id))').not('workflow_status','in','(retired,rejected)').order('created_at');
 if(error) throw error;
-const references=(versions??[]).filter(v=>new Set(v.review_assignments.flatMap(a=>a.passage_reviews??[]).filter(r=>r.status==='submitted'&&['approve','approve_minor'].includes(r.overall_decision)).map(r=>r.reviewer_profile_id)).size>=2).sort((a,b)=>{const eligible=(v:typeof a)=>{const c=v.payload as ContentCandidate;return Number(c.input.textType==='expository'&&c.generated.questions.every(q=>q.answerFormat==='multiple_choice'));};return eligible(b)-eligible(a);}).slice(0,6);
-if(references.length<6) throw new Error('Six independently reviewed reference versions required');
+const references=(versions??[]).filter(v=>new Set(v.review_assignments.flatMap(a=>a.passage_reviews??[]).filter(r=>r.status==='submitted'&&['approve','approve_minor'].includes(r.overall_decision)).map(r=>r.reviewer_profile_id)).size>=1).sort((a,b)=>{const eligible=(v:typeof a)=>{const c=v.payload as ContentCandidate;return Number(c.input.textType==='expository'&&c.generated.questions.every(q=>q.answerFormat==='multiple_choice'));};return eligible(b)-eligible(a);}).slice(0,6);
+if(references.length<6) throw new Error('Six reference versions with at least one favorable human review each required');
 const cases:Array<Record<string,unknown>>=[];
 async function evaluate(candidate:ContentCandidate,generator:string,label:string,negative=false){
  try {const report=await evaluateAutomatedPassage(candidate,generator,db);cases.push({label,negative,report});console.log(JSON.stringify({label,decision:report.decision,reasons:report.reasons}));}
@@ -34,7 +34,7 @@ for(const mode of ['wrong_key','ambiguous_choices']){
 const acceptedCases=cases.filter(c=>!c.negative&&(c.report as {decision?:string})?.decision==='pass').length;
 const falseAccepts=cases.filter(c=>c.negative&&(c.report as {decision?:string})?.decision==='pass').length;
 const errors=cases.filter(c=>c.error).length;
-const report={reviewedCases:references.length,negativeCases:2,acceptedCases,falseAccepts,errors,cases};
+const report={requiredHumanReviewsPerReference:1,reviewedCases:references.length,negativeCases:2,acceptedCases,falseAccepts,errors,cases};
 const passed=errors===0&&falseAccepts===0&&acceptedCases>=1;
 const output={pipeline_version:PASSAGE_QA_VERSION,evaluator_model:evaluatorConfig().model,report,passed};
 const out=process.env.PASSAGE_CALIBRATION_OUTPUT??'/tmp/sigmawrite-passage-calibration.json';writeFileSync(out,JSON.stringify(output,null,2)+'\n');

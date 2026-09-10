@@ -16,7 +16,7 @@ The readiness audit no longer requires 60 human-approved passages, 60 published 
 
 Migration `0135_selective_passage_automation.sql` is applied and recorded on `sigmawrite-staging` (`pwztnrirtrnicywvdbpz`), the database containing the current reviews and used by the existing Vercel app. The separate production database was not changed. The shadow policy is configured with the independent evaluator and the existing JP/Astrid/Alice review team. Automatic publication remains disabled. Application and cron changes are now deployed to https://app.trouvetaplume.com (Vercel deployment `dpl_9D2L3F4g4vSuqtk5Z97S8nbH6RrL`). Migrations 0136 and 0137 fix service JWT compatibility and introduce QA version `selective-passage-2`. No candidate was bulk-approved or published.
 
-The real calibration uses six versions with at least two favorable independent human submissions and two deliberately faulty question variants. The initial run had no service errors, no accepted cases, and no accepted negative controls. All six references used mixed question formats outside the initial MCQ-only scope; additional independent quality concerns were recorded. This does not invalidate the educators' reviews or claim that every passage is unusable. It means this reference set does not establish that the new automatic route can correctly accept its intended format.
+The real calibration uses six versions with at least one favorable human submission per version and two deliberately faulty question variants. The initial run had no service errors, no accepted cases, and no accepted negative controls. All six references used mixed question formats outside the initial MCQ-only scope; additional independent quality concerns were recorded. This does not invalidate the educators' reviews or claim that every passage is unusable. It means this reference set does not establish that the new automatic route can correctly accept its intended format.
 
 ## Remaining rollout steps
 
@@ -32,3 +32,11 @@ There is no requirement to finish the current 60-passage queue before deploying 
 791 unit tests, TypeScript, ESLint and the production Webpack build pass. The publication migration passes 20 behavioral database assertions inside a rolled-back transaction, covering disabled defaults, calibration gating, distinct reviewers, immutable evidence, service-only approval, candidate/key tampering, approval provenance, exposure caps, adverse sample withdrawal and rollback. The follow-up migrations pass nine further assertions for modern JWT authorization, retained idempotency and disabled QA upgrades. Dependency audit: zero vulnerabilities. Synthetic test calibration data was rolled back and was not used to enable the policy.
 
 See [the deployment report](./release-selective-review-2026-09-09.md) for sample IDs, live verification and remaining work.
+
+## Follow-up — 10 September 2026
+
+The three samples have been corrected and saved as version 2. All three now pass automated QA, and both negative controls are rejected. Existing unopened assignment links now point to the corrected versions. Genuine independent human reviews remain pending; publication stays disabled. See [corrections and review links](./pilot/reference-corrections-2026-09-10.md).
+
+## One-review policy — 10 September 2026
+
+One favorable human review per reference or manual passage now suffices for editorial approval and calibration eligibility. Additional reviews continue in parallel. Explicit editorial escalations remain possible. Automated publication still requires successful calibration; this policy does not require reviewing every generated text. Migration: 0138_one_review_publication_policy.sql.

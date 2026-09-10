@@ -12,7 +12,7 @@ RLS, database workflow functions, and append-only audit entries.
 - `platform_admin` uses `/admin/reviews` for progress, `/admin/reviews/assign`
   for assignment, `/admin/reviews/disagreements` for editorial resolution,
   `/admin/reviews/reviewers` for access, and `/admin/benchmarks` for gold texts.
-  An admin may also participate as one of the two required reviewers through `/review`.
+  An admin may also participate as the required reviewer through `/review`.
 
 ## Preparing reviewers
 
@@ -176,6 +176,10 @@ Verification: 16 behavioral database assertions, 781 unit tests, TypeScript, ESL
 
 ## Selective automation — 9 September 2026
 
-The two-review threshold applies to the manual editorial queue. It is not a requirement for every generated passage. The implemented automated route uses independent QA, exception review and a 5% sample, with separate automated provenance and bounded learner exposure. Its database migration is applied with publication disabled; the application deployment and successful in-scope calibration remain pending. See [selective passage automation](./selective-passage-automation.md) for the exact state and rollout steps.
+The one-review threshold applies to the manual editorial queue. It is not a requirement for every generated passage. The implemented automated route uses independent QA, exception review and a 5% sample, with separate automated provenance and bounded learner exposure. Its database migration is applied with publication disabled; the application deployment and successful in-scope calibration remain pending. See [selective passage automation](./selective-passage-automation.md) for the exact state and rollout steps.
 
 Deployment follow-up: the selective-review workflow is live on https://app.trouvetaplume.com with QA v2 in shadow mode, three generated reference samples, 791 passing tests and zero audited dependency vulnerabilities. Automatic publication is still disabled pending successful calibration. See [release report](./release-selective-review-2026-09-09.md).
+
+## One-review policy — 10 September 2026
+
+One favorable human review per reference or manual passage now suffices for editorial approval and calibration eligibility. Additional reviews continue in parallel. Explicit editorial escalations remain possible. Automated publication still requires successful calibration; this policy does not require reviewing every generated text. Migration: 0138_one_review_publication_policy.sql.
