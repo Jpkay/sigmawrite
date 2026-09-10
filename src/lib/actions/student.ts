@@ -23,6 +23,7 @@ import { fallbackModeration, moderateStudentText } from "@/lib/safety/moderate-i
 import { logAudit } from "@/lib/audit";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { getActivePrompt } from "@/lib/db/ai";
+import { loadCompletedDiagnostic } from "@/lib/diagnostic/completed";
 import { nextDiagnosticItem, frontierForStudent, diagnosticRequirement, type LiveDiagnosticItem } from "@/lib/diagnostic/live";
 import { diagnosticDimensionPatch } from "@/lib/diagnostic/lifecycle";
 import {
@@ -53,6 +54,7 @@ import { requireStudentAccessAuthorized, requireStudentLearningUnlocked } from "
 import { bktUpdate, bktUpdateWeighted, guessFromChoices, masteryUncertainty } from "@/lib/scoring/bkt";
 import { gradePracticeResponse } from "@/lib/practice/grade-response";
 import { assessmentFromRow } from "@/lib/linguistic/assessment-policy";
+import { ReadingAssessmentError, READING_RETRY_MESSAGE } from "@/lib/linguistic/reading-ideas";
 import { validateAnswer } from "@/lib/linguistic/validator";
 import { LanguageToolChecker } from "@/lib/linguistic/languagetool";
 import {
@@ -732,10 +734,14 @@ export async function selectInterests(input: unknown) {
 }
 
 export async function startAdaptiveDiagnostic(input: unknown) {
-  checked(emptySchema, input);
+  const { restart } = checked(z.object({ restart: z.boolean().optional() }).strict(), input);
   if (process.env.ADAPTIVE_DIAGNOSTIC_ENABLED === "false") throw new Error("Diagnostic adaptatif désactivé pour cet environnement.");
   const { supabase, studentId } = await context();
   const service = createServiceClient();
+  if (!restart) {
+    const completed = await loadCompletedDiagnostic(studentId, service);
+    if (completed) return { done: true as const, ...completed, state: await getStudentStateData(studentId, service) };
+  }
   const { data: existingRun } = await supabase.from("diagnostic_runs")
     .select("id,started_at,current_section,taxonomy_release_id,item_bank_release_id,is_pilot")
     .eq("student_id", studentId)
@@ -2092,14 +2098,19 @@ export async function submitAdaptiveDiagnosticProbe(input: unknown) {
     correct = choice.is_correct;
   } else if (!existingResponse) {
     const validatorType=item.validator_type as ValidatorType;
-    const validation = await validateAnswer(data.answerText ?? "", {
-      validatorType,
-      assessment: assessmentFromRow(item),
-      config: (item.validator_config ?? undefined) as Record<string, unknown> | undefined,
-      correctAnswer: item.correct_answer as string | undefined,
-      acceptableAnswers: item.acceptable_answers as string[] | undefined,
-    },{grammarChecker:validatorType==="agreement"||validatorType==="grammalecte"?new LanguageToolChecker():undefined});
-    correct = validation.pass;
+    try {
+      const validation = await validateAnswer(data.answerText ?? "", {
+        validatorType,
+        assessment: assessmentFromRow(item),
+        config: (item.validator_config ?? undefined) as Record<string, unknown> | undefined,
+        correctAnswer: item.correct_answer as string | undefined,
+        acceptableAnswers: item.acceptable_answers as string[] | undefined,
+      },{grammarChecker:validatorType==="agreement"||validatorType==="grammalecte"?new LanguageToolChecker():undefined});
+      correct = validation.pass;
+    } catch (error) {
+      if (error instanceof ReadingAssessmentError) return { submissionError: READING_RETRY_MESSAGE };
+      throw error;
+    }
   }
   const attemptedAt = new Date().toISOString();
   const latencyMs = Math.max(0, Date.now() - Date.parse(data.startedAt));

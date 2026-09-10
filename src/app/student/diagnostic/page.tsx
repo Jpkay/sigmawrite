@@ -71,7 +71,8 @@ export default function DiagnosticPage() {
     if (started.current === startAttempt) return;
     started.current = startAttempt;
     track("diagnostic_started", {});
-    startAdaptiveDiagnostic({})
+    const restart = new URLSearchParams(window.location.search).get("restart") === "1";
+    startAdaptiveDiagnostic({ restart })
       .then((value) => {
         if ("startupError" in value) {
           setError(value.startupError ?? DIAGNOSTIC_START_FAILED_MESSAGE);
@@ -79,6 +80,7 @@ export default function DiagnosticPage() {
         }
         setIsPilot(Boolean(value.isPilot));
         if (value.done) {
+          window.history.replaceState(null, "", window.location.pathname);
           replaceStudentState(value.state);
           setFrontier(value.frontier as Frontier);
           setLearningPath(value.learningPath as PathSummary);
@@ -106,10 +108,15 @@ export default function DiagnosticPage() {
         answerText: choice ? undefined : answer,
         startedAt: run.item.assignedAt,
       });
+      if ("submissionError" in result) {
+        setError(result.submissionError ?? "Ta réponse n’a pas pu être évaluée. Réessaie.");
+        return;
+      }
       setFeedback(result.correct);
       setProbeCount(result.probeCount);
       await new Promise((resolve) => setTimeout(resolve, 420));
       if (result.done) {
+        window.history.replaceState(null, "", window.location.pathname);
         replaceStudentState(result.state);
         setIsPilot(Boolean(result.isPilot));
         setFrontier(result.frontier as Frontier);

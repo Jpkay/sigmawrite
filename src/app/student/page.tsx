@@ -123,7 +123,7 @@ export default function StudentHome() {
 
       <StudentAssignments />
 
-      {assessment?.required && assessment.kind === "reentry" && <Card className="mb-6 border-primary/40 bg-accent/40"><CardContent className="flex flex-wrap items-center justify-between gap-4 pt-6"><div><p className="font-medium">Mets ton profil à jour</p><p className="text-sm text-muted-foreground">Quelques questions ciblées suffisent. Tes progrès précédents sont conservés.</p></div><Link href="/student/diagnostic" className={buttonVariants()}>Mettre à jour <ArrowRight /></Link></CardContent></Card>}
+      {assessment?.required && assessment.kind === "reentry" && <Card className="mb-6 border-primary/40 bg-accent/40"><CardContent className="flex flex-wrap items-center justify-between gap-4 pt-6"><div><p className="font-medium">Mets ton profil à jour</p><p className="text-sm text-muted-foreground">Quelques questions ciblées suffisent. Tes progrès précédents sont conservés.</p></div><Link href="/student/diagnostic?restart=1" className={buttonVariants()}>Mettre à jour <ArrowRight /></Link></CardContent></Card>}
 
       <section className="mb-8 grid overflow-hidden rounded-xl border border-border-strong bg-card-elevated shadow-[0_8px_30px_rgba(60,50,30,.06)] dark:bg-[linear-gradient(145deg,var(--card-elevated),var(--card))] lg:grid-cols-[1fr_18rem]">
         <div className="relative p-7 sm:p-9">

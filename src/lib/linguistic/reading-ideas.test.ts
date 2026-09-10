@@ -55,3 +55,17 @@ describe("reading comprehension meaning assessment", () => {
     await expect(assessReadingIdeas(answer, { ...spec, assessment: undefined })).rejects.toThrow(READING_RETRY_MESSAGE);
   });
 });
+
+
+describe("explicit non-answers", () => {
+  it.each(["Je ne sais pas.", "JE SAIS PAS", "Aucune idée…", "Je n’ai pas la réponse."])("records %s without calling an uncertain grader", async (text) => {
+    const judge = vi.fn().mockRejectedValue(new Error("offline"));
+    expect((await assessReadingIdeas(text, spec, judge)).pass).toBe(false);
+    expect(judge).not.toHaveBeenCalled();
+  });
+  it.each(["Je ne sais pas pourquoi, mais les racines protègent les poissons.", "Je ne sais pas. Les voitures polluent moins."])("still grades substantive text: %s", async (text) => {
+    const judge = vi.fn().mockResolvedValue({ ...good, ideas: [{ index: 0, met: false, evidence: "" }] });
+    await assessReadingIdeas(text, spec, judge);
+    expect(judge).toHaveBeenCalledOnce();
+  });
+});
