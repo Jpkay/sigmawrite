@@ -60,3 +60,81 @@ answer, and reached question 2. The database confirmed the selected interests
 and an ordinary running diagnostic. One earlier smoke attempt timed out after
 submission; a fresh run passed. This check does not claim completion of the full
 adaptive diagnostic. Synthetic test data is removed after each test.
+
+## Full live diagnostic check — 10 September 2026
+
+**Outcome: completion verified; reliability checks failed.** A temporary regular
+(non-pilot) grade-8 student completed all 48 questions on
+`app.trouvetaplume.com`, with 12 answers in each of the four sections. The live
+page displayed “Ton parcours est prêt”, the outcome counts, and the first five
+learning-path steps. The database independently confirmed a completed run, all
+four sections completed, and one active learning path containing 161 steps.
+
+This was an automated workflow check using synthetic answers (first displayed
+multiple-choice option, or “Je ne sais pas.” for written answers), not a check of
+placement accuracy or a real student's level. The completed run needed one retry
+on its first written answer. Two earlier runs repeatedly failed on written
+question six with HTTP 500 and digest `1468027376`; those failures remain
+unresolved. A separate local call using the current production grading settings
+successfully graded the same test answer, so that check did not establish the
+cause of the live failures.
+
+Reloading the completed results page failed the persistence-of-display check:
+the original completed run and learning path remained stored, but startup created
+a new, zero-answer re-entry diagnostic with reason `high_uncertainty`. The page
+therefore returned to questions instead of showing the completed results.
+Navigation from results to the learning dashboard was not reached because this
+reload assertion failed. These findings do not support calling the complete
+student flow reliable yet.
+
+Evidence captured locally:
+- `/private/tmp/diagnostic-full-78fd9602-results.png`
+- `/private/tmp/diagnostic-full-78fd9602-results.txt`
+- `/private/tmp/diagnostic-full-78fd9602-database.json`
+- `/private/tmp/diagnostic-full-78fd9602-reload-runs.json`
+- `/private/tmp/diagnostic-full-fb21b1a2-failure.png`
+
+The first automation attempt also had a test synchronization error (answering
+before the previous question's transition finished); it was corrected before the
+subsequent runs. All four synthetic accounts and their temporary school/class
+fixtures were removed. No application change or deployment was made during this
+verification.
+
+## Fixes deployed and verified
+
+The Vercel request logs identified the written-answer failures precisely:
+`ReadingAssessmentError`'s previous generic-error path was reached because the
+provider returned `uncertain=true` for the synthetic answer “Je ne sais pas.”
+Explicit, complete admissions of not knowing are now graded deterministically as
+not demonstrating the skill. Substantive answers still use the reading rubric;
+the prompt distinguishes an incorrect answer from genuine grading uncertainty.
+Expected grading failures now return a submission message without losing the
+student's text or fabricating a grade.
+
+Ordinary diagnostic visits now load the persisted completed report and path
+without rerunning finalization or creating a new assessment. The existing
+“Mettre à jour” action explicitly requests reassessment; its URL retains that
+intent while a reassessment is running and clears it when results are reached.
+
+Code commit: `cd899c8` on develop; production release cherry-pick `a6477b6`.
+Deployment: `dpl_AioWN6jw3P4d3CRYEekcj2ivS87n`.
+
+Verification:
+- TypeScript and targeted ESLint checks pass.
+- 32 focused tests pass, covering saved-result reads, explicit non-answers,
+  substantive answers, uncertain/malformed judgments, and section stopping rules.
+- A genuine paraphrase about mangrove roots was accepted by the configured
+  production grader in a direct grading check.
+- A fresh regular grade-8 account completed 48 live questions (12 per section)
+  with **zero server errors and zero retries**, then saw final results and one
+  active path with 161 steps.
+- Refresh displayed the saved results; the database still contained exactly the
+  same single completed run.
+- “Commencer mon parcours” opened the learning dashboard and its daily activity
+  plan. Revisiting `/student/diagnostic` again displayed the completed results.
+- The synthetic account and its temporary fixtures were removed.
+
+Evidence:
+- `/private/tmp/diagnostic-fixed-19fa4ef1-evidence.json`
+- `/private/tmp/diagnostic-fixed-19fa4ef1-results.png`
+- `/private/tmp/diagnostic-fixed-19fa4ef1-dashboard.png`
