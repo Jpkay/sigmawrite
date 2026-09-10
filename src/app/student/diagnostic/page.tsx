@@ -21,6 +21,7 @@ import type { GoalScope } from "@/lib/graph/types";
 import { ExercisePrompt } from "@/components/exercise-prompt";
 import { AccentTextarea } from "@/components/accent-textarea";
 import { replaceStudentState } from "@/lib/student-store";
+import { DIAGNOSTIC_START_FAILED_MESSAGE } from "@/lib/diagnostic/startup";
 
 type AssignedItem = LiveDiagnosticItem & { runItemId: string; assignedAt: string };
 type Run = {
@@ -50,7 +51,8 @@ function responseId() {
 }
 
 export default function DiagnosticPage() {
-  const started = useRef(false);
+  const started = useRef<number | null>(null);
+  const [startAttempt, setStartAttempt] = useState(0);
   const responseKey = useRef(responseId());
   const [run, setRun] = useState<Run | null>(null);
   const [choice, setChoice] = useState<string | null>(null);
@@ -66,11 +68,15 @@ export default function DiagnosticPage() {
   const [isPilot, setIsPilot] = useState(false);
 
   useEffect(() => {
-    if (started.current) return;
-    started.current = true;
+    if (started.current === startAttempt) return;
+    started.current = startAttempt;
     track("diagnostic_started", {});
     startAdaptiveDiagnostic({})
       .then((value) => {
+        if ("startupError" in value) {
+          setError(value.startupError ?? DIAGNOSTIC_START_FAILED_MESSAGE);
+          return;
+        }
         setIsPilot(Boolean(value.isPilot));
         if (value.done) {
           replaceStudentState(value.state);
@@ -82,13 +88,9 @@ export default function DiagnosticPage() {
         setRun(value as Run);
         setProbeCount(value.progress.reduce((total, section) => total + section.probeCount, 0));
       })
-      .catch((reason) => setError(
-        reason instanceof Error
-          ? reason.message
-          : "Le diagnostic ne peut pas démarrer. Vérifie d’abord ton profil.",
-      ))
+      .catch(() => setError(DIAGNOSTIC_START_FAILED_MESSAGE))
       .finally(() => setPending(false));
-  }, []);
+  }, [startAttempt]);
 
   async function submit() {
     if (!run) return;
@@ -141,8 +143,8 @@ export default function DiagnosticPage() {
           globalThis.setTimeout(() => setTransitionLabel(""), 1800);
         }
       }
-    } catch (reason) {
-      setError(reason instanceof Error ? reason.message : "Ta réponse n’a pas pu être enregistrée. Réessaie.");
+    } catch {
+      setError("Ta réponse n’a pas pu être enregistrée. Réessaie.");
     } finally {
       setPending(false);
     }
@@ -215,9 +217,13 @@ export default function DiagnosticPage() {
   if (!run) {
     return (
       <>
-        <PageHeader title="Diagnostic adaptatif" description="Le diagnostic doit disposer d’une taxonomie et d’une banque de questions validées." />
-        {error && <p className="max-w-2xl text-sm leading-6 text-destructive">{error}</p>}
-        <Link href="/student/onboarding" className={`${buttonVariants({ variant: "outline" })} mt-4`}>Revoir mon profil</Link>
+        <PageHeader title="Le diagnostic ne peut pas encore démarrer" description="Tu n’as pas besoin de recommencer ton inscription." />
+        {error && <p role="alert" className="max-w-2xl text-sm leading-6 text-muted-foreground">{error}</p>}
+        <Button className="mt-4" onClick={() => {
+          setError("");
+          setPending(true);
+          setStartAttempt((attempt) => attempt + 1);
+        }}>Réessayer</Button>
       </>
     );
   }
