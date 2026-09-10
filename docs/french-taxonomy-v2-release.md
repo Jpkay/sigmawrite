@@ -1,9 +1,29 @@
+# French taxonomy v2 release approval
+
+**Decision:** approve
+**Approved checksum:** `sha256:809df529f0934fc8b68dcf23d00a18238a9c01490f4a985b4fa4246751a1fc4b`
+**Approved by:** Jean-Philippe Kayobotsi, explicit release authorization in Codex on 10 September 2026.
+**Scope:** Operational activation of the verified partial diagnostic using the existing approved questions. This is not a new human item-review or placement-mapping-review attestation.
+
+The current live export and automated validator agree on 696 total questions,
+265 eligible (232 human-approved and 33 deterministically computed), and 431
+pending. All four sections meet the current partial-publication gates introduced
+by migration 0124. Pending questions remain excluded from serving. Existing
+reviewer identities, timestamps, provisional mappings, and evidence thresholds
+are preserved. No learner mastery is inferred from publication approval.
+
+This release authorization supersedes the earlier requirement to finish every
+pending item before activation. The older record below is retained as history;
+its pending decision and counts are not the current release decision.
+
+## Historical review record
+
 # French Taxonomy v2 release review
 
 **Candidate version:** 2.0.0
 **Candidate key:** `french-taxonomy-v2`
 **Candidate checksum:** `sha256:809df529f0934fc8b68dcf23d00a18238a9c01490f4a985b4fa4246751a1fc4b`
-**Decision:** pending diagnostic-bank review
+**Historical decision:** pending diagnostic-bank review
 
 ## Scope
 
@@ -28,5 +48,5 @@ Do not mark this release `approve` until the canonical diagnostic item bank:
   diagnostic population before those mappings are used as placement claims.
 
 Publishing requires an explicit line in this document with the exact form
-`**Decision:** approve` and an `**Approved checksum:**` line matching the
+`**Historical decision:** approve` and an `**Historical approved checksum:**` line matching the
 generated artifact. The importer intentionally fails closed without both.

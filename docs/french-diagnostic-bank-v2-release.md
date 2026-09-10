@@ -1,10 +1,30 @@
+# French diagnostic bank v2 release approval
+
+**Decision:** approve
+**Approved checksum:** `sha256:839600ee7d7891811ebaae184eb8808306a11b7d002c51d3fe16091537da316a`
+**Approved by:** Jean-Philippe Kayobotsi, explicit release authorization in Codex on 10 September 2026.
+**Scope:** Operational activation of the verified partial diagnostic using the existing approved questions. This is not a new human item-review or placement-mapping-review attestation.
+
+The current live export and automated validator agree on 696 total questions,
+265 eligible (232 human-approved and 33 deterministically computed), and 431
+pending. All four sections meet the current partial-publication gates introduced
+by migration 0124. Pending questions remain excluded from serving. Existing
+reviewer identities, timestamps, provisional mappings, and evidence thresholds
+are preserved. No learner mastery is inferred from publication approval.
+
+This release authorization supersedes the earlier requirement to finish every
+pending item before activation. The older record below is retained as history;
+its pending decision and counts are not the current release decision.
+
+## Historical review record
+
 # French diagnostic bank v2 release review
 
 **Candidate key:** `french-diagnostic-bank-v2`
 **Candidate version:** `2.0.0`
 **Taxonomy:** `french-taxonomy-v2`
-**Decision:** pending human item review
-**Approved checksum:** pending
+**Historical decision:** pending human item review
+**Historical approved checksum:** pending
 **Current candidate checksum:** `sha256:9a2380913405ee4110c898767ca848ed95922ed060387c250f1c4e4fe317fd24`
 **Candidate inventory:** 696 items — 33 reproducibly computed, 198 human-approved, 465 awaiting human review, and none rejected
 
