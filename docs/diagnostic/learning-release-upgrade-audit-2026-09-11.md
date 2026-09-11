@@ -51,3 +51,16 @@ latest-learning queries use the active-session view; direct history reads keep
 using the original session table. No automatic upgrade or public action is
 activated yet. Deploy migration 0150 before deploying this store version.
 Validation: all 525 granular tests across 151 files and TypeScript passed.
+
+## Concurrent persistence verification
+
+The disposable full-schema harness now opens independent PostgreSQL connections
+and observes an actual lock wait for each of three races: duplicate upgrades,
+upgrade before save, and save before upgrade. Duplicate requests return one
+successor. A save arriving after the upgrade cannot alter the predecessor. A
+save committed first advances the revision and rejects the stale upgrade,
+preserving that save. Final row assertions verify successor counts and source
+revisions. All three cases passed with the full 150-migration schema.
+
+This closes the concurrent-storage check above. Authenticated application
+activation and remote rollout remain pending.
