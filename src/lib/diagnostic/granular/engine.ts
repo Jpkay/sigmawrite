@@ -312,7 +312,15 @@ export function selectProbe(skills: readonly Skill[], bank: readonly Probe[], ob
     ?skill.branch.startsWith("conjugation:verb:")?"individual_verbs"
       :skill.branch.startsWith("conjugation:pattern:")?"verb_patterns":"general_conjugation"
     :groupOf(skill);
-  const family=balance([...new Set(groupItems.map(item=>familyOf(skillById.get(item.skillId)!)))],groupHistory,familyOf)[0];
+  const availableFamilies=[...new Set(groupItems.map(item=>familyOf(skillById.get(item.skillId)!)))];
+  const familySurveyComplete=availableFamilies.every(family=>groupHistory.filter(observation=>familyOf(skillById.get(observation.skillId)!)===family).length>=3);
+  // Give each available family an initial three-question visit first.
+  // Individual verbs then need separate evidence. Reserve two production visits
+  // for them per general-concept or pattern visit; broad domain/strand balance
+  // remains unchanged. This is scheduling, never a mastery or chance estimate.
+  const familyBalanceHistory=groupHistory.map(observation=>({...observation,activeSeconds:
+    observation.activeSeconds/(familySurveyComplete&&familyOf(skillById.get(observation.skillId)!)==='individual_verbs'?2:1)}));
+  const family=balance(availableFamilies,familyBalanceHistory,familyOf)[0];
   const allFamilyItems=groupItems.filter(item=>familyOf(skillById.get(item.skillId)!)===family);
   const allFamilyHistory=groupHistory.filter(observation=>familyOf(skillById.get(observation.skillId)!)===family);
   const formOf=(skill:Skill)=>skill.formFamily??"foundation";
@@ -345,7 +353,9 @@ export function selectProbe(skills: readonly Skill[], bank: readonly Probe[], ob
   const familyItems=allFamilyItems.filter(item=>formOf(skillById.get(item.skillId)!)===form);
   const familyHistory=allFamilyHistory.filter(observation=>formOf(skillById.get(observation.skillId)!)===form);
   const branches=[...new Set(familyItems.map(item=>skillById.get(item.skillId)!.branch))];
-  const branchCount=(branch:string)=>familyHistory.filter(observation=>skillById.get(observation.skillId)!.branch===branch).length;
+  // A verb's visit budget spans tense categories. Resetting it for each form
+  // family lets one verb consume several complete visits before another is seen.
+  const branchCount=(branch:string)=>allFamilyHistory.filter(observation=>skillById.get(observation.skillId)!.branch===branch).length;
   // Domain and strand time are still balanced on every question. Within the
   // selected strand, allow a bounded visit to collect confirmation and probe a
   // nearby boundary. Rotating after every item leaves large graphs with mostly

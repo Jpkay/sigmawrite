@@ -37,6 +37,8 @@ it('samples both simple and compound production within the full graph time budge
  expect(history.some(o=>o.mode==='production'&&assessment.skills.find(s=>s.id===o.skillId)?.formFamily==='simple')).toBe(true);
  expect(history.reduce((sum,o)=>sum+o.activeSeconds,0)).toBeLessThanOrEqual(DEFAULT_POLICY.activeSeconds);
  expect(new Set(history.map(o=>assessment.skills.find(s=>s.id===o.skillId)!.domain)).size).toBe(4);
+ const verbs=new Set(history.map(o=>assessment.skills.find(s=>s.id===o.skillId)!.branch).filter(branch=>branch.startsWith('conjugation:verb:')));
+ expect(verbs.size).toBeGreaterThanOrEqual(2);
  const results=assessSkills(assessment.skills,history);
  expect(results).toHaveLength(542);
  for(const r of results)if(!history.some(o=>o.skillId===r.skillId))expect(r.status).toBe('unknown');
@@ -89,4 +91,15 @@ it('shares the initial form survey across verb families without sharing their ev
   if(!history.some(o=>o.skillId===result.skillId))expect(result.status).toBe('unknown');
   expect(result.status).not.toBe('mastered');
  }
+});
+
+it('counts a verb visit across tense categories before rotating to another verb',()=>{
+ const forms=['simple','compound','periphrastic'] as const;
+ const skills:Skill[]=['a','b'].flatMap(verb=>forms.map(form=>({id:`${verb}:${form}`,branch:`conjugation:verb:${verb}`,domain:'conjugation',samplingGroup:'conjugaison',formFamily:form,level:1,prerequisites:[],modes:['production']})));
+ const probes:Probe[]=skills.flatMap(skill=>Array.from({length:6},(_,i)=>({id:`${skill.id}:${i}`,skillId:skill.id,mode:'production',contextId:`${skill.id}:${i}`,difficulty:.5,expectedSeconds:30,guessProbability:.05})));
+ const history:Observation[]=forms.flatMap(form=>probes.filter(p=>p.skillId===`a:${form}`).slice(0,2).map(p=>({...p,itemId:p.id,correct:true,activeSeconds:30})));
+ const next=selectProbe(skills,probes,history,{...DEFAULT_POLICY,itemsPerBranchVisit:6});
+ expect(next.kind).toBe('question');if(next.kind!=='question')throw Error('Expected a fresh verb question');
+ expect(next.item.skillId.startsWith('b:')).toBe(true);
+ expect(assessSkills(skills,history).filter(s=>s.skillId.startsWith('b:')).every(s=>s.status==='unknown')).toBe(true);
 });
