@@ -5,12 +5,373 @@
   "facetChecksum": "sha256:71d060c34e8fd204b3cf57e5126a2e30585dc72c463b0506f22aa602eb913a98",
   "assessmentSourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
   "summary": {
-    "lessons": 103,
-    "guidedExercises": 565,
-    "targets": 103,
+    "lessons": 105,
+    "guidedExercises": 578,
+    "targets": 105,
     "missingExposureAnnotations": []
   },
   "rows": [
+    {
+      "lessonId": "french-v3-teaching:subordinate:completive",
+      "contentChecksum": "sha256:819788939654e3b39995548730a8b086ac556d34c7f5d113085011d4b8368545",
+      "skillId": "construction_subordonnee_completive::reading-analysis",
+      "nodeKey": "construction_subordonnee_completive",
+      "facetKey": null,
+      "mode": "recognition",
+      "domain": "grammar",
+      "prerequisites": [
+        "construction_phrase_canonique::reading-analysis",
+        "construction_phrase_canonique::writing-controlled-production"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": true,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:13004ed6852a8b40017d17741a3b7aa68e6669cc540f18a2753a497e0fda4c21",
+        "sentence:sha256:15ac64893d45b3ced62abc0bf2d857388b8485e1e9132f8651bac54fe6d6cbaf",
+        "sentence:sha256:38e612a4287888973a2a42c74abc9a1798a6fad24555c224e2eaa6bed5dc07f7",
+        "sentence:sha256:3c9ec734514b9fab9d137fc0deac01d16452f3c7d0f6cc21a980bd53fc17723a",
+        "sentence:sha256:409c6bc7a915b152f8e9658cc302248d578253a69cab210665ccdbfd60f997d3",
+        "sentence:sha256:7d2b45992802fcdb1d169868ccc3b421dad7e394ede8ee0c8a111c2f482002e5",
+        "sentence:sha256:866e9d50e7bb3ccae1dfdf221f1c88b7168f89ad0d73a77e605536993ffef837",
+        "sentence:sha256:88579c6c10ad03f01b694423d440cdf039a4f73b41b063b082b6744fe1ae9546",
+        "sentence:sha256:aa439484e965a8ae19c4f80942565d0eb3cbb0221cf829c34010c8e47d987a73",
+        "sentence:sha256:ea8cd537c987ce948bc1ece3f32c55f0af0d03b2c583b8d28158485e34f6277e"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:subordinate:completive",
+        "nodeKey": "construction_subordonnee_completive",
+        "mode": "recognition",
+        "status": "draft_requires_review",
+        "titleFr": "Repérer une proposition complétive",
+        "learnerQuestionFr": "Dans « Nora dit que le repas est prêt », quels mots donnent le contenu de ce que Nora dit ?",
+        "steps": [
+          {
+            "exampleFr": "Nora dit que le repas est prêt.",
+            "explanationFr": "Que le repas est prêt donne le contenu de ce que Nora dit. Ce groupe contient son propre verbe, est, et complète le verbe dit. C’est une proposition subordonnée complétive."
+          },
+          {
+            "exampleFr": "Je crois que tu as raison.\nJe souhaite que tu viennes.",
+            "explanationFr": "Une complétive peut suivre une pensée ou un souhait. La forme du verbe peut varier, mais le lien reste le même : le groupe complète ici crois ou souhaite."
+          },
+          {
+            "exampleFr": "Le repas que Nora prépare est prêt.",
+            "explanationFr": "Que Nora prépare précise le nom repas et le reprend. C’est une relative. Pour distinguer les deux constructions, cherche ce que le groupe complète : un verbe dans nos exemples de complétives, ou un nom repris dans la relative."
+          }
+        ],
+        "takeawayFr": "Repère le groupe avec son verbe conjugué. Dans les exemples étudiés, il donne le contenu d’une parole, d’une pensée, d’une perception ou d’un souhait, sans reprendre un nom.",
+        "boundaryFr": "Cette leçon porte sur les complétives introduites par que après un verbe. Il existe d’autres constructions complétives. Les reconnaître ici ne prouve pas encore que tu sais en construire une.",
+        "practice": [
+          {
+            "id": "guided:completive:1",
+            "promptFr": "Léo dit que son vélo est réparé.\n\nQuelle analyse est correcte ?",
+            "choices": [
+              "« que son vélo est réparé » complète le verbe « dit ».",
+              "Cette phrase ne contient pas de proposition subordonnée complétive.",
+              "La phrase entière est une seule proposition subordonnée.",
+              "Ce groupe est une relative qui précise un nom."
+            ],
+            "answerFr": "« que son vélo est réparé » complète le verbe « dit ».",
+            "hintFr": "Cherche ce que le groupe complète : un verbe ou un nom repris ?",
+            "explanationFr": "que son vélo est réparé indique ce qui est dit, pensé, perçu ou attendu avec le verbe dit. Que ne reprend pas un nom."
+          },
+          {
+            "id": "guided:completive:2",
+            "promptFr": "Je comprends que tu sois déçu.\n\nQuelle analyse est correcte ?",
+            "choices": [
+              "« que tu sois déçu » complète le verbe « comprends ».",
+              "Cette phrase ne contient pas de proposition subordonnée complétive.",
+              "La phrase entière est une seule proposition subordonnée.",
+              "Ce groupe est une relative qui précise un nom."
+            ],
+            "answerFr": "« que tu sois déçu » complète le verbe « comprends ».",
+            "hintFr": "Cherche ce que le groupe complète : un verbe ou un nom repris ?",
+            "explanationFr": "que tu sois déçu indique ce qui est dit, pensé, perçu ou attendu avec le verbe comprends. Que ne reprend pas un nom."
+          },
+          {
+            "id": "guided:completive:3",
+            "promptFr": "Nous constatons que la neige fond.\n\nQuelle analyse est correcte ?",
+            "choices": [
+              "« que la neige fond » complète le verbe « constatons ».",
+              "Cette phrase ne contient pas de proposition subordonnée complétive.",
+              "La phrase entière est une seule proposition subordonnée.",
+              "Ce groupe est une relative qui précise un nom."
+            ],
+            "answerFr": "« que la neige fond » complète le verbe « constatons ».",
+            "hintFr": "Cherche ce que le groupe complète : un verbe ou un nom repris ?",
+            "explanationFr": "que la neige fond indique ce qui est dit, pensé, perçu ou attendu avec le verbe constatons. Que ne reprend pas un nom."
+          },
+          {
+            "id": "guided:completive:4",
+            "promptFr": "La cheffe souhaite que chacun participe.\n\nQuelle analyse est correcte ?",
+            "choices": [
+              "« que chacun participe » complète le verbe « souhaite ».",
+              "Cette phrase ne contient pas de proposition subordonnée complétive.",
+              "La phrase entière est une seule proposition subordonnée.",
+              "Ce groupe est une relative qui précise un nom."
+            ],
+            "answerFr": "« que chacun participe » complète le verbe « souhaite ».",
+            "hintFr": "Cherche ce que le groupe complète : un verbe ou un nom repris ?",
+            "explanationFr": "que chacun participe indique ce qui est dit, pensé, perçu ou attendu avec le verbe souhaite. Que ne reprend pas un nom."
+          },
+          {
+            "id": "guided:completive:5",
+            "promptFr": "Le gâteau que tu découpes sent bon.\n\nQuelle analyse est correcte ?",
+            "choices": [
+              "Cette phrase ne contient pas de proposition subordonnée complétive.",
+              "La phrase entière est la proposition subordonnée recherchée.",
+              "Tout groupe de mots contenant que convient.",
+              "Un groupe sans verbe conjugué suffit toujours."
+            ],
+            "answerFr": "Cette phrase ne contient pas de proposition subordonnée complétive.",
+            "hintFr": "Cherche ce que le groupe complète : un verbe ou un nom repris ?",
+            "explanationFr": "Que tu découpes précise gâteau : c’est une relative."
+          },
+          {
+            "id": "guided:completive:6",
+            "promptFr": "Je souris parce que je suis content.\n\nQuelle analyse est correcte ?",
+            "choices": [
+              "Cette phrase ne contient pas de proposition subordonnée complétive.",
+              "La phrase entière est la proposition subordonnée recherchée.",
+              "Tout groupe de mots contenant que convient.",
+              "Un groupe sans verbe conjugué suffit toujours."
+            ],
+            "answerFr": "Cette phrase ne contient pas de proposition subordonnée complétive.",
+            "hintFr": "Cherche ce que le groupe complète : un verbe ou un nom repris ?",
+            "explanationFr": "Parce que je suis content exprime la cause du sourire."
+          }
+        ],
+        "materialExposure": {
+          "sentences": [
+            "Nora dit que le repas est prêt.",
+            "Je crois que tu as raison.",
+            "Je souhaite que tu viennes.",
+            "Le repas que Nora prépare est prêt.",
+            "Léo dit que son vélo est réparé.",
+            "Je comprends que tu sois déçu.",
+            "Nous constatons que la neige fond.",
+            "La cheffe souhaite que chacun participe.",
+            "Le gâteau que tu découpes sent bon.",
+            "Je souris parce que je suis content."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:subordinate:circonstancielle",
+      "contentChecksum": "sha256:12a4d91e7d1f79c19b435a864d2ddaae67a438c6bfbc2fc63368b0820f124e71",
+      "skillId": "construction_subordonnee_circonstancielle::reading-analysis",
+      "nodeKey": "construction_subordonnee_circonstancielle",
+      "facetKey": null,
+      "mode": "recognition",
+      "domain": "grammar",
+      "prerequisites": [
+        "construction_phrase_canonique::reading-analysis",
+        "construction_phrase_canonique::writing-controlled-production"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": true,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:003674094cb40e8780ff5ebe392ff109978476e6021085b5132ec5356881053b",
+        "sentence:sha256:0576a8f636be3009e902a63cdd3bafa6f7cccb7a3ea509c651bdbea3e323c14d",
+        "sentence:sha256:1b7dc7db4c58b97a66a28c17707f4d32e90ff8701afdf11d2d5ebd85783b5e69",
+        "sentence:sha256:2a457425004e299a4f902765943b663d4d3ca4d6510b2b152e772cab18af1b35",
+        "sentence:sha256:41663d1a4f6edb1ece173f2fe32acb16d4eb20044cc2b35a324a8ca76054e4f6",
+        "sentence:sha256:56463fc2b269cd6142db06a10e4afc199a3703b57556c1039ad2d029179a7dbb",
+        "sentence:sha256:57cd5424a673f7166c888ca1c8cad998938bb8d339a056f8e44f15abde982ce5",
+        "sentence:sha256:77f13de7f58723f027350ff6b7d0826e294be07a38dca7d2611e9ffa2fb51a26",
+        "sentence:sha256:ab8ae9f12500822b037ff9539e42b871f5af72ed2059afd1b7afabe91e34defa",
+        "sentence:sha256:ba9991740fd0d273e5a798547ae9f11d21b061cf641b3b2b69446d5a16a13413",
+        "sentence:sha256:c93ecdbe5219886a2ccfd9e95cecdc5a5cf8e4b4ac622411a33d699c7b9a05ab",
+        "sentence:sha256:d1e1dedb3d11ca878f95f6aa3f65aacfe659fffc9362541e3459e49fd1bdce79",
+        "sentence:sha256:da2c3a9de2edb2852d6ed6ff5bfe922bb10f6e09923b349554c332ce4d7d6f23",
+        "sentence:sha256:e64c58a1a4ea00e36962619cbcc0341d9ea79d300d4af7ba199e929cb20f4ef8",
+        "sentence:sha256:eb767f4fae9d51121d32a59f317017a4497c861a6018b2ccdab0076359cba7e9"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:subordinate:circonstancielle",
+        "nodeKey": "construction_subordonnee_circonstancielle",
+        "mode": "recognition",
+        "status": "draft_requires_review",
+        "titleFr": "Repérer une proposition circonstancielle",
+        "learnerQuestionFr": "Dans « Nous rentrons parce que la nuit tombe », quels mots donnent la raison du retour ?",
+        "steps": [
+          {
+            "exampleFr": "Nous rentrons parce que la nuit tombe.",
+            "explanationFr": "Parce que la nuit tombe donne la raison du retour. Ce groupe a un verbe conjugué, tombe, et exprime une circonstance : c’est une proposition subordonnée circonstancielle."
+          },
+          {
+            "exampleFr": "Quand le feu passe au vert, nous avançons.\nNous ralentissons pour que chacun puisse suivre.",
+            "explanationFr": "Quand indique ici le moment. Pour que indique le but, ce que l’on cherche à obtenir. Le mot qui introduit le groupe et le sens de la phrase aident à reconnaître la relation."
+          },
+          {
+            "exampleFr": "Si le temps le permet, nous sortirons.\nBien que le temps soit mauvais, nous sortons.",
+            "explanationFr": "Si pose ici une condition : la sortie dépend du temps. Bien que présente un obstacle qui n’empêche pas la sortie. Cette relation s’appelle une concession."
+          },
+          {
+            "exampleFr": "Nous partons après le repas.\nJe sais que tu pars.\nJe demande si tu pars.",
+            "explanationFr": "Après le repas indique un moment, mais n’a pas de verbe conjugué. Que tu pars donne le contenu de ce que je sais. Si tu pars donne le contenu d’une question indirecte. Aucune de ces phrases ne contient la circonstancielle étudiée."
+          }
+        ],
+        "takeawayFr": "Cherche un groupe avec son propre verbe qui exprime un moment, une cause, un but, une condition ou une concession. Vérifie le sens : un mot comme si ne suffit pas.",
+        "boundaryFr": "Cette leçon couvre cinq relations fréquentes avec des verbes conjugués. Elle ne couvre pas toutes les constructions circonstancielles et ne suffit pas à prouver que tu sais les écrire.",
+        "practice": [
+          {
+            "id": "guided:circonstancielle:1",
+            "promptFr": "Lorsque la musique commence, nous dansons.\n\nQuelle analyse est correcte ?",
+            "choices": [
+              "« Lorsque la musique commence » exprime le temps.",
+              "Cette phrase ne contient pas de proposition subordonnée circonstancielle.",
+              "La phrase entière est une seule proposition subordonnée.",
+              "Ce groupe est une relative qui précise un nom."
+            ],
+            "answerFr": "« Lorsque la musique commence » exprime le temps.",
+            "hintFr": "Vérifie la présence d’un verbe, puis le sens du lien entre les deux parties.",
+            "explanationFr": "Le groupe Lorsque la musique commence contient un verbe conjugué et exprime le temps par rapport à l’autre partie de la phrase."
+          },
+          {
+            "id": "guided:circonstancielle:2",
+            "promptFr": "Il prend un manteau parce qu’il fait froid.\n\nQuelle analyse est correcte ?",
+            "choices": [
+              "« parce qu’il fait froid » exprime la cause.",
+              "Cette phrase ne contient pas de proposition subordonnée circonstancielle.",
+              "La phrase entière est une seule proposition subordonnée.",
+              "Ce groupe est une relative qui précise un nom."
+            ],
+            "answerFr": "« parce qu’il fait froid » exprime la cause.",
+            "hintFr": "Vérifie la présence d’un verbe, puis le sens du lien entre les deux parties.",
+            "explanationFr": "Le groupe parce qu’il fait froid contient un verbe conjugué et exprime la cause par rapport à l’autre partie de la phrase."
+          },
+          {
+            "id": "guided:circonstancielle:3",
+            "promptFr": "Je laisse un mot pour que tu me retrouves.\n\nQuelle analyse est correcte ?",
+            "choices": [
+              "« pour que tu me retrouves » exprime le but.",
+              "Cette phrase ne contient pas de proposition subordonnée circonstancielle.",
+              "La phrase entière est une seule proposition subordonnée.",
+              "Ce groupe est une relative qui précise un nom."
+            ],
+            "answerFr": "« pour que tu me retrouves » exprime le but.",
+            "hintFr": "Vérifie la présence d’un verbe, puis le sens du lien entre les deux parties.",
+            "explanationFr": "Le groupe pour que tu me retrouves contient un verbe conjugué et exprime le but par rapport à l’autre partie de la phrase."
+          },
+          {
+            "id": "guided:circonstancielle:4",
+            "promptFr": "Si la clé fonctionne, nous entrerons.\n\nQuelle analyse est correcte ?",
+            "choices": [
+              "« Si la clé fonctionne » exprime une condition.",
+              "Cette phrase ne contient pas de proposition subordonnée circonstancielle.",
+              "La phrase entière est une seule proposition subordonnée.",
+              "Ce groupe est une relative qui précise un nom."
+            ],
+            "answerFr": "« Si la clé fonctionne » exprime une condition.",
+            "hintFr": "Vérifie la présence d’un verbe, puis le sens du lien entre les deux parties.",
+            "explanationFr": "Le groupe Si la clé fonctionne contient un verbe conjugué et exprime une condition par rapport à l’autre partie de la phrase."
+          },
+          {
+            "id": "guided:circonstancielle:5",
+            "promptFr": "Bien qu’elle soit fatiguée, elle termine son dessin.\n\nQuelle analyse est correcte ?",
+            "choices": [
+              "« Bien qu’elle soit fatiguée » exprime une concession.",
+              "Cette phrase ne contient pas de proposition subordonnée circonstancielle.",
+              "La phrase entière est une seule proposition subordonnée.",
+              "Ce groupe est une relative qui précise un nom."
+            ],
+            "answerFr": "« Bien qu’elle soit fatiguée » exprime une concession.",
+            "hintFr": "Vérifie la présence d’un verbe, puis le sens du lien entre les deux parties.",
+            "explanationFr": "Le groupe Bien qu’elle soit fatiguée contient un verbe conjugué et exprime une concession par rapport à l’autre partie de la phrase."
+          },
+          {
+            "id": "guided:circonstancielle:6",
+            "promptFr": "Elle sait que le magasin ouvre bientôt.\n\nQuelle analyse est correcte ?",
+            "choices": [
+              "Cette phrase ne contient pas de proposition subordonnée circonstancielle.",
+              "La phrase entière est la proposition subordonnée recherchée.",
+              "Tout groupe de mots contenant que convient.",
+              "Un groupe sans verbe conjugué suffit toujours."
+            ],
+            "answerFr": "Cette phrase ne contient pas de proposition subordonnée circonstancielle.",
+            "hintFr": "Vérifie la présence d’un verbe, puis le sens du lien entre les deux parties.",
+            "explanationFr": "Que le magasin ouvre bientôt complète sait, sans exprimer une circonstance."
+          },
+          {
+            "id": "guided:circonstancielle:7",
+            "promptFr": "Nous restons à l’abri pendant l’orage.\n\nQuelle analyse est correcte ?",
+            "choices": [
+              "Cette phrase ne contient pas de proposition subordonnée circonstancielle.",
+              "La phrase entière est la proposition subordonnée recherchée.",
+              "Tout groupe de mots contenant que convient.",
+              "Un groupe sans verbe conjugué suffit toujours."
+            ],
+            "answerFr": "Cette phrase ne contient pas de proposition subordonnée circonstancielle.",
+            "hintFr": "Vérifie la présence d’un verbe, puis le sens du lien entre les deux parties.",
+            "explanationFr": "Pendant l’orage indique un moment mais ne contient aucun verbe conjugué."
+          }
+        ],
+        "materialExposure": {
+          "sentences": [
+            "Nous rentrons parce que la nuit tombe.",
+            "Quand le feu passe au vert, nous avançons.",
+            "Nous ralentissons pour que chacun puisse suivre.",
+            "Si le temps le permet, nous sortirons.",
+            "Bien que le temps soit mauvais, nous sortons.",
+            "Nous partons après le repas.",
+            "Je sais que tu pars.",
+            "Je demande si tu pars.",
+            "Lorsque la musique commence, nous dansons.",
+            "Il prend un manteau parce qu’il fait froid.",
+            "Je laisse un mot pour que tu me retrouves.",
+            "Si la clé fonctionne, nous entrerons.",
+            "Bien qu’elle soit fatiguée, elle termine son dessin.",
+            "Elle sait que le magasin ouvre bientôt.",
+            "Nous restons à l’abri pendant l’orage."
+          ]
+        }
+      }
+    },
     {
       "lessonId": "french-v3-teaching:relative-clause:recognition",
       "contentChecksum": "sha256:6814ff32b47bf80caaecd0058f3ae1e2d687967f861f71781eda18e74d45ecee",
@@ -15488,5 +15849,5 @@
       }
     }
   ],
-  "checksum": "sha256:bf212dd0ca3e9ef9d9c95994fb1ad8f7464cefb69350b5660bd29da36b7882c4"
+  "checksum": "sha256:50bb5c1fe80d09a1afda03402cd52683428969dde9c8dacea04204827aa86134"
 }

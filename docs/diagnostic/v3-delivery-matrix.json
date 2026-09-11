@@ -3,12 +3,17 @@
   "status": "draft_requires_review",
   "sources": {
     "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
-    "bankChecksum": "sha256:36f4d12b3001a22f6a7d8a3b75a6ce8430d0d582cec72ff982aa93a3eaf69473",
+    "bankChecksum": "sha256:ad5ea53d030634d0facadf8c61e282b79dd7ebe9d57cb54de384fb9b314cdb04",
     "annotationChecksum": "sha256:41e7a8d65776f6bb64c33c925b7d4449ffe9fda5a6b71a899067a171232542bb",
-    "facetChecksum": "sha256:e3057632211003eb25bdfbdfa0bb9ed3c251d6d8b654e6b9483346e6655b3598",
+    "facetChecksum": "sha256:7a95b3b8e4f0d63233b900e73dee6c21c5f328aec0d2771b0ec57528dfff3252",
     "poolChecksum": "sha256:8c59b3ee0139afb4f44fa7e964a85ec00c67e9889bb1ffbad78ff7aa14aa5dfe",
     "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
     "expansions": [
+      {
+        "version": "french-v3-subordinate-clauses-expansion-v1",
+        "checksum": "sha256:1661b2cc4dd4f5667a18a6360e2ff13a34ab06faefcb4ed4aba8cd9ec60c9066",
+        "addedItems": 36
+      },
       {
         "version": "french-v3-relative-clause-expansion-v1",
         "checksum": "sha256:33398c28a20e38b4a40cf02a7b0a5c81e5f80eaf765830e04208ac89b3179df4",
@@ -100,14 +105,14 @@
         "addedItems": 90
       }
     ],
-    "teachingDraftChecksum": "sha256:e1b6959b7612853dd23d19c159691cdb0418ae2741d05618ca853f531a9060da"
+    "teachingDraftChecksum": "sha256:62d86f457db2c53a1783f86b0753b96719b4b90fc0e6e8bfc7104c630a0553c0"
   },
   "summary": {
-    "teachingDrafts": 103,
-    "targetsWithTeachingDrafts": 103,
-    "targetsWithoutTeachingDrafts": 439,
-    "totalCandidateQuestions": 4590,
-    "additionalDraftQuestions": 3860,
+    "teachingDrafts": 105,
+    "targetsWithTeachingDrafts": 105,
+    "targetsWithoutTeachingDrafts": 437,
+    "totalCandidateQuestions": 4626,
+    "additionalDraftQuestions": 3896,
     "canonicalEligibleQuestions": 238,
     "approvedCompetencies": 181,
     "approvedEvidenceDefinitions": 257,
@@ -154,10 +159,10 @@
         "eligibleQuestions": 56,
         "targetsWithNoEligibleQuestions": 43,
         "allocatedPools": 0,
-        "targetsWithTeachingDrafts": 20,
-        "targetsWithoutTeachingDrafts": 59,
-        "guidedExerciseDrafts": 103,
-        "exactTargetExpansionDrafts": 210
+        "targetsWithTeachingDrafts": 22,
+        "targetsWithoutTeachingDrafts": 57,
+        "guidedExerciseDrafts": 116,
+        "exactTargetExpansionDrafts": 246
       },
       {
         "domain": "spelling",
@@ -45600,7 +45605,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 0,
+          "questions": 16,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -45675,16 +45680,40 @@
         "local-grammar-v1:construction_subordonnee_completive:receptive:core",
         "local-grammar-v1:construction_subordonnee_completive:receptive:stretch"
       ],
-      "exactTargetExpansionDrafts": [],
-      "teachingDrafts": [],
+      "exactTargetExpansionDrafts": [
+        "v3-subordinate-clauses:completive-1",
+        "v3-subordinate-clauses:completive-2",
+        "v3-subordinate-clauses:completive-3",
+        "v3-subordinate-clauses:completive-4",
+        "v3-subordinate-clauses:completive-5",
+        "v3-subordinate-clauses:completive-6",
+        "v3-subordinate-clauses:completive-7",
+        "v3-subordinate-clauses:completive-8",
+        "v3-subordinate-clauses:completive-9",
+        "v3-subordinate-clauses:completive-10",
+        "v3-subordinate-clauses:completive-11",
+        "v3-subordinate-clauses:completive-12",
+        "v3-subordinate-clauses:completive-13",
+        "v3-subordinate-clauses:completive-14",
+        "v3-subordinate-clauses:completive-15",
+        "v3-subordinate-clauses:completive-16"
+      ],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:subordinate:completive",
+          "status": "draft_requires_review",
+          "guidedExercises": 6,
+          "boundaryFr": "Cette leçon porte sur les complétives introduites par que après un verbe. Il existe d’autres constructions complétives. Les reconnaître ici ne prouve pas encore que tu sais en construire une."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
         "independentCheck": "insufficient_pool"
       },
       "nextActions": [
-        "map_and_review_parent_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_exact_target_drafts",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -45887,7 +45916,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 0,
+          "questions": 20,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -45960,16 +45989,44 @@
         "mcq"
       ],
       "parentDraftCandidatesRequiringMapping": [],
-      "exactTargetExpansionDrafts": [],
-      "teachingDrafts": [],
+      "exactTargetExpansionDrafts": [
+        "v3-subordinate-clauses:circonstancielle-1",
+        "v3-subordinate-clauses:circonstancielle-2",
+        "v3-subordinate-clauses:circonstancielle-3",
+        "v3-subordinate-clauses:circonstancielle-4",
+        "v3-subordinate-clauses:circonstancielle-5",
+        "v3-subordinate-clauses:circonstancielle-6",
+        "v3-subordinate-clauses:circonstancielle-7",
+        "v3-subordinate-clauses:circonstancielle-8",
+        "v3-subordinate-clauses:circonstancielle-9",
+        "v3-subordinate-clauses:circonstancielle-10",
+        "v3-subordinate-clauses:circonstancielle-11",
+        "v3-subordinate-clauses:circonstancielle-12",
+        "v3-subordinate-clauses:circonstancielle-13",
+        "v3-subordinate-clauses:circonstancielle-14",
+        "v3-subordinate-clauses:circonstancielle-15",
+        "v3-subordinate-clauses:circonstancielle-16",
+        "v3-subordinate-clauses:circonstancielle-17",
+        "v3-subordinate-clauses:circonstancielle-18",
+        "v3-subordinate-clauses:circonstancielle-19",
+        "v3-subordinate-clauses:circonstancielle-20"
+      ],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:subordinate:circonstancielle",
+          "status": "draft_requires_review",
+          "guidedExercises": 7,
+          "boundaryFr": "Cette leçon couvre cinq relations fréquentes avec des verbes conjugués. Elle ne couvre pas toutes les constructions circonstancielles et ne suffit pas à prouver que tu sais les écrire."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
         "independentCheck": "insufficient_pool"
       },
       "nextActions": [
-        "author_missing_evidence",
-        "author_or_reuse_exact_target_teaching",
+        "review_exact_target_drafts",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -77888,5 +77945,5 @@
       ]
     }
   ],
-  "checksum": "sha256:8a0687dbe170e932c96da16dd027312b38ec112f4e1477b92ba9af0d84f3caa0"
+  "checksum": "sha256:c6680f0a73e74f8437af6ef29e821896fd67b159a279db8f16c3b07c8ec0a8dc"
 }
