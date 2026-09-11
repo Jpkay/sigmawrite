@@ -1,5 +1,5 @@
 {
-  "status": "candidate_ready_compatibility_verified_bank_import_running_not_published",
+  "status": "published_candidate_full_browser_journey_running_not_activated",
   "sourceCommit": "3446b9f",
   "frozenWorkspace": "/Users/jean-philippekayobotsi/.codex/release-workspaces/sigmawrite-r12-3446b9f",
   "bankKey": "french-diagnostic-bank-v3-r12",
@@ -954,7 +954,25 @@
         "observations": 62,
         "refinements": 4
       }
-    }
+    },
+    "relationalVerification": {
+      "version": "french-granular-parallel-publication-v1",
+      "ready": true,
+      "authorization": "product-owner-request-2026-09-11",
+      "reviewOwner": "product_owner",
+      "bankChecksum": "sha256:9a41aea90fd2dd0836425721baf1140271cc4d01f7dc0178b687e793d5f76905",
+      "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+      "bundleChecksum": "sha256:e410b20909fbc1c21f1cbe2b5787bc9a8ed8add8b0978914f849e9ce9853ef37",
+      "policyChecksum": "sha256:4134b5dfdbb5facd55ce56773e88d2373f11af2c833939a6fd75e6f8abbd9368",
+      "scopeChecksum": "sha256:c7d35401b5a77d3e79c03864da5246010387984890c6a8ecc6ef0939c9dddddb",
+      "bankItemCount": 6004,
+      "assessmentTargets": 215,
+      "teachingTargets": 215,
+      "instructionGapSkillIds": [],
+      "freshCheckGapSkillIds": [],
+      "verifiedItems": 6004
+    },
+    "bankImportExitCode": 0
   },
   "limitations": [
     "Full graph coverage and educational calibration remain incomplete.",
@@ -962,22 +980,21 @@
     "Existing content review states are preserved. Serving authorization does not mean completed human review."
   ],
   "remaining": [
-    "Complete bank import and relational verification",
-    "Publish immutable candidate and deploy without moving public aliases",
-    "Verify new default, full diagnostic-to-learning journey and compatible completed-session upgrade",
-    "Promote only after verification and check the public deployment",
-    "Continue remaining full-graph implementation and owner review"
+    "Complete fresh full diagnostic-to-results-to-lesson browser journey",
+    "Promote only after verification and check public behavior",
+    "Continue full graph implementation, adaptive-depth validation and owner review"
   ],
   "candidateUrl": "https://sigmawrite-jwdbwpvj3-jpkays-projects.vercel.app",
   "candidateBuild": "Ready verified with Vercel inspect",
   "freshQa": {
     "username": "doves.granular.r12.default.qa",
     "studentId": "b1c185e4-9c9f-4823-8e0a-936e33cade45",
-    "assessmentStarted": false
+    "assessmentStarted": true,
+    "sessionId": "ca916e99-4083-48ee-8072-3a29aef4e27a"
   },
   "candidateDeploymentId": "dpl_FT1hjs9bQzVySGWuGNagJTniDte2",
   "bankId": "4d783b42-34df-4556-96df-e12d1f61a9bf",
-  "lastObservedImportedMemberships": 1326,
+  "lastObservedImportedMemberships": 6004,
   "candidateCompatibility": {
     "legacyDemo": {
       "lessons": 11,
@@ -994,6 +1011,41 @@
         "grammar"
       ],
       "activities": 5
+    }
+  },
+  "releaseId": "a64d94f5-dc43-4413-9bcf-dd3e01eef5d2",
+  "bundleChecksum": "sha256:e410b20909fbc1c21f1cbe2b5787bc9a8ed8add8b0978914f849e9ce9853ef37",
+  "candidateVerification": {
+    "candidateDefault": {
+      "sessionId": "ca916e99-4083-48ee-8072-3a29aef4e27a",
+      "releaseId": "a64d94f5-dc43-4413-9bcf-dd3e01eef5d2",
+      "scope": 215,
+      "defaultSelectedByApplication": true,
+      "reloadPreservedSession": true
+    },
+    "completedSessionUpgrade": {
+      "base": "https://sigmawrite-jwdbwpvj3-jpkays-projects.vercel.app",
+      "sourceId": "c325caff-334d-45db-ad27-0b3e5e7ccbec",
+      "successorId": "4ebf630f-acd3-4e73-b5ca-de81928f7541",
+      "targetRelease": "a64d94f5-dc43-4413-9bcf-dd3e01eef5d2",
+      "targetKey": "french-granular-diagnostic-v13",
+      "answers": 62,
+      "wrong": 13,
+      "preserved": {
+        "observations": true,
+        "refinements": true,
+        "activeSeconds": true,
+        "completedTeachingIds": true,
+        "exposedMaterialKeys": true,
+        "exposedLearningItemIds": true,
+        "exposedReadingContexts": true,
+        "phase": true,
+        "paused": true,
+        "completionReason": true
+      },
+      "answerOriginsPreserved": true,
+      "originalUnchanged": true,
+      "reload": true
     }
   }
 }
