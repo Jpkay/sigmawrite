@@ -44,3 +44,9 @@ it("surfaces a failed permission read instead of serving content",async()=>{
  const f=fixture();f.errors.granular_bank_publication_permissions="permission query failed";
  await expect(f.store.release("release")).rejects.toThrow("permission query failed");
 });
+it("withholds content when full preflight rejects and retries validation on the next request",async()=>{
+ const f=fixture();
+ prepare.mockImplementationOnce(()=>{throw Error("Invalid approved graph or canonical bank binding");});
+ expect(await f.store.release("release")).toBeNull();
+ expect(await f.store.release("release")).toEqual(f.bundle);
+});

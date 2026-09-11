@@ -40,17 +40,20 @@ export class SupabaseAssessmentStore implements AssessmentStore{
    ||bank.data.manifest_checksum!==data.bundle.assessment.bankChecksum)return null;
   let validation=this.contentValidation?.checksum===data.content_checksum?this.contentValidation:null;
   if(!validation){
-   if(!inspectQuestionPools(data.bundle?.assessment).ok)return null;
-   if(!inspectReleaseBank(data.bundle as AssessmentBundle))return null;
    let preflight:ReturnType<typeof prepareParallelPublication>|null=null;
    try{
     const bundle=data.bundle as AssessmentBundle;
-    validateActivityBindings(bundle.assessment,bundle.activities??[]);
-    validatePublishedTeaching(bundle.assessment,bundle.teachingContent??[]);
     if(bundle.activities?.some(binding=>binding.contentId&&!bundle.teachingContent?.some(lesson=>lesson.id===binding.contentId&&lesson.nodeKey===binding.nodeKey&&lesson.facetKey===binding.facetKey&&lesson.mode===binding.mode)))return null;
     if(bundle.assessment.reviewPolicy?.mode==="parallel_review"){
      preflight=prepareParallelPublication(bundle);
      if(!preflight.ready)return null;
+    }else{
+     // Parallel publication above already validates these immutable structures.
+     // Legacy releases still need each check here.
+     if(!inspectQuestionPools(bundle.assessment).ok)return null;
+     if(!inspectReleaseBank(bundle))return null;
+     validateActivityBindings(bundle.assessment,bundle.activities??[]);
+     validatePublishedTeaching(bundle.assessment,bundle.teachingContent??[]);
     }
    }catch{return null;}
    validation={checksum:data.content_checksum,preflight};
