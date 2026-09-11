@@ -8,6 +8,7 @@ const ALWAYS_AVAILABLE = new Set([
   "/student/onboarding",
   "/student/diagnostic",
   "/student/diagnostic/review",
+  "/student/lessons",
   "/student/settings",
 ]);
 const PILOT_PREVIEW_AVAILABLE = new Set(["/student/frontier"]);
@@ -51,9 +52,9 @@ export function StudentAssessmentGate({ children, ownerKey }: { children: React.
     if (destination) router.replace(destination);
   }, [destination, router]);
 
-  // This server-rendered route independently checks ownership, access and a
-  // completed session. It does not need the legacy student-store hydration.
-  if (pathname === "/student/diagnostic/review") return children;
+  // These server-rendered routes independently check student access and
+  // learning eligibility. They do not need legacy student-store hydration.
+  if (pathname === "/student/diagnostic/review" || pathname === "/student/lessons") return children;
 
   if (state.hydrationError) {
     return <div role="alert" className="space-y-3">
