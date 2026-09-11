@@ -1,0 +1,983 @@
+{
+  "version": "french-v3-coordination-production-expansion-v1",
+  "status": "draft_requires_review",
+  "parentTaxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+  "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
+  "items": [
+    {
+      "itemKey": "v3-coordination-production:1",
+      "item": {
+        "nodeKey": "construction_coordination",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Ajoute une deuxième activité à la première.\nRéunis les deux phrases en une seule avec « et », « mais », « ou » ou « car ». Garde les mots dans leur ordre. Remplace le premier point par le mot choisi et commence la deuxième proposition par une minuscule. Pour cet exercice, n’ajoute pas de virgule.\n\nLe club prépare une exposition.\nIl organise une rencontre.",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Le club prépare une exposition et il organise une rencontre.",
+        "acceptableAnswers": [
+          "Le club prépare une exposition et il organise une rencontre"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le club prépare une exposition.",
+              "Il organise une rencontre.",
+              "Le club prépare une exposition et il organise une rencontre."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le club prépare une exposition.",
+                "Il organise une rencontre.",
+                "Le club prépare une exposition et il organise une rencontre."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Le club prépare une exposition et il organise une rencontre.",
+              "Le club prépare une exposition et il organise une rencontre",
+              "Le club prépare une exposition mais il organise une rencontre.",
+              "Le club prépare une exposition mais il organise une rencontre",
+              "Le club prépare une exposition ou il organise une rencontre.",
+              "Le club prépare une exposition ou il organise une rencontre",
+              "Le club prépare une exposition car il organise une rencontre.",
+              "Le club prépare une exposition car il organise une rencontre"
+            ],
+            "rationaleFr": "La tâche combine des phrases fournies. Le choix du mot de coordination est borné conservativement à quatre possibilités ; la saisie ne constitue pas une rédaction libre."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "coordination-sentence-combination",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-coordination-production:2",
+      "item": {
+        "nodeKey": "construction_coordination",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Présente les deux actions comme une addition.\nRéunis les deux phrases en une seule avec « et », « mais », « ou » ou « car ». Garde les mots dans leur ordre. Remplace le premier point par le mot choisi et commence la deuxième proposition par une minuscule. Pour cet exercice, n’ajoute pas de virgule.\n\nJe range les outils.\nTu nettoies la table.",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Je range les outils et tu nettoies la table.",
+        "acceptableAnswers": [
+          "Je range les outils et tu nettoies la table"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Je range les outils.",
+              "Tu nettoies la table.",
+              "Je range les outils et tu nettoies la table."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je range les outils.",
+                "Tu nettoies la table.",
+                "Je range les outils et tu nettoies la table."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Je range les outils et tu nettoies la table.",
+              "Je range les outils et tu nettoies la table",
+              "Je range les outils mais tu nettoies la table.",
+              "Je range les outils mais tu nettoies la table",
+              "Je range les outils ou tu nettoies la table.",
+              "Je range les outils ou tu nettoies la table",
+              "Je range les outils car tu nettoies la table.",
+              "Je range les outils car tu nettoies la table"
+            ],
+            "rationaleFr": "La tâche combine des phrases fournies. Le choix du mot de coordination est borné conservativement à quatre possibilités ; la saisie ne constitue pas une rédaction libre."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "coordination-sentence-combination",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-coordination-production:3",
+      "item": {
+        "nodeKey": "construction_coordination",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Ajoute la deuxième action à la première.\nRéunis les deux phrases en une seule avec « et », « mais », « ou » ou « car ». Garde les mots dans leur ordre. Remplace le premier point par le mot choisi et commence la deuxième proposition par une minuscule. Pour cet exercice, n’ajoute pas de virgule.\n\nLes musiciens répètent.\nLes danseurs s’échauffent.",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Les musiciens répètent et les danseurs s’échauffent.",
+        "acceptableAnswers": [
+          "Les musiciens répètent et les danseurs s’échauffent"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les musiciens répètent.",
+              "Les danseurs s’échauffent.",
+              "Les musiciens répètent et les danseurs s’échauffent."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les musiciens répètent.",
+                "Les danseurs s’échauffent.",
+                "Les musiciens répètent et les danseurs s’échauffent."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Les musiciens répètent et les danseurs s’échauffent.",
+              "Les musiciens répètent et les danseurs s’échauffent",
+              "Les musiciens répètent mais les danseurs s’échauffent.",
+              "Les musiciens répètent mais les danseurs s’échauffent",
+              "Les musiciens répètent ou les danseurs s’échauffent.",
+              "Les musiciens répètent ou les danseurs s’échauffent",
+              "Les musiciens répètent car les danseurs s’échauffent.",
+              "Les musiciens répètent car les danseurs s’échauffent"
+            ],
+            "rationaleFr": "La tâche combine des phrases fournies. Le choix du mot de coordination est borné conservativement à quatre possibilités ; la saisie ne constitue pas une rédaction libre."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "coordination-sentence-combination",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-coordination-production:4",
+      "item": {
+        "nodeKey": "construction_coordination",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Marque une opposition entre la difficulté et notre décision.\nRéunis les deux phrases en une seule avec « et », « mais », « ou » ou « car ». Garde les mots dans leur ordre. Remplace le premier point par le mot choisi et commence la deuxième proposition par une minuscule. Pour cet exercice, n’ajoute pas de virgule.\n\nLe sentier est raide.\nNous continuons la montée.",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Le sentier est raide mais nous continuons la montée.",
+        "acceptableAnswers": [
+          "Le sentier est raide mais nous continuons la montée"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le sentier est raide.",
+              "Nous continuons la montée.",
+              "Le sentier est raide mais nous continuons la montée."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le sentier est raide.",
+                "Nous continuons la montée.",
+                "Le sentier est raide mais nous continuons la montée."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Le sentier est raide et nous continuons la montée.",
+              "Le sentier est raide et nous continuons la montée",
+              "Le sentier est raide mais nous continuons la montée.",
+              "Le sentier est raide mais nous continuons la montée",
+              "Le sentier est raide ou nous continuons la montée.",
+              "Le sentier est raide ou nous continuons la montée",
+              "Le sentier est raide car nous continuons la montée.",
+              "Le sentier est raide car nous continuons la montée"
+            ],
+            "rationaleFr": "La tâche combine des phrases fournies. Le choix du mot de coordination est borné conservativement à quatre possibilités ; la saisie ne constitue pas une rédaction libre."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "coordination-sentence-combination",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-coordination-production:5",
+      "item": {
+        "nodeKey": "construction_coordination",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Marque une opposition entre l’apparence du sac et ce qu’il contient.\nRéunis les deux phrases en une seule avec « et », « mais », « ou » ou « car ». Garde les mots dans leur ordre. Remplace le premier point par le mot choisi et commence la deuxième proposition par une minuscule. Pour cet exercice, n’ajoute pas de virgule.\n\nLe sac semble petit.\nIl contient tout le matériel.",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Le sac semble petit mais il contient tout le matériel.",
+        "acceptableAnswers": [
+          "Le sac semble petit mais il contient tout le matériel"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le sac semble petit.",
+              "Il contient tout le matériel.",
+              "Le sac semble petit mais il contient tout le matériel."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le sac semble petit.",
+                "Il contient tout le matériel.",
+                "Le sac semble petit mais il contient tout le matériel."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Le sac semble petit et il contient tout le matériel.",
+              "Le sac semble petit et il contient tout le matériel",
+              "Le sac semble petit mais il contient tout le matériel.",
+              "Le sac semble petit mais il contient tout le matériel",
+              "Le sac semble petit ou il contient tout le matériel.",
+              "Le sac semble petit ou il contient tout le matériel",
+              "Le sac semble petit car il contient tout le matériel.",
+              "Le sac semble petit car il contient tout le matériel"
+            ],
+            "rationaleFr": "La tâche combine des phrases fournies. Le choix du mot de coordination est borné conservativement à quatre possibilités ; la saisie ne constitue pas une rédaction libre."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "coordination-sentence-combination",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-coordination-production:6",
+      "item": {
+        "nodeKey": "construction_coordination",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Marque une opposition entre mes connaissances et mes erreurs.\nRéunis les deux phrases en une seule avec « et », « mais », « ou » ou « car ». Garde les mots dans leur ordre. Remplace le premier point par le mot choisi et commence la deuxième proposition par une minuscule. Pour cet exercice, n’ajoute pas de virgule.\n\nJe connais cette règle.\nJe fais encore des erreurs.",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Je connais cette règle mais je fais encore des erreurs.",
+        "acceptableAnswers": [
+          "Je connais cette règle mais je fais encore des erreurs"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Je connais cette règle.",
+              "Je fais encore des erreurs.",
+              "Je connais cette règle mais je fais encore des erreurs."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je connais cette règle.",
+                "Je fais encore des erreurs.",
+                "Je connais cette règle mais je fais encore des erreurs."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Je connais cette règle et je fais encore des erreurs.",
+              "Je connais cette règle et je fais encore des erreurs",
+              "Je connais cette règle mais je fais encore des erreurs.",
+              "Je connais cette règle mais je fais encore des erreurs",
+              "Je connais cette règle ou je fais encore des erreurs.",
+              "Je connais cette règle ou je fais encore des erreurs",
+              "Je connais cette règle car je fais encore des erreurs.",
+              "Je connais cette règle car je fais encore des erreurs"
+            ],
+            "rationaleFr": "La tâche combine des phrases fournies. Le choix du mot de coordination est borné conservativement à quatre possibilités ; la saisie ne constitue pas une rédaction libre."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "coordination-sentence-combination",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-coordination-production:7",
+      "item": {
+        "nodeKey": "construction_coordination",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Présente un choix entre deux tâches : une seule sera retenue.\nRéunis les deux phrases en une seule avec « et », « mais », « ou » ou « car ». Garde les mots dans leur ordre. Remplace le premier point par le mot choisi et commence la deuxième proposition par une minuscule. Pour cet exercice, n’ajoute pas de virgule.\n\nTu dessines l’affiche.\nTu rédiges le texte.",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Tu dessines l’affiche ou tu rédiges le texte.",
+        "acceptableAnswers": [
+          "Tu dessines l’affiche ou tu rédiges le texte"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Tu dessines l’affiche.",
+              "Tu rédiges le texte.",
+              "Tu dessines l’affiche ou tu rédiges le texte."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu dessines l’affiche.",
+                "Tu rédiges le texte.",
+                "Tu dessines l’affiche ou tu rédiges le texte."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Tu dessines l’affiche et tu rédiges le texte.",
+              "Tu dessines l’affiche et tu rédiges le texte",
+              "Tu dessines l’affiche mais tu rédiges le texte.",
+              "Tu dessines l’affiche mais tu rédiges le texte",
+              "Tu dessines l’affiche ou tu rédiges le texte.",
+              "Tu dessines l’affiche ou tu rédiges le texte",
+              "Tu dessines l’affiche car tu rédiges le texte.",
+              "Tu dessines l’affiche car tu rédiges le texte"
+            ],
+            "rationaleFr": "La tâche combine des phrases fournies. Le choix du mot de coordination est borné conservativement à quatre possibilités ; la saisie ne constitue pas une rédaction libre."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "coordination-sentence-combination",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-coordination-production:8",
+      "item": {
+        "nodeKey": "construction_coordination",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Présente deux possibilités de transport au choix.\nRéunis les deux phrases en une seule avec « et », « mais », « ou » ou « car ». Garde les mots dans leur ordre. Remplace le premier point par le mot choisi et commence la deuxième proposition par une minuscule. Pour cet exercice, n’ajoute pas de virgule.\n\nNous prenons le train.\nNous voyageons en car.",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Nous prenons le train ou nous voyageons en car.",
+        "acceptableAnswers": [
+          "Nous prenons le train ou nous voyageons en car"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Nous prenons le train.",
+              "Nous voyageons en car.",
+              "Nous prenons le train ou nous voyageons en car."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous prenons le train.",
+                "Nous voyageons en car.",
+                "Nous prenons le train ou nous voyageons en car."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Nous prenons le train et nous voyageons en car.",
+              "Nous prenons le train et nous voyageons en car",
+              "Nous prenons le train mais nous voyageons en car.",
+              "Nous prenons le train mais nous voyageons en car",
+              "Nous prenons le train ou nous voyageons en car.",
+              "Nous prenons le train ou nous voyageons en car",
+              "Nous prenons le train car nous voyageons en car.",
+              "Nous prenons le train car nous voyageons en car"
+            ],
+            "rationaleFr": "La tâche combine des phrases fournies. Le choix du mot de coordination est borné conservativement à quatre possibilités ; la saisie ne constitue pas une rédaction libre."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "coordination-sentence-combination",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-coordination-production:9",
+      "item": {
+        "nodeKey": "construction_coordination",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Présente un choix entre deux activités possibles.\nRéunis les deux phrases en une seule avec « et », « mais », « ou » ou « car ». Garde les mots dans leur ordre. Remplace le premier point par le mot choisi et commence la deuxième proposition par une minuscule. Pour cet exercice, n’ajoute pas de virgule.\n\nVous jouez dehors.\nVous restez dans la salle.",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Vous jouez dehors ou vous restez dans la salle.",
+        "acceptableAnswers": [
+          "Vous jouez dehors ou vous restez dans la salle"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Vous jouez dehors.",
+              "Vous restez dans la salle.",
+              "Vous jouez dehors ou vous restez dans la salle."
+            ],
+            "assessed": {
+              "sentences": [
+                "Vous jouez dehors.",
+                "Vous restez dans la salle.",
+                "Vous jouez dehors ou vous restez dans la salle."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Vous jouez dehors et vous restez dans la salle.",
+              "Vous jouez dehors et vous restez dans la salle",
+              "Vous jouez dehors mais vous restez dans la salle.",
+              "Vous jouez dehors mais vous restez dans la salle",
+              "Vous jouez dehors ou vous restez dans la salle.",
+              "Vous jouez dehors ou vous restez dans la salle",
+              "Vous jouez dehors car vous restez dans la salle.",
+              "Vous jouez dehors car vous restez dans la salle"
+            ],
+            "rationaleFr": "La tâche combine des phrases fournies. Le choix du mot de coordination est borné conservativement à quatre possibilités ; la saisie ne constitue pas une rédaction libre."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "coordination-sentence-combination",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-coordination-production:10",
+      "item": {
+        "nodeKey": "construction_coordination",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Donne dans la deuxième proposition la raison de la première action.\nRéunis les deux phrases en une seule avec « et », « mais », « ou » ou « car ». Garde les mots dans leur ordre. Remplace le premier point par le mot choisi et commence la deuxième proposition par une minuscule. Pour cet exercice, n’ajoute pas de virgule.\n\nJe ferme les rideaux.\nLa lumière gêne la projection.",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Je ferme les rideaux car la lumière gêne la projection.",
+        "acceptableAnswers": [
+          "Je ferme les rideaux car la lumière gêne la projection"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Je ferme les rideaux.",
+              "La lumière gêne la projection.",
+              "Je ferme les rideaux car la lumière gêne la projection."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je ferme les rideaux.",
+                "La lumière gêne la projection.",
+                "Je ferme les rideaux car la lumière gêne la projection."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Je ferme les rideaux et la lumière gêne la projection.",
+              "Je ferme les rideaux et la lumière gêne la projection",
+              "Je ferme les rideaux mais la lumière gêne la projection.",
+              "Je ferme les rideaux mais la lumière gêne la projection",
+              "Je ferme les rideaux ou la lumière gêne la projection.",
+              "Je ferme les rideaux ou la lumière gêne la projection",
+              "Je ferme les rideaux car la lumière gêne la projection.",
+              "Je ferme les rideaux car la lumière gêne la projection"
+            ],
+            "rationaleFr": "La tâche combine des phrases fournies. Le choix du mot de coordination est borné conservativement à quatre possibilités ; la saisie ne constitue pas une rédaction libre."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "coordination-sentence-combination",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-coordination-production:11",
+      "item": {
+        "nodeKey": "construction_coordination",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Donne dans la deuxième proposition la raison du report.\nRéunis les deux phrases en une seule avec « et », « mais », « ou » ou « car ». Garde les mots dans leur ordre. Remplace le premier point par le mot choisi et commence la deuxième proposition par une minuscule. Pour cet exercice, n’ajoute pas de virgule.\n\nNous reportons la sortie.\nLe pont est impraticable.",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Nous reportons la sortie car le pont est impraticable.",
+        "acceptableAnswers": [
+          "Nous reportons la sortie car le pont est impraticable"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Nous reportons la sortie.",
+              "Le pont est impraticable.",
+              "Nous reportons la sortie car le pont est impraticable."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous reportons la sortie.",
+                "Le pont est impraticable.",
+                "Nous reportons la sortie car le pont est impraticable."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Nous reportons la sortie et le pont est impraticable.",
+              "Nous reportons la sortie et le pont est impraticable",
+              "Nous reportons la sortie mais le pont est impraticable.",
+              "Nous reportons la sortie mais le pont est impraticable",
+              "Nous reportons la sortie ou le pont est impraticable.",
+              "Nous reportons la sortie ou le pont est impraticable",
+              "Nous reportons la sortie car le pont est impraticable.",
+              "Nous reportons la sortie car le pont est impraticable"
+            ],
+            "rationaleFr": "La tâche combine des phrases fournies. Le choix du mot de coordination est borné conservativement à quatre possibilités ; la saisie ne constitue pas une rédaction libre."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "coordination-sentence-combination",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-coordination-production:12",
+      "item": {
+        "nodeKey": "construction_coordination",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Donne dans la deuxième proposition la raison de parler doucement.\nRéunis les deux phrases en une seule avec « et », « mais », « ou » ou « car ». Garde les mots dans leur ordre. Remplace le premier point par le mot choisi et commence la deuxième proposition par une minuscule. Pour cet exercice, n’ajoute pas de virgule.\n\nTu parles doucement.\nLe bébé dort.",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Tu parles doucement car le bébé dort.",
+        "acceptableAnswers": [
+          "Tu parles doucement car le bébé dort"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Tu parles doucement.",
+              "Le bébé dort.",
+              "Tu parles doucement car le bébé dort."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu parles doucement.",
+                "Le bébé dort.",
+                "Tu parles doucement car le bébé dort."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Tu parles doucement et le bébé dort.",
+              "Tu parles doucement et le bébé dort",
+              "Tu parles doucement mais le bébé dort.",
+              "Tu parles doucement mais le bébé dort",
+              "Tu parles doucement ou le bébé dort.",
+              "Tu parles doucement ou le bébé dort",
+              "Tu parles doucement car le bébé dort.",
+              "Tu parles doucement car le bébé dort"
+            ],
+            "rationaleFr": "La tâche combine des phrases fournies. Le choix du mot de coordination est borné conservativement à quatre possibilités ; la saisie ne constitue pas une rédaction libre."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "coordination-sentence-combination",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "kind": "evidence",
+      "itemKey": "v3-coordination-production:1",
+      "itemChecksum": "sha256:903d7822c3a964e516382c521260436daba89e866b741d3e62a414aadf1fce71",
+      "evidenceTarget": {
+        "nodeKey": "construction_coordination",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "coordination-production:1"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-coordination-production:2",
+      "itemChecksum": "sha256:76a2579bccae060322f1d6f4d3a139df9917a4287c134d74e601135094f43ce9",
+      "evidenceTarget": {
+        "nodeKey": "construction_coordination",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "coordination-production:2"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-coordination-production:3",
+      "itemChecksum": "sha256:e06ba51ebbfa6a8da6432571da4b7083bea6811de2d0c5050d29a75edbd2bfcb",
+      "evidenceTarget": {
+        "nodeKey": "construction_coordination",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "coordination-production:3"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-coordination-production:4",
+      "itemChecksum": "sha256:92a597c0b943b4f8ba4ba7298506e9b9a31c0e94d292863413b5ce6620e1d80b",
+      "evidenceTarget": {
+        "nodeKey": "construction_coordination",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "coordination-production:4"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-coordination-production:5",
+      "itemChecksum": "sha256:8b8c72b7eb165caa2e88f15b43749ba61b2c01b2f286399388fb0e6e66a9925b",
+      "evidenceTarget": {
+        "nodeKey": "construction_coordination",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "coordination-production:5"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-coordination-production:6",
+      "itemChecksum": "sha256:8626a2cccbf700b30e4e1c8c8926e018e0f5ed21a347ba821abcbbca49731734",
+      "evidenceTarget": {
+        "nodeKey": "construction_coordination",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "coordination-production:6"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-coordination-production:7",
+      "itemChecksum": "sha256:495fa73bf1debf98c310372864bbf604e78d386d61f07d76a20144e509d0a9ee",
+      "evidenceTarget": {
+        "nodeKey": "construction_coordination",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "coordination-production:7"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-coordination-production:8",
+      "itemChecksum": "sha256:739d144de79b3dfa3dd523867385df93edfb3bc3aa7c1e0492e00cd6ba498702",
+      "evidenceTarget": {
+        "nodeKey": "construction_coordination",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "coordination-production:8"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-coordination-production:9",
+      "itemChecksum": "sha256:04a7dbcbe0068cbba0f092abb07264fecc5922ce1f95bea988424709056b10f8",
+      "evidenceTarget": {
+        "nodeKey": "construction_coordination",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "coordination-production:9"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-coordination-production:10",
+      "itemChecksum": "sha256:717b2def0f9edd884110dc43369cf8ce0177067dda32488aff37903611ad6429",
+      "evidenceTarget": {
+        "nodeKey": "construction_coordination",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "coordination-production:10"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-coordination-production:11",
+      "itemChecksum": "sha256:f99dca7f21f0d265acf9df348f516269ce6dbbcc088193cd5f280b798924e746",
+      "evidenceTarget": {
+        "nodeKey": "construction_coordination",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "coordination-production:11"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-coordination-production:12",
+      "itemChecksum": "sha256:f8d172f0efd4888ca9eccd91a30e8c0510140ecd2d9795af056e0b0b17cb0d8a",
+      "evidenceTarget": {
+        "nodeKey": "construction_coordination",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "coordination-production:12"
+    }
+  ],
+  "checksum": "sha256:6d184d4b133f8631309ecf24c61a07d9690cb01cab436314f4f52cf143771a18"
+}
