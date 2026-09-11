@@ -120,3 +120,21 @@ rendered form and inline authenticated server action, allowing native submission
 before client hydration. The action redirects back to lessons after success.
 This follows the existing native-control fix for answer review. TypeScript and
 scoped lint passed; native browser submission still needs candidate verification.
+
+## Production activation
+
+The server-form candidate `0c859ca` passed the browser upgrade on the existing
+v9 QA student. Successor `d0573294-c792-46ef-94d4-62d4ae3c8fd1` uses published v10;
+source `53a3bcbe-dc7a-4916-b59e-d9f8ee3403ce` remained byte-for-byte unchanged in
+the retrieved database row. All 58 original observations and 14 errors are still
+reviewable after reload. The legacy demo again reached all 11 lessons.
+
+Deployment `dpl_EUcPQ5UwxXuxSnKsKFyhNk7NdzvZ` at
+https://sigmawrite-ajz6bnaf1-jpkays-projects.vercel.app was promoted successfully;
+`GRANULAR_LEARNING_UPGRADES_ENABLED=true` is persisted for production. The public
+demo smoke check passed: onboarding redirects to lessons, 11 lessons available,
+first lesson opens, legacy review retains 48 answers / 17 incorrect. Public
+upgraded-session verification also passed: five activities, with both original
+and successor reviews retaining 58 answers / 14 incorrect. This activates
+compatible learning successors, not completion of the full French coverage or
+educational calibration work.
