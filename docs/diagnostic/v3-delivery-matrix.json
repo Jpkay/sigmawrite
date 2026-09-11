@@ -3,12 +3,17 @@
   "status": "draft_requires_review",
   "sources": {
     "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
-    "bankChecksum": "sha256:008f66de95c871269db81b8f061485e3c532750bf9d1044ca092f0cba4744d99",
+    "bankChecksum": "sha256:104d48890c78493731a9ad289acfc2303f4c67452807f2398e02f9d960907ff8",
     "annotationChecksum": "sha256:41e7a8d65776f6bb64c33c925b7d4449ffe9fda5a6b71a899067a171232542bb",
-    "facetChecksum": "sha256:1ae0da52a7820001bd53be953357cbc49cc09df3c7b557672e3da993cc9fec7e",
+    "facetChecksum": "sha256:5fa0a50521cdf07ba32c5a4757b30df9e54b5980fb1822ce1d0a1eb714fecc7a",
     "poolChecksum": "sha256:8c59b3ee0139afb4f44fa7e964a85ec00c67e9889bb1ffbad78ff7aa14aa5dfe",
     "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
     "expansions": [
+      {
+        "version": "french-v3-passive-recognition-expansion-v1",
+        "checksum": "sha256:4b76a799a59f7e5ae6af89a0758248ba0835cffb86ffadafaa08541c31dea55d",
+        "addedItems": 16
+      },
       {
         "version": "french-v3-coordination-recognition-expansion-v1",
         "checksum": "sha256:02bb56e5fe9fedeac0ab991a2a01ce33311c6b399d116765266499a3a7b0d013",
@@ -170,14 +175,14 @@
         "addedItems": 90
       }
     ],
-    "teachingDraftChecksum": "sha256:6ffe6a531be4708e3461c6ff9a7ee5ae437a18fd89620570649fc9e34230f2e2"
+    "teachingDraftChecksum": "sha256:19a639b51c5820a7fcc8c051a20db3130bd97dbe440d1ad79813bc7121ab5d05"
   },
   "summary": {
-    "teachingDrafts": 184,
-    "targetsWithTeachingDrafts": 184,
-    "targetsWithoutTeachingDrafts": 358,
-    "totalCandidateQuestions": 5416,
-    "additionalDraftQuestions": 4686,
+    "teachingDrafts": 185,
+    "targetsWithTeachingDrafts": 185,
+    "targetsWithoutTeachingDrafts": 357,
+    "totalCandidateQuestions": 5432,
+    "additionalDraftQuestions": 4702,
     "canonicalEligibleQuestions": 238,
     "approvedCompetencies": 181,
     "approvedEvidenceDefinitions": 257,
@@ -224,10 +229,10 @@
         "eligibleQuestions": 56,
         "targetsWithNoEligibleQuestions": 43,
         "allocatedPools": 0,
-        "targetsWithTeachingDrafts": 26,
-        "targetsWithoutTeachingDrafts": 53,
-        "guidedExerciseDrafts": 138,
-        "exactTargetExpansionDrafts": 306
+        "targetsWithTeachingDrafts": 27,
+        "targetsWithoutTeachingDrafts": 52,
+        "guidedExerciseDrafts": 144,
+        "exactTargetExpansionDrafts": 322
       },
       {
         "domain": "spelling",
@@ -47591,7 +47596,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 0,
+          "questions": 16,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -47669,16 +47674,40 @@
         "local-grammar-v1:construction_voix_passive:receptive:foundation",
         "local-grammar-v1:construction_voix_passive:receptive:stretch"
       ],
-      "exactTargetExpansionDrafts": [],
-      "teachingDrafts": [],
+      "exactTargetExpansionDrafts": [
+        "v3-passive-recognition:1",
+        "v3-passive-recognition:2",
+        "v3-passive-recognition:3",
+        "v3-passive-recognition:4",
+        "v3-passive-recognition:5",
+        "v3-passive-recognition:6",
+        "v3-passive-recognition:7",
+        "v3-passive-recognition:8",
+        "v3-passive-recognition:9",
+        "v3-passive-recognition:10",
+        "v3-passive-recognition:11",
+        "v3-passive-recognition:12",
+        "v3-passive-recognition:13",
+        "v3-passive-recognition:14",
+        "v3-passive-recognition:15",
+        "v3-passive-recognition:16"
+      ],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:passive:recognition",
+          "status": "draft_requires_review",
+          "guidedExercises": 6,
+          "boundaryFr": "La personne qui fait l’action peut être absente de la phrase passive. Cette leçon ne vérifie pas encore que tu sais transformer une phrase active en phrase passive ni accorder son participe passé."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
         "independentCheck": "insufficient_pool"
       },
       "nextActions": [
-        "map_and_review_parent_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_exact_target_drafts",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -79457,5 +79486,5 @@
       ]
     }
   ],
-  "checksum": "sha256:1b6db00d162be8ba02d41e48fd8f7597a0bafec1326f45db51364cb71ef32039"
+  "checksum": "sha256:2700c6465352e89c544c7aa3215a13ee6c4b92facd3485892d90956c248e7922"
 }

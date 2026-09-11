@@ -5,12 +5,184 @@
   "facetChecksum": "sha256:2f826d79a46ce935f40ccb797f8857b1c9af21d89bd1f80a438ecaf5e28ae3f2",
   "assessmentSourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
   "summary": {
-    "lessons": 184,
-    "guidedExercises": 1000,
-    "targets": 184,
+    "lessons": 185,
+    "guidedExercises": 1006,
+    "targets": 185,
     "missingExposureAnnotations": []
   },
   "rows": [
+    {
+      "lessonId": "french-v3-teaching:passive:recognition",
+      "contentChecksum": "sha256:2cf911a1a95236a386781a06dda4309db3f9b4be63219784669db445806e54f6",
+      "skillId": "construction_voix_passive::reading-analysis",
+      "nodeKey": "construction_voix_passive",
+      "facetKey": null,
+      "mode": "recognition",
+      "domain": "grammar",
+      "prerequisites": [
+        "construction_phrase_canonique::reading-analysis",
+        "construction_phrase_canonique::writing-controlled-production",
+        "reconnaitre_auxiliaire::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": true,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:36e27e084fdb5263ed845b0d22aaa615fd697dd8c92a576c86f65868455164ec",
+        "sentence:sha256:3a182b31cca058f54d653b631464d21ff0fb6e8f8ab5f743bd3b64fc3831c388",
+        "sentence:sha256:68479ed8498ef1e50a5b7864797e5da8ca31261bf530fc5a4512ce5e3f31ac61",
+        "sentence:sha256:6c946067d27f3a5504e6e7ced54ba294d13088c4c151e01a60118bcc7d6fe9ea",
+        "sentence:sha256:6ec2365ec6dca056b685d61c788116ba4ca9348b98557b2f80d5aea33e589bf2",
+        "sentence:sha256:72ff63e226aad459b876edd9ed46df803e174b04912b590541f4d641a2faeedc",
+        "sentence:sha256:751e947b5a7d6e7a3eddcfa98ff29fe031594eb18ccbd9d152b922875284465e",
+        "sentence:sha256:90a2e1178f141961b17af749214b04c4dd9d4dd92914aacb59ae48a526e8d02b",
+        "sentence:sha256:c05ae8d8d35fac42b825d31525f019ba4f02d8d316a42b00f553bb5d2001d50d",
+        "sentence:sha256:c0a1d330040a847266d1405ed85535adf5bfa183cecb2989923483b939984f2d",
+        "sentence:sha256:e0bd7b5d00c5cc1ead367f2f9879baa85d36caba8ca7c417259433ac1f1c5189",
+        "sentence:sha256:fa380eff25d3c120401467c4ab3b5e76d5b31d0bb9ad34ce441f935a797ad4a9"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:passive:recognition",
+        "nodeKey": "construction_voix_passive",
+        "mode": "recognition",
+        "status": "draft_requires_review",
+        "titleFr": "Qui fait l’action, qui la reçoit ?",
+        "learnerQuestionFr": "Le sujet fait-il l’action ou la subit-il ?",
+        "steps": [
+          {
+            "exampleFr": "Le cuisinier prépare le repas. Le repas est préparé par le cuisinier.",
+            "explanationFr": "Les deux phrases parlent de la même action. Dans la première, le sujet le cuisinier fait l’action : le verbe est à la voix active. Dans la seconde, le sujet le repas subit l’action : le verbe est à la voix passive. Est préparé associe être à la forme préparé, appelée participe passé."
+          },
+          {
+            "exampleFr": "Le repas sera servi à midi. Le repas a été servi par le cuisinier.",
+            "explanationFr": "Quelqu’un sert le repas, même si cette personne n’est pas nommée dans la première phrase. Sera servi et a été servi sont deux constructions passives à des temps différents. La voix et le temps sont deux informations distinctes."
+          },
+          {
+            "exampleFr": "Le cuisinier est sorti. Le cuisinier est attentif.",
+            "explanationFr": "Dans est sorti, être aide à former le passé composé de sortir : le cuisinier accomplit le déplacement. Dans est attentif, l’adjectif attentif décrit le cuisinier. Ni l’une ni l’autre de ces phrases n’est passive. Ne décide pas seulement parce que tu vois être."
+          }
+        ],
+        "practice": [
+          {
+            "id": "passive-guided-1",
+            "promptFr": "Le colis est livré par une cycliste.\n\nChoisis l’analyse correcte.",
+            "choices": [
+              "Le sujet subit l’action : le verbe est à la voix passive.",
+              "Le sujet fait l’action : le verbe est à la voix active, à un temps simple.",
+              "Le verbe est à la voix active, à un temps composé avec un auxiliaire.",
+              "La phrase décrit le sujet avec un adjectif, sans construction passive."
+            ],
+            "answerFr": "Le sujet subit l’action : le verbe est à la voix passive.",
+            "hintFr": "Repère le sujet et l’action. Demande-toi si le sujet accomplit cette action ou la reçoit.",
+            "explanationFr": "Le colis ne livre rien. Il reçoit l’action de livrer, faite par la cycliste. Est livré est une construction passive."
+          },
+          {
+            "id": "passive-guided-2",
+            "promptFr": "Une cycliste livre le colis.\n\nChoisis l’analyse correcte.",
+            "choices": [
+              "Le sujet subit l’action : le verbe est à la voix passive.",
+              "Le sujet fait l’action : le verbe est à la voix active, à un temps simple.",
+              "Le verbe est à la voix active, à un temps composé avec un auxiliaire.",
+              "La phrase décrit le sujet avec un adjectif, sans construction passive."
+            ],
+            "answerFr": "Le sujet fait l’action : le verbe est à la voix active, à un temps simple.",
+            "hintFr": "Repère le sujet et l’action. Demande-toi si le sujet accomplit cette action ou la reçoit.",
+            "explanationFr": "Le sujet une cycliste fait l’action de livrer. Livre est un verbe actif au présent."
+          },
+          {
+            "id": "passive-guided-3",
+            "promptFr": "Une cycliste est venue ce matin.\n\nChoisis l’analyse correcte.",
+            "choices": [
+              "Le sujet subit l’action : le verbe est à la voix passive.",
+              "Le sujet fait l’action : le verbe est à la voix active, à un temps simple.",
+              "Le verbe est à la voix active, à un temps composé avec un auxiliaire.",
+              "La phrase décrit le sujet avec un adjectif, sans construction passive."
+            ],
+            "answerFr": "Le verbe est à la voix active, à un temps composé avec un auxiliaire.",
+            "hintFr": "Repère le sujet et l’action. Demande-toi si le sujet accomplit cette action ou la reçoit.",
+            "explanationFr": "Est venue est le passé composé de venir, avec l’auxiliaire être. La cycliste accomplit le déplacement : personne ne la « vient ». Ce n’est pas une voix passive."
+          },
+          {
+            "id": "passive-guided-4",
+            "promptFr": "La cycliste est prudente.\n\nChoisis l’analyse correcte.",
+            "choices": [
+              "Le sujet subit l’action : le verbe est à la voix passive.",
+              "Le sujet fait l’action : le verbe est à la voix active, à un temps simple.",
+              "Le verbe est à la voix active, à un temps composé avec un auxiliaire.",
+              "La phrase décrit le sujet avec un adjectif, sans construction passive."
+            ],
+            "answerFr": "La phrase décrit le sujet avec un adjectif, sans construction passive.",
+            "hintFr": "Repère le sujet et l’action. Demande-toi si le sujet accomplit cette action ou la reçoit.",
+            "explanationFr": "Prudente est un adjectif qui décrit la cycliste. Être ne forme pas ici une construction passive."
+          },
+          {
+            "id": "passive-guided-5",
+            "promptFr": "La décision sera expliquée demain.\n\nChoisis l’analyse correcte.",
+            "choices": [
+              "Le sujet subit l’action : le verbe est à la voix passive.",
+              "Le sujet fait l’action : le verbe est à la voix active, à un temps simple.",
+              "Le verbe est à la voix active, à un temps composé avec un auxiliaire.",
+              "La phrase décrit le sujet avec un adjectif, sans construction passive."
+            ],
+            "answerFr": "Le sujet subit l’action : le verbe est à la voix passive.",
+            "hintFr": "Repère le sujet et l’action. Demande-toi si le sujet accomplit cette action ou la reçoit.",
+            "explanationFr": "Quelqu’un expliquera la décision. Le sujet la décision reçoit cette action. La construction est passive même si la personne qui explique n’est pas nommée."
+          },
+          {
+            "id": "passive-guided-6",
+            "promptFr": "Les arbitres ont vérifié le matériel.\n\nChoisis l’analyse correcte.",
+            "choices": [
+              "Le sujet subit l’action : le verbe est à la voix passive.",
+              "Le sujet fait l’action : le verbe est à la voix active, à un temps simple.",
+              "Le verbe est à la voix active, à un temps composé avec un auxiliaire.",
+              "La phrase décrit le sujet avec un adjectif, sans construction passive."
+            ],
+            "answerFr": "Le verbe est à la voix active, à un temps composé avec un auxiliaire.",
+            "hintFr": "Repère le sujet et l’action. Demande-toi si le sujet accomplit cette action ou la reçoit.",
+            "explanationFr": "Ont vérifié est un passé composé actif. Le sujet les arbitres fait la vérification."
+          }
+        ],
+        "takeawayFr": "Dans une construction passive, le sujet subit l’action. Vérifie son rôle et la construction du verbe : être apparaît aussi dans des phrases actives ou des descriptions.",
+        "boundaryFr": "La personne qui fait l’action peut être absente de la phrase passive. Cette leçon ne vérifie pas encore que tu sais transformer une phrase active en phrase passive ni accorder son participe passé.",
+        "materialExposure": {
+          "sentences": [
+            "Le colis est livré par une cycliste.",
+            "Une cycliste livre le colis.",
+            "Une cycliste est venue ce matin.",
+            "La cycliste est prudente.",
+            "La décision sera expliquée demain.",
+            "Les arbitres ont vérifié le matériel.",
+            "Le cuisinier prépare le repas.",
+            "Le repas est préparé par le cuisinier.",
+            "Le repas sera servi à midi.",
+            "Le repas a été servi par le cuisinier.",
+            "Le cuisinier est sorti.",
+            "Le cuisinier est attentif."
+          ]
+        }
+      }
+    },
     {
       "lessonId": "french-v3-teaching:coordination:recognition",
       "contentChecksum": "sha256:c03ae03c7ff4137fdda282db0fea4286512b123d83a4ea8186875ae097238742",
@@ -27503,5 +27675,5 @@
       }
     }
   ],
-  "checksum": "sha256:8595291b696f9a6509b2054d21c39ef0f15a42c6143295bdcb832f89890b5834"
+  "checksum": "sha256:e1aee8a65937c44b22251b334dd25977199946917be2a80036037dbdc94bee20"
 }
