@@ -1,5 +1,5 @@
 {
-  "status": "published_candidate_full_browser_journey_running_not_activated",
+  "status": "published_candidate_results_verified_learning_journey_running_not_activated",
   "sourceCommit": "0657d2a6",
   "frozenWorkspace": "/Users/jean-philippekayobotsi/.codex/release-workspaces/sigmawrite-r11-0657d2a6",
   "bankKey": "french-diagnostic-bank-v3-r11",
@@ -1106,5 +1106,36 @@
   "candidateDeploymentId": "dpl_kBk2uZ87bZNVqXDC8GTXMP7pewh9",
   "candidateBuild": "Ready verified with Vercel inspect",
   "releaseId": "23f45718-cefe-4948-9f21-43c334ab7fa2",
-  "bundleChecksum": "sha256:e2a5aa12bc8e88f819477d672217e72bb2c5a5e3297fd345974b48364ddac478"
+  "bundleChecksum": "sha256:e2a5aa12bc8e88f819477d672217e72bb2c5a5e3297fd345974b48364ddac478",
+  "fullBrowserResults": {
+    "sessionId": "c325caff-334d-45db-ad27-0b3e5e7ccbec",
+    "releaseId": "23f45718-cefe-4948-9f21-43c334ab7fa2",
+    "scope": 197,
+    "answers": 62,
+    "correct": 49,
+    "activeSeconds": 2092.625999999999,
+    "completionReason": "time_budget",
+    "results": 542,
+    "activities": 5,
+    "reloadPreserved": true,
+    "profile": "Existing history retained; subsequent compound-form responses deliberately wrong and every fifth other response wrong. Technical QA, not a calibrated student profile."
+  },
+  "resultConsistencyAudit": {
+    "sessionId": "c325caff-334d-45db-ad27-0b3e5e7ccbec",
+    "releaseId": "23f45718-cefe-4948-9f21-43c334ab7fa2",
+    "completionReason": "time_budget",
+    "activeSeconds": 2092.625999999999,
+    "graphTargets": 542,
+    "reportedTargets": 542,
+    "diagnosticAnswers": 62,
+    "statusCounts": {
+      "mastered": 0,
+      "missing": 0,
+      "fragile": 0,
+      "uncertain": 19,
+      "unknown": 523
+    },
+    "findings": [],
+    "limitation": "Technical consistency audit, not psychometric validation. Diagnostic counts exclude later refinements; reported mode evidence may include them."
+  }
 }
