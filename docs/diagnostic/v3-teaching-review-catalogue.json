@@ -5,12 +5,179 @@
   "facetChecksum": "sha256:2f826d79a46ce935f40ccb797f8857b1c9af21d89bd1f80a438ecaf5e28ae3f2",
   "assessmentSourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
   "summary": {
-    "lessons": 183,
-    "guidedExercises": 994,
-    "targets": 183,
+    "lessons": 184,
+    "guidedExercises": 1000,
+    "targets": 184,
     "missingExposureAnnotations": []
   },
   "rows": [
+    {
+      "lessonId": "french-v3-teaching:coordination:recognition",
+      "contentChecksum": "sha256:c03ae03c7ff4137fdda282db0fea4286512b123d83a4ea8186875ae097238742",
+      "skillId": "construction_coordination::reading-analysis",
+      "nodeKey": "construction_coordination",
+      "facetKey": null,
+      "mode": "recognition",
+      "domain": "grammar",
+      "prerequisites": [
+        "construction_phrase_canonique::reading-analysis",
+        "construction_phrase_canonique::writing-controlled-production"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": true,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:1b7110dfebd925c1a873bda556cc4a5a5bd5ee1a47c9b3d097c2d88ee856014c",
+        "sentence:sha256:4008b858f19a68a51eabb2a3fc2cb4249135859850890434eb0ab28d2def2840",
+        "sentence:sha256:78f8e2876527f89b0fd5e659d853883524a6c0498606a59f29827e949c5e17e3",
+        "sentence:sha256:84d23f72c40bd49d084e54af1c2c2e48a72b355eaf32b613a7a2690998112641",
+        "sentence:sha256:a450f3938b8221699e43cf2bf70a8d4be271c5d097f9cc6131669dbe2f5aeb4b",
+        "sentence:sha256:b6b9d705387525257b6b5cdbcf1ab1a9dc18a56c20d8e0934789afa9171b4fb9",
+        "sentence:sha256:bbac5aed7f9310dfcb1dcf303bfddcc4efcd954e638ff59f7ced44db8bf0ba25",
+        "sentence:sha256:bf83d8486b80fccbc16affca841451580722db56916ba7b6777450820b0b9436",
+        "sentence:sha256:c42ef792d71884e47ecfdebdfaa04810a2fb7973564d9c51015f0c45d06b6265",
+        "sentence:sha256:e2f6dd9955525e4f707e45b301d93b418a91f3a140279e711274b0143766be1f"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:coordination:recognition",
+        "nodeKey": "construction_coordination",
+        "mode": "recognition",
+        "status": "draft_requires_review",
+        "titleFr": "Repérer deux propositions reliées",
+        "learnerQuestionFr": "Comment les deux parties de cette phrase sont-elles reliées ?",
+        "steps": [
+          {
+            "exampleFr": "Le soleil se couche et les lampes s’allument.",
+            "explanationFr": "Le soleil se couche pourrait former une phrase. Les lampes s’allument aussi. Chaque partie s’organise autour d’un verbe conjugué : on l’appelle une proposition. Ici, et relie ces deux propositions sans faire dépendre l’une de l’autre. C’est une coordination."
+          },
+          {
+            "exampleFr": "Les lampes s’allument quand le soleil se couche. Le soleil se couche ; les lampes s’allument.",
+            "explanationFr": "Dans la première phrase, quand le soleil se couche dépend de l’autre proposition et indique le moment : c’est une subordination. Dans la seconde, seul le point-virgule sépare les propositions : c’est une juxtaposition."
+          },
+          {
+            "exampleFr": "Le soleil et la lune apparaissent sur le dessin.",
+            "explanationFr": "Et peut aussi relier des mots ou des groupes. Ici, il relie le soleil et la lune dans le sujet d’une seule proposition. Voir et ne suffit donc pas à reconnaître deux propositions coordonnées."
+          }
+        ],
+        "practice": [
+          {
+            "id": "coordination-guided-1",
+            "promptFr": "Le chat dort et le chien joue.\n\nComment cette phrase est-elle construite ?",
+            "choices": [
+              "Deux propositions sont reliées par un mot de coordination, comme « et », « mais », « ou » ou « car ».",
+              "Une proposition dépend de l’autre : il y a une subordination.",
+              "Deux propositions sont séparées par une ponctuation, sans mot de liaison : elles sont juxtaposées.",
+              "La phrase ne contient qu’une proposition."
+            ],
+            "answerFr": "Deux propositions sont reliées par un mot de coordination, comme « et », « mais », « ou » ou « car ».",
+            "hintFr": "Repère les verbes conjugués, puis regarde ce qui relie les propositions.",
+            "explanationFr": "Et relie le chat dort à le chien joue. Chaque groupe possède son verbe conjugué : ce sont deux propositions coordonnées."
+          },
+          {
+            "id": "coordination-guided-2",
+            "promptFr": "Maya ferme la fenêtre parce qu’elle a froid.\n\nComment cette phrase est-elle construite ?",
+            "choices": [
+              "Deux propositions sont reliées par un mot de coordination, comme « et », « mais », « ou » ou « car ».",
+              "Une proposition dépend de l’autre : il y a une subordination.",
+              "Deux propositions sont séparées par une ponctuation, sans mot de liaison : elles sont juxtaposées.",
+              "La phrase ne contient qu’une proposition."
+            ],
+            "answerFr": "Une proposition dépend de l’autre : il y a une subordination.",
+            "hintFr": "Repère les verbes conjugués, puis regarde ce qui relie les propositions.",
+            "explanationFr": "Parce que introduit une proposition qui donne la cause et dépend de Maya ferme la fenêtre. C’est une subordination."
+          },
+          {
+            "id": "coordination-guided-3",
+            "promptFr": "La cloche retentit ; les portes s’ouvrent.\n\nComment cette phrase est-elle construite ?",
+            "choices": [
+              "Deux propositions sont reliées par un mot de coordination, comme « et », « mais », « ou » ou « car ».",
+              "Une proposition dépend de l’autre : il y a une subordination.",
+              "Deux propositions sont séparées par une ponctuation, sans mot de liaison : elles sont juxtaposées.",
+              "La phrase ne contient qu’une proposition."
+            ],
+            "answerFr": "Deux propositions sont séparées par une ponctuation, sans mot de liaison : elles sont juxtaposées.",
+            "hintFr": "Repère les verbes conjugués, puis regarde ce qui relie les propositions.",
+            "explanationFr": "Les deux propositions sont reliées seulement par un point-virgule. Il n’y a pas de mot de coordination."
+          },
+          {
+            "id": "coordination-guided-4",
+            "promptFr": "Un vélo et une trottinette occupent le garage.\n\nComment cette phrase est-elle construite ?",
+            "choices": [
+              "Deux propositions sont reliées par un mot de coordination, comme « et », « mais », « ou » ou « car ».",
+              "Une proposition dépend de l’autre : il y a une subordination.",
+              "Deux propositions sont séparées par une ponctuation, sans mot de liaison : elles sont juxtaposées.",
+              "La phrase ne contient qu’une proposition."
+            ],
+            "answerFr": "La phrase ne contient qu’une proposition.",
+            "hintFr": "Repère les verbes conjugués, puis regarde ce qui relie les propositions.",
+            "explanationFr": "Et relie deux groupes dans le sujet. Il n’y a qu’un verbe conjugué, occupent, et qu’une proposition. On ne coordonne pas ici deux propositions."
+          },
+          {
+            "id": "coordination-guided-5",
+            "promptFr": "Le coureur accélère mais son adversaire reste devant.\n\nComment cette phrase est-elle construite ?",
+            "choices": [
+              "Deux propositions sont reliées par un mot de coordination, comme « et », « mais », « ou » ou « car ».",
+              "Une proposition dépend de l’autre : il y a une subordination.",
+              "Deux propositions sont séparées par une ponctuation, sans mot de liaison : elles sont juxtaposées.",
+              "La phrase ne contient qu’une proposition."
+            ],
+            "answerFr": "Deux propositions sont reliées par un mot de coordination, comme « et », « mais », « ou » ou « car ».",
+            "hintFr": "Repère les verbes conjugués, puis regarde ce qui relie les propositions.",
+            "explanationFr": "Mais relie deux propositions : le coureur accélère et son adversaire reste devant."
+          },
+          {
+            "id": "coordination-guided-6",
+            "promptFr": "Nous ouvrons les rideaux car la pièce est sombre.\n\nComment cette phrase est-elle construite ?",
+            "choices": [
+              "Deux propositions sont reliées par un mot de coordination, comme « et », « mais », « ou » ou « car ».",
+              "Une proposition dépend de l’autre : il y a une subordination.",
+              "Deux propositions sont séparées par une ponctuation, sans mot de liaison : elles sont juxtaposées.",
+              "La phrase ne contient qu’une proposition."
+            ],
+            "answerFr": "Deux propositions sont reliées par un mot de coordination, comme « et », « mais », « ou » ou « car ».",
+            "hintFr": "Repère les verbes conjugués, puis regarde ce qui relie les propositions.",
+            "explanationFr": "Car relie nous ouvrons les rideaux à la pièce est sombre. Il coordonne ici deux propositions."
+          }
+        ],
+        "takeawayFr": "Repère les propositions, puis leur lien. Un mot comme « et », « mais », « ou » ou « car » peut coordonner deux propositions. Une ponctuation seule marque leur juxtaposition.",
+        "boundaryFr": "La coordination peut aussi relier des mots ou des groupes. Ici, nous distinguons surtout les liens entre propositions. Reconnaître ce lien ne prouve pas encore que tu sais construire toi-même ces phrases.",
+        "materialExposure": {
+          "sentences": [
+            "Le chat dort et le chien joue.",
+            "Maya ferme la fenêtre parce qu’elle a froid.",
+            "La cloche retentit ; les portes s’ouvrent.",
+            "Un vélo et une trottinette occupent le garage.",
+            "Le coureur accélère mais son adversaire reste devant.",
+            "Nous ouvrons les rideaux car la pièce est sombre.",
+            "Le soleil se couche et les lampes s’allument.",
+            "Les lampes s’allument quand le soleil se couche.",
+            "Le soleil se couche ; les lampes s’allument.",
+            "Le soleil et la lune apparaissent sur le dessin."
+          ]
+        }
+      }
+    },
     {
       "lessonId": "french-v3-teaching:explicit-chronology:narrative",
       "contentChecksum": "sha256:c372d4fbd4370ab9b5a6221935b5e9613b2a995f0599307691a02368a693b053",
@@ -27336,5 +27503,5 @@
       }
     }
   ],
-  "checksum": "sha256:3fd8afdd9e747b3c40c871811edd4db43b0b10e2186e61f7c5fdab8674fce06f"
+  "checksum": "sha256:8595291b696f9a6509b2054d21c39ef0f15a42c6143295bdcb832f89890b5834"
 }

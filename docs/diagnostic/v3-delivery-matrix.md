@@ -10,7 +10,7 @@ Regenerate: `npx tsx scripts/build-v3-delivery-matrix.mts`. Verify without writi
 | --- | ---: | ---: | ---: | ---: | ---: |
 | conjugation | 255 | 77 | 195 | 0 | 3958 |
 | reading_comprehension | 92 | 21 | 74 | 0 | 152 |
-| grammar | 79 | 56 | 43 | 0 | 290 |
+| grammar | 79 | 56 | 43 | 0 | 306 |
 | spelling | 116 | 79 | 60 | 0 | 270 |
 
 ## Exact-target teaching work
@@ -21,7 +21,7 @@ These counts describe authoring drafts, not approved lessons or published pathwa
 | --- | ---: | ---: | ---: |
 | conjugation | 107 | 148 | 632 |
 | reading_comprehension | 18 | 74 | 84 |
-| grammar | 25 | 54 | 132 |
+| grammar | 26 | 53 | 138 |
 | spelling | 33 | 83 | 146 |
 
 ## Sampling strands
@@ -380,7 +380,7 @@ Full evidence requirements, prerequisite IDs, question IDs, source checksums and
 | Distinguer preuve textuelle/connaissance externe — Texte argumentatif bref | interpretation / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | author_missing_evidence | author_or_reuse_exact_target_teaching |
 | Reconnaître une phrase canonique | recognition / initial | 0 | 0 / 0 (insufficient_coverage) | 16 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
 | Reconnaître une phrase canonique | production / initial | 1 | 1 / 0 (insufficient_coverage) | 16 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
-| Reconnaître une coordination | recognition / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
+| Reconnaître une coordination | recognition / initial | 0 | 0 / 0 (insufficient_coverage) | 16 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
 | Reconnaître une coordination | production / initial | 2 | 2 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
 | Reconnaître une subordonnée relative | recognition / initial | 2 | 2 / 0 (insufficient_coverage) | 16 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
 | Reconnaître une subordonnée relative | production / initial | 0 | 0 / 0 (insufficient_coverage) | 12 | 1 / 8 | review_exact_target_drafts | review_teaching_scope_and_content |

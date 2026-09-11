@@ -1,0 +1,1307 @@
+{
+  "version": "french-v3-coordination-recognition-expansion-v1",
+  "status": "draft_requires_review",
+  "parentTaxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+  "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
+  "items": [
+    {
+      "itemKey": "v3-coordination-recognition:1",
+      "item": {
+        "nodeKey": "construction_coordination",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lina dessine et son frère écrit.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Lina dessine et son frère écrit."
+            ],
+            "assessed": {
+              "sentences": [
+                "Lina dessine et son frère écrit."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Deux propositions sont reliées par un mot de coordination, comme « et », « mais », « ou » ou « car ».",
+            "correct": true
+          },
+          {
+            "text": "Une proposition dépend de l’autre : il y a une subordination.",
+            "correct": false
+          },
+          {
+            "text": "Deux propositions sont séparées par une ponctuation, sans mot de liaison : elles sont juxtaposées.",
+            "correct": false
+          },
+          {
+            "text": "La phrase ne contient qu’une proposition.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "coordination-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-coordination-recognition:2",
+      "item": {
+        "nodeKey": "construction_coordination",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Nous sortons quand la pluie cesse.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Nous sortons quand la pluie cesse."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous sortons quand la pluie cesse."
+              ]
+            }
+          },
+          "negativeExample": {
+            "excerptFr": "Nous sortons quand la pluie cesse.",
+            "rationaleFr": "Une proposition dépend de l’autre : il y a une subordination."
+          }
+        },
+        "choices": [
+          {
+            "text": "Deux propositions sont reliées par un mot de coordination, comme « et », « mais », « ou » ou « car ».",
+            "correct": false
+          },
+          {
+            "text": "Une proposition dépend de l’autre : il y a une subordination.",
+            "correct": true
+          },
+          {
+            "text": "Deux propositions sont séparées par une ponctuation, sans mot de liaison : elles sont juxtaposées.",
+            "correct": false
+          },
+          {
+            "text": "La phrase ne contient qu’une proposition.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "coordination-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-coordination-recognition:3",
+      "item": {
+        "nodeKey": "construction_coordination",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le vent souffle ; les branches bougent.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le vent souffle ; les branches bougent."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le vent souffle ; les branches bougent."
+              ]
+            }
+          },
+          "negativeExample": {
+            "excerptFr": "Le vent souffle ; les branches bougent.",
+            "rationaleFr": "Deux propositions sont séparées par une ponctuation, sans mot de liaison : elles sont juxtaposées."
+          }
+        },
+        "choices": [
+          {
+            "text": "Deux propositions sont reliées par un mot de coordination, comme « et », « mais », « ou » ou « car ».",
+            "correct": false
+          },
+          {
+            "text": "Une proposition dépend de l’autre : il y a une subordination.",
+            "correct": false
+          },
+          {
+            "text": "Deux propositions sont séparées par une ponctuation, sans mot de liaison : elles sont juxtaposées.",
+            "correct": true
+          },
+          {
+            "text": "La phrase ne contient qu’une proposition.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "coordination-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-coordination-recognition:4",
+      "item": {
+        "nodeKey": "construction_coordination",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le sac est lourd mais Nora le porte seule.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le sac est lourd mais Nora le porte seule."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le sac est lourd mais Nora le porte seule."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Deux propositions sont reliées par un mot de coordination, comme « et », « mais », « ou » ou « car ».",
+            "correct": true
+          },
+          {
+            "text": "Une proposition dépend de l’autre : il y a une subordination.",
+            "correct": false
+          },
+          {
+            "text": "Deux propositions sont séparées par une ponctuation, sans mot de liaison : elles sont juxtaposées.",
+            "correct": false
+          },
+          {
+            "text": "La phrase ne contient qu’une proposition.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "coordination-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-coordination-recognition:5",
+      "item": {
+        "nodeKey": "construction_coordination",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Les élèves et leur professeur visitent le musée.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les élèves et leur professeur visitent le musée."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les élèves et leur professeur visitent le musée."
+              ]
+            }
+          },
+          "negativeExample": {
+            "excerptFr": "Les élèves et leur professeur visitent le musée.",
+            "rationaleFr": "La phrase ne contient qu’une proposition."
+          }
+        },
+        "choices": [
+          {
+            "text": "Deux propositions sont reliées par un mot de coordination, comme « et », « mais », « ou » ou « car ».",
+            "correct": false
+          },
+          {
+            "text": "Une proposition dépend de l’autre : il y a une subordination.",
+            "correct": false
+          },
+          {
+            "text": "Deux propositions sont séparées par une ponctuation, sans mot de liaison : elles sont juxtaposées.",
+            "correct": false
+          },
+          {
+            "text": "La phrase ne contient qu’une proposition.",
+            "correct": true
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "coordination-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-coordination-recognition:6",
+      "item": {
+        "nodeKey": "construction_coordination",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Tu prends le bus ou tu marches jusqu’au stade.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Tu prends le bus ou tu marches jusqu’au stade."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu prends le bus ou tu marches jusqu’au stade."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Deux propositions sont reliées par un mot de coordination, comme « et », « mais », « ou » ou « car ».",
+            "correct": true
+          },
+          {
+            "text": "Une proposition dépend de l’autre : il y a une subordination.",
+            "correct": false
+          },
+          {
+            "text": "Deux propositions sont séparées par une ponctuation, sans mot de liaison : elles sont juxtaposées.",
+            "correct": false
+          },
+          {
+            "text": "La phrase ne contient qu’une proposition.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "coordination-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-coordination-recognition:7",
+      "item": {
+        "nodeKey": "construction_coordination",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "La lumière reste allumée car Sam lit encore.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "La lumière reste allumée car Sam lit encore."
+            ],
+            "assessed": {
+              "sentences": [
+                "La lumière reste allumée car Sam lit encore."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Deux propositions sont reliées par un mot de coordination, comme « et », « mais », « ou » ou « car ».",
+            "correct": true
+          },
+          {
+            "text": "Une proposition dépend de l’autre : il y a une subordination.",
+            "correct": false
+          },
+          {
+            "text": "Deux propositions sont séparées par une ponctuation, sans mot de liaison : elles sont juxtaposées.",
+            "correct": false
+          },
+          {
+            "text": "La phrase ne contient qu’une proposition.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "coordination-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-coordination-recognition:8",
+      "item": {
+        "nodeKey": "construction_coordination",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Je pense que le train arrivera bientôt.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Je pense que le train arrivera bientôt."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je pense que le train arrivera bientôt."
+              ]
+            }
+          },
+          "negativeExample": {
+            "excerptFr": "Je pense que le train arrivera bientôt.",
+            "rationaleFr": "Une proposition dépend de l’autre : il y a une subordination."
+          }
+        },
+        "choices": [
+          {
+            "text": "Deux propositions sont reliées par un mot de coordination, comme « et », « mais », « ou » ou « car ».",
+            "correct": false
+          },
+          {
+            "text": "Une proposition dépend de l’autre : il y a une subordination.",
+            "correct": true
+          },
+          {
+            "text": "Deux propositions sont séparées par une ponctuation, sans mot de liaison : elles sont juxtaposées.",
+            "correct": false
+          },
+          {
+            "text": "La phrase ne contient qu’une proposition.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "coordination-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-coordination-recognition:9",
+      "item": {
+        "nodeKey": "construction_coordination",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le téléphone sonne, Malik répond.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le téléphone sonne, Malik répond."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le téléphone sonne, Malik répond."
+              ]
+            }
+          },
+          "negativeExample": {
+            "excerptFr": "Le téléphone sonne, Malik répond.",
+            "rationaleFr": "Deux propositions sont séparées par une ponctuation, sans mot de liaison : elles sont juxtaposées."
+          }
+        },
+        "choices": [
+          {
+            "text": "Deux propositions sont reliées par un mot de coordination, comme « et », « mais », « ou » ou « car ».",
+            "correct": false
+          },
+          {
+            "text": "Une proposition dépend de l’autre : il y a une subordination.",
+            "correct": false
+          },
+          {
+            "text": "Deux propositions sont séparées par une ponctuation, sans mot de liaison : elles sont juxtaposées.",
+            "correct": true
+          },
+          {
+            "text": "La phrase ne contient qu’une proposition.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "coordination-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-coordination-recognition:10",
+      "item": {
+        "nodeKey": "construction_coordination",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "La porte s’ouvre et les visiteurs entrent.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "La porte s’ouvre et les visiteurs entrent."
+            ],
+            "assessed": {
+              "sentences": [
+                "La porte s’ouvre et les visiteurs entrent."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Deux propositions sont reliées par un mot de coordination, comme « et », « mais », « ou » ou « car ».",
+            "correct": true
+          },
+          {
+            "text": "Une proposition dépend de l’autre : il y a une subordination.",
+            "correct": false
+          },
+          {
+            "text": "Deux propositions sont séparées par une ponctuation, sans mot de liaison : elles sont juxtaposées.",
+            "correct": false
+          },
+          {
+            "text": "La phrase ne contient qu’une proposition.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "coordination-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-coordination-recognition:11",
+      "item": {
+        "nodeKey": "construction_coordination",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Ce dessin est petit mais ses détails sont précis.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Ce dessin est petit mais ses détails sont précis."
+            ],
+            "assessed": {
+              "sentences": [
+                "Ce dessin est petit mais ses détails sont précis."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Deux propositions sont reliées par un mot de coordination, comme « et », « mais », « ou » ou « car ».",
+            "correct": true
+          },
+          {
+            "text": "Une proposition dépend de l’autre : il y a une subordination.",
+            "correct": false
+          },
+          {
+            "text": "Deux propositions sont séparées par une ponctuation, sans mot de liaison : elles sont juxtaposées.",
+            "correct": false
+          },
+          {
+            "text": "La phrase ne contient qu’une proposition.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "coordination-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-coordination-recognition:12",
+      "item": {
+        "nodeKey": "construction_coordination",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le chemin devient étroit parce que les buissons l’envahissent.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le chemin devient étroit parce que les buissons l’envahissent."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le chemin devient étroit parce que les buissons l’envahissent."
+              ]
+            }
+          },
+          "negativeExample": {
+            "excerptFr": "Le chemin devient étroit parce que les buissons l’envahissent.",
+            "rationaleFr": "Une proposition dépend de l’autre : il y a une subordination."
+          }
+        },
+        "choices": [
+          {
+            "text": "Deux propositions sont reliées par un mot de coordination, comme « et », « mais », « ou » ou « car ».",
+            "correct": false
+          },
+          {
+            "text": "Une proposition dépend de l’autre : il y a une subordination.",
+            "correct": true
+          },
+          {
+            "text": "Deux propositions sont séparées par une ponctuation, sans mot de liaison : elles sont juxtaposées.",
+            "correct": false
+          },
+          {
+            "text": "La phrase ne contient qu’une proposition.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "coordination-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-coordination-recognition:13",
+      "item": {
+        "nodeKey": "construction_coordination",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Les joueurs attendent ; l’arbitre vérifie le terrain.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les joueurs attendent ; l’arbitre vérifie le terrain."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les joueurs attendent ; l’arbitre vérifie le terrain."
+              ]
+            }
+          },
+          "negativeExample": {
+            "excerptFr": "Les joueurs attendent ; l’arbitre vérifie le terrain.",
+            "rationaleFr": "Deux propositions sont séparées par une ponctuation, sans mot de liaison : elles sont juxtaposées."
+          }
+        },
+        "choices": [
+          {
+            "text": "Deux propositions sont reliées par un mot de coordination, comme « et », « mais », « ou » ou « car ».",
+            "correct": false
+          },
+          {
+            "text": "Une proposition dépend de l’autre : il y a une subordination.",
+            "correct": false
+          },
+          {
+            "text": "Deux propositions sont séparées par une ponctuation, sans mot de liaison : elles sont juxtaposées.",
+            "correct": true
+          },
+          {
+            "text": "La phrase ne contient qu’une proposition.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "coordination-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-coordination-recognition:14",
+      "item": {
+        "nodeKey": "construction_coordination",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Cette trousse contient des crayons ou des feutres.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Cette trousse contient des crayons ou des feutres."
+            ],
+            "assessed": {
+              "sentences": [
+                "Cette trousse contient des crayons ou des feutres."
+              ]
+            }
+          },
+          "negativeExample": {
+            "excerptFr": "Cette trousse contient des crayons ou des feutres.",
+            "rationaleFr": "La phrase ne contient qu’une proposition."
+          }
+        },
+        "choices": [
+          {
+            "text": "Deux propositions sont reliées par un mot de coordination, comme « et », « mais », « ou » ou « car ».",
+            "correct": false
+          },
+          {
+            "text": "Une proposition dépend de l’autre : il y a une subordination.",
+            "correct": false
+          },
+          {
+            "text": "Deux propositions sont séparées par une ponctuation, sans mot de liaison : elles sont juxtaposées.",
+            "correct": false
+          },
+          {
+            "text": "La phrase ne contient qu’une proposition.",
+            "correct": true
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "coordination-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-coordination-recognition:15",
+      "item": {
+        "nodeKey": "construction_coordination",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Nous restons à l’intérieur car l’orage approche.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Nous restons à l’intérieur car l’orage approche."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous restons à l’intérieur car l’orage approche."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Deux propositions sont reliées par un mot de coordination, comme « et », « mais », « ou » ou « car ».",
+            "correct": true
+          },
+          {
+            "text": "Une proposition dépend de l’autre : il y a une subordination.",
+            "correct": false
+          },
+          {
+            "text": "Deux propositions sont séparées par une ponctuation, sans mot de liaison : elles sont juxtaposées.",
+            "correct": false
+          },
+          {
+            "text": "La phrase ne contient qu’une proposition.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "coordination-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-coordination-recognition:16",
+      "item": {
+        "nodeKey": "construction_coordination",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Vous écrivez un message ou vous appelez vos amis.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Vous écrivez un message ou vous appelez vos amis."
+            ],
+            "assessed": {
+              "sentences": [
+                "Vous écrivez un message ou vous appelez vos amis."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Deux propositions sont reliées par un mot de coordination, comme « et », « mais », « ou » ou « car ».",
+            "correct": true
+          },
+          {
+            "text": "Une proposition dépend de l’autre : il y a une subordination.",
+            "correct": false
+          },
+          {
+            "text": "Deux propositions sont séparées par une ponctuation, sans mot de liaison : elles sont juxtaposées.",
+            "correct": false
+          },
+          {
+            "text": "La phrase ne contient qu’une proposition.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "coordination-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "kind": "evidence",
+      "itemKey": "v3-coordination-recognition:1",
+      "itemChecksum": "sha256:bbdeecdc575d4de932d451c9a0dac3a77c45986b8147ce293bc692de3655effa",
+      "evidenceTarget": {
+        "nodeKey": "construction_coordination",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "coordination-recognition:1"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-coordination-recognition:2",
+      "itemChecksum": "sha256:af91d824efc60eceb5520d454bdd9eb92305e18d493031e7b55e2d0d73814cea",
+      "evidenceTarget": {
+        "nodeKey": "construction_coordination",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "coordination-recognition:2"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-coordination-recognition:3",
+      "itemChecksum": "sha256:4b5c8aa16db19532330dca3e57d0d99073f0f3cdb6e558ed0fba5a9a0186ee89",
+      "evidenceTarget": {
+        "nodeKey": "construction_coordination",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "coordination-recognition:3"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-coordination-recognition:4",
+      "itemChecksum": "sha256:4f9792be9cf3499715f63e627bf71c0cec51a29d60d8b4d93a6d70e480ebc8bd",
+      "evidenceTarget": {
+        "nodeKey": "construction_coordination",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "coordination-recognition:4"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-coordination-recognition:5",
+      "itemChecksum": "sha256:0a5225e943445a0dafe4778931980debf7f9376419f2457c68d826e457603377",
+      "evidenceTarget": {
+        "nodeKey": "construction_coordination",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "coordination-recognition:5"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-coordination-recognition:6",
+      "itemChecksum": "sha256:34cbe5e427f4ab8c4c1f5b9f993fefe84e9cb3404b75e7a368e1b2bf032aee32",
+      "evidenceTarget": {
+        "nodeKey": "construction_coordination",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "coordination-recognition:6"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-coordination-recognition:7",
+      "itemChecksum": "sha256:75263c652d531f9f3fc6a82a84e8c175cacc72d2e95640824028f72b1d0debdf",
+      "evidenceTarget": {
+        "nodeKey": "construction_coordination",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "coordination-recognition:7"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-coordination-recognition:8",
+      "itemChecksum": "sha256:1405978d1207a7477259c00e7867b3609f889b53b17fce8640de5c6417facb03",
+      "evidenceTarget": {
+        "nodeKey": "construction_coordination",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "coordination-recognition:8"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-coordination-recognition:9",
+      "itemChecksum": "sha256:f3a2b1354d6fa4e4e6d82924594ccbd87b79657b64ef66507005be926335dcf3",
+      "evidenceTarget": {
+        "nodeKey": "construction_coordination",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "coordination-recognition:9"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-coordination-recognition:10",
+      "itemChecksum": "sha256:a0399aec4868282c544533ad7f74d152c45ea0f1b21e59ddb89b086b903d3ea4",
+      "evidenceTarget": {
+        "nodeKey": "construction_coordination",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "coordination-recognition:10"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-coordination-recognition:11",
+      "itemChecksum": "sha256:55563a5c379137f66c65eda013bf35c44ddc24e62e5b043c264ba2993df15f48",
+      "evidenceTarget": {
+        "nodeKey": "construction_coordination",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "coordination-recognition:11"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-coordination-recognition:12",
+      "itemChecksum": "sha256:ca7266a3f50b33fec89fdcdbf89c9d317a9382f4a747a7352b267b9f9d43e8bc",
+      "evidenceTarget": {
+        "nodeKey": "construction_coordination",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "coordination-recognition:12"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-coordination-recognition:13",
+      "itemChecksum": "sha256:6098a8851d9ce5aaae81abdcede3448cc238dacb866c806bf15830a30b09df5f",
+      "evidenceTarget": {
+        "nodeKey": "construction_coordination",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "coordination-recognition:13"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-coordination-recognition:14",
+      "itemChecksum": "sha256:b8d2a948b02de7f37c96358998f0e851abcd524357f214281b31b60200c6e46b",
+      "evidenceTarget": {
+        "nodeKey": "construction_coordination",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "coordination-recognition:14"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-coordination-recognition:15",
+      "itemChecksum": "sha256:7bbd85411444c01366cedb18e8f1757ded251b7e9d4cbad91cf38e28628b8db5",
+      "evidenceTarget": {
+        "nodeKey": "construction_coordination",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "coordination-recognition:15"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-coordination-recognition:16",
+      "itemChecksum": "sha256:a063c9cd49d2acabff41bea6026bdf75bab0a2652fca3df6633533cf57e82015",
+      "evidenceTarget": {
+        "nodeKey": "construction_coordination",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "coordination-recognition:16"
+    }
+  ],
+  "checksum": "sha256:02bb56e5fe9fedeac0ab991a2a01ce33311c6b399d116765266499a3a7b0d013"
+}
