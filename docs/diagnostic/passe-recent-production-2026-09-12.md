@@ -11,3 +11,15 @@ Prepared bank revision 12 covers 201 of 542 graph targets with 3,683 scoped prob
 The separate 197-target revision 11 release candidate is frozen and unaffected. This new draft is not imported, published or deployed.
 
 The final complete granular suite passes: 555 tests across 161 files. A compatibility-test fixture was corrected to use the selected lesson's actual material annotation, rather than assuming that the first catalogue lesson always teaches aller.
+
+## Eight individual action verbs
+
+The draft now adds aller, faire, prendre, venir, partir, sortir, dire and voir, each with six guided exercises and twelve independent application contexts covering all six persons. There are now twelve passé récent targets, twelve lessons and 144 application questions. The original 48 family questions keep their IDs and ordering.
+
+The additional contexts are curated adaptations of existing present-tense sentence applications, with the passé récent explicitly supplied. Future deadlines, habitual arrivals and static sign or light descriptions are replaced by recent events. The venir lesson distinguishes the movement verb from the auxiliary construction in viens de venir. A grading regression rejects viens devenir, which changes the construction and meaning. These are controlled conjugation checks, not claims of new vocabulary or spontaneous tense choice.
+
+Prepared revision 12 now contains 209 of 542 targets and 3,844 scoped probes. All 566 granular tests, TypeScript, scoped command journeys and publication preparation pass. The read-only upgrade audit from the published 197-target candidate preserves 63 diagnostic observations, four refinements, answer origins, lesson completions, exposure and elapsed active time, with twelve added targets. No student was migrated by that audit.
+
+The six remaining individual passé récent targets require further authoring. The frozen 197-target release candidate is unaffected by these changes.
+
+All twelve targeted lesson journeys also pass against the current candidate: one deliberately incorrect guided response per lesson, separate correct independent checks, preserved reload state, and no guided answers counted as independent evidence.
