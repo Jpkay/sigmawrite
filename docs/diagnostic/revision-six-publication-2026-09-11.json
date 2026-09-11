@@ -24,7 +24,7 @@
   },
   "pending": [
     "Complete the live diagnostic through final results, guided teaching and a fresh independent check.",
-    "Resolve the fresh-account reload timing check and measure the observed delay."
+    "Investigate and reduce the measured 19–29 second diagnostic opening/reload delay."
   ],
   "releaseId": "303f1662-1a34-4ee4-b142-2e7146b2f176",
   "bundleChecksum": "sha256:ff2d6d24adc11dbd86b5cf4dbfc58dfec39c1b4adef9b15e4f7614092622c2eb",
@@ -64,6 +64,25 @@
     "scope": 158,
     "defaultSelectedByApplication": true,
     "firstStartButtonVisible": true,
-    "reloadCheck": "Timed out at 30 seconds; repeat with elapsed-time capture is running."
+    "reloadCheck": "Passed on repeat, with 29433 ms initial load and 18699 ms reload; performance improvement needed.",
+    "reloadVerification": {
+      "scope": 158,
+      "checks": [
+        {
+          "attempt": 0,
+          "elapsedMs": 29433,
+          "sessionId": "30cd8e3f-8489-4014-a678-3ec6bf69ebed",
+          "answers": 0,
+          "button": "Commencer"
+        },
+        {
+          "attempt": 1,
+          "elapsedMs": 18699,
+          "sessionId": "30cd8e3f-8489-4014-a678-3ec6bf69ebed",
+          "answers": 0,
+          "button": "Commencer"
+        }
+      ]
+    }
   }
 }
