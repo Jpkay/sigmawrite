@@ -1,3 +1,4 @@
+import {syntheticReadingKnowledge} from '../src/lib/diagnostic/granular/synthetic-reading-profiles';
 import {inspectProfileDiscrimination} from "../src/lib/diagnostic/granular/profile-discrimination";
 import { readFileSync, writeFileSync } from "node:fs";
 import { checksum } from "../src/lib/taxonomy/validate";
@@ -49,8 +50,8 @@ const profiles: Profile[] = [
   { id: "all_incorrect", description: "Every sampled initial skill answered incorrectly", knows: () => false },
   { id: "regular_vs_irregular", description: "Regular verb patterns known; individual irregular verbs weak; other skills known", knows: s => s.domain !== "conjugation" || !s.branch.startsWith("conjugation:verb:") },
   { id: "verb_specific_tense_frontiers", description: "Aller/venir and regular patterns strong; prendre/dire present only; other irregulars through imparfait", knows: s => s.domain !== "conjugation" || !s.branch.startsWith("conjugation:verb:") || /:(aller|venir)$/.test(s.branch) || (/:(prendre|dire)$/.test(s.branch) ? s.nodeKey.includes("present_indicatif") : /present_indicatif|imparfait/.test(s.nodeKey)) },
-  { id: "literal_vs_inference", description: "Explicit reading information known; inference and argument evaluation weak", knows: s => s.domain !== "reading_comprehension" || !/inferer|argument|preuve|point_de_vue/.test(s.nodeKey) },
-  { id: "reading_reference_gap", description: "Pronoun and demonstrative resolution weak despite otherwise strong reading", knows: s => s.domain !== "reading_comprehension" || !/resoudre_pronom|resoudre_demonstratif|chaine/.test(s.nodeKey) },
+  { id: "literal_vs_inference", description: "Explicit retrieval and identifying stated arguments known; local inference and evaluating textual support weak", knows: s => s.domain !== "reading_comprehension" || syntheticReadingKnowledge("literal_vs_inference",s.nodeKey) },
+  { id: "reading_reference_gap", description: "Pronoun and demonstrative resolution weak despite otherwise strong reading", knows: s => s.domain !== "reading_comprehension" || syntheticReadingKnowledge("reading_reference_gap",s.nodeKey) },
   { id: "cod_vs_coi", description: "Direct-object pronouns known; indirect-object, y/en and double-pronoun use weak", knows: s => !/pronom_coi|pronoms_y_en|doubles_pronoms|cod_coi/.test(s.nodeKey) },
   { id: "lexical_vs_agreement", description: "Lexical spelling strong; grammatical spelling weak", knows: s => s.samplingGroup !== "orthographe_grammaticale" },
   { id: "agreement_vs_lexical", description: "Grammatical spelling strong; lexical spelling weak", knows: s => s.samplingGroup !== "orthographe_lexicale" },
@@ -174,10 +175,11 @@ const report = {
   findings: [
     "Runtime invariants alone do not establish sufficient diagnostic depth. Inspect item counts per target and strand below.",
     "Branch visits now allow up to six questions before rotation within a strand; the breadth/depth tradeoff still needs educator and student calibration.",
-    "Conjugation time is balanced between general concepts, regular/spelling patterns and individual verbs using the compiled facet branch identities.",
+    "Conjugation initially surveys general concepts, patterns and individual verbs, then gives individual verbs double scheduling weight; visits span tense categories.",
     "Refined verb-form targets use a separately versioned draft challenge order, starting with the present; the approved prerequisite depth remains unchanged.",
     "Tense recognition and interpretation use the draft ranks too; other general concepts retain graph depth. Challenge ranks and entry-point selection require educator/student validation before release.",
     "A profile distinction that was not sampled is not evidence that the system can distinguish that profile.",
+    "Reading profile gaps use explicit approved node identities; locating a supporting passage is not treated as inferential reading.",
   ],
   assumptions: [
     "Synthetic truth is defined per exact target; it does not enforce prerequisite mastery or assign a global student level.",

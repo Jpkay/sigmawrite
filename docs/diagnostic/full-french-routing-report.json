@@ -10,10 +10,11 @@
   "findings": [
     "Runtime invariants alone do not establish sufficient diagnostic depth. Inspect item counts per target and strand below.",
     "Branch visits now allow up to six questions before rotation within a strand; the breadth/depth tradeoff still needs educator and student calibration.",
-    "Conjugation time is balanced between general concepts, regular/spelling patterns and individual verbs using the compiled facet branch identities.",
+    "Conjugation initially surveys general concepts, patterns and individual verbs, then gives individual verbs double scheduling weight; visits span tense categories.",
     "Refined verb-form targets use a separately versioned draft challenge order, starting with the present; the approved prerequisite depth remains unchanged.",
     "Tense recognition and interpretation use the draft ranks too; other general concepts retain graph depth. Challenge ranks and entry-point selection require educator/student validation before release.",
-    "A profile distinction that was not sampled is not evidence that the system can distinguish that profile."
+    "A profile distinction that was not sampled is not evidence that the system can distinguish that profile.",
+    "Reading profile gaps use explicit approved node identities; locating a supporting passage is not treated as inferential reading."
   ],
   "assumptions": [
     "Synthetic truth is defined per exact target; it does not enforce prerequisite mastery or assign a global student level.",
@@ -462,14 +463,13 @@
     {
       "profile": "literal_vs_inference",
       "seed": 1,
-      "requiredKnownTargets": 65,
-      "requiredWeakTargets": 27,
+      "requiredKnownTargets": 77,
+      "requiredWeakTargets": 15,
       "knownTargetsWithEvidence": [
-        "associer_information_question::all-receptive::text_type:argumentative"
-      ],
-      "weakTargetsWithEvidence": [
+        "associer_information_question::all-receptive::text_type:argumentative",
         "localiser_span_preuve::all-receptive::text_type:argumentative"
       ],
+      "weakTargetsWithEvidence": [],
       "knownTargetsUnresolved": [
         "localiser_information_explicite::all-receptive::text_type:narrative",
         "localiser_information_explicite::all-receptive::text_type:informational",
@@ -529,12 +529,23 @@
         "reformuler_sans_copier::all-controlled_production::text_type:argumentative",
         "organiser_resume_informatif::informational-controlled_production::text_type:informational",
         "organiser_resume_narratif::literary-controlled_production::text_type:narrative",
+        "identifier_point_de_vue::all-receptive::text_type:narrative",
+        "identifier_point_de_vue::all-receptive::text_type:informational",
+        "identifier_point_de_vue::all-receptive::text_type:argumentative",
         "comparer_points_de_vue::all-controlled_production::text_type:narrative",
         "comparer_points_de_vue::all-controlled_production::text_type:informational",
         "comparer_points_de_vue::all-controlled_production::text_type:argumentative",
         "interpreter_tonalite_litteraire::literary-receptive::text_type:narrative",
         "identifier_position_auteur::informational-receptive::text_type:informational",
-        "distinguer_fait_opinion::argumentative-receptive::text_type:argumentative"
+        "distinguer_fait_opinion::argumentative-receptive::text_type:argumentative",
+        "identifier_these_argument::argumentative-receptive::text_type:argumentative",
+        "identifier_raison_argument::argumentative-receptive::text_type:argumentative",
+        "reconnaitre_contre_argument::argumentative-receptive::text_type:argumentative",
+        "localiser_span_preuve::all-receptive::text_type:narrative",
+        "localiser_span_preuve::all-receptive::text_type:informational",
+        "distinguer_preuve_connaissance_externe::all-receptive::text_type:narrative",
+        "distinguer_preuve_connaissance_externe::all-receptive::text_type:informational",
+        "distinguer_preuve_connaissance_externe::all-receptive::text_type:argumentative"
       ],
       "weakTargetsUnresolved": [
         "inferer_cause_locale::all-receptive::text_type:narrative",
@@ -548,25 +559,14 @@
         "inferer_chronologie_implicite::all-receptive::text_type:argumentative",
         "inferer_motivation_personnage::literary-receptive::text_type:narrative",
         "inferer_hypothese_informationnelle::informational-receptive::text_type:informational",
-        "identifier_point_de_vue::all-receptive::text_type:narrative",
-        "identifier_point_de_vue::all-receptive::text_type:informational",
-        "identifier_point_de_vue::all-receptive::text_type:argumentative",
-        "identifier_these_argument::argumentative-receptive::text_type:argumentative",
-        "identifier_raison_argument::argumentative-receptive::text_type:argumentative",
         "evaluer_pertinence_preuve::argumentative-receptive::text_type:argumentative",
-        "reconnaitre_contre_argument::argumentative-receptive::text_type:argumentative",
-        "localiser_span_preuve::all-receptive::text_type:narrative",
-        "localiser_span_preuve::all-receptive::text_type:informational",
         "relier_preuve_interpretation::all-controlled_production::text_type:narrative",
         "relier_preuve_interpretation::all-controlled_production::text_type:informational",
-        "relier_preuve_interpretation::all-controlled_production::text_type:argumentative",
-        "distinguer_preuve_connaissance_externe::all-receptive::text_type:narrative",
-        "distinguer_preuve_connaissance_externe::all-receptive::text_type:informational",
-        "distinguer_preuve_connaissance_externe::all-receptive::text_type:argumentative"
+        "relier_preuve_interpretation::all-controlled_production::text_type:argumentative"
       ],
       "sameBranchBoundaries": [],
       "requireSameBranch": false,
-      "passed": true
+      "passed": false
     },
     {
       "profile": "reading_reference_gap",
@@ -3118,7 +3118,7 @@
     {
       "profile": "literal_vs_inference",
       "seed": 1,
-      "description": "Explicit reading information known; inference and argument evaluation weak",
+      "description": "Explicit retrieval and identifying stated arguments known; local inference and evaluating textual support weak",
       "completionReason": "time_budget",
       "activeSeconds": 2100,
       "questionsPresented": 61,
@@ -3172,8 +3172,8 @@
           "answered": 9,
           "targetsReachingMinimumItemCount": 2,
           "targetsWithSufficientEvidenceToday": 2,
-          "sampledKnown": 2,
-          "sampledWeak": 1
+          "sampledKnown": 3,
+          "sampledWeak": 0
         },
         {
           "strand": "grammaire_syntaxe",
@@ -3367,13 +3367,13 @@
           "labelFr": "Localiser un passage servant de preuve — Texte argumentatif bref",
           "strand": "comprehension_ecrite",
           "level": 2,
-          "expectedKnown": false,
-          "answered": 3,
-          "correct": 0,
+          "expectedKnown": true,
+          "answered": 4,
+          "correct": 4,
           "status": "uncertain",
           "withinOccasionResolved": true,
-          "probability": 0.0023647650014779796,
-          "countedEvidence": 3,
+          "probability": 0.9940814954403842,
+          "countedEvidence": 4,
           "minimumItems": 3
         },
         {
@@ -3491,20 +3491,6 @@
           "minimumItems": 3
         },
         {
-          "skillId": "associer_information_question::all-receptive::text_type:informational",
-          "labelFr": "Associer une information à la question posée — Texte informatif bref",
-          "strand": "comprehension_ecrite",
-          "level": 1,
-          "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9283667621776505,
-          "countedEvidence": 2,
-          "minimumItems": 3
-        },
-        {
           "skillId": "produire_passe_compose::writing-controlled-production::verb:avoir",
           "labelFr": "Produire le passé composé — Conjuguer avoir",
           "strand": "conjugaison",
@@ -3531,6 +3517,20 @@
           "withinOccasionResolved": false,
           "probability": 0.9969230769230769,
           "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "associer_information_question::all-receptive::text_type:informational",
+          "labelFr": "Associer une information à la question posée — Texte informatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.782608695652174,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
