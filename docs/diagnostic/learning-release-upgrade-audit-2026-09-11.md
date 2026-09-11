@@ -43,3 +43,11 @@ upgrade/write tests, remote migration, and a controlled live upgrade remain to
 be completed before enabling the feature. The authenticated server must check
 student access and both live releases, then run full compatibility validation;
 the SQL function deliberately does not substitute for that content validation.
+
+Store integration is now prepared: `createLearningSuccessor` reads the original
+persisted state, revalidates both live bundles, runs compatibility preparation,
+and invokes the atomic RPC using the source revision. Latest-session and
+latest-learning queries use the active-session view; direct history reads keep
+using the original session table. No automatic upgrade or public action is
+activated yet. Deploy migration 0150 before deploying this store version.
+Validation: all 525 granular tests across 151 files and TypeScript passed.

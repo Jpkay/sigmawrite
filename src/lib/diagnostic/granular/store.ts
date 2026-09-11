@@ -1,4 +1,5 @@
 import "server-only";
+import {prepareLearningSuccessor} from "./learning-successor";
 import type {ReleaseContentCache} from "./release-content-cache";
 import {prepareParallelPublication} from "./publication-contract";
 import {validateActivityBindings} from "./activity-validation";
@@ -111,15 +112,33 @@ export class SupabaseAssessmentStore implements AssessmentStore{
   const {data,error}=await this.db.from("granular_assessment_sessions").update({state,revision:state.revision}).eq("id",sessionId).eq("student_id",studentId).eq("revision",expectedRevision).select("id");
   if(error)throw Error(error.message);return data.length===1;
  }
+ /** Trusted authenticated callers only. Read raw persisted state so transient
+  * material-history enrichment cannot alter the predecessor snapshot. */
+ async createLearningSuccessor(studentId:string,sessionId:string,targetReleaseId:string):Promise<StoredSession>{
+  const source=await this.load(studentId,sessionId);
+  if(!source)throw Error("Learning predecessor unavailable");
+  const [sourceBundle,targetBundle]=await Promise.all([this.release(source.releaseId),this.release(targetReleaseId)]);
+  if(!sourceBundle||!targetBundle)throw Error("Learning release unavailable");
+  const state=prepareLearningSuccessor(source,sourceBundle,targetBundle);
+  const {data,error}=await this.db.rpc("create_granular_learning_successor",{
+   p_student_id:studentId,p_source_session_id:sessionId,p_source_revision:source.state.revision,
+   p_target_release_id:targetReleaseId,p_target_bundle_checksum:checksum(targetBundle),p_target_state:state,
+  });
+  if(error)throw Error(error.message);
+  if(typeof data!=="string")throw Error("Invalid learning successor response");
+  const successor=await this.load(studentId,data);
+  if(!successor||successor.releaseId!==targetReleaseId)throw Error("Learning successor unavailable");
+  return successor;
+ }
  async latestLearning(studentId:string):Promise<{session:StoredSession;bundle:AssessmentBundle}|null>{
-  const {data,error}=await this.db.from("granular_assessment_sessions").select("id,release_id").eq("student_id",studentId).eq("state->>phase","learning").order("updated_at",{ascending:false}).limit(10);
+  const {data,error}=await this.db.from("granular_active_assessment_sessions").select("id,release_id").eq("student_id",studentId).eq("state->>phase","learning").order("updated_at",{ascending:false}).limit(10);
   if(error)throw Error(error.message);
   for(const row of data){const bundle=await this.release(row.release_id);if(!bundle)continue;const session=await this.load(studentId,row.id);if(session&&session.state.completionReason!=="coverage_gap")return {session:await withKnownMaterialHistory(this,session,bundle),bundle};}
   return null;
  }
  /** Resume the student's pinned release even after a newer default is published. */
  async latestSession(studentId:string):Promise<{session:StoredSession;bundle:AssessmentBundle}|null>{
-  const {data,error}=await this.db.from("granular_assessment_sessions").select("id,release_id").eq("student_id",studentId).order("updated_at",{ascending:false}).limit(10);
+  const {data,error}=await this.db.from("granular_active_assessment_sessions").select("id,release_id").eq("student_id",studentId).order("updated_at",{ascending:false}).limit(10);
   if(error)throw Error(error.message);
   for(const row of data??[]){
    const bundle=await this.release(row.release_id);if(!bundle)continue;
