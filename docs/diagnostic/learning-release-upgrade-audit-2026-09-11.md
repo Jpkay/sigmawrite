@@ -112,3 +112,11 @@ bank entry. The compatibility check now permits that case while retaining exact
 old-item/probe/skill comparisons. A regression test covers activation of an
 unused bank item and rejects a new probe with no backing bank entry. No source
 QA session was upgraded during either withheld-button test.
+
+The e28b109 candidate renders the eligible upgrade control correctly, but its
+client-only click handler did not run during the browser test (button remained
+unchanged; no successor row was created). Replace the control with a server-
+rendered form and inline authenticated server action, allowing native submission
+before client hydration. The action redirects back to lessons after success.
+This follows the existing native-control fix for answer review. TypeScript and
+scoped lint passed; native browser submission still needs candidate verification.
