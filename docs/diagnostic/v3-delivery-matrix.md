@@ -8,7 +8,7 @@ Regenerate: `npx tsx scripts/build-v3-delivery-matrix.mts`. Verify without writi
 
 | Domain | Targets | Eligible questions | Targets without eligible questions | Allocated pools | Expansion drafts |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| conjugation | 255 | 77 | 195 | 0 | 2796 |
+| conjugation | 255 | 77 | 195 | 0 | 2940 |
 | reading_comprehension | 92 | 21 | 74 | 0 | 80 |
 | grammar | 79 | 56 | 43 | 0 | 194 |
 | spelling | 116 | 79 | 60 | 0 | 270 |
@@ -80,20 +80,20 @@ Full evidence requirements, prerequisite IDs, question IDs, source checksums and
 | Accorder le participe passé avec un COD antéposé — Absence de COD | production / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | author_missing_evidence | author_or_reuse_exact_target_teaching |
 | Interpréter un marqueur temporel | recognition / initial | 2 | 2 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
 | Reconnaître le présent de l'indicatif | recognition / initial | 1 | 1 / 0 (insufficient_coverage) | 10 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
-| Produire le présent de l'indicatif — Conjuguer être | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
-| Produire le présent de l'indicatif — Conjuguer avoir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le présent de l'indicatif — Conjuguer être | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le présent de l'indicatif — Conjuguer avoir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
 | Produire le présent de l'indicatif — Conjuguer aller | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
 | Produire le présent de l'indicatif — Conjuguer faire | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
-| Produire le présent de l'indicatif — Conjuguer prendre | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
-| Produire le présent de l'indicatif — Conjuguer venir | production / initial | 1 | 1 / 0 (insufficient_coverage) | 8 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
-| Produire le présent de l'indicatif — Conjuguer partir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
-| Produire le présent de l'indicatif — Conjuguer sortir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
-| Produire le présent de l'indicatif — Conjuguer dire | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
-| Produire le présent de l'indicatif — Conjuguer voir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
-| Produire le présent de l'indicatif — Conjuguer pouvoir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
-| Produire le présent de l'indicatif — Conjuguer vouloir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
-| Produire le présent de l'indicatif — Conjuguer savoir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
-| Produire le présent de l'indicatif — Conjuguer devoir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le présent de l'indicatif — Conjuguer prendre | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le présent de l'indicatif — Conjuguer venir | production / initial | 1 | 1 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le présent de l'indicatif — Conjuguer partir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le présent de l'indicatif — Conjuguer sortir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le présent de l'indicatif — Conjuguer dire | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le présent de l'indicatif — Conjuguer voir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le présent de l'indicatif — Conjuguer pouvoir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le présent de l'indicatif — Conjuguer vouloir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le présent de l'indicatif — Conjuguer savoir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le présent de l'indicatif — Conjuguer devoir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
 | Produire le présent de l'indicatif — Verbes réguliers en -er | production / initial | 1 | 1 / 0 (insufficient_coverage) | 68 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
 | Produire le présent de l'indicatif — Verbes en -ir comme finir | production / initial | 1 | 1 / 0 (insufficient_coverage) | 44 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
 | Produire le présent de l'indicatif — Verbes en -ger | production / initial | 0 | 0 / 0 (insufficient_coverage) | 30 | 1 / 8 | review_exact_target_drafts | review_teaching_scope_and_content |

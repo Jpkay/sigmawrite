@@ -7,7 +7,8 @@ export type DraftExpansion={version:string;status:"draft_requires_review";parent
 /** Assemble authoring sources, never publish or transfer approval to an edit.
  * The unchanged base entries retain their own provenance; every added entry is
  * required to remain pending. Source and mapping drift fail before any write. */
-export function assembleDraftBank(base:CanonicalDiagnosticBankArtifact,taxonomy:TaxonomyCandidate,expansions:readonly DraftExpansion[]){
+export function assembleDraftBank(base:CanonicalDiagnosticBankArtifact,taxonomy:TaxonomyCandidate,expansions:readonly DraftExpansion[],options:{revision?:number}={}){
+ if(options.revision!==undefined&&(!Number.isSafeInteger(options.revision)||options.revision<1||base.bank.key!=="french-diagnostic-bank-v3"))throw Error("A bank revision needs a positive integer and the original French v3 base");
  const baseline=validateCanonicalDiagnosticBank(base,taxonomy);
  if(baseline.issues.length)throw Error("Invalid source bank");
  const facets=buildV3Facets(taxonomy),keys=new Set(base.items.map(item=>item.itemKey));
@@ -31,6 +32,7 @@ export function assembleDraftBank(base:CanonicalDiagnosticBankArtifact,taxonomy:
   sources.push({version:expansion.version,checksum:expected,addedItems:expansion.items.length});
  }
  const bank:CanonicalDiagnosticBankArtifact={...base,items};delete bank.manifest;
+ if(options.revision!==undefined)bank.bank={key:`french-diagnostic-bank-v3-r${options.revision}`,version:`${base.bank.version}-r${options.revision}`};
  const validation=validateCanonicalDiagnosticBank(bank,taxonomy);
  if(validation.issues.length)throw Error(`Invalid assembled draft: ${validation.issues.join("; ")}`);
  if(validation.eligibleItemKeys.some(key=>!baseline.eligibleItemKeys.includes(key)))throw Error("Assembly promoted draft content");

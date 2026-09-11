@@ -37,7 +37,9 @@ export function questionAssessedMaterialKeys(item:CanonicalDiagnosticBankItem["i
  return item.validatorConfig?.materialExposure===undefined?[]:assessedKeys(schema.parse(item.validatorConfig.materialExposure));
 }
 export function questionMaterialKeys(item:CanonicalDiagnosticBankItem["item"]){
- return annotatedMaterialKeys(item.validatorConfig?.materialExposure,[item.promptFr,item.instructionsFr??"",item.correctAnswer??"",...(item.acceptableAnswers??[]),...(item.choices??[]).map(choice=>choice.text)]);
+ const sentence=item.validatorConfig?.sentenceApplication;
+ const completed=typeof sentence==="string"&&item.validatorType==="conjugator"&&item.responseType==="short_answer"&&item.correctAnswer&&item.promptFr.includes(sentence)&&sentence.split("___").length===2?sentence.replace("___",item.correctAnswer):"";
+ return annotatedMaterialKeys(item.validatorConfig?.materialExposure,[item.promptFr,item.instructionsFr??"",item.correctAnswer??"",completed,...(item.acceptableAnswers??[]),...(item.choices??[]).map(choice=>choice.text)]);
 }
 export function teachingMaterialKeys(lesson:TargetTeachingContent|Omit<TargetTeachingContent,"status">){
  return annotatedMaterialKeys(lesson.materialExposure,[lesson.titleFr,lesson.learnerQuestionFr,lesson.takeawayFr,lesson.boundaryFr,

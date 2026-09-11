@@ -10,10 +10,22 @@ Draft feasibility only. No approvals, publication or live activation. Counts inc
 | Écrire nous lançons avec ç | 0 | 30 | 15 / 15 | 3 / 3 | allocated |
 | Choisir la bonne forme de aller au présent | 0 | 20 | 10 / 10 | 6 / 6 | allocated |
 | Choisir la bonne forme de faire au présent | 0 | 20 | 10 / 10 | 6 / 6 | allocated |
+| Choisir la bonne forme de être au présent | 0 | 20 | 10 / 10 | 6 / 6 | allocated |
+| Choisir la bonne forme de avoir au présent | 0 | 20 | 10 / 10 | 6 / 6 | allocated |
+| Choisir la bonne forme de prendre au présent | 0 | 20 | 10 / 10 | 6 / 6 | allocated |
+| Choisir la bonne forme de venir au présent | 0 | 20 | 10 / 10 | 6 / 6 | allocated |
+| Choisir la bonne forme de partir au présent | 0 | 20 | 10 / 10 | 6 / 6 | allocated |
+| Choisir la bonne forme de sortir au présent | 0 | 20 | 10 / 10 | 6 / 6 | allocated |
+| Choisir la bonne forme de dire au présent | 0 | 20 | 10 / 10 | 6 / 6 | allocated |
+| Choisir la bonne forme de voir au présent | 0 | 20 | 10 / 10 | 6 / 6 | allocated |
+| Choisir la bonne forme de pouvoir au présent | 0 | 20 | 10 / 10 | 6 / 6 | allocated |
+| Choisir la bonne forme de vouloir au présent | 0 | 20 | 10 / 10 | 6 / 6 | allocated |
+| Choisir la bonne forme de savoir au présent | 0 | 20 | 10 / 10 | 6 / 6 | allocated |
+| Choisir la bonne forme de devoir au présent | 0 | 20 | 10 / 10 | 6 / 6 | allocated |
 
 The companion JSON pins every lesson, question and target, retains all prerequisites and lists proposed disjoint question pools. Allocation checks the current evidence requirements, including the ger/cer spelling feature counts and verb-context diversity. It does not validate whether paraphrased isolated form prompts supply independent evidence.
 
-The original form questions ask for a verb given its subject and tense. New sentence-based application drafts now cover all six lesson targets. Teaching-overlap and pedagogical review are still needed before claiming contextual transfer. A new question ID or a rearranged instruction alone does not prove independence. Sentence counts refer to source-anchored annotations, not an automated semantic review.
+The original form questions ask for a verb given its subject and tense. New sentence-based application drafts now cover all eighteen lesson targets. Teaching-overlap and pedagogical review are still needed before claiming contextual transfer. A new question ID or a rearranged instruction alone does not prove independence. Sentence counts refer to source-anchored annotations, not an automated semantic review.
 
 ## Added sentence questions requiring review
 
@@ -79,7 +91,151 @@ These supplied-tense gaps exercise regular forms, individual verbs and the actua
 - **v3-granular-forms:present-application-context:faire:1p:45**: Complète la phrase avec faire au présent de l’indicatif : Nous ___ le tour du lac. Réponse : **faisons**.
 - **v3-granular-forms:present-application-context:faire:2p:46**: Complète la phrase avec faire au présent de l’indicatif : Vous ___ un croquis de la maison. Réponse : **faites**.
 - **v3-granular-forms:present-application-context:faire:3p:47**: Complète la phrase avec faire au présent de l’indicatif : Les comédiens ___ rire le public. Réponse : **font**.
+- **v3-granular-forms:present-application-context:être:1s:48**: Complète la phrase avec être au présent de l’indicatif : Je ___ responsable du ballon. Réponse : **suis**.
+- **v3-granular-forms:present-application-context:être:2s:49**: Complète la phrase avec être au présent de l’indicatif : Tu ___ le premier à répondre. Réponse : **es**.
+- **v3-granular-forms:present-application-context:être:3s:50**: Complète la phrase avec être au présent de l’indicatif : Le magasin ___ fermé le lundi. Réponse : **est**.
+- **v3-granular-forms:present-application-context:être:1p:51**: Complète la phrase avec être au présent de l’indicatif : Nous ___ heureux de participer. Réponse : **sommes**.
+- **v3-granular-forms:present-application-context:être:2p:52**: Complète la phrase avec être au présent de l’indicatif : Vous ___ sur la bonne piste. Réponse : **êtes**.
+- **v3-granular-forms:present-application-context:être:3p:53**: Complète la phrase avec être au présent de l’indicatif : Les fenêtres ___ ouvertes. Réponse : **sont**.
+- **v3-granular-forms:present-application-context:être:1s:54**: Complète la phrase avec être au présent de l’indicatif : Je ___ à côté du piano. Réponse : **suis**.
+- **v3-granular-forms:present-application-context:être:2s:55**: Complète la phrase avec être au présent de l’indicatif : Tu ___ très patient avec le chiot. Réponse : **es**.
+- **v3-granular-forms:present-application-context:être:3s:56**: Complète la phrase avec être au présent de l’indicatif : La lampe ___ allumée. Réponse : **est**.
+- **v3-granular-forms:present-application-context:être:1p:57**: Complète la phrase avec être au présent de l’indicatif : Nous ___ membres du club de lecture. Réponse : **sommes**.
+- **v3-granular-forms:present-application-context:être:2p:58**: Complète la phrase avec être au présent de l’indicatif : Vous ___ invités à la répétition. Réponse : **êtes**.
+- **v3-granular-forms:present-application-context:être:3p:59**: Complète la phrase avec être au présent de l’indicatif : Les valises ___ sous le banc. Réponse : **sont**.
+- **v3-granular-forms:present-application-context:avoir:1s:60**: Complète la phrase avec avoir au présent de l’indicatif : J’___ envie de dessiner. Réponse : **ai**.
+- **v3-granular-forms:present-application-context:avoir:2s:61**: Complète la phrase avec avoir au présent de l’indicatif : Tu ___ froid sans ton manteau. Réponse : **as**.
+- **v3-granular-forms:present-application-context:avoir:3s:62**: Complète la phrase avec avoir au présent de l’indicatif : Le vélo ___ deux pneus neufs. Réponse : **a**.
+- **v3-granular-forms:present-application-context:avoir:1p:63**: Complète la phrase avec avoir au présent de l’indicatif : Nous ___ rendez-vous à midi. Réponse : **avons**.
+- **v3-granular-forms:present-application-context:avoir:2p:64**: Complète la phrase avec avoir au présent de l’indicatif : Vous ___ plusieurs solutions. Réponse : **avez**.
+- **v3-granular-forms:present-application-context:avoir:3p:65**: Complète la phrase avec avoir au présent de l’indicatif : Les musiciens ___ besoin de silence. Réponse : **ont**.
+- **v3-granular-forms:present-application-context:avoir:1s:66**: Complète la phrase avec avoir au présent de l’indicatif : J’___ douze cartes en main. Réponse : **ai**.
+- **v3-granular-forms:present-application-context:avoir:2s:67**: Complète la phrase avec avoir au présent de l’indicatif : Tu ___ raison de demander. Réponse : **as**.
+- **v3-granular-forms:present-application-context:avoir:3s:68**: Complète la phrase avec avoir au présent de l’indicatif : Le bâtiment ___ trois étages. Réponse : **a**.
+- **v3-granular-forms:present-application-context:avoir:1p:69**: Complète la phrase avec avoir au présent de l’indicatif : Nous ___ confiance en notre équipe. Réponse : **avons**.
+- **v3-granular-forms:present-application-context:avoir:2p:70**: Complète la phrase avec avoir au présent de l’indicatif : Vous ___ encore quelques minutes. Réponse : **avez**.
+- **v3-granular-forms:present-application-context:avoir:3p:71**: Complète la phrase avec avoir au présent de l’indicatif : Les tortues ___ une carapace. Réponse : **ont**.
+- **v3-granular-forms:present-application-context:prendre:1s:72**: Complète la phrase avec prendre au présent de l’indicatif : Je ___ la dernière part de tarte. Réponse : **prends**.
+- **v3-granular-forms:present-application-context:prendre:2s:73**: Complète la phrase avec prendre au présent de l’indicatif : Tu ___ soin de ces plantes. Réponse : **prends**.
+- **v3-granular-forms:present-application-context:prendre:3s:74**: Complète la phrase avec prendre au présent de l’indicatif : Le gardien ___ les clés du portail. Réponse : **prend**.
+- **v3-granular-forms:present-application-context:prendre:1p:75**: Complète la phrase avec prendre au présent de l’indicatif : Nous ___ le sentier de gauche. Réponse : **prenons**.
+- **v3-granular-forms:present-application-context:prendre:2p:76**: Complète la phrase avec prendre au présent de l’indicatif : Vous ___ votre repas dehors. Réponse : **prenez**.
+- **v3-granular-forms:present-application-context:prendre:3p:77**: Complète la phrase avec prendre au présent de l’indicatif : Les touristes ___ un plan de la ville. Réponse : **prennent**.
+- **v3-granular-forms:present-application-context:prendre:1s:78**: Complète la phrase avec prendre au présent de l’indicatif : Je ___ une serviette propre. Réponse : **prends**.
+- **v3-granular-forms:present-application-context:prendre:2s:79**: Complète la phrase avec prendre au présent de l’indicatif : Tu ___ la parole après Inès. Réponse : **prends**.
+- **v3-granular-forms:present-application-context:prendre:3s:80**: Complète la phrase avec prendre au présent de l’indicatif : La réunion ___ fin à dix heures. Réponse : **prend**.
+- **v3-granular-forms:present-application-context:prendre:1p:81**: Complète la phrase avec prendre au présent de l’indicatif : Nous ___ place devant la scène. Réponse : **prenons**.
+- **v3-granular-forms:present-application-context:prendre:2p:82**: Complète la phrase avec prendre au présent de l’indicatif : Vous ___ une décision ensemble. Réponse : **prenez**.
+- **v3-granular-forms:present-application-context:prendre:3p:83**: Complète la phrase avec prendre au présent de l’indicatif : Les pompiers ___ la route du village. Réponse : **prennent**.
+- **v3-granular-forms:present-application-context:venir:1s:84**: Complète la phrase avec venir au présent de l’indicatif : Je ___ rendre ton casque. Réponse : **viens**.
+- **v3-granular-forms:present-application-context:venir:2s:85**: Complète la phrase avec venir au présent de l’indicatif : Tu ___ me montrer ta bande dessinée. Réponse : **viens**.
+- **v3-granular-forms:present-application-context:venir:3s:86**: Complète la phrase avec venir au présent de l’indicatif : Le facteur ___ chaque matin. Réponse : **vient**.
+- **v3-granular-forms:present-application-context:venir:1p:87**: Complète la phrase avec venir au présent de l’indicatif : Nous ___ apporter des couvertures. Réponse : **venons**.
+- **v3-granular-forms:present-application-context:venir:2p:88**: Complète la phrase avec venir au présent de l’indicatif : Vous ___ du quartier voisin. Réponse : **venez**.
+- **v3-granular-forms:present-application-context:venir:3p:89**: Complète la phrase avec venir au présent de l’indicatif : Les visiteurs ___ admirer les tableaux. Réponse : **viennent**.
+- **v3-granular-forms:present-application-context:venir:1s:90**: Complète la phrase avec venir au présent de l’indicatif : Je ___ poser une question. Réponse : **viens**.
+- **v3-granular-forms:present-application-context:venir:2s:91**: Complète la phrase avec venir au présent de l’indicatif : Tu ___ récupérer ton parapluie. Réponse : **viens**.
+- **v3-granular-forms:present-application-context:venir:3s:92**: Complète la phrase avec venir au présent de l’indicatif : La lumière ___ de cette fenêtre. Réponse : **vient**.
+- **v3-granular-forms:present-application-context:venir:1p:93**: Complète la phrase avec venir au présent de l’indicatif : Nous ___ soutenir les coureurs. Réponse : **venons**.
+- **v3-granular-forms:present-application-context:venir:2p:94**: Complète la phrase avec venir au présent de l’indicatif : Vous ___ goûter notre soupe. Réponse : **venez**.
+- **v3-granular-forms:present-application-context:venir:3p:95**: Complète la phrase avec venir au présent de l’indicatif : Les cris ___ du terrain de sport. Réponse : **viennent**.
+- **v3-granular-forms:present-application-context:partir:1s:96**: Complète la phrase avec partir au présent de l’indicatif : Je ___ pour Lyon samedi. Réponse : **pars**.
+- **v3-granular-forms:present-application-context:partir:2s:97**: Complète la phrase avec partir au présent de l’indicatif : Tu ___ avant la fin du film. Réponse : **pars**.
+- **v3-granular-forms:present-application-context:partir:3s:98**: Complète la phrase avec partir au présent de l’indicatif : Le bateau ___ du port. Réponse : **part**.
+- **v3-granular-forms:present-application-context:partir:1p:99**: Complète la phrase avec partir au présent de l’indicatif : Nous ___ explorer la forêt. Réponse : **partons**.
+- **v3-granular-forms:present-application-context:partir:2p:100**: Complète la phrase avec partir au présent de l’indicatif : Vous ___ sans vos bagages. Réponse : **partez**.
+- **v3-granular-forms:present-application-context:partir:3p:101**: Complète la phrase avec partir au présent de l’indicatif : Les oiseaux ___ vers le sud. Réponse : **partent**.
+- **v3-granular-forms:present-application-context:partir:1s:102**: Complète la phrase avec partir au présent de l’indicatif : Je ___ à la recherche du chat. Réponse : **pars**.
+- **v3-granular-forms:present-application-context:partir:2s:103**: Complète la phrase avec partir au présent de l’indicatif : Tu ___ avec une gourde pleine. Réponse : **pars**.
+- **v3-granular-forms:present-application-context:partir:3s:104**: Complète la phrase avec partir au présent de l’indicatif : La fusée ___ dans quelques secondes. Réponse : **part**.
+- **v3-granular-forms:present-application-context:partir:1p:105**: Complète la phrase avec partir au présent de l’indicatif : Nous ___ du même point. Réponse : **partons**.
+- **v3-granular-forms:present-application-context:partir:2p:106**: Complète la phrase avec partir au présent de l’indicatif : Vous ___ au lever du soleil. Réponse : **partez**.
+- **v3-granular-forms:present-application-context:partir:3p:107**: Complète la phrase avec partir au présent de l’indicatif : Les voyageurs ___ pour la montagne. Réponse : **partent**.
+- **v3-granular-forms:present-application-context:sortir:1s:108**: Complète la phrase avec sortir au présent de l’indicatif : Je ___ les assiettes du placard. Réponse : **sors**.
+- **v3-granular-forms:present-application-context:sortir:2s:109**: Complète la phrase avec sortir au présent de l’indicatif : Tu ___ de ton atelier. Réponse : **sors**.
+- **v3-granular-forms:present-application-context:sortir:3s:110**: Complète la phrase avec sortir au présent de l’indicatif : Le lapin ___ de sa cachette. Réponse : **sort**.
+- **v3-granular-forms:present-application-context:sortir:1p:111**: Complète la phrase avec sortir au présent de l’indicatif : Nous ___ prendre l’air. Réponse : **sortons**.
+- **v3-granular-forms:present-application-context:sortir:2p:112**: Complète la phrase avec sortir au présent de l’indicatif : Vous ___ vos instruments. Réponse : **sortez**.
+- **v3-granular-forms:present-application-context:sortir:3p:113**: Complète la phrase avec sortir au présent de l’indicatif : Les spectateurs ___ de la salle. Réponse : **sortent**.
+- **v3-granular-forms:present-application-context:sortir:1s:114**: Complète la phrase avec sortir au présent de l’indicatif : Je ___ mon carnet de croquis. Réponse : **sors**.
+- **v3-granular-forms:present-application-context:sortir:2s:115**: Complète la phrase avec sortir au présent de l’indicatif : Tu ___ par le petit portail. Réponse : **sors**.
+- **v3-granular-forms:present-application-context:sortir:3s:116**: Complète la phrase avec sortir au présent de l’indicatif : La fumée ___ de la cheminée. Réponse : **sort**.
+- **v3-granular-forms:present-application-context:sortir:1p:117**: Complète la phrase avec sortir au présent de l’indicatif : Nous ___ de chez le coiffeur. Réponse : **sortons**.
+- **v3-granular-forms:present-application-context:sortir:2p:118**: Complète la phrase avec sortir au présent de l’indicatif : Vous ___ les cartons du garage. Réponse : **sortez**.
+- **v3-granular-forms:present-application-context:sortir:3p:119**: Complète la phrase avec sortir au présent de l’indicatif : Les poussins ___ de leurs œufs. Réponse : **sortent**.
+- **v3-granular-forms:present-application-context:dire:1s:120**: Complète la phrase avec dire au présent de l’indicatif : Je ___ merci au chauffeur. Réponse : **dis**.
+- **v3-granular-forms:present-application-context:dire:2s:121**: Complète la phrase avec dire au présent de l’indicatif : Tu ___ ce mot trop vite. Réponse : **dis**.
+- **v3-granular-forms:present-application-context:dire:3s:122**: Complète la phrase avec dire au présent de l’indicatif : Le médecin ___ de se reposer. Réponse : **dit**.
+- **v3-granular-forms:present-application-context:dire:1p:123**: Complète la phrase avec dire au présent de l’indicatif : Nous ___ au revoir à nos cousins. Réponse : **disons**.
+- **v3-granular-forms:present-application-context:dire:2p:124**: Complète la phrase avec dire au présent de l’indicatif : Vous ___ pourquoi vous êtes absents. Réponse : **dites**.
+- **v3-granular-forms:present-application-context:dire:3p:125**: Complète la phrase avec dire au présent de l’indicatif : Les témoins ___ ce qu’ils ont vu. Réponse : **disent**.
+- **v3-granular-forms:present-application-context:dire:1s:126**: Complète la phrase avec dire au présent de l’indicatif : Je ___ la date à voix haute. Réponse : **dis**.
+- **v3-granular-forms:present-application-context:dire:2s:127**: Complète la phrase avec dire au présent de l’indicatif : Tu ___ ton adresse au livreur. Réponse : **dis**.
+- **v3-granular-forms:present-application-context:dire:3s:128**: Complète la phrase avec dire au présent de l’indicatif : Cette pancarte ___ de ralentir. Réponse : **dit**.
+- **v3-granular-forms:present-application-context:dire:1p:129**: Complète la phrase avec dire au présent de l’indicatif : Nous ___ le nom de notre chanson préférée. Réponse : **disons**.
+- **v3-granular-forms:present-application-context:dire:2p:130**: Complète la phrase avec dire au présent de l’indicatif : Vous ___ oui à cette proposition. Réponse : **dites**.
+- **v3-granular-forms:present-application-context:dire:3p:131**: Complète la phrase avec dire au présent de l’indicatif : Les enfants ___ bonne nuit à leur grand-mère. Réponse : **disent**.
+- **v3-granular-forms:present-application-context:voir:1s:132**: Complète la phrase avec voir au présent de l’indicatif : Je ___ une montgolfière au loin. Réponse : **vois**.
+- **v3-granular-forms:present-application-context:voir:2s:133**: Complète la phrase avec voir au présent de l’indicatif : Tu ___ le phare depuis la plage. Réponse : **vois**.
+- **v3-granular-forms:present-application-context:voir:3s:134**: Complète la phrase avec voir au présent de l’indicatif : Le chat ___ un oiseau. Réponse : **voit**.
+- **v3-granular-forms:present-application-context:voir:1p:135**: Complète la phrase avec voir au présent de l’indicatif : Nous ___ les montagnes depuis le toit. Réponse : **voyons**.
+- **v3-granular-forms:present-application-context:voir:2p:136**: Complète la phrase avec voir au présent de l’indicatif : Vous ___ une différence entre ces photos. Réponse : **voyez**.
+- **v3-granular-forms:present-application-context:voir:3p:137**: Complète la phrase avec voir au présent de l’indicatif : Les astronomes ___ une nouvelle comète. Réponse : **voient**.
+- **v3-granular-forms:present-application-context:voir:1s:138**: Complète la phrase avec voir au présent de l’indicatif : Je ___ mon reflet dans la vitre. Réponse : **vois**.
+- **v3-granular-forms:present-application-context:voir:2s:139**: Complète la phrase avec voir au présent de l’indicatif : Tu ___ la fin du tunnel. Réponse : **vois**.
+- **v3-granular-forms:present-application-context:voir:3s:140**: Complète la phrase avec voir au présent de l’indicatif : La conductrice ___ le feu rouge. Réponse : **voit**.
+- **v3-granular-forms:present-application-context:voir:1p:141**: Complète la phrase avec voir au présent de l’indicatif : Nous ___ un arc-en-ciel. Réponse : **voyons**.
+- **v3-granular-forms:present-application-context:voir:2p:142**: Complète la phrase avec voir au présent de l’indicatif : Vous ___ le sommet à travers les nuages. Réponse : **voyez**.
+- **v3-granular-forms:present-application-context:voir:3p:143**: Complète la phrase avec voir au présent de l’indicatif : Les plongeurs ___ des poissons colorés. Réponse : **voient**.
+- **v3-granular-forms:present-application-context:pouvoir:1s:144**: Complète la phrase avec pouvoir au présent de l’indicatif : Je ___ porter cette boîte. Réponse : **peux**.
+- **v3-granular-forms:present-application-context:pouvoir:2s:145**: Complète la phrase avec pouvoir au présent de l’indicatif : Tu ___ emprunter mon stylo. Réponse : **peux**.
+- **v3-granular-forms:present-application-context:pouvoir:3s:146**: Complète la phrase avec pouvoir au présent de l’indicatif : Le public ___ poser des questions. Réponse : **peut**.
+- **v3-granular-forms:present-application-context:pouvoir:1p:147**: Complète la phrase avec pouvoir au présent de l’indicatif : Nous ___ construire un abri. Réponse : **pouvons**.
+- **v3-granular-forms:present-application-context:pouvoir:2p:148**: Complète la phrase avec pouvoir au présent de l’indicatif : Vous ___ consulter le plan. Réponse : **pouvez**.
+- **v3-granular-forms:present-application-context:pouvoir:3p:149**: Complète la phrase avec pouvoir au présent de l’indicatif : Les passagers ___ descendre ici. Réponse : **peuvent**.
+- **v3-granular-forms:present-application-context:pouvoir:1s:150**: Complète la phrase avec pouvoir au présent de l’indicatif : Je ___ traduire cette phrase. Réponse : **peux**.
+- **v3-granular-forms:present-application-context:pouvoir:2s:151**: Complète la phrase avec pouvoir au présent de l’indicatif : Tu ___ ouvrir ton cadeau. Réponse : **peux**.
+- **v3-granular-forms:present-application-context:pouvoir:3s:152**: Complète la phrase avec pouvoir au présent de l’indicatif : Cette clé ___ tourner dans la serrure. Réponse : **peut**.
+- **v3-granular-forms:present-application-context:pouvoir:1p:153**: Complète la phrase avec pouvoir au présent de l’indicatif : Nous ___ partager le trajet. Réponse : **pouvons**.
+- **v3-granular-forms:present-application-context:pouvoir:2p:154**: Complète la phrase avec pouvoir au présent de l’indicatif : Vous ___ éteindre la lumière. Réponse : **pouvez**.
+- **v3-granular-forms:present-application-context:pouvoir:3p:155**: Complète la phrase avec pouvoir au présent de l’indicatif : Les bénévoles ___ préparer la salle. Réponse : **peuvent**.
+- **v3-granular-forms:present-application-context:vouloir:1s:156**: Complète la phrase avec vouloir au présent de l’indicatif : Je ___ visiter cette île. Réponse : **veux**.
+- **v3-granular-forms:present-application-context:vouloir:2s:157**: Complète la phrase avec vouloir au présent de l’indicatif : Tu ___ devenir vétérinaire. Réponse : **veux**.
+- **v3-granular-forms:present-application-context:vouloir:3s:158**: Complète la phrase avec vouloir au présent de l’indicatif : Le client ___ échanger son billet. Réponse : **veut**.
+- **v3-granular-forms:present-application-context:vouloir:1p:159**: Complète la phrase avec vouloir au présent de l’indicatif : Nous ___ planter des arbres. Réponse : **voulons**.
+- **v3-granular-forms:present-application-context:vouloir:2p:160**: Complète la phrase avec vouloir au présent de l’indicatif : Vous ___ raconter votre voyage. Réponse : **voulez**.
+- **v3-granular-forms:present-application-context:vouloir:3p:161**: Complète la phrase avec vouloir au présent de l’indicatif : Les voisins ___ nettoyer la plage. Réponse : **veulent**.
+- **v3-granular-forms:present-application-context:vouloir:1s:162**: Complète la phrase avec vouloir au présent de l’indicatif : Je ___ goûter ce fruit. Réponse : **veux**.
+- **v3-granular-forms:present-application-context:vouloir:2s:163**: Complète la phrase avec vouloir au présent de l’indicatif : Tu ___ photographier le coucher du soleil. Réponse : **veux**.
+- **v3-granular-forms:present-application-context:vouloir:3s:164**: Complète la phrase avec vouloir au présent de l’indicatif : La chanteuse ___ remercier son public. Réponse : **veut**.
+- **v3-granular-forms:present-application-context:vouloir:1p:165**: Complète la phrase avec vouloir au présent de l’indicatif : Nous ___ apprendre cette danse. Réponse : **voulons**.
+- **v3-granular-forms:present-application-context:vouloir:2p:166**: Complète la phrase avec vouloir au présent de l’indicatif : Vous ___ dessiner les costumes. Réponse : **voulez**.
+- **v3-granular-forms:present-application-context:vouloir:3p:167**: Complète la phrase avec vouloir au présent de l’indicatif : Les joueurs ___ améliorer leur défense. Réponse : **veulent**.
+- **v3-granular-forms:present-application-context:savoir:1s:168**: Complète la phrase avec savoir au présent de l’indicatif : Je ___ préparer une omelette. Réponse : **sais**.
+- **v3-granular-forms:present-application-context:savoir:2s:169**: Complète la phrase avec savoir au présent de l’indicatif : Tu ___ où se cache la clé. Réponse : **sais**.
+- **v3-granular-forms:present-application-context:savoir:3s:170**: Complète la phrase avec savoir au présent de l’indicatif : Le pilote ___ lire cette carte. Réponse : **sait**.
+- **v3-granular-forms:present-application-context:savoir:1p:171**: Complète la phrase avec savoir au présent de l’indicatif : Nous ___ reconnaître ce symbole. Réponse : **savons**.
+- **v3-granular-forms:present-application-context:savoir:2p:172**: Complète la phrase avec savoir au présent de l’indicatif : Vous ___ résoudre cette énigme. Réponse : **savez**.
+- **v3-granular-forms:present-application-context:savoir:3p:173**: Complète la phrase avec savoir au présent de l’indicatif : Les enfants ___ attacher leurs lacets. Réponse : **savent**.
+- **v3-granular-forms:present-application-context:savoir:1s:174**: Complète la phrase avec savoir au présent de l’indicatif : Je ___ quand passe le bus. Réponse : **sais**.
+- **v3-granular-forms:present-application-context:savoir:2s:175**: Complète la phrase avec savoir au présent de l’indicatif : Tu ___ fabriquer un cerf-volant. Réponse : **sais**.
+- **v3-granular-forms:present-application-context:savoir:3s:176**: Complète la phrase avec savoir au présent de l’indicatif : La guide ___ répondre aux questions. Réponse : **sait**.
+- **v3-granular-forms:present-application-context:savoir:1p:177**: Complète la phrase avec savoir au présent de l’indicatif : Nous ___ pourquoi la glace fond. Réponse : **savons**.
+- **v3-granular-forms:present-application-context:savoir:2p:178**: Complète la phrase avec savoir au présent de l’indicatif : Vous ___ garder un secret. Réponse : **savez**.
+- **v3-granular-forms:present-application-context:savoir:3p:179**: Complète la phrase avec savoir au présent de l’indicatif : Les secouristes ___ pratiquer les premiers gestes. Réponse : **savent**.
+- **v3-granular-forms:present-application-context:devoir:1s:180**: Complète la phrase avec devoir au présent de l’indicatif : Je ___ nourrir les poissons. Réponse : **dois**.
+- **v3-granular-forms:present-application-context:devoir:2s:181**: Complète la phrase avec devoir au présent de l’indicatif : Tu ___ mettre un casque. Réponse : **dois**.
+- **v3-granular-forms:present-application-context:devoir:3s:182**: Complète la phrase avec devoir au présent de l’indicatif : Le livreur ___ trouver une autre entrée. Réponse : **doit**.
+- **v3-granular-forms:present-application-context:devoir:1p:183**: Complète la phrase avec devoir au présent de l’indicatif : Nous ___ économiser l’eau. Réponse : **devons**.
+- **v3-granular-forms:present-application-context:devoir:2p:184**: Complète la phrase avec devoir au présent de l’indicatif : Vous ___ signer ce formulaire. Réponse : **devez**.
+- **v3-granular-forms:present-application-context:devoir:3p:185**: Complète la phrase avec devoir au présent de l’indicatif : Les coureurs ___ franchir la ligne. Réponse : **doivent**.
+- **v3-granular-forms:present-application-context:devoir:1s:186**: Complète la phrase avec devoir au présent de l’indicatif : Je ___ rappeler mon cousin. Réponse : **dois**.
+- **v3-granular-forms:present-application-context:devoir:2s:187**: Complète la phrase avec devoir au présent de l’indicatif : Tu ___ peser les ingrédients. Réponse : **dois**.
+- **v3-granular-forms:present-application-context:devoir:3s:188**: Complète la phrase avec devoir au présent de l’indicatif : La gardienne ___ fermer le musée. Réponse : **doit**.
+- **v3-granular-forms:present-application-context:devoir:1p:189**: Complète la phrase avec devoir au présent de l’indicatif : Nous ___ respecter le silence. Réponse : **devons**.
+- **v3-granular-forms:present-application-context:devoir:2p:190**: Complète la phrase avec devoir au présent de l’indicatif : Vous ___ attendre votre tour. Réponse : **devez**.
+- **v3-granular-forms:present-application-context:devoir:3p:191**: Complète la phrase avec devoir au présent de l’indicatif : Les campeurs ___ éteindre leur feu. Réponse : **doivent**.
 
-All six paths still require question, lesson, overlap, prerequisite and calibration review. The full French release also needs the other targets; this is a review package for one part of that release, not a reduced release scope.
+All eighteen paths still require question, lesson, overlap, prerequisite and calibration review. The full French release also needs the other targets; this is a review package for one part of that release, not a reduced release scope.
 
 Reproduce: `npx tsx scripts/build-conjugation-pathway-review.mts`; append `--check` to verify.

@@ -18,15 +18,7 @@ it("plans disjoint draft pools with real spelling-feature coverage without chang
   const assessment = compile(assembled.bank), before = JSON.stringify({ assessment, bank: assembled.bank, lessons: CONJUGATION_TEACHING });
   const report = reviewConjugationPathways(assessment, assembled.bank, artifact.taxonomy, CONJUGATION_TEACHING);
   expect(report.rows).toHaveLength(18);
-  const contextualTargets = new Set(["pattern:regular_er", "pattern:regular_ir", "pattern:spelling_ger", "pattern:spelling_cer", "verb:aller", "verb:faire"]);
-  const contextualRows = report.rows.filter(row => contextualTargets.has(row.facetKey!.split("::")[1]));
-  expect(contextualRows).toHaveLength(6);
-  for (const row of report.rows.filter(row => !contextualRows.includes(row))) {
-    expect(row.releaseReady).toBe(false);
-    expect(row.sentenceContextQuestions).toBe(0);
-    expect(row.sentenceApplicationPools.status).toBe("insufficient_coverage");
-  }
-  for (const row of contextualRows) {
+  for (const row of report.rows) {
     expect(row.releaseReady).toBe(false);
     expect(row.proposedAllocationStatus).toBe("allocated");
     expect(row.unapprovedCandidates).toBeGreaterThan(0);
@@ -57,6 +49,8 @@ it("adds varied present-form application without copying guided sentences or awa
     "vais", "vas", "va", "allons", "allez", "vont", "vais", "vas", "va", "allons", "allez", "vont",
     "fais", "fais", "fait", "faisons", "faites", "font", "fais", "fais", "fait", "faisons", "faites", "font",
   ];
+  const irregularForms = [["suis", "es", "est", "sommes", "êtes", "sont"], ["ai", "as", "a", "avons", "avez", "ont"], ["prends", "prends", "prend", "prenons", "prenez", "prennent"], ["viens", "viens", "vient", "venons", "venez", "viennent"], ["pars", "pars", "part", "partons", "partez", "partent"], ["sors", "sors", "sort", "sortons", "sortez", "sortent"], ["dis", "dis", "dit", "disons", "dites", "disent"], ["vois", "vois", "voit", "voyons", "voyez", "voient"], ["peux", "peux", "peut", "pouvons", "pouvez", "peuvent"], ["veux", "veux", "veut", "voulons", "voulez", "veulent"], ["sais", "sais", "sait", "savons", "savez", "savent"], ["dois", "dois", "doit", "devons", "devez", "doivent"]];
+  for (const paradigm of irregularForms) expected.push(...paradigm, ...paradigm);
   expect(PRESENT_APPLICATION_CONTEXTS.map(([verb, person]) => conjugate(verb, "present", person))).toEqual(expected);
   const taught = CONJUGATION_TEACHING.flatMap(lesson => [...lesson.steps.map(step => step.exampleFr), ...lesson.practice.map(exercise => exercise.explanationFr)]).join("\n");
   const targets = new Map<string, string[]>();
@@ -71,7 +65,7 @@ it("adds varied present-form application without copying guided sentences or awa
     const facet = annotation.facetKey!;
     targets.set(facet, [...(targets.get(facet) ?? []), person]);
   }
-  expect(targets.size).toBe(4);
+  expect(targets.size).toBe(16);
   for (const persons of targets.values()) {
     expect(persons).toHaveLength(12);
     for (const person of ["1s", "2s", "3s", "1p", "2p", "3p"]) expect(persons.filter(value => value === person)).toHaveLength(2);

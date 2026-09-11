@@ -72,10 +72,16 @@ export async function expandConjugationDraft(bank:CanonicalDiagnosticBankArtifac
   const node=taxonomy.nodes.find(node=>node.key===target.nodeKey)!;
   const evidence=node.evidence.find(evidence=>evidence.expectation==="controlled_production"&&evidence.modality==="writing")!;
   const answer=conjugate(verb,"present",person);
+  const completedSentence=sentence.replace("___",answer);
+  // An individual-verb target necessarily revisits the same lemma. Identify
+  // the sentence application separately, while retaining the lemma as exposure.
+  // Include the completed correction so a taught answer cannot evade overlap
+  // detection merely because the question itself contains a blank.
+  const individualVerb=target.facetKey.includes("::verb:");
   const raw:GeneratedItem={nodeKey:node.key,strand:"conjugaison",modality:"writing",learnerMode:"shared",responseType:"short_answer",
    promptFr:`Complète la phrase avec ${verb} au présent de l’indicatif : ${sentence}`,
    instructionsFr:"Écris seulement le verbe manquant.",correctAnswer:answer,acceptableAnswers:[],validatorType:"conjugator",
-   validatorConfig:{verb,tense:"present",person,gender:"m",materialExposure:{words:[{lemma:verb,form:verb}],sentences:[sentence]}},difficulty:50};
+   validatorConfig:{verb,tense:"present",person,gender:"m",...(individualVerb?{sentenceApplication:sentence}:{}),materialExposure:{words:[{lemma:verb,form:verb}],sentences:individualVerb?[sentence,completedSentence]:[sentence],...(individualVerb?{assessed:{sentences:[sentence,completedSentence]}}:{})}},difficulty:50};
   const surface=`${node.key}:${diagnosticItemSurfaceIdentity(raw)}`;
   if(surfaces.has(surface)){skipped.push({key,reason:"Existing student-facing surface"});continue;}surfaces.add(surface);
   const checked=await runGates(raw,context);

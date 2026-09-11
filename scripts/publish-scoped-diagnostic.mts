@@ -1,3 +1,4 @@
+import {granularBankOptions} from "./lib/granular-bank-options";
 /** Operator workflow:
  * node --conditions=react-server --import tsx scripts/publish-scoped-diagnostic.mts export-bank /tmp/french-v3-bank.json
  * DIAGNOSTIC_TAXONOMY_PATH=generated/french-taxonomy-v3.json npx tsx scripts/import-diagnostic-bank-v2.mts /tmp/french-v3-bank.json
@@ -20,7 +21,7 @@ if(mode==="export-bank"&&!process.argv[3])throw Error("Output path is required")
 if(mode==="publish"&&!process.argv[3]?.trim())throw Error("An immutable release key is required");
 const candidate=read("docs/diagnostic/v3-scoped-review-candidate.json");
 const taxonomy=read("generated/french-taxonomy-v3.json");
-const {bank}=assembleDraftBank(read("generated/diagnostic-bank-v3-draft.json"),taxonomy.taxonomy,FRENCH_DRAFT_EXPANSION_SOURCES.map(name=>read(`generated/french-v3-${name}-expansion.json`)));
+const {bank}=assembleDraftBank(read("generated/diagnostic-bank-v3-draft.json"),taxonomy.taxonomy,FRENCH_DRAFT_EXPANSION_SOURCES.map(name=>read(`generated/french-v3-${name}-expansion.json`)),granularBankOptions(process.argv.slice(2)));
 const bundle:AssessmentBundle={assessment:candidate.assessment,bank,taxonomyId:"unpublished",bankId:"unpublished",teachingContent:candidate.teachingContent,activities:candidate.activities.map((activity:object)=>({...activity,status:"published"}))};
 const prepared=prepareParallelPublication(bundle);
 if(!prepared.ready)throw Error("Candidate still has missing instruction or fresh checks");

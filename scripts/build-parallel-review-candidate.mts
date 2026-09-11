@@ -1,3 +1,4 @@
+import {granularBankOptions} from "./lib/granular-bank-options";
 import {FRENCH_TEACHING_DRAFTS} from "../src/lib/diagnostic/granular/draft-teaching-catalogue";
 import {teachingContentChecksum,validatePublishedTeaching,type ParallelReviewTeachingContent} from "../src/lib/diagnostic/granular/teaching-content";
 import {questionAssessedMaterialKeys,teachingMaterialKeys} from "../src/lib/diagnostic/granular/material-annotations";
@@ -18,7 +19,7 @@ import {buildLearningCheckRegistry} from "../src/lib/diagnostic/granular/check-r
 import type {ParallelReviewPolicy} from "../src/lib/diagnostic/granular/parallel-review-policy";
 const read=(path:string)=>JSON.parse(readFileSync(path,"utf8"));
 const artifact=read("generated/french-taxonomy-v3.json"),base=read("generated/diagnostic-bank-v3-draft.json");
-const assembled=assembleDraftBank(base,artifact.taxonomy,FRENCH_DRAFT_EXPANSION_SOURCES.map(name=>read(`generated/french-v3-${name}-expansion.json`)));
+const assembled=assembleDraftBank(base,artifact.taxonomy,FRENCH_DRAFT_EXPANSION_SOURCES.map(name=>read(`generated/french-v3-${name}-expansion.json`)),granularBankOptions(process.argv.slice(2)));
 const {bank}=assembled;
 const corrections=[...read("docs/diagnostic/v3-answer-corrections.json"),...read("docs/diagnostic/v3-item-repairs.json")];
 const selected=new Set([...assembled.annotations.map(row=>row.itemKey),...corrections.map((row:{itemKey:string})=>row.itemKey)]);

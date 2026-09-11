@@ -1,3 +1,4 @@
+import {granularBankOptions} from "./lib/granular-bank-options";
 import {readFileSync,writeFileSync} from "node:fs";
 import {checksum} from "../src/lib/taxonomy/validate";
 import {applyQuestionPoolScope} from "../src/lib/diagnostic/granular/question-pools";
@@ -16,7 +17,7 @@ const include=(id:string)=>{if(included.has(id))return;const skill=source.skills
 ready.forEach(include);
 const assessment=applyQuestionPoolScope(source,{version:"french-granular-release-scope-v1",assessmentSkillIds:[...included].sort(),teachingSkillIds:[...ready].sort(),limitationFr:"Ce premier bilan couvre une partie des compétences. Les autres restent à vérifier au fil du parcours."});
 const artifact=read("generated/french-taxonomy-v3.json");
-const {bank}=assembleDraftBank(read("generated/diagnostic-bank-v3-draft.json"),artifact.taxonomy,FRENCH_DRAFT_EXPANSION_SOURCES.map(name=>read(`generated/french-v3-${name}-expansion.json`)));
+const {bank}=assembleDraftBank(read("generated/diagnostic-bank-v3-draft.json"),artifact.taxonomy,FRENCH_DRAFT_EXPANSION_SOURCES.map(name=>read(`generated/french-v3-${name}-expansion.json`)),granularBankOptions(process.argv.slice(2)));
 const lessonIds=new Set(teachingReadiness.filter((row:{freshCheckAvailable:boolean})=>row.freshCheckAvailable).map((row:{lessonId:string})=>row.lessonId));
 const probeIds=new Set(assessment.probes.map(probe=>probe.id));
 const teachingContent:ParallelReviewTeachingContent[]=prepared.teachingContent.filter((lesson:{id:string})=>lessonIds.has(lesson.id)).map((lesson:ParallelReviewTeachingContent)=>({...lesson,assessmentExposureIds:lesson.assessmentExposureIds.filter(id=>probeIds.has(id))}));

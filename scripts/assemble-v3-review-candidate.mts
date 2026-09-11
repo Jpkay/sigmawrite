@@ -1,3 +1,4 @@
+import {granularBankOptions} from "./lib/granular-bank-options";
 import {FRENCH_DRAFT_EXPANSION_SOURCES} from "../src/lib/diagnostic/granular/draft-expansion-sources";
 import {readFileSync,writeFileSync} from "node:fs";
 import {assembleDraftBank} from "../src/lib/diagnostic/granular/assemble-drafts";
@@ -9,7 +10,7 @@ import {buildV3Facets} from "../src/lib/diagnostic/granular/facets";
 const read=(path:string)=>JSON.parse(readFileSync(path,"utf8"));
 const artifact=read("generated/french-taxonomy-v3.json"),base=read("generated/diagnostic-bank-v3-draft.json");
 const baseAnnotations=validateAnnotationReviewDraft(read("docs/diagnostic/v3-facet-annotations.json"),base);
-const assembled=assembleDraftBank(base,artifact.taxonomy,FRENCH_DRAFT_EXPANSION_SOURCES.map(name=>read(`generated/french-v3-${name}-expansion.json`)));
+const assembled=assembleDraftBank(base,artifact.taxonomy,FRENCH_DRAFT_EXPANSION_SOURCES.map(name=>read(`generated/french-v3-${name}-expansion.json`)),granularBankOptions(process.argv.slice(2)));
 const annotations=[...baseAnnotations,...assembled.annotations];
 const adapted=applyFacetTargets(adaptV3ForAssessment({artifact,bank:assembled.bank}),buildV3Facets(artifact.taxonomy),assembled.bank,annotations).assessment;
 const packet={version:"french-v3-consolidated-review-v1",status:"draft_requires_review",sourceBankChecksum:assembled.sourceBankChecksum,sources:assembled.sources,bankChecksum:assembled.bank.manifest!.checksum,annotations};

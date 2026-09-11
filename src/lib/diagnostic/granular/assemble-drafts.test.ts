@@ -25,3 +25,14 @@ it("rejects stale provenance, missing mappings, duplicate sources and inserted a
  const approved=structuredClone(expansion);approved.items[0].reviewStatus="human_approved";
  expect(()=>assembleDraftBank(bank,taxonomy,[resign(approved)])).toThrow(/introduce approval/);
 });
+it("creates a separate immutable bank identity without rewriting items or approvals",()=>{
+ const original=assembleDraftBank(bank,taxonomy,[expansion]);
+ const revision=assembleDraftBank(bank,taxonomy,[expansion],{revision:2});
+ expect(revision.bank.bank).toEqual({key:"french-diagnostic-bank-v3-r2",version:"3.0.0-r2"});
+ expect(revision.bank.items).toEqual(original.bank.items);
+ expect(revision.annotations).toEqual(original.annotations);
+ expect(revision.bank.manifest!.checksum).not.toBe(original.bank.manifest!.checksum);
+ expect(revision.bank.manifest!.eligibleItemCount).toBe(original.bank.manifest!.eligibleItemCount);
+ expect(bank.bank).toEqual({key:"french-diagnostic-bank-v3",version:"3.0.0"});
+ for(const value of [0,-1,1.5,NaN,Infinity,Number.MAX_SAFE_INTEGER+1])expect(()=>assembleDraftBank(bank,taxonomy,[expansion],{revision:value})).toThrow(/positive integer/);
+});

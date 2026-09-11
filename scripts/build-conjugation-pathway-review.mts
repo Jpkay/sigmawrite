@@ -23,7 +23,7 @@ ${report.rows.map(row => `| ${row.titleFr} | ${row.eligibleQuestions} | ${row.un
 
 The companion JSON pins every lesson, question and target, retains all prerequisites and lists proposed disjoint question pools. Allocation checks the current evidence requirements, including the ger/cer spelling feature counts and verb-context diversity. It does not validate whether paraphrased isolated form prompts supply independent evidence.
 
-The original form questions ask for a verb given its subject and tense. New sentence-based application drafts now cover all six lesson targets. Teaching-overlap and pedagogical review are still needed before claiming contextual transfer. A new question ID or a rearranged instruction alone does not prove independence. Sentence counts refer to source-anchored annotations, not an automated semantic review.
+The original form questions ask for a verb given its subject and tense. New sentence-based application drafts now cover all eighteen lesson targets. Teaching-overlap and pedagogical review are still needed before claiming contextual transfer. A new question ID or a rearranged instruction alone does not prove independence. Sentence counts refer to source-anchored annotations, not an automated semantic review.
 
 ## Added sentence questions requiring review
 
@@ -31,7 +31,7 @@ These supplied-tense gaps exercise regular forms, individual verbs and the actua
 
 ${assembled.bank.items.filter(entry => entry.promptFamily === "sentence-form-application").map(entry => `- **${entry.itemKey}**: ${entry.item.promptFr} Réponse : **${entry.item.correctAnswer}**.`).join("\n")}
 
-All six paths still require question, lesson, overlap, prerequisite and calibration review. The full French release also needs the other targets; this is a review package for one part of that release, not a reduced release scope.
+All eighteen paths still require question, lesson, overlap, prerequisite and calibration review. The full French release also needs the other targets; this is a review package for one part of that release, not a reduced release scope.
 
 Reproduce: \`npx tsx scripts/build-conjugation-pathway-review.mts\`; append \`--check\` to verify.
 `;
