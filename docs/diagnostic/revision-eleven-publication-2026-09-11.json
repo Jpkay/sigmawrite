@@ -1,5 +1,5 @@
 {
-  "status": "frozen_import_and_build_running_not_published",
+  "status": "candidate_build_ready_bank_import_running_not_published",
   "sourceCommit": "0657d2a6",
   "frozenWorkspace": "/Users/jean-philippekayobotsi/.codex/release-workspaces/sigmawrite-r11-0657d2a6",
   "bankKey": "french-diagnostic-bank-v3-r11",
@@ -1034,7 +1034,12 @@
         "observations": 63,
         "refinements": 4
       }
-    }
+    },
+    "legacyDemoOnCandidate": {
+      "lessons": 11,
+      "onboardingRedirect": "passed"
+    },
+    "liveUpgradeVerifier": "Prepared and type-checked; not executed before bank publication"
   },
   "freshQA": {
     "username": "doves.granular.r11.default.qa",
@@ -1042,10 +1047,14 @@
     "sessionCreated": false
   },
   "remaining": [
-    "Wait for bank import and deployment completion without restarting live jobs",
+    "Wait for bank import completion without restarting the live job",
     "Verify relational bank and publish immutable v12 candidate",
     "Verify candidate default selection, full diagnostic and lesson journey, and completed-student upgrade",
     "Promote only after verification and check public behavior",
     "Continue full graph question coverage and owner review"
-  ]
+  ],
+  "bankId": "5116d841-302c-41bd-a025-350bfffb1986",
+  "lastObservedImportedMemberships": 2923,
+  "candidateDeploymentId": "dpl_kBk2uZ87bZNVqXDC8GTXMP7pewh9",
+  "candidateBuild": "Ready verified with Vercel inspect"
 }
