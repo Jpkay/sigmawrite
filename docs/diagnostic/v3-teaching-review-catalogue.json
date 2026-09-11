@@ -5,12 +5,153 @@
   "facetChecksum": "sha256:c1587bbcc3d7b86759a9aeee784f312a48e3d2706edac48ad2d1681957b44f73",
   "assessmentSourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
   "summary": {
-    "lessons": 160,
-    "guidedExercises": 896,
-    "targets": 160,
+    "lessons": 161,
+    "guidedExercises": 900,
+    "targets": 161,
     "missingExposureAnnotations": []
   },
   "rows": [
+    {
+      "lessonId": "french-v3-teaching:simple-negation:production",
+      "contentChecksum": "sha256:a8ee68549c0108eb81b52d01bc16733dcb3bd75f0e6c504a7f2ce2088c31c1f6",
+      "skillId": "construction_negation_simple::writing-controlled-production",
+      "nodeKey": "construction_negation_simple",
+      "facetKey": null,
+      "mode": "production",
+      "domain": "grammar",
+      "prerequisites": [
+        "construction_phrase_canonique::reading-analysis",
+        "construction_phrase_canonique::writing-controlled-production"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": true,
+        "unaidedRequired": true
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:0321cd08fcc261f30c6f3a285797e67ec5ca8d1436798e6cae0637524ca46cc1",
+        "sentence:sha256:04d3560f6bda24817d9df1f0d5a59940a41a272b24c4aa67082fb5ccbf70ccc7",
+        "sentence:sha256:0625334d3ee8aa057570b7d5a110083f8346e561b7af7dabb3cff9dc640b8f87",
+        "sentence:sha256:12259533c065cb75fe6993ac9f8518e2428b57433842d89b768f555e4465773c",
+        "sentence:sha256:41123d9717803546f01221dcc5244346ed3ad2c3a4cf9f4919e0dad0bd3d1f3e",
+        "sentence:sha256:4e00fc08374117b6c2c5bc5f57112d7facf568ae4fc3f6595caee7f70daebe29",
+        "sentence:sha256:5034c87604a04d5f6ab228922bd01ec0a5085c4291f1ea97353234e912b5b001",
+        "sentence:sha256:51d345e2d8a0008916692844db767ef82faf6dd0934bc9d3014af79505f90aaa",
+        "sentence:sha256:5c86eb25901d4235c2794500459d21cc8c6385317343fc8d4190442efa90e33b",
+        "sentence:sha256:61f18891130dc5b9e9355e6f423bd8a46b293b3c5c3a22edae94b28cf91c2129",
+        "sentence:sha256:95a5502e048ffcf3781432eaa6c539e121b5618482d91e115e2a15407348e2d2",
+        "sentence:sha256:a95c0f1778aef3f78f7a8910be5ccaca4c1d6dd06b5260df586559e227165cca",
+        "sentence:sha256:bcaf7562bb6c281fdf5665f4593511149d4248bf46f5c99d281fc6d3424a0e51",
+        "sentence:sha256:c8651467e9a0294b546b354eff9bbf150b87a21fdb53c7fc20a8a7e65f79196f",
+        "sentence:sha256:d31f8a6141f55b6b5cf1859f6b989dafd51ae58adef86e35aa659c1945b87a60",
+        "sentence:sha256:d7374a635ce009a9ed97c9d6cdeda2d4e0c11e051e0194a15940cdaf6b41ebe9",
+        "sentence:sha256:e3d9ebdf4154841cf0e2888d92307554ce47c6fc18d4b59e3b737eead95b13f5",
+        "sentence:sha256:e598393f33a5e6ced61ed00d19de547a6c9734ccb41ce02fcf2badb5cfa88f12",
+        "sentence:sha256:f28db1b5740657bdd6aa6b0df540131d2c6de453f987caaa4961d873479b941c",
+        "sentence:sha256:f7da9f42e87cdf3de67f88938fbcc69d0a881503747732205737212953bbc873"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:simple-negation:production",
+        "nodeKey": "construction_negation_simple",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire une phrase avec ne…pas",
+        "learnerQuestionFr": "Comment dire par écrit qu’une action n’a pas lieu ?",
+        "steps": [
+          {
+            "exampleFr": "Mina chante. → Mina ne chante pas.",
+            "explanationFr": "La seconde phrase dit que Mina ne fait pas cette action. Ne et pas entourent chante, le verbe conjugué. Cette construction s’appelle une négation."
+          },
+          {
+            "exampleFr": "Mina écoute. → Mina n’écoute pas.",
+            "explanationFr": "Devant une voyelle, ne devient n’. On garde pas après le verbe. À l’écrit soigné, on conserve les deux parties, même si ne disparaît souvent à l’oral."
+          },
+          {
+            "exampleFr": "Mina a dansé. → Mina n’a pas dansé.\nMina veut danser. → Mina ne veut pas danser.",
+            "explanationFr": "Repère la partie conjuguée : a dans le premier exemple, veut dans le second. Pas se place après cette partie, avant dansé ou danser."
+          },
+          {
+            "exampleFr": "Mina se repose. → Mina ne se repose pas.\nMina lui parle. → Mina ne lui parle pas.",
+            "explanationFr": "Quand un pronom comme se ou lui précède le verbe, place ne avant ce pronom. Pas reste après le verbe conjugué."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:simple-negation:1",
+            "promptFr": "Transforme avec ne…pas. Garde les autres mots : Sami joue dehors.",
+            "answerFr": "Sami ne joue pas dehors.",
+            "hintFr": "Repère le verbe conjugué et place les deux parties de la négation.",
+            "explanationFr": "Place ne avant joue et pas après joue."
+          },
+          {
+            "id": "guided:simple-negation:2",
+            "promptFr": "Transforme avec ne…pas. Garde les autres mots : La lampe éclaire la pièce.",
+            "answerFr": "La lampe n’éclaire pas la pièce.",
+            "hintFr": "Repère le verbe conjugué et place les deux parties de la négation.",
+            "explanationFr": "Devant éclaire, ne devient n’. Pas reste après le verbe."
+          },
+          {
+            "id": "guided:simple-negation:3",
+            "promptFr": "Transforme avec ne…pas. Garde les autres mots : Nora a rangé son sac.",
+            "answerFr": "Nora n’a pas rangé son sac.",
+            "hintFr": "Repère le verbe conjugué et place les deux parties de la négation.",
+            "explanationFr": "Encadre a, la partie conjuguée du verbe : n’a pas rangé."
+          },
+          {
+            "id": "guided:simple-negation:4",
+            "promptFr": "Transforme avec ne…pas. Garde les autres mots : Nous le cherchons.",
+            "answerFr": "Nous ne le cherchons pas.",
+            "hintFr": "Repère le verbe conjugué et place les deux parties de la négation.",
+            "explanationFr": "Ne se place avant le pronom le ; pas suit cherchons."
+          }
+        ],
+        "takeawayFr": "Place ne ou n’ avant le verbe et ses pronoms, puis pas après la partie conjuguée.",
+        "boundaryFr": "Ces phrases gardent leurs autres mots. Cette leçon ne couvre pas le changement un/des en de, ni jamais, rien, personne ou la portée de négations complexes.",
+        "materialExposure": {
+          "sentences": [
+            "Mina chante.",
+            "Mina ne chante pas.",
+            "Mina écoute.",
+            "Mina n’écoute pas.",
+            "Mina a dansé.",
+            "Mina n’a pas dansé.",
+            "Mina veut danser.",
+            "Mina ne veut pas danser.",
+            "Mina se repose.",
+            "Mina ne se repose pas.",
+            "Mina lui parle.",
+            "Mina ne lui parle pas.",
+            "Sami joue dehors.",
+            "Sami ne joue pas dehors.",
+            "La lampe éclaire la pièce.",
+            "La lampe n’éclaire pas la pièce.",
+            "Nora a rangé son sac.",
+            "Nora n’a pas rangé son sac.",
+            "Nous le cherchons.",
+            "Nous ne le cherchons pas."
+          ]
+        }
+      }
+    },
     {
       "lessonId": "french-v3-teaching:passe-compose:aller",
       "contentChecksum": "sha256:b875b0fe1bc53dfaaa718d8f9ac6b3e90be2cd451643ffbae744d10e5e48d140",
@@ -24343,5 +24484,5 @@
       }
     }
   ],
-  "checksum": "sha256:ff1a97fe46396ac07b6df7bd963d204ad42323ba56769cd9db754e67ba23bc39"
+  "checksum": "sha256:280d4dc63b66df4a7a24d3cd1cd785aa2750508996b945d39fe1f67c810e4a20"
 }
