@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "bank": {
-    "key": "french-diagnostic-bank-v3-r10",
-    "version": "3.0.0-r10"
+    "key": "french-diagnostic-bank-v3-r11",
+    "version": "3.0.0-r11"
   },
   "taxonomy": {
     "releaseKey": "french-taxonomy-v3",
@@ -37491,6 +37491,1238 @@
         "verdict": "needs_human_review"
       },
       "reviewStatus": "needs_human_review"
+    },
+    {
+      "itemKey": "v3-demonstrative-reference-genres:informational-books",
+      "item": {
+        "nodeKey": "resoudre_demonstratif",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLa médiathèque prête des romans et des dictionnaires. Ceux-ci servent à chercher le sens des mots. Le prêt dure trois semaines.\n\nDans « Ceux-ci servent à chercher le sens des mots. », qui ou que désigne « Ceux-ci » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-demonstrative-reference-genres:informational-books",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "La médiathèque prête des romans et des dictionnaires. Ceux-ci servent à chercher le sens des mots. Le prêt dure trois semaines.",
+            "choices": [
+              {
+                "quoteFr": "La médiathèque prête des romans et des dictionnaires.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Ceux-ci servent à chercher le sens des mots.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Le prêt dure trois semaines.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "les dictionnaires",
+            "correct": true
+          },
+          {
+            "text": "les romans",
+            "correct": false
+          },
+          {
+            "text": "les mots",
+            "correct": false
+          },
+          {
+            "text": "trois semaines",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-demonstrative-reference-genres:informational-boxes",
+      "item": {
+        "nodeKey": "resoudre_demonstratif",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLes boîtes bleues contiennent des vis, les boîtes jaunes des écrous. Celles qui sont jaunes doivent rester sur la deuxième étagère. Une étiquette indique le contenu de chaque boîte.\n\nDans « Celles qui sont jaunes doivent rester sur la deuxième étagère. », qui ou que désigne « Celles qui sont jaunes » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-demonstrative-reference-genres:informational-boxes",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Les boîtes bleues contiennent des vis, les boîtes jaunes des écrous. Celles qui sont jaunes doivent rester sur la deuxième étagère. Une étiquette indique le contenu de chaque boîte.",
+            "choices": [
+              {
+                "quoteFr": "Les boîtes bleues contiennent des vis, les boîtes jaunes des écrous.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Celles qui sont jaunes doivent rester sur la deuxième étagère.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Une étiquette indique le contenu de chaque boîte.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "les boîtes contenant les écrous",
+            "correct": true
+          },
+          {
+            "text": "les boîtes contenant les vis",
+            "correct": false
+          },
+          {
+            "text": "toutes les boîtes",
+            "correct": false
+          },
+          {
+            "text": "les étiquettes",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-demonstrative-reference-genres:informational-card",
+      "item": {
+        "nodeKey": "resoudre_demonstratif",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nChaque abonné reçoit une carte nominative et un reçu de paiement. Celle-ci doit être présentée pour entrer dans la salle. Le reçu peut être conservé à domicile.\n\nDans « Celle-ci doit être présentée pour entrer dans la salle. », qui ou que désigne « Celle-ci » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-demonstrative-reference-genres:informational-card",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Chaque abonné reçoit une carte nominative et un reçu de paiement. Celle-ci doit être présentée pour entrer dans la salle. Le reçu peut être conservé à domicile.",
+            "choices": [
+              {
+                "quoteFr": "Chaque abonné reçoit une carte nominative et un reçu de paiement.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Celle-ci doit être présentée pour entrer dans la salle.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Le reçu peut être conservé à domicile.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "la carte nominative",
+            "correct": true
+          },
+          {
+            "text": "le reçu de paiement",
+            "correct": false
+          },
+          {
+            "text": "la salle",
+            "correct": false
+          },
+          {
+            "text": "chaque abonné",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-demonstrative-reference-genres:informational-charger",
+      "item": {
+        "nodeKey": "resoudre_demonstratif",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nUn câble relie la tablette au chargeur. Celui-ci se branche sur une prise murale. Un voyant indique que la recharge a commencé.\n\nDans « Celui-ci se branche sur une prise murale. », qui ou que désigne « Celui-ci » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-demonstrative-reference-genres:informational-charger",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Un câble relie la tablette au chargeur. Celui-ci se branche sur une prise murale. Un voyant indique que la recharge a commencé.",
+            "choices": [
+              {
+                "quoteFr": "Un câble relie la tablette au chargeur.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Celui-ci se branche sur une prise murale.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Un voyant indique que la recharge a commencé.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "le chargeur",
+            "correct": true
+          },
+          {
+            "text": "la tablette",
+            "correct": false
+          },
+          {
+            "text": "le voyant",
+            "correct": false
+          },
+          {
+            "text": "la prise murale",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-demonstrative-reference-genres:informational-registration",
+      "item": {
+        "nodeKey": "resoudre_demonstratif",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLes inscriptions ferment à midi le vendredi. Cela permet de préparer les listes avant le week-end. Les participants reçoivent ensuite une confirmation.\n\nDans « Cela permet de préparer les listes avant le week-end. », qui ou que désigne « Cela » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-demonstrative-reference-genres:informational-registration",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Les inscriptions ferment à midi le vendredi. Cela permet de préparer les listes avant le week-end. Les participants reçoivent ensuite une confirmation.",
+            "choices": [
+              {
+                "quoteFr": "Les inscriptions ferment à midi le vendredi.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Cela permet de préparer les listes avant le week-end.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Les participants reçoivent ensuite une confirmation.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "la fermeture des inscriptions à midi le vendredi",
+            "correct": true
+          },
+          {
+            "text": "la réception de la confirmation",
+            "correct": false
+          },
+          {
+            "text": "le week-end lui-même",
+            "correct": false
+          },
+          {
+            "text": "les participants",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-demonstrative-reference-genres:informational-helmets",
+      "item": {
+        "nodeKey": "resoudre_demonstratif",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLe local contient des casques pour adultes et des casques pour enfants. Ceux destinés aux enfants portent une pastille orange. Le matériel doit être rendu après la séance.\n\nDans « Ceux destinés aux enfants portent une pastille orange. », qui ou que désigne « Ceux destinés aux enfants » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-demonstrative-reference-genres:informational-helmets",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Le local contient des casques pour adultes et des casques pour enfants. Ceux destinés aux enfants portent une pastille orange. Le matériel doit être rendu après la séance.",
+            "choices": [
+              {
+                "quoteFr": "Le local contient des casques pour adultes et des casques pour enfants.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Ceux destinés aux enfants portent une pastille orange.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Le matériel doit être rendu après la séance.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "les casques pour enfants",
+            "correct": true
+          },
+          {
+            "text": "les casques pour adultes",
+            "correct": false
+          },
+          {
+            "text": "les enfants",
+            "correct": false
+          },
+          {
+            "text": "les pastilles",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-demonstrative-reference-genres:informational-rooms",
+      "item": {
+        "nodeKey": "resoudre_demonstratif",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLa salle du bas accueille les réunions, celle du haut les ateliers. Celle du haut possède six établis. Les clés se retirent à l’accueil.\n\nDans « Celle du haut possède six établis. », qui ou que désigne « Celle du haut » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-demonstrative-reference-genres:informational-rooms",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "La salle du bas accueille les réunions, celle du haut les ateliers. Celle du haut possède six établis. Les clés se retirent à l’accueil.",
+            "choices": [
+              {
+                "quoteFr": "La salle du bas accueille les réunions, celle du haut les ateliers.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Celle du haut possède six établis.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Les clés se retirent à l’accueil.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "la salle des ateliers",
+            "correct": true
+          },
+          {
+            "text": "la salle des réunions",
+            "correct": false
+          },
+          {
+            "text": "les clés",
+            "correct": false
+          },
+          {
+            "text": "les six établis",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-demonstrative-reference-genres:informational-reservation",
+      "item": {
+        "nodeKey": "resoudre_demonstratif",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLes visiteurs réservent un créneau avant de venir. Cela évite de dépasser le nombre de places disponibles. Chaque réservation est valable pour une seule entrée.\n\nDans « Cela évite de dépasser le nombre de places disponibles. », qui ou que désigne « Cela » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-demonstrative-reference-genres:informational-reservation",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Les visiteurs réservent un créneau avant de venir. Cela évite de dépasser le nombre de places disponibles. Chaque réservation est valable pour une seule entrée.",
+            "choices": [
+              {
+                "quoteFr": "Les visiteurs réservent un créneau avant de venir.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Cela évite de dépasser le nombre de places disponibles.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Chaque réservation est valable pour une seule entrée.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "le fait de réserver un créneau avant de venir",
+            "correct": true
+          },
+          {
+            "text": "le fait de dépasser le nombre de places",
+            "correct": false
+          },
+          {
+            "text": "les visiteurs seuls",
+            "correct": false
+          },
+          {
+            "text": "une seule entrée",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-demonstrative-reference-genres:argumentative-uniform",
+      "item": {
+        "nodeKey": "resoudre_demonstratif",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nDeux tenues sont proposées : une veste rigide et un sweat souple. Je préfère celui qui laisse les bras libres, le sweat. On doit pouvoir bouger facilement pendant les activités.\n\nDans « Je préfère celui qui laisse les bras libres, le sweat. », qui ou que désigne « celui qui laisse les bras libres » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-demonstrative-reference-genres:argumentative-uniform",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Deux tenues sont proposées : une veste rigide et un sweat souple. Je préfère celui qui laisse les bras libres, le sweat. On doit pouvoir bouger facilement pendant les activités.",
+            "choices": [
+              {
+                "quoteFr": "Deux tenues sont proposées : une veste rigide et un sweat souple.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Je préfère celui qui laisse les bras libres, le sweat.",
+                "correct": false
+              },
+              {
+                "quoteFr": "On doit pouvoir bouger facilement pendant les activités.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "le sweat",
+            "correct": true
+          },
+          {
+            "text": "la veste rigide",
+            "correct": false
+          },
+          {
+            "text": "les bras",
+            "correct": false
+          },
+          {
+            "text": "les activités",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-demonstrative-reference-genres:argumentative-club",
+      "item": {
+        "nodeKey": "resoudre_demonstratif",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLe club propose des sorties payantes et des sorties gratuites. Je défends celles qui sont gratuites. Elles permettent de participer sans demander d’argent à sa famille.\n\nDans « Je défends celles qui sont gratuites. », qui ou que désigne « celles qui sont gratuites » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-demonstrative-reference-genres:argumentative-club",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Le club propose des sorties payantes et des sorties gratuites. Je défends celles qui sont gratuites. Elles permettent de participer sans demander d’argent à sa famille.",
+            "choices": [
+              {
+                "quoteFr": "Le club propose des sorties payantes et des sorties gratuites.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Je défends celles qui sont gratuites.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Elles permettent de participer sans demander d’argent à sa famille.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "les sorties gratuites",
+            "correct": true
+          },
+          {
+            "text": "les sorties payantes",
+            "correct": false
+          },
+          {
+            "text": "les familles",
+            "correct": false
+          },
+          {
+            "text": "toutes les sorties",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-demonstrative-reference-genres:argumentative-repair",
+      "item": {
+        "nodeKey": "resoudre_demonstratif",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nRéparer un objet demande parfois plus de temps que le remplacer. Cela ne justifie pas de jeter tout objet abîmé. Prendre le temps de réparer peut éviter du gaspillage.\n\nDans « Cela ne justifie pas de jeter tout objet abîmé. », qui ou que désigne « Cela » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-demonstrative-reference-genres:argumentative-repair",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Réparer un objet demande parfois plus de temps que le remplacer. Cela ne justifie pas de jeter tout objet abîmé. Prendre le temps de réparer peut éviter du gaspillage.",
+            "choices": [
+              {
+                "quoteFr": "Réparer un objet demande parfois plus de temps que le remplacer.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Cela ne justifie pas de jeter tout objet abîmé.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Prendre le temps de réparer peut éviter du gaspillage.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "le fait que réparer demande parfois plus de temps",
+            "correct": true
+          },
+          {
+            "text": "le gaspillage lui-même",
+            "correct": false
+          },
+          {
+            "text": "le fait de jeter tout objet abîmé",
+            "correct": false
+          },
+          {
+            "text": "un objet précis déjà nommé",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-demonstrative-reference-genres:argumentative-speakers",
+      "item": {
+        "nodeKey": "resoudre_demonstratif",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nCertains élèves parlent facilement devant le groupe, d’autres hésitent. Il faut aussi écouter ceux qui hésitent. Leur silence ne signifie pas qu’ils n’ont rien à proposer.\n\nDans « Il faut aussi écouter ceux qui hésitent. », qui ou que désigne « ceux qui hésitent » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-demonstrative-reference-genres:argumentative-speakers",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Certains élèves parlent facilement devant le groupe, d’autres hésitent. Il faut aussi écouter ceux qui hésitent. Leur silence ne signifie pas qu’ils n’ont rien à proposer.",
+            "choices": [
+              {
+                "quoteFr": "Certains élèves parlent facilement devant le groupe, d’autres hésitent.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Il faut aussi écouter ceux qui hésitent.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Leur silence ne signifie pas qu’ils n’ont rien à proposer.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "les élèves qui hésitent à parler",
+            "correct": true
+          },
+          {
+            "text": "les élèves qui parlent facilement",
+            "correct": false
+          },
+          {
+            "text": "tout le groupe sans distinction",
+            "correct": false
+          },
+          {
+            "text": "les propositions",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-demonstrative-reference-genres:argumentative-garden",
+      "item": {
+        "nodeKey": "resoudre_demonstratif",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLa cour pourrait accueillir une zone goudronnée ou une zone plantée. Je soutiens celle qui offrirait de l’ombre, la zone plantée. Les élèves auraient ainsi un endroit plus agréable pour se reposer.\n\nDans « Je soutiens celle qui offrirait de l’ombre, la zone plantée. », qui ou que désigne « celle qui offrirait de l’ombre » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-demonstrative-reference-genres:argumentative-garden",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "La cour pourrait accueillir une zone goudronnée ou une zone plantée. Je soutiens celle qui offrirait de l’ombre, la zone plantée. Les élèves auraient ainsi un endroit plus agréable pour se reposer.",
+            "choices": [
+              {
+                "quoteFr": "La cour pourrait accueillir une zone goudronnée ou une zone plantée.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Je soutiens celle qui offrirait de l’ombre, la zone plantée.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Les élèves auraient ainsi un endroit plus agréable pour se reposer.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "la zone plantée",
+            "correct": true
+          },
+          {
+            "text": "la zone goudronnée",
+            "correct": false
+          },
+          {
+            "text": "la cour entière",
+            "correct": false
+          },
+          {
+            "text": "les élèves",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-demonstrative-reference-genres:argumentative-debate",
+      "item": {
+        "nodeKey": "resoudre_demonstratif",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nÉcouter un avis contraire ne signifie pas abandonner le sien. Cela peut au contraire aider à préciser ses arguments. Le débat mérite donc une place dans la classe.\n\nDans « Cela peut au contraire aider à préciser ses arguments. », qui ou que désigne « Cela » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-demonstrative-reference-genres:argumentative-debate",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Écouter un avis contraire ne signifie pas abandonner le sien. Cela peut au contraire aider à préciser ses arguments. Le débat mérite donc une place dans la classe.",
+            "choices": [
+              {
+                "quoteFr": "Écouter un avis contraire ne signifie pas abandonner le sien.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Cela peut au contraire aider à préciser ses arguments.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Le débat mérite donc une place dans la classe.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "le fait d’écouter un avis contraire",
+            "correct": true
+          },
+          {
+            "text": "le fait d’abandonner son avis",
+            "correct": false
+          },
+          {
+            "text": "la classe elle-même",
+            "correct": false
+          },
+          {
+            "text": "les arguments des autres uniquement",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-demonstrative-reference-genres:argumentative-books",
+      "item": {
+        "nodeKey": "resoudre_demonstratif",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nOn peut proposer aux élèves des livres imposés et des livres choisis librement. Ceux choisis librement devraient aussi avoir une place au collège. Un choix personnel peut donner envie de poursuivre la lecture.\n\nDans « Ceux choisis librement devraient aussi avoir une place au collège. », qui ou que désigne « Ceux choisis librement » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-demonstrative-reference-genres:argumentative-books",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "On peut proposer aux élèves des livres imposés et des livres choisis librement. Ceux choisis librement devraient aussi avoir une place au collège. Un choix personnel peut donner envie de poursuivre la lecture.",
+            "choices": [
+              {
+                "quoteFr": "On peut proposer aux élèves des livres imposés et des livres choisis librement.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Ceux choisis librement devraient aussi avoir une place au collège.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Un choix personnel peut donner envie de poursuivre la lecture.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "les livres choisis librement",
+            "correct": true
+          },
+          {
+            "text": "les livres imposés",
+            "correct": false
+          },
+          {
+            "text": "les élèves",
+            "correct": false
+          },
+          {
+            "text": "tous les collèges",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-demonstrative-reference-genres:argumentative-schedule",
+      "item": {
+        "nodeKey": "resoudre_demonstratif",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nDeux horaires sont envisagés : finir tôt avec une pause courte ou finir plus tard avec une pause longue. Je préfère celui qui garde une pause longue. Nous aurions davantage de temps pour manger tranquillement.\n\nDans « Je préfère celui qui garde une pause longue. », qui ou que désigne « celui qui garde une pause longue » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-demonstrative-reference-genres:argumentative-schedule",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Deux horaires sont envisagés : finir tôt avec une pause courte ou finir plus tard avec une pause longue. Je préfère celui qui garde une pause longue. Nous aurions davantage de temps pour manger tranquillement.",
+            "choices": [
+              {
+                "quoteFr": "Deux horaires sont envisagés : finir tôt avec une pause courte ou finir plus tard avec une pause longue.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Je préfère celui qui garde une pause longue.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Nous aurions davantage de temps pour manger tranquillement.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "l’horaire qui finit plus tard",
+            "correct": true
+          },
+          {
+            "text": "l’horaire qui finit tôt",
+            "correct": false
+          },
+          {
+            "text": "le repas",
+            "correct": false
+          },
+          {
+            "text": "les deux horaires ensemble",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
     },
     {
       "itemKey": "v3-reference-foundations:recognition:1",
@@ -339324,9 +340556,9 @@
     }
   ],
   "manifest": {
-    "itemCount": 5516,
+    "itemCount": 5532,
     "eligibleItemCount": 238,
-    "pendingItemCount": 5278,
+    "pendingItemCount": 5294,
     "publicationMode": "partial",
     "nodeCount": 114,
     "sectionReadiness": [
@@ -339375,6 +340607,6 @@
         "difficultyTierCount": 3
       }
     ],
-    "checksum": "sha256:6e0a84ec989a1e55c58fd0ab2f46955afa2f9bd54ece90d1ad114d547b72c126"
+    "checksum": "sha256:e6261f2e975c374a0ed3ffa9786e41cc2f06d115270f502eaed8328a216ecb1b"
   }
 }

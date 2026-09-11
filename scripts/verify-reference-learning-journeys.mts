@@ -10,8 +10,8 @@ import {questionAssessedMaterialKeys,teachingMaterialKeys} from '../src/lib/diag
 const read=(p:string)=>JSON.parse(readFileSync(p,'utf8'));
 const candidate=read('docs/diagnostic/v3-scoped-review-candidate.json');
 const bundle:AssessmentBundle={assessment:candidate.assessment,bank:read('generated/diagnostic-bank-v3-consolidated-draft.json'),taxonomyId:'fixture',bankId:'fixture',teachingContent:candidate.teachingContent,activities:candidate.activities.map((a:object)=>({...a,status:'published'}))};
-const lessons=bundle.teachingContent!.filter(l=>l.id.includes(':reference-foundation:')||l.id==='french-v3-teaching:narrative-demonstrative-reference');
-if(lessons.length!==5)throw Error('Expected five reference lessons');
+const lessons=bundle.teachingContent!.filter(l=>l.id.includes(':reference-foundation:')||l.id==='french-v3-teaching:narrative-demonstrative-reference'||l.id.startsWith('french-v3-teaching:demonstrative-reference:'));
+if(lessons.length!==7)throw Error('Expected seven reference lessons');
 const reports=[];
 for(const lesson of lessons){
  const skill=bundle.assessment.skills.find(s=>s.nodeKey===lesson.nodeKey&&s.facetKey===lesson.facetKey&&s.modes.includes(lesson.mode))!;
