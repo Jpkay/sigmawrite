@@ -2,6 +2,8 @@
 
 Updated 2026-09-11. Scope: French only. Allotey is excluded.
 
+Current deployment checkpoint: the public v10 release supports 167 of 542 proposed evidence targets, each with instruction and fresh-check capacity. The versioned bank contains 5,460 items; this does not mean every graph target has adequate questions. The answer-review screen, response retention and timer correction are live. See `revision-nine-preparation-2026-09-11.md` for publication and public verification evidence, and `revision-eight-publication-2026-09-11.json` for the preceding full live journey. The numerical starting-point sections below are historical planning baselines, not current deployment counts. The six full-scope milestones remain the completion contract.
+
 ## Fixed foundation and product decisions
 
 The product owner authorized release while personally reviewing on 2026-09-11.
