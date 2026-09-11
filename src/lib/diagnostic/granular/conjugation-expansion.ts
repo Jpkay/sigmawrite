@@ -1,3 +1,4 @@
+import {COMPOUND_APPLICATION_CONTEXTS} from "./compound-application-contexts";
 import {conjugate,type Person,type Tense} from "@/lib/linguistic/conjugation";
 import {checksum,type TaxonomyCandidate} from "@/lib/taxonomy/validate";
 import {runGates} from "@/lib/ai/item-generation/pipeline";
@@ -65,6 +66,7 @@ export async function expandConjugationDraft(bank:CanonicalDiagnosticBankArtifac
  // Both independent pools need several actual -geons/-çons demonstrations.
  // More unchanged endings or gender variants cannot fill that feature gap.
  const sentenceCases=[
+  ...COMPOUND_APPLICATION_CONTEXTS.map((row,index)=>({...row,tense:"passe_compose" as const,key:`v3-granular-forms:passe_compose-application-context:${row.verb}:${row.person}:${index}`})),
   ...PRESENT_SPELLING_CONTEXTS.map(([verb,sentence],index)=>({verb,sentence,tense:"present" as const,person:"1p" as Person,key:`v3-granular-forms:present-spelling-context:${verb}:${index}`})),
   ...PRESENT_APPLICATION_CONTEXTS.map(([verb,person,sentence],index)=>({verb,person,sentence,tense:"present" as const,key:`v3-granular-forms:present-application-context:${verb}:${person}:${index}`})),
   ...(["imparfait","futur_simple","conditionnel_present"] as const).flatMap(tense=>PRESENT_APPLICATION_CONTEXTS.flatMap(([verb,person,sentence],index)=>{
@@ -72,11 +74,14 @@ export async function expandConjugationDraft(bank:CanonicalDiagnosticBankArtifac
    return target?.facetKey.includes("::verb:")?[{verb,person,sentence,tense,key:`v3-granular-forms:${tense}-application-context:${verb}:${person}:${index}`}]:[];
   })),
  ];
- for(const {verb,person,sentence:sourceSentence,tense,key} of sentenceCases){
+ for(const application of sentenceCases){
+  const {verb,person,sentence:sourceSentence,tense,key}=application;
+  const gender="gender" in application?application.gender:"m";
+  const auxiliaryUse="auxiliaryUse" in application?application.auxiliaryUse:undefined;
   const target=conjugationAuthoringCases().find(target=>target.tense===tense&&target.verb===verb)!;
   const node=taxonomy.nodes.find(node=>node.key===target.nodeKey)!;
   const evidence=node.evidence.find(evidence=>evidence.expectation==="controlled_production"&&evidence.modality==="writing")!;
-  const answer=conjugate(verb,tense,person);
+  const answer=conjugate(verb,tense,person,{gender,auxiliaryUse});
   const sentence=conjugationSentenceGap(sourceSentence,answer);
   const completedSentence=sentence.replace("___",answer);
   // An individual-verb target necessarily revisits the same lemma. Identify
@@ -85,9 +90,9 @@ export async function expandConjugationDraft(bank:CanonicalDiagnosticBankArtifac
   // detection merely because the question itself contains a blank.
   const individualVerb=target.facetKey.includes("::verb:");
   const raw:GeneratedItem={nodeKey:node.key,strand:"conjugaison",modality:"writing",learnerMode:"shared",responseType:"short_answer",
-   promptFr:`Complète la phrase avec ${verb} ${tense==="imparfait"?"à l’imparfait":tense==="futur_simple"?"au futur simple":tense==="conditionnel_present"?"au conditionnel présent":"au présent de l’indicatif"} : ${sentence}`,
-   instructionsFr:"Écris seulement le verbe manquant.",correctAnswer:answer,acceptableAnswers:[],validatorType:"conjugator",
-   validatorConfig:{verb,tense,person,gender:"m",...(individualVerb?{sentenceApplication:sentence}:{}),materialExposure:{words:[{lemma:verb,form:verb}],sentences:individualVerb?[sentence,completedSentence]:[sentence],...(individualVerb?{assessed:{sentences:[sentence,completedSentence]}}:{})}},difficulty:50};
+   promptFr:`Complète la phrase avec ${verb} ${tense==="imparfait"?"à l’imparfait":tense==="futur_simple"?"au futur simple":tense==="conditionnel_present"?"au conditionnel présent":tense==="passe_compose"?"au passé composé":"au présent de l’indicatif"} : ${sentence}`,
+   instructionsFr:"Écris seulement le verbe manquant."+("genderSpecified" in application&&application.genderSpecified?` Sujet ${gender==="f"?"féminin":"masculin"} ${person.endsWith("p")?"pluriel":"singulier"}.`:""),correctAnswer:answer,acceptableAnswers:[],validatorType:"conjugator",
+   validatorConfig:{verb,tense,person,gender,...(auxiliaryUse?{auxiliaryUse}:{}),...(individualVerb?{sentenceApplication:sentence}:{}),materialExposure:{words:[{lemma:verb,form:verb}],sentences:individualVerb?[sentence,completedSentence]:[sentence],...(individualVerb?{assessed:{sentences:[sentence,completedSentence]}}:{})}},difficulty:50};
   const surface=`${node.key}:${diagnosticItemSurfaceIdentity(raw)}`;
   if(surfaces.has(surface)){skipped.push({key,reason:"Existing student-facing surface"});continue;}surfaces.add(surface);
   const checked=await runGates(raw,context);

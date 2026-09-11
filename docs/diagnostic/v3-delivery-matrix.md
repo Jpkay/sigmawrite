@@ -8,7 +8,7 @@ Regenerate: `npx tsx scripts/build-v3-delivery-matrix.mts`. Verify without writi
 
 | Domain | Targets | Eligible questions | Targets without eligible questions | Allocated pools | Expansion drafts |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| conjugation | 255 | 77 | 195 | 0 | 3622 |
+| conjugation | 255 | 77 | 195 | 0 | 3790 |
 | reading_comprehension | 92 | 21 | 74 | 0 | 88 |
 | grammar | 79 | 56 | 43 | 0 | 258 |
 | spelling | 116 | 79 | 60 | 0 | 270 |
@@ -19,7 +19,7 @@ These counts describe authoring drafts, not approved lessons or published pathwa
 
 | Domain | Targets with teaching drafts | Targets without teaching drafts | Guided exercise drafts |
 | --- | ---: | ---: | ---: |
-| conjugation | 79 | 176 | 464 |
+| conjugation | 93 | 162 | 548 |
 | reading_comprehension | 11 | 81 | 50 |
 | grammar | 23 | 56 | 124 |
 | spelling | 19 | 97 | 90 |
@@ -140,20 +140,20 @@ Full evidence requirements, prerequisite IDs, question IDs, source checksums and
 | Produire le passé récent — Verbes en -cer | production / initial | 0 | 0 / 0 (insufficient_coverage) | 24 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
 | Interpréter la valeur du passé récent | recognition / initial | 2 | 2 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
 | Reconnaître le passé composé | recognition / initial | 1 | 1 / 0 (insufficient_coverage) | 12 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
-| Produire le passé composé — Conjuguer être | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
-| Produire le passé composé — Conjuguer avoir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
-| Produire le passé composé — Conjuguer aller | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
-| Produire le passé composé — Conjuguer faire | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
-| Produire le passé composé — Conjuguer prendre | production / initial | 1 | 1 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
-| Produire le passé composé — Conjuguer venir | production / initial | 1 | 1 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
-| Produire le passé composé — Conjuguer partir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
-| Produire le passé composé — Conjuguer sortir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
-| Produire le passé composé — Conjuguer dire | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
-| Produire le passé composé — Conjuguer voir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
-| Produire le passé composé — Conjuguer pouvoir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
-| Produire le passé composé — Conjuguer vouloir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
-| Produire le passé composé — Conjuguer savoir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
-| Produire le passé composé — Conjuguer devoir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
+| Produire le passé composé — Conjuguer être | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le passé composé — Conjuguer avoir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le passé composé — Conjuguer aller | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le passé composé — Conjuguer faire | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le passé composé — Conjuguer prendre | production / initial | 1 | 1 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le passé composé — Conjuguer venir | production / initial | 1 | 1 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le passé composé — Conjuguer partir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le passé composé — Conjuguer sortir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le passé composé — Conjuguer dire | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le passé composé — Conjuguer voir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le passé composé — Conjuguer pouvoir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le passé composé — Conjuguer vouloir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le passé composé — Conjuguer savoir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le passé composé — Conjuguer devoir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
 | Produire le passé composé — Verbes réguliers en -er | production / initial | 1 | 1 / 0 (insufficient_coverage) | 56 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
 | Produire le passé composé — Verbes en -ir comme finir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 32 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
 | Produire le passé composé — Verbes en -ger | production / initial | 0 | 0 / 0 (insufficient_coverage) | 24 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |

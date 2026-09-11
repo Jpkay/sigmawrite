@@ -5,12 +5,2174 @@
   "facetChecksum": "sha256:c1587bbcc3d7b86759a9aeee784f312a48e3d2706edac48ad2d1681957b44f73",
   "assessmentSourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
   "summary": {
-    "lessons": 132,
-    "guidedExercises": 728,
-    "targets": 132,
+    "lessons": 146,
+    "guidedExercises": 812,
+    "targets": 146,
     "missingExposureAnnotations": []
   },
   "rows": [
+    {
+      "lessonId": "french-v3-teaching:passe-compose:aller",
+      "contentChecksum": "sha256:b875b0fe1bc53dfaaa718d8f9ac6b3e90be2cd451643ffbae744d10e5e48d140",
+      "skillId": "produire_passe_compose::writing-controlled-production::verb:aller",
+      "nodeKey": "produire_passe_compose",
+      "facetKey": "produire_passe_compose::verb:aller",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:avoir",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:etre",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:pronominal",
+        "former_participe_passe::writing-controlled-production::construction:er",
+        "former_participe_passe::writing-controlled-production::construction:ir",
+        "former_participe_passe::writing-controlled-production::construction:irregular",
+        "reconnaitre_passe_compose::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:03dc4396992e5fc39c3efa07475d44a04fb085e2501ff3290623f2c522b9ed4a",
+        "sentence:sha256:2d32e570ef51fd0fe1c822e0140242930ba0ada3600612d43a6466e8eb85baa0",
+        "sentence:sha256:4dba7ea7d25abe66990a5f437e555fb963ffa0a89f40f4ff2a43b2fb3845e819",
+        "sentence:sha256:818d6955336c1dc155246d212fdc33d374b9222623d3890a7f35e78fb9c4944f",
+        "sentence:sha256:87dfff2ae851da6e5b882f51c8e27e50732bc094ba5690290b09f5f1ef4b7adf",
+        "sentence:sha256:9659a99dacc323af105031ff370f084ea503318d876c0ac1e63c42bf159d1882",
+        "sentence:sha256:98093090b99c2fddf3760d28d654fed3f72587cfe98f87afb5305807ab435519",
+        "sentence:sha256:9e53b9846dee6be00944b350a025045d9ddee4d05c44a6f022820ca18e1ff0df",
+        "sentence:sha256:cdf6e8f713c3302d65d9b7b7813fb6554c2da7832d9ad66b80efe535321b0853",
+        "sentence:sha256:d304f018efeb4a26782ad0f411b75de26884a81de59c26168da1db86407feffa",
+        "sentence:sha256:ef844975772c25d36be0117a4f46621dc9de2990a6b1c440cbff60f466b9edce",
+        "sentence:sha256:f79cfb9c3b19a3d5ea5823ba539790634e7a20b67a41035a8c9f109cedb3e2cb",
+        "sentence:sha256:f7f4ebe3ff6025c15c23ff09afe41a692b799a517d2f94d2c2654b0b283d9646",
+        "sentence:sha256:ffb439649d2adc790e8d7b28d69c0de83464beb5f154cc50b659d3443b174305",
+        "word:sha256:c69b79ee0f0ed5ec757312dd4a35816749c9222132776a6d92c865046638b290"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:passe-compose:aller",
+        "nodeKey": "produire_passe_compose",
+        "facetKey": "produire_passe_compose::verb:aller",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire aller au passé composé",
+        "learnerQuestionFr": "Comment former le passé composé de aller dans une phrase ?",
+        "steps": [
+          {
+            "exampleFr": "Je suis allé à la bibliothèque.",
+            "explanationFr": "suis allé est le passé composé de aller dans cette phrase. Le premier mot, une forme de être au présent, aide à construire ce temps : c’est l’auxiliaire. La seconde partie vient de aller : c’est le participe passé allé."
+          },
+          {
+            "exampleFr": "je : suis allé\ntu : es allé\nil : est allé\nnous : sommes allés\nvous : êtes allés\nils : sont allés",
+            "explanationFr": "Ce tableau est au masculin. Être change avec le sujet. Le participe s’accorde avec le sujet : au pluriel masculin, il prend s."
+          },
+          {
+            "exampleFr": "il : est allé\nelle : est allée\nelles : sont allées",
+            "explanationFr": "Avec être, le participe prend e au féminin singulier et es au féminin pluriel. Le sujet et son nombre sont indiqués dans les exercices."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:passe-compose:aller:1",
+            "promptFr": "Complète avec aller au passé composé. Écris le groupe verbal manquant : Je ___ à la bibliothèque. Sujet masculin singulier.",
+            "answerFr": "suis allé",
+            "hintFr": "Conjugue être au présent avec le sujet, puis écris le participe allé en l’accordant avec le sujet.",
+            "explanationFr": "Je suis allé à la bibliothèque. Le groupe suis allé est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:aller:2",
+            "promptFr": "Complète avec aller au passé composé. Écris le groupe verbal manquant : Tu ___ au gymnase. Sujet masculin singulier.",
+            "answerFr": "es allé",
+            "hintFr": "Conjugue être au présent avec le sujet, puis écris le participe allé en l’accordant avec le sujet.",
+            "explanationFr": "Tu es allé au gymnase. Le groupe es allé est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:aller:3",
+            "promptFr": "Complète avec aller au passé composé. Écris le groupe verbal manquant : On ___ au cinéma. Sujet masculin singulier.",
+            "answerFr": "est allé",
+            "hintFr": "Conjugue être au présent avec le sujet, puis écris le participe allé en l’accordant avec le sujet.",
+            "explanationFr": "On est allé au cinéma. Le groupe est allé est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:aller:4",
+            "promptFr": "Complète avec aller au passé composé. Écris le groupe verbal manquant : Nous ___ au marché. Sujet masculin pluriel.",
+            "answerFr": "sommes allés",
+            "hintFr": "Conjugue être au présent avec le sujet, puis écris le participe allé en l’accordant avec le sujet.",
+            "explanationFr": "Nous sommes allés au marché. Le groupe sommes allés est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:aller:5",
+            "promptFr": "Complète avec aller au passé composé. Écris le groupe verbal manquant : Vous ___ à la piscine. Sujet masculin pluriel.",
+            "answerFr": "êtes allés",
+            "hintFr": "Conjugue être au présent avec le sujet, puis écris le participe allé en l’accordant avec le sujet.",
+            "explanationFr": "Vous êtes allés à la piscine. Le groupe êtes allés est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:aller:6",
+            "promptFr": "Complète avec aller au passé composé. Écris le groupe verbal manquant : Elles ___ au parc. Sujet féminin pluriel.",
+            "answerFr": "sont allées",
+            "hintFr": "Conjugue être au présent avec le sujet, puis écris le participe allé en l’accordant avec le sujet.",
+            "explanationFr": "Elles sont allées au parc. Le groupe sont allées est la forme demandée dans cette construction."
+          }
+        ],
+        "takeawayFr": "Associe l’auxiliaire au présent et le participe allé. Vérifie le sujet et l’accord du participe avec être.",
+        "boundaryFr": "Cette leçon demande un temps précis dans des phrases fournies. Elle ne démontre pas que tu sais choisir les temps dans un texte autonome ni traiter toutes les constructions avec un complément placé avant.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "aller",
+              "form": "aller"
+            }
+          ],
+          "sentences": [
+            "Je suis allé à la bibliothèque.",
+            "je : suis allé",
+            "tu : es allé",
+            "il : est allé",
+            "nous : sommes allés",
+            "vous : êtes allés",
+            "ils : sont allés",
+            "il : est allé",
+            "elle : est allée",
+            "elles : sont allées",
+            "Je suis allé à la bibliothèque.",
+            "Tu es allé au gymnase.",
+            "On est allé au cinéma.",
+            "Nous sommes allés au marché.",
+            "Vous êtes allés à la piscine.",
+            "Elles sont allées au parc."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:passe-compose:faire",
+      "contentChecksum": "sha256:274f16ae2ae3a34b674ff76554f29d87bd4cf283551687ead9f6a6aa55033bef",
+      "skillId": "produire_passe_compose::writing-controlled-production::verb:faire",
+      "nodeKey": "produire_passe_compose",
+      "facetKey": "produire_passe_compose::verb:faire",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:avoir",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:etre",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:pronominal",
+        "former_participe_passe::writing-controlled-production::construction:er",
+        "former_participe_passe::writing-controlled-production::construction:ir",
+        "former_participe_passe::writing-controlled-production::construction:irregular",
+        "reconnaitre_passe_compose::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:31651d22f13080e874a2e476db280eced90f85972e187706e9a9883a5df42541",
+        "sentence:sha256:3bf28420e701e0c5d796bc6e832e42b8b86bba6be78029baa143fc2433392e8b",
+        "sentence:sha256:4e64e7e5edb376e9b9f25e27f1a5a9b212453aaa04c9ca430ece03b3fc2523a3",
+        "sentence:sha256:73db1e2c6bda858bbd12ed8eb530120d740b94eba3e30ba48d0d1b77bfd0dc50",
+        "sentence:sha256:7a4860ebc832b325c47fa3e3c4538cc1aa8134d7019953e4f56f26492455c590",
+        "sentence:sha256:94e2b003ffb6c66811cf8ea19e77600b7afbf71056fad0f3b4cf68a8344347d9",
+        "sentence:sha256:ab0c7905f16195f5d14812977e023170e952cb1cdb125f18488724af3946d294",
+        "sentence:sha256:bceb38b1c83963f49fe2265694eb2d5d289374690ae6d91b1cc932abb81546b3",
+        "sentence:sha256:dc0526e3965a7e55f620193d09bd639917169342a8de5fbba8250bd12beec2e8",
+        "sentence:sha256:e7d7ff745c77db67bed0d8332db61588288e2260c8486c7ce98d6c5f3443dbe0",
+        "sentence:sha256:e82363568698d10ea3eae16bd2a3de010a494d7abd4702663154ceaad41117c0",
+        "sentence:sha256:ed2df2fc916f932b26570cafe036e35e85414640d6a8f9d1eedf0e745b8fb368",
+        "sentence:sha256:f74c6704f2bb2e60c90f330a270bafad3c56aa53ce3511b9661ac47b6f673e92",
+        "word:sha256:8a568397b41847720a6d5d4310ba1528f891cc38b608243c136cf1e04d975d8b"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:passe-compose:faire",
+        "nodeKey": "produire_passe_compose",
+        "facetKey": "produire_passe_compose::verb:faire",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire faire au passé composé",
+        "learnerQuestionFr": "Comment former le passé composé de faire dans une phrase ?",
+        "steps": [
+          {
+            "exampleFr": "J’ai fait une maquette.",
+            "explanationFr": "ai fait est le passé composé de faire dans cette phrase. Le premier mot, une forme de avoir au présent, aide à construire ce temps : c’est l’auxiliaire. La seconde partie vient de faire : c’est le participe passé fait."
+          },
+          {
+            "exampleFr": "je : ai fait\ntu : as fait\nil : a fait\nnous : avons fait\nvous : avez fait\nils : ont fait",
+            "explanationFr": "Avoir change avec le sujet. Dans ces phrases sans complément direct placé avant, le participe garde la forme donnée."
+          },
+          {
+            "exampleFr": "faire → fait",
+            "explanationFr": "Retiens le participe fait avec le verbe faire. Il ne change pas simplement parce que la forme d’avoir change."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:passe-compose:faire:1",
+            "promptFr": "Complète avec faire au passé composé. Écris le groupe verbal manquant : J’___ une maquette.",
+            "answerFr": "ai fait",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe fait.",
+            "explanationFr": "J’ai fait une maquette. Le groupe ai fait est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:faire:2",
+            "promptFr": "Complète avec faire au passé composé. Écris le groupe verbal manquant : Tu ___ une pause.",
+            "answerFr": "as fait",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe fait.",
+            "explanationFr": "Tu as fait une pause. Le groupe as fait est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:faire:3",
+            "promptFr": "Complète avec faire au passé composé. Écris le groupe verbal manquant : Elle ___ du vélo.",
+            "answerFr": "a fait",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe fait.",
+            "explanationFr": "Elle a fait du vélo. Le groupe a fait est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:faire:4",
+            "promptFr": "Complète avec faire au passé composé. Écris le groupe verbal manquant : Nous ___ un gâteau.",
+            "answerFr": "avons fait",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe fait.",
+            "explanationFr": "Nous avons fait un gâteau. Le groupe avons fait est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:faire:5",
+            "promptFr": "Complète avec faire au passé composé. Écris le groupe verbal manquant : Vous ___ un puzzle.",
+            "answerFr": "avez fait",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe fait.",
+            "explanationFr": "Vous avez fait un puzzle. Le groupe avez fait est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:faire:6",
+            "promptFr": "Complète avec faire au passé composé. Écris le groupe verbal manquant : Ils ___ une expérience.",
+            "answerFr": "ont fait",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe fait.",
+            "explanationFr": "Ils ont fait une expérience. Le groupe ont fait est la forme demandée dans cette construction."
+          }
+        ],
+        "takeawayFr": "Associe l’auxiliaire au présent et le participe fait. Vérifie le sujet.",
+        "boundaryFr": "Cette leçon demande un temps précis dans des phrases fournies. Elle ne démontre pas que tu sais choisir les temps dans un texte autonome ni traiter toutes les constructions avec un complément placé avant.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "faire",
+              "form": "faire"
+            }
+          ],
+          "sentences": [
+            "J’ai fait une maquette.",
+            "je : ai fait",
+            "tu : as fait",
+            "il : a fait",
+            "nous : avons fait",
+            "vous : avez fait",
+            "ils : ont fait",
+            "faire → fait",
+            "J’ai fait une maquette.",
+            "Tu as fait une pause.",
+            "Elle a fait du vélo.",
+            "Nous avons fait un gâteau.",
+            "Vous avez fait un puzzle.",
+            "Ils ont fait une expérience."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:passe-compose:être",
+      "contentChecksum": "sha256:9fd041742d7bbed6b3fe046d4fcbb952ef2daad6aa35293ca500b2b77d2e578e",
+      "skillId": "produire_passe_compose::writing-controlled-production::verb:être",
+      "nodeKey": "produire_passe_compose",
+      "facetKey": "produire_passe_compose::verb:être",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:avoir",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:etre",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:pronominal",
+        "former_participe_passe::writing-controlled-production::construction:er",
+        "former_participe_passe::writing-controlled-production::construction:ir",
+        "former_participe_passe::writing-controlled-production::construction:irregular",
+        "reconnaitre_passe_compose::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:1319b269474935dbe196d41f46f36178cb1818704a7b75bb414e33e17d34b473",
+        "sentence:sha256:283b5a28da8778a8e0aaa8cdf60f6e681c823f8f9f466f9fffe4ad82b0a69234",
+        "sentence:sha256:341fc09868b410ac039efbb5dc66e2d16925c18c5734f5cdfff8a8c47e9f1ed1",
+        "sentence:sha256:3bb09a47ab45f576869d2bd639853b55df98e8ea30fa5e2b3707f019742c4e8e",
+        "sentence:sha256:3e8b3da8322e85153fc712f87cff7cd98c6dfd22dbb3391af3508316b3b56482",
+        "sentence:sha256:5beb4182c6cd42e9501015740f6bcd11d8ff4a1ccd3c5161ccd715a29f12f61f",
+        "sentence:sha256:85c45c4ebe39c8313732f6e44b9563b96efc07a26ef96092663e3e9151260935",
+        "sentence:sha256:873f6a3efdccac8fe2680787d42e2bb90b23633eac928439cb94e35e645cf8bd",
+        "sentence:sha256:9265ffc6ccb5ba9cdc83b3145bc4a08b5f0a433cc118045009d50ce3b80901c1",
+        "sentence:sha256:b294a82381b0cb22de7309c40291e1fa8975f5c2960a3c676f4cf8577737e20f",
+        "sentence:sha256:d0afa0f0bf3c3363d573e5a1fffaf9045bf61d5053e02b9b5cb82c0072011188",
+        "sentence:sha256:d411e0adb26a07afd0d8cd76a0475d510bfd0fd19b9010da4ab4b4d7367be781",
+        "sentence:sha256:e55e93d7802b5a4c2d683f46d6fa76a188b8e6dee5e8f93cdb659105485e27b9",
+        "word:sha256:0e8c809d71ca79b97c97516e8f9792a277aa2a2c72586ada6c3a73d265f30e8d"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:passe-compose:être",
+        "nodeKey": "produire_passe_compose",
+        "facetKey": "produire_passe_compose::verb:être",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire être au passé composé",
+        "learnerQuestionFr": "Comment former le passé composé de être dans une phrase ?",
+        "steps": [
+          {
+            "exampleFr": "J’ai été dans le jardin.",
+            "explanationFr": "ai été est le passé composé de être dans cette phrase. Le premier mot, une forme de avoir au présent, aide à construire ce temps : c’est l’auxiliaire. La seconde partie vient de être : c’est le participe passé été."
+          },
+          {
+            "exampleFr": "je : ai été\ntu : as été\nil : a été\nnous : avons été\nvous : avez été\nils : ont été",
+            "explanationFr": "Avoir change avec le sujet. Dans ces phrases sans complément direct placé avant, le participe garde la forme donnée."
+          },
+          {
+            "exampleFr": "être → été",
+            "explanationFr": "Retiens le participe été avec le verbe être. Il ne change pas simplement parce que la forme d’avoir change."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:passe-compose:être:1",
+            "promptFr": "Complète avec être au passé composé. Écris le groupe verbal manquant : J’___ dans le jardin.",
+            "answerFr": "ai été",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe été.",
+            "explanationFr": "J’ai été dans le jardin. Le groupe ai été est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:être:2",
+            "promptFr": "Complète avec être au passé composé. Écris le groupe verbal manquant : Tu ___ au premier rang.",
+            "answerFr": "as été",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe été.",
+            "explanationFr": "Tu as été au premier rang. Le groupe as été est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:être:3",
+            "promptFr": "Complète avec être au passé composé. Écris le groupe verbal manquant : Elle ___ contente de son dessin.",
+            "answerFr": "a été",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe été.",
+            "explanationFr": "Elle a été contente de son dessin. Le groupe a été est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:être:4",
+            "promptFr": "Complète avec être au passé composé. Écris le groupe verbal manquant : Nous ___ en avance.",
+            "answerFr": "avons été",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe été.",
+            "explanationFr": "Nous avons été en avance. Le groupe avons été est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:être:5",
+            "promptFr": "Complète avec être au passé composé. Écris le groupe verbal manquant : Vous ___ près de la porte.",
+            "answerFr": "avez été",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe été.",
+            "explanationFr": "Vous avez été près de la porte. Le groupe avez été est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:être:6",
+            "promptFr": "Complète avec être au passé composé. Écris le groupe verbal manquant : Ils ___ dans la même équipe.",
+            "answerFr": "ont été",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe été.",
+            "explanationFr": "Ils ont été dans la même équipe. Le groupe ont été est la forme demandée dans cette construction."
+          }
+        ],
+        "takeawayFr": "Associe l’auxiliaire au présent et le participe été. Vérifie le sujet.",
+        "boundaryFr": "Cette leçon demande un temps précis dans des phrases fournies. Elle ne démontre pas que tu sais choisir les temps dans un texte autonome ni traiter toutes les constructions avec un complément placé avant.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "être",
+              "form": "être"
+            }
+          ],
+          "sentences": [
+            "J’ai été dans le jardin.",
+            "je : ai été",
+            "tu : as été",
+            "il : a été",
+            "nous : avons été",
+            "vous : avez été",
+            "ils : ont été",
+            "être → été",
+            "J’ai été dans le jardin.",
+            "Tu as été au premier rang.",
+            "Elle a été contente de son dessin.",
+            "Nous avons été en avance.",
+            "Vous avez été près de la porte.",
+            "Ils ont été dans la même équipe."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:passe-compose:avoir",
+      "contentChecksum": "sha256:e49545863c36046c444f69e1222a39f4eb177336b87173b82876e3353dc0ebbc",
+      "skillId": "produire_passe_compose::writing-controlled-production::verb:avoir",
+      "nodeKey": "produire_passe_compose",
+      "facetKey": "produire_passe_compose::verb:avoir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:avoir",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:etre",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:pronominal",
+        "former_participe_passe::writing-controlled-production::construction:er",
+        "former_participe_passe::writing-controlled-production::construction:ir",
+        "former_participe_passe::writing-controlled-production::construction:irregular",
+        "reconnaitre_passe_compose::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:2480b61457da83b1ac534cb02bafe1164c814cad05b111e05ea9c249bf199cff",
+        "sentence:sha256:3542fe2f47cc9887265c9e5186d80561ac1f122608368ce58f42327e6d77a852",
+        "sentence:sha256:3e0710afd06d5102beb6ac5c3486abc332e76dd4822d8714f9dc025ccd030ff6",
+        "sentence:sha256:4db14a8dea98cacfc03615f0aa45601aa2cd0706ebca9318b768e2a5eee582c3",
+        "sentence:sha256:5aae0eb0f3b32af824800d408c975913ba76d55ab129fa4b1a3707f53e7a83ff",
+        "sentence:sha256:6727843fd87ed9215f25842af6abbb1b9f731c0783ad4abc4385bba4f43b9455",
+        "sentence:sha256:73fdc8abbb54835ad1c891ed695bd5734b151c798a6c3cb5ada7812cb8326c93",
+        "sentence:sha256:9c2fe7be7eeebd10bb1e7d95126775aa080c5aab1dc2f3b56cd68ee324bdc5a4",
+        "sentence:sha256:aa8802cdf6c3042c9c487e2ebe7eabbca019ad94f6870ca005b6ebf5138e6dc0",
+        "sentence:sha256:b2ee412b3708654f5c9f990c55256ab5fe94ad9692162333e8ad9e940e7bb600",
+        "sentence:sha256:be67fdd1c0934b4317adcc2733441343097941f776ecd63e6a46280d3ae34262",
+        "sentence:sha256:dca128fa60ef68f1647348278ab021887c539928b1633196947ff0b83956a676",
+        "sentence:sha256:f0831ac086abb95529f00d87addf7557744ccb635264c1f063a4fb6d075c4c83",
+        "word:sha256:130f28240b75513decf695074e35d63b8daf7399920a31cc2a8e0d8ca2e6f1fe"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:passe-compose:avoir",
+        "nodeKey": "produire_passe_compose",
+        "facetKey": "produire_passe_compose::verb:avoir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire avoir au passé composé",
+        "learnerQuestionFr": "Comment former le passé composé de avoir dans une phrase ?",
+        "steps": [
+          {
+            "exampleFr": "J’ai eu une lampe de poche.",
+            "explanationFr": "ai eu est le passé composé de avoir dans cette phrase. Le premier mot, une forme de avoir au présent, aide à construire ce temps : c’est l’auxiliaire. La seconde partie vient de avoir : c’est le participe passé eu."
+          },
+          {
+            "exampleFr": "je : ai eu\ntu : as eu\nil : a eu\nnous : avons eu\nvous : avez eu\nils : ont eu",
+            "explanationFr": "Avoir change avec le sujet. Dans ces phrases sans complément direct placé avant, le participe garde la forme donnée."
+          },
+          {
+            "exampleFr": "avoir → eu",
+            "explanationFr": "Retiens le participe eu avec le verbe avoir. Il ne change pas simplement parce que la forme d’avoir change."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:passe-compose:avoir:1",
+            "promptFr": "Complète avec avoir au passé composé. Écris le groupe verbal manquant : J’___ une lampe de poche.",
+            "answerFr": "ai eu",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe eu.",
+            "explanationFr": "J’ai eu une lampe de poche. Le groupe ai eu est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:avoir:2",
+            "promptFr": "Complète avec avoir au passé composé. Écris le groupe verbal manquant : Tu ___ une nouvelle question.",
+            "answerFr": "as eu",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe eu.",
+            "explanationFr": "Tu as eu une nouvelle question. Le groupe as eu est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:avoir:3",
+            "promptFr": "Complète avec avoir au passé composé. Écris le groupe verbal manquant : On ___ assez de papier.",
+            "answerFr": "a eu",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe eu.",
+            "explanationFr": "On a eu assez de papier. Le groupe a eu est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:avoir:4",
+            "promptFr": "Complète avec avoir au passé composé. Écris le groupe verbal manquant : Nous ___ des places pour le concert.",
+            "answerFr": "avons eu",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe eu.",
+            "explanationFr": "Nous avons eu des places pour le concert. Le groupe avons eu est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:avoir:5",
+            "promptFr": "Complète avec avoir au passé composé. Écris le groupe verbal manquant : Vous ___ le même horaire.",
+            "answerFr": "avez eu",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe eu.",
+            "explanationFr": "Vous avez eu le même horaire. Le groupe avez eu est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:avoir:6",
+            "promptFr": "Complète avec avoir au passé composé. Écris le groupe verbal manquant : Elles ___ un projet commun.",
+            "answerFr": "ont eu",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe eu.",
+            "explanationFr": "Elles ont eu un projet commun. Le groupe ont eu est la forme demandée dans cette construction."
+          }
+        ],
+        "takeawayFr": "Associe l’auxiliaire au présent et le participe eu. Vérifie le sujet.",
+        "boundaryFr": "Cette leçon demande un temps précis dans des phrases fournies. Elle ne démontre pas que tu sais choisir les temps dans un texte autonome ni traiter toutes les constructions avec un complément placé avant.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "avoir",
+              "form": "avoir"
+            }
+          ],
+          "sentences": [
+            "J’ai eu une lampe de poche.",
+            "je : ai eu",
+            "tu : as eu",
+            "il : a eu",
+            "nous : avons eu",
+            "vous : avez eu",
+            "ils : ont eu",
+            "avoir → eu",
+            "J’ai eu une lampe de poche.",
+            "Tu as eu une nouvelle question.",
+            "On a eu assez de papier.",
+            "Nous avons eu des places pour le concert.",
+            "Vous avez eu le même horaire.",
+            "Elles ont eu un projet commun."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:passe-compose:prendre",
+      "contentChecksum": "sha256:9104e9e9097f9e11f69ef37fab66538e1ccae1f47e1b526c8a1fbf307f35f282",
+      "skillId": "produire_passe_compose::writing-controlled-production::verb:prendre",
+      "nodeKey": "produire_passe_compose",
+      "facetKey": "produire_passe_compose::verb:prendre",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:avoir",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:etre",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:pronominal",
+        "former_participe_passe::writing-controlled-production::construction:er",
+        "former_participe_passe::writing-controlled-production::construction:ir",
+        "former_participe_passe::writing-controlled-production::construction:irregular",
+        "reconnaitre_passe_compose::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:0bb78a8358b4a55ac8b795c3aa0a6cdde0065d69de3f36fd11b5b250df8c8b3f",
+        "sentence:sha256:13720c0dc682183d1217cbc69b248c4d7be04d81fe8f3872cefa8fb08575762c",
+        "sentence:sha256:2276eb1e0f735a53881234ef280ca90f301f9e9b2be02a5270746084d1e01f43",
+        "sentence:sha256:23a16ff28493fe8e34f9ffa3121d0badc13d9f9b2efdb1574358dde2324043f9",
+        "sentence:sha256:24deae13a160f12806e549a126fe74177f6c8da7e89e795ca987013e2cb5171d",
+        "sentence:sha256:2d42d05b36b82cab8648274b0fcc2c2b1ffedc0a53be9ae817e704f7812f1075",
+        "sentence:sha256:4a8d7338ad16cda380ccb9e17f4f659bfd30eaf3d874b54a1a94653bb2234559",
+        "sentence:sha256:64ddb3d2b972d756f3994e222ff3ea0eef3a357a2012b0d0e8631911942796a5",
+        "sentence:sha256:84854ee6a9136060e53b0f6b9da5de3304eb40d307407435bb90ffa10e2f66af",
+        "sentence:sha256:b264b1a2814d75ee2066585136a5af101c3aea382cda7249e36390765e54c0f3",
+        "sentence:sha256:cd91ef210ac0aa53edd7f858ce1c69c4d9dbeab20074009142cf14b310d34586",
+        "sentence:sha256:d5db1e0b87cc487aabddc46c9a3a958ea104c9cc0d9b505afa3562e61da4823a",
+        "sentence:sha256:e45e254a4f94b8e4188725c88222e7757aeb1571babd71844283b98134ccc99a",
+        "word:sha256:23d11cc3bd461548ed9bb9430275d3db49ead4b7604fd7131d3b424b67c8d633"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:passe-compose:prendre",
+        "nodeKey": "produire_passe_compose",
+        "facetKey": "produire_passe_compose::verb:prendre",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire prendre au passé composé",
+        "learnerQuestionFr": "Comment former le passé composé de prendre dans une phrase ?",
+        "steps": [
+          {
+            "exampleFr": "J’ai pris un livre sur l’étagère.",
+            "explanationFr": "ai pris est le passé composé de prendre dans cette phrase. Le premier mot, une forme de avoir au présent, aide à construire ce temps : c’est l’auxiliaire. La seconde partie vient de prendre : c’est le participe passé pris."
+          },
+          {
+            "exampleFr": "je : ai pris\ntu : as pris\nil : a pris\nnous : avons pris\nvous : avez pris\nils : ont pris",
+            "explanationFr": "Avoir change avec le sujet. Dans ces phrases sans complément direct placé avant, le participe garde la forme donnée."
+          },
+          {
+            "exampleFr": "prendre → pris",
+            "explanationFr": "Retiens le participe pris avec le verbe prendre. Il ne change pas simplement parce que la forme d’avoir change."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:passe-compose:prendre:1",
+            "promptFr": "Complète avec prendre au passé composé. Écris le groupe verbal manquant : J’___ un livre sur l’étagère.",
+            "answerFr": "ai pris",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe pris.",
+            "explanationFr": "J’ai pris un livre sur l’étagère. Le groupe ai pris est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:prendre:2",
+            "promptFr": "Complète avec prendre au passé composé. Écris le groupe verbal manquant : Tu ___ le chemin du parc.",
+            "answerFr": "as pris",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe pris.",
+            "explanationFr": "Tu as pris le chemin du parc. Le groupe as pris est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:prendre:3",
+            "promptFr": "Complète avec prendre au passé composé. Écris le groupe verbal manquant : Elle ___ une photo.",
+            "answerFr": "a pris",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe pris.",
+            "explanationFr": "Elle a pris une photo. Le groupe a pris est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:prendre:4",
+            "promptFr": "Complète avec prendre au passé composé. Écris le groupe verbal manquant : Nous ___ notre temps.",
+            "answerFr": "avons pris",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe pris.",
+            "explanationFr": "Nous avons pris notre temps. Le groupe avons pris est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:prendre:5",
+            "promptFr": "Complète avec prendre au passé composé. Écris le groupe verbal manquant : Vous ___ le train du soir.",
+            "answerFr": "avez pris",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe pris.",
+            "explanationFr": "Vous avez pris le train du soir. Le groupe avez pris est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:prendre:6",
+            "promptFr": "Complète avec prendre au passé composé. Écris le groupe verbal manquant : Ils ___ des notes.",
+            "answerFr": "ont pris",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe pris.",
+            "explanationFr": "Ils ont pris des notes. Le groupe ont pris est la forme demandée dans cette construction."
+          }
+        ],
+        "takeawayFr": "Associe l’auxiliaire au présent et le participe pris. Vérifie le sujet.",
+        "boundaryFr": "Cette leçon demande un temps précis dans des phrases fournies. Elle ne démontre pas que tu sais choisir les temps dans un texte autonome ni traiter toutes les constructions avec un complément placé avant.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "prendre",
+              "form": "prendre"
+            }
+          ],
+          "sentences": [
+            "J’ai pris un livre sur l’étagère.",
+            "je : ai pris",
+            "tu : as pris",
+            "il : a pris",
+            "nous : avons pris",
+            "vous : avez pris",
+            "ils : ont pris",
+            "prendre → pris",
+            "J’ai pris un livre sur l’étagère.",
+            "Tu as pris le chemin du parc.",
+            "Elle a pris une photo.",
+            "Nous avons pris notre temps.",
+            "Vous avez pris le train du soir.",
+            "Ils ont pris des notes."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:passe-compose:venir",
+      "contentChecksum": "sha256:a8b059841da6c28b7241e5b3abb8c24eff61676fea044ca48d62bd40218ef44a",
+      "skillId": "produire_passe_compose::writing-controlled-production::verb:venir",
+      "nodeKey": "produire_passe_compose",
+      "facetKey": "produire_passe_compose::verb:venir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:avoir",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:etre",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:pronominal",
+        "former_participe_passe::writing-controlled-production::construction:er",
+        "former_participe_passe::writing-controlled-production::construction:ir",
+        "former_participe_passe::writing-controlled-production::construction:irregular",
+        "reconnaitre_passe_compose::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:0a014685ec2ca19b98fabc62cb739c43fb2d18d68a90ed6c42d3fd307604714e",
+        "sentence:sha256:1bd3a9329a579a14cf734bc55cf052faa3f0395405b39d3d270ab8faba53dc99",
+        "sentence:sha256:36b27d80b362d7f20f7add67f8567ba4deadacfa0b01c4f47935d74227b0324c",
+        "sentence:sha256:4f91ef02b5e0c7f9ec5bcd4dec1dd1136b85cb41b61f6da030d849cfae51e362",
+        "sentence:sha256:7ea280ef01476f73e92892f0d9b05cdbbc97d8c8fdcc350ce6401b61f704cd9e",
+        "sentence:sha256:8c5c46b860f156717f77408f75b9b3ab0da5ac5a9d457ea6911aac825994e125",
+        "sentence:sha256:96b123ea3f5736fe759df7eea4654cfe6dfe7368e5b5dab134b53e3c5918b9f6",
+        "sentence:sha256:9e0b7332829603627ce28f5bb32060f289dbb34f2894017e0dfa07d2e8d4581b",
+        "sentence:sha256:b0935a40dceb4f3bfcbd9c70377124ab1f4ca4f31fa93a311dd8ec01a63ec903",
+        "sentence:sha256:d852067611a2e3bb407dfad260198941178ee3ac070c45ed404d79dfc3fc7a32",
+        "sentence:sha256:e0ad23fc51a452effef5d84d9fbdbadbc4abb6fd78cc5b488c3908d1d66ca12c",
+        "sentence:sha256:e4caa56c87d1508fd7b810fcc2eab23df821bcb5db98b560b99494d30e0bf884",
+        "sentence:sha256:e7fd79bf547ef9e63194e6843e81f716b241bf7fa643d4ac6945af48778c4af7",
+        "sentence:sha256:e9a8edac6f6ecc3c6d3c66e1f96f22c1c65aab662c82579f84a600b6e689d9bd",
+        "word:sha256:db1839abb9ee522ff2699acf188525b01c33d9cdcf68feb7fb4e98616a0434fe"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:passe-compose:venir",
+        "nodeKey": "produire_passe_compose",
+        "facetKey": "produire_passe_compose::verb:venir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire venir au passé composé",
+        "learnerQuestionFr": "Comment former le passé composé de venir dans une phrase ?",
+        "steps": [
+          {
+            "exampleFr": "Je suis venu voir ton exposition.",
+            "explanationFr": "suis venu est le passé composé de venir dans cette phrase. Le premier mot, une forme de être au présent, aide à construire ce temps : c’est l’auxiliaire. La seconde partie vient de venir : c’est le participe passé venu."
+          },
+          {
+            "exampleFr": "je : suis venu\ntu : es venu\nil : est venu\nnous : sommes venus\nvous : êtes venus\nils : sont venus",
+            "explanationFr": "Ce tableau est au masculin. Être change avec le sujet. Le participe s’accorde avec le sujet : au pluriel masculin, il prend s."
+          },
+          {
+            "exampleFr": "il : est venu\nelle : est venue\nelles : sont venues",
+            "explanationFr": "Avec être, le participe prend e au féminin singulier et es au féminin pluriel. Le sujet et son nombre sont indiqués dans les exercices."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:passe-compose:venir:1",
+            "promptFr": "Complète avec venir au passé composé. Écris le groupe verbal manquant : Je ___ voir ton exposition. Sujet masculin singulier.",
+            "answerFr": "suis venu",
+            "hintFr": "Conjugue être au présent avec le sujet, puis écris le participe venu en l’accordant avec le sujet.",
+            "explanationFr": "Je suis venu voir ton exposition. Le groupe suis venu est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:venir:2",
+            "promptFr": "Complète avec venir au passé composé. Écris le groupe verbal manquant : Tu ___ avec ton frère. Sujet masculin singulier.",
+            "answerFr": "es venu",
+            "hintFr": "Conjugue être au présent avec le sujet, puis écris le participe venu en l’accordant avec le sujet.",
+            "explanationFr": "Tu es venu avec ton frère. Le groupe es venu est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:venir:3",
+            "promptFr": "Complète avec venir au passé composé. Écris le groupe verbal manquant : On ___ à pied. Sujet masculin singulier.",
+            "answerFr": "est venu",
+            "hintFr": "Conjugue être au présent avec le sujet, puis écris le participe venu en l’accordant avec le sujet.",
+            "explanationFr": "On est venu à pied. Le groupe est venu est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:venir:4",
+            "promptFr": "Complète avec venir au passé composé. Écris le groupe verbal manquant : Nous ___ de la bibliothèque. Sujet masculin pluriel.",
+            "answerFr": "sommes venus",
+            "hintFr": "Conjugue être au présent avec le sujet, puis écris le participe venu en l’accordant avec le sujet.",
+            "explanationFr": "Nous sommes venus de la bibliothèque. Le groupe sommes venus est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:venir:5",
+            "promptFr": "Complète avec venir au passé composé. Écris le groupe verbal manquant : Vous ___ au bon moment. Sujet masculin pluriel.",
+            "answerFr": "êtes venus",
+            "hintFr": "Conjugue être au présent avec le sujet, puis écris le participe venu en l’accordant avec le sujet.",
+            "explanationFr": "Vous êtes venus au bon moment. Le groupe êtes venus est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:venir:6",
+            "promptFr": "Complète avec venir au passé composé. Écris le groupe verbal manquant : Elles ___ chercher leurs cahiers. Sujet féminin pluriel.",
+            "answerFr": "sont venues",
+            "hintFr": "Conjugue être au présent avec le sujet, puis écris le participe venu en l’accordant avec le sujet.",
+            "explanationFr": "Elles sont venues chercher leurs cahiers. Le groupe sont venues est la forme demandée dans cette construction."
+          }
+        ],
+        "takeawayFr": "Associe l’auxiliaire au présent et le participe venu. Vérifie le sujet et l’accord du participe avec être.",
+        "boundaryFr": "Cette leçon demande un temps précis dans des phrases fournies. Elle ne démontre pas que tu sais choisir les temps dans un texte autonome ni traiter toutes les constructions avec un complément placé avant.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "venir",
+              "form": "venir"
+            }
+          ],
+          "sentences": [
+            "Je suis venu voir ton exposition.",
+            "je : suis venu",
+            "tu : es venu",
+            "il : est venu",
+            "nous : sommes venus",
+            "vous : êtes venus",
+            "ils : sont venus",
+            "il : est venu",
+            "elle : est venue",
+            "elles : sont venues",
+            "Je suis venu voir ton exposition.",
+            "Tu es venu avec ton frère.",
+            "On est venu à pied.",
+            "Nous sommes venus de la bibliothèque.",
+            "Vous êtes venus au bon moment.",
+            "Elles sont venues chercher leurs cahiers."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:passe-compose:partir",
+      "contentChecksum": "sha256:c46378f0d22bd7724385ddbfb6b31d99d53c299dcd1e21d8a247130bb94e5b49",
+      "skillId": "produire_passe_compose::writing-controlled-production::verb:partir",
+      "nodeKey": "produire_passe_compose",
+      "facetKey": "produire_passe_compose::verb:partir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:avoir",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:etre",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:pronominal",
+        "former_participe_passe::writing-controlled-production::construction:er",
+        "former_participe_passe::writing-controlled-production::construction:ir",
+        "former_participe_passe::writing-controlled-production::construction:irregular",
+        "reconnaitre_passe_compose::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:0a0360e1a36ac6f5095a7aa9656e38cd720cc75c15287eb17dae9cfdb35cf203",
+        "sentence:sha256:1c184042b34ef2f7acc5821163193ea8d0a9c9a54c0b6bef1c7eb875f8642852",
+        "sentence:sha256:3fc7386a4345c3436ba8e1ae8fc3356c6bd85b81aa39dbb5b3d78e41ef1bd10e",
+        "sentence:sha256:4482cdcfd0aaa34ea8d1b38ff74eea1abf3381e45b6d7fde475e3a0d6df8a756",
+        "sentence:sha256:4d63fac508e237e39a168d053ac5692ec1ab4f47006b610b5f36d4ea0fce9598",
+        "sentence:sha256:53c68f6a03d05a869e1582142693a9ff90754d3fad4d15301c631708195b772f",
+        "sentence:sha256:68ae8feffb792d1ae33856cd8f770ad16d35eb79daa04fecba9fbdcf4e0e3c2b",
+        "sentence:sha256:783404702612450ac9a72017f29cc73e8eabb873ef0b30a53975136ad4bfe1e9",
+        "sentence:sha256:816806f07faab8971d901907501839b7d6bbc0d14d4100caf3228ed3dd816b54",
+        "sentence:sha256:93967e75787a4d2834d3e793f7be38f2d6127ce7563c2f77d7effe0423e9748c",
+        "sentence:sha256:bc0db58461a3d229867f73b6b5f839c894569a54458941607a9cff0d9a9e73b6",
+        "sentence:sha256:d0046844eb3d100f42d60d99f48e838534613caa7781e8fff0e51c784ff2a351",
+        "sentence:sha256:f4d50837c5269523e789bbcabac1d95c7cd9f756d4272cd66e75c63bfaf31f53",
+        "sentence:sha256:fc064b1d7fa02f677695e4be8c13d7b2ccd8da2162eb0fa4a44366023af048dc",
+        "word:sha256:c413bda28a8465e5a51d39f762f1ed12ee9c7657a3540a6d503c484154e2b554"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:passe-compose:partir",
+        "nodeKey": "produire_passe_compose",
+        "facetKey": "produire_passe_compose::verb:partir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire partir au passé composé",
+        "learnerQuestionFr": "Comment former le passé composé de partir dans une phrase ?",
+        "steps": [
+          {
+            "exampleFr": "Je suis parti après le déjeuner.",
+            "explanationFr": "suis parti est le passé composé de partir dans cette phrase. Le premier mot, une forme de être au présent, aide à construire ce temps : c’est l’auxiliaire. La seconde partie vient de partir : c’est le participe passé parti."
+          },
+          {
+            "exampleFr": "je : suis parti\ntu : es parti\nil : est parti\nnous : sommes partis\nvous : êtes partis\nils : sont partis",
+            "explanationFr": "Ce tableau est au masculin. Être change avec le sujet. Le participe s’accorde avec le sujet : au pluriel masculin, il prend s."
+          },
+          {
+            "exampleFr": "il : est parti\nelle : est partie\nelles : sont parties",
+            "explanationFr": "Avec être, le participe prend e au féminin singulier et es au féminin pluriel. Le sujet et son nombre sont indiqués dans les exercices."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:passe-compose:partir:1",
+            "promptFr": "Complète avec partir au passé composé. Écris le groupe verbal manquant : Je ___ après le déjeuner. Sujet masculin singulier.",
+            "answerFr": "suis parti",
+            "hintFr": "Conjugue être au présent avec le sujet, puis écris le participe parti en l’accordant avec le sujet.",
+            "explanationFr": "Je suis parti après le déjeuner. Le groupe suis parti est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:partir:2",
+            "promptFr": "Complète avec partir au passé composé. Écris le groupe verbal manquant : Tu ___ en randonnée. Sujet masculin singulier.",
+            "answerFr": "es parti",
+            "hintFr": "Conjugue être au présent avec le sujet, puis écris le participe parti en l’accordant avec le sujet.",
+            "explanationFr": "Tu es parti en randonnée. Le groupe es parti est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:partir:3",
+            "promptFr": "Complète avec partir au passé composé. Écris le groupe verbal manquant : Elle ___ avec sa tante. Sujet féminin singulier.",
+            "answerFr": "est partie",
+            "hintFr": "Conjugue être au présent avec le sujet, puis écris le participe parti en l’accordant avec le sujet.",
+            "explanationFr": "Elle est partie avec sa tante. Le groupe est partie est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:partir:4",
+            "promptFr": "Complète avec partir au passé composé. Écris le groupe verbal manquant : Nous ___ dix minutes après le concert. Sujet masculin pluriel.",
+            "answerFr": "sommes partis",
+            "hintFr": "Conjugue être au présent avec le sujet, puis écris le participe parti en l’accordant avec le sujet.",
+            "explanationFr": "Nous sommes partis dix minutes après le concert. Le groupe sommes partis est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:partir:5",
+            "promptFr": "Complète avec partir au passé composé. Écris le groupe verbal manquant : Vous ___ par cette sortie. Sujet masculin pluriel.",
+            "answerFr": "êtes partis",
+            "hintFr": "Conjugue être au présent avec le sujet, puis écris le participe parti en l’accordant avec le sujet.",
+            "explanationFr": "Vous êtes partis par cette sortie. Le groupe êtes partis est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:partir:6",
+            "promptFr": "Complète avec partir au passé composé. Écris le groupe verbal manquant : Ils ___ ensemble. Sujet masculin pluriel.",
+            "answerFr": "sont partis",
+            "hintFr": "Conjugue être au présent avec le sujet, puis écris le participe parti en l’accordant avec le sujet.",
+            "explanationFr": "Ils sont partis ensemble. Le groupe sont partis est la forme demandée dans cette construction."
+          }
+        ],
+        "takeawayFr": "Associe l’auxiliaire au présent et le participe parti. Vérifie le sujet et l’accord du participe avec être.",
+        "boundaryFr": "Cette leçon demande un temps précis dans des phrases fournies. Elle ne démontre pas que tu sais choisir les temps dans un texte autonome ni traiter toutes les constructions avec un complément placé avant.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "partir",
+              "form": "partir"
+            }
+          ],
+          "sentences": [
+            "Je suis parti après le déjeuner.",
+            "je : suis parti",
+            "tu : es parti",
+            "il : est parti",
+            "nous : sommes partis",
+            "vous : êtes partis",
+            "ils : sont partis",
+            "il : est parti",
+            "elle : est partie",
+            "elles : sont parties",
+            "Je suis parti après le déjeuner.",
+            "Tu es parti en randonnée.",
+            "Elle est partie avec sa tante.",
+            "Nous sommes partis dix minutes après le concert.",
+            "Vous êtes partis par cette sortie.",
+            "Ils sont partis ensemble."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:passe-compose:sortir",
+      "contentChecksum": "sha256:4db3faa00c634ab956a9485bc6eca30799911fa7ef7a4efb74f3618b91bc0c92",
+      "skillId": "produire_passe_compose::writing-controlled-production::verb:sortir",
+      "nodeKey": "produire_passe_compose",
+      "facetKey": "produire_passe_compose::verb:sortir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:avoir",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:etre",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:pronominal",
+        "former_participe_passe::writing-controlled-production::construction:er",
+        "former_participe_passe::writing-controlled-production::construction:ir",
+        "former_participe_passe::writing-controlled-production::construction:irregular",
+        "reconnaitre_passe_compose::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:28c73ba2ba39cf1ce774fd7870de2d249574b63794e3c729b21f1994342cb97e",
+        "sentence:sha256:2d1750213bec4b91445cc8d8a0d1c16e003bc1996d6c2438ac0e179a0a272d46",
+        "sentence:sha256:30350adff36835856403f827f1a2158da128321684ee0524bb2338a3b4ba2d72",
+        "sentence:sha256:3f77127f8da988994c59b24717602bd01fac8e5dd0269952e1602e1206c3b1c9",
+        "sentence:sha256:4358f431bf544604bdbe89693400b566f02a3f466dcc4170ea5c37653583a111",
+        "sentence:sha256:48c26b25b315151992fa809be81ca2fdc0d0690dc8a6d572cd5b488ff66ed064",
+        "sentence:sha256:4a4205c14def6ed7cf2e17ce8deaa3bb70ff468e092228e2f1772fb923fb2718",
+        "sentence:sha256:4a834e91b30a615ba3156aceabf7567c67190cd70bff5f0f7041ef5061e44a9a",
+        "sentence:sha256:5de643425b3f64f009f34a17830ddb326585dbb9b47932b24e8fd9baa88dadf4",
+        "sentence:sha256:5fc4423d211b22235f7c8d3c68dc93c61f23b7b804568ca075fdcaee6ff8f1be",
+        "sentence:sha256:6e42879f6d0276ba1d01e95d19df5b8831a04e386a0635d2aef06129aea5f32c",
+        "sentence:sha256:971e5403277d1ce4aedcfb130c9c7b9c034a581c30ad1f56dc9803e2d8d2dffc",
+        "sentence:sha256:a7a74185ab0667ac64980d91378e28e5db1543291f5e691811eb547f4a57035e",
+        "sentence:sha256:b9a66383abf55ac68f03ee2d00f467644bc61255ece8afca9bf21943390f15db",
+        "sentence:sha256:cdc6aee802ea896ea886e529c7ee7f67067cc44036d46e93d6593eff1b12701d",
+        "sentence:sha256:fb4fe344b6b3e1f2e3b5bc0fcc4f912cc72ca0b6be3f493ebfbfd219f8961267",
+        "word:sha256:fa2d47f055148af90afa02fbeeca752cd135f6694e785747598c6f3987265454"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:passe-compose:sortir",
+        "nodeKey": "produire_passe_compose",
+        "facetKey": "produire_passe_compose::verb:sortir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire sortir au passé composé",
+        "learnerQuestionFr": "Comment former le passé composé de sortir dans une phrase ?",
+        "steps": [
+          {
+            "exampleFr": "Je suis sorti de la classe.",
+            "explanationFr": "suis sorti est le passé composé de sortir dans cette phrase. Le premier mot, une forme de être au présent, aide à construire ce temps : c’est l’auxiliaire. La seconde partie vient de sortir : c’est le participe passé sorti."
+          },
+          {
+            "exampleFr": "je : suis sorti\ntu : es sorti\nil : est sorti\nnous : sommes sortis\nvous : êtes sortis\nils : sont sortis",
+            "explanationFr": "Ce tableau est au masculin. Être change avec le sujet. Le participe s’accorde avec le sujet : au pluriel masculin, il prend s."
+          },
+          {
+            "exampleFr": "il : est sorti\nelle : est sortie\nelles : sont sorties",
+            "explanationFr": "Avec être, le participe prend e au féminin singulier et es au féminin pluriel. Le sujet et son nombre sont indiqués dans les exercices."
+          },
+          {
+            "exampleFr": "Elle est sortie du hangar.\nElle a sorti le tracteur.",
+            "explanationFr": "Quand sortir a ici un complément direct, le tracteur, il utilise avoir. Quand elle quitte le lieu elle-même, il utilise être. Choisis d’abord selon la construction, puis conjugue."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:passe-compose:sortir:1",
+            "promptFr": "Complète avec sortir au passé composé. Écris le groupe verbal manquant : Je ___ de la classe. Sujet masculin singulier.",
+            "answerFr": "suis sorti",
+            "hintFr": "Observe si sortir possède un complément direct. Choisis ensuite la forme de l’auxiliaire.",
+            "explanationFr": "Je suis sorti de la classe. Le groupe suis sorti est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:sortir:2",
+            "promptFr": "Complète avec sortir au passé composé. Écris le groupe verbal manquant : Tu ___ une feuille de ton sac. Sujet masculin singulier.",
+            "answerFr": "as sorti",
+            "hintFr": "Observe si sortir possède un complément direct. Choisis ensuite la forme de l’auxiliaire.",
+            "explanationFr": "Tu as sorti une feuille de ton sac. Le groupe as sorti est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:sortir:3",
+            "promptFr": "Complète avec sortir au passé composé. Écris le groupe verbal manquant : On ___ dans la cour. Sujet masculin singulier.",
+            "answerFr": "est sorti",
+            "hintFr": "Observe si sortir possède un complément direct. Choisis ensuite la forme de l’auxiliaire.",
+            "explanationFr": "On est sorti dans la cour. Le groupe est sorti est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:sortir:4",
+            "promptFr": "Complète avec sortir au passé composé. Écris le groupe verbal manquant : Nous ___ les chaises. Sujet masculin pluriel.",
+            "answerFr": "avons sorti",
+            "hintFr": "Observe si sortir possède un complément direct. Choisis ensuite la forme de l’auxiliaire.",
+            "explanationFr": "Nous avons sorti les chaises. Le groupe avons sorti est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:sortir:5",
+            "promptFr": "Complète avec sortir au passé composé. Écris le groupe verbal manquant : Vous ___ après le signal. Sujet masculin pluriel.",
+            "answerFr": "êtes sortis",
+            "hintFr": "Observe si sortir possède un complément direct. Choisis ensuite la forme de l’auxiliaire.",
+            "explanationFr": "Vous êtes sortis après le signal. Le groupe êtes sortis est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:sortir:6",
+            "promptFr": "Complète avec sortir au passé composé. Écris le groupe verbal manquant : Elles ___ du cinéma. Sujet féminin pluriel.",
+            "answerFr": "sont sorties",
+            "hintFr": "Observe si sortir possède un complément direct. Choisis ensuite la forme de l’auxiliaire.",
+            "explanationFr": "Elles sont sorties du cinéma. Le groupe sont sorties est la forme demandée dans cette construction."
+          }
+        ],
+        "takeawayFr": "Associe l’auxiliaire au présent et le participe sorti. Vérifie le sujet et l’accord du participe avec être.",
+        "boundaryFr": "Cette leçon demande un temps précis dans des phrases fournies. Elle ne démontre pas que tu sais choisir les temps dans un texte autonome ni traiter toutes les constructions avec un complément placé avant.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "sortir",
+              "form": "sortir"
+            }
+          ],
+          "sentences": [
+            "Je suis sorti de la classe.",
+            "je : suis sorti",
+            "tu : es sorti",
+            "il : est sorti",
+            "nous : sommes sortis",
+            "vous : êtes sortis",
+            "ils : sont sortis",
+            "il : est sorti",
+            "elle : est sortie",
+            "elles : sont sorties",
+            "Elle est sortie du hangar.",
+            "Elle a sorti le tracteur.",
+            "Je suis sorti de la classe.",
+            "Tu as sorti une feuille de ton sac.",
+            "On est sorti dans la cour.",
+            "Nous avons sorti les chaises.",
+            "Vous êtes sortis après le signal.",
+            "Elles sont sorties du cinéma."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:passe-compose:dire",
+      "contentChecksum": "sha256:d12ed8ebe8316fa15ec84fa9085779202d97776e61d7c551c74c70dd411789a2",
+      "skillId": "produire_passe_compose::writing-controlled-production::verb:dire",
+      "nodeKey": "produire_passe_compose",
+      "facetKey": "produire_passe_compose::verb:dire",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:avoir",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:etre",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:pronominal",
+        "former_participe_passe::writing-controlled-production::construction:er",
+        "former_participe_passe::writing-controlled-production::construction:ir",
+        "former_participe_passe::writing-controlled-production::construction:irregular",
+        "reconnaitre_passe_compose::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:565ceb9643741b58b9ad77f255f80eda3de89c157616346f300d2b39c214c231",
+        "sentence:sha256:659c22889708becddf0e9964be54cde179813d0b823088169d517c29de9a1749",
+        "sentence:sha256:778ca9b26ad6ef483bfaaddc84639cc1341c15b035a46df529d1ae9332916c2b",
+        "sentence:sha256:862574640a4cdbcb598cddc54447b122a62df738ac8fd4786bcc3e7fffd8e9ba",
+        "sentence:sha256:b707fbd5e949421bc6af856a4122bffddff30522f5ffea976c96078442bced00",
+        "sentence:sha256:be14fd2e79f76f01a02641a85ea1f818d41b7fb8fafd156c1adfc61a23c8fcf3",
+        "sentence:sha256:cd21e82dfde1c8be69115171315b082815badb47e840d0e56d128149212eb024",
+        "sentence:sha256:d884b60d1ab8608e919cf94b149d2e4c08723ae5e612a4271f7fbb51602e24cd",
+        "sentence:sha256:e1341d8837605833e71f613f17f1a611129c42a91ceb77a68d738b0d8d6fb437",
+        "sentence:sha256:e29f16fa152b8bf0b0c3fcfb483676e6081fd2fa592deff4fb7f6e5a24a45b67",
+        "sentence:sha256:e649f99fe2a4b51e87b9139a84807eb7a45a6f534583daf6513622356ed78557",
+        "sentence:sha256:f47ebaa7b78fe0922238846195752d88640aa3dd2b445de6740bd504db5ea71c",
+        "sentence:sha256:f9302c4cec6e35c91a3198d6ba78266a42b3d5a80fe288d105864c8ed195ec98",
+        "word:sha256:ed7e2402cd873904858fd72b0d99ff0fbb97d1cdc7e526b5da0980cd64cb8939"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:passe-compose:dire",
+        "nodeKey": "produire_passe_compose",
+        "facetKey": "produire_passe_compose::verb:dire",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire dire au passé composé",
+        "learnerQuestionFr": "Comment former le passé composé de dire dans une phrase ?",
+        "steps": [
+          {
+            "exampleFr": "J’ai dit ce que je pense.",
+            "explanationFr": "ai dit est le passé composé de dire dans cette phrase. Le premier mot, une forme de avoir au présent, aide à construire ce temps : c’est l’auxiliaire. La seconde partie vient de dire : c’est le participe passé dit."
+          },
+          {
+            "exampleFr": "je : ai dit\ntu : as dit\nil : a dit\nnous : avons dit\nvous : avez dit\nils : ont dit",
+            "explanationFr": "Avoir change avec le sujet. Dans ces phrases sans complément direct placé avant, le participe garde la forme donnée."
+          },
+          {
+            "exampleFr": "dire → dit",
+            "explanationFr": "Retiens le participe dit avec le verbe dire. Il ne change pas simplement parce que la forme d’avoir change."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:passe-compose:dire:1",
+            "promptFr": "Complète avec dire au passé composé. Écris le groupe verbal manquant : J’___ ce que je pense.",
+            "answerFr": "ai dit",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe dit.",
+            "explanationFr": "J’ai dit ce que je pense. Le groupe ai dit est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:dire:2",
+            "promptFr": "Complète avec dire au passé composé. Écris le groupe verbal manquant : Tu ___ bonjour à la voisine.",
+            "answerFr": "as dit",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe dit.",
+            "explanationFr": "Tu as dit bonjour à la voisine. Le groupe as dit est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:dire:3",
+            "promptFr": "Complète avec dire au passé composé. Écris le groupe verbal manquant : Il ___ son prénom.",
+            "answerFr": "a dit",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe dit.",
+            "explanationFr": "Il a dit son prénom. Le groupe a dit est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:dire:4",
+            "promptFr": "Complète avec dire au passé composé. Écris le groupe verbal manquant : Nous ___ la vérité.",
+            "answerFr": "avons dit",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe dit.",
+            "explanationFr": "Nous avons dit la vérité. Le groupe avons dit est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:dire:5",
+            "promptFr": "Complète avec dire au passé composé. Écris le groupe verbal manquant : Vous ___ la même chose.",
+            "answerFr": "avez dit",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe dit.",
+            "explanationFr": "Vous avez dit la même chose. Le groupe avez dit est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:dire:6",
+            "promptFr": "Complète avec dire au passé composé. Écris le groupe verbal manquant : Elles ___ quelques mots.",
+            "answerFr": "ont dit",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe dit.",
+            "explanationFr": "Elles ont dit quelques mots. Le groupe ont dit est la forme demandée dans cette construction."
+          }
+        ],
+        "takeawayFr": "Associe l’auxiliaire au présent et le participe dit. Vérifie le sujet.",
+        "boundaryFr": "Cette leçon demande un temps précis dans des phrases fournies. Elle ne démontre pas que tu sais choisir les temps dans un texte autonome ni traiter toutes les constructions avec un complément placé avant.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "dire",
+              "form": "dire"
+            }
+          ],
+          "sentences": [
+            "J’ai dit ce que je pense.",
+            "je : ai dit",
+            "tu : as dit",
+            "il : a dit",
+            "nous : avons dit",
+            "vous : avez dit",
+            "ils : ont dit",
+            "dire → dit",
+            "J’ai dit ce que je pense.",
+            "Tu as dit bonjour à la voisine.",
+            "Il a dit son prénom.",
+            "Nous avons dit la vérité.",
+            "Vous avez dit la même chose.",
+            "Elles ont dit quelques mots."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:passe-compose:voir",
+      "contentChecksum": "sha256:f271599281871f31dc2afdb5b797040fff24b36f9d8cc84c50e181158ee41d31",
+      "skillId": "produire_passe_compose::writing-controlled-production::verb:voir",
+      "nodeKey": "produire_passe_compose",
+      "facetKey": "produire_passe_compose::verb:voir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:avoir",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:etre",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:pronominal",
+        "former_participe_passe::writing-controlled-production::construction:er",
+        "former_participe_passe::writing-controlled-production::construction:ir",
+        "former_participe_passe::writing-controlled-production::construction:irregular",
+        "reconnaitre_passe_compose::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:0d0f809dea51c73da90edc0054e5fdd12908da91c7d0b47e9731e9825758a9d5",
+        "sentence:sha256:29393a196fcb7da66393c04936d7f4c2f96766236e15efb842ad36295a1b2b51",
+        "sentence:sha256:33b78194d2daf0aeabb8f5a0e3a2b8e721b45e56ee5782b320d9b4979a23ca80",
+        "sentence:sha256:516c33acf3619c5da040f5be3ac81b46ca7b80eaf723201a64a9c5e21b30f4f5",
+        "sentence:sha256:6b59c307671fc6c58fd050f121a71cfb956994bfda2c48b72110fd95417e7964",
+        "sentence:sha256:9f419a26fb97b4eef3a42e23e909ff7d7d417bb35d36207c53ef8959549617fe",
+        "sentence:sha256:aefa38bc3c3b4a718321ac83f6ffe4290aed5a2e0c451af9f3b2b67ddbe0bcd9",
+        "sentence:sha256:bf00ef720e72145635565f4bb3d8ead45be0566b6cd0c2297fa4ce2116acc0a6",
+        "sentence:sha256:d590cf9dd00c69f2e183e93601406c7c70d1ad0ce7703ff3b326e4a0c009db29",
+        "sentence:sha256:db51f965bae0da2408a08f2188b7a639a794a388af5ec73ee3df016e8cdf34a7",
+        "sentence:sha256:eb23016c7419dc6bff951579d3bc4dd06854a17cdf45f20b304b547449648b4b",
+        "sentence:sha256:f073240e8e69096a5ad8d0a44d9587fef88799fff2924f015e6b6920f64dc67e",
+        "sentence:sha256:ff5e37c2b1aaba58ae3d5e4aa1a58a6f8bc92f95b8769e1b4f68fc950a70b3e2",
+        "word:sha256:68b20210fa2d90732194f585ea10184fd5e841c860b83e7a5ed0c0a945ec2463"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:passe-compose:voir",
+        "nodeKey": "produire_passe_compose",
+        "facetKey": "produire_passe_compose::verb:voir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire voir au passé composé",
+        "learnerQuestionFr": "Comment former le passé composé de voir dans une phrase ?",
+        "steps": [
+          {
+            "exampleFr": "J’ai vu le panneau.",
+            "explanationFr": "ai vu est le passé composé de voir dans cette phrase. Le premier mot, une forme de avoir au présent, aide à construire ce temps : c’est l’auxiliaire. La seconde partie vient de voir : c’est le participe passé vu."
+          },
+          {
+            "exampleFr": "je : ai vu\ntu : as vu\nil : a vu\nnous : avons vu\nvous : avez vu\nils : ont vu",
+            "explanationFr": "Avoir change avec le sujet. Dans ces phrases sans complément direct placé avant, le participe garde la forme donnée."
+          },
+          {
+            "exampleFr": "voir → vu",
+            "explanationFr": "Retiens le participe vu avec le verbe voir. Il ne change pas simplement parce que la forme d’avoir change."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:passe-compose:voir:1",
+            "promptFr": "Complète avec voir au passé composé. Écris le groupe verbal manquant : J’___ le panneau.",
+            "answerFr": "ai vu",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe vu.",
+            "explanationFr": "J’ai vu le panneau. Le groupe ai vu est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:voir:2",
+            "promptFr": "Complète avec voir au passé composé. Écris le groupe verbal manquant : Tu ___ une étoile.",
+            "answerFr": "as vu",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe vu.",
+            "explanationFr": "Tu as vu une étoile. Le groupe as vu est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:voir:3",
+            "promptFr": "Complète avec voir au passé composé. Écris le groupe verbal manquant : On ___ la rivière.",
+            "answerFr": "a vu",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe vu.",
+            "explanationFr": "On a vu la rivière. Le groupe a vu est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:voir:4",
+            "promptFr": "Complète avec voir au passé composé. Écris le groupe verbal manquant : Nous ___ les joueurs de près.",
+            "answerFr": "avons vu",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe vu.",
+            "explanationFr": "Nous avons vu les joueurs de près. Le groupe avons vu est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:voir:5",
+            "promptFr": "Complète avec voir au passé composé. Écris le groupe verbal manquant : Vous ___ le dessin en entier.",
+            "answerFr": "avez vu",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe vu.",
+            "explanationFr": "Vous avez vu le dessin en entier. Le groupe avez vu est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:voir:6",
+            "promptFr": "Complète avec voir au passé composé. Écris le groupe verbal manquant : Ils ___ leurs amis arriver.",
+            "answerFr": "ont vu",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe vu.",
+            "explanationFr": "Ils ont vu leurs amis arriver. Le groupe ont vu est la forme demandée dans cette construction."
+          }
+        ],
+        "takeawayFr": "Associe l’auxiliaire au présent et le participe vu. Vérifie le sujet.",
+        "boundaryFr": "Cette leçon demande un temps précis dans des phrases fournies. Elle ne démontre pas que tu sais choisir les temps dans un texte autonome ni traiter toutes les constructions avec un complément placé avant.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "voir",
+              "form": "voir"
+            }
+          ],
+          "sentences": [
+            "J’ai vu le panneau.",
+            "je : ai vu",
+            "tu : as vu",
+            "il : a vu",
+            "nous : avons vu",
+            "vous : avez vu",
+            "ils : ont vu",
+            "voir → vu",
+            "J’ai vu le panneau.",
+            "Tu as vu une étoile.",
+            "On a vu la rivière.",
+            "Nous avons vu les joueurs de près.",
+            "Vous avez vu le dessin en entier.",
+            "Ils ont vu leurs amis arriver."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:passe-compose:pouvoir",
+      "contentChecksum": "sha256:f2385ce9e8fab2d309897645bdb5f8dd9ab0846e0a8a5257d95a22752637bc47",
+      "skillId": "produire_passe_compose::writing-controlled-production::verb:pouvoir",
+      "nodeKey": "produire_passe_compose",
+      "facetKey": "produire_passe_compose::verb:pouvoir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:avoir",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:etre",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:pronominal",
+        "former_participe_passe::writing-controlled-production::construction:er",
+        "former_participe_passe::writing-controlled-production::construction:ir",
+        "former_participe_passe::writing-controlled-production::construction:irregular",
+        "reconnaitre_passe_compose::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:054611a9fc6b54e143593f9f309ca0391986cd64219cf3b1acd985e41586eed5",
+        "sentence:sha256:1661012daaa8a6f34a041a21cda1a647414520f12586b257f682a97c75dc64ac",
+        "sentence:sha256:27cc2473aadeab3150da27270cccf5c2326c3f978149bfbeb22d5ff59bdbcea5",
+        "sentence:sha256:4f33382090b6b3e30e8244634aaa5daaf5a0b90930e9fa15987f0ea35021c994",
+        "sentence:sha256:64a0369706574a03175fc43611ee51af931552e94ea03c54404b97c07144286e",
+        "sentence:sha256:7ab4d92ae41ee4362fa0ca6129ca7cce858f4904e6496e47da1e4193f6e6ef17",
+        "sentence:sha256:8563c188da68fd6d9c08501088e7deaa6bdcc74fdc0ee8e9f123de688ad9ec54",
+        "sentence:sha256:9985cdaedc5c788518c337efb96451ff07c0024e29295d639c052bb5311a782d",
+        "sentence:sha256:a5db765f7de3b39402d85c0b88f7cfaf14f15f5948136574b8c50fe85c5bbd77",
+        "sentence:sha256:a8b9d5ca535f5d982cf66754e90337ddcb37ee97b17334aa3842fdb003f07b2d",
+        "sentence:sha256:abe5ba310ec4957e207035b74635ba6b210a9a7e8020b27f4da6582dc3ebce60",
+        "sentence:sha256:dbc2d1ca990763e70ea9794a77556ecd997cc8ca914d9a7e88ee12fcc17ce2f5",
+        "sentence:sha256:dda33ec5db26321383ebb4323f69a5d354261f33c5ba7934f1629a1056eb9f62",
+        "word:sha256:e192d5dcdfc88be9dd57a079209e6cc178dc4c47d093e153efbdcd8cbf7aa977"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:passe-compose:pouvoir",
+        "nodeKey": "produire_passe_compose",
+        "facetKey": "produire_passe_compose::verb:pouvoir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire pouvoir au passé composé",
+        "learnerQuestionFr": "Comment former le passé composé de pouvoir dans une phrase ?",
+        "steps": [
+          {
+            "exampleFr": "J’ai pu ouvrir la fenêtre.",
+            "explanationFr": "ai pu est le passé composé de pouvoir dans cette phrase. Le premier mot, une forme de avoir au présent, aide à construire ce temps : c’est l’auxiliaire. La seconde partie vient de pouvoir : c’est le participe passé pu."
+          },
+          {
+            "exampleFr": "je : ai pu\ntu : as pu\nil : a pu\nnous : avons pu\nvous : avez pu\nils : ont pu",
+            "explanationFr": "Avoir change avec le sujet. Dans ces phrases sans complément direct placé avant, le participe garde la forme donnée."
+          },
+          {
+            "exampleFr": "pouvoir → pu",
+            "explanationFr": "Retiens le participe pu avec le verbe pouvoir. Il ne change pas simplement parce que la forme d’avoir change."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:passe-compose:pouvoir:1",
+            "promptFr": "Complète avec pouvoir au passé composé. Écris le groupe verbal manquant : J’___ ouvrir la fenêtre.",
+            "answerFr": "ai pu",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe pu.",
+            "explanationFr": "J’ai pu ouvrir la fenêtre. Le groupe ai pu est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:pouvoir:2",
+            "promptFr": "Complète avec pouvoir au passé composé. Écris le groupe verbal manquant : Tu ___ choisir une couleur.",
+            "answerFr": "as pu",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe pu.",
+            "explanationFr": "Tu as pu choisir une couleur. Le groupe as pu est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:pouvoir:3",
+            "promptFr": "Complète avec pouvoir au passé composé. Écris le groupe verbal manquant : Elle ___ nous aider.",
+            "answerFr": "a pu",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe pu.",
+            "explanationFr": "Elle a pu nous aider. Le groupe a pu est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:pouvoir:4",
+            "promptFr": "Complète avec pouvoir au passé composé. Écris le groupe verbal manquant : Nous ___ rester ici.",
+            "answerFr": "avons pu",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe pu.",
+            "explanationFr": "Nous avons pu rester ici. Le groupe avons pu est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:pouvoir:5",
+            "promptFr": "Complète avec pouvoir au passé composé. Écris le groupe verbal manquant : Vous ___ recommencer.",
+            "answerFr": "avez pu",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe pu.",
+            "explanationFr": "Vous avez pu recommencer. Le groupe avez pu est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:pouvoir:6",
+            "promptFr": "Complète avec pouvoir au passé composé. Écris le groupe verbal manquant : Ils ___ entrer maintenant.",
+            "answerFr": "ont pu",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe pu.",
+            "explanationFr": "Ils ont pu entrer maintenant. Le groupe ont pu est la forme demandée dans cette construction."
+          }
+        ],
+        "takeawayFr": "Associe l’auxiliaire au présent et le participe pu. Vérifie le sujet.",
+        "boundaryFr": "Cette leçon demande un temps précis dans des phrases fournies. Elle ne démontre pas que tu sais choisir les temps dans un texte autonome ni traiter toutes les constructions avec un complément placé avant.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "pouvoir",
+              "form": "pouvoir"
+            }
+          ],
+          "sentences": [
+            "J’ai pu ouvrir la fenêtre.",
+            "je : ai pu",
+            "tu : as pu",
+            "il : a pu",
+            "nous : avons pu",
+            "vous : avez pu",
+            "ils : ont pu",
+            "pouvoir → pu",
+            "J’ai pu ouvrir la fenêtre.",
+            "Tu as pu choisir une couleur.",
+            "Elle a pu nous aider.",
+            "Nous avons pu rester ici.",
+            "Vous avez pu recommencer.",
+            "Ils ont pu entrer maintenant."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:passe-compose:vouloir",
+      "contentChecksum": "sha256:056dfc1737868f5f12d3016693aef07831ebb57ce3c5496282788c28935dcc04",
+      "skillId": "produire_passe_compose::writing-controlled-production::verb:vouloir",
+      "nodeKey": "produire_passe_compose",
+      "facetKey": "produire_passe_compose::verb:vouloir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:avoir",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:etre",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:pronominal",
+        "former_participe_passe::writing-controlled-production::construction:er",
+        "former_participe_passe::writing-controlled-production::construction:ir",
+        "former_participe_passe::writing-controlled-production::construction:irregular",
+        "reconnaitre_passe_compose::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:14fe0a7d74fae1b3a54a99c6a6c47c7f88d353893f798259e69930c0f434cac8",
+        "sentence:sha256:24bbc190f54c85f61c2d5c95ca10e21ab062b80866e5dfc5b43951c315ddda9a",
+        "sentence:sha256:2a591d813a086e5e9a5728573ff5a4f4f54fec72fca83a354fb382da8526bf4f",
+        "sentence:sha256:3e653d41e4bb1b540abfecbe9a2c22d96ce1383c66a9f50be5ca0330245a625b",
+        "sentence:sha256:63aaf8be7a92318d9afcb6dfeb58bcbeab837131e6091f6a9567427762d3b083",
+        "sentence:sha256:6b5b17c81140abe7e143c555a091a8531c6f6dce09b70270869becb47a23cf3f",
+        "sentence:sha256:73e5956ea74734c470eba9bc5a90bbe9218e78f4b1467b35b8464f8313c8861f",
+        "sentence:sha256:7cf7bccfca7e653f82b5ffcd931a6828b5bf88620c94b35c65a9ea01d61029a3",
+        "sentence:sha256:9345e87cba4c8696cfdb48443733572dd1117aeb36765f3d04167ba586b11d6a",
+        "sentence:sha256:9743a63df28d72015bf72c72496135814bf3ad674ffee4c89c82a42598892c1b",
+        "sentence:sha256:a7e99bd362ffbcf333e61d2fd684adebac5f8d3d4b31e353b603b65804e88604",
+        "sentence:sha256:bffd5063a4084cf9392c4ae7dc7b2f17ef0ff91fd3ca656eada16573274a1f7e",
+        "sentence:sha256:c6076217a3b0c173f2db7f4cb6e05c8347d1a0386e09898fdcba9b6bc3640517",
+        "word:sha256:489914beff2d4575266911e79fd2e447beebf86608412d02eeea869cb533a078"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:passe-compose:vouloir",
+        "nodeKey": "produire_passe_compose",
+        "facetKey": "produire_passe_compose::verb:vouloir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire vouloir au passé composé",
+        "learnerQuestionFr": "Comment former le passé composé de vouloir dans une phrase ?",
+        "steps": [
+          {
+            "exampleFr": "J’ai voulu lire ce manga.",
+            "explanationFr": "ai voulu est le passé composé de vouloir dans cette phrase. Le premier mot, une forme de avoir au présent, aide à construire ce temps : c’est l’auxiliaire. La seconde partie vient de vouloir : c’est le participe passé voulu."
+          },
+          {
+            "exampleFr": "je : ai voulu\ntu : as voulu\nil : a voulu\nnous : avons voulu\nvous : avez voulu\nils : ont voulu",
+            "explanationFr": "Avoir change avec le sujet. Dans ces phrases sans complément direct placé avant, le participe garde la forme donnée."
+          },
+          {
+            "exampleFr": "vouloir → voulu",
+            "explanationFr": "Retiens le participe voulu avec le verbe vouloir. Il ne change pas simplement parce que la forme d’avoir change."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:passe-compose:vouloir:1",
+            "promptFr": "Complète avec vouloir au passé composé. Écris le groupe verbal manquant : J’___ lire ce manga.",
+            "answerFr": "ai voulu",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe voulu.",
+            "explanationFr": "J’ai voulu lire ce manga. Le groupe ai voulu est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:vouloir:2",
+            "promptFr": "Complète avec vouloir au passé composé. Écris le groupe verbal manquant : Tu ___ préparer l’affiche.",
+            "answerFr": "as voulu",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe voulu.",
+            "explanationFr": "Tu as voulu préparer l’affiche. Le groupe as voulu est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:vouloir:3",
+            "promptFr": "Complète avec vouloir au passé composé. Écris le groupe verbal manquant : On ___ essayer autrement.",
+            "answerFr": "a voulu",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe voulu.",
+            "explanationFr": "On a voulu essayer autrement. Le groupe a voulu est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:vouloir:4",
+            "promptFr": "Complète avec vouloir au passé composé. Écris le groupe verbal manquant : Nous ___ comprendre la règle.",
+            "answerFr": "avons voulu",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe voulu.",
+            "explanationFr": "Nous avons voulu comprendre la règle. Le groupe avons voulu est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:vouloir:5",
+            "promptFr": "Complète avec vouloir au passé composé. Écris le groupe verbal manquant : Vous ___ rejoindre le groupe.",
+            "answerFr": "avez voulu",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe voulu.",
+            "explanationFr": "Vous avez voulu rejoindre le groupe. Le groupe avez voulu est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:vouloir:6",
+            "promptFr": "Complète avec vouloir au passé composé. Écris le groupe verbal manquant : Elles ___ organiser un tournoi.",
+            "answerFr": "ont voulu",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe voulu.",
+            "explanationFr": "Elles ont voulu organiser un tournoi. Le groupe ont voulu est la forme demandée dans cette construction."
+          }
+        ],
+        "takeawayFr": "Associe l’auxiliaire au présent et le participe voulu. Vérifie le sujet.",
+        "boundaryFr": "Cette leçon demande un temps précis dans des phrases fournies. Elle ne démontre pas que tu sais choisir les temps dans un texte autonome ni traiter toutes les constructions avec un complément placé avant.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "vouloir",
+              "form": "vouloir"
+            }
+          ],
+          "sentences": [
+            "J’ai voulu lire ce manga.",
+            "je : ai voulu",
+            "tu : as voulu",
+            "il : a voulu",
+            "nous : avons voulu",
+            "vous : avez voulu",
+            "ils : ont voulu",
+            "vouloir → voulu",
+            "J’ai voulu lire ce manga.",
+            "Tu as voulu préparer l’affiche.",
+            "On a voulu essayer autrement.",
+            "Nous avons voulu comprendre la règle.",
+            "Vous avez voulu rejoindre le groupe.",
+            "Elles ont voulu organiser un tournoi."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:passe-compose:savoir",
+      "contentChecksum": "sha256:0a163bb41b69fc7fd3a903a82fd0b22fbd568606223b8e7048ce08facbec56ca",
+      "skillId": "produire_passe_compose::writing-controlled-production::verb:savoir",
+      "nodeKey": "produire_passe_compose",
+      "facetKey": "produire_passe_compose::verb:savoir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:avoir",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:etre",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:pronominal",
+        "former_participe_passe::writing-controlled-production::construction:er",
+        "former_participe_passe::writing-controlled-production::construction:ir",
+        "former_participe_passe::writing-controlled-production::construction:irregular",
+        "reconnaitre_passe_compose::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:381140f3fce47f796d0a217aa9a5df2798a7c763a4d43be42c9dfbc8298f27a1",
+        "sentence:sha256:3e6104dc860334564d7d02ed3ec78a71514e9418d27fee7fbaed1289a986c6c5",
+        "sentence:sha256:434cbcb152e653d068341b52e182f2513ca91a5096816f74d78d7151a73a6469",
+        "sentence:sha256:453ebb10f6191a77f5e418937147b763fe0ba0273325550a1750aebaf520bfc5",
+        "sentence:sha256:4a95a583d39698c81423cd7e837187d1109708b1f922598243376a8213b62ea3",
+        "sentence:sha256:62324004df4c5f159c18490333ff71005982cef8d108fae8b84532b3d70019f0",
+        "sentence:sha256:8121ff5007829c68f6372df20b9768dda478693143b15772ae3e85c1145e9a96",
+        "sentence:sha256:8a41fc11470fe0fe0592a45dea7744851549f3a626fb4886053f50e57020a7e0",
+        "sentence:sha256:95336db740a39736321bf4e6da53510644e845613895ca3633d8abb392c9d5d0",
+        "sentence:sha256:985efa6f539ace807b743d0bcb8e0331b1ce8d5784877201a8d384753164946c",
+        "sentence:sha256:a45c7a81cd4df25fe86c40c2e7c38eda59eb29f54a3f8dd829a00008323170f5",
+        "sentence:sha256:b16a65718b2eb0e8e33f73a5587af8012313800923f054afc2fd52403e5c0d2e",
+        "sentence:sha256:cecd7fa9c4d5e0845f7dbf69a6eaf84bffe56337ed33cc3d7cb33ee063e28990",
+        "word:sha256:0233d19d22b3a2fad3f6618b95d2fc1fed0cd027446994a4e0642b4939300291"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:passe-compose:savoir",
+        "nodeKey": "produire_passe_compose",
+        "facetKey": "produire_passe_compose::verb:savoir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire savoir au passé composé",
+        "learnerQuestionFr": "Comment former le passé composé de savoir dans une phrase ?",
+        "steps": [
+          {
+            "exampleFr": "J’ai su où se trouve la salle.",
+            "explanationFr": "ai su est le passé composé de savoir dans cette phrase. Le premier mot, une forme de avoir au présent, aide à construire ce temps : c’est l’auxiliaire. La seconde partie vient de savoir : c’est le participe passé su."
+          },
+          {
+            "exampleFr": "je : ai su\ntu : as su\nil : a su\nnous : avons su\nvous : avez su\nils : ont su",
+            "explanationFr": "Avoir change avec le sujet. Dans ces phrases sans complément direct placé avant, le participe garde la forme donnée."
+          },
+          {
+            "exampleFr": "savoir → su",
+            "explanationFr": "Retiens le participe su avec le verbe savoir. Il ne change pas simplement parce que la forme d’avoir change."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:passe-compose:savoir:1",
+            "promptFr": "Complète avec savoir au passé composé. Écris le groupe verbal manquant : J’___ où se trouve la salle.",
+            "answerFr": "ai su",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe su.",
+            "explanationFr": "J’ai su où se trouve la salle. Le groupe ai su est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:savoir:2",
+            "promptFr": "Complète avec savoir au passé composé. Écris le groupe verbal manquant : Tu ___ réparer ce vélo.",
+            "answerFr": "as su",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe su.",
+            "explanationFr": "Tu as su réparer ce vélo. Le groupe as su est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:savoir:3",
+            "promptFr": "Complète avec savoir au passé composé. Écris le groupe verbal manquant : Il ___ son texte par cœur.",
+            "answerFr": "a su",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe su.",
+            "explanationFr": "Il a su son texte par cœur. Le groupe a su est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:savoir:4",
+            "promptFr": "Complète avec savoir au passé composé. Écris le groupe verbal manquant : Nous ___ utiliser cette application.",
+            "answerFr": "avons su",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe su.",
+            "explanationFr": "Nous avons su utiliser cette application. Le groupe avons su est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:savoir:5",
+            "promptFr": "Complète avec savoir au passé composé. Écris le groupe verbal manquant : Vous ___ comment commencer.",
+            "answerFr": "avez su",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe su.",
+            "explanationFr": "Vous avez su comment commencer. Le groupe avez su est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:savoir:6",
+            "promptFr": "Complète avec savoir au passé composé. Écris le groupe verbal manquant : Elles ___ jouer aux échecs.",
+            "answerFr": "ont su",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe su.",
+            "explanationFr": "Elles ont su jouer aux échecs. Le groupe ont su est la forme demandée dans cette construction."
+          }
+        ],
+        "takeawayFr": "Associe l’auxiliaire au présent et le participe su. Vérifie le sujet.",
+        "boundaryFr": "Cette leçon demande un temps précis dans des phrases fournies. Elle ne démontre pas que tu sais choisir les temps dans un texte autonome ni traiter toutes les constructions avec un complément placé avant.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "savoir",
+              "form": "savoir"
+            }
+          ],
+          "sentences": [
+            "J’ai su où se trouve la salle.",
+            "je : ai su",
+            "tu : as su",
+            "il : a su",
+            "nous : avons su",
+            "vous : avez su",
+            "ils : ont su",
+            "savoir → su",
+            "J’ai su où se trouve la salle.",
+            "Tu as su réparer ce vélo.",
+            "Il a su son texte par cœur.",
+            "Nous avons su utiliser cette application.",
+            "Vous avez su comment commencer.",
+            "Elles ont su jouer aux échecs."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:passe-compose:devoir",
+      "contentChecksum": "sha256:2c65c97e6aad150fddf88e742b7d1f953982bfa45904366d4f28f12f1b56bdb9",
+      "skillId": "produire_passe_compose::writing-controlled-production::verb:devoir",
+      "nodeKey": "produire_passe_compose",
+      "facetKey": "produire_passe_compose::verb:devoir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:avoir",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:etre",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "choisir_auxiliaire_compose::writing-controlled-production::construction:pronominal",
+        "former_participe_passe::writing-controlled-production::construction:er",
+        "former_participe_passe::writing-controlled-production::construction:ir",
+        "former_participe_passe::writing-controlled-production::construction:irregular",
+        "reconnaitre_passe_compose::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:4813a55c889617c7a8799a5279c15481fd088a9e76fa038d481336e889c27c64",
+        "sentence:sha256:670207db157497de3cddd79f4379e507f1b81eb74c142b37f33443a04315a66b",
+        "sentence:sha256:6802964477a942e39318628ab3c668af24391ec5009a21e513821cc8b8829c0d",
+        "sentence:sha256:8e7d30a01f2b61e8ecba2ebe4a46d192cac8e6c8dd84ca2f9b56b595a881b2ef",
+        "sentence:sha256:96ecc664b257acc8893af88da4a6562708a1a7c2766ba2e6d2868c41ec212349",
+        "sentence:sha256:99dea50d42f152f8887c9153d61bdd995acbd3106706067908ac57c1f6f94da8",
+        "sentence:sha256:9a404dc2990c332a807ea7b522f40f5eb6d6e78d577ad5711d6a0fe1b9bbd855",
+        "sentence:sha256:a412fb654066826f38698ee366d42a587115c1523c3af92b9829848d7e7e724d",
+        "sentence:sha256:b4be20cdc41bd4251799a4fa9c87d8e91fa4ab7938eea6e9f37edf050ecd144f",
+        "sentence:sha256:c3788f11fdb606aa8f03c7a602b3e90aa6958a165a660b2cbd5fba41f627da4f",
+        "sentence:sha256:c591d6110e06ea56bc2bcf4369a9bbbfbe97601db6ae9b664cb3de7eeb365410",
+        "sentence:sha256:c979e65eec4b159a8ae60a31b3814c695ac46d3523b8d110be69e917fec9072b",
+        "sentence:sha256:ef4b178b4fe1085dce03bca36920ca2e55d92b16aa5160cbc65c88a6811dd497",
+        "word:sha256:4a5588698f5bd2f3237cbc916ddac2942066aaaf06f6e61f426da091928457f7"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:passe-compose:devoir",
+        "nodeKey": "produire_passe_compose",
+        "facetKey": "produire_passe_compose::verb:devoir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire devoir au passé composé",
+        "learnerQuestionFr": "Comment former le passé composé de devoir dans une phrase ?",
+        "steps": [
+          {
+            "exampleFr": "J’ai dû rendre ce livre.",
+            "explanationFr": "ai dû est le passé composé de devoir dans cette phrase. Le premier mot, une forme de avoir au présent, aide à construire ce temps : c’est l’auxiliaire. La seconde partie vient de devoir : c’est le participe passé dû."
+          },
+          {
+            "exampleFr": "je : ai dû\ntu : as dû\nil : a dû\nnous : avons dû\nvous : avez dû\nils : ont dû",
+            "explanationFr": "Avoir change avec le sujet. Dans ces phrases sans complément direct placé avant, le participe garde la forme donnée."
+          },
+          {
+            "exampleFr": "devoir → dû",
+            "explanationFr": "Retiens le participe dû avec le verbe devoir. Il ne change pas simplement parce que la forme d’avoir change."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:passe-compose:devoir:1",
+            "promptFr": "Complète avec devoir au passé composé. Écris le groupe verbal manquant : J’___ rendre ce livre.",
+            "answerFr": "ai dû",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe dû.",
+            "explanationFr": "J’ai dû rendre ce livre. Le groupe ai dû est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:devoir:2",
+            "promptFr": "Complète avec devoir au passé composé. Écris le groupe verbal manquant : Tu ___ vérifier ton calcul.",
+            "answerFr": "as dû",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe dû.",
+            "explanationFr": "Tu as dû vérifier ton calcul. Le groupe as dû est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:devoir:3",
+            "promptFr": "Complète avec devoir au passé composé. Écris le groupe verbal manquant : On ___ ranger le matériel.",
+            "answerFr": "a dû",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe dû.",
+            "explanationFr": "On a dû ranger le matériel. Le groupe a dû est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:devoir:4",
+            "promptFr": "Complète avec devoir au passé composé. Écris le groupe verbal manquant : Nous ___ terminer l’affiche.",
+            "answerFr": "avons dû",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe dû.",
+            "explanationFr": "Nous avons dû terminer l’affiche. Le groupe avons dû est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:devoir:5",
+            "promptFr": "Complète avec devoir au passé composé. Écris le groupe verbal manquant : Vous ___ suivre ce chemin.",
+            "answerFr": "avez dû",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe dû.",
+            "explanationFr": "Vous avez dû suivre ce chemin. Le groupe avez dû est la forme demandée dans cette construction."
+          },
+          {
+            "id": "guided:passe-compose:devoir:6",
+            "promptFr": "Complète avec devoir au passé composé. Écris le groupe verbal manquant : Ils ___ prévenir leur équipe.",
+            "answerFr": "ont dû",
+            "hintFr": "Conjugue avoir au présent avec le sujet, puis écris le participe dû.",
+            "explanationFr": "Ils ont dû prévenir leur équipe. Le groupe ont dû est la forme demandée dans cette construction."
+          }
+        ],
+        "takeawayFr": "Associe l’auxiliaire au présent et le participe dû. Vérifie le sujet.",
+        "boundaryFr": "Cette leçon demande un temps précis dans des phrases fournies. Elle ne démontre pas que tu sais choisir les temps dans un texte autonome ni traiter toutes les constructions avec un complément placé avant.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "devoir",
+              "form": "devoir"
+            }
+          ],
+          "sentences": [
+            "J’ai dû rendre ce livre.",
+            "je : ai dû",
+            "tu : as dû",
+            "il : a dû",
+            "nous : avons dû",
+            "vous : avez dû",
+            "ils : ont dû",
+            "devoir → dû",
+            "J’ai dû rendre ce livre.",
+            "Tu as dû vérifier ton calcul.",
+            "On a dû ranger le matériel.",
+            "Nous avons dû terminer l’affiche.",
+            "Vous avez dû suivre ce chemin.",
+            "Ils ont dû prévenir leur équipe."
+          ]
+        }
+      }
+    },
     {
       "lessonId": "french-v3-teaching:participle-formation:er",
       "contentChecksum": "sha256:c97e0f8cbd76d3a6c255e881ddf574c4cef4ff3f0caf1805b37e4e8270c66c9f",
@@ -19977,5 +22139,5 @@
       }
     }
   ],
-  "checksum": "sha256:bd934a4009ca55af92b9732c7ef2c2fb300732945c7394bfd5f2c46ecc1da147"
+  "checksum": "sha256:923e14aac93683f404a98b529ffc68d587280946247eaa0b0a87402133d2ce79"
 }

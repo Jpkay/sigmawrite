@@ -3,9 +3,9 @@
   "status": "draft_requires_review",
   "sources": {
     "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
-    "bankChecksum": "sha256:d7f5f416e85de30bfbb025018337919857ac4d81c59b73e3a99b0c88bb1ac24a",
+    "bankChecksum": "sha256:e9a32ea768e9123e9acbcbd38187098c888b24c50bddc8d8687c4efe4ff116aa",
     "annotationChecksum": "sha256:41e7a8d65776f6bb64c33c925b7d4449ffe9fda5a6b71a899067a171232542bb",
-    "facetChecksum": "sha256:6256858d3ed3890d01f6cc64266ffe1f45835808f813c7cb262b45086e779b16",
+    "facetChecksum": "sha256:912ac06a97b8efafb9944db117917c3e11f85256acb226a782cf07391fdbbf69",
     "poolChecksum": "sha256:8c59b3ee0139afb4f44fa7e964a85ec00c67e9889bb1ffbad78ff7aa14aa5dfe",
     "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
     "expansions": [
@@ -86,8 +86,8 @@
       },
       {
         "version": "french-v3-conjugation-expansion-v1",
-        "checksum": "sha256:cb626276bbc48250060803fb7ddb888bf319c5a58c8b3fa8591882eb376763ae",
-        "addedItems": 3368
+        "checksum": "sha256:7b5dce17ff5ab00107359333b3c513ce2158f13d357dc4eec6f6808544fae1c3",
+        "addedItems": 3536
       },
       {
         "version": "french-v3-reading-expansion-v1",
@@ -125,14 +125,14 @@
         "addedItems": 90
       }
     ],
-    "teachingDraftChecksum": "sha256:a5cf6f4082975d8bbb40bebf13f9ef7acfd09c2db4a4f7c70023b7c52cdbaf84"
+    "teachingDraftChecksum": "sha256:6c69a4294828aeac460cd58b87f7df9e989e971e18798e00b4e90156ea5d1d6c"
   },
   "summary": {
-    "teachingDrafts": 132,
-    "targetsWithTeachingDrafts": 132,
-    "targetsWithoutTeachingDrafts": 410,
-    "totalCandidateQuestions": 4968,
-    "additionalDraftQuestions": 4238,
+    "teachingDrafts": 146,
+    "targetsWithTeachingDrafts": 146,
+    "targetsWithoutTeachingDrafts": 396,
+    "totalCandidateQuestions": 5136,
+    "additionalDraftQuestions": 4406,
     "canonicalEligibleQuestions": 238,
     "approvedCompetencies": 181,
     "approvedEvidenceDefinitions": 257,
@@ -157,10 +157,10 @@
         "eligibleQuestions": 77,
         "targetsWithNoEligibleQuestions": 195,
         "allocatedPools": 0,
-        "targetsWithTeachingDrafts": 79,
-        "targetsWithoutTeachingDrafts": 176,
-        "guidedExerciseDrafts": 464,
-        "exactTargetExpansionDrafts": 3622
+        "targetsWithTeachingDrafts": 93,
+        "targetsWithoutTeachingDrafts": 162,
+        "guidedExerciseDrafts": 548,
+        "exactTargetExpansionDrafts": 3790
       },
       {
         "domain": "reading_comprehension",
@@ -12017,7 +12017,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 8,
+          "questions": 20,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -12105,9 +12105,28 @@
         "v3-granular-forms:produire_passe_compose:être:1p:m:affirmative",
         "v3-granular-forms:produire_passe_compose:être:2p:m:affirmative",
         "v3-granular-forms:produire_passe_compose:être:3p:m:affirmative",
-        "v3-granular-forms:produire_passe_compose:être:3p:f:affirmative"
+        "v3-granular-forms:produire_passe_compose:être:3p:f:affirmative",
+        "v3-granular-forms:passe_compose-application-context:être:1s:12",
+        "v3-granular-forms:passe_compose-application-context:être:2s:13",
+        "v3-granular-forms:passe_compose-application-context:être:3s:14",
+        "v3-granular-forms:passe_compose-application-context:être:1p:15",
+        "v3-granular-forms:passe_compose-application-context:être:2p:16",
+        "v3-granular-forms:passe_compose-application-context:être:3p:17",
+        "v3-granular-forms:passe_compose-application-context:être:1s:18",
+        "v3-granular-forms:passe_compose-application-context:être:2s:19",
+        "v3-granular-forms:passe_compose-application-context:être:3s:20",
+        "v3-granular-forms:passe_compose-application-context:être:1p:21",
+        "v3-granular-forms:passe_compose-application-context:être:2p:22",
+        "v3-granular-forms:passe_compose-application-context:être:3p:23"
       ],
-      "teachingDrafts": [],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:passe-compose:être",
+          "status": "draft_requires_review",
+          "guidedExercises": 6,
+          "boundaryFr": "Cette leçon demande un temps précis dans des phrases fournies. Elle ne démontre pas que tu sais choisir les temps dans un texte autonome ni traiter toutes les constructions avec un complément placé avant."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -12116,7 +12135,7 @@
       "nextActions": [
         "review_refinement_and_prerequisites",
         "review_exact_target_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -12154,7 +12173,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 8,
+          "questions": 20,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -12242,9 +12261,28 @@
         "v3-granular-forms:produire_passe_compose:avoir:1p:m:affirmative",
         "v3-granular-forms:produire_passe_compose:avoir:2p:m:affirmative",
         "v3-granular-forms:produire_passe_compose:avoir:3p:m:affirmative",
-        "v3-granular-forms:produire_passe_compose:avoir:3p:f:affirmative"
+        "v3-granular-forms:produire_passe_compose:avoir:3p:f:affirmative",
+        "v3-granular-forms:passe_compose-application-context:avoir:1s:24",
+        "v3-granular-forms:passe_compose-application-context:avoir:2s:25",
+        "v3-granular-forms:passe_compose-application-context:avoir:3s:26",
+        "v3-granular-forms:passe_compose-application-context:avoir:1p:27",
+        "v3-granular-forms:passe_compose-application-context:avoir:2p:28",
+        "v3-granular-forms:passe_compose-application-context:avoir:3p:29",
+        "v3-granular-forms:passe_compose-application-context:avoir:1s:30",
+        "v3-granular-forms:passe_compose-application-context:avoir:2s:31",
+        "v3-granular-forms:passe_compose-application-context:avoir:3s:32",
+        "v3-granular-forms:passe_compose-application-context:avoir:1p:33",
+        "v3-granular-forms:passe_compose-application-context:avoir:2p:34",
+        "v3-granular-forms:passe_compose-application-context:avoir:3p:35"
       ],
-      "teachingDrafts": [],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:passe-compose:avoir",
+          "status": "draft_requires_review",
+          "guidedExercises": 6,
+          "boundaryFr": "Cette leçon demande un temps précis dans des phrases fournies. Elle ne démontre pas que tu sais choisir les temps dans un texte autonome ni traiter toutes les constructions avec un complément placé avant."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -12253,7 +12291,7 @@
       "nextActions": [
         "review_refinement_and_prerequisites",
         "review_exact_target_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -12291,7 +12329,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 8,
+          "questions": 20,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -12379,9 +12417,28 @@
         "v3-granular-forms:produire_passe_compose:aller:1p:m:affirmative",
         "v3-granular-forms:produire_passe_compose:aller:2p:m:affirmative",
         "v3-granular-forms:produire_passe_compose:aller:3p:m:affirmative",
-        "v3-granular-forms:produire_passe_compose:aller:3p:f:affirmative"
+        "v3-granular-forms:produire_passe_compose:aller:3p:f:affirmative",
+        "v3-granular-forms:passe_compose-application-context:aller:1s:120",
+        "v3-granular-forms:passe_compose-application-context:aller:2s:121",
+        "v3-granular-forms:passe_compose-application-context:aller:3s:122",
+        "v3-granular-forms:passe_compose-application-context:aller:1p:123",
+        "v3-granular-forms:passe_compose-application-context:aller:2p:124",
+        "v3-granular-forms:passe_compose-application-context:aller:3p:125",
+        "v3-granular-forms:passe_compose-application-context:aller:1s:126",
+        "v3-granular-forms:passe_compose-application-context:aller:2s:127",
+        "v3-granular-forms:passe_compose-application-context:aller:3s:128",
+        "v3-granular-forms:passe_compose-application-context:aller:1p:129",
+        "v3-granular-forms:passe_compose-application-context:aller:2p:130",
+        "v3-granular-forms:passe_compose-application-context:aller:3p:131"
       ],
-      "teachingDrafts": [],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:passe-compose:aller",
+          "status": "draft_requires_review",
+          "guidedExercises": 6,
+          "boundaryFr": "Cette leçon demande un temps précis dans des phrases fournies. Elle ne démontre pas que tu sais choisir les temps dans un texte autonome ni traiter toutes les constructions avec un complément placé avant."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -12390,7 +12447,7 @@
       "nextActions": [
         "review_refinement_and_prerequisites",
         "review_exact_target_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -12428,7 +12485,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 8,
+          "questions": 20,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -12516,9 +12573,28 @@
         "v3-granular-forms:produire_passe_compose:faire:1p:m:affirmative",
         "v3-granular-forms:produire_passe_compose:faire:2p:m:affirmative",
         "v3-granular-forms:produire_passe_compose:faire:3p:m:affirmative",
-        "v3-granular-forms:produire_passe_compose:faire:3p:f:affirmative"
+        "v3-granular-forms:produire_passe_compose:faire:3p:f:affirmative",
+        "v3-granular-forms:passe_compose-application-context:faire:1s:0",
+        "v3-granular-forms:passe_compose-application-context:faire:2s:1",
+        "v3-granular-forms:passe_compose-application-context:faire:3s:2",
+        "v3-granular-forms:passe_compose-application-context:faire:1p:3",
+        "v3-granular-forms:passe_compose-application-context:faire:2p:4",
+        "v3-granular-forms:passe_compose-application-context:faire:3p:5",
+        "v3-granular-forms:passe_compose-application-context:faire:1s:6",
+        "v3-granular-forms:passe_compose-application-context:faire:2s:7",
+        "v3-granular-forms:passe_compose-application-context:faire:3s:8",
+        "v3-granular-forms:passe_compose-application-context:faire:1p:9",
+        "v3-granular-forms:passe_compose-application-context:faire:2p:10",
+        "v3-granular-forms:passe_compose-application-context:faire:3p:11"
       ],
-      "teachingDrafts": [],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:passe-compose:faire",
+          "status": "draft_requires_review",
+          "guidedExercises": 6,
+          "boundaryFr": "Cette leçon demande un temps précis dans des phrases fournies. Elle ne démontre pas que tu sais choisir les temps dans un texte autonome ni traiter toutes les constructions avec un complément placé avant."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -12527,7 +12603,7 @@
       "nextActions": [
         "review_refinement_and_prerequisites",
         "review_exact_target_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -12567,7 +12643,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 8,
+          "questions": 20,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -12659,9 +12735,28 @@
         "v3-granular-forms:produire_passe_compose:prendre:1p:m:affirmative",
         "v3-granular-forms:produire_passe_compose:prendre:2p:m:affirmative",
         "v3-granular-forms:produire_passe_compose:prendre:3p:m:affirmative",
-        "v3-granular-forms:produire_passe_compose:prendre:3p:f:affirmative"
+        "v3-granular-forms:produire_passe_compose:prendre:3p:f:affirmative",
+        "v3-granular-forms:passe_compose-application-context:prendre:1s:36",
+        "v3-granular-forms:passe_compose-application-context:prendre:2s:37",
+        "v3-granular-forms:passe_compose-application-context:prendre:3s:38",
+        "v3-granular-forms:passe_compose-application-context:prendre:1p:39",
+        "v3-granular-forms:passe_compose-application-context:prendre:2p:40",
+        "v3-granular-forms:passe_compose-application-context:prendre:3p:41",
+        "v3-granular-forms:passe_compose-application-context:prendre:1s:42",
+        "v3-granular-forms:passe_compose-application-context:prendre:2s:43",
+        "v3-granular-forms:passe_compose-application-context:prendre:3s:44",
+        "v3-granular-forms:passe_compose-application-context:prendre:1p:45",
+        "v3-granular-forms:passe_compose-application-context:prendre:2p:46",
+        "v3-granular-forms:passe_compose-application-context:prendre:3p:47"
       ],
-      "teachingDrafts": [],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:passe-compose:prendre",
+          "status": "draft_requires_review",
+          "guidedExercises": 6,
+          "boundaryFr": "Cette leçon demande un temps précis dans des phrases fournies. Elle ne démontre pas que tu sais choisir les temps dans un texte autonome ni traiter toutes les constructions avec un complément placé avant."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -12670,7 +12765,7 @@
       "nextActions": [
         "review_refinement_and_prerequisites",
         "review_exact_target_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -12710,7 +12805,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 8,
+          "questions": 20,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -12802,9 +12897,28 @@
         "v3-granular-forms:produire_passe_compose:venir:1p:m:affirmative",
         "v3-granular-forms:produire_passe_compose:venir:2p:m:affirmative",
         "v3-granular-forms:produire_passe_compose:venir:3p:m:affirmative",
-        "v3-granular-forms:produire_passe_compose:venir:3p:f:affirmative"
+        "v3-granular-forms:produire_passe_compose:venir:3p:f:affirmative",
+        "v3-granular-forms:passe_compose-application-context:venir:1s:132",
+        "v3-granular-forms:passe_compose-application-context:venir:2s:133",
+        "v3-granular-forms:passe_compose-application-context:venir:3s:134",
+        "v3-granular-forms:passe_compose-application-context:venir:1p:135",
+        "v3-granular-forms:passe_compose-application-context:venir:2p:136",
+        "v3-granular-forms:passe_compose-application-context:venir:3p:137",
+        "v3-granular-forms:passe_compose-application-context:venir:1s:138",
+        "v3-granular-forms:passe_compose-application-context:venir:2s:139",
+        "v3-granular-forms:passe_compose-application-context:venir:3s:140",
+        "v3-granular-forms:passe_compose-application-context:venir:1p:141",
+        "v3-granular-forms:passe_compose-application-context:venir:2p:142",
+        "v3-granular-forms:passe_compose-application-context:venir:3p:143"
       ],
-      "teachingDrafts": [],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:passe-compose:venir",
+          "status": "draft_requires_review",
+          "guidedExercises": 6,
+          "boundaryFr": "Cette leçon demande un temps précis dans des phrases fournies. Elle ne démontre pas que tu sais choisir les temps dans un texte autonome ni traiter toutes les constructions avec un complément placé avant."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -12813,7 +12927,7 @@
       "nextActions": [
         "review_refinement_and_prerequisites",
         "review_exact_target_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -12851,7 +12965,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 8,
+          "questions": 20,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -12939,9 +13053,28 @@
         "v3-granular-forms:produire_passe_compose:partir:1p:m:affirmative",
         "v3-granular-forms:produire_passe_compose:partir:2p:m:affirmative",
         "v3-granular-forms:produire_passe_compose:partir:3p:m:affirmative",
-        "v3-granular-forms:produire_passe_compose:partir:3p:f:affirmative"
+        "v3-granular-forms:produire_passe_compose:partir:3p:f:affirmative",
+        "v3-granular-forms:passe_compose-application-context:partir:1s:144",
+        "v3-granular-forms:passe_compose-application-context:partir:2s:145",
+        "v3-granular-forms:passe_compose-application-context:partir:3s:146",
+        "v3-granular-forms:passe_compose-application-context:partir:1p:147",
+        "v3-granular-forms:passe_compose-application-context:partir:2p:148",
+        "v3-granular-forms:passe_compose-application-context:partir:3p:149",
+        "v3-granular-forms:passe_compose-application-context:partir:1s:150",
+        "v3-granular-forms:passe_compose-application-context:partir:2s:151",
+        "v3-granular-forms:passe_compose-application-context:partir:3s:152",
+        "v3-granular-forms:passe_compose-application-context:partir:1p:153",
+        "v3-granular-forms:passe_compose-application-context:partir:2p:154",
+        "v3-granular-forms:passe_compose-application-context:partir:3p:155"
       ],
-      "teachingDrafts": [],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:passe-compose:partir",
+          "status": "draft_requires_review",
+          "guidedExercises": 6,
+          "boundaryFr": "Cette leçon demande un temps précis dans des phrases fournies. Elle ne démontre pas que tu sais choisir les temps dans un texte autonome ni traiter toutes les constructions avec un complément placé avant."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -12950,7 +13083,7 @@
       "nextActions": [
         "review_refinement_and_prerequisites",
         "review_exact_target_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -12988,7 +13121,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 8,
+          "questions": 20,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -13076,9 +13209,28 @@
         "v3-granular-forms:produire_passe_compose:sortir:1p:m:affirmative",
         "v3-granular-forms:produire_passe_compose:sortir:2p:m:affirmative",
         "v3-granular-forms:produire_passe_compose:sortir:3p:m:affirmative",
-        "v3-granular-forms:produire_passe_compose:sortir:3p:f:affirmative"
+        "v3-granular-forms:produire_passe_compose:sortir:3p:f:affirmative",
+        "v3-granular-forms:passe_compose-application-context:sortir:1s:156",
+        "v3-granular-forms:passe_compose-application-context:sortir:2s:157",
+        "v3-granular-forms:passe_compose-application-context:sortir:3s:158",
+        "v3-granular-forms:passe_compose-application-context:sortir:1p:159",
+        "v3-granular-forms:passe_compose-application-context:sortir:2p:160",
+        "v3-granular-forms:passe_compose-application-context:sortir:3p:161",
+        "v3-granular-forms:passe_compose-application-context:sortir:1s:162",
+        "v3-granular-forms:passe_compose-application-context:sortir:2s:163",
+        "v3-granular-forms:passe_compose-application-context:sortir:3s:164",
+        "v3-granular-forms:passe_compose-application-context:sortir:1p:165",
+        "v3-granular-forms:passe_compose-application-context:sortir:2p:166",
+        "v3-granular-forms:passe_compose-application-context:sortir:3p:167"
       ],
-      "teachingDrafts": [],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:passe-compose:sortir",
+          "status": "draft_requires_review",
+          "guidedExercises": 6,
+          "boundaryFr": "Cette leçon demande un temps précis dans des phrases fournies. Elle ne démontre pas que tu sais choisir les temps dans un texte autonome ni traiter toutes les constructions avec un complément placé avant."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -13087,7 +13239,7 @@
       "nextActions": [
         "review_refinement_and_prerequisites",
         "review_exact_target_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -13125,7 +13277,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 8,
+          "questions": 20,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -13213,9 +13365,28 @@
         "v3-granular-forms:produire_passe_compose:dire:1p:m:affirmative",
         "v3-granular-forms:produire_passe_compose:dire:2p:m:affirmative",
         "v3-granular-forms:produire_passe_compose:dire:3p:m:affirmative",
-        "v3-granular-forms:produire_passe_compose:dire:3p:f:affirmative"
+        "v3-granular-forms:produire_passe_compose:dire:3p:f:affirmative",
+        "v3-granular-forms:passe_compose-application-context:dire:1s:48",
+        "v3-granular-forms:passe_compose-application-context:dire:2s:49",
+        "v3-granular-forms:passe_compose-application-context:dire:3s:50",
+        "v3-granular-forms:passe_compose-application-context:dire:1p:51",
+        "v3-granular-forms:passe_compose-application-context:dire:2p:52",
+        "v3-granular-forms:passe_compose-application-context:dire:3p:53",
+        "v3-granular-forms:passe_compose-application-context:dire:1s:54",
+        "v3-granular-forms:passe_compose-application-context:dire:2s:55",
+        "v3-granular-forms:passe_compose-application-context:dire:3s:56",
+        "v3-granular-forms:passe_compose-application-context:dire:1p:57",
+        "v3-granular-forms:passe_compose-application-context:dire:2p:58",
+        "v3-granular-forms:passe_compose-application-context:dire:3p:59"
       ],
-      "teachingDrafts": [],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:passe-compose:dire",
+          "status": "draft_requires_review",
+          "guidedExercises": 6,
+          "boundaryFr": "Cette leçon demande un temps précis dans des phrases fournies. Elle ne démontre pas que tu sais choisir les temps dans un texte autonome ni traiter toutes les constructions avec un complément placé avant."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -13224,7 +13395,7 @@
       "nextActions": [
         "review_refinement_and_prerequisites",
         "review_exact_target_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -13262,7 +13433,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 8,
+          "questions": 20,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -13350,9 +13521,28 @@
         "v3-granular-forms:produire_passe_compose:voir:1p:m:affirmative",
         "v3-granular-forms:produire_passe_compose:voir:2p:m:affirmative",
         "v3-granular-forms:produire_passe_compose:voir:3p:m:affirmative",
-        "v3-granular-forms:produire_passe_compose:voir:3p:f:affirmative"
+        "v3-granular-forms:produire_passe_compose:voir:3p:f:affirmative",
+        "v3-granular-forms:passe_compose-application-context:voir:1s:60",
+        "v3-granular-forms:passe_compose-application-context:voir:2s:61",
+        "v3-granular-forms:passe_compose-application-context:voir:3s:62",
+        "v3-granular-forms:passe_compose-application-context:voir:1p:63",
+        "v3-granular-forms:passe_compose-application-context:voir:2p:64",
+        "v3-granular-forms:passe_compose-application-context:voir:3p:65",
+        "v3-granular-forms:passe_compose-application-context:voir:1s:66",
+        "v3-granular-forms:passe_compose-application-context:voir:2s:67",
+        "v3-granular-forms:passe_compose-application-context:voir:3s:68",
+        "v3-granular-forms:passe_compose-application-context:voir:1p:69",
+        "v3-granular-forms:passe_compose-application-context:voir:2p:70",
+        "v3-granular-forms:passe_compose-application-context:voir:3p:71"
       ],
-      "teachingDrafts": [],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:passe-compose:voir",
+          "status": "draft_requires_review",
+          "guidedExercises": 6,
+          "boundaryFr": "Cette leçon demande un temps précis dans des phrases fournies. Elle ne démontre pas que tu sais choisir les temps dans un texte autonome ni traiter toutes les constructions avec un complément placé avant."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -13361,7 +13551,7 @@
       "nextActions": [
         "review_refinement_and_prerequisites",
         "review_exact_target_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -13399,7 +13589,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 8,
+          "questions": 20,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -13487,9 +13677,28 @@
         "v3-granular-forms:produire_passe_compose:pouvoir:1p:m:affirmative",
         "v3-granular-forms:produire_passe_compose:pouvoir:2p:m:affirmative",
         "v3-granular-forms:produire_passe_compose:pouvoir:3p:m:affirmative",
-        "v3-granular-forms:produire_passe_compose:pouvoir:3p:f:affirmative"
+        "v3-granular-forms:produire_passe_compose:pouvoir:3p:f:affirmative",
+        "v3-granular-forms:passe_compose-application-context:pouvoir:1s:72",
+        "v3-granular-forms:passe_compose-application-context:pouvoir:2s:73",
+        "v3-granular-forms:passe_compose-application-context:pouvoir:3s:74",
+        "v3-granular-forms:passe_compose-application-context:pouvoir:1p:75",
+        "v3-granular-forms:passe_compose-application-context:pouvoir:2p:76",
+        "v3-granular-forms:passe_compose-application-context:pouvoir:3p:77",
+        "v3-granular-forms:passe_compose-application-context:pouvoir:1s:78",
+        "v3-granular-forms:passe_compose-application-context:pouvoir:2s:79",
+        "v3-granular-forms:passe_compose-application-context:pouvoir:3s:80",
+        "v3-granular-forms:passe_compose-application-context:pouvoir:1p:81",
+        "v3-granular-forms:passe_compose-application-context:pouvoir:2p:82",
+        "v3-granular-forms:passe_compose-application-context:pouvoir:3p:83"
       ],
-      "teachingDrafts": [],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:passe-compose:pouvoir",
+          "status": "draft_requires_review",
+          "guidedExercises": 6,
+          "boundaryFr": "Cette leçon demande un temps précis dans des phrases fournies. Elle ne démontre pas que tu sais choisir les temps dans un texte autonome ni traiter toutes les constructions avec un complément placé avant."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -13498,7 +13707,7 @@
       "nextActions": [
         "review_refinement_and_prerequisites",
         "review_exact_target_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -13536,7 +13745,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 8,
+          "questions": 20,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -13624,9 +13833,28 @@
         "v3-granular-forms:produire_passe_compose:vouloir:1p:m:affirmative",
         "v3-granular-forms:produire_passe_compose:vouloir:2p:m:affirmative",
         "v3-granular-forms:produire_passe_compose:vouloir:3p:m:affirmative",
-        "v3-granular-forms:produire_passe_compose:vouloir:3p:f:affirmative"
+        "v3-granular-forms:produire_passe_compose:vouloir:3p:f:affirmative",
+        "v3-granular-forms:passe_compose-application-context:vouloir:1s:84",
+        "v3-granular-forms:passe_compose-application-context:vouloir:2s:85",
+        "v3-granular-forms:passe_compose-application-context:vouloir:3s:86",
+        "v3-granular-forms:passe_compose-application-context:vouloir:1p:87",
+        "v3-granular-forms:passe_compose-application-context:vouloir:2p:88",
+        "v3-granular-forms:passe_compose-application-context:vouloir:3p:89",
+        "v3-granular-forms:passe_compose-application-context:vouloir:1s:90",
+        "v3-granular-forms:passe_compose-application-context:vouloir:2s:91",
+        "v3-granular-forms:passe_compose-application-context:vouloir:3s:92",
+        "v3-granular-forms:passe_compose-application-context:vouloir:1p:93",
+        "v3-granular-forms:passe_compose-application-context:vouloir:2p:94",
+        "v3-granular-forms:passe_compose-application-context:vouloir:3p:95"
       ],
-      "teachingDrafts": [],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:passe-compose:vouloir",
+          "status": "draft_requires_review",
+          "guidedExercises": 6,
+          "boundaryFr": "Cette leçon demande un temps précis dans des phrases fournies. Elle ne démontre pas que tu sais choisir les temps dans un texte autonome ni traiter toutes les constructions avec un complément placé avant."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -13635,7 +13863,7 @@
       "nextActions": [
         "review_refinement_and_prerequisites",
         "review_exact_target_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -13673,7 +13901,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 8,
+          "questions": 20,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -13761,9 +13989,28 @@
         "v3-granular-forms:produire_passe_compose:savoir:1p:m:affirmative",
         "v3-granular-forms:produire_passe_compose:savoir:2p:m:affirmative",
         "v3-granular-forms:produire_passe_compose:savoir:3p:m:affirmative",
-        "v3-granular-forms:produire_passe_compose:savoir:3p:f:affirmative"
+        "v3-granular-forms:produire_passe_compose:savoir:3p:f:affirmative",
+        "v3-granular-forms:passe_compose-application-context:savoir:1s:96",
+        "v3-granular-forms:passe_compose-application-context:savoir:2s:97",
+        "v3-granular-forms:passe_compose-application-context:savoir:3s:98",
+        "v3-granular-forms:passe_compose-application-context:savoir:1p:99",
+        "v3-granular-forms:passe_compose-application-context:savoir:2p:100",
+        "v3-granular-forms:passe_compose-application-context:savoir:3p:101",
+        "v3-granular-forms:passe_compose-application-context:savoir:1s:102",
+        "v3-granular-forms:passe_compose-application-context:savoir:2s:103",
+        "v3-granular-forms:passe_compose-application-context:savoir:3s:104",
+        "v3-granular-forms:passe_compose-application-context:savoir:1p:105",
+        "v3-granular-forms:passe_compose-application-context:savoir:2p:106",
+        "v3-granular-forms:passe_compose-application-context:savoir:3p:107"
       ],
-      "teachingDrafts": [],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:passe-compose:savoir",
+          "status": "draft_requires_review",
+          "guidedExercises": 6,
+          "boundaryFr": "Cette leçon demande un temps précis dans des phrases fournies. Elle ne démontre pas que tu sais choisir les temps dans un texte autonome ni traiter toutes les constructions avec un complément placé avant."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -13772,7 +14019,7 @@
       "nextActions": [
         "review_refinement_and_prerequisites",
         "review_exact_target_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -13810,7 +14057,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 8,
+          "questions": 20,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -13898,9 +14145,28 @@
         "v3-granular-forms:produire_passe_compose:devoir:1p:m:affirmative",
         "v3-granular-forms:produire_passe_compose:devoir:2p:m:affirmative",
         "v3-granular-forms:produire_passe_compose:devoir:3p:m:affirmative",
-        "v3-granular-forms:produire_passe_compose:devoir:3p:f:affirmative"
+        "v3-granular-forms:produire_passe_compose:devoir:3p:f:affirmative",
+        "v3-granular-forms:passe_compose-application-context:devoir:1s:108",
+        "v3-granular-forms:passe_compose-application-context:devoir:2s:109",
+        "v3-granular-forms:passe_compose-application-context:devoir:3s:110",
+        "v3-granular-forms:passe_compose-application-context:devoir:1p:111",
+        "v3-granular-forms:passe_compose-application-context:devoir:2p:112",
+        "v3-granular-forms:passe_compose-application-context:devoir:3p:113",
+        "v3-granular-forms:passe_compose-application-context:devoir:1s:114",
+        "v3-granular-forms:passe_compose-application-context:devoir:2s:115",
+        "v3-granular-forms:passe_compose-application-context:devoir:3s:116",
+        "v3-granular-forms:passe_compose-application-context:devoir:1p:117",
+        "v3-granular-forms:passe_compose-application-context:devoir:2p:118",
+        "v3-granular-forms:passe_compose-application-context:devoir:3p:119"
       ],
-      "teachingDrafts": [],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:passe-compose:devoir",
+          "status": "draft_requires_review",
+          "guidedExercises": 6,
+          "boundaryFr": "Cette leçon demande un temps précis dans des phrases fournies. Elle ne démontre pas que tu sais choisir les temps dans un texte autonome ni traiter toutes les constructions avec un complément placé avant."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -13909,7 +14175,7 @@
       "nextActions": [
         "review_refinement_and_prerequisites",
         "review_exact_target_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -78546,5 +78812,5 @@
       ]
     }
   ],
-  "checksum": "sha256:457c55e2f24740a3ad822c9d4305345165c69e27f8b0a7ca74658deb6497b06e"
+  "checksum": "sha256:9eaae911349cbe68d641abcbef37fef253d6bb9147712539ae251a85b38182cb"
 }
