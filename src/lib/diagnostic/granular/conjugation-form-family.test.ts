@@ -6,6 +6,18 @@ import {inspectAssessmentGraph} from './release-graph';
 import {bindAssessmentRelease} from './release-binding';
 import type {V3Assessment} from './v3-adapter';
 const assessment=JSON.parse(readFileSync('docs/diagnostic/v3-scoped-review-candidate.json','utf8')).assessment as V3Assessment;
+it('surveys forms early while collecting enough evidence before repeatedly switching categories',()=>{
+ const skills:Skill[]=(['simple','compound','periphrastic'] as const).map(formFamily=>({id:formFamily,formFamily,branch:'verb',domain:'conjugation',level:1,prerequisites:[],modes:['production']}));
+ const probes:Probe[]=skills.flatMap(skill=>Array.from({length:6},(_,index)=>({id:`${skill.id}:${index}`,skillId:skill.id,mode:'production',contextId:`context:${index}`,difficulty:.5,expectedSeconds:30,guessProbability:.05})));
+ const history:Observation[]=[];
+ for(let index=0;index<7;index++){
+  const next=selectProbe(skills,probes,history);if(next.kind!=='question')throw Error('Expected available question');
+  history.push({...next.item,itemId:next.item.id,correct:true,activeSeconds:30});
+ }
+ expect(new Set(history.slice(0,3).map(answer=>answer.skillId)).size).toBe(3);
+ expect(assessSkills(skills,history).filter(result=>result.status==='mastered').length).toBeGreaterThanOrEqual(2);
+ expect(history.reduce((sum,answer)=>sum+answer.activeSeconds,0)).toBe(210);
+});
 function simulate(correctFor:(skill:Skill)=>boolean){
  const history:Observation[]=[];
  for(let i=0;i<180;i++){

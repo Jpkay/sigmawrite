@@ -1,0 +1,11 @@
+# Survey form categories, then collect evidence
+
+The previous selector balanced time between conjugation form categories on every question. Combined with the separate general-conjugation, pattern and individual-verb allocations, this spread the available questions across too many targets to gather sufficient within-sitting evidence. The symbolic full-graph audit passed only 8/10 depth checks and 2/8 mixed-profile distinctions.
+
+An isolated experiment with uninterrupted three-question category visits restored depth but postponed the first compound-production question to 1,290 seconds in the real prepared bank, failing the existing half-budget coverage requirement. That alternative was rejected. The implemented approach surveys each available form category once, then revisits categories in groups of up to three selections. Resolved/exhausted targets still leave the candidate set, and actual prerequisite recovery still takes precedence. Domain, strand and conjugation-family balancing remain in place. Skips consume visit capacity without supplying correctness evidence.
+
+Three is an uncalibrated scheduling parameter, not a changed evidence threshold. The 35-minute time limit, graph prerequisites, novelty rules, minimum observations and multiple-occasion requirements are unchanged. No mastery is transferred between targets or inferred from a harder answer.
+
+Validation: 513 tests across 148 granular files, TypeScript and source lint pass. The regression includes early category coverage and sufficient evidence on at least two of three small synthetic targets within seven questions; the existing prepared-bank check still reaches compound production before half the time budget. The full symbolic benchmark now passes 10/10 depth checks and 3/8 discrimination checks. Regular versus irregular forms improves; five other contrasts remain unresolved, and `--require-discrimination` still exits 1. This is technical simulation evidence, not student calibration or full coverage.
+
+The source is not deployed. The active v10 browser journey continues on the existing runtime, including actual answer-retention and review verification. Experiment files are retained outside the application TypeScript tree in `sigmawrite-routing-depth-557d24b`.

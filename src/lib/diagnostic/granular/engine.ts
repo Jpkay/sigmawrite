@@ -326,8 +326,17 @@ export function selectProbe(skills: readonly Skill[], bank: readonly Probe[], ob
     ?allFamilyItems.filter(item=>lastFamilySkill.prerequisites.includes(item.skillId)).sort((a,b)=>
       challengeOf(skillById.get(b.skillId)!)-challengeOf(skillById.get(a.skillId)!)||a.id.localeCompare(b.id)):[];
   const formPriority:Record<string,number>={foundation:0,simple:1,compound:2,periphrastic:3,contrast:4};
-  const form=recovery.length?formOf(skillById.get(recovery[0].skillId)!):balance(
-    [...new Set(allFamilyItems.map(item=>formOf(skillById.get(item.skillId)!)))],allFamilyHistory,formOf,value=>formPriority[value]??5)[0];
+  const formCandidates=[...new Set(allFamilyItems.map(item=>formOf(skillById.get(item.skillId)!)))];
+  // Survey each available form category once, then revisit in bounded groups.
+  // Switching category after every answer left no conjugation target with
+  // enough within-sitting evidence. The initial survey still reaches compound
+  // forms early. Three is a routing parameter, not a mastery threshold.
+  const formVisitRound=(form:string)=>{
+    const count=allFamilyHistory.filter(observation=>formOf(skillById.get(observation.skillId)!)===form).length;
+    return count===0?0:1+Math.floor((count-1)/3);
+  };
+  formCandidates.sort((a,b)=>formVisitRound(a)-formVisitRound(b)||(formPriority[a]??5)-(formPriority[b]??5)||a.localeCompare(b));
+  const form=recovery.length?formOf(skillById.get(recovery[0].skillId)!):formCandidates[0];
   const familyItems=allFamilyItems.filter(item=>formOf(skillById.get(item.skillId)!)===form);
   const familyHistory=allFamilyHistory.filter(observation=>formOf(skillById.get(observation.skillId)!)===form);
   const branches=[...new Set(familyItems.map(item=>skillById.get(item.skillId)!.branch))];

@@ -27,7 +27,7 @@
     {
       "profile": "all_correct",
       "strand": "conjugaison",
-      "passed": false
+      "passed": true
     },
     {
       "profile": "all_correct",
@@ -52,7 +52,7 @@
     {
       "profile": "all_incorrect",
       "strand": "conjugaison",
-      "passed": false
+      "passed": true
     },
     {
       "profile": "all_incorrect",
@@ -81,10 +81,13 @@
       "seed": 1,
       "requiredKnownTargets": 44,
       "requiredWeakTargets": 153,
-      "knownTargetsWithEvidence": [],
-      "weakTargetsWithEvidence": [],
+      "knownTargetsWithEvidence": [
+        "produire_present_indicatif::writing-controlled-production::pattern:regular_er"
+      ],
+      "weakTargetsWithEvidence": [
+        "produire_present_indicatif::writing-controlled-production::verb:aller"
+      ],
       "knownTargetsUnresolved": [
-        "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
         "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
         "produire_present_indicatif::writing-controlled-production::pattern:spelling_ger",
         "produire_present_indicatif::writing-controlled-production::pattern:spelling_cer",
@@ -132,7 +135,6 @@
       "weakTargetsUnresolved": [
         "produire_present_indicatif::writing-controlled-production::verb:être",
         "produire_present_indicatif::writing-controlled-production::verb:avoir",
-        "produire_present_indicatif::writing-controlled-production::verb:aller",
         "produire_present_indicatif::writing-controlled-production::verb:faire",
         "produire_present_indicatif::writing-controlled-production::verb:prendre",
         "produire_present_indicatif::writing-controlled-production::verb:venir",
@@ -286,19 +288,20 @@
       ],
       "sameBranchBoundaries": [],
       "requireSameBranch": false,
-      "passed": false
+      "passed": true
     },
     {
       "profile": "verb_specific_tense_frontiers",
       "seed": 1,
       "requiredKnownTargets": 44,
       "requiredWeakTargets": 109,
-      "knownTargetsWithEvidence": [],
+      "knownTargetsWithEvidence": [
+        "produire_present_indicatif::writing-controlled-production::verb:aller"
+      ],
       "weakTargetsWithEvidence": [],
       "knownTargetsUnresolved": [
         "produire_present_indicatif::writing-controlled-production::verb:être",
         "produire_present_indicatif::writing-controlled-production::verb:avoir",
-        "produire_present_indicatif::writing-controlled-production::verb:aller",
         "produire_present_indicatif::writing-controlled-production::verb:faire",
         "produire_present_indicatif::writing-controlled-production::verb:prendre",
         "produire_present_indicatif::writing-controlled-production::verb:venir",
@@ -985,7 +988,10 @@
       "requiredKnownTargets": 31,
       "requiredWeakTargets": 211,
       "knownTargetsWithEvidence": [],
-      "weakTargetsWithEvidence": [],
+      "weakTargetsWithEvidence": [
+        "produire_present_indicatif::writing-controlled-production::verb:aller",
+        "produire_present_indicatif::writing-controlled-production::pattern:regular_er"
+      ],
       "knownTargetsUnresolved": [
         "identifier_sujet_verbe::reading-receptive",
         "distinguer_personne_nombre::reading-receptive",
@@ -1035,7 +1041,6 @@
         "accorder_participe_avoir_cod::writing-controlled-production::construction:absent",
         "produire_present_indicatif::writing-controlled-production::verb:être",
         "produire_present_indicatif::writing-controlled-production::verb:avoir",
-        "produire_present_indicatif::writing-controlled-production::verb:aller",
         "produire_present_indicatif::writing-controlled-production::verb:faire",
         "produire_present_indicatif::writing-controlled-production::verb:prendre",
         "produire_present_indicatif::writing-controlled-production::verb:venir",
@@ -1047,7 +1052,6 @@
         "produire_present_indicatif::writing-controlled-production::verb:vouloir",
         "produire_present_indicatif::writing-controlled-production::verb:savoir",
         "produire_present_indicatif::writing-controlled-production::verb:devoir",
-        "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
         "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
         "produire_present_indicatif::writing-controlled-production::pattern:spelling_ger",
         "produire_present_indicatif::writing-controlled-production::pattern:spelling_cer",
@@ -1246,10 +1250,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 26,
-      "unsampledTargets": 516,
-      "targetsReachingMinimumItemCount": 9,
-      "targetsWithSufficientEvidenceToday": 7,
+      "sampledTargets": 28,
+      "unsampledTargets": 514,
+      "targetsReachingMinimumItemCount": 11,
+      "targetsWithSufficientEvidenceToday": 9,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -1263,24 +1267,28 @@
         {
           "family": "pattern",
           "answered": 6,
-          "knownTargetsWithEvidenceToday": [],
+          "knownTargetsWithEvidenceToday": [
+            "produire_present_indicatif::writing-controlled-production::pattern:regular_er"
+          ],
           "weakTargetsWithEvidenceToday": []
         },
         {
           "family": "verb",
           "answered": 6,
-          "knownTargetsWithEvidenceToday": [],
+          "knownTargetsWithEvidenceToday": [
+            "produire_present_indicatif::writing-controlled-production::verb:aller"
+          ],
           "weakTargetsWithEvidenceToday": []
         }
       ],
       "strands": [
         {
           "strand": "conjugaison",
-          "sampledTargets": 11,
+          "sampledTargets": 13,
           "answered": 18,
-          "targetsReachingMinimumItemCount": 0,
-          "targetsWithSufficientEvidenceToday": 0,
-          "sampledKnown": 11,
+          "targetsReachingMinimumItemCount": 2,
+          "targetsWithSufficientEvidenceToday": 2,
+          "sampledKnown": 13,
           "sampledWeak": 0
         },
         {
@@ -1384,12 +1392,12 @@
           "level": 2,
           "challengeOrder": 1,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 3,
+          "correct": 3,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.9998285616320933,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -1413,12 +1421,12 @@
           "level": 2,
           "challengeOrder": 1,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 3,
+          "correct": 3,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.9998285616320933,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -1443,12 +1451,12 @@
           "level": 2,
           "challengeOrder": 3,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 1,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -1472,12 +1480,12 @@
           "level": 2,
           "challengeOrder": 3,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 1,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -1516,12 +1524,12 @@
           "level": 3,
           "challengeOrder": 2,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 1,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -1545,12 +1553,12 @@
           "level": 3,
           "challengeOrder": 2,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 1,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -1694,6 +1702,36 @@
           "probability": 0.9969230769230769,
           "countedEvidence": 2,
           "minimumItems": 3
+        },
+        {
+          "skillId": "produire_imperatif::writing-controlled-production::verb:aller",
+          "labelFr": "Produire l'impératif — Conjuguer aller",
+          "strand": "conjugaison",
+          "level": 1,
+          "challengeOrder": 2,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_imperatif::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire l'impératif — Verbes réguliers en -er",
+          "strand": "conjugaison",
+          "level": 1,
+          "challengeOrder": 2,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
+          "minimumItems": 3
         }
       ],
       "violations": []
@@ -1706,10 +1744,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 35,
-      "unsampledTargets": 507,
-      "targetsReachingMinimumItemCount": 6,
-      "targetsWithSufficientEvidenceToday": 6,
+      "sampledTargets": 37,
+      "unsampledTargets": 505,
+      "targetsReachingMinimumItemCount": 8,
+      "targetsWithSufficientEvidenceToday": 8,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -1724,24 +1762,28 @@
           "family": "pattern",
           "answered": 6,
           "knownTargetsWithEvidenceToday": [],
-          "weakTargetsWithEvidenceToday": []
+          "weakTargetsWithEvidenceToday": [
+            "produire_present_indicatif::writing-controlled-production::pattern:regular_er"
+          ]
         },
         {
           "family": "verb",
           "answered": 6,
           "knownTargetsWithEvidenceToday": [],
-          "weakTargetsWithEvidenceToday": []
+          "weakTargetsWithEvidenceToday": [
+            "produire_present_indicatif::writing-controlled-production::verb:aller"
+          ]
         }
       ],
       "strands": [
         {
           "strand": "conjugaison",
-          "sampledTargets": 12,
+          "sampledTargets": 14,
           "answered": 18,
-          "targetsReachingMinimumItemCount": 0,
-          "targetsWithSufficientEvidenceToday": 0,
+          "targetsReachingMinimumItemCount": 2,
+          "targetsWithSufficientEvidenceToday": 2,
           "sampledKnown": 0,
-          "sampledWeak": 12
+          "sampledWeak": 14
         },
         {
           "strand": "comprehension_ecrite",
@@ -1844,12 +1886,12 @@
           "level": 2,
           "challengeOrder": 1,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 3,
           "correct": 0,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.010958904109589048,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.001164991990680065,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -1901,12 +1943,12 @@
           "level": 2,
           "challengeOrder": 1,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 3,
           "correct": 0,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.010958904109589048,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.001164991990680065,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -1958,12 +2000,12 @@
           "level": 2,
           "challengeOrder": 3,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 1,
           "correct": 0,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.010958904109589048,
-          "countedEvidence": 2,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -1987,12 +2029,12 @@
           "level": 2,
           "challengeOrder": 3,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 1,
           "correct": 0,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.010958904109589048,
-          "countedEvidence": 2,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -2031,12 +2073,12 @@
           "level": 3,
           "challengeOrder": 2,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 1,
           "correct": 0,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.010958904109589048,
-          "countedEvidence": 2,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -2060,12 +2102,12 @@
           "level": 3,
           "challengeOrder": 2,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 1,
           "correct": 0,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.010958904109589048,
-          "countedEvidence": 2,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -2279,6 +2321,36 @@
           "probability": 0.11764705882352941,
           "countedEvidence": 1,
           "minimumItems": 3
+        },
+        {
+          "skillId": "produire_imperatif::writing-controlled-production::verb:aller",
+          "labelFr": "Produire l'impératif — Conjuguer aller",
+          "strand": "conjugaison",
+          "level": 1,
+          "challengeOrder": 2,
+          "expectedKnown": false,
+          "answered": 1,
+          "correct": 0,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_imperatif::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire l'impératif — Verbes réguliers en -er",
+          "strand": "conjugaison",
+          "level": 1,
+          "challengeOrder": 2,
+          "expectedKnown": false,
+          "answered": 1,
+          "correct": 0,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
+          "minimumItems": 3
         }
       ],
       "violations": []
@@ -2291,10 +2363,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 26,
-      "unsampledTargets": 516,
-      "targetsReachingMinimumItemCount": 9,
-      "targetsWithSufficientEvidenceToday": 7,
+      "sampledTargets": 28,
+      "unsampledTargets": 514,
+      "targetsReachingMinimumItemCount": 11,
+      "targetsWithSufficientEvidenceToday": 9,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -2308,25 +2380,29 @@
         {
           "family": "pattern",
           "answered": 6,
-          "knownTargetsWithEvidenceToday": [],
+          "knownTargetsWithEvidenceToday": [
+            "produire_present_indicatif::writing-controlled-production::pattern:regular_er"
+          ],
           "weakTargetsWithEvidenceToday": []
         },
         {
           "family": "verb",
           "answered": 6,
           "knownTargetsWithEvidenceToday": [],
-          "weakTargetsWithEvidenceToday": []
+          "weakTargetsWithEvidenceToday": [
+            "produire_present_indicatif::writing-controlled-production::verb:aller"
+          ]
         }
       ],
       "strands": [
         {
           "strand": "conjugaison",
-          "sampledTargets": 11,
+          "sampledTargets": 13,
           "answered": 18,
-          "targetsReachingMinimumItemCount": 0,
-          "targetsWithSufficientEvidenceToday": 0,
-          "sampledKnown": 8,
-          "sampledWeak": 3
+          "targetsReachingMinimumItemCount": 2,
+          "targetsWithSufficientEvidenceToday": 2,
+          "sampledKnown": 9,
+          "sampledWeak": 4
         },
         {
           "strand": "comprehension_ecrite",
@@ -2429,12 +2505,12 @@
           "level": 2,
           "challengeOrder": 1,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 3,
           "correct": 0,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.010958904109589048,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.001164991990680065,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -2458,12 +2534,12 @@
           "level": 2,
           "challengeOrder": 1,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 3,
+          "correct": 3,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.9998285616320933,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -2488,12 +2564,12 @@
           "level": 2,
           "challengeOrder": 3,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 1,
           "correct": 0,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.010958904109589048,
-          "countedEvidence": 2,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -2517,12 +2593,12 @@
           "level": 2,
           "challengeOrder": 3,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 1,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -2561,12 +2637,12 @@
           "level": 3,
           "challengeOrder": 2,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 1,
           "correct": 0,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.010958904109589048,
-          "countedEvidence": 2,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -2590,12 +2666,12 @@
           "level": 3,
           "challengeOrder": 2,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 1,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -2739,11 +2815,39 @@
           "probability": 0.9969230769230769,
           "countedEvidence": 2,
           "minimumItems": 3
+        },
+        {
+          "skillId": "produire_imperatif::writing-controlled-production::verb:aller",
+          "labelFr": "Produire l'impératif — Conjuguer aller",
+          "strand": "conjugaison",
+          "level": 1,
+          "challengeOrder": 2,
+          "expectedKnown": false,
+          "answered": 1,
+          "correct": 0,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_imperatif::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire l'impératif — Verbes réguliers en -er",
+          "strand": "conjugaison",
+          "level": 1,
+          "challengeOrder": 2,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
+          "minimumItems": 3
         }
       ],
-      "violations": [
-        "regular_irregular_contrast_not_established"
-      ]
+      "violations": []
     },
     {
       "profile": "verb_specific_tense_frontiers",
@@ -2753,10 +2857,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 26,
-      "unsampledTargets": 516,
-      "targetsReachingMinimumItemCount": 9,
-      "targetsWithSufficientEvidenceToday": 7,
+      "sampledTargets": 28,
+      "unsampledTargets": 514,
+      "targetsReachingMinimumItemCount": 11,
+      "targetsWithSufficientEvidenceToday": 9,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -2770,24 +2874,28 @@
         {
           "family": "pattern",
           "answered": 6,
-          "knownTargetsWithEvidenceToday": [],
+          "knownTargetsWithEvidenceToday": [
+            "produire_present_indicatif::writing-controlled-production::pattern:regular_er"
+          ],
           "weakTargetsWithEvidenceToday": []
         },
         {
           "family": "verb",
           "answered": 6,
-          "knownTargetsWithEvidenceToday": [],
+          "knownTargetsWithEvidenceToday": [
+            "produire_present_indicatif::writing-controlled-production::verb:aller"
+          ],
           "weakTargetsWithEvidenceToday": []
         }
       ],
       "strands": [
         {
           "strand": "conjugaison",
-          "sampledTargets": 11,
+          "sampledTargets": 13,
           "answered": 18,
-          "targetsReachingMinimumItemCount": 0,
-          "targetsWithSufficientEvidenceToday": 0,
-          "sampledKnown": 11,
+          "targetsReachingMinimumItemCount": 2,
+          "targetsWithSufficientEvidenceToday": 2,
+          "sampledKnown": 13,
           "sampledWeak": 0
         },
         {
@@ -2891,12 +2999,12 @@
           "level": 2,
           "challengeOrder": 1,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 3,
+          "correct": 3,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.9998285616320933,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -2920,12 +3028,12 @@
           "level": 2,
           "challengeOrder": 1,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 3,
+          "correct": 3,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.9998285616320933,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -2950,12 +3058,12 @@
           "level": 2,
           "challengeOrder": 3,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 1,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -2979,12 +3087,12 @@
           "level": 2,
           "challengeOrder": 3,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 1,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -3023,12 +3131,12 @@
           "level": 3,
           "challengeOrder": 2,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 1,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -3052,12 +3160,12 @@
           "level": 3,
           "challengeOrder": 2,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 1,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -3200,6 +3308,36 @@
           "withinOccasionResolved": false,
           "probability": 0.9969230769230769,
           "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_imperatif::writing-controlled-production::verb:aller",
+          "labelFr": "Produire l'impératif — Conjuguer aller",
+          "strand": "conjugaison",
+          "level": 1,
+          "challengeOrder": 2,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_imperatif::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire l'impératif — Verbes réguliers en -er",
+          "strand": "conjugaison",
+          "level": 1,
+          "challengeOrder": 2,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         }
       ],
@@ -3213,10 +3351,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 26,
-      "unsampledTargets": 516,
-      "targetsReachingMinimumItemCount": 9,
-      "targetsWithSufficientEvidenceToday": 7,
+      "sampledTargets": 28,
+      "unsampledTargets": 514,
+      "targetsReachingMinimumItemCount": 11,
+      "targetsWithSufficientEvidenceToday": 9,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -3230,24 +3368,28 @@
         {
           "family": "pattern",
           "answered": 6,
-          "knownTargetsWithEvidenceToday": [],
+          "knownTargetsWithEvidenceToday": [
+            "produire_present_indicatif::writing-controlled-production::pattern:regular_er"
+          ],
           "weakTargetsWithEvidenceToday": []
         },
         {
           "family": "verb",
           "answered": 6,
-          "knownTargetsWithEvidenceToday": [],
+          "knownTargetsWithEvidenceToday": [
+            "produire_present_indicatif::writing-controlled-production::verb:aller"
+          ],
           "weakTargetsWithEvidenceToday": []
         }
       ],
       "strands": [
         {
           "strand": "conjugaison",
-          "sampledTargets": 11,
+          "sampledTargets": 13,
           "answered": 18,
-          "targetsReachingMinimumItemCount": 0,
-          "targetsWithSufficientEvidenceToday": 0,
-          "sampledKnown": 11,
+          "targetsReachingMinimumItemCount": 2,
+          "targetsWithSufficientEvidenceToday": 2,
+          "sampledKnown": 13,
           "sampledWeak": 0
         },
         {
@@ -3351,12 +3493,12 @@
           "level": 2,
           "challengeOrder": 1,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 3,
+          "correct": 3,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.9998285616320933,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -3380,12 +3522,12 @@
           "level": 2,
           "challengeOrder": 1,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 3,
+          "correct": 3,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.9998285616320933,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -3410,12 +3552,12 @@
           "level": 2,
           "challengeOrder": 3,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 1,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -3439,12 +3581,12 @@
           "level": 2,
           "challengeOrder": 3,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 1,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -3483,12 +3625,12 @@
           "level": 3,
           "challengeOrder": 2,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 1,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -3512,12 +3654,12 @@
           "level": 3,
           "challengeOrder": 2,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 1,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -3660,6 +3802,36 @@
           "withinOccasionResolved": false,
           "probability": 0.9969230769230769,
           "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_imperatif::writing-controlled-production::verb:aller",
+          "labelFr": "Produire l'impératif — Conjuguer aller",
+          "strand": "conjugaison",
+          "level": 1,
+          "challengeOrder": 2,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_imperatif::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire l'impératif — Verbes réguliers en -er",
+          "strand": "conjugaison",
+          "level": 1,
+          "challengeOrder": 2,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         }
       ],
@@ -3673,10 +3845,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 26,
-      "unsampledTargets": 516,
-      "targetsReachingMinimumItemCount": 9,
-      "targetsWithSufficientEvidenceToday": 7,
+      "sampledTargets": 28,
+      "unsampledTargets": 514,
+      "targetsReachingMinimumItemCount": 11,
+      "targetsWithSufficientEvidenceToday": 9,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -3690,24 +3862,28 @@
         {
           "family": "pattern",
           "answered": 6,
-          "knownTargetsWithEvidenceToday": [],
+          "knownTargetsWithEvidenceToday": [
+            "produire_present_indicatif::writing-controlled-production::pattern:regular_er"
+          ],
           "weakTargetsWithEvidenceToday": []
         },
         {
           "family": "verb",
           "answered": 6,
-          "knownTargetsWithEvidenceToday": [],
+          "knownTargetsWithEvidenceToday": [
+            "produire_present_indicatif::writing-controlled-production::verb:aller"
+          ],
           "weakTargetsWithEvidenceToday": []
         }
       ],
       "strands": [
         {
           "strand": "conjugaison",
-          "sampledTargets": 11,
+          "sampledTargets": 13,
           "answered": 18,
-          "targetsReachingMinimumItemCount": 0,
-          "targetsWithSufficientEvidenceToday": 0,
-          "sampledKnown": 11,
+          "targetsReachingMinimumItemCount": 2,
+          "targetsWithSufficientEvidenceToday": 2,
+          "sampledKnown": 13,
           "sampledWeak": 0
         },
         {
@@ -3811,12 +3987,12 @@
           "level": 2,
           "challengeOrder": 1,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 3,
+          "correct": 3,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.9998285616320933,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -3840,12 +4016,12 @@
           "level": 2,
           "challengeOrder": 1,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 3,
+          "correct": 3,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.9998285616320933,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -3870,12 +4046,12 @@
           "level": 2,
           "challengeOrder": 3,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 1,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -3899,12 +4075,12 @@
           "level": 2,
           "challengeOrder": 3,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 1,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -3943,12 +4119,12 @@
           "level": 3,
           "challengeOrder": 2,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 1,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -3972,12 +4148,12 @@
           "level": 3,
           "challengeOrder": 2,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 1,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -4121,6 +4297,36 @@
           "probability": 0.9969230769230769,
           "countedEvidence": 2,
           "minimumItems": 3
+        },
+        {
+          "skillId": "produire_imperatif::writing-controlled-production::verb:aller",
+          "labelFr": "Produire l'impératif — Conjuguer aller",
+          "strand": "conjugaison",
+          "level": 1,
+          "challengeOrder": 2,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_imperatif::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire l'impératif — Verbes réguliers en -er",
+          "strand": "conjugaison",
+          "level": 1,
+          "challengeOrder": 2,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
+          "minimumItems": 3
         }
       ],
       "violations": []
@@ -4133,10 +4339,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 27,
-      "unsampledTargets": 515,
-      "targetsReachingMinimumItemCount": 9,
-      "targetsWithSufficientEvidenceToday": 7,
+      "sampledTargets": 29,
+      "unsampledTargets": 513,
+      "targetsReachingMinimumItemCount": 11,
+      "targetsWithSufficientEvidenceToday": 9,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -4150,24 +4356,28 @@
         {
           "family": "pattern",
           "answered": 6,
-          "knownTargetsWithEvidenceToday": [],
+          "knownTargetsWithEvidenceToday": [
+            "produire_present_indicatif::writing-controlled-production::pattern:regular_er"
+          ],
           "weakTargetsWithEvidenceToday": []
         },
         {
           "family": "verb",
           "answered": 6,
-          "knownTargetsWithEvidenceToday": [],
+          "knownTargetsWithEvidenceToday": [
+            "produire_present_indicatif::writing-controlled-production::verb:aller"
+          ],
           "weakTargetsWithEvidenceToday": []
         }
       ],
       "strands": [
         {
           "strand": "conjugaison",
-          "sampledTargets": 11,
+          "sampledTargets": 13,
           "answered": 18,
-          "targetsReachingMinimumItemCount": 0,
-          "targetsWithSufficientEvidenceToday": 0,
-          "sampledKnown": 11,
+          "targetsReachingMinimumItemCount": 2,
+          "targetsWithSufficientEvidenceToday": 2,
+          "sampledKnown": 13,
           "sampledWeak": 0
         },
         {
@@ -4271,12 +4481,12 @@
           "level": 2,
           "challengeOrder": 1,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 3,
+          "correct": 3,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.9998285616320933,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -4300,12 +4510,12 @@
           "level": 2,
           "challengeOrder": 1,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 3,
+          "correct": 3,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.9998285616320933,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -4330,12 +4540,12 @@
           "level": 2,
           "challengeOrder": 3,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 1,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -4359,12 +4569,12 @@
           "level": 2,
           "challengeOrder": 3,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 1,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -4403,12 +4613,12 @@
           "level": 3,
           "challengeOrder": 2,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 1,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -4432,12 +4642,12 @@
           "level": 3,
           "challengeOrder": 2,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 1,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -4595,6 +4805,36 @@
           "probability": 0.9473684210526315,
           "countedEvidence": 1,
           "minimumItems": 3
+        },
+        {
+          "skillId": "produire_imperatif::writing-controlled-production::verb:aller",
+          "labelFr": "Produire l'impératif — Conjuguer aller",
+          "strand": "conjugaison",
+          "level": 1,
+          "challengeOrder": 2,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_imperatif::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire l'impératif — Verbes réguliers en -er",
+          "strand": "conjugaison",
+          "level": 1,
+          "challengeOrder": 2,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
+          "minimumItems": 3
         }
       ],
       "violations": []
@@ -4607,10 +4847,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 28,
-      "unsampledTargets": 514,
-      "targetsReachingMinimumItemCount": 8,
-      "targetsWithSufficientEvidenceToday": 7,
+      "sampledTargets": 30,
+      "unsampledTargets": 512,
+      "targetsReachingMinimumItemCount": 10,
+      "targetsWithSufficientEvidenceToday": 9,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -4624,24 +4864,28 @@
         {
           "family": "pattern",
           "answered": 6,
-          "knownTargetsWithEvidenceToday": [],
+          "knownTargetsWithEvidenceToday": [
+            "produire_present_indicatif::writing-controlled-production::pattern:regular_er"
+          ],
           "weakTargetsWithEvidenceToday": []
         },
         {
           "family": "verb",
           "answered": 6,
-          "knownTargetsWithEvidenceToday": [],
+          "knownTargetsWithEvidenceToday": [
+            "produire_present_indicatif::writing-controlled-production::verb:aller"
+          ],
           "weakTargetsWithEvidenceToday": []
         }
       ],
       "strands": [
         {
           "strand": "conjugaison",
-          "sampledTargets": 11,
+          "sampledTargets": 13,
           "answered": 18,
-          "targetsReachingMinimumItemCount": 0,
-          "targetsWithSufficientEvidenceToday": 0,
-          "sampledKnown": 11,
+          "targetsReachingMinimumItemCount": 2,
+          "targetsWithSufficientEvidenceToday": 2,
+          "sampledKnown": 13,
           "sampledWeak": 0
         },
         {
@@ -4745,12 +4989,12 @@
           "level": 2,
           "challengeOrder": 1,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 3,
+          "correct": 3,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.9998285616320933,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -4774,12 +5018,12 @@
           "level": 2,
           "challengeOrder": 1,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 3,
+          "correct": 3,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.9998285616320933,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -4818,12 +5062,12 @@
           "level": 2,
           "challengeOrder": 3,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 1,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -4847,12 +5091,12 @@
           "level": 2,
           "challengeOrder": 3,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 1,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -4891,12 +5135,12 @@
           "level": 3,
           "challengeOrder": 2,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 1,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -4920,12 +5164,12 @@
           "level": 3,
           "challengeOrder": 2,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 1,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -5083,6 +5327,36 @@
           "probability": 0.9969230769230769,
           "countedEvidence": 2,
           "minimumItems": 3
+        },
+        {
+          "skillId": "produire_imperatif::writing-controlled-production::verb:aller",
+          "labelFr": "Produire l'impératif — Conjuguer aller",
+          "strand": "conjugaison",
+          "level": 1,
+          "challengeOrder": 2,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_imperatif::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire l'impératif — Verbes réguliers en -er",
+          "strand": "conjugaison",
+          "level": 1,
+          "challengeOrder": 2,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
+          "minimumItems": 3
         }
       ],
       "violations": []
@@ -5095,10 +5369,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 27,
-      "unsampledTargets": 515,
-      "targetsReachingMinimumItemCount": 9,
-      "targetsWithSufficientEvidenceToday": 7,
+      "sampledTargets": 29,
+      "unsampledTargets": 513,
+      "targetsReachingMinimumItemCount": 11,
+      "targetsWithSufficientEvidenceToday": 9,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -5112,24 +5386,28 @@
         {
           "family": "pattern",
           "answered": 6,
-          "knownTargetsWithEvidenceToday": [],
+          "knownTargetsWithEvidenceToday": [
+            "produire_present_indicatif::writing-controlled-production::pattern:regular_er"
+          ],
           "weakTargetsWithEvidenceToday": []
         },
         {
           "family": "verb",
           "answered": 6,
-          "knownTargetsWithEvidenceToday": [],
+          "knownTargetsWithEvidenceToday": [
+            "produire_present_indicatif::writing-controlled-production::verb:aller"
+          ],
           "weakTargetsWithEvidenceToday": []
         }
       ],
       "strands": [
         {
           "strand": "conjugaison",
-          "sampledTargets": 11,
+          "sampledTargets": 13,
           "answered": 18,
-          "targetsReachingMinimumItemCount": 0,
-          "targetsWithSufficientEvidenceToday": 0,
-          "sampledKnown": 11,
+          "targetsReachingMinimumItemCount": 2,
+          "targetsWithSufficientEvidenceToday": 2,
+          "sampledKnown": 13,
           "sampledWeak": 0
         },
         {
@@ -5233,12 +5511,12 @@
           "level": 2,
           "challengeOrder": 1,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 3,
+          "correct": 3,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.9998285616320933,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -5262,12 +5540,12 @@
           "level": 2,
           "challengeOrder": 1,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 3,
+          "correct": 3,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.9998285616320933,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -5306,12 +5584,12 @@
           "level": 2,
           "challengeOrder": 3,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 1,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -5335,12 +5613,12 @@
           "level": 2,
           "challengeOrder": 3,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 1,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -5379,12 +5657,12 @@
           "level": 3,
           "challengeOrder": 2,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 1,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -5408,12 +5686,12 @@
           "level": 3,
           "challengeOrder": 2,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 1,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -5557,6 +5835,36 @@
           "probability": 0.9969230769230769,
           "countedEvidence": 2,
           "minimumItems": 3
+        },
+        {
+          "skillId": "produire_imperatif::writing-controlled-production::verb:aller",
+          "labelFr": "Produire l'impératif — Conjuguer aller",
+          "strand": "conjugaison",
+          "level": 1,
+          "challengeOrder": 2,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_imperatif::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire l'impératif — Verbes réguliers en -er",
+          "strand": "conjugaison",
+          "level": 1,
+          "challengeOrder": 2,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
+          "minimumItems": 3
         }
       ],
       "violations": []
@@ -5569,10 +5877,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 30,
-      "unsampledTargets": 512,
-      "targetsReachingMinimumItemCount": 7,
-      "targetsWithSufficientEvidenceToday": 6,
+      "sampledTargets": 32,
+      "unsampledTargets": 510,
+      "targetsReachingMinimumItemCount": 9,
+      "targetsWithSufficientEvidenceToday": 8,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -5587,24 +5895,28 @@
           "family": "pattern",
           "answered": 6,
           "knownTargetsWithEvidenceToday": [],
-          "weakTargetsWithEvidenceToday": []
+          "weakTargetsWithEvidenceToday": [
+            "produire_present_indicatif::writing-controlled-production::pattern:regular_er"
+          ]
         },
         {
           "family": "verb",
           "answered": 6,
           "knownTargetsWithEvidenceToday": [],
-          "weakTargetsWithEvidenceToday": []
+          "weakTargetsWithEvidenceToday": [
+            "produire_present_indicatif::writing-controlled-production::verb:aller"
+          ]
         }
       ],
       "strands": [
         {
           "strand": "conjugaison",
-          "sampledTargets": 11,
+          "sampledTargets": 13,
           "answered": 18,
-          "targetsReachingMinimumItemCount": 0,
-          "targetsWithSufficientEvidenceToday": 0,
+          "targetsReachingMinimumItemCount": 2,
+          "targetsWithSufficientEvidenceToday": 2,
           "sampledKnown": 5,
-          "sampledWeak": 6
+          "sampledWeak": 8
         },
         {
           "strand": "comprehension_ecrite",
@@ -5707,12 +6019,12 @@
           "level": 2,
           "challengeOrder": 1,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 3,
           "correct": 0,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.010958904109589048,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.001164991990680065,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -5750,12 +6062,12 @@
           "level": 2,
           "challengeOrder": 1,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 3,
           "correct": 0,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.010958904109589048,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.001164991990680065,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -5780,12 +6092,12 @@
           "level": 2,
           "challengeOrder": 3,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 1,
           "correct": 0,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.010958904109589048,
-          "countedEvidence": 2,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -5809,12 +6121,12 @@
           "level": 2,
           "challengeOrder": 3,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 1,
           "correct": 0,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.010958904109589048,
-          "countedEvidence": 2,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -5853,12 +6165,12 @@
           "level": 3,
           "challengeOrder": 2,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 1,
           "correct": 0,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.010958904109589048,
-          "countedEvidence": 2,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -5882,12 +6194,12 @@
           "level": 3,
           "challengeOrder": 2,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 1,
           "correct": 0,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.010958904109589048,
-          "countedEvidence": 2,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -6073,6 +6385,36 @@
           "probability": 0.09523809523809527,
           "countedEvidence": 1,
           "minimumItems": 3
+        },
+        {
+          "skillId": "produire_imperatif::writing-controlled-production::verb:aller",
+          "labelFr": "Produire l'impératif — Conjuguer aller",
+          "strand": "conjugaison",
+          "level": 1,
+          "challengeOrder": 2,
+          "expectedKnown": false,
+          "answered": 1,
+          "correct": 0,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_imperatif::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire l'impératif — Verbes réguliers en -er",
+          "strand": "conjugaison",
+          "level": 1,
+          "challengeOrder": 2,
+          "expectedKnown": false,
+          "answered": 1,
+          "correct": 0,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
+          "minimumItems": 3
         }
       ],
       "violations": []
@@ -6085,10 +6427,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 32,
-      "unsampledTargets": 510,
-      "targetsReachingMinimumItemCount": 6,
-      "targetsWithSufficientEvidenceToday": 4,
+      "sampledTargets": 33,
+      "unsampledTargets": 509,
+      "targetsReachingMinimumItemCount": 8,
+      "targetsWithSufficientEvidenceToday": 6,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -6103,24 +6445,28 @@
           "family": "pattern",
           "answered": 6,
           "knownTargetsWithEvidenceToday": [],
-          "weakTargetsWithEvidenceToday": []
+          "weakTargetsWithEvidenceToday": [
+            "produire_present_indicatif::writing-controlled-production::pattern:regular_er"
+          ]
         },
         {
           "family": "verb",
           "answered": 6,
           "knownTargetsWithEvidenceToday": [],
-          "weakTargetsWithEvidenceToday": []
+          "weakTargetsWithEvidenceToday": [
+            "produire_present_indicatif::writing-controlled-production::verb:aller"
+          ]
         }
       ],
       "strands": [
         {
           "strand": "conjugaison",
-          "sampledTargets": 12,
+          "sampledTargets": 13,
           "answered": 18,
-          "targetsReachingMinimumItemCount": 0,
-          "targetsWithSufficientEvidenceToday": 0,
+          "targetsReachingMinimumItemCount": 2,
+          "targetsWithSufficientEvidenceToday": 2,
           "sampledKnown": 0,
-          "sampledWeak": 12
+          "sampledWeak": 13
         },
         {
           "strand": "comprehension_ecrite",
@@ -6223,12 +6569,12 @@
           "level": 2,
           "challengeOrder": 1,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 3,
           "correct": 0,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.010958904109589048,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.001164991990680065,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -6280,12 +6626,12 @@
           "level": 2,
           "challengeOrder": 1,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 4,
           "correct": 1,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.6545454545454545,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.020562616021704998,
+          "countedEvidence": 4,
           "minimumItems": 3
         },
         {
@@ -6338,12 +6684,12 @@
           "level": 2,
           "challengeOrder": 3,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 1,
           "correct": 0,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.010958904109589048,
-          "countedEvidence": 2,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -6367,12 +6713,12 @@
           "level": 2,
           "challengeOrder": 3,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 1,
           "correct": 0,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.010958904109589048,
-          "countedEvidence": 2,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -6411,12 +6757,12 @@
           "level": 3,
           "challengeOrder": 2,
           "expectedKnown": false,
-          "answered": 2,
-          "correct": 1,
+          "answered": 1,
+          "correct": 0,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.6545454545454545,
-          "countedEvidence": 2,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -6440,12 +6786,12 @@
           "level": 3,
           "challengeOrder": 2,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 1,
           "correct": 0,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.010958904109589048,
-          "countedEvidence": 2,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -6592,6 +6938,21 @@
           "minimumItems": 3
         },
         {
+          "skillId": "produire_imperatif::writing-controlled-production::verb:aller",
+          "labelFr": "Produire l'impératif — Conjuguer aller",
+          "strand": "conjugaison",
+          "level": 1,
+          "challengeOrder": 2,
+          "expectedKnown": false,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
           "skillId": "placer_pronom_complement::writing-controlled-production::construction:infinitive",
           "labelFr": "Placer un pronom complément — Avant l’infinitif",
           "strand": "grammaire_syntaxe",
@@ -6630,10 +6991,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 33,
-      "unsampledTargets": 509,
-      "targetsReachingMinimumItemCount": 6,
-      "targetsWithSufficientEvidenceToday": 4,
+      "sampledTargets": 34,
+      "unsampledTargets": 508,
+      "targetsReachingMinimumItemCount": 8,
+      "targetsWithSufficientEvidenceToday": 6,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -6648,24 +7009,28 @@
           "family": "pattern",
           "answered": 6,
           "knownTargetsWithEvidenceToday": [],
-          "weakTargetsWithEvidenceToday": []
+          "weakTargetsWithEvidenceToday": [
+            "produire_present_indicatif::writing-controlled-production::pattern:regular_er"
+          ]
         },
         {
           "family": "verb",
           "answered": 6,
           "knownTargetsWithEvidenceToday": [],
-          "weakTargetsWithEvidenceToday": []
+          "weakTargetsWithEvidenceToday": [
+            "produire_present_indicatif::writing-controlled-production::verb:aller"
+          ]
         }
       ],
       "strands": [
         {
           "strand": "conjugaison",
-          "sampledTargets": 12,
+          "sampledTargets": 13,
           "answered": 18,
-          "targetsReachingMinimumItemCount": 0,
-          "targetsWithSufficientEvidenceToday": 0,
+          "targetsReachingMinimumItemCount": 2,
+          "targetsWithSufficientEvidenceToday": 2,
           "sampledKnown": 0,
-          "sampledWeak": 12
+          "sampledWeak": 13
         },
         {
           "strand": "comprehension_ecrite",
@@ -6768,12 +7133,12 @@
           "level": 2,
           "challengeOrder": 1,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 4,
           "correct": 1,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.6545454545454545,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.020562616021704998,
+          "countedEvidence": 4,
           "minimumItems": 3
         },
         {
@@ -6825,12 +7190,12 @@
           "level": 2,
           "challengeOrder": 1,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 3,
           "correct": 0,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.010958904109589048,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.001164991990680065,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -6883,12 +7248,12 @@
           "level": 2,
           "challengeOrder": 3,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 1,
           "correct": 0,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.010958904109589048,
-          "countedEvidence": 2,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -6912,12 +7277,12 @@
           "level": 2,
           "challengeOrder": 3,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 1,
           "correct": 0,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.010958904109589048,
-          "countedEvidence": 2,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -6956,12 +7321,12 @@
           "level": 3,
           "challengeOrder": 2,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 1,
           "correct": 0,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.010958904109589048,
-          "countedEvidence": 2,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -6985,12 +7350,12 @@
           "level": 3,
           "challengeOrder": 2,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 1,
           "correct": 0,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.010958904109589048,
-          "countedEvidence": 2,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -7177,6 +7542,21 @@
           "probability": 0.782608695652174,
           "countedEvidence": 1,
           "minimumItems": 3
+        },
+        {
+          "skillId": "produire_imperatif::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire l'impératif — Verbes réguliers en -er",
+          "strand": "conjugaison",
+          "level": 1,
+          "challengeOrder": 2,
+          "expectedKnown": false,
+          "answered": 1,
+          "correct": 0,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
+          "minimumItems": 3
         }
       ],
       "violations": []
@@ -7189,10 +7569,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 33,
-      "unsampledTargets": 509,
-      "targetsReachingMinimumItemCount": 9,
-      "targetsWithSufficientEvidenceToday": 4,
+      "sampledTargets": 35,
+      "unsampledTargets": 507,
+      "targetsReachingMinimumItemCount": 11,
+      "targetsWithSufficientEvidenceToday": 6,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -7207,24 +7587,28 @@
           "family": "pattern",
           "answered": 6,
           "knownTargetsWithEvidenceToday": [],
-          "weakTargetsWithEvidenceToday": []
+          "weakTargetsWithEvidenceToday": [
+            "produire_present_indicatif::writing-controlled-production::pattern:regular_er"
+          ]
         },
         {
           "family": "verb",
           "answered": 6,
           "knownTargetsWithEvidenceToday": [],
-          "weakTargetsWithEvidenceToday": []
+          "weakTargetsWithEvidenceToday": [
+            "produire_present_indicatif::writing-controlled-production::verb:aller"
+          ]
         }
       ],
       "strands": [
         {
           "strand": "conjugaison",
-          "sampledTargets": 12,
+          "sampledTargets": 14,
           "answered": 18,
-          "targetsReachingMinimumItemCount": 0,
-          "targetsWithSufficientEvidenceToday": 0,
+          "targetsReachingMinimumItemCount": 2,
+          "targetsWithSufficientEvidenceToday": 2,
           "sampledKnown": 0,
-          "sampledWeak": 12
+          "sampledWeak": 14
         },
         {
           "strand": "comprehension_ecrite",
@@ -7327,12 +7711,12 @@
           "level": 2,
           "challengeOrder": 1,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 3,
           "correct": 0,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.010958904109589048,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.001164991990680065,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -7370,12 +7754,12 @@
           "level": 2,
           "challengeOrder": 1,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 3,
           "correct": 0,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.010958904109589048,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.001164991990680065,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -7427,12 +7811,12 @@
           "level": 2,
           "challengeOrder": 3,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 1,
           "correct": 0,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.010958904109589048,
-          "countedEvidence": 2,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -7456,12 +7840,12 @@
           "level": 2,
           "challengeOrder": 3,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 1,
           "correct": 0,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.010958904109589048,
-          "countedEvidence": 2,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -7500,12 +7884,12 @@
           "level": 3,
           "challengeOrder": 2,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 1,
           "correct": 0,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.010958904109589048,
-          "countedEvidence": 2,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -7529,12 +7913,12 @@
           "level": 3,
           "challengeOrder": 2,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 1,
           "correct": 0,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.010958904109589048,
-          "countedEvidence": 2,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -7735,6 +8119,36 @@
           "probability": 0.11764705882352941,
           "countedEvidence": 1,
           "minimumItems": 3
+        },
+        {
+          "skillId": "produire_imperatif::writing-controlled-production::verb:aller",
+          "labelFr": "Produire l'impératif — Conjuguer aller",
+          "strand": "conjugaison",
+          "level": 1,
+          "challengeOrder": 2,
+          "expectedKnown": false,
+          "answered": 1,
+          "correct": 0,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_imperatif::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire l'impératif — Verbes réguliers en -er",
+          "strand": "conjugaison",
+          "level": 1,
+          "challengeOrder": 2,
+          "expectedKnown": false,
+          "answered": 1,
+          "correct": 0,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
+          "minimumItems": 3
         }
       ],
       "violations": []
@@ -7747,10 +8161,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 32,
-      "unsampledTargets": 510,
-      "targetsReachingMinimumItemCount": 6,
-      "targetsWithSufficientEvidenceToday": 3,
+      "sampledTargets": 34,
+      "unsampledTargets": 508,
+      "targetsReachingMinimumItemCount": 8,
+      "targetsWithSufficientEvidenceToday": 5,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -7765,24 +8179,28 @@
           "family": "pattern",
           "answered": 6,
           "knownTargetsWithEvidenceToday": [],
-          "weakTargetsWithEvidenceToday": []
+          "weakTargetsWithEvidenceToday": [
+            "produire_present_indicatif::writing-controlled-production::pattern:regular_er"
+          ]
         },
         {
           "family": "verb",
           "answered": 6,
           "knownTargetsWithEvidenceToday": [],
-          "weakTargetsWithEvidenceToday": []
+          "weakTargetsWithEvidenceToday": [
+            "produire_present_indicatif::writing-controlled-production::verb:aller"
+          ]
         }
       ],
       "strands": [
         {
           "strand": "conjugaison",
-          "sampledTargets": 12,
+          "sampledTargets": 14,
           "answered": 18,
-          "targetsReachingMinimumItemCount": 0,
-          "targetsWithSufficientEvidenceToday": 0,
+          "targetsReachingMinimumItemCount": 2,
+          "targetsWithSufficientEvidenceToday": 2,
           "sampledKnown": 0,
-          "sampledWeak": 12
+          "sampledWeak": 14
         },
         {
           "strand": "comprehension_ecrite",
@@ -7885,12 +8303,12 @@
           "level": 2,
           "challengeOrder": 1,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 3,
           "correct": 0,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.010958904109589048,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.001164991990680065,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -7942,12 +8360,12 @@
           "level": 2,
           "challengeOrder": 1,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 3,
           "correct": 0,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.010958904109589048,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.001164991990680065,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -7999,12 +8417,12 @@
           "level": 2,
           "challengeOrder": 3,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 1,
           "correct": 0,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.010958904109589048,
-          "countedEvidence": 2,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -8014,12 +8432,12 @@
           "level": 2,
           "challengeOrder": 3,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 1,
           "correct": 0,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.010958904109589048,
-          "countedEvidence": 2,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -8058,12 +8476,12 @@
           "level": 3,
           "challengeOrder": 2,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 1,
           "correct": 0,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.010958904109589048,
-          "countedEvidence": 2,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -8087,12 +8505,12 @@
           "level": 3,
           "challengeOrder": 2,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 1,
           "correct": 0,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.010958904109589048,
-          "countedEvidence": 2,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -8253,6 +8671,21 @@
           "minimumItems": 3
         },
         {
+          "skillId": "produire_imperatif::writing-controlled-production::verb:aller",
+          "labelFr": "Produire l'impératif — Conjuguer aller",
+          "strand": "conjugaison",
+          "level": 1,
+          "challengeOrder": 2,
+          "expectedKnown": false,
+          "answered": 1,
+          "correct": 0,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
           "skillId": "placer_pronom_complement::writing-controlled-production::construction:infinitive",
           "labelFr": "Placer un pronom complément — Avant l’infinitif",
           "strand": "grammaire_syntaxe",
@@ -8279,6 +8712,21 @@
           "probability": 0.11764705882352941,
           "countedEvidence": 1,
           "minimumItems": 3
+        },
+        {
+          "skillId": "produire_imperatif::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire l'impératif — Verbes réguliers en -er",
+          "strand": "conjugaison",
+          "level": 1,
+          "challengeOrder": 2,
+          "expectedKnown": false,
+          "answered": 1,
+          "correct": 0,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
+          "minimumItems": 3
         }
       ],
       "violations": []
@@ -8291,10 +8739,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 46,
-      "sampledTargets": 24,
-      "unsampledTargets": 518,
-      "targetsReachingMinimumItemCount": 7,
-      "targetsWithSufficientEvidenceToday": 6,
+      "sampledTargets": 25,
+      "unsampledTargets": 517,
+      "targetsReachingMinimumItemCount": 9,
+      "targetsWithSufficientEvidenceToday": 8,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -8308,24 +8756,28 @@
         {
           "family": "pattern",
           "answered": 5,
-          "knownTargetsWithEvidenceToday": [],
+          "knownTargetsWithEvidenceToday": [
+            "produire_present_indicatif::writing-controlled-production::pattern:regular_er"
+          ],
           "weakTargetsWithEvidenceToday": []
         },
         {
           "family": "verb",
           "answered": 5,
-          "knownTargetsWithEvidenceToday": [],
+          "knownTargetsWithEvidenceToday": [
+            "produire_present_indicatif::writing-controlled-production::verb:aller"
+          ],
           "weakTargetsWithEvidenceToday": []
         }
       ],
       "strands": [
         {
           "strand": "conjugaison",
-          "sampledTargets": 11,
+          "sampledTargets": 12,
           "answered": 14,
-          "targetsReachingMinimumItemCount": 0,
-          "targetsWithSufficientEvidenceToday": 0,
-          "sampledKnown": 11,
+          "targetsReachingMinimumItemCount": 2,
+          "targetsWithSufficientEvidenceToday": 2,
+          "sampledKnown": 12,
           "sampledWeak": 0
         },
         {
@@ -8429,12 +8881,12 @@
           "level": 2,
           "challengeOrder": 1,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 3,
+          "correct": 3,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.9998285616320933,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -8458,12 +8910,12 @@
           "level": 2,
           "challengeOrder": 1,
           "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
+          "answered": 3,
+          "correct": 3,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
+          "withinOccasionResolved": true,
+          "probability": 0.9998285616320933,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -8488,12 +8940,12 @@
           "level": 2,
           "challengeOrder": 3,
           "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
+          "answered": 0,
+          "correct": 0,
+          "status": "unknown",
           "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
+          "probability": 0.5,
+          "countedEvidence": 0,
           "minimumItems": 3
         },
         {
@@ -8517,12 +8969,12 @@
           "level": 2,
           "challengeOrder": 3,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 1,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -8561,12 +9013,12 @@
           "level": 3,
           "challengeOrder": 2,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 1,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -8576,12 +9028,12 @@
           "level": 3,
           "challengeOrder": 2,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 1,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -8711,6 +9163,21 @@
           "probability": 0.782608695652174,
           "countedEvidence": 1,
           "minimumItems": 3
+        },
+        {
+          "skillId": "produire_imperatif::writing-controlled-production::verb:aller",
+          "labelFr": "Produire l'impératif — Conjuguer aller",
+          "strand": "conjugaison",
+          "level": 1,
+          "challengeOrder": 2,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
+          "minimumItems": 3
         }
       ],
       "violations": []
@@ -8723,10 +9190,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 24,
-      "unsampledTargets": 518,
-      "targetsReachingMinimumItemCount": 6,
-      "targetsWithSufficientEvidenceToday": 5,
+      "sampledTargets": 26,
+      "unsampledTargets": 516,
+      "targetsReachingMinimumItemCount": 8,
+      "targetsWithSufficientEvidenceToday": 7,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -8740,24 +9207,28 @@
         {
           "family": "pattern",
           "answered": 6,
-          "knownTargetsWithEvidenceToday": [],
+          "knownTargetsWithEvidenceToday": [
+            "produire_present_indicatif::writing-controlled-production::pattern:regular_er"
+          ],
           "weakTargetsWithEvidenceToday": []
         },
         {
           "family": "verb",
           "answered": 6,
-          "knownTargetsWithEvidenceToday": [],
+          "knownTargetsWithEvidenceToday": [
+            "produire_present_indicatif::writing-controlled-production::verb:aller"
+          ],
           "weakTargetsWithEvidenceToday": []
         }
       ],
       "strands": [
         {
           "strand": "conjugaison",
-          "sampledTargets": 11,
+          "sampledTargets": 13,
           "answered": 18,
-          "targetsReachingMinimumItemCount": 0,
-          "targetsWithSufficientEvidenceToday": 0,
-          "sampledKnown": 11,
+          "targetsReachingMinimumItemCount": 2,
+          "targetsWithSufficientEvidenceToday": 2,
+          "sampledKnown": 13,
           "sampledWeak": 0
         },
         {
@@ -8861,12 +9332,12 @@
           "level": 2,
           "challengeOrder": 1,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 3,
+          "correct": 3,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.9998285616320933,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -8890,12 +9361,12 @@
           "level": 2,
           "challengeOrder": 1,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 3,
+          "correct": 3,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.9998285616320933,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -8920,12 +9391,12 @@
           "level": 2,
           "challengeOrder": 3,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 1,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -8949,12 +9420,12 @@
           "level": 2,
           "challengeOrder": 3,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 1,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -8993,12 +9464,12 @@
           "level": 3,
           "challengeOrder": 2,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 1,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -9022,12 +9493,12 @@
           "level": 3,
           "challengeOrder": 2,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 1,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.9969230769230769,
-          "countedEvidence": 2,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -9142,6 +9613,36 @@
           "withinOccasionResolved": false,
           "probability": 0.9969230769230769,
           "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_imperatif::writing-controlled-production::verb:aller",
+          "labelFr": "Produire l'impératif — Conjuguer aller",
+          "strand": "conjugaison",
+          "level": 1,
+          "challengeOrder": 2,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_imperatif::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire l'impératif — Verbes réguliers en -er",
+          "strand": "conjugaison",
+          "level": 1,
+          "challengeOrder": 2,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         }
       ],
