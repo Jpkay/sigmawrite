@@ -2,20 +2,20 @@
   "status": "parallel_review_release_preparation",
   "reviewOwner": "product_owner",
   "authorization": "product-owner-request-2026-09-11",
-  "policyChecksum": "sha256:be17ac09e436e5df795f84fe843d9cf0579e2af70311a5cbea0d7bf611aaab90",
+  "policyChecksum": "sha256:fe0746b16c63687f52d588aeae3ef06c6847eccd07479b9575a808d8fc5e021c",
   "summary": {
-    "teachingScopeTargets": 119,
+    "teachingScopeTargets": 123,
     "teachingPrerequisiteGapTargets": 0,
-    "teachingLessons": 125,
-    "teachingTargetsWithPools": 121,
-    "teachingTargetsWithFreshChecks": 119,
-    "guidedExercises": 700,
-    "selectedPendingOrRepairedQuestions": 4157,
+    "teachingLessons": 129,
+    "teachingTargetsWithPools": 125,
+    "teachingTargetsWithFreshChecks": 123,
+    "guidedExercises": 716,
+    "selectedPendingOrRepairedQuestions": 4227,
     "canonicalReviewedQuestions": 238,
-    "mappedQuestions": 4380,
+    "mappedQuestions": 4450,
     "targets": 542,
-    "allocatedTargets": 258,
-    "incompleteTargets": 284,
+    "allocatedTargets": 262,
+    "incompleteTargets": 280,
     "fullPoolCoverage": false,
     "unsupportedEvidenceItemKeys": [
       "local-reading-v1:inferer_chronologie_implicite:receptive:foundation",
@@ -304,7 +304,18 @@
             "novelWordsRequired": false,
             "novelSentencesRequired": false,
             "unaidedRequired": false,
-            "featureRequirements": []
+            "featureRequirements": [
+              {
+                "feature": "direct-object-avoir",
+                "minimumItems": 2,
+                "minimumContexts": 2
+              },
+              {
+                "feature": "no-direct-object-etre",
+                "minimumItems": 2,
+                "minimumContexts": 2
+              }
+            ]
           }
         },
         "facetKey": "choisir_auxiliaire_compose::construction:transitivity"
@@ -24004,6 +24015,1462 @@
         "textType": "narrative",
         "evidenceFeatures": [],
         "usage": "initial"
+      },
+      {
+        "id": "v3-auxiliary-choice:avoir-1",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:avoir",
+        "mode": "production",
+        "contextId": "auxiliary-choice:avoir-1",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:e21d959d98d2f16c77ecbe9253c2836c267c8209dc8a59410c3ca92b3e970727"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:e21d959d98d2f16c77ecbe9253c2836c267c8209dc8a59410c3ca92b3e970727"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-auxiliary-choice:avoir-2",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:avoir",
+        "mode": "production",
+        "contextId": "auxiliary-choice:avoir-2",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:8504819d3302eebbfef5aeee341667ac5b7f86ccc5f081c86dbab8341f42f7f5"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:8504819d3302eebbfef5aeee341667ac5b7f86ccc5f081c86dbab8341f42f7f5"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-auxiliary-choice:avoir-3",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:avoir",
+        "mode": "production",
+        "contextId": "auxiliary-choice:avoir-3",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:42095b86243fb6b6b0d0738115452db0462e4044d35621a8d89386131e50af8b"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:42095b86243fb6b6b0d0738115452db0462e4044d35621a8d89386131e50af8b"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-auxiliary-choice:avoir-4",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:avoir",
+        "mode": "production",
+        "contextId": "auxiliary-choice:avoir-4",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:168c22a07f36b4e48ae66c0e45bb1b184fc9cc438dd843a25d8590d55a4d8659"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:168c22a07f36b4e48ae66c0e45bb1b184fc9cc438dd843a25d8590d55a4d8659"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-auxiliary-choice:avoir-5",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:avoir",
+        "mode": "production",
+        "contextId": "auxiliary-choice:avoir-5",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:7f32ed6855ed37b9d02133410467f2d7efff89ddfdb80ec000916789ac3978d4"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:7f32ed6855ed37b9d02133410467f2d7efff89ddfdb80ec000916789ac3978d4"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-auxiliary-choice:avoir-6",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:avoir",
+        "mode": "production",
+        "contextId": "auxiliary-choice:avoir-6",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:7650385154773856f27802ad3e22089f284d02d9ded9f7f86e642e661c096af4"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:7650385154773856f27802ad3e22089f284d02d9ded9f7f86e642e661c096af4"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-auxiliary-choice:avoir-7",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:avoir",
+        "mode": "production",
+        "contextId": "auxiliary-choice:avoir-7",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:f537a146258f9d95226fabacc2e74581cf579aec70a944e5c9d1522a216b7ad7"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:f537a146258f9d95226fabacc2e74581cf579aec70a944e5c9d1522a216b7ad7"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-auxiliary-choice:avoir-8",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:avoir",
+        "mode": "production",
+        "contextId": "auxiliary-choice:avoir-8",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:f24b753f568199c5fbd7e409b9348b0e7e572651f952cfd2543ce59eb12fc70c"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:f24b753f568199c5fbd7e409b9348b0e7e572651f952cfd2543ce59eb12fc70c"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-auxiliary-choice:avoir-9",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:avoir",
+        "mode": "production",
+        "contextId": "auxiliary-choice:avoir-9",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:61458a73623c8ec66438875530ac76651416bcb443c98253ec5aad539ad44383"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:61458a73623c8ec66438875530ac76651416bcb443c98253ec5aad539ad44383"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-auxiliary-choice:avoir-10",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:avoir",
+        "mode": "production",
+        "contextId": "auxiliary-choice:avoir-10",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:2461767165f57d391fe9e65d8f1e277ba8a00a5e419aa5d13fad64d90a6aabbf"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:2461767165f57d391fe9e65d8f1e277ba8a00a5e419aa5d13fad64d90a6aabbf"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-auxiliary-choice:avoir-11",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:avoir",
+        "mode": "production",
+        "contextId": "auxiliary-choice:avoir-11",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:2b5ec4584b71936927264e83c429d3cb4785814aefa47ccb869a48ac711f1d5b"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:2b5ec4584b71936927264e83c429d3cb4785814aefa47ccb869a48ac711f1d5b"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-auxiliary-choice:avoir-12",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:avoir",
+        "mode": "production",
+        "contextId": "auxiliary-choice:avoir-12",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:2995736e1b500d744d9d2a0a0d37d92611ce1f70665b71d64ece2cc305341e2e"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:2995736e1b500d744d9d2a0a0d37d92611ce1f70665b71d64ece2cc305341e2e"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-auxiliary-choice:avoir-13",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:avoir",
+        "mode": "production",
+        "contextId": "auxiliary-choice:avoir-13",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:000da9ae24c708711042572fe13f83bb81377693cfe64597a2cad56f412feb82"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:000da9ae24c708711042572fe13f83bb81377693cfe64597a2cad56f412feb82"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-auxiliary-choice:avoir-14",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:avoir",
+        "mode": "production",
+        "contextId": "auxiliary-choice:avoir-14",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:121903d097ee633ada1a533dbdc38e8f9f08f955e1458de37a6f82dc9edc94d4"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:121903d097ee633ada1a533dbdc38e8f9f08f955e1458de37a6f82dc9edc94d4"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-auxiliary-choice:etre-1",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:etre",
+        "mode": "production",
+        "contextId": "auxiliary-choice:etre-1",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:8d3f810b5cf729dc93c823c4bd0f00e054855955289172ffe3fc43bdebe77292"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:8d3f810b5cf729dc93c823c4bd0f00e054855955289172ffe3fc43bdebe77292"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-auxiliary-choice:etre-2",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:etre",
+        "mode": "production",
+        "contextId": "auxiliary-choice:etre-2",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:31d501c44f36194cd19d44b8c4599f5c12323e322b8165f3b04649ad51b96640"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:31d501c44f36194cd19d44b8c4599f5c12323e322b8165f3b04649ad51b96640"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-auxiliary-choice:etre-3",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:etre",
+        "mode": "production",
+        "contextId": "auxiliary-choice:etre-3",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:32d9c4226f8e79ecba72d32d646a26c0c2e261f49d4953fe58efd2834b930851"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:32d9c4226f8e79ecba72d32d646a26c0c2e261f49d4953fe58efd2834b930851"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-auxiliary-choice:etre-4",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:etre",
+        "mode": "production",
+        "contextId": "auxiliary-choice:etre-4",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:9423ed2c5093d14fc158f98d8d1f1066dae692d996147a41d5fd99528b3f559e"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:9423ed2c5093d14fc158f98d8d1f1066dae692d996147a41d5fd99528b3f559e"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-auxiliary-choice:etre-5",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:etre",
+        "mode": "production",
+        "contextId": "auxiliary-choice:etre-5",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:e0b07450b02c08aa1d943fb394e25d6caf0cc0f12876694a177764716ccbcb0a"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:e0b07450b02c08aa1d943fb394e25d6caf0cc0f12876694a177764716ccbcb0a"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-auxiliary-choice:etre-6",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:etre",
+        "mode": "production",
+        "contextId": "auxiliary-choice:etre-6",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:13f9c6a82ec053021f0fb75524f54bfab6a2d1fa048cdfe2f25f8c79caf8a24a"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:13f9c6a82ec053021f0fb75524f54bfab6a2d1fa048cdfe2f25f8c79caf8a24a"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-auxiliary-choice:etre-7",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:etre",
+        "mode": "production",
+        "contextId": "auxiliary-choice:etre-7",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:29ce8a7092bd5496aa4da776b0a0ad3d4ee3d09352e0f9bc30701d6b8952a7fa"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:29ce8a7092bd5496aa4da776b0a0ad3d4ee3d09352e0f9bc30701d6b8952a7fa"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-auxiliary-choice:etre-8",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:etre",
+        "mode": "production",
+        "contextId": "auxiliary-choice:etre-8",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:6cb1dfa475ed1f358e6a3a4c9382c1b77b796a5637cc21e88dbde89ce608202b"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:6cb1dfa475ed1f358e6a3a4c9382c1b77b796a5637cc21e88dbde89ce608202b"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-auxiliary-choice:etre-9",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:etre",
+        "mode": "production",
+        "contextId": "auxiliary-choice:etre-9",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:e4c6b89295b463d084b4b1457178d01faca6a7ad4e4e5a32e69ebdcc81debfa5"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:e4c6b89295b463d084b4b1457178d01faca6a7ad4e4e5a32e69ebdcc81debfa5"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-auxiliary-choice:etre-10",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:etre",
+        "mode": "production",
+        "contextId": "auxiliary-choice:etre-10",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:8b635447382c5ea3956b28d845e7af58c09a460d816af4dab477fa99e0c1c727"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:8b635447382c5ea3956b28d845e7af58c09a460d816af4dab477fa99e0c1c727"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-auxiliary-choice:etre-11",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:etre",
+        "mode": "production",
+        "contextId": "auxiliary-choice:etre-11",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:cced9d08f59fd97b096f2ee2311fbaa8f2723388cec79a017a6f4bca632ddf59"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:cced9d08f59fd97b096f2ee2311fbaa8f2723388cec79a017a6f4bca632ddf59"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-auxiliary-choice:etre-12",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:etre",
+        "mode": "production",
+        "contextId": "auxiliary-choice:etre-12",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:f6dcfdeb40793d97601156eaf0027542dca812cc209e4cc6e3e41ff0da25a886"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:f6dcfdeb40793d97601156eaf0027542dca812cc209e4cc6e3e41ff0da25a886"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-auxiliary-choice:etre-13",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:etre",
+        "mode": "production",
+        "contextId": "auxiliary-choice:etre-13",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:f1f8a279324cabcfb86a9986addf48dba369625918fe2f8a720c1e231d69a97e"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:f1f8a279324cabcfb86a9986addf48dba369625918fe2f8a720c1e231d69a97e"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-auxiliary-choice:etre-14",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:etre",
+        "mode": "production",
+        "contextId": "auxiliary-choice:etre-14",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:c84ffcaf4b6742ce101be3a58fa2845898c2c8dd46d9910f853e86f741c821ce"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:c84ffcaf4b6742ce101be3a58fa2845898c2c8dd46d9910f853e86f741c821ce"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-auxiliary-choice:transitivity-1",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "mode": "production",
+        "contextId": "auxiliary-choice:transitivity-1",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:5d8b378ca49bbac14d72701bded3d3ca3a45de719711b54206e322cf163da17e"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:5d8b378ca49bbac14d72701bded3d3ca3a45de719711b54206e322cf163da17e"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [
+          "direct-object-avoir"
+        ],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-auxiliary-choice:transitivity-2",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "mode": "production",
+        "contextId": "auxiliary-choice:transitivity-2",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:ec85a748b4cbeae31eebd4e1fc44513f65336094d1f3932cebdd75c6b4456b40"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:ec85a748b4cbeae31eebd4e1fc44513f65336094d1f3932cebdd75c6b4456b40"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [
+          "no-direct-object-etre"
+        ],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-auxiliary-choice:transitivity-3",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "mode": "production",
+        "contextId": "auxiliary-choice:transitivity-3",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:0d0c47fb8224da4e2f99a643fa7381cb97ea939074848545048101a0cdab8229"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:0d0c47fb8224da4e2f99a643fa7381cb97ea939074848545048101a0cdab8229"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [
+          "direct-object-avoir"
+        ],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-auxiliary-choice:transitivity-4",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "mode": "production",
+        "contextId": "auxiliary-choice:transitivity-4",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:df9df45f1080439b0f2c5bdbf76b1104af73d148583d7722081fafda4638ee25"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:df9df45f1080439b0f2c5bdbf76b1104af73d148583d7722081fafda4638ee25"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [
+          "no-direct-object-etre"
+        ],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-auxiliary-choice:transitivity-5",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "mode": "production",
+        "contextId": "auxiliary-choice:transitivity-5",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:ae06569add483b90ed778be94222685115b628805293de80b781a0aeec98a3cf"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:ae06569add483b90ed778be94222685115b628805293de80b781a0aeec98a3cf"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [
+          "direct-object-avoir"
+        ],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-auxiliary-choice:transitivity-6",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "mode": "production",
+        "contextId": "auxiliary-choice:transitivity-6",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:97ef79aa0918c1d15b3fc46d1a87055d47919a96bb91825b7a5d171aa48d0f9e"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:97ef79aa0918c1d15b3fc46d1a87055d47919a96bb91825b7a5d171aa48d0f9e"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [
+          "no-direct-object-etre"
+        ],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-auxiliary-choice:transitivity-7",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "mode": "production",
+        "contextId": "auxiliary-choice:transitivity-7",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:8688f0e01db3cbe4673178dd3e266e10dcf193c8f139005d2ddc026caf1e4f1e"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:8688f0e01db3cbe4673178dd3e266e10dcf193c8f139005d2ddc026caf1e4f1e"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [
+          "direct-object-avoir"
+        ],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-auxiliary-choice:transitivity-8",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "mode": "production",
+        "contextId": "auxiliary-choice:transitivity-8",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:0b8bd30301d1b8921abc2720252d1ca34c2455bdb50aaf71dde5c7ae9759a83c"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:0b8bd30301d1b8921abc2720252d1ca34c2455bdb50aaf71dde5c7ae9759a83c"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [
+          "no-direct-object-etre"
+        ],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-auxiliary-choice:transitivity-9",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "mode": "production",
+        "contextId": "auxiliary-choice:transitivity-9",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:e1bf4c973c1707ff8ecde58f2cc693b82835d626fa528519417aa2f611b05599"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:e1bf4c973c1707ff8ecde58f2cc693b82835d626fa528519417aa2f611b05599"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [
+          "direct-object-avoir"
+        ],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-auxiliary-choice:transitivity-10",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "mode": "production",
+        "contextId": "auxiliary-choice:transitivity-10",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:60aa4204b117ffc537a1813d95517b326beab4f16e1052f3c7b38f9ef310e406"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:60aa4204b117ffc537a1813d95517b326beab4f16e1052f3c7b38f9ef310e406"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [
+          "no-direct-object-etre"
+        ],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-auxiliary-choice:transitivity-11",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "mode": "production",
+        "contextId": "auxiliary-choice:transitivity-11",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:f9a444e85d9adfb8630fb26bfc7ac2a3605ceaaf61ecb585318e040eb518aed2"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:f9a444e85d9adfb8630fb26bfc7ac2a3605ceaaf61ecb585318e040eb518aed2"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [
+          "direct-object-avoir"
+        ],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-auxiliary-choice:transitivity-12",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "mode": "production",
+        "contextId": "auxiliary-choice:transitivity-12",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:0fce965e4950ad448cf2b03903eb855d1b9e495e5624d7b09379f6f7e18c722b"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:0fce965e4950ad448cf2b03903eb855d1b9e495e5624d7b09379f6f7e18c722b"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [
+          "no-direct-object-etre"
+        ],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-auxiliary-choice:transitivity-13",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "mode": "production",
+        "contextId": "auxiliary-choice:transitivity-13",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:e326387ee9710d2410c5355d72a7072f2105fb40df1dc5f4d051d071f470c986"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:e326387ee9710d2410c5355d72a7072f2105fb40df1dc5f4d051d071f470c986"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [
+          "direct-object-avoir"
+        ],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-auxiliary-choice:transitivity-14",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "mode": "production",
+        "contextId": "auxiliary-choice:transitivity-14",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:a6618b93cc389c1b70621409afd9b8d5fcc2546717dee9c95fd55bf68ef25991"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:a6618b93cc389c1b70621409afd9b8d5fcc2546717dee9c95fd55bf68ef25991"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [
+          "no-direct-object-etre"
+        ],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-auxiliary-choice:transitivity-15",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "mode": "production",
+        "contextId": "auxiliary-choice:transitivity-15",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:fe1bd97903789379e9bd7b1a6f6a258a2c57bcbb4b2d20534f569674b32b03a9"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:fe1bd97903789379e9bd7b1a6f6a258a2c57bcbb4b2d20534f569674b32b03a9"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [
+          "direct-object-avoir"
+        ],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-auxiliary-choice:transitivity-16",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "mode": "production",
+        "contextId": "auxiliary-choice:transitivity-16",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:94e1e3d9da06f780a7c59cb419ca196626463af861e011149bb85ae4d7f69893"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:94e1e3d9da06f780a7c59cb419ca196626463af861e011149bb85ae4d7f69893"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [
+          "no-direct-object-etre"
+        ],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-auxiliary-choice:transitivity-17",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "mode": "production",
+        "contextId": "auxiliary-choice:transitivity-17",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:727a1d9e9ac98e1972889dcfc82807399b8d843796655ab97392f7e237fe6923"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:727a1d9e9ac98e1972889dcfc82807399b8d843796655ab97392f7e237fe6923"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [
+          "direct-object-avoir"
+        ],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-auxiliary-choice:transitivity-18",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "mode": "production",
+        "contextId": "auxiliary-choice:transitivity-18",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:93c6a5615c84b2a226971afcc317cfc79a25aef132aeba4150bf4c0bceff6205"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:93c6a5615c84b2a226971afcc317cfc79a25aef132aeba4150bf4c0bceff6205"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [
+          "no-direct-object-etre"
+        ],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-auxiliary-choice:transitivity-19",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "mode": "production",
+        "contextId": "auxiliary-choice:transitivity-19",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:d641f14480be435a366c953eb2e639a985d76ea1234975b7dc5aeb65c9c6dee2"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:d641f14480be435a366c953eb2e639a985d76ea1234975b7dc5aeb65c9c6dee2"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [
+          "direct-object-avoir"
+        ],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-auxiliary-choice:transitivity-20",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "mode": "production",
+        "contextId": "auxiliary-choice:transitivity-20",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:6fbd1f6ff56e28f7321e788c6f471c8aef9857710fa8b378f02aa53356f75d7b"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:6fbd1f6ff56e28f7321e788c6f471c8aef9857710fa8b378f02aa53356f75d7b"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [
+          "no-direct-object-etre"
+        ],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-auxiliary-choice:transitivity-21",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "mode": "production",
+        "contextId": "auxiliary-choice:transitivity-21",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:4c658a2321acfcabd82d1592b969ee8de6946554a42317cb2880aeb624a82e7b"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:4c658a2321acfcabd82d1592b969ee8de6946554a42317cb2880aeb624a82e7b"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [
+          "direct-object-avoir"
+        ],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-auxiliary-choice:transitivity-22",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "mode": "production",
+        "contextId": "auxiliary-choice:transitivity-22",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:35a3d08973ceaec6812be3790677c9ed154c53e93da4aaccc072bf3a9821d2b9"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:35a3d08973ceaec6812be3790677c9ed154c53e93da4aaccc072bf3a9821d2b9"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [
+          "no-direct-object-etre"
+        ],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-auxiliary-choice:transitivity-23",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "mode": "production",
+        "contextId": "auxiliary-choice:transitivity-23",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:ef4b97743d27c29246420b7839d30276d9cb8a358a35618c30b5492986f4d7b0"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:ef4b97743d27c29246420b7839d30276d9cb8a358a35618c30b5492986f4d7b0"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [
+          "direct-object-avoir"
+        ],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-auxiliary-choice:transitivity-24",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "mode": "production",
+        "contextId": "auxiliary-choice:transitivity-24",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:ceba58a5ab1a949ca514cfa8da17b3c69a58307b2410ed3cd9d0c626e49a3228"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:ceba58a5ab1a949ca514cfa8da17b3c69a58307b2410ed3cd9d0c626e49a3228"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [
+          "no-direct-object-etre"
+        ],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-auxiliary-choice:transitivity-25",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "mode": "production",
+        "contextId": "auxiliary-choice:transitivity-25",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:c6487ba62f25b1e659409f745f36ee319152c1fbc34b4b865abd0b87f8e9f747"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:c6487ba62f25b1e659409f745f36ee319152c1fbc34b4b865abd0b87f8e9f747"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [
+          "direct-object-avoir"
+        ],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-auxiliary-choice:transitivity-26",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "mode": "production",
+        "contextId": "auxiliary-choice:transitivity-26",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:9ffe4c8c65a6f084b985d415dfe599b9ca5e83e0a69b495a71b426f54ad8dc01"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:9ffe4c8c65a6f084b985d415dfe599b9ca5e83e0a69b495a71b426f54ad8dc01"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [
+          "no-direct-object-etre"
+        ],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-auxiliary-choice:transitivity-27",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "mode": "production",
+        "contextId": "auxiliary-choice:transitivity-27",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:434dca1f9ed8c3ab8e3ad5bcdc7741a0e60ceb3cb41510ae1450887a20411e9e"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:434dca1f9ed8c3ab8e3ad5bcdc7741a0e60ceb3cb41510ae1450887a20411e9e"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [
+          "direct-object-avoir"
+        ],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-auxiliary-choice:transitivity-28",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+        "mode": "production",
+        "contextId": "auxiliary-choice:transitivity-28",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:229ed876dfc771cc013fc93c2dd36749cafb99d598b1eba2d346aa99dbb86478"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:229ed876dfc771cc013fc93c2dd36749cafb99d598b1eba2d346aa99dbb86478"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [
+          "no-direct-object-etre"
+        ],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-auxiliary-choice:pronominal-1",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:pronominal",
+        "mode": "production",
+        "contextId": "auxiliary-choice:pronominal-1",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:c5e45211bdc25e9e7a49f439b23657e71105f7776a87b316cbe7f33ba9ab693c"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:c5e45211bdc25e9e7a49f439b23657e71105f7776a87b316cbe7f33ba9ab693c"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-auxiliary-choice:pronominal-2",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:pronominal",
+        "mode": "production",
+        "contextId": "auxiliary-choice:pronominal-2",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:68526342526b5ffe74f84a788c4f05fc714b2f6b75f6acc869f9fba1a588de6b"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:68526342526b5ffe74f84a788c4f05fc714b2f6b75f6acc869f9fba1a588de6b"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-auxiliary-choice:pronominal-3",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:pronominal",
+        "mode": "production",
+        "contextId": "auxiliary-choice:pronominal-3",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:9bd38b52e30473fc743376e2e46b823fa4d30aeec774d966567aad1a9fcc857a"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:9bd38b52e30473fc743376e2e46b823fa4d30aeec774d966567aad1a9fcc857a"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-auxiliary-choice:pronominal-4",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:pronominal",
+        "mode": "production",
+        "contextId": "auxiliary-choice:pronominal-4",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:436c63e1ff1a9142d0a3c84a5f4245ca3bd13a64118d6954b764a4fbaa525e22"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:436c63e1ff1a9142d0a3c84a5f4245ca3bd13a64118d6954b764a4fbaa525e22"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-auxiliary-choice:pronominal-5",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:pronominal",
+        "mode": "production",
+        "contextId": "auxiliary-choice:pronominal-5",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:463106b5f7b89b1eb8c612ace4b345d5560e57a36e494600f5e00fcf9b802bfb"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:463106b5f7b89b1eb8c612ace4b345d5560e57a36e494600f5e00fcf9b802bfb"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-auxiliary-choice:pronominal-6",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:pronominal",
+        "mode": "production",
+        "contextId": "auxiliary-choice:pronominal-6",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:011377a1cc14374109c2db17febae7847eb8f9d01a6f985836aceef2d5348aab"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:011377a1cc14374109c2db17febae7847eb8f9d01a6f985836aceef2d5348aab"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-auxiliary-choice:pronominal-7",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:pronominal",
+        "mode": "production",
+        "contextId": "auxiliary-choice:pronominal-7",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:a71884f599f7168b07509f29faf9061f9908aa29a0e67ebce9046fd939abe5e9"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:a71884f599f7168b07509f29faf9061f9908aa29a0e67ebce9046fd939abe5e9"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-auxiliary-choice:pronominal-8",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:pronominal",
+        "mode": "production",
+        "contextId": "auxiliary-choice:pronominal-8",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:ad87340fc519423109b4b04e43e58e4cfde3e8ad3d2d9e2b8ea31da682036476"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:ad87340fc519423109b4b04e43e58e4cfde3e8ad3d2d9e2b8ea31da682036476"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-auxiliary-choice:pronominal-9",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:pronominal",
+        "mode": "production",
+        "contextId": "auxiliary-choice:pronominal-9",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:34a6effc187b1c082b828ac448f457538b0ab4b8c5a0fdf4ce887fd0deefc7f0"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:34a6effc187b1c082b828ac448f457538b0ab4b8c5a0fdf4ce887fd0deefc7f0"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-auxiliary-choice:pronominal-10",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:pronominal",
+        "mode": "production",
+        "contextId": "auxiliary-choice:pronominal-10",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:c87dcb197058d4bf4c54a8c85094949dd8b2535605f887f5fa0c842a4a579e5e"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:c87dcb197058d4bf4c54a8c85094949dd8b2535605f887f5fa0c842a4a579e5e"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-auxiliary-choice:pronominal-11",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:pronominal",
+        "mode": "production",
+        "contextId": "auxiliary-choice:pronominal-11",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:29db9af387cb6855efab287ddf885b4d8e38f8f2c4c84558012d330d1e4031b9"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:29db9af387cb6855efab287ddf885b4d8e38f8f2c4c84558012d330d1e4031b9"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-auxiliary-choice:pronominal-12",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:pronominal",
+        "mode": "production",
+        "contextId": "auxiliary-choice:pronominal-12",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:1349b1955dca3f810d26229ccece0fe167b3280c597106e7995527568efb6d30"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:1349b1955dca3f810d26229ccece0fe167b3280c597106e7995527568efb6d30"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-auxiliary-choice:pronominal-13",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:pronominal",
+        "mode": "production",
+        "contextId": "auxiliary-choice:pronominal-13",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:36269daa94e60dbb8112b90d8f5afbfb9c149c77f32cee1b9176c93c3dd7199c"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:36269daa94e60dbb8112b90d8f5afbfb9c149c77f32cee1b9176c93c3dd7199c"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-auxiliary-choice:pronominal-14",
+        "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:pronominal",
+        "mode": "production",
+        "contextId": "auxiliary-choice:pronominal-14",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:f042bde03378273b0de273e0a545721562370fe450512a79a0ac03567d5acd0b"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:f042bde03378273b0de273e0a545721562370fe450512a79a0ac03567d5acd0b"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
       },
       {
         "id": "v3-character-motivation:manga-spoiler",
@@ -109615,7 +111082,7 @@
       }
     ],
     "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
-    "bankChecksum": "sha256:aa621686f09fb3361b17eadfc81e47ab12b53606fc0f2a4c1574e935406a6451",
+    "bankChecksum": "sha256:c5b524233889068e59471210f41e8e12d6b51b0fea0117a44515d68cd2c732be",
     "unsupportedEvidenceItemKeys": [
       "local-reading-v1:inferer_chronologie_implicite:receptive:foundation",
       "local-reading-v1:inferer_chronologie_implicite:receptive:core",
@@ -109630,7 +111097,7 @@
       "mode": "parallel_review",
       "authorization": "product-owner-request-2026-09-11",
       "reviewOwner": "product_owner",
-      "bankChecksum": "sha256:aa621686f09fb3361b17eadfc81e47ab12b53606fc0f2a4c1574e935406a6451",
+      "bankChecksum": "sha256:c5b524233889068e59471210f41e8e12d6b51b0fea0117a44515d68cd2c732be",
       "questionChecksums": {
         "review-draft-v1:construction_pronom_relatif:controlled_production:foundation": "sha256:2731933f71f4a1408115b2457d07ee69469fdac2e7a6e57fb69c112e2a0c32dc",
         "review-draft-v1:construction_pronom_relatif:controlled_production:core": "sha256:d8b92f78c30ddfa7d1598405eb512dce2f2b476fdd151dd3a79c9476a729cc56",
@@ -109657,6 +111124,76 @@
         "local-reading-v1:inferer_chronologie_implicite:receptive:core": "sha256:1506b1e15cc6621d9641d32bc5492dedc8722adab2c2817e2d6275c4e3368d04",
         "local-reading-v1:inferer_chronologie_implicite:receptive:stretch": "sha256:7e58f0641d4689f6fc76075593b096545283f8b2420fe4b8993ef8b84c41e3d0",
         "local-reading-v1:comparer_points_de_vue:controlled_production:foundation": "sha256:ae4349e0976e050d52019208e3ff5a7e8d70685ac640242aadca852c6bed8e9d",
+        "v3-auxiliary-choice:avoir-1": "sha256:33ff084eac6fd22d4e8780e281c8de72b92dab7d845c530332c8f420f4c15d81",
+        "v3-auxiliary-choice:avoir-2": "sha256:20e42eb7cf95fff67461052da09a3706c3f319dc030c1f7183af6e9cd1b88275",
+        "v3-auxiliary-choice:avoir-3": "sha256:5d573285c43851137a180a610cd13a300f5de8743536cf44a1e1e123e6b0bfe9",
+        "v3-auxiliary-choice:avoir-4": "sha256:3a8cabb7d944c02375129d8d7dcd654c3f5353d422b2af1a84cafdd4546c3e83",
+        "v3-auxiliary-choice:avoir-5": "sha256:237278ca5cdebbb604562c74ce7088efcde8c089e276ba257c5dd776767c66b7",
+        "v3-auxiliary-choice:avoir-6": "sha256:587601795106467fbcc36959c77ec887615fc0871f93a0e264ed1491c14b4aaf",
+        "v3-auxiliary-choice:avoir-7": "sha256:38947d2da2ce244399a3c76703f83c6d2c37bd24b565d0c4a229632597c118bc",
+        "v3-auxiliary-choice:avoir-8": "sha256:b59f91449d90d035e9457075c5ea96b1b698abe256c6f8a0ab5791ca525d477d",
+        "v3-auxiliary-choice:avoir-9": "sha256:966b589a0c3a20e247b14c990a80ed26e24bceec1358031337b912a397995a31",
+        "v3-auxiliary-choice:avoir-10": "sha256:347a69bb4fd60fca268bf3f99c728dacb92afd760354731826f386cfb5cf42f6",
+        "v3-auxiliary-choice:avoir-11": "sha256:af803dfea04897f54b44710c57957f32448dc207842460a234f517b64f7a4936",
+        "v3-auxiliary-choice:avoir-12": "sha256:0ff86f1ff68c0beae6f22eba9773b2f4a4208e53f9e6babe4405eb89a743217d",
+        "v3-auxiliary-choice:avoir-13": "sha256:3fb68d9562b3a5115e34bcb5c1739a9408ff70b51ca3108e3272a465425c027c",
+        "v3-auxiliary-choice:avoir-14": "sha256:a32004a28819413bfb6d1f705555f910950324c3e44f68aff73f4de269d0a1ce",
+        "v3-auxiliary-choice:etre-1": "sha256:633803428d4687fc0ef92d03cf673f5b2cec3d54e3fdbb930bc3ddd57314bdf7",
+        "v3-auxiliary-choice:etre-2": "sha256:48e1d34419c4ccfa373a18165f1a1a87e79268f4f9fef412a4495347f96aa06e",
+        "v3-auxiliary-choice:etre-3": "sha256:5f93cfaa972a8a32c9bb44c43d0e83aee903881812c4c05e5a9c2868a896c57a",
+        "v3-auxiliary-choice:etre-4": "sha256:a863486ec89ecc149122f2223003bb9bcd162bad03b236137dc479fadf14ef05",
+        "v3-auxiliary-choice:etre-5": "sha256:0f5bf4f610730386e63a3fb0e9039786c33e8154767b19407d67cf968c74f470",
+        "v3-auxiliary-choice:etre-6": "sha256:32d1fd5047d300cfeae48922997b349ea26fae403d515bc7f2196a9bb09bb619",
+        "v3-auxiliary-choice:etre-7": "sha256:d56929c60ebdc3fe86372724ad5eb1419070fa9f926cd9ff81c13be5a757e11e",
+        "v3-auxiliary-choice:etre-8": "sha256:0f1df274fb05e8d14a624bce634a88ef19bd3aa69a7fcded154cb84c3bb45062",
+        "v3-auxiliary-choice:etre-9": "sha256:49b72491413c9436776c76e49bd1baf8879865a444a6cb797b582e7d021afa8a",
+        "v3-auxiliary-choice:etre-10": "sha256:d7e51a6d90dbbf159445b34676636be2d66b4231fcf36444d55948cd1937e525",
+        "v3-auxiliary-choice:etre-11": "sha256:a7b077ac55062f6f8359853a737599ce31210434615a805abf28d5e69b26570c",
+        "v3-auxiliary-choice:etre-12": "sha256:429f0a9ca921be4e86db8f3b2ecf53f15c4e06db21efbc2c66677d78ac661147",
+        "v3-auxiliary-choice:etre-13": "sha256:3dd934528ede77f74b7dc5b11312012487d89166907ab2b12ea1fade2d96b59e",
+        "v3-auxiliary-choice:etre-14": "sha256:b13fe17731be3d6f1dba609f52ede0014d09cda03f916bf776a53c65ee6b8ea4",
+        "v3-auxiliary-choice:transitivity-1": "sha256:52b860b9334ffb94a8eabb6e29e06299ffaac290525e4e473c39bdbfa19c0467",
+        "v3-auxiliary-choice:transitivity-2": "sha256:70dda9b0a40a8234dc1aff8f19486579d9350beb8353ef927561ec3a52f29899",
+        "v3-auxiliary-choice:transitivity-3": "sha256:7e619760d9fe66c3cbc50568dc83873fb51c8c2ef8fe5403c35f3bf3ba97fd94",
+        "v3-auxiliary-choice:transitivity-4": "sha256:480f1fd4847ab768bf2c689bdb897a0d6fc003098a59a47b23a8444c815267b2",
+        "v3-auxiliary-choice:transitivity-5": "sha256:be11f20cc13ccbc4950e15c044de5e81a7691f71b79d31ebd85a4537c2ebee4e",
+        "v3-auxiliary-choice:transitivity-6": "sha256:803058ccafe3da238598eacd747db02457d145cc5f7ad85288b87e4aa213b5b8",
+        "v3-auxiliary-choice:transitivity-7": "sha256:3ed9fd77e50b4260cebc320142eddead5c1a12810d618a67f4b308bec776f29e",
+        "v3-auxiliary-choice:transitivity-8": "sha256:3a4bb97eff32d1476cdabcc142c48f7e4f77ade02a7120b5e14bee50c5725237",
+        "v3-auxiliary-choice:transitivity-9": "sha256:3b41b2e4810f4e695427ce6c3059c595216232839e9875a9cccb6a3c7edbd96c",
+        "v3-auxiliary-choice:transitivity-10": "sha256:cf4932735c495fff3a1dfee6e0ede92d7c033a96c15ce47fc9d2424f60242691",
+        "v3-auxiliary-choice:transitivity-11": "sha256:da4ce64b97892a924d380d820adb15cfeb7067d3ad217bedc6b2dab7a10673a6",
+        "v3-auxiliary-choice:transitivity-12": "sha256:ecaaeac4301f8dc6baf2666f50962c9f94dc5ac225ab04cb8f26de848a6c4e6e",
+        "v3-auxiliary-choice:transitivity-13": "sha256:b04c219cf2774978ef25b9aba661de0b8f3d00736817d7606ad0dcbab6049367",
+        "v3-auxiliary-choice:transitivity-14": "sha256:5b21a65bfb1ee1a0ec8bd465a7aadb8f84df621f185ec96684ad45f4b4f3ad08",
+        "v3-auxiliary-choice:transitivity-15": "sha256:b2eb311f9f0ce4911a39782d01a670c83004eaa145e755fd27b237a19d8e30fb",
+        "v3-auxiliary-choice:transitivity-16": "sha256:17b3f1df5b4c99e2927889d2ed55c7433ec4dca3d509a50f3973719190dc121d",
+        "v3-auxiliary-choice:transitivity-17": "sha256:f1ca77c4f27e0177938539d85cee37afcab8941fa70380405a00ab3eed4e66a6",
+        "v3-auxiliary-choice:transitivity-18": "sha256:49ec4115ea9dce6ec0b8f040ffcb36ee00eb49ae336847fb551c17be502d4397",
+        "v3-auxiliary-choice:transitivity-19": "sha256:29bf748aed1d6b03af69fabc98294a6e55480c495699e1e4247d19f59e590fd1",
+        "v3-auxiliary-choice:transitivity-20": "sha256:4cff7ba419ec21560bf025c91687a7c6cf91e97ddc421eaf61e153486875f894",
+        "v3-auxiliary-choice:transitivity-21": "sha256:6bc56fec907d840a58d79fff66959b08655cf6ba63e0279d1ceb05d4310b1818",
+        "v3-auxiliary-choice:transitivity-22": "sha256:24ab27c30a049be5443f464d0685e5e61ae3b8a6e6a65d571e22cfcd1ae37d78",
+        "v3-auxiliary-choice:transitivity-23": "sha256:24ca8468027187740595448f187598cd291d3e8a0d1fed35067aee277c68cade",
+        "v3-auxiliary-choice:transitivity-24": "sha256:708c54eb3433de1d0e35ca7187dce0a7bec7638d0e9f92a1fe51ba27e51e5ce1",
+        "v3-auxiliary-choice:transitivity-25": "sha256:b0e5c763c111d8ad053e7a34395a462175a3e38fbe61a3415527491486158580",
+        "v3-auxiliary-choice:transitivity-26": "sha256:916e84e2f303fa47dabe229ef757f71bd25dee6a510c8de96df00c19d6b22403",
+        "v3-auxiliary-choice:transitivity-27": "sha256:865918e09a2a285de0dda067a97f0025940f2edbe55a832b3f8d999534de8f32",
+        "v3-auxiliary-choice:transitivity-28": "sha256:33c4d748ae20b8a5840beaff3901668eaa2783139f2315f4658daa113de2f78a",
+        "v3-auxiliary-choice:pronominal-1": "sha256:52814e8cf22b7584192467ed368944ab9c60981477c4f6c53b16dce99a6f2f86",
+        "v3-auxiliary-choice:pronominal-2": "sha256:b53ca19815caf522609bdf5e3201b685c7499627909a1d37dcf2c7d72b1cffb6",
+        "v3-auxiliary-choice:pronominal-3": "sha256:d3e098e7186c50afc586bd3ad114a567792fe6c059d477608a917b5eaa59b9c2",
+        "v3-auxiliary-choice:pronominal-4": "sha256:76085c67f5cf91dbe959c665fd92a128c5e904b223c48581c465a7227e13e7b8",
+        "v3-auxiliary-choice:pronominal-5": "sha256:bbb46cf0d0c4205d56113951741f6cc712483152925071b716741bfc1d9f848c",
+        "v3-auxiliary-choice:pronominal-6": "sha256:3750b1f95fa2c856ceeb66edc915f0d9a1ee6e7bac36e7e04cc18624d5092839",
+        "v3-auxiliary-choice:pronominal-7": "sha256:47332d153023cfc2168dc9370d015a63984b6da0b35c4387e9de6d641ec605bc",
+        "v3-auxiliary-choice:pronominal-8": "sha256:1d735a0cf3f2a63a7ea03a72c7a3cc7d53e915f8a0a3bd76bfb3ba01ec512549",
+        "v3-auxiliary-choice:pronominal-9": "sha256:9c51c10c759a8880d778268e1aa0d5732774851c96102668951202277207f22d",
+        "v3-auxiliary-choice:pronominal-10": "sha256:2be84771a48b38ae1df12cd65f9c7cc5866b428298e72b87015156dd4b77cb4c",
+        "v3-auxiliary-choice:pronominal-11": "sha256:558f9d3d62c66292575fc2c3633be9a4832d5cfd6b5526303bc72ad386326252",
+        "v3-auxiliary-choice:pronominal-12": "sha256:77cafee5d336d5ca22308ff4f2d5367c4dc61fda939ed77deb7d5ddbe894ae62",
+        "v3-auxiliary-choice:pronominal-13": "sha256:09ff0fd59e2d7c50542759dd19391c221b8b933ec36b893dc148b3110459f40d",
+        "v3-auxiliary-choice:pronominal-14": "sha256:2fc72d298480204a7a8eff1e64ba55ae87ab262b9ecac11e6ac7a47757e42287",
         "v3-character-motivation:manga-spoiler": "sha256:37099bfe66e23a6f78230ef2cc9fe2729f2d49408cb436dd0d893f5c02732b9e",
         "v3-character-motivation:cold-friend": "sha256:da428c1dda89f0e2fc140b6b2444657c11353fc1440af2ddf76cdca4c35ba54e",
         "v3-character-motivation:slower-runner": "sha256:c7233a2aabaf7083f1bb2f55f1d59245e63a58cb38ce6ac1aed565fef4d211d8",
@@ -113791,6 +115328,10 @@
         "v3-y-en:en_thing-18": "sha256:1de3bba6c34a338f57ee6b482b6a389ca0b053f6059a6c16d61d4a97fc48e58d"
       },
       "teachingChecksums": {
+        "french-v3-teaching:auxiliary-choice:avoir": "sha256:5e212aa6a719fc82483d68037cbd222bbc2493e3864dec93b21fd6e9bc193358",
+        "french-v3-teaching:auxiliary-choice:etre": "sha256:7b4bf684cf4e676d09753cc7b5fbfaeac14c549471ddd2d6aaf358178911df5b",
+        "french-v3-teaching:auxiliary-choice:transitivity": "sha256:5a9a87193786358a681eb520d04019211554cb6577120f376fe16cc6440c34b8",
+        "french-v3-teaching:auxiliary-choice:pronominal": "sha256:e59cffd0053c10b8dec71eb34233d5d23d01e35df7d72eb7bc13efce58cbe9f9",
         "french-v3-teaching:auxiliary:recognition": "sha256:4db6f40fa3d1a6dc2d3fd40d34de7b36d075626010326aae281464ba2906ad03",
         "french-v3-teaching:passe-compose:recognition": "sha256:d098cb2decb20dce006e6b65bf8984699c448d4fc43c7ad114e4eed281e32808",
         "french-v3-teaching:plus-que-parfait:recognition": "sha256:6492199a93bea91146be60523b63fb5c30ab227447259c41c6f8928dd355ccde",
@@ -113918,8 +115459,8 @@
         "french-v3-teaching:present:verb:devoir": "sha256:c2235bf177eb98d976fe547ce3beff1d3ef3f2697fea741d08711af501851ae9"
       }
     },
-    "facetChecksum": "sha256:e7127168ac44630194f8f69db74913a5abd81fc5e72dbe457b1e956337ed11ed",
-    "poolChecksum": "sha256:fc6c6ff1a942514e8f4abc65142495268853731434ef8ea038164f547af4f025"
+    "facetChecksum": "sha256:a6548c75d5e639de43a0e135daef23621d0eb20e356235b5e82067da53bb9652",
+    "poolChecksum": "sha256:5d946016a4765d903d4b19b9bbf5cd7a109bbe613319bacbe9184cf58690ac04"
   },
   "poolCoverage": [
     {
@@ -113960,30 +115501,30 @@
     {
       "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:avoir",
       "mode": "production",
-      "status": "insufficient_coverage",
-      "initialItems": 0,
-      "learningItems": 0
+      "status": "allocated",
+      "initialItems": 7,
+      "learningItems": 7
     },
     {
       "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:etre",
       "mode": "production",
-      "status": "insufficient_coverage",
-      "initialItems": 0,
-      "learningItems": 0
+      "status": "allocated",
+      "initialItems": 7,
+      "learningItems": 7
     },
     {
       "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
       "mode": "production",
-      "status": "insufficient_coverage",
-      "initialItems": 0,
-      "learningItems": 0
+      "status": "allocated",
+      "initialItems": 14,
+      "learningItems": 14
     },
     {
       "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:pronominal",
       "mode": "production",
-      "status": "insufficient_coverage",
-      "initialItems": 0,
-      "learningItems": 0
+      "status": "allocated",
+      "initialItems": 7,
+      "learningItems": 7
     },
     {
       "skillId": "former_participe_passe::writing-controlled-production::construction:er",
@@ -117825,6 +119366,93 @@
         "v3-tense-recognition:auxiliary-form-12",
         "v3-tense-recognition:auxiliary-form-2",
         "v3-tense-recognition:auxiliary-form-3"
+      ],
+      "estimatedMinutes": 1
+    },
+    {
+      "id": "3ac1fe5b-6b0e-5b4b-994c-5f4b56fc8c6d",
+      "nodeKey": "choisir_auxiliaire_compose",
+      "facetKey": "choisir_auxiliaire_compose::construction:avoir",
+      "mode": "production",
+      "kind": "independent_check",
+      "status": "draft",
+      "titleFr": "Choisir l'auxiliaire d'un temps composé — Choisir avoir",
+      "href": "/student/diagnostic",
+      "probeIds": [
+        "v3-auxiliary-choice:avoir-1",
+        "v3-auxiliary-choice:avoir-10",
+        "v3-auxiliary-choice:avoir-11",
+        "v3-auxiliary-choice:avoir-12",
+        "v3-auxiliary-choice:avoir-13",
+        "v3-auxiliary-choice:avoir-14",
+        "v3-auxiliary-choice:avoir-2"
+      ],
+      "estimatedMinutes": 1
+    },
+    {
+      "id": "40a26753-3a9d-5c65-9322-35e7b983b0c4",
+      "nodeKey": "choisir_auxiliaire_compose",
+      "facetKey": "choisir_auxiliaire_compose::construction:etre",
+      "mode": "production",
+      "kind": "independent_check",
+      "status": "draft",
+      "titleFr": "Choisir l'auxiliaire d'un temps composé — Choisir être",
+      "href": "/student/diagnostic",
+      "probeIds": [
+        "v3-auxiliary-choice:etre-1",
+        "v3-auxiliary-choice:etre-10",
+        "v3-auxiliary-choice:etre-11",
+        "v3-auxiliary-choice:etre-12",
+        "v3-auxiliary-choice:etre-13",
+        "v3-auxiliary-choice:etre-14",
+        "v3-auxiliary-choice:etre-2"
+      ],
+      "estimatedMinutes": 1
+    },
+    {
+      "id": "e8d047b6-238c-5c9d-9781-01231e9b580a",
+      "nodeKey": "choisir_auxiliaire_compose",
+      "facetKey": "choisir_auxiliaire_compose::construction:transitivity",
+      "mode": "production",
+      "kind": "independent_check",
+      "status": "draft",
+      "titleFr": "Choisir l'auxiliaire d'un temps composé — Verbe changeant d’auxiliaire selon son emploi",
+      "href": "/student/diagnostic",
+      "probeIds": [
+        "v3-auxiliary-choice:transitivity-1",
+        "v3-auxiliary-choice:transitivity-10",
+        "v3-auxiliary-choice:transitivity-13",
+        "v3-auxiliary-choice:transitivity-14",
+        "v3-auxiliary-choice:transitivity-17",
+        "v3-auxiliary-choice:transitivity-18",
+        "v3-auxiliary-choice:transitivity-20",
+        "v3-auxiliary-choice:transitivity-21",
+        "v3-auxiliary-choice:transitivity-24",
+        "v3-auxiliary-choice:transitivity-25",
+        "v3-auxiliary-choice:transitivity-28",
+        "v3-auxiliary-choice:transitivity-3",
+        "v3-auxiliary-choice:transitivity-6",
+        "v3-auxiliary-choice:transitivity-7"
+      ],
+      "estimatedMinutes": 1
+    },
+    {
+      "id": "1a869d4e-f928-50de-9261-70e7b97740c5",
+      "nodeKey": "choisir_auxiliaire_compose",
+      "facetKey": "choisir_auxiliaire_compose::construction:pronominal",
+      "mode": "production",
+      "kind": "independent_check",
+      "status": "draft",
+      "titleFr": "Choisir l'auxiliaire d'un temps composé — Verbe pronominal",
+      "href": "/student/diagnostic",
+      "probeIds": [
+        "v3-auxiliary-choice:pronominal-1",
+        "v3-auxiliary-choice:pronominal-10",
+        "v3-auxiliary-choice:pronominal-11",
+        "v3-auxiliary-choice:pronominal-12",
+        "v3-auxiliary-choice:pronominal-13",
+        "v3-auxiliary-choice:pronominal-14",
+        "v3-auxiliary-choice:pronominal-2"
       ],
       "estimatedMinutes": 1
     },
@@ -123144,6 +124772,304 @@
     }
   ],
   "teachingContent": [
+    {
+      "id": "french-v3-teaching:auxiliary-choice:avoir",
+      "nodeKey": "choisir_auxiliaire_compose",
+      "facetKey": "choisir_auxiliaire_compose::construction:avoir",
+      "mode": "production",
+      "status": "published_pending_review",
+      "titleFr": "Choisir avoir pour construire le passé composé",
+      "learnerQuestionFr": "Pourquoi écrit-on « elle a couru » et non « elle est couru » ?",
+      "steps": [
+        {
+          "exampleFr": "Elle court. → Elle a couru.",
+          "explanationFr": "Courir utilise avoir pour former le passé composé. A, la forme d’avoir qui va avec elle, accompagne couru. Cet auxiliaire est le verbe qui aide à construire le temps composé."
+        },
+        {
+          "exampleFr": "nous avons marché\nvous avez nagé",
+          "explanationFr": "Marcher et nager utilisent aussi avoir, même s’ils décrivent un déplacement. Le sens de mouvement ne suffit pas pour choisir être."
+        },
+        {
+          "exampleFr": "tu as chanté\nelles ont chanté",
+          "explanationFr": "Une fois avoir choisi, prends la forme qui correspond au sujet : tu as, elles ont. Le participe chanté est déjà donné dans ces exercices."
+        }
+      ],
+      "takeawayFr": "Pour ces verbes, choisis avoir, puis sa forme au présent adaptée au sujet.",
+      "boundaryFr": "Beaucoup de verbes utilisent avoir, mais certains utilisent être. D’autres changent d’auxiliaire selon leur construction. Ces cas ont leurs propres exercices.",
+      "practice": [
+        {
+          "id": "auxiliary-choice-avoir-guided-1",
+          "promptFr": "Tu ___ joué aux échecs.\n\nComplète au passé composé. Écris seulement l’auxiliaire conjugué ; le participe est déjà correct.",
+          "answerFr": "as",
+          "hintFr": "Pour ces verbes, choisis avoir, puis sa forme au présent adaptée au sujet.",
+          "explanationFr": "Tu as joué aux échecs. Pour ces verbes, choisis avoir, puis sa forme au présent adaptée au sujet."
+        },
+        {
+          "id": "auxiliary-choice-avoir-guided-2",
+          "promptFr": "Nous ___ voyagé en car.\n\nComplète au passé composé. Écris seulement l’auxiliaire conjugué ; le participe est déjà correct.",
+          "answerFr": "avons",
+          "hintFr": "Pour ces verbes, choisis avoir, puis sa forme au présent adaptée au sujet.",
+          "explanationFr": "Nous avons voyagé en car. Pour ces verbes, choisis avoir, puis sa forme au présent adaptée au sujet."
+        },
+        {
+          "id": "auxiliary-choice-avoir-guided-3",
+          "promptFr": "Elle ___ souri sur la photo.\n\nComplète au passé composé. Écris seulement l’auxiliaire conjugué ; le participe est déjà correct.",
+          "answerFr": "a",
+          "hintFr": "Pour ces verbes, choisis avoir, puis sa forme au présent adaptée au sujet.",
+          "explanationFr": "Elle a souri sur la photo. Pour ces verbes, choisis avoir, puis sa forme au présent adaptée au sujet."
+        },
+        {
+          "id": "auxiliary-choice-avoir-guided-4",
+          "promptFr": "Vous ___ chanté en classe.\n\nComplète au passé composé. Écris seulement l’auxiliaire conjugué ; le participe est déjà correct.",
+          "answerFr": "avez",
+          "hintFr": "Pour ces verbes, choisis avoir, puis sa forme au présent adaptée au sujet.",
+          "explanationFr": "Vous avez chanté en classe. Pour ces verbes, choisis avoir, puis sa forme au présent adaptée au sujet."
+        }
+      ],
+      "materialExposure": {
+        "sentences": [
+          "Elle court.",
+          "Elle a couru.",
+          "nous avons marché",
+          "vous avez nagé",
+          "tu as chanté",
+          "elles ont chanté",
+          "Tu ___ joué aux échecs.",
+          "Tu as joué aux échecs.",
+          "Nous ___ voyagé en car.",
+          "Nous avons voyagé en car.",
+          "Elle ___ souri sur la photo.",
+          "Elle a souri sur la photo.",
+          "Vous ___ chanté en classe.",
+          "Vous avez chanté en classe."
+        ]
+      },
+      "assessmentExposureIds": []
+    },
+    {
+      "id": "french-v3-teaching:auxiliary-choice:etre",
+      "nodeKey": "choisir_auxiliaire_compose",
+      "facetKey": "choisir_auxiliaire_compose::construction:etre",
+      "mode": "production",
+      "status": "published_pending_review",
+      "titleFr": "Choisir être avec arriver, partir et d’autres verbes",
+      "learnerQuestionFr": "Que remarques-tu dans « elle est arrivée » ?",
+      "steps": [
+        {
+          "exampleFr": "Elle arrive. → Elle est arrivée.",
+          "explanationFr": "Arriver utilise être au passé composé : est accompagne arrivée. On ne choisit pas avoir pour cette construction."
+        },
+        {
+          "exampleFr": "il est parti\nnous sommes venus\nelles sont restées",
+          "explanationFr": "Partir, venir et rester utilisent aussi être. Repère le verbe puis la forme d’être qui va avec le sujet : il est, nous sommes, elles sont."
+        },
+        {
+          "exampleFr": "elle est née\nil est devenu adulte",
+          "explanationFr": "Être ne concerne pas seulement les déplacements. Naître et devenir l’utilisent aussi. Il faut apprendre le fonctionnement du verbe, pas une règle « mouvement = être »."
+        }
+      ],
+      "takeawayFr": "Avec les verbes de cette famille, emploie être au présent pour former le passé composé.",
+      "boundaryFr": "Les participes et leurs accords sont fournis. Choisir l’auxiliaire ne démontre pas encore que tu sais écrire ces accords. Certains autres verbes changent d’auxiliaire selon la construction.",
+      "practice": [
+        {
+          "id": "auxiliary-choice-etre-guided-1",
+          "promptFr": "Tu ___ parti pour Lyon.\n\nComplète au passé composé. Écris seulement l’auxiliaire conjugué ; le participe est déjà correct.",
+          "answerFr": "es",
+          "hintFr": "Avec les verbes de cette famille, emploie être au présent pour former le passé composé.",
+          "explanationFr": "Tu es parti pour Lyon. Avec les verbes de cette famille, emploie être au présent pour former le passé composé."
+        },
+        {
+          "id": "auxiliary-choice-etre-guided-2",
+          "promptFr": "Nous ___ arrivés au musée.\n\nComplète au passé composé. Écris seulement l’auxiliaire conjugué ; le participe est déjà correct.",
+          "answerFr": "sommes",
+          "hintFr": "Avec les verbes de cette famille, emploie être au présent pour former le passé composé.",
+          "explanationFr": "Nous sommes arrivés au musée. Avec les verbes de cette famille, emploie être au présent pour former le passé composé."
+        },
+        {
+          "id": "auxiliary-choice-etre-guided-3",
+          "promptFr": "Elle ___ restée au chaud.\n\nComplète au passé composé. Écris seulement l’auxiliaire conjugué ; le participe est déjà correct.",
+          "answerFr": "est",
+          "hintFr": "Avec les verbes de cette famille, emploie être au présent pour former le passé composé.",
+          "explanationFr": "Elle est restée au chaud. Avec les verbes de cette famille, emploie être au présent pour former le passé composé."
+        },
+        {
+          "id": "auxiliary-choice-etre-guided-4",
+          "promptFr": "Vous ___ devenus amis.\n\nComplète au passé composé. Écris seulement l’auxiliaire conjugué ; le participe est déjà correct.",
+          "answerFr": "êtes",
+          "hintFr": "Avec les verbes de cette famille, emploie être au présent pour former le passé composé.",
+          "explanationFr": "Vous êtes devenus amis. Avec les verbes de cette famille, emploie être au présent pour former le passé composé."
+        }
+      ],
+      "materialExposure": {
+        "sentences": [
+          "Elle arrive.",
+          "Elle est arrivée.",
+          "il est parti",
+          "nous sommes venus",
+          "elles sont restées",
+          "elle est née",
+          "il est devenu adulte",
+          "Tu ___ parti pour Lyon.",
+          "Tu es parti pour Lyon.",
+          "Nous ___ arrivés au musée.",
+          "Nous sommes arrivés au musée.",
+          "Elle ___ restée au chaud.",
+          "Elle est restée au chaud.",
+          "Vous ___ devenus amis.",
+          "Vous êtes devenus amis."
+        ]
+      },
+      "assessmentExposureIds": []
+    },
+    {
+      "id": "french-v3-teaching:auxiliary-choice:transitivity",
+      "nodeKey": "choisir_auxiliaire_compose",
+      "facetKey": "choisir_auxiliaire_compose::construction:transitivity",
+      "mode": "production",
+      "status": "published_pending_review",
+      "titleFr": "Choisir selon la construction : sortir ou sortir quelque chose",
+      "learnerQuestionFr": "Pourquoi « elle est sortie » mais « elle a sorti son vélo » ?",
+      "steps": [
+        {
+          "exampleFr": "Elle est sortie de la maison.\nElle a sorti son vélo.",
+          "explanationFr": "Dans la première phrase, elle sort elle-même. Dans la seconde, elle sort quelque chose : son vélo. Ce groupe répond directement à sortir quoi ; c’est un complément direct. Avec sortir, cette différence fait changer l’auxiliaire."
+        },
+        {
+          "exampleFr": "il est monté au grenier\nil a monté une malle",
+          "explanationFr": "Monter fonctionne ici de la même façon. Au grenier indique un lieu. Une malle désigne ce qu’il monte : avec ce complément direct, on utilise avoir."
+        },
+        {
+          "exampleFr": "elle est descendue de la terrasse\nelle a descendu l’échelle",
+          "explanationFr": "Descendre peut aussi se construire des deux façons. Observe la phrase entière, et pas seulement le verbe ou son idée de déplacement."
+        }
+      ],
+      "takeawayFr": "Pour les verbes étudiés ici, cherche si le verbe possède un complément direct : cela peut faire passer d’être à avoir.",
+      "boundaryFr": "Ce changement concerne certains verbes, dont sortir, monter, descendre, rentrer et retourner. Il ne s’applique pas à tous les verbes : courir garde avoir même sans complément direct. Les accords sont déjà fournis.",
+      "practice": [
+        {
+          "id": "auxiliary-choice-transitivity-guided-1",
+          "promptFr": "Elle ___ descendu les escaliers.\n\nComplète au passé composé. Écris seulement l’auxiliaire conjugué ; le participe est déjà correct.",
+          "answerFr": "a",
+          "hintFr": "Pour les verbes étudiés ici, cherche si le verbe possède un complément direct : cela peut faire passer d’être à avoir.",
+          "explanationFr": "Elle a descendu les escaliers. Pour les verbes étudiés ici, cherche si le verbe possède un complément direct : cela peut faire passer d’être à avoir."
+        },
+        {
+          "id": "auxiliary-choice-transitivity-guided-2",
+          "promptFr": "Elle ___ descendue du car.\n\nComplète au passé composé. Écris seulement l’auxiliaire conjugué ; le participe est déjà correct.",
+          "answerFr": "est",
+          "hintFr": "Pour les verbes étudiés ici, cherche si le verbe possède un complément direct : cela peut faire passer d’être à avoir.",
+          "explanationFr": "Elle est descendue du car. Pour les verbes étudiés ici, cherche si le verbe possède un complément direct : cela peut faire passer d’être à avoir."
+        },
+        {
+          "id": "auxiliary-choice-transitivity-guided-3",
+          "promptFr": "Nous ___ sorti le vélo du garage.\n\nComplète au passé composé. Écris seulement l’auxiliaire conjugué ; le participe est déjà correct.",
+          "answerFr": "avons",
+          "hintFr": "Pour les verbes étudiés ici, cherche si le verbe possède un complément direct : cela peut faire passer d’être à avoir.",
+          "explanationFr": "Nous avons sorti le vélo du garage. Pour les verbes étudiés ici, cherche si le verbe possède un complément direct : cela peut faire passer d’être à avoir."
+        },
+        {
+          "id": "auxiliary-choice-transitivity-guided-4",
+          "promptFr": "Nous ___ sortis du théâtre.\n\nComplète au passé composé. Écris seulement l’auxiliaire conjugué ; le participe est déjà correct.",
+          "answerFr": "sommes",
+          "hintFr": "Pour les verbes étudiés ici, cherche si le verbe possède un complément direct : cela peut faire passer d’être à avoir.",
+          "explanationFr": "Nous sommes sortis du théâtre. Pour les verbes étudiés ici, cherche si le verbe possède un complément direct : cela peut faire passer d’être à avoir."
+        }
+      ],
+      "materialExposure": {
+        "sentences": [
+          "Elle est sortie de la maison.",
+          "Elle a sorti son vélo.",
+          "il est monté au grenier",
+          "il a monté une malle",
+          "elle est descendue de la terrasse",
+          "elle a descendu l’échelle",
+          "Elle ___ descendu les escaliers.",
+          "Elle a descendu les escaliers.",
+          "Elle ___ descendue du car.",
+          "Elle est descendue du car.",
+          "Nous ___ sorti le vélo du garage.",
+          "Nous avons sorti le vélo du garage.",
+          "Nous ___ sortis du théâtre.",
+          "Nous sommes sortis du théâtre."
+        ]
+      },
+      "assessmentExposureIds": []
+    },
+    {
+      "id": "french-v3-teaching:auxiliary-choice:pronominal",
+      "nodeKey": "choisir_auxiliaire_compose",
+      "facetKey": "choisir_auxiliaire_compose::construction:pronominal",
+      "mode": "production",
+      "status": "published_pending_review",
+      "titleFr": "Choisir être avec un verbe pronominal",
+      "learnerQuestionFr": "Quel petit mot remarques-tu dans « elle s’est préparée » ?",
+      "steps": [
+        {
+          "exampleFr": "Elle prépare son sac.\nElle se prépare. → Elle s’est préparée.",
+          "explanationFr": "Dans se prépare, le petit mot se accompagne le verbe et renvoie au même sujet, elle. On appelle cette construction un verbe pronominal. Au passé composé, elle utilise être."
+        },
+        {
+          "exampleFr": "tu t’es promené\nnous nous sommes promenés",
+          "explanationFr": "Le petit pronom change avec le sujet : tu te, nous nous. Te devient t’ devant es. L’auxiliaire reste être, conjugué avec le sujet."
+        },
+        {
+          "exampleFr": "elles se sont parlé\nelle s’est lavé les mains",
+          "explanationFr": "Être reste l’auxiliaire même quand le participe ne prend pas la marque du sujet. Choisir être et accorder le participe sont deux décisions différentes."
+        }
+      ],
+      "takeawayFr": "Avec un verbe pronominal au passé composé, choisis être et conjugue-le avec le sujet.",
+      "boundaryFr": "Les accords des verbes pronominaux demandent une analyse supplémentaire. Les exercices donnent le participe correctement écrit et évaluent seulement le choix et la forme de l’auxiliaire.",
+      "practice": [
+        {
+          "id": "auxiliary-choice-pronominal-guided-1",
+          "promptFr": "Tu t’___ réveillé avant moi.\n\nComplète au passé composé. Écris seulement l’auxiliaire conjugué ; le participe est déjà correct.",
+          "answerFr": "es",
+          "hintFr": "Avec un verbe pronominal au passé composé, choisis être et conjugue-le avec le sujet.",
+          "explanationFr": "Tu t’es réveillé avant moi. Avec un verbe pronominal au passé composé, choisis être et conjugue-le avec le sujet."
+        },
+        {
+          "id": "auxiliary-choice-pronominal-guided-2",
+          "promptFr": "Nous nous ___ posé une question.\n\nComplète au passé composé. Écris seulement l’auxiliaire conjugué ; le participe est déjà correct.",
+          "answerFr": "sommes",
+          "hintFr": "Avec un verbe pronominal au passé composé, choisis être et conjugue-le avec le sujet.",
+          "explanationFr": "Nous nous sommes posé une question. Avec un verbe pronominal au passé composé, choisis être et conjugue-le avec le sujet."
+        },
+        {
+          "id": "auxiliary-choice-pronominal-guided-3",
+          "promptFr": "Elle s’___ habillée rapidement.\n\nComplète au passé composé. Écris seulement l’auxiliaire conjugué ; le participe est déjà correct.",
+          "answerFr": "est",
+          "hintFr": "Avec un verbe pronominal au passé composé, choisis être et conjugue-le avec le sujet.",
+          "explanationFr": "Elle s’est habillée rapidement. Avec un verbe pronominal au passé composé, choisis être et conjugue-le avec le sujet."
+        },
+        {
+          "id": "auxiliary-choice-pronominal-guided-4",
+          "promptFr": "Vous vous ___ souri en arrivant.\n\nComplète au passé composé. Écris seulement l’auxiliaire conjugué ; le participe est déjà correct.",
+          "answerFr": "êtes",
+          "hintFr": "Avec un verbe pronominal au passé composé, choisis être et conjugue-le avec le sujet.",
+          "explanationFr": "Vous vous êtes souri en arrivant. Avec un verbe pronominal au passé composé, choisis être et conjugue-le avec le sujet."
+        }
+      ],
+      "materialExposure": {
+        "sentences": [
+          "Elle prépare son sac.",
+          "Elle se prépare.",
+          "Elle s’est préparée.",
+          "tu t’es promené",
+          "nous nous sommes promenés",
+          "elles se sont parlé",
+          "elle s’est lavé les mains",
+          "Tu t’___ réveillé avant moi.",
+          "Tu t’es réveillé avant moi.",
+          "Nous nous ___ posé une question.",
+          "Nous nous sommes posé une question.",
+          "Elle s’___ habillée rapidement.",
+          "Elle s’est habillée rapidement.",
+          "Vous vous ___ souri en arrivant.",
+          "Vous vous êtes souri en arrivant."
+        ]
+      },
+      "assessmentExposureIds": []
+    },
     {
       "id": "french-v3-teaching:auxiliary:recognition",
       "nodeKey": "reconnaitre_auxiliaire",
@@ -142044,6 +143970,102 @@
   ],
   "teachingBindings": [
     {
+      "id": "ca01786e-6c4f-5b74-a432-4a2c14cd40fe",
+      "nodeKey": "choisir_auxiliaire_compose",
+      "facetKey": "choisir_auxiliaire_compose::construction:avoir",
+      "mode": "production",
+      "kind": "instruction",
+      "status": "published",
+      "titleFr": "Choisir avoir pour construire le passé composé",
+      "href": "/student/diagnostic",
+      "contentId": "french-v3-teaching:auxiliary-choice:avoir",
+      "estimatedMinutes": 4
+    },
+    {
+      "id": "52b01c81-3ad4-5f5d-ae24-3f6e51ada33e",
+      "nodeKey": "choisir_auxiliaire_compose",
+      "facetKey": "choisir_auxiliaire_compose::construction:avoir",
+      "mode": "production",
+      "kind": "practice",
+      "status": "published",
+      "titleFr": "Choisir avoir pour construire le passé composé",
+      "href": "/student/diagnostic",
+      "contentId": "french-v3-teaching:auxiliary-choice:avoir",
+      "estimatedMinutes": 6
+    },
+    {
+      "id": "600d8b9d-c005-556e-95dc-5a5bb2be32ee",
+      "nodeKey": "choisir_auxiliaire_compose",
+      "facetKey": "choisir_auxiliaire_compose::construction:etre",
+      "mode": "production",
+      "kind": "instruction",
+      "status": "published",
+      "titleFr": "Choisir être avec arriver, partir et d’autres verbes",
+      "href": "/student/diagnostic",
+      "contentId": "french-v3-teaching:auxiliary-choice:etre",
+      "estimatedMinutes": 4
+    },
+    {
+      "id": "aa554321-fbaf-5606-ab5e-e74d8084b8c1",
+      "nodeKey": "choisir_auxiliaire_compose",
+      "facetKey": "choisir_auxiliaire_compose::construction:etre",
+      "mode": "production",
+      "kind": "practice",
+      "status": "published",
+      "titleFr": "Choisir être avec arriver, partir et d’autres verbes",
+      "href": "/student/diagnostic",
+      "contentId": "french-v3-teaching:auxiliary-choice:etre",
+      "estimatedMinutes": 6
+    },
+    {
+      "id": "f18bec80-6314-5f57-82df-f09577412652",
+      "nodeKey": "choisir_auxiliaire_compose",
+      "facetKey": "choisir_auxiliaire_compose::construction:transitivity",
+      "mode": "production",
+      "kind": "instruction",
+      "status": "published",
+      "titleFr": "Choisir selon la construction : sortir ou sortir quelque chose",
+      "href": "/student/diagnostic",
+      "contentId": "french-v3-teaching:auxiliary-choice:transitivity",
+      "estimatedMinutes": 4
+    },
+    {
+      "id": "ae02be56-dc5f-5325-84b1-e115433188fa",
+      "nodeKey": "choisir_auxiliaire_compose",
+      "facetKey": "choisir_auxiliaire_compose::construction:transitivity",
+      "mode": "production",
+      "kind": "practice",
+      "status": "published",
+      "titleFr": "Choisir selon la construction : sortir ou sortir quelque chose",
+      "href": "/student/diagnostic",
+      "contentId": "french-v3-teaching:auxiliary-choice:transitivity",
+      "estimatedMinutes": 6
+    },
+    {
+      "id": "9b2a606c-62d9-5a7f-80a7-9c9ba84f4aa6",
+      "nodeKey": "choisir_auxiliaire_compose",
+      "facetKey": "choisir_auxiliaire_compose::construction:pronominal",
+      "mode": "production",
+      "kind": "instruction",
+      "status": "published",
+      "titleFr": "Choisir être avec un verbe pronominal",
+      "href": "/student/diagnostic",
+      "contentId": "french-v3-teaching:auxiliary-choice:pronominal",
+      "estimatedMinutes": 4
+    },
+    {
+      "id": "195fe20c-153e-58e4-a89b-1ba0af1b692e",
+      "nodeKey": "choisir_auxiliaire_compose",
+      "facetKey": "choisir_auxiliaire_compose::construction:pronominal",
+      "mode": "production",
+      "kind": "practice",
+      "status": "published",
+      "titleFr": "Choisir être avec un verbe pronominal",
+      "href": "/student/diagnostic",
+      "contentId": "french-v3-teaching:auxiliary-choice:pronominal",
+      "estimatedMinutes": 6
+    },
+    {
       "id": "5b7ae0c7-5728-5cfe-af94-3ca0f7eabce4",
       "nodeKey": "reconnaitre_auxiliaire",
       "mode": "recognition",
@@ -144848,6 +146870,34 @@
   ],
   "teachingReadiness": [
     {
+      "lessonId": "french-v3-teaching:auxiliary-choice:avoir",
+      "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:avoir",
+      "poolsAllocated": true,
+      "remainingCheckQuestions": 7,
+      "freshCheckAvailable": true
+    },
+    {
+      "lessonId": "french-v3-teaching:auxiliary-choice:etre",
+      "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:etre",
+      "poolsAllocated": true,
+      "remainingCheckQuestions": 7,
+      "freshCheckAvailable": true
+    },
+    {
+      "lessonId": "french-v3-teaching:auxiliary-choice:transitivity",
+      "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+      "poolsAllocated": true,
+      "remainingCheckQuestions": 14,
+      "freshCheckAvailable": true
+    },
+    {
+      "lessonId": "french-v3-teaching:auxiliary-choice:pronominal",
+      "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:pronominal",
+      "poolsAllocated": true,
+      "remainingCheckQuestions": 7,
+      "freshCheckAvailable": true
+    },
+    {
       "lessonId": "french-v3-teaching:auxiliary:recognition",
       "skillId": "reconnaitre_auxiliaire::reading-receptive",
       "poolsAllocated": true,
@@ -145730,5 +147780,5 @@
     "Incomplete target pools remain visible; release scope and fresh post-teaching check capacity still need verification",
     "Structurally rejected content remains ineligible; semantic review continues in parallel"
   ],
-  "checksum": "sha256:8d2aebe9b7948ffd6d5bf3ab7dae8ec2ee95b4f2afb004c0ff91d3764780be89"
+  "checksum": "sha256:9f90eb1f6d1e4967fa5721a20c98a422edb823b679359ab2655cb15c8a3db05d"
 }

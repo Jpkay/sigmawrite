@@ -2,15 +2,534 @@
   "version": "french-teaching-review-catalogue-v1",
   "status": "draft_requires_review",
   "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
-  "facetChecksum": "sha256:71d060c34e8fd204b3cf57e5126a2e30585dc72c463b0506f22aa602eb913a98",
+  "facetChecksum": "sha256:c1587bbcc3d7b86759a9aeee784f312a48e3d2706edac48ad2d1681957b44f73",
   "assessmentSourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
   "summary": {
-    "lessons": 125,
-    "guidedExercises": 700,
-    "targets": 125,
+    "lessons": 129,
+    "guidedExercises": 716,
+    "targets": 129,
     "missingExposureAnnotations": []
   },
   "rows": [
+    {
+      "lessonId": "french-v3-teaching:auxiliary-choice:avoir",
+      "contentChecksum": "sha256:a8b2b2d25650a9105b2d49cc67fb9bbb038a9bc3f10860d595b04616216953c1",
+      "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:avoir",
+      "nodeKey": "choisir_auxiliaire_compose",
+      "facetKey": "choisir_auxiliaire_compose::construction:avoir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "reconnaitre_auxiliaire::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:2ef1cfec6f77c49ee6efaa14436b1614084d91e72a0a4f3b6da6c3a5a185bb69",
+        "sentence:sha256:4c940392aa0314830b86a328a7f03328e137a22423fbe6e245c7c839610b76a9",
+        "sentence:sha256:561798d757b2e24596712bb8893085e258d55424d7a1bb67a619013b2e8a41ce",
+        "sentence:sha256:5c705b5709fbe7025dbd7ef2ed65c8294450a4a188c6b6ead3e4594fc49012e8",
+        "sentence:sha256:7332b9e29067eaefbd6932f9139072346de254c9f5c3064b756e54ada54ad480",
+        "sentence:sha256:95ca5e1f424879744623119db281136eb08fceff3a32413bcdc22d76fb04b074",
+        "sentence:sha256:a73649b70f9bf8827ee9168c85448acd82c2df81a5a1416b07061109aa6e2e7b",
+        "sentence:sha256:ac3f2c7514e60d03761f42c779e8ddcfa49a238586f6b097b0e3eac03eba8a5d",
+        "sentence:sha256:b0cc6038320b517aba498082d748d4ba55278f3d6fe22d6dcb8c7eef75f2b4b7",
+        "sentence:sha256:b528b10a2c64600fa25b48cbb5a74794afca9978c1d2cab0a086ab87ddbab7f7",
+        "sentence:sha256:c2977e2fffa479cfaffa45ffdd8c6f519d5b7b97574e44569753c9aeda476c2c",
+        "sentence:sha256:d0b667e0a9055ab0f47b56b79c0a7391e2dc17b7412d80111096b0311e3b2ea8",
+        "sentence:sha256:e6a954b59cc2ecfebc546e770ba8c051936a93b909926387adb2e536ff35825a",
+        "sentence:sha256:f236f058f47f63aec7b89dec5d289ab5004f63fb1fd5d0b695ce209683a67250"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:auxiliary-choice:avoir",
+        "nodeKey": "choisir_auxiliaire_compose",
+        "facetKey": "choisir_auxiliaire_compose::construction:avoir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Choisir avoir pour construire le passé composé",
+        "learnerQuestionFr": "Pourquoi écrit-on « elle a couru » et non « elle est couru » ?",
+        "steps": [
+          {
+            "exampleFr": "Elle court. → Elle a couru.",
+            "explanationFr": "Courir utilise avoir pour former le passé composé. A, la forme d’avoir qui va avec elle, accompagne couru. Cet auxiliaire est le verbe qui aide à construire le temps composé."
+          },
+          {
+            "exampleFr": "nous avons marché\nvous avez nagé",
+            "explanationFr": "Marcher et nager utilisent aussi avoir, même s’ils décrivent un déplacement. Le sens de mouvement ne suffit pas pour choisir être."
+          },
+          {
+            "exampleFr": "tu as chanté\nelles ont chanté",
+            "explanationFr": "Une fois avoir choisi, prends la forme qui correspond au sujet : tu as, elles ont. Le participe chanté est déjà donné dans ces exercices."
+          }
+        ],
+        "takeawayFr": "Pour ces verbes, choisis avoir, puis sa forme au présent adaptée au sujet.",
+        "boundaryFr": "Beaucoup de verbes utilisent avoir, mais certains utilisent être. D’autres changent d’auxiliaire selon leur construction. Ces cas ont leurs propres exercices.",
+        "practice": [
+          {
+            "id": "auxiliary-choice-avoir-guided-1",
+            "promptFr": "Tu ___ joué aux échecs.\n\nComplète au passé composé. Écris seulement l’auxiliaire conjugué ; le participe est déjà correct.",
+            "answerFr": "as",
+            "hintFr": "Pour ces verbes, choisis avoir, puis sa forme au présent adaptée au sujet.",
+            "explanationFr": "Tu as joué aux échecs. Pour ces verbes, choisis avoir, puis sa forme au présent adaptée au sujet."
+          },
+          {
+            "id": "auxiliary-choice-avoir-guided-2",
+            "promptFr": "Nous ___ voyagé en car.\n\nComplète au passé composé. Écris seulement l’auxiliaire conjugué ; le participe est déjà correct.",
+            "answerFr": "avons",
+            "hintFr": "Pour ces verbes, choisis avoir, puis sa forme au présent adaptée au sujet.",
+            "explanationFr": "Nous avons voyagé en car. Pour ces verbes, choisis avoir, puis sa forme au présent adaptée au sujet."
+          },
+          {
+            "id": "auxiliary-choice-avoir-guided-3",
+            "promptFr": "Elle ___ souri sur la photo.\n\nComplète au passé composé. Écris seulement l’auxiliaire conjugué ; le participe est déjà correct.",
+            "answerFr": "a",
+            "hintFr": "Pour ces verbes, choisis avoir, puis sa forme au présent adaptée au sujet.",
+            "explanationFr": "Elle a souri sur la photo. Pour ces verbes, choisis avoir, puis sa forme au présent adaptée au sujet."
+          },
+          {
+            "id": "auxiliary-choice-avoir-guided-4",
+            "promptFr": "Vous ___ chanté en classe.\n\nComplète au passé composé. Écris seulement l’auxiliaire conjugué ; le participe est déjà correct.",
+            "answerFr": "avez",
+            "hintFr": "Pour ces verbes, choisis avoir, puis sa forme au présent adaptée au sujet.",
+            "explanationFr": "Vous avez chanté en classe. Pour ces verbes, choisis avoir, puis sa forme au présent adaptée au sujet."
+          }
+        ],
+        "materialExposure": {
+          "sentences": [
+            "Elle court.",
+            "Elle a couru.",
+            "nous avons marché",
+            "vous avez nagé",
+            "tu as chanté",
+            "elles ont chanté",
+            "Tu ___ joué aux échecs.",
+            "Tu as joué aux échecs.",
+            "Nous ___ voyagé en car.",
+            "Nous avons voyagé en car.",
+            "Elle ___ souri sur la photo.",
+            "Elle a souri sur la photo.",
+            "Vous ___ chanté en classe.",
+            "Vous avez chanté en classe."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:auxiliary-choice:etre",
+      "contentChecksum": "sha256:1d4b7ae1c4c3d0cf741aaaef3150811b852d5ba8f06a6d24e0412974f51acd04",
+      "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:etre",
+      "nodeKey": "choisir_auxiliaire_compose",
+      "facetKey": "choisir_auxiliaire_compose::construction:etre",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "reconnaitre_auxiliaire::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:0620c89ac9590801b79ef168b1a13478816cc5dab4ed6c2e2b0be0f3f8914b9e",
+        "sentence:sha256:18649ebd96ab3413ab7df398197adad113f825838b7cc25482f83f656b7940aa",
+        "sentence:sha256:32ceffae736d8ab2f896fea92a7d7fa26f59c64626a18442bf160a0619295728",
+        "sentence:sha256:534d96945ab3e43959a14a6f4320c2eb585e446ab2bca3016f164ed89865a4ba",
+        "sentence:sha256:7c2cdc75971368078217415e7c8239ccc0652b7ba693b3fdab30bca14a426fcc",
+        "sentence:sha256:83c4d4ebd968894b63be1b08b11af797cb62db1460fbca54cb4dbd37c1ee387b",
+        "sentence:sha256:8e1fafce2d45a2337fd02981e81362cce74d90ba30aa1f23a0dd526a7a6b080f",
+        "sentence:sha256:a2b22b312d9d09d6044c3595b5bd118d7c30798dc5c3e23b2fec5a9925eb528f",
+        "sentence:sha256:a3c01829f9465f687a804caf413fe47ac4359a138bb7b66fc98cb17b02d9455d",
+        "sentence:sha256:b7756ce4f6a08a19edbc1e0e7e3d297669ef950a0bd80b2d9da4f66dd54e9bf6",
+        "sentence:sha256:bacd72e57d3f519a757529e0610ab86a3eb737e2fdd1c834d3d2c77cd2d17f16",
+        "sentence:sha256:c003dcf9f04649f64a2369a8dee9f87831c1c200c3255a49dfa9ec6c0bb37634",
+        "sentence:sha256:c8af6662fbc66340b74f0a2e4586b85b803b2350f96ed42e75526cd94877fe73",
+        "sentence:sha256:dbb84d2793ada68c5e9b9dbc602cf228503c11f6fc71846fec6eea6e83eedd44",
+        "sentence:sha256:f38cf262dfc7a0975ce1ea7b64268ed700398e689c7f4d5def46c88fed068f81"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:auxiliary-choice:etre",
+        "nodeKey": "choisir_auxiliaire_compose",
+        "facetKey": "choisir_auxiliaire_compose::construction:etre",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Choisir être avec arriver, partir et d’autres verbes",
+        "learnerQuestionFr": "Que remarques-tu dans « elle est arrivée » ?",
+        "steps": [
+          {
+            "exampleFr": "Elle arrive. → Elle est arrivée.",
+            "explanationFr": "Arriver utilise être au passé composé : est accompagne arrivée. On ne choisit pas avoir pour cette construction."
+          },
+          {
+            "exampleFr": "il est parti\nnous sommes venus\nelles sont restées",
+            "explanationFr": "Partir, venir et rester utilisent aussi être. Repère le verbe puis la forme d’être qui va avec le sujet : il est, nous sommes, elles sont."
+          },
+          {
+            "exampleFr": "elle est née\nil est devenu adulte",
+            "explanationFr": "Être ne concerne pas seulement les déplacements. Naître et devenir l’utilisent aussi. Il faut apprendre le fonctionnement du verbe, pas une règle « mouvement = être »."
+          }
+        ],
+        "takeawayFr": "Avec les verbes de cette famille, emploie être au présent pour former le passé composé.",
+        "boundaryFr": "Les participes et leurs accords sont fournis. Choisir l’auxiliaire ne démontre pas encore que tu sais écrire ces accords. Certains autres verbes changent d’auxiliaire selon la construction.",
+        "practice": [
+          {
+            "id": "auxiliary-choice-etre-guided-1",
+            "promptFr": "Tu ___ parti pour Lyon.\n\nComplète au passé composé. Écris seulement l’auxiliaire conjugué ; le participe est déjà correct.",
+            "answerFr": "es",
+            "hintFr": "Avec les verbes de cette famille, emploie être au présent pour former le passé composé.",
+            "explanationFr": "Tu es parti pour Lyon. Avec les verbes de cette famille, emploie être au présent pour former le passé composé."
+          },
+          {
+            "id": "auxiliary-choice-etre-guided-2",
+            "promptFr": "Nous ___ arrivés au musée.\n\nComplète au passé composé. Écris seulement l’auxiliaire conjugué ; le participe est déjà correct.",
+            "answerFr": "sommes",
+            "hintFr": "Avec les verbes de cette famille, emploie être au présent pour former le passé composé.",
+            "explanationFr": "Nous sommes arrivés au musée. Avec les verbes de cette famille, emploie être au présent pour former le passé composé."
+          },
+          {
+            "id": "auxiliary-choice-etre-guided-3",
+            "promptFr": "Elle ___ restée au chaud.\n\nComplète au passé composé. Écris seulement l’auxiliaire conjugué ; le participe est déjà correct.",
+            "answerFr": "est",
+            "hintFr": "Avec les verbes de cette famille, emploie être au présent pour former le passé composé.",
+            "explanationFr": "Elle est restée au chaud. Avec les verbes de cette famille, emploie être au présent pour former le passé composé."
+          },
+          {
+            "id": "auxiliary-choice-etre-guided-4",
+            "promptFr": "Vous ___ devenus amis.\n\nComplète au passé composé. Écris seulement l’auxiliaire conjugué ; le participe est déjà correct.",
+            "answerFr": "êtes",
+            "hintFr": "Avec les verbes de cette famille, emploie être au présent pour former le passé composé.",
+            "explanationFr": "Vous êtes devenus amis. Avec les verbes de cette famille, emploie être au présent pour former le passé composé."
+          }
+        ],
+        "materialExposure": {
+          "sentences": [
+            "Elle arrive.",
+            "Elle est arrivée.",
+            "il est parti",
+            "nous sommes venus",
+            "elles sont restées",
+            "elle est née",
+            "il est devenu adulte",
+            "Tu ___ parti pour Lyon.",
+            "Tu es parti pour Lyon.",
+            "Nous ___ arrivés au musée.",
+            "Nous sommes arrivés au musée.",
+            "Elle ___ restée au chaud.",
+            "Elle est restée au chaud.",
+            "Vous ___ devenus amis.",
+            "Vous êtes devenus amis."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:auxiliary-choice:transitivity",
+      "contentChecksum": "sha256:8a70786157bcd2c302e8635e6ec2af8ed95cd13f08de28f383053fe52c87af00",
+      "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity",
+      "nodeKey": "choisir_auxiliaire_compose",
+      "facetKey": "choisir_auxiliaire_compose::construction:transitivity",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "reconnaitre_auxiliaire::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": [
+          {
+            "feature": "direct-object-avoir",
+            "minimumItems": 2,
+            "minimumContexts": 2
+          },
+          {
+            "feature": "no-direct-object-etre",
+            "minimumItems": 2,
+            "minimumContexts": 2
+          }
+        ]
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:01c98d6086bd30f56868594d979e848df73f3c8066d0495bfed66c107227b85f",
+        "sentence:sha256:030379b12ea8c5231afaf548fec97965e8fa9dc733d483d7d1045695602f4cc7",
+        "sentence:sha256:0bbd5a734319fceb23c36e5d6fb6f4cb9753a3feb31807070ad853d941531203",
+        "sentence:sha256:12e93095066a9c45c295b69107657d0f3e2d8e9f824194d24285b11d3b2a2939",
+        "sentence:sha256:29345762e06ec8c4b0b856370b4863e0bbc1073cdf8058dd025dc076ae7511c9",
+        "sentence:sha256:4305cc3e45e3967c167a7e96e2a1e4d16c3a8480f66013cd6c3ea7618151b11f",
+        "sentence:sha256:471a4a41324e3e61c290303c92f7c4ac6d148f43ff6705ac48c1eb3899380fa5",
+        "sentence:sha256:8f3c0b3bf82b98bce8efe96e4042b963ccf49a0a3769863ed0e9d7ad06f1f6b9",
+        "sentence:sha256:94df690d0e360c871c4f2512c34b60cd7be6897d71c992f1014ab0e7a66eb6f5",
+        "sentence:sha256:c819d53fcc4b00faa7d580a4ce50e3bd7f1a7cafc971b31a29dbe9ee44ece2cb",
+        "sentence:sha256:c849a03b4779de20061589d69d6dfbb28d63b5a24a15724e533679d5342232bb",
+        "sentence:sha256:ce9d762ac0f180c36f2344684df74dd3ae78ca7e603f14c1d2e339386b1d5528",
+        "sentence:sha256:e4574eb5f9e23e2fbf9392e1c9f2199ba570eff47e8bc84cc2e463558258cc1c",
+        "sentence:sha256:eb3da00d25f26610b38f4f42a89eec7f6c458827b47f7350935172c335cf0400"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:auxiliary-choice:transitivity",
+        "nodeKey": "choisir_auxiliaire_compose",
+        "facetKey": "choisir_auxiliaire_compose::construction:transitivity",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Choisir selon la construction : sortir ou sortir quelque chose",
+        "learnerQuestionFr": "Pourquoi « elle est sortie » mais « elle a sorti son vélo » ?",
+        "steps": [
+          {
+            "exampleFr": "Elle est sortie de la maison.\nElle a sorti son vélo.",
+            "explanationFr": "Dans la première phrase, elle sort elle-même. Dans la seconde, elle sort quelque chose : son vélo. Ce groupe répond directement à sortir quoi ; c’est un complément direct. Avec sortir, cette différence fait changer l’auxiliaire."
+          },
+          {
+            "exampleFr": "il est monté au grenier\nil a monté une malle",
+            "explanationFr": "Monter fonctionne ici de la même façon. Au grenier indique un lieu. Une malle désigne ce qu’il monte : avec ce complément direct, on utilise avoir."
+          },
+          {
+            "exampleFr": "elle est descendue de la terrasse\nelle a descendu l’échelle",
+            "explanationFr": "Descendre peut aussi se construire des deux façons. Observe la phrase entière, et pas seulement le verbe ou son idée de déplacement."
+          }
+        ],
+        "takeawayFr": "Pour les verbes étudiés ici, cherche si le verbe possède un complément direct : cela peut faire passer d’être à avoir.",
+        "boundaryFr": "Ce changement concerne certains verbes, dont sortir, monter, descendre, rentrer et retourner. Il ne s’applique pas à tous les verbes : courir garde avoir même sans complément direct. Les accords sont déjà fournis.",
+        "practice": [
+          {
+            "id": "auxiliary-choice-transitivity-guided-1",
+            "promptFr": "Elle ___ descendu les escaliers.\n\nComplète au passé composé. Écris seulement l’auxiliaire conjugué ; le participe est déjà correct.",
+            "answerFr": "a",
+            "hintFr": "Pour les verbes étudiés ici, cherche si le verbe possède un complément direct : cela peut faire passer d’être à avoir.",
+            "explanationFr": "Elle a descendu les escaliers. Pour les verbes étudiés ici, cherche si le verbe possède un complément direct : cela peut faire passer d’être à avoir."
+          },
+          {
+            "id": "auxiliary-choice-transitivity-guided-2",
+            "promptFr": "Elle ___ descendue du car.\n\nComplète au passé composé. Écris seulement l’auxiliaire conjugué ; le participe est déjà correct.",
+            "answerFr": "est",
+            "hintFr": "Pour les verbes étudiés ici, cherche si le verbe possède un complément direct : cela peut faire passer d’être à avoir.",
+            "explanationFr": "Elle est descendue du car. Pour les verbes étudiés ici, cherche si le verbe possède un complément direct : cela peut faire passer d’être à avoir."
+          },
+          {
+            "id": "auxiliary-choice-transitivity-guided-3",
+            "promptFr": "Nous ___ sorti le vélo du garage.\n\nComplète au passé composé. Écris seulement l’auxiliaire conjugué ; le participe est déjà correct.",
+            "answerFr": "avons",
+            "hintFr": "Pour les verbes étudiés ici, cherche si le verbe possède un complément direct : cela peut faire passer d’être à avoir.",
+            "explanationFr": "Nous avons sorti le vélo du garage. Pour les verbes étudiés ici, cherche si le verbe possède un complément direct : cela peut faire passer d’être à avoir."
+          },
+          {
+            "id": "auxiliary-choice-transitivity-guided-4",
+            "promptFr": "Nous ___ sortis du théâtre.\n\nComplète au passé composé. Écris seulement l’auxiliaire conjugué ; le participe est déjà correct.",
+            "answerFr": "sommes",
+            "hintFr": "Pour les verbes étudiés ici, cherche si le verbe possède un complément direct : cela peut faire passer d’être à avoir.",
+            "explanationFr": "Nous sommes sortis du théâtre. Pour les verbes étudiés ici, cherche si le verbe possède un complément direct : cela peut faire passer d’être à avoir."
+          }
+        ],
+        "materialExposure": {
+          "sentences": [
+            "Elle est sortie de la maison.",
+            "Elle a sorti son vélo.",
+            "il est monté au grenier",
+            "il a monté une malle",
+            "elle est descendue de la terrasse",
+            "elle a descendu l’échelle",
+            "Elle ___ descendu les escaliers.",
+            "Elle a descendu les escaliers.",
+            "Elle ___ descendue du car.",
+            "Elle est descendue du car.",
+            "Nous ___ sorti le vélo du garage.",
+            "Nous avons sorti le vélo du garage.",
+            "Nous ___ sortis du théâtre.",
+            "Nous sommes sortis du théâtre."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:auxiliary-choice:pronominal",
+      "contentChecksum": "sha256:08aa2753a6715e5ee1ec918015823eec3df01a5a6109c10361373dc80117eb25",
+      "skillId": "choisir_auxiliaire_compose::writing-controlled-production::construction:pronominal",
+      "nodeKey": "choisir_auxiliaire_compose",
+      "facetKey": "choisir_auxiliaire_compose::construction:pronominal",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "reconnaitre_auxiliaire::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:155aa983e613e61ffa778bdc679ca0fdd3e39b57c1cb4c3b266ea85addca2f15",
+        "sentence:sha256:352c4b746940f43b554000482c7c165d9aea73024f06deb34147c11f87d95fb3",
+        "sentence:sha256:3a6db5457c66183f16136977c93d7452fcb24faf29a31f70e9262ed769d7d5d5",
+        "sentence:sha256:511c43bf3b2698b70564ab661386901fc02a0e7fecb73bf9a8b47f26c235f96d",
+        "sentence:sha256:82a379d4be7840ac7496aaa9a7672b50d63fcfd55f34dcb75e8a2241a9d3189d",
+        "sentence:sha256:93213af4008f66c8fc4a3926f6af6e473dd963e33fa89d368e183ee3f41938ea",
+        "sentence:sha256:b407bc8c25f4b7001b3dc622631a78b72cb5b7f98c029a80f8409ff81699785b",
+        "sentence:sha256:b70f2a25de195ca5c4c4fe1616120a7fa5129eb0b20ccd6b44feb0789c262ed2",
+        "sentence:sha256:bf3c551fbe41be1e258de33ad75dbc84ce9fa386d587027464bb171c8f59fb44",
+        "sentence:sha256:ca8270e40f8b242a33a2755129669c0970a46fc0b0a9caac562ef6c6af5179c6",
+        "sentence:sha256:d90eefd2f4fd87358cf80d108c5b72acb113a79a3d58ffcff927b3d3dbc654ca",
+        "sentence:sha256:db0fb8b883c2522228f65ddc8a7911683783b10063cb4e4b724e434e21c0a306",
+        "sentence:sha256:dec1de718e0680bf30bbe4fc71dfe4374cd5ac622210db69ebaa3c4ee990a638",
+        "sentence:sha256:df3859c0efba80f36f22244c33df1807b2554e4747f8c8ddb6c5d3eb7ea42728",
+        "sentence:sha256:f3743f6670b49f68aca859815749cf275c8cecd46cf427757422dd52e0e44188"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:auxiliary-choice:pronominal",
+        "nodeKey": "choisir_auxiliaire_compose",
+        "facetKey": "choisir_auxiliaire_compose::construction:pronominal",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Choisir être avec un verbe pronominal",
+        "learnerQuestionFr": "Quel petit mot remarques-tu dans « elle s’est préparée » ?",
+        "steps": [
+          {
+            "exampleFr": "Elle prépare son sac.\nElle se prépare. → Elle s’est préparée.",
+            "explanationFr": "Dans se prépare, le petit mot se accompagne le verbe et renvoie au même sujet, elle. On appelle cette construction un verbe pronominal. Au passé composé, elle utilise être."
+          },
+          {
+            "exampleFr": "tu t’es promené\nnous nous sommes promenés",
+            "explanationFr": "Le petit pronom change avec le sujet : tu te, nous nous. Te devient t’ devant es. L’auxiliaire reste être, conjugué avec le sujet."
+          },
+          {
+            "exampleFr": "elles se sont parlé\nelle s’est lavé les mains",
+            "explanationFr": "Être reste l’auxiliaire même quand le participe ne prend pas la marque du sujet. Choisir être et accorder le participe sont deux décisions différentes."
+          }
+        ],
+        "takeawayFr": "Avec un verbe pronominal au passé composé, choisis être et conjugue-le avec le sujet.",
+        "boundaryFr": "Les accords des verbes pronominaux demandent une analyse supplémentaire. Les exercices donnent le participe correctement écrit et évaluent seulement le choix et la forme de l’auxiliaire.",
+        "practice": [
+          {
+            "id": "auxiliary-choice-pronominal-guided-1",
+            "promptFr": "Tu t’___ réveillé avant moi.\n\nComplète au passé composé. Écris seulement l’auxiliaire conjugué ; le participe est déjà correct.",
+            "answerFr": "es",
+            "hintFr": "Avec un verbe pronominal au passé composé, choisis être et conjugue-le avec le sujet.",
+            "explanationFr": "Tu t’es réveillé avant moi. Avec un verbe pronominal au passé composé, choisis être et conjugue-le avec le sujet."
+          },
+          {
+            "id": "auxiliary-choice-pronominal-guided-2",
+            "promptFr": "Nous nous ___ posé une question.\n\nComplète au passé composé. Écris seulement l’auxiliaire conjugué ; le participe est déjà correct.",
+            "answerFr": "sommes",
+            "hintFr": "Avec un verbe pronominal au passé composé, choisis être et conjugue-le avec le sujet.",
+            "explanationFr": "Nous nous sommes posé une question. Avec un verbe pronominal au passé composé, choisis être et conjugue-le avec le sujet."
+          },
+          {
+            "id": "auxiliary-choice-pronominal-guided-3",
+            "promptFr": "Elle s’___ habillée rapidement.\n\nComplète au passé composé. Écris seulement l’auxiliaire conjugué ; le participe est déjà correct.",
+            "answerFr": "est",
+            "hintFr": "Avec un verbe pronominal au passé composé, choisis être et conjugue-le avec le sujet.",
+            "explanationFr": "Elle s’est habillée rapidement. Avec un verbe pronominal au passé composé, choisis être et conjugue-le avec le sujet."
+          },
+          {
+            "id": "auxiliary-choice-pronominal-guided-4",
+            "promptFr": "Vous vous ___ souri en arrivant.\n\nComplète au passé composé. Écris seulement l’auxiliaire conjugué ; le participe est déjà correct.",
+            "answerFr": "êtes",
+            "hintFr": "Avec un verbe pronominal au passé composé, choisis être et conjugue-le avec le sujet.",
+            "explanationFr": "Vous vous êtes souri en arrivant. Avec un verbe pronominal au passé composé, choisis être et conjugue-le avec le sujet."
+          }
+        ],
+        "materialExposure": {
+          "sentences": [
+            "Elle prépare son sac.",
+            "Elle se prépare.",
+            "Elle s’est préparée.",
+            "tu t’es promené",
+            "nous nous sommes promenés",
+            "elles se sont parlé",
+            "elle s’est lavé les mains",
+            "Tu t’___ réveillé avant moi.",
+            "Tu t’es réveillé avant moi.",
+            "Nous nous ___ posé une question.",
+            "Nous nous sommes posé une question.",
+            "Elle s’___ habillée rapidement.",
+            "Elle s’est habillée rapidement.",
+            "Vous vous ___ souri en arrivant.",
+            "Vous vous êtes souri en arrivant."
+          ]
+        }
+      }
+    },
     {
       "lessonId": "french-v3-teaching:auxiliary:recognition",
       "contentChecksum": "sha256:2b5ad23efbb7342b38cbe1b6ad33b779ba5dcd484c06726ed11c60ed2f18f73d",
@@ -19022,5 +19541,5 @@
       }
     }
   ],
-  "checksum": "sha256:0490384d42fe3de04fb9e2f477e874d135cbdc83878e860167c2d1a6e80f9d14"
+  "checksum": "sha256:2d60f964c5f8880cd20e9680d38cc734829c75b60594813fa17010e281d1298f"
 }

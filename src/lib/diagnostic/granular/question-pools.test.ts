@@ -9,6 +9,20 @@ function fixture(count=8):V3Assessment{
  return {taxonomyChecksum:"tax",bankChecksum:"bank",facetChecksum:"facets",skills:[{id:"skill",nodeKey:"node",evidenceKey:"production",labelFr:"Skill",branch:"branch",level:0,modes:["production"],prerequisites:[],evidenceRequirements:{production:{minimumItems:3,minimumContexts:2,minimumOccasions:1,minimumAccuracy:.8,unaidedRequired:true,featureRequirements:[{feature:"change",minimumItems:3,minimumContexts:2}]}}}],
  probes:Array.from({length:count},(_,i)=>({id:`question-${i}`,skillId:"skill",mode:"production",contextId:`verb-${i%2}`,difficulty:.5,expectedSeconds:20,guessProbability:.05,evidenceFeatures:["change"]}))};
 }
+it('partitions two binary feature families without weakening either guessing bound',()=>{
+ const source=fixture(28);
+ source.skills[0].evidenceRequirements!.production!.featureRequirements=[{feature:'with-object',minimumItems:2,minimumContexts:2},{feature:'without-object',minimumItems:2,minimumContexts:2}];
+ source.probes.forEach((p,i)=>{p.contextId=`sentence-${i}`;p.guessProbability=.5;p.evidenceFeatures=[i<14?'with-object':'without-object'];});
+ const allocated=allocateQuestionPools(source,1);
+ expect(allocated.ready).toBe(true);
+ expect(inspectQuestionPools(allocated.assessment)).toEqual({ok:true,issues:[]});
+ for(const usage of ['initial','learning'])for(const feature of ['with-object','without-object'])expect(allocated.assessment.probes.filter(p=>p.usage===usage&&p.evidenceFeatures?.includes(feature))).toHaveLength(7);
+ const scarce=structuredClone(source);scarce.probes.pop();
+ expect(allocateQuestionPools(scarce,1).ready).toBe(false);
+ const repeated=structuredClone(source);repeated.skills[0].evidenceRequirements!.production!.novelSentencesRequired=true;
+ repeated.probes.forEach(p=>{p.materialKeys=['sentence:sha256:'+ 'a'.repeat(64)];p.assessedMaterialKeys=p.materialKeys;});
+ expect(allocateQuestionPools(repeated,1).ready).toBe(false);
+});
 it("keeps both pools sufficient, disjoint, stable and release-pinned",()=>{
  const source=fixture(),before=JSON.stringify(source),result=allocateQuestionPools(source);
  expect(result.ready).toBe(true);

@@ -3,12 +3,17 @@
   "status": "draft_requires_review",
   "sources": {
     "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
-    "bankChecksum": "sha256:aa621686f09fb3361b17eadfc81e47ab12b53606fc0f2a4c1574e935406a6451",
+    "bankChecksum": "sha256:c5b524233889068e59471210f41e8e12d6b51b0fea0117a44515d68cd2c732be",
     "annotationChecksum": "sha256:41e7a8d65776f6bb64c33c925b7d4449ffe9fda5a6b71a899067a171232542bb",
-    "facetChecksum": "sha256:0914fafd942809458f4ef42a83202eaf3a6da423011b5c181abb86f229c4942e",
+    "facetChecksum": "sha256:d5cd8e36c6003b37ea44d4ec17724a76d11ac46196ee2d2cc0efd6ae0bf4025c",
     "poolChecksum": "sha256:8c59b3ee0139afb4f44fa7e964a85ec00c67e9889bb1ffbad78ff7aa14aa5dfe",
     "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
     "expansions": [
+      {
+        "version": "french-v3-auxiliary-choice-expansion-v1",
+        "checksum": "sha256:a001a4b9a2231c1640e7485a0214cff75d72aee5d8eb198d51db2bc6bb0d4496",
+        "addedItems": 70
+      },
       {
         "version": "french-v3-character-motivation-expansion-v1",
         "checksum": "sha256:f00ad4fd4c715dd44bd5f28fb5dfb3672340fdccf3d07c47bf73268ac29db1b1",
@@ -115,14 +120,14 @@
         "addedItems": 90
       }
     ],
-    "teachingDraftChecksum": "sha256:5c2e586d46ce69df0cac2f9d274e6e3c15e1d7183cd49b43bf371a41dea5210c"
+    "teachingDraftChecksum": "sha256:27897248d96b71e94b1bdcad0e8b93c77a3397730f4824f9fecb6720369f326a"
   },
   "summary": {
-    "teachingDrafts": 125,
-    "targetsWithTeachingDrafts": 125,
-    "targetsWithoutTeachingDrafts": 417,
-    "totalCandidateQuestions": 4862,
-    "additionalDraftQuestions": 4132,
+    "teachingDrafts": 129,
+    "targetsWithTeachingDrafts": 129,
+    "targetsWithoutTeachingDrafts": 413,
+    "totalCandidateQuestions": 4932,
+    "additionalDraftQuestions": 4202,
     "canonicalEligibleQuestions": 238,
     "approvedCompetencies": 181,
     "approvedEvidenceDefinitions": 257,
@@ -147,10 +152,10 @@
         "eligibleQuestions": 77,
         "targetsWithNoEligibleQuestions": 195,
         "allocatedPools": 0,
-        "targetsWithTeachingDrafts": 72,
-        "targetsWithoutTeachingDrafts": 183,
-        "guidedExerciseDrafts": 436,
-        "exactTargetExpansionDrafts": 3516
+        "targetsWithTeachingDrafts": 76,
+        "targetsWithoutTeachingDrafts": 179,
+        "guidedExerciseDrafts": 452,
+        "exactTargetExpansionDrafts": 3586
       },
       {
         "domain": "reading_comprehension",
@@ -988,7 +993,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 0,
+          "questions": 14,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -1069,8 +1074,30 @@
         "review-draft-v1:choisir_auxiliaire_compose:controlled_production:core",
         "review-draft-v1:choisir_auxiliaire_compose:controlled_production:stretch"
       ],
-      "exactTargetExpansionDrafts": [],
-      "teachingDrafts": [],
+      "exactTargetExpansionDrafts": [
+        "v3-auxiliary-choice:avoir-1",
+        "v3-auxiliary-choice:avoir-2",
+        "v3-auxiliary-choice:avoir-3",
+        "v3-auxiliary-choice:avoir-4",
+        "v3-auxiliary-choice:avoir-5",
+        "v3-auxiliary-choice:avoir-6",
+        "v3-auxiliary-choice:avoir-7",
+        "v3-auxiliary-choice:avoir-8",
+        "v3-auxiliary-choice:avoir-9",
+        "v3-auxiliary-choice:avoir-10",
+        "v3-auxiliary-choice:avoir-11",
+        "v3-auxiliary-choice:avoir-12",
+        "v3-auxiliary-choice:avoir-13",
+        "v3-auxiliary-choice:avoir-14"
+      ],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:auxiliary-choice:avoir",
+          "status": "draft_requires_review",
+          "guidedExercises": 4,
+          "boundaryFr": "Beaucoup de verbes utilisent avoir, mais certains utilisent être. D’autres changent d’auxiliaire selon leur construction. Ces cas ont leurs propres exercices."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -1078,8 +1105,8 @@
       },
       "nextActions": [
         "review_refinement_and_prerequisites",
-        "map_and_review_parent_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_exact_target_drafts",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -1117,7 +1144,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 0,
+          "questions": 14,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -1198,8 +1225,30 @@
         "review-draft-v1:choisir_auxiliaire_compose:controlled_production:core",
         "review-draft-v1:choisir_auxiliaire_compose:controlled_production:stretch"
       ],
-      "exactTargetExpansionDrafts": [],
-      "teachingDrafts": [],
+      "exactTargetExpansionDrafts": [
+        "v3-auxiliary-choice:etre-1",
+        "v3-auxiliary-choice:etre-2",
+        "v3-auxiliary-choice:etre-3",
+        "v3-auxiliary-choice:etre-4",
+        "v3-auxiliary-choice:etre-5",
+        "v3-auxiliary-choice:etre-6",
+        "v3-auxiliary-choice:etre-7",
+        "v3-auxiliary-choice:etre-8",
+        "v3-auxiliary-choice:etre-9",
+        "v3-auxiliary-choice:etre-10",
+        "v3-auxiliary-choice:etre-11",
+        "v3-auxiliary-choice:etre-12",
+        "v3-auxiliary-choice:etre-13",
+        "v3-auxiliary-choice:etre-14"
+      ],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:auxiliary-choice:etre",
+          "status": "draft_requires_review",
+          "guidedExercises": 4,
+          "boundaryFr": "Les participes et leurs accords sont fournis. Choisir l’auxiliaire ne démontre pas encore que tu sais écrire ces accords. Certains autres verbes changent d’auxiliaire selon la construction."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -1207,8 +1256,8 @@
       },
       "nextActions": [
         "review_refinement_and_prerequisites",
-        "map_and_review_parent_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_exact_target_drafts",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -1224,7 +1273,24 @@
       "minimumContexts": 1,
       "minimumInitialItems": 3,
       "minimumLearningItems": 3,
-      "featureCoverage": [],
+      "featureCoverage": [
+        {
+          "feature": "direct-object-avoir",
+          "minimumItems": 2,
+          "minimumContexts": 2,
+          "eligibleQuestions": 0,
+          "distinctContexts": 0,
+          "additionalEligibleQuestionsNeeded": 4
+        },
+        {
+          "feature": "no-direct-object-etre",
+          "minimumItems": 2,
+          "minimumContexts": 2,
+          "eligibleQuestions": 0,
+          "distinctContexts": 0,
+          "additionalEligibleQuestionsNeeded": 4
+        }
+      ],
       "availableLearningQuestions": 0,
       "excludedRepeatedPassageQuestionIds": [],
       "guessingCapacity": {
@@ -1246,7 +1312,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 0,
+          "questions": 28,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -1283,7 +1349,18 @@
         "novelWordsRequired": false,
         "novelSentencesRequired": false,
         "unaidedRequired": false,
-        "featureRequirements": []
+        "featureRequirements": [
+          {
+            "feature": "direct-object-avoir",
+            "minimumItems": 2,
+            "minimumContexts": 2
+          },
+          {
+            "feature": "no-direct-object-etre",
+            "minimumItems": 2,
+            "minimumContexts": 2
+          }
+        ]
       },
       "approvedSuccessCriteria": {
         "minimumAccuracy": 0.8,
@@ -1327,8 +1404,44 @@
         "review-draft-v1:choisir_auxiliaire_compose:controlled_production:core",
         "review-draft-v1:choisir_auxiliaire_compose:controlled_production:stretch"
       ],
-      "exactTargetExpansionDrafts": [],
-      "teachingDrafts": [],
+      "exactTargetExpansionDrafts": [
+        "v3-auxiliary-choice:transitivity-1",
+        "v3-auxiliary-choice:transitivity-2",
+        "v3-auxiliary-choice:transitivity-3",
+        "v3-auxiliary-choice:transitivity-4",
+        "v3-auxiliary-choice:transitivity-5",
+        "v3-auxiliary-choice:transitivity-6",
+        "v3-auxiliary-choice:transitivity-7",
+        "v3-auxiliary-choice:transitivity-8",
+        "v3-auxiliary-choice:transitivity-9",
+        "v3-auxiliary-choice:transitivity-10",
+        "v3-auxiliary-choice:transitivity-11",
+        "v3-auxiliary-choice:transitivity-12",
+        "v3-auxiliary-choice:transitivity-13",
+        "v3-auxiliary-choice:transitivity-14",
+        "v3-auxiliary-choice:transitivity-15",
+        "v3-auxiliary-choice:transitivity-16",
+        "v3-auxiliary-choice:transitivity-17",
+        "v3-auxiliary-choice:transitivity-18",
+        "v3-auxiliary-choice:transitivity-19",
+        "v3-auxiliary-choice:transitivity-20",
+        "v3-auxiliary-choice:transitivity-21",
+        "v3-auxiliary-choice:transitivity-22",
+        "v3-auxiliary-choice:transitivity-23",
+        "v3-auxiliary-choice:transitivity-24",
+        "v3-auxiliary-choice:transitivity-25",
+        "v3-auxiliary-choice:transitivity-26",
+        "v3-auxiliary-choice:transitivity-27",
+        "v3-auxiliary-choice:transitivity-28"
+      ],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:auxiliary-choice:transitivity",
+          "status": "draft_requires_review",
+          "guidedExercises": 4,
+          "boundaryFr": "Ce changement concerne certains verbes, dont sortir, monter, descendre, rentrer et retourner. Il ne s’applique pas à tous les verbes : courir garde avoir même sans complément direct. Les accords sont déjà fournis."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -1336,8 +1449,8 @@
       },
       "nextActions": [
         "review_refinement_and_prerequisites",
-        "map_and_review_parent_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_exact_target_drafts",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -1375,7 +1488,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 0,
+          "questions": 14,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -1456,8 +1569,30 @@
         "review-draft-v1:choisir_auxiliaire_compose:controlled_production:core",
         "review-draft-v1:choisir_auxiliaire_compose:controlled_production:stretch"
       ],
-      "exactTargetExpansionDrafts": [],
-      "teachingDrafts": [],
+      "exactTargetExpansionDrafts": [
+        "v3-auxiliary-choice:pronominal-1",
+        "v3-auxiliary-choice:pronominal-2",
+        "v3-auxiliary-choice:pronominal-3",
+        "v3-auxiliary-choice:pronominal-4",
+        "v3-auxiliary-choice:pronominal-5",
+        "v3-auxiliary-choice:pronominal-6",
+        "v3-auxiliary-choice:pronominal-7",
+        "v3-auxiliary-choice:pronominal-8",
+        "v3-auxiliary-choice:pronominal-9",
+        "v3-auxiliary-choice:pronominal-10",
+        "v3-auxiliary-choice:pronominal-11",
+        "v3-auxiliary-choice:pronominal-12",
+        "v3-auxiliary-choice:pronominal-13",
+        "v3-auxiliary-choice:pronominal-14"
+      ],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:auxiliary-choice:pronominal",
+          "status": "draft_requires_review",
+          "guidedExercises": 4,
+          "boundaryFr": "Les accords des verbes pronominaux demandent une analyse supplémentaire. Les exercices donnent le participe correctement écrit et évaluent seulement le choix et la forme de l’auxiliaire."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -1465,8 +1600,8 @@
       },
       "nextActions": [
         "review_refinement_and_prerequisites",
-        "map_and_review_parent_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_exact_target_drafts",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -78346,5 +78481,5 @@
       ]
     }
   ],
-  "checksum": "sha256:5948473d2ba7a7b469ab404d9557b3c3b95f0e592e1fc5995c0692f8e6f1b644"
+  "checksum": "sha256:6520fd55c79c16d93be900c903c9ef7e7578103e79bac7d4fa4cb27d6d0dc965"
 }

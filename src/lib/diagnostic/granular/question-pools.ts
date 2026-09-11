@@ -217,6 +217,20 @@ export function allocateQuestionPools(source:V3Assessment,maxSearchStates=20000)
    if(isQuestionPoolSufficient(probes,skill,mode,true))chosen=probes;
   }else if(probes.length>=minInitial+minLearning&&isQuestionPoolSufficient(probes,skill,mode,true)
    &&(skill.evidenceRequirements?.[mode]?.featureRequirements??[]).every(rule=>probes.filter(p=>p.evidenceFeatures?.includes(rule.feature)).length>=2*rule.minimumItems)){
+   // Try a balanced partition for multi-feature contracts before enumerating
+   // subsets that cannot meet each feature's independent guessing bound.
+   // Full pool validation remains authoritative, including shared material.
+   const requiredFeatures=skill.evidenceRequirements?.[mode]?.featureRequirements??[];
+   if(requiredFeatures.length>1){
+    const groups=new Map<string,Probe[]>();
+    for(const probe of probes){
+     const signature=JSON.stringify(requiredFeatures.filter(f=>probe.evidenceFeatures?.includes(f.feature)).map(f=>f.feature).sort());
+     groups.set(signature,[...(groups.get(signature)??[]),probe]);
+    }
+    const balanced=[...groups.values()].flatMap(group=>[...group].sort((a,b)=>a.id.localeCompare(b.id)).filter((_,index)=>index%2===0));
+    const ids=new Set(balanced.map(p=>p.id));
+    if(isQuestionPoolSufficient(balanced,skill,mode,true)&&isQuestionPoolSufficient(probes.filter(p=>!ids.has(p.id)),skill,mode,false))chosen=balanced;
+   }
    const search=(start:number,size:number,current:Probe[]):Probe[]|null=>{
     if(++visited>maxSearchStates){limited=true;return null;}
     if(current.length===size){

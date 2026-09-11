@@ -4,6 +4,7 @@ import type {FeatureRequirement} from "./engine";
 export type AssessmentFacet={key:string;nodeKey:string;labelFr:string;dimension:string;value:string};
 const SPELLING_FEATURE="spelling-adjustment";
 export function patternFeatureRequirements(facet:AssessmentFacet):FeatureRequirement[]{
+ if(facet.nodeKey==="choisir_auxiliaire_compose"&&facet.dimension==="construction"&&facet.value==="transitivity")return ["direct-object-avoir","no-direct-object-etre"].map(feature=>({feature,minimumItems:2,minimumContexts:2}));
  return facet.dimension==="pattern"&&["spelling_ger","spelling_cer"].includes(facet.value)&&["produire_present_indicatif","produire_imparfait","produire_passe_simple","produire_imperatif"].includes(facet.nodeKey)
   ?[{feature:SPELLING_FEATURE,minimumItems:3,minimumContexts:2}]:[];
 }

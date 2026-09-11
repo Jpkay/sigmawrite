@@ -1,0 +1,13 @@
+# Choosing the compound-tense auxiliary
+
+Adds four production lessons for the existing avoir, etre, transitivity and pronominal facets of choisir_auxiliaire_compose, with 70 typed assessment questions and 16 guided exercises. The parent competency and prerequisite reconnaitre_auxiliaire remain unchanged. Three facets have fourteen questions each; the changing-construction facet has twenty-eight.
+
+The sentence fixes the subject and passé composé tense and supplies the correctly written participle. The student supplies the conjugated auxiliary. Each item explicitly retains the two-way response space and a 0.5 guessing floor. Movement alone is not taught as a rule for être: courir, marcher and nager contrast with verbs that actually use être. Pronominal examples distinguish auxiliary choice from participle agreement, including se parler and se laver les mains.
+
+The changing-construction facet now requires evidence from both direct-object avoir and no-direct-object être constructions. This draft refinement strengthens, rather than replaces, the approved criteria. Each question family has at least seven items in each independent pool to meet the existing feature-level guessing bound. Assessment sentences in this facet use masculine-singular participles to remove an agreement-ending shortcut. Guided and assessed sentences are disjoint.
+
+The question-pool allocator first tries a deterministic balanced partition when a target requires multiple features. It accepts that partition only after the unchanged full validation passes for both halves, including distinct material, contexts and every feature's guessing bound. Otherwise it retains the existing bounded search. Regression checks cover the valid two-family case, insufficient feature supply, and repeated material. Historical releases keep their stored allocations.
+
+Validation: 450 granular tests, TypeScript and source lint pass. Tests show that success only in the direct-object construction cannot confirm the whole changing-auxiliary facet. The draft now prepares 123 assessment/teaching targets and 2,096 questions, retaining all 542 graph targets. Its catalogue contains 129 lessons and 716 guided exercises; the bank contains 4,932 questions. Six symbolic profiles and the mixed/all-wrong command journeys still reach provisional results and learning checks at the 35-active-minute boundary. These are mechanics checks, not calibrated student-outcome evidence.
+
+Human semantic review remains pending under the product owner's parallel-review authorization. This draft is not included in the separately frozen 116-target production release. Full graph coverage remains unfinished.

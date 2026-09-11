@@ -8,7 +8,7 @@ Regenerate: `npx tsx scripts/build-v3-delivery-matrix.mts`. Verify without writi
 
 | Domain | Targets | Eligible questions | Targets without eligible questions | Allocated pools | Expansion drafts |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| conjugation | 255 | 77 | 195 | 0 | 3516 |
+| conjugation | 255 | 77 | 195 | 0 | 3586 |
 | reading_comprehension | 92 | 21 | 74 | 0 | 88 |
 | grammar | 79 | 56 | 43 | 0 | 258 |
 | spelling | 116 | 79 | 60 | 0 | 270 |
@@ -19,7 +19,7 @@ These counts describe authoring drafts, not approved lessons or published pathwa
 
 | Domain | Targets with teaching drafts | Targets without teaching drafts | Guided exercise drafts |
 | --- | ---: | ---: | ---: |
-| conjugation | 72 | 183 | 436 |
+| conjugation | 76 | 179 | 452 |
 | reading_comprehension | 11 | 81 | 50 |
 | grammar | 23 | 56 | 124 |
 | spelling | 19 | 97 | 90 |
@@ -65,10 +65,10 @@ Full evidence requirements, prerequisite IDs, question IDs, source checksums and
 | Segmenter une forme verbale | recognition / initial | 0 | 0 / 0 (insufficient_coverage) | 10 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
 | Classer une famille verbale | recognition / initial | 1 | 1 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
 | Reconnaître un auxiliaire | recognition / initial | 0 | 0 / 0 (insufficient_coverage) | 12 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
-| Choisir l'auxiliaire d'un temps composé — Choisir avoir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
-| Choisir l'auxiliaire d'un temps composé — Choisir être | production / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
-| Choisir l'auxiliaire d'un temps composé — Verbe changeant d’auxiliaire selon son emploi | production / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
-| Choisir l'auxiliaire d'un temps composé — Verbe pronominal | production / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
+| Choisir l'auxiliaire d'un temps composé — Choisir avoir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 14 | 1 / 4 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Choisir l'auxiliaire d'un temps composé — Choisir être | production / initial | 0 | 0 / 0 (insufficient_coverage) | 14 | 1 / 4 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Choisir l'auxiliaire d'un temps composé — Verbe changeant d’auxiliaire selon son emploi | production / initial | 0 | 0 / 0 (insufficient_coverage) | 28 | 1 / 4 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Choisir l'auxiliaire d'un temps composé — Verbe pronominal | production / initial | 0 | 0 / 0 (insufficient_coverage) | 14 | 1 / 4 | review_exact_target_drafts | review_teaching_scope_and_content |
 | Former un participe passé — Participes en -é | production / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
 | Former un participe passé — Participes en -i | production / initial | 1 | 1 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
 | Former un participe passé — Participes irréguliers | production / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |

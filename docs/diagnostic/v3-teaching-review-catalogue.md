@@ -1,11 +1,15 @@
 # French teaching draft review catalogue
 
-125 lessons, 700 guided exercises, 125 exact assessment targets. No approval, publication or activity binding is created by this export.
+129 lessons, 716 guided exercises, 129 exact assessment targets. No approval, publication or activity binding is created by this export.
 
 The companion JSON includes the complete learner-facing content, answer keys, hints, feedback, target IDs, prerequisites, evidence requirements, material identities and per-lesson checksums. Review decisions must refer to the exact content version. An anchored annotation proves only that the annotated material appears in the lesson; it does not prove completeness or independence from assessment questions.
 
 | Lesson | Target | Mode | Guided exercises | Exposure annotation |
 | --- | --- | --- | ---: | --- |
+| Choisir avoir pour construire le passé composé | choisir_auxiliaire_compose::writing-controlled-production::construction:avoir | production | 4 | anchored_requires_completeness_review |
+| Choisir être avec arriver, partir et d’autres verbes | choisir_auxiliaire_compose::writing-controlled-production::construction:etre | production | 4 | anchored_requires_completeness_review |
+| Choisir selon la construction : sortir ou sortir quelque chose | choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity | production | 4 | anchored_requires_completeness_review |
+| Choisir être avec un verbe pronominal | choisir_auxiliaire_compose::writing-controlled-production::construction:pronominal | production | 4 | anchored_requires_completeness_review |
 | Repérer le verbe qui aide à conjuguer | reconnaitre_auxiliaire::reading-receptive | recognition | 6 | anchored_requires_completeness_review |
 | Reconnaître le passé composé | reconnaitre_passe_compose::reading-receptive | recognition | 6 | anchored_requires_completeness_review |
 | Reconnaître le plus-que-parfait | reconnaitre_plus_que_parfait::reading-receptive | recognition | 6 | anchored_requires_completeness_review |
