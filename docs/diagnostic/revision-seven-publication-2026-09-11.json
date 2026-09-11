@@ -8,7 +8,7 @@
   "supportedTargets": 160,
   "graphTargets": 542,
   "published": true,
-  "activated": false,
+  "activated": true,
   "validation": {
     "preflightReady": true,
     "instructionGaps": 0,
@@ -44,8 +44,6 @@
     "openingComparison": "revision-seven-opening-comparison-2026-09-11.json"
   },
   "pending": [
-    "Complete the current live 158-target diagnostic through results and learning.",
-    "Activate after the saved live diagnostic completes its check-first learning verification; verify the public default and demo after activation.",
     "Opening latency remains unresolved; the candidate did not demonstrate an end-to-end speed improvement in the paired browser sample."
   ],
   "limitations": [
@@ -72,5 +70,18 @@
     "scope": 160,
     "defaultSelectedByApplication": true,
     "reloadPreservedSession": true
-  }
+  },
+  "publicDefaultVerification": {
+    "sessionId": "01d5e716-ec5b-475e-804b-929e5fd831ad",
+    "releaseId": "87db36f6-1148-4ede-af90-557a14274852",
+    "scope": 160,
+    "defaultSelectedByApplication": true,
+    "reloadPreservedSession": true
+  },
+  "publicDemoPreserved": {
+    "onboardingRedirect": "/student/lessons",
+    "lessonCount": 11,
+    "verified": true
+  },
+  "persistentDefaultReleaseKey": "french-granular-diagnostic-v8"
 }

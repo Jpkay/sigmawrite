@@ -23,7 +23,6 @@
     ]
   },
   "pending": [
-    "Continue from saved live results through the check-first pathway, then verify guided teaching and a fresh independent check.",
     "Investigate and reduce the measured 19–29 second diagnostic opening/reload delay."
   ],
   "releaseId": "303f1662-1a34-4ee4-b142-2e7146b2f176",
@@ -136,9 +135,16 @@
     ]
   },
   "liveJourneyLearning": {
-    "passed": false,
-    "failure": "No guided lesson offered",
-    "detail": "Runner requires instruction immediately; the actual pathway offered five independent checks. Continue the real check-first pathway and verify the resulting lesson rather than claim learning passed."
+    "passed": true,
+    "sessionId": "79dac8c0-ec4c-4898-916b-0e2dd6377b1d",
+    "contentId": "french-v3-teaching:canonical-sentence:recognition",
+    "skillId": "construction_phrase_canonique::reading-analysis",
+    "practiceAnswers": 6,
+    "independentQuestion": "v3-canonical-sentence:recognition-11",
+    "guidedEvidenceIsolated": true,
+    "refinementSaved": true,
+    "reloadPassed": true,
+    "scenario": "After the original diagnostic, three explicitly incorrect independent checks established a provisional gap and led to instruction."
   },
   "checkFirstPathway": {
     "initialChecks": [
@@ -161,6 +167,6 @@
     "offeredInstruction": "french-v3-teaching:canonical-sentence:recognition",
     "skillId": "construction_phrase_canonique::reading-analysis",
     "evidence": "Three incorrect independent checks across three contexts; provisionalGap true, confirmed false. Instruction offered without claiming a confirmed weakness.",
-    "lessonCompleted": false
+    "lessonCompleted": true
   }
 }
