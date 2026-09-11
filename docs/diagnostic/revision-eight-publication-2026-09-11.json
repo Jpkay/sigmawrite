@@ -1,5 +1,5 @@
 {
-  "status": "published_activation_rolled_back_during_database_outage",
+  "status": "activated_publicly_verified",
   "sourceCommit": "95d35e4",
   "frozenWorkspace": "/Users/jean-philippekayobotsi/.codex/release-workspaces/sigmawrite-r8-95d35e4",
   "bankKey": "french-diagnostic-bank-v3-r8",
@@ -27,21 +27,31 @@
       "scope": 163,
       "defaultSelectedByApplication": true,
       "reloadPreservedSession": true
+    },
+    "publicDefault": {
+      "sessionId": "53a3bcbe-dc7a-4916-b59e-d9f8ee3403ce",
+      "releaseId": "e7566a20-2a96-4b7a-85fa-cb8883ab39a9",
+      "scope": 163,
+      "defaultSelectedByApplication": true,
+      "reloadPreservedSession": true
+    },
+    "demoAfterReactivation": {
+      "lessons": 11,
+      "lessonOpened": true,
+      "diagnosticAnswers": 48,
+      "wrongAnswers": 17
     }
   },
   "remaining": [
-    "verify database recovery",
-    "inspect fresh public QA account state before retrying",
-    "verify public default plus preserved demo after renewed activation",
-    "update persistent default release setting"
+    "finish full live QA diagnostic, results and learning verification"
   ],
   "humanReview": "parallel review remains pending; no review approval fabricated",
   "candidateDeploymentId": "dpl_GF27He5Sqaw2VhnF28ArfhTpqsKs",
   "releaseId": "e7566a20-2a96-4b7a-85fa-cb8883ab39a9",
   "releaseKey": "french-granular-diagnostic-v9",
   "bundleChecksum": "sha256:f5816773675c7248c516e7afae4e595b3375d2b9aff6558cccba50686be24312",
-  "activeDeployment": "https://sigmawrite-h2eyy235j-jpkays-projects.vercel.app",
-  "activeReleaseKey": "french-granular-diagnostic-v8",
+  "activeDeployment": "https://sigmawrite-a0hm7skuk-jpkays-projects.vercel.app",
+  "activeReleaseKey": "french-granular-diagnostic-v9",
   "activationAttempt": {
     "promoted": true,
     "publicVerified": false,
@@ -73,6 +83,39 @@
         }
       ]
     },
-    "verifiedRecovered": false
+    "verifiedRecovered": true,
+    "successfulHealthProbe": {
+      "at": "2026-09-11T17:15:51.989Z",
+      "checks": [
+        {
+          "endpoint": "/auth/v1/health",
+          "status": 200,
+          "ms": 627
+        },
+        {
+          "endpoint": "/rest/v1/diagnostic_item_bank_releases",
+          "status": 200,
+          "ms": 249
+        }
+      ]
+    },
+    "demoAfterRestart": {
+      "lessons": 11,
+      "lessonOpened": true,
+      "diagnosticAnswers": 48,
+      "wrongAnswers": 17
+    },
+    "publicQaHadNoSessionBeforeRetry": true
+  },
+  "activated": true,
+  "persistentDefaultReleaseKey": "french-granular-diagnostic-v9",
+  "fullLiveJourney": {
+    "status": "running",
+    "studentId": "c2c948d9-c572-4e0d-900e-69937ddbc46a",
+    "sessionId": "53a3bcbe-dc7a-4916-b59e-d9f8ee3403ce",
+    "logPath": "tmp/plume-r8-live.log",
+    "outputPrefix": "tmp/plume-r8-live",
+    "realBrowserTime": true,
+    "profile": "deliberately mixed answers; optional wrong follow-up checks to exercise guided teaching"
   }
 }
