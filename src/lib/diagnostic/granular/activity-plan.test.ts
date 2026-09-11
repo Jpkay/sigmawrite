@@ -65,3 +65,11 @@ it("keeps deferred targets unknown and restricts instruction to teaching scope",
  expect(planGranularActivities(scoped,gaps,[lesson]).activities).toHaveLength(0);
  expect(planGranularActivities({...scoped,releaseScope:{...scoped.releaseScope!,teachingSkillIds:["etre"]}},gaps,[lesson]).activities.map(a=>a.activityId)).toEqual(["lesson"]);
 });
+it('offers different areas while retaining priority order within each area',()=>{
+ const graph:V3Assessment={...assessment,skills:['a-grammar','b-grammar','c-grammar','z-reading'].map(id=>({id,nodeKey:id,evidenceKey:'production',labelFr:id,branch:id,domain:id.endsWith('reading')?'reading':'grammar',level:0,modes:['production'],prerequisites:[]}))};
+ const bindings:LearningActivityBinding[]=graph.skills.map(s=>({id:`check:${s.id}`,nodeKey:s.nodeKey,kind:'independent_check',mode:'production',status:'published',titleFr:s.labelFr,href:'/student/check'}));
+ const results=assessSkills(graph.skills,[]),snapshot=structuredClone(results);
+ expect(planGranularActivities(graph,results,bindings,3).activities.map(a=>a.skillId)).toEqual(['a-grammar','z-reading','b-grammar']);
+ expect(results).toEqual(snapshot);
+ expect(results.every(r=>r.status==='unknown')).toBe(true);
+});

@@ -53,7 +53,23 @@ export function planGranularActivities(assessment:V3Assessment,results:readonly 
   if(!activity.href.startsWith("/student/")||activity.href.includes("\\")||/[\r\n]/.test(activity.href))throw Error("Invalid student activity destination");
   const estimatedMinutes=activity.estimatedMinutes??5;
   if(!Number.isFinite(estimatedMinutes)||estimatedMinutes<=0)throw Error("Invalid activity duration");
-  if(activities.length<limit)activities.push({skillId:skill.id,activityId:activity.id,kind:activity.kind,action,titleFr:activity.titleFr,href:activity.kind==="independent_check"||activity.contentId?granularActivityHref(activity.id):activity.href,estimatedMinutes,...(activity.contentId?{contentId:activity.contentId}:{})});
+  activities.push({skillId:skill.id,activityId:activity.id,kind:activity.kind,action,titleFr:activity.titleFr,href:activity.kind==="independent_check"||activity.contentId?granularActivityHref(activity.id):activity.href,estimatedMinutes,...(activity.contentId?{contentId:activity.contentId}:{})});
  }
- return {activities,missingActivitySkillIds,blockedSkillIds:[...blockedSkillIds]};
+ // Keep evidence/prerequisite order within each area, but do not let a large
+ // early alphabetical catalogue occupy every visible next-step slot.
+ const queues=new Map<string,typeof activities>();
+ for(const activity of activities){
+  const skill=byId.get(activity.skillId)!;
+  const area=skill.domain??skill.samplingGroup??skill.branch;
+  queues.set(area,[...(queues.get(area)??[]),activity]);
+ }
+ const selected:typeof activities=[];
+ for(let round=0;selected.length<limit;round++){
+  let added=false;
+  for(const queue of queues.values()){
+   if(queue[round]&&selected.length<limit){selected.push(queue[round]);added=true;}
+  }
+  if(!added)break;
+ }
+ return {activities:selected,missingActivitySkillIds,blockedSkillIds:[...blockedSkillIds]};
 }
