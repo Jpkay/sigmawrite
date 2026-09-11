@@ -1,12 +1,12 @@
 {
-  "status": "import_in_progress_not_activated",
+  "status": "published_activation_rolled_back_during_database_outage",
   "sourceCommit": "95d35e4",
   "frozenWorkspace": "/Users/jean-philippekayobotsi/.codex/release-workspaces/sigmawrite-r8-95d35e4",
   "bankKey": "french-diagnostic-bank-v3-r8",
   "bankId": "ccb52098-53ec-41f2-a9fd-968ce3cb10f3",
   "bankChecksum": "sha256:e132770811764d0042b7fd46e5c8e7bdd1f8075094dc166ee8e5e3fb453275fe",
   "expectedBankItems": 5400,
-  "lastObservedImportedItems": 3014,
+  "lastObservedImportedItems": 5400,
   "preparedScope": 163,
   "plannedReleaseKey": "french-granular-diagnostic-v9",
   "candidateUrl": "https://sigmawrite-a0hm7skuk-jpkays-projects.vercel.app",
@@ -15,15 +15,64 @@
   "technicalChecks": {
     "scopedPreflight": "passed",
     "frozenCommandJourney": "passed: wrong and mixed, 35 simulated active minutes, 542 results each",
-    "preservedDemoOnCandidate": "passed: 11 lessons"
+    "preservedDemoOnCandidate": "passed: 11 lessons",
+    "relationalBank": {
+      "verifiedItems": 5400,
+      "ready": true,
+      "missingReviewerProvenanceCount": 0
+    },
+    "candidateDefault": {
+      "sessionId": "0119fba3-d0dd-4bad-b4b8-55a74b7774ab",
+      "releaseId": "e7566a20-2a96-4b7a-85fa-cb8883ab39a9",
+      "scope": 163,
+      "defaultSelectedByApplication": true,
+      "reloadPreservedSession": true
+    }
   },
   "remaining": [
-    "complete existing import",
-    "verify exact relational bank",
-    "publish v9",
-    "verify fresh account selects 163-target release on candidate",
-    "promote and verify public default plus preserved demo"
+    "verify database recovery",
+    "inspect fresh public QA account state before retrying",
+    "verify public default plus preserved demo after renewed activation",
+    "update persistent default release setting"
   ],
   "humanReview": "parallel review remains pending; no review approval fabricated",
-  "candidateDeploymentId": "dpl_GF27He5Sqaw2VhnF28ArfhTpqsKs"
+  "candidateDeploymentId": "dpl_GF27He5Sqaw2VhnF28ArfhTpqsKs",
+  "releaseId": "e7566a20-2a96-4b7a-85fa-cb8883ab39a9",
+  "releaseKey": "french-granular-diagnostic-v9",
+  "bundleChecksum": "sha256:f5816773675c7248c516e7afae4e595b3375d2b9aff6558cccba50686be24312",
+  "activeDeployment": "https://sigmawrite-h2eyy235j-jpkays-projects.vercel.app",
+  "activeReleaseKey": "french-granular-diagnostic-v8",
+  "activationAttempt": {
+    "promoted": true,
+    "publicVerified": false,
+    "rolledBack": true,
+    "candidatePassed": true,
+    "publicFailure": "Supabase returned 521 Web server is down; auth and REST probes timed out; management SQL login role failed with 544 connection timeout",
+    "causality": "Not established. Supabase reports a current unresponsive-project incident, but this project\u2019s cause is not confirmed.",
+    "statusSource": "https://status.supabase.com/"
+  },
+  "databaseRecovery": {
+    "restart": {
+      "projectRef": "pwztnrirtrnicywvdbpz",
+      "httpStatus": 200,
+      "requestedAt": "2026-09-11T17:14:33.062705+00:00",
+      "body": ""
+    },
+    "firstHealthProbe": {
+      "at": "2026-09-11T17:15:31.802Z",
+      "checks": [
+        {
+          "endpoint": "/auth/v1/health",
+          "error": "TimeoutError",
+          "ms": 15004
+        },
+        {
+          "endpoint": "/rest/v1/diagnostic_item_bank_releases",
+          "error": "TimeoutError",
+          "ms": 15002
+        }
+      ]
+    },
+    "verifiedRecovered": false
+  }
 }
