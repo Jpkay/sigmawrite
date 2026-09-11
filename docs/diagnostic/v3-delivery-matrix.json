@@ -3,12 +3,17 @@
   "status": "draft_requires_review",
   "sources": {
     "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
-    "bankChecksum": "sha256:f24d2d58fae53034138f8caff44aae8d0d25dc4be36db36c1acd7d084260f773",
+    "bankChecksum": "sha256:5f2c62d456d6126c2c24b5cb80c4f9c00d44b1f8a1d9378c5f17da3af95bc399",
     "annotationChecksum": "sha256:41e7a8d65776f6bb64c33c925b7d4449ffe9fda5a6b71a899067a171232542bb",
-    "facetChecksum": "sha256:6032cb22ffd4583985534cb0a8b75cb28842b7e06b5a038b3bb54e37f20df50e",
+    "facetChecksum": "sha256:18db41081fde4dbf011227ae460022981a11ad25dfd9390d17be4f4a24695786",
     "poolChecksum": "sha256:8c59b3ee0139afb4f44fa7e964a85ec00c67e9889bb1ffbad78ff7aa14aa5dfe",
     "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
     "expansions": [
+      {
+        "version": "french-v3-explicit-chronology-expansion-v1",
+        "checksum": "sha256:42d17805074e8c460a312cdccd05b14fb7909233370c4f1c0fd869ab6b01bb12",
+        "addedItems": 24
+      },
       {
         "version": "french-v3-informational-subject-reference-expansion-v1",
         "checksum": "sha256:1c6a961fb0b45d3b89177bb27ff8e9119e4d1355e89167ed88a3ed40a7057faf",
@@ -160,14 +165,14 @@
         "addedItems": 90
       }
     ],
-    "teachingDraftChecksum": "sha256:b7fad35e714242facef44a4ff412e86d74fa4b5f2a59e9fb5d954bf5238a9a10"
+    "teachingDraftChecksum": "sha256:c48270f3fda6611ee0869bff503bedc3a84a8da3de65c7816bfd2d459858ee7d"
   },
   "summary": {
-    "teachingDrafts": 180,
-    "targetsWithTeachingDrafts": 180,
-    "targetsWithoutTeachingDrafts": 362,
-    "totalCandidateQuestions": 5376,
-    "additionalDraftQuestions": 4646,
+    "teachingDrafts": 183,
+    "targetsWithTeachingDrafts": 183,
+    "targetsWithoutTeachingDrafts": 359,
+    "totalCandidateQuestions": 5400,
+    "additionalDraftQuestions": 4670,
     "canonicalEligibleQuestions": 238,
     "approvedCompetencies": 181,
     "approvedEvidenceDefinitions": 257,
@@ -203,10 +208,10 @@
         "eligibleQuestions": 21,
         "targetsWithNoEligibleQuestions": 74,
         "allocatedPools": 0,
-        "targetsWithTeachingDrafts": 15,
-        "targetsWithoutTeachingDrafts": 77,
-        "guidedExerciseDrafts": 72,
-        "exactTargetExpansionDrafts": 128
+        "targetsWithTeachingDrafts": 18,
+        "targetsWithoutTeachingDrafts": 74,
+        "guidedExerciseDrafts": 84,
+        "exactTargetExpansionDrafts": 152
       },
       {
         "domain": "grammar",
@@ -34533,7 +34538,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 0,
+          "questions": 8,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -34615,8 +34620,24 @@
       "parentDraftCandidatesRequiringMapping": [
         "local-reading-v1:ordonner_evenements_explicites:receptive:core"
       ],
-      "exactTargetExpansionDrafts": [],
-      "teachingDrafts": [],
+      "exactTargetExpansionDrafts": [
+        "v3-explicit-chronology:n-library",
+        "v3-explicit-chronology:n-rehearsal",
+        "v3-explicit-chronology:n-comic",
+        "v3-explicit-chronology:n-match",
+        "v3-explicit-chronology:n-bike",
+        "v3-explicit-chronology:n-cake",
+        "v3-explicit-chronology:n-video",
+        "v3-explicit-chronology:n-lost-scarf"
+      ],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:explicit-chronology:narrative",
+          "status": "draft_requires_review",
+          "guidedExercises": 4,
+          "boundaryFr": "Ici, les dates ou les heures sont indiquées. Déduire un ordre quand les repères ne sont pas écrits est une autre compétence. Le texte peut aussi présenter un programme prévu, pas des événements déjà réalisés."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -34624,8 +34645,8 @@
       },
       "nextActions": [
         "review_refinement_and_prerequisites",
-        "map_and_review_parent_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_exact_target_drafts",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -34665,7 +34686,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 0,
+          "questions": 8,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -34747,8 +34768,24 @@
       "parentDraftCandidatesRequiringMapping": [
         "local-reading-v1:ordonner_evenements_explicites:receptive:core"
       ],
-      "exactTargetExpansionDrafts": [],
-      "teachingDrafts": [],
+      "exactTargetExpansionDrafts": [
+        "v3-explicit-chronology:i-exhibition",
+        "v3-explicit-chronology:i-borrowing",
+        "v3-explicit-chronology:i-club",
+        "v3-explicit-chronology:i-competition",
+        "v3-explicit-chronology:i-workshop",
+        "v3-explicit-chronology:i-newspaper",
+        "v3-explicit-chronology:i-gym",
+        "v3-explicit-chronology:i-festival"
+      ],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:explicit-chronology:informational",
+          "status": "draft_requires_review",
+          "guidedExercises": 4,
+          "boundaryFr": "Ici, les dates ou les heures sont indiquées. Déduire un ordre quand les repères ne sont pas écrits est une autre compétence. Le texte peut aussi présenter un programme prévu, pas des événements déjà réalisés."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -34756,8 +34793,8 @@
       },
       "nextActions": [
         "review_refinement_and_prerequisites",
-        "map_and_review_parent_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_exact_target_drafts",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -34795,7 +34832,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 0,
+          "questions": 8,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -34873,8 +34910,24 @@
       "parentDraftCandidatesRequiringMapping": [
         "local-reading-v1:ordonner_evenements_explicites:receptive:core"
       ],
-      "exactTargetExpansionDrafts": [],
-      "teachingDrafts": [],
+      "exactTargetExpansionDrafts": [
+        "v3-explicit-chronology:a-survey",
+        "v3-explicit-chronology:a-play",
+        "v3-explicit-chronology:a-repair",
+        "v3-explicit-chronology:a-canteen",
+        "v3-explicit-chronology:a-garden",
+        "v3-explicit-chronology:a-trip",
+        "v3-explicit-chronology:a-posters",
+        "v3-explicit-chronology:a-bikes"
+      ],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:explicit-chronology:argumentative",
+          "status": "draft_requires_review",
+          "guidedExercises": 4,
+          "boundaryFr": "Ici, les dates ou les heures sont indiquées. Déduire un ordre quand les repères ne sont pas écrits est une autre compétence. Le texte peut aussi présenter un programme prévu, pas des événements déjà réalisés."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -34882,8 +34935,8 @@
       },
       "nextActions": [
         "review_refinement_and_prerequisites",
-        "map_and_review_parent_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_exact_target_drafts",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -79375,5 +79428,5 @@
       ]
     }
   ],
-  "checksum": "sha256:962ff90b9f0530c95add38713f9769433a767be9570b0fa351cb1a2b6ec18ac7"
+  "checksum": "sha256:9c405eab0d12ff41ad921bdc53c2514ea3be7c15d38c833d3669f6282edfbc7b"
 }

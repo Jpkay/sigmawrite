@@ -9,7 +9,7 @@ Regenerate: `npx tsx scripts/build-v3-delivery-matrix.mts`. Verify without writi
 | Domain | Targets | Eligible questions | Targets without eligible questions | Allocated pools | Expansion drafts |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | conjugation | 255 | 77 | 195 | 0 | 3958 |
-| reading_comprehension | 92 | 21 | 74 | 0 | 128 |
+| reading_comprehension | 92 | 21 | 74 | 0 | 152 |
 | grammar | 79 | 56 | 43 | 0 | 290 |
 | spelling | 116 | 79 | 60 | 0 | 270 |
 
@@ -20,7 +20,7 @@ These counts describe authoring drafts, not approved lessons or published pathwa
 | Domain | Targets with teaching drafts | Targets without teaching drafts | Guided exercise drafts |
 | --- | ---: | ---: | ---: |
 | conjugation | 107 | 148 | 632 |
-| reading_comprehension | 15 | 77 | 72 |
+| reading_comprehension | 18 | 74 | 84 |
 | grammar | 25 | 54 | 132 |
 | spelling | 33 | 83 | 146 |
 
@@ -292,9 +292,9 @@ Full evidence requirements, prerequisite IDs, question IDs, source checksums and
 | Associer une information à la question posée — Récit bref | interpretation / initial | 1 | 1 / 0 (insufficient_coverage) | 0 | 0 / 0 | author_missing_evidence | author_or_reuse_exact_target_teaching |
 | Associer une information à la question posée — Texte informatif bref | interpretation / initial | 1 | 1 / 0 (insufficient_coverage) | 0 | 0 / 0 | author_missing_evidence | author_or_reuse_exact_target_teaching |
 | Associer une information à la question posée — Texte argumentatif bref | interpretation / initial | 1 | 1 / 0 (insufficient_coverage) | 0 | 0 / 0 | author_missing_evidence | author_or_reuse_exact_target_teaching |
-| Ordonner des événements explicitement datés — Récit bref | interpretation / initial | 1 | 1 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
-| Ordonner des événements explicitement datés — Texte informatif bref | interpretation / initial | 1 | 1 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
-| Ordonner des événements explicitement datés — Texte argumentatif bref | interpretation / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
+| Ordonner des événements explicitement datés — Récit bref | interpretation / initial | 1 | 1 / 0 (insufficient_coverage) | 8 | 1 / 4 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Ordonner des événements explicitement datés — Texte informatif bref | interpretation / initial | 1 | 1 / 0 (insufficient_coverage) | 8 | 1 / 4 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Ordonner des événements explicitement datés — Texte argumentatif bref | interpretation / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 1 / 4 | review_exact_target_drafts | review_teaching_scope_and_content |
 | Résoudre la référence d'un pronom sujet — Récit bref | interpretation / initial | 2 | 2 / 0 (insufficient_coverage) | 8 | 1 / 4 | review_exact_target_drafts | review_teaching_scope_and_content |
 | Résoudre la référence d'un pronom sujet — Texte informatif bref | interpretation / initial | 1 | 1 / 0 (insufficient_coverage) | 8 | 1 / 4 | review_exact_target_drafts | review_teaching_scope_and_content |
 | Résoudre la référence d'un pronom sujet — Texte argumentatif bref | interpretation / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | author_missing_evidence | author_or_reuse_exact_target_teaching |

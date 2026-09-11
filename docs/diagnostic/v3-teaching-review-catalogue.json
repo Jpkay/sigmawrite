@@ -5,12 +5,375 @@
   "facetChecksum": "sha256:2f826d79a46ce935f40ccb797f8857b1c9af21d89bd1f80a438ecaf5e28ae3f2",
   "assessmentSourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
   "summary": {
-    "lessons": 180,
-    "guidedExercises": 982,
-    "targets": 180,
+    "lessons": 183,
+    "guidedExercises": 994,
+    "targets": 183,
     "missingExposureAnnotations": []
   },
   "rows": [
+    {
+      "lessonId": "french-v3-teaching:explicit-chronology:narrative",
+      "contentChecksum": "sha256:c372d4fbd4370ab9b5a6221935b5e9613b2a995f0599307691a02368a693b053",
+      "skillId": "ordonner_evenements_explicites::all-receptive::text_type:narrative",
+      "nodeKey": "ordonner_evenements_explicites",
+      "facetKey": "ordonner_evenements_explicites::text_type:narrative",
+      "mode": "interpretation",
+      "domain": "reading_comprehension",
+      "prerequisites": [
+        "localiser_information_explicite::all-receptive::text_type:narrative"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 3,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 1,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "parentMinimumTextTypes": 2,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:bdbf8ccbcde5abc67f1633792451e814d27a46c59c0b4a873503c0ecf0891c1a",
+        "sentence:sha256:c02d178764aa2ec94b1716c76dfece46b3c7c03a3b028485647a756b76df3144"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:explicit-chronology:narrative",
+        "nodeKey": "ordonner_evenements_explicites",
+        "facetKey": "ordonner_evenements_explicites::text_type:narrative",
+        "mode": "interpretation",
+        "status": "draft_requires_review",
+        "titleFr": "Remettre les événements dans l’ordre",
+        "learnerQuestionFr": "Que se passe-t-il d’abord, puis ensuite ?",
+        "steps": [
+          {
+            "exampleFr": "À 18 h, Lina retrouve son cousin. À 10 h, elle achète un cadeau. À 15 h, elle emballe ce cadeau.",
+            "explanationFr": "Repère les dates ou les heures : 10 h, 15 h, 18 h. Ces repères donnent l’ordre dans le temps, appelé ordre chronologique. La première phrase du texte ne raconte pas forcément le premier événement."
+          },
+          {
+            "exampleFr": "Le 7 août, Émile rentre chez lui. Le 2 août, il arrive au camp. Le 5 août, il participe à une randonnée.",
+            "explanationFr": "Associe chaque date ou heure à son événement, puis classe ces repères : arrivée au camp → randonnée → retour à la maison. Ne décide pas seulement à partir de ce qui se passe habituellement."
+          }
+        ],
+        "practice": [
+          {
+            "id": "chronology-narrative-0-order",
+            "promptFr": "À 18 h, Lina retrouve son cousin. À 10 h, elle achète un cadeau. À 15 h, elle emballe ce cadeau.\n\nQuel est l’ordre chronologique ?",
+            "choices": [
+              "achat du cadeau → emballage du cadeau → rencontre avec le cousin",
+              "rencontre avec le cousin → achat du cadeau → emballage du cadeau",
+              "emballage du cadeau → rencontre avec le cousin → achat du cadeau",
+              "rencontre avec le cousin → emballage du cadeau → achat du cadeau"
+            ],
+            "answerFr": "achat du cadeau → emballage du cadeau → rencontre avec le cousin",
+            "hintFr": "Cherche les trois repères de temps et classe-les.",
+            "explanationFr": "L’ordre est : achat du cadeau → emballage du cadeau → rencontre avec le cousin."
+          },
+          {
+            "id": "chronology-narrative-0-middle",
+            "promptFr": "À 18 h, Lina retrouve son cousin. À 10 h, elle achète un cadeau. À 15 h, elle emballe ce cadeau.\n\nQuel événement a lieu en deuxième ?",
+            "choices": [
+              "emballage du cadeau",
+              "achat du cadeau",
+              "rencontre avec le cousin"
+            ],
+            "answerFr": "emballage du cadeau",
+            "hintFr": "Prends le repère qui se situe entre les deux autres.",
+            "explanationFr": "emballage du cadeau a lieu à la date ou à l’heure intermédiaire : 15 h."
+          },
+          {
+            "id": "chronology-narrative-1-order",
+            "promptFr": "Le 7 août, Émile rentre chez lui. Le 2 août, il arrive au camp. Le 5 août, il participe à une randonnée.\n\nQuel est l’ordre chronologique ?",
+            "choices": [
+              "arrivée au camp → randonnée → retour à la maison",
+              "retour à la maison → arrivée au camp → randonnée",
+              "randonnée → retour à la maison → arrivée au camp",
+              "retour à la maison → randonnée → arrivée au camp"
+            ],
+            "answerFr": "arrivée au camp → randonnée → retour à la maison",
+            "hintFr": "Cherche les trois repères de temps et classe-les.",
+            "explanationFr": "L’ordre est : arrivée au camp → randonnée → retour à la maison."
+          },
+          {
+            "id": "chronology-narrative-1-middle",
+            "promptFr": "Le 7 août, Émile rentre chez lui. Le 2 août, il arrive au camp. Le 5 août, il participe à une randonnée.\n\nQuel événement a lieu en deuxième ?",
+            "choices": [
+              "randonnée",
+              "arrivée au camp",
+              "retour à la maison"
+            ],
+            "answerFr": "randonnée",
+            "hintFr": "Prends le repère qui se situe entre les deux autres.",
+            "explanationFr": "randonnée a lieu à la date ou à l’heure intermédiaire : 5 août."
+          }
+        ],
+        "takeawayFr": "Associe chaque événement à son repère de temps, puis classe les repères. L’ordre des phrases et l’ordre des événements peuvent être différents.",
+        "boundaryFr": "Ici, les dates ou les heures sont indiquées. Déduire un ordre quand les repères ne sont pas écrits est une autre compétence. Le texte peut aussi présenter un programme prévu, pas des événements déjà réalisés.",
+        "materialExposure": {
+          "sentences": [
+            "À 18 h, Lina retrouve son cousin. À 10 h, elle achète un cadeau. À 15 h, elle emballe ce cadeau.",
+            "Le 7 août, Émile rentre chez lui. Le 2 août, il arrive au camp. Le 5 août, il participe à une randonnée."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:explicit-chronology:informational",
+      "contentChecksum": "sha256:77922dbfa04b16ec50baf9c9cdee58e72537307c6b4cc38460bfb57aacf5782b",
+      "skillId": "ordonner_evenements_explicites::all-receptive::text_type:informational",
+      "nodeKey": "ordonner_evenements_explicites",
+      "facetKey": "ordonner_evenements_explicites::text_type:informational",
+      "mode": "interpretation",
+      "domain": "reading_comprehension",
+      "prerequisites": [
+        "localiser_information_explicite::all-receptive::text_type:informational"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 3,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 1,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "parentMinimumTextTypes": 2,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:73756ab72f6068fa479d6ac8d292d53bf94bce25bdbd258b33c66e32eece8799",
+        "sentence:sha256:f1b65188a7d4c44bfe1ed35ed9f9838182d99ac01074d10892a85486f1f10c79"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:explicit-chronology:informational",
+        "nodeKey": "ordonner_evenements_explicites",
+        "facetKey": "ordonner_evenements_explicites::text_type:informational",
+        "mode": "interpretation",
+        "status": "draft_requires_review",
+        "titleFr": "Remettre les événements dans l’ordre",
+        "learnerQuestionFr": "Que se passe-t-il d’abord, puis ensuite ?",
+        "steps": [
+          {
+            "exampleFr": "La réunion se termine à 19 h. L’accueil commence à 17 h. La présentation débute à 18 h.",
+            "explanationFr": "Repère les dates ou les heures : 17 h, 18 h, 19 h. Ces repères donnent l’ordre dans le temps, appelé ordre chronologique. La première phrase du texte ne raconte pas forcément le premier événement."
+          },
+          {
+            "exampleFr": "Les badges sont distribués le 18 septembre. Les photos sont prises le 12 septembre. Les badges sont imprimés le 15 septembre.",
+            "explanationFr": "Associe chaque date ou heure à son événement, puis classe ces repères : prise des photos → impression des badges → distribution des badges. Ne décide pas seulement à partir de ce qui se passe habituellement."
+          }
+        ],
+        "practice": [
+          {
+            "id": "chronology-informational-0-order",
+            "promptFr": "La réunion se termine à 19 h. L’accueil commence à 17 h. La présentation débute à 18 h.\n\nQuel est l’ordre chronologique ?",
+            "choices": [
+              "accueil → présentation → fin de la réunion",
+              "fin de la réunion → accueil → présentation",
+              "présentation → fin de la réunion → accueil",
+              "fin de la réunion → présentation → accueil"
+            ],
+            "answerFr": "accueil → présentation → fin de la réunion",
+            "hintFr": "Cherche les trois repères de temps et classe-les.",
+            "explanationFr": "L’ordre est : accueil → présentation → fin de la réunion."
+          },
+          {
+            "id": "chronology-informational-0-middle",
+            "promptFr": "La réunion se termine à 19 h. L’accueil commence à 17 h. La présentation débute à 18 h.\n\nQuel événement a lieu en deuxième ?",
+            "choices": [
+              "présentation",
+              "accueil",
+              "fin de la réunion"
+            ],
+            "answerFr": "présentation",
+            "hintFr": "Prends le repère qui se situe entre les deux autres.",
+            "explanationFr": "présentation a lieu à la date ou à l’heure intermédiaire : 18 h."
+          },
+          {
+            "id": "chronology-informational-1-order",
+            "promptFr": "Les badges sont distribués le 18 septembre. Les photos sont prises le 12 septembre. Les badges sont imprimés le 15 septembre.\n\nQuel est l’ordre chronologique ?",
+            "choices": [
+              "prise des photos → impression des badges → distribution des badges",
+              "distribution des badges → prise des photos → impression des badges",
+              "impression des badges → distribution des badges → prise des photos",
+              "distribution des badges → impression des badges → prise des photos"
+            ],
+            "answerFr": "prise des photos → impression des badges → distribution des badges",
+            "hintFr": "Cherche les trois repères de temps et classe-les.",
+            "explanationFr": "L’ordre est : prise des photos → impression des badges → distribution des badges."
+          },
+          {
+            "id": "chronology-informational-1-middle",
+            "promptFr": "Les badges sont distribués le 18 septembre. Les photos sont prises le 12 septembre. Les badges sont imprimés le 15 septembre.\n\nQuel événement a lieu en deuxième ?",
+            "choices": [
+              "impression des badges",
+              "prise des photos",
+              "distribution des badges"
+            ],
+            "answerFr": "impression des badges",
+            "hintFr": "Prends le repère qui se situe entre les deux autres.",
+            "explanationFr": "impression des badges a lieu à la date ou à l’heure intermédiaire : 15 septembre."
+          }
+        ],
+        "takeawayFr": "Associe chaque événement à son repère de temps, puis classe les repères. L’ordre des phrases et l’ordre des événements peuvent être différents.",
+        "boundaryFr": "Ici, les dates ou les heures sont indiquées. Déduire un ordre quand les repères ne sont pas écrits est une autre compétence. Le texte peut aussi présenter un programme prévu, pas des événements déjà réalisés.",
+        "materialExposure": {
+          "sentences": [
+            "La réunion se termine à 19 h. L’accueil commence à 17 h. La présentation débute à 18 h.",
+            "Les badges sont distribués le 18 septembre. Les photos sont prises le 12 septembre. Les badges sont imprimés le 15 septembre."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:explicit-chronology:argumentative",
+      "contentChecksum": "sha256:13ede59341b98e9e41b7665e7ae62be75a2bccd4e577680b3b6649caacd55268",
+      "skillId": "ordonner_evenements_explicites::all-receptive::text_type:argumentative",
+      "nodeKey": "ordonner_evenements_explicites",
+      "facetKey": "ordonner_evenements_explicites::text_type:argumentative",
+      "mode": "interpretation",
+      "domain": "reading_comprehension",
+      "prerequisites": [
+        "localiser_information_explicite::all-receptive::text_type:argumentative"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 3,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 1,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "parentMinimumTextTypes": 2,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:2c80e103374a41e5a95881aa976ebed327c2983676072c9aaf32546376d246c9",
+        "sentence:sha256:e48ceb2fae721ef68a846fe71f2ee77e0274c6dbd2b5e769c8c2521c11cf55bc"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:explicit-chronology:argumentative",
+        "nodeKey": "ordonner_evenements_explicites",
+        "facetKey": "ordonner_evenements_explicites::text_type:argumentative",
+        "mode": "interpretation",
+        "status": "draft_requires_review",
+        "titleFr": "Remettre les événements dans l’ordre",
+        "learnerQuestionFr": "Que se passe-t-il d’abord, puis ensuite ?",
+        "steps": [
+          {
+            "exampleFr": "Testons notre jeu avant de le présenter : nous pourrons corriger ses défauts. La présentation aura lieu le 22 mai. Le test est prévu le 16 mai et les corrections le 19 mai.",
+            "explanationFr": "Repère les dates ou les heures : 16 mai, 19 mai, 22 mai. Ces repères donnent l’ordre dans le temps, appelé ordre chronologique. La première phrase du texte ne raconte pas forcément le premier événement."
+          },
+          {
+            "exampleFr": "Prenons le temps de relire notre message pour qu’il soit clair. Nous l’enverrons à 16 h. Nous l’écrirons à 10 h et le relirons à 13 h.",
+            "explanationFr": "Associe chaque date ou heure à son événement, puis classe ces repères : écriture du message → relecture du message → envoi du message. Ne décide pas seulement à partir de ce qui se passe habituellement."
+          }
+        ],
+        "practice": [
+          {
+            "id": "chronology-argumentative-0-order",
+            "promptFr": "Testons notre jeu avant de le présenter : nous pourrons corriger ses défauts. La présentation aura lieu le 22 mai. Le test est prévu le 16 mai et les corrections le 19 mai.\n\nQuel est l’ordre chronologique ?",
+            "choices": [
+              "test du jeu → corrections du jeu → présentation du jeu",
+              "présentation du jeu → test du jeu → corrections du jeu",
+              "corrections du jeu → présentation du jeu → test du jeu",
+              "présentation du jeu → corrections du jeu → test du jeu"
+            ],
+            "answerFr": "test du jeu → corrections du jeu → présentation du jeu",
+            "hintFr": "Cherche les trois repères de temps et classe-les.",
+            "explanationFr": "L’ordre est : test du jeu → corrections du jeu → présentation du jeu."
+          },
+          {
+            "id": "chronology-argumentative-0-middle",
+            "promptFr": "Testons notre jeu avant de le présenter : nous pourrons corriger ses défauts. La présentation aura lieu le 22 mai. Le test est prévu le 16 mai et les corrections le 19 mai.\n\nQuel événement a lieu en deuxième ?",
+            "choices": [
+              "corrections du jeu",
+              "test du jeu",
+              "présentation du jeu"
+            ],
+            "answerFr": "corrections du jeu",
+            "hintFr": "Prends le repère qui se situe entre les deux autres.",
+            "explanationFr": "corrections du jeu a lieu à la date ou à l’heure intermédiaire : 19 mai."
+          },
+          {
+            "id": "chronology-argumentative-1-order",
+            "promptFr": "Prenons le temps de relire notre message pour qu’il soit clair. Nous l’enverrons à 16 h. Nous l’écrirons à 10 h et le relirons à 13 h.\n\nQuel est l’ordre chronologique ?",
+            "choices": [
+              "écriture du message → relecture du message → envoi du message",
+              "envoi du message → écriture du message → relecture du message",
+              "relecture du message → envoi du message → écriture du message",
+              "envoi du message → relecture du message → écriture du message"
+            ],
+            "answerFr": "écriture du message → relecture du message → envoi du message",
+            "hintFr": "Cherche les trois repères de temps et classe-les.",
+            "explanationFr": "L’ordre est : écriture du message → relecture du message → envoi du message."
+          },
+          {
+            "id": "chronology-argumentative-1-middle",
+            "promptFr": "Prenons le temps de relire notre message pour qu’il soit clair. Nous l’enverrons à 16 h. Nous l’écrirons à 10 h et le relirons à 13 h.\n\nQuel événement a lieu en deuxième ?",
+            "choices": [
+              "relecture du message",
+              "écriture du message",
+              "envoi du message"
+            ],
+            "answerFr": "relecture du message",
+            "hintFr": "Prends le repère qui se situe entre les deux autres.",
+            "explanationFr": "relecture du message a lieu à la date ou à l’heure intermédiaire : 13 h."
+          }
+        ],
+        "takeawayFr": "Associe chaque événement à son repère de temps, puis classe les repères. L’ordre des phrases et l’ordre des événements peuvent être différents.",
+        "boundaryFr": "Ici, les dates ou les heures sont indiquées. Déduire un ordre quand les repères ne sont pas écrits est une autre compétence. Le texte peut aussi présenter un programme prévu, pas des événements déjà réalisés.",
+        "materialExposure": {
+          "sentences": [
+            "Testons notre jeu avant de le présenter : nous pourrons corriger ses défauts. La présentation aura lieu le 22 mai. Le test est prévu le 16 mai et les corrections le 19 mai.",
+            "Prenons le temps de relire notre message pour qu’il soit clair. Nous l’enverrons à 16 h. Nous l’écrirons à 10 h et le relirons à 13 h."
+          ]
+        }
+      }
+    },
     {
       "lessonId": "french-v3-teaching:informational-subject-reference",
       "contentChecksum": "sha256:4cfcaf3627bcba21ee371e6d74e76f18cafb9f4788c00c94d33d47e17af6e727",
@@ -26973,5 +27336,5 @@
       }
     }
   ],
-  "checksum": "sha256:19c932e0a8975e2c278a4d30093a591a85e0094301788f28a7b1e38d6b399656"
+  "checksum": "sha256:3fd8afdd9e747b3c40c871811edd4db43b0b10e2186e61f7c5fdab8674fce06f"
 }
