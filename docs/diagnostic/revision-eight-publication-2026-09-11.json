@@ -58,7 +58,7 @@
     "rolledBack": true,
     "candidatePassed": true,
     "publicFailure": "Supabase returned 521 Web server is down; auth and REST probes timed out; management SQL login role failed with 544 connection timeout",
-    "causality": "Not established. Supabase reports a current unresponsive-project incident, but this project\u2019s cause is not confirmed.",
+    "causality": "Not established. Supabase reports a current unresponsive-project incident, but this project’s cause is not confirmed.",
     "statusSource": "https://status.supabase.com/"
   },
   "databaseRecovery": {
@@ -110,12 +110,62 @@
   "activated": true,
   "persistentDefaultReleaseKey": "french-granular-diagnostic-v9",
   "fullLiveJourney": {
-    "status": "running",
+    "status": "passed",
     "studentId": "c2c948d9-c572-4e0d-900e-69937ddbc46a",
     "sessionId": "53a3bcbe-dc7a-4916-b59e-d9f8ee3403ce",
     "logPath": "tmp/plume-r8-live.log",
     "outputPrefix": "tmp/plume-r8-live",
     "realBrowserTime": true,
-    "profile": "deliberately mixed answers; optional wrong follow-up checks to exercise guided teaching"
+    "profile": "deliberately mixed answers; optional wrong follow-up checks to exercise guided teaching",
+    "results": {
+      "sessionId": "53a3bcbe-dc7a-4916-b59e-d9f8ee3403ce",
+      "releaseId": "e7566a20-2a96-4b7a-85fa-cb8883ab39a9",
+      "scope": 163,
+      "answers": 58,
+      "correct": 44,
+      "activeSeconds": 2082.7980000000002,
+      "completionReason": "time_budget",
+      "results": 542,
+      "activities": 5,
+      "reloadPreserved": true,
+      "profile": "Existing history retained; subsequent compound-form responses deliberately wrong and every fifth other response wrong. Technical QA, not a calibrated student profile."
+    },
+    "learning": {
+      "sessionId": "53a3bcbe-dc7a-4916-b59e-d9f8ee3403ce",
+      "contentId": "french-v3-teaching:canonical-sentence:recognition",
+      "skillId": "construction_phrase_canonique::reading-analysis",
+      "initialChecks": [
+        {
+          "skillId": "construction_phrase_canonique::reading-analysis",
+          "questionId": "v3-canonical-sentence:recognition-12",
+          "correct": false
+        },
+        {
+          "skillId": "construction_phrase_canonique::reading-analysis",
+          "questionId": "v3-canonical-sentence:recognition-1",
+          "correct": false
+        },
+        {
+          "skillId": "construction_phrase_canonique::reading-analysis",
+          "questionId": "v3-canonical-sentence:recognition-10",
+          "correct": false
+        }
+      ],
+      "practiceAnswers": 6,
+      "independentQuestion": "v3-canonical-sentence:recognition-11",
+      "guidedEvidenceIsolated": true,
+      "refinementSaved": true,
+      "reloadPassed": true
+    },
+    "resultAudit": {
+      "statusCounts": {
+        "mastered": 0,
+        "missing": 0,
+        "fragile": 0,
+        "uncertain": 20,
+        "unknown": 522
+      },
+      "findings": []
+    }
   }
 }
