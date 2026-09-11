@@ -175,7 +175,7 @@ const report = {
   findings: [
     "Runtime invariants alone do not establish sufficient diagnostic depth. Inspect item counts per target and strand below.",
     "Branch visits now allow up to six questions before rotation within a strand; the breadth/depth tradeoff still needs educator and student calibration.",
-    "Conjugation initially surveys general concepts, patterns and individual verbs, then gives individual verbs double scheduling weight; visits span tense categories.",
+    "Conjugation surveys concepts, patterns and verbs, confirms a foundation in the other available families, then prioritizes bounded verb visits across tense categories; initial exploration rotates after four questions and observed gaps receive confirmation within six.",
     "Refined verb-form targets use a separately versioned draft challenge order, starting with the present; the approved prerequisite depth remains unchanged.",
     "Tense recognition and interpretation use the draft ranks too; other general concepts retain graph depth. Challenge ranks and entry-point selection require educator/student validation before release.",
     "A profile distinction that was not sampled is not evidence that the system can distinguish that profile.",

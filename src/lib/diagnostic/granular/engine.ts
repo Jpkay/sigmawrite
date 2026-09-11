@@ -316,11 +316,12 @@ export function selectProbe(skills: readonly Skill[], bank: readonly Probe[], ob
   const availableFamilies=[...new Set(groupItems.map(item=>familyOf(skillById.get(item.skillId)!)))];
   const familySurveyComplete=availableFamilies.every(family=>groupHistory.filter(observation=>familyOf(skillById.get(observation.skillId)!)===family).length>=3);
   // Give each available family an initial three-question visit first.
-  // Individual verbs then need separate evidence. Reserve two production visits
-  // for them per general-concept or pattern visit; broad domain/strand balance
-  // remains unchanged. This is scheduling, never a mastery or chance estimate.
+  // Once the other available families have within-sitting evidence, give
+  // individual-verb time fourfold scheduling weight. Broad domain/strand
+  // budgets and stored time remain unchanged; this is not a mastery estimate.
+  const familyFoundationsConfirmed=availableFamilies.filter(f=>f!=='individual_verbs').every(f=>groupHistory.some(o=>familyOf(skillById.get(o.skillId)!)===f&&routingById.get(o.skillId)?.resolved));
   const familyBalanceHistory=groupHistory.map(observation=>({...observation,activeSeconds:
-    observation.activeSeconds/(familySurveyComplete&&familyOf(skillById.get(observation.skillId)!)==='individual_verbs'?2:1)}));
+    observation.activeSeconds/(familySurveyComplete&&familyFoundationsConfirmed&&familyOf(skillById.get(observation.skillId)!)==='individual_verbs'?4:1)}));
   let family=balance(availableFamilies,familyBalanceHistory,familyOf)[0];
   if(domain==='reading_comprehension'){
     const count=(value:string)=>groupHistory.filter(o=>familyOf(skillById.get(o.skillId)!)===value).length;
@@ -358,6 +359,7 @@ export function selectProbe(skills: readonly Skill[], bank: readonly Probe[], ob
   }
   const previousHigherFailure=sameVerb&&lastFamilyAnswer?.correct&&lastFamilySkill&&routingById.get(lastFamilySkill.id)?.status==='mastered'
     ?[...allFamilyHistory].reverse().find(o=>!o.skipped&&!o.correct&&skillById.get(o.skillId)?.branch===lastFamilySkill.branch&&challengeOf(skillById.get(o.skillId)!)>challengeOf(lastFamilySkill)&&allFamilyItems.some(item=>item.skillId===o.skillId)):undefined;
+  const recoveryConfirmationItems=sameVerb&&lastFamilyAnswer?.correct&&lastFamilySkill&&!routingById.get(lastFamilySkill.id)?.resolved&&allFamilyHistory.some(o=>!o.skipped&&!o.correct&&skillById.get(o.skillId)?.branch===lastFamilySkill.branch&&challengeOf(skillById.get(o.skillId)!)>challengeOf(lastFamilySkill))?allFamilyItems.filter(i=>i.skillId===lastFamilySkill.id):[];
   const boundaryItems=previousHigherFailure?allFamilyItems.filter(item=>item.skillId===previousHigherFailure.skillId):[];
   const formPriority:Record<string,number>={foundation:0,simple:1,compound:2,periphrastic:3,contrast:4};
   const formCandidates=[...new Set(allFamilyItems.map(item=>formOf(skillById.get(item.skillId)!)))];
@@ -375,7 +377,27 @@ export function selectProbe(skills: readonly Skill[], bank: readonly Probe[], ob
     return count===0?1:1+Math.floor((count-1)/3);
   };
   formCandidates.sort((a,b)=>formVisitRound(a)-formVisitRound(b)||(formPriority[a]??5)-(formPriority[b]??5)||a.localeCompare(b));
-  const form=recovery.length?formOf(skillById.get(recovery[0].skillId)!):boundaryItems.length?formOf(skillById.get(boundaryItems[0].skillId)!):formCandidates[0];
+  // After the initial category survey, gather a bounded visit for one verb.
+  // Confirm the nearest unresolved challenge before spreading its remaining
+  // questions across more tense categories. Other domains keep their budgets.
+  const verbErrorItems=family==='individual_verbs'&&lastFamilySkill&&!routingById.get(lastFamilySkill.id)?.resolved&&allFamilyHistory.some(o=>o.skillId===lastFamilySkill.id&&!o.correct&&!o.skipped)&&allFamilyHistory.filter(o=>skillById.get(o.skillId)!.branch===lastFamilySkill.branch).length<(policy.itemsPerBranchVisit??6)?allFamilyItems.filter(i=>i.skillId===lastFamilySkill.id):[];
+  let verbVisitItems:Probe[]=[];
+  let verbVisitReason:Extract<Selection,{kind:'question'}>['reason']='branch_coverage';
+  if(family==='individual_verbs'&&familySurveyComplete){
+    const count=(branch:string)=>allFamilyHistory.filter(o=>skillById.get(o.skillId)!.branch===branch).length;
+    const screeningSize=Math.min(4,Math.max(1,policy.itemsPerBranchVisit??6));
+    const surveyed=[...new Set(allFamilyHistory.map(o=>skillById.get(o.skillId)!.branch))].filter(b=>count(b)>=screeningSize).length;
+    const visits=(branch:string)=>Math.floor(count(branch)/(surveyed<2?screeningSize:Math.max(1,policy.itemsPerBranchVisit??6)));
+    const candidates=[...new Set(allFamilyItems.map(i=>skillById.get(i.skillId)!.branch))];
+    const entryDistances=new Map<string,number>(),candidateSet=new Set(candidates);
+    for(const item of bank){const skill=skillById.get(item.skillId);if(!skill||item.usage==='learning'||skill.assessmentStage==='learning'||!candidateSet.has(skill.branch)||(scope&&!scope.assessmentSkillIds.has(skill.id)))continue;const distance=Math.abs(challengeOf(skill)-policy.startingLevel);entryDistances.set(skill.branch,Math.min(entryDistances.get(skill.branch)??Infinity,distance));}
+    candidates.sort((a,b)=>visits(a)-visits(b)||(entryDistances.get(a)??Infinity)-(entryDistances.get(b)??Infinity)||a.localeCompare(b));
+    const branchItems=allFamilyItems.filter(i=>skillById.get(i.skillId)!.branch===candidates[0]);
+    const target=branchItems.map(i=>skillById.get(i.skillId)!).sort((a,b)=>Math.abs(challengeOf(a)-policy.startingLevel)-Math.abs(challengeOf(b)-policy.startingLevel)||challengeOf(a)-challengeOf(b)||a.id.localeCompare(b.id))[0];
+    verbVisitItems=branchItems.filter(i=>i.skillId===target.id);
+    verbVisitReason=allFamilyHistory.some(o=>o.skillId===target.id)?'confirmation':allFamilyHistory.some(o=>skillById.get(o.skillId)!.branch===target.branch&&routingById.get(o.skillId)?.status==='mastered'&&challengeOf(skillById.get(o.skillId)!)<challengeOf(target))?'step_up':'branch_coverage';
+  }
+  const form=recovery.length?formOf(skillById.get(recovery[0].skillId)!):recoveryConfirmationItems.length?formOf(skillById.get(recoveryConfirmationItems[0].skillId)!):boundaryItems.length?formOf(skillById.get(boundaryItems[0].skillId)!):verbErrorItems.length?formOf(skillById.get(verbErrorItems[0].skillId)!):verbVisitItems.length?formOf(skillById.get(verbVisitItems[0].skillId)!):formCandidates[0];
   const familyItems=allFamilyItems.filter(item=>formOf(skillById.get(item.skillId)!)===form);
   const familyHistory=allFamilyHistory.filter(observation=>formOf(skillById.get(observation.skillId)!)===form);
   const branches=[...new Set(familyItems.map(item=>skillById.get(item.skillId)!.branch))];
@@ -420,7 +442,7 @@ export function selectProbe(skills: readonly Skill[], bank: readonly Probe[], ob
     &&recentSkill.prerequisites.some(id=>skillById.get(id)?.branch!==recentSkill.branch)
     &&recentSkill.prerequisites.every(id=>routingById.get(id)?.status==="mastered")
     &&branchCount(recentSkill.branch)<visitSize&&familyItems.some(item=>item.skillId===recentSkill.id);
-  const branch=recovery.length?skillById.get(recovery[0].skillId)!.branch:boundaryItems.length?skillById.get(boundaryItems[0].skillId)!.branch:crossPrerequisites.length?skillById.get(crossPrerequisites[0].skillId)!.branch
+  const branch=recovery.length?skillById.get(recovery[0].skillId)!.branch:recoveryConfirmationItems.length?skillById.get(recoveryConfirmationItems[0].skillId)!.branch:boundaryItems.length?skillById.get(boundaryItems[0].skillId)!.branch:verbErrorItems.length?skillById.get(verbErrorItems[0].skillId)!.branch:verbVisitItems.length?skillById.get(verbVisitItems[0].skillId)!.branch:crossPrerequisites.length?skillById.get(crossPrerequisites[0].skillId)!.branch
     :crossSuccessors.length?skillById.get(crossSuccessors[0].skillId)!.branch
     :continueFrontier?recentSkill!.branch:branches[0];
   const crossSuccessorIds=new Set(crossSuccessors.filter(item=>skillById.get(item.skillId)!.branch===branch).map(item=>item.skillId));
@@ -440,6 +462,8 @@ export function selectProbe(skills: readonly Skill[], bank: readonly Probe[], ob
   const boundaryIds=new Set(boundaryItems.map(item=>item.skillId));
   if(recoveryIds.size&&restrict(i=>recoveryIds.has(i.skillId),'step_down')){
     // Recover across tense categories while preserving exact skill evidence.
+  }else if(recoveryConfirmationItems.length&&restrict(i=>i.skillId===recoveryConfirmationItems[0].skillId,'confirmation')){
+    // Finish checking the easier target before revisiting the failed boundary.
   }else if(boundaryIds.size&&restrict(i=>boundaryIds.has(i.skillId),'recheck_boundary')){
     // The easier target now has its own evidence; revisit the harder failure.
   }else if (crossPrerequisiteIds.size && restrict(i => crossPrerequisiteIds.has(i.skillId), "step_down")) {
@@ -448,6 +472,10 @@ export function selectProbe(skills: readonly Skill[], bank: readonly Probe[], ob
     // Ask the next graph target; prerequisite evidence never scores it.
   } else if (restrict(i => skillById.get(i.skillId)!.anchor === true, "branch_coverage")) {
     // Explicit essentials are measured even when challenge routing would start higher.
+  } else if (verbErrorItems.length && restrict(i=>i.skillId===verbErrorItems[0].skillId,'confirmation')) {
+    // Verify an observed gap within the bounded verb visit.
+  } else if (verbVisitItems.length && restrict(i=>i.skillId===verbVisitItems[0].skillId,verbVisitReason)) {
+    // Confirm this exact target; another tense receives no inferred evidence.
   } else if (!lastSkill) {
     reason = "branch_coverage";
   } else if (!last?.correct) {

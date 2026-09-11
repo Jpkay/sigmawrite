@@ -123,3 +123,18 @@ it('steps down across tense categories of the same verb and revisits the failed 
  if(next.kind==='question')expect(history.some(o=>o.itemId===next.item.id)).toBe(false);
  expect(assessSkills(skills,history).find(s=>s.skillId==='compound')?.status).not.toBe('mastered');
 });
+
+it('confirms family foundations, explores another verb, and verifies its own failed boundary within a bounded visit',()=>{
+ const make=(id:string,branch:string,level:number,formFamily:Skill['formFamily']):Skill=>({id,branch,level,formFamily,domain:'conjugation',samplingGroup:'conjugaison',prerequisites:[],modes:['production']});
+ const skills=[make('concept','conjugation:concept',1,undefined),make('pattern-present','conjugation:pattern:regular_er',1,'simple'),make('pattern-compound','conjugation:pattern:regular_er',3,'compound'),...['a','b'].flatMap(v=>[make(`${v}-present`,`conjugation:verb:${v}`,1,'simple'),make(`${v}-recent`,`conjugation:verb:${v}`,2,'periphrastic')])];
+ const probes:Probe[]=skills.flatMap(s=>Array.from({length:8},(_,i)=>({id:`${s.id}:${i}`,skillId:s.id,mode:'production',contextId:`${s.id}:${i}`,difficulty:.5,guessProbability:.05,expectedSeconds:30})));
+ const history:Observation[]=[];
+ const add=(id:string,count:number,correct=true)=>history.push(...probes.filter(p=>p.skillId===id).slice(0,count).map(p=>({...p,itemId:p.id,correct,activeSeconds:30})));
+ add('concept',4);add('pattern-present',3);add('pattern-compound',1);add('a-present',3);add('a-recent',1);
+ for(let i=0;i<3;i++){const n=selectProbe(skills,probes,history);expect(n).toMatchObject({kind:'question',item:{skillId:'b-present'}});if(n.kind!=='question')throw Error('Missing verb probe');history.push({...n.item,itemId:n.item.id,correct:true,activeSeconds:30});}
+ for(let i=0;i<3;i++){const n=selectProbe(skills,probes,history);expect(n).toMatchObject({kind:'question',reason:i===0?'step_up':'confirmation',item:{skillId:'b-recent'}});if(n.kind!=='question')throw Error('Missing boundary probe');expect(history.some(o=>o.itemId===n.item.id)).toBe(false);history.push({...n.item,itemId:n.item.id,correct:false,activeSeconds:30});}
+ const results=assessSkills(skills,history);expect(results.find(r=>r.skillId==='b-present')?.status).toBe('mastered');expect(results.find(r=>r.skillId==='b-recent')?.status).toBe('missing');expect(results.find(r=>r.skillId==='a-recent')?.status).toBe('uncertain');
+ const contradictory=history.map(o=>o.skillId==='b-recent'?{...o,correct:o.itemId!==history.find(x=>x.skillId==='b-recent')!.itemId}:o);
+ expect(assessSkills(skills,contradictory).find(r=>r.skillId==='b-recent')?.status).toBe('uncertain');
+ const rotated=selectProbe(skills,probes,contradictory);expect(rotated.kind).toBe('question');if(rotated.kind==='question')expect(rotated.item.skillId).not.toBe('b-recent');
+});
