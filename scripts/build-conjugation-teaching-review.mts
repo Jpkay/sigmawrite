@@ -8,7 +8,7 @@ const packet = `# Leçons de conjugaison : dossier de revue
 
 Statut : brouillons, aucune approbation ni activation.
 
-Six cibles distinctes au présent : modèle régulier en -er, modèle finir, ajustements -ger et -cer, aller et faire. Les formes attendues et tableaux sont calculés par le conjugueur déterministe. Vérifier aussi leur justesse, le sens des phrases, la clarté des explications et le rattachement à chaque cible.
+Dix-huit cibles distinctes au présent : modèle régulier en -er, modèle finir, ajustements -ger et -cer, et quatorze verbes fréquents traités séparément. Les formes attendues et tableaux sont calculés par le conjugueur déterministe. Vérifier aussi leur justesse, le sens des phrases, la clarté des explications et le rattachement à chaque cible.
 
 Les exercices sont guidés et peuvent donner des indices : ils ne prouvent pas une maîtrise indépendante. Les exemples, tableaux et corrections constituent une exposition. Les annotations recensent les verbes explicitement montrés et les phrases d’exemple/correction ; une revue des recoupements sémantiques et du vocabulaire incident reste nécessaire avant publication. Aucun questionnaire de vérification indépendante n’est approuvé par ce dossier.
 

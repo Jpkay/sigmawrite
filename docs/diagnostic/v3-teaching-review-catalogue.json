@@ -5,9 +5,9 @@
   "facetChecksum": "sha256:71d060c34e8fd204b3cf57e5126a2e30585dc72c463b0506f22aa602eb913a98",
   "assessmentSourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
   "summary": {
-    "lessons": 60,
-    "guidedExercises": 307,
-    "targets": 60,
+    "lessons": 72,
+    "guidedExercises": 379,
+    "targets": 72,
     "missingExposureAnnotations": []
   },
   "rows": [
@@ -9245,7 +9245,1651 @@
           ]
         }
       }
+    },
+    {
+      "lessonId": "french-v3-teaching:present:verb:être",
+      "contentChecksum": "sha256:780fb93d085651bc696ace48f6f199fbd8100e1f41086a379d8413c1fd50aba3",
+      "skillId": "produire_present_indicatif::writing-controlled-production::verb:être",
+      "nodeKey": "produire_present_indicatif",
+      "facetKey": "produire_present_indicatif::verb:être",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "distinguer_personne_nombre::reading-receptive",
+        "reconnaitre_radical_terminaison::reading-receptive",
+        "reconnaitre_present_indicatif::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:074e0b5d26a6aefa538ea93521fc2ef8f7f9df69ee14da2cb9e40e17b16f6872",
+        "sentence:sha256:1a684c40c1b92cc38d2710331acb97105deb0160e34fb3cba66a23c70452c5ba",
+        "sentence:sha256:417eac200598e0a8267d42884909044c199a2442966bce3feb12915a656e643a",
+        "sentence:sha256:6ebce514f15e19a83d7039d9fca94273b06f557e07d4bfab24941205b0c0f14d",
+        "sentence:sha256:75cf05686071cd449e1e72be492855908bc0289ba6e219b5c36a339ac0a9d004",
+        "sentence:sha256:9d21508eeb76ebd6f385116917fad0add5b4d1082c0d7b49da7aa66f02478139",
+        "sentence:sha256:9da63b6c1c96adbb7d31c2d6000af96e74a676b997213888dd53c373a00f2d78",
+        "sentence:sha256:eaf49da0cd0a0b88e07c54d2c35392eb35425aa07ea471940a83a1950e52e66f",
+        "word:sha256:0e8c809d71ca79b97c97516e8f9792a277aa2a2c72586ada6c3a73d265f30e8d"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:present:verb:être",
+        "nodeKey": "produire_present_indicatif",
+        "facetKey": "produire_present_indicatif::verb:être",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Choisir la bonne forme de être au présent",
+        "learnerQuestionFr": "Comment écrire être quand le sujet change ?",
+        "steps": [
+          {
+            "exampleFr": "Je suis prêt. Nous sommes prêts.",
+            "explanationFr": "Être sert ici à dire comment se trouvent les personnes. Sa forme change avec le sujet ; on ne peut pas garder un seul début et ajouter les terminaisons de parler."
+          },
+          {
+            "exampleFr": "Tu es calme. Elle est calme.",
+            "explanationFr": "Es et est se prononcent souvent de la même façon. À l’écrit, tu demande es et elle demande est. Le t appartient au verbe avec il, elle ou on."
+          },
+          {
+            "exampleFr": "je : suis\ntu : es\nil / elle / on : est\nnous : sommes\nvous : êtes\nils / elles : sont",
+            "explanationFr": "Les six formes de être servent de repères. Le tableau aide à s’entraîner ; le regarder ne suffit pas à montrer que tu sais les retrouver sans aide."
+          }
+        ],
+        "takeawayFr": "Repère le sujet avant de choisir la forme de être. Vérifie le début du verbe et sa lettre finale.",
+        "boundaryFr": "Cette leçon porte sur être au présent de l’indicatif. Les autres temps et les autres verbes seront travaillés et vérifiés séparément.",
+        "practice": [
+          {
+            "id": "guided:present:verb:être:1",
+            "promptFr": "Conjugue être au présent. Écris seulement le verbe : Je ___ dans le jardin.",
+            "answerFr": "suis",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec je.",
+            "explanationFr": "Je suis dans le jardin. Avec je, être s’écrit suis."
+          },
+          {
+            "id": "guided:present:verb:être:2",
+            "promptFr": "Conjugue être au présent. Écris seulement le verbe : Tu ___ au premier rang.",
+            "answerFr": "es",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec tu.",
+            "explanationFr": "Tu es au premier rang. Avec tu, être s’écrit es."
+          },
+          {
+            "id": "guided:present:verb:être:3",
+            "promptFr": "Conjugue être au présent. Écris seulement le verbe : Elle ___ contente de son dessin.",
+            "answerFr": "est",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec il, elle ou on.",
+            "explanationFr": "Elle est contente de son dessin. Avec il, elle ou on, être s’écrit est."
+          },
+          {
+            "id": "guided:present:verb:être:4",
+            "promptFr": "Conjugue être au présent. Écris seulement le verbe : Nous ___ en avance.",
+            "answerFr": "sommes",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec nous.",
+            "explanationFr": "Nous sommes en avance. Avec nous, être s’écrit sommes."
+          },
+          {
+            "id": "guided:present:verb:être:5",
+            "promptFr": "Conjugue être au présent. Écris seulement le verbe : Vous ___ près de la porte.",
+            "answerFr": "êtes",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec vous.",
+            "explanationFr": "Vous êtes près de la porte. Avec vous, être s’écrit êtes."
+          },
+          {
+            "id": "guided:present:verb:être:6",
+            "promptFr": "Conjugue être au présent. Écris seulement le verbe : Ils ___ dans la même équipe.",
+            "answerFr": "sont",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec ils ou elles.",
+            "explanationFr": "Ils sont dans la même équipe. Avec ils ou elles, être s’écrit sont."
+          }
+        ],
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "être",
+              "form": "être"
+            }
+          ],
+          "sentences": [
+            "Je suis prêt. Nous sommes prêts.",
+            "Tu es calme. Elle est calme.",
+            "Je suis dans le jardin.",
+            "Tu es au premier rang.",
+            "Elle est contente de son dessin.",
+            "Nous sommes en avance.",
+            "Vous êtes près de la porte.",
+            "Ils sont dans la même équipe."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:present:verb:avoir",
+      "contentChecksum": "sha256:c30b1e7f1d4619998ad6cbaf5f3f3d03a36c30a7c6bcb5097542b45c83d67751",
+      "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
+      "nodeKey": "produire_present_indicatif",
+      "facetKey": "produire_present_indicatif::verb:avoir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "distinguer_personne_nombre::reading-receptive",
+        "reconnaitre_radical_terminaison::reading-receptive",
+        "reconnaitre_present_indicatif::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:25e88479bec24c5a307134c1a1d4ac6e26907e72c50f976c2dfa76f27cdd0e1b",
+        "sentence:sha256:5ac9059c48c532da3a7d2f548536dd9b3d4baef4c0e2863c7b2d8d7de815a781",
+        "sentence:sha256:b05c8e45462819fb46545c67b7587067ee5a35c4a743cd964f1bab36b7eabffd",
+        "sentence:sha256:c43f15229772fe82962a1125ed7f0f008a9254beb61dbc033c058f2cef2e7a7d",
+        "sentence:sha256:d4f78e671b6d35d1c4510167d17ed46f63889bcd341d203b23ab0c5621515677",
+        "sentence:sha256:dbcf9f48fd444d646d29d5f673c5a7cf74a1776c8411ea70d80f0603739114ee",
+        "sentence:sha256:e074e2f986d8c5af9f722afd6cdecfdc8fe153eed2410da25fc416b8703c32a2",
+        "sentence:sha256:fff54c1454703fde1831ab59c5e32983c5897efac363218b3e2f5502d3ecce42",
+        "word:sha256:130f28240b75513decf695074e35d63b8daf7399920a31cc2a8e0d8ca2e6f1fe"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:present:verb:avoir",
+        "nodeKey": "produire_present_indicatif",
+        "facetKey": "produire_present_indicatif::verb:avoir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Choisir la bonne forme de avoir au présent",
+        "learnerQuestionFr": "Comment écrire avoir quand le sujet change ?",
+        "steps": [
+          {
+            "exampleFr": "J’ai une idée. Nous avons une idée.",
+            "explanationFr": "Avoir exprime ici ce que chacun possède. Avec je, on écrit j’ai : le e de je disparaît devant la voyelle. Le verbe seul s’écrit ai."
+          },
+          {
+            "exampleFr": "Tu as un carnet. Elle a un carnet.",
+            "explanationFr": "Avec tu, as prend un s. Avec elle, a n’en prend pas. La forme ils ont est différente du mot on, qui peut être un sujet."
+          },
+          {
+            "exampleFr": "je : ai\ntu : as\nil / elle / on : a\nnous : avons\nvous : avez\nils / elles : ont",
+            "explanationFr": "Les six formes de avoir servent de repères. Le tableau aide à s’entraîner ; le regarder ne suffit pas à montrer que tu sais les retrouver sans aide."
+          }
+        ],
+        "takeawayFr": "Repère le sujet avant de choisir la forme de avoir. Vérifie le début du verbe et sa lettre finale.",
+        "boundaryFr": "Cette leçon porte sur avoir au présent de l’indicatif. Les autres temps et les autres verbes seront travaillés et vérifiés séparément.",
+        "practice": [
+          {
+            "id": "guided:present:verb:avoir:1",
+            "promptFr": "Conjugue avoir au présent. Écris seulement le verbe : J’___ une lampe de poche.",
+            "answerFr": "ai",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec je.",
+            "explanationFr": "J’ai une lampe de poche. Avec je, avoir s’écrit ai."
+          },
+          {
+            "id": "guided:present:verb:avoir:2",
+            "promptFr": "Conjugue avoir au présent. Écris seulement le verbe : Tu ___ une nouvelle question.",
+            "answerFr": "as",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec tu.",
+            "explanationFr": "Tu as une nouvelle question. Avec tu, avoir s’écrit as."
+          },
+          {
+            "id": "guided:present:verb:avoir:3",
+            "promptFr": "Conjugue avoir au présent. Écris seulement le verbe : On ___ assez de papier.",
+            "answerFr": "a",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec il, elle ou on.",
+            "explanationFr": "On a assez de papier. Avec il, elle ou on, avoir s’écrit a."
+          },
+          {
+            "id": "guided:present:verb:avoir:4",
+            "promptFr": "Conjugue avoir au présent. Écris seulement le verbe : Nous ___ des places pour le concert.",
+            "answerFr": "avons",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec nous.",
+            "explanationFr": "Nous avons des places pour le concert. Avec nous, avoir s’écrit avons."
+          },
+          {
+            "id": "guided:present:verb:avoir:5",
+            "promptFr": "Conjugue avoir au présent. Écris seulement le verbe : Vous ___ le même horaire.",
+            "answerFr": "avez",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec vous.",
+            "explanationFr": "Vous avez le même horaire. Avec vous, avoir s’écrit avez."
+          },
+          {
+            "id": "guided:present:verb:avoir:6",
+            "promptFr": "Conjugue avoir au présent. Écris seulement le verbe : Elles ___ un projet commun.",
+            "answerFr": "ont",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec ils ou elles.",
+            "explanationFr": "Elles ont un projet commun. Avec ils ou elles, avoir s’écrit ont."
+          }
+        ],
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "avoir",
+              "form": "avoir"
+            }
+          ],
+          "sentences": [
+            "J’ai une idée. Nous avons une idée.",
+            "Tu as un carnet. Elle a un carnet.",
+            "J’ai une lampe de poche.",
+            "Tu as une nouvelle question.",
+            "On a assez de papier.",
+            "Nous avons des places pour le concert.",
+            "Vous avez le même horaire.",
+            "Elles ont un projet commun."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:present:verb:prendre",
+      "contentChecksum": "sha256:74fcc58c55d219d9a8cb85188e028a0d55f203cbfe03318d332f424f15111cab",
+      "skillId": "produire_present_indicatif::writing-controlled-production::verb:prendre",
+      "nodeKey": "produire_present_indicatif",
+      "facetKey": "produire_present_indicatif::verb:prendre",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "distinguer_personne_nombre::reading-receptive",
+        "reconnaitre_radical_terminaison::reading-receptive",
+        "reconnaitre_present_indicatif::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:10da043131350266ce9ada601a75ad224a141ebde1ced0c86d3848e4060caab5",
+        "sentence:sha256:4f1ece05f4b4dad85ec7a0ac0e92fa2a42ef52be97e5c01d131a03cf39cbdf37",
+        "sentence:sha256:67a6e625a77632a86b324dde865cccee9712cd6a451c3ac73ca67851507e2418",
+        "sentence:sha256:91108f35ea1bbde8e5923717670081e6198db3e731c0c292379bf4ae46451acb",
+        "sentence:sha256:96895fa19fafcedd70cde56339d5decf3750a56a94af61b891877c449e47a2db",
+        "sentence:sha256:c98a3be412122906a6f8731682fb03316337bb547455aab5b7ba3f42610a4c46",
+        "sentence:sha256:da2b19d1e3a5397e376a8f524346b40c012f5bfad9bfa91c8c37663f475bd450",
+        "sentence:sha256:eb8e74a98b31d0aa87408a779a22e37fea6bc0d0dae958b86cf223968e2fac76",
+        "word:sha256:23d11cc3bd461548ed9bb9430275d3db49ead4b7604fd7131d3b424b67c8d633"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:present:verb:prendre",
+        "nodeKey": "produire_present_indicatif",
+        "facetKey": "produire_present_indicatif::verb:prendre",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Choisir la bonne forme de prendre au présent",
+        "learnerQuestionFr": "Comment écrire prendre quand le sujet change ?",
+        "steps": [
+          {
+            "exampleFr": "Je prends mon sac. Nous prenons nos sacs.",
+            "explanationFr": "Au singulier, on garde le d dans prends et prend. Avec nous et vous, le d disparaît : prenons, prenez."
+          },
+          {
+            "exampleFr": "Elle prend le bus. Elles prennent le bus.",
+            "explanationFr": "Avec elles, prennent s’écrit avec deux n. Ne recopie pas simplement la forme du singulier en ajoutant -ent."
+          },
+          {
+            "exampleFr": "je : prends\ntu : prends\nil / elle / on : prend\nnous : prenons\nvous : prenez\nils / elles : prennent",
+            "explanationFr": "Les six formes de prendre servent de repères. Le tableau aide à s’entraîner ; le regarder ne suffit pas à montrer que tu sais les retrouver sans aide."
+          }
+        ],
+        "takeawayFr": "Repère le sujet avant de choisir la forme de prendre. Vérifie le début du verbe et sa lettre finale.",
+        "boundaryFr": "Cette leçon porte sur prendre au présent de l’indicatif. Les autres temps et les autres verbes seront travaillés et vérifiés séparément.",
+        "practice": [
+          {
+            "id": "guided:present:verb:prendre:1",
+            "promptFr": "Conjugue prendre au présent. Écris seulement le verbe : Je ___ un livre sur l’étagère.",
+            "answerFr": "prends",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec je.",
+            "explanationFr": "Je prends un livre sur l’étagère. Avec je, prendre s’écrit prends."
+          },
+          {
+            "id": "guided:present:verb:prendre:2",
+            "promptFr": "Conjugue prendre au présent. Écris seulement le verbe : Tu ___ le chemin du parc.",
+            "answerFr": "prends",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec tu.",
+            "explanationFr": "Tu prends le chemin du parc. Avec tu, prendre s’écrit prends."
+          },
+          {
+            "id": "guided:present:verb:prendre:3",
+            "promptFr": "Conjugue prendre au présent. Écris seulement le verbe : Elle ___ une photo.",
+            "answerFr": "prend",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec il, elle ou on.",
+            "explanationFr": "Elle prend une photo. Avec il, elle ou on, prendre s’écrit prend."
+          },
+          {
+            "id": "guided:present:verb:prendre:4",
+            "promptFr": "Conjugue prendre au présent. Écris seulement le verbe : Nous ___ notre temps.",
+            "answerFr": "prenons",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec nous.",
+            "explanationFr": "Nous prenons notre temps. Avec nous, prendre s’écrit prenons."
+          },
+          {
+            "id": "guided:present:verb:prendre:5",
+            "promptFr": "Conjugue prendre au présent. Écris seulement le verbe : Vous ___ le train du soir.",
+            "answerFr": "prenez",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec vous.",
+            "explanationFr": "Vous prenez le train du soir. Avec vous, prendre s’écrit prenez."
+          },
+          {
+            "id": "guided:present:verb:prendre:6",
+            "promptFr": "Conjugue prendre au présent. Écris seulement le verbe : Ils ___ des notes.",
+            "answerFr": "prennent",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec ils ou elles.",
+            "explanationFr": "Ils prennent des notes. Avec ils ou elles, prendre s’écrit prennent."
+          }
+        ],
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "prendre",
+              "form": "prendre"
+            }
+          ],
+          "sentences": [
+            "Je prends mon sac. Nous prenons nos sacs.",
+            "Elle prend le bus. Elles prennent le bus.",
+            "Je prends un livre sur l’étagère.",
+            "Tu prends le chemin du parc.",
+            "Elle prend une photo.",
+            "Nous prenons notre temps.",
+            "Vous prenez le train du soir.",
+            "Ils prennent des notes."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:present:verb:venir",
+      "contentChecksum": "sha256:5fe0416847c6c49326d39c3352e3667fc277c97926c138704c435c31ff13b513",
+      "skillId": "produire_present_indicatif::writing-controlled-production::verb:venir",
+      "nodeKey": "produire_present_indicatif",
+      "facetKey": "produire_present_indicatif::verb:venir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "distinguer_personne_nombre::reading-receptive",
+        "reconnaitre_radical_terminaison::reading-receptive",
+        "reconnaitre_present_indicatif::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:2cf68073e481b04634f425cf78d5a477beff999198e7a189a132adc39864580c",
+        "sentence:sha256:5c5b4b506d2554225dbbcb79814ea8500f77f74cea6fa1c9db01ae3dd98314f0",
+        "sentence:sha256:8a34801a8f9951843d3748dcdf41bcd66d1a49e1e5ed028e4062a16f665b38b1",
+        "sentence:sha256:8d164ac468c2ec6d5259e50ba38e9d1c8bcb882b150b2b1270ee22d15d58eddd",
+        "sentence:sha256:a207434256f0d19e791fe80424eba0f4002eadfa04aa8c2581f80fa4dbf2448f",
+        "sentence:sha256:aed27e0fc41619aa9b81d95572d756e6871a1e624ab661977921c27781a59058",
+        "sentence:sha256:b3a04ab35d940fb02c2f72dc83439b2f520011805d24eff13efd09ce6f7554a4",
+        "sentence:sha256:fb52bc08d2fb821a3f54f9ac02e276d470b9e3646df268626f3aab3b6344ac9c",
+        "word:sha256:db1839abb9ee522ff2699acf188525b01c33d9cdcf68feb7fb4e98616a0434fe"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:present:verb:venir",
+        "nodeKey": "produire_present_indicatif",
+        "facetKey": "produire_present_indicatif::verb:venir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Choisir la bonne forme de venir au présent",
+        "learnerQuestionFr": "Comment écrire venir quand le sujet change ?",
+        "steps": [
+          {
+            "exampleFr": "Je viens au club. Nous venons au club.",
+            "explanationFr": "Le début change : vien- au singulier, ven- avec nous et vous. Ces débuts du verbe s’appellent des radicaux."
+          },
+          {
+            "exampleFr": "Elle vient demain. Elles viennent demain.",
+            "explanationFr": "Avec il, elle ou on, vient finit par t. Avec ils ou elles, viennent contient deux n. Le présent peut ici parler d’un déplacement prévu pour demain."
+          },
+          {
+            "exampleFr": "je : viens\ntu : viens\nil / elle / on : vient\nnous : venons\nvous : venez\nils / elles : viennent",
+            "explanationFr": "Les six formes de venir servent de repères. Le tableau aide à s’entraîner ; le regarder ne suffit pas à montrer que tu sais les retrouver sans aide."
+          }
+        ],
+        "takeawayFr": "Repère le sujet avant de choisir la forme de venir. Vérifie le début du verbe et sa lettre finale.",
+        "boundaryFr": "Cette leçon porte sur venir au présent de l’indicatif. Les autres temps et les autres verbes seront travaillés et vérifiés séparément.",
+        "practice": [
+          {
+            "id": "guided:present:verb:venir:1",
+            "promptFr": "Conjugue venir au présent. Écris seulement le verbe : Je ___ voir ton exposition.",
+            "answerFr": "viens",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec je.",
+            "explanationFr": "Je viens voir ton exposition. Avec je, venir s’écrit viens."
+          },
+          {
+            "id": "guided:present:verb:venir:2",
+            "promptFr": "Conjugue venir au présent. Écris seulement le verbe : Tu ___ avec ton frère.",
+            "answerFr": "viens",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec tu.",
+            "explanationFr": "Tu viens avec ton frère. Avec tu, venir s’écrit viens."
+          },
+          {
+            "id": "guided:present:verb:venir:3",
+            "promptFr": "Conjugue venir au présent. Écris seulement le verbe : On ___ à pied.",
+            "answerFr": "vient",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec il, elle ou on.",
+            "explanationFr": "On vient à pied. Avec il, elle ou on, venir s’écrit vient."
+          },
+          {
+            "id": "guided:present:verb:venir:4",
+            "promptFr": "Conjugue venir au présent. Écris seulement le verbe : Nous ___ de la bibliothèque.",
+            "answerFr": "venons",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec nous.",
+            "explanationFr": "Nous venons de la bibliothèque. Avec nous, venir s’écrit venons."
+          },
+          {
+            "id": "guided:present:verb:venir:5",
+            "promptFr": "Conjugue venir au présent. Écris seulement le verbe : Vous ___ au bon moment.",
+            "answerFr": "venez",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec vous.",
+            "explanationFr": "Vous venez au bon moment. Avec vous, venir s’écrit venez."
+          },
+          {
+            "id": "guided:present:verb:venir:6",
+            "promptFr": "Conjugue venir au présent. Écris seulement le verbe : Elles ___ chercher leurs cahiers.",
+            "answerFr": "viennent",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec ils ou elles.",
+            "explanationFr": "Elles viennent chercher leurs cahiers. Avec ils ou elles, venir s’écrit viennent."
+          }
+        ],
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "venir",
+              "form": "venir"
+            }
+          ],
+          "sentences": [
+            "Je viens au club. Nous venons au club.",
+            "Elle vient demain. Elles viennent demain.",
+            "Je viens voir ton exposition.",
+            "Tu viens avec ton frère.",
+            "On vient à pied.",
+            "Nous venons de la bibliothèque.",
+            "Vous venez au bon moment.",
+            "Elles viennent chercher leurs cahiers."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:present:verb:partir",
+      "contentChecksum": "sha256:47adb5ff67419524e7f4ea5ab04e812c63658de5edf7645962c210ae17894047",
+      "skillId": "produire_present_indicatif::writing-controlled-production::verb:partir",
+      "nodeKey": "produire_present_indicatif",
+      "facetKey": "produire_present_indicatif::verb:partir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "distinguer_personne_nombre::reading-receptive",
+        "reconnaitre_radical_terminaison::reading-receptive",
+        "reconnaitre_present_indicatif::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:23ceec3d4b647a7a9436706c9750a7558a02280c33a3ab855d7886a3ec07b0ce",
+        "sentence:sha256:6f79479cbfd5cf5d9bc109f9208821d98c01e48cae1495a44f2843a58989c911",
+        "sentence:sha256:71fd67118924ce3923e48816b7c0abd689f761cf1e195117e62eec4e08220dbe",
+        "sentence:sha256:826941fa0cbcb51c27d4e5e6ad0d364a01fd2a5c19a461e66b0d327bbc9f2c55",
+        "sentence:sha256:9a484233c61cd7167c7e96aedbc0944c5eb4e549252c45aa1499315c1fab2f81",
+        "sentence:sha256:bea61d145ac5b0117b9ccc8c36b1fdea19bd77fcaa527fcabb04c8ac8b3c198d",
+        "sentence:sha256:c4b6dd6d3f8aacad7870c9281b7a4e6875b2571a38e6be805da29cd77c095331",
+        "sentence:sha256:df9147eb1ee604b8a37c51ffbe312d8527a38c633252c22c3685b1fbb4b1b69d",
+        "word:sha256:c413bda28a8465e5a51d39f762f1ed12ee9c7657a3540a6d503c484154e2b554"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:present:verb:partir",
+        "nodeKey": "produire_present_indicatif",
+        "facetKey": "produire_present_indicatif::verb:partir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Choisir la bonne forme de partir au présent",
+        "learnerQuestionFr": "Comment écrire partir quand le sujet change ?",
+        "steps": [
+          {
+            "exampleFr": "Je pars tôt. Nous partons tôt.",
+            "explanationFr": "Le t de partir disparaît dans je pars et tu pars. Il reste dans il part et dans les formes avec nous, vous, ils ou elles."
+          },
+          {
+            "exampleFr": "Tu pars. Il part.",
+            "explanationFr": "Le s de pars et le t de part ne s’entendent généralement pas. Le sujet permet de choisir la bonne lettre à l’écrit."
+          },
+          {
+            "exampleFr": "je : pars\ntu : pars\nil / elle / on : part\nnous : partons\nvous : partez\nils / elles : partent",
+            "explanationFr": "Les six formes de partir servent de repères. Le tableau aide à s’entraîner ; le regarder ne suffit pas à montrer que tu sais les retrouver sans aide."
+          }
+        ],
+        "takeawayFr": "Repère le sujet avant de choisir la forme de partir. Vérifie le début du verbe et sa lettre finale.",
+        "boundaryFr": "Cette leçon porte sur partir au présent de l’indicatif. Les autres temps et les autres verbes seront travaillés et vérifiés séparément.",
+        "practice": [
+          {
+            "id": "guided:present:verb:partir:1",
+            "promptFr": "Conjugue partir au présent. Écris seulement le verbe : Je ___ après le déjeuner.",
+            "answerFr": "pars",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec je.",
+            "explanationFr": "Je pars après le déjeuner. Avec je, partir s’écrit pars."
+          },
+          {
+            "id": "guided:present:verb:partir:2",
+            "promptFr": "Conjugue partir au présent. Écris seulement le verbe : Tu ___ en randonnée.",
+            "answerFr": "pars",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec tu.",
+            "explanationFr": "Tu pars en randonnée. Avec tu, partir s’écrit pars."
+          },
+          {
+            "id": "guided:present:verb:partir:3",
+            "promptFr": "Conjugue partir au présent. Écris seulement le verbe : Elle ___ avec sa tante.",
+            "answerFr": "part",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec il, elle ou on.",
+            "explanationFr": "Elle part avec sa tante. Avec il, elle ou on, partir s’écrit part."
+          },
+          {
+            "id": "guided:present:verb:partir:4",
+            "promptFr": "Conjugue partir au présent. Écris seulement le verbe : Nous ___ dans dix minutes.",
+            "answerFr": "partons",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec nous.",
+            "explanationFr": "Nous partons dans dix minutes. Avec nous, partir s’écrit partons."
+          },
+          {
+            "id": "guided:present:verb:partir:5",
+            "promptFr": "Conjugue partir au présent. Écris seulement le verbe : Vous ___ par cette sortie.",
+            "answerFr": "partez",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec vous.",
+            "explanationFr": "Vous partez par cette sortie. Avec vous, partir s’écrit partez."
+          },
+          {
+            "id": "guided:present:verb:partir:6",
+            "promptFr": "Conjugue partir au présent. Écris seulement le verbe : Ils ___ ensemble.",
+            "answerFr": "partent",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec ils ou elles.",
+            "explanationFr": "Ils partent ensemble. Avec ils ou elles, partir s’écrit partent."
+          }
+        ],
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "partir",
+              "form": "partir"
+            }
+          ],
+          "sentences": [
+            "Je pars tôt. Nous partons tôt.",
+            "Tu pars. Il part.",
+            "Je pars après le déjeuner.",
+            "Tu pars en randonnée.",
+            "Elle part avec sa tante.",
+            "Nous partons dans dix minutes.",
+            "Vous partez par cette sortie.",
+            "Ils partent ensemble."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:present:verb:sortir",
+      "contentChecksum": "sha256:6f1c1536fe07b4166f8428e6335243cce738e62707f975a785fa1317347ce644",
+      "skillId": "produire_present_indicatif::writing-controlled-production::verb:sortir",
+      "nodeKey": "produire_present_indicatif",
+      "facetKey": "produire_present_indicatif::verb:sortir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "distinguer_personne_nombre::reading-receptive",
+        "reconnaitre_radical_terminaison::reading-receptive",
+        "reconnaitre_present_indicatif::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:316215e767b592f7051f76b5ad91bc6d6709af152864d869b58df5d0179fd7e1",
+        "sentence:sha256:3287d9622d67b1ea307d6b972b6d8df6954293acb9607cba3b0387f8ccea2321",
+        "sentence:sha256:5876ce1f246b25dda0bcf806c5a1224185a0e823bbcd4f7428895240bf306424",
+        "sentence:sha256:61afe1544a86a9067d6c17cc85109847e3d6ac84231daf560b8fc537c7ce953e",
+        "sentence:sha256:6fc493cbdb02255b8876fc12da09f19b641c237104fb6b4409d57dc5ee6ac2a3",
+        "sentence:sha256:8a1c16f467c75a726d8c88d97d814585ad5d136b557c775cb15074a234703b6d",
+        "sentence:sha256:9776be0a9e54e96fd5e0d60fa893b0aae539d7355504efb0b693601e1477e6d7",
+        "sentence:sha256:ac864abec5e394e4e4d30d1ed9b7db4f3b00268386535d85d4c4cf00b7187f24",
+        "word:sha256:fa2d47f055148af90afa02fbeeca752cd135f6694e785747598c6f3987265454"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:present:verb:sortir",
+        "nodeKey": "produire_present_indicatif",
+        "facetKey": "produire_present_indicatif::verb:sortir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Choisir la bonne forme de sortir au présent",
+        "learnerQuestionFr": "Comment écrire sortir quand le sujet change ?",
+        "steps": [
+          {
+            "exampleFr": "Je sors du gymnase. Nous sortons du gymnase.",
+            "explanationFr": "Avec je et tu, on écrit sors sans t. Le t revient dans sort, sortons, sortez et sortent."
+          },
+          {
+            "exampleFr": "Elle sort son cahier. Elles sortent leurs cahiers.",
+            "explanationFr": "Le verbe garde les mêmes formes au présent, qu’il indique quitter un lieu ou retirer un objet. Le choix d’un auxiliaire au passé composé est une autre question."
+          },
+          {
+            "exampleFr": "je : sors\ntu : sors\nil / elle / on : sort\nnous : sortons\nvous : sortez\nils / elles : sortent",
+            "explanationFr": "Les six formes de sortir servent de repères. Le tableau aide à s’entraîner ; le regarder ne suffit pas à montrer que tu sais les retrouver sans aide."
+          }
+        ],
+        "takeawayFr": "Repère le sujet avant de choisir la forme de sortir. Vérifie le début du verbe et sa lettre finale.",
+        "boundaryFr": "Cette leçon porte sur sortir au présent de l’indicatif. Les autres temps et les autres verbes seront travaillés et vérifiés séparément.",
+        "practice": [
+          {
+            "id": "guided:present:verb:sortir:1",
+            "promptFr": "Conjugue sortir au présent. Écris seulement le verbe : Je ___ de la classe.",
+            "answerFr": "sors",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec je.",
+            "explanationFr": "Je sors de la classe. Avec je, sortir s’écrit sors."
+          },
+          {
+            "id": "guided:present:verb:sortir:2",
+            "promptFr": "Conjugue sortir au présent. Écris seulement le verbe : Tu ___ une feuille de ton sac.",
+            "answerFr": "sors",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec tu.",
+            "explanationFr": "Tu sors une feuille de ton sac. Avec tu, sortir s’écrit sors."
+          },
+          {
+            "id": "guided:present:verb:sortir:3",
+            "promptFr": "Conjugue sortir au présent. Écris seulement le verbe : On ___ dans la cour.",
+            "answerFr": "sort",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec il, elle ou on.",
+            "explanationFr": "On sort dans la cour. Avec il, elle ou on, sortir s’écrit sort."
+          },
+          {
+            "id": "guided:present:verb:sortir:4",
+            "promptFr": "Conjugue sortir au présent. Écris seulement le verbe : Nous ___ les chaises.",
+            "answerFr": "sortons",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec nous.",
+            "explanationFr": "Nous sortons les chaises. Avec nous, sortir s’écrit sortons."
+          },
+          {
+            "id": "guided:present:verb:sortir:5",
+            "promptFr": "Conjugue sortir au présent. Écris seulement le verbe : Vous ___ après le signal.",
+            "answerFr": "sortez",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec vous.",
+            "explanationFr": "Vous sortez après le signal. Avec vous, sortir s’écrit sortez."
+          },
+          {
+            "id": "guided:present:verb:sortir:6",
+            "promptFr": "Conjugue sortir au présent. Écris seulement le verbe : Elles ___ du cinéma.",
+            "answerFr": "sortent",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec ils ou elles.",
+            "explanationFr": "Elles sortent du cinéma. Avec ils ou elles, sortir s’écrit sortent."
+          }
+        ],
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "sortir",
+              "form": "sortir"
+            }
+          ],
+          "sentences": [
+            "Je sors du gymnase. Nous sortons du gymnase.",
+            "Elle sort son cahier. Elles sortent leurs cahiers.",
+            "Je sors de la classe.",
+            "Tu sors une feuille de ton sac.",
+            "On sort dans la cour.",
+            "Nous sortons les chaises.",
+            "Vous sortez après le signal.",
+            "Elles sortent du cinéma."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:present:verb:dire",
+      "contentChecksum": "sha256:805b55231771ee7df7bfa46d272e31c54094a0428e383a4914a58196448ffcc8",
+      "skillId": "produire_present_indicatif::writing-controlled-production::verb:dire",
+      "nodeKey": "produire_present_indicatif",
+      "facetKey": "produire_present_indicatif::verb:dire",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "distinguer_personne_nombre::reading-receptive",
+        "reconnaitre_radical_terminaison::reading-receptive",
+        "reconnaitre_present_indicatif::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:8e3024b2210afb89dadd48e18089b95033dc7ed6277e4462bd858446b9b0d554",
+        "sentence:sha256:91ad4f43d0b4e88c3abc8e9d72d06f03d29dc9ef81ed3fd07d49eed29d78908d",
+        "sentence:sha256:9f51a25e101e17c8f93b5f1dbc718a6a0d35daad89e1942fdef270b25fb358d1",
+        "sentence:sha256:a3d5d895cb9bd8846d60ab4c819b244af7f53dff1f5edc50586c699a3f1a6a4e",
+        "sentence:sha256:adc5d27cb42fc8bfb149a87b597f5f8e17bae7fb4b2cefd298c6b183d341e38e",
+        "sentence:sha256:cadd972387160695274442cdf390a76eff783060da8bb072ae64dfa26b76f0c7",
+        "sentence:sha256:ec50538866047c77060673044371e6c3ba26111ae1d22ead8aac95d2db3153a7",
+        "sentence:sha256:fc16314c8772b82242573d663bf3f6ef9b3fe8ff8903efe7b6208847f90c5794",
+        "word:sha256:ed7e2402cd873904858fd72b0d99ff0fbb97d1cdc7e526b5da0980cd64cb8939"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:present:verb:dire",
+        "nodeKey": "produire_present_indicatif",
+        "facetKey": "produire_present_indicatif::verb:dire",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Choisir la bonne forme de dire au présent",
+        "learnerQuestionFr": "Comment écrire dire quand le sujet change ?",
+        "steps": [
+          {
+            "exampleFr": "Je dis merci. Vous dites merci.",
+            "explanationFr": "Avec vous, la forme est dites. On ne construit pas cette forme en ajoutant -ez au début dis-."
+          },
+          {
+            "exampleFr": "Tu dis la réponse. Elle dit la réponse.",
+            "explanationFr": "Le verbe se termine par s avec tu et par t avec elle. Avec nous et ils, on retrouve dis- dans disons et disent."
+          },
+          {
+            "exampleFr": "je : dis\ntu : dis\nil / elle / on : dit\nnous : disons\nvous : dites\nils / elles : disent",
+            "explanationFr": "Les six formes de dire servent de repères. Le tableau aide à s’entraîner ; le regarder ne suffit pas à montrer que tu sais les retrouver sans aide."
+          }
+        ],
+        "takeawayFr": "Repère le sujet avant de choisir la forme de dire. Vérifie le début du verbe et sa lettre finale.",
+        "boundaryFr": "Cette leçon porte sur dire au présent de l’indicatif. Les autres temps et les autres verbes seront travaillés et vérifiés séparément.",
+        "practice": [
+          {
+            "id": "guided:present:verb:dire:1",
+            "promptFr": "Conjugue dire au présent. Écris seulement le verbe : Je ___ ce que je pense.",
+            "answerFr": "dis",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec je.",
+            "explanationFr": "Je dis ce que je pense. Avec je, dire s’écrit dis."
+          },
+          {
+            "id": "guided:present:verb:dire:2",
+            "promptFr": "Conjugue dire au présent. Écris seulement le verbe : Tu ___ bonjour à la voisine.",
+            "answerFr": "dis",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec tu.",
+            "explanationFr": "Tu dis bonjour à la voisine. Avec tu, dire s’écrit dis."
+          },
+          {
+            "id": "guided:present:verb:dire:3",
+            "promptFr": "Conjugue dire au présent. Écris seulement le verbe : Il ___ son prénom.",
+            "answerFr": "dit",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec il, elle ou on.",
+            "explanationFr": "Il dit son prénom. Avec il, elle ou on, dire s’écrit dit."
+          },
+          {
+            "id": "guided:present:verb:dire:4",
+            "promptFr": "Conjugue dire au présent. Écris seulement le verbe : Nous ___ la vérité.",
+            "answerFr": "disons",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec nous.",
+            "explanationFr": "Nous disons la vérité. Avec nous, dire s’écrit disons."
+          },
+          {
+            "id": "guided:present:verb:dire:5",
+            "promptFr": "Conjugue dire au présent. Écris seulement le verbe : Vous ___ la même chose.",
+            "answerFr": "dites",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec vous.",
+            "explanationFr": "Vous dites la même chose. Avec vous, dire s’écrit dites."
+          },
+          {
+            "id": "guided:present:verb:dire:6",
+            "promptFr": "Conjugue dire au présent. Écris seulement le verbe : Elles ___ quelques mots.",
+            "answerFr": "disent",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec ils ou elles.",
+            "explanationFr": "Elles disent quelques mots. Avec ils ou elles, dire s’écrit disent."
+          }
+        ],
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "dire",
+              "form": "dire"
+            }
+          ],
+          "sentences": [
+            "Je dis merci. Vous dites merci.",
+            "Tu dis la réponse. Elle dit la réponse.",
+            "Je dis ce que je pense.",
+            "Tu dis bonjour à la voisine.",
+            "Il dit son prénom.",
+            "Nous disons la vérité.",
+            "Vous dites la même chose.",
+            "Elles disent quelques mots."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:present:verb:voir",
+      "contentChecksum": "sha256:be7e4036f12770903af9bae317a00c374b1efb69c054e0eada281e31f43f66f6",
+      "skillId": "produire_present_indicatif::writing-controlled-production::verb:voir",
+      "nodeKey": "produire_present_indicatif",
+      "facetKey": "produire_present_indicatif::verb:voir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "distinguer_personne_nombre::reading-receptive",
+        "reconnaitre_radical_terminaison::reading-receptive",
+        "reconnaitre_present_indicatif::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:047aba6a66b1af0f22507e563323aac05152853246f6227595c5fd1720d3e273",
+        "sentence:sha256:12ca26fbccdf6f6b934ec90d043ca6d10ed73ca8f499c3dafb9b22dc790ed15a",
+        "sentence:sha256:15338227787ba64183adf46bd7499b3fe28934507abe69c54ae8d71095bc605b",
+        "sentence:sha256:1ab68535def66e66bd7099507bfa532d06e1ad6bd4bb8af1698936fc30617804",
+        "sentence:sha256:5e0878a7b47527c4d3fe4e3f0ccce104e63c7ef7e3613174d8de47bd0b188e94",
+        "sentence:sha256:615d62ebddb4bd72de5c50df1aef1bfc4d0b0b98ff06d7f3dfb83b6f24cc4011",
+        "sentence:sha256:87ca19dd9b5a6cba62981a02fd38fe6aefa9454bb315a9cf835e36772f5c4070",
+        "sentence:sha256:a1bdb6e6d2586c5a702761611f22078efb7914d8f761d60fc2d1895e3d7bf526",
+        "word:sha256:68b20210fa2d90732194f585ea10184fd5e841c860b83e7a5ed0c0a945ec2463"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:present:verb:voir",
+        "nodeKey": "produire_present_indicatif",
+        "facetKey": "produire_present_indicatif::verb:voir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Choisir la bonne forme de voir au présent",
+        "learnerQuestionFr": "Comment écrire voir quand le sujet change ?",
+        "steps": [
+          {
+            "exampleFr": "Je vois la scène. Nous voyons la scène.",
+            "explanationFr": "Avec nous et vous, le i devient y : voyons, voyez. Avec ils ou elles, on revient à voi- dans voient."
+          },
+          {
+            "exampleFr": "Tu vois la lune. Elle voit la lune.",
+            "explanationFr": "Vois prend un s avec je et tu. Voit prend un t avec il, elle ou on. Ces lettres écrites distinguent des formes qui se ressemblent à l’oral."
+          },
+          {
+            "exampleFr": "je : vois\ntu : vois\nil / elle / on : voit\nnous : voyons\nvous : voyez\nils / elles : voient",
+            "explanationFr": "Les six formes de voir servent de repères. Le tableau aide à s’entraîner ; le regarder ne suffit pas à montrer que tu sais les retrouver sans aide."
+          }
+        ],
+        "takeawayFr": "Repère le sujet avant de choisir la forme de voir. Vérifie le début du verbe et sa lettre finale.",
+        "boundaryFr": "Cette leçon porte sur voir au présent de l’indicatif. Les autres temps et les autres verbes seront travaillés et vérifiés séparément.",
+        "practice": [
+          {
+            "id": "guided:present:verb:voir:1",
+            "promptFr": "Conjugue voir au présent. Écris seulement le verbe : Je ___ le panneau.",
+            "answerFr": "vois",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec je.",
+            "explanationFr": "Je vois le panneau. Avec je, voir s’écrit vois."
+          },
+          {
+            "id": "guided:present:verb:voir:2",
+            "promptFr": "Conjugue voir au présent. Écris seulement le verbe : Tu ___ une étoile.",
+            "answerFr": "vois",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec tu.",
+            "explanationFr": "Tu vois une étoile. Avec tu, voir s’écrit vois."
+          },
+          {
+            "id": "guided:present:verb:voir:3",
+            "promptFr": "Conjugue voir au présent. Écris seulement le verbe : On ___ la rivière.",
+            "answerFr": "voit",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec il, elle ou on.",
+            "explanationFr": "On voit la rivière. Avec il, elle ou on, voir s’écrit voit."
+          },
+          {
+            "id": "guided:present:verb:voir:4",
+            "promptFr": "Conjugue voir au présent. Écris seulement le verbe : Nous ___ les joueurs de près.",
+            "answerFr": "voyons",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec nous.",
+            "explanationFr": "Nous voyons les joueurs de près. Avec nous, voir s’écrit voyons."
+          },
+          {
+            "id": "guided:present:verb:voir:5",
+            "promptFr": "Conjugue voir au présent. Écris seulement le verbe : Vous ___ le dessin en entier.",
+            "answerFr": "voyez",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec vous.",
+            "explanationFr": "Vous voyez le dessin en entier. Avec vous, voir s’écrit voyez."
+          },
+          {
+            "id": "guided:present:verb:voir:6",
+            "promptFr": "Conjugue voir au présent. Écris seulement le verbe : Ils ___ leurs amis arriver.",
+            "answerFr": "voient",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec ils ou elles.",
+            "explanationFr": "Ils voient leurs amis arriver. Avec ils ou elles, voir s’écrit voient."
+          }
+        ],
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "voir",
+              "form": "voir"
+            }
+          ],
+          "sentences": [
+            "Je vois la scène. Nous voyons la scène.",
+            "Tu vois la lune. Elle voit la lune.",
+            "Je vois le panneau.",
+            "Tu vois une étoile.",
+            "On voit la rivière.",
+            "Nous voyons les joueurs de près.",
+            "Vous voyez le dessin en entier.",
+            "Ils voient leurs amis arriver."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:present:verb:pouvoir",
+      "contentChecksum": "sha256:8b80987da6953e1c0d7dbbe718dd5ee66700925d0c98d2cb28a8227a6d7856a5",
+      "skillId": "produire_present_indicatif::writing-controlled-production::verb:pouvoir",
+      "nodeKey": "produire_present_indicatif",
+      "facetKey": "produire_present_indicatif::verb:pouvoir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "distinguer_personne_nombre::reading-receptive",
+        "reconnaitre_radical_terminaison::reading-receptive",
+        "reconnaitre_present_indicatif::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:28701bda521bf843407e6bce61e0429c0b19eed63083dbd5f4f62d9e01300c2a",
+        "sentence:sha256:3305be5c70509280f74305c3a9e3f89a3d09dbef0c68b5b80e6135cf860f084e",
+        "sentence:sha256:46354fb7480c43ce704bb866c388b4147a06f4ef9568d0cfedfcde98d86b382f",
+        "sentence:sha256:5277bb6440bd3891c885b46227d73b1c849140427e7971fc1faa97d708891456",
+        "sentence:sha256:a721be262c6111011d12c62dd3c92b4ddb8bd75e8a11131955d00a1012a24ef4",
+        "sentence:sha256:bbce70bba11b146a0df99dc039044219022ea8754ed15fa6a74ae54b0bec1e74",
+        "sentence:sha256:bed1c06b68f5069f9421480d265bdce0553ba765a263bdb5d26adddffdc4cbfd",
+        "sentence:sha256:cac65ed17c6b1a1dcfb32372c437f18e99344154f5d87486b79d77e4445330fd",
+        "word:sha256:e192d5dcdfc88be9dd57a079209e6cc178dc4c47d093e153efbdcd8cbf7aa977"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:present:verb:pouvoir",
+        "nodeKey": "produire_present_indicatif",
+        "facetKey": "produire_present_indicatif::verb:pouvoir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Choisir la bonne forme de pouvoir au présent",
+        "learnerQuestionFr": "Comment écrire pouvoir quand le sujet change ?",
+        "steps": [
+          {
+            "exampleFr": "Je peux venir. Nous pouvons venir.",
+            "explanationFr": "Pouvoir indique ici une possibilité. Le début est peu- au singulier, pouv- avec nous et vous, puis peuv- avec ils ou elles."
+          },
+          {
+            "exampleFr": "Tu peux essayer. Elle peut essayer.",
+            "explanationFr": "Peux finit par x avec je et tu ; peut finit par t avec elle. Le verbe qui suit, essayer, reste ici à la forme du dictionnaire, appelée infinitif."
+          },
+          {
+            "exampleFr": "je : peux\ntu : peux\nil / elle / on : peut\nnous : pouvons\nvous : pouvez\nils / elles : peuvent",
+            "explanationFr": "Les six formes de pouvoir servent de repères. Le tableau aide à s’entraîner ; le regarder ne suffit pas à montrer que tu sais les retrouver sans aide."
+          }
+        ],
+        "takeawayFr": "Repère le sujet avant de choisir la forme de pouvoir. Vérifie le début du verbe et sa lettre finale.",
+        "boundaryFr": "Cette leçon porte sur pouvoir au présent de l’indicatif. Les autres temps et les autres verbes seront travaillés et vérifiés séparément.",
+        "practice": [
+          {
+            "id": "guided:present:verb:pouvoir:1",
+            "promptFr": "Conjugue pouvoir au présent. Écris seulement le verbe : Je ___ ouvrir la fenêtre.",
+            "answerFr": "peux",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec je.",
+            "explanationFr": "Je peux ouvrir la fenêtre. Avec je, pouvoir s’écrit peux."
+          },
+          {
+            "id": "guided:present:verb:pouvoir:2",
+            "promptFr": "Conjugue pouvoir au présent. Écris seulement le verbe : Tu ___ choisir une couleur.",
+            "answerFr": "peux",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec tu.",
+            "explanationFr": "Tu peux choisir une couleur. Avec tu, pouvoir s’écrit peux."
+          },
+          {
+            "id": "guided:present:verb:pouvoir:3",
+            "promptFr": "Conjugue pouvoir au présent. Écris seulement le verbe : Elle ___ nous aider.",
+            "answerFr": "peut",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec il, elle ou on.",
+            "explanationFr": "Elle peut nous aider. Avec il, elle ou on, pouvoir s’écrit peut."
+          },
+          {
+            "id": "guided:present:verb:pouvoir:4",
+            "promptFr": "Conjugue pouvoir au présent. Écris seulement le verbe : Nous ___ rester ici.",
+            "answerFr": "pouvons",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec nous.",
+            "explanationFr": "Nous pouvons rester ici. Avec nous, pouvoir s’écrit pouvons."
+          },
+          {
+            "id": "guided:present:verb:pouvoir:5",
+            "promptFr": "Conjugue pouvoir au présent. Écris seulement le verbe : Vous ___ recommencer.",
+            "answerFr": "pouvez",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec vous.",
+            "explanationFr": "Vous pouvez recommencer. Avec vous, pouvoir s’écrit pouvez."
+          },
+          {
+            "id": "guided:present:verb:pouvoir:6",
+            "promptFr": "Conjugue pouvoir au présent. Écris seulement le verbe : Ils ___ entrer maintenant.",
+            "answerFr": "peuvent",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec ils ou elles.",
+            "explanationFr": "Ils peuvent entrer maintenant. Avec ils ou elles, pouvoir s’écrit peuvent."
+          }
+        ],
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "pouvoir",
+              "form": "pouvoir"
+            }
+          ],
+          "sentences": [
+            "Je peux venir. Nous pouvons venir.",
+            "Tu peux essayer. Elle peut essayer.",
+            "Je peux ouvrir la fenêtre.",
+            "Tu peux choisir une couleur.",
+            "Elle peut nous aider.",
+            "Nous pouvons rester ici.",
+            "Vous pouvez recommencer.",
+            "Ils peuvent entrer maintenant."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:present:verb:vouloir",
+      "contentChecksum": "sha256:f278f295913673535a162805dab61405d2b4f0cd17c53377cdd71d272e5533fa",
+      "skillId": "produire_present_indicatif::writing-controlled-production::verb:vouloir",
+      "nodeKey": "produire_present_indicatif",
+      "facetKey": "produire_present_indicatif::verb:vouloir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "distinguer_personne_nombre::reading-receptive",
+        "reconnaitre_radical_terminaison::reading-receptive",
+        "reconnaitre_present_indicatif::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:1591dba9b000622baa67705e30caf1ec1b697aadb8e47f445c4e7cef938eb52d",
+        "sentence:sha256:226395f6b3eb1cc4297b58b27cb37d058f906c52983412b11489885c7b978305",
+        "sentence:sha256:480890f7434f006f6a81c3080f9138fd77fbf3892e8e2c9ad6498e4af03483ad",
+        "sentence:sha256:5fdd320d3c5a0c77005b3a477fadfad5d51ce151fdc70c15efebe7326a26a92b",
+        "sentence:sha256:6ede4d888b0a1d8a9f1227b3c0f8a5a2c572b27561b12ea591b45ffee6ffed6b",
+        "sentence:sha256:89c3c17f7f24103ed8af724db83ca2606d0d7872e76ed1f90c8f127f63debe1f",
+        "sentence:sha256:9156f3c6f35967600a41d73a976ff86ad8351ac37ad6bcb942031caac86ac2b9",
+        "sentence:sha256:db2eaa7620f87873c8d351d18280c5f9c27c837c7d2ac646a0612905eaf9df03",
+        "word:sha256:489914beff2d4575266911e79fd2e447beebf86608412d02eeea869cb533a078"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:present:verb:vouloir",
+        "nodeKey": "produire_present_indicatif",
+        "facetKey": "produire_present_indicatif::verb:vouloir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Choisir la bonne forme de vouloir au présent",
+        "learnerQuestionFr": "Comment écrire vouloir quand le sujet change ?",
+        "steps": [
+          {
+            "exampleFr": "Je veux apprendre. Nous voulons apprendre.",
+            "explanationFr": "Vouloir exprime ici ce que les personnes souhaitent. Le début change selon le sujet : veu-, voul- ou veul-."
+          },
+          {
+            "exampleFr": "Tu veux jouer. Elle veut jouer.",
+            "explanationFr": "Avec tu, veux prend un x. Avec elle, veut prend un t. Avec ils ou elles, on écrit veulent avec un l."
+          },
+          {
+            "exampleFr": "je : veux\ntu : veux\nil / elle / on : veut\nnous : voulons\nvous : voulez\nils / elles : veulent",
+            "explanationFr": "Les six formes de vouloir servent de repères. Le tableau aide à s’entraîner ; le regarder ne suffit pas à montrer que tu sais les retrouver sans aide."
+          }
+        ],
+        "takeawayFr": "Repère le sujet avant de choisir la forme de vouloir. Vérifie le début du verbe et sa lettre finale.",
+        "boundaryFr": "Cette leçon porte sur vouloir au présent de l’indicatif. Les autres temps et les autres verbes seront travaillés et vérifiés séparément.",
+        "practice": [
+          {
+            "id": "guided:present:verb:vouloir:1",
+            "promptFr": "Conjugue vouloir au présent. Écris seulement le verbe : Je ___ lire ce manga.",
+            "answerFr": "veux",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec je.",
+            "explanationFr": "Je veux lire ce manga. Avec je, vouloir s’écrit veux."
+          },
+          {
+            "id": "guided:present:verb:vouloir:2",
+            "promptFr": "Conjugue vouloir au présent. Écris seulement le verbe : Tu ___ préparer l’affiche.",
+            "answerFr": "veux",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec tu.",
+            "explanationFr": "Tu veux préparer l’affiche. Avec tu, vouloir s’écrit veux."
+          },
+          {
+            "id": "guided:present:verb:vouloir:3",
+            "promptFr": "Conjugue vouloir au présent. Écris seulement le verbe : On ___ essayer autrement.",
+            "answerFr": "veut",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec il, elle ou on.",
+            "explanationFr": "On veut essayer autrement. Avec il, elle ou on, vouloir s’écrit veut."
+          },
+          {
+            "id": "guided:present:verb:vouloir:4",
+            "promptFr": "Conjugue vouloir au présent. Écris seulement le verbe : Nous ___ comprendre la règle.",
+            "answerFr": "voulons",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec nous.",
+            "explanationFr": "Nous voulons comprendre la règle. Avec nous, vouloir s’écrit voulons."
+          },
+          {
+            "id": "guided:present:verb:vouloir:5",
+            "promptFr": "Conjugue vouloir au présent. Écris seulement le verbe : Vous ___ rejoindre le groupe.",
+            "answerFr": "voulez",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec vous.",
+            "explanationFr": "Vous voulez rejoindre le groupe. Avec vous, vouloir s’écrit voulez."
+          },
+          {
+            "id": "guided:present:verb:vouloir:6",
+            "promptFr": "Conjugue vouloir au présent. Écris seulement le verbe : Elles ___ organiser un tournoi.",
+            "answerFr": "veulent",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec ils ou elles.",
+            "explanationFr": "Elles veulent organiser un tournoi. Avec ils ou elles, vouloir s’écrit veulent."
+          }
+        ],
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "vouloir",
+              "form": "vouloir"
+            }
+          ],
+          "sentences": [
+            "Je veux apprendre. Nous voulons apprendre.",
+            "Tu veux jouer. Elle veut jouer.",
+            "Je veux lire ce manga.",
+            "Tu veux préparer l’affiche.",
+            "On veut essayer autrement.",
+            "Nous voulons comprendre la règle.",
+            "Vous voulez rejoindre le groupe.",
+            "Elles veulent organiser un tournoi."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:present:verb:savoir",
+      "contentChecksum": "sha256:7f4ee5049dfe2b097343e65d0a3cccbd32cc26547c6fd78b4a97b7570dbd85ba",
+      "skillId": "produire_present_indicatif::writing-controlled-production::verb:savoir",
+      "nodeKey": "produire_present_indicatif",
+      "facetKey": "produire_present_indicatif::verb:savoir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "distinguer_personne_nombre::reading-receptive",
+        "reconnaitre_radical_terminaison::reading-receptive",
+        "reconnaitre_present_indicatif::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:2f7fdad19c8e23dac3fd5909a651c79c85279b31e723ebb8baf9ab0e1d342a05",
+        "sentence:sha256:3652d049fe710bd96dc9a38350c7a9e03fea14aeeb28ee0abf442fc8da357369",
+        "sentence:sha256:3cd4db1fb40a970e9ade4fe9a93afb94bb62d30bb72b9c715daaf05dcce5d0de",
+        "sentence:sha256:6e79aaac062a2299cee97b4e41ab8bc1aa9f3fa6548e813c0aa4a7417a2a72c4",
+        "sentence:sha256:9512b877eff806a566f87d33eee0c3543b021476b4cfd3307b07ab836b0420b8",
+        "sentence:sha256:a97b10335e37a8c2b624241bf4923ff8e3b4c2e9e327a52c2d703842935e5885",
+        "sentence:sha256:ed2f9f4748fc1a88a188b590dbd8725f082d14a0f4298cb2a614f8e1bfbc48db",
+        "sentence:sha256:f38d32855fab047c054f6034c6577b41858a9eb677a4d691f080c7ba6cafd36d",
+        "word:sha256:0233d19d22b3a2fad3f6618b95d2fc1fed0cd027446994a4e0642b4939300291"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:present:verb:savoir",
+        "nodeKey": "produire_present_indicatif",
+        "facetKey": "produire_present_indicatif::verb:savoir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Choisir la bonne forme de savoir au présent",
+        "learnerQuestionFr": "Comment écrire savoir quand le sujet change ?",
+        "steps": [
+          {
+            "exampleFr": "Je sais nager. Nous savons nager.",
+            "explanationFr": "Savoir indique ici ce que les personnes savent faire. Le début sai- du singulier devient sav- avec nous, vous, ils et elles."
+          },
+          {
+            "exampleFr": "Tu sais la réponse. Elle sait la réponse.",
+            "explanationFr": "Avec je et tu, sais finit par s. Avec il, elle ou on, sait finit par t. Le sujet permet de choisir la lettre finale."
+          },
+          {
+            "exampleFr": "je : sais\ntu : sais\nil / elle / on : sait\nnous : savons\nvous : savez\nils / elles : savent",
+            "explanationFr": "Les six formes de savoir servent de repères. Le tableau aide à s’entraîner ; le regarder ne suffit pas à montrer que tu sais les retrouver sans aide."
+          }
+        ],
+        "takeawayFr": "Repère le sujet avant de choisir la forme de savoir. Vérifie le début du verbe et sa lettre finale.",
+        "boundaryFr": "Cette leçon porte sur savoir au présent de l’indicatif. Les autres temps et les autres verbes seront travaillés et vérifiés séparément.",
+        "practice": [
+          {
+            "id": "guided:present:verb:savoir:1",
+            "promptFr": "Conjugue savoir au présent. Écris seulement le verbe : Je ___ où se trouve la salle.",
+            "answerFr": "sais",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec je.",
+            "explanationFr": "Je sais où se trouve la salle. Avec je, savoir s’écrit sais."
+          },
+          {
+            "id": "guided:present:verb:savoir:2",
+            "promptFr": "Conjugue savoir au présent. Écris seulement le verbe : Tu ___ réparer ce vélo.",
+            "answerFr": "sais",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec tu.",
+            "explanationFr": "Tu sais réparer ce vélo. Avec tu, savoir s’écrit sais."
+          },
+          {
+            "id": "guided:present:verb:savoir:3",
+            "promptFr": "Conjugue savoir au présent. Écris seulement le verbe : Il ___ son texte par cœur.",
+            "answerFr": "sait",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec il, elle ou on.",
+            "explanationFr": "Il sait son texte par cœur. Avec il, elle ou on, savoir s’écrit sait."
+          },
+          {
+            "id": "guided:present:verb:savoir:4",
+            "promptFr": "Conjugue savoir au présent. Écris seulement le verbe : Nous ___ utiliser cette application.",
+            "answerFr": "savons",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec nous.",
+            "explanationFr": "Nous savons utiliser cette application. Avec nous, savoir s’écrit savons."
+          },
+          {
+            "id": "guided:present:verb:savoir:5",
+            "promptFr": "Conjugue savoir au présent. Écris seulement le verbe : Vous ___ comment commencer.",
+            "answerFr": "savez",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec vous.",
+            "explanationFr": "Vous savez comment commencer. Avec vous, savoir s’écrit savez."
+          },
+          {
+            "id": "guided:present:verb:savoir:6",
+            "promptFr": "Conjugue savoir au présent. Écris seulement le verbe : Elles ___ jouer aux échecs.",
+            "answerFr": "savent",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec ils ou elles.",
+            "explanationFr": "Elles savent jouer aux échecs. Avec ils ou elles, savoir s’écrit savent."
+          }
+        ],
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "savoir",
+              "form": "savoir"
+            }
+          ],
+          "sentences": [
+            "Je sais nager. Nous savons nager.",
+            "Tu sais la réponse. Elle sait la réponse.",
+            "Je sais où se trouve la salle.",
+            "Tu sais réparer ce vélo.",
+            "Il sait son texte par cœur.",
+            "Nous savons utiliser cette application.",
+            "Vous savez comment commencer.",
+            "Elles savent jouer aux échecs."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:present:verb:devoir",
+      "contentChecksum": "sha256:e95a6d055b5f511134009cbce1702bc9eca9fa14eddee3cf2230b49818d9e64f",
+      "skillId": "produire_present_indicatif::writing-controlled-production::verb:devoir",
+      "nodeKey": "produire_present_indicatif",
+      "facetKey": "produire_present_indicatif::verb:devoir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "distinguer_personne_nombre::reading-receptive",
+        "reconnaitre_radical_terminaison::reading-receptive",
+        "reconnaitre_present_indicatif::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:0145f8efec5c0bcd5d660cf6d7f6b4c7bd09bcfac22bd2b214bc8633e0ff6c96",
+        "sentence:sha256:0be9c0ffc8cc887505ef23044e6b47cb3da2e30b72a9629c7e6ba96b6c245e00",
+        "sentence:sha256:26586fdcee8f679aa1e23451b155e3d513dec120d2c03c06786f0f37d92154d9",
+        "sentence:sha256:5f59aeae56557828b7a01e00eb8b3b2c5613a908f3714ebc2b18dd4d68185e61",
+        "sentence:sha256:7b716fe0fe05d112a74c8310c6a3644c129b0f9f81e451f09af0f9497342493b",
+        "sentence:sha256:abfcdc81bf13d9095e59c2fbe963245679bf664fe373ee7e899b2d73a2f84d30",
+        "sentence:sha256:beb70a0402ac272e3eb9fc457d2ebaa0159977838b843c0089612dcfd22743bd",
+        "sentence:sha256:fefed913681e4054f6fd65c56bb634396b25b213e3a3ea9d505646319cc8c761",
+        "word:sha256:4a5588698f5bd2f3237cbc916ddac2942066aaaf06f6e61f426da091928457f7"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:present:verb:devoir",
+        "nodeKey": "produire_present_indicatif",
+        "facetKey": "produire_present_indicatif::verb:devoir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Choisir la bonne forme de devoir au présent",
+        "learnerQuestionFr": "Comment écrire devoir quand le sujet change ?",
+        "steps": [
+          {
+            "exampleFr": "Je dois partir. Nous devons partir.",
+            "explanationFr": "Devoir exprime ici une obligation. Le début est doi- au singulier, dev- avec nous et vous, puis doiv- avec ils ou elles."
+          },
+          {
+            "exampleFr": "Tu dois attendre. Elle doit attendre.",
+            "explanationFr": "Dois prend un s avec je et tu. Doit prend un t avec elle. Dans doivent, on conserve oi et on ajoute v avant -ent."
+          },
+          {
+            "exampleFr": "je : dois\ntu : dois\nil / elle / on : doit\nnous : devons\nvous : devez\nils / elles : doivent",
+            "explanationFr": "Les six formes de devoir servent de repères. Le tableau aide à s’entraîner ; le regarder ne suffit pas à montrer que tu sais les retrouver sans aide."
+          }
+        ],
+        "takeawayFr": "Repère le sujet avant de choisir la forme de devoir. Vérifie le début du verbe et sa lettre finale.",
+        "boundaryFr": "Cette leçon porte sur devoir au présent de l’indicatif. Les autres temps et les autres verbes seront travaillés et vérifiés séparément.",
+        "practice": [
+          {
+            "id": "guided:present:verb:devoir:1",
+            "promptFr": "Conjugue devoir au présent. Écris seulement le verbe : Je ___ rendre ce livre.",
+            "answerFr": "dois",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec je.",
+            "explanationFr": "Je dois rendre ce livre. Avec je, devoir s’écrit dois."
+          },
+          {
+            "id": "guided:present:verb:devoir:2",
+            "promptFr": "Conjugue devoir au présent. Écris seulement le verbe : Tu ___ vérifier ton calcul.",
+            "answerFr": "dois",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec tu.",
+            "explanationFr": "Tu dois vérifier ton calcul. Avec tu, devoir s’écrit dois."
+          },
+          {
+            "id": "guided:present:verb:devoir:3",
+            "promptFr": "Conjugue devoir au présent. Écris seulement le verbe : On ___ ranger le matériel.",
+            "answerFr": "doit",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec il, elle ou on.",
+            "explanationFr": "On doit ranger le matériel. Avec il, elle ou on, devoir s’écrit doit."
+          },
+          {
+            "id": "guided:present:verb:devoir:4",
+            "promptFr": "Conjugue devoir au présent. Écris seulement le verbe : Nous ___ terminer l’affiche.",
+            "answerFr": "devons",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec nous.",
+            "explanationFr": "Nous devons terminer l’affiche. Avec nous, devoir s’écrit devons."
+          },
+          {
+            "id": "guided:present:verb:devoir:5",
+            "promptFr": "Conjugue devoir au présent. Écris seulement le verbe : Vous ___ suivre ce chemin.",
+            "answerFr": "devez",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec vous.",
+            "explanationFr": "Vous devez suivre ce chemin. Avec vous, devoir s’écrit devez."
+          },
+          {
+            "id": "guided:present:verb:devoir:6",
+            "promptFr": "Conjugue devoir au présent. Écris seulement le verbe : Ils ___ prévenir leur équipe.",
+            "answerFr": "doivent",
+            "hintFr": "Repère le sujet. Dans le tableau, retrouve la forme avec ils ou elles.",
+            "explanationFr": "Ils doivent prévenir leur équipe. Avec ils ou elles, devoir s’écrit doivent."
+          }
+        ],
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "devoir",
+              "form": "devoir"
+            }
+          ],
+          "sentences": [
+            "Je dois partir. Nous devons partir.",
+            "Tu dois attendre. Elle doit attendre.",
+            "Je dois rendre ce livre.",
+            "Tu dois vérifier ton calcul.",
+            "On doit ranger le matériel.",
+            "Nous devons terminer l’affiche.",
+            "Vous devez suivre ce chemin.",
+            "Ils doivent prévenir leur équipe."
+          ]
+        }
+      }
     }
   ],
-  "checksum": "sha256:5759a7594679d88152e85d539cfd4cad501fe9e4d1c382befc26e5c95ba5ed88"
+  "checksum": "sha256:c884c6bd18b06d843f8f661722d9f34a9264c7ac991aa82d92eff2b2b85723ed"
 }

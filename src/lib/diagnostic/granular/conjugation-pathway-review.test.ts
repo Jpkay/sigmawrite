@@ -17,8 +17,16 @@ const compile = (bank: typeof assembled.bank) => applyFacetTargets(adaptV3ForAss
 it("plans disjoint draft pools with real spelling-feature coverage without changing approval or inputs", () => {
   const assessment = compile(assembled.bank), before = JSON.stringify({ assessment, bank: assembled.bank, lessons: CONJUGATION_TEACHING });
   const report = reviewConjugationPathways(assessment, assembled.bank, artifact.taxonomy, CONJUGATION_TEACHING);
-  expect(report.rows).toHaveLength(6);
-  for (const row of report.rows) {
+  expect(report.rows).toHaveLength(18);
+  const contextualTargets = new Set(["pattern:regular_er", "pattern:regular_ir", "pattern:spelling_ger", "pattern:spelling_cer", "verb:aller", "verb:faire"]);
+  const contextualRows = report.rows.filter(row => contextualTargets.has(row.facetKey!.split("::")[1]));
+  expect(contextualRows).toHaveLength(6);
+  for (const row of report.rows.filter(row => !contextualRows.includes(row))) {
+    expect(row.releaseReady).toBe(false);
+    expect(row.sentenceContextQuestions).toBe(0);
+    expect(row.sentenceApplicationPools.status).toBe("insufficient_coverage");
+  }
+  for (const row of contextualRows) {
     expect(row.releaseReady).toBe(false);
     expect(row.proposedAllocationStatus).toBe("allocated");
     expect(row.unapprovedCandidates).toBeGreaterThan(0);

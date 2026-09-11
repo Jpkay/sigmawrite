@@ -12,7 +12,7 @@ it("maps every draft to its exact present target and anchors exposure without pu
   const bank = JSON.parse(readFileSync("generated/diagnostic-bank-v3-draft.json", "utf8"));
   const assessment = applyFacetTargets(adaptV3ForAssessment({ artifact, bank }), buildV3Facets(artifact.taxonomy), bank).assessment;
   expect(() => validateTeachingTargets(assessment, CONJUGATION_TEACHING)).not.toThrow();
-  expect(new Set(CONJUGATION_TEACHING.map(lesson => lesson.facetKey)).size).toBe(6);
+  expect(new Set(CONJUGATION_TEACHING.map(lesson => lesson.facetKey)).size).toBe(18);
   for (const lesson of CONJUGATION_TEACHING) {
     expect(lesson.status).toBe("draft_requires_review");
     expect(lesson.mode).toBe("production");
@@ -26,6 +26,18 @@ it("checks all guided forms including irregular subjects and spelling contrasts"
     "pattern:spelling_ger": ["nage", "manges", "voyage", "bougeons", "mélangeons", "partageons", "rangez", "chargent"],
     "pattern:spelling_cer": ["avance", "lances", "commence", "plaçons", "annonçons", "remplaçons", "effacez", "tracent"],
     "verb:aller": ["vais", "vas", "va", "allons", "allez", "vont"],
+    "verb:être": ["suis", "es", "est", "sommes", "êtes", "sont"],
+    "verb:avoir": ["ai", "as", "a", "avons", "avez", "ont"],
+    "verb:prendre": ["prends", "prends", "prend", "prenons", "prenez", "prennent"],
+    "verb:venir": ["viens", "viens", "vient", "venons", "venez", "viennent"],
+    "verb:partir": ["pars", "pars", "part", "partons", "partez", "partent"],
+    "verb:sortir": ["sors", "sors", "sort", "sortons", "sortez", "sortent"],
+    "verb:dire": ["dis", "dis", "dit", "disons", "dites", "disent"],
+    "verb:voir": ["vois", "vois", "voit", "voyons", "voyez", "voient"],
+    "verb:pouvoir": ["peux", "peux", "peut", "pouvons", "pouvez", "peuvent"],
+    "verb:vouloir": ["veux", "veux", "veut", "voulons", "voulez", "veulent"],
+    "verb:savoir": ["sais", "sais", "sait", "savons", "savez", "savent"],
+    "verb:devoir": ["dois", "dois", "doit", "devons", "devez", "doivent"],
     "verb:faire": ["fais", "fais", "fait", "faisons", "faites", "font"],
   };
   for (const draft of CONJUGATION_TEACHING_CASES) {

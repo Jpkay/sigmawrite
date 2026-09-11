@@ -1,6 +1,6 @@
 # French teaching draft review catalogue
 
-60 lessons, 307 guided exercises, 60 exact assessment targets. No approval, publication or activity binding is created by this export.
+72 lessons, 379 guided exercises, 72 exact assessment targets. No approval, publication or activity binding is created by this export.
 
 The companion JSON includes the complete learner-facing content, answer keys, hints, feedback, target IDs, prerequisites, evidence requirements, material identities and per-lesson checksums. Review decisions must refer to the exact content version. An anchored annotation proves only that the annotated material appears in the lesson; it does not prove completeness or independence from assessment questions.
 
@@ -66,6 +66,18 @@ The companion JSON includes the complete learner-facing content, answer keys, hi
 | Écrire nous lançons avec ç | produire_present_indicatif::writing-controlled-production::pattern:spelling_cer | production | 8 | anchored_requires_completeness_review |
 | Choisir la bonne forme de aller au présent | produire_present_indicatif::writing-controlled-production::verb:aller | production | 6 | anchored_requires_completeness_review |
 | Choisir la bonne forme de faire au présent | produire_present_indicatif::writing-controlled-production::verb:faire | production | 6 | anchored_requires_completeness_review |
+| Choisir la bonne forme de être au présent | produire_present_indicatif::writing-controlled-production::verb:être | production | 6 | anchored_requires_completeness_review |
+| Choisir la bonne forme de avoir au présent | produire_present_indicatif::writing-controlled-production::verb:avoir | production | 6 | anchored_requires_completeness_review |
+| Choisir la bonne forme de prendre au présent | produire_present_indicatif::writing-controlled-production::verb:prendre | production | 6 | anchored_requires_completeness_review |
+| Choisir la bonne forme de venir au présent | produire_present_indicatif::writing-controlled-production::verb:venir | production | 6 | anchored_requires_completeness_review |
+| Choisir la bonne forme de partir au présent | produire_present_indicatif::writing-controlled-production::verb:partir | production | 6 | anchored_requires_completeness_review |
+| Choisir la bonne forme de sortir au présent | produire_present_indicatif::writing-controlled-production::verb:sortir | production | 6 | anchored_requires_completeness_review |
+| Choisir la bonne forme de dire au présent | produire_present_indicatif::writing-controlled-production::verb:dire | production | 6 | anchored_requires_completeness_review |
+| Choisir la bonne forme de voir au présent | produire_present_indicatif::writing-controlled-production::verb:voir | production | 6 | anchored_requires_completeness_review |
+| Choisir la bonne forme de pouvoir au présent | produire_present_indicatif::writing-controlled-production::verb:pouvoir | production | 6 | anchored_requires_completeness_review |
+| Choisir la bonne forme de vouloir au présent | produire_present_indicatif::writing-controlled-production::verb:vouloir | production | 6 | anchored_requires_completeness_review |
+| Choisir la bonne forme de savoir au présent | produire_present_indicatif::writing-controlled-production::verb:savoir | production | 6 | anchored_requires_completeness_review |
+| Choisir la bonne forme de devoir au présent | produire_present_indicatif::writing-controlled-production::verb:devoir | production | 6 | anchored_requires_completeness_review |
 
 Missing exposure annotations: none.
 
