@@ -3,12 +3,17 @@
   "status": "draft_requires_review",
   "sources": {
     "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
-    "bankChecksum": "sha256:21ffbbb0b8a9077d127e7a5aa9e8c300ef2770f1992a2f6c9ffbaea0c9cc1160",
+    "bankChecksum": "sha256:f24d2d58fae53034138f8caff44aae8d0d25dc4be36db36c1acd7d084260f773",
     "annotationChecksum": "sha256:41e7a8d65776f6bb64c33c925b7d4449ffe9fda5a6b71a899067a171232542bb",
-    "facetChecksum": "sha256:93f57a01bebc3a00962a30104048f39e2cf017813ec109a404872299fdae3c18",
+    "facetChecksum": "sha256:6032cb22ffd4583985534cb0a8b75cb28842b7e06b5a038b3bb54e37f20df50e",
     "poolChecksum": "sha256:8c59b3ee0139afb4f44fa7e964a85ec00c67e9889bb1ffbad78ff7aa14aa5dfe",
     "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
     "expansions": [
+      {
+        "version": "french-v3-informational-subject-reference-expansion-v1",
+        "checksum": "sha256:1c6a961fb0b45d3b89177bb27ff8e9119e4d1355e89167ed88a3ed40a7057faf",
+        "addedItems": 8
+      },
       {
         "version": "french-v3-counterargument-expansion-v1",
         "checksum": "sha256:581e7dd204952e1e02f99d4a15a1b1f5cc087ad24dfb3bcbfcd403b35ea10510",
@@ -155,14 +160,14 @@
         "addedItems": 90
       }
     ],
-    "teachingDraftChecksum": "sha256:f66371c2d60652e1ca6ae5ffc34692890785b8830dc46bd933eeb25321324d13"
+    "teachingDraftChecksum": "sha256:b7fad35e714242facef44a4ff412e86d74fa4b5f2a59e9fb5d954bf5238a9a10"
   },
   "summary": {
-    "teachingDrafts": 179,
-    "targetsWithTeachingDrafts": 179,
-    "targetsWithoutTeachingDrafts": 363,
-    "totalCandidateQuestions": 5368,
-    "additionalDraftQuestions": 4638,
+    "teachingDrafts": 180,
+    "targetsWithTeachingDrafts": 180,
+    "targetsWithoutTeachingDrafts": 362,
+    "totalCandidateQuestions": 5376,
+    "additionalDraftQuestions": 4646,
     "canonicalEligibleQuestions": 238,
     "approvedCompetencies": 181,
     "approvedEvidenceDefinitions": 257,
@@ -198,10 +203,10 @@
         "eligibleQuestions": 21,
         "targetsWithNoEligibleQuestions": 74,
         "allocatedPools": 0,
-        "targetsWithTeachingDrafts": 14,
-        "targetsWithoutTeachingDrafts": 78,
-        "guidedExerciseDrafts": 68,
-        "exactTargetExpansionDrafts": 120
+        "targetsWithTeachingDrafts": 15,
+        "targetsWithoutTeachingDrafts": 77,
+        "guidedExerciseDrafts": 72,
+        "exactTargetExpansionDrafts": 128
       },
       {
         "domain": "grammar",
@@ -35071,8 +35076,17 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 0,
-          "withoutExplicitAssessedIdentity": [],
+          "questions": 8,
+          "withoutExplicitAssessedIdentity": [
+            "v3-informational-subject-reference:ticket",
+            "v3-informational-subject-reference:map",
+            "v3-informational-subject-reference:headphones",
+            "v3-informational-subject-reference:lamps",
+            "v3-informational-subject-reference:volunteer",
+            "v3-informational-subject-reference:librarian",
+            "v3-informational-subject-reference:guides",
+            "v3-informational-subject-reference:instructors"
+          ],
           "missingRequiredIdentities": []
         },
         "sharedParentDrafts": {
@@ -35147,8 +35161,24 @@
         "mcq"
       ],
       "parentDraftCandidatesRequiringMapping": [],
-      "exactTargetExpansionDrafts": [],
-      "teachingDrafts": [],
+      "exactTargetExpansionDrafts": [
+        "v3-informational-subject-reference:ticket",
+        "v3-informational-subject-reference:map",
+        "v3-informational-subject-reference:headphones",
+        "v3-informational-subject-reference:lamps",
+        "v3-informational-subject-reference:volunteer",
+        "v3-informational-subject-reference:librarian",
+        "v3-informational-subject-reference:guides",
+        "v3-informational-subject-reference:instructors"
+      ],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:informational-subject-reference",
+          "status": "draft_requires_review",
+          "guidedExercises": 4,
+          "boundaryFr": "Dans ces notices, le pronom reprend un nom présent dans le texte. Dans d’autres textes, il peut désigner une personne connue du contexte ou ne reprendre aucun nom, comme dans il pleut. Identifier le nom repris ne prouve pas encore que tu sais employer le pronom en écrivant."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -35156,8 +35186,8 @@
       },
       "nextActions": [
         "review_refinement_and_prerequisites",
-        "author_missing_evidence",
-        "author_or_reuse_exact_target_teaching",
+        "review_exact_target_drafts",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -79345,5 +79375,5 @@
       ]
     }
   ],
-  "checksum": "sha256:d22f18addf89284e56bf34f72d8189f20777d3315d89381ddf26d5748ca04e75"
+  "checksum": "sha256:962ff90b9f0530c95add38713f9769433a767be9570b0fa351cb1a2b6ec18ac7"
 }

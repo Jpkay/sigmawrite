@@ -1,0 +1,683 @@
+{
+  "version": "french-v3-informational-subject-reference-expansion-v1",
+  "status": "draft_requires_review",
+  "parentTaxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+  "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
+  "items": [
+    {
+      "itemKey": "v3-informational-subject-reference:ticket",
+      "item": {
+        "nodeKey": "resoudre_pronom_sujet",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nPour visiter la tour, chaque personne reçoit un billet à l’accueil. Il doit être conservé jusqu’à la sortie. La visite dure vingt minutes.\n\nDans « Il doit être conservé jusqu’à la sortie. », qui ou que désigne « Il » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-informational-subject-reference:ticket",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Pour visiter la tour, chaque personne reçoit un billet à l’accueil. Il doit être conservé jusqu’à la sortie. La visite dure vingt minutes.",
+            "choices": [
+              {
+                "quoteFr": "Pour visiter la tour, chaque personne reçoit un billet à l’accueil.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Il doit être conservé jusqu’à la sortie.",
+                "correct": false
+              },
+              {
+                "quoteFr": "La visite dure vingt minutes.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "un billet",
+            "correct": true
+          },
+          {
+            "text": "l’accueil",
+            "correct": false
+          },
+          {
+            "text": "la tour",
+            "correct": false
+          },
+          {
+            "text": "chaque personne",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-informational-subject-reference:map",
+      "item": {
+        "nodeKey": "resoudre_pronom_sujet",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nUne carte est fournie aux visiteurs au début du parcours. Elle indique les chemins accessibles à pied. Des panneaux complètent les indications.\n\nDans « Elle indique les chemins accessibles à pied. », qui ou que désigne « Elle » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-informational-subject-reference:map",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Une carte est fournie aux visiteurs au début du parcours. Elle indique les chemins accessibles à pied. Des panneaux complètent les indications.",
+            "choices": [
+              {
+                "quoteFr": "Une carte est fournie aux visiteurs au début du parcours.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Elle indique les chemins accessibles à pied.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Des panneaux complètent les indications.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "une carte",
+            "correct": true
+          },
+          {
+            "text": "les chemins",
+            "correct": false
+          },
+          {
+            "text": "les visiteurs",
+            "correct": false
+          },
+          {
+            "text": "des panneaux",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-informational-subject-reference:headphones",
+      "item": {
+        "nodeKey": "resoudre_pronom_sujet",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLe laboratoire prête des casques aux élèves pour écouter les enregistrements. Ils doivent être rendus dans leur boîte après utilisation. Un adulte vérifie le matériel.\n\nDans « Ils doivent être rendus dans leur boîte après utilisation. », qui ou que désigne « Ils » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-informational-subject-reference:headphones",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Le laboratoire prête des casques aux élèves pour écouter les enregistrements. Ils doivent être rendus dans leur boîte après utilisation. Un adulte vérifie le matériel.",
+            "choices": [
+              {
+                "quoteFr": "Le laboratoire prête des casques aux élèves pour écouter les enregistrements.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Ils doivent être rendus dans leur boîte après utilisation.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Un adulte vérifie le matériel.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "des casques",
+            "correct": true
+          },
+          {
+            "text": "les élèves",
+            "correct": false
+          },
+          {
+            "text": "les enregistrements",
+            "correct": false
+          },
+          {
+            "text": "un adulte",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-informational-subject-reference:lamps",
+      "item": {
+        "nodeKey": "resoudre_pronom_sujet",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nDes lampes sont installées près des tables dans la salle de lecture. Elles s’allument grâce au bouton situé sur leur pied. Les lecteurs peuvent choisir une place libre.\n\nDans « Elles s’allument grâce au bouton situé sur leur pied. », qui ou que désigne « Elles » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-informational-subject-reference:lamps",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Des lampes sont installées près des tables dans la salle de lecture. Elles s’allument grâce au bouton situé sur leur pied. Les lecteurs peuvent choisir une place libre.",
+            "choices": [
+              {
+                "quoteFr": "Des lampes sont installées près des tables dans la salle de lecture.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Elles s’allument grâce au bouton situé sur leur pied.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Les lecteurs peuvent choisir une place libre.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "des lampes",
+            "correct": true
+          },
+          {
+            "text": "les tables",
+            "correct": false
+          },
+          {
+            "text": "la salle de lecture",
+            "correct": false
+          },
+          {
+            "text": "les lecteurs",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-informational-subject-reference:volunteer",
+      "item": {
+        "nodeKey": "resoudre_pronom_sujet",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nUn bénévole remet un plan aux nouveaux membres de l’association. Il répond ensuite à leurs questions sur les activités. Les inscriptions ont lieu dans le hall.\n\nDans « Il répond ensuite à leurs questions sur les activités. », qui ou que désigne « Il » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-informational-subject-reference:volunteer",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Un bénévole remet un plan aux nouveaux membres de l’association. Il répond ensuite à leurs questions sur les activités. Les inscriptions ont lieu dans le hall.",
+            "choices": [
+              {
+                "quoteFr": "Un bénévole remet un plan aux nouveaux membres de l’association.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Il répond ensuite à leurs questions sur les activités.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Les inscriptions ont lieu dans le hall.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "un bénévole",
+            "correct": true
+          },
+          {
+            "text": "un plan",
+            "correct": false
+          },
+          {
+            "text": "les nouveaux membres",
+            "correct": false
+          },
+          {
+            "text": "le hall",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-informational-subject-reference:librarian",
+      "item": {
+        "nodeKey": "resoudre_pronom_sujet",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLa bibliothécaire présente une revue aux membres du club. Elle conseille aussi les personnes qui cherchent un roman. Le prêt est limité à trois documents.\n\nDans « Elle conseille aussi les personnes qui cherchent un roman. », qui ou que désigne « Elle » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-informational-subject-reference:librarian",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "La bibliothécaire présente une revue aux membres du club. Elle conseille aussi les personnes qui cherchent un roman. Le prêt est limité à trois documents.",
+            "choices": [
+              {
+                "quoteFr": "La bibliothécaire présente une revue aux membres du club.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Elle conseille aussi les personnes qui cherchent un roman.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Le prêt est limité à trois documents.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "la bibliothécaire",
+            "correct": true
+          },
+          {
+            "text": "une revue",
+            "correct": false
+          },
+          {
+            "text": "les personnes",
+            "correct": false
+          },
+          {
+            "text": "un roman",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-informational-subject-reference:guides",
+      "item": {
+        "nodeKey": "resoudre_pronom_sujet",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLes guides distribuent des livrets aux visiteurs du château. Ils conduisent ensuite le groupe dans les salles ouvertes au public. Les livrets contiennent un plan.\n\nDans « Ils conduisent ensuite le groupe dans les salles ouvertes au public. », qui ou que désigne « Ils » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-informational-subject-reference:guides",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Les guides distribuent des livrets aux visiteurs du château. Ils conduisent ensuite le groupe dans les salles ouvertes au public. Les livrets contiennent un plan.",
+            "choices": [
+              {
+                "quoteFr": "Les guides distribuent des livrets aux visiteurs du château.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Ils conduisent ensuite le groupe dans les salles ouvertes au public.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Les livrets contiennent un plan.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "les guides",
+            "correct": true
+          },
+          {
+            "text": "des livrets",
+            "correct": false
+          },
+          {
+            "text": "les visiteurs",
+            "correct": false
+          },
+          {
+            "text": "les salles",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-informational-subject-reference:instructors",
+      "item": {
+        "nodeKey": "resoudre_pronom_sujet",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLes monitrices vérifient les cordes avant l’atelier d’escalade. Elles expliquent ensuite les consignes aux participants. Le groupe reste au sol pendant les explications.\n\nDans « Elles expliquent ensuite les consignes aux participants. », qui ou que désigne « Elles » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-informational-subject-reference:instructors",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Les monitrices vérifient les cordes avant l’atelier d’escalade. Elles expliquent ensuite les consignes aux participants. Le groupe reste au sol pendant les explications.",
+            "choices": [
+              {
+                "quoteFr": "Les monitrices vérifient les cordes avant l’atelier d’escalade.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Elles expliquent ensuite les consignes aux participants.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Le groupe reste au sol pendant les explications.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "les monitrices",
+            "correct": true
+          },
+          {
+            "text": "les cordes",
+            "correct": false
+          },
+          {
+            "text": "les consignes",
+            "correct": false
+          },
+          {
+            "text": "les participants",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "itemKey": "v3-informational-subject-reference:ticket",
+      "itemChecksum": "sha256:8ebb3ecf0ae8fed8f2bcce3d5d9402c4a91f79ce2ff1b21e343177174758e8f6",
+      "facetKey": "resoudre_pronom_sujet::text_type:informational",
+      "contextKey": "passage:v3-informational-subject-reference:ticket",
+      "reason": "Résoudre la référence d’un pronom sujet dans une notice informative fictive. Le genre et le nombre aident, mais le sens du verbe permet de départager plusieurs noms compatibles."
+    },
+    {
+      "itemKey": "v3-informational-subject-reference:map",
+      "itemChecksum": "sha256:a8ce299669daf4987a7b565bfe6c4c5051e680eaefa910e794c920cdf71cb69f",
+      "facetKey": "resoudre_pronom_sujet::text_type:informational",
+      "contextKey": "passage:v3-informational-subject-reference:map",
+      "reason": "Résoudre la référence d’un pronom sujet dans une notice informative fictive. Le genre et le nombre aident, mais le sens du verbe permet de départager plusieurs noms compatibles."
+    },
+    {
+      "itemKey": "v3-informational-subject-reference:headphones",
+      "itemChecksum": "sha256:0b2b2dcc009c1b6aa3b11928c10d99cbaf1eed27d77d5558af4be7bca4455b96",
+      "facetKey": "resoudre_pronom_sujet::text_type:informational",
+      "contextKey": "passage:v3-informational-subject-reference:headphones",
+      "reason": "Résoudre la référence d’un pronom sujet dans une notice informative fictive. Le genre et le nombre aident, mais le sens du verbe permet de départager plusieurs noms compatibles."
+    },
+    {
+      "itemKey": "v3-informational-subject-reference:lamps",
+      "itemChecksum": "sha256:5ba868cc23320e6dff4e0dfb3df2289ed2d81afb8d921df60c89fe04057fc086",
+      "facetKey": "resoudre_pronom_sujet::text_type:informational",
+      "contextKey": "passage:v3-informational-subject-reference:lamps",
+      "reason": "Résoudre la référence d’un pronom sujet dans une notice informative fictive. Le genre et le nombre aident, mais le sens du verbe permet de départager plusieurs noms compatibles."
+    },
+    {
+      "itemKey": "v3-informational-subject-reference:volunteer",
+      "itemChecksum": "sha256:977d73c87dc89ca9666b788e7c45db1abd0af53efbefb978a1ba2c9514af20ef",
+      "facetKey": "resoudre_pronom_sujet::text_type:informational",
+      "contextKey": "passage:v3-informational-subject-reference:volunteer",
+      "reason": "Résoudre la référence d’un pronom sujet dans une notice informative fictive. Le genre et le nombre aident, mais le sens du verbe permet de départager plusieurs noms compatibles."
+    },
+    {
+      "itemKey": "v3-informational-subject-reference:librarian",
+      "itemChecksum": "sha256:b00030a12c1f93e2620da43c02f6ecfff92e807a8c63cfc66c00b5c715238081",
+      "facetKey": "resoudre_pronom_sujet::text_type:informational",
+      "contextKey": "passage:v3-informational-subject-reference:librarian",
+      "reason": "Résoudre la référence d’un pronom sujet dans une notice informative fictive. Le genre et le nombre aident, mais le sens du verbe permet de départager plusieurs noms compatibles."
+    },
+    {
+      "itemKey": "v3-informational-subject-reference:guides",
+      "itemChecksum": "sha256:d99319310b7bd0dc4f6230dbf88c9da2bf30d73be6ac1ed693e25e81bc566b26",
+      "facetKey": "resoudre_pronom_sujet::text_type:informational",
+      "contextKey": "passage:v3-informational-subject-reference:guides",
+      "reason": "Résoudre la référence d’un pronom sujet dans une notice informative fictive. Le genre et le nombre aident, mais le sens du verbe permet de départager plusieurs noms compatibles."
+    },
+    {
+      "itemKey": "v3-informational-subject-reference:instructors",
+      "itemChecksum": "sha256:e7767874b5c3014efee0b72acdddc28657feb1e8008b12932ad081949a5eb0aa",
+      "facetKey": "resoudre_pronom_sujet::text_type:informational",
+      "contextKey": "passage:v3-informational-subject-reference:instructors",
+      "reason": "Résoudre la référence d’un pronom sujet dans une notice informative fictive. Le genre et le nombre aident, mais le sens du verbe permet de départager plusieurs noms compatibles."
+    }
+  ],
+  "checksum": "sha256:1c6a961fb0b45d3b89177bb27ff8e9119e4d1355e89167ed88a3ed40a7057faf"
+}

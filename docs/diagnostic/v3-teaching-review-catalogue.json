@@ -5,12 +5,141 @@
   "facetChecksum": "sha256:2f826d79a46ce935f40ccb797f8857b1c9af21d89bd1f80a438ecaf5e28ae3f2",
   "assessmentSourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
   "summary": {
-    "lessons": 179,
-    "guidedExercises": 978,
-    "targets": 179,
+    "lessons": 180,
+    "guidedExercises": 982,
+    "targets": 180,
     "missingExposureAnnotations": []
   },
   "rows": [
+    {
+      "lessonId": "french-v3-teaching:informational-subject-reference",
+      "contentChecksum": "sha256:4cfcaf3627bcba21ee371e6d74e76f18cafb9f4788c00c94d33d47e17af6e727",
+      "skillId": "resoudre_pronom_sujet::all-receptive::text_type:informational",
+      "nodeKey": "resoudre_pronom_sujet",
+      "facetKey": "resoudre_pronom_sujet::text_type:informational",
+      "mode": "interpretation",
+      "domain": "reading_comprehension",
+      "prerequisites": [],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 3,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 1,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "parentMinimumTextTypes": 2,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:27dde4eeb0bca92648cd843b30f6b53cc4596e9c7db6ad102738dd54ab71bd25",
+        "sentence:sha256:331cf8866dd4e88d6aa41eb7d35d2b642b7fa6029af3642bde43df8f4a683275",
+        "sentence:sha256:492883d7446ed04732d974c9d8d7771dce5c88de7346166666043b16f8e51cbd",
+        "sentence:sha256:52fce1b686337a749a44fe5098b8cf474e88549df5b14dfaf18183a72f4fbda4",
+        "sentence:sha256:c85ac988f33f2ccbf3503848276cb89205d53550e44cb972a015726b0140e44c",
+        "sentence:sha256:e102b3e8102fc068343675ceafc4b480e3a273e88fedf6905a63db0145354b7b"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:informational-subject-reference",
+        "nodeKey": "resoudre_pronom_sujet",
+        "facetKey": "resoudre_pronom_sujet::text_type:informational",
+        "mode": "interpretation",
+        "status": "draft_requires_review",
+        "titleFr": "Comprendre qui fait l’action dans une notice",
+        "learnerQuestionFr": "Qui ou que désignent il, elle, ils et elles dans ce texte ?",
+        "steps": [
+          {
+            "exampleFr": "Une borne est placée à l’entrée. Elle imprime les tickets.",
+            "explanationFr": "Elle désigne ici une borne. Ce petit mot permet de ne pas répéter le même nom. Il remplace le sujet dans la seconde phrase : c’est un pronom sujet."
+          },
+          {
+            "exampleFr": "Le responsable ouvre le placard. Il distribue ensuite le matériel.",
+            "explanationFr": "Responsable et placard sont tous deux masculins et singuliers. Mais c’est le responsable qui distribue le matériel. Cherche un nom compatible avec le pronom, puis vérifie que l’action a du sens avec ce nom."
+          }
+        ],
+        "practice": [
+          {
+            "id": "informational-subject-guided-0",
+            "promptFr": "Le gardien vérifie le portail avant l’ouverture. Il accueille ensuite les visiteurs.\n\nQui ou que désigne « Il » ?",
+            "choices": [
+              "Le gardien",
+              "le portail",
+              "les visiteurs",
+              "l’ouverture"
+            ],
+            "answerFr": "Le gardien",
+            "hintFr": "Remplace le pronom par chaque nom possible et relis l’action.",
+            "explanationFr": "C’est le gardien qui peut accueillir les visiteurs. Le portail est aussi masculin singulier, mais le sens de la phrase permet de choisir."
+          },
+          {
+            "id": "informational-subject-guided-1",
+            "promptFr": "Une étiquette est collée sur chaque boîte. Elle indique la date de retour.\n\nQui ou que désigne « Elle » ?",
+            "choices": [
+              "Une étiquette",
+              "chaque boîte",
+              "la date",
+              "le retour"
+            ],
+            "answerFr": "Une étiquette",
+            "hintFr": "Remplace le pronom par chaque nom possible et relis l’action.",
+            "explanationFr": "C’est l’étiquette qui porte l’indication de la date, même si boîte est aussi féminin singulier."
+          },
+          {
+            "id": "informational-subject-guided-2",
+            "promptFr": "Des agents rangent les vélos dans le local. Ils accueillent ensuite les cyclistes.\n\nQui ou que désigne « Ils » ?",
+            "choices": [
+              "Des agents",
+              "les vélos",
+              "le local",
+              "les cyclistes"
+            ],
+            "answerFr": "Des agents",
+            "hintFr": "Remplace le pronom par chaque nom possible et relis l’action.",
+            "explanationFr": "Les agents et les vélos sont au masculin pluriel. Seuls les agents peuvent accueillir les cyclistes."
+          },
+          {
+            "id": "informational-subject-guided-3",
+            "promptFr": "Les affiches sont placées près des portes. Elles présentent les horaires du festival.\n\nQui ou que désigne « Elles » ?",
+            "choices": [
+              "Les affiches",
+              "les portes",
+              "les horaires",
+              "le festival"
+            ],
+            "answerFr": "Les affiches",
+            "hintFr": "Remplace le pronom par chaque nom possible et relis l’action.",
+            "explanationFr": "Les affiches donnent les horaires. Le nom portes est plus proche de Elles, mais ce n’est pas le nom repris ici."
+          }
+        ],
+        "takeawayFr": "Relie le pronom à ce dont parle le texte. Vérifie le genre, le nombre et le sens de la phrase : le nom le plus proche n’est pas toujours la bonne réponse.",
+        "boundaryFr": "Dans ces notices, le pronom reprend un nom présent dans le texte. Dans d’autres textes, il peut désigner une personne connue du contexte ou ne reprendre aucun nom, comme dans il pleut. Identifier le nom repris ne prouve pas encore que tu sais employer le pronom en écrivant.",
+        "materialExposure": {
+          "sentences": [
+            "Le gardien vérifie le portail avant l’ouverture. Il accueille ensuite les visiteurs.",
+            "Une étiquette est collée sur chaque boîte. Elle indique la date de retour.",
+            "Des agents rangent les vélos dans le local. Ils accueillent ensuite les cyclistes.",
+            "Les affiches sont placées près des portes. Elles présentent les horaires du festival.",
+            "Une borne est placée à l’entrée. Elle imprime les tickets.",
+            "Le responsable ouvre le placard. Il distribue ensuite le matériel."
+          ]
+        }
+      }
+    },
     {
       "lessonId": "french-v3-teaching:counterargument",
       "contentChecksum": "sha256:7ba30d762f2b93a00e5f2ef186740cae6ecec8d8597d51995e746bc109ed6302",
@@ -26844,5 +26973,5 @@
       }
     }
   ],
-  "checksum": "sha256:542d46e552dd296c981ddf44548d828257772be5c5a92b778d5099374a6bdae3"
+  "checksum": "sha256:19c932e0a8975e2c278a4d30093a591a85e0094301788f28a7b1e38d6b399656"
 }
