@@ -14,7 +14,8 @@
     "Refined verb-form targets use a separately versioned draft challenge order, starting with the present; the approved prerequisite depth remains unchanged.",
     "Tense recognition and interpretation use the draft ranks too; other general concepts retain graph depth. Challenge ranks and entry-point selection require educator/student validation before release.",
     "A profile distinction that was not sampled is not evidence that the system can distinguish that profile.",
-    "Reading profile gaps use explicit approved node identities; locating a supporting passage is not treated as inferential reading."
+    "Reading profile gaps use explicit approved node identities; locating a supporting passage is not treated as inferential reading.",
+    "Reading briefly samples retrieval, reference resolution, inference and other available operations, follows up on errors, and then uses bounded confirmation visits."
   ],
   "assumptions": [
     "Synthetic truth is defined per exact target; it does not enforce prerequisite mastery or assign a global student level.",
@@ -466,10 +467,11 @@
       "requiredKnownTargets": 77,
       "requiredWeakTargets": 15,
       "knownTargetsWithEvidence": [
-        "associer_information_question::all-receptive::text_type:argumentative",
-        "localiser_span_preuve::all-receptive::text_type:argumentative"
+        "associer_information_question::all-receptive::text_type:argumentative"
       ],
-      "weakTargetsWithEvidence": [],
+      "weakTargetsWithEvidence": [
+        "inferer_cause_locale::all-receptive::text_type:argumentative"
+      ],
       "knownTargetsUnresolved": [
         "localiser_information_explicite::all-receptive::text_type:narrative",
         "localiser_information_explicite::all-receptive::text_type:informational",
@@ -543,6 +545,7 @@
         "reconnaitre_contre_argument::argumentative-receptive::text_type:argumentative",
         "localiser_span_preuve::all-receptive::text_type:narrative",
         "localiser_span_preuve::all-receptive::text_type:informational",
+        "localiser_span_preuve::all-receptive::text_type:argumentative",
         "distinguer_preuve_connaissance_externe::all-receptive::text_type:narrative",
         "distinguer_preuve_connaissance_externe::all-receptive::text_type:informational",
         "distinguer_preuve_connaissance_externe::all-receptive::text_type:argumentative"
@@ -550,7 +553,6 @@
       "weakTargetsUnresolved": [
         "inferer_cause_locale::all-receptive::text_type:narrative",
         "inferer_cause_locale::all-receptive::text_type:informational",
-        "inferer_cause_locale::all-receptive::text_type:argumentative",
         "inferer_consequence_locale::all-receptive::text_type:narrative",
         "inferer_consequence_locale::all-receptive::text_type:informational",
         "inferer_consequence_locale::all-receptive::text_type:argumentative",
@@ -566,7 +568,7 @@
       ],
       "sameBranchBoundaries": [],
       "requireSameBranch": false,
-      "passed": false
+      "passed": true
     },
     {
       "profile": "reading_reference_gap",
@@ -574,10 +576,11 @@
       "requiredKnownTargets": 80,
       "requiredWeakTargets": 12,
       "knownTargetsWithEvidence": [
-        "associer_information_question::all-receptive::text_type:argumentative",
-        "localiser_span_preuve::all-receptive::text_type:argumentative"
+        "associer_information_question::all-receptive::text_type:argumentative"
       ],
-      "weakTargetsWithEvidence": [],
+      "weakTargetsWithEvidence": [
+        "resoudre_pronom_objet::all-receptive::text_type:argumentative"
+      ],
       "knownTargetsUnresolved": [
         "localiser_information_explicite::all-receptive::text_type:narrative",
         "localiser_information_explicite::all-receptive::text_type:informational",
@@ -651,6 +654,7 @@
         "reconnaitre_contre_argument::argumentative-receptive::text_type:argumentative",
         "localiser_span_preuve::all-receptive::text_type:narrative",
         "localiser_span_preuve::all-receptive::text_type:informational",
+        "localiser_span_preuve::all-receptive::text_type:argumentative",
         "relier_preuve_interpretation::all-controlled_production::text_type:narrative",
         "relier_preuve_interpretation::all-controlled_production::text_type:informational",
         "relier_preuve_interpretation::all-controlled_production::text_type:argumentative",
@@ -664,7 +668,6 @@
         "resoudre_pronom_sujet::all-receptive::text_type:argumentative",
         "resoudre_pronom_objet::all-receptive::text_type:narrative",
         "resoudre_pronom_objet::all-receptive::text_type:informational",
-        "resoudre_pronom_objet::all-receptive::text_type:argumentative",
         "resoudre_demonstratif::all-receptive::text_type:narrative",
         "resoudre_demonstratif::all-receptive::text_type:informational",
         "resoudre_demonstratif::all-receptive::text_type:argumentative",
@@ -674,7 +677,7 @@
       ],
       "sameBranchBoundaries": [],
       "requireSameBranch": false,
-      "passed": false
+      "passed": true
     },
     {
       "profile": "cod_vs_coi",
@@ -1253,10 +1256,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 25,
-      "unsampledTargets": 517,
-      "targetsReachingMinimumItemCount": 12,
-      "targetsWithSufficientEvidenceToday": 11,
+      "sampledTargets": 27,
+      "unsampledTargets": 515,
+      "targetsReachingMinimumItemCount": 11,
+      "targetsWithSufficientEvidenceToday": 10,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -1298,11 +1301,11 @@
         },
         {
           "strand": "comprehension_ecrite",
-          "sampledTargets": 3,
+          "sampledTargets": 5,
           "answered": 9,
-          "targetsReachingMinimumItemCount": 2,
-          "targetsWithSufficientEvidenceToday": 2,
-          "sampledKnown": 3,
+          "targetsReachingMinimumItemCount": 1,
+          "targetsWithSufficientEvidenceToday": 1,
+          "sampledKnown": 5,
           "sampledWeak": 0
         },
         {
@@ -1420,6 +1423,20 @@
           "minimumItems": 3
         },
         {
+          "skillId": "resoudre_pronom_objet::all-receptive::text_type:argumentative",
+          "labelFr": "Résoudre la référence d'un pronom objet — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 0,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.782608695652174,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
           "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
           "labelFr": "Produire le passé composé — Verbes réguliers en -er",
           "strand": "conjugaison",
@@ -1431,6 +1448,20 @@
           "status": "uncertain",
           "withinOccasionResolved": false,
           "probability": 0.9473684210526315,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "inferer_cause_locale::all-receptive::text_type:argumentative",
+          "labelFr": "Inférer une cause locale — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.782608695652174,
           "countedEvidence": 1,
           "minimumItems": 3
         },
@@ -1479,6 +1510,20 @@
           "minimumItems": 3
         },
         {
+          "skillId": "deduire_mot_morphologie::all-receptive::text_type:argumentative",
+          "labelFr": "Déduire un mot grâce à sa morphologie — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.782608695652174,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
           "skillId": "produire_pronom_cod::writing-controlled-production::construction:elision",
           "labelFr": "Employer le, la, l’ ou les — l’ devant une voyelle",
           "strand": "grammaire_syntaxe",
@@ -1490,20 +1535,6 @@
           "withinOccasionResolved": true,
           "probability": 0.9998285616320933,
           "countedEvidence": 3,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "localiser_span_preuve::all-receptive::text_type:argumentative",
-          "labelFr": "Localiser un passage servant de preuve — Texte argumentatif bref",
-          "strand": "comprehension_ecrite",
-          "level": 2,
-          "expectedKnown": true,
-          "answered": 4,
-          "correct": 4,
-          "status": "uncertain",
-          "withinOccasionResolved": true,
-          "probability": 0.9940814954403842,
-          "countedEvidence": 4,
           "minimumItems": 3
         },
         {
@@ -1621,6 +1652,20 @@
           "minimumItems": 3
         },
         {
+          "skillId": "localiser_span_preuve::all-receptive::text_type:argumentative",
+          "labelFr": "Localiser un passage servant de preuve — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 2,
+          "expectedKnown": true,
+          "answered": 2,
+          "correct": 2,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9283667621776505,
+          "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
           "skillId": "produire_passe_compose::writing-controlled-production::verb:avoir",
           "labelFr": "Produire le passé composé — Conjuguer avoir",
           "strand": "conjugaison",
@@ -1647,20 +1692,6 @@
           "withinOccasionResolved": false,
           "probability": 0.9969230769230769,
           "countedEvidence": 2,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "associer_information_question::all-receptive::text_type:informational",
-          "labelFr": "Associer une information à la question posée — Texte informatif bref",
-          "strand": "comprehension_ecrite",
-          "level": 1,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -1889,12 +1920,12 @@
           "strand": "comprehension_ecrite",
           "level": 0,
           "expectedKnown": false,
-          "answered": 3,
+          "answered": 2,
           "correct": 0,
           "status": "uncertain",
-          "withinOccasionResolved": true,
-          "probability": 0.0023647650014779796,
-          "countedEvidence": 3,
+          "withinOccasionResolved": false,
+          "probability": 0.017467248908296946,
+          "countedEvidence": 2,
           "minimumItems": 3
         },
         {
@@ -2055,6 +2086,20 @@
           "minimumItems": 3
         },
         {
+          "skillId": "resoudre_pronom_objet::all-receptive::text_type:argumentative",
+          "labelFr": "Résoudre la référence d'un pronom objet — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 0,
+          "expectedKnown": false,
+          "answered": 3,
+          "correct": 0,
+          "status": "uncertain",
+          "withinOccasionResolved": true,
+          "probability": 0.0023647650014779796,
+          "countedEvidence": 3,
+          "minimumItems": 3
+        },
+        {
           "skillId": "produire_imperatif::writing-controlled-production::verb:aller",
           "labelFr": "Produire l'impératif — Conjuguer aller",
           "strand": "conjugaison",
@@ -2082,20 +2127,6 @@
           "withinOccasionResolved": false,
           "probability": 0.09523809523809527,
           "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "associer_information_question::all-receptive::text_type:informational",
-          "labelFr": "Associer une information à la question posée — Texte informatif bref",
-          "strand": "comprehension_ecrite",
-          "level": 1,
-          "expectedKnown": false,
-          "answered": 2,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.017467248908296946,
-          "countedEvidence": 2,
           "minimumItems": 3
         },
         {
@@ -2141,20 +2172,6 @@
           "minimumItems": 3
         },
         {
-          "skillId": "localiser_information_explicite::all-receptive::text_type:informational",
-          "labelFr": "Localiser une information explicite — Texte informatif bref",
-          "strand": "comprehension_ecrite",
-          "level": 0,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.11764705882352941,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
           "skillId": "produire_passe_compose::writing-controlled-production::verb:avoir",
           "labelFr": "Produire le passé composé — Conjuguer avoir",
           "strand": "conjugaison",
@@ -2181,6 +2198,20 @@
           "withinOccasionResolved": false,
           "probability": 0.010958904109589048,
           "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "inferer_cause_locale::all-receptive::text_type:argumentative",
+          "labelFr": "Inférer une cause locale — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 1,
+          "expectedKnown": false,
+          "answered": 1,
+          "correct": 0,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.11764705882352941,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -2223,10 +2254,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 25,
-      "unsampledTargets": 517,
-      "targetsReachingMinimumItemCount": 12,
-      "targetsWithSufficientEvidenceToday": 11,
+      "sampledTargets": 27,
+      "unsampledTargets": 515,
+      "targetsReachingMinimumItemCount": 11,
+      "targetsWithSufficientEvidenceToday": 10,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -2268,11 +2299,11 @@
         },
         {
           "strand": "comprehension_ecrite",
-          "sampledTargets": 3,
+          "sampledTargets": 5,
           "answered": 9,
-          "targetsReachingMinimumItemCount": 2,
-          "targetsWithSufficientEvidenceToday": 2,
-          "sampledKnown": 3,
+          "targetsReachingMinimumItemCount": 1,
+          "targetsWithSufficientEvidenceToday": 1,
+          "sampledKnown": 5,
           "sampledWeak": 0
         },
         {
@@ -2390,6 +2421,20 @@
           "minimumItems": 3
         },
         {
+          "skillId": "resoudre_pronom_objet::all-receptive::text_type:argumentative",
+          "labelFr": "Résoudre la référence d'un pronom objet — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 0,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.782608695652174,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
           "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
           "labelFr": "Produire le passé composé — Verbes réguliers en -er",
           "strand": "conjugaison",
@@ -2401,6 +2446,20 @@
           "status": "uncertain",
           "withinOccasionResolved": false,
           "probability": 0.9473684210526315,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "inferer_cause_locale::all-receptive::text_type:argumentative",
+          "labelFr": "Inférer une cause locale — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.782608695652174,
           "countedEvidence": 1,
           "minimumItems": 3
         },
@@ -2449,6 +2508,20 @@
           "minimumItems": 3
         },
         {
+          "skillId": "deduire_mot_morphologie::all-receptive::text_type:argumentative",
+          "labelFr": "Déduire un mot grâce à sa morphologie — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.782608695652174,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
           "skillId": "produire_pronom_cod::writing-controlled-production::construction:elision",
           "labelFr": "Employer le, la, l’ ou les — l’ devant une voyelle",
           "strand": "grammaire_syntaxe",
@@ -2460,20 +2533,6 @@
           "withinOccasionResolved": true,
           "probability": 0.9998285616320933,
           "countedEvidence": 3,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "localiser_span_preuve::all-receptive::text_type:argumentative",
-          "labelFr": "Localiser un passage servant de preuve — Texte argumentatif bref",
-          "strand": "comprehension_ecrite",
-          "level": 2,
-          "expectedKnown": true,
-          "answered": 4,
-          "correct": 4,
-          "status": "uncertain",
-          "withinOccasionResolved": true,
-          "probability": 0.9940814954403842,
-          "countedEvidence": 4,
           "minimumItems": 3
         },
         {
@@ -2591,6 +2650,20 @@
           "minimumItems": 3
         },
         {
+          "skillId": "localiser_span_preuve::all-receptive::text_type:argumentative",
+          "labelFr": "Localiser un passage servant de preuve — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 2,
+          "expectedKnown": true,
+          "answered": 2,
+          "correct": 2,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9283667621776505,
+          "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
           "skillId": "produire_passe_compose::writing-controlled-production::verb:avoir",
           "labelFr": "Produire le passé composé — Conjuguer avoir",
           "strand": "conjugaison",
@@ -2617,20 +2690,6 @@
           "withinOccasionResolved": false,
           "probability": 0.9969230769230769,
           "countedEvidence": 2,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "associer_information_question::all-receptive::text_type:informational",
-          "labelFr": "Associer une information à la question posée — Texte informatif bref",
-          "strand": "comprehension_ecrite",
-          "level": 1,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -2673,10 +2732,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 25,
-      "unsampledTargets": 517,
-      "targetsReachingMinimumItemCount": 12,
-      "targetsWithSufficientEvidenceToday": 11,
+      "sampledTargets": 27,
+      "unsampledTargets": 515,
+      "targetsReachingMinimumItemCount": 11,
+      "targetsWithSufficientEvidenceToday": 10,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -2718,11 +2777,11 @@
         },
         {
           "strand": "comprehension_ecrite",
-          "sampledTargets": 3,
+          "sampledTargets": 5,
           "answered": 9,
-          "targetsReachingMinimumItemCount": 2,
-          "targetsWithSufficientEvidenceToday": 2,
-          "sampledKnown": 3,
+          "targetsReachingMinimumItemCount": 1,
+          "targetsWithSufficientEvidenceToday": 1,
+          "sampledKnown": 5,
           "sampledWeak": 0
         },
         {
@@ -2840,6 +2899,20 @@
           "minimumItems": 3
         },
         {
+          "skillId": "resoudre_pronom_objet::all-receptive::text_type:argumentative",
+          "labelFr": "Résoudre la référence d'un pronom objet — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 0,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.782608695652174,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
           "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
           "labelFr": "Produire le passé composé — Verbes réguliers en -er",
           "strand": "conjugaison",
@@ -2851,6 +2924,20 @@
           "status": "uncertain",
           "withinOccasionResolved": false,
           "probability": 0.9473684210526315,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "inferer_cause_locale::all-receptive::text_type:argumentative",
+          "labelFr": "Inférer une cause locale — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.782608695652174,
           "countedEvidence": 1,
           "minimumItems": 3
         },
@@ -2899,6 +2986,20 @@
           "minimumItems": 3
         },
         {
+          "skillId": "deduire_mot_morphologie::all-receptive::text_type:argumentative",
+          "labelFr": "Déduire un mot grâce à sa morphologie — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.782608695652174,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
           "skillId": "produire_pronom_cod::writing-controlled-production::construction:elision",
           "labelFr": "Employer le, la, l’ ou les — l’ devant une voyelle",
           "strand": "grammaire_syntaxe",
@@ -2910,20 +3011,6 @@
           "withinOccasionResolved": true,
           "probability": 0.9998285616320933,
           "countedEvidence": 3,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "localiser_span_preuve::all-receptive::text_type:argumentative",
-          "labelFr": "Localiser un passage servant de preuve — Texte argumentatif bref",
-          "strand": "comprehension_ecrite",
-          "level": 2,
-          "expectedKnown": true,
-          "answered": 4,
-          "correct": 4,
-          "status": "uncertain",
-          "withinOccasionResolved": true,
-          "probability": 0.9940814954403842,
-          "countedEvidence": 4,
           "minimumItems": 3
         },
         {
@@ -3041,6 +3128,20 @@
           "minimumItems": 3
         },
         {
+          "skillId": "localiser_span_preuve::all-receptive::text_type:argumentative",
+          "labelFr": "Localiser un passage servant de preuve — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 2,
+          "expectedKnown": true,
+          "answered": 2,
+          "correct": 2,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9283667621776505,
+          "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
           "skillId": "produire_passe_compose::writing-controlled-production::verb:avoir",
           "labelFr": "Produire le passé composé — Conjuguer avoir",
           "strand": "conjugaison",
@@ -3067,20 +3168,6 @@
           "withinOccasionResolved": false,
           "probability": 0.9969230769230769,
           "countedEvidence": 2,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "associer_information_question::all-receptive::text_type:informational",
-          "labelFr": "Associer une information à la question posée — Texte informatif bref",
-          "strand": "comprehension_ecrite",
-          "level": 1,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -3123,8 +3210,8 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 25,
-      "unsampledTargets": 517,
+      "sampledTargets": 26,
+      "unsampledTargets": 516,
       "targetsReachingMinimumItemCount": 12,
       "targetsWithSufficientEvidenceToday": 11,
       "confirmedMastered": 0,
@@ -3168,12 +3255,12 @@
         },
         {
           "strand": "comprehension_ecrite",
-          "sampledTargets": 3,
+          "sampledTargets": 4,
           "answered": 9,
           "targetsReachingMinimumItemCount": 2,
           "targetsWithSufficientEvidenceToday": 2,
           "sampledKnown": 3,
-          "sampledWeak": 0
+          "sampledWeak": 1
         },
         {
           "strand": "grammaire_syntaxe",
@@ -3290,6 +3377,20 @@
           "minimumItems": 3
         },
         {
+          "skillId": "resoudre_pronom_objet::all-receptive::text_type:argumentative",
+          "labelFr": "Résoudre la référence d'un pronom objet — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 0,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.782608695652174,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
           "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
           "labelFr": "Produire le passé composé — Verbes réguliers en -er",
           "strand": "conjugaison",
@@ -3302,6 +3403,20 @@
           "withinOccasionResolved": false,
           "probability": 0.9473684210526315,
           "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "inferer_cause_locale::all-receptive::text_type:argumentative",
+          "labelFr": "Inférer une cause locale — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 1,
+          "expectedKnown": false,
+          "answered": 3,
+          "correct": 0,
+          "status": "uncertain",
+          "withinOccasionResolved": true,
+          "probability": 0.0023647650014779796,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -3363,20 +3478,6 @@
           "minimumItems": 3
         },
         {
-          "skillId": "localiser_span_preuve::all-receptive::text_type:argumentative",
-          "labelFr": "Localiser un passage servant de preuve — Texte argumentatif bref",
-          "strand": "comprehension_ecrite",
-          "level": 2,
-          "expectedKnown": true,
-          "answered": 4,
-          "correct": 4,
-          "status": "uncertain",
-          "withinOccasionResolved": true,
-          "probability": 0.9940814954403842,
-          "countedEvidence": 4,
-          "minimumItems": 3
-        },
-        {
           "skillId": "accorder_determinant_nom_ecrit::reading-receptive",
           "labelFr": "Réaliser l'accord déterminant-nom",
           "strand": "orthographe_grammaticale",
@@ -3416,6 +3517,20 @@
           "withinOccasionResolved": false,
           "probability": 0.9283667621776505,
           "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "deduire_mot_morphologie::all-receptive::text_type:argumentative",
+          "labelFr": "Déduire un mot grâce à sa morphologie — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.782608695652174,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -3517,20 +3632,6 @@
           "withinOccasionResolved": false,
           "probability": 0.9969230769230769,
           "countedEvidence": 2,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "associer_information_question::all-receptive::text_type:informational",
-          "labelFr": "Associer une information à la question posée — Texte informatif bref",
-          "strand": "comprehension_ecrite",
-          "level": 1,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -3573,8 +3674,8 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 25,
-      "unsampledTargets": 517,
+      "sampledTargets": 26,
+      "unsampledTargets": 516,
       "targetsReachingMinimumItemCount": 12,
       "targetsWithSufficientEvidenceToday": 11,
       "confirmedMastered": 0,
@@ -3618,12 +3719,12 @@
         },
         {
           "strand": "comprehension_ecrite",
-          "sampledTargets": 3,
+          "sampledTargets": 4,
           "answered": 9,
           "targetsReachingMinimumItemCount": 2,
           "targetsWithSufficientEvidenceToday": 2,
           "sampledKnown": 3,
-          "sampledWeak": 0
+          "sampledWeak": 1
         },
         {
           "strand": "grammaire_syntaxe",
@@ -3740,6 +3841,20 @@
           "minimumItems": 3
         },
         {
+          "skillId": "resoudre_pronom_objet::all-receptive::text_type:argumentative",
+          "labelFr": "Résoudre la référence d'un pronom objet — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 0,
+          "expectedKnown": false,
+          "answered": 3,
+          "correct": 0,
+          "status": "uncertain",
+          "withinOccasionResolved": true,
+          "probability": 0.0023647650014779796,
+          "countedEvidence": 3,
+          "minimumItems": 3
+        },
+        {
           "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
           "labelFr": "Produire le passé composé — Verbes réguliers en -er",
           "strand": "conjugaison",
@@ -3813,17 +3928,17 @@
           "minimumItems": 3
         },
         {
-          "skillId": "localiser_span_preuve::all-receptive::text_type:argumentative",
-          "labelFr": "Localiser un passage servant de preuve — Texte argumentatif bref",
+          "skillId": "inferer_cause_locale::all-receptive::text_type:argumentative",
+          "labelFr": "Inférer une cause locale — Texte argumentatif bref",
           "strand": "comprehension_ecrite",
-          "level": 2,
+          "level": 1,
           "expectedKnown": true,
-          "answered": 4,
-          "correct": 4,
+          "answered": 1,
+          "correct": 1,
           "status": "uncertain",
-          "withinOccasionResolved": true,
-          "probability": 0.9940814954403842,
-          "countedEvidence": 4,
+          "withinOccasionResolved": false,
+          "probability": 0.782608695652174,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -3866,6 +3981,20 @@
           "withinOccasionResolved": false,
           "probability": 0.9283667621776505,
           "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "deduire_mot_morphologie::all-receptive::text_type:argumentative",
+          "labelFr": "Déduire un mot grâce à sa morphologie — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.782608695652174,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -3970,20 +4099,6 @@
           "minimumItems": 3
         },
         {
-          "skillId": "associer_information_question::all-receptive::text_type:informational",
-          "labelFr": "Associer une information à la question posée — Texte informatif bref",
-          "strand": "comprehension_ecrite",
-          "level": 1,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
           "skillId": "interpreter_sequence_temporelle::reading-receptive",
           "labelFr": "Interpréter une séquence temporelle",
           "strand": "conjugaison",
@@ -4023,10 +4138,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 25,
-      "unsampledTargets": 517,
-      "targetsReachingMinimumItemCount": 12,
-      "targetsWithSufficientEvidenceToday": 11,
+      "sampledTargets": 27,
+      "unsampledTargets": 515,
+      "targetsReachingMinimumItemCount": 11,
+      "targetsWithSufficientEvidenceToday": 10,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -4068,11 +4183,11 @@
         },
         {
           "strand": "comprehension_ecrite",
-          "sampledTargets": 3,
+          "sampledTargets": 5,
           "answered": 9,
-          "targetsReachingMinimumItemCount": 2,
-          "targetsWithSufficientEvidenceToday": 2,
-          "sampledKnown": 3,
+          "targetsReachingMinimumItemCount": 1,
+          "targetsWithSufficientEvidenceToday": 1,
+          "sampledKnown": 5,
           "sampledWeak": 0
         },
         {
@@ -4190,6 +4305,20 @@
           "minimumItems": 3
         },
         {
+          "skillId": "resoudre_pronom_objet::all-receptive::text_type:argumentative",
+          "labelFr": "Résoudre la référence d'un pronom objet — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 0,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.782608695652174,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
           "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
           "labelFr": "Produire le passé composé — Verbes réguliers en -er",
           "strand": "conjugaison",
@@ -4201,6 +4330,20 @@
           "status": "uncertain",
           "withinOccasionResolved": false,
           "probability": 0.9473684210526315,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "inferer_cause_locale::all-receptive::text_type:argumentative",
+          "labelFr": "Inférer une cause locale — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.782608695652174,
           "countedEvidence": 1,
           "minimumItems": 3
         },
@@ -4249,6 +4392,20 @@
           "minimumItems": 3
         },
         {
+          "skillId": "deduire_mot_morphologie::all-receptive::text_type:argumentative",
+          "labelFr": "Déduire un mot grâce à sa morphologie — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.782608695652174,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
           "skillId": "produire_pronom_cod::writing-controlled-production::construction:elision",
           "labelFr": "Employer le, la, l’ ou les — l’ devant une voyelle",
           "strand": "grammaire_syntaxe",
@@ -4260,20 +4417,6 @@
           "withinOccasionResolved": true,
           "probability": 0.9998285616320933,
           "countedEvidence": 3,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "localiser_span_preuve::all-receptive::text_type:argumentative",
-          "labelFr": "Localiser un passage servant de preuve — Texte argumentatif bref",
-          "strand": "comprehension_ecrite",
-          "level": 2,
-          "expectedKnown": true,
-          "answered": 4,
-          "correct": 4,
-          "status": "uncertain",
-          "withinOccasionResolved": true,
-          "probability": 0.9940814954403842,
-          "countedEvidence": 4,
           "minimumItems": 3
         },
         {
@@ -4391,6 +4534,20 @@
           "minimumItems": 3
         },
         {
+          "skillId": "localiser_span_preuve::all-receptive::text_type:argumentative",
+          "labelFr": "Localiser un passage servant de preuve — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 2,
+          "expectedKnown": true,
+          "answered": 2,
+          "correct": 2,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9283667621776505,
+          "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
           "skillId": "produire_passe_compose::writing-controlled-production::verb:avoir",
           "labelFr": "Produire le passé composé — Conjuguer avoir",
           "strand": "conjugaison",
@@ -4417,20 +4574,6 @@
           "withinOccasionResolved": false,
           "probability": 0.010958904109589048,
           "countedEvidence": 2,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "associer_information_question::all-receptive::text_type:informational",
-          "labelFr": "Associer une information à la question posée — Texte informatif bref",
-          "strand": "comprehension_ecrite",
-          "level": 1,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -4473,10 +4616,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 26,
-      "unsampledTargets": 516,
-      "targetsReachingMinimumItemCount": 12,
-      "targetsWithSufficientEvidenceToday": 12,
+      "sampledTargets": 28,
+      "unsampledTargets": 514,
+      "targetsReachingMinimumItemCount": 11,
+      "targetsWithSufficientEvidenceToday": 11,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -4518,11 +4661,11 @@
         },
         {
           "strand": "comprehension_ecrite",
-          "sampledTargets": 3,
+          "sampledTargets": 5,
           "answered": 9,
-          "targetsReachingMinimumItemCount": 2,
-          "targetsWithSufficientEvidenceToday": 2,
-          "sampledKnown": 3,
+          "targetsReachingMinimumItemCount": 1,
+          "targetsWithSufficientEvidenceToday": 1,
+          "sampledKnown": 5,
           "sampledWeak": 0
         },
         {
@@ -4640,6 +4783,20 @@
           "minimumItems": 3
         },
         {
+          "skillId": "resoudre_pronom_objet::all-receptive::text_type:argumentative",
+          "labelFr": "Résoudre la référence d'un pronom objet — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 0,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.782608695652174,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
           "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
           "labelFr": "Produire le passé composé — Verbes réguliers en -er",
           "strand": "conjugaison",
@@ -4666,6 +4823,20 @@
           "withinOccasionResolved": true,
           "probability": 0.0023647650014779796,
           "countedEvidence": 3,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "inferer_cause_locale::all-receptive::text_type:argumentative",
+          "labelFr": "Inférer une cause locale — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.782608695652174,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -4713,6 +4884,20 @@
           "minimumItems": 3
         },
         {
+          "skillId": "deduire_mot_morphologie::all-receptive::text_type:argumentative",
+          "labelFr": "Déduire un mot grâce à sa morphologie — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.782608695652174,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
           "skillId": "produire_pronom_cod::writing-controlled-production::construction:elision",
           "labelFr": "Employer le, la, l’ ou les — l’ devant une voyelle",
           "strand": "grammaire_syntaxe",
@@ -4724,20 +4909,6 @@
           "withinOccasionResolved": true,
           "probability": 0.9998285616320933,
           "countedEvidence": 3,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "localiser_span_preuve::all-receptive::text_type:argumentative",
-          "labelFr": "Localiser un passage servant de preuve — Texte argumentatif bref",
-          "strand": "comprehension_ecrite",
-          "level": 2,
-          "expectedKnown": true,
-          "answered": 4,
-          "correct": 4,
-          "status": "uncertain",
-          "withinOccasionResolved": true,
-          "probability": 0.9940814954403842,
-          "countedEvidence": 4,
           "minimumItems": 3
         },
         {
@@ -4855,6 +5026,20 @@
           "minimumItems": 3
         },
         {
+          "skillId": "localiser_span_preuve::all-receptive::text_type:argumentative",
+          "labelFr": "Localiser un passage servant de preuve — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 2,
+          "expectedKnown": true,
+          "answered": 2,
+          "correct": 2,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9283667621776505,
+          "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
           "skillId": "produire_passe_compose::writing-controlled-production::verb:avoir",
           "labelFr": "Produire le passé composé — Conjuguer avoir",
           "strand": "conjugaison",
@@ -4881,20 +5066,6 @@
           "withinOccasionResolved": false,
           "probability": 0.9969230769230769,
           "countedEvidence": 2,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "associer_information_question::all-receptive::text_type:informational",
-          "labelFr": "Associer une information à la question posée — Texte informatif bref",
-          "strand": "comprehension_ecrite",
-          "level": 1,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -4937,10 +5108,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 26,
-      "unsampledTargets": 516,
-      "targetsReachingMinimumItemCount": 12,
-      "targetsWithSufficientEvidenceToday": 11,
+      "sampledTargets": 28,
+      "unsampledTargets": 514,
+      "targetsReachingMinimumItemCount": 11,
+      "targetsWithSufficientEvidenceToday": 10,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -4982,11 +5153,11 @@
         },
         {
           "strand": "comprehension_ecrite",
-          "sampledTargets": 3,
+          "sampledTargets": 5,
           "answered": 9,
-          "targetsReachingMinimumItemCount": 2,
-          "targetsWithSufficientEvidenceToday": 2,
-          "sampledKnown": 3,
+          "targetsReachingMinimumItemCount": 1,
+          "targetsWithSufficientEvidenceToday": 1,
+          "sampledKnown": 5,
           "sampledWeak": 0
         },
         {
@@ -5104,6 +5275,20 @@
           "minimumItems": 3
         },
         {
+          "skillId": "resoudre_pronom_objet::all-receptive::text_type:argumentative",
+          "labelFr": "Résoudre la référence d'un pronom objet — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 0,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.782608695652174,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
           "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
           "labelFr": "Produire le passé composé — Verbes réguliers en -er",
           "strand": "conjugaison",
@@ -5130,6 +5315,20 @@
           "withinOccasionResolved": true,
           "probability": 0.0023647650014779796,
           "countedEvidence": 3,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "inferer_cause_locale::all-receptive::text_type:argumentative",
+          "labelFr": "Inférer une cause locale — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.782608695652174,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -5177,6 +5376,20 @@
           "minimumItems": 3
         },
         {
+          "skillId": "deduire_mot_morphologie::all-receptive::text_type:argumentative",
+          "labelFr": "Déduire un mot grâce à sa morphologie — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.782608695652174,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
           "skillId": "produire_pronom_cod::writing-controlled-production::construction:elision",
           "labelFr": "Employer le, la, l’ ou les — l’ devant une voyelle",
           "strand": "grammaire_syntaxe",
@@ -5188,20 +5401,6 @@
           "withinOccasionResolved": true,
           "probability": 0.9998285616320933,
           "countedEvidence": 3,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "localiser_span_preuve::all-receptive::text_type:argumentative",
-          "labelFr": "Localiser un passage servant de preuve — Texte argumentatif bref",
-          "strand": "comprehension_ecrite",
-          "level": 2,
-          "expectedKnown": true,
-          "answered": 4,
-          "correct": 4,
-          "status": "uncertain",
-          "withinOccasionResolved": true,
-          "probability": 0.9940814954403842,
-          "countedEvidence": 4,
           "minimumItems": 3
         },
         {
@@ -5319,6 +5518,20 @@
           "minimumItems": 3
         },
         {
+          "skillId": "localiser_span_preuve::all-receptive::text_type:argumentative",
+          "labelFr": "Localiser un passage servant de preuve — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 2,
+          "expectedKnown": true,
+          "answered": 2,
+          "correct": 2,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9283667621776505,
+          "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
           "skillId": "produire_passe_compose::writing-controlled-production::verb:avoir",
           "labelFr": "Produire le passé composé — Conjuguer avoir",
           "strand": "conjugaison",
@@ -5345,20 +5558,6 @@
           "withinOccasionResolved": false,
           "probability": 0.9969230769230769,
           "countedEvidence": 2,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "associer_information_question::all-receptive::text_type:informational",
-          "labelFr": "Associer une information à la question posée — Texte informatif bref",
-          "strand": "comprehension_ecrite",
-          "level": 1,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -5573,12 +5772,12 @@
           "strand": "comprehension_ecrite",
           "level": 0,
           "expectedKnown": false,
-          "answered": 3,
+          "answered": 2,
           "correct": 0,
           "status": "uncertain",
-          "withinOccasionResolved": true,
-          "probability": 0.0023647650014779796,
-          "countedEvidence": 3,
+          "withinOccasionResolved": false,
+          "probability": 0.017467248908296946,
+          "countedEvidence": 2,
           "minimumItems": 3
         },
         {
@@ -5697,6 +5896,20 @@
           "minimumItems": 3
         },
         {
+          "skillId": "resoudre_pronom_objet::all-receptive::text_type:argumentative",
+          "labelFr": "Résoudre la référence d'un pronom objet — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 0,
+          "expectedKnown": false,
+          "answered": 3,
+          "correct": 0,
+          "status": "uncertain",
+          "withinOccasionResolved": true,
+          "probability": 0.0023647650014779796,
+          "countedEvidence": 3,
+          "minimumItems": 3
+        },
+        {
           "skillId": "produire_imperatif::writing-controlled-production::verb:aller",
           "labelFr": "Produire l'impératif — Conjuguer aller",
           "strand": "conjugaison",
@@ -5724,20 +5937,6 @@
           "withinOccasionResolved": false,
           "probability": 0.09523809523809527,
           "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "associer_information_question::all-receptive::text_type:informational",
-          "labelFr": "Associer une information à la question posée — Texte informatif bref",
-          "strand": "comprehension_ecrite",
-          "level": 1,
-          "expectedKnown": false,
-          "answered": 2,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.017467248908296946,
-          "countedEvidence": 2,
           "minimumItems": 3
         },
         {
@@ -5783,20 +5982,6 @@
           "minimumItems": 3
         },
         {
-          "skillId": "localiser_information_explicite::all-receptive::text_type:informational",
-          "labelFr": "Localiser une information explicite — Texte informatif bref",
-          "strand": "comprehension_ecrite",
-          "level": 0,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.11764705882352941,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
           "skillId": "produire_passe_compose::writing-controlled-production::verb:avoir",
           "labelFr": "Produire le passé composé — Conjuguer avoir",
           "strand": "conjugaison",
@@ -5823,6 +6008,20 @@
           "withinOccasionResolved": false,
           "probability": 0.010958904109589048,
           "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "inferer_cause_locale::all-receptive::text_type:argumentative",
+          "labelFr": "Inférer une cause locale — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 1,
+          "expectedKnown": false,
+          "answered": 1,
+          "correct": 0,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.11764705882352941,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -5879,10 +6078,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 25,
-      "unsampledTargets": 517,
-      "targetsReachingMinimumItemCount": 12,
-      "targetsWithSufficientEvidenceToday": 7,
+      "sampledTargets": 28,
+      "unsampledTargets": 514,
+      "targetsReachingMinimumItemCount": 11,
+      "targetsWithSufficientEvidenceToday": 6,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -5922,12 +6121,12 @@
         },
         {
           "strand": "comprehension_ecrite",
-          "sampledTargets": 2,
+          "sampledTargets": 5,
           "answered": 9,
-          "targetsReachingMinimumItemCount": 2,
-          "targetsWithSufficientEvidenceToday": 1,
+          "targetsReachingMinimumItemCount": 1,
+          "targetsWithSufficientEvidenceToday": 0,
           "sampledKnown": 0,
-          "sampledWeak": 2
+          "sampledWeak": 5
         },
         {
           "strand": "grammaire_syntaxe",
@@ -5992,12 +6191,12 @@
           "strand": "comprehension_ecrite",
           "level": 1,
           "expectedKnown": false,
-          "answered": 6,
-          "correct": 3,
+          "answered": 2,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.09957932345992054,
-          "countedEvidence": 6,
+          "probability": 0.32432432432432434,
+          "countedEvidence": 2,
           "minimumItems": 3
         },
         {
@@ -6063,12 +6262,12 @@
           "strand": "comprehension_ecrite",
           "level": 0,
           "expectedKnown": false,
-          "answered": 3,
+          "answered": 1,
           "correct": 0,
           "status": "uncertain",
-          "withinOccasionResolved": true,
-          "probability": 0.0023647650014779796,
-          "countedEvidence": 3,
+          "withinOccasionResolved": false,
+          "probability": 0.11764705882352941,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -6159,6 +6358,20 @@
           "minimumItems": 3
         },
         {
+          "skillId": "resoudre_pronom_objet::all-receptive::text_type:argumentative",
+          "labelFr": "Résoudre la référence d'un pronom objet — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 0,
+          "expectedKnown": false,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.782608695652174,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
           "skillId": "identifier_sujet_verbe::reading-receptive",
           "labelFr": "Identifier le sujet du verbe",
           "strand": "conjugaison",
@@ -6197,6 +6410,20 @@
           "status": "uncertain",
           "withinOccasionResolved": true,
           "probability": 0.0023647650014779796,
+          "countedEvidence": 3,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "inferer_cause_locale::all-receptive::text_type:argumentative",
+          "labelFr": "Inférer une cause locale — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 1,
+          "expectedKnown": false,
+          "answered": 3,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.06015037593984965,
           "countedEvidence": 3,
           "minimumItems": 3
         },
@@ -6273,6 +6500,20 @@
           "minimumItems": 3
         },
         {
+          "skillId": "deduire_mot_morphologie::all-receptive::text_type:argumentative",
+          "labelFr": "Déduire un mot grâce à sa morphologie — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 1,
+          "expectedKnown": false,
+          "answered": 2,
+          "correct": 0,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.017467248908296946,
+          "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
           "skillId": "produire_passe_compose::writing-controlled-production::verb:avoir",
           "labelFr": "Produire le passé composé — Conjuguer avoir",
           "strand": "conjugaison",
@@ -6327,8 +6568,8 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 26,
-      "unsampledTargets": 516,
+      "sampledTargets": 29,
+      "unsampledTargets": 513,
       "targetsReachingMinimumItemCount": 12,
       "targetsWithSufficientEvidenceToday": 8,
       "confirmedMastered": 0,
@@ -6370,12 +6611,12 @@
         },
         {
           "strand": "comprehension_ecrite",
-          "sampledTargets": 2,
+          "sampledTargets": 5,
           "answered": 9,
           "targetsReachingMinimumItemCount": 2,
           "targetsWithSufficientEvidenceToday": 0,
           "sampledKnown": 0,
-          "sampledWeak": 2
+          "sampledWeak": 5
         },
         {
           "strand": "grammaire_syntaxe",
@@ -6440,12 +6681,12 @@
           "strand": "comprehension_ecrite",
           "level": 1,
           "expectedKnown": false,
-          "answered": 6,
-          "correct": 3,
+          "answered": 1,
+          "correct": 0,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.09957932345992054,
-          "countedEvidence": 6,
+          "probability": 0.11764705882352941,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -6511,12 +6752,12 @@
           "strand": "comprehension_ecrite",
           "level": 0,
           "expectedKnown": false,
-          "answered": 3,
+          "answered": 1,
           "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.06015037593984965,
-          "countedEvidence": 3,
+          "probability": 0.782608695652174,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -6559,6 +6800,20 @@
           "status": "uncertain",
           "withinOccasionResolved": true,
           "probability": 0.0023647650014779796,
+          "countedEvidence": 3,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "resoudre_pronom_objet::all-receptive::text_type:argumentative",
+          "labelFr": "Résoudre la référence d'un pronom objet — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 0,
+          "expectedKnown": false,
+          "answered": 3,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.06015037593984965,
           "countedEvidence": 3,
           "minimumItems": 3
         },
@@ -6677,6 +6932,20 @@
           "minimumItems": 3
         },
         {
+          "skillId": "inferer_cause_locale::all-receptive::text_type:argumentative",
+          "labelFr": "Inférer une cause locale — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 1,
+          "expectedKnown": false,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.782608695652174,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
           "skillId": "produire_passe_compose::writing-controlled-production::verb:aller",
           "labelFr": "Produire le passé composé — Conjuguer aller",
           "strand": "conjugaison",
@@ -6689,6 +6958,20 @@
           "withinOccasionResolved": false,
           "probability": 0.09523809523809527,
           "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "deduire_mot_morphologie::all-receptive::text_type:argumentative",
+          "labelFr": "Déduire un mot grâce à sa morphologie — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 1,
+          "expectedKnown": false,
+          "answered": 3,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.06015037593984965,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -6788,10 +7071,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 28,
-      "unsampledTargets": 514,
-      "targetsReachingMinimumItemCount": 12,
-      "targetsWithSufficientEvidenceToday": 7,
+      "sampledTargets": 29,
+      "unsampledTargets": 513,
+      "targetsReachingMinimumItemCount": 11,
+      "targetsWithSufficientEvidenceToday": 6,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -6831,12 +7114,12 @@
         },
         {
           "strand": "comprehension_ecrite",
-          "sampledTargets": 4,
+          "sampledTargets": 5,
           "answered": 9,
-          "targetsReachingMinimumItemCount": 2,
-          "targetsWithSufficientEvidenceToday": 1,
+          "targetsReachingMinimumItemCount": 1,
+          "targetsWithSufficientEvidenceToday": 0,
           "sampledKnown": 0,
-          "sampledWeak": 4
+          "sampledWeak": 5
         },
         {
           "strand": "grammaire_syntaxe",
@@ -6901,12 +7184,12 @@
           "strand": "comprehension_ecrite",
           "level": 1,
           "expectedKnown": false,
-          "answered": 3,
+          "answered": 1,
           "correct": 0,
           "status": "uncertain",
-          "withinOccasionResolved": true,
-          "probability": 0.0023647650014779796,
-          "countedEvidence": 3,
+          "withinOccasionResolved": false,
+          "probability": 0.11764705882352941,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -6958,12 +7241,12 @@
           "strand": "comprehension_ecrite",
           "level": 0,
           "expectedKnown": false,
-          "answered": 3,
-          "correct": 2,
+          "answered": 1,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.6334310850439884,
-          "countedEvidence": 3,
+          "probability": 0.782608695652174,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -7021,6 +7304,20 @@
           "withinOccasionResolved": true,
           "probability": 0.0023647650014779796,
           "countedEvidence": 3,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "resoudre_pronom_objet::all-receptive::text_type:argumentative",
+          "labelFr": "Résoudre la référence d'un pronom objet — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 0,
+          "expectedKnown": false,
+          "answered": 2,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.32432432432432434,
+          "countedEvidence": 2,
           "minimumItems": 3
         },
         {
@@ -7096,6 +7393,20 @@
           "minimumItems": 3
         },
         {
+          "skillId": "inferer_cause_locale::all-receptive::text_type:argumentative",
+          "labelFr": "Inférer une cause locale — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 1,
+          "expectedKnown": false,
+          "answered": 3,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.06015037593984965,
+          "countedEvidence": 3,
+          "minimumItems": 3
+        },
+        {
           "skillId": "employer_accent_circonflexe::reading-receptive",
           "labelFr": "Employer l'accent circonflexe",
           "strand": "orthographe_lexicale",
@@ -7154,20 +7465,6 @@
           "minimumItems": 3
         },
         {
-          "skillId": "associer_information_question::all-receptive::text_type:informational",
-          "labelFr": "Associer une information à la question posée — Texte informatif bref",
-          "strand": "comprehension_ecrite",
-          "level": 1,
-          "expectedKnown": false,
-          "answered": 2,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.32432432432432434,
-          "countedEvidence": 2,
-          "minimumItems": 3
-        },
-        {
           "skillId": "construction_accord_sujet_verbe::reading-analysis::construction:adjacent",
           "labelFr": "Analyser l'accord sujet-verbe — Sujet proche du verbe",
           "strand": "orthographe_grammaticale",
@@ -7186,6 +7483,20 @@
           "labelFr": "Choisir é ou è — Choisir é",
           "strand": "orthographe_lexicale",
           "level": 0,
+          "expectedKnown": false,
+          "answered": 2,
+          "correct": 0,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.017467248908296946,
+          "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "deduire_mot_morphologie::all-receptive::text_type:argumentative",
+          "labelFr": "Déduire un mot grâce à sa morphologie — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 1,
           "expectedKnown": false,
           "answered": 2,
           "correct": 0,
@@ -7221,20 +7532,6 @@
           "status": "uncertain",
           "withinOccasionResolved": false,
           "probability": 0.09523809523809527,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "localiser_information_explicite::all-receptive::text_type:informational",
-          "labelFr": "Localiser une information explicite — Texte informatif bref",
-          "strand": "comprehension_ecrite",
-          "level": 0,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.11764705882352941,
           "countedEvidence": 1,
           "minimumItems": 3
         },
@@ -7278,10 +7575,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 24,
-      "unsampledTargets": 518,
-      "targetsReachingMinimumItemCount": 12,
-      "targetsWithSufficientEvidenceToday": 5,
+      "sampledTargets": 27,
+      "unsampledTargets": 515,
+      "targetsReachingMinimumItemCount": 10,
+      "targetsWithSufficientEvidenceToday": 4,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -7321,12 +7618,12 @@
         },
         {
           "strand": "comprehension_ecrite",
-          "sampledTargets": 2,
+          "sampledTargets": 5,
           "answered": 9,
-          "targetsReachingMinimumItemCount": 2,
-          "targetsWithSufficientEvidenceToday": 1,
+          "targetsReachingMinimumItemCount": 0,
+          "targetsWithSufficientEvidenceToday": 0,
           "sampledKnown": 0,
-          "sampledWeak": 2
+          "sampledWeak": 5
         },
         {
           "strand": "grammaire_syntaxe",
@@ -7391,12 +7688,12 @@
           "strand": "comprehension_ecrite",
           "level": 1,
           "expectedKnown": false,
-          "answered": 5,
-          "correct": 1,
+          "answered": 2,
+          "correct": 0,
           "status": "uncertain",
-          "withinOccasionResolved": true,
-          "probability": 0.001136484710729126,
-          "countedEvidence": 5,
+          "withinOccasionResolved": false,
+          "probability": 0.017467248908296946,
+          "countedEvidence": 2,
           "minimumItems": 3
         },
         {
@@ -7462,12 +7759,12 @@
           "strand": "comprehension_ecrite",
           "level": 0,
           "expectedKnown": false,
-          "answered": 4,
-          "correct": 3,
+          "answered": 2,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.8615111898958564,
-          "countedEvidence": 4,
+          "probability": 0.32432432432432434,
+          "countedEvidence": 2,
           "minimumItems": 3
         },
         {
@@ -7528,6 +7825,20 @@
           "minimumItems": 3
         },
         {
+          "skillId": "resoudre_pronom_objet::all-receptive::text_type:argumentative",
+          "labelFr": "Résoudre la référence d'un pronom objet — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 0,
+          "expectedKnown": false,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.782608695652174,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
           "skillId": "produire_futur_proche::writing-controlled-production::verb:aller",
           "labelFr": "Produire le futur proche — Conjuguer aller",
           "strand": "conjugaison",
@@ -7555,6 +7866,20 @@
           "withinOccasionResolved": true,
           "probability": 0.001164991990680065,
           "countedEvidence": 3,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "inferer_cause_locale::all-receptive::text_type:argumentative",
+          "labelFr": "Inférer une cause locale — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 1,
+          "expectedKnown": false,
+          "answered": 2,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.32432432432432434,
+          "countedEvidence": 2,
           "minimumItems": 3
         },
         {
@@ -7596,6 +7921,20 @@
           "status": "uncertain",
           "withinOccasionResolved": false,
           "probability": 0.010958904109589048,
+          "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "deduire_mot_morphologie::all-receptive::text_type:argumentative",
+          "labelFr": "Déduire un mot grâce à sa morphologie — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 1,
+          "expectedKnown": false,
+          "answered": 2,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.32432432432432434,
           "countedEvidence": 2,
           "minimumItems": 3
         },
@@ -7712,9 +8051,9 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 46,
-      "sampledTargets": 21,
-      "unsampledTargets": 521,
-      "targetsReachingMinimumItemCount": 10,
+      "sampledTargets": 24,
+      "unsampledTargets": 518,
+      "targetsReachingMinimumItemCount": 9,
       "targetsWithSufficientEvidenceToday": 8,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
@@ -7755,11 +8094,11 @@
         },
         {
           "strand": "comprehension_ecrite",
-          "sampledTargets": 2,
+          "sampledTargets": 5,
           "answered": 7,
-          "targetsReachingMinimumItemCount": 2,
+          "targetsReachingMinimumItemCount": 1,
           "targetsWithSufficientEvidenceToday": 1,
-          "sampledKnown": 2,
+          "sampledKnown": 5,
           "sampledWeak": 0
         },
         {
@@ -7877,6 +8216,20 @@
           "minimumItems": 3
         },
         {
+          "skillId": "resoudre_pronom_objet::all-receptive::text_type:argumentative",
+          "labelFr": "Résoudre la référence d'un pronom objet — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 0,
+          "expectedKnown": true,
+          "answered": 0,
+          "correct": 0,
+          "status": "unknown",
+          "withinOccasionResolved": false,
+          "probability": 0.5,
+          "countedEvidence": 0,
+          "minimumItems": 3
+        },
+        {
           "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
           "labelFr": "Produire le passé composé — Verbes réguliers en -er",
           "strand": "conjugaison",
@@ -7888,6 +8241,20 @@
           "status": "uncertain",
           "withinOccasionResolved": false,
           "probability": 0.9473684210526315,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "inferer_cause_locale::all-receptive::text_type:argumentative",
+          "labelFr": "Inférer une cause locale — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.782608695652174,
           "countedEvidence": 1,
           "minimumItems": 3
         },
@@ -7936,6 +8303,20 @@
           "minimumItems": 3
         },
         {
+          "skillId": "deduire_mot_morphologie::all-receptive::text_type:argumentative",
+          "labelFr": "Déduire un mot grâce à sa morphologie — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.782608695652174,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
           "skillId": "produire_pronom_cod::writing-controlled-production::construction:elision",
           "labelFr": "Employer le, la, l’ ou les — l’ devant une voyelle",
           "strand": "grammaire_syntaxe",
@@ -7946,20 +8327,6 @@
           "status": "uncertain",
           "withinOccasionResolved": true,
           "probability": 0.9998285616320933,
-          "countedEvidence": 3,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "localiser_span_preuve::all-receptive::text_type:argumentative",
-          "labelFr": "Localiser un passage servant de preuve — Texte argumentatif bref",
-          "strand": "comprehension_ecrite",
-          "level": 2,
-          "expectedKnown": true,
-          "answered": 3,
-          "correct": 3,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9790162833641095,
           "countedEvidence": 3,
           "minimumItems": 3
         },
@@ -8079,6 +8446,20 @@
           "minimumItems": 3
         },
         {
+          "skillId": "localiser_span_preuve::all-receptive::text_type:argumentative",
+          "labelFr": "Localiser un passage servant de preuve — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 2,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.782608695652174,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
           "skillId": "produire_imperatif::writing-controlled-production::pattern:regular_er",
           "labelFr": "Produire l'impératif — Verbes réguliers en -er",
           "strand": "conjugaison",
@@ -8104,10 +8485,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 23,
-      "unsampledTargets": 519,
-      "targetsReachingMinimumItemCount": 10,
-      "targetsWithSufficientEvidenceToday": 9,
+      "sampledTargets": 25,
+      "unsampledTargets": 517,
+      "targetsReachingMinimumItemCount": 9,
+      "targetsWithSufficientEvidenceToday": 8,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -8149,11 +8530,11 @@
         },
         {
           "strand": "comprehension_ecrite",
-          "sampledTargets": 3,
+          "sampledTargets": 5,
           "answered": 9,
-          "targetsReachingMinimumItemCount": 2,
-          "targetsWithSufficientEvidenceToday": 2,
-          "sampledKnown": 3,
+          "targetsReachingMinimumItemCount": 1,
+          "targetsWithSufficientEvidenceToday": 1,
+          "sampledKnown": 5,
           "sampledWeak": 0
         },
         {
@@ -8271,6 +8652,20 @@
           "minimumItems": 3
         },
         {
+          "skillId": "resoudre_pronom_objet::all-receptive::text_type:argumentative",
+          "labelFr": "Résoudre la référence d'un pronom objet — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 0,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.782608695652174,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
           "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
           "labelFr": "Produire le passé composé — Verbes réguliers en -er",
           "strand": "conjugaison",
@@ -8282,6 +8677,20 @@
           "status": "uncertain",
           "withinOccasionResolved": false,
           "probability": 0.9473684210526315,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "inferer_cause_locale::all-receptive::text_type:argumentative",
+          "labelFr": "Inférer une cause locale — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.782608695652174,
           "countedEvidence": 1,
           "minimumItems": 3
         },
@@ -8330,6 +8739,20 @@
           "minimumItems": 3
         },
         {
+          "skillId": "deduire_mot_morphologie::all-receptive::text_type:argumentative",
+          "labelFr": "Déduire un mot grâce à sa morphologie — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.782608695652174,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
           "skillId": "produire_pronom_cod::writing-controlled-production::construction:elision",
           "labelFr": "Employer le, la, l’ ou les — l’ devant une voyelle",
           "strand": "grammaire_syntaxe",
@@ -8341,20 +8764,6 @@
           "withinOccasionResolved": true,
           "probability": 0.9998285616320933,
           "countedEvidence": 3,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "localiser_span_preuve::all-receptive::text_type:argumentative",
-          "labelFr": "Localiser un passage servant de preuve — Texte argumentatif bref",
-          "strand": "comprehension_ecrite",
-          "level": 2,
-          "expectedKnown": true,
-          "answered": 4,
-          "correct": 4,
-          "status": "uncertain",
-          "withinOccasionResolved": true,
-          "probability": 0.9940814954403842,
-          "countedEvidence": 4,
           "minimumItems": 3
         },
         {
@@ -8444,6 +8853,20 @@
           "minimumItems": 3
         },
         {
+          "skillId": "localiser_span_preuve::all-receptive::text_type:argumentative",
+          "labelFr": "Localiser un passage servant de preuve — Texte argumentatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 2,
+          "expectedKnown": true,
+          "answered": 2,
+          "correct": 2,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9283667621776505,
+          "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
           "skillId": "produire_passe_compose::writing-controlled-production::verb:avoir",
           "labelFr": "Produire le passé composé — Conjuguer avoir",
           "strand": "conjugaison",
@@ -8470,20 +8893,6 @@
           "withinOccasionResolved": false,
           "probability": 0.9969230769230769,
           "countedEvidence": 2,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "associer_information_question::all-receptive::text_type:informational",
-          "labelFr": "Associer une information à la question posée — Texte informatif bref",
-          "strand": "comprehension_ecrite",
-          "level": 1,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
           "minimumItems": 3
         },
         {

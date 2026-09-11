@@ -1,3 +1,4 @@
+import {readingSamplingFamily,READING_FAMILY_ORDER} from './reading-sampling-family';
 import type {ConjugationFormFamily} from "./conjugation-form-family";
 import {inspectReleaseScope,type ReleaseScope} from "./release-scope";
 import {hasVerifiedNovelMaterial,type ObservedMaterialReceipt} from "./material-receipt";
@@ -311,7 +312,7 @@ export function selectProbe(skills: readonly Skill[], bank: readonly Probe[], ob
   const familyOf=(skill:Skill)=>groupOf(skill)==="conjugaison"
     ?skill.branch.startsWith("conjugation:verb:")?"individual_verbs"
       :skill.branch.startsWith("conjugation:pattern:")?"verb_patterns":"general_conjugation"
-    :groupOf(skill);
+    :domainOf(skill)==='reading_comprehension'?readingSamplingFamily(skill.branch):groupOf(skill);
   const availableFamilies=[...new Set(groupItems.map(item=>familyOf(skillById.get(item.skillId)!)))];
   const familySurveyComplete=availableFamilies.every(family=>groupHistory.filter(observation=>familyOf(skillById.get(observation.skillId)!)===family).length>=3);
   // Give each available family an initial three-question visit first.
@@ -320,7 +321,22 @@ export function selectProbe(skills: readonly Skill[], bank: readonly Probe[], ob
   // remains unchanged. This is scheduling, never a mastery or chance estimate.
   const familyBalanceHistory=groupHistory.map(observation=>({...observation,activeSeconds:
     observation.activeSeconds/(familySurveyComplete&&familyOf(skillById.get(observation.skillId)!)==='individual_verbs'?2:1)}));
-  const family=balance(availableFamilies,familyBalanceHistory,familyOf)[0];
+  let family=balance(availableFamilies,familyBalanceHistory,familyOf)[0];
+  if(domain==='reading_comprehension'){
+    const count=(value:string)=>groupHistory.filter(o=>familyOf(skillById.get(o.skillId)!)===value).length;
+    const lastAnswer=groupHistory.filter(o=>!o.skipped).at(-1);
+    const lastSkill=lastAnswer?skillById.get(lastAnswer.skillId):undefined;
+    const lastFamily=lastSkill?familyOf(lastSkill):undefined;
+    // Check an actual error before moving on. A skip does not create a gap,
+    // and the normal per-target/visit limits still prevent endless retries.
+    const confirmError=lastAnswer&&!lastAnswer.correct&&lastSkill&&!routingById.get(lastSkill.id)?.resolved
+      &&groupItems.some(item=>item.skillId===lastSkill.id)
+      &&groupHistory.filter(o=>o.skillId===lastSkill.id).length<policy.maxItemsPerSkill;
+    const unseen=availableFamilies.filter(value=>count(value)===0).sort((a,b)=>(READING_FAMILY_ORDER[a]??4)-(READING_FAMILY_ORDER[b]??4));
+    const visits=[...availableFamilies].sort((a,b)=>Math.floor(count(a)/(policy.itemsPerBranchVisit??6))-Math.floor(count(b)/(policy.itemsPerBranchVisit??6))
+      ||(READING_FAMILY_ORDER[a]??4)-(READING_FAMILY_ORDER[b]??4));
+    family=confirmError&&lastFamily&&availableFamilies.includes(lastFamily)?lastFamily:unseen[0]??visits[0];
+  }
   const allFamilyItems=groupItems.filter(item=>familyOf(skillById.get(item.skillId)!)===family);
   const allFamilyHistory=groupHistory.filter(observation=>familyOf(skillById.get(observation.skillId)!)===family);
   const formOf=(skill:Skill)=>skill.formFamily??"foundation";

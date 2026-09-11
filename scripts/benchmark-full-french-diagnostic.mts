@@ -180,6 +180,7 @@ const report = {
     "Tense recognition and interpretation use the draft ranks too; other general concepts retain graph depth. Challenge ranks and entry-point selection require educator/student validation before release.",
     "A profile distinction that was not sampled is not evidence that the system can distinguish that profile.",
     "Reading profile gaps use explicit approved node identities; locating a supporting passage is not treated as inferential reading.",
+    "Reading briefly samples retrieval, reference resolution, inference and other available operations, follows up on errors, and then uses bounded confirmation visits.",
   ],
   assumptions: [
     "Synthetic truth is defined per exact target; it does not enforce prerequisite mastery or assign a global student level.",
