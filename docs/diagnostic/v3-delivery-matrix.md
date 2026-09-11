@@ -10,7 +10,7 @@ Regenerate: `npx tsx scripts/build-v3-delivery-matrix.mts`. Verify without writi
 | --- | ---: | ---: | ---: | ---: | ---: |
 | conjugation | 255 | 77 | 195 | 0 | 3300 |
 | reading_comprehension | 92 | 21 | 74 | 0 | 80 |
-| grammar | 79 | 56 | 43 | 0 | 194 |
+| grammar | 79 | 56 | 43 | 0 | 210 |
 | spelling | 116 | 79 | 60 | 0 | 270 |
 
 ## Exact-target teaching work
@@ -21,7 +21,7 @@ These counts describe authoring drafts, not approved lessons or published pathwa
 | --- | ---: | ---: | ---: |
 | conjugation | 54 | 201 | 328 |
 | reading_comprehension | 10 | 82 | 44 |
-| grammar | 19 | 60 | 97 |
+| grammar | 20 | 59 | 103 |
 | spelling | 19 | 97 | 90 |
 
 ## Sampling strands
@@ -382,7 +382,7 @@ Full evidence requirements, prerequisite IDs, question IDs, source checksums and
 | Reconnaître une phrase canonique | production / initial | 1 | 1 / 0 (insufficient_coverage) | 16 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
 | Reconnaître une coordination | recognition / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
 | Reconnaître une coordination | production / initial | 2 | 2 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
-| Reconnaître une subordonnée relative | recognition / initial | 2 | 2 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
+| Reconnaître une subordonnée relative | recognition / initial | 2 | 2 / 0 (insufficient_coverage) | 16 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
 | Reconnaître une subordonnée relative | production / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
 | Reconnaître une subordonnée complétive | recognition / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
 | Reconnaître une subordonnée complétive | production / initial | 2 | 2 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |

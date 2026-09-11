@@ -1,5 +1,5 @@
 {
-  "candidateChecksum": "sha256:deb83070410000c9006ed36f7bb99d14ef6893f94b67b237108f69d4a0ad9866",
+  "candidateChecksum": "sha256:e14ac17b7004607e795a2695064aee8e0397121f43e0ec97941987160be1162c",
   "method": "Pure server-state simulation using actual candidate pools, deterministic correct/incorrect skill profiles and expected response times; not browser, grading, database, or pedagogical validation",
   "runs": [
     {
@@ -2419,7 +2419,7 @@
       "completionReason": "time_budget",
       "activeMinutes": 35,
       "questions": 61,
-      "correct": 19,
+      "correct": 20,
       "sampledTargets": 25,
       "results": {
         "unknown": 517,
@@ -2661,23 +2661,23 @@
           ]
         },
         {
-          "skillId": "construction_phrase_canonique::writing-controlled-production",
-          "labelFr": "Reconnaître une phrase canonique",
-          "mode": "production",
-          "expectedKnown": false,
+          "skillId": "construction_subordonnee_relative::reading-analysis",
+          "labelFr": "Reconnaître une subordonnée relative",
+          "mode": "recognition",
+          "expectedKnown": true,
           "status": "uncertain",
           "modes": [
             {
-              "mode": "production",
-              "probability": 0.10714285714285715,
+              "mode": "recognition",
+              "probability": 0.782608695652174,
               "distinctItems": 1,
               "distinctContexts": 1,
               "distinctOccasions": 1,
-              "accuracy": 0,
+              "accuracy": 1,
               "unconfirmedFeatures": [],
               "textTypes": [],
               "contrastingErrorKeys": [],
-              "negativeExampleConfirmed": false,
+              "negativeExampleConfirmed": true,
               "confirmed": false
             }
           ]

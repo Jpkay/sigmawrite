@@ -5,12 +5,185 @@
   "facetChecksum": "sha256:71d060c34e8fd204b3cf57e5126a2e30585dc72c463b0506f22aa602eb913a98",
   "assessmentSourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
   "summary": {
-    "lessons": 102,
-    "guidedExercises": 559,
-    "targets": 102,
+    "lessons": 103,
+    "guidedExercises": 565,
+    "targets": 103,
     "missingExposureAnnotations": []
   },
   "rows": [
+    {
+      "lessonId": "french-v3-teaching:relative-clause:recognition",
+      "contentChecksum": "sha256:6814ff32b47bf80caaecd0058f3ae1e2d687967f861f71781eda18e74d45ecee",
+      "skillId": "construction_subordonnee_relative::reading-analysis",
+      "nodeKey": "construction_subordonnee_relative",
+      "facetKey": null,
+      "mode": "recognition",
+      "domain": "grammar",
+      "prerequisites": [
+        "construction_phrase_canonique::reading-analysis",
+        "construction_phrase_canonique::writing-controlled-production"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": true,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:05712b2b0790ffc12bb429b25453eaf8ff10c5c4e4810e6b057e2444477367b7",
+        "sentence:sha256:168d66fb127cae4c54c2bf05538d71e3326ca5a2f0018fcc4e8b9de88022f636",
+        "sentence:sha256:36d9d54fdfbea0a43526ca502a70f618c8d6a3071bbba7f7c11949e20d27ebc5",
+        "sentence:sha256:3819a0bd2da635c0e54e42ec58cf50d34af4a7494d011724904158111f15f1dd",
+        "sentence:sha256:a91cf141b189d1d72edc95659a1ff4c0cbaef1cc3eb81fa409324f958442c129",
+        "sentence:sha256:b343182d225341abb1bd83f1764ed733ef2ac747c6653a3cc9420995668a6224",
+        "sentence:sha256:c3a65c7dd4e87b9ec06df4303d08ef683cad93c95728cd808ee4f03675db48f2",
+        "sentence:sha256:d6bc89c6ba6640fccff787bd1c13b03fd2ff6d016cebef15cc0219d057e16bce",
+        "sentence:sha256:f179229a276c563ac8feb2246a65b030c989d25ebe4c31ca1892d9ae1f814b6d",
+        "sentence:sha256:f1ddfa05a41219d87fe473f1172ff4a5797951038cee7048115c336d615b2b95",
+        "sentence:sha256:fdea333f747581b9c8fa39b7132edb99ee7796fd3173aba56440e1e76f97eaf8"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:relative-clause:recognition",
+        "nodeKey": "construction_subordonnee_relative",
+        "mode": "recognition",
+        "status": "draft_requires_review",
+        "titleFr": "Repérer une proposition relative",
+        "learnerQuestionFr": "Dans « Le chat qui joue est petit », quels mots précisent de quel chat on parle ?",
+        "steps": [
+          {
+            "exampleFr": "Le chat qui joue est petit.",
+            "explanationFr": "Qui joue ajoute une précision sur le chat. Ce groupe contient un verbe conjugué et dépend du nom chat : c’est une proposition subordonnée relative. Le nom qu’elle précise s’appelle son antécédent."
+          },
+          {
+            "exampleFr": "Le bracelet que Zoé fabrique est coloré.",
+            "explanationFr": "Que Zoé fabrique précise le nom bracelet. Que reprend ce nom et introduit la relative : c’est un pronom relatif. Repère tout le groupe, pas seulement que."
+          },
+          {
+            "exampleFr": "La cour où nous discutons est calme.\nLe sac dont la fermeture est cassée est vide.",
+            "explanationFr": "Où et dont peuvent aussi introduire une relative. Ici, où reprend cour ; dont relie la fermeture au sac. Cherche toujours le nom précisé et le verbe du groupe."
+          },
+          {
+            "exampleFr": "Je sais que tu viendras.",
+            "explanationFr": "Que tu viendras complète le verbe sais. Aucun nom n’est repris : ce groupe n’est pas une relative. Voir le mot que ne suffit donc pas."
+          }
+        ],
+        "takeawayFr": "Cherche un groupe avec un verbe, introduit par un pronom relatif et rattaché à un nom qu’il précise. Vérifie ce lien avant de décider.",
+        "boundaryFr": "Cette leçon concerne les relatives avec un nom exprimé et les pronoms qui, que, où et dont. Les relatives sans antécédent exprimé et celles avec lequel demandent un travail supplémentaire. Repérer une relative ne prouve pas encore que tu sais en écrire une.",
+        "practice": [
+          {
+            "id": "guided:relative-clause:1",
+            "promptFr": "La voisine qui cultive des tomates nous salue.\n\nQuelle analyse est correcte ?",
+            "choices": [
+              "« qui cultive des tomates » complète le nom « voisine ».",
+              "Cette phrase ne contient pas de proposition relative.",
+              "« voisine » forme à lui seul la proposition relative.",
+              "La phrase entière forme une seule proposition relative."
+            ],
+            "answerFr": "« qui cultive des tomates » complète le nom « voisine ».",
+            "hintFr": "Cherche le nom que le groupe précise. S’il complète un verbe ou indique seulement un moment, ce n’est pas une relative.",
+            "explanationFr": "Le groupe qui cultive des tomates précise voisine. Il contient un verbe conjugué et est introduit par un pronom relatif."
+          },
+          {
+            "id": "guided:relative-clause:2",
+            "promptFr": "Le dessin que Noé termine représente un dragon.\n\nQuelle analyse est correcte ?",
+            "choices": [
+              "« que Noé termine » complète le nom « dessin ».",
+              "Cette phrase ne contient pas de proposition relative.",
+              "« dessin » forme à lui seul la proposition relative.",
+              "La phrase entière forme une seule proposition relative."
+            ],
+            "answerFr": "« que Noé termine » complète le nom « dessin ».",
+            "hintFr": "Cherche le nom que le groupe précise. S’il complète un verbe ou indique seulement un moment, ce n’est pas une relative.",
+            "explanationFr": "Le groupe que Noé termine précise dessin. Il contient un verbe conjugué et est introduit par un pronom relatif."
+          },
+          {
+            "id": "guided:relative-clause:3",
+            "promptFr": "La salle où nous répétons est lumineuse.\n\nQuelle analyse est correcte ?",
+            "choices": [
+              "« où nous répétons » complète le nom « salle ».",
+              "Cette phrase ne contient pas de proposition relative.",
+              "« salle » forme à lui seul la proposition relative.",
+              "La phrase entière forme une seule proposition relative."
+            ],
+            "answerFr": "« où nous répétons » complète le nom « salle ».",
+            "hintFr": "Cherche le nom que le groupe précise. S’il complète un verbe ou indique seulement un moment, ce n’est pas une relative.",
+            "explanationFr": "Le groupe où nous répétons précise salle. Il contient un verbe conjugué et est introduit par un pronom relatif."
+          },
+          {
+            "id": "guided:relative-clause:4",
+            "promptFr": "Le livre dont la couverture est bleue est à moi.\n\nQuelle analyse est correcte ?",
+            "choices": [
+              "« dont la couverture est bleue » complète le nom « livre ».",
+              "Cette phrase ne contient pas de proposition relative.",
+              "« livre » forme à lui seul la proposition relative.",
+              "La phrase entière forme une seule proposition relative."
+            ],
+            "answerFr": "« dont la couverture est bleue » complète le nom « livre ».",
+            "hintFr": "Cherche le nom que le groupe précise. S’il complète un verbe ou indique seulement un moment, ce n’est pas une relative.",
+            "explanationFr": "Le groupe dont la couverture est bleue précise livre. Il contient un verbe conjugué et est introduit par un pronom relatif."
+          },
+          {
+            "id": "guided:relative-clause:5",
+            "promptFr": "Maya croit que son équipe gagnera.\n\nQuelle analyse est correcte ?",
+            "choices": [
+              "Cette phrase ne contient pas de proposition relative.",
+              "La phrase entière est une proposition relative.",
+              "Tout groupe introduit par que, quand ou lorsque est une relative.",
+              "La présence d’un verbe suffit pour reconnaître une relative."
+            ],
+            "answerFr": "Cette phrase ne contient pas de proposition relative.",
+            "hintFr": "Cherche le nom que le groupe précise. S’il complète un verbe ou indique seulement un moment, ce n’est pas une relative.",
+            "explanationFr": "que son équipe gagnera complète le verbe croit, sans reprendre un nom."
+          },
+          {
+            "id": "guided:relative-clause:6",
+            "promptFr": "Nous partons lorsque la cloche sonne.\n\nQuelle analyse est correcte ?",
+            "choices": [
+              "Cette phrase ne contient pas de proposition relative.",
+              "La phrase entière est une proposition relative.",
+              "Tout groupe introduit par que, quand ou lorsque est une relative.",
+              "La présence d’un verbe suffit pour reconnaître une relative."
+            ],
+            "answerFr": "Cette phrase ne contient pas de proposition relative.",
+            "hintFr": "Cherche le nom que le groupe précise. S’il complète un verbe ou indique seulement un moment, ce n’est pas une relative.",
+            "explanationFr": "lorsque la cloche sonne indique quand nous partons, sans compléter un nom."
+          }
+        ],
+        "materialExposure": {
+          "sentences": [
+            "Le chat qui joue est petit.",
+            "Le bracelet que Zoé fabrique est coloré.",
+            "La cour où nous discutons est calme.",
+            "Le sac dont la fermeture est cassée est vide.",
+            "Je sais que tu viendras.",
+            "La voisine qui cultive des tomates nous salue.",
+            "Le dessin que Noé termine représente un dragon.",
+            "La salle où nous répétons est lumineuse.",
+            "Le livre dont la couverture est bleue est à moi.",
+            "Maya croit que son équipe gagnera.",
+            "Nous partons lorsque la cloche sonne."
+          ]
+        }
+      }
+    },
     {
       "lessonId": "french-v3-teaching:futur-simple:aller",
       "contentChecksum": "sha256:caa3469ffbfeff07d58ecc8d2c2a19bdd29b168deda7ec22690c11ad6c695314",
@@ -15315,5 +15488,5 @@
       }
     }
   ],
-  "checksum": "sha256:435f20ea87b10b6973e0c27c3abc8bf350e14d94c56f2518c695db1ed062d74b"
+  "checksum": "sha256:bf212dd0ca3e9ef9d9c95994fb1ad8f7464cefb69350b5660bd29da36b7882c4"
 }

@@ -1,2 +1,2 @@
 /** Authoring sources only. Inclusion never grants publication or review status. */
-export const FRENCH_DRAFT_EXPANSION_SOURCES=["explicit-reading","on-om","agreement-correction","agreement-analysis","canonical-sentence","conjugation-foundation","determiner-production","determiner-agreement","person-number","conjugation","reading","agreement","pronouns","spelling","tense-recognition","direct-object","y-en"] as const;
+export const FRENCH_DRAFT_EXPANSION_SOURCES=["relative-clause","explicit-reading","on-om","agreement-correction","agreement-analysis","canonical-sentence","conjugation-foundation","determiner-production","determiner-agreement","person-number","conjugation","reading","agreement","pronouns","spelling","tense-recognition","direct-object","y-en"] as const;
