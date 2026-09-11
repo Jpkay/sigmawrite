@@ -78,6 +78,10 @@ do $$ begin
  if owns_student(current_setting('test.student_b')::uuid) then raise exception 'Other student treated as own'; end if;
  if student_learning_is_unlocked(current_setting('test.student_a')::uuid) then raise exception 'Incomplete assessment unlocked learning'; end if;
  begin
+  perform create_granular_learning_successor(current_setting('test.student_a')::uuid,current_setting('test.session')::uuid,0,current_setting('test.release')::uuid,'test','{}');
+  raise exception 'Browser could create a learning successor';
+ exception when insufficient_privilege then null; end;
+ begin
   perform * from granular_assessment_sessions;
   raise exception 'Browser read of server-owned evidence allowed';
  exception when insufficient_privilege then null; end;
@@ -166,6 +170,54 @@ begin
  where id=journey_session and revision=(journey->>'issuedRevision')::integer;
  get diagnostics changed=row_count;
  if changed<>0 then raise exception 'Retry duplicated independent evidence'; end if;
+end $$;
+-- Successor fixtures test storage integrity, not educational compatibility.
+do $$
+declare
+ student uuid:=current_setting('test.student_b')::uuid;
+ source_release uuid:=current_setting('test.release')::uuid;
+ source_id uuid; target_release uuid; successor uuid; retried uuid;
+ before_state jsonb; target_state jsonb; stored jsonb; parents record;
+begin
+ select * into strict parents from granular_assessment_releases where id=source_release;
+ insert into granular_assessment_releases(release_key,taxonomy_release_id,bank_release_id,status,content_checksum,bundle)
+ values('successor-test',parents.taxonomy_release_id,parents.bank_release_id,'published','test',parents.bundle)
+ returning id into target_release;
+ before_state:='{"revision":0,"phase":"learning","paused":true,"completionReason":"time_budget","release":{"checksum":"old"},"observations":[{"itemId":"original","correct":false}],"diagnosticResponses":[{"itemId":"original","answer":"student text"}]}'::jsonb;
+ insert into granular_assessment_sessions(student_id,release_id,state)
+ values(student,source_release,before_state) returning id into source_id;
+ target_state:=before_state||jsonb_build_object(
+  'release',jsonb_build_object('taxonomyId',parents.taxonomy_release_id,'bankId',parents.bank_release_id,'checksum','new'),
+  'lastPulseAt',null,'learningPredecessor',jsonb_build_object('sessionId',source_id,'releaseId',source_release,'revision',0),
+  'diagnosticResponses',jsonb_build_array(jsonb_build_object('itemId','original','answer','student text','sourceSessionId',source_id)));
+ begin
+  perform create_granular_learning_successor(current_setting('test.student_a')::uuid,source_id,0,target_release,'test',target_state);
+  raise exception 'Cross-student upgrade accepted';
+ exception when others then if sqlerrm<>'Learning predecessor unavailable' then raise; end if; end;
+ begin
+  perform create_granular_learning_successor(student,source_id,1,target_release,'test',target_state);
+  raise exception 'Stale upgrade accepted';
+ exception when others then if sqlerrm<>'Learning predecessor revision changed' then raise; end if; end;
+ begin
+  perform create_granular_learning_successor(student,source_id,0,target_release,'test',target_state||'{"observations":[]}');
+  raise exception 'Historical evidence rewrite accepted';
+ exception when others then if sqlerrm<>'Learning successor changed historical state' then raise; end if; end;
+ if exists(select 1 from granular_assessment_sessions where student_id=student and release_id=target_release) then
+  raise exception 'Rejected upgrade left a partial successor'; end if;
+ successor:=create_granular_learning_successor(student,source_id,0,target_release,'test',target_state);
+ retried:=create_granular_learning_successor(student,source_id,0,target_release,'test',target_state);
+ if successor<>retried then raise exception 'Retry forked learning'; end if;
+ select state into strict stored from granular_assessment_sessions where id=source_id;
+ if stored<>before_state then raise exception 'Source history changed'; end if;
+ select state into strict stored from granular_assessment_sessions where id=successor;
+ if stored<>target_state then raise exception 'Successor evidence changed'; end if;
+ if exists(select 1 from granular_active_assessment_sessions where id=source_id)
+  or not exists(select 1 from granular_active_assessment_sessions where id=successor) then
+  raise exception 'Active session selection lost successor'; end if;
+ begin
+  update granular_assessment_sessions set revision=1,state=state||'{"revision":1}' where id=source_id;
+  raise exception 'Superseded session remained writable';
+ exception when others then if sqlerrm<>'Learning session has a successor' then raise; end if; end;
 end $$;
 do $$ begin
  perform set_config('request.jwt.claims','{"role":"service_role"}',true);

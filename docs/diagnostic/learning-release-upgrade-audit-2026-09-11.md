@@ -22,3 +22,24 @@ No upgrade, reset, migration or new learner assessment was performed by this aud
 `prepareLearningSuccessor` now prepares a separate learning state only for an idle completed assessment with a matching original release binding and compatible content. It retains observations, refinements, exposure history, elapsed time, lesson completions and historical missing answers. It resets only the new row's optimistic revision and stores its immediate predecessor reference. It rejects unknown historical probes or lesson completions. The old state is not mutated. Actual live authorization, row locking and persistence are intentionally outside this pure function and remain to implement.
 
 Retained responses now carry an optional `sourceSessionId`; review resolves answer and supporting-passage choice IDs using that origin. Repeated upgrades retain the first answer origin instead of overwriting it. Tests verify source immutability, evidence/time/exposure preservation, original choice resolution, repeated-origin preservation, incompatible releases and unfinished/busy sessions. All 522 granular tests across 150 files, TypeScript and scoped ESLint pass. No production transfer has been enabled or performed.
+
+## Atomic persistence preparation
+
+Migration 0150 adds a server-only transaction that creates one learning successor
+from an idle, completed session. It locks the predecessor revision, rejects
+historical-state changes, preserves answer origins, and makes the predecessor
+read-only after linking. An active-session view excludes superseded rows while
+historical session lookup remains available.
+
+The disposable full-schema PostgreSQL test covers cross-student rejection,
+stale revisions, historical answer/evidence preservation, rollback after rejected
+input, idempotent retries, active-session selection, and rejection of writes to
+the predecessor. Browser roles cannot call the successor function. These are
+storage-integrity checks with synthetic fixtures, not pedagogical approval or
+proof of concurrent-upgrade behavior.
+
+This migration is prepared locally only. Store/action integration, overlapping
+upgrade/write tests, remote migration, and a controlled live upgrade remain to
+be completed before enabling the feature. The authenticated server must check
+student access and both live releases, then run full compatibility validation;
+the SQL function deliberately does not substitute for that content validation.
