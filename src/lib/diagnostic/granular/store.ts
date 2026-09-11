@@ -12,6 +12,9 @@ import {inspectQuestionPools} from "./question-pools";
 import {inspectReleaseBank} from "./release-bank";
 import {validatePublishedTeaching} from "./teaching-content";
 export class SupabaseAssessmentStore implements AssessmentStore{
+ // One deterministic validation result per store instance (normally one action).
+ // Content and live availability are still fetched and checked on every call.
+ private contentValidation:{checksum:string;preflight:ReturnType<typeof prepareParallelPublication>|null}|null=null;
  constructor(private readonly db:SupabaseClient){}
  async load(studentId:string,sessionId:string):Promise<StoredSession|null>{
   const {data,error}=await this.db.from("granular_assessment_sessions").select("id,student_id,release_id,state").eq("id",sessionId).eq("student_id",studentId).maybeSingle();
@@ -35,18 +38,27 @@ export class SupabaseAssessmentStore implements AssessmentStore{
   if(!data.bundle?.assessment?.taxonomyChecksum||!data.bundle?.assessment?.bankChecksum
    ||taxonomy.data.manifest_checksum!==data.bundle.assessment.taxonomyChecksum
    ||bank.data.manifest_checksum!==data.bundle.assessment.bankChecksum)return null;
-  if(!inspectQuestionPools(data.bundle?.assessment).ok)return null;
-  if(!inspectReleaseBank(data.bundle as AssessmentBundle))return null;
-  try{
-   const bundle=data.bundle as AssessmentBundle;
-   validateActivityBindings(bundle.assessment,bundle.activities??[]);
-   validatePublishedTeaching(bundle.assessment,bundle.teachingContent??[]);
-   if(bundle.activities?.some(binding=>binding.contentId&&!bundle.teachingContent?.some(lesson=>lesson.id===binding.contentId&&lesson.nodeKey===binding.nodeKey&&lesson.facetKey===binding.facetKey&&lesson.mode===binding.mode)))return null;
-  }catch{return null;}
+  let validation=this.contentValidation?.checksum===data.content_checksum?this.contentValidation:null;
+  if(!validation){
+   if(!inspectQuestionPools(data.bundle?.assessment).ok)return null;
+   if(!inspectReleaseBank(data.bundle as AssessmentBundle))return null;
+   let preflight:ReturnType<typeof prepareParallelPublication>|null=null;
+   try{
+    const bundle=data.bundle as AssessmentBundle;
+    validateActivityBindings(bundle.assessment,bundle.activities??[]);
+    validatePublishedTeaching(bundle.assessment,bundle.teachingContent??[]);
+    if(bundle.activities?.some(binding=>binding.contentId&&!bundle.teachingContent?.some(lesson=>lesson.id===binding.contentId&&lesson.nodeKey===binding.nodeKey&&lesson.facetKey===binding.facetKey&&lesson.mode===binding.mode)))return null;
+    if(bundle.assessment.reviewPolicy?.mode==="parallel_review"){
+     preflight=prepareParallelPublication(bundle);
+     if(!preflight.ready)return null;
+    }
+   }catch{return null;}
+   validation={checksum:data.content_checksum,preflight};
+   this.contentValidation=validation;
+  }
   if(data.bundle.assessment.reviewPolicy?.mode==="parallel_review"){
-   let preflight;
-   try{preflight=prepareParallelPublication(data.bundle as AssessmentBundle);}catch{return null;}
-   if(!preflight.ready)return null;
+   const preflight=validation.preflight;
+   if(!preflight)return null;
    const permission=await this.db.from("granular_bank_publication_permissions").select("preflight,bank_checksum,taxonomy_checksum")
     .eq("bank_release_id",data.bank_release_id).eq("bundle_checksum",data.content_checksum).maybeSingle();
    if(permission.error)throw Error(permission.error.message);
