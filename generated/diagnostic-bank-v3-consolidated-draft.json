@@ -37493,6 +37493,622 @@
       "reviewStatus": "needs_human_review"
     },
     {
+      "itemKey": "v3-reading-object-reference:manga-return",
+      "item": {
+        "nodeKey": "resoudre_pronom_objet",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nInès emprunte un manga à la bibliothèque. Elle glisse aussi une règle dans son sac. Le lendemain, elle le rend à la bibliothécaire. La règle reste dans le sac.\n\nDans ce récit, que remplace « le » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-reading-object-reference:manga-return",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Inès emprunte un manga à la bibliothèque. Elle glisse aussi une règle dans son sac. Le lendemain, elle le rend à la bibliothécaire. La règle reste dans le sac.",
+            "choices": [
+              {
+                "quoteFr": "Inès emprunte un manga à la bibliothèque.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Elle glisse aussi une règle dans son sac.",
+                "correct": false
+              },
+              {
+                "quoteFr": "La règle reste dans le sac.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "le manga",
+            "correct": true
+          },
+          {
+            "text": "la règle",
+            "correct": false
+          },
+          {
+            "text": "le sac",
+            "correct": false
+          },
+          {
+            "text": "le lendemain",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-reading-object-reference:poster-wall",
+      "item": {
+        "nodeKey": "resoudre_pronom_objet",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nMalik termine une affiche pour le tournoi. Son frère lui prête un marteau. Malik la fixe sur le panneau du club. Puis il rapporte le marteau à son frère.\n\nDans ce récit, que remplace « la » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-reading-object-reference:poster-wall",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Malik termine une affiche pour le tournoi. Son frère lui prête un marteau. Malik la fixe sur le panneau du club. Puis il rapporte le marteau à son frère.",
+            "choices": [
+              {
+                "quoteFr": "Malik termine une affiche pour le tournoi.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Son frère lui prête un marteau.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Puis il rapporte le marteau à son frère.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "une affiche",
+            "correct": true
+          },
+          {
+            "text": "un marteau",
+            "correct": false
+          },
+          {
+            "text": "le panneau",
+            "correct": false
+          },
+          {
+            "text": "son frère",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-reading-object-reference:keys-found",
+      "item": {
+        "nodeKey": "resoudre_pronom_objet",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nNora cherche ses clés avant de partir. Sa veste est déjà sur ses épaules. Elle les retrouve sous une revue. Elle peut enfin fermer la porte.\n\nDans ce récit, que remplace « les » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-reading-object-reference:keys-found",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Nora cherche ses clés avant de partir. Sa veste est déjà sur ses épaules. Elle les retrouve sous une revue. Elle peut enfin fermer la porte.",
+            "choices": [
+              {
+                "quoteFr": "Nora cherche ses clés avant de partir.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Sa veste est déjà sur ses épaules.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Elle peut enfin fermer la porte.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "ses clés",
+            "correct": true
+          },
+          {
+            "text": "sa veste",
+            "correct": false
+          },
+          {
+            "text": "une revue",
+            "correct": false
+          },
+          {
+            "text": "ses épaules",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-reading-object-reference:coach-message",
+      "item": {
+        "nodeKey": "resoudre_pronom_objet",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLa capitaine doit prévenir son entraîneuse du retard du car. Les autres joueuses attendent près du portail. La capitaine lui envoie un message. Le car arrive peu après.\n\nDans ce récit, que remplace « lui » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-reading-object-reference:coach-message",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "La capitaine doit prévenir son entraîneuse du retard du car. Les autres joueuses attendent près du portail. La capitaine lui envoie un message. Le car arrive peu après.",
+            "choices": [
+              {
+                "quoteFr": "La capitaine doit prévenir son entraîneuse du retard du car.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Les autres joueuses attendent près du portail.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Le car arrive peu après.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "son entraîneuse",
+            "correct": true
+          },
+          {
+            "text": "les autres joueuses",
+            "correct": false
+          },
+          {
+            "text": "le car",
+            "correct": false
+          },
+          {
+            "text": "le portail",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-reading-object-reference:visitors-directions",
+      "item": {
+        "nodeKey": "resoudre_pronom_objet",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nDeux visiteurs demandent le chemin du musée à Yanis. Un vélo est posé contre le mur. Yanis leur indique la rue à prendre. Les visiteurs le remercient et repartent.\n\nDans ce récit, que remplace « leur » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-reading-object-reference:visitors-directions",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Deux visiteurs demandent le chemin du musée à Yanis. Un vélo est posé contre le mur. Yanis leur indique la rue à prendre. Les visiteurs le remercient et repartent.",
+            "choices": [
+              {
+                "quoteFr": "Deux visiteurs demandent le chemin du musée à Yanis.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Un vélo est posé contre le mur.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Les visiteurs le remercient et repartent.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "deux visiteurs",
+            "correct": true
+          },
+          {
+            "text": "Yanis",
+            "correct": false
+          },
+          {
+            "text": "un vélo",
+            "correct": false
+          },
+          {
+            "text": "le musée",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-reading-object-reference:camera-protection",
+      "item": {
+        "nodeKey": "resoudre_pronom_objet",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nZoé sort son appareil photo sur le sentier. Des gouttes commencent à tomber sur les pierres. Elle le range aussitôt dans sa housse. Le groupe continue jusqu’au refuge.\n\nDans ce récit, que remplace « le » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-reading-object-reference:camera-protection",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Zoé sort son appareil photo sur le sentier. Des gouttes commencent à tomber sur les pierres. Elle le range aussitôt dans sa housse. Le groupe continue jusqu’au refuge.",
+            "choices": [
+              {
+                "quoteFr": "Zoé sort son appareil photo sur le sentier.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Des gouttes commencent à tomber sur les pierres.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Le groupe continue jusqu’au refuge.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "son appareil photo",
+            "correct": true
+          },
+          {
+            "text": "le sentier",
+            "correct": false
+          },
+          {
+            "text": "le groupe",
+            "correct": false
+          },
+          {
+            "text": "sa housse",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-reading-object-reference:plants-water",
+      "item": {
+        "nodeKey": "resoudre_pronom_objet",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nAdam installe trois petites plantes sur le balcon. Sa sœur apporte un arrosoir rempli. Il les arrose avant de rentrer. Le soleil disparaît derrière les immeubles.\n\nDans ce récit, que remplace « les » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-reading-object-reference:plants-water",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Adam installe trois petites plantes sur le balcon. Sa sœur apporte un arrosoir rempli. Il les arrose avant de rentrer. Le soleil disparaît derrière les immeubles.",
+            "choices": [
+              {
+                "quoteFr": "Adam installe trois petites plantes sur le balcon.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Sa sœur apporte un arrosoir rempli.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Le soleil disparaît derrière les immeubles.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "trois petites plantes",
+            "correct": true
+          },
+          {
+            "text": "les immeubles",
+            "correct": false
+          },
+          {
+            "text": "un arrosoir",
+            "correct": false
+          },
+          {
+            "text": "sa sœur",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-reading-object-reference:singer-water",
+      "item": {
+        "nodeKey": "resoudre_pronom_objet",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLe chanteur demande un verre d’eau à la technicienne. Les danseurs répètent encore près du rideau. La technicienne lui apporte une bouteille. Il la remercie avant de monter sur scène.\n\nDans ce récit, que remplace « lui » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-reading-object-reference:singer-water",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Le chanteur demande un verre d’eau à la technicienne. Les danseurs répètent encore près du rideau. La technicienne lui apporte une bouteille. Il la remercie avant de monter sur scène.",
+            "choices": [
+              {
+                "quoteFr": "Le chanteur demande un verre d’eau à la technicienne.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Les danseurs répètent encore près du rideau.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Il la remercie avant de monter sur scène.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "le chanteur",
+            "correct": true
+          },
+          {
+            "text": "les danseurs",
+            "correct": false
+          },
+          {
+            "text": "la technicienne",
+            "correct": false
+          },
+          {
+            "text": "le rideau",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
       "itemKey": "v3-participle-formation:er-1",
       "item": {
         "nodeKey": "former_participe_passe",
@@ -324464,9 +325080,9 @@
     }
   ],
   "manifest": {
-    "itemCount": 5304,
+    "itemCount": 5312,
     "eligibleItemCount": 238,
-    "pendingItemCount": 5066,
+    "pendingItemCount": 5074,
     "publicationMode": "partial",
     "nodeCount": 114,
     "sectionReadiness": [
@@ -324515,6 +325131,6 @@
         "difficultyTierCount": 3
       }
     ],
-    "checksum": "sha256:676a2a494bfac9b49750a464c12610d61dd935e293bbb4cb279917b752a3b02f"
+    "checksum": "sha256:56219e999487cf75bfb418e359c85d65a8495e56947833c649244ff51fa6c5e5"
   }
 }

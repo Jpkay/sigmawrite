@@ -9,7 +9,7 @@ Regenerate: `npx tsx scripts/build-v3-delivery-matrix.mts`. Verify without writi
 | Domain | Targets | Eligible questions | Targets without eligible questions | Allocated pools | Expansion drafts |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | conjugation | 255 | 77 | 195 | 0 | 3958 |
-| reading_comprehension | 92 | 21 | 74 | 0 | 88 |
+| reading_comprehension | 92 | 21 | 74 | 0 | 96 |
 | grammar | 79 | 56 | 43 | 0 | 258 |
 | spelling | 116 | 79 | 60 | 0 | 270 |
 
@@ -298,7 +298,7 @@ Full evidence requirements, prerequisite IDs, question IDs, source checksums and
 | Résoudre la référence d'un pronom sujet — Récit bref | interpretation / initial | 2 | 2 / 0 (insufficient_coverage) | 8 | 1 / 4 | review_exact_target_drafts | review_teaching_scope_and_content |
 | Résoudre la référence d'un pronom sujet — Texte informatif bref | interpretation / initial | 1 | 1 / 0 (insufficient_coverage) | 0 | 0 / 0 | author_missing_evidence | author_or_reuse_exact_target_teaching |
 | Résoudre la référence d'un pronom sujet — Texte argumentatif bref | interpretation / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | author_missing_evidence | author_or_reuse_exact_target_teaching |
-| Résoudre la référence d'un pronom objet — Récit bref | interpretation / initial | 1 | 1 / 0 (insufficient_coverage) | 8 | 1 / 4 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Résoudre la référence d'un pronom objet — Récit bref | interpretation / initial | 1 | 1 / 0 (insufficient_coverage) | 16 | 1 / 4 | review_exact_target_drafts | review_teaching_scope_and_content |
 | Résoudre la référence d'un pronom objet — Texte informatif bref | interpretation / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
 | Résoudre la référence d'un pronom objet — Texte argumentatif bref | interpretation / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
 | Résoudre une reprise démonstrative — Récit bref | interpretation / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
