@@ -6,7 +6,7 @@ Updated 2026-09-12. French only; Allotey is excluded. This document distinguishe
 
 - Public release: v12, 197 supported targets, frozen source `0657d2a6`. The complete browser assessment, lesson practice, independent check, answer review and public default/demo/pinned-session checks pass. See `revision-eleven-publication-2026-09-11.json`. The preceding v11 checkpoint remains documented in `revision-ten-publication-2026-09-11.json`.
 - Frozen candidate: bank revision 12, 215 supported targets, source `3446b9f`; import and candidate verification are tracked in `revision-twelve-publication-2026-09-12.json`.
-- Working draft: bank revision 13, 227 supported targets and 4,579 scoped probes. It adds four family pathways each for passé composé, futur simple and conditionnel to the frozen candidate. It is not imported, published or deployed.
+- Working draft: bank revision 13, 231 supported targets and 4,752 scoped probes. It adds four family pathways each for passé composé, futur simple, conditionnel and plus-que-parfait to the frozen candidate. It is not imported, published or deployed.
 - Working-draft symbolic routing benchmark: 10/10 depth checks and 8/8 uneven-profile contrasts, with no invariant violations. See `confirmed-verb-visits-2026-09-12.md`. This later runtime change is not included in the frozen 215-target candidate and is not educational calibration.
 
 ## Complete target accounting
@@ -15,8 +15,8 @@ Updated 2026-09-12. French only; Allotey is excluded. This document distinguishe
 
 | Required work | Targets |
 | --- | ---: |
-| Prepared assessment, teaching and fresh-check pathway | 227 |
-| Question pools allocated; exact-target lesson still missing | 61 |
+| Prepared assessment, teaching and fresh-check pathway | 231 |
+| Question pools allocated; exact-target lesson still missing | 57 |
 | Complete initial and follow-up question pools | 236 |
 | Connected-writing evidence during learning | 18 |
 | Total | 542 |
@@ -27,7 +27,7 @@ These categories partition the graph; they are not publication or approval label
 
 1. Complete publication and full browser verification of the frozen 215-target candidate, including its newer routing changes. Keep the published v12 bundle immutable; repeat full candidate and public verification for the new version before activation. The preceding 197-target release is now publicly verified.
 2. Validate the new verb-visit routing on real content and live mixed-profile journeys. The eight constructed contrasts now pass; educator/student calibration and broader granular profile validation remain required. Keep untested targets unresolved and refine them during learning.
-3. Add the missing exact-target lessons, continuing with regular -er/-ir and -ger/-cer patterns at the plus-que-parfait. Their imparfait, passé composé, futur simple and conditionnel pathways are now prepared. Each needs suitable guided examples and fresh independent applications; existing form questions alone are insufficient.
+3. Add the missing exact-target lessons for the remaining tenses and moods. The regular -er/-ir and -ger/-cer pathways for imparfait, passé composé, futur simple, conditionnel and plus-que-parfait are now prepared. Each needs suitable guided examples and fresh independent applications; existing form questions alone are insufficient.
 4. Review the four remaining passé récent verb targets (pouvoir, vouloir, savoir, devoir) for natural contexts before authoring. Do not mechanically create awkward forms merely to reach a coverage count. Continue subjonctif, impératif and passé simple coverage with their own usage constraints.
 5. Fill the 236 question-pool gaps across all domains from the exact-target inventory, preserving distinct recognition, controlled production and contextual-use evidence. Complete the separate connected-writing pathway for the remaining 18 targets.
 6. Continue the owner's review in parallel, recording actual decisions against content checksums. Validate difficulty, question duration, sufficient depth and the meaning of recommendations with educator and student evidence. Do not substitute technical tests for those judgments.
