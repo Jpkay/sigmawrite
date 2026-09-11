@@ -112,6 +112,15 @@ export class SupabaseAssessmentStore implements AssessmentStore{
   const {data,error}=await this.db.from("granular_assessment_sessions").update({state,revision:state.revision}).eq("id",sessionId).eq("student_id",studentId).eq("revision",expectedRevision).select("id");
   if(error)throw Error(error.message);return data.length===1;
  }
+ async learningUpgradeAvailable(session:StoredSession,source:AssessmentBundle,releaseKey:string):Promise<boolean>{
+  const state=session.state;
+  if(state.phase!=="learning"||!state.paused||state.learningCheck||state.teaching||state.pendingItemId||!state.completionReason||state.completionReason==="coverage_gap")return false;
+  const {data,error}=await this.db.from("granular_assessment_releases").select("id").eq("release_key",releaseKey).eq("status","published").maybeSingle();
+  if(error)throw Error(error.message);
+  if(!data||data.id===session.releaseId)return false;
+  const target=await this.release(data.id);if(!target)return false;
+  try{prepareLearningSuccessor(session,source,target);return true;}catch{return false;}
+ }
  /** Trusted authenticated callers only. Read raw persisted state so transient
   * material-history enrichment cannot alter the predecessor snapshot. */
  async createLearningSuccessor(studentId:string,sessionId:string,targetReleaseId:string):Promise<StoredSession>{

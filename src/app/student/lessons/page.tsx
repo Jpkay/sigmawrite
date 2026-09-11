@@ -1,3 +1,4 @@
+import {LearningUpgradeButton} from "@/components/diagnostic/learning-upgrade-button";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { PageHeader } from "@/components/page";
@@ -15,8 +16,12 @@ export default async function StudentLessonsPage() {
   const db = await createClient();
   const studentId = await getCurrentStudentId(db);
   await requireStudentLearningUnlocked(db, studentId);
+  const assessmentStore = new SupabaseAssessmentStore(createServiceClient());
   const granular = process.env.GRANULAR_DIAGNOSTIC_ENABLED === "true"
-    ? await new SupabaseAssessmentStore(createServiceClient()).latestLearning(studentId) : null;
+    ? await assessmentStore.latestLearning(studentId) : null;
+  const canUpgrade = !!granular && process.env.GRANULAR_LEARNING_UPGRADES_ENABLED === "true"
+    && !!process.env.GRANULAR_DIAGNOSTIC_RELEASE_KEY
+    && await assessmentStore.learningUpgradeAvailable(granular.session, granular.bundle, process.env.GRANULAR_DIAGNOSTIC_RELEASE_KEY);
   const available = granular
     ? publicAssessmentView(granular.session, granular.bundle).learningActivities.map(activity => ({
       id: activity.activityId, label: activity.titleFr, href: activity.href,
@@ -34,6 +39,7 @@ export default async function StudentLessonsPage() {
       <Link href="/student/diagnostic" className={buttonVariants({variant:"outline"})}>Voir mes résultats</Link>
       {session.authUserId === "921b350e-61dc-4f0d-a8b7-a2717e94f902" && <Link href="/student/diagnostic/demo-review" className={buttonVariants({variant:"outline"})}>Revoir mes réponses au diagnostic</Link>}
     </div>
+    {canUpgrade && <LearningUpgradeButton />}
     {available.length ? <div className="grid gap-4 md:grid-cols-2">{available.map(step => <article key={step.id} className="rounded-lg border bg-card p-6">
       <h2 className="text-xl font-semibold">{step.label}</h2>
       <p className="mb-5 mt-2 text-sm text-muted-foreground">{step.description}</p>

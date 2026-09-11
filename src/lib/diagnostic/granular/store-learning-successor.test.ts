@@ -43,3 +43,20 @@ it('propagates atomic conflicts without falling back to a new diagnostic',async(
  await expect(f.store.createLearningSuccessor('student','source','new')).rejects.toThrow('revision changed');
  expect(f.rpc).toHaveBeenCalledTimes(1);expect(f.load).toHaveBeenCalledTimes(1);
 });
+it('offers an upgrade only for idle completed learning on a different compatible release',async()=>{
+ const query={select:()=>query,eq:()=>query,maybeSingle:vi.fn().mockResolvedValue({data:{id:'new'},error:null})};
+ const store=new SupabaseAssessmentStore({from:()=>query} as unknown as SupabaseClient);
+ const release=vi.spyOn(store,'release').mockResolvedValue({bankId:'new'} as AssessmentBundle);
+ const source={bankId:'old'} as AssessmentBundle;
+ const session={releaseId:'old',state:{phase:'learning',paused:true,completionReason:'time_budget'}} as StoredSession;
+ expect(await store.learningUpgradeAvailable(session,source,'default')).toBe(true);
+ for(const state of [{phase:'assessing'},{teaching:{contentId:'busy'}},{learningCheck:{id:'busy'}},{paused:false},{completionReason:'coverage_gap'}]){
+  expect(await store.learningUpgradeAvailable({...session,state:{...session.state,...state}} as StoredSession,source,'default')).toBe(false);
+ }
+ expect(release).toHaveBeenCalledTimes(1);
+ query.maybeSingle.mockResolvedValue({data:{id:'old'},error:null});
+ expect(await store.learningUpgradeAvailable(session,source,'default')).toBe(false);
+ query.maybeSingle.mockResolvedValue({data:{id:'new'},error:null});
+ vi.mocked(prepareLearningSuccessor).mockImplementationOnce(()=>{throw Error('incompatible');});
+ expect(await store.learningUpgradeAvailable(session,source,'default')).toBe(false);
+});

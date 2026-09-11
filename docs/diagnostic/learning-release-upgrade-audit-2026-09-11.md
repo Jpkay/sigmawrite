@@ -73,3 +73,11 @@ and current-release sessions unchanged. Successful upgrades refresh lessons and
 results; the response contains only a changed flag. Four action tests cover
 identity/access, disabled and unfinished cases, and atomic-conflict propagation;
 TypeScript and scoped lint passed. UI integration and remote activation remain.
+
+The lessons page now offers “Ajouter les nouvelles activités” only when the
+flag is enabled and the published default is a compatible successor for an idle,
+completed session. In-progress lessons/checks and unchanged releases show no
+upgrade control. The action rechecks state before persistence; conflicts produce
+an actionable retry message. The legacy demo has no granular session and is not
+offered this upgrade. All 530 relevant tests (152 files), TypeScript and scoped
+lint passed. Browser verification, remote migration and rollout are still due.
