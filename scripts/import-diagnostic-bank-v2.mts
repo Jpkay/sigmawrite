@@ -45,23 +45,6 @@ if (
 ) {
   throw new Error("Existing diagnostic bank key has a different checksum.");
 }
-if (!release.data) {
-  release = await db.from("diagnostic_item_bank_releases").insert({
-    bank_key: bank.bank.key,
-    version: bank.bank.version,
-    taxonomy_release_id: taxonomyRelease!.id,
-    status: "draft",
-    manifest: validation.manifest,
-    manifest_checksum: validation.manifest.checksum,
-    validation_report: { valid: validation.valid, issues: validation.issues, sections: validation.sections },
-  }).select("id,status,manifest_checksum").single();
-  fail(release.error?.message);
-}
-if (["published", "withdrawn"].includes(release.data!.status as string)) {
-  process.stdout.write(`${JSON.stringify({ ok: true, unchanged: true, bankReleaseId: release.data!.id })}\n`);
-  process.exit(0);
-}
-
 const importableItems = bank.items.filter((entry) =>
   entry.reviewStatus !== "rejected" && entry.qcGates.verdict !== "rejected"
 );
@@ -91,6 +74,28 @@ const materializedItems = importableItems.map((entry): CanonicalDiagnosticBankIt
 const missingReviewerProvenanceCount = materializedItems.filter((entry, index) =>
   entry.reviewStatus !== importableItems[index].reviewStatus
 ).length;
+// The granular publisher binds the exact canonical review records into its checksum.
+// Missing provenance must fail before creating or changing the bank.
+if (bank.bank.key === "french-diagnostic-bank-v3" && missingReviewerProvenanceCount) {
+  throw new Error(`Cannot import canonical granular bank: ${missingReviewerProvenanceCount} reviewer records are missing in this environment.`);
+}
+if (!release.data) {
+  release = await db.from("diagnostic_item_bank_releases").insert({
+    bank_key: bank.bank.key,
+    version: bank.bank.version,
+    taxonomy_release_id: taxonomyRelease!.id,
+    status: "draft",
+    manifest: validation.manifest,
+    manifest_checksum: validation.manifest.checksum,
+    validation_report: { valid: validation.valid, issues: validation.issues, sections: validation.sections },
+  }).select("id,status,manifest_checksum").single();
+  fail(release.error?.message);
+}
+if (["published", "withdrawn"].includes(release.data!.status as string)) {
+  process.stdout.write(`${JSON.stringify({ ok: true, unchanged: true, bankReleaseId: release.data!.id })}\n`);
+  process.exit(0);
+}
+
 const { data: pinnedRecords, error: pinnedRecordError } = await db.from("taxonomy_release_memberships")
   .select("record_type,record_id,stable_key")
   .eq("release_id", taxonomyRelease!.id)
@@ -220,11 +225,17 @@ await mapWithConcurrency(materializedItems, importConcurrency, async (entry) => 
 const expectedItemIds = new Set(materializedItems.map((entry) =>
   stableUuid("sigmawrite-diagnostic-item", `${bank.bank.key}:${entry.itemKey}`)
 ));
-const { data: existingMemberships, error: existingMembershipError } = await db
-  .from("diagnostic_item_bank_memberships")
-  .select("item_id")
-  .eq("bank_release_id", release.data!.id);
-fail(existingMembershipError?.message);
+const existingMemberships: Array<{item_id: string}> = [];
+for (let offset = 0; ; offset += 500) {
+  const { data, error } = await db.from("diagnostic_item_bank_memberships")
+    .select("item_id")
+    .eq("bank_release_id", release.data!.id)
+    .order("item_id")
+    .range(offset, offset + 499);
+  fail(error?.message);
+  existingMemberships.push(...(data ?? []));
+  if ((data ?? []).length < 500) break;
+}
 const staleItemIds = (existingMemberships ?? [])
   .map((row) => row.item_id as string)
   .filter((itemId) => !expectedItemIds.has(itemId));
@@ -313,7 +324,7 @@ function assertStoredItemMatches(
     cefrLevel: entry.item.cefrLevel ?? null,
     qcGates: entry.qcGates,
     reviewStatus: entry.reviewStatus,
-    review: entry.review ?? null,
+    review: entry.review ? {...entry.review, reviewedAt: new Date(entry.review.reviewedAt).toISOString()} : null,
     choices: (entry.item.choices ?? []).map((choice, position) => ({
       text: choice.text,
       correct: choice.correct,
@@ -338,7 +349,7 @@ function assertStoredItemMatches(
     qcGates: stored.qc_gates,
     reviewStatus: stored.review_status,
     review: stored.reviewer_profile_id && stored.reviewed_at
-      ? { reviewerProfileId: stored.reviewer_profile_id, reviewedAt: stored.reviewed_at }
+      ? { reviewerProfileId: stored.reviewer_profile_id, reviewedAt: new Date(String(stored.reviewed_at)).toISOString() }
       : null,
     choices: choices
       .sort((left, right) => Number(left.position) - Number(right.position))
