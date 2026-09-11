@@ -25,8 +25,9 @@ export async function startGranularDiagnostic(){
  return result;
 }
 export async function updateGranularDiagnostic(input:unknown){
+ const receivedAt=Date.now();
  const {studentId,store,client}=await context();
- const result=await runAssessmentCommand(store,studentId,input);
+ const result=await runAssessmentCommand(store,studentId,input,Date.now,receivedAt);
  await recordMaterialDelivery(store,studentId,result);
  return {...result,...("view" in result&&result.view?.phase==="learning"?{studentState:await getStudentStateData(studentId,client)}:{})};
 }

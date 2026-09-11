@@ -51,6 +51,32 @@ it("uses received time rather than inventing client timestamps",async()=>{
  expect(await runAssessmentCommand(store,"student-a",{type:"pulse",sessionId:id,revision:1,at:1e10},()=>1000)).toHaveProperty("error");
  expect(get().state.activeSeconds).toBe(0);
 });
+it("excludes blocking server work while continuing to count background heartbeat time",async()=>{
+ const {store,get}=setup();
+ // Authentication and release loading take eight seconds before resume is saved.
+ await runAssessmentCommand(store,"student-a",{type:"resume",sessionId:id,revision:0},()=>8000,0);
+ expect(get().state.lastPulseAt).toBe(8000);
+ expect(get().state.activeSeconds).toBe(0);
+ // The learner reads for ten seconds, then answer processing takes twelve.
+ const itemId=get().state.pendingItemId!,entry=bank.items.find((i:{itemKey:string})=>i.itemKey===itemId)!;
+ const answer=entry.item.responseType==="mcq"?publicAssessmentView(get(),bundle).question!.choices.find(c=>c.text===entry.item.choices.find((c:{correct:boolean})=>c.correct).text)!.id:entry.item.correctAnswer;
+ await runAssessmentCommand(store,"student-a",{type:"answer",sessionId:id,revision:1,itemId,answer},()=>30000,18000);
+ expect(get().state.observations[0].activeSeconds).toBe(10);
+ expect(get().state.lastPulseAt).toBe(30000);
+ await runAssessmentCommand(store,"student-a",{type:"pulse",sessionId:id,revision:2},()=>47000,40000);
+ expect(get().state.activeSeconds).toBe(20);
+ expect(get().state.lastPulseAt).toBe(40000);
+ await runAssessmentCommand(store,"student-a",{type:"pulse",sessionId:id,revision:3},()=>50000,50000);
+ expect(get().state.activeSeconds).toBe(30);
+});
+it("excludes skip processing and still leaves a paused clock stopped",async()=>{
+ const {store,get}=setup();
+ await runAssessmentCommand(store,"student-a",{type:"resume",sessionId:id,revision:0},()=>1000,0);
+ await runAssessmentCommand(store,"student-a",{type:"skip",sessionId:id,revision:1,itemId:get().state.pendingItemId!},()=>12000,6000);
+ expect(get().state.activeSeconds).toBe(5);expect(get().state.lastPulseAt).toBe(12000);
+ await runAssessmentCommand(store,"student-a",{type:"pause",sessionId:id,revision:2},()=>30000,15000);
+ expect(get().state.activeSeconds).toBe(8);expect(get().state.lastPulseAt).toBeNull();
+});
 it("rejects a changed pinned release before accepting an event",()=>{
  const {get}=setup();
  expect(()=>transitionSession({state:get().state,release:{...get().state.release,checksum:"changed"},expectedRevision:0,event:{type:"resume",at:0},skills:assessment.skills,bank:assessment.probes})).toThrow(/release changed/);

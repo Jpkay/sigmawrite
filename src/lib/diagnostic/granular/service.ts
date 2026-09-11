@@ -37,10 +37,9 @@ const commandSchema=z.discriminatedUnion("type",[
  z.object({type:z.enum(["pulse","pause","resume"]),sessionId:z.uuid(),revision:z.number().int().nonnegative()}).strict(),
 ]);
 /** studentId is resolved by the authenticated action, never read from input. */
-export async function runAssessmentCommand(store:AssessmentStore,studentId:string,input:unknown,now:()=>number=Date.now){
+export async function runAssessmentCommand(store:AssessmentStore,studentId:string,input:unknown,now:()=>number=Date.now,receivedAt:number=now()){
  const parsed=commandSchema.safeParse(input);if(!parsed.success)return {error:"Données invalides."} as const;
  const command=parsed.data;
- const receivedAt=now();
  let session=await store.load(studentId,command.sessionId);if(!session)return {error:"Diagnostic introuvable."} as const;
  const bundle=await store.release(session.releaseId);if(!bundle)return {error:"Ce diagnostic n’est pas disponible."} as const;
  session=await withKnownMaterialHistory(store,session,bundle);
@@ -69,6 +68,12 @@ export async function runAssessmentCommand(store:AssessmentStore,studentId:strin
  const state=transitionSession({state:session.state,release:bindAssessmentRelease(bundle.assessment,{taxonomyId:bundle.taxonomyId,bankId:bundle.bankId}),expectedRevision:command.revision,
   event:command.type==="answer"?{type:"answer",itemId:command.itemId,correct,at:receivedAt,materialReceipt}:command.type==="skip"?{type:"skip",itemId:command.itemId,at:receivedAt}:{type:command.type,at:receivedAt},skills:bundle.assessment.skills,bank:bundle.assessment.probes,releaseScope:bundle.assessment.releaseScope});
  if(state===session.state)return {view:publicAssessmentView(session,bundle,receivedAt)} as const;
+ // Answer/skip/resume block the question UI. Start the next timed interval
+ // after server processing, not at request arrival. Background pulses leave
+ // the question usable and must not deduct their processing time.
+ if(state.phase==="assessing"&&!state.paused&&["answer","skip","resume"].includes(command.type)){
+  state.lastPulseAt=Math.max(receivedAt,now());
+ }
  if(!await store.save(studentId,session.id,command.revision,state)){
   const latest=await store.load(studentId,session.id);
   return {conflict:true,...(latest?{view:publicAssessmentView(latest,bundle,receivedAt)}:{})} as const;
