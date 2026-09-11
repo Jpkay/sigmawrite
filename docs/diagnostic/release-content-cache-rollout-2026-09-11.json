@@ -1,0 +1,112 @@
+{
+  "sourceCommit": "cbcef03",
+  "deploymentId": "dpl_2buKTMQuq1phDksYUDHtPrtJwG2b",
+  "deploymentUrl": "https://sigmawrite-h2eyy235j-jpkays-projects.vercel.app",
+  "deploymentReady": true,
+  "activated": true,
+  "releaseKey": "french-granular-diagnostic-v8",
+  "scope": 160,
+  "publicBeforeSamples": [
+    {
+      "run": 1,
+      "readyMs": 32731,
+      "scope": 160,
+      "sessionId": "01d5e716-ec5b-475e-804b-929e5fd831ad"
+    },
+    {
+      "run": 2,
+      "readyMs": 16637,
+      "scope": 160,
+      "sessionId": "01d5e716-ec5b-475e-804b-929e5fd831ad"
+    },
+    {
+      "run": 3,
+      "readyMs": 11138,
+      "scope": 160,
+      "sessionId": "01d5e716-ec5b-475e-804b-929e5fd831ad"
+    }
+  ],
+  "candidateSamples": [
+    {
+      "run": 1,
+      "readyMs": 15898,
+      "scope": 160,
+      "sessionId": "01d5e716-ec5b-475e-804b-929e5fd831ad"
+    },
+    {
+      "run": 2,
+      "readyMs": 18049,
+      "scope": 160,
+      "sessionId": "01d5e716-ec5b-475e-804b-929e5fd831ad"
+    },
+    {
+      "run": 3,
+      "readyMs": 13730,
+      "scope": 160,
+      "sessionId": "01d5e716-ec5b-475e-804b-929e5fd831ad"
+    }
+  ],
+  "candidateDemoLessons": 11,
+  "pending": [],
+  "limitations": [
+    "These browser samples do not demonstrate a reliable latency improvement.",
+    "Local warm-cache payload reduction is established; production cache hit rate has not been measured.",
+    "Full graph coverage and broader browser latency remain unfinished."
+  ],
+  "candidateCommands": {
+    "sessionId": "9ada5e5e-1697-4f83-a5be-8b471d0d374a",
+    "releaseId": "87db36f6-1148-4ede-af90-557a14274852",
+    "scope": 160,
+    "answered": 2,
+    "testedSkill": "identifier_complement_direct::reading-receptive",
+    "pausedReload": true
+  },
+  "frozenContentJourney": [
+    {
+      "profile": "wrong",
+      "checkedQuestion": "v3-short-reading:definition-binome",
+      "questions": 61,
+      "correct": 0,
+      "completionReason": "time_budget",
+      "activeMinutes": 35,
+      "results": 542,
+      "firstActivity": "Trouver une définition dans le texte",
+      "completedLesson": "french-v3-teaching:reading:deduire_mot_definition_locale:informational",
+      "practiceResponses": 4
+    },
+    {
+      "profile": "mixed",
+      "checkedQuestion": "v3-canonical-sentence:recognition-12",
+      "questions": 61,
+      "correct": 41,
+      "completionReason": "time_budget",
+      "activeMinutes": 35,
+      "results": 542,
+      "firstActivity": "Reconnaître une phrase canonique",
+      "completedLesson": null,
+      "practiceResponses": 0
+    }
+  ],
+  "publicDemoLessons": 11,
+  "publicAfterSamples": [
+    {
+      "run": 1,
+      "readyMs": 13227,
+      "scope": 160,
+      "sessionId": "01d5e716-ec5b-475e-804b-929e5fd831ad"
+    },
+    {
+      "run": 2,
+      "readyMs": 14494,
+      "scope": 160,
+      "sessionId": "01d5e716-ec5b-475e-804b-929e5fd831ad"
+    },
+    {
+      "run": 3,
+      "readyMs": 14442,
+      "scope": 160,
+      "sessionId": "01d5e716-ec5b-475e-804b-929e5fd831ad"
+    }
+  ],
+  "observedTelemetryError": "Browser Sentry envelope POST returned 403; diagnostic loads and session preservation passed. This was also observed before the cache rollout."
+}
