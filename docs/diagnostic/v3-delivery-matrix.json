@@ -3,12 +3,17 @@
   "status": "draft_requires_review",
   "sources": {
     "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
-    "bankChecksum": "sha256:ad5ea53d030634d0facadf8c61e282b79dd7ebe9d57cb54de384fb9b314cdb04",
+    "bankChecksum": "sha256:917e7da14f42fb20351fff7ea6e7a3392c991caae9c6b302f807e9a768930e74",
     "annotationChecksum": "sha256:41e7a8d65776f6bb64c33c925b7d4449ffe9fda5a6b71a899067a171232542bb",
-    "facetChecksum": "sha256:7a95b3b8e4f0d63233b900e73dee6c21c5f328aec0d2771b0ec57528dfff3252",
+    "facetChecksum": "sha256:1ec9c6cad8169c74d7aef8467a18af8831b24d65fdc6e4fb6a67f2f5abafff31",
     "poolChecksum": "sha256:8c59b3ee0139afb4f44fa7e964a85ec00c67e9889bb1ffbad78ff7aa14aa5dfe",
     "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
     "expansions": [
+      {
+        "version": "french-v3-relative-production-expansion-v1",
+        "checksum": "sha256:b2d16a7341207717c31eed411fdc0d0c1b46b14ff951524450d0cd19089aa105",
+        "addedItems": 12
+      },
       {
         "version": "french-v3-subordinate-clauses-expansion-v1",
         "checksum": "sha256:1661b2cc4dd4f5667a18a6360e2ff13a34ab06faefcb4ed4aba8cd9ec60c9066",
@@ -105,14 +110,14 @@
         "addedItems": 90
       }
     ],
-    "teachingDraftChecksum": "sha256:62d86f457db2c53a1783f86b0753b96719b4b90fc0e6e8bfc7104c630a0553c0"
+    "teachingDraftChecksum": "sha256:bcff87ab030d95bcb5a80cd3168a885c3c84b3a2312186d7c20ef4990f5cf4db"
   },
   "summary": {
-    "teachingDrafts": 105,
-    "targetsWithTeachingDrafts": 105,
-    "targetsWithoutTeachingDrafts": 437,
-    "totalCandidateQuestions": 4626,
-    "additionalDraftQuestions": 3896,
+    "teachingDrafts": 106,
+    "targetsWithTeachingDrafts": 106,
+    "targetsWithoutTeachingDrafts": 436,
+    "totalCandidateQuestions": 4638,
+    "additionalDraftQuestions": 3908,
     "canonicalEligibleQuestions": 238,
     "approvedCompetencies": 181,
     "approvedEvidenceDefinitions": 257,
@@ -159,10 +164,10 @@
         "eligibleQuestions": 56,
         "targetsWithNoEligibleQuestions": 43,
         "allocatedPools": 0,
-        "targetsWithTeachingDrafts": 22,
-        "targetsWithoutTeachingDrafts": 57,
-        "guidedExerciseDrafts": 116,
-        "exactTargetExpansionDrafts": 246
+        "targetsWithTeachingDrafts": 23,
+        "targetsWithoutTeachingDrafts": 56,
+        "guidedExerciseDrafts": 124,
+        "exactTargetExpansionDrafts": 258
       },
       {
         "domain": "spelling",
@@ -45455,7 +45460,7 @@
           ]
         },
         "exactTargetDrafts": {
-          "questions": 0,
+          "questions": 12,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": [
             {
@@ -45556,8 +45561,28 @@
         "local-grammar-v1:construction_subordonnee_relative:controlled_production:core",
         "local-grammar-v1:construction_subordonnee_relative:controlled_production:stretch"
       ],
-      "exactTargetExpansionDrafts": [],
-      "teachingDrafts": [],
+      "exactTargetExpansionDrafts": [
+        "v3-relative-production:1",
+        "v3-relative-production:2",
+        "v3-relative-production:3",
+        "v3-relative-production:4",
+        "v3-relative-production:5",
+        "v3-relative-production:6",
+        "v3-relative-production:7",
+        "v3-relative-production:8",
+        "v3-relative-production:9",
+        "v3-relative-production:10",
+        "v3-relative-production:11",
+        "v3-relative-production:12"
+      ],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:relative-clause:production",
+          "status": "draft_requires_review",
+          "guidedExercises": 8,
+          "boundaryFr": "Tu combines ici deux phrases fournies, dans un ordre imposé. Cela entraîne une construction écrite précise, sans prouver que tu sais organiser un texte libre. Les constructions plus complexes avec lequel et les autres emplois des pronoms demandent un travail supplémentaire."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -45566,8 +45591,8 @@
       "nextActions": [
         "annotate_required_assessed_material",
         "enforce_approved_criterion:novelSentencesRequired",
-        "map_and_review_parent_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_exact_target_drafts",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -77945,5 +77970,5 @@
       ]
     }
   ],
-  "checksum": "sha256:c6680f0a73e74f8437af6ef29e821896fd67b159a279db8f16c3b07c8ec0a8dc"
+  "checksum": "sha256:dab8d91f9e4356ff29271fb0a918acca46a6702ea8caa6d057dea78cb254ebae"
 }

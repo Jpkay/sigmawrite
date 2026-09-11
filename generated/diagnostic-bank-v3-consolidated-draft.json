@@ -37493,6 +37493,858 @@
       "reviewStatus": "needs_human_review"
     },
     {
+      "itemKey": "v3-relative-production:1",
+      "item": {
+        "nodeKey": "construction_subordonnee_relative",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Réunis ces deux phrases en une seule avec une proposition relative. Utilise qui, que, dont ou où. Garde tous les mots de la première phrase dans leur ordre, puis ajoute la relative à la place du point final. Dans la seconde phrase, remplace la répétition du nom par le pronom relatif adapté. N’ajoute pas d’autres informations.\n\nJe regarde un oiseau.\nCet oiseau chante.",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Je regarde un oiseau qui chante.",
+        "acceptableAnswers": [
+          "Je regarde un oiseau qui chante"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Je regarde un oiseau.",
+              "Cet oiseau chante.",
+              "Je regarde un oiseau qui chante."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je regarde un oiseau.",
+                "Cet oiseau chante.",
+                "Je regarde un oiseau qui chante."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Je regarde un oiseau qui chante.",
+              "Je regarde un oiseau qui chante",
+              "Je regarde un oiseau que chante.",
+              "Je regarde un oiseau que chante",
+              "Je regarde un oiseau dont chante.",
+              "Je regarde un oiseau dont chante",
+              "Je regarde un oiseau où chante.",
+              "Je regarde un oiseau où chante"
+            ],
+            "rationaleFr": "La tâche combine des phrases fournies. Le choix du pronom est borné conservativement à quatre possibilités ; la saisie ne constitue pas une rédaction libre."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "relative-sentence-combination",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-relative-production:2",
+      "item": {
+        "nodeKey": "construction_subordonnee_relative",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Réunis ces deux phrases en une seule avec une proposition relative. Utilise qui, que, dont ou où. Garde tous les mots de la première phrase dans leur ordre, puis ajoute la relative à la place du point final. Dans la seconde phrase, remplace la répétition du nom par le pronom relatif adapté. N’ajoute pas d’autres informations.\n\nNous croisons une athlète.\nCette athlète court chaque matin.",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Nous croisons une athlète qui court chaque matin.",
+        "acceptableAnswers": [
+          "Nous croisons une athlète qui court chaque matin"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Nous croisons une athlète.",
+              "Cette athlète court chaque matin.",
+              "Nous croisons une athlète qui court chaque matin."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous croisons une athlète.",
+                "Cette athlète court chaque matin.",
+                "Nous croisons une athlète qui court chaque matin."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Nous croisons une athlète qui court chaque matin.",
+              "Nous croisons une athlète qui court chaque matin",
+              "Nous croisons une athlète que court chaque matin.",
+              "Nous croisons une athlète que court chaque matin",
+              "Nous croisons une athlète dont court chaque matin.",
+              "Nous croisons une athlète dont court chaque matin",
+              "Nous croisons une athlète où court chaque matin.",
+              "Nous croisons une athlète où court chaque matin"
+            ],
+            "rationaleFr": "La tâche combine des phrases fournies. Le choix du pronom est borné conservativement à quatre possibilités ; la saisie ne constitue pas une rédaction libre."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "relative-sentence-combination",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-relative-production:3",
+      "item": {
+        "nodeKey": "construction_subordonnee_relative",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Réunis ces deux phrases en une seule avec une proposition relative. Utilise qui, que, dont ou où. Garde tous les mots de la première phrase dans leur ordre, puis ajoute la relative à la place du point final. Dans la seconde phrase, remplace la répétition du nom par le pronom relatif adapté. N’ajoute pas d’autres informations.\n\nTu photographies des bateaux.\nCes bateaux quittent le port.",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Tu photographies des bateaux qui quittent le port.",
+        "acceptableAnswers": [
+          "Tu photographies des bateaux qui quittent le port"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Tu photographies des bateaux.",
+              "Ces bateaux quittent le port.",
+              "Tu photographies des bateaux qui quittent le port."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu photographies des bateaux.",
+                "Ces bateaux quittent le port.",
+                "Tu photographies des bateaux qui quittent le port."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Tu photographies des bateaux qui quittent le port.",
+              "Tu photographies des bateaux qui quittent le port",
+              "Tu photographies des bateaux que quittent le port.",
+              "Tu photographies des bateaux que quittent le port",
+              "Tu photographies des bateaux dont quittent le port.",
+              "Tu photographies des bateaux dont quittent le port",
+              "Tu photographies des bateaux où quittent le port.",
+              "Tu photographies des bateaux où quittent le port"
+            ],
+            "rationaleFr": "La tâche combine des phrases fournies. Le choix du pronom est borné conservativement à quatre possibilités ; la saisie ne constitue pas une rédaction libre."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "relative-sentence-combination",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-relative-production:4",
+      "item": {
+        "nodeKey": "construction_subordonnee_relative",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Réunis ces deux phrases en une seule avec une proposition relative. Utilise qui, que, dont ou où. Garde tous les mots de la première phrase dans leur ordre, puis ajoute la relative à la place du point final. Dans la seconde phrase, remplace la répétition du nom par le pronom relatif adapté. N’ajoute pas d’autres informations.\n\nJe retrouve le guide.\nTu connais ce guide.",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Je retrouve le guide que tu connais.",
+        "acceptableAnswers": [
+          "Je retrouve le guide que tu connais"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Je retrouve le guide.",
+              "Tu connais ce guide.",
+              "Je retrouve le guide que tu connais."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je retrouve le guide.",
+                "Tu connais ce guide.",
+                "Je retrouve le guide que tu connais."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Je retrouve le guide qui tu connais.",
+              "Je retrouve le guide qui tu connais",
+              "Je retrouve le guide que tu connais.",
+              "Je retrouve le guide que tu connais",
+              "Je retrouve le guide dont tu connais.",
+              "Je retrouve le guide dont tu connais",
+              "Je retrouve le guide où tu connais.",
+              "Je retrouve le guide où tu connais"
+            ],
+            "rationaleFr": "La tâche combine des phrases fournies. Le choix du pronom est borné conservativement à quatre possibilités ; la saisie ne constitue pas une rédaction libre."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "relative-sentence-combination",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-relative-production:5",
+      "item": {
+        "nodeKey": "construction_subordonnee_relative",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Réunis ces deux phrases en une seule avec une proposition relative. Utilise qui, que, dont ou où. Garde tous les mots de la première phrase dans leur ordre, puis ajoute la relative à la place du point final. Dans la seconde phrase, remplace la répétition du nom par le pronom relatif adapté. N’ajoute pas d’autres informations.\n\nNous goûtons une soupe.\nLina prépare cette soupe.",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Nous goûtons une soupe que Lina prépare.",
+        "acceptableAnswers": [
+          "Nous goûtons une soupe que Lina prépare"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Nous goûtons une soupe.",
+              "Lina prépare cette soupe.",
+              "Nous goûtons une soupe que Lina prépare."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous goûtons une soupe.",
+                "Lina prépare cette soupe.",
+                "Nous goûtons une soupe que Lina prépare."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Nous goûtons une soupe qui Lina prépare.",
+              "Nous goûtons une soupe qui Lina prépare",
+              "Nous goûtons une soupe que Lina prépare.",
+              "Nous goûtons une soupe que Lina prépare",
+              "Nous goûtons une soupe dont Lina prépare.",
+              "Nous goûtons une soupe dont Lina prépare",
+              "Nous goûtons une soupe où Lina prépare.",
+              "Nous goûtons une soupe où Lina prépare"
+            ],
+            "rationaleFr": "La tâche combine des phrases fournies. Le choix du pronom est borné conservativement à quatre possibilités ; la saisie ne constitue pas une rédaction libre."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "relative-sentence-combination",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-relative-production:6",
+      "item": {
+        "nodeKey": "construction_subordonnee_relative",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Réunis ces deux phrases en une seule avec une proposition relative. Utilise qui, que, dont ou où. Garde tous les mots de la première phrase dans leur ordre, puis ajoute la relative à la place du point final. Dans la seconde phrase, remplace la répétition du nom par le pronom relatif adapté. N’ajoute pas d’autres informations.\n\nVous rangez les outils.\nLes ouvriers utilisent ces outils.",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Vous rangez les outils que les ouvriers utilisent.",
+        "acceptableAnswers": [
+          "Vous rangez les outils que les ouvriers utilisent"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Vous rangez les outils.",
+              "Les ouvriers utilisent ces outils.",
+              "Vous rangez les outils que les ouvriers utilisent."
+            ],
+            "assessed": {
+              "sentences": [
+                "Vous rangez les outils.",
+                "Les ouvriers utilisent ces outils.",
+                "Vous rangez les outils que les ouvriers utilisent."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Vous rangez les outils qui les ouvriers utilisent.",
+              "Vous rangez les outils qui les ouvriers utilisent",
+              "Vous rangez les outils que les ouvriers utilisent.",
+              "Vous rangez les outils que les ouvriers utilisent",
+              "Vous rangez les outils dont les ouvriers utilisent.",
+              "Vous rangez les outils dont les ouvriers utilisent",
+              "Vous rangez les outils où les ouvriers utilisent.",
+              "Vous rangez les outils où les ouvriers utilisent"
+            ],
+            "rationaleFr": "La tâche combine des phrases fournies. Le choix du pronom est borné conservativement à quatre possibilités ; la saisie ne constitue pas une rédaction libre."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "relative-sentence-combination",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-relative-production:7",
+      "item": {
+        "nodeKey": "construction_subordonnee_relative",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Réunis ces deux phrases en une seule avec une proposition relative. Utilise qui, que, dont ou où. Garde tous les mots de la première phrase dans leur ordre, puis ajoute la relative à la place du point final. Dans la seconde phrase, remplace la répétition du nom par le pronom relatif adapté. N’ajoute pas d’autres informations.\n\nJe choisis un roman.\nTu parles de ce roman.",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Je choisis un roman dont tu parles.",
+        "acceptableAnswers": [
+          "Je choisis un roman dont tu parles"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Je choisis un roman.",
+              "Tu parles de ce roman.",
+              "Je choisis un roman dont tu parles."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je choisis un roman.",
+                "Tu parles de ce roman.",
+                "Je choisis un roman dont tu parles."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Je choisis un roman qui tu parles.",
+              "Je choisis un roman qui tu parles",
+              "Je choisis un roman que tu parles.",
+              "Je choisis un roman que tu parles",
+              "Je choisis un roman dont tu parles.",
+              "Je choisis un roman dont tu parles",
+              "Je choisis un roman où tu parles.",
+              "Je choisis un roman où tu parles"
+            ],
+            "rationaleFr": "La tâche combine des phrases fournies. Le choix du pronom est borné conservativement à quatre possibilités ; la saisie ne constitue pas une rédaction libre."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "relative-sentence-combination",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-relative-production:8",
+      "item": {
+        "nodeKey": "construction_subordonnee_relative",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Réunis ces deux phrases en une seule avec une proposition relative. Utilise qui, que, dont ou où. Garde tous les mots de la première phrase dans leur ordre, puis ajoute la relative à la place du point final. Dans la seconde phrase, remplace la répétition du nom par le pronom relatif adapté. N’ajoute pas d’autres informations.\n\nElle découvre un sport.\nSon frère rêve de ce sport.",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Elle découvre un sport dont son frère rêve.",
+        "acceptableAnswers": [
+          "Elle découvre un sport dont son frère rêve"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Elle découvre un sport.",
+              "Son frère rêve de ce sport.",
+              "Elle découvre un sport dont son frère rêve."
+            ],
+            "assessed": {
+              "sentences": [
+                "Elle découvre un sport.",
+                "Son frère rêve de ce sport.",
+                "Elle découvre un sport dont son frère rêve."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Elle découvre un sport qui son frère rêve.",
+              "Elle découvre un sport qui son frère rêve",
+              "Elle découvre un sport que son frère rêve.",
+              "Elle découvre un sport que son frère rêve",
+              "Elle découvre un sport dont son frère rêve.",
+              "Elle découvre un sport dont son frère rêve",
+              "Elle découvre un sport où son frère rêve.",
+              "Elle découvre un sport où son frère rêve"
+            ],
+            "rationaleFr": "La tâche combine des phrases fournies. Le choix du pronom est borné conservativement à quatre possibilités ; la saisie ne constitue pas une rédaction libre."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "relative-sentence-combination",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-relative-production:9",
+      "item": {
+        "nodeKey": "construction_subordonnee_relative",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Réunis ces deux phrases en une seule avec une proposition relative. Utilise qui, que, dont ou où. Garde tous les mots de la première phrase dans leur ordre, puis ajoute la relative à la place du point final. Dans la seconde phrase, remplace la répétition du nom par le pronom relatif adapté. N’ajoute pas d’autres informations.\n\nNous apportons les documents.\nLe club a besoin de ces documents.",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Nous apportons les documents dont le club a besoin.",
+        "acceptableAnswers": [
+          "Nous apportons les documents dont le club a besoin"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Nous apportons les documents.",
+              "Le club a besoin de ces documents.",
+              "Nous apportons les documents dont le club a besoin."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous apportons les documents.",
+                "Le club a besoin de ces documents.",
+                "Nous apportons les documents dont le club a besoin."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Nous apportons les documents qui le club a besoin.",
+              "Nous apportons les documents qui le club a besoin",
+              "Nous apportons les documents que le club a besoin.",
+              "Nous apportons les documents que le club a besoin",
+              "Nous apportons les documents dont le club a besoin.",
+              "Nous apportons les documents dont le club a besoin",
+              "Nous apportons les documents où le club a besoin.",
+              "Nous apportons les documents où le club a besoin"
+            ],
+            "rationaleFr": "La tâche combine des phrases fournies. Le choix du pronom est borné conservativement à quatre possibilités ; la saisie ne constitue pas une rédaction libre."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "relative-sentence-combination",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-relative-production:10",
+      "item": {
+        "nodeKey": "construction_subordonnee_relative",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Réunis ces deux phrases en une seule avec une proposition relative. Utilise qui, que, dont ou où. Garde tous les mots de la première phrase dans leur ordre, puis ajoute la relative à la place du point final. Dans la seconde phrase, remplace la répétition du nom par le pronom relatif adapté. N’ajoute pas d’autres informations.\n\nNous découvrons un village.\nMa tante vit dans ce village.",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Nous découvrons un village où ma tante vit.",
+        "acceptableAnswers": [
+          "Nous découvrons un village où ma tante vit"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Nous découvrons un village.",
+              "Ma tante vit dans ce village.",
+              "Nous découvrons un village où ma tante vit."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous découvrons un village.",
+                "Ma tante vit dans ce village.",
+                "Nous découvrons un village où ma tante vit."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Nous découvrons un village qui ma tante vit.",
+              "Nous découvrons un village qui ma tante vit",
+              "Nous découvrons un village que ma tante vit.",
+              "Nous découvrons un village que ma tante vit",
+              "Nous découvrons un village dont ma tante vit.",
+              "Nous découvrons un village dont ma tante vit",
+              "Nous découvrons un village où ma tante vit.",
+              "Nous découvrons un village où ma tante vit"
+            ],
+            "rationaleFr": "La tâche combine des phrases fournies. Le choix du pronom est borné conservativement à quatre possibilités ; la saisie ne constitue pas une rédaction libre."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "relative-sentence-combination",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-relative-production:11",
+      "item": {
+        "nodeKey": "construction_subordonnee_relative",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Réunis ces deux phrases en une seule avec une proposition relative. Utilise qui, que, dont ou où. Garde tous les mots de la première phrase dans leur ordre, puis ajoute la relative à la place du point final. Dans la seconde phrase, remplace la répétition du nom par le pronom relatif adapté. N’ajoute pas d’autres informations.\n\nJe visite le musée.\nLes peintres exposent dans ce musée.",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Je visite le musée où les peintres exposent.",
+        "acceptableAnswers": [
+          "Je visite le musée où les peintres exposent"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Je visite le musée.",
+              "Les peintres exposent dans ce musée.",
+              "Je visite le musée où les peintres exposent."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je visite le musée.",
+                "Les peintres exposent dans ce musée.",
+                "Je visite le musée où les peintres exposent."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Je visite le musée qui les peintres exposent.",
+              "Je visite le musée qui les peintres exposent",
+              "Je visite le musée que les peintres exposent.",
+              "Je visite le musée que les peintres exposent",
+              "Je visite le musée dont les peintres exposent.",
+              "Je visite le musée dont les peintres exposent",
+              "Je visite le musée où les peintres exposent.",
+              "Je visite le musée où les peintres exposent"
+            ],
+            "rationaleFr": "La tâche combine des phrases fournies. Le choix du pronom est borné conservativement à quatre possibilités ; la saisie ne constitue pas une rédaction libre."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "relative-sentence-combination",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-relative-production:12",
+      "item": {
+        "nodeKey": "construction_subordonnee_relative",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Réunis ces deux phrases en une seule avec une proposition relative. Utilise qui, que, dont ou où. Garde tous les mots de la première phrase dans leur ordre, puis ajoute la relative à la place du point final. Dans la seconde phrase, remplace la répétition du nom par le pronom relatif adapté. N’ajoute pas d’autres informations.\n\nTu connais le stade.\nNotre équipe s’entraîne dans ce stade.",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Tu connais le stade où notre équipe s’entraîne.",
+        "acceptableAnswers": [
+          "Tu connais le stade où notre équipe s’entraîne"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Tu connais le stade.",
+              "Notre équipe s’entraîne dans ce stade.",
+              "Tu connais le stade où notre équipe s’entraîne."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu connais le stade.",
+                "Notre équipe s’entraîne dans ce stade.",
+                "Tu connais le stade où notre équipe s’entraîne."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Tu connais le stade qui notre équipe s’entraîne.",
+              "Tu connais le stade qui notre équipe s’entraîne",
+              "Tu connais le stade que notre équipe s’entraîne.",
+              "Tu connais le stade que notre équipe s’entraîne",
+              "Tu connais le stade dont notre équipe s’entraîne.",
+              "Tu connais le stade dont notre équipe s’entraîne",
+              "Tu connais le stade où notre équipe s’entraîne.",
+              "Tu connais le stade où notre équipe s’entraîne"
+            ],
+            "rationaleFr": "La tâche combine des phrases fournies. Le choix du pronom est borné conservativement à quatre possibilités ; la saisie ne constitue pas une rédaction libre."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "relative-sentence-combination",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
       "itemKey": "v3-subordinate-clauses:completive-1",
       "item": {
         "nodeKey": "construction_subordonnee_completive",
@@ -279674,9 +280526,9 @@
     }
   ],
   "manifest": {
-    "itemCount": 4626,
+    "itemCount": 4638,
     "eligibleItemCount": 238,
-    "pendingItemCount": 4388,
+    "pendingItemCount": 4400,
     "publicationMode": "partial",
     "nodeCount": 114,
     "sectionReadiness": [
@@ -279725,6 +280577,6 @@
         "difficultyTierCount": 3
       }
     ],
-    "checksum": "sha256:ad5ea53d030634d0facadf8c61e282b79dd7ebe9d57cb54de384fb9b314cdb04"
+    "checksum": "sha256:917e7da14f42fb20351fff7ea6e7a3392c991caae9c6b302f807e9a768930e74"
   }
 }

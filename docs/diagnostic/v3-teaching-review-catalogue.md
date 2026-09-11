@@ -1,11 +1,12 @@
 # French teaching draft review catalogue
 
-105 lessons, 578 guided exercises, 105 exact assessment targets. No approval, publication or activity binding is created by this export.
+106 lessons, 586 guided exercises, 106 exact assessment targets. No approval, publication or activity binding is created by this export.
 
 The companion JSON includes the complete learner-facing content, answer keys, hints, feedback, target IDs, prerequisites, evidence requirements, material identities and per-lesson checksums. Review decisions must refer to the exact content version. An anchored annotation proves only that the annotated material appears in the lesson; it does not prove completeness or independence from assessment questions.
 
 | Lesson | Target | Mode | Guided exercises | Exposure annotation |
 | --- | --- | --- | ---: | --- |
+| Réunir deux phrases avec une relative | construction_subordonnee_relative::writing-controlled-production | production | 8 | anchored_requires_completeness_review |
 | Repérer une proposition complétive | construction_subordonnee_completive::reading-analysis | recognition | 6 | anchored_requires_completeness_review |
 | Repérer une proposition circonstancielle | construction_subordonnee_circonstancielle::reading-analysis | recognition | 7 | anchored_requires_completeness_review |
 | Repérer une proposition relative | construction_subordonnee_relative::reading-analysis | recognition | 6 | anchored_requires_completeness_review |
