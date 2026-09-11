@@ -81,3 +81,13 @@ upgrade control. The action rechecks state before persistence; conflicts produce
 an actionable retry message. The legacy demo has no granular session and is not
 offered this upgrade. All 530 relevant tests (152 files), TypeScript and scoped
 lint passed. Browser verification, remote migration and rollout are still due.
+
+## Rollout checkpoint
+
+Migration 0150 was applied transactionally with its migration-history entry to
+the linked deployed database `pwztnrirtrnicywvdbpz`; the successor table was
+verified present and empty before browser testing. Candidate `f8fc1ba` is Ready
+at https://sigmawrite-fnaekixau-jpkays-projects.vercel.app, deployment
+`dpl_7iJ9C5y3YtvZPtLPvWwgv1aePCGs`, with upgrades enabled on that candidate only.
+The public alias has not been promoted. The isolated source checkout excludes
+unrelated working-tree changes. Candidate browser upgrade verification is running.
