@@ -3,12 +3,17 @@
   "status": "draft_requires_review",
   "sources": {
     "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
-    "bankChecksum": "sha256:59194512e7e85acc71b5f787e83e847f9f91bf4eed6074f812d04029d870a510",
+    "bankChecksum": "sha256:b6dc97afed8b9942cb8dadbfaeff0ac84391e19f22d850b5ecde8df9cf92f92e",
     "annotationChecksum": "sha256:41e7a8d65776f6bb64c33c925b7d4449ffe9fda5a6b71a899067a171232542bb",
-    "facetChecksum": "sha256:c397c38af3ff77effa06eb75d7c6369fcfa8f1565127882a8d7f31e11f87e6f2",
+    "facetChecksum": "sha256:6e80bb1795b0b42424544e4f8612619cf07abb1f50c97ab7fc3e14133a3c8637",
     "poolChecksum": "sha256:8c59b3ee0139afb4f44fa7e964a85ec00c67e9889bb1ffbad78ff7aa14aa5dfe",
     "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
     "expansions": [
+      {
+        "version": "french-v3-argument-thesis-expansion-v1",
+        "checksum": "sha256:04e30ff7afbc5c8c4ce55d10b5cc60512740e2ab55f6dcbfa34603d4249106f7",
+        "addedItems": 8
+      },
       {
         "version": "french-v3-negation-recognition-expansion-v1",
         "checksum": "sha256:d4f50194dc0b2ad0167b1a76ab2d5043d9175d016d1a1b1c1d8a8f1161538914",
@@ -140,14 +145,14 @@
         "addedItems": 90
       }
     ],
-    "teachingDraftChecksum": "sha256:561880b8c369cc055acf88d5537879a4da1c214097274bfaaf9279cdc841858e"
+    "teachingDraftChecksum": "sha256:5cd6df289a08cfec929b694bed7a34d1753013d135c7a32d2e9823a7b6241bb5"
   },
   "summary": {
-    "teachingDrafts": 176,
-    "targetsWithTeachingDrafts": 176,
-    "targetsWithoutTeachingDrafts": 366,
-    "totalCandidateQuestions": 5344,
-    "additionalDraftQuestions": 4614,
+    "teachingDrafts": 177,
+    "targetsWithTeachingDrafts": 177,
+    "targetsWithoutTeachingDrafts": 365,
+    "totalCandidateQuestions": 5352,
+    "additionalDraftQuestions": 4622,
     "canonicalEligibleQuestions": 238,
     "approvedCompetencies": 181,
     "approvedEvidenceDefinitions": 257,
@@ -183,10 +188,10 @@
         "eligibleQuestions": 21,
         "targetsWithNoEligibleQuestions": 74,
         "allocatedPools": 0,
-        "targetsWithTeachingDrafts": 11,
-        "targetsWithoutTeachingDrafts": 81,
-        "guidedExerciseDrafts": 50,
-        "exactTargetExpansionDrafts": 96
+        "targetsWithTeachingDrafts": 12,
+        "targetsWithoutTeachingDrafts": 80,
+        "guidedExerciseDrafts": 56,
+        "exactTargetExpansionDrafts": 104
       },
       {
         "domain": "grammar",
@@ -44170,8 +44175,17 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 0,
-          "withoutExplicitAssessedIdentity": [],
+          "questions": 8,
+          "withoutExplicitAssessedIdentity": [
+            "v3-argument-thesis:manga-club",
+            "v3-argument-thesis:quiet-room",
+            "v3-argument-thesis:repair",
+            "v3-argument-thesis:uniform",
+            "v3-argument-thesis:garden",
+            "v3-argument-thesis:phone",
+            "v3-argument-thesis:tournament",
+            "v3-argument-thesis:library"
+          ],
           "missingRequiredIdentities": []
         },
         "sharedParentDrafts": {
@@ -44248,8 +44262,24 @@
         "local-reading-v1:identifier_these_argument:receptive:core",
         "local-reading-v1:identifier_these_argument:receptive:stretch"
       ],
-      "exactTargetExpansionDrafts": [],
-      "teachingDrafts": [],
+      "exactTargetExpansionDrafts": [
+        "v3-argument-thesis:manga-club",
+        "v3-argument-thesis:quiet-room",
+        "v3-argument-thesis:repair",
+        "v3-argument-thesis:uniform",
+        "v3-argument-thesis:garden",
+        "v3-argument-thesis:phone",
+        "v3-argument-thesis:tournament",
+        "v3-argument-thesis:library"
+      ],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:argument-thesis",
+          "status": "draft_requires_review",
+          "guidedExercises": 6,
+          "boundaryFr": "Identifier une thèse ne signifie pas être d’accord avec elle, vérifier ses affirmations ou juger ses arguments. Une raison peut être vraie sans être l’idée principale défendue."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -44258,8 +44288,8 @@
       "nextActions": [
         "enforce_approved_criterion:evidenceSpanRequired",
         "review_refinement_and_prerequisites",
-        "map_and_review_parent_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_exact_target_drafts",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -79255,5 +79285,5 @@
       ]
     }
   ],
-  "checksum": "sha256:36f18541318ed3b645c205bce885bf3f0936fbd7fa1ee2b82ee1456e89923af6"
+  "checksum": "sha256:8b1cd772067a4990e67c4ae594b66cbcbd3bbaeb814d169e843808cc43241c60"
 }

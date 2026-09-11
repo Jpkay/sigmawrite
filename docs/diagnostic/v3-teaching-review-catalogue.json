@@ -5,12 +5,153 @@
   "facetChecksum": "sha256:c1587bbcc3d7b86759a9aeee784f312a48e3d2706edac48ad2d1681957b44f73",
   "assessmentSourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
   "summary": {
-    "lessons": 176,
-    "guidedExercises": 960,
-    "targets": 176,
+    "lessons": 177,
+    "guidedExercises": 966,
+    "targets": 177,
     "missingExposureAnnotations": []
   },
   "rows": [
+    {
+      "lessonId": "french-v3-teaching:argument-thesis",
+      "contentChecksum": "sha256:76aa7218c0a5dbb9e9a3fd29d387bb36b0ee3c33ddf475574b86df2ef19b9831",
+      "skillId": "identifier_these_argument::argumentative-receptive::text_type:argumentative",
+      "nodeKey": "identifier_these_argument",
+      "facetKey": "identifier_these_argument::text_type:argumentative",
+      "mode": "interpretation",
+      "domain": "reading_comprehension",
+      "prerequisites": [],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 3,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": true,
+        "minimumTextTypes": 1,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "parentMinimumTextTypes": 1,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:270d6a0a6f3a5c9e6fcda0e01aeba1710e9238a67b7d21e5ff2299db70c5fb7b",
+        "sentence:sha256:33cdc990e1e73e0acfb77d80376b10d9c392ef460622816384350b17384e67ee",
+        "sentence:sha256:3e25756834c8f635e0a599adb4fe08aeea8a88669029aa102cfaeba22fda6ede",
+        "sentence:sha256:70789e44704025a8297bc3699ff8e93abb62d49ccdec85beec204415eb60b532",
+        "sentence:sha256:816ffd451f75d9f0ce88641ce90dd3557a9de788c558741dc9c94ac1b12bde89",
+        "sentence:sha256:b4d80d5a4b052819321b2560e50c7b3dcd809ab0121e94c321374b5b8081a55a",
+        "sentence:sha256:bec8ca23ed633ad904a7eca577c7d8d29925a1d8863b4a6a780bb1741d88a524",
+        "sentence:sha256:c4fb5d8620804eb91f554bf44bdac62e12b2248263f819d6adb09fed034a9212"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:argument-thesis",
+        "nodeKey": "identifier_these_argument",
+        "facetKey": "identifier_these_argument::text_type:argumentative",
+        "mode": "interpretation",
+        "status": "draft_requires_review",
+        "titleFr": "Trouver l’idée défendue dans un texte",
+        "learnerQuestionFr": "Quelle idée l’auteur veut-il nous faire accepter ?",
+        "steps": [
+          {
+            "exampleFr": "Je propose un coin d’échange de jeux. Cela permettrait d’essayer un jeu sans l’acheter.",
+            "explanationFr": "L’auteur veut faire accepter une proposition : créer un coin d’échange de jeux. Cette idée défendue s’appelle la thèse. Essayer un jeu sans l’acheter est une raison donnée pour la soutenir."
+          },
+          {
+            "exampleFr": "On propose parfois de vendre les jeux. Je préfère les échanger.",
+            "explanationFr": "L’auteur rapporte d’abord une autre proposition, puis donne sa position. La première idée mentionnée n’est donc pas toujours celle qu’il défend."
+          }
+        ],
+        "practice": [
+          {
+            "id": "thesis-guided-0-answer",
+            "promptFr": "Un trajet à vélo permet de bouger. Je propose donc une journée où les élèves qui le souhaitent viennent à vélo. Cela doit rester facultatif.\n\nQuelle idée l’auteur défend-il ?",
+            "choices": [
+              "Organiser une journée facultative pour venir à vélo.",
+              "Obliger chacun à venir à vélo.",
+              "Faire du vélo permet de bouger.",
+              "Interdire tous les autres transports."
+            ],
+            "answerFr": "Organiser une journée facultative pour venir à vélo.",
+            "hintFr": "Demande-toi ce que l’auteur veut faire accepter, et distingue cette idée de la raison donnée.",
+            "explanationFr": "L’idée défendue est : Organiser une journée facultative pour venir à vélo. Le texte l’exprime ainsi : « Je propose donc une journée où les élèves qui le souhaitent viennent à vélo. »"
+          },
+          {
+            "id": "thesis-guided-0-support",
+            "promptFr": "Un trajet à vélo permet de bouger. Je propose donc une journée où les élèves qui le souhaitent viennent à vélo. Cela doit rester facultatif.\n\nRecopie la phrase qui exprime cette position.",
+            "answerFr": "Je propose donc une journée où les élèves qui le souhaitent viennent à vélo.",
+            "hintFr": "Cherche la proposition ou la prise de position, pas seulement son avantage.",
+            "explanationFr": "La phrase est : « Je propose donc une journée où les élèves qui le souhaitent viennent à vélo. »"
+          },
+          {
+            "id": "thesis-guided-1-answer",
+            "promptFr": "Certains veulent supprimer la récréation pour gagner du temps. Je m’oppose à cette proposition. Une pause permet de revenir plus attentif en classe.\n\nQuelle idée l’auteur défend-il ?",
+            "choices": [
+              "Conserver la récréation.",
+              "Supprimer la récréation.",
+              "Une pause peut aider à être attentif.",
+              "Supprimer les cours après la pause."
+            ],
+            "answerFr": "Conserver la récréation.",
+            "hintFr": "Demande-toi ce que l’auteur veut faire accepter, et distingue cette idée de la raison donnée.",
+            "explanationFr": "L’idée défendue est : Conserver la récréation. Le texte l’exprime ainsi : « Je m’oppose à cette proposition. »"
+          },
+          {
+            "id": "thesis-guided-1-support",
+            "promptFr": "Certains veulent supprimer la récréation pour gagner du temps. Je m’oppose à cette proposition. Une pause permet de revenir plus attentif en classe.\n\nRecopie la phrase qui exprime cette position.",
+            "answerFr": "Je m’oppose à cette proposition.",
+            "hintFr": "Cherche la proposition ou la prise de position, pas seulement son avantage.",
+            "explanationFr": "La phrase est : « Je m’oppose à cette proposition. »"
+          },
+          {
+            "id": "thesis-guided-2-answer",
+            "promptFr": "Les dessins terminés restent souvent dans les cahiers. Une exposition permettrait de les partager avec les familles. Organisons donc une exposition à la fin du trimestre.\n\nQuelle idée l’auteur défend-il ?",
+            "choices": [
+              "Organiser une exposition à la fin du trimestre.",
+              "Les dessins restent parfois dans les cahiers.",
+              "Inviter les familles chaque jour.",
+              "Ne plus dessiner dans les cahiers."
+            ],
+            "answerFr": "Organiser une exposition à la fin du trimestre.",
+            "hintFr": "Demande-toi ce que l’auteur veut faire accepter, et distingue cette idée de la raison donnée.",
+            "explanationFr": "L’idée défendue est : Organiser une exposition à la fin du trimestre. Le texte l’exprime ainsi : « Organisons donc une exposition à la fin du trimestre. »"
+          },
+          {
+            "id": "thesis-guided-2-support",
+            "promptFr": "Les dessins terminés restent souvent dans les cahiers. Une exposition permettrait de les partager avec les familles. Organisons donc une exposition à la fin du trimestre.\n\nRecopie la phrase qui exprime cette position.",
+            "answerFr": "Organisons donc une exposition à la fin du trimestre.",
+            "hintFr": "Cherche la proposition ou la prise de position, pas seulement son avantage.",
+            "explanationFr": "La phrase est : « Organisons donc une exposition à la fin du trimestre. »"
+          }
+        ],
+        "takeawayFr": "Cherche l’idée que l’auteur défend. Distingue-la de ses raisons et des opinions qu’il rapporte. Elle peut apparaître au début, au milieu ou à la fin.",
+        "boundaryFr": "Identifier une thèse ne signifie pas être d’accord avec elle, vérifier ses affirmations ou juger ses arguments. Une raison peut être vraie sans être l’idée principale défendue.",
+        "materialExposure": {
+          "sentences": [
+            "Un trajet à vélo permet de bouger. Je propose donc une journée où les élèves qui le souhaitent viennent à vélo. Cela doit rester facultatif.",
+            "Je propose donc une journée où les élèves qui le souhaitent viennent à vélo.",
+            "Certains veulent supprimer la récréation pour gagner du temps. Je m’oppose à cette proposition. Une pause permet de revenir plus attentif en classe.",
+            "Je m’oppose à cette proposition.",
+            "Les dessins terminés restent souvent dans les cahiers. Une exposition permettrait de les partager avec les familles. Organisons donc une exposition à la fin du trimestre.",
+            "Organisons donc une exposition à la fin du trimestre.",
+            "Je propose un coin d’échange de jeux. Cela permettrait d’essayer un jeu sans l’acheter.",
+            "On propose parfois de vendre les jeux. Je préfère les échanger."
+          ]
+        }
+      }
+    },
     {
       "lessonId": "french-v3-teaching:homophone:a_a:recognition",
       "contentChecksum": "sha256:516cb25277fc3dd587d25d66190c34d2810c218e9608e1727f239c3d49cbd476",
@@ -26417,5 +26558,5 @@
       }
     }
   ],
-  "checksum": "sha256:6860158a65bee9dd99ae421bca6fa250318e7224e6ec8680e4c0982cf496a417"
+  "checksum": "sha256:6af3008c193e3e0ac892097297bd260948e0ba29f1232e63e5134b16d2dcd7d9"
 }
