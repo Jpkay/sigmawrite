@@ -9,6 +9,7 @@ import {SupabaseAssessmentStore} from "@/lib/diagnostic/granular/store";
 import {publicAssessmentView,runAssessmentCommand} from "@/lib/diagnostic/granular/service";
 import {runLearningCheckCommand} from "@/lib/diagnostic/granular/learning-service";
 import {runTeachingCommand} from "@/lib/diagnostic/granular/teaching-service";
+import {loadDiagnosticAnswerReview} from "@/lib/diagnostic/granular/answer-review";
 async function context(){
  await requireRole(["student"]);
  const client=await createClient(),studentId=await getCurrentStudentId(client);
@@ -42,4 +43,8 @@ export async function updateGranularTeaching(input:unknown){
  const result=await runTeachingCommand(store,studentId,input);
  await recordMaterialDelivery(store,studentId,result);
  return result;
+}
+export async function getGranularAnswerReview(sessionId:string){
+ const {studentId,store}=await context();
+ return loadDiagnosticAnswerReview(store,studentId,sessionId);
 }
