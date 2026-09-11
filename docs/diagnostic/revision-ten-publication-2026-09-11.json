@@ -1,0 +1,26 @@
+{
+  "status": "importing_not_activated",
+  "sourceCommit": "f93f6a6",
+  "frozenWorkspace": "/Users/jean-philippekayobotsi/.codex/release-workspaces/sigmawrite-r10-f93f6a6",
+  "bankKey": "french-diagnostic-bank-v3-r10",
+  "bankId": "5890db8b-af21-42bb-beab-16285629524d",
+  "bankChecksum": "sha256:6e0a84ec989a1e55c58fd0ab2f46955afa2f9bd54ece90d1ad114d547b72c126",
+  "expectedBankItems": 5516,
+  "lastObservedImportedMemberships": 2552,
+  "preparedScope": 172,
+  "plannedReleaseKey": "french-granular-diagnostic-v11",
+  "currentPublicRelease": "french-granular-diagnostic-v10",
+  "technicalChecks": {
+    "granularTests": 541,
+    "typescript": "passed",
+    "scopedCommandJourneys": "passed: wrong and mixed profiles",
+    "targetedNewSkillJourneys": "passed: all five new targets with guided errors and independent checks",
+    "existingLearningCompatibility": "passed read-only preparation preserving production QA history"
+  },
+  "remaining": [
+    "Wait for existing import process and verify relational bank",
+    "Publish immutable release under owner-authorized parallel review",
+    "Verify deployed candidate and completed browser journey before activation",
+    "Continue question coverage and educational review; full graph scope is not complete"
+  ]
+}
