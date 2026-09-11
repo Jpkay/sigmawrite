@@ -9,18 +9,19 @@ import {questionAssessedMaterialKeys,teachingMaterialKeys} from './material-anno
 import type {DraftExpansion} from './assemble-drafts';
 const read=(p:string)=>JSON.parse(readFileSync(p,'utf8'));
 const venir={'1s':'viens','2s':'viens','3s':'vient','1p':'venons','2p':'venez','3p':'viennent'};
-it('assesses four families, eight individual verbs and all persons, requiring venir plus de or d’ and an infinitive',async()=>{
+it('assesses four families, ten individual verbs and all persons, requiring venir plus de or d’ and an infinitive',async()=>{
  const expansion=read('generated/french-v3-passe-recent-production-expansion.json') as DraftExpansion;
- expect(rows).toHaveLength(144);expect(lessons).toHaveLength(12);
+ expect(rows).toHaveLength(168);expect(lessons).toHaveLength(14);
  const facet=(r:typeof rows[number])=>conjugationFacet('produire_passe_recent',{verb:r.verb,tense:'passe_recent',person:r.person});
- expect(new Set(rows.map(facet)).size).toBe(12);
+ expect(new Set(rows.map(facet)).size).toBe(14);
  for(const key of new Set(rows.map(facet))){const cases=rows.filter(r=>facet(r)===key);expect(cases).toHaveLength(12);expect(new Set(cases.map(r=>r.person))).toEqual(new Set(PERSONS));}
  for(const [i,row] of rows.entries()){
-  expect(row.answer).toBe(`${venir[row.person]} ${/^[aeioué]/.test(row.verb)?'d’':'de '}${row.verb}`);
+  expect(row.answer).toBe(`${venir[row.person]} ${/^[aeiouéê]/.test(row.verb)?'d’':'de '}${row.verb}`);
   const item=expansion.items[i].item,spec={validatorType:item.validatorType,correctAnswer:item.correctAnswer,config:item.validatorConfig};
   expect((await validateAnswer(row.answer,spec)).pass).toBe(true);
   expect((await validateAnswer(`${venir[row.person]} ${row.verb}`,spec)).pass).toBe(false);
   expect((await validateAnswer(`${venir[row.person]} de terminé`,spec)).pass).toBe(false);
+  if(row.verb==='être'||row.verb==='avoir')expect((await validateAnswer(`${venir[row.person]} de ${row.verb}`,spec)).pass).toBe(false);
   if(row.verb==='venir')expect((await validateAnswer(row.answer.replace('de venir','devenir'),spec)).pass).toBe(false);
   // Je and tu share viens: five distinct surface responses, not six.
   expect(writtenGuessingFloor(item)).toBeCloseTo(1/5);

@@ -1,0 +1,47 @@
+import type {Person} from '@/lib/linguistic/conjugation';
+/** Recent events or transitions, not timeless properties. Passive complements
+ * are supplied; their agreement is not scored as part of this verb-form task. */
+export const PASSE_RECENT_STATE_CONTEXTS:readonly [string,Person,string][]=[
+ ['être','1s','Je ___ invité à la rencontre.'],
+ ['être','2s','Tu ___ reçu par la directrice.'],
+ ['être','3s','La joueuse ___ félicitée par son équipe.'],
+ ['être','1p','Nous ___ avertis du changement de salle.'],
+ ['être','2p','Vous ___ appelés au bureau.'],
+ ['être','3p','Les équipes ___ présentées au public.'],
+ ['être','1s','Je ___ choisi pour lire mon texte.'],
+ ['être','2s','Tu ___ inscrit au tournoi.'],
+ ['être','3s','La porte ___ repeinte en bleu.'],
+ ['être','1p','Nous ___ informés de la nouvelle date.'],
+ ['être','2p','Vous ___ interrogés sur votre projet.'],
+ ['être','3p','Les résultats ___ affichés dans le couloir.'],
+ ['avoir','1s','Je ___ une réponse à ma question.'],
+ ['avoir','2s','Tu ___ douze ans.'],
+ ['avoir','3s','Clara ___ le premier prix.'],
+ ['avoir','1p','Nous ___ un appel de nos correspondants.'],
+ ['avoir','2p','Vous ___ une réunion avec le professeur.'],
+ ['avoir','3p','Les voisins ___ une surprise.'],
+ ['avoir','1s','Je ___ une idée pour notre affiche.'],
+ ['avoir','2s','Tu ___ un message de ton cousin.'],
+ ['avoir','3s','L’école ___ la visite d’une autrice.'],
+ ['avoir','1p','Nous ___ le résultat du concours.'],
+ ['avoir','2p','Vous ___ un entretien avec la responsable.'],
+ ['avoir','3p','Les enfants ___ une explication sur les règles.'],
+];
+export const PASSE_RECENT_STATE_GUIDED:Readonly<Record<string,Readonly<Record<Person,string>>>>={
+ 'être':{
+  '1s':'Je ___ désigné pour distribuer les cahiers.',
+  '2s':'Tu ___ accueilli par les bénévoles.',
+  '3s':'La bibliothèque ___ rénovée.',
+  '1p':'Nous ___ réunis dans la cour.',
+  '2p':'Vous ___ prévenus de l’orage.',
+  '3p':'Les affiches ___ installées près de l’entrée.',
+ },
+ 'avoir':{
+  '1s':'Je ___ un rendez-vous avec le conseiller.',
+  '2s':'Tu ___ un moment de doute.',
+  '3s':'Notre classe ___ un cours de musique.',
+  '1p':'Nous ___ de bonnes nouvelles du refuge.',
+  '2p':'Vous ___ une discussion avec les organisateurs.',
+  '3p':'Les gagnants ___ leurs billets pour le spectacle.',
+ },
+};

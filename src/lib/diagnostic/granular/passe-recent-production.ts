@@ -1,3 +1,4 @@
+import {PASSE_RECENT_STATE_CONTEXTS,PASSE_RECENT_STATE_GUIDED} from './passe-recent-state-contexts';
 import {PASSE_RECENT_ACTION_VERBS,PASSE_RECENT_ACTION_CONTEXTS,recentActionSentence} from './passe-recent-action-contexts';
 import {conjugate,PERSONS,type Person} from '@/lib/linguistic/conjugation';
 import {CONJUGATION_TEACHING_CASES} from './conjugation-teaching';
@@ -54,15 +55,16 @@ const contexts:readonly [string,Person,string][]=[
  ['commencer','2p','Vous ___ la lecture de la consigne.'],
  ['lancer','3p','Les enfants ___ les confettis en l’air.'],
 ];
-export const PASSE_RECENT_APPLICATIONS= [...contexts,...PASSE_RECENT_ACTION_CONTEXTS].map(([verb,person,sentence])=>({verb,person,sentence,answer:conjugate(verb,'passe_recent',person)}));
+export const PASSE_RECENT_APPLICATIONS= [...contexts,...PASSE_RECENT_ACTION_CONTEXTS,...PASSE_RECENT_STATE_CONTEXTS].map(([verb,person,sentence])=>({verb,person,sentence,answer:conjugate(verb,'passe_recent',person)}));
 const labels={'1s':'je','2s':'tu','3s':'il / elle','1p':'nous','2p':'vous','3p':'ils / elles'};
-export const PASSE_RECENT_PRODUCTION_TEACHING:readonly TargetTeachingContent[]=CONJUGATION_TEACHING_CASES.filter(model=>model.key.startsWith('pattern:')||PASSE_RECENT_ACTION_VERBS.has(model.model)).map(model=>{
+export const PASSE_RECENT_PRODUCTION_TEACHING:readonly TargetTeachingContent[]=CONJUGATION_TEACHING_CASES.filter(model=>model.key.startsWith('pattern:')||PASSE_RECENT_ACTION_VERBS.has(model.model)||Object.hasOwn(PASSE_RECENT_STATE_GUIDED,model.model)).map(model=>{
  const family=model.key.startsWith('pattern:');
- const practice=model.cases.map((row,i)=>{
+ const cases=model.cases.map(row=>({...row,sentence:PASSE_RECENT_STATE_GUIDED[model.model]?.[row.person]??row.sentence}));
+ const practice=cases.map((row,i)=>{
   const answerFr=conjugate(row.verb,'passe_recent',row.person),sentence=conjugationSentenceGap(recentActionSentence(row.sentence),answerFr);
   return {id:`passe-recent:${model.key}:guided-${i}`,promptFr:`Complète avec ${row.verb} au passé récent. Écris le groupe verbal manquant : ${sentence}`,answerFr,hintFr:`Conjugue venir au présent avec le sujet, puis écris de ou d’ et ${row.verb} à l’infinitif.`,explanationFr:`${sentence.replace('___',answerFr)} L’action est présentée comme terminée depuis peu. ${row.verb} reste à l’infinitif.`};
  });
- const first=model.cases[0],answer=conjugate(first.verb,'passe_recent',first.person);
+ const first=cases[0],answer=conjugate(first.verb,'passe_recent',first.person);
  const steps:TargetTeachingContent['steps']=[
   {exampleFr:conjugationSentenceGap(recentActionSentence(first.sentence),answer).replace('___',answer),explanationFr:`L’action est déjà terminée, mais elle est encore proche du moment où l’on parle. ${answer} utilise venir au présent, suivi de de et d’un infinitif. Cette construction s’appelle le passé récent.`},
   {exampleFr:PERSONS.map(person=>`${labels[person]} : ${conjugate(model.model,'passe_recent',person)}`).join('\n'),explanationFr:'Seul venir change avec le sujet : viens, viens, vient, venons, venez, viennent. Le second verbe garde sa forme du dictionnaire, l’infinitif. Ne le conjugue pas au présent et ne le remplace pas par un participe passé.'},

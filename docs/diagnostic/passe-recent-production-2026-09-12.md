@@ -23,3 +23,13 @@ Prepared revision 12 now contains 209 of 542 targets and 3,844 scoped probes. Al
 The six remaining individual passé récent targets require further authoring. The frozen 197-target release candidate is unaffected by these changes.
 
 All twelve targeted lesson journeys also pass against the current candidate: one deliberately incorrect guided response per lesson, separate correct independent checks, preserved reload state, and no guided answers counted as independent evidence.
+
+## Être and avoir in recent events
+
+The next draft adds twelve application contexts and six separate guided exercises for each of être and avoir. The passé récent catalogue now has fourteen targets, fourteen lessons and 168 applications. Earlier application IDs and ordering remain unchanged. Être uses recent passive events with the participle already supplied; the questions do not assess passive agreement. Avoir uses recent events, receipts and changes of state. Neither set claims to assess every use of its verb.
+
+Elision checks accept d’être and d’avoir and reject de être and de avoir. The supplied infinitive and tense still limit the evidence to controlled production of this construction.
+
+Prepared revision 12 contains 211 of 542 graph targets and 3,884 scoped probes. All 566 granular tests, TypeScript, scoped command journeys and publication preflight pass. A read-only compatibility audit from the published 197-target candidate confirms fourteen added targets while preserving its 63 diagnostic observations, four refinements, answer origins, exposure and active time. It does not migrate a student. All fourteen targeted lesson journeys also pass, including a deliberately wrong guided answer, a fresh independent check and preserved state after reload. These isolated server-command fixtures are not browser or educational calibration evidence.
+
+Pouvoir, vouloir, savoir and devoir remain to be authored for this construction. Full graph coverage and educational calibration remain unfinished. This draft is not imported, published or deployed; the frozen 197-target candidate is unchanged.
