@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { hasStudentBackend, useStudentState } from "@/lib/student-store";
+import { hasStudentBackend, retryStudentHydration, useStudentState } from "@/lib/student-store";
 
 const ALWAYS_AVAILABLE = new Set([
   "/student/onboarding",
@@ -50,6 +50,12 @@ export function StudentAssessmentGate({ children, ownerKey }: { children: React.
     if (destination) router.replace(destination);
   }, [destination, router]);
 
+  if (state.hydrationError) {
+    return <div role="alert" className="space-y-3">
+      <p>Impossible de charger ton parcours pour le moment. Réessaie pour retrouver tes résultats et tes leçons.</p>
+      <button type="button" className="rounded-md border border-input px-4 py-2 text-sm font-medium" onClick={() => void retryStudentHydration()}>Réessayer</button>
+    </div>;
+  }
   if (!state.hydrated || destination) {
     return <p className="text-sm text-muted-foreground">Préparation de ton parcours…</p>;
   }

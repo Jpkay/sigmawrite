@@ -35,8 +35,8 @@ const EMPTY = EMPTY_STUDENT_STATE;
 
 /** Strips runtime-only fields before persisting the document. */
 function toDocument(state: StudentState): Omit<StudentState, "hydrated"> {
-  const { hydrated: _h, ...doc } = state;
-  void _h;
+  const { hydrated: _h, hydrationError: _error, ...doc } = state;
+  void _h; void _error;
   return doc;
 }
 
@@ -87,12 +87,22 @@ async function hydrate(version: number) {
     const { loadStudentState } = await import("@/lib/actions/student");
     const data = await loadStudentState();
     if (version !== hydrationVersion) return;
-    snapshot = { ...EMPTY, ...data, hydrated: true };
+    snapshot = { ...EMPTY, ...data, hydrated: true, hydrationError: false };
   } catch {
     if (version !== hydrationVersion) return;
-    snapshot = { ...EMPTY, hydrated: true };
+    snapshot = { ...(snapshot ?? EMPTY), hydrated: false, hydrationError: true };
   }
   notify();
+}
+
+/** A failed fetch is not evidence that the student has no saved profile. */
+export function retryStudentHydration(): Promise<void> {
+  if (!snapshot?.hydrationError) return ensureHydrated();
+  hydratePromise = null;
+  snapshot = { ...snapshot, hydrated: false, hydrationError: false };
+  const pending = ensureHydrated();
+  notify();
+  return pending;
 }
 
 function persistLocal(state: StudentState) {
@@ -113,7 +123,7 @@ function save(state: StudentState) {
 
 /** Replace the cache with a server-authoritative relational snapshot. */
 export function replaceStudentState(state: Omit<StudentState, "hydrated">): StudentState {
-  const next = { ...state, hydrated: true };
+  const next = { ...state, hydrated: true, hydrationError: false };
   save(next);
   return next;
 }

@@ -39,6 +39,7 @@ export type DiagnosticSectionProfile = {
 
 export type StudentState = {
   hydrated: boolean;
+  hydrationError?: boolean;
   onboarded: boolean;
   grade: number | null;
   frenchBackground: string | null;
