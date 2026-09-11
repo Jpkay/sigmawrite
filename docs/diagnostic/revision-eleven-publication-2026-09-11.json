@@ -1,5 +1,5 @@
 {
-  "status": "published_candidate_results_verified_learning_journey_running_not_activated",
+  "status": "activated_and_publicly_verified",
   "sourceCommit": "0657d2a6",
   "frozenWorkspace": "/Users/jean-philippekayobotsi/.codex/release-workspaces/sigmawrite-r11-0657d2a6",
   "bankKey": "french-diagnostic-bank-v3-r11",
@@ -7,7 +7,7 @@
   "expectedBankItems": 5788,
   "preparedScope": 197,
   "plannedReleaseKey": "french-granular-diagnostic-v12",
-  "currentPublicRelease": "french-granular-diagnostic-v11",
+  "currentPublicRelease": "french-granular-diagnostic-v12",
   "candidateUrl": "https://sigmawrite-ok6vwt8wr-jpkays-projects.vercel.app",
   "technicalChecks": {
     "granularTests": 553,
@@ -1097,9 +1097,9 @@
     "sessionId": "c325caff-334d-45db-ad27-0b3e5e7ccbec"
   },
   "remaining": [
-    "Complete the fresh full diagnostic-to-results-to-lesson browser journey",
-    "Promote only after verification and check public behavior",
-    "Continue full graph question coverage and owner review"
+    "Continue full graph question coverage and exact-target teaching",
+    "Resolve remaining verb-specific boundary routing contrast",
+    "Complete educational calibration and owner review"
   ],
   "bankId": "5116d841-302c-41bd-a025-350bfffb1986",
   "lastObservedImportedMemberships": 5788,
@@ -1132,10 +1132,78 @@
       "mastered": 0,
       "missing": 0,
       "fragile": 0,
-      "uncertain": 19,
-      "unknown": 523
+      "uncertain": 20,
+      "unknown": 522
     },
     "findings": [],
     "limitation": "Technical consistency audit, not psychometric validation. Diagnostic counts exclude later refinements; reported mode evidence may include them."
+  },
+  "fullBrowserLearning": {
+    "sessionId": "c325caff-334d-45db-ad27-0b3e5e7ccbec",
+    "contentId": "french-v3-teaching:canonical-sentence:recognition",
+    "skillId": "construction_phrase_canonique::reading-analysis",
+    "initialChecks": [
+      {
+        "skillId": "construction_phrase_canonique::reading-analysis",
+        "questionId": "v3-canonical-sentence:recognition-12",
+        "correct": false
+      },
+      {
+        "skillId": "construction_phrase_canonique::reading-analysis",
+        "questionId": "v3-canonical-sentence:recognition-1",
+        "correct": false
+      },
+      {
+        "skillId": "construction_phrase_canonique::reading-analysis",
+        "questionId": "v3-canonical-sentence:recognition-10",
+        "correct": false
+      }
+    ],
+    "practiceAnswers": 6,
+    "independentQuestion": "v3-canonical-sentence:recognition-11",
+    "guidedEvidenceIsolated": true,
+    "refinementSaved": true,
+    "reloadPassed": true
+  },
+  "fullBrowserReview": {
+    "sessionId": "c325caff-334d-45db-ad27-0b3e5e7ccbec",
+    "answers": 62,
+    "wrong": 13,
+    "submittedAnswersVerified": true,
+    "errorsFilter": true,
+    "reload": true
+  },
+  "activation": {
+    "deploymentId": "dpl_kBk2uZ87bZNVqXDC8GTXMP7pewh9",
+    "promotion": "succeeded",
+    "productionDefaultEnvironment": "french-granular-diagnostic-v12",
+    "fullBrowserVerifierExitCode": 0,
+    "publicDefault": {
+      "sessionId": "190a6492-a2a2-418b-9875-355604d0b633",
+      "releaseId": "23f45718-cefe-4948-9f21-43c334ab7fa2",
+      "scope": 197,
+      "defaultSelectedByApplication": true,
+      "reloadPreservedSession": true
+    },
+    "publicDemo": {
+      "onboardingRedirect": "/student/lessons",
+      "lessons": 11,
+      "firstLessonOpened": true,
+      "diagnosticAnswers": 48,
+      "wrongAnswers": 17,
+      "verifierExitCode": 0
+    },
+    "pinnedStudentPathway": {
+      "base": "https://app.trouvetaplume.com",
+      "areas": [
+        "grammar",
+        "reading_comprehension",
+        "spelling",
+        "conjugation",
+        "grammar"
+      ],
+      "activities": 5
+    },
+    "publicDeploymentInspection": "Ready; sigmawrite.vercel.app resolves to dpl_kBk2uZ87bZNVqXDC8GTXMP7pewh9"
   }
 }

@@ -4,8 +4,7 @@ Updated 2026-09-12. French only; Allotey is excluded. This document distinguishe
 
 ## Current delivery state
 
-- Public checkpoint: release v11, 172 supported targets. See `revision-ten-publication-2026-09-11.json` for the complete assessment-to-learning journey and public verification.
-- Frozen candidate: release v12, 197 supported targets, source `0657d2a6`. Its full browser journey is running; it is not yet the public default. See `revision-eleven-publication-2026-09-11.json`.
+- Public release: v12, 197 supported targets, frozen source `0657d2a6`. The complete browser assessment, lesson practice, independent check, answer review and public default/demo/pinned-session checks pass. See `revision-eleven-publication-2026-09-11.json`. The preceding v11 checkpoint remains documented in `revision-ten-publication-2026-09-11.json`.
 - Working draft: bank revision 12, 211 supported targets and 3,884 scoped probes, source `bba9541`. This includes subsequent routing work and fourteen passé récent lessons. It is not imported, published or deployed.
 - Full symbolic routing benchmark: 10/10 depth checks and 7/8 uneven-profile contrasts, with no invariant violations. The verb-specific tense-boundary contrast remains unconfirmed within the initial sitting budget. This is not educational calibration.
 
@@ -25,7 +24,7 @@ These categories partition the graph; they are not publication or approval label
 
 ## Next implementation packages
 
-1. Complete the frozen candidate's browser assessment, answer review, lesson practice and independent-check verification. Audit the persisted result, then activate that exact deployment and verify the public default and preserved demo account.
+1. Prepare the next version from the 211-target draft, including its newer routing changes. Keep the published v12 bundle immutable; repeat full candidate and public verification for the new version before activation. The preceding 197-target release is now publicly verified.
 2. Finish the outstanding verb-specific boundary routing case without reducing evidence thresholds or exceeding the agreed time budget. Review the result across the other uneven profiles as well. Keep untested targets unresolved and refine them during learning.
 3. Add the missing exact-target lessons, starting with regular -er/-ir and -ger/-cer patterns across imparfait, passé composé, futur simple, plus-que-parfait and conditionnel. Each needs suitable guided examples and fresh independent applications; existing form questions alone are insufficient.
 4. Review the four remaining passé récent verb targets (pouvoir, vouloir, savoir, devoir) for natural contexts before authoring. Do not mechanically create awkward forms merely to reach a coverage count. Continue subjonctif, impératif and passé simple coverage with their own usage constraints.
