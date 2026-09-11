@@ -7,7 +7,7 @@ import { StudentAssessmentGate } from "@/components/student-assessment-gate";
 
 const nav: NavItem[] = [
   { href: "/student", label: "Accueil" },
-  { href: "/student/onboarding", label: "Découverte" },
+  { href: "/student/lessons", label: "Mes leçons" },
   { href: "/student/diagnostic", label: "Diagnostic" },
   { href: "/student/dictee", label: "Dictées" },
   { href: "/student/vocabulary", label: "Vocabulaire" },

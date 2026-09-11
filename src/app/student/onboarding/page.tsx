@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowRight, Check } from "lucide-react";
 import { PageHeader } from "@/components/page";
@@ -35,6 +35,11 @@ export default function OnboardingPage() {
     : studentType === "heritage" ? "not_sure" : "french_second_language";
   const grade = gradeOverride ?? studentState.grade ?? 7;
 
+  const completed = studentState.hydrated && !!studentState.diagnostic && !studentState.diagnosticProvisional;
+  useEffect(() => {
+    if (completed) router.replace("/student/lessons");
+  }, [completed, router]);
+
   function toggleInterest(key: string) {
     setInterests((prev) =>
       prev.includes(key) ? prev.filter((k) => k !== key) : [...prev, key]
@@ -62,6 +67,8 @@ export default function OnboardingPage() {
       setPending(false);
     }
   }
+
+  if (completed) return <p>Ton diagnostic est terminé. Ouverture de tes leçons…</p>;
 
   return (
     <>
