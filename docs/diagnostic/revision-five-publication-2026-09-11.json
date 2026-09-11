@@ -1,0 +1,29 @@
+{
+  "sourceCommit": "0ac2e7d",
+  "intendedReleaseKey": "french-granular-diagnostic-v6",
+  "assessmentTargets": 154,
+  "questionCount": 2697,
+  "bank": {
+    "key": "french-diagnostic-bank-v3-r5",
+    "id": "a12f5822-68d3-4922-a0b7-fa39d35d928c",
+    "expectedItems": 5304,
+    "checksum": "sha256:41b29d8e6780f0e894f36345655f17878f679d15cf389116988bd5d584c0e2a6",
+    "importVerifiedComplete": false
+  },
+  "preparedDeployment": {
+    "id": "dpl_9SdY6mnNbgHhesssKatEtgutNsFE",
+    "url": "https://sigmawrite-5e73qstra-jpkays-projects.vercel.app",
+    "status": "Ready",
+    "promoted": false
+  },
+  "published": false,
+  "defaultActivated": false,
+  "remaining": [
+    "Wait for the existing bank import to finish; do not start another import concurrently",
+    "Verify all stored items against the frozen bank export",
+    "Publish the immutable assessment release under the authorized parallel-review policy",
+    "Verify new compound-tense questions and saved-session compatibility on deployed code",
+    "Promote the prepared deployment, update the persistent release setting, and verify application-selected default and demo preservation"
+  ],
+  "note": "Prepared from the compatibility-fixed source. The superseded 9b1c71c export must not be imported. Production remains the 126-target release. Human review and full graph implementation are still incomplete."
+}
