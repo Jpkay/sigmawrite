@@ -2,7 +2,7 @@
 
 2026-09-11. The approved French graph is unchanged. No content approvals or release.
 
-Current local rerun: 10/10 depth checks and 3/8 mixed-profile discrimination checks pass after the form-category revisit change; the strict benchmark still exits 1. Before that change, including after the skip correction, the counts were 8/10 and 2/8. The report below records earlier changes; use the current JSON report for unresolved contrasts. See `form-revisit-depth-2026-09-11.md`. These new scheduling changes are not deployed or calibrated against students.
+Current local rerun: 10/10 depth checks and 4/8 mixed-profile discrimination checks pass after form-category revisits and challenge-based branch entry; the strict benchmark still exits 1. Before those changes, including after the skip correction, the counts were 8/10 and 2/8. The report below records earlier changes; use the current JSON report for unresolved contrasts. See `form-revisit-depth-2026-09-11.md` and `branch-entry-order-2026-09-11.md`. These new scheduling changes are not deployed or calibrated against students.
 
 The previous benchmark exercises six conjugation targets. The additional
 `scripts/benchmark-full-french-diagnostic.mts` exercises all 542 proposed targets

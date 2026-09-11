@@ -680,9 +680,12 @@
       "seed": 1,
       "requiredKnownTargets": 18,
       "requiredWeakTargets": 11,
-      "knownTargetsWithEvidence": [],
+      "knownTargetsWithEvidence": [
+        "produire_pronom_cod::writing-controlled-production::construction:la",
+        "produire_pronom_cod::writing-controlled-production::construction:elision"
+      ],
       "weakTargetsWithEvidence": [
-        "ordonner_doubles_pronoms::writing-controlled-production::construction:declarative"
+        "produire_pronom_coi_personne::writing-controlled-production::construction:leur"
       ],
       "knownTargetsUnresolved": [
         "resoudre_pronom_sujet::all-receptive::text_type:narrative",
@@ -696,9 +699,7 @@
         "construction_pronom_relatif::reading-analysis",
         "construction_pronom_relatif::writing-controlled-production",
         "produire_pronom_cod::writing-controlled-production::construction:le",
-        "produire_pronom_cod::writing-controlled-production::construction:la",
         "produire_pronom_cod::writing-controlled-production::construction:les",
-        "produire_pronom_cod::writing-controlled-production::construction:elision",
         "placer_pronom_complement::writing-controlled-production::construction:finite",
         "placer_pronom_complement::writing-controlled-production::construction:infinitive",
         "placer_pronom_complement::writing-controlled-production::construction:negative",
@@ -706,19 +707,19 @@
       ],
       "weakTargetsUnresolved": [
         "produire_pronom_coi_personne::writing-controlled-production::construction:lui",
-        "produire_pronom_coi_personne::writing-controlled-production::construction:leur",
         "distinguer_pronom_cod_coi::writing-controlled-production",
         "produire_pronoms_y_en::writing-controlled-production::construction:y_place",
         "produire_pronoms_y_en::writing-controlled-production::construction:y_thing",
         "produire_pronoms_y_en::writing-controlled-production::construction:en_origin",
         "produire_pronoms_y_en::writing-controlled-production::construction:en_quantity",
         "produire_pronoms_y_en::writing-controlled-production::construction:en_thing",
+        "ordonner_doubles_pronoms::writing-controlled-production::construction:declarative",
         "ordonner_doubles_pronoms::writing-controlled-production::construction:negative",
         "ordonner_doubles_pronoms::writing-controlled-production::construction:imperative"
       ],
       "sameBranchBoundaries": [],
       "requireSameBranch": false,
-      "passed": false
+      "passed": true
     },
     {
       "profile": "lexical_vs_agreement",
@@ -729,7 +730,8 @@
         "appliquer_m_devant_m_b_p::reading-receptive"
       ],
       "weakTargetsWithEvidence": [
-        "construction_accord_nom_adjectif::reading-analysis"
+        "construction_accord_nom_adjectif::reading-analysis",
+        "construction_accord_sujet_verbe::reading-analysis::construction:adjacent"
       ],
       "knownTargetsUnresolved": [
         "segmenter_syllabes_ecrites::reading-receptive",
@@ -788,7 +790,6 @@
         "construction_accord_determinant_nom::reading-analysis",
         "construction_accord_determinant_nom::writing-controlled-production",
         "construction_accord_nom_adjectif::writing-controlled-production",
-        "construction_accord_sujet_verbe::reading-analysis::construction:adjacent",
         "construction_accord_sujet_verbe::reading-analysis::construction:separated",
         "construction_accord_sujet_verbe::reading-analysis::construction:inverted",
         "construction_accord_sujet_verbe::reading-analysis::construction:coordinated",
@@ -1504,10 +1505,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "accorder_participe_cod_antepose::writing-controlled-production::construction:pronoun",
-          "labelFr": "Accorder avec un COD antéposé — COD repris par un pronom",
+          "skillId": "produire_pronom_cod::writing-controlled-production::construction:elision",
+          "labelFr": "Employer le, la, l’ ou les — l’ devant une voyelle",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 2,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -1591,10 +1592,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "accorder_participe_cod_antepose::writing-controlled-production::construction:relative",
-          "labelFr": "Accorder avec un COD antéposé — COD repris par que",
+          "skillId": "produire_pronom_cod::writing-controlled-production::construction:la",
+          "labelFr": "Employer le, la, l’ ou les — la",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 2,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -1619,10 +1620,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "choisir_sens_polysemique::all-receptive::text_type:argumentative",
-          "labelFr": "Choisir le sens contextuel d'un mot polysémique — Texte argumentatif bref",
+          "skillId": "deduire_mot_morphologie::all-receptive::text_type:argumentative",
+          "labelFr": "Déduire un mot grâce à sa morphologie — Texte argumentatif bref",
           "strand": "comprehension_ecrite",
-          "level": 0,
+          "level": 1,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -1648,10 +1649,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "ordonner_doubles_pronoms::writing-controlled-production::construction:declarative",
-          "labelFr": "Ordonner deux pronoms compléments — Dans une phrase déclarative",
+          "skillId": "produire_pronom_coi_personne::writing-controlled-production::construction:leur",
+          "labelFr": "Employer lui ou leur — leur : plusieurs personnes",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 0,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -1662,10 +1663,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
-          "labelFr": "Réaliser l'accord sujet-verbe — Sujet proche du verbe",
+          "skillId": "construction_accord_sujet_verbe::reading-analysis::construction:adjacent",
+          "labelFr": "Analyser l'accord sujet-verbe — Sujet proche du verbe",
           "strand": "orthographe_grammaticale",
-          "level": 2,
+          "level": 1,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -1690,10 +1691,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "ordonner_doubles_pronoms::writing-controlled-production::construction:imperative",
-          "labelFr": "Ordonner deux pronoms compléments — À l’impératif affirmatif",
+          "skillId": "produire_pronom_coi_personne::writing-controlled-production::construction:lui",
+          "labelFr": "Employer lui ou leur — lui : une personne",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 0,
           "expectedKnown": true,
           "answered": 2,
           "correct": 2,
@@ -1704,11 +1705,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_imperatif::writing-controlled-production::verb:aller",
-          "labelFr": "Produire l'impératif — Conjuguer aller",
+          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
+          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
           "strand": "conjugaison",
-          "level": 1,
-          "challengeOrder": 2,
+          "level": 2,
+          "challengeOrder": 1,
           "expectedKnown": true,
           "answered": 1,
           "correct": 1,
@@ -1719,11 +1720,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_imperatif::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire l'impératif — Verbes réguliers en -er",
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
+          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
           "strand": "conjugaison",
-          "level": 1,
-          "challengeOrder": 2,
+          "level": 2,
+          "challengeOrder": 1,
           "expectedKnown": true,
           "answered": 1,
           "correct": 1,
@@ -1744,10 +1745,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 37,
-      "unsampledTargets": 505,
-      "targetsReachingMinimumItemCount": 8,
-      "targetsWithSufficientEvidenceToday": 8,
+      "sampledTargets": 33,
+      "unsampledTargets": 509,
+      "targetsReachingMinimumItemCount": 11,
+      "targetsWithSufficientEvidenceToday": 11,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -1796,21 +1797,21 @@
         },
         {
           "strand": "grammaire_syntaxe",
-          "sampledTargets": 10,
+          "sampledTargets": 7,
           "answered": 17,
-          "targetsReachingMinimumItemCount": 2,
-          "targetsWithSufficientEvidenceToday": 2,
+          "targetsReachingMinimumItemCount": 4,
+          "targetsWithSufficientEvidenceToday": 4,
           "sampledKnown": 0,
-          "sampledWeak": 10
+          "sampledWeak": 7
         },
         {
           "strand": "orthographe_grammaticale",
-          "sampledTargets": 5,
+          "sampledTargets": 4,
           "answered": 9,
-          "targetsReachingMinimumItemCount": 1,
-          "targetsWithSufficientEvidenceToday": 1,
+          "targetsReachingMinimumItemCount": 2,
+          "targetsWithSufficientEvidenceToday": 2,
           "sampledKnown": 0,
-          "sampledWeak": 5
+          "sampledWeak": 4
         },
         {
           "strand": "orthographe_lexicale",
@@ -2053,10 +2054,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "accorder_participe_cod_antepose::writing-controlled-production::construction:pronoun",
-          "labelFr": "Accorder avec un COD antéposé — COD repris par un pronom",
+          "skillId": "produire_pronom_cod::writing-controlled-production::construction:elision",
+          "labelFr": "Employer le, la, l’ ou les — l’ devant une voyelle",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 2,
           "expectedKnown": false,
           "answered": 3,
           "correct": 0,
@@ -2082,17 +2083,17 @@
           "minimumItems": 3
         },
         {
-          "skillId": "placer_pronom_complement::writing-controlled-production::construction:finite",
-          "labelFr": "Placer un pronom complément — Avant le verbe conjugué",
+          "skillId": "identifier_complement_direct::reading-receptive",
+          "labelFr": "Identifier un complément direct",
           "strand": "grammaire_syntaxe",
-          "level": 4,
+          "level": 1,
           "expectedKnown": false,
-          "answered": 1,
+          "answered": 3,
           "correct": 0,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
+          "withinOccasionResolved": true,
+          "probability": 0.0023647650014779796,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -2108,20 +2109,6 @@
           "withinOccasionResolved": false,
           "probability": 0.09523809523809527,
           "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "distinguer_pronom_cod_coi::writing-controlled-production",
-          "labelFr": "Choisir entre COD et COI",
-          "strand": "grammaire_syntaxe",
-          "level": 3,
-          "expectedKnown": false,
-          "answered": 2,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.010958904109589048,
-          "countedEvidence": 2,
           "minimumItems": 3
         },
         {
@@ -2154,38 +2141,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_pronom_cod::writing-controlled-production::construction:elision",
-          "labelFr": "Employer le, la, l’ ou les — l’ devant une voyelle",
-          "strand": "grammaire_syntaxe",
-          "level": 2,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
           "skillId": "employer_accent_circonflexe::reading-receptive",
           "labelFr": "Employer l'accent circonflexe",
           "strand": "orthographe_lexicale",
           "level": 0,
-          "expectedKnown": false,
-          "answered": 2,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.017467248908296946,
-          "countedEvidence": 2,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "identifier_complement_direct::reading-receptive",
-          "labelFr": "Identifier un complément direct",
-          "strand": "grammaire_syntaxe",
-          "level": 1,
           "expectedKnown": false,
           "answered": 2,
           "correct": 0,
@@ -2225,31 +2184,31 @@
           "minimumItems": 3
         },
         {
-          "skillId": "placer_pronom_complement::writing-controlled-production::construction:imperative",
-          "labelFr": "Placer un pronom complément — À l’impératif affirmatif",
+          "skillId": "produire_pronom_cod::writing-controlled-production::construction:la",
+          "labelFr": "Employer le, la, l’ ou les — la",
           "strand": "grammaire_syntaxe",
-          "level": 4,
+          "level": 2,
           "expectedKnown": false,
-          "answered": 1,
+          "answered": 3,
           "correct": 0,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
+          "withinOccasionResolved": true,
+          "probability": 0.001164991990680065,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
-          "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
-          "labelFr": "Réaliser l'accord sujet-verbe — Sujet proche du verbe",
+          "skillId": "construction_accord_sujet_verbe::reading-analysis::construction:adjacent",
+          "labelFr": "Analyser l'accord sujet-verbe — Sujet proche du verbe",
           "strand": "orthographe_grammaticale",
-          "level": 2,
+          "level": 1,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 3,
           "correct": 0,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.017467248908296946,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.0023647650014779796,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -2281,34 +2240,6 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_pronom_cod::writing-controlled-production::construction:la",
-          "labelFr": "Employer le, la, l’ ou les — la",
-          "strand": "grammaire_syntaxe",
-          "level": 2,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "construction_accord_sujet_verbe::reading-analysis::construction:adjacent",
-          "labelFr": "Analyser l'accord sujet-verbe — Sujet proche du verbe",
-          "strand": "orthographe_grammaticale",
-          "level": 1,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.11764705882352941,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
           "skillId": "reconnaitre_auxiliaire::reading-receptive",
           "labelFr": "Reconnaître un auxiliaire",
           "strand": "conjugaison",
@@ -2323,11 +2254,25 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_imperatif::writing-controlled-production::verb:aller",
-          "labelFr": "Produire l'impératif — Conjuguer aller",
+          "skillId": "produire_pronom_coi_personne::writing-controlled-production::construction:leur",
+          "labelFr": "Employer lui ou leur — leur : plusieurs personnes",
+          "strand": "grammaire_syntaxe",
+          "level": 0,
+          "expectedKnown": false,
+          "answered": 2,
+          "correct": 0,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.010958904109589048,
+          "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
+          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
           "strand": "conjugaison",
-          "level": 1,
-          "challengeOrder": 2,
+          "level": 2,
+          "challengeOrder": 1,
           "expectedKnown": false,
           "answered": 1,
           "correct": 0,
@@ -2338,11 +2283,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_imperatif::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire l'impératif — Verbes réguliers en -er",
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
+          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
           "strand": "conjugaison",
-          "level": 1,
-          "challengeOrder": 2,
+          "level": 2,
+          "challengeOrder": 1,
           "expectedKnown": false,
           "answered": 1,
           "correct": 0,
@@ -2617,10 +2562,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "accorder_participe_cod_antepose::writing-controlled-production::construction:pronoun",
-          "labelFr": "Accorder avec un COD antéposé — COD repris par un pronom",
+          "skillId": "produire_pronom_cod::writing-controlled-production::construction:elision",
+          "labelFr": "Employer le, la, l’ ou les — l’ devant une voyelle",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 2,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -2704,10 +2649,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "accorder_participe_cod_antepose::writing-controlled-production::construction:relative",
-          "labelFr": "Accorder avec un COD antéposé — COD repris par que",
+          "skillId": "produire_pronom_cod::writing-controlled-production::construction:la",
+          "labelFr": "Employer le, la, l’ ou les — la",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 2,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -2732,10 +2677,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "choisir_sens_polysemique::all-receptive::text_type:argumentative",
-          "labelFr": "Choisir le sens contextuel d'un mot polysémique — Texte argumentatif bref",
+          "skillId": "deduire_mot_morphologie::all-receptive::text_type:argumentative",
+          "labelFr": "Déduire un mot grâce à sa morphologie — Texte argumentatif bref",
           "strand": "comprehension_ecrite",
-          "level": 0,
+          "level": 1,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -2761,10 +2706,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "ordonner_doubles_pronoms::writing-controlled-production::construction:declarative",
-          "labelFr": "Ordonner deux pronoms compléments — Dans une phrase déclarative",
+          "skillId": "produire_pronom_coi_personne::writing-controlled-production::construction:leur",
+          "labelFr": "Employer lui ou leur — leur : plusieurs personnes",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 0,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -2775,10 +2720,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
-          "labelFr": "Réaliser l'accord sujet-verbe — Sujet proche du verbe",
+          "skillId": "construction_accord_sujet_verbe::reading-analysis::construction:adjacent",
+          "labelFr": "Analyser l'accord sujet-verbe — Sujet proche du verbe",
           "strand": "orthographe_grammaticale",
-          "level": 2,
+          "level": 1,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -2803,10 +2748,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "ordonner_doubles_pronoms::writing-controlled-production::construction:imperative",
-          "labelFr": "Ordonner deux pronoms compléments — À l’impératif affirmatif",
+          "skillId": "produire_pronom_coi_personne::writing-controlled-production::construction:lui",
+          "labelFr": "Employer lui ou leur — lui : une personne",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 0,
           "expectedKnown": true,
           "answered": 2,
           "correct": 2,
@@ -2817,11 +2762,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_imperatif::writing-controlled-production::verb:aller",
-          "labelFr": "Produire l'impératif — Conjuguer aller",
+          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
+          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
           "strand": "conjugaison",
-          "level": 1,
-          "challengeOrder": 2,
+          "level": 2,
+          "challengeOrder": 1,
           "expectedKnown": false,
           "answered": 1,
           "correct": 0,
@@ -2832,11 +2777,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_imperatif::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire l'impératif — Verbes réguliers en -er",
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
+          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
           "strand": "conjugaison",
-          "level": 1,
-          "challengeOrder": 2,
+          "level": 2,
+          "challengeOrder": 1,
           "expectedKnown": true,
           "answered": 1,
           "correct": 1,
@@ -3111,10 +3056,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "accorder_participe_cod_antepose::writing-controlled-production::construction:pronoun",
-          "labelFr": "Accorder avec un COD antéposé — COD repris par un pronom",
+          "skillId": "produire_pronom_cod::writing-controlled-production::construction:elision",
+          "labelFr": "Employer le, la, l’ ou les — l’ devant une voyelle",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 2,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -3198,10 +3143,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "accorder_participe_cod_antepose::writing-controlled-production::construction:relative",
-          "labelFr": "Accorder avec un COD antéposé — COD repris par que",
+          "skillId": "produire_pronom_cod::writing-controlled-production::construction:la",
+          "labelFr": "Employer le, la, l’ ou les — la",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 2,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -3226,10 +3171,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "choisir_sens_polysemique::all-receptive::text_type:argumentative",
-          "labelFr": "Choisir le sens contextuel d'un mot polysémique — Texte argumentatif bref",
+          "skillId": "deduire_mot_morphologie::all-receptive::text_type:argumentative",
+          "labelFr": "Déduire un mot grâce à sa morphologie — Texte argumentatif bref",
           "strand": "comprehension_ecrite",
-          "level": 0,
+          "level": 1,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -3255,10 +3200,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "ordonner_doubles_pronoms::writing-controlled-production::construction:declarative",
-          "labelFr": "Ordonner deux pronoms compléments — Dans une phrase déclarative",
+          "skillId": "produire_pronom_coi_personne::writing-controlled-production::construction:leur",
+          "labelFr": "Employer lui ou leur — leur : plusieurs personnes",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 0,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -3269,10 +3214,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
-          "labelFr": "Réaliser l'accord sujet-verbe — Sujet proche du verbe",
+          "skillId": "construction_accord_sujet_verbe::reading-analysis::construction:adjacent",
+          "labelFr": "Analyser l'accord sujet-verbe — Sujet proche du verbe",
           "strand": "orthographe_grammaticale",
-          "level": 2,
+          "level": 1,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -3297,10 +3242,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "ordonner_doubles_pronoms::writing-controlled-production::construction:imperative",
-          "labelFr": "Ordonner deux pronoms compléments — À l’impératif affirmatif",
+          "skillId": "produire_pronom_coi_personne::writing-controlled-production::construction:lui",
+          "labelFr": "Employer lui ou leur — lui : une personne",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 0,
           "expectedKnown": true,
           "answered": 2,
           "correct": 2,
@@ -3311,11 +3256,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_imperatif::writing-controlled-production::verb:aller",
-          "labelFr": "Produire l'impératif — Conjuguer aller",
+          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
+          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
           "strand": "conjugaison",
-          "level": 1,
-          "challengeOrder": 2,
+          "level": 2,
+          "challengeOrder": 1,
           "expectedKnown": true,
           "answered": 1,
           "correct": 1,
@@ -3326,11 +3271,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_imperatif::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire l'impératif — Verbes réguliers en -er",
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
+          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
           "strand": "conjugaison",
-          "level": 1,
-          "challengeOrder": 2,
+          "level": 2,
+          "challengeOrder": 1,
           "expectedKnown": true,
           "answered": 1,
           "correct": 1,
@@ -3605,10 +3550,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "accorder_participe_cod_antepose::writing-controlled-production::construction:pronoun",
-          "labelFr": "Accorder avec un COD antéposé — COD repris par un pronom",
+          "skillId": "produire_pronom_cod::writing-controlled-production::construction:elision",
+          "labelFr": "Employer le, la, l’ ou les — l’ devant une voyelle",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 2,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -3692,10 +3637,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "accorder_participe_cod_antepose::writing-controlled-production::construction:relative",
-          "labelFr": "Accorder avec un COD antéposé — COD repris par que",
+          "skillId": "produire_pronom_cod::writing-controlled-production::construction:la",
+          "labelFr": "Employer le, la, l’ ou les — la",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 2,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -3720,10 +3665,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "choisir_sens_polysemique::all-receptive::text_type:argumentative",
-          "labelFr": "Choisir le sens contextuel d'un mot polysémique — Texte argumentatif bref",
+          "skillId": "deduire_mot_morphologie::all-receptive::text_type:argumentative",
+          "labelFr": "Déduire un mot grâce à sa morphologie — Texte argumentatif bref",
           "strand": "comprehension_ecrite",
-          "level": 0,
+          "level": 1,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -3749,10 +3694,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "ordonner_doubles_pronoms::writing-controlled-production::construction:declarative",
-          "labelFr": "Ordonner deux pronoms compléments — Dans une phrase déclarative",
+          "skillId": "produire_pronom_coi_personne::writing-controlled-production::construction:leur",
+          "labelFr": "Employer lui ou leur — leur : plusieurs personnes",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 0,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -3763,10 +3708,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
-          "labelFr": "Réaliser l'accord sujet-verbe — Sujet proche du verbe",
+          "skillId": "construction_accord_sujet_verbe::reading-analysis::construction:adjacent",
+          "labelFr": "Analyser l'accord sujet-verbe — Sujet proche du verbe",
           "strand": "orthographe_grammaticale",
-          "level": 2,
+          "level": 1,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -3791,10 +3736,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "ordonner_doubles_pronoms::writing-controlled-production::construction:imperative",
-          "labelFr": "Ordonner deux pronoms compléments — À l’impératif affirmatif",
+          "skillId": "produire_pronom_coi_personne::writing-controlled-production::construction:lui",
+          "labelFr": "Employer lui ou leur — lui : une personne",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 0,
           "expectedKnown": true,
           "answered": 2,
           "correct": 2,
@@ -3805,11 +3750,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_imperatif::writing-controlled-production::verb:aller",
-          "labelFr": "Produire l'impératif — Conjuguer aller",
+          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
+          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
           "strand": "conjugaison",
-          "level": 1,
-          "challengeOrder": 2,
+          "level": 2,
+          "challengeOrder": 1,
           "expectedKnown": true,
           "answered": 1,
           "correct": 1,
@@ -3820,11 +3765,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_imperatif::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire l'impératif — Verbes réguliers en -er",
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
+          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
           "strand": "conjugaison",
-          "level": 1,
-          "challengeOrder": 2,
+          "level": 2,
+          "challengeOrder": 1,
           "expectedKnown": true,
           "answered": 1,
           "correct": 1,
@@ -4099,10 +4044,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "accorder_participe_cod_antepose::writing-controlled-production::construction:pronoun",
-          "labelFr": "Accorder avec un COD antéposé — COD repris par un pronom",
+          "skillId": "produire_pronom_cod::writing-controlled-production::construction:elision",
+          "labelFr": "Employer le, la, l’ ou les — l’ devant une voyelle",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 2,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -4186,10 +4131,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "accorder_participe_cod_antepose::writing-controlled-production::construction:relative",
-          "labelFr": "Accorder avec un COD antéposé — COD repris par que",
+          "skillId": "produire_pronom_cod::writing-controlled-production::construction:la",
+          "labelFr": "Employer le, la, l’ ou les — la",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 2,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -4214,10 +4159,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "choisir_sens_polysemique::all-receptive::text_type:argumentative",
-          "labelFr": "Choisir le sens contextuel d'un mot polysémique — Texte argumentatif bref",
+          "skillId": "deduire_mot_morphologie::all-receptive::text_type:argumentative",
+          "labelFr": "Déduire un mot grâce à sa morphologie — Texte argumentatif bref",
           "strand": "comprehension_ecrite",
-          "level": 0,
+          "level": 1,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -4243,10 +4188,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "ordonner_doubles_pronoms::writing-controlled-production::construction:declarative",
-          "labelFr": "Ordonner deux pronoms compléments — Dans une phrase déclarative",
+          "skillId": "produire_pronom_coi_personne::writing-controlled-production::construction:leur",
+          "labelFr": "Employer lui ou leur — leur : plusieurs personnes",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 0,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -4257,10 +4202,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
-          "labelFr": "Réaliser l'accord sujet-verbe — Sujet proche du verbe",
+          "skillId": "construction_accord_sujet_verbe::reading-analysis::construction:adjacent",
+          "labelFr": "Analyser l'accord sujet-verbe — Sujet proche du verbe",
           "strand": "orthographe_grammaticale",
-          "level": 2,
+          "level": 1,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -4285,10 +4230,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "ordonner_doubles_pronoms::writing-controlled-production::construction:imperative",
-          "labelFr": "Ordonner deux pronoms compléments — À l’impératif affirmatif",
+          "skillId": "produire_pronom_coi_personne::writing-controlled-production::construction:lui",
+          "labelFr": "Employer lui ou leur — lui : une personne",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 0,
           "expectedKnown": true,
           "answered": 2,
           "correct": 2,
@@ -4299,11 +4244,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_imperatif::writing-controlled-production::verb:aller",
-          "labelFr": "Produire l'impératif — Conjuguer aller",
+          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
+          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
           "strand": "conjugaison",
-          "level": 1,
-          "challengeOrder": 2,
+          "level": 2,
+          "challengeOrder": 1,
           "expectedKnown": true,
           "answered": 1,
           "correct": 1,
@@ -4314,11 +4259,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_imperatif::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire l'impératif — Verbes réguliers en -er",
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
+          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
           "strand": "conjugaison",
-          "level": 1,
-          "challengeOrder": 2,
+          "level": 2,
+          "challengeOrder": 1,
           "expectedKnown": true,
           "answered": 1,
           "correct": 1,
@@ -4339,8 +4284,8 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 29,
-      "unsampledTargets": 513,
+      "sampledTargets": 28,
+      "unsampledTargets": 514,
       "targetsReachingMinimumItemCount": 11,
       "targetsWithSufficientEvidenceToday": 9,
       "confirmedMastered": 0,
@@ -4391,12 +4336,12 @@
         },
         {
           "strand": "grammaire_syntaxe",
-          "sampledTargets": 7,
+          "sampledTargets": 6,
           "answered": 17,
           "targetsReachingMinimumItemCount": 4,
           "targetsWithSufficientEvidenceToday": 4,
-          "sampledKnown": 6,
-          "sampledWeak": 1
+          "sampledKnown": 4,
+          "sampledWeak": 2
         },
         {
           "strand": "orthographe_grammaticale",
@@ -4593,10 +4538,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "accorder_participe_cod_antepose::writing-controlled-production::construction:pronoun",
-          "labelFr": "Accorder avec un COD antéposé — COD repris par un pronom",
+          "skillId": "produire_pronom_cod::writing-controlled-production::construction:elision",
+          "labelFr": "Employer le, la, l’ ou les — l’ devant une voyelle",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 2,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -4680,10 +4625,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "accorder_participe_cod_antepose::writing-controlled-production::construction:relative",
-          "labelFr": "Accorder avec un COD antéposé — COD repris par que",
+          "skillId": "produire_pronom_cod::writing-controlled-production::construction:la",
+          "labelFr": "Employer le, la, l’ ou les — la",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 2,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -4708,10 +4653,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "choisir_sens_polysemique::all-receptive::text_type:argumentative",
-          "labelFr": "Choisir le sens contextuel d'un mot polysémique — Texte argumentatif bref",
+          "skillId": "deduire_mot_morphologie::all-receptive::text_type:argumentative",
+          "labelFr": "Déduire un mot grâce à sa morphologie — Texte argumentatif bref",
           "strand": "comprehension_ecrite",
-          "level": 0,
+          "level": 1,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -4737,10 +4682,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "ordonner_doubles_pronoms::writing-controlled-production::construction:declarative",
-          "labelFr": "Ordonner deux pronoms compléments — Dans une phrase déclarative",
+          "skillId": "produire_pronom_coi_personne::writing-controlled-production::construction:leur",
+          "labelFr": "Employer lui ou leur — leur : plusieurs personnes",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 0,
           "expectedKnown": false,
           "answered": 3,
           "correct": 0,
@@ -4751,10 +4696,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
-          "labelFr": "Réaliser l'accord sujet-verbe — Sujet proche du verbe",
+          "skillId": "construction_accord_sujet_verbe::reading-analysis::construction:adjacent",
+          "labelFr": "Analyser l'accord sujet-verbe — Sujet proche du verbe",
           "strand": "orthographe_grammaticale",
-          "level": 2,
+          "level": 1,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -4762,20 +4707,6 @@
           "withinOccasionResolved": false,
           "probability": 0.9790162833641095,
           "countedEvidence": 3,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "placer_pronom_complement::writing-controlled-production::construction:finite",
-          "labelFr": "Placer un pronom complément — Avant le verbe conjugué",
-          "strand": "grammaire_syntaxe",
-          "level": 4,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -4793,10 +4724,25 @@
           "minimumItems": 3
         },
         {
-          "skillId": "placer_pronom_complement::writing-controlled-production::construction:imperative",
-          "labelFr": "Placer un pronom complément — À l’impératif affirmatif",
+          "skillId": "produire_pronom_coi_personne::writing-controlled-production::construction:lui",
+          "labelFr": "Employer lui ou leur — lui : une personne",
           "strand": "grammaire_syntaxe",
-          "level": 4,
+          "level": 0,
+          "expectedKnown": false,
+          "answered": 2,
+          "correct": 0,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.010958904109589048,
+          "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
+          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
+          "strand": "conjugaison",
+          "level": 2,
+          "challengeOrder": 1,
           "expectedKnown": true,
           "answered": 1,
           "correct": 1,
@@ -4807,26 +4753,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_imperatif::writing-controlled-production::verb:aller",
-          "labelFr": "Produire l'impératif — Conjuguer aller",
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
+          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
           "strand": "conjugaison",
-          "level": 1,
-          "challengeOrder": 2,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "produire_imperatif::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire l'impératif — Verbes réguliers en -er",
-          "strand": "conjugaison",
-          "level": 1,
-          "challengeOrder": 2,
+          "level": 2,
+          "challengeOrder": 1,
           "expectedKnown": true,
           "answered": 1,
           "correct": 1,
@@ -4847,10 +4778,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 30,
-      "unsampledTargets": 512,
-      "targetsReachingMinimumItemCount": 10,
-      "targetsWithSufficientEvidenceToday": 9,
+      "sampledTargets": 29,
+      "unsampledTargets": 513,
+      "targetsReachingMinimumItemCount": 11,
+      "targetsWithSufficientEvidenceToday": 10,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -4908,12 +4839,12 @@
         },
         {
           "strand": "orthographe_grammaticale",
-          "sampledTargets": 5,
+          "sampledTargets": 4,
           "answered": 9,
-          "targetsReachingMinimumItemCount": 1,
-          "targetsWithSufficientEvidenceToday": 1,
+          "targetsReachingMinimumItemCount": 2,
+          "targetsWithSufficientEvidenceToday": 2,
           "sampledKnown": 0,
-          "sampledWeak": 5
+          "sampledWeak": 4
         },
         {
           "strand": "orthographe_lexicale",
@@ -5115,10 +5046,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "accorder_participe_cod_antepose::writing-controlled-production::construction:pronoun",
-          "labelFr": "Accorder avec un COD antéposé — COD repris par un pronom",
+          "skillId": "produire_pronom_cod::writing-controlled-production::construction:elision",
+          "labelFr": "Employer le, la, l’ ou les — l’ devant une voyelle",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 2,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -5202,10 +5133,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "accorder_participe_cod_antepose::writing-controlled-production::construction:relative",
-          "labelFr": "Accorder avec un COD antéposé — COD repris par que",
+          "skillId": "produire_pronom_cod::writing-controlled-production::construction:la",
+          "labelFr": "Employer le, la, l’ ou les — la",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 2,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -5230,10 +5161,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "choisir_sens_polysemique::all-receptive::text_type:argumentative",
-          "labelFr": "Choisir le sens contextuel d'un mot polysémique — Texte argumentatif bref",
+          "skillId": "deduire_mot_morphologie::all-receptive::text_type:argumentative",
+          "labelFr": "Déduire un mot grâce à sa morphologie — Texte argumentatif bref",
           "strand": "comprehension_ecrite",
-          "level": 0,
+          "level": 1,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -5259,10 +5190,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "ordonner_doubles_pronoms::writing-controlled-production::construction:declarative",
-          "labelFr": "Ordonner deux pronoms compléments — Dans une phrase déclarative",
+          "skillId": "produire_pronom_coi_personne::writing-controlled-production::construction:leur",
+          "labelFr": "Employer lui ou leur — leur : plusieurs personnes",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 0,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -5273,17 +5204,17 @@
           "minimumItems": 3
         },
         {
-          "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
-          "labelFr": "Réaliser l'accord sujet-verbe — Sujet proche du verbe",
+          "skillId": "construction_accord_sujet_verbe::reading-analysis::construction:adjacent",
+          "labelFr": "Analyser l'accord sujet-verbe — Sujet proche du verbe",
           "strand": "orthographe_grammaticale",
-          "level": 2,
+          "level": 1,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 3,
           "correct": 0,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.017467248908296946,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.0023647650014779796,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -5301,24 +5232,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "construction_accord_sujet_verbe::reading-analysis::construction:adjacent",
-          "labelFr": "Analyser l'accord sujet-verbe — Sujet proche du verbe",
-          "strand": "orthographe_grammaticale",
-          "level": 1,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.11764705882352941,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "ordonner_doubles_pronoms::writing-controlled-production::construction:imperative",
-          "labelFr": "Ordonner deux pronoms compléments — À l’impératif affirmatif",
+          "skillId": "produire_pronom_coi_personne::writing-controlled-production::construction:lui",
+          "labelFr": "Employer lui ou leur — lui : une personne",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 0,
           "expectedKnown": true,
           "answered": 2,
           "correct": 2,
@@ -5329,11 +5246,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_imperatif::writing-controlled-production::verb:aller",
-          "labelFr": "Produire l'impératif — Conjuguer aller",
+          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
+          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
           "strand": "conjugaison",
-          "level": 1,
-          "challengeOrder": 2,
+          "level": 2,
+          "challengeOrder": 1,
           "expectedKnown": true,
           "answered": 1,
           "correct": 1,
@@ -5344,11 +5261,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_imperatif::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire l'impératif — Verbes réguliers en -er",
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
+          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
           "strand": "conjugaison",
-          "level": 1,
-          "challengeOrder": 2,
+          "level": 2,
+          "challengeOrder": 1,
           "expectedKnown": true,
           "answered": 1,
           "correct": 1,
@@ -5637,10 +5554,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "accorder_participe_cod_antepose::writing-controlled-production::construction:pronoun",
-          "labelFr": "Accorder avec un COD antéposé — COD repris par un pronom",
+          "skillId": "produire_pronom_cod::writing-controlled-production::construction:elision",
+          "labelFr": "Employer le, la, l’ ou les — l’ devant une voyelle",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 2,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -5724,10 +5641,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "accorder_participe_cod_antepose::writing-controlled-production::construction:relative",
-          "labelFr": "Accorder avec un COD antéposé — COD repris par que",
+          "skillId": "produire_pronom_cod::writing-controlled-production::construction:la",
+          "labelFr": "Employer le, la, l’ ou les — la",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 2,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -5752,10 +5669,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "choisir_sens_polysemique::all-receptive::text_type:argumentative",
-          "labelFr": "Choisir le sens contextuel d'un mot polysémique — Texte argumentatif bref",
+          "skillId": "deduire_mot_morphologie::all-receptive::text_type:argumentative",
+          "labelFr": "Déduire un mot grâce à sa morphologie — Texte argumentatif bref",
           "strand": "comprehension_ecrite",
-          "level": 0,
+          "level": 1,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -5781,10 +5698,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "ordonner_doubles_pronoms::writing-controlled-production::construction:declarative",
-          "labelFr": "Ordonner deux pronoms compléments — Dans une phrase déclarative",
+          "skillId": "produire_pronom_coi_personne::writing-controlled-production::construction:leur",
+          "labelFr": "Employer lui ou leur — leur : plusieurs personnes",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 0,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -5795,10 +5712,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
-          "labelFr": "Réaliser l'accord sujet-verbe — Sujet proche du verbe",
+          "skillId": "construction_accord_sujet_verbe::reading-analysis::construction:adjacent",
+          "labelFr": "Analyser l'accord sujet-verbe — Sujet proche du verbe",
           "strand": "orthographe_grammaticale",
-          "level": 2,
+          "level": 1,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -5823,10 +5740,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "ordonner_doubles_pronoms::writing-controlled-production::construction:imperative",
-          "labelFr": "Ordonner deux pronoms compléments — À l’impératif affirmatif",
+          "skillId": "produire_pronom_coi_personne::writing-controlled-production::construction:lui",
+          "labelFr": "Employer lui ou leur — lui : une personne",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 0,
           "expectedKnown": true,
           "answered": 2,
           "correct": 2,
@@ -5837,11 +5754,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_imperatif::writing-controlled-production::verb:aller",
-          "labelFr": "Produire l'impératif — Conjuguer aller",
+          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
+          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
           "strand": "conjugaison",
-          "level": 1,
-          "challengeOrder": 2,
+          "level": 2,
+          "challengeOrder": 1,
           "expectedKnown": true,
           "answered": 1,
           "correct": 1,
@@ -5852,11 +5769,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_imperatif::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire l'impératif — Verbes réguliers en -er",
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
+          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
           "strand": "conjugaison",
-          "level": 1,
-          "challengeOrder": 2,
+          "level": 2,
+          "challengeOrder": 1,
           "expectedKnown": true,
           "answered": 1,
           "correct": 1,
@@ -5877,10 +5794,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 32,
-      "unsampledTargets": 510,
-      "targetsReachingMinimumItemCount": 9,
-      "targetsWithSufficientEvidenceToday": 8,
+      "sampledTargets": 29,
+      "unsampledTargets": 513,
+      "targetsReachingMinimumItemCount": 11,
+      "targetsWithSufficientEvidenceToday": 10,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -5929,12 +5846,12 @@
         },
         {
           "strand": "grammaire_syntaxe",
-          "sampledTargets": 9,
+          "sampledTargets": 6,
           "answered": 17,
-          "targetsReachingMinimumItemCount": 2,
-          "targetsWithSufficientEvidenceToday": 2,
+          "targetsReachingMinimumItemCount": 4,
+          "targetsWithSufficientEvidenceToday": 4,
           "sampledKnown": 3,
-          "sampledWeak": 6
+          "sampledWeak": 3
         },
         {
           "strand": "orthographe_grammaticale",
@@ -6145,10 +6062,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "accorder_participe_cod_antepose::writing-controlled-production::construction:pronoun",
-          "labelFr": "Accorder avec un COD antéposé — COD repris par un pronom",
+          "skillId": "produire_pronom_cod::writing-controlled-production::construction:elision",
+          "labelFr": "Employer le, la, l’ ou les — l’ devant une voyelle",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 2,
           "expectedKnown": false,
           "answered": 3,
           "correct": 0,
@@ -6174,17 +6091,17 @@
           "minimumItems": 3
         },
         {
-          "skillId": "placer_pronom_complement::writing-controlled-production::construction:finite",
-          "labelFr": "Placer un pronom complément — Avant le verbe conjugué",
+          "skillId": "identifier_complement_direct::reading-receptive",
+          "labelFr": "Identifier un complément direct",
           "strand": "grammaire_syntaxe",
-          "level": 4,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
+          "level": 1,
+          "expectedKnown": true,
+          "answered": 4,
+          "correct": 4,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
+          "withinOccasionResolved": true,
+          "probability": 0.9940814954403842,
+          "countedEvidence": 4,
           "minimumItems": 3
         },
         {
@@ -6200,20 +6117,6 @@
           "withinOccasionResolved": false,
           "probability": 0.09523809523809527,
           "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "distinguer_pronom_cod_coi::writing-controlled-production",
-          "labelFr": "Choisir entre COD et COI",
-          "strand": "grammaire_syntaxe",
-          "level": 3,
-          "expectedKnown": false,
-          "answered": 2,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.010958904109589048,
-          "countedEvidence": 2,
           "minimumItems": 3
         },
         {
@@ -6246,38 +6149,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_pronom_cod::writing-controlled-production::construction:elision",
-          "labelFr": "Employer le, la, l’ ou les — l’ devant une voyelle",
-          "strand": "grammaire_syntaxe",
-          "level": 2,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
           "skillId": "employer_cedille::reading-receptive",
           "labelFr": "Employer la cédille",
           "strand": "orthographe_lexicale",
           "level": 2,
-          "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9283667621776505,
-          "countedEvidence": 2,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "identifier_complement_direct::reading-receptive",
-          "labelFr": "Identifier un complément direct",
-          "strand": "grammaire_syntaxe",
-          "level": 1,
           "expectedKnown": true,
           "answered": 2,
           "correct": 2,
@@ -6317,24 +6192,24 @@
           "minimumItems": 3
         },
         {
-          "skillId": "placer_pronom_complement::writing-controlled-production::construction:imperative",
-          "labelFr": "Placer un pronom complément — À l’impératif affirmatif",
+          "skillId": "produire_pronom_cod::writing-controlled-production::construction:la",
+          "labelFr": "Employer le, la, l’ ou les — la",
           "strand": "grammaire_syntaxe",
-          "level": 4,
+          "level": 2,
           "expectedKnown": false,
-          "answered": 1,
+          "answered": 3,
           "correct": 0,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
+          "withinOccasionResolved": true,
+          "probability": 0.001164991990680065,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
-          "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
-          "labelFr": "Réaliser l'accord sujet-verbe — Sujet proche du verbe",
+          "skillId": "construction_accord_sujet_verbe::reading-analysis::construction:adjacent",
+          "labelFr": "Analyser l'accord sujet-verbe — Sujet proche du verbe",
           "strand": "orthographe_grammaticale",
-          "level": 2,
+          "level": 1,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -6373,10 +6248,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_pronom_cod::writing-controlled-production::construction:la",
-          "labelFr": "Employer le, la, l’ ou les — la",
-          "strand": "grammaire_syntaxe",
+          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
+          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
+          "strand": "conjugaison",
           "level": 2,
+          "challengeOrder": 1,
           "expectedKnown": false,
           "answered": 1,
           "correct": 0,
@@ -6387,11 +6263,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_imperatif::writing-controlled-production::verb:aller",
-          "labelFr": "Produire l'impératif — Conjuguer aller",
-          "strand": "conjugaison",
-          "level": 1,
-          "challengeOrder": 2,
+          "skillId": "produire_pronom_coi_personne::writing-controlled-production::construction:leur",
+          "labelFr": "Employer lui ou leur — leur : plusieurs personnes",
+          "strand": "grammaire_syntaxe",
+          "level": 0,
           "expectedKnown": false,
           "answered": 1,
           "correct": 0,
@@ -6402,11 +6277,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_imperatif::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire l'impératif — Verbes réguliers en -er",
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
+          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
           "strand": "conjugaison",
-          "level": 1,
-          "challengeOrder": 2,
+          "level": 2,
+          "challengeOrder": 1,
           "expectedKnown": false,
           "answered": 1,
           "correct": 0,
@@ -6427,10 +6302,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 33,
-      "unsampledTargets": 509,
-      "targetsReachingMinimumItemCount": 8,
-      "targetsWithSufficientEvidenceToday": 6,
+      "sampledTargets": 28,
+      "unsampledTargets": 514,
+      "targetsReachingMinimumItemCount": 11,
+      "targetsWithSufficientEvidenceToday": 7,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -6479,21 +6354,21 @@
         },
         {
           "strand": "grammaire_syntaxe",
-          "sampledTargets": 11,
+          "sampledTargets": 7,
           "answered": 17,
-          "targetsReachingMinimumItemCount": 2,
-          "targetsWithSufficientEvidenceToday": 2,
+          "targetsReachingMinimumItemCount": 4,
+          "targetsWithSufficientEvidenceToday": 3,
           "sampledKnown": 0,
-          "sampledWeak": 11
+          "sampledWeak": 7
         },
         {
           "strand": "orthographe_grammaticale",
-          "sampledTargets": 4,
+          "sampledTargets": 3,
           "answered": 9,
-          "targetsReachingMinimumItemCount": 1,
+          "targetsReachingMinimumItemCount": 2,
           "targetsWithSufficientEvidenceToday": 0,
           "sampledKnown": 0,
-          "sampledWeak": 4
+          "sampledWeak": 3
         },
         {
           "strand": "orthographe_lexicale",
@@ -6737,10 +6612,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "accorder_participe_cod_antepose::writing-controlled-production::construction:pronoun",
-          "labelFr": "Accorder avec un COD antéposé — COD repris par un pronom",
+          "skillId": "produire_pronom_cod::writing-controlled-production::construction:elision",
+          "labelFr": "Employer le, la, l’ ou les — l’ devant une voyelle",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 2,
           "expectedKnown": false,
           "answered": 3,
           "correct": 0,
@@ -6766,17 +6641,17 @@
           "minimumItems": 3
         },
         {
-          "skillId": "placer_pronom_complement::writing-controlled-production::construction:finite",
-          "labelFr": "Placer un pronom complément — Avant le verbe conjugué",
+          "skillId": "identifier_complement_direct::reading-receptive",
+          "labelFr": "Identifier un complément direct",
           "strand": "grammaire_syntaxe",
-          "level": 4,
+          "level": 1,
           "expectedKnown": false,
-          "answered": 1,
+          "answered": 3,
           "correct": 0,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
+          "withinOccasionResolved": true,
+          "probability": 0.0023647650014779796,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -6795,53 +6670,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "distinguer_pronom_cod_coi::writing-controlled-production",
-          "labelFr": "Choisir entre COD et COI",
-          "strand": "grammaire_syntaxe",
-          "level": 3,
-          "expectedKnown": false,
-          "answered": 2,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.010958904109589048,
-          "countedEvidence": 2,
-          "minimumItems": 3
-        },
-        {
           "skillId": "interpreter_futur_proche::reading-receptive",
           "labelFr": "Interpréter la valeur du futur proche",
           "strand": "conjugaison",
           "level": 4,
           "challengeOrder": 2,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.11764705882352941,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "produire_pronom_cod::writing-controlled-production::construction:elision",
-          "labelFr": "Employer le, la, l’ ou les — l’ devant une voyelle",
-          "strand": "grammaire_syntaxe",
-          "level": 2,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "identifier_complement_direct::reading-receptive",
-          "labelFr": "Identifier un complément direct",
-          "strand": "grammaire_syntaxe",
-          "level": 1,
           "expectedKnown": false,
           "answered": 1,
           "correct": 0,
@@ -6867,31 +6700,31 @@
           "minimumItems": 3
         },
         {
-          "skillId": "placer_pronom_complement::writing-controlled-production::construction:imperative",
-          "labelFr": "Placer un pronom complément — À l’impératif affirmatif",
+          "skillId": "produire_pronom_cod::writing-controlled-production::construction:la",
+          "labelFr": "Employer le, la, l’ ou les — la",
           "strand": "grammaire_syntaxe",
-          "level": 4,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
-          "labelFr": "Réaliser l'accord sujet-verbe — Sujet proche du verbe",
-          "strand": "orthographe_grammaticale",
           "level": 2,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 3,
           "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.32432432432432434,
-          "countedEvidence": 2,
+          "probability": 0.16628175519630492,
+          "countedEvidence": 3,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "construction_accord_sujet_verbe::reading-analysis::construction:adjacent",
+          "labelFr": "Analyser l'accord sujet-verbe — Sujet proche du verbe",
+          "strand": "orthographe_grammaticale",
+          "level": 1,
+          "expectedKnown": false,
+          "answered": 3,
+          "correct": 2,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.6334310850439884,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -6906,20 +6739,6 @@
           "withinOccasionResolved": false,
           "probability": 0.32432432432432434,
           "countedEvidence": 2,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "produire_pronom_cod::writing-controlled-production::construction:la",
-          "labelFr": "Employer le, la, l’ ou les — la",
-          "strand": "grammaire_syntaxe",
-          "level": 2,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -6938,45 +6757,31 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_imperatif::writing-controlled-production::verb:aller",
-          "labelFr": "Produire l'impératif — Conjuguer aller",
+          "skillId": "produire_pronom_coi_personne::writing-controlled-production::construction:leur",
+          "labelFr": "Employer lui ou leur — leur : plusieurs personnes",
+          "strand": "grammaire_syntaxe",
+          "level": 0,
+          "expectedKnown": false,
+          "answered": 2,
+          "correct": 0,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.010958904109589048,
+          "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
+          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
           "strand": "conjugaison",
-          "level": 1,
-          "challengeOrder": 2,
+          "level": 2,
+          "challengeOrder": 1,
           "expectedKnown": false,
           "answered": 1,
           "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
           "probability": 0.9473684210526315,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "placer_pronom_complement::writing-controlled-production::construction:infinitive",
-          "labelFr": "Placer un pronom complément — Avant l’infinitif",
-          "strand": "grammaire_syntaxe",
-          "level": 4,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "construction_accord_sujet_verbe::reading-analysis::construction:adjacent",
-          "labelFr": "Analyser l'accord sujet-verbe — Sujet proche du verbe",
-          "strand": "orthographe_grammaticale",
-          "level": 1,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
           "countedEvidence": 1,
           "minimumItems": 3
         }
@@ -6991,10 +6796,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 34,
-      "unsampledTargets": 508,
-      "targetsReachingMinimumItemCount": 8,
-      "targetsWithSufficientEvidenceToday": 6,
+      "sampledTargets": 30,
+      "unsampledTargets": 512,
+      "targetsReachingMinimumItemCount": 11,
+      "targetsWithSufficientEvidenceToday": 8,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -7043,21 +6848,21 @@
         },
         {
           "strand": "grammaire_syntaxe",
-          "sampledTargets": 10,
+          "sampledTargets": 7,
           "answered": 17,
-          "targetsReachingMinimumItemCount": 2,
-          "targetsWithSufficientEvidenceToday": 2,
+          "targetsReachingMinimumItemCount": 4,
+          "targetsWithSufficientEvidenceToday": 4,
           "sampledKnown": 0,
-          "sampledWeak": 10
+          "sampledWeak": 7
         },
         {
           "strand": "orthographe_grammaticale",
-          "sampledTargets": 5,
+          "sampledTargets": 4,
           "answered": 9,
-          "targetsReachingMinimumItemCount": 1,
+          "targetsReachingMinimumItemCount": 2,
           "targetsWithSufficientEvidenceToday": 1,
           "sampledKnown": 0,
-          "sampledWeak": 5
+          "sampledWeak": 4
         },
         {
           "strand": "orthographe_lexicale",
@@ -7301,10 +7106,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "accorder_participe_cod_antepose::writing-controlled-production::construction:pronoun",
-          "labelFr": "Accorder avec un COD antéposé — COD repris par un pronom",
+          "skillId": "produire_pronom_cod::writing-controlled-production::construction:elision",
+          "labelFr": "Employer le, la, l’ ou les — l’ devant une voyelle",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 2,
           "expectedKnown": false,
           "answered": 3,
           "correct": 0,
@@ -7330,17 +7135,17 @@
           "minimumItems": 3
         },
         {
-          "skillId": "placer_pronom_complement::writing-controlled-production::construction:finite",
-          "labelFr": "Placer un pronom complément — Avant le verbe conjugué",
+          "skillId": "identifier_complement_direct::reading-receptive",
+          "labelFr": "Identifier un complément direct",
           "strand": "grammaire_syntaxe",
-          "level": 4,
+          "level": 1,
           "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
+          "answered": 4,
+          "correct": 1,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
+          "withinOccasionResolved": true,
+          "probability": 0.008461131676361717,
+          "countedEvidence": 4,
           "minimumItems": 3
         },
         {
@@ -7356,20 +7161,6 @@
           "withinOccasionResolved": false,
           "probability": 0.09523809523809527,
           "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "distinguer_pronom_cod_coi::writing-controlled-production",
-          "labelFr": "Choisir entre COD et COI",
-          "strand": "grammaire_syntaxe",
-          "level": 3,
-          "expectedKnown": false,
-          "answered": 2,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.010958904109589048,
-          "countedEvidence": 2,
           "minimumItems": 3
         },
         {
@@ -7402,38 +7193,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_pronom_cod::writing-controlled-production::construction:elision",
-          "labelFr": "Employer le, la, l’ ou les — l’ devant une voyelle",
-          "strand": "grammaire_syntaxe",
-          "level": 2,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
           "skillId": "employer_accent_circonflexe::reading-receptive",
           "labelFr": "Employer l'accent circonflexe",
           "strand": "orthographe_lexicale",
           "level": 0,
-          "expectedKnown": false,
-          "answered": 2,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.017467248908296946,
-          "countedEvidence": 2,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "identifier_complement_direct::reading-receptive",
-          "labelFr": "Identifier un complément direct",
-          "strand": "grammaire_syntaxe",
-          "level": 1,
           "expectedKnown": false,
           "answered": 2,
           "correct": 0,
@@ -7459,31 +7222,31 @@
           "minimumItems": 3
         },
         {
-          "skillId": "placer_pronom_complement::writing-controlled-production::construction:imperative",
-          "labelFr": "Placer un pronom complément — À l’impératif affirmatif",
+          "skillId": "produire_pronom_cod::writing-controlled-production::construction:la",
+          "labelFr": "Employer le, la, l’ ou les — la",
           "strand": "grammaire_syntaxe",
-          "level": 4,
+          "level": 2,
           "expectedKnown": false,
-          "answered": 1,
+          "answered": 3,
           "correct": 0,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
+          "withinOccasionResolved": true,
+          "probability": 0.001164991990680065,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
-          "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
-          "labelFr": "Réaliser l'accord sujet-verbe — Sujet proche du verbe",
+          "skillId": "construction_accord_sujet_verbe::reading-analysis::construction:adjacent",
+          "labelFr": "Analyser l'accord sujet-verbe — Sujet proche du verbe",
           "strand": "orthographe_grammaticale",
-          "level": 2,
+          "level": 1,
           "expectedKnown": false,
-          "answered": 2,
-          "correct": 1,
+          "answered": 3,
+          "correct": 2,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.32432432432432434,
-          "countedEvidence": 2,
+          "probability": 0.6334310850439884,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -7498,20 +7261,6 @@
           "withinOccasionResolved": false,
           "probability": 0.017467248908296946,
           "countedEvidence": 2,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "produire_pronom_cod::writing-controlled-production::construction:la",
-          "labelFr": "Employer le, la, l’ ou les — la",
-          "strand": "grammaire_syntaxe",
-          "level": 2,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -7530,25 +7279,25 @@
           "minimumItems": 3
         },
         {
-          "skillId": "construction_accord_sujet_verbe::reading-analysis::construction:adjacent",
-          "labelFr": "Analyser l'accord sujet-verbe — Sujet proche du verbe",
-          "strand": "orthographe_grammaticale",
-          "level": 1,
+          "skillId": "produire_pronom_coi_personne::writing-controlled-production::construction:leur",
+          "labelFr": "Employer lui ou leur — leur : plusieurs personnes",
+          "strand": "grammaire_syntaxe",
+          "level": 0,
           "expectedKnown": false,
           "answered": 1,
-          "correct": 1,
+          "correct": 0,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
+          "probability": 0.09523809523809527,
           "countedEvidence": 1,
           "minimumItems": 3
         },
         {
-          "skillId": "produire_imperatif::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire l'impératif — Verbes réguliers en -er",
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
+          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
           "strand": "conjugaison",
-          "level": 1,
-          "challengeOrder": 2,
+          "level": 2,
+          "challengeOrder": 1,
           "expectedKnown": false,
           "answered": 1,
           "correct": 0,
@@ -7569,10 +7318,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 35,
-      "unsampledTargets": 507,
+      "sampledTargets": 32,
+      "unsampledTargets": 510,
       "targetsReachingMinimumItemCount": 11,
-      "targetsWithSufficientEvidenceToday": 6,
+      "targetsWithSufficientEvidenceToday": 7,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -7621,12 +7370,12 @@
         },
         {
           "strand": "grammaire_syntaxe",
-          "sampledTargets": 9,
+          "sampledTargets": 6,
           "answered": 17,
           "targetsReachingMinimumItemCount": 4,
-          "targetsWithSufficientEvidenceToday": 1,
+          "targetsWithSufficientEvidenceToday": 2,
           "sampledKnown": 0,
-          "sampledWeak": 9
+          "sampledWeak": 6
         },
         {
           "strand": "orthographe_grammaticale",
@@ -7864,17 +7613,17 @@
           "minimumItems": 3
         },
         {
-          "skillId": "accorder_participe_cod_antepose::writing-controlled-production::construction:pronoun",
-          "labelFr": "Accorder avec un COD antéposé — COD repris par un pronom",
+          "skillId": "produire_pronom_cod::writing-controlled-production::construction:elision",
+          "labelFr": "Employer le, la, l’ ou les — l’ devant une voyelle",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 2,
           "expectedKnown": false,
-          "answered": 3,
-          "correct": 0,
+          "answered": 5,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": true,
-          "probability": 0.001164991990680065,
-          "countedEvidence": 3,
+          "probability": 0.0022050547818297382,
+          "countedEvidence": 5,
           "minimumItems": 3
         },
         {
@@ -7893,17 +7642,17 @@
           "minimumItems": 3
         },
         {
-          "skillId": "placer_pronom_complement::writing-controlled-production::construction:finite",
-          "labelFr": "Placer un pronom complément — Avant le verbe conjugué",
+          "skillId": "identifier_complement_direct::reading-receptive",
+          "labelFr": "Identifier un complément direct",
           "strand": "grammaire_syntaxe",
-          "level": 4,
+          "level": 1,
           "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
+          "answered": 4,
+          "correct": 1,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
+          "withinOccasionResolved": true,
+          "probability": 0.008461131676361717,
+          "countedEvidence": 4,
           "minimumItems": 3
         },
         {
@@ -7919,20 +7668,6 @@
           "withinOccasionResolved": false,
           "probability": 0.09523809523809527,
           "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "distinguer_pronom_cod_coi::writing-controlled-production",
-          "labelFr": "Choisir entre COD et COI",
-          "strand": "grammaire_syntaxe",
-          "level": 3,
-          "expectedKnown": false,
-          "answered": 3,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.16628175519630492,
-          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -7962,20 +7697,6 @@
           "withinOccasionResolved": false,
           "probability": 0.017467248908296946,
           "countedEvidence": 2,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "placer_pronom_complement::writing-controlled-production::construction:imperative",
-          "labelFr": "Placer un pronom complément — À l’impératif affirmatif",
-          "strand": "grammaire_syntaxe",
-          "level": 4,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -8022,24 +7743,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_pronom_cod::writing-controlled-production::construction:elision",
-          "labelFr": "Employer le, la, l’ ou les — l’ devant une voyelle",
-          "strand": "grammaire_syntaxe",
-          "level": 2,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
-          "labelFr": "Réaliser l'accord sujet-verbe — Sujet proche du verbe",
+          "skillId": "construction_accord_sujet_verbe::reading-analysis::construction:adjacent",
+          "labelFr": "Analyser l'accord sujet-verbe — Sujet proche du verbe",
           "strand": "orthographe_grammaticale",
-          "level": 2,
+          "level": 1,
           "expectedKnown": false,
           "answered": 3,
           "correct": 2,
@@ -8047,20 +7754,6 @@
           "withinOccasionResolved": false,
           "probability": 0.6334310850439884,
           "countedEvidence": 3,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "identifier_complement_direct::reading-receptive",
-          "labelFr": "Identifier un complément direct",
-          "strand": "grammaire_syntaxe",
-          "level": 1,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.11764705882352941,
-          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -8093,10 +7786,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "placer_pronom_complement::writing-controlled-production::construction:infinitive",
-          "labelFr": "Placer un pronom complément — Avant l’infinitif",
+          "skillId": "produire_pronom_cod::writing-controlled-production::construction:la",
+          "labelFr": "Employer le, la, l’ ou les — la",
           "strand": "grammaire_syntaxe",
-          "level": 4,
+          "level": 2,
           "expectedKnown": false,
           "answered": 1,
           "correct": 0,
@@ -8121,11 +7814,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_imperatif::writing-controlled-production::verb:aller",
-          "labelFr": "Produire l'impératif — Conjuguer aller",
+          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
+          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
           "strand": "conjugaison",
-          "level": 1,
-          "challengeOrder": 2,
+          "level": 2,
+          "challengeOrder": 1,
           "expectedKnown": false,
           "answered": 1,
           "correct": 0,
@@ -8136,11 +7829,25 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_imperatif::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire l'impératif — Verbes réguliers en -er",
+          "skillId": "produire_pronom_coi_personne::writing-controlled-production::construction:leur",
+          "labelFr": "Employer lui ou leur — leur : plusieurs personnes",
+          "strand": "grammaire_syntaxe",
+          "level": 0,
+          "expectedKnown": false,
+          "answered": 1,
+          "correct": 0,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
+          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
           "strand": "conjugaison",
-          "level": 1,
-          "challengeOrder": 2,
+          "level": 2,
+          "challengeOrder": 1,
           "expectedKnown": false,
           "answered": 1,
           "correct": 0,
@@ -8161,9 +7868,9 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 34,
-      "unsampledTargets": 508,
-      "targetsReachingMinimumItemCount": 8,
+      "sampledTargets": 28,
+      "unsampledTargets": 514,
+      "targetsReachingMinimumItemCount": 11,
       "targetsWithSufficientEvidenceToday": 5,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
@@ -8213,21 +7920,21 @@
         },
         {
           "strand": "grammaire_syntaxe",
-          "sampledTargets": 10,
-          "answered": 17,
-          "targetsReachingMinimumItemCount": 2,
-          "targetsWithSufficientEvidenceToday": 1,
-          "sampledKnown": 0,
-          "sampledWeak": 10
-        },
-        {
-          "strand": "orthographe_grammaticale",
           "sampledTargets": 5,
-          "answered": 9,
-          "targetsReachingMinimumItemCount": 1,
+          "answered": 17,
+          "targetsReachingMinimumItemCount": 4,
           "targetsWithSufficientEvidenceToday": 1,
           "sampledKnown": 0,
           "sampledWeak": 5
+        },
+        {
+          "strand": "orthographe_grammaticale",
+          "sampledTargets": 4,
+          "answered": 9,
+          "targetsReachingMinimumItemCount": 2,
+          "targetsWithSufficientEvidenceToday": 1,
+          "sampledKnown": 0,
+          "sampledWeak": 4
         },
         {
           "strand": "orthographe_lexicale",
@@ -8456,10 +8163,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "accorder_participe_cod_antepose::writing-controlled-production::construction:pronoun",
-          "labelFr": "Accorder avec un COD antéposé — COD repris par un pronom",
+          "skillId": "produire_pronom_cod::writing-controlled-production::construction:elision",
+          "labelFr": "Employer le, la, l’ ou les — l’ devant une voyelle",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 2,
           "expectedKnown": false,
           "answered": 3,
           "correct": 0,
@@ -8485,17 +8192,17 @@
           "minimumItems": 3
         },
         {
-          "skillId": "placer_pronom_complement::writing-controlled-production::construction:finite",
-          "labelFr": "Placer un pronom complément — Avant le verbe conjugué",
+          "skillId": "identifier_complement_direct::reading-receptive",
+          "labelFr": "Identifier un complément direct",
           "strand": "grammaire_syntaxe",
-          "level": 4,
+          "level": 1,
           "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
+          "answered": 5,
+          "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
+          "probability": 0.001136484710729126,
+          "countedEvidence": 5,
           "minimumItems": 3
         },
         {
@@ -8511,20 +8218,6 @@
           "withinOccasionResolved": false,
           "probability": 0.09523809523809527,
           "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "distinguer_pronom_cod_coi::writing-controlled-production",
-          "labelFr": "Choisir entre COD et COI",
-          "strand": "grammaire_syntaxe",
-          "level": 3,
-          "expectedKnown": false,
-          "answered": 2,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.010958904109589048,
-          "countedEvidence": 2,
           "minimumItems": 3
         },
         {
@@ -8557,34 +8250,6 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_pronom_cod::writing-controlled-production::construction:elision",
-          "labelFr": "Employer le, la, l’ ou les — l’ devant une voyelle",
-          "strand": "grammaire_syntaxe",
-          "level": 2,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "identifier_complement_direct::reading-receptive",
-          "labelFr": "Identifier un complément direct",
-          "strand": "grammaire_syntaxe",
-          "level": 1,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
           "skillId": "reconnaitre_passe_compose::reading-receptive",
           "labelFr": "Reconnaître le passé composé",
           "strand": "conjugaison",
@@ -8600,31 +8265,31 @@
           "minimumItems": 3
         },
         {
-          "skillId": "placer_pronom_complement::writing-controlled-production::construction:imperative",
-          "labelFr": "Placer un pronom complément — À l’impératif affirmatif",
+          "skillId": "produire_pronom_cod::writing-controlled-production::construction:la",
+          "labelFr": "Employer le, la, l’ ou les — la",
           "strand": "grammaire_syntaxe",
-          "level": 4,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
-          "labelFr": "Réaliser l'accord sujet-verbe — Sujet proche du verbe",
-          "strand": "orthographe_grammaticale",
           "level": 2,
           "expectedKnown": false,
-          "answered": 2,
+          "answered": 3,
           "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.32432432432432434,
-          "countedEvidence": 2,
+          "probability": 0.16628175519630492,
+          "countedEvidence": 3,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "construction_accord_sujet_verbe::reading-analysis::construction:adjacent",
+          "labelFr": "Analyser l'accord sujet-verbe — Sujet proche du verbe",
+          "strand": "orthographe_grammaticale",
+          "level": 1,
+          "expectedKnown": false,
+          "answered": 3,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.06015037593984965,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -8639,20 +8304,6 @@
           "withinOccasionResolved": false,
           "probability": 0.32432432432432434,
           "countedEvidence": 2,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "produire_pronom_cod::writing-controlled-production::construction:la",
-          "labelFr": "Employer le, la, l’ ou les — la",
-          "strand": "grammaire_syntaxe",
-          "level": 2,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -8671,11 +8322,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_imperatif::writing-controlled-production::verb:aller",
-          "labelFr": "Produire l'impératif — Conjuguer aller",
+          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
+          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
           "strand": "conjugaison",
-          "level": 1,
-          "challengeOrder": 2,
+          "level": 2,
+          "challengeOrder": 1,
           "expectedKnown": false,
           "answered": 1,
           "correct": 0,
@@ -8686,39 +8337,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "placer_pronom_complement::writing-controlled-production::construction:infinitive",
-          "labelFr": "Placer un pronom complément — Avant l’infinitif",
-          "strand": "grammaire_syntaxe",
-          "level": 4,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "construction_accord_sujet_verbe::reading-analysis::construction:adjacent",
-          "labelFr": "Analyser l'accord sujet-verbe — Sujet proche du verbe",
-          "strand": "orthographe_grammaticale",
-          "level": 1,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.11764705882352941,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "produire_imperatif::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire l'impératif — Verbes réguliers en -er",
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
+          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
           "strand": "conjugaison",
-          "level": 1,
-          "challengeOrder": 2,
+          "level": 2,
+          "challengeOrder": 1,
           "expectedKnown": false,
           "answered": 1,
           "correct": 0,
@@ -8993,10 +8616,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "accorder_participe_cod_antepose::writing-controlled-production::construction:pronoun",
-          "labelFr": "Accorder avec un COD antéposé — COD repris par un pronom",
+          "skillId": "produire_pronom_cod::writing-controlled-production::construction:elision",
+          "labelFr": "Employer le, la, l’ ou les — l’ devant une voyelle",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 2,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -9066,10 +8689,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "accorder_participe_cod_antepose::writing-controlled-production::construction:relative",
-          "labelFr": "Accorder avec un COD antéposé — COD repris par que",
+          "skillId": "produire_pronom_cod::writing-controlled-production::construction:la",
+          "labelFr": "Employer le, la, l’ ou les — la",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 2,
           "expectedKnown": true,
           "answered": 2,
           "correct": 2,
@@ -9094,10 +8717,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "choisir_sens_polysemique::all-receptive::text_type:argumentative",
-          "labelFr": "Choisir le sens contextuel d'un mot polysémique — Texte argumentatif bref",
+          "skillId": "deduire_mot_morphologie::all-receptive::text_type:argumentative",
+          "labelFr": "Déduire un mot grâce à sa morphologie — Texte argumentatif bref",
           "strand": "comprehension_ecrite",
-          "level": 0,
+          "level": 1,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -9123,10 +8746,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "ordonner_doubles_pronoms::writing-controlled-production::construction:declarative",
-          "labelFr": "Ordonner deux pronoms compléments — Dans une phrase déclarative",
+          "skillId": "produire_pronom_coi_personne::writing-controlled-production::construction:leur",
+          "labelFr": "Employer lui ou leur — leur : plusieurs personnes",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 0,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -9137,10 +8760,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
-          "labelFr": "Réaliser l'accord sujet-verbe — Sujet proche du verbe",
+          "skillId": "construction_accord_sujet_verbe::reading-analysis::construction:adjacent",
+          "labelFr": "Analyser l'accord sujet-verbe — Sujet proche du verbe",
           "strand": "orthographe_grammaticale",
-          "level": 2,
+          "level": 1,
           "expectedKnown": true,
           "answered": 2,
           "correct": 2,
@@ -9165,11 +8788,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_imperatif::writing-controlled-production::verb:aller",
-          "labelFr": "Produire l'impératif — Conjuguer aller",
+          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
+          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
           "strand": "conjugaison",
-          "level": 1,
-          "challengeOrder": 2,
+          "level": 2,
+          "challengeOrder": 1,
           "expectedKnown": true,
           "answered": 1,
           "correct": 1,
@@ -9192,7 +8815,7 @@
       "questionsAnswered": 61,
       "sampledTargets": 26,
       "unsampledTargets": 516,
-      "targetsReachingMinimumItemCount": 8,
+      "targetsReachingMinimumItemCount": 9,
       "targetsWithSufficientEvidenceToday": 7,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
@@ -9253,7 +8876,7 @@
           "strand": "orthographe_grammaticale",
           "sampledTargets": 2,
           "answered": 9,
-          "targetsReachingMinimumItemCount": 0,
+          "targetsReachingMinimumItemCount": 1,
           "targetsWithSufficientEvidenceToday": 0,
           "sampledKnown": 2,
           "sampledWeak": 0
@@ -9444,10 +9067,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "accorder_participe_cod_antepose::writing-controlled-production::construction:pronoun",
-          "labelFr": "Accorder avec un COD antéposé — COD repris par un pronom",
+          "skillId": "produire_pronom_cod::writing-controlled-production::construction:elision",
+          "labelFr": "Employer le, la, l’ ou les — l’ devant une voyelle",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 2,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -9517,10 +9140,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "accorder_participe_cod_antepose::writing-controlled-production::construction:relative",
-          "labelFr": "Accorder avec un COD antéposé — COD repris par que",
+          "skillId": "produire_pronom_cod::writing-controlled-production::construction:la",
+          "labelFr": "Employer le, la, l’ ou les — la",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 2,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -9531,10 +9154,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "choisir_sens_polysemique::all-receptive::text_type:argumentative",
-          "labelFr": "Choisir le sens contextuel d'un mot polysémique — Texte argumentatif bref",
+          "skillId": "deduire_mot_morphologie::all-receptive::text_type:argumentative",
+          "labelFr": "Déduire un mot grâce à sa morphologie — Texte argumentatif bref",
           "strand": "comprehension_ecrite",
-          "level": 0,
+          "level": 1,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -9560,10 +9183,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "ordonner_doubles_pronoms::writing-controlled-production::construction:declarative",
-          "labelFr": "Ordonner deux pronoms compléments — Dans une phrase déclarative",
+          "skillId": "produire_pronom_coi_personne::writing-controlled-production::construction:leur",
+          "labelFr": "Employer lui ou leur — leur : plusieurs personnes",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 0,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
@@ -9574,17 +9197,17 @@
           "minimumItems": 3
         },
         {
-          "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
-          "labelFr": "Réaliser l'accord sujet-verbe — Sujet proche du verbe",
+          "skillId": "construction_accord_sujet_verbe::reading-analysis::construction:adjacent",
+          "labelFr": "Analyser l'accord sujet-verbe — Sujet proche du verbe",
           "strand": "orthographe_grammaticale",
-          "level": 2,
+          "level": 1,
           "expectedKnown": true,
           "answered": 3,
           "correct": 3,
-          "status": "unknown",
+          "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.5,
-          "countedEvidence": 0,
+          "probability": 0.9790162833641095,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -9602,10 +9225,10 @@
           "minimumItems": 3
         },
         {
-          "skillId": "ordonner_doubles_pronoms::writing-controlled-production::construction:imperative",
-          "labelFr": "Ordonner deux pronoms compléments — À l’impératif affirmatif",
+          "skillId": "produire_pronom_coi_personne::writing-controlled-production::construction:lui",
+          "labelFr": "Employer lui ou leur — lui : une personne",
           "strand": "grammaire_syntaxe",
-          "level": 5,
+          "level": 0,
           "expectedKnown": true,
           "answered": 2,
           "correct": 2,
@@ -9616,11 +9239,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_imperatif::writing-controlled-production::verb:aller",
-          "labelFr": "Produire l'impératif — Conjuguer aller",
+          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
+          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
           "strand": "conjugaison",
-          "level": 1,
-          "challengeOrder": 2,
+          "level": 2,
+          "challengeOrder": 1,
           "expectedKnown": true,
           "answered": 1,
           "correct": 1,
@@ -9631,11 +9254,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_imperatif::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire l'impératif — Verbes réguliers en -er",
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
+          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
           "strand": "conjugaison",
-          "level": 1,
-          "challengeOrder": 2,
+          "level": 2,
+          "challengeOrder": 1,
           "expectedKnown": true,
           "answered": 1,
           "correct": 1,

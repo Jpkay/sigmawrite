@@ -13,6 +13,14 @@ function simulate(nodes: Skill[], correct: (item: Probe) => boolean) {
  throw new Error("Adaptive run did not terminate");
 }
 describe("independent skill frontiers", () => {
+ it("starts an unvisited branch near the entry challenge while preserving branch rotation",()=>{
+  const nodes=[{...skill("advanced","alphabetically-first",5),domain:"grammar"},{...skill("accessible","z-last",1),domain:"grammar"}];
+  const pool=items(nodes),policy={...DEFAULT_POLICY,startingLevel:1,itemsPerBranchVisit:1};
+  const first=selectProbe(nodes,pool,[],policy);
+  expect(first).toMatchObject({kind:"question",item:{skillId:"accessible"}});
+  if(first.kind!=="question")throw Error("Expected question");
+  expect(selectProbe(nodes,pool,[observation(first.item,true)],policy)).toMatchObject({kind:"question",item:{skillId:"advanced"}});
+ });
  it("does not interpret a skipped advanced question as a failed challenge",()=>{
   const nodes=[skill("foundation","same",0),skill("advanced","same",2,["foundation"])],pool=items(nodes);
   const advanced=pool.find(item=>item.skillId==="advanced")!;

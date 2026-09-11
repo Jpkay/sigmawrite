@@ -346,7 +346,17 @@ export function selectProbe(skills: readonly Skill[], bank: readonly Probe[], ob
   // nearby boundary. Rotating after every item leaves large graphs with mostly
   // single-answer targets. Count skips too, so a visit can never trap a learner.
   const visitSize = Math.max(1, Math.floor(policy.itemsPerBranchVisit ?? 6));
-  branches.sort((a,b)=>Math.floor(branchCount(a)/visitSize)-Math.floor(branchCount(b)/visitSize)||a.localeCompare(b));
+  const entryDistanceByBranch=new Map<string,number>();
+  for(const item of familyItems){
+    const skill=skillById.get(item.skillId)!;
+    const distance=Math.abs(challengeOf(skill)-policy.startingLevel);
+    entryDistanceByBranch.set(skill.branch,Math.min(entryDistanceByBranch.get(skill.branch)??Infinity,distance));
+  }
+  // Equal-visit branches should start near the existing entry challenge, not
+  // with whichever competency happens to sort first alphabetically. Rotation
+  // still takes priority, and this ranking never supplies mastery evidence.
+  branches.sort((a,b)=>Math.floor(branchCount(a)/visitSize)-Math.floor(branchCount(b)/visitSize)
+    ||entryDistanceByBranch.get(a)!-entryDistanceByBranch.get(b)!||a.localeCompare(b));
   // Follow actual prerequisites across branch boundaries within the already
   // selected family. Domain/strand/family time balance still takes precedence.
   const recent=recovery.length?lastFamilyAnswer:familyHistory.filter(observation=>!observation.skipped).at(-1),recentSkill=recent?skillById.get(recent.skillId):undefined;
