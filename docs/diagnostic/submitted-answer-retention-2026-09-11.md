@@ -1,0 +1,7 @@
+# Retain submitted diagnostic answers
+
+Granular initial diagnostics previously retained grading observations but discarded the submitted answer. The service now adds the accepted answer and optional supporting-passage choice ID to `diagnosticResponses` in the same optimistic session save as the grading observation. Multiple-choice responses retain the server-issued choice ID, resolvable against the pinned bank and session; written answers retain the submitted text after the existing input trimming. This collection is not mastery evidence and is not returned in the active question view.
+
+The optional state field preserves historical session compatibility. Missing historical answers remain missing; neither the correct key nor an invented incorrect response may stand in for them. Skipped questions create no answer record, and replayed commands cannot append a duplicate. No schema migration is needed for the existing JSON session state.
+
+Validation: 507 granular tests across 147 files, TypeScript and scoped ESLint pass. Tests check correct-choice retention, incorrect written text, duplicate submission, skipped-question absence and non-disclosure in the active view. This is the persistence foundation for a review interface; the review UI and answer-key material-delivery tracking remain to implement. It is not deployed and is not included in the frozen timer candidate or r9 content package.

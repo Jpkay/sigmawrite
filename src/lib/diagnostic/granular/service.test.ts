@@ -43,8 +43,30 @@ it("grades the served answer on the server and cannot accept it twice",async()=>
  const command={type:"answer",sessionId:id,revision:1,itemId,answer};
  const result=await runAssessmentCommand(store,"student-a",command,()=>5000);
  expect(result).not.toHaveProperty("error");expect(get().state.observations).toHaveLength(1);expect(get().state.observations[0].correct).toBe(true);
+ expect(get().state.diagnosticResponses).toEqual([{itemId,answer}]);
+ expect(result).not.toHaveProperty("view.diagnosticResponses");
  await runAssessmentCommand(store,"student-a",command,()=>6000);
  expect(get().state.observations).toHaveLength(1);expect(get().state.activeSeconds).toBe(5);
+ expect(get().state.diagnosticResponses).toEqual([{itemId,answer}]);
+});
+it("retains an incorrect written answer rather than replacing it with the answer key",async()=>{
+ const {store,get}=setup();await runAssessmentCommand(store,"student-a",{type:"resume",sessionId:id,revision:0},()=>0);
+ const probe=assessment.probes.find(probe=>{
+  const item=bank.items.find((entry:{itemKey:string})=>entry.itemKey===probe.id)?.item;
+  return item?.responseType!=="mcq"&&item?.validatorType==="exact";
+ });
+ expect(probe).toBeDefined();get().state.pendingItemId=probe!.id;
+ const answer="ma réponse erronée";
+ const response=await runAssessmentCommand(store,"student-a",{type:"answer",sessionId:id,revision:1,itemId:probe!.id,answer},()=>5000);
+ expect(response).not.toHaveProperty("error");
+ expect(get().state.observations[0].correct).toBe(false);
+ expect(get().state.diagnosticResponses).toEqual([{itemId:probe!.id,answer}]);
+});
+it("does not invent response records for historical answers or skipped questions",async()=>{
+ const {store,get}=setup();await runAssessmentCommand(store,"student-a",{type:"resume",sessionId:id,revision:0},()=>0);
+ await runAssessmentCommand(store,"student-a",{type:"skip",sessionId:id,revision:1,itemId:get().state.pendingItemId!},()=>5000);
+ expect(get().state.observations[0].skipped).toBe(true);
+ expect(get().state.diagnosticResponses).toBeUndefined();
 });
 it("uses received time rather than inventing client timestamps",async()=>{
  const {store,get}=setup();await runAssessmentCommand(store,"student-a",{type:"resume",sessionId:id,revision:0},()=>0);

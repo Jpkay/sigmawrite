@@ -18,6 +18,9 @@ export type AssessmentSession = {
   pendingItemId: string | null;
   pendingActiveSeconds: number;
   observations: Observation[];
+  /** Submitted answers for review; absent on historical sessions. Never infer
+   * missing answers from the grade or use this record as mastery evidence. */
+  diagnosticResponses?: Array<{itemId:string;answer:string;supportChoiceId?:string}>;
   refinements: Observation[];
   exposedLearningItemIds: string[];
   /** Actual reading passages presented in this session, even if unanswered. */

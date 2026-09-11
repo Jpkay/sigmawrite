@@ -68,6 +68,12 @@ export async function runAssessmentCommand(store:AssessmentStore,studentId:strin
  const state=transitionSession({state:session.state,release:bindAssessmentRelease(bundle.assessment,{taxonomyId:bundle.taxonomyId,bankId:bundle.bankId}),expectedRevision:command.revision,
   event:command.type==="answer"?{type:"answer",itemId:command.itemId,correct,at:receivedAt,materialReceipt}:command.type==="skip"?{type:"skip",itemId:command.itemId,at:receivedAt}:{type:command.type,at:receivedAt},skills:bundle.assessment.skills,bank:bundle.assessment.probes,releaseScope:bundle.assessment.releaseScope});
  if(state===session.state)return {view:publicAssessmentView(session,bundle,receivedAt)} as const;
+ if(command.type==="answer"&&state.observations.length>session.state.observations.length){
+  state.diagnosticResponses=[...(session.state.diagnosticResponses??[]),{
+   itemId:command.itemId,answer:command.answer,
+   ...(command.supportChoiceId?{supportChoiceId:command.supportChoiceId}:{}),
+  }];
+ }
  // Answer/skip/resume block the question UI. Start the next timed interval
  // after server processing, not at request arrival. Background pulses leave
  // the question usable and must not deduct their processing time.
