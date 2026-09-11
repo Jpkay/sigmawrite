@@ -89,7 +89,7 @@ export async function runAssessmentCommand(store:AssessmentStore,studentId:strin
 export function publicAssessmentView(session:StoredSession,bundle:AssessmentBundle,at:number=Date.now()){
  const view=sessionView(session.state,bundle.assessment.skills);
  const scope=bundle.assessment.releaseScope===undefined?undefined:inspectReleaseScope(bundle.assessment.skills,bundle.assessment.releaseScope);
- const seen=learningSeenQuestionIds(session.state,bundle.assessment.probes);
+ const seen=learningSeenQuestionIds(session.state,bundle.assessment.probes,bundle.teachingContent);
  const knownMaterial=knownExposedMaterialKeys(bundle.assessment.probes,[...session.state.observations,...session.state.refinements],session.state.exposedLearningItemIds,session.state.exposedMaterialKeys??[]);
  for(const probe of bundle.assessment.probes){
   const skill=bundle.assessment.skills.find(skill=>skill.id===probe.skillId);

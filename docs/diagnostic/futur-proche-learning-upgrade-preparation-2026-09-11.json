@@ -750,7 +750,8 @@
     "changedSkills": [],
     "changedItems": [],
     "changedProbes": [],
-    "changedTeaching": [
+    "changedTeaching": [],
+    "expandedTeachingExposure": [
       "french-v3-teaching:passe-compose:aller",
       "french-v3-teaching:passe-compose:faire",
       "french-v3-teaching:passe-compose:être",
@@ -870,9 +871,25 @@
       "suivre_chaine_lexicale::all-receptive::text_type:informational",
       "suivre_chaine_lexicale::all-receptive::text_type:narrative"
     ],
-    "compatible": false
+    "compatible": true
   },
   "preservation": {
-    "prepared": false
+    "prepared": true,
+    "preservedFields": {
+      "observations": true,
+      "refinements": true,
+      "completedTeachingIds": true,
+      "exposedMaterialKeys": true,
+      "exposedLearningItemIds": true,
+      "exposedReadingContexts": true,
+      "activeSeconds": true,
+      "completionReason": true,
+      "phase": true,
+      "paused": true
+    },
+    "responsesPreserved": true,
+    "sourceObjectUnchanged": true,
+    "observations": 58,
+    "refinements": 4
   }
 }

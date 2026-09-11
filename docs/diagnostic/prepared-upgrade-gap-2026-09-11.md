@@ -11,3 +11,13 @@ Before allowing this upgrade, implement and test additive exposure compatibility
 The audit itself now checks the actual `activeSeconds` field and rejects absent or non-finite measurements. Its preservation field list is checked against the assessment session type, preventing a misspelled field from silently comparing two undefined values.
 
 The separate frozen 172-target v11 candidate is not changed by this investigation. Its full browser journey continues separately.
+
+## Safeguard implemented
+
+Compatibility now accepts additive exposure bindings only when the lesson body is unchanged, every previous restriction remains, and each added question overlaps the lesson's recorded material. Removed restrictions, unbacked overlaps and changed lesson content remain incompatible.
+
+Learning selection reapplies the current lesson overlap bindings when the student's saved history records lesson completion or contains all of that lesson's material keys. This includes a lesson that was started and then left. It reserves those questions without creating observations, completion records or material receipts. Both the visible activity planner and independent-check selection use this exclusion.
+
+Successor preparation rejects expanded-exposure upgrades when historical material tracking is absent. If completed lessons or prior question exclusions indicate a lesson may have been started, all of its material must be retained. The original state is cloned without changing its evidence, exposure records or active time; the existing database preservation contract is unchanged.
+
+The read-only v10-to-prepared-r11 audit now passes for the completed QA session, preserving 58 observations and four refinements, with 26 additional supported targets. This is preparation evidence only: no real student was migrated and this runtime change has not yet been deployed.

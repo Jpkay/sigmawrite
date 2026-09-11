@@ -46,7 +46,7 @@ export async function runLearningCheckCommand(store:AssessmentStore,studentId:st
   const planned=currentView.learningActivities.find(a=>a.activityId===command.activityId);
   const binding=bundle.activities?.find(a=>a.id===command.activityId&&a.status==="published"&&a.kind==="independent_check");
   if(!planned||!binding)return {error:"Cette vérification n’est pas proposée dans ton parcours."} as const;
-  const seen=learningSeenQuestionIds(session.state,bundle.assessment.probes);
+  const seen=learningSeenQuestionIds(session.state,bundle.assessment.probes,bundle.teachingContent);
   const categoryPriority=categoryExposurePriority(bundle.assessment.probes,seen);
   const knownMaterial=knownExposedMaterialKeys(bundle.assessment.probes,[...session.state.observations,...session.state.refinements],session.state.exposedLearningItemIds,session.state.exposedMaterialKeys??[]);
   const targetSkill=bundle.assessment.skills.find(skill=>skill.id===planned.skillId)!;

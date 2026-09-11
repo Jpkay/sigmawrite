@@ -1,3 +1,4 @@
+import {teachingMaterialKeys} from './material-annotations';
 import {expect,it} from 'vitest';
 import {readFileSync} from 'node:fs';
 import {adaptV3ForAssessment} from './v3-adapter';
@@ -54,4 +55,18 @@ it('allows a previously unused bank question to become available without changin
  expect(inspectLearningReleaseCompatibility(before,target)).toMatchObject({compatible:true,addedItems:[],addedProbes:[previouslyUnused.id]});
  target.assessment.probes.push({...previouslyUnused,id:'not-backed-by-bank'});
  expect(inspectLearningReleaseCompatibility(before,target).compatible).toBe(false);
+});
+
+it('accepts only additive exposure bindings backed by unchanged lesson material',()=>{
+ const a=structuredClone(source),prepared=read('docs/diagnostic/v3-scoped-review-candidate.json');
+ const lesson={...structuredClone(prepared.teachingContent[0]),assessmentExposureIds:[],materialExposure:{words:[{lemma:'aller',form:'aller'}]}};
+ a.teachingContent=[lesson];
+ a.assessment.probes[0].materialKeys=teachingMaterialKeys(lesson);
+ const b=structuredClone(a);b.teachingContent![0].assessmentExposureIds=[b.assessment.probes[0].id];
+ expect(inspectLearningReleaseCompatibility(a,b)).toMatchObject({compatible:true,expandedTeachingExposure:[lesson.id]});
+ expect(inspectLearningReleaseCompatibility(b,a).compatible).toBe(false);
+ const unrelated=structuredClone(b);unrelated.assessment.probes[0].materialKeys=['word:finir'];
+ expect(inspectLearningReleaseCompatibility(a,unrelated).compatible).toBe(false);
+ const absent=structuredClone(b);absent.teachingContent![0].assessmentExposureIds=['invented'];
+ expect(inspectLearningReleaseCompatibility(a,absent).compatible).toBe(false);
 });

@@ -3,6 +3,7 @@ import type {AssessmentBundle,StoredSession} from "./service";
 import {inspectLearningReleaseCompatibility} from "./learning-release-compatibility";
 import {bindAssessmentRelease} from "./release-binding";
 import type {AssessmentSession} from "./session";
+import {teachingMaterialKeys} from './material-annotations';
 
 /** Pure preparation only. Persistence must lock the predecessor revision and
  * create the successor atomically; this function grants no access permission. */
@@ -13,7 +14,19 @@ export function prepareLearningSuccessor(session:StoredSession,source:Assessment
   throw Error("Only an idle completed diagnostic can receive a learning successor");
  }
  if(checksum(state.release)!==checksum(bindAssessmentRelease(source.assessment,source)))throw Error("Predecessor release binding mismatch");
- if(!inspectLearningReleaseCompatibility(source,target).compatible)throw Error("Learning release content is incompatible");
+ const compatibility=inspectLearningReleaseCompatibility(source,target);
+ if(!compatibility.compatible)throw Error("Learning release content is incompatible");
+ if(compatibility.expandedTeachingExposure.length){
+  // Never invent historical receipts to unlock an upgrade. Older sessions
+  // without material tracking stay pinned to their existing release.
+  if(!state.exposedMaterialKeys)throw Error('Historical teaching material tracking is unavailable');
+  const known=new Set(state.exposedMaterialKeys);
+  for(const id of compatibility.expandedTeachingExposure){
+   const lesson=source.teachingContent!.find(value=>value.id===id)!;
+   const possiblyStarted=state.completedTeachingIds?.includes(id)||lesson.assessmentExposureIds.some(item=>state.exposedLearningItemIds.includes(item));
+   if(possiblyStarted&&teachingMaterialKeys(lesson).some(key=>!known.has(key)))throw Error('Previous lesson material history is incomplete');
+  }
+ }
  const release=bindAssessmentRelease(target.assessment,target);
  if(checksum(release)===checksum(state.release))throw Error("Learning release has not changed");
  const probes=new Set(source.assessment.probes.map(probe=>probe.id));

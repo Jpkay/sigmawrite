@@ -25,7 +25,7 @@ const before=checksum(row.state);
 let preservation:Record<string,unknown>={prepared:false};
 if(compatibility.compatible){
  const next=prepareLearningSuccessor({id:row.id,studentId:row.student_id,releaseId:row.release_id,state:row.state},source,target);
- const fields=['observations','refinements','completedTeachingIds','activeSeconds','completionReason','phase','paused'] as const satisfies readonly (keyof AssessmentSession)[];
+ const fields=['observations','refinements','completedTeachingIds','exposedMaterialKeys','exposedLearningItemIds','exposedReadingContexts','activeSeconds','completionReason','phase','paused'] as const satisfies readonly (keyof AssessmentSession)[];
  if(typeof row.state.activeSeconds!=='number'||!Number.isFinite(row.state.activeSeconds))throw Error('Source session has no valid active-time measurement');
  const preservedFields=Object.fromEntries(fields.map(field=>[field,JSON.stringify((row.state as Record<string,unknown>)[field])===JSON.stringify((next as unknown as Record<string,unknown>)[field])]));
  const responsesPreserved=JSON.stringify(next.diagnosticResponses)===JSON.stringify(row.state.diagnosticResponses?.map((r:{sourceSessionId?:string})=>({...r,sourceSessionId:r.sourceSessionId??row.id})));

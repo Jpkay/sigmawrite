@@ -1,5 +1,6 @@
 import {checksum} from "@/lib/taxonomy/validate";
 import type {AssessmentBundle} from "./service";
+import {teachingMaterialKeys} from './material-annotations';
 
 /** Conservative content preflight, not authorization or a session mutation.
  * Callers must independently validate live releases and publication permission.
@@ -15,6 +16,24 @@ export function inspectLearningReleaseCompatibility(source:AssessmentBundle,targ
  const sourceProbes=new Set(source.assessment.probes.map(probe=>probe.id));
  const addedItems=target.bank.items.filter(item=>!sourceItems.has(item.itemKey)).map(item=>item.itemKey);
  const addedProbes=target.assessment.probes.filter(probe=>!sourceProbes.has(probe.id)).map(probe=>probe.id);
+ const expandedTeachingExposure:string[]=[];
+ const changedTeaching=(source.teachingContent??[]).filter(lesson=>{
+  const next=target.teachingContent?.find(value=>value.id===lesson.id);
+  if(!next)return true;
+  if(checksum(lesson)===checksum(next))return false;
+  const {assessmentExposureIds:oldIds,...oldBody}=lesson;
+  const {assessmentExposureIds:newIds,...newBody}=next;
+  if(checksum(oldBody)!==checksum(newBody)||oldIds.some(id=>!newIds.includes(id)))return true;
+  const added=newIds.filter(id=>!oldIds.includes(id));
+  const material=new Set(teachingMaterialKeys(lesson));
+  // Additions must refer to material already present in the unchanged lesson.
+  // Learning exposure resolves these bindings from retained lesson history.
+  if(!added.length||new Set(newIds).size!==newIds.length||added.some(id=>{
+   const probe=target.assessment.probes.find(value=>value.id===id);
+   return !probe||!(probe.materialKeys??[]).some(key=>material.has(key));
+  }))return true;
+  expandedTeachingExposure.push(lesson.id);return false;
+ }).map(lesson=>lesson.id);
  const report={
   addedItems,addedProbes,
   taxonomyUnchanged:source.taxonomyId===target.taxonomyId&&source.assessment.taxonomyChecksum===target.assessment.taxonomyChecksum,
@@ -22,7 +41,7 @@ export function inspectLearningReleaseCompatibility(source:AssessmentBundle,targ
   changedSkills:changed(source.assessment.skills,target.assessment.skills,skill=>skill.id),
   changedItems:changed(source.bank.items,target.bank.items,item=>item.itemKey),
   changedProbes:changed(source.assessment.probes,target.assessment.probes,probe=>probe.id),
-  changedTeaching:changed(source.teachingContent??[],target.teachingContent??[],lesson=>lesson.id),
+  changedTeaching,expandedTeachingExposure,
   changedActivities:changed(source.activities??[],target.activities??[],activity=>activity.id),
   removedScopeTargets:sourceScope.filter(id=>!targetScope.has(id)),
   addedScopeTargets:[...targetScope].filter(id=>!sourceScope.includes(id)),

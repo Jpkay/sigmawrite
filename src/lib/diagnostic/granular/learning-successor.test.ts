@@ -1,3 +1,4 @@
+import {teachingMaterialKeys} from './material-annotations';
 import {expect,it} from 'vitest';
 import {readFileSync} from 'node:fs';
 import {adaptV3ForAssessment} from './v3-adapter';
@@ -42,4 +43,25 @@ it('refuses unfinished, busy, unchanged or incompatible sessions',()=>{
  ]){const {session,target}=fixture();mutate(session);expect(()=>prepareLearningSuccessor(session,source,target)).toThrow();}
  const {session,target}=fixture();expect(()=>prepareLearningSuccessor(session,source,source)).toThrow('not changed');
  target.assessment.skills[0].level++;expect(()=>prepareLearningSuccessor(session,source,target)).toThrow('incompatible');
+});
+
+it('requires retained teaching history before expanding exposure and preserves it exactly',()=>{
+ const a=structuredClone(source),prepared=read('docs/diagnostic/v3-scoped-review-candidate.json');
+ const lesson={...structuredClone(prepared.teachingContent[0]),assessmentExposureIds:[a.assessment.probes[0].id]};
+ a.teachingContent=[lesson];
+ const keys=teachingMaterialKeys(lesson);
+ a.assessment.probes[1].materialKeys=keys;
+ const b=structuredClone(a);b.bankId='expanded-bank';b.teachingContent![0].assessmentExposureIds.push(b.assessment.probes[1].id);
+ const {session}=fixture();session.state.release=bindAssessmentRelease(a.assessment,a);
+ session.state.completedTeachingIds=[lesson.id];session.state.exposedMaterialKeys=keys;
+ const before=structuredClone(session.state);
+ const next=prepareLearningSuccessor(session,a,b);
+ expect(next.exposedMaterialKeys).toEqual(keys);expect(next.observations).toEqual(before.observations);
+ expect(session.state).toEqual(before);
+ session.state.exposedMaterialKeys=[];
+ expect(()=>prepareLearningSuccessor(session,a,b)).toThrow('history is incomplete');
+ session.state.completedTeachingIds=[];session.state.exposedLearningItemIds=[a.assessment.probes[0].id];
+ expect(()=>prepareLearningSuccessor(session,a,b)).toThrow('history is incomplete');
+ delete session.state.exposedMaterialKeys;
+ expect(()=>prepareLearningSuccessor(session,a,b)).toThrow('tracking is unavailable');
 });
