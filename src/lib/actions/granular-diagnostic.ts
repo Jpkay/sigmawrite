@@ -4,6 +4,7 @@ import {requireRole} from "@/lib/auth";
 import {createClient,createServiceClient} from "@/lib/supabase/server";
 import {getCurrentStudentId,getStudentStateData} from "@/lib/db/student";
 import {requireStudentAccessAuthorized} from "@/lib/diagnostic/access";
+import {sharedReleaseContentCache} from "@/lib/diagnostic/granular/release-content-cache";
 import {SupabaseAssessmentStore} from "@/lib/diagnostic/granular/store";
 import {publicAssessmentView,runAssessmentCommand} from "@/lib/diagnostic/granular/service";
 import {runLearningCheckCommand} from "@/lib/diagnostic/granular/learning-service";
@@ -12,7 +13,7 @@ async function context(){
  await requireRole(["student"]);
  const client=await createClient(),studentId=await getCurrentStudentId(client);
  await requireStudentAccessAuthorized(client,studentId);
- return {studentId,client,store:new SupabaseAssessmentStore(createServiceClient())};
+ return {studentId,client,store:new SupabaseAssessmentStore(createServiceClient(),{cache:sharedReleaseContentCache,namespace:process.env.NEXT_PUBLIC_SUPABASE_URL!})};
 }
 export async function startGranularDiagnostic(){
  const {studentId,store,client}=await context();

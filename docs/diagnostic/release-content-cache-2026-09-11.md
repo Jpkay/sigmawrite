@@ -1,0 +1,11 @@
+# Bounded immutable release reuse
+
+The deployed `granular_release_guard` trigger was inspected through a read-only linked-database query. It is enabled (`O`) and rejects changes to published or withdrawn bundle content, checksum, release key and parent identities. The linked project was checked against the runtime Supabase URL first. No published release was mutated to test the guard.
+
+Granular student actions now opt into process-local reuse of validated release content. The cache holds at most two entries, has a 32 MiB serialized-content budget and a fixed 60-second expiry, and freezes nested content against accidental mutation. Keys include the project URL, release ID, content checksum, taxonomy ID and bank ID. Entries exceeding the budget are not retained. This bounds retained content, not total process memory or the size of active requests.
+
+Every lookup still fetches published release metadata. Every action still checks student authentication and access, live parent status and checksums, and the exact publication-permission record. Cached content is not returned when those checks fail. Cold reads fetch the full bundle constrained to the live metadata and verify its checksum and complete preflight before caching. Failures are not cached. Sessions, student identities and access decisions are never stored in this cache. Legacy callers without the explicit cache option retain the original full-fetch behavior.
+
+Local measurements against the paused public 160-target QA account: uncached store/view load 4,417 ms and 11,775,604 response bytes; cold cache 3,580 ms and 11,775,677 bytes; warm loads 1,450 and 1,308 ms with 2,200 and 2,059 bytes. These measurements exclude the action's authentication work and browser rendering. They include response-cloning overhead and are not a controlled latency benchmark. The session remained paused with zero answers.
+
+Validation: 493 granular tests passed; the permission regression also passed with separate store instances sharing the cache. Tests cover fixed expiry, namespace/version isolation, frozen objects, entry/byte limits, oversized entries, live withdrawal and revoked permission. TypeScript and source lint checks are recorded in the working verification logs. This change is prepared, not deployed. Deployed browser measurements and full graph coverage remain unfinished.

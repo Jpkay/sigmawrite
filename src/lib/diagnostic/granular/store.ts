@@ -1,4 +1,5 @@
 import "server-only";
+import type {ReleaseContentCache} from "./release-content-cache";
 import {prepareParallelPublication} from "./publication-contract";
 import {validateActivityBindings} from "./activity-validation";
 import {withKnownMaterialHistory} from "./material-history";
@@ -15,16 +16,29 @@ export class SupabaseAssessmentStore implements AssessmentStore{
  // One deterministic validation result per store instance (normally one action).
  // Content and live availability are still fetched and checked on every call.
  private contentValidation:{checksum:string;preflight:ReturnType<typeof prepareParallelPublication>|null}|null=null;
- constructor(private readonly db:SupabaseClient){}
+ constructor(private readonly db:SupabaseClient,private readonly immutableContent?:{cache:ReleaseContentCache;namespace:string}){}
  async load(studentId:string,sessionId:string):Promise<StoredSession|null>{
   const {data,error}=await this.db.from("granular_assessment_sessions").select("id,student_id,release_id,state").eq("id",sessionId).eq("student_id",studentId).maybeSingle();
   if(error)throw Error(error.message);
   return data?{id:data.id,studentId:data.student_id,releaseId:data.release_id,state:data.state as AssessmentSession}:null;
  }
  async release(id:string):Promise<AssessmentBundle|null>{
-  const {data,error}=await this.db.from("granular_assessment_releases").select("bundle,content_checksum,taxonomy_release_id,bank_release_id").eq("id",id).eq("status","published").maybeSingle();
+  const query=this.db.from("granular_assessment_releases");
+  const result=this.immutableContent
+   ?await query.select("content_checksum,taxonomy_release_id,bank_release_id").eq("id",id).eq("status","published").maybeSingle()
+   :await query.select("bundle,content_checksum,taxonomy_release_id,bank_release_id").eq("id",id).eq("status","published").maybeSingle();
+  const {error}=result;
+  let data:{bundle?:AssessmentBundle;content_checksum:string;taxonomy_release_id:string;bank_release_id:string}|null=result.data;
   if(error)throw Error(error.message);if(!data)return null;
-  if(checksum(data.bundle)!==data.content_checksum)throw Error("Assessment bundle checksum mismatch");
+  const cacheKey=[this.immutableContent?.namespace??"",id,data.content_checksum,data.taxonomy_release_id,data.bank_release_id];
+  const cached=this.immutableContent?.cache.get(cacheKey);
+  if(cached)data={...data,bundle:cached.bundle};
+  else if(this.immutableContent){
+   const full=await this.db.from("granular_assessment_releases").select("bundle,content_checksum,taxonomy_release_id,bank_release_id").eq("id",id).eq("status","published").eq("content_checksum",data.content_checksum).eq("taxonomy_release_id",data.taxonomy_release_id).eq("bank_release_id",data.bank_release_id).maybeSingle();
+   if(full.error)throw Error(full.error.message);if(!full.data)return null;data=full.data;
+  }
+  if(!data.bundle)return null;
+  if(!cached&&checksum(data.bundle)!==data.content_checksum)throw Error("Assessment bundle checksum mismatch");
   if(data.bundle?.taxonomyId!==data.taxonomy_release_id||data.bundle?.bankId!==data.bank_release_id)return null;
   // Bundle provenance is immutable, but availability changes when a parent is
   // withdrawn. Recheck live parent rows before returning questions or lessons.
@@ -38,7 +52,7 @@ export class SupabaseAssessmentStore implements AssessmentStore{
   if(!data.bundle?.assessment?.taxonomyChecksum||!data.bundle?.assessment?.bankChecksum
    ||taxonomy.data.manifest_checksum!==data.bundle.assessment.taxonomyChecksum
    ||bank.data.manifest_checksum!==data.bundle.assessment.bankChecksum)return null;
-  let validation=this.contentValidation?.checksum===data.content_checksum?this.contentValidation:null;
+  let validation=cached?{checksum:data.content_checksum,preflight:cached.preflight}:this.contentValidation?.checksum===data.content_checksum?this.contentValidation:null;
   if(!validation){
    let preflight:ReturnType<typeof prepareParallelPublication>|null=null;
    try{
@@ -68,6 +82,7 @@ export class SupabaseAssessmentStore implements AssessmentStore{
    if(!permission.data||permission.data.bank_checksum!==preflight.bankChecksum
     ||permission.data.taxonomy_checksum!==preflight.taxonomyChecksum||checksum(permission.data.preflight)!==checksum(preflight))return null;
   }
+  if(!cached)this.immutableContent?.cache.set(cacheKey,{bundle:data.bundle as AssessmentBundle,preflight:validation.preflight});
   return data.bundle as AssessmentBundle;
  }
  async recordMaterialPresentation(input:{presentationId:string;studentId:string;sourceChecksum:string;materialKeys:string[]}):Promise<void>{
