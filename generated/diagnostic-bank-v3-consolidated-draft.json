@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "bank": {
-    "key": "french-diagnostic-bank-v3-r12",
-    "version": "3.0.0-r12"
+    "key": "french-diagnostic-bank-v3-r13",
+    "version": "3.0.0-r13"
   },
   "taxonomy": {
     "releaseKey": "french-taxonomy-v3",
@@ -37491,6 +37491,3654 @@
         "verdict": "needs_human_review"
       },
       "reviewStatus": "needs_human_review"
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:parler:1s:0",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec parler au passé composé : J’___ au libraire après la rencontre.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "ai parlé",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "parler",
+          "tense": "passe_compose",
+          "person": "1s",
+          "sentenceApplication": "J’___ au libraire après la rencontre.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai parlé",
+              "as parlé",
+              "a parlé",
+              "avons parlé",
+              "avez parlé",
+              "ont parlé"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "parler",
+                "form": "parler"
+              }
+            ],
+            "sentences": [
+              "J’___ au libraire après la rencontre.",
+              "J’ai parlé au libraire après la rencontre."
+            ],
+            "assessed": {
+              "sentences": [
+                "J’___ au libraire après la rencontre.",
+                "J’ai parlé au libraire après la rencontre."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "ai parlé"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:jouer:2s:1",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec jouer au passé composé : Tu ___ la dernière partie avec Zoé.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "as joué",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "jouer",
+          "tense": "passe_compose",
+          "person": "2s",
+          "sentenceApplication": "Tu ___ la dernière partie avec Zoé.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai joué",
+              "as joué",
+              "a joué",
+              "avons joué",
+              "avez joué",
+              "ont joué"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "jouer",
+                "form": "jouer"
+              }
+            ],
+            "sentences": [
+              "Tu ___ la dernière partie avec Zoé.",
+              "Tu as joué la dernière partie avec Zoé."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu ___ la dernière partie avec Zoé.",
+                "Tu as joué la dernière partie avec Zoé."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "as joué"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:donner:3s:2",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec donner au passé composé : Le surveillant ___ le signal du départ.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "a donné",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "donner",
+          "tense": "passe_compose",
+          "person": "3s",
+          "sentenceApplication": "Le surveillant ___ le signal du départ.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai donné",
+              "as donné",
+              "a donné",
+              "avons donné",
+              "avez donné",
+              "ont donné"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "donner",
+                "form": "donner"
+              }
+            ],
+            "sentences": [
+              "Le surveillant ___ le signal du départ.",
+              "Le surveillant a donné le signal du départ."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le surveillant ___ le signal du départ.",
+                "Le surveillant a donné le signal du départ."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "a donné"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:regarder:1p:3",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec regarder au passé composé : Nous ___ le reportage jusqu’à la fin.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "avons regardé",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "regarder",
+          "tense": "passe_compose",
+          "person": "1p",
+          "sentenceApplication": "Nous ___ le reportage jusqu’à la fin.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai regardé",
+              "as regardé",
+              "a regardé",
+              "avons regardé",
+              "avez regardé",
+              "ont regardé"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "regarder",
+                "form": "regarder"
+              }
+            ],
+            "sentences": [
+              "Nous ___ le reportage jusqu’à la fin.",
+              "Nous avons regardé le reportage jusqu’à la fin."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous ___ le reportage jusqu’à la fin.",
+                "Nous avons regardé le reportage jusqu’à la fin."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "avons regardé"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:chanter:2p:4",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec chanter au passé composé : Vous ___ trois chansons pendant la fête.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "avez chanté",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "chanter",
+          "tense": "passe_compose",
+          "person": "2p",
+          "sentenceApplication": "Vous ___ trois chansons pendant la fête.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai chanté",
+              "as chanté",
+              "a chanté",
+              "avons chanté",
+              "avez chanté",
+              "ont chanté"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "chanter",
+                "form": "chanter"
+              }
+            ],
+            "sentences": [
+              "Vous ___ trois chansons pendant la fête.",
+              "Vous avez chanté trois chansons pendant la fête."
+            ],
+            "assessed": {
+              "sentences": [
+                "Vous ___ trois chansons pendant la fête.",
+                "Vous avez chanté trois chansons pendant la fête."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "avez chanté"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:travailler:3p:5",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec travailler au passé composé : Les bénévoles ___ toute la matinée.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "ont travaillé",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "travailler",
+          "tense": "passe_compose",
+          "person": "3p",
+          "sentenceApplication": "Les bénévoles ___ toute la matinée.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai travaillé",
+              "as travaillé",
+              "a travaillé",
+              "avons travaillé",
+              "avez travaillé",
+              "ont travaillé"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "travailler",
+                "form": "travailler"
+              }
+            ],
+            "sentences": [
+              "Les bénévoles ___ toute la matinée.",
+              "Les bénévoles ont travaillé toute la matinée."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les bénévoles ___ toute la matinée.",
+                "Les bénévoles ont travaillé toute la matinée."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "ont travaillé"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:donner:1s:6",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec donner au passé composé : J’___ mon ancien casque à Léa.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "ai donné",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "donner",
+          "tense": "passe_compose",
+          "person": "1s",
+          "sentenceApplication": "J’___ mon ancien casque à Léa.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai donné",
+              "as donné",
+              "a donné",
+              "avons donné",
+              "avez donné",
+              "ont donné"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "donner",
+                "form": "donner"
+              }
+            ],
+            "sentences": [
+              "J’___ mon ancien casque à Léa.",
+              "J’ai donné mon ancien casque à Léa."
+            ],
+            "assessed": {
+              "sentences": [
+                "J’___ mon ancien casque à Léa.",
+                "J’ai donné mon ancien casque à Léa."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "ai donné"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:parler:2s:7",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec parler au passé composé : Tu ___ de ton projet devant le jury.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "as parlé",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "parler",
+          "tense": "passe_compose",
+          "person": "2s",
+          "sentenceApplication": "Tu ___ de ton projet devant le jury.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai parlé",
+              "as parlé",
+              "a parlé",
+              "avons parlé",
+              "avez parlé",
+              "ont parlé"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "parler",
+                "form": "parler"
+              }
+            ],
+            "sentences": [
+              "Tu ___ de ton projet devant le jury.",
+              "Tu as parlé de ton projet devant le jury."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu ___ de ton projet devant le jury.",
+                "Tu as parlé de ton projet devant le jury."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "as parlé"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:jouer:3s:8",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec jouer au passé composé : Le pianiste ___ un morceau pour nous.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "a joué",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "jouer",
+          "tense": "passe_compose",
+          "person": "3s",
+          "sentenceApplication": "Le pianiste ___ un morceau pour nous.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai joué",
+              "as joué",
+              "a joué",
+              "avons joué",
+              "avez joué",
+              "ont joué"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "jouer",
+                "form": "jouer"
+              }
+            ],
+            "sentences": [
+              "Le pianiste ___ un morceau pour nous.",
+              "Le pianiste a joué un morceau pour nous."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le pianiste ___ un morceau pour nous.",
+                "Le pianiste a joué un morceau pour nous."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "a joué"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:chanter:1p:9",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec chanter au passé composé : Nous ___ pour remercier notre entraîneuse.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "avons chanté",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "chanter",
+          "tense": "passe_compose",
+          "person": "1p",
+          "sentenceApplication": "Nous ___ pour remercier notre entraîneuse.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai chanté",
+              "as chanté",
+              "a chanté",
+              "avons chanté",
+              "avez chanté",
+              "ont chanté"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "chanter",
+                "form": "chanter"
+              }
+            ],
+            "sentences": [
+              "Nous ___ pour remercier notre entraîneuse.",
+              "Nous avons chanté pour remercier notre entraîneuse."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous ___ pour remercier notre entraîneuse.",
+                "Nous avons chanté pour remercier notre entraîneuse."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "avons chanté"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:regarder:2p:10",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec regarder au passé composé : Vous ___ les photos de la cérémonie.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "avez regardé",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "regarder",
+          "tense": "passe_compose",
+          "person": "2p",
+          "sentenceApplication": "Vous ___ les photos de la cérémonie.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai regardé",
+              "as regardé",
+              "a regardé",
+              "avons regardé",
+              "avez regardé",
+              "ont regardé"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "regarder",
+                "form": "regarder"
+              }
+            ],
+            "sentences": [
+              "Vous ___ les photos de la cérémonie.",
+              "Vous avez regardé les photos de la cérémonie."
+            ],
+            "assessed": {
+              "sentences": [
+                "Vous ___ les photos de la cérémonie.",
+                "Vous avez regardé les photos de la cérémonie."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "avez regardé"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:donner:3p:11",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec donner au passé composé : Les voisines ___ des graines aux jardiniers.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "ont donné",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "donner",
+          "tense": "passe_compose",
+          "person": "3p",
+          "sentenceApplication": "Les voisines ___ des graines aux jardiniers.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai donné",
+              "as donné",
+              "a donné",
+              "avons donné",
+              "avez donné",
+              "ont donné"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "donner",
+                "form": "donner"
+              }
+            ],
+            "sentences": [
+              "Les voisines ___ des graines aux jardiniers.",
+              "Les voisines ont donné des graines aux jardiniers."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les voisines ___ des graines aux jardiniers.",
+                "Les voisines ont donné des graines aux jardiniers."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "ont donné"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:finir:1s:12",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec finir au passé composé : J’___ le montage de ma vidéo.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "ai fini",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "finir",
+          "tense": "passe_compose",
+          "person": "1s",
+          "sentenceApplication": "J’___ le montage de ma vidéo.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai fini",
+              "as fini",
+              "a fini",
+              "avons fini",
+              "avez fini",
+              "ont fini"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "finir",
+                "form": "finir"
+              }
+            ],
+            "sentences": [
+              "J’___ le montage de ma vidéo.",
+              "J’ai fini le montage de ma vidéo."
+            ],
+            "assessed": {
+              "sentences": [
+                "J’___ le montage de ma vidéo.",
+                "J’ai fini le montage de ma vidéo."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "ai fini"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:choisir:2s:13",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec choisir au passé composé : Tu ___ une couleur pour le panneau.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "as choisi",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "choisir",
+          "tense": "passe_compose",
+          "person": "2s",
+          "sentenceApplication": "Tu ___ une couleur pour le panneau.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai choisi",
+              "as choisi",
+              "a choisi",
+              "avons choisi",
+              "avez choisi",
+              "ont choisi"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "choisir",
+                "form": "choisir"
+              }
+            ],
+            "sentences": [
+              "Tu ___ une couleur pour le panneau.",
+              "Tu as choisi une couleur pour le panneau."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu ___ une couleur pour le panneau.",
+                "Tu as choisi une couleur pour le panneau."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "as choisi"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:réussir:3s:14",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec réussir au passé composé : Mon frère ___ son examen de conduite.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "a réussi",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "réussir",
+          "tense": "passe_compose",
+          "person": "3s",
+          "sentenceApplication": "Mon frère ___ son examen de conduite.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai réussi",
+              "as réussi",
+              "a réussi",
+              "avons réussi",
+              "avez réussi",
+              "ont réussi"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "réussir",
+                "form": "réussir"
+              }
+            ],
+            "sentences": [
+              "Mon frère ___ son examen de conduite.",
+              "Mon frère a réussi son examen de conduite."
+            ],
+            "assessed": {
+              "sentences": [
+                "Mon frère ___ son examen de conduite.",
+                "Mon frère a réussi son examen de conduite."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "a réussi"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:finir:1p:15",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec finir au passé composé : Nous ___ le nettoyage du terrain.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "avons fini",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "finir",
+          "tense": "passe_compose",
+          "person": "1p",
+          "sentenceApplication": "Nous ___ le nettoyage du terrain.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai fini",
+              "as fini",
+              "a fini",
+              "avons fini",
+              "avez fini",
+              "ont fini"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "finir",
+                "form": "finir"
+              }
+            ],
+            "sentences": [
+              "Nous ___ le nettoyage du terrain.",
+              "Nous avons fini le nettoyage du terrain."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous ___ le nettoyage du terrain.",
+                "Nous avons fini le nettoyage du terrain."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "avons fini"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:choisir:2p:16",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec choisir au passé composé : Vous ___ un nom pour votre équipe.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "avez choisi",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "choisir",
+          "tense": "passe_compose",
+          "person": "2p",
+          "sentenceApplication": "Vous ___ un nom pour votre équipe.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai choisi",
+              "as choisi",
+              "a choisi",
+              "avons choisi",
+              "avez choisi",
+              "ont choisi"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "choisir",
+                "form": "choisir"
+              }
+            ],
+            "sentences": [
+              "Vous ___ un nom pour votre équipe.",
+              "Vous avez choisi un nom pour votre équipe."
+            ],
+            "assessed": {
+              "sentences": [
+                "Vous ___ un nom pour votre équipe.",
+                "Vous avez choisi un nom pour votre équipe."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "avez choisi"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:réussir:3p:17",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec réussir au passé composé : Les grimpeuses ___ à atteindre le sommet.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "ont réussi",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "réussir",
+          "tense": "passe_compose",
+          "person": "3p",
+          "sentenceApplication": "Les grimpeuses ___ à atteindre le sommet.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai réussi",
+              "as réussi",
+              "a réussi",
+              "avons réussi",
+              "avez réussi",
+              "ont réussi"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "réussir",
+                "form": "réussir"
+              }
+            ],
+            "sentences": [
+              "Les grimpeuses ___ à atteindre le sommet.",
+              "Les grimpeuses ont réussi à atteindre le sommet."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les grimpeuses ___ à atteindre le sommet.",
+                "Les grimpeuses ont réussi à atteindre le sommet."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "ont réussi"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:choisir:1s:18",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec choisir au passé composé : J’___ un cadeau pour ma sœur.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "ai choisi",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "choisir",
+          "tense": "passe_compose",
+          "person": "1s",
+          "sentenceApplication": "J’___ un cadeau pour ma sœur.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai choisi",
+              "as choisi",
+              "a choisi",
+              "avons choisi",
+              "avez choisi",
+              "ont choisi"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "choisir",
+                "form": "choisir"
+              }
+            ],
+            "sentences": [
+              "J’___ un cadeau pour ma sœur.",
+              "J’ai choisi un cadeau pour ma sœur."
+            ],
+            "assessed": {
+              "sentences": [
+                "J’___ un cadeau pour ma sœur.",
+                "J’ai choisi un cadeau pour ma sœur."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "ai choisi"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:réussir:2s:19",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec réussir au passé composé : Tu ___ la dernière énigme.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "as réussi",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "réussir",
+          "tense": "passe_compose",
+          "person": "2s",
+          "sentenceApplication": "Tu ___ la dernière énigme.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai réussi",
+              "as réussi",
+              "a réussi",
+              "avons réussi",
+              "avez réussi",
+              "ont réussi"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "réussir",
+                "form": "réussir"
+              }
+            ],
+            "sentences": [
+              "Tu ___ la dernière énigme.",
+              "Tu as réussi la dernière énigme."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu ___ la dernière énigme.",
+                "Tu as réussi la dernière énigme."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "as réussi"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:finir:3s:20",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec finir au passé composé : La classe ___ le rangement du matériel.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "a fini",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "finir",
+          "tense": "passe_compose",
+          "person": "3s",
+          "sentenceApplication": "La classe ___ le rangement du matériel.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai fini",
+              "as fini",
+              "a fini",
+              "avons fini",
+              "avez fini",
+              "ont fini"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "finir",
+                "form": "finir"
+              }
+            ],
+            "sentences": [
+              "La classe ___ le rangement du matériel.",
+              "La classe a fini le rangement du matériel."
+            ],
+            "assessed": {
+              "sentences": [
+                "La classe ___ le rangement du matériel.",
+                "La classe a fini le rangement du matériel."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "a fini"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:choisir:1p:21",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec choisir au passé composé : Nous ___ les images du journal.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "avons choisi",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "choisir",
+          "tense": "passe_compose",
+          "person": "1p",
+          "sentenceApplication": "Nous ___ les images du journal.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai choisi",
+              "as choisi",
+              "a choisi",
+              "avons choisi",
+              "avez choisi",
+              "ont choisi"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "choisir",
+                "form": "choisir"
+              }
+            ],
+            "sentences": [
+              "Nous ___ les images du journal.",
+              "Nous avons choisi les images du journal."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous ___ les images du journal.",
+                "Nous avons choisi les images du journal."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "avons choisi"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:finir:2p:22",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec finir au passé composé : Vous ___ la maquette du pont.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "avez fini",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "finir",
+          "tense": "passe_compose",
+          "person": "2p",
+          "sentenceApplication": "Vous ___ la maquette du pont.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai fini",
+              "as fini",
+              "a fini",
+              "avons fini",
+              "avez fini",
+              "ont fini"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "finir",
+                "form": "finir"
+              }
+            ],
+            "sentences": [
+              "Vous ___ la maquette du pont.",
+              "Vous avez fini la maquette du pont."
+            ],
+            "assessed": {
+              "sentences": [
+                "Vous ___ la maquette du pont.",
+                "Vous avez fini la maquette du pont."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "avez fini"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:réussir:3p:23",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec réussir au passé composé : Les apprentis ___ leur première recette.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "ont réussi",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "réussir",
+          "tense": "passe_compose",
+          "person": "3p",
+          "sentenceApplication": "Les apprentis ___ leur première recette.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai réussi",
+              "as réussi",
+              "a réussi",
+              "avons réussi",
+              "avez réussi",
+              "ont réussi"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "réussir",
+                "form": "réussir"
+              }
+            ],
+            "sentences": [
+              "Les apprentis ___ leur première recette.",
+              "Les apprentis ont réussi leur première recette."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les apprentis ___ leur première recette.",
+                "Les apprentis ont réussi leur première recette."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "ont réussi"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:manger:1s:24",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec manger au passé composé : J’___ les biscuits du goûter.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "ai mangé",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "manger",
+          "tense": "passe_compose",
+          "person": "1s",
+          "sentenceApplication": "J’___ les biscuits du goûter.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai mangé",
+              "as mangé",
+              "a mangé",
+              "avons mangé",
+              "avez mangé",
+              "ont mangé"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "manger",
+                "form": "manger"
+              }
+            ],
+            "sentences": [
+              "J’___ les biscuits du goûter.",
+              "J’ai mangé les biscuits du goûter."
+            ],
+            "assessed": {
+              "sentences": [
+                "J’___ les biscuits du goûter.",
+                "J’ai mangé les biscuits du goûter."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "ai mangé"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:nager:2s:25",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec nager au passé composé : Tu ___ deux longueurs sans pause.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "as nagé",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "nager",
+          "tense": "passe_compose",
+          "person": "2s",
+          "sentenceApplication": "Tu ___ deux longueurs sans pause.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai nagé",
+              "as nagé",
+              "a nagé",
+              "avons nagé",
+              "avez nagé",
+              "ont nagé"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "nager",
+                "form": "nager"
+              }
+            ],
+            "sentences": [
+              "Tu ___ deux longueurs sans pause.",
+              "Tu as nagé deux longueurs sans pause."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu ___ deux longueurs sans pause.",
+                "Tu as nagé deux longueurs sans pause."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "as nagé"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:voyager:3s:26",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec voyager au passé composé : La chercheuse ___ pendant douze heures.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "a voyagé",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "voyager",
+          "tense": "passe_compose",
+          "person": "3s",
+          "sentenceApplication": "La chercheuse ___ pendant douze heures.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai voyagé",
+              "as voyagé",
+              "a voyagé",
+              "avons voyagé",
+              "avez voyagé",
+              "ont voyagé"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "voyager",
+                "form": "voyager"
+              }
+            ],
+            "sentences": [
+              "La chercheuse ___ pendant douze heures.",
+              "La chercheuse a voyagé pendant douze heures."
+            ],
+            "assessed": {
+              "sentences": [
+                "La chercheuse ___ pendant douze heures.",
+                "La chercheuse a voyagé pendant douze heures."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "a voyagé"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:manger:1p:27",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec manger au passé composé : Nous ___ avant de reprendre la route.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "avons mangé",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "manger",
+          "tense": "passe_compose",
+          "person": "1p",
+          "sentenceApplication": "Nous ___ avant de reprendre la route.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai mangé",
+              "as mangé",
+              "a mangé",
+              "avons mangé",
+              "avez mangé",
+              "ont mangé"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "manger",
+                "form": "manger"
+              }
+            ],
+            "sentences": [
+              "Nous ___ avant de reprendre la route.",
+              "Nous avons mangé avant de reprendre la route."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous ___ avant de reprendre la route.",
+                "Nous avons mangé avant de reprendre la route."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "avons mangé"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:nager:2p:28",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec nager au passé composé : Vous ___ jusqu’au ponton.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "avez nagé",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "nager",
+          "tense": "passe_compose",
+          "person": "2p",
+          "sentenceApplication": "Vous ___ jusqu’au ponton.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai nagé",
+              "as nagé",
+              "a nagé",
+              "avons nagé",
+              "avez nagé",
+              "ont nagé"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "nager",
+                "form": "nager"
+              }
+            ],
+            "sentences": [
+              "Vous ___ jusqu’au ponton.",
+              "Vous avez nagé jusqu’au ponton."
+            ],
+            "assessed": {
+              "sentences": [
+                "Vous ___ jusqu’au ponton.",
+                "Vous avez nagé jusqu’au ponton."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "avez nagé"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:voyager:3p:29",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec voyager au passé composé : Les artistes ___ ensemble jusqu’à Nantes.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "ont voyagé",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "voyager",
+          "tense": "passe_compose",
+          "person": "3p",
+          "sentenceApplication": "Les artistes ___ ensemble jusqu’à Nantes.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai voyagé",
+              "as voyagé",
+              "a voyagé",
+              "avons voyagé",
+              "avez voyagé",
+              "ont voyagé"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "voyager",
+                "form": "voyager"
+              }
+            ],
+            "sentences": [
+              "Les artistes ___ ensemble jusqu’à Nantes.",
+              "Les artistes ont voyagé ensemble jusqu’à Nantes."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les artistes ___ ensemble jusqu’à Nantes.",
+                "Les artistes ont voyagé ensemble jusqu’à Nantes."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "ont voyagé"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:voyager:1s:30",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec voyager au passé composé : J’___ pour la première fois en bateau.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "ai voyagé",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "voyager",
+          "tense": "passe_compose",
+          "person": "1s",
+          "sentenceApplication": "J’___ pour la première fois en bateau.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai voyagé",
+              "as voyagé",
+              "a voyagé",
+              "avons voyagé",
+              "avez voyagé",
+              "ont voyagé"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "voyager",
+                "form": "voyager"
+              }
+            ],
+            "sentences": [
+              "J’___ pour la première fois en bateau.",
+              "J’ai voyagé pour la première fois en bateau."
+            ],
+            "assessed": {
+              "sentences": [
+                "J’___ pour la première fois en bateau.",
+                "J’ai voyagé pour la première fois en bateau."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "ai voyagé"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:manger:2s:31",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec manger au passé composé : Tu ___ une part de tarte aux prunes.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "as mangé",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "manger",
+          "tense": "passe_compose",
+          "person": "2s",
+          "sentenceApplication": "Tu ___ une part de tarte aux prunes.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai mangé",
+              "as mangé",
+              "a mangé",
+              "avons mangé",
+              "avez mangé",
+              "ont mangé"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "manger",
+                "form": "manger"
+              }
+            ],
+            "sentences": [
+              "Tu ___ une part de tarte aux prunes.",
+              "Tu as mangé une part de tarte aux prunes."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu ___ une part de tarte aux prunes.",
+                "Tu as mangé une part de tarte aux prunes."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "as mangé"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:nager:3s:32",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec nager au passé composé : La finaliste ___ plus vite que la veille.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "a nagé",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "nager",
+          "tense": "passe_compose",
+          "person": "3s",
+          "sentenceApplication": "La finaliste ___ plus vite que la veille.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai nagé",
+              "as nagé",
+              "a nagé",
+              "avons nagé",
+              "avez nagé",
+              "ont nagé"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "nager",
+                "form": "nager"
+              }
+            ],
+            "sentences": [
+              "La finaliste ___ plus vite que la veille.",
+              "La finaliste a nagé plus vite que la veille."
+            ],
+            "assessed": {
+              "sentences": [
+                "La finaliste ___ plus vite que la veille.",
+                "La finaliste a nagé plus vite que la veille."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "a nagé"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:voyager:1p:33",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec voyager au passé composé : Nous ___ en train pendant les vacances.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "avons voyagé",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "voyager",
+          "tense": "passe_compose",
+          "person": "1p",
+          "sentenceApplication": "Nous ___ en train pendant les vacances.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai voyagé",
+              "as voyagé",
+              "a voyagé",
+              "avons voyagé",
+              "avez voyagé",
+              "ont voyagé"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "voyager",
+                "form": "voyager"
+              }
+            ],
+            "sentences": [
+              "Nous ___ en train pendant les vacances.",
+              "Nous avons voyagé en train pendant les vacances."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous ___ en train pendant les vacances.",
+                "Nous avons voyagé en train pendant les vacances."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "avons voyagé"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:manger:2p:34",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec manger au passé composé : Vous ___ avec vos correspondants.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "avez mangé",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "manger",
+          "tense": "passe_compose",
+          "person": "2p",
+          "sentenceApplication": "Vous ___ avec vos correspondants.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai mangé",
+              "as mangé",
+              "a mangé",
+              "avons mangé",
+              "avez mangé",
+              "ont mangé"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "manger",
+                "form": "manger"
+              }
+            ],
+            "sentences": [
+              "Vous ___ avec vos correspondants.",
+              "Vous avez mangé avec vos correspondants."
+            ],
+            "assessed": {
+              "sentences": [
+                "Vous ___ avec vos correspondants.",
+                "Vous avez mangé avec vos correspondants."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "avez mangé"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:nager:3p:35",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec nager au passé composé : Les sauveteurs ___ jusqu’à la bouée.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "ont nagé",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "nager",
+          "tense": "passe_compose",
+          "person": "3p",
+          "sentenceApplication": "Les sauveteurs ___ jusqu’à la bouée.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai nagé",
+              "as nagé",
+              "a nagé",
+              "avons nagé",
+              "avez nagé",
+              "ont nagé"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "nager",
+                "form": "nager"
+              }
+            ],
+            "sentences": [
+              "Les sauveteurs ___ jusqu’à la bouée.",
+              "Les sauveteurs ont nagé jusqu’à la bouée."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les sauveteurs ___ jusqu’à la bouée.",
+                "Les sauveteurs ont nagé jusqu’à la bouée."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "ont nagé"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:commencer:1s:36",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec commencer au passé composé : J’___ la lecture du roman de ma cousine.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "ai commencé",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "commencer",
+          "tense": "passe_compose",
+          "person": "1s",
+          "sentenceApplication": "J’___ la lecture du roman de ma cousine.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai commencé",
+              "as commencé",
+              "a commencé",
+              "avons commencé",
+              "avez commencé",
+              "ont commencé"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "commencer",
+                "form": "commencer"
+              }
+            ],
+            "sentences": [
+              "J’___ la lecture du roman de ma cousine.",
+              "J’ai commencé la lecture du roman de ma cousine."
+            ],
+            "assessed": {
+              "sentences": [
+                "J’___ la lecture du roman de ma cousine.",
+                "J’ai commencé la lecture du roman de ma cousine."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "ai commencé"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:lancer:2s:37",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec lancer au passé composé : Tu ___ le ballon au gardien.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "as lancé",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "lancer",
+          "tense": "passe_compose",
+          "person": "2s",
+          "sentenceApplication": "Tu ___ le ballon au gardien.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai lancé",
+              "as lancé",
+              "a lancé",
+              "avons lancé",
+              "avez lancé",
+              "ont lancé"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "lancer",
+                "form": "lancer"
+              }
+            ],
+            "sentences": [
+              "Tu ___ le ballon au gardien.",
+              "Tu as lancé le ballon au gardien."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu ___ le ballon au gardien.",
+                "Tu as lancé le ballon au gardien."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "as lancé"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:avancer:3s:38",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec avancer au passé composé : Le groupe ___ de cinq kilomètres.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "a avancé",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "avancer",
+          "tense": "passe_compose",
+          "person": "3s",
+          "sentenceApplication": "Le groupe ___ de cinq kilomètres.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai avancé",
+              "as avancé",
+              "a avancé",
+              "avons avancé",
+              "avez avancé",
+              "ont avancé"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "avancer",
+                "form": "avancer"
+              }
+            ],
+            "sentences": [
+              "Le groupe ___ de cinq kilomètres.",
+              "Le groupe a avancé de cinq kilomètres."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le groupe ___ de cinq kilomètres.",
+                "Le groupe a avancé de cinq kilomètres."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "a avancé"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:commencer:1p:39",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec commencer au passé composé : Nous ___ la préparation du spectacle.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "avons commencé",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "commencer",
+          "tense": "passe_compose",
+          "person": "1p",
+          "sentenceApplication": "Nous ___ la préparation du spectacle.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai commencé",
+              "as commencé",
+              "a commencé",
+              "avons commencé",
+              "avez commencé",
+              "ont commencé"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "commencer",
+                "form": "commencer"
+              }
+            ],
+            "sentences": [
+              "Nous ___ la préparation du spectacle.",
+              "Nous avons commencé la préparation du spectacle."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous ___ la préparation du spectacle.",
+                "Nous avons commencé la préparation du spectacle."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "avons commencé"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:lancer:2p:40",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec lancer au passé composé : Vous ___ les dés pour choisir le départ.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "avez lancé",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "lancer",
+          "tense": "passe_compose",
+          "person": "2p",
+          "sentenceApplication": "Vous ___ les dés pour choisir le départ.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai lancé",
+              "as lancé",
+              "a lancé",
+              "avons lancé",
+              "avez lancé",
+              "ont lancé"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "lancer",
+                "form": "lancer"
+              }
+            ],
+            "sentences": [
+              "Vous ___ les dés pour choisir le départ.",
+              "Vous avez lancé les dés pour choisir le départ."
+            ],
+            "assessed": {
+              "sentences": [
+                "Vous ___ les dés pour choisir le départ.",
+                "Vous avez lancé les dés pour choisir le départ."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "avez lancé"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:avancer:3p:41",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec avancer au passé composé : Les camions ___ jusqu’au portail.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "ont avancé",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "avancer",
+          "tense": "passe_compose",
+          "person": "3p",
+          "sentenceApplication": "Les camions ___ jusqu’au portail.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai avancé",
+              "as avancé",
+              "a avancé",
+              "avons avancé",
+              "avez avancé",
+              "ont avancé"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "avancer",
+                "form": "avancer"
+              }
+            ],
+            "sentences": [
+              "Les camions ___ jusqu’au portail.",
+              "Les camions ont avancé jusqu’au portail."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les camions ___ jusqu’au portail.",
+                "Les camions ont avancé jusqu’au portail."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "ont avancé"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:avancer:1s:42",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec avancer au passé composé : J’___ ma chaise près du bureau.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "ai avancé",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "avancer",
+          "tense": "passe_compose",
+          "person": "1s",
+          "sentenceApplication": "J’___ ma chaise près du bureau.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai avancé",
+              "as avancé",
+              "a avancé",
+              "avons avancé",
+              "avez avancé",
+              "ont avancé"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "avancer",
+                "form": "avancer"
+              }
+            ],
+            "sentences": [
+              "J’___ ma chaise près du bureau.",
+              "J’ai avancé ma chaise près du bureau."
+            ],
+            "assessed": {
+              "sentences": [
+                "J’___ ma chaise près du bureau.",
+                "J’ai avancé ma chaise près du bureau."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "ai avancé"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:commencer:2s:43",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec commencer au passé composé : Tu ___ ton stage lundi dernier.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "as commencé",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "commencer",
+          "tense": "passe_compose",
+          "person": "2s",
+          "sentenceApplication": "Tu ___ ton stage lundi dernier.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai commencé",
+              "as commencé",
+              "a commencé",
+              "avons commencé",
+              "avez commencé",
+              "ont commencé"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "commencer",
+                "form": "commencer"
+              }
+            ],
+            "sentences": [
+              "Tu ___ ton stage lundi dernier.",
+              "Tu as commencé ton stage lundi dernier."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu ___ ton stage lundi dernier.",
+                "Tu as commencé ton stage lundi dernier."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "as commencé"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:lancer:3s:44",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec lancer au passé composé : La joueuse ___ la balle à sa partenaire.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "a lancé",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "lancer",
+          "tense": "passe_compose",
+          "person": "3s",
+          "sentenceApplication": "La joueuse ___ la balle à sa partenaire.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai lancé",
+              "as lancé",
+              "a lancé",
+              "avons lancé",
+              "avez lancé",
+              "ont lancé"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "lancer",
+                "form": "lancer"
+              }
+            ],
+            "sentences": [
+              "La joueuse ___ la balle à sa partenaire.",
+              "La joueuse a lancé la balle à sa partenaire."
+            ],
+            "assessed": {
+              "sentences": [
+                "La joueuse ___ la balle à sa partenaire.",
+                "La joueuse a lancé la balle à sa partenaire."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "a lancé"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:avancer:1p:45",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec avancer au passé composé : Nous ___ les tables contre le mur.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "avons avancé",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "avancer",
+          "tense": "passe_compose",
+          "person": "1p",
+          "sentenceApplication": "Nous ___ les tables contre le mur.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai avancé",
+              "as avancé",
+              "a avancé",
+              "avons avancé",
+              "avez avancé",
+              "ont avancé"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "avancer",
+                "form": "avancer"
+              }
+            ],
+            "sentences": [
+              "Nous ___ les tables contre le mur.",
+              "Nous avons avancé les tables contre le mur."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous ___ les tables contre le mur.",
+                "Nous avons avancé les tables contre le mur."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "avons avancé"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:commencer:2p:46",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec commencer au passé composé : Vous ___ l’entraînement à neuf heures.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "avez commencé",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "commencer",
+          "tense": "passe_compose",
+          "person": "2p",
+          "sentenceApplication": "Vous ___ l’entraînement à neuf heures.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai commencé",
+              "as commencé",
+              "a commencé",
+              "avons commencé",
+              "avez commencé",
+              "ont commencé"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "commencer",
+                "form": "commencer"
+              }
+            ],
+            "sentences": [
+              "Vous ___ l’entraînement à neuf heures.",
+              "Vous avez commencé l’entraînement à neuf heures."
+            ],
+            "assessed": {
+              "sentences": [
+                "Vous ___ l’entraînement à neuf heures.",
+                "Vous avez commencé l’entraînement à neuf heures."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "avez commencé"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-compose-family-production:lancer:3p:47",
+      "item": {
+        "nodeKey": "produire_passe_compose",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec lancer au passé composé : Les bénévoles ___ une collecte de livres.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "ont lancé",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "lancer",
+          "tense": "passe_compose",
+          "person": "3p",
+          "sentenceApplication": "Les bénévoles ___ une collecte de livres.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ai lancé",
+              "as lancé",
+              "a lancé",
+              "avons lancé",
+              "avez lancé",
+              "ont lancé"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les six formes écrites distinctes de l’auxiliaire avoir donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "lancer",
+                "form": "lancer"
+              }
+            ],
+            "sentences": [
+              "Les bénévoles ___ une collecte de livres.",
+              "Les bénévoles ont lancé une collecte de livres."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les bénévoles ___ une collecte de livres.",
+                "Les bénévoles ont lancé une collecte de livres."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "ont lancé"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
     },
     {
       "itemKey": "v3-imparfait-family-production:parler:1s:0",
@@ -375964,9 +379612,9 @@
     }
   ],
   "manifest": {
-    "itemCount": 6004,
+    "itemCount": 6052,
     "eligibleItemCount": 238,
-    "pendingItemCount": 5766,
+    "pendingItemCount": 5814,
     "publicationMode": "partial",
     "nodeCount": 114,
     "sectionReadiness": [
@@ -376015,6 +379663,6 @@
         "difficultyTierCount": 3
       }
     ],
-    "checksum": "sha256:9a41aea90fd2dd0836425721baf1140271cc4d01f7dc0178b687e793d5f76905"
+    "checksum": "sha256:44098d1b876c0e03198b51b6fec38e9957767b74fa1605ca71c27d576221bdd1"
   }
 }

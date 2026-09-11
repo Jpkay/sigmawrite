@@ -1,12 +1,12 @@
 {
   "status": "prepared_inventory_not_release_or_review_approval",
-  "parallelCandidateChecksum": "sha256:2d0c7ac72dd8497c860cd7e420b82b097a71363f57561343d0f4bf784f6b12e3",
-  "scopedCandidateChecksum": "sha256:7b9817ee73a499d7f7968ac7949cf598d793880794a5f4b2fbd3238dbbbde8e1",
+  "parallelCandidateChecksum": "sha256:416ab688e9e882d6dd475b209cbc0f20ad3a1ca812c5b262d88d557b32a6ed61",
+  "scopedCandidateChecksum": "sha256:c2eb92db2d3ac2cf2e6f5fb72c1682d5c5d8055ccf7b5e481b2e426cb1ef2510",
   "targets": 542,
   "counts": {
-    "prepared_scoped_pathway": 215,
+    "prepared_scoped_pathway": 219,
     "complete_question_pools": 236,
-    "author_exact_target_lesson": 73,
+    "author_exact_target_lesson": 69,
     "connected_writing_evidence": 18
   },
   "limitations": [
@@ -269,12 +269,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "produire_passe_compose::writing-controlled-production::pattern:regular_er",
-        "produire_passe_compose::writing-controlled-production::pattern:regular_ir",
-        "produire_passe_compose::writing-controlled-production::pattern:spelling_ger",
-        "produire_passe_compose::writing-controlled-production::pattern:spelling_cer"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "accorder_participe_etre::writing-controlled-production::construction:plural",
@@ -292,12 +287,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "produire_passe_compose::writing-controlled-production::pattern:regular_er",
-        "produire_passe_compose::writing-controlled-production::pattern:regular_ir",
-        "produire_passe_compose::writing-controlled-production::pattern:spelling_ger",
-        "produire_passe_compose::writing-controlled-production::pattern:spelling_cer"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "accorder_participe_etre::writing-controlled-production::construction:both",
@@ -315,12 +305,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "produire_passe_compose::writing-controlled-production::pattern:regular_er",
-        "produire_passe_compose::writing-controlled-production::pattern:regular_ir",
-        "produire_passe_compose::writing-controlled-production::pattern:spelling_ger",
-        "produire_passe_compose::writing-controlled-production::pattern:spelling_cer"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "accorder_participe_avoir_cod::writing-controlled-production::construction:preceding",
@@ -338,12 +323,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "produire_passe_compose::writing-controlled-production::pattern:regular_er",
-        "produire_passe_compose::writing-controlled-production::pattern:regular_ir",
-        "produire_passe_compose::writing-controlled-production::pattern:spelling_ger",
-        "produire_passe_compose::writing-controlled-production::pattern:spelling_cer"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "accorder_participe_avoir_cod::writing-controlled-production::construction:following",
@@ -361,12 +341,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "produire_passe_compose::writing-controlled-production::pattern:regular_er",
-        "produire_passe_compose::writing-controlled-production::pattern:regular_ir",
-        "produire_passe_compose::writing-controlled-production::pattern:spelling_ger",
-        "produire_passe_compose::writing-controlled-production::pattern:spelling_cer"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "accorder_participe_avoir_cod::writing-controlled-production::construction:absent",
@@ -384,12 +359,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "produire_passe_compose::writing-controlled-production::pattern:regular_er",
-        "produire_passe_compose::writing-controlled-production::pattern:regular_ir",
-        "produire_passe_compose::writing-controlled-production::pattern:spelling_ger",
-        "produire_passe_compose::writing-controlled-production::pattern:spelling_cer"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "interpreter_marqueur_temporel::reading-receptive",
@@ -1904,72 +1874,80 @@
       "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
       "nodeKey": "produire_passe_compose",
       "facetKey": "produire_passe_compose::pattern:regular_er",
-      "action": "author_exact_target_lesson",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 29,
-          "learningItems": 28
+          "initialItems": 35,
+          "learningItems": 34
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:passe-compose:pattern:regular_er"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_ir",
       "nodeKey": "produire_passe_compose",
       "facetKey": "produire_passe_compose::pattern:regular_ir",
-      "action": "author_exact_target_lesson",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_ir",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 16,
-          "learningItems": 16
+          "initialItems": 22,
+          "learningItems": 22
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:passe-compose:pattern:regular_ir"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_passe_compose::writing-controlled-production::pattern:spelling_ger",
       "nodeKey": "produire_passe_compose",
       "facetKey": "produire_passe_compose::pattern:spelling_ger",
-      "action": "author_exact_target_lesson",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_passe_compose::writing-controlled-production::pattern:spelling_ger",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 12,
-          "learningItems": 12
+          "initialItems": 18,
+          "learningItems": 18
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:passe-compose:pattern:spelling_ger"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_passe_compose::writing-controlled-production::pattern:spelling_cer",
       "nodeKey": "produire_passe_compose",
       "facetKey": "produire_passe_compose::pattern:spelling_cer",
-      "action": "author_exact_target_lesson",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_passe_compose::writing-controlled-production::pattern:spelling_cer",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 12,
-          "learningItems": 12
+          "initialItems": 18,
+          "learningItems": 18
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:passe-compose:pattern:spelling_cer"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
@@ -1988,12 +1966,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "produire_passe_compose::writing-controlled-production::pattern:regular_er",
-        "produire_passe_compose::writing-controlled-production::pattern:regular_ir",
-        "produire_passe_compose::writing-controlled-production::pattern:spelling_ger",
-        "produire_passe_compose::writing-controlled-production::pattern:spelling_cer"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "reconnaitre_imparfait::reading-receptive",
@@ -2431,10 +2404,6 @@
       "lessonIds": [],
       "freshCheckAvailable": false,
       "prerequisitesOutsidePreparedScope": [
-        "produire_passe_compose::writing-controlled-production::pattern:regular_er",
-        "produire_passe_compose::writing-controlled-production::pattern:regular_ir",
-        "produire_passe_compose::writing-controlled-production::pattern:spelling_ger",
-        "produire_passe_compose::writing-controlled-production::pattern:spelling_cer",
         "contraster_pc_imparfait::reading-receptive"
       ]
     },
@@ -10047,12 +10016,7 @@
         "french-v3-teaching:pronoun-placement:finite"
       ],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "produire_passe_compose::writing-controlled-production::pattern:regular_er",
-        "produire_passe_compose::writing-controlled-production::pattern:regular_ir",
-        "produire_passe_compose::writing-controlled-production::pattern:spelling_ger",
-        "produire_passe_compose::writing-controlled-production::pattern:spelling_cer"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "placer_pronom_complement::writing-controlled-production::construction:infinitive",
@@ -10072,12 +10036,7 @@
         "french-v3-teaching:pronoun-placement:infinitive"
       ],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "produire_passe_compose::writing-controlled-production::pattern:regular_er",
-        "produire_passe_compose::writing-controlled-production::pattern:regular_ir",
-        "produire_passe_compose::writing-controlled-production::pattern:spelling_ger",
-        "produire_passe_compose::writing-controlled-production::pattern:spelling_cer"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "placer_pronom_complement::writing-controlled-production::construction:negative",
@@ -10097,12 +10056,7 @@
         "french-v3-teaching:pronoun-placement:negative"
       ],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "produire_passe_compose::writing-controlled-production::pattern:regular_er",
-        "produire_passe_compose::writing-controlled-production::pattern:regular_ir",
-        "produire_passe_compose::writing-controlled-production::pattern:spelling_ger",
-        "produire_passe_compose::writing-controlled-production::pattern:spelling_cer"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "placer_pronom_complement::writing-controlled-production::construction:imperative",
@@ -10122,12 +10076,7 @@
         "french-v3-teaching:pronoun-placement:imperative"
       ],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "produire_passe_compose::writing-controlled-production::pattern:regular_er",
-        "produire_passe_compose::writing-controlled-production::pattern:regular_ir",
-        "produire_passe_compose::writing-controlled-production::pattern:spelling_ger",
-        "produire_passe_compose::writing-controlled-production::pattern:spelling_cer"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "accorder_participe_cod_antepose::writing-controlled-production::construction:pronoun",
