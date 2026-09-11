@@ -8,7 +8,7 @@ Regenerate: `npx tsx scripts/build-v3-delivery-matrix.mts`. Verify without writi
 
 | Domain | Targets | Eligible questions | Targets without eligible questions | Allocated pools | Expansion drafts |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| conjugation | 255 | 77 | 195 | 0 | 3132 |
+| conjugation | 255 | 77 | 195 | 0 | 3300 |
 | reading_comprehension | 92 | 21 | 74 | 0 | 80 |
 | grammar | 79 | 56 | 43 | 0 | 194 |
 | spelling | 116 | 79 | 60 | 0 | 270 |
@@ -19,7 +19,7 @@ These counts describe authoring drafts, not approved lessons or published pathwa
 
 | Domain | Targets with teaching drafts | Targets without teaching drafts | Guided exercise drafts |
 | --- | ---: | ---: | ---: |
-| conjugation | 40 | 215 | 244 |
+| conjugation | 54 | 201 | 328 |
 | reading_comprehension | 10 | 82 | 44 |
 | grammar | 19 | 60 | 97 |
 | spelling | 19 | 97 | 90 |
@@ -184,20 +184,20 @@ Full evidence requirements, prerequisite IDs, question IDs, source checksums and
 | Reconnaître le passé simple | recognition / initial | 1 | 1 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
 | Interpréter la valeur narrative du passé simple | recognition / initial | 2 | 2 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
 | Reconnaître le futur simple | recognition / initial | 2 | 2 / 0 (insufficient_coverage) | 12 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
-| Produire le futur simple — Conjuguer être | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
-| Produire le futur simple — Conjuguer avoir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
-| Produire le futur simple — Conjuguer aller | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
-| Produire le futur simple — Conjuguer faire | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
-| Produire le futur simple — Conjuguer prendre | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
-| Produire le futur simple — Conjuguer venir | production / initial | 1 | 1 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
-| Produire le futur simple — Conjuguer partir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
-| Produire le futur simple — Conjuguer sortir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
-| Produire le futur simple — Conjuguer dire | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
-| Produire le futur simple — Conjuguer voir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
-| Produire le futur simple — Conjuguer pouvoir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
-| Produire le futur simple — Conjuguer vouloir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
-| Produire le futur simple — Conjuguer savoir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
-| Produire le futur simple — Conjuguer devoir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
+| Produire le futur simple — Conjuguer être | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le futur simple — Conjuguer avoir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le futur simple — Conjuguer aller | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le futur simple — Conjuguer faire | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le futur simple — Conjuguer prendre | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le futur simple — Conjuguer venir | production / initial | 1 | 1 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le futur simple — Conjuguer partir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le futur simple — Conjuguer sortir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le futur simple — Conjuguer dire | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le futur simple — Conjuguer voir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le futur simple — Conjuguer pouvoir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le futur simple — Conjuguer vouloir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le futur simple — Conjuguer savoir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le futur simple — Conjuguer devoir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
 | Produire le futur simple — Verbes réguliers en -er | production / initial | 1 | 1 / 0 (insufficient_coverage) | 56 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
 | Produire le futur simple — Verbes en -ir comme finir | production / initial | 1 | 1 / 0 (insufficient_coverage) | 32 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
 | Produire le futur simple — Verbes en -ger | production / initial | 0 | 0 / 0 (insufficient_coverage) | 24 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |

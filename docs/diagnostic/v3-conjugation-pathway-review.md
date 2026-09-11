@@ -403,6 +403,174 @@ These supplied-tense gaps exercise regular forms, individual verbs and the actua
 - **v3-granular-forms:imparfait-application-context:devoir:1p:189**: Complète la phrase avec devoir à l’imparfait : Nous ___ respecter le silence. Réponse : **devions**.
 - **v3-granular-forms:imparfait-application-context:devoir:2p:190**: Complète la phrase avec devoir à l’imparfait : Vous ___ attendre votre tour. Réponse : **deviez**.
 - **v3-granular-forms:imparfait-application-context:devoir:3p:191**: Complète la phrase avec devoir à l’imparfait : Les campeurs ___ éteindre leur feu. Réponse : **devaient**.
+- **v3-granular-forms:futur_simple-application-context:aller:1s:24**: Complète la phrase avec aller au futur simple : J’___ chez le dentiste. Réponse : **irai**.
+- **v3-granular-forms:futur_simple-application-context:aller:2s:25**: Complète la phrase avec aller au futur simple : Tu ___ vers la sortie. Réponse : **iras**.
+- **v3-granular-forms:futur_simple-application-context:aller:3s:26**: Complète la phrase avec aller au futur simple : Le groupe ___ à la gare. Réponse : **ira**.
+- **v3-granular-forms:futur_simple-application-context:aller:1p:27**: Complète la phrase avec aller au futur simple : Nous ___ au club d’échecs. Réponse : **irons**.
+- **v3-granular-forms:futur_simple-application-context:aller:2p:28**: Complète la phrase avec aller au futur simple : Vous ___ chez vos grands-parents. Réponse : **irez**.
+- **v3-granular-forms:futur_simple-application-context:aller:3p:29**: Complète la phrase avec aller au futur simple : Mes voisines ___ au concert. Réponse : **iront**.
+- **v3-granular-forms:futur_simple-application-context:aller:1s:30**: Complète la phrase avec aller au futur simple : J’___ à la boulangerie. Réponse : **irai**.
+- **v3-granular-forms:futur_simple-application-context:aller:2s:31**: Complète la phrase avec aller au futur simple : Tu ___ au cours de dessin. Réponse : **iras**.
+- **v3-granular-forms:futur_simple-application-context:aller:3s:32**: Complète la phrase avec aller au futur simple : Mon frère ___ à l’atelier. Réponse : **ira**.
+- **v3-granular-forms:futur_simple-application-context:aller:1p:33**: Complète la phrase avec aller au futur simple : Nous ___ vers la rivière. Réponse : **irons**.
+- **v3-granular-forms:futur_simple-application-context:aller:2p:34**: Complète la phrase avec aller au futur simple : Vous ___ à l’exposition. Réponse : **irez**.
+- **v3-granular-forms:futur_simple-application-context:aller:3p:35**: Complète la phrase avec aller au futur simple : Les élèves ___ au réfectoire. Réponse : **iront**.
+- **v3-granular-forms:futur_simple-application-context:faire:1s:36**: Complète la phrase avec faire au futur simple : Je ___ une liste de courses. Réponse : **ferai**.
+- **v3-granular-forms:futur_simple-application-context:faire:2s:37**: Complète la phrase avec faire au futur simple : Tu ___ un nœud avec cette corde. Réponse : **feras**.
+- **v3-granular-forms:futur_simple-application-context:faire:3s:38**: Complète la phrase avec faire au futur simple : Sam ___ la vaisselle. Réponse : **fera**.
+- **v3-granular-forms:futur_simple-application-context:faire:1p:39**: Complète la phrase avec faire au futur simple : Nous ___ des recherches sur les volcans. Réponse : **ferons**.
+- **v3-granular-forms:futur_simple-application-context:faire:2p:40**: Complète la phrase avec faire au futur simple : Vous ___ un détour par le pont. Réponse : **ferez**.
+- **v3-granular-forms:futur_simple-application-context:faire:3p:41**: Complète la phrase avec faire au futur simple : Les jumelles ___ de la musique. Réponse : **feront**.
+- **v3-granular-forms:futur_simple-application-context:faire:1s:42**: Complète la phrase avec faire au futur simple : Je ___ attention aux cyclistes. Réponse : **ferai**.
+- **v3-granular-forms:futur_simple-application-context:faire:2s:43**: Complète la phrase avec faire au futur simple : Tu ___ équipe avec Lila. Réponse : **feras**.
+- **v3-granular-forms:futur_simple-application-context:faire:3s:44**: Complète la phrase avec faire au futur simple : Le cuisinier ___ cuire le riz. Réponse : **fera**.
+- **v3-granular-forms:futur_simple-application-context:faire:1p:45**: Complète la phrase avec faire au futur simple : Nous ___ le tour du lac. Réponse : **ferons**.
+- **v3-granular-forms:futur_simple-application-context:faire:2p:46**: Complète la phrase avec faire au futur simple : Vous ___ un croquis de la maison. Réponse : **ferez**.
+- **v3-granular-forms:futur_simple-application-context:faire:3p:47**: Complète la phrase avec faire au futur simple : Les comédiens ___ rire le public. Réponse : **feront**.
+- **v3-granular-forms:futur_simple-application-context:être:1s:48**: Complète la phrase avec être au futur simple : Je ___ responsable du ballon. Réponse : **serai**.
+- **v3-granular-forms:futur_simple-application-context:être:2s:49**: Complète la phrase avec être au futur simple : Tu ___ le premier à répondre. Réponse : **seras**.
+- **v3-granular-forms:futur_simple-application-context:être:3s:50**: Complète la phrase avec être au futur simple : Le magasin ___ fermé le lundi. Réponse : **sera**.
+- **v3-granular-forms:futur_simple-application-context:être:1p:51**: Complète la phrase avec être au futur simple : Nous ___ heureux de participer. Réponse : **serons**.
+- **v3-granular-forms:futur_simple-application-context:être:2p:52**: Complète la phrase avec être au futur simple : Vous ___ sur la bonne piste. Réponse : **serez**.
+- **v3-granular-forms:futur_simple-application-context:être:3p:53**: Complète la phrase avec être au futur simple : Les fenêtres ___ ouvertes. Réponse : **seront**.
+- **v3-granular-forms:futur_simple-application-context:être:1s:54**: Complète la phrase avec être au futur simple : Je ___ à côté du piano. Réponse : **serai**.
+- **v3-granular-forms:futur_simple-application-context:être:2s:55**: Complète la phrase avec être au futur simple : Tu ___ très patient avec le chiot. Réponse : **seras**.
+- **v3-granular-forms:futur_simple-application-context:être:3s:56**: Complète la phrase avec être au futur simple : La lampe ___ allumée. Réponse : **sera**.
+- **v3-granular-forms:futur_simple-application-context:être:1p:57**: Complète la phrase avec être au futur simple : Nous ___ membres du club de lecture. Réponse : **serons**.
+- **v3-granular-forms:futur_simple-application-context:être:2p:58**: Complète la phrase avec être au futur simple : Vous ___ invités à la répétition. Réponse : **serez**.
+- **v3-granular-forms:futur_simple-application-context:être:3p:59**: Complète la phrase avec être au futur simple : Les valises ___ sous le banc. Réponse : **seront**.
+- **v3-granular-forms:futur_simple-application-context:avoir:1s:60**: Complète la phrase avec avoir au futur simple : J’___ envie de dessiner. Réponse : **aurai**.
+- **v3-granular-forms:futur_simple-application-context:avoir:2s:61**: Complète la phrase avec avoir au futur simple : Tu ___ froid sans ton manteau. Réponse : **auras**.
+- **v3-granular-forms:futur_simple-application-context:avoir:3s:62**: Complète la phrase avec avoir au futur simple : Le vélo ___ deux pneus neufs. Réponse : **aura**.
+- **v3-granular-forms:futur_simple-application-context:avoir:1p:63**: Complète la phrase avec avoir au futur simple : Nous ___ rendez-vous à midi. Réponse : **aurons**.
+- **v3-granular-forms:futur_simple-application-context:avoir:2p:64**: Complète la phrase avec avoir au futur simple : Vous ___ plusieurs solutions. Réponse : **aurez**.
+- **v3-granular-forms:futur_simple-application-context:avoir:3p:65**: Complète la phrase avec avoir au futur simple : Les musiciens ___ besoin de silence. Réponse : **auront**.
+- **v3-granular-forms:futur_simple-application-context:avoir:1s:66**: Complète la phrase avec avoir au futur simple : J’___ douze cartes en main. Réponse : **aurai**.
+- **v3-granular-forms:futur_simple-application-context:avoir:2s:67**: Complète la phrase avec avoir au futur simple : Tu ___ raison de demander. Réponse : **auras**.
+- **v3-granular-forms:futur_simple-application-context:avoir:3s:68**: Complète la phrase avec avoir au futur simple : Le bâtiment ___ trois étages. Réponse : **aura**.
+- **v3-granular-forms:futur_simple-application-context:avoir:1p:69**: Complète la phrase avec avoir au futur simple : Nous ___ confiance en notre équipe. Réponse : **aurons**.
+- **v3-granular-forms:futur_simple-application-context:avoir:2p:70**: Complète la phrase avec avoir au futur simple : Vous ___ encore quelques minutes. Réponse : **aurez**.
+- **v3-granular-forms:futur_simple-application-context:avoir:3p:71**: Complète la phrase avec avoir au futur simple : Les tortues ___ une carapace. Réponse : **auront**.
+- **v3-granular-forms:futur_simple-application-context:prendre:1s:72**: Complète la phrase avec prendre au futur simple : Je ___ la dernière part de tarte. Réponse : **prendrai**.
+- **v3-granular-forms:futur_simple-application-context:prendre:2s:73**: Complète la phrase avec prendre au futur simple : Tu ___ soin de ces plantes. Réponse : **prendras**.
+- **v3-granular-forms:futur_simple-application-context:prendre:3s:74**: Complète la phrase avec prendre au futur simple : Le gardien ___ les clés du portail. Réponse : **prendra**.
+- **v3-granular-forms:futur_simple-application-context:prendre:1p:75**: Complète la phrase avec prendre au futur simple : Nous ___ le sentier de gauche. Réponse : **prendrons**.
+- **v3-granular-forms:futur_simple-application-context:prendre:2p:76**: Complète la phrase avec prendre au futur simple : Vous ___ votre repas dehors. Réponse : **prendrez**.
+- **v3-granular-forms:futur_simple-application-context:prendre:3p:77**: Complète la phrase avec prendre au futur simple : Les touristes ___ un plan de la ville. Réponse : **prendront**.
+- **v3-granular-forms:futur_simple-application-context:prendre:1s:78**: Complète la phrase avec prendre au futur simple : Je ___ une serviette propre. Réponse : **prendrai**.
+- **v3-granular-forms:futur_simple-application-context:prendre:2s:79**: Complète la phrase avec prendre au futur simple : Tu ___ la parole après Inès. Réponse : **prendras**.
+- **v3-granular-forms:futur_simple-application-context:prendre:3s:80**: Complète la phrase avec prendre au futur simple : La réunion ___ fin à dix heures. Réponse : **prendra**.
+- **v3-granular-forms:futur_simple-application-context:prendre:1p:81**: Complète la phrase avec prendre au futur simple : Nous ___ place devant la scène. Réponse : **prendrons**.
+- **v3-granular-forms:futur_simple-application-context:prendre:2p:82**: Complète la phrase avec prendre au futur simple : Vous ___ une décision ensemble. Réponse : **prendrez**.
+- **v3-granular-forms:futur_simple-application-context:prendre:3p:83**: Complète la phrase avec prendre au futur simple : Les pompiers ___ la route du village. Réponse : **prendront**.
+- **v3-granular-forms:futur_simple-application-context:venir:1s:84**: Complète la phrase avec venir au futur simple : Je ___ rendre ton casque. Réponse : **viendrai**.
+- **v3-granular-forms:futur_simple-application-context:venir:2s:85**: Complète la phrase avec venir au futur simple : Tu ___ me montrer ta bande dessinée. Réponse : **viendras**.
+- **v3-granular-forms:futur_simple-application-context:venir:3s:86**: Complète la phrase avec venir au futur simple : Le facteur ___ chaque matin. Réponse : **viendra**.
+- **v3-granular-forms:futur_simple-application-context:venir:1p:87**: Complète la phrase avec venir au futur simple : Nous ___ apporter des couvertures. Réponse : **viendrons**.
+- **v3-granular-forms:futur_simple-application-context:venir:2p:88**: Complète la phrase avec venir au futur simple : Vous ___ du quartier voisin. Réponse : **viendrez**.
+- **v3-granular-forms:futur_simple-application-context:venir:3p:89**: Complète la phrase avec venir au futur simple : Les visiteurs ___ admirer les tableaux. Réponse : **viendront**.
+- **v3-granular-forms:futur_simple-application-context:venir:1s:90**: Complète la phrase avec venir au futur simple : Je ___ poser une question. Réponse : **viendrai**.
+- **v3-granular-forms:futur_simple-application-context:venir:2s:91**: Complète la phrase avec venir au futur simple : Tu ___ récupérer ton parapluie. Réponse : **viendras**.
+- **v3-granular-forms:futur_simple-application-context:venir:3s:92**: Complète la phrase avec venir au futur simple : La lumière ___ de cette fenêtre. Réponse : **viendra**.
+- **v3-granular-forms:futur_simple-application-context:venir:1p:93**: Complète la phrase avec venir au futur simple : Nous ___ soutenir les coureurs. Réponse : **viendrons**.
+- **v3-granular-forms:futur_simple-application-context:venir:2p:94**: Complète la phrase avec venir au futur simple : Vous ___ goûter notre soupe. Réponse : **viendrez**.
+- **v3-granular-forms:futur_simple-application-context:venir:3p:95**: Complète la phrase avec venir au futur simple : Les cris ___ du terrain de sport. Réponse : **viendront**.
+- **v3-granular-forms:futur_simple-application-context:partir:1s:96**: Complète la phrase avec partir au futur simple : Je ___ pour Lyon samedi. Réponse : **partirai**.
+- **v3-granular-forms:futur_simple-application-context:partir:2s:97**: Complète la phrase avec partir au futur simple : Tu ___ avant la fin du film. Réponse : **partiras**.
+- **v3-granular-forms:futur_simple-application-context:partir:3s:98**: Complète la phrase avec partir au futur simple : Le bateau ___ du port. Réponse : **partira**.
+- **v3-granular-forms:futur_simple-application-context:partir:1p:99**: Complète la phrase avec partir au futur simple : Nous ___ explorer la forêt. Réponse : **partirons**.
+- **v3-granular-forms:futur_simple-application-context:partir:2p:100**: Complète la phrase avec partir au futur simple : Vous ___ sans vos bagages. Réponse : **partirez**.
+- **v3-granular-forms:futur_simple-application-context:partir:3p:101**: Complète la phrase avec partir au futur simple : Les oiseaux ___ vers le sud. Réponse : **partiront**.
+- **v3-granular-forms:futur_simple-application-context:partir:1s:102**: Complète la phrase avec partir au futur simple : Je ___ à la recherche du chat. Réponse : **partirai**.
+- **v3-granular-forms:futur_simple-application-context:partir:2s:103**: Complète la phrase avec partir au futur simple : Tu ___ avec une gourde pleine. Réponse : **partiras**.
+- **v3-granular-forms:futur_simple-application-context:partir:3s:104**: Complète la phrase avec partir au futur simple : La fusée ___ dans quelques secondes. Réponse : **partira**.
+- **v3-granular-forms:futur_simple-application-context:partir:1p:105**: Complète la phrase avec partir au futur simple : Nous ___ du même point. Réponse : **partirons**.
+- **v3-granular-forms:futur_simple-application-context:partir:2p:106**: Complète la phrase avec partir au futur simple : Vous ___ au lever du soleil. Réponse : **partirez**.
+- **v3-granular-forms:futur_simple-application-context:partir:3p:107**: Complète la phrase avec partir au futur simple : Les voyageurs ___ pour la montagne. Réponse : **partiront**.
+- **v3-granular-forms:futur_simple-application-context:sortir:1s:108**: Complète la phrase avec sortir au futur simple : Je ___ les assiettes du placard. Réponse : **sortirai**.
+- **v3-granular-forms:futur_simple-application-context:sortir:2s:109**: Complète la phrase avec sortir au futur simple : Tu ___ de ton atelier. Réponse : **sortiras**.
+- **v3-granular-forms:futur_simple-application-context:sortir:3s:110**: Complète la phrase avec sortir au futur simple : Le lapin ___ de sa cachette. Réponse : **sortira**.
+- **v3-granular-forms:futur_simple-application-context:sortir:1p:111**: Complète la phrase avec sortir au futur simple : Nous ___ prendre l’air. Réponse : **sortirons**.
+- **v3-granular-forms:futur_simple-application-context:sortir:2p:112**: Complète la phrase avec sortir au futur simple : Vous ___ vos instruments. Réponse : **sortirez**.
+- **v3-granular-forms:futur_simple-application-context:sortir:3p:113**: Complète la phrase avec sortir au futur simple : Les spectateurs ___ de la salle. Réponse : **sortiront**.
+- **v3-granular-forms:futur_simple-application-context:sortir:1s:114**: Complète la phrase avec sortir au futur simple : Je ___ mon carnet de croquis. Réponse : **sortirai**.
+- **v3-granular-forms:futur_simple-application-context:sortir:2s:115**: Complète la phrase avec sortir au futur simple : Tu ___ par le petit portail. Réponse : **sortiras**.
+- **v3-granular-forms:futur_simple-application-context:sortir:3s:116**: Complète la phrase avec sortir au futur simple : La fumée ___ de la cheminée. Réponse : **sortira**.
+- **v3-granular-forms:futur_simple-application-context:sortir:1p:117**: Complète la phrase avec sortir au futur simple : Nous ___ de chez le coiffeur. Réponse : **sortirons**.
+- **v3-granular-forms:futur_simple-application-context:sortir:2p:118**: Complète la phrase avec sortir au futur simple : Vous ___ les cartons du garage. Réponse : **sortirez**.
+- **v3-granular-forms:futur_simple-application-context:sortir:3p:119**: Complète la phrase avec sortir au futur simple : Les poussins ___ de leurs œufs. Réponse : **sortiront**.
+- **v3-granular-forms:futur_simple-application-context:dire:1s:120**: Complète la phrase avec dire au futur simple : Je ___ merci au chauffeur. Réponse : **dirai**.
+- **v3-granular-forms:futur_simple-application-context:dire:2s:121**: Complète la phrase avec dire au futur simple : Tu ___ ce mot trop vite. Réponse : **diras**.
+- **v3-granular-forms:futur_simple-application-context:dire:3s:122**: Complète la phrase avec dire au futur simple : Le médecin ___ de se reposer. Réponse : **dira**.
+- **v3-granular-forms:futur_simple-application-context:dire:1p:123**: Complète la phrase avec dire au futur simple : Nous ___ au revoir à nos cousins. Réponse : **dirons**.
+- **v3-granular-forms:futur_simple-application-context:dire:2p:124**: Complète la phrase avec dire au futur simple : Vous ___ pourquoi vous êtes absents. Réponse : **direz**.
+- **v3-granular-forms:futur_simple-application-context:dire:3p:125**: Complète la phrase avec dire au futur simple : Les témoins ___ ce qu’ils ont vu. Réponse : **diront**.
+- **v3-granular-forms:futur_simple-application-context:dire:1s:126**: Complète la phrase avec dire au futur simple : Je ___ la date à voix haute. Réponse : **dirai**.
+- **v3-granular-forms:futur_simple-application-context:dire:2s:127**: Complète la phrase avec dire au futur simple : Tu ___ ton adresse au livreur. Réponse : **diras**.
+- **v3-granular-forms:futur_simple-application-context:dire:3s:128**: Complète la phrase avec dire au futur simple : Cette pancarte ___ de ralentir. Réponse : **dira**.
+- **v3-granular-forms:futur_simple-application-context:dire:1p:129**: Complète la phrase avec dire au futur simple : Nous ___ le nom de notre chanson préférée. Réponse : **dirons**.
+- **v3-granular-forms:futur_simple-application-context:dire:2p:130**: Complète la phrase avec dire au futur simple : Vous ___ oui à cette proposition. Réponse : **direz**.
+- **v3-granular-forms:futur_simple-application-context:dire:3p:131**: Complète la phrase avec dire au futur simple : Les enfants ___ bonne nuit à leur grand-mère. Réponse : **diront**.
+- **v3-granular-forms:futur_simple-application-context:voir:1s:132**: Complète la phrase avec voir au futur simple : Je ___ une montgolfière au loin. Réponse : **verrai**.
+- **v3-granular-forms:futur_simple-application-context:voir:2s:133**: Complète la phrase avec voir au futur simple : Tu ___ le phare depuis la plage. Réponse : **verras**.
+- **v3-granular-forms:futur_simple-application-context:voir:3s:134**: Complète la phrase avec voir au futur simple : Le chat ___ un oiseau. Réponse : **verra**.
+- **v3-granular-forms:futur_simple-application-context:voir:1p:135**: Complète la phrase avec voir au futur simple : Nous ___ les montagnes depuis le toit. Réponse : **verrons**.
+- **v3-granular-forms:futur_simple-application-context:voir:2p:136**: Complète la phrase avec voir au futur simple : Vous ___ une différence entre ces photos. Réponse : **verrez**.
+- **v3-granular-forms:futur_simple-application-context:voir:3p:137**: Complète la phrase avec voir au futur simple : Les astronomes ___ une nouvelle comète. Réponse : **verront**.
+- **v3-granular-forms:futur_simple-application-context:voir:1s:138**: Complète la phrase avec voir au futur simple : Je ___ mon reflet dans la vitre. Réponse : **verrai**.
+- **v3-granular-forms:futur_simple-application-context:voir:2s:139**: Complète la phrase avec voir au futur simple : Tu ___ la fin du tunnel. Réponse : **verras**.
+- **v3-granular-forms:futur_simple-application-context:voir:3s:140**: Complète la phrase avec voir au futur simple : La conductrice ___ le feu rouge. Réponse : **verra**.
+- **v3-granular-forms:futur_simple-application-context:voir:1p:141**: Complète la phrase avec voir au futur simple : Nous ___ un arc-en-ciel. Réponse : **verrons**.
+- **v3-granular-forms:futur_simple-application-context:voir:2p:142**: Complète la phrase avec voir au futur simple : Vous ___ le sommet à travers les nuages. Réponse : **verrez**.
+- **v3-granular-forms:futur_simple-application-context:voir:3p:143**: Complète la phrase avec voir au futur simple : Les plongeurs ___ des poissons colorés. Réponse : **verront**.
+- **v3-granular-forms:futur_simple-application-context:pouvoir:1s:144**: Complète la phrase avec pouvoir au futur simple : Je ___ porter cette boîte. Réponse : **pourrai**.
+- **v3-granular-forms:futur_simple-application-context:pouvoir:2s:145**: Complète la phrase avec pouvoir au futur simple : Tu ___ emprunter mon stylo. Réponse : **pourras**.
+- **v3-granular-forms:futur_simple-application-context:pouvoir:3s:146**: Complète la phrase avec pouvoir au futur simple : Le public ___ poser des questions. Réponse : **pourra**.
+- **v3-granular-forms:futur_simple-application-context:pouvoir:1p:147**: Complète la phrase avec pouvoir au futur simple : Nous ___ construire un abri. Réponse : **pourrons**.
+- **v3-granular-forms:futur_simple-application-context:pouvoir:2p:148**: Complète la phrase avec pouvoir au futur simple : Vous ___ consulter le plan. Réponse : **pourrez**.
+- **v3-granular-forms:futur_simple-application-context:pouvoir:3p:149**: Complète la phrase avec pouvoir au futur simple : Les passagers ___ descendre ici. Réponse : **pourront**.
+- **v3-granular-forms:futur_simple-application-context:pouvoir:1s:150**: Complète la phrase avec pouvoir au futur simple : Je ___ traduire cette phrase. Réponse : **pourrai**.
+- **v3-granular-forms:futur_simple-application-context:pouvoir:2s:151**: Complète la phrase avec pouvoir au futur simple : Tu ___ ouvrir ton cadeau. Réponse : **pourras**.
+- **v3-granular-forms:futur_simple-application-context:pouvoir:3s:152**: Complète la phrase avec pouvoir au futur simple : Cette clé ___ tourner dans la serrure. Réponse : **pourra**.
+- **v3-granular-forms:futur_simple-application-context:pouvoir:1p:153**: Complète la phrase avec pouvoir au futur simple : Nous ___ partager le trajet. Réponse : **pourrons**.
+- **v3-granular-forms:futur_simple-application-context:pouvoir:2p:154**: Complète la phrase avec pouvoir au futur simple : Vous ___ éteindre la lumière. Réponse : **pourrez**.
+- **v3-granular-forms:futur_simple-application-context:pouvoir:3p:155**: Complète la phrase avec pouvoir au futur simple : Les bénévoles ___ préparer la salle. Réponse : **pourront**.
+- **v3-granular-forms:futur_simple-application-context:vouloir:1s:156**: Complète la phrase avec vouloir au futur simple : Je ___ visiter cette île. Réponse : **voudrai**.
+- **v3-granular-forms:futur_simple-application-context:vouloir:2s:157**: Complète la phrase avec vouloir au futur simple : Tu ___ devenir vétérinaire. Réponse : **voudras**.
+- **v3-granular-forms:futur_simple-application-context:vouloir:3s:158**: Complète la phrase avec vouloir au futur simple : Le client ___ échanger son billet. Réponse : **voudra**.
+- **v3-granular-forms:futur_simple-application-context:vouloir:1p:159**: Complète la phrase avec vouloir au futur simple : Nous ___ planter des arbres. Réponse : **voudrons**.
+- **v3-granular-forms:futur_simple-application-context:vouloir:2p:160**: Complète la phrase avec vouloir au futur simple : Vous ___ raconter votre voyage. Réponse : **voudrez**.
+- **v3-granular-forms:futur_simple-application-context:vouloir:3p:161**: Complète la phrase avec vouloir au futur simple : Les voisins ___ nettoyer la plage. Réponse : **voudront**.
+- **v3-granular-forms:futur_simple-application-context:vouloir:1s:162**: Complète la phrase avec vouloir au futur simple : Je ___ goûter ce fruit. Réponse : **voudrai**.
+- **v3-granular-forms:futur_simple-application-context:vouloir:2s:163**: Complète la phrase avec vouloir au futur simple : Tu ___ photographier le coucher du soleil. Réponse : **voudras**.
+- **v3-granular-forms:futur_simple-application-context:vouloir:3s:164**: Complète la phrase avec vouloir au futur simple : La chanteuse ___ remercier son public. Réponse : **voudra**.
+- **v3-granular-forms:futur_simple-application-context:vouloir:1p:165**: Complète la phrase avec vouloir au futur simple : Nous ___ apprendre cette danse. Réponse : **voudrons**.
+- **v3-granular-forms:futur_simple-application-context:vouloir:2p:166**: Complète la phrase avec vouloir au futur simple : Vous ___ dessiner les costumes. Réponse : **voudrez**.
+- **v3-granular-forms:futur_simple-application-context:vouloir:3p:167**: Complète la phrase avec vouloir au futur simple : Les joueurs ___ améliorer leur défense. Réponse : **voudront**.
+- **v3-granular-forms:futur_simple-application-context:savoir:1s:168**: Complète la phrase avec savoir au futur simple : Je ___ préparer une omelette. Réponse : **saurai**.
+- **v3-granular-forms:futur_simple-application-context:savoir:2s:169**: Complète la phrase avec savoir au futur simple : Tu ___ où se cache la clé. Réponse : **sauras**.
+- **v3-granular-forms:futur_simple-application-context:savoir:3s:170**: Complète la phrase avec savoir au futur simple : Le pilote ___ lire cette carte. Réponse : **saura**.
+- **v3-granular-forms:futur_simple-application-context:savoir:1p:171**: Complète la phrase avec savoir au futur simple : Nous ___ reconnaître ce symbole. Réponse : **saurons**.
+- **v3-granular-forms:futur_simple-application-context:savoir:2p:172**: Complète la phrase avec savoir au futur simple : Vous ___ résoudre cette énigme. Réponse : **saurez**.
+- **v3-granular-forms:futur_simple-application-context:savoir:3p:173**: Complète la phrase avec savoir au futur simple : Les enfants ___ attacher leurs lacets. Réponse : **sauront**.
+- **v3-granular-forms:futur_simple-application-context:savoir:1s:174**: Complète la phrase avec savoir au futur simple : Je ___ quand passe le bus. Réponse : **saurai**.
+- **v3-granular-forms:futur_simple-application-context:savoir:2s:175**: Complète la phrase avec savoir au futur simple : Tu ___ fabriquer un cerf-volant. Réponse : **sauras**.
+- **v3-granular-forms:futur_simple-application-context:savoir:3s:176**: Complète la phrase avec savoir au futur simple : La guide ___ répondre aux questions. Réponse : **saura**.
+- **v3-granular-forms:futur_simple-application-context:savoir:1p:177**: Complète la phrase avec savoir au futur simple : Nous ___ pourquoi la glace fond. Réponse : **saurons**.
+- **v3-granular-forms:futur_simple-application-context:savoir:2p:178**: Complète la phrase avec savoir au futur simple : Vous ___ garder un secret. Réponse : **saurez**.
+- **v3-granular-forms:futur_simple-application-context:savoir:3p:179**: Complète la phrase avec savoir au futur simple : Les secouristes ___ pratiquer les premiers gestes. Réponse : **sauront**.
+- **v3-granular-forms:futur_simple-application-context:devoir:1s:180**: Complète la phrase avec devoir au futur simple : Je ___ nourrir les poissons. Réponse : **devrai**.
+- **v3-granular-forms:futur_simple-application-context:devoir:2s:181**: Complète la phrase avec devoir au futur simple : Tu ___ mettre un casque. Réponse : **devras**.
+- **v3-granular-forms:futur_simple-application-context:devoir:3s:182**: Complète la phrase avec devoir au futur simple : Le livreur ___ trouver une autre entrée. Réponse : **devra**.
+- **v3-granular-forms:futur_simple-application-context:devoir:1p:183**: Complète la phrase avec devoir au futur simple : Nous ___ économiser l’eau. Réponse : **devrons**.
+- **v3-granular-forms:futur_simple-application-context:devoir:2p:184**: Complète la phrase avec devoir au futur simple : Vous ___ signer ce formulaire. Réponse : **devrez**.
+- **v3-granular-forms:futur_simple-application-context:devoir:3p:185**: Complète la phrase avec devoir au futur simple : Les coureurs ___ franchir la ligne. Réponse : **devront**.
+- **v3-granular-forms:futur_simple-application-context:devoir:1s:186**: Complète la phrase avec devoir au futur simple : Je ___ rappeler mon cousin. Réponse : **devrai**.
+- **v3-granular-forms:futur_simple-application-context:devoir:2s:187**: Complète la phrase avec devoir au futur simple : Tu ___ peser les ingrédients. Réponse : **devras**.
+- **v3-granular-forms:futur_simple-application-context:devoir:3s:188**: Complète la phrase avec devoir au futur simple : La gardienne ___ fermer le musée. Réponse : **devra**.
+- **v3-granular-forms:futur_simple-application-context:devoir:1p:189**: Complète la phrase avec devoir au futur simple : Nous ___ respecter le silence. Réponse : **devrons**.
+- **v3-granular-forms:futur_simple-application-context:devoir:2p:190**: Complète la phrase avec devoir au futur simple : Vous ___ attendre votre tour. Réponse : **devrez**.
+- **v3-granular-forms:futur_simple-application-context:devoir:3p:191**: Complète la phrase avec devoir au futur simple : Les campeurs ___ éteindre leur feu. Réponse : **devront**.
 
 All eighteen paths still require question, lesson, overlap, prerequisite and calibration review. The full French release also needs the other targets; this is a review package for one part of that release, not a reduced release scope.
 

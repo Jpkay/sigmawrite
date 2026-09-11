@@ -5,12 +5,2000 @@
   "facetChecksum": "sha256:71d060c34e8fd204b3cf57e5126a2e30585dc72c463b0506f22aa602eb913a98",
   "assessmentSourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
   "summary": {
-    "lessons": 88,
-    "guidedExercises": 475,
-    "targets": 88,
+    "lessons": 102,
+    "guidedExercises": 559,
+    "targets": 102,
     "missingExposureAnnotations": []
   },
   "rows": [
+    {
+      "lessonId": "french-v3-teaching:futur-simple:aller",
+      "contentChecksum": "sha256:caa3469ffbfeff07d58ecc8d2c2a19bdd29b168deda7ec22690c11ad6c695314",
+      "skillId": "produire_futur_simple::writing-controlled-production::verb:aller",
+      "nodeKey": "produire_futur_simple",
+      "facetKey": "produire_futur_simple::verb:aller",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "reconnaitre_futur_simple::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:0d617511dafc21f2bf04e9d90934d384d67a43dffa1c16d0aeba94d8f272e5e8",
+        "sentence:sha256:33a29f0f0a3353c515f86c511bc413819cb632fcd5e6a85ec367234ffa7b2ea5",
+        "sentence:sha256:44feac3af3ad6d7cd3f34b104c2e56fb4b645e9408077445a34534fd69d528a6",
+        "sentence:sha256:568afa20cb6405d64f1fd424f26a5bde9f81b16ae75d4ec465811995bf8d9f61",
+        "sentence:sha256:67f75770f2454123a9fbe5de36ee46877cc099ed647ba0b9221ad66048dfbba1",
+        "sentence:sha256:9b69962d832c7628418f780764f02f11550e95facf6846359d557e29f53c7d7b",
+        "sentence:sha256:b294d982656a05e6d5cbda06dfc0599801e2993f624b78c2a8daf24034b95a40",
+        "sentence:sha256:c548a85e97223be480df66c654fb05d3c516416bfa477a78317af7e7b0f65195",
+        "sentence:sha256:ea8b096c77543bceaa5cdf0fc0ba69fe1d2a9c6edca6cbe6e4caf5d925007124",
+        "word:sha256:c69b79ee0f0ed5ec757312dd4a35816749c9222132776a6d92c865046638b290"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:futur-simple:aller",
+        "nodeKey": "produire_futur_simple",
+        "facetKey": "produire_futur_simple::verb:aller",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire aller au futur simple",
+        "learnerQuestionFr": "Comment écrire aller au futur simple avec chaque sujet ?",
+        "steps": [
+          {
+            "exampleFr": "J’irai à la bibliothèque.",
+            "explanationFr": "La forme irai permet ici d’annoncer ce qui se passera plus tard. C’est le futur simple du verbe aller. Le verbe conjugué s’écrit en un seul mot."
+          },
+          {
+            "exampleFr": "aller → ir- + -ai → irai",
+            "explanationFr": "Le début qui reste le même dans les six formes est ir-. On l’appelle la base, ou le radical. La base ir- est particulière à ce verbe : retiens-la avec un exemple. Ajoute ensuite la terminaison qui correspond au sujet."
+          },
+          {
+            "exampleFr": "je : irai\ntu : iras\nil, elle ou on : ira\nnous : irons\nvous : irez\nils ou elles : iront",
+            "explanationFr": "Les terminaisons du futur simple sont -ai, -as, -a, -ons, -ez et -ont. La base se termine par r. Garde ce r quand tu ajoutes la terminaison."
+          },
+          {
+            "exampleFr": "je : irai ; tu : iras ; il ou elle : ira",
+            "explanationFr": "À l’écrit, distingue -ai avec je, -as avec tu et -a avec il ou elle. Le sujet permet de choisir les lettres, même quand deux formes se prononcent de la même façon."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:futur-simple:aller:1",
+            "promptFr": "Complète avec aller au futur simple. Écris seulement le verbe : J’___ à la bibliothèque.",
+            "answerFr": "irai",
+            "hintFr": "Avec je, ajoute -ai à la base ir-.",
+            "explanationFr": "J’irai à la bibliothèque. La base ir- et la terminaison -ai donnent irai."
+          },
+          {
+            "id": "guided:futur-simple:aller:2",
+            "promptFr": "Complète avec aller au futur simple. Écris seulement le verbe : Tu ___ au gymnase.",
+            "answerFr": "iras",
+            "hintFr": "Avec tu, ajoute -as à la base ir-.",
+            "explanationFr": "Tu iras au gymnase. La base ir- et la terminaison -as donnent iras."
+          },
+          {
+            "id": "guided:futur-simple:aller:3",
+            "promptFr": "Complète avec aller au futur simple. Écris seulement le verbe : On ___ au cinéma.",
+            "answerFr": "ira",
+            "hintFr": "Avec il, elle ou on, ajoute -a à la base ir-.",
+            "explanationFr": "On ira au cinéma. La base ir- et la terminaison -a donnent ira."
+          },
+          {
+            "id": "guided:futur-simple:aller:4",
+            "promptFr": "Complète avec aller au futur simple. Écris seulement le verbe : Nous ___ au marché.",
+            "answerFr": "irons",
+            "hintFr": "Avec nous, ajoute -ons à la base ir-.",
+            "explanationFr": "Nous irons au marché. La base ir- et la terminaison -ons donnent irons."
+          },
+          {
+            "id": "guided:futur-simple:aller:5",
+            "promptFr": "Complète avec aller au futur simple. Écris seulement le verbe : Vous ___ à la piscine.",
+            "answerFr": "irez",
+            "hintFr": "Avec vous, ajoute -ez à la base ir-.",
+            "explanationFr": "Vous irez à la piscine. La base ir- et la terminaison -ez donnent irez."
+          },
+          {
+            "id": "guided:futur-simple:aller:6",
+            "promptFr": "Complète avec aller au futur simple. Écris seulement le verbe : Elles ___ au parc.",
+            "answerFr": "iront",
+            "hintFr": "Avec ils ou elles, ajoute -ont à la base ir-.",
+            "explanationFr": "Elles iront au parc. La base ir- et la terminaison -ont donnent iront."
+          }
+        ],
+        "takeawayFr": "Pour aller au futur simple, pars de ir- puis ajoute -ai, -as, -a, -ons, -ez ou -ont selon le sujet.",
+        "boundaryFr": "Cette leçon entraîne les formes de aller au futur simple. Elle ne prouve pas que tu sais choisir entre futur simple, futur proche et conditionnel dans un texte.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "aller",
+              "form": "aller"
+            }
+          ],
+          "sentences": [
+            "J’irai à la bibliothèque.",
+            "aller → ir- + -ai → irai",
+            "je : irai\ntu : iras\nil, elle ou on : ira\nnous : irons\nvous : irez\nils ou elles : iront",
+            "je : irai ; tu : iras ; il ou elle : ira",
+            "J’irai à la bibliothèque.",
+            "Tu iras au gymnase.",
+            "On ira au cinéma.",
+            "Nous irons au marché.",
+            "Vous irez à la piscine.",
+            "Elles iront au parc."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:futur-simple:faire",
+      "contentChecksum": "sha256:5465aae8bd8bf265fd8aae0ce1a2dc4d9964d67ad1bb1001cfa0657a5cb05f42",
+      "skillId": "produire_futur_simple::writing-controlled-production::verb:faire",
+      "nodeKey": "produire_futur_simple",
+      "facetKey": "produire_futur_simple::verb:faire",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "reconnaitre_futur_simple::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:19f6b022125e593a83753d0982a8192c45632e66d612d8f83ed1a5847b957d61",
+        "sentence:sha256:2b957f1c34d0cdc2c566f4d04c776ad5cda7bc8f3e2aa5ac73d6c2badcc39f0e",
+        "sentence:sha256:4d8d6d421a62e8563fabbe5046ff08d7583f0bc3ad58af54692400e6c10f7e36",
+        "sentence:sha256:58d9be818e8b15daba6749f459056790aa508cd3852c03c4b596acf9ff9336bc",
+        "sentence:sha256:6143cfcda73907aec382a2741f66e723b0dd8f51b5c81ef52e86cf55d81ef405",
+        "sentence:sha256:665586f01c5e21db624c44df9ed5b232acd8af41a734579e29a93729c2b04836",
+        "sentence:sha256:70f7378c765bbdd40914326a1580f512158dc6280db3afd798095f2c5dea41a4",
+        "sentence:sha256:b635e1a9f985fb97d28ab2fb6e35f47930632a2158aa9bf8b2cbb7cc70515513",
+        "sentence:sha256:e2709bf72798d9ef0404c1402c8997f8548825ec6d66bfbfabc93bf04d7475f5",
+        "word:sha256:8a568397b41847720a6d5d4310ba1528f891cc38b608243c136cf1e04d975d8b"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:futur-simple:faire",
+        "nodeKey": "produire_futur_simple",
+        "facetKey": "produire_futur_simple::verb:faire",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire faire au futur simple",
+        "learnerQuestionFr": "Comment écrire faire au futur simple avec chaque sujet ?",
+        "steps": [
+          {
+            "exampleFr": "Je ferai une maquette.",
+            "explanationFr": "La forme ferai permet ici d’annoncer ce qui se passera plus tard. C’est le futur simple du verbe faire. Le verbe conjugué s’écrit en un seul mot."
+          },
+          {
+            "exampleFr": "faire → fer- + -ai → ferai",
+            "explanationFr": "Le début qui reste le même dans les six formes est fer-. On l’appelle la base, ou le radical. La base fer- est particulière à ce verbe : retiens-la avec un exemple. Ajoute ensuite la terminaison qui correspond au sujet."
+          },
+          {
+            "exampleFr": "je : ferai\ntu : feras\nil, elle ou on : fera\nnous : ferons\nvous : ferez\nils ou elles : feront",
+            "explanationFr": "Les terminaisons du futur simple sont -ai, -as, -a, -ons, -ez et -ont. La base se termine par r. Garde ce r quand tu ajoutes la terminaison."
+          },
+          {
+            "exampleFr": "je : ferai ; tu : feras ; il ou elle : fera",
+            "explanationFr": "À l’écrit, distingue -ai avec je, -as avec tu et -a avec il ou elle. Le sujet permet de choisir les lettres, même quand deux formes se prononcent de la même façon."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:futur-simple:faire:1",
+            "promptFr": "Complète avec faire au futur simple. Écris seulement le verbe : Je ___ une maquette.",
+            "answerFr": "ferai",
+            "hintFr": "Avec je, ajoute -ai à la base fer-.",
+            "explanationFr": "Je ferai une maquette. La base fer- et la terminaison -ai donnent ferai."
+          },
+          {
+            "id": "guided:futur-simple:faire:2",
+            "promptFr": "Complète avec faire au futur simple. Écris seulement le verbe : Tu ___ une pause.",
+            "answerFr": "feras",
+            "hintFr": "Avec tu, ajoute -as à la base fer-.",
+            "explanationFr": "Tu feras une pause. La base fer- et la terminaison -as donnent feras."
+          },
+          {
+            "id": "guided:futur-simple:faire:3",
+            "promptFr": "Complète avec faire au futur simple. Écris seulement le verbe : Elle ___ du vélo.",
+            "answerFr": "fera",
+            "hintFr": "Avec il, elle ou on, ajoute -a à la base fer-.",
+            "explanationFr": "Elle fera du vélo. La base fer- et la terminaison -a donnent fera."
+          },
+          {
+            "id": "guided:futur-simple:faire:4",
+            "promptFr": "Complète avec faire au futur simple. Écris seulement le verbe : Nous ___ un gâteau.",
+            "answerFr": "ferons",
+            "hintFr": "Avec nous, ajoute -ons à la base fer-.",
+            "explanationFr": "Nous ferons un gâteau. La base fer- et la terminaison -ons donnent ferons."
+          },
+          {
+            "id": "guided:futur-simple:faire:5",
+            "promptFr": "Complète avec faire au futur simple. Écris seulement le verbe : Vous ___ un puzzle.",
+            "answerFr": "ferez",
+            "hintFr": "Avec vous, ajoute -ez à la base fer-.",
+            "explanationFr": "Vous ferez un puzzle. La base fer- et la terminaison -ez donnent ferez."
+          },
+          {
+            "id": "guided:futur-simple:faire:6",
+            "promptFr": "Complète avec faire au futur simple. Écris seulement le verbe : Ils ___ une expérience.",
+            "answerFr": "feront",
+            "hintFr": "Avec ils ou elles, ajoute -ont à la base fer-.",
+            "explanationFr": "Ils feront une expérience. La base fer- et la terminaison -ont donnent feront."
+          }
+        ],
+        "takeawayFr": "Pour faire au futur simple, pars de fer- puis ajoute -ai, -as, -a, -ons, -ez ou -ont selon le sujet.",
+        "boundaryFr": "Cette leçon entraîne les formes de faire au futur simple. Elle ne prouve pas que tu sais choisir entre futur simple, futur proche et conditionnel dans un texte.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "faire",
+              "form": "faire"
+            }
+          ],
+          "sentences": [
+            "Je ferai une maquette.",
+            "faire → fer- + -ai → ferai",
+            "je : ferai\ntu : feras\nil, elle ou on : fera\nnous : ferons\nvous : ferez\nils ou elles : feront",
+            "je : ferai ; tu : feras ; il ou elle : fera",
+            "Je ferai une maquette.",
+            "Tu feras une pause.",
+            "Elle fera du vélo.",
+            "Nous ferons un gâteau.",
+            "Vous ferez un puzzle.",
+            "Ils feront une expérience."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:futur-simple:être",
+      "contentChecksum": "sha256:80d2f56c1d95c7670123a002f5d91d0f6a51bf9263d18b48a6278260a45d4a34",
+      "skillId": "produire_futur_simple::writing-controlled-production::verb:être",
+      "nodeKey": "produire_futur_simple",
+      "facetKey": "produire_futur_simple::verb:être",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "reconnaitre_futur_simple::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:13554fdb1dc6eecfa8025619b5203d1853e5a3d2823af2902062fdf22103bda2",
+        "sentence:sha256:3ce35fb18dc26c65518a3643c4a8c24939c069e11c4270a3ae0551408aed7c60",
+        "sentence:sha256:5043b0b7338cb6f8428616f6437a20474c594906cd644554c45e2519bc949e21",
+        "sentence:sha256:603a298e5178a823e8cb77729955de8daac888a39dc5e65683eeba7ba3b84dd3",
+        "sentence:sha256:75d3d24b485894339710f208f1dc107fb7d01cda8e0575e21bd5ba8e705d031f",
+        "sentence:sha256:77c2bf6ad11a30c9306a41feb07d555f89aeca3f75aee53e233c895219db96df",
+        "sentence:sha256:9c758f77b1c7f3a3dfda4e970894a03e13077e9e8f52e9e5b778d53b0758f5b7",
+        "sentence:sha256:ab17e658ea8ab00d3a5d7636d38f2b991823ab885085cfa6ae73a92073e94c9c",
+        "sentence:sha256:c93a46f19b206a301cc1f4d246fdcd5c81c69869e4f7d6120edc82328938b08a",
+        "word:sha256:0e8c809d71ca79b97c97516e8f9792a277aa2a2c72586ada6c3a73d265f30e8d"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:futur-simple:être",
+        "nodeKey": "produire_futur_simple",
+        "facetKey": "produire_futur_simple::verb:être",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire être au futur simple",
+        "learnerQuestionFr": "Comment écrire être au futur simple avec chaque sujet ?",
+        "steps": [
+          {
+            "exampleFr": "Je serai dans le jardin.",
+            "explanationFr": "La forme serai permet ici d’annoncer ce qui se passera plus tard. C’est le futur simple du verbe être. Le verbe conjugué s’écrit en un seul mot."
+          },
+          {
+            "exampleFr": "être → ser- + -ai → serai",
+            "explanationFr": "Le début qui reste le même dans les six formes est ser-. On l’appelle la base, ou le radical. La base ser- est particulière à ce verbe : retiens-la avec un exemple. Ajoute ensuite la terminaison qui correspond au sujet."
+          },
+          {
+            "exampleFr": "je : serai\ntu : seras\nil, elle ou on : sera\nnous : serons\nvous : serez\nils ou elles : seront",
+            "explanationFr": "Les terminaisons du futur simple sont -ai, -as, -a, -ons, -ez et -ont. La base se termine par r. Garde ce r quand tu ajoutes la terminaison."
+          },
+          {
+            "exampleFr": "je : serai ; tu : seras ; il ou elle : sera",
+            "explanationFr": "À l’écrit, distingue -ai avec je, -as avec tu et -a avec il ou elle. Le sujet permet de choisir les lettres, même quand deux formes se prononcent de la même façon."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:futur-simple:être:1",
+            "promptFr": "Complète avec être au futur simple. Écris seulement le verbe : Je ___ dans le jardin.",
+            "answerFr": "serai",
+            "hintFr": "Avec je, ajoute -ai à la base ser-.",
+            "explanationFr": "Je serai dans le jardin. La base ser- et la terminaison -ai donnent serai."
+          },
+          {
+            "id": "guided:futur-simple:être:2",
+            "promptFr": "Complète avec être au futur simple. Écris seulement le verbe : Tu ___ au premier rang.",
+            "answerFr": "seras",
+            "hintFr": "Avec tu, ajoute -as à la base ser-.",
+            "explanationFr": "Tu seras au premier rang. La base ser- et la terminaison -as donnent seras."
+          },
+          {
+            "id": "guided:futur-simple:être:3",
+            "promptFr": "Complète avec être au futur simple. Écris seulement le verbe : Elle ___ contente de son dessin.",
+            "answerFr": "sera",
+            "hintFr": "Avec il, elle ou on, ajoute -a à la base ser-.",
+            "explanationFr": "Elle sera contente de son dessin. La base ser- et la terminaison -a donnent sera."
+          },
+          {
+            "id": "guided:futur-simple:être:4",
+            "promptFr": "Complète avec être au futur simple. Écris seulement le verbe : Nous ___ en avance.",
+            "answerFr": "serons",
+            "hintFr": "Avec nous, ajoute -ons à la base ser-.",
+            "explanationFr": "Nous serons en avance. La base ser- et la terminaison -ons donnent serons."
+          },
+          {
+            "id": "guided:futur-simple:être:5",
+            "promptFr": "Complète avec être au futur simple. Écris seulement le verbe : Vous ___ près de la porte.",
+            "answerFr": "serez",
+            "hintFr": "Avec vous, ajoute -ez à la base ser-.",
+            "explanationFr": "Vous serez près de la porte. La base ser- et la terminaison -ez donnent serez."
+          },
+          {
+            "id": "guided:futur-simple:être:6",
+            "promptFr": "Complète avec être au futur simple. Écris seulement le verbe : Ils ___ dans la même équipe.",
+            "answerFr": "seront",
+            "hintFr": "Avec ils ou elles, ajoute -ont à la base ser-.",
+            "explanationFr": "Ils seront dans la même équipe. La base ser- et la terminaison -ont donnent seront."
+          }
+        ],
+        "takeawayFr": "Pour être au futur simple, pars de ser- puis ajoute -ai, -as, -a, -ons, -ez ou -ont selon le sujet.",
+        "boundaryFr": "Cette leçon entraîne les formes de être au futur simple. Elle ne prouve pas que tu sais choisir entre futur simple, futur proche et conditionnel dans un texte.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "être",
+              "form": "être"
+            }
+          ],
+          "sentences": [
+            "Je serai dans le jardin.",
+            "être → ser- + -ai → serai",
+            "je : serai\ntu : seras\nil, elle ou on : sera\nnous : serons\nvous : serez\nils ou elles : seront",
+            "je : serai ; tu : seras ; il ou elle : sera",
+            "Je serai dans le jardin.",
+            "Tu seras au premier rang.",
+            "Elle sera contente de son dessin.",
+            "Nous serons en avance.",
+            "Vous serez près de la porte.",
+            "Ils seront dans la même équipe."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:futur-simple:avoir",
+      "contentChecksum": "sha256:fbe06fc8c3a1c3f396218b63613b33684c04b78b99f9d20ab0a87272541e4f54",
+      "skillId": "produire_futur_simple::writing-controlled-production::verb:avoir",
+      "nodeKey": "produire_futur_simple",
+      "facetKey": "produire_futur_simple::verb:avoir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "reconnaitre_futur_simple::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:00afba0515499064f1e7e4fe430c9d063a582af15fa9d6b5275ac19778e59abf",
+        "sentence:sha256:321e4cd85967dc753eae03dd3fdc7739fe2a09196182e29d1276df0ae5cd2a4a",
+        "sentence:sha256:7e35e5bf80c4d09fc66c43301cc149715393da86d0750c2a6e94af2570dfb81e",
+        "sentence:sha256:9107caa676abc8be9edb38416680cb1802906a12a4d95684bd32ad140572dd21",
+        "sentence:sha256:bc7ffaba48c58d2928ac44763f12ee5f72c1f32189e573525e06e616039972cd",
+        "sentence:sha256:cf9c25462986676d3f8d8a365d35ffa3ee635309696e2f18774a089eba24df46",
+        "sentence:sha256:d77616b3e5b6bbed83f7f86fc25dbdd59912065c6146cba034e6299ee7e9b261",
+        "sentence:sha256:eb062ad73c61bfb6f3d80b514613873e9cb3337c92a49cab11181d7d1867c1dd",
+        "sentence:sha256:feef2bd609dc79daecf847f0c6a8706e8bf972ec98b2b9eb2b8b52d197ab4fd6",
+        "word:sha256:130f28240b75513decf695074e35d63b8daf7399920a31cc2a8e0d8ca2e6f1fe"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:futur-simple:avoir",
+        "nodeKey": "produire_futur_simple",
+        "facetKey": "produire_futur_simple::verb:avoir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire avoir au futur simple",
+        "learnerQuestionFr": "Comment écrire avoir au futur simple avec chaque sujet ?",
+        "steps": [
+          {
+            "exampleFr": "J’aurai une lampe de poche.",
+            "explanationFr": "La forme aurai permet ici d’annoncer ce qui se passera plus tard. C’est le futur simple du verbe avoir. Le verbe conjugué s’écrit en un seul mot."
+          },
+          {
+            "exampleFr": "avoir → aur- + -ai → aurai",
+            "explanationFr": "Le début qui reste le même dans les six formes est aur-. On l’appelle la base, ou le radical. La base aur- est particulière à ce verbe : retiens-la avec un exemple. Ajoute ensuite la terminaison qui correspond au sujet."
+          },
+          {
+            "exampleFr": "je : aurai\ntu : auras\nil, elle ou on : aura\nnous : aurons\nvous : aurez\nils ou elles : auront",
+            "explanationFr": "Les terminaisons du futur simple sont -ai, -as, -a, -ons, -ez et -ont. La base se termine par r. Garde ce r quand tu ajoutes la terminaison."
+          },
+          {
+            "exampleFr": "je : aurai ; tu : auras ; il ou elle : aura",
+            "explanationFr": "À l’écrit, distingue -ai avec je, -as avec tu et -a avec il ou elle. Le sujet permet de choisir les lettres, même quand deux formes se prononcent de la même façon."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:futur-simple:avoir:1",
+            "promptFr": "Complète avec avoir au futur simple. Écris seulement le verbe : J’___ une lampe de poche.",
+            "answerFr": "aurai",
+            "hintFr": "Avec je, ajoute -ai à la base aur-.",
+            "explanationFr": "J’aurai une lampe de poche. La base aur- et la terminaison -ai donnent aurai."
+          },
+          {
+            "id": "guided:futur-simple:avoir:2",
+            "promptFr": "Complète avec avoir au futur simple. Écris seulement le verbe : Tu ___ une nouvelle question.",
+            "answerFr": "auras",
+            "hintFr": "Avec tu, ajoute -as à la base aur-.",
+            "explanationFr": "Tu auras une nouvelle question. La base aur- et la terminaison -as donnent auras."
+          },
+          {
+            "id": "guided:futur-simple:avoir:3",
+            "promptFr": "Complète avec avoir au futur simple. Écris seulement le verbe : On ___ assez de papier.",
+            "answerFr": "aura",
+            "hintFr": "Avec il, elle ou on, ajoute -a à la base aur-.",
+            "explanationFr": "On aura assez de papier. La base aur- et la terminaison -a donnent aura."
+          },
+          {
+            "id": "guided:futur-simple:avoir:4",
+            "promptFr": "Complète avec avoir au futur simple. Écris seulement le verbe : Nous ___ des places pour le concert.",
+            "answerFr": "aurons",
+            "hintFr": "Avec nous, ajoute -ons à la base aur-.",
+            "explanationFr": "Nous aurons des places pour le concert. La base aur- et la terminaison -ons donnent aurons."
+          },
+          {
+            "id": "guided:futur-simple:avoir:5",
+            "promptFr": "Complète avec avoir au futur simple. Écris seulement le verbe : Vous ___ le même horaire.",
+            "answerFr": "aurez",
+            "hintFr": "Avec vous, ajoute -ez à la base aur-.",
+            "explanationFr": "Vous aurez le même horaire. La base aur- et la terminaison -ez donnent aurez."
+          },
+          {
+            "id": "guided:futur-simple:avoir:6",
+            "promptFr": "Complète avec avoir au futur simple. Écris seulement le verbe : Elles ___ un projet commun.",
+            "answerFr": "auront",
+            "hintFr": "Avec ils ou elles, ajoute -ont à la base aur-.",
+            "explanationFr": "Elles auront un projet commun. La base aur- et la terminaison -ont donnent auront."
+          }
+        ],
+        "takeawayFr": "Pour avoir au futur simple, pars de aur- puis ajoute -ai, -as, -a, -ons, -ez ou -ont selon le sujet.",
+        "boundaryFr": "Cette leçon entraîne les formes de avoir au futur simple. Elle ne prouve pas que tu sais choisir entre futur simple, futur proche et conditionnel dans un texte.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "avoir",
+              "form": "avoir"
+            }
+          ],
+          "sentences": [
+            "J’aurai une lampe de poche.",
+            "avoir → aur- + -ai → aurai",
+            "je : aurai\ntu : auras\nil, elle ou on : aura\nnous : aurons\nvous : aurez\nils ou elles : auront",
+            "je : aurai ; tu : auras ; il ou elle : aura",
+            "J’aurai une lampe de poche.",
+            "Tu auras une nouvelle question.",
+            "On aura assez de papier.",
+            "Nous aurons des places pour le concert.",
+            "Vous aurez le même horaire.",
+            "Elles auront un projet commun."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:futur-simple:prendre",
+      "contentChecksum": "sha256:c5cd840ffce702acce586c6862a57e254da392abd5e52ad8096d8fd179bf5233",
+      "skillId": "produire_futur_simple::writing-controlled-production::verb:prendre",
+      "nodeKey": "produire_futur_simple",
+      "facetKey": "produire_futur_simple::verb:prendre",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "reconnaitre_futur_simple::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:0b9c5399ad490d3ddd41cab385c8d225b43cfe608f509d78abaf45438d588c0f",
+        "sentence:sha256:3cc336707f139a32733f9044663657c2843d45cba018668ed68fb48f5985a7e5",
+        "sentence:sha256:61c10d44727d080f2789d2652eb7bd42678d1bdc9f9e604b55f26f708dfcce9a",
+        "sentence:sha256:9c60ed757e2b44faa953d144c23fecb74eec4f67e4133f594439e186cbb16374",
+        "sentence:sha256:9e50be165bd06261766340a9ca58712925788a4eb870158fad04f4b14698bc91",
+        "sentence:sha256:bbbc524410355f379a3538794de5c94112fd3ad6e23e8595268917161e55d2f1",
+        "sentence:sha256:c1692a1215a4002a34fa8417e8e2f2c5bf021095505dbd75a0bb7fc0325c6242",
+        "sentence:sha256:d788bf6463df5efce9ba39c6c447e230848951616ef85d9faebd37d96dad2142",
+        "sentence:sha256:ef5c613f484b1e63d408c5295533b06df4a326efddaf7e663bd43687cf8976ed",
+        "word:sha256:23d11cc3bd461548ed9bb9430275d3db49ead4b7604fd7131d3b424b67c8d633"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:futur-simple:prendre",
+        "nodeKey": "produire_futur_simple",
+        "facetKey": "produire_futur_simple::verb:prendre",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire prendre au futur simple",
+        "learnerQuestionFr": "Comment écrire prendre au futur simple avec chaque sujet ?",
+        "steps": [
+          {
+            "exampleFr": "Je prendrai un livre sur l’étagère.",
+            "explanationFr": "La forme prendrai permet ici d’annoncer ce qui se passera plus tard. C’est le futur simple du verbe prendre. Le verbe conjugué s’écrit en un seul mot."
+          },
+          {
+            "exampleFr": "prendre → prendr- + -ai → prendrai",
+            "explanationFr": "Le début qui reste le même dans les six formes est prendr-. On l’appelle la base, ou le radical. Enlève le e final du verbe pour obtenir cette base. Ajoute ensuite la terminaison qui correspond au sujet."
+          },
+          {
+            "exampleFr": "je : prendrai\ntu : prendras\nil, elle ou on : prendra\nnous : prendrons\nvous : prendrez\nils ou elles : prendront",
+            "explanationFr": "Les terminaisons du futur simple sont -ai, -as, -a, -ons, -ez et -ont. La base se termine par r. Garde ce r quand tu ajoutes la terminaison."
+          },
+          {
+            "exampleFr": "je : prendrai ; tu : prendras ; il ou elle : prendra",
+            "explanationFr": "À l’écrit, distingue -ai avec je, -as avec tu et -a avec il ou elle. Le sujet permet de choisir les lettres, même quand deux formes se prononcent de la même façon."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:futur-simple:prendre:1",
+            "promptFr": "Complète avec prendre au futur simple. Écris seulement le verbe : Je ___ un livre sur l’étagère.",
+            "answerFr": "prendrai",
+            "hintFr": "Avec je, ajoute -ai à la base prendr-.",
+            "explanationFr": "Je prendrai un livre sur l’étagère. La base prendr- et la terminaison -ai donnent prendrai."
+          },
+          {
+            "id": "guided:futur-simple:prendre:2",
+            "promptFr": "Complète avec prendre au futur simple. Écris seulement le verbe : Tu ___ le chemin du parc.",
+            "answerFr": "prendras",
+            "hintFr": "Avec tu, ajoute -as à la base prendr-.",
+            "explanationFr": "Tu prendras le chemin du parc. La base prendr- et la terminaison -as donnent prendras."
+          },
+          {
+            "id": "guided:futur-simple:prendre:3",
+            "promptFr": "Complète avec prendre au futur simple. Écris seulement le verbe : Elle ___ une photo.",
+            "answerFr": "prendra",
+            "hintFr": "Avec il, elle ou on, ajoute -a à la base prendr-.",
+            "explanationFr": "Elle prendra une photo. La base prendr- et la terminaison -a donnent prendra."
+          },
+          {
+            "id": "guided:futur-simple:prendre:4",
+            "promptFr": "Complète avec prendre au futur simple. Écris seulement le verbe : Nous ___ notre temps.",
+            "answerFr": "prendrons",
+            "hintFr": "Avec nous, ajoute -ons à la base prendr-.",
+            "explanationFr": "Nous prendrons notre temps. La base prendr- et la terminaison -ons donnent prendrons."
+          },
+          {
+            "id": "guided:futur-simple:prendre:5",
+            "promptFr": "Complète avec prendre au futur simple. Écris seulement le verbe : Vous ___ le train du soir.",
+            "answerFr": "prendrez",
+            "hintFr": "Avec vous, ajoute -ez à la base prendr-.",
+            "explanationFr": "Vous prendrez le train du soir. La base prendr- et la terminaison -ez donnent prendrez."
+          },
+          {
+            "id": "guided:futur-simple:prendre:6",
+            "promptFr": "Complète avec prendre au futur simple. Écris seulement le verbe : Ils ___ des notes.",
+            "answerFr": "prendront",
+            "hintFr": "Avec ils ou elles, ajoute -ont à la base prendr-.",
+            "explanationFr": "Ils prendront des notes. La base prendr- et la terminaison -ont donnent prendront."
+          }
+        ],
+        "takeawayFr": "Pour prendre au futur simple, pars de prendr- puis ajoute -ai, -as, -a, -ons, -ez ou -ont selon le sujet.",
+        "boundaryFr": "Cette leçon entraîne les formes de prendre au futur simple. Elle ne prouve pas que tu sais choisir entre futur simple, futur proche et conditionnel dans un texte.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "prendre",
+              "form": "prendre"
+            }
+          ],
+          "sentences": [
+            "Je prendrai un livre sur l’étagère.",
+            "prendre → prendr- + -ai → prendrai",
+            "je : prendrai\ntu : prendras\nil, elle ou on : prendra\nnous : prendrons\nvous : prendrez\nils ou elles : prendront",
+            "je : prendrai ; tu : prendras ; il ou elle : prendra",
+            "Je prendrai un livre sur l’étagère.",
+            "Tu prendras le chemin du parc.",
+            "Elle prendra une photo.",
+            "Nous prendrons notre temps.",
+            "Vous prendrez le train du soir.",
+            "Ils prendront des notes."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:futur-simple:venir",
+      "contentChecksum": "sha256:78dd4f7d8cd18b26f6e43d06685bb19fa78463885d2ab56dbbf1d194ea3fe538",
+      "skillId": "produire_futur_simple::writing-controlled-production::verb:venir",
+      "nodeKey": "produire_futur_simple",
+      "facetKey": "produire_futur_simple::verb:venir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "reconnaitre_futur_simple::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:3b975545caea60a42f6872d7f15302d036729398ece807bd08dfc6854de94764",
+        "sentence:sha256:41710214db3aecc48d41ecfc435e7be472cd76f5084c006eb3361edc0d76d804",
+        "sentence:sha256:4547102abb0842e3277b2a14c9bfcd7acd019d8f140f62a427e2f325e327b585",
+        "sentence:sha256:53194e541e151727c8a544345a681fe40264a543e9907cf303f5f20dd0023c6f",
+        "sentence:sha256:ba2498d4125b84cf00e19e8a597c96ada3d9c60e5a015678d4aa65791af6896c",
+        "sentence:sha256:c8b33688aca52a383dcfd8c6e8156ecd1e51bd0b1a898b9d9abfeac352e49545",
+        "sentence:sha256:def84bc3c03e7d1e4a06d47ebba6c68d8f6cf2bdc3edb3f1738faf1a8b0c1404",
+        "sentence:sha256:ee1a8645ccfa006329aa25d8488402592dba4b0b5cf2c0f1b8893758f230e1bb",
+        "sentence:sha256:ffcadd4facd11a6deb4e89b8c6d6c998179495b41088bd706ba321522bb6029d",
+        "word:sha256:db1839abb9ee522ff2699acf188525b01c33d9cdcf68feb7fb4e98616a0434fe"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:futur-simple:venir",
+        "nodeKey": "produire_futur_simple",
+        "facetKey": "produire_futur_simple::verb:venir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire venir au futur simple",
+        "learnerQuestionFr": "Comment écrire venir au futur simple avec chaque sujet ?",
+        "steps": [
+          {
+            "exampleFr": "Je viendrai voir ton exposition.",
+            "explanationFr": "La forme viendrai permet ici d’annoncer ce qui se passera plus tard. C’est le futur simple du verbe venir. Le verbe conjugué s’écrit en un seul mot."
+          },
+          {
+            "exampleFr": "venir → viendr- + -ai → viendrai",
+            "explanationFr": "Le début qui reste le même dans les six formes est viendr-. On l’appelle la base, ou le radical. La base viendr- est particulière à ce verbe : retiens-la avec un exemple. Ajoute ensuite la terminaison qui correspond au sujet."
+          },
+          {
+            "exampleFr": "je : viendrai\ntu : viendras\nil, elle ou on : viendra\nnous : viendrons\nvous : viendrez\nils ou elles : viendront",
+            "explanationFr": "Les terminaisons du futur simple sont -ai, -as, -a, -ons, -ez et -ont. La base se termine par r. Garde ce r quand tu ajoutes la terminaison."
+          },
+          {
+            "exampleFr": "je : viendrai ; tu : viendras ; il ou elle : viendra",
+            "explanationFr": "À l’écrit, distingue -ai avec je, -as avec tu et -a avec il ou elle. Le sujet permet de choisir les lettres, même quand deux formes se prononcent de la même façon."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:futur-simple:venir:1",
+            "promptFr": "Complète avec venir au futur simple. Écris seulement le verbe : Je ___ voir ton exposition.",
+            "answerFr": "viendrai",
+            "hintFr": "Avec je, ajoute -ai à la base viendr-.",
+            "explanationFr": "Je viendrai voir ton exposition. La base viendr- et la terminaison -ai donnent viendrai."
+          },
+          {
+            "id": "guided:futur-simple:venir:2",
+            "promptFr": "Complète avec venir au futur simple. Écris seulement le verbe : Tu ___ avec ton frère.",
+            "answerFr": "viendras",
+            "hintFr": "Avec tu, ajoute -as à la base viendr-.",
+            "explanationFr": "Tu viendras avec ton frère. La base viendr- et la terminaison -as donnent viendras."
+          },
+          {
+            "id": "guided:futur-simple:venir:3",
+            "promptFr": "Complète avec venir au futur simple. Écris seulement le verbe : On ___ à pied.",
+            "answerFr": "viendra",
+            "hintFr": "Avec il, elle ou on, ajoute -a à la base viendr-.",
+            "explanationFr": "On viendra à pied. La base viendr- et la terminaison -a donnent viendra."
+          },
+          {
+            "id": "guided:futur-simple:venir:4",
+            "promptFr": "Complète avec venir au futur simple. Écris seulement le verbe : Nous ___ de la bibliothèque.",
+            "answerFr": "viendrons",
+            "hintFr": "Avec nous, ajoute -ons à la base viendr-.",
+            "explanationFr": "Nous viendrons de la bibliothèque. La base viendr- et la terminaison -ons donnent viendrons."
+          },
+          {
+            "id": "guided:futur-simple:venir:5",
+            "promptFr": "Complète avec venir au futur simple. Écris seulement le verbe : Vous ___ au bon moment.",
+            "answerFr": "viendrez",
+            "hintFr": "Avec vous, ajoute -ez à la base viendr-.",
+            "explanationFr": "Vous viendrez au bon moment. La base viendr- et la terminaison -ez donnent viendrez."
+          },
+          {
+            "id": "guided:futur-simple:venir:6",
+            "promptFr": "Complète avec venir au futur simple. Écris seulement le verbe : Elles ___ chercher leurs cahiers.",
+            "answerFr": "viendront",
+            "hintFr": "Avec ils ou elles, ajoute -ont à la base viendr-.",
+            "explanationFr": "Elles viendront chercher leurs cahiers. La base viendr- et la terminaison -ont donnent viendront."
+          }
+        ],
+        "takeawayFr": "Pour venir au futur simple, pars de viendr- puis ajoute -ai, -as, -a, -ons, -ez ou -ont selon le sujet.",
+        "boundaryFr": "Cette leçon entraîne les formes de venir au futur simple. Elle ne prouve pas que tu sais choisir entre futur simple, futur proche et conditionnel dans un texte.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "venir",
+              "form": "venir"
+            }
+          ],
+          "sentences": [
+            "Je viendrai voir ton exposition.",
+            "venir → viendr- + -ai → viendrai",
+            "je : viendrai\ntu : viendras\nil, elle ou on : viendra\nnous : viendrons\nvous : viendrez\nils ou elles : viendront",
+            "je : viendrai ; tu : viendras ; il ou elle : viendra",
+            "Je viendrai voir ton exposition.",
+            "Tu viendras avec ton frère.",
+            "On viendra à pied.",
+            "Nous viendrons de la bibliothèque.",
+            "Vous viendrez au bon moment.",
+            "Elles viendront chercher leurs cahiers."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:futur-simple:partir",
+      "contentChecksum": "sha256:30c073d53122e58ebcf675d8eca39151aa712baf012d90c3776341a2c99f0194",
+      "skillId": "produire_futur_simple::writing-controlled-production::verb:partir",
+      "nodeKey": "produire_futur_simple",
+      "facetKey": "produire_futur_simple::verb:partir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "reconnaitre_futur_simple::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:07279bac6bfa3a50c7250427835fd6714176b39dcae87eca695983b09e5fd4b4",
+        "sentence:sha256:29245e1deafc9712ebc38228c4f0a59beb8f5cf0643c65464043d5aafe2989fa",
+        "sentence:sha256:327962386810d3580e87ddccaaa185901ecd8d49b0515055fafec45b662d11a2",
+        "sentence:sha256:3a9ae04b5dfe78c08b9da457dc84ecc0f2085415da2c8648528d2719fa4dd356",
+        "sentence:sha256:5fe538b6ed5c8819cf9282531f1dff1ab3fd8f134d366bef2baffa7174300fe4",
+        "sentence:sha256:84e72c6840be076af2f8e23cefb0c7250f441dbe59151b7aa02f7a9983546ba6",
+        "sentence:sha256:b5f11a4bafcf2b51dedca9cdc30b0891016c4f4cc2e230ab0504c6415c06b7da",
+        "sentence:sha256:ca851a4f2e1df01703f15d4568aa68e2d36dcd1bf7034ef28ddc17f85f5c9fed",
+        "sentence:sha256:d5f7a9dfe6a58535f02d8377651dc872d2403b97b17773c3f9d7f1e719bccd2e",
+        "word:sha256:c413bda28a8465e5a51d39f762f1ed12ee9c7657a3540a6d503c484154e2b554"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:futur-simple:partir",
+        "nodeKey": "produire_futur_simple",
+        "facetKey": "produire_futur_simple::verb:partir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire partir au futur simple",
+        "learnerQuestionFr": "Comment écrire partir au futur simple avec chaque sujet ?",
+        "steps": [
+          {
+            "exampleFr": "Je partirai après le déjeuner.",
+            "explanationFr": "La forme partirai permet ici d’annoncer ce qui se passera plus tard. C’est le futur simple du verbe partir. Le verbe conjugué s’écrit en un seul mot."
+          },
+          {
+            "exampleFr": "partir → partir- + -ai → partirai",
+            "explanationFr": "Le début qui reste le même dans les six formes est partir-. On l’appelle la base, ou le radical. Garde le verbe entier comme base. Ajoute ensuite la terminaison qui correspond au sujet."
+          },
+          {
+            "exampleFr": "je : partirai\ntu : partiras\nil, elle ou on : partira\nnous : partirons\nvous : partirez\nils ou elles : partiront",
+            "explanationFr": "Les terminaisons du futur simple sont -ai, -as, -a, -ons, -ez et -ont. La base se termine par r. Garde ce r quand tu ajoutes la terminaison."
+          },
+          {
+            "exampleFr": "je : partirai ; tu : partiras ; il ou elle : partira",
+            "explanationFr": "À l’écrit, distingue -ai avec je, -as avec tu et -a avec il ou elle. Le sujet permet de choisir les lettres, même quand deux formes se prononcent de la même façon."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:futur-simple:partir:1",
+            "promptFr": "Complète avec partir au futur simple. Écris seulement le verbe : Je ___ après le déjeuner.",
+            "answerFr": "partirai",
+            "hintFr": "Avec je, ajoute -ai à la base partir-.",
+            "explanationFr": "Je partirai après le déjeuner. La base partir- et la terminaison -ai donnent partirai."
+          },
+          {
+            "id": "guided:futur-simple:partir:2",
+            "promptFr": "Complète avec partir au futur simple. Écris seulement le verbe : Tu ___ en randonnée.",
+            "answerFr": "partiras",
+            "hintFr": "Avec tu, ajoute -as à la base partir-.",
+            "explanationFr": "Tu partiras en randonnée. La base partir- et la terminaison -as donnent partiras."
+          },
+          {
+            "id": "guided:futur-simple:partir:3",
+            "promptFr": "Complète avec partir au futur simple. Écris seulement le verbe : Elle ___ avec sa tante.",
+            "answerFr": "partira",
+            "hintFr": "Avec il, elle ou on, ajoute -a à la base partir-.",
+            "explanationFr": "Elle partira avec sa tante. La base partir- et la terminaison -a donnent partira."
+          },
+          {
+            "id": "guided:futur-simple:partir:4",
+            "promptFr": "Complète avec partir au futur simple. Écris seulement le verbe : Nous ___ dans dix minutes.",
+            "answerFr": "partirons",
+            "hintFr": "Avec nous, ajoute -ons à la base partir-.",
+            "explanationFr": "Nous partirons dans dix minutes. La base partir- et la terminaison -ons donnent partirons."
+          },
+          {
+            "id": "guided:futur-simple:partir:5",
+            "promptFr": "Complète avec partir au futur simple. Écris seulement le verbe : Vous ___ par cette sortie.",
+            "answerFr": "partirez",
+            "hintFr": "Avec vous, ajoute -ez à la base partir-.",
+            "explanationFr": "Vous partirez par cette sortie. La base partir- et la terminaison -ez donnent partirez."
+          },
+          {
+            "id": "guided:futur-simple:partir:6",
+            "promptFr": "Complète avec partir au futur simple. Écris seulement le verbe : Ils ___ ensemble.",
+            "answerFr": "partiront",
+            "hintFr": "Avec ils ou elles, ajoute -ont à la base partir-.",
+            "explanationFr": "Ils partiront ensemble. La base partir- et la terminaison -ont donnent partiront."
+          }
+        ],
+        "takeawayFr": "Pour partir au futur simple, pars de partir- puis ajoute -ai, -as, -a, -ons, -ez ou -ont selon le sujet.",
+        "boundaryFr": "Cette leçon entraîne les formes de partir au futur simple. Elle ne prouve pas que tu sais choisir entre futur simple, futur proche et conditionnel dans un texte.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "partir",
+              "form": "partir"
+            }
+          ],
+          "sentences": [
+            "Je partirai après le déjeuner.",
+            "partir → partir- + -ai → partirai",
+            "je : partirai\ntu : partiras\nil, elle ou on : partira\nnous : partirons\nvous : partirez\nils ou elles : partiront",
+            "je : partirai ; tu : partiras ; il ou elle : partira",
+            "Je partirai après le déjeuner.",
+            "Tu partiras en randonnée.",
+            "Elle partira avec sa tante.",
+            "Nous partirons dans dix minutes.",
+            "Vous partirez par cette sortie.",
+            "Ils partiront ensemble."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:futur-simple:sortir",
+      "contentChecksum": "sha256:dbc6b4c7c947e21303ca6714b202c17613caecc00787b8815b41edd859b2e41e",
+      "skillId": "produire_futur_simple::writing-controlled-production::verb:sortir",
+      "nodeKey": "produire_futur_simple",
+      "facetKey": "produire_futur_simple::verb:sortir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "reconnaitre_futur_simple::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:2b53590f03890024a9a55c6ab28b28d777c06382f4b9495c1ae3ece57e47aaf2",
+        "sentence:sha256:3f78d74371a9d659a89a50e25209abfe86a825108349c0519afdb8a2981ccf3b",
+        "sentence:sha256:597bbb985b0d8c7781cc8b376d2ad6d2cb984c56c99027dd4c9681bbe90cb301",
+        "sentence:sha256:5e44f1eeb555e30cc1e93219fafdc673c1f639851feb352e7a44df28cbbd73aa",
+        "sentence:sha256:5f626bf85daf34fe9603ace31cc345ee46629c0570a3ed4e9e7314c969daa030",
+        "sentence:sha256:674897dd465535351188aa62cb888a342ac29eef974c7e44cd37974568cbc274",
+        "sentence:sha256:8e28d9edfc895298a09edbf5fd19c263aaca6bd63699c21f9e86946ead42a0c0",
+        "sentence:sha256:8f70bae19f7f972ed36457b216a460bf9f463b024f32d3827cb8cb60ac81db57",
+        "sentence:sha256:c9ec3b03867809e568ef5aeb419da16cf4c91388fd7da615c0c60f17c086fa00",
+        "word:sha256:fa2d47f055148af90afa02fbeeca752cd135f6694e785747598c6f3987265454"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:futur-simple:sortir",
+        "nodeKey": "produire_futur_simple",
+        "facetKey": "produire_futur_simple::verb:sortir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire sortir au futur simple",
+        "learnerQuestionFr": "Comment écrire sortir au futur simple avec chaque sujet ?",
+        "steps": [
+          {
+            "exampleFr": "Je sortirai de la classe.",
+            "explanationFr": "La forme sortirai permet ici d’annoncer ce qui se passera plus tard. C’est le futur simple du verbe sortir. Le verbe conjugué s’écrit en un seul mot."
+          },
+          {
+            "exampleFr": "sortir → sortir- + -ai → sortirai",
+            "explanationFr": "Le début qui reste le même dans les six formes est sortir-. On l’appelle la base, ou le radical. Garde le verbe entier comme base. Ajoute ensuite la terminaison qui correspond au sujet."
+          },
+          {
+            "exampleFr": "je : sortirai\ntu : sortiras\nil, elle ou on : sortira\nnous : sortirons\nvous : sortirez\nils ou elles : sortiront",
+            "explanationFr": "Les terminaisons du futur simple sont -ai, -as, -a, -ons, -ez et -ont. La base se termine par r. Garde ce r quand tu ajoutes la terminaison."
+          },
+          {
+            "exampleFr": "je : sortirai ; tu : sortiras ; il ou elle : sortira",
+            "explanationFr": "À l’écrit, distingue -ai avec je, -as avec tu et -a avec il ou elle. Le sujet permet de choisir les lettres, même quand deux formes se prononcent de la même façon."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:futur-simple:sortir:1",
+            "promptFr": "Complète avec sortir au futur simple. Écris seulement le verbe : Je ___ de la classe.",
+            "answerFr": "sortirai",
+            "hintFr": "Avec je, ajoute -ai à la base sortir-.",
+            "explanationFr": "Je sortirai de la classe. La base sortir- et la terminaison -ai donnent sortirai."
+          },
+          {
+            "id": "guided:futur-simple:sortir:2",
+            "promptFr": "Complète avec sortir au futur simple. Écris seulement le verbe : Tu ___ une feuille de ton sac.",
+            "answerFr": "sortiras",
+            "hintFr": "Avec tu, ajoute -as à la base sortir-.",
+            "explanationFr": "Tu sortiras une feuille de ton sac. La base sortir- et la terminaison -as donnent sortiras."
+          },
+          {
+            "id": "guided:futur-simple:sortir:3",
+            "promptFr": "Complète avec sortir au futur simple. Écris seulement le verbe : On ___ dans la cour.",
+            "answerFr": "sortira",
+            "hintFr": "Avec il, elle ou on, ajoute -a à la base sortir-.",
+            "explanationFr": "On sortira dans la cour. La base sortir- et la terminaison -a donnent sortira."
+          },
+          {
+            "id": "guided:futur-simple:sortir:4",
+            "promptFr": "Complète avec sortir au futur simple. Écris seulement le verbe : Nous ___ les chaises.",
+            "answerFr": "sortirons",
+            "hintFr": "Avec nous, ajoute -ons à la base sortir-.",
+            "explanationFr": "Nous sortirons les chaises. La base sortir- et la terminaison -ons donnent sortirons."
+          },
+          {
+            "id": "guided:futur-simple:sortir:5",
+            "promptFr": "Complète avec sortir au futur simple. Écris seulement le verbe : Vous ___ après le signal.",
+            "answerFr": "sortirez",
+            "hintFr": "Avec vous, ajoute -ez à la base sortir-.",
+            "explanationFr": "Vous sortirez après le signal. La base sortir- et la terminaison -ez donnent sortirez."
+          },
+          {
+            "id": "guided:futur-simple:sortir:6",
+            "promptFr": "Complète avec sortir au futur simple. Écris seulement le verbe : Elles ___ du cinéma.",
+            "answerFr": "sortiront",
+            "hintFr": "Avec ils ou elles, ajoute -ont à la base sortir-.",
+            "explanationFr": "Elles sortiront du cinéma. La base sortir- et la terminaison -ont donnent sortiront."
+          }
+        ],
+        "takeawayFr": "Pour sortir au futur simple, pars de sortir- puis ajoute -ai, -as, -a, -ons, -ez ou -ont selon le sujet.",
+        "boundaryFr": "Cette leçon entraîne les formes de sortir au futur simple. Elle ne prouve pas que tu sais choisir entre futur simple, futur proche et conditionnel dans un texte.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "sortir",
+              "form": "sortir"
+            }
+          ],
+          "sentences": [
+            "Je sortirai de la classe.",
+            "sortir → sortir- + -ai → sortirai",
+            "je : sortirai\ntu : sortiras\nil, elle ou on : sortira\nnous : sortirons\nvous : sortirez\nils ou elles : sortiront",
+            "je : sortirai ; tu : sortiras ; il ou elle : sortira",
+            "Je sortirai de la classe.",
+            "Tu sortiras une feuille de ton sac.",
+            "On sortira dans la cour.",
+            "Nous sortirons les chaises.",
+            "Vous sortirez après le signal.",
+            "Elles sortiront du cinéma."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:futur-simple:dire",
+      "contentChecksum": "sha256:cbf038d36e6e7b881457748c872c0e5601913afedfe5392632ef1b4e529256b9",
+      "skillId": "produire_futur_simple::writing-controlled-production::verb:dire",
+      "nodeKey": "produire_futur_simple",
+      "facetKey": "produire_futur_simple::verb:dire",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "reconnaitre_futur_simple::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:145115b6a2c1266dd7f3af25e7bb3c562c2d08b041dfdce0e36479452c22dc92",
+        "sentence:sha256:1b2f32548cd46b56953e4c2d3f56efc94156aec589748e62116b525ec83035a4",
+        "sentence:sha256:5a08b702eff11b78bdcdb210d9466daaa96bd057b5b161be092a5e4c86afc167",
+        "sentence:sha256:9f7fbf98a52f8e82bdc73cb7208430a71747f3a8a918a96ddc081a639da0722c",
+        "sentence:sha256:a642aa144e7b216886d89e560c4f65a0d8e1ae683c2c8ecda64f72254ebffa25",
+        "sentence:sha256:afc201a1e5c7c40c628d6528eeb66c523cade6ce98628841adc518a169f0e0f6",
+        "sentence:sha256:b5457b56d695e78a8866888c205e41593bceaa94c7f3772298a5dddeb7c31889",
+        "sentence:sha256:c06b3ae73d7928cc7702fcd8566049e76a8d376f518f0710ac84f6908c60ba9c",
+        "sentence:sha256:c5b5a4c909f5c2364942d1eaaa8fe5e668a05ba7f2680a4286e007f5d28beea1",
+        "word:sha256:ed7e2402cd873904858fd72b0d99ff0fbb97d1cdc7e526b5da0980cd64cb8939"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:futur-simple:dire",
+        "nodeKey": "produire_futur_simple",
+        "facetKey": "produire_futur_simple::verb:dire",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire dire au futur simple",
+        "learnerQuestionFr": "Comment écrire dire au futur simple avec chaque sujet ?",
+        "steps": [
+          {
+            "exampleFr": "Je dirai ce que je pense.",
+            "explanationFr": "La forme dirai permet ici d’annoncer ce qui se passera plus tard. C’est le futur simple du verbe dire. Le verbe conjugué s’écrit en un seul mot."
+          },
+          {
+            "exampleFr": "dire → dir- + -ai → dirai",
+            "explanationFr": "Le début qui reste le même dans les six formes est dir-. On l’appelle la base, ou le radical. Enlève le e final du verbe pour obtenir cette base. Ajoute ensuite la terminaison qui correspond au sujet."
+          },
+          {
+            "exampleFr": "je : dirai\ntu : diras\nil, elle ou on : dira\nnous : dirons\nvous : direz\nils ou elles : diront",
+            "explanationFr": "Les terminaisons du futur simple sont -ai, -as, -a, -ons, -ez et -ont. La base se termine par r. Garde ce r quand tu ajoutes la terminaison."
+          },
+          {
+            "exampleFr": "je : dirai ; tu : diras ; il ou elle : dira",
+            "explanationFr": "À l’écrit, distingue -ai avec je, -as avec tu et -a avec il ou elle. Le sujet permet de choisir les lettres, même quand deux formes se prononcent de la même façon."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:futur-simple:dire:1",
+            "promptFr": "Complète avec dire au futur simple. Écris seulement le verbe : Je ___ ce que je pense.",
+            "answerFr": "dirai",
+            "hintFr": "Avec je, ajoute -ai à la base dir-.",
+            "explanationFr": "Je dirai ce que je pense. La base dir- et la terminaison -ai donnent dirai."
+          },
+          {
+            "id": "guided:futur-simple:dire:2",
+            "promptFr": "Complète avec dire au futur simple. Écris seulement le verbe : Tu ___ bonjour à la voisine.",
+            "answerFr": "diras",
+            "hintFr": "Avec tu, ajoute -as à la base dir-.",
+            "explanationFr": "Tu diras bonjour à la voisine. La base dir- et la terminaison -as donnent diras."
+          },
+          {
+            "id": "guided:futur-simple:dire:3",
+            "promptFr": "Complète avec dire au futur simple. Écris seulement le verbe : Il ___ son prénom.",
+            "answerFr": "dira",
+            "hintFr": "Avec il, elle ou on, ajoute -a à la base dir-.",
+            "explanationFr": "Il dira son prénom. La base dir- et la terminaison -a donnent dira."
+          },
+          {
+            "id": "guided:futur-simple:dire:4",
+            "promptFr": "Complète avec dire au futur simple. Écris seulement le verbe : Nous ___ la vérité.",
+            "answerFr": "dirons",
+            "hintFr": "Avec nous, ajoute -ons à la base dir-.",
+            "explanationFr": "Nous dirons la vérité. La base dir- et la terminaison -ons donnent dirons."
+          },
+          {
+            "id": "guided:futur-simple:dire:5",
+            "promptFr": "Complète avec dire au futur simple. Écris seulement le verbe : Vous ___ la même chose.",
+            "answerFr": "direz",
+            "hintFr": "Avec vous, ajoute -ez à la base dir-.",
+            "explanationFr": "Vous direz la même chose. La base dir- et la terminaison -ez donnent direz."
+          },
+          {
+            "id": "guided:futur-simple:dire:6",
+            "promptFr": "Complète avec dire au futur simple. Écris seulement le verbe : Elles ___ quelques mots.",
+            "answerFr": "diront",
+            "hintFr": "Avec ils ou elles, ajoute -ont à la base dir-.",
+            "explanationFr": "Elles diront quelques mots. La base dir- et la terminaison -ont donnent diront."
+          }
+        ],
+        "takeawayFr": "Pour dire au futur simple, pars de dir- puis ajoute -ai, -as, -a, -ons, -ez ou -ont selon le sujet.",
+        "boundaryFr": "Cette leçon entraîne les formes de dire au futur simple. Elle ne prouve pas que tu sais choisir entre futur simple, futur proche et conditionnel dans un texte.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "dire",
+              "form": "dire"
+            }
+          ],
+          "sentences": [
+            "Je dirai ce que je pense.",
+            "dire → dir- + -ai → dirai",
+            "je : dirai\ntu : diras\nil, elle ou on : dira\nnous : dirons\nvous : direz\nils ou elles : diront",
+            "je : dirai ; tu : diras ; il ou elle : dira",
+            "Je dirai ce que je pense.",
+            "Tu diras bonjour à la voisine.",
+            "Il dira son prénom.",
+            "Nous dirons la vérité.",
+            "Vous direz la même chose.",
+            "Elles diront quelques mots."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:futur-simple:voir",
+      "contentChecksum": "sha256:3630dfbf591e3aadff046dd0776f52d789cb4c1920345cf6f5d9b53f24cbd85c",
+      "skillId": "produire_futur_simple::writing-controlled-production::verb:voir",
+      "nodeKey": "produire_futur_simple",
+      "facetKey": "produire_futur_simple::verb:voir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "reconnaitre_futur_simple::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:0361030bd578c399e1cfb7c0b964c5b1f743adf68a46cfdd3a91aef12e0f30fc",
+        "sentence:sha256:41bae0e555d440d8e5b170afcf9ba87735ddb1dd876b39ea811b89d8a865543f",
+        "sentence:sha256:4f28d81ae547d3b3ea4b1e73a8bda44c183598c7593386fb02e684f008bf114e",
+        "sentence:sha256:548238808a4b42c0a04ab5686ea6dedab413d3d5dc2a99ec10b0c2822bab194a",
+        "sentence:sha256:7ecc688d8cf380b5c66b15549746f4347efc97681efd3ce17b3bc8bb35524713",
+        "sentence:sha256:85d2d918371d57d98f33685fc4b934a517916753ae3d8eef9d3be2f08b4c4968",
+        "sentence:sha256:905fcc70fab6262ee04f30ac44e9accd3cf8bcd71793f92f5fd26123e12f5a09",
+        "sentence:sha256:b6aff43355ddfee1a1fb1f1915cf47677493a7a71602131d227375a20d8c4e5c",
+        "sentence:sha256:fc00907d8c8df37646bc7aa406970bfdabe7a4c8289ea4e15ccc6d5ea7fbf538",
+        "word:sha256:68b20210fa2d90732194f585ea10184fd5e841c860b83e7a5ed0c0a945ec2463"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:futur-simple:voir",
+        "nodeKey": "produire_futur_simple",
+        "facetKey": "produire_futur_simple::verb:voir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire voir au futur simple",
+        "learnerQuestionFr": "Comment écrire voir au futur simple avec chaque sujet ?",
+        "steps": [
+          {
+            "exampleFr": "Je verrai le panneau.",
+            "explanationFr": "La forme verrai permet ici d’annoncer ce qui se passera plus tard. C’est le futur simple du verbe voir. Le verbe conjugué s’écrit en un seul mot."
+          },
+          {
+            "exampleFr": "voir → verr- + -ai → verrai",
+            "explanationFr": "Le début qui reste le même dans les six formes est verr-. On l’appelle la base, ou le radical. La base verr- est particulière à ce verbe : retiens-la avec un exemple. Ajoute ensuite la terminaison qui correspond au sujet."
+          },
+          {
+            "exampleFr": "je : verrai\ntu : verras\nil, elle ou on : verra\nnous : verrons\nvous : verrez\nils ou elles : verront",
+            "explanationFr": "Les terminaisons du futur simple sont -ai, -as, -a, -ons, -ez et -ont. La base se termine par r. Garde ce r quand tu ajoutes la terminaison."
+          },
+          {
+            "exampleFr": "je : verrai ; tu : verras ; il ou elle : verra",
+            "explanationFr": "À l’écrit, distingue -ai avec je, -as avec tu et -a avec il ou elle. Le sujet permet de choisir les lettres, même quand deux formes se prononcent de la même façon."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:futur-simple:voir:1",
+            "promptFr": "Complète avec voir au futur simple. Écris seulement le verbe : Je ___ le panneau.",
+            "answerFr": "verrai",
+            "hintFr": "Avec je, ajoute -ai à la base verr-.",
+            "explanationFr": "Je verrai le panneau. La base verr- et la terminaison -ai donnent verrai."
+          },
+          {
+            "id": "guided:futur-simple:voir:2",
+            "promptFr": "Complète avec voir au futur simple. Écris seulement le verbe : Tu ___ une étoile.",
+            "answerFr": "verras",
+            "hintFr": "Avec tu, ajoute -as à la base verr-.",
+            "explanationFr": "Tu verras une étoile. La base verr- et la terminaison -as donnent verras."
+          },
+          {
+            "id": "guided:futur-simple:voir:3",
+            "promptFr": "Complète avec voir au futur simple. Écris seulement le verbe : On ___ la rivière.",
+            "answerFr": "verra",
+            "hintFr": "Avec il, elle ou on, ajoute -a à la base verr-.",
+            "explanationFr": "On verra la rivière. La base verr- et la terminaison -a donnent verra."
+          },
+          {
+            "id": "guided:futur-simple:voir:4",
+            "promptFr": "Complète avec voir au futur simple. Écris seulement le verbe : Nous ___ les joueurs de près.",
+            "answerFr": "verrons",
+            "hintFr": "Avec nous, ajoute -ons à la base verr-.",
+            "explanationFr": "Nous verrons les joueurs de près. La base verr- et la terminaison -ons donnent verrons."
+          },
+          {
+            "id": "guided:futur-simple:voir:5",
+            "promptFr": "Complète avec voir au futur simple. Écris seulement le verbe : Vous ___ le dessin en entier.",
+            "answerFr": "verrez",
+            "hintFr": "Avec vous, ajoute -ez à la base verr-.",
+            "explanationFr": "Vous verrez le dessin en entier. La base verr- et la terminaison -ez donnent verrez."
+          },
+          {
+            "id": "guided:futur-simple:voir:6",
+            "promptFr": "Complète avec voir au futur simple. Écris seulement le verbe : Ils ___ leurs amis arriver.",
+            "answerFr": "verront",
+            "hintFr": "Avec ils ou elles, ajoute -ont à la base verr-.",
+            "explanationFr": "Ils verront leurs amis arriver. La base verr- et la terminaison -ont donnent verront."
+          }
+        ],
+        "takeawayFr": "Pour voir au futur simple, pars de verr- puis ajoute -ai, -as, -a, -ons, -ez ou -ont selon le sujet.",
+        "boundaryFr": "Cette leçon entraîne les formes de voir au futur simple. Elle ne prouve pas que tu sais choisir entre futur simple, futur proche et conditionnel dans un texte.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "voir",
+              "form": "voir"
+            }
+          ],
+          "sentences": [
+            "Je verrai le panneau.",
+            "voir → verr- + -ai → verrai",
+            "je : verrai\ntu : verras\nil, elle ou on : verra\nnous : verrons\nvous : verrez\nils ou elles : verront",
+            "je : verrai ; tu : verras ; il ou elle : verra",
+            "Je verrai le panneau.",
+            "Tu verras une étoile.",
+            "On verra la rivière.",
+            "Nous verrons les joueurs de près.",
+            "Vous verrez le dessin en entier.",
+            "Ils verront leurs amis arriver."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:futur-simple:pouvoir",
+      "contentChecksum": "sha256:6d80f40d90fb0153e58c65b2e1ed7fa5ee9d78b1916417ae07e1846abf32632e",
+      "skillId": "produire_futur_simple::writing-controlled-production::verb:pouvoir",
+      "nodeKey": "produire_futur_simple",
+      "facetKey": "produire_futur_simple::verb:pouvoir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "reconnaitre_futur_simple::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:01a84861f0f2e1724d82f0b86f5506dfa79cae1dfdbf61b623a227bb9eacc261",
+        "sentence:sha256:23e24ffc5ba758ab87871c115bb94746d09f1c9d59697a39e9564dc8c670b9b2",
+        "sentence:sha256:55fae81ad602167698e8e70725a78de515f190f8745f476103790cdc8bf1511f",
+        "sentence:sha256:85ba0f3c893d41e14aa1b78ea856c711ff8905de4d03602c810c5006743fbec0",
+        "sentence:sha256:87b4dc161962c666a59ab75c916732be9ec1badb7becd127885791d24464259d",
+        "sentence:sha256:959f3bee58a15eb22e9f05e0c64566c7d2c797fd5338bc83953288a4156b314c",
+        "sentence:sha256:b062d2c4c86e819d7837b130c3f3983cd76f4e848762b8fd4b3ba888706254cf",
+        "sentence:sha256:be6c86b74708c260f2dc98ba1c79685b78337c8e9c3183cc13c2872781f7b838",
+        "sentence:sha256:ce17253fe7f74f95d21a99d0b113f8d758fbe0d9bae33a776f915ee6ef5f97fd",
+        "word:sha256:e192d5dcdfc88be9dd57a079209e6cc178dc4c47d093e153efbdcd8cbf7aa977"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:futur-simple:pouvoir",
+        "nodeKey": "produire_futur_simple",
+        "facetKey": "produire_futur_simple::verb:pouvoir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire pouvoir au futur simple",
+        "learnerQuestionFr": "Comment écrire pouvoir au futur simple avec chaque sujet ?",
+        "steps": [
+          {
+            "exampleFr": "Je pourrai ouvrir la fenêtre.",
+            "explanationFr": "La forme pourrai permet ici d’annoncer ce qui se passera plus tard. C’est le futur simple du verbe pouvoir. Le verbe conjugué s’écrit en un seul mot."
+          },
+          {
+            "exampleFr": "pouvoir → pourr- + -ai → pourrai",
+            "explanationFr": "Le début qui reste le même dans les six formes est pourr-. On l’appelle la base, ou le radical. La base pourr- est particulière à ce verbe : retiens-la avec un exemple. Ajoute ensuite la terminaison qui correspond au sujet."
+          },
+          {
+            "exampleFr": "je : pourrai\ntu : pourras\nil, elle ou on : pourra\nnous : pourrons\nvous : pourrez\nils ou elles : pourront",
+            "explanationFr": "Les terminaisons du futur simple sont -ai, -as, -a, -ons, -ez et -ont. La base se termine par r. Garde ce r quand tu ajoutes la terminaison."
+          },
+          {
+            "exampleFr": "je : pourrai ; tu : pourras ; il ou elle : pourra",
+            "explanationFr": "À l’écrit, distingue -ai avec je, -as avec tu et -a avec il ou elle. Le sujet permet de choisir les lettres, même quand deux formes se prononcent de la même façon."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:futur-simple:pouvoir:1",
+            "promptFr": "Complète avec pouvoir au futur simple. Écris seulement le verbe : Je ___ ouvrir la fenêtre.",
+            "answerFr": "pourrai",
+            "hintFr": "Avec je, ajoute -ai à la base pourr-.",
+            "explanationFr": "Je pourrai ouvrir la fenêtre. La base pourr- et la terminaison -ai donnent pourrai."
+          },
+          {
+            "id": "guided:futur-simple:pouvoir:2",
+            "promptFr": "Complète avec pouvoir au futur simple. Écris seulement le verbe : Tu ___ choisir une couleur.",
+            "answerFr": "pourras",
+            "hintFr": "Avec tu, ajoute -as à la base pourr-.",
+            "explanationFr": "Tu pourras choisir une couleur. La base pourr- et la terminaison -as donnent pourras."
+          },
+          {
+            "id": "guided:futur-simple:pouvoir:3",
+            "promptFr": "Complète avec pouvoir au futur simple. Écris seulement le verbe : Elle ___ nous aider.",
+            "answerFr": "pourra",
+            "hintFr": "Avec il, elle ou on, ajoute -a à la base pourr-.",
+            "explanationFr": "Elle pourra nous aider. La base pourr- et la terminaison -a donnent pourra."
+          },
+          {
+            "id": "guided:futur-simple:pouvoir:4",
+            "promptFr": "Complète avec pouvoir au futur simple. Écris seulement le verbe : Nous ___ rester ici.",
+            "answerFr": "pourrons",
+            "hintFr": "Avec nous, ajoute -ons à la base pourr-.",
+            "explanationFr": "Nous pourrons rester ici. La base pourr- et la terminaison -ons donnent pourrons."
+          },
+          {
+            "id": "guided:futur-simple:pouvoir:5",
+            "promptFr": "Complète avec pouvoir au futur simple. Écris seulement le verbe : Vous ___ recommencer.",
+            "answerFr": "pourrez",
+            "hintFr": "Avec vous, ajoute -ez à la base pourr-.",
+            "explanationFr": "Vous pourrez recommencer. La base pourr- et la terminaison -ez donnent pourrez."
+          },
+          {
+            "id": "guided:futur-simple:pouvoir:6",
+            "promptFr": "Complète avec pouvoir au futur simple. Écris seulement le verbe : Ils ___ entrer maintenant.",
+            "answerFr": "pourront",
+            "hintFr": "Avec ils ou elles, ajoute -ont à la base pourr-.",
+            "explanationFr": "Ils pourront entrer maintenant. La base pourr- et la terminaison -ont donnent pourront."
+          }
+        ],
+        "takeawayFr": "Pour pouvoir au futur simple, pars de pourr- puis ajoute -ai, -as, -a, -ons, -ez ou -ont selon le sujet.",
+        "boundaryFr": "Cette leçon entraîne les formes de pouvoir au futur simple. Elle ne prouve pas que tu sais choisir entre futur simple, futur proche et conditionnel dans un texte.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "pouvoir",
+              "form": "pouvoir"
+            }
+          ],
+          "sentences": [
+            "Je pourrai ouvrir la fenêtre.",
+            "pouvoir → pourr- + -ai → pourrai",
+            "je : pourrai\ntu : pourras\nil, elle ou on : pourra\nnous : pourrons\nvous : pourrez\nils ou elles : pourront",
+            "je : pourrai ; tu : pourras ; il ou elle : pourra",
+            "Je pourrai ouvrir la fenêtre.",
+            "Tu pourras choisir une couleur.",
+            "Elle pourra nous aider.",
+            "Nous pourrons rester ici.",
+            "Vous pourrez recommencer.",
+            "Ils pourront entrer maintenant."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:futur-simple:vouloir",
+      "contentChecksum": "sha256:627dcbf74f239c8263dad68f021bcec48fd2b982fbe8410b157f24514393f7ba",
+      "skillId": "produire_futur_simple::writing-controlled-production::verb:vouloir",
+      "nodeKey": "produire_futur_simple",
+      "facetKey": "produire_futur_simple::verb:vouloir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "reconnaitre_futur_simple::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:234388c58f7ddf39f31fae5d12833dbf458b2fab17002368d3669a859e97957b",
+        "sentence:sha256:8d51bb55383a17815b0c4afd4dcc2f0b630bf66f002635d3687379dc777a6f9f",
+        "sentence:sha256:a7b67211b60f8d0f3b3570d65f9cabf1ccf9ad9fe2a7196e41cca7ef716ddeee",
+        "sentence:sha256:b7f39eb5dc4fe2b02b3c748ffc99f43c2cb9f1ceb7aff8caefdf7ea1d6de5975",
+        "sentence:sha256:c80da455d4156d4df80e16de0027bc880a9adbf1ae8382bf0d23d3e77a6a8354",
+        "sentence:sha256:ec24702fb5255e7e851d6ccd9f718b68cbdc26dee6cddb6b752cd3e4c60b3fcb",
+        "sentence:sha256:f223ee60b4d0291afdae802f3228258fc1ca3792a439b992f451f1b7c6e3398a",
+        "sentence:sha256:f5e6d589522d21b3c2313dea623b0be02dddb19789e9904695b7f7e930aa4aac",
+        "sentence:sha256:f9dfeb5e5916d1e3178074697c88b7ffdf61114810ee8ee934ec4016af082361",
+        "word:sha256:489914beff2d4575266911e79fd2e447beebf86608412d02eeea869cb533a078"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:futur-simple:vouloir",
+        "nodeKey": "produire_futur_simple",
+        "facetKey": "produire_futur_simple::verb:vouloir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire vouloir au futur simple",
+        "learnerQuestionFr": "Comment écrire vouloir au futur simple avec chaque sujet ?",
+        "steps": [
+          {
+            "exampleFr": "Je voudrai lire ce manga.",
+            "explanationFr": "La forme voudrai permet ici d’annoncer ce qui se passera plus tard. C’est le futur simple du verbe vouloir. Le verbe conjugué s’écrit en un seul mot."
+          },
+          {
+            "exampleFr": "vouloir → voudr- + -ai → voudrai",
+            "explanationFr": "Le début qui reste le même dans les six formes est voudr-. On l’appelle la base, ou le radical. La base voudr- est particulière à ce verbe : retiens-la avec un exemple. Ajoute ensuite la terminaison qui correspond au sujet."
+          },
+          {
+            "exampleFr": "je : voudrai\ntu : voudras\nil, elle ou on : voudra\nnous : voudrons\nvous : voudrez\nils ou elles : voudront",
+            "explanationFr": "Les terminaisons du futur simple sont -ai, -as, -a, -ons, -ez et -ont. La base se termine par r. Garde ce r quand tu ajoutes la terminaison."
+          },
+          {
+            "exampleFr": "je : voudrai ; tu : voudras ; il ou elle : voudra",
+            "explanationFr": "À l’écrit, distingue -ai avec je, -as avec tu et -a avec il ou elle. Le sujet permet de choisir les lettres, même quand deux formes se prononcent de la même façon."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:futur-simple:vouloir:1",
+            "promptFr": "Complète avec vouloir au futur simple. Écris seulement le verbe : Je ___ lire ce manga.",
+            "answerFr": "voudrai",
+            "hintFr": "Avec je, ajoute -ai à la base voudr-.",
+            "explanationFr": "Je voudrai lire ce manga. La base voudr- et la terminaison -ai donnent voudrai."
+          },
+          {
+            "id": "guided:futur-simple:vouloir:2",
+            "promptFr": "Complète avec vouloir au futur simple. Écris seulement le verbe : Tu ___ préparer l’affiche.",
+            "answerFr": "voudras",
+            "hintFr": "Avec tu, ajoute -as à la base voudr-.",
+            "explanationFr": "Tu voudras préparer l’affiche. La base voudr- et la terminaison -as donnent voudras."
+          },
+          {
+            "id": "guided:futur-simple:vouloir:3",
+            "promptFr": "Complète avec vouloir au futur simple. Écris seulement le verbe : On ___ essayer autrement.",
+            "answerFr": "voudra",
+            "hintFr": "Avec il, elle ou on, ajoute -a à la base voudr-.",
+            "explanationFr": "On voudra essayer autrement. La base voudr- et la terminaison -a donnent voudra."
+          },
+          {
+            "id": "guided:futur-simple:vouloir:4",
+            "promptFr": "Complète avec vouloir au futur simple. Écris seulement le verbe : Nous ___ comprendre la règle.",
+            "answerFr": "voudrons",
+            "hintFr": "Avec nous, ajoute -ons à la base voudr-.",
+            "explanationFr": "Nous voudrons comprendre la règle. La base voudr- et la terminaison -ons donnent voudrons."
+          },
+          {
+            "id": "guided:futur-simple:vouloir:5",
+            "promptFr": "Complète avec vouloir au futur simple. Écris seulement le verbe : Vous ___ rejoindre le groupe.",
+            "answerFr": "voudrez",
+            "hintFr": "Avec vous, ajoute -ez à la base voudr-.",
+            "explanationFr": "Vous voudrez rejoindre le groupe. La base voudr- et la terminaison -ez donnent voudrez."
+          },
+          {
+            "id": "guided:futur-simple:vouloir:6",
+            "promptFr": "Complète avec vouloir au futur simple. Écris seulement le verbe : Elles ___ organiser un tournoi.",
+            "answerFr": "voudront",
+            "hintFr": "Avec ils ou elles, ajoute -ont à la base voudr-.",
+            "explanationFr": "Elles voudront organiser un tournoi. La base voudr- et la terminaison -ont donnent voudront."
+          }
+        ],
+        "takeawayFr": "Pour vouloir au futur simple, pars de voudr- puis ajoute -ai, -as, -a, -ons, -ez ou -ont selon le sujet.",
+        "boundaryFr": "Cette leçon entraîne les formes de vouloir au futur simple. Elle ne prouve pas que tu sais choisir entre futur simple, futur proche et conditionnel dans un texte.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "vouloir",
+              "form": "vouloir"
+            }
+          ],
+          "sentences": [
+            "Je voudrai lire ce manga.",
+            "vouloir → voudr- + -ai → voudrai",
+            "je : voudrai\ntu : voudras\nil, elle ou on : voudra\nnous : voudrons\nvous : voudrez\nils ou elles : voudront",
+            "je : voudrai ; tu : voudras ; il ou elle : voudra",
+            "Je voudrai lire ce manga.",
+            "Tu voudras préparer l’affiche.",
+            "On voudra essayer autrement.",
+            "Nous voudrons comprendre la règle.",
+            "Vous voudrez rejoindre le groupe.",
+            "Elles voudront organiser un tournoi."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:futur-simple:savoir",
+      "contentChecksum": "sha256:737557abb7bde0ef455da2cd2c3e24ad9424df21f1a225f86d0b87e7b3937a23",
+      "skillId": "produire_futur_simple::writing-controlled-production::verb:savoir",
+      "nodeKey": "produire_futur_simple",
+      "facetKey": "produire_futur_simple::verb:savoir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "reconnaitre_futur_simple::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:05487bedb9386bdc17358aeaea2f48da5c527526dcd9f6c07f9c375dea941e7c",
+        "sentence:sha256:09ce091861a9142ac9b14762b92321b5da98faec966055e8aeba3b1a43ef9687",
+        "sentence:sha256:125791a6e184b39a51cd1cdfff37b167515c289182cc04c705d15580f135fd4d",
+        "sentence:sha256:12a987db66e63e7fd55e0da04e5a2cee20ef0506a5ef27e787b976587226c0d4",
+        "sentence:sha256:1cd942f6e189d69d391e84d48381010c9cfd36e9f0035be8976f02f9b7d339de",
+        "sentence:sha256:74ea3fe9e40337c46f493fb9650ca68e9a21a4f34314a14b6884dc4bff248458",
+        "sentence:sha256:96db6a253abbe637ad29afd15dd988b3ded57e2888e48dfabda1e61cef6ed55c",
+        "sentence:sha256:f77687993acb415d7642ec2a38478091abd1e17b5e9106c7a3b24c3be28c844d",
+        "sentence:sha256:fb0f4482de8872d1bb81ea855982e325cc592a99afa7b473cbcaef12d247a251",
+        "word:sha256:0233d19d22b3a2fad3f6618b95d2fc1fed0cd027446994a4e0642b4939300291"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:futur-simple:savoir",
+        "nodeKey": "produire_futur_simple",
+        "facetKey": "produire_futur_simple::verb:savoir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire savoir au futur simple",
+        "learnerQuestionFr": "Comment écrire savoir au futur simple avec chaque sujet ?",
+        "steps": [
+          {
+            "exampleFr": "Je saurai où se trouve la salle.",
+            "explanationFr": "La forme saurai permet ici d’annoncer ce qui se passera plus tard. C’est le futur simple du verbe savoir. Le verbe conjugué s’écrit en un seul mot."
+          },
+          {
+            "exampleFr": "savoir → saur- + -ai → saurai",
+            "explanationFr": "Le début qui reste le même dans les six formes est saur-. On l’appelle la base, ou le radical. La base saur- est particulière à ce verbe : retiens-la avec un exemple. Ajoute ensuite la terminaison qui correspond au sujet."
+          },
+          {
+            "exampleFr": "je : saurai\ntu : sauras\nil, elle ou on : saura\nnous : saurons\nvous : saurez\nils ou elles : sauront",
+            "explanationFr": "Les terminaisons du futur simple sont -ai, -as, -a, -ons, -ez et -ont. La base se termine par r. Garde ce r quand tu ajoutes la terminaison."
+          },
+          {
+            "exampleFr": "je : saurai ; tu : sauras ; il ou elle : saura",
+            "explanationFr": "À l’écrit, distingue -ai avec je, -as avec tu et -a avec il ou elle. Le sujet permet de choisir les lettres, même quand deux formes se prononcent de la même façon."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:futur-simple:savoir:1",
+            "promptFr": "Complète avec savoir au futur simple. Écris seulement le verbe : Je ___ où se trouve la salle.",
+            "answerFr": "saurai",
+            "hintFr": "Avec je, ajoute -ai à la base saur-.",
+            "explanationFr": "Je saurai où se trouve la salle. La base saur- et la terminaison -ai donnent saurai."
+          },
+          {
+            "id": "guided:futur-simple:savoir:2",
+            "promptFr": "Complète avec savoir au futur simple. Écris seulement le verbe : Tu ___ réparer ce vélo.",
+            "answerFr": "sauras",
+            "hintFr": "Avec tu, ajoute -as à la base saur-.",
+            "explanationFr": "Tu sauras réparer ce vélo. La base saur- et la terminaison -as donnent sauras."
+          },
+          {
+            "id": "guided:futur-simple:savoir:3",
+            "promptFr": "Complète avec savoir au futur simple. Écris seulement le verbe : Il ___ son texte par cœur.",
+            "answerFr": "saura",
+            "hintFr": "Avec il, elle ou on, ajoute -a à la base saur-.",
+            "explanationFr": "Il saura son texte par cœur. La base saur- et la terminaison -a donnent saura."
+          },
+          {
+            "id": "guided:futur-simple:savoir:4",
+            "promptFr": "Complète avec savoir au futur simple. Écris seulement le verbe : Nous ___ utiliser cette application.",
+            "answerFr": "saurons",
+            "hintFr": "Avec nous, ajoute -ons à la base saur-.",
+            "explanationFr": "Nous saurons utiliser cette application. La base saur- et la terminaison -ons donnent saurons."
+          },
+          {
+            "id": "guided:futur-simple:savoir:5",
+            "promptFr": "Complète avec savoir au futur simple. Écris seulement le verbe : Vous ___ comment commencer.",
+            "answerFr": "saurez",
+            "hintFr": "Avec vous, ajoute -ez à la base saur-.",
+            "explanationFr": "Vous saurez comment commencer. La base saur- et la terminaison -ez donnent saurez."
+          },
+          {
+            "id": "guided:futur-simple:savoir:6",
+            "promptFr": "Complète avec savoir au futur simple. Écris seulement le verbe : Elles ___ jouer aux échecs.",
+            "answerFr": "sauront",
+            "hintFr": "Avec ils ou elles, ajoute -ont à la base saur-.",
+            "explanationFr": "Elles sauront jouer aux échecs. La base saur- et la terminaison -ont donnent sauront."
+          }
+        ],
+        "takeawayFr": "Pour savoir au futur simple, pars de saur- puis ajoute -ai, -as, -a, -ons, -ez ou -ont selon le sujet.",
+        "boundaryFr": "Cette leçon entraîne les formes de savoir au futur simple. Elle ne prouve pas que tu sais choisir entre futur simple, futur proche et conditionnel dans un texte.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "savoir",
+              "form": "savoir"
+            }
+          ],
+          "sentences": [
+            "Je saurai où se trouve la salle.",
+            "savoir → saur- + -ai → saurai",
+            "je : saurai\ntu : sauras\nil, elle ou on : saura\nnous : saurons\nvous : saurez\nils ou elles : sauront",
+            "je : saurai ; tu : sauras ; il ou elle : saura",
+            "Je saurai où se trouve la salle.",
+            "Tu sauras réparer ce vélo.",
+            "Il saura son texte par cœur.",
+            "Nous saurons utiliser cette application.",
+            "Vous saurez comment commencer.",
+            "Elles sauront jouer aux échecs."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:futur-simple:devoir",
+      "contentChecksum": "sha256:557a50cef675fe4f8f92cb04935d4651512a49ae7827ee5e55ad5b783fed7cc2",
+      "skillId": "produire_futur_simple::writing-controlled-production::verb:devoir",
+      "nodeKey": "produire_futur_simple",
+      "facetKey": "produire_futur_simple::verb:devoir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "reconnaitre_futur_simple::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:0a5f91273722335554bdfb51d44d6eb4d09d1f103e887bc8ae3fdff038ba3c32",
+        "sentence:sha256:1fc9326cc9a7c873d4b8d55560fd017f085f73416630adfa728876888fd16937",
+        "sentence:sha256:4388cec724b32051bab5aaa70ad8b9ecdc015f1db73efaa0fed7f12b81f0799c",
+        "sentence:sha256:4c2401b7e54be6b9bd2a25d1b4c124e9a5f810f092c643e7056c4da24e06d453",
+        "sentence:sha256:6de34331be16fdb20aa43cdc4019af2c6edcdbb48555ce1bc846d6193dd4986a",
+        "sentence:sha256:84293455c38ef8efc4509848c716ebf95ee7a6953b50e6f8904b55a8a666225f",
+        "sentence:sha256:c9eaeae306ea9707ef8a9d085686a7a41f54060d8d4eb214294239671bd078e9",
+        "sentence:sha256:d2f1a9b971689719eb91689689a56300c7b781c692ef7dca8f920814d2e605e6",
+        "sentence:sha256:edf4c021c67d88cb4448e163d7179c51782f5193bbe7e35a8af854395ab89c91",
+        "word:sha256:4a5588698f5bd2f3237cbc916ddac2942066aaaf06f6e61f426da091928457f7"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:futur-simple:devoir",
+        "nodeKey": "produire_futur_simple",
+        "facetKey": "produire_futur_simple::verb:devoir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire devoir au futur simple",
+        "learnerQuestionFr": "Comment écrire devoir au futur simple avec chaque sujet ?",
+        "steps": [
+          {
+            "exampleFr": "Je devrai rendre ce livre.",
+            "explanationFr": "La forme devrai permet ici d’annoncer ce qui se passera plus tard. C’est le futur simple du verbe devoir. Le verbe conjugué s’écrit en un seul mot."
+          },
+          {
+            "exampleFr": "devoir → devr- + -ai → devrai",
+            "explanationFr": "Le début qui reste le même dans les six formes est devr-. On l’appelle la base, ou le radical. La base devr- est particulière à ce verbe : retiens-la avec un exemple. Ajoute ensuite la terminaison qui correspond au sujet."
+          },
+          {
+            "exampleFr": "je : devrai\ntu : devras\nil, elle ou on : devra\nnous : devrons\nvous : devrez\nils ou elles : devront",
+            "explanationFr": "Les terminaisons du futur simple sont -ai, -as, -a, -ons, -ez et -ont. La base se termine par r. Garde ce r quand tu ajoutes la terminaison."
+          },
+          {
+            "exampleFr": "je : devrai ; tu : devras ; il ou elle : devra",
+            "explanationFr": "À l’écrit, distingue -ai avec je, -as avec tu et -a avec il ou elle. Le sujet permet de choisir les lettres, même quand deux formes se prononcent de la même façon."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:futur-simple:devoir:1",
+            "promptFr": "Complète avec devoir au futur simple. Écris seulement le verbe : Je ___ rendre ce livre.",
+            "answerFr": "devrai",
+            "hintFr": "Avec je, ajoute -ai à la base devr-.",
+            "explanationFr": "Je devrai rendre ce livre. La base devr- et la terminaison -ai donnent devrai."
+          },
+          {
+            "id": "guided:futur-simple:devoir:2",
+            "promptFr": "Complète avec devoir au futur simple. Écris seulement le verbe : Tu ___ vérifier ton calcul.",
+            "answerFr": "devras",
+            "hintFr": "Avec tu, ajoute -as à la base devr-.",
+            "explanationFr": "Tu devras vérifier ton calcul. La base devr- et la terminaison -as donnent devras."
+          },
+          {
+            "id": "guided:futur-simple:devoir:3",
+            "promptFr": "Complète avec devoir au futur simple. Écris seulement le verbe : On ___ ranger le matériel.",
+            "answerFr": "devra",
+            "hintFr": "Avec il, elle ou on, ajoute -a à la base devr-.",
+            "explanationFr": "On devra ranger le matériel. La base devr- et la terminaison -a donnent devra."
+          },
+          {
+            "id": "guided:futur-simple:devoir:4",
+            "promptFr": "Complète avec devoir au futur simple. Écris seulement le verbe : Nous ___ terminer l’affiche.",
+            "answerFr": "devrons",
+            "hintFr": "Avec nous, ajoute -ons à la base devr-.",
+            "explanationFr": "Nous devrons terminer l’affiche. La base devr- et la terminaison -ons donnent devrons."
+          },
+          {
+            "id": "guided:futur-simple:devoir:5",
+            "promptFr": "Complète avec devoir au futur simple. Écris seulement le verbe : Vous ___ suivre ce chemin.",
+            "answerFr": "devrez",
+            "hintFr": "Avec vous, ajoute -ez à la base devr-.",
+            "explanationFr": "Vous devrez suivre ce chemin. La base devr- et la terminaison -ez donnent devrez."
+          },
+          {
+            "id": "guided:futur-simple:devoir:6",
+            "promptFr": "Complète avec devoir au futur simple. Écris seulement le verbe : Ils ___ prévenir leur équipe.",
+            "answerFr": "devront",
+            "hintFr": "Avec ils ou elles, ajoute -ont à la base devr-.",
+            "explanationFr": "Ils devront prévenir leur équipe. La base devr- et la terminaison -ont donnent devront."
+          }
+        ],
+        "takeawayFr": "Pour devoir au futur simple, pars de devr- puis ajoute -ai, -as, -a, -ons, -ez ou -ont selon le sujet.",
+        "boundaryFr": "Cette leçon entraîne les formes de devoir au futur simple. Elle ne prouve pas que tu sais choisir entre futur simple, futur proche et conditionnel dans un texte.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "devoir",
+              "form": "devoir"
+            }
+          ],
+          "sentences": [
+            "Je devrai rendre ce livre.",
+            "devoir → devr- + -ai → devrai",
+            "je : devrai\ntu : devras\nil, elle ou on : devra\nnous : devrons\nvous : devrez\nils ou elles : devront",
+            "je : devrai ; tu : devras ; il ou elle : devra",
+            "Je devrai rendre ce livre.",
+            "Tu devras vérifier ton calcul.",
+            "On devra ranger le matériel.",
+            "Nous devrons terminer l’affiche.",
+            "Vous devrez suivre ce chemin.",
+            "Ils devront prévenir leur équipe."
+          ]
+        }
+      }
+    },
     {
       "lessonId": "french-v3-teaching:imparfait:aller",
       "contentChecksum": "sha256:bf6491537e653fc887b3a9bb4c9bb56eb7fd36bc15c14e9d2fc771d940188691",
@@ -13327,5 +15315,5 @@
       }
     }
   ],
-  "checksum": "sha256:7ec6cef9aa11faecaf179aa825562c2be23025a105fa3c100a3ae8b17ff232f9"
+  "checksum": "sha256:435f20ea87b10b6973e0c27c3abc8bf350e14d94c56f2518c695db1ed062d74b"
 }

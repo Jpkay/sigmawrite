@@ -67,10 +67,10 @@ export async function expandConjugationDraft(bank:CanonicalDiagnosticBankArtifac
  const sentenceCases=[
   ...PRESENT_SPELLING_CONTEXTS.map(([verb,sentence],index)=>({verb,sentence,tense:"present" as const,person:"1p" as Person,key:`v3-granular-forms:present-spelling-context:${verb}:${index}`})),
   ...PRESENT_APPLICATION_CONTEXTS.map(([verb,person,sentence],index)=>({verb,person,sentence,tense:"present" as const,key:`v3-granular-forms:present-application-context:${verb}:${person}:${index}`})),
-  ...PRESENT_APPLICATION_CONTEXTS.flatMap(([verb,person,sentence],index)=>{
-   const target=conjugationAuthoringCases().find(target=>target.tense==="imparfait"&&target.verb===verb);
-   return target?.facetKey.includes("::verb:")?[{verb,person,sentence,tense:"imparfait" as const,key:`v3-granular-forms:imparfait-application-context:${verb}:${person}:${index}`}]:[];
-  }),
+  ...(["imparfait","futur_simple"] as const).flatMap(tense=>PRESENT_APPLICATION_CONTEXTS.flatMap(([verb,person,sentence],index)=>{
+   const target=conjugationAuthoringCases().find(target=>target.tense===tense&&target.verb===verb);
+   return target?.facetKey.includes("::verb:")?[{verb,person,sentence,tense,key:`v3-granular-forms:${tense}-application-context:${verb}:${person}:${index}`}]:[];
+  })),
  ];
  for(const {verb,person,sentence:sourceSentence,tense,key} of sentenceCases){
   const target=conjugationAuthoringCases().find(target=>target.tense===tense&&target.verb===verb)!;
@@ -85,7 +85,7 @@ export async function expandConjugationDraft(bank:CanonicalDiagnosticBankArtifac
   // detection merely because the question itself contains a blank.
   const individualVerb=target.facetKey.includes("::verb:");
   const raw:GeneratedItem={nodeKey:node.key,strand:"conjugaison",modality:"writing",learnerMode:"shared",responseType:"short_answer",
-   promptFr:`Complète la phrase avec ${verb} ${tense==="imparfait"?"à l’imparfait":"au présent de l’indicatif"} : ${sentence}`,
+   promptFr:`Complète la phrase avec ${verb} ${tense==="imparfait"?"à l’imparfait":tense==="futur_simple"?"au futur simple":"au présent de l’indicatif"} : ${sentence}`,
    instructionsFr:"Écris seulement le verbe manquant.",correctAnswer:answer,acceptableAnswers:[],validatorType:"conjugator",
    validatorConfig:{verb,tense,person,gender:"m",...(individualVerb?{sentenceApplication:sentence}:{}),materialExposure:{words:[{lemma:verb,form:verb}],sentences:individualVerb?[sentence,completedSentence]:[sentence],...(individualVerb?{assessed:{sentences:[sentence,completedSentence]}}:{})}},difficulty:50};
   const surface=`${node.key}:${diagnosticItemSurfaceIdentity(raw)}`;
