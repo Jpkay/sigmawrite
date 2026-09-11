@@ -13,7 +13,7 @@ if(!evidence)throw Error('Approved relative-clause evidence missing');
 const items:CanonicalDiagnosticBankItem[]=[],annotations:EvidenceAnnotation[]=[];
 for(const [index,row] of RELATIVE_ASSESSMENT.entries()){
  const {choices}=relativeChoices(row);
- const checked=await runGates({nodeKey:node.key,strand:node.strand,modality:'reading',learnerMode:'shared',responseType:'mcq',promptFr:`${row.sentence}\n\nQuelle analyse de la proposition relative est correcte ?`,instructionsFr:'Choisis une réponse.',choices:choices.map((text,i)=>({text,correct:i===0})),validatorType:'exact',difficulty:50,validatorConfig:{materialExposure:{sentences:[row.sentence],assessed:{sentences:[row.sentence]}},...(!row.clause?{negativeExample:{excerptFr:row.sentence,rationaleFr:row.contrast}}:{})}},{knownNodeKeys:new Set([node.key]),knownMisconceptionKeys:new Set()});
+ const checked=await runGates({nodeKey:node.key,strand:node.strand,modality:'reading',learnerMode:'shared',responseType:'mcq',promptFr:`${row.sentence}\n\nCette phrase contient-elle une proposition relative ? Choisis l’analyse correcte.`,instructionsFr:'Choisis une réponse.',choices:choices.map((text,i)=>({text,correct:i===0})),validatorType:'exact',difficulty:50,validatorConfig:{materialExposure:{sentences:[row.sentence],assessed:{sentences:[row.sentence]}},...(!row.clause?{negativeExample:{excerptFr:row.sentence,rationaleFr:row.contrast}}:{})}},{knownNodeKeys:new Set([node.key]),knownMisconceptionKeys:new Set()});
  if(!checked.item||checked.gates.verdict==='rejected')throw Error(`Rejected relative question ${index}: ${JSON.stringify(checked.gates)}`);
  questionMaterialKeys(checked.item);
  const itemKey=`v3-relative-clause:recognition-${index+1}`;
