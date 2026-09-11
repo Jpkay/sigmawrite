@@ -81234,7 +81234,7 @@
       }
     ],
     "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
-    "bankChecksum": "sha256:b42def2d64a21872aed2f0e40f613fc956253ddda88d8f31acd578d8a8b97dd6",
+    "bankChecksum": "sha256:8bcb584082c2556b4c223f42943b961aa2d8f738aa8b8c0c840f7f21be88f4e9",
     "unsupportedEvidenceItemKeys": [
       "local-reading-v1:inferer_chronologie_implicite:receptive:foundation",
       "local-reading-v1:inferer_chronologie_implicite:receptive:core",
@@ -81249,7 +81249,7 @@
       "mode": "parallel_review",
       "authorization": "product-owner-request-2026-09-11",
       "reviewOwner": "product_owner",
-      "bankChecksum": "sha256:b42def2d64a21872aed2f0e40f613fc956253ddda88d8f31acd578d8a8b97dd6",
+      "bankChecksum": "sha256:8bcb584082c2556b4c223f42943b961aa2d8f738aa8b8c0c840f7f21be88f4e9",
       "questionChecksums": {
         "review-draft-v1:construction_pronom_relatif:controlled_production:foundation": "sha256:2731933f71f4a1408115b2457d07ee69469fdac2e7a6e57fb69c112e2a0c32dc",
         "review-draft-v1:construction_pronom_relatif:controlled_production:core": "sha256:d8b92f78c30ddfa7d1598405eb512dce2f2b476fdd151dd3a79c9476a729cc56",
@@ -81276,6 +81276,14 @@
         "local-reading-v1:inferer_chronologie_implicite:receptive:core": "sha256:1506b1e15cc6621d9641d32bc5492dedc8722adab2c2817e2d6275c4e3368d04",
         "local-reading-v1:inferer_chronologie_implicite:receptive:stretch": "sha256:7e58f0641d4689f6fc76075593b096545283f8b2420fe4b8993ef8b84c41e3d0",
         "local-reading-v1:comparer_points_de_vue:controlled_production:foundation": "sha256:ae4349e0976e050d52019208e3ff5a7e8d70685ac640242aadca852c6bed8e9d",
+        "v3-narrative-demonstrative-reference:manga": "sha256:39c35d079235cc37948151c25d3b1ec5389e1376aad2e884af5e3e6500d54bc9",
+        "v3-narrative-demonstrative-reference:coat": "sha256:bba18313d332fb719955f543a1650c17b300fa4a66785ef66887fa4b7d8cb53b",
+        "v3-narrative-demonstrative-reference:bike": "sha256:23685bce883920cf0b84d092101342b0235c71342d34a5acef83a7bf425460e5",
+        "v3-narrative-demonstrative-reference:photos": "sha256:05873d55592f2db6f7ea32b03b2bec35d9ab5f297e2dcbe1b4532f863c659e4e",
+        "v3-narrative-demonstrative-reference:skates": "sha256:31af80d04cd579bf93a89c2ca6b777d33f584003e4fbe1b3017547f4f90ab2de",
+        "v3-narrative-demonstrative-reference:red": "sha256:c240ed3caee66cf348de54993a95d5becf4a7b67f73438cfee78fe9c3108e230",
+        "v3-narrative-demonstrative-reference:plants": "sha256:9df60b786eb4f8073fa698a2498b19f657ef871e7974138a0f4714eaa126a3b4",
+        "v3-narrative-demonstrative-reference:team": "sha256:826157e8ac2413ccf4c5e2bcfbf597359e19352dd9077cbde11caded871b9ec5",
         "v3-passive-production:1": "sha256:2563fdc74a2359f4f6e38cc473ab90cd2d0f7977e8a34fdabf54f42d42655199",
         "v3-passive-production:2": "sha256:ee730dd3567017ac9c3de0f0aefffc7656f6d498b81462f49c3102d8ff4699c6",
         "v3-passive-production:3": "sha256:3996d19829098a280e52cd1671eb39b997fc439a0914d63521707ad649c5427e",
@@ -86177,7 +86185,7 @@
         "french-v3-teaching:present:verb:devoir": "sha256:566f21280efceec8ab43bd30f4e20c5c3b79a83dc683d933dbbaaf751d74dbaa"
       }
     },
-    "facetChecksum": "sha256:d4726dbc7baea3ce99af4dbd240edcb21596eeed50f9dfeed9dd70048c3fa279",
+    "facetChecksum": "sha256:e803ac3dc8aaa9cd194203594d375f02ba22ab55c99311886443175acd20d537",
     "poolChecksum": "sha256:c813332a673b4f428c8370fcfa57308e1cc45b1b4b139533a069a687883404fd",
     "releaseScope": {
       "version": "french-granular-release-scope-v1",
@@ -114869,7 +114877,7 @@
       "estimatedMinutes": 6
     }
   ],
-  "bankChecksum": "sha256:b42def2d64a21872aed2f0e40f613fc956253ddda88d8f31acd578d8a8b97dd6",
+  "bankChecksum": "sha256:8bcb584082c2556b4c223f42943b961aa2d8f738aa8b8c0c840f7f21be88f4e9",
   "summary": {
     "graphTargets": 542,
     "assessmentTargets": 167,
@@ -114878,11 +114886,22 @@
     "missingInstructionTargets": 0
   },
   "missingInstructionSkillIds": [],
+  "blockedTeachingTargets": [
+    {
+      "skillId": "resoudre_demonstratif::all-receptive::text_type:narrative",
+      "missingPrerequisiteIds": [
+        "construction_pronom_sujet::reading-analysis",
+        "construction_pronom_sujet::writing-controlled-production",
+        "construction_reprise_demonstrative::reading-analysis",
+        "construction_reprise_demonstrative::writing-controlled-production"
+      ]
+    }
+  ],
   "limitations": [
     "Not published or activated",
     "Draft check bindings still require publication",
     "Missing prerequisite instruction must be completed",
     "Full graph question coverage remains incomplete"
   ],
-  "checksum": "sha256:34c78013772347039837cf2fdbbf45a5e8aff7ec78a25fe8b40be236a6c965b1"
+  "checksum": "sha256:747c19f0ef585ce36b9f091767a1e6065288b8c01e10d349884516a547a79f72"
 }

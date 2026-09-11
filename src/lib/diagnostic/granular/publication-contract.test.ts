@@ -1,12 +1,12 @@
 import {readFileSync} from "node:fs";
 import {expect,it} from "vitest";
 import {prepareParallelPublication} from "./publication-contract";
-import {assembleDraftBank} from "./assemble-drafts";
-import {FRENCH_DRAFT_EXPANSION_SOURCES} from "./draft-expansion-sources";
 import type {AssessmentBundle} from "./service";
 const read=(p:string)=>JSON.parse(readFileSync(p,"utf8"));
-const candidate=read("docs/diagnostic/v3-scoped-review-candidate.json"),artifact=read("generated/french-taxonomy-v3.json");
-const {bank}=assembleDraftBank(read("generated/diagnostic-bank-v3-draft.json"),artifact.taxonomy,FRENCH_DRAFT_EXPANSION_SOURCES.map(name=>read(`generated/french-v3-${name}-expansion.json`)));
+const candidate=read("docs/diagnostic/v3-scoped-review-candidate.json");
+// Use the assembled immutable revision paired with this candidate, rather than
+// silently reconstructing the original authoring-bank identity.
+const bank=read("generated/diagnostic-bank-v3-consolidated-draft.json");
 const bundle:AssessmentBundle={assessment:candidate.assessment,bank,taxonomyId:"test-taxonomy",bankId:"test-bank",teachingContent:candidate.teachingContent,activities:candidate.activities.map((a:object)=>({...a,status:"published"}))};
 it("reports missing instruction rather than authorizing an incomplete pathway",()=>{
  const before=JSON.stringify(bundle),report=prepareParallelPublication(bundle);
