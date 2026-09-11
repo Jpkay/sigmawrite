@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  InvalidConjugationContextError,
   auxiliaryOf,
   conditionnelPresent,
   conjugate,
@@ -16,6 +17,20 @@ import {
   subjonctifPresent,
   UnsupportedVerbError,
 } from "./conjugation";
+
+it('uses the declared construction for compound auxiliaries without changing legacy defaults',()=>{
+ for(const [verb,participle] of [['sortir','sorti'],['monter','monté'],['descendre','descendu'],['rentrer','rentré'],['retourner','retourné']]){
+  expect(conjugate(verb,'passe_compose','3s',{gender:'f',auxiliaryUse:'transitive'})).toBe(`a ${participle}`);
+  expect(conjugate(verb,'passe_compose','3s',{gender:'f',auxiliaryUse:'intransitive'})).toBe(`est ${participle}e`);
+  expect(conjugate(verb,'plus_que_parfait','3p',{gender:'f',auxiliaryUse:'transitive'})).toBe(`avaient ${participle}`);
+  expect(conjugate(verb,'plus_que_parfait','3p',{gender:'f',auxiliaryUse:'intransitive'})).toBe(`étaient ${participle}es`);
+ }
+ expect(conjugate('sortir','passe_compose','1s')).toBe('suis sorti');
+ expect(conjugate('sortir','passe_compose','3s',{auxiliaryUse:'transitive',codBefore:{gender:'f',number:'p'}})).toBe('a sorties');
+ expect(()=>conjugate('aller','passe_compose','3s',{auxiliaryUse:'transitive'})).toThrow(InvalidConjugationContextError);
+ expect(()=>conjugate('sortir','present','3s',{auxiliaryUse:'transitive'})).toThrow(InvalidConjugationContextError);
+ expect(()=>conjugate('sortir','passe_compose','3s',{auxiliaryUse:'unknown' as 'transitive'})).toThrow(InvalidConjugationContextError);
+});
 
 describe("présent", () => {
   it("preserves soft g/c throughout simple-past paradigms without adding them before è",()=>{

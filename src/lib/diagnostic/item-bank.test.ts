@@ -278,6 +278,13 @@ describe("canonical diagnostic item-bank gate", () => {
       items: entries,
     };
     expect(validateCanonicalDiagnosticBank(artifact, taxonomy).valid).toBe(true);
+    const contextual=structuredClone(artifact);
+    contextual.items[conjugationIndex].item.validatorConfig={verb:"sortir",tense:"passe_compose",person:"3s",gender:"f",auxiliaryUse:"transitive"};
+    contextual.items[conjugationIndex].item.correctAnswer="a sorti";
+    contextual.items[conjugationIndex].qcGates.gate0_computed={applied:true,correctedAnswer:"a sorti"};
+    expect(validateCanonicalDiagnosticBank(contextual,taxonomy).valid).toBe(true);
+    contextual.items[conjugationIndex].item.correctAnswer="est sortie";
+    expect(validateCanonicalDiagnosticBank(contextual,taxonomy).valid).toBe(false);
     const corrupted = structuredClone(artifact);
     corrupted.items[conjugationIndex].item.correctAnswer = "parlez";
     const result = validateCanonicalDiagnosticBank(corrupted, taxonomy);

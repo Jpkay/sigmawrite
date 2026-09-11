@@ -29,6 +29,9 @@ export type Tense =
   | "plus_que_parfait";
 export type Gender = "m" | "f";
 export type Agreement = { gender?: Gender; number?: "s" | "p" };
+export type CompoundContext = { gender?: Gender; codBefore?: Agreement; auxiliaryUse?: "transitive" | "intransitive" };
+export class InvalidConjugationContextError extends Error {}
+const VARIABLE_AUXILIARY = new Set(["sortir", "monter", "descendre", "rentrer", "retourner"]);
 
 const PERSON_INDEX: Record<Person, number> = {
   "1s": 0, "2s": 1, "3s": 2, "1p": 3, "2p": 4, "3p": 5,
@@ -57,7 +60,7 @@ const IRREGULAR_PRESENT: Record<string, string[]> = {
 
 const IRREGULAR_PP: Record<string, string> = {
   être: "été", avoir: "eu", aller: "allé", faire: "fait", prendre: "pris",
-  venir: "venu", partir: "parti", sortir: "sorti", dire: "dit",
+  venir: "venu", partir: "parti", sortir: "sorti", descendre: "descendu", dire: "dit",
   voir: "vu", pouvoir: "pu", vouloir: "voulu", savoir: "su", devoir: "dû",
   dormir: "dormi", courir: "couru", découvrir: "découvert", cueillir: "cueilli",
 };
@@ -206,9 +209,13 @@ function compound(
   infinitive: string,
   person: Person,
   auxTense: "present" | "imparfait",
-  opts: { gender?: Gender; codBefore?: Agreement } = {}
+  opts: CompoundContext = {}
 ): string {
-  const aux = auxiliaryOf(infinitive);
+  if (opts.auxiliaryUse !== undefined &&
+      (!["transitive", "intransitive"].includes(opts.auxiliaryUse) || !VARIABLE_AUXILIARY.has(infinitive.toLowerCase()))) {
+    throw new InvalidConjugationContextError("Unsupported auxiliary construction for this verb");
+  }
+  const aux = opts.auxiliaryUse === "transitive" ? "avoir" : auxiliaryOf(infinitive);
   const auxForm =
     auxTense === "present" ? present(aux, person) : imparfait(aux, person);
   let pp = participePasse(infinitive);
@@ -226,7 +233,7 @@ function compound(
 export function passeCompose(
   infinitive: string,
   person: Person,
-  opts: { gender?: Gender; codBefore?: Agreement } = {}
+  opts: CompoundContext = {}
 ): string {
   return compound(infinitive, person, "present", opts);
 }
@@ -235,7 +242,7 @@ export function passeCompose(
 export function plusQueParfait(
   infinitive: string,
   person: Person,
-  opts: { gender?: Gender; codBefore?: Agreement } = {}
+  opts: CompoundContext = {}
 ): string {
   return compound(infinitive, person, "imparfait", opts);
 }
@@ -364,8 +371,11 @@ export function conjugate(
   infinitive: string,
   tense: Tense,
   person: Person,
-  agreement?: { gender?: Gender; codBefore?: Agreement }
+  agreement?: CompoundContext
 ): string {
+  if (agreement?.auxiliaryUse !== undefined && !["passe_compose", "plus_que_parfait"].includes(tense)) {
+    throw new InvalidConjugationContextError("Auxiliary construction requires a compound tense");
+  }
   switch (tense) {
     case "present":
       return present(infinitive, person);

@@ -90,6 +90,13 @@ describe("Gate 1 — schema + invariants", () => {
 });
 
 describe("Gate 0 — recompute computable content", () => {
+  it('keeps construction metadata through recomputation and grading',async()=>{
+    const r=await runGates(goodConjItem({promptFr:'Elle ___ les assiettes. Complète avec sortir au passé composé.',validatorConfig:{verb:'sortir',tense:'passe_compose',person:'3s',gender:'f',auxiliaryUse:'transitive'},correctAnswer:'est sortie'}),baseCtx());
+    expect(r.item?.correctAnswer).toBe('a sorti');
+    expect(r.gates.gate2_answer_key.ok).toBe(true);
+    const rejected=await runGates(goodConjItem({validatorConfig:{verb:'aller',tense:'passe_compose',person:'3s',auxiliaryUse:'transitive'}}),baseCtx());
+    expect(rejected.gates.verdict).toBe('rejected');
+  });
   it("overrides a wrong LLM conjugation with the deterministic one", async () => {
     const r = await runGates(goodConjItem({ correctAnswer: "parlez (wrong)" }), baseCtx());
     expect(r.gates.gate0_computed.applied).toBe(true);

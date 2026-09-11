@@ -264,6 +264,7 @@ function recomputesCanonicalConjugation(item: GeneratedItem) {
       config.person as Person,
       {
         gender: config.gender as "m" | "f" | undefined,
+        auxiliaryUse: config.auxiliaryUse as "transitive" | "intransitive" | undefined,
         codBefore: config.codBefore as { gender?: "m" | "f"; number?: "s" | "p" } | undefined,
       },
     ) === item.correctAnswer;

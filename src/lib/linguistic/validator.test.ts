@@ -3,6 +3,15 @@ import { mapResponse } from "./languagetool";
 import { normalize, validateAnswer } from "./validator";
 import type { FrenchGrammarChecker, GrammarCheckResult } from "./types";
 
+it('grades contextual auxiliary forms and rejects unsupported metadata',async()=>{
+ const spec={validatorType:'conjugator' as const,config:{verb:'sortir',tense:'passe_compose',person:'3s',gender:'f',auxiliaryUse:'transitive'}};
+ expect((await validateAnswer('a sorti',spec)).pass).toBe(true);
+ expect((await validateAnswer('est sortie',spec)).pass).toBe(false);
+ expect((await validateAnswer('a sortie',spec)).pass).toBe(false);
+ expect((await validateAnswer('est sortie',{...spec,config:{...spec.config,auxiliaryUse:'intransitive'}})).pass).toBe(true);
+ expect((await validateAnswer('a allé',{...spec,config:{...spec.config,verb:'aller'}})).pass).toBe(false);
+});
+
 /** A grammar checker stub: flags answers matching a known-bad agreement pattern.
  *  Uses word boundaries so "cueilli" does not false-match inside "cueillies". */
 const stubChecker = (badPatterns: RegExp[]): FrenchGrammarChecker => ({

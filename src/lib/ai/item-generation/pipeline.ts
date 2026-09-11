@@ -109,6 +109,7 @@ export async function runGates(
         cfg.person as Person,
         {
           gender: cfg.gender as "m" | "f" | undefined,
+          auxiliaryUse: cfg.auxiliaryUse as "transitive" | "intransitive" | undefined,
           codBefore: cfg.codBefore as { gender?: "m" | "f"; number?: "s" | "p" } | undefined,
         }
       );

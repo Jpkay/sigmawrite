@@ -1,0 +1,9 @@
+# Construction-sensitive compound-tense grading
+
+The conjugator previously selected être for sortir regardless of its use. That cannot grade a sentence such as « Elle a sorti les assiettes » correctly. An explicit auxiliaryUse field now distinguishes transitive and intransitive uses of sortir, monter, descendre, rentrer and retourner at the passé composé and plus-que-parfait. The descendre participle descendu is also supplied explicitly.
+
+The context is authored metadata, not an automatic interpretation of arbitrary prose. Generation, Gate 0 answer recomputation, canonical-bank verification and live answer validation pass it consistently. With a direct object after the verb, avoir does not trigger subject agreement; a separately declared preceding direct object still triggers the existing agreement rule. Intransitive uses retain être and subject agreement. Unknown context values, unsupported verbs and simple-tense contexts are rejected. Omitted metadata keeps the previous default, preserving published bare-form questions.
+
+Tests check all five supported verbs in both compound tenses, feminine and plural agreement, preceding-object agreement, legacy defaults, invalid contexts, correct and incorrect student answers, Gate 0 correction and canonical-bank recomputation. All 625 relevant linguistic, item-generation, canonical-bank and granular tests pass. Source TypeScript and lint pass; the source typecheck excluded only the frozen release copy in tmp/plume-granular-bank-r4, whose duplicate scripts would otherwise be included by the root compiler.
+
+This is a prerequisite for the next individual-verb compound-tense sentence questions. It does not itself add assessment targets or activate a new bank. The independently frozen 126-target bank import uses its existing metadata and is unaffected. Production remains on the verified 116-target release.

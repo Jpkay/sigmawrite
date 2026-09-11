@@ -18,6 +18,7 @@
 import {
   conjugate,
   UnsupportedVerbError,
+  InvalidConjugationContextError,
   type Agreement,
   type Gender,
   type Person,
@@ -116,7 +117,7 @@ export async function validateAnswer(
     }
 
     case "conjugator": {
-      // config: {verb, tense, person, gender?, codBefore?}. The expected form is
+      // config: {verb, tense, person, gender?, codBefore?, auxiliaryUse?}. The expected form is
       // computed deterministically and compared to the student's answer.
       const c = spec.config ?? {};
       const verb = c.verb as string | undefined;
@@ -133,10 +134,11 @@ export async function validateAnswer(
       try {
         expected = conjugate(verb, tense, person, {
           gender: c.gender as Gender | undefined,
+          auxiliaryUse: c.auxiliaryUse as "transitive" | "intransitive" | undefined,
           codBefore: c.codBefore as Agreement | undefined,
         });
       } catch (e) {
-        if (e instanceof UnsupportedVerbError) {
+        if (e instanceof UnsupportedVerbError || e instanceof InvalidConjugationContextError) {
           return { pass: false, validator: "conjugator", reason: e.message };
         }
         throw e;
