@@ -988,14 +988,15 @@
       "seed": 1,
       "requiredKnownTargets": 31,
       "requiredWeakTargets": 211,
-      "knownTargetsWithEvidence": [],
+      "knownTargetsWithEvidence": [
+        "distinguer_personne_nombre::reading-receptive"
+      ],
       "weakTargetsWithEvidence": [
         "produire_present_indicatif::writing-controlled-production::verb:aller",
         "produire_present_indicatif::writing-controlled-production::pattern:regular_er"
       ],
       "knownTargetsUnresolved": [
         "identifier_sujet_verbe::reading-receptive",
-        "distinguer_personne_nombre::reading-receptive",
         "reconnaitre_radical_terminaison::reading-receptive",
         "classer_famille_verbale::reading-receptive",
         "reconnaitre_auxiliaire::reading-receptive",
@@ -1239,7 +1240,7 @@
       ],
       "sameBranchBoundaries": [],
       "requireSameBranch": false,
-      "passed": false
+      "passed": true
     }
   ],
   "runs": [
@@ -1251,10 +1252,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 28,
-      "unsampledTargets": 514,
-      "targetsReachingMinimumItemCount": 11,
-      "targetsWithSufficientEvidenceToday": 9,
+      "sampledTargets": 24,
+      "unsampledTargets": 518,
+      "targetsReachingMinimumItemCount": 12,
+      "targetsWithSufficientEvidenceToday": 10,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -1262,7 +1263,9 @@
         {
           "family": "general",
           "answered": 6,
-          "knownTargetsWithEvidenceToday": [],
+          "knownTargetsWithEvidenceToday": [
+            "distinguer_personne_nombre::reading-receptive"
+          ],
           "weakTargetsWithEvidenceToday": []
         },
         {
@@ -1285,11 +1288,11 @@
       "strands": [
         {
           "strand": "conjugaison",
-          "sampledTargets": 13,
+          "sampledTargets": 9,
           "answered": 18,
-          "targetsReachingMinimumItemCount": 2,
-          "targetsWithSufficientEvidenceToday": 2,
-          "sampledKnown": 13,
+          "targetsReachingMinimumItemCount": 3,
+          "targetsWithSufficientEvidenceToday": 3,
+          "sampledKnown": 9,
           "sampledWeak": 0
         },
         {
@@ -1336,12 +1339,12 @@
           "strand": "conjugaison",
           "level": 1,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 4,
+          "correct": 4,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9283667621776505,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.9940814954403842,
+          "countedEvidence": 4,
           "minimumItems": 3
         },
         {
@@ -1416,41 +1419,26 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le présent de l'indicatif — Verbes réguliers en -er",
-          "strand": "conjugaison",
-          "level": 2,
-          "challengeOrder": 1,
-          "expectedKnown": true,
-          "answered": 3,
-          "correct": 3,
-          "status": "uncertain",
-          "withinOccasionResolved": true,
-          "probability": 0.9998285616320933,
-          "countedEvidence": 3,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "interpreter_usages_present::reading-receptive",
-          "labelFr": "Interpréter les usages du présent",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 1,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "produire_passe_compose::writing-controlled-production::verb:aller",
-          "labelFr": "Produire le passé composé — Conjuguer aller",
+          "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le passé composé — Verbes réguliers en -er",
           "strand": "conjugaison",
           "level": 2,
           "challengeOrder": 3,
+          "expectedKnown": true,
+          "answered": 2,
+          "correct": 2,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9969230769230769,
+          "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_futur_proche::writing-controlled-production::verb:aller",
+          "labelFr": "Produire le futur proche — Conjuguer aller",
+          "strand": "conjugaison",
+          "level": 3,
+          "challengeOrder": 2,
           "expectedKnown": true,
           "answered": 1,
           "correct": 1,
@@ -1475,33 +1463,18 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le passé composé — Verbes réguliers en -er",
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le présent de l'indicatif — Verbes réguliers en -er",
           "strand": "conjugaison",
           "level": 2,
-          "challengeOrder": 3,
+          "challengeOrder": 1,
           "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
+          "answered": 3,
+          "correct": 3,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "interpreter_passe_compose::reading-receptive",
-          "labelFr": "Interpréter la valeur du passé composé",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 3,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
+          "withinOccasionResolved": true,
+          "probability": 0.9998285616320933,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -1519,21 +1492,6 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_futur_proche::writing-controlled-production::verb:aller",
-          "labelFr": "Produire le futur proche — Conjuguer aller",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 2,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
           "skillId": "associer_information_question::all-receptive::text_type:informational",
           "labelFr": "Associer une information à la question posée — Texte informatif bref",
           "strand": "comprehension_ecrite",
@@ -1548,21 +1506,6 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_futur_proche::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le futur proche — Verbes réguliers en -er",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 2,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
           "skillId": "accorder_determinant_nom_ecrit::reading-receptive",
           "labelFr": "Réaliser l'accord déterminant-nom",
           "strand": "orthographe_grammaticale",
@@ -1574,21 +1517,6 @@
           "withinOccasionResolved": false,
           "probability": 0.9283667621776505,
           "countedEvidence": 2,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "interpreter_futur_proche::reading-receptive",
-          "labelFr": "Interpréter la valeur du futur proche",
-          "strand": "conjugaison",
-          "level": 4,
-          "challengeOrder": 2,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -1634,18 +1562,17 @@
           "minimumItems": 3
         },
         {
-          "skillId": "contraster_pc_imparfait::reading-receptive",
-          "labelFr": "Contraster les temps du récit",
+          "skillId": "interpreter_sequence_temporelle::reading-receptive",
+          "labelFr": "Interpréter une séquence temporelle",
           "strand": "conjugaison",
-          "level": 5,
-          "challengeOrder": 3,
+          "level": 6,
           "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
+          "answered": 2,
+          "correct": 2,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
+          "probability": 0.9283667621776505,
+          "countedEvidence": 2,
           "minimumItems": 3
         },
         {
@@ -1677,6 +1604,21 @@
           "minimumItems": 3
         },
         {
+          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
+          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
+          "strand": "conjugaison",
+          "level": 2,
+          "challengeOrder": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
           "skillId": "choisir_e_accent_aigu_grave::reading-receptive::construction:acute",
           "labelFr": "Choisir é ou è — Choisir é",
           "strand": "orthographe_lexicale",
@@ -1688,6 +1630,21 @@
           "withinOccasionResolved": false,
           "probability": 0.9283667621776505,
           "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
+          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
+          "strand": "conjugaison",
+          "level": 2,
+          "challengeOrder": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -1705,26 +1662,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
-          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
+          "skillId": "produire_passe_compose::writing-controlled-production::verb:aller",
+          "labelFr": "Produire le passé composé — Conjuguer aller",
           "strand": "conjugaison",
           "level": 2,
-          "challengeOrder": 1,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
-          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
-          "strand": "conjugaison",
-          "level": 2,
-          "challengeOrder": 1,
+          "challengeOrder": 3,
           "expectedKnown": true,
           "answered": 1,
           "correct": 1,
@@ -1745,10 +1687,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 33,
-      "unsampledTargets": 509,
-      "targetsReachingMinimumItemCount": 11,
-      "targetsWithSufficientEvidenceToday": 11,
+      "sampledTargets": 29,
+      "unsampledTargets": 513,
+      "targetsReachingMinimumItemCount": 12,
+      "targetsWithSufficientEvidenceToday": 12,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -1757,7 +1699,9 @@
           "family": "general",
           "answered": 6,
           "knownTargetsWithEvidenceToday": [],
-          "weakTargetsWithEvidenceToday": []
+          "weakTargetsWithEvidenceToday": [
+            "identifier_sujet_verbe::reading-receptive"
+          ]
         },
         {
           "family": "pattern",
@@ -1779,12 +1723,12 @@
       "strands": [
         {
           "strand": "conjugaison",
-          "sampledTargets": 14,
+          "sampledTargets": 10,
           "answered": 18,
-          "targetsReachingMinimumItemCount": 2,
-          "targetsWithSufficientEvidenceToday": 2,
+          "targetsReachingMinimumItemCount": 3,
+          "targetsWithSufficientEvidenceToday": 3,
           "sampledKnown": 0,
-          "sampledWeak": 14
+          "sampledWeak": 10
         },
         {
           "strand": "comprehension_ecrite",
@@ -1938,18 +1882,18 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le présent de l'indicatif — Verbes réguliers en -er",
+          "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le passé composé — Verbes réguliers en -er",
           "strand": "conjugaison",
           "level": 2,
-          "challengeOrder": 1,
+          "challengeOrder": 3,
           "expectedKnown": false,
-          "answered": 3,
+          "answered": 2,
           "correct": 0,
           "status": "uncertain",
-          "withinOccasionResolved": true,
-          "probability": 0.001164991990680065,
-          "countedEvidence": 3,
+          "withinOccasionResolved": false,
+          "probability": 0.010958904109589048,
+          "countedEvidence": 2,
           "minimumItems": 3
         },
         {
@@ -1972,12 +1916,12 @@
           "strand": "conjugaison",
           "level": 0,
           "expectedKnown": false,
-          "answered": 1,
+          "answered": 3,
           "correct": 0,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.11764705882352941,
-          "countedEvidence": 1,
+          "withinOccasionResolved": true,
+          "probability": 0.0023647650014779796,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -1995,11 +1939,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_passe_compose::writing-controlled-production::verb:aller",
-          "labelFr": "Produire le passé composé — Conjuguer aller",
+          "skillId": "produire_futur_proche::writing-controlled-production::verb:aller",
+          "labelFr": "Produire le futur proche — Conjuguer aller",
           "strand": "conjugaison",
-          "level": 2,
-          "challengeOrder": 3,
+          "level": 3,
+          "challengeOrder": 2,
           "expectedKnown": false,
           "answered": 1,
           "correct": 0,
@@ -2024,33 +1968,18 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le passé composé — Verbes réguliers en -er",
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le présent de l'indicatif — Verbes réguliers en -er",
           "strand": "conjugaison",
           "level": 2,
-          "challengeOrder": 3,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "interpreter_usages_present::reading-receptive",
-          "labelFr": "Interpréter les usages du présent",
-          "strand": "conjugaison",
-          "level": 3,
           "challengeOrder": 1,
           "expectedKnown": false,
-          "answered": 1,
+          "answered": 3,
           "correct": 0,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.11764705882352941,
-          "countedEvidence": 1,
+          "withinOccasionResolved": true,
+          "probability": 0.001164991990680065,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -2068,21 +1997,6 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_futur_proche::writing-controlled-production::verb:aller",
-          "labelFr": "Produire le futur proche — Conjuguer aller",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 2,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
           "skillId": "identifier_complement_direct::reading-receptive",
           "labelFr": "Identifier un complément direct",
           "strand": "grammaire_syntaxe",
@@ -2097,21 +2011,6 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_futur_proche::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le futur proche — Verbes réguliers en -er",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 2,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
           "skillId": "construction_accord_nom_adjectif::writing-controlled-production",
           "labelFr": "Analyser l'accord nom-adjectif",
           "strand": "orthographe_grammaticale",
@@ -2123,21 +2022,6 @@
           "withinOccasionResolved": false,
           "probability": 0.010958904109589048,
           "countedEvidence": 2,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "interpreter_passe_compose::reading-receptive",
-          "labelFr": "Interpréter la valeur du passé composé",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 3,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.11764705882352941,
-          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -2169,18 +2053,17 @@
           "minimumItems": 3
         },
         {
-          "skillId": "reconnaitre_passe_compose::reading-receptive",
-          "labelFr": "Reconnaître le passé composé",
+          "skillId": "classer_famille_verbale::reading-receptive",
+          "labelFr": "Classer une famille verbale",
           "strand": "conjugaison",
-          "level": 1,
-          "challengeOrder": 3,
+          "level": 0,
           "expectedKnown": false,
-          "answered": 1,
+          "answered": 2,
           "correct": 0,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.11764705882352941,
-          "countedEvidence": 1,
+          "probability": 0.017467248908296946,
+          "countedEvidence": 2,
           "minimumItems": 3
         },
         {
@@ -2212,6 +2095,21 @@
           "minimumItems": 3
         },
         {
+          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
+          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
+          "strand": "conjugaison",
+          "level": 2,
+          "challengeOrder": 1,
+          "expectedKnown": false,
+          "answered": 1,
+          "correct": 0,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
           "skillId": "choisir_e_accent_aigu_grave::reading-receptive::construction:acute",
           "labelFr": "Choisir é ou è — Choisir é",
           "strand": "orthographe_lexicale",
@@ -2240,16 +2138,17 @@
           "minimumItems": 3
         },
         {
-          "skillId": "reconnaitre_auxiliaire::reading-receptive",
-          "labelFr": "Reconnaître un auxiliaire",
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
+          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
           "strand": "conjugaison",
-          "level": 0,
+          "level": 2,
+          "challengeOrder": 1,
           "expectedKnown": false,
           "answered": 1,
           "correct": 0,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.11764705882352941,
+          "probability": 0.09523809523809527,
           "countedEvidence": 1,
           "minimumItems": 3
         },
@@ -2268,26 +2167,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
-          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
+          "skillId": "produire_passe_compose::writing-controlled-production::verb:aller",
+          "labelFr": "Produire le passé composé — Conjuguer aller",
           "strand": "conjugaison",
           "level": 2,
-          "challengeOrder": 1,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
-          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
-          "strand": "conjugaison",
-          "level": 2,
-          "challengeOrder": 1,
+          "challengeOrder": 3,
           "expectedKnown": false,
           "answered": 1,
           "correct": 0,
@@ -2308,10 +2192,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 28,
-      "unsampledTargets": 514,
-      "targetsReachingMinimumItemCount": 11,
-      "targetsWithSufficientEvidenceToday": 9,
+      "sampledTargets": 24,
+      "unsampledTargets": 518,
+      "targetsReachingMinimumItemCount": 12,
+      "targetsWithSufficientEvidenceToday": 10,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -2319,7 +2203,9 @@
         {
           "family": "general",
           "answered": 6,
-          "knownTargetsWithEvidenceToday": [],
+          "knownTargetsWithEvidenceToday": [
+            "distinguer_personne_nombre::reading-receptive"
+          ],
           "weakTargetsWithEvidenceToday": []
         },
         {
@@ -2342,11 +2228,11 @@
       "strands": [
         {
           "strand": "conjugaison",
-          "sampledTargets": 13,
+          "sampledTargets": 9,
           "answered": 18,
-          "targetsReachingMinimumItemCount": 2,
-          "targetsWithSufficientEvidenceToday": 2,
-          "sampledKnown": 9,
+          "targetsReachingMinimumItemCount": 3,
+          "targetsWithSufficientEvidenceToday": 3,
+          "sampledKnown": 5,
           "sampledWeak": 4
         },
         {
@@ -2393,12 +2279,12 @@
           "strand": "conjugaison",
           "level": 1,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 4,
+          "correct": 4,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9283667621776505,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.9940814954403842,
+          "countedEvidence": 4,
           "minimumItems": 3
         },
         {
@@ -2473,41 +2359,26 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le présent de l'indicatif — Verbes réguliers en -er",
-          "strand": "conjugaison",
-          "level": 2,
-          "challengeOrder": 1,
-          "expectedKnown": true,
-          "answered": 3,
-          "correct": 3,
-          "status": "uncertain",
-          "withinOccasionResolved": true,
-          "probability": 0.9998285616320933,
-          "countedEvidence": 3,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "interpreter_usages_present::reading-receptive",
-          "labelFr": "Interpréter les usages du présent",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 1,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "produire_passe_compose::writing-controlled-production::verb:aller",
-          "labelFr": "Produire le passé composé — Conjuguer aller",
+          "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le passé composé — Verbes réguliers en -er",
           "strand": "conjugaison",
           "level": 2,
           "challengeOrder": 3,
+          "expectedKnown": true,
+          "answered": 2,
+          "correct": 2,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9969230769230769,
+          "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_futur_proche::writing-controlled-production::verb:aller",
+          "labelFr": "Produire le futur proche — Conjuguer aller",
+          "strand": "conjugaison",
+          "level": 3,
+          "challengeOrder": 2,
           "expectedKnown": false,
           "answered": 1,
           "correct": 0,
@@ -2532,33 +2403,18 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le passé composé — Verbes réguliers en -er",
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le présent de l'indicatif — Verbes réguliers en -er",
           "strand": "conjugaison",
           "level": 2,
-          "challengeOrder": 3,
+          "challengeOrder": 1,
           "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
+          "answered": 3,
+          "correct": 3,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "interpreter_passe_compose::reading-receptive",
-          "labelFr": "Interpréter la valeur du passé composé",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 3,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
+          "withinOccasionResolved": true,
+          "probability": 0.9998285616320933,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -2576,21 +2432,6 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_futur_proche::writing-controlled-production::verb:aller",
-          "labelFr": "Produire le futur proche — Conjuguer aller",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 2,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
           "skillId": "associer_information_question::all-receptive::text_type:informational",
           "labelFr": "Associer une information à la question posée — Texte informatif bref",
           "strand": "comprehension_ecrite",
@@ -2605,21 +2446,6 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_futur_proche::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le futur proche — Verbes réguliers en -er",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 2,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
           "skillId": "accorder_determinant_nom_ecrit::reading-receptive",
           "labelFr": "Réaliser l'accord déterminant-nom",
           "strand": "orthographe_grammaticale",
@@ -2631,21 +2457,6 @@
           "withinOccasionResolved": false,
           "probability": 0.9283667621776505,
           "countedEvidence": 2,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "interpreter_futur_proche::reading-receptive",
-          "labelFr": "Interpréter la valeur du futur proche",
-          "strand": "conjugaison",
-          "level": 4,
-          "challengeOrder": 2,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -2691,18 +2502,17 @@
           "minimumItems": 3
         },
         {
-          "skillId": "contraster_pc_imparfait::reading-receptive",
-          "labelFr": "Contraster les temps du récit",
+          "skillId": "interpreter_sequence_temporelle::reading-receptive",
+          "labelFr": "Interpréter une séquence temporelle",
           "strand": "conjugaison",
-          "level": 5,
-          "challengeOrder": 3,
+          "level": 6,
           "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
+          "answered": 2,
+          "correct": 2,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
+          "probability": 0.9283667621776505,
+          "countedEvidence": 2,
           "minimumItems": 3
         },
         {
@@ -2734,6 +2544,21 @@
           "minimumItems": 3
         },
         {
+          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
+          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
+          "strand": "conjugaison",
+          "level": 2,
+          "challengeOrder": 1,
+          "expectedKnown": false,
+          "answered": 1,
+          "correct": 0,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
           "skillId": "choisir_e_accent_aigu_grave::reading-receptive::construction:acute",
           "labelFr": "Choisir é ou è — Choisir é",
           "strand": "orthographe_lexicale",
@@ -2745,6 +2570,21 @@
           "withinOccasionResolved": false,
           "probability": 0.9283667621776505,
           "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
+          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
+          "strand": "conjugaison",
+          "level": 2,
+          "challengeOrder": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -2762,32 +2602,17 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
-          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
+          "skillId": "produire_passe_compose::writing-controlled-production::verb:aller",
+          "labelFr": "Produire le passé composé — Conjuguer aller",
           "strand": "conjugaison",
           "level": 2,
-          "challengeOrder": 1,
+          "challengeOrder": 3,
           "expectedKnown": false,
           "answered": 1,
           "correct": 0,
           "status": "uncertain",
           "withinOccasionResolved": false,
           "probability": 0.09523809523809527,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
-          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
-          "strand": "conjugaison",
-          "level": 2,
-          "challengeOrder": 1,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
           "countedEvidence": 1,
           "minimumItems": 3
         }
@@ -2802,10 +2627,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 28,
-      "unsampledTargets": 514,
-      "targetsReachingMinimumItemCount": 11,
-      "targetsWithSufficientEvidenceToday": 9,
+      "sampledTargets": 24,
+      "unsampledTargets": 518,
+      "targetsReachingMinimumItemCount": 12,
+      "targetsWithSufficientEvidenceToday": 10,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -2813,7 +2638,9 @@
         {
           "family": "general",
           "answered": 6,
-          "knownTargetsWithEvidenceToday": [],
+          "knownTargetsWithEvidenceToday": [
+            "distinguer_personne_nombre::reading-receptive"
+          ],
           "weakTargetsWithEvidenceToday": []
         },
         {
@@ -2836,11 +2663,11 @@
       "strands": [
         {
           "strand": "conjugaison",
-          "sampledTargets": 13,
+          "sampledTargets": 9,
           "answered": 18,
-          "targetsReachingMinimumItemCount": 2,
-          "targetsWithSufficientEvidenceToday": 2,
-          "sampledKnown": 13,
+          "targetsReachingMinimumItemCount": 3,
+          "targetsWithSufficientEvidenceToday": 3,
+          "sampledKnown": 9,
           "sampledWeak": 0
         },
         {
@@ -2887,12 +2714,12 @@
           "strand": "conjugaison",
           "level": 1,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 4,
+          "correct": 4,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9283667621776505,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.9940814954403842,
+          "countedEvidence": 4,
           "minimumItems": 3
         },
         {
@@ -2967,41 +2794,26 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le présent de l'indicatif — Verbes réguliers en -er",
-          "strand": "conjugaison",
-          "level": 2,
-          "challengeOrder": 1,
-          "expectedKnown": true,
-          "answered": 3,
-          "correct": 3,
-          "status": "uncertain",
-          "withinOccasionResolved": true,
-          "probability": 0.9998285616320933,
-          "countedEvidence": 3,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "interpreter_usages_present::reading-receptive",
-          "labelFr": "Interpréter les usages du présent",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 1,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "produire_passe_compose::writing-controlled-production::verb:aller",
-          "labelFr": "Produire le passé composé — Conjuguer aller",
+          "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le passé composé — Verbes réguliers en -er",
           "strand": "conjugaison",
           "level": 2,
           "challengeOrder": 3,
+          "expectedKnown": true,
+          "answered": 2,
+          "correct": 2,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9969230769230769,
+          "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_futur_proche::writing-controlled-production::verb:aller",
+          "labelFr": "Produire le futur proche — Conjuguer aller",
+          "strand": "conjugaison",
+          "level": 3,
+          "challengeOrder": 2,
           "expectedKnown": true,
           "answered": 1,
           "correct": 1,
@@ -3026,33 +2838,18 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le passé composé — Verbes réguliers en -er",
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le présent de l'indicatif — Verbes réguliers en -er",
           "strand": "conjugaison",
           "level": 2,
-          "challengeOrder": 3,
+          "challengeOrder": 1,
           "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
+          "answered": 3,
+          "correct": 3,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "interpreter_passe_compose::reading-receptive",
-          "labelFr": "Interpréter la valeur du passé composé",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 3,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
+          "withinOccasionResolved": true,
+          "probability": 0.9998285616320933,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -3070,21 +2867,6 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_futur_proche::writing-controlled-production::verb:aller",
-          "labelFr": "Produire le futur proche — Conjuguer aller",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 2,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
           "skillId": "associer_information_question::all-receptive::text_type:informational",
           "labelFr": "Associer une information à la question posée — Texte informatif bref",
           "strand": "comprehension_ecrite",
@@ -3099,21 +2881,6 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_futur_proche::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le futur proche — Verbes réguliers en -er",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 2,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
           "skillId": "accorder_determinant_nom_ecrit::reading-receptive",
           "labelFr": "Réaliser l'accord déterminant-nom",
           "strand": "orthographe_grammaticale",
@@ -3125,21 +2892,6 @@
           "withinOccasionResolved": false,
           "probability": 0.9283667621776505,
           "countedEvidence": 2,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "interpreter_futur_proche::reading-receptive",
-          "labelFr": "Interpréter la valeur du futur proche",
-          "strand": "conjugaison",
-          "level": 4,
-          "challengeOrder": 2,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -3185,18 +2937,17 @@
           "minimumItems": 3
         },
         {
-          "skillId": "contraster_pc_imparfait::reading-receptive",
-          "labelFr": "Contraster les temps du récit",
+          "skillId": "interpreter_sequence_temporelle::reading-receptive",
+          "labelFr": "Interpréter une séquence temporelle",
           "strand": "conjugaison",
-          "level": 5,
-          "challengeOrder": 3,
+          "level": 6,
           "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
+          "answered": 2,
+          "correct": 2,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
+          "probability": 0.9283667621776505,
+          "countedEvidence": 2,
           "minimumItems": 3
         },
         {
@@ -3228,6 +2979,21 @@
           "minimumItems": 3
         },
         {
+          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
+          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
+          "strand": "conjugaison",
+          "level": 2,
+          "challengeOrder": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
           "skillId": "choisir_e_accent_aigu_grave::reading-receptive::construction:acute",
           "labelFr": "Choisir é ou è — Choisir é",
           "strand": "orthographe_lexicale",
@@ -3239,6 +3005,21 @@
           "withinOccasionResolved": false,
           "probability": 0.9283667621776505,
           "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
+          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
+          "strand": "conjugaison",
+          "level": 2,
+          "challengeOrder": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -3256,26 +3037,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
-          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
+          "skillId": "produire_passe_compose::writing-controlled-production::verb:aller",
+          "labelFr": "Produire le passé composé — Conjuguer aller",
           "strand": "conjugaison",
           "level": 2,
-          "challengeOrder": 1,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
-          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
-          "strand": "conjugaison",
-          "level": 2,
-          "challengeOrder": 1,
+          "challengeOrder": 3,
           "expectedKnown": true,
           "answered": 1,
           "correct": 1,
@@ -3296,10 +3062,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 28,
-      "unsampledTargets": 514,
-      "targetsReachingMinimumItemCount": 11,
-      "targetsWithSufficientEvidenceToday": 9,
+      "sampledTargets": 24,
+      "unsampledTargets": 518,
+      "targetsReachingMinimumItemCount": 12,
+      "targetsWithSufficientEvidenceToday": 10,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -3307,7 +3073,9 @@
         {
           "family": "general",
           "answered": 6,
-          "knownTargetsWithEvidenceToday": [],
+          "knownTargetsWithEvidenceToday": [
+            "distinguer_personne_nombre::reading-receptive"
+          ],
           "weakTargetsWithEvidenceToday": []
         },
         {
@@ -3330,11 +3098,11 @@
       "strands": [
         {
           "strand": "conjugaison",
-          "sampledTargets": 13,
+          "sampledTargets": 9,
           "answered": 18,
-          "targetsReachingMinimumItemCount": 2,
-          "targetsWithSufficientEvidenceToday": 2,
-          "sampledKnown": 13,
+          "targetsReachingMinimumItemCount": 3,
+          "targetsWithSufficientEvidenceToday": 3,
+          "sampledKnown": 9,
           "sampledWeak": 0
         },
         {
@@ -3381,12 +3149,12 @@
           "strand": "conjugaison",
           "level": 1,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 4,
+          "correct": 4,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9283667621776505,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.9940814954403842,
+          "countedEvidence": 4,
           "minimumItems": 3
         },
         {
@@ -3461,41 +3229,26 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le présent de l'indicatif — Verbes réguliers en -er",
-          "strand": "conjugaison",
-          "level": 2,
-          "challengeOrder": 1,
-          "expectedKnown": true,
-          "answered": 3,
-          "correct": 3,
-          "status": "uncertain",
-          "withinOccasionResolved": true,
-          "probability": 0.9998285616320933,
-          "countedEvidence": 3,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "interpreter_usages_present::reading-receptive",
-          "labelFr": "Interpréter les usages du présent",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 1,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "produire_passe_compose::writing-controlled-production::verb:aller",
-          "labelFr": "Produire le passé composé — Conjuguer aller",
+          "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le passé composé — Verbes réguliers en -er",
           "strand": "conjugaison",
           "level": 2,
           "challengeOrder": 3,
+          "expectedKnown": true,
+          "answered": 2,
+          "correct": 2,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9969230769230769,
+          "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_futur_proche::writing-controlled-production::verb:aller",
+          "labelFr": "Produire le futur proche — Conjuguer aller",
+          "strand": "conjugaison",
+          "level": 3,
+          "challengeOrder": 2,
           "expectedKnown": true,
           "answered": 1,
           "correct": 1,
@@ -3520,33 +3273,18 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le passé composé — Verbes réguliers en -er",
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le présent de l'indicatif — Verbes réguliers en -er",
           "strand": "conjugaison",
           "level": 2,
-          "challengeOrder": 3,
+          "challengeOrder": 1,
           "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
+          "answered": 3,
+          "correct": 3,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "interpreter_passe_compose::reading-receptive",
-          "labelFr": "Interpréter la valeur du passé composé",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 3,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
+          "withinOccasionResolved": true,
+          "probability": 0.9998285616320933,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -3564,21 +3302,6 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_futur_proche::writing-controlled-production::verb:aller",
-          "labelFr": "Produire le futur proche — Conjuguer aller",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 2,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
           "skillId": "associer_information_question::all-receptive::text_type:informational",
           "labelFr": "Associer une information à la question posée — Texte informatif bref",
           "strand": "comprehension_ecrite",
@@ -3593,21 +3316,6 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_futur_proche::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le futur proche — Verbes réguliers en -er",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 2,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
           "skillId": "accorder_determinant_nom_ecrit::reading-receptive",
           "labelFr": "Réaliser l'accord déterminant-nom",
           "strand": "orthographe_grammaticale",
@@ -3619,21 +3327,6 @@
           "withinOccasionResolved": false,
           "probability": 0.9283667621776505,
           "countedEvidence": 2,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "interpreter_futur_proche::reading-receptive",
-          "labelFr": "Interpréter la valeur du futur proche",
-          "strand": "conjugaison",
-          "level": 4,
-          "challengeOrder": 2,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -3679,18 +3372,17 @@
           "minimumItems": 3
         },
         {
-          "skillId": "contraster_pc_imparfait::reading-receptive",
-          "labelFr": "Contraster les temps du récit",
+          "skillId": "interpreter_sequence_temporelle::reading-receptive",
+          "labelFr": "Interpréter une séquence temporelle",
           "strand": "conjugaison",
-          "level": 5,
-          "challengeOrder": 3,
+          "level": 6,
           "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
+          "answered": 2,
+          "correct": 2,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
+          "probability": 0.9283667621776505,
+          "countedEvidence": 2,
           "minimumItems": 3
         },
         {
@@ -3722,6 +3414,21 @@
           "minimumItems": 3
         },
         {
+          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
+          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
+          "strand": "conjugaison",
+          "level": 2,
+          "challengeOrder": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
           "skillId": "choisir_e_accent_aigu_grave::reading-receptive::construction:acute",
           "labelFr": "Choisir é ou è — Choisir é",
           "strand": "orthographe_lexicale",
@@ -3733,6 +3440,21 @@
           "withinOccasionResolved": false,
           "probability": 0.9283667621776505,
           "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
+          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
+          "strand": "conjugaison",
+          "level": 2,
+          "challengeOrder": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -3750,26 +3472,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
-          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
+          "skillId": "produire_passe_compose::writing-controlled-production::verb:aller",
+          "labelFr": "Produire le passé composé — Conjuguer aller",
           "strand": "conjugaison",
           "level": 2,
-          "challengeOrder": 1,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
-          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
-          "strand": "conjugaison",
-          "level": 2,
-          "challengeOrder": 1,
+          "challengeOrder": 3,
           "expectedKnown": true,
           "answered": 1,
           "correct": 1,
@@ -3790,10 +3497,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 28,
-      "unsampledTargets": 514,
-      "targetsReachingMinimumItemCount": 11,
-      "targetsWithSufficientEvidenceToday": 9,
+      "sampledTargets": 24,
+      "unsampledTargets": 518,
+      "targetsReachingMinimumItemCount": 12,
+      "targetsWithSufficientEvidenceToday": 10,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -3801,7 +3508,9 @@
         {
           "family": "general",
           "answered": 6,
-          "knownTargetsWithEvidenceToday": [],
+          "knownTargetsWithEvidenceToday": [
+            "distinguer_personne_nombre::reading-receptive"
+          ],
           "weakTargetsWithEvidenceToday": []
         },
         {
@@ -3824,11 +3533,11 @@
       "strands": [
         {
           "strand": "conjugaison",
-          "sampledTargets": 13,
+          "sampledTargets": 9,
           "answered": 18,
-          "targetsReachingMinimumItemCount": 2,
-          "targetsWithSufficientEvidenceToday": 2,
-          "sampledKnown": 13,
+          "targetsReachingMinimumItemCount": 3,
+          "targetsWithSufficientEvidenceToday": 3,
+          "sampledKnown": 9,
           "sampledWeak": 0
         },
         {
@@ -3875,12 +3584,12 @@
           "strand": "conjugaison",
           "level": 1,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 4,
+          "correct": 4,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9283667621776505,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.9940814954403842,
+          "countedEvidence": 4,
           "minimumItems": 3
         },
         {
@@ -3955,41 +3664,26 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le présent de l'indicatif — Verbes réguliers en -er",
-          "strand": "conjugaison",
-          "level": 2,
-          "challengeOrder": 1,
-          "expectedKnown": true,
-          "answered": 3,
-          "correct": 3,
-          "status": "uncertain",
-          "withinOccasionResolved": true,
-          "probability": 0.9998285616320933,
-          "countedEvidence": 3,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "interpreter_usages_present::reading-receptive",
-          "labelFr": "Interpréter les usages du présent",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 1,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "produire_passe_compose::writing-controlled-production::verb:aller",
-          "labelFr": "Produire le passé composé — Conjuguer aller",
+          "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le passé composé — Verbes réguliers en -er",
           "strand": "conjugaison",
           "level": 2,
           "challengeOrder": 3,
+          "expectedKnown": true,
+          "answered": 2,
+          "correct": 2,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9969230769230769,
+          "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_futur_proche::writing-controlled-production::verb:aller",
+          "labelFr": "Produire le futur proche — Conjuguer aller",
+          "strand": "conjugaison",
+          "level": 3,
+          "challengeOrder": 2,
           "expectedKnown": true,
           "answered": 1,
           "correct": 1,
@@ -4014,33 +3708,18 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le passé composé — Verbes réguliers en -er",
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le présent de l'indicatif — Verbes réguliers en -er",
           "strand": "conjugaison",
           "level": 2,
-          "challengeOrder": 3,
+          "challengeOrder": 1,
           "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
+          "answered": 3,
+          "correct": 3,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "interpreter_passe_compose::reading-receptive",
-          "labelFr": "Interpréter la valeur du passé composé",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 3,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
+          "withinOccasionResolved": true,
+          "probability": 0.9998285616320933,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -4058,21 +3737,6 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_futur_proche::writing-controlled-production::verb:aller",
-          "labelFr": "Produire le futur proche — Conjuguer aller",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 2,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
           "skillId": "associer_information_question::all-receptive::text_type:informational",
           "labelFr": "Associer une information à la question posée — Texte informatif bref",
           "strand": "comprehension_ecrite",
@@ -4087,21 +3751,6 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_futur_proche::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le futur proche — Verbes réguliers en -er",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 2,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
           "skillId": "accorder_determinant_nom_ecrit::reading-receptive",
           "labelFr": "Réaliser l'accord déterminant-nom",
           "strand": "orthographe_grammaticale",
@@ -4113,21 +3762,6 @@
           "withinOccasionResolved": false,
           "probability": 0.9283667621776505,
           "countedEvidence": 2,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "interpreter_futur_proche::reading-receptive",
-          "labelFr": "Interpréter la valeur du futur proche",
-          "strand": "conjugaison",
-          "level": 4,
-          "challengeOrder": 2,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -4173,18 +3807,17 @@
           "minimumItems": 3
         },
         {
-          "skillId": "contraster_pc_imparfait::reading-receptive",
-          "labelFr": "Contraster les temps du récit",
+          "skillId": "interpreter_sequence_temporelle::reading-receptive",
+          "labelFr": "Interpréter une séquence temporelle",
           "strand": "conjugaison",
-          "level": 5,
-          "challengeOrder": 3,
+          "level": 6,
           "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
+          "answered": 2,
+          "correct": 2,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
+          "probability": 0.9283667621776505,
+          "countedEvidence": 2,
           "minimumItems": 3
         },
         {
@@ -4216,6 +3849,21 @@
           "minimumItems": 3
         },
         {
+          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
+          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
+          "strand": "conjugaison",
+          "level": 2,
+          "challengeOrder": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
           "skillId": "choisir_e_accent_aigu_grave::reading-receptive::construction:acute",
           "labelFr": "Choisir é ou è — Choisir é",
           "strand": "orthographe_lexicale",
@@ -4227,6 +3875,21 @@
           "withinOccasionResolved": false,
           "probability": 0.9283667621776505,
           "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
+          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
+          "strand": "conjugaison",
+          "level": 2,
+          "challengeOrder": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -4244,26 +3907,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
-          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
+          "skillId": "produire_passe_compose::writing-controlled-production::verb:aller",
+          "labelFr": "Produire le passé composé — Conjuguer aller",
           "strand": "conjugaison",
           "level": 2,
-          "challengeOrder": 1,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
-          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
-          "strand": "conjugaison",
-          "level": 2,
-          "challengeOrder": 1,
+          "challengeOrder": 3,
           "expectedKnown": true,
           "answered": 1,
           "correct": 1,
@@ -4284,10 +3932,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 28,
-      "unsampledTargets": 514,
-      "targetsReachingMinimumItemCount": 11,
-      "targetsWithSufficientEvidenceToday": 9,
+      "sampledTargets": 24,
+      "unsampledTargets": 518,
+      "targetsReachingMinimumItemCount": 12,
+      "targetsWithSufficientEvidenceToday": 10,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -4295,7 +3943,9 @@
         {
           "family": "general",
           "answered": 6,
-          "knownTargetsWithEvidenceToday": [],
+          "knownTargetsWithEvidenceToday": [
+            "distinguer_personne_nombre::reading-receptive"
+          ],
           "weakTargetsWithEvidenceToday": []
         },
         {
@@ -4318,11 +3968,11 @@
       "strands": [
         {
           "strand": "conjugaison",
-          "sampledTargets": 13,
+          "sampledTargets": 9,
           "answered": 18,
-          "targetsReachingMinimumItemCount": 2,
-          "targetsWithSufficientEvidenceToday": 2,
-          "sampledKnown": 13,
+          "targetsReachingMinimumItemCount": 3,
+          "targetsWithSufficientEvidenceToday": 3,
+          "sampledKnown": 9,
           "sampledWeak": 0
         },
         {
@@ -4369,12 +4019,12 @@
           "strand": "conjugaison",
           "level": 1,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 4,
+          "correct": 4,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9283667621776505,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.9940814954403842,
+          "countedEvidence": 4,
           "minimumItems": 3
         },
         {
@@ -4449,41 +4099,26 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le présent de l'indicatif — Verbes réguliers en -er",
-          "strand": "conjugaison",
-          "level": 2,
-          "challengeOrder": 1,
-          "expectedKnown": true,
-          "answered": 3,
-          "correct": 3,
-          "status": "uncertain",
-          "withinOccasionResolved": true,
-          "probability": 0.9998285616320933,
-          "countedEvidence": 3,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "interpreter_usages_present::reading-receptive",
-          "labelFr": "Interpréter les usages du présent",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 1,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "produire_passe_compose::writing-controlled-production::verb:aller",
-          "labelFr": "Produire le passé composé — Conjuguer aller",
+          "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le passé composé — Verbes réguliers en -er",
           "strand": "conjugaison",
           "level": 2,
           "challengeOrder": 3,
+          "expectedKnown": true,
+          "answered": 2,
+          "correct": 2,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9969230769230769,
+          "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_futur_proche::writing-controlled-production::verb:aller",
+          "labelFr": "Produire le futur proche — Conjuguer aller",
+          "strand": "conjugaison",
+          "level": 3,
+          "challengeOrder": 2,
           "expectedKnown": true,
           "answered": 1,
           "correct": 1,
@@ -4508,33 +4143,18 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le passé composé — Verbes réguliers en -er",
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le présent de l'indicatif — Verbes réguliers en -er",
           "strand": "conjugaison",
           "level": 2,
-          "challengeOrder": 3,
+          "challengeOrder": 1,
           "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
+          "answered": 3,
+          "correct": 3,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "interpreter_passe_compose::reading-receptive",
-          "labelFr": "Interpréter la valeur du passé composé",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 3,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
+          "withinOccasionResolved": true,
+          "probability": 0.9998285616320933,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -4552,21 +4172,6 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_futur_proche::writing-controlled-production::verb:aller",
-          "labelFr": "Produire le futur proche — Conjuguer aller",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 2,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
           "skillId": "associer_information_question::all-receptive::text_type:informational",
           "labelFr": "Associer une information à la question posée — Texte informatif bref",
           "strand": "comprehension_ecrite",
@@ -4581,21 +4186,6 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_futur_proche::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le futur proche — Verbes réguliers en -er",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 2,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
           "skillId": "accorder_determinant_nom_ecrit::reading-receptive",
           "labelFr": "Réaliser l'accord déterminant-nom",
           "strand": "orthographe_grammaticale",
@@ -4607,21 +4197,6 @@
           "withinOccasionResolved": false,
           "probability": 0.9283667621776505,
           "countedEvidence": 2,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "interpreter_futur_proche::reading-receptive",
-          "labelFr": "Interpréter la valeur du futur proche",
-          "strand": "conjugaison",
-          "level": 4,
-          "challengeOrder": 2,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -4667,18 +4242,17 @@
           "minimumItems": 3
         },
         {
-          "skillId": "contraster_pc_imparfait::reading-receptive",
-          "labelFr": "Contraster les temps du récit",
+          "skillId": "interpreter_sequence_temporelle::reading-receptive",
+          "labelFr": "Interpréter une séquence temporelle",
           "strand": "conjugaison",
-          "level": 5,
-          "challengeOrder": 3,
+          "level": 6,
           "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
+          "answered": 2,
+          "correct": 2,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
+          "probability": 0.9283667621776505,
+          "countedEvidence": 2,
           "minimumItems": 3
         },
         {
@@ -4710,6 +4284,21 @@
           "minimumItems": 3
         },
         {
+          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
+          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
+          "strand": "conjugaison",
+          "level": 2,
+          "challengeOrder": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
           "skillId": "choisir_e_accent_aigu_grave::reading-receptive::construction:acute",
           "labelFr": "Choisir é ou è — Choisir é",
           "strand": "orthographe_lexicale",
@@ -4721,6 +4310,21 @@
           "withinOccasionResolved": false,
           "probability": 0.9283667621776505,
           "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
+          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
+          "strand": "conjugaison",
+          "level": 2,
+          "challengeOrder": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -4738,26 +4342,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
-          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
+          "skillId": "produire_passe_compose::writing-controlled-production::verb:aller",
+          "labelFr": "Produire le passé composé — Conjuguer aller",
           "strand": "conjugaison",
           "level": 2,
-          "challengeOrder": 1,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
-          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
-          "strand": "conjugaison",
-          "level": 2,
-          "challengeOrder": 1,
+          "challengeOrder": 3,
           "expectedKnown": true,
           "answered": 1,
           "correct": 1,
@@ -4778,10 +4367,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 29,
-      "unsampledTargets": 513,
-      "targetsReachingMinimumItemCount": 11,
-      "targetsWithSufficientEvidenceToday": 10,
+      "sampledTargets": 25,
+      "unsampledTargets": 517,
+      "targetsReachingMinimumItemCount": 12,
+      "targetsWithSufficientEvidenceToday": 11,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -4789,7 +4378,9 @@
         {
           "family": "general",
           "answered": 6,
-          "knownTargetsWithEvidenceToday": [],
+          "knownTargetsWithEvidenceToday": [
+            "distinguer_personne_nombre::reading-receptive"
+          ],
           "weakTargetsWithEvidenceToday": []
         },
         {
@@ -4812,11 +4403,11 @@
       "strands": [
         {
           "strand": "conjugaison",
-          "sampledTargets": 13,
+          "sampledTargets": 9,
           "answered": 18,
-          "targetsReachingMinimumItemCount": 2,
-          "targetsWithSufficientEvidenceToday": 2,
-          "sampledKnown": 13,
+          "targetsReachingMinimumItemCount": 3,
+          "targetsWithSufficientEvidenceToday": 3,
+          "sampledKnown": 9,
           "sampledWeak": 0
         },
         {
@@ -4863,12 +4454,12 @@
           "strand": "conjugaison",
           "level": 1,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 4,
+          "correct": 4,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9283667621776505,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.9940814954403842,
+          "countedEvidence": 4,
           "minimumItems": 3
         },
         {
@@ -4943,18 +4534,18 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le présent de l'indicatif — Verbes réguliers en -er",
+          "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le passé composé — Verbes réguliers en -er",
           "strand": "conjugaison",
           "level": 2,
-          "challengeOrder": 1,
+          "challengeOrder": 3,
           "expectedKnown": true,
-          "answered": 3,
-          "correct": 3,
+          "answered": 2,
+          "correct": 2,
           "status": "uncertain",
-          "withinOccasionResolved": true,
-          "probability": 0.9998285616320933,
-          "countedEvidence": 3,
+          "withinOccasionResolved": false,
+          "probability": 0.9969230769230769,
+          "countedEvidence": 2,
           "minimumItems": 3
         },
         {
@@ -4972,26 +4563,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "interpreter_usages_present::reading-receptive",
-          "labelFr": "Interpréter les usages du présent",
+          "skillId": "produire_futur_proche::writing-controlled-production::verb:aller",
+          "labelFr": "Produire le futur proche — Conjuguer aller",
           "strand": "conjugaison",
           "level": 3,
-          "challengeOrder": 1,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "produire_passe_compose::writing-controlled-production::verb:aller",
-          "labelFr": "Produire le passé composé — Conjuguer aller",
-          "strand": "conjugaison",
-          "level": 2,
-          "challengeOrder": 3,
+          "challengeOrder": 2,
           "expectedKnown": true,
           "answered": 1,
           "correct": 1,
@@ -5016,33 +4592,18 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le passé composé — Verbes réguliers en -er",
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le présent de l'indicatif — Verbes réguliers en -er",
           "strand": "conjugaison",
           "level": 2,
-          "challengeOrder": 3,
+          "challengeOrder": 1,
           "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
+          "answered": 3,
+          "correct": 3,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "interpreter_passe_compose::reading-receptive",
-          "labelFr": "Interpréter la valeur du passé composé",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 3,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
+          "withinOccasionResolved": true,
+          "probability": 0.9998285616320933,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -5060,21 +4621,6 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_futur_proche::writing-controlled-production::verb:aller",
-          "labelFr": "Produire le futur proche — Conjuguer aller",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 2,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
           "skillId": "associer_information_question::all-receptive::text_type:informational",
           "labelFr": "Associer une information à la question posée — Texte informatif bref",
           "strand": "comprehension_ecrite",
@@ -5089,21 +4635,6 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_futur_proche::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le futur proche — Verbes réguliers en -er",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 2,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
           "skillId": "construction_accord_nom_adjectif::writing-controlled-production",
           "labelFr": "Analyser l'accord nom-adjectif",
           "strand": "orthographe_grammaticale",
@@ -5115,21 +4646,6 @@
           "withinOccasionResolved": false,
           "probability": 0.010958904109589048,
           "countedEvidence": 2,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "interpreter_futur_proche::reading-receptive",
-          "labelFr": "Interpréter la valeur du futur proche",
-          "strand": "conjugaison",
-          "level": 4,
-          "challengeOrder": 2,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -5175,18 +4691,17 @@
           "minimumItems": 3
         },
         {
-          "skillId": "contraster_pc_imparfait::reading-receptive",
-          "labelFr": "Contraster les temps du récit",
+          "skillId": "interpreter_sequence_temporelle::reading-receptive",
+          "labelFr": "Interpréter une séquence temporelle",
           "strand": "conjugaison",
-          "level": 5,
-          "challengeOrder": 3,
+          "level": 6,
           "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
+          "answered": 2,
+          "correct": 2,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
+          "probability": 0.9283667621776505,
+          "countedEvidence": 2,
           "minimumItems": 3
         },
         {
@@ -5218,6 +4733,21 @@
           "minimumItems": 3
         },
         {
+          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
+          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
+          "strand": "conjugaison",
+          "level": 2,
+          "challengeOrder": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
           "skillId": "choisir_e_accent_aigu_grave::reading-receptive::construction:acute",
           "labelFr": "Choisir é ou è — Choisir é",
           "strand": "orthographe_lexicale",
@@ -5229,6 +4759,21 @@
           "withinOccasionResolved": false,
           "probability": 0.9283667621776505,
           "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
+          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
+          "strand": "conjugaison",
+          "level": 2,
+          "challengeOrder": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -5246,26 +4791,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
-          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
+          "skillId": "produire_passe_compose::writing-controlled-production::verb:aller",
+          "labelFr": "Produire le passé composé — Conjuguer aller",
           "strand": "conjugaison",
           "level": 2,
-          "challengeOrder": 1,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
-          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
-          "strand": "conjugaison",
-          "level": 2,
-          "challengeOrder": 1,
+          "challengeOrder": 3,
           "expectedKnown": true,
           "answered": 1,
           "correct": 1,
@@ -5286,10 +4816,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 29,
-      "unsampledTargets": 513,
-      "targetsReachingMinimumItemCount": 11,
-      "targetsWithSufficientEvidenceToday": 9,
+      "sampledTargets": 25,
+      "unsampledTargets": 517,
+      "targetsReachingMinimumItemCount": 12,
+      "targetsWithSufficientEvidenceToday": 10,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -5297,7 +4827,9 @@
         {
           "family": "general",
           "answered": 6,
-          "knownTargetsWithEvidenceToday": [],
+          "knownTargetsWithEvidenceToday": [
+            "distinguer_personne_nombre::reading-receptive"
+          ],
           "weakTargetsWithEvidenceToday": []
         },
         {
@@ -5320,11 +4852,11 @@
       "strands": [
         {
           "strand": "conjugaison",
-          "sampledTargets": 13,
+          "sampledTargets": 9,
           "answered": 18,
-          "targetsReachingMinimumItemCount": 2,
-          "targetsWithSufficientEvidenceToday": 2,
-          "sampledKnown": 13,
+          "targetsReachingMinimumItemCount": 3,
+          "targetsWithSufficientEvidenceToday": 3,
+          "sampledKnown": 9,
           "sampledWeak": 0
         },
         {
@@ -5371,12 +4903,12 @@
           "strand": "conjugaison",
           "level": 1,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 4,
+          "correct": 4,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9283667621776505,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.9940814954403842,
+          "countedEvidence": 4,
           "minimumItems": 3
         },
         {
@@ -5451,33 +4983,18 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le présent de l'indicatif — Verbes réguliers en -er",
+          "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le passé composé — Verbes réguliers en -er",
           "strand": "conjugaison",
           "level": 2,
-          "challengeOrder": 1,
+          "challengeOrder": 3,
           "expectedKnown": true,
-          "answered": 3,
-          "correct": 3,
-          "status": "uncertain",
-          "withinOccasionResolved": true,
-          "probability": 0.9998285616320933,
-          "countedEvidence": 3,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "interpreter_usages_present::reading-receptive",
-          "labelFr": "Interpréter les usages du présent",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 1,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
+          "answered": 2,
+          "correct": 2,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
+          "probability": 0.9969230769230769,
+          "countedEvidence": 2,
           "minimumItems": 3
         },
         {
@@ -5495,11 +5012,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_passe_compose::writing-controlled-production::verb:aller",
-          "labelFr": "Produire le passé composé — Conjuguer aller",
+          "skillId": "produire_futur_proche::writing-controlled-production::verb:aller",
+          "labelFr": "Produire le futur proche — Conjuguer aller",
           "strand": "conjugaison",
-          "level": 2,
-          "challengeOrder": 3,
+          "level": 3,
+          "challengeOrder": 2,
           "expectedKnown": true,
           "answered": 1,
           "correct": 1,
@@ -5524,33 +5041,18 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le passé composé — Verbes réguliers en -er",
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le présent de l'indicatif — Verbes réguliers en -er",
           "strand": "conjugaison",
           "level": 2,
-          "challengeOrder": 3,
+          "challengeOrder": 1,
           "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
+          "answered": 3,
+          "correct": 3,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "interpreter_passe_compose::reading-receptive",
-          "labelFr": "Interpréter la valeur du passé composé",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 3,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
+          "withinOccasionResolved": true,
+          "probability": 0.9998285616320933,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -5568,21 +5070,6 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_futur_proche::writing-controlled-production::verb:aller",
-          "labelFr": "Produire le futur proche — Conjuguer aller",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 2,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
           "skillId": "associer_information_question::all-receptive::text_type:informational",
           "labelFr": "Associer une information à la question posée — Texte informatif bref",
           "strand": "comprehension_ecrite",
@@ -5597,21 +5084,6 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_futur_proche::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le futur proche — Verbes réguliers en -er",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 2,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
           "skillId": "accorder_determinant_nom_ecrit::reading-receptive",
           "labelFr": "Réaliser l'accord déterminant-nom",
           "strand": "orthographe_grammaticale",
@@ -5623,21 +5095,6 @@
           "withinOccasionResolved": false,
           "probability": 0.9283667621776505,
           "countedEvidence": 2,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "interpreter_futur_proche::reading-receptive",
-          "labelFr": "Interpréter la valeur du futur proche",
-          "strand": "conjugaison",
-          "level": 4,
-          "challengeOrder": 2,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -5683,18 +5140,17 @@
           "minimumItems": 3
         },
         {
-          "skillId": "contraster_pc_imparfait::reading-receptive",
-          "labelFr": "Contraster les temps du récit",
+          "skillId": "interpreter_sequence_temporelle::reading-receptive",
+          "labelFr": "Interpréter une séquence temporelle",
           "strand": "conjugaison",
-          "level": 5,
-          "challengeOrder": 3,
+          "level": 6,
           "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
+          "answered": 2,
+          "correct": 2,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
+          "probability": 0.9283667621776505,
+          "countedEvidence": 2,
           "minimumItems": 3
         },
         {
@@ -5726,6 +5182,21 @@
           "minimumItems": 3
         },
         {
+          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
+          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
+          "strand": "conjugaison",
+          "level": 2,
+          "challengeOrder": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
           "skillId": "choisir_e_accent_aigu_grave::reading-receptive::construction:acute",
           "labelFr": "Choisir é ou è — Choisir é",
           "strand": "orthographe_lexicale",
@@ -5737,6 +5208,21 @@
           "withinOccasionResolved": false,
           "probability": 0.017467248908296946,
           "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
+          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
+          "strand": "conjugaison",
+          "level": 2,
+          "challengeOrder": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -5754,26 +5240,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
-          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
+          "skillId": "produire_passe_compose::writing-controlled-production::verb:aller",
+          "labelFr": "Produire le passé composé — Conjuguer aller",
           "strand": "conjugaison",
           "level": 2,
-          "challengeOrder": 1,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
-          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
-          "strand": "conjugaison",
-          "level": 2,
-          "challengeOrder": 1,
+          "challengeOrder": 3,
           "expectedKnown": true,
           "answered": 1,
           "correct": 1,
@@ -5794,10 +5265,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 29,
-      "unsampledTargets": 513,
-      "targetsReachingMinimumItemCount": 11,
-      "targetsWithSufficientEvidenceToday": 10,
+      "sampledTargets": 25,
+      "unsampledTargets": 517,
+      "targetsReachingMinimumItemCount": 12,
+      "targetsWithSufficientEvidenceToday": 11,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -5805,7 +5276,9 @@
         {
           "family": "general",
           "answered": 6,
-          "knownTargetsWithEvidenceToday": [],
+          "knownTargetsWithEvidenceToday": [
+            "distinguer_personne_nombre::reading-receptive"
+          ],
           "weakTargetsWithEvidenceToday": []
         },
         {
@@ -5828,12 +5301,12 @@
       "strands": [
         {
           "strand": "conjugaison",
-          "sampledTargets": 13,
+          "sampledTargets": 9,
           "answered": 18,
-          "targetsReachingMinimumItemCount": 2,
-          "targetsWithSufficientEvidenceToday": 2,
-          "sampledKnown": 5,
-          "sampledWeak": 8
+          "targetsReachingMinimumItemCount": 3,
+          "targetsWithSufficientEvidenceToday": 3,
+          "sampledKnown": 2,
+          "sampledWeak": 7
         },
         {
           "strand": "comprehension_ecrite",
@@ -5879,12 +5352,12 @@
           "strand": "conjugaison",
           "level": 1,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 4,
+          "correct": 4,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9283667621776505,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.9940814954403842,
+          "countedEvidence": 4,
           "minimumItems": 3
         },
         {
@@ -5973,41 +5446,26 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le présent de l'indicatif — Verbes réguliers en -er",
-          "strand": "conjugaison",
-          "level": 2,
-          "challengeOrder": 1,
-          "expectedKnown": false,
-          "answered": 3,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": true,
-          "probability": 0.001164991990680065,
-          "countedEvidence": 3,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "interpreter_usages_present::reading-receptive",
-          "labelFr": "Interpréter les usages du présent",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 1,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "produire_passe_compose::writing-controlled-production::verb:aller",
-          "labelFr": "Produire le passé composé — Conjuguer aller",
+          "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le passé composé — Verbes réguliers en -er",
           "strand": "conjugaison",
           "level": 2,
           "challengeOrder": 3,
+          "expectedKnown": false,
+          "answered": 2,
+          "correct": 0,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.010958904109589048,
+          "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_futur_proche::writing-controlled-production::verb:aller",
+          "labelFr": "Produire le futur proche — Conjuguer aller",
+          "strand": "conjugaison",
+          "level": 3,
+          "challengeOrder": 2,
           "expectedKnown": false,
           "answered": 1,
           "correct": 0,
@@ -6032,33 +5490,18 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le passé composé — Verbes réguliers en -er",
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le présent de l'indicatif — Verbes réguliers en -er",
           "strand": "conjugaison",
           "level": 2,
-          "challengeOrder": 3,
+          "challengeOrder": 1,
           "expectedKnown": false,
-          "answered": 1,
+          "answered": 3,
           "correct": 0,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "interpreter_passe_compose::reading-receptive",
-          "labelFr": "Interpréter la valeur du passé composé",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 3,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
+          "withinOccasionResolved": true,
+          "probability": 0.001164991990680065,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -6076,21 +5519,6 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_futur_proche::writing-controlled-production::verb:aller",
-          "labelFr": "Produire le futur proche — Conjuguer aller",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 2,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
           "skillId": "identifier_complement_direct::reading-receptive",
           "labelFr": "Identifier un complément direct",
           "strand": "grammaire_syntaxe",
@@ -6105,21 +5533,6 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_futur_proche::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le futur proche — Verbes réguliers en -er",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 2,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
           "skillId": "accorder_determinant_nom_ecrit::reading-receptive",
           "labelFr": "Réaliser l'accord déterminant-nom",
           "strand": "orthographe_grammaticale",
@@ -6131,21 +5544,6 @@
           "withinOccasionResolved": false,
           "probability": 0.9283667621776505,
           "countedEvidence": 2,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "interpreter_futur_proche::reading-receptive",
-          "labelFr": "Interpréter la valeur du futur proche",
-          "strand": "conjugaison",
-          "level": 4,
-          "challengeOrder": 2,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -6177,18 +5575,17 @@
           "minimumItems": 3
         },
         {
-          "skillId": "contraster_pc_imparfait::reading-receptive",
-          "labelFr": "Contraster les temps du récit",
+          "skillId": "interpreter_sequence_temporelle::reading-receptive",
+          "labelFr": "Interpréter une séquence temporelle",
           "strand": "conjugaison",
-          "level": 5,
-          "challengeOrder": 3,
+          "level": 6,
           "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
+          "answered": 2,
+          "correct": 2,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
+          "probability": 0.9283667621776505,
+          "countedEvidence": 2,
           "minimumItems": 3
         },
         {
@@ -6220,6 +5617,21 @@
           "minimumItems": 3
         },
         {
+          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
+          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
+          "strand": "conjugaison",
+          "level": 2,
+          "challengeOrder": 1,
+          "expectedKnown": false,
+          "answered": 1,
+          "correct": 0,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
           "skillId": "choisir_e_accent_aigu_grave::reading-receptive::construction:acute",
           "labelFr": "Choisir é ou è — Choisir é",
           "strand": "orthographe_lexicale",
@@ -6248,11 +5660,26 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
-          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
+          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
           "strand": "conjugaison",
           "level": 2,
           "challengeOrder": 1,
+          "expectedKnown": false,
+          "answered": 1,
+          "correct": 0,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_passe_compose::writing-controlled-production::verb:aller",
+          "labelFr": "Produire le passé composé — Conjuguer aller",
+          "strand": "conjugaison",
+          "level": 2,
+          "challengeOrder": 3,
           "expectedKnown": false,
           "answered": 1,
           "correct": 0,
@@ -6275,21 +5702,6 @@
           "probability": 0.09523809523809527,
           "countedEvidence": 1,
           "minimumItems": 3
-        },
-        {
-          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
-          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
-          "strand": "conjugaison",
-          "level": 2,
-          "challengeOrder": 1,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
-          "minimumItems": 3
         }
       ],
       "violations": []
@@ -6302,9 +5714,9 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 28,
-      "unsampledTargets": 514,
-      "targetsReachingMinimumItemCount": 11,
+      "sampledTargets": 24,
+      "unsampledTargets": 518,
+      "targetsReachingMinimumItemCount": 12,
       "targetsWithSufficientEvidenceToday": 7,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
@@ -6336,12 +5748,12 @@
       "strands": [
         {
           "strand": "conjugaison",
-          "sampledTargets": 13,
+          "sampledTargets": 9,
           "answered": 18,
-          "targetsReachingMinimumItemCount": 2,
+          "targetsReachingMinimumItemCount": 3,
           "targetsWithSufficientEvidenceToday": 2,
           "sampledKnown": 0,
-          "sampledWeak": 13
+          "sampledWeak": 9
         },
         {
           "strand": "comprehension_ecrite",
@@ -6387,12 +5799,12 @@
           "strand": "conjugaison",
           "level": 1,
           "expectedKnown": false,
-          "answered": 1,
+          "answered": 2,
           "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
+          "probability": 0.32432432432432434,
+          "countedEvidence": 2,
           "minimumItems": 3
         },
         {
@@ -6495,18 +5907,18 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le présent de l'indicatif — Verbes réguliers en -er",
+          "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le passé composé — Verbes réguliers en -er",
           "strand": "conjugaison",
           "level": 2,
-          "challengeOrder": 1,
+          "challengeOrder": 3,
           "expectedKnown": false,
-          "answered": 4,
+          "answered": 2,
           "correct": 1,
           "status": "uncertain",
-          "withinOccasionResolved": true,
-          "probability": 0.020562616021704998,
-          "countedEvidence": 4,
+          "withinOccasionResolved": false,
+          "probability": 0.6545454545454545,
+          "countedEvidence": 2,
           "minimumItems": 3
         },
         {
@@ -6524,21 +5936,6 @@
           "minimumItems": 3
         },
         {
-          "skillId": "interpreter_usages_present::reading-receptive",
-          "labelFr": "Interpréter les usages du présent",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 1,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.11764705882352941,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
           "skillId": "orthographier_nasale_on_om::reading-receptive",
           "labelFr": "Choisir les graphies on/om",
           "strand": "orthographe_lexicale",
@@ -6553,11 +5950,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_passe_compose::writing-controlled-production::verb:aller",
-          "labelFr": "Produire le passé composé — Conjuguer aller",
+          "skillId": "produire_futur_proche::writing-controlled-production::verb:aller",
+          "labelFr": "Produire le futur proche — Conjuguer aller",
           "strand": "conjugaison",
-          "level": 2,
-          "challengeOrder": 3,
+          "level": 3,
+          "challengeOrder": 2,
           "expectedKnown": false,
           "answered": 1,
           "correct": 0,
@@ -6582,33 +5979,32 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le passé composé — Verbes réguliers en -er",
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le présent de l'indicatif — Verbes réguliers en -er",
           "strand": "conjugaison",
           "level": 2,
-          "challengeOrder": 3,
+          "challengeOrder": 1,
           "expectedKnown": false,
-          "answered": 1,
+          "answered": 3,
           "correct": 0,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
+          "withinOccasionResolved": true,
+          "probability": 0.001164991990680065,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
-          "skillId": "interpreter_passe_compose::reading-receptive",
-          "labelFr": "Interpréter la valeur du passé composé",
+          "skillId": "identifier_sujet_verbe::reading-receptive",
+          "labelFr": "Identifier le sujet du verbe",
           "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 3,
+          "level": 0,
           "expectedKnown": false,
-          "answered": 1,
-          "correct": 1,
+          "answered": 4,
+          "correct": 2,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
+          "probability": 0.18725617685305598,
+          "countedEvidence": 4,
           "minimumItems": 3
         },
         {
@@ -6626,21 +6022,6 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_futur_proche::writing-controlled-production::verb:aller",
-          "labelFr": "Produire le futur proche — Conjuguer aller",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 2,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
           "skillId": "identifier_complement_direct::reading-receptive",
           "labelFr": "Identifier un complément direct",
           "strand": "grammaire_syntaxe",
@@ -6652,51 +6033,6 @@
           "withinOccasionResolved": true,
           "probability": 0.0023647650014779796,
           "countedEvidence": 3,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "produire_futur_proche::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le futur proche — Verbes réguliers en -er",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 2,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "interpreter_futur_proche::reading-receptive",
-          "labelFr": "Interpréter la valeur du futur proche",
-          "strand": "conjugaison",
-          "level": 4,
-          "challengeOrder": 2,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.11764705882352941,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "contraster_pc_imparfait::reading-receptive",
-          "labelFr": "Contraster les temps du récit",
-          "strand": "conjugaison",
-          "level": 5,
-          "challengeOrder": 3,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.11764705882352941,
-          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -6728,6 +6064,21 @@
           "minimumItems": 3
         },
         {
+          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
+          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
+          "strand": "conjugaison",
+          "level": 2,
+          "challengeOrder": 1,
+          "expectedKnown": false,
+          "answered": 1,
+          "correct": 0,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
           "skillId": "choisir_e_accent_aigu_grave::reading-receptive::construction:acute",
           "labelFr": "Choisir é ou è — Choisir é",
           "strand": "orthographe_lexicale",
@@ -6742,17 +6093,17 @@
           "minimumItems": 3
         },
         {
-          "skillId": "interpreter_imparfait::reading-receptive",
-          "labelFr": "Interpréter les valeurs de l'imparfait",
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
+          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
           "strand": "conjugaison",
-          "level": 4,
-          "challengeOrder": 3,
+          "level": 2,
+          "challengeOrder": 1,
           "expectedKnown": false,
           "answered": 1,
-          "correct": 1,
+          "correct": 0,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
+          "probability": 0.09523809523809527,
           "countedEvidence": 1,
           "minimumItems": 3
         },
@@ -6771,11 +6122,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
-          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
+          "skillId": "produire_passe_compose::writing-controlled-production::verb:aller",
+          "labelFr": "Produire le passé composé — Conjuguer aller",
           "strand": "conjugaison",
           "level": 2,
-          "challengeOrder": 1,
+          "challengeOrder": 3,
           "expectedKnown": false,
           "answered": 1,
           "correct": 1,
@@ -6796,9 +6147,9 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 30,
-      "unsampledTargets": 512,
-      "targetsReachingMinimumItemCount": 11,
+      "sampledTargets": 25,
+      "unsampledTargets": 517,
+      "targetsReachingMinimumItemCount": 12,
       "targetsWithSufficientEvidenceToday": 8,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
@@ -6830,12 +6181,12 @@
       "strands": [
         {
           "strand": "conjugaison",
-          "sampledTargets": 13,
+          "sampledTargets": 8,
           "answered": 18,
-          "targetsReachingMinimumItemCount": 2,
+          "targetsReachingMinimumItemCount": 3,
           "targetsWithSufficientEvidenceToday": 2,
           "sampledKnown": 0,
-          "sampledWeak": 13
+          "sampledWeak": 8
         },
         {
           "strand": "comprehension_ecrite",
@@ -6881,12 +6232,12 @@
           "strand": "conjugaison",
           "level": 1,
           "expectedKnown": false,
-          "answered": 1,
+          "answered": 2,
           "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
+          "probability": 0.32432432432432434,
+          "countedEvidence": 2,
           "minimumItems": 3
         },
         {
@@ -6989,18 +6340,18 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le présent de l'indicatif — Verbes réguliers en -er",
+          "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le passé composé — Verbes réguliers en -er",
           "strand": "conjugaison",
           "level": 2,
-          "challengeOrder": 1,
+          "challengeOrder": 3,
           "expectedKnown": false,
-          "answered": 3,
+          "answered": 2,
           "correct": 0,
           "status": "uncertain",
-          "withinOccasionResolved": true,
-          "probability": 0.001164991990680065,
-          "countedEvidence": 3,
+          "withinOccasionResolved": false,
+          "probability": 0.010958904109589048,
+          "countedEvidence": 2,
           "minimumItems": 3
         },
         {
@@ -7018,21 +6369,6 @@
           "minimumItems": 3
         },
         {
-          "skillId": "interpreter_usages_present::reading-receptive",
-          "labelFr": "Interpréter les usages du présent",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 1,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.11764705882352941,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
           "skillId": "orthographier_nasale_on_om::reading-receptive",
           "labelFr": "Choisir les graphies on/om",
           "strand": "orthographe_lexicale",
@@ -7047,11 +6383,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_passe_compose::writing-controlled-production::verb:aller",
-          "labelFr": "Produire le passé composé — Conjuguer aller",
+          "skillId": "produire_futur_proche::writing-controlled-production::verb:aller",
+          "labelFr": "Produire le futur proche — Conjuguer aller",
           "strand": "conjugaison",
-          "level": 2,
-          "challengeOrder": 3,
+          "level": 3,
+          "challengeOrder": 2,
           "expectedKnown": false,
           "answered": 1,
           "correct": 0,
@@ -7076,33 +6412,32 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le passé composé — Verbes réguliers en -er",
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le présent de l'indicatif — Verbes réguliers en -er",
           "strand": "conjugaison",
           "level": 2,
-          "challengeOrder": 3,
+          "challengeOrder": 1,
           "expectedKnown": false,
-          "answered": 1,
+          "answered": 3,
           "correct": 0,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
+          "withinOccasionResolved": true,
+          "probability": 0.001164991990680065,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
-          "skillId": "interpreter_passe_compose::reading-receptive",
-          "labelFr": "Interpréter la valeur du passé composé",
+          "skillId": "identifier_sujet_verbe::reading-receptive",
+          "labelFr": "Identifier le sujet du verbe",
           "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 3,
+          "level": 0,
           "expectedKnown": false,
-          "answered": 1,
-          "correct": 1,
+          "answered": 4,
+          "correct": 2,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
+          "probability": 0.18725617685305598,
+          "countedEvidence": 4,
           "minimumItems": 3
         },
         {
@@ -7120,21 +6455,6 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_futur_proche::writing-controlled-production::verb:aller",
-          "labelFr": "Produire le futur proche — Conjuguer aller",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 2,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
           "skillId": "identifier_complement_direct::reading-receptive",
           "labelFr": "Identifier un complément direct",
           "strand": "grammaire_syntaxe",
@@ -7146,21 +6466,6 @@
           "withinOccasionResolved": true,
           "probability": 0.008461131676361717,
           "countedEvidence": 4,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "produire_futur_proche::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le futur proche — Verbes réguliers en -er",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 2,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -7178,21 +6483,6 @@
           "minimumItems": 3
         },
         {
-          "skillId": "interpreter_futur_proche::reading-receptive",
-          "labelFr": "Interpréter la valeur du futur proche",
-          "strand": "conjugaison",
-          "level": 4,
-          "challengeOrder": 2,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
           "skillId": "employer_accent_circonflexe::reading-receptive",
           "labelFr": "Employer l'accent circonflexe",
           "strand": "orthographe_lexicale",
@@ -7204,21 +6494,6 @@
           "withinOccasionResolved": false,
           "probability": 0.017467248908296946,
           "countedEvidence": 2,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "contraster_pc_imparfait::reading-receptive",
-          "labelFr": "Contraster les temps du récit",
-          "strand": "conjugaison",
-          "level": 5,
-          "challengeOrder": 3,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.11764705882352941,
-          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -7264,25 +6539,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "interpreter_imparfait::reading-receptive",
-          "labelFr": "Interpréter les valeurs de l'imparfait",
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
+          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
           "strand": "conjugaison",
-          "level": 4,
-          "challengeOrder": 3,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.11764705882352941,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "produire_pronom_coi_personne::writing-controlled-production::construction:leur",
-          "labelFr": "Employer lui ou leur — leur : plusieurs personnes",
-          "strand": "grammaire_syntaxe",
-          "level": 0,
+          "level": 2,
+          "challengeOrder": 1,
           "expectedKnown": false,
           "answered": 1,
           "correct": 0,
@@ -7293,11 +6554,25 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
-          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
+          "skillId": "produire_passe_compose::writing-controlled-production::verb:aller",
+          "labelFr": "Produire le passé composé — Conjuguer aller",
           "strand": "conjugaison",
           "level": 2,
-          "challengeOrder": 1,
+          "challengeOrder": 3,
+          "expectedKnown": false,
+          "answered": 1,
+          "correct": 0,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_pronom_coi_personne::writing-controlled-production::construction:leur",
+          "labelFr": "Employer lui ou leur — leur : plusieurs personnes",
+          "strand": "grammaire_syntaxe",
+          "level": 0,
           "expectedKnown": false,
           "answered": 1,
           "correct": 0,
@@ -7318,10 +6593,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 32,
-      "unsampledTargets": 510,
-      "targetsReachingMinimumItemCount": 11,
-      "targetsWithSufficientEvidenceToday": 7,
+      "sampledTargets": 28,
+      "unsampledTargets": 514,
+      "targetsReachingMinimumItemCount": 12,
+      "targetsWithSufficientEvidenceToday": 8,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -7330,7 +6605,9 @@
           "family": "general",
           "answered": 6,
           "knownTargetsWithEvidenceToday": [],
-          "weakTargetsWithEvidenceToday": []
+          "weakTargetsWithEvidenceToday": [
+            "identifier_sujet_verbe::reading-receptive"
+          ]
         },
         {
           "family": "pattern",
@@ -7352,12 +6629,12 @@
       "strands": [
         {
           "strand": "conjugaison",
-          "sampledTargets": 14,
+          "sampledTargets": 10,
           "answered": 18,
-          "targetsReachingMinimumItemCount": 2,
-          "targetsWithSufficientEvidenceToday": 2,
+          "targetsReachingMinimumItemCount": 3,
+          "targetsWithSufficientEvidenceToday": 3,
           "sampledKnown": 0,
-          "sampledWeak": 14
+          "sampledWeak": 10
         },
         {
           "strand": "comprehension_ecrite",
@@ -7497,18 +6774,18 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le présent de l'indicatif — Verbes réguliers en -er",
+          "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le passé composé — Verbes réguliers en -er",
           "strand": "conjugaison",
           "level": 2,
-          "challengeOrder": 1,
+          "challengeOrder": 3,
           "expectedKnown": false,
-          "answered": 3,
+          "answered": 2,
           "correct": 0,
           "status": "uncertain",
-          "withinOccasionResolved": true,
-          "probability": 0.001164991990680065,
-          "countedEvidence": 3,
+          "withinOccasionResolved": false,
+          "probability": 0.010958904109589048,
+          "countedEvidence": 2,
           "minimumItems": 3
         },
         {
@@ -7517,12 +6794,12 @@
           "strand": "conjugaison",
           "level": 0,
           "expectedKnown": false,
-          "answered": 1,
+          "answered": 3,
           "correct": 0,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.11764705882352941,
-          "countedEvidence": 1,
+          "withinOccasionResolved": true,
+          "probability": 0.0023647650014779796,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -7554,11 +6831,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_passe_compose::writing-controlled-production::verb:aller",
-          "labelFr": "Produire le passé composé — Conjuguer aller",
+          "skillId": "produire_futur_proche::writing-controlled-production::verb:aller",
+          "labelFr": "Produire le futur proche — Conjuguer aller",
           "strand": "conjugaison",
-          "level": 2,
-          "challengeOrder": 3,
+          "level": 3,
+          "challengeOrder": 2,
           "expectedKnown": false,
           "answered": 1,
           "correct": 0,
@@ -7583,33 +6860,18 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le passé composé — Verbes réguliers en -er",
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le présent de l'indicatif — Verbes réguliers en -er",
           "strand": "conjugaison",
           "level": 2,
-          "challengeOrder": 3,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "interpreter_usages_present::reading-receptive",
-          "labelFr": "Interpréter les usages du présent",
-          "strand": "conjugaison",
-          "level": 3,
           "challengeOrder": 1,
           "expectedKnown": false,
-          "answered": 1,
+          "answered": 3,
           "correct": 0,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.11764705882352941,
-          "countedEvidence": 1,
+          "withinOccasionResolved": true,
+          "probability": 0.001164991990680065,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -7627,21 +6889,6 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_futur_proche::writing-controlled-production::verb:aller",
-          "labelFr": "Produire le futur proche — Conjuguer aller",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 2,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
           "skillId": "identifier_complement_direct::reading-receptive",
           "labelFr": "Identifier un complément direct",
           "strand": "grammaire_syntaxe",
@@ -7653,36 +6900,6 @@
           "withinOccasionResolved": true,
           "probability": 0.008461131676361717,
           "countedEvidence": 4,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "produire_futur_proche::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le futur proche — Verbes réguliers en -er",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 2,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "interpreter_passe_compose::reading-receptive",
-          "labelFr": "Interpréter la valeur du passé composé",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 3,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.11764705882352941,
-          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -7728,18 +6945,17 @@
           "minimumItems": 3
         },
         {
-          "skillId": "reconnaitre_passe_compose::reading-receptive",
-          "labelFr": "Reconnaître le passé composé",
+          "skillId": "classer_famille_verbale::reading-receptive",
+          "labelFr": "Classer une famille verbale",
           "strand": "conjugaison",
-          "level": 1,
-          "challengeOrder": 3,
+          "level": 0,
           "expectedKnown": false,
-          "answered": 1,
+          "answered": 2,
           "correct": 1,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
+          "probability": 0.32432432432432434,
+          "countedEvidence": 2,
           "minimumItems": 3
         },
         {
@@ -7757,6 +6973,21 @@
           "minimumItems": 3
         },
         {
+          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
+          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
+          "strand": "conjugaison",
+          "level": 2,
+          "challengeOrder": 1,
+          "expectedKnown": false,
+          "answered": 1,
+          "correct": 0,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
           "skillId": "choisir_e_accent_aigu_grave::reading-receptive::construction:acute",
           "labelFr": "Choisir é ou è — Choisir é",
           "strand": "orthographe_lexicale",
@@ -7771,17 +7002,17 @@
           "minimumItems": 3
         },
         {
-          "skillId": "interpreter_futur_proche::reading-receptive",
-          "labelFr": "Interpréter la valeur du futur proche",
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
+          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
           "strand": "conjugaison",
-          "level": 4,
-          "challengeOrder": 2,
+          "level": 2,
+          "challengeOrder": 1,
           "expectedKnown": false,
           "answered": 1,
           "correct": 0,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.11764705882352941,
+          "probability": 0.09523809523809527,
           "countedEvidence": 1,
           "minimumItems": 3
         },
@@ -7814,11 +7045,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
-          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
+          "skillId": "produire_passe_compose::writing-controlled-production::verb:aller",
+          "labelFr": "Produire le passé composé — Conjuguer aller",
           "strand": "conjugaison",
           "level": 2,
-          "challengeOrder": 1,
+          "challengeOrder": 3,
           "expectedKnown": false,
           "answered": 1,
           "correct": 0,
@@ -7841,21 +7072,6 @@
           "probability": 0.09523809523809527,
           "countedEvidence": 1,
           "minimumItems": 3
-        },
-        {
-          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
-          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
-          "strand": "conjugaison",
-          "level": 2,
-          "challengeOrder": 1,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
-          "minimumItems": 3
         }
       ],
       "violations": []
@@ -7868,9 +7084,9 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 28,
-      "unsampledTargets": 514,
-      "targetsReachingMinimumItemCount": 11,
+      "sampledTargets": 23,
+      "unsampledTargets": 519,
+      "targetsReachingMinimumItemCount": 12,
       "targetsWithSufficientEvidenceToday": 5,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
@@ -7902,12 +7118,12 @@
       "strands": [
         {
           "strand": "conjugaison",
-          "sampledTargets": 14,
+          "sampledTargets": 9,
           "answered": 18,
-          "targetsReachingMinimumItemCount": 2,
+          "targetsReachingMinimumItemCount": 3,
           "targetsWithSufficientEvidenceToday": 2,
           "sampledKnown": 0,
-          "sampledWeak": 14
+          "sampledWeak": 9
         },
         {
           "strand": "comprehension_ecrite",
@@ -8061,18 +7277,18 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le présent de l'indicatif — Verbes réguliers en -er",
+          "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le passé composé — Verbes réguliers en -er",
           "strand": "conjugaison",
           "level": 2,
-          "challengeOrder": 1,
+          "challengeOrder": 3,
           "expectedKnown": false,
-          "answered": 3,
+          "answered": 2,
           "correct": 0,
           "status": "uncertain",
-          "withinOccasionResolved": true,
-          "probability": 0.001164991990680065,
-          "countedEvidence": 3,
+          "withinOccasionResolved": false,
+          "probability": 0.010958904109589048,
+          "countedEvidence": 2,
           "minimumItems": 3
         },
         {
@@ -8095,12 +7311,12 @@
           "strand": "conjugaison",
           "level": 0,
           "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
+          "answered": 5,
+          "correct": 2,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.11764705882352941,
-          "countedEvidence": 1,
+          "probability": 0.029804408568767482,
+          "countedEvidence": 5,
           "minimumItems": 3
         },
         {
@@ -8115,65 +7331,6 @@
           "withinOccasionResolved": false,
           "probability": 0.45338464229491005,
           "countedEvidence": 5,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "produire_passe_compose::writing-controlled-production::verb:aller",
-          "labelFr": "Produire le passé composé — Conjuguer aller",
-          "strand": "conjugaison",
-          "level": 2,
-          "challengeOrder": 3,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le passé composé — Verbes réguliers en -er",
-          "strand": "conjugaison",
-          "level": 2,
-          "challengeOrder": 3,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "interpreter_usages_present::reading-receptive",
-          "labelFr": "Interpréter les usages du présent",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 1,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "produire_pronom_cod::writing-controlled-production::construction:elision",
-          "labelFr": "Employer le, la, l’ ou les — l’ devant une voyelle",
-          "strand": "grammaire_syntaxe",
-          "level": 2,
-          "expectedKnown": false,
-          "answered": 3,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": true,
-          "probability": 0.001164991990680065,
-          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -8192,6 +7349,35 @@
           "minimumItems": 3
         },
         {
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le présent de l'indicatif — Verbes réguliers en -er",
+          "strand": "conjugaison",
+          "level": 2,
+          "challengeOrder": 1,
+          "expectedKnown": false,
+          "answered": 3,
+          "correct": 0,
+          "status": "uncertain",
+          "withinOccasionResolved": true,
+          "probability": 0.001164991990680065,
+          "countedEvidence": 3,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_pronom_cod::writing-controlled-production::construction:elision",
+          "labelFr": "Employer le, la, l’ ou les — l’ devant une voyelle",
+          "strand": "grammaire_syntaxe",
+          "level": 2,
+          "expectedKnown": false,
+          "answered": 3,
+          "correct": 0,
+          "status": "uncertain",
+          "withinOccasionResolved": true,
+          "probability": 0.001164991990680065,
+          "countedEvidence": 3,
+          "minimumItems": 3
+        },
+        {
           "skillId": "identifier_complement_direct::reading-receptive",
           "labelFr": "Identifier un complément direct",
           "strand": "grammaire_syntaxe",
@@ -8206,21 +7392,6 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_futur_proche::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le futur proche — Verbes réguliers en -er",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 2,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.09523809523809527,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
           "skillId": "construction_accord_nom_adjectif::writing-controlled-production",
           "labelFr": "Analyser l'accord nom-adjectif",
           "strand": "orthographe_grammaticale",
@@ -8232,36 +7403,6 @@
           "withinOccasionResolved": false,
           "probability": 0.010958904109589048,
           "countedEvidence": 2,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "interpreter_passe_compose::reading-receptive",
-          "labelFr": "Interpréter la valeur du passé composé",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 3,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.11764705882352941,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "reconnaitre_passe_compose::reading-receptive",
-          "labelFr": "Reconnaître le passé composé",
-          "strand": "conjugaison",
-          "level": 1,
-          "challengeOrder": 3,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -8293,35 +7434,6 @@
           "minimumItems": 3
         },
         {
-          "skillId": "choisir_e_accent_aigu_grave::reading-receptive::construction:acute",
-          "labelFr": "Choisir é ou è — Choisir é",
-          "strand": "orthographe_lexicale",
-          "level": 0,
-          "expectedKnown": false,
-          "answered": 2,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.32432432432432434,
-          "countedEvidence": 2,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "interpreter_futur_proche::reading-receptive",
-          "labelFr": "Interpréter la valeur du futur proche",
-          "strand": "conjugaison",
-          "level": 4,
-          "challengeOrder": 2,
-          "expectedKnown": false,
-          "answered": 1,
-          "correct": 0,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.11764705882352941,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
           "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
           "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
           "strand": "conjugaison",
@@ -8337,11 +7449,40 @@
           "minimumItems": 3
         },
         {
+          "skillId": "choisir_e_accent_aigu_grave::reading-receptive::construction:acute",
+          "labelFr": "Choisir é ou è — Choisir é",
+          "strand": "orthographe_lexicale",
+          "level": 0,
+          "expectedKnown": false,
+          "answered": 2,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.32432432432432434,
+          "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
           "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
           "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
           "strand": "conjugaison",
           "level": 2,
           "challengeOrder": 1,
+          "expectedKnown": false,
+          "answered": 1,
+          "correct": 0,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_passe_compose::writing-controlled-production::verb:aller",
+          "labelFr": "Produire le passé composé — Conjuguer aller",
+          "strand": "conjugaison",
+          "level": 2,
+          "challengeOrder": 3,
           "expectedKnown": false,
           "answered": 1,
           "correct": 0,
@@ -8362,10 +7503,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 46,
-      "sampledTargets": 25,
-      "unsampledTargets": 517,
-      "targetsReachingMinimumItemCount": 9,
-      "targetsWithSufficientEvidenceToday": 8,
+      "sampledTargets": 20,
+      "unsampledTargets": 522,
+      "targetsReachingMinimumItemCount": 10,
+      "targetsWithSufficientEvidenceToday": 9,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -8373,7 +7514,9 @@
         {
           "family": "general",
           "answered": 4,
-          "knownTargetsWithEvidenceToday": [],
+          "knownTargetsWithEvidenceToday": [
+            "distinguer_personne_nombre::reading-receptive"
+          ],
           "weakTargetsWithEvidenceToday": []
         },
         {
@@ -8396,11 +7539,11 @@
       "strands": [
         {
           "strand": "conjugaison",
-          "sampledTargets": 12,
+          "sampledTargets": 7,
           "answered": 14,
-          "targetsReachingMinimumItemCount": 2,
-          "targetsWithSufficientEvidenceToday": 2,
-          "sampledKnown": 12,
+          "targetsReachingMinimumItemCount": 3,
+          "targetsWithSufficientEvidenceToday": 3,
+          "sampledKnown": 7,
           "sampledWeak": 0
         },
         {
@@ -8447,12 +7590,12 @@
           "strand": "conjugaison",
           "level": 1,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 4,
+          "correct": 4,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9283667621776505,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.9940814954403842,
+          "countedEvidence": 4,
           "minimumItems": 3
         },
         {
@@ -8527,41 +7670,26 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le présent de l'indicatif — Verbes réguliers en -er",
-          "strand": "conjugaison",
-          "level": 2,
-          "challengeOrder": 1,
-          "expectedKnown": true,
-          "answered": 3,
-          "correct": 3,
-          "status": "uncertain",
-          "withinOccasionResolved": true,
-          "probability": 0.9998285616320933,
-          "countedEvidence": 3,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "interpreter_usages_present::reading-receptive",
-          "labelFr": "Interpréter les usages du présent",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 1,
-          "expectedKnown": true,
-          "answered": 0,
-          "correct": 0,
-          "status": "unknown",
-          "withinOccasionResolved": false,
-          "probability": 0.5,
-          "countedEvidence": 0,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "produire_passe_compose::writing-controlled-production::verb:aller",
-          "labelFr": "Produire le passé composé — Conjuguer aller",
+          "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le passé composé — Verbes réguliers en -er",
           "strand": "conjugaison",
           "level": 2,
           "challengeOrder": 3,
+          "expectedKnown": true,
+          "answered": 2,
+          "correct": 2,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9969230769230769,
+          "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_futur_proche::writing-controlled-production::verb:aller",
+          "labelFr": "Produire le futur proche — Conjuguer aller",
+          "strand": "conjugaison",
+          "level": 3,
+          "challengeOrder": 2,
           "expectedKnown": true,
           "answered": 0,
           "correct": 0,
@@ -8586,33 +7714,18 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le passé composé — Verbes réguliers en -er",
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le présent de l'indicatif — Verbes réguliers en -er",
           "strand": "conjugaison",
           "level": 2,
-          "challengeOrder": 3,
+          "challengeOrder": 1,
           "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
+          "answered": 3,
+          "correct": 3,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "interpreter_passe_compose::reading-receptive",
-          "labelFr": "Interpréter la valeur du passé composé",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 3,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
+          "withinOccasionResolved": true,
+          "probability": 0.9998285616320933,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -8627,51 +7740,6 @@
           "withinOccasionResolved": true,
           "probability": 0.9998285616320933,
           "countedEvidence": 3,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "produire_futur_proche::writing-controlled-production::verb:aller",
-          "labelFr": "Produire le futur proche — Conjuguer aller",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 2,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "produire_futur_proche::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le futur proche — Verbes réguliers en -er",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 2,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "interpreter_futur_proche::reading-receptive",
-          "labelFr": "Interpréter la valeur du futur proche",
-          "strand": "conjugaison",
-          "level": 4,
-          "challengeOrder": 2,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -8731,21 +7799,6 @@
           "minimumItems": 3
         },
         {
-          "skillId": "contraster_pc_imparfait::reading-receptive",
-          "labelFr": "Contraster les temps du récit",
-          "strand": "conjugaison",
-          "level": 5,
-          "challengeOrder": 3,
-          "expectedKnown": true,
-          "answered": 0,
-          "correct": 0,
-          "status": "unknown",
-          "withinOccasionResolved": false,
-          "probability": 0.5,
-          "countedEvidence": 0,
-          "minimumItems": 3
-        },
-        {
           "skillId": "produire_pronom_coi_personne::writing-controlled-production::construction:leur",
           "labelFr": "Employer lui ou leur — leur : plusieurs personnes",
           "strand": "grammaire_syntaxe",
@@ -8774,6 +7827,21 @@
           "minimumItems": 3
         },
         {
+          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
+          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
+          "strand": "conjugaison",
+          "level": 2,
+          "challengeOrder": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
           "skillId": "choisir_e_accent_aigu_grave::reading-receptive::construction:acute",
           "labelFr": "Choisir é ou è — Choisir é",
           "strand": "orthographe_lexicale",
@@ -8788,11 +7856,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
-          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
+          "skillId": "produire_passe_compose::writing-controlled-production::verb:aller",
+          "labelFr": "Produire le passé composé — Conjuguer aller",
           "strand": "conjugaison",
           "level": 2,
-          "challengeOrder": 1,
+          "challengeOrder": 3,
           "expectedKnown": true,
           "answered": 1,
           "correct": 1,
@@ -8813,10 +7881,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 26,
-      "unsampledTargets": 516,
-      "targetsReachingMinimumItemCount": 9,
-      "targetsWithSufficientEvidenceToday": 7,
+      "sampledTargets": 22,
+      "unsampledTargets": 520,
+      "targetsReachingMinimumItemCount": 10,
+      "targetsWithSufficientEvidenceToday": 8,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -8824,7 +7892,9 @@
         {
           "family": "general",
           "answered": 6,
-          "knownTargetsWithEvidenceToday": [],
+          "knownTargetsWithEvidenceToday": [
+            "distinguer_personne_nombre::reading-receptive"
+          ],
           "weakTargetsWithEvidenceToday": []
         },
         {
@@ -8847,11 +7917,11 @@
       "strands": [
         {
           "strand": "conjugaison",
-          "sampledTargets": 13,
+          "sampledTargets": 9,
           "answered": 18,
-          "targetsReachingMinimumItemCount": 2,
-          "targetsWithSufficientEvidenceToday": 2,
-          "sampledKnown": 13,
+          "targetsReachingMinimumItemCount": 3,
+          "targetsWithSufficientEvidenceToday": 3,
+          "sampledKnown": 9,
           "sampledWeak": 0
         },
         {
@@ -8898,12 +7968,12 @@
           "strand": "conjugaison",
           "level": 1,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 4,
+          "correct": 4,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9283667621776505,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.9940814954403842,
+          "countedEvidence": 4,
           "minimumItems": 3
         },
         {
@@ -8978,41 +8048,26 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le présent de l'indicatif — Verbes réguliers en -er",
-          "strand": "conjugaison",
-          "level": 2,
-          "challengeOrder": 1,
-          "expectedKnown": true,
-          "answered": 3,
-          "correct": 3,
-          "status": "uncertain",
-          "withinOccasionResolved": true,
-          "probability": 0.9998285616320933,
-          "countedEvidence": 3,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "interpreter_usages_present::reading-receptive",
-          "labelFr": "Interpréter les usages du présent",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 1,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "produire_passe_compose::writing-controlled-production::verb:aller",
-          "labelFr": "Produire le passé composé — Conjuguer aller",
+          "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le passé composé — Verbes réguliers en -er",
           "strand": "conjugaison",
           "level": 2,
           "challengeOrder": 3,
+          "expectedKnown": true,
+          "answered": 2,
+          "correct": 2,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9969230769230769,
+          "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_futur_proche::writing-controlled-production::verb:aller",
+          "labelFr": "Produire le futur proche — Conjuguer aller",
+          "strand": "conjugaison",
+          "level": 3,
+          "challengeOrder": 2,
           "expectedKnown": true,
           "answered": 1,
           "correct": 1,
@@ -9037,33 +8092,18 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le passé composé — Verbes réguliers en -er",
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le présent de l'indicatif — Verbes réguliers en -er",
           "strand": "conjugaison",
           "level": 2,
-          "challengeOrder": 3,
+          "challengeOrder": 1,
           "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
+          "answered": 3,
+          "correct": 3,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "interpreter_passe_compose::reading-receptive",
-          "labelFr": "Interpréter la valeur du passé composé",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 3,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
+          "withinOccasionResolved": true,
+          "probability": 0.9998285616320933,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -9081,21 +8121,6 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_futur_proche::writing-controlled-production::verb:aller",
-          "labelFr": "Produire le futur proche — Conjuguer aller",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 2,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
           "skillId": "associer_information_question::all-receptive::text_type:informational",
           "labelFr": "Associer une information à la question posée — Texte informatif bref",
           "strand": "comprehension_ecrite",
@@ -9107,36 +8132,6 @@
           "withinOccasionResolved": false,
           "probability": 0.9283667621776505,
           "countedEvidence": 2,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "produire_futur_proche::writing-controlled-production::pattern:regular_er",
-          "labelFr": "Produire le futur proche — Verbes réguliers en -er",
-          "strand": "conjugaison",
-          "level": 3,
-          "challengeOrder": 2,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "interpreter_futur_proche::reading-receptive",
-          "labelFr": "Interpréter la valeur du futur proche",
-          "strand": "conjugaison",
-          "level": 4,
-          "challengeOrder": 2,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -9168,18 +8163,17 @@
           "minimumItems": 3
         },
         {
-          "skillId": "contraster_pc_imparfait::reading-receptive",
-          "labelFr": "Contraster les temps du récit",
+          "skillId": "interpreter_sequence_temporelle::reading-receptive",
+          "labelFr": "Interpréter une séquence temporelle",
           "strand": "conjugaison",
-          "level": 5,
-          "challengeOrder": 3,
+          "level": 6,
           "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
+          "answered": 2,
+          "correct": 2,
           "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.782608695652174,
-          "countedEvidence": 1,
+          "probability": 0.9283667621776505,
+          "countedEvidence": 2,
           "minimumItems": 3
         },
         {
@@ -9211,6 +8205,21 @@
           "minimumItems": 3
         },
         {
+          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
+          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
+          "strand": "conjugaison",
+          "level": 2,
+          "challengeOrder": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
           "skillId": "choisir_e_accent_aigu_grave::reading-receptive::construction:acute",
           "labelFr": "Choisir é ou è — Choisir é",
           "strand": "orthographe_lexicale",
@@ -9222,6 +8231,21 @@
           "withinOccasionResolved": false,
           "probability": 0.5,
           "countedEvidence": 0,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
+          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
+          "strand": "conjugaison",
+          "level": 2,
+          "challengeOrder": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9473684210526315,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -9239,26 +8263,11 @@
           "minimumItems": 3
         },
         {
-          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
-          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
+          "skillId": "produire_passe_compose::writing-controlled-production::verb:aller",
+          "labelFr": "Produire le passé composé — Conjuguer aller",
           "strand": "conjugaison",
           "level": 2,
-          "challengeOrder": 1,
-          "expectedKnown": true,
-          "answered": 1,
-          "correct": 1,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9473684210526315,
-          "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
-          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
-          "strand": "conjugaison",
-          "level": 2,
-          "challengeOrder": 1,
+          "challengeOrder": 3,
           "expectedKnown": true,
           "answered": 1,
           "correct": 1,

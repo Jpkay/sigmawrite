@@ -74,3 +74,19 @@ it('pins category changes and rejects a false classification without requiring m
  const bad=structuredClone(assessment);bad.skills.find(s=>s.formFamily==='compound')!.formFamily='simple';
  expect(inspectAssessmentGraph(bad.skills)).toBe(false);
 });
+it('shares the initial form survey across verb families without sharing their evidence',()=>{
+ const skills:Skill[]=['conjugation:verb:aller','conjugation:pattern:regular_er'].flatMap(branch=>
+  (['simple','compound','periphrastic'] as const).map(formFamily=>({id:`${branch}:${formFamily}`,branch,formFamily,domain:'conjugation',samplingGroup:'conjugaison',level:1,prerequisites:[],modes:['production']})));
+ const bank:Probe[]=skills.flatMap(skill=>Array.from({length:6},(_,i)=>({id:`${skill.id}:${i}`,skillId:skill.id,mode:'production',contextId:`context:${i}`,difficulty:.5,expectedSeconds:30,guessProbability:.05})));
+ const history:Observation[]=[];
+ for(let i=0;i<3;i++){
+  const next=selectProbe(skills,bank,history);if(next.kind!=='question')throw Error('Expected survey');
+  history.push({...next.item,itemId:next.item.id,correct:true,activeSeconds:30});
+ }
+ expect(new Set(history.map(o=>skills.find(s=>s.id===o.skillId)!.formFamily)).size).toBe(3);
+ expect(new Set(history.map(o=>skills.find(s=>s.id===o.skillId)!.branch)).size).toBe(2);
+ for(const result of assessSkills(skills,history)){
+  if(!history.some(o=>o.skillId===result.skillId))expect(result.status).toBe('unknown');
+  expect(result.status).not.toBe('mastered');
+ }
+});

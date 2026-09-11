@@ -2,7 +2,7 @@
 
 2026-09-11. The approved French graph is unchanged. No content approvals or release.
 
-Current local rerun: 10/10 depth checks and 4/8 mixed-profile discrimination checks pass after form-category revisits and challenge-based branch entry; the strict benchmark still exits 1. Before those changes, including after the skip correction, the counts were 8/10 and 2/8. The report below records earlier changes; use the current JSON report for unresolved contrasts. See `form-revisit-depth-2026-09-11.md` and `branch-entry-order-2026-09-11.md`. These new scheduling changes are not deployed or calibrated against students.
+Current local rerun: 10/10 depth checks and 5/8 mixed-profile discrimination checks pass after sharing the initial form-category survey across conjugation families, then revisiting each family separately. The strict benchmark still exits 1: verb-specific tense boundaries, literal/inference contrasts and reading reference gaps remain unresolved. This new scheduling change is not deployed or calibrated against students. The previous form-category revisit and challenge-based branch-entry changes (10/10 depth, 4/8 discrimination) are live in deployment 0c859ca.
 
 The previous benchmark exercises six conjugation targets. The additional
 `scripts/benchmark-full-french-diagnostic.mts` exercises all 542 proposed targets
@@ -169,3 +169,33 @@ all-correct/all-incorrect sufficient-target counts are 12/11; the earlier 12/15
 figures above describe the previous routing version. Four of eight contrast checks
 still fail. This is an initial improvement in using graph edges, not a claim that
 all profile boundaries are now located within the first sitting.
+
+
+## Shared survey, separate evidence (local)
+
+The old survey repeated simple/compound/periphrastic coverage separately for
+general conjugation, patterns, and individual verbs. In the 35-minute simulation
+this left general recognition with too little confirmation. A first experiment
+shared both survey and revisit counts; it improved recognition/production
+separation but failed the all-incorrect conjugation depth check (9/10). That
+version was rejected.
+
+The retained version shares only the initial survey across the strand. After a
+form category has been encountered, bounded revisit counts remain local to the
+selected verb family. Prerequisite recovery still takes precedence. No evidence,
+mastery or correctness is transferred between skills, verbs, forms or modes.
+The regression verifies the first three questions cover three form categories
+across two families while unasked targets remain unknown.
+
+Current result: 10/10 depth and 5/8 contrast checks. These use symbolic probes
+and constitute scheduling evidence only; they do not prove educational validity
+or that the live partial question bank covers all 542 targets.
+
+The first local-revisit version passed symbolic depth but delayed the first
+compound-production question to 1,620 seconds in the real prepared-bank test,
+beyond its required half-budget bound. The retained version therefore requires
+an actual production survey item when production is available: a recognition
+question cannot satisfy that survey. That restores the existing early compound
+production check. All 529 granular tests, TypeScript and scoped lint passed.
+The strict full-graph benchmark still fails its three unresolved contrast checks;
+its nonzero exit is expected and has not been suppressed.
