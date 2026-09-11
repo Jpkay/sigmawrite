@@ -1,0 +1,80 @@
+{
+  "contextMs": 1378.8719160000003,
+  "storeMs": 3253.3105419999997,
+  "viewAndDeliveryMs": 29.423875000000407,
+  "totalMs": 4661.756375,
+  "scope": 160,
+  "paused": true,
+  "answers": 0,
+  "requests": [
+    {
+      "path": "/auth/v1/user",
+      "method": "GET",
+      "ms": 428,
+      "bytes": 1294
+    },
+    {
+      "path": "/rest/v1/profiles",
+      "method": "GET",
+      "ms": 352,
+      "bytes": 113
+    },
+    {
+      "path": "/rest/v1/students",
+      "method": "GET",
+      "ms": 350,
+      "bytes": 47
+    },
+    {
+      "path": "/rest/v1/rpc/student_access_is_authorized",
+      "method": "POST",
+      "ms": 243,
+      "bytes": 4
+    },
+    {
+      "path": "/rest/v1/granular_assessment_sessions",
+      "method": "GET",
+      "ms": 232,
+      "bytes": 99
+    },
+    {
+      "path": "/rest/v1/granular_assessment_releases",
+      "method": "GET",
+      "ms": 1393,
+      "bytes": 11773618
+    },
+    {
+      "path": "/rest/v1/diagnostic_item_bank_releases",
+      "method": "GET",
+      "ms": 230,
+      "bytes": 141
+    },
+    {
+      "path": "/rest/v1/taxonomy_releases",
+      "method": "GET",
+      "ms": 234,
+      "bytes": 141
+    },
+    {
+      "path": "/rest/v1/granular_bank_publication_permissions",
+      "method": "GET",
+      "ms": 220,
+      "bytes": 950
+    },
+    {
+      "path": "/rest/v1/granular_assessment_sessions",
+      "method": "GET",
+      "ms": 222,
+      "bytes": 653
+    },
+    {
+      "path": "/rest/v1/rpc/known_student_material_keys",
+      "method": "POST",
+      "ms": 295,
+      "bytes": 2
+    }
+  ],
+  "method": "Local reproduction of authenticated start loading against the deployed database using the paused technical QA account. Requests record endpoint path, response body bytes and duration only; no cookies, tokens, answers or query parameters. Reading a cloned response body adds measurement overhead. These are not deployed server timings.",
+  "runtimeSource": "c76fc80",
+  "releaseKey": "french-granular-diagnostic-v8"
+}
