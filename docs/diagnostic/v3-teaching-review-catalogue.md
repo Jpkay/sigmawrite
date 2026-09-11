@@ -1,11 +1,27 @@
 # French teaching draft review catalogue
 
-72 lessons, 379 guided exercises, 72 exact assessment targets. No approval, publication or activity binding is created by this export.
+88 lessons, 475 guided exercises, 88 exact assessment targets. No approval, publication or activity binding is created by this export.
 
 The companion JSON includes the complete learner-facing content, answer keys, hints, feedback, target IDs, prerequisites, evidence requirements, material identities and per-lesson checksums. Review decisions must refer to the exact content version. An anchored annotation proves only that the annotated material appears in the lesson; it does not prove completeness or independence from assessment questions.
 
 | Lesson | Target | Mode | Guided exercises | Exposure annotation |
 | --- | --- | --- | ---: | --- |
+| Écrire aller à l’imparfait | produire_imparfait::writing-controlled-production::verb:aller | production | 6 | anchored_requires_completeness_review |
+| Écrire faire à l’imparfait | produire_imparfait::writing-controlled-production::verb:faire | production | 6 | anchored_requires_completeness_review |
+| Écrire être à l’imparfait | produire_imparfait::writing-controlled-production::verb:être | production | 6 | anchored_requires_completeness_review |
+| Écrire avoir à l’imparfait | produire_imparfait::writing-controlled-production::verb:avoir | production | 6 | anchored_requires_completeness_review |
+| Écrire prendre à l’imparfait | produire_imparfait::writing-controlled-production::verb:prendre | production | 6 | anchored_requires_completeness_review |
+| Écrire venir à l’imparfait | produire_imparfait::writing-controlled-production::verb:venir | production | 6 | anchored_requires_completeness_review |
+| Écrire partir à l’imparfait | produire_imparfait::writing-controlled-production::verb:partir | production | 6 | anchored_requires_completeness_review |
+| Écrire sortir à l’imparfait | produire_imparfait::writing-controlled-production::verb:sortir | production | 6 | anchored_requires_completeness_review |
+| Écrire dire à l’imparfait | produire_imparfait::writing-controlled-production::verb:dire | production | 6 | anchored_requires_completeness_review |
+| Écrire voir à l’imparfait | produire_imparfait::writing-controlled-production::verb:voir | production | 6 | anchored_requires_completeness_review |
+| Écrire pouvoir à l’imparfait | produire_imparfait::writing-controlled-production::verb:pouvoir | production | 6 | anchored_requires_completeness_review |
+| Écrire vouloir à l’imparfait | produire_imparfait::writing-controlled-production::verb:vouloir | production | 6 | anchored_requires_completeness_review |
+| Écrire savoir à l’imparfait | produire_imparfait::writing-controlled-production::verb:savoir | production | 6 | anchored_requires_completeness_review |
+| Écrire devoir à l’imparfait | produire_imparfait::writing-controlled-production::verb:devoir | production | 6 | anchored_requires_completeness_review |
+| Reconnaître l’imparfait | reconnaitre_imparfait::reading-receptive | recognition | 6 | anchored_requires_completeness_review |
+| Reconnaître le futur simple | reconnaitre_futur_simple::reading-receptive | recognition | 6 | anchored_requires_completeness_review |
 | Retrouver une information dans un récit | localiser_information_explicite::all-receptive::text_type:narrative | interpretation | 6 | anchored_requires_completeness_review |
 | Retrouver un détail dans un texte qui défend une idée | localiser_information_explicite::all-receptive::text_type:argumentative | interpretation | 6 | anchored_requires_completeness_review |
 | Expliquer l’accord : sujet juste avant le verbe | construction_accord_sujet_verbe::reading-analysis::construction:adjacent | recognition | 4 | anchored_requires_completeness_review |

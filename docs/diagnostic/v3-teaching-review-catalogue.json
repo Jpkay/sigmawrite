@@ -5,12 +5,2448 @@
   "facetChecksum": "sha256:71d060c34e8fd204b3cf57e5126a2e30585dc72c463b0506f22aa602eb913a98",
   "assessmentSourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
   "summary": {
-    "lessons": 72,
-    "guidedExercises": 379,
-    "targets": 72,
+    "lessons": 88,
+    "guidedExercises": 475,
+    "targets": 88,
     "missingExposureAnnotations": []
   },
   "rows": [
+    {
+      "lessonId": "french-v3-teaching:imparfait:aller",
+      "contentChecksum": "sha256:bf6491537e653fc887b3a9bb4c9bb56eb7fd36bc15c14e9d2fc771d940188691",
+      "skillId": "produire_imparfait::writing-controlled-production::verb:aller",
+      "nodeKey": "produire_imparfait",
+      "facetKey": "produire_imparfait::verb:aller",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "produire_present_indicatif::writing-controlled-production::verb:aller",
+        "reconnaitre_imparfait::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:0109f0179f2b6e3d6708a5e079337914492ba334fd3bc253fee0b28b23d8b4b2",
+        "sentence:sha256:2316b6841b593a6c94f63f7f2b1a1172ee78e595503b1defa680a0acca64abe6",
+        "sentence:sha256:24b55eb344db26e463f4dbe74debed8810925030265cda79b6c7491ddd42eafa",
+        "sentence:sha256:2f63359318be3fd72ec9400915a9b6c145d8537c6274401cf8c25be60f9a5e31",
+        "sentence:sha256:31d013e8380a795b8f4b0f11a866c810c712c566133ceb4e1f133dcd25660cbd",
+        "sentence:sha256:697d39a04585a31daabc9ed75b5abc9a8591942d55aa206e5f5dfd10a04e952f",
+        "sentence:sha256:727fbb3244e87c0d27d93af0c26311666dee35a498cdb1f8467dff9cfd152467",
+        "sentence:sha256:88a20191c4208e7dfbf9b8acf4bbd63454820ce496a01fb6adf56b44488a3c9d",
+        "sentence:sha256:a25f1a73668b276aa7dc32bf601a8db98b6ecccadb0200e79f054c41d02a81dd",
+        "sentence:sha256:aebc3c920d8f046adddfaeeca99a1d2dd84093e73a008a405760bd8f1cd52d3c",
+        "word:sha256:c69b79ee0f0ed5ec757312dd4a35816749c9222132776a6d92c865046638b290"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:imparfait:aller",
+        "nodeKey": "produire_imparfait",
+        "facetKey": "produire_imparfait::verb:aller",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire aller à l’imparfait",
+        "learnerQuestionFr": "Comment retrouver les formes de aller à l’imparfait selon le sujet ?",
+        "steps": [
+          {
+            "exampleFr": "Je vais à la bibliothèque.\nJ’allais à la bibliothèque.",
+            "explanationFr": "Le sujet et le verbe sont les mêmes, mais la forme change. Dans la seconde phrase, allais est à l’imparfait. Ce temps permet notamment de raconter une habitude ou une situation dans le passé."
+          },
+          {
+            "exampleFr": "nous allons → all- + -ais → allais",
+            "explanationFr": "Pars de la forme avec nous au présent : allons. Retire -ons. Le morceau qui reste, all-, est la base appelée radical. Ajoute ensuite la terminaison de l’imparfait."
+          },
+          {
+            "exampleFr": "je : allais\ntu : allais\nil, elle ou on : allait\nnous : allions\nvous : alliez\nils ou elles : allaient",
+            "explanationFr": "Les six terminaisons sont -ais, -ais, -ait, -ions, -iez et -aient. Observe les lettres écrites : plusieurs formes se ressemblent à l’oral."
+          },
+          {
+            "exampleFr": "nous allions ; vous alliez",
+            "explanationFr": "Avec nous et vous, garde la base all- et ajoute -ions ou -iez en entier. N’oublie pas le i de la terminaison."
+          }
+        ],
+        "takeawayFr": "Pour aller, pars de nous allons, retire -ons et ajoute la terminaison de l’imparfait correspondant au sujet.",
+        "boundaryFr": "Cette leçon concerne aller à l’imparfait. Elle ne suffit pas pour choisir entre imparfait et passé composé dans un récit, ni pour connaître les autres temps de ce verbe.",
+        "practice": [
+          {
+            "id": "guided:imparfait:aller:1",
+            "promptFr": "Le récit est au passé. Complète avec aller à l’imparfait. Écris seulement le verbe : J’___ à la bibliothèque.",
+            "answerFr": "allais",
+            "hintFr": "Avec je, ajoute -ais à la base all-.",
+            "explanationFr": "J’allais à la bibliothèque. La base all- et la terminaison -ais donnent allais."
+          },
+          {
+            "id": "guided:imparfait:aller:2",
+            "promptFr": "Le récit est au passé. Complète avec aller à l’imparfait. Écris seulement le verbe : Tu ___ au gymnase.",
+            "answerFr": "allais",
+            "hintFr": "Avec tu, ajoute -ais à la base all-.",
+            "explanationFr": "Tu allais au gymnase. La base all- et la terminaison -ais donnent allais."
+          },
+          {
+            "id": "guided:imparfait:aller:3",
+            "promptFr": "Le récit est au passé. Complète avec aller à l’imparfait. Écris seulement le verbe : On ___ au cinéma.",
+            "answerFr": "allait",
+            "hintFr": "Avec il, elle ou on, ajoute -ait à la base all-.",
+            "explanationFr": "On allait au cinéma. La base all- et la terminaison -ait donnent allait."
+          },
+          {
+            "id": "guided:imparfait:aller:4",
+            "promptFr": "Le récit est au passé. Complète avec aller à l’imparfait. Écris seulement le verbe : Nous ___ au marché.",
+            "answerFr": "allions",
+            "hintFr": "Avec nous, ajoute -ions à la base all-.",
+            "explanationFr": "Nous allions au marché. La base all- et la terminaison -ions donnent allions."
+          },
+          {
+            "id": "guided:imparfait:aller:5",
+            "promptFr": "Le récit est au passé. Complète avec aller à l’imparfait. Écris seulement le verbe : Vous ___ à la piscine.",
+            "answerFr": "alliez",
+            "hintFr": "Avec vous, ajoute -iez à la base all-.",
+            "explanationFr": "Vous alliez à la piscine. La base all- et la terminaison -iez donnent alliez."
+          },
+          {
+            "id": "guided:imparfait:aller:6",
+            "promptFr": "Le récit est au passé. Complète avec aller à l’imparfait. Écris seulement le verbe : Elles ___ au parc.",
+            "answerFr": "allaient",
+            "hintFr": "Avec ils ou elles, ajoute -aient à la base all-.",
+            "explanationFr": "Elles allaient au parc. La base all- et la terminaison -aient donnent allaient."
+          }
+        ],
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "aller",
+              "form": "aller"
+            }
+          ],
+          "sentences": [
+            "Je vais à la bibliothèque.\nJ’allais à la bibliothèque.",
+            "nous allons → all- + -ais → allais",
+            "je : allais\ntu : allais\nil, elle ou on : allait\nnous : allions\nvous : alliez\nils ou elles : allaient",
+            "nous allions ; vous alliez",
+            "J’allais à la bibliothèque.",
+            "Tu allais au gymnase.",
+            "On allait au cinéma.",
+            "Nous allions au marché.",
+            "Vous alliez à la piscine.",
+            "Elles allaient au parc."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:imparfait:faire",
+      "contentChecksum": "sha256:92134a5c2eb7229e9b00ecfe704d99a315683081ea79b0900073c3ddf7f6e014",
+      "skillId": "produire_imparfait::writing-controlled-production::verb:faire",
+      "nodeKey": "produire_imparfait",
+      "facetKey": "produire_imparfait::verb:faire",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "produire_present_indicatif::writing-controlled-production::verb:faire",
+        "reconnaitre_imparfait::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:12479afb670a5da57fb9e13e7486b84ab05c534453b54479e9c024016e459d9f",
+        "sentence:sha256:6040536d6b61eb3644667243d6d18d024f87a49fdb5875dc2117d66413fe0933",
+        "sentence:sha256:7609cfd8528fd31c9bca6940e6272c526bdbcde3d15fd138402b551e4298fc6a",
+        "sentence:sha256:877f25e05c887161411ec11ff5cb178e6bd74b4ec5764a91f41aa5dcaa131e7c",
+        "sentence:sha256:91f100fe3e7876194bca254ae6bc706b263e13f5fd601bc5da240813a7132817",
+        "sentence:sha256:a9754ff1c05dc6f748aa72aef2b9f4e4eb0f8ed8a3d0b5d1eb747b9a91d917b5",
+        "sentence:sha256:ab42f7a607ef35197c4d236317d7c228e1047a4479545739c7a06789acad8f11",
+        "sentence:sha256:b835cf3f6fc379c4780877b2f1672042e981cda4e832d4279d2c7482aaa1d959",
+        "sentence:sha256:eb09f983fb857a802fbd6f3a078a99c376294cfb000cedc85a1cf08012dcfe18",
+        "sentence:sha256:fc3bbfe99503d53a13915a96d2be6c4321923ced224e7ef77a64e8af084153bf",
+        "word:sha256:8a568397b41847720a6d5d4310ba1528f891cc38b608243c136cf1e04d975d8b"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:imparfait:faire",
+        "nodeKey": "produire_imparfait",
+        "facetKey": "produire_imparfait::verb:faire",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire faire à l’imparfait",
+        "learnerQuestionFr": "Comment retrouver les formes de faire à l’imparfait selon le sujet ?",
+        "steps": [
+          {
+            "exampleFr": "Je fais une maquette.\nJe faisais une maquette.",
+            "explanationFr": "Le sujet et le verbe sont les mêmes, mais la forme change. Dans la seconde phrase, faisais est à l’imparfait. Ce temps permet notamment de raconter une habitude ou une situation dans le passé."
+          },
+          {
+            "exampleFr": "nous faisons → fais- + -ais → faisais",
+            "explanationFr": "Pars de la forme avec nous au présent : faisons. Retire -ons. Le morceau qui reste, fais-, est la base appelée radical. Ajoute ensuite la terminaison de l’imparfait."
+          },
+          {
+            "exampleFr": "je : faisais\ntu : faisais\nil, elle ou on : faisait\nnous : faisions\nvous : faisiez\nils ou elles : faisaient",
+            "explanationFr": "Les six terminaisons sont -ais, -ais, -ait, -ions, -iez et -aient. Observe les lettres écrites : plusieurs formes se ressemblent à l’oral."
+          },
+          {
+            "exampleFr": "nous faisions ; vous faisiez",
+            "explanationFr": "Avec nous et vous, garde la base fais- et ajoute -ions ou -iez en entier. N’oublie pas le i de la terminaison."
+          }
+        ],
+        "takeawayFr": "Pour faire, pars de nous faisons, retire -ons et ajoute la terminaison de l’imparfait correspondant au sujet.",
+        "boundaryFr": "Cette leçon concerne faire à l’imparfait. Elle ne suffit pas pour choisir entre imparfait et passé composé dans un récit, ni pour connaître les autres temps de ce verbe.",
+        "practice": [
+          {
+            "id": "guided:imparfait:faire:1",
+            "promptFr": "Le récit est au passé. Complète avec faire à l’imparfait. Écris seulement le verbe : Je ___ une maquette.",
+            "answerFr": "faisais",
+            "hintFr": "Avec je, ajoute -ais à la base fais-.",
+            "explanationFr": "Je faisais une maquette. La base fais- et la terminaison -ais donnent faisais."
+          },
+          {
+            "id": "guided:imparfait:faire:2",
+            "promptFr": "Le récit est au passé. Complète avec faire à l’imparfait. Écris seulement le verbe : Tu ___ une pause.",
+            "answerFr": "faisais",
+            "hintFr": "Avec tu, ajoute -ais à la base fais-.",
+            "explanationFr": "Tu faisais une pause. La base fais- et la terminaison -ais donnent faisais."
+          },
+          {
+            "id": "guided:imparfait:faire:3",
+            "promptFr": "Le récit est au passé. Complète avec faire à l’imparfait. Écris seulement le verbe : Elle ___ du vélo.",
+            "answerFr": "faisait",
+            "hintFr": "Avec il, elle ou on, ajoute -ait à la base fais-.",
+            "explanationFr": "Elle faisait du vélo. La base fais- et la terminaison -ait donnent faisait."
+          },
+          {
+            "id": "guided:imparfait:faire:4",
+            "promptFr": "Le récit est au passé. Complète avec faire à l’imparfait. Écris seulement le verbe : Nous ___ un gâteau.",
+            "answerFr": "faisions",
+            "hintFr": "Avec nous, ajoute -ions à la base fais-.",
+            "explanationFr": "Nous faisions un gâteau. La base fais- et la terminaison -ions donnent faisions."
+          },
+          {
+            "id": "guided:imparfait:faire:5",
+            "promptFr": "Le récit est au passé. Complète avec faire à l’imparfait. Écris seulement le verbe : Vous ___ un puzzle.",
+            "answerFr": "faisiez",
+            "hintFr": "Avec vous, ajoute -iez à la base fais-.",
+            "explanationFr": "Vous faisiez un puzzle. La base fais- et la terminaison -iez donnent faisiez."
+          },
+          {
+            "id": "guided:imparfait:faire:6",
+            "promptFr": "Le récit est au passé. Complète avec faire à l’imparfait. Écris seulement le verbe : Ils ___ une expérience.",
+            "answerFr": "faisaient",
+            "hintFr": "Avec ils ou elles, ajoute -aient à la base fais-.",
+            "explanationFr": "Ils faisaient une expérience. La base fais- et la terminaison -aient donnent faisaient."
+          }
+        ],
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "faire",
+              "form": "faire"
+            }
+          ],
+          "sentences": [
+            "Je fais une maquette.\nJe faisais une maquette.",
+            "nous faisons → fais- + -ais → faisais",
+            "je : faisais\ntu : faisais\nil, elle ou on : faisait\nnous : faisions\nvous : faisiez\nils ou elles : faisaient",
+            "nous faisions ; vous faisiez",
+            "Je faisais une maquette.",
+            "Tu faisais une pause.",
+            "Elle faisait du vélo.",
+            "Nous faisions un gâteau.",
+            "Vous faisiez un puzzle.",
+            "Ils faisaient une expérience."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:imparfait:être",
+      "contentChecksum": "sha256:cb66676c18b54d4dcae1f9a2d29518642eeb4b021432b0ad4bf2fd02ad876bd9",
+      "skillId": "produire_imparfait::writing-controlled-production::verb:être",
+      "nodeKey": "produire_imparfait",
+      "facetKey": "produire_imparfait::verb:être",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "produire_present_indicatif::writing-controlled-production::verb:être",
+        "reconnaitre_imparfait::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:19ab667b7cbab915815418d43569f0d2fc9b7f5e93fb1b6688b4f264166182d4",
+        "sentence:sha256:28f62e2dcc6339fd54c43c5c4bfafbfaad0dce1099f0eff2fd11bc86ec9bd8ab",
+        "sentence:sha256:3543e2c87ac4c45a8c3bd23f4d60bfc466775921f8f67afb4c86e51ea1cb6051",
+        "sentence:sha256:4c7a52b178be9ef4317526c2aca6c5a675562a00d6ba7f1c59d19fc9c27db381",
+        "sentence:sha256:58f72439d15a5fafd97ae3ed0cc26b5cb16f3048ddf8f9a1c1a916efc28c552d",
+        "sentence:sha256:8b553faabcc37f836e1e035dee222ed6e6a6a83a6b8cebbf26717661867a9428",
+        "sentence:sha256:8cb8de919e9c779a26972b83a7cdc25346bbc30777a1cc71db30e49f404302ba",
+        "sentence:sha256:c4eed83fe40f9e5c5ea4bb7af43e1feda4acaf77c1e26061fa944eb389853097",
+        "sentence:sha256:eb33f231a033679e30df6cfd3492044e197e60e59f7efd85fa1ec4c72db3847d",
+        "sentence:sha256:f24a630129b7f17d48188cb1d8cd8b4a4cf17f2ea84fd47746cfc696d0fa3d8b",
+        "word:sha256:0e8c809d71ca79b97c97516e8f9792a277aa2a2c72586ada6c3a73d265f30e8d"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:imparfait:être",
+        "nodeKey": "produire_imparfait",
+        "facetKey": "produire_imparfait::verb:être",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire être à l’imparfait",
+        "learnerQuestionFr": "Comment retrouver les formes de être à l’imparfait selon le sujet ?",
+        "steps": [
+          {
+            "exampleFr": "Je suis dans le jardin.\nJ’étais dans le jardin.",
+            "explanationFr": "Le sujet et le verbe sont les mêmes, mais la forme change. Dans la seconde phrase, étais est à l’imparfait. Ce temps permet notamment de raconter une habitude ou une situation dans le passé."
+          },
+          {
+            "exampleFr": "être → ét- : j’étais, nous étions",
+            "explanationFr": "Être a une base particulière à l’imparfait : ét-. Ne pars pas de nous sommes. À cette base, ajoute la terminaison correspondant au sujet."
+          },
+          {
+            "exampleFr": "je : étais\ntu : étais\nil, elle ou on : était\nnous : étions\nvous : étiez\nils ou elles : étaient",
+            "explanationFr": "Les six terminaisons sont -ais, -ais, -ait, -ions, -iez et -aient. Observe les lettres écrites : plusieurs formes se ressemblent à l’oral."
+          },
+          {
+            "exampleFr": "nous étions ; vous étiez",
+            "explanationFr": "Avec nous et vous, garde la base ét- et ajoute -ions ou -iez en entier. N’oublie pas le i de la terminaison."
+          }
+        ],
+        "takeawayFr": "Pour être, pars de ét- puis choisis la terminaison : -ais, -ais, -ait, -ions, -iez ou -aient.",
+        "boundaryFr": "Cette leçon concerne être à l’imparfait. Elle ne suffit pas pour choisir entre imparfait et passé composé dans un récit, ni pour connaître les autres temps de ce verbe.",
+        "practice": [
+          {
+            "id": "guided:imparfait:être:1",
+            "promptFr": "Le récit est au passé. Complète avec être à l’imparfait. Écris seulement le verbe : J’___ dans le jardin.",
+            "answerFr": "étais",
+            "hintFr": "Avec je, ajoute -ais à la base ét-.",
+            "explanationFr": "J’étais dans le jardin. La base ét- et la terminaison -ais donnent étais."
+          },
+          {
+            "id": "guided:imparfait:être:2",
+            "promptFr": "Le récit est au passé. Complète avec être à l’imparfait. Écris seulement le verbe : Tu ___ au premier rang.",
+            "answerFr": "étais",
+            "hintFr": "Avec tu, ajoute -ais à la base ét-.",
+            "explanationFr": "Tu étais au premier rang. La base ét- et la terminaison -ais donnent étais."
+          },
+          {
+            "id": "guided:imparfait:être:3",
+            "promptFr": "Le récit est au passé. Complète avec être à l’imparfait. Écris seulement le verbe : Elle ___ contente de son dessin.",
+            "answerFr": "était",
+            "hintFr": "Avec il, elle ou on, ajoute -ait à la base ét-.",
+            "explanationFr": "Elle était contente de son dessin. La base ét- et la terminaison -ait donnent était."
+          },
+          {
+            "id": "guided:imparfait:être:4",
+            "promptFr": "Le récit est au passé. Complète avec être à l’imparfait. Écris seulement le verbe : Nous ___ en avance.",
+            "answerFr": "étions",
+            "hintFr": "Avec nous, ajoute -ions à la base ét-.",
+            "explanationFr": "Nous étions en avance. La base ét- et la terminaison -ions donnent étions."
+          },
+          {
+            "id": "guided:imparfait:être:5",
+            "promptFr": "Le récit est au passé. Complète avec être à l’imparfait. Écris seulement le verbe : Vous ___ près de la porte.",
+            "answerFr": "étiez",
+            "hintFr": "Avec vous, ajoute -iez à la base ét-.",
+            "explanationFr": "Vous étiez près de la porte. La base ét- et la terminaison -iez donnent étiez."
+          },
+          {
+            "id": "guided:imparfait:être:6",
+            "promptFr": "Le récit est au passé. Complète avec être à l’imparfait. Écris seulement le verbe : Ils ___ dans la même équipe.",
+            "answerFr": "étaient",
+            "hintFr": "Avec ils ou elles, ajoute -aient à la base ét-.",
+            "explanationFr": "Ils étaient dans la même équipe. La base ét- et la terminaison -aient donnent étaient."
+          }
+        ],
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "être",
+              "form": "être"
+            }
+          ],
+          "sentences": [
+            "Je suis dans le jardin.\nJ’étais dans le jardin.",
+            "être → ét- : j’étais, nous étions",
+            "je : étais\ntu : étais\nil, elle ou on : était\nnous : étions\nvous : étiez\nils ou elles : étaient",
+            "nous étions ; vous étiez",
+            "J’étais dans le jardin.",
+            "Tu étais au premier rang.",
+            "Elle était contente de son dessin.",
+            "Nous étions en avance.",
+            "Vous étiez près de la porte.",
+            "Ils étaient dans la même équipe."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:imparfait:avoir",
+      "contentChecksum": "sha256:8abeb9915d31f3b301c36f6ad6329247ef560dec34762b9b0e017d68060271db",
+      "skillId": "produire_imparfait::writing-controlled-production::verb:avoir",
+      "nodeKey": "produire_imparfait",
+      "facetKey": "produire_imparfait::verb:avoir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "produire_present_indicatif::writing-controlled-production::verb:avoir",
+        "reconnaitre_imparfait::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:16458eaafd7a0a84554437d1ed97322ec40917a7cbb9763c0e7144570b7f613e",
+        "sentence:sha256:29296ef5112abb965de3baa6b8841a4e55fc5cab849f72e22fded2261d366425",
+        "sentence:sha256:56211619784caa8213544f96d08d8db4a01aaa03348dd927cc60cbbedcf9e66a",
+        "sentence:sha256:6d9b25ad17df83eac0104583a8acc75808625802de38fe972740cf090cd6e651",
+        "sentence:sha256:6fb90251e9fce79ce60a304ef7092def03696f79c59c52e2c673e5ec2b4d3d4a",
+        "sentence:sha256:7f4b1d07ecbc7c29b1af0c18d153a27ae144d49febebd65a4f249063e4ce4b03",
+        "sentence:sha256:c268345d3c1a3c6017d081382142a8c7c15944578cb7854fc7880f2fe4791994",
+        "sentence:sha256:e0d0ec7259dcb6860072aff28e8a333a0573b56f7299b640b6cb895929a11f40",
+        "sentence:sha256:e8314dc97376b3ba7b83bf64ffc17cc6bb121e830457d69e51c5eb4a7b0edbf5",
+        "sentence:sha256:fa4dd3bf6fd42fc5f46bd7dd7fcae20014352b18f640d79585b602b18a93b20e",
+        "word:sha256:130f28240b75513decf695074e35d63b8daf7399920a31cc2a8e0d8ca2e6f1fe"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:imparfait:avoir",
+        "nodeKey": "produire_imparfait",
+        "facetKey": "produire_imparfait::verb:avoir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire avoir à l’imparfait",
+        "learnerQuestionFr": "Comment retrouver les formes de avoir à l’imparfait selon le sujet ?",
+        "steps": [
+          {
+            "exampleFr": "J’ai une lampe de poche.\nJ’avais une lampe de poche.",
+            "explanationFr": "Le sujet et le verbe sont les mêmes, mais la forme change. Dans la seconde phrase, avais est à l’imparfait. Ce temps permet notamment de raconter une habitude ou une situation dans le passé."
+          },
+          {
+            "exampleFr": "nous avons → av- + -ais → avais",
+            "explanationFr": "Pars de la forme avec nous au présent : avons. Retire -ons. Le morceau qui reste, av-, est la base appelée radical. Ajoute ensuite la terminaison de l’imparfait."
+          },
+          {
+            "exampleFr": "je : avais\ntu : avais\nil, elle ou on : avait\nnous : avions\nvous : aviez\nils ou elles : avaient",
+            "explanationFr": "Les six terminaisons sont -ais, -ais, -ait, -ions, -iez et -aient. Observe les lettres écrites : plusieurs formes se ressemblent à l’oral."
+          },
+          {
+            "exampleFr": "nous avions ; vous aviez",
+            "explanationFr": "Avec nous et vous, garde la base av- et ajoute -ions ou -iez en entier. N’oublie pas le i de la terminaison."
+          }
+        ],
+        "takeawayFr": "Pour avoir, pars de nous avons, retire -ons et ajoute la terminaison de l’imparfait correspondant au sujet.",
+        "boundaryFr": "Cette leçon concerne avoir à l’imparfait. Elle ne suffit pas pour choisir entre imparfait et passé composé dans un récit, ni pour connaître les autres temps de ce verbe.",
+        "practice": [
+          {
+            "id": "guided:imparfait:avoir:1",
+            "promptFr": "Le récit est au passé. Complète avec avoir à l’imparfait. Écris seulement le verbe : J’___ une lampe de poche.",
+            "answerFr": "avais",
+            "hintFr": "Avec je, ajoute -ais à la base av-.",
+            "explanationFr": "J’avais une lampe de poche. La base av- et la terminaison -ais donnent avais."
+          },
+          {
+            "id": "guided:imparfait:avoir:2",
+            "promptFr": "Le récit est au passé. Complète avec avoir à l’imparfait. Écris seulement le verbe : Tu ___ une nouvelle question.",
+            "answerFr": "avais",
+            "hintFr": "Avec tu, ajoute -ais à la base av-.",
+            "explanationFr": "Tu avais une nouvelle question. La base av- et la terminaison -ais donnent avais."
+          },
+          {
+            "id": "guided:imparfait:avoir:3",
+            "promptFr": "Le récit est au passé. Complète avec avoir à l’imparfait. Écris seulement le verbe : On ___ assez de papier.",
+            "answerFr": "avait",
+            "hintFr": "Avec il, elle ou on, ajoute -ait à la base av-.",
+            "explanationFr": "On avait assez de papier. La base av- et la terminaison -ait donnent avait."
+          },
+          {
+            "id": "guided:imparfait:avoir:4",
+            "promptFr": "Le récit est au passé. Complète avec avoir à l’imparfait. Écris seulement le verbe : Nous ___ des places pour le concert.",
+            "answerFr": "avions",
+            "hintFr": "Avec nous, ajoute -ions à la base av-.",
+            "explanationFr": "Nous avions des places pour le concert. La base av- et la terminaison -ions donnent avions."
+          },
+          {
+            "id": "guided:imparfait:avoir:5",
+            "promptFr": "Le récit est au passé. Complète avec avoir à l’imparfait. Écris seulement le verbe : Vous ___ le même horaire.",
+            "answerFr": "aviez",
+            "hintFr": "Avec vous, ajoute -iez à la base av-.",
+            "explanationFr": "Vous aviez le même horaire. La base av- et la terminaison -iez donnent aviez."
+          },
+          {
+            "id": "guided:imparfait:avoir:6",
+            "promptFr": "Le récit est au passé. Complète avec avoir à l’imparfait. Écris seulement le verbe : Elles ___ un projet commun.",
+            "answerFr": "avaient",
+            "hintFr": "Avec ils ou elles, ajoute -aient à la base av-.",
+            "explanationFr": "Elles avaient un projet commun. La base av- et la terminaison -aient donnent avaient."
+          }
+        ],
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "avoir",
+              "form": "avoir"
+            }
+          ],
+          "sentences": [
+            "J’ai une lampe de poche.\nJ’avais une lampe de poche.",
+            "nous avons → av- + -ais → avais",
+            "je : avais\ntu : avais\nil, elle ou on : avait\nnous : avions\nvous : aviez\nils ou elles : avaient",
+            "nous avions ; vous aviez",
+            "J’avais une lampe de poche.",
+            "Tu avais une nouvelle question.",
+            "On avait assez de papier.",
+            "Nous avions des places pour le concert.",
+            "Vous aviez le même horaire.",
+            "Elles avaient un projet commun."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:imparfait:prendre",
+      "contentChecksum": "sha256:232972ee54ddeb333f34d5ffb2cbad401f50da53d47c1f8c9f62105dcd3c6a43",
+      "skillId": "produire_imparfait::writing-controlled-production::verb:prendre",
+      "nodeKey": "produire_imparfait",
+      "facetKey": "produire_imparfait::verb:prendre",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "produire_present_indicatif::writing-controlled-production::verb:prendre",
+        "reconnaitre_imparfait::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:1c94f205e68bf2a4dfcbaf2c04254a87fe2f2c63490f2f9166813fd92f5c462b",
+        "sentence:sha256:2ef7cbce2622237af95cce9b0ce00090a8650aa72fa716e8ae6c6b877e2a3632",
+        "sentence:sha256:475e3fc5c71579957ccc0c0d6a5672670b985ac4e76d93927b52dcfb2907efbc",
+        "sentence:sha256:645db9b9b3ef0338f95a4497c95a0c9b218f9ddaf3486f142734a29c3bf23248",
+        "sentence:sha256:7e2bfef83b53287c8ce40a5859f647126030b99cd14b71b7587e57ebf69b7956",
+        "sentence:sha256:8ac02e80719dabb8cc627fdeceeeb35c386c0219994ad97c386ca8a973d2b9fb",
+        "sentence:sha256:a47418730f109e92c9c41b46a9c0c582e31cd256824af19aeb876749c06aadc6",
+        "sentence:sha256:a8501b5649ce8e63377f5fabf24a3d367fdab1d1df9afc25fbd5c72e499164af",
+        "sentence:sha256:b432988240269fe45a61fa4cb9a81baa103bab328187f8731a3303b64b62dfc7",
+        "sentence:sha256:d7af90b94b878cfe4669336999b82abc92e064191c963143dfe134c1d76378bd",
+        "word:sha256:23d11cc3bd461548ed9bb9430275d3db49ead4b7604fd7131d3b424b67c8d633"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:imparfait:prendre",
+        "nodeKey": "produire_imparfait",
+        "facetKey": "produire_imparfait::verb:prendre",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire prendre à l’imparfait",
+        "learnerQuestionFr": "Comment retrouver les formes de prendre à l’imparfait selon le sujet ?",
+        "steps": [
+          {
+            "exampleFr": "Je prends un livre sur l’étagère.\nJe prenais un livre sur l’étagère.",
+            "explanationFr": "Le sujet et le verbe sont les mêmes, mais la forme change. Dans la seconde phrase, prenais est à l’imparfait. Ce temps permet notamment de raconter une habitude ou une situation dans le passé."
+          },
+          {
+            "exampleFr": "nous prenons → pren- + -ais → prenais",
+            "explanationFr": "Pars de la forme avec nous au présent : prenons. Retire -ons. Le morceau qui reste, pren-, est la base appelée radical. Ajoute ensuite la terminaison de l’imparfait."
+          },
+          {
+            "exampleFr": "je : prenais\ntu : prenais\nil, elle ou on : prenait\nnous : prenions\nvous : preniez\nils ou elles : prenaient",
+            "explanationFr": "Les six terminaisons sont -ais, -ais, -ait, -ions, -iez et -aient. Observe les lettres écrites : plusieurs formes se ressemblent à l’oral."
+          },
+          {
+            "exampleFr": "nous prenions ; vous preniez",
+            "explanationFr": "Avec nous et vous, garde la base pren- et ajoute -ions ou -iez en entier. N’oublie pas le i de la terminaison."
+          }
+        ],
+        "takeawayFr": "Pour prendre, pars de nous prenons, retire -ons et ajoute la terminaison de l’imparfait correspondant au sujet.",
+        "boundaryFr": "Cette leçon concerne prendre à l’imparfait. Elle ne suffit pas pour choisir entre imparfait et passé composé dans un récit, ni pour connaître les autres temps de ce verbe.",
+        "practice": [
+          {
+            "id": "guided:imparfait:prendre:1",
+            "promptFr": "Le récit est au passé. Complète avec prendre à l’imparfait. Écris seulement le verbe : Je ___ un livre sur l’étagère.",
+            "answerFr": "prenais",
+            "hintFr": "Avec je, ajoute -ais à la base pren-.",
+            "explanationFr": "Je prenais un livre sur l’étagère. La base pren- et la terminaison -ais donnent prenais."
+          },
+          {
+            "id": "guided:imparfait:prendre:2",
+            "promptFr": "Le récit est au passé. Complète avec prendre à l’imparfait. Écris seulement le verbe : Tu ___ le chemin du parc.",
+            "answerFr": "prenais",
+            "hintFr": "Avec tu, ajoute -ais à la base pren-.",
+            "explanationFr": "Tu prenais le chemin du parc. La base pren- et la terminaison -ais donnent prenais."
+          },
+          {
+            "id": "guided:imparfait:prendre:3",
+            "promptFr": "Le récit est au passé. Complète avec prendre à l’imparfait. Écris seulement le verbe : Elle ___ une photo.",
+            "answerFr": "prenait",
+            "hintFr": "Avec il, elle ou on, ajoute -ait à la base pren-.",
+            "explanationFr": "Elle prenait une photo. La base pren- et la terminaison -ait donnent prenait."
+          },
+          {
+            "id": "guided:imparfait:prendre:4",
+            "promptFr": "Le récit est au passé. Complète avec prendre à l’imparfait. Écris seulement le verbe : Nous ___ notre temps.",
+            "answerFr": "prenions",
+            "hintFr": "Avec nous, ajoute -ions à la base pren-.",
+            "explanationFr": "Nous prenions notre temps. La base pren- et la terminaison -ions donnent prenions."
+          },
+          {
+            "id": "guided:imparfait:prendre:5",
+            "promptFr": "Le récit est au passé. Complète avec prendre à l’imparfait. Écris seulement le verbe : Vous ___ le train du soir.",
+            "answerFr": "preniez",
+            "hintFr": "Avec vous, ajoute -iez à la base pren-.",
+            "explanationFr": "Vous preniez le train du soir. La base pren- et la terminaison -iez donnent preniez."
+          },
+          {
+            "id": "guided:imparfait:prendre:6",
+            "promptFr": "Le récit est au passé. Complète avec prendre à l’imparfait. Écris seulement le verbe : Ils ___ des notes.",
+            "answerFr": "prenaient",
+            "hintFr": "Avec ils ou elles, ajoute -aient à la base pren-.",
+            "explanationFr": "Ils prenaient des notes. La base pren- et la terminaison -aient donnent prenaient."
+          }
+        ],
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "prendre",
+              "form": "prendre"
+            }
+          ],
+          "sentences": [
+            "Je prends un livre sur l’étagère.\nJe prenais un livre sur l’étagère.",
+            "nous prenons → pren- + -ais → prenais",
+            "je : prenais\ntu : prenais\nil, elle ou on : prenait\nnous : prenions\nvous : preniez\nils ou elles : prenaient",
+            "nous prenions ; vous preniez",
+            "Je prenais un livre sur l’étagère.",
+            "Tu prenais le chemin du parc.",
+            "Elle prenait une photo.",
+            "Nous prenions notre temps.",
+            "Vous preniez le train du soir.",
+            "Ils prenaient des notes."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:imparfait:venir",
+      "contentChecksum": "sha256:5fbbdee4317142a6e88ccd71dc1b4884baf6de33064743e037823e36facb5d00",
+      "skillId": "produire_imparfait::writing-controlled-production::verb:venir",
+      "nodeKey": "produire_imparfait",
+      "facetKey": "produire_imparfait::verb:venir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "produire_present_indicatif::writing-controlled-production::verb:venir",
+        "reconnaitre_imparfait::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:13d8840a128e2640c38bd105738541233469b7c5faf470ff3f3f306a408a6010",
+        "sentence:sha256:171b16f02cf8fb181a2f35a53eff805b87532ed8c35d97befb52e7b47badcc26",
+        "sentence:sha256:4fdce905e97dedc7bb2596831a4cadb92af395808542a85e7ce36a9de585054a",
+        "sentence:sha256:553636945015cf87f0392620b4050e042280e0741ff6dc3f8bbb2b17c58ef3da",
+        "sentence:sha256:5977cbb0fcae7dc4847f9115be72626855cb8aab7e14830b69418f42b664d7be",
+        "sentence:sha256:947c07149e062250f6ec72f3c412d52ad663c9a834082a2b5ed9819fd68240c5",
+        "sentence:sha256:9fa4aecba5322e4ab5b87513ca93beea9027fc37f7aa5138f53d4ba159492676",
+        "sentence:sha256:a2ecc5d394e36c28607836f39fd08a21a51a2b8dd524ca28cc48fbabde8a121c",
+        "sentence:sha256:ce85154263bc7cc93d38a11130c153723b7034b51f3d0527a78594d669710195",
+        "sentence:sha256:db0ec9a31561524869e30e1d2e3d81b4c4e02463d2112a70a999cabc90957b61",
+        "word:sha256:db1839abb9ee522ff2699acf188525b01c33d9cdcf68feb7fb4e98616a0434fe"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:imparfait:venir",
+        "nodeKey": "produire_imparfait",
+        "facetKey": "produire_imparfait::verb:venir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire venir à l’imparfait",
+        "learnerQuestionFr": "Comment retrouver les formes de venir à l’imparfait selon le sujet ?",
+        "steps": [
+          {
+            "exampleFr": "Je viens voir ton exposition.\nJe venais voir ton exposition.",
+            "explanationFr": "Le sujet et le verbe sont les mêmes, mais la forme change. Dans la seconde phrase, venais est à l’imparfait. Ce temps permet notamment de raconter une habitude ou une situation dans le passé."
+          },
+          {
+            "exampleFr": "nous venons → ven- + -ais → venais",
+            "explanationFr": "Pars de la forme avec nous au présent : venons. Retire -ons. Le morceau qui reste, ven-, est la base appelée radical. Ajoute ensuite la terminaison de l’imparfait."
+          },
+          {
+            "exampleFr": "je : venais\ntu : venais\nil, elle ou on : venait\nnous : venions\nvous : veniez\nils ou elles : venaient",
+            "explanationFr": "Les six terminaisons sont -ais, -ais, -ait, -ions, -iez et -aient. Observe les lettres écrites : plusieurs formes se ressemblent à l’oral."
+          },
+          {
+            "exampleFr": "nous venions ; vous veniez",
+            "explanationFr": "Avec nous et vous, garde la base ven- et ajoute -ions ou -iez en entier. N’oublie pas le i de la terminaison."
+          }
+        ],
+        "takeawayFr": "Pour venir, pars de nous venons, retire -ons et ajoute la terminaison de l’imparfait correspondant au sujet.",
+        "boundaryFr": "Cette leçon concerne venir à l’imparfait. Elle ne suffit pas pour choisir entre imparfait et passé composé dans un récit, ni pour connaître les autres temps de ce verbe.",
+        "practice": [
+          {
+            "id": "guided:imparfait:venir:1",
+            "promptFr": "Le récit est au passé. Complète avec venir à l’imparfait. Écris seulement le verbe : Je ___ voir ton exposition.",
+            "answerFr": "venais",
+            "hintFr": "Avec je, ajoute -ais à la base ven-.",
+            "explanationFr": "Je venais voir ton exposition. La base ven- et la terminaison -ais donnent venais."
+          },
+          {
+            "id": "guided:imparfait:venir:2",
+            "promptFr": "Le récit est au passé. Complète avec venir à l’imparfait. Écris seulement le verbe : Tu ___ avec ton frère.",
+            "answerFr": "venais",
+            "hintFr": "Avec tu, ajoute -ais à la base ven-.",
+            "explanationFr": "Tu venais avec ton frère. La base ven- et la terminaison -ais donnent venais."
+          },
+          {
+            "id": "guided:imparfait:venir:3",
+            "promptFr": "Le récit est au passé. Complète avec venir à l’imparfait. Écris seulement le verbe : On ___ à pied.",
+            "answerFr": "venait",
+            "hintFr": "Avec il, elle ou on, ajoute -ait à la base ven-.",
+            "explanationFr": "On venait à pied. La base ven- et la terminaison -ait donnent venait."
+          },
+          {
+            "id": "guided:imparfait:venir:4",
+            "promptFr": "Le récit est au passé. Complète avec venir à l’imparfait. Écris seulement le verbe : Nous ___ de la bibliothèque.",
+            "answerFr": "venions",
+            "hintFr": "Avec nous, ajoute -ions à la base ven-.",
+            "explanationFr": "Nous venions de la bibliothèque. La base ven- et la terminaison -ions donnent venions."
+          },
+          {
+            "id": "guided:imparfait:venir:5",
+            "promptFr": "Le récit est au passé. Complète avec venir à l’imparfait. Écris seulement le verbe : Vous ___ au bon moment.",
+            "answerFr": "veniez",
+            "hintFr": "Avec vous, ajoute -iez à la base ven-.",
+            "explanationFr": "Vous veniez au bon moment. La base ven- et la terminaison -iez donnent veniez."
+          },
+          {
+            "id": "guided:imparfait:venir:6",
+            "promptFr": "Le récit est au passé. Complète avec venir à l’imparfait. Écris seulement le verbe : Elles ___ chercher leurs cahiers.",
+            "answerFr": "venaient",
+            "hintFr": "Avec ils ou elles, ajoute -aient à la base ven-.",
+            "explanationFr": "Elles venaient chercher leurs cahiers. La base ven- et la terminaison -aient donnent venaient."
+          }
+        ],
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "venir",
+              "form": "venir"
+            }
+          ],
+          "sentences": [
+            "Je viens voir ton exposition.\nJe venais voir ton exposition.",
+            "nous venons → ven- + -ais → venais",
+            "je : venais\ntu : venais\nil, elle ou on : venait\nnous : venions\nvous : veniez\nils ou elles : venaient",
+            "nous venions ; vous veniez",
+            "Je venais voir ton exposition.",
+            "Tu venais avec ton frère.",
+            "On venait à pied.",
+            "Nous venions de la bibliothèque.",
+            "Vous veniez au bon moment.",
+            "Elles venaient chercher leurs cahiers."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:imparfait:partir",
+      "contentChecksum": "sha256:35ef21649362008a9984a09e59ba6826ff53a08e5893ab18d0f45062b9fd9ca0",
+      "skillId": "produire_imparfait::writing-controlled-production::verb:partir",
+      "nodeKey": "produire_imparfait",
+      "facetKey": "produire_imparfait::verb:partir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "produire_present_indicatif::writing-controlled-production::verb:partir",
+        "reconnaitre_imparfait::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:3d62c9ad67d93e4c6ad2ce27ff4821b3ca3f9605795facb7422f01c6185d160f",
+        "sentence:sha256:579850ffd53277daa7897f4a571aa052e194cb799c0532d508a4a207b9ceb4ab",
+        "sentence:sha256:58030295916997b670015b2d5aacf98475b427df89db81d495a00ab55c40b769",
+        "sentence:sha256:658eb6f3a11145445630dc8dbc291562b8ba91701e37b3e4a5f495c8c334b492",
+        "sentence:sha256:7284ef322948a1edad23875aa6674e60a2f8719e05fc681581bfa78fd74415cd",
+        "sentence:sha256:8b520a7754159081cb94bdb478cdbe8de8e093390a1b1994a9a661e87ba8ce19",
+        "sentence:sha256:9056d7cd6b74a99020824158881547c3f160ca437bcfb2e62434ff00dbaf6135",
+        "sentence:sha256:c5ad4a842d3c3e59acad579442047e8c4017b4f9579b3c5e1a2a3ec105e5db37",
+        "sentence:sha256:c9c20affcaf3b421b696d06604b768275fb8e0ea0f24d160d406e5cf7e25ba27",
+        "sentence:sha256:f198cf22cf53d98e566a4480e93252a0e1bcad7fe65a06d5d18d456f1c5a8169",
+        "word:sha256:c413bda28a8465e5a51d39f762f1ed12ee9c7657a3540a6d503c484154e2b554"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:imparfait:partir",
+        "nodeKey": "produire_imparfait",
+        "facetKey": "produire_imparfait::verb:partir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire partir à l’imparfait",
+        "learnerQuestionFr": "Comment retrouver les formes de partir à l’imparfait selon le sujet ?",
+        "steps": [
+          {
+            "exampleFr": "Je pars après le déjeuner.\nJe partais après le déjeuner.",
+            "explanationFr": "Le sujet et le verbe sont les mêmes, mais la forme change. Dans la seconde phrase, partais est à l’imparfait. Ce temps permet notamment de raconter une habitude ou une situation dans le passé."
+          },
+          {
+            "exampleFr": "nous partons → part- + -ais → partais",
+            "explanationFr": "Pars de la forme avec nous au présent : partons. Retire -ons. Le morceau qui reste, part-, est la base appelée radical. Ajoute ensuite la terminaison de l’imparfait."
+          },
+          {
+            "exampleFr": "je : partais\ntu : partais\nil, elle ou on : partait\nnous : partions\nvous : partiez\nils ou elles : partaient",
+            "explanationFr": "Les six terminaisons sont -ais, -ais, -ait, -ions, -iez et -aient. Observe les lettres écrites : plusieurs formes se ressemblent à l’oral."
+          },
+          {
+            "exampleFr": "nous partions ; vous partiez",
+            "explanationFr": "Avec nous et vous, garde la base part- et ajoute -ions ou -iez en entier. N’oublie pas le i de la terminaison."
+          }
+        ],
+        "takeawayFr": "Pour partir, pars de nous partons, retire -ons et ajoute la terminaison de l’imparfait correspondant au sujet.",
+        "boundaryFr": "Cette leçon concerne partir à l’imparfait. Elle ne suffit pas pour choisir entre imparfait et passé composé dans un récit, ni pour connaître les autres temps de ce verbe.",
+        "practice": [
+          {
+            "id": "guided:imparfait:partir:1",
+            "promptFr": "Le récit est au passé. Complète avec partir à l’imparfait. Écris seulement le verbe : Je ___ après le déjeuner.",
+            "answerFr": "partais",
+            "hintFr": "Avec je, ajoute -ais à la base part-.",
+            "explanationFr": "Je partais après le déjeuner. La base part- et la terminaison -ais donnent partais."
+          },
+          {
+            "id": "guided:imparfait:partir:2",
+            "promptFr": "Le récit est au passé. Complète avec partir à l’imparfait. Écris seulement le verbe : Tu ___ en randonnée.",
+            "answerFr": "partais",
+            "hintFr": "Avec tu, ajoute -ais à la base part-.",
+            "explanationFr": "Tu partais en randonnée. La base part- et la terminaison -ais donnent partais."
+          },
+          {
+            "id": "guided:imparfait:partir:3",
+            "promptFr": "Le récit est au passé. Complète avec partir à l’imparfait. Écris seulement le verbe : Elle ___ avec sa tante.",
+            "answerFr": "partait",
+            "hintFr": "Avec il, elle ou on, ajoute -ait à la base part-.",
+            "explanationFr": "Elle partait avec sa tante. La base part- et la terminaison -ait donnent partait."
+          },
+          {
+            "id": "guided:imparfait:partir:4",
+            "promptFr": "Le récit est au passé. Complète avec partir à l’imparfait. Écris seulement le verbe : Nous ___ dans dix minutes.",
+            "answerFr": "partions",
+            "hintFr": "Avec nous, ajoute -ions à la base part-.",
+            "explanationFr": "Nous partions dans dix minutes. La base part- et la terminaison -ions donnent partions."
+          },
+          {
+            "id": "guided:imparfait:partir:5",
+            "promptFr": "Le récit est au passé. Complète avec partir à l’imparfait. Écris seulement le verbe : Vous ___ par cette sortie.",
+            "answerFr": "partiez",
+            "hintFr": "Avec vous, ajoute -iez à la base part-.",
+            "explanationFr": "Vous partiez par cette sortie. La base part- et la terminaison -iez donnent partiez."
+          },
+          {
+            "id": "guided:imparfait:partir:6",
+            "promptFr": "Le récit est au passé. Complète avec partir à l’imparfait. Écris seulement le verbe : Ils ___ ensemble.",
+            "answerFr": "partaient",
+            "hintFr": "Avec ils ou elles, ajoute -aient à la base part-.",
+            "explanationFr": "Ils partaient ensemble. La base part- et la terminaison -aient donnent partaient."
+          }
+        ],
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "partir",
+              "form": "partir"
+            }
+          ],
+          "sentences": [
+            "Je pars après le déjeuner.\nJe partais après le déjeuner.",
+            "nous partons → part- + -ais → partais",
+            "je : partais\ntu : partais\nil, elle ou on : partait\nnous : partions\nvous : partiez\nils ou elles : partaient",
+            "nous partions ; vous partiez",
+            "Je partais après le déjeuner.",
+            "Tu partais en randonnée.",
+            "Elle partait avec sa tante.",
+            "Nous partions dans dix minutes.",
+            "Vous partiez par cette sortie.",
+            "Ils partaient ensemble."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:imparfait:sortir",
+      "contentChecksum": "sha256:1912fa6fa96198fc870c21dad8839d7f4c74d37db1c5035c75eaa0d9f064d470",
+      "skillId": "produire_imparfait::writing-controlled-production::verb:sortir",
+      "nodeKey": "produire_imparfait",
+      "facetKey": "produire_imparfait::verb:sortir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "produire_present_indicatif::writing-controlled-production::verb:sortir",
+        "reconnaitre_imparfait::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:045d142b4b52045ebfe2edb206350d097ff4a14dfce095ae94733da84aa3a45c",
+        "sentence:sha256:20f357548d4184b02fdb02498ca77f481fbc291f4340d52f172eff0a76feb87d",
+        "sentence:sha256:3fe6278359677535d0f6aa6e0c51c40a0c92e63808b79d73bea6e4f32f8f74af",
+        "sentence:sha256:7741c1ed27c9124fcc0f6a8128d422ba8c5d7066c6fd14ca9d44c9e714840ffe",
+        "sentence:sha256:8b99c98d97de5929ec3d5f665fa224ce67e8202c6699d157c946739d2be97671",
+        "sentence:sha256:8d0dd71989e43f2c7850690f0cb9394cf84ae84852544ac6379d15a0793456f3",
+        "sentence:sha256:90d124fc799c89ac6b74bd9c5aa1aae560bc4383cb5cb871b8a506bdcfdd443e",
+        "sentence:sha256:ba4456dba33fb22f5c4bd89d90415876d3b62644db467b5a404e2311b766f0b8",
+        "sentence:sha256:d961128dc32a30db958254a6c2ebc6d05f49f5e79168ac68a7aa7925f3b45424",
+        "sentence:sha256:f8e2abc2770057d6f6d328c3a9cb7b9a92a7d29644311934d582167c76ae9aa8",
+        "word:sha256:fa2d47f055148af90afa02fbeeca752cd135f6694e785747598c6f3987265454"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:imparfait:sortir",
+        "nodeKey": "produire_imparfait",
+        "facetKey": "produire_imparfait::verb:sortir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire sortir à l’imparfait",
+        "learnerQuestionFr": "Comment retrouver les formes de sortir à l’imparfait selon le sujet ?",
+        "steps": [
+          {
+            "exampleFr": "Je sors de la classe.\nJe sortais de la classe.",
+            "explanationFr": "Le sujet et le verbe sont les mêmes, mais la forme change. Dans la seconde phrase, sortais est à l’imparfait. Ce temps permet notamment de raconter une habitude ou une situation dans le passé."
+          },
+          {
+            "exampleFr": "nous sortons → sort- + -ais → sortais",
+            "explanationFr": "Pars de la forme avec nous au présent : sortons. Retire -ons. Le morceau qui reste, sort-, est la base appelée radical. Ajoute ensuite la terminaison de l’imparfait."
+          },
+          {
+            "exampleFr": "je : sortais\ntu : sortais\nil, elle ou on : sortait\nnous : sortions\nvous : sortiez\nils ou elles : sortaient",
+            "explanationFr": "Les six terminaisons sont -ais, -ais, -ait, -ions, -iez et -aient. Observe les lettres écrites : plusieurs formes se ressemblent à l’oral."
+          },
+          {
+            "exampleFr": "nous sortions ; vous sortiez",
+            "explanationFr": "Avec nous et vous, garde la base sort- et ajoute -ions ou -iez en entier. N’oublie pas le i de la terminaison."
+          }
+        ],
+        "takeawayFr": "Pour sortir, pars de nous sortons, retire -ons et ajoute la terminaison de l’imparfait correspondant au sujet.",
+        "boundaryFr": "Cette leçon concerne sortir à l’imparfait. Elle ne suffit pas pour choisir entre imparfait et passé composé dans un récit, ni pour connaître les autres temps de ce verbe.",
+        "practice": [
+          {
+            "id": "guided:imparfait:sortir:1",
+            "promptFr": "Le récit est au passé. Complète avec sortir à l’imparfait. Écris seulement le verbe : Je ___ de la classe.",
+            "answerFr": "sortais",
+            "hintFr": "Avec je, ajoute -ais à la base sort-.",
+            "explanationFr": "Je sortais de la classe. La base sort- et la terminaison -ais donnent sortais."
+          },
+          {
+            "id": "guided:imparfait:sortir:2",
+            "promptFr": "Le récit est au passé. Complète avec sortir à l’imparfait. Écris seulement le verbe : Tu ___ une feuille de ton sac.",
+            "answerFr": "sortais",
+            "hintFr": "Avec tu, ajoute -ais à la base sort-.",
+            "explanationFr": "Tu sortais une feuille de ton sac. La base sort- et la terminaison -ais donnent sortais."
+          },
+          {
+            "id": "guided:imparfait:sortir:3",
+            "promptFr": "Le récit est au passé. Complète avec sortir à l’imparfait. Écris seulement le verbe : On ___ dans la cour.",
+            "answerFr": "sortait",
+            "hintFr": "Avec il, elle ou on, ajoute -ait à la base sort-.",
+            "explanationFr": "On sortait dans la cour. La base sort- et la terminaison -ait donnent sortait."
+          },
+          {
+            "id": "guided:imparfait:sortir:4",
+            "promptFr": "Le récit est au passé. Complète avec sortir à l’imparfait. Écris seulement le verbe : Nous ___ les chaises.",
+            "answerFr": "sortions",
+            "hintFr": "Avec nous, ajoute -ions à la base sort-.",
+            "explanationFr": "Nous sortions les chaises. La base sort- et la terminaison -ions donnent sortions."
+          },
+          {
+            "id": "guided:imparfait:sortir:5",
+            "promptFr": "Le récit est au passé. Complète avec sortir à l’imparfait. Écris seulement le verbe : Vous ___ après le signal.",
+            "answerFr": "sortiez",
+            "hintFr": "Avec vous, ajoute -iez à la base sort-.",
+            "explanationFr": "Vous sortiez après le signal. La base sort- et la terminaison -iez donnent sortiez."
+          },
+          {
+            "id": "guided:imparfait:sortir:6",
+            "promptFr": "Le récit est au passé. Complète avec sortir à l’imparfait. Écris seulement le verbe : Elles ___ du cinéma.",
+            "answerFr": "sortaient",
+            "hintFr": "Avec ils ou elles, ajoute -aient à la base sort-.",
+            "explanationFr": "Elles sortaient du cinéma. La base sort- et la terminaison -aient donnent sortaient."
+          }
+        ],
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "sortir",
+              "form": "sortir"
+            }
+          ],
+          "sentences": [
+            "Je sors de la classe.\nJe sortais de la classe.",
+            "nous sortons → sort- + -ais → sortais",
+            "je : sortais\ntu : sortais\nil, elle ou on : sortait\nnous : sortions\nvous : sortiez\nils ou elles : sortaient",
+            "nous sortions ; vous sortiez",
+            "Je sortais de la classe.",
+            "Tu sortais une feuille de ton sac.",
+            "On sortait dans la cour.",
+            "Nous sortions les chaises.",
+            "Vous sortiez après le signal.",
+            "Elles sortaient du cinéma."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:imparfait:dire",
+      "contentChecksum": "sha256:7f941b9e85537976d1110b5b907731dfb98600e60c33ec51f1b0b0106e580c1c",
+      "skillId": "produire_imparfait::writing-controlled-production::verb:dire",
+      "nodeKey": "produire_imparfait",
+      "facetKey": "produire_imparfait::verb:dire",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "produire_present_indicatif::writing-controlled-production::verb:dire",
+        "reconnaitre_imparfait::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:006bad45a1728eaa6cd70fd8497b61a23e7c2e1f3bb71fa6b8082b4d76c076be",
+        "sentence:sha256:1a482e868de926aad461c787d8efb5fbf16e5ffe2cd49b130439f24675c2cd61",
+        "sentence:sha256:214b520f77440c1ffb6316f1c7732ebdf5f587e10b060592c98f5bc0ff026be1",
+        "sentence:sha256:28d1cd9e992cb78a32e1eb68f92e7586f3ab02f5caba7abad24ac89a6ca9e612",
+        "sentence:sha256:63d7b52cdf5cd2a2b828a491fd524646b04f4853ab752cbd1a251254303fd0ee",
+        "sentence:sha256:6f27ca89be70ca8a9e56b73b5a0bc456651d2a28ffe607b62bdf113252fd1414",
+        "sentence:sha256:8219be04ac572b0e551b8a95b60a4a07fea0f1ccffd80e4e1b796a8b89efd4c8",
+        "sentence:sha256:85f492bbf4e1c9630d6c0c3cb7dbb15acde9c8f7c6c49c8f0d0cd58ac83da5de",
+        "sentence:sha256:9b54ed8c1c7bc3a04bcfbe8734508c9c901501b5981903ccd23e74522d299365",
+        "sentence:sha256:ffa3b9077bb1b9da3546fba14ebc54416d4d37ec322fa81c46f6cb6eef2900a4",
+        "word:sha256:ed7e2402cd873904858fd72b0d99ff0fbb97d1cdc7e526b5da0980cd64cb8939"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:imparfait:dire",
+        "nodeKey": "produire_imparfait",
+        "facetKey": "produire_imparfait::verb:dire",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire dire à l’imparfait",
+        "learnerQuestionFr": "Comment retrouver les formes de dire à l’imparfait selon le sujet ?",
+        "steps": [
+          {
+            "exampleFr": "Je dis ce que je pense.\nJe disais ce que je pense.",
+            "explanationFr": "Le sujet et le verbe sont les mêmes, mais la forme change. Dans la seconde phrase, disais est à l’imparfait. Ce temps permet notamment de raconter une habitude ou une situation dans le passé."
+          },
+          {
+            "exampleFr": "nous disons → dis- + -ais → disais",
+            "explanationFr": "Pars de la forme avec nous au présent : disons. Retire -ons. Le morceau qui reste, dis-, est la base appelée radical. Ajoute ensuite la terminaison de l’imparfait."
+          },
+          {
+            "exampleFr": "je : disais\ntu : disais\nil, elle ou on : disait\nnous : disions\nvous : disiez\nils ou elles : disaient",
+            "explanationFr": "Les six terminaisons sont -ais, -ais, -ait, -ions, -iez et -aient. Observe les lettres écrites : plusieurs formes se ressemblent à l’oral."
+          },
+          {
+            "exampleFr": "nous disions ; vous disiez",
+            "explanationFr": "Avec nous et vous, garde la base dis- et ajoute -ions ou -iez en entier. N’oublie pas le i de la terminaison."
+          }
+        ],
+        "takeawayFr": "Pour dire, pars de nous disons, retire -ons et ajoute la terminaison de l’imparfait correspondant au sujet.",
+        "boundaryFr": "Cette leçon concerne dire à l’imparfait. Elle ne suffit pas pour choisir entre imparfait et passé composé dans un récit, ni pour connaître les autres temps de ce verbe.",
+        "practice": [
+          {
+            "id": "guided:imparfait:dire:1",
+            "promptFr": "Le récit est au passé. Complète avec dire à l’imparfait. Écris seulement le verbe : Je ___ ce que je pense.",
+            "answerFr": "disais",
+            "hintFr": "Avec je, ajoute -ais à la base dis-.",
+            "explanationFr": "Je disais ce que je pense. La base dis- et la terminaison -ais donnent disais."
+          },
+          {
+            "id": "guided:imparfait:dire:2",
+            "promptFr": "Le récit est au passé. Complète avec dire à l’imparfait. Écris seulement le verbe : Tu ___ bonjour à la voisine.",
+            "answerFr": "disais",
+            "hintFr": "Avec tu, ajoute -ais à la base dis-.",
+            "explanationFr": "Tu disais bonjour à la voisine. La base dis- et la terminaison -ais donnent disais."
+          },
+          {
+            "id": "guided:imparfait:dire:3",
+            "promptFr": "Le récit est au passé. Complète avec dire à l’imparfait. Écris seulement le verbe : Il ___ son prénom.",
+            "answerFr": "disait",
+            "hintFr": "Avec il, elle ou on, ajoute -ait à la base dis-.",
+            "explanationFr": "Il disait son prénom. La base dis- et la terminaison -ait donnent disait."
+          },
+          {
+            "id": "guided:imparfait:dire:4",
+            "promptFr": "Le récit est au passé. Complète avec dire à l’imparfait. Écris seulement le verbe : Nous ___ la vérité.",
+            "answerFr": "disions",
+            "hintFr": "Avec nous, ajoute -ions à la base dis-.",
+            "explanationFr": "Nous disions la vérité. La base dis- et la terminaison -ions donnent disions."
+          },
+          {
+            "id": "guided:imparfait:dire:5",
+            "promptFr": "Le récit est au passé. Complète avec dire à l’imparfait. Écris seulement le verbe : Vous ___ la même chose.",
+            "answerFr": "disiez",
+            "hintFr": "Avec vous, ajoute -iez à la base dis-.",
+            "explanationFr": "Vous disiez la même chose. La base dis- et la terminaison -iez donnent disiez."
+          },
+          {
+            "id": "guided:imparfait:dire:6",
+            "promptFr": "Le récit est au passé. Complète avec dire à l’imparfait. Écris seulement le verbe : Elles ___ quelques mots.",
+            "answerFr": "disaient",
+            "hintFr": "Avec ils ou elles, ajoute -aient à la base dis-.",
+            "explanationFr": "Elles disaient quelques mots. La base dis- et la terminaison -aient donnent disaient."
+          }
+        ],
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "dire",
+              "form": "dire"
+            }
+          ],
+          "sentences": [
+            "Je dis ce que je pense.\nJe disais ce que je pense.",
+            "nous disons → dis- + -ais → disais",
+            "je : disais\ntu : disais\nil, elle ou on : disait\nnous : disions\nvous : disiez\nils ou elles : disaient",
+            "nous disions ; vous disiez",
+            "Je disais ce que je pense.",
+            "Tu disais bonjour à la voisine.",
+            "Il disait son prénom.",
+            "Nous disions la vérité.",
+            "Vous disiez la même chose.",
+            "Elles disaient quelques mots."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:imparfait:voir",
+      "contentChecksum": "sha256:334b2aca5fdae7f833f9fce30eecaddf4a18109ee9546e051e7e704751e3057c",
+      "skillId": "produire_imparfait::writing-controlled-production::verb:voir",
+      "nodeKey": "produire_imparfait",
+      "facetKey": "produire_imparfait::verb:voir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "produire_present_indicatif::writing-controlled-production::verb:voir",
+        "reconnaitre_imparfait::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:7610499d8e6da6e4b7964f7b29b2dd7d7b87925ee42f41a138084fd6493c480d",
+        "sentence:sha256:818c7b291128643ee6006a07df91613e105d625e049c4b515f715236f04debcd",
+        "sentence:sha256:884b7724dde691ac02283152792fd95e312e5236f87c40e13a3bcd31fb80cf94",
+        "sentence:sha256:9d01fbd9f034dd380b5a8a3809cb50fac57d41ed9375a4531ddd8cb2b52319f8",
+        "sentence:sha256:acd3317403cd72e2bd5eaf74cdfc6c514670f2afd32bfe4eec9cd202f843a74f",
+        "sentence:sha256:d5d4581c1baf04ee154c642734a172b66244add99bbe92e77b990f201592b06b",
+        "sentence:sha256:e26dec637f35d5085da130c50207c351093cc7d6fafe818eb62144ed44354f49",
+        "sentence:sha256:e73c3ae9fab7ebfa69a4ea6705f0bad9165932a1bd43e9e4d43db3d131a96e92",
+        "sentence:sha256:e7aa44fbe8008c82f29a2c6d24fb3a00ad7fbbc4ad4b8296c961ca13243a0b6a",
+        "sentence:sha256:fed2bc06a79bc9c25066adec60bdef02ff464ab15eac0a65ac47599ad06c758f",
+        "word:sha256:68b20210fa2d90732194f585ea10184fd5e841c860b83e7a5ed0c0a945ec2463"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:imparfait:voir",
+        "nodeKey": "produire_imparfait",
+        "facetKey": "produire_imparfait::verb:voir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire voir à l’imparfait",
+        "learnerQuestionFr": "Comment retrouver les formes de voir à l’imparfait selon le sujet ?",
+        "steps": [
+          {
+            "exampleFr": "Je vois le panneau.\nJe voyais le panneau.",
+            "explanationFr": "Le sujet et le verbe sont les mêmes, mais la forme change. Dans la seconde phrase, voyais est à l’imparfait. Ce temps permet notamment de raconter une habitude ou une situation dans le passé."
+          },
+          {
+            "exampleFr": "nous voyons → voy- + -ais → voyais",
+            "explanationFr": "Pars de la forme avec nous au présent : voyons. Retire -ons. Le morceau qui reste, voy-, est la base appelée radical. Ajoute ensuite la terminaison de l’imparfait."
+          },
+          {
+            "exampleFr": "je : voyais\ntu : voyais\nil, elle ou on : voyait\nnous : voyions\nvous : voyiez\nils ou elles : voyaient",
+            "explanationFr": "Les six terminaisons sont -ais, -ais, -ait, -ions, -iez et -aient. Observe les lettres écrites : plusieurs formes se ressemblent à l’oral."
+          },
+          {
+            "exampleFr": "nous voyions ; vous voyiez",
+            "explanationFr": "Avec nous et vous, garde la base voy- et ajoute -ions ou -iez en entier. N’oublie pas le i de la terminaison."
+          }
+        ],
+        "takeawayFr": "Pour voir, pars de nous voyons, retire -ons et ajoute la terminaison de l’imparfait correspondant au sujet.",
+        "boundaryFr": "Cette leçon concerne voir à l’imparfait. Elle ne suffit pas pour choisir entre imparfait et passé composé dans un récit, ni pour connaître les autres temps de ce verbe.",
+        "practice": [
+          {
+            "id": "guided:imparfait:voir:1",
+            "promptFr": "Le récit est au passé. Complète avec voir à l’imparfait. Écris seulement le verbe : Je ___ le panneau.",
+            "answerFr": "voyais",
+            "hintFr": "Avec je, ajoute -ais à la base voy-.",
+            "explanationFr": "Je voyais le panneau. La base voy- et la terminaison -ais donnent voyais."
+          },
+          {
+            "id": "guided:imparfait:voir:2",
+            "promptFr": "Le récit est au passé. Complète avec voir à l’imparfait. Écris seulement le verbe : Tu ___ une étoile.",
+            "answerFr": "voyais",
+            "hintFr": "Avec tu, ajoute -ais à la base voy-.",
+            "explanationFr": "Tu voyais une étoile. La base voy- et la terminaison -ais donnent voyais."
+          },
+          {
+            "id": "guided:imparfait:voir:3",
+            "promptFr": "Le récit est au passé. Complète avec voir à l’imparfait. Écris seulement le verbe : On ___ la rivière.",
+            "answerFr": "voyait",
+            "hintFr": "Avec il, elle ou on, ajoute -ait à la base voy-.",
+            "explanationFr": "On voyait la rivière. La base voy- et la terminaison -ait donnent voyait."
+          },
+          {
+            "id": "guided:imparfait:voir:4",
+            "promptFr": "Le récit est au passé. Complète avec voir à l’imparfait. Écris seulement le verbe : Nous ___ les joueurs de près.",
+            "answerFr": "voyions",
+            "hintFr": "Avec nous, ajoute -ions à la base voy-.",
+            "explanationFr": "Nous voyions les joueurs de près. La base voy- et la terminaison -ions donnent voyions."
+          },
+          {
+            "id": "guided:imparfait:voir:5",
+            "promptFr": "Le récit est au passé. Complète avec voir à l’imparfait. Écris seulement le verbe : Vous ___ le dessin en entier.",
+            "answerFr": "voyiez",
+            "hintFr": "Avec vous, ajoute -iez à la base voy-.",
+            "explanationFr": "Vous voyiez le dessin en entier. La base voy- et la terminaison -iez donnent voyiez."
+          },
+          {
+            "id": "guided:imparfait:voir:6",
+            "promptFr": "Le récit est au passé. Complète avec voir à l’imparfait. Écris seulement le verbe : Ils ___ leurs amis arriver.",
+            "answerFr": "voyaient",
+            "hintFr": "Avec ils ou elles, ajoute -aient à la base voy-.",
+            "explanationFr": "Ils voyaient leurs amis arriver. La base voy- et la terminaison -aient donnent voyaient."
+          }
+        ],
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "voir",
+              "form": "voir"
+            }
+          ],
+          "sentences": [
+            "Je vois le panneau.\nJe voyais le panneau.",
+            "nous voyons → voy- + -ais → voyais",
+            "je : voyais\ntu : voyais\nil, elle ou on : voyait\nnous : voyions\nvous : voyiez\nils ou elles : voyaient",
+            "nous voyions ; vous voyiez",
+            "Je voyais le panneau.",
+            "Tu voyais une étoile.",
+            "On voyait la rivière.",
+            "Nous voyions les joueurs de près.",
+            "Vous voyiez le dessin en entier.",
+            "Ils voyaient leurs amis arriver."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:imparfait:pouvoir",
+      "contentChecksum": "sha256:90bdccadc2f6d5fae81f87172e7b6e4736bc579ea42febe43e5306174d307757",
+      "skillId": "produire_imparfait::writing-controlled-production::verb:pouvoir",
+      "nodeKey": "produire_imparfait",
+      "facetKey": "produire_imparfait::verb:pouvoir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "produire_present_indicatif::writing-controlled-production::verb:pouvoir",
+        "reconnaitre_imparfait::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:16f0381ec2056ac986fc457c6d676834c84328be03ebcde20710b6a6f661cb93",
+        "sentence:sha256:3b17cd2336f7d57c855f1740d761d19d36cd51eb082b1ba61eb9919c25c5549e",
+        "sentence:sha256:517b58571f3a25ad2a0178cbf86e1d3ae2097bcfaadd21c3256ab5143fc50cea",
+        "sentence:sha256:64fd57c007a4e06188e920714d3683a613c2b56ac2f24c9807d9762296df3ae6",
+        "sentence:sha256:6a84241d2c9a456b05e1c5ad48d8ee5ad5dc4f66b3e1cc3a1bd747619a5ed963",
+        "sentence:sha256:7147551eddd3607d85e40999abe79f0ab3abb807214cea66cd6fca4b4d4e2ca4",
+        "sentence:sha256:8de4360316b7b7425e07df6630e2c761ce0c33dc6680f5427cb9cf3ad6ddd886",
+        "sentence:sha256:ba4ff46bc407fe32de09f5f5ad12b3c32ac0002a06d732c90bdd39e0f130a20e",
+        "sentence:sha256:bab5861f16c59fc3822aa69d028fc47bfa6fff17f3187ad53ba8b24b417306a3",
+        "sentence:sha256:dc614518d891c44fd407c769bba1d2086015ec8f9754694587491990a1694a3a",
+        "word:sha256:e192d5dcdfc88be9dd57a079209e6cc178dc4c47d093e153efbdcd8cbf7aa977"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:imparfait:pouvoir",
+        "nodeKey": "produire_imparfait",
+        "facetKey": "produire_imparfait::verb:pouvoir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire pouvoir à l’imparfait",
+        "learnerQuestionFr": "Comment retrouver les formes de pouvoir à l’imparfait selon le sujet ?",
+        "steps": [
+          {
+            "exampleFr": "Je peux ouvrir la fenêtre.\nJe pouvais ouvrir la fenêtre.",
+            "explanationFr": "Le sujet et le verbe sont les mêmes, mais la forme change. Dans la seconde phrase, pouvais est à l’imparfait. Ce temps permet notamment de raconter une habitude ou une situation dans le passé."
+          },
+          {
+            "exampleFr": "nous pouvons → pouv- + -ais → pouvais",
+            "explanationFr": "Pars de la forme avec nous au présent : pouvons. Retire -ons. Le morceau qui reste, pouv-, est la base appelée radical. Ajoute ensuite la terminaison de l’imparfait."
+          },
+          {
+            "exampleFr": "je : pouvais\ntu : pouvais\nil, elle ou on : pouvait\nnous : pouvions\nvous : pouviez\nils ou elles : pouvaient",
+            "explanationFr": "Les six terminaisons sont -ais, -ais, -ait, -ions, -iez et -aient. Observe les lettres écrites : plusieurs formes se ressemblent à l’oral."
+          },
+          {
+            "exampleFr": "nous pouvions ; vous pouviez",
+            "explanationFr": "Avec nous et vous, garde la base pouv- et ajoute -ions ou -iez en entier. N’oublie pas le i de la terminaison."
+          }
+        ],
+        "takeawayFr": "Pour pouvoir, pars de nous pouvons, retire -ons et ajoute la terminaison de l’imparfait correspondant au sujet.",
+        "boundaryFr": "Cette leçon concerne pouvoir à l’imparfait. Elle ne suffit pas pour choisir entre imparfait et passé composé dans un récit, ni pour connaître les autres temps de ce verbe.",
+        "practice": [
+          {
+            "id": "guided:imparfait:pouvoir:1",
+            "promptFr": "Le récit est au passé. Complète avec pouvoir à l’imparfait. Écris seulement le verbe : Je ___ ouvrir la fenêtre.",
+            "answerFr": "pouvais",
+            "hintFr": "Avec je, ajoute -ais à la base pouv-.",
+            "explanationFr": "Je pouvais ouvrir la fenêtre. La base pouv- et la terminaison -ais donnent pouvais."
+          },
+          {
+            "id": "guided:imparfait:pouvoir:2",
+            "promptFr": "Le récit est au passé. Complète avec pouvoir à l’imparfait. Écris seulement le verbe : Tu ___ choisir une couleur.",
+            "answerFr": "pouvais",
+            "hintFr": "Avec tu, ajoute -ais à la base pouv-.",
+            "explanationFr": "Tu pouvais choisir une couleur. La base pouv- et la terminaison -ais donnent pouvais."
+          },
+          {
+            "id": "guided:imparfait:pouvoir:3",
+            "promptFr": "Le récit est au passé. Complète avec pouvoir à l’imparfait. Écris seulement le verbe : Elle ___ nous aider.",
+            "answerFr": "pouvait",
+            "hintFr": "Avec il, elle ou on, ajoute -ait à la base pouv-.",
+            "explanationFr": "Elle pouvait nous aider. La base pouv- et la terminaison -ait donnent pouvait."
+          },
+          {
+            "id": "guided:imparfait:pouvoir:4",
+            "promptFr": "Le récit est au passé. Complète avec pouvoir à l’imparfait. Écris seulement le verbe : Nous ___ rester ici.",
+            "answerFr": "pouvions",
+            "hintFr": "Avec nous, ajoute -ions à la base pouv-.",
+            "explanationFr": "Nous pouvions rester ici. La base pouv- et la terminaison -ions donnent pouvions."
+          },
+          {
+            "id": "guided:imparfait:pouvoir:5",
+            "promptFr": "Le récit est au passé. Complète avec pouvoir à l’imparfait. Écris seulement le verbe : Vous ___ recommencer.",
+            "answerFr": "pouviez",
+            "hintFr": "Avec vous, ajoute -iez à la base pouv-.",
+            "explanationFr": "Vous pouviez recommencer. La base pouv- et la terminaison -iez donnent pouviez."
+          },
+          {
+            "id": "guided:imparfait:pouvoir:6",
+            "promptFr": "Le récit est au passé. Complète avec pouvoir à l’imparfait. Écris seulement le verbe : Ils ___ entrer maintenant.",
+            "answerFr": "pouvaient",
+            "hintFr": "Avec ils ou elles, ajoute -aient à la base pouv-.",
+            "explanationFr": "Ils pouvaient entrer maintenant. La base pouv- et la terminaison -aient donnent pouvaient."
+          }
+        ],
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "pouvoir",
+              "form": "pouvoir"
+            }
+          ],
+          "sentences": [
+            "Je peux ouvrir la fenêtre.\nJe pouvais ouvrir la fenêtre.",
+            "nous pouvons → pouv- + -ais → pouvais",
+            "je : pouvais\ntu : pouvais\nil, elle ou on : pouvait\nnous : pouvions\nvous : pouviez\nils ou elles : pouvaient",
+            "nous pouvions ; vous pouviez",
+            "Je pouvais ouvrir la fenêtre.",
+            "Tu pouvais choisir une couleur.",
+            "Elle pouvait nous aider.",
+            "Nous pouvions rester ici.",
+            "Vous pouviez recommencer.",
+            "Ils pouvaient entrer maintenant."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:imparfait:vouloir",
+      "contentChecksum": "sha256:6e6a3a24fc8d0f9e3bbab94e167d7af6172be251b1d4f2fa1d5cc070e9e7cf3b",
+      "skillId": "produire_imparfait::writing-controlled-production::verb:vouloir",
+      "nodeKey": "produire_imparfait",
+      "facetKey": "produire_imparfait::verb:vouloir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "produire_present_indicatif::writing-controlled-production::verb:vouloir",
+        "reconnaitre_imparfait::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:0bdb8863bc07ec904bdcac19ce69bab51ad0bda55a57f942fec5004cbd2efdaa",
+        "sentence:sha256:2d200805974d4f06abcb22852a54483d3f3438a1640bb47efbf1ef7afebc8af6",
+        "sentence:sha256:348d0a1a9bbe7c0eea81117b7f09610985233ca1e28f3b8e7fe052d9479415af",
+        "sentence:sha256:66dace02e16aad8f8a140bb1df255bd8178feacbf47b06cb5baa721e386fe41d",
+        "sentence:sha256:75c98b4d33022cfa768be3191715aa87502953871f76db54494538fdf3503edf",
+        "sentence:sha256:7faa41560266ce4f9a4db1f44258b2c12576a825117c82cf6ba5e149c7b26b29",
+        "sentence:sha256:ae4c531410fcb34533a153875a14e485d39ccbbdc6003754a16f6bf8b4cb2dc2",
+        "sentence:sha256:bbf1811e3eac745d10f0262a8d772f18086389dbbf005275b2054a57fd00ef55",
+        "sentence:sha256:c4771a5acebcdc01a3f678d3f72bb0a9df5dd30f8e84bec12b17d0f0eae92783",
+        "sentence:sha256:f199c025e087e898ebc675dc5e8ea02e14dbfa663acdf424de4b6f595260ac5f",
+        "word:sha256:489914beff2d4575266911e79fd2e447beebf86608412d02eeea869cb533a078"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:imparfait:vouloir",
+        "nodeKey": "produire_imparfait",
+        "facetKey": "produire_imparfait::verb:vouloir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire vouloir à l’imparfait",
+        "learnerQuestionFr": "Comment retrouver les formes de vouloir à l’imparfait selon le sujet ?",
+        "steps": [
+          {
+            "exampleFr": "Je veux lire ce manga.\nJe voulais lire ce manga.",
+            "explanationFr": "Le sujet et le verbe sont les mêmes, mais la forme change. Dans la seconde phrase, voulais est à l’imparfait. Ce temps permet notamment de raconter une habitude ou une situation dans le passé."
+          },
+          {
+            "exampleFr": "nous voulons → voul- + -ais → voulais",
+            "explanationFr": "Pars de la forme avec nous au présent : voulons. Retire -ons. Le morceau qui reste, voul-, est la base appelée radical. Ajoute ensuite la terminaison de l’imparfait."
+          },
+          {
+            "exampleFr": "je : voulais\ntu : voulais\nil, elle ou on : voulait\nnous : voulions\nvous : vouliez\nils ou elles : voulaient",
+            "explanationFr": "Les six terminaisons sont -ais, -ais, -ait, -ions, -iez et -aient. Observe les lettres écrites : plusieurs formes se ressemblent à l’oral."
+          },
+          {
+            "exampleFr": "nous voulions ; vous vouliez",
+            "explanationFr": "Avec nous et vous, garde la base voul- et ajoute -ions ou -iez en entier. N’oublie pas le i de la terminaison."
+          }
+        ],
+        "takeawayFr": "Pour vouloir, pars de nous voulons, retire -ons et ajoute la terminaison de l’imparfait correspondant au sujet.",
+        "boundaryFr": "Cette leçon concerne vouloir à l’imparfait. Elle ne suffit pas pour choisir entre imparfait et passé composé dans un récit, ni pour connaître les autres temps de ce verbe.",
+        "practice": [
+          {
+            "id": "guided:imparfait:vouloir:1",
+            "promptFr": "Le récit est au passé. Complète avec vouloir à l’imparfait. Écris seulement le verbe : Je ___ lire ce manga.",
+            "answerFr": "voulais",
+            "hintFr": "Avec je, ajoute -ais à la base voul-.",
+            "explanationFr": "Je voulais lire ce manga. La base voul- et la terminaison -ais donnent voulais."
+          },
+          {
+            "id": "guided:imparfait:vouloir:2",
+            "promptFr": "Le récit est au passé. Complète avec vouloir à l’imparfait. Écris seulement le verbe : Tu ___ préparer l’affiche.",
+            "answerFr": "voulais",
+            "hintFr": "Avec tu, ajoute -ais à la base voul-.",
+            "explanationFr": "Tu voulais préparer l’affiche. La base voul- et la terminaison -ais donnent voulais."
+          },
+          {
+            "id": "guided:imparfait:vouloir:3",
+            "promptFr": "Le récit est au passé. Complète avec vouloir à l’imparfait. Écris seulement le verbe : On ___ essayer autrement.",
+            "answerFr": "voulait",
+            "hintFr": "Avec il, elle ou on, ajoute -ait à la base voul-.",
+            "explanationFr": "On voulait essayer autrement. La base voul- et la terminaison -ait donnent voulait."
+          },
+          {
+            "id": "guided:imparfait:vouloir:4",
+            "promptFr": "Le récit est au passé. Complète avec vouloir à l’imparfait. Écris seulement le verbe : Nous ___ comprendre la règle.",
+            "answerFr": "voulions",
+            "hintFr": "Avec nous, ajoute -ions à la base voul-.",
+            "explanationFr": "Nous voulions comprendre la règle. La base voul- et la terminaison -ions donnent voulions."
+          },
+          {
+            "id": "guided:imparfait:vouloir:5",
+            "promptFr": "Le récit est au passé. Complète avec vouloir à l’imparfait. Écris seulement le verbe : Vous ___ rejoindre le groupe.",
+            "answerFr": "vouliez",
+            "hintFr": "Avec vous, ajoute -iez à la base voul-.",
+            "explanationFr": "Vous vouliez rejoindre le groupe. La base voul- et la terminaison -iez donnent vouliez."
+          },
+          {
+            "id": "guided:imparfait:vouloir:6",
+            "promptFr": "Le récit est au passé. Complète avec vouloir à l’imparfait. Écris seulement le verbe : Elles ___ organiser un tournoi.",
+            "answerFr": "voulaient",
+            "hintFr": "Avec ils ou elles, ajoute -aient à la base voul-.",
+            "explanationFr": "Elles voulaient organiser un tournoi. La base voul- et la terminaison -aient donnent voulaient."
+          }
+        ],
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "vouloir",
+              "form": "vouloir"
+            }
+          ],
+          "sentences": [
+            "Je veux lire ce manga.\nJe voulais lire ce manga.",
+            "nous voulons → voul- + -ais → voulais",
+            "je : voulais\ntu : voulais\nil, elle ou on : voulait\nnous : voulions\nvous : vouliez\nils ou elles : voulaient",
+            "nous voulions ; vous vouliez",
+            "Je voulais lire ce manga.",
+            "Tu voulais préparer l’affiche.",
+            "On voulait essayer autrement.",
+            "Nous voulions comprendre la règle.",
+            "Vous vouliez rejoindre le groupe.",
+            "Elles voulaient organiser un tournoi."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:imparfait:savoir",
+      "contentChecksum": "sha256:ec05ea4bd49fb3d0c168320577eec33691df87cd4ad11e74228516a633bf6a45",
+      "skillId": "produire_imparfait::writing-controlled-production::verb:savoir",
+      "nodeKey": "produire_imparfait",
+      "facetKey": "produire_imparfait::verb:savoir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "produire_present_indicatif::writing-controlled-production::verb:savoir",
+        "reconnaitre_imparfait::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:1b9f883271ba4a8bec7a5038941fdd40674739553a74f9edab53300978a3ef06",
+        "sentence:sha256:27d910bccd64f10ac3acde66b7b959c9f50bc6a0f762240a6f553753dd63920a",
+        "sentence:sha256:4d6a2c362b5839ba7f219f8c09edee6f900d24840487bc843829e57b3749bb83",
+        "sentence:sha256:5ff1eac4f80aedcca85edbbf89c7d2d0df78ba9fdda823fb825b2f1d10ed636a",
+        "sentence:sha256:8c4037b598a35e0740296b2e35343923c4c9cb2297ce463b24dc0a5eec931a7a",
+        "sentence:sha256:9f9a916ba7876334251c53f02eacb04137c732b3f431af653e7a88b1938246aa",
+        "sentence:sha256:a04171c67ce4612df09a424b219bf5dd531019418b05d90d6c1f35a18e1ebcc1",
+        "sentence:sha256:d0bb7b543eb11d30ba68abb03a2ecb197af922bdd50559ead4d9689b7e620a50",
+        "sentence:sha256:dd721a9e79a011b7d7f3989d17f0d264330854d119427c513dd82b979b85e0b3",
+        "sentence:sha256:eec815bf959766065a9d45f2d8f861de06184ed343b874f5ddaea708727cd286",
+        "word:sha256:0233d19d22b3a2fad3f6618b95d2fc1fed0cd027446994a4e0642b4939300291"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:imparfait:savoir",
+        "nodeKey": "produire_imparfait",
+        "facetKey": "produire_imparfait::verb:savoir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire savoir à l’imparfait",
+        "learnerQuestionFr": "Comment retrouver les formes de savoir à l’imparfait selon le sujet ?",
+        "steps": [
+          {
+            "exampleFr": "Je sais où se trouve la salle.\nJe savais où se trouve la salle.",
+            "explanationFr": "Le sujet et le verbe sont les mêmes, mais la forme change. Dans la seconde phrase, savais est à l’imparfait. Ce temps permet notamment de raconter une habitude ou une situation dans le passé."
+          },
+          {
+            "exampleFr": "nous savons → sav- + -ais → savais",
+            "explanationFr": "Pars de la forme avec nous au présent : savons. Retire -ons. Le morceau qui reste, sav-, est la base appelée radical. Ajoute ensuite la terminaison de l’imparfait."
+          },
+          {
+            "exampleFr": "je : savais\ntu : savais\nil, elle ou on : savait\nnous : savions\nvous : saviez\nils ou elles : savaient",
+            "explanationFr": "Les six terminaisons sont -ais, -ais, -ait, -ions, -iez et -aient. Observe les lettres écrites : plusieurs formes se ressemblent à l’oral."
+          },
+          {
+            "exampleFr": "nous savions ; vous saviez",
+            "explanationFr": "Avec nous et vous, garde la base sav- et ajoute -ions ou -iez en entier. N’oublie pas le i de la terminaison."
+          }
+        ],
+        "takeawayFr": "Pour savoir, pars de nous savons, retire -ons et ajoute la terminaison de l’imparfait correspondant au sujet.",
+        "boundaryFr": "Cette leçon concerne savoir à l’imparfait. Elle ne suffit pas pour choisir entre imparfait et passé composé dans un récit, ni pour connaître les autres temps de ce verbe.",
+        "practice": [
+          {
+            "id": "guided:imparfait:savoir:1",
+            "promptFr": "Le récit est au passé. Complète avec savoir à l’imparfait. Écris seulement le verbe : Je ___ où se trouve la salle.",
+            "answerFr": "savais",
+            "hintFr": "Avec je, ajoute -ais à la base sav-.",
+            "explanationFr": "Je savais où se trouve la salle. La base sav- et la terminaison -ais donnent savais."
+          },
+          {
+            "id": "guided:imparfait:savoir:2",
+            "promptFr": "Le récit est au passé. Complète avec savoir à l’imparfait. Écris seulement le verbe : Tu ___ réparer ce vélo.",
+            "answerFr": "savais",
+            "hintFr": "Avec tu, ajoute -ais à la base sav-.",
+            "explanationFr": "Tu savais réparer ce vélo. La base sav- et la terminaison -ais donnent savais."
+          },
+          {
+            "id": "guided:imparfait:savoir:3",
+            "promptFr": "Le récit est au passé. Complète avec savoir à l’imparfait. Écris seulement le verbe : Il ___ son texte par cœur.",
+            "answerFr": "savait",
+            "hintFr": "Avec il, elle ou on, ajoute -ait à la base sav-.",
+            "explanationFr": "Il savait son texte par cœur. La base sav- et la terminaison -ait donnent savait."
+          },
+          {
+            "id": "guided:imparfait:savoir:4",
+            "promptFr": "Le récit est au passé. Complète avec savoir à l’imparfait. Écris seulement le verbe : Nous ___ utiliser cette application.",
+            "answerFr": "savions",
+            "hintFr": "Avec nous, ajoute -ions à la base sav-.",
+            "explanationFr": "Nous savions utiliser cette application. La base sav- et la terminaison -ions donnent savions."
+          },
+          {
+            "id": "guided:imparfait:savoir:5",
+            "promptFr": "Le récit est au passé. Complète avec savoir à l’imparfait. Écris seulement le verbe : Vous ___ comment commencer.",
+            "answerFr": "saviez",
+            "hintFr": "Avec vous, ajoute -iez à la base sav-.",
+            "explanationFr": "Vous saviez comment commencer. La base sav- et la terminaison -iez donnent saviez."
+          },
+          {
+            "id": "guided:imparfait:savoir:6",
+            "promptFr": "Le récit est au passé. Complète avec savoir à l’imparfait. Écris seulement le verbe : Elles ___ jouer aux échecs.",
+            "answerFr": "savaient",
+            "hintFr": "Avec ils ou elles, ajoute -aient à la base sav-.",
+            "explanationFr": "Elles savaient jouer aux échecs. La base sav- et la terminaison -aient donnent savaient."
+          }
+        ],
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "savoir",
+              "form": "savoir"
+            }
+          ],
+          "sentences": [
+            "Je sais où se trouve la salle.\nJe savais où se trouve la salle.",
+            "nous savons → sav- + -ais → savais",
+            "je : savais\ntu : savais\nil, elle ou on : savait\nnous : savions\nvous : saviez\nils ou elles : savaient",
+            "nous savions ; vous saviez",
+            "Je savais où se trouve la salle.",
+            "Tu savais réparer ce vélo.",
+            "Il savait son texte par cœur.",
+            "Nous savions utiliser cette application.",
+            "Vous saviez comment commencer.",
+            "Elles savaient jouer aux échecs."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:imparfait:devoir",
+      "contentChecksum": "sha256:e0e3577bd92717e5c73db53c5e42435122ae8b5e7b7f0c95a17db82be0f903a2",
+      "skillId": "produire_imparfait::writing-controlled-production::verb:devoir",
+      "nodeKey": "produire_imparfait",
+      "facetKey": "produire_imparfait::verb:devoir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "produire_present_indicatif::writing-controlled-production::verb:devoir",
+        "reconnaitre_imparfait::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:176c54fcacbad302b7f9635626bca6e13e0c7c198ab58db5be6dfadf0e4e39e1",
+        "sentence:sha256:3d8da44b4447047859b628411aeaaef5c90b149b0ba1b76f4571293009a45f61",
+        "sentence:sha256:632ad6d3e853205b892bcdb328c29ae5ceac0b23165d2e0867db2031063e8385",
+        "sentence:sha256:941039565a4ab14afe5b4c5d84409a849d2ac287f3c8fcaf01ae70eb626857e6",
+        "sentence:sha256:97011c902a5231d56954ac256dd9ca4509e9985ce256dc734cb15e47190f1bbc",
+        "sentence:sha256:9bd6227b193b2746bb00e6bab35679584c053350b2fa4719cced3a4e09bb7c28",
+        "sentence:sha256:9ff89ba1dd4cb7355ff312617bd2d447ef1e6a424ec61bab07d1fa7c22839867",
+        "sentence:sha256:a46d45a9c5506f31848cd601ef8f88239d097fa7a4f44aecf455d184cce5aaca",
+        "sentence:sha256:d15dff423e06667c2559fb651bc40dc920f5e94510a1d4fe68197aa829d3e2b0",
+        "sentence:sha256:d9ebdc53e2a4d6b9f9827e9f8c5abd602ab440291df30c2b6a710ec4976bdccd",
+        "word:sha256:4a5588698f5bd2f3237cbc916ddac2942066aaaf06f6e61f426da091928457f7"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:imparfait:devoir",
+        "nodeKey": "produire_imparfait",
+        "facetKey": "produire_imparfait::verb:devoir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire devoir à l’imparfait",
+        "learnerQuestionFr": "Comment retrouver les formes de devoir à l’imparfait selon le sujet ?",
+        "steps": [
+          {
+            "exampleFr": "Je dois rendre ce livre.\nJe devais rendre ce livre.",
+            "explanationFr": "Le sujet et le verbe sont les mêmes, mais la forme change. Dans la seconde phrase, devais est à l’imparfait. Ce temps permet notamment de raconter une habitude ou une situation dans le passé."
+          },
+          {
+            "exampleFr": "nous devons → dev- + -ais → devais",
+            "explanationFr": "Pars de la forme avec nous au présent : devons. Retire -ons. Le morceau qui reste, dev-, est la base appelée radical. Ajoute ensuite la terminaison de l’imparfait."
+          },
+          {
+            "exampleFr": "je : devais\ntu : devais\nil, elle ou on : devait\nnous : devions\nvous : deviez\nils ou elles : devaient",
+            "explanationFr": "Les six terminaisons sont -ais, -ais, -ait, -ions, -iez et -aient. Observe les lettres écrites : plusieurs formes se ressemblent à l’oral."
+          },
+          {
+            "exampleFr": "nous devions ; vous deviez",
+            "explanationFr": "Avec nous et vous, garde la base dev- et ajoute -ions ou -iez en entier. N’oublie pas le i de la terminaison."
+          }
+        ],
+        "takeawayFr": "Pour devoir, pars de nous devons, retire -ons et ajoute la terminaison de l’imparfait correspondant au sujet.",
+        "boundaryFr": "Cette leçon concerne devoir à l’imparfait. Elle ne suffit pas pour choisir entre imparfait et passé composé dans un récit, ni pour connaître les autres temps de ce verbe.",
+        "practice": [
+          {
+            "id": "guided:imparfait:devoir:1",
+            "promptFr": "Le récit est au passé. Complète avec devoir à l’imparfait. Écris seulement le verbe : Je ___ rendre ce livre.",
+            "answerFr": "devais",
+            "hintFr": "Avec je, ajoute -ais à la base dev-.",
+            "explanationFr": "Je devais rendre ce livre. La base dev- et la terminaison -ais donnent devais."
+          },
+          {
+            "id": "guided:imparfait:devoir:2",
+            "promptFr": "Le récit est au passé. Complète avec devoir à l’imparfait. Écris seulement le verbe : Tu ___ vérifier ton calcul.",
+            "answerFr": "devais",
+            "hintFr": "Avec tu, ajoute -ais à la base dev-.",
+            "explanationFr": "Tu devais vérifier ton calcul. La base dev- et la terminaison -ais donnent devais."
+          },
+          {
+            "id": "guided:imparfait:devoir:3",
+            "promptFr": "Le récit est au passé. Complète avec devoir à l’imparfait. Écris seulement le verbe : On ___ ranger le matériel.",
+            "answerFr": "devait",
+            "hintFr": "Avec il, elle ou on, ajoute -ait à la base dev-.",
+            "explanationFr": "On devait ranger le matériel. La base dev- et la terminaison -ait donnent devait."
+          },
+          {
+            "id": "guided:imparfait:devoir:4",
+            "promptFr": "Le récit est au passé. Complète avec devoir à l’imparfait. Écris seulement le verbe : Nous ___ terminer l’affiche.",
+            "answerFr": "devions",
+            "hintFr": "Avec nous, ajoute -ions à la base dev-.",
+            "explanationFr": "Nous devions terminer l’affiche. La base dev- et la terminaison -ions donnent devions."
+          },
+          {
+            "id": "guided:imparfait:devoir:5",
+            "promptFr": "Le récit est au passé. Complète avec devoir à l’imparfait. Écris seulement le verbe : Vous ___ suivre ce chemin.",
+            "answerFr": "deviez",
+            "hintFr": "Avec vous, ajoute -iez à la base dev-.",
+            "explanationFr": "Vous deviez suivre ce chemin. La base dev- et la terminaison -iez donnent deviez."
+          },
+          {
+            "id": "guided:imparfait:devoir:6",
+            "promptFr": "Le récit est au passé. Complète avec devoir à l’imparfait. Écris seulement le verbe : Ils ___ prévenir leur équipe.",
+            "answerFr": "devaient",
+            "hintFr": "Avec ils ou elles, ajoute -aient à la base dev-.",
+            "explanationFr": "Ils devaient prévenir leur équipe. La base dev- et la terminaison -aient donnent devaient."
+          }
+        ],
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "devoir",
+              "form": "devoir"
+            }
+          ],
+          "sentences": [
+            "Je dois rendre ce livre.\nJe devais rendre ce livre.",
+            "nous devons → dev- + -ais → devais",
+            "je : devais\ntu : devais\nil, elle ou on : devait\nnous : devions\nvous : deviez\nils ou elles : devaient",
+            "nous devions ; vous deviez",
+            "Je devais rendre ce livre.",
+            "Tu devais vérifier ton calcul.",
+            "On devait ranger le matériel.",
+            "Nous devions terminer l’affiche.",
+            "Vous deviez suivre ce chemin.",
+            "Ils devaient prévenir leur équipe."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:recognition:imparfait",
+      "contentChecksum": "sha256:b57ffc574c6ffe7e6e12bc03d7857b6d0ebb4e53d19fb8b07f3a8960a1469a1b",
+      "skillId": "reconnaitre_imparfait::reading-receptive",
+      "nodeKey": "reconnaitre_imparfait",
+      "facetKey": null,
+      "mode": "recognition",
+      "domain": "conjugation",
+      "prerequisites": [],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:023a863c5a33aadc3984d2f2c538e05594d18f46da5bf23a7c72624af848e0f2",
+        "sentence:sha256:0712b4689fc13baeb0042ebeb7ed096520c153f7323a66052dbfcdade65038f3",
+        "sentence:sha256:118b89a6aa289f144e17c829d95b98789d79b7ba9076f10aaf0c3148518878ca",
+        "sentence:sha256:20dc63e2b9d86437bc2a41cdc6011f051a9e6e0c9f2128b37b17166f68471bfa",
+        "sentence:sha256:2f364a5a645e2da11686de25184c900d008f7349dec695ec036faacae68643ce",
+        "sentence:sha256:30b26697bc954311f7c74293e2134fe25b5a888a68d822da0cc559d41be1eb45",
+        "sentence:sha256:3e8c66dbc3f22cd9c5ed9b8b2e4fe763f4d2918094cbfab7be2b80b5931f9284",
+        "sentence:sha256:46392cae1063b943dc82f4e7a24b85fd80141e061be19db4348a8f7d39858458",
+        "sentence:sha256:4feed1856f5eb06ccf845e75c6a32f2bd7754abd1c5a3867db410d380dd3fd7a",
+        "sentence:sha256:51d13ec4c2a491898530a61161b1a127f1376ac8921c0b559cbb775fa7965f4e",
+        "sentence:sha256:54608a2f2852c715c625a327144aae550f1d0ad1b24636320e66ce8108b0e129",
+        "sentence:sha256:56fcbcd6bccf7fe00ea97a2c43f0d7fbd73276858bdf0f7db80f929a8f091661",
+        "sentence:sha256:5fdc0d12bafc6da9b04935f5ee0e0ff97bed63ea10d1549fa1a7d87521d31f21",
+        "sentence:sha256:630e0d1a8d77e3259e1a3e828a1fc780e5cacb27ad7f9693654522a4db2fbe3b",
+        "sentence:sha256:6924775441276c9e82ee50fb9699ad7e485fe97a487bcbd6fbf05d9d7fe015ca",
+        "sentence:sha256:7a0560781de01b3e0df303725ebaa83e4b055a49edfe3df16a5b4ed749451d97",
+        "sentence:sha256:9b9e9bb5c76ddcfa9bdc2efed57af8e63f6d33eadb557a2e8ccbb5392b00f1c3",
+        "sentence:sha256:9f88203fd2547b5103580e8956c50d3ba23e2429b4229054a56a74c29ba51a0a",
+        "sentence:sha256:a11656fe8e3f355a97d568feef316e33ad9f9ec8bad9a4f8b3967cccf0887c17",
+        "sentence:sha256:a84be162eda0ed050767243432aafdfba6b49bf5ac1145d2cd21adf69fe1d82c",
+        "sentence:sha256:a9d7dda76904fbc5a2cad130ceb65c23d2c2b9f53a64cec607345ad9c29021f6",
+        "sentence:sha256:b1c74d7f69c3c38aecc82901d44c2423dcda7153c7d653e913ca2bbd7cda9c93",
+        "sentence:sha256:c4ba3e2730fdd928a0b5143e76d23db92d1a3d35c4d5b3b942dc74bc0b4935c4",
+        "sentence:sha256:c5a12990f963159157cf2313e274aa878bb35cdb6dc7822efaa08613a370799f",
+        "sentence:sha256:de615acb86b847bb354ebaa33afb9e759b42c8965a66a665a140ebbb386e7d74",
+        "sentence:sha256:e53fe266a9c03b27900c9ee098b0b55d6cb56d0c74b2e21716fa67c51e87d3fe",
+        "sentence:sha256:e7c9b2ab5f0f86a901a50209e8912fcf5279ea5262a0ec6ed6a1147a1be0d501",
+        "sentence:sha256:e892899dd811d9e1230b49168ec1b8ddad60f81ad971a75dc3006f9a9e33543a",
+        "sentence:sha256:f65edffabefc19cb8b1fecc7fe4ada5f0eca15316b7504a42cf309c35ea36ce3",
+        "sentence:sha256:f9bc66d9ae2a08c1eecc8043913ceed4d835c238ad67de234a72e8048e7c2928",
+        "sentence:sha256:fc79803bb2f42ed54d299dcdc70779e8c00504e90f23f62ec05b868f01970d47"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:recognition:imparfait",
+        "nodeKey": "reconnaitre_imparfait",
+        "mode": "recognition",
+        "status": "draft_requires_review",
+        "titleFr": "Reconnaître l’imparfait",
+        "learnerQuestionFr": "Qu’est-ce qui distingue « elle préparait » de « elle prépare » ?",
+        "steps": [
+          {
+            "exampleFr": "Elle préparait les costumes. Elle prépare les costumes.",
+            "explanationFr": "Préparait est à l’imparfait, un temps souvent utilisé pour raconter une habitude ou décrire une situation passée. Prépare est au présent. Ici, la forme écrite du verbe permet de les distinguer."
+          },
+          {
+            "exampleFr": "Je préparais. Tu préparais. Elle préparait. Nous préparions. Vous prépariez. Ils préparaient.",
+            "explanationFr": "À l’imparfait, les terminaisons sont -ais, -ais, -ait, -ions, -iez et -aient. Une terminaison est la fin du verbe qui change avec le sujet. Observe notamment le i dans préparions et prépariez."
+          },
+          {
+            "exampleFr": "Nous étions dans la cuisine. Vous faisiez la soupe.",
+            "explanationFr": "L’imparfait ne concerne pas seulement les verbes en -er. Étaient, étions, faisais ou faisiez sont aussi des formes de l’imparfait. Le début du verbe peut donc être différent de celui des exemples précédents."
+          },
+          {
+            "exampleFr": "Je préparais le repas. J’avais préparé le repas.",
+            "explanationFr": "Préparais est un verbe à l’imparfait. Dans avais préparé, il faut nommer le groupe entier : c’est le plus-que-parfait, un autre temps du passé. Repérer seulement avais donnerait une réponse incomplète."
+          },
+          {
+            "exampleFr": "Nous préparions une fête. Nous préparerions une fête si la salle était libre.",
+            "explanationFr": "Préparions est à l’imparfait. Préparerions contient un r supplémentaire avant -ions et est au conditionnel présent, une forme qui exprime ici une possibilité soumise à une condition. Regarde le verbe entier, pas seulement ses dernières lettres."
+          }
+        ],
+        "takeawayFr": "Pour reconnaître l’imparfait, observe le verbe entier et ses terminaisons. Si plusieurs mots forment le temps, regarde le groupe complet.",
+        "boundaryFr": "Reconnaître l’imparfait dans une phrase ne prouve pas que tu sais former tous les verbes à ce temps, ni choisir entre les temps du passé dans un récit.",
+        "practice": [
+          {
+            "id": "imparfait-guide-1",
+            "promptFr": "Quelle phrase contient un verbe à l’imparfait ?",
+            "choices": [
+              "Tu peignais une fresque.",
+              "Tu peins une fresque.",
+              "Tu peindras une fresque.",
+              "Tu as peint une fresque."
+            ],
+            "answerFr": "Tu peignais une fresque.",
+            "hintFr": "Observe peignais : la forme finit par -ais.",
+            "explanationFr": "Peignais est à l’imparfait. Peins est au présent, peindras au futur simple et as peint au passé composé."
+          },
+          {
+            "id": "imparfait-guide-2",
+            "promptFr": "Nous marchions le long du canal. À quel temps marchions est-il conjugué ?",
+            "choices": [
+              "À l’imparfait.",
+              "Au présent.",
+              "Au futur simple.",
+              "Au passé composé."
+            ],
+            "answerFr": "À l’imparfait.",
+            "hintFr": "Compare marchions et marchons. Quelle forme contient -ions ?",
+            "explanationFr": "Marchions contient la terminaison -ions de l’imparfait avec nous. Marchons serait le présent."
+          },
+          {
+            "id": "imparfait-guide-3",
+            "promptFr": "Quelle forme est à l’imparfait ?",
+            "choices": [
+              "vous rangiez",
+              "vous rangez",
+              "vous rangerez",
+              "vous avez rangé"
+            ],
+            "answerFr": "vous rangiez",
+            "hintFr": "Cherche la terminaison -iez.",
+            "explanationFr": "Rangiez est à l’imparfait avec vous. Rangez est au présent ; le i fait ici la différence."
+          },
+          {
+            "id": "imparfait-guide-4",
+            "promptFr": "La salle était lumineuse. Quel verbe est à l’imparfait ?",
+            "choices": [
+              "était",
+              "salle",
+              "lumineuse",
+              "La"
+            ],
+            "answerFr": "était",
+            "hintFr": "Cherche la forme du verbe être.",
+            "explanationFr": "Était est le verbe être à l’imparfait avec un sujet que l’on peut remplacer par elle."
+          },
+          {
+            "id": "imparfait-guide-5",
+            "promptFr": "Ils préparaient le dessert. Ils avaient préparé le dessert. Quelle phrase emploie l’imparfait seul ?",
+            "choices": [
+              "Ils préparaient le dessert.",
+              "Ils avaient préparé le dessert."
+            ],
+            "answerFr": "Ils préparaient le dessert.",
+            "hintFr": "Dans la seconde phrase, lis avaient et préparé ensemble.",
+            "explanationFr": "Préparaient est à l’imparfait. Avaient préparé forme un plus-que-parfait : les deux mots doivent être lus ensemble."
+          },
+          {
+            "id": "imparfait-guide-6",
+            "promptFr": "Quelle forme est à l’imparfait, et non au conditionnel présent ?",
+            "choices": [
+              "nous collions",
+              "nous collerions"
+            ],
+            "answerFr": "nous collions",
+            "hintFr": "Cherche le r qui apparaît dans une seule des deux formes.",
+            "explanationFr": "Collions est l’imparfait de coller. Collerions, avec r avant -ions, est au conditionnel présent."
+          }
+        ],
+        "materialExposure": {
+          "sentences": [
+            "Elle préparait les costumes. Elle prépare les costumes.",
+            "Je préparais. Tu préparais. Elle préparait. Nous préparions. Vous prépariez. Ils préparaient.",
+            "Nous étions dans la cuisine. Vous faisiez la soupe.",
+            "Je préparais le repas. J’avais préparé le repas.",
+            "Nous préparions une fête. Nous préparerions une fête si la salle était libre.",
+            "Quelle phrase contient un verbe à l’imparfait ?",
+            "Tu peignais une fresque.",
+            "Tu peins une fresque.",
+            "Tu peindras une fresque.",
+            "Tu as peint une fresque.",
+            "Nous marchions le long du canal. À quel temps marchions est-il conjugué ?",
+            "À l’imparfait.",
+            "Au présent.",
+            "Au futur simple.",
+            "Au passé composé.",
+            "Quelle forme est à l’imparfait ?",
+            "vous rangiez",
+            "vous rangez",
+            "vous rangerez",
+            "vous avez rangé",
+            "La salle était lumineuse. Quel verbe est à l’imparfait ?",
+            "était",
+            "salle",
+            "lumineuse",
+            "La",
+            "Ils préparaient le dessert. Ils avaient préparé le dessert. Quelle phrase emploie l’imparfait seul ?",
+            "Ils préparaient le dessert.",
+            "Ils avaient préparé le dessert.",
+            "Quelle forme est à l’imparfait, et non au conditionnel présent ?",
+            "nous collions",
+            "nous collerions"
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:recognition:futur_simple",
+      "contentChecksum": "sha256:065d52dab87904083d7f92b46a612aa9a9e367024adc87ad1e1d454cac6febd6",
+      "skillId": "reconnaitre_futur_simple::reading-receptive",
+      "nodeKey": "reconnaitre_futur_simple",
+      "facetKey": null,
+      "mode": "recognition",
+      "domain": "conjugation",
+      "prerequisites": [],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:02ae55c301fd98b97db21db7daa53780abaa3e8c0b599a4c95d15bc27766fbf9",
+        "sentence:sha256:06f2fc132131d2297bafab36c652affd2e506eb148ba3c44b407a6acec65f590",
+        "sentence:sha256:1f0f8bb71a191c68622608d84e26b1e7a868a2876b03804115f84bedce8b0d43",
+        "sentence:sha256:282be0733f4735e1fde1357f0b9386990c74dec0ac39b082b8c86ee6dd53e3f7",
+        "sentence:sha256:3028fefa56de490a0f3d81f427d4f7b1d2b8821915c2e3c2895c74e17cd5375b",
+        "sentence:sha256:3929498de9bfe668ff53dd15ebb0b9ca3cc75f88d4f20d8fc70b5cba722fc723",
+        "sentence:sha256:3e8c66dbc3f22cd9c5ed9b8b2e4fe763f4d2918094cbfab7be2b80b5931f9284",
+        "sentence:sha256:57275c78f5c9b0e12262b13abcb4e638b5cf4410ac0f80fd4bd21d88b482e9ba",
+        "sentence:sha256:5758d486a0a2a18b34e7723d75a0e96a8ff7e5d6a71ac5f67807a06090eb7657",
+        "sentence:sha256:61571cf0a2cf5d621c5d3aad6e6bcc92c7a0ad7619259fce773df4b94499d908",
+        "sentence:sha256:62665a3c208e1c4a80d2dc553c193e66b9b4fbcca9c069513490b25f9cdb9c84",
+        "sentence:sha256:63bdb3f407b05710ef59043afe77f020d98a0004b3e339c4689c5ad9f11cbb99",
+        "sentence:sha256:6509056c4f8eb959975c8454d2f88e7f814b205fcf9c59f3da080ca02c2934c3",
+        "sentence:sha256:654054baa176bae9c8776e5e805523097d19a3bd9ab83a3ea4ace28e0d3fabdb",
+        "sentence:sha256:69958ed44db1e0fb4d0bb91a68cb4bc2318aa663f52be655d6f27b75a6e53c0d",
+        "sentence:sha256:9a75a78f1bb2c1f5737384f3b2f1a7d19a6712cda5629d15659195a74da3b6ad",
+        "sentence:sha256:a7ba1fb0d2018eaf2bb145ebd90b4a436c9e0419e7ea1849b3ab709ad4e12154",
+        "sentence:sha256:aa54ca0d71b91c66f9d65cee55ae0e1af5e161a51d92b86696f2c2e40f592ac8",
+        "sentence:sha256:aeb4fc9323012dd508b53c9faa0e0f52fa56d390a72970d1bbc9223902a083e8",
+        "sentence:sha256:b23a5c4ff1b6ab01715ada672646ea5712c8b3d978b399b6aed58491471646d3",
+        "sentence:sha256:b4f2481f44d019b8f2354fe3bc065da0c73d55b3a4f9bc5565a028f5999de4af",
+        "sentence:sha256:b71810d0e18d8c61c0b4cdf31056d2b571249ecc7e288d14e36e0d0bdbd06a94",
+        "sentence:sha256:b867061302e664e88ac902de951bcb89a424d6bc773569e48ba668116b6127ad",
+        "sentence:sha256:ba3eab61b6e988d83c7886051893b4ebf7ba566f47e71275c32d7c4f3b5b5d88",
+        "sentence:sha256:bd74a613b3704c1f0865e46af81dfbffbbea137bde45d8b7770a4c9b5b92195c",
+        "sentence:sha256:bea23ceb4378d39e53f059698dcaf2c8fe539c06541545884f7ef6d3620777fd",
+        "sentence:sha256:ccef264ec8273ddcdb8f8a279d696b22660d43effbae4b834fb48ea37116012b",
+        "sentence:sha256:dcc3cb2dd83d0ff7aa4db3bf310bd8fce3aa31aec1fcbf0ca3d0c0e7b9e4da11",
+        "sentence:sha256:de615acb86b847bb354ebaa33afb9e759b42c8965a66a665a140ebbb386e7d74",
+        "sentence:sha256:f65edffabefc19cb8b1fecc7fe4ada5f0eca15316b7504a42cf309c35ea36ce3",
+        "sentence:sha256:f9bc66d9ae2a08c1eecc8043913ceed4d835c238ad67de234a72e8048e7c2928"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:recognition:futur_simple",
+        "nodeKey": "reconnaitre_futur_simple",
+        "mode": "recognition",
+        "status": "draft_requires_review",
+        "titleFr": "Reconnaître le futur simple",
+        "learnerQuestionFr": "Pourquoi « elle chantera » et « elle va chanter » ne portent-ils pas le même nom ?",
+        "steps": [
+          {
+            "exampleFr": "Elle chantera au spectacle. Elle va chanter au spectacle.",
+            "explanationFr": "Les deux phrases annoncent une action. Chantera est au futur simple. Va chanter associe aller au présent et chanter, la forme du dictionnaire appelée infinitif : cette construction s’appelle le futur proche."
+          },
+          {
+            "exampleFr": "Je chanterai. Tu chanteras. Il chantera. Nous chanterons. Vous chanterez. Elles chanteront.",
+            "explanationFr": "Au futur simple, on retrouve ici chanter- puis les terminaisons -ai, -as, -a, -ons, -ez et -ont. Une terminaison est la fin du verbe qui change avec le sujet."
+          },
+          {
+            "exampleFr": "Je serai disponible. Tu auras le temps. Elle fera le trajet.",
+            "explanationFr": "Certains débuts de verbes changent : être donne ser-, avoir donne aur- et faire donne fer-. Serai, auras et fera sont pourtant bien des futurs simples. Chercher uniquement le verbe du dictionnaire ne suffit pas."
+          },
+          {
+            "exampleFr": "Demain, nous chantons. Demain, nous chanterons.",
+            "explanationFr": "Les deux phrases parlent de demain. Chantons reste un présent ; chanterons est au futur simple. Le moment raconté et la forme grammaticale sont deux informations différentes."
+          },
+          {
+            "exampleFr": "Je chanterai. Je chanterais si je connaissais la chanson.",
+            "explanationFr": "Chanterai, sans s, est au futur simple. Chanterais, avec s, est au conditionnel présent : la seconde phrase pose ici une condition. Lis toute la forme écrite pour les distinguer."
+          }
+        ],
+        "takeawayFr": "Repère la forme entière du verbe : le futur simple se distingue du présent, du futur proche et du conditionnel, même quand plusieurs phrases parlent de l’avenir.",
+        "boundaryFr": "Cette leçon apprend à reconnaître le futur simple. Former les verbes, choisir ce temps dans un texte et interpréter toutes ses nuances sont d’autres compétences.",
+        "practice": [
+          {
+            "id": "futur-simple-guide-1",
+            "promptFr": "Quelle phrase contient un futur simple ?",
+            "choices": [
+              "Tu répareras le jouet.",
+              "Tu répares le jouet.",
+              "Tu réparais le jouet.",
+              "Tu vas réparer le jouet."
+            ],
+            "answerFr": "Tu répareras le jouet.",
+            "hintFr": "Cherche la forme réparer- suivie de -as.",
+            "explanationFr": "Répareras est au futur simple. Vas réparer est au futur proche, même si les deux phrases annoncent une action."
+          },
+          {
+            "id": "futur-simple-guide-2",
+            "promptFr": "Nous serons à l’accueil. À quel temps serons est-il conjugué ?",
+            "choices": [
+              "Au futur simple.",
+              "Au présent.",
+              "À l’imparfait.",
+              "Au passé composé."
+            ],
+            "answerFr": "Au futur simple.",
+            "hintFr": "Ser- est le début du verbe être au futur simple.",
+            "explanationFr": "Serons est être au futur simple avec nous. Le début du verbe a changé par rapport à l’infinitif être."
+          },
+          {
+            "id": "futur-simple-guide-3",
+            "promptFr": "Quelle phrase emploie le futur simple ?",
+            "choices": [
+              "Vous aurez les billets.",
+              "Vous avez les billets.",
+              "Vous aviez les billets.",
+              "Vous allez avoir les billets."
+            ],
+            "answerFr": "Vous aurez les billets.",
+            "hintFr": "Repère aur-, le début d’avoir au futur simple.",
+            "explanationFr": "Aurez est au futur simple. Allez avoir est au futur proche."
+          },
+          {
+            "id": "futur-simple-guide-4",
+            "promptFr": "Demain, ils cuisinent. Demain, ils cuisineront. Quelle forme est au futur simple ?",
+            "choices": [
+              "cuisineront",
+              "cuisinent"
+            ],
+            "answerFr": "cuisineront",
+            "hintFr": "Demain apparaît dans les deux phrases. Compare les verbes.",
+            "explanationFr": "Cuisineront est au futur simple. Cuisinent est au présent, employé ici pour une action prévue."
+          },
+          {
+            "id": "futur-simple-guide-5",
+            "promptFr": "Quelle forme est au futur simple avec je ?",
+            "choices": [
+              "je rangerai",
+              "je rangerais"
+            ],
+            "answerFr": "je rangerai",
+            "hintFr": "Avec je, le futur simple se termine ici par -rai, sans s.",
+            "explanationFr": "Rangerai est au futur simple. Rangerais est au conditionnel présent."
+          },
+          {
+            "id": "futur-simple-guide-6",
+            "promptFr": "Elles feront le trajet à pied. Quel groupe est au futur simple ?",
+            "choices": [
+              "feront",
+              "Elles",
+              "le trajet",
+              "à pied"
+            ],
+            "answerFr": "feront",
+            "hintFr": "Cherche la forme conjuguée de faire.",
+            "explanationFr": "Feront est faire au futur simple avec elles. Le verbe ne conserve pas tout l’infinitif faire."
+          }
+        ],
+        "materialExposure": {
+          "sentences": [
+            "Elle chantera au spectacle. Elle va chanter au spectacle.",
+            "Je chanterai. Tu chanteras. Il chantera. Nous chanterons. Vous chanterez. Elles chanteront.",
+            "Je serai disponible. Tu auras le temps. Elle fera le trajet.",
+            "Demain, nous chantons. Demain, nous chanterons.",
+            "Je chanterai. Je chanterais si je connaissais la chanson.",
+            "Quelle phrase contient un futur simple ?",
+            "Tu répareras le jouet.",
+            "Tu répares le jouet.",
+            "Tu réparais le jouet.",
+            "Tu vas réparer le jouet.",
+            "Nous serons à l’accueil. À quel temps serons est-il conjugué ?",
+            "Au futur simple.",
+            "Au présent.",
+            "À l’imparfait.",
+            "Au passé composé.",
+            "Quelle phrase emploie le futur simple ?",
+            "Vous aurez les billets.",
+            "Vous avez les billets.",
+            "Vous aviez les billets.",
+            "Vous allez avoir les billets.",
+            "Demain, ils cuisinent. Demain, ils cuisineront. Quelle forme est au futur simple ?",
+            "cuisineront",
+            "cuisinent",
+            "Quelle forme est au futur simple avec je ?",
+            "je rangerai",
+            "je rangerais",
+            "Elles feront le trajet à pied. Quel groupe est au futur simple ?",
+            "feront",
+            "Elles",
+            "le trajet",
+            "à pied"
+          ]
+        }
+      }
+    },
     {
       "lessonId": "french-v3-teaching:explicit-reading:narrative",
       "contentChecksum": "sha256:d412c169ace10f59dce6ab92a70d8a8e7d9cc092adca6a36dd1ddc22a4b2aa68",
@@ -10891,5 +13327,5 @@
       }
     }
   ],
-  "checksum": "sha256:c884c6bd18b06d843f8f661722d9f34a9264c7ac991aa82d92eff2b2b85723ed"
+  "checksum": "sha256:7ec6cef9aa11faecaf179aa825562c2be23025a105fa3c100a3ae8b17ff232f9"
 }

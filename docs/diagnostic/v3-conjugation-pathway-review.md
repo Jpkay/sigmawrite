@@ -235,6 +235,174 @@ These supplied-tense gaps exercise regular forms, individual verbs and the actua
 - **v3-granular-forms:present-application-context:devoir:1p:189**: Complète la phrase avec devoir au présent de l’indicatif : Nous ___ respecter le silence. Réponse : **devons**.
 - **v3-granular-forms:present-application-context:devoir:2p:190**: Complète la phrase avec devoir au présent de l’indicatif : Vous ___ attendre votre tour. Réponse : **devez**.
 - **v3-granular-forms:present-application-context:devoir:3p:191**: Complète la phrase avec devoir au présent de l’indicatif : Les campeurs ___ éteindre leur feu. Réponse : **doivent**.
+- **v3-granular-forms:imparfait-application-context:aller:1s:24**: Complète la phrase avec aller à l’imparfait : J’___ chez le dentiste. Réponse : **allais**.
+- **v3-granular-forms:imparfait-application-context:aller:2s:25**: Complète la phrase avec aller à l’imparfait : Tu ___ vers la sortie. Réponse : **allais**.
+- **v3-granular-forms:imparfait-application-context:aller:3s:26**: Complète la phrase avec aller à l’imparfait : Le groupe ___ à la gare. Réponse : **allait**.
+- **v3-granular-forms:imparfait-application-context:aller:1p:27**: Complète la phrase avec aller à l’imparfait : Nous ___ au club d’échecs. Réponse : **allions**.
+- **v3-granular-forms:imparfait-application-context:aller:2p:28**: Complète la phrase avec aller à l’imparfait : Vous ___ chez vos grands-parents. Réponse : **alliez**.
+- **v3-granular-forms:imparfait-application-context:aller:3p:29**: Complète la phrase avec aller à l’imparfait : Mes voisines ___ au concert. Réponse : **allaient**.
+- **v3-granular-forms:imparfait-application-context:aller:1s:30**: Complète la phrase avec aller à l’imparfait : J’___ à la boulangerie. Réponse : **allais**.
+- **v3-granular-forms:imparfait-application-context:aller:2s:31**: Complète la phrase avec aller à l’imparfait : Tu ___ au cours de dessin. Réponse : **allais**.
+- **v3-granular-forms:imparfait-application-context:aller:3s:32**: Complète la phrase avec aller à l’imparfait : Mon frère ___ à l’atelier. Réponse : **allait**.
+- **v3-granular-forms:imparfait-application-context:aller:1p:33**: Complète la phrase avec aller à l’imparfait : Nous ___ vers la rivière. Réponse : **allions**.
+- **v3-granular-forms:imparfait-application-context:aller:2p:34**: Complète la phrase avec aller à l’imparfait : Vous ___ à l’exposition. Réponse : **alliez**.
+- **v3-granular-forms:imparfait-application-context:aller:3p:35**: Complète la phrase avec aller à l’imparfait : Les élèves ___ au réfectoire. Réponse : **allaient**.
+- **v3-granular-forms:imparfait-application-context:faire:1s:36**: Complète la phrase avec faire à l’imparfait : Je ___ une liste de courses. Réponse : **faisais**.
+- **v3-granular-forms:imparfait-application-context:faire:2s:37**: Complète la phrase avec faire à l’imparfait : Tu ___ un nœud avec cette corde. Réponse : **faisais**.
+- **v3-granular-forms:imparfait-application-context:faire:3s:38**: Complète la phrase avec faire à l’imparfait : Sam ___ la vaisselle. Réponse : **faisait**.
+- **v3-granular-forms:imparfait-application-context:faire:1p:39**: Complète la phrase avec faire à l’imparfait : Nous ___ des recherches sur les volcans. Réponse : **faisions**.
+- **v3-granular-forms:imparfait-application-context:faire:2p:40**: Complète la phrase avec faire à l’imparfait : Vous ___ un détour par le pont. Réponse : **faisiez**.
+- **v3-granular-forms:imparfait-application-context:faire:3p:41**: Complète la phrase avec faire à l’imparfait : Les jumelles ___ de la musique. Réponse : **faisaient**.
+- **v3-granular-forms:imparfait-application-context:faire:1s:42**: Complète la phrase avec faire à l’imparfait : Je ___ attention aux cyclistes. Réponse : **faisais**.
+- **v3-granular-forms:imparfait-application-context:faire:2s:43**: Complète la phrase avec faire à l’imparfait : Tu ___ équipe avec Lila. Réponse : **faisais**.
+- **v3-granular-forms:imparfait-application-context:faire:3s:44**: Complète la phrase avec faire à l’imparfait : Le cuisinier ___ cuire le riz. Réponse : **faisait**.
+- **v3-granular-forms:imparfait-application-context:faire:1p:45**: Complète la phrase avec faire à l’imparfait : Nous ___ le tour du lac. Réponse : **faisions**.
+- **v3-granular-forms:imparfait-application-context:faire:2p:46**: Complète la phrase avec faire à l’imparfait : Vous ___ un croquis de la maison. Réponse : **faisiez**.
+- **v3-granular-forms:imparfait-application-context:faire:3p:47**: Complète la phrase avec faire à l’imparfait : Les comédiens ___ rire le public. Réponse : **faisaient**.
+- **v3-granular-forms:imparfait-application-context:être:1s:48**: Complète la phrase avec être à l’imparfait : J’___ responsable du ballon. Réponse : **étais**.
+- **v3-granular-forms:imparfait-application-context:être:2s:49**: Complète la phrase avec être à l’imparfait : Tu ___ le premier à répondre. Réponse : **étais**.
+- **v3-granular-forms:imparfait-application-context:être:3s:50**: Complète la phrase avec être à l’imparfait : Le magasin ___ fermé le lundi. Réponse : **était**.
+- **v3-granular-forms:imparfait-application-context:être:1p:51**: Complète la phrase avec être à l’imparfait : Nous ___ heureux de participer. Réponse : **étions**.
+- **v3-granular-forms:imparfait-application-context:être:2p:52**: Complète la phrase avec être à l’imparfait : Vous ___ sur la bonne piste. Réponse : **étiez**.
+- **v3-granular-forms:imparfait-application-context:être:3p:53**: Complète la phrase avec être à l’imparfait : Les fenêtres ___ ouvertes. Réponse : **étaient**.
+- **v3-granular-forms:imparfait-application-context:être:1s:54**: Complète la phrase avec être à l’imparfait : J’___ à côté du piano. Réponse : **étais**.
+- **v3-granular-forms:imparfait-application-context:être:2s:55**: Complète la phrase avec être à l’imparfait : Tu ___ très patient avec le chiot. Réponse : **étais**.
+- **v3-granular-forms:imparfait-application-context:être:3s:56**: Complète la phrase avec être à l’imparfait : La lampe ___ allumée. Réponse : **était**.
+- **v3-granular-forms:imparfait-application-context:être:1p:57**: Complète la phrase avec être à l’imparfait : Nous ___ membres du club de lecture. Réponse : **étions**.
+- **v3-granular-forms:imparfait-application-context:être:2p:58**: Complète la phrase avec être à l’imparfait : Vous ___ invités à la répétition. Réponse : **étiez**.
+- **v3-granular-forms:imparfait-application-context:être:3p:59**: Complète la phrase avec être à l’imparfait : Les valises ___ sous le banc. Réponse : **étaient**.
+- **v3-granular-forms:imparfait-application-context:avoir:1s:60**: Complète la phrase avec avoir à l’imparfait : J’___ envie de dessiner. Réponse : **avais**.
+- **v3-granular-forms:imparfait-application-context:avoir:2s:61**: Complète la phrase avec avoir à l’imparfait : Tu ___ froid sans ton manteau. Réponse : **avais**.
+- **v3-granular-forms:imparfait-application-context:avoir:3s:62**: Complète la phrase avec avoir à l’imparfait : Le vélo ___ deux pneus neufs. Réponse : **avait**.
+- **v3-granular-forms:imparfait-application-context:avoir:1p:63**: Complète la phrase avec avoir à l’imparfait : Nous ___ rendez-vous à midi. Réponse : **avions**.
+- **v3-granular-forms:imparfait-application-context:avoir:2p:64**: Complète la phrase avec avoir à l’imparfait : Vous ___ plusieurs solutions. Réponse : **aviez**.
+- **v3-granular-forms:imparfait-application-context:avoir:3p:65**: Complète la phrase avec avoir à l’imparfait : Les musiciens ___ besoin de silence. Réponse : **avaient**.
+- **v3-granular-forms:imparfait-application-context:avoir:1s:66**: Complète la phrase avec avoir à l’imparfait : J’___ douze cartes en main. Réponse : **avais**.
+- **v3-granular-forms:imparfait-application-context:avoir:2s:67**: Complète la phrase avec avoir à l’imparfait : Tu ___ raison de demander. Réponse : **avais**.
+- **v3-granular-forms:imparfait-application-context:avoir:3s:68**: Complète la phrase avec avoir à l’imparfait : Le bâtiment ___ trois étages. Réponse : **avait**.
+- **v3-granular-forms:imparfait-application-context:avoir:1p:69**: Complète la phrase avec avoir à l’imparfait : Nous ___ confiance en notre équipe. Réponse : **avions**.
+- **v3-granular-forms:imparfait-application-context:avoir:2p:70**: Complète la phrase avec avoir à l’imparfait : Vous ___ encore quelques minutes. Réponse : **aviez**.
+- **v3-granular-forms:imparfait-application-context:avoir:3p:71**: Complète la phrase avec avoir à l’imparfait : Les tortues ___ une carapace. Réponse : **avaient**.
+- **v3-granular-forms:imparfait-application-context:prendre:1s:72**: Complète la phrase avec prendre à l’imparfait : Je ___ la dernière part de tarte. Réponse : **prenais**.
+- **v3-granular-forms:imparfait-application-context:prendre:2s:73**: Complète la phrase avec prendre à l’imparfait : Tu ___ soin de ces plantes. Réponse : **prenais**.
+- **v3-granular-forms:imparfait-application-context:prendre:3s:74**: Complète la phrase avec prendre à l’imparfait : Le gardien ___ les clés du portail. Réponse : **prenait**.
+- **v3-granular-forms:imparfait-application-context:prendre:1p:75**: Complète la phrase avec prendre à l’imparfait : Nous ___ le sentier de gauche. Réponse : **prenions**.
+- **v3-granular-forms:imparfait-application-context:prendre:2p:76**: Complète la phrase avec prendre à l’imparfait : Vous ___ votre repas dehors. Réponse : **preniez**.
+- **v3-granular-forms:imparfait-application-context:prendre:3p:77**: Complète la phrase avec prendre à l’imparfait : Les touristes ___ un plan de la ville. Réponse : **prenaient**.
+- **v3-granular-forms:imparfait-application-context:prendre:1s:78**: Complète la phrase avec prendre à l’imparfait : Je ___ une serviette propre. Réponse : **prenais**.
+- **v3-granular-forms:imparfait-application-context:prendre:2s:79**: Complète la phrase avec prendre à l’imparfait : Tu ___ la parole après Inès. Réponse : **prenais**.
+- **v3-granular-forms:imparfait-application-context:prendre:3s:80**: Complète la phrase avec prendre à l’imparfait : La réunion ___ fin à dix heures. Réponse : **prenait**.
+- **v3-granular-forms:imparfait-application-context:prendre:1p:81**: Complète la phrase avec prendre à l’imparfait : Nous ___ place devant la scène. Réponse : **prenions**.
+- **v3-granular-forms:imparfait-application-context:prendre:2p:82**: Complète la phrase avec prendre à l’imparfait : Vous ___ une décision ensemble. Réponse : **preniez**.
+- **v3-granular-forms:imparfait-application-context:prendre:3p:83**: Complète la phrase avec prendre à l’imparfait : Les pompiers ___ la route du village. Réponse : **prenaient**.
+- **v3-granular-forms:imparfait-application-context:venir:1s:84**: Complète la phrase avec venir à l’imparfait : Je ___ rendre ton casque. Réponse : **venais**.
+- **v3-granular-forms:imparfait-application-context:venir:2s:85**: Complète la phrase avec venir à l’imparfait : Tu ___ me montrer ta bande dessinée. Réponse : **venais**.
+- **v3-granular-forms:imparfait-application-context:venir:3s:86**: Complète la phrase avec venir à l’imparfait : Le facteur ___ chaque matin. Réponse : **venait**.
+- **v3-granular-forms:imparfait-application-context:venir:1p:87**: Complète la phrase avec venir à l’imparfait : Nous ___ apporter des couvertures. Réponse : **venions**.
+- **v3-granular-forms:imparfait-application-context:venir:2p:88**: Complète la phrase avec venir à l’imparfait : Vous ___ du quartier voisin. Réponse : **veniez**.
+- **v3-granular-forms:imparfait-application-context:venir:3p:89**: Complète la phrase avec venir à l’imparfait : Les visiteurs ___ admirer les tableaux. Réponse : **venaient**.
+- **v3-granular-forms:imparfait-application-context:venir:1s:90**: Complète la phrase avec venir à l’imparfait : Je ___ poser une question. Réponse : **venais**.
+- **v3-granular-forms:imparfait-application-context:venir:2s:91**: Complète la phrase avec venir à l’imparfait : Tu ___ récupérer ton parapluie. Réponse : **venais**.
+- **v3-granular-forms:imparfait-application-context:venir:3s:92**: Complète la phrase avec venir à l’imparfait : La lumière ___ de cette fenêtre. Réponse : **venait**.
+- **v3-granular-forms:imparfait-application-context:venir:1p:93**: Complète la phrase avec venir à l’imparfait : Nous ___ soutenir les coureurs. Réponse : **venions**.
+- **v3-granular-forms:imparfait-application-context:venir:2p:94**: Complète la phrase avec venir à l’imparfait : Vous ___ goûter notre soupe. Réponse : **veniez**.
+- **v3-granular-forms:imparfait-application-context:venir:3p:95**: Complète la phrase avec venir à l’imparfait : Les cris ___ du terrain de sport. Réponse : **venaient**.
+- **v3-granular-forms:imparfait-application-context:partir:1s:96**: Complète la phrase avec partir à l’imparfait : Je ___ pour Lyon samedi. Réponse : **partais**.
+- **v3-granular-forms:imparfait-application-context:partir:2s:97**: Complète la phrase avec partir à l’imparfait : Tu ___ avant la fin du film. Réponse : **partais**.
+- **v3-granular-forms:imparfait-application-context:partir:3s:98**: Complète la phrase avec partir à l’imparfait : Le bateau ___ du port. Réponse : **partait**.
+- **v3-granular-forms:imparfait-application-context:partir:1p:99**: Complète la phrase avec partir à l’imparfait : Nous ___ explorer la forêt. Réponse : **partions**.
+- **v3-granular-forms:imparfait-application-context:partir:2p:100**: Complète la phrase avec partir à l’imparfait : Vous ___ sans vos bagages. Réponse : **partiez**.
+- **v3-granular-forms:imparfait-application-context:partir:3p:101**: Complète la phrase avec partir à l’imparfait : Les oiseaux ___ vers le sud. Réponse : **partaient**.
+- **v3-granular-forms:imparfait-application-context:partir:1s:102**: Complète la phrase avec partir à l’imparfait : Je ___ à la recherche du chat. Réponse : **partais**.
+- **v3-granular-forms:imparfait-application-context:partir:2s:103**: Complète la phrase avec partir à l’imparfait : Tu ___ avec une gourde pleine. Réponse : **partais**.
+- **v3-granular-forms:imparfait-application-context:partir:3s:104**: Complète la phrase avec partir à l’imparfait : La fusée ___ dans quelques secondes. Réponse : **partait**.
+- **v3-granular-forms:imparfait-application-context:partir:1p:105**: Complète la phrase avec partir à l’imparfait : Nous ___ du même point. Réponse : **partions**.
+- **v3-granular-forms:imparfait-application-context:partir:2p:106**: Complète la phrase avec partir à l’imparfait : Vous ___ au lever du soleil. Réponse : **partiez**.
+- **v3-granular-forms:imparfait-application-context:partir:3p:107**: Complète la phrase avec partir à l’imparfait : Les voyageurs ___ pour la montagne. Réponse : **partaient**.
+- **v3-granular-forms:imparfait-application-context:sortir:1s:108**: Complète la phrase avec sortir à l’imparfait : Je ___ les assiettes du placard. Réponse : **sortais**.
+- **v3-granular-forms:imparfait-application-context:sortir:2s:109**: Complète la phrase avec sortir à l’imparfait : Tu ___ de ton atelier. Réponse : **sortais**.
+- **v3-granular-forms:imparfait-application-context:sortir:3s:110**: Complète la phrase avec sortir à l’imparfait : Le lapin ___ de sa cachette. Réponse : **sortait**.
+- **v3-granular-forms:imparfait-application-context:sortir:1p:111**: Complète la phrase avec sortir à l’imparfait : Nous ___ prendre l’air. Réponse : **sortions**.
+- **v3-granular-forms:imparfait-application-context:sortir:2p:112**: Complète la phrase avec sortir à l’imparfait : Vous ___ vos instruments. Réponse : **sortiez**.
+- **v3-granular-forms:imparfait-application-context:sortir:3p:113**: Complète la phrase avec sortir à l’imparfait : Les spectateurs ___ de la salle. Réponse : **sortaient**.
+- **v3-granular-forms:imparfait-application-context:sortir:1s:114**: Complète la phrase avec sortir à l’imparfait : Je ___ mon carnet de croquis. Réponse : **sortais**.
+- **v3-granular-forms:imparfait-application-context:sortir:2s:115**: Complète la phrase avec sortir à l’imparfait : Tu ___ par le petit portail. Réponse : **sortais**.
+- **v3-granular-forms:imparfait-application-context:sortir:3s:116**: Complète la phrase avec sortir à l’imparfait : La fumée ___ de la cheminée. Réponse : **sortait**.
+- **v3-granular-forms:imparfait-application-context:sortir:1p:117**: Complète la phrase avec sortir à l’imparfait : Nous ___ de chez le coiffeur. Réponse : **sortions**.
+- **v3-granular-forms:imparfait-application-context:sortir:2p:118**: Complète la phrase avec sortir à l’imparfait : Vous ___ les cartons du garage. Réponse : **sortiez**.
+- **v3-granular-forms:imparfait-application-context:sortir:3p:119**: Complète la phrase avec sortir à l’imparfait : Les poussins ___ de leurs œufs. Réponse : **sortaient**.
+- **v3-granular-forms:imparfait-application-context:dire:1s:120**: Complète la phrase avec dire à l’imparfait : Je ___ merci au chauffeur. Réponse : **disais**.
+- **v3-granular-forms:imparfait-application-context:dire:2s:121**: Complète la phrase avec dire à l’imparfait : Tu ___ ce mot trop vite. Réponse : **disais**.
+- **v3-granular-forms:imparfait-application-context:dire:3s:122**: Complète la phrase avec dire à l’imparfait : Le médecin ___ de se reposer. Réponse : **disait**.
+- **v3-granular-forms:imparfait-application-context:dire:1p:123**: Complète la phrase avec dire à l’imparfait : Nous ___ au revoir à nos cousins. Réponse : **disions**.
+- **v3-granular-forms:imparfait-application-context:dire:2p:124**: Complète la phrase avec dire à l’imparfait : Vous ___ pourquoi vous êtes absents. Réponse : **disiez**.
+- **v3-granular-forms:imparfait-application-context:dire:3p:125**: Complète la phrase avec dire à l’imparfait : Les témoins ___ ce qu’ils ont vu. Réponse : **disaient**.
+- **v3-granular-forms:imparfait-application-context:dire:1s:126**: Complète la phrase avec dire à l’imparfait : Je ___ la date à voix haute. Réponse : **disais**.
+- **v3-granular-forms:imparfait-application-context:dire:2s:127**: Complète la phrase avec dire à l’imparfait : Tu ___ ton adresse au livreur. Réponse : **disais**.
+- **v3-granular-forms:imparfait-application-context:dire:3s:128**: Complète la phrase avec dire à l’imparfait : Cette pancarte ___ de ralentir. Réponse : **disait**.
+- **v3-granular-forms:imparfait-application-context:dire:1p:129**: Complète la phrase avec dire à l’imparfait : Nous ___ le nom de notre chanson préférée. Réponse : **disions**.
+- **v3-granular-forms:imparfait-application-context:dire:2p:130**: Complète la phrase avec dire à l’imparfait : Vous ___ oui à cette proposition. Réponse : **disiez**.
+- **v3-granular-forms:imparfait-application-context:dire:3p:131**: Complète la phrase avec dire à l’imparfait : Les enfants ___ bonne nuit à leur grand-mère. Réponse : **disaient**.
+- **v3-granular-forms:imparfait-application-context:voir:1s:132**: Complète la phrase avec voir à l’imparfait : Je ___ une montgolfière au loin. Réponse : **voyais**.
+- **v3-granular-forms:imparfait-application-context:voir:2s:133**: Complète la phrase avec voir à l’imparfait : Tu ___ le phare depuis la plage. Réponse : **voyais**.
+- **v3-granular-forms:imparfait-application-context:voir:3s:134**: Complète la phrase avec voir à l’imparfait : Le chat ___ un oiseau. Réponse : **voyait**.
+- **v3-granular-forms:imparfait-application-context:voir:1p:135**: Complète la phrase avec voir à l’imparfait : Nous ___ les montagnes depuis le toit. Réponse : **voyions**.
+- **v3-granular-forms:imparfait-application-context:voir:2p:136**: Complète la phrase avec voir à l’imparfait : Vous ___ une différence entre ces photos. Réponse : **voyiez**.
+- **v3-granular-forms:imparfait-application-context:voir:3p:137**: Complète la phrase avec voir à l’imparfait : Les astronomes ___ une nouvelle comète. Réponse : **voyaient**.
+- **v3-granular-forms:imparfait-application-context:voir:1s:138**: Complète la phrase avec voir à l’imparfait : Je ___ mon reflet dans la vitre. Réponse : **voyais**.
+- **v3-granular-forms:imparfait-application-context:voir:2s:139**: Complète la phrase avec voir à l’imparfait : Tu ___ la fin du tunnel. Réponse : **voyais**.
+- **v3-granular-forms:imparfait-application-context:voir:3s:140**: Complète la phrase avec voir à l’imparfait : La conductrice ___ le feu rouge. Réponse : **voyait**.
+- **v3-granular-forms:imparfait-application-context:voir:1p:141**: Complète la phrase avec voir à l’imparfait : Nous ___ un arc-en-ciel. Réponse : **voyions**.
+- **v3-granular-forms:imparfait-application-context:voir:2p:142**: Complète la phrase avec voir à l’imparfait : Vous ___ le sommet à travers les nuages. Réponse : **voyiez**.
+- **v3-granular-forms:imparfait-application-context:voir:3p:143**: Complète la phrase avec voir à l’imparfait : Les plongeurs ___ des poissons colorés. Réponse : **voyaient**.
+- **v3-granular-forms:imparfait-application-context:pouvoir:1s:144**: Complète la phrase avec pouvoir à l’imparfait : Je ___ porter cette boîte. Réponse : **pouvais**.
+- **v3-granular-forms:imparfait-application-context:pouvoir:2s:145**: Complète la phrase avec pouvoir à l’imparfait : Tu ___ emprunter mon stylo. Réponse : **pouvais**.
+- **v3-granular-forms:imparfait-application-context:pouvoir:3s:146**: Complète la phrase avec pouvoir à l’imparfait : Le public ___ poser des questions. Réponse : **pouvait**.
+- **v3-granular-forms:imparfait-application-context:pouvoir:1p:147**: Complète la phrase avec pouvoir à l’imparfait : Nous ___ construire un abri. Réponse : **pouvions**.
+- **v3-granular-forms:imparfait-application-context:pouvoir:2p:148**: Complète la phrase avec pouvoir à l’imparfait : Vous ___ consulter le plan. Réponse : **pouviez**.
+- **v3-granular-forms:imparfait-application-context:pouvoir:3p:149**: Complète la phrase avec pouvoir à l’imparfait : Les passagers ___ descendre ici. Réponse : **pouvaient**.
+- **v3-granular-forms:imparfait-application-context:pouvoir:1s:150**: Complète la phrase avec pouvoir à l’imparfait : Je ___ traduire cette phrase. Réponse : **pouvais**.
+- **v3-granular-forms:imparfait-application-context:pouvoir:2s:151**: Complète la phrase avec pouvoir à l’imparfait : Tu ___ ouvrir ton cadeau. Réponse : **pouvais**.
+- **v3-granular-forms:imparfait-application-context:pouvoir:3s:152**: Complète la phrase avec pouvoir à l’imparfait : Cette clé ___ tourner dans la serrure. Réponse : **pouvait**.
+- **v3-granular-forms:imparfait-application-context:pouvoir:1p:153**: Complète la phrase avec pouvoir à l’imparfait : Nous ___ partager le trajet. Réponse : **pouvions**.
+- **v3-granular-forms:imparfait-application-context:pouvoir:2p:154**: Complète la phrase avec pouvoir à l’imparfait : Vous ___ éteindre la lumière. Réponse : **pouviez**.
+- **v3-granular-forms:imparfait-application-context:pouvoir:3p:155**: Complète la phrase avec pouvoir à l’imparfait : Les bénévoles ___ préparer la salle. Réponse : **pouvaient**.
+- **v3-granular-forms:imparfait-application-context:vouloir:1s:156**: Complète la phrase avec vouloir à l’imparfait : Je ___ visiter cette île. Réponse : **voulais**.
+- **v3-granular-forms:imparfait-application-context:vouloir:2s:157**: Complète la phrase avec vouloir à l’imparfait : Tu ___ devenir vétérinaire. Réponse : **voulais**.
+- **v3-granular-forms:imparfait-application-context:vouloir:3s:158**: Complète la phrase avec vouloir à l’imparfait : Le client ___ échanger son billet. Réponse : **voulait**.
+- **v3-granular-forms:imparfait-application-context:vouloir:1p:159**: Complète la phrase avec vouloir à l’imparfait : Nous ___ planter des arbres. Réponse : **voulions**.
+- **v3-granular-forms:imparfait-application-context:vouloir:2p:160**: Complète la phrase avec vouloir à l’imparfait : Vous ___ raconter votre voyage. Réponse : **vouliez**.
+- **v3-granular-forms:imparfait-application-context:vouloir:3p:161**: Complète la phrase avec vouloir à l’imparfait : Les voisins ___ nettoyer la plage. Réponse : **voulaient**.
+- **v3-granular-forms:imparfait-application-context:vouloir:1s:162**: Complète la phrase avec vouloir à l’imparfait : Je ___ goûter ce fruit. Réponse : **voulais**.
+- **v3-granular-forms:imparfait-application-context:vouloir:2s:163**: Complète la phrase avec vouloir à l’imparfait : Tu ___ photographier le coucher du soleil. Réponse : **voulais**.
+- **v3-granular-forms:imparfait-application-context:vouloir:3s:164**: Complète la phrase avec vouloir à l’imparfait : La chanteuse ___ remercier son public. Réponse : **voulait**.
+- **v3-granular-forms:imparfait-application-context:vouloir:1p:165**: Complète la phrase avec vouloir à l’imparfait : Nous ___ apprendre cette danse. Réponse : **voulions**.
+- **v3-granular-forms:imparfait-application-context:vouloir:2p:166**: Complète la phrase avec vouloir à l’imparfait : Vous ___ dessiner les costumes. Réponse : **vouliez**.
+- **v3-granular-forms:imparfait-application-context:vouloir:3p:167**: Complète la phrase avec vouloir à l’imparfait : Les joueurs ___ améliorer leur défense. Réponse : **voulaient**.
+- **v3-granular-forms:imparfait-application-context:savoir:1s:168**: Complète la phrase avec savoir à l’imparfait : Je ___ préparer une omelette. Réponse : **savais**.
+- **v3-granular-forms:imparfait-application-context:savoir:2s:169**: Complète la phrase avec savoir à l’imparfait : Tu ___ où se cache la clé. Réponse : **savais**.
+- **v3-granular-forms:imparfait-application-context:savoir:3s:170**: Complète la phrase avec savoir à l’imparfait : Le pilote ___ lire cette carte. Réponse : **savait**.
+- **v3-granular-forms:imparfait-application-context:savoir:1p:171**: Complète la phrase avec savoir à l’imparfait : Nous ___ reconnaître ce symbole. Réponse : **savions**.
+- **v3-granular-forms:imparfait-application-context:savoir:2p:172**: Complète la phrase avec savoir à l’imparfait : Vous ___ résoudre cette énigme. Réponse : **saviez**.
+- **v3-granular-forms:imparfait-application-context:savoir:3p:173**: Complète la phrase avec savoir à l’imparfait : Les enfants ___ attacher leurs lacets. Réponse : **savaient**.
+- **v3-granular-forms:imparfait-application-context:savoir:1s:174**: Complète la phrase avec savoir à l’imparfait : Je ___ quand passe le bus. Réponse : **savais**.
+- **v3-granular-forms:imparfait-application-context:savoir:2s:175**: Complète la phrase avec savoir à l’imparfait : Tu ___ fabriquer un cerf-volant. Réponse : **savais**.
+- **v3-granular-forms:imparfait-application-context:savoir:3s:176**: Complète la phrase avec savoir à l’imparfait : La guide ___ répondre aux questions. Réponse : **savait**.
+- **v3-granular-forms:imparfait-application-context:savoir:1p:177**: Complète la phrase avec savoir à l’imparfait : Nous ___ pourquoi la glace fond. Réponse : **savions**.
+- **v3-granular-forms:imparfait-application-context:savoir:2p:178**: Complète la phrase avec savoir à l’imparfait : Vous ___ garder un secret. Réponse : **saviez**.
+- **v3-granular-forms:imparfait-application-context:savoir:3p:179**: Complète la phrase avec savoir à l’imparfait : Les secouristes ___ pratiquer les premiers gestes. Réponse : **savaient**.
+- **v3-granular-forms:imparfait-application-context:devoir:1s:180**: Complète la phrase avec devoir à l’imparfait : Je ___ nourrir les poissons. Réponse : **devais**.
+- **v3-granular-forms:imparfait-application-context:devoir:2s:181**: Complète la phrase avec devoir à l’imparfait : Tu ___ mettre un casque. Réponse : **devais**.
+- **v3-granular-forms:imparfait-application-context:devoir:3s:182**: Complète la phrase avec devoir à l’imparfait : Le livreur ___ trouver une autre entrée. Réponse : **devait**.
+- **v3-granular-forms:imparfait-application-context:devoir:1p:183**: Complète la phrase avec devoir à l’imparfait : Nous ___ économiser l’eau. Réponse : **devions**.
+- **v3-granular-forms:imparfait-application-context:devoir:2p:184**: Complète la phrase avec devoir à l’imparfait : Vous ___ signer ce formulaire. Réponse : **deviez**.
+- **v3-granular-forms:imparfait-application-context:devoir:3p:185**: Complète la phrase avec devoir à l’imparfait : Les coureurs ___ franchir la ligne. Réponse : **devaient**.
+- **v3-granular-forms:imparfait-application-context:devoir:1s:186**: Complète la phrase avec devoir à l’imparfait : Je ___ rappeler mon cousin. Réponse : **devais**.
+- **v3-granular-forms:imparfait-application-context:devoir:2s:187**: Complète la phrase avec devoir à l’imparfait : Tu ___ peser les ingrédients. Réponse : **devais**.
+- **v3-granular-forms:imparfait-application-context:devoir:3s:188**: Complète la phrase avec devoir à l’imparfait : La gardienne ___ fermer le musée. Réponse : **devait**.
+- **v3-granular-forms:imparfait-application-context:devoir:1p:189**: Complète la phrase avec devoir à l’imparfait : Nous ___ respecter le silence. Réponse : **devions**.
+- **v3-granular-forms:imparfait-application-context:devoir:2p:190**: Complète la phrase avec devoir à l’imparfait : Vous ___ attendre votre tour. Réponse : **deviez**.
+- **v3-granular-forms:imparfait-application-context:devoir:3p:191**: Complète la phrase avec devoir à l’imparfait : Les campeurs ___ éteindre leur feu. Réponse : **devaient**.
 
 All eighteen paths still require question, lesson, overlap, prerequisite and calibration review. The full French release also needs the other targets; this is a review package for one part of that release, not a reduced release scope.
 

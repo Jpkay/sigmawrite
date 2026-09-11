@@ -1,5 +1,5 @@
 {
-  "candidateChecksum": "sha256:1a698904435f323615dac417cc830ccfaf290386c998dd6a945b73070bb32adf",
+  "candidateChecksum": "sha256:d4f1dde79be2d3f4f67651c9a89c8d1093d8f94dd2fc8ea6cb871da8efe28fa5",
   "method": "Pure server-state simulation using actual candidate pools, deterministic correct/incorrect skill profiles and expected response times; not browser, grading, database, or pedagogical validation",
   "runs": [
     {
@@ -26,28 +26,6 @@
               "probability": 0.9940814954403842,
               "distinctItems": 4,
               "distinctContexts": 4,
-              "distinctOccasions": 1,
-              "accuracy": 1,
-              "unconfirmedFeatures": [],
-              "textTypes": [],
-              "contrastingErrorKeys": [],
-              "negativeExampleConfirmed": false,
-              "confirmed": false
-            }
-          ]
-        },
-        {
-          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
-          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
-          "mode": "production",
-          "expectedKnown": true,
-          "status": "uncertain",
-          "modes": [
-            {
-              "mode": "production",
-              "probability": 0.9998285616320933,
-              "distinctItems": 3,
-              "distinctContexts": 1,
               "distinctOccasions": 1,
               "accuracy": 1,
               "unconfirmedFeatures": [],
@@ -136,6 +114,28 @@
               "probability": 0.9283667621776505,
               "distinctItems": 2,
               "distinctContexts": 2,
+              "distinctOccasions": 1,
+              "accuracy": 1,
+              "unconfirmedFeatures": [],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false
+            }
+          ]
+        },
+        {
+          "skillId": "produire_imparfait::writing-controlled-production::verb:aller",
+          "labelFr": "Produire l'imparfait — Conjuguer aller",
+          "mode": "production",
+          "expectedKnown": true,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "production",
+              "probability": 0.9998285616320933,
+              "distinctItems": 3,
+              "distinctContexts": 1,
               "distinctOccasions": 1,
               "accuracy": 1,
               "unconfirmedFeatures": [],
@@ -592,29 +592,6 @@
           ]
         },
         {
-          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
-          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
-          "mode": "production",
-          "expectedKnown": false,
-          "status": "uncertain",
-          "modes": [
-            {
-              "mode": "production",
-              "probability": 0.001164991990680065,
-              "distinctItems": 3,
-              "distinctContexts": 1,
-              "distinctOccasions": 1,
-              "accuracy": 0,
-              "unconfirmedFeatures": [],
-              "textTypes": [],
-              "contrastingErrorKeys": [],
-              "negativeExampleConfirmed": false,
-              "confirmed": false,
-              "provisionalGap": true
-            }
-          ]
-        },
-        {
           "skillId": "produire_present_indicatif::writing-controlled-production::verb:aller",
           "labelFr": "Produire le présent de l'indicatif — Conjuguer aller",
           "mode": "production",
@@ -672,6 +649,29 @@
               "probability": 0.001164991990680065,
               "distinctItems": 3,
               "distinctContexts": 3,
+              "distinctOccasions": 1,
+              "accuracy": 0,
+              "unconfirmedFeatures": [],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false,
+              "provisionalGap": true
+            }
+          ]
+        },
+        {
+          "skillId": "produire_imparfait::writing-controlled-production::verb:aller",
+          "labelFr": "Produire l'imparfait — Conjuguer aller",
+          "mode": "production",
+          "expectedKnown": false,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "production",
+              "probability": 0.001164991990680065,
+              "distinctItems": 3,
+              "distinctContexts": 1,
               "distinctOccasions": 1,
               "accuracy": 0,
               "unconfirmedFeatures": [],
@@ -1159,9 +1159,9 @@
         "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
         "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
         "produire_present_indicatif::writing-controlled-production::verb:aller",
-        "produire_present_indicatif::writing-controlled-production::verb:avoir",
         "produire_pronom_cod::writing-controlled-production::construction:elision",
-        "produire_pronom_cod::writing-controlled-production::construction:la"
+        "produire_pronom_cod::writing-controlled-production::construction:la",
+        "produire_imparfait::writing-controlled-production::verb:aller"
       ],
       "violations": []
     },
@@ -1245,29 +1245,6 @@
           ]
         },
         {
-          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
-          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
-          "mode": "production",
-          "expectedKnown": false,
-          "status": "uncertain",
-          "modes": [
-            {
-              "mode": "production",
-              "probability": 0.001164991990680065,
-              "distinctItems": 3,
-              "distinctContexts": 1,
-              "distinctOccasions": 1,
-              "accuracy": 0,
-              "unconfirmedFeatures": [],
-              "textTypes": [],
-              "contrastingErrorKeys": [],
-              "negativeExampleConfirmed": false,
-              "confirmed": false,
-              "provisionalGap": true
-            }
-          ]
-        },
-        {
           "skillId": "produire_present_indicatif::writing-controlled-production::verb:aller",
           "labelFr": "Produire le présent de l'indicatif — Conjuguer aller",
           "mode": "production",
@@ -1325,6 +1302,29 @@
               "probability": 0.001164991990680065,
               "distinctItems": 3,
               "distinctContexts": 3,
+              "distinctOccasions": 1,
+              "accuracy": 0,
+              "unconfirmedFeatures": [],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false,
+              "provisionalGap": true
+            }
+          ]
+        },
+        {
+          "skillId": "produire_imparfait::writing-controlled-production::verb:aller",
+          "labelFr": "Produire l'imparfait — Conjuguer aller",
+          "mode": "production",
+          "expectedKnown": false,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "production",
+              "probability": 0.001164991990680065,
+              "distinctItems": 3,
+              "distinctContexts": 1,
               "distinctOccasions": 1,
               "accuracy": 0,
               "unconfirmedFeatures": [],
@@ -1786,9 +1786,9 @@
         "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
         "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
         "produire_present_indicatif::writing-controlled-production::verb:aller",
-        "produire_present_indicatif::writing-controlled-production::verb:avoir",
         "produire_pronom_cod::writing-controlled-production::construction:elision",
-        "produire_pronom_cod::writing-controlled-production::construction:la"
+        "produire_pronom_cod::writing-controlled-production::construction:la",
+        "produire_imparfait::writing-controlled-production::verb:aller"
       ],
       "violations": []
     },
@@ -1816,28 +1816,6 @@
               "probability": 0.9940814954403842,
               "distinctItems": 4,
               "distinctContexts": 4,
-              "distinctOccasions": 1,
-              "accuracy": 1,
-              "unconfirmedFeatures": [],
-              "textTypes": [],
-              "contrastingErrorKeys": [],
-              "negativeExampleConfirmed": false,
-              "confirmed": false
-            }
-          ]
-        },
-        {
-          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
-          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
-          "mode": "production",
-          "expectedKnown": true,
-          "status": "uncertain",
-          "modes": [
-            {
-              "mode": "production",
-              "probability": 0.9998285616320933,
-              "distinctItems": 3,
-              "distinctContexts": 1,
               "distinctOccasions": 1,
               "accuracy": 1,
               "unconfirmedFeatures": [],
@@ -1926,6 +1904,28 @@
               "probability": 0.9283667621776505,
               "distinctItems": 2,
               "distinctContexts": 2,
+              "distinctOccasions": 1,
+              "accuracy": 1,
+              "unconfirmedFeatures": [],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false
+            }
+          ]
+        },
+        {
+          "skillId": "produire_imparfait::writing-controlled-production::verb:aller",
+          "labelFr": "Produire l'imparfait — Conjuguer aller",
+          "mode": "production",
+          "expectedKnown": true,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "production",
+              "probability": 0.9998285616320933,
+              "distinctItems": 3,
+              "distinctContexts": 1,
               "distinctOccasions": 1,
               "accuracy": 1,
               "unconfirmedFeatures": [],
@@ -2449,29 +2449,6 @@
           ]
         },
         {
-          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
-          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
-          "mode": "production",
-          "expectedKnown": false,
-          "status": "uncertain",
-          "modes": [
-            {
-              "mode": "production",
-              "probability": 0.001164991990680065,
-              "distinctItems": 3,
-              "distinctContexts": 1,
-              "distinctOccasions": 1,
-              "accuracy": 0,
-              "unconfirmedFeatures": [],
-              "textTypes": [],
-              "contrastingErrorKeys": [],
-              "negativeExampleConfirmed": false,
-              "confirmed": false,
-              "provisionalGap": true
-            }
-          ]
-        },
-        {
           "skillId": "produire_present_indicatif::writing-controlled-production::verb:aller",
           "labelFr": "Produire le présent de l'indicatif — Conjuguer aller",
           "mode": "production",
@@ -2559,6 +2536,29 @@
               "contrastingErrorKeys": [],
               "negativeExampleConfirmed": false,
               "confirmed": false
+            }
+          ]
+        },
+        {
+          "skillId": "produire_imparfait::writing-controlled-production::verb:aller",
+          "labelFr": "Produire l'imparfait — Conjuguer aller",
+          "mode": "production",
+          "expectedKnown": false,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "production",
+              "probability": 0.001164991990680065,
+              "distinctItems": 3,
+              "distinctContexts": 1,
+              "distinctOccasions": 1,
+              "accuracy": 0,
+              "unconfirmedFeatures": [],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false,
+              "provisionalGap": true
             }
           ]
         },
@@ -3054,7 +3054,7 @@
         "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
         "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
         "produire_present_indicatif::writing-controlled-production::verb:aller",
-        "produire_present_indicatif::writing-controlled-production::verb:avoir"
+        "produire_imparfait::writing-controlled-production::verb:aller"
       ],
       "violations": []
     },
@@ -3138,29 +3138,6 @@
           ]
         },
         {
-          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
-          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
-          "mode": "production",
-          "expectedKnown": false,
-          "status": "uncertain",
-          "modes": [
-            {
-              "mode": "production",
-              "probability": 0.001164991990680065,
-              "distinctItems": 3,
-              "distinctContexts": 1,
-              "distinctOccasions": 1,
-              "accuracy": 0,
-              "unconfirmedFeatures": [],
-              "textTypes": [],
-              "contrastingErrorKeys": [],
-              "negativeExampleConfirmed": false,
-              "confirmed": false,
-              "provisionalGap": true
-            }
-          ]
-        },
-        {
           "skillId": "produire_present_indicatif::writing-controlled-production::verb:aller",
           "labelFr": "Produire le présent de l'indicatif — Conjuguer aller",
           "mode": "production",
@@ -3218,6 +3195,29 @@
               "probability": 0.001164991990680065,
               "distinctItems": 3,
               "distinctContexts": 3,
+              "distinctOccasions": 1,
+              "accuracy": 0,
+              "unconfirmedFeatures": [],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false,
+              "provisionalGap": true
+            }
+          ]
+        },
+        {
+          "skillId": "produire_imparfait::writing-controlled-production::verb:aller",
+          "labelFr": "Produire l'imparfait — Conjuguer aller",
+          "mode": "production",
+          "expectedKnown": false,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "production",
+              "probability": 0.001164991990680065,
+              "distinctItems": 3,
+              "distinctContexts": 1,
               "distinctOccasions": 1,
               "accuracy": 0,
               "unconfirmedFeatures": [],
@@ -3699,7 +3699,7 @@
         "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
         "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
         "produire_present_indicatif::writing-controlled-production::verb:aller",
-        "produire_present_indicatif::writing-controlled-production::verb:avoir"
+        "produire_imparfait::writing-controlled-production::verb:aller"
       ],
       "violations": []
     }

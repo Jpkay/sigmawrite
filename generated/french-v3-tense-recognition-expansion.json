@@ -1091,6 +1091,1830 @@
         },
         "verdict": "needs_human_review"
       }
+    },
+    {
+      "itemKey": "v3-tense-recognition:imparfait-sketch",
+      "item": {
+        "nodeKey": "reconnaitre_imparfait",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle phrase contient un verbe conjugué à l’imparfait ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quelle phrase contient un verbe conjugué à l’imparfait ?",
+              "Je dessine le jardin.",
+              "Je dessinerai le jardin.",
+              "J’ai dessiné le jardin.",
+              "Je dessinais le jardin."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je dessinais le jardin.",
+                "Je dessine le jardin.",
+                "Je dessinerai le jardin.",
+                "J’ai dessiné le jardin."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Je dessinais le jardin.",
+            "correct": true
+          },
+          {
+            "text": "Je dessine le jardin.",
+            "correct": false
+          },
+          {
+            "text": "Je dessinerai le jardin.",
+            "correct": false
+          },
+          {
+            "text": "J’ai dessiné le jardin.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:imparfait-choose",
+      "item": {
+        "nodeKey": "reconnaitre_imparfait",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle phrase contient un verbe conjugué à l’imparfait ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quelle phrase contient un verbe conjugué à l’imparfait ?",
+              "Tu choisis la musique.",
+              "Tu choisiras la musique.",
+              "Tu as choisi la musique.",
+              "Tu choisissais la musique."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu choisissais la musique.",
+                "Tu choisis la musique.",
+                "Tu choisiras la musique.",
+                "Tu as choisi la musique."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Tu choisissais la musique.",
+            "correct": true
+          },
+          {
+            "text": "Tu choisis la musique.",
+            "correct": false
+          },
+          {
+            "text": "Tu choisiras la musique.",
+            "correct": false
+          },
+          {
+            "text": "Tu as choisi la musique.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:imparfait-be",
+      "item": {
+        "nodeKey": "reconnaitre_imparfait",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle phrase contient un verbe conjugué à l’imparfait ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quelle phrase contient un verbe conjugué à l’imparfait ?",
+              "La rue est silencieuse.",
+              "La rue sera silencieuse.",
+              "La rue a été silencieuse.",
+              "La rue était silencieuse."
+            ],
+            "assessed": {
+              "sentences": [
+                "La rue était silencieuse.",
+                "La rue est silencieuse.",
+                "La rue sera silencieuse.",
+                "La rue a été silencieuse."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "La rue était silencieuse.",
+            "correct": true
+          },
+          {
+            "text": "La rue est silencieuse.",
+            "correct": false
+          },
+          {
+            "text": "La rue sera silencieuse.",
+            "correct": false
+          },
+          {
+            "text": "La rue a été silencieuse.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:imparfait-have",
+      "item": {
+        "nodeKey": "reconnaitre_imparfait",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle phrase contient un verbe conjugué à l’imparfait ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quelle phrase contient un verbe conjugué à l’imparfait ?",
+              "Nous avons une petite tente.",
+              "Nous aurons une petite tente.",
+              "Nous avons eu une petite tente.",
+              "Nous avions une petite tente."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous avions une petite tente.",
+                "Nous avons une petite tente.",
+                "Nous aurons une petite tente.",
+                "Nous avons eu une petite tente."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Nous avions une petite tente.",
+            "correct": true
+          },
+          {
+            "text": "Nous avons une petite tente.",
+            "correct": false
+          },
+          {
+            "text": "Nous aurons une petite tente.",
+            "correct": false
+          },
+          {
+            "text": "Nous avons eu une petite tente.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:imparfait-see",
+      "item": {
+        "nodeKey": "reconnaitre_imparfait",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle phrase contient un verbe conjugué à l’imparfait ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quelle phrase contient un verbe conjugué à l’imparfait ?",
+              "Vous voyez la mer depuis le balcon.",
+              "Vous verrez la mer depuis le balcon.",
+              "Vous avez vu la mer depuis le balcon.",
+              "Vous voyiez la mer depuis le balcon."
+            ],
+            "assessed": {
+              "sentences": [
+                "Vous voyiez la mer depuis le balcon.",
+                "Vous voyez la mer depuis le balcon.",
+                "Vous verrez la mer depuis le balcon.",
+                "Vous avez vu la mer depuis le balcon."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Vous voyiez la mer depuis le balcon.",
+            "correct": true
+          },
+          {
+            "text": "Vous voyez la mer depuis le balcon.",
+            "correct": false
+          },
+          {
+            "text": "Vous verrez la mer depuis le balcon.",
+            "correct": false
+          },
+          {
+            "text": "Vous avez vu la mer depuis le balcon.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:imparfait-take",
+      "item": {
+        "nodeKey": "reconnaitre_imparfait",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle phrase contient un verbe conjugué à l’imparfait ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quelle phrase contient un verbe conjugué à l’imparfait ?",
+              "Les passagers prennent ce train.",
+              "Les passagers prendront ce train.",
+              "Les passagers ont pris ce train.",
+              "Les passagers prenaient ce train."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les passagers prenaient ce train.",
+                "Les passagers prennent ce train.",
+                "Les passagers prendront ce train.",
+                "Les passagers ont pris ce train."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Les passagers prenaient ce train.",
+            "correct": true
+          },
+          {
+            "text": "Les passagers prennent ce train.",
+            "correct": false
+          },
+          {
+            "text": "Les passagers prendront ce train.",
+            "correct": false
+          },
+          {
+            "text": "Les passagers ont pris ce train.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:imparfait-go",
+      "item": {
+        "nodeKey": "reconnaitre_imparfait",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle phrase contient un verbe conjugué à l’imparfait ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quelle phrase contient un verbe conjugué à l’imparfait ?",
+              "Je vais chez mon oncle.",
+              "J’irai chez mon oncle.",
+              "Je suis allé chez mon oncle.",
+              "J’allais chez mon oncle."
+            ],
+            "assessed": {
+              "sentences": [
+                "J’allais chez mon oncle.",
+                "Je vais chez mon oncle.",
+                "J’irai chez mon oncle.",
+                "Je suis allé chez mon oncle."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "J’allais chez mon oncle.",
+            "correct": true
+          },
+          {
+            "text": "Je vais chez mon oncle.",
+            "correct": false
+          },
+          {
+            "text": "J’irai chez mon oncle.",
+            "correct": false
+          },
+          {
+            "text": "Je suis allé chez mon oncle.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:imparfait-do",
+      "item": {
+        "nodeKey": "reconnaitre_imparfait",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle phrase contient un verbe conjugué à l’imparfait ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quelle phrase contient un verbe conjugué à l’imparfait ?",
+              "Tu fais sécher les fleurs.",
+              "Tu feras sécher les fleurs.",
+              "Tu as fait sécher les fleurs.",
+              "Tu faisais sécher les fleurs."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu faisais sécher les fleurs.",
+                "Tu fais sécher les fleurs.",
+                "Tu feras sécher les fleurs.",
+                "Tu as fait sécher les fleurs."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Tu faisais sécher les fleurs.",
+            "correct": true
+          },
+          {
+            "text": "Tu fais sécher les fleurs.",
+            "correct": false
+          },
+          {
+            "text": "Tu feras sécher les fleurs.",
+            "correct": false
+          },
+          {
+            "text": "Tu as fait sécher les fleurs.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:imparfait-come",
+      "item": {
+        "nodeKey": "reconnaitre_imparfait",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle phrase contient un verbe conjugué à l’imparfait ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quelle phrase contient un verbe conjugué à l’imparfait ?",
+              "Le chat vient près du poêle.",
+              "Le chat viendra près du poêle.",
+              "Le chat est venu près du poêle.",
+              "Le chat venait près du poêle."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le chat venait près du poêle.",
+                "Le chat vient près du poêle.",
+                "Le chat viendra près du poêle.",
+                "Le chat est venu près du poêle."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Le chat venait près du poêle.",
+            "correct": true
+          },
+          {
+            "text": "Le chat vient près du poêle.",
+            "correct": false
+          },
+          {
+            "text": "Le chat viendra près du poêle.",
+            "correct": false
+          },
+          {
+            "text": "Le chat est venu près du poêle.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:imparfait-read",
+      "item": {
+        "nodeKey": "reconnaitre_imparfait",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle phrase contient un verbe conjugué à l’imparfait ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quelle phrase contient un verbe conjugué à l’imparfait ?",
+              "Nous lisons le journal local.",
+              "Nous lirons le journal local.",
+              "Nous avons lu le journal local.",
+              "Nous lisions le journal local."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous lisions le journal local.",
+                "Nous lisons le journal local.",
+                "Nous lirons le journal local.",
+                "Nous avons lu le journal local."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Nous lisions le journal local.",
+            "correct": true
+          },
+          {
+            "text": "Nous lisons le journal local.",
+            "correct": false
+          },
+          {
+            "text": "Nous lirons le journal local.",
+            "correct": false
+          },
+          {
+            "text": "Nous avons lu le journal local.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:imparfait-write",
+      "item": {
+        "nodeKey": "reconnaitre_imparfait",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle phrase contient un verbe conjugué à l’imparfait ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quelle phrase contient un verbe conjugué à l’imparfait ?",
+              "Vous écrivez aux correspondants.",
+              "Vous écrirez aux correspondants.",
+              "Vous avez écrit aux correspondants.",
+              "Vous écriviez aux correspondants."
+            ],
+            "assessed": {
+              "sentences": [
+                "Vous écriviez aux correspondants.",
+                "Vous écrivez aux correspondants.",
+                "Vous écrirez aux correspondants.",
+                "Vous avez écrit aux correspondants."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Vous écriviez aux correspondants.",
+            "correct": true
+          },
+          {
+            "text": "Vous écrivez aux correspondants.",
+            "correct": false
+          },
+          {
+            "text": "Vous écrirez aux correspondants.",
+            "correct": false
+          },
+          {
+            "text": "Vous avez écrit aux correspondants.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:imparfait-sleep",
+      "item": {
+        "nodeKey": "reconnaitre_imparfait",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle phrase contient un verbe conjugué à l’imparfait ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quelle phrase contient un verbe conjugué à l’imparfait ?",
+              "Les chiens dorment sous la table.",
+              "Les chiens dormiront sous la table.",
+              "Les chiens ont dormi sous la table.",
+              "Les chiens dormaient sous la table."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les chiens dormaient sous la table.",
+                "Les chiens dorment sous la table.",
+                "Les chiens dormiront sous la table.",
+                "Les chiens ont dormi sous la table."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Les chiens dormaient sous la table.",
+            "correct": true
+          },
+          {
+            "text": "Les chiens dorment sous la table.",
+            "correct": false
+          },
+          {
+            "text": "Les chiens dormiront sous la table.",
+            "correct": false
+          },
+          {
+            "text": "Les chiens ont dormi sous la table.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:futur_simple-carry",
+      "item": {
+        "nodeKey": "reconnaitre_futur_simple",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle phrase contient un verbe conjugué au futur simple ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quelle phrase contient un verbe conjugué au futur simple ?",
+              "Je porte le drapeau.",
+              "Je portais le drapeau.",
+              "Je vais porter le drapeau.",
+              "Je porterai le drapeau."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je porterai le drapeau.",
+                "Je porte le drapeau.",
+                "Je portais le drapeau.",
+                "Je vais porter le drapeau."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Je porterai le drapeau.",
+            "correct": true
+          },
+          {
+            "text": "Je porte le drapeau.",
+            "correct": false
+          },
+          {
+            "text": "Je portais le drapeau.",
+            "correct": false
+          },
+          {
+            "text": "Je vais porter le drapeau.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:futur_simple-finish",
+      "item": {
+        "nodeKey": "reconnaitre_futur_simple",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle phrase contient un verbe conjugué au futur simple ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quelle phrase contient un verbe conjugué au futur simple ?",
+              "Tu finis la décoration.",
+              "Tu finissais la décoration.",
+              "Tu vas finir la décoration.",
+              "Tu finiras la décoration."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu finiras la décoration.",
+                "Tu finis la décoration.",
+                "Tu finissais la décoration.",
+                "Tu vas finir la décoration."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Tu finiras la décoration.",
+            "correct": true
+          },
+          {
+            "text": "Tu finis la décoration.",
+            "correct": false
+          },
+          {
+            "text": "Tu finissais la décoration.",
+            "correct": false
+          },
+          {
+            "text": "Tu vas finir la décoration.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:futur_simple-be",
+      "item": {
+        "nodeKey": "reconnaitre_futur_simple",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle phrase contient un verbe conjugué au futur simple ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quelle phrase contient un verbe conjugué au futur simple ?",
+              "Le portail est ouvert.",
+              "Le portail était ouvert.",
+              "Le portail va être ouvert.",
+              "Le portail sera ouvert."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le portail sera ouvert.",
+                "Le portail est ouvert.",
+                "Le portail était ouvert.",
+                "Le portail va être ouvert."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Le portail sera ouvert.",
+            "correct": true
+          },
+          {
+            "text": "Le portail est ouvert.",
+            "correct": false
+          },
+          {
+            "text": "Le portail était ouvert.",
+            "correct": false
+          },
+          {
+            "text": "Le portail va être ouvert.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:futur_simple-have",
+      "item": {
+        "nodeKey": "reconnaitre_futur_simple",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle phrase contient un verbe conjugué au futur simple ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quelle phrase contient un verbe conjugué au futur simple ?",
+              "Nous avons une table près de la fenêtre.",
+              "Nous avions une table près de la fenêtre.",
+              "Nous allons avoir une table près de la fenêtre.",
+              "Nous aurons une table près de la fenêtre."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous aurons une table près de la fenêtre.",
+                "Nous avons une table près de la fenêtre.",
+                "Nous avions une table près de la fenêtre.",
+                "Nous allons avoir une table près de la fenêtre."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Nous aurons une table près de la fenêtre.",
+            "correct": true
+          },
+          {
+            "text": "Nous avons une table près de la fenêtre.",
+            "correct": false
+          },
+          {
+            "text": "Nous avions une table près de la fenêtre.",
+            "correct": false
+          },
+          {
+            "text": "Nous allons avoir une table près de la fenêtre.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:futur_simple-see",
+      "item": {
+        "nodeKey": "reconnaitre_futur_simple",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle phrase contient un verbe conjugué au futur simple ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quelle phrase contient un verbe conjugué au futur simple ?",
+              "Vous voyez les oiseaux migrateurs.",
+              "Vous voyiez les oiseaux migrateurs.",
+              "Vous allez voir les oiseaux migrateurs.",
+              "Vous verrez les oiseaux migrateurs."
+            ],
+            "assessed": {
+              "sentences": [
+                "Vous verrez les oiseaux migrateurs.",
+                "Vous voyez les oiseaux migrateurs.",
+                "Vous voyiez les oiseaux migrateurs.",
+                "Vous allez voir les oiseaux migrateurs."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Vous verrez les oiseaux migrateurs.",
+            "correct": true
+          },
+          {
+            "text": "Vous voyez les oiseaux migrateurs.",
+            "correct": false
+          },
+          {
+            "text": "Vous voyiez les oiseaux migrateurs.",
+            "correct": false
+          },
+          {
+            "text": "Vous allez voir les oiseaux migrateurs.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:futur_simple-take",
+      "item": {
+        "nodeKey": "reconnaitre_futur_simple",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle phrase contient un verbe conjugué au futur simple ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quelle phrase contient un verbe conjugué au futur simple ?",
+              "Les bénévoles prennent les inscriptions.",
+              "Les bénévoles prenaient les inscriptions.",
+              "Les bénévoles vont prendre les inscriptions.",
+              "Les bénévoles prendront les inscriptions."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les bénévoles prendront les inscriptions.",
+                "Les bénévoles prennent les inscriptions.",
+                "Les bénévoles prenaient les inscriptions.",
+                "Les bénévoles vont prendre les inscriptions."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Les bénévoles prendront les inscriptions.",
+            "correct": true
+          },
+          {
+            "text": "Les bénévoles prennent les inscriptions.",
+            "correct": false
+          },
+          {
+            "text": "Les bénévoles prenaient les inscriptions.",
+            "correct": false
+          },
+          {
+            "text": "Les bénévoles vont prendre les inscriptions.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:futur_simple-go",
+      "item": {
+        "nodeKey": "reconnaitre_futur_simple",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle phrase contient un verbe conjugué au futur simple ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quelle phrase contient un verbe conjugué au futur simple ?",
+              "Je vais au tournoi dimanche.",
+              "J’allais au tournoi le dimanche.",
+              "Je vais aller au tournoi dimanche.",
+              "J’irai au tournoi dimanche."
+            ],
+            "assessed": {
+              "sentences": [
+                "J’irai au tournoi dimanche.",
+                "Je vais au tournoi dimanche.",
+                "J’allais au tournoi le dimanche.",
+                "Je vais aller au tournoi dimanche."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "J’irai au tournoi dimanche.",
+            "correct": true
+          },
+          {
+            "text": "Je vais au tournoi dimanche.",
+            "correct": false
+          },
+          {
+            "text": "J’allais au tournoi le dimanche.",
+            "correct": false
+          },
+          {
+            "text": "Je vais aller au tournoi dimanche.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:futur_simple-do",
+      "item": {
+        "nodeKey": "reconnaitre_futur_simple",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle phrase contient un verbe conjugué au futur simple ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quelle phrase contient un verbe conjugué au futur simple ?",
+              "Tu fais une démonstration demain.",
+              "Tu faisais une démonstration chaque lundi.",
+              "Tu vas faire une démonstration demain.",
+              "Tu feras une démonstration demain."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu feras une démonstration demain.",
+                "Tu fais une démonstration demain.",
+                "Tu faisais une démonstration chaque lundi.",
+                "Tu vas faire une démonstration demain."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Tu feras une démonstration demain.",
+            "correct": true
+          },
+          {
+            "text": "Tu fais une démonstration demain.",
+            "correct": false
+          },
+          {
+            "text": "Tu faisais une démonstration chaque lundi.",
+            "correct": false
+          },
+          {
+            "text": "Tu vas faire une démonstration demain.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:futur_simple-come",
+      "item": {
+        "nodeKey": "reconnaitre_futur_simple",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle phrase contient un verbe conjugué au futur simple ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quelle phrase contient un verbe conjugué au futur simple ?",
+              "Le réparateur vient mardi.",
+              "Le réparateur venait le mardi.",
+              "Le réparateur va venir mardi.",
+              "Le réparateur viendra mardi."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le réparateur viendra mardi.",
+                "Le réparateur vient mardi.",
+                "Le réparateur venait le mardi.",
+                "Le réparateur va venir mardi."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Le réparateur viendra mardi.",
+            "correct": true
+          },
+          {
+            "text": "Le réparateur vient mardi.",
+            "correct": false
+          },
+          {
+            "text": "Le réparateur venait le mardi.",
+            "correct": false
+          },
+          {
+            "text": "Le réparateur va venir mardi.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:futur_simple-read",
+      "item": {
+        "nodeKey": "reconnaitre_futur_simple",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle phrase contient un verbe conjugué au futur simple ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quelle phrase contient un verbe conjugué au futur simple ?",
+              "Nous lisons votre proposition.",
+              "Nous lisions votre proposition.",
+              "Nous allons lire votre proposition.",
+              "Nous lirons votre proposition."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous lirons votre proposition.",
+                "Nous lisons votre proposition.",
+                "Nous lisions votre proposition.",
+                "Nous allons lire votre proposition."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Nous lirons votre proposition.",
+            "correct": true
+          },
+          {
+            "text": "Nous lisons votre proposition.",
+            "correct": false
+          },
+          {
+            "text": "Nous lisions votre proposition.",
+            "correct": false
+          },
+          {
+            "text": "Nous allons lire votre proposition.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:futur_simple-write",
+      "item": {
+        "nodeKey": "reconnaitre_futur_simple",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle phrase contient un verbe conjugué au futur simple ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quelle phrase contient un verbe conjugué au futur simple ?",
+              "Vous écrivez le compte rendu.",
+              "Vous écriviez le compte rendu.",
+              "Vous allez écrire le compte rendu.",
+              "Vous écrirez le compte rendu."
+            ],
+            "assessed": {
+              "sentences": [
+                "Vous écrirez le compte rendu.",
+                "Vous écrivez le compte rendu.",
+                "Vous écriviez le compte rendu.",
+                "Vous allez écrire le compte rendu."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Vous écrirez le compte rendu.",
+            "correct": true
+          },
+          {
+            "text": "Vous écrivez le compte rendu.",
+            "correct": false
+          },
+          {
+            "text": "Vous écriviez le compte rendu.",
+            "correct": false
+          },
+          {
+            "text": "Vous allez écrire le compte rendu.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:futur_simple-sleep",
+      "item": {
+        "nodeKey": "reconnaitre_futur_simple",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle phrase contient un verbe conjugué au futur simple ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quelle phrase contient un verbe conjugué au futur simple ?",
+              "Les enfants dorment dans le refuge.",
+              "Les enfants dormaient dans le refuge.",
+              "Les enfants vont dormir dans le refuge.",
+              "Les enfants dormiront dans le refuge."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les enfants dormiront dans le refuge.",
+                "Les enfants dorment dans le refuge.",
+                "Les enfants dormaient dans le refuge.",
+                "Les enfants vont dormir dans le refuge."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Les enfants dormiront dans le refuge.",
+            "correct": true
+          },
+          {
+            "text": "Les enfants dorment dans le refuge.",
+            "correct": false
+          },
+          {
+            "text": "Les enfants dormaient dans le refuge.",
+            "correct": false
+          },
+          {
+            "text": "Les enfants vont dormir dans le refuge.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
     }
   ],
   "annotations": [
@@ -1269,7 +3093,271 @@
       },
       "contextKey": "tense-sentence:recent-place",
       "reason": "De l’entrepôt est un lieu; les autres phrases contiennent de ou d’ suivi d’un infinitif."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:imparfait-sketch",
+      "itemChecksum": "sha256:69585e6df1a760452c3963bf51fe24514c9d2a271fb826b5f895a602e5abf43f",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_imparfait",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:imparfait-sketch",
+      "reason": "La forme conjuguée est à l’imparfait. Les autres phrases sont au présent, au futur simple et au passé composé."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:imparfait-choose",
+      "itemChecksum": "sha256:23d8f79786451b7e17b9c8cfcf2064ae228e86438ae4c0541dd1bcf730ec31f0",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_imparfait",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:imparfait-choose",
+      "reason": "La forme conjuguée est à l’imparfait. Les autres phrases sont au présent, au futur simple et au passé composé."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:imparfait-be",
+      "itemChecksum": "sha256:fca9e7591ea576ed9361c5d13a717b9516f89a7cdda4bd77b6238de085653a21",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_imparfait",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:imparfait-be",
+      "reason": "La forme conjuguée est à l’imparfait. Les autres phrases sont au présent, au futur simple et au passé composé."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:imparfait-have",
+      "itemChecksum": "sha256:54a5063c5fbda9b7695c6df7df03c8aecff7f134680dc67415b8017a1bd0f737",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_imparfait",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:imparfait-have",
+      "reason": "La forme conjuguée est à l’imparfait. Les autres phrases sont au présent, au futur simple et au passé composé."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:imparfait-see",
+      "itemChecksum": "sha256:5adce7f78a072291e2bcd9b1ca289f4b554f3b064e0351bbb7e445b2592fc569",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_imparfait",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:imparfait-see",
+      "reason": "La forme conjuguée est à l’imparfait. Les autres phrases sont au présent, au futur simple et au passé composé."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:imparfait-take",
+      "itemChecksum": "sha256:afeaeb84b07a912360f22698d5f24dbe540dc1e078cbfae0e08511ba89293d91",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_imparfait",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:imparfait-take",
+      "reason": "La forme conjuguée est à l’imparfait. Les autres phrases sont au présent, au futur simple et au passé composé."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:imparfait-go",
+      "itemChecksum": "sha256:38d7e27ac44242ca15fa84dc1e748f1c02d819cd8da96cc32f2bb5367c7dad71",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_imparfait",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:imparfait-go",
+      "reason": "La forme conjuguée est à l’imparfait. Les autres phrases sont au présent, au futur simple et au passé composé."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:imparfait-do",
+      "itemChecksum": "sha256:a428bd792f69592de88ffde96b32cce4ac17906d0b1be966f218aba2c80c9e76",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_imparfait",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:imparfait-do",
+      "reason": "La forme conjuguée est à l’imparfait. Les autres phrases sont au présent, au futur simple et au passé composé."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:imparfait-come",
+      "itemChecksum": "sha256:2335c5809c1a97ecc436e460b00271ad53b246d9e7f2efd3613e3ed0f1e40e91",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_imparfait",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:imparfait-come",
+      "reason": "La forme conjuguée est à l’imparfait. Les autres phrases sont au présent, au futur simple et au passé composé."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:imparfait-read",
+      "itemChecksum": "sha256:df1b619ac012c7420a85669091d4e165ee6a0ab984d681393613a97dbce7b79b",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_imparfait",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:imparfait-read",
+      "reason": "La forme conjuguée est à l’imparfait. Les autres phrases sont au présent, au futur simple et au passé composé."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:imparfait-write",
+      "itemChecksum": "sha256:ab1403695495e80b5214d996335921e8368c5fdaae0bfdc853f75dfc4d942a17",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_imparfait",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:imparfait-write",
+      "reason": "La forme conjuguée est à l’imparfait. Les autres phrases sont au présent, au futur simple et au passé composé."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:imparfait-sleep",
+      "itemChecksum": "sha256:c6ec86729de5350d1007865a0be8702ecf1d656a028510899594aae11d5ca5d5",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_imparfait",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:imparfait-sleep",
+      "reason": "La forme conjuguée est à l’imparfait. Les autres phrases sont au présent, au futur simple et au passé composé."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:futur_simple-carry",
+      "itemChecksum": "sha256:b6a2dc210274ef55e1d37d6227060e69f5183b9cce4fc0946bf3aded4b2b73d1",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_futur_simple",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:futur_simple-carry",
+      "reason": "La forme conjuguée est au futur simple. Les autres phrases sont au présent, à l’imparfait et au futur proche. Le moment annoncé ne suffit pas à nommer le temps."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:futur_simple-finish",
+      "itemChecksum": "sha256:79581ad836e22e8b6da9da57c172e34706b058fcfc7f874d0597a9bf035f7131",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_futur_simple",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:futur_simple-finish",
+      "reason": "La forme conjuguée est au futur simple. Les autres phrases sont au présent, à l’imparfait et au futur proche. Le moment annoncé ne suffit pas à nommer le temps."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:futur_simple-be",
+      "itemChecksum": "sha256:d1476c7bd2c86ebbdefeaa3183f82bf2649c621a0cc46f394c3d083e55e519db",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_futur_simple",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:futur_simple-be",
+      "reason": "La forme conjuguée est au futur simple. Les autres phrases sont au présent, à l’imparfait et au futur proche. Le moment annoncé ne suffit pas à nommer le temps."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:futur_simple-have",
+      "itemChecksum": "sha256:850bc034bfa24459d1bf913703aa2fcad397a96cc8b8e775b70e6d2ae095bebc",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_futur_simple",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:futur_simple-have",
+      "reason": "La forme conjuguée est au futur simple. Les autres phrases sont au présent, à l’imparfait et au futur proche. Le moment annoncé ne suffit pas à nommer le temps."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:futur_simple-see",
+      "itemChecksum": "sha256:8c27d22712ffcaa24f24b72c607c3662b0669bc2e88d44e613eccd7196de676d",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_futur_simple",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:futur_simple-see",
+      "reason": "La forme conjuguée est au futur simple. Les autres phrases sont au présent, à l’imparfait et au futur proche. Le moment annoncé ne suffit pas à nommer le temps."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:futur_simple-take",
+      "itemChecksum": "sha256:46bf7f374d3ed1161e4928410147e84a325dd0adfb0b2e4cb6b3c938a9743ea7",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_futur_simple",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:futur_simple-take",
+      "reason": "La forme conjuguée est au futur simple. Les autres phrases sont au présent, à l’imparfait et au futur proche. Le moment annoncé ne suffit pas à nommer le temps."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:futur_simple-go",
+      "itemChecksum": "sha256:8bb7f93f23e82973c42492ef6c7854279c225f5fe62aca9a6645b460d7a5641e",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_futur_simple",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:futur_simple-go",
+      "reason": "La forme conjuguée est au futur simple. Les autres phrases sont au présent, à l’imparfait et au futur proche. Le moment annoncé ne suffit pas à nommer le temps."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:futur_simple-do",
+      "itemChecksum": "sha256:858227b9dba469bfdbd231c662d37801b7a16fefebd618a7b2e6f5b9ddf5312c",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_futur_simple",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:futur_simple-do",
+      "reason": "La forme conjuguée est au futur simple. Les autres phrases sont au présent, à l’imparfait et au futur proche. Le moment annoncé ne suffit pas à nommer le temps."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:futur_simple-come",
+      "itemChecksum": "sha256:9a6fc45d7646a0dca883dbaf96aa3be1b508d6e81121fc2ed2f1a0b4f8989541",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_futur_simple",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:futur_simple-come",
+      "reason": "La forme conjuguée est au futur simple. Les autres phrases sont au présent, à l’imparfait et au futur proche. Le moment annoncé ne suffit pas à nommer le temps."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:futur_simple-read",
+      "itemChecksum": "sha256:aa3c092423857c8dd368d2f19ad035ae0eaa800635e4b6d7a384b15ffe7a963d",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_futur_simple",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:futur_simple-read",
+      "reason": "La forme conjuguée est au futur simple. Les autres phrases sont au présent, à l’imparfait et au futur proche. Le moment annoncé ne suffit pas à nommer le temps."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:futur_simple-write",
+      "itemChecksum": "sha256:f63b03ccdb1a2300141df193ec4718be516623e604b2bffbc468d4d73161e42d",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_futur_simple",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:futur_simple-write",
+      "reason": "La forme conjuguée est au futur simple. Les autres phrases sont au présent, à l’imparfait et au futur proche. Le moment annoncé ne suffit pas à nommer le temps."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:futur_simple-sleep",
+      "itemChecksum": "sha256:a2813f4d61da0c7a285ff70be93b2107b73bfa9b6d44f33c27e63997989f091a",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_futur_simple",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:futur_simple-sleep",
+      "reason": "La forme conjuguée est au futur simple. Les autres phrases sont au présent, à l’imparfait et au futur proche. Le moment annoncé ne suffit pas à nommer le temps."
     }
   ],
-  "checksum": "sha256:b02309d37e923ce870fb6bdb52e3c23cc96f4ef43dfd99134a90bf680dc0dabe"
+  "checksum": "sha256:37424082b86019794a1be8fa9a5d8aa080aeb4f46b29715668b07cf18ffa2256"
 }
