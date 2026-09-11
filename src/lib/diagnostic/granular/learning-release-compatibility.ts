@@ -29,7 +29,8 @@ export function inspectLearningReleaseCompatibility(source:AssessmentBundle,targ
  };
  // facetChecksum hashes annotations AND all compiled probes, so legitimate
  // bank expansion changes it. Existing compiled semantics must remain exact.
- const facetExpansion=addedItems.length>0&&addedProbes.length>0&&addedProbes.every(id=>addedItems.includes(id));
+ const targetItems=new Set(target.bank.items.map(item=>item.itemKey));
+ const facetExpansion=addedProbes.length>0&&addedProbes.every(id=>targetItems.has(id));
  return {...report,compatible:report.taxonomyUnchanged&&(report.facetsUnchanged||facetExpansion)&&[
   report.changedSkills,report.changedItems,report.changedProbes,report.changedTeaching,report.changedActivities,report.removedScopeTargets,
  ].every(changes=>changes.length===0)};

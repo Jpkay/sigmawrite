@@ -103,3 +103,12 @@ aggregate change only with added bank items and matching new probes, while still
 requiring exact equality of every existing compiled object. A checksum-only
 change and any altered existing item or skill remain rejected. Focused regression
 tests passed; the corrected upgrade still needs candidate browser verification.
+
+The expanded-bank browser check exposed one additional case: v10 makes
+`local-grammar-v1:construction_voix_passive:receptive:core` available although
+its unchanged bank entry already existed in v9. Newly compiled probes therefore
+need backing in the target's validated bank, not necessarily a newly inserted
+bank entry. The compatibility check now permits that case while retaining exact
+old-item/probe/skill comparisons. A regression test covers activation of an
+unused bank item and rejects a new probe with no backing bank entry. No source
+QA session was upgraded during either withheld-button test.

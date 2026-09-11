@@ -46,3 +46,12 @@ it('allows an aggregate facet checksum change from added questions only when old
  target.assessment.probes[0].skillId='different-skill';
  expect(inspectLearningReleaseCompatibility(source,target).compatible).toBe(false);
 });
+
+it('allows a previously unused bank question to become available without changing existing evidence',()=>{
+ const before=structuredClone(source),target=structuredClone(source);
+ const previouslyUnused=before.assessment.probes.pop()!;
+ target.assessment.facetChecksum='newly-available-question';
+ expect(inspectLearningReleaseCompatibility(before,target)).toMatchObject({compatible:true,addedItems:[],addedProbes:[previouslyUnused.id]});
+ target.assessment.probes.push({...previouslyUnused,id:'not-backed-by-bank'});
+ expect(inspectLearningReleaseCompatibility(before,target).compatible).toBe(false);
+});
