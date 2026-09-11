@@ -1,5 +1,5 @@
 {
-  "status": "candidate_build_ready_bank_import_running_not_published",
+  "status": "published_candidate_full_browser_journey_running_not_activated",
   "sourceCommit": "0657d2a6",
   "frozenWorkspace": "/Users/jean-philippekayobotsi/.codex/release-workspaces/sigmawrite-r11-0657d2a6",
   "bankKey": "french-diagnostic-bank-v3-r11",
@@ -1039,22 +1039,72 @@
       "lessons": 11,
       "onboardingRedirect": "passed"
     },
-    "liveUpgradeVerifier": "Prepared and type-checked; not executed before bank publication"
+    "liveUpgradeVerifier": {
+      "base": "https://sigmawrite-ok6vwt8wr-jpkays-projects.vercel.app",
+      "sourceId": "dcd7d392-22ea-47a0-b2c6-e20803fdeb96",
+      "successorId": "864422cf-df87-4fb3-aefe-ec8009f3a9d0",
+      "targetRelease": "23f45718-cefe-4948-9f21-43c334ab7fa2",
+      "targetKey": "french-granular-diagnostic-v12",
+      "answers": 63,
+      "wrong": 12,
+      "preserved": {
+        "observations": true,
+        "refinements": true,
+        "activeSeconds": true,
+        "completedTeachingIds": true,
+        "exposedMaterialKeys": true,
+        "exposedLearningItemIds": true,
+        "exposedReadingContexts": true,
+        "phase": true,
+        "paused": true,
+        "completionReason": true
+      },
+      "answerOriginsPreserved": true,
+      "originalUnchanged": true,
+      "reload": true
+    },
+    "relationalBank": {
+      "version": "french-granular-parallel-publication-v1",
+      "ready": true,
+      "authorization": "product-owner-request-2026-09-11",
+      "reviewOwner": "product_owner",
+      "bankChecksum": "sha256:38428b19c04a91aa822c63d9b491e50c4448705d960b9f3491244e23a8c9a1f9",
+      "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+      "bundleChecksum": "sha256:e2a5aa12bc8e88f819477d672217e72bb2c5a5e3297fd345974b48364ddac478",
+      "policyChecksum": "sha256:e2128853e641cf8c05bfd37d1ade7267cabb7941732eaa89f35b1e699c6b78e6",
+      "scopeChecksum": "sha256:a45bda8e997ea37d8738922e9cde0921c00c3b7fe792ab8b0bd5b4235333fc1b",
+      "bankItemCount": 5788,
+      "assessmentTargets": 197,
+      "teachingTargets": 197,
+      "instructionGapSkillIds": [],
+      "freshCheckGapSkillIds": [],
+      "verifiedItems": 5788
+    },
+    "candidateDefault": {
+      "sessionId": "c325caff-334d-45db-ad27-0b3e5e7ccbec",
+      "releaseId": "23f45718-cefe-4948-9f21-43c334ab7fa2",
+      "scope": 197,
+      "defaultSelectedByApplication": true,
+      "reloadPreservedSession": true,
+      "reportCorrection": "The initial browser assertion checked 197 correctly, but its output used a copied literal 172. This read-only check confirms the bound live session has 197 targets; no session was changed."
+    },
+    "fullCandidateJourney": "Running; completion not yet verified"
   },
   "freshQA": {
     "username": "doves.granular.r11.default.qa",
     "studentId": "a4be4011-0e47-4428-b23d-7f0b325edc9e",
-    "sessionCreated": false
+    "sessionCreated": true,
+    "sessionId": "c325caff-334d-45db-ad27-0b3e5e7ccbec"
   },
   "remaining": [
-    "Wait for bank import completion without restarting the live job",
-    "Verify relational bank and publish immutable v12 candidate",
-    "Verify candidate default selection, full diagnostic and lesson journey, and completed-student upgrade",
+    "Complete the fresh full diagnostic-to-results-to-lesson browser journey",
     "Promote only after verification and check public behavior",
     "Continue full graph question coverage and owner review"
   ],
   "bankId": "5116d841-302c-41bd-a025-350bfffb1986",
-  "lastObservedImportedMemberships": 2923,
+  "lastObservedImportedMemberships": 5788,
   "candidateDeploymentId": "dpl_kBk2uZ87bZNVqXDC8GTXMP7pewh9",
-  "candidateBuild": "Ready verified with Vercel inspect"
+  "candidateBuild": "Ready verified with Vercel inspect",
+  "releaseId": "23f45718-cefe-4948-9f21-43c334ab7fa2",
+  "bundleChecksum": "sha256:e2a5aa12bc8e88f819477d672217e72bb2c5a5e3297fd345974b48364ddac478"
 }
