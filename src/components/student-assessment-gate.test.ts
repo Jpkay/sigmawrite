@@ -14,6 +14,7 @@ describe("student assessment-first route gate", () => {
 
   it("keeps onboarding, diagnostic, and settings reachable", () => {
     expect(studentAssessmentRedirect({ pathname: "/student/diagnostic", onboarded: true, diagnosticComplete: false })).toBeNull();
+    expect(studentAssessmentRedirect({ pathname: "/student/diagnostic/review", onboarded: false, diagnosticComplete: false })).toBeNull();
     expect(studentAssessmentRedirect({ pathname: "/student/settings", onboarded: false, diagnosticComplete: false })).toBeNull();
   });
 

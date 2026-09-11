@@ -7,6 +7,7 @@ import { hasStudentBackend, retryStudentHydration, useStudentState } from "@/lib
 const ALWAYS_AVAILABLE = new Set([
   "/student/onboarding",
   "/student/diagnostic",
+  "/student/diagnostic/review",
   "/student/settings",
 ]);
 const PILOT_PREVIEW_AVAILABLE = new Set(["/student/frontier"]);
@@ -49,6 +50,10 @@ export function StudentAssessmentGate({ children, ownerKey }: { children: React.
   useEffect(() => {
     if (destination) router.replace(destination);
   }, [destination, router]);
+
+  // This server-rendered route independently checks ownership, access and a
+  // completed session. It does not need the legacy student-store hydration.
+  if (pathname === "/student/diagnostic/review") return children;
 
   if (state.hydrationError) {
     return <div role="alert" className="space-y-3">
