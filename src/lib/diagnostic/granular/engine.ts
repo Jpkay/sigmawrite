@@ -1,3 +1,4 @@
+import type {ConjugationFormFamily} from "./conjugation-form-family";
 import {inspectReleaseScope,type ReleaseScope} from "./release-scope";
 import {hasVerifiedNovelMaterial,type ObservedMaterialReceipt} from "./material-receipt";
 import {categoryExposurePriority} from "./category-exposure";
@@ -15,6 +16,8 @@ export type Skill = {
   level: number;
   /** Reviewed with the assessment release; probing order, not graph depth or mastery. */
   challengeOrder?: number;
+  /** Release-pinned conjugation sampling category, never mastery evidence. */
+  formFamily?: ConjugationFormFamily;
   prerequisites: readonly string[];
   modes: readonly Mode[];
   anchor?: boolean;
@@ -287,12 +290,12 @@ export function selectProbe(skills: readonly Skill[], bank: readonly Probe[], ob
   }
   const domainOf = (skill: Skill) => skill.domain ?? skill.branch;
   const groupOf=(skill:Skill)=>skill.samplingGroup??domainOf(skill);
-  const balance=(values:string[],history:readonly Observation[],key:(skill:Skill)=>string)=>values.sort((a,b)=>{
+  const balance=(values:string[],history:readonly Observation[],key:(skill:Skill)=>string,tieRank:(value:string)=>number=()=>0)=>values.sort((a,b)=>{
     const entries=(value:string)=>history.filter(observation=>key(skillById.get(observation.skillId)!)===value);
     const left=entries(a),right=entries(b);
     const seconds=(observations:readonly Observation[])=>observations.reduce((sum,observation)=>sum+Math.max(0,observation.activeSeconds),0);
     // Count breaks zero-time ties so quick answers/skips cannot monopolize a domain.
-    return seconds(left)-seconds(right)||left.length-right.length||a.localeCompare(b);
+    return seconds(left)-seconds(right)||left.length-right.length||tieRank(a)-tieRank(b)||a.localeCompare(b);
   });
   const domain=balance([...new Set(available.map(item=>domainOf(skillById.get(item.skillId)!)))],observed,domainOf)[0];
   const domainItems=available.filter(item=>domainOf(skillById.get(item.skillId)!)===domain);
@@ -310,8 +313,21 @@ export function selectProbe(skills: readonly Skill[], bank: readonly Probe[], ob
       :skill.branch.startsWith("conjugation:pattern:")?"verb_patterns":"general_conjugation"
     :groupOf(skill);
   const family=balance([...new Set(groupItems.map(item=>familyOf(skillById.get(item.skillId)!)))],groupHistory,familyOf)[0];
-  const familyItems=groupItems.filter(item=>familyOf(skillById.get(item.skillId)!)===family);
-  const familyHistory=groupHistory.filter(observation=>familyOf(skillById.get(observation.skillId)!)===family);
+  const allFamilyItems=groupItems.filter(item=>familyOf(skillById.get(item.skillId)!)===family);
+  const allFamilyHistory=groupHistory.filter(observation=>familyOf(skillById.get(observation.skillId)!)===family);
+  const formOf=(skill:Skill)=>skill.formFamily??"foundation";
+  const lastFamilyAnswer=allFamilyHistory.at(-1);
+  const lastFamilySkill=lastFamilyAnswer?skillById.get(lastFamilyAnswer.skillId):undefined;
+  // A failed challenge may send the next visit across form families to an
+  // actual prerequisite. Domain/strand/verb-family balance remains intact.
+  const recovery=lastFamilyAnswer&&!lastFamilyAnswer.correct&&lastFamilySkill
+    ?allFamilyItems.filter(item=>lastFamilySkill.prerequisites.includes(item.skillId)).sort((a,b)=>
+      challengeOf(skillById.get(b.skillId)!)-challengeOf(skillById.get(a.skillId)!)||a.id.localeCompare(b.id)):[];
+  const formPriority:Record<string,number>={foundation:0,simple:1,compound:2,periphrastic:3,contrast:4};
+  const form=recovery.length?formOf(skillById.get(recovery[0].skillId)!):balance(
+    [...new Set(allFamilyItems.map(item=>formOf(skillById.get(item.skillId)!)))],allFamilyHistory,formOf,value=>formPriority[value]??5)[0];
+  const familyItems=allFamilyItems.filter(item=>formOf(skillById.get(item.skillId)!)===form);
+  const familyHistory=allFamilyHistory.filter(observation=>formOf(skillById.get(observation.skillId)!)===form);
   const branches=[...new Set(familyItems.map(item=>skillById.get(item.skillId)!.branch))];
   const branchCount=(branch:string)=>familyHistory.filter(observation=>skillById.get(observation.skillId)!.branch===branch).length;
   // Domain and strand time are still balanced on every question. Within the
@@ -322,9 +338,9 @@ export function selectProbe(skills: readonly Skill[], bank: readonly Probe[], ob
   branches.sort((a,b)=>Math.floor(branchCount(a)/visitSize)-Math.floor(branchCount(b)/visitSize)||a.localeCompare(b));
   // Follow actual prerequisites across branch boundaries within the already
   // selected family. Domain/strand/family time balance still takes precedence.
-  const recent=familyHistory.at(-1),recentSkill=recent?skillById.get(recent.skillId):undefined;
+  const recent=recovery.length?lastFamilyAnswer:familyHistory.at(-1),recentSkill=recent?skillById.get(recent.skillId):undefined;
   const crossPrerequisites=recent&&!recent.correct&&recentSkill
-    ?familyItems.filter(item=>recentSkill.prerequisites.includes(item.skillId)&&skillById.get(item.skillId)!.branch!==recentSkill.branch):[];
+    ?familyItems.filter(item=>recentSkill.prerequisites.includes(item.skillId)&&(skillById.get(item.skillId)!.branch!==recentSkill.branch||formOf(skillById.get(item.skillId)!)!==formOf(recentSkill))):[];
   crossPrerequisites.sort((a,b)=>challengeOf(skillById.get(b.skillId)!)-challengeOf(skillById.get(a.skillId)!)||a.id.localeCompare(b.id));
   const branch=crossPrerequisites.length?skillById.get(crossPrerequisites[0].skillId)!.branch:branches[0];
   const crossPrerequisiteIds=new Set(crossPrerequisites.filter(item=>skillById.get(item.skillId)!.branch===branch).map(item=>item.skillId));

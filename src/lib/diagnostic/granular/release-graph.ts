@@ -1,3 +1,4 @@
+import {conjugationFormFamily} from "./conjugation-form-family";
 import {FRENCH_TAXONOMY_V3_CANDIDATE as graph} from "@/lib/taxonomy/french-v3";
 import type {EvidenceSkill} from "./v3-adapter";
 import {buildV3Facets} from "./facets";
@@ -19,6 +20,7 @@ export function inspectAssessmentGraph(skills:readonly EvidenceSkill[]):boolean{
    if(!node?.evidence.some(evidence=>evidence.key===skill.evidenceKey))return false;
    if(skill.facetKey!==undefined&&facets.get(skill.facetKey)?.nodeKey!==skill.nodeKey)return false;
    if(skill.challengeOrder!==undefined&&skill.challengeOrder!==(skill.facetKey?conjugationChallengeOrder(facets.get(skill.facetKey)):conjugationNodeChallengeOrder(skill.nodeKey)))return false;
+   if(skill.formFamily!==undefined&&skill.formFamily!==conjugationFormFamily(skill.nodeKey))return false;
    const key=JSON.stringify([skill.nodeKey,skill.evidenceKey]);
    byEvidence.set(key,[...(byEvidence.get(key)??[]),skill]);
   }

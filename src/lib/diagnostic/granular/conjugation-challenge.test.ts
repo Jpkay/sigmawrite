@@ -85,9 +85,9 @@ it("maps recognition and interpretation to draft tense ranks while preserving se
   }
 });
 
-it("begins tense interpretation with present use and probes later use after sufficient evidence", () => {
+it("preserves the prior interpretation route for releases without form-family metadata", () => {
   const targets = ["interpreter_usages_present", "interpreter_futur_proche", "interpreter_conditionnel_present"].map(node =>
-    refined.skills.find(skill => skill.nodeKey === node)!);
+    ({...refined.skills.find(skill => skill.nodeKey === node)!,formFamily:undefined}));
   const pool: Probe[] = targets.flatMap(skill => Array.from({ length: 6 }, (_, i) => ({
     id: `${skill.id}:interpretation:${i}`, skillId: skill.id, mode: skill.modes[0],
     contextId: `interpretation-context-${i}`, difficulty: .5, expectedSeconds: 30, guessProbability: .25,

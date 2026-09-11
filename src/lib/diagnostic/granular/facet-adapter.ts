@@ -1,3 +1,4 @@
+import {conjugationFormFamily} from "./conjugation-form-family";
 import {refinedPrerequisites} from "./facet-prerequisites";
 import {conjugationChallengeOrder,conjugationNodeChallengeOrder} from "./conjugation-challenge";
 import {checksum} from "@/lib/taxonomy/validate";
@@ -33,12 +34,13 @@ export function applyFacetTargets(assessment:V3Assessment,facets:readonly Assess
  const replacements=new Map<string,EvidenceSkill[]>();
  for(const skill of assessment.skills){
   const nodeFacets=byNode.get(skill.nodeKey);
-  replacements.set(skill.id,nodeFacets?.map(facet=>({...skill,id:`${skill.id}::${facet.dimension}:${facet.value}`,facetKey:facet.key,
+  const formFamily=conjugationFormFamily(skill.nodeKey);
+  replacements.set(skill.id,nodeFacets?.map(facet=>({...skill,...(formFamily?{formFamily}:{}),id:`${skill.id}::${facet.dimension}:${facet.value}`,facetKey:facet.key,
    ...(conjugationChallengeOrder(facet)===undefined?{}:{challengeOrder:conjugationChallengeOrder(facet)}),
    labelFr:`${skill.labelFr} — ${facet.labelFr}`,
    branch:facet.dimension==="verb"||facet.dimension==="pattern"?`conjugation:${facet.dimension}:${facet.value}`:`${skill.domain}:${skill.nodeKey}`,
    evidenceRequirements:Object.fromEntries(Object.entries(skill.evidenceRequirements??{}).map(([mode,requirements])=>[mode,{...requirements,...(facet.dimension==="text_type"?{minimumTextTypes:1,parentMinimumTextTypes:requirements.minimumTextTypes??1}:{}),minimumContexts:facet.dimension==="pattern"?2:requirements.minimumContexts,featureRequirements:patternFeatureRequirements(facet)}]))
-  }))??[{...skill,...(conjugationNodeChallengeOrder(skill.nodeKey)===undefined?{}:{challengeOrder:conjugationNodeChallengeOrder(skill.nodeKey)})}]);
+  }))??[{...skill,...(formFamily?{formFamily}:{}),...(conjugationNodeChallengeOrder(skill.nodeKey)===undefined?{}:{challengeOrder:conjugationNodeChallengeOrder(skill.nodeKey)})}]);
  }
  const skills=[...replacements.values()].flat();
  const facetByKey=new Map(facets.map(f=>[f.key,f]));
