@@ -1,0 +1,2637 @@
+{
+  "version": "french-question-repair-review-v1",
+  "status": "draft_requires_review",
+  "sourceBankChecksum": "sha256:36d39eb481651b3e541ab65df29c4b819d236964f28e468140a44e8e88fb0679",
+  "draftBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
+  "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+  "decisionChecksum": "sha256:8d0ab454ed55871ce74f2f0251ce31bca67c987e63f69dc0cd2a9b024390fdc2",
+  "summary": {
+    "questions": 25,
+    "targets": 17,
+    "withoutAssessedIdentity": 10
+  },
+  "rows": [
+    {
+      "questionId": "local-conjugation-gap-v1:produire_passe_recent:controlled_production:foundation",
+      "sourceChecksum": "sha256:40b9d0ffde1768f985919fe518a1c36a5f8261b1287e83771cf88e637c2311d7",
+      "revisedChecksum": "sha256:b8a71b485b5cc235929e27b83a2033c42cd64b29336d492bfd8664f3b8192602",
+      "reason": "The prompt explicitly requests passé récent with tu: venir in the present + de + infinitive. The inherited answer As fini is passé composé. Corrected content requires new review; the historical bank is unchanged.",
+      "priorReviewStatus": "human_approved",
+      "status": "needs_human_review",
+      "target": {
+        "nodeKey": "produire_passe_recent",
+        "labelFr": "Produire le passé récent",
+        "descriptionFr": "Former une action tout juste accomplie avec venir de et l'infinitif.",
+        "evidence": {
+          "key": "writing-controlled-production",
+          "actionFr": "Produire correctement dans des exemples nouveaux : produire le passé récent.",
+          "modality": "writing",
+          "expectation": "controlled_production",
+          "successCriteria": {
+            "minimumAccuracy": 0.8,
+            "minimumDistinctItems": 3,
+            "minimumOccasions": 2,
+            "unaidedTransferRequired": false
+          }
+        }
+      },
+      "before": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Conjugue « finir » au passé récent avec « tu ». Écris seulement le groupe verbal.",
+        "instructionsFr": "Écris uniquement la forme ou le groupe verbal demandé.",
+        "correctAnswer": "As fini",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "difficulty": 25
+      },
+      "after": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Conjugue « finir » au passé récent avec « tu ». Écris seulement le groupe verbal.",
+        "instructionsFr": "Écris uniquement la forme ou le groupe verbal demandé.",
+        "correctAnswer": "viens de finir",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "difficulty": 25
+      },
+      "metrics": {
+        "difficulty": 0.25,
+        "expectedSeconds": 30,
+        "guessProbability": 0.05
+      },
+      "material": {
+        "exposed": [],
+        "assessed": [],
+        "annotationStatus": "missing_assessed_identity"
+      },
+      "contrastingErrorKeys": [],
+      "requiredReviews": [
+        "answer_validity_and_alternatives",
+        "unique_response_and_clear_instructions",
+        "approved_target_fit",
+        "material_novelty_and_error_annotations",
+        "difficulty_and_guessing"
+      ]
+    },
+    {
+      "questionId": "review-draft-v1:construction_accord_sujet_verbe:receptive:stretch",
+      "sourceChecksum": "sha256:c145143ee4d117cbc6c29c9eb7915f34db87f03faed8669b29f857bb149549e1",
+      "revisedChecksum": "sha256:35c922b3e7d918b1f35e12dae36a44a4c79f3ae23c496b1955a04a6a575c817e",
+      "reason": "Replace ambiguous ou coordination with two distinct subjects joined by et, requiring plural agreement.",
+      "priorReviewStatus": "human_approved",
+      "status": "needs_human_review",
+      "target": {
+        "nodeKey": "construction_accord_sujet_verbe",
+        "labelFr": "Analyser l'accord sujet-verbe",
+        "descriptionFr": "Relier la personne et le nombre du verbe à son sujet, y compris lorsque les mots sont éloignés.",
+        "evidence": {
+          "key": "reading-analysis",
+          "actionFr": "Identifier la construction dans des phrases nouvelles et expliquer son rôle : analyser l'accord sujet-verbe.",
+          "modality": "reading",
+          "expectation": "receptive",
+          "successCriteria": {
+            "minimumAccuracy": 0.8,
+            "minimumDistinctItems": 3,
+            "negativeExamplesRequired": true
+          }
+        }
+      },
+      "before": {
+        "nodeKey": "construction_accord_sujet_verbe",
+        "strand": "orthographe_grammaticale",
+        "modality": "grammar_analysis",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisissez la forme verbale correcte : « La pomme ou les poires ___ dans le panier. »",
+        "correctAnswer": "sont",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "choices": [
+          {
+            "text": "est",
+            "correct": false,
+            "feedbackFr": "Avec 'ou', l'accord peut se faire avec le sujet le plus proche. Ici, 'les poires' est pluriel."
+          },
+          {
+            "text": "sont",
+            "correct": true,
+            "feedbackFr": "Correct ! Règle de proximité : le verbe s'accorde avec le dernier sujet, 'les poires'."
+          },
+          {
+            "text": "es",
+            "correct": false,
+            "feedbackFr": "Cette forme est utilisée pour le pronom 'tu'."
+          },
+          {
+            "text": "être",
+            "correct": false,
+            "feedbackFr": "Il s'agit de l'infinitif, il faut conjuguer le verbe."
+          }
+        ],
+        "cefrLevel": "B1",
+        "difficulty": 75
+      },
+      "after": {
+        "nodeKey": "construction_accord_sujet_verbe",
+        "strand": "orthographe_grammaticale",
+        "modality": "grammar_analysis",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme correcte : « Paul et Mina ___ dans la cour. »",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "choices": [
+          {
+            "text": "jouent",
+            "correct": true
+          },
+          {
+            "text": "joue",
+            "correct": false
+          },
+          {
+            "text": "jouez",
+            "correct": false
+          },
+          {
+            "text": "jouer",
+            "correct": false
+          }
+        ],
+        "cefrLevel": "B1",
+        "difficulty": 75
+      },
+      "metrics": {
+        "difficulty": 0.75,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25
+      },
+      "material": {
+        "exposed": [],
+        "assessed": [],
+        "annotationStatus": "missing_assessed_identity"
+      },
+      "contrastingErrorKeys": [],
+      "requiredReviews": [
+        "answer_validity_and_alternatives",
+        "unique_response_and_clear_instructions",
+        "approved_target_fit",
+        "material_novelty_and_error_annotations",
+        "difficulty_and_guessing"
+      ]
+    },
+    {
+      "questionId": "review-draft-v1:accorder_sujet_verbe_ecrit:controlled_production:stretch",
+      "sourceChecksum": "sha256:86f4d59231e01e09b8f90ac87e045d07930e67031bfcb272dd50a644cfe8a524",
+      "revisedChecksum": "sha256:ff13a57c9630766c9f820ee0b953ae235fd8bd478e7c34035fa92bdf22b32a44",
+      "reason": "Remove the resumptive nous cue so the student must derive first-person plural agreement from toi et moi.",
+      "priorReviewStatus": "human_approved",
+      "status": "needs_human_review",
+      "target": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "labelFr": "Réaliser l'accord sujet-verbe",
+        "descriptionFr": "Écrire la terminaison verbale commandée par la personne et le nombre du sujet explicite.",
+        "evidence": {
+          "key": "writing-controlled-production",
+          "actionFr": "Écrire sans modèle la forme attendue dans une dictée de mots, une phrase lacunaire ou une transformation : réaliser l'accord sujet-verbe.",
+          "modality": "writing",
+          "expectation": "controlled_production",
+          "successCriteria": {
+            "minimumAccuracy": 0.8,
+            "minimumDistinctItems": 3,
+            "minimumOccasions": 2,
+            "unaidedResponseRequired": true,
+            "novelWordsRequired": true
+          }
+        }
+      },
+      "before": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Conjuguez le verbe entre parenthèses au présent de l'indicatif : « Toi et moi, nous (être) amis. »",
+        "correctAnswer": "sommes",
+        "acceptableAnswers": [
+          "sommes"
+        ],
+        "validatorType": "exact",
+        "cefrLevel": "B1",
+        "difficulty": 75
+      },
+      "after": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec être au présent : « Toi et moi ___ amis. » Écris seulement le verbe.",
+        "correctAnswer": "sommes",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "cefrLevel": "B1",
+        "difficulty": 75
+      },
+      "metrics": {
+        "difficulty": 0.75,
+        "expectedSeconds": 30,
+        "guessProbability": 0.05
+      },
+      "material": {
+        "exposed": [],
+        "assessed": [],
+        "annotationStatus": "missing_assessed_identity"
+      },
+      "contrastingErrorKeys": [],
+      "requiredReviews": [
+        "answer_validity_and_alternatives",
+        "unique_response_and_clear_instructions",
+        "approved_target_fit",
+        "material_novelty_and_error_annotations",
+        "difficulty_and_guessing"
+      ]
+    },
+    {
+      "questionId": "local-spelling-gap-v1:construction_accord_sujet_verbe:controlled_production:stretch",
+      "sourceChecksum": "sha256:e9ea7f9ad00558dcabee3a6fb56493e1019ee5c3e58e731a7e76e3c021b936c3",
+      "revisedChecksum": "sha256:292a84af15ff4d8a2e27d4bfde756fc4ae357fbec4ad14bbc77d087b168f6645",
+      "reason": "Use unambiguous additive et coordination instead of unconstrained ni interpretation.",
+      "priorReviewStatus": "human_approved",
+      "status": "needs_human_review",
+      "target": {
+        "nodeKey": "construction_accord_sujet_verbe",
+        "labelFr": "Analyser l'accord sujet-verbe",
+        "descriptionFr": "Relier la personne et le nombre du verbe à son sujet, y compris lorsque les mots sont éloignés.",
+        "evidence": {
+          "key": "writing-controlled-production",
+          "actionFr": "Compléter, corriger ou transformer une phrase nouvelle pour produire correctement : analyser l'accord sujet-verbe.",
+          "modality": "writing",
+          "expectation": "controlled_production",
+          "successCriteria": {
+            "minimumAccuracy": 0.8,
+            "minimumDistinctItems": 3,
+            "minimumOccasions": 2,
+            "unaidedResponseRequired": true,
+            "novelSentencesRequired": true
+          }
+        }
+      },
+      "before": {
+        "nodeKey": "construction_accord_sujet_verbe",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "transform",
+        "promptFr": "Corrige : « Ni Paul ni Mina ne vient demain. »",
+        "instructionsFr": "Écris uniquement la réponse corrigée.",
+        "correctAnswer": "Ni Paul ni Mina ne viennent demain.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "difficulty": 75
+      },
+      "after": {
+        "nodeKey": "construction_accord_sujet_verbe",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "transform",
+        "promptFr": "Corrige l’accord du verbe et réécris la phrase : « Paul et Mina vient demain. »",
+        "instructionsFr": "Écris uniquement la réponse corrigée.",
+        "correctAnswer": "Paul et Mina viennent demain.",
+        "acceptableAnswers": [
+          "Paul et Mina viennent demain"
+        ],
+        "validatorType": "exact",
+        "difficulty": 75
+      },
+      "metrics": {
+        "difficulty": 0.75,
+        "expectedSeconds": 30,
+        "guessProbability": 0.05
+      },
+      "material": {
+        "exposed": [],
+        "assessed": [],
+        "annotationStatus": "missing_assessed_identity"
+      },
+      "contrastingErrorKeys": [],
+      "requiredReviews": [
+        "answer_validity_and_alternatives",
+        "unique_response_and_clear_instructions",
+        "approved_target_fit",
+        "material_novelty_and_error_annotations",
+        "difficulty_and_guessing"
+      ]
+    },
+    {
+      "questionId": "local-reading-v1:ordonner_evenements_explicites:receptive:core",
+      "sourceChecksum": "sha256:e5e690b1f5273fd0749cfbc81f307d8396a66275543badfa396a99ad489b3f80",
+      "revisedChecksum": "sha256:9460940639fcf809b8dca9dfe6ef8b6bcf8b7e3cd576b7dfe94f3bbeb10b53e3",
+      "reason": "Correct the passage grammar without changing the explicit sequencing operation or answer.",
+      "priorReviewStatus": "human_approved",
+      "status": "needs_human_review",
+      "target": {
+        "nodeKey": "ordonner_evenements_explicites",
+        "labelFr": "Ordonner des événements explicitement datés",
+        "descriptionFr": "Reconstruire l'ordre d'événements à partir d'indices temporels directement fournis.",
+        "evidence": {
+          "key": "all-receptive",
+          "actionFr": "Sélectionner une réponse et une justification textuelle pour : ordonner des événements explicitement datés.",
+          "modality": "reading",
+          "expectation": "receptive",
+          "successCriteria": {
+            "minimumAccuracy": 0.8,
+            "minimumDistinctTexts": 3,
+            "minimumTextTypes": 2,
+            "evidenceSpanRequired": false
+          }
+        }
+      },
+      "before": {
+        "nodeKey": "ordonner_evenements_explicites",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nEn rangeant une étagère de la bibliothèque, Malik découvrit un vieux carnet portant le nom de Samuel Kabera. Les pages contenaient des mesures de pluie relevées quarante ans plus tôt. Malik aurait aimé garder sa découverte pour lui, mais la bibliothécaire lui expliqua que ces données pouvaient servir aux chercheurs. Il remit donc le carnet au services des archives, qui conserve les documents anciens. La semaine suivante, ils le numérisèrent ensemble. Cette décision permit à une équipe scientifique de comparer les pluies d’autrefois avec celles d’aujourd’hui. Malik comprit alors que partager sa trouvaille était plus utile que de la conserver pour lui seul.\n\nQuel ordre respecte le récit ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "interestKeys": [
+            "history",
+            "mystery"
+          ],
+          "sourceTextKey": "notebook",
+          "sourceTextType": "literary"
+        },
+        "choices": [
+          {
+            "text": "découvrir le carnet → le remettre aux archives → le numériser",
+            "correct": true
+          },
+          {
+            "text": "numériser → découvrir → remettre",
+            "correct": false
+          },
+          {
+            "text": "remettre → découvrir → numériser",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "after": {
+        "nodeKey": "ordonner_evenements_explicites",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nEn rangeant une étagère de la bibliothèque, Malik découvrit un vieux carnet portant le nom de Samuel Kabera. Les pages contenaient des mesures de pluie relevées quarante ans plus tôt. Malik aurait aimé garder sa découverte pour lui, mais la bibliothécaire lui expliqua que ces données pouvaient servir aux chercheurs. Il remit donc le carnet au service des archives, qui conserve les documents anciens. La semaine suivante, ils le numérisèrent ensemble. Cette décision permit à une équipe scientifique de comparer les pluies d’autrefois avec celles d’aujourd’hui. Malik comprit alors que partager sa trouvaille était plus utile que de la conserver pour lui seul.\n\nQuel ordre respecte le récit ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "interestKeys": [
+            "history",
+            "mystery"
+          ],
+          "sourceTextKey": "notebook",
+          "sourceTextType": "literary"
+        },
+        "choices": [
+          {
+            "text": "découvrir le carnet → le remettre aux archives → le numériser",
+            "correct": true
+          },
+          {
+            "text": "numériser → découvrir → remettre",
+            "correct": false
+          },
+          {
+            "text": "remettre → découvrir → numériser",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "metrics": {
+        "difficulty": 0.5,
+        "expectedSeconds": 60,
+        "guessProbability": 0.3333333333333333
+      },
+      "material": {
+        "exposed": [],
+        "assessed": [],
+        "annotationStatus": "missing_assessed_identity"
+      },
+      "contrastingErrorKeys": [],
+      "requiredReviews": [
+        "answer_validity_and_alternatives",
+        "unique_response_and_clear_instructions",
+        "approved_target_fit",
+        "material_novelty_and_error_annotations",
+        "difficulty_and_guessing"
+      ]
+    },
+    {
+      "questionId": "local-reading-v1:resoudre_pronom_objet:receptive:core",
+      "sourceChecksum": "sha256:40c5c7fe7be06aaacaec92b6c16bcfd1a3595ac5a7a787c4a320fea7052b8b66",
+      "revisedChecksum": "sha256:45d0258cf9405a9f780680e46bc803c5368e725fed8a27945e6832744ead48dd",
+      "reason": "Elicit an actual object-pronoun referent. Preserve the bees passage context identity because this is a revision of the same context.",
+      "priorReviewStatus": "human_approved",
+      "status": "needs_human_review",
+      "target": {
+        "nodeKey": "resoudre_pronom_objet",
+        "labelFr": "Résoudre la référence d'un pronom objet",
+        "descriptionFr": "Identifier l'antécédent d'un pronom complément dans une chaîne locale.",
+        "evidence": {
+          "key": "all-receptive",
+          "actionFr": "Sélectionner une réponse et une justification textuelle pour : résoudre la référence d'un pronom objet.",
+          "modality": "reading",
+          "expectation": "receptive",
+          "successCriteria": {
+            "minimumAccuracy": 0.8,
+            "minimumDistinctTexts": 3,
+            "minimumTextTypes": 2,
+            "evidenceSpanRequired": false
+          }
+        }
+      },
+      "before": {
+        "nodeKey": "resoudre_pronom_objet",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nDans certains quartiers, les abeilles trouvent beaucoup de fleurs au printemps, puis presque plus rien en été. Cette rupture réduit leur nourriture et fragilise les colonies.\n\nLa ville de Musanze a créé des « corridors fleuris » : des bandes de plantes locales reliant les parcs, les écoles et les jardins privés. Les jardiniers choisissent des espèces qui fleurissent à des périodes différentes. Ils évitent aussi les pesticides près de ces passages.\n\nDeux ans après le début du projet, les observateurs comptent davantage d’espèces d’abeilles le long des corridors. Les scientifiques précisent que le climat influence également les populations ; les fleurs ne sont donc pas l’unique explication.\n\nDans « Ils évitent aussi les pesticides », qui est « ils » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "interestKeys": [
+            "animals",
+            "environment"
+          ],
+          "sourceTextKey": "bees",
+          "sourceTextType": "informational"
+        },
+        "choices": [
+          {
+            "text": "les jardiniers",
+            "correct": true
+          },
+          {
+            "text": "les pesticides",
+            "correct": false
+          },
+          {
+            "text": "les corridors",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "after": {
+        "nodeKey": "resoudre_pronom_objet",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nDans certains quartiers, les abeilles trouvent beaucoup de fleurs au printemps, puis presque plus rien en été. Cette rupture réduit leur nourriture et fragilise les colonies.\n\nLa ville de Musanze a créé des « corridors fleuris » : des bandes de plantes locales reliant les parcs, les écoles et les jardins privés. Les jardiniers choisissent des espèces qui fleurissent à des périodes différentes. Les pesticides peuvent nuire aux abeilles : les jardiniers les évitent près de ces passages.\n\nDeux ans après le début du projet, les observateurs comptent davantage d’espèces d’abeilles le long des corridors. Les scientifiques précisent que le climat influence également les populations ; les fleurs ne sont donc pas l’unique explication.\n\nDans « les jardiniers les évitent », que reprend « les » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "interestKeys": [
+            "animals",
+            "environment"
+          ],
+          "sourceTextKey": "bees",
+          "sourceTextType": "informational"
+        },
+        "choices": [
+          {
+            "text": "les pesticides",
+            "correct": true
+          },
+          {
+            "text": "les jardiniers",
+            "correct": false
+          },
+          {
+            "text": "les corridors",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "metrics": {
+        "difficulty": 0.5,
+        "expectedSeconds": 60,
+        "guessProbability": 0.3333333333333333
+      },
+      "material": {
+        "exposed": [],
+        "assessed": [],
+        "annotationStatus": "missing_assessed_identity"
+      },
+      "contrastingErrorKeys": [],
+      "requiredReviews": [
+        "answer_validity_and_alternatives",
+        "unique_response_and_clear_instructions",
+        "approved_target_fit",
+        "material_novelty_and_error_annotations",
+        "difficulty_and_guessing"
+      ]
+    },
+    {
+      "questionId": "local-reading-v1:inferer_chronologie_implicite:receptive:foundation",
+      "sourceChecksum": "sha256:40a63cb97f651b2260bcea1b690e9a860add97f2f8719ceb4c239c8847080514",
+      "revisedChecksum": "sha256:7832f59fafa2aae8e13ac45d0b9b4b4e1c12ffceea5d4e1f7ce0108988547003",
+      "reason": "Infer the earlier stamping event from the state of the ticket; it is not narrated as a chronological list.",
+      "priorReviewStatus": "human_approved",
+      "status": "needs_human_review",
+      "target": {
+        "nodeKey": "inferer_chronologie_implicite",
+        "labelFr": "Inférer une relation temporelle implicite",
+        "descriptionFr": "Établir l'ordre de deux événements lorsque les indices sont indirects.",
+        "evidence": {
+          "key": "all-receptive",
+          "actionFr": "Sélectionner une réponse et une justification textuelle pour : inférer une relation temporelle implicite.",
+          "modality": "reading",
+          "expectation": "receptive",
+          "successCriteria": {
+            "minimumAccuracy": 0.8,
+            "minimumDistinctTexts": 3,
+            "minimumTextTypes": 2,
+            "evidenceSpanRequired": true
+          }
+        }
+      },
+      "before": {
+        "nodeKey": "inferer_chronologie_implicite",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLa tempête avait effacé l’horizon lorsque Inès vit la lampe du vieux phare s’éteindre. Un bateau approchait encore de la côte. Malgré le vent qui secouait les vitres, elle prit une batterie de secours et gravit l’escalier. Chaque marche grinçait sous ses pieds, et Inès sentait son cœur battre plus vite. Au sommet, ses mains tremblaient, mais elle raccorda la batterie. Une lumière blanche traversa enfin la pluie. Au loin, le bateau changea de direction. Inès s’assit contre le mur, soulagée, tandis que le grondement des vagues semblait déjà moins menaçant.\n\nQu’a fait Inès juste avant que la lumière reparaisse ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "interestKeys": [
+            "travel",
+            "mystery"
+          ],
+          "sourceTextKey": "lighthouse",
+          "sourceTextType": "literary"
+        },
+        "choices": [
+          {
+            "text": "Elle a raccordé la batterie.",
+            "correct": true
+          },
+          {
+            "text": "Elle s’est assise contre le mur.",
+            "correct": false
+          },
+          {
+            "text": "Elle a vu le bateau changer de direction.",
+            "correct": false
+          }
+        ],
+        "difficulty": 25
+      },
+      "after": {
+        "nodeKey": "inferer_chronologie_implicite",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nNora arriva sur le quai avec, dans sa main, un billet encore tiède portant le tampon du composteur du hall. Le train entra en gare. Elle rangea son billet et monta dans le wagon.\n\nQuel événement a nécessairement eu lieu avant l’arrivée de Nora sur le quai ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "ticket-chronology-v3",
+          "sourceTextType": "literary",
+          "interestKeys": [
+            "travel"
+          ]
+        },
+        "choices": [
+          {
+            "text": "Le billet est passé dans le composteur du hall.",
+            "correct": true
+          },
+          {
+            "text": "Nora est montée dans le wagon.",
+            "correct": false
+          },
+          {
+            "text": "Le train est reparti de la gare.",
+            "correct": false
+          }
+        ],
+        "difficulty": 25
+      },
+      "metrics": {
+        "difficulty": 0.25,
+        "expectedSeconds": 60,
+        "guessProbability": 0.3333333333333333
+      },
+      "material": {
+        "exposed": [],
+        "assessed": [],
+        "annotationStatus": "missing_assessed_identity"
+      },
+      "contrastingErrorKeys": [],
+      "requiredReviews": [
+        "answer_validity_and_alternatives",
+        "unique_response_and_clear_instructions",
+        "approved_target_fit",
+        "material_novelty_and_error_annotations",
+        "difficulty_and_guessing"
+      ]
+    },
+    {
+      "questionId": "local-reading-v1:inferer_chronologie_implicite:receptive:core",
+      "sourceChecksum": "sha256:f53fcad3abf3a5d29b8ca7ae81b26b6e318066b3d046b4db4e2891de9d67dea4",
+      "revisedChecksum": "sha256:1506b1e15cc6621d9641d32bc5492dedc8722adab2c2817e2d6275c4e3368d04",
+      "reason": "Use retrospective plus-que-parfait inside a later scene, requiring reconstruction of event order instead of copying sentence order.",
+      "priorReviewStatus": "human_approved",
+      "status": "needs_human_review",
+      "target": {
+        "nodeKey": "inferer_chronologie_implicite",
+        "labelFr": "Inférer une relation temporelle implicite",
+        "descriptionFr": "Établir l'ordre de deux événements lorsque les indices sont indirects.",
+        "evidence": {
+          "key": "all-receptive",
+          "actionFr": "Sélectionner une réponse et une justification textuelle pour : inférer une relation temporelle implicite.",
+          "modality": "reading",
+          "expectation": "receptive",
+          "successCriteria": {
+            "minimumAccuracy": 0.8,
+            "minimumDistinctTexts": 3,
+            "minimumTextTypes": 2,
+            "evidenceSpanRequired": true
+          }
+        }
+      },
+      "before": {
+        "nodeKey": "inferer_chronologie_implicite",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nEn rangeant une étagère de la bibliothèque, Malik découvrit un vieux carnet portant le nom de Samuel Kabera. Les pages contenaient des mesures de pluie relevées quarante ans plus tôt. Malik aurait aimé garder sa découverte, mais la bibliothécaire lui expliqua que ces données pouvaient servir aux chercheurs. Il remit donc le carnet aux archives, le service qui conserve les documents anciens. La semaine suivante, ils le numérisèrent ensemble. Cette décision permit à une équipe scientifique de comparer les pluies d’autrefois avec celles d’aujourd’hui. Malik comprit alors que partager sa trouvaille était plus utile que la conserver pour lui seul.\n\nQuel événement a nécessairement eu lieu avant l’étude scientifique ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "interestKeys": [
+            "history",
+            "mystery"
+          ],
+          "sourceTextKey": "notebook",
+          "sourceTextType": "literary"
+        },
+        "choices": [
+          {
+            "text": "Le carnet a été remis aux archives et numérisé.",
+            "correct": true
+          },
+          {
+            "text": "Malik a gardé le carnet chez lui.",
+            "correct": false
+          },
+          {
+            "text": "Les chercheurs ont supprimé les données.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "after": {
+        "nodeKey": "inferer_chronologie_implicite",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nMina ouvrit la boîte et découvrit le gâteau terminé. Sur la table, le bol dans lequel Sami avait mélangé la pâte était encore sale. Mina coupa une part et la posa dans une assiette.\n\nQuel événement est le plus ancien ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "cake-chronology-v3",
+          "sourceTextType": "literary",
+          "interestKeys": [
+            "cooking"
+          ]
+        },
+        "choices": [
+          {
+            "text": "Sami mélange la pâte.",
+            "correct": true
+          },
+          {
+            "text": "Mina ouvre la boîte.",
+            "correct": false
+          },
+          {
+            "text": "Mina coupe une part.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "metrics": {
+        "difficulty": 0.5,
+        "expectedSeconds": 60,
+        "guessProbability": 0.3333333333333333
+      },
+      "material": {
+        "exposed": [],
+        "assessed": [],
+        "annotationStatus": "missing_assessed_identity"
+      },
+      "contrastingErrorKeys": [],
+      "requiredReviews": [
+        "answer_validity_and_alternatives",
+        "unique_response_and_clear_instructions",
+        "approved_target_fit",
+        "material_novelty_and_error_annotations",
+        "difficulty_and_guessing"
+      ]
+    },
+    {
+      "questionId": "local-reading-v1:inferer_chronologie_implicite:receptive:stretch",
+      "sourceChecksum": "sha256:293de11272263883a845de79a661890d4cbf465319a85897914ed17b34e2164b",
+      "revisedChecksum": "sha256:7e58f0641d4689f6fc76075593b096545283f8b2420fe4b8993ef8b84c41e3d0",
+      "reason": "Infer temporal order from layer position and the explicit no-removal/no-mixing constraint, rather than from a narrated sequence.",
+      "priorReviewStatus": "human_approved",
+      "status": "needs_human_review",
+      "target": {
+        "nodeKey": "inferer_chronologie_implicite",
+        "labelFr": "Inférer une relation temporelle implicite",
+        "descriptionFr": "Établir l'ordre de deux événements lorsque les indices sont indirects.",
+        "evidence": {
+          "key": "all-receptive",
+          "actionFr": "Sélectionner une réponse et une justification textuelle pour : inférer une relation temporelle implicite.",
+          "modality": "reading",
+          "expectation": "receptive",
+          "successCriteria": {
+            "minimumAccuracy": 0.8,
+            "minimumDistinctTexts": 3,
+            "minimumTextTypes": 2,
+            "evidenceSpanRequired": true
+          }
+        }
+      },
+      "before": {
+        "nodeKey": "inferer_chronologie_implicite",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLes mangroves sont des forêts qui poussent entre la terre et la mer. Leurs racines forment une véritable nurserie : un abri où grandissent de nombreux jeunes poissons. Elles ralentissent aussi les vagues et protègent les villages côtiers.\n\nDans plusieurs régions, des mangroves ont été coupées pour construire des routes. Sans leurs racines, l’érosion a augmenté et certaines espèces ont disparu. Des habitants replantent maintenant des arbres locaux et interdisent le passage des véhicules sur les jeunes parcelles.\n\nAprès cinq ans, les zones restaurées abritent davantage de poissons et perdent moins de sol pendant les tempêtes. La reforestation ne remplace toutefois pas immédiatement une forêt ancienne : elle demande un suivi de longue durée.\n\nQu’est-ce qui a nécessairement précédé les résultats observés après cinq ans ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "interestKeys": [
+            "environment",
+            "animals"
+          ],
+          "sourceTextKey": "mangrove",
+          "sourceTextType": "informational"
+        },
+        "choices": [
+          {
+            "text": "Les habitants ont replanté et protégé les jeunes parcelles.",
+            "correct": true
+          },
+          {
+            "text": "Les véhicules ont traversé davantage les parcelles.",
+            "correct": false
+          },
+          {
+            "text": "La forêt ancienne s’est reformée instantanément.",
+            "correct": false
+          }
+        ],
+        "difficulty": 75
+      },
+      "after": {
+        "nodeKey": "inferer_chronologie_implicite",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLe rapport décrit les résultats de deux parcelles au printemps. La parcelle A porte une couche de compost partiellement décomposée sous une couche de feuilles intactes. La parcelle B ne contient que du compost. Les jardiniers précisent que, dans la parcelle A, chaque couche a été déposée à la surface sans retirer ni mélanger les couches déjà présentes.\n\nDans la parcelle A, quelle étape a nécessairement précédé l’autre ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "soil-chronology-v3",
+          "sourceTextType": "informational",
+          "interestKeys": [
+            "environment"
+          ]
+        },
+        "choices": [
+          {
+            "text": "Le compost a été déposé avant les feuilles.",
+            "correct": true
+          },
+          {
+            "text": "Les feuilles ont été déposées avant le compost.",
+            "correct": false
+          },
+          {
+            "text": "Les deux couches ont nécessairement été déposées en même temps.",
+            "correct": false
+          }
+        ],
+        "difficulty": 75
+      },
+      "metrics": {
+        "difficulty": 0.75,
+        "expectedSeconds": 60,
+        "guessProbability": 0.3333333333333333
+      },
+      "material": {
+        "exposed": [],
+        "assessed": [],
+        "annotationStatus": "missing_assessed_identity"
+      },
+      "contrastingErrorKeys": [],
+      "requiredReviews": [
+        "answer_validity_and_alternatives",
+        "unique_response_and_clear_instructions",
+        "approved_target_fit",
+        "material_novelty_and_error_annotations",
+        "difficulty_and_guessing"
+      ]
+    },
+    {
+      "questionId": "local-reading-v1:comparer_points_de_vue:controlled_production:foundation",
+      "sourceChecksum": "sha256:cc040ccc2d74da24cb1dce30d25a1c3e9bc1990fe5315f4eb36968f7db7b2cd6",
+      "revisedChecksum": "sha256:ae4349e0976e050d52019208e3ff5a7e8d70685ac640242aadca852c6bed8e9d",
+      "reason": "Put both viewpoints in the passage and ask for their contrast without supplying either position in the question.",
+      "priorReviewStatus": "human_approved",
+      "status": "needs_human_review",
+      "target": {
+        "nodeKey": "comparer_points_de_vue",
+        "labelFr": "Comparer deux points de vue",
+        "descriptionFr": "Énoncer une ressemblance ou une différence précise entre deux positions textuelles.",
+        "evidence": {
+          "key": "all-controlled_production",
+          "actionFr": "Formuler une réponse brève et vérifiable pour : comparer deux points de vue.",
+          "modality": "reading",
+          "expectation": "controlled_production",
+          "successCriteria": {
+            "minimumAccuracy": 0.8,
+            "minimumDistinctTexts": 3,
+            "minimumTextTypes": 2,
+            "evidenceSpanRequired": false
+          }
+        }
+      },
+      "before": {
+        "nodeKey": "comparer_points_de_vue",
+        "strand": "comprehension_ecrite",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Lis le texte.\n\nÀ l’école de Nyamata, Aline trouvait la cour trop grise. Elle proposa un jardin parce que sa classe avait du mal à observer les insectes étudiés en sciences. Le lundi, les élèves dessinèrent un plan. Le mardi, leurs familles apportèrent des graines. Le mercredi, la classe planta des haricots et des fleurs. Comme Paul avait oublié l’arrosoir, Aline resta après les cours pour chercher de l’eau. Deux semaines plus tard, de jeunes pousses couvraient le carré de terre. « Ce petit jardin change déjà notre cour », dit-elle avec fierté.\n\nCompare en une phrase le point de vue d’Aline, fière du jardin, à celui d’un élève qui le jugerait inutile.",
+        "instructionsFr": "Réponds en une phrase complète en t’appuyant uniquement sur le texte.",
+        "correctAnswer": "Aline voit le jardin comme une réussite utile aux sciences, tandis que l’autre élève le considérerait comme un effort sans intérêt.",
+        "acceptableAnswers": [
+          "Aline est fière du jardin et le trouve utile pour apprendre, alors que l’autre élève n’y verrait aucun intérêt."
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "interestKeys": [
+            "environment",
+            "animals"
+          ],
+          "readingRubric": {
+            "version": 1,
+            "requiredIdeas": [
+              "Explique le point de vue positif d’Aline : le jardin est une réussite utile à la classe.",
+              "Oppose ce point de vue à celui de l’élève imaginé dans la question, qui considérerait le jardin comme inutile."
+            ]
+          },
+          "sourceTextKey": "garden",
+          "sourceTextType": "literary"
+        },
+        "difficulty": 25
+      },
+      "after": {
+        "nodeKey": "comparer_points_de_vue",
+        "strand": "comprehension_ecrite",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Lis le texte.\n\nLa classe envisage de transformer un coin de la cour en jardin. Aline explique : « Nous pourrions observer la croissance des plantes pendant les cours de sciences. » Paul répond : « Je préférerais garder cet espace libre pour jouer au ballon pendant la récréation. » La classe doit choisir comment utiliser cet espace.\n\nEn une phrase, explique en quoi les points de vue d’Aline et de Paul diffèrent.",
+        "instructionsFr": "Réponds en une phrase complète en t’appuyant uniquement sur le texte.",
+        "correctAnswer": "Aline souhaite utiliser cet espace pour apprendre avec un jardin, tandis que Paul préfère le garder pour jouer au ballon.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "garden-viewpoints-v3",
+          "sourceTextType": "literary",
+          "interestKeys": [
+            "environment",
+            "football"
+          ],
+          "readingRubric": {
+            "version": 1,
+            "requiredIdeas": [
+              "Indique qu’Aline souhaite un jardin pour observer les plantes et apprendre en sciences.",
+              "Oppose cette proposition à celle de Paul, qui souhaite garder de la place pour jouer au ballon."
+            ]
+          }
+        },
+        "difficulty": 25
+      },
+      "metrics": {
+        "difficulty": 0.25,
+        "expectedSeconds": 60,
+        "guessProbability": 0.05
+      },
+      "material": {
+        "exposed": [],
+        "assessed": [],
+        "annotationStatus": "missing_assessed_identity"
+      },
+      "contrastingErrorKeys": [],
+      "requiredReviews": [
+        "answer_validity_and_alternatives",
+        "unique_response_and_clear_instructions",
+        "approved_target_fit",
+        "material_novelty_and_error_annotations",
+        "difficulty_and_guessing"
+      ]
+    },
+    {
+      "questionId": "review-draft-v1:construction_pronom_relatif:controlled_production:foundation",
+      "sourceChecksum": "sha256:ff2e7e9f9508c6b21ae3467b3b0448e58ae06fef4486f0dff7d76c954083081e",
+      "revisedChecksum": "sha256:2731933f71f4a1408115b2457d07ee69469fdac2e7a6e57fb69c112e2a0c32dc",
+      "reason": "Remove invalid qu' before tu; annotate the supplied source sentence. Changed content requires new review.",
+      "priorReviewStatus": "human_approved",
+      "status": "needs_human_review",
+      "target": {
+        "nodeKey": "construction_pronom_relatif",
+        "labelFr": "Interpréter un pronom relatif",
+        "descriptionFr": "Relier un relatif à son antécédent et à sa fonction dans la subordonnée.",
+        "evidence": {
+          "key": "writing-controlled-production",
+          "actionFr": "Compléter, corriger ou transformer une phrase nouvelle pour produire correctement : interpréter un pronom relatif.",
+          "modality": "writing",
+          "expectation": "controlled_production",
+          "successCriteria": {
+            "minimumAccuracy": 0.8,
+            "minimumDistinctItems": 3,
+            "minimumOccasions": 2,
+            "unaidedResponseRequired": true,
+            "novelSentencesRequired": true
+          }
+        }
+      },
+      "before": {
+        "nodeKey": "construction_pronom_relatif",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète avec le pronom relatif qui convient :\n\nLa robe ___ tu as achetée est très jolie.",
+        "correctAnswer": "que",
+        "acceptableAnswers": [
+          "qu'"
+        ],
+        "validatorType": "exact",
+        "cefrLevel": "B1",
+        "difficulty": 25
+      },
+      "after": {
+        "nodeKey": "construction_pronom_relatif",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète avec le pronom relatif qui convient :\n\nLa robe ___ tu as achetée est très jolie.",
+        "correctAnswer": "que",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "La robe ___ tu as achetée est très jolie."
+            ],
+            "assessed": {
+              "sentences": [
+                "La robe ___ tu as achetée est très jolie."
+              ]
+            }
+          }
+        },
+        "cefrLevel": "B1",
+        "difficulty": 25
+      },
+      "metrics": {
+        "difficulty": 0.25,
+        "expectedSeconds": 30,
+        "guessProbability": 0.05
+      },
+      "material": {
+        "exposed": [
+          "sentence:sha256:739dc2fd76dd1cd8255c87afcb2a015998c3f3c52f36f26bc73ce6823f0f5818"
+        ],
+        "assessed": [
+          "sentence:sha256:739dc2fd76dd1cd8255c87afcb2a015998c3f3c52f36f26bc73ce6823f0f5818"
+        ],
+        "annotationStatus": "anchored_requires_review"
+      },
+      "contrastingErrorKeys": [],
+      "requiredReviews": [
+        "answer_validity_and_alternatives",
+        "unique_response_and_clear_instructions",
+        "approved_target_fit",
+        "material_novelty_and_error_annotations",
+        "difficulty_and_guessing"
+      ]
+    },
+    {
+      "questionId": "review-draft-v1:construction_pronom_relatif:controlled_production:core",
+      "sourceChecksum": "sha256:5ddd31c600d7191daaff5e0d87c13a2831a631e676980c2ac336a63284505144",
+      "revisedChecksum": "sha256:d8b92f78c30ddfa7d1598405eb512dce2f2b476fdd151dd3a79c9476a729cc56",
+      "reason": "Remove invalid qu' before j'ai while retaining the complete que answer. Annotate the two supplied sentences, not the unshown completed answer. Changed content requires new review.",
+      "priorReviewStatus": "human_approved",
+      "status": "needs_human_review",
+      "target": {
+        "nodeKey": "construction_pronom_relatif",
+        "labelFr": "Interpréter un pronom relatif",
+        "descriptionFr": "Relier un relatif à son antécédent et à sa fonction dans la subordonnée.",
+        "evidence": {
+          "key": "writing-controlled-production",
+          "actionFr": "Compléter, corriger ou transformer une phrase nouvelle pour produire correctement : interpréter un pronom relatif.",
+          "modality": "writing",
+          "expectation": "controlled_production",
+          "successCriteria": {
+            "minimumAccuracy": 0.8,
+            "minimumDistinctItems": 3,
+            "minimumOccasions": 2,
+            "unaidedResponseRequired": true,
+            "novelSentencesRequired": true
+          }
+        }
+      },
+      "before": {
+        "nodeKey": "construction_pronom_relatif",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "transform",
+        "promptFr": "Relie les deux phrases avec un pronom relatif. Écris la phrase complète.\n\nVoici la lettre. Je l'ai reçue hier.",
+        "correctAnswer": "Voici la lettre que j'ai reçue hier.",
+        "acceptableAnswers": [
+          "Voici la lettre qu' j'ai reçue hier.",
+          "Voici la lettre que j'ai reçue hier"
+        ],
+        "validatorType": "exact",
+        "cefrLevel": "B1",
+        "difficulty": 50
+      },
+      "after": {
+        "nodeKey": "construction_pronom_relatif",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "transform",
+        "promptFr": "Relie les deux phrases avec un pronom relatif. Écris la phrase complète.\n\nVoici la lettre. Je l'ai reçue hier.",
+        "correctAnswer": "Voici la lettre que j'ai reçue hier.",
+        "acceptableAnswers": [
+          "Voici la lettre que j'ai reçue hier"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Voici la lettre. Je l'ai reçue hier."
+            ],
+            "assessed": {
+              "sentences": [
+                "Voici la lettre. Je l'ai reçue hier."
+              ]
+            }
+          }
+        },
+        "cefrLevel": "B1",
+        "difficulty": 50
+      },
+      "metrics": {
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.05
+      },
+      "material": {
+        "exposed": [
+          "sentence:sha256:4b49b46e29d1f9357b197df5c7f13451661762e7d7de8eabd6bdca87809f526a"
+        ],
+        "assessed": [
+          "sentence:sha256:4b49b46e29d1f9357b197df5c7f13451661762e7d7de8eabd6bdca87809f526a"
+        ],
+        "annotationStatus": "anchored_requires_review"
+      },
+      "contrastingErrorKeys": [],
+      "requiredReviews": [
+        "answer_validity_and_alternatives",
+        "unique_response_and_clear_instructions",
+        "approved_target_fit",
+        "material_novelty_and_error_annotations",
+        "difficulty_and_guessing"
+      ]
+    },
+    {
+      "questionId": "review-draft-v1:construction_pronom_relatif:controlled_production:stretch",
+      "sourceChecksum": "sha256:f7286c47e4cd43d8e5fafd9d28f1984cc5e07f03a52eb7a2fbc7455aeca69997",
+      "revisedChecksum": "sha256:f1a813dc71f5236152ca58edd7208bb4fe6437712a89aeafad4b4385237dcb48",
+      "reason": "Replace contradictory rewrite instructions and the supplied que answer with an actual relative-pronoun gap task. Preserve the approved target; difficulty and finite response guessing still require review. Annotate only the supplied sentence.",
+      "priorReviewStatus": "human_approved",
+      "status": "needs_human_review",
+      "target": {
+        "nodeKey": "construction_pronom_relatif",
+        "labelFr": "Interpréter un pronom relatif",
+        "descriptionFr": "Relier un relatif à son antécédent et à sa fonction dans la subordonnée.",
+        "evidence": {
+          "key": "writing-controlled-production",
+          "actionFr": "Compléter, corriger ou transformer une phrase nouvelle pour produire correctement : interpréter un pronom relatif.",
+          "modality": "writing",
+          "expectation": "controlled_production",
+          "successCriteria": {
+            "minimumAccuracy": 0.8,
+            "minimumDistinctItems": 3,
+            "minimumOccasions": 2,
+            "unaidedResponseRequired": true,
+            "novelSentencesRequired": true
+          }
+        }
+      },
+      "before": {
+        "nodeKey": "construction_pronom_relatif",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Réécris la phrase en remplaçant le groupe souligné par le pronom relatif « que » : « Je regarde le film ___ tu m'as recommandé. »",
+        "correctAnswer": "que",
+        "acceptableAnswers": [
+          "que"
+        ],
+        "validatorType": "exact",
+        "cefrLevel": "B1",
+        "difficulty": 75
+      },
+      "after": {
+        "nodeKey": "construction_pronom_relatif",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec le pronom relatif qui convient : « Je regarde le film ___ tu m'as recommandé. » Écris seulement le pronom manquant.",
+        "correctAnswer": "que",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Je regarde le film ___ tu m'as recommandé."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je regarde le film ___ tu m'as recommandé."
+              ]
+            }
+          }
+        },
+        "cefrLevel": "B1",
+        "difficulty": 75
+      },
+      "metrics": {
+        "difficulty": 0.75,
+        "expectedSeconds": 30,
+        "guessProbability": 0.05
+      },
+      "material": {
+        "exposed": [
+          "sentence:sha256:82d4c951ab053cdf00b31fe769b78679544dbd18d0e703321b6080e0baf62905"
+        ],
+        "assessed": [
+          "sentence:sha256:82d4c951ab053cdf00b31fe769b78679544dbd18d0e703321b6080e0baf62905"
+        ],
+        "annotationStatus": "anchored_requires_review"
+      },
+      "contrastingErrorKeys": [],
+      "requiredReviews": [
+        "answer_validity_and_alternatives",
+        "unique_response_and_clear_instructions",
+        "approved_target_fit",
+        "material_novelty_and_error_annotations",
+        "difficulty_and_guessing"
+      ]
+    },
+    {
+      "questionId": "review-draft-v1:accorder_determinant_nom_ecrit:controlled_production:foundation",
+      "sourceChecksum": "sha256:474795d455dd7cb0ef420eaacb8d853f48970356e18a04c20469ec28f449905d",
+      "revisedChecksum": "sha256:7b7f5a19fe0427344a60e9fe6928c53fbc58770d11504e1202fc3b0ed5a70b17",
+      "reason": "Require both determiner and noun production while keeping the determiner family fixed. Remove adjective agreement confounding and alternate article substitutions. Annotate the supplied noun lemma and group; target scope, noun-form difficulty and novelty interpretation require fresh review.",
+      "priorReviewStatus": "human_approved",
+      "status": "needs_human_review",
+      "target": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "labelFr": "Réaliser l'accord déterminant-nom",
+        "descriptionFr": "Écrire un déterminant et un nom avec des marques compatibles de genre et de nombre.",
+        "evidence": {
+          "key": "writing-controlled-production",
+          "actionFr": "Écrire sans modèle la forme attendue dans une dictée de mots, une phrase lacunaire ou une transformation : réaliser l'accord déterminant-nom.",
+          "modality": "writing",
+          "expectation": "controlled_production",
+          "successCriteria": {
+            "minimumAccuracy": 0.8,
+            "minimumDistinctItems": 3,
+            "minimumOccasions": 2,
+            "unaidedResponseRequired": true,
+            "novelWordsRequired": true
+          }
+        }
+      },
+      "before": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète avec le nom au pluriel : « Dans la forêt, il y a plusieurs ______ (arbre) verts. »",
+        "correctAnswer": "arbres",
+        "acceptableAnswers": [
+          "arbres"
+        ],
+        "validatorType": "exact",
+        "cefrLevel": "A2",
+        "difficulty": 25
+      },
+      "after": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "transform",
+        "promptFr": "Mets ce groupe au pluriel : « un arbre ». Écris le déterminant et le nom. Garde le même type de déterminant.",
+        "correctAnswer": "des arbres",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "arbre",
+                "form": "arbre"
+              }
+            ],
+            "sentences": [
+              "un arbre"
+            ],
+            "assessed": {
+              "words": [
+                "arbre"
+              ]
+            }
+          }
+        },
+        "cefrLevel": "A2",
+        "difficulty": 25
+      },
+      "metrics": {
+        "difficulty": 0.25,
+        "expectedSeconds": 30,
+        "guessProbability": 0.05
+      },
+      "material": {
+        "exposed": [
+          "sentence:sha256:4eb73fd20068aabf13bcb04d6ee5dfc619b14dc1de199a41d2817817e6ca7646",
+          "word:sha256:237d60355459f80bf45e477dff8bd9e05bdcbd677101533422947900ffa03c79"
+        ],
+        "assessed": [
+          "word:sha256:237d60355459f80bf45e477dff8bd9e05bdcbd677101533422947900ffa03c79"
+        ],
+        "annotationStatus": "anchored_requires_review"
+      },
+      "contrastingErrorKeys": [],
+      "requiredReviews": [
+        "answer_validity_and_alternatives",
+        "unique_response_and_clear_instructions",
+        "approved_target_fit",
+        "material_novelty_and_error_annotations",
+        "difficulty_and_guessing"
+      ]
+    },
+    {
+      "questionId": "review-draft-v1:accorder_determinant_nom_ecrit:controlled_production:core",
+      "sourceChecksum": "sha256:6fac917ebff0eee1288d2ef670b2a81bb431c736e69eb82bde37870c4ccccc7e",
+      "revisedChecksum": "sha256:33b6a6b968645c7225e5352cba19429668e74282f5d06b4f09c9d55ad6a04aa2",
+      "reason": "Require both determiner and noun production while keeping the determiner family fixed. Remove adjective agreement confounding and alternate article substitutions. Annotate the supplied noun lemma and group; target scope, noun-form difficulty and novelty interpretation require fresh review.",
+      "priorReviewStatus": "human_approved",
+      "status": "needs_human_review",
+      "target": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "labelFr": "Réaliser l'accord déterminant-nom",
+        "descriptionFr": "Écrire un déterminant et un nom avec des marques compatibles de genre et de nombre.",
+        "evidence": {
+          "key": "writing-controlled-production",
+          "actionFr": "Écrire sans modèle la forme attendue dans une dictée de mots, une phrase lacunaire ou une transformation : réaliser l'accord déterminant-nom.",
+          "modality": "writing",
+          "expectation": "controlled_production",
+          "successCriteria": {
+            "minimumAccuracy": 0.8,
+            "minimumDistinctItems": 3,
+            "minimumOccasions": 2,
+            "unaidedResponseRequired": true,
+            "novelWordsRequired": true
+          }
+        }
+      },
+      "before": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "transform",
+        "promptFr": "Mets ce groupe nominal au pluriel : « un vieux monsieur »",
+        "correctAnswer": "des vieux messieurs",
+        "acceptableAnswers": [
+          "des vieux messieurs",
+          "les vieux messieurs"
+        ],
+        "validatorType": "exact",
+        "cefrLevel": "A2",
+        "difficulty": 50
+      },
+      "after": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "transform",
+        "promptFr": "Mets ce groupe au pluriel : « un monsieur ». Écris le déterminant et le nom. Garde le même type de déterminant.",
+        "correctAnswer": "des messieurs",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "monsieur",
+                "form": "monsieur"
+              }
+            ],
+            "sentences": [
+              "un monsieur"
+            ],
+            "assessed": {
+              "words": [
+                "monsieur"
+              ]
+            }
+          }
+        },
+        "cefrLevel": "A2",
+        "difficulty": 50
+      },
+      "metrics": {
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.05
+      },
+      "material": {
+        "exposed": [
+          "sentence:sha256:56139c3bb5a8c1099fef35dc8e6177e8e1858fe88621ca134b7d88147ff4b1a8",
+          "word:sha256:5008d76e8865b1ce6ce4ac0c8ef4dcb50ce703adfe1ae981e0bed5259f3154c8"
+        ],
+        "assessed": [
+          "word:sha256:5008d76e8865b1ce6ce4ac0c8ef4dcb50ce703adfe1ae981e0bed5259f3154c8"
+        ],
+        "annotationStatus": "anchored_requires_review"
+      },
+      "contrastingErrorKeys": [],
+      "requiredReviews": [
+        "answer_validity_and_alternatives",
+        "unique_response_and_clear_instructions",
+        "approved_target_fit",
+        "material_novelty_and_error_annotations",
+        "difficulty_and_guessing"
+      ]
+    },
+    {
+      "questionId": "review-draft-v1:accorder_determinant_nom_ecrit:controlled_production:stretch",
+      "sourceChecksum": "sha256:6c6a622149dfced87098d45e746d16ac8b73549db4179a5b78cb12eddd754d34",
+      "revisedChecksum": "sha256:bfbb1aad2102953e1512e43ff451c7043122360b97434bf4d4def2dea0e90a45",
+      "reason": "Require both determiner and noun production while keeping the determiner family fixed. Remove adjective agreement confounding and alternate article substitutions. Annotate the supplied noun lemma and group; target scope, noun-form difficulty and novelty interpretation require fresh review.",
+      "priorReviewStatus": "human_approved",
+      "status": "needs_human_review",
+      "target": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "labelFr": "Réaliser l'accord déterminant-nom",
+        "descriptionFr": "Écrire un déterminant et un nom avec des marques compatibles de genre et de nombre.",
+        "evidence": {
+          "key": "writing-controlled-production",
+          "actionFr": "Écrire sans modèle la forme attendue dans une dictée de mots, une phrase lacunaire ou une transformation : réaliser l'accord déterminant-nom.",
+          "modality": "writing",
+          "expectation": "controlled_production",
+          "successCriteria": {
+            "minimumAccuracy": 0.8,
+            "minimumDistinctItems": 3,
+            "minimumOccasions": 2,
+            "unaidedResponseRequired": true,
+            "novelWordsRequired": true
+          }
+        }
+      },
+      "before": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "transform",
+        "promptFr": "Mets au pluriel (déterminant + nom) : Le chat",
+        "correctAnswer": "Les chats",
+        "acceptableAnswers": [
+          "Les chats",
+          "les chats"
+        ],
+        "validatorType": "exact",
+        "cefrLevel": "A1",
+        "difficulty": 75
+      },
+      "after": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "transform",
+        "promptFr": "Mets ce groupe au pluriel : « le chat ». Écris le déterminant et le nom. Garde le même type de déterminant.",
+        "correctAnswer": "les chats",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "chat",
+                "form": "chat"
+              }
+            ],
+            "sentences": [
+              "le chat"
+            ],
+            "assessed": {
+              "words": [
+                "chat"
+              ]
+            }
+          }
+        },
+        "cefrLevel": "A1",
+        "difficulty": 75
+      },
+      "metrics": {
+        "difficulty": 0.75,
+        "expectedSeconds": 30,
+        "guessProbability": 0.05
+      },
+      "material": {
+        "exposed": [
+          "sentence:sha256:32f8b0a6d9dcd26504e217a340e96ba130004139e27b6955ecfe04ebe1c5ad89",
+          "word:sha256:dff0bd1de0982319b8f746e57331349f38930dc350f48c28177dfd87ca5ccb67"
+        ],
+        "assessed": [
+          "word:sha256:dff0bd1de0982319b8f746e57331349f38930dc350f48c28177dfd87ca5ccb67"
+        ],
+        "annotationStatus": "anchored_requires_review"
+      },
+      "contrastingErrorKeys": [],
+      "requiredReviews": [
+        "answer_validity_and_alternatives",
+        "unique_response_and_clear_instructions",
+        "approved_target_fit",
+        "material_novelty_and_error_annotations",
+        "difficulty_and_guessing"
+      ]
+    },
+    {
+      "questionId": "local-spelling-gap-v1:accorder_determinant_nom_ecrit:receptive:foundation",
+      "sourceChecksum": "sha256:cec02d7a81290f7db9fda9ac1dd5474b04faafe4d8a886720f2980653a5c4d80",
+      "revisedChecksum": "sha256:3ad46a83fc51956e359dcfbcce59d491b350d2a76415d88ebadac8859171d399",
+      "reason": "Remove adjective agreement and determiner lexical-spelling confounds. Contrast determiner and noun agreement directly with anchored distractor error families and assessed noun lemma. Error-family interpretation, novelty and difficulty require fresh review.",
+      "priorReviewStatus": "human_approved",
+      "status": "needs_human_review",
+      "target": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "labelFr": "Réaliser l'accord déterminant-nom",
+        "descriptionFr": "Écrire un déterminant et un nom avec des marques compatibles de genre et de nombre.",
+        "evidence": {
+          "key": "reading-receptive",
+          "actionFr": "Choisir, repérer ou corriger la graphie qui démontre la compétence suivante : réaliser l'accord déterminant-nom.",
+          "modality": "reading",
+          "expectation": "receptive",
+          "successCriteria": {
+            "minimumAccuracy": 0.8,
+            "minimumDistinctItems": 3,
+            "minimumContrastingErrors": 2,
+            "novelWordsRequired": true
+          }
+        }
+      },
+      "before": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "grammar_analysis",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quel groupe nominal est correctement accordé ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "choices": [
+          {
+            "text": "ces grandes maisons",
+            "correct": true
+          },
+          {
+            "text": "ce grandes maisons",
+            "correct": false
+          },
+          {
+            "text": "ces grande maison",
+            "correct": false
+          }
+        ],
+        "difficulty": 25
+      },
+      "after": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "grammar_analysis",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quel groupe associe correctement le déterminant et le nom ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "maison",
+                "form": "maison"
+              }
+            ],
+            "sentences": [
+              "ces maisons",
+              "ce maisons",
+              "ces maison"
+            ],
+            "assessed": {
+              "words": [
+                "maison"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "errorKey": "determiner-number",
+              "incorrectChoiceFr": "ce maisons"
+            },
+            {
+              "errorKey": "noun-number",
+              "incorrectChoiceFr": "ces maison"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "ces maisons",
+            "correct": true
+          },
+          {
+            "text": "ce maisons",
+            "correct": false
+          },
+          {
+            "text": "ces maison",
+            "correct": false
+          }
+        ],
+        "difficulty": 25
+      },
+      "metrics": {
+        "difficulty": 0.25,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333
+      },
+      "material": {
+        "exposed": [
+          "sentence:sha256:0fe6990fe3a202dea4474812b492a91acaa8765eeae253d9b499e60e272c91d3",
+          "sentence:sha256:4d7edb03f1f11f3a02316a04775a50d928ed188c9d9d69331c08aa7e35718850",
+          "sentence:sha256:f8607219d95a11ef8b571ee7875dcb9459fb4c14e0e4fa88438b8f2744468fd1",
+          "word:sha256:1683c28f36c1b47e7c1d5584b1130b14f179467393f0d2ae3285b0c447920330"
+        ],
+        "assessed": [
+          "word:sha256:1683c28f36c1b47e7c1d5584b1130b14f179467393f0d2ae3285b0c447920330"
+        ],
+        "annotationStatus": "anchored_requires_review"
+      },
+      "contrastingErrorKeys": [
+        "determiner-number",
+        "noun-number"
+      ],
+      "requiredReviews": [
+        "answer_validity_and_alternatives",
+        "unique_response_and_clear_instructions",
+        "approved_target_fit",
+        "material_novelty_and_error_annotations",
+        "difficulty_and_guessing"
+      ]
+    },
+    {
+      "questionId": "local-spelling-gap-v1:accorder_determinant_nom_ecrit:receptive:core",
+      "sourceChecksum": "sha256:5202cb549d37eabcc6c985e8eadbccafbb7b5d0bb0df37f1e2153c887d8ecaee",
+      "revisedChecksum": "sha256:fdd676c31ded48fb4262bfd48d57be26e9b750f68e7818eb76efa41930c02dc5",
+      "reason": "Remove adjective agreement and determiner lexical-spelling confounds. Contrast determiner and noun agreement directly with anchored distractor error families and assessed noun lemma. Error-family interpretation, novelty and difficulty require fresh review.",
+      "priorReviewStatus": "human_approved",
+      "status": "needs_human_review",
+      "target": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "labelFr": "Réaliser l'accord déterminant-nom",
+        "descriptionFr": "Écrire un déterminant et un nom avec des marques compatibles de genre et de nombre.",
+        "evidence": {
+          "key": "reading-receptive",
+          "actionFr": "Choisir, repérer ou corriger la graphie qui démontre la compétence suivante : réaliser l'accord déterminant-nom.",
+          "modality": "reading",
+          "expectation": "receptive",
+          "successCriteria": {
+            "minimumAccuracy": 0.8,
+            "minimumDistinctItems": 3,
+            "minimumContrastingErrors": 2,
+            "novelWordsRequired": true
+          }
+        }
+      },
+      "before": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "grammar_analysis",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quel groupe nominal est correctement accordé ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "choices": [
+          {
+            "text": "plusieurs idées utiles",
+            "correct": true
+          },
+          {
+            "text": "plusieur idées utiles",
+            "correct": false
+          },
+          {
+            "text": "plusieurs idée utile",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "after": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "grammar_analysis",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quel groupe associe correctement le déterminant et le nom ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "idée",
+                "form": "idée"
+              }
+            ],
+            "sentences": [
+              "plusieurs idées",
+              "plusieurs idée",
+              "une idées"
+            ],
+            "assessed": {
+              "words": [
+                "idée"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "errorKey": "noun-number",
+              "incorrectChoiceFr": "plusieurs idée"
+            },
+            {
+              "errorKey": "determiner-number",
+              "incorrectChoiceFr": "une idées"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "plusieurs idées",
+            "correct": true
+          },
+          {
+            "text": "plusieurs idée",
+            "correct": false
+          },
+          {
+            "text": "une idées",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "metrics": {
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333
+      },
+      "material": {
+        "exposed": [
+          "sentence:sha256:6e5b0a3343555447f7795cef53e09cefc8076a1f6686802580c9d325a5e13b64",
+          "sentence:sha256:b7673e4a6a42adf02ba1612b785030ea5ca85d831f3151c4ba050c54adb0c752",
+          "sentence:sha256:e98b54167287eec53def71a9ddd5805967d56f31d1f5069b8aa1a574541c2b4c",
+          "word:sha256:219c40638cf57876c10c4b3623722bae657d6f1c487a9a7903202d931564d51e"
+        ],
+        "assessed": [
+          "word:sha256:219c40638cf57876c10c4b3623722bae657d6f1c487a9a7903202d931564d51e"
+        ],
+        "annotationStatus": "anchored_requires_review"
+      },
+      "contrastingErrorKeys": [
+        "noun-number",
+        "determiner-number"
+      ],
+      "requiredReviews": [
+        "answer_validity_and_alternatives",
+        "unique_response_and_clear_instructions",
+        "approved_target_fit",
+        "material_novelty_and_error_annotations",
+        "difficulty_and_guessing"
+      ]
+    },
+    {
+      "questionId": "local-spelling-gap-v1:accorder_determinant_nom_ecrit:receptive:stretch",
+      "sourceChecksum": "sha256:fa5d99d2da254dfa2d4daa717432942239513289042ea96df8bc102b4bce0487",
+      "revisedChecksum": "sha256:1a191fed27406f2a385e9301d6e3d48fb15a5af21b76c42be21a86f547287282",
+      "reason": "Remove adjective agreement and determiner lexical-spelling confounds. Contrast determiner and noun agreement directly with anchored distractor error families and assessed noun lemma. Error-family interpretation, novelty and difficulty require fresh review.",
+      "priorReviewStatus": "human_approved",
+      "status": "needs_human_review",
+      "target": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "labelFr": "Réaliser l'accord déterminant-nom",
+        "descriptionFr": "Écrire un déterminant et un nom avec des marques compatibles de genre et de nombre.",
+        "evidence": {
+          "key": "reading-receptive",
+          "actionFr": "Choisir, repérer ou corriger la graphie qui démontre la compétence suivante : réaliser l'accord déterminant-nom.",
+          "modality": "reading",
+          "expectation": "receptive",
+          "successCriteria": {
+            "minimumAccuracy": 0.8,
+            "minimumDistinctItems": 3,
+            "minimumContrastingErrors": 2,
+            "novelWordsRequired": true
+          }
+        }
+      },
+      "before": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "grammar_analysis",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quel groupe nominal est correctement accordé ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "choices": [
+          {
+            "text": "toute cette longue histoire",
+            "correct": true
+          },
+          {
+            "text": "tous cette longue histoire",
+            "correct": false
+          },
+          {
+            "text": "toute ces long histoire",
+            "correct": false
+          }
+        ],
+        "difficulty": 75
+      },
+      "after": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "grammar_analysis",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quel groupe associe correctement le déterminant et le nom ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "histoire",
+                "form": "histoire"
+              }
+            ],
+            "sentences": [
+              "cette histoire",
+              "ce histoire",
+              "cette histoires"
+            ],
+            "assessed": {
+              "words": [
+                "histoire"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "errorKey": "determiner-gender",
+              "incorrectChoiceFr": "ce histoire"
+            },
+            {
+              "errorKey": "noun-number",
+              "incorrectChoiceFr": "cette histoires"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "cette histoire",
+            "correct": true
+          },
+          {
+            "text": "ce histoire",
+            "correct": false
+          },
+          {
+            "text": "cette histoires",
+            "correct": false
+          }
+        ],
+        "difficulty": 75
+      },
+      "metrics": {
+        "difficulty": 0.75,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333
+      },
+      "material": {
+        "exposed": [
+          "sentence:sha256:10da73d5c41db535df2b1a2e41032d77ddf5b12ce718ad13b2382be81245ab15",
+          "sentence:sha256:20393f408585a9fa0dc075f201594157d442fc644d01b0493c4a8163051376b6",
+          "sentence:sha256:370a6392c30e692a2fa08f3462e212042e6c82ec5e7fdaaecd4371c395aa206a",
+          "word:sha256:a581d4ea0ccd56e5dd5276b1d3520406946302d5707e2ac97d108a1b530f0bd2"
+        ],
+        "assessed": [
+          "word:sha256:a581d4ea0ccd56e5dd5276b1d3520406946302d5707e2ac97d108a1b530f0bd2"
+        ],
+        "annotationStatus": "anchored_requires_review"
+      },
+      "contrastingErrorKeys": [
+        "determiner-gender",
+        "noun-number"
+      ],
+      "requiredReviews": [
+        "answer_validity_and_alternatives",
+        "unique_response_and_clear_instructions",
+        "approved_target_fit",
+        "material_novelty_and_error_annotations",
+        "difficulty_and_guessing"
+      ]
+    },
+    {
+      "questionId": "review-draft-v1:marquer_pluriel_nom_regulier:controlled_production:stretch",
+      "sourceChecksum": "sha256:b9bf3a9b2b9dd8e80a1326bbfef6020c83164ce078baf38aa4baa0dbc00893c7",
+      "revisedChecksum": "sha256:fd53261a2989e3089193904356191933a674ad99f093c6c71c72b07fc076b56e",
+      "reason": "Replace irregular -al/-aux singular conversion with actual regular plural production. Do not infer regular plural mastery from animal/animaux; difficulty requires fresh review.",
+      "priorReviewStatus": "human_approved",
+      "status": "needs_human_review",
+      "target": {
+        "nodeKey": "marquer_pluriel_nom_regulier",
+        "labelFr": "Marquer le pluriel régulier d'un nom",
+        "descriptionFr": "Ajouter la marque écrite régulière du pluriel à un nom lorsque le contexte impose le nombre pluriel.",
+        "evidence": {
+          "key": "writing-controlled-production",
+          "actionFr": "Écrire sans modèle la forme attendue dans une dictée de mots, une phrase lacunaire ou une transformation : marquer le pluriel régulier d'un nom.",
+          "modality": "writing",
+          "expectation": "controlled_production",
+          "successCriteria": {
+            "minimumAccuracy": 0.8,
+            "minimumDistinctItems": 3,
+            "minimumOccasions": 2,
+            "unaidedResponseRequired": true,
+            "novelWordsRequired": true
+          }
+        }
+      },
+      "before": {
+        "nodeKey": "marquer_pluriel_nom_regulier",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Écris le mot « animaux » au singulier.",
+        "correctAnswer": "animal",
+        "acceptableAnswers": [
+          "animal",
+          "Animal",
+          "ANIMAL"
+        ],
+        "validatorType": "exact",
+        "cefrLevel": "A1",
+        "difficulty": 75
+      },
+      "after": {
+        "nodeKey": "marquer_pluriel_nom_regulier",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Écris le nom « jardin » au pluriel. Écris seulement le nom.",
+        "correctAnswer": "jardins",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "jardin",
+                "form": "jardin"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "jardin"
+              ]
+            }
+          }
+        },
+        "cefrLevel": "A1",
+        "difficulty": 75
+      },
+      "metrics": {
+        "difficulty": 0.75,
+        "expectedSeconds": 30,
+        "guessProbability": 0.05
+      },
+      "material": {
+        "exposed": [
+          "word:sha256:7da00c175478b81c4953f504158892076404277dcd83ae623c2c6427aeb8a2ff"
+        ],
+        "assessed": [
+          "word:sha256:7da00c175478b81c4953f504158892076404277dcd83ae623c2c6427aeb8a2ff"
+        ],
+        "annotationStatus": "anchored_requires_review"
+      },
+      "contrastingErrorKeys": [],
+      "requiredReviews": [
+        "answer_validity_and_alternatives",
+        "unique_response_and_clear_instructions",
+        "approved_target_fit",
+        "material_novelty_and_error_annotations",
+        "difficulty_and_guessing"
+      ]
+    },
+    {
+      "questionId": "review-draft-v1:former_feminin_adjectif_regulier:receptive:stretch",
+      "sourceChecksum": "sha256:b57001482072653f8a4e0bad9801fa57f532299fd90f436e6848b0a9243c5cf7",
+      "revisedChecksum": "sha256:4666da5c14cfb6fdd9da014d2cdc0ea9dc3775afd308e72a2b9f67b670344d4f",
+      "reason": "Replace masculine plural sportif with regular feminine singular recognition, separating gender and number errors. Removed stale feedback about frères; revised difficulty and distractors require review.",
+      "priorReviewStatus": "human_approved",
+      "status": "needs_human_review",
+      "target": {
+        "nodeKey": "former_feminin_adjectif_regulier",
+        "labelFr": "Former le féminin régulier d'un adjectif",
+        "descriptionFr": "Produire la marque écrite régulière du féminin d'un adjectif dans un groupe nominal contrôlé.",
+        "evidence": {
+          "key": "reading-receptive",
+          "actionFr": "Choisir, repérer ou corriger la graphie qui démontre la compétence suivante : former le féminin régulier d'un adjectif.",
+          "modality": "reading",
+          "expectation": "receptive",
+          "successCriteria": {
+            "minimumAccuracy": 0.8,
+            "minimumDistinctItems": 3,
+            "minimumContrastingErrors": 2,
+            "novelWordsRequired": true
+          }
+        }
+      },
+      "before": {
+        "nodeKey": "former_feminin_adjectif_regulier",
+        "strand": "orthographe_grammaticale",
+        "modality": "grammar_analysis",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la bonne réponse : Mes frères sont très (sportif) .",
+        "correctAnswer": "sportifs",
+        "acceptableAnswers": [
+          "sportifs"
+        ],
+        "validatorType": "exact",
+        "choices": [
+          {
+            "text": "sportifs",
+            "correct": true,
+            "feedbackFr": "Correct ! Le sujet 'mes frères' est masculin pluriel."
+          },
+          {
+            "text": "sportif",
+            "correct": false,
+            "feedbackFr": "Il manque le 's' du pluriel."
+          },
+          {
+            "text": "sportive",
+            "correct": false,
+            "feedbackFr": "'Frères' est masculin, pas féminin."
+          },
+          {
+            "text": "sportives",
+            "correct": false,
+            "feedbackFr": "'Frères' est masculin, pas féminin."
+          }
+        ],
+        "cefrLevel": "A2",
+        "difficulty": 75
+      },
+      "after": {
+        "nodeKey": "former_feminin_adjectif_regulier",
+        "strand": "orthographe_grammaticale",
+        "modality": "grammar_analysis",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le féminin singulier de « vert » pour compléter : « Cette veste est ___. »",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "vert",
+                "form": "vert"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "vert"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "errorKey": "missing-feminine-mark",
+              "incorrectChoiceFr": "vert"
+            },
+            {
+              "errorKey": "unrequested-plural",
+              "incorrectChoiceFr": "vertes"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "verte",
+            "correct": true
+          },
+          {
+            "text": "vert",
+            "correct": false
+          },
+          {
+            "text": "verts",
+            "correct": false
+          },
+          {
+            "text": "vertes",
+            "correct": false
+          }
+        ],
+        "cefrLevel": "A2",
+        "difficulty": 75
+      },
+      "metrics": {
+        "difficulty": 0.75,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25
+      },
+      "material": {
+        "exposed": [
+          "word:sha256:d6107e89e26770317ec44e702cf0af84bdf425b5a6ea34b27f1381f42f2fb347"
+        ],
+        "assessed": [
+          "word:sha256:d6107e89e26770317ec44e702cf0af84bdf425b5a6ea34b27f1381f42f2fb347"
+        ],
+        "annotationStatus": "anchored_requires_review"
+      },
+      "contrastingErrorKeys": [
+        "missing-feminine-mark",
+        "unrequested-plural"
+      ],
+      "requiredReviews": [
+        "answer_validity_and_alternatives",
+        "unique_response_and_clear_instructions",
+        "approved_target_fit",
+        "material_novelty_and_error_annotations",
+        "difficulty_and_guessing"
+      ]
+    },
+    {
+      "questionId": "review-draft-v1:former_feminin_adjectif_regulier:controlled_production:core",
+      "sourceChecksum": "sha256:e1d502ada38f169bdf61b4e586352923af7a9736514d100d73dc6ceef3e3ec69",
+      "revisedChecksum": "sha256:c36c0b1691a0db2a6bd96c702ed4dc4f1764c10e9ae6ad9a8daa1053cadfae0d",
+      "reason": "Replace irregular beau/belles and plural agreement with regular feminine singular production. New content requires review.",
+      "priorReviewStatus": "human_approved",
+      "status": "needs_human_review",
+      "target": {
+        "nodeKey": "former_feminin_adjectif_regulier",
+        "labelFr": "Former le féminin régulier d'un adjectif",
+        "descriptionFr": "Produire la marque écrite régulière du féminin d'un adjectif dans un groupe nominal contrôlé.",
+        "evidence": {
+          "key": "writing-controlled-production",
+          "actionFr": "Écrire sans modèle la forme attendue dans une dictée de mots, une phrase lacunaire ou une transformation : former le féminin régulier d'un adjectif.",
+          "modality": "writing",
+          "expectation": "controlled_production",
+          "successCriteria": {
+            "minimumAccuracy": 0.8,
+            "minimumDistinctItems": 3,
+            "minimumOccasions": 2,
+            "unaidedResponseRequired": true,
+            "novelWordsRequired": true
+          }
+        }
+      },
+      "before": {
+        "nodeKey": "former_feminin_adjectif_regulier",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec l'adjectif « beau » correctement accordé : Ma sœur a acheté deux ___ robes pour la fête.",
+        "correctAnswer": "belles",
+        "acceptableAnswers": [
+          "belles"
+        ],
+        "validatorType": "exact",
+        "cefrLevel": "A2",
+        "difficulty": 50
+      },
+      "after": {
+        "nodeKey": "former_feminin_adjectif_regulier",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec « grand » au féminin singulier : « Cette tour est ___. » Écris seulement l’adjectif.",
+        "correctAnswer": "grande",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "grand",
+                "form": "grand"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "grand"
+              ]
+            }
+          }
+        },
+        "cefrLevel": "A2",
+        "difficulty": 50
+      },
+      "metrics": {
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.05
+      },
+      "material": {
+        "exposed": [
+          "word:sha256:65becda5ecff56934c8dd0fedb69fca7f8461484219358f86fcff81dea8706b6"
+        ],
+        "assessed": [
+          "word:sha256:65becda5ecff56934c8dd0fedb69fca7f8461484219358f86fcff81dea8706b6"
+        ],
+        "annotationStatus": "anchored_requires_review"
+      },
+      "contrastingErrorKeys": [],
+      "requiredReviews": [
+        "answer_validity_and_alternatives",
+        "unique_response_and_clear_instructions",
+        "approved_target_fit",
+        "material_novelty_and_error_annotations",
+        "difficulty_and_guessing"
+      ]
+    },
+    {
+      "questionId": "review-draft-v1:distinguer_homophones_ces_ses:receptive:stretch",
+      "sourceChecksum": "sha256:d40dcb9cc2e9baf45389a1df129e9e7d95569f1d936576fa996652df2ca34b4d",
+      "revisedChecksum": "sha256:a69aa930a69bd6c266d747a8f7ef3bab40a72d350986aaf80a34e0cf078d4c7e",
+      "reason": "Both ces and ses fit the inherited context-free sentence. Explicitly request demonstrative reference. This is cued recognition only; the unresolved fixed-pair novelty contract is not changed.",
+      "priorReviewStatus": "human_approved",
+      "status": "needs_human_review",
+      "target": {
+        "nodeKey": "distinguer_homophones_ces_ses",
+        "labelFr": "Choisir « ces/ses »",
+        "descriptionFr": "Distinguer le déterminant démonstratif du déterminant possessif à partir du sens de la phrase.",
+        "evidence": {
+          "key": "reading-receptive",
+          "actionFr": "Choisir, repérer ou corriger la graphie qui démontre la compétence suivante : choisir « ces/ses ».",
+          "modality": "reading",
+          "expectation": "receptive",
+          "successCriteria": {
+            "minimumAccuracy": 0.8,
+            "minimumDistinctItems": 3,
+            "minimumContrastingErrors": 2,
+            "novelWordsRequired": true
+          }
+        }
+      },
+      "before": {
+        "nodeKey": "distinguer_homophones_ces_ses",
+        "strand": "orthographe_grammaticale",
+        "modality": "grammar_analysis",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la bonne orthographe : ___ chaussures sont neuves.",
+        "correctAnswer": "ces",
+        "acceptableAnswers": [
+          "ces"
+        ],
+        "validatorType": "exact",
+        "choices": [
+          {
+            "text": "ces",
+            "correct": true
+          },
+          {
+            "text": "ses",
+            "correct": false
+          }
+        ],
+        "cefrLevel": "B1",
+        "difficulty": 75
+      },
+      "after": {
+        "nodeKey": "distinguer_homophones_ces_ses",
+        "strand": "orthographe_grammaticale",
+        "modality": "grammar_analysis",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Tu montres les chaussures qui sont devant toi. Choisis le déterminant démonstratif (ces ou ses) : « ___ chaussures sont neuves. »",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "ces",
+                "form": "ces"
+              },
+              {
+                "lemma": "ses",
+                "form": "ses"
+              }
+            ],
+            "sentences": [
+              "___ chaussures sont neuves."
+            ],
+            "assessed": {
+              "words": [
+                "ces",
+                "ses"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "errorKey": "possessive-instead-of-demonstrative",
+              "incorrectChoiceFr": "ses"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "ces",
+            "correct": true
+          },
+          {
+            "text": "ses",
+            "correct": false
+          }
+        ],
+        "cefrLevel": "B1",
+        "difficulty": 75
+      },
+      "metrics": {
+        "difficulty": 0.75,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5
+      },
+      "material": {
+        "exposed": [
+          "sentence:sha256:feb9a1be6b61f6d0a58097b549220fb7ec99d83fcc36e26f367ff28ebbc32d34",
+          "word:sha256:3cf5e619882042e2a53711c92894aef5f1200153450ff8c10b69f95a802ae131",
+          "word:sha256:fde777772725888514f370072db5c3a1ca57011e65b9ff9cd23d7c26301858dc"
+        ],
+        "assessed": [
+          "word:sha256:3cf5e619882042e2a53711c92894aef5f1200153450ff8c10b69f95a802ae131",
+          "word:sha256:fde777772725888514f370072db5c3a1ca57011e65b9ff9cd23d7c26301858dc"
+        ],
+        "annotationStatus": "anchored_requires_review"
+      },
+      "contrastingErrorKeys": [
+        "possessive-instead-of-demonstrative"
+      ],
+      "requiredReviews": [
+        "answer_validity_and_alternatives",
+        "unique_response_and_clear_instructions",
+        "approved_target_fit",
+        "material_novelty_and_error_annotations",
+        "difficulty_and_guessing"
+      ]
+    },
+    {
+      "questionId": "local-spelling-v1:orthographier_nasale_an_en:receptive:stretch",
+      "sourceChecksum": "sha256:907a23bc7e1516f1ab8aa1d43b45d069bf42dc0ec3380f13a94e159897be3f4f",
+      "revisedChecksum": "sha256:157aede6a692875245fe3144fe40993ea5cab936007cb394fc4cd8beb9a49629",
+      "reason": "Dense is correctly spelled French, so it cannot be rejected by the inherited spelling-only prompt. Supply the intended meaning; vocabulary comprehension and difficulty need review.",
+      "priorReviewStatus": "human_approved",
+      "status": "needs_human_review",
+      "target": {
+        "nodeKey": "orthographier_nasale_an_en",
+        "labelFr": "Choisir les graphies an/en",
+        "descriptionFr": "Sélectionner an ou en dans des mots fréquents en mobilisant la forme lexicale et sa famille.",
+        "evidence": {
+          "key": "reading-receptive",
+          "actionFr": "Choisir, repérer ou corriger la graphie qui démontre la compétence suivante : choisir les graphies an/en.",
+          "modality": "reading",
+          "expectation": "receptive",
+          "successCriteria": {
+            "minimumAccuracy": 0.8,
+            "minimumDistinctItems": 3,
+            "minimumContrastingErrors": 2,
+            "novelWordsRequired": true
+          }
+        }
+      },
+      "before": {
+        "nodeKey": "orthographier_nasale_an_en",
+        "strand": "orthographe_lexicale",
+        "modality": "grammar_analysis",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quel mot est correctement orthographié ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "choices": [
+          {
+            "text": "danse",
+            "correct": true
+          },
+          {
+            "text": "dense",
+            "correct": false
+          },
+          {
+            "text": "dançe",
+            "correct": false
+          }
+        ],
+        "difficulty": 75
+      },
+      "after": {
+        "nodeKey": "orthographier_nasale_an_en",
+        "strand": "orthographe_lexicale",
+        "modality": "grammar_analysis",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quel nom désigne une activité où l’on bouge son corps en rythme avec la musique ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "danse",
+                "form": "danse"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "danse"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "errorKey": "wrong-nasal-spelling-in-context",
+              "incorrectChoiceFr": "dense"
+            },
+            {
+              "errorKey": "unnecessary-cedilla",
+              "incorrectChoiceFr": "dançe"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "danse",
+            "correct": true
+          },
+          {
+            "text": "dense",
+            "correct": false
+          },
+          {
+            "text": "dançe",
+            "correct": false
+          }
+        ],
+        "difficulty": 75
+      },
+      "metrics": {
+        "difficulty": 0.75,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333
+      },
+      "material": {
+        "exposed": [
+          "word:sha256:00e400b1159b136054456a8962f966795c59b80d61abcc365a4424caef146412"
+        ],
+        "assessed": [
+          "word:sha256:00e400b1159b136054456a8962f966795c59b80d61abcc365a4424caef146412"
+        ],
+        "annotationStatus": "anchored_requires_review"
+      },
+      "contrastingErrorKeys": [
+        "wrong-nasal-spelling-in-context",
+        "unnecessary-cedilla"
+      ],
+      "requiredReviews": [
+        "answer_validity_and_alternatives",
+        "unique_response_and_clear_instructions",
+        "approved_target_fit",
+        "material_novelty_and_error_annotations",
+        "difficulty_and_guessing"
+      ]
+    },
+    {
+      "questionId": "local-spelling-v1:justifier_lettre_finale_muette:receptive:core",
+      "sourceChecksum": "sha256:036cf4078ddfdb914c04b85518f2631e92fafe8549612797c13f1e0942765efe",
+      "revisedChecksum": "sha256:50567735f0d623421910f4079fed07f7a1da1aacbe103241b8d2d128f4c1f4be",
+      "reason": "Petitesse and petitement also make the t audible. Specify the feminine-singular transformation so petite is uniquely responsive. This assesses a particular justification strategy and requires fresh review.",
+      "priorReviewStatus": "human_approved",
+      "status": "needs_human_review",
+      "target": {
+        "nodeKey": "justifier_lettre_finale_muette",
+        "labelFr": "Justifier une lettre finale muette",
+        "descriptionFr": "Mobiliser une forme fléchie ou un mot de la même famille pour retrouver une consonne finale non entendue.",
+        "evidence": {
+          "key": "reading-receptive",
+          "actionFr": "Choisir, repérer ou corriger la graphie qui démontre la compétence suivante : justifier une lettre finale muette.",
+          "modality": "reading",
+          "expectation": "receptive",
+          "successCriteria": {
+            "minimumAccuracy": 0.8,
+            "minimumDistinctItems": 3,
+            "minimumContrastingErrors": 2,
+            "novelWordsRequired": true
+          }
+        }
+      },
+      "before": {
+        "nodeKey": "justifier_lettre_finale_muette",
+        "strand": "orthographe_lexicale",
+        "modality": "grammar_analysis",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle forme permet de justifier le t final de « petit » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "choices": [
+          {
+            "text": "petite",
+            "correct": true
+          },
+          {
+            "text": "petitesse",
+            "correct": false
+          },
+          {
+            "text": "petitement",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "after": {
+        "nodeKey": "justifier_lettre_finale_muette",
+        "strand": "orthographe_lexicale",
+        "modality": "grammar_analysis",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quel est le féminin singulier de « petit » qui permet d’entendre le t final ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "petit",
+                "form": "petit"
+              },
+              {
+                "lemma": "petit",
+                "form": "petite"
+              },
+              {
+                "lemma": "petitesse",
+                "form": "petitesse"
+              },
+              {
+                "lemma": "petitement",
+                "form": "petitement"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "petit"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "petite",
+            "correct": true
+          },
+          {
+            "text": "petitesse",
+            "correct": false
+          },
+          {
+            "text": "petitement",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "metrics": {
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333
+      },
+      "material": {
+        "exposed": [
+          "word:sha256:0e4f8133092a6bbb729ebf51e71f4433ec61e2a4944f58e017a70bc0143267d4",
+          "word:sha256:3a990e320f06e0bb8aaec773aec3e02ed43156edd7cf70987f892b24387f09a0",
+          "word:sha256:f7867961f68e1ae077203b591d066cbf43e8eb07b98e7aed27137a1e3cfebf31"
+        ],
+        "assessed": [
+          "word:sha256:3a990e320f06e0bb8aaec773aec3e02ed43156edd7cf70987f892b24387f09a0"
+        ],
+        "annotationStatus": "anchored_requires_review"
+      },
+      "contrastingErrorKeys": [],
+      "requiredReviews": [
+        "answer_validity_and_alternatives",
+        "unique_response_and_clear_instructions",
+        "approved_target_fit",
+        "material_novelty_and_error_annotations",
+        "difficulty_and_guessing"
+      ]
+    }
+  ],
+  "checksum": "sha256:3821d8331ce1a27661aedcf5dda448e249750b22304808af73739a4245ba8197"
+}

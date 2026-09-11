@@ -1,0 +1,94 @@
+[
+  {
+    "source": {
+      "id": "pronoun-context",
+      "node": "employer_pronoms_complements_en_contexte",
+      "prompt": "Raconte comment tu prêtes puis récupères un objet.",
+      "answer": "Lina cherchait un livre. Je le lui ai prêté et elle m’a remercié. Le lendemain, elle me l’a rendu et je l’ai rangé.",
+      "expect": "correct"
+    },
+    "judgment": {
+      "uncertain": false,
+      "connectedWriting": true,
+      "revisionReviewed": false,
+      "opportunities": [
+        {
+          "excerpt": "le",
+          "occurrence": 0,
+          "correct": true,
+          "reasonFr": "Pronom COD référant à « un livre », correctement placé devant « ai prêté »."
+        },
+        {
+          "excerpt": "lui",
+          "occurrence": 0,
+          "correct": true,
+          "reasonFr": "Pronom COI référant à Lina, correctement placé devant « ai prêté »."
+        },
+        {
+          "excerpt": "m'",
+          "occurrence": 0,
+          "correct": true,
+          "reasonFr": "Pronom COI référant à « je », correctement placé devant « a remercié »."
+        },
+        {
+          "excerpt": "me",
+          "occurrence": 0,
+          "correct": true,
+          "reasonFr": "Pronom COI référant à « je », correctement placé devant « a rendu »."
+        },
+        {
+          "excerpt": "l'",
+          "occurrence": 0,
+          "correct": true,
+          "reasonFr": "Pronom COD référant à « un livre », correctement placé devant « a rendu »."
+        },
+        {
+          "excerpt": "l'",
+          "occurrence": 1,
+          "correct": true,
+          "reasonFr": "Pronom COD référant à « un livre », correctement placé devant « ai rangé »."
+        }
+      ]
+    }
+  },
+  {
+    "source": {
+      "id": "temporal-sequence",
+      "node": "produire_sequence_temporelle",
+      "prompt": "Raconte comment un objet perdu a été retrouvé.",
+      "answer": "Avant de sortir, Lina avait posé sa clé sur la table. Elle l’a cherchée dans son sac, puis elle est retournée dans la cuisine. Quand elle l’a retrouvée, elle a enfin pu partir.",
+      "expect": "correct"
+    },
+    "judgment": {
+      "uncertain": false,
+      "connectedWriting": true,
+      "revisionReviewed": false,
+      "opportunities": [
+        {
+          "excerpt": "Avant de sortir",
+          "occurrence": 0,
+          "correct": true,
+          "reasonFr": "Marqueur d'antériorité clair qui situe l'action de poser la clé avant la sortie, établissant le point de départ temporel du récit."
+        },
+        {
+          "excerpt": "avait posé",
+          "occurrence": 0,
+          "correct": true,
+          "reasonFr": "Plus-que-parfait correctement utilisé pour une action antérieure au moment de référence passé (la recherche), respectant la chronologie."
+        },
+        {
+          "excerpt": "puis",
+          "occurrence": 0,
+          "correct": true,
+          "reasonFr": "Connecteur temporel de succession qui enchaîne logiquement la recherche dans le sac et le retour à la cuisine."
+        },
+        {
+          "excerpt": "Quand elle l'a retrouvée",
+          "occurrence": 0,
+          "correct": true,
+          "reasonFr": "Subordonnée temporelle marquant le moment de résolution, qui clôt la séquence et permet l'action finale (partir)."
+        }
+      ]
+    }
+  }
+]

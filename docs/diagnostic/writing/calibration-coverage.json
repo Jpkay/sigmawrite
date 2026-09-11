@@ -1,0 +1,371 @@
+{
+  "status": "synthetic_coverage_only_not_calibrated",
+  "scope": "Scoped, adversarial and expanded target datasets; excludes initial smoke and repeated runs",
+  "targetCount": 18,
+  "targetsWithCases": 18,
+  "targetsWithAllOutcomeTypes": 1,
+  "targets": [
+    {
+      "nodeKey": "produire_contraste_pc_imparfait",
+      "labelFr": "Produire le contraste passé composé-imparfait",
+      "cases": [
+        {
+          "id": "past-contrast",
+          "expected": "correct",
+          "observed": "correct",
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        }
+      ],
+      "missingExpectedOutcomes": [
+        "incorrect",
+        "unresolved"
+      ],
+      "nextAction": "add_counterexamples_and_independent_review"
+    },
+    {
+      "nodeKey": "produire_sequence_temporelle",
+      "labelFr": "Produire une séquence temporelle cohérente",
+      "cases": [
+        {
+          "id": "temporal-sequence",
+          "expected": "correct",
+          "observed": "unavailable",
+          "matched": false,
+          "model": "z-ai/glm-5.2"
+        }
+      ],
+      "missingExpectedOutcomes": [
+        "correct",
+        "incorrect",
+        "unresolved"
+      ],
+      "nextAction": "add_counterexamples_and_independent_review"
+    },
+    {
+      "nodeKey": "maintenir_orthographe_lexicale_phrase",
+      "labelFr": "Maintenir l'orthographe lexicale dans une phrase",
+      "cases": [
+        {
+          "id": "lexical-scoped-correct",
+          "expected": "correct",
+          "observed": "correct",
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        },
+        {
+          "id": "lexical-scoped-errors",
+          "expected": "incorrect",
+          "observed": "incorrect",
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        }
+      ],
+      "missingExpectedOutcomes": [
+        "unresolved"
+      ],
+      "nextAction": "add_counterexamples_and_independent_review"
+    },
+    {
+      "nodeKey": "reviser_orthographe_lexicale_paragraphe",
+      "labelFr": "Réviser l'orthographe lexicale d'un paragraphe",
+      "cases": [
+        {
+          "id": "retained-revision-errors",
+          "expected": "incorrect",
+          "observed": "incorrect",
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        },
+        {
+          "id": "no-revision-opportunity",
+          "expected": "unresolved",
+          "observed": "unresolved",
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        },
+        {
+          "id": "introduced-revision-errors",
+          "expected": "incorrect",
+          "observed": "incorrect",
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        }
+      ],
+      "missingExpectedOutcomes": [
+        "correct"
+      ],
+      "nextAction": "add_counterexamples_and_independent_review"
+    },
+    {
+      "nodeKey": "maintenir_orthographe_grammaticale_phrase",
+      "labelFr": "Maintenir l'orthographe grammaticale dans une phrase",
+      "cases": [
+        {
+          "id": "grammar-scoped-correct",
+          "expected": "correct",
+          "observed": "correct",
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        },
+        {
+          "id": "grammar-scoped-errors",
+          "expected": "incorrect",
+          "observed": "incorrect",
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        }
+      ],
+      "missingExpectedOutcomes": [
+        "unresolved"
+      ],
+      "nextAction": "add_counterexamples_and_independent_review"
+    },
+    {
+      "nodeKey": "reviser_orthographe_grammaticale_paragraphe",
+      "labelFr": "Réviser l'orthographe grammaticale d'un paragraphe",
+      "cases": [
+        {
+          "id": "grammar-revision",
+          "expected": "correct",
+          "observed": "correct",
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        }
+      ],
+      "missingExpectedOutcomes": [
+        "incorrect",
+        "unresolved"
+      ],
+      "nextAction": "add_counterexamples_and_independent_review"
+    },
+    {
+      "nodeKey": "employer_pronoms_complements_en_contexte",
+      "labelFr": "Employer les pronoms compléments en contexte",
+      "cases": [
+        {
+          "id": "pronoun-context",
+          "expected": "correct",
+          "observed": "unavailable",
+          "matched": false,
+          "model": "z-ai/glm-5.2"
+        }
+      ],
+      "missingExpectedOutcomes": [
+        "correct",
+        "incorrect",
+        "unresolved"
+      ],
+      "nextAction": "add_counterexamples_and_independent_review"
+    },
+    {
+      "nodeKey": "employer_present_indicatif_en_contexte",
+      "labelFr": "Employer le présent de l’indicatif en contexte",
+      "cases": [
+        {
+          "id": "present-context",
+          "expected": "correct",
+          "observed": "correct",
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        }
+      ],
+      "missingExpectedOutcomes": [
+        "incorrect",
+        "unresolved"
+      ],
+      "nextAction": "add_counterexamples_and_independent_review"
+    },
+    {
+      "nodeKey": "employer_futur_proche_en_contexte",
+      "labelFr": "Employer le futur proche en contexte",
+      "cases": [
+        {
+          "id": "future-near-context",
+          "expected": "correct",
+          "observed": "correct",
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        }
+      ],
+      "missingExpectedOutcomes": [
+        "incorrect",
+        "unresolved"
+      ],
+      "nextAction": "add_counterexamples_and_independent_review"
+    },
+    {
+      "nodeKey": "employer_passe_recent_en_contexte",
+      "labelFr": "Employer le passé récent en contexte",
+      "cases": [
+        {
+          "id": "recent-past-context",
+          "expected": "correct",
+          "observed": "correct",
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        }
+      ],
+      "missingExpectedOutcomes": [
+        "incorrect",
+        "unresolved"
+      ],
+      "nextAction": "add_counterexamples_and_independent_review"
+    },
+    {
+      "nodeKey": "employer_passe_compose_en_contexte",
+      "labelFr": "Employer le passé composé en contexte",
+      "cases": [
+        {
+          "id": "compound-past-context",
+          "expected": "correct",
+          "observed": "correct",
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        }
+      ],
+      "missingExpectedOutcomes": [
+        "incorrect",
+        "unresolved"
+      ],
+      "nextAction": "add_counterexamples_and_independent_review"
+    },
+    {
+      "nodeKey": "employer_imparfait_en_contexte",
+      "labelFr": "Employer le imparfait en contexte",
+      "cases": [
+        {
+          "id": "unrelated-spelling",
+          "expected": "correct",
+          "observed": "correct",
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        },
+        {
+          "id": "disconnected-forms",
+          "expected": "unresolved",
+          "observed": "unresolved",
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        },
+        {
+          "id": "grading-injection",
+          "expected": "incorrect",
+          "observed": "incorrect",
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        }
+      ],
+      "missingExpectedOutcomes": [],
+      "nextAction": "add_counterexamples_and_independent_review"
+    },
+    {
+      "nodeKey": "employer_futur_simple_en_contexte",
+      "labelFr": "Employer le futur simple en contexte",
+      "cases": [
+        {
+          "id": "simple-future-context",
+          "expected": "correct",
+          "observed": "correct",
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        }
+      ],
+      "missingExpectedOutcomes": [
+        "incorrect",
+        "unresolved"
+      ],
+      "nextAction": "add_counterexamples_and_independent_review"
+    },
+    {
+      "nodeKey": "employer_plus_que_parfait_en_contexte",
+      "labelFr": "Employer le plus-que-parfait en contexte",
+      "cases": [
+        {
+          "id": "pluperfect-context",
+          "expected": "correct",
+          "observed": "correct",
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        }
+      ],
+      "missingExpectedOutcomes": [
+        "incorrect",
+        "unresolved"
+      ],
+      "nextAction": "add_counterexamples_and_independent_review"
+    },
+    {
+      "nodeKey": "employer_conditionnel_present_en_contexte",
+      "labelFr": "Employer le conditionnel présent en contexte",
+      "cases": [
+        {
+          "id": "conditional-context",
+          "expected": "correct",
+          "observed": "correct",
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        }
+      ],
+      "missingExpectedOutcomes": [
+        "incorrect",
+        "unresolved"
+      ],
+      "nextAction": "add_counterexamples_and_independent_review"
+    },
+    {
+      "nodeKey": "employer_subjonctif_present_en_contexte",
+      "labelFr": "Employer le subjonctif présent en contexte",
+      "cases": [
+        {
+          "id": "subjunctive-errors",
+          "expected": "incorrect",
+          "observed": "incorrect",
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        }
+      ],
+      "missingExpectedOutcomes": [
+        "correct",
+        "unresolved"
+      ],
+      "nextAction": "add_counterexamples_and_independent_review"
+    },
+    {
+      "nodeKey": "employer_imperatif_en_contexte",
+      "labelFr": "Employer le impératif en contexte",
+      "cases": [
+        {
+          "id": "imperative-errors",
+          "expected": "incorrect",
+          "observed": "incorrect",
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        }
+      ],
+      "missingExpectedOutcomes": [
+        "correct",
+        "unresolved"
+      ],
+      "nextAction": "add_counterexamples_and_independent_review"
+    },
+    {
+      "nodeKey": "employer_passe_simple_en_contexte",
+      "labelFr": "Employer le passé simple en contexte",
+      "cases": [
+        {
+          "id": "simple-past-context",
+          "expected": "correct",
+          "observed": "correct",
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        }
+      ],
+      "missingExpectedOutcomes": [
+        "incorrect",
+        "unresolved"
+      ],
+      "nextAction": "add_counterexamples_and_independent_review"
+    }
+  ]
+}

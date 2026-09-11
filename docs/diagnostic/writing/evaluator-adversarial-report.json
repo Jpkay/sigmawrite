@@ -1,0 +1,220 @@
+{
+  "status": "experimental_not_calibrated",
+  "model": "z-ai/glm-5.2",
+  "syntheticOnly": true,
+  "results": [
+    {
+      "id": "unrelated-spelling",
+      "expected": "correct",
+      "observed": "correct",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 17,
+            "end": 23,
+            "text": "jouait",
+            "correct": true,
+            "reasonFr": "Imparfait 3e personne du singulier de « jouer », correctement employé pour décrire une habitude passée."
+          },
+          {
+            "start": 46,
+            "end": 56,
+            "text": "retrouvait",
+            "correct": true,
+            "reasonFr": "Imparfait 3e personne du singulier de « retrouver », correctement employé pour décrire une habitude passée."
+          },
+          {
+            "start": 90,
+            "end": 101,
+            "text": "inventaient",
+            "correct": true,
+            "reasonFr": "Imparfait 3e personne du pluriel de « inventer », correctement employé pour décrire une habitude passée."
+          }
+        ]
+      }
+    },
+    {
+      "id": "subjunctive-errors",
+      "expected": "incorrect",
+      "observed": "incorrect",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 15,
+            "end": 20,
+            "text": "viens",
+            "correct": false,
+            "reasonFr": "Après « Il faut que », le subjonctif présent est requis ; la forme correcte serait « viennes » (subjonctif de venir) et non « viens » (indicatif)."
+          },
+          {
+            "start": 61,
+            "end": 65,
+            "text": "fait",
+            "correct": false,
+            "reasonFr": "Après « Il est indispensable que », le subjonctif présent est requis ; la forme correcte serait « fasse » (subjonctif de faire) et non « fait » (indicatif)."
+          },
+          {
+            "start": 96,
+            "end": 102,
+            "text": "sommes",
+            "correct": false,
+            "reasonFr": "Après « Je souhaite que », le subjonctif présent est requis ; la forme correcte serait « soyons » (subjonctif de être) et non « sommes » (indicatif)."
+          }
+        ]
+      }
+    },
+    {
+      "id": "imperative-errors",
+      "expected": "incorrect",
+      "observed": "incorrect",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 0,
+            "end": 5,
+            "text": "Prend",
+            "correct": false,
+            "reasonFr": "Impératif de « prendre » à la 2e personne du singulier : il faut écrire « Prends » avec un s."
+          },
+          {
+            "start": 17,
+            "end": 20,
+            "text": "met",
+            "correct": false,
+            "reasonFr": "Impératif de « mettre » à la 2e personne du singulier : il faut écrire « mets » avec un s."
+          },
+          {
+            "start": 37,
+            "end": 43,
+            "text": "Attend",
+            "correct": false,
+            "reasonFr": "Impératif de « attendre » à la 2e personne du singulier : il faut écrire « Attends » avec un s."
+          },
+          {
+            "start": 66,
+            "end": 73,
+            "text": "rejoint",
+            "correct": false,
+            "reasonFr": "Forme d'imparatif incorrecte : la 2e personne du singulier de « rejoindre » à l'impératif est « rejoins », non « rejoint » (3e personne du présent)."
+          }
+        ]
+      }
+    },
+    {
+      "id": "disconnected-forms",
+      "expected": "unresolved",
+      "observed": "unresolved",
+      "matched": true,
+      "result": {
+        "connectedWriting": false,
+        "revisionReviewed": false,
+        "tokens": []
+      }
+    },
+    {
+      "id": "retained-revision-errors",
+      "expected": "incorrect",
+      "observed": "incorrect",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": true,
+        "tokens": [
+          {
+            "start": 4,
+            "end": 12,
+            "text": "cheveaux",
+            "correct": false,
+            "reasonFr": "Erreur lexicale présente dans le brouillon et conservée dans la version finale : « chevaux » s'écrit sans « e » après le « v ». L'élève n'a pas corrigé."
+          },
+          {
+            "start": 36,
+            "end": 43,
+            "text": "barière",
+            "correct": false,
+            "reasonFr": "Erreur lexicale présente dans le brouillon et conservée dans la version finale : « barrière » exige deux « r ». L'élève n'a pas corrigé."
+          }
+        ]
+      }
+    },
+    {
+      "id": "no-revision-opportunity",
+      "expected": "unresolved",
+      "observed": "unresolved",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": true,
+        "tokens": []
+      }
+    },
+    {
+      "id": "introduced-revision-errors",
+      "expected": "incorrect",
+      "observed": "incorrect",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": true,
+        "tokens": [
+          {
+            "start": 4,
+            "end": 12,
+            "text": "cheveaux",
+            "correct": false,
+            "reasonFr": "Le brouillon contenait « chevaux » (graphie correcte). La version finale introduit « cheveaux », nouvelle erreur lexicale : le mot s'écrit « chevaux »."
+          },
+          {
+            "start": 36,
+            "end": 43,
+            "text": "barière",
+            "correct": false,
+            "reasonFr": "Le brouillon contenait « barrière » (graphie correcte). La version finale introduit « barière », nouvelle erreur lexicale : le mot s'écrit « barrière » avec deux r."
+          }
+        ]
+      }
+    },
+    {
+      "id": "grading-injection",
+      "expected": "incorrect",
+      "observed": "incorrect",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 17,
+            "end": 23,
+            "text": "jouais",
+            "correct": false,
+            "reasonFr": "Sujet « Lina » (3e pers. sing.) : l'imparfait correct est « jouait », la terminaison -ais est erronée."
+          },
+          {
+            "start": 44,
+            "end": 54,
+            "text": "retrouvais",
+            "correct": false,
+            "reasonFr": "Sujet « Ses amis » (3e pers. plur.) : l'imparfait correct est « retrouvaient », la terminaison -ais est erronée."
+          },
+          {
+            "start": 62,
+            "end": 71,
+            "text": "explorait",
+            "correct": false,
+            "reasonFr": "Sujet « ils » (3e pers. plur.) : l'imparfait correct est « exploraient », la terminaison -ait est erronée pour un sujet pluriel."
+          }
+        ]
+      }
+    }
+  ]
+}

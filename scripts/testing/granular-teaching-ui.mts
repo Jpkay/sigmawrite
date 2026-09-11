@@ -1,0 +1,51 @@
+import {chromium} from "@playwright/test";
+import {strict as assert} from "node:assert";
+const browser=await chromium.launch({channel:"chrome",headless:true});
+try{
+ const page=await browser.newPage({viewport:{width:390,height:844}}),errors:string[]=[];
+ page.on("pageerror",error=>errors.push(error.message));
+ await page.goto("http://127.0.0.1:4179");
+ await page.getByRole("button",{name:"Commencer",exact:true}).waitFor();
+ await page.evaluate(()=>{
+  const initial={phase:"learning",paused:true,provisional:true,remainingSeconds:0,pendingItemId:null,results:[],priorities:[],sessionId:"11111111-1111-4111-8111-111111111111",revision:0,answeredCount:1,teaching:null,learningCheck:null,missingLearningActivityCount:0,skillDetails:{},question:null,
+   learningActivities:[{skillId:"placement",activityId:"fixture-lesson",kind:"instruction",action:"learn",titleFr:"Placer le petit mot avant le verbe",href:"/student/diagnostic",estimatedMinutes:5,contentId:"french-v3-teaching:pronoun-placement:finite"}]};
+  localStorage.setItem("granular-ui-fixture",JSON.stringify(initial));
+ });
+ await page.reload();
+ await page.getByRole("button",{name:"Commencer cette activité",exact:true}).click();
+ await page.getByRole("heading",{name:"Placer le petit mot avant le verbe",exact:true}).waitFor();
+ await page.reload();
+ await page.getByText("Ce manga ? Lina le lit.",{exact:true}).waitFor();
+ await page.screenshot({path:"/tmp/granular-teaching-lesson-mobile.png",fullPage:true});
+ await page.getByRole("button",{name:"À moi d’essayer",exact:true}).click();
+ await page.getByLabel("Ta réponse",{exact:true}).fill("Sami le regarde.");
+ await page.getByRole("button",{name:"Un indice",exact:true}).click();
+ assert.equal(await page.getByLabel("Ta réponse",{exact:true}).inputValue(),"Sami le regarde.");
+ await page.getByRole("button",{name:"Vérifier ma réponse",exact:true}).click();
+ await page.getByRole("alert").filter({hasText:"conservée"}).waitFor();
+ assert.equal(await page.getByLabel("Ta réponse",{exact:true}).inputValue(),"Sami le regarde.");
+ await page.getByRole("button",{name:"Vérifier ma réponse",exact:true}).click();
+ await page.getByRole("alert").filter({hasText:"connexion"}).waitFor();
+ assert.equal(await page.getByLabel("Ta réponse",{exact:true}).inputValue(),"Sami le regarde.");
+ await page.getByRole("button",{name:"Vérifier ma réponse",exact:true}).click();
+ await page.getByText("Oui, c’est ça !",{exact:true}).waitFor();
+ await page.reload();await page.getByText("Oui, c’est ça !",{exact:true}).waitFor();
+ await page.getByRole("button",{name:"Exercice suivant",exact:true}).click();
+ assert.equal(await page.getByLabel("Ta réponse",{exact:true}).inputValue(),"");
+ await page.reload();await page.getByText(/Entraînement 2 sur 3/).waitFor();
+ await page.getByLabel("Ta réponse",{exact:true}).fill("Nous invitons les.");
+ await page.getByRole("button",{name:"Vérifier ma réponse",exact:true}).click();
+ await page.getByText("Regarde la correction.",{exact:true}).waitFor();
+ await page.getByText("Nous les invitons.",{exact:true}).waitFor();
+ await page.getByRole("button",{name:"Exercice suivant",exact:true}).click();
+ await page.getByLabel("Ta réponse",{exact:true}).fill("Nora l’a rangé.");
+ assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
+ await page.screenshot({path:"/tmp/granular-teaching-practice-mobile.png",fullPage:true});
+ await page.getByRole("button",{name:"Vérifier ma réponse",exact:true}).click();
+ await page.getByRole("button",{name:"Terminer l’entraînement",exact:true}).click();
+ await page.getByRole("heading",{name:"Tes acquis et tes prochaines étapes",exact:true}).waitFor();
+ await page.getByRole("status").filter({hasText:"Ton entraînement est enregistré"}).waitFor();
+ await page.reload();await page.getByRole("heading",{name:"Tes acquis et tes prochaines étapes",exact:true}).waitFor();
+ assert.deepEqual(errors,[]);
+ console.log("Teaching browser fixture passed: lesson/exercise/feedback refresh, hint, conflict/network draft preservation, correction, next exercise, completion and mobile layout. Uses fixture persistence, not authenticated production.");
+}finally{await browser.close();}

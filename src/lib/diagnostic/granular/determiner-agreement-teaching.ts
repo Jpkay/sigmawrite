@@ -1,0 +1,23 @@
+import {DETERMINER_PRODUCTION_TEACHING} from "./determiner-production-teaching";
+import type {TargetTeachingContent} from "./teaching-content";
+const exercises:Array<[string,string,[string,string,string],string]>=[
+ ["La fenêtre est ouverte.","La s’accorde avec fenêtre, un nom féminin singulier.",["La s’accorde avec ouverte, pas avec le nom.","Fenêtre est pluriel parce qu’on peut ouvrir plusieurs fenêtres.","La remplace ici une personne sans accompagner de nom."],"Cherche le nom accompagné par La."],
+ ["Les stylos sont rangés.","Les marque le pluriel de stylos sans préciser son genre à lui seul.",["Les indique forcément le féminin.","Les s’accorde avec rangés plutôt qu’avec un nom.","Les est singulier parce que le rangement est terminé."],"Que change-t-on entre le stylo et les stylos ?"],
+ ["Son frère arrive.","Son s’accorde avec frère, masculin singulier; la personne qui possède ce lien peut être une fille ou un garçon.",["Son prouve que la personne dont on parle est un garçon propriétaire.","Son s’accorde avec arrive.","Frère est pluriel parce que deux personnes sont liées."],"Le genre du nom frère dépend-il de la personne dont c’est le frère ?"],
+ ["Des grandes affiches couvrent le mur.","Des détermine affiches, au pluriel, même si grandes les sépare.",["Des détermine mur parce que c’est le dernier nom.","Des est un pronom placé devant le verbe couvrent.","Grandes supprime l’accord entre des et affiches."],"Cherche ce qui couvre le mur : quel est le nom du groupe ?"],
+ ["Il les range.","Les remplace des objets ou des personnes; devant range, c’est un pronom et non un déterminant devant un nom.",["Range est le nom déterminé par les.","Les s’accorde avec le nom Il.","Les est toujours un déterminant."],"Range exprime ici une action : c’est un verbe."],
+ ["Ils dorment.","Cette phrase contient un pronom et un verbe, sans groupe déterminant-nom.",["Ils détermine le nom dorment.","Dorment est le déterminant de Ils.","Ils est un nom féminin singulier."],"Quel mot serait un nom dans cette phrase ?"],
+];
+const lesson:TargetTeachingContent={id:"french-v3-teaching:determiner-agreement",nodeKey:"construction_accord_determinant_nom",mode:"recognition",status:"draft_requires_review",
+ titleFr:"Quel nom commande l’accord ?",learnerQuestionFr:"Pourquoi écrit-on un sac, une trousse et des sacs ?",
+ steps:[
+ {exampleFr:"Un sac. Une trousse. Des sacs.",explanationFr:"Sac et trousse nomment des objets : ce sont des noms. Un, une et des accompagnent ces noms : ce sont des déterminants. Le nom donne son genre, masculin ou féminin, et son nombre, singulier ou pluriel. On choisit la forme du déterminant qui convient."},
+ {exampleFr:"Une grande trousse. Les trousses.",explanationFr:"Dans une grande trousse, une dépend toujours du nom trousse, même si grande les sépare. Les marque le pluriel dans les trousses. Certaines formes, comme les ou des, sont les mêmes devant un nom masculin et devant un nom féminin : elles ne révèlent pas le genre à elles seules."},
+ {exampleFr:"Sa veste. Ses vestes.",explanationFr:"Sa et ses indiquent aussi un lien avec une personne. Pour leur accord, regarde le nom veste : féminin singulier dans sa veste, pluriel dans ses vestes. Que la personne soit un garçon ou une fille ne change pas cet accord."},
+ {exampleFr:"Je ferme les boîtes. Je les ferme.",explanationFr:"Dans les boîtes, les accompagne un nom : c’est un déterminant. Dans je les ferme, les remplace les boîtes et se place devant le verbe ferme : c’est un pronom. Une même forme écrite peut donc jouer des rôles différents."},
+ ],
+ takeawayFr:"Repère le nom du groupe, puis son déterminant. Vérifie le nombre et, quand la forme le distingue, le genre. Un adjectif peut les séparer. Ne confonds pas un déterminant devant un nom avec un pronom devant un verbe.",
+ boundaryFr:"Cette leçon te fait choisir une analyse fournie. Elle ne vérifie pas encore que tu peux rédiger l’explication ou corriger seul toutes les phrases. Les noms n’ont pas tous un genre prévisible d’après leur finale. On écrit aussi mon amie devant une voyelle, bien que amie soit féminin : toutes les formes ne se déduisent pas d’un tableau simple masculin/féminin.",
+ practice:exercises.map(([sentence,answerFr,distractors,hintFr],index)=>({id:`determiner-agreement-guide-${index+1}`,promptFr:`${sentence}\n\nQuelle analyse est correcte ?`,choices:[answerFr,...distractors],answerFr,hintFr,explanationFr:answerFr})),
+};
+export const DETERMINER_AGREEMENT_TEACHING:readonly TargetTeachingContent[]=[...DETERMINER_PRODUCTION_TEACHING,{...lesson,materialExposure:{sentences:[...lesson.steps.flatMap(step=>step.exampleFr.split(/(?<=[.!?])\s+/)),...exercises.map(([sentence])=>sentence)]}}];

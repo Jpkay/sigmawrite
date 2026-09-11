@@ -1,0 +1,2267 @@
+{
+  "version": "french-v3-person-number-expansion-v1",
+  "status": "draft_requires_review",
+  "parentTaxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+  "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
+  "items": [
+    {
+      "itemKey": "v3-person-number:je-dessine",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Je dessine un paysage.\n\nQuelle personne et quel nombre grammaticaux correspondent au sujet « Je » pour l’accord du verbe ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Je dessine un paysage.",
+              "2e personne du singulier",
+              "3e personne du singulier",
+              "1re personne du pluriel",
+              "2e personne du pluriel",
+              "3e personne du pluriel",
+              "1re personne du singulier"
+            ],
+            "assessed": {
+              "sentences": [
+                "Je dessine un paysage."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "1re personne du singulier",
+            "correct": true
+          },
+          {
+            "text": "2e personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "3e personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "1re personne du pluriel",
+            "correct": false
+          },
+          {
+            "text": "2e personne du pluriel",
+            "correct": false
+          },
+          {
+            "text": "3e personne du pluriel",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:j-ecoute",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "J’écoute cette chanson.\n\nQuelle personne et quel nombre grammaticaux correspondent au sujet « J’ » pour l’accord du verbe ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "J’écoute cette chanson.",
+              "2e personne du singulier",
+              "3e personne du singulier",
+              "1re personne du pluriel",
+              "2e personne du pluriel",
+              "3e personne du pluriel",
+              "1re personne du singulier"
+            ],
+            "assessed": {
+              "sentences": [
+                "J’écoute cette chanson."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "1re personne du singulier",
+            "correct": true
+          },
+          {
+            "text": "2e personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "3e personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "1re personne du pluriel",
+            "correct": false
+          },
+          {
+            "text": "2e personne du pluriel",
+            "correct": false
+          },
+          {
+            "text": "3e personne du pluriel",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:je-negation",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Je ne regarde pas la série.\n\nQuelle personne et quel nombre grammaticaux correspondent au sujet « Je » pour l’accord du verbe ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Je ne regarde pas la série.",
+              "2e personne du singulier",
+              "3e personne du singulier",
+              "1re personne du pluriel",
+              "2e personne du pluriel",
+              "3e personne du pluriel",
+              "1re personne du singulier"
+            ],
+            "assessed": {
+              "sentences": [
+                "Je ne regarde pas la série."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "1re personne du singulier",
+            "correct": true
+          },
+          {
+            "text": "2e personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "3e personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "1re personne du pluriel",
+            "correct": false
+          },
+          {
+            "text": "2e personne du pluriel",
+            "correct": false
+          },
+          {
+            "text": "3e personne du pluriel",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:je-incise",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Demain, je préparerai le repas.\n\nQuelle personne et quel nombre grammaticaux correspondent au sujet « je » pour l’accord du verbe ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Demain, je préparerai le repas.",
+              "2e personne du singulier",
+              "3e personne du singulier",
+              "1re personne du pluriel",
+              "2e personne du pluriel",
+              "3e personne du pluriel",
+              "1re personne du singulier"
+            ],
+            "assessed": {
+              "sentences": [
+                "Demain, je préparerai le repas."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "1re personne du singulier",
+            "correct": true
+          },
+          {
+            "text": "2e personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "3e personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "1re personne du pluriel",
+            "correct": false
+          },
+          {
+            "text": "2e personne du pluriel",
+            "correct": false
+          },
+          {
+            "text": "3e personne du pluriel",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:tu-choisis",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Tu choisis un livre.\n\nQuelle personne et quel nombre grammaticaux correspondent au sujet « Tu » pour l’accord du verbe ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Tu choisis un livre.",
+              "1re personne du singulier",
+              "3e personne du singulier",
+              "1re personne du pluriel",
+              "2e personne du pluriel",
+              "3e personne du pluriel",
+              "2e personne du singulier"
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu choisis un livre."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "2e personne du singulier",
+            "correct": true
+          },
+          {
+            "text": "1re personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "3e personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "1re personne du pluriel",
+            "correct": false
+          },
+          {
+            "text": "2e personne du pluriel",
+            "correct": false
+          },
+          {
+            "text": "3e personne du pluriel",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:tu-question",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Pourquoi hésites-tu ?\n\nQuelle personne et quel nombre grammaticaux correspondent au sujet « tu » pour l’accord du verbe ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Pourquoi hésites-tu ?",
+              "1re personne du singulier",
+              "3e personne du singulier",
+              "1re personne du pluriel",
+              "2e personne du pluriel",
+              "3e personne du pluriel",
+              "2e personne du singulier"
+            ],
+            "assessed": {
+              "sentences": [
+                "Pourquoi hésites-tu ?"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "2e personne du singulier",
+            "correct": true
+          },
+          {
+            "text": "1re personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "3e personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "1re personne du pluriel",
+            "correct": false
+          },
+          {
+            "text": "2e personne du pluriel",
+            "correct": false
+          },
+          {
+            "text": "3e personne du pluriel",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:tu-negative",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Tu ne connais pas ce chemin.\n\nQuelle personne et quel nombre grammaticaux correspondent au sujet « Tu » pour l’accord du verbe ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Tu ne connais pas ce chemin.",
+              "1re personne du singulier",
+              "3e personne du singulier",
+              "1re personne du pluriel",
+              "2e personne du pluriel",
+              "3e personne du pluriel",
+              "2e personne du singulier"
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu ne connais pas ce chemin."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "2e personne du singulier",
+            "correct": true
+          },
+          {
+            "text": "1re personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "3e personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "1re personne du pluriel",
+            "correct": false
+          },
+          {
+            "text": "2e personne du pluriel",
+            "correct": false
+          },
+          {
+            "text": "3e personne du pluriel",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:tu-future",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Ce soir, tu présenteras ton dessin.\n\nQuelle personne et quel nombre grammaticaux correspondent au sujet « tu » pour l’accord du verbe ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Ce soir, tu présenteras ton dessin.",
+              "1re personne du singulier",
+              "3e personne du singulier",
+              "1re personne du pluriel",
+              "2e personne du pluriel",
+              "3e personne du pluriel",
+              "2e personne du singulier"
+            ],
+            "assessed": {
+              "sentences": [
+                "Ce soir, tu présenteras ton dessin."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "2e personne du singulier",
+            "correct": true
+          },
+          {
+            "text": "1re personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "3e personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "1re personne du pluriel",
+            "correct": false
+          },
+          {
+            "text": "2e personne du pluriel",
+            "correct": false
+          },
+          {
+            "text": "3e personne du pluriel",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:nom-singulier",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le robot avance sur la piste.\n\nQuelle personne et quel nombre grammaticaux correspondent au sujet « Le robot » pour l’accord du verbe ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le robot avance sur la piste.",
+              "1re personne du singulier",
+              "2e personne du singulier",
+              "1re personne du pluriel",
+              "2e personne du pluriel",
+              "3e personne du pluriel",
+              "3e personne du singulier"
+            ],
+            "assessed": {
+              "sentences": [
+                "Le robot avance sur la piste."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "3e personne du singulier",
+            "correct": true
+          },
+          {
+            "text": "1re personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "2e personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "1re personne du pluriel",
+            "correct": false
+          },
+          {
+            "text": "2e personne du pluriel",
+            "correct": false
+          },
+          {
+            "text": "3e personne du pluriel",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:elle",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Elle range les pinceaux.\n\nQuelle personne et quel nombre grammaticaux correspondent au sujet « Elle » pour l’accord du verbe ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Elle range les pinceaux.",
+              "1re personne du singulier",
+              "2e personne du singulier",
+              "1re personne du pluriel",
+              "2e personne du pluriel",
+              "3e personne du pluriel",
+              "3e personne du singulier"
+            ],
+            "assessed": {
+              "sentences": [
+                "Elle range les pinceaux."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "3e personne du singulier",
+            "correct": true
+          },
+          {
+            "text": "1re personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "2e personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "1re personne du pluriel",
+            "correct": false
+          },
+          {
+            "text": "2e personne du pluriel",
+            "correct": false
+          },
+          {
+            "text": "3e personne du pluriel",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:on-nous",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "On prépare notre spectacle. Ici, on désigne toute notre équipe.\n\nQuelle personne et quel nombre grammaticaux correspondent au sujet « On » pour l’accord du verbe ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "On prépare notre spectacle. Ici, on désigne toute notre équipe.",
+              "1re personne du singulier",
+              "2e personne du singulier",
+              "1re personne du pluriel",
+              "2e personne du pluriel",
+              "3e personne du pluriel",
+              "3e personne du singulier"
+            ],
+            "assessed": {
+              "sentences": [
+                "On prépare notre spectacle. Ici, on désigne toute notre équipe."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "3e personne du singulier",
+            "correct": true
+          },
+          {
+            "text": "1re personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "2e personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "1re personne du pluriel",
+            "correct": false
+          },
+          {
+            "text": "2e personne du pluriel",
+            "correct": false
+          },
+          {
+            "text": "3e personne du pluriel",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:collectif",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "La foule applaudit.\n\nQuelle personne et quel nombre grammaticaux correspondent au sujet « La foule » pour l’accord du verbe ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "La foule applaudit.",
+              "1re personne du singulier",
+              "2e personne du singulier",
+              "1re personne du pluriel",
+              "2e personne du pluriel",
+              "3e personne du pluriel",
+              "3e personne du singulier"
+            ],
+            "assessed": {
+              "sentences": [
+                "La foule applaudit."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "3e personne du singulier",
+            "correct": true
+          },
+          {
+            "text": "1re personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "2e personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "1re personne du pluriel",
+            "correct": false
+          },
+          {
+            "text": "2e personne du pluriel",
+            "correct": false
+          },
+          {
+            "text": "3e personne du pluriel",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:nous",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Nous inventons une histoire.\n\nQuelle personne et quel nombre grammaticaux correspondent au sujet « Nous » pour l’accord du verbe ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Nous inventons une histoire.",
+              "1re personne du singulier",
+              "2e personne du singulier",
+              "3e personne du singulier",
+              "2e personne du pluriel",
+              "3e personne du pluriel",
+              "1re personne du pluriel"
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous inventons une histoire."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "1re personne du pluriel",
+            "correct": true
+          },
+          {
+            "text": "1re personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "2e personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "3e personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "2e personne du pluriel",
+            "correct": false
+          },
+          {
+            "text": "3e personne du pluriel",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:toi-moi",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Toi et moi partageons cette table.\n\nQuelle personne et quel nombre grammaticaux correspondent au sujet « Toi et moi » pour l’accord du verbe ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Toi et moi partageons cette table.",
+              "1re personne du singulier",
+              "2e personne du singulier",
+              "3e personne du singulier",
+              "2e personne du pluriel",
+              "3e personne du pluriel",
+              "1re personne du pluriel"
+            ],
+            "assessed": {
+              "sentences": [
+                "Toi et moi partageons cette table."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "1re personne du pluriel",
+            "correct": true
+          },
+          {
+            "text": "1re personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "2e personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "3e personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "2e personne du pluriel",
+            "correct": false
+          },
+          {
+            "text": "3e personne du pluriel",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:elle-moi",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Elle et moi dessinons les costumes.\n\nQuelle personne et quel nombre grammaticaux correspondent au sujet « Elle et moi » pour l’accord du verbe ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Elle et moi dessinons les costumes.",
+              "1re personne du singulier",
+              "2e personne du singulier",
+              "3e personne du singulier",
+              "2e personne du pluriel",
+              "3e personne du pluriel",
+              "1re personne du pluriel"
+            ],
+            "assessed": {
+              "sentences": [
+                "Elle et moi dessinons les costumes."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "1re personne du pluriel",
+            "correct": true
+          },
+          {
+            "text": "1re personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "2e personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "3e personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "2e personne du pluriel",
+            "correct": false
+          },
+          {
+            "text": "3e personne du pluriel",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:vous-moi",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Vous et moi organiserons la rencontre.\n\nQuelle personne et quel nombre grammaticaux correspondent au sujet « Vous et moi » pour l’accord du verbe ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Vous et moi organiserons la rencontre.",
+              "1re personne du singulier",
+              "2e personne du singulier",
+              "3e personne du singulier",
+              "2e personne du pluriel",
+              "3e personne du pluriel",
+              "1re personne du pluriel"
+            ],
+            "assessed": {
+              "sentences": [
+                "Vous et moi organiserons la rencontre."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "1re personne du pluriel",
+            "correct": true
+          },
+          {
+            "text": "1re personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "2e personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "3e personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "2e personne du pluriel",
+            "correct": false
+          },
+          {
+            "text": "3e personne du pluriel",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:vous-groupe",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Vous cherchez vos places. Je parle à trois amis.\n\nQuelle personne et quel nombre grammaticaux correspondent au sujet « Vous » pour l’accord du verbe ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Vous cherchez vos places. Je parle à trois amis.",
+              "1re personne du singulier",
+              "2e personne du singulier",
+              "3e personne du singulier",
+              "1re personne du pluriel",
+              "3e personne du pluriel",
+              "2e personne du pluriel"
+            ],
+            "assessed": {
+              "sentences": [
+                "Vous cherchez vos places. Je parle à trois amis."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "2e personne du pluriel",
+            "correct": true
+          },
+          {
+            "text": "1re personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "2e personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "3e personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "1re personne du pluriel",
+            "correct": false
+          },
+          {
+            "text": "3e personne du pluriel",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:vous-politesse",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Madame, vous pouvez entrer. Je parle à une seule personne.\n\nQuelle personne et quel nombre grammaticaux correspondent au sujet « vous » pour l’accord du verbe ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Madame, vous pouvez entrer. Je parle à une seule personne.",
+              "1re personne du singulier",
+              "2e personne du singulier",
+              "3e personne du singulier",
+              "1re personne du pluriel",
+              "3e personne du pluriel",
+              "2e personne du pluriel"
+            ],
+            "assessed": {
+              "sentences": [
+                "Madame, vous pouvez entrer. Je parle à une seule personne."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "2e personne du pluriel",
+            "correct": true
+          },
+          {
+            "text": "1re personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "2e personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "3e personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "1re personne du pluriel",
+            "correct": false
+          },
+          {
+            "text": "3e personne du pluriel",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:toi-elle",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Toi et elle préparerez les affiches.\n\nQuelle personne et quel nombre grammaticaux correspondent au sujet « Toi et elle » pour l’accord du verbe ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Toi et elle préparerez les affiches.",
+              "1re personne du singulier",
+              "2e personne du singulier",
+              "3e personne du singulier",
+              "1re personne du pluriel",
+              "3e personne du pluriel",
+              "2e personne du pluriel"
+            ],
+            "assessed": {
+              "sentences": [
+                "Toi et elle préparerez les affiches."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "2e personne du pluriel",
+            "correct": true
+          },
+          {
+            "text": "1re personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "2e personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "3e personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "1re personne du pluriel",
+            "correct": false
+          },
+          {
+            "text": "3e personne du pluriel",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:lui-toi",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lui et toi jouez dans la même équipe.\n\nQuelle personne et quel nombre grammaticaux correspondent au sujet « Lui et toi » pour l’accord du verbe ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Lui et toi jouez dans la même équipe.",
+              "1re personne du singulier",
+              "2e personne du singulier",
+              "3e personne du singulier",
+              "1re personne du pluriel",
+              "3e personne du pluriel",
+              "2e personne du pluriel"
+            ],
+            "assessed": {
+              "sentences": [
+                "Lui et toi jouez dans la même équipe."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "2e personne du pluriel",
+            "correct": true
+          },
+          {
+            "text": "1re personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "2e personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "3e personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "1re personne du pluriel",
+            "correct": false
+          },
+          {
+            "text": "3e personne du pluriel",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:elles",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Elles arrivent avant le début du film.\n\nQuelle personne et quel nombre grammaticaux correspondent au sujet « Elles » pour l’accord du verbe ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Elles arrivent avant le début du film.",
+              "1re personne du singulier",
+              "2e personne du singulier",
+              "3e personne du singulier",
+              "1re personne du pluriel",
+              "2e personne du pluriel",
+              "3e personne du pluriel"
+            ],
+            "assessed": {
+              "sentences": [
+                "Elles arrivent avant le début du film."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "3e personne du pluriel",
+            "correct": true
+          },
+          {
+            "text": "1re personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "2e personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "3e personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "1re personne du pluriel",
+            "correct": false
+          },
+          {
+            "text": "2e personne du pluriel",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:noms-coordonnes",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lina et Sami ferment la porte.\n\nQuelle personne et quel nombre grammaticaux correspondent au sujet « Lina et Sami » pour l’accord du verbe ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Lina et Sami ferment la porte.",
+              "1re personne du singulier",
+              "2e personne du singulier",
+              "3e personne du singulier",
+              "1re personne du pluriel",
+              "2e personne du pluriel",
+              "3e personne du pluriel"
+            ],
+            "assessed": {
+              "sentences": [
+                "Lina et Sami ferment la porte."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "3e personne du pluriel",
+            "correct": true
+          },
+          {
+            "text": "1re personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "2e personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "3e personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "1re personne du pluriel",
+            "correct": false
+          },
+          {
+            "text": "2e personne du pluriel",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:objets-pluriels",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Les lampes éclairent la scène.\n\nQuelle personne et quel nombre grammaticaux correspondent au sujet « Les lampes » pour l’accord du verbe ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les lampes éclairent la scène.",
+              "1re personne du singulier",
+              "2e personne du singulier",
+              "3e personne du singulier",
+              "1re personne du pluriel",
+              "2e personne du pluriel",
+              "3e personne du pluriel"
+            ],
+            "assessed": {
+              "sentences": [
+                "Les lampes éclairent la scène."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "3e personne du pluriel",
+            "correct": true
+          },
+          {
+            "text": "1re personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "2e personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "3e personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "1re personne du pluriel",
+            "correct": false
+          },
+          {
+            "text": "2e personne du pluriel",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:lui-elle",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lui et elle repeignent le banc.\n\nQuelle personne et quel nombre grammaticaux correspondent au sujet « Lui et elle » pour l’accord du verbe ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Lui et elle repeignent le banc.",
+              "1re personne du singulier",
+              "2e personne du singulier",
+              "3e personne du singulier",
+              "1re personne du pluriel",
+              "2e personne du pluriel",
+              "3e personne du pluriel"
+            ],
+            "assessed": {
+              "sentences": [
+                "Lui et elle repeignent le banc."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "3e personne du pluriel",
+            "correct": true
+          },
+          {
+            "text": "1re personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "2e personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "3e personne du singulier",
+            "correct": false
+          },
+          {
+            "text": "1re personne du pluriel",
+            "correct": false
+          },
+          {
+            "text": "2e personne du pluriel",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:je-dessine",
+      "itemChecksum": "sha256:213ccd5846b296df97ce077a58253aab23c898070e4497f9b12512e3031efe1e",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:je-dessine",
+      "reason": "Je désigne la personne qui parle : première personne du singulier."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:j-ecoute",
+      "itemChecksum": "sha256:d9f50d5c3788bb18c83eb70347c1f78c52dd67ed23a22168aee57139326ba016",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:j-ecoute",
+      "reason": "J’ est la forme de je devant une voyelle; la personne et le nombre ne changent pas."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:je-negation",
+      "itemChecksum": "sha256:ffac98633ac7b5cec199214bb7fc3c5883f70423db61e442334fca24840e5c0c",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:je-negation",
+      "reason": "La négation ne change pas les traits du sujet je."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:je-incise",
+      "itemChecksum": "sha256:948f11f34330572f998dbf04911feb3898ba65236280c541653c7cc7e6210d19",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:je-incise",
+      "reason": "Le moment de l’action ne change pas la personne et le nombre de je."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:tu-choisis",
+      "itemChecksum": "sha256:7c352dd98f90eb97942f23289428fc257bc58fb889108627f2e83f0bf4c601d5",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:tu-choisis",
+      "reason": "Tu désigne une seule personne à qui l’on parle."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:tu-question",
+      "itemChecksum": "sha256:21e9aab7bfd3ed7cdaf1d9602dfa3a46e03bc2e098ed37539b2a6c9d8c4a4c21",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:tu-question",
+      "reason": "Même après le verbe dans une question, tu reste à la deuxième personne du singulier."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:tu-negative",
+      "itemChecksum": "sha256:f54c9ca618dec0b2c8bef033c881ad117e9da87688d7c5137fda57f1c39d14ad",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:tu-negative",
+      "reason": "La négation ne modifie pas les traits de tu."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:tu-future",
+      "itemChecksum": "sha256:cce03d14929d3a2e526e0a7cc477bcd528508cf6abd52f8fde2bac7d56a31618",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:tu-future",
+      "reason": "Le futur du verbe ne modifie pas les traits de tu."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:nom-singulier",
+      "itemChecksum": "sha256:28a2e4bb400862bfeb601e039d7b618a54d4e39f8bf96f42e7921cc7e58d0df0",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:nom-singulier",
+      "reason": "Ce groupe se remplace par il : troisième personne du singulier, même si le robot n’est pas humain."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:elle",
+      "itemChecksum": "sha256:c300861ddc764e91c44f08934321d2770f2ca3a02b9e8d39219367ca1a2f8517",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:elle",
+      "reason": "Elle désigne un être dont on parle : troisième personne du singulier."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:on-nous",
+      "itemChecksum": "sha256:ed419d8894ff74a7d40518af820c04503c2778f75870e0e3b089da062acc0a35",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:on-nous",
+      "reason": "Même quand on désigne plusieurs personnes, sa personne grammaticale reste la troisième du singulier."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:collectif",
+      "itemChecksum": "sha256:87c87288e3514d820e97d4876c051158fac1e36f04f11bb516d80874beb361a0",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:collectif",
+      "reason": "Le nom foule est singulier. Le groupe se remplace par elle, même s’il désigne de nombreuses personnes."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:nous",
+      "itemChecksum": "sha256:7040f8ce5f12bc1911868b226b417b9645957c02f18559e542e25a06e4975b65",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:nous",
+      "reason": "Nous comprend la personne qui parle et au moins une autre personne."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:toi-moi",
+      "itemChecksum": "sha256:c41ad942b3b2970143859ff6633d3d957aa40e54ae8d4e7588da64f0489b0719",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:toi-moi",
+      "reason": "La personne qui parle, moi, fait partie du groupe : on le remplace par nous."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:elle-moi",
+      "itemChecksum": "sha256:719cb2efb5c9d5ce3f4abd08e0544e73237b42679b1dcb57772c38e17cf22248",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:elle-moi",
+      "reason": "Un groupe comprenant moi se remplace ici par nous, pas par elles."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:vous-moi",
+      "itemChecksum": "sha256:aa010a52c63229a862de8a78ff343346339009ee0dde9e97925556f8a9ac4584",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:vous-moi",
+      "reason": "Le groupe inclut moi : la première personne commande l’accord au pluriel."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:vous-groupe",
+      "itemChecksum": "sha256:4bec2e0b77b147946154072699173d9b4938a416dbb89c14918c218c8d1b7edb",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:vous-groupe",
+      "reason": "Vous s’adresse ici à plusieurs personnes : deuxième personne du pluriel."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:vous-politesse",
+      "itemChecksum": "sha256:4d74d05e8252c31896b79916aa75e024b576832e27cc9a55b919dab3ed692fe2",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:vous-politesse",
+      "reason": "Le vous de politesse garde les traits grammaticaux de la deuxième personne du pluriel pour le verbe."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:toi-elle",
+      "itemChecksum": "sha256:ec51a5c45d6f2af13eb6f195642c1504510185d7db87d32325ecdf62d756aa6c",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:toi-elle",
+      "reason": "Le groupe inclut la personne à qui l’on parle, toi, sans inclure moi : il se remplace par vous."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:lui-toi",
+      "itemChecksum": "sha256:f53caff11429e03e4b019a6ca675ab9ef48cefc019bf7fae005ab8bbf5c8cc08",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:lui-toi",
+      "reason": "Lui et toi se remplace par vous : deuxième personne du pluriel."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:elles",
+      "itemChecksum": "sha256:529a96916ef40d1917431fd61211d35f9f68b59d941d828bbc821592c43a485d",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:elles",
+      "reason": "Elles désigne plusieurs êtres dont on parle : troisième personne du pluriel."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:noms-coordonnes",
+      "itemChecksum": "sha256:d94e2277ae571ac34c4e8a71fd590072468f7824369178facfd62d524ef4b391",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:noms-coordonnes",
+      "reason": "Ces deux personnes sont celles dont on parle : le groupe se remplace par ils."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:objets-pluriels",
+      "itemChecksum": "sha256:2a0aa07e81cdb9347ce4b14ed20a65238c041ab232674646796aca7bfa8580e0",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:objets-pluriels",
+      "reason": "Les lampes se remplace par elles : troisième personne du pluriel, même pour des objets."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:lui-elle",
+      "itemChecksum": "sha256:4131e9262d9be9d783c368dafa5843ce4d5c334c7ef9267718817b38f1056dbf",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:lui-elle",
+      "reason": "Ni moi ni toi ne figure dans ce groupe : il se remplace par ils."
+    }
+  ],
+  "checksum": "sha256:f4743b3be4421d312429c7cfba4c15bf564a026134a33e45e2bceedc35c0d33b"
+}

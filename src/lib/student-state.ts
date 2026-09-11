@@ -46,6 +46,7 @@ export type StudentState = {
   interests: string[];
   diagnostic: DiagnosticResult | null;
   diagnosticProvisional: boolean;
+  granularDiagnosticReady?: boolean;
   diagnosticSectionProfile: Partial<Record<DiagnosticSectionProfileKey, DiagnosticSectionProfile>>;
   sessions: ReadingSessionResult[];
   answersByText: Record<string, Record<string, number>>;

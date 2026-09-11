@@ -26,3 +26,8 @@ describe("student assessment-first route gate", () => {
     expect(studentAssessmentRedirect({ pathname: "/student/vocabulary", onboarded: true, diagnosticComplete: true, diagnosticProvisional: true })).toBe("/student/diagnostic");
   });
 });
+
+it("allows learning from a completed granular assessment without fabricating legacy section scores",()=>{
+ expect(studentAssessmentRedirect({pathname:"/student/memory",onboarded:true,diagnosticComplete:false,diagnosticProvisional:true,granularDiagnosticReady:true})).toBeNull();
+ expect(studentAssessmentRedirect({pathname:"/student/memory",onboarded:false,diagnosticComplete:false,granularDiagnosticReady:true})).toBe("/student/onboarding");
+});

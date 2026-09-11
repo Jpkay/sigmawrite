@@ -1,0 +1,969 @@
+[
+  {
+    "itemKey": "review-draft-v1:construction_accord_sujet_verbe:receptive:stretch",
+    "sourceChecksum": "sha256:c145143ee4d117cbc6c29c9eb7915f34db87f03faed8669b29f857bb149549e1",
+    "replacement": {
+      "nodeKey": "construction_accord_sujet_verbe",
+      "strand": "orthographe_grammaticale",
+      "modality": "grammar_analysis",
+      "learnerMode": "shared",
+      "responseType": "mcq",
+      "promptFr": "Choisis la forme correcte : « Paul et Mina ___ dans la cour. »",
+      "acceptableAnswers": [],
+      "validatorType": "exact",
+      "choices": [
+        {
+          "text": "jouent",
+          "correct": true
+        },
+        {
+          "text": "joue",
+          "correct": false
+        },
+        {
+          "text": "jouez",
+          "correct": false
+        },
+        {
+          "text": "jouer",
+          "correct": false
+        }
+      ],
+      "cefrLevel": "B1",
+      "difficulty": 75
+    },
+    "reason": "Replace ambiguous ou coordination with two distinct subjects joined by et, requiring plural agreement."
+  },
+  {
+    "itemKey": "review-draft-v1:accorder_sujet_verbe_ecrit:controlled_production:stretch",
+    "sourceChecksum": "sha256:86f4d59231e01e09b8f90ac87e045d07930e67031bfcb272dd50a644cfe8a524",
+    "replacement": {
+      "nodeKey": "accorder_sujet_verbe_ecrit",
+      "strand": "orthographe_grammaticale",
+      "modality": "writing",
+      "learnerMode": "shared",
+      "responseType": "short_answer",
+      "promptFr": "Complète avec être au présent : « Toi et moi ___ amis. » Écris seulement le verbe.",
+      "correctAnswer": "sommes",
+      "acceptableAnswers": [],
+      "validatorType": "exact",
+      "cefrLevel": "B1",
+      "difficulty": 75
+    },
+    "reason": "Remove the resumptive nous cue so the student must derive first-person plural agreement from toi et moi."
+  },
+  {
+    "itemKey": "local-spelling-gap-v1:construction_accord_sujet_verbe:controlled_production:stretch",
+    "sourceChecksum": "sha256:e9ea7f9ad00558dcabee3a6fb56493e1019ee5c3e58e731a7e76e3c021b936c3",
+    "replacement": {
+      "nodeKey": "construction_accord_sujet_verbe",
+      "strand": "orthographe_grammaticale",
+      "modality": "writing",
+      "learnerMode": "shared",
+      "responseType": "transform",
+      "promptFr": "Corrige l’accord du verbe et réécris la phrase : « Paul et Mina vient demain. »",
+      "instructionsFr": "Écris uniquement la réponse corrigée.",
+      "correctAnswer": "Paul et Mina viennent demain.",
+      "acceptableAnswers": [
+        "Paul et Mina viennent demain"
+      ],
+      "validatorType": "exact",
+      "difficulty": 75
+    },
+    "reason": "Use unambiguous additive et coordination instead of unconstrained ni interpretation."
+  },
+  {
+    "itemKey": "local-reading-v1:ordonner_evenements_explicites:receptive:core",
+    "sourceChecksum": "sha256:e5e690b1f5273fd0749cfbc81f307d8396a66275543badfa396a99ad489b3f80",
+    "replacement": {
+      "nodeKey": "ordonner_evenements_explicites",
+      "strand": "comprehension_ecrite",
+      "modality": "reading",
+      "learnerMode": "shared",
+      "responseType": "mcq",
+      "promptFr": "Lis le texte.\n\nEn rangeant une étagère de la bibliothèque, Malik découvrit un vieux carnet portant le nom de Samuel Kabera. Les pages contenaient des mesures de pluie relevées quarante ans plus tôt. Malik aurait aimé garder sa découverte pour lui, mais la bibliothécaire lui expliqua que ces données pouvaient servir aux chercheurs. Il remit donc le carnet au service des archives, qui conserve les documents anciens. La semaine suivante, ils le numérisèrent ensemble. Cette décision permit à une équipe scientifique de comparer les pluies d’autrefois avec celles d’aujourd’hui. Malik comprit alors que partager sa trouvaille était plus utile que de la conserver pour lui seul.\n\nQuel ordre respecte le récit ?",
+      "acceptableAnswers": [],
+      "validatorType": "exact",
+      "validatorConfig": {
+        "interestKeys": [
+          "history",
+          "mystery"
+        ],
+        "sourceTextKey": "notebook",
+        "sourceTextType": "literary"
+      },
+      "choices": [
+        {
+          "text": "découvrir le carnet → le remettre aux archives → le numériser",
+          "correct": true
+        },
+        {
+          "text": "numériser → découvrir → remettre",
+          "correct": false
+        },
+        {
+          "text": "remettre → découvrir → numériser",
+          "correct": false
+        }
+      ],
+      "difficulty": 50
+    },
+    "reason": "Correct the passage grammar without changing the explicit sequencing operation or answer."
+  },
+  {
+    "itemKey": "local-reading-v1:resoudre_pronom_objet:receptive:core",
+    "sourceChecksum": "sha256:40c5c7fe7be06aaacaec92b6c16bcfd1a3595ac5a7a787c4a320fea7052b8b66",
+    "replacement": {
+      "nodeKey": "resoudre_pronom_objet",
+      "strand": "comprehension_ecrite",
+      "modality": "reading",
+      "learnerMode": "shared",
+      "responseType": "mcq",
+      "promptFr": "Lis le texte.\n\nDans certains quartiers, les abeilles trouvent beaucoup de fleurs au printemps, puis presque plus rien en été. Cette rupture réduit leur nourriture et fragilise les colonies.\n\nLa ville de Musanze a créé des « corridors fleuris » : des bandes de plantes locales reliant les parcs, les écoles et les jardins privés. Les jardiniers choisissent des espèces qui fleurissent à des périodes différentes. Les pesticides peuvent nuire aux abeilles : les jardiniers les évitent près de ces passages.\n\nDeux ans après le début du projet, les observateurs comptent davantage d’espèces d’abeilles le long des corridors. Les scientifiques précisent que le climat influence également les populations ; les fleurs ne sont donc pas l’unique explication.\n\nDans « les jardiniers les évitent », que reprend « les » ?",
+      "acceptableAnswers": [],
+      "validatorType": "exact",
+      "validatorConfig": {
+        "interestKeys": [
+          "animals",
+          "environment"
+        ],
+        "sourceTextKey": "bees",
+        "sourceTextType": "informational"
+      },
+      "choices": [
+        {
+          "text": "les pesticides",
+          "correct": true
+        },
+        {
+          "text": "les jardiniers",
+          "correct": false
+        },
+        {
+          "text": "les corridors",
+          "correct": false
+        }
+      ],
+      "difficulty": 50
+    },
+    "reason": "Elicit an actual object-pronoun referent. Preserve the bees passage context identity because this is a revision of the same context."
+  },
+  {
+    "itemKey": "local-reading-v1:inferer_chronologie_implicite:receptive:foundation",
+    "sourceChecksum": "sha256:40a63cb97f651b2260bcea1b690e9a860add97f2f8719ceb4c239c8847080514",
+    "replacement": {
+      "nodeKey": "inferer_chronologie_implicite",
+      "strand": "comprehension_ecrite",
+      "modality": "reading",
+      "learnerMode": "shared",
+      "responseType": "mcq",
+      "promptFr": "Lis le texte.\n\nNora arriva sur le quai avec, dans sa main, un billet encore tiède portant le tampon du composteur du hall. Le train entra en gare. Elle rangea son billet et monta dans le wagon.\n\nQuel événement a nécessairement eu lieu avant l’arrivée de Nora sur le quai ?",
+      "acceptableAnswers": [],
+      "validatorType": "exact",
+      "validatorConfig": {
+        "sourceTextKey": "ticket-chronology-v3",
+        "sourceTextType": "literary",
+        "interestKeys": [
+          "travel"
+        ]
+      },
+      "choices": [
+        {
+          "text": "Le billet est passé dans le composteur du hall.",
+          "correct": true
+        },
+        {
+          "text": "Nora est montée dans le wagon.",
+          "correct": false
+        },
+        {
+          "text": "Le train est reparti de la gare.",
+          "correct": false
+        }
+      ],
+      "difficulty": 25
+    },
+    "reason": "Infer the earlier stamping event from the state of the ticket; it is not narrated as a chronological list."
+  },
+  {
+    "itemKey": "local-reading-v1:inferer_chronologie_implicite:receptive:core",
+    "sourceChecksum": "sha256:f53fcad3abf3a5d29b8ca7ae81b26b6e318066b3d046b4db4e2891de9d67dea4",
+    "replacement": {
+      "nodeKey": "inferer_chronologie_implicite",
+      "strand": "comprehension_ecrite",
+      "modality": "reading",
+      "learnerMode": "shared",
+      "responseType": "mcq",
+      "promptFr": "Lis le texte.\n\nMina ouvrit la boîte et découvrit le gâteau terminé. Sur la table, le bol dans lequel Sami avait mélangé la pâte était encore sale. Mina coupa une part et la posa dans une assiette.\n\nQuel événement est le plus ancien ?",
+      "acceptableAnswers": [],
+      "validatorType": "exact",
+      "validatorConfig": {
+        "sourceTextKey": "cake-chronology-v3",
+        "sourceTextType": "literary",
+        "interestKeys": [
+          "cooking"
+        ]
+      },
+      "choices": [
+        {
+          "text": "Sami mélange la pâte.",
+          "correct": true
+        },
+        {
+          "text": "Mina ouvre la boîte.",
+          "correct": false
+        },
+        {
+          "text": "Mina coupe une part.",
+          "correct": false
+        }
+      ],
+      "difficulty": 50
+    },
+    "reason": "Use retrospective plus-que-parfait inside a later scene, requiring reconstruction of event order instead of copying sentence order."
+  },
+  {
+    "itemKey": "local-reading-v1:inferer_chronologie_implicite:receptive:stretch",
+    "sourceChecksum": "sha256:293de11272263883a845de79a661890d4cbf465319a85897914ed17b34e2164b",
+    "replacement": {
+      "nodeKey": "inferer_chronologie_implicite",
+      "strand": "comprehension_ecrite",
+      "modality": "reading",
+      "learnerMode": "shared",
+      "responseType": "mcq",
+      "promptFr": "Lis le texte.\n\nLe rapport décrit les résultats de deux parcelles au printemps. La parcelle A porte une couche de compost partiellement décomposée sous une couche de feuilles intactes. La parcelle B ne contient que du compost. Les jardiniers précisent que, dans la parcelle A, chaque couche a été déposée à la surface sans retirer ni mélanger les couches déjà présentes.\n\nDans la parcelle A, quelle étape a nécessairement précédé l’autre ?",
+      "acceptableAnswers": [],
+      "validatorType": "exact",
+      "validatorConfig": {
+        "sourceTextKey": "soil-chronology-v3",
+        "sourceTextType": "informational",
+        "interestKeys": [
+          "environment"
+        ]
+      },
+      "choices": [
+        {
+          "text": "Le compost a été déposé avant les feuilles.",
+          "correct": true
+        },
+        {
+          "text": "Les feuilles ont été déposées avant le compost.",
+          "correct": false
+        },
+        {
+          "text": "Les deux couches ont nécessairement été déposées en même temps.",
+          "correct": false
+        }
+      ],
+      "difficulty": 75
+    },
+    "reason": "Infer temporal order from layer position and the explicit no-removal/no-mixing constraint, rather than from a narrated sequence."
+  },
+  {
+    "itemKey": "local-reading-v1:comparer_points_de_vue:controlled_production:foundation",
+    "sourceChecksum": "sha256:cc040ccc2d74da24cb1dce30d25a1c3e9bc1990fe5315f4eb36968f7db7b2cd6",
+    "replacement": {
+      "nodeKey": "comparer_points_de_vue",
+      "strand": "comprehension_ecrite",
+      "modality": "writing",
+      "learnerMode": "shared",
+      "responseType": "short_answer",
+      "promptFr": "Lis le texte.\n\nLa classe envisage de transformer un coin de la cour en jardin. Aline explique : « Nous pourrions observer la croissance des plantes pendant les cours de sciences. » Paul répond : « Je préférerais garder cet espace libre pour jouer au ballon pendant la récréation. » La classe doit choisir comment utiliser cet espace.\n\nEn une phrase, explique en quoi les points de vue d’Aline et de Paul diffèrent.",
+      "instructionsFr": "Réponds en une phrase complète en t’appuyant uniquement sur le texte.",
+      "correctAnswer": "Aline souhaite utiliser cet espace pour apprendre avec un jardin, tandis que Paul préfère le garder pour jouer au ballon.",
+      "acceptableAnswers": [],
+      "validatorType": "exact",
+      "validatorConfig": {
+        "sourceTextKey": "garden-viewpoints-v3",
+        "sourceTextType": "literary",
+        "interestKeys": [
+          "environment",
+          "football"
+        ],
+        "readingRubric": {
+          "version": 1,
+          "requiredIdeas": [
+            "Indique qu’Aline souhaite un jardin pour observer les plantes et apprendre en sciences.",
+            "Oppose cette proposition à celle de Paul, qui souhaite garder de la place pour jouer au ballon."
+          ]
+        }
+      },
+      "difficulty": 25
+    },
+    "reason": "Put both viewpoints in the passage and ask for their contrast without supplying either position in the question."
+  },
+  {
+    "itemKey": "review-draft-v1:construction_pronom_relatif:controlled_production:foundation",
+    "sourceChecksum": "sha256:ff2e7e9f9508c6b21ae3467b3b0448e58ae06fef4486f0dff7d76c954083081e",
+    "replacement": {
+      "nodeKey": "construction_pronom_relatif",
+      "strand": "grammaire_syntaxe",
+      "modality": "writing",
+      "learnerMode": "shared",
+      "responseType": "cloze",
+      "promptFr": "Complète avec le pronom relatif qui convient :\n\nLa robe ___ tu as achetée est très jolie.",
+      "correctAnswer": "que",
+      "acceptableAnswers": [],
+      "validatorType": "exact",
+      "cefrLevel": "B1",
+      "difficulty": 25,
+      "validatorConfig": {
+        "materialExposure": {
+          "sentences": [
+            "La robe ___ tu as achetée est très jolie."
+          ],
+          "assessed": {
+            "sentences": [
+              "La robe ___ tu as achetée est très jolie."
+            ]
+          }
+        }
+      }
+    },
+    "reason": "Remove invalid qu' before tu; annotate the supplied source sentence. Changed content requires new review."
+  },
+  {
+    "itemKey": "review-draft-v1:construction_pronom_relatif:controlled_production:core",
+    "sourceChecksum": "sha256:5ddd31c600d7191daaff5e0d87c13a2831a631e676980c2ac336a63284505144",
+    "replacement": {
+      "nodeKey": "construction_pronom_relatif",
+      "strand": "grammaire_syntaxe",
+      "modality": "writing",
+      "learnerMode": "shared",
+      "responseType": "transform",
+      "promptFr": "Relie les deux phrases avec un pronom relatif. Écris la phrase complète.\n\nVoici la lettre. Je l'ai reçue hier.",
+      "correctAnswer": "Voici la lettre que j'ai reçue hier.",
+      "acceptableAnswers": [
+        "Voici la lettre que j'ai reçue hier"
+      ],
+      "validatorType": "exact",
+      "cefrLevel": "B1",
+      "difficulty": 50,
+      "validatorConfig": {
+        "materialExposure": {
+          "sentences": [
+            "Voici la lettre. Je l'ai reçue hier."
+          ],
+          "assessed": {
+            "sentences": [
+              "Voici la lettre. Je l'ai reçue hier."
+            ]
+          }
+        }
+      }
+    },
+    "reason": "Remove invalid qu' before j'ai while retaining the complete que answer. Annotate the two supplied sentences, not the unshown completed answer. Changed content requires new review."
+  },
+  {
+    "itemKey": "review-draft-v1:construction_pronom_relatif:controlled_production:stretch",
+    "sourceChecksum": "sha256:f7286c47e4cd43d8e5fafd9d28f1984cc5e07f03a52eb7a2fbc7455aeca69997",
+    "replacement": {
+      "nodeKey": "construction_pronom_relatif",
+      "strand": "grammaire_syntaxe",
+      "modality": "writing",
+      "learnerMode": "shared",
+      "responseType": "short_answer",
+      "promptFr": "Complète avec le pronom relatif qui convient : « Je regarde le film ___ tu m'as recommandé. » Écris seulement le pronom manquant.",
+      "correctAnswer": "que",
+      "acceptableAnswers": [],
+      "validatorType": "exact",
+      "cefrLevel": "B1",
+      "difficulty": 75,
+      "validatorConfig": {
+        "materialExposure": {
+          "sentences": [
+            "Je regarde le film ___ tu m'as recommandé."
+          ],
+          "assessed": {
+            "sentences": [
+              "Je regarde le film ___ tu m'as recommandé."
+            ]
+          }
+        }
+      }
+    },
+    "reason": "Replace contradictory rewrite instructions and the supplied que answer with an actual relative-pronoun gap task. Preserve the approved target; difficulty and finite response guessing still require review. Annotate only the supplied sentence."
+  },
+  {
+    "itemKey": "review-draft-v1:accorder_determinant_nom_ecrit:controlled_production:foundation",
+    "sourceChecksum": "sha256:474795d455dd7cb0ef420eaacb8d853f48970356e18a04c20469ec28f449905d",
+    "replacement": {
+      "nodeKey": "accorder_determinant_nom_ecrit",
+      "strand": "orthographe_grammaticale",
+      "modality": "writing",
+      "learnerMode": "shared",
+      "responseType": "transform",
+      "promptFr": "Mets ce groupe au pluriel : « un arbre ». Écris le déterminant et le nom. Garde le même type de déterminant.",
+      "correctAnswer": "des arbres",
+      "acceptableAnswers": [],
+      "validatorType": "exact",
+      "cefrLevel": "A2",
+      "difficulty": 25,
+      "validatorConfig": {
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "arbre",
+              "form": "arbre"
+            }
+          ],
+          "sentences": [
+            "un arbre"
+          ],
+          "assessed": {
+            "words": [
+              "arbre"
+            ]
+          }
+        }
+      }
+    },
+    "reason": "Require both determiner and noun production while keeping the determiner family fixed. Remove adjective agreement confounding and alternate article substitutions. Annotate the supplied noun lemma and group; target scope, noun-form difficulty and novelty interpretation require fresh review."
+  },
+  {
+    "itemKey": "review-draft-v1:accorder_determinant_nom_ecrit:controlled_production:core",
+    "sourceChecksum": "sha256:6fac917ebff0eee1288d2ef670b2a81bb431c736e69eb82bde37870c4ccccc7e",
+    "replacement": {
+      "nodeKey": "accorder_determinant_nom_ecrit",
+      "strand": "orthographe_grammaticale",
+      "modality": "writing",
+      "learnerMode": "shared",
+      "responseType": "transform",
+      "promptFr": "Mets ce groupe au pluriel : « un monsieur ». Écris le déterminant et le nom. Garde le même type de déterminant.",
+      "correctAnswer": "des messieurs",
+      "acceptableAnswers": [],
+      "validatorType": "exact",
+      "cefrLevel": "A2",
+      "difficulty": 50,
+      "validatorConfig": {
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "monsieur",
+              "form": "monsieur"
+            }
+          ],
+          "sentences": [
+            "un monsieur"
+          ],
+          "assessed": {
+            "words": [
+              "monsieur"
+            ]
+          }
+        }
+      }
+    },
+    "reason": "Require both determiner and noun production while keeping the determiner family fixed. Remove adjective agreement confounding and alternate article substitutions. Annotate the supplied noun lemma and group; target scope, noun-form difficulty and novelty interpretation require fresh review."
+  },
+  {
+    "itemKey": "review-draft-v1:accorder_determinant_nom_ecrit:controlled_production:stretch",
+    "sourceChecksum": "sha256:6c6a622149dfced87098d45e746d16ac8b73549db4179a5b78cb12eddd754d34",
+    "replacement": {
+      "nodeKey": "accorder_determinant_nom_ecrit",
+      "strand": "orthographe_grammaticale",
+      "modality": "writing",
+      "learnerMode": "shared",
+      "responseType": "transform",
+      "promptFr": "Mets ce groupe au pluriel : « le chat ». Écris le déterminant et le nom. Garde le même type de déterminant.",
+      "correctAnswer": "les chats",
+      "acceptableAnswers": [],
+      "validatorType": "exact",
+      "cefrLevel": "A1",
+      "difficulty": 75,
+      "validatorConfig": {
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "chat",
+              "form": "chat"
+            }
+          ],
+          "sentences": [
+            "le chat"
+          ],
+          "assessed": {
+            "words": [
+              "chat"
+            ]
+          }
+        }
+      }
+    },
+    "reason": "Require both determiner and noun production while keeping the determiner family fixed. Remove adjective agreement confounding and alternate article substitutions. Annotate the supplied noun lemma and group; target scope, noun-form difficulty and novelty interpretation require fresh review."
+  },
+  {
+    "itemKey": "local-spelling-gap-v1:accorder_determinant_nom_ecrit:receptive:foundation",
+    "sourceChecksum": "sha256:cec02d7a81290f7db9fda9ac1dd5474b04faafe4d8a886720f2980653a5c4d80",
+    "replacement": {
+      "nodeKey": "accorder_determinant_nom_ecrit",
+      "strand": "orthographe_grammaticale",
+      "modality": "grammar_analysis",
+      "learnerMode": "shared",
+      "responseType": "mcq",
+      "promptFr": "Quel groupe associe correctement le déterminant et le nom ?",
+      "acceptableAnswers": [],
+      "validatorType": "exact",
+      "choices": [
+        {
+          "text": "ces maisons",
+          "correct": true
+        },
+        {
+          "text": "ce maisons",
+          "correct": false
+        },
+        {
+          "text": "ces maison",
+          "correct": false
+        }
+      ],
+      "difficulty": 25,
+      "validatorConfig": {
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "maison",
+              "form": "maison"
+            }
+          ],
+          "sentences": [
+            "ces maisons",
+            "ce maisons",
+            "ces maison"
+          ],
+          "assessed": {
+            "words": [
+              "maison"
+            ]
+          }
+        },
+        "contrastingErrors": [
+          {
+            "errorKey": "determiner-number",
+            "incorrectChoiceFr": "ce maisons"
+          },
+          {
+            "errorKey": "noun-number",
+            "incorrectChoiceFr": "ces maison"
+          }
+        ]
+      }
+    },
+    "reason": "Remove adjective agreement and determiner lexical-spelling confounds. Contrast determiner and noun agreement directly with anchored distractor error families and assessed noun lemma. Error-family interpretation, novelty and difficulty require fresh review."
+  },
+  {
+    "itemKey": "local-spelling-gap-v1:accorder_determinant_nom_ecrit:receptive:core",
+    "sourceChecksum": "sha256:5202cb549d37eabcc6c985e8eadbccafbb7b5d0bb0df37f1e2153c887d8ecaee",
+    "replacement": {
+      "nodeKey": "accorder_determinant_nom_ecrit",
+      "strand": "orthographe_grammaticale",
+      "modality": "grammar_analysis",
+      "learnerMode": "shared",
+      "responseType": "mcq",
+      "promptFr": "Quel groupe associe correctement le déterminant et le nom ?",
+      "acceptableAnswers": [],
+      "validatorType": "exact",
+      "choices": [
+        {
+          "text": "plusieurs idées",
+          "correct": true
+        },
+        {
+          "text": "plusieurs idée",
+          "correct": false
+        },
+        {
+          "text": "une idées",
+          "correct": false
+        }
+      ],
+      "difficulty": 50,
+      "validatorConfig": {
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "idée",
+              "form": "idée"
+            }
+          ],
+          "sentences": [
+            "plusieurs idées",
+            "plusieurs idée",
+            "une idées"
+          ],
+          "assessed": {
+            "words": [
+              "idée"
+            ]
+          }
+        },
+        "contrastingErrors": [
+          {
+            "errorKey": "noun-number",
+            "incorrectChoiceFr": "plusieurs idée"
+          },
+          {
+            "errorKey": "determiner-number",
+            "incorrectChoiceFr": "une idées"
+          }
+        ]
+      }
+    },
+    "reason": "Remove adjective agreement and determiner lexical-spelling confounds. Contrast determiner and noun agreement directly with anchored distractor error families and assessed noun lemma. Error-family interpretation, novelty and difficulty require fresh review."
+  },
+  {
+    "itemKey": "local-spelling-gap-v1:accorder_determinant_nom_ecrit:receptive:stretch",
+    "sourceChecksum": "sha256:fa5d99d2da254dfa2d4daa717432942239513289042ea96df8bc102b4bce0487",
+    "replacement": {
+      "nodeKey": "accorder_determinant_nom_ecrit",
+      "strand": "orthographe_grammaticale",
+      "modality": "grammar_analysis",
+      "learnerMode": "shared",
+      "responseType": "mcq",
+      "promptFr": "Quel groupe associe correctement le déterminant et le nom ?",
+      "acceptableAnswers": [],
+      "validatorType": "exact",
+      "choices": [
+        {
+          "text": "cette histoire",
+          "correct": true
+        },
+        {
+          "text": "ce histoire",
+          "correct": false
+        },
+        {
+          "text": "cette histoires",
+          "correct": false
+        }
+      ],
+      "difficulty": 75,
+      "validatorConfig": {
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "histoire",
+              "form": "histoire"
+            }
+          ],
+          "sentences": [
+            "cette histoire",
+            "ce histoire",
+            "cette histoires"
+          ],
+          "assessed": {
+            "words": [
+              "histoire"
+            ]
+          }
+        },
+        "contrastingErrors": [
+          {
+            "errorKey": "determiner-gender",
+            "incorrectChoiceFr": "ce histoire"
+          },
+          {
+            "errorKey": "noun-number",
+            "incorrectChoiceFr": "cette histoires"
+          }
+        ]
+      }
+    },
+    "reason": "Remove adjective agreement and determiner lexical-spelling confounds. Contrast determiner and noun agreement directly with anchored distractor error families and assessed noun lemma. Error-family interpretation, novelty and difficulty require fresh review."
+  },
+  {
+    "itemKey": "review-draft-v1:marquer_pluriel_nom_regulier:controlled_production:stretch",
+    "sourceChecksum": "sha256:b9bf3a9b2b9dd8e80a1326bbfef6020c83164ce078baf38aa4baa0dbc00893c7",
+    "replacement": {
+      "nodeKey": "marquer_pluriel_nom_regulier",
+      "strand": "orthographe_grammaticale",
+      "modality": "writing",
+      "learnerMode": "shared",
+      "responseType": "short_answer",
+      "promptFr": "Écris le nom « jardin » au pluriel. Écris seulement le nom.",
+      "correctAnswer": "jardins",
+      "acceptableAnswers": [],
+      "validatorType": "exact",
+      "cefrLevel": "A1",
+      "difficulty": 75,
+      "validatorConfig": {
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "jardin",
+              "form": "jardin"
+            }
+          ],
+          "assessed": {
+            "words": [
+              "jardin"
+            ]
+          }
+        }
+      }
+    },
+    "reason": "Replace irregular -al/-aux singular conversion with actual regular plural production. Do not infer regular plural mastery from animal/animaux; difficulty requires fresh review."
+  },
+  {
+    "itemKey": "review-draft-v1:former_feminin_adjectif_regulier:receptive:stretch",
+    "sourceChecksum": "sha256:b57001482072653f8a4e0bad9801fa57f532299fd90f436e6848b0a9243c5cf7",
+    "replacement": {
+      "nodeKey": "former_feminin_adjectif_regulier",
+      "strand": "orthographe_grammaticale",
+      "modality": "grammar_analysis",
+      "learnerMode": "shared",
+      "responseType": "mcq",
+      "promptFr": "Choisis le féminin singulier de « vert » pour compléter : « Cette veste est ___. »",
+      "acceptableAnswers": [],
+      "validatorType": "exact",
+      "choices": [
+        {
+          "text": "verte",
+          "correct": true
+        },
+        {
+          "text": "vert",
+          "correct": false
+        },
+        {
+          "text": "verts",
+          "correct": false
+        },
+        {
+          "text": "vertes",
+          "correct": false
+        }
+      ],
+      "cefrLevel": "A2",
+      "difficulty": 75,
+      "validatorConfig": {
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "vert",
+              "form": "vert"
+            }
+          ],
+          "assessed": {
+            "words": [
+              "vert"
+            ]
+          }
+        },
+        "contrastingErrors": [
+          {
+            "errorKey": "missing-feminine-mark",
+            "incorrectChoiceFr": "vert"
+          },
+          {
+            "errorKey": "unrequested-plural",
+            "incorrectChoiceFr": "vertes"
+          }
+        ]
+      }
+    },
+    "reason": "Replace masculine plural sportif with regular feminine singular recognition, separating gender and number errors. Removed stale feedback about frères; revised difficulty and distractors require review."
+  },
+  {
+    "itemKey": "review-draft-v1:former_feminin_adjectif_regulier:controlled_production:core",
+    "sourceChecksum": "sha256:e1d502ada38f169bdf61b4e586352923af7a9736514d100d73dc6ceef3e3ec69",
+    "replacement": {
+      "nodeKey": "former_feminin_adjectif_regulier",
+      "strand": "orthographe_grammaticale",
+      "modality": "writing",
+      "learnerMode": "shared",
+      "responseType": "short_answer",
+      "promptFr": "Complète avec « grand » au féminin singulier : « Cette tour est ___. » Écris seulement l’adjectif.",
+      "correctAnswer": "grande",
+      "acceptableAnswers": [],
+      "validatorType": "exact",
+      "cefrLevel": "A2",
+      "difficulty": 50,
+      "validatorConfig": {
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "grand",
+              "form": "grand"
+            }
+          ],
+          "assessed": {
+            "words": [
+              "grand"
+            ]
+          }
+        }
+      }
+    },
+    "reason": "Replace irregular beau/belles and plural agreement with regular feminine singular production. New content requires review."
+  },
+  {
+    "itemKey": "review-draft-v1:distinguer_homophones_ces_ses:receptive:stretch",
+    "sourceChecksum": "sha256:d40dcb9cc2e9baf45389a1df129e9e7d95569f1d936576fa996652df2ca34b4d",
+    "replacement": {
+      "nodeKey": "distinguer_homophones_ces_ses",
+      "strand": "orthographe_grammaticale",
+      "modality": "grammar_analysis",
+      "learnerMode": "shared",
+      "responseType": "mcq",
+      "promptFr": "Tu montres les chaussures qui sont devant toi. Choisis le déterminant démonstratif (ces ou ses) : « ___ chaussures sont neuves. »",
+      "acceptableAnswers": [],
+      "validatorType": "exact",
+      "choices": [
+        {
+          "text": "ces",
+          "correct": true
+        },
+        {
+          "text": "ses",
+          "correct": false
+        }
+      ],
+      "cefrLevel": "B1",
+      "difficulty": 75,
+      "validatorConfig": {
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "ces",
+              "form": "ces"
+            },
+            {
+              "lemma": "ses",
+              "form": "ses"
+            }
+          ],
+          "sentences": [
+            "___ chaussures sont neuves."
+          ],
+          "assessed": {
+            "words": [
+              "ces",
+              "ses"
+            ]
+          }
+        },
+        "contrastingErrors": [
+          {
+            "errorKey": "possessive-instead-of-demonstrative",
+            "incorrectChoiceFr": "ses"
+          }
+        ]
+      }
+    },
+    "reason": "Both ces and ses fit the inherited context-free sentence. Explicitly request demonstrative reference. This is cued recognition only; the unresolved fixed-pair novelty contract is not changed."
+  },
+  {
+    "itemKey": "local-spelling-v1:orthographier_nasale_an_en:receptive:stretch",
+    "sourceChecksum": "sha256:907a23bc7e1516f1ab8aa1d43b45d069bf42dc0ec3380f13a94e159897be3f4f",
+    "replacement": {
+      "nodeKey": "orthographier_nasale_an_en",
+      "strand": "orthographe_lexicale",
+      "modality": "grammar_analysis",
+      "learnerMode": "shared",
+      "responseType": "mcq",
+      "promptFr": "Quel nom désigne une activité où l’on bouge son corps en rythme avec la musique ?",
+      "acceptableAnswers": [],
+      "validatorType": "exact",
+      "choices": [
+        {
+          "text": "danse",
+          "correct": true
+        },
+        {
+          "text": "dense",
+          "correct": false
+        },
+        {
+          "text": "dançe",
+          "correct": false
+        }
+      ],
+      "difficulty": 75,
+      "validatorConfig": {
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "danse",
+              "form": "danse"
+            }
+          ],
+          "assessed": {
+            "words": [
+              "danse"
+            ]
+          }
+        },
+        "contrastingErrors": [
+          {
+            "errorKey": "wrong-nasal-spelling-in-context",
+            "incorrectChoiceFr": "dense"
+          },
+          {
+            "errorKey": "unnecessary-cedilla",
+            "incorrectChoiceFr": "dançe"
+          }
+        ]
+      }
+    },
+    "reason": "Dense is correctly spelled French, so it cannot be rejected by the inherited spelling-only prompt. Supply the intended meaning; vocabulary comprehension and difficulty need review."
+  },
+  {
+    "itemKey": "local-spelling-v1:justifier_lettre_finale_muette:receptive:core",
+    "sourceChecksum": "sha256:036cf4078ddfdb914c04b85518f2631e92fafe8549612797c13f1e0942765efe",
+    "replacement": {
+      "nodeKey": "justifier_lettre_finale_muette",
+      "strand": "orthographe_lexicale",
+      "modality": "grammar_analysis",
+      "learnerMode": "shared",
+      "responseType": "mcq",
+      "promptFr": "Quel est le féminin singulier de « petit » qui permet d’entendre le t final ?",
+      "acceptableAnswers": [],
+      "validatorType": "exact",
+      "choices": [
+        {
+          "text": "petite",
+          "correct": true
+        },
+        {
+          "text": "petitesse",
+          "correct": false
+        },
+        {
+          "text": "petitement",
+          "correct": false
+        }
+      ],
+      "difficulty": 50,
+      "validatorConfig": {
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "petit",
+              "form": "petit"
+            },
+            {
+              "lemma": "petit",
+              "form": "petite"
+            },
+            {
+              "lemma": "petitesse",
+              "form": "petitesse"
+            },
+            {
+              "lemma": "petitement",
+              "form": "petitement"
+            }
+          ],
+          "assessed": {
+            "words": [
+              "petit"
+            ]
+          }
+        }
+      }
+    },
+    "reason": "Petitesse and petitement also make the t audible. Specify the feminine-singular transformation so petite is uniquely responsive. This assesses a particular justification strategy and requires fresh review."
+  }
+]

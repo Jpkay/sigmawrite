@@ -16,9 +16,11 @@ export function studentAssessmentRedirect(input: {
   onboarded: boolean;
   diagnosticComplete: boolean;
   diagnosticProvisional?: boolean;
+  granularDiagnosticReady?: boolean;
 }) {
   if (ALWAYS_AVAILABLE.has(input.pathname)) return null;
   if (!input.onboarded) return "/student/onboarding";
+  if (input.granularDiagnosticReady) return null;
   if (input.diagnosticProvisional) {
     return PILOT_PREVIEW_AVAILABLE.has(input.pathname) ? null : "/student/diagnostic";
   }
@@ -40,6 +42,7 @@ export function StudentAssessmentGate({ children, ownerKey }: { children: React.
         ? Object.keys(state.diagnosticSectionProfile).length === 4
         : Boolean(state.diagnostic),
       diagnosticProvisional: state.diagnosticProvisional,
+      granularDiagnosticReady: state.granularDiagnosticReady,
     })
     : null;
 

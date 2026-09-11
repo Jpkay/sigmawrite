@@ -1,7 +1,9 @@
 import { conjugationLesson } from "@/lib/conjugation/lessons";
 import { pronounLessonForNode } from "@/lib/grammar/pronouns";
+import type { MaterialExposureAnnotation } from "@/lib/diagnostic/granular/material-annotations";
 
 export type PracticeLesson = {
+  materialExposure?: MaterialExposureAnnotation;
   family: string;
   eyebrow: string;
   explanation: string;

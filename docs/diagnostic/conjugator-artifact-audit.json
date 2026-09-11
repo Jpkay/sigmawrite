@@ -1,0 +1,25 @@
+{
+  "scope": "Local artifacts only; no live database inspection",
+  "limitations": [
+    "Matching an answer to its generator is not independent linguistic validation",
+    "Exact-answer questions are not recomputed",
+    "Legacy production content requires a separate live audit"
+  ],
+  "reports": [
+    {
+      "path": "generated/diagnostic-bank-v3-draft.json",
+      "checked": 36,
+      "issues": []
+    },
+    {
+      "path": "generated/french-v3-conjugation-expansion.json",
+      "checked": 2570,
+      "issues": []
+    },
+    {
+      "path": "generated/french-v3-agreement-expansion.json",
+      "checked": 22,
+      "issues": []
+    }
+  ]
+}

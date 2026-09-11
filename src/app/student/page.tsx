@@ -33,7 +33,7 @@ export default function StudentHome() {
 
   useEffect(() => {
     const local = SEED_TEXT_BY_ID[recommendTextId(state.interests)];
-    if (!hasStudentBackend || !state.hydrated || !state.diagnostic) return;
+    if (!hasStudentBackend || !state.hydrated || (!state.diagnostic && !state.granularDiagnosticReady)) return;
     let active = true;
     loadStudentHome({}).then((home) => {
       if (!active) return;
@@ -46,7 +46,7 @@ export default function StudentHome() {
       setMotivation(home.motivation); setResume(home.resume); setAssessment(home.assessment); setRecap(home.recap); setClassGoal(home.classGoal); setLeague(home.league);
     }).catch(() => { if (active) setRecommended(local); });
     return () => { active = false; };
-  }, [state.hydrated, state.diagnostic, state.interests]);
+  }, [state.hydrated, state.diagnostic, state.granularDiagnosticReady, state.interests]);
 
   const displayedRecommendation = hasStudentBackend ? recommended : fallback;
   const displayedRecommendations = useMemo(()=>recommendations.length ? recommendations : [displayedRecommendation],[recommendations,displayedRecommendation]);
@@ -76,7 +76,7 @@ export default function StudentHome() {
     );
   }
 
-  if (!state.diagnostic) {
+  if (!state.diagnostic && !state.granularDiagnosticReady) {
     return (
       <>
         <PageHeader title="Bonjour 👋" description="Encore une étape." />
@@ -100,12 +100,12 @@ export default function StudentHome() {
         (state.sessions.reduce((s, r) => s + r.successRate, 0) / completed) * 100
       )
     : 0;
-  const band = state.diagnostic.overallReadingBand;
+  const band = state.diagnostic?.overallReadingBand;
 
   const stats = [
     {
-      label: "Bande de lecture",
-      value: `${band.minGrade.toFixed(1)}–${band.maxGrade.toFixed(1)}`,
+      label: state.granularDiagnosticReady ? "Bilan par compétence" : "Bande de lecture",
+      value: state.granularDiagnosticReady ? "Disponible" : band ? `${band.minGrade.toFixed(1)}–${band.maxGrade.toFixed(1)}` : "—",
     },
     { label: "Textes complétés", value: String(completed) },
     { label: "Réussite moyenne", value: completed ? `${avg}%` : "—" },

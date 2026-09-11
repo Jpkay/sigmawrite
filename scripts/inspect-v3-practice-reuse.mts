@@ -1,0 +1,13 @@
+import {readFileSync,writeFileSync} from "node:fs";
+import {config} from "dotenv";
+import {createClient} from "@supabase/supabase-js";
+config({path:".env.local",quiet:true});
+const db=createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!,process.env.SUPABASE_SERVICE_ROLE_KEY!,{auth:{persistSession:false}});
+const missing=JSON.parse(readFileSync("docs/diagnostic/v3-bank-reconciliation.json","utf8")).missingSlots as Array<{nodeKey:string;evidenceKey:string}>;
+const {data:nodes,error}=await db.from("competency_nodes").select("id,key").in("key",missing.map(r=>r.nodeKey));if(error)throw Error(error.message);
+const keys=new Map(nodes.map(n=>[n.id,n.key]));
+const {data:items,error:itemError}=await db.from("competency_items").select("id,primary_node_id,prompt_fr,instructions_fr,response_type,correct_answer,acceptable_answers,validator_type,validator_config,review_status,strand,modality,learner_mode,difficulty,cefr_level,qc_gates,reviewer_profile_id,reviewed_at").in("primary_node_id",nodes.map(n=>n.id)).in("review_status",["human_approved","auto_approved"]).order("id");if(itemError)throw Error(itemError.message);
+const {data:choices,error:choiceError}=await db.from("competency_item_choices").select("item_id,choice_text,is_correct,position,feedback_fr").in("item_id",items.map(i=>i.id)).order("position");if(choiceError)throw Error(choiceError.message);
+const result=items.map(i=>({...i,nodeKey:keys.get(i.primary_node_id),evidenceKey:missing.find(m=>m.nodeKey===keys.get(i.primary_node_id))!.evidenceKey,choices:choices.filter(c=>c.item_id===i.id)}));
+writeFileSync("generated/diagnostic-v3-practice-reuse-source.json",JSON.stringify({status:"mapping_candidates_not_diagnostic_approvals",items:result},null,2)+"\n");
+for(const i of result)console.log(JSON.stringify({node:i.nodeKey,prompt:i.prompt_fr,answer:i.correct_answer,validator:i.validator_type,status:i.review_status}));

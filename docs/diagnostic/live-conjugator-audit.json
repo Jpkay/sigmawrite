@@ -1,0 +1,89 @@
+{
+  "checkedAt": "2026-09-10T21:24:38.430Z",
+  "scope": "Read-only current configured Supabase competency_items, all review statuses, conjugator validators only",
+  "checked": 115,
+  "findings": [
+    {
+      "id": "0a939867-689d-4885-8d88-22315ce11af4",
+      "reviewStatus": "auto_approved",
+      "config": {
+        "verb": "savoir",
+        "tense": "present",
+        "person": "1s"
+      },
+      "stored": "savois",
+      "computed": "sais"
+    },
+    {
+      "id": "0fb4b802-bb18-472d-a0b3-53045c105227",
+      "reviewStatus": "auto_approved",
+      "config": {
+        "verb": "ouvrir",
+        "tense": "present",
+        "person": "2p"
+      },
+      "stored": "ouvrissez",
+      "error": "present: unsupported verb \"ouvrir\""
+    },
+    {
+      "id": "38ea994d-b92a-49ba-a7ab-72fdf3a4ae6d",
+      "reviewStatus": "auto_approved",
+      "config": {
+        "verb": "dormir",
+        "tense": "imparfait",
+        "person": "1s"
+      },
+      "stored": "dormissais",
+      "computed": "dormais"
+    },
+    {
+      "id": "514c5e7d-28f2-424e-867d-a249539eafc4",
+      "reviewStatus": "auto_approved",
+      "config": {
+        "verb": "dormir",
+        "tense": "present",
+        "person": "3s"
+      },
+      "stored": "dormit",
+      "computed": "dort"
+    },
+    {
+      "id": "5c02ac63-e35a-4ef4-8642-fe1c15487cb3",
+      "reviewStatus": "auto_approved",
+      "config": {
+        "verb": "pleuvoir",
+        "tense": "imparfait",
+        "person": "3s"
+      },
+      "stored": "pleuvoissait",
+      "error": "present: unsupported -oir verb \"pleuvoir\""
+    },
+    {
+      "id": "84fd9395-8510-4f44-845a-36c5554389b3",
+      "reviewStatus": "auto_approved",
+      "config": {
+        "verb": "blanchir",
+        "tense": "present",
+        "person": "1s"
+      },
+      "stored": "blanchis",
+      "error": "present: unsupported verb \"blanchir\""
+    },
+    {
+      "id": "f6b384d3-bb9f-4ee5-88ab-6882267d3734",
+      "reviewStatus": "auto_approved",
+      "config": {
+        "verb": "dormir",
+        "tense": "present",
+        "person": "3s"
+      },
+      "stored": "dormit",
+      "computed": "dort"
+    }
+  ],
+  "limitations": [
+    "Does not inspect exact-answer questions, application deployment version or historical attempts",
+    "Matching current generator output is not independent linguistic proof",
+    "No database mutation performed"
+  ]
+}

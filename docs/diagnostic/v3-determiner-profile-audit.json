@@ -1,0 +1,439 @@
+{
+  "version": "determiner-profile-audit-v1",
+  "status": "synthetic_routing_evidence_only",
+  "profiles": [
+    {
+      "name": "Recognizes agreement, struggles to correct",
+      "recognition": true,
+      "production": false,
+      "ending": "provisional",
+      "activeSeconds": 210,
+      "selected": [
+        {
+          "id": "v3-determiner-agreement:les-pronom",
+          "mode": "recognition"
+        },
+        {
+          "id": "v3-determiner-agreement:chaque",
+          "mode": "recognition"
+        },
+        {
+          "id": "v3-determiner-agreement:des-filles",
+          "mode": "recognition"
+        },
+        {
+          "id": "v3-determiner-agreement:leur-pronom",
+          "mode": "recognition"
+        },
+        {
+          "id": "v3-determiner-production:defined-elision",
+          "mode": "production"
+        },
+        {
+          "id": "v3-determiner-production:defined-feminine",
+          "mode": "production"
+        },
+        {
+          "id": "v3-determiner-production:defined-masculine",
+          "mode": "production"
+        }
+      ],
+      "results": [
+        {
+          "skillId": "construction_accord_determinant_nom::reading-analysis",
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "recognition",
+              "probability": 0.9940814954403842,
+              "distinctItems": 4,
+              "distinctContexts": 4,
+              "distinctOccasions": 1,
+              "accuracy": 1,
+              "unconfirmedFeatures": [],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": true,
+              "confirmed": false
+            }
+          ],
+          "resolved": false,
+          "evidence": "direct"
+        },
+        {
+          "skillId": "construction_accord_determinant_nom::writing-controlled-production",
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "production",
+              "probability": 0.0023647650014779796,
+              "distinctItems": 3,
+              "distinctContexts": 3,
+              "distinctOccasions": 1,
+              "accuracy": 0,
+              "unconfirmedFeatures": [],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false,
+              "provisionalGap": true
+            }
+          ],
+          "resolved": false,
+          "evidence": "direct"
+        }
+      ],
+      "activities": [
+        {
+          "skillId": "construction_accord_determinant_nom::writing-controlled-production",
+          "activityId": "fixture-lesson:french-v3-teaching:determiner-production",
+          "kind": "instruction",
+          "action": "learn",
+          "titleFr": "Corriger le déterminant",
+          "href": "/student/diagnostic",
+          "estimatedMinutes": 5,
+          "contentId": "french-v3-teaching:determiner-production"
+        },
+        {
+          "skillId": "construction_accord_determinant_nom::reading-analysis",
+          "activityId": "fixture-check:construction_accord_determinant_nom::reading-analysis",
+          "kind": "independent_check",
+          "action": "verify",
+          "titleFr": "Synthetic check",
+          "href": "/student/diagnostic",
+          "estimatedMinutes": 5
+        }
+      ],
+      "withoutPriorEvidence": {
+        "activities": [
+          {
+            "skillId": "construction_phrase_canonique::reading-analysis",
+            "activityId": "fixture-check:construction_phrase_canonique::reading-analysis",
+            "kind": "independent_check",
+            "action": "verify",
+            "titleFr": "Synthetic check",
+            "href": "/student/diagnostic",
+            "estimatedMinutes": 5
+          },
+          {
+            "skillId": "construction_phrase_canonique::writing-controlled-production",
+            "activityId": "fixture-check:construction_phrase_canonique::writing-controlled-production",
+            "kind": "independent_check",
+            "action": "verify",
+            "titleFr": "Synthetic check",
+            "href": "/student/diagnostic",
+            "estimatedMinutes": 5
+          },
+          {
+            "skillId": "construction_accord_determinant_nom::reading-analysis",
+            "activityId": "fixture-check:construction_accord_determinant_nom::reading-analysis",
+            "kind": "independent_check",
+            "action": "verify",
+            "titleFr": "Synthetic check",
+            "href": "/student/diagnostic",
+            "estimatedMinutes": 5
+          }
+        ],
+        "missingActivitySkillIds": [],
+        "blockedSkillIds": [
+          "construction_accord_determinant_nom::writing-controlled-production"
+        ]
+      },
+      "afterFreshChecks": {
+        "questionIds": [
+          "v3-determiner-production:indefinite-masculine",
+          "v3-determiner-production:indefinite-singular",
+          "v3-determiner-production:demonstrative-feminine",
+          "v3-determiner-production:demonstrative-masculine",
+          "v3-determiner-production:demonstrative-plural",
+          "v3-determiner-production:demonstrative-vowel",
+          "v3-determiner-production:possessive-ma",
+          "v3-determiner-production:possessive-mon",
+          "v3-determiner-production:possessive-tes",
+          "v3-determiner-production:possessive-ses",
+          "v3-determiner-production:votre-singular",
+          "v3-determiner-production:leurs-singular"
+        ],
+        "results": [
+          {
+            "skillId": "construction_accord_determinant_nom::reading-analysis",
+            "status": "uncertain",
+            "modes": [
+              {
+                "mode": "recognition",
+                "probability": 0.9940814954403842,
+                "distinctItems": 4,
+                "distinctContexts": 4,
+                "distinctOccasions": 1,
+                "accuracy": 1,
+                "unconfirmedFeatures": [],
+                "textTypes": [],
+                "contrastingErrorKeys": [],
+                "negativeExampleConfirmed": true,
+                "confirmed": false
+              }
+            ],
+            "resolved": false,
+            "evidence": "direct"
+          },
+          {
+            "skillId": "construction_accord_determinant_nom::writing-controlled-production",
+            "status": "mastered",
+            "modes": [
+              {
+                "mode": "production",
+                "probability": 0.999995256921179,
+                "distinctItems": 12,
+                "distinctContexts": 12,
+                "distinctOccasions": 2,
+                "accuracy": 1,
+                "unconfirmedFeatures": [],
+                "textTypes": [],
+                "contrastingErrorKeys": [],
+                "negativeExampleConfirmed": false,
+                "confirmed": true
+              }
+            ],
+            "resolved": true,
+            "evidence": "direct"
+          }
+        ],
+        "activities": [
+          {
+            "skillId": "construction_accord_determinant_nom::reading-analysis",
+            "activityId": "fixture-check:construction_accord_determinant_nom::reading-analysis",
+            "kind": "independent_check",
+            "action": "verify",
+            "titleFr": "Synthetic check",
+            "href": "/student/diagnostic",
+            "estimatedMinutes": 5
+          }
+        ]
+      },
+      "sourceTaxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+      "sourceBankChecksum": "sha256:ec0e8f10124c8ca6c35eb242980e752365d1b632d0e923b0a3ba27a2430eebfd",
+      "assumptions": [
+        "synthetic foundation evidence",
+        "complete novelty history assumed only for simulation",
+        "draft questions simulated regardless of review status",
+        "in-memory bindings only, no publication",
+        "successful fresh checks over two later occasions"
+      ]
+    },
+    {
+      "name": "Corrects agreement, struggles with supplied analysis",
+      "recognition": false,
+      "production": true,
+      "ending": "provisional",
+      "activeSeconds": 210,
+      "selected": [
+        {
+          "id": "v3-determiner-agreement:les-pronom",
+          "mode": "recognition"
+        },
+        {
+          "id": "v3-determiner-agreement:chaque",
+          "mode": "recognition"
+        },
+        {
+          "id": "v3-determiner-agreement:des-filles",
+          "mode": "recognition"
+        },
+        {
+          "id": "v3-determiner-production:defined-elision",
+          "mode": "production"
+        },
+        {
+          "id": "v3-determiner-production:defined-feminine",
+          "mode": "production"
+        },
+        {
+          "id": "v3-determiner-production:defined-masculine",
+          "mode": "production"
+        },
+        {
+          "id": "v3-determiner-production:defined-plural",
+          "mode": "production"
+        }
+      ],
+      "results": [
+        {
+          "skillId": "construction_accord_determinant_nom::reading-analysis",
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "recognition",
+              "probability": 0.0023647650014779796,
+              "distinctItems": 3,
+              "distinctContexts": 3,
+              "distinctOccasions": 1,
+              "accuracy": 0,
+              "unconfirmedFeatures": [],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": true,
+              "confirmed": false,
+              "provisionalGap": true
+            }
+          ],
+          "resolved": false,
+          "evidence": "direct"
+        },
+        {
+          "skillId": "construction_accord_determinant_nom::writing-controlled-production",
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "production",
+              "probability": 0.9940814954403842,
+              "distinctItems": 4,
+              "distinctContexts": 4,
+              "distinctOccasions": 1,
+              "accuracy": 1,
+              "unconfirmedFeatures": [],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false
+            }
+          ],
+          "resolved": false,
+          "evidence": "direct"
+        }
+      ],
+      "activities": [
+        {
+          "skillId": "construction_accord_determinant_nom::reading-analysis",
+          "activityId": "fixture-lesson:french-v3-teaching:determiner-agreement",
+          "kind": "instruction",
+          "action": "learn",
+          "titleFr": "Quel nom commande l’accord ?",
+          "href": "/student/diagnostic",
+          "estimatedMinutes": 5,
+          "contentId": "french-v3-teaching:determiner-agreement"
+        },
+        {
+          "skillId": "construction_accord_determinant_nom::writing-controlled-production",
+          "activityId": "fixture-check:construction_accord_determinant_nom::writing-controlled-production",
+          "kind": "independent_check",
+          "action": "verify",
+          "titleFr": "Synthetic check",
+          "href": "/student/diagnostic",
+          "estimatedMinutes": 5
+        }
+      ],
+      "withoutPriorEvidence": {
+        "activities": [
+          {
+            "skillId": "construction_phrase_canonique::reading-analysis",
+            "activityId": "fixture-check:construction_phrase_canonique::reading-analysis",
+            "kind": "independent_check",
+            "action": "verify",
+            "titleFr": "Synthetic check",
+            "href": "/student/diagnostic",
+            "estimatedMinutes": 5
+          },
+          {
+            "skillId": "construction_phrase_canonique::writing-controlled-production",
+            "activityId": "fixture-check:construction_phrase_canonique::writing-controlled-production",
+            "kind": "independent_check",
+            "action": "verify",
+            "titleFr": "Synthetic check",
+            "href": "/student/diagnostic",
+            "estimatedMinutes": 5
+          },
+          {
+            "skillId": "construction_accord_determinant_nom::writing-controlled-production",
+            "activityId": "fixture-check:construction_accord_determinant_nom::writing-controlled-production",
+            "kind": "independent_check",
+            "action": "verify",
+            "titleFr": "Synthetic check",
+            "href": "/student/diagnostic",
+            "estimatedMinutes": 5
+          }
+        ],
+        "missingActivitySkillIds": [],
+        "blockedSkillIds": [
+          "construction_accord_determinant_nom::reading-analysis"
+        ]
+      },
+      "afterFreshChecks": {
+        "questionIds": [
+          "v3-determiner-agreement:bateau",
+          "v3-determiner-agreement:fleur",
+          "v3-determiner-agreement:cahiers",
+          "v3-determiner-agreement:valise",
+          "v3-determiner-agreement:arbres",
+          "v3-determiner-agreement:leur-voiture",
+          "v3-determiner-agreement:leurs-voitures",
+          "v3-determiner-agreement:la-pronom"
+        ],
+        "results": [
+          {
+            "skillId": "construction_accord_determinant_nom::reading-analysis",
+            "status": "mastered",
+            "modes": [
+              {
+                "mode": "recognition",
+                "probability": 0.9999645542149359,
+                "distinctItems": 8,
+                "distinctContexts": 8,
+                "distinctOccasions": 2,
+                "accuracy": 1,
+                "unconfirmedFeatures": [],
+                "textTypes": [],
+                "contrastingErrorKeys": [],
+                "negativeExampleConfirmed": true,
+                "confirmed": true
+              }
+            ],
+            "resolved": true,
+            "evidence": "direct"
+          },
+          {
+            "skillId": "construction_accord_determinant_nom::writing-controlled-production",
+            "status": "uncertain",
+            "modes": [
+              {
+                "mode": "production",
+                "probability": 0.9940814954403842,
+                "distinctItems": 4,
+                "distinctContexts": 4,
+                "distinctOccasions": 1,
+                "accuracy": 1,
+                "unconfirmedFeatures": [],
+                "textTypes": [],
+                "contrastingErrorKeys": [],
+                "negativeExampleConfirmed": false,
+                "confirmed": false
+              }
+            ],
+            "resolved": false,
+            "evidence": "direct"
+          }
+        ],
+        "activities": [
+          {
+            "skillId": "construction_accord_determinant_nom::writing-controlled-production",
+            "activityId": "fixture-check:construction_accord_determinant_nom::writing-controlled-production",
+            "kind": "independent_check",
+            "action": "verify",
+            "titleFr": "Synthetic check",
+            "href": "/student/diagnostic",
+            "estimatedMinutes": 5
+          }
+        ]
+      },
+      "sourceTaxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+      "sourceBankChecksum": "sha256:ec0e8f10124c8ca6c35eb242980e752365d1b632d0e923b0a3ba27a2430eebfd",
+      "assumptions": [
+        "synthetic foundation evidence",
+        "complete novelty history assumed only for simulation",
+        "draft questions simulated regardless of review status",
+        "in-memory bindings only, no publication",
+        "successful fresh checks over two later occasions"
+      ]
+    }
+  ],
+  "checksum": "sha256:669afd00c5ced10f13b6bd150a6118fa7b9aa6272de788f43be5cfc84ff75425"
+}

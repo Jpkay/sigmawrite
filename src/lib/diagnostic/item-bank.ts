@@ -227,6 +227,7 @@ export function validateCanonicalDiagnosticBank(
     checksum: checksum({ bank: artifact.bank, taxonomy: artifact.taxonomy, items: content }),
   };
   return {
+    eligibleItemKeys: eligible.map(entry => entry.itemKey),
     valid: issues.length === 0 && sections.every((section) => section.ready) && partialShortfalls.length === 0,
     issues: [...issues, ...partialShortfalls],
     sections,

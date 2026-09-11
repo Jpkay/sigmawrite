@@ -18,6 +18,41 @@ import {
 } from "./conjugation";
 
 describe("présent", () => {
+  it("preserves soft g/c throughout simple-past paradigms without adding them before è",()=>{
+    const persons=["1s","2s","3s","1p","2p","3p"] as const;
+    expect(persons.map(p=>passeSimple("manger",p))).toEqual(["mangeai","mangeas","mangea","mangeâmes","mangeâtes","mangèrent"]);
+    expect(persons.map(p=>passeSimple("commencer",p))).toEqual(["commençai","commenças","commença","commençâmes","commençâtes","commencèrent"]);
+    expect(passeSimple("voyager","1p")).toBe("voyageâmes");
+    expect(passeSimple("lancer","3p")).toBe("lancèrent");
+  });
+  it("distinguishes irregular -ir verbs and rejects unknown family membership",()=>{
+    expect(present("blanchir","1s")).toBe("blanchis");
+    expect(present("dormir","3p")).toBe("dorment");
+    expect(present("courir","3p")).toBe("courent");
+    expect(present("découvrir","3p")).toBe("découvrent");
+    expect(imparfait("dormir","1p")).toBe("dormions");
+    expect(participePasse("courir")).toBe("couru");
+    expect(participePasse("découvrir")).toBe("découvert");
+    expect(futurSimple("courir","3p")).toBe("courront");
+    expect(subjonctifPresent("dormir","3p")).toBe("dorment");
+    expect(imperatifPresent("découvrir","2s")).toBe("découvre");
+    for(const verb of ["ouvrir","fuir","acquérir","inventir"]){
+      expect(()=>present(verb,"3p")).toThrow(UnsupportedVerbError);
+      expect(()=>participePasse(verb)).toThrow(UnsupportedVerbError);
+      expect(()=>futurSimple(verb,"3s")).toThrow(UnsupportedVerbError);
+      expect(()=>passeSimple(verb,"3s")).toThrow(UnsupportedVerbError);
+    }
+  });
+  it("handles the authored accent-changing verbs without changing nous/vous or imperfect stems",()=>{
+    expect(present("célébrer","3p")).toBe("célèbrent");
+    expect(present("célébrer","1p")).toBe("célébrons");
+    expect(present("protéger","3s")).toBe("protège");
+    expect(present("protéger","1p")).toBe("protégeons");
+    expect(present("protéger","2p")).toBe("protégez");
+    expect(imparfait("protéger","1p")).toBe("protégions");
+    expect(imparfait("protéger","3s")).toBe("protégeait");
+    expect(subjonctifPresent("protéger","3s")).toBe("protège");
+  });
   it("regular -er (parler)", () => {
     expect(present("parler", "1s")).toBe("parle");
     expect(present("parler", "3p")).toBe("parlent");

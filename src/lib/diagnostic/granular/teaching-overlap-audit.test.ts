@@ -1,0 +1,33 @@
+import {readFileSync} from "node:fs";
+import {expect,it} from "vitest";
+import {checksum} from "@/lib/taxonomy/validate";
+import type {CanonicalDiagnosticBankArtifact} from "../item-bank";
+import {questionAssessedMaterialKeys} from "./material-annotations";
+import {FRENCH_TEACHING_DRAFTS} from "./draft-teaching-catalogue";
+import {auditTeachingOverlap} from "./teaching-overlap-audit";
+const read=(path:string)=>JSON.parse(readFileSync(path,"utf8"));
+const artifact=read("generated/french-taxonomy-v3.json"),bank=read("generated/diagnostic-bank-v3-consolidated-draft.json") as CanonicalDiagnosticBankArtifact;
+it("detects a sentence taught under another target without treating incidental words as the tested material",()=>{
+ const lesson=structuredClone(FRENCH_TEACHING_DRAFTS[0]);lesson.id="cross-target-fixture";
+ lesson.steps=[{exampleFr:"Je dessine un paysage.",explanationFr:"Exemple de la fixture."}];lesson.materialExposure={sentences:["Je dessine un paysage."]};
+ const before=checksum({bank,lesson}),report=auditTeachingOverlap(bank,artifact.taxonomy,[lesson]);
+ const row=report.rows.find(row=>row.questionId==="v3-person-number:je-dessine")!;
+ expect(row.nodeKey).not.toBe(lesson.nodeKey);expect(row.overlaps).toHaveLength(1);expect(row.overlaps[0].lessonId).toBe(lesson.id);
+ expect(checksum({bank,lesson})).toBe(before);
+ lesson.materialExposure={words:[{lemma:"paysage",form:"paysage"}]};
+ const incidental=auditTeachingOverlap(bank,artifact.taxonomy,[lesson]).rows.find(row=>row.questionId==="v3-person-number:je-dessine")!;
+ expect(incidental.overlaps).toEqual([]);
+});
+it("keeps configured verb matches separate from reviewed target identities and exposes annotation gaps",()=>{
+ const entry=bank.items.find(entry=>entry.item.validatorType==="conjugator"&&typeof entry.item.validatorConfig?.verb==="string"&&!questionAssessedMaterialKeys(entry.item).length)!;
+ expect(entry).toBeDefined();const verb=entry.item.validatorConfig!.verb as string;
+ const lesson=structuredClone(FRENCH_TEACHING_DRAFTS[0]);lesson.id="verb-metadata-fixture";
+ lesson.steps=[{exampleFr:`Le verbe étudié est ${verb}.`,explanationFr:"Exemple de la fixture."}];lesson.materialExposure={words:[{lemma:verb,form:verb}]};
+ const report=auditTeachingOverlap(bank,artifact.taxonomy,[lesson]),row=report.rows.find(row=>row.questionId===entry.itemKey)!;
+ expect(row.explicitAssessedMaterial).toBe(false);expect(row.overlaps).toEqual([]);expect(row.configuredVerbOverlaps).toHaveLength(1);
+ expect(report.summary.questionsWithoutAnyReviewedOrConfiguredIdentity).toBeGreaterThan(0);
+ const missing=report.rows.find(row=>!row.assessedMaterialKeys.length&&!row.configuredVerbMaterialKeys.length)!;
+ expect(missing.overlaps).toEqual([]);expect(missing.explicitAssessedMaterial).toBe(false);
+ const altered=structuredClone(bank);altered.items[0].item.promptFr+=" changed";
+ expect(()=>auditTeachingOverlap(altered,artifact.taxonomy,[lesson])).toThrow(/Stale/);
+});

@@ -35,7 +35,7 @@ export default function OnboardingPage() {
     : studentType === "heritage" ? "not_sure" : "french_second_language";
   const grade = gradeOverride ?? studentState.grade ?? 7;
 
-  const completed = studentState.hydrated && !!studentState.diagnostic && !studentState.diagnosticProvisional;
+  const completed = studentState.hydrated && (studentState.granularDiagnosticReady || (!!studentState.diagnostic && !studentState.diagnosticProvisional));
   useEffect(() => {
     if (completed) router.replace("/student/lessons");
   }, [completed, router]);

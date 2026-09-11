@@ -1,0 +1,566 @@
+{
+  "version": "agreement-pathway-review-v1",
+  "status": "draft_review_feasibility_only",
+  "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+  "bankChecksum": "sha256:f29362f32b8562bc8f310b6504fa1891c73488e0313444c4018617a7fe62967c",
+  "facetChecksum": "sha256:faef022500592909cfd0d4229529ab1691ebd018503c3390549fc8bf3b46799f",
+  "rows": [
+    {
+      "lessonId": "french-v3-teaching:agreement:adjacent",
+      "lessonChecksum": "sha256:828313890380689d820b4e36ffd08635c9ffbd950ed6c2b7d5fc258941252712",
+      "titleFr": "Accorder le verbe avec le sujet placé juste avant",
+      "skillId": "accorder_sujet_verbe_ecrit::writing-controlled-production::construction:adjacent",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:adjacent",
+      "prerequisites": [
+        "construction_accord_sujet_verbe::reading-analysis::construction:adjacent",
+        "construction_accord_sujet_verbe::writing-controlled-production::construction:adjacent"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": true,
+        "novelSentencesRequired": false,
+        "unaidedRequired": true,
+        "featureRequirements": []
+      },
+      "eligibleQuestions": 0,
+      "unapprovedCandidates": 14,
+      "guessingFloorValues": [
+        0.5
+      ],
+      "minimumAllCorrectItemsForGuessGate": 7,
+      "distinctTargetWords": 14,
+      "excludedTeachingOverlapQuestionIds": [],
+      "proposedAllocationStatus": "allocated",
+      "proposedInitialQuestions": [
+        "v3-agreement:adjacent-cat",
+        "v3-agreement:additional-engine",
+        "v3-agreement:additional-bells",
+        "v3-agreement:additional-leaf",
+        "v3-agreement:additional-wheels",
+        "v3-agreement:additional-shopkeeper",
+        "v3-agreement:additional-pupils"
+      ],
+      "proposedLaterQuestions": [
+        "v3-agreement:adjacent-manga",
+        "v3-agreement:adjacent-players",
+        "v3-agreement:adjacent-friends",
+        "v3-agreement:adjacent-driver",
+        "v3-agreement:adjacent-children",
+        "v3-agreement:adjacent-phone",
+        "v3-agreement:adjacent-flowers"
+      ],
+      "questionChecksums": {
+        "v3-agreement:adjacent-manga": "sha256:887d9686717d201ce043b538344607cf56f09b20f0005b9df9ab01bf19735b0c",
+        "v3-agreement:adjacent-players": "sha256:5b30a65e754fd232461724a916805cccaac139cf5894ae440c82db694c5364ce",
+        "v3-agreement:adjacent-cat": "sha256:36206f1eaeff9746688c4ab6fe1d687659a63d9d1ed7419d0b318b0797398ec0",
+        "v3-agreement:adjacent-friends": "sha256:a74027302ef0b5517dc9bd999b3837667f6c18abffa98f854182b8212a2bf017",
+        "v3-agreement:adjacent-driver": "sha256:15518358a794884128397744ada055c618986650aee09e36f7321ca9de802df8",
+        "v3-agreement:adjacent-children": "sha256:8b4c1cfa1923fcca62f5450d7d316f06059cfc020e0aea1c0b5c29ee5acd81a7",
+        "v3-agreement:adjacent-phone": "sha256:b2c2fc8b9deda19aa8ecbee63133efd58bb89cf0837b8aa7da34f412dc5beb45",
+        "v3-agreement:adjacent-flowers": "sha256:0b2b00f56c746cc778ec1cb5206bd8b0950777ca9260a17adccbae08c7c73162",
+        "v3-agreement:additional-engine": "sha256:70ed4812062a21c2be5f21d28891b7a1fdebed4daab57f77c543a28d9d1da841",
+        "v3-agreement:additional-bells": "sha256:8bdd45d8fd7845a71215e98319b30e1990b6adefb574eaa946fff859d5182cba",
+        "v3-agreement:additional-leaf": "sha256:ecaf91b3cfa0b88f10a9bca7247ecd4e5c02c67eeb1a103ed8e05bc89d75d3aa",
+        "v3-agreement:additional-wheels": "sha256:2647a5c10d1c64561473cb15f1038845dec456628f2f4dfe61c4bf1365fad245",
+        "v3-agreement:additional-shopkeeper": "sha256:d76dd6b0606c0240b01e8f1e992922d670ba556269e00ced4248089949dbf5c3",
+        "v3-agreement:additional-pupils": "sha256:80e31dcc426cc5ab16469e3e077a611444ba8ad1b6ff89a8049aa15fe5a9b5a2"
+      },
+      "assessedMaterialKeys": {
+        "v3-agreement:adjacent-manga": [
+          "sentence:sha256:79dea3d34bc176381364b80f18bc546466b2aa55001caad653629a038319c9fd",
+          "word:sha256:835e28f9e4116e146a93e258b63c78c87f92d5e186c2a88c52c4782e786aeebf"
+        ],
+        "v3-agreement:adjacent-players": [
+          "sentence:sha256:65863d14f9304f2bb6d5c65bd53dfff7a5dd85233d545127f880e15d51b49710",
+          "word:sha256:6fccf919e4a97511c051cfb0e4bbb3e5177217b23c433d1eb50b80389dadbf39"
+        ],
+        "v3-agreement:adjacent-cat": [
+          "sentence:sha256:12537be970e2d4ed63c967c3323eae08a07c2e07b3bba2cc54adb6318877f269",
+          "word:sha256:08de9b19433db43640612a19868988876a7ef7256d5fe1932821259b95d41b2f"
+        ],
+        "v3-agreement:adjacent-friends": [
+          "sentence:sha256:af843e7e2270ab4cb5f4ff9faaccf37fb37eb86590538029ee67e9904ed7bde9",
+          "word:sha256:c405384af65f669af884bf1472bfba6f73c976e0599e2e138296187f55f1fa1e"
+        ],
+        "v3-agreement:adjacent-driver": [
+          "sentence:sha256:4d6d35671fef1c24af770487b546163ee4340b356948878da2813aa9d809fdfe",
+          "word:sha256:35cb2f67c2fb3d991aac66959185c5a2c498468502e7b67a732d46f696f45991"
+        ],
+        "v3-agreement:adjacent-children": [
+          "sentence:sha256:d2020f839ccf52b79d0e02e286cbaa38b5f91cb16431a569b5f28eae5af81973",
+          "word:sha256:f7d046f5085962221165e46c2d50620c42adb8d16d44c68daceb8319831dc7a9"
+        ],
+        "v3-agreement:adjacent-phone": [
+          "sentence:sha256:c5a009ce2713dabcea18cddab65648f023b32dab2ff66fd0cc11e124beed13ac",
+          "word:sha256:440d963852148317c25be2c9f9580575ca799ac332059a87a386758d768c4f50"
+        ],
+        "v3-agreement:adjacent-flowers": [
+          "sentence:sha256:29625e2085d1229900dab1f4243af48baed7f53e7a4076fdc271d1abe7c8db68",
+          "word:sha256:fd302ba357217b23345b64ac530ccbe146e81240404686495050e8837b8707ec"
+        ],
+        "v3-agreement:additional-engine": [
+          "sentence:sha256:f30a6a65dfd193ee9cb020719552170d86e774edc3283b4d577325b0f248dec5",
+          "word:sha256:2ffbc2fd16d5a8b42bb8a58bc6339cbd32752d8af98a1d1c7183fb0905ee512e"
+        ],
+        "v3-agreement:additional-bells": [
+          "sentence:sha256:7a90ff344716e8110c2f4fefc0364378d8a11683bd4af316dd571f360d0aa6de",
+          "word:sha256:4100680d29213d77db264a6f57db0e97502df051c42fd7848c7b866bd4544c5b"
+        ],
+        "v3-agreement:additional-leaf": [
+          "sentence:sha256:ea5178e4e8d6cf994b9fb1296ff3033e14be2dc60689de1410775f76f029c4cd",
+          "word:sha256:711ce62148862573bd037d238ce8dffacc2b9f17b3e4a1b6e31c77fa50b7906e"
+        ],
+        "v3-agreement:additional-wheels": [
+          "sentence:sha256:9578346c73d7179f7188b1b42d5f74bfd25df1faaf2a69bd6db93291a4cd594a",
+          "word:sha256:07ed1d6280db80ddc992220cd790a014b11703cf10aacfc683c0db822f2d2e5a"
+        ],
+        "v3-agreement:additional-shopkeeper": [
+          "sentence:sha256:7aa9f5cad9008901f69a2c779828c27fd6149cbcce9a5aab599a669fd21cc300",
+          "word:sha256:a31e6136edbdc5e58f5b51ac3ea261703981fd59e9b0087a90d3dcbf0a65428f"
+        ],
+        "v3-agreement:additional-pupils": [
+          "sentence:sha256:2618f87d00f5880b25d5675fbd654670f7a8952be66efb576383d39d3080af8c",
+          "word:sha256:4f5c53151b2d3f8758511c03c1e9755e7fdd4eeae3cd2518eacad22b2214fae8"
+        ]
+      },
+      "releaseReady": false,
+      "requiredReviews": [
+        "answer_and_subject_validity",
+        "target_and_prerequisite_fit",
+        "teaching_and_semantic_overlap",
+        "material_annotation_completeness",
+        "difficulty_and_conjugation_confounding",
+        "conditional_binary_guessing_floor",
+        "cross_activity_exposure",
+        "multiple_occasions"
+      ]
+    },
+    {
+      "lessonId": "french-v3-teaching:agreement:separated",
+      "lessonChecksum": "sha256:4af39909f7b9a696f161340a9605614edf41295dcdb13f752c80d6bfc3fb6be8",
+      "titleFr": "Retrouver le sujet malgré les mots entre les deux",
+      "skillId": "accorder_sujet_verbe_ecrit::writing-controlled-production::construction:separated",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:separated",
+      "prerequisites": [
+        "construction_accord_sujet_verbe::reading-analysis::construction:separated",
+        "construction_accord_sujet_verbe::writing-controlled-production::construction:separated"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": true,
+        "novelSentencesRequired": false,
+        "unaidedRequired": true,
+        "featureRequirements": []
+      },
+      "eligibleQuestions": 0,
+      "unapprovedCandidates": 14,
+      "guessingFloorValues": [
+        0.5
+      ],
+      "minimumAllCorrectItemsForGuessGate": 7,
+      "distinctTargetWords": 14,
+      "excludedTeachingOverlapQuestionIds": [],
+      "proposedAllocationStatus": "allocated",
+      "proposedInitialQuestions": [
+        "v3-agreement:separated-box",
+        "v3-agreement:additional-coaches",
+        "v3-agreement:additional-glass",
+        "v3-agreement:additional-trees",
+        "v3-agreement:additional-smoke",
+        "v3-agreement:additional-candles",
+        "v3-agreement:additional-fishingboat"
+      ],
+      "proposedLaterQuestions": [
+        "v3-agreement:separated-posters",
+        "v3-agreement:separated-singer",
+        "v3-agreement:separated-cyclists",
+        "v3-agreement:separated-hero",
+        "v3-agreement:separated-windows",
+        "v3-agreement:separated-coach",
+        "v3-agreement:separated-shoes"
+      ],
+      "questionChecksums": {
+        "v3-agreement:separated-box": "sha256:f75b5f21f7cd2e5c07c973ac3b37034698be8dd914984753f9ec61b7108d7fb2",
+        "v3-agreement:separated-posters": "sha256:a2213de92cca1dd3b3905e1f2ae2b80dde1ff5b422391f62a41912457ad5a462",
+        "v3-agreement:separated-singer": "sha256:61c5c8dace123770fedbeb38fbac04f27235af78eb799a23a0fee5cbee3eb56a",
+        "v3-agreement:separated-cyclists": "sha256:84a4880d2bba6f154d7be58d4dffcd04e69276ed5080d64d6a9adafc8b5d9729",
+        "v3-agreement:separated-hero": "sha256:edc6b52bd1a9252e1720cb200e450f7ab45272ff2d3e9542bb09105536e57271",
+        "v3-agreement:separated-windows": "sha256:40a748e3561f55de9ba770cc0f6c14c4fd88d4a4d1e15c8f03a2edafa9a4f17b",
+        "v3-agreement:separated-coach": "sha256:4d4e00eb99c978632666fe2f9e391e20432fe0d135b8ec74eef42c852577c0d3",
+        "v3-agreement:separated-shoes": "sha256:368cb40e10f17289c6b061a0cb081fb8c22543f56cafdf57c0e11b86967cdd39",
+        "v3-agreement:additional-coaches": "sha256:226babb4c00717daa32700449bf0a045bfac82a328850147cfa173c3117f3a5b",
+        "v3-agreement:additional-glass": "sha256:46d22234e27eb4f3fee0947dbd29e76200b8f19abbb466d1615e95d5b3dc06bb",
+        "v3-agreement:additional-trees": "sha256:80a1f4a2fdda39f3364d7cfe62f2665d9276a6a65e3164eecd2ab61e2585e72a",
+        "v3-agreement:additional-smoke": "sha256:bf34dc6d698e89f55252e64d45667dcaf015ca54ac725108a9cb61ada74218f6",
+        "v3-agreement:additional-candles": "sha256:4df1c86e38ca58d6b9493b8e0761c1e2969ccc7c846d4bedcd3fb207979c0017",
+        "v3-agreement:additional-fishingboat": "sha256:402936f192a11e7676bc1078d9909740b740027d0558ac9ca3548715621e988b"
+      },
+      "assessedMaterialKeys": {
+        "v3-agreement:separated-box": [
+          "sentence:sha256:92e8be3e0293cddc93a5940ff806524ac38be8d3777a3d1d0b72b92b62db6b0f",
+          "word:sha256:9a7b6302b02b4688b178febb895c7baffca360b58f4e9a3de9c32efef582b498"
+        ],
+        "v3-agreement:separated-posters": [
+          "sentence:sha256:03204c2fcb055ca9a6476d5028abf6a08616ccd738f885879515e6ae779e5b20",
+          "word:sha256:20fc68802f92eb4f30b4d48d8434126f53217e2c97a382e52277c3111301182c"
+        ],
+        "v3-agreement:separated-singer": [
+          "sentence:sha256:487cfa2e8de2f7bb616311636cf95cc2eaefc08328e0e55d249ee62e9b6ba7f4",
+          "word:sha256:683b412b00708133ca1cda2d5e6d31b422063295854714cc945acd0d83ba5c14"
+        ],
+        "v3-agreement:separated-cyclists": [
+          "sentence:sha256:fb89013876e2d96fa8a1a461e7eae4b1e84ce4c06ec683d479ba3b6efdbd0909",
+          "word:sha256:ee77cf32821e568697d484c374adab09dcf29198d334919d8c6f81c6d5f7ae8a"
+        ],
+        "v3-agreement:separated-hero": [
+          "sentence:sha256:162218bdb5521a171a6a5acc4171dbb0470f698b9bec909c1dc44f66a00a645c",
+          "word:sha256:02a8ed564be1ecfca432afa72f9ee26e58dd4c321dd5d728da48b0b110844359"
+        ],
+        "v3-agreement:separated-windows": [
+          "sentence:sha256:a5cf8e4eac9f8a7f701b0f3cdc81b0c6035c7c0889b540666da4f02edb56c689",
+          "word:sha256:b80ce0521019fe404fcc1201174f1e27b2513b55a094f1b8e2b0731ae061ea3d"
+        ],
+        "v3-agreement:separated-coach": [
+          "sentence:sha256:a89013f012fefad6ebf6b0982c8f8f069ac319a18040c15bdeb37e7e94832daa",
+          "word:sha256:99dd327c1e96adc31c64fc569e48d2c79e7fc19c001887bca5d6472bd6c170db"
+        ],
+        "v3-agreement:separated-shoes": [
+          "sentence:sha256:425b0ec475af97fff89da477cdcaa85be47fb4dba20919d8ed5107cd9e9b6d11",
+          "word:sha256:ae22477f5d8ab9ae7a180f9a27e9c8fb72dbc1d745bdcca85d5be05d8c7dc66d"
+        ],
+        "v3-agreement:additional-coaches": [
+          "sentence:sha256:18fafbed17c33ed793a41aca268c4909eb64d3583ff653fd95521931a8c1a2d9",
+          "word:sha256:886c2290e998ef836561d37152ef1cfcf32afe23feefd46e83af03a5e9ac3bd0"
+        ],
+        "v3-agreement:additional-glass": [
+          "sentence:sha256:4b1d9a0ec936b298315f2c366a1dac36ec0e56ff2943ee2907a3840433a1e780",
+          "word:sha256:05e85e14618ae954378ac3ef42cbf85c25769ce7bace585d14e47b65ae2dfcba"
+        ],
+        "v3-agreement:additional-trees": [
+          "sentence:sha256:c5740a25596c836995ea098cd3da610cd621a47786d648dfc91b76d0551126cb",
+          "word:sha256:e22fecbad6db20395554511812c2705748d34b3ae2e235ec7471a28929c54a2e"
+        ],
+        "v3-agreement:additional-smoke": [
+          "sentence:sha256:20514959feaee3394e474208bedd24ad833f3f177a1de4ec8ae29bbf41b78997",
+          "word:sha256:7a6e36279bf8d3006b5be3e13cc128a2ed5727702484b92b053d267f332b57c2"
+        ],
+        "v3-agreement:additional-candles": [
+          "sentence:sha256:fe97ed5837335bfe811fc5e791ae7cf656bfd2a64405f257d478019752cef0e1",
+          "word:sha256:812eb825cd8e4d1100d58597addd7e3526e85787df7a49b55476184b5fc06140"
+        ],
+        "v3-agreement:additional-fishingboat": [
+          "sentence:sha256:5ff77097b675e26e3ea76f794b5f47fee153e1bcfbd5e1fc7860df631378a3a9",
+          "word:sha256:339f6c7f163409f8ce3254f070b7c16d96e3668eecae1fe11ad7b0b079597fe0"
+        ]
+      },
+      "releaseReady": false,
+      "requiredReviews": [
+        "answer_and_subject_validity",
+        "target_and_prerequisite_fit",
+        "teaching_and_semantic_overlap",
+        "material_annotation_completeness",
+        "difficulty_and_conjugation_confounding",
+        "conditional_binary_guessing_floor",
+        "cross_activity_exposure",
+        "multiple_occasions"
+      ]
+    },
+    {
+      "lessonId": "french-v3-teaching:agreement:inverted",
+      "lessonChecksum": "sha256:5f79e4332e372e0c82dc34e238c64ada513403427ea8b53ab9c177bbde4804a5",
+      "titleFr": "Accorder quand le sujet vient après le verbe",
+      "skillId": "accorder_sujet_verbe_ecrit::writing-controlled-production::construction:inverted",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:inverted",
+      "prerequisites": [
+        "construction_accord_sujet_verbe::reading-analysis::construction:inverted",
+        "construction_accord_sujet_verbe::writing-controlled-production::construction:inverted"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": true,
+        "novelSentencesRequired": false,
+        "unaidedRequired": true,
+        "featureRequirements": []
+      },
+      "eligibleQuestions": 0,
+      "unapprovedCandidates": 14,
+      "guessingFloorValues": [
+        0.5
+      ],
+      "minimumAllCorrectItemsForGuessGate": 7,
+      "distinctTargetWords": 14,
+      "excludedTeachingOverlapQuestionIds": [],
+      "proposedAllocationStatus": "allocated",
+      "proposedInitialQuestions": [
+        "v3-agreement:inverted-birds",
+        "v3-agreement:additional-tools",
+        "v3-agreement:additional-mobile",
+        "v3-agreement:additional-signals",
+        "v3-agreement:additional-bell",
+        "v3-agreement:additional-taxi",
+        "v3-agreement:additional-dragonflies"
+      ],
+      "proposedLaterQuestions": [
+        "v3-agreement:inverted-tower",
+        "v3-agreement:inverted-guests",
+        "v3-agreement:inverted-start",
+        "v3-agreement:inverted-boats",
+        "v3-agreement:inverted-path",
+        "v3-agreement:inverted-runners",
+        "v3-agreement:inverted-tent"
+      ],
+      "questionChecksums": {
+        "v3-agreement:inverted-birds": "sha256:d29c0508c94dc97bc1a1aa49130b3abc35bc1a5527086f74f01b1939f1635efe",
+        "v3-agreement:inverted-tower": "sha256:116fcb842612ee7ca1a2340eb341cf79e378a94fb456126cc6d8befa5b9dba29",
+        "v3-agreement:inverted-guests": "sha256:ca790f2da08af304ebf047a53983aa29105d96c66da92ba5c1d8a8b669fb9fac",
+        "v3-agreement:inverted-start": "sha256:0f1f647f03a2848b029e622d443c9aa0530f6f06f0f99ee19c912a9b5d85c2b4",
+        "v3-agreement:inverted-boats": "sha256:1fdde23d2980564559eb459e7d42dfec368550e8c875a8b03bc60c5fa9d45e07",
+        "v3-agreement:inverted-path": "sha256:b497dc774fd42d0cf99a4457f22734c87db74b588cdf4cfba48eac8abfe0b86d",
+        "v3-agreement:inverted-runners": "sha256:954c91e6f3ac949c67ecd8fe970caf3abf62cc9271f5a1f1f324462ff5b5439c",
+        "v3-agreement:inverted-tent": "sha256:c007cd79e0779228bea4d7f6a7475051f8594543dc73effeb03628579b497808",
+        "v3-agreement:additional-tools": "sha256:7a31ae4970710ad65dfbfc4fcefe68d122aa9b9f8f4eca47e327d9149446239d",
+        "v3-agreement:additional-mobile": "sha256:e3cda7c754475dfa06a371d1ab8edb23a007a461c027c101031fec19df72e948",
+        "v3-agreement:additional-signals": "sha256:4d58343916f1d33b5885f321f422ee0b2bb07f7d694926852906f692928caa2b",
+        "v3-agreement:additional-bell": "sha256:adeca73bca598ba1a05df96d64afee545f566a4b7510b010c68f97592cfc1f11",
+        "v3-agreement:additional-taxi": "sha256:9f9f1d830183e501d5bdc1fcd21064900c5f9ab34702389b56e4379781454191",
+        "v3-agreement:additional-dragonflies": "sha256:6abcffa4028e2349a838516f7a431d19e9bee6d514b72db19a664d3496a6ea6b"
+      },
+      "assessedMaterialKeys": {
+        "v3-agreement:inverted-birds": [
+          "sentence:sha256:e2b207c519e1c5bd92c803efc9d719bda3c34d46b26ee6d5c0c633c572e32908",
+          "word:sha256:4e56c72d0d6092249025bc14d083972f4d303262437b1af54b2cc99997796cd4"
+        ],
+        "v3-agreement:inverted-tower": [
+          "sentence:sha256:b4cb969fca14cb95a57001a78813154ea004c2308b50dfcc86cecd8131d27d54",
+          "word:sha256:0467b0b91d140a779437382054b7767515cab218bc2ef7c3e7bd7d7e657d292a"
+        ],
+        "v3-agreement:inverted-guests": [
+          "sentence:sha256:d665adb4b3c5c1787a2ebe120457d67adc7f3ed697ff24f2d14f1a1753cb185b",
+          "word:sha256:07cb7adf2a2cc0b0713295e156ed89e204055bef14fc01a8b799833d6c75b15a"
+        ],
+        "v3-agreement:inverted-start": [
+          "sentence:sha256:b1795be4904de71e8c265329e91a2224588c4b94daf526b06b86cecf4af3d66b",
+          "word:sha256:ccb09ff79a5d9e9dcd97b034827954fb7db9e0dd4c126e7c9e6b31cd39433b5b"
+        ],
+        "v3-agreement:inverted-boats": [
+          "sentence:sha256:c0a1b3e4c50ce14909ccacb3749ce3dd1d9d85fba3f573451c30f3856948bbb5",
+          "word:sha256:bf9a8381abdbd582a5a9cd09ab5ebc19603293af20c596c95e873ab9a8795322"
+        ],
+        "v3-agreement:inverted-path": [
+          "sentence:sha256:64bd2c262a2c21194dec8c1b9dc54ce01746565b9a2da272ca445e0ae78d95b4",
+          "word:sha256:29a9f5b8082cb44ba6c6f7b00860ef6c542952a8eaf28a499075360b6db4a854"
+        ],
+        "v3-agreement:inverted-runners": [
+          "sentence:sha256:ad7fb1a5f99a2f8189096ff03705efaa29fc5e32ab3e4e4e4cda47c4269c8046",
+          "word:sha256:f86977b498c93458599a6f1b93c017ba931bc2f365c745bb63bec1ee5c8df42f"
+        ],
+        "v3-agreement:inverted-tent": [
+          "sentence:sha256:c3bbbf3ec85c8e8466ac581a828e55aa75dc97946080861594246cc0e9ef6da9",
+          "word:sha256:ea4942a84985c499ac50096d019db9f3110eb4b4fba9f14dd278ea9ee691f916"
+        ],
+        "v3-agreement:additional-tools": [
+          "sentence:sha256:2528d5f839dc7575b330a2a38a42345a4088dc95af5dfc8304b4d3f752cbce04",
+          "word:sha256:847ee32b94def2155cfe80fea5cddf076d0f41493531042ef97dbf9db9827a03"
+        ],
+        "v3-agreement:additional-mobile": [
+          "sentence:sha256:a064de235b28c2fdff99ea85a1b3ccbb07ea1858d9cc2d55cef93326c51d493e",
+          "word:sha256:06a483f39f78558e1295dcb8680173adc58312438a30140cb4761bf232e2896b"
+        ],
+        "v3-agreement:additional-signals": [
+          "sentence:sha256:35e256d469907ffe3a3100ab6f4ee4f8a0e2548c621b5a330e0f7638b64dc691",
+          "word:sha256:15d5ec7478eb7e7012d455d10669723bcce6b168ffd0bf5fc51deffcc3fdefa6"
+        ],
+        "v3-agreement:additional-bell": [
+          "sentence:sha256:e00ae2f2ef43e8ff5b5cd5728552359b7cbb601a856430e9028ab3bfab1e884f",
+          "word:sha256:a8fad37cb41f22e94c72c60fbd83a8d4106014976e4f5607ed298ff19837af18"
+        ],
+        "v3-agreement:additional-taxi": [
+          "sentence:sha256:d4eb5d70d5e80ffc6689540e8db3967ea668720636016d90f9f801dfb93bf873",
+          "word:sha256:982d9bf2cbef215b29bd721366fb6dfff89c38e67824bb4b86864be225cb538c"
+        ],
+        "v3-agreement:additional-dragonflies": [
+          "sentence:sha256:b0cad705fd426d675432cd34857f25a0d3a60de3a400eae7fcbd1dd60bcb49f8",
+          "word:sha256:9fd13915c5f269a8f4aa68e612fdae067c0f53c3996f7d34912c55da6c03dff9"
+        ]
+      },
+      "releaseReady": false,
+      "requiredReviews": [
+        "answer_and_subject_validity",
+        "target_and_prerequisite_fit",
+        "teaching_and_semantic_overlap",
+        "material_annotation_completeness",
+        "difficulty_and_conjugation_confounding",
+        "conditional_binary_guessing_floor",
+        "cross_activity_exposure",
+        "multiple_occasions"
+      ]
+    },
+    {
+      "lessonId": "french-v3-teaching:agreement:coordinated",
+      "lessonChecksum": "sha256:b381fecf34e50d7842bdd2b37aae9f6fe0f516f288532377c972c720279ecbc1",
+      "titleFr": "Accorder avec deux sujets reliés par et",
+      "skillId": "accorder_sujet_verbe_ecrit::writing-controlled-production::construction:coordinated",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:coordinated",
+      "prerequisites": [
+        "construction_accord_sujet_verbe::reading-analysis::construction:coordinated",
+        "construction_accord_sujet_verbe::writing-controlled-production::construction:coordinated"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": true,
+        "novelSentencesRequired": false,
+        "unaidedRequired": true,
+        "featureRequirements": []
+      },
+      "eligibleQuestions": 0,
+      "unapprovedCandidates": 14,
+      "guessingFloorValues": [
+        0.5
+      ],
+      "minimumAllCorrectItemsForGuessGate": 7,
+      "distinctTargetWords": 14,
+      "excludedTeachingOverlapQuestionIds": [],
+      "proposedAllocationStatus": "allocated",
+      "proposedInitialQuestions": [
+        "v3-agreement:coordinated-animals",
+        "v3-agreement:additional-siblings",
+        "v3-agreement:additional-carwash",
+        "v3-agreement:additional-nurse",
+        "v3-agreement:additional-astronomy",
+        "v3-agreement:additional-animalswalking",
+        "v3-agreement:additional-keys"
+      ],
+      "proposedLaterQuestions": [
+        "v3-agreement:coordinated-friends",
+        "v3-agreement:coordinated-art",
+        "v3-agreement:coordinated-family",
+        "v3-agreement:coordinated-weather",
+        "v3-agreement:coordinated-instruments",
+        "v3-agreement:coordinated-teachers",
+        "v3-agreement:coordinated-food"
+      ],
+      "questionChecksums": {
+        "v3-agreement:coordinated-friends": "sha256:b75dab1767ef20f662bb190e39a3749ff559add7de8acb0c5380a39f1c61eadb",
+        "v3-agreement:coordinated-animals": "sha256:710d9e9f3318b92555f724282431801c43cdcceff35bbc0cd4f8c2df6bfaa6c2",
+        "v3-agreement:coordinated-art": "sha256:a14e95fc59653b15738fb2c53f3d4bdb89999e1f0063000773428545464c8f82",
+        "v3-agreement:coordinated-family": "sha256:d4d130bc0dd95b97e3af5d3d5900615fe255538fbc65fe0c537914cca4d9a793",
+        "v3-agreement:coordinated-weather": "sha256:5737855d271200cee1033167db7301178317318a2a3fd6e0cb76d9b00cd15706",
+        "v3-agreement:coordinated-instruments": "sha256:358d238bcca87eb16e43aa835997aa15e0ebcd7217315377058e2a544c5ea25b",
+        "v3-agreement:coordinated-teachers": "sha256:8a4f9866527c6f9d21483981a4c9120d4670aca187161d06340a52c26fbb30d9",
+        "v3-agreement:coordinated-food": "sha256:1252a87d700c4d95dc359dbdcf1e21c3ae998b2b6376990163fdb5d715b24f77",
+        "v3-agreement:additional-siblings": "sha256:2438b3b7ad0ea9e8c6ee2f1acb05675e57d6e8cce7653e6b59a1972e9961a057",
+        "v3-agreement:additional-carwash": "sha256:679356d14804c3bff9895a766cdadb8a540d032b9a6eb787f4bb5f690cd64242",
+        "v3-agreement:additional-nurse": "sha256:fe952aedeffc2802e31299ab309f6302ba4fb9af5293c5301f2623c2ed3d9fc9",
+        "v3-agreement:additional-astronomy": "sha256:e5ea7d6c5f59e4686ef9670209a7104fc2f71dc0725d917784572004a5cbe29d",
+        "v3-agreement:additional-animalswalking": "sha256:09a7c07589340922ff250f8ea07f93c99144148256841a1a48d6850aafe3cd8b",
+        "v3-agreement:additional-keys": "sha256:139e49c27f969ba3177471ae96b160cc2242640b0d8448747ade82ab0f066cd4"
+      },
+      "assessedMaterialKeys": {
+        "v3-agreement:coordinated-friends": [
+          "sentence:sha256:49202a29e466e181e848191853a8487b832199b54f80e7a92ba5c2f2aa2ee74a",
+          "word:sha256:21010efbdd00d7ca10d911d45954968f08d384d7ccfff1a64c2966149a8a9b94"
+        ],
+        "v3-agreement:coordinated-animals": [
+          "sentence:sha256:3e0ea4b9bd645694706f085e1d62074c217f607adbdfc6df67ef08113d655d5c",
+          "word:sha256:7ea0ccfa7e16b696fcde419e0e0551f3da31cf81b625870759c231d69d2b4829"
+        ],
+        "v3-agreement:coordinated-art": [
+          "sentence:sha256:1c2f84526186d63da3a134298a4bae554b11a406bfcf46535daf5d110b3508bd",
+          "word:sha256:07c71213fed9e9da9d1c3d39ca692da1bac83baa92563fbf304a7147a6e43325"
+        ],
+        "v3-agreement:coordinated-family": [
+          "sentence:sha256:c7b0906b738eb6e6136a367e746c7eeeb035ec876dc6c9c149c96a7dcf6ad50c",
+          "word:sha256:34029b45b5def1d1605edd09ae7774c543eb6ec73409a4852cad9fbfdcfda035"
+        ],
+        "v3-agreement:coordinated-weather": [
+          "sentence:sha256:45062592932c82eeea52db1690676f554e081cfe3bc50f513286da929c199488",
+          "word:sha256:2e2649c08b79fffe510816d8893a8e3d71feef24611569266d44ac725ac6a328"
+        ],
+        "v3-agreement:coordinated-instruments": [
+          "sentence:sha256:5a0ab9d9a7ee71b011ec12f75b0b981782d1b8a86971717f4d09bda2e36761ce",
+          "word:sha256:81d810f88e350dfd1916119e87f20dfa2d73b7eabd92f4139dabc3b6687f79d2"
+        ],
+        "v3-agreement:coordinated-teachers": [
+          "sentence:sha256:fb9cdc1103866cdfcd0873dcb9e5811aa6be31f01453b10928cd3f5db6439e76",
+          "word:sha256:ee4f1bc42c171496c242e9dc9a332368e565521bb8f61cdd9ca684c3136054a8"
+        ],
+        "v3-agreement:coordinated-food": [
+          "sentence:sha256:7f7b68140643701fa152672f58cd787486be121ac6034bf2b6e373a88dad28c3",
+          "word:sha256:31a9980bff957c51a0a362a64305bf867e0ccc0d8c93f970935cd32b593b21b1"
+        ],
+        "v3-agreement:additional-siblings": [
+          "sentence:sha256:208d66594801897f729af6e1187ad4a8f0c86840879a6601e49228aa001984ce",
+          "word:sha256:112a505a0bbd7a7d31305e0773ef6f53b3679f37d02d067bccf9e06cc5582fc0"
+        ],
+        "v3-agreement:additional-carwash": [
+          "sentence:sha256:d45725dd034765211ddbddfa560721853cf53d46cc407b7cffd41c8211c819fc",
+          "word:sha256:696e2a918ba9f8b71857beae2795a9e4703080b5a71fbb189930ec6868ae50a2"
+        ],
+        "v3-agreement:additional-nurse": [
+          "sentence:sha256:8c1180cf236d80409a5dc6e643f4f22f94b1f5ad900bfe745447eb0ca5301845",
+          "word:sha256:7d3885c93ab91de2160083b7693262c07343e6dcab31021b2c21bc1a24fa95fe"
+        ],
+        "v3-agreement:additional-astronomy": [
+          "sentence:sha256:c6516315634def3341f5a9fee8fb65a097714eb1b694432346a08149421a1215",
+          "word:sha256:4f73b463c81e12752d12634d9f4fdde701a99d2851927124eb9773d6d49df416"
+        ],
+        "v3-agreement:additional-animalswalking": [
+          "sentence:sha256:7d3fbef1d89e66af9312327bec3eedae41d9095cec6fbc3835f299236ae57d4a",
+          "word:sha256:8569f3dac970d7773a33f2838958f2dc458bc693a69c3bccbf9a5d46e521a3b1"
+        ],
+        "v3-agreement:additional-keys": [
+          "sentence:sha256:9f966419af79089ae0f534218e6b4f98bdf655377b2eb5f3021b2ab356baa2f1",
+          "word:sha256:46889d2a862cb10858b2b19823302a7ed7f0c03aea58d825c5a1cbfe29771e4e"
+        ]
+      },
+      "releaseReady": false,
+      "requiredReviews": [
+        "answer_and_subject_validity",
+        "target_and_prerequisite_fit",
+        "teaching_and_semantic_overlap",
+        "material_annotation_completeness",
+        "difficulty_and_conjugation_confounding",
+        "conditional_binary_guessing_floor",
+        "cross_activity_exposure",
+        "multiple_occasions"
+      ]
+    }
+  ],
+  "checksum": "sha256:3cf643b4160b61a0ff77e78c27d377cdfbb5f727c410931f9a093fa5aec40bc4"
+}

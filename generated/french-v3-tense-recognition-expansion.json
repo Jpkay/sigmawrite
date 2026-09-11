@@ -1,0 +1,1275 @@
+{
+  "version": "french-v3-tense-recognition-expansion-v1",
+  "status": "draft_requires_review",
+  "parentTaxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+  "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
+  "items": [
+    {
+      "itemKey": "v3-tense-recognition:future-library",
+      "item": {
+        "nodeKey": "reconnaitre_futur_proche",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Je vais emprunter ce roman.\n\nQuel groupe verbal forme le futur proche ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Je vais emprunter ce roman.\n\nQuel groupe verbal forme le futur proche ?",
+              "Je vais",
+              "emprunter ce roman",
+              "ce roman",
+              "vais emprunter"
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "vais emprunter",
+            "correct": true
+          },
+          {
+            "text": "Je vais",
+            "correct": false
+          },
+          {
+            "text": "emprunter ce roman",
+            "correct": false
+          },
+          {
+            "text": "ce roman",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-periphrastic-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:future-measure",
+      "item": {
+        "nodeKey": "reconnaitre_futur_proche",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle phrase emploie le futur proche ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quelle phrase emploie le futur proche ?",
+              "Tu mesures la planche.",
+              "Tu as mesuré la planche.",
+              "Tu mesureras la planche.",
+              "Tu vas mesurer la planche."
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Tu vas mesurer la planche.",
+            "correct": true
+          },
+          {
+            "text": "Tu mesures la planche.",
+            "correct": false
+          },
+          {
+            "text": "Tu as mesuré la planche.",
+            "correct": false
+          },
+          {
+            "text": "Tu mesureras la planche.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-periphrastic-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:future-negative",
+      "item": {
+        "nodeKey": "reconnaitre_futur_proche",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle phrase contient un futur proche malgré la négation ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quelle phrase contient un futur proche malgré la négation ?",
+              "Les voisins ne déplacent pas leur voiture.",
+              "Les voisins n’ont pas déplacé leur voiture.",
+              "Les voisins ne déplaçaient pas leur voiture.",
+              "Les voisins ne vont pas déplacer leur voiture."
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Les voisins ne vont pas déplacer leur voiture.",
+            "correct": true
+          },
+          {
+            "text": "Les voisins ne déplacent pas leur voiture.",
+            "correct": false
+          },
+          {
+            "text": "Les voisins n’ont pas déplacé leur voiture.",
+            "correct": false
+          },
+          {
+            "text": "Les voisins ne déplaçaient pas leur voiture.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-periphrastic-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:future-destination",
+      "item": {
+        "nodeKey": "reconnaitre_futur_proche",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Dans quelle phrase va forme-t-il un futur proche ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Dans quelle phrase va forme-t-il un futur proche ?",
+              "Il va au cours de dessin.",
+              "Il va chez sa tante.",
+              "Il va dans la cour.",
+              "Il va examiner le dessin."
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Il va examiner le dessin.",
+            "correct": true
+          },
+          {
+            "text": "Il va au cours de dessin.",
+            "correct": false
+          },
+          {
+            "text": "Il va chez sa tante.",
+            "correct": false
+          },
+          {
+            "text": "Il va dans la cour.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-periphrastic-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:future-adverb",
+      "item": {
+        "nodeKey": "reconnaitre_futur_proche",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Nous allons probablement gagner cette manche.\n\nQuels verbes forment le futur proche ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Nous allons probablement gagner cette manche.\n\nQuels verbes forment le futur proche ?",
+              "allons et probablement",
+              "gagner et manche",
+              "Nous et allons",
+              "allons et gagner"
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "allons et gagner",
+            "correct": true
+          },
+          {
+            "text": "allons et probablement",
+            "correct": false
+          },
+          {
+            "text": "gagner et manche",
+            "correct": false
+          },
+          {
+            "text": "Nous et allons",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-periphrastic-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:future-time",
+      "item": {
+        "nodeKey": "reconnaitre_futur_proche",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Les quatre phrases annoncent une activité pour samedi. Laquelle emploie le futur proche ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les quatre phrases annoncent une activité pour samedi. Laquelle emploie le futur proche ?",
+              "Samedi, elle fabrique un cerf-volant.",
+              "Samedi, elle fabriquera un cerf-volant.",
+              "Samedi, un cerf-volant sera fabriqué.",
+              "Samedi, elle va fabriquer un cerf-volant."
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Samedi, elle va fabriquer un cerf-volant.",
+            "correct": true
+          },
+          {
+            "text": "Samedi, elle fabrique un cerf-volant.",
+            "correct": false
+          },
+          {
+            "text": "Samedi, elle fabriquera un cerf-volant.",
+            "correct": false
+          },
+          {
+            "text": "Samedi, un cerf-volant sera fabriqué.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-periphrastic-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:future-name",
+      "item": {
+        "nodeKey": "reconnaitre_futur_proche",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le gardien va éteindre les lumières.\n\nComment appelle-t-on la construction va éteindre ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le gardien va éteindre les lumières.\n\nComment appelle-t-on la construction va éteindre ?",
+              "Le passé composé.",
+              "L’imparfait.",
+              "Le passé récent.",
+              "Le futur proche."
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Le futur proche.",
+            "correct": true
+          },
+          {
+            "text": "Le passé composé.",
+            "correct": false
+          },
+          {
+            "text": "L’imparfait.",
+            "correct": false
+          },
+          {
+            "text": "Le passé récent.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-periphrastic-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:future-no-longer",
+      "item": {
+        "nodeKey": "reconnaitre_futur_proche",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Vous n’allez plus utiliser ce chemin.\n\nQuel groupe contient toute la construction du futur proche avec sa négation ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Vous n’allez plus utiliser ce chemin.\n\nQuel groupe contient toute la construction du futur proche avec sa négation ?",
+              "Vous n’allez",
+              "utiliser ce chemin",
+              "plus utiliser ce chemin",
+              "n’allez plus utiliser"
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "n’allez plus utiliser",
+            "correct": true
+          },
+          {
+            "text": "Vous n’allez",
+            "correct": false
+          },
+          {
+            "text": "utiliser ce chemin",
+            "correct": false
+          },
+          {
+            "text": "plus utiliser ce chemin",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-periphrastic-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:recent-station",
+      "item": {
+        "nodeKey": "reconnaitre_passe_recent",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le train vient de quitter la gare.\n\nQuel groupe forme le passé récent ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le train vient de quitter la gare.\n\nQuel groupe forme le passé récent ?",
+              "Le train vient",
+              "quitter la gare",
+              "de quitter la gare",
+              "vient de quitter"
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "vient de quitter",
+            "correct": true
+          },
+          {
+            "text": "Le train vient",
+            "correct": false
+          },
+          {
+            "text": "quitter la gare",
+            "correct": false
+          },
+          {
+            "text": "de quitter la gare",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-periphrastic-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:recent-find",
+      "item": {
+        "nodeKey": "reconnaitre_passe_recent",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle phrase emploie le passé récent ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quelle phrase emploie le passé récent ?",
+              "Nous retrouvons notre chat.",
+              "Nous avons retrouvé notre chat.",
+              "Nous allons retrouver notre chat.",
+              "Nous venons de retrouver notre chat."
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Nous venons de retrouver notre chat.",
+            "correct": true
+          },
+          {
+            "text": "Nous retrouvons notre chat.",
+            "correct": false
+          },
+          {
+            "text": "Nous avons retrouvé notre chat.",
+            "correct": false
+          },
+          {
+            "text": "Nous allons retrouver notre chat.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-periphrastic-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:recent-apostrophe",
+      "item": {
+        "nodeKey": "reconnaitre_passe_recent",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Les enfants viennent d’apercevoir un hérisson.\n\nQuel groupe forme le passé récent ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les enfants viennent d’apercevoir un hérisson.\n\nQuel groupe forme le passé récent ?",
+              "Les enfants viennent",
+              "apercevoir un hérisson",
+              "d’apercevoir un hérisson",
+              "viennent d’apercevoir"
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "viennent d’apercevoir",
+            "correct": true
+          },
+          {
+            "text": "Les enfants viennent",
+            "correct": false
+          },
+          {
+            "text": "apercevoir un hérisson",
+            "correct": false
+          },
+          {
+            "text": "d’apercevoir un hérisson",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-periphrastic-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:recent-provenance",
+      "item": {
+        "nodeKey": "reconnaitre_passe_recent",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Dans quelle phrase viens de forme-t-il un passé récent ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Dans quelle phrase viens de forme-t-il un passé récent ?",
+              "Je viens de Lille.",
+              "Je viens de la plage.",
+              "Je viens de chez mon cousin.",
+              "Je viens de réparer mon casque."
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Je viens de réparer mon casque.",
+            "correct": true
+          },
+          {
+            "text": "Je viens de Lille.",
+            "correct": false
+          },
+          {
+            "text": "Je viens de la plage.",
+            "correct": false
+          },
+          {
+            "text": "Je viens de chez mon cousin.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-periphrastic-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:recent-structure",
+      "item": {
+        "nodeKey": "reconnaitre_passe_recent",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Tu viens de renverser ton verre.\n\nQuelle description correspond à la construction viens de renverser ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Tu viens de renverser ton verre.\n\nQuelle description correspond à la construction viens de renverser ?",
+              "Aller au présent + infinitif.",
+              "Avoir au présent + participe passé.",
+              "Venir à l’imparfait + de + infinitif.",
+              "Venir au présent + de + infinitif."
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Venir au présent + de + infinitif.",
+            "correct": true
+          },
+          {
+            "text": "Aller au présent + infinitif.",
+            "correct": false
+          },
+          {
+            "text": "Avoir au présent + participe passé.",
+            "correct": false
+          },
+          {
+            "text": "Venir à l’imparfait + de + infinitif.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-periphrastic-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:recent-name",
+      "item": {
+        "nodeKey": "reconnaitre_passe_recent",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Vous venez de recevoir une carte.\n\nComment appelle-t-on venez de recevoir ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Vous venez de recevoir une carte.\n\nComment appelle-t-on venez de recevoir ?",
+              "Le futur proche.",
+              "Le passé composé.",
+              "L’imparfait.",
+              "Le passé récent."
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Le passé récent.",
+            "correct": true
+          },
+          {
+            "text": "Le futur proche.",
+            "correct": false
+          },
+          {
+            "text": "Le passé composé.",
+            "correct": false
+          },
+          {
+            "text": "L’imparfait.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-periphrastic-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:recent-comparison",
+      "item": {
+        "nodeKey": "reconnaitre_passe_recent",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle phrase emploie venir au présent + de + infinitif pour présenter une action tout juste terminée ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quelle phrase emploie venir au présent + de + infinitif pour présenter une action tout juste terminée ?",
+              "La joueuse a marqué un but.",
+              "La joueuse va marquer un but.",
+              "La joueuse marquait un but.",
+              "La joueuse vient de marquer un but."
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "La joueuse vient de marquer un but.",
+            "correct": true
+          },
+          {
+            "text": "La joueuse a marqué un but.",
+            "correct": false
+          },
+          {
+            "text": "La joueuse va marquer un but.",
+            "correct": false
+          },
+          {
+            "text": "La joueuse marquait un but.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-periphrastic-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:recent-place",
+      "item": {
+        "nodeKey": "reconnaitre_passe_recent",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle phrase indique une provenance et ne contient pas de passé récent ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quelle phrase indique une provenance et ne contient pas de passé récent ?",
+              "Les colis viennent d’arriver.",
+              "Les colis viennent de tomber.",
+              "Les colis viennent de repartir.",
+              "Les colis viennent de l’entrepôt."
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Les colis viennent de l’entrepôt.",
+            "correct": true
+          },
+          {
+            "text": "Les colis viennent d’arriver.",
+            "correct": false
+          },
+          {
+            "text": "Les colis viennent de tomber.",
+            "correct": false
+          },
+          {
+            "text": "Les colis viennent de repartir.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-periphrastic-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:future-library",
+      "itemChecksum": "sha256:d1eba0304502550e078c224d316c4b5da535fc739aba212871fac7fd472a2b99",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_futur_proche",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:future-library",
+      "reason": "Vais est aller au présent et emprunter est l’infinitif."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:future-measure",
+      "itemChecksum": "sha256:a280b6fcfc25b8046108fbf91673c15b9bda67fe8a2fb0314ead3add2618c4b6",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_futur_proche",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:future-measure",
+      "reason": "Vas mesurer suit le modèle aller au présent + infinitif."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:future-negative",
+      "itemChecksum": "sha256:2ff6c7c7a224ab758487ad9722dabdb7068df4c16cee089ecf91faf079b57e59",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_futur_proche",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:future-negative",
+      "reason": "Ne vont pas déplacer conserve aller au présent et déplacer à l’infinitif."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:future-destination",
+      "itemChecksum": "sha256:7bf9cedfa4287cbac745d0911f9d7a6bd432f9e569475ba62fc073eddb14b553",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_futur_proche",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:future-destination",
+      "reason": "Examiner est un infinitif; les autres groupes après va indiquent une destination."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:future-adverb",
+      "itemChecksum": "sha256:6e1bdc9c3199891744faaf0e6d04a0393cf6e888ecce55d07b644a6320aeca59",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_futur_proche",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:future-adverb",
+      "reason": "L’adverbe probablement s’insère entre aller au présent et l’infinitif sans changer la construction."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:future-time",
+      "itemChecksum": "sha256:ab3877befde085c2ad5f5497f2e7c2a4ae31299f442add8501c3ba295a177032",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_futur_proche",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:future-time",
+      "reason": "Va fabriquer est un futur proche; le moment samedi ne suffit pas à nommer le temps."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:future-name",
+      "itemChecksum": "sha256:7c2511b0e24d0395640b2ed0b1c8ce6001ad01b7f2b5220c384896e590cc3710",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_futur_proche",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:future-name",
+      "reason": "Va est aller au présent et éteindre est un infinitif."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:future-no-longer",
+      "itemChecksum": "sha256:4d86edbbb7a10f99c09728bc12627785abbb9981be26065697cb515eeec70312",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_futur_proche",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:future-no-longer",
+      "reason": "La négation entoure allez; utiliser complète la construction du futur proche."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:recent-station",
+      "itemChecksum": "sha256:045e5a27a1bc2536d3e9714e6b76518a1185da5c873e5e5ca3db0f3a8eaba92a",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_passe_recent",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:recent-station",
+      "reason": "Vient est venir au présent, suivi de de et de l’infinitif quitter."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:recent-find",
+      "itemChecksum": "sha256:072d50f6d73af21095b3451c5c01ae9c607d8950048267b54fcaada19057d605",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_passe_recent",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:recent-find",
+      "reason": "Venons de retrouver présente l’action comme tout juste accomplie."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:recent-apostrophe",
+      "itemChecksum": "sha256:0c70a2508cb8f20fa16483a98ef9817783a494cb7bb8fb1815ccd65499529f31",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_passe_recent",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:recent-apostrophe",
+      "reason": "D’ est la forme de de devant l’infinitif apercevoir."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:recent-provenance",
+      "itemChecksum": "sha256:ba13a904637f959565fb203af1a9b187d409d7a496814b4491e027ecb8fa4205",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_passe_recent",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:recent-provenance",
+      "reason": "Réparer est un infinitif. Lille, la plage et chez mon cousin indiquent une provenance."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:recent-structure",
+      "itemChecksum": "sha256:bd86c594d196effc6c958820338a71ea117ca9a79b7a603870719f5f843e07d4",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_passe_recent",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:recent-structure",
+      "reason": "Viens est au présent et renverser reste à l’infinitif."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:recent-name",
+      "itemChecksum": "sha256:88bb5d6f5794cdfb8de4e7234fd0cbbadc74fc3bff5ed884dfbcb2a936642e9f",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_passe_recent",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:recent-name",
+      "reason": "Venez est venir au présent; de recevoir complète le passé récent."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:recent-comparison",
+      "itemChecksum": "sha256:6cafd34e1d1840398d8b9d66e67c64abda10cb401399f9c10bca9a181d124c6e",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_passe_recent",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:recent-comparison",
+      "reason": "Vient de marquer est la construction demandée, distincte du passé composé a marqué."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:recent-place",
+      "itemChecksum": "sha256:494dd5a5baadb26e014ed75cfe0579922b9fd50ef114d5b2adbec56c6ec46987",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_passe_recent",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:recent-place",
+      "reason": "De l’entrepôt est un lieu; les autres phrases contiennent de ou d’ suivi d’un infinitif."
+    }
+  ],
+  "checksum": "sha256:b02309d37e923ce870fb6bdb52e3c23cc96f4ef43dfd99134a90bf680dc0dabe"
+}

@@ -3,6 +3,7 @@ import { createClient } from "@/lib/supabase/server";
 import { itemRatingFromDifficulty, orderByTargetSuccess } from "@/lib/scoring/elo";
 import { lessonForPracticeNode } from "@/lib/practice/lessons";
 import { predictedSuccess, selectOptimalPracticeItems } from "@/lib/practice/session";
+import type { MaterialExposureAnnotation } from "@/lib/diagnostic/granular/material-annotations";
 
 export type CatchUpStep = {
   nodeId: string;
@@ -76,7 +77,7 @@ export async function getNodePractice(nodeId: string, client?: SupabaseClient, s
     .in("validator_type", ["exact", "regex", "conjugator", "agreement", "grammalecte"]).order("difficulty").limit(80);
   if (error) throw new Error(error.message);
   const { data: approvedLesson, error: lessonError } = await supabase.from("competency_lessons")
-    .select("explanation_fr,pattern_fr,examples_fr,exceptions_fr")
+    .select("explanation_fr,pattern_fr,examples_fr,exceptions_fr,material_exposure")
     .eq("node_id", nodeId).in("review_status", ["auto_approved", "human_approved"]).maybeSingle();
   if (lessonError) throw new Error(lessonError.message);
   // Practice targets ~82% predicted success (Elo/1PL) when the learner has a
@@ -116,6 +117,7 @@ export async function getNodePractice(nodeId: string, client?: SupabaseClient, s
         pattern: approvedLesson.pattern_fr as string,
         examples: approvedLesson.examples_fr as string[],
         exceptions: approvedLesson.exceptions_fr as string[],
+        materialExposure: (approvedLesson.material_exposure ?? undefined) as MaterialExposureAnnotation | undefined,
       } : undefined,
     ),
     items: items.map((item) => ({

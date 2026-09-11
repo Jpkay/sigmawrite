@@ -52,6 +52,8 @@ import type { DiagnosticEvidenceExpectation } from "@/lib/diagnostic/item-bank";
 import { nodePracticeEvidenceExpectation } from "@/lib/diagnostic/practice-evidence";
 import { requireStudentAccessAuthorized, requireStudentLearningUnlocked } from "@/lib/diagnostic/access";
 import { bktUpdate, bktUpdateWeighted, guessFromChoices, masteryUncertainty } from "@/lib/scoring/bkt";
+import { SupabaseAssessmentStore } from "@/lib/diagnostic/granular/store";
+import { publicAssessmentView } from "@/lib/diagnostic/granular/service";
 import { gradePracticeResponse } from "@/lib/practice/grade-response";
 import { assessmentFromRow } from "@/lib/linguistic/assessment-policy";
 import { ReadingAssessmentError, READING_RETRY_MESSAGE } from "@/lib/linguistic/reading-ideas";
@@ -1282,6 +1284,22 @@ export async function loadStudentSessionPlan(input: unknown): Promise<SessionPla
   });
   // A short dictée sits after the first review so the plan opens with due work (roadmap 1.7).
   if (dictationEntry) entries.splice(Math.min(1, entries.length), 0, dictationEntry);
+  if (process.env.GRANULAR_DIAGNOSTIC_ENABLED === "true") {
+    await requireStudentLearningUnlocked(supabase, studentId);
+    const granular = await new SupabaseAssessmentStore(service).latestLearning(studentId);
+    if (granular) {
+      const view = publicAssessmentView(granular.session, granular.bundle);
+      const targeted: SessionPlanEntry[] = view.learningActivities.map(activity => ({
+        type: "practice", role: "new", label: activity.action === "verify" ? `Vérifier : ${activity.titleFr}` : activity.titleFr,
+        href: activity.href, estimatedMinutes: activity.estimatedMinutes,
+      }));
+      // Broad node exercises must not replace missing facet-specific activities.
+      // Retain due reading retrieval alongside the precise granular targets.
+      const candidates = [...entries.filter(entry => entry.type === "review_card").slice(0, 1), ...targeted];
+      let minutes = 0;
+      return candidates.filter(entry => { if (minutes + entry.estimatedMinutes > 28) return false; minutes += entry.estimatedMinutes; return true; });
+    }
+  }
   return entries;
 }
 

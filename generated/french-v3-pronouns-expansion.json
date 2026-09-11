@@ -1,0 +1,4067 @@
+{
+  "version": "french-v3-pronoun-expansion-v1",
+  "status": "draft_requires_review",
+  "parentTaxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+  "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
+  "items": [
+    {
+      "itemKey": "v3-pronoun:le-1",
+      "item": {
+        "nodeKey": "produire_pronom_cod",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « le match » par un pronom.\n\nJe regarde le match.\nJe ___ regarde.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "le",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Je regarde le match.",
+              "Je ___ regarde."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je regarde le match."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:le-2",
+      "item": {
+        "nodeKey": "produire_pronom_cod",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « son cahier » par un pronom.\n\nLina cherche son cahier.\nLina ___ cherche.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "le",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Lina cherche son cahier.",
+              "Lina ___ cherche."
+            ],
+            "assessed": {
+              "sentences": [
+                "Lina cherche son cahier."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:le-3",
+      "item": {
+        "nodeKey": "produire_pronom_cod",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « le repas » par un pronom.\n\nNous préparons le repas.\nNous ___ préparons.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "le",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Nous préparons le repas.",
+              "Nous ___ préparons."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous préparons le repas."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:le-4",
+      "item": {
+        "nodeKey": "produire_pronom_cod",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « ce chanteur » par un pronom.\n\nTu connais ce chanteur.\nTu ___ connais.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "le",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Tu connais ce chanteur.",
+              "Tu ___ connais."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu connais ce chanteur."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:le-5",
+      "item": {
+        "nodeKey": "produire_pronom_cod",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « le portail » par un pronom.\n\nIls ferment le portail.\nIls ___ ferment.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "le",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Ils ferment le portail.",
+              "Ils ___ ferment."
+            ],
+            "assessed": {
+              "sentences": [
+                "Ils ferment le portail."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:le-6",
+      "item": {
+        "nodeKey": "produire_pronom_cod",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « son téléphone » par un pronom.\n\nNour range son téléphone.\nNour ___ range.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "le",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Nour range son téléphone.",
+              "Nour ___ range."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nour range son téléphone."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:le-7",
+      "item": {
+        "nodeKey": "produire_pronom_cod",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « le personnage » par un pronom.\n\nVous dessinez le personnage.\nVous ___ dessinez.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "le",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Vous dessinez le personnage.",
+              "Vous ___ dessinez."
+            ],
+            "assessed": {
+              "sentences": [
+                "Vous dessinez le personnage."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:le-8",
+      "item": {
+        "nodeKey": "produire_pronom_cod",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « le musée » par un pronom.\n\nLe gardien surveille le musée.\nLe gardien ___ surveille.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "le",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le gardien surveille le musée.",
+              "Le gardien ___ surveille."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le gardien surveille le musée."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:la-1",
+      "item": {
+        "nodeKey": "produire_pronom_cod",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « la vidéo » par un pronom.\n\nJe regarde la vidéo.\nJe ___ regarde.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "la",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Je regarde la vidéo.",
+              "Je ___ regarde."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je regarde la vidéo."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:la-2",
+      "item": {
+        "nodeKey": "produire_pronom_cod",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « sa trousse » par un pronom.\n\nMalik cherche sa trousse.\nMalik ___ cherche.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "la",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Malik cherche sa trousse.",
+              "Malik ___ cherche."
+            ],
+            "assessed": {
+              "sentences": [
+                "Malik cherche sa trousse."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:la-3",
+      "item": {
+        "nodeKey": "produire_pronom_cod",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « la fête » par un pronom.\n\nNous préparons la fête.\nNous ___ préparons.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "la",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Nous préparons la fête.",
+              "Nous ___ préparons."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous préparons la fête."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:la-4",
+      "item": {
+        "nodeKey": "produire_pronom_cod",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « cette chanteuse » par un pronom.\n\nTu connais cette chanteuse.\nTu ___ connais.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "la",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Tu connais cette chanteuse.",
+              "Tu ___ connais."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu connais cette chanteuse."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:la-5",
+      "item": {
+        "nodeKey": "produire_pronom_cod",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « la fenêtre » par un pronom.\n\nIls ferment la fenêtre.\nIls ___ ferment.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "la",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Ils ferment la fenêtre.",
+              "Ils ___ ferment."
+            ],
+            "assessed": {
+              "sentences": [
+                "Ils ferment la fenêtre."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:la-6",
+      "item": {
+        "nodeKey": "produire_pronom_cod",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « sa tablette » par un pronom.\n\nLina range sa tablette.\nLina ___ range.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "la",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Lina range sa tablette.",
+              "Lina ___ range."
+            ],
+            "assessed": {
+              "sentences": [
+                "Lina range sa tablette."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:la-7",
+      "item": {
+        "nodeKey": "produire_pronom_cod",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « la maison » par un pronom.\n\nVous dessinez la maison.\nVous ___ dessinez.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "la",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Vous dessinez la maison.",
+              "Vous ___ dessinez."
+            ],
+            "assessed": {
+              "sentences": [
+                "Vous dessinez la maison."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:la-8",
+      "item": {
+        "nodeKey": "produire_pronom_cod",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « la cour » par un pronom.\n\nLe gardien surveille la cour.\nLe gardien ___ surveille.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "la",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le gardien surveille la cour.",
+              "Le gardien ___ surveille."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le gardien surveille la cour."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:les-1",
+      "item": {
+        "nodeKey": "produire_pronom_cod",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « les étoiles » par un pronom.\n\nJe regarde les étoiles.\nJe ___ regarde.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "les",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Je regarde les étoiles.",
+              "Je ___ regarde."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je regarde les étoiles."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:les-2",
+      "item": {
+        "nodeKey": "produire_pronom_cod",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « ses clés » par un pronom.\n\nMalik cherche ses clés.\nMalik ___ cherche.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "les",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Malik cherche ses clés.",
+              "Malik ___ cherche."
+            ],
+            "assessed": {
+              "sentences": [
+                "Malik cherche ses clés."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:les-3",
+      "item": {
+        "nodeKey": "produire_pronom_cod",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « les sandwiches » par un pronom.\n\nNous préparons les sandwiches.\nNous ___ préparons.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "les",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Nous préparons les sandwiches.",
+              "Nous ___ préparons."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous préparons les sandwiches."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:les-4",
+      "item": {
+        "nodeKey": "produire_pronom_cod",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « ces musiciens » par un pronom.\n\nTu connais ces musiciens.\nTu ___ connais.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "les",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Tu connais ces musiciens.",
+              "Tu ___ connais."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu connais ces musiciens."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:les-5",
+      "item": {
+        "nodeKey": "produire_pronom_cod",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « les volets » par un pronom.\n\nIls ferment les volets.\nIls ___ ferment.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "les",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Ils ferment les volets.",
+              "Ils ___ ferment."
+            ],
+            "assessed": {
+              "sentences": [
+                "Ils ferment les volets."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:les-6",
+      "item": {
+        "nodeKey": "produire_pronom_cod",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « ses crayons » par un pronom.\n\nLina range ses crayons.\nLina ___ range.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "les",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Lina range ses crayons.",
+              "Lina ___ range."
+            ],
+            "assessed": {
+              "sentences": [
+                "Lina range ses crayons."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:les-7",
+      "item": {
+        "nodeKey": "produire_pronom_cod",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « les arbres » par un pronom.\n\nVous dessinez les arbres.\nVous ___ dessinez.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "les",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Vous dessinez les arbres.",
+              "Vous ___ dessinez."
+            ],
+            "assessed": {
+              "sentences": [
+                "Vous dessinez les arbres."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:les-8",
+      "item": {
+        "nodeKey": "produire_pronom_cod",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « les oiseaux » par un pronom.\n\nLa photographe observe les oiseaux.\nLa photographe ___ observe.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "les",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "La photographe observe les oiseaux.",
+              "La photographe ___ observe."
+            ],
+            "assessed": {
+              "sentences": [
+                "La photographe observe les oiseaux."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:elision-1",
+      "item": {
+        "nodeKey": "produire_pronom_cod",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « la chanson » par un pronom.\n\nJ’écoute la chanson.\nJe ___écoute.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "l’",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "J’écoute la chanson.",
+              "Je ___écoute."
+            ],
+            "assessed": {
+              "sentences": [
+                "J’écoute la chanson."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:elision-2",
+      "item": {
+        "nodeKey": "produire_pronom_cod",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « le livre » par un pronom.\n\nLina ouvre le livre.\nLina ___ouvre.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "l’",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Lina ouvre le livre.",
+              "Lina ___ouvre."
+            ],
+            "assessed": {
+              "sentences": [
+                "Lina ouvre le livre."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:elision-3",
+      "item": {
+        "nodeKey": "produire_pronom_cod",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « notre voisin » par un pronom.\n\nNous invitons notre voisin.\nNous ___invitons.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "l’",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Nous invitons notre voisin.",
+              "Nous ___invitons."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous invitons notre voisin."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:elision-4",
+      "item": {
+        "nodeKey": "produire_pronom_cod",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « cette étoile » par un pronom.\n\nTu observes cette étoile.\nTu ___observes.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "l’",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Tu observes cette étoile.",
+              "Tu ___observes."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu observes cette étoile."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:elision-5",
+      "item": {
+        "nodeKey": "produire_pronom_cod",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « le tableau » par un pronom.\n\nIls admirent le tableau.\nIls ___admirent.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "l’",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Ils admirent le tableau.",
+              "Ils ___admirent."
+            ],
+            "assessed": {
+              "sentences": [
+                "Ils admirent le tableau."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:elision-6",
+      "item": {
+        "nodeKey": "produire_pronom_cod",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « sa sœur » par un pronom.\n\nNour attend sa sœur.\nNour ___attend.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "l’",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Nour attend sa sœur.",
+              "Nour ___attend."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nour attend sa sœur."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:elision-7",
+      "item": {
+        "nodeKey": "produire_pronom_cod",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « la tablette » par un pronom.\n\nVous utilisez la tablette.\nVous ___utilisez.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "l’",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Vous utilisez la tablette.",
+              "Vous ___utilisez."
+            ],
+            "assessed": {
+              "sentences": [
+                "Vous utilisez la tablette."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:elision-8",
+      "item": {
+        "nodeKey": "produire_pronom_cod",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « le ballon » par un pronom.\n\nLe joueur attrape le ballon.\nLe joueur ___attrape.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "l’",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le joueur attrape le ballon.",
+              "Le joueur ___attrape."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le joueur attrape le ballon."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:lui-1",
+      "item": {
+        "nodeKey": "produire_pronom_coi_personne",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « à Lina » par un pronom.\n\nJe parle à Lina.\nJe ___ parle.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "lui",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Je parle à Lina.",
+              "Je ___ parle."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je parle à Lina."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:lui-2",
+      "item": {
+        "nodeKey": "produire_pronom_coi_personne",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « à son frère » par un pronom.\n\nMalik téléphone à son frère.\nMalik ___ téléphone.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "lui",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Malik téléphone à son frère.",
+              "Malik ___ téléphone."
+            ],
+            "assessed": {
+              "sentences": [
+                "Malik téléphone à son frère."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:lui-3",
+      "item": {
+        "nodeKey": "produire_pronom_coi_personne",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « à notre voisine » par un pronom.\n\nNous répondons à notre voisine.\nNous ___ répondons.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "lui",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Nous répondons à notre voisine.",
+              "Nous ___ répondons."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous répondons à notre voisine."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:lui-4",
+      "item": {
+        "nodeKey": "produire_pronom_coi_personne",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « à ton grand-père » par un pronom.\n\nTu écris à ton grand-père.\nTu ___ écris.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "lui",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Tu écris à ton grand-père.",
+              "Tu ___ écris."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu écris à ton grand-père."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:lui-5",
+      "item": {
+        "nodeKey": "produire_pronom_coi_personne",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « à la gardienne » par un pronom.\n\nIls donnent un billet à la gardienne.\nIls ___ donnent un billet.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "lui",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Ils donnent un billet à la gardienne.",
+              "Ils ___ donnent un billet."
+            ],
+            "assessed": {
+              "sentences": [
+                "Ils donnent un billet à la gardienne."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:lui-6",
+      "item": {
+        "nodeKey": "produire_pronom_coi_personne",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « à Sami » par un pronom.\n\nNour montre son dessin à Sami.\nNour ___ montre son dessin.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "lui",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Nour montre son dessin à Sami.",
+              "Nour ___ montre son dessin."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nour montre son dessin à Sami."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:lui-7",
+      "item": {
+        "nodeKey": "produire_pronom_coi_personne",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « à votre amie » par un pronom.\n\nVous prêtez un livre à votre amie.\nVous ___ prêtez un livre.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "lui",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Vous prêtez un livre à votre amie.",
+              "Vous ___ prêtez un livre."
+            ],
+            "assessed": {
+              "sentences": [
+                "Vous prêtez un livre à votre amie."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:lui-8",
+      "item": {
+        "nodeKey": "produire_pronom_coi_personne",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « à un élève » par un pronom.\n\nLa professeure explique la consigne à un élève.\nLa professeure ___ explique la consigne.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "lui",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "La professeure explique la consigne à un élève.",
+              "La professeure ___ explique la consigne."
+            ],
+            "assessed": {
+              "sentences": [
+                "La professeure explique la consigne à un élève."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:leur-1",
+      "item": {
+        "nodeKey": "produire_pronom_coi_personne",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « à mes voisins » par un pronom.\n\nJe parle à mes voisins.\nJe ___ parle.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "leur",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Je parle à mes voisins.",
+              "Je ___ parle."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je parle à mes voisins."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:leur-2",
+      "item": {
+        "nodeKey": "produire_pronom_coi_personne",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « à ses cousins » par un pronom.\n\nMalik téléphone à ses cousins.\nMalik ___ téléphone.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "leur",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Malik téléphone à ses cousins.",
+              "Malik ___ téléphone."
+            ],
+            "assessed": {
+              "sentences": [
+                "Malik téléphone à ses cousins."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:leur-3",
+      "item": {
+        "nodeKey": "produire_pronom_coi_personne",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « à nos amies » par un pronom.\n\nNous répondons à nos amies.\nNous ___ répondons.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "leur",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Nous répondons à nos amies.",
+              "Nous ___ répondons."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous répondons à nos amies."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:leur-4",
+      "item": {
+        "nodeKey": "produire_pronom_coi_personne",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « à tes grands-parents » par un pronom.\n\nTu écris à tes grands-parents.\nTu ___ écris.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "leur",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Tu écris à tes grands-parents.",
+              "Tu ___ écris."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu écris à tes grands-parents."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:leur-5",
+      "item": {
+        "nodeKey": "produire_pronom_coi_personne",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « aux gardiennes » par un pronom.\n\nIls donnent des billets aux gardiennes.\nIls ___ donnent des billets.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "leur",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Ils donnent des billets aux gardiennes.",
+              "Ils ___ donnent des billets."
+            ],
+            "assessed": {
+              "sentences": [
+                "Ils donnent des billets aux gardiennes."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:leur-6",
+      "item": {
+        "nodeKey": "produire_pronom_coi_personne",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « à ses frères » par un pronom.\n\nNour montre son dessin à ses frères.\nNour ___ montre son dessin.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "leur",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Nour montre son dessin à ses frères.",
+              "Nour ___ montre son dessin."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nour montre son dessin à ses frères."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:leur-7",
+      "item": {
+        "nodeKey": "produire_pronom_coi_personne",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « à vos amis » par un pronom.\n\nVous prêtez des livres à vos amis.\nVous ___ prêtez des livres.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "leur",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Vous prêtez des livres à vos amis.",
+              "Vous ___ prêtez des livres."
+            ],
+            "assessed": {
+              "sentences": [
+                "Vous prêtez des livres à vos amis."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:leur-8",
+      "item": {
+        "nodeKey": "produire_pronom_coi_personne",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « aux élèves » par un pronom.\n\nLa professeure explique la consigne aux élèves.\nLa professeure ___ explique la consigne.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "leur",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "La professeure explique la consigne aux élèves.",
+              "La professeure ___ explique la consigne."
+            ],
+            "assessed": {
+              "sentences": [
+                "La professeure explique la consigne aux élèves."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:discrimination-1",
+      "item": {
+        "nodeKey": "distinguer_pronom_cod_coi",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « son voisin » par un pronom.\n\nLina appelle son voisin.\nLina ___appelle.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "l’",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Lina appelle son voisin.",
+              "Lina ___appelle."
+            ],
+            "assessed": {
+              "sentences": [
+                "Lina appelle son voisin."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:discrimination-2",
+      "item": {
+        "nodeKey": "distinguer_pronom_cod_coi",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « à son voisin » par un pronom.\n\nLina parle à son voisin.\nLina ___ parle.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "lui",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Lina parle à son voisin.",
+              "Lina ___ parle."
+            ],
+            "assessed": {
+              "sentences": [
+                "Lina parle à son voisin."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:discrimination-3",
+      "item": {
+        "nodeKey": "distinguer_pronom_cod_coi",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « ses amies » par un pronom.\n\nMalik écoute ses amies.\nMalik ___ écoute.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "les",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Malik écoute ses amies.",
+              "Malik ___ écoute."
+            ],
+            "assessed": {
+              "sentences": [
+                "Malik écoute ses amies."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:discrimination-4",
+      "item": {
+        "nodeKey": "distinguer_pronom_cod_coi",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « à ses amies » par un pronom.\n\nMalik répond à ses amies.\nMalik ___ répond.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "leur",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Malik répond à ses amies.",
+              "Malik ___ répond."
+            ],
+            "assessed": {
+              "sentences": [
+                "Malik répond à ses amies."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:discrimination-5",
+      "item": {
+        "nodeKey": "distinguer_pronom_cod_coi",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « sa sœur » par un pronom.\n\nNour aide sa sœur.\nNour ___aide.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "l’",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Nour aide sa sœur.",
+              "Nour ___aide."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nour aide sa sœur."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:discrimination-6",
+      "item": {
+        "nodeKey": "distinguer_pronom_cod_coi",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « à sa sœur » par un pronom.\n\nNour téléphone à sa sœur.\nNour ___ téléphone.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "lui",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Nour téléphone à sa sœur.",
+              "Nour ___ téléphone."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nour téléphone à sa sœur."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:discrimination-7",
+      "item": {
+        "nodeKey": "distinguer_pronom_cod_coi",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « nos voisins » par un pronom.\n\nNous remercions nos voisins.\nNous ___ remercions.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "les",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Nous remercions nos voisins.",
+              "Nous ___ remercions."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous remercions nos voisins."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:discrimination-8",
+      "item": {
+        "nodeKey": "distinguer_pronom_cod_coi",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la deuxième phrase pour remplacer « à nos voisins » par un pronom.\n\nNous écrivons à nos voisins.\nNous ___ écrivons.",
+        "instructionsFr": "Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",
+        "correctAnswer": "leur",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Nous écrivons à nos voisins.",
+              "Nous ___ écrivons."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous écrivons à nos voisins."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "le",
+              "la",
+              "les",
+              "l’",
+              "lui",
+              "leur"
+            ],
+            "rationaleFr": "La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "supply-object-pronoun",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "itemKey": "v3-pronoun:le-1",
+      "itemChecksum": "sha256:7cf1e49b104cd2643b8ae0420ed9a0acfd4263686cdc3de390e8be9313a1ff21",
+      "contextKey": "pronoun-sentence:le-1",
+      "reason": "Le complément est direct; son genre et son nombre déterminent le pronom sans autre transformation du verbe.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_cod::construction:le"
+    },
+    {
+      "itemKey": "v3-pronoun:le-2",
+      "itemChecksum": "sha256:7936deba3aeb893ace85ee7916b349029b61da38a1516e75d06955825c919188",
+      "contextKey": "pronoun-sentence:le-2",
+      "reason": "Le complément est direct; son genre et son nombre déterminent le pronom sans autre transformation du verbe.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_cod::construction:le"
+    },
+    {
+      "itemKey": "v3-pronoun:le-3",
+      "itemChecksum": "sha256:2f02790f2349607f35e2e95196aa0817f76a33671c1e7d344f1ab971d1296260",
+      "contextKey": "pronoun-sentence:le-3",
+      "reason": "Le complément est direct; son genre et son nombre déterminent le pronom sans autre transformation du verbe.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_cod::construction:le"
+    },
+    {
+      "itemKey": "v3-pronoun:le-4",
+      "itemChecksum": "sha256:68d607fcec4d8a0d5bdb9851d3ec2fb8a8cd654ce6464eb98257f69a0dffb096",
+      "contextKey": "pronoun-sentence:le-4",
+      "reason": "Le complément est direct; son genre et son nombre déterminent le pronom sans autre transformation du verbe.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_cod::construction:le"
+    },
+    {
+      "itemKey": "v3-pronoun:le-5",
+      "itemChecksum": "sha256:f36f5efd196ad0945c66dd8ca19d0bee1d15e87d94c8aaa40b6a2a9bfed99dae",
+      "contextKey": "pronoun-sentence:le-5",
+      "reason": "Le complément est direct; son genre et son nombre déterminent le pronom sans autre transformation du verbe.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_cod::construction:le"
+    },
+    {
+      "itemKey": "v3-pronoun:le-6",
+      "itemChecksum": "sha256:fdcb86cb8fea3bf1cccd141245f6e8b7c9c799e2f775aa318c9d23d083cadbe3",
+      "contextKey": "pronoun-sentence:le-6",
+      "reason": "Le complément est direct; son genre et son nombre déterminent le pronom sans autre transformation du verbe.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_cod::construction:le"
+    },
+    {
+      "itemKey": "v3-pronoun:le-7",
+      "itemChecksum": "sha256:83e71cfac89e808b2554f57aba05fc66127b6f5bf364b1f3dfba1c2ff2eca6c3",
+      "contextKey": "pronoun-sentence:le-7",
+      "reason": "Le complément est direct; son genre et son nombre déterminent le pronom sans autre transformation du verbe.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_cod::construction:le"
+    },
+    {
+      "itemKey": "v3-pronoun:le-8",
+      "itemChecksum": "sha256:da0c652436b2df9592a146eb60427341825f8bab879daac3fc038821c0bac14b",
+      "contextKey": "pronoun-sentence:le-8",
+      "reason": "Le complément est direct; son genre et son nombre déterminent le pronom sans autre transformation du verbe.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_cod::construction:le"
+    },
+    {
+      "itemKey": "v3-pronoun:la-1",
+      "itemChecksum": "sha256:75f8f3263f4608cbf27772b8eb6422a0e1e0e094c8266986fda8a001c6aaecae",
+      "contextKey": "pronoun-sentence:la-1",
+      "reason": "Le complément est direct; son genre et son nombre déterminent le pronom sans autre transformation du verbe.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_cod::construction:la"
+    },
+    {
+      "itemKey": "v3-pronoun:la-2",
+      "itemChecksum": "sha256:ee34945c67edfe7338d4b7b444edb501458d331a6d075270cee5850a6dbc846d",
+      "contextKey": "pronoun-sentence:la-2",
+      "reason": "Le complément est direct; son genre et son nombre déterminent le pronom sans autre transformation du verbe.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_cod::construction:la"
+    },
+    {
+      "itemKey": "v3-pronoun:la-3",
+      "itemChecksum": "sha256:848d0b5cf7ac2086e06dd622ae0043b5e03aafcf907884043d2b5fcfa55b7fbb",
+      "contextKey": "pronoun-sentence:la-3",
+      "reason": "Le complément est direct; son genre et son nombre déterminent le pronom sans autre transformation du verbe.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_cod::construction:la"
+    },
+    {
+      "itemKey": "v3-pronoun:la-4",
+      "itemChecksum": "sha256:0dd7d472873e5b496ecbc142e48c40cd9c2638e83476585cc64f52e6439c5457",
+      "contextKey": "pronoun-sentence:la-4",
+      "reason": "Le complément est direct; son genre et son nombre déterminent le pronom sans autre transformation du verbe.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_cod::construction:la"
+    },
+    {
+      "itemKey": "v3-pronoun:la-5",
+      "itemChecksum": "sha256:24739cfd75d4225009d8c9922debeb44ea3c14ea83068976e46ca6c3ebce6265",
+      "contextKey": "pronoun-sentence:la-5",
+      "reason": "Le complément est direct; son genre et son nombre déterminent le pronom sans autre transformation du verbe.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_cod::construction:la"
+    },
+    {
+      "itemKey": "v3-pronoun:la-6",
+      "itemChecksum": "sha256:34378d46e1583c609c1bcd7d46f5b3fa807531daba83e4f402c2d126654ad26f",
+      "contextKey": "pronoun-sentence:la-6",
+      "reason": "Le complément est direct; son genre et son nombre déterminent le pronom sans autre transformation du verbe.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_cod::construction:la"
+    },
+    {
+      "itemKey": "v3-pronoun:la-7",
+      "itemChecksum": "sha256:563f5f495fda6f41ea6bbec0fe18ba3a5bae31e0c2878448e7018f499903de37",
+      "contextKey": "pronoun-sentence:la-7",
+      "reason": "Le complément est direct; son genre et son nombre déterminent le pronom sans autre transformation du verbe.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_cod::construction:la"
+    },
+    {
+      "itemKey": "v3-pronoun:la-8",
+      "itemChecksum": "sha256:388e68273887848699ad306785a73416da2554bc01dd2b2183484dab8747ee3e",
+      "contextKey": "pronoun-sentence:la-8",
+      "reason": "Le complément est direct; son genre et son nombre déterminent le pronom sans autre transformation du verbe.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_cod::construction:la"
+    },
+    {
+      "itemKey": "v3-pronoun:les-1",
+      "itemChecksum": "sha256:2cd1c7a59e7a3007490752b7ba78a2a6c01ae1b24d94b53c18115852095c9b31",
+      "contextKey": "pronoun-sentence:les-1",
+      "reason": "Le complément est direct; son genre et son nombre déterminent le pronom sans autre transformation du verbe.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_cod::construction:les"
+    },
+    {
+      "itemKey": "v3-pronoun:les-2",
+      "itemChecksum": "sha256:cce02a7c3f5dca426e30b88d2ec91f96d8321087df01b25baf692f37704c57c6",
+      "contextKey": "pronoun-sentence:les-2",
+      "reason": "Le complément est direct; son genre et son nombre déterminent le pronom sans autre transformation du verbe.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_cod::construction:les"
+    },
+    {
+      "itemKey": "v3-pronoun:les-3",
+      "itemChecksum": "sha256:0d5ea26098763780af5eac836797726714e0b1aa20f03c73ee066a4cda14df89",
+      "contextKey": "pronoun-sentence:les-3",
+      "reason": "Le complément est direct; son genre et son nombre déterminent le pronom sans autre transformation du verbe.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_cod::construction:les"
+    },
+    {
+      "itemKey": "v3-pronoun:les-4",
+      "itemChecksum": "sha256:a811bfbee59ebe00a5573eeaaa4fdb91ec7168df329e001752ab23d8cab3bc96",
+      "contextKey": "pronoun-sentence:les-4",
+      "reason": "Le complément est direct; son genre et son nombre déterminent le pronom sans autre transformation du verbe.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_cod::construction:les"
+    },
+    {
+      "itemKey": "v3-pronoun:les-5",
+      "itemChecksum": "sha256:e44b2314e27ae14619fc0d64ffa0ff2d85f35a942a059cc7034ae76dadfdff5b",
+      "contextKey": "pronoun-sentence:les-5",
+      "reason": "Le complément est direct; son genre et son nombre déterminent le pronom sans autre transformation du verbe.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_cod::construction:les"
+    },
+    {
+      "itemKey": "v3-pronoun:les-6",
+      "itemChecksum": "sha256:be10a56b5329a9ea074694488d2ee6f4d40397f37e4328faae3c7c683c96b23d",
+      "contextKey": "pronoun-sentence:les-6",
+      "reason": "Le complément est direct; son genre et son nombre déterminent le pronom sans autre transformation du verbe.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_cod::construction:les"
+    },
+    {
+      "itemKey": "v3-pronoun:les-7",
+      "itemChecksum": "sha256:aa135a387a9f8e18ff7553abd38f163c2653a134d908ec8b02dc54e361746c5c",
+      "contextKey": "pronoun-sentence:les-7",
+      "reason": "Le complément est direct; son genre et son nombre déterminent le pronom sans autre transformation du verbe.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_cod::construction:les"
+    },
+    {
+      "itemKey": "v3-pronoun:les-8",
+      "itemChecksum": "sha256:0aee612b4c2ca21303339bb8b02e743b4be3f2c32ce691e3a691c2a3cc221626",
+      "contextKey": "pronoun-sentence:les-8",
+      "reason": "Le complément est direct; son genre et son nombre déterminent le pronom sans autre transformation du verbe.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_cod::construction:les"
+    },
+    {
+      "itemKey": "v3-pronoun:elision-1",
+      "itemChecksum": "sha256:0e57bd658a7893d0335f183709e32b2f0dc12dce9afeab7aa14703da7181b328",
+      "contextKey": "pronoun-sentence:elision-1",
+      "reason": "Le complément est direct et singulier; le pronom s’élide devant le verbe commençant par une voyelle.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_cod::construction:elision"
+    },
+    {
+      "itemKey": "v3-pronoun:elision-2",
+      "itemChecksum": "sha256:a074ed879dd0d902ffc800e0eda02be3574cf5d2489e8a575b7fe860e8080e79",
+      "contextKey": "pronoun-sentence:elision-2",
+      "reason": "Le complément est direct et singulier; le pronom s’élide devant le verbe commençant par une voyelle.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_cod::construction:elision"
+    },
+    {
+      "itemKey": "v3-pronoun:elision-3",
+      "itemChecksum": "sha256:7b17beef1a0f35d9dcbdc590286ac29f3f8cc7e4c84794bfbd64ee13309d2ced",
+      "contextKey": "pronoun-sentence:elision-3",
+      "reason": "Le complément est direct et singulier; le pronom s’élide devant le verbe commençant par une voyelle.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_cod::construction:elision"
+    },
+    {
+      "itemKey": "v3-pronoun:elision-4",
+      "itemChecksum": "sha256:e40487554023868f2641af5cb7ff243cb2395dfc977ddd73764ac642b558b5b1",
+      "contextKey": "pronoun-sentence:elision-4",
+      "reason": "Le complément est direct et singulier; le pronom s’élide devant le verbe commençant par une voyelle.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_cod::construction:elision"
+    },
+    {
+      "itemKey": "v3-pronoun:elision-5",
+      "itemChecksum": "sha256:ae5974be0c141b6b01fb815e2f33689721ed9f2e9b336cfa406831e54f548174",
+      "contextKey": "pronoun-sentence:elision-5",
+      "reason": "Le complément est direct et singulier; le pronom s’élide devant le verbe commençant par une voyelle.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_cod::construction:elision"
+    },
+    {
+      "itemKey": "v3-pronoun:elision-6",
+      "itemChecksum": "sha256:cd0efaedd71a951d1afee11eadf5517c21c5fde2d04ba4ce67281b55f0bd4122",
+      "contextKey": "pronoun-sentence:elision-6",
+      "reason": "Le complément est direct et singulier; le pronom s’élide devant le verbe commençant par une voyelle.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_cod::construction:elision"
+    },
+    {
+      "itemKey": "v3-pronoun:elision-7",
+      "itemChecksum": "sha256:72a64c76a58957938b52ddf5cfcb6035d47cd9c49c784a276237a0ce0b1bf887",
+      "contextKey": "pronoun-sentence:elision-7",
+      "reason": "Le complément est direct et singulier; le pronom s’élide devant le verbe commençant par une voyelle.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_cod::construction:elision"
+    },
+    {
+      "itemKey": "v3-pronoun:elision-8",
+      "itemChecksum": "sha256:b20d73b33c21dcf9926f3845ddf431fba00e9ff97be92eeec7bc69bd8a494a13",
+      "contextKey": "pronoun-sentence:elision-8",
+      "reason": "Le complément est direct et singulier; le pronom s’élide devant le verbe commençant par une voyelle.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_cod::construction:elision"
+    },
+    {
+      "itemKey": "v3-pronoun:lui-1",
+      "itemChecksum": "sha256:06e5762cd1314f13626841538a1eb6de3ea2c92b954361d6ac40949c225997af",
+      "contextKey": "pronoun-sentence:lui-1",
+      "reason": "Le verbe construit le complément de personne avec à; le nombre du référent détermine lui ou leur.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_coi_personne::construction:lui"
+    },
+    {
+      "itemKey": "v3-pronoun:lui-2",
+      "itemChecksum": "sha256:18af73b0a3edcce4bcba74a6d49af63e6aac96c8865dea52c01b509d88558c29",
+      "contextKey": "pronoun-sentence:lui-2",
+      "reason": "Le verbe construit le complément de personne avec à; le nombre du référent détermine lui ou leur.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_coi_personne::construction:lui"
+    },
+    {
+      "itemKey": "v3-pronoun:lui-3",
+      "itemChecksum": "sha256:875faf90b34eff33e85561a32143599006724e40a899d5daaf991ba8f4426405",
+      "contextKey": "pronoun-sentence:lui-3",
+      "reason": "Le verbe construit le complément de personne avec à; le nombre du référent détermine lui ou leur.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_coi_personne::construction:lui"
+    },
+    {
+      "itemKey": "v3-pronoun:lui-4",
+      "itemChecksum": "sha256:b8026d20fe01fb7a8e3b1fc3dce1abe86d3a0da104712274db9d4cfd53b9bd1e",
+      "contextKey": "pronoun-sentence:lui-4",
+      "reason": "Le verbe construit le complément de personne avec à; le nombre du référent détermine lui ou leur.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_coi_personne::construction:lui"
+    },
+    {
+      "itemKey": "v3-pronoun:lui-5",
+      "itemChecksum": "sha256:2d38941f02a1f167fd3415bd845d103ce4be1eeb4c296ea1d600c5c2f790b20a",
+      "contextKey": "pronoun-sentence:lui-5",
+      "reason": "Le verbe construit le complément de personne avec à; le nombre du référent détermine lui ou leur.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_coi_personne::construction:lui"
+    },
+    {
+      "itemKey": "v3-pronoun:lui-6",
+      "itemChecksum": "sha256:ace382ebd81b3b7850360eba2eda3a6ebe743c6f33e285ba4017026af4b8cee0",
+      "contextKey": "pronoun-sentence:lui-6",
+      "reason": "Le verbe construit le complément de personne avec à; le nombre du référent détermine lui ou leur.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_coi_personne::construction:lui"
+    },
+    {
+      "itemKey": "v3-pronoun:lui-7",
+      "itemChecksum": "sha256:67417f3c3de44377247c255d48322b07b485e176292b86953fc79bc09057d7d5",
+      "contextKey": "pronoun-sentence:lui-7",
+      "reason": "Le verbe construit le complément de personne avec à; le nombre du référent détermine lui ou leur.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_coi_personne::construction:lui"
+    },
+    {
+      "itemKey": "v3-pronoun:lui-8",
+      "itemChecksum": "sha256:92fadbb2174ba4a48ef9f0bca8cfdb0fcf9d5780095c2a72fbe797b3fe6d8ed5",
+      "contextKey": "pronoun-sentence:lui-8",
+      "reason": "Le verbe construit le complément de personne avec à; le nombre du référent détermine lui ou leur.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_coi_personne::construction:lui"
+    },
+    {
+      "itemKey": "v3-pronoun:leur-1",
+      "itemChecksum": "sha256:11e3543d017a20329a2c8fd6e9eadf7da5ea9946c7aa51258d47b7bf72c193ab",
+      "contextKey": "pronoun-sentence:leur-1",
+      "reason": "Le verbe construit le complément de personne avec à; le nombre du référent détermine lui ou leur.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_coi_personne::construction:leur"
+    },
+    {
+      "itemKey": "v3-pronoun:leur-2",
+      "itemChecksum": "sha256:06f7b7b70ba9ff6cebc8f92887b645b8d2596939af7545809c50639cb80f645e",
+      "contextKey": "pronoun-sentence:leur-2",
+      "reason": "Le verbe construit le complément de personne avec à; le nombre du référent détermine lui ou leur.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_coi_personne::construction:leur"
+    },
+    {
+      "itemKey": "v3-pronoun:leur-3",
+      "itemChecksum": "sha256:2e668b4d75a082c97e0047a558ac755d653e00a014db0262fc269de15361e2af",
+      "contextKey": "pronoun-sentence:leur-3",
+      "reason": "Le verbe construit le complément de personne avec à; le nombre du référent détermine lui ou leur.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_coi_personne::construction:leur"
+    },
+    {
+      "itemKey": "v3-pronoun:leur-4",
+      "itemChecksum": "sha256:74d4abf4458c7cff36c7238dd8ceefc2eebbf04e715bec66d669cd269810e4af",
+      "contextKey": "pronoun-sentence:leur-4",
+      "reason": "Le verbe construit le complément de personne avec à; le nombre du référent détermine lui ou leur.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_coi_personne::construction:leur"
+    },
+    {
+      "itemKey": "v3-pronoun:leur-5",
+      "itemChecksum": "sha256:cf7725383469b45c6db5447464c9daf5e58f179070936b60128cbae4c482f4a7",
+      "contextKey": "pronoun-sentence:leur-5",
+      "reason": "Le verbe construit le complément de personne avec à; le nombre du référent détermine lui ou leur.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_coi_personne::construction:leur"
+    },
+    {
+      "itemKey": "v3-pronoun:leur-6",
+      "itemChecksum": "sha256:e9c8383427eabcd345a55ed28eb293a9ad83f3447b2d24ff07b5f3c24d22610f",
+      "contextKey": "pronoun-sentence:leur-6",
+      "reason": "Le verbe construit le complément de personne avec à; le nombre du référent détermine lui ou leur.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_coi_personne::construction:leur"
+    },
+    {
+      "itemKey": "v3-pronoun:leur-7",
+      "itemChecksum": "sha256:b863d110c86cb184c52d90013288c0b73ae04a5d7032073fa6a3787e79087fb5",
+      "contextKey": "pronoun-sentence:leur-7",
+      "reason": "Le verbe construit le complément de personne avec à; le nombre du référent détermine lui ou leur.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_coi_personne::construction:leur"
+    },
+    {
+      "itemKey": "v3-pronoun:leur-8",
+      "itemChecksum": "sha256:551a62095b40103f1170ded4a7492111ad2e560a5917b6aa1e7f77b7107cb153",
+      "contextKey": "pronoun-sentence:leur-8",
+      "reason": "Le verbe construit le complément de personne avec à; le nombre du référent détermine lui ou leur.",
+      "kind": "facet",
+      "facetKey": "produire_pronom_coi_personne::construction:leur"
+    },
+    {
+      "itemKey": "v3-pronoun:discrimination-1",
+      "itemChecksum": "sha256:e2d54a337d0301fbc21f5d53efcbafcf058b03437a81eccecd74a49d91bf85da",
+      "contextKey": "pronoun-sentence:discrimination-1",
+      "reason": "Appeler quelqu’un : complément direct.",
+      "kind": "evidence",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_pronom_cod_coi",
+        "evidenceKey": "writing-controlled-production"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:discrimination-2",
+      "itemChecksum": "sha256:c0616fd80a043ead2048879b5698aa60678e94e5df198ad7e1d75f6286d0960c",
+      "contextKey": "pronoun-sentence:discrimination-2",
+      "reason": "Parler à quelqu’un : complément indirect.",
+      "kind": "evidence",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_pronom_cod_coi",
+        "evidenceKey": "writing-controlled-production"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:discrimination-3",
+      "itemChecksum": "sha256:b967ef6001f970ecbf5b977edf0a94b149a64e018a1491c6ad4e163bf3ed8d57",
+      "contextKey": "pronoun-sentence:discrimination-3",
+      "reason": "Écouter quelqu’un : complément direct, malgré le référent humain.",
+      "kind": "evidence",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_pronom_cod_coi",
+        "evidenceKey": "writing-controlled-production"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:discrimination-4",
+      "itemChecksum": "sha256:1726feb7bf0b7aa7a88ffbfbf3f7bb45b0c689912117845f221a61cf23534405",
+      "contextKey": "pronoun-sentence:discrimination-4",
+      "reason": "Répondre à quelqu’un : complément indirect; référent pluriel.",
+      "kind": "evidence",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_pronom_cod_coi",
+        "evidenceKey": "writing-controlled-production"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:discrimination-5",
+      "itemChecksum": "sha256:04e450b1ee7b5049ff10f5ff39901ab615abda7498aee6f1a53129e257c82b60",
+      "contextKey": "pronoun-sentence:discrimination-5",
+      "reason": "Aider quelqu’un : complément direct; élision devant aide.",
+      "kind": "evidence",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_pronom_cod_coi",
+        "evidenceKey": "writing-controlled-production"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:discrimination-6",
+      "itemChecksum": "sha256:fd3c9bc4a3e9dcc3a730b54444db3593c16d76fa7914312d73620a5f32b5e9d8",
+      "contextKey": "pronoun-sentence:discrimination-6",
+      "reason": "Téléphoner à quelqu’un : complément indirect.",
+      "kind": "evidence",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_pronom_cod_coi",
+        "evidenceKey": "writing-controlled-production"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:discrimination-7",
+      "itemChecksum": "sha256:4dc60a1da29a73e0f27a1a7a72b51edcf392a1d48e59e5be71702bb2d62fff54",
+      "contextKey": "pronoun-sentence:discrimination-7",
+      "reason": "Remercier quelqu’un : complément direct; ne pas attribuer automatiquement la fonction indirecte aux personnes.",
+      "kind": "evidence",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_pronom_cod_coi",
+        "evidenceKey": "writing-controlled-production"
+      }
+    },
+    {
+      "itemKey": "v3-pronoun:discrimination-8",
+      "itemChecksum": "sha256:34bee7816428a0156d7a0e966c581ae1976d99367dd8a332812175cdc3ad8156",
+      "contextKey": "pronoun-sentence:discrimination-8",
+      "reason": "Écrire à quelqu’un : complément indirect; référent pluriel.",
+      "kind": "evidence",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_pronom_cod_coi",
+        "evidenceKey": "writing-controlled-production"
+      }
+    }
+  ],
+  "checksum": "sha256:30f0364e71b25c47defef4e4dda11bb38a1b42267e88e70bae0fef454fe1dd72"
+}

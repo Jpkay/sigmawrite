@@ -1,0 +1,106 @@
+[
+  {
+    "id": "lexical-scoped-correct",
+    "node": "maintenir_orthographe_lexicale_phrase",
+    "prompt": "Décris ce qui se passe dans un jardin.",
+    "answer": "Un cheval attend près de la barrière. Le jardin est calme et un oiseau chante.",
+    "expect": "correct",
+    "rubric": {
+      "version": 1,
+      "nodeKey": "maintenir_orthographe_lexicale_phrase",
+      "criteria": [
+        {
+          "id": "word:cheval",
+          "descriptionFr": "Évaluer la graphie du nom cheval (singulier cheval, pluriel chevaux), y compris les tentatives mal orthographiées."
+        },
+        {
+          "id": "word:barriere",
+          "descriptionFr": "Évaluer la graphie du nom barrière et de son pluriel barrières, y compris les tentatives fautives."
+        },
+        {
+          "id": "word:jardin",
+          "descriptionFr": "Évaluer la graphie du nom jardin et de son pluriel jardins, y compris les tentatives fautives."
+        },
+        {
+          "id": "word:oiseau",
+          "descriptionFr": "Évaluer la graphie du nom oiseau et de son pluriel oiseaux, y compris les tentatives fautives."
+        }
+      ],
+      "exclusionsFr": [
+        "Ne pas compter les autres mots ni les accords verbaux."
+      ]
+    }
+  },
+  {
+    "id": "lexical-scoped-errors",
+    "node": "maintenir_orthographe_lexicale_phrase",
+    "prompt": "Décris ce qui se passe dans un jardin.",
+    "answer": "Un chevale attend près de la barière. Le jardain est calme et un oiso chante.",
+    "expect": "incorrect",
+    "rubric": {
+      "version": 1,
+      "nodeKey": "maintenir_orthographe_lexicale_phrase",
+      "criteria": [
+        {
+          "id": "word:cheval",
+          "descriptionFr": "Évaluer la graphie du nom cheval (singulier cheval, pluriel chevaux), y compris les tentatives mal orthographiées."
+        },
+        {
+          "id": "word:barriere",
+          "descriptionFr": "Évaluer la graphie du nom barrière et de son pluriel barrières, y compris les tentatives fautives."
+        },
+        {
+          "id": "word:jardin",
+          "descriptionFr": "Évaluer la graphie du nom jardin et de son pluriel jardins, y compris les tentatives fautives."
+        },
+        {
+          "id": "word:oiseau",
+          "descriptionFr": "Évaluer la graphie du nom oiseau et de son pluriel oiseaux, y compris les tentatives fautives."
+        }
+      ],
+      "exclusionsFr": [
+        "Ne pas compter les autres mots ni les accords verbaux."
+      ]
+    }
+  },
+  {
+    "id": "grammar-scoped-correct",
+    "node": "maintenir_orthographe_grammaticale_phrase",
+    "prompt": "Décris ce qui se passe dans un jardin.",
+    "answer": "Les enfants jouent dans le jardain. Les filles apportent un ballon et les garçons préparent les buts.",
+    "expect": "correct",
+    "rubric": {
+      "version": 1,
+      "nodeKey": "maintenir_orthographe_grammaticale_phrase",
+      "criteria": [
+        {
+          "id": "subject_verb_agreement",
+          "descriptionFr": "Évaluer uniquement l’accord en personne et en nombre entre un sujet nominal pluriel explicite et son verbe au présent, y compris les formes fautives. Un verbe fournit une occasion."
+        }
+      ],
+      "exclusionsFr": [
+        "Ne pas compter les graphies lexicales des noms, les adjectifs ou les déterminants."
+      ]
+    }
+  },
+  {
+    "id": "grammar-scoped-errors",
+    "node": "maintenir_orthographe_grammaticale_phrase",
+    "prompt": "Décris ce qui se passe dans un jardin.",
+    "answer": "Les enfants joue dans le jardin. Les filles apporte un ballon et les garçons prépare les buts.",
+    "expect": "incorrect",
+    "rubric": {
+      "version": 1,
+      "nodeKey": "maintenir_orthographe_grammaticale_phrase",
+      "criteria": [
+        {
+          "id": "subject_verb_agreement",
+          "descriptionFr": "Évaluer uniquement l’accord en personne et en nombre entre un sujet nominal pluriel explicite et son verbe au présent, y compris les formes fautives. Un verbe fournit une occasion."
+        }
+      ],
+      "exclusionsFr": [
+        "Ne pas compter les graphies lexicales des noms, les adjectifs ou les déterminants."
+      ]
+    }
+  }
+]

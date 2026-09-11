@@ -1,0 +1,63 @@
+import {READING_AUTHORING_DRAFTS} from "../src/lib/diagnostic/granular/reading-authoring-drafts";
+import {readFileSync,writeFileSync} from "node:fs";
+import {readTextualSupport} from "../src/lib/diagnostic/granular/textual-support";
+import {checksum} from "../src/lib/taxonomy/validate";
+import {runGates} from "../src/lib/ai/item-generation/pipeline";
+import {validateCanonicalDiagnosticBank,type CanonicalDiagnosticBankArtifact,type CanonicalDiagnosticBankItem} from "../src/lib/diagnostic/item-bank";
+const read=(p:string)=>JSON.parse(readFileSync(p,"utf8"));
+const emit=(path:string,text:string)=>{
+ if(process.argv.includes("--check")){if(readFileSync(path,"utf8")!==text)throw Error(`Stale reading draft artifact: ${path}`);}
+ else writeFileSync(path,text);
+};
+const artifact=read("generated/french-taxonomy-v3.json"),bank=read("generated/diagnostic-bank-v3-draft.json") as CanonicalDiagnosticBankArtifact;
+ const drafts=READING_AUTHORING_DRAFTS;
+const items:CanonicalDiagnosticBankItem[]=[],annotations=[];
+for(const draft of drafts){
+ const node=artifact.taxonomy.nodes.find((n:{key:string})=>n.key===draft.nodeKey);
+ const evidence=node?.evidence.find((e:{expectation:string})=>e.expectation==="receptive");
+ if(!evidence)throw Error(`Missing approved reading contract: ${draft.nodeKey}`);
+ const key=`v3-short-reading:${draft.key}`;
+ const raw={nodeKey:node.key,strand:node.strand,modality:"reading",learnerMode:"shared",responseType:"mcq",promptFr:`Lis le texte.\n\n${draft.passage}\n\n${draft.question}`,acceptableAnswers:[],validatorType:"exact",difficulty:50,
+  choices:[{text:draft.answer,correct:true},...draft.distractors.map(text=>({text,correct:false}))],
+  validatorConfig:{sourceTextKey:key,sourceTextType:draft.genre==="narrative"?"literary":draft.genre,textualSupport:{passageText:draft.passage,choices:[{quoteFr:draft.support,correct:true},...draft.otherSpans.map(quoteFr=>({quoteFr,correct:false}))]}}};
+ const checked=await runGates(raw,{knownNodeKeys:new Set([node.key]),knownMisconceptionKeys:new Set()});
+ if(!checked.item||checked.gates.verdict==="rejected")throw Error(`Invalid reading draft: ${key}`);
+ readTextualSupport(checked.item);
+ const entry:CanonicalDiagnosticBankItem={itemKey:key,item:checked.item,evidenceKey:evidence.key,evidenceExpectation:evidence.expectation,sectionKey:"reading_comprehension",promptFamily:"answer-and-textual-support",difficultyTier:"core",reviewStatus:"needs_human_review",qcGates:{...checked.gates,gate3_ensemble:{agrees:false,agreement:0},verdict:"needs_human_review"}};
+ items.push(entry);annotations.push({itemKey:key,itemChecksum:checksum(entry),facetKey:`${node.key}::text_type:${draft.genre}`,contextKey:`passage:${key}`,reason:draft.reason});
+}
+const expanded={...bank,items:[...bank.items,...items]};delete expanded.manifest;
+const checked=validateCanonicalDiagnosticBank(expanded,artifact.taxonomy);
+if(checked.issues.length)throw Error(checked.issues.join("\n"));
+const content={version:"french-v3-reading-expansion-v1",status:"draft_requires_review",parentTaxonomyChecksum:artifact.manifest.contentChecksum,sourceBankChecksum:validateCanonicalDiagnosticBank(bank,artifact.taxonomy).manifest.checksum,items,annotations};
+emit("generated/french-v3-reading-expansion.json",JSON.stringify({...content,checksum:checksum(content)},null,2)+"\n");
+const summary={status:content.status,authoredItems:items.length,distinctPassages:annotations.length,targets:[...new Set(annotations.map(a=>a.facetKey))],eligibleAdded:checked.eligibleItemKeys.filter(id=>id.startsWith("v3-short-reading:")).length,
+ limitations:["Original fictional passages; draft content requires pedagogical review", "Eight reading targets covered by drafts only; other operations and genres remain uncovered", "Four answer choices; minimum confirmation must account for guessing without multiplying correlated support-choice probabilities", "Consolidated review assembly is separate; no approval or publication"],questions:drafts.map(d=>({key:d.key,words:d.passage.split(/\s+/).length,reviewReason:d.reason}))};
+emit("docs/diagnostic/v3-reading-expansion.json",JSON.stringify(summary,null,2)+"\n");
+const packet=`# Questions courtes de lecture : dossier de revue
+
+Statut : brouillons, aucune approbation. ${drafts.length} textes originaux. Les réponses ci-dessous sont destinées à la revue, pas à l’interface élève.
+
+Vérifier le rattachement à la compétence, l’absence d’ambiguïté, la validité des réponses et des indices, la qualité des distracteurs et la difficulté. Plusieurs textes différents ne suffisent pas à établir une difficulté calibrée ou une maîtrise transférable.
+
+${drafts.map(draft=>`## ${draft.key}
+
+Compétence : ${draft.nodeKey}. Genre : ${draft.genre}.
+
+> ${draft.passage}
+
+${draft.question}
+
+- Réponse attendue : ${draft.answer}
+${draft.distractors.map(answer=>`- Autre choix : ${answer}`).join("\n")}
+
+Justification textuelle attendue : « ${draft.support} »
+
+Autres extraits proposés :
+
+${draft.otherSpans.map(span=>`- « ${span} »`).join("\n")}
+
+Raison du rattachement : ${draft.reason}
+`).join("\n")}`;
+emit("docs/diagnostic/v3-reading-review-packet.md",packet);
+console.log(JSON.stringify({...summary,questions:undefined},null,2));
