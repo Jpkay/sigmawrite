@@ -1,12 +1,12 @@
 {
-  "status": "importing_not_activated",
+  "status": "published_candidate_ready_not_activated",
   "sourceCommit": "f93f6a6",
   "frozenWorkspace": "/Users/jean-philippekayobotsi/.codex/release-workspaces/sigmawrite-r10-f93f6a6",
   "bankKey": "french-diagnostic-bank-v3-r10",
   "bankId": "5890db8b-af21-42bb-beab-16285629524d",
   "bankChecksum": "sha256:6e0a84ec989a1e55c58fd0ab2f46955afa2f9bd54ece90d1ad114d547b72c126",
   "expectedBankItems": 5516,
-  "lastObservedImportedMemberships": 2552,
+  "lastObservedImportedMemberships": 5516,
   "preparedScope": 172,
   "plannedReleaseKey": "french-granular-diagnostic-v11",
   "currentPublicRelease": "french-granular-diagnostic-v10",
@@ -15,12 +15,33 @@
     "typescript": "passed",
     "scopedCommandJourneys": "passed: wrong and mixed profiles",
     "targetedNewSkillJourneys": "passed: all five new targets with guided errors and independent checks",
-    "existingLearningCompatibility": "passed read-only preparation preserving production QA history"
+    "existingLearningCompatibility": "passed read-only preparation preserving production QA history",
+    "relationalBank": {
+      "verifiedItems": 5516,
+      "ready": true,
+      "missingReviewerProvenanceCount": 0
+    },
+    "legacyDemoOnCandidate": {
+      "lessons": 11,
+      "onboardingRedirect": "passed"
+    },
+    "candidateDefault": {
+      "sessionId": "dcd7d392-22ea-47a0-b2c6-e20803fdeb96",
+      "releaseId": "053a7b05-be49-428e-9269-6fb2d20fd445",
+      "scope": 172,
+      "defaultSelectedByApplication": true,
+      "reloadPreservedSession": true
+    },
+    "fullCandidateJourney": "Running; completion not yet verified"
   },
   "remaining": [
-    "Wait for existing import process and verify relational bank",
-    "Publish immutable release under owner-authorized parallel review",
-    "Verify deployed candidate and completed browser journey before activation",
+    "Complete fresh candidate default-selection and full diagnostic-to-results browser checks",
+    "Verify production after activation",
     "Continue question coverage and educational review; full graph scope is not complete"
-  ]
+  ],
+  "releaseId": "053a7b05-be49-428e-9269-6fb2d20fd445",
+  "bundleChecksum": "sha256:179bdf97d14814e1c728d16316da3b828d390bf73c49b45dcf0a9208636c571b",
+  "candidateUrl": "https://sigmawrite-3mmeywrlo-jpkays-projects.vercel.app",
+  "candidateDeploymentId": "dpl_EUR6mfVwESt3KpF6ohK934AmQ7ZQ",
+  "candidateBuild": "Ready verified with Vercel inspect"
 }
