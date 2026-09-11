@@ -1,0 +1,6 @@
+.review { min-width: 0; }
+.filter { margin: 1.5rem .5rem 1.5rem 0; }
+.filterLabel { cursor: pointer; }
+.filter:checked ~ .rows > article:not([data-result="wrong"]) { display: none; }
+.empty { display: none; }
+.filter:checked ~ .empty { display: block; }
