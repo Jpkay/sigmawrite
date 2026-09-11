@@ -16,3 +16,5 @@ node --import tsx scripts/verify-live-granular-journey.mts \
 ```
 
 Progress, final results and learning verification are separate JSON files. A final-results file alone does not prove the lesson or independent check passed. The runner does not publish, promote, reset a diagnostic, certify mastery or replace pedagogical review. Stop or inspect an existing running process before starting another against the same account.
+
+After the diagnostic reaches learning, run `scripts/audit-live-granular-result.mts <QA-session-UUID> <private-output.json>` for a read-only result audit. It checks graph completeness, keeps untested skills unknown, checks mastery against mode confirmation and the release's item/context/occasion/accuracy minimums, and reports per-skill answers and proposed activities. It refuses to emit a final-result audit for an unfinished diagnostic. This is a technical consistency check, not pedagogical calibration.
