@@ -1,6 +1,6 @@
 # French teaching draft review catalogue
 
-146 lessons, 812 guided exercises, 146 exact assessment targets. No approval, publication or activity binding is created by this export.
+160 lessons, 896 guided exercises, 160 exact assessment targets. No approval, publication or activity binding is created by this export.
 
 The companion JSON includes the complete learner-facing content, answer keys, hints, feedback, target IDs, prerequisites, evidence requirements, material identities and per-lesson checksums. Review decisions must refer to the exact content version. An anchored annotation proves only that the annotated material appears in the lesson; it does not prove completeness or independence from assessment questions.
 
@@ -20,6 +20,20 @@ The companion JSON includes the complete learner-facing content, answer keys, hi
 | Écrire vouloir au passé composé | produire_passe_compose::writing-controlled-production::verb:vouloir | production | 6 | anchored_requires_completeness_review |
 | Écrire savoir au passé composé | produire_passe_compose::writing-controlled-production::verb:savoir | production | 6 | anchored_requires_completeness_review |
 | Écrire devoir au passé composé | produire_passe_compose::writing-controlled-production::verb:devoir | production | 6 | anchored_requires_completeness_review |
+| Écrire aller au plus-que-parfait | produire_plus_que_parfait::writing-controlled-production::verb:aller | production | 6 | anchored_requires_completeness_review |
+| Écrire faire au plus-que-parfait | produire_plus_que_parfait::writing-controlled-production::verb:faire | production | 6 | anchored_requires_completeness_review |
+| Écrire être au plus-que-parfait | produire_plus_que_parfait::writing-controlled-production::verb:être | production | 6 | anchored_requires_completeness_review |
+| Écrire avoir au plus-que-parfait | produire_plus_que_parfait::writing-controlled-production::verb:avoir | production | 6 | anchored_requires_completeness_review |
+| Écrire prendre au plus-que-parfait | produire_plus_que_parfait::writing-controlled-production::verb:prendre | production | 6 | anchored_requires_completeness_review |
+| Écrire venir au plus-que-parfait | produire_plus_que_parfait::writing-controlled-production::verb:venir | production | 6 | anchored_requires_completeness_review |
+| Écrire partir au plus-que-parfait | produire_plus_que_parfait::writing-controlled-production::verb:partir | production | 6 | anchored_requires_completeness_review |
+| Écrire sortir au plus-que-parfait | produire_plus_que_parfait::writing-controlled-production::verb:sortir | production | 6 | anchored_requires_completeness_review |
+| Écrire dire au plus-que-parfait | produire_plus_que_parfait::writing-controlled-production::verb:dire | production | 6 | anchored_requires_completeness_review |
+| Écrire voir au plus-que-parfait | produire_plus_que_parfait::writing-controlled-production::verb:voir | production | 6 | anchored_requires_completeness_review |
+| Écrire pouvoir au plus-que-parfait | produire_plus_que_parfait::writing-controlled-production::verb:pouvoir | production | 6 | anchored_requires_completeness_review |
+| Écrire vouloir au plus-que-parfait | produire_plus_que_parfait::writing-controlled-production::verb:vouloir | production | 6 | anchored_requires_completeness_review |
+| Écrire savoir au plus-que-parfait | produire_plus_que_parfait::writing-controlled-production::verb:savoir | production | 6 | anchored_requires_completeness_review |
+| Écrire devoir au plus-que-parfait | produire_plus_que_parfait::writing-controlled-production::verb:devoir | production | 6 | anchored_requires_completeness_review |
 | Former le participe passé des verbes en -er | former_participe_passe::writing-controlled-production::construction:er | production | 4 | anchored_requires_completeness_review |
 | Former le participe passé des verbes comme finir | former_participe_passe::writing-controlled-production::construction:ir | production | 4 | anchored_requires_completeness_review |
 | Retrouver des participes passés irréguliers fréquents | former_participe_passe::writing-controlled-production::construction:irregular | production | 4 | anchored_requires_completeness_review |

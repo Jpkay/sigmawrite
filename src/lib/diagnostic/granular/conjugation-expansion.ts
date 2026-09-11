@@ -66,7 +66,7 @@ export async function expandConjugationDraft(bank:CanonicalDiagnosticBankArtifac
  // Both independent pools need several actual -geons/-çons demonstrations.
  // More unchanged endings or gender variants cannot fill that feature gap.
  const sentenceCases=[
-  ...COMPOUND_APPLICATION_CONTEXTS.map((row,index)=>({...row,tense:"passe_compose" as const,key:`v3-granular-forms:passe_compose-application-context:${row.verb}:${row.person}:${index}`})),
+  ...(["passe_compose","plus_que_parfait"] as const).flatMap(tense=>COMPOUND_APPLICATION_CONTEXTS.map((row,index)=>({...row,tense,key:`v3-granular-forms:${tense}-application-context:${row.verb}:${row.person}:${index}`}))),
   ...PRESENT_SPELLING_CONTEXTS.map(([verb,sentence],index)=>({verb,sentence,tense:"present" as const,person:"1p" as Person,key:`v3-granular-forms:present-spelling-context:${verb}:${index}`})),
   ...PRESENT_APPLICATION_CONTEXTS.map(([verb,person,sentence],index)=>({verb,person,sentence,tense:"present" as const,key:`v3-granular-forms:present-application-context:${verb}:${person}:${index}`})),
   ...(["imparfait","futur_simple","conditionnel_present"] as const).flatMap(tense=>PRESENT_APPLICATION_CONTEXTS.flatMap(([verb,person,sentence],index)=>{
@@ -84,13 +84,14 @@ export async function expandConjugationDraft(bank:CanonicalDiagnosticBankArtifac
   const answer=conjugate(verb,tense,person,{gender,auxiliaryUse});
   const sentence=conjugationSentenceGap(sourceSentence,answer);
   const completedSentence=sentence.replace("___",answer);
+
   // An individual-verb target necessarily revisits the same lemma. Identify
   // the sentence application separately, while retaining the lemma as exposure.
   // Include the completed correction so a taught answer cannot evade overlap
   // detection merely because the question itself contains a blank.
   const individualVerb=target.facetKey.includes("::verb:");
   const raw:GeneratedItem={nodeKey:node.key,strand:"conjugaison",modality:"writing",learnerMode:"shared",responseType:"short_answer",
-   promptFr:`Complète la phrase avec ${verb} ${tense==="imparfait"?"à l’imparfait":tense==="futur_simple"?"au futur simple":tense==="conditionnel_present"?"au conditionnel présent":tense==="passe_compose"?"au passé composé":"au présent de l’indicatif"} : ${sentence}`,
+   promptFr:`Complète la phrase avec ${verb} ${tense==="imparfait"?"à l’imparfait":tense==="futur_simple"?"au futur simple":tense==="conditionnel_present"?"au conditionnel présent":tense==="passe_compose"?"au passé composé":tense==="plus_que_parfait"?"au plus-que-parfait":"au présent de l’indicatif"} : ${sentence}`,
    instructionsFr:"Écris seulement le verbe manquant."+("genderSpecified" in application&&application.genderSpecified?` Sujet ${gender==="f"?"féminin":"masculin"} ${person.endsWith("p")?"pluriel":"singulier"}.`:""),correctAnswer:answer,acceptableAnswers:[],validatorType:"conjugator",
    validatorConfig:{verb,tense,person,gender,...(auxiliaryUse?{auxiliaryUse}:{}),...(individualVerb?{sentenceApplication:sentence}:{}),materialExposure:{words:[{lemma:verb,form:verb}],sentences:individualVerb?[sentence,completedSentence]:[sentence],...(individualVerb?{assessed:{sentences:[sentence,completedSentence]}}:{})}},difficulty:50};
   const surface=`${node.key}:${diagnosticItemSurfaceIdentity(raw)}`;
