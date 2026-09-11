@@ -1,3 +1,4 @@
+import {conjugationFacet} from './facets';
 import {writtenGuessingFloor} from "./response-space";
 import {readFileSync} from 'node:fs';
 import {expect,it} from 'vitest';
@@ -10,9 +11,10 @@ const read=(p:string)=>JSON.parse(readFileSync(p,'utf8'));
 const aller={ '1s':'vais','2s':'vas','3s':'va','1p':'allons','2p':'allez','3p':'vont'};
 it('assesses each verb and person without accepting a conjugated second verb',async()=>{
  const expansion=read('generated/french-v3-futur-proche-production-expansion.json') as DraftExpansion;
- expect(rows).toHaveLength(168);expect(lessons).toHaveLength(14);
- for(const verb of new Set(rows.map(r=>r.verb))){
-  const cases=rows.filter(r=>r.verb===verb);expect(cases).toHaveLength(12);
+ expect(rows).toHaveLength(216);expect(lessons).toHaveLength(18);
+ const facet=(r:typeof rows[number])=>conjugationFacet('produire_futur_proche',{verb:r.verb,tense:'futur_proche',person:r.person});
+ for(const key of new Set(rows.map(facet))){
+  const cases=rows.filter(r=>facet(r)===key);expect(cases).toHaveLength(12);
   expect(new Set(cases.map(r=>r.person))).toEqual(new Set(PERSONS));
  }
  for(const row of rows){
@@ -25,7 +27,7 @@ it('assesses each verb and person without accepting a conjugated second verb',as
   expect((await validateAnswer(`${aller[row.person]} ${conjugate(row.verb,'present',row.person)}`,spec)).pass).toBe(false);
  }
 });
-it('keeps guided material separate and makes all fourteen individual targets available with fresh checks',()=>{
+it('keeps guided material separate and makes all individual and family targets available with fresh checks',()=>{
  const expansion=read('generated/french-v3-futur-proche-production-expansion.json') as DraftExpansion;
  const prepared=read('docs/diagnostic/v3-parallel-review-candidate.json');
  const scoped=read('docs/diagnostic/v3-scoped-review-candidate.json');
@@ -34,6 +36,17 @@ it('keeps guided material separate and makes all fourteen individual targets ava
  for(const lesson of lessons){
   const ready=prepared.teachingReadiness.find((r:{lessonId:string})=>r.lessonId===lesson.id);
   expect(ready?.freshCheckAvailable).toBe(true);
-  expect(scoped.assessment.releaseScope.teachingSkillIds).toContain(`produire_futur_proche::writing-controlled-production::verb:${lesson.facetKey!.split(':').at(-1)}`);
+  expect(scoped.assessment.releaseScope.teachingSkillIds).toContain(`produire_futur_proche::writing-controlled-production::${lesson.facetKey!.split('::')[1]}`);
+ }
+});
+
+it('keeps each guided family verb and its infinitive instead of substituting the model verb',async()=>{
+ for(const lesson of lessons.filter(l=>l.facetKey!.includes('::pattern:'))){
+  expect(lesson.practice.length).toBeGreaterThanOrEqual(6);
+  for(const exercise of lesson.practice){
+   const verb=exercise.promptFr.match(/^Complète avec (.+) au futur proche\./)![1];
+   expect(exercise.answerFr.split(' ').at(-1)).toBe(verb);
+   expect(exercise.answerFr).toMatch(/^(vais|vas|va|allons|allez|vont) /);
+  }
  }
 });

@@ -15,7 +15,7 @@ const futurOnly=process.argv.includes('--futur-proche');
 if(spellingOnly&&futurOnly)throw Error('Select one content family');
 const spellingIds=['french-v3-teaching:present:pattern:spelling_ger','french-v3-teaching:present:pattern:spelling_cer'];
 const lessons=bundle.teachingContent!.filter(l=>futurOnly?l.id.startsWith("french-v3-teaching:futur-proche:production:"):spellingOnly?spellingIds.includes(l.id):l.id.includes(':reference-foundation:')||l.id==='french-v3-teaching:narrative-demonstrative-reference'||l.id.startsWith('french-v3-teaching:demonstrative-reference:')||l.id.startsWith('french-v3-teaching:lexical-chain:'));
-if(lessons.length!==(futurOnly?14:spellingOnly?2:10))throw Error('Unexpected selected lesson count');
+if(lessons.length!==(futurOnly?18:spellingOnly?2:10))throw Error('Unexpected selected lesson count');
 const reports=[];
 for(const lesson of lessons){
  const skill=bundle.assessment.skills.find(s=>s.nodeKey===lesson.nodeKey&&s.facetKey===lesson.facetKey&&s.modes.includes(lesson.mode))!;
