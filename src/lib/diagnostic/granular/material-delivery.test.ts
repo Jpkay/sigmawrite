@@ -71,3 +71,13 @@ it("records whole reading passages even without optional annotations and keeps r
  expect(f.record.mock.calls[0]).toEqual(f.record.mock.calls[1]);
  expect(f.record).toHaveBeenCalledWith(expect.objectContaining({studentId:"student-a",materialKeys:[materialIdentity("sentence",readingPassageText(entry.item.validatorConfig,entry.item.promptFr))]}));
 });
+
+it("does not reload a bank or write receipts for a start screen without exposed material",async()=>{
+ const f=fixture();f.store.load=vi.fn(async()=>{throw Error("Unexpected session load");});f.store.release=vi.fn(async()=>{throw Error("Unexpected bank load");});
+ await recordMaterialDelivery(f.store,"student-a",{view:{sessionId:"session",question:null,learningCheck:null,teaching:null}});
+ expect(f.store.load).not.toHaveBeenCalled();expect(f.store.release).not.toHaveBeenCalled();expect(f.record).not.toHaveBeenCalled();
+});
+it("still records material carried by a paused response",async()=>{
+ const f=fixture();await recordMaterialDelivery(f.store,"student-a",{view:{...f.view,paused:true}});
+ expect(f.record).toHaveBeenCalledTimes(1);
+});

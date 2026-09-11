@@ -21,11 +21,15 @@ const viewSchema=z.object({sessionId:z.string().min(1),question:question.nullabl
 export async function recordMaterialDelivery(store:MaterialDeliveryStore,studentId:string,result:unknown):Promise<void>{
  if(!result||typeof result!=="object"||!("view" in result)||!result.view)return;
  const view=viewSchema.parse(result.view);
+ const questionIds=[...new Set([view.question?.id,view.learningCheck?.question?.id].filter((id):id is string=>Boolean(id)))];
+ // A start screen or results-only response exposes no question or lesson.
+ // Its authenticated action already validated the session and release; there
+ // is no delivery receipt to write and no need to load the whole bank again.
+ if(!questionIds.length&&!view.teaching)return;
  const session=await store.load(studentId,view.sessionId);
  if(!session)throw Error("Material delivery session unavailable");
  const bundle=await store.release(session.releaseId);
  if(!bundle)throw Error("Material delivery release unavailable");
- const questionIds=[...new Set([view.question?.id,view.learningCheck?.question?.id].filter((id):id is string=>Boolean(id)))];
  for(const id of questionIds){
   const entry=bundle.bank.items.find(item=>item.itemKey===id);
   if(!entry||!bundle.assessment.probes.some(probe=>probe.id===id))throw Error("Material delivery question unavailable");
