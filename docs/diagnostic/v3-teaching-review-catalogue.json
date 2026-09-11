@@ -5,12 +5,2211 @@
   "facetChecksum": "sha256:71d060c34e8fd204b3cf57e5126a2e30585dc72c463b0506f22aa602eb913a98",
   "assessmentSourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
   "summary": {
-    "lessons": 107,
-    "guidedExercises": 592,
-    "targets": 107,
+    "lessons": 122,
+    "guidedExercises": 682,
+    "targets": 122,
     "missingExposureAnnotations": []
   },
   "rows": [
+    {
+      "lessonId": "french-v3-teaching:conditionnel-present:aller",
+      "contentChecksum": "sha256:3144f1b862e2b7dbe62231c244760635d5ba45118c096345afcd7253889dbda6",
+      "skillId": "produire_conditionnel_present::writing-controlled-production::verb:aller",
+      "nodeKey": "produire_conditionnel_present",
+      "facetKey": "produire_conditionnel_present::verb:aller",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "reconnaitre_conditionnel_present::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:1e5fe37718a7c78c2761328405a468dfaa28173fdafe32cf4ae1091b66b2e9b4",
+        "sentence:sha256:24644755e555910c23ff537908752cc91402a13b52e7c688d0e345fb25bd17b3",
+        "sentence:sha256:24654cb1e40e14df29ffb9c7a548c1ea7a80cfdf811e8d884341fb2339c4caa2",
+        "sentence:sha256:443f89b832793f33453dd5eb270d2b0edc1a916862caa4e113d7203547e644ee",
+        "sentence:sha256:502cb7fa1d5a6fde6fb32fe336693083f85cc736fa60690d660ab9589d2684a9",
+        "sentence:sha256:869932b73ba6d6e03bc2d9b2afe8fbd3fbad690dccedb8f1d85667e019f11419",
+        "sentence:sha256:ab9564c44320715a179a0c9842025894fc3c4ccbb45e6e90b153397f5a3957db",
+        "sentence:sha256:b861db078f864bae04513189ba3673be6a2fc3b85183a91eebb0a16a3c169cc3",
+        "sentence:sha256:e66b3b8d5c44573129acfaf3cf34ee3d47f0437d2faaa3809bbb2769e8916a5a",
+        "word:sha256:c69b79ee0f0ed5ec757312dd4a35816749c9222132776a6d92c865046638b290"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:conditionnel-present:aller",
+        "nodeKey": "produire_conditionnel_present",
+        "facetKey": "produire_conditionnel_present::verb:aller",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire aller au conditionnel présent",
+        "learnerQuestionFr": "Comment écrire aller au conditionnel présent avec chaque sujet ?",
+        "steps": [
+          {
+            "exampleFr": "J’irais à la bibliothèque.",
+            "explanationFr": "La forme irais peut servir à présenter un fait imaginé, un souhait ou une demande polie selon le contexte. C’est le conditionnel présent du verbe aller. Le verbe conjugué s’écrit en un seul mot."
+          },
+          {
+            "exampleFr": "aller → ir- + -ais → irais",
+            "explanationFr": "Le début qui reste le même dans les six formes est ir-. On l’appelle la base, ou le radical. La base ir- est particulière à ce verbe : retiens-la avec un exemple. Ajoute ensuite la terminaison qui correspond au sujet."
+          },
+          {
+            "exampleFr": "je : irais\ntu : irais\nil, elle ou on : irait\nnous : irions\nvous : iriez\nils ou elles : iraient",
+            "explanationFr": "Les terminaisons du conditionnel présent sont celles de l’imparfait : -ais, -ais, -ait, -ions, -iez et -aient. La base est celle du futur simple et se termine par r. Garde ce r."
+          },
+          {
+            "exampleFr": "je : irais ; tu : irais ; il ou elle : irait",
+            "explanationFr": "À l’écrit, je et tu prennent -ais, tandis que il ou elle prend -ait. Ces terminaisons se ressemblent à l’oral : utilise le sujet pour choisir les lettres."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:conditionnel-present:aller:1",
+            "promptFr": "Complète avec aller au conditionnel présent. Écris seulement le verbe : J’___ à la bibliothèque.",
+            "answerFr": "irais",
+            "hintFr": "Avec je, ajoute -ais à la base ir-.",
+            "explanationFr": "J’irais à la bibliothèque. La base ir- et la terminaison -ais donnent irais."
+          },
+          {
+            "id": "guided:conditionnel-present:aller:2",
+            "promptFr": "Complète avec aller au conditionnel présent. Écris seulement le verbe : Tu ___ au gymnase.",
+            "answerFr": "irais",
+            "hintFr": "Avec tu, ajoute -ais à la base ir-.",
+            "explanationFr": "Tu irais au gymnase. La base ir- et la terminaison -ais donnent irais."
+          },
+          {
+            "id": "guided:conditionnel-present:aller:3",
+            "promptFr": "Complète avec aller au conditionnel présent. Écris seulement le verbe : On ___ au cinéma.",
+            "answerFr": "irait",
+            "hintFr": "Avec il, elle ou on, ajoute -ait à la base ir-.",
+            "explanationFr": "On irait au cinéma. La base ir- et la terminaison -ait donnent irait."
+          },
+          {
+            "id": "guided:conditionnel-present:aller:4",
+            "promptFr": "Complète avec aller au conditionnel présent. Écris seulement le verbe : Nous ___ au marché.",
+            "answerFr": "irions",
+            "hintFr": "Avec nous, ajoute -ions à la base ir-.",
+            "explanationFr": "Nous irions au marché. La base ir- et la terminaison -ions donnent irions."
+          },
+          {
+            "id": "guided:conditionnel-present:aller:5",
+            "promptFr": "Complète avec aller au conditionnel présent. Écris seulement le verbe : Vous ___ à la piscine.",
+            "answerFr": "iriez",
+            "hintFr": "Avec vous, ajoute -iez à la base ir-.",
+            "explanationFr": "Vous iriez à la piscine. La base ir- et la terminaison -iez donnent iriez."
+          },
+          {
+            "id": "guided:conditionnel-present:aller:6",
+            "promptFr": "Complète avec aller au conditionnel présent. Écris seulement le verbe : Elles ___ au parc.",
+            "answerFr": "iraient",
+            "hintFr": "Avec ils ou elles, ajoute -aient à la base ir-.",
+            "explanationFr": "Elles iraient au parc. La base ir- et la terminaison -aient donnent iraient."
+          }
+        ],
+        "takeawayFr": "Pour aller au conditionnel présent, pars de ir- puis ajoute -ais, -ais, -ait, -ions, -iez ou -aient selon le sujet.",
+        "boundaryFr": "Cette leçon entraîne les formes de aller au conditionnel présent. Elle ne prouve pas que tu sais choisir entre conditionnel, futur et imparfait dans un texte, ni choisir le temps après si.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "aller",
+              "form": "aller"
+            }
+          ],
+          "sentences": [
+            "J’irais à la bibliothèque.",
+            "aller → ir- + -ais → irais",
+            "je : irais\ntu : irais\nil, elle ou on : irait\nnous : irions\nvous : iriez\nils ou elles : iraient",
+            "je : irais ; tu : irais ; il ou elle : irait",
+            "J’irais à la bibliothèque.",
+            "Tu irais au gymnase.",
+            "On irait au cinéma.",
+            "Nous irions au marché.",
+            "Vous iriez à la piscine.",
+            "Elles iraient au parc."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:conditionnel-present:faire",
+      "contentChecksum": "sha256:2abce735c7bae534a14a94a02ef66f15f4825a6b33c7dfd8616ad2bd98aaf7ff",
+      "skillId": "produire_conditionnel_present::writing-controlled-production::verb:faire",
+      "nodeKey": "produire_conditionnel_present",
+      "facetKey": "produire_conditionnel_present::verb:faire",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "reconnaitre_conditionnel_present::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:1cc53d7b6ea415050220c7338896726dac889ff5c597f4a728277c9855de4632",
+        "sentence:sha256:380cc52ea215884fcc625cd2a8f8367d6fe27153aa5ea95380e5289da36b9e75",
+        "sentence:sha256:484e746241eecc2dd31d035f79450525afd7db3a3f347df82366604fac2f6f49",
+        "sentence:sha256:62d1994a5a67551cba73ebaa56eec40bc66aecf92341e4a56a9d15a34309944f",
+        "sentence:sha256:77f765a8e348fa5673603fc3341243ba991a3a61d56f456162102cf9f6c8fad4",
+        "sentence:sha256:99db6ebd65334c4974da7f897ca0241d124b94cf453f41cbf7f082336daf1909",
+        "sentence:sha256:d1c4a108b8d29322a7fa7771c2b510ee8b32084739a7ae3ffa7bcb8b7b3f8022",
+        "sentence:sha256:e53b9c4a1cab883549041a26778014a4c88fe5c6388f18536f47cac2b67ec7f9",
+        "sentence:sha256:f1d3f6a18d15a7b9c29d447fd8772d45831d67b4c7c4c8fc1625f02ecf6341ed",
+        "word:sha256:8a568397b41847720a6d5d4310ba1528f891cc38b608243c136cf1e04d975d8b"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:conditionnel-present:faire",
+        "nodeKey": "produire_conditionnel_present",
+        "facetKey": "produire_conditionnel_present::verb:faire",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire faire au conditionnel présent",
+        "learnerQuestionFr": "Comment écrire faire au conditionnel présent avec chaque sujet ?",
+        "steps": [
+          {
+            "exampleFr": "Je ferais une maquette.",
+            "explanationFr": "La forme ferais peut servir à présenter un fait imaginé, un souhait ou une demande polie selon le contexte. C’est le conditionnel présent du verbe faire. Le verbe conjugué s’écrit en un seul mot."
+          },
+          {
+            "exampleFr": "faire → fer- + -ais → ferais",
+            "explanationFr": "Le début qui reste le même dans les six formes est fer-. On l’appelle la base, ou le radical. La base fer- est particulière à ce verbe : retiens-la avec un exemple. Ajoute ensuite la terminaison qui correspond au sujet."
+          },
+          {
+            "exampleFr": "je : ferais\ntu : ferais\nil, elle ou on : ferait\nnous : ferions\nvous : feriez\nils ou elles : feraient",
+            "explanationFr": "Les terminaisons du conditionnel présent sont celles de l’imparfait : -ais, -ais, -ait, -ions, -iez et -aient. La base est celle du futur simple et se termine par r. Garde ce r."
+          },
+          {
+            "exampleFr": "je : ferais ; tu : ferais ; il ou elle : ferait",
+            "explanationFr": "À l’écrit, je et tu prennent -ais, tandis que il ou elle prend -ait. Ces terminaisons se ressemblent à l’oral : utilise le sujet pour choisir les lettres."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:conditionnel-present:faire:1",
+            "promptFr": "Complète avec faire au conditionnel présent. Écris seulement le verbe : Je ___ une maquette.",
+            "answerFr": "ferais",
+            "hintFr": "Avec je, ajoute -ais à la base fer-.",
+            "explanationFr": "Je ferais une maquette. La base fer- et la terminaison -ais donnent ferais."
+          },
+          {
+            "id": "guided:conditionnel-present:faire:2",
+            "promptFr": "Complète avec faire au conditionnel présent. Écris seulement le verbe : Tu ___ une pause.",
+            "answerFr": "ferais",
+            "hintFr": "Avec tu, ajoute -ais à la base fer-.",
+            "explanationFr": "Tu ferais une pause. La base fer- et la terminaison -ais donnent ferais."
+          },
+          {
+            "id": "guided:conditionnel-present:faire:3",
+            "promptFr": "Complète avec faire au conditionnel présent. Écris seulement le verbe : Elle ___ du vélo.",
+            "answerFr": "ferait",
+            "hintFr": "Avec il, elle ou on, ajoute -ait à la base fer-.",
+            "explanationFr": "Elle ferait du vélo. La base fer- et la terminaison -ait donnent ferait."
+          },
+          {
+            "id": "guided:conditionnel-present:faire:4",
+            "promptFr": "Complète avec faire au conditionnel présent. Écris seulement le verbe : Nous ___ un gâteau.",
+            "answerFr": "ferions",
+            "hintFr": "Avec nous, ajoute -ions à la base fer-.",
+            "explanationFr": "Nous ferions un gâteau. La base fer- et la terminaison -ions donnent ferions."
+          },
+          {
+            "id": "guided:conditionnel-present:faire:5",
+            "promptFr": "Complète avec faire au conditionnel présent. Écris seulement le verbe : Vous ___ un puzzle.",
+            "answerFr": "feriez",
+            "hintFr": "Avec vous, ajoute -iez à la base fer-.",
+            "explanationFr": "Vous feriez un puzzle. La base fer- et la terminaison -iez donnent feriez."
+          },
+          {
+            "id": "guided:conditionnel-present:faire:6",
+            "promptFr": "Complète avec faire au conditionnel présent. Écris seulement le verbe : Ils ___ une expérience.",
+            "answerFr": "feraient",
+            "hintFr": "Avec ils ou elles, ajoute -aient à la base fer-.",
+            "explanationFr": "Ils feraient une expérience. La base fer- et la terminaison -aient donnent feraient."
+          }
+        ],
+        "takeawayFr": "Pour faire au conditionnel présent, pars de fer- puis ajoute -ais, -ais, -ait, -ions, -iez ou -aient selon le sujet.",
+        "boundaryFr": "Cette leçon entraîne les formes de faire au conditionnel présent. Elle ne prouve pas que tu sais choisir entre conditionnel, futur et imparfait dans un texte, ni choisir le temps après si.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "faire",
+              "form": "faire"
+            }
+          ],
+          "sentences": [
+            "Je ferais une maquette.",
+            "faire → fer- + -ais → ferais",
+            "je : ferais\ntu : ferais\nil, elle ou on : ferait\nnous : ferions\nvous : feriez\nils ou elles : feraient",
+            "je : ferais ; tu : ferais ; il ou elle : ferait",
+            "Je ferais une maquette.",
+            "Tu ferais une pause.",
+            "Elle ferait du vélo.",
+            "Nous ferions un gâteau.",
+            "Vous feriez un puzzle.",
+            "Ils feraient une expérience."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:conditionnel-present:être",
+      "contentChecksum": "sha256:374bc8dee1b2e1393f54ca53f17faad9e6877f046fecec6eacc3ace7f6b891aa",
+      "skillId": "produire_conditionnel_present::writing-controlled-production::verb:être",
+      "nodeKey": "produire_conditionnel_present",
+      "facetKey": "produire_conditionnel_present::verb:être",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "reconnaitre_conditionnel_present::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:20a3d6a7d8b86ae44d725eb12218739c619c91f80a27466556862c899faed0cf",
+        "sentence:sha256:231c1fce519e48425f87a1dbd795eaf167394078b32a09668729c8f54174328e",
+        "sentence:sha256:26093c2863808a62c4a351d19777d093473cfbe04d419282b536f6a339467594",
+        "sentence:sha256:63555dc0126a1a54a15f3718433855daf17d8ec641156131d32f24cafd5c9937",
+        "sentence:sha256:65dea9a6e324cbf729974275acacc80b4079452e42c4df1a78bb885f2f0c59bb",
+        "sentence:sha256:77fcc49fbb2554d7b6c85e4c54e203a2e4c9fdc9987ac5170b32ef0789684d8c",
+        "sentence:sha256:ac9c87139e57bb8cd4fc38cb160a6a38c71a9d08c1aaf430119dd0f1942ecfa1",
+        "sentence:sha256:b923586bbd5d5bd4acc26092c46870a19c14887c3a8dae13e081b4f767f7251c",
+        "sentence:sha256:e921d3afbf4613fe97e363a259a65bd7b8bda8d5d08d04bcc3cfc7c444afa0b3",
+        "word:sha256:0e8c809d71ca79b97c97516e8f9792a277aa2a2c72586ada6c3a73d265f30e8d"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:conditionnel-present:être",
+        "nodeKey": "produire_conditionnel_present",
+        "facetKey": "produire_conditionnel_present::verb:être",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire être au conditionnel présent",
+        "learnerQuestionFr": "Comment écrire être au conditionnel présent avec chaque sujet ?",
+        "steps": [
+          {
+            "exampleFr": "Je serais dans le jardin.",
+            "explanationFr": "La forme serais peut servir à présenter un fait imaginé, un souhait ou une demande polie selon le contexte. C’est le conditionnel présent du verbe être. Le verbe conjugué s’écrit en un seul mot."
+          },
+          {
+            "exampleFr": "être → ser- + -ais → serais",
+            "explanationFr": "Le début qui reste le même dans les six formes est ser-. On l’appelle la base, ou le radical. La base ser- est particulière à ce verbe : retiens-la avec un exemple. Ajoute ensuite la terminaison qui correspond au sujet."
+          },
+          {
+            "exampleFr": "je : serais\ntu : serais\nil, elle ou on : serait\nnous : serions\nvous : seriez\nils ou elles : seraient",
+            "explanationFr": "Les terminaisons du conditionnel présent sont celles de l’imparfait : -ais, -ais, -ait, -ions, -iez et -aient. La base est celle du futur simple et se termine par r. Garde ce r."
+          },
+          {
+            "exampleFr": "je : serais ; tu : serais ; il ou elle : serait",
+            "explanationFr": "À l’écrit, je et tu prennent -ais, tandis que il ou elle prend -ait. Ces terminaisons se ressemblent à l’oral : utilise le sujet pour choisir les lettres."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:conditionnel-present:être:1",
+            "promptFr": "Complète avec être au conditionnel présent. Écris seulement le verbe : Je ___ dans le jardin.",
+            "answerFr": "serais",
+            "hintFr": "Avec je, ajoute -ais à la base ser-.",
+            "explanationFr": "Je serais dans le jardin. La base ser- et la terminaison -ais donnent serais."
+          },
+          {
+            "id": "guided:conditionnel-present:être:2",
+            "promptFr": "Complète avec être au conditionnel présent. Écris seulement le verbe : Tu ___ au premier rang.",
+            "answerFr": "serais",
+            "hintFr": "Avec tu, ajoute -ais à la base ser-.",
+            "explanationFr": "Tu serais au premier rang. La base ser- et la terminaison -ais donnent serais."
+          },
+          {
+            "id": "guided:conditionnel-present:être:3",
+            "promptFr": "Complète avec être au conditionnel présent. Écris seulement le verbe : Elle ___ contente de son dessin.",
+            "answerFr": "serait",
+            "hintFr": "Avec il, elle ou on, ajoute -ait à la base ser-.",
+            "explanationFr": "Elle serait contente de son dessin. La base ser- et la terminaison -ait donnent serait."
+          },
+          {
+            "id": "guided:conditionnel-present:être:4",
+            "promptFr": "Complète avec être au conditionnel présent. Écris seulement le verbe : Nous ___ en avance.",
+            "answerFr": "serions",
+            "hintFr": "Avec nous, ajoute -ions à la base ser-.",
+            "explanationFr": "Nous serions en avance. La base ser- et la terminaison -ions donnent serions."
+          },
+          {
+            "id": "guided:conditionnel-present:être:5",
+            "promptFr": "Complète avec être au conditionnel présent. Écris seulement le verbe : Vous ___ près de la porte.",
+            "answerFr": "seriez",
+            "hintFr": "Avec vous, ajoute -iez à la base ser-.",
+            "explanationFr": "Vous seriez près de la porte. La base ser- et la terminaison -iez donnent seriez."
+          },
+          {
+            "id": "guided:conditionnel-present:être:6",
+            "promptFr": "Complète avec être au conditionnel présent. Écris seulement le verbe : Ils ___ dans la même équipe.",
+            "answerFr": "seraient",
+            "hintFr": "Avec ils ou elles, ajoute -aient à la base ser-.",
+            "explanationFr": "Ils seraient dans la même équipe. La base ser- et la terminaison -aient donnent seraient."
+          }
+        ],
+        "takeawayFr": "Pour être au conditionnel présent, pars de ser- puis ajoute -ais, -ais, -ait, -ions, -iez ou -aient selon le sujet.",
+        "boundaryFr": "Cette leçon entraîne les formes de être au conditionnel présent. Elle ne prouve pas que tu sais choisir entre conditionnel, futur et imparfait dans un texte, ni choisir le temps après si.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "être",
+              "form": "être"
+            }
+          ],
+          "sentences": [
+            "Je serais dans le jardin.",
+            "être → ser- + -ais → serais",
+            "je : serais\ntu : serais\nil, elle ou on : serait\nnous : serions\nvous : seriez\nils ou elles : seraient",
+            "je : serais ; tu : serais ; il ou elle : serait",
+            "Je serais dans le jardin.",
+            "Tu serais au premier rang.",
+            "Elle serait contente de son dessin.",
+            "Nous serions en avance.",
+            "Vous seriez près de la porte.",
+            "Ils seraient dans la même équipe."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:conditionnel-present:avoir",
+      "contentChecksum": "sha256:9b7f90b78a59a256fd088671d4b124531b5432b178a818374e4b8f5d9f54ffa7",
+      "skillId": "produire_conditionnel_present::writing-controlled-production::verb:avoir",
+      "nodeKey": "produire_conditionnel_present",
+      "facetKey": "produire_conditionnel_present::verb:avoir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "reconnaitre_conditionnel_present::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:4b339c49d376089d5d7c3da7821da3cd2b2ce0958cc52c0c5bf6a44daa719340",
+        "sentence:sha256:85d722878c7097b50ce05f54b837a6ea85bf22b10e3788263c3cc9d57a015bc5",
+        "sentence:sha256:8c4323d3d8f6c15f28045d7d1d2ec52c88439b169450cdfa88619884c724830d",
+        "sentence:sha256:936edd6e172d6fbc7a66020d4bc230eb343826abfa9fed7eaeb075b4967c09b0",
+        "sentence:sha256:93cc2c5a23ceb095b39b6bcee63a8294e02921d5715b36e16904ee528fb4b1f5",
+        "sentence:sha256:cebf54097561152145d23519aee4763c21b2743f7da8ae8a5337e500efeea454",
+        "sentence:sha256:e59191c75451d3224a5024a4f99c559a2b44dcf61b6b8deccccf033ed41a0720",
+        "sentence:sha256:f4aad7559a6855ef13f090013cc77743445332f23b8dc5310e002bc18c81c54f",
+        "sentence:sha256:f8ab0b66c8c63a5d73c2c891b75969c1fc50963df6656029f4ba5bf707c6dac4",
+        "word:sha256:130f28240b75513decf695074e35d63b8daf7399920a31cc2a8e0d8ca2e6f1fe"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:conditionnel-present:avoir",
+        "nodeKey": "produire_conditionnel_present",
+        "facetKey": "produire_conditionnel_present::verb:avoir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire avoir au conditionnel présent",
+        "learnerQuestionFr": "Comment écrire avoir au conditionnel présent avec chaque sujet ?",
+        "steps": [
+          {
+            "exampleFr": "J’aurais une lampe de poche.",
+            "explanationFr": "La forme aurais peut servir à présenter un fait imaginé, un souhait ou une demande polie selon le contexte. C’est le conditionnel présent du verbe avoir. Le verbe conjugué s’écrit en un seul mot."
+          },
+          {
+            "exampleFr": "avoir → aur- + -ais → aurais",
+            "explanationFr": "Le début qui reste le même dans les six formes est aur-. On l’appelle la base, ou le radical. La base aur- est particulière à ce verbe : retiens-la avec un exemple. Ajoute ensuite la terminaison qui correspond au sujet."
+          },
+          {
+            "exampleFr": "je : aurais\ntu : aurais\nil, elle ou on : aurait\nnous : aurions\nvous : auriez\nils ou elles : auraient",
+            "explanationFr": "Les terminaisons du conditionnel présent sont celles de l’imparfait : -ais, -ais, -ait, -ions, -iez et -aient. La base est celle du futur simple et se termine par r. Garde ce r."
+          },
+          {
+            "exampleFr": "je : aurais ; tu : aurais ; il ou elle : aurait",
+            "explanationFr": "À l’écrit, je et tu prennent -ais, tandis que il ou elle prend -ait. Ces terminaisons se ressemblent à l’oral : utilise le sujet pour choisir les lettres."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:conditionnel-present:avoir:1",
+            "promptFr": "Complète avec avoir au conditionnel présent. Écris seulement le verbe : J’___ une lampe de poche.",
+            "answerFr": "aurais",
+            "hintFr": "Avec je, ajoute -ais à la base aur-.",
+            "explanationFr": "J’aurais une lampe de poche. La base aur- et la terminaison -ais donnent aurais."
+          },
+          {
+            "id": "guided:conditionnel-present:avoir:2",
+            "promptFr": "Complète avec avoir au conditionnel présent. Écris seulement le verbe : Tu ___ une nouvelle question.",
+            "answerFr": "aurais",
+            "hintFr": "Avec tu, ajoute -ais à la base aur-.",
+            "explanationFr": "Tu aurais une nouvelle question. La base aur- et la terminaison -ais donnent aurais."
+          },
+          {
+            "id": "guided:conditionnel-present:avoir:3",
+            "promptFr": "Complète avec avoir au conditionnel présent. Écris seulement le verbe : On ___ assez de papier.",
+            "answerFr": "aurait",
+            "hintFr": "Avec il, elle ou on, ajoute -ait à la base aur-.",
+            "explanationFr": "On aurait assez de papier. La base aur- et la terminaison -ait donnent aurait."
+          },
+          {
+            "id": "guided:conditionnel-present:avoir:4",
+            "promptFr": "Complète avec avoir au conditionnel présent. Écris seulement le verbe : Nous ___ des places pour le concert.",
+            "answerFr": "aurions",
+            "hintFr": "Avec nous, ajoute -ions à la base aur-.",
+            "explanationFr": "Nous aurions des places pour le concert. La base aur- et la terminaison -ions donnent aurions."
+          },
+          {
+            "id": "guided:conditionnel-present:avoir:5",
+            "promptFr": "Complète avec avoir au conditionnel présent. Écris seulement le verbe : Vous ___ le même horaire.",
+            "answerFr": "auriez",
+            "hintFr": "Avec vous, ajoute -iez à la base aur-.",
+            "explanationFr": "Vous auriez le même horaire. La base aur- et la terminaison -iez donnent auriez."
+          },
+          {
+            "id": "guided:conditionnel-present:avoir:6",
+            "promptFr": "Complète avec avoir au conditionnel présent. Écris seulement le verbe : Elles ___ un projet commun.",
+            "answerFr": "auraient",
+            "hintFr": "Avec ils ou elles, ajoute -aient à la base aur-.",
+            "explanationFr": "Elles auraient un projet commun. La base aur- et la terminaison -aient donnent auraient."
+          }
+        ],
+        "takeawayFr": "Pour avoir au conditionnel présent, pars de aur- puis ajoute -ais, -ais, -ait, -ions, -iez ou -aient selon le sujet.",
+        "boundaryFr": "Cette leçon entraîne les formes de avoir au conditionnel présent. Elle ne prouve pas que tu sais choisir entre conditionnel, futur et imparfait dans un texte, ni choisir le temps après si.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "avoir",
+              "form": "avoir"
+            }
+          ],
+          "sentences": [
+            "J’aurais une lampe de poche.",
+            "avoir → aur- + -ais → aurais",
+            "je : aurais\ntu : aurais\nil, elle ou on : aurait\nnous : aurions\nvous : auriez\nils ou elles : auraient",
+            "je : aurais ; tu : aurais ; il ou elle : aurait",
+            "J’aurais une lampe de poche.",
+            "Tu aurais une nouvelle question.",
+            "On aurait assez de papier.",
+            "Nous aurions des places pour le concert.",
+            "Vous auriez le même horaire.",
+            "Elles auraient un projet commun."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:conditionnel-present:prendre",
+      "contentChecksum": "sha256:565f4c94f4b27bd655d9bced4344b267475a8fcb42e247174c766cbe38b98552",
+      "skillId": "produire_conditionnel_present::writing-controlled-production::verb:prendre",
+      "nodeKey": "produire_conditionnel_present",
+      "facetKey": "produire_conditionnel_present::verb:prendre",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "reconnaitre_conditionnel_present::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:1a57a12aace9598d49e7f0a29544d248628c94bd1ea14d41c054e49da2b589ed",
+        "sentence:sha256:81e3e70ad15d0b637698d9a770d226c22993a0caa19ff48b242ff868b5078f59",
+        "sentence:sha256:84d296f3c8a343142d718d1f12d5bd04808ae3c0c2c62289d07835fc54f7c760",
+        "sentence:sha256:86b6958e5300bebaefe2342710bee953af595d6800684572e81bd45d8f4521bf",
+        "sentence:sha256:919ce8e912708e8ca09fa41f429fb46e04bf22b3f57e5cf919f471ae37018589",
+        "sentence:sha256:b73c05112856d92e0ef824f6f873761714bfc5181a3c3e984293d0fd14b78c93",
+        "sentence:sha256:c092abe5b880e77983a399996f9430e6351f19b0bd80b95be43f6f8031418d83",
+        "sentence:sha256:f157c6cca5b98bd8b1be9bd271165ed2dc8e060a7efefdd60a9727400b6f1a84",
+        "sentence:sha256:fb685445b849a7cfe3d0e7a44708505484e44f9d15b7c7d2f9541bb315007032",
+        "word:sha256:23d11cc3bd461548ed9bb9430275d3db49ead4b7604fd7131d3b424b67c8d633"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:conditionnel-present:prendre",
+        "nodeKey": "produire_conditionnel_present",
+        "facetKey": "produire_conditionnel_present::verb:prendre",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire prendre au conditionnel présent",
+        "learnerQuestionFr": "Comment écrire prendre au conditionnel présent avec chaque sujet ?",
+        "steps": [
+          {
+            "exampleFr": "Je prendrais un livre sur l’étagère.",
+            "explanationFr": "La forme prendrais peut servir à présenter un fait imaginé, un souhait ou une demande polie selon le contexte. C’est le conditionnel présent du verbe prendre. Le verbe conjugué s’écrit en un seul mot."
+          },
+          {
+            "exampleFr": "prendre → prendr- + -ais → prendrais",
+            "explanationFr": "Le début qui reste le même dans les six formes est prendr-. On l’appelle la base, ou le radical. Enlève le e final du verbe pour obtenir cette base. Ajoute ensuite la terminaison qui correspond au sujet."
+          },
+          {
+            "exampleFr": "je : prendrais\ntu : prendrais\nil, elle ou on : prendrait\nnous : prendrions\nvous : prendriez\nils ou elles : prendraient",
+            "explanationFr": "Les terminaisons du conditionnel présent sont celles de l’imparfait : -ais, -ais, -ait, -ions, -iez et -aient. La base est celle du futur simple et se termine par r. Garde ce r."
+          },
+          {
+            "exampleFr": "je : prendrais ; tu : prendrais ; il ou elle : prendrait",
+            "explanationFr": "À l’écrit, je et tu prennent -ais, tandis que il ou elle prend -ait. Ces terminaisons se ressemblent à l’oral : utilise le sujet pour choisir les lettres."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:conditionnel-present:prendre:1",
+            "promptFr": "Complète avec prendre au conditionnel présent. Écris seulement le verbe : Je ___ un livre sur l’étagère.",
+            "answerFr": "prendrais",
+            "hintFr": "Avec je, ajoute -ais à la base prendr-.",
+            "explanationFr": "Je prendrais un livre sur l’étagère. La base prendr- et la terminaison -ais donnent prendrais."
+          },
+          {
+            "id": "guided:conditionnel-present:prendre:2",
+            "promptFr": "Complète avec prendre au conditionnel présent. Écris seulement le verbe : Tu ___ le chemin du parc.",
+            "answerFr": "prendrais",
+            "hintFr": "Avec tu, ajoute -ais à la base prendr-.",
+            "explanationFr": "Tu prendrais le chemin du parc. La base prendr- et la terminaison -ais donnent prendrais."
+          },
+          {
+            "id": "guided:conditionnel-present:prendre:3",
+            "promptFr": "Complète avec prendre au conditionnel présent. Écris seulement le verbe : Elle ___ une photo.",
+            "answerFr": "prendrait",
+            "hintFr": "Avec il, elle ou on, ajoute -ait à la base prendr-.",
+            "explanationFr": "Elle prendrait une photo. La base prendr- et la terminaison -ait donnent prendrait."
+          },
+          {
+            "id": "guided:conditionnel-present:prendre:4",
+            "promptFr": "Complète avec prendre au conditionnel présent. Écris seulement le verbe : Nous ___ notre temps.",
+            "answerFr": "prendrions",
+            "hintFr": "Avec nous, ajoute -ions à la base prendr-.",
+            "explanationFr": "Nous prendrions notre temps. La base prendr- et la terminaison -ions donnent prendrions."
+          },
+          {
+            "id": "guided:conditionnel-present:prendre:5",
+            "promptFr": "Complète avec prendre au conditionnel présent. Écris seulement le verbe : Vous ___ le train du soir.",
+            "answerFr": "prendriez",
+            "hintFr": "Avec vous, ajoute -iez à la base prendr-.",
+            "explanationFr": "Vous prendriez le train du soir. La base prendr- et la terminaison -iez donnent prendriez."
+          },
+          {
+            "id": "guided:conditionnel-present:prendre:6",
+            "promptFr": "Complète avec prendre au conditionnel présent. Écris seulement le verbe : Ils ___ des notes.",
+            "answerFr": "prendraient",
+            "hintFr": "Avec ils ou elles, ajoute -aient à la base prendr-.",
+            "explanationFr": "Ils prendraient des notes. La base prendr- et la terminaison -aient donnent prendraient."
+          }
+        ],
+        "takeawayFr": "Pour prendre au conditionnel présent, pars de prendr- puis ajoute -ais, -ais, -ait, -ions, -iez ou -aient selon le sujet.",
+        "boundaryFr": "Cette leçon entraîne les formes de prendre au conditionnel présent. Elle ne prouve pas que tu sais choisir entre conditionnel, futur et imparfait dans un texte, ni choisir le temps après si.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "prendre",
+              "form": "prendre"
+            }
+          ],
+          "sentences": [
+            "Je prendrais un livre sur l’étagère.",
+            "prendre → prendr- + -ais → prendrais",
+            "je : prendrais\ntu : prendrais\nil, elle ou on : prendrait\nnous : prendrions\nvous : prendriez\nils ou elles : prendraient",
+            "je : prendrais ; tu : prendrais ; il ou elle : prendrait",
+            "Je prendrais un livre sur l’étagère.",
+            "Tu prendrais le chemin du parc.",
+            "Elle prendrait une photo.",
+            "Nous prendrions notre temps.",
+            "Vous prendriez le train du soir.",
+            "Ils prendraient des notes."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:conditionnel-present:venir",
+      "contentChecksum": "sha256:9343f5a94ae4c1e4be32e2c9bd99c3bd9dd3934770e0e0fb33c1a2e50c9dfa21",
+      "skillId": "produire_conditionnel_present::writing-controlled-production::verb:venir",
+      "nodeKey": "produire_conditionnel_present",
+      "facetKey": "produire_conditionnel_present::verb:venir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "reconnaitre_conditionnel_present::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:163d646efb9e5b6bda11507a4d8b55f8b86589dc9cf1055d3b7af954d3771552",
+        "sentence:sha256:1fef88f58c3bc38f1cacdabd408f90d38a7da963ee7b03205ad7d9bebc4cc3ff",
+        "sentence:sha256:2e20847f19788ed0db97e696d154a203e4e6f53b6fa92bbcd32a9d62d6b8c3a6",
+        "sentence:sha256:39a75fe940bbb9d020740b9c3a1c6703fd7ffc223c58cc9557a22084c27acea1",
+        "sentence:sha256:8b5b8c906b3fd23e7c9de07d9545341e183180507bb81b1464eb1cec28d7854a",
+        "sentence:sha256:8c789672ad079ec20f26898305a83c86fc1417e1e13e1e7d63f7a3dd9a354386",
+        "sentence:sha256:d42caa0c628c8e2f275e4f2eccf64eba78a8803f617710fd8858ab3c41a54ee9",
+        "sentence:sha256:d8f73376f09e2e0430fd65ca401642e2da659f4f7bcaa4ecf6e58c23f18d0c03",
+        "sentence:sha256:e2991d7c45cc4769772ac0ea2580f82e558bdff423146aa57f7847885772fd95",
+        "word:sha256:db1839abb9ee522ff2699acf188525b01c33d9cdcf68feb7fb4e98616a0434fe"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:conditionnel-present:venir",
+        "nodeKey": "produire_conditionnel_present",
+        "facetKey": "produire_conditionnel_present::verb:venir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire venir au conditionnel présent",
+        "learnerQuestionFr": "Comment écrire venir au conditionnel présent avec chaque sujet ?",
+        "steps": [
+          {
+            "exampleFr": "Je viendrais voir ton exposition.",
+            "explanationFr": "La forme viendrais peut servir à présenter un fait imaginé, un souhait ou une demande polie selon le contexte. C’est le conditionnel présent du verbe venir. Le verbe conjugué s’écrit en un seul mot."
+          },
+          {
+            "exampleFr": "venir → viendr- + -ais → viendrais",
+            "explanationFr": "Le début qui reste le même dans les six formes est viendr-. On l’appelle la base, ou le radical. La base viendr- est particulière à ce verbe : retiens-la avec un exemple. Ajoute ensuite la terminaison qui correspond au sujet."
+          },
+          {
+            "exampleFr": "je : viendrais\ntu : viendrais\nil, elle ou on : viendrait\nnous : viendrions\nvous : viendriez\nils ou elles : viendraient",
+            "explanationFr": "Les terminaisons du conditionnel présent sont celles de l’imparfait : -ais, -ais, -ait, -ions, -iez et -aient. La base est celle du futur simple et se termine par r. Garde ce r."
+          },
+          {
+            "exampleFr": "je : viendrais ; tu : viendrais ; il ou elle : viendrait",
+            "explanationFr": "À l’écrit, je et tu prennent -ais, tandis que il ou elle prend -ait. Ces terminaisons se ressemblent à l’oral : utilise le sujet pour choisir les lettres."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:conditionnel-present:venir:1",
+            "promptFr": "Complète avec venir au conditionnel présent. Écris seulement le verbe : Je ___ voir ton exposition.",
+            "answerFr": "viendrais",
+            "hintFr": "Avec je, ajoute -ais à la base viendr-.",
+            "explanationFr": "Je viendrais voir ton exposition. La base viendr- et la terminaison -ais donnent viendrais."
+          },
+          {
+            "id": "guided:conditionnel-present:venir:2",
+            "promptFr": "Complète avec venir au conditionnel présent. Écris seulement le verbe : Tu ___ avec ton frère.",
+            "answerFr": "viendrais",
+            "hintFr": "Avec tu, ajoute -ais à la base viendr-.",
+            "explanationFr": "Tu viendrais avec ton frère. La base viendr- et la terminaison -ais donnent viendrais."
+          },
+          {
+            "id": "guided:conditionnel-present:venir:3",
+            "promptFr": "Complète avec venir au conditionnel présent. Écris seulement le verbe : On ___ à pied.",
+            "answerFr": "viendrait",
+            "hintFr": "Avec il, elle ou on, ajoute -ait à la base viendr-.",
+            "explanationFr": "On viendrait à pied. La base viendr- et la terminaison -ait donnent viendrait."
+          },
+          {
+            "id": "guided:conditionnel-present:venir:4",
+            "promptFr": "Complète avec venir au conditionnel présent. Écris seulement le verbe : Nous ___ de la bibliothèque.",
+            "answerFr": "viendrions",
+            "hintFr": "Avec nous, ajoute -ions à la base viendr-.",
+            "explanationFr": "Nous viendrions de la bibliothèque. La base viendr- et la terminaison -ions donnent viendrions."
+          },
+          {
+            "id": "guided:conditionnel-present:venir:5",
+            "promptFr": "Complète avec venir au conditionnel présent. Écris seulement le verbe : Vous ___ au bon moment.",
+            "answerFr": "viendriez",
+            "hintFr": "Avec vous, ajoute -iez à la base viendr-.",
+            "explanationFr": "Vous viendriez au bon moment. La base viendr- et la terminaison -iez donnent viendriez."
+          },
+          {
+            "id": "guided:conditionnel-present:venir:6",
+            "promptFr": "Complète avec venir au conditionnel présent. Écris seulement le verbe : Elles ___ chercher leurs cahiers.",
+            "answerFr": "viendraient",
+            "hintFr": "Avec ils ou elles, ajoute -aient à la base viendr-.",
+            "explanationFr": "Elles viendraient chercher leurs cahiers. La base viendr- et la terminaison -aient donnent viendraient."
+          }
+        ],
+        "takeawayFr": "Pour venir au conditionnel présent, pars de viendr- puis ajoute -ais, -ais, -ait, -ions, -iez ou -aient selon le sujet.",
+        "boundaryFr": "Cette leçon entraîne les formes de venir au conditionnel présent. Elle ne prouve pas que tu sais choisir entre conditionnel, futur et imparfait dans un texte, ni choisir le temps après si.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "venir",
+              "form": "venir"
+            }
+          ],
+          "sentences": [
+            "Je viendrais voir ton exposition.",
+            "venir → viendr- + -ais → viendrais",
+            "je : viendrais\ntu : viendrais\nil, elle ou on : viendrait\nnous : viendrions\nvous : viendriez\nils ou elles : viendraient",
+            "je : viendrais ; tu : viendrais ; il ou elle : viendrait",
+            "Je viendrais voir ton exposition.",
+            "Tu viendrais avec ton frère.",
+            "On viendrait à pied.",
+            "Nous viendrions de la bibliothèque.",
+            "Vous viendriez au bon moment.",
+            "Elles viendraient chercher leurs cahiers."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:conditionnel-present:partir",
+      "contentChecksum": "sha256:7148a91904d967181ddf9363f3c0578d22bd36959dd8010aa83182ea60af07d8",
+      "skillId": "produire_conditionnel_present::writing-controlled-production::verb:partir",
+      "nodeKey": "produire_conditionnel_present",
+      "facetKey": "produire_conditionnel_present::verb:partir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "reconnaitre_conditionnel_present::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:23254cb36ce31c12522561fdaf325f367050f931e5415f0f9b776f2061a399cd",
+        "sentence:sha256:2b1f39acaecdc274965602cbb7d67a6612a2b2c089bcc4c46bcccc210b449281",
+        "sentence:sha256:2f77fb38caa0f75d11b016df9fa58cf1ce76f52d4a2a1daf299f330d487c5eb6",
+        "sentence:sha256:331eb5b80e1d1abcd0ea3a810805fcd83f842eae5dfbc7afb216e8f210c463e3",
+        "sentence:sha256:39f5858958a6fb112fd99e37a2af5fa5cb50111b82953c8cb1ea9879c4bb4122",
+        "sentence:sha256:5626f4fc72a629d0df3c84a0dce51d0414b8663ff900b50a115608c222899db5",
+        "sentence:sha256:72be54471bab3b01b4da71b59f1fde27730836dad1007ed591573040be422ef6",
+        "sentence:sha256:77bac03c1fe132501025c5030598e6b46a2dd033b8d2dbd8cdb3a1867a0c7f1c",
+        "sentence:sha256:bc5ee8e6b4d66b1f17b0d11bab2f5f582bbb0d14904137aaaafa6560aaea2f03",
+        "word:sha256:c413bda28a8465e5a51d39f762f1ed12ee9c7657a3540a6d503c484154e2b554"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:conditionnel-present:partir",
+        "nodeKey": "produire_conditionnel_present",
+        "facetKey": "produire_conditionnel_present::verb:partir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire partir au conditionnel présent",
+        "learnerQuestionFr": "Comment écrire partir au conditionnel présent avec chaque sujet ?",
+        "steps": [
+          {
+            "exampleFr": "Je partirais après le déjeuner.",
+            "explanationFr": "La forme partirais peut servir à présenter un fait imaginé, un souhait ou une demande polie selon le contexte. C’est le conditionnel présent du verbe partir. Le verbe conjugué s’écrit en un seul mot."
+          },
+          {
+            "exampleFr": "partir → partir- + -ais → partirais",
+            "explanationFr": "Le début qui reste le même dans les six formes est partir-. On l’appelle la base, ou le radical. Garde le verbe entier comme base. Ajoute ensuite la terminaison qui correspond au sujet."
+          },
+          {
+            "exampleFr": "je : partirais\ntu : partirais\nil, elle ou on : partirait\nnous : partirions\nvous : partiriez\nils ou elles : partiraient",
+            "explanationFr": "Les terminaisons du conditionnel présent sont celles de l’imparfait : -ais, -ais, -ait, -ions, -iez et -aient. La base est celle du futur simple et se termine par r. Garde ce r."
+          },
+          {
+            "exampleFr": "je : partirais ; tu : partirais ; il ou elle : partirait",
+            "explanationFr": "À l’écrit, je et tu prennent -ais, tandis que il ou elle prend -ait. Ces terminaisons se ressemblent à l’oral : utilise le sujet pour choisir les lettres."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:conditionnel-present:partir:1",
+            "promptFr": "Complète avec partir au conditionnel présent. Écris seulement le verbe : Je ___ après le déjeuner.",
+            "answerFr": "partirais",
+            "hintFr": "Avec je, ajoute -ais à la base partir-.",
+            "explanationFr": "Je partirais après le déjeuner. La base partir- et la terminaison -ais donnent partirais."
+          },
+          {
+            "id": "guided:conditionnel-present:partir:2",
+            "promptFr": "Complète avec partir au conditionnel présent. Écris seulement le verbe : Tu ___ en randonnée.",
+            "answerFr": "partirais",
+            "hintFr": "Avec tu, ajoute -ais à la base partir-.",
+            "explanationFr": "Tu partirais en randonnée. La base partir- et la terminaison -ais donnent partirais."
+          },
+          {
+            "id": "guided:conditionnel-present:partir:3",
+            "promptFr": "Complète avec partir au conditionnel présent. Écris seulement le verbe : Elle ___ avec sa tante.",
+            "answerFr": "partirait",
+            "hintFr": "Avec il, elle ou on, ajoute -ait à la base partir-.",
+            "explanationFr": "Elle partirait avec sa tante. La base partir- et la terminaison -ait donnent partirait."
+          },
+          {
+            "id": "guided:conditionnel-present:partir:4",
+            "promptFr": "Complète avec partir au conditionnel présent. Écris seulement le verbe : Nous ___ dans dix minutes.",
+            "answerFr": "partirions",
+            "hintFr": "Avec nous, ajoute -ions à la base partir-.",
+            "explanationFr": "Nous partirions dans dix minutes. La base partir- et la terminaison -ions donnent partirions."
+          },
+          {
+            "id": "guided:conditionnel-present:partir:5",
+            "promptFr": "Complète avec partir au conditionnel présent. Écris seulement le verbe : Vous ___ par cette sortie.",
+            "answerFr": "partiriez",
+            "hintFr": "Avec vous, ajoute -iez à la base partir-.",
+            "explanationFr": "Vous partiriez par cette sortie. La base partir- et la terminaison -iez donnent partiriez."
+          },
+          {
+            "id": "guided:conditionnel-present:partir:6",
+            "promptFr": "Complète avec partir au conditionnel présent. Écris seulement le verbe : Ils ___ ensemble.",
+            "answerFr": "partiraient",
+            "hintFr": "Avec ils ou elles, ajoute -aient à la base partir-.",
+            "explanationFr": "Ils partiraient ensemble. La base partir- et la terminaison -aient donnent partiraient."
+          }
+        ],
+        "takeawayFr": "Pour partir au conditionnel présent, pars de partir- puis ajoute -ais, -ais, -ait, -ions, -iez ou -aient selon le sujet.",
+        "boundaryFr": "Cette leçon entraîne les formes de partir au conditionnel présent. Elle ne prouve pas que tu sais choisir entre conditionnel, futur et imparfait dans un texte, ni choisir le temps après si.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "partir",
+              "form": "partir"
+            }
+          ],
+          "sentences": [
+            "Je partirais après le déjeuner.",
+            "partir → partir- + -ais → partirais",
+            "je : partirais\ntu : partirais\nil, elle ou on : partirait\nnous : partirions\nvous : partiriez\nils ou elles : partiraient",
+            "je : partirais ; tu : partirais ; il ou elle : partirait",
+            "Je partirais après le déjeuner.",
+            "Tu partirais en randonnée.",
+            "Elle partirait avec sa tante.",
+            "Nous partirions dans dix minutes.",
+            "Vous partiriez par cette sortie.",
+            "Ils partiraient ensemble."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:conditionnel-present:sortir",
+      "contentChecksum": "sha256:e9bdfca1c512400508222e9b279f6d8f920d8dcf5efe4ddeeb9cd6682ba000d5",
+      "skillId": "produire_conditionnel_present::writing-controlled-production::verb:sortir",
+      "nodeKey": "produire_conditionnel_present",
+      "facetKey": "produire_conditionnel_present::verb:sortir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "reconnaitre_conditionnel_present::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:09639af7130ab7acae9160fa8e67efafdfbf9d8c95b281f37583a6b29409432f",
+        "sentence:sha256:4b72911fa781e9fbc8690c4997649eb5633413849bcc712a03c1b8b1c2f3aef4",
+        "sentence:sha256:6a21052ffddee78c72f4777d758d77b8e315fc3d698afc6b0f355db72dd300bf",
+        "sentence:sha256:6ee169068ca619ce09b532cc0a29b06bf92e6d302a96fc021cdff088ec616e11",
+        "sentence:sha256:7ab23f250a9c0d21f8ee48fe68be74f6b740e038f078e9f0c0498567f34332c7",
+        "sentence:sha256:c179fa6f86dd4d9a6c08c32b011cc11c96598a5be078c653164787976a04680e",
+        "sentence:sha256:ca5ce696ad4caecddbf2daaf75637ee6dfbde273ee6996a75dc4431c8352ddc0",
+        "sentence:sha256:d10238a414f507cff3864be3dc2f0a73ffe16f249f99bad238ac81a67a124af8",
+        "sentence:sha256:fb1ec33ad9b8aae047d9e1875241c157e0bf8528beb7a750d0f99a07f144340c",
+        "word:sha256:fa2d47f055148af90afa02fbeeca752cd135f6694e785747598c6f3987265454"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:conditionnel-present:sortir",
+        "nodeKey": "produire_conditionnel_present",
+        "facetKey": "produire_conditionnel_present::verb:sortir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire sortir au conditionnel présent",
+        "learnerQuestionFr": "Comment écrire sortir au conditionnel présent avec chaque sujet ?",
+        "steps": [
+          {
+            "exampleFr": "Je sortirais de la classe.",
+            "explanationFr": "La forme sortirais peut servir à présenter un fait imaginé, un souhait ou une demande polie selon le contexte. C’est le conditionnel présent du verbe sortir. Le verbe conjugué s’écrit en un seul mot."
+          },
+          {
+            "exampleFr": "sortir → sortir- + -ais → sortirais",
+            "explanationFr": "Le début qui reste le même dans les six formes est sortir-. On l’appelle la base, ou le radical. Garde le verbe entier comme base. Ajoute ensuite la terminaison qui correspond au sujet."
+          },
+          {
+            "exampleFr": "je : sortirais\ntu : sortirais\nil, elle ou on : sortirait\nnous : sortirions\nvous : sortiriez\nils ou elles : sortiraient",
+            "explanationFr": "Les terminaisons du conditionnel présent sont celles de l’imparfait : -ais, -ais, -ait, -ions, -iez et -aient. La base est celle du futur simple et se termine par r. Garde ce r."
+          },
+          {
+            "exampleFr": "je : sortirais ; tu : sortirais ; il ou elle : sortirait",
+            "explanationFr": "À l’écrit, je et tu prennent -ais, tandis que il ou elle prend -ait. Ces terminaisons se ressemblent à l’oral : utilise le sujet pour choisir les lettres."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:conditionnel-present:sortir:1",
+            "promptFr": "Complète avec sortir au conditionnel présent. Écris seulement le verbe : Je ___ de la classe.",
+            "answerFr": "sortirais",
+            "hintFr": "Avec je, ajoute -ais à la base sortir-.",
+            "explanationFr": "Je sortirais de la classe. La base sortir- et la terminaison -ais donnent sortirais."
+          },
+          {
+            "id": "guided:conditionnel-present:sortir:2",
+            "promptFr": "Complète avec sortir au conditionnel présent. Écris seulement le verbe : Tu ___ une feuille de ton sac.",
+            "answerFr": "sortirais",
+            "hintFr": "Avec tu, ajoute -ais à la base sortir-.",
+            "explanationFr": "Tu sortirais une feuille de ton sac. La base sortir- et la terminaison -ais donnent sortirais."
+          },
+          {
+            "id": "guided:conditionnel-present:sortir:3",
+            "promptFr": "Complète avec sortir au conditionnel présent. Écris seulement le verbe : On ___ dans la cour.",
+            "answerFr": "sortirait",
+            "hintFr": "Avec il, elle ou on, ajoute -ait à la base sortir-.",
+            "explanationFr": "On sortirait dans la cour. La base sortir- et la terminaison -ait donnent sortirait."
+          },
+          {
+            "id": "guided:conditionnel-present:sortir:4",
+            "promptFr": "Complète avec sortir au conditionnel présent. Écris seulement le verbe : Nous ___ les chaises.",
+            "answerFr": "sortirions",
+            "hintFr": "Avec nous, ajoute -ions à la base sortir-.",
+            "explanationFr": "Nous sortirions les chaises. La base sortir- et la terminaison -ions donnent sortirions."
+          },
+          {
+            "id": "guided:conditionnel-present:sortir:5",
+            "promptFr": "Complète avec sortir au conditionnel présent. Écris seulement le verbe : Vous ___ après le signal.",
+            "answerFr": "sortiriez",
+            "hintFr": "Avec vous, ajoute -iez à la base sortir-.",
+            "explanationFr": "Vous sortiriez après le signal. La base sortir- et la terminaison -iez donnent sortiriez."
+          },
+          {
+            "id": "guided:conditionnel-present:sortir:6",
+            "promptFr": "Complète avec sortir au conditionnel présent. Écris seulement le verbe : Elles ___ du cinéma.",
+            "answerFr": "sortiraient",
+            "hintFr": "Avec ils ou elles, ajoute -aient à la base sortir-.",
+            "explanationFr": "Elles sortiraient du cinéma. La base sortir- et la terminaison -aient donnent sortiraient."
+          }
+        ],
+        "takeawayFr": "Pour sortir au conditionnel présent, pars de sortir- puis ajoute -ais, -ais, -ait, -ions, -iez ou -aient selon le sujet.",
+        "boundaryFr": "Cette leçon entraîne les formes de sortir au conditionnel présent. Elle ne prouve pas que tu sais choisir entre conditionnel, futur et imparfait dans un texte, ni choisir le temps après si.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "sortir",
+              "form": "sortir"
+            }
+          ],
+          "sentences": [
+            "Je sortirais de la classe.",
+            "sortir → sortir- + -ais → sortirais",
+            "je : sortirais\ntu : sortirais\nil, elle ou on : sortirait\nnous : sortirions\nvous : sortiriez\nils ou elles : sortiraient",
+            "je : sortirais ; tu : sortirais ; il ou elle : sortirait",
+            "Je sortirais de la classe.",
+            "Tu sortirais une feuille de ton sac.",
+            "On sortirait dans la cour.",
+            "Nous sortirions les chaises.",
+            "Vous sortiriez après le signal.",
+            "Elles sortiraient du cinéma."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:conditionnel-present:dire",
+      "contentChecksum": "sha256:432073c6590216ae5a4d767ae236f6da21c2ab4ac5978583e739116774f7f7ed",
+      "skillId": "produire_conditionnel_present::writing-controlled-production::verb:dire",
+      "nodeKey": "produire_conditionnel_present",
+      "facetKey": "produire_conditionnel_present::verb:dire",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "reconnaitre_conditionnel_present::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:1f7bcac5bd386390ae3f2d909e59c5a8eea450b76bb12d06364f5736b522fbd3",
+        "sentence:sha256:49758204de2ded5d547245377723c6310db31e438df689e9d7e7959fad82df1c",
+        "sentence:sha256:5a3e0db6976a6761a8c1b72aade93f52d55030fb8a834adc622134ce2934994e",
+        "sentence:sha256:5e62843144bda2ea61255a63b492750c8acbe384bbdae8fe3fdee78eadbdc67a",
+        "sentence:sha256:62e2ed39d303e6e9e985156aec3a9636ada6e334f3e26d0a1e2c607ea15d87cb",
+        "sentence:sha256:76ceec528911f6fbb4c451486b7d2b48cf128d557519c3fd88465205ebf968e3",
+        "sentence:sha256:7a9292edafc494691351e4cff89950614b2a328c91f7c4118fecd07b1d08c4cc",
+        "sentence:sha256:c98f9a61e74bbd2da9b257117fbdabec8176df9ecf527b8d66ae63bdf41ee56a",
+        "sentence:sha256:f1ce5f295e006b11daf8b45edcfbb91c6bbaf8522b9462c28bec554f86ef82ea",
+        "word:sha256:ed7e2402cd873904858fd72b0d99ff0fbb97d1cdc7e526b5da0980cd64cb8939"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:conditionnel-present:dire",
+        "nodeKey": "produire_conditionnel_present",
+        "facetKey": "produire_conditionnel_present::verb:dire",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire dire au conditionnel présent",
+        "learnerQuestionFr": "Comment écrire dire au conditionnel présent avec chaque sujet ?",
+        "steps": [
+          {
+            "exampleFr": "Je dirais ce que je pense.",
+            "explanationFr": "La forme dirais peut servir à présenter un fait imaginé, un souhait ou une demande polie selon le contexte. C’est le conditionnel présent du verbe dire. Le verbe conjugué s’écrit en un seul mot."
+          },
+          {
+            "exampleFr": "dire → dir- + -ais → dirais",
+            "explanationFr": "Le début qui reste le même dans les six formes est dir-. On l’appelle la base, ou le radical. Enlève le e final du verbe pour obtenir cette base. Ajoute ensuite la terminaison qui correspond au sujet."
+          },
+          {
+            "exampleFr": "je : dirais\ntu : dirais\nil, elle ou on : dirait\nnous : dirions\nvous : diriez\nils ou elles : diraient",
+            "explanationFr": "Les terminaisons du conditionnel présent sont celles de l’imparfait : -ais, -ais, -ait, -ions, -iez et -aient. La base est celle du futur simple et se termine par r. Garde ce r."
+          },
+          {
+            "exampleFr": "je : dirais ; tu : dirais ; il ou elle : dirait",
+            "explanationFr": "À l’écrit, je et tu prennent -ais, tandis que il ou elle prend -ait. Ces terminaisons se ressemblent à l’oral : utilise le sujet pour choisir les lettres."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:conditionnel-present:dire:1",
+            "promptFr": "Complète avec dire au conditionnel présent. Écris seulement le verbe : Je ___ ce que je pense.",
+            "answerFr": "dirais",
+            "hintFr": "Avec je, ajoute -ais à la base dir-.",
+            "explanationFr": "Je dirais ce que je pense. La base dir- et la terminaison -ais donnent dirais."
+          },
+          {
+            "id": "guided:conditionnel-present:dire:2",
+            "promptFr": "Complète avec dire au conditionnel présent. Écris seulement le verbe : Tu ___ bonjour à la voisine.",
+            "answerFr": "dirais",
+            "hintFr": "Avec tu, ajoute -ais à la base dir-.",
+            "explanationFr": "Tu dirais bonjour à la voisine. La base dir- et la terminaison -ais donnent dirais."
+          },
+          {
+            "id": "guided:conditionnel-present:dire:3",
+            "promptFr": "Complète avec dire au conditionnel présent. Écris seulement le verbe : Il ___ son prénom.",
+            "answerFr": "dirait",
+            "hintFr": "Avec il, elle ou on, ajoute -ait à la base dir-.",
+            "explanationFr": "Il dirait son prénom. La base dir- et la terminaison -ait donnent dirait."
+          },
+          {
+            "id": "guided:conditionnel-present:dire:4",
+            "promptFr": "Complète avec dire au conditionnel présent. Écris seulement le verbe : Nous ___ la vérité.",
+            "answerFr": "dirions",
+            "hintFr": "Avec nous, ajoute -ions à la base dir-.",
+            "explanationFr": "Nous dirions la vérité. La base dir- et la terminaison -ions donnent dirions."
+          },
+          {
+            "id": "guided:conditionnel-present:dire:5",
+            "promptFr": "Complète avec dire au conditionnel présent. Écris seulement le verbe : Vous ___ la même chose.",
+            "answerFr": "diriez",
+            "hintFr": "Avec vous, ajoute -iez à la base dir-.",
+            "explanationFr": "Vous diriez la même chose. La base dir- et la terminaison -iez donnent diriez."
+          },
+          {
+            "id": "guided:conditionnel-present:dire:6",
+            "promptFr": "Complète avec dire au conditionnel présent. Écris seulement le verbe : Elles ___ quelques mots.",
+            "answerFr": "diraient",
+            "hintFr": "Avec ils ou elles, ajoute -aient à la base dir-.",
+            "explanationFr": "Elles diraient quelques mots. La base dir- et la terminaison -aient donnent diraient."
+          }
+        ],
+        "takeawayFr": "Pour dire au conditionnel présent, pars de dir- puis ajoute -ais, -ais, -ait, -ions, -iez ou -aient selon le sujet.",
+        "boundaryFr": "Cette leçon entraîne les formes de dire au conditionnel présent. Elle ne prouve pas que tu sais choisir entre conditionnel, futur et imparfait dans un texte, ni choisir le temps après si.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "dire",
+              "form": "dire"
+            }
+          ],
+          "sentences": [
+            "Je dirais ce que je pense.",
+            "dire → dir- + -ais → dirais",
+            "je : dirais\ntu : dirais\nil, elle ou on : dirait\nnous : dirions\nvous : diriez\nils ou elles : diraient",
+            "je : dirais ; tu : dirais ; il ou elle : dirait",
+            "Je dirais ce que je pense.",
+            "Tu dirais bonjour à la voisine.",
+            "Il dirait son prénom.",
+            "Nous dirions la vérité.",
+            "Vous diriez la même chose.",
+            "Elles diraient quelques mots."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:conditionnel-present:voir",
+      "contentChecksum": "sha256:a10c1f4c42393bf72d0c180d2b29af6ac26cd7d68a8b0c8c1974b4a7ea800691",
+      "skillId": "produire_conditionnel_present::writing-controlled-production::verb:voir",
+      "nodeKey": "produire_conditionnel_present",
+      "facetKey": "produire_conditionnel_present::verb:voir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "reconnaitre_conditionnel_present::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:13294d8908c49e92554ac5fbf42b3278386e5c15a7deb8daa18d21c3c22f972b",
+        "sentence:sha256:138f594d8e1fb5dfd2303fea1bd9f2c98455f36b16dff6f58ee8a7f9222edbd2",
+        "sentence:sha256:4be3bab347f04974287c95f64563ce3165a9ef4296edcb6e7b7444daebbd020e",
+        "sentence:sha256:5df4f0988cceacf5b12f49d80586369fd4266083f20d4f884bd0080495004315",
+        "sentence:sha256:683c84a44a721a0d16556e99802060e9a4fae292b5e2f975baa7580aa236041d",
+        "sentence:sha256:6a8645d5dbc508311a58fde3e1e8a0c5ed8fb7caf5cf39b88452ee8caa03339b",
+        "sentence:sha256:a4eab8b637f65c96f457a2dc18a88b984d4f7aaaa6355e030398a82f300665f7",
+        "sentence:sha256:af415b943bfc268b82ecbce575aef059c2f27a1af6894f290247bd0028f994c9",
+        "sentence:sha256:f7227e05047835269c518c3120e2ea0dd3390b9efa2a32bfa64ebc072b2f595d",
+        "word:sha256:68b20210fa2d90732194f585ea10184fd5e841c860b83e7a5ed0c0a945ec2463"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:conditionnel-present:voir",
+        "nodeKey": "produire_conditionnel_present",
+        "facetKey": "produire_conditionnel_present::verb:voir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire voir au conditionnel présent",
+        "learnerQuestionFr": "Comment écrire voir au conditionnel présent avec chaque sujet ?",
+        "steps": [
+          {
+            "exampleFr": "Je verrais le panneau.",
+            "explanationFr": "La forme verrais peut servir à présenter un fait imaginé, un souhait ou une demande polie selon le contexte. C’est le conditionnel présent du verbe voir. Le verbe conjugué s’écrit en un seul mot."
+          },
+          {
+            "exampleFr": "voir → verr- + -ais → verrais",
+            "explanationFr": "Le début qui reste le même dans les six formes est verr-. On l’appelle la base, ou le radical. La base verr- est particulière à ce verbe : retiens-la avec un exemple. Ajoute ensuite la terminaison qui correspond au sujet."
+          },
+          {
+            "exampleFr": "je : verrais\ntu : verrais\nil, elle ou on : verrait\nnous : verrions\nvous : verriez\nils ou elles : verraient",
+            "explanationFr": "Les terminaisons du conditionnel présent sont celles de l’imparfait : -ais, -ais, -ait, -ions, -iez et -aient. La base est celle du futur simple et se termine par r. Garde ce r."
+          },
+          {
+            "exampleFr": "je : verrais ; tu : verrais ; il ou elle : verrait",
+            "explanationFr": "À l’écrit, je et tu prennent -ais, tandis que il ou elle prend -ait. Ces terminaisons se ressemblent à l’oral : utilise le sujet pour choisir les lettres."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:conditionnel-present:voir:1",
+            "promptFr": "Complète avec voir au conditionnel présent. Écris seulement le verbe : Je ___ le panneau.",
+            "answerFr": "verrais",
+            "hintFr": "Avec je, ajoute -ais à la base verr-.",
+            "explanationFr": "Je verrais le panneau. La base verr- et la terminaison -ais donnent verrais."
+          },
+          {
+            "id": "guided:conditionnel-present:voir:2",
+            "promptFr": "Complète avec voir au conditionnel présent. Écris seulement le verbe : Tu ___ une étoile.",
+            "answerFr": "verrais",
+            "hintFr": "Avec tu, ajoute -ais à la base verr-.",
+            "explanationFr": "Tu verrais une étoile. La base verr- et la terminaison -ais donnent verrais."
+          },
+          {
+            "id": "guided:conditionnel-present:voir:3",
+            "promptFr": "Complète avec voir au conditionnel présent. Écris seulement le verbe : On ___ la rivière.",
+            "answerFr": "verrait",
+            "hintFr": "Avec il, elle ou on, ajoute -ait à la base verr-.",
+            "explanationFr": "On verrait la rivière. La base verr- et la terminaison -ait donnent verrait."
+          },
+          {
+            "id": "guided:conditionnel-present:voir:4",
+            "promptFr": "Complète avec voir au conditionnel présent. Écris seulement le verbe : Nous ___ les joueurs de près.",
+            "answerFr": "verrions",
+            "hintFr": "Avec nous, ajoute -ions à la base verr-.",
+            "explanationFr": "Nous verrions les joueurs de près. La base verr- et la terminaison -ions donnent verrions."
+          },
+          {
+            "id": "guided:conditionnel-present:voir:5",
+            "promptFr": "Complète avec voir au conditionnel présent. Écris seulement le verbe : Vous ___ le dessin en entier.",
+            "answerFr": "verriez",
+            "hintFr": "Avec vous, ajoute -iez à la base verr-.",
+            "explanationFr": "Vous verriez le dessin en entier. La base verr- et la terminaison -iez donnent verriez."
+          },
+          {
+            "id": "guided:conditionnel-present:voir:6",
+            "promptFr": "Complète avec voir au conditionnel présent. Écris seulement le verbe : Ils ___ leurs amis arriver.",
+            "answerFr": "verraient",
+            "hintFr": "Avec ils ou elles, ajoute -aient à la base verr-.",
+            "explanationFr": "Ils verraient leurs amis arriver. La base verr- et la terminaison -aient donnent verraient."
+          }
+        ],
+        "takeawayFr": "Pour voir au conditionnel présent, pars de verr- puis ajoute -ais, -ais, -ait, -ions, -iez ou -aient selon le sujet.",
+        "boundaryFr": "Cette leçon entraîne les formes de voir au conditionnel présent. Elle ne prouve pas que tu sais choisir entre conditionnel, futur et imparfait dans un texte, ni choisir le temps après si.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "voir",
+              "form": "voir"
+            }
+          ],
+          "sentences": [
+            "Je verrais le panneau.",
+            "voir → verr- + -ais → verrais",
+            "je : verrais\ntu : verrais\nil, elle ou on : verrait\nnous : verrions\nvous : verriez\nils ou elles : verraient",
+            "je : verrais ; tu : verrais ; il ou elle : verrait",
+            "Je verrais le panneau.",
+            "Tu verrais une étoile.",
+            "On verrait la rivière.",
+            "Nous verrions les joueurs de près.",
+            "Vous verriez le dessin en entier.",
+            "Ils verraient leurs amis arriver."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:conditionnel-present:pouvoir",
+      "contentChecksum": "sha256:9179891780d7850c063e4e92a87208ac8dfd2db92ac729f8fba95304042c68bb",
+      "skillId": "produire_conditionnel_present::writing-controlled-production::verb:pouvoir",
+      "nodeKey": "produire_conditionnel_present",
+      "facetKey": "produire_conditionnel_present::verb:pouvoir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "reconnaitre_conditionnel_present::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:41be580eeb5022145ec654917dfc9a721b44f011639b02741207db95d8a6ba7a",
+        "sentence:sha256:676e2bd27ba504386516e09d08d5181af364b76c9bcae1ff10f5aa54f273bf37",
+        "sentence:sha256:687f1463bf9a714668ddefa80f33ac249b851cebc5299439770d488d53b5ecd6",
+        "sentence:sha256:a3d8ab65492ee74b5cd628c18ddca0950545210f4c002660936e9692081e4914",
+        "sentence:sha256:c79160d3f55fd7fe814dd8f3e5f797b42735a4c6ad945e73c53f573a6d47ab91",
+        "sentence:sha256:c87f0bf91085509fdd1e8fb50cbc7fbd443035278e4cf7eed48d5a5cd51b63be",
+        "sentence:sha256:d33db3a9737cfd0ad44be84b8d1003eb6d2b0c59ba8ea6c1bf41541379d30fff",
+        "sentence:sha256:e932f6f470e996f022e1c0551fe3f5feebc6a7305925cb66070698f8751b34e8",
+        "sentence:sha256:e965c1e7b414bcdff7c7021b5b9ad371916662f6c676a7144b2d5d8892f82d36",
+        "word:sha256:e192d5dcdfc88be9dd57a079209e6cc178dc4c47d093e153efbdcd8cbf7aa977"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:conditionnel-present:pouvoir",
+        "nodeKey": "produire_conditionnel_present",
+        "facetKey": "produire_conditionnel_present::verb:pouvoir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire pouvoir au conditionnel présent",
+        "learnerQuestionFr": "Comment écrire pouvoir au conditionnel présent avec chaque sujet ?",
+        "steps": [
+          {
+            "exampleFr": "Je pourrais ouvrir la fenêtre.",
+            "explanationFr": "La forme pourrais peut servir à présenter un fait imaginé, un souhait ou une demande polie selon le contexte. C’est le conditionnel présent du verbe pouvoir. Le verbe conjugué s’écrit en un seul mot."
+          },
+          {
+            "exampleFr": "pouvoir → pourr- + -ais → pourrais",
+            "explanationFr": "Le début qui reste le même dans les six formes est pourr-. On l’appelle la base, ou le radical. La base pourr- est particulière à ce verbe : retiens-la avec un exemple. Ajoute ensuite la terminaison qui correspond au sujet."
+          },
+          {
+            "exampleFr": "je : pourrais\ntu : pourrais\nil, elle ou on : pourrait\nnous : pourrions\nvous : pourriez\nils ou elles : pourraient",
+            "explanationFr": "Les terminaisons du conditionnel présent sont celles de l’imparfait : -ais, -ais, -ait, -ions, -iez et -aient. La base est celle du futur simple et se termine par r. Garde ce r."
+          },
+          {
+            "exampleFr": "je : pourrais ; tu : pourrais ; il ou elle : pourrait",
+            "explanationFr": "À l’écrit, je et tu prennent -ais, tandis que il ou elle prend -ait. Ces terminaisons se ressemblent à l’oral : utilise le sujet pour choisir les lettres."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:conditionnel-present:pouvoir:1",
+            "promptFr": "Complète avec pouvoir au conditionnel présent. Écris seulement le verbe : Je ___ ouvrir la fenêtre.",
+            "answerFr": "pourrais",
+            "hintFr": "Avec je, ajoute -ais à la base pourr-.",
+            "explanationFr": "Je pourrais ouvrir la fenêtre. La base pourr- et la terminaison -ais donnent pourrais."
+          },
+          {
+            "id": "guided:conditionnel-present:pouvoir:2",
+            "promptFr": "Complète avec pouvoir au conditionnel présent. Écris seulement le verbe : Tu ___ choisir une couleur.",
+            "answerFr": "pourrais",
+            "hintFr": "Avec tu, ajoute -ais à la base pourr-.",
+            "explanationFr": "Tu pourrais choisir une couleur. La base pourr- et la terminaison -ais donnent pourrais."
+          },
+          {
+            "id": "guided:conditionnel-present:pouvoir:3",
+            "promptFr": "Complète avec pouvoir au conditionnel présent. Écris seulement le verbe : Elle ___ nous aider.",
+            "answerFr": "pourrait",
+            "hintFr": "Avec il, elle ou on, ajoute -ait à la base pourr-.",
+            "explanationFr": "Elle pourrait nous aider. La base pourr- et la terminaison -ait donnent pourrait."
+          },
+          {
+            "id": "guided:conditionnel-present:pouvoir:4",
+            "promptFr": "Complète avec pouvoir au conditionnel présent. Écris seulement le verbe : Nous ___ rester ici.",
+            "answerFr": "pourrions",
+            "hintFr": "Avec nous, ajoute -ions à la base pourr-.",
+            "explanationFr": "Nous pourrions rester ici. La base pourr- et la terminaison -ions donnent pourrions."
+          },
+          {
+            "id": "guided:conditionnel-present:pouvoir:5",
+            "promptFr": "Complète avec pouvoir au conditionnel présent. Écris seulement le verbe : Vous ___ recommencer.",
+            "answerFr": "pourriez",
+            "hintFr": "Avec vous, ajoute -iez à la base pourr-.",
+            "explanationFr": "Vous pourriez recommencer. La base pourr- et la terminaison -iez donnent pourriez."
+          },
+          {
+            "id": "guided:conditionnel-present:pouvoir:6",
+            "promptFr": "Complète avec pouvoir au conditionnel présent. Écris seulement le verbe : Ils ___ entrer maintenant.",
+            "answerFr": "pourraient",
+            "hintFr": "Avec ils ou elles, ajoute -aient à la base pourr-.",
+            "explanationFr": "Ils pourraient entrer maintenant. La base pourr- et la terminaison -aient donnent pourraient."
+          }
+        ],
+        "takeawayFr": "Pour pouvoir au conditionnel présent, pars de pourr- puis ajoute -ais, -ais, -ait, -ions, -iez ou -aient selon le sujet.",
+        "boundaryFr": "Cette leçon entraîne les formes de pouvoir au conditionnel présent. Elle ne prouve pas que tu sais choisir entre conditionnel, futur et imparfait dans un texte, ni choisir le temps après si.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "pouvoir",
+              "form": "pouvoir"
+            }
+          ],
+          "sentences": [
+            "Je pourrais ouvrir la fenêtre.",
+            "pouvoir → pourr- + -ais → pourrais",
+            "je : pourrais\ntu : pourrais\nil, elle ou on : pourrait\nnous : pourrions\nvous : pourriez\nils ou elles : pourraient",
+            "je : pourrais ; tu : pourrais ; il ou elle : pourrait",
+            "Je pourrais ouvrir la fenêtre.",
+            "Tu pourrais choisir une couleur.",
+            "Elle pourrait nous aider.",
+            "Nous pourrions rester ici.",
+            "Vous pourriez recommencer.",
+            "Ils pourraient entrer maintenant."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:conditionnel-present:vouloir",
+      "contentChecksum": "sha256:e6ddc031f6238161c9cccefb9120944efcd22dc9f202671918cd7dad90f766b7",
+      "skillId": "produire_conditionnel_present::writing-controlled-production::verb:vouloir",
+      "nodeKey": "produire_conditionnel_present",
+      "facetKey": "produire_conditionnel_present::verb:vouloir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "reconnaitre_conditionnel_present::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:2f0c764677dbb30ce32d4f2206a84f847bd827405cca8304b418e02ce29e143b",
+        "sentence:sha256:36823a7e27361948f2d1265a9ad221f1b5123f56fc67672a27e3c8dc1260d14d",
+        "sentence:sha256:3a78373f4710432770481a55db1fd3fe2846d4237aefb8be1bd3020306547d2e",
+        "sentence:sha256:46c928c543c3a02f1e6b491bb0788b95ca3f5f10dcf2d697e421fffff90acfb8",
+        "sentence:sha256:6c1c132047c9f18f84c462fdffd04f26b192913fa6a537d4f159800ce529ae0f",
+        "sentence:sha256:945330e8625f00524cea806ec4b4b99ba659d06223f565a135bca80ce3fdfeca",
+        "sentence:sha256:987d5b3246ff10273332a7f2839d14784e8880135e25a807926c3258bc87d254",
+        "sentence:sha256:aba01e94bd4ddd5f3299b63a01cd59404e75337565ca8537ae8f2c12048c775a",
+        "sentence:sha256:df8a600b56d152f5ef0fc11027ecd4c30c252e933457d7d505f7edff8b2e0a3d",
+        "word:sha256:489914beff2d4575266911e79fd2e447beebf86608412d02eeea869cb533a078"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:conditionnel-present:vouloir",
+        "nodeKey": "produire_conditionnel_present",
+        "facetKey": "produire_conditionnel_present::verb:vouloir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire vouloir au conditionnel présent",
+        "learnerQuestionFr": "Comment écrire vouloir au conditionnel présent avec chaque sujet ?",
+        "steps": [
+          {
+            "exampleFr": "Je voudrais lire ce manga.",
+            "explanationFr": "La forme voudrais peut servir à présenter un fait imaginé, un souhait ou une demande polie selon le contexte. C’est le conditionnel présent du verbe vouloir. Le verbe conjugué s’écrit en un seul mot."
+          },
+          {
+            "exampleFr": "vouloir → voudr- + -ais → voudrais",
+            "explanationFr": "Le début qui reste le même dans les six formes est voudr-. On l’appelle la base, ou le radical. La base voudr- est particulière à ce verbe : retiens-la avec un exemple. Ajoute ensuite la terminaison qui correspond au sujet."
+          },
+          {
+            "exampleFr": "je : voudrais\ntu : voudrais\nil, elle ou on : voudrait\nnous : voudrions\nvous : voudriez\nils ou elles : voudraient",
+            "explanationFr": "Les terminaisons du conditionnel présent sont celles de l’imparfait : -ais, -ais, -ait, -ions, -iez et -aient. La base est celle du futur simple et se termine par r. Garde ce r."
+          },
+          {
+            "exampleFr": "je : voudrais ; tu : voudrais ; il ou elle : voudrait",
+            "explanationFr": "À l’écrit, je et tu prennent -ais, tandis que il ou elle prend -ait. Ces terminaisons se ressemblent à l’oral : utilise le sujet pour choisir les lettres."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:conditionnel-present:vouloir:1",
+            "promptFr": "Complète avec vouloir au conditionnel présent. Écris seulement le verbe : Je ___ lire ce manga.",
+            "answerFr": "voudrais",
+            "hintFr": "Avec je, ajoute -ais à la base voudr-.",
+            "explanationFr": "Je voudrais lire ce manga. La base voudr- et la terminaison -ais donnent voudrais."
+          },
+          {
+            "id": "guided:conditionnel-present:vouloir:2",
+            "promptFr": "Complète avec vouloir au conditionnel présent. Écris seulement le verbe : Tu ___ préparer l’affiche.",
+            "answerFr": "voudrais",
+            "hintFr": "Avec tu, ajoute -ais à la base voudr-.",
+            "explanationFr": "Tu voudrais préparer l’affiche. La base voudr- et la terminaison -ais donnent voudrais."
+          },
+          {
+            "id": "guided:conditionnel-present:vouloir:3",
+            "promptFr": "Complète avec vouloir au conditionnel présent. Écris seulement le verbe : On ___ essayer autrement.",
+            "answerFr": "voudrait",
+            "hintFr": "Avec il, elle ou on, ajoute -ait à la base voudr-.",
+            "explanationFr": "On voudrait essayer autrement. La base voudr- et la terminaison -ait donnent voudrait."
+          },
+          {
+            "id": "guided:conditionnel-present:vouloir:4",
+            "promptFr": "Complète avec vouloir au conditionnel présent. Écris seulement le verbe : Nous ___ comprendre la règle.",
+            "answerFr": "voudrions",
+            "hintFr": "Avec nous, ajoute -ions à la base voudr-.",
+            "explanationFr": "Nous voudrions comprendre la règle. La base voudr- et la terminaison -ions donnent voudrions."
+          },
+          {
+            "id": "guided:conditionnel-present:vouloir:5",
+            "promptFr": "Complète avec vouloir au conditionnel présent. Écris seulement le verbe : Vous ___ rejoindre le groupe.",
+            "answerFr": "voudriez",
+            "hintFr": "Avec vous, ajoute -iez à la base voudr-.",
+            "explanationFr": "Vous voudriez rejoindre le groupe. La base voudr- et la terminaison -iez donnent voudriez."
+          },
+          {
+            "id": "guided:conditionnel-present:vouloir:6",
+            "promptFr": "Complète avec vouloir au conditionnel présent. Écris seulement le verbe : Elles ___ organiser un tournoi.",
+            "answerFr": "voudraient",
+            "hintFr": "Avec ils ou elles, ajoute -aient à la base voudr-.",
+            "explanationFr": "Elles voudraient organiser un tournoi. La base voudr- et la terminaison -aient donnent voudraient."
+          }
+        ],
+        "takeawayFr": "Pour vouloir au conditionnel présent, pars de voudr- puis ajoute -ais, -ais, -ait, -ions, -iez ou -aient selon le sujet.",
+        "boundaryFr": "Cette leçon entraîne les formes de vouloir au conditionnel présent. Elle ne prouve pas que tu sais choisir entre conditionnel, futur et imparfait dans un texte, ni choisir le temps après si.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "vouloir",
+              "form": "vouloir"
+            }
+          ],
+          "sentences": [
+            "Je voudrais lire ce manga.",
+            "vouloir → voudr- + -ais → voudrais",
+            "je : voudrais\ntu : voudrais\nil, elle ou on : voudrait\nnous : voudrions\nvous : voudriez\nils ou elles : voudraient",
+            "je : voudrais ; tu : voudrais ; il ou elle : voudrait",
+            "Je voudrais lire ce manga.",
+            "Tu voudrais préparer l’affiche.",
+            "On voudrait essayer autrement.",
+            "Nous voudrions comprendre la règle.",
+            "Vous voudriez rejoindre le groupe.",
+            "Elles voudraient organiser un tournoi."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:conditionnel-present:savoir",
+      "contentChecksum": "sha256:7b2a7c8f1d04d80658bbf101aecf8a2be52c6b862112748c59dbbeb32fddccc1",
+      "skillId": "produire_conditionnel_present::writing-controlled-production::verb:savoir",
+      "nodeKey": "produire_conditionnel_present",
+      "facetKey": "produire_conditionnel_present::verb:savoir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "reconnaitre_conditionnel_present::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:01156afa5c3f8d72f3e9eeda6bab6852860a42251ce8fce081999deabcffb382",
+        "sentence:sha256:044839581aa5a422542077534f2308920dce70ddc320c30f6ed00ebda3c2a2e2",
+        "sentence:sha256:18eb445a66bf5035a148ebcbface8c005469d0d170775d1e0e2023f71964d0bc",
+        "sentence:sha256:261d97fc28c0bcf444a2dcfc320870f2a1f3a73be7cee783d216b1ae92d93db7",
+        "sentence:sha256:67bc60554762d0e3b190183f459af66db7d918e4d7113934630b8681c9501ae1",
+        "sentence:sha256:7069de641501dd2b29fac48bb9ee485ea1d6e00016d4dd7c2ce09f2e2391372c",
+        "sentence:sha256:a0850cdd3cb27edea784544b3a297cf8dddf8674cbc06f37b1deefa14df35113",
+        "sentence:sha256:d70e0bfcc57d35dfcd794558b7f4e858ef2346f7897b86bc46e6b63768c7d4c9",
+        "sentence:sha256:f251f88af1706a5608db43c66ee99c83aa5ecdc5f4b109f7b92405dee1e64b34",
+        "word:sha256:0233d19d22b3a2fad3f6618b95d2fc1fed0cd027446994a4e0642b4939300291"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:conditionnel-present:savoir",
+        "nodeKey": "produire_conditionnel_present",
+        "facetKey": "produire_conditionnel_present::verb:savoir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire savoir au conditionnel présent",
+        "learnerQuestionFr": "Comment écrire savoir au conditionnel présent avec chaque sujet ?",
+        "steps": [
+          {
+            "exampleFr": "Je saurais où se trouve la salle.",
+            "explanationFr": "La forme saurais peut servir à présenter un fait imaginé, un souhait ou une demande polie selon le contexte. C’est le conditionnel présent du verbe savoir. Le verbe conjugué s’écrit en un seul mot."
+          },
+          {
+            "exampleFr": "savoir → saur- + -ais → saurais",
+            "explanationFr": "Le début qui reste le même dans les six formes est saur-. On l’appelle la base, ou le radical. La base saur- est particulière à ce verbe : retiens-la avec un exemple. Ajoute ensuite la terminaison qui correspond au sujet."
+          },
+          {
+            "exampleFr": "je : saurais\ntu : saurais\nil, elle ou on : saurait\nnous : saurions\nvous : sauriez\nils ou elles : sauraient",
+            "explanationFr": "Les terminaisons du conditionnel présent sont celles de l’imparfait : -ais, -ais, -ait, -ions, -iez et -aient. La base est celle du futur simple et se termine par r. Garde ce r."
+          },
+          {
+            "exampleFr": "je : saurais ; tu : saurais ; il ou elle : saurait",
+            "explanationFr": "À l’écrit, je et tu prennent -ais, tandis que il ou elle prend -ait. Ces terminaisons se ressemblent à l’oral : utilise le sujet pour choisir les lettres."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:conditionnel-present:savoir:1",
+            "promptFr": "Complète avec savoir au conditionnel présent. Écris seulement le verbe : Je ___ où se trouve la salle.",
+            "answerFr": "saurais",
+            "hintFr": "Avec je, ajoute -ais à la base saur-.",
+            "explanationFr": "Je saurais où se trouve la salle. La base saur- et la terminaison -ais donnent saurais."
+          },
+          {
+            "id": "guided:conditionnel-present:savoir:2",
+            "promptFr": "Complète avec savoir au conditionnel présent. Écris seulement le verbe : Tu ___ réparer ce vélo.",
+            "answerFr": "saurais",
+            "hintFr": "Avec tu, ajoute -ais à la base saur-.",
+            "explanationFr": "Tu saurais réparer ce vélo. La base saur- et la terminaison -ais donnent saurais."
+          },
+          {
+            "id": "guided:conditionnel-present:savoir:3",
+            "promptFr": "Complète avec savoir au conditionnel présent. Écris seulement le verbe : Il ___ son texte par cœur.",
+            "answerFr": "saurait",
+            "hintFr": "Avec il, elle ou on, ajoute -ait à la base saur-.",
+            "explanationFr": "Il saurait son texte par cœur. La base saur- et la terminaison -ait donnent saurait."
+          },
+          {
+            "id": "guided:conditionnel-present:savoir:4",
+            "promptFr": "Complète avec savoir au conditionnel présent. Écris seulement le verbe : Nous ___ utiliser cette application.",
+            "answerFr": "saurions",
+            "hintFr": "Avec nous, ajoute -ions à la base saur-.",
+            "explanationFr": "Nous saurions utiliser cette application. La base saur- et la terminaison -ions donnent saurions."
+          },
+          {
+            "id": "guided:conditionnel-present:savoir:5",
+            "promptFr": "Complète avec savoir au conditionnel présent. Écris seulement le verbe : Vous ___ comment commencer.",
+            "answerFr": "sauriez",
+            "hintFr": "Avec vous, ajoute -iez à la base saur-.",
+            "explanationFr": "Vous sauriez comment commencer. La base saur- et la terminaison -iez donnent sauriez."
+          },
+          {
+            "id": "guided:conditionnel-present:savoir:6",
+            "promptFr": "Complète avec savoir au conditionnel présent. Écris seulement le verbe : Elles ___ jouer aux échecs.",
+            "answerFr": "sauraient",
+            "hintFr": "Avec ils ou elles, ajoute -aient à la base saur-.",
+            "explanationFr": "Elles sauraient jouer aux échecs. La base saur- et la terminaison -aient donnent sauraient."
+          }
+        ],
+        "takeawayFr": "Pour savoir au conditionnel présent, pars de saur- puis ajoute -ais, -ais, -ait, -ions, -iez ou -aient selon le sujet.",
+        "boundaryFr": "Cette leçon entraîne les formes de savoir au conditionnel présent. Elle ne prouve pas que tu sais choisir entre conditionnel, futur et imparfait dans un texte, ni choisir le temps après si.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "savoir",
+              "form": "savoir"
+            }
+          ],
+          "sentences": [
+            "Je saurais où se trouve la salle.",
+            "savoir → saur- + -ais → saurais",
+            "je : saurais\ntu : saurais\nil, elle ou on : saurait\nnous : saurions\nvous : sauriez\nils ou elles : sauraient",
+            "je : saurais ; tu : saurais ; il ou elle : saurait",
+            "Je saurais où se trouve la salle.",
+            "Tu saurais réparer ce vélo.",
+            "Il saurait son texte par cœur.",
+            "Nous saurions utiliser cette application.",
+            "Vous sauriez comment commencer.",
+            "Elles sauraient jouer aux échecs."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:conditionnel-present:devoir",
+      "contentChecksum": "sha256:c07cf7bb5b2f9fe130351da076418115c8fec6d2ebf6f95b05752bfed7dfccdc",
+      "skillId": "produire_conditionnel_present::writing-controlled-production::verb:devoir",
+      "nodeKey": "produire_conditionnel_present",
+      "facetKey": "produire_conditionnel_present::verb:devoir",
+      "mode": "production",
+      "domain": "conjugation",
+      "prerequisites": [
+        "reconnaitre_conditionnel_present::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:335a7139c596c2d1fa43f5428da805fe39b1722fb23221dbc1c37c29f33449e3",
+        "sentence:sha256:353dca54f97ebb44d1210a377aca0f4315027a5388c15cf6abab8d557c22f348",
+        "sentence:sha256:358336aa0ca253c3fc487f855e66cba14c7b6cb434cf8e6857b3bf4e17181240",
+        "sentence:sha256:46269b7afade33ea7c9da44ef0b180ac7768a847ad27303f33d2382996684daf",
+        "sentence:sha256:48de454804553a0fb2418742aa304aa451caf950ccf1d045aec79279b36b92e0",
+        "sentence:sha256:50a84b4a714bba7901354288272b57b37966d8304f5c8d0a817b732c20b55cf7",
+        "sentence:sha256:57638118612aa79d208eeb4db3e5766257ee84e521c8d92e3d1b301c9e8a7878",
+        "sentence:sha256:6bbe13b6c6098f48b5a97f8cdf78cdbf40bcfe2a6a63fd56321e191965d6270d",
+        "sentence:sha256:729f69d07355a0d5f16bba3d7bc576da2365857be455f2b266b1dc689123eed3",
+        "word:sha256:4a5588698f5bd2f3237cbc916ddac2942066aaaf06f6e61f426da091928457f7"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:conditionnel-present:devoir",
+        "nodeKey": "produire_conditionnel_present",
+        "facetKey": "produire_conditionnel_present::verb:devoir",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire devoir au conditionnel présent",
+        "learnerQuestionFr": "Comment écrire devoir au conditionnel présent avec chaque sujet ?",
+        "steps": [
+          {
+            "exampleFr": "Je devrais rendre ce livre.",
+            "explanationFr": "La forme devrais peut servir à présenter un fait imaginé, un souhait ou une demande polie selon le contexte. C’est le conditionnel présent du verbe devoir. Le verbe conjugué s’écrit en un seul mot."
+          },
+          {
+            "exampleFr": "devoir → devr- + -ais → devrais",
+            "explanationFr": "Le début qui reste le même dans les six formes est devr-. On l’appelle la base, ou le radical. La base devr- est particulière à ce verbe : retiens-la avec un exemple. Ajoute ensuite la terminaison qui correspond au sujet."
+          },
+          {
+            "exampleFr": "je : devrais\ntu : devrais\nil, elle ou on : devrait\nnous : devrions\nvous : devriez\nils ou elles : devraient",
+            "explanationFr": "Les terminaisons du conditionnel présent sont celles de l’imparfait : -ais, -ais, -ait, -ions, -iez et -aient. La base est celle du futur simple et se termine par r. Garde ce r."
+          },
+          {
+            "exampleFr": "je : devrais ; tu : devrais ; il ou elle : devrait",
+            "explanationFr": "À l’écrit, je et tu prennent -ais, tandis que il ou elle prend -ait. Ces terminaisons se ressemblent à l’oral : utilise le sujet pour choisir les lettres."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:conditionnel-present:devoir:1",
+            "promptFr": "Complète avec devoir au conditionnel présent. Écris seulement le verbe : Je ___ rendre ce livre.",
+            "answerFr": "devrais",
+            "hintFr": "Avec je, ajoute -ais à la base devr-.",
+            "explanationFr": "Je devrais rendre ce livre. La base devr- et la terminaison -ais donnent devrais."
+          },
+          {
+            "id": "guided:conditionnel-present:devoir:2",
+            "promptFr": "Complète avec devoir au conditionnel présent. Écris seulement le verbe : Tu ___ vérifier ton calcul.",
+            "answerFr": "devrais",
+            "hintFr": "Avec tu, ajoute -ais à la base devr-.",
+            "explanationFr": "Tu devrais vérifier ton calcul. La base devr- et la terminaison -ais donnent devrais."
+          },
+          {
+            "id": "guided:conditionnel-present:devoir:3",
+            "promptFr": "Complète avec devoir au conditionnel présent. Écris seulement le verbe : On ___ ranger le matériel.",
+            "answerFr": "devrait",
+            "hintFr": "Avec il, elle ou on, ajoute -ait à la base devr-.",
+            "explanationFr": "On devrait ranger le matériel. La base devr- et la terminaison -ait donnent devrait."
+          },
+          {
+            "id": "guided:conditionnel-present:devoir:4",
+            "promptFr": "Complète avec devoir au conditionnel présent. Écris seulement le verbe : Nous ___ terminer l’affiche.",
+            "answerFr": "devrions",
+            "hintFr": "Avec nous, ajoute -ions à la base devr-.",
+            "explanationFr": "Nous devrions terminer l’affiche. La base devr- et la terminaison -ions donnent devrions."
+          },
+          {
+            "id": "guided:conditionnel-present:devoir:5",
+            "promptFr": "Complète avec devoir au conditionnel présent. Écris seulement le verbe : Vous ___ suivre ce chemin.",
+            "answerFr": "devriez",
+            "hintFr": "Avec vous, ajoute -iez à la base devr-.",
+            "explanationFr": "Vous devriez suivre ce chemin. La base devr- et la terminaison -iez donnent devriez."
+          },
+          {
+            "id": "guided:conditionnel-present:devoir:6",
+            "promptFr": "Complète avec devoir au conditionnel présent. Écris seulement le verbe : Ils ___ prévenir leur équipe.",
+            "answerFr": "devraient",
+            "hintFr": "Avec ils ou elles, ajoute -aient à la base devr-.",
+            "explanationFr": "Ils devraient prévenir leur équipe. La base devr- et la terminaison -aient donnent devraient."
+          }
+        ],
+        "takeawayFr": "Pour devoir au conditionnel présent, pars de devr- puis ajoute -ais, -ais, -ait, -ions, -iez ou -aient selon le sujet.",
+        "boundaryFr": "Cette leçon entraîne les formes de devoir au conditionnel présent. Elle ne prouve pas que tu sais choisir entre conditionnel, futur et imparfait dans un texte, ni choisir le temps après si.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "devoir",
+              "form": "devoir"
+            }
+          ],
+          "sentences": [
+            "Je devrais rendre ce livre.",
+            "devoir → devr- + -ais → devrais",
+            "je : devrais\ntu : devrais\nil, elle ou on : devrait\nnous : devrions\nvous : devriez\nils ou elles : devraient",
+            "je : devrais ; tu : devrais ; il ou elle : devrait",
+            "Je devrais rendre ce livre.",
+            "Tu devrais vérifier ton calcul.",
+            "On devrait ranger le matériel.",
+            "Nous devrions terminer l’affiche.",
+            "Vous devriez suivre ce chemin.",
+            "Ils devraient prévenir leur équipe."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:conditionnel:recognition",
+      "contentChecksum": "sha256:0dde2dc4d500e2432330e4b6eaf3cc41e852469751041c074714730286eeb412",
+      "skillId": "reconnaitre_conditionnel_present::reading-receptive",
+      "nodeKey": "reconnaitre_conditionnel_present",
+      "facetKey": null,
+      "mode": "recognition",
+      "domain": "conjugation",
+      "prerequisites": [],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:0845e30d404fe221cfee7f5468603a242ff2940fba7a0765250556f9435e259a",
+        "sentence:sha256:15cc04c57f77cd06dffbb1d7eae90af623f0750d4458a2ff02e8da680522d553",
+        "sentence:sha256:2032fe06eb4b22200c7c3ac4e4c0f34f030a7cfe3167aeeb0a0933745f20d915",
+        "sentence:sha256:214b6a81928e0db05ce2dc123acec4a469f83fd9d23c0352515592d7aa386b68",
+        "sentence:sha256:21cbdc176ab20a07462ef383f3a6b7a68cd3854e80a9d46fc808863f77c97fd3",
+        "sentence:sha256:222258f323493b0dd57554fb001c62bf029e39808bd534fa58965a0de658ae1d",
+        "sentence:sha256:35ea0748daf6dfc989b8c312f5590a1b94ec1d49be97ac2408cd2f6db8130d96",
+        "sentence:sha256:3b7476b341771b47b6f0ce027fd28a7127c470c24e27b49da69da90be43feffb",
+        "sentence:sha256:443f81e4e42b7f76cac9b1c6eed058587b4fae5d0ff8254e3078c8aefc9eaf1e",
+        "sentence:sha256:462575d2507335760121aef728901c1e5a803994db81950c01e673bfcd1bbdf9",
+        "sentence:sha256:59be10cd037ce90f6545534881bf462a040dce5364eee1dba882f502f660cd0b",
+        "sentence:sha256:61eacf950f364d4fef5943c89683eed55f36bd0a0f1f8a9131a0ede2e2994d5d",
+        "sentence:sha256:67b940e47aba14b78022d4d288982d68db6a2d0bf3318feaaffc9d2e1719ab90",
+        "sentence:sha256:69f103529cf19737881254eb4a14277a7343c35715fa0da0b7574ec9f1ef2e9a",
+        "sentence:sha256:73428b68f81815ff1a626bd969cd91111d15d3842fbd0e3de76c3152e777a2de",
+        "sentence:sha256:7554a47f54216275c7631fb61d8e0ae2aa1435f512b301099153fd3c0f298b9d",
+        "sentence:sha256:75caa221804a2394bde8d04145a16390c9cda874ec34b639cbf3598ee12f5d30",
+        "sentence:sha256:7a97ad33096b2ce0fb4b55cf39359e617785a07454a86e8c34511e14dece5fe1",
+        "sentence:sha256:800fab780a0a2766506b1646150cd32ddee9a97b0c8c2e5342015000fe298078",
+        "sentence:sha256:881f2a811d9df9161140d3239d5e675ca7ac245f0b0f3a100e0e08868b04fa32",
+        "sentence:sha256:886682ec676bd74f35923ae5e42b0fab57cc402e2be5ceae9325f4d57591c2a0",
+        "sentence:sha256:8ac5e04a88373f24fc6b8cbd3753588ae38efd201e651f215c33a8493d5d6c40",
+        "sentence:sha256:9939d44b77e10732d43efd78eaaf08a4dc3fb5b92849ef0919eb9b1f015cd71c",
+        "sentence:sha256:9dbbd311cf2fb80a794d53e090d9b4372be89c81d3152349d498f495f812372b",
+        "sentence:sha256:a8c9bfd502205c97cafe937c4d7258e202df983f8eb256ddc1119c1511e877d2",
+        "sentence:sha256:f0d23beaabcd0a979da74b9a6e746de3c71148f093257e6b3c03c3150eb07bd4",
+        "sentence:sha256:f1747242220ff607f48150e90370eab0739a83f9abd2e41e2ee88594dc961a41",
+        "sentence:sha256:f9d21b87c61ecd0f91869af8c12df0f588ea6a41d93d753c611e7718d7e85685",
+        "sentence:sha256:fa30bcf4dc4ef8ff2281b8b6e73f9c46b0f91ab8e70167a83a2ee1b11eac5190"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:conditionnel:recognition",
+        "nodeKey": "reconnaitre_conditionnel_present",
+        "mode": "recognition",
+        "status": "draft_requires_review",
+        "titleFr": "Reconnaître le conditionnel présent",
+        "learnerQuestionFr": "Quelle différence vois-tu entre « je marcherai » et « je marcherais » ?",
+        "steps": [
+          {
+            "exampleFr": "Je marcherai jusqu’à la gare.\nJe marcherais jusqu’à la gare.",
+            "explanationFr": "Marcherai est au futur simple. Marcherais est au conditionnel présent : le s final change la forme. Selon le contexte, le conditionnel peut présenter une possibilité imaginée ou atténuer une demande."
+          },
+          {
+            "exampleFr": "marcher- + -ais → marcherais\nnous marcherions ; vous marcheriez",
+            "explanationFr": "Le conditionnel présent combine la base du futur simple avec les terminaisons de l’imparfait : -ais, -ais, -ait, -ions, -iez et -aient. La base est le morceau qui reste quand on enlève la terminaison."
+          },
+          {
+            "exampleFr": "je serai → je serais\nje ferai → je ferais\nnous aurons → nous aurions",
+            "explanationFr": "Certains verbes ont une base différente de leur infinitif : ser-, fer-, aur-. Ils gardent cette base au conditionnel et changent de terminaison."
+          },
+          {
+            "exampleFr": "Il disait : « Je rentrerai tôt. »\nIl disait qu’il rentrerait tôt.",
+            "explanationFr": "Le conditionnel peut aussi exprimer un événement futur vu depuis un moment passé. Ne te fie pas seulement à un sens de souhait ou de politesse : observe la forme du verbe."
+          }
+        ],
+        "takeawayFr": "Observe ensemble la base et la terminaison. Le conditionnel présent utilise la base du futur avec -ais, -ais, -ait, -ions, -iez ou -aient.",
+        "boundaryFr": "Reconnaître ces formes ne suffit pas à choisir le conditionnel dans un texte ni à conjuguer chaque verbe. Le conditionnel passé, comme aurait marché, est une autre forme.",
+        "practice": [
+          {
+            "id": "conditionnel-guide-1",
+            "promptFr": "Quelle forme est au conditionnel présent ?",
+            "choices": [
+              "je chanterais",
+              "je chanterai",
+              "je chantais",
+              "j’ai chanté"
+            ],
+            "answerFr": "je chanterais",
+            "hintFr": "Cherche la base chanter- et la terminaison -ais.",
+            "explanationFr": "Chanterais combine chanter- et -ais. Chanterai est au futur, chantais à l’imparfait."
+          },
+          {
+            "id": "conditionnel-guide-2",
+            "promptFr": "Quelle forme est au conditionnel présent ?",
+            "choices": [
+              "tu attendrais",
+              "tu attendras",
+              "tu attendais",
+              "tu attends"
+            ],
+            "answerFr": "tu attendrais",
+            "hintFr": "La base du futur est attendr-.",
+            "explanationFr": "Attendrais garde le r de la base et ajoute -ais."
+          },
+          {
+            "id": "conditionnel-guide-3",
+            "promptFr": "Quelle forme est au conditionnel présent ?",
+            "choices": [
+              "elle dirait",
+              "elle dira",
+              "elle disait",
+              "elle dit"
+            ],
+            "answerFr": "elle dirait",
+            "hintFr": "Dire utilise la base dir-.",
+            "explanationFr": "Dirait se forme avec dir- et -ait. Disait est à l’imparfait."
+          },
+          {
+            "id": "conditionnel-guide-4",
+            "promptFr": "Quelle forme est au conditionnel présent ?",
+            "choices": [
+              "nous sortirions",
+              "nous sortirons",
+              "nous sortions",
+              "nous sortons"
+            ],
+            "answerFr": "nous sortirions",
+            "hintFr": "Garde sortir- et ajoute -ions.",
+            "explanationFr": "Sortirions est au conditionnel. Sortions est à l’imparfait."
+          },
+          {
+            "id": "conditionnel-guide-5",
+            "promptFr": "Quelle forme est au conditionnel présent ?",
+            "choices": [
+              "vous verriez",
+              "vous verrez",
+              "vous voyiez",
+              "vous voyez"
+            ],
+            "answerFr": "vous verriez",
+            "hintFr": "Voir a la base verr- au futur et au conditionnel.",
+            "explanationFr": "Verriez combine verr- et -iez."
+          },
+          {
+            "id": "conditionnel-guide-6",
+            "promptFr": "Quelle forme est au conditionnel présent ?",
+            "choices": [
+              "ils partiraient",
+              "ils partiront",
+              "ils partaient",
+              "ils seraient partis"
+            ],
+            "answerFr": "ils partiraient",
+            "hintFr": "Le conditionnel présent s’écrit ici en un mot.",
+            "explanationFr": "Partiraient est au conditionnel présent. Seraient partis est au conditionnel passé."
+          }
+        ],
+        "materialExposure": {
+          "sentences": [
+            "Je marcherai jusqu’à la gare.\nJe marcherais jusqu’à la gare.",
+            "marcher- + -ais → marcherais\nnous marcherions ; vous marcheriez",
+            "je serai → je serais\nje ferai → je ferais\nnous aurons → nous aurions",
+            "Il disait : « Je rentrerai tôt. »\nIl disait qu’il rentrerait tôt.",
+            "Quelle forme est au conditionnel présent ?",
+            "je chanterais",
+            "je chanterai",
+            "je chantais",
+            "j’ai chanté",
+            "Quelle forme est au conditionnel présent ?",
+            "tu attendrais",
+            "tu attendras",
+            "tu attendais",
+            "tu attends",
+            "Quelle forme est au conditionnel présent ?",
+            "elle dirait",
+            "elle dira",
+            "elle disait",
+            "elle dit",
+            "Quelle forme est au conditionnel présent ?",
+            "nous sortirions",
+            "nous sortirons",
+            "nous sortions",
+            "nous sortons",
+            "Quelle forme est au conditionnel présent ?",
+            "vous verriez",
+            "vous verrez",
+            "vous voyiez",
+            "vous voyez",
+            "Quelle forme est au conditionnel présent ?",
+            "ils partiraient",
+            "ils partiront",
+            "ils partaient",
+            "ils seraient partis"
+          ]
+        }
+      }
+    },
     {
       "lessonId": "french-v3-teaching:reading:inferer_motivation_personnage:narrative",
       "contentChecksum": "sha256:6e2dcf46dba9bf42059cc2d9fee28805428317cdf54bce4f6b6c767d2d10e203",
@@ -16186,5 +18385,5 @@
       }
     }
   ],
-  "checksum": "sha256:2f9ff9b0355a0cb9387a968c3fcf309105e00739de4563ae53c0648747cc4f97"
+  "checksum": "sha256:a91cef2c861c7db3c28abe9e46e0c3130acedaba27b92611dab6b72467879904"
 }

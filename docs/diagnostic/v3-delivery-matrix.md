@@ -8,7 +8,7 @@ Regenerate: `npx tsx scripts/build-v3-delivery-matrix.mts`. Verify without writi
 
 | Domain | Targets | Eligible questions | Targets without eligible questions | Allocated pools | Expansion drafts |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| conjugation | 255 | 77 | 195 | 0 | 3300 |
+| conjugation | 255 | 77 | 195 | 0 | 3480 |
 | reading_comprehension | 92 | 21 | 74 | 0 | 88 |
 | grammar | 79 | 56 | 43 | 0 | 258 |
 | spelling | 116 | 79 | 60 | 0 | 270 |
@@ -19,7 +19,7 @@ These counts describe authoring drafts, not approved lessons or published pathwa
 
 | Domain | Targets with teaching drafts | Targets without teaching drafts | Guided exercise drafts |
 | --- | ---: | ---: | ---: |
-| conjugation | 54 | 201 | 328 |
+| conjugation | 69 | 186 | 418 |
 | reading_comprehension | 11 | 81 | 50 |
 | grammar | 23 | 56 | 124 |
 | spelling | 19 | 97 | 90 |
@@ -223,21 +223,21 @@ Full evidence requirements, prerequisite IDs, question IDs, source checksums and
 | Produire le plus-que-parfait — Verbes en -ger | production / initial | 0 | 0 / 0 (insufficient_coverage) | 24 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
 | Produire le plus-que-parfait — Verbes en -cer | production / initial | 0 | 0 / 0 (insufficient_coverage) | 24 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
 | Interpréter l'antériorité passée | recognition / initial | 2 | 2 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
-| Reconnaître le conditionnel présent | recognition / initial | 2 | 2 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
-| Produire le conditionnel présent — Conjuguer être | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
-| Produire le conditionnel présent — Conjuguer avoir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
-| Produire le conditionnel présent — Conjuguer aller | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
-| Produire le conditionnel présent — Conjuguer faire | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
-| Produire le conditionnel présent — Conjuguer prendre | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
-| Produire le conditionnel présent — Conjuguer venir | production / initial | 1 | 1 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
-| Produire le conditionnel présent — Conjuguer partir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
-| Produire le conditionnel présent — Conjuguer sortir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
-| Produire le conditionnel présent — Conjuguer dire | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
-| Produire le conditionnel présent — Conjuguer voir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
-| Produire le conditionnel présent — Conjuguer pouvoir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
-| Produire le conditionnel présent — Conjuguer vouloir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
-| Produire le conditionnel présent — Conjuguer savoir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
-| Produire le conditionnel présent — Conjuguer devoir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
+| Reconnaître le conditionnel présent | recognition / initial | 2 | 2 / 0 (insufficient_coverage) | 12 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le conditionnel présent — Conjuguer être | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le conditionnel présent — Conjuguer avoir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le conditionnel présent — Conjuguer aller | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le conditionnel présent — Conjuguer faire | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le conditionnel présent — Conjuguer prendre | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le conditionnel présent — Conjuguer venir | production / initial | 1 | 1 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le conditionnel présent — Conjuguer partir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le conditionnel présent — Conjuguer sortir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le conditionnel présent — Conjuguer dire | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le conditionnel présent — Conjuguer voir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le conditionnel présent — Conjuguer pouvoir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le conditionnel présent — Conjuguer vouloir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le conditionnel présent — Conjuguer savoir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
+| Produire le conditionnel présent — Conjuguer devoir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 20 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
 | Produire le conditionnel présent — Verbes réguliers en -er | production / initial | 1 | 1 / 0 (insufficient_coverage) | 56 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
 | Produire le conditionnel présent — Verbes en -ir comme finir | production / initial | 1 | 1 / 0 (insufficient_coverage) | 32 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
 | Produire le conditionnel présent — Verbes en -ger | production / initial | 0 | 0 / 0 (insufficient_coverage) | 24 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |

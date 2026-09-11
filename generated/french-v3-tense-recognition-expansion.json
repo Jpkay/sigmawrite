@@ -5,6 +5,918 @@
   "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
   "items": [
     {
+      "itemKey": "v3-tense-recognition:conditionnel-form-1",
+      "item": {
+        "nodeKey": "reconnaitre_conditionnel_present",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle phrase emploie le conditionnel présent ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quelle phrase emploie le conditionnel présent ?",
+              "Je visiterai cette île.",
+              "Je visitais cette île.",
+              "J’ai visité cette île.",
+              "Je visiterais cette île."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je visiterais cette île.",
+                "Je visiterai cette île.",
+                "Je visitais cette île.",
+                "J’ai visité cette île."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Je visiterais cette île.",
+            "correct": true
+          },
+          {
+            "text": "Je visiterai cette île.",
+            "correct": false
+          },
+          {
+            "text": "Je visitais cette île.",
+            "correct": false
+          },
+          {
+            "text": "J’ai visité cette île.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:conditionnel-form-2",
+      "item": {
+        "nodeKey": "reconnaitre_conditionnel_present",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle phrase emploie le conditionnel présent ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quelle phrase emploie le conditionnel présent ?",
+              "Tu finiras ce puzzle.",
+              "Tu finissais ce puzzle.",
+              "Tu finis ce puzzle.",
+              "Tu finirais ce puzzle."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu finirais ce puzzle.",
+                "Tu finiras ce puzzle.",
+                "Tu finissais ce puzzle.",
+                "Tu finis ce puzzle."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Tu finirais ce puzzle.",
+            "correct": true
+          },
+          {
+            "text": "Tu finiras ce puzzle.",
+            "correct": false
+          },
+          {
+            "text": "Tu finissais ce puzzle.",
+            "correct": false
+          },
+          {
+            "text": "Tu finis ce puzzle.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:conditionnel-form-3",
+      "item": {
+        "nodeKey": "reconnaitre_conditionnel_present",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle phrase emploie le conditionnel présent ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quelle phrase emploie le conditionnel présent ?",
+              "Elle viendra à la rencontre.",
+              "Elle venait à la rencontre.",
+              "Elle est venue à la rencontre.",
+              "Elle viendrait à la rencontre."
+            ],
+            "assessed": {
+              "sentences": [
+                "Elle viendrait à la rencontre.",
+                "Elle viendra à la rencontre.",
+                "Elle venait à la rencontre.",
+                "Elle est venue à la rencontre."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Elle viendrait à la rencontre.",
+            "correct": true
+          },
+          {
+            "text": "Elle viendra à la rencontre.",
+            "correct": false
+          },
+          {
+            "text": "Elle venait à la rencontre.",
+            "correct": false
+          },
+          {
+            "text": "Elle est venue à la rencontre.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:conditionnel-form-4",
+      "item": {
+        "nodeKey": "reconnaitre_conditionnel_present",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle phrase emploie le conditionnel présent ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quelle phrase emploie le conditionnel présent ?",
+              "Nous aurons une place.",
+              "Nous avions une place.",
+              "Nous avons une place.",
+              "Nous aurions une place."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous aurions une place.",
+                "Nous aurons une place.",
+                "Nous avions une place.",
+                "Nous avons une place."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Nous aurions une place.",
+            "correct": true
+          },
+          {
+            "text": "Nous aurons une place.",
+            "correct": false
+          },
+          {
+            "text": "Nous avions une place.",
+            "correct": false
+          },
+          {
+            "text": "Nous avons une place.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:conditionnel-form-5",
+      "item": {
+        "nodeKey": "reconnaitre_conditionnel_present",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle phrase emploie le conditionnel présent ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quelle phrase emploie le conditionnel présent ?",
+              "Vous serez les premiers.",
+              "Vous étiez les premiers.",
+              "Vous êtes les premiers.",
+              "Vous seriez les premiers."
+            ],
+            "assessed": {
+              "sentences": [
+                "Vous seriez les premiers.",
+                "Vous serez les premiers.",
+                "Vous étiez les premiers.",
+                "Vous êtes les premiers."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Vous seriez les premiers.",
+            "correct": true
+          },
+          {
+            "text": "Vous serez les premiers.",
+            "correct": false
+          },
+          {
+            "text": "Vous étiez les premiers.",
+            "correct": false
+          },
+          {
+            "text": "Vous êtes les premiers.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:conditionnel-form-6",
+      "item": {
+        "nodeKey": "reconnaitre_conditionnel_present",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle phrase emploie le conditionnel présent ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quelle phrase emploie le conditionnel présent ?",
+              "Ils feront un détour.",
+              "Ils faisaient un détour.",
+              "Ils font un détour.",
+              "Ils feraient un détour."
+            ],
+            "assessed": {
+              "sentences": [
+                "Ils feraient un détour.",
+                "Ils feront un détour.",
+                "Ils faisaient un détour.",
+                "Ils font un détour."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Ils feraient un détour.",
+            "correct": true
+          },
+          {
+            "text": "Ils feront un détour.",
+            "correct": false
+          },
+          {
+            "text": "Ils faisaient un détour.",
+            "correct": false
+          },
+          {
+            "text": "Ils font un détour.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:conditionnel-form-7",
+      "item": {
+        "nodeKey": "reconnaitre_conditionnel_present",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle phrase emploie le conditionnel présent ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quelle phrase emploie le conditionnel présent ?",
+              "Je pourrai porter cette caisse.",
+              "Je pouvais porter cette caisse.",
+              "J’aurais pu porter cette caisse.",
+              "Je pourrais porter cette caisse."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je pourrais porter cette caisse.",
+                "Je pourrai porter cette caisse.",
+                "Je pouvais porter cette caisse.",
+                "J’aurais pu porter cette caisse."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Je pourrais porter cette caisse.",
+            "correct": true
+          },
+          {
+            "text": "Je pourrai porter cette caisse.",
+            "correct": false
+          },
+          {
+            "text": "Je pouvais porter cette caisse.",
+            "correct": false
+          },
+          {
+            "text": "J’aurais pu porter cette caisse.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:conditionnel-form-8",
+      "item": {
+        "nodeKey": "reconnaitre_conditionnel_present",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle phrase emploie le conditionnel présent ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quelle phrase emploie le conditionnel présent ?",
+              "Tu sauras trouver la réponse.",
+              "Tu savais trouver la réponse.",
+              "Tu sais trouver la réponse.",
+              "Tu saurais trouver la réponse."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu saurais trouver la réponse.",
+                "Tu sauras trouver la réponse.",
+                "Tu savais trouver la réponse.",
+                "Tu sais trouver la réponse."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Tu saurais trouver la réponse.",
+            "correct": true
+          },
+          {
+            "text": "Tu sauras trouver la réponse.",
+            "correct": false
+          },
+          {
+            "text": "Tu savais trouver la réponse.",
+            "correct": false
+          },
+          {
+            "text": "Tu sais trouver la réponse.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:conditionnel-form-9",
+      "item": {
+        "nodeKey": "reconnaitre_conditionnel_present",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle phrase emploie le conditionnel présent ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quelle phrase emploie le conditionnel présent ?",
+              "On prendra un raccourci.",
+              "On prenait un raccourci.",
+              "On a pris un raccourci.",
+              "On prendrait un raccourci."
+            ],
+            "assessed": {
+              "sentences": [
+                "On prendrait un raccourci.",
+                "On prendra un raccourci.",
+                "On prenait un raccourci.",
+                "On a pris un raccourci."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "On prendrait un raccourci.",
+            "correct": true
+          },
+          {
+            "text": "On prendra un raccourci.",
+            "correct": false
+          },
+          {
+            "text": "On prenait un raccourci.",
+            "correct": false
+          },
+          {
+            "text": "On a pris un raccourci.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:conditionnel-form-10",
+      "item": {
+        "nodeKey": "reconnaitre_conditionnel_present",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle phrase emploie le conditionnel présent ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quelle phrase emploie le conditionnel présent ?",
+              "Nous voudrons un renseignement.",
+              "Nous voulions un renseignement.",
+              "Nous voulons un renseignement.",
+              "Nous voudrions un renseignement."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous voudrions un renseignement.",
+                "Nous voudrons un renseignement.",
+                "Nous voulions un renseignement.",
+                "Nous voulons un renseignement."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Nous voudrions un renseignement.",
+            "correct": true
+          },
+          {
+            "text": "Nous voudrons un renseignement.",
+            "correct": false
+          },
+          {
+            "text": "Nous voulions un renseignement.",
+            "correct": false
+          },
+          {
+            "text": "Nous voulons un renseignement.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:conditionnel-form-11",
+      "item": {
+        "nodeKey": "reconnaitre_conditionnel_present",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle phrase emploie le conditionnel présent ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quelle phrase emploie le conditionnel présent ?",
+              "Vous irez jusqu’au lac.",
+              "Vous alliez jusqu’au lac.",
+              "Vous allez jusqu’au lac.",
+              "Vous iriez jusqu’au lac."
+            ],
+            "assessed": {
+              "sentences": [
+                "Vous iriez jusqu’au lac.",
+                "Vous irez jusqu’au lac.",
+                "Vous alliez jusqu’au lac.",
+                "Vous allez jusqu’au lac."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Vous iriez jusqu’au lac.",
+            "correct": true
+          },
+          {
+            "text": "Vous irez jusqu’au lac.",
+            "correct": false
+          },
+          {
+            "text": "Vous alliez jusqu’au lac.",
+            "correct": false
+          },
+          {
+            "text": "Vous allez jusqu’au lac.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:conditionnel-form-12",
+      "item": {
+        "nodeKey": "reconnaitre_conditionnel_present",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quelle phrase emploie le conditionnel présent ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quelle phrase emploie le conditionnel présent ?",
+              "Elles devront revenir.",
+              "Elles devaient revenir.",
+              "Elles doivent revenir.",
+              "Elles devraient revenir."
+            ],
+            "assessed": {
+              "sentences": [
+                "Elles devraient revenir.",
+                "Elles devront revenir.",
+                "Elles devaient revenir.",
+                "Elles doivent revenir."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Elles devraient revenir.",
+            "correct": true
+          },
+          {
+            "text": "Elles devront revenir.",
+            "correct": false
+          },
+          {
+            "text": "Elles devaient revenir.",
+            "correct": false
+          },
+          {
+            "text": "Elles doivent revenir.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
       "itemKey": "v3-tense-recognition:future-library",
       "item": {
         "nodeKey": "reconnaitre_futur_proche",
@@ -2920,6 +3832,138 @@
   "annotations": [
     {
       "kind": "evidence",
+      "itemKey": "v3-tense-recognition:conditionnel-form-1",
+      "itemChecksum": "sha256:b4ad54fbe9123ad64fdabc0f6e00f05d9519dad25fed81f71b71288457e7fa85",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_conditionnel_present",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:conditionnel-form-1",
+      "reason": "La forme combine la base du futur avec une terminaison de l’imparfait ; les autres réponses montrent des formes concurrentes."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:conditionnel-form-2",
+      "itemChecksum": "sha256:996ed36d56b4cce08393854fdf2c1725ed8b7496afc03e0f5f24471242cc227b",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_conditionnel_present",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:conditionnel-form-2",
+      "reason": "La forme combine la base du futur avec une terminaison de l’imparfait ; les autres réponses montrent des formes concurrentes."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:conditionnel-form-3",
+      "itemChecksum": "sha256:42121f3722c3d75876d5a7e45d37bb7da4be724a7d56b1ecdd77727e8a528574",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_conditionnel_present",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:conditionnel-form-3",
+      "reason": "La forme combine la base du futur avec une terminaison de l’imparfait ; les autres réponses montrent des formes concurrentes."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:conditionnel-form-4",
+      "itemChecksum": "sha256:c3060d5b9f941ad8e1cca15da551281e5372cd82b80e25f0c29e6bcbb9a04e20",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_conditionnel_present",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:conditionnel-form-4",
+      "reason": "La forme combine la base du futur avec une terminaison de l’imparfait ; les autres réponses montrent des formes concurrentes."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:conditionnel-form-5",
+      "itemChecksum": "sha256:48e8cdcec4e09af5370e76ec4301c664a4d8bd7fa2a6a0e133d7e9db629276f9",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_conditionnel_present",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:conditionnel-form-5",
+      "reason": "La forme combine la base du futur avec une terminaison de l’imparfait ; les autres réponses montrent des formes concurrentes."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:conditionnel-form-6",
+      "itemChecksum": "sha256:2dd675cb364f9210513fb4b7627d9ffc53f9be25a0fe84343433511e16c7381a",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_conditionnel_present",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:conditionnel-form-6",
+      "reason": "La forme combine la base du futur avec une terminaison de l’imparfait ; les autres réponses montrent des formes concurrentes."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:conditionnel-form-7",
+      "itemChecksum": "sha256:2b70dbc4199cd2146991a42ac484312c5727ac5dc30ec94bfa8f11a305cb019c",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_conditionnel_present",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:conditionnel-form-7",
+      "reason": "La forme combine la base du futur avec une terminaison de l’imparfait ; les autres réponses montrent des formes concurrentes."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:conditionnel-form-8",
+      "itemChecksum": "sha256:cbd22dbc35f66a4151273703e64004bc6e5146eb1cc7660e9e985fd5c007f6b5",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_conditionnel_present",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:conditionnel-form-8",
+      "reason": "La forme combine la base du futur avec une terminaison de l’imparfait ; les autres réponses montrent des formes concurrentes."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:conditionnel-form-9",
+      "itemChecksum": "sha256:5868f98fe74597746d30606f341cdd735d641530a681e333be9eb91d67d08d9e",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_conditionnel_present",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:conditionnel-form-9",
+      "reason": "La forme combine la base du futur avec une terminaison de l’imparfait ; les autres réponses montrent des formes concurrentes."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:conditionnel-form-10",
+      "itemChecksum": "sha256:6c8a8e1585d614197ea8549ede58596f83aa8550a0631a77169322d2a9e8f3b1",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_conditionnel_present",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:conditionnel-form-10",
+      "reason": "La forme combine la base du futur avec une terminaison de l’imparfait ; les autres réponses montrent des formes concurrentes."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:conditionnel-form-11",
+      "itemChecksum": "sha256:bc0a947bea19e4de806f3465b1293bc42f24211f85c7d99c389b78f5c5b55a2d",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_conditionnel_present",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:conditionnel-form-11",
+      "reason": "La forme combine la base du futur avec une terminaison de l’imparfait ; les autres réponses montrent des formes concurrentes."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:conditionnel-form-12",
+      "itemChecksum": "sha256:a4bc3c0f49120fc42ce5280a8d537547e85bda5a52735a377eb2c2bafb61dc3a",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_conditionnel_present",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:conditionnel-form-12",
+      "reason": "La forme combine la base du futur avec une terminaison de l’imparfait ; les autres réponses montrent des formes concurrentes."
+    },
+    {
+      "kind": "evidence",
       "itemKey": "v3-tense-recognition:future-library",
       "itemChecksum": "sha256:d1eba0304502550e078c224d316c4b5da535fc739aba212871fac7fd472a2b99",
       "evidenceTarget": {
@@ -3359,5 +4403,5 @@
       "reason": "La forme conjuguée est au futur simple. Les autres phrases sont au présent, à l’imparfait et au futur proche. Le moment annoncé ne suffit pas à nommer le temps."
     }
   ],
-  "checksum": "sha256:37424082b86019794a1be8fa9a5d8aa080aeb4f46b29715668b07cf18ffa2256"
+  "checksum": "sha256:1ac09e9714c13d293a5106f83fb2b8ec25a4f77ae9174f550ed065dbbad20b97"
 }

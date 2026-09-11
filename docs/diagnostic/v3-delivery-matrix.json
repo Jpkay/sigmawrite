@@ -3,9 +3,9 @@
   "status": "draft_requires_review",
   "sources": {
     "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
-    "bankChecksum": "sha256:5f9204c6133e0f72de82cbd4b651f2ebe6e971c258dbe6883baaf6326c4f6fcd",
+    "bankChecksum": "sha256:2909600d6995fd666d93c95d4204af772e037a909abe6d303a6d0a7a655c2d64",
     "annotationChecksum": "sha256:41e7a8d65776f6bb64c33c925b7d4449ffe9fda5a6b71a899067a171232542bb",
-    "facetChecksum": "sha256:0ba167401983d09ba53ff45911aaf95f6ec8822b4ced5cc7d3fdef1e9caa247b",
+    "facetChecksum": "sha256:eba7a69364b034e11ce7413995089f85ce2205025cfa228041ffa684c2372739",
     "poolChecksum": "sha256:8c59b3ee0139afb4f44fa7e964a85ec00c67e9889bb1ffbad78ff7aa14aa5dfe",
     "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
     "expansions": [
@@ -76,8 +76,8 @@
       },
       {
         "version": "french-v3-conjugation-expansion-v1",
-        "checksum": "sha256:6d2301152583aec7a63a21dd2355b399c610fe4e850f7afbc3f6114fd838797f",
-        "addedItems": 3200
+        "checksum": "sha256:cb626276bbc48250060803fb7ddb888bf319c5a58c8b3fa8591882eb376763ae",
+        "addedItems": 3368
       },
       {
         "version": "french-v3-reading-expansion-v1",
@@ -101,8 +101,8 @@
       },
       {
         "version": "french-v3-tense-recognition-expansion-v1",
-        "checksum": "sha256:37424082b86019794a1be8fa9a5d8aa080aeb4f46b29715668b07cf18ffa2256",
-        "addedItems": 40
+        "checksum": "sha256:1ac09e9714c13d293a5106f83fb2b8ec25a4f77ae9174f550ed065dbbad20b97",
+        "addedItems": 52
       },
       {
         "version": "french-v3-direct-object-expansion-v1",
@@ -115,14 +115,14 @@
         "addedItems": 90
       }
     ],
-    "teachingDraftChecksum": "sha256:d2d028ac33b8e769bb378820aa11653120d4375e082fe52f1f8eca9b6f44420d"
+    "teachingDraftChecksum": "sha256:5ed7819fe2f7e2edd3e47bc202e748833fbf0fcf7c4ac7b375517c365804c992"
   },
   "summary": {
-    "teachingDrafts": 107,
-    "targetsWithTeachingDrafts": 107,
-    "targetsWithoutTeachingDrafts": 435,
-    "totalCandidateQuestions": 4646,
-    "additionalDraftQuestions": 3916,
+    "teachingDrafts": 122,
+    "targetsWithTeachingDrafts": 122,
+    "targetsWithoutTeachingDrafts": 420,
+    "totalCandidateQuestions": 4826,
+    "additionalDraftQuestions": 4096,
     "canonicalEligibleQuestions": 238,
     "approvedCompetencies": 181,
     "approvedEvidenceDefinitions": 257,
@@ -147,10 +147,10 @@
         "eligibleQuestions": 77,
         "targetsWithNoEligibleQuestions": 195,
         "allocatedPools": 0,
-        "targetsWithTeachingDrafts": 54,
-        "targetsWithoutTeachingDrafts": 201,
-        "guidedExerciseDrafts": 328,
-        "exactTargetExpansionDrafts": 3300
+        "targetsWithTeachingDrafts": 69,
+        "targetsWithoutTeachingDrafts": 186,
+        "guidedExerciseDrafts": 418,
+        "exactTargetExpansionDrafts": 3480
       },
       {
         "domain": "reading_comprehension",
@@ -23998,7 +23998,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 0,
+          "questions": 12,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -24077,16 +24077,36 @@
       "parentDraftCandidatesRequiringMapping": [
         "local-conjugation-gap-v1:reconnaitre_conditionnel_present:receptive:core"
       ],
-      "exactTargetExpansionDrafts": [],
-      "teachingDrafts": [],
+      "exactTargetExpansionDrafts": [
+        "v3-tense-recognition:conditionnel-form-1",
+        "v3-tense-recognition:conditionnel-form-2",
+        "v3-tense-recognition:conditionnel-form-3",
+        "v3-tense-recognition:conditionnel-form-4",
+        "v3-tense-recognition:conditionnel-form-5",
+        "v3-tense-recognition:conditionnel-form-6",
+        "v3-tense-recognition:conditionnel-form-7",
+        "v3-tense-recognition:conditionnel-form-8",
+        "v3-tense-recognition:conditionnel-form-9",
+        "v3-tense-recognition:conditionnel-form-10",
+        "v3-tense-recognition:conditionnel-form-11",
+        "v3-tense-recognition:conditionnel-form-12"
+      ],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:conditionnel:recognition",
+          "status": "draft_requires_review",
+          "guidedExercises": 6,
+          "boundaryFr": "Reconnaître ces formes ne suffit pas à choisir le conditionnel dans un texte ni à conjuguer chaque verbe. Le conditionnel passé, comme aurait marché, est une autre forme."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
         "independentCheck": "insufficient_pool"
       },
       "nextActions": [
-        "map_and_review_parent_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_exact_target_drafts",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -24124,7 +24144,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 8,
+          "questions": 20,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -24205,9 +24225,28 @@
         "v3-granular-forms:produire_conditionnel_present:être:1p:m:affirmative",
         "v3-granular-forms:produire_conditionnel_present:être:2p:m:affirmative",
         "v3-granular-forms:produire_conditionnel_present:être:3p:m:affirmative",
-        "v3-granular-forms:produire_conditionnel_present:être:3p:f:affirmative"
+        "v3-granular-forms:produire_conditionnel_present:être:3p:f:affirmative",
+        "v3-granular-forms:conditionnel_present-application-context:être:1s:48",
+        "v3-granular-forms:conditionnel_present-application-context:être:2s:49",
+        "v3-granular-forms:conditionnel_present-application-context:être:3s:50",
+        "v3-granular-forms:conditionnel_present-application-context:être:1p:51",
+        "v3-granular-forms:conditionnel_present-application-context:être:2p:52",
+        "v3-granular-forms:conditionnel_present-application-context:être:3p:53",
+        "v3-granular-forms:conditionnel_present-application-context:être:1s:54",
+        "v3-granular-forms:conditionnel_present-application-context:être:2s:55",
+        "v3-granular-forms:conditionnel_present-application-context:être:3s:56",
+        "v3-granular-forms:conditionnel_present-application-context:être:1p:57",
+        "v3-granular-forms:conditionnel_present-application-context:être:2p:58",
+        "v3-granular-forms:conditionnel_present-application-context:être:3p:59"
       ],
-      "teachingDrafts": [],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:conditionnel-present:être",
+          "status": "draft_requires_review",
+          "guidedExercises": 6,
+          "boundaryFr": "Cette leçon entraîne les formes de être au conditionnel présent. Elle ne prouve pas que tu sais choisir entre conditionnel, futur et imparfait dans un texte, ni choisir le temps après si."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -24216,7 +24255,7 @@
       "nextActions": [
         "review_refinement_and_prerequisites",
         "review_exact_target_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -24254,7 +24293,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 8,
+          "questions": 20,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -24335,9 +24374,28 @@
         "v3-granular-forms:produire_conditionnel_present:avoir:1p:m:affirmative",
         "v3-granular-forms:produire_conditionnel_present:avoir:2p:m:affirmative",
         "v3-granular-forms:produire_conditionnel_present:avoir:3p:m:affirmative",
-        "v3-granular-forms:produire_conditionnel_present:avoir:3p:f:affirmative"
+        "v3-granular-forms:produire_conditionnel_present:avoir:3p:f:affirmative",
+        "v3-granular-forms:conditionnel_present-application-context:avoir:1s:60",
+        "v3-granular-forms:conditionnel_present-application-context:avoir:2s:61",
+        "v3-granular-forms:conditionnel_present-application-context:avoir:3s:62",
+        "v3-granular-forms:conditionnel_present-application-context:avoir:1p:63",
+        "v3-granular-forms:conditionnel_present-application-context:avoir:2p:64",
+        "v3-granular-forms:conditionnel_present-application-context:avoir:3p:65",
+        "v3-granular-forms:conditionnel_present-application-context:avoir:1s:66",
+        "v3-granular-forms:conditionnel_present-application-context:avoir:2s:67",
+        "v3-granular-forms:conditionnel_present-application-context:avoir:3s:68",
+        "v3-granular-forms:conditionnel_present-application-context:avoir:1p:69",
+        "v3-granular-forms:conditionnel_present-application-context:avoir:2p:70",
+        "v3-granular-forms:conditionnel_present-application-context:avoir:3p:71"
       ],
-      "teachingDrafts": [],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:conditionnel-present:avoir",
+          "status": "draft_requires_review",
+          "guidedExercises": 6,
+          "boundaryFr": "Cette leçon entraîne les formes de avoir au conditionnel présent. Elle ne prouve pas que tu sais choisir entre conditionnel, futur et imparfait dans un texte, ni choisir le temps après si."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -24346,7 +24404,7 @@
       "nextActions": [
         "review_refinement_and_prerequisites",
         "review_exact_target_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -24384,7 +24442,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 8,
+          "questions": 20,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -24465,9 +24523,28 @@
         "v3-granular-forms:produire_conditionnel_present:aller:1p:m:affirmative",
         "v3-granular-forms:produire_conditionnel_present:aller:2p:m:affirmative",
         "v3-granular-forms:produire_conditionnel_present:aller:3p:m:affirmative",
-        "v3-granular-forms:produire_conditionnel_present:aller:3p:f:affirmative"
+        "v3-granular-forms:produire_conditionnel_present:aller:3p:f:affirmative",
+        "v3-granular-forms:conditionnel_present-application-context:aller:1s:24",
+        "v3-granular-forms:conditionnel_present-application-context:aller:2s:25",
+        "v3-granular-forms:conditionnel_present-application-context:aller:3s:26",
+        "v3-granular-forms:conditionnel_present-application-context:aller:1p:27",
+        "v3-granular-forms:conditionnel_present-application-context:aller:2p:28",
+        "v3-granular-forms:conditionnel_present-application-context:aller:3p:29",
+        "v3-granular-forms:conditionnel_present-application-context:aller:1s:30",
+        "v3-granular-forms:conditionnel_present-application-context:aller:2s:31",
+        "v3-granular-forms:conditionnel_present-application-context:aller:3s:32",
+        "v3-granular-forms:conditionnel_present-application-context:aller:1p:33",
+        "v3-granular-forms:conditionnel_present-application-context:aller:2p:34",
+        "v3-granular-forms:conditionnel_present-application-context:aller:3p:35"
       ],
-      "teachingDrafts": [],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:conditionnel-present:aller",
+          "status": "draft_requires_review",
+          "guidedExercises": 6,
+          "boundaryFr": "Cette leçon entraîne les formes de aller au conditionnel présent. Elle ne prouve pas que tu sais choisir entre conditionnel, futur et imparfait dans un texte, ni choisir le temps après si."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -24476,7 +24553,7 @@
       "nextActions": [
         "review_refinement_and_prerequisites",
         "review_exact_target_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -24514,7 +24591,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 8,
+          "questions": 20,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -24595,9 +24672,28 @@
         "v3-granular-forms:produire_conditionnel_present:faire:1p:m:affirmative",
         "v3-granular-forms:produire_conditionnel_present:faire:2p:m:affirmative",
         "v3-granular-forms:produire_conditionnel_present:faire:3p:m:affirmative",
-        "v3-granular-forms:produire_conditionnel_present:faire:3p:f:affirmative"
+        "v3-granular-forms:produire_conditionnel_present:faire:3p:f:affirmative",
+        "v3-granular-forms:conditionnel_present-application-context:faire:1s:36",
+        "v3-granular-forms:conditionnel_present-application-context:faire:2s:37",
+        "v3-granular-forms:conditionnel_present-application-context:faire:3s:38",
+        "v3-granular-forms:conditionnel_present-application-context:faire:1p:39",
+        "v3-granular-forms:conditionnel_present-application-context:faire:2p:40",
+        "v3-granular-forms:conditionnel_present-application-context:faire:3p:41",
+        "v3-granular-forms:conditionnel_present-application-context:faire:1s:42",
+        "v3-granular-forms:conditionnel_present-application-context:faire:2s:43",
+        "v3-granular-forms:conditionnel_present-application-context:faire:3s:44",
+        "v3-granular-forms:conditionnel_present-application-context:faire:1p:45",
+        "v3-granular-forms:conditionnel_present-application-context:faire:2p:46",
+        "v3-granular-forms:conditionnel_present-application-context:faire:3p:47"
       ],
-      "teachingDrafts": [],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:conditionnel-present:faire",
+          "status": "draft_requires_review",
+          "guidedExercises": 6,
+          "boundaryFr": "Cette leçon entraîne les formes de faire au conditionnel présent. Elle ne prouve pas que tu sais choisir entre conditionnel, futur et imparfait dans un texte, ni choisir le temps après si."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -24606,7 +24702,7 @@
       "nextActions": [
         "review_refinement_and_prerequisites",
         "review_exact_target_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -24644,7 +24740,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 8,
+          "questions": 20,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -24725,9 +24821,28 @@
         "v3-granular-forms:produire_conditionnel_present:prendre:1p:m:affirmative",
         "v3-granular-forms:produire_conditionnel_present:prendre:2p:m:affirmative",
         "v3-granular-forms:produire_conditionnel_present:prendre:3p:m:affirmative",
-        "v3-granular-forms:produire_conditionnel_present:prendre:3p:f:affirmative"
+        "v3-granular-forms:produire_conditionnel_present:prendre:3p:f:affirmative",
+        "v3-granular-forms:conditionnel_present-application-context:prendre:1s:72",
+        "v3-granular-forms:conditionnel_present-application-context:prendre:2s:73",
+        "v3-granular-forms:conditionnel_present-application-context:prendre:3s:74",
+        "v3-granular-forms:conditionnel_present-application-context:prendre:1p:75",
+        "v3-granular-forms:conditionnel_present-application-context:prendre:2p:76",
+        "v3-granular-forms:conditionnel_present-application-context:prendre:3p:77",
+        "v3-granular-forms:conditionnel_present-application-context:prendre:1s:78",
+        "v3-granular-forms:conditionnel_present-application-context:prendre:2s:79",
+        "v3-granular-forms:conditionnel_present-application-context:prendre:3s:80",
+        "v3-granular-forms:conditionnel_present-application-context:prendre:1p:81",
+        "v3-granular-forms:conditionnel_present-application-context:prendre:2p:82",
+        "v3-granular-forms:conditionnel_present-application-context:prendre:3p:83"
       ],
-      "teachingDrafts": [],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:conditionnel-present:prendre",
+          "status": "draft_requires_review",
+          "guidedExercises": 6,
+          "boundaryFr": "Cette leçon entraîne les formes de prendre au conditionnel présent. Elle ne prouve pas que tu sais choisir entre conditionnel, futur et imparfait dans un texte, ni choisir le temps après si."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -24736,7 +24851,7 @@
       "nextActions": [
         "review_refinement_and_prerequisites",
         "review_exact_target_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -24776,7 +24891,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 8,
+          "questions": 20,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -24861,9 +24976,28 @@
         "v3-granular-forms:produire_conditionnel_present:venir:1p:m:affirmative",
         "v3-granular-forms:produire_conditionnel_present:venir:2p:m:affirmative",
         "v3-granular-forms:produire_conditionnel_present:venir:3p:m:affirmative",
-        "v3-granular-forms:produire_conditionnel_present:venir:3p:f:affirmative"
+        "v3-granular-forms:produire_conditionnel_present:venir:3p:f:affirmative",
+        "v3-granular-forms:conditionnel_present-application-context:venir:1s:84",
+        "v3-granular-forms:conditionnel_present-application-context:venir:2s:85",
+        "v3-granular-forms:conditionnel_present-application-context:venir:3s:86",
+        "v3-granular-forms:conditionnel_present-application-context:venir:1p:87",
+        "v3-granular-forms:conditionnel_present-application-context:venir:2p:88",
+        "v3-granular-forms:conditionnel_present-application-context:venir:3p:89",
+        "v3-granular-forms:conditionnel_present-application-context:venir:1s:90",
+        "v3-granular-forms:conditionnel_present-application-context:venir:2s:91",
+        "v3-granular-forms:conditionnel_present-application-context:venir:3s:92",
+        "v3-granular-forms:conditionnel_present-application-context:venir:1p:93",
+        "v3-granular-forms:conditionnel_present-application-context:venir:2p:94",
+        "v3-granular-forms:conditionnel_present-application-context:venir:3p:95"
       ],
-      "teachingDrafts": [],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:conditionnel-present:venir",
+          "status": "draft_requires_review",
+          "guidedExercises": 6,
+          "boundaryFr": "Cette leçon entraîne les formes de venir au conditionnel présent. Elle ne prouve pas que tu sais choisir entre conditionnel, futur et imparfait dans un texte, ni choisir le temps après si."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -24872,7 +25006,7 @@
       "nextActions": [
         "review_refinement_and_prerequisites",
         "review_exact_target_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -24910,7 +25044,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 8,
+          "questions": 20,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -24991,9 +25125,28 @@
         "v3-granular-forms:produire_conditionnel_present:partir:1p:m:affirmative",
         "v3-granular-forms:produire_conditionnel_present:partir:2p:m:affirmative",
         "v3-granular-forms:produire_conditionnel_present:partir:3p:m:affirmative",
-        "v3-granular-forms:produire_conditionnel_present:partir:3p:f:affirmative"
+        "v3-granular-forms:produire_conditionnel_present:partir:3p:f:affirmative",
+        "v3-granular-forms:conditionnel_present-application-context:partir:1s:96",
+        "v3-granular-forms:conditionnel_present-application-context:partir:2s:97",
+        "v3-granular-forms:conditionnel_present-application-context:partir:3s:98",
+        "v3-granular-forms:conditionnel_present-application-context:partir:1p:99",
+        "v3-granular-forms:conditionnel_present-application-context:partir:2p:100",
+        "v3-granular-forms:conditionnel_present-application-context:partir:3p:101",
+        "v3-granular-forms:conditionnel_present-application-context:partir:1s:102",
+        "v3-granular-forms:conditionnel_present-application-context:partir:2s:103",
+        "v3-granular-forms:conditionnel_present-application-context:partir:3s:104",
+        "v3-granular-forms:conditionnel_present-application-context:partir:1p:105",
+        "v3-granular-forms:conditionnel_present-application-context:partir:2p:106",
+        "v3-granular-forms:conditionnel_present-application-context:partir:3p:107"
       ],
-      "teachingDrafts": [],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:conditionnel-present:partir",
+          "status": "draft_requires_review",
+          "guidedExercises": 6,
+          "boundaryFr": "Cette leçon entraîne les formes de partir au conditionnel présent. Elle ne prouve pas que tu sais choisir entre conditionnel, futur et imparfait dans un texte, ni choisir le temps après si."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -25002,7 +25155,7 @@
       "nextActions": [
         "review_refinement_and_prerequisites",
         "review_exact_target_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -25040,7 +25193,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 8,
+          "questions": 20,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -25121,9 +25274,28 @@
         "v3-granular-forms:produire_conditionnel_present:sortir:1p:m:affirmative",
         "v3-granular-forms:produire_conditionnel_present:sortir:2p:m:affirmative",
         "v3-granular-forms:produire_conditionnel_present:sortir:3p:m:affirmative",
-        "v3-granular-forms:produire_conditionnel_present:sortir:3p:f:affirmative"
+        "v3-granular-forms:produire_conditionnel_present:sortir:3p:f:affirmative",
+        "v3-granular-forms:conditionnel_present-application-context:sortir:1s:108",
+        "v3-granular-forms:conditionnel_present-application-context:sortir:2s:109",
+        "v3-granular-forms:conditionnel_present-application-context:sortir:3s:110",
+        "v3-granular-forms:conditionnel_present-application-context:sortir:1p:111",
+        "v3-granular-forms:conditionnel_present-application-context:sortir:2p:112",
+        "v3-granular-forms:conditionnel_present-application-context:sortir:3p:113",
+        "v3-granular-forms:conditionnel_present-application-context:sortir:1s:114",
+        "v3-granular-forms:conditionnel_present-application-context:sortir:2s:115",
+        "v3-granular-forms:conditionnel_present-application-context:sortir:3s:116",
+        "v3-granular-forms:conditionnel_present-application-context:sortir:1p:117",
+        "v3-granular-forms:conditionnel_present-application-context:sortir:2p:118",
+        "v3-granular-forms:conditionnel_present-application-context:sortir:3p:119"
       ],
-      "teachingDrafts": [],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:conditionnel-present:sortir",
+          "status": "draft_requires_review",
+          "guidedExercises": 6,
+          "boundaryFr": "Cette leçon entraîne les formes de sortir au conditionnel présent. Elle ne prouve pas que tu sais choisir entre conditionnel, futur et imparfait dans un texte, ni choisir le temps après si."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -25132,7 +25304,7 @@
       "nextActions": [
         "review_refinement_and_prerequisites",
         "review_exact_target_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -25170,7 +25342,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 8,
+          "questions": 20,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -25251,9 +25423,28 @@
         "v3-granular-forms:produire_conditionnel_present:dire:1p:m:affirmative",
         "v3-granular-forms:produire_conditionnel_present:dire:2p:m:affirmative",
         "v3-granular-forms:produire_conditionnel_present:dire:3p:m:affirmative",
-        "v3-granular-forms:produire_conditionnel_present:dire:3p:f:affirmative"
+        "v3-granular-forms:produire_conditionnel_present:dire:3p:f:affirmative",
+        "v3-granular-forms:conditionnel_present-application-context:dire:1s:120",
+        "v3-granular-forms:conditionnel_present-application-context:dire:2s:121",
+        "v3-granular-forms:conditionnel_present-application-context:dire:3s:122",
+        "v3-granular-forms:conditionnel_present-application-context:dire:1p:123",
+        "v3-granular-forms:conditionnel_present-application-context:dire:2p:124",
+        "v3-granular-forms:conditionnel_present-application-context:dire:3p:125",
+        "v3-granular-forms:conditionnel_present-application-context:dire:1s:126",
+        "v3-granular-forms:conditionnel_present-application-context:dire:2s:127",
+        "v3-granular-forms:conditionnel_present-application-context:dire:3s:128",
+        "v3-granular-forms:conditionnel_present-application-context:dire:1p:129",
+        "v3-granular-forms:conditionnel_present-application-context:dire:2p:130",
+        "v3-granular-forms:conditionnel_present-application-context:dire:3p:131"
       ],
-      "teachingDrafts": [],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:conditionnel-present:dire",
+          "status": "draft_requires_review",
+          "guidedExercises": 6,
+          "boundaryFr": "Cette leçon entraîne les formes de dire au conditionnel présent. Elle ne prouve pas que tu sais choisir entre conditionnel, futur et imparfait dans un texte, ni choisir le temps après si."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -25262,7 +25453,7 @@
       "nextActions": [
         "review_refinement_and_prerequisites",
         "review_exact_target_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -25300,7 +25491,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 8,
+          "questions": 20,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -25381,9 +25572,28 @@
         "v3-granular-forms:produire_conditionnel_present:voir:1p:m:affirmative",
         "v3-granular-forms:produire_conditionnel_present:voir:2p:m:affirmative",
         "v3-granular-forms:produire_conditionnel_present:voir:3p:m:affirmative",
-        "v3-granular-forms:produire_conditionnel_present:voir:3p:f:affirmative"
+        "v3-granular-forms:produire_conditionnel_present:voir:3p:f:affirmative",
+        "v3-granular-forms:conditionnel_present-application-context:voir:1s:132",
+        "v3-granular-forms:conditionnel_present-application-context:voir:2s:133",
+        "v3-granular-forms:conditionnel_present-application-context:voir:3s:134",
+        "v3-granular-forms:conditionnel_present-application-context:voir:1p:135",
+        "v3-granular-forms:conditionnel_present-application-context:voir:2p:136",
+        "v3-granular-forms:conditionnel_present-application-context:voir:3p:137",
+        "v3-granular-forms:conditionnel_present-application-context:voir:1s:138",
+        "v3-granular-forms:conditionnel_present-application-context:voir:2s:139",
+        "v3-granular-forms:conditionnel_present-application-context:voir:3s:140",
+        "v3-granular-forms:conditionnel_present-application-context:voir:1p:141",
+        "v3-granular-forms:conditionnel_present-application-context:voir:2p:142",
+        "v3-granular-forms:conditionnel_present-application-context:voir:3p:143"
       ],
-      "teachingDrafts": [],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:conditionnel-present:voir",
+          "status": "draft_requires_review",
+          "guidedExercises": 6,
+          "boundaryFr": "Cette leçon entraîne les formes de voir au conditionnel présent. Elle ne prouve pas que tu sais choisir entre conditionnel, futur et imparfait dans un texte, ni choisir le temps après si."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -25392,7 +25602,7 @@
       "nextActions": [
         "review_refinement_and_prerequisites",
         "review_exact_target_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -25430,7 +25640,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 8,
+          "questions": 20,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -25511,9 +25721,28 @@
         "v3-granular-forms:produire_conditionnel_present:pouvoir:1p:m:affirmative",
         "v3-granular-forms:produire_conditionnel_present:pouvoir:2p:m:affirmative",
         "v3-granular-forms:produire_conditionnel_present:pouvoir:3p:m:affirmative",
-        "v3-granular-forms:produire_conditionnel_present:pouvoir:3p:f:affirmative"
+        "v3-granular-forms:produire_conditionnel_present:pouvoir:3p:f:affirmative",
+        "v3-granular-forms:conditionnel_present-application-context:pouvoir:1s:144",
+        "v3-granular-forms:conditionnel_present-application-context:pouvoir:2s:145",
+        "v3-granular-forms:conditionnel_present-application-context:pouvoir:3s:146",
+        "v3-granular-forms:conditionnel_present-application-context:pouvoir:1p:147",
+        "v3-granular-forms:conditionnel_present-application-context:pouvoir:2p:148",
+        "v3-granular-forms:conditionnel_present-application-context:pouvoir:3p:149",
+        "v3-granular-forms:conditionnel_present-application-context:pouvoir:1s:150",
+        "v3-granular-forms:conditionnel_present-application-context:pouvoir:2s:151",
+        "v3-granular-forms:conditionnel_present-application-context:pouvoir:3s:152",
+        "v3-granular-forms:conditionnel_present-application-context:pouvoir:1p:153",
+        "v3-granular-forms:conditionnel_present-application-context:pouvoir:2p:154",
+        "v3-granular-forms:conditionnel_present-application-context:pouvoir:3p:155"
       ],
-      "teachingDrafts": [],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:conditionnel-present:pouvoir",
+          "status": "draft_requires_review",
+          "guidedExercises": 6,
+          "boundaryFr": "Cette leçon entraîne les formes de pouvoir au conditionnel présent. Elle ne prouve pas que tu sais choisir entre conditionnel, futur et imparfait dans un texte, ni choisir le temps après si."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -25522,7 +25751,7 @@
       "nextActions": [
         "review_refinement_and_prerequisites",
         "review_exact_target_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -25560,7 +25789,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 8,
+          "questions": 20,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -25641,9 +25870,28 @@
         "v3-granular-forms:produire_conditionnel_present:vouloir:1p:m:affirmative",
         "v3-granular-forms:produire_conditionnel_present:vouloir:2p:m:affirmative",
         "v3-granular-forms:produire_conditionnel_present:vouloir:3p:m:affirmative",
-        "v3-granular-forms:produire_conditionnel_present:vouloir:3p:f:affirmative"
+        "v3-granular-forms:produire_conditionnel_present:vouloir:3p:f:affirmative",
+        "v3-granular-forms:conditionnel_present-application-context:vouloir:1s:156",
+        "v3-granular-forms:conditionnel_present-application-context:vouloir:2s:157",
+        "v3-granular-forms:conditionnel_present-application-context:vouloir:3s:158",
+        "v3-granular-forms:conditionnel_present-application-context:vouloir:1p:159",
+        "v3-granular-forms:conditionnel_present-application-context:vouloir:2p:160",
+        "v3-granular-forms:conditionnel_present-application-context:vouloir:3p:161",
+        "v3-granular-forms:conditionnel_present-application-context:vouloir:1s:162",
+        "v3-granular-forms:conditionnel_present-application-context:vouloir:2s:163",
+        "v3-granular-forms:conditionnel_present-application-context:vouloir:3s:164",
+        "v3-granular-forms:conditionnel_present-application-context:vouloir:1p:165",
+        "v3-granular-forms:conditionnel_present-application-context:vouloir:2p:166",
+        "v3-granular-forms:conditionnel_present-application-context:vouloir:3p:167"
       ],
-      "teachingDrafts": [],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:conditionnel-present:vouloir",
+          "status": "draft_requires_review",
+          "guidedExercises": 6,
+          "boundaryFr": "Cette leçon entraîne les formes de vouloir au conditionnel présent. Elle ne prouve pas que tu sais choisir entre conditionnel, futur et imparfait dans un texte, ni choisir le temps après si."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -25652,7 +25900,7 @@
       "nextActions": [
         "review_refinement_and_prerequisites",
         "review_exact_target_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -25690,7 +25938,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 8,
+          "questions": 20,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -25771,9 +26019,28 @@
         "v3-granular-forms:produire_conditionnel_present:savoir:1p:m:affirmative",
         "v3-granular-forms:produire_conditionnel_present:savoir:2p:m:affirmative",
         "v3-granular-forms:produire_conditionnel_present:savoir:3p:m:affirmative",
-        "v3-granular-forms:produire_conditionnel_present:savoir:3p:f:affirmative"
+        "v3-granular-forms:produire_conditionnel_present:savoir:3p:f:affirmative",
+        "v3-granular-forms:conditionnel_present-application-context:savoir:1s:168",
+        "v3-granular-forms:conditionnel_present-application-context:savoir:2s:169",
+        "v3-granular-forms:conditionnel_present-application-context:savoir:3s:170",
+        "v3-granular-forms:conditionnel_present-application-context:savoir:1p:171",
+        "v3-granular-forms:conditionnel_present-application-context:savoir:2p:172",
+        "v3-granular-forms:conditionnel_present-application-context:savoir:3p:173",
+        "v3-granular-forms:conditionnel_present-application-context:savoir:1s:174",
+        "v3-granular-forms:conditionnel_present-application-context:savoir:2s:175",
+        "v3-granular-forms:conditionnel_present-application-context:savoir:3s:176",
+        "v3-granular-forms:conditionnel_present-application-context:savoir:1p:177",
+        "v3-granular-forms:conditionnel_present-application-context:savoir:2p:178",
+        "v3-granular-forms:conditionnel_present-application-context:savoir:3p:179"
       ],
-      "teachingDrafts": [],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:conditionnel-present:savoir",
+          "status": "draft_requires_review",
+          "guidedExercises": 6,
+          "boundaryFr": "Cette leçon entraîne les formes de savoir au conditionnel présent. Elle ne prouve pas que tu sais choisir entre conditionnel, futur et imparfait dans un texte, ni choisir le temps après si."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -25782,7 +26049,7 @@
       "nextActions": [
         "review_refinement_and_prerequisites",
         "review_exact_target_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -25820,7 +26087,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 8,
+          "questions": 20,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -25901,9 +26168,28 @@
         "v3-granular-forms:produire_conditionnel_present:devoir:1p:m:affirmative",
         "v3-granular-forms:produire_conditionnel_present:devoir:2p:m:affirmative",
         "v3-granular-forms:produire_conditionnel_present:devoir:3p:m:affirmative",
-        "v3-granular-forms:produire_conditionnel_present:devoir:3p:f:affirmative"
+        "v3-granular-forms:produire_conditionnel_present:devoir:3p:f:affirmative",
+        "v3-granular-forms:conditionnel_present-application-context:devoir:1s:180",
+        "v3-granular-forms:conditionnel_present-application-context:devoir:2s:181",
+        "v3-granular-forms:conditionnel_present-application-context:devoir:3s:182",
+        "v3-granular-forms:conditionnel_present-application-context:devoir:1p:183",
+        "v3-granular-forms:conditionnel_present-application-context:devoir:2p:184",
+        "v3-granular-forms:conditionnel_present-application-context:devoir:3p:185",
+        "v3-granular-forms:conditionnel_present-application-context:devoir:1s:186",
+        "v3-granular-forms:conditionnel_present-application-context:devoir:2s:187",
+        "v3-granular-forms:conditionnel_present-application-context:devoir:3s:188",
+        "v3-granular-forms:conditionnel_present-application-context:devoir:1p:189",
+        "v3-granular-forms:conditionnel_present-application-context:devoir:2p:190",
+        "v3-granular-forms:conditionnel_present-application-context:devoir:3p:191"
       ],
-      "teachingDrafts": [],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:conditionnel-present:devoir",
+          "status": "draft_requires_review",
+          "guidedExercises": 6,
+          "boundaryFr": "Cette leçon entraîne les formes de devoir au conditionnel présent. Elle ne prouve pas que tu sais choisir entre conditionnel, futur et imparfait dans un texte, ni choisir le temps après si."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -25912,7 +26198,7 @@
       "nextActions": [
         "review_refinement_and_prerequisites",
         "review_exact_target_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -78000,5 +78286,5 @@
       ]
     }
   ],
-  "checksum": "sha256:7d11dc57da8d7c3ca598c80b0f1ff73abdef10fe2cd5b578aa237e4ad813a8e0"
+  "checksum": "sha256:5adc073d80d9be82da409539dd6f266e5085bed36b37b583a937267f245db894"
 }

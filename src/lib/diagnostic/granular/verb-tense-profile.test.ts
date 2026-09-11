@@ -17,6 +17,8 @@ it.each([
  ['futur_simple','aller','imparfait','aller'],
  ['futur_simple','prendre','futur_simple','venir'],
  ['imparfait','voir','imparfait','faire'],
+ ['futur_simple','aller','conditionnel_present','aller'],
+ ['conditionnel_present','aller','futur_simple','aller'],
 ])('separates %s/%s success from %s/%s difficulty', (knownTense,knownVerb,weakTense,weakVerb)=>{
  const knownId=skillId(knownTense,knownVerb),weakId=skillId(weakTense,weakVerb);
  const targets=[knownId,weakId].map(id=>assessment.skills.find(skill=>skill.id===id)!);

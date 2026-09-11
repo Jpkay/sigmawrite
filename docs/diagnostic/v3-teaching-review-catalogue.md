@@ -1,11 +1,26 @@
 # French teaching draft review catalogue
 
-107 lessons, 592 guided exercises, 107 exact assessment targets. No approval, publication or activity binding is created by this export.
+122 lessons, 682 guided exercises, 122 exact assessment targets. No approval, publication or activity binding is created by this export.
 
 The companion JSON includes the complete learner-facing content, answer keys, hints, feedback, target IDs, prerequisites, evidence requirements, material identities and per-lesson checksums. Review decisions must refer to the exact content version. An anchored annotation proves only that the annotated material appears in the lesson; it does not prove completeness or independence from assessment questions.
 
 | Lesson | Target | Mode | Guided exercises | Exposure annotation |
 | --- | --- | --- | ---: | --- |
+| Écrire aller au conditionnel présent | produire_conditionnel_present::writing-controlled-production::verb:aller | production | 6 | anchored_requires_completeness_review |
+| Écrire faire au conditionnel présent | produire_conditionnel_present::writing-controlled-production::verb:faire | production | 6 | anchored_requires_completeness_review |
+| Écrire être au conditionnel présent | produire_conditionnel_present::writing-controlled-production::verb:être | production | 6 | anchored_requires_completeness_review |
+| Écrire avoir au conditionnel présent | produire_conditionnel_present::writing-controlled-production::verb:avoir | production | 6 | anchored_requires_completeness_review |
+| Écrire prendre au conditionnel présent | produire_conditionnel_present::writing-controlled-production::verb:prendre | production | 6 | anchored_requires_completeness_review |
+| Écrire venir au conditionnel présent | produire_conditionnel_present::writing-controlled-production::verb:venir | production | 6 | anchored_requires_completeness_review |
+| Écrire partir au conditionnel présent | produire_conditionnel_present::writing-controlled-production::verb:partir | production | 6 | anchored_requires_completeness_review |
+| Écrire sortir au conditionnel présent | produire_conditionnel_present::writing-controlled-production::verb:sortir | production | 6 | anchored_requires_completeness_review |
+| Écrire dire au conditionnel présent | produire_conditionnel_present::writing-controlled-production::verb:dire | production | 6 | anchored_requires_completeness_review |
+| Écrire voir au conditionnel présent | produire_conditionnel_present::writing-controlled-production::verb:voir | production | 6 | anchored_requires_completeness_review |
+| Écrire pouvoir au conditionnel présent | produire_conditionnel_present::writing-controlled-production::verb:pouvoir | production | 6 | anchored_requires_completeness_review |
+| Écrire vouloir au conditionnel présent | produire_conditionnel_present::writing-controlled-production::verb:vouloir | production | 6 | anchored_requires_completeness_review |
+| Écrire savoir au conditionnel présent | produire_conditionnel_present::writing-controlled-production::verb:savoir | production | 6 | anchored_requires_completeness_review |
+| Écrire devoir au conditionnel présent | produire_conditionnel_present::writing-controlled-production::verb:devoir | production | 6 | anchored_requires_completeness_review |
+| Reconnaître le conditionnel présent | reconnaitre_conditionnel_present::reading-receptive | recognition | 6 | anchored_requires_completeness_review |
 | Comprendre pourquoi un personnage agit | inferer_motivation_personnage::literary-receptive::text_type:narrative | interpretation | 6 | anchored_requires_completeness_review |
 | Réunir deux phrases avec une relative | construction_subordonnee_relative::writing-controlled-production | production | 8 | anchored_requires_completeness_review |
 | Repérer une proposition complétive | construction_subordonnee_completive::reading-analysis | recognition | 6 | anchored_requires_completeness_review |

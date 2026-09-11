@@ -1,5 +1,7 @@
-export type TenseRecognitionDraft={key:string;nodeKey:"reconnaitre_futur_proche"|"reconnaitre_passe_recent"|"reconnaitre_imparfait"|"reconnaitre_futur_simple";assessedTexts?:string[];prompt:string;answer:string;distractors:[string,string,string];reason:string};
+import {CONDITIONNEL_RECOGNITION_DRAFTS} from "./conditionnel-recognition";
+export type TenseRecognitionDraft={key:string;nodeKey:"reconnaitre_futur_proche"|"reconnaitre_passe_recent"|"reconnaitre_imparfait"|"reconnaitre_futur_simple"|"reconnaitre_conditionnel_present";assessedTexts?:string[];prompt:string;answer:string;distractors:[string,string,string];reason:string};
 export const TENSE_RECOGNITION_DRAFTS:readonly TenseRecognitionDraft[]=[
+ ...CONDITIONNEL_RECOGNITION_DRAFTS,
  {key:"future-library",nodeKey:"reconnaitre_futur_proche",prompt:"Je vais emprunter ce roman.\n\nQuel groupe verbal forme le futur proche ?",answer:"vais emprunter",distractors:["Je vais","emprunter ce roman","ce roman"],reason:"Vais est aller au présent et emprunter est l’infinitif."},
  {key:"future-measure",nodeKey:"reconnaitre_futur_proche",prompt:"Quelle phrase emploie le futur proche ?",answer:"Tu vas mesurer la planche.",distractors:["Tu mesures la planche.","Tu as mesuré la planche.","Tu mesureras la planche."],reason:"Vas mesurer suit le modèle aller au présent + infinitif."},
  {key:"future-negative",nodeKey:"reconnaitre_futur_proche",prompt:"Quelle phrase contient un futur proche malgré la négation ?",answer:"Les voisins ne vont pas déplacer leur voiture.",distractors:["Les voisins ne déplacent pas leur voiture.","Les voisins n’ont pas déplacé leur voiture.","Les voisins ne déplaçaient pas leur voiture."],reason:"Ne vont pas déplacer conserve aller au présent et déplacer à l’infinitif."},

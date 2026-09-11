@@ -571,6 +571,174 @@ These supplied-tense gaps exercise regular forms, individual verbs and the actua
 - **v3-granular-forms:futur_simple-application-context:devoir:1p:189**: Complète la phrase avec devoir au futur simple : Nous ___ respecter le silence. Réponse : **devrons**.
 - **v3-granular-forms:futur_simple-application-context:devoir:2p:190**: Complète la phrase avec devoir au futur simple : Vous ___ attendre votre tour. Réponse : **devrez**.
 - **v3-granular-forms:futur_simple-application-context:devoir:3p:191**: Complète la phrase avec devoir au futur simple : Les campeurs ___ éteindre leur feu. Réponse : **devront**.
+- **v3-granular-forms:conditionnel_present-application-context:aller:1s:24**: Complète la phrase avec aller au conditionnel présent : J’___ chez le dentiste. Réponse : **irais**.
+- **v3-granular-forms:conditionnel_present-application-context:aller:2s:25**: Complète la phrase avec aller au conditionnel présent : Tu ___ vers la sortie. Réponse : **irais**.
+- **v3-granular-forms:conditionnel_present-application-context:aller:3s:26**: Complète la phrase avec aller au conditionnel présent : Le groupe ___ à la gare. Réponse : **irait**.
+- **v3-granular-forms:conditionnel_present-application-context:aller:1p:27**: Complète la phrase avec aller au conditionnel présent : Nous ___ au club d’échecs. Réponse : **irions**.
+- **v3-granular-forms:conditionnel_present-application-context:aller:2p:28**: Complète la phrase avec aller au conditionnel présent : Vous ___ chez vos grands-parents. Réponse : **iriez**.
+- **v3-granular-forms:conditionnel_present-application-context:aller:3p:29**: Complète la phrase avec aller au conditionnel présent : Mes voisines ___ au concert. Réponse : **iraient**.
+- **v3-granular-forms:conditionnel_present-application-context:aller:1s:30**: Complète la phrase avec aller au conditionnel présent : J’___ à la boulangerie. Réponse : **irais**.
+- **v3-granular-forms:conditionnel_present-application-context:aller:2s:31**: Complète la phrase avec aller au conditionnel présent : Tu ___ au cours de dessin. Réponse : **irais**.
+- **v3-granular-forms:conditionnel_present-application-context:aller:3s:32**: Complète la phrase avec aller au conditionnel présent : Mon frère ___ à l’atelier. Réponse : **irait**.
+- **v3-granular-forms:conditionnel_present-application-context:aller:1p:33**: Complète la phrase avec aller au conditionnel présent : Nous ___ vers la rivière. Réponse : **irions**.
+- **v3-granular-forms:conditionnel_present-application-context:aller:2p:34**: Complète la phrase avec aller au conditionnel présent : Vous ___ à l’exposition. Réponse : **iriez**.
+- **v3-granular-forms:conditionnel_present-application-context:aller:3p:35**: Complète la phrase avec aller au conditionnel présent : Les élèves ___ au réfectoire. Réponse : **iraient**.
+- **v3-granular-forms:conditionnel_present-application-context:faire:1s:36**: Complète la phrase avec faire au conditionnel présent : Je ___ une liste de courses. Réponse : **ferais**.
+- **v3-granular-forms:conditionnel_present-application-context:faire:2s:37**: Complète la phrase avec faire au conditionnel présent : Tu ___ un nœud avec cette corde. Réponse : **ferais**.
+- **v3-granular-forms:conditionnel_present-application-context:faire:3s:38**: Complète la phrase avec faire au conditionnel présent : Sam ___ la vaisselle. Réponse : **ferait**.
+- **v3-granular-forms:conditionnel_present-application-context:faire:1p:39**: Complète la phrase avec faire au conditionnel présent : Nous ___ des recherches sur les volcans. Réponse : **ferions**.
+- **v3-granular-forms:conditionnel_present-application-context:faire:2p:40**: Complète la phrase avec faire au conditionnel présent : Vous ___ un détour par le pont. Réponse : **feriez**.
+- **v3-granular-forms:conditionnel_present-application-context:faire:3p:41**: Complète la phrase avec faire au conditionnel présent : Les jumelles ___ de la musique. Réponse : **feraient**.
+- **v3-granular-forms:conditionnel_present-application-context:faire:1s:42**: Complète la phrase avec faire au conditionnel présent : Je ___ attention aux cyclistes. Réponse : **ferais**.
+- **v3-granular-forms:conditionnel_present-application-context:faire:2s:43**: Complète la phrase avec faire au conditionnel présent : Tu ___ équipe avec Lila. Réponse : **ferais**.
+- **v3-granular-forms:conditionnel_present-application-context:faire:3s:44**: Complète la phrase avec faire au conditionnel présent : Le cuisinier ___ cuire le riz. Réponse : **ferait**.
+- **v3-granular-forms:conditionnel_present-application-context:faire:1p:45**: Complète la phrase avec faire au conditionnel présent : Nous ___ le tour du lac. Réponse : **ferions**.
+- **v3-granular-forms:conditionnel_present-application-context:faire:2p:46**: Complète la phrase avec faire au conditionnel présent : Vous ___ un croquis de la maison. Réponse : **feriez**.
+- **v3-granular-forms:conditionnel_present-application-context:faire:3p:47**: Complète la phrase avec faire au conditionnel présent : Les comédiens ___ rire le public. Réponse : **feraient**.
+- **v3-granular-forms:conditionnel_present-application-context:être:1s:48**: Complète la phrase avec être au conditionnel présent : Je ___ responsable du ballon. Réponse : **serais**.
+- **v3-granular-forms:conditionnel_present-application-context:être:2s:49**: Complète la phrase avec être au conditionnel présent : Tu ___ le premier à répondre. Réponse : **serais**.
+- **v3-granular-forms:conditionnel_present-application-context:être:3s:50**: Complète la phrase avec être au conditionnel présent : Le magasin ___ fermé le lundi. Réponse : **serait**.
+- **v3-granular-forms:conditionnel_present-application-context:être:1p:51**: Complète la phrase avec être au conditionnel présent : Nous ___ heureux de participer. Réponse : **serions**.
+- **v3-granular-forms:conditionnel_present-application-context:être:2p:52**: Complète la phrase avec être au conditionnel présent : Vous ___ sur la bonne piste. Réponse : **seriez**.
+- **v3-granular-forms:conditionnel_present-application-context:être:3p:53**: Complète la phrase avec être au conditionnel présent : Les fenêtres ___ ouvertes. Réponse : **seraient**.
+- **v3-granular-forms:conditionnel_present-application-context:être:1s:54**: Complète la phrase avec être au conditionnel présent : Je ___ à côté du piano. Réponse : **serais**.
+- **v3-granular-forms:conditionnel_present-application-context:être:2s:55**: Complète la phrase avec être au conditionnel présent : Tu ___ très patient avec le chiot. Réponse : **serais**.
+- **v3-granular-forms:conditionnel_present-application-context:être:3s:56**: Complète la phrase avec être au conditionnel présent : La lampe ___ allumée. Réponse : **serait**.
+- **v3-granular-forms:conditionnel_present-application-context:être:1p:57**: Complète la phrase avec être au conditionnel présent : Nous ___ membres du club de lecture. Réponse : **serions**.
+- **v3-granular-forms:conditionnel_present-application-context:être:2p:58**: Complète la phrase avec être au conditionnel présent : Vous ___ invités à la répétition. Réponse : **seriez**.
+- **v3-granular-forms:conditionnel_present-application-context:être:3p:59**: Complète la phrase avec être au conditionnel présent : Les valises ___ sous le banc. Réponse : **seraient**.
+- **v3-granular-forms:conditionnel_present-application-context:avoir:1s:60**: Complète la phrase avec avoir au conditionnel présent : J’___ envie de dessiner. Réponse : **aurais**.
+- **v3-granular-forms:conditionnel_present-application-context:avoir:2s:61**: Complète la phrase avec avoir au conditionnel présent : Tu ___ froid sans ton manteau. Réponse : **aurais**.
+- **v3-granular-forms:conditionnel_present-application-context:avoir:3s:62**: Complète la phrase avec avoir au conditionnel présent : Le vélo ___ deux pneus neufs. Réponse : **aurait**.
+- **v3-granular-forms:conditionnel_present-application-context:avoir:1p:63**: Complète la phrase avec avoir au conditionnel présent : Nous ___ rendez-vous à midi. Réponse : **aurions**.
+- **v3-granular-forms:conditionnel_present-application-context:avoir:2p:64**: Complète la phrase avec avoir au conditionnel présent : Vous ___ plusieurs solutions. Réponse : **auriez**.
+- **v3-granular-forms:conditionnel_present-application-context:avoir:3p:65**: Complète la phrase avec avoir au conditionnel présent : Les musiciens ___ besoin de silence. Réponse : **auraient**.
+- **v3-granular-forms:conditionnel_present-application-context:avoir:1s:66**: Complète la phrase avec avoir au conditionnel présent : J’___ douze cartes en main. Réponse : **aurais**.
+- **v3-granular-forms:conditionnel_present-application-context:avoir:2s:67**: Complète la phrase avec avoir au conditionnel présent : Tu ___ raison de demander. Réponse : **aurais**.
+- **v3-granular-forms:conditionnel_present-application-context:avoir:3s:68**: Complète la phrase avec avoir au conditionnel présent : Le bâtiment ___ trois étages. Réponse : **aurait**.
+- **v3-granular-forms:conditionnel_present-application-context:avoir:1p:69**: Complète la phrase avec avoir au conditionnel présent : Nous ___ confiance en notre équipe. Réponse : **aurions**.
+- **v3-granular-forms:conditionnel_present-application-context:avoir:2p:70**: Complète la phrase avec avoir au conditionnel présent : Vous ___ encore quelques minutes. Réponse : **auriez**.
+- **v3-granular-forms:conditionnel_present-application-context:avoir:3p:71**: Complète la phrase avec avoir au conditionnel présent : Les tortues ___ une carapace. Réponse : **auraient**.
+- **v3-granular-forms:conditionnel_present-application-context:prendre:1s:72**: Complète la phrase avec prendre au conditionnel présent : Je ___ la dernière part de tarte. Réponse : **prendrais**.
+- **v3-granular-forms:conditionnel_present-application-context:prendre:2s:73**: Complète la phrase avec prendre au conditionnel présent : Tu ___ soin de ces plantes. Réponse : **prendrais**.
+- **v3-granular-forms:conditionnel_present-application-context:prendre:3s:74**: Complète la phrase avec prendre au conditionnel présent : Le gardien ___ les clés du portail. Réponse : **prendrait**.
+- **v3-granular-forms:conditionnel_present-application-context:prendre:1p:75**: Complète la phrase avec prendre au conditionnel présent : Nous ___ le sentier de gauche. Réponse : **prendrions**.
+- **v3-granular-forms:conditionnel_present-application-context:prendre:2p:76**: Complète la phrase avec prendre au conditionnel présent : Vous ___ votre repas dehors. Réponse : **prendriez**.
+- **v3-granular-forms:conditionnel_present-application-context:prendre:3p:77**: Complète la phrase avec prendre au conditionnel présent : Les touristes ___ un plan de la ville. Réponse : **prendraient**.
+- **v3-granular-forms:conditionnel_present-application-context:prendre:1s:78**: Complète la phrase avec prendre au conditionnel présent : Je ___ une serviette propre. Réponse : **prendrais**.
+- **v3-granular-forms:conditionnel_present-application-context:prendre:2s:79**: Complète la phrase avec prendre au conditionnel présent : Tu ___ la parole après Inès. Réponse : **prendrais**.
+- **v3-granular-forms:conditionnel_present-application-context:prendre:3s:80**: Complète la phrase avec prendre au conditionnel présent : La réunion ___ fin à dix heures. Réponse : **prendrait**.
+- **v3-granular-forms:conditionnel_present-application-context:prendre:1p:81**: Complète la phrase avec prendre au conditionnel présent : Nous ___ place devant la scène. Réponse : **prendrions**.
+- **v3-granular-forms:conditionnel_present-application-context:prendre:2p:82**: Complète la phrase avec prendre au conditionnel présent : Vous ___ une décision ensemble. Réponse : **prendriez**.
+- **v3-granular-forms:conditionnel_present-application-context:prendre:3p:83**: Complète la phrase avec prendre au conditionnel présent : Les pompiers ___ la route du village. Réponse : **prendraient**.
+- **v3-granular-forms:conditionnel_present-application-context:venir:1s:84**: Complète la phrase avec venir au conditionnel présent : Je ___ rendre ton casque. Réponse : **viendrais**.
+- **v3-granular-forms:conditionnel_present-application-context:venir:2s:85**: Complète la phrase avec venir au conditionnel présent : Tu ___ me montrer ta bande dessinée. Réponse : **viendrais**.
+- **v3-granular-forms:conditionnel_present-application-context:venir:3s:86**: Complète la phrase avec venir au conditionnel présent : Le facteur ___ chaque matin. Réponse : **viendrait**.
+- **v3-granular-forms:conditionnel_present-application-context:venir:1p:87**: Complète la phrase avec venir au conditionnel présent : Nous ___ apporter des couvertures. Réponse : **viendrions**.
+- **v3-granular-forms:conditionnel_present-application-context:venir:2p:88**: Complète la phrase avec venir au conditionnel présent : Vous ___ du quartier voisin. Réponse : **viendriez**.
+- **v3-granular-forms:conditionnel_present-application-context:venir:3p:89**: Complète la phrase avec venir au conditionnel présent : Les visiteurs ___ admirer les tableaux. Réponse : **viendraient**.
+- **v3-granular-forms:conditionnel_present-application-context:venir:1s:90**: Complète la phrase avec venir au conditionnel présent : Je ___ poser une question. Réponse : **viendrais**.
+- **v3-granular-forms:conditionnel_present-application-context:venir:2s:91**: Complète la phrase avec venir au conditionnel présent : Tu ___ récupérer ton parapluie. Réponse : **viendrais**.
+- **v3-granular-forms:conditionnel_present-application-context:venir:3s:92**: Complète la phrase avec venir au conditionnel présent : La lumière ___ de cette fenêtre. Réponse : **viendrait**.
+- **v3-granular-forms:conditionnel_present-application-context:venir:1p:93**: Complète la phrase avec venir au conditionnel présent : Nous ___ soutenir les coureurs. Réponse : **viendrions**.
+- **v3-granular-forms:conditionnel_present-application-context:venir:2p:94**: Complète la phrase avec venir au conditionnel présent : Vous ___ goûter notre soupe. Réponse : **viendriez**.
+- **v3-granular-forms:conditionnel_present-application-context:venir:3p:95**: Complète la phrase avec venir au conditionnel présent : Les cris ___ du terrain de sport. Réponse : **viendraient**.
+- **v3-granular-forms:conditionnel_present-application-context:partir:1s:96**: Complète la phrase avec partir au conditionnel présent : Je ___ pour Lyon samedi. Réponse : **partirais**.
+- **v3-granular-forms:conditionnel_present-application-context:partir:2s:97**: Complète la phrase avec partir au conditionnel présent : Tu ___ avant la fin du film. Réponse : **partirais**.
+- **v3-granular-forms:conditionnel_present-application-context:partir:3s:98**: Complète la phrase avec partir au conditionnel présent : Le bateau ___ du port. Réponse : **partirait**.
+- **v3-granular-forms:conditionnel_present-application-context:partir:1p:99**: Complète la phrase avec partir au conditionnel présent : Nous ___ explorer la forêt. Réponse : **partirions**.
+- **v3-granular-forms:conditionnel_present-application-context:partir:2p:100**: Complète la phrase avec partir au conditionnel présent : Vous ___ sans vos bagages. Réponse : **partiriez**.
+- **v3-granular-forms:conditionnel_present-application-context:partir:3p:101**: Complète la phrase avec partir au conditionnel présent : Les oiseaux ___ vers le sud. Réponse : **partiraient**.
+- **v3-granular-forms:conditionnel_present-application-context:partir:1s:102**: Complète la phrase avec partir au conditionnel présent : Je ___ à la recherche du chat. Réponse : **partirais**.
+- **v3-granular-forms:conditionnel_present-application-context:partir:2s:103**: Complète la phrase avec partir au conditionnel présent : Tu ___ avec une gourde pleine. Réponse : **partirais**.
+- **v3-granular-forms:conditionnel_present-application-context:partir:3s:104**: Complète la phrase avec partir au conditionnel présent : La fusée ___ dans quelques secondes. Réponse : **partirait**.
+- **v3-granular-forms:conditionnel_present-application-context:partir:1p:105**: Complète la phrase avec partir au conditionnel présent : Nous ___ du même point. Réponse : **partirions**.
+- **v3-granular-forms:conditionnel_present-application-context:partir:2p:106**: Complète la phrase avec partir au conditionnel présent : Vous ___ au lever du soleil. Réponse : **partiriez**.
+- **v3-granular-forms:conditionnel_present-application-context:partir:3p:107**: Complète la phrase avec partir au conditionnel présent : Les voyageurs ___ pour la montagne. Réponse : **partiraient**.
+- **v3-granular-forms:conditionnel_present-application-context:sortir:1s:108**: Complète la phrase avec sortir au conditionnel présent : Je ___ les assiettes du placard. Réponse : **sortirais**.
+- **v3-granular-forms:conditionnel_present-application-context:sortir:2s:109**: Complète la phrase avec sortir au conditionnel présent : Tu ___ de ton atelier. Réponse : **sortirais**.
+- **v3-granular-forms:conditionnel_present-application-context:sortir:3s:110**: Complète la phrase avec sortir au conditionnel présent : Le lapin ___ de sa cachette. Réponse : **sortirait**.
+- **v3-granular-forms:conditionnel_present-application-context:sortir:1p:111**: Complète la phrase avec sortir au conditionnel présent : Nous ___ prendre l’air. Réponse : **sortirions**.
+- **v3-granular-forms:conditionnel_present-application-context:sortir:2p:112**: Complète la phrase avec sortir au conditionnel présent : Vous ___ vos instruments. Réponse : **sortiriez**.
+- **v3-granular-forms:conditionnel_present-application-context:sortir:3p:113**: Complète la phrase avec sortir au conditionnel présent : Les spectateurs ___ de la salle. Réponse : **sortiraient**.
+- **v3-granular-forms:conditionnel_present-application-context:sortir:1s:114**: Complète la phrase avec sortir au conditionnel présent : Je ___ mon carnet de croquis. Réponse : **sortirais**.
+- **v3-granular-forms:conditionnel_present-application-context:sortir:2s:115**: Complète la phrase avec sortir au conditionnel présent : Tu ___ par le petit portail. Réponse : **sortirais**.
+- **v3-granular-forms:conditionnel_present-application-context:sortir:3s:116**: Complète la phrase avec sortir au conditionnel présent : La fumée ___ de la cheminée. Réponse : **sortirait**.
+- **v3-granular-forms:conditionnel_present-application-context:sortir:1p:117**: Complète la phrase avec sortir au conditionnel présent : Nous ___ de chez le coiffeur. Réponse : **sortirions**.
+- **v3-granular-forms:conditionnel_present-application-context:sortir:2p:118**: Complète la phrase avec sortir au conditionnel présent : Vous ___ les cartons du garage. Réponse : **sortiriez**.
+- **v3-granular-forms:conditionnel_present-application-context:sortir:3p:119**: Complète la phrase avec sortir au conditionnel présent : Les poussins ___ de leurs œufs. Réponse : **sortiraient**.
+- **v3-granular-forms:conditionnel_present-application-context:dire:1s:120**: Complète la phrase avec dire au conditionnel présent : Je ___ merci au chauffeur. Réponse : **dirais**.
+- **v3-granular-forms:conditionnel_present-application-context:dire:2s:121**: Complète la phrase avec dire au conditionnel présent : Tu ___ ce mot trop vite. Réponse : **dirais**.
+- **v3-granular-forms:conditionnel_present-application-context:dire:3s:122**: Complète la phrase avec dire au conditionnel présent : Le médecin ___ de se reposer. Réponse : **dirait**.
+- **v3-granular-forms:conditionnel_present-application-context:dire:1p:123**: Complète la phrase avec dire au conditionnel présent : Nous ___ au revoir à nos cousins. Réponse : **dirions**.
+- **v3-granular-forms:conditionnel_present-application-context:dire:2p:124**: Complète la phrase avec dire au conditionnel présent : Vous ___ pourquoi vous êtes absents. Réponse : **diriez**.
+- **v3-granular-forms:conditionnel_present-application-context:dire:3p:125**: Complète la phrase avec dire au conditionnel présent : Les témoins ___ ce qu’ils ont vu. Réponse : **diraient**.
+- **v3-granular-forms:conditionnel_present-application-context:dire:1s:126**: Complète la phrase avec dire au conditionnel présent : Je ___ la date à voix haute. Réponse : **dirais**.
+- **v3-granular-forms:conditionnel_present-application-context:dire:2s:127**: Complète la phrase avec dire au conditionnel présent : Tu ___ ton adresse au livreur. Réponse : **dirais**.
+- **v3-granular-forms:conditionnel_present-application-context:dire:3s:128**: Complète la phrase avec dire au conditionnel présent : Cette pancarte ___ de ralentir. Réponse : **dirait**.
+- **v3-granular-forms:conditionnel_present-application-context:dire:1p:129**: Complète la phrase avec dire au conditionnel présent : Nous ___ le nom de notre chanson préférée. Réponse : **dirions**.
+- **v3-granular-forms:conditionnel_present-application-context:dire:2p:130**: Complète la phrase avec dire au conditionnel présent : Vous ___ oui à cette proposition. Réponse : **diriez**.
+- **v3-granular-forms:conditionnel_present-application-context:dire:3p:131**: Complète la phrase avec dire au conditionnel présent : Les enfants ___ bonne nuit à leur grand-mère. Réponse : **diraient**.
+- **v3-granular-forms:conditionnel_present-application-context:voir:1s:132**: Complète la phrase avec voir au conditionnel présent : Je ___ une montgolfière au loin. Réponse : **verrais**.
+- **v3-granular-forms:conditionnel_present-application-context:voir:2s:133**: Complète la phrase avec voir au conditionnel présent : Tu ___ le phare depuis la plage. Réponse : **verrais**.
+- **v3-granular-forms:conditionnel_present-application-context:voir:3s:134**: Complète la phrase avec voir au conditionnel présent : Le chat ___ un oiseau. Réponse : **verrait**.
+- **v3-granular-forms:conditionnel_present-application-context:voir:1p:135**: Complète la phrase avec voir au conditionnel présent : Nous ___ les montagnes depuis le toit. Réponse : **verrions**.
+- **v3-granular-forms:conditionnel_present-application-context:voir:2p:136**: Complète la phrase avec voir au conditionnel présent : Vous ___ une différence entre ces photos. Réponse : **verriez**.
+- **v3-granular-forms:conditionnel_present-application-context:voir:3p:137**: Complète la phrase avec voir au conditionnel présent : Les astronomes ___ une nouvelle comète. Réponse : **verraient**.
+- **v3-granular-forms:conditionnel_present-application-context:voir:1s:138**: Complète la phrase avec voir au conditionnel présent : Je ___ mon reflet dans la vitre. Réponse : **verrais**.
+- **v3-granular-forms:conditionnel_present-application-context:voir:2s:139**: Complète la phrase avec voir au conditionnel présent : Tu ___ la fin du tunnel. Réponse : **verrais**.
+- **v3-granular-forms:conditionnel_present-application-context:voir:3s:140**: Complète la phrase avec voir au conditionnel présent : La conductrice ___ le feu rouge. Réponse : **verrait**.
+- **v3-granular-forms:conditionnel_present-application-context:voir:1p:141**: Complète la phrase avec voir au conditionnel présent : Nous ___ un arc-en-ciel. Réponse : **verrions**.
+- **v3-granular-forms:conditionnel_present-application-context:voir:2p:142**: Complète la phrase avec voir au conditionnel présent : Vous ___ le sommet à travers les nuages. Réponse : **verriez**.
+- **v3-granular-forms:conditionnel_present-application-context:voir:3p:143**: Complète la phrase avec voir au conditionnel présent : Les plongeurs ___ des poissons colorés. Réponse : **verraient**.
+- **v3-granular-forms:conditionnel_present-application-context:pouvoir:1s:144**: Complète la phrase avec pouvoir au conditionnel présent : Je ___ porter cette boîte. Réponse : **pourrais**.
+- **v3-granular-forms:conditionnel_present-application-context:pouvoir:2s:145**: Complète la phrase avec pouvoir au conditionnel présent : Tu ___ emprunter mon stylo. Réponse : **pourrais**.
+- **v3-granular-forms:conditionnel_present-application-context:pouvoir:3s:146**: Complète la phrase avec pouvoir au conditionnel présent : Le public ___ poser des questions. Réponse : **pourrait**.
+- **v3-granular-forms:conditionnel_present-application-context:pouvoir:1p:147**: Complète la phrase avec pouvoir au conditionnel présent : Nous ___ construire un abri. Réponse : **pourrions**.
+- **v3-granular-forms:conditionnel_present-application-context:pouvoir:2p:148**: Complète la phrase avec pouvoir au conditionnel présent : Vous ___ consulter le plan. Réponse : **pourriez**.
+- **v3-granular-forms:conditionnel_present-application-context:pouvoir:3p:149**: Complète la phrase avec pouvoir au conditionnel présent : Les passagers ___ descendre ici. Réponse : **pourraient**.
+- **v3-granular-forms:conditionnel_present-application-context:pouvoir:1s:150**: Complète la phrase avec pouvoir au conditionnel présent : Je ___ traduire cette phrase. Réponse : **pourrais**.
+- **v3-granular-forms:conditionnel_present-application-context:pouvoir:2s:151**: Complète la phrase avec pouvoir au conditionnel présent : Tu ___ ouvrir ton cadeau. Réponse : **pourrais**.
+- **v3-granular-forms:conditionnel_present-application-context:pouvoir:3s:152**: Complète la phrase avec pouvoir au conditionnel présent : Cette clé ___ tourner dans la serrure. Réponse : **pourrait**.
+- **v3-granular-forms:conditionnel_present-application-context:pouvoir:1p:153**: Complète la phrase avec pouvoir au conditionnel présent : Nous ___ partager le trajet. Réponse : **pourrions**.
+- **v3-granular-forms:conditionnel_present-application-context:pouvoir:2p:154**: Complète la phrase avec pouvoir au conditionnel présent : Vous ___ éteindre la lumière. Réponse : **pourriez**.
+- **v3-granular-forms:conditionnel_present-application-context:pouvoir:3p:155**: Complète la phrase avec pouvoir au conditionnel présent : Les bénévoles ___ préparer la salle. Réponse : **pourraient**.
+- **v3-granular-forms:conditionnel_present-application-context:vouloir:1s:156**: Complète la phrase avec vouloir au conditionnel présent : Je ___ visiter cette île. Réponse : **voudrais**.
+- **v3-granular-forms:conditionnel_present-application-context:vouloir:2s:157**: Complète la phrase avec vouloir au conditionnel présent : Tu ___ devenir vétérinaire. Réponse : **voudrais**.
+- **v3-granular-forms:conditionnel_present-application-context:vouloir:3s:158**: Complète la phrase avec vouloir au conditionnel présent : Le client ___ échanger son billet. Réponse : **voudrait**.
+- **v3-granular-forms:conditionnel_present-application-context:vouloir:1p:159**: Complète la phrase avec vouloir au conditionnel présent : Nous ___ planter des arbres. Réponse : **voudrions**.
+- **v3-granular-forms:conditionnel_present-application-context:vouloir:2p:160**: Complète la phrase avec vouloir au conditionnel présent : Vous ___ raconter votre voyage. Réponse : **voudriez**.
+- **v3-granular-forms:conditionnel_present-application-context:vouloir:3p:161**: Complète la phrase avec vouloir au conditionnel présent : Les voisins ___ nettoyer la plage. Réponse : **voudraient**.
+- **v3-granular-forms:conditionnel_present-application-context:vouloir:1s:162**: Complète la phrase avec vouloir au conditionnel présent : Je ___ goûter ce fruit. Réponse : **voudrais**.
+- **v3-granular-forms:conditionnel_present-application-context:vouloir:2s:163**: Complète la phrase avec vouloir au conditionnel présent : Tu ___ photographier le coucher du soleil. Réponse : **voudrais**.
+- **v3-granular-forms:conditionnel_present-application-context:vouloir:3s:164**: Complète la phrase avec vouloir au conditionnel présent : La chanteuse ___ remercier son public. Réponse : **voudrait**.
+- **v3-granular-forms:conditionnel_present-application-context:vouloir:1p:165**: Complète la phrase avec vouloir au conditionnel présent : Nous ___ apprendre cette danse. Réponse : **voudrions**.
+- **v3-granular-forms:conditionnel_present-application-context:vouloir:2p:166**: Complète la phrase avec vouloir au conditionnel présent : Vous ___ dessiner les costumes. Réponse : **voudriez**.
+- **v3-granular-forms:conditionnel_present-application-context:vouloir:3p:167**: Complète la phrase avec vouloir au conditionnel présent : Les joueurs ___ améliorer leur défense. Réponse : **voudraient**.
+- **v3-granular-forms:conditionnel_present-application-context:savoir:1s:168**: Complète la phrase avec savoir au conditionnel présent : Je ___ préparer une omelette. Réponse : **saurais**.
+- **v3-granular-forms:conditionnel_present-application-context:savoir:2s:169**: Complète la phrase avec savoir au conditionnel présent : Tu ___ où se cache la clé. Réponse : **saurais**.
+- **v3-granular-forms:conditionnel_present-application-context:savoir:3s:170**: Complète la phrase avec savoir au conditionnel présent : Le pilote ___ lire cette carte. Réponse : **saurait**.
+- **v3-granular-forms:conditionnel_present-application-context:savoir:1p:171**: Complète la phrase avec savoir au conditionnel présent : Nous ___ reconnaître ce symbole. Réponse : **saurions**.
+- **v3-granular-forms:conditionnel_present-application-context:savoir:2p:172**: Complète la phrase avec savoir au conditionnel présent : Vous ___ résoudre cette énigme. Réponse : **sauriez**.
+- **v3-granular-forms:conditionnel_present-application-context:savoir:3p:173**: Complète la phrase avec savoir au conditionnel présent : Les enfants ___ attacher leurs lacets. Réponse : **sauraient**.
+- **v3-granular-forms:conditionnel_present-application-context:savoir:1s:174**: Complète la phrase avec savoir au conditionnel présent : Je ___ quand passe le bus. Réponse : **saurais**.
+- **v3-granular-forms:conditionnel_present-application-context:savoir:2s:175**: Complète la phrase avec savoir au conditionnel présent : Tu ___ fabriquer un cerf-volant. Réponse : **saurais**.
+- **v3-granular-forms:conditionnel_present-application-context:savoir:3s:176**: Complète la phrase avec savoir au conditionnel présent : La guide ___ répondre aux questions. Réponse : **saurait**.
+- **v3-granular-forms:conditionnel_present-application-context:savoir:1p:177**: Complète la phrase avec savoir au conditionnel présent : Nous ___ pourquoi la glace fond. Réponse : **saurions**.
+- **v3-granular-forms:conditionnel_present-application-context:savoir:2p:178**: Complète la phrase avec savoir au conditionnel présent : Vous ___ garder un secret. Réponse : **sauriez**.
+- **v3-granular-forms:conditionnel_present-application-context:savoir:3p:179**: Complète la phrase avec savoir au conditionnel présent : Les secouristes ___ pratiquer les premiers gestes. Réponse : **sauraient**.
+- **v3-granular-forms:conditionnel_present-application-context:devoir:1s:180**: Complète la phrase avec devoir au conditionnel présent : Je ___ nourrir les poissons. Réponse : **devrais**.
+- **v3-granular-forms:conditionnel_present-application-context:devoir:2s:181**: Complète la phrase avec devoir au conditionnel présent : Tu ___ mettre un casque. Réponse : **devrais**.
+- **v3-granular-forms:conditionnel_present-application-context:devoir:3s:182**: Complète la phrase avec devoir au conditionnel présent : Le livreur ___ trouver une autre entrée. Réponse : **devrait**.
+- **v3-granular-forms:conditionnel_present-application-context:devoir:1p:183**: Complète la phrase avec devoir au conditionnel présent : Nous ___ économiser l’eau. Réponse : **devrions**.
+- **v3-granular-forms:conditionnel_present-application-context:devoir:2p:184**: Complète la phrase avec devoir au conditionnel présent : Vous ___ signer ce formulaire. Réponse : **devriez**.
+- **v3-granular-forms:conditionnel_present-application-context:devoir:3p:185**: Complète la phrase avec devoir au conditionnel présent : Les coureurs ___ franchir la ligne. Réponse : **devraient**.
+- **v3-granular-forms:conditionnel_present-application-context:devoir:1s:186**: Complète la phrase avec devoir au conditionnel présent : Je ___ rappeler mon cousin. Réponse : **devrais**.
+- **v3-granular-forms:conditionnel_present-application-context:devoir:2s:187**: Complète la phrase avec devoir au conditionnel présent : Tu ___ peser les ingrédients. Réponse : **devrais**.
+- **v3-granular-forms:conditionnel_present-application-context:devoir:3s:188**: Complète la phrase avec devoir au conditionnel présent : La gardienne ___ fermer le musée. Réponse : **devrait**.
+- **v3-granular-forms:conditionnel_present-application-context:devoir:1p:189**: Complète la phrase avec devoir au conditionnel présent : Nous ___ respecter le silence. Réponse : **devrions**.
+- **v3-granular-forms:conditionnel_present-application-context:devoir:2p:190**: Complète la phrase avec devoir au conditionnel présent : Vous ___ attendre votre tour. Réponse : **devriez**.
+- **v3-granular-forms:conditionnel_present-application-context:devoir:3p:191**: Complète la phrase avec devoir au conditionnel présent : Les campeurs ___ éteindre leur feu. Réponse : **devraient**.
 
 All eighteen paths still require question, lesson, overlap, prerequisite and calibration review. The full French release also needs the other targets; this is a review package for one part of that release, not a reduced release scope.
 

@@ -2,12 +2,12 @@
 
 The product owner authorized students to start while personally reviewing content (2026-09-11). This explicitly supersedes waiting for all human content review before an initial release. It does not certify the draft questions or alter the approved graph.
 
-3941 selected draft/repaired question versions, 238 canonically reviewed questions, 4164 mapped questions.
+4121 selected draft/repaired question versions, 238 canonically reviewed questions, 4344 mapped questions.
 
-254 of 542 targets have allocated initial and follow-up pools; 288 remain incomplete. The JSON lists each target and the proposed check bindings. This is a release preparation artifact, not proof of activation or full coverage.
+255 of 542 targets have allocated initial and follow-up pools; 287 remain incomplete. The JSON lists each target and the proposed check bindings. This is a release preparation artifact, not proof of activation or full coverage.
 
-107 lessons and 592 guided exercises are pinned as published_pending_review. 103 lesson targets have allocated initial/follow-up pools; 101 retain enough check questions after exact teaching overlap exclusions and have proposed instruction/practice bindings. 0 prerequisite targets in their 101-target dependency scope still lack complete pools. Exact material matches populate exposure exclusions; semantic overlap review remains in progress.
+122 lessons and 682 guided exercises are pinned as published_pending_review. 118 lesson targets have allocated initial/follow-up pools; 116 retain enough check questions after exact teaching overlap exclusions and have proposed instruction/practice bindings. 0 prerequisite targets in their 116-target dependency scope still lack complete pools. Exact material matches populate exposure exclusions; semantic overlap review remains in progress.
 
-Policy checksum: sha256:0b20d7c9619fc6c23fa660e676e68475aea02de2e79f8965b1263c2668c05408.
+Policy checksum: sha256:324fb71288d807a3ab0a07b3703391e5914ae4d7dd808be3097d07903db6ab1d.
 
 Reproduce: npx tsx scripts/build-parallel-review-candidate.mts; append --check to verify without writing.
