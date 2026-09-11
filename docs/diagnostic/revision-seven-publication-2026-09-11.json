@@ -1,0 +1,55 @@
+{
+  "sourceCommit": "e016f972fc5f82f5a2162824f5e72c51ce5ca59c",
+  "frozenWorkspace": "/Users/jean-philippekayobotsi/.codex/release-workspaces/sigmawrite-r7-e016f97",
+  "bankKey": "french-diagnostic-bank-v3-r7",
+  "bankChecksum": "sha256:8ad92af7e4f55bd255b240f772ab4b2c65d0f64c244041d65b7bfb20b41cb5f3",
+  "bankItems": 5376,
+  "candidateChecksum": "sha256:4637c54c3b16e094350ae709f498cd1470274f8802e2176d73cdbb802d31e21d",
+  "supportedTargets": 160,
+  "graphTargets": 542,
+  "published": false,
+  "activated": false,
+  "validation": {
+    "preflightReady": true,
+    "instructionGaps": 0,
+    "freshCheckGaps": 0,
+    "granularTests": 489,
+    "scopedCommandJourney": [
+      {
+        "profile": "wrong",
+        "checkedQuestion": "v3-short-reading:definition-binome",
+        "questions": 61,
+        "correct": 0,
+        "completionReason": "time_budget",
+        "activeMinutes": 35,
+        "results": 542,
+        "firstActivity": "Trouver une définition dans le texte",
+        "completedLesson": "french-v3-teaching:reading:deduire_mot_definition_locale:informational",
+        "practiceResponses": 4
+      },
+      {
+        "profile": "mixed",
+        "checkedQuestion": "v3-canonical-sentence:recognition-12",
+        "questions": 61,
+        "correct": 41,
+        "completionReason": "time_budget",
+        "activeMinutes": 35,
+        "results": 542,
+        "firstActivity": "Reconnaître une phrase canonique",
+        "completedLesson": null,
+        "practiceResponses": 0
+      }
+    ]
+  },
+  "pending": [
+    "Finish the bank import and verify exact relational content.",
+    "Publish immutable assessment release after verification.",
+    "Complete the current live 158-target diagnostic through results and learning.",
+    "Deploy candidate, verify default selection and preserved demo, then activate."
+  ],
+  "limitations": [
+    "Full graph coverage and educational calibration remain unfinished.",
+    "Bank import alone does not activate the candidate.",
+    "Human pedagogical review remains pending under the authorized parallel-review policy."
+  ]
+}
