@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "bank": {
-    "key": "french-diagnostic-bank-v3-r11",
-    "version": "3.0.0-r11"
+    "key": "french-diagnostic-bank-v3-r12",
+    "version": "3.0.0-r12"
   },
   "taxonomy": {
     "releaseKey": "french-taxonomy-v3",
@@ -37491,6 +37491,3606 @@
         "verdict": "needs_human_review"
       },
       "reviewStatus": "needs_human_review"
+    },
+    {
+      "itemKey": "v3-passe-recent-production:parler:1s:0",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec parler au passé récent : Je ___ au responsable du club.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "viens de parler",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "parler",
+          "tense": "passe_recent",
+          "person": "1s",
+          "sentenceApplication": "Je ___ au responsable du club.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de parler",
+              "vient de parler",
+              "venons de parler",
+              "venez de parler",
+              "viennent de parler"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "parler",
+                "form": "parler"
+              }
+            ],
+            "sentences": [
+              "Je ___ au responsable du club.",
+              "Je viens de parler au responsable du club."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je ___ au responsable du club.",
+                "Je viens de parler au responsable du club."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "viens de parler"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:jouer:2s:1",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec jouer au passé récent : Tu ___ ta dernière carte.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "viens de jouer",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "jouer",
+          "tense": "passe_recent",
+          "person": "2s",
+          "sentenceApplication": "Tu ___ ta dernière carte.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de jouer",
+              "vient de jouer",
+              "venons de jouer",
+              "venez de jouer",
+              "viennent de jouer"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "jouer",
+                "form": "jouer"
+              }
+            ],
+            "sentences": [
+              "Tu ___ ta dernière carte.",
+              "Tu viens de jouer ta dernière carte."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu ___ ta dernière carte.",
+                "Tu viens de jouer ta dernière carte."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "viens de jouer"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:donner:3s:2",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec donner au passé récent : La documentaliste ___ un conseil à Léa.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "vient de donner",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "donner",
+          "tense": "passe_recent",
+          "person": "3s",
+          "sentenceApplication": "La documentaliste ___ un conseil à Léa.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de donner",
+              "vient de donner",
+              "venons de donner",
+              "venez de donner",
+              "viennent de donner"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "donner",
+                "form": "donner"
+              }
+            ],
+            "sentences": [
+              "La documentaliste ___ un conseil à Léa.",
+              "La documentaliste vient de donner un conseil à Léa."
+            ],
+            "assessed": {
+              "sentences": [
+                "La documentaliste ___ un conseil à Léa.",
+                "La documentaliste vient de donner un conseil à Léa."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "vient de donner"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:regarder:1p:3",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec regarder au passé récent : Nous ___ le court métrage jusqu’à la fin.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "venons de regarder",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "regarder",
+          "tense": "passe_recent",
+          "person": "1p",
+          "sentenceApplication": "Nous ___ le court métrage jusqu’à la fin.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de regarder",
+              "vient de regarder",
+              "venons de regarder",
+              "venez de regarder",
+              "viennent de regarder"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "regarder",
+                "form": "regarder"
+              }
+            ],
+            "sentences": [
+              "Nous ___ le court métrage jusqu’à la fin.",
+              "Nous venons de regarder le court métrage jusqu’à la fin."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous ___ le court métrage jusqu’à la fin.",
+                "Nous venons de regarder le court métrage jusqu’à la fin."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "venons de regarder"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:chanter:2p:4",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec chanter au passé récent : Vous ___ le dernier couplet.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "venez de chanter",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "chanter",
+          "tense": "passe_recent",
+          "person": "2p",
+          "sentenceApplication": "Vous ___ le dernier couplet.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de chanter",
+              "vient de chanter",
+              "venons de chanter",
+              "venez de chanter",
+              "viennent de chanter"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "chanter",
+                "form": "chanter"
+              }
+            ],
+            "sentences": [
+              "Vous ___ le dernier couplet.",
+              "Vous venez de chanter le dernier couplet."
+            ],
+            "assessed": {
+              "sentences": [
+                "Vous ___ le dernier couplet.",
+                "Vous venez de chanter le dernier couplet."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "venez de chanter"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:travailler:3p:5",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec travailler au passé récent : Les élèves ___ pendant une heure sur leur affiche.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "viennent de travailler",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "travailler",
+          "tense": "passe_recent",
+          "person": "3p",
+          "sentenceApplication": "Les élèves ___ pendant une heure sur leur affiche.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de travailler",
+              "vient de travailler",
+              "venons de travailler",
+              "venez de travailler",
+              "viennent de travailler"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "travailler",
+                "form": "travailler"
+              }
+            ],
+            "sentences": [
+              "Les élèves ___ pendant une heure sur leur affiche.",
+              "Les élèves viennent de travailler pendant une heure sur leur affiche."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les élèves ___ pendant une heure sur leur affiche.",
+                "Les élèves viennent de travailler pendant une heure sur leur affiche."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "viennent de travailler"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:donner:1s:6",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec donner au passé récent : Je ___ mon ancien vélo à mon cousin.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "viens de donner",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "donner",
+          "tense": "passe_recent",
+          "person": "1s",
+          "sentenceApplication": "Je ___ mon ancien vélo à mon cousin.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de donner",
+              "vient de donner",
+              "venons de donner",
+              "venez de donner",
+              "viennent de donner"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "donner",
+                "form": "donner"
+              }
+            ],
+            "sentences": [
+              "Je ___ mon ancien vélo à mon cousin.",
+              "Je viens de donner mon ancien vélo à mon cousin."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je ___ mon ancien vélo à mon cousin.",
+                "Je viens de donner mon ancien vélo à mon cousin."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "viens de donner"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:parler:2s:7",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec parler au passé récent : Tu ___ de ton stage devant la classe.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "viens de parler",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "parler",
+          "tense": "passe_recent",
+          "person": "2s",
+          "sentenceApplication": "Tu ___ de ton stage devant la classe.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de parler",
+              "vient de parler",
+              "venons de parler",
+              "venez de parler",
+              "viennent de parler"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "parler",
+                "form": "parler"
+              }
+            ],
+            "sentences": [
+              "Tu ___ de ton stage devant la classe.",
+              "Tu viens de parler de ton stage devant la classe."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu ___ de ton stage devant la classe.",
+                "Tu viens de parler de ton stage devant la classe."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "viens de parler"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:jouer:3s:8",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec jouer au passé récent : Notre équipe ___ la finale du tournoi.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "vient de jouer",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "jouer",
+          "tense": "passe_recent",
+          "person": "3s",
+          "sentenceApplication": "Notre équipe ___ la finale du tournoi.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de jouer",
+              "vient de jouer",
+              "venons de jouer",
+              "venez de jouer",
+              "viennent de jouer"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "jouer",
+                "form": "jouer"
+              }
+            ],
+            "sentences": [
+              "Notre équipe ___ la finale du tournoi.",
+              "Notre équipe vient de jouer la finale du tournoi."
+            ],
+            "assessed": {
+              "sentences": [
+                "Notre équipe ___ la finale du tournoi.",
+                "Notre équipe vient de jouer la finale du tournoi."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "vient de jouer"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:chanter:1p:9",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec chanter au passé récent : Nous ___ pour ouvrir la fête.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "venons de chanter",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "chanter",
+          "tense": "passe_recent",
+          "person": "1p",
+          "sentenceApplication": "Nous ___ pour ouvrir la fête.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de chanter",
+              "vient de chanter",
+              "venons de chanter",
+              "venez de chanter",
+              "viennent de chanter"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "chanter",
+                "form": "chanter"
+              }
+            ],
+            "sentences": [
+              "Nous ___ pour ouvrir la fête.",
+              "Nous venons de chanter pour ouvrir la fête."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous ___ pour ouvrir la fête.",
+                "Nous venons de chanter pour ouvrir la fête."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "venons de chanter"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:regarder:2p:10",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec regarder au passé récent : Vous ___ les photos de la sortie.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "venez de regarder",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "regarder",
+          "tense": "passe_recent",
+          "person": "2p",
+          "sentenceApplication": "Vous ___ les photos de la sortie.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de regarder",
+              "vient de regarder",
+              "venons de regarder",
+              "venez de regarder",
+              "viennent de regarder"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "regarder",
+                "form": "regarder"
+              }
+            ],
+            "sentences": [
+              "Vous ___ les photos de la sortie.",
+              "Vous venez de regarder les photos de la sortie."
+            ],
+            "assessed": {
+              "sentences": [
+                "Vous ___ les photos de la sortie.",
+                "Vous venez de regarder les photos de la sortie."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "venez de regarder"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:donner:3p:11",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec donner au passé récent : Les deux guides ___ le signal du départ.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "viennent de donner",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "donner",
+          "tense": "passe_recent",
+          "person": "3p",
+          "sentenceApplication": "Les deux guides ___ le signal du départ.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de donner",
+              "vient de donner",
+              "venons de donner",
+              "venez de donner",
+              "viennent de donner"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "donner",
+                "form": "donner"
+              }
+            ],
+            "sentences": [
+              "Les deux guides ___ le signal du départ.",
+              "Les deux guides viennent de donner le signal du départ."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les deux guides ___ le signal du départ.",
+                "Les deux guides viennent de donner le signal du départ."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "viennent de donner"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:finir:1s:12",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec finir au passé récent : Je ___ la dernière page du roman.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "viens de finir",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "finir",
+          "tense": "passe_recent",
+          "person": "1s",
+          "sentenceApplication": "Je ___ la dernière page du roman.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de finir",
+              "vient de finir",
+              "venons de finir",
+              "venez de finir",
+              "viennent de finir"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "finir",
+                "form": "finir"
+              }
+            ],
+            "sentences": [
+              "Je ___ la dernière page du roman.",
+              "Je viens de finir la dernière page du roman."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je ___ la dernière page du roman.",
+                "Je viens de finir la dernière page du roman."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "viens de finir"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:choisir:2s:13",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec choisir au passé récent : Tu ___ un titre pour ton histoire.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "viens de choisir",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "choisir",
+          "tense": "passe_recent",
+          "person": "2s",
+          "sentenceApplication": "Tu ___ un titre pour ton histoire.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de choisir",
+              "vient de choisir",
+              "venons de choisir",
+              "venez de choisir",
+              "viennent de choisir"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "choisir",
+                "form": "choisir"
+              }
+            ],
+            "sentences": [
+              "Tu ___ un titre pour ton histoire.",
+              "Tu viens de choisir un titre pour ton histoire."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu ___ un titre pour ton histoire.",
+                "Tu viens de choisir un titre pour ton histoire."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "viens de choisir"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:réussir:3s:14",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec réussir au passé récent : La gymnaste ___ son dernier saut.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "vient de réussir",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "réussir",
+          "tense": "passe_recent",
+          "person": "3s",
+          "sentenceApplication": "La gymnaste ___ son dernier saut.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de réussir",
+              "vient de réussir",
+              "venons de réussir",
+              "venez de réussir",
+              "viennent de réussir"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "réussir",
+                "form": "réussir"
+              }
+            ],
+            "sentences": [
+              "La gymnaste ___ son dernier saut.",
+              "La gymnaste vient de réussir son dernier saut."
+            ],
+            "assessed": {
+              "sentences": [
+                "La gymnaste ___ son dernier saut.",
+                "La gymnaste vient de réussir son dernier saut."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "vient de réussir"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:finir:1p:15",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec finir au passé récent : Nous ___ le rangement de la salle.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "venons de finir",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "finir",
+          "tense": "passe_recent",
+          "person": "1p",
+          "sentenceApplication": "Nous ___ le rangement de la salle.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de finir",
+              "vient de finir",
+              "venons de finir",
+              "venez de finir",
+              "viennent de finir"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "finir",
+                "form": "finir"
+              }
+            ],
+            "sentences": [
+              "Nous ___ le rangement de la salle.",
+              "Nous venons de finir le rangement de la salle."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous ___ le rangement de la salle.",
+                "Nous venons de finir le rangement de la salle."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "venons de finir"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:choisir:2p:16",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec choisir au passé récent : Vous ___ le morceau du concert.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "venez de choisir",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "choisir",
+          "tense": "passe_recent",
+          "person": "2p",
+          "sentenceApplication": "Vous ___ le morceau du concert.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de choisir",
+              "vient de choisir",
+              "venons de choisir",
+              "venez de choisir",
+              "viennent de choisir"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "choisir",
+                "form": "choisir"
+              }
+            ],
+            "sentences": [
+              "Vous ___ le morceau du concert.",
+              "Vous venez de choisir le morceau du concert."
+            ],
+            "assessed": {
+              "sentences": [
+                "Vous ___ le morceau du concert.",
+                "Vous venez de choisir le morceau du concert."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "venez de choisir"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:réussir:3p:17",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec réussir au passé récent : Les joueurs ___ leur première mission.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "viennent de réussir",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "réussir",
+          "tense": "passe_recent",
+          "person": "3p",
+          "sentenceApplication": "Les joueurs ___ leur première mission.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de réussir",
+              "vient de réussir",
+              "venons de réussir",
+              "venez de réussir",
+              "viennent de réussir"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "réussir",
+                "form": "réussir"
+              }
+            ],
+            "sentences": [
+              "Les joueurs ___ leur première mission.",
+              "Les joueurs viennent de réussir leur première mission."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les joueurs ___ leur première mission.",
+                "Les joueurs viennent de réussir leur première mission."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "viennent de réussir"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:choisir:1s:18",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec choisir au passé récent : Je ___ ma place dans le train.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "viens de choisir",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "choisir",
+          "tense": "passe_recent",
+          "person": "1s",
+          "sentenceApplication": "Je ___ ma place dans le train.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de choisir",
+              "vient de choisir",
+              "venons de choisir",
+              "venez de choisir",
+              "viennent de choisir"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "choisir",
+                "form": "choisir"
+              }
+            ],
+            "sentences": [
+              "Je ___ ma place dans le train.",
+              "Je viens de choisir ma place dans le train."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je ___ ma place dans le train.",
+                "Je viens de choisir ma place dans le train."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "viens de choisir"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:réussir:2s:19",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec réussir au passé récent : Tu ___ à ouvrir la boîte.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "viens de réussir",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "réussir",
+          "tense": "passe_recent",
+          "person": "2s",
+          "sentenceApplication": "Tu ___ à ouvrir la boîte.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de réussir",
+              "vient de réussir",
+              "venons de réussir",
+              "venez de réussir",
+              "viennent de réussir"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "réussir",
+                "form": "réussir"
+              }
+            ],
+            "sentences": [
+              "Tu ___ à ouvrir la boîte.",
+              "Tu viens de réussir à ouvrir la boîte."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu ___ à ouvrir la boîte.",
+                "Tu viens de réussir à ouvrir la boîte."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "viens de réussir"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:finir:3s:20",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec finir au passé récent : Le dessinateur ___ son portrait.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "vient de finir",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "finir",
+          "tense": "passe_recent",
+          "person": "3s",
+          "sentenceApplication": "Le dessinateur ___ son portrait.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de finir",
+              "vient de finir",
+              "venons de finir",
+              "venez de finir",
+              "viennent de finir"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "finir",
+                "form": "finir"
+              }
+            ],
+            "sentences": [
+              "Le dessinateur ___ son portrait.",
+              "Le dessinateur vient de finir son portrait."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le dessinateur ___ son portrait.",
+                "Le dessinateur vient de finir son portrait."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "vient de finir"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:choisir:1p:21",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec choisir au passé récent : Nous ___ une date pour la rencontre.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "venons de choisir",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "choisir",
+          "tense": "passe_recent",
+          "person": "1p",
+          "sentenceApplication": "Nous ___ une date pour la rencontre.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de choisir",
+              "vient de choisir",
+              "venons de choisir",
+              "venez de choisir",
+              "viennent de choisir"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "choisir",
+                "form": "choisir"
+              }
+            ],
+            "sentences": [
+              "Nous ___ une date pour la rencontre.",
+              "Nous venons de choisir une date pour la rencontre."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous ___ une date pour la rencontre.",
+                "Nous venons de choisir une date pour la rencontre."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "venons de choisir"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:réussir:2p:22",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec réussir au passé récent : Vous ___ la dernière épreuve.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "venez de réussir",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "réussir",
+          "tense": "passe_recent",
+          "person": "2p",
+          "sentenceApplication": "Vous ___ la dernière épreuve.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de réussir",
+              "vient de réussir",
+              "venons de réussir",
+              "venez de réussir",
+              "viennent de réussir"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "réussir",
+                "form": "réussir"
+              }
+            ],
+            "sentences": [
+              "Vous ___ la dernière épreuve.",
+              "Vous venez de réussir la dernière épreuve."
+            ],
+            "assessed": {
+              "sentences": [
+                "Vous ___ la dernière épreuve.",
+                "Vous venez de réussir la dernière épreuve."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "venez de réussir"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:finir:3p:23",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec finir au passé récent : Les bénévoles ___ la distribution des repas.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "viennent de finir",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "finir",
+          "tense": "passe_recent",
+          "person": "3p",
+          "sentenceApplication": "Les bénévoles ___ la distribution des repas.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de finir",
+              "vient de finir",
+              "venons de finir",
+              "venez de finir",
+              "viennent de finir"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "finir",
+                "form": "finir"
+              }
+            ],
+            "sentences": [
+              "Les bénévoles ___ la distribution des repas.",
+              "Les bénévoles viennent de finir la distribution des repas."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les bénévoles ___ la distribution des repas.",
+                "Les bénévoles viennent de finir la distribution des repas."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "viennent de finir"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:manger:1s:24",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec manger au passé récent : Je ___ la dernière tranche de pain.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "viens de manger",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "manger",
+          "tense": "passe_recent",
+          "person": "1s",
+          "sentenceApplication": "Je ___ la dernière tranche de pain.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de manger",
+              "vient de manger",
+              "venons de manger",
+              "venez de manger",
+              "viennent de manger"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "manger",
+                "form": "manger"
+              }
+            ],
+            "sentences": [
+              "Je ___ la dernière tranche de pain.",
+              "Je viens de manger la dernière tranche de pain."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je ___ la dernière tranche de pain.",
+                "Je viens de manger la dernière tranche de pain."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "viens de manger"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:nager:2s:25",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec nager au passé récent : Tu ___ cent mètres sans t’arrêter.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "viens de nager",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "nager",
+          "tense": "passe_recent",
+          "person": "2s",
+          "sentenceApplication": "Tu ___ cent mètres sans t’arrêter.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de nager",
+              "vient de nager",
+              "venons de nager",
+              "venez de nager",
+              "viennent de nager"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "nager",
+                "form": "nager"
+              }
+            ],
+            "sentences": [
+              "Tu ___ cent mètres sans t’arrêter.",
+              "Tu viens de nager cent mètres sans t’arrêter."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu ___ cent mètres sans t’arrêter.",
+                "Tu viens de nager cent mètres sans t’arrêter."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "viens de nager"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:voyager:3s:26",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec voyager au passé récent : Mon frère ___ pendant dix heures en car.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "vient de voyager",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "voyager",
+          "tense": "passe_recent",
+          "person": "3s",
+          "sentenceApplication": "Mon frère ___ pendant dix heures en car.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de voyager",
+              "vient de voyager",
+              "venons de voyager",
+              "venez de voyager",
+              "viennent de voyager"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "voyager",
+                "form": "voyager"
+              }
+            ],
+            "sentences": [
+              "Mon frère ___ pendant dix heures en car.",
+              "Mon frère vient de voyager pendant dix heures en car."
+            ],
+            "assessed": {
+              "sentences": [
+                "Mon frère ___ pendant dix heures en car.",
+                "Mon frère vient de voyager pendant dix heures en car."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "vient de voyager"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:manger:1p:27",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec manger au passé récent : Nous ___ avec les musiciens.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "venons de manger",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "manger",
+          "tense": "passe_recent",
+          "person": "1p",
+          "sentenceApplication": "Nous ___ avec les musiciens.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de manger",
+              "vient de manger",
+              "venons de manger",
+              "venez de manger",
+              "viennent de manger"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "manger",
+                "form": "manger"
+              }
+            ],
+            "sentences": [
+              "Nous ___ avec les musiciens.",
+              "Nous venons de manger avec les musiciens."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous ___ avec les musiciens.",
+                "Nous venons de manger avec les musiciens."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "venons de manger"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:nager:2p:28",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec nager au passé récent : Vous ___ toute la longueur du bassin.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "venez de nager",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "nager",
+          "tense": "passe_recent",
+          "person": "2p",
+          "sentenceApplication": "Vous ___ toute la longueur du bassin.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de nager",
+              "vient de nager",
+              "venons de nager",
+              "venez de nager",
+              "viennent de nager"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "nager",
+                "form": "nager"
+              }
+            ],
+            "sentences": [
+              "Vous ___ toute la longueur du bassin.",
+              "Vous venez de nager toute la longueur du bassin."
+            ],
+            "assessed": {
+              "sentences": [
+                "Vous ___ toute la longueur du bassin.",
+                "Vous venez de nager toute la longueur du bassin."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "venez de nager"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:voyager:3p:29",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec voyager au passé récent : Les chercheuses ___ jusqu’à Dakar.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "viennent de voyager",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "voyager",
+          "tense": "passe_recent",
+          "person": "3p",
+          "sentenceApplication": "Les chercheuses ___ jusqu’à Dakar.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de voyager",
+              "vient de voyager",
+              "venons de voyager",
+              "venez de voyager",
+              "viennent de voyager"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "voyager",
+                "form": "voyager"
+              }
+            ],
+            "sentences": [
+              "Les chercheuses ___ jusqu’à Dakar.",
+              "Les chercheuses viennent de voyager jusqu’à Dakar."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les chercheuses ___ jusqu’à Dakar.",
+                "Les chercheuses viennent de voyager jusqu’à Dakar."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "viennent de voyager"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:voyager:1s:30",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec voyager au passé récent : Je ___ pour la première fois en avion.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "viens de voyager",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "voyager",
+          "tense": "passe_recent",
+          "person": "1s",
+          "sentenceApplication": "Je ___ pour la première fois en avion.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de voyager",
+              "vient de voyager",
+              "venons de voyager",
+              "venez de voyager",
+              "viennent de voyager"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "voyager",
+                "form": "voyager"
+              }
+            ],
+            "sentences": [
+              "Je ___ pour la première fois en avion.",
+              "Je viens de voyager pour la première fois en avion."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je ___ pour la première fois en avion.",
+                "Je viens de voyager pour la première fois en avion."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "viens de voyager"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:manger:2s:31",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec manger au passé récent : Tu ___ un bol de riz.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "viens de manger",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "manger",
+          "tense": "passe_recent",
+          "person": "2s",
+          "sentenceApplication": "Tu ___ un bol de riz.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de manger",
+              "vient de manger",
+              "venons de manger",
+              "venez de manger",
+              "viennent de manger"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "manger",
+                "form": "manger"
+              }
+            ],
+            "sentences": [
+              "Tu ___ un bol de riz.",
+              "Tu viens de manger un bol de riz."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu ___ un bol de riz.",
+                "Tu viens de manger un bol de riz."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "viens de manger"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:nager:3s:32",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec nager au passé récent : La nageuse ___ sa dernière course de la journée.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "vient de nager",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "nager",
+          "tense": "passe_recent",
+          "person": "3s",
+          "sentenceApplication": "La nageuse ___ sa dernière course de la journée.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de nager",
+              "vient de nager",
+              "venons de nager",
+              "venez de nager",
+              "viennent de nager"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "nager",
+                "form": "nager"
+              }
+            ],
+            "sentences": [
+              "La nageuse ___ sa dernière course de la journée.",
+              "La nageuse vient de nager sa dernière course de la journée."
+            ],
+            "assessed": {
+              "sentences": [
+                "La nageuse ___ sa dernière course de la journée.",
+                "La nageuse vient de nager sa dernière course de la journée."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "vient de nager"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:voyager:1p:33",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec voyager au passé récent : Nous ___ ensemble pendant une semaine.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "venons de voyager",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "voyager",
+          "tense": "passe_recent",
+          "person": "1p",
+          "sentenceApplication": "Nous ___ ensemble pendant une semaine.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de voyager",
+              "vient de voyager",
+              "venons de voyager",
+              "venez de voyager",
+              "viennent de voyager"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "voyager",
+                "form": "voyager"
+              }
+            ],
+            "sentences": [
+              "Nous ___ ensemble pendant une semaine.",
+              "Nous venons de voyager ensemble pendant une semaine."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous ___ ensemble pendant une semaine.",
+                "Nous venons de voyager ensemble pendant une semaine."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "venons de voyager"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:manger:2p:34",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec manger au passé récent : Vous ___ les fraises du jardin.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "venez de manger",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "manger",
+          "tense": "passe_recent",
+          "person": "2p",
+          "sentenceApplication": "Vous ___ les fraises du jardin.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de manger",
+              "vient de manger",
+              "venons de manger",
+              "venez de manger",
+              "viennent de manger"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "manger",
+                "form": "manger"
+              }
+            ],
+            "sentences": [
+              "Vous ___ les fraises du jardin.",
+              "Vous venez de manger les fraises du jardin."
+            ],
+            "assessed": {
+              "sentences": [
+                "Vous ___ les fraises du jardin.",
+                "Vous venez de manger les fraises du jardin."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "venez de manger"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:nager:3p:35",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec nager au passé récent : Les enfants ___ jusqu’au bord.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "viennent de nager",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "nager",
+          "tense": "passe_recent",
+          "person": "3p",
+          "sentenceApplication": "Les enfants ___ jusqu’au bord.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de nager",
+              "vient de nager",
+              "venons de nager",
+              "venez de nager",
+              "viennent de nager"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "nager",
+                "form": "nager"
+              }
+            ],
+            "sentences": [
+              "Les enfants ___ jusqu’au bord.",
+              "Les enfants viennent de nager jusqu’au bord."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les enfants ___ jusqu’au bord.",
+                "Les enfants viennent de nager jusqu’au bord."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "viennent de nager"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:commencer:1s:36",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec commencer au passé récent : Je ___ le deuxième exercice.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "viens de commencer",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "commencer",
+          "tense": "passe_recent",
+          "person": "1s",
+          "sentenceApplication": "Je ___ le deuxième exercice.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de commencer",
+              "vient de commencer",
+              "venons de commencer",
+              "venez de commencer",
+              "viennent de commencer"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "commencer",
+                "form": "commencer"
+              }
+            ],
+            "sentences": [
+              "Je ___ le deuxième exercice.",
+              "Je viens de commencer le deuxième exercice."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je ___ le deuxième exercice.",
+                "Je viens de commencer le deuxième exercice."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "viens de commencer"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:lancer:2s:37",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec lancer au passé récent : Tu ___ le dé sur la table.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "viens de lancer",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "lancer",
+          "tense": "passe_recent",
+          "person": "2s",
+          "sentenceApplication": "Tu ___ le dé sur la table.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de lancer",
+              "vient de lancer",
+              "venons de lancer",
+              "venez de lancer",
+              "viennent de lancer"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "lancer",
+                "form": "lancer"
+              }
+            ],
+            "sentences": [
+              "Tu ___ le dé sur la table.",
+              "Tu viens de lancer le dé sur la table."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu ___ le dé sur la table.",
+                "Tu viens de lancer le dé sur la table."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "viens de lancer"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:avancer:3s:38",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec avancer au passé récent : Le pion rouge ___ de trois cases.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "vient d’avancer",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "avancer",
+          "tense": "passe_recent",
+          "person": "3s",
+          "sentenceApplication": "Le pion rouge ___ de trois cases.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens d’avancer",
+              "vient d’avancer",
+              "venons d’avancer",
+              "venez d’avancer",
+              "viennent d’avancer"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "avancer",
+                "form": "avancer"
+              }
+            ],
+            "sentences": [
+              "Le pion rouge ___ de trois cases.",
+              "Le pion rouge vient d’avancer de trois cases."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le pion rouge ___ de trois cases.",
+                "Le pion rouge vient d’avancer de trois cases."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "vient d’avancer"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:commencer:1p:39",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec commencer au passé récent : Nous ___ notre enquête sur le quartier.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "venons de commencer",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "commencer",
+          "tense": "passe_recent",
+          "person": "1p",
+          "sentenceApplication": "Nous ___ notre enquête sur le quartier.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de commencer",
+              "vient de commencer",
+              "venons de commencer",
+              "venez de commencer",
+              "viennent de commencer"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "commencer",
+                "form": "commencer"
+              }
+            ],
+            "sentences": [
+              "Nous ___ notre enquête sur le quartier.",
+              "Nous venons de commencer notre enquête sur le quartier."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous ___ notre enquête sur le quartier.",
+                "Nous venons de commencer notre enquête sur le quartier."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "venons de commencer"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:lancer:2p:40",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec lancer au passé récent : Vous ___ les balles dans le panier.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "venez de lancer",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "lancer",
+          "tense": "passe_recent",
+          "person": "2p",
+          "sentenceApplication": "Vous ___ les balles dans le panier.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de lancer",
+              "vient de lancer",
+              "venons de lancer",
+              "venez de lancer",
+              "viennent de lancer"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "lancer",
+                "form": "lancer"
+              }
+            ],
+            "sentences": [
+              "Vous ___ les balles dans le panier.",
+              "Vous venez de lancer les balles dans le panier."
+            ],
+            "assessed": {
+              "sentences": [
+                "Vous ___ les balles dans le panier.",
+                "Vous venez de lancer les balles dans le panier."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "venez de lancer"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:avancer:3p:41",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec avancer au passé récent : Les randonneurs ___ de deux kilomètres.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "viennent d’avancer",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "avancer",
+          "tense": "passe_recent",
+          "person": "3p",
+          "sentenceApplication": "Les randonneurs ___ de deux kilomètres.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens d’avancer",
+              "vient d’avancer",
+              "venons d’avancer",
+              "venez d’avancer",
+              "viennent d’avancer"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "avancer",
+                "form": "avancer"
+              }
+            ],
+            "sentences": [
+              "Les randonneurs ___ de deux kilomètres.",
+              "Les randonneurs viennent d’avancer de deux kilomètres."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les randonneurs ___ de deux kilomètres.",
+                "Les randonneurs viennent d’avancer de deux kilomètres."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "viennent d’avancer"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:avancer:1s:42",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec avancer au passé récent : Je ___ mon vélo jusqu’au portail.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "viens d’avancer",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "avancer",
+          "tense": "passe_recent",
+          "person": "1s",
+          "sentenceApplication": "Je ___ mon vélo jusqu’au portail.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens d’avancer",
+              "vient d’avancer",
+              "venons d’avancer",
+              "venez d’avancer",
+              "viennent d’avancer"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "avancer",
+                "form": "avancer"
+              }
+            ],
+            "sentences": [
+              "Je ___ mon vélo jusqu’au portail.",
+              "Je viens d’avancer mon vélo jusqu’au portail."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je ___ mon vélo jusqu’au portail.",
+                "Je viens d’avancer mon vélo jusqu’au portail."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "viens d’avancer"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:commencer:2s:43",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec commencer au passé récent : Tu ___ un nouveau carnet de dessins.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "viens de commencer",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "commencer",
+          "tense": "passe_recent",
+          "person": "2s",
+          "sentenceApplication": "Tu ___ un nouveau carnet de dessins.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de commencer",
+              "vient de commencer",
+              "venons de commencer",
+              "venez de commencer",
+              "viennent de commencer"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "commencer",
+                "form": "commencer"
+              }
+            ],
+            "sentences": [
+              "Tu ___ un nouveau carnet de dessins.",
+              "Tu viens de commencer un nouveau carnet de dessins."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu ___ un nouveau carnet de dessins.",
+                "Tu viens de commencer un nouveau carnet de dessins."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "viens de commencer"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:lancer:3s:44",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec lancer au passé récent : La capitaine ___ le ballon à Inès.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "vient de lancer",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "lancer",
+          "tense": "passe_recent",
+          "person": "3s",
+          "sentenceApplication": "La capitaine ___ le ballon à Inès.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de lancer",
+              "vient de lancer",
+              "venons de lancer",
+              "venez de lancer",
+              "viennent de lancer"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "lancer",
+                "form": "lancer"
+              }
+            ],
+            "sentences": [
+              "La capitaine ___ le ballon à Inès.",
+              "La capitaine vient de lancer le ballon à Inès."
+            ],
+            "assessed": {
+              "sentences": [
+                "La capitaine ___ le ballon à Inès.",
+                "La capitaine vient de lancer le ballon à Inès."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "vient de lancer"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:avancer:1p:45",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec avancer au passé récent : Nous ___ la table près de la fenêtre.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "venons d’avancer",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "avancer",
+          "tense": "passe_recent",
+          "person": "1p",
+          "sentenceApplication": "Nous ___ la table près de la fenêtre.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens d’avancer",
+              "vient d’avancer",
+              "venons d’avancer",
+              "venez d’avancer",
+              "viennent d’avancer"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "avancer",
+                "form": "avancer"
+              }
+            ],
+            "sentences": [
+              "Nous ___ la table près de la fenêtre.",
+              "Nous venons d’avancer la table près de la fenêtre."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous ___ la table près de la fenêtre.",
+                "Nous venons d’avancer la table près de la fenêtre."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "venons d’avancer"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:commencer:2p:46",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec commencer au passé récent : Vous ___ la lecture de la consigne.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "venez de commencer",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "commencer",
+          "tense": "passe_recent",
+          "person": "2p",
+          "sentenceApplication": "Vous ___ la lecture de la consigne.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de commencer",
+              "vient de commencer",
+              "venons de commencer",
+              "venez de commencer",
+              "viennent de commencer"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "commencer",
+                "form": "commencer"
+              }
+            ],
+            "sentences": [
+              "Vous ___ la lecture de la consigne.",
+              "Vous venez de commencer la lecture de la consigne."
+            ],
+            "assessed": {
+              "sentences": [
+                "Vous ___ la lecture de la consigne.",
+                "Vous venez de commencer la lecture de la consigne."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "venez de commencer"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passe-recent-production:lancer:3p:47",
+      "item": {
+        "nodeKey": "produire_passe_recent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec lancer au passé récent : Les enfants ___ les confettis en l’air.",
+        "instructionsFr": "Écris le groupe verbal manquant.",
+        "correctAnswer": "viennent de lancer",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "lancer",
+          "tense": "passe_recent",
+          "person": "3p",
+          "sentenceApplication": "Les enfants ___ les confettis en l’air.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "viens de lancer",
+              "vient de lancer",
+              "venons de lancer",
+              "venez de lancer",
+              "viennent de lancer"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et tu partagent viens) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "lancer",
+                "form": "lancer"
+              }
+            ],
+            "sentences": [
+              "Les enfants ___ les confettis en l’air.",
+              "Les enfants viennent de lancer les confettis en l’air."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les enfants ___ les confettis en l’air.",
+                "Les enfants viennent de lancer les confettis en l’air."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "viennent de lancer"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
     },
     {
       "itemKey": "v3-futur-proche-production:aller:1s:0",
@@ -359764,9 +363364,9 @@
     }
   ],
   "manifest": {
-    "itemCount": 5788,
+    "itemCount": 5836,
     "eligibleItemCount": 238,
-    "pendingItemCount": 5550,
+    "pendingItemCount": 5598,
     "publicationMode": "partial",
     "nodeCount": 114,
     "sectionReadiness": [
@@ -359815,6 +363415,6 @@
         "difficultyTierCount": 3
       }
     ],
-    "checksum": "sha256:38428b19c04a91aa822c63d9b491e50c4448705d960b9f3491244e23a8c9a1f9"
+    "checksum": "sha256:7e481af85475d69442721125270f24d1774dd35a01280cd786fa3c9bedda6d22"
   }
 }

@@ -59,7 +59,7 @@ it('allows a previously unused bank question to become available without changin
 
 it('accepts only additive exposure bindings backed by unchanged lesson material',()=>{
  const a=structuredClone(source),prepared=read('docs/diagnostic/v3-scoped-review-candidate.json');
- const lesson={...structuredClone(prepared.teachingContent[0]),assessmentExposureIds:[],materialExposure:{words:[{lemma:'aller',form:'aller'}]}};
+ const lesson={...structuredClone(prepared.teachingContent[0]),assessmentExposureIds:[]};
  a.teachingContent=[lesson];
  a.assessment.probes[0].materialKeys=teachingMaterialKeys(lesson);
  const b=structuredClone(a);b.teachingContent![0].assessmentExposureIds=[b.assessment.probes[0].id];
