@@ -1,0 +1,212 @@
+{
+  "sourceCommit": "c76fc80",
+  "deploymentId": "dpl_BpN3i8G98h3GUBvbxzbjV24NsKro",
+  "deploymentUrl": "https://sigmawrite-3rmts0857-jpkays-projects.vercel.app",
+  "activated": true,
+  "releaseKey": "french-granular-diagnostic-v8",
+  "scope": 160,
+  "candidate158": {
+    "origin": "https://sigmawrite-3rmts0857-jpkays-projects.vercel.app",
+    "readyMs": 13929,
+    "slowRequests": [
+      {
+        "method": "GET",
+        "path": "/student/diagnostic",
+        "type": "document",
+        "ms": 2758.271,
+        "waitForResponseMs": 2753.921
+      },
+      {
+        "method": "GET",
+        "path": "/student/vocabulary",
+        "type": "fetch",
+        "ms": 1187.512,
+        "waitForResponseMs": 1185.524
+      },
+      {
+        "method": "GET",
+        "path": "/student",
+        "type": "fetch",
+        "ms": 1289.323,
+        "waitForResponseMs": 1286.904
+      },
+      {
+        "method": "GET",
+        "path": "/student/lessons",
+        "type": "fetch",
+        "ms": 2030.622,
+        "waitForResponseMs": 2028.517
+      },
+      {
+        "method": "GET",
+        "path": "/student/progress",
+        "type": "fetch",
+        "ms": 1080.135,
+        "waitForResponseMs": 1079.682
+      },
+      {
+        "method": "GET",
+        "path": "/student/recueil",
+        "type": "fetch",
+        "ms": 1017.802,
+        "waitForResponseMs": 1017.322
+      },
+      {
+        "method": "POST",
+        "path": "/student/diagnostic",
+        "type": "fetch",
+        "ms": 3088.684,
+        "waitForResponseMs": 3087.222
+      },
+      {
+        "method": "POST",
+        "path": "/student/diagnostic",
+        "type": "fetch",
+        "ms": 7121.471,
+        "waitForResponseMs": 6879.044
+      }
+    ]
+  },
+  "candidate160": {
+    "origin": "https://sigmawrite-3rmts0857-jpkays-projects.vercel.app",
+    "readyMs": 13142,
+    "slowRequests": [
+      {
+        "method": "GET",
+        "path": "/student/diagnostic",
+        "type": "document",
+        "ms": 3472.426,
+        "waitForResponseMs": 3463.241
+      },
+      {
+        "method": "GET",
+        "path": "/student/dictee",
+        "type": "fetch",
+        "ms": 1004.666,
+        "waitForResponseMs": 1002.748
+      },
+      {
+        "method": "GET",
+        "path": "/student/lessons",
+        "type": "fetch",
+        "ms": 1031.843,
+        "waitForResponseMs": 1030.024
+      },
+      {
+        "method": "GET",
+        "path": "/student/progress",
+        "type": "fetch",
+        "ms": 1015.355,
+        "waitForResponseMs": 1014.968
+      },
+      {
+        "method": "POST",
+        "path": "/student/diagnostic",
+        "type": "fetch",
+        "ms": 2528.03,
+        "waitForResponseMs": 2526.307
+      },
+      {
+        "method": "GET",
+        "path": "/student/settings",
+        "type": "fetch",
+        "ms": 1062.577,
+        "waitForResponseMs": 1062.415
+      }
+    ]
+  },
+  "public160": {
+    "origin": "https://app.trouvetaplume.com",
+    "readyMs": 16287,
+    "slowRequests": [
+      {
+        "method": "GET",
+        "path": "/student/diagnostic",
+        "type": "document",
+        "ms": 3461.176,
+        "waitForResponseMs": 2344.557
+      },
+      {
+        "method": "GET",
+        "path": "/student/lessons",
+        "type": "fetch",
+        "ms": 1461.927,
+        "waitForResponseMs": 1461.296
+      },
+      {
+        "method": "GET",
+        "path": "/student/progress",
+        "type": "fetch",
+        "ms": 1023.33,
+        "waitForResponseMs": 1022.967
+      },
+      {
+        "method": "GET",
+        "path": "/student/recueil",
+        "type": "fetch",
+        "ms": 1049.753,
+        "waitForResponseMs": 1049.277
+      },
+      {
+        "method": "POST",
+        "path": "/student/diagnostic",
+        "type": "fetch",
+        "ms": 3087.598,
+        "waitForResponseMs": 3086.991
+      },
+      {
+        "method": "GET",
+        "path": "/student/memory",
+        "type": "fetch",
+        "ms": 1018.267,
+        "waitForResponseMs": 1017.787
+      },
+      {
+        "method": "GET",
+        "path": "/student/progress",
+        "type": "fetch",
+        "ms": 1025.98,
+        "waitForResponseMs": 1025.623
+      },
+      {
+        "method": "GET",
+        "path": "/student/recueil",
+        "type": "fetch",
+        "ms": 1033.509,
+        "waitForResponseMs": 1033.078
+      },
+      {
+        "method": "GET",
+        "path": "/student/inbox",
+        "type": "fetch",
+        "ms": 1029.749,
+        "waitForResponseMs": 1029.351
+      },
+      {
+        "method": "GET",
+        "path": "/student/settings",
+        "type": "fetch",
+        "ms": 1389.028,
+        "waitForResponseMs": 1388.65
+      },
+      {
+        "method": "POST",
+        "path": "/student/diagnostic",
+        "type": "fetch",
+        "ms": 10173.002,
+        "waitForResponseMs": 10170.905
+      }
+    ]
+  },
+  "publicSession": {
+    "origin": "https://app.trouvetaplume.com",
+    "readyMs": 16287,
+    "scope": 160,
+    "sessionId": "01d5e716-ec5b-475e-804b-929e5fd831ad"
+  },
+  "demoLessons": 11,
+  "limitations": [
+    "Browser timings are small uncontrolled samples; the broader loading delay remains unresolved.",
+    "Only redundant deterministic validation changed; no bank or assessment release was republished."
+  ]
+}
