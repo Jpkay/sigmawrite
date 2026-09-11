@@ -7,6 +7,7 @@ import {prepareLearningSuccessor} from '../src/lib/diagnostic/granular/learning-
 import {prepareParallelPublication} from '../src/lib/diagnostic/granular/publication-contract';
 import {checksum} from '../src/lib/taxonomy/validate';
 import type {AssessmentBundle} from '../src/lib/diagnostic/granular/service';
+import type {AssessmentSession} from '../src/lib/diagnostic/granular/session';
 const [sourceReleaseKey,sessionId,outputPath]=process.argv.slice(2);
 if(!sourceReleaseKey||!sessionId||!outputPath)throw Error('Expected source release key, completed QA session ID and output path');
 config({path:'.env.local',quiet:true});
@@ -24,7 +25,8 @@ const before=checksum(row.state);
 let preservation:Record<string,unknown>={prepared:false};
 if(compatibility.compatible){
  const next=prepareLearningSuccessor({id:row.id,studentId:row.student_id,releaseId:row.release_id,state:row.state},source,target);
- const fields=['observations','refinements','completedTeachingIds','elapsedActiveSeconds','completionReason','phase','paused'] as const;
+ const fields=['observations','refinements','completedTeachingIds','activeSeconds','completionReason','phase','paused'] as const satisfies readonly (keyof AssessmentSession)[];
+ if(typeof row.state.activeSeconds!=='number'||!Number.isFinite(row.state.activeSeconds))throw Error('Source session has no valid active-time measurement');
  const preservedFields=Object.fromEntries(fields.map(field=>[field,JSON.stringify((row.state as Record<string,unknown>)[field])===JSON.stringify((next as unknown as Record<string,unknown>)[field])]));
  const responsesPreserved=JSON.stringify(next.diagnosticResponses)===JSON.stringify(row.state.diagnosticResponses?.map((r:{sourceSessionId?:string})=>({...r,sourceSessionId:r.sourceSessionId??row.id})));
  preservation={prepared:true,preservedFields,responsesPreserved,sourceObjectUnchanged:checksum(row.state)===before,observations:next.observations.length,refinements:next.refinements.length};
