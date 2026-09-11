@@ -8,22 +8,52 @@
     "id": "a12f5822-68d3-4922-a0b7-fa39d35d928c",
     "expectedItems": 5304,
     "checksum": "sha256:41b29d8e6780f0e894f36345655f17878f679d15cf389116988bd5d584c0e2a6",
-    "importVerifiedComplete": false
+    "importVerifiedComplete": true
   },
   "preparedDeployment": {
     "id": "dpl_9SdY6mnNbgHhesssKatEtgutNsFE",
     "url": "https://sigmawrite-5e73qstra-jpkays-projects.vercel.app",
     "status": "Ready",
-    "promoted": false
+    "promoted": true
   },
-  "published": false,
-  "defaultActivated": false,
+  "published": true,
+  "defaultActivated": true,
   "remaining": [
-    "Wait for the existing bank import to finish; do not start another import concurrently",
-    "Verify all stored items against the frozen bank export",
-    "Publish the immutable assessment release under the authorized parallel-review policy",
-    "Verify new compound-tense questions and saved-session compatibility on deployed code",
-    "Promote the prepared deployment, update the persistent release setting, and verify application-selected default and demo preservation"
+    "Finish the live new-compound-target grading and pause/reload check",
+    "Recheck preservation of prior granular sessions"
   ],
-  "note": "Prepared from the compatibility-fixed source. The superseded 9b1c71c export must not be imported. Production remains the 126-target release. Human review and full graph implementation are still incomplete."
+  "note": "Published and promoted after all 5,304 stored items passed exact verification and old pinned bundles passed compatibility checks. Human review and full graph implementation remain incomplete. Live verification is recorded incrementally; activation is not proof of complete validation.",
+  "verification": {
+    "version": "french-granular-parallel-publication-v1",
+    "ready": true,
+    "authorization": "product-owner-request-2026-09-11",
+    "reviewOwner": "product_owner",
+    "bankChecksum": "sha256:41b29d8e6780f0e894f36345655f17878f679d15cf389116988bd5d584c0e2a6",
+    "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+    "bundleChecksum": "sha256:5562e523c8896c918710e03b5454508b76b5cc400060b8e62908d9bd478e4a48",
+    "policyChecksum": "sha256:1334cbdff434ddeb8c3c40afa10bd61aeafb921049d344e2000423371774e07a",
+    "scopeChecksum": "sha256:02feaafbb6a692c860448ecc2edacdd214c13bd8ee2dd4146367019c19806d38",
+    "bankItemCount": 5304,
+    "assessmentTargets": 154,
+    "teachingTargets": 154,
+    "instructionGapSkillIds": [],
+    "freshCheckGapSkillIds": [],
+    "verifiedItems": 5304
+  },
+  "release": {
+    "releaseId": "42042122-9ecd-4214-a906-53583bec3d01",
+    "releaseKey": "french-granular-diagnostic-v6",
+    "bundleChecksum": "sha256:5562e523c8896c918710e03b5454508b76b5cc400060b8e62908d9bd478e4a48"
+  },
+  "defaultVerification": {
+    "sessionId": "7eb6c58e-2aab-473c-b205-3964099d5259",
+    "releaseId": "42042122-9ecd-4214-a906-53583bec3d01",
+    "scope": 154,
+    "defaultSelectedByApplication": true,
+    "reloadPreservedSession": true
+  },
+  "demoVerification": {
+    "onboardingRedirect": "/student/lessons",
+    "startableLessonCount": 11
+  }
 }
