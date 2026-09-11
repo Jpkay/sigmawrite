@@ -39,3 +39,7 @@ A full timed diagnostic/learning/review run is in progress on existing unused QA
 session 0119fba3-d0dd-4bad-b4b8-55a74b7774ab, pinned to v9 (163 targets), to check
 compatibility with the new runtime. No assessment was reset or migrated. The
 public alias remains on 0c859ca pending completion of that run.
+
+## Public rollout checkpoint
+
+Deployment `dpl_ADSNHSgrSJnH49tS39A8abnBJsRm` is now public. The preserved v9 session completed its timed browser journey, lesson, independent check and full answer review on this runtime. Public checks confirm five activities across grammar, reading, spelling and conjugation. The legacy demo retains eleven lessons and its 48-answer review. The default content release remains v10 (167 targets); v11 candidate verification is separate. See `routing-production-rollout-2026-09-11.json` and `routing-full-browser-journey-2026-09-11.json`.
