@@ -10,7 +10,7 @@ Regenerate: `npx tsx scripts/build-v3-delivery-matrix.mts`. Verify without writi
 | --- | ---: | ---: | ---: | ---: | ---: |
 | conjugation | 255 | 77 | 195 | 0 | 3958 |
 | reading_comprehension | 92 | 21 | 74 | 0 | 152 |
-| grammar | 79 | 56 | 43 | 0 | 334 |
+| grammar | 79 | 56 | 43 | 0 | 350 |
 | spelling | 116 | 79 | 60 | 0 | 270 |
 
 ## Exact-target teaching work
@@ -21,7 +21,7 @@ These counts describe authoring drafts, not approved lessons or published pathwa
 | --- | ---: | ---: | ---: |
 | conjugation | 107 | 148 | 632 |
 | reading_comprehension | 18 | 74 | 84 |
-| grammar | 28 | 51 | 148 |
+| grammar | 29 | 50 | 154 |
 | spelling | 33 | 83 | 146 |
 
 ## Sampling strands
@@ -389,7 +389,7 @@ Full evidence requirements, prerequisite IDs, question IDs, source checksums and
 | Reconnaître une subordonnée circonstancielle | recognition / initial | 3 | 3 / 0 (insufficient_coverage) | 20 | 1 / 7 | review_exact_target_drafts | review_teaching_scope_and_content |
 | Reconnaître une subordonnée circonstancielle | production / initial | 3 | 3 / 0 (insufficient_coverage) | 0 | 0 / 0 | author_missing_evidence | author_or_reuse_exact_target_teaching |
 | Reconnaître une construction passive | recognition / initial | 1 | 1 / 0 (insufficient_coverage) | 16 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
-| Reconnaître une construction passive | production / initial | 1 | 1 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
+| Reconnaître une construction passive | production / initial | 1 | 1 / 0 (insufficient_coverage) | 16 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
 | Reconnaître une nominalisation | recognition / initial | 2 | 2 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
 | Reconnaître une nominalisation | production / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
 | Interpréter un pronom sujet | recognition / initial | 1 | 1 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |

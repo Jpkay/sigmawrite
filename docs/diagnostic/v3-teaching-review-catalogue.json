@@ -5,12 +5,160 @@
   "facetChecksum": "sha256:2f826d79a46ce935f40ccb797f8857b1c9af21d89bd1f80a438ecaf5e28ae3f2",
   "assessmentSourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
   "summary": {
-    "lessons": 186,
-    "guidedExercises": 1010,
-    "targets": 186,
+    "lessons": 187,
+    "guidedExercises": 1016,
+    "targets": 187,
     "missingExposureAnnotations": []
   },
   "rows": [
+    {
+      "lessonId": "french-v3-teaching:passive:production",
+      "contentChecksum": "sha256:852a8bc9e692c4fed54875fdac8a62859948059a90b9df2fb6e46f580a9bc6bd",
+      "skillId": "construction_voix_passive::writing-controlled-production",
+      "nodeKey": "construction_voix_passive",
+      "facetKey": null,
+      "mode": "production",
+      "domain": "grammar",
+      "prerequisites": [
+        "construction_phrase_canonique::reading-analysis",
+        "construction_phrase_canonique::writing-controlled-production",
+        "reconnaitre_auxiliaire::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": true,
+        "unaidedRequired": true
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:115806dc8fb6f36c0af450529d3a14e5663f4c8ae19fdd9d34b1c6ac94434108",
+        "sentence:sha256:1d5cff71cb728b39fe2bc43321fe22bfade006136fc1e3c6ceab2f870943f4cd",
+        "sentence:sha256:32a6fc5be53bed258e903af0075c49afc28864da25511cc8d52eab76d934c1e8",
+        "sentence:sha256:3a8a09f8ab5156e61a02f8e33e461cb15cf51d538c72efebc19453aa33bafee0",
+        "sentence:sha256:3de74a67dda2fb396c3b4d3a781f20fa0c43289fc0d359d7983588046199e014",
+        "sentence:sha256:3eb85dad7760c780d236faf917638dda0c6af269ff997257f7086408c04503f4",
+        "sentence:sha256:4bb9134d8df4ec5cf2d5dab2306cd65abf8e1f7072092acdbdd42d08dd3ca33a",
+        "sentence:sha256:5eb3167ea8c5f01611ac26f375d0662eaeb045ca0b641a69e01196bf0cb81a0e",
+        "sentence:sha256:613446b5c06b3f35b13d1693189239f147dd51daf464c8235334d7a9b8e66495",
+        "sentence:sha256:6d6688aaa60c3fb9d296df237418dfaeb6aabc2b2934e5bf2b06fb4e1de8765a",
+        "sentence:sha256:6eca502e9964f443255929e87f0b638f60a96ce67dfe37e360116ba9b929789f",
+        "sentence:sha256:9a068271689969d2641ab36dffb458c19a8c6d2f82c0a7e87d0cee7b8dacbd5b",
+        "sentence:sha256:bb0a395425dcb8bd05743f43c800e3fa87b08f148ac9199b8d93e8aedebb4361",
+        "sentence:sha256:be7be58e70b652353c422810c54703c1604915648f72b25949a72ebdd6eb4a72",
+        "sentence:sha256:cd31b3eaae80b05af853c1a2ebfd8ddfdc60f4ad8083850ee9570a7a3d32083a",
+        "sentence:sha256:fa6149aaa521283446d119dd9d4bb1254aa3885b76841a1413b9b4243637ba65",
+        "sentence:sha256:fc2a35b8daf75e560d56be02472e83bdc9c434a65afa3e3e1650abf010383a55",
+        "sentence:sha256:fc51d9fb3aaf5d38f739ad430118d9c8f4b2496a1a1ef65d76c426aa1cb316e3"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:passive:production",
+        "nodeKey": "construction_voix_passive",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Mettre une phrase à la voix passive",
+        "learnerQuestionFr": "Comment commencer par ce qui reçoit l’action ?",
+        "steps": [
+          {
+            "exampleFr": "Le photographe prend la photo. → La photo est prise par le photographe.",
+            "explanationFr": "Repère ce que le photographe prend : la photo. Ce groupe devient le sujet. Au présent, on écrit est prise. Le photographe reste celui qui fait l’action, après par. Prise est le participe passé de prendre, accordé au féminin singulier avec la photo."
+          },
+          {
+            "exampleFr": "Les enfants ramassaient les feuilles. → Les feuilles étaient ramassées par les enfants.",
+            "explanationFr": "On garde l’imparfait, mais on conjugue être avec le nouveau sujet les feuilles : étaient. Le participe passé ramassées s’accorde avec les feuilles, féminin pluriel. Le verbe actif ramassaient ne reste pas tel quel après être."
+          },
+          {
+            "exampleFr": "Le technicien installera les micros. → Les micros seront installés par le technicien.",
+            "explanationFr": "Le temps reste le futur simple. Les micros est pluriel : on choisit seront, puis installés au masculin pluriel. Vérifie séparément le nouveau sujet, le temps d’être, le participe passé et la personne qui fait l’action."
+          }
+        ],
+        "practice": [
+          {
+            "id": "passive-production-guided-1",
+            "promptFr": "Réécris cette phrase à la voix passive, au même temps (présent). Commence par « Le chat » et termine par « par la voisine ». Garde les mêmes informations. Écris la phrase complète.\n\nLa voisine nourrit le chat.",
+            "answerFr": "Le chat est nourri par la voisine.",
+            "hintFr": "Le nouveau sujet est le chat. Garde le présent et accorde le participe passé avec ce sujet.",
+            "explanationFr": "Le chat est nourri par la voisine. Être est au présent et s’accorde avec le chat. Le participe passé est nourri."
+          },
+          {
+            "id": "passive-production-guided-2",
+            "promptFr": "Réécris cette phrase à la voix passive, au même temps (présent). Commence par « La piste » et termine par « par le moniteur ». Garde les mêmes informations. Écris la phrase complète.\n\nLe moniteur prépare la piste.",
+            "answerFr": "La piste est préparée par le moniteur.",
+            "hintFr": "Le nouveau sujet est la piste. Garde le présent et accorde le participe passé avec ce sujet.",
+            "explanationFr": "La piste est préparée par le moniteur. Être est au présent et s’accorde avec la piste. Le participe passé est préparée."
+          },
+          {
+            "id": "passive-production-guided-3",
+            "promptFr": "Réécris cette phrase à la voix passive, au même temps (imparfait). Commence par « Les bancs » et termine par « par les ouvriers ». Garde les mêmes informations. Écris la phrase complète.\n\nLes ouvriers réparaient les bancs.",
+            "answerFr": "Les bancs étaient réparés par les ouvriers.",
+            "hintFr": "Le nouveau sujet est les bancs. Garde le imparfait et accorde le participe passé avec ce sujet.",
+            "explanationFr": "Les bancs étaient réparés par les ouvriers. Être est au imparfait et s’accorde avec les bancs. Le participe passé est réparés."
+          },
+          {
+            "id": "passive-production-guided-4",
+            "promptFr": "Réécris cette phrase à la voix passive, au même temps (imparfait). Commence par « Les demandes » et termine par « par le comité ». Garde les mêmes informations. Écris la phrase complète.\n\nLe comité étudiait les demandes.",
+            "answerFr": "Les demandes étaient étudiées par le comité.",
+            "hintFr": "Le nouveau sujet est les demandes. Garde le imparfait et accorde le participe passé avec ce sujet.",
+            "explanationFr": "Les demandes étaient étudiées par le comité. Être est au imparfait et s’accorde avec les demandes. Le participe passé est étudiées."
+          },
+          {
+            "id": "passive-production-guided-5",
+            "promptFr": "Réécris cette phrase à la voix passive, au même temps (futur simple). Commence par « Le message » et termine par « par le professeur ». Garde les mêmes informations. Écris la phrase complète.\n\nLe professeur lira le message.",
+            "answerFr": "Le message sera lu par le professeur.",
+            "hintFr": "Le nouveau sujet est le message. Garde le futur simple et accorde le participe passé avec ce sujet.",
+            "explanationFr": "Le message sera lu par le professeur. Être est au futur simple et s’accorde avec le message. Le participe passé est lu."
+          },
+          {
+            "id": "passive-production-guided-6",
+            "promptFr": "Réécris cette phrase à la voix passive, au même temps (futur simple). Commence par « Les fenêtres » et termine par « par la famille ». Garde les mêmes informations. Écris la phrase complète.\n\nLa famille décorera les fenêtres.",
+            "answerFr": "Les fenêtres seront décorées par la famille.",
+            "hintFr": "Le nouveau sujet est les fenêtres. Garde le futur simple et accorde le participe passé avec ce sujet.",
+            "explanationFr": "Les fenêtres seront décorées par la famille. Être est au futur simple et s’accorde avec les fenêtres. Le participe passé est décorées."
+          }
+        ],
+        "takeawayFr": "L’objet de la phrase active devient le sujet. Conjugue être au même temps avec ce nouveau sujet, accorde le participe passé et ajoute par suivi de celui qui fait l’action.",
+        "boundaryFr": "Ces phrases ont un complément direct qui peut devenir sujet. Tous les verbes ne permettent pas cette transformation. Cette tâche guidée par une consigne précise ne prouve pas encore que tu sais employer la voix passive dans un texte libre.",
+        "materialExposure": {
+          "sentences": [
+            "La voisine nourrit le chat.",
+            "Le chat est nourri par la voisine.",
+            "Le moniteur prépare la piste.",
+            "La piste est préparée par le moniteur.",
+            "Les ouvriers réparaient les bancs.",
+            "Les bancs étaient réparés par les ouvriers.",
+            "Le comité étudiait les demandes.",
+            "Les demandes étaient étudiées par le comité.",
+            "Le professeur lira le message.",
+            "Le message sera lu par le professeur.",
+            "La famille décorera les fenêtres.",
+            "Les fenêtres seront décorées par la famille.",
+            "Le photographe prend la photo.",
+            "La photo est prise par le photographe.",
+            "Les enfants ramassaient les feuilles.",
+            "Les feuilles étaient ramassées par les enfants.",
+            "Le technicien installera les micros.",
+            "Les micros seront installés par le technicien."
+          ]
+        }
+      }
+    },
     {
       "lessonId": "french-v3-teaching:coordination:production",
       "contentChecksum": "sha256:f85917575805943165b5c424d0c8074160a627665c0cba5d36ce45af1962292d",
@@ -27812,5 +27960,5 @@
       }
     }
   ],
-  "checksum": "sha256:1f4a9ff524ccf2b4d614a6fcf3103ac242a0da3cbba45ab97693bc0cfa63c29b"
+  "checksum": "sha256:29a191413d84020efed416bbcf755f05204cad7244a0549217c80a73ba434945"
 }

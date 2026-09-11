@@ -3,12 +3,17 @@
   "status": "draft_requires_review",
   "sources": {
     "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
-    "bankChecksum": "sha256:4fc59348059ea5a3539456e1ac5c7d1c9d4529462515f71d76cc94cae3a4ea75",
+    "bankChecksum": "sha256:b42def2d64a21872aed2f0e40f613fc956253ddda88d8f31acd578d8a8b97dd6",
     "annotationChecksum": "sha256:41e7a8d65776f6bb64c33c925b7d4449ffe9fda5a6b71a899067a171232542bb",
-    "facetChecksum": "sha256:208876ffee7c44d2a6a353d42752288b53df06a09c2c52fd82bbc8a112c73293",
+    "facetChecksum": "sha256:4a09af536d34367e55b26488565490ca6a69211cc1f96bf0225ef9b5340ed74c",
     "poolChecksum": "sha256:8c59b3ee0139afb4f44fa7e964a85ec00c67e9889bb1ffbad78ff7aa14aa5dfe",
     "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
     "expansions": [
+      {
+        "version": "french-v3-passive-production-expansion-v1",
+        "checksum": "sha256:09f18a25638194de8084c9807c374dae55926776e4516799b6382d643c2c43bd",
+        "addedItems": 16
+      },
       {
         "version": "french-v3-coordination-production-expansion-v1",
         "checksum": "sha256:6d184d4b133f8631309ecf24c61a07d9690cb01cab436314f4f52cf143771a18",
@@ -180,14 +185,14 @@
         "addedItems": 90
       }
     ],
-    "teachingDraftChecksum": "sha256:135b789800bfe98435c4bbbee44cbc7df42bfc33c500f4e080ec2d407c27839f"
+    "teachingDraftChecksum": "sha256:1ee5ea1605599226e8b0d6a63e90dd07f5871d510a68e172282f06950ba7a5b5"
   },
   "summary": {
-    "teachingDrafts": 186,
-    "targetsWithTeachingDrafts": 186,
-    "targetsWithoutTeachingDrafts": 356,
-    "totalCandidateQuestions": 5444,
-    "additionalDraftQuestions": 4714,
+    "teachingDrafts": 187,
+    "targetsWithTeachingDrafts": 187,
+    "targetsWithoutTeachingDrafts": 355,
+    "totalCandidateQuestions": 5460,
+    "additionalDraftQuestions": 4730,
     "canonicalEligibleQuestions": 238,
     "approvedCompetencies": 181,
     "approvedEvidenceDefinitions": 257,
@@ -234,10 +239,10 @@
         "eligibleQuestions": 56,
         "targetsWithNoEligibleQuestions": 43,
         "allocatedPools": 0,
-        "targetsWithTeachingDrafts": 28,
-        "targetsWithoutTeachingDrafts": 51,
-        "guidedExerciseDrafts": 148,
-        "exactTargetExpansionDrafts": 334
+        "targetsWithTeachingDrafts": 29,
+        "targetsWithoutTeachingDrafts": 50,
+        "guidedExerciseDrafts": 154,
+        "exactTargetExpansionDrafts": 350
       },
       {
         "domain": "spelling",
@@ -47779,7 +47784,7 @@
           ]
         },
         "exactTargetDrafts": {
-          "questions": 0,
+          "questions": 16,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": [
             {
@@ -47882,8 +47887,32 @@
         "local-grammar-v1:construction_voix_passive:controlled_production:foundation",
         "local-grammar-v1:construction_voix_passive:controlled_production:core"
       ],
-      "exactTargetExpansionDrafts": [],
-      "teachingDrafts": [],
+      "exactTargetExpansionDrafts": [
+        "v3-passive-production:1",
+        "v3-passive-production:2",
+        "v3-passive-production:3",
+        "v3-passive-production:4",
+        "v3-passive-production:5",
+        "v3-passive-production:6",
+        "v3-passive-production:7",
+        "v3-passive-production:8",
+        "v3-passive-production:9",
+        "v3-passive-production:10",
+        "v3-passive-production:11",
+        "v3-passive-production:12",
+        "v3-passive-production:13",
+        "v3-passive-production:14",
+        "v3-passive-production:15",
+        "v3-passive-production:16"
+      ],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:passive:production",
+          "status": "draft_requires_review",
+          "guidedExercises": 6,
+          "boundaryFr": "Ces phrases ont un complément direct qui peut devenir sujet. Tous les verbes ne permettent pas cette transformation. Cette tâche guidée par une consigne précise ne prouve pas encore que tu sais employer la voix passive dans un texte libre."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -47892,8 +47921,8 @@
       "nextActions": [
         "annotate_required_assessed_material",
         "enforce_approved_criterion:novelSentencesRequired",
-        "map_and_review_parent_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_exact_target_drafts",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -79511,5 +79540,5 @@
       ]
     }
   ],
-  "checksum": "sha256:4211079720748cd8a646839ca0ec01f59595f379632632b99ad47d188c4424e2"
+  "checksum": "sha256:59c28cb8fba1bd5de369f9eb9f6aa9ce90e48d03ef515b212901c5d7bd18355f"
 }
