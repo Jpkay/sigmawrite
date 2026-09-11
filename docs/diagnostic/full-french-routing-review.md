@@ -2,7 +2,7 @@
 
 2026-09-11. The approved French graph is unchanged. No content approvals or release.
 
-Current local rerun: 10/10 depth checks and 5/8 mixed-profile discrimination checks pass after sharing the initial form-category survey across conjugation families, then revisiting each family separately. The strict benchmark still exits 1: verb-specific tense boundaries, literal/inference contrasts and reading reference gaps remain unresolved. This new scheduling change is not deployed or calibrated against students. The previous form-category revisit and challenge-based branch-entry changes (10/10 depth, 4/8 discrimination) are live in deployment 0c859ca.
+Current local rerun: 10/10 depth checks and 6/8 mixed-profile discrimination checks pass after the shared conjugation survey and graph-based upward crossings between branches. The strict benchmark still exits 1: verb-specific tense boundaries and reading reference gaps remain unresolved. These new scheduling changes are not deployed or calibrated against students. The earlier form-category revisit and challenge-based branch-entry changes (10/10 depth, 4/8 discrimination) are live in deployment 0c859ca.
 
 The previous benchmark exercises six conjugation targets. The additional
 `scripts/benchmark-full-french-diagnostic.mts` exercises all 542 proposed targets
@@ -199,3 +199,29 @@ question cannot satisfy that survey. That restores the existing early compound
 production check. All 529 granular tests, TypeScript and scoped lint passed.
 The strict full-graph benchmark still fails its three unresolved contrast checks;
 its nonzero exit is expected and has not been suppressed.
+
+
+## Cross-branch graph progression (local)
+
+Many refined reading constructs occupy separate branches. Upward routing within
+a branch could therefore confirm an explicit-information skill, then spend the
+remaining reading time on another text-type facet or unrelated vocabulary.
+The selector now follows an explicit prerequisite edge across branches after
+all listed prerequisites have sufficient evidence within the current sitting.
+The new target receives fresh questions and its own evidence. A bounded
+continuation keeps collecting that evidence rather than immediately returning
+to alphabetical branch order. Existing downward prerequisite recovery takes
+precedence; domain, strand, verb-family and form scheduling remain in force.
+
+An initial version advanced after any one known prerequisite. That sampled a
+COD/COI contrast before both prerequisites were assessed and lost the existing
+COD/COI discrimination check. It was rejected. The retained implementation
+requires every listed prerequisite for this upward crossing, and regression
+tests cover unknown prerequisites, independent target evidence, and fresh
+confirmation after both correct and incorrect answers.
+
+Final local checks: all 532 granular tests across 152 files, TypeScript and scoped
+lint passed. Full-graph simulation: 10/10 depth, 6/8 discrimination, no invariant
+violations. The literal/inference-and-evidence contrast now passes, while verb-
+specific tense boundaries and reading-reference gaps still fail. The strict
+benchmark's failing exit remains visible; this is not educational calibration.

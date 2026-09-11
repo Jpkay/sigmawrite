@@ -467,7 +467,9 @@
       "knownTargetsWithEvidence": [
         "associer_information_question::all-receptive::text_type:argumentative"
       ],
-      "weakTargetsWithEvidence": [],
+      "weakTargetsWithEvidence": [
+        "localiser_span_preuve::all-receptive::text_type:argumentative"
+      ],
       "knownTargetsUnresolved": [
         "localiser_information_explicite::all-receptive::text_type:narrative",
         "localiser_information_explicite::all-receptive::text_type:informational",
@@ -555,7 +557,6 @@
         "reconnaitre_contre_argument::argumentative-receptive::text_type:argumentative",
         "localiser_span_preuve::all-receptive::text_type:narrative",
         "localiser_span_preuve::all-receptive::text_type:informational",
-        "localiser_span_preuve::all-receptive::text_type:argumentative",
         "relier_preuve_interpretation::all-controlled_production::text_type:narrative",
         "relier_preuve_interpretation::all-controlled_production::text_type:informational",
         "relier_preuve_interpretation::all-controlled_production::text_type:argumentative",
@@ -565,7 +566,7 @@
       ],
       "sameBranchBoundaries": [],
       "requireSameBranch": false,
-      "passed": false
+      "passed": true
     },
     {
       "profile": "reading_reference_gap",
@@ -573,7 +574,8 @@
       "requiredKnownTargets": 80,
       "requiredWeakTargets": 12,
       "knownTargetsWithEvidence": [
-        "associer_information_question::all-receptive::text_type:argumentative"
+        "associer_information_question::all-receptive::text_type:argumentative",
+        "localiser_span_preuve::all-receptive::text_type:argumentative"
       ],
       "weakTargetsWithEvidence": [],
       "knownTargetsUnresolved": [
@@ -649,7 +651,6 @@
         "reconnaitre_contre_argument::argumentative-receptive::text_type:argumentative",
         "localiser_span_preuve::all-receptive::text_type:narrative",
         "localiser_span_preuve::all-receptive::text_type:informational",
-        "localiser_span_preuve::all-receptive::text_type:argumentative",
         "relier_preuve_interpretation::all-controlled_production::text_type:narrative",
         "relier_preuve_interpretation::all-controlled_production::text_type:informational",
         "relier_preuve_interpretation::all-controlled_production::text_type:argumentative",
@@ -1255,7 +1256,7 @@
       "sampledTargets": 24,
       "unsampledTargets": 518,
       "targetsReachingMinimumItemCount": 12,
-      "targetsWithSufficientEvidenceToday": 10,
+      "targetsWithSufficientEvidenceToday": 11,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -1300,7 +1301,7 @@
           "sampledTargets": 3,
           "answered": 9,
           "targetsReachingMinimumItemCount": 2,
-          "targetsWithSufficientEvidenceToday": 1,
+          "targetsWithSufficientEvidenceToday": 2,
           "sampledKnown": 3,
           "sampledWeak": 0
         },
@@ -1492,17 +1493,17 @@
           "minimumItems": 3
         },
         {
-          "skillId": "associer_information_question::all-receptive::text_type:informational",
-          "labelFr": "Associer une information à la question posée — Texte informatif bref",
+          "skillId": "localiser_span_preuve::all-receptive::text_type:argumentative",
+          "labelFr": "Localiser un passage servant de preuve — Texte argumentatif bref",
           "strand": "comprehension_ecrite",
-          "level": 1,
+          "level": 2,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 4,
+          "correct": 4,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9283667621776505,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.9940814954403842,
+          "countedEvidence": 4,
           "minimumItems": 3
         },
         {
@@ -1545,20 +1546,6 @@
           "withinOccasionResolved": false,
           "probability": 0.9283667621776505,
           "countedEvidence": 2,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "deduire_mot_morphologie::all-receptive::text_type:argumentative",
-          "labelFr": "Déduire un mot grâce à sa morphologie — Texte argumentatif bref",
-          "strand": "comprehension_ecrite",
-          "level": 1,
-          "expectedKnown": true,
-          "answered": 3,
-          "correct": 3,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9790162833641095,
-          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -1659,6 +1646,20 @@
           "withinOccasionResolved": false,
           "probability": 0.9969230769230769,
           "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "associer_information_question::all-receptive::text_type:informational",
+          "labelFr": "Associer une information à la question posée — Texte informatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.782608695652174,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -2195,7 +2196,7 @@
       "sampledTargets": 24,
       "unsampledTargets": 518,
       "targetsReachingMinimumItemCount": 12,
-      "targetsWithSufficientEvidenceToday": 10,
+      "targetsWithSufficientEvidenceToday": 11,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -2240,7 +2241,7 @@
           "sampledTargets": 3,
           "answered": 9,
           "targetsReachingMinimumItemCount": 2,
-          "targetsWithSufficientEvidenceToday": 1,
+          "targetsWithSufficientEvidenceToday": 2,
           "sampledKnown": 3,
           "sampledWeak": 0
         },
@@ -2432,17 +2433,17 @@
           "minimumItems": 3
         },
         {
-          "skillId": "associer_information_question::all-receptive::text_type:informational",
-          "labelFr": "Associer une information à la question posée — Texte informatif bref",
+          "skillId": "localiser_span_preuve::all-receptive::text_type:argumentative",
+          "labelFr": "Localiser un passage servant de preuve — Texte argumentatif bref",
           "strand": "comprehension_ecrite",
-          "level": 1,
+          "level": 2,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 4,
+          "correct": 4,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9283667621776505,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.9940814954403842,
+          "countedEvidence": 4,
           "minimumItems": 3
         },
         {
@@ -2485,20 +2486,6 @@
           "withinOccasionResolved": false,
           "probability": 0.9283667621776505,
           "countedEvidence": 2,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "deduire_mot_morphologie::all-receptive::text_type:argumentative",
-          "labelFr": "Déduire un mot grâce à sa morphologie — Texte argumentatif bref",
-          "strand": "comprehension_ecrite",
-          "level": 1,
-          "expectedKnown": true,
-          "answered": 3,
-          "correct": 3,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9790162833641095,
-          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -2599,6 +2586,20 @@
           "withinOccasionResolved": false,
           "probability": 0.9969230769230769,
           "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "associer_information_question::all-receptive::text_type:informational",
+          "labelFr": "Associer une information à la question posée — Texte informatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.782608695652174,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -2630,7 +2631,7 @@
       "sampledTargets": 24,
       "unsampledTargets": 518,
       "targetsReachingMinimumItemCount": 12,
-      "targetsWithSufficientEvidenceToday": 10,
+      "targetsWithSufficientEvidenceToday": 11,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -2675,7 +2676,7 @@
           "sampledTargets": 3,
           "answered": 9,
           "targetsReachingMinimumItemCount": 2,
-          "targetsWithSufficientEvidenceToday": 1,
+          "targetsWithSufficientEvidenceToday": 2,
           "sampledKnown": 3,
           "sampledWeak": 0
         },
@@ -2867,17 +2868,17 @@
           "minimumItems": 3
         },
         {
-          "skillId": "associer_information_question::all-receptive::text_type:informational",
-          "labelFr": "Associer une information à la question posée — Texte informatif bref",
+          "skillId": "localiser_span_preuve::all-receptive::text_type:argumentative",
+          "labelFr": "Localiser un passage servant de preuve — Texte argumentatif bref",
           "strand": "comprehension_ecrite",
-          "level": 1,
+          "level": 2,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 4,
+          "correct": 4,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9283667621776505,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.9940814954403842,
+          "countedEvidence": 4,
           "minimumItems": 3
         },
         {
@@ -2920,20 +2921,6 @@
           "withinOccasionResolved": false,
           "probability": 0.9283667621776505,
           "countedEvidence": 2,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "deduire_mot_morphologie::all-receptive::text_type:argumentative",
-          "labelFr": "Déduire un mot grâce à sa morphologie — Texte argumentatif bref",
-          "strand": "comprehension_ecrite",
-          "level": 1,
-          "expectedKnown": true,
-          "answered": 3,
-          "correct": 3,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9790162833641095,
-          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -3037,6 +3024,20 @@
           "minimumItems": 3
         },
         {
+          "skillId": "associer_information_question::all-receptive::text_type:informational",
+          "labelFr": "Associer une information à la question posée — Texte informatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.782608695652174,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
           "skillId": "produire_passe_compose::writing-controlled-production::verb:aller",
           "labelFr": "Produire le passé composé — Conjuguer aller",
           "strand": "conjugaison",
@@ -3065,7 +3066,7 @@
       "sampledTargets": 24,
       "unsampledTargets": 518,
       "targetsReachingMinimumItemCount": 12,
-      "targetsWithSufficientEvidenceToday": 10,
+      "targetsWithSufficientEvidenceToday": 11,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -3110,9 +3111,9 @@
           "sampledTargets": 3,
           "answered": 9,
           "targetsReachingMinimumItemCount": 2,
-          "targetsWithSufficientEvidenceToday": 1,
-          "sampledKnown": 3,
-          "sampledWeak": 0
+          "targetsWithSufficientEvidenceToday": 2,
+          "sampledKnown": 2,
+          "sampledWeak": 1
         },
         {
           "strand": "grammaire_syntaxe",
@@ -3302,17 +3303,17 @@
           "minimumItems": 3
         },
         {
-          "skillId": "associer_information_question::all-receptive::text_type:informational",
-          "labelFr": "Associer une information à la question posée — Texte informatif bref",
+          "skillId": "localiser_span_preuve::all-receptive::text_type:argumentative",
+          "labelFr": "Localiser un passage servant de preuve — Texte argumentatif bref",
           "strand": "comprehension_ecrite",
-          "level": 1,
-          "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "level": 2,
+          "expectedKnown": false,
+          "answered": 3,
+          "correct": 0,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9283667621776505,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.0023647650014779796,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -3355,20 +3356,6 @@
           "withinOccasionResolved": false,
           "probability": 0.9283667621776505,
           "countedEvidence": 2,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "deduire_mot_morphologie::all-receptive::text_type:argumentative",
-          "labelFr": "Déduire un mot grâce à sa morphologie — Texte argumentatif bref",
-          "strand": "comprehension_ecrite",
-          "level": 1,
-          "expectedKnown": true,
-          "answered": 3,
-          "correct": 3,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9790162833641095,
-          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -3433,6 +3420,20 @@
           "labelFr": "Choisir é ou è — Choisir é",
           "strand": "orthographe_lexicale",
           "level": 0,
+          "expectedKnown": true,
+          "answered": 2,
+          "correct": 2,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.9283667621776505,
+          "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "associer_information_question::all-receptive::text_type:informational",
+          "labelFr": "Associer une information à la question posée — Texte informatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 1,
           "expectedKnown": true,
           "answered": 2,
           "correct": 2,
@@ -3500,7 +3501,7 @@
       "sampledTargets": 24,
       "unsampledTargets": 518,
       "targetsReachingMinimumItemCount": 12,
-      "targetsWithSufficientEvidenceToday": 10,
+      "targetsWithSufficientEvidenceToday": 11,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -3545,7 +3546,7 @@
           "sampledTargets": 3,
           "answered": 9,
           "targetsReachingMinimumItemCount": 2,
-          "targetsWithSufficientEvidenceToday": 1,
+          "targetsWithSufficientEvidenceToday": 2,
           "sampledKnown": 3,
           "sampledWeak": 0
         },
@@ -3737,17 +3738,17 @@
           "minimumItems": 3
         },
         {
-          "skillId": "associer_information_question::all-receptive::text_type:informational",
-          "labelFr": "Associer une information à la question posée — Texte informatif bref",
+          "skillId": "localiser_span_preuve::all-receptive::text_type:argumentative",
+          "labelFr": "Localiser un passage servant de preuve — Texte argumentatif bref",
           "strand": "comprehension_ecrite",
-          "level": 1,
+          "level": 2,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 4,
+          "correct": 4,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9283667621776505,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.9940814954403842,
+          "countedEvidence": 4,
           "minimumItems": 3
         },
         {
@@ -3790,20 +3791,6 @@
           "withinOccasionResolved": false,
           "probability": 0.9283667621776505,
           "countedEvidence": 2,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "deduire_mot_morphologie::all-receptive::text_type:argumentative",
-          "labelFr": "Déduire un mot grâce à sa morphologie — Texte argumentatif bref",
-          "strand": "comprehension_ecrite",
-          "level": 1,
-          "expectedKnown": true,
-          "answered": 3,
-          "correct": 3,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9790162833641095,
-          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -3907,6 +3894,20 @@
           "minimumItems": 3
         },
         {
+          "skillId": "associer_information_question::all-receptive::text_type:informational",
+          "labelFr": "Associer une information à la question posée — Texte informatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.782608695652174,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
           "skillId": "produire_passe_compose::writing-controlled-production::verb:aller",
           "labelFr": "Produire le passé composé — Conjuguer aller",
           "strand": "conjugaison",
@@ -3935,7 +3936,7 @@
       "sampledTargets": 24,
       "unsampledTargets": 518,
       "targetsReachingMinimumItemCount": 12,
-      "targetsWithSufficientEvidenceToday": 10,
+      "targetsWithSufficientEvidenceToday": 11,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -3980,7 +3981,7 @@
           "sampledTargets": 3,
           "answered": 9,
           "targetsReachingMinimumItemCount": 2,
-          "targetsWithSufficientEvidenceToday": 1,
+          "targetsWithSufficientEvidenceToday": 2,
           "sampledKnown": 3,
           "sampledWeak": 0
         },
@@ -4172,17 +4173,17 @@
           "minimumItems": 3
         },
         {
-          "skillId": "associer_information_question::all-receptive::text_type:informational",
-          "labelFr": "Associer une information à la question posée — Texte informatif bref",
+          "skillId": "localiser_span_preuve::all-receptive::text_type:argumentative",
+          "labelFr": "Localiser un passage servant de preuve — Texte argumentatif bref",
           "strand": "comprehension_ecrite",
-          "level": 1,
+          "level": 2,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 4,
+          "correct": 4,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9283667621776505,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.9940814954403842,
+          "countedEvidence": 4,
           "minimumItems": 3
         },
         {
@@ -4225,20 +4226,6 @@
           "withinOccasionResolved": false,
           "probability": 0.9283667621776505,
           "countedEvidence": 2,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "deduire_mot_morphologie::all-receptive::text_type:argumentative",
-          "labelFr": "Déduire un mot grâce à sa morphologie — Texte argumentatif bref",
-          "strand": "comprehension_ecrite",
-          "level": 1,
-          "expectedKnown": true,
-          "answered": 3,
-          "correct": 3,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9790162833641095,
-          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -4342,6 +4329,20 @@
           "minimumItems": 3
         },
         {
+          "skillId": "associer_information_question::all-receptive::text_type:informational",
+          "labelFr": "Associer une information à la question posée — Texte informatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.782608695652174,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
           "skillId": "produire_passe_compose::writing-controlled-production::verb:aller",
           "labelFr": "Produire le passé composé — Conjuguer aller",
           "strand": "conjugaison",
@@ -4370,7 +4371,7 @@
       "sampledTargets": 25,
       "unsampledTargets": 517,
       "targetsReachingMinimumItemCount": 12,
-      "targetsWithSufficientEvidenceToday": 11,
+      "targetsWithSufficientEvidenceToday": 12,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -4415,7 +4416,7 @@
           "sampledTargets": 3,
           "answered": 9,
           "targetsReachingMinimumItemCount": 2,
-          "targetsWithSufficientEvidenceToday": 1,
+          "targetsWithSufficientEvidenceToday": 2,
           "sampledKnown": 3,
           "sampledWeak": 0
         },
@@ -4621,17 +4622,17 @@
           "minimumItems": 3
         },
         {
-          "skillId": "associer_information_question::all-receptive::text_type:informational",
-          "labelFr": "Associer une information à la question posée — Texte informatif bref",
+          "skillId": "localiser_span_preuve::all-receptive::text_type:argumentative",
+          "labelFr": "Localiser un passage servant de preuve — Texte argumentatif bref",
           "strand": "comprehension_ecrite",
-          "level": 1,
+          "level": 2,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 4,
+          "correct": 4,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9283667621776505,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.9940814954403842,
+          "countedEvidence": 4,
           "minimumItems": 3
         },
         {
@@ -4674,20 +4675,6 @@
           "withinOccasionResolved": false,
           "probability": 0.9283667621776505,
           "countedEvidence": 2,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "deduire_mot_morphologie::all-receptive::text_type:argumentative",
-          "labelFr": "Déduire un mot grâce à sa morphologie — Texte argumentatif bref",
-          "strand": "comprehension_ecrite",
-          "level": 1,
-          "expectedKnown": true,
-          "answered": 3,
-          "correct": 3,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9790162833641095,
-          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -4791,6 +4778,20 @@
           "minimumItems": 3
         },
         {
+          "skillId": "associer_information_question::all-receptive::text_type:informational",
+          "labelFr": "Associer une information à la question posée — Texte informatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.782608695652174,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
           "skillId": "produire_passe_compose::writing-controlled-production::verb:aller",
           "labelFr": "Produire le passé composé — Conjuguer aller",
           "strand": "conjugaison",
@@ -4819,7 +4820,7 @@
       "sampledTargets": 25,
       "unsampledTargets": 517,
       "targetsReachingMinimumItemCount": 12,
-      "targetsWithSufficientEvidenceToday": 10,
+      "targetsWithSufficientEvidenceToday": 11,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -4864,7 +4865,7 @@
           "sampledTargets": 3,
           "answered": 9,
           "targetsReachingMinimumItemCount": 2,
-          "targetsWithSufficientEvidenceToday": 1,
+          "targetsWithSufficientEvidenceToday": 2,
           "sampledKnown": 3,
           "sampledWeak": 0
         },
@@ -5070,17 +5071,17 @@
           "minimumItems": 3
         },
         {
-          "skillId": "associer_information_question::all-receptive::text_type:informational",
-          "labelFr": "Associer une information à la question posée — Texte informatif bref",
+          "skillId": "localiser_span_preuve::all-receptive::text_type:argumentative",
+          "labelFr": "Localiser un passage servant de preuve — Texte argumentatif bref",
           "strand": "comprehension_ecrite",
-          "level": 1,
+          "level": 2,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 4,
+          "correct": 4,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9283667621776505,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.9940814954403842,
+          "countedEvidence": 4,
           "minimumItems": 3
         },
         {
@@ -5123,20 +5124,6 @@
           "withinOccasionResolved": false,
           "probability": 0.017467248908296946,
           "countedEvidence": 2,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "deduire_mot_morphologie::all-receptive::text_type:argumentative",
-          "labelFr": "Déduire un mot grâce à sa morphologie — Texte argumentatif bref",
-          "strand": "comprehension_ecrite",
-          "level": 1,
-          "expectedKnown": true,
-          "answered": 3,
-          "correct": 3,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9790162833641095,
-          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -5240,6 +5227,20 @@
           "minimumItems": 3
         },
         {
+          "skillId": "associer_information_question::all-receptive::text_type:informational",
+          "labelFr": "Associer une information à la question posée — Texte informatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.782608695652174,
+          "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
           "skillId": "produire_passe_compose::writing-controlled-production::verb:aller",
           "labelFr": "Produire le passé composé — Conjuguer aller",
           "strand": "conjugaison",
@@ -5265,10 +5266,10 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 61,
-      "sampledTargets": 25,
-      "unsampledTargets": 517,
-      "targetsReachingMinimumItemCount": 12,
-      "targetsWithSufficientEvidenceToday": 11,
+      "sampledTargets": 26,
+      "unsampledTargets": 516,
+      "targetsReachingMinimumItemCount": 11,
+      "targetsWithSufficientEvidenceToday": 10,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -5319,12 +5320,12 @@
         },
         {
           "strand": "grammaire_syntaxe",
-          "sampledTargets": 6,
+          "sampledTargets": 7,
           "answered": 17,
-          "targetsReachingMinimumItemCount": 4,
-          "targetsWithSufficientEvidenceToday": 4,
+          "targetsReachingMinimumItemCount": 3,
+          "targetsWithSufficientEvidenceToday": 3,
           "sampledKnown": 3,
-          "sampledWeak": 3
+          "sampledWeak": 4
         },
         {
           "strand": "orthographe_grammaticale",
@@ -5594,12 +5595,12 @@
           "strand": "grammaire_syntaxe",
           "level": 2,
           "expectedKnown": false,
-          "answered": 3,
+          "answered": 1,
           "correct": 0,
           "status": "uncertain",
-          "withinOccasionResolved": true,
-          "probability": 0.001164991990680065,
-          "countedEvidence": 3,
+          "withinOccasionResolved": false,
+          "probability": 0.09523809523809527,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {
@@ -5672,6 +5673,20 @@
           "withinOccasionResolved": false,
           "probability": 0.09523809523809527,
           "countedEvidence": 1,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "produire_pronom_cod::writing-controlled-production::construction:le",
+          "labelFr": "Employer le, la, l’ ou les — le",
+          "strand": "grammaire_syntaxe",
+          "level": 2,
+          "expectedKnown": false,
+          "answered": 2,
+          "correct": 0,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.010958904109589048,
+          "countedEvidence": 2,
           "minimumItems": 3
         },
         {
@@ -7503,8 +7518,8 @@
       "activeSeconds": 2100,
       "questionsPresented": 61,
       "questionsAnswered": 46,
-      "sampledTargets": 20,
-      "unsampledTargets": 522,
+      "sampledTargets": 19,
+      "unsampledTargets": 523,
       "targetsReachingMinimumItemCount": 10,
       "targetsWithSufficientEvidenceToday": 9,
       "confirmedMastered": 0,
@@ -7548,11 +7563,11 @@
         },
         {
           "strand": "comprehension_ecrite",
-          "sampledTargets": 3,
+          "sampledTargets": 2,
           "answered": 7,
           "targetsReachingMinimumItemCount": 2,
           "targetsWithSufficientEvidenceToday": 1,
-          "sampledKnown": 3,
+          "sampledKnown": 2,
           "sampledWeak": 0
         },
         {
@@ -7743,17 +7758,17 @@
           "minimumItems": 3
         },
         {
-          "skillId": "associer_information_question::all-receptive::text_type:informational",
-          "labelFr": "Associer une information à la question posée — Texte informatif bref",
+          "skillId": "localiser_span_preuve::all-receptive::text_type:argumentative",
+          "labelFr": "Localiser un passage servant de preuve — Texte argumentatif bref",
           "strand": "comprehension_ecrite",
-          "level": 1,
+          "level": 2,
           "expectedKnown": true,
-          "answered": 0,
-          "correct": 0,
-          "status": "unknown",
+          "answered": 3,
+          "correct": 3,
+          "status": "uncertain",
           "withinOccasionResolved": false,
-          "probability": 0.5,
-          "countedEvidence": 0,
+          "probability": 0.9790162833641095,
+          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -7782,20 +7797,6 @@
           "withinOccasionResolved": false,
           "probability": 0.782608695652174,
           "countedEvidence": 1,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "deduire_mot_morphologie::all-receptive::text_type:argumentative",
-          "labelFr": "Déduire un mot grâce à sa morphologie — Texte argumentatif bref",
-          "strand": "comprehension_ecrite",
-          "level": 1,
-          "expectedKnown": true,
-          "answered": 3,
-          "correct": 3,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9790162833641095,
-          "countedEvidence": 3,
           "minimumItems": 3
         },
         {
@@ -7884,7 +7885,7 @@
       "sampledTargets": 22,
       "unsampledTargets": 520,
       "targetsReachingMinimumItemCount": 10,
-      "targetsWithSufficientEvidenceToday": 8,
+      "targetsWithSufficientEvidenceToday": 9,
       "confirmedMastered": 0,
       "confirmedMissing": 0,
       "provisional": true,
@@ -7929,7 +7930,7 @@
           "sampledTargets": 3,
           "answered": 9,
           "targetsReachingMinimumItemCount": 2,
-          "targetsWithSufficientEvidenceToday": 1,
+          "targetsWithSufficientEvidenceToday": 2,
           "sampledKnown": 3,
           "sampledWeak": 0
         },
@@ -8121,17 +8122,17 @@
           "minimumItems": 3
         },
         {
-          "skillId": "associer_information_question::all-receptive::text_type:informational",
-          "labelFr": "Associer une information à la question posée — Texte informatif bref",
+          "skillId": "localiser_span_preuve::all-receptive::text_type:argumentative",
+          "labelFr": "Localiser un passage servant de preuve — Texte argumentatif bref",
           "strand": "comprehension_ecrite",
-          "level": 1,
+          "level": 2,
           "expectedKnown": true,
-          "answered": 2,
-          "correct": 2,
+          "answered": 4,
+          "correct": 4,
           "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9283667621776505,
-          "countedEvidence": 2,
+          "withinOccasionResolved": true,
+          "probability": 0.9940814954403842,
+          "countedEvidence": 4,
           "minimumItems": 3
         },
         {
@@ -8145,20 +8146,6 @@
           "status": "uncertain",
           "withinOccasionResolved": true,
           "probability": 0.9998285616320933,
-          "countedEvidence": 3,
-          "minimumItems": 3
-        },
-        {
-          "skillId": "deduire_mot_morphologie::all-receptive::text_type:argumentative",
-          "labelFr": "Déduire un mot grâce à sa morphologie — Texte argumentatif bref",
-          "strand": "comprehension_ecrite",
-          "level": 1,
-          "expectedKnown": true,
-          "answered": 3,
-          "correct": 3,
-          "status": "uncertain",
-          "withinOccasionResolved": false,
-          "probability": 0.9790162833641095,
           "countedEvidence": 3,
           "minimumItems": 3
         },
@@ -8260,6 +8247,20 @@
           "withinOccasionResolved": false,
           "probability": 0.9969230769230769,
           "countedEvidence": 2,
+          "minimumItems": 3
+        },
+        {
+          "skillId": "associer_information_question::all-receptive::text_type:informational",
+          "labelFr": "Associer une information à la question posée — Texte informatif bref",
+          "strand": "comprehension_ecrite",
+          "level": 1,
+          "expectedKnown": true,
+          "answered": 1,
+          "correct": 1,
+          "status": "uncertain",
+          "withinOccasionResolved": false,
+          "probability": 0.782608695652174,
+          "countedEvidence": 1,
           "minimumItems": 3
         },
         {

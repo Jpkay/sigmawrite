@@ -368,7 +368,20 @@ export function selectProbe(skills: readonly Skill[], bank: readonly Probe[], ob
   const crossPrerequisites=recent&&!recent.correct&&recentSkill
     ?familyItems.filter(item=>recentSkill.prerequisites.includes(item.skillId)&&(skillById.get(item.skillId)!.branch!==recentSkill.branch||formOf(skillById.get(item.skillId)!)!==formOf(recentSkill))):[];
   crossPrerequisites.sort((a,b)=>challengeOf(skillById.get(b.skillId)!)-challengeOf(skillById.get(a.skillId)!)||a.id.localeCompare(b.id));
-  const branch=crossPrerequisites.length?skillById.get(crossPrerequisites[0].skillId)!.branch:branches[0];
+  // Refined reading targets often occupy separate branches. Follow a graph
+  // successor only after all its prerequisites have evidence in this sitting.
+  // Keep gathering its own evidence; never transfer prerequisite correctness.
+  const crossSuccessors=recent?.correct&&recentSkill&&routingById.get(recentSkill.id)?.status==="mastered"
+    ?familyItems.filter(item=>skillById.get(item.skillId)!.branch!==recentSkill.branch&&skillById.get(item.skillId)!.prerequisites.includes(recentSkill.id)&&skillById.get(item.skillId)!.prerequisites.every(id=>routingById.get(id)?.status==="mastered")):[];
+  crossSuccessors.sort((a,b)=>challengeOf(skillById.get(a.skillId)!)-challengeOf(skillById.get(b.skillId)!)||a.id.localeCompare(b.id));
+  const continueFrontier=recentSkill&&!routingById.get(recentSkill.id)?.resolved
+    &&recentSkill.prerequisites.some(id=>skillById.get(id)?.branch!==recentSkill.branch)
+    &&recentSkill.prerequisites.every(id=>routingById.get(id)?.status==="mastered")
+    &&branchCount(recentSkill.branch)<visitSize&&familyItems.some(item=>item.skillId===recentSkill.id);
+  const branch=crossPrerequisites.length?skillById.get(crossPrerequisites[0].skillId)!.branch
+    :crossSuccessors.length?skillById.get(crossSuccessors[0].skillId)!.branch
+    :continueFrontier?recentSkill!.branch:branches[0];
+  const crossSuccessorIds=new Set(crossSuccessors.filter(item=>skillById.get(item.skillId)!.branch===branch).map(item=>item.skillId));
   const crossPrerequisiteIds=new Set(crossPrerequisites.filter(item=>skillById.get(item.skillId)!.branch===branch).map(item=>item.skillId));
   const branchItems=familyItems.filter(item=>skillById.get(item.skillId)!.branch===branch);
   const history=familyHistory.filter(observation=>skillById.get(observation.skillId)!.branch===branch);
@@ -383,6 +396,8 @@ export function selectProbe(skills: readonly Skill[], bank: readonly Probe[], ob
   };
   if (crossPrerequisiteIds.size && restrict(i => crossPrerequisiteIds.has(i.skillId), "step_down")) {
     // Probe the prerequisite; a failed advanced item does not score it as weak.
+  } else if (crossSuccessorIds.size && restrict(i => crossSuccessorIds.has(i.skillId), "step_up")) {
+    // Ask the next graph target; prerequisite evidence never scores it.
   } else if (restrict(i => skillById.get(i.skillId)!.anchor === true, "branch_coverage")) {
     // Explicit essentials are measured even when challenge routing would start higher.
   } else if (!lastSkill) {
