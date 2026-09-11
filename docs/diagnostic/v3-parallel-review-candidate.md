@@ -6,8 +6,8 @@ The product owner authorized students to start while personally reviewing conten
 
 267 of 542 targets have allocated initial and follow-up pools; 275 remain incomplete. The JSON lists each target and the proposed check bindings. This is a release preparation artifact, not proof of activation or full coverage.
 
-162 lessons and 904 guided exercises are pinned as published_pending_review. 158 lesson targets have allocated initial/follow-up pools; 156 retain enough check questions after exact teaching overlap exclusions and have proposed instruction/practice bindings. 0 prerequisite targets in their 156-target dependency scope still lack complete pools. Exact material matches populate exposure exclusions; semantic overlap review remains in progress.
+176 lessons and 960 guided exercises are pinned as published_pending_review. 158 lesson targets have allocated initial/follow-up pools; 156 retain enough check questions after exact teaching overlap exclusions and have proposed instruction/practice bindings. 0 prerequisite targets in their 156-target dependency scope still lack complete pools. Exact material matches populate exposure exclusions; semantic overlap review remains in progress.
 
-Policy checksum: sha256:339f27b32c83e59f25b283c18294ef18e46eb69142cecff23ff099e8fd10ee26.
+Policy checksum: sha256:f552c9625418119440f6ec4d179dd8e4d84dba0d410cdea396a5900b8848538a.
 
 Reproduce: npx tsx scripts/build-parallel-review-candidate.mts; append --check to verify without writing.

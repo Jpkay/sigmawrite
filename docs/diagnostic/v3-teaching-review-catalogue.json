@@ -5,12 +5,1804 @@
   "facetChecksum": "sha256:c1587bbcc3d7b86759a9aeee784f312a48e3d2706edac48ad2d1681957b44f73",
   "assessmentSourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
   "summary": {
-    "lessons": 162,
-    "guidedExercises": 904,
-    "targets": 162,
+    "lessons": 176,
+    "guidedExercises": 960,
+    "targets": 176,
     "missingExposureAnnotations": []
   },
   "rows": [
+    {
+      "lessonId": "french-v3-teaching:homophone:a_a:recognition",
+      "contentChecksum": "sha256:516cb25277fc3dd587d25d66190c34d2810c218e9608e1727f239c3d49cbd476",
+      "skillId": "distinguer_homophones_a_a::reading-receptive",
+      "nodeKey": "distinguer_homophones_a_a",
+      "facetKey": null,
+      "mode": "recognition",
+      "domain": "spelling",
+      "prerequisites": [],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 2,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": true,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:263541c61a49b0a20a3212dc7943c64afbf78db8984a5e94855d4132800f3624",
+        "sentence:sha256:2a89aa1449db50df47cd024424a405748884dfc32076f039dff36d9657c61dc8",
+        "sentence:sha256:2eef0d5acf13b37a35a8dfd179dbb810dc50707390d9faef4e4aa6a656f90469",
+        "sentence:sha256:42492026115f86d2bfdd94c3a86618bbc5d6624d74a264e87ecae3b510e7991f",
+        "sentence:sha256:716dd88bc1ef045b158f92b2162a5c6cf1b2560eb3a5f7c40f813acca03f8c57",
+        "sentence:sha256:7a52b104028100c38fc54518a0a638dae2d8e5ffe18dd94dd4ef46c60bec2faa",
+        "sentence:sha256:88defdb168f2c0453d4d7b7464a1d008d1b652bc3a466cf7fc4ad29b8281594a",
+        "sentence:sha256:8d6f8daaf0c2896d9432f9ec1861daf06aac6eb12834a20b89292d4e9c739038",
+        "sentence:sha256:d872c035fe1be93a05a9ac3a870261db20c520045a104f17013fed36e9a2e9e5",
+        "word:sha256:00f50117eed1430db17621ec75373b8f83a3a8b86563e59e30d03808313af465",
+        "word:sha256:ac8d8342bbb2362d13f0a559a3621bb407011368895164b628a54f7fc33fc43c"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:homophone:a_a:recognition",
+        "nodeKey": "distinguer_homophones_a_a",
+        "mode": "recognition",
+        "status": "draft_requires_review",
+        "titleFr": "Choisir a ou à",
+        "learnerQuestionFr": "Comment choisir entre a ou à dans une phrase ?",
+        "steps": [
+          {
+            "exampleFr": "Nora a un vélo. Nora va à la piscine.",
+            "explanationFr": "Dans la première phrase, a est une forme du verbe avoir : Nora avait un vélo reste possible. Dans la seconde, à relie va au lieu. Va avait la piscine ne fonctionne pas."
+          },
+          {
+            "exampleFr": "Le groupe a terminé son affiche.",
+            "explanationFr": "Essaie avait à la place du mot. Si la phrase reste construite correctement, choisis a. Sinon, examine le lien introduit par à."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:homophone:a_a:recognition:1",
+            "promptFr": "Le groupe ___ terminé son affiche.\nChoisis le mot qui convient.",
+            "choices": [
+              "a",
+              "à"
+            ],
+            "answerFr": "a",
+            "hintFr": "Essaie avait à la place du mot. Si la phrase reste construite correctement, choisis a. Sinon, examine le lien introduit par à.",
+            "explanationFr": "Le groupe a terminé son affiche. Avait terminé est possible : a est ici le verbe avoir."
+          },
+          {
+            "id": "guided:homophone:a_a:recognition:2",
+            "promptFr": "Tu pars ___ vélo.\nChoisis le mot qui convient.",
+            "choices": [
+              "a",
+              "à"
+            ],
+            "answerFr": "à",
+            "hintFr": "Essaie avait à la place du mot. Si la phrase reste construite correctement, choisis a. Sinon, examine le lien introduit par à.",
+            "explanationFr": "Tu pars à vélo. Pars avait vélo ne fonctionne pas. À introduit la manière de se déplacer."
+          },
+          {
+            "id": "guided:homophone:a_a:recognition:3",
+            "promptFr": "Cette veste ___ une poche intérieure.\nChoisis le mot qui convient.",
+            "choices": [
+              "a",
+              "à"
+            ],
+            "answerFr": "a",
+            "hintFr": "Essaie avait à la place du mot. Si la phrase reste construite correctement, choisis a. Sinon, examine le lien introduit par à.",
+            "explanationFr": "Cette veste a une poche intérieure. Cette veste avait une poche intérieure est une phrase correctement construite."
+          },
+          {
+            "id": "guided:homophone:a_a:recognition:4",
+            "promptFr": "Le cours commence ___ dix heures.\nChoisis le mot qui convient.",
+            "choices": [
+              "a",
+              "à"
+            ],
+            "answerFr": "à",
+            "hintFr": "Essaie avait à la place du mot. Si la phrase reste construite correctement, choisis a. Sinon, examine le lien introduit par à.",
+            "explanationFr": "Le cours commence à dix heures. À introduit une heure ; ce n’est pas le verbe avoir."
+          }
+        ],
+        "takeawayFr": "Essaie avait à la place du mot. Si la phrase reste construite correctement, choisis a. Sinon, examine le lien introduit par à.",
+        "boundaryFr": "Ce test change le temps de la phrase. Il sert à repérer avoir, pas à conserver exactement le même moment.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "a",
+              "form": "a"
+            },
+            {
+              "lemma": "à",
+              "form": "à"
+            }
+          ],
+          "sentences": [
+            "Nora a un vélo. Nora va à la piscine.",
+            "Le groupe ___ terminé son affiche.",
+            "Le groupe a terminé son affiche.",
+            "Tu pars ___ vélo.",
+            "Tu pars à vélo.",
+            "Cette veste ___ une poche intérieure.",
+            "Cette veste a une poche intérieure.",
+            "Le cours commence ___ dix heures.",
+            "Le cours commence à dix heures."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:homophone:a_a:production",
+      "contentChecksum": "sha256:89b99e6b2d425643ed70ab8d69a48c8c08a2855365151d5d22bc3b3386063bd8",
+      "skillId": "distinguer_homophones_a_a::writing-controlled-production",
+      "nodeKey": "distinguer_homophones_a_a",
+      "facetKey": null,
+      "mode": "production",
+      "domain": "spelling",
+      "prerequisites": [],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": true,
+        "novelSentencesRequired": false,
+        "unaidedRequired": true
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:263541c61a49b0a20a3212dc7943c64afbf78db8984a5e94855d4132800f3624",
+        "sentence:sha256:2a89aa1449db50df47cd024424a405748884dfc32076f039dff36d9657c61dc8",
+        "sentence:sha256:2eef0d5acf13b37a35a8dfd179dbb810dc50707390d9faef4e4aa6a656f90469",
+        "sentence:sha256:42492026115f86d2bfdd94c3a86618bbc5d6624d74a264e87ecae3b510e7991f",
+        "sentence:sha256:716dd88bc1ef045b158f92b2162a5c6cf1b2560eb3a5f7c40f813acca03f8c57",
+        "sentence:sha256:7a52b104028100c38fc54518a0a638dae2d8e5ffe18dd94dd4ef46c60bec2faa",
+        "sentence:sha256:88defdb168f2c0453d4d7b7464a1d008d1b652bc3a466cf7fc4ad29b8281594a",
+        "sentence:sha256:8d6f8daaf0c2896d9432f9ec1861daf06aac6eb12834a20b89292d4e9c739038",
+        "sentence:sha256:d872c035fe1be93a05a9ac3a870261db20c520045a104f17013fed36e9a2e9e5",
+        "word:sha256:00f50117eed1430db17621ec75373b8f83a3a8b86563e59e30d03808313af465",
+        "word:sha256:ac8d8342bbb2362d13f0a559a3621bb407011368895164b628a54f7fc33fc43c"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:homophone:a_a:production",
+        "nodeKey": "distinguer_homophones_a_a",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire a ou à",
+        "learnerQuestionFr": "Comment choisir entre a ou à dans une phrase ?",
+        "steps": [
+          {
+            "exampleFr": "Nora a un vélo. Nora va à la piscine.",
+            "explanationFr": "Dans la première phrase, a est une forme du verbe avoir : Nora avait un vélo reste possible. Dans la seconde, à relie va au lieu. Va avait la piscine ne fonctionne pas."
+          },
+          {
+            "exampleFr": "Le groupe a terminé son affiche.",
+            "explanationFr": "Essaie avait à la place du mot. Si la phrase reste construite correctement, choisis a. Sinon, examine le lien introduit par à."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:homophone:a_a:production:1",
+            "promptFr": "Le groupe ___ terminé son affiche.\nÉcris le mot qui convient.",
+            "answerFr": "a",
+            "hintFr": "Essaie avait à la place du mot. Si la phrase reste construite correctement, choisis a. Sinon, examine le lien introduit par à.",
+            "explanationFr": "Le groupe a terminé son affiche. Avait terminé est possible : a est ici le verbe avoir."
+          },
+          {
+            "id": "guided:homophone:a_a:production:2",
+            "promptFr": "Tu pars ___ vélo.\nÉcris le mot qui convient.",
+            "answerFr": "à",
+            "hintFr": "Essaie avait à la place du mot. Si la phrase reste construite correctement, choisis a. Sinon, examine le lien introduit par à.",
+            "explanationFr": "Tu pars à vélo. Pars avait vélo ne fonctionne pas. À introduit la manière de se déplacer."
+          },
+          {
+            "id": "guided:homophone:a_a:production:3",
+            "promptFr": "Cette veste ___ une poche intérieure.\nÉcris le mot qui convient.",
+            "answerFr": "a",
+            "hintFr": "Essaie avait à la place du mot. Si la phrase reste construite correctement, choisis a. Sinon, examine le lien introduit par à.",
+            "explanationFr": "Cette veste a une poche intérieure. Cette veste avait une poche intérieure est une phrase correctement construite."
+          },
+          {
+            "id": "guided:homophone:a_a:production:4",
+            "promptFr": "Le cours commence ___ dix heures.\nÉcris le mot qui convient.",
+            "answerFr": "à",
+            "hintFr": "Essaie avait à la place du mot. Si la phrase reste construite correctement, choisis a. Sinon, examine le lien introduit par à.",
+            "explanationFr": "Le cours commence à dix heures. À introduit une heure ; ce n’est pas le verbe avoir."
+          }
+        ],
+        "takeawayFr": "Essaie avait à la place du mot. Si la phrase reste construite correctement, choisis a. Sinon, examine le lien introduit par à.",
+        "boundaryFr": "Ce test change le temps de la phrase. Il sert à repérer avoir, pas à conserver exactement le même moment.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "a",
+              "form": "a"
+            },
+            {
+              "lemma": "à",
+              "form": "à"
+            }
+          ],
+          "sentences": [
+            "Nora a un vélo. Nora va à la piscine.",
+            "Le groupe ___ terminé son affiche.",
+            "Le groupe a terminé son affiche.",
+            "Tu pars ___ vélo.",
+            "Tu pars à vélo.",
+            "Cette veste ___ une poche intérieure.",
+            "Cette veste a une poche intérieure.",
+            "Le cours commence ___ dix heures.",
+            "Le cours commence à dix heures."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:homophone:et_est:recognition",
+      "contentChecksum": "sha256:c9f8b07a2c245253f65eddb901819938ec693c5a9bf702dd7bb48904bd4cc557",
+      "skillId": "distinguer_homophones_et_est::reading-receptive",
+      "nodeKey": "distinguer_homophones_et_est",
+      "facetKey": null,
+      "mode": "recognition",
+      "domain": "spelling",
+      "prerequisites": [],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 2,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": true,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:212bcce5e59329c033b94b862420cab93061a16820afb843bec17ae00c1d2450",
+        "sentence:sha256:2e065b007963c9b632f7c31a14b08f172accc42a7033e49a4a0cb95a60fe27f1",
+        "sentence:sha256:31a810fd132993bfbba7f9b0484caff74e52fe68ac11200e574261ada0687f8c",
+        "sentence:sha256:57e3a781e89b86db99c41e3da1f776cfb587ecc57415b6eedbef84c4a6546423",
+        "sentence:sha256:6e4f1c7a64733efab56881a49cd093c33ae42bcbbee502cb8ffe4596e94be49c",
+        "sentence:sha256:7cc12597bcf2c9250c61f998321593b83e765e6145a62b54160255c96ae540be",
+        "sentence:sha256:cf8db9753abaa32847cfef14f1e5f30cf9cdb8b02dbec2eb5e1461e3052bf1ed",
+        "sentence:sha256:e01101ceba67e84f5b979081c4e336348ef40a7ceaec6535ad10aaf26602faf6",
+        "sentence:sha256:e1b87a8c1e462ad2c2d628e1ae09b81dd87e9715f1ec4471a313354f93ea1736",
+        "word:sha256:26c7d9a1cfcd3047f3bd6d022943ed9819c74373e5c24ca9f11e7f8be85fe412",
+        "word:sha256:c04f67a52a0b170a8154c2d76cbac729f75336e8fcdf0753c6823b5368d5a63f"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:homophone:et_est:recognition",
+        "nodeKey": "distinguer_homophones_et_est",
+        "mode": "recognition",
+        "status": "draft_requires_review",
+        "titleFr": "Choisir et ou est",
+        "learnerQuestionFr": "Comment choisir entre et ou est dans une phrase ?",
+        "steps": [
+          {
+            "exampleFr": "Le chat est calme. Le chat et le chien dorment.",
+            "explanationFr": "Est est une forme du verbe être : le chat était calme. Et relie ici deux noms : le chat et le chien."
+          },
+          {
+            "exampleFr": "La porte est lourde.",
+            "explanationFr": "Essaie était pour repérer le verbe être. Si le mot relie deux éléments, et peut convenir : les deux éléments restent présents."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:homophone:et_est:recognition:1",
+            "promptFr": "La porte ___ lourde.\nChoisis le mot qui convient.",
+            "choices": [
+              "et",
+              "est"
+            ],
+            "answerFr": "est",
+            "hintFr": "Essaie était pour repérer le verbe être. Si le mot relie deux éléments, et peut convenir : les deux éléments restent présents.",
+            "explanationFr": "La porte est lourde. La porte était lourde garde une construction correcte."
+          },
+          {
+            "id": "guided:homophone:et_est:recognition:2",
+            "promptFr": "Nous prenons du papier ___ de la colle.\nChoisis le mot qui convient.",
+            "choices": [
+              "et",
+              "est"
+            ],
+            "answerFr": "et",
+            "hintFr": "Essaie était pour repérer le verbe être. Si le mot relie deux éléments, et peut convenir : les deux éléments restent présents.",
+            "explanationFr": "Nous prenons du papier et de la colle. Et relie les deux fournitures."
+          },
+          {
+            "id": "guided:homophone:et_est:recognition:3",
+            "promptFr": "Mon frère ___ arrivé tôt.\nChoisis le mot qui convient.",
+            "choices": [
+              "et",
+              "est"
+            ],
+            "answerFr": "est",
+            "hintFr": "Essaie était pour repérer le verbe être. Si le mot relie deux éléments, et peut convenir : les deux éléments restent présents.",
+            "explanationFr": "Mon frère est arrivé tôt. Était arrivé est possible : est aide ici à former le passé composé."
+          },
+          {
+            "id": "guided:homophone:et_est:recognition:4",
+            "promptFr": "Le tissu est doux ___ léger.\nChoisis le mot qui convient.",
+            "choices": [
+              "et",
+              "est"
+            ],
+            "answerFr": "et",
+            "hintFr": "Essaie était pour repérer le verbe être. Si le mot relie deux éléments, et peut convenir : les deux éléments restent présents.",
+            "explanationFr": "Le tissu est doux et léger. Et relie les deux qualités doux et léger."
+          }
+        ],
+        "takeawayFr": "Essaie était pour repérer le verbe être. Si le mot relie deux éléments, et peut convenir : les deux éléments restent présents.",
+        "boundaryFr": "Ne choisis pas seulement au son. Était ne remplace pas une liaison entre deux mots.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "et",
+              "form": "et"
+            },
+            {
+              "lemma": "est",
+              "form": "est"
+            }
+          ],
+          "sentences": [
+            "Le chat est calme. Le chat et le chien dorment.",
+            "La porte ___ lourde.",
+            "La porte est lourde.",
+            "Nous prenons du papier ___ de la colle.",
+            "Nous prenons du papier et de la colle.",
+            "Mon frère ___ arrivé tôt.",
+            "Mon frère est arrivé tôt.",
+            "Le tissu est doux ___ léger.",
+            "Le tissu est doux et léger."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:homophone:et_est:production",
+      "contentChecksum": "sha256:2089ea039b8fb18c7fd9e3f4a7ea04b71e2917bfc7a20abf9f4d0a99bb63d42f",
+      "skillId": "distinguer_homophones_et_est::writing-controlled-production",
+      "nodeKey": "distinguer_homophones_et_est",
+      "facetKey": null,
+      "mode": "production",
+      "domain": "spelling",
+      "prerequisites": [],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": true,
+        "novelSentencesRequired": false,
+        "unaidedRequired": true
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:212bcce5e59329c033b94b862420cab93061a16820afb843bec17ae00c1d2450",
+        "sentence:sha256:2e065b007963c9b632f7c31a14b08f172accc42a7033e49a4a0cb95a60fe27f1",
+        "sentence:sha256:31a810fd132993bfbba7f9b0484caff74e52fe68ac11200e574261ada0687f8c",
+        "sentence:sha256:57e3a781e89b86db99c41e3da1f776cfb587ecc57415b6eedbef84c4a6546423",
+        "sentence:sha256:6e4f1c7a64733efab56881a49cd093c33ae42bcbbee502cb8ffe4596e94be49c",
+        "sentence:sha256:7cc12597bcf2c9250c61f998321593b83e765e6145a62b54160255c96ae540be",
+        "sentence:sha256:cf8db9753abaa32847cfef14f1e5f30cf9cdb8b02dbec2eb5e1461e3052bf1ed",
+        "sentence:sha256:e01101ceba67e84f5b979081c4e336348ef40a7ceaec6535ad10aaf26602faf6",
+        "sentence:sha256:e1b87a8c1e462ad2c2d628e1ae09b81dd87e9715f1ec4471a313354f93ea1736",
+        "word:sha256:26c7d9a1cfcd3047f3bd6d022943ed9819c74373e5c24ca9f11e7f8be85fe412",
+        "word:sha256:c04f67a52a0b170a8154c2d76cbac729f75336e8fcdf0753c6823b5368d5a63f"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:homophone:et_est:production",
+        "nodeKey": "distinguer_homophones_et_est",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire et ou est",
+        "learnerQuestionFr": "Comment choisir entre et ou est dans une phrase ?",
+        "steps": [
+          {
+            "exampleFr": "Le chat est calme. Le chat et le chien dorment.",
+            "explanationFr": "Est est une forme du verbe être : le chat était calme. Et relie ici deux noms : le chat et le chien."
+          },
+          {
+            "exampleFr": "La porte est lourde.",
+            "explanationFr": "Essaie était pour repérer le verbe être. Si le mot relie deux éléments, et peut convenir : les deux éléments restent présents."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:homophone:et_est:production:1",
+            "promptFr": "La porte ___ lourde.\nÉcris le mot qui convient.",
+            "answerFr": "est",
+            "hintFr": "Essaie était pour repérer le verbe être. Si le mot relie deux éléments, et peut convenir : les deux éléments restent présents.",
+            "explanationFr": "La porte est lourde. La porte était lourde garde une construction correcte."
+          },
+          {
+            "id": "guided:homophone:et_est:production:2",
+            "promptFr": "Nous prenons du papier ___ de la colle.\nÉcris le mot qui convient.",
+            "answerFr": "et",
+            "hintFr": "Essaie était pour repérer le verbe être. Si le mot relie deux éléments, et peut convenir : les deux éléments restent présents.",
+            "explanationFr": "Nous prenons du papier et de la colle. Et relie les deux fournitures."
+          },
+          {
+            "id": "guided:homophone:et_est:production:3",
+            "promptFr": "Mon frère ___ arrivé tôt.\nÉcris le mot qui convient.",
+            "answerFr": "est",
+            "hintFr": "Essaie était pour repérer le verbe être. Si le mot relie deux éléments, et peut convenir : les deux éléments restent présents.",
+            "explanationFr": "Mon frère est arrivé tôt. Était arrivé est possible : est aide ici à former le passé composé."
+          },
+          {
+            "id": "guided:homophone:et_est:production:4",
+            "promptFr": "Le tissu est doux ___ léger.\nÉcris le mot qui convient.",
+            "answerFr": "et",
+            "hintFr": "Essaie était pour repérer le verbe être. Si le mot relie deux éléments, et peut convenir : les deux éléments restent présents.",
+            "explanationFr": "Le tissu est doux et léger. Et relie les deux qualités doux et léger."
+          }
+        ],
+        "takeawayFr": "Essaie était pour repérer le verbe être. Si le mot relie deux éléments, et peut convenir : les deux éléments restent présents.",
+        "boundaryFr": "Ne choisis pas seulement au son. Était ne remplace pas une liaison entre deux mots.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "et",
+              "form": "et"
+            },
+            {
+              "lemma": "est",
+              "form": "est"
+            }
+          ],
+          "sentences": [
+            "Le chat est calme. Le chat et le chien dorment.",
+            "La porte ___ lourde.",
+            "La porte est lourde.",
+            "Nous prenons du papier ___ de la colle.",
+            "Nous prenons du papier et de la colle.",
+            "Mon frère ___ arrivé tôt.",
+            "Mon frère est arrivé tôt.",
+            "Le tissu est doux ___ léger.",
+            "Le tissu est doux et léger."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:homophone:son_sont:recognition",
+      "contentChecksum": "sha256:a87c560df7d2db58d7614eee3819ce5ed5b3a5e24c538bbccd036f15dc892509",
+      "skillId": "distinguer_homophones_son_sont::reading-receptive",
+      "nodeKey": "distinguer_homophones_son_sont",
+      "facetKey": null,
+      "mode": "recognition",
+      "domain": "spelling",
+      "prerequisites": [],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 2,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": true,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:2236aa0a525732cc0534aab69084cdde6e33963d50c4d8ca213a5a5bffec6d3d",
+        "sentence:sha256:4c85a66a98369b8626fc042af91a29640c9ffb69d26d5803e54f8610a9c55f16",
+        "sentence:sha256:56611ed884cde8c5187c7c3b7be8d85cd3af8d46e3ff5840b0d116aa62905a1b",
+        "sentence:sha256:8e8b129496b5b36f7827fef955c97c57f1e100465b1027e207e69d27dfd1db9e",
+        "sentence:sha256:99538012c6c2e3ce4dbd6e2c68f7c8cd5fed3377e8f1b95c074674d1f6a240e0",
+        "sentence:sha256:9988c9a4c8e934c9a3ad7cd9de8fbd3daaab9d833926b9ff375870822b4d11b2",
+        "sentence:sha256:cfc37fb0eb0d5e03c61123434d14fb3000a4c3a7c518150950a36cac905910e1",
+        "sentence:sha256:ee7a99452d43b0b6a85db8799995d7c173c6820dce391a2fcb39777e55ae40e5",
+        "sentence:sha256:f855c5f058faea28edb863c1e58f4c3526c33c0feabe7d69b14f0dcf6b409d90",
+        "word:sha256:22776a41d0597d511ab842a6b4d9f67dd0a186c38a8b1775765954ab3ef444bc",
+        "word:sha256:85cb16fe34598d475d66c09dada65deb310901bc4745b3ed6f0bde8a9daadd9c"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:homophone:son_sont:recognition",
+        "nodeKey": "distinguer_homophones_son_sont",
+        "mode": "recognition",
+        "status": "draft_requires_review",
+        "titleFr": "Choisir son ou sont",
+        "learnerQuestionFr": "Comment choisir entre son ou sont dans une phrase ?",
+        "steps": [
+          {
+            "exampleFr": "Lina cherche son sac. Les sacs sont prêts.",
+            "explanationFr": "Son accompagne le nom sac et indique à qui il est associé. Sont est le verbe être avec un sujet au pluriel : les sacs étaient prêts."
+          },
+          {
+            "exampleFr": "Les lumières sont éteintes.",
+            "explanationFr": "Essaie étaient pour repérer sont. Devant un nom, essaie mon ou ton pour reconnaître son."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:homophone:son_sont:recognition:1",
+            "promptFr": "Les lumières ___ éteintes.\nChoisis le mot qui convient.",
+            "choices": [
+              "son",
+              "sont"
+            ],
+            "answerFr": "sont",
+            "hintFr": "Essaie étaient pour repérer sont. Devant un nom, essaie mon ou ton pour reconnaître son.",
+            "explanationFr": "Les lumières sont éteintes. Les lumières étaient éteintes est possible."
+          },
+          {
+            "id": "guided:homophone:son_sont:recognition:2",
+            "promptFr": "Amir retrouve ___ manteau.\nChoisis le mot qui convient.",
+            "choices": [
+              "son",
+              "sont"
+            ],
+            "answerFr": "son",
+            "hintFr": "Essaie étaient pour repérer sont. Devant un nom, essaie mon ou ton pour reconnaître son.",
+            "explanationFr": "Amir retrouve son manteau. Son accompagne manteau ; mon manteau est aussi un groupe possible."
+          },
+          {
+            "id": "guided:homophone:son_sont:recognition:3",
+            "promptFr": "Ces chemins ___ glissants.\nChoisis le mot qui convient.",
+            "choices": [
+              "son",
+              "sont"
+            ],
+            "answerFr": "sont",
+            "hintFr": "Essaie étaient pour repérer sont. Devant un nom, essaie mon ou ton pour reconnaître son.",
+            "explanationFr": "Ces chemins sont glissants. Sont est le verbe être avec ces chemins."
+          },
+          {
+            "id": "guided:homophone:son_sont:recognition:4",
+            "promptFr": "Elle attend ___ amie.\nChoisis le mot qui convient.",
+            "choices": [
+              "son",
+              "sont"
+            ],
+            "answerFr": "son",
+            "hintFr": "Essaie étaient pour repérer sont. Devant un nom, essaie mon ou ton pour reconnaître son.",
+            "explanationFr": "Elle attend son amie. Devant amie, on emploie son. Cela ne signifie pas que l’amie est un garçon."
+          }
+        ],
+        "takeawayFr": "Essaie étaient pour repérer sont. Devant un nom, essaie mon ou ton pour reconnaître son.",
+        "boundaryFr": "Son peut précéder un nom féminin commençant par une voyelle, comme son amie. Le genre du propriétaire ne décide pas de cette forme.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "son",
+              "form": "son"
+            },
+            {
+              "lemma": "sont",
+              "form": "sont"
+            }
+          ],
+          "sentences": [
+            "Lina cherche son sac. Les sacs sont prêts.",
+            "Les lumières ___ éteintes.",
+            "Les lumières sont éteintes.",
+            "Amir retrouve ___ manteau.",
+            "Amir retrouve son manteau.",
+            "Ces chemins ___ glissants.",
+            "Ces chemins sont glissants.",
+            "Elle attend ___ amie.",
+            "Elle attend son amie."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:homophone:son_sont:production",
+      "contentChecksum": "sha256:ef240eec06df0407c300307b561f7a185f5236b98b1820e9c01403ca6634c0a0",
+      "skillId": "distinguer_homophones_son_sont::writing-controlled-production",
+      "nodeKey": "distinguer_homophones_son_sont",
+      "facetKey": null,
+      "mode": "production",
+      "domain": "spelling",
+      "prerequisites": [],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": true,
+        "novelSentencesRequired": false,
+        "unaidedRequired": true
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:2236aa0a525732cc0534aab69084cdde6e33963d50c4d8ca213a5a5bffec6d3d",
+        "sentence:sha256:4c85a66a98369b8626fc042af91a29640c9ffb69d26d5803e54f8610a9c55f16",
+        "sentence:sha256:56611ed884cde8c5187c7c3b7be8d85cd3af8d46e3ff5840b0d116aa62905a1b",
+        "sentence:sha256:8e8b129496b5b36f7827fef955c97c57f1e100465b1027e207e69d27dfd1db9e",
+        "sentence:sha256:99538012c6c2e3ce4dbd6e2c68f7c8cd5fed3377e8f1b95c074674d1f6a240e0",
+        "sentence:sha256:9988c9a4c8e934c9a3ad7cd9de8fbd3daaab9d833926b9ff375870822b4d11b2",
+        "sentence:sha256:cfc37fb0eb0d5e03c61123434d14fb3000a4c3a7c518150950a36cac905910e1",
+        "sentence:sha256:ee7a99452d43b0b6a85db8799995d7c173c6820dce391a2fcb39777e55ae40e5",
+        "sentence:sha256:f855c5f058faea28edb863c1e58f4c3526c33c0feabe7d69b14f0dcf6b409d90",
+        "word:sha256:22776a41d0597d511ab842a6b4d9f67dd0a186c38a8b1775765954ab3ef444bc",
+        "word:sha256:85cb16fe34598d475d66c09dada65deb310901bc4745b3ed6f0bde8a9daadd9c"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:homophone:son_sont:production",
+        "nodeKey": "distinguer_homophones_son_sont",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire son ou sont",
+        "learnerQuestionFr": "Comment choisir entre son ou sont dans une phrase ?",
+        "steps": [
+          {
+            "exampleFr": "Lina cherche son sac. Les sacs sont prêts.",
+            "explanationFr": "Son accompagne le nom sac et indique à qui il est associé. Sont est le verbe être avec un sujet au pluriel : les sacs étaient prêts."
+          },
+          {
+            "exampleFr": "Les lumières sont éteintes.",
+            "explanationFr": "Essaie étaient pour repérer sont. Devant un nom, essaie mon ou ton pour reconnaître son."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:homophone:son_sont:production:1",
+            "promptFr": "Les lumières ___ éteintes.\nÉcris le mot qui convient.",
+            "answerFr": "sont",
+            "hintFr": "Essaie étaient pour repérer sont. Devant un nom, essaie mon ou ton pour reconnaître son.",
+            "explanationFr": "Les lumières sont éteintes. Les lumières étaient éteintes est possible."
+          },
+          {
+            "id": "guided:homophone:son_sont:production:2",
+            "promptFr": "Amir retrouve ___ manteau.\nÉcris le mot qui convient.",
+            "answerFr": "son",
+            "hintFr": "Essaie étaient pour repérer sont. Devant un nom, essaie mon ou ton pour reconnaître son.",
+            "explanationFr": "Amir retrouve son manteau. Son accompagne manteau ; mon manteau est aussi un groupe possible."
+          },
+          {
+            "id": "guided:homophone:son_sont:production:3",
+            "promptFr": "Ces chemins ___ glissants.\nÉcris le mot qui convient.",
+            "answerFr": "sont",
+            "hintFr": "Essaie étaient pour repérer sont. Devant un nom, essaie mon ou ton pour reconnaître son.",
+            "explanationFr": "Ces chemins sont glissants. Sont est le verbe être avec ces chemins."
+          },
+          {
+            "id": "guided:homophone:son_sont:production:4",
+            "promptFr": "Elle attend ___ amie.\nÉcris le mot qui convient.",
+            "answerFr": "son",
+            "hintFr": "Essaie étaient pour repérer sont. Devant un nom, essaie mon ou ton pour reconnaître son.",
+            "explanationFr": "Elle attend son amie. Devant amie, on emploie son. Cela ne signifie pas que l’amie est un garçon."
+          }
+        ],
+        "takeawayFr": "Essaie étaient pour repérer sont. Devant un nom, essaie mon ou ton pour reconnaître son.",
+        "boundaryFr": "Son peut précéder un nom féminin commençant par une voyelle, comme son amie. Le genre du propriétaire ne décide pas de cette forme.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "son",
+              "form": "son"
+            },
+            {
+              "lemma": "sont",
+              "form": "sont"
+            }
+          ],
+          "sentences": [
+            "Lina cherche son sac. Les sacs sont prêts.",
+            "Les lumières ___ éteintes.",
+            "Les lumières sont éteintes.",
+            "Amir retrouve ___ manteau.",
+            "Amir retrouve son manteau.",
+            "Ces chemins ___ glissants.",
+            "Ces chemins sont glissants.",
+            "Elle attend ___ amie.",
+            "Elle attend son amie."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:homophone:on_ont:recognition",
+      "contentChecksum": "sha256:cd64fd651ba15e8b01579dce0d2d4ca9bee2af034b9301445c17b09985c6d6b1",
+      "skillId": "distinguer_homophones_on_ont::reading-receptive",
+      "nodeKey": "distinguer_homophones_on_ont",
+      "facetKey": null,
+      "mode": "recognition",
+      "domain": "spelling",
+      "prerequisites": [],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 2,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": true,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:11641e82de61d1a48587ae779078667c92cce2d78210cc99a13b1a10a519e76a",
+        "sentence:sha256:1c733fda1440b0247499a32a9aa53edd9adbf7454e50710d3fa2ea157aeb75a5",
+        "sentence:sha256:75085546f59da97f09d0d8cfb525d28077cb6a82bbfca4be5ed02a5a647cc6bb",
+        "sentence:sha256:9e0b2fb249d2ea8a0948e7f7df5b6662160b6af812d5c3fbf84bf3b4365154e1",
+        "sentence:sha256:b74969c549d560501af87dcca711acf49d798107a6c7bfdb92e24a2b17de8d90",
+        "sentence:sha256:c2aca4d83c545c503ce43681c475309d04736d22ccfc775a58b266823df1d629",
+        "sentence:sha256:c8ae6cd5ee2a4f46971344eb20d19df22c92cbb3ca6bb0b3926ceff3247c4c64",
+        "sentence:sha256:eb7383dce47ccce862a6ec5020969b1c894a18d7eb8cf2ad333a6284e5f033a9",
+        "sentence:sha256:f38e82ee2cb673d1df9555ba22cd89b255849c08469d0406d880de74fd7ba95c",
+        "word:sha256:8cc76f0db13db59207a73accbccca594dbda93e1a020d44d8d3a1599fd589e13",
+        "word:sha256:990c23868b965814b117cf9a6c4dfe45452eadc2171e1f981865ebfc84f10724"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:homophone:on_ont:recognition",
+        "nodeKey": "distinguer_homophones_on_ont",
+        "mode": "recognition",
+        "status": "draft_requires_review",
+        "titleFr": "Choisir on ou ont",
+        "learnerQuestionFr": "Comment choisir entre on ou ont dans une phrase ?",
+        "steps": [
+          {
+            "exampleFr": "On ferme la fenêtre. Les voisins ont froid.",
+            "explanationFr": "On occupe la place du sujet, comme il dans il ferme. Ont est une forme d’avoir : les voisins avaient froid."
+          },
+          {
+            "exampleFr": "On écoute la consigne.",
+            "explanationFr": "Essaie avaient pour reconnaître ont. Si le mot est le sujet d’un verbe à la troisième personne du singulier, on peut convenir."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:homophone:on_ont:recognition:1",
+            "promptFr": "___ écoute la consigne.\nChoisis le mot qui convient.",
+            "choices": [
+              "On",
+              "Ont"
+            ],
+            "answerFr": "On",
+            "hintFr": "Essaie avaient pour reconnaître ont. Si le mot est le sujet d’un verbe à la troisième personne du singulier, on peut convenir.",
+            "explanationFr": "On écoute la consigne. On est le sujet de écoute."
+          },
+          {
+            "id": "guided:homophone:on_ont:recognition:2",
+            "promptFr": "Les joueurs ___ gagné.\nChoisis le mot qui convient.",
+            "choices": [
+              "on",
+              "ont"
+            ],
+            "answerFr": "ont",
+            "hintFr": "Essaie avaient pour reconnaître ont. Si le mot est le sujet d’un verbe à la troisième personne du singulier, on peut convenir.",
+            "explanationFr": "Les joueurs ont gagné. Les joueurs avaient gagné est possible."
+          },
+          {
+            "id": "guided:homophone:on_ont:recognition:3",
+            "promptFr": "Ce soir, ___ cuisine ensemble.\nChoisis le mot qui convient.",
+            "choices": [
+              "on",
+              "ont"
+            ],
+            "answerFr": "on",
+            "hintFr": "Essaie avaient pour reconnaître ont. Si le mot est le sujet d’un verbe à la troisième personne du singulier, on peut convenir.",
+            "explanationFr": "Ce soir, on cuisine ensemble. On est le sujet de cuisine, même si plusieurs personnes participent."
+          },
+          {
+            "id": "guided:homophone:on_ont:recognition:4",
+            "promptFr": "Ces oiseaux ___ un long bec.\nChoisis le mot qui convient.",
+            "choices": [
+              "on",
+              "ont"
+            ],
+            "answerFr": "ont",
+            "hintFr": "Essaie avaient pour reconnaître ont. Si le mot est le sujet d’un verbe à la troisième personne du singulier, on peut convenir.",
+            "explanationFr": "Ces oiseaux ont un long bec. Avaient un long bec est possible : il s’agit d’avoir."
+          }
+        ],
+        "takeawayFr": "Essaie avaient pour reconnaître ont. Si le mot est le sujet d’un verbe à la troisième personne du singulier, on peut convenir.",
+        "boundaryFr": "On peut désigner plusieurs personnes, mais le verbe qui le suit se conjugue au singulier.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "on",
+              "form": "on"
+            },
+            {
+              "lemma": "ont",
+              "form": "ont"
+            }
+          ],
+          "sentences": [
+            "On ferme la fenêtre. Les voisins ont froid.",
+            "___ écoute la consigne.",
+            "On écoute la consigne.",
+            "Les joueurs ___ gagné.",
+            "Les joueurs ont gagné.",
+            "Ce soir, ___ cuisine ensemble.",
+            "Ce soir, on cuisine ensemble.",
+            "Ces oiseaux ___ un long bec.",
+            "Ces oiseaux ont un long bec."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:homophone:on_ont:production",
+      "contentChecksum": "sha256:d3c8ceb14bde4bfa9a2f455e43e18ea77bd314830bfe68b7cdd93e2c01502926",
+      "skillId": "distinguer_homophones_on_ont::writing-controlled-production",
+      "nodeKey": "distinguer_homophones_on_ont",
+      "facetKey": null,
+      "mode": "production",
+      "domain": "spelling",
+      "prerequisites": [],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": true,
+        "novelSentencesRequired": false,
+        "unaidedRequired": true
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:11641e82de61d1a48587ae779078667c92cce2d78210cc99a13b1a10a519e76a",
+        "sentence:sha256:1c733fda1440b0247499a32a9aa53edd9adbf7454e50710d3fa2ea157aeb75a5",
+        "sentence:sha256:75085546f59da97f09d0d8cfb525d28077cb6a82bbfca4be5ed02a5a647cc6bb",
+        "sentence:sha256:9e0b2fb249d2ea8a0948e7f7df5b6662160b6af812d5c3fbf84bf3b4365154e1",
+        "sentence:sha256:b74969c549d560501af87dcca711acf49d798107a6c7bfdb92e24a2b17de8d90",
+        "sentence:sha256:c2aca4d83c545c503ce43681c475309d04736d22ccfc775a58b266823df1d629",
+        "sentence:sha256:c8ae6cd5ee2a4f46971344eb20d19df22c92cbb3ca6bb0b3926ceff3247c4c64",
+        "sentence:sha256:eb7383dce47ccce862a6ec5020969b1c894a18d7eb8cf2ad333a6284e5f033a9",
+        "sentence:sha256:f38e82ee2cb673d1df9555ba22cd89b255849c08469d0406d880de74fd7ba95c",
+        "word:sha256:8cc76f0db13db59207a73accbccca594dbda93e1a020d44d8d3a1599fd589e13",
+        "word:sha256:990c23868b965814b117cf9a6c4dfe45452eadc2171e1f981865ebfc84f10724"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:homophone:on_ont:production",
+        "nodeKey": "distinguer_homophones_on_ont",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire on ou ont",
+        "learnerQuestionFr": "Comment choisir entre on ou ont dans une phrase ?",
+        "steps": [
+          {
+            "exampleFr": "On ferme la fenêtre. Les voisins ont froid.",
+            "explanationFr": "On occupe la place du sujet, comme il dans il ferme. Ont est une forme d’avoir : les voisins avaient froid."
+          },
+          {
+            "exampleFr": "On écoute la consigne.",
+            "explanationFr": "Essaie avaient pour reconnaître ont. Si le mot est le sujet d’un verbe à la troisième personne du singulier, on peut convenir."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:homophone:on_ont:production:1",
+            "promptFr": "___ écoute la consigne.\nÉcris le mot qui convient.",
+            "answerFr": "On",
+            "hintFr": "Essaie avaient pour reconnaître ont. Si le mot est le sujet d’un verbe à la troisième personne du singulier, on peut convenir.",
+            "explanationFr": "On écoute la consigne. On est le sujet de écoute."
+          },
+          {
+            "id": "guided:homophone:on_ont:production:2",
+            "promptFr": "Les joueurs ___ gagné.\nÉcris le mot qui convient.",
+            "answerFr": "ont",
+            "hintFr": "Essaie avaient pour reconnaître ont. Si le mot est le sujet d’un verbe à la troisième personne du singulier, on peut convenir.",
+            "explanationFr": "Les joueurs ont gagné. Les joueurs avaient gagné est possible."
+          },
+          {
+            "id": "guided:homophone:on_ont:production:3",
+            "promptFr": "Ce soir, ___ cuisine ensemble.\nÉcris le mot qui convient.",
+            "answerFr": "on",
+            "hintFr": "Essaie avaient pour reconnaître ont. Si le mot est le sujet d’un verbe à la troisième personne du singulier, on peut convenir.",
+            "explanationFr": "Ce soir, on cuisine ensemble. On est le sujet de cuisine, même si plusieurs personnes participent."
+          },
+          {
+            "id": "guided:homophone:on_ont:production:4",
+            "promptFr": "Ces oiseaux ___ un long bec.\nÉcris le mot qui convient.",
+            "answerFr": "ont",
+            "hintFr": "Essaie avaient pour reconnaître ont. Si le mot est le sujet d’un verbe à la troisième personne du singulier, on peut convenir.",
+            "explanationFr": "Ces oiseaux ont un long bec. Avaient un long bec est possible : il s’agit d’avoir."
+          }
+        ],
+        "takeawayFr": "Essaie avaient pour reconnaître ont. Si le mot est le sujet d’un verbe à la troisième personne du singulier, on peut convenir.",
+        "boundaryFr": "On peut désigner plusieurs personnes, mais le verbe qui le suit se conjugue au singulier.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "on",
+              "form": "on"
+            },
+            {
+              "lemma": "ont",
+              "form": "ont"
+            }
+          ],
+          "sentences": [
+            "On ferme la fenêtre. Les voisins ont froid.",
+            "___ écoute la consigne.",
+            "On écoute la consigne.",
+            "Les joueurs ___ gagné.",
+            "Les joueurs ont gagné.",
+            "Ce soir, ___ cuisine ensemble.",
+            "Ce soir, on cuisine ensemble.",
+            "Ces oiseaux ___ un long bec.",
+            "Ces oiseaux ont un long bec."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:homophone:ce_se:recognition",
+      "contentChecksum": "sha256:3ccc8b2092eeba455ec2cab0d6e6e8672521ee2f85a35e1c3b18227d91e1164d",
+      "skillId": "distinguer_homophones_ce_se::reading-receptive",
+      "nodeKey": "distinguer_homophones_ce_se",
+      "facetKey": null,
+      "mode": "recognition",
+      "domain": "spelling",
+      "prerequisites": [],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 2,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": true,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:0028222b92482db35937e1618a07833d88ba1d017542af869b725097b52ab548",
+        "sentence:sha256:00ec458e97afdb091b6fa887fcd8487b2aa4467fb53c24136b157c6b1a1a3bed",
+        "sentence:sha256:0c46eb8beb783d1961c2f2d52cd55c9480134e7e958c8855492729f8cdc8adbd",
+        "sentence:sha256:97e030c13c7f9fa38f4fa3aeb7136fd0a6d56018af14bfcbe2d4008059fbf10c",
+        "sentence:sha256:9f3e8f6547a4a3a6ac45c2e18102a1f772e1852aa8eaee57ed2dd929df413ae2",
+        "sentence:sha256:ad5faf980c1c62e4e24ef6fb96b3443d3c271dd26d463fb14065a135c18a577f",
+        "sentence:sha256:c0039be122aad935b9f6797cd1f98e776473570c6437f79c0ea2006d8071046f",
+        "sentence:sha256:f40cfe187b9f868efd15b84237077ac5319523bc67bf0735daad2ed9054702aa",
+        "sentence:sha256:ff2f93ce8a463827cc664d4b5b76125a55fcfbf6bd08d0fa5f654d4d80da04ff",
+        "word:sha256:0508fe19ab52794aa511f39e651cdcb8f9f9552961ed94bfd336e628b64a8e7a",
+        "word:sha256:943484cb12e096800ea795ac1dcc41d5229be1e9a6132719c6b2d06d8726d8d5"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:homophone:ce_se:recognition",
+        "nodeKey": "distinguer_homophones_ce_se",
+        "mode": "recognition",
+        "status": "draft_requires_review",
+        "titleFr": "Choisir ce ou se",
+        "learnerQuestionFr": "Comment choisir entre ce ou se dans une phrase ?",
+        "steps": [
+          {
+            "exampleFr": "Ce garçon se prépare.",
+            "explanationFr": "Ce accompagne le nom garçon et le désigne. Se accompagne ici le verbe se préparer et renvoie au sujet qui se prépare."
+          },
+          {
+            "exampleFr": "Ce carnet est neuf.",
+            "explanationFr": "Regarde le rôle du mot. Ce peut accompagner un nom. Se appartient à une construction verbale : je me prépare, il se prépare."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:homophone:ce_se:recognition:1",
+            "promptFr": "___ carnet est neuf.\nChoisis le mot qui convient.",
+            "choices": [
+              "Ce",
+              "Se"
+            ],
+            "answerFr": "Ce",
+            "hintFr": "Regarde le rôle du mot. Ce peut accompagner un nom. Se appartient à une construction verbale : je me prépare, il se prépare.",
+            "explanationFr": "Ce carnet est neuf. Ce désigne le carnet."
+          },
+          {
+            "id": "guided:homophone:ce_se:recognition:2",
+            "promptFr": "Le chien ___ couche.\nChoisis le mot qui convient.",
+            "choices": [
+              "ce",
+              "se"
+            ],
+            "answerFr": "se",
+            "hintFr": "Regarde le rôle du mot. Ce peut accompagner un nom. Se appartient à une construction verbale : je me prépare, il se prépare.",
+            "explanationFr": "Le chien se couche. Le verbe est se coucher : le chien se couche."
+          },
+          {
+            "id": "guided:homophone:ce_se:recognition:3",
+            "promptFr": "___ sera une belle journée.\nChoisis le mot qui convient.",
+            "choices": [
+              "Ce",
+              "Se"
+            ],
+            "answerFr": "Ce",
+            "hintFr": "Regarde le rôle du mot. Ce peut accompagner un nom. Se appartient à une construction verbale : je me prépare, il se prépare.",
+            "explanationFr": "Ce sera une belle journée. Ce est ici un pronom, sujet de sera."
+          },
+          {
+            "id": "guided:homophone:ce_se:recognition:4",
+            "promptFr": "Les élèves ___ saluent.\nChoisis le mot qui convient.",
+            "choices": [
+              "ce",
+              "se"
+            ],
+            "answerFr": "se",
+            "hintFr": "Regarde le rôle du mot. Ce peut accompagner un nom. Se appartient à une construction verbale : je me prépare, il se prépare.",
+            "explanationFr": "Les élèves se saluent. Se accompagne saluent : les élèves se saluent les uns les autres."
+          }
+        ],
+        "takeawayFr": "Regarde le rôle du mot. Ce peut accompagner un nom. Se appartient à une construction verbale : je me prépare, il se prépare.",
+        "boundaryFr": "Ce peut aussi être un pronom, comme dans ce sera utile. Ne transforme donc pas le repère devant un nom en règle absolue.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "ce",
+              "form": "ce"
+            },
+            {
+              "lemma": "se",
+              "form": "se"
+            }
+          ],
+          "sentences": [
+            "Ce garçon se prépare.",
+            "___ carnet est neuf.",
+            "Ce carnet est neuf.",
+            "Le chien ___ couche.",
+            "Le chien se couche.",
+            "___ sera une belle journée.",
+            "Ce sera une belle journée.",
+            "Les élèves ___ saluent.",
+            "Les élèves se saluent."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:homophone:ce_se:production",
+      "contentChecksum": "sha256:6bf83e4f771bcc021d901353048bd803ffb920d8f54f98e4914cb5304073d13b",
+      "skillId": "distinguer_homophones_ce_se::writing-controlled-production",
+      "nodeKey": "distinguer_homophones_ce_se",
+      "facetKey": null,
+      "mode": "production",
+      "domain": "spelling",
+      "prerequisites": [],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": true,
+        "novelSentencesRequired": false,
+        "unaidedRequired": true
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:0028222b92482db35937e1618a07833d88ba1d017542af869b725097b52ab548",
+        "sentence:sha256:00ec458e97afdb091b6fa887fcd8487b2aa4467fb53c24136b157c6b1a1a3bed",
+        "sentence:sha256:0c46eb8beb783d1961c2f2d52cd55c9480134e7e958c8855492729f8cdc8adbd",
+        "sentence:sha256:97e030c13c7f9fa38f4fa3aeb7136fd0a6d56018af14bfcbe2d4008059fbf10c",
+        "sentence:sha256:9f3e8f6547a4a3a6ac45c2e18102a1f772e1852aa8eaee57ed2dd929df413ae2",
+        "sentence:sha256:ad5faf980c1c62e4e24ef6fb96b3443d3c271dd26d463fb14065a135c18a577f",
+        "sentence:sha256:c0039be122aad935b9f6797cd1f98e776473570c6437f79c0ea2006d8071046f",
+        "sentence:sha256:f40cfe187b9f868efd15b84237077ac5319523bc67bf0735daad2ed9054702aa",
+        "sentence:sha256:ff2f93ce8a463827cc664d4b5b76125a55fcfbf6bd08d0fa5f654d4d80da04ff",
+        "word:sha256:0508fe19ab52794aa511f39e651cdcb8f9f9552961ed94bfd336e628b64a8e7a",
+        "word:sha256:943484cb12e096800ea795ac1dcc41d5229be1e9a6132719c6b2d06d8726d8d5"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:homophone:ce_se:production",
+        "nodeKey": "distinguer_homophones_ce_se",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire ce ou se",
+        "learnerQuestionFr": "Comment choisir entre ce ou se dans une phrase ?",
+        "steps": [
+          {
+            "exampleFr": "Ce garçon se prépare.",
+            "explanationFr": "Ce accompagne le nom garçon et le désigne. Se accompagne ici le verbe se préparer et renvoie au sujet qui se prépare."
+          },
+          {
+            "exampleFr": "Ce carnet est neuf.",
+            "explanationFr": "Regarde le rôle du mot. Ce peut accompagner un nom. Se appartient à une construction verbale : je me prépare, il se prépare."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:homophone:ce_se:production:1",
+            "promptFr": "___ carnet est neuf.\nÉcris le mot qui convient.",
+            "answerFr": "Ce",
+            "hintFr": "Regarde le rôle du mot. Ce peut accompagner un nom. Se appartient à une construction verbale : je me prépare, il se prépare.",
+            "explanationFr": "Ce carnet est neuf. Ce désigne le carnet."
+          },
+          {
+            "id": "guided:homophone:ce_se:production:2",
+            "promptFr": "Le chien ___ couche.\nÉcris le mot qui convient.",
+            "answerFr": "se",
+            "hintFr": "Regarde le rôle du mot. Ce peut accompagner un nom. Se appartient à une construction verbale : je me prépare, il se prépare.",
+            "explanationFr": "Le chien se couche. Le verbe est se coucher : le chien se couche."
+          },
+          {
+            "id": "guided:homophone:ce_se:production:3",
+            "promptFr": "___ sera une belle journée.\nÉcris le mot qui convient.",
+            "answerFr": "Ce",
+            "hintFr": "Regarde le rôle du mot. Ce peut accompagner un nom. Se appartient à une construction verbale : je me prépare, il se prépare.",
+            "explanationFr": "Ce sera une belle journée. Ce est ici un pronom, sujet de sera."
+          },
+          {
+            "id": "guided:homophone:ce_se:production:4",
+            "promptFr": "Les élèves ___ saluent.\nÉcris le mot qui convient.",
+            "answerFr": "se",
+            "hintFr": "Regarde le rôle du mot. Ce peut accompagner un nom. Se appartient à une construction verbale : je me prépare, il se prépare.",
+            "explanationFr": "Les élèves se saluent. Se accompagne saluent : les élèves se saluent les uns les autres."
+          }
+        ],
+        "takeawayFr": "Regarde le rôle du mot. Ce peut accompagner un nom. Se appartient à une construction verbale : je me prépare, il se prépare.",
+        "boundaryFr": "Ce peut aussi être un pronom, comme dans ce sera utile. Ne transforme donc pas le repère devant un nom en règle absolue.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "ce",
+              "form": "ce"
+            },
+            {
+              "lemma": "se",
+              "form": "se"
+            }
+          ],
+          "sentences": [
+            "Ce garçon se prépare.",
+            "___ carnet est neuf.",
+            "Ce carnet est neuf.",
+            "Le chien ___ couche.",
+            "Le chien se couche.",
+            "___ sera une belle journée.",
+            "Ce sera une belle journée.",
+            "Les élèves ___ saluent.",
+            "Les élèves se saluent."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:homophone:ces_ses:recognition",
+      "contentChecksum": "sha256:ecd9a12156dcb96d06c81cee6154649a3afd745953155a655d51c17612d82f40",
+      "skillId": "distinguer_homophones_ces_ses::reading-receptive",
+      "nodeKey": "distinguer_homophones_ces_ses",
+      "facetKey": null,
+      "mode": "recognition",
+      "domain": "spelling",
+      "prerequisites": [],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 2,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": true,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:15f45fec1af75ecf4e0980cd63369cb3587809d6a36f6d8e1f2706356b01f050",
+        "sentence:sha256:2494d09f5ff32ef87a22974533144ce66135c062bec453193768c0a74e2f307c",
+        "sentence:sha256:6145776e08419c85774dd465201799a16d64e3adde1318741ffcf4a0bb49432a",
+        "sentence:sha256:63d4064d2c6948444cadaa36ca304a8d725b49671c97aa9ae1a0e75d05b995b1",
+        "sentence:sha256:924f3903ad3628600b6f8b7fc26dce032111fc80ac44f5bb9936e3b4c2e9a5bc",
+        "sentence:sha256:97ca96e9ce478518fe14a3e901ae84fd89006c555d88941ee91571bb44f8440e",
+        "sentence:sha256:ad0515c5016b48a2519a23df454056cbf9a1a2db4804e987965c4ae5c9e2cf66",
+        "sentence:sha256:bd579c9e4183903d736db4d2b4d39c73fc194b124c61d0249b404f8e2de02a73",
+        "sentence:sha256:e0fa9b946c938adeef5d7bf10c2fd611bd1fa7f165192b35b678a01ca667476e",
+        "word:sha256:3cf5e619882042e2a53711c92894aef5f1200153450ff8c10b69f95a802ae131",
+        "word:sha256:fde777772725888514f370072db5c3a1ca57011e65b9ff9cd23d7c26301858dc"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:homophone:ces_ses:recognition",
+        "nodeKey": "distinguer_homophones_ces_ses",
+        "mode": "recognition",
+        "status": "draft_requires_review",
+        "titleFr": "Choisir ces ou ses",
+        "learnerQuestionFr": "Comment choisir entre ces ou ses dans une phrase ?",
+        "steps": [
+          {
+            "exampleFr": "Regarde ces chaussures-ci. Léa range ses propres chaussures.",
+            "explanationFr": "Ces désigne les chaussures que l’on montre. Ses relie les chaussures à Léa, comme les siennes. Le contexte doit permettre de choisir."
+          },
+          {
+            "exampleFr": "Je montre deux affiches : regarde ces affiches-ci.",
+            "explanationFr": "Cherche si le texte montre des choses ou les relie à quelqu’un. Pour le singulier, ces correspond à ce, cet ou cette ; ses correspond à son ou sa."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:homophone:ces_ses:recognition:1",
+            "promptFr": "Je montre deux affiches : regarde ___ affiches-ci.\nChoisis le mot qui convient.",
+            "choices": [
+              "ces",
+              "ses"
+            ],
+            "answerFr": "ces",
+            "hintFr": "Cherche si le texte montre des choses ou les relie à quelqu’un. Pour le singulier, ces correspond à ce, cet ou cette ; ses correspond à son ou sa.",
+            "explanationFr": "Je montre deux affiches : regarde ces affiches-ci. Le texte désigne les affiches montrées."
+          },
+          {
+            "id": "guided:homophone:ces_ses:recognition:2",
+            "promptFr": "Mina possède deux rollers. Elle lace ___ propres rollers.\nChoisis le mot qui convient.",
+            "choices": [
+              "ces",
+              "ses"
+            ],
+            "answerFr": "ses",
+            "hintFr": "Cherche si le texte montre des choses ou les relie à quelqu’un. Pour le singulier, ces correspond à ce, cet ou cette ; ses correspond à son ou sa.",
+            "explanationFr": "Mina possède deux rollers. Elle lace ses propres rollers. Les rollers sont associés à Mina ; ce sont les siens."
+          },
+          {
+            "id": "guided:homophone:ces_ses:recognition:3",
+            "promptFr": "Tu désignes trois photos : ___ photos-là sont floues.\nChoisis le mot qui convient.",
+            "choices": [
+              "ces",
+              "ses"
+            ],
+            "answerFr": "ces",
+            "hintFr": "Cherche si le texte montre des choses ou les relie à quelqu’un. Pour le singulier, ces correspond à ce, cet ou cette ; ses correspond à son ou sa.",
+            "explanationFr": "Tu désignes trois photos : ces photos-là sont floues. Photos-là reprend les photos désignées."
+          },
+          {
+            "id": "guided:homophone:ces_ses:recognition:4",
+            "promptFr": "Ces livres appartiennent à Paul : ce sont ___ livres à lui.\nChoisis le mot qui convient.",
+            "choices": [
+              "ces",
+              "ses"
+            ],
+            "answerFr": "ses",
+            "hintFr": "Cherche si le texte montre des choses ou les relie à quelqu’un. Pour le singulier, ces correspond à ce, cet ou cette ; ses correspond à son ou sa.",
+            "explanationFr": "Ces livres appartiennent à Paul : ce sont ses livres à lui. Le contexte indique à qui les livres appartiennent."
+          }
+        ],
+        "takeawayFr": "Cherche si le texte montre des choses ou les relie à quelqu’un. Pour le singulier, ces correspond à ce, cet ou cette ; ses correspond à son ou sa.",
+        "boundaryFr": "Sans contexte, ces chaussures et ses chaussures peuvent tous les deux être corrects. Il ne faut pas inventer l’intention du texte.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "ces",
+              "form": "ces"
+            },
+            {
+              "lemma": "ses",
+              "form": "ses"
+            }
+          ],
+          "sentences": [
+            "Regarde ces chaussures-ci. Léa range ses propres chaussures.",
+            "Je montre deux affiches : regarde ___ affiches-ci.",
+            "Je montre deux affiches : regarde ces affiches-ci.",
+            "Mina possède deux rollers. Elle lace ___ propres rollers.",
+            "Mina possède deux rollers. Elle lace ses propres rollers.",
+            "Tu désignes trois photos : ___ photos-là sont floues.",
+            "Tu désignes trois photos : ces photos-là sont floues.",
+            "Ces livres appartiennent à Paul : ce sont ___ livres à lui.",
+            "Ces livres appartiennent à Paul : ce sont ses livres à lui."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:homophone:ces_ses:production",
+      "contentChecksum": "sha256:d9baef52bc48a863dd8b9d51fe40d4d7702f5d6f3e39221ac756ddc08c860064",
+      "skillId": "distinguer_homophones_ces_ses::writing-controlled-production",
+      "nodeKey": "distinguer_homophones_ces_ses",
+      "facetKey": null,
+      "mode": "production",
+      "domain": "spelling",
+      "prerequisites": [],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": true,
+        "novelSentencesRequired": false,
+        "unaidedRequired": true
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:15f45fec1af75ecf4e0980cd63369cb3587809d6a36f6d8e1f2706356b01f050",
+        "sentence:sha256:2494d09f5ff32ef87a22974533144ce66135c062bec453193768c0a74e2f307c",
+        "sentence:sha256:6145776e08419c85774dd465201799a16d64e3adde1318741ffcf4a0bb49432a",
+        "sentence:sha256:63d4064d2c6948444cadaa36ca304a8d725b49671c97aa9ae1a0e75d05b995b1",
+        "sentence:sha256:924f3903ad3628600b6f8b7fc26dce032111fc80ac44f5bb9936e3b4c2e9a5bc",
+        "sentence:sha256:97ca96e9ce478518fe14a3e901ae84fd89006c555d88941ee91571bb44f8440e",
+        "sentence:sha256:ad0515c5016b48a2519a23df454056cbf9a1a2db4804e987965c4ae5c9e2cf66",
+        "sentence:sha256:bd579c9e4183903d736db4d2b4d39c73fc194b124c61d0249b404f8e2de02a73",
+        "sentence:sha256:e0fa9b946c938adeef5d7bf10c2fd611bd1fa7f165192b35b678a01ca667476e",
+        "word:sha256:3cf5e619882042e2a53711c92894aef5f1200153450ff8c10b69f95a802ae131",
+        "word:sha256:fde777772725888514f370072db5c3a1ca57011e65b9ff9cd23d7c26301858dc"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:homophone:ces_ses:production",
+        "nodeKey": "distinguer_homophones_ces_ses",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire ces ou ses",
+        "learnerQuestionFr": "Comment choisir entre ces ou ses dans une phrase ?",
+        "steps": [
+          {
+            "exampleFr": "Regarde ces chaussures-ci. Léa range ses propres chaussures.",
+            "explanationFr": "Ces désigne les chaussures que l’on montre. Ses relie les chaussures à Léa, comme les siennes. Le contexte doit permettre de choisir."
+          },
+          {
+            "exampleFr": "Je montre deux affiches : regarde ces affiches-ci.",
+            "explanationFr": "Cherche si le texte montre des choses ou les relie à quelqu’un. Pour le singulier, ces correspond à ce, cet ou cette ; ses correspond à son ou sa."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:homophone:ces_ses:production:1",
+            "promptFr": "Je montre deux affiches : regarde ___ affiches-ci.\nÉcris le mot qui convient.",
+            "answerFr": "ces",
+            "hintFr": "Cherche si le texte montre des choses ou les relie à quelqu’un. Pour le singulier, ces correspond à ce, cet ou cette ; ses correspond à son ou sa.",
+            "explanationFr": "Je montre deux affiches : regarde ces affiches-ci. Le texte désigne les affiches montrées."
+          },
+          {
+            "id": "guided:homophone:ces_ses:production:2",
+            "promptFr": "Mina possède deux rollers. Elle lace ___ propres rollers.\nÉcris le mot qui convient.",
+            "answerFr": "ses",
+            "hintFr": "Cherche si le texte montre des choses ou les relie à quelqu’un. Pour le singulier, ces correspond à ce, cet ou cette ; ses correspond à son ou sa.",
+            "explanationFr": "Mina possède deux rollers. Elle lace ses propres rollers. Les rollers sont associés à Mina ; ce sont les siens."
+          },
+          {
+            "id": "guided:homophone:ces_ses:production:3",
+            "promptFr": "Tu désignes trois photos : ___ photos-là sont floues.\nÉcris le mot qui convient.",
+            "answerFr": "ces",
+            "hintFr": "Cherche si le texte montre des choses ou les relie à quelqu’un. Pour le singulier, ces correspond à ce, cet ou cette ; ses correspond à son ou sa.",
+            "explanationFr": "Tu désignes trois photos : ces photos-là sont floues. Photos-là reprend les photos désignées."
+          },
+          {
+            "id": "guided:homophone:ces_ses:production:4",
+            "promptFr": "Ces livres appartiennent à Paul : ce sont ___ livres à lui.\nÉcris le mot qui convient.",
+            "answerFr": "ses",
+            "hintFr": "Cherche si le texte montre des choses ou les relie à quelqu’un. Pour le singulier, ces correspond à ce, cet ou cette ; ses correspond à son ou sa.",
+            "explanationFr": "Ces livres appartiennent à Paul : ce sont ses livres à lui. Le contexte indique à qui les livres appartiennent."
+          }
+        ],
+        "takeawayFr": "Cherche si le texte montre des choses ou les relie à quelqu’un. Pour le singulier, ces correspond à ce, cet ou cette ; ses correspond à son ou sa.",
+        "boundaryFr": "Sans contexte, ces chaussures et ses chaussures peuvent tous les deux être corrects. Il ne faut pas inventer l’intention du texte.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "ces",
+              "form": "ces"
+            },
+            {
+              "lemma": "ses",
+              "form": "ses"
+            }
+          ],
+          "sentences": [
+            "Regarde ces chaussures-ci. Léa range ses propres chaussures.",
+            "Je montre deux affiches : regarde ___ affiches-ci.",
+            "Je montre deux affiches : regarde ces affiches-ci.",
+            "Mina possède deux rollers. Elle lace ___ propres rollers.",
+            "Mina possède deux rollers. Elle lace ses propres rollers.",
+            "Tu désignes trois photos : ___ photos-là sont floues.",
+            "Tu désignes trois photos : ces photos-là sont floues.",
+            "Ces livres appartiennent à Paul : ce sont ___ livres à lui.",
+            "Ces livres appartiennent à Paul : ce sont ses livres à lui."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:homophone:ou_ou:recognition",
+      "contentChecksum": "sha256:7ff848a7a4b8bd59c3eab2580c642cc1c3795f16a1b154aa66b685d0f1688a2f",
+      "skillId": "distinguer_homophones_ou_ou::reading-receptive",
+      "nodeKey": "distinguer_homophones_ou_ou",
+      "facetKey": null,
+      "mode": "recognition",
+      "domain": "spelling",
+      "prerequisites": [],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 2,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": true,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:2b94005f629b8d312c8e42321743551a7b50a701a334f2638be7ffc9b22aad66",
+        "sentence:sha256:3a2470226982c62710cf1e7156b81ee594b994a7f8386a4bda8ffa33e25927df",
+        "sentence:sha256:63a01824053de96da3e1478aa5de01637e1bbb32ef0c1082b6aad537a61bb4d1",
+        "sentence:sha256:6914fc13bbac27e9d01a1be8aa4bbbc8a5a3dfeae2fa3a58b6dcfd13252dde68",
+        "sentence:sha256:6fc9713877f7c8bc8ec6fb8413d7698687405861047e45989e4cbca72c8e90c7",
+        "sentence:sha256:7473f0fd690ba413eabdf5c9c8a83149b37f10cb816f3bba958406f132cb0aaa",
+        "sentence:sha256:93de4dad4f18b442da9fa9b081d9f7cbe4671d9301475eead660fdfa4980d9be",
+        "sentence:sha256:c88633fe66d8dcde6500d6710aa9f9c16726745b91c6ae324ca1d17eee8d9ecd",
+        "sentence:sha256:fdfa6b3fd030cb6dd520df5419d47c9552ba10085a3a2ec6bc5e2d1ebaf13aa9",
+        "word:sha256:18eaab9e79741bca407035b28bab1a60dcb0dd0d3a3ab673821b7f97dba34a20",
+        "word:sha256:49552d3eb03168183703dd5657e25d5d31d18091cdea2228f9b252bb158e74eb"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:homophone:ou_ou:recognition",
+        "nodeKey": "distinguer_homophones_ou_ou",
+        "mode": "recognition",
+        "status": "draft_requires_review",
+        "titleFr": "Choisir ou ou où",
+        "learnerQuestionFr": "Comment choisir entre ou ou où dans une phrase ?",
+        "steps": [
+          {
+            "exampleFr": "Tu préfères le thé ou le jus ? Où est la tasse ?",
+            "explanationFr": "Ou propose un choix entre deux boissons. Où demande ici un lieu : l’endroit où se trouve la tasse."
+          },
+          {
+            "exampleFr": "Veux-tu écrire ou dessiner ?",
+            "explanationFr": "Essaie ou bien pour reconnaître le choix écrit ou. Où peut désigner un lieu ou un moment."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:homophone:ou_ou:recognition:1",
+            "promptFr": "Veux-tu écrire ___ dessiner ?\nChoisis le mot qui convient.",
+            "choices": [
+              "ou",
+              "où"
+            ],
+            "answerFr": "ou",
+            "hintFr": "Essaie ou bien pour reconnaître le choix écrit ou. Où peut désigner un lieu ou un moment.",
+            "explanationFr": "Veux-tu écrire ou dessiner ? Ou bien convient : il s’agit d’un choix."
+          },
+          {
+            "id": "guided:homophone:ou_ou:recognition:2",
+            "promptFr": "Voici la salle ___ nous répétons.\nChoisis le mot qui convient.",
+            "choices": [
+              "ou",
+              "où"
+            ],
+            "answerFr": "où",
+            "hintFr": "Essaie ou bien pour reconnaître le choix écrit ou. Où peut désigner un lieu ou un moment.",
+            "explanationFr": "Voici la salle où nous répétons. Où reprend un lieu, la salle."
+          },
+          {
+            "id": "guided:homophone:ou_ou:recognition:3",
+            "promptFr": "Tu peux venir lundi ___ mardi.\nChoisis le mot qui convient.",
+            "choices": [
+              "ou",
+              "où"
+            ],
+            "answerFr": "ou",
+            "hintFr": "Essaie ou bien pour reconnaître le choix écrit ou. Où peut désigner un lieu ou un moment.",
+            "explanationFr": "Tu peux venir lundi ou mardi. Le texte propose deux possibilités."
+          },
+          {
+            "id": "guided:homophone:ou_ou:recognition:4",
+            "promptFr": "Je me souviens du jour ___ il a neigé.\nChoisis le mot qui convient.",
+            "choices": [
+              "ou",
+              "où"
+            ],
+            "answerFr": "où",
+            "hintFr": "Essaie ou bien pour reconnaître le choix écrit ou. Où peut désigner un lieu ou un moment.",
+            "explanationFr": "Je me souviens du jour où il a neigé. Où reprend ici un moment, le jour."
+          }
+        ],
+        "takeawayFr": "Essaie ou bien pour reconnaître le choix écrit ou. Où peut désigner un lieu ou un moment.",
+        "boundaryFr": "Où ne concerne pas uniquement les lieux : on écrit aussi le jour où nous sommes partis.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "ou",
+              "form": "ou"
+            },
+            {
+              "lemma": "où",
+              "form": "où"
+            }
+          ],
+          "sentences": [
+            "Tu préfères le thé ou le jus ? Où est la tasse ?",
+            "Veux-tu écrire ___ dessiner ?",
+            "Veux-tu écrire ou dessiner ?",
+            "Voici la salle ___ nous répétons.",
+            "Voici la salle où nous répétons.",
+            "Tu peux venir lundi ___ mardi.",
+            "Tu peux venir lundi ou mardi.",
+            "Je me souviens du jour ___ il a neigé.",
+            "Je me souviens du jour où il a neigé."
+          ]
+        }
+      }
+    },
+    {
+      "lessonId": "french-v3-teaching:homophone:ou_ou:production",
+      "contentChecksum": "sha256:460d8c0f57d440774a113bdbc0b1f5e998d37b618481f5d46f39eb9fcecda565",
+      "skillId": "distinguer_homophones_ou_ou::writing-controlled-production",
+      "nodeKey": "distinguer_homophones_ou_ou",
+      "facetKey": null,
+      "mode": "production",
+      "domain": "spelling",
+      "prerequisites": [],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": true,
+        "novelSentencesRequired": false,
+        "unaidedRequired": true
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:2b94005f629b8d312c8e42321743551a7b50a701a334f2638be7ffc9b22aad66",
+        "sentence:sha256:3a2470226982c62710cf1e7156b81ee594b994a7f8386a4bda8ffa33e25927df",
+        "sentence:sha256:63a01824053de96da3e1478aa5de01637e1bbb32ef0c1082b6aad537a61bb4d1",
+        "sentence:sha256:6914fc13bbac27e9d01a1be8aa4bbbc8a5a3dfeae2fa3a58b6dcfd13252dde68",
+        "sentence:sha256:6fc9713877f7c8bc8ec6fb8413d7698687405861047e45989e4cbca72c8e90c7",
+        "sentence:sha256:7473f0fd690ba413eabdf5c9c8a83149b37f10cb816f3bba958406f132cb0aaa",
+        "sentence:sha256:93de4dad4f18b442da9fa9b081d9f7cbe4671d9301475eead660fdfa4980d9be",
+        "sentence:sha256:c88633fe66d8dcde6500d6710aa9f9c16726745b91c6ae324ca1d17eee8d9ecd",
+        "sentence:sha256:fdfa6b3fd030cb6dd520df5419d47c9552ba10085a3a2ec6bc5e2d1ebaf13aa9",
+        "word:sha256:18eaab9e79741bca407035b28bab1a60dcb0dd0d3a3ab673821b7f97dba34a20",
+        "word:sha256:49552d3eb03168183703dd5657e25d5d31d18091cdea2228f9b252bb158e74eb"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:homophone:ou_ou:production",
+        "nodeKey": "distinguer_homophones_ou_ou",
+        "mode": "production",
+        "status": "draft_requires_review",
+        "titleFr": "Écrire ou ou où",
+        "learnerQuestionFr": "Comment choisir entre ou ou où dans une phrase ?",
+        "steps": [
+          {
+            "exampleFr": "Tu préfères le thé ou le jus ? Où est la tasse ?",
+            "explanationFr": "Ou propose un choix entre deux boissons. Où demande ici un lieu : l’endroit où se trouve la tasse."
+          },
+          {
+            "exampleFr": "Veux-tu écrire ou dessiner ?",
+            "explanationFr": "Essaie ou bien pour reconnaître le choix écrit ou. Où peut désigner un lieu ou un moment."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:homophone:ou_ou:production:1",
+            "promptFr": "Veux-tu écrire ___ dessiner ?\nÉcris le mot qui convient.",
+            "answerFr": "ou",
+            "hintFr": "Essaie ou bien pour reconnaître le choix écrit ou. Où peut désigner un lieu ou un moment.",
+            "explanationFr": "Veux-tu écrire ou dessiner ? Ou bien convient : il s’agit d’un choix."
+          },
+          {
+            "id": "guided:homophone:ou_ou:production:2",
+            "promptFr": "Voici la salle ___ nous répétons.\nÉcris le mot qui convient.",
+            "answerFr": "où",
+            "hintFr": "Essaie ou bien pour reconnaître le choix écrit ou. Où peut désigner un lieu ou un moment.",
+            "explanationFr": "Voici la salle où nous répétons. Où reprend un lieu, la salle."
+          },
+          {
+            "id": "guided:homophone:ou_ou:production:3",
+            "promptFr": "Tu peux venir lundi ___ mardi.\nÉcris le mot qui convient.",
+            "answerFr": "ou",
+            "hintFr": "Essaie ou bien pour reconnaître le choix écrit ou. Où peut désigner un lieu ou un moment.",
+            "explanationFr": "Tu peux venir lundi ou mardi. Le texte propose deux possibilités."
+          },
+          {
+            "id": "guided:homophone:ou_ou:production:4",
+            "promptFr": "Je me souviens du jour ___ il a neigé.\nÉcris le mot qui convient.",
+            "answerFr": "où",
+            "hintFr": "Essaie ou bien pour reconnaître le choix écrit ou. Où peut désigner un lieu ou un moment.",
+            "explanationFr": "Je me souviens du jour où il a neigé. Où reprend ici un moment, le jour."
+          }
+        ],
+        "takeawayFr": "Essaie ou bien pour reconnaître le choix écrit ou. Où peut désigner un lieu ou un moment.",
+        "boundaryFr": "Où ne concerne pas uniquement les lieux : on écrit aussi le jour où nous sommes partis.",
+        "materialExposure": {
+          "words": [
+            {
+              "lemma": "ou",
+              "form": "ou"
+            },
+            {
+              "lemma": "où",
+              "form": "où"
+            }
+          ],
+          "sentences": [
+            "Tu préfères le thé ou le jus ? Où est la tasse ?",
+            "Veux-tu écrire ___ dessiner ?",
+            "Veux-tu écrire ou dessiner ?",
+            "Voici la salle ___ nous répétons.",
+            "Voici la salle où nous répétons.",
+            "Tu peux venir lundi ___ mardi.",
+            "Tu peux venir lundi ou mardi.",
+            "Je me souviens du jour ___ il a neigé.",
+            "Je me souviens du jour où il a neigé."
+          ]
+        }
+      }
+    },
     {
       "lessonId": "french-v3-teaching:simple-negation:recognition",
       "contentChecksum": "sha256:dd1dfcd9b8ace9de2226ae5fef0bab940b82429d198f1a4eadfd46d7563d8efc",
@@ -24625,5 +26417,5 @@
       }
     }
   ],
-  "checksum": "sha256:486765045c22ce1dc8123913596424aa474c0daca8d5f91f16bdec4b0012e905"
+  "checksum": "sha256:6860158a65bee9dd99ae421bca6fa250318e7224e6ec8680e4c0982cf496a417"
 }

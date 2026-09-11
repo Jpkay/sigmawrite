@@ -22,7 +22,7 @@ These counts describe authoring drafts, not approved lessons or published pathwa
 | conjugation | 107 | 148 | 632 |
 | reading_comprehension | 11 | 81 | 50 |
 | grammar | 25 | 54 | 132 |
-| spelling | 19 | 97 | 90 |
+| spelling | 33 | 83 | 146 |
 
 ## Sampling strands
 
@@ -528,20 +528,20 @@ Full evidence requirements, prerequisite IDs, question IDs, source checksums and
 | Réaliser l'accord sujet-verbe — Sujet éloigné du verbe | production / initial | 0 | 0 / 0 (insufficient_coverage) | 14 | 1 / 4 | review_exact_target_drafts | review_teaching_scope_and_content |
 | Réaliser l'accord sujet-verbe — Sujet placé après le verbe | production / initial | 0 | 0 / 0 (insufficient_coverage) | 14 | 1 / 4 | review_exact_target_drafts | review_teaching_scope_and_content |
 | Réaliser l'accord sujet-verbe — Plusieurs sujets coordonnés | production / initial | 0 | 0 / 0 (insufficient_coverage) | 14 | 1 / 4 | review_exact_target_drafts | review_teaching_scope_and_content |
-| Choisir « a/à » | recognition / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | review_fixed_pair_novelty_contract | author_or_reuse_exact_target_teaching |
-| Choisir « a/à » | production / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | review_fixed_pair_novelty_contract | author_or_reuse_exact_target_teaching |
-| Choisir la coordination ou la forme « est » | recognition / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | review_fixed_pair_novelty_contract | author_or_reuse_exact_target_teaching |
-| Choisir la coordination ou la forme « est » | production / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | review_fixed_pair_novelty_contract | author_or_reuse_exact_target_teaching |
-| Choisir « son/sont » | recognition / initial | 1 | 1 / 0 (insufficient_coverage) | 0 | 0 / 0 | review_fixed_pair_novelty_contract | author_or_reuse_exact_target_teaching |
-| Choisir « son/sont » | production / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | review_fixed_pair_novelty_contract | author_or_reuse_exact_target_teaching |
-| Choisir « on/ont » | recognition / initial | 1 | 1 / 0 (insufficient_coverage) | 0 | 0 / 0 | review_fixed_pair_novelty_contract | author_or_reuse_exact_target_teaching |
-| Choisir « on/ont » | production / initial | 2 | 2 / 0 (insufficient_coverage) | 0 | 0 / 0 | review_fixed_pair_novelty_contract | author_or_reuse_exact_target_teaching |
-| Choisir « ce/se » | recognition / initial | 2 | 2 / 0 (insufficient_coverage) | 0 | 0 / 0 | review_fixed_pair_novelty_contract | author_or_reuse_exact_target_teaching |
-| Choisir « ce/se » | production / initial | 2 | 2 / 0 (insufficient_coverage) | 0 | 0 / 0 | review_fixed_pair_novelty_contract | author_or_reuse_exact_target_teaching |
-| Choisir « ces/ses » | recognition / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | review_fixed_pair_novelty_contract | author_or_reuse_exact_target_teaching |
-| Choisir « ces/ses » | production / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | review_fixed_pair_novelty_contract | author_or_reuse_exact_target_teaching |
-| Choisir « ou/où » | recognition / initial | 2 | 2 / 0 (insufficient_coverage) | 0 | 0 / 0 | review_fixed_pair_novelty_contract | author_or_reuse_exact_target_teaching |
-| Choisir « ou/où » | production / initial | 1 | 1 / 0 (insufficient_coverage) | 0 | 0 / 0 | review_fixed_pair_novelty_contract | author_or_reuse_exact_target_teaching |
+| Choisir « a/à » | recognition / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 1 / 4 | review_fixed_pair_novelty_contract | review_teaching_scope_and_content |
+| Choisir « a/à » | production / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 1 / 4 | review_fixed_pair_novelty_contract | review_teaching_scope_and_content |
+| Choisir la coordination ou la forme « est » | recognition / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 1 / 4 | review_fixed_pair_novelty_contract | review_teaching_scope_and_content |
+| Choisir la coordination ou la forme « est » | production / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 1 / 4 | review_fixed_pair_novelty_contract | review_teaching_scope_and_content |
+| Choisir « son/sont » | recognition / initial | 1 | 1 / 0 (insufficient_coverage) | 0 | 1 / 4 | review_fixed_pair_novelty_contract | review_teaching_scope_and_content |
+| Choisir « son/sont » | production / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 1 / 4 | review_fixed_pair_novelty_contract | review_teaching_scope_and_content |
+| Choisir « on/ont » | recognition / initial | 1 | 1 / 0 (insufficient_coverage) | 0 | 1 / 4 | review_fixed_pair_novelty_contract | review_teaching_scope_and_content |
+| Choisir « on/ont » | production / initial | 2 | 2 / 0 (insufficient_coverage) | 0 | 1 / 4 | review_fixed_pair_novelty_contract | review_teaching_scope_and_content |
+| Choisir « ce/se » | recognition / initial | 2 | 2 / 0 (insufficient_coverage) | 0 | 1 / 4 | review_fixed_pair_novelty_contract | review_teaching_scope_and_content |
+| Choisir « ce/se » | production / initial | 2 | 2 / 0 (insufficient_coverage) | 0 | 1 / 4 | review_fixed_pair_novelty_contract | review_teaching_scope_and_content |
+| Choisir « ces/ses » | recognition / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 1 / 4 | review_fixed_pair_novelty_contract | review_teaching_scope_and_content |
+| Choisir « ces/ses » | production / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 1 / 4 | review_fixed_pair_novelty_contract | review_teaching_scope_and_content |
+| Choisir « ou/où » | recognition / initial | 2 | 2 / 0 (insufficient_coverage) | 0 | 1 / 4 | review_fixed_pair_novelty_contract | review_teaching_scope_and_content |
+| Choisir « ou/où » | production / initial | 1 | 1 / 0 (insufficient_coverage) | 0 | 1 / 4 | review_fixed_pair_novelty_contract | review_teaching_scope_and_content |
 | Choisir une finale en -er ou -é | recognition / initial | 1 | 1 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
 | Choisir une finale en -er ou -é | production / initial | 1 | 1 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
 | Maintenir l'orthographe grammaticale dans une phrase | recognition / initial | 2 | 2 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
