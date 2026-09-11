@@ -3,12 +3,17 @@
   "status": "draft_requires_review",
   "sources": {
     "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
-    "bankChecksum": "sha256:c5b524233889068e59471210f41e8e12d6b51b0fea0117a44515d68cd2c732be",
+    "bankChecksum": "sha256:d7f5f416e85de30bfbb025018337919857ac4d81c59b73e3a99b0c88bb1ac24a",
     "annotationChecksum": "sha256:41e7a8d65776f6bb64c33c925b7d4449ffe9fda5a6b71a899067a171232542bb",
-    "facetChecksum": "sha256:d5cd8e36c6003b37ea44d4ec17724a76d11ac46196ee2d2cc0efd6ae0bf4025c",
+    "facetChecksum": "sha256:6256858d3ed3890d01f6cc64266ffe1f45835808f813c7cb262b45086e779b16",
     "poolChecksum": "sha256:8c59b3ee0139afb4f44fa7e964a85ec00c67e9889bb1ffbad78ff7aa14aa5dfe",
     "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
     "expansions": [
+      {
+        "version": "french-v3-participle-formation-expansion-v1",
+        "checksum": "sha256:46aef742d02f037f39266d718c403f9a5e1f36c808d14bec9ba8d59ffebb2ada",
+        "addedItems": 36
+      },
       {
         "version": "french-v3-auxiliary-choice-expansion-v1",
         "checksum": "sha256:a001a4b9a2231c1640e7485a0214cff75d72aee5d8eb198d51db2bc6bb0d4496",
@@ -120,14 +125,14 @@
         "addedItems": 90
       }
     ],
-    "teachingDraftChecksum": "sha256:27897248d96b71e94b1bdcad0e8b93c77a3397730f4824f9fecb6720369f326a"
+    "teachingDraftChecksum": "sha256:a5cf6f4082975d8bbb40bebf13f9ef7acfd09c2db4a4f7c70023b7c52cdbaf84"
   },
   "summary": {
-    "teachingDrafts": 129,
-    "targetsWithTeachingDrafts": 129,
-    "targetsWithoutTeachingDrafts": 413,
-    "totalCandidateQuestions": 4932,
-    "additionalDraftQuestions": 4202,
+    "teachingDrafts": 132,
+    "targetsWithTeachingDrafts": 132,
+    "targetsWithoutTeachingDrafts": 410,
+    "totalCandidateQuestions": 4968,
+    "additionalDraftQuestions": 4238,
     "canonicalEligibleQuestions": 238,
     "approvedCompetencies": 181,
     "approvedEvidenceDefinitions": 257,
@@ -152,10 +157,10 @@
         "eligibleQuestions": 77,
         "targetsWithNoEligibleQuestions": 195,
         "allocatedPools": 0,
-        "targetsWithTeachingDrafts": 76,
-        "targetsWithoutTeachingDrafts": 179,
-        "guidedExerciseDrafts": 452,
-        "exactTargetExpansionDrafts": 3586
+        "targetsWithTeachingDrafts": 79,
+        "targetsWithoutTeachingDrafts": 176,
+        "guidedExerciseDrafts": 464,
+        "exactTargetExpansionDrafts": 3622
       },
       {
         "domain": "reading_comprehension",
@@ -1639,7 +1644,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 0,
+          "questions": 12,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -1716,8 +1721,28 @@
         "review-draft-v1:former_participe_passe:controlled_production:core",
         "review-draft-v1:former_participe_passe:controlled_production:stretch"
       ],
-      "exactTargetExpansionDrafts": [],
-      "teachingDrafts": [],
+      "exactTargetExpansionDrafts": [
+        "v3-participle-formation:er-1",
+        "v3-participle-formation:er-2",
+        "v3-participle-formation:er-3",
+        "v3-participle-formation:er-4",
+        "v3-participle-formation:er-5",
+        "v3-participle-formation:er-6",
+        "v3-participle-formation:er-7",
+        "v3-participle-formation:er-8",
+        "v3-participle-formation:er-9",
+        "v3-participle-formation:er-10",
+        "v3-participle-formation:er-11",
+        "v3-participle-formation:er-12"
+      ],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:participle-formation:er",
+          "status": "draft_requires_review",
+          "guidedExercises": 4,
+          "boundaryFr": "Cette leçon travaille la formation du participe, pas ses accords dans toutes les phrases. Les contextes fournis ne demandent pas d’ajouter une marque de féminin ou de pluriel."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -1725,8 +1750,8 @@
       },
       "nextActions": [
         "review_refinement_and_prerequisites",
-        "map_and_review_parent_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_exact_target_drafts",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -1766,7 +1791,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 0,
+          "questions": 12,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -1847,8 +1872,28 @@
         "review-draft-v1:former_participe_passe:controlled_production:core",
         "review-draft-v1:former_participe_passe:controlled_production:stretch"
       ],
-      "exactTargetExpansionDrafts": [],
-      "teachingDrafts": [],
+      "exactTargetExpansionDrafts": [
+        "v3-participle-formation:ir-1",
+        "v3-participle-formation:ir-2",
+        "v3-participle-formation:ir-3",
+        "v3-participle-formation:ir-4",
+        "v3-participle-formation:ir-5",
+        "v3-participle-formation:ir-6",
+        "v3-participle-formation:ir-7",
+        "v3-participle-formation:ir-8",
+        "v3-participle-formation:ir-9",
+        "v3-participle-formation:ir-10",
+        "v3-participle-formation:ir-11",
+        "v3-participle-formation:ir-12"
+      ],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:participle-formation:ir",
+          "status": "draft_requires_review",
+          "guidedExercises": 4,
+          "boundaryFr": "Tous les verbes en -ir ne suivent pas cette famille : ouvrir donne ouvert, par exemple. Les accords du participe sont une autre compétence."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -1856,8 +1901,8 @@
       },
       "nextActions": [
         "review_refinement_and_prerequisites",
-        "map_and_review_parent_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_exact_target_drafts",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -1895,7 +1940,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 0,
+          "questions": 12,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -1972,8 +2017,28 @@
         "review-draft-v1:former_participe_passe:controlled_production:core",
         "review-draft-v1:former_participe_passe:controlled_production:stretch"
       ],
-      "exactTargetExpansionDrafts": [],
-      "teachingDrafts": [],
+      "exactTargetExpansionDrafts": [
+        "v3-participle-formation:irregular-1",
+        "v3-participle-formation:irregular-2",
+        "v3-participle-formation:irregular-3",
+        "v3-participle-formation:irregular-4",
+        "v3-participle-formation:irregular-5",
+        "v3-participle-formation:irregular-6",
+        "v3-participle-formation:irregular-7",
+        "v3-participle-formation:irregular-8",
+        "v3-participle-formation:irregular-9",
+        "v3-participle-formation:irregular-10",
+        "v3-participle-formation:irregular-11",
+        "v3-participle-formation:irregular-12"
+      ],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:participle-formation:irregular",
+          "status": "draft_requires_review",
+          "guidedExercises": 4,
+          "boundaryFr": "Ces exercices portent sur un ensemble de verbes fréquents. Ils ne prouvent pas la connaissance de tous les participes irréguliers, ni la maîtrise de leurs accords ou de tous les temps composés."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -1981,8 +2046,8 @@
       },
       "nextActions": [
         "review_refinement_and_prerequisites",
-        "map_and_review_parent_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_exact_target_drafts",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -78481,5 +78546,5 @@
       ]
     }
   ],
-  "checksum": "sha256:6520fd55c79c16d93be900c903c9ef7e7578103e79bac7d4fa4cb27d6d0dc965"
+  "checksum": "sha256:457c55e2f24740a3ad822c9d4305345165c69e27f8b0a7ca74658deb6497b06e"
 }

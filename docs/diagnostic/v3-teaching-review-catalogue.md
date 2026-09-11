@@ -1,11 +1,14 @@
 # French teaching draft review catalogue
 
-129 lessons, 716 guided exercises, 129 exact assessment targets. No approval, publication or activity binding is created by this export.
+132 lessons, 728 guided exercises, 132 exact assessment targets. No approval, publication or activity binding is created by this export.
 
 The companion JSON includes the complete learner-facing content, answer keys, hints, feedback, target IDs, prerequisites, evidence requirements, material identities and per-lesson checksums. Review decisions must refer to the exact content version. An anchored annotation proves only that the annotated material appears in the lesson; it does not prove completeness or independence from assessment questions.
 
 | Lesson | Target | Mode | Guided exercises | Exposure annotation |
 | --- | --- | --- | ---: | --- |
+| Former le participe passé des verbes en -er | former_participe_passe::writing-controlled-production::construction:er | production | 4 | anchored_requires_completeness_review |
+| Former le participe passé des verbes comme finir | former_participe_passe::writing-controlled-production::construction:ir | production | 4 | anchored_requires_completeness_review |
+| Retrouver des participes passés irréguliers fréquents | former_participe_passe::writing-controlled-production::construction:irregular | production | 4 | anchored_requires_completeness_review |
 | Choisir avoir pour construire le passé composé | choisir_auxiliaire_compose::writing-controlled-production::construction:avoir | production | 4 | anchored_requires_completeness_review |
 | Choisir être avec arriver, partir et d’autres verbes | choisir_auxiliaire_compose::writing-controlled-production::construction:etre | production | 4 | anchored_requires_completeness_review |
 | Choisir selon la construction : sortir ou sortir quelque chose | choisir_auxiliaire_compose::writing-controlled-production::construction:transitivity | production | 4 | anchored_requires_completeness_review |
