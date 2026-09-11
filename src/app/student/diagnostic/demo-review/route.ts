@@ -10,7 +10,7 @@ export async function GET(request: Request) {
   if (error || !user) {
     return Response.redirect(new URL("/login", request.url));
   }
-  if (user.id !== "c0a033fc-2b2a-480e-b3d1-28d562901fd7") {
+  if (user.id !== "921b350e-61dc-4f0d-a8b7-a2717e94f902") {
     return new Response("Cette démonstration est accessible avec le compte doves.demo.", {
       status: 403, headers: { "Cache-Control": "private, no-store" },
     });

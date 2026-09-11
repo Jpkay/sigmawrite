@@ -10,7 +10,7 @@ it("restricts saved answer keys to the demo account", async () => {
  const denied=await GET(new Request("https://app.trouvetaplume.com/student/diagnostic/demo-review"));
  expect(denied.status).toBe(403);
  expect(await denied.text()).not.toContain("Réponse attendue enregistrée");
- getUser.mockResolvedValue({data:{user:{id:"c0a033fc-2b2a-480e-b3d1-28d562901fd7"}},error:null});
+ getUser.mockResolvedValue({data:{user:{id:"921b350e-61dc-4f0d-a8b7-a2717e94f902"}},error:null});
  const allowed=await GET(new Request("https://app.trouvetaplume.com/student/diagnostic/demo-review"));
  expect(allowed.headers.get("cache-control")).toBe("private, no-store");
  const html=await allowed.text();
