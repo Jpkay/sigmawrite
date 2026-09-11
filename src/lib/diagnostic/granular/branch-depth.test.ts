@@ -61,3 +61,14 @@ it("checks the same target again at the difficulty floor before classifying a we
   expect(next.reason).toBe("confirmation");
   expect(assessSkills([target], [observation])[0].status).toBe("uncertain");
 });
+it('tests a harder target in the same branch after confirming its entry target',()=>{
+ const skills:Skill[]=[
+  {id:'present',branch:'a-verb',domain:'conjugation',level:1,modes:['production'],prerequisites:[]},
+  {id:'harder-tense',branch:'a-verb',domain:'conjugation',level:3,modes:['production'],prerequisites:['present']},
+  {id:'another-verb',branch:'b-verb',domain:'conjugation',level:1,modes:['production'],prerequisites:[]},
+ ];
+ const bank:Probe[]=skills.flatMap(skill=>Array.from({length:6},(_,i)=>({id:`${skill.id}:${i}`,skillId:skill.id,mode:'production',contextId:`context:${i}`,difficulty:.5,expectedSeconds:30,guessProbability:.05})));
+ const history:Observation[]=bank.slice(0,3).map(p=>({...p,itemId:p.id,correct:true,activeSeconds:30}));
+ expect(selectProbe(skills,bank,history)).toMatchObject({kind:'question',reason:'step_up',item:{skillId:'harder-tense'}});
+ expect(assessSkills(skills,history).find(r=>r.skillId==='harder-tense')!.status).toBe('unknown');
+});

@@ -225,3 +225,20 @@ lint passed. Full-graph simulation: 10/10 depth, 6/8 discrimination, no invarian
 violations. The literal/inference-and-evidence contrast now passes, while verb-
 specific tense boundaries and reading-reference gaps still fail. The strict
 benchmark's failing exit remains visible; this is not educational calibration.
+
+## Stable branch entry after success (local)
+
+Entry-distance ranking was recomputed from unanswered, unresolved questions.
+Confirming a verb's present tense removed that entry target and made its remaining
+harder tenses rank behind another verb's untested present. Entry ranking now uses
+the original eligible initial bank within the selected domain, strand, family,
+form and scope. It stays fixed as evidence accumulates; visit limits and available
+question filtering still govern actual selection.
+
+The regression confirms that a demonstrated entry target leads to a harder target
+in the same branch before another easy branch, with no mastery assigned to the
+unasked harder target. In the verb-specific simulation, the additional question
+now examines aller's imperative rather than restarting with avoir's present.
+That is not sufficient to establish the hidden tense boundary: the benchmark
+remains 10/10 depth and 6/8 discrimination. All 533 granular tests, TypeScript,
+scoped lint and deterministic report checking passed. No deployment yet.

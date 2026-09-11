@@ -352,11 +352,17 @@ export function selectProbe(skills: readonly Skill[], bank: readonly Probe[], ob
   // single-answer targets. Count skips too, so a visit can never trap a learner.
   const visitSize = Math.max(1, Math.floor(policy.itemsPerBranchVisit ?? 6));
   const entryDistanceByBranch=new Map<string,number>();
-  for(const item of familyItems){
-    const skill=skillById.get(item.skillId)!;
+  const candidateBranches=new Set(branches);
+  for(const item of bank){
+    const skill=skillById.get(item.skillId);
+    if(!skill||item.usage==="learning"||skill.assessmentStage==="learning"||!candidateBranches.has(skill.branch)||formOf(skill)!==form
+      ||domainOf(skill)!==domain||groupOf(skill)!==group||familyOf(skill)!==family
+      ||(scope&&!scope.assessmentSkillIds.has(skill.id)))continue;
     const distance=Math.abs(challengeOf(skill)-policy.startingLevel);
     entryDistanceByBranch.set(skill.branch,Math.min(entryDistanceByBranch.get(skill.branch)??Infinity,distance));
   }
+  // Keep the original entry ranking after a foundation is resolved, so
+  // success does not demote its harder follow-up behind another easy branch.
   // Equal-visit branches should start near the existing entry challenge, not
   // with whichever competency happens to sort first alphabetically. Rotation
   // still takes priority, and this ranking never supplies mastery evidence.
