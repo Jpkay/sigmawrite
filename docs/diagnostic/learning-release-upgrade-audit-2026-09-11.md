@@ -64,3 +64,12 @@ revisions. All three cases passed with the full 150-migration schema.
 
 This closes the concurrent-storage check above. Authenticated application
 activation and remote rollout remain pending.
+
+The authenticated `upgradeGranularLearning` action is prepared behind
+`GRANULAR_LEARNING_UPGRADES_ENABLED=true` (disabled unless explicitly enabled).
+It accepts no browser-supplied student or target release, checks role and current
+access, uses the configured published default, and leaves unfinished diagnostics
+and current-release sessions unchanged. Successful upgrades refresh lessons and
+results; the response contains only a changed flag. Four action tests cover
+identity/access, disabled and unfinished cases, and atomic-conflict propagation;
+TypeScript and scoped lint passed. UI integration and remote activation remain.
