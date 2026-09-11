@@ -9,7 +9,7 @@ Regenerate: `npx tsx scripts/build-v3-delivery-matrix.mts`. Verify without writi
 | Domain | Targets | Eligible questions | Targets without eligible questions | Allocated pools | Expansion drafts |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | conjugation | 255 | 77 | 195 | 0 | 3958 |
-| reading_comprehension | 92 | 21 | 74 | 0 | 112 |
+| reading_comprehension | 92 | 21 | 74 | 0 | 120 |
 | grammar | 79 | 56 | 43 | 0 | 290 |
 | spelling | 116 | 79 | 60 | 0 | 270 |
 
@@ -20,7 +20,7 @@ These counts describe authoring drafts, not approved lessons or published pathwa
 | Domain | Targets with teaching drafts | Targets without teaching drafts | Guided exercise drafts |
 | --- | ---: | ---: | ---: |
 | conjugation | 107 | 148 | 632 |
-| reading_comprehension | 13 | 79 | 62 |
+| reading_comprehension | 14 | 78 | 68 |
 | grammar | 25 | 54 | 132 |
 | spelling | 33 | 83 | 146 |
 
@@ -368,7 +368,7 @@ Full evidence requirements, prerequisite IDs, question IDs, source checksums and
 | Identifier une thèse — Texte argumentatif bref | interpretation / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
 | Identifier une raison argumentative — Texte argumentatif bref | interpretation / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
 | Évaluer la pertinence d'une preuve — Texte argumentatif bref | interpretation / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
-| Reconnaître un contre-argument — Texte argumentatif bref | interpretation / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
+| Reconnaître un contre-argument — Texte argumentatif bref | interpretation / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
 | Localiser un passage servant de preuve — Récit bref | interpretation / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
 | Localiser un passage servant de preuve — Texte informatif bref | interpretation / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
 | Localiser un passage servant de preuve — Texte argumentatif bref | interpretation / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |

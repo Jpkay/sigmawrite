@@ -5,12 +5,155 @@
   "facetChecksum": "sha256:2f826d79a46ce935f40ccb797f8857b1c9af21d89bd1f80a438ecaf5e28ae3f2",
   "assessmentSourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
   "summary": {
-    "lessons": 178,
-    "guidedExercises": 972,
-    "targets": 178,
+    "lessons": 179,
+    "guidedExercises": 978,
+    "targets": 179,
     "missingExposureAnnotations": []
   },
   "rows": [
+    {
+      "lessonId": "french-v3-teaching:counterargument",
+      "contentChecksum": "sha256:7ba30d762f2b93a00e5f2ef186740cae6ecec8d8597d51995e746bc109ed6302",
+      "skillId": "reconnaitre_contre_argument::argumentative-receptive::text_type:argumentative",
+      "nodeKey": "reconnaitre_contre_argument",
+      "facetKey": "reconnaitre_contre_argument::text_type:argumentative",
+      "mode": "interpretation",
+      "domain": "reading_comprehension",
+      "prerequisites": [
+        "identifier_these_argument::argumentative-receptive::text_type:argumentative"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 3,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": true,
+        "minimumTextTypes": 1,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "parentMinimumTextTypes": 1,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:21c8f195e8f21e58f8b2fbe50a75eea6c9231331c033cd951b18f37cd025f5dc",
+        "sentence:sha256:22bdee3c186a41fbcb22d0bb1bc9e8d5a81bdeee0abe186119a2b9eb8eeeea19",
+        "sentence:sha256:259754a5443932fa17281ef7f895a26946b127c2741c67963a36fc5af2def830",
+        "sentence:sha256:27a4032d4bed3f88a280be8bf4ff2f952ceb462ae6c98adbdf60356ce21bd25e",
+        "sentence:sha256:70faa0ffe8bd44e4cc2e02b18a401477a1ad930f69ac3b47661164282d087bda",
+        "sentence:sha256:ce5c13de1ed8bff8b0f38a163360fa740f9d25b08db37f45f48a0695ead32649",
+        "sentence:sha256:d8b71e05b778027a5cd927b81f8bef9e8b9a961de01475abf6697b45cba6c6cb",
+        "sentence:sha256:f60795af5905b11d07c8016b66c7827cc3b86322dfe9f799a091174d5b0033d6"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:counterargument",
+        "nodeKey": "reconnaitre_contre_argument",
+        "facetKey": "reconnaitre_contre_argument::text_type:argumentative",
+        "mode": "interpretation",
+        "status": "draft_requires_review",
+        "titleFr": "Repérer une objection à une idée",
+        "learnerQuestionFr": "Quelle raison pourrait faire hésiter à accepter cette proposition ?",
+        "steps": [
+          {
+            "exampleFr": "Organisons un tournoi dimanche pour réunir les classes. Mais certains élèves travaillent avec leur famille ce jour-là.",
+            "explanationFr": "Réunir les classes est une raison pour le tournoi. Le travail de certains élèves le dimanche est une raison contre ce choix de jour : ils ne pourraient pas participer. Une raison qui s’oppose à une idée est un contre-argument, ou une objection."
+          },
+          {
+            "exampleFr": "Comment transporter les décors, demande Noé. Je propose quand même de jouer la pièce dans le parc. Nous pourrions emprunter une camionnette.",
+            "explanationFr": "Le transport des décors est la difficulté opposée au projet. Emprunter une camionnette est une réponse à cette difficulté. L’objection peut arriver avant la proposition ou prendre la forme d’une question : ne cherche pas seulement le mot mais."
+          }
+        ],
+        "practice": [
+          {
+            "id": "counterargument-guided-0-answer",
+            "promptFr": "Ouvrons la bibliothèque pendant la récréation pour permettre aux élèves de lire. Une surveillante rappelle qu’il faut alors une personne pour accueillir les lecteurs. Des adultes volontaires pourraient se relayer.\n\nQuel obstacle la surveillante signale-t-elle ?",
+            "choices": [
+              "Il faut une personne pour accueillir les lecteurs.",
+              "Les élèves pourraient lire pendant la récréation.",
+              "Des volontaires pourraient se relayer.",
+              "La bibliothèque ne contient aucun livre."
+            ],
+            "answerFr": "Il faut une personne pour accueillir les lecteurs.",
+            "hintFr": "Repère le projet, puis cherche une difficulté donnée contre ce projet.",
+            "explanationFr": "L’objection est : Il faut une personne pour accueillir les lecteurs. Le texte dit : « Une surveillante rappelle qu’il faut alors une personne pour accueillir les lecteurs. »"
+          },
+          {
+            "id": "counterargument-guided-0-support",
+            "promptFr": "Ouvrons la bibliothèque pendant la récréation pour permettre aux élèves de lire. Une surveillante rappelle qu’il faut alors une personne pour accueillir les lecteurs. Des adultes volontaires pourraient se relayer.\n\nRecopie la phrase qui exprime cette objection.",
+            "answerFr": "Une surveillante rappelle qu’il faut alors une personne pour accueillir les lecteurs.",
+            "hintFr": "Choisis la difficulté, pas l’avantage du projet ni la solution proposée.",
+            "explanationFr": "La phrase qui exprime l’objection est : « Une surveillante rappelle qu’il faut alors une personne pour accueillir les lecteurs. »"
+          },
+          {
+            "id": "counterargument-guided-1-answer",
+            "promptFr": "Les affiches risquent de se décoller sous la pluie, fait remarquer Sam. Je propose tout de même de les placer dehors pour que les passants voient notre exposition. Nous pourrions les protéger avec une couverture transparente.\n\nQuelle raison Sam donne-t-il contre les affiches dehors ?",
+            "choices": [
+              "La pluie risque de les faire se décoller.",
+              "Les passants verraient l’exposition.",
+              "Une couverture pourrait protéger les affiches.",
+              "L’exposition a été annulée."
+            ],
+            "answerFr": "La pluie risque de les faire se décoller.",
+            "hintFr": "Repère le projet, puis cherche une difficulté donnée contre ce projet.",
+            "explanationFr": "L’objection est : La pluie risque de les faire se décoller. Le texte dit : « Les affiches risquent de se décoller sous la pluie, fait remarquer Sam. »"
+          },
+          {
+            "id": "counterargument-guided-1-support",
+            "promptFr": "Les affiches risquent de se décoller sous la pluie, fait remarquer Sam. Je propose tout de même de les placer dehors pour que les passants voient notre exposition. Nous pourrions les protéger avec une couverture transparente.\n\nRecopie la phrase qui exprime cette objection.",
+            "answerFr": "Les affiches risquent de se décoller sous la pluie, fait remarquer Sam.",
+            "hintFr": "Choisis la difficulté, pas l’avantage du projet ni la solution proposée.",
+            "explanationFr": "La phrase qui exprime l’objection est : « Les affiches risquent de se décoller sous la pluie, fait remarquer Sam. »"
+          },
+          {
+            "id": "counterargument-guided-2-answer",
+            "promptFr": "Je souhaite ajouter un dessert au repas de fête pour offrir plus de choix. Le repas aura lieu samedi. Comment payer ces portions supplémentaires avec notre budget limité, demande Lila.\n\nQuelle objection Lila formule-t-elle ?",
+            "choices": [
+              "Le budget limité pose un problème pour payer les portions supplémentaires.",
+              "Un dessert offrirait plus de choix.",
+              "Le repas aura lieu samedi.",
+              "Personne ne veut de dessert."
+            ],
+            "answerFr": "Le budget limité pose un problème pour payer les portions supplémentaires.",
+            "hintFr": "Repère le projet, puis cherche une difficulté donnée contre ce projet.",
+            "explanationFr": "L’objection est : Le budget limité pose un problème pour payer les portions supplémentaires. Le texte dit : « Comment payer ces portions supplémentaires avec notre budget limité, demande Lila. »"
+          },
+          {
+            "id": "counterargument-guided-2-support",
+            "promptFr": "Je souhaite ajouter un dessert au repas de fête pour offrir plus de choix. Le repas aura lieu samedi. Comment payer ces portions supplémentaires avec notre budget limité, demande Lila.\n\nRecopie la phrase qui exprime cette objection.",
+            "answerFr": "Comment payer ces portions supplémentaires avec notre budget limité, demande Lila.",
+            "hintFr": "Choisis la difficulté, pas l’avantage du projet ni la solution proposée.",
+            "explanationFr": "La phrase qui exprime l’objection est : « Comment payer ces portions supplémentaires avec notre budget limité, demande Lila. »"
+          }
+        ],
+        "takeawayFr": "Repère l’idée défendue, puis une raison donnée contre elle. Distingue cette objection de la réponse qu’on lui apporte.",
+        "boundaryFr": "Une objection ne signifie pas que le projet est impossible ou que l’auteur l’abandonne. Repérer cette raison ne suffit pas à prouver qu’elle est vraie ou convaincante.",
+        "materialExposure": {
+          "sentences": [
+            "Ouvrons la bibliothèque pendant la récréation pour permettre aux élèves de lire. Une surveillante rappelle qu’il faut alors une personne pour accueillir les lecteurs. Des adultes volontaires pourraient se relayer.",
+            "Une surveillante rappelle qu’il faut alors une personne pour accueillir les lecteurs.",
+            "Les affiches risquent de se décoller sous la pluie, fait remarquer Sam. Je propose tout de même de les placer dehors pour que les passants voient notre exposition. Nous pourrions les protéger avec une couverture transparente.",
+            "Les affiches risquent de se décoller sous la pluie, fait remarquer Sam.",
+            "Je souhaite ajouter un dessert au repas de fête pour offrir plus de choix. Le repas aura lieu samedi. Comment payer ces portions supplémentaires avec notre budget limité, demande Lila.",
+            "Comment payer ces portions supplémentaires avec notre budget limité, demande Lila.",
+            "Organisons un tournoi dimanche pour réunir les classes. Mais certains élèves travaillent avec leur famille ce jour-là.",
+            "Comment transporter les décors, demande Noé. Je propose quand même de jouer la pièce dans le parc. Nous pourrions emprunter une camionnette."
+          ]
+        }
+      }
+    },
     {
       "lessonId": "french-v3-teaching:argument-reason",
       "contentChecksum": "sha256:6495c925928934022bae406e2fa6a827ea578befdbdf8103793510bcc0f1c477",
@@ -26701,5 +26844,5 @@
       }
     }
   ],
-  "checksum": "sha256:6180e2197106872b130ee551bc39319b1f38c9f3f1301d9651382894b98d4ece"
+  "checksum": "sha256:542d46e552dd296c981ddf44548d828257772be5c5a92b778d5099374a6bdae3"
 }

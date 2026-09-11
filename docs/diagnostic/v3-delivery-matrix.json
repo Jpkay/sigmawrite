@@ -3,15 +3,20 @@
   "status": "draft_requires_review",
   "sources": {
     "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
-    "bankChecksum": "sha256:17a774fc739aa6c175a6f26de5e14b86a291b47367bd9928ecb61a253fc65433",
+    "bankChecksum": "sha256:21ffbbb0b8a9077d127e7a5aa9e8c300ef2770f1992a2f6c9ffbaea0c9cc1160",
     "annotationChecksum": "sha256:41e7a8d65776f6bb64c33c925b7d4449ffe9fda5a6b71a899067a171232542bb",
-    "facetChecksum": "sha256:ae126e7172b1773c97b914b6c9e0012bddb046f7310d3fdf40455cd963bd40a6",
+    "facetChecksum": "sha256:93f57a01bebc3a00962a30104048f39e2cf017813ec109a404872299fdae3c18",
     "poolChecksum": "sha256:8c59b3ee0139afb4f44fa7e964a85ec00c67e9889bb1ffbad78ff7aa14aa5dfe",
     "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
     "expansions": [
       {
+        "version": "french-v3-counterargument-expansion-v1",
+        "checksum": "sha256:581e7dd204952e1e02f99d4a15a1b1f5cc087ad24dfb3bcbfcd403b35ea10510",
+        "addedItems": 8
+      },
+      {
         "version": "french-v3-argument-reason-expansion-v1",
-        "checksum": "sha256:4e2717e588fb40d4d83f6873303fd84457a5d00f75d169931fdfdb59e08fa64f",
+        "checksum": "sha256:ffd28249f1c8ce395fb52c082f2226515a4989b38e87fa26d5cb4d38647febf1",
         "addedItems": 8
       },
       {
@@ -150,14 +155,14 @@
         "addedItems": 90
       }
     ],
-    "teachingDraftChecksum": "sha256:943beda44f2402c05b8051441d6120564dbac553c8ad64cdcb8e973061f5ef75"
+    "teachingDraftChecksum": "sha256:f66371c2d60652e1ca6ae5ffc34692890785b8830dc46bd933eeb25321324d13"
   },
   "summary": {
-    "teachingDrafts": 178,
-    "targetsWithTeachingDrafts": 178,
-    "targetsWithoutTeachingDrafts": 364,
-    "totalCandidateQuestions": 5360,
-    "additionalDraftQuestions": 4630,
+    "teachingDrafts": 179,
+    "targetsWithTeachingDrafts": 179,
+    "targetsWithoutTeachingDrafts": 363,
+    "totalCandidateQuestions": 5368,
+    "additionalDraftQuestions": 4638,
     "canonicalEligibleQuestions": 238,
     "approvedCompetencies": 181,
     "approvedEvidenceDefinitions": 257,
@@ -193,10 +198,10 @@
         "eligibleQuestions": 21,
         "targetsWithNoEligibleQuestions": 74,
         "allocatedPools": 0,
-        "targetsWithTeachingDrafts": 13,
-        "targetsWithoutTeachingDrafts": 79,
-        "guidedExerciseDrafts": 62,
-        "exactTargetExpansionDrafts": 112
+        "targetsWithTeachingDrafts": 14,
+        "targetsWithoutTeachingDrafts": 78,
+        "guidedExerciseDrafts": 68,
+        "exactTargetExpansionDrafts": 120
       },
       {
         "domain": "grammar",
@@ -44620,8 +44625,17 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 0,
-          "withoutExplicitAssessedIdentity": [],
+          "questions": 8,
+          "withoutExplicitAssessedIdentity": [
+            "v3-counterargument:manga-club",
+            "v3-counterargument:courtyard",
+            "v3-counterargument:online-paper",
+            "v3-counterargument:pets",
+            "v3-counterargument:uniform",
+            "v3-counterargument:garden",
+            "v3-counterargument:music",
+            "v3-counterargument:trip"
+          ],
           "missingRequiredIdentities": []
         },
         "sharedParentDrafts": {
@@ -44702,8 +44716,24 @@
         "local-reading-v1:reconnaitre_contre_argument:receptive:core",
         "local-reading-v1:reconnaitre_contre_argument:receptive:stretch"
       ],
-      "exactTargetExpansionDrafts": [],
-      "teachingDrafts": [],
+      "exactTargetExpansionDrafts": [
+        "v3-counterargument:manga-club",
+        "v3-counterargument:courtyard",
+        "v3-counterargument:online-paper",
+        "v3-counterargument:pets",
+        "v3-counterargument:uniform",
+        "v3-counterargument:garden",
+        "v3-counterargument:music",
+        "v3-counterargument:trip"
+      ],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:counterargument",
+          "status": "draft_requires_review",
+          "guidedExercises": 6,
+          "boundaryFr": "Une objection ne signifie pas que le projet est impossible ou que l’auteur l’abandonne. Repérer cette raison ne suffit pas à prouver qu’elle est vraie ou convaincante."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -44712,8 +44742,8 @@
       "nextActions": [
         "enforce_approved_criterion:evidenceSpanRequired",
         "review_refinement_and_prerequisites",
-        "map_and_review_parent_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_exact_target_drafts",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -79315,5 +79345,5 @@
       ]
     }
   ],
-  "checksum": "sha256:0b849163e9942a2b96093e36a35837cc501aa294e8cfc56ddbd710bdf068dcf5"
+  "checksum": "sha256:d22f18addf89284e56bf34f72d8189f20777d3315d89381ddf26d5748ca04e75"
 }

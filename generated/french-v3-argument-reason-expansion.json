@@ -243,17 +243,17 @@
         "modality": "reading",
         "learnerMode": "shared",
         "responseType": "mcq",
-        "promptFr": "Lis le texte.\n\nUn espace libre se trouve à côté du portail. Un abri les protégerait pendant les cours. Construire un abri à vélos me semble donc utile.\n\nQuel avantage soutient la construction de l’abri ?",
+        "promptFr": "Lis le texte.\n\nUn espace libre se trouve à côté du portail. Un abri protégerait les vélos de la pluie pendant les cours. Construire un abri à vélos me semble donc utile.\n\nQuel avantage soutient la construction de l’abri ?",
         "acceptableAnswers": [],
         "validatorType": "exact",
         "validatorConfig": {
           "sourceTextKey": "v3-argument-reason:shelter",
           "sourceTextType": "argumentative",
           "textualSupport": {
-            "passageText": "Un espace libre se trouve à côté du portail. Un abri les protégerait pendant les cours. Construire un abri à vélos me semble donc utile.",
+            "passageText": "Un espace libre se trouve à côté du portail. Un abri protégerait les vélos de la pluie pendant les cours. Construire un abri à vélos me semble donc utile.",
             "choices": [
               {
-                "quoteFr": "Un abri les protégerait pendant les cours.",
+                "quoteFr": "Un abri protégerait les vélos de la pluie pendant les cours.",
                 "correct": true
               },
               {
@@ -645,7 +645,7 @@
     },
     {
       "itemKey": "v3-argument-reason:shelter",
-      "itemChecksum": "sha256:8421050b183e8a2bd9922bdb933ec15233b18a4d70c5f4ae608606af1a782d04",
+      "itemChecksum": "sha256:0442716e1ecae1eee6fa8a31310ee8980a6ef927a75b192907cfbe9a3870f53a",
       "facetKey": "identifier_raison_argument::text_type:argumentative",
       "contextKey": "passage:v3-argument-reason:shelter",
       "reason": "Identifier la raison donnée pour soutenir une proposition, en conservant la différence entre raison, proposition et détail de contexte."
@@ -679,5 +679,5 @@
       "reason": "Identifier la raison donnée pour soutenir une proposition, en conservant la différence entre raison, proposition et détail de contexte."
     }
   ],
-  "checksum": "sha256:4e2717e588fb40d4d83f6873303fd84457a5d00f75d169931fdfdb59e08fa64f"
+  "checksum": "sha256:ffd28249f1c8ce395fb52c082f2226515a4989b38e87fa26d5cb4d38647febf1"
 }
