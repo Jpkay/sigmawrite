@@ -22,7 +22,7 @@
     "verifiedItems": 4826
   },
   "sourceCommit": "74ce9d7",
-  "defaultActivated": false,
+  "defaultActivated": true,
   "draftCorrection": {
     "originalSourceCommit": "72dc8c5",
     "originalBankChecksum": "sha256:354b6489ea2c26f70e801c1aa783b20c5279dae5329f104bf592c6b9cf466051",
@@ -31,5 +31,40 @@
     "changedReviewedItems": 0,
     "originalImportFinishedBeforeRefresh": true
   },
-  "note": "Published under existing product-owner authorization for parallel review. Public verification and default activation are pending. Full graph coverage and calibration remain incomplete; the subsequent compound-tense recognition draft is excluded from this frozen release."
+  "note": "Published and activated under existing product-owner authorization for parallel review. A browser resumed 29 saved answers, submitted 61 additional answers, reached and correctly answered a new character-motivation question with supporting textual evidence, then preserved pause and reload (90 saved answers total). This was not a new full timed results-and-learning run. Full graph coverage and calibration remain incomplete; the subsequent compound-tense recognition and auxiliary-choice drafts are excluded from this frozen release.",
+  "deployment": {
+    "id": "dpl_CVdgajFW3kxRozjGKrmkRjpohomD",
+    "sourceCommit": "74ce9d7",
+    "publicOrigin": "https://app.trouvetaplume.com",
+    "releaseKey": "french-granular-diagnostic-v4"
+  },
+  "publicBrowserCheck": {
+    "sessionId": "1fbaf9a8-e4c0-4172-a406-0b0e26088fe1",
+    "releaseId": "46791d1c-17a8-4916-9b6c-fd94ca3321f2",
+    "scope": 116,
+    "answered": 61,
+    "addedTarget": "inferer_motivation_personnage::literary-receptive::text_type:narrative",
+    "pausedReload": true,
+    "totalSavedAnswers": 90,
+    "answersAfterResumption": 61,
+    "interruptedTestRetainedAnswers": 29
+  },
+  "newStudentDefaultCheck": {
+    "sessionId": "aaf87316-e693-4cb2-b8dc-c377fbf7a38a",
+    "releaseId": "46791d1c-17a8-4916-9b6c-fd94ca3321f2",
+    "scope": 116,
+    "defaultSelectedByApplication": true,
+    "reloadPreservedSession": true
+  },
+  "legacyDemoPreserved": {
+    "onboardingRedirect": "/student/lessons",
+    "startableLessons": 11
+  },
+  "previousReleasePreservation": {
+    "sessionId": "0f4e963f-857e-4924-bd9e-4fc707a45f78",
+    "releaseId": "3136b14e-8337-4fdf-8093-be4a56031b6b",
+    "scope": 96,
+    "existingRevisionPreserved": true,
+    "reloadPreservedSession": true
+  }
 }
