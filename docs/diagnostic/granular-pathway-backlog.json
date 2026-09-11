@@ -1,12 +1,12 @@
 {
   "status": "prepared_inventory_not_release_or_review_approval",
-  "parallelCandidateChecksum": "sha256:ba521dad220d624242b3f3d5ec6d37e9e75ea39512b6b09598f20df0393d5086",
-  "scopedCandidateChecksum": "sha256:7fdd3a09d1a4129aa80b9eab288b6f793746a0f6bc4eb7cef68b4f4c523482fe",
+  "parallelCandidateChecksum": "sha256:2d0c7ac72dd8497c860cd7e420b82b097a71363f57561343d0f4bf784f6b12e3",
+  "scopedCandidateChecksum": "sha256:7b9817ee73a499d7f7968ac7949cf598d793880794a5f4b2fbd3238dbbbde8e1",
   "targets": 542,
   "counts": {
-    "prepared_scoped_pathway": 211,
+    "prepared_scoped_pathway": 215,
     "complete_question_pools": 236,
-    "author_exact_target_lesson": 77,
+    "author_exact_target_lesson": 73,
     "connected_writing_evidence": 18
   },
   "limitations": [
@@ -2299,72 +2299,80 @@
       "skillId": "produire_imparfait::writing-controlled-production::pattern:regular_er",
       "nodeKey": "produire_imparfait",
       "facetKey": "produire_imparfait::pattern:regular_er",
-      "action": "author_exact_target_lesson",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_imparfait::writing-controlled-production::pattern:regular_er",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 29,
-          "learningItems": 28
+          "initialItems": 35,
+          "learningItems": 34
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:imparfait:pattern:regular_er"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_imparfait::writing-controlled-production::pattern:regular_ir",
       "nodeKey": "produire_imparfait",
       "facetKey": "produire_imparfait::pattern:regular_ir",
-      "action": "author_exact_target_lesson",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_imparfait::writing-controlled-production::pattern:regular_ir",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 16,
-          "learningItems": 16
+          "initialItems": 22,
+          "learningItems": 22
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:imparfait:pattern:regular_ir"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_imparfait::writing-controlled-production::pattern:spelling_ger",
       "nodeKey": "produire_imparfait",
       "facetKey": "produire_imparfait::pattern:spelling_ger",
-      "action": "author_exact_target_lesson",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_imparfait::writing-controlled-production::pattern:spelling_ger",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 13,
-          "learningItems": 12
+          "initialItems": 19,
+          "learningItems": 18
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:imparfait:pattern:spelling_ger"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_imparfait::writing-controlled-production::pattern:spelling_cer",
       "nodeKey": "produire_imparfait",
       "facetKey": "produire_imparfait::pattern:spelling_cer",
-      "action": "author_exact_target_lesson",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_imparfait::writing-controlled-production::pattern:spelling_cer",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 12,
-          "learningItems": 12
+          "initialItems": 18,
+          "learningItems": 18
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:imparfait:pattern:spelling_cer"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
@@ -2383,12 +2391,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "produire_imparfait::writing-controlled-production::pattern:regular_er",
-        "produire_imparfait::writing-controlled-production::pattern:regular_ir",
-        "produire_imparfait::writing-controlled-production::pattern:spelling_ger",
-        "produire_imparfait::writing-controlled-production::pattern:spelling_cer"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "contraster_pc_imparfait::reading-receptive",
@@ -2432,10 +2435,6 @@
         "produire_passe_compose::writing-controlled-production::pattern:regular_ir",
         "produire_passe_compose::writing-controlled-production::pattern:spelling_ger",
         "produire_passe_compose::writing-controlled-production::pattern:spelling_cer",
-        "produire_imparfait::writing-controlled-production::pattern:regular_er",
-        "produire_imparfait::writing-controlled-production::pattern:regular_ir",
-        "produire_imparfait::writing-controlled-production::pattern:spelling_ger",
-        "produire_imparfait::writing-controlled-production::pattern:spelling_cer",
         "contraster_pc_imparfait::reading-receptive"
       ]
     },
@@ -3208,9 +3207,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "produire_imparfait::writing-controlled-production::pattern:regular_er"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_plus_que_parfait::writing-controlled-production::pattern:regular_ir",
@@ -3228,9 +3225,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "produire_imparfait::writing-controlled-production::pattern:regular_ir"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_plus_que_parfait::writing-controlled-production::pattern:spelling_ger",
@@ -3248,9 +3243,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "produire_imparfait::writing-controlled-production::pattern:spelling_ger"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_plus_que_parfait::writing-controlled-production::pattern:spelling_cer",
@@ -3268,9 +3261,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "produire_imparfait::writing-controlled-production::pattern:spelling_cer"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "interpreter_anteriorite_passee::reading-receptive",
