@@ -23,9 +23,8 @@
     ]
   },
   "pending": [
-    "Finish public compound-production grading and pause/reload verification.",
     "Complete the live diagnostic through final results, guided teaching and a fresh independent check.",
-    "Repeat public fresh-account default selection after the initial failed attempt."
+    "Resolve the fresh-account reload timing check and measure the observed delay."
   ],
   "releaseId": "303f1662-1a34-4ee4-b142-2e7146b2f176",
   "bundleChecksum": "sha256:ff2d6d24adc11dbd86b5cf4dbfc58dfec39c1b4adef9b15e4f7614092622c2eb",
@@ -51,9 +50,20 @@
     "rootCause": "Not established; subsequent protected-candidate default selection and public resume succeeded without a code change."
   },
   "publicRetry": {
-    "status": "in_progress",
     "sessionId": "79dac8c0-ec4c-4898-916b-0e2dd6377b1d",
+    "releaseId": "303f1662-1a34-4ee4-b142-2e7146b2f176",
     "scope": 158,
-    "firstAnswerSaved": true
+    "answered": 16,
+    "addedTarget": "produire_passe_compose::writing-controlled-production::verb:aller",
+    "pausedReload": true,
+    "status": "compound_grade_and_pause_reload_passed"
+  },
+  "freshPublicDefault": {
+    "studentId": "c47b514a-2487-4f52-9ee2-8725c7e6765e",
+    "sessionId": "30cd8e3f-8489-4014-a678-3ec6bf69ebed",
+    "scope": 158,
+    "defaultSelectedByApplication": true,
+    "firstStartButtonVisible": true,
+    "reloadCheck": "Timed out at 30 seconds; repeat with elapsed-time capture is running."
   }
 }
