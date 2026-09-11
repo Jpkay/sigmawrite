@@ -9,7 +9,7 @@ Regenerate: `npx tsx scripts/build-v3-delivery-matrix.mts`. Verify without writi
 | Domain | Targets | Eligible questions | Targets without eligible questions | Allocated pools | Expansion drafts |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | conjugation | 255 | 77 | 195 | 0 | 3300 |
-| reading_comprehension | 92 | 21 | 74 | 0 | 80 |
+| reading_comprehension | 92 | 21 | 74 | 0 | 88 |
 | grammar | 79 | 56 | 43 | 0 | 258 |
 | spelling | 116 | 79 | 60 | 0 | 270 |
 
@@ -20,7 +20,7 @@ These counts describe authoring drafts, not approved lessons or published pathwa
 | Domain | Targets with teaching drafts | Targets without teaching drafts | Guided exercise drafts |
 | --- | ---: | ---: | ---: |
 | conjugation | 54 | 201 | 328 |
-| reading_comprehension | 10 | 82 | 44 |
+| reading_comprehension | 11 | 81 | 50 |
 | grammar | 23 | 56 | 124 |
 | spelling | 19 | 97 | 90 |
 
@@ -346,7 +346,7 @@ Full evidence requirements, prerequisite IDs, question IDs, source checksums and
 | Inférer une relation temporelle implicite — Récit bref | interpretation / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 1 / 4 | review_exact_target_drafts | review_teaching_scope_and_content |
 | Inférer une relation temporelle implicite — Texte informatif bref | interpretation / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
 | Inférer une relation temporelle implicite — Texte argumentatif bref | interpretation / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
-| Inférer la motivation d'un personnage — Récit bref | interpretation / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
+| Inférer la motivation d'un personnage — Récit bref | interpretation / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
 | Inférer une conclusion informationnelle — Texte informatif bref | interpretation / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
 | Sélectionner les éléments essentiels d'un résumé — Récit bref | interpretation / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
 | Sélectionner les éléments essentiels d'un résumé — Texte informatif bref | interpretation / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |

@@ -5,12 +5,164 @@
   "facetChecksum": "sha256:71d060c34e8fd204b3cf57e5126a2e30585dc72c463b0506f22aa602eb913a98",
   "assessmentSourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
   "summary": {
-    "lessons": 106,
-    "guidedExercises": 586,
-    "targets": 106,
+    "lessons": 107,
+    "guidedExercises": 592,
+    "targets": 107,
     "missingExposureAnnotations": []
   },
   "rows": [
+    {
+      "lessonId": "french-v3-teaching:reading:inferer_motivation_personnage:narrative",
+      "contentChecksum": "sha256:6e2dcf46dba9bf42059cc2d9fee28805428317cdf54bce4f6b6c767d2d10e203",
+      "skillId": "inferer_motivation_personnage::literary-receptive::text_type:narrative",
+      "nodeKey": "inferer_motivation_personnage",
+      "facetKey": "inferer_motivation_personnage::text_type:narrative",
+      "mode": "interpretation",
+      "domain": "reading_comprehension",
+      "prerequisites": [],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 3,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": true,
+        "minimumTextTypes": 1,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "parentMinimumTextTypes": 1,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:42d21908a5765100c4281a257a7a78f39e29eddaab468118e76f92ba527fc94c",
+        "sentence:sha256:43b1ef18686bca6a7538f7784adc224e9d8be3a95d6d06d34712d92ea960d4fe",
+        "sentence:sha256:97031487db1900ead021cbb1d5f5c84619eac8cd4cc6d767b9ec9eb8141849fa",
+        "sentence:sha256:e183401e39e98dc36dc6b4e0db3f8e0a55b863de2a43aa466af79f98fcca3a62"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:reading:inferer_motivation_personnage:narrative",
+        "nodeKey": "inferer_motivation_personnage",
+        "facetKey": "inferer_motivation_personnage::text_type:narrative",
+        "mode": "interpretation",
+        "status": "draft_requires_review",
+        "titleFr": "Comprendre pourquoi un personnage agit",
+        "learnerQuestionFr": "Quand le texte ne dit pas « elle veut… », comment trouver une raison plausible à son geste ?",
+        "steps": [
+          {
+            "exampleFr": "Tom tend la main vers une tasse fumante. Sa sœur éloigne la tasse de ses doigts.",
+            "explanationFr": "La tasse est fumante et Tom va la toucher. Le geste de sa sœur laisse penser qu’elle veut lui éviter de se brûler. Le texte ne nomme pas directement cette intention : nous la déduisons des indices. C’est une inférence."
+          },
+          {
+            "exampleFr": "Indice : une tasse fumante. Action : la sœur éloigne la tasse.",
+            "explanationFr": "Relie la situation à l’action. La motivation est la raison qui pousse le personnage à agir. Ici, protéger Tom explique les deux indices ensemble."
+          },
+          {
+            "exampleFr": "« Sa sœur déteste toutes les boissons chaudes. »",
+            "explanationFr": "Cette idée pourrait exister dans une autre histoire, mais rien ici ne la soutient. Choisis une raison que les mots du texte rendent plausible, sans inventer une habitude ou un souvenir du personnage."
+          }
+        ],
+        "takeawayFr": "Repère ce qui se passe juste avant le geste, puis le geste lui-même. Cherche la raison qui les relie et retrouve les mots qui soutiennent ton interprétation.",
+        "boundaryFr": "Une motivation déduite reste une interprétation, pas une lecture certaine des pensées. Certains récits autorisent plusieurs interprétations ; ces exercices demandent la mieux soutenue parmi les réponses proposées.",
+        "practice": [
+          {
+            "id": "guided:motivation:1:answer",
+            "promptFr": "Le groupe prépare une exposition. Une affiche vient d’être peinte et sa surface brille encore. Mina tend le bras devant Jules qui s’apprête à poser son sac dessus. Trois autres affiches sont fixées au mur.\n\nPourquoi Mina arrête-t-elle probablement le geste de Jules ?",
+            "choices": [
+              "Pour éviter que le sac abîme la peinture encore fraîche.",
+              "Pour demander à Jules de peindre le mur.",
+              "Pour cacher les trois autres affiches.",
+              "Pour empêcher Jules de porter un sac."
+            ],
+            "answerFr": "Pour éviter que le sac abîme la peinture encore fraîche.",
+            "hintFr": "Relie le problème ou la situation au geste du personnage.",
+            "explanationFr": "Pour éviter que le sac abîme la peinture encore fraîche. Les indices sont : Une affiche vient d’être peinte et sa surface brille encore. Mina tend le bras devant Jules qui s’apprête à poser son sac dessus."
+          },
+          {
+            "id": "guided:motivation:1:support",
+            "promptFr": "Le groupe prépare une exposition. Une affiche vient d’être peinte et sa surface brille encore. Mina tend le bras devant Jules qui s’apprête à poser son sac dessus. Trois autres affiches sont fixées au mur.\n\nQuel passage soutient cette interprétation : Pour éviter que le sac abîme la peinture encore fraîche.",
+            "choices": [
+              "Une affiche vient d’être peinte et sa surface brille encore. Mina tend le bras devant Jules qui s’apprête à poser son sac dessus.",
+              "Le groupe prépare une exposition.",
+              "Trois autres affiches sont fixées au mur."
+            ],
+            "answerFr": "Une affiche vient d’être peinte et sa surface brille encore. Mina tend le bras devant Jules qui s’apprête à poser son sac dessus.",
+            "hintFr": "Choisis le passage qui contient la situation et le geste à expliquer.",
+            "explanationFr": "Ce passage relie les indices de la situation à l’action du personnage. Les autres phrases donnent seulement le décor."
+          },
+          {
+            "id": "guided:motivation:2:answer",
+            "promptFr": "Deux amis entrent dans une chambre. Le petit frère de Chloé dort dans son lit. Chloé approche un doigt de ses lèvres et parle tout bas. Un livre est posé sur une étagère.\n\nPourquoi Chloé parle-t-elle probablement tout bas ?",
+            "choices": [
+              "Pour ne pas réveiller son petit frère.",
+              "Pour éviter de lire le livre.",
+              "Pour demander un nouveau lit.",
+              "Pour empêcher son ami d’entrer dans la chambre."
+            ],
+            "answerFr": "Pour ne pas réveiller son petit frère.",
+            "hintFr": "Relie le problème ou la situation au geste du personnage.",
+            "explanationFr": "Pour ne pas réveiller son petit frère. Les indices sont : Le petit frère de Chloé dort dans son lit. Chloé approche un doigt de ses lèvres et parle tout bas."
+          },
+          {
+            "id": "guided:motivation:2:support",
+            "promptFr": "Deux amis entrent dans une chambre. Le petit frère de Chloé dort dans son lit. Chloé approche un doigt de ses lèvres et parle tout bas. Un livre est posé sur une étagère.\n\nQuel passage soutient cette interprétation : Pour ne pas réveiller son petit frère.",
+            "choices": [
+              "Le petit frère de Chloé dort dans son lit. Chloé approche un doigt de ses lèvres et parle tout bas.",
+              "Deux amis entrent dans une chambre.",
+              "Un livre est posé sur une étagère."
+            ],
+            "answerFr": "Le petit frère de Chloé dort dans son lit. Chloé approche un doigt de ses lèvres et parle tout bas.",
+            "hintFr": "Choisis le passage qui contient la situation et le geste à expliquer.",
+            "explanationFr": "Ce passage relie les indices de la situation à l’action du personnage. Les autres phrases donnent seulement le décor."
+          },
+          {
+            "id": "guided:motivation:3:answer",
+            "promptFr": "La sortie scolaire dure toute la journée. Pendant le pique-nique, Ali ouvre son sac vide et baisse les yeux vers les sandwichs des autres. Inès coupe son sandwich en deux et lui en tend une moitié. Le groupe est installé près d’un arbre.\n\nPourquoi Inès partage-t-elle probablement son sandwich ?",
+            "choices": [
+              "Pour donner à manger à Ali, qui semble ne pas avoir de repas.",
+              "Pour faire partir Ali loin du groupe.",
+              "Pour mesurer la hauteur de l’arbre.",
+              "Pour demander à Ali de porter tous les sacs."
+            ],
+            "answerFr": "Pour donner à manger à Ali, qui semble ne pas avoir de repas.",
+            "hintFr": "Relie le problème ou la situation au geste du personnage.",
+            "explanationFr": "Pour donner à manger à Ali, qui semble ne pas avoir de repas. Les indices sont : Pendant le pique-nique, Ali ouvre son sac vide et baisse les yeux vers les sandwichs des autres. Inès coupe son sandwich en deux et lui en tend une moitié."
+          },
+          {
+            "id": "guided:motivation:3:support",
+            "promptFr": "La sortie scolaire dure toute la journée. Pendant le pique-nique, Ali ouvre son sac vide et baisse les yeux vers les sandwichs des autres. Inès coupe son sandwich en deux et lui en tend une moitié. Le groupe est installé près d’un arbre.\n\nQuel passage soutient cette interprétation : Pour donner à manger à Ali, qui semble ne pas avoir de repas.",
+            "choices": [
+              "Pendant le pique-nique, Ali ouvre son sac vide et baisse les yeux vers les sandwichs des autres. Inès coupe son sandwich en deux et lui en tend une moitié.",
+              "La sortie scolaire dure toute la journée.",
+              "Le groupe est installé près d’un arbre."
+            ],
+            "answerFr": "Pendant le pique-nique, Ali ouvre son sac vide et baisse les yeux vers les sandwichs des autres. Inès coupe son sandwich en deux et lui en tend une moitié.",
+            "hintFr": "Choisis le passage qui contient la situation et le geste à expliquer.",
+            "explanationFr": "Ce passage relie les indices de la situation à l’action du personnage. Les autres phrases donnent seulement le décor."
+          }
+        ],
+        "materialExposure": {
+          "sentences": [
+            "Tom tend la main vers une tasse fumante. Sa sœur éloigne la tasse de ses doigts.",
+            "Le groupe prépare une exposition. Une affiche vient d’être peinte et sa surface brille encore. Mina tend le bras devant Jules qui s’apprête à poser son sac dessus. Trois autres affiches sont fixées au mur.",
+            "Deux amis entrent dans une chambre. Le petit frère de Chloé dort dans son lit. Chloé approche un doigt de ses lèvres et parle tout bas. Un livre est posé sur une étagère.",
+            "La sortie scolaire dure toute la journée. Pendant le pique-nique, Ali ouvre son sac vide et baisse les yeux vers les sandwichs des autres. Inès coupe son sandwich en deux et lui en tend une moitié. Le groupe est installé près d’un arbre."
+          ]
+        }
+      }
+    },
     {
       "lessonId": "french-v3-teaching:relative-clause:production",
       "contentChecksum": "sha256:c99fbca67162ee7fb31ede43943fb5fa28029a26c8dc0ae3fa213fa69ed046fb",
@@ -16034,5 +16186,5 @@
       }
     }
   ],
-  "checksum": "sha256:ba7a0dd8fefded10d72dd84d4eca55ac5562cddfc9164d8a0c14d9a708f7e5c8"
+  "checksum": "sha256:2f9ff9b0355a0cb9387a968c3fcf309105e00739de4563ae53c0648747cc4f97"
 }
