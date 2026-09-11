@@ -346,9 +346,19 @@ export function selectProbe(skills: readonly Skill[], bank: readonly Probe[], ob
   const lastFamilySkill=lastFamilyAnswer?skillById.get(lastFamilyAnswer.skillId):undefined;
   // A failed challenge may send the next visit across form families to an
   // actual prerequisite. Domain/strand/verb-family balance remains intact.
-  const recovery=lastFamilyAnswer&&!lastFamilyAnswer.correct&&lastFamilySkill
+  let recovery=lastFamilyAnswer&&!lastFamilyAnswer.correct&&lastFamilySkill
     ?allFamilyItems.filter(item=>lastFamilySkill.prerequisites.includes(item.skillId)).sort((a,b)=>
       challengeOf(skillById.get(b.skillId)!)-challengeOf(skillById.get(a.skillId)!)||a.id.localeCompare(b.id)):[];
+  const sameVerb=lastFamilySkill?.branch.startsWith('conjugation:verb:')||lastFamilySkill?.branch.startsWith('conjugation:pattern:');
+  if(!recovery.length&&sameVerb&&lastFamilyAnswer&&!lastFamilyAnswer.correct&&lastFamilySkill){
+    // A simpler tense can be a diagnostic comparison without being a declared
+    // prerequisite. Ask it directly; never infer its result from this failure.
+    recovery=allFamilyItems.filter(item=>{const skill=skillById.get(item.skillId)!;return skill.branch===lastFamilySkill.branch&&challengeOf(skill)<challengeOf(lastFamilySkill);})
+      .sort((a,b)=>challengeOf(skillById.get(b.skillId)!)-challengeOf(skillById.get(a.skillId)!)||a.id.localeCompare(b.id));
+  }
+  const previousHigherFailure=sameVerb&&lastFamilyAnswer?.correct&&lastFamilySkill&&routingById.get(lastFamilySkill.id)?.status==='mastered'
+    ?[...allFamilyHistory].reverse().find(o=>!o.skipped&&!o.correct&&skillById.get(o.skillId)?.branch===lastFamilySkill.branch&&challengeOf(skillById.get(o.skillId)!)>challengeOf(lastFamilySkill)&&allFamilyItems.some(item=>item.skillId===o.skillId)):undefined;
+  const boundaryItems=previousHigherFailure?allFamilyItems.filter(item=>item.skillId===previousHigherFailure.skillId):[];
   const formPriority:Record<string,number>={foundation:0,simple:1,compound:2,periphrastic:3,contrast:4};
   const formCandidates=[...new Set(allFamilyItems.map(item=>formOf(skillById.get(item.skillId)!)))];
   // Survey each available form category across the whole strand, then revisit
@@ -365,7 +375,7 @@ export function selectProbe(skills: readonly Skill[], bank: readonly Probe[], ob
     return count===0?1:1+Math.floor((count-1)/3);
   };
   formCandidates.sort((a,b)=>formVisitRound(a)-formVisitRound(b)||(formPriority[a]??5)-(formPriority[b]??5)||a.localeCompare(b));
-  const form=recovery.length?formOf(skillById.get(recovery[0].skillId)!):formCandidates[0];
+  const form=recovery.length?formOf(skillById.get(recovery[0].skillId)!):boundaryItems.length?formOf(skillById.get(boundaryItems[0].skillId)!):formCandidates[0];
   const familyItems=allFamilyItems.filter(item=>formOf(skillById.get(item.skillId)!)===form);
   const familyHistory=allFamilyHistory.filter(observation=>formOf(skillById.get(observation.skillId)!)===form);
   const branches=[...new Set(familyItems.map(item=>skillById.get(item.skillId)!.branch))];
@@ -410,7 +420,7 @@ export function selectProbe(skills: readonly Skill[], bank: readonly Probe[], ob
     &&recentSkill.prerequisites.some(id=>skillById.get(id)?.branch!==recentSkill.branch)
     &&recentSkill.prerequisites.every(id=>routingById.get(id)?.status==="mastered")
     &&branchCount(recentSkill.branch)<visitSize&&familyItems.some(item=>item.skillId===recentSkill.id);
-  const branch=crossPrerequisites.length?skillById.get(crossPrerequisites[0].skillId)!.branch
+  const branch=recovery.length?skillById.get(recovery[0].skillId)!.branch:boundaryItems.length?skillById.get(boundaryItems[0].skillId)!.branch:crossPrerequisites.length?skillById.get(crossPrerequisites[0].skillId)!.branch
     :crossSuccessors.length?skillById.get(crossSuccessors[0].skillId)!.branch
     :continueFrontier?recentSkill!.branch:branches[0];
   const crossSuccessorIds=new Set(crossSuccessors.filter(item=>skillById.get(item.skillId)!.branch===branch).map(item=>item.skillId));
@@ -426,7 +436,13 @@ export function selectProbe(skills: readonly Skill[], bank: readonly Probe[], ob
     if (!matches.length) return false;
     pool = matches; reason = nextReason; return true;
   };
-  if (crossPrerequisiteIds.size && restrict(i => crossPrerequisiteIds.has(i.skillId), "step_down")) {
+  const recoveryIds=new Set(recovery.filter(item=>skillById.get(item.skillId)!.branch===branch&&formOf(skillById.get(item.skillId)!)===form).map(item=>item.skillId));
+  const boundaryIds=new Set(boundaryItems.map(item=>item.skillId));
+  if(recoveryIds.size&&restrict(i=>recoveryIds.has(i.skillId),'step_down')){
+    // Recover across tense categories while preserving exact skill evidence.
+  }else if(boundaryIds.size&&restrict(i=>boundaryIds.has(i.skillId),'recheck_boundary')){
+    // The easier target now has its own evidence; revisit the harder failure.
+  }else if (crossPrerequisiteIds.size && restrict(i => crossPrerequisiteIds.has(i.skillId), "step_down")) {
     // Probe the prerequisite; a failed advanced item does not score it as weak.
   } else if (crossSuccessorIds.size && restrict(i => crossSuccessorIds.has(i.skillId), "step_up")) {
     // Ask the next graph target; prerequisite evidence never scores it.

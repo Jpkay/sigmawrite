@@ -103,3 +103,23 @@ it('counts a verb visit across tense categories before rotating to another verb'
  expect(next.item.skillId.startsWith('b:')).toBe(true);
  expect(assessSkills(skills,history).filter(s=>s.skillId.startsWith('b:')).every(s=>s.status==='unknown')).toBe(true);
 });
+
+it('steps down across tense categories of the same verb and revisits the failed boundary after confirmation',()=>{
+ const skills:Skill[]=[
+  {id:'present',branch:'conjugation:verb:avoir',domain:'conjugation',samplingGroup:'conjugaison',formFamily:'simple',level:1,modes:['production'],prerequisites:[]},
+  {id:'recent',branch:'conjugation:verb:avoir',domain:'conjugation',samplingGroup:'conjugaison',formFamily:'periphrastic',level:2,modes:['production'],prerequisites:[]},
+  {id:'compound',branch:'conjugation:verb:avoir',domain:'conjugation',samplingGroup:'conjugaison',formFamily:'compound',level:3,modes:['production'],prerequisites:[]},
+ ];
+ const probes:Probe[]=skills.flatMap(s=>Array.from({length:6},(_,i)=>({id:`${s.id}:${i}`,skillId:s.id,mode:'production',contextId:`${s.id}:${i}`,guessProbability:.05,difficulty:.5,expectedSeconds:30})));
+ const observation=(id:string,correct:boolean):Observation=>{const p=probes.find(p=>p.id===id)!;return {...p,itemId:p.id,correct,activeSeconds:30};};
+ const history=[observation('compound:0',false)];
+ expect(selectProbe(skills,probes,history)).toMatchObject({kind:'question',reason:'step_down',item:{skillId:'recent'}});
+ expect(assessSkills(skills,history).find(s=>s.skillId==='recent')?.status).toBe('unknown');
+ history.push(observation('recent:0',false));
+ expect(selectProbe(skills,probes,history)).toMatchObject({kind:'question',reason:'step_down',item:{skillId:'present'}});
+ history.push(...[0,1,2].map(i=>observation(`present:${i}`,true)));
+ const next=selectProbe(skills,probes,history);
+ expect(next).toMatchObject({kind:'question',reason:'recheck_boundary',item:{skillId:'recent'}});
+ if(next.kind==='question')expect(history.some(o=>o.itemId===next.item.id)).toBe(false);
+ expect(assessSkills(skills,history).find(s=>s.skillId==='compound')?.status).not.toBe('mastered');
+});
