@@ -92,6 +92,27 @@ try {
  const summary={sessionId:current.sessionId,releaseId:release.data.id,scope:expectedScope,answers:current.answeredCount,correct:final.data.state.observations.filter((o:{correct:boolean})=>o.correct).length,activeSeconds:final.data.state.activeSeconds,completionReason:final.data.state.completionReason,results:current.results.length,activities:current.learningActivities.length,reloadPreserved:true,profile:'Existing history retained; subsequent compound-form responses deliberately wrong and every fifth other response wrong. Technical QA, not a calibrated student profile.'};
  writeFileSync(`${outputPrefix}-results.json`,JSON.stringify(summary,null,2),{mode:0o600});console.log('RESULTS_PASS',JSON.stringify(summary));
  if(current.learningCheck)throw Error('Finish or inspect existing independent check before this teaching test');
+ const initialChecks:Array<{skillId:string;questionId:string;correct:boolean}>=[];
+ while(process.argv.includes('--follow-up-errors')&&!current.teaching&&!current.learningActivities.some(a=>a.kind==='instruction')){
+  if(initialChecks.length>=8)throw Error('Eight follow-up checks did not lead to instruction; inspect pathway');
+  const activity=current.learningActivities.find(a=>a.kind==='independent_check');if(!activity)throw Error('No available first check');
+  await page.goto(base+'/student/diagnostic?activity='+encodeURIComponent(activity.activityId));
+  current=await waitView(v=>!!v.learningCheck);
+  const question=current.learningCheck!.question!,entry=bank.items.find(i=>i.itemKey===question.id)!.item;
+  // Explicit extra QA scenario: struggle on the proposed foundational checks.
+  // Do not relabel these answers as part of the original diagnostic profile.
+  if(question.responseType==='mcq')await page.getByRole('radio',{name:entry.choices!.find(c=>!c.correct)!.text,exact:true}).click();
+  else await page.getByLabel('Ta réponse',{exact:true}).fill('je ne sais pas');
+  const support=readTextualSupport(entry);if(support)await page.getByRole('radio',{name:support.choices.find(c=>c.correct)!.quoteFr,exact:true}).click();
+  await page.getByRole('button',{name:'Valider',exact:true}).click();
+  current=await waitView(v=>!v.learningCheck);
+  const saved=await admin.from('granular_assessment_sessions').select('state').eq('id',current.sessionId).single();if(saved.error)throw saved.error;
+  if(!saved.data.state.refinements.some((r:{itemId:string;correct:boolean})=>r.itemId===question.id&&r.correct===false))throw Error('Failed initial check was not saved correctly');
+  initialChecks.push({skillId:activity.skillId,questionId:question.id,correct:false});
+  writeFileSync(`${outputPrefix}-initial-checks.json`,JSON.stringify({scenario:'Additional technical QA scenario: intentionally wrong answers to the proposed checks after the completed diagnostic.',initialChecks},null,2),{mode:0o600});
+  console.log('INITIAL_CHECK',JSON.stringify(initialChecks.at(-1)));
+ }
+
  if(!current.teaching){
   const lesson=current.learningActivities.find(a=>a.kind==='instruction');if(!lesson)throw Error('No guided lesson offered');
   await page.goto(base+'/student/diagnostic?activity='+encodeURIComponent(lesson.activityId));
@@ -139,6 +160,6 @@ try {
  const refined=await admin.from('granular_assessment_sessions').select('state').eq('id',current.sessionId).single();if(refined.error)throw refined.error;
  if(!refined.data.state.refinements.some((o:{itemId:string;skillId:string;correct:boolean})=>o.itemId===question.id&&o.skillId===skillId&&o.correct))throw Error('Independent evidence not saved');
  await page.reload();await page.getByRole('heading',{name:'Tes acquis et tes prochaines étapes',exact:true}).waitFor();
- const learningSummary={sessionId:current.sessionId,contentId,skillId,practiceAnswers,independentQuestion:question.id,guidedEvidenceIsolated:true,refinementSaved:true,reloadPassed:true};
+ const learningSummary={sessionId:current.sessionId,contentId,skillId,initialChecks,practiceAnswers,independentQuestion:question.id,guidedEvidenceIsolated:true,refinementSaved:true,reloadPassed:true};
  writeFileSync(`${outputPrefix}-learning.json`,JSON.stringify(learningSummary,null,2),{mode:0o600});console.log('LEARNING_PASS',JSON.stringify(learningSummary));
 }finally{await browser.close();}

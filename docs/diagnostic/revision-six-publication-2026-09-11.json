@@ -139,5 +139,28 @@
     "passed": false,
     "failure": "No guided lesson offered",
     "detail": "Runner requires instruction immediately; the actual pathway offered five independent checks. Continue the real check-first pathway and verify the resulting lesson rather than claim learning passed."
+  },
+  "checkFirstPathway": {
+    "initialChecks": [
+      {
+        "skillId": "construction_phrase_canonique::reading-analysis",
+        "questionId": "v3-canonical-sentence:recognition-12",
+        "correct": false
+      },
+      {
+        "skillId": "construction_phrase_canonique::reading-analysis",
+        "questionId": "v3-canonical-sentence:recognition-1",
+        "correct": false
+      },
+      {
+        "skillId": "construction_phrase_canonique::reading-analysis",
+        "questionId": "v3-canonical-sentence:recognition-10",
+        "correct": false
+      }
+    ],
+    "offeredInstruction": "french-v3-teaching:canonical-sentence:recognition",
+    "skillId": "construction_phrase_canonique::reading-analysis",
+    "evidence": "Three incorrect independent checks across three contexts; provisionalGap true, confirmed false. Instruction offered without claiming a confirmed weakness.",
+    "lessonCompleted": false
   }
 }
