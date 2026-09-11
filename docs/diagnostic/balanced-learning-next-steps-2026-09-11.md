@@ -25,3 +25,17 @@ cover grammar, reading comprehension, spelling, conjugation, then grammar.
 This gives other areas a place in the visible pathway. It does not resolve the
 two remaining initial-diagnostic contrast failures or demonstrate calibrated
 longitudinal learning outcomes. Browser verification and deployment remain due.
+
+## Candidate verification
+
+Candidate db2158e is Ready at
+https://sigmawrite-4h5efcaaq-jpkays-projects.vercel.app
+(`dpl_ADSNHSgrSJnH49tS39A8abnBJsRm`). Browser verification against the completed
+QA successor passed: five visible activities span grammar, reading comprehension,
+spelling, conjugation, then grammar. Activity IDs were matched against the actual
+published v10 bundle, and the rendered page was visually inspected.
+
+A full timed diagnostic/learning/review run is in progress on existing unused QA
+session 0119fba3-d0dd-4bad-b4b8-55a74b7774ab, pinned to v9 (163 targets), to check
+compatibility with the new runtime. No assessment was reset or migrated. The
+public alias remains on 0c859ca pending completion of that run.

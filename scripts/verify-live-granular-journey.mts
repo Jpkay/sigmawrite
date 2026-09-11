@@ -35,6 +35,15 @@ const auth=await client.auth.verifyOtp({token_hash:link.data.properties.hashed_t
 const browser=await chromium.launch({channel:'chrome',headless:true});
 try {
  const context=await browser.newContext();
+ if(process.argv.includes('--protection-bypass-file')){
+  if(!new URL(base).hostname.endsWith('.vercel.app'))throw Error('Protection bypass is only supported for a Vercel candidate');
+  const {secret}=JSON.parse(readFileSync(option('--protection-bypass-file'),'utf8'));
+  if(typeof secret!=='string'||!secret)throw Error('Missing candidate protection secret');
+  await context.route('**/*',async route=>{
+   const request=route.request();
+   await route.continue({headers:{...request.headers(),...(new URL(request.url()).origin===new URL(base).origin?{'x-vercel-protection-bypass':secret}:{})}});
+  });
+ }
  await context.addCookies([...cookies].map(([name,value])=>({name,value,domain:new URL(base).hostname,path:'/',secure:true,sameSite:'Lax' as const})));
  const page=await context.newPage();const state:{view:AssessmentView|null}={view:null};const errors:string[]=[];
  page.on('pageerror',error=>errors.push(error.message));
