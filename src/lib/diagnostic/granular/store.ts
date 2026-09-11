@@ -87,6 +87,17 @@ export class SupabaseAssessmentStore implements AssessmentStore{
   for(const row of data){const bundle=await this.release(row.release_id);if(!bundle)continue;const session=await this.load(studentId,row.id);if(session&&session.state.completionReason!=="coverage_gap")return {session:await withKnownMaterialHistory(this,session,bundle),bundle};}
   return null;
  }
+ /** Resume the student's pinned release even after a newer default is published. */
+ async latestSession(studentId:string):Promise<{session:StoredSession;bundle:AssessmentBundle}|null>{
+  const {data,error}=await this.db.from("granular_assessment_sessions").select("id,release_id").eq("student_id",studentId).order("updated_at",{ascending:false}).limit(10);
+  if(error)throw Error(error.message);
+  for(const row of data??[]){
+   const bundle=await this.release(row.release_id);if(!bundle)continue;
+   const session=await this.load(studentId,row.id);
+   if(session)return {session:await withKnownMaterialHistory(this,session,bundle),bundle};
+  }
+  return null;
+ }
  async start(studentId:string,releaseKey:string):Promise<{session:StoredSession;bundle:AssessmentBundle}|null>{
   const {data:release,error}=await this.db.from("granular_assessment_releases").select("id").eq("release_key",releaseKey).eq("status","published").maybeSingle();
   if(error)throw Error(error.message);if(!release)return null;

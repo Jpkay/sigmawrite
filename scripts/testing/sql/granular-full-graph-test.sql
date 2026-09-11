@@ -115,5 +115,6 @@ commit;
 \else
 \ir published-item-elo-test.sql
 \ir granular-parallel-publication-test.sql
+\ir granular-revision-publication-test.sql
 rollback;
 \endif

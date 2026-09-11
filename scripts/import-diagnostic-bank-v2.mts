@@ -1,3 +1,4 @@
+import {isFrenchGranularBankKey} from "../src/lib/diagnostic/granular/bank-family";
 import { readFileSync } from "node:fs";
 import { config as loadEnv } from "dotenv";
 import { createClient } from "@supabase/supabase-js";
@@ -76,7 +77,7 @@ const missingReviewerProvenanceCount = materializedItems.filter((entry, index) =
 ).length;
 // The granular publisher binds the exact canonical review records into its checksum.
 // Missing provenance must fail before creating or changing the bank.
-if (bank.bank.key === "french-diagnostic-bank-v3" && missingReviewerProvenanceCount) {
+if (isFrenchGranularBankKey(bank.bank.key) && missingReviewerProvenanceCount) {
   throw new Error(`Cannot import canonical granular bank: ${missingReviewerProvenanceCount} reviewer records are missing in this environment.`);
 }
 if (!release.data) {

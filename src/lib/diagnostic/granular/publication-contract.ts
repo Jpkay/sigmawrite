@@ -1,3 +1,4 @@
+import {isFrenchGranularBankKey} from "./bank-family";
 import {checksum} from "@/lib/taxonomy/validate";
 import type {AssessmentBundle} from "./service";
 import {parseParallelReviewPolicy} from "./parallel-review-policy";
@@ -11,7 +12,7 @@ import {validateActivityBindings} from "./activity-validation";
  * It neither writes the database nor changes input statuses/answer provenance. */
 export function prepareParallelPublication(bundle:AssessmentBundle){
  const policy=parseParallelReviewPolicy(bundle.assessment.reviewPolicy);
- if(bundle.bank.bank.key!=="french-diagnostic-bank-v3")throw Error("Parallel publication is restricted to the French v3 bank");
+ if(!isFrenchGranularBankKey(bundle.bank.bank.key))throw Error("Parallel publication is restricted to the French v3 bank");
  if(!inspectReleaseBank(bundle))throw Error("Invalid approved graph or canonical bank binding");
  const pools=inspectQuestionPools(bundle.assessment);
  if(!pools.ok)throw Error(`Invalid publication question pools: ${pools.issues.join("; ")}`);
