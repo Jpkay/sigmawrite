@@ -1,3 +1,4 @@
+import {mapWithConcurrency} from "../src/lib/map-with-concurrency";
 import {isFrenchGranularBankKey} from "../src/lib/diagnostic/granular/bank-family";
 import { readFileSync } from "node:fs";
 import { config as loadEnv } from "dotenv";
@@ -284,24 +285,6 @@ process.stdout.write(`${JSON.stringify({
   importAdjustments: { missingReviewerProvenanceCount },
   validation,
 })}\n`);
-
-async function mapWithConcurrency<T>(
-  values: readonly T[],
-  concurrency: number,
-  worker: (value: T) => Promise<void>,
-) {
-  let cursor = 0;
-  await Promise.all(Array.from(
-    { length: Math.min(concurrency, values.length) },
-    async () => {
-      while (cursor < values.length) {
-        const index = cursor;
-        cursor += 1;
-        await worker(values[index]);
-      }
-    },
-  ));
-}
 
 function assertStoredItemMatches(
   entry: CanonicalDiagnosticBankItem,
