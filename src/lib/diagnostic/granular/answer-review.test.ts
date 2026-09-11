@@ -42,3 +42,9 @@ it('does not fabricate historical responses and withholds review on receipt fail
  f.receipt.mockRejectedValueOnce(new Error('database unavailable'));
  await expect(loadDiagnosticAnswerReview(f.store,'owner',id)).rejects.toThrow('database unavailable');
 });
+it('resolves a retained answer using its original session after a learning upgrade',async()=>{
+ const f=fixture(),oldId='22222222-2222-4222-8222-222222222222';
+ const question=publicQuestion(oldId,f.probe.id,bundle)!;
+ f.session.state.diagnosticResponses=[{itemId:f.probe.id,answer:question.choices[0].id,sourceSessionId:oldId}];
+ expect((await loadDiagnosticAnswerReview(f.store,'owner',id)).rows[0].submittedAnswer).toBe(question.choices[0].text);
+});

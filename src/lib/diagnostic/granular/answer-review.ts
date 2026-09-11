@@ -21,7 +21,8 @@ export async function loadDiagnosticAnswerReview(store:MaterialDeliveryStore,stu
   const entry=bundle.bank.items.find(entry=>entry.itemKey===observation.itemId);
   if(!entry||!bundle.assessment.probes.some(probe=>probe.id===observation.itemId))throw Error("Question indisponible.");
   const item=entry.item,response=session.state.diagnosticResponses?.find(response=>response.itemId===observation.itemId);
-  const question=publicQuestion(session.id,observation.itemId,bundle)!;
+  const responseSessionId=response?.sourceSessionId??session.id;
+  const question=publicQuestion(responseSessionId,observation.itemId,bundle)!;
   const submittedAnswer=response?(item.responseType==="mcq"?question.choices.find(choice=>choice.id===response.answer)?.text??null:response.answer):null;
   const expectedAnswer=item.responseType==="mcq"?item.choices?.filter(choice=>choice.correct).map(choice=>choice.text).join(" / "):item.correctAnswer;
   const support=readTextualSupport(item);
@@ -30,7 +31,7 @@ export async function loadDiagnosticAnswerReview(store:MaterialDeliveryStore,stu
   return {itemId:observation.itemId,number:index+1,promptFr:item.promptFr,instructionsFr:item.instructionsFr??null,
    status:observation.skipped?"skipped" as const:observation.correct?"correct" as const:"wrong" as const,
    submittedAnswer,expectedAnswer:expectedAnswer??null,
-   submittedSupport:response?.supportChoiceId?publicTextualSupport(session.id,observation.itemId,item)?.find(choice=>choice.id===response.supportChoiceId)?.text??null:null,
+   submittedSupport:response?.supportChoiceId?publicTextualSupport(responseSessionId,observation.itemId,item)?.find(choice=>choice.id===response.supportChoiceId)?.text??null:null,
    expectedSupport:support?.choices.find(choice=>choice.correct)?.quoteFr??null};
  });
  const keys=[...materials].sort();

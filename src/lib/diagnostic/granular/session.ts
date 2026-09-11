@@ -20,7 +20,9 @@ export type AssessmentSession = {
   observations: Observation[];
   /** Submitted answers for review; absent on historical sessions. Never infer
    * missing answers from the grade or use this record as mastery evidence. */
-  diagnosticResponses?: Array<{itemId:string;answer:string;supportChoiceId?:string}>;
+  diagnosticResponses?: Array<{itemId:string;answer:string;supportChoiceId?:string;sourceSessionId?:string}>;
+  /** Immediate predecessor of a separately persisted learning successor. */
+  learningPredecessor?: {sessionId:string;releaseId:string;revision:number};
   refinements: Observation[];
   exposedLearningItemIds: string[];
   /** Actual reading passages presented in this session, even if unanswered. */

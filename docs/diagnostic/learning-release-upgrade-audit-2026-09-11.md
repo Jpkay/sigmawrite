@@ -16,3 +16,9 @@ The transfer implementation must:
 6. Verify repeated upgrades, concurrent learning commands, changed/withdrawn releases, failed persistence, review of old answers, new activities and reload against the real schema before activation.
 
 No upgrade, reset, migration or new learner assessment was performed by this audit. The full v10 QA journey remains separate and running. The initial-diagnostic discrimination shortfalls remain open; this work addresses access to later coverage, not those initial sampling failures.
+
+## Evidence-preserving preparation implemented
+
+`prepareLearningSuccessor` now prepares a separate learning state only for an idle completed assessment with a matching original release binding and compatible content. It retains observations, refinements, exposure history, elapsed time, lesson completions and historical missing answers. It resets only the new row's optimistic revision and stores its immediate predecessor reference. It rejects unknown historical probes or lesson completions. The old state is not mutated. Actual live authorization, row locking and persistence are intentionally outside this pure function and remain to implement.
+
+Retained responses now carry an optional `sourceSessionId`; review resolves answer and supporting-passage choice IDs using that origin. Repeated upgrades retain the first answer origin instead of overwriting it. Tests verify source immutability, evidence/time/exposure preservation, original choice resolution, repeated-origin preservation, incompatible releases and unfinished/busy sessions. All 522 granular tests across 150 files, TypeScript and scoped ESLint pass. No production transfer has been enabled or performed.
