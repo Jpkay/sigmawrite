@@ -1,3 +1,4 @@
+import {PRESENT_SPELLING_TRANSFER} from "./present-spelling-transfer";
 import type {TaxonomyCandidate} from "@/lib/taxonomy/validate";
 import type {FeatureRequirement} from "./engine";
 /** Facets refine an approved competency; they never replace its identity or inherit mastery. */
@@ -79,7 +80,10 @@ export function conjugationFacet(nodeKey:string,config:Record<string,unknown>):s
  const verb=String(config.verb??"").toLocaleLowerCase("fr");
  if(TENSE_NODES[String(config.tense)]!==nodeKey)return null;
  if((VERBS as readonly string[]).includes(verb))return String(config.tense)==="imperatif_present"&&verb==="pouvoir"?null:`${nodeKey}::verb:${verb}`;
- const pattern=Object.entries(PATTERN_VERBS).find(([,verbs])=>verbs.includes(verb))?.[0];
+ // Extra authored transfer contexts refine existing present-tense facets only.
+ // They do not generate or approve forms at other tenses.
+ const pattern=Object.entries(PATTERN_VERBS).find(([,verbs])=>verbs.includes(verb))?.[0]
+  ??(config.tense==="present"?PRESENT_SPELLING_TRANSFER.find(row=>row.verb===verb)?.family:undefined);
  return pattern?`${nodeKey}::pattern:${pattern}`:null;
 }
 

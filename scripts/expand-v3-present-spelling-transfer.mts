@@ -1,0 +1,33 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+import {PRESENT_SPELLING_TRANSFER} from '../src/lib/diagnostic/granular/present-spelling-transfer';
+import {conjugate} from '../src/lib/linguistic/conjugation';
+import {conjugationEvidenceFeatures,conjugationFacet} from '../src/lib/diagnostic/granular/facets';
+import {runGates} from '../src/lib/ai/item-generation/pipeline';
+import {checksum} from '../src/lib/taxonomy/validate';
+import {validateCanonicalDiagnosticBank,type CanonicalDiagnosticBankArtifact,type CanonicalDiagnosticBankItem} from '../src/lib/diagnostic/item-bank';
+import {questionMaterialKeys} from '../src/lib/diagnostic/granular/material-annotations';
+import type {FacetAnnotation} from '../src/lib/diagnostic/granular/facet-adapter';
+const read=(p:string)=>JSON.parse(readFileSync(p,'utf8'));
+const artifact=read('generated/french-taxonomy-v3.json'),base=read('generated/diagnostic-bank-v3-draft.json') as CanonicalDiagnosticBankArtifact;
+const node=artifact.taxonomy.nodes.find((n:{key:string})=>n.key==='produire_present_indicatif');
+const evidence=node.evidence.find((e:{expectation:string})=>e.expectation==='controlled_production');
+const items:CanonicalDiagnosticBankItem[]=[],annotations:FacetAnnotation[]=[];
+for(const row of PRESENT_SPELLING_TRANSFER){
+ const config={verb:row.verb,tense:'present',person:'1p'};
+ const answer=conjugate(row.verb,'present','1p');if(answer!==row.answer)throw Error(`Authored and computed form disagree: ${row.verb}`);
+ const completed=row.sentence.replace('___',answer);
+ const raw={nodeKey:node.key,strand:node.strand,modality:'writing',learnerMode:'shared',responseType:'short_answer',promptFr:`Complète avec ${row.verb} au présent de l’indicatif : ${row.sentence}`,instructionsFr:'Écris seulement le verbe manquant.',correctAnswer:answer,acceptableAnswers:[],validatorType:'conjugator',difficulty:50,validatorConfig:{...config,sentenceApplication:row.sentence,materialExposure:{words:[{lemma:row.verb,form:row.verb}],sentences:[row.sentence,completed]}}};
+ const checked=await runGates(raw,{knownNodeKeys:new Set([node.key]),knownMisconceptionKeys:new Set()});
+ if(!checked.item||checked.gates.verdict==='rejected')throw Error(`Rejected spelling transfer: ${row.verb}`);
+ questionMaterialKeys(checked.item);
+ const itemKey=`v3-present-spelling-transfer:${row.verb}`;
+ const entry:CanonicalDiagnosticBankItem={itemKey,item:checked.item,evidenceKey:evidence.key,evidenceExpectation:evidence.expectation,sectionKey:'conjugation',promptFamily:'sentence-form-application',difficultyTier:'core',reviewStatus:'needs_human_review',qcGates:{...checked.gates,gate3_ensemble:{agrees:false,agreement:0},verdict:'needs_human_review'}};
+ const facetKey=conjugationFacet(node.key,config)!;if(!facetKey.endsWith(row.family))throw Error('Wrong spelling family');
+ items.push(entry);annotations.push({itemKey,itemChecksum:checksum(entry),facetKey,contextKey:`verb:${row.verb}`,evidenceFeatures:conjugationEvidenceFeatures(node.key,config)});
+}
+const combined={...base,items:[...base.items,...items]};delete combined.manifest;
+const validation=validateCanonicalDiagnosticBank(combined,artifact.taxonomy);if(validation.issues.length)throw Error(validation.issues.join('\n'));
+const content={version:'french-v3-present-spelling-transfer-expansion-v1',status:'draft_requires_review',parentTaxonomyChecksum:artifact.manifest.contentChecksum,sourceBankChecksum:validateCanonicalDiagnosticBank(base,artifact.taxonomy).manifest.checksum,items,annotations};
+const path='generated/french-v3-present-spelling-transfer-expansion.json',output=JSON.stringify({...content,checksum:checksum(content)},null,2)+'\n';
+if(process.argv.includes('--check')){if(readFileSync(path,'utf8')!==output)throw Error('Stale present spelling transfer');}else writeFileSync(path,output);
+console.log(JSON.stringify({questions:items.length}));
