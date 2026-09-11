@@ -1,12 +1,12 @@
 {
   "status": "prepared_inventory_not_release_or_review_approval",
-  "parallelCandidateChecksum": "sha256:97b3ce5ee39806b4f00770b0e6846ed83257abc5c88e7e1ebb46eb390fb1b453",
-  "scopedCandidateChecksum": "sha256:d7bd9d97f64c1f67ef0691ed0e9044214969205eb79e04407c9b06c68ad3f8c5",
+  "parallelCandidateChecksum": "sha256:109ee546fd83366c360af729797bfc837724ef78b924ec5998ad49deff6a9648",
+  "scopedCandidateChecksum": "sha256:5608ba39678a4a40854c12ee6104e02ee81cad2061bbb6865069ff108f29ee3c",
   "targets": 542,
   "counts": {
-    "prepared_scoped_pathway": 223,
+    "prepared_scoped_pathway": 227,
     "complete_question_pools": 236,
-    "author_exact_target_lesson": 65,
+    "author_exact_target_lesson": 61,
     "connected_writing_evidence": 18
   },
   "limitations": [
@@ -3563,7 +3563,7 @@
       "skillId": "produire_conditionnel_present::writing-controlled-production::pattern:regular_er",
       "nodeKey": "produire_conditionnel_present",
       "facetKey": "produire_conditionnel_present::pattern:regular_er",
-      "action": "author_exact_target_lesson",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_conditionnel_present::writing-controlled-production::pattern:regular_er",
@@ -3573,15 +3573,17 @@
           "learningItems": 28
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:conditionnel-present:pattern:regular_er"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_conditionnel_present::writing-controlled-production::pattern:regular_ir",
       "nodeKey": "produire_conditionnel_present",
       "facetKey": "produire_conditionnel_present::pattern:regular_ir",
-      "action": "author_exact_target_lesson",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_conditionnel_present::writing-controlled-production::pattern:regular_ir",
@@ -3591,44 +3593,50 @@
           "learningItems": 16
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:conditionnel-present:pattern:regular_ir"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_conditionnel_present::writing-controlled-production::pattern:spelling_ger",
       "nodeKey": "produire_conditionnel_present",
       "facetKey": "produire_conditionnel_present::pattern:spelling_ger",
-      "action": "author_exact_target_lesson",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_conditionnel_present::writing-controlled-production::pattern:spelling_ger",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 12,
-          "learningItems": 12
+          "initialItems": 18,
+          "learningItems": 18
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:conditionnel-present:pattern:spelling_ger"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_conditionnel_present::writing-controlled-production::pattern:spelling_cer",
       "nodeKey": "produire_conditionnel_present",
       "facetKey": "produire_conditionnel_present::pattern:spelling_cer",
-      "action": "author_exact_target_lesson",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_conditionnel_present::writing-controlled-production::pattern:spelling_cer",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 12,
-          "learningItems": 12
+          "initialItems": 18,
+          "learningItems": 18
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:conditionnel-present:pattern:spelling_cer"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
@@ -3647,12 +3655,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "produire_conditionnel_present::writing-controlled-production::pattern:regular_er",
-        "produire_conditionnel_present::writing-controlled-production::pattern:regular_ir",
-        "produire_conditionnel_present::writing-controlled-production::pattern:spelling_ger",
-        "produire_conditionnel_present::writing-controlled-production::pattern:spelling_cer"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "reconnaitre_subjonctif_present::reading-receptive",
