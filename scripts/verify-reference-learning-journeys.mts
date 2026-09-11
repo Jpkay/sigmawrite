@@ -14,11 +14,12 @@ const spellingOnly=process.argv.includes('--present-spelling');
 const futurOnly=process.argv.includes('--futur-proche');
 const recentOnly=process.argv.includes('--passe-recent');
 const imparfaitOnly=process.argv.includes('--imparfait-families');
+const futureFamilyOnly=process.argv.includes('--futur-simple-families');
 const composeOnly=process.argv.includes('--passe-compose-families');
-if([spellingOnly,futurOnly,recentOnly,imparfaitOnly,composeOnly].filter(Boolean).length>1)throw Error('Select one content family');
+if([spellingOnly,futurOnly,recentOnly,imparfaitOnly,composeOnly,futureFamilyOnly].filter(Boolean).length>1)throw Error('Select one content family');
 const spellingIds=['french-v3-teaching:present:pattern:spelling_ger','french-v3-teaching:present:pattern:spelling_cer'];
-const lessons=bundle.teachingContent!.filter(l=>composeOnly?l.id.startsWith('french-v3-teaching:passe-compose:pattern:'):imparfaitOnly?l.id.startsWith('french-v3-teaching:imparfait:pattern:'):recentOnly?l.id.startsWith('french-v3-teaching:passe-recent:production:'):futurOnly?l.id.startsWith("french-v3-teaching:futur-proche:production:"):spellingOnly?spellingIds.includes(l.id):l.id.includes(':reference-foundation:')||l.id==='french-v3-teaching:narrative-demonstrative-reference'||l.id.startsWith('french-v3-teaching:demonstrative-reference:')||l.id.startsWith('french-v3-teaching:lexical-chain:'));
-if(lessons.length!==(composeOnly?4:imparfaitOnly?4:recentOnly?14:futurOnly?18:spellingOnly?2:10))throw Error('Unexpected selected lesson count');
+const lessons=bundle.teachingContent!.filter(l=>futureFamilyOnly?l.id.startsWith('french-v3-teaching:futur-simple:pattern:'):composeOnly?l.id.startsWith('french-v3-teaching:passe-compose:pattern:'):imparfaitOnly?l.id.startsWith('french-v3-teaching:imparfait:pattern:'):recentOnly?l.id.startsWith('french-v3-teaching:passe-recent:production:'):futurOnly?l.id.startsWith("french-v3-teaching:futur-proche:production:"):spellingOnly?spellingIds.includes(l.id):l.id.includes(':reference-foundation:')||l.id==='french-v3-teaching:narrative-demonstrative-reference'||l.id.startsWith('french-v3-teaching:demonstrative-reference:')||l.id.startsWith('french-v3-teaching:lexical-chain:'));
+if(lessons.length!==(futureFamilyOnly?4:composeOnly?4:imparfaitOnly?4:recentOnly?14:futurOnly?18:spellingOnly?2:10))throw Error('Unexpected selected lesson count');
 const reports=[];
 for(const lesson of lessons){
  const skill=bundle.assessment.skills.find(s=>s.nodeKey===lesson.nodeKey&&s.facetKey===lesson.facetKey&&s.modes.includes(lesson.mode))!;
@@ -61,4 +62,4 @@ for(const lesson of lessons){
  reports.push({skillId:skill.id,lessonId:lesson.id,guidedExercises:guided,deliberateGuidedErrors:1,independentQuestionId:q.id,independentCorrect:true,guidedEvidenceIsolated:true,reloadPreserved:true});
 }
 const output={method:'Constructed prerequisite-success/target-gap profiles, real scoped content and server commands in an isolated in-memory store. Not student data, browser proof, multi-occasion validation or educational calibration.',candidateChecksum:candidate.checksum,reports};
-writeFileSync(composeOnly?'docs/diagnostic/passe-compose-family-learning-journeys-2026-09-12.json':imparfaitOnly?'docs/diagnostic/imparfait-family-learning-journeys-2026-09-12.json':recentOnly?'docs/diagnostic/passe-recent-learning-journeys-2026-09-12.json':futurOnly?'docs/diagnostic/futur-proche-learning-journeys-2026-09-11.json':spellingOnly?'docs/diagnostic/present-spelling-learning-journeys-2026-09-11.json':'docs/diagnostic/reference-learning-journeys-2026-09-11.json',JSON.stringify(output,null,2)+'\n');console.log(JSON.stringify(reports));
+writeFileSync(futureFamilyOnly?'docs/diagnostic/futur-simple-family-learning-journeys-2026-09-12.json':composeOnly?'docs/diagnostic/passe-compose-family-learning-journeys-2026-09-12.json':imparfaitOnly?'docs/diagnostic/imparfait-family-learning-journeys-2026-09-12.json':recentOnly?'docs/diagnostic/passe-recent-learning-journeys-2026-09-12.json':futurOnly?'docs/diagnostic/futur-proche-learning-journeys-2026-09-11.json':spellingOnly?'docs/diagnostic/present-spelling-learning-journeys-2026-09-11.json':'docs/diagnostic/reference-learning-journeys-2026-09-11.json',JSON.stringify(output,null,2)+'\n');console.log(JSON.stringify(reports));

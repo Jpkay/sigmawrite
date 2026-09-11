@@ -1,12 +1,12 @@
 {
   "status": "prepared_inventory_not_release_or_review_approval",
-  "parallelCandidateChecksum": "sha256:416ab688e9e882d6dd475b209cbc0f20ad3a1ca812c5b262d88d557b32a6ed61",
-  "scopedCandidateChecksum": "sha256:c2eb92db2d3ac2cf2e6f5fb72c1682d5c5d8055ccf7b5e481b2e426cb1ef2510",
+  "parallelCandidateChecksum": "sha256:97b3ce5ee39806b4f00770b0e6846ed83257abc5c88e7e1ebb46eb390fb1b453",
+  "scopedCandidateChecksum": "sha256:d7bd9d97f64c1f67ef0691ed0e9044214969205eb79e04407c9b06c68ad3f8c5",
   "targets": 542,
   "counts": {
-    "prepared_scoped_pathway": 219,
+    "prepared_scoped_pathway": 223,
     "complete_question_pools": 236,
-    "author_exact_target_lesson": 69,
+    "author_exact_target_lesson": 65,
     "connected_writing_evidence": 18
   },
   "limitations": [
@@ -2769,7 +2769,7 @@
       "skillId": "produire_futur_simple::writing-controlled-production::pattern:regular_er",
       "nodeKey": "produire_futur_simple",
       "facetKey": "produire_futur_simple::pattern:regular_er",
-      "action": "author_exact_target_lesson",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_futur_simple::writing-controlled-production::pattern:regular_er",
@@ -2779,15 +2779,17 @@
           "learningItems": 28
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:futur-simple:pattern:regular_er"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_futur_simple::writing-controlled-production::pattern:regular_ir",
       "nodeKey": "produire_futur_simple",
       "facetKey": "produire_futur_simple::pattern:regular_ir",
-      "action": "author_exact_target_lesson",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_futur_simple::writing-controlled-production::pattern:regular_ir",
@@ -2797,44 +2799,50 @@
           "learningItems": 16
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:futur-simple:pattern:regular_ir"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_futur_simple::writing-controlled-production::pattern:spelling_ger",
       "nodeKey": "produire_futur_simple",
       "facetKey": "produire_futur_simple::pattern:spelling_ger",
-      "action": "author_exact_target_lesson",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_futur_simple::writing-controlled-production::pattern:spelling_ger",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 12,
-          "learningItems": 12
+          "initialItems": 18,
+          "learningItems": 18
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:futur-simple:pattern:spelling_ger"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_futur_simple::writing-controlled-production::pattern:spelling_cer",
       "nodeKey": "produire_futur_simple",
       "facetKey": "produire_futur_simple::pattern:spelling_cer",
-      "action": "author_exact_target_lesson",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_futur_simple::writing-controlled-production::pattern:spelling_cer",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 12,
-          "learningItems": 12
+          "initialItems": 18,
+          "learningItems": 18
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:futur-simple:pattern:spelling_cer"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
@@ -2853,12 +2861,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "produire_futur_simple::writing-controlled-production::pattern:regular_er",
-        "produire_futur_simple::writing-controlled-production::pattern:regular_ir",
-        "produire_futur_simple::writing-controlled-production::pattern:spelling_ger",
-        "produire_futur_simple::writing-controlled-production::pattern:spelling_cer"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "reconnaitre_plus_que_parfait::reading-receptive",
