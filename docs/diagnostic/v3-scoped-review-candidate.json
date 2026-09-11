@@ -20301,6 +20301,21 @@
         "usage": "learning"
       },
       {
+        "id": "review-draft-v1:reconnaitre_passe_compose:receptive:core",
+        "skillId": "reconnaitre_passe_compose::reading-receptive",
+        "mode": "recognition",
+        "contextId": "surface:sha256:10006971cfc8feb080724ee212183c2158961dbd5d7a3a45d005d67588290804",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [],
+        "assessedMaterialKeys": [],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
         "id": "review-draft-v1:reconnaitre_imparfait:receptive:core",
         "skillId": "reconnaitre_imparfait::reading-receptive",
         "mode": "recognition",
@@ -20321,6 +20336,21 @@
         "mode": "recognition",
         "contextId": "surface:sha256:bde4d7dfb798e1d946a941c34179eca95a94ea36652c8e4c40ed6c5dd24fe1c6",
         "difficulty": 0.75,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [],
+        "assessedMaterialKeys": [],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "review-draft-v1:reconnaitre_plus_que_parfait:receptive:foundation",
+        "skillId": "reconnaitre_plus_que_parfait::reading-receptive",
+        "mode": "recognition",
+        "contextId": "surface:sha256:2a8582f05cee561129a87b75eba47987253344093e0cf298b0673523cde4b411",
+        "difficulty": 0.25,
         "expectedSeconds": 30,
         "guessProbability": 0.25,
         "textualSupportAssessed": false,
@@ -58749,6 +58779,942 @@
         "usage": "initial"
       },
       {
+        "id": "v3-tense-recognition:auxiliary-form-1",
+        "skillId": "reconnaitre_auxiliaire::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:auxiliary-form-1",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:019ef92aaac0233f78e7a11818006bbd7262ed1b3ab7ec2a695add00db149e70",
+          "sentence:sha256:0a718372cc15fa63ffeb794fb30c366d9ab02152e71bf738ef7cabf616e2742e",
+          "sentence:sha256:69e53d4f41a9f28ef8a9c6c940cd8fb907d6774bb679daad59b1656e96204277",
+          "sentence:sha256:74fbe376b94090763b6420ea1d993cd0a62a2559222bf7f531360c6a4493a870",
+          "sentence:sha256:811d84111c9f2b909006bbff6b89a1498ae076784082334ee96c2d801e5fafa3"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:019ef92aaac0233f78e7a11818006bbd7262ed1b3ab7ec2a695add00db149e70",
+          "sentence:sha256:0a718372cc15fa63ffeb794fb30c366d9ab02152e71bf738ef7cabf616e2742e",
+          "sentence:sha256:69e53d4f41a9f28ef8a9c6c940cd8fb907d6774bb679daad59b1656e96204277",
+          "sentence:sha256:74fbe376b94090763b6420ea1d993cd0a62a2559222bf7f531360c6a4493a870"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-tense-recognition:auxiliary-form-2",
+        "skillId": "reconnaitre_auxiliaire::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:auxiliary-form-2",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:1d8aefda760da4dccad8e8e8eb08fe96694188f49c1d9d07a12a37b1ccd2bb51",
+          "sentence:sha256:2b9f8d722abe40c25ece31d02bfea478acfec5b67451ab5c79fb5f84513588e0",
+          "sentence:sha256:2ddaae768f339c2fb3d3c7dab2f2598656177aa67d07317f33f403fc121f979d",
+          "sentence:sha256:811d84111c9f2b909006bbff6b89a1498ae076784082334ee96c2d801e5fafa3",
+          "sentence:sha256:b058779f00ed32f74702b223e354c4da3da9d3f47f2b79fc2aac1924c68a34a2"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:1d8aefda760da4dccad8e8e8eb08fe96694188f49c1d9d07a12a37b1ccd2bb51",
+          "sentence:sha256:2b9f8d722abe40c25ece31d02bfea478acfec5b67451ab5c79fb5f84513588e0",
+          "sentence:sha256:2ddaae768f339c2fb3d3c7dab2f2598656177aa67d07317f33f403fc121f979d",
+          "sentence:sha256:b058779f00ed32f74702b223e354c4da3da9d3f47f2b79fc2aac1924c68a34a2"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-tense-recognition:auxiliary-form-3",
+        "skillId": "reconnaitre_auxiliaire::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:auxiliary-form-3",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:12fe51e0eced22aaf09d7e7af721a956c2e3e3c036f735d722ba86bc3f0c5c33",
+          "sentence:sha256:356a7c7d653cd821f27fb07f5e3ad202f9e1f561d75de6abd060e2ebd1a2255d",
+          "sentence:sha256:40d3ee392f8edfe5c31c5b4e25da97def691b7aea521fc0f1203c33756cb1c80",
+          "sentence:sha256:811d84111c9f2b909006bbff6b89a1498ae076784082334ee96c2d801e5fafa3",
+          "sentence:sha256:cfd3299c8f6bfdb7ea64e10be08525223972e5242390dbd6b4489e110174cea3"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:12fe51e0eced22aaf09d7e7af721a956c2e3e3c036f735d722ba86bc3f0c5c33",
+          "sentence:sha256:356a7c7d653cd821f27fb07f5e3ad202f9e1f561d75de6abd060e2ebd1a2255d",
+          "sentence:sha256:40d3ee392f8edfe5c31c5b4e25da97def691b7aea521fc0f1203c33756cb1c80",
+          "sentence:sha256:cfd3299c8f6bfdb7ea64e10be08525223972e5242390dbd6b4489e110174cea3"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-tense-recognition:auxiliary-form-4",
+        "skillId": "reconnaitre_auxiliaire::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:auxiliary-form-4",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:244e13b20d664d873f8f0a8fc0dd91ec2ce3f613cc7c9ebb5b8f5c1a0d595b9d",
+          "sentence:sha256:744d1dfc4760a06cfb80f787fc7a67ff3003ecbe95fef223ebe62e662b4a681c",
+          "sentence:sha256:811d84111c9f2b909006bbff6b89a1498ae076784082334ee96c2d801e5fafa3",
+          "sentence:sha256:93f51a682c325cdea98f9c6b7e25c1a2d55bc3499c5eae55244841f4ba004388",
+          "sentence:sha256:bd509e48d14315116a902f30e7db40438295ab3386b276c5b71651f97d88cbcc"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:244e13b20d664d873f8f0a8fc0dd91ec2ce3f613cc7c9ebb5b8f5c1a0d595b9d",
+          "sentence:sha256:744d1dfc4760a06cfb80f787fc7a67ff3003ecbe95fef223ebe62e662b4a681c",
+          "sentence:sha256:93f51a682c325cdea98f9c6b7e25c1a2d55bc3499c5eae55244841f4ba004388",
+          "sentence:sha256:bd509e48d14315116a902f30e7db40438295ab3386b276c5b71651f97d88cbcc"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-tense-recognition:auxiliary-form-5",
+        "skillId": "reconnaitre_auxiliaire::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:auxiliary-form-5",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:319ce7b3d84e3daa20a298d8e90d719de8aa99894507d5d88cd9536145ee1d79",
+          "sentence:sha256:55c1259d58fdf858cf5774b4c722f7ae4b142b1e914ea08adda056b582aa2c9a",
+          "sentence:sha256:811d84111c9f2b909006bbff6b89a1498ae076784082334ee96c2d801e5fafa3",
+          "sentence:sha256:86adc0cedf4f04f531ac3ceeef45b78576dc1bb8cc0e60c47bc581d964eab3bd",
+          "sentence:sha256:9704447dd501771edf8e55e468de6c8ee927e0fb20a6c4150a46933341093450"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:319ce7b3d84e3daa20a298d8e90d719de8aa99894507d5d88cd9536145ee1d79",
+          "sentence:sha256:55c1259d58fdf858cf5774b4c722f7ae4b142b1e914ea08adda056b582aa2c9a",
+          "sentence:sha256:86adc0cedf4f04f531ac3ceeef45b78576dc1bb8cc0e60c47bc581d964eab3bd",
+          "sentence:sha256:9704447dd501771edf8e55e468de6c8ee927e0fb20a6c4150a46933341093450"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-tense-recognition:auxiliary-form-6",
+        "skillId": "reconnaitre_auxiliaire::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:auxiliary-form-6",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:46c708300ed14b3e23a5268a74bf44aff40df2f3683d66be16cdeb2331b719a2",
+          "sentence:sha256:48d2626be7653d544ee44117bfd287d18a928d7e53f602f5cb78363e40b00709",
+          "sentence:sha256:4f41957faa56c1494bc998c5579b038f14d8739a34db995452c64e288d821777",
+          "sentence:sha256:811d84111c9f2b909006bbff6b89a1498ae076784082334ee96c2d801e5fafa3",
+          "sentence:sha256:c2735135cdebbec257c4add30b0f143335a1bf3e7d981f9cafd5d77530e940e2"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:46c708300ed14b3e23a5268a74bf44aff40df2f3683d66be16cdeb2331b719a2",
+          "sentence:sha256:48d2626be7653d544ee44117bfd287d18a928d7e53f602f5cb78363e40b00709",
+          "sentence:sha256:4f41957faa56c1494bc998c5579b038f14d8739a34db995452c64e288d821777",
+          "sentence:sha256:c2735135cdebbec257c4add30b0f143335a1bf3e7d981f9cafd5d77530e940e2"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-tense-recognition:auxiliary-form-7",
+        "skillId": "reconnaitre_auxiliaire::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:auxiliary-form-7",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:1c0e98dee24f5c2de5f1ed1aeb509da661ad0f145e290fd92adf8a055c14804e",
+          "sentence:sha256:6819d20093ca383c23b6314f3d506cf482998f422de284cb25d71b81f667a03e",
+          "sentence:sha256:811d84111c9f2b909006bbff6b89a1498ae076784082334ee96c2d801e5fafa3",
+          "sentence:sha256:e38e7ee79d4a1526a8c45e621000dcb755daa8cd381f83cf6d6eff5b96070174",
+          "sentence:sha256:f868ac5ef39fbeafd374b24df31bd16c26e8441fd82a8b51fd3b61d0cf4f25c2"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:1c0e98dee24f5c2de5f1ed1aeb509da661ad0f145e290fd92adf8a055c14804e",
+          "sentence:sha256:6819d20093ca383c23b6314f3d506cf482998f422de284cb25d71b81f667a03e",
+          "sentence:sha256:e38e7ee79d4a1526a8c45e621000dcb755daa8cd381f83cf6d6eff5b96070174",
+          "sentence:sha256:f868ac5ef39fbeafd374b24df31bd16c26e8441fd82a8b51fd3b61d0cf4f25c2"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-tense-recognition:auxiliary-form-8",
+        "skillId": "reconnaitre_auxiliaire::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:auxiliary-form-8",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:2ff64fedc24163b5cd9d6831e82db4b11b5c6a4284d746751bba00aa5fc14234",
+          "sentence:sha256:3a13f968fa082f10b92633c8fe1146a9b56cd6b0b6af5995e17ebc631e8099ee",
+          "sentence:sha256:811d84111c9f2b909006bbff6b89a1498ae076784082334ee96c2d801e5fafa3",
+          "sentence:sha256:846d4187e7f0a6924ab2dadb5363cbabaddc54d13a3187ce284d682296b34412",
+          "sentence:sha256:ab25acc3fa5aff45ef77c3abaf1c6cf3071a06fc75c30164bfab9ff7cd5c0459"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:2ff64fedc24163b5cd9d6831e82db4b11b5c6a4284d746751bba00aa5fc14234",
+          "sentence:sha256:3a13f968fa082f10b92633c8fe1146a9b56cd6b0b6af5995e17ebc631e8099ee",
+          "sentence:sha256:846d4187e7f0a6924ab2dadb5363cbabaddc54d13a3187ce284d682296b34412",
+          "sentence:sha256:ab25acc3fa5aff45ef77c3abaf1c6cf3071a06fc75c30164bfab9ff7cd5c0459"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-tense-recognition:auxiliary-form-9",
+        "skillId": "reconnaitre_auxiliaire::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:auxiliary-form-9",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:0a59461ced95fa9dc7a6cb319bbab12853832ad71c4e70859fa57ac9746a26a7",
+          "sentence:sha256:66192192ca69a869db1a77fce2295a61cca5be0d97132f8f47691452982c11e3",
+          "sentence:sha256:73de95fdb9d17f537a8eb6fcc0ce7839d7d2fdca4c11442981638f6dec714b89",
+          "sentence:sha256:811d84111c9f2b909006bbff6b89a1498ae076784082334ee96c2d801e5fafa3",
+          "sentence:sha256:cbc6ca3ef6f0966414818b62c92e41c67da1346fad682bb2b1bd4c9d174f444e"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:0a59461ced95fa9dc7a6cb319bbab12853832ad71c4e70859fa57ac9746a26a7",
+          "sentence:sha256:66192192ca69a869db1a77fce2295a61cca5be0d97132f8f47691452982c11e3",
+          "sentence:sha256:73de95fdb9d17f537a8eb6fcc0ce7839d7d2fdca4c11442981638f6dec714b89",
+          "sentence:sha256:cbc6ca3ef6f0966414818b62c92e41c67da1346fad682bb2b1bd4c9d174f444e"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-tense-recognition:auxiliary-form-10",
+        "skillId": "reconnaitre_auxiliaire::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:auxiliary-form-10",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:39f2a611d9253249c13a122ed77a9e4c2e04dd2c14df1b91788eceefbe45ef4e",
+          "sentence:sha256:3c181627c9c88f150b980a5eb5c73f427d42ac7fbce6c8edfdca90bcd0dd0592",
+          "sentence:sha256:730571b0851622b8d9052c1f8283eb6251d560f577574ddbac9d57b2f3e9be67",
+          "sentence:sha256:811d84111c9f2b909006bbff6b89a1498ae076784082334ee96c2d801e5fafa3",
+          "sentence:sha256:9cdc37cc46a711edf8cebc24ed7fb0014ee99acb4641fe28ee801222b519d096"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:39f2a611d9253249c13a122ed77a9e4c2e04dd2c14df1b91788eceefbe45ef4e",
+          "sentence:sha256:3c181627c9c88f150b980a5eb5c73f427d42ac7fbce6c8edfdca90bcd0dd0592",
+          "sentence:sha256:730571b0851622b8d9052c1f8283eb6251d560f577574ddbac9d57b2f3e9be67",
+          "sentence:sha256:9cdc37cc46a711edf8cebc24ed7fb0014ee99acb4641fe28ee801222b519d096"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-tense-recognition:auxiliary-form-11",
+        "skillId": "reconnaitre_auxiliaire::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:auxiliary-form-11",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:14cf2c49f16e831e1627bb6376005364240fddaa197105cf86c5bccca24920e4",
+          "sentence:sha256:51850ca97ed29a16b87272bdb3d8a9a7ec39ff99609cf2dc23d57055421b167e",
+          "sentence:sha256:811d84111c9f2b909006bbff6b89a1498ae076784082334ee96c2d801e5fafa3",
+          "sentence:sha256:8d8b7d70a618da0161498a7a2d98fcc681a1275339a5078fafca4e08bcb2e750",
+          "sentence:sha256:9c7e05263bceadfcd675e797e8967796b187bb2c902d2eed6af3fc05887fdac7"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:14cf2c49f16e831e1627bb6376005364240fddaa197105cf86c5bccca24920e4",
+          "sentence:sha256:51850ca97ed29a16b87272bdb3d8a9a7ec39ff99609cf2dc23d57055421b167e",
+          "sentence:sha256:8d8b7d70a618da0161498a7a2d98fcc681a1275339a5078fafca4e08bcb2e750",
+          "sentence:sha256:9c7e05263bceadfcd675e797e8967796b187bb2c902d2eed6af3fc05887fdac7"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-tense-recognition:auxiliary-form-12",
+        "skillId": "reconnaitre_auxiliaire::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:auxiliary-form-12",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:316be300a18095c497e74661c81ca718cfc559a2e55ec5d2d2aa5876c5e3306b",
+          "sentence:sha256:811d84111c9f2b909006bbff6b89a1498ae076784082334ee96c2d801e5fafa3",
+          "sentence:sha256:94603f31019ebe099871fe578c57ae54fd728ae5ad3dd409c78bbb2f11db7043",
+          "sentence:sha256:b1abd2ee6653a0fb9723e9ca4ae7203f8f2bffbe19929947f8c8fd71da8f7a09",
+          "sentence:sha256:d0a4d3d46f71b05d7524ec714ad4e1d849a6514294c7d56ca0673a6ad3f659a0"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:316be300a18095c497e74661c81ca718cfc559a2e55ec5d2d2aa5876c5e3306b",
+          "sentence:sha256:94603f31019ebe099871fe578c57ae54fd728ae5ad3dd409c78bbb2f11db7043",
+          "sentence:sha256:b1abd2ee6653a0fb9723e9ca4ae7203f8f2bffbe19929947f8c8fd71da8f7a09",
+          "sentence:sha256:d0a4d3d46f71b05d7524ec714ad4e1d849a6514294c7d56ca0673a6ad3f659a0"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-tense-recognition:passe-compose-form-1",
+        "skillId": "reconnaitre_passe_compose::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:passe-compose-form-1",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:14baf1f67bb8138458a18dd66f7741655c08b0c4cfff7490a71c90fc1b41d92a",
+          "sentence:sha256:3dc3537606a7c91879703350b922f92b7286118eebfb34f07da52e8dda337877",
+          "sentence:sha256:5551a44d70396bc00d9dbbc207b761f42338df9034567e00074cb4ad8f79440b",
+          "sentence:sha256:7bad991c74cba0d4a35ea7d072747ab10974de646676d35df7c93fc411668928",
+          "sentence:sha256:ed79ae54853fd0b8abb518dbf8e1a3f4c86c886c3a3687857c88764febfd1e36"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:14baf1f67bb8138458a18dd66f7741655c08b0c4cfff7490a71c90fc1b41d92a",
+          "sentence:sha256:3dc3537606a7c91879703350b922f92b7286118eebfb34f07da52e8dda337877",
+          "sentence:sha256:5551a44d70396bc00d9dbbc207b761f42338df9034567e00074cb4ad8f79440b",
+          "sentence:sha256:ed79ae54853fd0b8abb518dbf8e1a3f4c86c886c3a3687857c88764febfd1e36"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-tense-recognition:passe-compose-form-2",
+        "skillId": "reconnaitre_passe_compose::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:passe-compose-form-2",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:6ae837cf6fd788fe1abbcb199ed2fb9e39a6881936fcb5405874a51201d2afc2",
+          "sentence:sha256:7bad991c74cba0d4a35ea7d072747ab10974de646676d35df7c93fc411668928",
+          "sentence:sha256:8b201066144169ecdab66f5d71e21bc4b52fd8bdbc79ca3b435010a07571416c",
+          "sentence:sha256:c07274f337f382eb9492f941f6e19a1326a2af752d2ceb12b8b7268d706b54d4",
+          "sentence:sha256:df2a0238b559e059d5b1082e57bad3f8ebbaba239293083b81c27261437a5097"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:6ae837cf6fd788fe1abbcb199ed2fb9e39a6881936fcb5405874a51201d2afc2",
+          "sentence:sha256:8b201066144169ecdab66f5d71e21bc4b52fd8bdbc79ca3b435010a07571416c",
+          "sentence:sha256:c07274f337f382eb9492f941f6e19a1326a2af752d2ceb12b8b7268d706b54d4",
+          "sentence:sha256:df2a0238b559e059d5b1082e57bad3f8ebbaba239293083b81c27261437a5097"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-tense-recognition:passe-compose-form-3",
+        "skillId": "reconnaitre_passe_compose::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:passe-compose-form-3",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:437fbed66c501df71c46d6f25d76c6e8245edd47eef3ed437e98c3e479b3bade",
+          "sentence:sha256:5b9f98d185be5ebf6ef504307f3b54ee247f1db7672119d36a42dce3244c5263",
+          "sentence:sha256:5f9d5993775024ffce966082bc3b0786dfa0a0acab7be043a468ba35855bfa2e",
+          "sentence:sha256:7bad991c74cba0d4a35ea7d072747ab10974de646676d35df7c93fc411668928",
+          "sentence:sha256:dcab2b3f4e75737d845a5a13c2267adea3e88741bcd7fb980cd578958aa01b3d"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:437fbed66c501df71c46d6f25d76c6e8245edd47eef3ed437e98c3e479b3bade",
+          "sentence:sha256:5b9f98d185be5ebf6ef504307f3b54ee247f1db7672119d36a42dce3244c5263",
+          "sentence:sha256:5f9d5993775024ffce966082bc3b0786dfa0a0acab7be043a468ba35855bfa2e",
+          "sentence:sha256:dcab2b3f4e75737d845a5a13c2267adea3e88741bcd7fb980cd578958aa01b3d"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-tense-recognition:passe-compose-form-4",
+        "skillId": "reconnaitre_passe_compose::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:passe-compose-form-4",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:65bee7337b08c48cf71e98112e7f9aa27f70a134cc59f243def6ba0be7e0b47e",
+          "sentence:sha256:666cc9baa7ab10802cd67d62d32dba5d5ea3d90177bbf18efaffc68f40ba86bf",
+          "sentence:sha256:79c38590205e6602466b7cdcd6072f51f71fa3f07e61273b7e83e2538a5f78fa",
+          "sentence:sha256:7bad991c74cba0d4a35ea7d072747ab10974de646676d35df7c93fc411668928",
+          "sentence:sha256:f89a8bea669a6cc7132895a651c3bd32fef465c8ca9528230833fffa07e32f5b"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:65bee7337b08c48cf71e98112e7f9aa27f70a134cc59f243def6ba0be7e0b47e",
+          "sentence:sha256:666cc9baa7ab10802cd67d62d32dba5d5ea3d90177bbf18efaffc68f40ba86bf",
+          "sentence:sha256:79c38590205e6602466b7cdcd6072f51f71fa3f07e61273b7e83e2538a5f78fa",
+          "sentence:sha256:f89a8bea669a6cc7132895a651c3bd32fef465c8ca9528230833fffa07e32f5b"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-tense-recognition:passe-compose-form-5",
+        "skillId": "reconnaitre_passe_compose::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:passe-compose-form-5",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:0de0b67a4009639762d0f9a20ce156be30ab62cecc48f800c2514d06ca283268",
+          "sentence:sha256:483600a8d300049be82a853e836f7f60b4db2bb4867bf2e1f9e2c4d197dd78cd",
+          "sentence:sha256:7bad991c74cba0d4a35ea7d072747ab10974de646676d35df7c93fc411668928",
+          "sentence:sha256:8bc29cd7550bb10fa432ea98dfb3c1517188a3811647f1a1ef8eb63a6803124c",
+          "sentence:sha256:b5557d456c721836e7bec087f06ed33b85e04edd368d202ffad43de9ffb6bca4"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:0de0b67a4009639762d0f9a20ce156be30ab62cecc48f800c2514d06ca283268",
+          "sentence:sha256:483600a8d300049be82a853e836f7f60b4db2bb4867bf2e1f9e2c4d197dd78cd",
+          "sentence:sha256:8bc29cd7550bb10fa432ea98dfb3c1517188a3811647f1a1ef8eb63a6803124c",
+          "sentence:sha256:b5557d456c721836e7bec087f06ed33b85e04edd368d202ffad43de9ffb6bca4"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-tense-recognition:passe-compose-form-6",
+        "skillId": "reconnaitre_passe_compose::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:passe-compose-form-6",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:1635a4a5ab21a9c9ebd29bc64264e02774199e47b747d1acda50896ce6f945bb",
+          "sentence:sha256:4ffb412f3dbe81689b22ddeca57da898be9876ce21b0bcb6fcb32305817cb264",
+          "sentence:sha256:7bad991c74cba0d4a35ea7d072747ab10974de646676d35df7c93fc411668928",
+          "sentence:sha256:b78065b9b3963f3faa72af3ad40364dc86a165d731cfa1cff9ab8c4f3fd5981c",
+          "sentence:sha256:d8e9fe4ea465707113eecab092f492fc20091aadeba8c287f8b1604cc123886b"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:1635a4a5ab21a9c9ebd29bc64264e02774199e47b747d1acda50896ce6f945bb",
+          "sentence:sha256:4ffb412f3dbe81689b22ddeca57da898be9876ce21b0bcb6fcb32305817cb264",
+          "sentence:sha256:b78065b9b3963f3faa72af3ad40364dc86a165d731cfa1cff9ab8c4f3fd5981c",
+          "sentence:sha256:d8e9fe4ea465707113eecab092f492fc20091aadeba8c287f8b1604cc123886b"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-tense-recognition:passe-compose-form-7",
+        "skillId": "reconnaitre_passe_compose::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:passe-compose-form-7",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:2d4344422955b18f513a257e05c45d22f13bb5f37ed839fdf6278f535bcada90",
+          "sentence:sha256:76a9f26015a38ddbecef9d9eb6b28fd9116f38975b5c0a35e8ff7c4fdf3ef344",
+          "sentence:sha256:7bad991c74cba0d4a35ea7d072747ab10974de646676d35df7c93fc411668928",
+          "sentence:sha256:8173db356da11b386ac79ae1fec04cbbc741e85f41b5e7af59631f7930d5ccce",
+          "sentence:sha256:b16e759095189434ffa00df31d9c9e54f25a58d893306cc22b9f7a46cea540da"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:2d4344422955b18f513a257e05c45d22f13bb5f37ed839fdf6278f535bcada90",
+          "sentence:sha256:76a9f26015a38ddbecef9d9eb6b28fd9116f38975b5c0a35e8ff7c4fdf3ef344",
+          "sentence:sha256:8173db356da11b386ac79ae1fec04cbbc741e85f41b5e7af59631f7930d5ccce",
+          "sentence:sha256:b16e759095189434ffa00df31d9c9e54f25a58d893306cc22b9f7a46cea540da"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-tense-recognition:passe-compose-form-8",
+        "skillId": "reconnaitre_passe_compose::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:passe-compose-form-8",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:015352d49d4314f5436d7144a7905de688d03f48203bc06079a9a318d1a65658",
+          "sentence:sha256:079390f959efa7e03d473a25680ffd6f626770a2687cf077d13236a9f375b256",
+          "sentence:sha256:340207ad3f6330bcaaa502186e822d2a147d0a1825ba8bc83b797a6c9c2751ef",
+          "sentence:sha256:7bad991c74cba0d4a35ea7d072747ab10974de646676d35df7c93fc411668928",
+          "sentence:sha256:dc1cdc40f62840bfadf2f7d4a648fe1536280010a179fc70b2d129f7ee5c0e9d"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:015352d49d4314f5436d7144a7905de688d03f48203bc06079a9a318d1a65658",
+          "sentence:sha256:079390f959efa7e03d473a25680ffd6f626770a2687cf077d13236a9f375b256",
+          "sentence:sha256:340207ad3f6330bcaaa502186e822d2a147d0a1825ba8bc83b797a6c9c2751ef",
+          "sentence:sha256:dc1cdc40f62840bfadf2f7d4a648fe1536280010a179fc70b2d129f7ee5c0e9d"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-tense-recognition:passe-compose-form-9",
+        "skillId": "reconnaitre_passe_compose::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:passe-compose-form-9",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:33e606bcbc13397cda90cc7ff23cf63adddaa228ff77ef678e5872c46fdea463",
+          "sentence:sha256:6c58506f6863bac339368bb8cc446e00061eb9e6f896dc2cd60f86a5be19df69",
+          "sentence:sha256:7bad991c74cba0d4a35ea7d072747ab10974de646676d35df7c93fc411668928",
+          "sentence:sha256:9ca530f8ae734390a762e060897c8634a57b811d3d52646f2800fe6d28b42ab0",
+          "sentence:sha256:ead52332afe3de26d1d0323008adc32039c1f0bcf61dbaa915ac6d5d3440fae0"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:33e606bcbc13397cda90cc7ff23cf63adddaa228ff77ef678e5872c46fdea463",
+          "sentence:sha256:6c58506f6863bac339368bb8cc446e00061eb9e6f896dc2cd60f86a5be19df69",
+          "sentence:sha256:9ca530f8ae734390a762e060897c8634a57b811d3d52646f2800fe6d28b42ab0",
+          "sentence:sha256:ead52332afe3de26d1d0323008adc32039c1f0bcf61dbaa915ac6d5d3440fae0"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-tense-recognition:passe-compose-form-10",
+        "skillId": "reconnaitre_passe_compose::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:passe-compose-form-10",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:00f7bdbe4ad1f1cd73c80faa15782cf61a9da3201a6e97c7f59054cc89f836ed",
+          "sentence:sha256:7bad991c74cba0d4a35ea7d072747ab10974de646676d35df7c93fc411668928",
+          "sentence:sha256:86909443de943be5f79f90d3c2b26f2a045a3667302eccf05a8a8023e1cc2a3b",
+          "sentence:sha256:cd9f69a7524928a1b033f79207f64724ad8af5db3330f2d737894d9e6a3c9a37",
+          "sentence:sha256:ec399570520f553efdb70c6f9489894210b9c1be1022b87a14f358ed584a5404"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:00f7bdbe4ad1f1cd73c80faa15782cf61a9da3201a6e97c7f59054cc89f836ed",
+          "sentence:sha256:86909443de943be5f79f90d3c2b26f2a045a3667302eccf05a8a8023e1cc2a3b",
+          "sentence:sha256:cd9f69a7524928a1b033f79207f64724ad8af5db3330f2d737894d9e6a3c9a37",
+          "sentence:sha256:ec399570520f553efdb70c6f9489894210b9c1be1022b87a14f358ed584a5404"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-tense-recognition:passe-compose-form-11",
+        "skillId": "reconnaitre_passe_compose::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:passe-compose-form-11",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:7bad991c74cba0d4a35ea7d072747ab10974de646676d35df7c93fc411668928",
+          "sentence:sha256:897f871cf4ef54147f177e5fbf0ec25d1f110a858a1804b95a1d635d320e9adf",
+          "sentence:sha256:8b4815b3f462042ffb89e49885bac4ade1a465efd8357883f31daea6e8e4b2b8",
+          "sentence:sha256:db0f39e5f12bbb2b7ace753c9b26cfa9ba04e6d1c5cbe65bde41d622458b7699",
+          "sentence:sha256:dd9a7bd6164f279fb810a4c870d947a40df1b8b181bb0879a9430b27f5cba25e"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:897f871cf4ef54147f177e5fbf0ec25d1f110a858a1804b95a1d635d320e9adf",
+          "sentence:sha256:8b4815b3f462042ffb89e49885bac4ade1a465efd8357883f31daea6e8e4b2b8",
+          "sentence:sha256:db0f39e5f12bbb2b7ace753c9b26cfa9ba04e6d1c5cbe65bde41d622458b7699",
+          "sentence:sha256:dd9a7bd6164f279fb810a4c870d947a40df1b8b181bb0879a9430b27f5cba25e"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-tense-recognition:passe-compose-form-12",
+        "skillId": "reconnaitre_passe_compose::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:passe-compose-form-12",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:21ee2d6a61dd480a50d25eea7efd3c9546c22233d94187388c37ede9420b0923",
+          "sentence:sha256:6271265b7ab47de63b08d5fbcad1ee1412f33f8e55fdba84adb6a428100bc698",
+          "sentence:sha256:7bad991c74cba0d4a35ea7d072747ab10974de646676d35df7c93fc411668928",
+          "sentence:sha256:ae98d8643a3d9b8cc1b19a985af0a4976ab02bbaa2247877798efa8532601199",
+          "sentence:sha256:dc32ebd8cf2596e9b15c96b0fcad6ff81fd58365b6b9a8c46fdd5551075ddc9f"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:21ee2d6a61dd480a50d25eea7efd3c9546c22233d94187388c37ede9420b0923",
+          "sentence:sha256:6271265b7ab47de63b08d5fbcad1ee1412f33f8e55fdba84adb6a428100bc698",
+          "sentence:sha256:ae98d8643a3d9b8cc1b19a985af0a4976ab02bbaa2247877798efa8532601199",
+          "sentence:sha256:dc32ebd8cf2596e9b15c96b0fcad6ff81fd58365b6b9a8c46fdd5551075ddc9f"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-tense-recognition:plus-que-parfait-form-1",
+        "skillId": "reconnaitre_plus_que_parfait::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:plus-que-parfait-form-1",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:7809debe499cc0540b021eeeeea2ae5117043c6b3434206cad1ddfe31bb338d9",
+          "sentence:sha256:788848687a1920401d85eafa29d976a00f0c6b5c5434c565c32a840535893e06",
+          "sentence:sha256:911cb98a97e7417eb97682f414ad7eef634cb3fe5534f2eb664b3509935217f1",
+          "sentence:sha256:c504e037d3422e9344eb805a9de7d362a999e5079c0dc46ca313fe7df31b145f",
+          "sentence:sha256:d4a25a30424bda34bda1d292e557c88d3de1e952fd7875639b16a32aa15a7063"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:7809debe499cc0540b021eeeeea2ae5117043c6b3434206cad1ddfe31bb338d9",
+          "sentence:sha256:911cb98a97e7417eb97682f414ad7eef634cb3fe5534f2eb664b3509935217f1",
+          "sentence:sha256:c504e037d3422e9344eb805a9de7d362a999e5079c0dc46ca313fe7df31b145f",
+          "sentence:sha256:d4a25a30424bda34bda1d292e557c88d3de1e952fd7875639b16a32aa15a7063"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-tense-recognition:plus-que-parfait-form-2",
+        "skillId": "reconnaitre_plus_que_parfait::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:plus-que-parfait-form-2",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:046d1a99798d662c7b86c12d4ef94dc476440dc70ebe431f1c42c8638583e3aa",
+          "sentence:sha256:1bf7063af9d9898d17caeb5bde50666a5cab11c26598008dfec043fec8d5ba2c",
+          "sentence:sha256:4f38100423505b2de460f982d69200bcc7f92eb9f45f6d2d6b778a10c24165be",
+          "sentence:sha256:788848687a1920401d85eafa29d976a00f0c6b5c5434c565c32a840535893e06",
+          "sentence:sha256:d733917838380bb55e72d0635679bff1ed08b709333f751bd4b1e4ade24e2208"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:046d1a99798d662c7b86c12d4ef94dc476440dc70ebe431f1c42c8638583e3aa",
+          "sentence:sha256:1bf7063af9d9898d17caeb5bde50666a5cab11c26598008dfec043fec8d5ba2c",
+          "sentence:sha256:4f38100423505b2de460f982d69200bcc7f92eb9f45f6d2d6b778a10c24165be",
+          "sentence:sha256:d733917838380bb55e72d0635679bff1ed08b709333f751bd4b1e4ade24e2208"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-tense-recognition:plus-que-parfait-form-3",
+        "skillId": "reconnaitre_plus_que_parfait::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:plus-que-parfait-form-3",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:788848687a1920401d85eafa29d976a00f0c6b5c5434c565c32a840535893e06",
+          "sentence:sha256:86e58fb7b519dfce9478a23232e52c2d633e70b14ef09b3f9528c3b7a5920596",
+          "sentence:sha256:950fc3c875bdd4eeff17841096c0c857e13c5377b1009820b090475024f57ab5",
+          "sentence:sha256:b44b5dd69fa68c750ac473ea5e7e88b764b4f8e2a6a270c5b54eb54ef50cf650",
+          "sentence:sha256:e15859559122e124b1fcc29cde3a6ec393f60f55453e7c2499511620030532a7"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:86e58fb7b519dfce9478a23232e52c2d633e70b14ef09b3f9528c3b7a5920596",
+          "sentence:sha256:950fc3c875bdd4eeff17841096c0c857e13c5377b1009820b090475024f57ab5",
+          "sentence:sha256:b44b5dd69fa68c750ac473ea5e7e88b764b4f8e2a6a270c5b54eb54ef50cf650",
+          "sentence:sha256:e15859559122e124b1fcc29cde3a6ec393f60f55453e7c2499511620030532a7"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-tense-recognition:plus-que-parfait-form-4",
+        "skillId": "reconnaitre_plus_que_parfait::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:plus-que-parfait-form-4",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:788848687a1920401d85eafa29d976a00f0c6b5c5434c565c32a840535893e06",
+          "sentence:sha256:c35f838e567883adf9df6334e60d2e4130af2c797f74f9854753cfecb5d9929f",
+          "sentence:sha256:cfb472f9f9891f6b44fc26802cfce8db55475d8d0ee7593466616ae50a918065",
+          "sentence:sha256:ef5910de6b70359cade8a05f4e4ba401529b092bed4a9b4f8efe5b3de5a50572",
+          "sentence:sha256:f257a9bc08a83699b0342df24c8b7586e2a8466f0d09689ef0c166b410da8dd9"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:c35f838e567883adf9df6334e60d2e4130af2c797f74f9854753cfecb5d9929f",
+          "sentence:sha256:cfb472f9f9891f6b44fc26802cfce8db55475d8d0ee7593466616ae50a918065",
+          "sentence:sha256:ef5910de6b70359cade8a05f4e4ba401529b092bed4a9b4f8efe5b3de5a50572",
+          "sentence:sha256:f257a9bc08a83699b0342df24c8b7586e2a8466f0d09689ef0c166b410da8dd9"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-tense-recognition:plus-que-parfait-form-5",
+        "skillId": "reconnaitre_plus_que_parfait::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:plus-que-parfait-form-5",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:1b089136eb6560252ac4c0ba43760ca29506014a3ae0a35ad04c0bce05e22d12",
+          "sentence:sha256:655a22466075375e38ccec9e1b9342c005f2c5d9dd381e201303651603818ff4",
+          "sentence:sha256:66b572d9e0d7af062428d5455a85844dab65dde7f8db6a3f156fbb3133b5194c",
+          "sentence:sha256:788848687a1920401d85eafa29d976a00f0c6b5c5434c565c32a840535893e06",
+          "sentence:sha256:a2059e73f9ea634ebe7d57062705006f06d95c97daebbf91aa76427599e55d19"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:1b089136eb6560252ac4c0ba43760ca29506014a3ae0a35ad04c0bce05e22d12",
+          "sentence:sha256:655a22466075375e38ccec9e1b9342c005f2c5d9dd381e201303651603818ff4",
+          "sentence:sha256:66b572d9e0d7af062428d5455a85844dab65dde7f8db6a3f156fbb3133b5194c",
+          "sentence:sha256:a2059e73f9ea634ebe7d57062705006f06d95c97daebbf91aa76427599e55d19"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-tense-recognition:plus-que-parfait-form-6",
+        "skillId": "reconnaitre_plus_que_parfait::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:plus-que-parfait-form-6",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:2b7f1259620545cc635dcdf15d72dc8ac714f9f03a25bb3c9b71846b163f2a0a",
+          "sentence:sha256:39bdeb2510272508a530d67532ba2fa0b52c0e626b7163a03cc95b7a318c8aeb",
+          "sentence:sha256:788848687a1920401d85eafa29d976a00f0c6b5c5434c565c32a840535893e06",
+          "sentence:sha256:aace3f2ab11f4947710bafd05199652bbeb66f20f8a56329b15d058944692f1d",
+          "sentence:sha256:ae0545984f6cdf4d32c451a18f315c940ecf16de9fc34d969c3593b5e411fde0"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:2b7f1259620545cc635dcdf15d72dc8ac714f9f03a25bb3c9b71846b163f2a0a",
+          "sentence:sha256:39bdeb2510272508a530d67532ba2fa0b52c0e626b7163a03cc95b7a318c8aeb",
+          "sentence:sha256:aace3f2ab11f4947710bafd05199652bbeb66f20f8a56329b15d058944692f1d",
+          "sentence:sha256:ae0545984f6cdf4d32c451a18f315c940ecf16de9fc34d969c3593b5e411fde0"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-tense-recognition:plus-que-parfait-form-7",
+        "skillId": "reconnaitre_plus_que_parfait::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:plus-que-parfait-form-7",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:0dc922d5176c984c5df0e2359541844789dbe7588c00272a0b6c5f5a43a62b55",
+          "sentence:sha256:3ae4d22ce6379025b9bb4175eface5bba5d13b9986b372100135f3e6e8cc027c",
+          "sentence:sha256:788848687a1920401d85eafa29d976a00f0c6b5c5434c565c32a840535893e06",
+          "sentence:sha256:7e8f5a4ee7e102cbe496440a2486b95f82c865748ee6c1405bb832157006dea5",
+          "sentence:sha256:e5f5bb635f292d8e8aeb3b9b6798136f6be384b71ab23e9c5be0be43e3647be4"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:0dc922d5176c984c5df0e2359541844789dbe7588c00272a0b6c5f5a43a62b55",
+          "sentence:sha256:3ae4d22ce6379025b9bb4175eface5bba5d13b9986b372100135f3e6e8cc027c",
+          "sentence:sha256:7e8f5a4ee7e102cbe496440a2486b95f82c865748ee6c1405bb832157006dea5",
+          "sentence:sha256:e5f5bb635f292d8e8aeb3b9b6798136f6be384b71ab23e9c5be0be43e3647be4"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-tense-recognition:plus-que-parfait-form-8",
+        "skillId": "reconnaitre_plus_que_parfait::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:plus-que-parfait-form-8",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:1ce0f3fb80561a815544c081361cb4a9d8dd874c1f0e27951809e51884aa0446",
+          "sentence:sha256:788848687a1920401d85eafa29d976a00f0c6b5c5434c565c32a840535893e06",
+          "sentence:sha256:8a129a5d56d2310ff44b2eacf9d07d8272b8b2152f3d42bf5ae626795d4b6e8d",
+          "sentence:sha256:8fa882d326cb6860ed545bd49f03a6a1ce4f116019a19dcb45f2e9f3f2f822b1",
+          "sentence:sha256:ed82171af95760a07b25290caad14d6a79baa16f892936919156a14a7f1f94ac"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:1ce0f3fb80561a815544c081361cb4a9d8dd874c1f0e27951809e51884aa0446",
+          "sentence:sha256:8a129a5d56d2310ff44b2eacf9d07d8272b8b2152f3d42bf5ae626795d4b6e8d",
+          "sentence:sha256:8fa882d326cb6860ed545bd49f03a6a1ce4f116019a19dcb45f2e9f3f2f822b1",
+          "sentence:sha256:ed82171af95760a07b25290caad14d6a79baa16f892936919156a14a7f1f94ac"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-tense-recognition:plus-que-parfait-form-9",
+        "skillId": "reconnaitre_plus_que_parfait::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:plus-que-parfait-form-9",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:648a6e2ed05f27f8d797f89e712ffa24539691443304571a52945af31a19f194",
+          "sentence:sha256:788848687a1920401d85eafa29d976a00f0c6b5c5434c565c32a840535893e06",
+          "sentence:sha256:a304d84b4e991d1132fc7b471cab75070e36101e5a19abb57b0f4edf21a2c04c",
+          "sentence:sha256:a4ceb3a00b4dc6568d9910cd13b2eff3da94cc5b74a4a0c5b61b9cca21d19cf3",
+          "sentence:sha256:d0503a141403e80c5806c451be14a4725fc11e8a399ecac5bc7e19b81c75b651"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:648a6e2ed05f27f8d797f89e712ffa24539691443304571a52945af31a19f194",
+          "sentence:sha256:a304d84b4e991d1132fc7b471cab75070e36101e5a19abb57b0f4edf21a2c04c",
+          "sentence:sha256:a4ceb3a00b4dc6568d9910cd13b2eff3da94cc5b74a4a0c5b61b9cca21d19cf3",
+          "sentence:sha256:d0503a141403e80c5806c451be14a4725fc11e8a399ecac5bc7e19b81c75b651"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-tense-recognition:plus-que-parfait-form-10",
+        "skillId": "reconnaitre_plus_que_parfait::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:plus-que-parfait-form-10",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:16a83f5c445613184d8816143cd0dce28324970604ecbb8c99e42709ca845d94",
+          "sentence:sha256:66a6e5ca40dd045d7718fc53c16e5c3f90ccae9ff7f3e8244294db0189480d95",
+          "sentence:sha256:788848687a1920401d85eafa29d976a00f0c6b5c5434c565c32a840535893e06",
+          "sentence:sha256:8b4e947b4f3dc4c0168e9ed5779bbe9282c1651eb09fdada8fb0bf84d8982c7d",
+          "sentence:sha256:fb0e053af4a8e6e896592102e73f1adb03af003fea49a4b73513ae90e8a3024e"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:16a83f5c445613184d8816143cd0dce28324970604ecbb8c99e42709ca845d94",
+          "sentence:sha256:66a6e5ca40dd045d7718fc53c16e5c3f90ccae9ff7f3e8244294db0189480d95",
+          "sentence:sha256:8b4e947b4f3dc4c0168e9ed5779bbe9282c1651eb09fdada8fb0bf84d8982c7d",
+          "sentence:sha256:fb0e053af4a8e6e896592102e73f1adb03af003fea49a4b73513ae90e8a3024e"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-tense-recognition:plus-que-parfait-form-11",
+        "skillId": "reconnaitre_plus_que_parfait::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:plus-que-parfait-form-11",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:1073800f259a0d0146b37f9338e25720874b93e231fb820699aa5981e8c63618",
+          "sentence:sha256:184c3fa4b55edcc15bada0d0057c0939c9fbac3af4d08536e3c398cba81065ca",
+          "sentence:sha256:788848687a1920401d85eafa29d976a00f0c6b5c5434c565c32a840535893e06",
+          "sentence:sha256:c6b1d5fd1ca34e2dcb045e296f67b76489e8115ad0e517ad8d2d7e67fdf2dd4c",
+          "sentence:sha256:fed677242ca3ac64b4390395c6b38289e4b5f506c41613309305aa461dc62fb3"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:1073800f259a0d0146b37f9338e25720874b93e231fb820699aa5981e8c63618",
+          "sentence:sha256:184c3fa4b55edcc15bada0d0057c0939c9fbac3af4d08536e3c398cba81065ca",
+          "sentence:sha256:c6b1d5fd1ca34e2dcb045e296f67b76489e8115ad0e517ad8d2d7e67fdf2dd4c",
+          "sentence:sha256:fed677242ca3ac64b4390395c6b38289e4b5f506c41613309305aa461dc62fb3"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-tense-recognition:plus-que-parfait-form-12",
+        "skillId": "reconnaitre_plus_que_parfait::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:plus-que-parfait-form-12",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:0b07bcad001083fbd115b141cfde448a3237716605a8cdcf42b61c20b0fcd597",
+          "sentence:sha256:788848687a1920401d85eafa29d976a00f0c6b5c5434c565c32a840535893e06",
+          "sentence:sha256:7cf336db4f300c950055b9b8fd9c400f6e7ca6c5b27af00496e95a553557729a",
+          "sentence:sha256:cc6f9324604ec8e3ef08f7b4c2db6ff2a1d3a0c46d33a71919da716c5282d30a",
+          "sentence:sha256:f3ff3b5b74b875ddab61c6b269fe3702e36dfc173c823c4e3c96ab3a6e466668"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:0b07bcad001083fbd115b141cfde448a3237716605a8cdcf42b61c20b0fcd597",
+          "sentence:sha256:7cf336db4f300c950055b9b8fd9c400f6e7ca6c5b27af00496e95a553557729a",
+          "sentence:sha256:cc6f9324604ec8e3ef08f7b4c2db6ff2a1d3a0c46d33a71919da716c5282d30a",
+          "sentence:sha256:f3ff3b5b74b875ddab61c6b269fe3702e36dfc173c823c4e3c96ab3a6e466668"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
         "id": "v3-tense-recognition:conditionnel-form-1",
         "skillId": "reconnaitre_conditionnel_present::reading-receptive",
         "mode": "recognition",
@@ -62376,7 +63342,7 @@
       }
     ],
     "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
-    "bankChecksum": "sha256:495ea2b1097202cb44e5b985d0302a596a66443b90bce9e967d8dc5d79fcfeb4",
+    "bankChecksum": "sha256:aa621686f09fb3361b17eadfc81e47ab12b53606fc0f2a4c1574e935406a6451",
     "unsupportedEvidenceItemKeys": [
       "local-reading-v1:inferer_chronologie_implicite:receptive:foundation",
       "local-reading-v1:inferer_chronologie_implicite:receptive:core",
@@ -62391,7 +63357,7 @@
       "mode": "parallel_review",
       "authorization": "product-owner-request-2026-09-11",
       "reviewOwner": "product_owner",
-      "bankChecksum": "sha256:495ea2b1097202cb44e5b985d0302a596a66443b90bce9e967d8dc5d79fcfeb4",
+      "bankChecksum": "sha256:aa621686f09fb3361b17eadfc81e47ab12b53606fc0f2a4c1574e935406a6451",
       "questionChecksums": {
         "review-draft-v1:construction_pronom_relatif:controlled_production:foundation": "sha256:2731933f71f4a1408115b2457d07ee69469fdac2e7a6e57fb69c112e2a0c32dc",
         "review-draft-v1:construction_pronom_relatif:controlled_production:core": "sha256:d8b92f78c30ddfa7d1598405eb512dce2f2b476fdd151dd3a79c9476a729cc56",
@@ -66356,6 +67322,42 @@
         "v3-spelling:nasal-lent": "sha256:66aa3cf028f3b2acbf3acbc4f9d5e2dd1ce6e8360de3c2a011d894c772af5a03",
         "v3-spelling:nasal-bonbon": "sha256:ffa321e32029c4d30da68fd5ecf10c58f0ca4a6cf95d6801ee564e208edf2ecc",
         "v3-spelling:nasal-bonbonne": "sha256:0db9e1b83998f4a41627815325e1361783e3ce8ebe14c6b05481329d2d1d7083",
+        "v3-tense-recognition:auxiliary-form-1": "sha256:43110fed889ed7905636dc43049d723ae4422141a0d206786357bc5b720e4ca4",
+        "v3-tense-recognition:auxiliary-form-2": "sha256:11ba4011f812ddedace991936c9140d93c0791cda91cd223e2ff2992753fa658",
+        "v3-tense-recognition:auxiliary-form-3": "sha256:ff1e996e0bb5bccc840f2252c55327ae4cc865e00d15460efdd319c211d32762",
+        "v3-tense-recognition:auxiliary-form-4": "sha256:4c9232b9e5c8fa15c0946239398efb6a722c77a61713a382319042dfcf9590c2",
+        "v3-tense-recognition:auxiliary-form-5": "sha256:30d61f15b21a2e8cc3265f29d41c1b35a63102eca35e1a657822314e49892fe3",
+        "v3-tense-recognition:auxiliary-form-6": "sha256:43e4272bad24ff6e0e3f9c91c75c50520dd2e2071794577def113814ce76042e",
+        "v3-tense-recognition:auxiliary-form-7": "sha256:e24a1f42144cbb5328358db2b3925cb60176cfca08393a028827ad596c3724d9",
+        "v3-tense-recognition:auxiliary-form-8": "sha256:1ce659a749e29b2d9be2bb268bce3a987085a3fed1995b6baa75d85282a10eb3",
+        "v3-tense-recognition:auxiliary-form-9": "sha256:c3925e885079008d52e2817e78b98ab27ba31ad9a7dab88656dafaeba88bbe77",
+        "v3-tense-recognition:auxiliary-form-10": "sha256:1353238d138117795368991c2a919ac447817493bc7ca3e1295b53c792384542",
+        "v3-tense-recognition:auxiliary-form-11": "sha256:01181250f59cfde6699143f157448a792d1749682d8a6ff9b21fc5f2b59d509d",
+        "v3-tense-recognition:auxiliary-form-12": "sha256:9fbac49d5cfb14c2b32d938dbdb51461ef0b83b8cc20020cb8cba9401cf16027",
+        "v3-tense-recognition:passe-compose-form-1": "sha256:f27da2b97020037c6faa32f59b6402080f319688e480d8275d749152097d806c",
+        "v3-tense-recognition:passe-compose-form-2": "sha256:2cf5c1199bd205893309ac1eca0c252f7cb43c644c67b6ff5a7b23029768fa62",
+        "v3-tense-recognition:passe-compose-form-3": "sha256:453a7c46b97389345684f24ba4f0b8a3ac0e0c01e6982d0d8c2aaaf3e1852cd8",
+        "v3-tense-recognition:passe-compose-form-4": "sha256:2b562245886c1f328b3f46e3a03c06a170e3cb7d499f3f94c10a935127ec9666",
+        "v3-tense-recognition:passe-compose-form-5": "sha256:2b227c7b9ca867c8420b5ae4f73a23dca1bb1737192a742f1570938f1ec8a08c",
+        "v3-tense-recognition:passe-compose-form-6": "sha256:c388643accea00a208d3eab783aff73fd23197025e9324cf04a801943a4c63a6",
+        "v3-tense-recognition:passe-compose-form-7": "sha256:267785f041ac847c47b3526856518fe51bc429b245fe31ecaadd4f2d586298f7",
+        "v3-tense-recognition:passe-compose-form-8": "sha256:6880087a6ef1e3f2bd6a230300cb6b9b3655bd6def14edbb7978b847c14e1e2f",
+        "v3-tense-recognition:passe-compose-form-9": "sha256:9811d09073d05c152f5db34aa13bbcf8b4ef582bb0a25b33530f869585a5e997",
+        "v3-tense-recognition:passe-compose-form-10": "sha256:01defa5bb61b0af2160348afd0e74c77ca79d737156c293ed8081ddecdf58509",
+        "v3-tense-recognition:passe-compose-form-11": "sha256:fe408fcefc1aa4cb8f50fb56fa45dcab026e09242982755dd3cb947eef2d6732",
+        "v3-tense-recognition:passe-compose-form-12": "sha256:bf4696eae3c9a49340f2b5596f0b3856f67df01be5792dc8b5342d59c5db234b",
+        "v3-tense-recognition:plus-que-parfait-form-1": "sha256:f12d904640583fe908bc3655b98cf54a3127601541ab8048ff7aa1d22fa6e2b1",
+        "v3-tense-recognition:plus-que-parfait-form-2": "sha256:4792572aaa38bab1a5b9dc6a33cd7a16f3b78827e6a2d65b1a8d9438e8b9650b",
+        "v3-tense-recognition:plus-que-parfait-form-3": "sha256:0925a5dfc2256f96e862d765de5ea8d35aa37337fe910bd7c327974e3b03d8cc",
+        "v3-tense-recognition:plus-que-parfait-form-4": "sha256:2f418043d03b757609830e3a3026fbbbd36a22cca9459606c2537f01ca2601fa",
+        "v3-tense-recognition:plus-que-parfait-form-5": "sha256:6e6e8c7ec9d7b1b11c365378aa23cac1cc7699a2e9fd81c78c6afa69d1eba02b",
+        "v3-tense-recognition:plus-que-parfait-form-6": "sha256:f979eb69d567ba7d57de9171a62bbab044d18d4f1fb249ecdebff19131db9c02",
+        "v3-tense-recognition:plus-que-parfait-form-7": "sha256:c6c54abe98c842292cc8ded68af6eb5b9e3a9691d2ace3671f3c9677e1254143",
+        "v3-tense-recognition:plus-que-parfait-form-8": "sha256:acf74e6a0f59b995f2479047131425f676f8220e147c5a1c861159d3faf706f9",
+        "v3-tense-recognition:plus-que-parfait-form-9": "sha256:e5745ce140dde500cd49e2b5c196182d775af189c95c3d0bc55f8f738f4b2550",
+        "v3-tense-recognition:plus-que-parfait-form-10": "sha256:0ab9af4173e42e9f010e9e078ee4b46e30481e1b7949d80bebad6451ca0d647a",
+        "v3-tense-recognition:plus-que-parfait-form-11": "sha256:26ca687973cc51907c93b00aa42638a20f4046d0b054b645e86149214a510950",
+        "v3-tense-recognition:plus-que-parfait-form-12": "sha256:98a447d4ce5caddc4fd687c7a829f8f0ad94d153775ec97825ee1eb4e2aa55e5",
         "v3-tense-recognition:conditionnel-form-1": "sha256:b4ad54fbe9123ad64fdabc0f6e00f05d9519dad25fed81f71b71288457e7fa85",
         "v3-tense-recognition:conditionnel-form-2": "sha256:996ed36d56b4cce08393854fdf2c1725ed8b7496afc03e0f5f24471242cc227b",
         "v3-tense-recognition:conditionnel-form-3": "sha256:42121f3722c3d75876d5a7e45d37bb7da4be724a7d56b1ecdd77727e8a528574",
@@ -66516,6 +67518,9 @@
         "v3-y-en:en_thing-18": "sha256:1de3bba6c34a338f57ee6b482b6a389ca0b053f6059a6c16d61d4a97fc48e58d"
       },
       "teachingChecksums": {
+        "french-v3-teaching:auxiliary:recognition": "sha256:4db6f40fa3d1a6dc2d3fd40d34de7b36d075626010326aae281464ba2906ad03",
+        "french-v3-teaching:passe-compose:recognition": "sha256:d098cb2decb20dce006e6b65bf8984699c448d4fc43c7ad114e4eed281e32808",
+        "french-v3-teaching:plus-que-parfait:recognition": "sha256:6492199a93bea91146be60523b63fb5c30ab227447259c41c6f8928dd355ccde",
         "french-v3-teaching:conditionnel-present:aller": "sha256:fe727017c32ae4401c63691284ffeca5fccf32c80124525cb2ad087b7618f4cf",
         "french-v3-teaching:conditionnel-present:faire": "sha256:5e1ea45de15fe192e5bbc202fa46af73e78c7322427ad680bfc1bfcc66b0dc15",
         "french-v3-teaching:conditionnel-present:être": "sha256:bf3c571dbcc04be87471d2e005b75ee6284348ad5d0324e57f2e9b26455e1c12",
@@ -66634,8 +67639,8 @@
         "french-v3-teaching:present:verb:devoir": "sha256:c13d922c81d6cc107c0a637bcef10df64906ac817ac469c33dcac4ce47ed554a"
       }
     },
-    "facetChecksum": "sha256:8f4636092e9234e940f0397105c5729280f4e2326e4ff771c801dadadc23311b",
-    "poolChecksum": "sha256:39b5ea364f24efba31b7c88afa79ed90c634a183b165e2b8e18e3e95d5233b26",
+    "facetChecksum": "sha256:e7127168ac44630194f8f69db74913a5abd81fc5e72dbe457b1e956337ed11ed",
+    "poolChecksum": "sha256:b021575334171793701d83f28e2e7fae5e328855f60e04c4f3ab64d314262faf",
     "releaseScope": {
       "version": "french-granular-release-scope-v1",
       "assessmentSkillIds": [
@@ -66746,11 +67751,14 @@
         "produire_pronoms_y_en::writing-controlled-production::construction:en_thing",
         "produire_pronoms_y_en::writing-controlled-production::construction:y_place",
         "produire_pronoms_y_en::writing-controlled-production::construction:y_thing",
+        "reconnaitre_auxiliaire::reading-receptive",
         "reconnaitre_conditionnel_present::reading-receptive",
         "reconnaitre_futur_proche::reading-receptive",
         "reconnaitre_futur_simple::reading-receptive",
         "reconnaitre_imparfait::reading-receptive",
+        "reconnaitre_passe_compose::reading-receptive",
         "reconnaitre_passe_recent::reading-receptive",
+        "reconnaitre_plus_que_parfait::reading-receptive",
         "reconnaitre_present_indicatif::reading-receptive",
         "reconnaitre_radical_terminaison::reading-receptive",
         "resoudre_pronom_objet::all-receptive::text_type:narrative",
@@ -66864,11 +67872,14 @@
         "produire_pronoms_y_en::writing-controlled-production::construction:en_thing",
         "produire_pronoms_y_en::writing-controlled-production::construction:y_place",
         "produire_pronoms_y_en::writing-controlled-production::construction:y_thing",
+        "reconnaitre_auxiliaire::reading-receptive",
         "reconnaitre_conditionnel_present::reading-receptive",
         "reconnaitre_futur_proche::reading-receptive",
         "reconnaitre_futur_simple::reading-receptive",
         "reconnaitre_imparfait::reading-receptive",
+        "reconnaitre_passe_compose::reading-receptive",
         "reconnaitre_passe_recent::reading-receptive",
+        "reconnaitre_plus_que_parfait::reading-receptive",
         "reconnaitre_present_indicatif::reading-receptive",
         "reconnaitre_radical_terminaison::reading-receptive",
         "resoudre_pronom_objet::all-receptive::text_type:narrative",
@@ -66878,6 +67889,447 @@
     }
   },
   "teachingContent": [
+    {
+      "id": "french-v3-teaching:auxiliary:recognition",
+      "nodeKey": "reconnaitre_auxiliaire",
+      "mode": "recognition",
+      "status": "published_pending_review",
+      "titleFr": "Repérer le verbe qui aide à conjuguer",
+      "learnerQuestionFr": "Dans « elle a dansé », à quoi sert le petit mot « a » ?",
+      "steps": [
+        {
+          "exampleFr": "Elle danse. → Elle a dansé.",
+          "explanationFr": "Dans a dansé, deux mots forment ensemble le verbe au passé composé. A est le verbe avoir : il aide ici à conjuguer danser. Ce verbe qui aide s’appelle un auxiliaire."
+        },
+        {
+          "exampleFr": "Elle a dansé.\nElle est tombée hier.",
+          "explanationFr": "Avoir et être peuvent jouer ce rôle. Dansé et tombée sont les formes qui les accompagnent, appelées participes passés. Repère les deux morceaux ensemble."
+        },
+        {
+          "exampleFr": "Elle a un vélo.\nElle est sportive.",
+          "explanationFr": "Ici, avoir exprime ce qu’elle possède et être relie elle à sportive. Ils ne servent pas à former un temps composé. Voir avoir ou être ne suffit donc pas à reconnaître un auxiliaire."
+        },
+        {
+          "exampleFr": "Elle n’a pas dansé.\nElle avait dansé.",
+          "explanationFr": "La négation peut séparer l’auxiliaire du participe. L’auxiliaire peut aussi changer de temps : a et avait aident tous les deux à conjuguer danser."
+        }
+      ],
+      "takeawayFr": "Observe le rôle du mot : avoir ou être aide-t-il à conjuguer un autre verbe avec un participe passé ?",
+      "boundaryFr": "Cette leçon porte sur les temps composés. Être sert aussi à construire la voix passive, étudiée séparément. Reconnaître un auxiliaire ne suffit pas à choisir le bon ni à accorder le participe.",
+      "practice": [
+        {
+          "id": "auxiliary-guided-1",
+          "promptFr": "Dans quelle phrase le verbe avoir ou être sert-il d’auxiliaire ?",
+          "choices": [
+            "J’ai découpé le carton.",
+            "J’ai du carton.",
+            "J’ai une règle.",
+            "J’ai besoin de colle."
+          ],
+          "answerFr": "J’ai découpé le carton.",
+          "hintFr": "Cherche la forme d’avoir ou d’être qui accompagne le participe d’un autre verbe.",
+          "explanationFr": "Dans la réponse, avoir ou être aide à former le temps composé. Les autres phrases utilisent avoir ou être sans cette construction."
+        },
+        {
+          "id": "auxiliary-guided-2",
+          "promptFr": "Dans quelle phrase le verbe avoir ou être sert-il d’auxiliaire ?",
+          "choices": [
+            "Tu es revenu à neuf heures.",
+            "Tu es chez toi.",
+            "Tu es rapide.",
+            "Tu es mon ami."
+          ],
+          "answerFr": "Tu es revenu à neuf heures.",
+          "hintFr": "Cherche la forme d’avoir ou d’être qui accompagne le participe d’un autre verbe.",
+          "explanationFr": "Dans la réponse, avoir ou être aide à former le temps composé. Les autres phrases utilisent avoir ou être sans cette construction."
+        },
+        {
+          "id": "auxiliary-guided-3",
+          "promptFr": "Dans quelle phrase le verbe avoir ou être sert-il d’auxiliaire ?",
+          "choices": [
+            "Elle avait dessiné une étoile.",
+            "Elle avait un crayon.",
+            "Elle avait faim.",
+            "Elle avait une idée."
+          ],
+          "answerFr": "Elle avait dessiné une étoile.",
+          "hintFr": "Cherche la forme d’avoir ou d’être qui accompagne le participe d’un autre verbe.",
+          "explanationFr": "Dans la réponse, avoir ou être aide à former le temps composé. Les autres phrases utilisent avoir ou être sans cette construction."
+        },
+        {
+          "id": "auxiliary-guided-4",
+          "promptFr": "Dans quelle phrase le verbe avoir ou être sert-il d’auxiliaire ?",
+          "choices": [
+            "Nous sommes partis lundi.",
+            "Nous sommes lundi.",
+            "Nous sommes dehors.",
+            "Nous sommes élèves."
+          ],
+          "answerFr": "Nous sommes partis lundi.",
+          "hintFr": "Cherche la forme d’avoir ou d’être qui accompagne le participe d’un autre verbe.",
+          "explanationFr": "Dans la réponse, avoir ou être aide à former le temps composé. Les autres phrases utilisent avoir ou être sans cette construction."
+        },
+        {
+          "id": "auxiliary-guided-5",
+          "promptFr": "Dans quelle phrase le verbe avoir ou être sert-il d’auxiliaire ?",
+          "choices": [
+            "Vous n’avez pas oublié la clé.",
+            "Vous n’avez pas de clé.",
+            "Vous n’avez pas peur.",
+            "Vous n’avez pas le temps."
+          ],
+          "answerFr": "Vous n’avez pas oublié la clé.",
+          "hintFr": "Cherche la forme d’avoir ou d’être qui accompagne le participe d’un autre verbe.",
+          "explanationFr": "Dans la réponse, avoir ou être aide à former le temps composé. Les autres phrases utilisent avoir ou être sans cette construction."
+        },
+        {
+          "id": "auxiliary-guided-6",
+          "promptFr": "Dans quelle phrase le verbe avoir ou être sert-il d’auxiliaire ?",
+          "choices": [
+            "Ils étaient venus à pied.",
+            "Ils étaient heureux.",
+            "Ils étaient dans la rue.",
+            "Ils étaient trois."
+          ],
+          "answerFr": "Ils étaient venus à pied.",
+          "hintFr": "Cherche la forme d’avoir ou d’être qui accompagne le participe d’un autre verbe.",
+          "explanationFr": "Dans la réponse, avoir ou être aide à former le temps composé. Les autres phrases utilisent avoir ou être sans cette construction."
+        }
+      ],
+      "materialExposure": {
+        "sentences": [
+          "Elle danse. → Elle a dansé.",
+          "Elle a dansé.\nElle est tombée hier.",
+          "Elle a un vélo.\nElle est sportive.",
+          "Elle n’a pas dansé.\nElle avait dansé.",
+          "Dans quelle phrase le verbe avoir ou être sert-il d’auxiliaire ?",
+          "J’ai découpé le carton.",
+          "J’ai du carton.",
+          "J’ai une règle.",
+          "J’ai besoin de colle.",
+          "Dans quelle phrase le verbe avoir ou être sert-il d’auxiliaire ?",
+          "Tu es revenu à neuf heures.",
+          "Tu es chez toi.",
+          "Tu es rapide.",
+          "Tu es mon ami.",
+          "Dans quelle phrase le verbe avoir ou être sert-il d’auxiliaire ?",
+          "Elle avait dessiné une étoile.",
+          "Elle avait un crayon.",
+          "Elle avait faim.",
+          "Elle avait une idée.",
+          "Dans quelle phrase le verbe avoir ou être sert-il d’auxiliaire ?",
+          "Nous sommes partis lundi.",
+          "Nous sommes lundi.",
+          "Nous sommes dehors.",
+          "Nous sommes élèves.",
+          "Dans quelle phrase le verbe avoir ou être sert-il d’auxiliaire ?",
+          "Vous n’avez pas oublié la clé.",
+          "Vous n’avez pas de clé.",
+          "Vous n’avez pas peur.",
+          "Vous n’avez pas le temps.",
+          "Dans quelle phrase le verbe avoir ou être sert-il d’auxiliaire ?",
+          "Ils étaient venus à pied.",
+          "Ils étaient heureux.",
+          "Ils étaient dans la rue.",
+          "Ils étaient trois."
+        ]
+      },
+      "assessmentExposureIds": []
+    },
+    {
+      "id": "french-v3-teaching:passe-compose:recognition",
+      "nodeKey": "reconnaitre_passe_compose",
+      "mode": "recognition",
+      "status": "published_pending_review",
+      "titleFr": "Reconnaître le passé composé",
+      "learnerQuestionFr": "Que remarques-tu dans « nous avons chanté » ?",
+      "steps": [
+        {
+          "exampleFr": "Nous chantons. → Nous avons chanté.",
+          "explanationFr": "Avons chanté présente ici l’action comme accomplie. Le verbe a deux morceaux : avons, l’auxiliaire avoir au présent, et chanté, le participe passé de chanter. Cet ensemble est au passé composé."
+        },
+        {
+          "exampleFr": "Il est venu hier.\nElle est venue hier.",
+          "explanationFr": "Le passé composé peut aussi utiliser être au présent. Dans est venu et est venue, le temps reste le même malgré la différence d’écriture du participe."
+        },
+        {
+          "exampleFr": "Nous avons chanté.\nNous avions chanté.",
+          "explanationFr": "Le temps de l’auxiliaire fait la différence : avons est au présent, donc avons chanté est au passé composé. Avions est à l’imparfait : avions chanté est au plus-que-parfait."
+        },
+        {
+          "exampleFr": "Elle n’a pas dansé.\nElle a souvent dansé.",
+          "explanationFr": "Pas ou souvent peut séparer les deux morceaux. Repère toujours a et dansé ensemble : la négation ou l’adverbe ne change pas le temps."
+        }
+      ],
+      "takeawayFr": "Passé composé : avoir ou être au présent + participe passé.",
+      "boundaryFr": "Le sens de passé ne suffit pas : plusieurs temps parlent du passé. Cette reconnaissance ne prouve pas que tu sais choisir l’auxiliaire ou écrire les accords.",
+      "practice": [
+        {
+          "id": "passe-compose-guided-1",
+          "promptFr": "Quelle phrase est au passé composé ?",
+          "choices": [
+            "J’ai fermé le coffre.",
+            "Je fermais le coffre.",
+            "J’avais fermé le coffre.",
+            "Je fermerai le coffre."
+          ],
+          "answerFr": "J’ai fermé le coffre.",
+          "hintFr": "Repère l’auxiliaire au présent et le participe passé.",
+          "explanationFr": "La réponse combine avoir ou être au présent avec un participe passé. Le plus-que-parfait emploierait un auxiliaire à l’imparfait."
+        },
+        {
+          "id": "passe-compose-guided-2",
+          "promptFr": "Quelle phrase est au passé composé ?",
+          "choices": [
+            "Tu es parti à l’entraînement.",
+            "Tu partais à l’entraînement.",
+            "Tu étais parti à l’entraînement.",
+            "Tu partiras à l’entraînement."
+          ],
+          "answerFr": "Tu es parti à l’entraînement.",
+          "hintFr": "Repère l’auxiliaire au présent et le participe passé.",
+          "explanationFr": "La réponse combine avoir ou être au présent avec un participe passé. Le plus-que-parfait emploierait un auxiliaire à l’imparfait."
+        },
+        {
+          "id": "passe-compose-guided-3",
+          "promptFr": "Quelle phrase est au passé composé ?",
+          "choices": [
+            "Elle a été attentive.",
+            "Elle était attentive.",
+            "Elle avait été attentive.",
+            "Elle est attentive."
+          ],
+          "answerFr": "Elle a été attentive.",
+          "hintFr": "Repère l’auxiliaire au présent et le participe passé.",
+          "explanationFr": "La réponse combine avoir ou être au présent avec un participe passé. Le plus-que-parfait emploierait un auxiliaire à l’imparfait."
+        },
+        {
+          "id": "passe-compose-guided-4",
+          "promptFr": "Quelle phrase est au passé composé ?",
+          "choices": [
+            "Nous n’avons pas oublié le rendez-vous.",
+            "Nous n’oubliions pas le rendez-vous.",
+            "Nous n’avions pas oublié le rendez-vous.",
+            "Nous n’oublions pas le rendez-vous."
+          ],
+          "answerFr": "Nous n’avons pas oublié le rendez-vous.",
+          "hintFr": "Repère l’auxiliaire au présent et le participe passé.",
+          "explanationFr": "La réponse combine avoir ou être au présent avec un participe passé. Le plus-que-parfait emploierait un auxiliaire à l’imparfait."
+        },
+        {
+          "id": "passe-compose-guided-5",
+          "promptFr": "Quelle phrase est au passé composé ?",
+          "choices": [
+            "Vous avez déjà mangé la tarte.",
+            "Vous mangiez déjà la tarte.",
+            "Vous aviez déjà mangé la tarte.",
+            "Vous mangerez la tarte."
+          ],
+          "answerFr": "Vous avez déjà mangé la tarte.",
+          "hintFr": "Repère l’auxiliaire au présent et le participe passé.",
+          "explanationFr": "La réponse combine avoir ou être au présent avec un participe passé. Le plus-que-parfait emploierait un auxiliaire à l’imparfait."
+        },
+        {
+          "id": "passe-compose-guided-6",
+          "promptFr": "Quelle phrase est au passé composé ?",
+          "choices": [
+            "Elles se sont réveillées tôt.",
+            "Elles se réveillaient tôt.",
+            "Elles s’étaient réveillées tôt.",
+            "Elles se réveilleront tôt."
+          ],
+          "answerFr": "Elles se sont réveillées tôt.",
+          "hintFr": "Repère l’auxiliaire au présent et le participe passé.",
+          "explanationFr": "La réponse combine avoir ou être au présent avec un participe passé. Le plus-que-parfait emploierait un auxiliaire à l’imparfait."
+        }
+      ],
+      "materialExposure": {
+        "sentences": [
+          "Nous chantons. → Nous avons chanté.",
+          "Il est venu hier.\nElle est venue hier.",
+          "Nous avons chanté.\nNous avions chanté.",
+          "Elle n’a pas dansé.\nElle a souvent dansé.",
+          "Quelle phrase est au passé composé ?",
+          "J’ai fermé le coffre.",
+          "Je fermais le coffre.",
+          "J’avais fermé le coffre.",
+          "Je fermerai le coffre.",
+          "Quelle phrase est au passé composé ?",
+          "Tu es parti à l’entraînement.",
+          "Tu partais à l’entraînement.",
+          "Tu étais parti à l’entraînement.",
+          "Tu partiras à l’entraînement.",
+          "Quelle phrase est au passé composé ?",
+          "Elle a été attentive.",
+          "Elle était attentive.",
+          "Elle avait été attentive.",
+          "Elle est attentive.",
+          "Quelle phrase est au passé composé ?",
+          "Nous n’avons pas oublié le rendez-vous.",
+          "Nous n’oubliions pas le rendez-vous.",
+          "Nous n’avions pas oublié le rendez-vous.",
+          "Nous n’oublions pas le rendez-vous.",
+          "Quelle phrase est au passé composé ?",
+          "Vous avez déjà mangé la tarte.",
+          "Vous mangiez déjà la tarte.",
+          "Vous aviez déjà mangé la tarte.",
+          "Vous mangerez la tarte.",
+          "Quelle phrase est au passé composé ?",
+          "Elles se sont réveillées tôt.",
+          "Elles se réveillaient tôt.",
+          "Elles s’étaient réveillées tôt.",
+          "Elles se réveilleront tôt."
+        ]
+      },
+      "assessmentExposureIds": []
+    },
+    {
+      "id": "french-v3-teaching:plus-que-parfait:recognition",
+      "nodeKey": "reconnaitre_plus_que_parfait",
+      "mode": "recognition",
+      "status": "published_pending_review",
+      "titleFr": "Reconnaître le plus-que-parfait",
+      "learnerQuestionFr": "Dans « quand tu es arrivé, j’avais terminé », qu’est-ce qui était déjà fait ?",
+      "steps": [
+        {
+          "exampleFr": "Quand tu es arrivé, j’avais terminé mon dessin.",
+          "explanationFr": "Le dessin était terminé avant ton arrivée. Avais terminé situe ici une action avant une autre action passée. Cette forme s’appelle le plus-que-parfait."
+        },
+        {
+          "exampleFr": "j’avais terminé\nnous avions terminé",
+          "explanationFr": "Repère avoir à l’imparfait, avais ou avions, puis terminé, le participe passé. Les deux morceaux ensemble forment le plus-que-parfait."
+        },
+        {
+          "exampleFr": "elle était venue\nils étaient venus",
+          "explanationFr": "Être peut aussi servir d’auxiliaire. Était et étaient sont à l’imparfait ; venue et venus sont des participes passés."
+        },
+        {
+          "exampleFr": "j’ai terminé\nj’avais terminé\nje terminais",
+          "explanationFr": "Ai terminé est au passé composé. Avais terminé est au plus-que-parfait. Terminais est à l’imparfait : il n’y a pas d’auxiliaire suivi d’un participe dans cette forme."
+        }
+      ],
+      "takeawayFr": "Plus-que-parfait : avoir ou être à l’imparfait + participe passé.",
+      "boundaryFr": "Repère la forme, même sans récit complet ni mot déjà. Ses différents emplois, le choix de l’auxiliaire et les accords se travaillent séparément.",
+      "practice": [
+        {
+          "id": "plus-que-parfait-guided-1",
+          "promptFr": "Quelle phrase est au plus-que-parfait ?",
+          "choices": [
+            "J’avais nettoyé les pinceaux.",
+            "J’ai nettoyé les pinceaux.",
+            "Je nettoyais les pinceaux.",
+            "J’aurai nettoyé les pinceaux."
+          ],
+          "answerFr": "J’avais nettoyé les pinceaux.",
+          "hintFr": "Cherche avoir ou être à l’imparfait, puis un participe passé.",
+          "explanationFr": "La réponse contient un auxiliaire à l’imparfait suivi du participe. L’imparfait seul, le passé composé et les autres temps composés ont des formes différentes."
+        },
+        {
+          "id": "plus-que-parfait-guided-2",
+          "promptFr": "Quelle phrase est au plus-que-parfait ?",
+          "choices": [
+            "Tu étais allé à la piscine.",
+            "Tu es allé à la piscine.",
+            "Tu allais à la piscine.",
+            "Tu serais allé à la piscine."
+          ],
+          "answerFr": "Tu étais allé à la piscine.",
+          "hintFr": "Cherche avoir ou être à l’imparfait, puis un participe passé.",
+          "explanationFr": "La réponse contient un auxiliaire à l’imparfait suivi du participe. L’imparfait seul, le passé composé et les autres temps composés ont des formes différentes."
+        },
+        {
+          "id": "plus-que-parfait-guided-3",
+          "promptFr": "Quelle phrase est au plus-que-parfait ?",
+          "choices": [
+            "Elle avait été malade.",
+            "Elle a été malade.",
+            "Elle était malade.",
+            "Elle aura été malade."
+          ],
+          "answerFr": "Elle avait été malade.",
+          "hintFr": "Cherche avoir ou être à l’imparfait, puis un participe passé.",
+          "explanationFr": "La réponse contient un auxiliaire à l’imparfait suivi du participe. L’imparfait seul, le passé composé et les autres temps composés ont des formes différentes."
+        },
+        {
+          "id": "plus-que-parfait-guided-4",
+          "promptFr": "Quelle phrase est au plus-que-parfait ?",
+          "choices": [
+            "Nous n’avions pas compris la blague.",
+            "Nous n’avons pas compris la blague.",
+            "Nous ne comprenions pas la blague.",
+            "Nous n’aurions pas compris la blague."
+          ],
+          "answerFr": "Nous n’avions pas compris la blague.",
+          "hintFr": "Cherche avoir ou être à l’imparfait, puis un participe passé.",
+          "explanationFr": "La réponse contient un auxiliaire à l’imparfait suivi du participe. L’imparfait seul, le passé composé et les autres temps composés ont des formes différentes."
+        },
+        {
+          "id": "plus-que-parfait-guided-5",
+          "promptFr": "Quelle phrase est au plus-que-parfait ?",
+          "choices": [
+            "Vous aviez déjà vendu le meuble.",
+            "Vous avez déjà vendu le meuble.",
+            "Vous vendiez déjà le meuble.",
+            "Vous aurez déjà vendu le meuble."
+          ],
+          "answerFr": "Vous aviez déjà vendu le meuble.",
+          "hintFr": "Cherche avoir ou être à l’imparfait, puis un participe passé.",
+          "explanationFr": "La réponse contient un auxiliaire à l’imparfait suivi du participe. L’imparfait seul, le passé composé et les autres temps composés ont des formes différentes."
+        },
+        {
+          "id": "plus-que-parfait-guided-6",
+          "promptFr": "Quelle phrase est au plus-que-parfait ?",
+          "choices": [
+            "Elles s’étaient installées au premier rang.",
+            "Elles se sont installées au premier rang.",
+            "Elles s’installaient au premier rang.",
+            "Elles se seraient installées au premier rang."
+          ],
+          "answerFr": "Elles s’étaient installées au premier rang.",
+          "hintFr": "Cherche avoir ou être à l’imparfait, puis un participe passé.",
+          "explanationFr": "La réponse contient un auxiliaire à l’imparfait suivi du participe. L’imparfait seul, le passé composé et les autres temps composés ont des formes différentes."
+        }
+      ],
+      "materialExposure": {
+        "sentences": [
+          "Quand tu es arrivé, j’avais terminé mon dessin.",
+          "j’avais terminé\nnous avions terminé",
+          "elle était venue\nils étaient venus",
+          "j’ai terminé\nj’avais terminé\nje terminais",
+          "Quelle phrase est au plus-que-parfait ?",
+          "J’avais nettoyé les pinceaux.",
+          "J’ai nettoyé les pinceaux.",
+          "Je nettoyais les pinceaux.",
+          "J’aurai nettoyé les pinceaux.",
+          "Quelle phrase est au plus-que-parfait ?",
+          "Tu étais allé à la piscine.",
+          "Tu es allé à la piscine.",
+          "Tu allais à la piscine.",
+          "Tu serais allé à la piscine.",
+          "Quelle phrase est au plus-que-parfait ?",
+          "Elle avait été malade.",
+          "Elle a été malade.",
+          "Elle était malade.",
+          "Elle aura été malade.",
+          "Quelle phrase est au plus-que-parfait ?",
+          "Nous n’avions pas compris la blague.",
+          "Nous n’avons pas compris la blague.",
+          "Nous ne comprenions pas la blague.",
+          "Nous n’aurions pas compris la blague.",
+          "Quelle phrase est au plus-que-parfait ?",
+          "Vous aviez déjà vendu le meuble.",
+          "Vous avez déjà vendu le meuble.",
+          "Vous vendiez déjà le meuble.",
+          "Vous aurez déjà vendu le meuble.",
+          "Quelle phrase est au plus-que-parfait ?",
+          "Elles s’étaient installées au premier rang.",
+          "Elles se sont installées au premier rang.",
+          "Elles s’installaient au premier rang.",
+          "Elles se seraient installées au premier rang."
+        ]
+      },
+      "assessmentExposureIds": []
+    },
     {
       "id": "french-v3-teaching:conditionnel-present:aller",
       "nodeKey": "produire_conditionnel_present",
@@ -80534,6 +81986,24 @@
       "estimatedMinutes": 1
     },
     {
+      "id": "acd7bc78-dc76-520a-af5d-ee3c58f5d913",
+      "nodeKey": "reconnaitre_auxiliaire",
+      "mode": "recognition",
+      "kind": "independent_check",
+      "status": "draft",
+      "titleFr": "Reconnaître un auxiliaire",
+      "href": "/student/diagnostic",
+      "probeIds": [
+        "v3-tense-recognition:auxiliary-form-1",
+        "v3-tense-recognition:auxiliary-form-10",
+        "v3-tense-recognition:auxiliary-form-11",
+        "v3-tense-recognition:auxiliary-form-12",
+        "v3-tense-recognition:auxiliary-form-2",
+        "v3-tense-recognition:auxiliary-form-3"
+      ],
+      "estimatedMinutes": 1
+    },
+    {
       "id": "e2008b40-52b1-579e-aadb-cf322163330c",
       "nodeKey": "reconnaitre_present_indicatif",
       "mode": "recognition",
@@ -80983,6 +82453,24 @@
         "v3-tense-recognition:recent-comparison",
         "v3-tense-recognition:recent-find",
         "v3-tense-recognition:recent-name"
+      ],
+      "estimatedMinutes": 1
+    },
+    {
+      "id": "0b66a7e1-7b76-51a8-ab6d-d24a514abab9",
+      "nodeKey": "reconnaitre_passe_compose",
+      "mode": "recognition",
+      "kind": "independent_check",
+      "status": "draft",
+      "titleFr": "Reconnaître le passé composé",
+      "href": "/student/diagnostic",
+      "probeIds": [
+        "review-draft-v1:reconnaitre_passe_compose:receptive:core",
+        "v3-tense-recognition:passe-compose-form-1",
+        "v3-tense-recognition:passe-compose-form-10",
+        "v3-tense-recognition:passe-compose-form-11",
+        "v3-tense-recognition:passe-compose-form-2",
+        "v3-tense-recognition:passe-compose-form-3"
       ],
       "estimatedMinutes": 1
     },
@@ -81665,6 +83153,24 @@
         "v3-granular-forms:produire_futur_simple:devoir:3p:m:affirmative",
         "v3-granular-forms:produire_futur_simple:devoir:3s:f:affirmative",
         "v3-granular-forms:produire_futur_simple:devoir:3s:m:affirmative"
+      ],
+      "estimatedMinutes": 1
+    },
+    {
+      "id": "7e070a50-5a44-500e-890d-9f25ebf0c4df",
+      "nodeKey": "reconnaitre_plus_que_parfait",
+      "mode": "recognition",
+      "kind": "independent_check",
+      "status": "draft",
+      "titleFr": "Reconnaître le plus-que-parfait",
+      "href": "/student/diagnostic",
+      "probeIds": [
+        "review-draft-v1:reconnaitre_plus_que_parfait:receptive:foundation",
+        "v3-tense-recognition:plus-que-parfait-form-1",
+        "v3-tense-recognition:plus-que-parfait-form-10",
+        "v3-tense-recognition:plus-que-parfait-form-11",
+        "v3-tense-recognition:plus-que-parfait-form-2",
+        "v3-tense-recognition:plus-que-parfait-form-3"
       ],
       "estimatedMinutes": 1
     },
@@ -82941,6 +84447,72 @@
         "v3-y-en:en_thing-3"
       ],
       "estimatedMinutes": 1
+    },
+    {
+      "id": "5b7ae0c7-5728-5cfe-af94-3ca0f7eabce4",
+      "nodeKey": "reconnaitre_auxiliaire",
+      "mode": "recognition",
+      "kind": "instruction",
+      "status": "published",
+      "titleFr": "Repérer le verbe qui aide à conjuguer",
+      "href": "/student/diagnostic",
+      "contentId": "french-v3-teaching:auxiliary:recognition",
+      "estimatedMinutes": 4
+    },
+    {
+      "id": "c15f5794-6f74-52e7-a91c-0e02f8998969",
+      "nodeKey": "reconnaitre_auxiliaire",
+      "mode": "recognition",
+      "kind": "practice",
+      "status": "published",
+      "titleFr": "Repérer le verbe qui aide à conjuguer",
+      "href": "/student/diagnostic",
+      "contentId": "french-v3-teaching:auxiliary:recognition",
+      "estimatedMinutes": 6
+    },
+    {
+      "id": "ac3e60ca-a780-52e1-b0ba-af6caf461829",
+      "nodeKey": "reconnaitre_passe_compose",
+      "mode": "recognition",
+      "kind": "instruction",
+      "status": "published",
+      "titleFr": "Reconnaître le passé composé",
+      "href": "/student/diagnostic",
+      "contentId": "french-v3-teaching:passe-compose:recognition",
+      "estimatedMinutes": 4
+    },
+    {
+      "id": "22653615-d55d-527a-87ad-a50bcffbf36d",
+      "nodeKey": "reconnaitre_passe_compose",
+      "mode": "recognition",
+      "kind": "practice",
+      "status": "published",
+      "titleFr": "Reconnaître le passé composé",
+      "href": "/student/diagnostic",
+      "contentId": "french-v3-teaching:passe-compose:recognition",
+      "estimatedMinutes": 6
+    },
+    {
+      "id": "7fbb5d2d-bd94-5e16-9fd1-1dd5822dacc5",
+      "nodeKey": "reconnaitre_plus_que_parfait",
+      "mode": "recognition",
+      "kind": "instruction",
+      "status": "published",
+      "titleFr": "Reconnaître le plus-que-parfait",
+      "href": "/student/diagnostic",
+      "contentId": "french-v3-teaching:plus-que-parfait:recognition",
+      "estimatedMinutes": 4
+    },
+    {
+      "id": "7bbdf7fc-eba9-5379-b4c1-4f884f21595d",
+      "nodeKey": "reconnaitre_plus_que_parfait",
+      "mode": "recognition",
+      "kind": "practice",
+      "status": "published",
+      "titleFr": "Reconnaître le plus-que-parfait",
+      "href": "/student/diagnostic",
+      "contentId": "french-v3-teaching:plus-que-parfait:recognition",
+      "estimatedMinutes": 6
     },
     {
       "id": "675c4385-fceb-577d-9a29-e3d42a8c86da",
@@ -85679,12 +87251,12 @@
       "estimatedMinutes": 6
     }
   ],
-  "bankChecksum": "sha256:495ea2b1097202cb44e5b985d0302a596a66443b90bce9e967d8dc5d79fcfeb4",
+  "bankChecksum": "sha256:aa621686f09fb3361b17eadfc81e47ab12b53606fc0f2a4c1574e935406a6451",
   "summary": {
     "graphTargets": 542,
-    "assessmentTargets": 116,
-    "teachingTargets": 116,
-    "questions": 1988,
+    "assessmentTargets": 119,
+    "teachingTargets": 119,
+    "questions": 2026,
     "missingInstructionTargets": 0
   },
   "missingInstructionSkillIds": [],
@@ -85694,5 +87266,5 @@
     "Missing prerequisite instruction must be completed",
     "Full graph question coverage remains incomplete"
   ],
-  "checksum": "sha256:be1a48285163b239cbf5e911c02701765b91a7112c3b4f28562e052922c95e42"
+  "checksum": "sha256:7fba998a9b65883b60d8d71e377bd03455847cea2ebddb51c057a0d877fa2eb0"
 }

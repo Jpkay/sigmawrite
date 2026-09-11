@@ -8,7 +8,7 @@ Regenerate: `npx tsx scripts/build-v3-delivery-matrix.mts`. Verify without writi
 
 | Domain | Targets | Eligible questions | Targets without eligible questions | Allocated pools | Expansion drafts |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| conjugation | 255 | 77 | 195 | 0 | 3480 |
+| conjugation | 255 | 77 | 195 | 0 | 3516 |
 | reading_comprehension | 92 | 21 | 74 | 0 | 88 |
 | grammar | 79 | 56 | 43 | 0 | 258 |
 | spelling | 116 | 79 | 60 | 0 | 270 |
@@ -19,7 +19,7 @@ These counts describe authoring drafts, not approved lessons or published pathwa
 
 | Domain | Targets with teaching drafts | Targets without teaching drafts | Guided exercise drafts |
 | --- | ---: | ---: | ---: |
-| conjugation | 69 | 186 | 418 |
+| conjugation | 72 | 183 | 436 |
 | reading_comprehension | 11 | 81 | 50 |
 | grammar | 23 | 56 | 124 |
 | spelling | 19 | 97 | 90 |
@@ -64,7 +64,7 @@ Full evidence requirements, prerequisite IDs, question IDs, source checksums and
 | Identifier les traits de personne-nombre | recognition / initial | 1 | 1 / 0 (insufficient_coverage) | 24 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
 | Segmenter une forme verbale | recognition / initial | 0 | 0 / 0 (insufficient_coverage) | 10 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
 | Classer une famille verbale | recognition / initial | 1 | 1 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
-| Reconnaître un auxiliaire | recognition / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
+| Reconnaître un auxiliaire | recognition / initial | 0 | 0 / 0 (insufficient_coverage) | 12 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
 | Choisir l'auxiliaire d'un temps composé — Choisir avoir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
 | Choisir l'auxiliaire d'un temps composé — Choisir être | production / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
 | Choisir l'auxiliaire d'un temps composé — Verbe changeant d’auxiliaire selon son emploi | production / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
@@ -139,7 +139,7 @@ Full evidence requirements, prerequisite IDs, question IDs, source checksums and
 | Produire le passé récent — Verbes en -ger | production / initial | 0 | 0 / 0 (insufficient_coverage) | 24 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
 | Produire le passé récent — Verbes en -cer | production / initial | 0 | 0 / 0 (insufficient_coverage) | 24 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
 | Interpréter la valeur du passé récent | recognition / initial | 2 | 2 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
-| Reconnaître le passé composé | recognition / initial | 1 | 1 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
+| Reconnaître le passé composé | recognition / initial | 1 | 1 / 0 (insufficient_coverage) | 12 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
 | Produire le passé composé — Conjuguer être | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
 | Produire le passé composé — Conjuguer avoir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
 | Produire le passé composé — Conjuguer aller | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
@@ -203,7 +203,7 @@ Full evidence requirements, prerequisite IDs, question IDs, source checksums and
 | Produire le futur simple — Verbes en -ger | production / initial | 0 | 0 / 0 (insufficient_coverage) | 24 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
 | Produire le futur simple — Verbes en -cer | production / initial | 0 | 0 / 0 (insufficient_coverage) | 24 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
 | Interpréter les valeurs du futur simple | recognition / initial | 2 | 2 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
-| Reconnaître le plus-que-parfait | recognition / initial | 1 | 1 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
+| Reconnaître le plus-que-parfait | recognition / initial | 1 | 1 / 0 (insufficient_coverage) | 12 | 1 / 6 | review_exact_target_drafts | review_teaching_scope_and_content |
 | Produire le plus-que-parfait — Conjuguer être | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
 | Produire le plus-que-parfait — Conjuguer avoir | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |
 | Produire le plus-que-parfait — Conjuguer aller | production / initial | 0 | 0 / 0 (insufficient_coverage) | 8 | 0 / 0 | review_exact_target_drafts | author_or_reuse_exact_target_teaching |

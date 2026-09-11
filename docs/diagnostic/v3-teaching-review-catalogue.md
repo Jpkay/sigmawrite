@@ -1,11 +1,14 @@
 # French teaching draft review catalogue
 
-122 lessons, 682 guided exercises, 122 exact assessment targets. No approval, publication or activity binding is created by this export.
+125 lessons, 700 guided exercises, 125 exact assessment targets. No approval, publication or activity binding is created by this export.
 
 The companion JSON includes the complete learner-facing content, answer keys, hints, feedback, target IDs, prerequisites, evidence requirements, material identities and per-lesson checksums. Review decisions must refer to the exact content version. An anchored annotation proves only that the annotated material appears in the lesson; it does not prove completeness or independence from assessment questions.
 
 | Lesson | Target | Mode | Guided exercises | Exposure annotation |
 | --- | --- | --- | ---: | --- |
+| Repérer le verbe qui aide à conjuguer | reconnaitre_auxiliaire::reading-receptive | recognition | 6 | anchored_requires_completeness_review |
+| Reconnaître le passé composé | reconnaitre_passe_compose::reading-receptive | recognition | 6 | anchored_requires_completeness_review |
+| Reconnaître le plus-que-parfait | reconnaitre_plus_que_parfait::reading-receptive | recognition | 6 | anchored_requires_completeness_review |
 | Écrire aller au conditionnel présent | produire_conditionnel_present::writing-controlled-production::verb:aller | production | 6 | anchored_requires_completeness_review |
 | Écrire faire au conditionnel présent | produire_conditionnel_present::writing-controlled-production::verb:faire | production | 6 | anchored_requires_completeness_review |
 | Écrire être au conditionnel présent | produire_conditionnel_present::writing-controlled-production::verb:être | production | 6 | anchored_requires_completeness_review |

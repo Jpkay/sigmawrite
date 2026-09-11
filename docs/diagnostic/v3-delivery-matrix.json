@@ -3,9 +3,9 @@
   "status": "draft_requires_review",
   "sources": {
     "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
-    "bankChecksum": "sha256:495ea2b1097202cb44e5b985d0302a596a66443b90bce9e967d8dc5d79fcfeb4",
+    "bankChecksum": "sha256:aa621686f09fb3361b17eadfc81e47ab12b53606fc0f2a4c1574e935406a6451",
     "annotationChecksum": "sha256:41e7a8d65776f6bb64c33c925b7d4449ffe9fda5a6b71a899067a171232542bb",
-    "facetChecksum": "sha256:f7dd2e804e2881a308de588dcff0f19f99b8a044721935019555f8c280eb3e1a",
+    "facetChecksum": "sha256:0914fafd942809458f4ef42a83202eaf3a6da423011b5c181abb86f229c4942e",
     "poolChecksum": "sha256:8c59b3ee0139afb4f44fa7e964a85ec00c67e9889bb1ffbad78ff7aa14aa5dfe",
     "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
     "expansions": [
@@ -101,8 +101,8 @@
       },
       {
         "version": "french-v3-tense-recognition-expansion-v1",
-        "checksum": "sha256:1ac09e9714c13d293a5106f83fb2b8ec25a4f77ae9174f550ed065dbbad20b97",
-        "addedItems": 52
+        "checksum": "sha256:659fc1616480b24a76628f05aeab63fa12e471538a0cf5678f69c60d970560d9",
+        "addedItems": 88
       },
       {
         "version": "french-v3-direct-object-expansion-v1",
@@ -115,14 +115,14 @@
         "addedItems": 90
       }
     ],
-    "teachingDraftChecksum": "sha256:17dd862060428680ca8141ec4129012ac5a88563b7f6308f7ddb063a127242b9"
+    "teachingDraftChecksum": "sha256:5c2e586d46ce69df0cac2f9d274e6e3c15e1d7183cd49b43bf371a41dea5210c"
   },
   "summary": {
-    "teachingDrafts": 122,
-    "targetsWithTeachingDrafts": 122,
-    "targetsWithoutTeachingDrafts": 420,
-    "totalCandidateQuestions": 4826,
-    "additionalDraftQuestions": 4096,
+    "teachingDrafts": 125,
+    "targetsWithTeachingDrafts": 125,
+    "targetsWithoutTeachingDrafts": 417,
+    "totalCandidateQuestions": 4862,
+    "additionalDraftQuestions": 4132,
     "canonicalEligibleQuestions": 238,
     "approvedCompetencies": 181,
     "approvedEvidenceDefinitions": 257,
@@ -147,10 +147,10 @@
         "eligibleQuestions": 77,
         "targetsWithNoEligibleQuestions": 195,
         "allocatedPools": 0,
-        "targetsWithTeachingDrafts": 69,
-        "targetsWithoutTeachingDrafts": 186,
-        "guidedExerciseDrafts": 418,
-        "exactTargetExpansionDrafts": 3480
+        "targetsWithTeachingDrafts": 72,
+        "targetsWithoutTeachingDrafts": 183,
+        "guidedExerciseDrafts": 436,
+        "exactTargetExpansionDrafts": 3516
       },
       {
         "domain": "reading_comprehension",
@@ -843,7 +843,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 0,
+          "questions": 12,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -921,16 +921,36 @@
         "review-draft-v1:reconnaitre_auxiliaire:receptive:core",
         "review-draft-v1:reconnaitre_auxiliaire:receptive:stretch"
       ],
-      "exactTargetExpansionDrafts": [],
-      "teachingDrafts": [],
+      "exactTargetExpansionDrafts": [
+        "v3-tense-recognition:auxiliary-form-1",
+        "v3-tense-recognition:auxiliary-form-2",
+        "v3-tense-recognition:auxiliary-form-3",
+        "v3-tense-recognition:auxiliary-form-4",
+        "v3-tense-recognition:auxiliary-form-5",
+        "v3-tense-recognition:auxiliary-form-6",
+        "v3-tense-recognition:auxiliary-form-7",
+        "v3-tense-recognition:auxiliary-form-8",
+        "v3-tense-recognition:auxiliary-form-9",
+        "v3-tense-recognition:auxiliary-form-10",
+        "v3-tense-recognition:auxiliary-form-11",
+        "v3-tense-recognition:auxiliary-form-12"
+      ],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:auxiliary:recognition",
+          "status": "draft_requires_review",
+          "guidedExercises": 6,
+          "boundaryFr": "Cette leçon porte sur les temps composés. Être sert aussi à construire la voix passive, étudiée séparément. Reconnaître un auxiliaire ne suffit pas à choisir le bon ni à accorder le participe."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
         "independentCheck": "insufficient_pool"
       },
       "nextActions": [
-        "map_and_review_parent_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_exact_target_drafts",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -11648,7 +11668,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 0,
+          "questions": 12,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -11730,16 +11750,36 @@
         "review-draft-v1:reconnaitre_passe_compose:receptive:foundation",
         "review-draft-v1:reconnaitre_passe_compose:receptive:stretch"
       ],
-      "exactTargetExpansionDrafts": [],
-      "teachingDrafts": [],
+      "exactTargetExpansionDrafts": [
+        "v3-tense-recognition:passe-compose-form-1",
+        "v3-tense-recognition:passe-compose-form-2",
+        "v3-tense-recognition:passe-compose-form-3",
+        "v3-tense-recognition:passe-compose-form-4",
+        "v3-tense-recognition:passe-compose-form-5",
+        "v3-tense-recognition:passe-compose-form-6",
+        "v3-tense-recognition:passe-compose-form-7",
+        "v3-tense-recognition:passe-compose-form-8",
+        "v3-tense-recognition:passe-compose-form-9",
+        "v3-tense-recognition:passe-compose-form-10",
+        "v3-tense-recognition:passe-compose-form-11",
+        "v3-tense-recognition:passe-compose-form-12"
+      ],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:passe-compose:recognition",
+          "status": "draft_requires_review",
+          "guidedExercises": 6,
+          "boundaryFr": "Le sens de passé ne suffit pas : plusieurs temps parlent du passé. Cette reconnaissance ne prouve pas que tu sais choisir l’auxiliaire ou écrire les accords."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
         "independentCheck": "insufficient_pool"
       },
       "nextActions": [
-        "map_and_review_parent_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_exact_target_drafts",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -21182,7 +21222,7 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 0,
+          "questions": 12,
           "withoutExplicitAssessedIdentity": [],
           "missingRequiredIdentities": []
         },
@@ -21264,16 +21304,36 @@
         "review-draft-v1:reconnaitre_plus_que_parfait:receptive:core",
         "review-draft-v1:reconnaitre_plus_que_parfait:receptive:stretch"
       ],
-      "exactTargetExpansionDrafts": [],
-      "teachingDrafts": [],
+      "exactTargetExpansionDrafts": [
+        "v3-tense-recognition:plus-que-parfait-form-1",
+        "v3-tense-recognition:plus-que-parfait-form-2",
+        "v3-tense-recognition:plus-que-parfait-form-3",
+        "v3-tense-recognition:plus-que-parfait-form-4",
+        "v3-tense-recognition:plus-que-parfait-form-5",
+        "v3-tense-recognition:plus-que-parfait-form-6",
+        "v3-tense-recognition:plus-que-parfait-form-7",
+        "v3-tense-recognition:plus-que-parfait-form-8",
+        "v3-tense-recognition:plus-que-parfait-form-9",
+        "v3-tense-recognition:plus-que-parfait-form-10",
+        "v3-tense-recognition:plus-que-parfait-form-11",
+        "v3-tense-recognition:plus-que-parfait-form-12"
+      ],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:plus-que-parfait:recognition",
+          "status": "draft_requires_review",
+          "guidedExercises": 6,
+          "boundaryFr": "Repère la forme, même sans récit complet ni mot déjà. Ses différents emplois, le choix de l’auxiliaire et les accords se travaillent séparément."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
         "independentCheck": "insufficient_pool"
       },
       "nextActions": [
-        "map_and_review_parent_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_exact_target_drafts",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -78286,5 +78346,5 @@
       ]
     }
   ],
-  "checksum": "sha256:abc226b54706eb2c3648bbb5bce29ba255977140a8f725fdd84180a8d92fcccf"
+  "checksum": "sha256:5948473d2ba7a7b469ab404d9557b3c3b95f0e592e1fc5995c0692f8e6f1b644"
 }
