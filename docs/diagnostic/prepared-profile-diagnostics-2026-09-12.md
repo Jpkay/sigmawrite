@@ -1,6 +1,6 @@
 # Real-content diagnostic profile verification
 
-The prepared 227-target candidate was exercised with eight constructed profiles using its actual questions, server grading, material delivery receipts and learning commands. Each run reached the 35-minute active-time limit (61 questions with estimated item durations), preserved a three-hour pause without charging it, and produced a provisional map across all 542 graph targets. Untested targets remained unknown.
+The prepared 231-target candidate was exercised with eight constructed profiles using its actual questions, server grading, material delivery receipts and learning commands. Each run reached the 35-minute active-time limit (61 questions with estimated item durations), preserved a three-hour pause without charging it, and produced a provisional map across all 542 graph targets. Untested targets remained unknown.
 
 | Constructed contrast | Lesson reached | Prerequisite checks after diagnostic |
 | --- | --- | --- |
