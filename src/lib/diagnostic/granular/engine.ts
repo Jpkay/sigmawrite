@@ -316,7 +316,9 @@ export function selectProbe(skills: readonly Skill[], bank: readonly Probe[], ob
   const allFamilyItems=groupItems.filter(item=>familyOf(skillById.get(item.skillId)!)===family);
   const allFamilyHistory=groupHistory.filter(observation=>familyOf(skillById.get(observation.skillId)!)===family);
   const formOf=(skill:Skill)=>skill.formFamily??"foundation";
-  const lastFamilyAnswer=allFamilyHistory.at(-1);
+  // Skips consume time and visit capacity, but carry no evidence about
+  // difficulty. Only an actual answer can steer a recovery or boundary probe.
+  const lastFamilyAnswer=allFamilyHistory.filter(observation=>!observation.skipped).at(-1);
   const lastFamilySkill=lastFamilyAnswer?skillById.get(lastFamilyAnswer.skillId):undefined;
   // A failed challenge may send the next visit across form families to an
   // actual prerequisite. Domain/strand/verb-family balance remains intact.
@@ -338,7 +340,7 @@ export function selectProbe(skills: readonly Skill[], bank: readonly Probe[], ob
   branches.sort((a,b)=>Math.floor(branchCount(a)/visitSize)-Math.floor(branchCount(b)/visitSize)||a.localeCompare(b));
   // Follow actual prerequisites across branch boundaries within the already
   // selected family. Domain/strand/family time balance still takes precedence.
-  const recent=recovery.length?lastFamilyAnswer:familyHistory.at(-1),recentSkill=recent?skillById.get(recent.skillId):undefined;
+  const recent=recovery.length?lastFamilyAnswer:familyHistory.filter(observation=>!observation.skipped).at(-1),recentSkill=recent?skillById.get(recent.skillId):undefined;
   const crossPrerequisites=recent&&!recent.correct&&recentSkill
     ?familyItems.filter(item=>recentSkill.prerequisites.includes(item.skillId)&&(skillById.get(item.skillId)!.branch!==recentSkill.branch||formOf(skillById.get(item.skillId)!)!==formOf(recentSkill))):[];
   crossPrerequisites.sort((a,b)=>challengeOf(skillById.get(b.skillId)!)-challengeOf(skillById.get(a.skillId)!)||a.id.localeCompare(b.id));
@@ -346,7 +348,7 @@ export function selectProbe(skills: readonly Skill[], bank: readonly Probe[], ob
   const crossPrerequisiteIds=new Set(crossPrerequisites.filter(item=>skillById.get(item.skillId)!.branch===branch).map(item=>item.skillId));
   const branchItems=familyItems.filter(item=>skillById.get(item.skillId)!.branch===branch);
   const history=familyHistory.filter(observation=>skillById.get(observation.skillId)!.branch===branch);
-  const last = history.at(-1);
+  const last = history.filter(observation=>!observation.skipped).at(-1);
   const lastSkill = last ? skillById.get(last.skillId) : undefined;
   let reason: Extract<Selection, {kind: "question"}>["reason"] = "gap_check";
   let pool = branchItems;
@@ -375,7 +377,7 @@ export function selectProbe(skills: readonly Skill[], bank: readonly Probe[], ob
     }
   } else {
     const lowerResolved = routingById.get(lastSkill.id)?.status === "mastered";
-    const failedAbove = [...history].reverse().find(o => !o.correct && challengeOf(skillById.get(o.skillId)!) > challengeOf(lastSkill));
+    const failedAbove = [...history].reverse().find(o => !o.skipped && !o.correct && challengeOf(skillById.get(o.skillId)!) > challengeOf(lastSkill));
     if (lowerResolved && failedAbove && restrict(i => i.skillId === failedAbove.skillId, "recheck_boundary")) {
       // The recovered foundation is confirmed; probe the earlier failure with a new item.
     } else if (lowerResolved && restrict(i => challengeOf(skillById.get(i.skillId)!) > challengeOf(lastSkill), "step_up")) {

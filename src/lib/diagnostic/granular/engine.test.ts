@@ -13,6 +13,19 @@ function simulate(nodes: Skill[], correct: (item: Probe) => boolean) {
  throw new Error("Adaptive run did not terminate");
 }
 describe("independent skill frontiers", () => {
+ it("does not interpret a skipped advanced question as a failed challenge",()=>{
+  const nodes=[skill("foundation","same",0),skill("advanced","same",2,["foundation"])],pool=items(nodes);
+  const advanced=pool.find(item=>item.skillId==="advanced")!;
+  const next=selectProbe(nodes,pool,[{...observation(advanced,false),skipped:true}],{...DEFAULT_POLICY,startingLevel:2});
+  expect(next).toMatchObject({kind:"question",reason:"branch_coverage",item:{skillId:"advanced"}});
+  expect(assessSkills(nodes,[{...observation(advanced,false),skipped:true}]).every(result=>result.status==="unknown")).toBe(true);
+ });
+ it("continues confirming a successful target after a skipped question",()=>{
+  const nodes=[skill("foundation","same",0),skill("advanced","same",2,["foundation"])],pool=items(nodes);
+  const high=pool.filter(item=>item.skillId==="advanced");
+  const next=selectProbe(nodes,pool,[observation(high[0],true),{...observation(high[1],false),skipped:true}],{...DEFAULT_POLICY,startingLevel:2});
+  expect(next).toMatchObject({kind:"question",reason:"confirmation",item:{skillId:"advanced"}});
+ });
  it("distinguishes être from avoir despite identical tense and domain", () => {
   const run = simulate(skills, item => item.skillId.startsWith("etre"));
   expect(run.ending.kind).toBe("finished");

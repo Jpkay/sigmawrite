@@ -11,7 +11,7 @@ import {createClient} from '@supabase/supabase-js';
 import {createServerClient} from '@supabase/ssr';
 import {chromium} from 'playwright';
 import {readTextualSupport} from '../src/lib/diagnostic/granular/textual-support';
-import {publicAssessmentView} from '../src/lib/diagnostic/granular/service';
+import {publicAssessmentView,publicQuestion} from '../src/lib/diagnostic/granular/service';
 import type {AssessmentBundle} from '../src/lib/diagnostic/granular/service';
 import type {AssessmentView} from '../src/lib/diagnostic/granular/client-state';
 config({path:'.env.local',quiet:true});
@@ -162,4 +162,27 @@ try {
  await page.reload();await page.getByRole('heading',{name:'Tes acquis et tes prochaines étapes',exact:true}).waitFor();
  const learningSummary={sessionId:current.sessionId,contentId,skillId,initialChecks,practiceAnswers,independentQuestion:question.id,guidedEvidenceIsolated:true,refinementSaved:true,reloadPassed:true};
  writeFileSync(`${outputPrefix}-learning.json`,JSON.stringify(learningSummary,null,2),{mode:0o600});console.log('LEARNING_PASS',JSON.stringify(learningSummary));
+ if(process.argv.includes('--review')){
+  const saved=refined.data.state;
+  const answered=saved.observations.filter((o:{skipped?:boolean})=>!o.skipped);
+  if(saved.diagnosticResponses?.length!==answered.length)throw Error('Not all submitted diagnostic responses were retained');
+  await page.goto(base+'/student/diagnostic/review?session='+current.sessionId,{waitUntil:'domcontentloaded',timeout:60000});
+  await page.locator('article[data-result]').first().waitFor({timeout:60000});
+  if(await page.locator('article[data-result]').count()!==saved.observations.length)throw Error('Review omitted diagnostic questions');
+  for(const observation of answered){
+   const response=saved.diagnosticResponses.find((r:{itemId:string})=>r.itemId===observation.itemId)!;
+   const item=bank.items.find(entry=>entry.itemKey===observation.itemId)!.item;
+   const submitted=item.responseType==='mcq'?publicQuestion(current.sessionId,observation.itemId,bundle)!.choices.find(c=>c.id===response.answer)!.text:response.answer;
+   const index=saved.observations.findIndex((o:{itemId:string})=>o.itemId===observation.itemId);
+   const row=page.locator('article[data-result]').nth(index);
+   if(await row.getAttribute('data-result')!==(observation.correct?'correct':'wrong'))throw Error('Review grade differs from saved observation');
+   if((await row.locator('dd').first().innerText()).trim()!==submitted.trim())throw Error('Review answer differs from saved response');
+  }
+  const wrong=answered.filter((o:{correct:boolean})=>!o.correct).length;
+  await page.getByRole('checkbox',{name:'Voir seulement mes erreurs'}).check();
+  await page.waitForFunction(count=>Array.from(document.querySelectorAll('article[data-result]')).filter(element=>getComputedStyle(element).display!=='none').length===count,wrong);
+  await page.reload();await page.locator('article[data-result]').first().waitFor({timeout:60000});
+  const summary={sessionId:current.sessionId,answers:answered.length,wrong,submittedAnswersVerified:true,errorsFilter:true,reload:true};
+  writeFileSync(`${outputPrefix}-review.json`,JSON.stringify(summary,null,2),{mode:0o600});console.log('REVIEW_PASS',JSON.stringify(summary));
+ }
 }finally{await browser.close();}

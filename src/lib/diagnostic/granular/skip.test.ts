@@ -5,11 +5,12 @@ const release={taxonomyId:"test",bankId:"test",checksum:"test"};
 const skills:Skill[]=[{id:"base",branch:"grammar",level:0,modes:["production"],prerequisites:[]},{id:"advanced",branch:"grammar",level:1,modes:["production"],prerequisites:["base"]}];
 const bank:Probe[]=skills.flatMap(skill=>Array.from({length:6},(_,i)=>({id:`${skill.id}-${i}`,skillId:skill.id,mode:"production",contextId:`context-${i}`,difficulty:.5,expectedSeconds:20,guessProbability:.05,usage:i<3?"initial":"learning"})));
 function setup(){let state=createSession(release);const send=(event:Parameters<typeof transitionSession>[0]["event"])=>state=transitionSession({state,release,expectedRevision:state.revision,event,skills,bank});return {send,get:()=>state};}
-it("records exposure and active time but no failure evidence, then tries an easier prerequisite",()=>{
+it("records exposure and active time without lowering the challenge solely because of a skip",()=>{
  const f=setup();f.send({type:"resume",at:0});const itemId=f.get().pendingItemId!;
  expect(itemId).toContain("advanced");f.send({type:"skip",itemId,at:5000});
  expect(f.get().observations[0]).toMatchObject({itemId,skipped:true,activeSeconds:5});
- expect(f.get().activeSeconds).toBe(5);expect(f.get().pendingItemId).toContain("base");
+ expect(f.get().activeSeconds).toBe(5);expect(f.get().pendingItemId).toContain("advanced");
+ expect(f.get().pendingItemId).not.toBe(itemId);
  expect(sessionView(f.get(),skills).results.every(result=>result.status==="unknown")).toBe(true);
  const snapshot=structuredClone(f.get());f.send({type:"skip",itemId,at:6000});expect(f.get()).toEqual(snapshot);
 });

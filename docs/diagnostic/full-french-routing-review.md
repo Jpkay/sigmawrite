@@ -2,6 +2,8 @@
 
 2026-09-11. The approved French graph is unchanged. No content approvals or release.
 
+Current rerun: 8/10 depth checks and 2/8 mixed-profile discrimination checks pass; the strict benchmark exits 1. These counts apply both before and after the skip-routing correction. The report below records earlier changes and must not be read as current proof that all depth checks pass. The current JSON report exposes the unresolved contrasts. See `skip-routing-2026-09-11.md`.
+
 The previous benchmark exercises six conjugation targets. The additional
 `scripts/benchmark-full-french-diagnostic.mts` exercises all 542 proposed targets
 compiled from the approved graph, using real pool allocation and session
