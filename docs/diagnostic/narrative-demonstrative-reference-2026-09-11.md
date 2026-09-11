@@ -11,3 +11,7 @@ This batch is deliberately separate from the running routing candidate and publi
 Generate/check with `node --import tsx scripts/expand-v3-narrative-demonstrative-reference.mts [--check]`.
 
 Integration verification: TypeScript and both wrong/mixed simulated diagnostic-to-lesson-to-independent-check command journeys pass for the retained scope. The live routing candidate remains a separate deployment.
+
+## Prerequisite completion checkpoint
+
+The four prerequisite targets now have 48 new independent questions and four separate lessons in `reference-foundations.ts`. The regenerated draft revision 10 includes 172 assessment/teaching targets and 2,916 scoped probes, with no missing instruction or fresh-check gaps. The narrative demonstrative target is now included. This supersedes the missing-prerequisite checkpoint above; it is preparation, not production activation.
