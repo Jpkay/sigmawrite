@@ -5,12 +5,153 @@
   "facetChecksum": "sha256:c1587bbcc3d7b86759a9aeee784f312a48e3d2706edac48ad2d1681957b44f73",
   "assessmentSourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
   "summary": {
-    "lessons": 161,
-    "guidedExercises": 900,
-    "targets": 161,
+    "lessons": 162,
+    "guidedExercises": 904,
+    "targets": 162,
     "missingExposureAnnotations": []
   },
   "rows": [
+    {
+      "lessonId": "french-v3-teaching:simple-negation:recognition",
+      "contentChecksum": "sha256:dd1dfcd9b8ace9de2226ae5fef0bab940b82429d198f1a4eadfd46d7563d8efc",
+      "skillId": "construction_negation_simple::reading-analysis",
+      "nodeKey": "construction_negation_simple",
+      "facetKey": null,
+      "mode": "recognition",
+      "domain": "grammar",
+      "prerequisites": [
+        "construction_phrase_canonique::reading-analysis",
+        "construction_phrase_canonique::writing-controlled-production"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": true,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:0311927f0b116857ecd690cea53f25a026631518bbbbc138ae7a9d32ef32c51b",
+        "sentence:sha256:1be7dae1271df84fb7670efeea5665f1b144564138ee844fe03e12ebd4f7ecf5",
+        "sentence:sha256:3dd487fc405a01bc70b53b128ab535664f5f4a9b1cf02958c90700303abc4868",
+        "sentence:sha256:73c5ad354882c9b5e10acb3df6964e2a6de08cf475e6683037669f0801508d52",
+        "sentence:sha256:933b2c678db5a18ee805695d1e7444174c922a96fea72b3347f1b2b4d8d179f8",
+        "sentence:sha256:95920090a0a40f414af5ca2e6d0c4ca6a85303dd5f7416745a20f7e91d299070",
+        "sentence:sha256:b30d6d781a27a3a67dae5939be854ffeb1838171883a6cff3fe0eb814eeca0c3",
+        "sentence:sha256:d0a9c82e020da604b871856bfb3173e6a0b827bb5b9d6e600b79143683a7b769",
+        "sentence:sha256:d18c3bd15f47bdde6ce6afc92a47e1feb38e29d3020eb7feb543fcc8cb3060d3",
+        "sentence:sha256:f55c3d5b98ab1441e8ec8a182c41ad6232583b131759b5ad6f54deb4467d0e10"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:simple-negation:recognition",
+        "nodeKey": "construction_negation_simple",
+        "mode": "recognition",
+        "status": "draft_requires_review",
+        "titleFr": "Repérer ne…pas dans une phrase",
+        "learnerQuestionFr": "Quels mots montrent qu’une phrase nie quelque chose ?",
+        "steps": [
+          {
+            "exampleFr": "Le moteur tourne. Le moteur ne tourne pas.",
+            "explanationFr": "La première phrase affirme que le moteur tourne. La seconde nie cette action : ne et pas entourent tourne. Ils forment ici une négation."
+          },
+          {
+            "exampleFr": "Le moteur n’a pas démarré.",
+            "explanationFr": "Ne devient n’ devant une voyelle. Dans n’a pas démarré, les deux parties entourent a, la partie conjuguée du verbe."
+          },
+          {
+            "exampleFr": "Le moteur est arrêté. Est-ce que le moteur tourne ? Démarre le moteur.",
+            "explanationFr": "Ces phrases décrivent un état, posent une question ou donnent une consigne. Aucune ne contient ne…pas. Un état comme arrêté n’est pas à lui seul cette construction négative."
+          }
+        ],
+        "practice": [
+          {
+            "id": "guided:negation-recognition:1",
+            "promptFr": "La bougie ne brûle pas.\nChoisis l’analyse correcte.",
+            "choices": [
+              "Ne…pas ou n’…pas nie ce qui est dit du sujet.",
+              "La phrase affirme quelque chose, sans négation.",
+              "La phrase pose une question, sans négation.",
+              "La phrase donne un ordre ou une consigne, sans négation."
+            ],
+            "answerFr": "Ne…pas ou n’…pas nie ce qui est dit du sujet.",
+            "hintFr": "Cherche ne ou n’, puis pas. Si ces mots sont absents, observe ce que fait la phrase.",
+            "explanationFr": "Ne et pas encadrent brûle. La phrase nie le fait que la bougie brûle."
+          },
+          {
+            "id": "guided:negation-recognition:2",
+            "promptFr": "Le portail reste fermé.\nChoisis l’analyse correcte.",
+            "choices": [
+              "Ne…pas ou n’…pas nie ce qui est dit du sujet.",
+              "La phrase affirme quelque chose, sans négation.",
+              "La phrase pose une question, sans négation.",
+              "La phrase donne un ordre ou une consigne, sans négation."
+            ],
+            "answerFr": "La phrase affirme quelque chose, sans négation.",
+            "hintFr": "Cherche ne ou n’, puis pas. Si ces mots sont absents, observe ce que fait la phrase.",
+            "explanationFr": "Fermé décrit un état. Ce mot ne constitue pas à lui seul la construction ne…pas."
+          },
+          {
+            "id": "guided:negation-recognition:3",
+            "promptFr": "Où part cette route ?\nChoisis l’analyse correcte.",
+            "choices": [
+              "Ne…pas ou n’…pas nie ce qui est dit du sujet.",
+              "La phrase affirme quelque chose, sans négation.",
+              "La phrase pose une question, sans négation.",
+              "La phrase donne un ordre ou une consigne, sans négation."
+            ],
+            "answerFr": "La phrase pose une question, sans négation.",
+            "hintFr": "Cherche ne ou n’, puis pas. Si ces mots sont absents, observe ce que fait la phrase.",
+            "explanationFr": "La phrase demande une information. Elle ne comporte pas de négation."
+          },
+          {
+            "id": "guided:negation-recognition:4",
+            "promptFr": "Pose ta trousse ici.\nChoisis l’analyse correcte.",
+            "choices": [
+              "Ne…pas ou n’…pas nie ce qui est dit du sujet.",
+              "La phrase affirme quelque chose, sans négation.",
+              "La phrase pose une question, sans négation.",
+              "La phrase donne un ordre ou une consigne, sans négation."
+            ],
+            "answerFr": "La phrase donne un ordre ou une consigne, sans négation.",
+            "hintFr": "Cherche ne ou n’, puis pas. Si ces mots sont absents, observe ce que fait la phrase.",
+            "explanationFr": "La phrase donne une consigne affirmative. On n’y trouve ni ne ni pas."
+          }
+        ],
+        "takeawayFr": "Repère les deux parties ne…pas ou n’…pas et le verbe qu’elles entourent. Vérifie aussi les phrases où cette construction est absente.",
+        "boundaryFr": "Cette leçon cible ne…pas. D’autres formes comme jamais, rien ou personne se travaillent séparément. Reconnaître la construction ne prouve pas encore que tu sais l’écrire.",
+        "materialExposure": {
+          "sentences": [
+            "Le moteur tourne.",
+            "Le moteur ne tourne pas.",
+            "Le moteur n’a pas démarré.",
+            "Le moteur est arrêté.",
+            "Est-ce que le moteur tourne ?",
+            "Démarre le moteur.",
+            "La bougie ne brûle pas.",
+            "Le portail reste fermé.",
+            "Où part cette route ?",
+            "Pose ta trousse ici."
+          ]
+        }
+      }
+    },
     {
       "lessonId": "french-v3-teaching:simple-negation:production",
       "contentChecksum": "sha256:a8ee68549c0108eb81b52d01bc16733dcb3bd75f0e6c504a7f2ce2088c31c1f6",
@@ -24484,5 +24625,5 @@
       }
     }
   ],
-  "checksum": "sha256:280d4dc63b66df4a7a24d3cd1cd785aa2750508996b945d39fe1f67c810e4a20"
+  "checksum": "sha256:486765045c22ce1dc8123913596424aa474c0daca8d5f91f16bdec4b0012e905"
 }

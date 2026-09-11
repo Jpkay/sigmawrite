@@ -1,11 +1,12 @@
 # French teaching draft review catalogue
 
-161 lessons, 900 guided exercises, 161 exact assessment targets. No approval, publication or activity binding is created by this export.
+162 lessons, 904 guided exercises, 162 exact assessment targets. No approval, publication or activity binding is created by this export.
 
 The companion JSON includes the complete learner-facing content, answer keys, hints, feedback, target IDs, prerequisites, evidence requirements, material identities and per-lesson checksums. Review decisions must refer to the exact content version. An anchored annotation proves only that the annotated material appears in the lesson; it does not prove completeness or independence from assessment questions.
 
 | Lesson | Target | Mode | Guided exercises | Exposure annotation |
 | --- | --- | --- | ---: | --- |
+| Repérer ne…pas dans une phrase | construction_negation_simple::reading-analysis | recognition | 4 | anchored_requires_completeness_review |
 | Écrire une phrase avec ne…pas | construction_negation_simple::writing-controlled-production | production | 4 | anchored_requires_completeness_review |
 | Écrire aller au passé composé | produire_passe_compose::writing-controlled-production::verb:aller | production | 6 | anchored_requires_completeness_review |
 | Écrire faire au passé composé | produire_passe_compose::writing-controlled-production::verb:faire | production | 6 | anchored_requires_completeness_review |

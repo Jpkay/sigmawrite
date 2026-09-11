@@ -10,7 +10,7 @@ Regenerate: `npx tsx scripts/build-v3-delivery-matrix.mts`. Verify without writi
 | --- | ---: | ---: | ---: | ---: | ---: |
 | conjugation | 255 | 77 | 195 | 0 | 3958 |
 | reading_comprehension | 92 | 21 | 74 | 0 | 96 |
-| grammar | 79 | 56 | 43 | 0 | 274 |
+| grammar | 79 | 56 | 43 | 0 | 290 |
 | spelling | 116 | 79 | 60 | 0 | 270 |
 
 ## Exact-target teaching work
@@ -21,7 +21,7 @@ These counts describe authoring drafts, not approved lessons or published pathwa
 | --- | ---: | ---: | ---: |
 | conjugation | 107 | 148 | 632 |
 | reading_comprehension | 11 | 81 | 50 |
-| grammar | 24 | 55 | 128 |
+| grammar | 25 | 54 | 132 |
 | spelling | 19 | 97 | 90 |
 
 ## Sampling strands
@@ -416,7 +416,7 @@ Full evidence requirements, prerequisite IDs, question IDs, source checksums and
 | Analyser l'accord sujet-verbe — Plusieurs sujets coordonnés | production / initial | 0 | 0 / 0 (insufficient_coverage) | 14 | 1 / 4 | review_exact_target_drafts | review_teaching_scope_and_content |
 | Analyser l'accord d'un participe passé | recognition / initial | 3 | 3 / 0 (insufficient_coverage) | 0 | 0 / 0 | author_missing_evidence | author_or_reuse_exact_target_teaching |
 | Analyser l'accord d'un participe passé | production / initial | 3 | 3 / 0 (insufficient_coverage) | 0 | 0 / 0 | author_missing_evidence | author_or_reuse_exact_target_teaching |
-| Reconnaître une négation simple | recognition / initial | 2 | 2 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
+| Reconnaître une négation simple | recognition / initial | 2 | 2 / 0 (insufficient_coverage) | 16 | 1 / 4 | review_exact_target_drafts | review_teaching_scope_and_content |
 | Reconnaître une négation simple | production / initial | 0 | 0 / 0 (insufficient_coverage) | 16 | 1 / 4 | review_exact_target_drafts | review_teaching_scope_and_content |
 | Interpréter une négation complexe | recognition / initial | 1 | 1 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |
 | Interpréter une négation complexe | production / initial | 0 | 0 / 0 (insufficient_coverage) | 0 | 0 / 0 | map_and_review_parent_drafts | author_or_reuse_exact_target_teaching |

@@ -1,0 +1,1307 @@
+{
+  "version": "french-v3-negation-recognition-expansion-v1",
+  "status": "draft_requires_review",
+  "parentTaxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+  "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
+  "items": [
+    {
+      "itemKey": "v3-negation-recognition:1",
+      "item": {
+        "nodeKey": "construction_negation_simple",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le robot ne bouge pas.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le robot ne bouge pas."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le robot ne bouge pas."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Ne…pas ou n’…pas nie ce qui est dit du sujet.",
+            "correct": true
+          },
+          {
+            "text": "La phrase affirme quelque chose, sans négation.",
+            "correct": false
+          },
+          {
+            "text": "La phrase pose une question, sans négation.",
+            "correct": false
+          },
+          {
+            "text": "La phrase donne un ordre ou une consigne, sans négation.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "simple-negation-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-negation-recognition:2",
+      "item": {
+        "nodeKey": "construction_negation_simple",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Les volets sont fermés.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les volets sont fermés."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les volets sont fermés."
+              ]
+            }
+          },
+          "negativeExample": {
+            "excerptFr": "Les volets sont fermés.",
+            "rationaleFr": "La phrase affirme quelque chose, sans négation."
+          }
+        },
+        "choices": [
+          {
+            "text": "Ne…pas ou n’…pas nie ce qui est dit du sujet.",
+            "correct": false
+          },
+          {
+            "text": "La phrase affirme quelque chose, sans négation.",
+            "correct": true
+          },
+          {
+            "text": "La phrase pose une question, sans négation.",
+            "correct": false
+          },
+          {
+            "text": "La phrase donne un ordre ou une consigne, sans négation.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "simple-negation-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-negation-recognition:3",
+      "item": {
+        "nodeKey": "construction_negation_simple",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Pourquoi le bateau ralentit-il ?\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Pourquoi le bateau ralentit-il ?"
+            ],
+            "assessed": {
+              "sentences": [
+                "Pourquoi le bateau ralentit-il ?"
+              ]
+            }
+          },
+          "negativeExample": {
+            "excerptFr": "Pourquoi le bateau ralentit-il ?",
+            "rationaleFr": "La phrase pose une question, sans négation."
+          }
+        },
+        "choices": [
+          {
+            "text": "Ne…pas ou n’…pas nie ce qui est dit du sujet.",
+            "correct": false
+          },
+          {
+            "text": "La phrase affirme quelque chose, sans négation.",
+            "correct": false
+          },
+          {
+            "text": "La phrase pose une question, sans négation.",
+            "correct": true
+          },
+          {
+            "text": "La phrase donne un ordre ou une consigne, sans négation.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "simple-negation-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-negation-recognition:4",
+      "item": {
+        "nodeKey": "construction_negation_simple",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "La musicienne n’entend pas le signal.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "La musicienne n’entend pas le signal."
+            ],
+            "assessed": {
+              "sentences": [
+                "La musicienne n’entend pas le signal."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Ne…pas ou n’…pas nie ce qui est dit du sujet.",
+            "correct": true
+          },
+          {
+            "text": "La phrase affirme quelque chose, sans négation.",
+            "correct": false
+          },
+          {
+            "text": "La phrase pose une question, sans négation.",
+            "correct": false
+          },
+          {
+            "text": "La phrase donne un ordre ou une consigne, sans négation.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "simple-negation-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-negation-recognition:5",
+      "item": {
+        "nodeKey": "construction_negation_simple",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Fermez vos cahiers.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Fermez vos cahiers."
+            ],
+            "assessed": {
+              "sentences": [
+                "Fermez vos cahiers."
+              ]
+            }
+          },
+          "negativeExample": {
+            "excerptFr": "Fermez vos cahiers.",
+            "rationaleFr": "La phrase donne un ordre ou une consigne, sans négation."
+          }
+        },
+        "choices": [
+          {
+            "text": "Ne…pas ou n’…pas nie ce qui est dit du sujet.",
+            "correct": false
+          },
+          {
+            "text": "La phrase affirme quelque chose, sans négation.",
+            "correct": false
+          },
+          {
+            "text": "La phrase pose une question, sans négation.",
+            "correct": false
+          },
+          {
+            "text": "La phrase donne un ordre ou une consigne, sans négation.",
+            "correct": true
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "simple-negation-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-negation-recognition:6",
+      "item": {
+        "nodeKey": "construction_negation_simple",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Nous ne lui prêtons pas ce jeu.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Nous ne lui prêtons pas ce jeu."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous ne lui prêtons pas ce jeu."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Ne…pas ou n’…pas nie ce qui est dit du sujet.",
+            "correct": true
+          },
+          {
+            "text": "La phrase affirme quelque chose, sans négation.",
+            "correct": false
+          },
+          {
+            "text": "La phrase pose une question, sans négation.",
+            "correct": false
+          },
+          {
+            "text": "La phrase donne un ordre ou une consigne, sans négation.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "simple-negation-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-negation-recognition:7",
+      "item": {
+        "nodeKey": "construction_negation_simple",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Ce sentier mène au lac.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Ce sentier mène au lac."
+            ],
+            "assessed": {
+              "sentences": [
+                "Ce sentier mène au lac."
+              ]
+            }
+          },
+          "negativeExample": {
+            "excerptFr": "Ce sentier mène au lac.",
+            "rationaleFr": "La phrase affirme quelque chose, sans négation."
+          }
+        },
+        "choices": [
+          {
+            "text": "Ne…pas ou n’…pas nie ce qui est dit du sujet.",
+            "correct": false
+          },
+          {
+            "text": "La phrase affirme quelque chose, sans négation.",
+            "correct": true
+          },
+          {
+            "text": "La phrase pose une question, sans négation.",
+            "correct": false
+          },
+          {
+            "text": "La phrase donne un ordre ou une consigne, sans négation.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "simple-negation-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-negation-recognition:8",
+      "item": {
+        "nodeKey": "construction_negation_simple",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Ils n’ont pas quitté le stade.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Ils n’ont pas quitté le stade."
+            ],
+            "assessed": {
+              "sentences": [
+                "Ils n’ont pas quitté le stade."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Ne…pas ou n’…pas nie ce qui est dit du sujet.",
+            "correct": true
+          },
+          {
+            "text": "La phrase affirme quelque chose, sans négation.",
+            "correct": false
+          },
+          {
+            "text": "La phrase pose une question, sans négation.",
+            "correct": false
+          },
+          {
+            "text": "La phrase donne un ordre ou une consigne, sans négation.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "simple-negation-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-negation-recognition:9",
+      "item": {
+        "nodeKey": "construction_negation_simple",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Tu ne veux pas attendre.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Tu ne veux pas attendre."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu ne veux pas attendre."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Ne…pas ou n’…pas nie ce qui est dit du sujet.",
+            "correct": true
+          },
+          {
+            "text": "La phrase affirme quelque chose, sans négation.",
+            "correct": false
+          },
+          {
+            "text": "La phrase pose une question, sans négation.",
+            "correct": false
+          },
+          {
+            "text": "La phrase donne un ordre ou une consigne, sans négation.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "simple-negation-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-negation-recognition:10",
+      "item": {
+        "nodeKey": "construction_negation_simple",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "La réunion commence à neuf heures.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "La réunion commence à neuf heures."
+            ],
+            "assessed": {
+              "sentences": [
+                "La réunion commence à neuf heures."
+              ]
+            }
+          },
+          "negativeExample": {
+            "excerptFr": "La réunion commence à neuf heures.",
+            "rationaleFr": "La phrase affirme quelque chose, sans négation."
+          }
+        },
+        "choices": [
+          {
+            "text": "Ne…pas ou n’…pas nie ce qui est dit du sujet.",
+            "correct": false
+          },
+          {
+            "text": "La phrase affirme quelque chose, sans négation.",
+            "correct": true
+          },
+          {
+            "text": "La phrase pose une question, sans négation.",
+            "correct": false
+          },
+          {
+            "text": "La phrase donne un ordre ou une consigne, sans négation.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "simple-negation-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-negation-recognition:11",
+      "item": {
+        "nodeKey": "construction_negation_simple",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Comment fonctionne cette machine ?\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Comment fonctionne cette machine ?"
+            ],
+            "assessed": {
+              "sentences": [
+                "Comment fonctionne cette machine ?"
+              ]
+            }
+          },
+          "negativeExample": {
+            "excerptFr": "Comment fonctionne cette machine ?",
+            "rationaleFr": "La phrase pose une question, sans négation."
+          }
+        },
+        "choices": [
+          {
+            "text": "Ne…pas ou n’…pas nie ce qui est dit du sujet.",
+            "correct": false
+          },
+          {
+            "text": "La phrase affirme quelque chose, sans négation.",
+            "correct": false
+          },
+          {
+            "text": "La phrase pose une question, sans négation.",
+            "correct": true
+          },
+          {
+            "text": "La phrase donne un ordre ou une consigne, sans négation.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "simple-negation-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-negation-recognition:12",
+      "item": {
+        "nodeKey": "construction_negation_simple",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Cette réponse n’est pas exacte.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Cette réponse n’est pas exacte."
+            ],
+            "assessed": {
+              "sentences": [
+                "Cette réponse n’est pas exacte."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Ne…pas ou n’…pas nie ce qui est dit du sujet.",
+            "correct": true
+          },
+          {
+            "text": "La phrase affirme quelque chose, sans négation.",
+            "correct": false
+          },
+          {
+            "text": "La phrase pose une question, sans négation.",
+            "correct": false
+          },
+          {
+            "text": "La phrase donne un ordre ou une consigne, sans négation.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "simple-negation-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-negation-recognition:13",
+      "item": {
+        "nodeKey": "construction_negation_simple",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Regarde la première image.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Regarde la première image."
+            ],
+            "assessed": {
+              "sentences": [
+                "Regarde la première image."
+              ]
+            }
+          },
+          "negativeExample": {
+            "excerptFr": "Regarde la première image.",
+            "rationaleFr": "La phrase donne un ordre ou une consigne, sans négation."
+          }
+        },
+        "choices": [
+          {
+            "text": "Ne…pas ou n’…pas nie ce qui est dit du sujet.",
+            "correct": false
+          },
+          {
+            "text": "La phrase affirme quelque chose, sans négation.",
+            "correct": false
+          },
+          {
+            "text": "La phrase pose une question, sans négation.",
+            "correct": false
+          },
+          {
+            "text": "La phrase donne un ordre ou une consigne, sans négation.",
+            "correct": true
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "simple-negation-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-negation-recognition:14",
+      "item": {
+        "nodeKey": "construction_negation_simple",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Je ne me souviens pas de ce titre.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Je ne me souviens pas de ce titre."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je ne me souviens pas de ce titre."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Ne…pas ou n’…pas nie ce qui est dit du sujet.",
+            "correct": true
+          },
+          {
+            "text": "La phrase affirme quelque chose, sans négation.",
+            "correct": false
+          },
+          {
+            "text": "La phrase pose une question, sans négation.",
+            "correct": false
+          },
+          {
+            "text": "La phrase donne un ordre ou une consigne, sans négation.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "simple-negation-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-negation-recognition:15",
+      "item": {
+        "nodeKey": "construction_negation_simple",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Les enfants ont gagné la partie.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les enfants ont gagné la partie."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les enfants ont gagné la partie."
+              ]
+            }
+          },
+          "negativeExample": {
+            "excerptFr": "Les enfants ont gagné la partie.",
+            "rationaleFr": "La phrase affirme quelque chose, sans négation."
+          }
+        },
+        "choices": [
+          {
+            "text": "Ne…pas ou n’…pas nie ce qui est dit du sujet.",
+            "correct": false
+          },
+          {
+            "text": "La phrase affirme quelque chose, sans négation.",
+            "correct": true
+          },
+          {
+            "text": "La phrase pose une question, sans négation.",
+            "correct": false
+          },
+          {
+            "text": "La phrase donne un ordre ou une consigne, sans négation.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "simple-negation-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-negation-recognition:16",
+      "item": {
+        "nodeKey": "construction_negation_simple",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Vous ne les voyez pas.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Vous ne les voyez pas."
+            ],
+            "assessed": {
+              "sentences": [
+                "Vous ne les voyez pas."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Ne…pas ou n’…pas nie ce qui est dit du sujet.",
+            "correct": true
+          },
+          {
+            "text": "La phrase affirme quelque chose, sans négation.",
+            "correct": false
+          },
+          {
+            "text": "La phrase pose une question, sans négation.",
+            "correct": false
+          },
+          {
+            "text": "La phrase donne un ordre ou une consigne, sans négation.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "simple-negation-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "kind": "evidence",
+      "itemKey": "v3-negation-recognition:1",
+      "itemChecksum": "sha256:9615cb88f4ca7a9c5d54835c713ca48405156921a988c63bdb7e7a9d621069cc",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_simple",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "negation-recognition:1"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-negation-recognition:2",
+      "itemChecksum": "sha256:3cf2a48df23ebb641569a154cced83b81129c57cc2c66c8328e06fbde32288b3",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_simple",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "negation-recognition:2"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-negation-recognition:3",
+      "itemChecksum": "sha256:2c8c90bebd6152600543b5e29d9e6aa5405ec1d1c14aeed5801065899a6d2cda",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_simple",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "negation-recognition:3"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-negation-recognition:4",
+      "itemChecksum": "sha256:84094de199a706d97e10755d0155eefb7728b60acb03454c807575c3acc333be",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_simple",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "negation-recognition:4"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-negation-recognition:5",
+      "itemChecksum": "sha256:c674428bcf958d846095b0d52708a7999e8374001575d46a1ae016c5ff33e75c",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_simple",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "negation-recognition:5"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-negation-recognition:6",
+      "itemChecksum": "sha256:ef84f2f69bbee8751711d876629ef619e274b0d4b86ee133acc6404fedbf36c0",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_simple",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "negation-recognition:6"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-negation-recognition:7",
+      "itemChecksum": "sha256:0e431153f9897053f86dce469b1e360ed9af6330192fd771af6b18ee05ce0ba2",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_simple",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "negation-recognition:7"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-negation-recognition:8",
+      "itemChecksum": "sha256:b195b37be6125494171acb8195e884fe783a36d56d2bc38ea7a848fe098a7434",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_simple",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "negation-recognition:8"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-negation-recognition:9",
+      "itemChecksum": "sha256:d8e6a7f36fc79469135c7dbf78128bfddaa0085039d2d44fa51d2c0eb7cf7ff2",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_simple",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "negation-recognition:9"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-negation-recognition:10",
+      "itemChecksum": "sha256:b015947fcf8194e1daa58ac9b83c5036d820ab841dce5675a278c02ba4bde258",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_simple",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "negation-recognition:10"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-negation-recognition:11",
+      "itemChecksum": "sha256:61fdbc1cd80d64f9b0f5e9098c1531b44548061b6454ae3543abeb8566d1dcbc",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_simple",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "negation-recognition:11"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-negation-recognition:12",
+      "itemChecksum": "sha256:24153ff168e3cc2ff3f7044c81668bbfce7fb6c55d9d13dc6af1f057148c5ab0",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_simple",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "negation-recognition:12"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-negation-recognition:13",
+      "itemChecksum": "sha256:34b95c3919c13535e6e74a26997dd96dd3c46d7d913e7c60760bca73269a37a7",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_simple",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "negation-recognition:13"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-negation-recognition:14",
+      "itemChecksum": "sha256:34acb224db7f30f1d1f19e0c195c08704a72a43ce17fc937ffb8cc704debb5b6",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_simple",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "negation-recognition:14"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-negation-recognition:15",
+      "itemChecksum": "sha256:686352c68bd03393a3128b4b46aa37bca2b9da0431b9dbca84534420d0eea320",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_simple",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "negation-recognition:15"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-negation-recognition:16",
+      "itemChecksum": "sha256:d7930594f41052593ea432898355ee40e24321df854046cc9b3d863323a5884e",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_simple",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "negation-recognition:16"
+    }
+  ],
+  "checksum": "sha256:d4f50194dc0b2ad0167b1a76ab2d5043d9175d016d1a1b1c1d8a8f1161538914"
+}
