@@ -3,6 +3,7 @@ import {materialIdentity} from "./material-identity";
 import type {CanonicalDiagnosticBankItem} from "../item-bank";
 import type {TargetTeachingContent} from "./teaching-content";
 const schema=z.object({
+ elidedGapAliases:z.boolean().optional(),
  words:z.array(z.object({lemma:z.string().trim().min(1),form:z.string().trim().min(1)}).strict()).max(1000).default([]),
  sentences:z.array(z.string().trim().min(1)).max(1000).default([]),
  assessed:z.object({words:z.array(z.string().trim().min(1)).max(1000).default([]),sentences:z.array(z.string().trim().min(1)).max(1000).default([])}).strict().optional(),
@@ -26,7 +27,7 @@ export function annotatedMaterialKeys(raw:unknown,sourceTexts:readonly string[])
  if(annotation.words.some(word=>!anchored(word.form))||annotation.sentences.some(sentence=>!anchored(sentence)))throw Error("Material annotation is not anchored in source content");
  const keys=[...new Set([
   ...annotation.words.map(word=>materialIdentity("word",word.lemma)),
-  ...annotation.sentences.flatMap(sentenceKeys),
+  ...annotation.sentences.flatMap(sentence=>annotation.elidedGapAliases?sentenceKeys(sentence):[materialIdentity("sentence",sentence)]),
  ])].sort();
  if(!keys.length||keys.length>1000)throw Error("Invalid material annotation size");
  if(annotation.assessed&&assessedKeys(annotation).some(key=>!keys.includes(key)))throw Error("Assessed material must be included in exposure annotations");
@@ -35,8 +36,8 @@ export function annotatedMaterialKeys(raw:unknown,sourceTexts:readonly string[])
 function assessedKeys(annotation:z.output<typeof schema>):string[]{
  return [...new Set(annotation.assessed?[
   ...annotation.assessed.words.map(word=>materialIdentity("word",word)),
-  ...annotation.assessed.sentences.flatMap(sentenceKeys),
- ]:[...annotation.words.map(word=>materialIdentity("word",word.lemma)),...annotation.sentences.flatMap(sentenceKeys)])].sort();
+  ...annotation.assessed.sentences.flatMap(sentence=>annotation.elidedGapAliases?sentenceKeys(sentence):[materialIdentity("sentence",sentence)]),
+ ]:[...annotation.words.map(word=>materialIdentity("word",word.lemma)),...annotation.sentences.flatMap(sentence=>annotation.elidedGapAliases?sentenceKeys(sentence):[materialIdentity("sentence",sentence)])])].sort();
 }
 /** Omitting assessed preserves conservative older annotations: all exposed
  * material counts as target material. An explicit subset can exclude context. */
