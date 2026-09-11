@@ -11,7 +11,12 @@ export function inspectLearningReleaseCompatibility(source:AssessmentBundle,targ
  };
  const sourceScope=source.assessment.releaseScope?.assessmentSkillIds??source.assessment.skills.map(skill=>skill.id);
  const targetScope=new Set(target.assessment.releaseScope?.assessmentSkillIds??target.assessment.skills.map(skill=>skill.id));
+ const sourceItems=new Set(source.bank.items.map(item=>item.itemKey));
+ const sourceProbes=new Set(source.assessment.probes.map(probe=>probe.id));
+ const addedItems=target.bank.items.filter(item=>!sourceItems.has(item.itemKey)).map(item=>item.itemKey);
+ const addedProbes=target.assessment.probes.filter(probe=>!sourceProbes.has(probe.id)).map(probe=>probe.id);
  const report={
+  addedItems,addedProbes,
   taxonomyUnchanged:source.taxonomyId===target.taxonomyId&&source.assessment.taxonomyChecksum===target.assessment.taxonomyChecksum,
   facetsUnchanged:source.assessment.facetChecksum===target.assessment.facetChecksum,
   changedSkills:changed(source.assessment.skills,target.assessment.skills,skill=>skill.id),
@@ -22,7 +27,10 @@ export function inspectLearningReleaseCompatibility(source:AssessmentBundle,targ
   removedScopeTargets:sourceScope.filter(id=>!targetScope.has(id)),
   addedScopeTargets:[...targetScope].filter(id=>!sourceScope.includes(id)),
  };
- return {...report,compatible:report.taxonomyUnchanged&&report.facetsUnchanged&&[
+ // facetChecksum hashes annotations AND all compiled probes, so legitimate
+ // bank expansion changes it. Existing compiled semantics must remain exact.
+ const facetExpansion=addedItems.length>0&&addedProbes.length>0&&addedProbes.every(id=>addedItems.includes(id));
+ return {...report,compatible:report.taxonomyUnchanged&&(report.facetsUnchanged||facetExpansion)&&[
   report.changedSkills,report.changedItems,report.changedProbes,report.changedTeaching,report.changedActivities,report.removedScopeTargets,
  ].every(changes=>changes.length===0)};
 }

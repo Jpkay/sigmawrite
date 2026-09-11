@@ -36,3 +36,13 @@ it('rejects changed teaching or activity destinations before carrying completion
  const c=structuredClone(a);c.activities![0].href='/student/other';
  expect(inspectLearningReleaseCompatibility(a,c)).toMatchObject({compatible:false,changedActivities:[a.activities![0].id]});
 });
+
+it('allows an aggregate facet checksum change from added questions only when old semantics remain exact',()=>{
+ const target=structuredClone(source);
+ target.bank.items.push({...structuredClone(source.bank.items[0]),itemKey:'new-question'});
+ target.assessment.probes.push({...structuredClone(source.assessment.probes[0]),id:'new-question'});
+ target.assessment.facetChecksum='expanded-compiled-bank';
+ expect(inspectLearningReleaseCompatibility(source,target)).toMatchObject({compatible:true,facetsUnchanged:false,addedItems:['new-question'],addedProbes:['new-question']});
+ target.assessment.probes[0].skillId='different-skill';
+ expect(inspectLearningReleaseCompatibility(source,target).compatible).toBe(false);
+});

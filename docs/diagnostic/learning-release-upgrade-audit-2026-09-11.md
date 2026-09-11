@@ -91,3 +91,15 @@ at https://sigmawrite-fnaekixau-jpkays-projects.vercel.app, deployment
 `dpl_7iJ9C5y3YtvZPtLPvWwgv1aePCGs`, with upgrades enabled on that candidate only.
 The public alias has not been promoted. The isolated source checkout excludes
 unrelated working-tree changes. Candidate browser upgrade verification is running.
+
+Candidate verification found two issues before promotion. The lessons route was
+hidden behind legacy client hydration; commit 56e7844 delegates that exact route
+to its existing authenticated server learning guard. The legacy demo then reached
+all 11 lessons on the candidate. Separately, v9→v10 has identical existing
+compiled skills, probes, bank entries, teaching and activities, but a different
+aggregate facet checksum: facet-adapter hashes all annotations and probes, which
+necessarily changes when questions are added. Compatibility now permits that
+aggregate change only with added bank items and matching new probes, while still
+requiring exact equality of every existing compiled object. A checksum-only
+change and any altered existing item or skill remain rejected. Focused regression
+tests passed; the corrected upgrade still needs candidate browser verification.
