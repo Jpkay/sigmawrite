@@ -65,11 +65,9 @@ export function GranularDiagnostic({initialActivityId,start=startGranularDiagnos
   start().then(async response=>{
    if(cancelled)return;
    accept(response);
-   const command=linkedActivityCommand(response.view??null,initialActivityId);
-   if(response.view){
-    const href=consumedActivityHref(window.location.href,initialActivityId);
-    if(href)window.history.replaceState(window.history.state,"",href);
-   }
+   const href=response.view?consumedActivityHref(window.location.href,initialActivityId):null;
+   const command=href?linkedActivityCommand(response.view??null,initialActivityId):null;
+   if(href)window.history.replaceState(window.history.state,"",href);
    if(command)await send(command.type,command.activityId);
   }).catch(()=>{if(!cancelled)setError("Impossible de charger ton diagnostic. Recharge la page pour réessayer.");}).finally(()=>{if(!cancelled)setBusy(false);});
   return()=>{cancelled=true;mounted.current=false;};
