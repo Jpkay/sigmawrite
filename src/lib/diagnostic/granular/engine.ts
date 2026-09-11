@@ -115,7 +115,8 @@ export function assessSkills(skills: readonly Skill[], observations: readonly Ob
       const minimumItems = requirement?.minimumItems ?? policy.minimumItemsPerMode;
       const minimumContexts = requirement?.minimumContexts ?? policy.minimumContextsPerMode;
       const writingResponses=new Set<string>();
-      const evidence = unique.filter(o => !o.skipped && o.skillId === skill.id && o.mode === mode && (!requirement?.unaidedRequired || o.unaided === true)
+      // Explicitly assisted work is practice, even for nodes without a mandatory unaided marker.
+      const evidence = unique.filter(o => !o.skipped && o.unaided !== false && o.skillId === skill.id && o.mode === mode && (!requirement?.unaidedRequired || o.unaided === true)
         &&(mode!=="independent_production"||verifiedWritingEvidence(o.writingEvidence,skill.id)!==null)
         &&(!requirement?.revisionRequired||(o.writingEvidence?.revisionReviewed===true&&Boolean(o.writingEvidence.firstDraft)))
         &&(!requirement?.textualSupportRequired||o.textualSupportAssessed===true)
