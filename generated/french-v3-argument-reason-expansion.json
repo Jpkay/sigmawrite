@@ -1,0 +1,683 @@
+{
+  "version": "french-v3-argument-reason-expansion-v1",
+  "status": "draft_requires_review",
+  "parentTaxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+  "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
+  "items": [
+    {
+      "itemKey": "v3-argument-reason:subtitles",
+      "item": {
+        "nodeKey": "identifier_raison_argument",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLes vidéos du journal scolaire devraient avoir des sous-titres. Ils permettraient de comprendre les paroles même sans le son. La prochaine vidéo présente le club de théâtre.\n\nPourquoi l’auteur souhaite-t-il des sous-titres ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-argument-reason:subtitles",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Les vidéos du journal scolaire devraient avoir des sous-titres. Ils permettraient de comprendre les paroles même sans le son. La prochaine vidéo présente le club de théâtre.",
+            "choices": [
+              {
+                "quoteFr": "Ils permettraient de comprendre les paroles même sans le son.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Les vidéos du journal scolaire devraient avoir des sous-titres.",
+                "correct": false
+              },
+              {
+                "quoteFr": "La prochaine vidéo présente le club de théâtre.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Pour comprendre les paroles même sans le son.",
+            "correct": true
+          },
+          {
+            "text": "Pour présenter le club de théâtre.",
+            "correct": false
+          },
+          {
+            "text": "Parce que toutes les vidéos sont déjà sous-titrées.",
+            "correct": false
+          },
+          {
+            "text": "Pour supprimer les paroles des vidéos.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "argumentative-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-argument-reason:water",
+      "item": {
+        "nodeKey": "identifier_raison_argument",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nUne gourde peut être remplie plusieurs fois au cours de la journée. Cela évite d’utiliser une nouvelle bouteille jetable à chaque fois. Je propose donc d’installer une fontaine à eau dans la cour.\n\nQuelle raison soutient la proposition d’installer une fontaine ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-argument-reason:water",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Une gourde peut être remplie plusieurs fois au cours de la journée. Cela évite d’utiliser une nouvelle bouteille jetable à chaque fois. Je propose donc d’installer une fontaine à eau dans la cour.",
+            "choices": [
+              {
+                "quoteFr": "Cela évite d’utiliser une nouvelle bouteille jetable à chaque fois.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Une gourde peut être remplie plusieurs fois au cours de la journée.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Je propose donc d’installer une fontaine à eau dans la cour.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Réduire l’utilisation de bouteilles jetables.",
+            "correct": true
+          },
+          {
+            "text": "Installer la fontaine dans la cour.",
+            "correct": false
+          },
+          {
+            "text": "Rendre les gourdes jetables.",
+            "correct": false
+          },
+          {
+            "text": "Empêcher les élèves de boire plusieurs fois.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "argumentative-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-argument-reason:team",
+      "item": {
+        "nodeKey": "identifier_raison_argument",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nGardons des équipes de taille limitée pour le projet. Dans une petite équipe, chacun peut plus facilement prendre la parole. Les groupes seront annoncés lundi.\n\nPourquoi l’auteur défend-il des équipes de taille limitée ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-argument-reason:team",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Gardons des équipes de taille limitée pour le projet. Dans une petite équipe, chacun peut plus facilement prendre la parole. Les groupes seront annoncés lundi.",
+            "choices": [
+              {
+                "quoteFr": "Dans une petite équipe, chacun peut plus facilement prendre la parole.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Gardons des équipes de taille limitée pour le projet.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Les groupes seront annoncés lundi.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Pour faciliter la prise de parole de chacun.",
+            "correct": true
+          },
+          {
+            "text": "Parce que les groupes seront annoncés lundi.",
+            "correct": false
+          },
+          {
+            "text": "Pour que personne ne parle.",
+            "correct": false
+          },
+          {
+            "text": "Parce que les grandes équipes sont interdites.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "argumentative-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-argument-reason:shelter",
+      "item": {
+        "nodeKey": "identifier_raison_argument",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nUn espace libre se trouve à côté du portail. Un abri les protégerait pendant les cours. Construire un abri à vélos me semble donc utile.\n\nQuel avantage soutient la construction de l’abri ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-argument-reason:shelter",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Un espace libre se trouve à côté du portail. Un abri les protégerait pendant les cours. Construire un abri à vélos me semble donc utile.",
+            "choices": [
+              {
+                "quoteFr": "Un abri les protégerait pendant les cours.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Un espace libre se trouve à côté du portail.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Construire un abri à vélos me semble donc utile.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Protéger les vélos de la pluie pendant les cours.",
+            "correct": true
+          },
+          {
+            "text": "Construire un abri à vélos.",
+            "correct": false
+          },
+          {
+            "text": "Empêcher toute pluie dans la cour.",
+            "correct": false
+          },
+          {
+            "text": "Permettre de rouler dans les salles de classe.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "argumentative-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-argument-reason:late-meeting",
+      "item": {
+        "nodeKey": "identifier_raison_argument",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLa réunion est actuellement prévue à dix-sept heures. Je demande qu’elle commence plus tôt, car le dernier bus part à cette heure-là. Le sujet sera le voyage de classe.\n\nPourquoi l’auteur demande-t-il d’avancer la réunion ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-argument-reason:late-meeting",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "La réunion est actuellement prévue à dix-sept heures. Je demande qu’elle commence plus tôt, car le dernier bus part à cette heure-là. Le sujet sera le voyage de classe.",
+            "choices": [
+              {
+                "quoteFr": "Je demande qu’elle commence plus tôt, car le dernier bus part à cette heure-là.",
+                "correct": true
+              },
+              {
+                "quoteFr": "La réunion est actuellement prévue à dix-sept heures.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Le sujet sera le voyage de classe.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Le dernier bus part à l’heure prévue pour la réunion.",
+            "correct": true
+          },
+          {
+            "text": "La réunion concerne le voyage de classe.",
+            "correct": false
+          },
+          {
+            "text": "L’auteur veut changer le sujet de la réunion.",
+            "correct": false
+          },
+          {
+            "text": "Tous les bus sont supprimés.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "argumentative-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-argument-reason:costume",
+      "item": {
+        "nodeKey": "identifier_raison_argument",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nAcheter des costumes neufs coûterait trop cher à notre troupe. Réutilisons plutôt les vêtements disponibles pour le spectacle. La représentation aura lieu dans le gymnase.\n\nQuelle raison justifie la réutilisation des vêtements ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-argument-reason:costume",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Acheter des costumes neufs coûterait trop cher à notre troupe. Réutilisons plutôt les vêtements disponibles pour le spectacle. La représentation aura lieu dans le gymnase.",
+            "choices": [
+              {
+                "quoteFr": "Acheter des costumes neufs coûterait trop cher à notre troupe.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Réutilisons plutôt les vêtements disponibles pour le spectacle.",
+                "correct": false
+              },
+              {
+                "quoteFr": "La représentation aura lieu dans le gymnase.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Le coût trop élevé de costumes neufs.",
+            "correct": true
+          },
+          {
+            "text": "Le spectacle aura lieu dans le gymnase.",
+            "correct": false
+          },
+          {
+            "text": "La troupe ne donnera aucune représentation.",
+            "correct": false
+          },
+          {
+            "text": "Les vêtements disponibles sont tous neufs.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "argumentative-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-argument-reason:shade",
+      "item": {
+        "nodeKey": "identifier_raison_argument",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nPlantons des arbres près des bancs. Ils donneraient de l’ombre aux personnes assises en été. Certains préféreraient seulement repeindre les bancs.\n\nQuel argument l’auteur donne-t-il pour planter des arbres ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-argument-reason:shade",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Plantons des arbres près des bancs. Ils donneraient de l’ombre aux personnes assises en été. Certains préféreraient seulement repeindre les bancs.",
+            "choices": [
+              {
+                "quoteFr": "Ils donneraient de l’ombre aux personnes assises en été.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Plantons des arbres près des bancs.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Certains préféreraient seulement repeindre les bancs.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Les arbres apporteraient de l’ombre en été.",
+            "correct": true
+          },
+          {
+            "text": "Certaines personnes veulent repeindre les bancs.",
+            "correct": false
+          },
+          {
+            "text": "Les arbres sont déjà plantés.",
+            "correct": false
+          },
+          {
+            "text": "Les bancs ne servent à personne.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "argumentative-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-argument-reason:anonymous",
+      "item": {
+        "nodeKey": "identifier_raison_argument",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLa prochaine consultation porte sur les activités du foyer. Une boîte à idées anonyme permettrait aux élèves de participer sans donner leur nom. Je recommande d’en installer une près de l’accueil.\n\nPourquoi l’auteur recommande-t-il une boîte à idées anonyme ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-argument-reason:anonymous",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "La prochaine consultation porte sur les activités du foyer. Une boîte à idées anonyme permettrait aux élèves de participer sans donner leur nom. Je recommande d’en installer une près de l’accueil.",
+            "choices": [
+              {
+                "quoteFr": "Une boîte à idées anonyme permettrait aux élèves de participer sans donner leur nom.",
+                "correct": true
+              },
+              {
+                "quoteFr": "La prochaine consultation porte sur les activités du foyer.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Je recommande d’en installer une près de l’accueil.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Pour permettre de proposer des idées sans donner son nom.",
+            "correct": true
+          },
+          {
+            "text": "Parce que l’accueil va fermer.",
+            "correct": false
+          },
+          {
+            "text": "Pour afficher le nom de chaque élève.",
+            "correct": false
+          },
+          {
+            "text": "Pour empêcher les élèves de faire des propositions.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "argumentative-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "itemKey": "v3-argument-reason:subtitles",
+      "itemChecksum": "sha256:a03e6bddeedc6253c3a4a2a165403961a0b15b22c34fb31ea427198407e7d1d2",
+      "facetKey": "identifier_raison_argument::text_type:argumentative",
+      "contextKey": "passage:v3-argument-reason:subtitles",
+      "reason": "Identifier la raison donnée pour soutenir une proposition, en conservant la différence entre raison, proposition et détail de contexte."
+    },
+    {
+      "itemKey": "v3-argument-reason:water",
+      "itemChecksum": "sha256:cb2c8ee851cfdacae293ec6b2f05cd61fe7c935d3f15b4f7dd8a44001b3dd0be",
+      "facetKey": "identifier_raison_argument::text_type:argumentative",
+      "contextKey": "passage:v3-argument-reason:water",
+      "reason": "Identifier la raison donnée pour soutenir une proposition, en conservant la différence entre raison, proposition et détail de contexte."
+    },
+    {
+      "itemKey": "v3-argument-reason:team",
+      "itemChecksum": "sha256:a483f12011068dc1b536ae63bd14dac2afc78d2109a35a420b810288e4a8c88b",
+      "facetKey": "identifier_raison_argument::text_type:argumentative",
+      "contextKey": "passage:v3-argument-reason:team",
+      "reason": "Identifier la raison donnée pour soutenir une proposition, en conservant la différence entre raison, proposition et détail de contexte."
+    },
+    {
+      "itemKey": "v3-argument-reason:shelter",
+      "itemChecksum": "sha256:8421050b183e8a2bd9922bdb933ec15233b18a4d70c5f4ae608606af1a782d04",
+      "facetKey": "identifier_raison_argument::text_type:argumentative",
+      "contextKey": "passage:v3-argument-reason:shelter",
+      "reason": "Identifier la raison donnée pour soutenir une proposition, en conservant la différence entre raison, proposition et détail de contexte."
+    },
+    {
+      "itemKey": "v3-argument-reason:late-meeting",
+      "itemChecksum": "sha256:e1fc94c47c9547489536989489d734fa233187ac58f8adc3ba91bc9e19041782",
+      "facetKey": "identifier_raison_argument::text_type:argumentative",
+      "contextKey": "passage:v3-argument-reason:late-meeting",
+      "reason": "Identifier la raison donnée pour soutenir une proposition, en conservant la différence entre raison, proposition et détail de contexte."
+    },
+    {
+      "itemKey": "v3-argument-reason:costume",
+      "itemChecksum": "sha256:0e2ee6bf0ec91ccb00cc1c085d3422e0364f8b0d25650e64141954f9d3d8b290",
+      "facetKey": "identifier_raison_argument::text_type:argumentative",
+      "contextKey": "passage:v3-argument-reason:costume",
+      "reason": "Identifier la raison donnée pour soutenir une proposition, en conservant la différence entre raison, proposition et détail de contexte."
+    },
+    {
+      "itemKey": "v3-argument-reason:shade",
+      "itemChecksum": "sha256:b7578c2e21028354d98dde98d4192cd957e1d805e80600f4d962d6c2779b1c5f",
+      "facetKey": "identifier_raison_argument::text_type:argumentative",
+      "contextKey": "passage:v3-argument-reason:shade",
+      "reason": "Identifier la raison donnée pour soutenir une proposition, en conservant la différence entre raison, proposition et détail de contexte."
+    },
+    {
+      "itemKey": "v3-argument-reason:anonymous",
+      "itemChecksum": "sha256:06f6eb13bb40dcac407a3864839aa226edb2b32e31b8e1d40644071ff5a5790e",
+      "facetKey": "identifier_raison_argument::text_type:argumentative",
+      "contextKey": "passage:v3-argument-reason:anonymous",
+      "reason": "Identifier la raison donnée pour soutenir une proposition, en conservant la différence entre raison, proposition et détail de contexte."
+    }
+  ],
+  "checksum": "sha256:4e2717e588fb40d4d83f6873303fd84457a5d00f75d169931fdfdb59e08fa64f"
+}

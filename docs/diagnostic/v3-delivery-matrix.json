@@ -3,12 +3,17 @@
   "status": "draft_requires_review",
   "sources": {
     "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
-    "bankChecksum": "sha256:b6dc97afed8b9942cb8dadbfaeff0ac84391e19f22d850b5ecde8df9cf92f92e",
+    "bankChecksum": "sha256:17a774fc739aa6c175a6f26de5e14b86a291b47367bd9928ecb61a253fc65433",
     "annotationChecksum": "sha256:41e7a8d65776f6bb64c33c925b7d4449ffe9fda5a6b71a899067a171232542bb",
-    "facetChecksum": "sha256:6e80bb1795b0b42424544e4f8612619cf07abb1f50c97ab7fc3e14133a3c8637",
+    "facetChecksum": "sha256:a4a4e75f20048b3a1f3e880ecce54f2a435455af56575a0783753db3ce61dfc1",
     "poolChecksum": "sha256:8c59b3ee0139afb4f44fa7e964a85ec00c67e9889bb1ffbad78ff7aa14aa5dfe",
     "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
     "expansions": [
+      {
+        "version": "french-v3-argument-reason-expansion-v1",
+        "checksum": "sha256:4e2717e588fb40d4d83f6873303fd84457a5d00f75d169931fdfdb59e08fa64f",
+        "addedItems": 8
+      },
       {
         "version": "french-v3-argument-thesis-expansion-v1",
         "checksum": "sha256:04e30ff7afbc5c8c4ce55d10b5cc60512740e2ab55f6dcbfa34603d4249106f7",
@@ -145,14 +150,14 @@
         "addedItems": 90
       }
     ],
-    "teachingDraftChecksum": "sha256:5cd6df289a08cfec929b694bed7a34d1753013d135c7a32d2e9823a7b6241bb5"
+    "teachingDraftChecksum": "sha256:943beda44f2402c05b8051441d6120564dbac553c8ad64cdcb8e973061f5ef75"
   },
   "summary": {
-    "teachingDrafts": 177,
-    "targetsWithTeachingDrafts": 177,
-    "targetsWithoutTeachingDrafts": 365,
-    "totalCandidateQuestions": 5352,
-    "additionalDraftQuestions": 4622,
+    "teachingDrafts": 178,
+    "targetsWithTeachingDrafts": 178,
+    "targetsWithoutTeachingDrafts": 364,
+    "totalCandidateQuestions": 5360,
+    "additionalDraftQuestions": 4630,
     "canonicalEligibleQuestions": 238,
     "approvedCompetencies": 181,
     "approvedEvidenceDefinitions": 257,
@@ -188,10 +193,10 @@
         "eligibleQuestions": 21,
         "targetsWithNoEligibleQuestions": 74,
         "allocatedPools": 0,
-        "targetsWithTeachingDrafts": 12,
-        "targetsWithoutTeachingDrafts": 80,
-        "guidedExerciseDrafts": 56,
-        "exactTargetExpansionDrafts": 104
+        "targetsWithTeachingDrafts": 13,
+        "targetsWithoutTeachingDrafts": 79,
+        "guidedExerciseDrafts": 62,
+        "exactTargetExpansionDrafts": 112
       },
       {
         "domain": "grammar",
@@ -44327,8 +44332,17 @@
           "missingRequiredIdentities": []
         },
         "exactTargetDrafts": {
-          "questions": 0,
-          "withoutExplicitAssessedIdentity": [],
+          "questions": 8,
+          "withoutExplicitAssessedIdentity": [
+            "v3-argument-reason:subtitles",
+            "v3-argument-reason:water",
+            "v3-argument-reason:team",
+            "v3-argument-reason:shelter",
+            "v3-argument-reason:late-meeting",
+            "v3-argument-reason:costume",
+            "v3-argument-reason:shade",
+            "v3-argument-reason:anonymous"
+          ],
           "missingRequiredIdentities": []
         },
         "sharedParentDrafts": {
@@ -44409,8 +44423,24 @@
         "local-reading-v1:identifier_raison_argument:receptive:core",
         "local-reading-v1:identifier_raison_argument:receptive:stretch"
       ],
-      "exactTargetExpansionDrafts": [],
-      "teachingDrafts": [],
+      "exactTargetExpansionDrafts": [
+        "v3-argument-reason:subtitles",
+        "v3-argument-reason:water",
+        "v3-argument-reason:team",
+        "v3-argument-reason:shelter",
+        "v3-argument-reason:late-meeting",
+        "v3-argument-reason:costume",
+        "v3-argument-reason:shade",
+        "v3-argument-reason:anonymous"
+      ],
+      "teachingDrafts": [
+        {
+          "id": "french-v3-teaching:argument-reason",
+          "status": "draft_requires_review",
+          "guidedExercises": 6,
+          "boundaryFr": "Repérer un argument ne prouve pas qu’il est vrai ou convaincant. Juger sa solidité est une autre compétence. Une même phrase peut contenir à la fois une proposition et sa raison."
+        }
+      ],
       "activities": {
         "instruction": "not_bound",
         "practice": "not_bound",
@@ -44419,8 +44449,8 @@
       "nextActions": [
         "enforce_approved_criterion:evidenceSpanRequired",
         "review_refinement_and_prerequisites",
-        "map_and_review_parent_drafts",
-        "author_or_reuse_exact_target_teaching",
+        "review_exact_target_drafts",
+        "review_teaching_scope_and_content",
         "bind_exact_target_instruction",
         "bind_exact_target_practice",
         "verify_independent_check_flow"
@@ -79285,5 +79315,5 @@
       ]
     }
   ],
-  "checksum": "sha256:8b1cd772067a4990e67c4ae594b66cbcbd3bbaeb814d169e843808cc43241c60"
+  "checksum": "sha256:896ce0d595018f73033f7dae3ba748f4de27781b9a08c9f79b94c0927b02fcc5"
 }

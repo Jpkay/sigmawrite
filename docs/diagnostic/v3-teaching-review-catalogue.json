@@ -5,12 +5,155 @@
   "facetChecksum": "sha256:c1587bbcc3d7b86759a9aeee784f312a48e3d2706edac48ad2d1681957b44f73",
   "assessmentSourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
   "summary": {
-    "lessons": 177,
-    "guidedExercises": 966,
-    "targets": 177,
+    "lessons": 178,
+    "guidedExercises": 972,
+    "targets": 178,
     "missingExposureAnnotations": []
   },
   "rows": [
+    {
+      "lessonId": "french-v3-teaching:argument-reason",
+      "contentChecksum": "sha256:6495c925928934022bae406e2fa6a827ea578befdbdf8103793510bcc0f1c477",
+      "skillId": "identifier_raison_argument::argumentative-receptive::text_type:argumentative",
+      "nodeKey": "identifier_raison_argument",
+      "facetKey": "identifier_raison_argument::text_type:argumentative",
+      "mode": "interpretation",
+      "domain": "reading_comprehension",
+      "prerequisites": [
+        "identifier_these_argument::argumentative-receptive::text_type:argumentative"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 3,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": true,
+        "minimumTextTypes": 1,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "parentMinimumTextTypes": 1,
+        "featureRequirements": []
+      },
+      "exposureAnnotationStatus": "anchored_requires_completeness_review",
+      "materialKeys": [
+        "sentence:sha256:0bd94e4e7c1655d00c0d708f30410a686fce9dd4e4b3b47cf10c7ef5be709d6c",
+        "sentence:sha256:26696c1d30fdd34afa4527e88149f98380b631b0f51a46a8d3ed912e9afbdc92",
+        "sentence:sha256:3008f7a8c59c9187c58d42216f5d9778fcdfaa5126a41348313b271009af3ac2",
+        "sentence:sha256:74707e2f414db98a246f818f74dad9dfa4580e4d3c482d8114e2f6c98bac8531",
+        "sentence:sha256:9f419b3c43327b458bf361929a7f201c888dbeaeec6090cb844e7d2e8596e29c",
+        "sentence:sha256:b01ec380be639b66bafa7c92925c609689839a3436b957cae768943fc807ac1d",
+        "sentence:sha256:bd8e4e20161ba453661f745d6b6c6d16703003cdc99257db8bef76d63a6e55fc",
+        "sentence:sha256:c667353c71569ee5b2c463afb067268f8973b2f9ebc4a4ace90ebbbe38c22023"
+      ],
+      "requiredReviews": [
+        "linguistic_validity",
+        "exact_target_and_mode_fit",
+        "worked_examples_and_guided_feedback",
+        "prerequisite_fit",
+        "assessment_overlap_and_exposure_completeness",
+        "learner_readability"
+      ],
+      "content": {
+        "id": "french-v3-teaching:argument-reason",
+        "nodeKey": "identifier_raison_argument",
+        "facetKey": "identifier_raison_argument::text_type:argumentative",
+        "mode": "interpretation",
+        "status": "draft_requires_review",
+        "titleFr": "Trouver la raison qui soutient une idée",
+        "learnerQuestionFr": "Pourquoi l’auteur défend-il cette idée ?",
+        "steps": [
+          {
+            "exampleFr": "Prêtons des parapluies à l’accueil. Les élèves pourraient rentrer au sec en cas de pluie.",
+            "explanationFr": "Prêter des parapluies est la proposition défendue. Rentrer au sec est la raison donnée pour la soutenir. Une raison qui soutient une idée s’appelle un argument."
+          },
+          {
+            "exampleFr": "Le stand est près de la porte. Prêtons des parapluies, car cela aiderait les élèves surpris par la pluie.",
+            "explanationFr": "Car introduit ici la raison. La place du stand est un détail, pas une raison de prêter des parapluies. Une raison peut aussi être exprimée sans car ou parce que : il faut lire le lien entre les idées."
+          }
+        ],
+        "practice": [
+          {
+            "id": "reason-guided-0-answer",
+            "promptFr": "Créons un panneau pour les annonces des clubs. Les élèves pourraient ainsi retrouver les horaires au même endroit. Le panneau serait bleu.\n\nPourquoi créer ce panneau ?",
+            "choices": [
+              "Pour retrouver les horaires au même endroit.",
+              "Parce que le panneau serait bleu.",
+              "Pour supprimer les clubs.",
+              "Parce que les horaires ne changent jamais."
+            ],
+            "answerFr": "Pour retrouver les horaires au même endroit.",
+            "hintFr": "Cherche ce qui explique pourquoi la proposition serait utile ou souhaitable.",
+            "explanationFr": "La raison donnée est : Pour retrouver les horaires au même endroit. Le texte dit : « Les élèves pourraient ainsi retrouver les horaires au même endroit. »"
+          },
+          {
+            "id": "reason-guided-0-support",
+            "promptFr": "Créons un panneau pour les annonces des clubs. Les élèves pourraient ainsi retrouver les horaires au même endroit. Le panneau serait bleu.\n\nRecopie la phrase contenant cette raison.",
+            "answerFr": "Les élèves pourraient ainsi retrouver les horaires au même endroit.",
+            "hintFr": "La phrase peut contenir la proposition et sa raison, ou seulement la raison.",
+            "explanationFr": "La phrase contenant la raison est : « Les élèves pourraient ainsi retrouver les horaires au même endroit. »"
+          },
+          {
+            "id": "reason-guided-1-answer",
+            "promptFr": "Les élèves ont parfois du mal à porter seuls les grandes maquettes. Je propose de les transporter à deux pour éviter de les laisser tomber. L’exposition ouvre vendredi.\n\nPourquoi transporter les maquettes à deux ?",
+            "choices": [
+              "Pour éviter de les laisser tomber.",
+              "Parce que l’exposition ouvre vendredi.",
+              "Pour rendre les maquettes plus grandes.",
+              "Pour annuler l’exposition."
+            ],
+            "answerFr": "Pour éviter de les laisser tomber.",
+            "hintFr": "Cherche ce qui explique pourquoi la proposition serait utile ou souhaitable.",
+            "explanationFr": "La raison donnée est : Pour éviter de les laisser tomber. Le texte dit : « Je propose de les transporter à deux pour éviter de les laisser tomber. »"
+          },
+          {
+            "id": "reason-guided-1-support",
+            "promptFr": "Les élèves ont parfois du mal à porter seuls les grandes maquettes. Je propose de les transporter à deux pour éviter de les laisser tomber. L’exposition ouvre vendredi.\n\nRecopie la phrase contenant cette raison.",
+            "answerFr": "Je propose de les transporter à deux pour éviter de les laisser tomber.",
+            "hintFr": "La phrase peut contenir la proposition et sa raison, ou seulement la raison.",
+            "explanationFr": "La phrase contenant la raison est : « Je propose de les transporter à deux pour éviter de les laisser tomber. »"
+          },
+          {
+            "id": "reason-guided-2-answer",
+            "promptFr": "Certains veulent jeter les feuilles utilisées d’un seul côté. Je préfère les garder comme brouillon : leur face vide peut encore servir. Une boîte est disponible près du tableau.\n\nQuelle raison soutient l’utilisation de ces feuilles comme brouillon ?",
+            "choices": [
+              "La face vide des feuilles peut encore servir.",
+              "Certaines personnes veulent jeter les feuilles.",
+              "Une boîte se trouve près du tableau.",
+              "Les deux faces sont déjà remplies."
+            ],
+            "answerFr": "La face vide des feuilles peut encore servir.",
+            "hintFr": "Cherche ce qui explique pourquoi la proposition serait utile ou souhaitable.",
+            "explanationFr": "La raison donnée est : La face vide des feuilles peut encore servir. Le texte dit : « Je préfère les garder comme brouillon : leur face vide peut encore servir. »"
+          },
+          {
+            "id": "reason-guided-2-support",
+            "promptFr": "Certains veulent jeter les feuilles utilisées d’un seul côté. Je préfère les garder comme brouillon : leur face vide peut encore servir. Une boîte est disponible près du tableau.\n\nRecopie la phrase contenant cette raison.",
+            "answerFr": "Je préfère les garder comme brouillon : leur face vide peut encore servir.",
+            "hintFr": "La phrase peut contenir la proposition et sa raison, ou seulement la raison.",
+            "explanationFr": "La phrase contenant la raison est : « Je préfère les garder comme brouillon : leur face vide peut encore servir. »"
+          }
+        ],
+        "takeawayFr": "Repère la proposition défendue, puis demande pourquoi l’auteur la soutient. Choisis une raison réellement donnée dans le texte, pas un détail ou une raison que tu inventes.",
+        "boundaryFr": "Repérer un argument ne prouve pas qu’il est vrai ou convaincant. Juger sa solidité est une autre compétence. Une même phrase peut contenir à la fois une proposition et sa raison.",
+        "materialExposure": {
+          "sentences": [
+            "Créons un panneau pour les annonces des clubs. Les élèves pourraient ainsi retrouver les horaires au même endroit. Le panneau serait bleu.",
+            "Les élèves pourraient ainsi retrouver les horaires au même endroit.",
+            "Les élèves ont parfois du mal à porter seuls les grandes maquettes. Je propose de les transporter à deux pour éviter de les laisser tomber. L’exposition ouvre vendredi.",
+            "Je propose de les transporter à deux pour éviter de les laisser tomber.",
+            "Certains veulent jeter les feuilles utilisées d’un seul côté. Je préfère les garder comme brouillon : leur face vide peut encore servir. Une boîte est disponible près du tableau.",
+            "Je préfère les garder comme brouillon : leur face vide peut encore servir.",
+            "Prêtons des parapluies à l’accueil. Les élèves pourraient rentrer au sec en cas de pluie.",
+            "Le stand est près de la porte. Prêtons des parapluies, car cela aiderait les élèves surpris par la pluie."
+          ]
+        }
+      }
+    },
     {
       "lessonId": "french-v3-teaching:argument-thesis",
       "contentChecksum": "sha256:76aa7218c0a5dbb9e9a3fd29d387bb36b0ee3c33ddf475574b86df2ef19b9831",
@@ -26558,5 +26701,5 @@
       }
     }
   ],
-  "checksum": "sha256:6af3008c193e3e0ac892097297bd260948e0ba29f1232e63e5134b16d2dcd7d9"
+  "checksum": "sha256:3e51c1fa773644e3876466b475dc6851fb4ee253bd905225f8498ccf86038098"
 }
