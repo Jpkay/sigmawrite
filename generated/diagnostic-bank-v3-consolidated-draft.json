@@ -37493,6 +37493,1854 @@
       "reviewStatus": "needs_human_review"
     },
     {
+      "itemKey": "v3-lexical-reference-chains:narrative-skater",
+      "item": {
+        "nodeKey": "suivre_chaine_lexicale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nYanis remporta la course de patinage. Le vainqueur leva les bras devant le public. Le jeune champion reçut ensuite une médaille.\n\nDans ce texte, qui ou que désigne « Le jeune champion » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-lexical-reference-chains:narrative-skater",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Yanis remporta la course de patinage. Le vainqueur leva les bras devant le public. Le jeune champion reçut ensuite une médaille.",
+            "choices": [
+              {
+                "quoteFr": "Yanis remporta la course de patinage.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Le vainqueur leva les bras devant le public.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Le jeune champion reçut ensuite une médaille.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Yanis",
+            "correct": true
+          },
+          {
+            "text": "le public",
+            "correct": false
+          },
+          {
+            "text": "la médaille",
+            "correct": false
+          },
+          {
+            "text": "la course",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-lexical-reference-chains:narrative-fox",
+      "item": {
+        "nodeKey": "suivre_chaine_lexicale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nUn renard se glissa sous la clôture. L’animal traversa le potager sans bruit. Le visiteur roux disparut derrière une haie.\n\nDans ce texte, qui ou que désigne « Le visiteur roux » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-lexical-reference-chains:narrative-fox",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Un renard se glissa sous la clôture. L’animal traversa le potager sans bruit. Le visiteur roux disparut derrière une haie.",
+            "choices": [
+              {
+                "quoteFr": "Un renard se glissa sous la clôture.",
+                "correct": true
+              },
+              {
+                "quoteFr": "L’animal traversa le potager sans bruit.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Le visiteur roux disparut derrière une haie.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "le renard",
+            "correct": true
+          },
+          {
+            "text": "le potager",
+            "correct": false
+          },
+          {
+            "text": "la clôture",
+            "correct": false
+          },
+          {
+            "text": "la haie",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-lexical-reference-chains:narrative-drone",
+      "item": {
+        "nodeKey": "suivre_chaine_lexicale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nSofia lança son drone au-dessus du terrain. Le petit appareil monta lentement. La machine volante filma le groupe depuis le ciel.\n\nDans ce texte, qui ou que désigne « La machine volante » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-lexical-reference-chains:narrative-drone",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Sofia lança son drone au-dessus du terrain. Le petit appareil monta lentement. La machine volante filma le groupe depuis le ciel.",
+            "choices": [
+              {
+                "quoteFr": "Sofia lança son drone au-dessus du terrain.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Le petit appareil monta lentement.",
+                "correct": false
+              },
+              {
+                "quoteFr": "La machine volante filma le groupe depuis le ciel.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "le drone",
+            "correct": true
+          },
+          {
+            "text": "Sofia",
+            "correct": false
+          },
+          {
+            "text": "le groupe",
+            "correct": false
+          },
+          {
+            "text": "le terrain",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-lexical-reference-chains:narrative-painter",
+      "item": {
+        "nodeKey": "suivre_chaine_lexicale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nMila peignait une fresque sur le mur du préau. L’artiste choisit une couleur vive. La créatrice du dessin recula pour regarder son travail.\n\nDans ce texte, qui ou que désigne « La créatrice du dessin » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-lexical-reference-chains:narrative-painter",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Mila peignait une fresque sur le mur du préau. L’artiste choisit une couleur vive. La créatrice du dessin recula pour regarder son travail.",
+            "choices": [
+              {
+                "quoteFr": "Mila peignait une fresque sur le mur du préau.",
+                "correct": true
+              },
+              {
+                "quoteFr": "L’artiste choisit une couleur vive.",
+                "correct": false
+              },
+              {
+                "quoteFr": "La créatrice du dessin recula pour regarder son travail.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Mila",
+            "correct": true
+          },
+          {
+            "text": "la fresque",
+            "correct": false
+          },
+          {
+            "text": "le préau",
+            "correct": false
+          },
+          {
+            "text": "la couleur",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-lexical-reference-chains:narrative-boat",
+      "item": {
+        "nodeKey": "suivre_chaine_lexicale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nUn voilier entra dans le port. Le bateau passa près de la jetée. L’embarcation s’arrêta enfin au quai.\n\nDans ce texte, qui ou que désigne « L’embarcation » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-lexical-reference-chains:narrative-boat",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Un voilier entra dans le port. Le bateau passa près de la jetée. L’embarcation s’arrêta enfin au quai.",
+            "choices": [
+              {
+                "quoteFr": "Un voilier entra dans le port.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Le bateau passa près de la jetée.",
+                "correct": false
+              },
+              {
+                "quoteFr": "L’embarcation s’arrêta enfin au quai.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "le voilier",
+            "correct": true
+          },
+          {
+            "text": "la jetée",
+            "correct": false
+          },
+          {
+            "text": "le port",
+            "correct": false
+          },
+          {
+            "text": "le quai",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-lexical-reference-chains:narrative-manga",
+      "item": {
+        "nodeKey": "suivre_chaine_lexicale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nNoam retrouva son manga sous le lit. Le livre avait une page pliée. Le volume abîmé retrouva sa place sur l’étagère.\n\nDans ce texte, qui ou que désigne « Le volume abîmé » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-lexical-reference-chains:narrative-manga",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Noam retrouva son manga sous le lit. Le livre avait une page pliée. Le volume abîmé retrouva sa place sur l’étagère.",
+            "choices": [
+              {
+                "quoteFr": "Noam retrouva son manga sous le lit.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Le livre avait une page pliée.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Le volume abîmé retrouva sa place sur l’étagère.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "le manga",
+            "correct": true
+          },
+          {
+            "text": "le lit",
+            "correct": false
+          },
+          {
+            "text": "la page seule",
+            "correct": false
+          },
+          {
+            "text": "l’étagère",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-lexical-reference-chains:narrative-dog",
+      "item": {
+        "nodeKey": "suivre_chaine_lexicale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nUne chienne attendait devant le portail. La bête remuait la queue en voyant Sam. La nouvelle compagne de Sam entra dans la cour avec lui.\n\nDans ce texte, qui ou que désigne « La nouvelle compagne de Sam » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-lexical-reference-chains:narrative-dog",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Une chienne attendait devant le portail. La bête remuait la queue en voyant Sam. La nouvelle compagne de Sam entra dans la cour avec lui.",
+            "choices": [
+              {
+                "quoteFr": "Une chienne attendait devant le portail.",
+                "correct": true
+              },
+              {
+                "quoteFr": "La bête remuait la queue en voyant Sam.",
+                "correct": false
+              },
+              {
+                "quoteFr": "La nouvelle compagne de Sam entra dans la cour avec lui.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "la chienne",
+            "correct": true
+          },
+          {
+            "text": "Sam",
+            "correct": false
+          },
+          {
+            "text": "la queue",
+            "correct": false
+          },
+          {
+            "text": "la cour",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-lexical-reference-chains:narrative-bike",
+      "item": {
+        "nodeKey": "suivre_chaine_lexicale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLou sortit son vélo du garage. La bicyclette avait les pneus dégonflés. Le deux-roues resta près de la pompe pendant la réparation.\n\nDans ce texte, qui ou que désigne « Le deux-roues » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-lexical-reference-chains:narrative-bike",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Lou sortit son vélo du garage. La bicyclette avait les pneus dégonflés. Le deux-roues resta près de la pompe pendant la réparation.",
+            "choices": [
+              {
+                "quoteFr": "Lou sortit son vélo du garage.",
+                "correct": true
+              },
+              {
+                "quoteFr": "La bicyclette avait les pneus dégonflés.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Le deux-roues resta près de la pompe pendant la réparation.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "le vélo",
+            "correct": true
+          },
+          {
+            "text": "la pompe",
+            "correct": false
+          },
+          {
+            "text": "le garage",
+            "correct": false
+          },
+          {
+            "text": "les pneus seuls",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-lexical-reference-chains:informational-badge",
+      "item": {
+        "nodeKey": "suivre_chaine_lexicale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nUn badge nominatif est remis à chaque participant. Ce laissez-passer permet d’entrer dans les ateliers. Le document doit être conservé pendant toute la journée.\n\nDans ce texte, qui ou que désigne « Le document » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-lexical-reference-chains:informational-badge",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Un badge nominatif est remis à chaque participant. Ce laissez-passer permet d’entrer dans les ateliers. Le document doit être conservé pendant toute la journée.",
+            "choices": [
+              {
+                "quoteFr": "Un badge nominatif est remis à chaque participant.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Ce laissez-passer permet d’entrer dans les ateliers.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Le document doit être conservé pendant toute la journée.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "le badge nominatif",
+            "correct": true
+          },
+          {
+            "text": "chaque participant",
+            "correct": false
+          },
+          {
+            "text": "les ateliers",
+            "correct": false
+          },
+          {
+            "text": "la journée",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-lexical-reference-chains:informational-guide",
+      "item": {
+        "nodeKey": "suivre_chaine_lexicale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLe guide du musée accompagne les groupes. Ce professionnel présente les salles ouvertes à la visite. L’accompagnateur répond aussi aux questions sur le parcours.\n\nDans ce texte, qui ou que désigne « L’accompagnateur » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-lexical-reference-chains:informational-guide",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Le guide du musée accompagne les groupes. Ce professionnel présente les salles ouvertes à la visite. L’accompagnateur répond aussi aux questions sur le parcours.",
+            "choices": [
+              {
+                "quoteFr": "Le guide du musée accompagne les groupes.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Ce professionnel présente les salles ouvertes à la visite.",
+                "correct": false
+              },
+              {
+                "quoteFr": "L’accompagnateur répond aussi aux questions sur le parcours.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "le guide du musée",
+            "correct": true
+          },
+          {
+            "text": "les groupes",
+            "correct": false
+          },
+          {
+            "text": "le parcours",
+            "correct": false
+          },
+          {
+            "text": "les salles",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-lexical-reference-chains:informational-tank",
+      "item": {
+        "nodeKey": "suivre_chaine_lexicale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nUne cuve récupère l’eau de pluie. Ce réservoir est placé derrière le bâtiment. Le contenant possède un couvercle fermé.\n\nDans ce texte, qui ou que désigne « Le contenant » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-lexical-reference-chains:informational-tank",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Une cuve récupère l’eau de pluie. Ce réservoir est placé derrière le bâtiment. Le contenant possède un couvercle fermé.",
+            "choices": [
+              {
+                "quoteFr": "Une cuve récupère l’eau de pluie.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Ce réservoir est placé derrière le bâtiment.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Le contenant possède un couvercle fermé.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "la cuve",
+            "correct": true
+          },
+          {
+            "text": "le bâtiment",
+            "correct": false
+          },
+          {
+            "text": "le couvercle seul",
+            "correct": false
+          },
+          {
+            "text": "l’eau de pluie",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-lexical-reference-chains:informational-shuttle",
+      "item": {
+        "nodeKey": "suivre_chaine_lexicale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nUne navette relie le parking à l’entrée du parc. Le véhicule part toutes les vingt minutes. Ce moyen de transport est accessible avec le billet du parc.\n\nDans ce texte, qui ou que désigne « Ce moyen de transport » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-lexical-reference-chains:informational-shuttle",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Une navette relie le parking à l’entrée du parc. Le véhicule part toutes les vingt minutes. Ce moyen de transport est accessible avec le billet du parc.",
+            "choices": [
+              {
+                "quoteFr": "Une navette relie le parking à l’entrée du parc.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Le véhicule part toutes les vingt minutes.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Ce moyen de transport est accessible avec le billet du parc.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "la navette",
+            "correct": true
+          },
+          {
+            "text": "le parking",
+            "correct": false
+          },
+          {
+            "text": "le billet",
+            "correct": false
+          },
+          {
+            "text": "l’entrée du parc",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-lexical-reference-chains:informational-manual",
+      "item": {
+        "nodeKey": "suivre_chaine_lexicale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nUn manuel est fourni avec le télescope. Cet ouvrage explique le montage du matériel. Le livre contient aussi un schéma des différentes pièces.\n\nDans ce texte, qui ou que désigne « Le livre » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-lexical-reference-chains:informational-manual",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Un manuel est fourni avec le télescope. Cet ouvrage explique le montage du matériel. Le livre contient aussi un schéma des différentes pièces.",
+            "choices": [
+              {
+                "quoteFr": "Un manuel est fourni avec le télescope.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Cet ouvrage explique le montage du matériel.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Le livre contient aussi un schéma des différentes pièces.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "le manuel",
+            "correct": true
+          },
+          {
+            "text": "le télescope",
+            "correct": false
+          },
+          {
+            "text": "le matériel",
+            "correct": false
+          },
+          {
+            "text": "le schéma seul",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-lexical-reference-chains:informational-printer",
+      "item": {
+        "nodeKey": "suivre_chaine_lexicale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nUne imprimante est disponible dans la salle informatique. L’appareil accepte les fichiers envoyés depuis les ordinateurs du club. Cette machine fonctionne avec la carte de membre.\n\nDans ce texte, qui ou que désigne « Cette machine » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-lexical-reference-chains:informational-printer",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Une imprimante est disponible dans la salle informatique. L’appareil accepte les fichiers envoyés depuis les ordinateurs du club. Cette machine fonctionne avec la carte de membre.",
+            "choices": [
+              {
+                "quoteFr": "Une imprimante est disponible dans la salle informatique.",
+                "correct": true
+              },
+              {
+                "quoteFr": "L’appareil accepte les fichiers envoyés depuis les ordinateurs du club.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Cette machine fonctionne avec la carte de membre.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "l’imprimante",
+            "correct": true
+          },
+          {
+            "text": "les ordinateurs",
+            "correct": false
+          },
+          {
+            "text": "les fichiers",
+            "correct": false
+          },
+          {
+            "text": "la carte de membre",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-lexical-reference-chains:informational-shelter",
+      "item": {
+        "nodeKey": "suivre_chaine_lexicale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nUn abri couvert se trouve près du départ du sentier. Cette construction permet d’attendre à l’écart de la pluie. Le petit bâtiment reste ouvert toute l’année.\n\nDans ce texte, qui ou que désigne « Le petit bâtiment » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-lexical-reference-chains:informational-shelter",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Un abri couvert se trouve près du départ du sentier. Cette construction permet d’attendre à l’écart de la pluie. Le petit bâtiment reste ouvert toute l’année.",
+            "choices": [
+              {
+                "quoteFr": "Un abri couvert se trouve près du départ du sentier.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Cette construction permet d’attendre à l’écart de la pluie.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Le petit bâtiment reste ouvert toute l’année.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "l’abri couvert",
+            "correct": true
+          },
+          {
+            "text": "le sentier",
+            "correct": false
+          },
+          {
+            "text": "le départ seul",
+            "correct": false
+          },
+          {
+            "text": "la pluie",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-lexical-reference-chains:informational-newsletter",
+      "item": {
+        "nodeKey": "suivre_chaine_lexicale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nUne lettre d’information est envoyée chaque mois aux adhérents. Cette publication annonce les rencontres à venir. Le bulletin contient les dates et les lieux de rendez-vous.\n\nDans ce texte, qui ou que désigne « Le bulletin » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-lexical-reference-chains:informational-newsletter",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Une lettre d’information est envoyée chaque mois aux adhérents. Cette publication annonce les rencontres à venir. Le bulletin contient les dates et les lieux de rendez-vous.",
+            "choices": [
+              {
+                "quoteFr": "Une lettre d’information est envoyée chaque mois aux adhérents.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Cette publication annonce les rencontres à venir.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Le bulletin contient les dates et les lieux de rendez-vous.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "la lettre d’information",
+            "correct": true
+          },
+          {
+            "text": "les adhérents",
+            "correct": false
+          },
+          {
+            "text": "les rencontres",
+            "correct": false
+          },
+          {
+            "text": "les lieux de rendez-vous",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-lexical-reference-chains:argumentative-library",
+      "item": {
+        "nodeKey": "suivre_chaine_lexicale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nJe souhaite que la bibliothèque ouvre le samedi. Ce lieu de lecture serait alors accessible aux familles qui travaillent en semaine. Cet espace culturel mérite des horaires plus larges.\n\nDans ce texte, qui ou que désigne « Cet espace culturel » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-lexical-reference-chains:argumentative-library",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Je souhaite que la bibliothèque ouvre le samedi. Ce lieu de lecture serait alors accessible aux familles qui travaillent en semaine. Cet espace culturel mérite des horaires plus larges.",
+            "choices": [
+              {
+                "quoteFr": "Je souhaite que la bibliothèque ouvre le samedi.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Ce lieu de lecture serait alors accessible aux familles qui travaillent en semaine.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Cet espace culturel mérite des horaires plus larges.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "la bibliothèque",
+            "correct": true
+          },
+          {
+            "text": "le samedi",
+            "correct": false
+          },
+          {
+            "text": "les familles",
+            "correct": false
+          },
+          {
+            "text": "les horaires",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-lexical-reference-chains:argumentative-bike",
+      "item": {
+        "nodeKey": "suivre_chaine_lexicale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLe vélo devrait avoir plus de place dans nos déplacements. Ce véhicule permet de faire de courts trajets sans moteur. Ce moyen de transport mérite donc des chemins adaptés.\n\nDans ce texte, qui ou que désigne « Ce moyen de transport » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-lexical-reference-chains:argumentative-bike",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Le vélo devrait avoir plus de place dans nos déplacements. Ce véhicule permet de faire de courts trajets sans moteur. Ce moyen de transport mérite donc des chemins adaptés.",
+            "choices": [
+              {
+                "quoteFr": "Le vélo devrait avoir plus de place dans nos déplacements.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Ce véhicule permet de faire de courts trajets sans moteur.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Ce moyen de transport mérite donc des chemins adaptés.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "le vélo",
+            "correct": true
+          },
+          {
+            "text": "les chemins",
+            "correct": false
+          },
+          {
+            "text": "le moteur",
+            "correct": false
+          },
+          {
+            "text": "les trajets seuls",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-lexical-reference-chains:argumentative-theatre",
+      "item": {
+        "nodeKey": "suivre_chaine_lexicale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLe club de théâtre devrait être maintenu. Cet atelier aide les élèves à travailler leur expression. Cette activité collective offre aussi une occasion de créer ensemble.\n\nDans ce texte, qui ou que désigne « Cette activité collective » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-lexical-reference-chains:argumentative-theatre",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Le club de théâtre devrait être maintenu. Cet atelier aide les élèves à travailler leur expression. Cette activité collective offre aussi une occasion de créer ensemble.",
+            "choices": [
+              {
+                "quoteFr": "Le club de théâtre devrait être maintenu.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Cet atelier aide les élèves à travailler leur expression.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Cette activité collective offre aussi une occasion de créer ensemble.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "le club de théâtre",
+            "correct": true
+          },
+          {
+            "text": "les élèves",
+            "correct": false
+          },
+          {
+            "text": "leur expression",
+            "correct": false
+          },
+          {
+            "text": "une création précise",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-lexical-reference-chains:argumentative-garden",
+      "item": {
+        "nodeKey": "suivre_chaine_lexicale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nJe défends le projet de jardin partagé. Cet espace de culture permettrait aux habitants de se rencontrer. Ce terrain commun ne devrait pas devenir un parking.\n\nDans ce texte, qui ou que désigne « Ce terrain commun » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-lexical-reference-chains:argumentative-garden",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Je défends le projet de jardin partagé. Cet espace de culture permettrait aux habitants de se rencontrer. Ce terrain commun ne devrait pas devenir un parking.",
+            "choices": [
+              {
+                "quoteFr": "Je défends le projet de jardin partagé.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Cet espace de culture permettrait aux habitants de se rencontrer.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Ce terrain commun ne devrait pas devenir un parking.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "le jardin partagé prévu",
+            "correct": true
+          },
+          {
+            "text": "un parking déjà construit",
+            "correct": false
+          },
+          {
+            "text": "les habitants",
+            "correct": false
+          },
+          {
+            "text": "les rencontres",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-lexical-reference-chains:argumentative-repair",
+      "item": {
+        "nodeKey": "suivre_chaine_lexicale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nUn atelier de réparation serait utile dans le quartier. Ce service aiderait à remettre les objets en état. Cette aide de proximité limiterait les achats de remplacement.\n\nDans ce texte, qui ou que désigne « Cette aide de proximité » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-lexical-reference-chains:argumentative-repair",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Un atelier de réparation serait utile dans le quartier. Ce service aiderait à remettre les objets en état. Cette aide de proximité limiterait les achats de remplacement.",
+            "choices": [
+              {
+                "quoteFr": "Un atelier de réparation serait utile dans le quartier.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Ce service aiderait à remettre les objets en état.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Cette aide de proximité limiterait les achats de remplacement.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "l’atelier de réparation proposé",
+            "correct": true
+          },
+          {
+            "text": "le quartier entier",
+            "correct": false
+          },
+          {
+            "text": "les objets",
+            "correct": false
+          },
+          {
+            "text": "les achats de remplacement",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-lexical-reference-chains:argumentative-paper",
+      "item": {
+        "nodeKey": "suivre_chaine_lexicale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLe journal des élèves mérite un soutien. Cette publication donne une place à leurs idées. Ce média scolaire ne devrait pas disparaître faute de matériel.\n\nDans ce texte, qui ou que désigne « Ce média scolaire » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-lexical-reference-chains:argumentative-paper",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Le journal des élèves mérite un soutien. Cette publication donne une place à leurs idées. Ce média scolaire ne devrait pas disparaître faute de matériel.",
+            "choices": [
+              {
+                "quoteFr": "Le journal des élèves mérite un soutien.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Cette publication donne une place à leurs idées.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Ce média scolaire ne devrait pas disparaître faute de matériel.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "le journal des élèves",
+            "correct": true
+          },
+          {
+            "text": "leurs idées seules",
+            "correct": false
+          },
+          {
+            "text": "le matériel",
+            "correct": false
+          },
+          {
+            "text": "les élèves",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-lexical-reference-chains:argumentative-canteen",
+      "item": {
+        "nodeKey": "suivre_chaine_lexicale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nJe propose un repas végétarien supplémentaire à la cantine. Cette option élargirait le choix des élèves. Cette possibilité devrait être discutée avec les cuisiniers.\n\nDans ce texte, qui ou que désigne « Cette possibilité » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-lexical-reference-chains:argumentative-canteen",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Je propose un repas végétarien supplémentaire à la cantine. Cette option élargirait le choix des élèves. Cette possibilité devrait être discutée avec les cuisiniers.",
+            "choices": [
+              {
+                "quoteFr": "Je propose un repas végétarien supplémentaire à la cantine.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Cette option élargirait le choix des élèves.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Cette possibilité devrait être discutée avec les cuisiniers.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "le repas végétarien supplémentaire proposé",
+            "correct": true
+          },
+          {
+            "text": "la cantine entière",
+            "correct": false
+          },
+          {
+            "text": "les cuisiniers",
+            "correct": false
+          },
+          {
+            "text": "le choix actuel uniquement",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-lexical-reference-chains:argumentative-park",
+      "item": {
+        "nodeKey": "suivre_chaine_lexicale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLe petit parc du quartier doit rester ouvert. Ce lieu de promenade accueille des habitants de tous âges. Cet espace de détente est utile à la vie du quartier.\n\nDans ce texte, qui ou que désigne « Cet espace de détente » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-lexical-reference-chains:argumentative-park",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Le petit parc du quartier doit rester ouvert. Ce lieu de promenade accueille des habitants de tous âges. Cet espace de détente est utile à la vie du quartier.",
+            "choices": [
+              {
+                "quoteFr": "Le petit parc du quartier doit rester ouvert.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Ce lieu de promenade accueille des habitants de tous âges.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Cet espace de détente est utile à la vie du quartier.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "le petit parc",
+            "correct": true
+          },
+          {
+            "text": "les habitants",
+            "correct": false
+          },
+          {
+            "text": "tous les âges",
+            "correct": false
+          },
+          {
+            "text": "le quartier entier",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
       "itemKey": "v3-demonstrative-reference-genres:informational-books",
       "item": {
         "nodeKey": "resoudre_demonstratif",
@@ -340556,9 +342404,9 @@
     }
   ],
   "manifest": {
-    "itemCount": 5532,
+    "itemCount": 5556,
     "eligibleItemCount": 238,
-    "pendingItemCount": 5294,
+    "pendingItemCount": 5318,
     "publicationMode": "partial",
     "nodeCount": 114,
     "sectionReadiness": [
@@ -340607,6 +342455,6 @@
         "difficultyTierCount": 3
       }
     ],
-    "checksum": "sha256:e6261f2e975c374a0ed3ffa9786e41cc2f06d115270f502eaed8328a216ecb1b"
+    "checksum": "sha256:6eb9207e392f2222a1a969dcec26458b0f84aead082ab3e3963218225ae124f8"
   }
 }
