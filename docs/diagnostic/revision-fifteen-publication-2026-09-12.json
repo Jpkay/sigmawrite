@@ -1,5 +1,5 @@
 {
-  "status": "candidate_compatibility_verified_bank_import_running_not_published",
+  "status": "candidate_default_verified_full_journey_and_upgrade_running",
   "sourceCommit": "37de48a0fa2306a8714cbee460b6a3a938901a47",
   "frozenWorkspace": "/Users/jean-philippekayobotsi/.codex/release-workspaces/sigmawrite-r15-37de48a",
   "candidateUrl": "https://sigmawrite-4yhmws1q6-jpkays-projects.vercel.app",
@@ -61,23 +61,52 @@
         "grammar"
       ],
       "activities": 5
+    },
+    "relationalBank": {
+      "version": "french-granular-parallel-publication-v1",
+      "ready": true,
+      "authorization": "product-owner-request-2026-09-11",
+      "reviewOwner": "product_owner",
+      "bankChecksum": "sha256:b1f238f2edff146c2b2d768186e219ba21f28ed3526ad57b2eb202a39bb5430a",
+      "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+      "bundleChecksum": "sha256:af6baa1f39f348dd84721bb0d5ccffb1caf8e3edc5f5035c0c8a48b52e46aa8b",
+      "policyChecksum": "sha256:4fa966c00592bfbe0a8472a2bc2697aa77dcf5d07a39826a85d391b971c51bbf",
+      "scopeChecksum": "sha256:9b12a9e1380b5799627f3f1de35914be1123907e0cb39f33c791e3e7e0fa81c3",
+      "bankItemCount": 6496,
+      "assessmentTargets": 253,
+      "teachingTargets": 253,
+      "instructionGapSkillIds": [],
+      "freshCheckGapSkillIds": [],
+      "verifiedItems": 6496
+    },
+    "candidateDefault": {
+      "sessionId": "b0f8cda2-e7e1-4d19-b337-147fb9ae42a8",
+      "releaseId": "704d0165-21ff-441c-ae2c-82eebc444676",
+      "scope": 253,
+      "defaultSelectedByApplication": true,
+      "reloadPreservedSession": true
     }
   },
   "running": {
-    "bankImportHandle": 13670
+    "fullJourney": 21499,
+    "learningUpgrade": 99787
   },
   "freshQa": {
     "username": "doves.granular.r15.default.qa",
     "studentId": "06b3b4cd-5ec7-4a2a-aa78-779453551bb3",
     "credentialsFile": "tmp/plume-granular-r15-default-qa.json",
-    "diagnosticStarted": false
+    "diagnosticStarted": true,
+    "sessionId": "b0f8cda2-e7e1-4d19-b337-147fb9ae42a8"
   },
   "remaining": [
-    "Finish import and verify relational bank",
-    "Verify deployment Ready and audio assets",
-    "Publish immutable v16 bundle",
-    "Verify fresh default and complete candidate diagnostic, learning and answer review",
-    "Verify real learning upgrade preserves previous answers",
-    "Promote exact tested deployment and repeat public checks"
-  ]
+    "Verify fresh default and full 35-minute candidate journey through results, lesson remediation and answer review.",
+    "Verify real completed-learning upgrade without losing history.",
+    "Only then promote exact frozen deployment and verify public default, demo and pinned pathways."
+  ],
+  "bankReleaseId": "443fcfbe-e8db-4a1a-ae11-a4a33f177bf9",
+  "publication": {
+    "releaseId": "704d0165-21ff-441c-ae2c-82eebc444676",
+    "releaseKey": "french-granular-diagnostic-v16",
+    "bundleChecksum": "sha256:af6baa1f39f348dd84721bb0d5ccffb1caf8e3edc5f5035c0c8a48b52e46aa8b"
+  }
 }
