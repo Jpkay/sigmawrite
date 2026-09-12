@@ -31,8 +31,23 @@
     "focusedTestsPassed": true,
     "typeScriptPassed": true,
     "newLessonJourneys": 3,
-    "fullSuite": "running",
-    "profileAndCommandSimulations": "running"
+    "fullSuite": {
+      "passed": true,
+      "files": 397,
+      "tests": 1763
+    },
+    "profileAndCommandSimulations": "passed",
+    "profileSimulations": 10,
+    "commandJourneys": 2,
+    "namedContrastCoverage": {
+      "intendedComparisons": 4,
+      "bothSidesSampled": 3,
+      "separatedSampledComparisons": 3,
+      "unexercisedComparisons": [
+        "literal_chronology_known_causal_inference_weak"
+      ],
+      "limitation": "Both sides sampled means at least one target per side; inspect contrastCoverage for untested modes and constructions. Probability separation is not confirmed mastery or classroom validation."
+    }
   },
   "limitations": [
     "Three guided-to-independent fixtures passed with synthetic history; this is not classroom validation.",
