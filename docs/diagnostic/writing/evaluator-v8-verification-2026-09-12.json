@@ -1,5 +1,5 @@
 {
-  "status": "experimental_imperative_live_cases_pass_broader_checks_running",
+  "status": "experimental_broader_checks_complete_failures_recorded",
   "evaluatorVersion": "french-writing-evaluator-v8",
   "change": "Resolve case-only differences in nested imperative form evidence, retaining exact outer opportunities, source offsets, accents, word boundaries and containment. Try exact occurrence matching first. No case folding is applied to general spelling evidence.",
   "localChecks": {
@@ -13,12 +13,32 @@
     "matched": 6,
     "total": 6
   },
-  "running": {
-    "broaderCounterexamples": 82328
-  },
+  "running": {},
   "limitations": [
     "Six synthetic imperative cases are not calibration across all writing targets.",
     "Provider reliability and revision judgment failures remain under investigation.",
     "The evaluator remains outside student releases."
-  ]
+  ],
+  "broaderCounterexamples": {
+    "matched": 24,
+    "total": 28,
+    "failures": [
+      {
+        "id": "simple-future-incorrect",
+        "reason": "invalid_json"
+      },
+      {
+        "id": "imperative-incorrect",
+        "reason": "provider_or_configuration"
+      },
+      {
+        "id": "simple-past-incorrect",
+        "reason": "timeout"
+      },
+      {
+        "id": "past-contrast-incorrect",
+        "reason": "timeout"
+      }
+    ]
+  }
 }

@@ -9,7 +9,62 @@
         "answer": "Prends ton sac et mets tes chaussures. Attends devant la porte, puis rejoins le groupe.",
         "expect": "correct"
       },
-      "rawResponse": "{\"{\"uncertain\":false,\"connectedWriting\":true,\"revisionReviewed\":false,\"opportunities\":[{\"excerpt\":\"Prends\",\"occurrence\":0,\"imperativeForm\":{\"infinitive\":\"prendre\",\"excerpt\":\"Prends\",\"occurrence\":0},\"criterionId\":\"employer_imperatif_en_contexte\",\"correct\":true,\"reasonFr\":\"Impératif 2e personne du verbe « prendre », forme correcte dans une consigne d'organisation.\"},{\"excerpt\":\"mets\",\"occurrence\":0,\"imperativeForm\":{\"infinitive\":\"mettre\",\"excerpt\":\"mets\",\"occurrence\":0},\"criterionId\":\"employer_imperatif_en_contexte\",\"correct\":true,\"reasonFr\":\"Impératif 2e personne du verbe « mettre », forme correcte pour indiquer l'action à accomplir.\"},{\"excerpt\":\"Attends\",\"occurrence\":0,\"imperativeForm\":{\"infinitive\":\"attendre\",\"excerpt\":\"Attends\",\"occurrence\":0},\"criterionId\":\"employer_imperatif_en_contexte\",\"correct\":true,\"reasonFr\":\"Impératif 2e personne du verbe « attendre », forme correcte dans une instruction.\"},{\"excerpt\":\"rejoins\",\"occurrence\":0,\"imperativeForm\":{\"infinitive\":\"rejoindre\",\"excerpt\":\"rejoins\",\"occurrence\":0},\"criterionId\":\"employer_imperatif_en_contexte\",\"correct\":true,\"reasonFr\":\"Impératif 2e personne du verbe « rejoindre », forme correcte pour conclure la consigne.\"}] }"
+      "rawResponse": "{\"{\"uncertain\":false,\"connectedWriting\":true,\"revisionReviewed\":false,\"opportunities\":[{\"excerpt\":\"Prends\",\"occurrence\":0,\"imperativeForm\":{\"infinitive\":\"prendre\",\"excerpt\":\"Prends\",\"occurrence\":0},\"criterionId\":\"employer_imperatif_en_contexte\",\"correct\":true,\"reasonFr\":\"Impératif 2e personne du verbe « prendre », forme correcte dans une consigne d'organisation.\"},{\"excerpt\":\"mets\",\"occurrence\":0,\"imperativeForm\":{\"infinitive\":\"mettre\",\"excerpt\":\"mets\",\"occurrence\":0},\"criterionId\":\"employer_imperatif_en_contexte\",\"correct\":true,\"reasonFr\":\"Impératif 2e personne du verbe « mettre », forme correcte pour indiquer l'action à accomplir.\"},{\"excerpt\":\"Attends\",\"occurrence\":0,\"imperativeForm\":{\"infinitive\":\"attendre\",\"excerpt\":\"Attends\",\"occurrence\":0},\"criterionId\":\"employer_imperatif_en_contexte\",\"correct\":true,\"reasonFr\":\"Impératif 2e personne du verbe « attendre », forme correcte dans une instruction.\"},{\"excerpt\":\"rejoins\",\"occurrence\":0,\"imperativeForm\":{\"infinitive\":\"rejoindre\",\"excerpt\":\"rejoins\",\"occurrence\":0},\"criterionId\":\"employer_imperatif_en_contexte\",\"correct\":true,\"reasonFr\":\"Impératif 2e personne du verbe « rejoindre », forme correcte pour conclure la consigne.\"}] }",
+      "expectedPayload": {
+        "uncertain": false,
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "opportunities": [
+          {
+            "excerpt": "Prends",
+            "occurrence": 0,
+            "imperativeForm": {
+              "infinitive": "prendre",
+              "excerpt": "Prends",
+              "occurrence": 0
+            },
+            "criterionId": "employer_imperatif_en_contexte",
+            "correct": true,
+            "reasonFr": "Impératif 2e personne du verbe « prendre », forme correcte dans une consigne d'organisation."
+          },
+          {
+            "excerpt": "mets",
+            "occurrence": 0,
+            "imperativeForm": {
+              "infinitive": "mettre",
+              "excerpt": "mets",
+              "occurrence": 0
+            },
+            "criterionId": "employer_imperatif_en_contexte",
+            "correct": true,
+            "reasonFr": "Impératif 2e personne du verbe « mettre », forme correcte pour indiquer l'action à accomplir."
+          },
+          {
+            "excerpt": "Attends",
+            "occurrence": 0,
+            "imperativeForm": {
+              "infinitive": "attendre",
+              "excerpt": "Attends",
+              "occurrence": 0
+            },
+            "criterionId": "employer_imperatif_en_contexte",
+            "correct": true,
+            "reasonFr": "Impératif 2e personne du verbe « attendre », forme correcte dans une instruction."
+          },
+          {
+            "excerpt": "rejoins",
+            "occurrence": 0,
+            "imperativeForm": {
+              "infinitive": "rejoindre",
+              "excerpt": "rejoins",
+              "occurrence": 0
+            },
+            "criterionId": "employer_imperatif_en_contexte",
+            "correct": true,
+            "reasonFr": "Impératif 2e personne du verbe « rejoindre », forme correcte pour conclure la consigne."
+          }
+        ]
+      }
     },
     {
       "source": {
@@ -19,7 +74,38 @@
         "answer": "Lina a préparé un gâteau pour la fête. Manges-en une part avant le départ, puis vas-y avec elle.",
         "expect": "correct"
       },
-      "rawResponse": "{\"{\"uncertain\":false,\"connectedWriting\":true,\"revisionReviewed\":false,\"opportunities\":[{\"excerpt\":\"Manges-en\",\"occurrence\":0,\"imperativeForm\":{\"infinitive\":\"manger\",\"excerpt\":\"Manges\",\"occurrence\":0},\"criterionId\":\"employer_imperatif_en_contexte\",\"correct\":true,\"reasonFr\":\"Impératif 2e pers. sing. du verbe « manger » avec pronoun « en » : le s est correctement conservé devant le pronom. Forme adaptée au sens d'injonction.\"},{\"excerpt\":\"vas-y\",\"occurrence\":0,\"imperativeForm\":{\"infinitive\":\"aller\",\"excerpt\":\"vas\",\"occurrence\":0},\"criterionId\":\"employer_imperatif_en_contexte\",\"correct\":true,\"reasonFr\":\"Impératif 2e pers. sing. du verbe « aller » avec pronoun « y » : le s est correctement conservé devant le pronom. Injonction cohérente dans le contexte.\"}]}"
+      "rawResponse": "{\"{\"uncertain\":false,\"connectedWriting\":true,\"revisionReviewed\":false,\"opportunities\":[{\"excerpt\":\"Manges-en\",\"occurrence\":0,\"imperativeForm\":{\"infinitive\":\"manger\",\"excerpt\":\"Manges\",\"occurrence\":0},\"criterionId\":\"employer_imperatif_en_contexte\",\"correct\":true,\"reasonFr\":\"Impératif 2e pers. sing. du verbe « manger » avec pronoun « en » : le s est correctement conservé devant le pronom. Forme adaptée au sens d'injonction.\"},{\"excerpt\":\"vas-y\",\"occurrence\":0,\"imperativeForm\":{\"infinitive\":\"aller\",\"excerpt\":\"vas\",\"occurrence\":0},\"criterionId\":\"employer_imperatif_en_contexte\",\"correct\":true,\"reasonFr\":\"Impératif 2e pers. sing. du verbe « aller » avec pronoun « y » : le s est correctement conservé devant le pronom. Injonction cohérente dans le contexte.\"}]}",
+      "expectedPayload": {
+        "uncertain": false,
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "opportunities": [
+          {
+            "excerpt": "Manges-en",
+            "occurrence": 0,
+            "imperativeForm": {
+              "infinitive": "manger",
+              "excerpt": "Manges",
+              "occurrence": 0
+            },
+            "criterionId": "employer_imperatif_en_contexte",
+            "correct": true,
+            "reasonFr": "Impératif 2e pers. sing. du verbe « manger » avec pronoun « en » : le s est correctement conservé devant le pronom. Forme adaptée au sens d'injonction."
+          },
+          {
+            "excerpt": "vas-y",
+            "occurrence": 0,
+            "imperativeForm": {
+              "infinitive": "aller",
+              "excerpt": "vas",
+              "occurrence": 0
+            },
+            "criterionId": "employer_imperatif_en_contexte",
+            "correct": true,
+            "reasonFr": "Impératif 2e pers. sing. du verbe « aller » avec pronoun « y » : le s est correctement conservé devant le pronom. Injonction cohérente dans le contexte."
+          }
+        ]
+      }
     },
     {
       "source": {
@@ -29,7 +115,38 @@
         "answer": "Lina a préparé un gâteau pour la fête. Mange-en une part avant le départ, puis va-y avec elle.",
         "expect": "incorrect"
       },
-      "rawResponse": "{\"{\"uncertain\":false,\"connectedWriting\":true,\"revisionReviewed\":false,\"opportunities\":[{\"excerpt\":\"Mange-en une part avant le départ\",\"occurrence\":0,\"imperativeForm\":{\"infinitive\":\"manger\",\"excerpt\":\"Mange\",\"occurrence\":0},\"criterionId\":\"employer_imperatif_en_contexte\",\"correct\":true,\"reasonFr\":\"Impératif correct de « manger » à la 2e personne du singulier, employé pour donner une consigne.\"},{\"excerpt\":\"va-y avec elle\",\"occurrence\":0,\"imperativeForm\":{\"infinitive\":\"aller\",\"excerpt\":\"va\",\"occurrence\":0},\"criterionId\":\"employer_imperatif_en_contexte\",\"correct\":true,\"reasonFr\":\"Impératif correct de « aller » à la 2e personne du singulier avec pronom « y » attaché, employé pour donner une consigne de déplacement.\"}]}"
+      "rawResponse": "{\"{\"uncertain\":false,\"connectedWriting\":true,\"revisionReviewed\":false,\"opportunities\":[{\"excerpt\":\"Mange-en une part avant le départ\",\"occurrence\":0,\"imperativeForm\":{\"infinitive\":\"manger\",\"excerpt\":\"Mange\",\"occurrence\":0},\"criterionId\":\"employer_imperatif_en_contexte\",\"correct\":true,\"reasonFr\":\"Impératif correct de « manger » à la 2e personne du singulier, employé pour donner une consigne.\"},{\"excerpt\":\"va-y avec elle\",\"occurrence\":0,\"imperativeForm\":{\"infinitive\":\"aller\",\"excerpt\":\"va\",\"occurrence\":0},\"criterionId\":\"employer_imperatif_en_contexte\",\"correct\":true,\"reasonFr\":\"Impératif correct de « aller » à la 2e personne du singulier avec pronom « y » attaché, employé pour donner une consigne de déplacement.\"}]}",
+      "expectedPayload": {
+        "uncertain": false,
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "opportunities": [
+          {
+            "excerpt": "Mange-en une part avant le départ",
+            "occurrence": 0,
+            "imperativeForm": {
+              "infinitive": "manger",
+              "excerpt": "Mange",
+              "occurrence": 0
+            },
+            "criterionId": "employer_imperatif_en_contexte",
+            "correct": true,
+            "reasonFr": "Impératif correct de « manger » à la 2e personne du singulier, employé pour donner une consigne."
+          },
+          {
+            "excerpt": "va-y avec elle",
+            "occurrence": 0,
+            "imperativeForm": {
+              "infinitive": "aller",
+              "excerpt": "va",
+              "occurrence": 0
+            },
+            "criterionId": "employer_imperatif_en_contexte",
+            "correct": true,
+            "reasonFr": "Impératif correct de « aller » à la 2e personne du singulier avec pronom « y » attaché, employé pour donner une consigne de déplacement."
+          }
+        ]
+      }
     },
     {
       "source": {
@@ -39,7 +156,61 @@
         "answer": "Tu peux prendre ton sac et mettre tes chaussures. Tu attendras devant la porte, puis tu rejoindras le groupe.",
         "expect": "unresolved"
       },
-      "rawResponse": "{\"{\"uncertain\":false,\"connectedWriting\":true,\"revisionReviewed\":false,\"opportunities\":[]}"
+      "rawResponse": "{\"{\"uncertain\":false,\"connectedWriting\":true,\"revisionReviewed\":false,\"opportunities\":[]}",
+      "expectedPayload": {
+        "uncertain": false,
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "opportunities": []
+      }
+    },
+    {
+      "source": {
+        "id": "simple-future-incorrect",
+        "node": "employer_futur_simple_en_contexte",
+        "prompt": "Imagine la prochaine journée de ton groupe.",
+        "answer": "Demain, nous prépareront un spectacle. Lina chanterai et mes amis jouerons de la musique. La salle sera ouverte.",
+        "expect": "incorrect"
+      },
+      "rawResponse": "{\n  \"{\"uncertain\":false,\"connectedWriting\":true,\"revisionReviewed\":false,\"opportunities\":[{\"excerpt\":\"prépareront\",\"occurrence\":0,\"correct\":false,\"reasonFr\":\"Avec « nous », le futur simple est « préparerons », non « prépareront ».\"},{\"excerpt\":\"chanterai\",\"occurrence\":0,\"correct\":false,\"reasonFr\":\"Avec « Lina » (3e personne du singulier), il faut « chantera », non « chanterai ».\"},{\"excerpt\":\"jouerons\",\"occurrence\":0,\"correct\":false,\"reasonFr\":\"Avec « mes amis » (3e personne du pluriel), il faut « joueront », non « jouerons ».\"},{\"excerpt\":\"sera\",\"occurrence\":0,\"correct\":true,\"reasonFr\":\"« la salle sera » est correct au futur simple, 3e personne du singulier.\"}]}",
+      "expectedPayload": {
+        "uncertain": false,
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "opportunities": [
+          {
+            "excerpt": "prépareront",
+            "occurrence": 0,
+            "correct": false,
+            "reasonFr": "Avec « nous », le futur simple est « préparerons », non « prépareront »."
+          },
+          {
+            "excerpt": "chanterai",
+            "occurrence": 0,
+            "correct": false,
+            "reasonFr": "Avec « Lina » (3e personne du singulier), il faut « chantera », non « chanterai »."
+          },
+          {
+            "excerpt": "jouerons",
+            "occurrence": 0,
+            "correct": false,
+            "reasonFr": "Avec « mes amis » (3e personne du pluriel), il faut « joueront », non « jouerons »."
+          },
+          {
+            "excerpt": "sera",
+            "occurrence": 0,
+            "correct": true,
+            "reasonFr": "« la salle sera » est correct au futur simple, 3e personne du singulier."
+          }
+        ]
+      }
+    }
+  ],
+  "rejectedCases": [
+    {
+      "id": "corrupted-uncertainty-property",
+      "rawResponse": "{\"{\"}_uncertain\":{\"uncertain\":false},\"connectedWriting\":true,\"revisionReviewed\":false,\"opportunities\":[{\"excerpt\":\"Mange-en une part avant le départ\",\"occurrence\":0,\"imperativeForm\":{\"infinitive\":\"manger\",\"excerpt\":\"Mange\",\"occurrence\":0},\"correct\":true,\"reasonFr\":\"« Mange » est la forme d'impératif présent 2e personne du verbe « manger », employée de manière autonome dans une consigne cohérente.\"},{\"excerpt\":\"va-y avec elle\",\"occurrence\":0,\"imperativeForm\":{\"infinitive\":\"aller\",\"excerpt\":\"va\",\"occurrence\":0},\"correct\":true,\"reasonFr\":\"« va » est la forme d'impératif présent 2e personne du verbe « aller », correcte y compris avec le pronom « y » attaché.\"}]}",
+      "reason": "The payload changes a required grading property, not just the outer envelope. It must not be repaired into a grade."
     }
   ]
 }

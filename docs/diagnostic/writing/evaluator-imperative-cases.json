@@ -40,5 +40,19 @@
     "prompt": "Donne des consignes pour préparer une sortie.",
     "answer": "Mettons nos sacs près du banc. Mes amis, attendez ici pendant que je prends la carte. Rejoignez ensuite Lina devant le portail.",
     "expect": "correct"
+  },
+  {
+    "id": "imperative-ecrire-correct",
+    "node": "employer_imperatif_en_contexte",
+    "prompt": "Donne des consignes à une amie pour préparer une affiche.",
+    "answer": "Prends une grande feuille. Écris le titre au centre et fais un dessin en dessous. Ton affiche sera bientôt prête.",
+    "expect": "correct"
+  },
+  {
+    "id": "imperative-ecrire-errors",
+    "node": "employer_imperatif_en_contexte",
+    "prompt": "Donne des consignes à une amie pour préparer une affiche.",
+    "answer": "Prend une grande feuille. Écrit le titre au centre et fait un dessin en dessous. Ton affiche sera bientôt prête.",
+    "expect": "incorrect"
   }
 ]

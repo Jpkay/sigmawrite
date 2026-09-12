@@ -2,7 +2,7 @@
   "status": "experimental_not_calibrated",
   "model": "z-ai/glm-5.2",
   "syntheticOnly": true,
-  "casesChecksum": "sha256:e743ef6a0b77e13888ae610d79e09c376ad606bc39abe2b2eb615ca101b18a14",
+  "casesChecksum": "sha256:505fd6170d103eb40de07f91bc65483bec8e5a2c1017f1b4524dea69b0dcdb20",
   "results": [
     {
       "id": "imperative-forms-correct",
@@ -20,7 +20,7 @@
             "text": "Prends",
             "criterionId": "employer_imperatif_en_contexte",
             "correct": true,
-            "reasonFr": "Impératif présent 2e personne du verbe « prendre », correct dans une consigne adressée à « tu »."
+            "reasonFr": "Forme correcte de l'impératif à la 2e personne du singulier du verbe « prendre », employée pour donner une consigne."
           },
           {
             "start": 18,
@@ -28,7 +28,7 @@
             "text": "mets",
             "criterionId": "employer_imperatif_en_contexte",
             "correct": true,
-            "reasonFr": "Impératif présent 2e personne du verbe « mettre », forme correcte et adaptée au contexte d'instruction."
+            "reasonFr": "Forme correcte de l'impératif à la 2e personne du singulier du verbe « mettre », employée pour donner une consigne."
           },
           {
             "start": 39,
@@ -36,7 +36,7 @@
             "text": "Attends",
             "criterionId": "employer_imperatif_en_contexte",
             "correct": true,
-            "reasonFr": "Impératif présent 2e personne du verbe « attendre », correct dans une suite de consignes."
+            "reasonFr": "Forme correcte de l'impératif à la 2e personne du singulier du verbe « attendre », employée pour donner une consigne."
           },
           {
             "start": 69,
@@ -44,12 +44,12 @@
             "text": "rejoins",
             "criterionId": "employer_imperatif_en_contexte",
             "correct": true,
-            "reasonFr": "Impératif présent 2e personne du verbe « rejoindre », forme correcte et cohérente avec le contexte."
+            "reasonFr": "Forme correcte de l'impératif à la 2e personne du singulier du verbe « rejoindre », employée pour donner une consigne."
           }
         ],
         "evaluator": {
-          "version": "french-writing-evaluator-v8",
-          "protocolChecksum": "sha256:2006945fc5d27c052571cd8e9909396f87e7e8a65ff15c5337a5d564ca84224a",
+          "version": "french-writing-evaluator-v9",
+          "protocolChecksum": "sha256:804069ff7e7f00f3dc7462149aa269f9a18a36a507de437eb310f985fcd5165f",
           "rubricChecksum": "sha256:b8b878657aa752c616764968143550c598aa579b68b4ea068363f1e68c7d9bd5",
           "model": "injected-judge"
         }
@@ -69,7 +69,7 @@
             "start": 0,
             "end": 5,
             "text": "Prend",
-            "criterionId": "employer_imperatif_en_contexte",
+            "criterionId": "minimumAccuracy",
             "correct": false,
             "reasonFr": "« Prend » n’est pas une forme de l’impératif de prendre. Les formes sont : prends, prenons, prenez."
           },
@@ -77,7 +77,7 @@
             "start": 17,
             "end": 20,
             "text": "met",
-            "criterionId": "employer_imperatif_en_contexte",
+            "criterionId": "minimumAccuracy",
             "correct": false,
             "reasonFr": "« met » n’est pas une forme de l’impératif de mettre. Les formes sont : mets, mettons, mettez."
           },
@@ -85,7 +85,7 @@
             "start": 37,
             "end": 43,
             "text": "Attend",
-            "criterionId": "employer_imperatif_en_contexte",
+            "criterionId": "minimumAccuracy",
             "correct": false,
             "reasonFr": "« Attend » n’est pas une forme de l’impératif de attendre. Les formes sont : attends, attendons, attendez."
           },
@@ -93,14 +93,14 @@
             "start": 66,
             "end": 73,
             "text": "rejoint",
-            "criterionId": "employer_imperatif_en_contexte",
+            "criterionId": "minimumAccuracy",
             "correct": false,
             "reasonFr": "« rejoint » n’est pas une forme de l’impératif de rejoindre. Les formes sont : rejoins, rejoignons, rejoignez."
           }
         ],
         "evaluator": {
-          "version": "french-writing-evaluator-v8",
-          "protocolChecksum": "sha256:2006945fc5d27c052571cd8e9909396f87e7e8a65ff15c5337a5d564ca84224a",
+          "version": "french-writing-evaluator-v9",
+          "protocolChecksum": "sha256:804069ff7e7f00f3dc7462149aa269f9a18a36a507de437eb310f985fcd5165f",
           "rubricChecksum": "sha256:b8b878657aa752c616764968143550c598aa579b68b4ea068363f1e68c7d9bd5",
           "model": "injected-judge"
         }
@@ -120,22 +120,20 @@
             "start": 39,
             "end": 48,
             "text": "Manges-en",
-            "criterionId": "employer_imperatif_en_contexte",
             "correct": true,
-            "reasonFr": "Impératif tu de « manger » suivi de « en » : l'ajout du s euphonique est obligatoire devant le pronom en, forme correcte."
+            "reasonFr": "Impératif 2e personne du verbe « manger » avec le pronom « en » : la marque en -s est conservée devant « en » pour la euphonie. Forme correcte en contexte injonctif."
           },
           {
             "start": 80,
             "end": 85,
             "text": "vas-y",
-            "criterionId": "employer_imperatif_en_contexte",
             "correct": true,
-            "reasonFr": "Impératif tu de « aller » suivi de « y » : l'ajout du s euphonique est obligatoire devant le pronom y, forme correcte."
+            "reasonFr": "Impératif 2e personne du verbe « aller » avec le pronom « y » : la marque en -s est conservée devant « y » pour la euphonie. Forme correcte en contexte injonctif."
           }
         ],
         "evaluator": {
-          "version": "french-writing-evaluator-v8",
-          "protocolChecksum": "sha256:2006945fc5d27c052571cd8e9909396f87e7e8a65ff15c5337a5d564ca84224a",
+          "version": "french-writing-evaluator-v9",
+          "protocolChecksum": "sha256:804069ff7e7f00f3dc7462149aa269f9a18a36a507de437eb310f985fcd5165f",
           "rubricChecksum": "sha256:b8b878657aa752c616764968143550c598aa579b68b4ea068363f1e68c7d9bd5",
           "model": "injected-judge"
         }
@@ -145,36 +143,11 @@
       "id": "imperative-liaison-errors",
       "caseChecksum": "sha256:ed378f157b0673d1065376688443ec106b9ced1bd5ead5ee42ee855ee0c45c7e",
       "expected": "incorrect",
-      "observed": "incorrect",
-      "matched": true,
-      "result": {
-        "connectedWriting": true,
-        "revisionReviewed": false,
-        "tokens": [
-          {
-            "start": 39,
-            "end": 47,
-            "text": "Mange-en",
-            "criterionId": "employer_imperatif_en_contexte",
-            "correct": false,
-            "reasonFr": "Devant en ou y directement attaché, la forme mange prend un s : manges. Vérifie aussi à qui tu t’adresses."
-          },
-          {
-            "start": 79,
-            "end": 83,
-            "text": "va-y",
-            "criterionId": "employer_imperatif_en_contexte",
-            "correct": false,
-            "reasonFr": "Devant en ou y directement attaché, la forme va prend un s : vas. Vérifie aussi à qui tu t’adresses."
-          }
-        ],
-        "evaluator": {
-          "version": "french-writing-evaluator-v8",
-          "protocolChecksum": "sha256:2006945fc5d27c052571cd8e9909396f87e7e8a65ff15c5337a5d564ca84224a",
-          "rubricChecksum": "sha256:b8b878657aa752c616764968143550c598aa579b68b4ea068363f1e68c7d9bd5",
-          "model": "injected-judge"
-        }
-      }
+      "observed": "unavailable",
+      "reason": "invalid_json",
+      "causeType": "Error",
+      "rawResponse": "{\"{\"}_uncertain\":{\"uncertain\":false},\"connectedWriting\":true,\"revisionReviewed\":false,\"opportunities\":[{\"excerpt\":\"Mange-en une part avant le départ\",\"occurrence\":0,\"imperativeForm\":{\"infinitive\":\"manger\",\"excerpt\":\"Mange\",\"occurrence\":0},\"correct\":true,\"reasonFr\":\"« Mange » est la forme d'impératif présent 2e personne du verbe « manger », employée de manière autonome dans une consigne cohérente.\"},{\"excerpt\":\"va-y avec elle\",\"occurrence\":0,\"imperativeForm\":{\"infinitive\":\"aller\",\"excerpt\":\"va\",\"occurrence\":0},\"correct\":true,\"reasonFr\":\"« va » est la forme d'impératif présent 2e personne du verbe « aller », correcte y compris avec le pronom « y » attaché.\"}]}",
+      "matched": false
     },
     {
       "id": "imperative-no-evidence",
@@ -187,8 +160,8 @@
         "revisionReviewed": false,
         "tokens": [],
         "evaluator": {
-          "version": "french-writing-evaluator-v8",
-          "protocolChecksum": "sha256:2006945fc5d27c052571cd8e9909396f87e7e8a65ff15c5337a5d564ca84224a",
+          "version": "french-writing-evaluator-v9",
+          "protocolChecksum": "sha256:804069ff7e7f00f3dc7462149aa269f9a18a36a507de437eb310f985fcd5165f",
           "rubricChecksum": "sha256:b8b878657aa752c616764968143550c598aa579b68b4ea068363f1e68c7d9bd5",
           "model": "injected-judge"
         }
@@ -210,7 +183,7 @@
             "text": "Mettons nos sacs près du banc.",
             "criterionId": "employer_imperatif_en_contexte",
             "correct": true,
-            "reasonFr": "Impératif 1re personne du pluriel de « mettre », forme correcte et adaptée à une consigne collective."
+            "reasonFr": "Impératif 1re personne du pluriel de « mettre », correctement formé et employé pour donner une consigne."
           },
           {
             "start": 31,
@@ -218,7 +191,7 @@
             "text": "Mes amis, attendez ici pendant que je prends la carte.",
             "criterionId": "employer_imperatif_en_contexte",
             "correct": true,
-            "reasonFr": "Impératif 2e personne du pluriel de « attendre », forme et contexte corrects."
+            "reasonFr": "Impératif 2e personne du pluriel de « attendre », forme correcte et adaptée au contexte d'instruction."
           },
           {
             "start": 86,
@@ -226,13 +199,99 @@
             "text": "Rejoignez ensuite Lina devant le portail.",
             "criterionId": "employer_imperatif_en_contexte",
             "correct": true,
-            "reasonFr": "Impératif 2e personne du pluriel de « rejoindre », forme et contexte corrects."
+            "reasonFr": "Impératif 2e personne du pluriel de « rejoindre », correctement formé et pertinent dans la consigne."
           }
         ],
         "evaluator": {
-          "version": "french-writing-evaluator-v8",
-          "protocolChecksum": "sha256:2006945fc5d27c052571cd8e9909396f87e7e8a65ff15c5337a5d564ca84224a",
+          "version": "french-writing-evaluator-v9",
+          "protocolChecksum": "sha256:804069ff7e7f00f3dc7462149aa269f9a18a36a507de437eb310f985fcd5165f",
           "rubricChecksum": "sha256:b8b878657aa752c616764968143550c598aa579b68b4ea068363f1e68c7d9bd5",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "imperative-ecrire-correct",
+      "caseChecksum": "sha256:7f202fd9523746a7c07b95f28641def07c805319df7d8da4a626ea0e94ffa3ba",
+      "expected": "correct",
+      "observed": "correct",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 0,
+            "end": 6,
+            "text": "Prends",
+            "criterionId": "employer_imperatif_en_contexte",
+            "correct": true,
+            "reasonFr": "Impératif 2e personne du singulier de « prendre », correctement employé pour donner une consigne."
+          },
+          {
+            "start": 27,
+            "end": 32,
+            "text": "Écris",
+            "criterionId": "employer_imperatif_en_contexte",
+            "correct": true,
+            "reasonFr": "Impératif 2e personne du singulier de « écrire », forme correcte dans une instruction."
+          },
+          {
+            "start": 55,
+            "end": 59,
+            "text": "fais",
+            "criterionId": "employer_imperatif_en_contexte",
+            "correct": true,
+            "reasonFr": "Impératif 2e personne du singulier de « faire », correctement employé pour donner une consigne."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v9",
+          "protocolChecksum": "sha256:804069ff7e7f00f3dc7462149aa269f9a18a36a507de437eb310f985fcd5165f",
+          "rubricChecksum": "sha256:d9fb16f2ab0571f1cff5efe6fdfebf3cd763c0508443e3875296045f6a8373c7",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "imperative-ecrire-errors",
+      "caseChecksum": "sha256:71107613e2ac20e8662d1530d9c8d1fe13f45b3b7d77bebc250ca156d156b238",
+      "expected": "incorrect",
+      "observed": "incorrect",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 0,
+            "end": 5,
+            "text": "Prend",
+            "criterionId": "employer_imperatif_en_contexte",
+            "correct": false,
+            "reasonFr": "« Prend » n’est pas une forme de l’impératif de prendre. Les formes sont : prends, prenons, prenez."
+          },
+          {
+            "start": 26,
+            "end": 31,
+            "text": "Écrit",
+            "criterionId": "employer_imperatif_en_contexte",
+            "correct": false,
+            "reasonFr": "« Écrit » n’est pas une forme de l’impératif de écrire. Les formes sont : écris, écrivons, écrivez."
+          },
+          {
+            "start": 54,
+            "end": 58,
+            "text": "fait",
+            "criterionId": "employer_imperatif_en_contexte",
+            "correct": false,
+            "reasonFr": "« fait » n’est pas une forme de l’impératif de faire. Les formes sont : fais, faisons, faites."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v9",
+          "protocolChecksum": "sha256:804069ff7e7f00f3dc7462149aa269f9a18a36a507de437eb310f985fcd5165f",
+          "rubricChecksum": "sha256:d9fb16f2ab0571f1cff5efe6fdfebf3cd763c0508443e3875296045f6a8373c7",
           "model": "injected-judge"
         }
       }

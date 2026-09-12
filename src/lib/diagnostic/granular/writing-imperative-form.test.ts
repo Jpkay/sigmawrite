@@ -19,3 +19,7 @@ it('accepts the liaison s only before an attached en or y',()=>{
 it('leaves unsupported paradigms unresolved instead of inventing a wrong-answer verdict',()=>{
  for(const infinitive of ['appeler','envoyer','pouvoir','inventerverbe'])expect(()=>checkWritingImperativeForm({infinitive,form:'appelle',suffix:'.'})).toThrow();
 });
+it('checks all imperative persons of écrire and rejects the indicative singular',()=>{
+ for(const form of ['écris','Écrivons','écrivez'])expect(checkWritingImperativeForm({infinitive:'écrire',form,suffix:' le titre.'}).valid).toBe(true);
+ for(const form of ['écrit','écritons','ecris'])expect(checkWritingImperativeForm({infinitive:'écrire',form,suffix:' le titre.'}).valid).toBe(false);
+});

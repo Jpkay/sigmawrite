@@ -105,6 +105,7 @@ const IRREGULAR_SUBJONCTIF: Record<string, string[]> = {
 
 // Irregular impératif [tu, nous, vous].
 const IRREGULAR_IMPERATIF: Record<string, string[]> = {
+  écrire: ["écris", "écrivons", "écrivez"],
   être: ["sois", "soyons", "soyez"],
   avoir: ["aie", "ayons", "ayez"],
   savoir: ["sache", "sachons", "sachez"],
