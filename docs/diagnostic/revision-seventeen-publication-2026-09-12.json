@@ -1,0 +1,71 @@
+{
+  "status": "candidate_ready_import_and_compatibility_checks_running",
+  "sourceCommit": "cddc4aea8575e97d8f6bef2acc4210c0544f6b9a",
+  "frozenWorkspace": "/Users/jean-philippekayobotsi/.codex/release-workspaces/sigmawrite-r17-cddc4ae",
+  "candidateUrl": "https://sigmawrite-d91g0a7ze-jpkays-projects.vercel.app",
+  "deploymentId": "dpl_9oYzQcV9DFAsTTfnYGGMWkLoWStt",
+  "plannedReleaseKey": "french-granular-diagnostic-v18",
+  "bankKey": "french-diagnostic-bank-v3-r17",
+  "bankChecksum": "sha256:8c2184304edcdb484d6adda780bc855666fe4f9e66f681a567e1cbb569cfb40a",
+  "bankItems": 6626,
+  "scope": 261,
+  "candidateChecksum": "sha256:f6de3b32860818a23e25cc8d77539b82277f35279d4b89b4d777bcc29aa5e681",
+  "currentPublicRelease": "french-granular-diagnostic-v16",
+  "currentPublicScope": 253,
+  "checks": {
+    "deployment": "Ready",
+    "tests": 643,
+    "typescript": "passed",
+    "negationJourneyIndependentChecks": 21,
+    "profiles": 8,
+    "readOnlyUpgrade": "compatible; existing history preserved",
+    "deployedAudio": {
+      "assets": 72,
+      "hashVerified": true,
+      "chromePlaybackEnded": true,
+      "pronunciationReviewed": false,
+      "method": "SHA-256 checks of deployed assets plus real Chrome playback in a media fixture on the candidate origin. Not a student UI or pronunciation review."
+    },
+    "deployedFeatureResults": {
+      "base": "https://sigmawrite-d91g0a7ze-jpkays-projects.vercel.app",
+      "sessionId": "12ee1cb2-172c-4c78-9188-d08741700d76",
+      "releaseId": "3d60e876-5a2f-41bd-a2c5-06348882a615",
+      "featureRows": 24,
+      "answeredFeatureRows": 0,
+      "evidenceUnchanged": true,
+      "mobileWidth": 390,
+      "noHorizontalOverflow": true,
+      "limitation": "This pinned QA session verifies untested feature rows only; answered-feature counts still need deployed coverage."
+    },
+    "demo": {
+      "lessons": 11,
+      "legacyOnboardingRedirect": "passed"
+    },
+    "pinnedPathway": {
+      "base": "https://sigmawrite-d91g0a7ze-jpkays-projects.vercel.app",
+      "areas": [
+        "grammar",
+        "reading_comprehension",
+        "spelling",
+        "conjugation",
+        "grammar"
+      ],
+      "activities": 5
+    }
+  },
+  "freshQa": {
+    "username": "doves.granular.r17.default.qa",
+    "studentId": "a34b98bc-1916-42ba-b722-0730ecc4728c",
+    "credentialsFile": "tmp/plume-granular-r17-default-qa.json",
+    "diagnosticStarted": false
+  },
+  "running": {
+    "import": 90779
+  },
+  "remaining": [
+    "Finish bank import, relational consistency check and immutable v18 publication.",
+    "Verify correct and incorrect feature counts on a deployed session with eligible feature evidence.",
+    "Verify fresh default, full timed diagnostic through learning and review, and real upgrade.",
+    "Promote the tested deployment and repeat public checks."
+  ]
+}
