@@ -5,17 +5,17 @@ type Row=readonly [verb:string,base:string,sentence:string,answer:string,explana
 export const AVOIR_AGREEMENT_CONTEXTS:Record<AvoirAgreementCase,readonly Row[]>={
  preceding:[
   ['dessiner','dessiné','La planche que Sami a ___ raconte une aventure.','dessinée','Sami a dessiné quoi ? La planche. Ce COD féminin singulier est placé avant le participe : dessinée.'],
-  ['choisir','choisi','La veste que Noé a ___ est bleue.','choisie','Le COD « la veste » est féminin singulier et précède le participe : choisie. Le sujet Noé ne commande pas cet accord.'],
+  ['choisir','choisi','Cette veste, Noé l’a ___ hier.','choisie','L’ reprend cette veste, féminin singulier. Ce COD est placé avant : choisie. Le sujet Noé ne commande pas cet accord.'],
   ['écrire','écrit','La lettre que Yanis a ___ est sur la table.','écrite','Yanis a écrit quoi ? La lettre. Le COD féminin singulier est placé avant : écrite.'],
   ['ranger','rangé','Les carnets que Lina a ___ sont dans le tiroir.','rangés','Le COD « les carnets » est masculin pluriel et placé avant : rangés.'],
-  ['finir','fini','Les exercices que Maya a ___ étaient courts.','finis','Maya a fini quoi ? Les exercices. Ce COD masculin pluriel est placé avant : finis.'],
+  ['finir','fini','Quels exercices Maya a-t-elle ___ ?','finis','Maya a fini quoi ? Quels exercices. Ce COD masculin pluriel est placé avant : finis.'],
   ['lire','lu','Les romans que Salma a ___ viennent de la bibliothèque.','lus','Le COD « les romans » est masculin pluriel et précède le participe : lus.'],
   ['préparer','préparé','Les affiches que Bilal a ___ annoncent le concert.','préparées','Le COD « les affiches » est féminin pluriel et placé avant : préparées.'],
   ['remplir','rempli','Les gourdes que Léo a ___ sont dans le sac.','remplies','Léo a rempli quoi ? Les gourdes. Le COD féminin pluriel est placé avant : remplies.'],
-  ['ouvrir','ouvert','Les fenêtres que Malo a ___ donnent sur la cour.','ouvertes','Le COD « les fenêtres » est féminin pluriel et précède le participe : ouvertes.'],
+  ['ouvrir','ouvert','Ces fenêtres, Malo les a ___ ce matin.','ouvertes','Les reprend ces fenêtres, féminin pluriel. Ce COD précède le participe : ouvertes.'],
   ['garder','gardé','Le billet que les filles ont ___ est encore valable.','gardé','Le COD « le billet » est masculin singulier et placé avant : gardé. On n’accorde pas avec le sujet « les filles ».'],
   ['choisir','choisi','Le film que les joueuses ont ___ commence à vingt heures.','choisi','Le COD « le film » est masculin singulier et placé avant : choisi.'],
-  ['écrire','écrit','Le message que les musiciennes ont ___ est très court.','écrit','Le COD « le message » est masculin singulier et placé avant : écrit. Le sujet féminin pluriel ne change pas cet accord.'],
+  ['écrire','écrit','Quel message les musiciennes ont-elles ___ ?','écrit','Le COD « quel message » est masculin singulier et placé avant : écrit. Le sujet féminin pluriel ne change pas cet accord.'],
  ],
  following:[
   ['dessiner','dessiné','Les artistes ont ___ une planche de manga.','dessiné','Le COD « une planche de manga » vient après le participe. Avec avoir, on garde ici dessiné.'],

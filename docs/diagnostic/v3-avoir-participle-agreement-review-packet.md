@@ -18,11 +18,11 @@ Justification : Sami a dessiné quoi ? La planche. Ce COD féminin singulier est
 Complète la phrase avec le participe passé de « choisir ».
 Forme au masculin singulier : choisi.
 
-La veste que Noé a ___ est bleue.
+Cette veste, Noé l’a ___ hier.
 
 Réponse attendue : **choisie**.
 
-Justification : Le COD « la veste » est féminin singulier et précède le participe : choisie. Le sujet Noé ne commande pas cet accord.
+Justification : L’ reprend cette veste, féminin singulier. Ce COD est placé avant : choisie. Le sujet Noé ne commande pas cet accord.
 
 ## preceding-3
 
@@ -51,11 +51,11 @@ Justification : Le COD « les carnets » est masculin pluriel et placé avant : 
 Complète la phrase avec le participe passé de « finir ».
 Forme au masculin singulier : fini.
 
-Les exercices que Maya a ___ étaient courts.
+Quels exercices Maya a-t-elle ___ ?
 
 Réponse attendue : **finis**.
 
-Justification : Maya a fini quoi ? Les exercices. Ce COD masculin pluriel est placé avant : finis.
+Justification : Maya a fini quoi ? Quels exercices. Ce COD masculin pluriel est placé avant : finis.
 
 ## preceding-6
 
@@ -95,11 +95,11 @@ Justification : Léo a rempli quoi ? Les gourdes. Le COD féminin pluriel est pl
 Complète la phrase avec le participe passé de « ouvrir ».
 Forme au masculin singulier : ouvert.
 
-Les fenêtres que Malo a ___ donnent sur la cour.
+Ces fenêtres, Malo les a ___ ce matin.
 
 Réponse attendue : **ouvertes**.
 
-Justification : Le COD « les fenêtres » est féminin pluriel et précède le participe : ouvertes.
+Justification : Les reprend ces fenêtres, féminin pluriel. Ce COD précède le participe : ouvertes.
 
 ## preceding-10
 
@@ -128,11 +128,11 @@ Justification : Le COD « le film » est masculin singulier et placé avant : ch
 Complète la phrase avec le participe passé de « écrire ».
 Forme au masculin singulier : écrit.
 
-Le message que les musiciennes ont ___ est très court.
+Quel message les musiciennes ont-elles ___ ?
 
 Réponse attendue : **écrit**.
 
-Justification : Le COD « le message » est masculin singulier et placé avant : écrit. Le sujet féminin pluriel ne change pas cet accord.
+Justification : Le COD « quel message » est masculin singulier et placé avant : écrit. Le sujet féminin pluriel ne change pas cet accord.
 
 ## following-1
 

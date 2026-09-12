@@ -21,3 +21,14 @@ it('keeps all questions unapproved and attached to the approved controlled-produ
  for(const annotation of expansion.annotations)expect(annotation.facetKey).toMatch(/^accorder_participe_avoir_cod::construction:(preceding|following|absent)$/);
  expect(read('generated/diagnostic-bank-v3-consolidated-draft.json').items.some((entry:{itemKey:string})=>entry.itemKey.startsWith('v3-avoir-participle-agreement:'))).toBe(false);
 });
+
+import {AVOIR_PARTICIPLE_AGREEMENT_TEACHING as lessons} from './avoir-participle-agreement-teaching';
+import {validateTeachingTargets} from './teaching-content';
+it('matches each lesson to its approved case and keeps guided contexts separate from questions',()=>{
+ expect(()=>validateTeachingTargets(read('docs/diagnostic/v3-parallel-review-candidate.json').assessment,lessons)).not.toThrow();
+ expect(lessons).toHaveLength(3);
+ expect(new Set(lessons.map(lesson=>lesson.facetKey)).size).toBe(3);
+ for(const lesson of lessons){expect(lesson.practice).toHaveLength(6);expect(lesson.status).toBe('draft_requires_review');expect(lesson.mode).toBe('production');expect(JSON.stringify(lesson)).not.toContain('—');for(const draft of drafts)expect(JSON.stringify(lesson)).not.toContain(draft.sentence);for(const exercise of lesson.practice){expect(exercise.choices).toBeUndefined();expect(exercise.answerFr).toBeTruthy();expect(exercise.promptFr).toContain('Forme au masculin singulier');}}
+ expect(drafts.some(d=>d.sentence.startsWith('Quels exercices'))).toBe(true);
+ expect(drafts.some(d=>d.sentence.includes('Noé l’a'))).toBe(true);
+});
