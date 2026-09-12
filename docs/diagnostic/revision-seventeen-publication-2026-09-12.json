@@ -1,5 +1,5 @@
 {
-  "status": "candidate_ready_import_and_compatibility_checks_running",
+  "status": "candidate_default_verified_full_journey_and_upgrade_running",
   "sourceCommit": "cddc4aea8575e97d8f6bef2acc4210c0544f6b9a",
   "frozenWorkspace": "/Users/jean-philippekayobotsi/.codex/release-workspaces/sigmawrite-r17-cddc4ae",
   "candidateUrl": "https://sigmawrite-d91g0a7ze-jpkays-projects.vercel.app",
@@ -57,22 +57,51 @@
       "storedStatus": "draft",
       "checksum": "sha256:8c2184304edcdb484d6adda780bc855666fe4f9e66f681a567e1cbb569cfb40a"
     },
-    "answeredFeatureQaSearch": "Read-only scan of existing named technical QA accounts completed; no eligible answered-feature rows found. Deployed answered-count verification remains outstanding."
+    "answeredFeatureQaSearch": "Read-only scan of existing named technical QA accounts completed; no eligible answered-feature rows found. Deployed answered-count verification remains outstanding.",
+    "relationalConsistency": {
+      "version": "french-granular-parallel-publication-v1",
+      "ready": true,
+      "authorization": "product-owner-request-2026-09-11",
+      "reviewOwner": "product_owner",
+      "bankChecksum": "sha256:8c2184304edcdb484d6adda780bc855666fe4f9e66f681a567e1cbb569cfb40a",
+      "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+      "bundleChecksum": "sha256:6a5ea618df71f133414c9e166d737d8004faf44d4ab17e450b87463d56023b21",
+      "policyChecksum": "sha256:56af1bc8ce13508a30113d770f085a3923dfb06b64a632161ebceb74a16ef572",
+      "scopeChecksum": "sha256:25561cd8fb2de1333cbe744ff1ac72a0db03fa9852d38534b28e06f93875158a",
+      "bankItemCount": 6626,
+      "assessmentTargets": 261,
+      "teachingTargets": 261,
+      "instructionGapSkillIds": [],
+      "freshCheckGapSkillIds": [],
+      "verifiedItems": 6626
+    },
+    "freshDefault": {
+      "sessionId": "1f1ec39a-6486-4d12-8ee5-d2194900f977",
+      "releaseId": "1a7ec17e-5c85-4ac7-9471-8cc47952df0b",
+      "scope": 261,
+      "defaultSelectedByApplication": true,
+      "reloadPreservedSession": true
+    }
   },
   "freshQa": {
     "username": "doves.granular.r17.default.qa",
     "studentId": "a34b98bc-1916-42ba-b722-0730ecc4728c",
     "credentialsFile": "tmp/plume-granular-r17-default-qa.json",
-    "diagnosticStarted": false
+    "diagnosticStarted": true,
+    "sessionId": "1f1ec39a-6486-4d12-8ee5-d2194900f977"
   },
   "running": {
-    "relationalCheck": 33859
+    "realUpgrade": 78774,
+    "fullJourney": 68546
   },
   "remaining": [
-    "Finish bank import, relational consistency check and immutable v18 publication.",
+    "Complete fresh-account and real upgrade verification of the published candidate.",
     "Verify correct and incorrect feature counts on a deployed session with eligible feature evidence.",
     "Verify fresh default, full timed diagnostic through learning and review, and real upgrade.",
     "Promote the tested deployment and repeat public checks."
   ],
-  "bankReleaseId": "b14825c4-d36b-4cb5-8b55-ac22e7d9fd6f"
+  "bankReleaseId": "b14825c4-d36b-4cb5-8b55-ac22e7d9fd6f",
+  "releaseId": "1a7ec17e-5c85-4ac7-9471-8cc47952df0b",
+  "releaseKey": "french-granular-diagnostic-v18",
+  "bundleChecksum": "sha256:6a5ea618df71f133414c9e166d737d8004faf44d4ab17e450b87463d56023b21"
 }

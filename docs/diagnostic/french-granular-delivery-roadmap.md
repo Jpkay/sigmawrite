@@ -4,11 +4,12 @@ Updated 2026-09-12. French only; Allotey is excluded. This document distinguishe
 
 ## Current delivery state
 
-- Public deployment: v15, 237 supported targets, frozen source `c315eed`. The complete timed diagnostic (60 answers), results, lesson practice, independent check and answer review passed. Promotion and public new-account, demo and pinned-session checks passed. See `revision-fourteen-publication-2026-09-12.json`.
-- Previous public release: v14, 231 supported targets, frozen source `ff8b84f`; retained as the rollback reference. See `revision-thirteen-publication-2026-09-12.json`.
-- Subsequent working candidate: bank revision 15, 253 targets, with completive-clause production, subjunctive recognition and fourteen individual subjunctive verb pathways. Fifteen service journeys, eight constructed profiles, read-only upgrade preservation and publication preflight pass. It has not been deployed or published. See `subjonctif-verification-2026-09-12.json`.
-- All 72 candidate audio assets passed byte-integrity and actual Chrome playback checks. This is technical verification; pronunciation review remains pending. Six constructed foundation learning journeys passed with guided practice and fresh independent checks.
-- Working-draft symbolic routing benchmark: 10/10 depth checks and 8/8 uneven-profile contrasts, with no invariant violations. See `confirmed-verb-visits-2026-09-12.md`. Eight additional prepared-profile diagnostic checks cover the 237-target candidate. These are constructed tests, not educational calibration.
+- Public deployment: v16, 253 supported targets, frozen source `37de48a`. A complete timed diagnostic (59 answers, 47 correct and 12 incorrect), results, guided lessons, fresh independent checks, answer review and reload passed. Public new-account, demo and pinned-session checks passed. See `revision-fifteen-publication-2026-09-12.json`.
+- Previous public release: v15, 237 supported targets, frozen source `c315eed`; retained as the rollback reference. See `revision-fourteen-publication-2026-09-12.json`.
+- Published candidate v17: 260 targets, frozen source `9435669`. Adds four subjunctive verb-family pathways and three short-reading main-idea pathways. Fresh-default, demo, audio and real learning-upgrade checks passed; the full timed student journey is still running. See `revision-sixteen-publication-2026-09-12.json`.
+- Published candidate v18: 261 targets and 6,626 bank items, frozen source `cddc4ae`. Adds complex-negation meaning checks and finer feature evidence in results. All stored bank items passed the consistency check. Fresh-default and real learning-upgrade checks are running; full timed validation and public activation remain outstanding. See `revision-seventeen-publication-2026-09-12.json`.
+- All 72 v18 candidate audio assets passed byte-integrity and actual Chrome playback checks. This is technical verification; pronunciation review remains pending. Feature display was verified at a 390-pixel viewport without horizontal overflow, but that live account only supplied untested feature rows; deployed answered-count coverage remains outstanding.
+- Working-draft symbolic routing benchmark: 10/10 depth checks and 8/8 uneven-profile contrasts, with no invariant violations. See `confirmed-verb-visits-2026-09-12.md`. Eight prepared-profile checks cover the 261-target candidate. These are constructed tests, not educational calibration.
 
 ## Complete target accounting
 
@@ -16,9 +17,9 @@ Updated 2026-09-12. French only; Allotey is excluded. This document distinguishe
 
 | Required work | Targets |
 | --- | ---: |
-| Prepared assessment, teaching and fresh-check pathway | 253 |
-| Question pools allocated; exact-target lesson still missing | 43 |
-| Complete initial and follow-up question pools | 228 |
+| Prepared assessment, teaching and fresh-check pathway | 261 |
+| Question pools allocated; exact-target lesson still missing | 39 |
+| Complete initial and follow-up question pools | 224 |
 | Connected-writing evidence during learning | 18 |
 | Total | 542 |
 
@@ -26,11 +27,11 @@ These categories partition the graph; they are not publication or approval label
 
 ## Next implementation packages
 
-1. Freeze and verify the separate 253-target candidate for publication and deployment; the 237-target v15 release is publicly verified. Keep published bundles immutable and repeat full candidate and public verification before activating another version.
+1. Finish the full timed candidate journeys through learning and answer review, then activate only an exactly tested deployment and repeat public verification. The public v16 release supports 253 targets; the published v17 and v18 candidates support 260 and 261. Preserve immutable bundles and historical sessions.
 2. Validate the new verb-visit routing on real content and live mixed-profile journeys. The eight constructed contrasts now pass; educator/student calibration and broader granular profile validation remain required. Keep untested targets unresolved and refine them during learning.
-3. The fifteen subjunctive service journeys pass after excluding legacy questions without material identities. Recognition and fourteen exact-verb lessons now have complete prerequisite scope and fresh pools, bringing the separate working draft to 253 targets. See `subjonctif-recognition-preparation-2026-09-12.md`. Then complete the remaining imperative and passé-simple exact-target lessons.
+3. Subjunctive recognition, fourteen exact-verb lessons and four verb-family pathways have passed their service journeys. Three short-reading main-idea pathways and complex-negation meanings also have guided practice and fresh checks. Complete the remaining imperative and passé-simple exact-target lessons, using the 39 exact-target lesson gaps in the current inventory.
 4. Review the four remaining passé récent verb targets (pouvoir, vouloir, savoir, devoir) for natural contexts before authoring. Do not mechanically create awkward forms merely to reach a coverage count. Continue subjonctif, impératif and passé simple coverage with their own usage constraints.
-5. Fill the 228 question-pool gaps across all domains from the exact-target inventory, preserving distinct recognition, controlled production and contextual-use evidence. The written-syllable and sound-to-spelling prerequisites for cédille are now included in the prepared candidate. Complete the separate connected-writing pathway for the remaining 18 targets.
+5. Fill the 224 question-pool gaps across all domains from the exact-target inventory, preserving distinct recognition, controlled production and contextual-use evidence. The written-syllable and sound-to-spelling prerequisites for cédille are now included in the prepared candidate. Complete the separate connected-writing pathway for the remaining 18 targets.
 6. Continue the owner's review in parallel, recording actual decisions against content checksums. Validate difficulty, question duration, sufficient depth and the meaning of recommendations with educator and student evidence. Do not substitute technical tests for those judgments.
 
 ## Fixed foundation and product decisions
