@@ -1,5 +1,5 @@
 {
-  "status": "implemented_verified_migration_pending",
+  "status": "schema_applied_application_not_deployed_capture_disabled",
   "migration": "20260912090000_prior_material_delivery_text.sql",
   "changes": [
     "Look up only journal entries earlier than the student's immutable question presentation.",
@@ -9,21 +9,29 @@
     "Bound journal scans to 1000 rows and 5 million text characters. Truncated/missing scans cannot certify history completeness."
   ],
   "checks": {
-    "fullSuite": {"files":338,"tests":1529,"passed":true},
-    "typescript":"passed",
-    "disposablePostgres":"passed",
-    "priorPayloadIncludedCurrentPayloadExcluded":"passed",
-    "ownerAndPresentationIsolation":"passed",
-    "sourceProvenanceRetained":"passed",
-    "noSubstringWordFalseMatch":"passed",
-    "noRetroactiveObservationWrites":"passed",
-    "truncatedHistoryFailsClosed":"passed"
+    "fullSuite": {
+      "files": 338,
+      "tests": 1529,
+      "passed": true
+    },
+    "typescript": "passed",
+    "disposablePostgres": "passed",
+    "priorPayloadIncludedCurrentPayloadExcluded": "passed",
+    "ownerAndPresentationIsolation": "passed",
+    "sourceProvenanceRetained": "passed",
+    "noSubstringWordFalseMatch": "passed",
+    "noRetroactiveObservationWrites": "passed",
+    "truncatedHistoryFailsClosed": "passed"
   },
   "limitations": [
     "Positive matches establish prior exposure only; absence does not prove novelty.",
     "Source capture, reviewed variant coverage and audio identity still need completion before the capture contract can be enabled.",
     "The application integrations are not yet deployed. The public diagnostic retains its current incomplete material-history limitation."
   ],
-  "productionIssueResolved":false,
-  "demoModified":false
+  "productionIssueResolved": false,
+  "demoModified": false,
+  "schemaRollout": "material-coverage-schema-rollout-2026-09-12.json",
+  "migrationApplied": true,
+  "captureContractEnabled": false,
+  "applicationCodeDeployed": false
 }

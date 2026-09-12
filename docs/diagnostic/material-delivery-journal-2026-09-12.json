@@ -1,5 +1,5 @@
 {
-  "status": "implemented_locally_verified_not_deployed",
+  "status": "schema_applied_application_not_deployed_capture_disabled",
   "migration": "20260912083000_material_delivery_journal.sql",
   "purpose": "Capture exact returned text fragments as audit sources, including incidental text absent from material annotations. Recording a source never establishes lemma identity, complete semantic coverage or novelty.",
   "boundaries": [
@@ -61,5 +61,9 @@
   ],
   "productionIssueResolved": false,
   "publicDefaultChanged": false,
-  "demoModified": false
+  "demoModified": false,
+  "schemaRollout": "material-coverage-schema-rollout-2026-09-12.json",
+  "migrationApplied": true,
+  "captureContractEnabled": false,
+  "applicationCodeDeployed": false
 }
