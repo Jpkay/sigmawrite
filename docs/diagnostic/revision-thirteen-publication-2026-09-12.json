@@ -1,5 +1,5 @@
 {
-  "status": "candidate_build_ready_bank_import_running_not_published_or_activated",
+  "status": "published_candidate_full_browser_journey_running_not_activated",
   "sourceCommit": "ff8b84fa1ba0bf54805f4f646fe14774f91ff54c",
   "frozenWorkspace": "/Users/jean-philippekayobotsi/.codex/release-workspaces/sigmawrite-r13-ff8b84f",
   "bankKey": "french-diagnostic-bank-v3-r13",
@@ -60,6 +60,24 @@
       },
       "sourceReleaseId": "a64d94f5-dc43-4413-9bcf-dd3e01eef5d2",
       "sourceSessionId": "4ebf630f-acd3-4e73-b5ca-de81928f7541"
+    },
+    "bankImportExitCode": 0,
+    "relationalVerification": {
+      "version": "french-granular-parallel-publication-v1",
+      "ready": true,
+      "authorization": "product-owner-request-2026-09-11",
+      "reviewOwner": "product_owner",
+      "bankChecksum": "sha256:1d30aa10ef3ec6acbdef69f630086ed64ff0a6920f704b201c9639babe77d952",
+      "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+      "bundleChecksum": "sha256:a8a58baac707f37f83b70c8e51aa60c8c58ef0fe21566ef0e5871f529fba9858",
+      "policyChecksum": "sha256:3a85eb36e5c7683c55d4f4980a40b20ebf088784e32863cd4b6cf4d9e3ab8d84",
+      "scopeChecksum": "sha256:5cc9e295530ebb55e2a9c3061e1bbeebf623cc6a5856738829fc202af22f6cc5",
+      "bankItemCount": 6136,
+      "assessmentTargets": 231,
+      "teachingTargets": 231,
+      "instructionGapSkillIds": [],
+      "freshCheckGapSkillIds": [],
+      "verifiedItems": 6136
     }
   },
   "limitations": [
@@ -68,23 +86,22 @@
     "The live candidate assessment, lesson, independent check and answer review are still required."
   ],
   "remaining": [
-    "Complete bank import and relational verification",
-    "Publish the immutable candidate bundle",
-    "Verify candidate default, full browser journey, demo and pinned history",
+    "Complete fresh full diagnostic-to-results-to-lesson browser journey",
     "Promote only after verification and check public behavior",
-    "Continue full graph implementation and owner review"
+    "Continue full graph implementation, adaptive-depth validation and owner review"
   ],
   "candidateUrl": "https://sigmawrite-gf3oyz3i8-jpkays-projects.vercel.app",
   "candidateDeployExitCode": 0,
   "freshQa": {
     "username": "doves.granular.r13.default.qa",
     "studentId": "4a06dffd-d240-48c4-9b08-7906890082f4",
-    "assessmentStarted": false
+    "assessmentStarted": true,
+    "sessionId": "276c7578-8f53-482b-aeb0-79d5cc16b40f"
   },
   "candidateDeploymentId": "dpl_JBAy1vukZaM35LCbUvu3h3zKaQiN",
   "candidateBuild": "Ready verified with Vercel inspect",
   "bankId": "f82716e1-3663-47e5-a8e0-48e04ebaeca4",
-  "lastObservedImportedMemberships": 1088,
+  "lastObservedImportedMemberships": 6136,
   "candidateCompatibility": {
     "legacyDemo": {
       "lessons": 11,
@@ -101,6 +118,41 @@
         "grammar"
       ],
       "activities": 5
+    }
+  },
+  "releaseId": "afbecb4f-0333-432a-9cdc-93e20d5fea16",
+  "bundleChecksum": "sha256:a8a58baac707f37f83b70c8e51aa60c8c58ef0fe21566ef0e5871f529fba9858",
+  "candidateVerification": {
+    "candidateDefault": {
+      "sessionId": "276c7578-8f53-482b-aeb0-79d5cc16b40f",
+      "releaseId": "afbecb4f-0333-432a-9cdc-93e20d5fea16",
+      "scope": 231,
+      "defaultSelectedByApplication": true,
+      "reloadPreservedSession": true
+    },
+    "completedSessionUpgrade": {
+      "base": "https://sigmawrite-gf3oyz3i8-jpkays-projects.vercel.app",
+      "sourceId": "ca916e99-4083-48ee-8072-3a29aef4e27a",
+      "successorId": "91b33345-9bd9-45c6-9a1a-5acc22868c60",
+      "targetRelease": "afbecb4f-0333-432a-9cdc-93e20d5fea16",
+      "targetKey": "french-granular-diagnostic-v14",
+      "answers": 60,
+      "wrong": 14,
+      "preserved": {
+        "observations": true,
+        "refinements": true,
+        "activeSeconds": true,
+        "completedTeachingIds": true,
+        "exposedMaterialKeys": true,
+        "exposedLearningItemIds": true,
+        "exposedReadingContexts": true,
+        "phase": true,
+        "paused": true,
+        "completionReason": true
+      },
+      "answerOriginsPreserved": true,
+      "originalUnchanged": true,
+      "reload": true
     }
   }
 }
