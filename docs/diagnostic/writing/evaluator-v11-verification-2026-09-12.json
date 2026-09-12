@@ -1,0 +1,24 @@
+{
+  "status": "experimental_morphology_variant_fix_locally_verified",
+  "evaluatorVersion": "french-writing-evaluator-v11",
+  "change": "Accept both imperative series of vouloir at the morphology check; keep contextual judgments separate.",
+  "sources": [
+    {
+      "url": "https://dictionnaire-academie.fr/article/A9V1230",
+      "claim": "Lists veuille/veuillons and veux/voulons and explains the use of the latter with negative en vouloir."
+    },
+    {
+      "url": "https://www.larousse.fr/dictionnaires/francais/vouloir/82561",
+      "claim": "Lists both complete imperative series."
+    }
+  ],
+  "checks": {
+    "targetedTests": 20,
+    "typescript": "passed"
+  },
+  "limitations": [
+    "The experimental evaluator remains outside student releases.",
+    "Contextual judgments and provider reliability remain unresolved.",
+    "This does not yet revise the separate controlled-conjugation item bank for vouloir."
+  ]
+}

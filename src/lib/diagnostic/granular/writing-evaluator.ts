@@ -24,7 +24,7 @@ export function writingJudgmentSchema(rubric?:WritingRubric,nodeKey?:string){
  });
  return judgmentSchema.extend({opportunities:z.array(opportunity).max(1000)});
 }
-export const WRITING_EVALUATOR_VERSION="french-writing-evaluator-v10";
+export const WRITING_EVALUATOR_VERSION="french-writing-evaluator-v11";
 export type WritingJudgeInput={promptFr:string;instructionsFr:string;answer:string;firstDraft?:string;rubric?:WritingRubric;
  target:{nodeKey:string;labelFr:string;descriptionFr:string;actionFr:string;criteria:Record<string,unknown>}};
 export type WritingJudge=(input:WritingJudgeInput)=>Promise<unknown>;

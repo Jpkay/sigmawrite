@@ -1,5 +1,5 @@
 {
-  "status": "candidate_ready_bank_import_and_verification_running",
+  "status": "candidate_published_default_and_upgrade_checks_running",
   "sourceCommit": "d7848c9ccee9908d4af39ca8fbbc82ebad43d4bf",
   "frozenWorkspace": "/Users/jean-philippekayobotsi/.codex/release-workspaces/sigmawrite-r19-d7848c9",
   "candidateUrl": "https://sigmawrite-q0oufbczo-jpkays-projects.vercel.app",
@@ -13,12 +13,12 @@
   "candidateChecksum": "sha256:c6c0220aeb3fd5f805d5fdb852bb51c0988ae8a5118018fe5bcc75b6c9845f83",
   "frozenAssemblyChecks": "passed",
   "running": {
-    "bankImport": 3862
+    "freshDefault": 14052,
+    "learningUpgrade": 32095
   },
   "remaining": [
-    "Finish bank import and verify all relational rows.",
-    "Publish an immutable release matching this exact frozen build.",
-    "Verify fresh default, learning upgrade and a complete timed diagnostic through lessons and answer review.",
+    "Verify fresh default and real learning upgrade.",
+    "Complete a timed diagnostic through lessons and answer review.",
     "Verify answered-feature counts on the deployed results view.",
     "Promote only after candidate verification, then repeat public checks."
   ],
@@ -479,6 +479,23 @@
       ],
       "mismatchRejected": true,
       "pronunciationReviewed": false
+    },
+    "relationalBank": {
+      "version": "french-granular-parallel-publication-v1",
+      "ready": true,
+      "authorization": "product-owner-request-2026-09-11",
+      "reviewOwner": "product_owner",
+      "bankChecksum": "sha256:b433e98c9d0335aa4f2635c481ac9338e4464266037cd7eb10e4077572a90e3a",
+      "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+      "bundleChecksum": "sha256:5e356f9969fda5634c53c4fa15bce0266a452dbf97c57e82f92343b8ae94c1a3",
+      "policyChecksum": "sha256:7582d531652dcb681a5f0a5b05372fa01c3a8a7bbca8ad2e9b2e56b61da56c61",
+      "scopeChecksum": "sha256:acef2ce3b09a68dc0811f457405ccf70fc9cfd4330e19118c9aecda0041f0717",
+      "bankItemCount": 6758,
+      "assessmentTargets": 270,
+      "teachingTargets": 270,
+      "instructionGapSkillIds": [],
+      "freshCheckGapSkillIds": [],
+      "verifiedItems": 6758
     }
   },
   "bankReleaseId": "9ba52530-6d5f-4fd5-91b0-5db8743383fd",
@@ -488,10 +505,21 @@
     "credentialsFile": "tmp/plume-granular-r19-default-qa.json",
     "diagnosticStarted": false
   },
-  "importProgress": {
-    "observedMemberships": 2458,
-    "expectedMemberships": 6758,
-    "status": "draft",
-    "finalVerificationPending": true
+  "publicationAttempts": [
+    {
+      "sessionId": 56070,
+      "outcome": "statement_timeout",
+      "releaseKeyAbsentAfterFailure": true,
+      "healthAfterFailure": "Auth 200, REST 503; recovered to both 200 before retry"
+    },
+    {
+      "sessionId": 33680,
+      "outcome": "published_same_key_retry"
+    }
+  ],
+  "publication": {
+    "releaseId": "19fc162c-12df-4387-9756-9e5635972dd0",
+    "releaseKey": "french-granular-diagnostic-v20",
+    "bundleChecksum": "sha256:5e356f9969fda5634c53c4fa15bce0266a452dbf97c57e82f92343b8ae94c1a3"
   }
 }

@@ -23,3 +23,7 @@ it('checks all imperative persons of écrire and rejects the indicative singular
  for(const form of ['écris','Écrivons','écrivez'])expect(checkWritingImperativeForm({infinitive:'écrire',form,suffix:' le titre.'}).valid).toBe(true);
  for(const form of ['écrit','écritons','ecris'])expect(checkWritingImperativeForm({infinitive:'écrire',form,suffix:' le titre.'}).valid).toBe(false);
 });
+it('accepts both attested imperative series of vouloir without treating the third-person plural as imperative',()=>{
+ for(const form of ['veuille','veuillons','veuillez','veux','voulons','voulez'])expect(checkWritingImperativeForm({infinitive:'vouloir',form,suffix:' pas.'}).valid).toBe(true);
+ expect(checkWritingImperativeForm({infinitive:'vouloir',form:'veulent',suffix:' pas.'}).valid).toBe(false);
+});

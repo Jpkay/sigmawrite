@@ -14,6 +14,10 @@ export function checkWritingImperativeForm(input:{infinitive:string;form:string;
  const infinitive=normalize(input.infinitive);
  if(!supported.has(infinitive)||infinitive==='pouvoir')throw new UnsupportedWritingImperativeError();
  const forms=(['2s','1p','2p'] as const).map(person=>conjugate(infinitive,'imperatif_present',person));
+ // Vouloir has a second imperative series, used especially with en vouloir:
+ // « Ne m'en veux pas ». Morphology must not reject that legitimate series;
+ // appropriateness to the sentence remains the contextual judge's task.
+ if(infinitive==='vouloir')forms.push('veux','voulons','voulez');
  const form=normalize(input.form);
  // The liaison s belongs to the verb only before directly attached en/y.
  const euphonic=/^[-‐‑](?:en|y)(?![\p{L}\p{M}])/u.test(normalize(input.suffix))&&/[ea]$/.test(forms[0])?forms[0]+'s':undefined;
