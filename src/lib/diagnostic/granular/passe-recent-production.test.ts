@@ -9,11 +9,11 @@ import {questionAssessedMaterialKeys,teachingMaterialKeys} from './material-anno
 import type {DraftExpansion} from './assemble-drafts';
 const read=(p:string)=>JSON.parse(readFileSync(p,'utf8'));
 const venir={'1s':'viens','2s':'viens','3s':'vient','1p':'venons','2p':'venez','3p':'viennent'};
-it('assesses four families, ten individual verbs and all persons, requiring venir plus de or d’ and an infinitive',async()=>{
+it('assesses four families, eleven individual verbs and all persons, requiring venir plus de or d’ and an infinitive',async()=>{
  const expansion=read('generated/french-v3-passe-recent-production-expansion.json') as DraftExpansion;
- expect(rows).toHaveLength(168);expect(lessons).toHaveLength(14);
+ expect(rows).toHaveLength(180);expect(lessons).toHaveLength(15);
  const facet=(r:typeof rows[number])=>conjugationFacet('produire_passe_recent',{verb:r.verb,tense:'passe_recent',person:r.person});
- expect(new Set(rows.map(facet)).size).toBe(14);
+ expect(new Set(rows.map(facet)).size).toBe(15);
  for(const key of new Set(rows.map(facet))){const cases=rows.filter(r=>facet(r)===key);expect(cases).toHaveLength(12);expect(new Set(cases.map(r=>r.person))).toEqual(new Set(PERSONS));}
  for(const [i,row] of rows.entries()){
   expect(row.answer).toBe(`${venir[row.person]} ${/^[aeiouéê]/.test(row.verb)?'d’':'de '}${row.verb}`);
@@ -44,4 +44,20 @@ it('uses completed-event contexts rather than incompatible future dates or habit
  expect(text).not.toMatch(/dans dix minutes|dans quelques secondes|chaque matin|pour Lyon samedi|Cette pancarte|La lumière ___ de|Les cris ___ du/);
  const venir=lessons.find(l=>l.facetKey==='produire_passe_recent::verb:venir')!;
  expect(venir.steps.some(step=>step.exampleFr.includes('viens de venir'))).toBe(true);
+});
+
+
+it('separates newly possible actions from general ability in the pouvoir lesson',async()=>{
+ const lesson=lessons.find(l=>l.facetKey==='produire_passe_recent::verb:pouvoir')!;
+ expect(lesson.status).toBe('draft_requires_review');
+ expect(lesson.practice).toHaveLength(6);
+ expect(lesson.steps.some(s=>s.explanationFr.includes('possible tout récemment'))).toBe(true);
+ const independent=rows.filter(r=>r.verb==='pouvoir');
+ expect(independent).toHaveLength(12);
+ expect(new Set(independent.map(r=>r.person))).toEqual(new Set(PERSONS));
+ const expansion=read('generated/french-v3-passe-recent-production-expansion.json') as DraftExpansion;
+ const entry=expansion.items.find(e=>e.item.validatorConfig?.verb==='pouvoir')!;
+ const spec={validatorType:entry.item.validatorType,correctAnswer:entry.item.correctAnswer,config:entry.item.validatorConfig};
+ for(const wrong of ['peux','viens pouvoir','viens de peux','viens de pu']) expect((await validateAnswer(wrong,spec)).pass).toBe(false);
+ expect((await validateAnswer('viens de pouvoir',spec)).pass).toBe(true);
 });

@@ -26,6 +26,18 @@ export const PASSE_RECENT_STATE_CONTEXTS:readonly [string,Person,string][]=[
  ['avoir','1p','Nous ___ le résultat du concours.'],
  ['avoir','2p','Vous ___ un entretien avec la responsable.'],
  ['avoir','3p','Les enfants ___ une explication sur les règles.'],
+ ['pouvoir','1s','Après plusieurs essais, je ___ ouvrir le fichier.'],
+ ['pouvoir','2s','Grâce au retour du réseau, tu ___ envoyer ton message.'],
+ ['pouvoir','3s','Avec sa nouvelle clé, Lina ___ entrer dans le local.'],
+ ['pouvoir','1p','Une place s’est libérée : nous ___ réserver nos billets.'],
+ ['pouvoir','2p','Le bruit a cessé : vous ___ enregistrer votre chanson.'],
+ ['pouvoir','3p','Après la réparation, les cyclistes ___ repartir.'],
+ ['pouvoir','1s','Le bus est enfin arrivé : je ___ rentrer chez moi.'],
+ ['pouvoir','2s','Avec la bonne adresse, tu ___ retrouver le musée.'],
+ ['pouvoir','3s','Le gardien a ouvert la grille : Sami ___ récupérer son ballon.'],
+ ['pouvoir','1p','La pluie s’est arrêtée : nous ___ sortir le matériel.'],
+ ['pouvoir','2p','Les résultats sont enfin affichés : vous ___ vérifier votre classement.'],
+ ['pouvoir','3p','Grâce au prêt de micros, les élèves ___ terminer leur interview.'],
 ];
 export const PASSE_RECENT_STATE_GUIDED:Readonly<Record<string,Readonly<Record<Person,string>>>>={
  'être':{
@@ -43,5 +55,13 @@ export const PASSE_RECENT_STATE_GUIDED:Readonly<Record<string,Readonly<Record<Pe
   '1p':'Nous ___ de bonnes nouvelles du refuge.',
   '2p':'Vous ___ une discussion avec les organisateurs.',
   '3p':'Les gagnants ___ leurs billets pour le spectacle.',
+ },
+ 'pouvoir':{
+  '1s':'La connexion fonctionne enfin : je ___ télécharger le document.',
+  '2s':'La responsable t’a répondu : tu ___ confirmer ton inscription.',
+  '3s':'La salle est libre : Inès ___ répéter sa scène.',
+  '1p':'Le passage est dégagé : nous ___ traverser le pont.',
+  '2p':'Le réparateur a terminé : vous ___ rallumer votre ordinateur.',
+  '3p':'Le colis est arrivé : les artistes ___ installer leur exposition.',
  },
 };

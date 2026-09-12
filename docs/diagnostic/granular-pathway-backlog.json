@@ -1,12 +1,12 @@
 {
   "status": "prepared_inventory_not_release_or_review_approval",
-  "parallelCandidateChecksum": "sha256:e88d382d94142abcc2d84c36b1026d0ecd772fa875b7e9f766809eaaf001434b",
-  "scopedCandidateChecksum": "sha256:368ec5d94614ebeb077fff556c3522ac2fbe50a87bc4a07d10b807f60149cf45",
+  "parallelCandidateChecksum": "sha256:3dea1d26cf2f3a665eaaf5e8624665d7173c1abc95cab758a79bf8148bf5477b",
+  "scopedCandidateChecksum": "sha256:ba62a6e9791a0820ef6ebab96350264d69d54b2ab447fd9b6359ff7f80b76d25",
   "targets": 542,
   "counts": {
-    "prepared_scoped_pathway": 327,
+    "prepared_scoped_pathway": 328,
     "complete_question_pools": 188,
-    "author_exact_target_lesson": 21,
+    "author_exact_target_lesson": 20,
     "resolve_prerequisite_scope": 1,
     "connected_writing_evidence": 5
   },
@@ -1406,18 +1406,20 @@
       "skillId": "produire_passe_recent::writing-controlled-production::verb:pouvoir",
       "nodeKey": "produire_passe_recent",
       "facetKey": "produire_passe_recent::verb:pouvoir",
-      "action": "author_exact_target_lesson",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_passe_recent::writing-controlled-production::verb:pouvoir",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 4,
-          "learningItems": 4
+          "initialItems": 10,
+          "learningItems": 10
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:passe-recent:production:verb:pouvoir"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
@@ -1573,7 +1575,6 @@
       ],
       "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": [
-        "produire_passe_recent::writing-controlled-production::verb:pouvoir",
         "produire_passe_recent::writing-controlled-production::verb:vouloir",
         "produire_passe_recent::writing-controlled-production::verb:savoir",
         "produire_passe_recent::writing-controlled-production::verb:devoir"
