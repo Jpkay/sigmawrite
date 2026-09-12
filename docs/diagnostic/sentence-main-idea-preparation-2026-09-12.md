@@ -19,4 +19,4 @@ The service test identified duplicate exposure writes for an explicitly annotate
 
 A choice-length audit found 26 of 36 correct answers were uniquely longest. Authored distractor revisions reduced that to 11 of 36 while preserving the keys and passage identities. This is a cue audit, not a calibration result.
 
-The final eight-profile simulation remains running. The public deployment and the frozen 253-target candidate remain unchanged.
+The final eight-profile simulation passes against the exact frozen candidate and current engine source checksums. The public deployment and the frozen 253-target candidate remain unchanged.
