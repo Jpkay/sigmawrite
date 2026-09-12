@@ -49,3 +49,14 @@ it('retires untracked recognition only in a bank with tracked replacements',asyn
  for(const p of legacy){expect(current.probes.some(q=>q.id===p.id)).toBe(false);expect(current.unsupportedEvidenceItemKeys).toContain(p.id);}
  expect(current.probes.filter(p=>p.skillId==='reconnaitre_subjonctif_present::reading-receptive')).toHaveLength(24);
 });
+
+it('does not repartition older person-number groups with unclassified legacy questions',async()=>{
+ const {allocateQuestionPools}=await import('./question-pools');
+ const candidate=JSON.parse(readFileSync('docs/diagnostic/v3-parallel-review-candidate.json','utf8')).assessment;
+ const skill=candidate.skills.find((s:{id:string})=>s.id==='reconnaitre_subjonctif_present::reading-receptive');
+ const probes=Array.from({length:16},(_,i)=>({id:`q-${String(i).padStart(2,'0')}`,skillId:skill.id,mode:'recognition' as const,contextId:`context-${i}`,guessProbability:.25,difficulty:.5,expectedSeconds:30,samplingCategory:i===0?undefined:`person-number:${i%2}`}));
+ const source={...candidate,skills:[skill],probes};
+ const actual=allocateQuestionPools(source).assessment.probes.map(p=>[p.id,p.usage]);
+ const oldBehavior=allocateQuestionPools({...source,probes:probes.map(p=>({...p,samplingCategory:undefined}))}).assessment.probes.map(p=>[p.id,p.usage]);
+ expect(actual).toEqual(oldBehavior);
+});

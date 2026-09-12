@@ -54434,7 +54434,7 @@
         ],
         "contrastingErrorKeys": [],
         "negativeExampleAssessed": false,
-        "usage": "initial"
+        "usage": "learning"
       },
       {
         "id": "v3-person-number:je-negation",
@@ -54486,7 +54486,7 @@
         ],
         "contrastingErrorKeys": [],
         "negativeExampleAssessed": false,
-        "usage": "initial"
+        "usage": "learning"
       },
       {
         "id": "v3-person-number:tu-choisis",
@@ -54512,7 +54512,7 @@
         ],
         "contrastingErrorKeys": [],
         "negativeExampleAssessed": false,
-        "usage": "initial"
+        "usage": "learning"
       },
       {
         "id": "v3-person-number:tu-question",
@@ -54564,7 +54564,7 @@
         ],
         "contrastingErrorKeys": [],
         "negativeExampleAssessed": false,
-        "usage": "initial"
+        "usage": "learning"
       },
       {
         "id": "v3-person-number:tu-future",
@@ -54616,7 +54616,7 @@
         ],
         "contrastingErrorKeys": [],
         "negativeExampleAssessed": false,
-        "usage": "initial"
+        "usage": "learning"
       },
       {
         "id": "v3-person-number:elle",
@@ -54668,7 +54668,7 @@
         ],
         "contrastingErrorKeys": [],
         "negativeExampleAssessed": false,
-        "usage": "learning"
+        "usage": "initial"
       },
       {
         "id": "v3-person-number:collectif",
@@ -54694,7 +54694,7 @@
         ],
         "contrastingErrorKeys": [],
         "negativeExampleAssessed": false,
-        "usage": "initial"
+        "usage": "learning"
       },
       {
         "id": "v3-person-number:nous",
@@ -54720,7 +54720,7 @@
         ],
         "contrastingErrorKeys": [],
         "negativeExampleAssessed": false,
-        "usage": "learning"
+        "usage": "initial"
       },
       {
         "id": "v3-person-number:toi-moi",
@@ -54798,7 +54798,7 @@
         ],
         "contrastingErrorKeys": [],
         "negativeExampleAssessed": false,
-        "usage": "learning"
+        "usage": "initial"
       },
       {
         "id": "v3-person-number:vous-groupe",
@@ -54850,7 +54850,7 @@
         ],
         "contrastingErrorKeys": [],
         "negativeExampleAssessed": false,
-        "usage": "learning"
+        "usage": "initial"
       },
       {
         "id": "v3-person-number:toi-elle",
@@ -54876,7 +54876,7 @@
         ],
         "contrastingErrorKeys": [],
         "negativeExampleAssessed": false,
-        "usage": "learning"
+        "usage": "initial"
       },
       {
         "id": "v3-person-number:lui-toi",
@@ -54980,7 +54980,7 @@
         ],
         "contrastingErrorKeys": [],
         "negativeExampleAssessed": false,
-        "usage": "learning"
+        "usage": "initial"
       },
       {
         "id": "v3-person-number:lui-elle",
@@ -55006,7 +55006,7 @@
         ],
         "contrastingErrorKeys": [],
         "negativeExampleAssessed": false,
-        "usage": "learning"
+        "usage": "initial"
       },
       {
         "id": "v3-granular-forms:produire_present_indicatif:être:1s:m:affirmative",
@@ -150179,7 +150179,7 @@
       }
     },
     "facetChecksum": "sha256:55747d3f32063228d5f52326bb084446022b5e006f3509307652e04c134d1d0a",
-    "poolChecksum": "sha256:3e705711504033235f3547e3fca6e6315abaf0ab40ef7d305b81ec256e3a976f"
+    "poolChecksum": "sha256:62e8c9b80aff902ce9bce8bbe5a44bc3367cb16b3508b84822d5e2ba3460ec44"
   },
   "teachingPoolRepairs": [
     {
@@ -150391,8 +150391,8 @@
       "skillId": "distinguer_personne_nombre::reading-receptive",
       "mode": "recognition",
       "status": "allocated",
-      "initialItems": 12,
-      "learningItems": 13
+      "initialItems": 13,
+      "learningItems": 12
     },
     {
       "skillId": "reconnaitre_radical_terminaison::reading-receptive",
@@ -154263,18 +154263,17 @@
       "href": "/student/diagnostic",
       "probeIds": [
         "local-conjugation-gap-v1:distinguer_personne_nombre:receptive:foundation",
+        "v3-person-number:collectif",
         "v3-person-number:elle",
+        "v3-person-number:j-ecoute",
         "v3-person-number:je-dessine",
+        "v3-person-number:je-incise",
         "v3-person-number:je-negation",
-        "v3-person-number:lui-elle",
-        "v3-person-number:nous",
-        "v3-person-number:objets-pluriels",
-        "v3-person-number:on-nous",
-        "v3-person-number:toi-elle",
+        "v3-person-number:nom-singulier",
+        "v3-person-number:tu-choisis",
         "v3-person-number:tu-future",
-        "v3-person-number:tu-question",
-        "v3-person-number:vous-moi",
-        "v3-person-number:vous-politesse"
+        "v3-person-number:tu-negative",
+        "v3-person-number:tu-question"
       ],
       "estimatedMinutes": 1
     },
@@ -219088,7 +219087,7 @@
       "lessonId": "french-v3-teaching:person-number",
       "skillId": "distinguer_personne_nombre::reading-receptive",
       "poolsAllocated": true,
-      "remainingCheckQuestions": 13,
+      "remainingCheckQuestions": 12,
       "freshCheckAvailable": true
     },
     {
@@ -219421,5 +219420,5 @@
     "Incomplete target pools remain visible; release scope and fresh post-teaching check capacity still need verification",
     "Structurally rejected content remains ineligible; semantic review continues in parallel"
   ],
-  "checksum": "sha256:f7814d1144dea20d23d5fc82ef913b7638ca49e6d69264d0c4fb0c12d2f2a5b4"
+  "checksum": "sha256:8342fba7054a50c654a66b9f640f8e53f19ad4ba897bd09a08ec9877f2ca4d71"
 }
