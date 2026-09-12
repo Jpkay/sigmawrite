@@ -1,0 +1,24 @@
+{
+  "status": "experimental_imperative_live_cases_pass_broader_checks_running",
+  "evaluatorVersion": "french-writing-evaluator-v8",
+  "change": "Resolve case-only differences in nested imperative form evidence, retaining exact outer opportunities, source offsets, accents, word boundaries and containment. Try exact occurrence matching first. No case folding is applied to general spelling evidence.",
+  "localChecks": {
+    "targetedTests": 18,
+    "typescript": "passed",
+    "exactOccurrencePreference": "passed",
+    "missingEuphonicSRejected": "passed",
+    "nonmatchingOuterOpportunityAndAccentRejected": "passed"
+  },
+  "liveSyntheticChecks": {
+    "matched": 6,
+    "total": 6
+  },
+  "running": {
+    "broaderCounterexamples": 82328
+  },
+  "limitations": [
+    "Six synthetic imperative cases are not calibration across all writing targets.",
+    "Provider reliability and revision judgment failures remain under investigation.",
+    "The evaluator remains outside student releases."
+  ]
+}

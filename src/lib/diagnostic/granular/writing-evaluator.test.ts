@@ -38,7 +38,7 @@ it("compares both versions and preserves the evaluator's explanation",async()=>{
 });
 it("binds evaluator provenance to the protocol and exact task rubric",async()=>{
  const f=fixture(),first=await f.evaluate(f.input);
- expect(first.evaluator).toMatchObject({version:"french-writing-evaluator-v7",model:"injected-judge",protocolChecksum:expect.stringMatching(/^sha256:/),rubricChecksum:expect.stringMatching(/^sha256:/)});
+ expect(first.evaluator).toMatchObject({version:"french-writing-evaluator-v8",model:"injected-judge",protocolChecksum:expect.stringMatching(/^sha256:/),rubricChecksum:expect.stringMatching(/^sha256:/)});
  const second=await f.evaluate({...f.input,item:{...f.input.item,promptFr:"Décris un lieu dans le passé."}});
  expect(second.evaluator?.rubricChecksum).not.toBe(first.evaluator?.rubricChecksum);
  expect(second.evaluator?.protocolChecksum).toBe(first.evaluator?.protocolChecksum);
@@ -104,4 +104,28 @@ it("requires source-bound imperative proof and refuses unknown paradigms",async(
  }
  const schema=writingJudgmentSchema(undefined,'employer_imperatif_en_contexte');
  expect(schema.safeParse({uncertain:false,connectedWriting:true,revisionReviewed:false,opportunities:[opportunity]}).success).toBe(false);
+});
+
+it("preserves exact opportunity text while resolving case-only imperative proofs",async()=>{
+ const f=fixture();f.input.item.nodeKey="employer_imperatif_en_contexte";
+ f.input.answer="Mange-en une part. Va-y maintenant.";
+ const base={uncertain:false,connectedWriting:true,revisionReviewed:false};
+ const opportunities=[
+  {excerpt:"Mange-en",occurrence:0,correct:true,reasonFr:"Consigne.",imperativeForm:{infinitive:"manger",excerpt:"mange",occurrence:0}},
+  {excerpt:"Va-y",occurrence:0,correct:true,reasonFr:"Consigne.",imperativeForm:{infinitive:"aller",excerpt:"va",occurrence:0}},
+ ];
+ f.judge.mockResolvedValue({...base,opportunities});
+ const result=await f.evaluate(f.input);
+ expect(result.tokens.map(t=>[t.text,t.correct])).toEqual([["Mange-en",false],["Va-y",false]]);
+ for(const token of result.tokens)expect(f.input.answer.slice(token.start,token.end)).toBe(token.text);
+ // Case folding cannot change the submitted opportunity or erase accents.
+ for(const opportunity of [{...opportunities[0],excerpt:"mange-en"},{...opportunities[0],imperativeForm:{infinitive:"manger",excerpt:"mangé",occurrence:0}}]){
+  f.judge.mockResolvedValue({...base,opportunities:[opportunity]});
+  await expect(f.evaluate(f.input)).rejects.toBeInstanceOf(WritingAssessmentError);
+ }
+ expect(()=>resolveWritingExcerpt("Prends ton sac. prends le train.","prends",0)).not.toThrow();
+ expect(resolveWritingExcerpt("Prends ton sac. prends le train.","prends",1,true).start).toBe(16);
+ f.input.answer="Prends ton sac. prends le train.";
+ f.judge.mockResolvedValue({...base,opportunities:[{excerpt:"prends le train",occurrence:0,correct:true,reasonFr:"Consigne.",imperativeForm:{infinitive:"prendre",excerpt:"prends",occurrence:0}}]});
+ expect((await f.evaluate(f.input)).tokens[0]).toMatchObject({start:16,text:"prends le train",correct:true});
 });

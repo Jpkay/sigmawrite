@@ -22,7 +22,7 @@ export function writingJudgmentSchema(rubric?:WritingRubric,nodeKey?:string){
  });
  return judgmentSchema.extend({opportunities:z.array(opportunity).max(1000)});
 }
-export const WRITING_EVALUATOR_VERSION="french-writing-evaluator-v7";
+export const WRITING_EVALUATOR_VERSION="french-writing-evaluator-v8";
 export type WritingJudgeInput={promptFr:string;instructionsFr:string;answer:string;firstDraft?:string;rubric?:WritingRubric;
  target:{nodeKey:string;labelFr:string;descriptionFr:string;actionFr:string;criteria:Record<string,unknown>}};
 export type WritingJudge=(input:WritingJudgeInput)=>Promise<unknown>;
@@ -70,7 +70,11 @@ export function createWritingEvaluator(judge:WritingJudge=requestWritingJudgment
     let correct=opportunity.correct,reasonFr=opportunity.reasonFr;
     if(node.key==='employer_imperatif_en_contexte'){
      const proof=opportunity.imperativeForm;if(!proof)throw Error("Missing imperative form evidence");
-     const form=resolveWritingExcerpt(input.answer,proof.excerpt,proof.occurrence);
+     // Capitalization is immaterial to imperative morphology. The outer
+     // opportunity remains exact, and containment still binds this proof to it.
+     let form;
+     try{form=resolveWritingExcerpt(input.answer,proof.excerpt,proof.occurrence);}
+     catch{form=resolveWritingExcerpt(input.answer,proof.excerpt,proof.occurrence,true);}
      if(form.start<span.start||form.end>span.end)throw Error("Imperative form lies outside its writing opportunity");
      const checked=checkWritingImperativeForm({infinitive:proof.infinitive,form:form.text,suffix:input.answer.slice(form.end)});
      if(!checked.valid){correct=false;reasonFr=checked.liaison?`Devant en ou y directement attaché, la forme ${checked.forms[0]} prend un s : ${checked.forms[0]}s. Vérifie aussi à qui tu t’adresses.`:`« ${form.text} » n’est pas une forme de l’impératif de ${proof.infinitive}. Les formes sont : ${checked.forms.join(', ')}.`;}
@@ -89,8 +93,15 @@ export function createWritingEvaluator(judge:WritingJudge=requestWritingJudgment
 /** Apostrophe typography has no grammatical significance. Match equivalent
  * apostrophes without changing offsets, then retain the exact submitted source.
  * Short pronouns must not anchor to letter sequences inside another word. */
-export function resolveWritingExcerpt(answer:string,excerpt:string,occurrence:number){
- const canonical=(text:string)=>text.replace(/[’‘]/g,"'");
+export function resolveWritingExcerpt(answer:string,excerpt:string,occurrence:number,imperativeFormCase=false){
+ const canonical=(text:string)=>{
+  const apostrophes=text.replace(/[’‘]/g,"'");
+  // Fold only single-code-unit capitals, preserving all source offsets and
+  // accents. This option is used exclusively for the nested imperative proof.
+  return imperativeFormCase?apostrophes.replace(/\p{Lu}/gu,char=>{
+   const lower=char.toLocaleLowerCase('fr');return lower.length===char.length?lower:char;
+  }):apostrophes;
+ };
  const source=canonical(answer),needle=canonical(excerpt),word=/[\p{L}\p{M}\p{N}]/u;
  if(!needle||!Number.isInteger(occurrence)||occurrence<0)throw Error("Writing evidence excerpt unavailable");
  let from=0,found=0;
