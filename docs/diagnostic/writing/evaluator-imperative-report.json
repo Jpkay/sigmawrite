@@ -20,7 +20,7 @@
             "text": "Prends",
             "criterionId": "employer_imperatif_en_contexte",
             "correct": true,
-            "reasonFr": "Impératif 2e personne du verbe « prendre », correct et adapté au contexte de consignes."
+            "reasonFr": "Impératif présent 2e pers. du verbe « prendre », forme correcte dans une consigne directe adressée à « tu »."
           },
           {
             "start": 18,
@@ -28,7 +28,7 @@
             "text": "mets",
             "criterionId": "employer_imperatif_en_contexte",
             "correct": true,
-            "reasonFr": "Impératif 2e personne du verbe « mettre », correct dans une consigne d'action."
+            "reasonFr": "Impératif présent 2e pers. du verbe « mettre », forme correcte dans une consigne directe."
           },
           {
             "start": 39,
@@ -36,7 +36,7 @@
             "text": "Attends",
             "criterionId": "employer_imperatif_en_contexte",
             "correct": true,
-            "reasonFr": "Impératif 2e personne du verbe « attendre », correct et cohérent avec la situation."
+            "reasonFr": "Impératif présent 2e pers. du verbe « attendre », forme correcte dans une consigne directe."
           },
           {
             "start": 69,
@@ -44,12 +44,12 @@
             "text": "rejoins",
             "criterionId": "employer_imperatif_en_contexte",
             "correct": true,
-            "reasonFr": "Impératif 2e personne du verbe « rejoindre », correct et adapté au contexte."
+            "reasonFr": "Impératif présent 2e pers. du verbe « rejoindre », forme correcte dans une consigne directe."
           }
         ],
         "evaluator": {
-          "version": "french-writing-evaluator-v6",
-          "protocolChecksum": "sha256:c8bf0b8bb355429caf49c2de5344e44871f2f735bf905fca1b9a85f39e0a37bf",
+          "version": "french-writing-evaluator-v7",
+          "protocolChecksum": "sha256:bb31ca19947db364cdccdb86533a8d467270632e9300d9e804f681b38cb51e6d",
           "rubricChecksum": "sha256:b8b878657aa752c616764968143550c598aa579b68b4ea068363f1e68c7d9bd5",
           "model": "injected-judge"
         }
@@ -60,23 +60,79 @@
       "caseChecksum": "sha256:fb27d2f75ee9d80d426cecd00ee51ba9f0d664e54853559cd4b0f7c336a14556",
       "expected": "incorrect",
       "observed": "unavailable",
-      "reason": "invalid_json",
+      "reason": "provider_or_configuration",
       "matched": false
     },
     {
       "id": "imperative-liaison-correct",
       "caseChecksum": "sha256:770b46c4244fe4a03dcac03774cc55a014f75f042d7ec006e1a6e7cf9fd837e7",
       "expected": "correct",
-      "observed": "unavailable",
-      "reason": "invalid_json",
-      "matched": false
+      "observed": "correct",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 39,
+            "end": 73,
+            "text": "Manges-en une part avant le départ",
+            "criterionId": "employer_imperatif_en_contexte",
+            "correct": true,
+            "reasonFr": "Impératif 2e personne singulier correct ; le -s est légitimement conservé devant le pronom « en » par euphonie."
+          },
+          {
+            "start": 80,
+            "end": 95,
+            "text": "vas-y avec elle",
+            "criterionId": "employer_imperatif_en_contexte",
+            "correct": true,
+            "reasonFr": "Impératif 2e personne singulier d'« aller » correct ; le -s est conservé devant le pronom « y » par euphonie."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v7",
+          "protocolChecksum": "sha256:bb31ca19947db364cdccdb86533a8d467270632e9300d9e804f681b38cb51e6d",
+          "rubricChecksum": "sha256:b8b878657aa752c616764968143550c598aa579b68b4ea068363f1e68c7d9bd5",
+          "model": "injected-judge"
+        }
+      }
     },
     {
       "id": "imperative-liaison-errors",
       "caseChecksum": "sha256:ed378f157b0673d1065376688443ec106b9ced1bd5ead5ee42ee855ee0c45c7e",
       "expected": "incorrect",
       "observed": "unavailable",
-      "reason": "invalid_json",
+      "reason": "invalid_evidence",
+      "rawJudgment": {
+        "uncertain": false,
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "opportunities": [
+          {
+            "excerpt": "Mange-en",
+            "occurrence": 0,
+            "imperativeForm": {
+              "infinitive": "manger",
+              "excerpt": "mange",
+              "occurrence": 0
+            },
+            "correct": true,
+            "reasonFr": "Impératif correct de « manger » à la 2e personne du singulier avec pronom « en » attaché, en contexte d'instructions."
+          },
+          {
+            "excerpt": "va-y",
+            "occurrence": 0,
+            "imperativeForm": {
+              "infinitive": "aller",
+              "excerpt": "va",
+              "occurrence": 0
+            },
+            "correct": true,
+            "reasonFr": "Impératif correct de « aller » à la 2e personne du singulier avec pronom « y » attaché, en contexte d'instructions."
+          }
+        ]
+      },
       "matched": false
     },
     {
@@ -90,8 +146,8 @@
         "revisionReviewed": false,
         "tokens": [],
         "evaluator": {
-          "version": "french-writing-evaluator-v6",
-          "protocolChecksum": "sha256:c8bf0b8bb355429caf49c2de5344e44871f2f735bf905fca1b9a85f39e0a37bf",
+          "version": "french-writing-evaluator-v7",
+          "protocolChecksum": "sha256:bb31ca19947db364cdccdb86533a8d467270632e9300d9e804f681b38cb51e6d",
           "rubricChecksum": "sha256:b8b878657aa752c616764968143550c598aa579b68b4ea068363f1e68c7d9bd5",
           "model": "injected-judge"
         }
@@ -109,32 +165,32 @@
         "tokens": [
           {
             "start": 0,
-            "end": 30,
-            "text": "Mettons nos sacs près du banc.",
+            "end": 7,
+            "text": "Mettons",
             "criterionId": "employer_imperatif_en_contexte",
             "correct": true,
-            "reasonFr": "Impératif 1re personne du pluriel de « mettre », correctement formé et employé pour donner une consigne."
+            "reasonFr": "Impératif 1re personne du pluriel de « mettre », forme correcte et adaptée pour donner une consigne collective."
           },
           {
-            "start": 31,
-            "end": 85,
-            "text": "Mes amis, attendez ici pendant que je prends la carte.",
+            "start": 41,
+            "end": 49,
+            "text": "attendez",
             "criterionId": "employer_imperatif_en_contexte",
             "correct": true,
-            "reasonFr": "Impératif 2e personne du pluriel de « attendre », forme correcte et adaptée au contexte d'instruction."
+            "reasonFr": "Impératif 2e personne du pluriel de « attendre », forme correcte, identique à l'indicatif mais bien employée comme ordre."
           },
           {
             "start": 86,
-            "end": 127,
-            "text": "Rejoignez ensuite Lina devant le portail.",
+            "end": 95,
+            "text": "Rejoignez",
             "criterionId": "employer_imperatif_en_contexte",
             "correct": true,
-            "reasonFr": "Impératif 2e personne du pluriel de « rejoindre », correctement formé et pertinent dans la consigne."
+            "reasonFr": "Impératif 2e personne du pluriel de « rejoindre », forme correcte et pertinente dans une consigne de déplacement."
           }
         ],
         "evaluator": {
-          "version": "french-writing-evaluator-v6",
-          "protocolChecksum": "sha256:c8bf0b8bb355429caf49c2de5344e44871f2f735bf905fca1b9a85f39e0a37bf",
+          "version": "french-writing-evaluator-v7",
+          "protocolChecksum": "sha256:bb31ca19947db364cdccdb86533a8d467270632e9300d9e804f681b38cb51e6d",
           "rubricChecksum": "sha256:b8b878657aa752c616764968143550c598aa579b68b4ea068363f1e68c7d9bd5",
           "model": "injected-judge"
         }

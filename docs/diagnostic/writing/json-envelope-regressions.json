@@ -1,0 +1,45 @@
+{
+  "method": "Captured raw responses from synthetic imperative QA, not student data.",
+  "cases": [
+    {
+      "source": {
+        "id": "imperative-forms-correct",
+        "node": "employer_imperatif_en_contexte",
+        "prompt": "Donne des consignes pour préparer une sortie.",
+        "answer": "Prends ton sac et mets tes chaussures. Attends devant la porte, puis rejoins le groupe.",
+        "expect": "correct"
+      },
+      "rawResponse": "{\"{\"uncertain\":false,\"connectedWriting\":true,\"revisionReviewed\":false,\"opportunities\":[{\"excerpt\":\"Prends\",\"occurrence\":0,\"imperativeForm\":{\"infinitive\":\"prendre\",\"excerpt\":\"Prends\",\"occurrence\":0},\"criterionId\":\"employer_imperatif_en_contexte\",\"correct\":true,\"reasonFr\":\"Impératif 2e personne du verbe « prendre », forme correcte dans une consigne d'organisation.\"},{\"excerpt\":\"mets\",\"occurrence\":0,\"imperativeForm\":{\"infinitive\":\"mettre\",\"excerpt\":\"mets\",\"occurrence\":0},\"criterionId\":\"employer_imperatif_en_contexte\",\"correct\":true,\"reasonFr\":\"Impératif 2e personne du verbe « mettre », forme correcte pour indiquer l'action à accomplir.\"},{\"excerpt\":\"Attends\",\"occurrence\":0,\"imperativeForm\":{\"infinitive\":\"attendre\",\"excerpt\":\"Attends\",\"occurrence\":0},\"criterionId\":\"employer_imperatif_en_contexte\",\"correct\":true,\"reasonFr\":\"Impératif 2e personne du verbe « attendre », forme correcte dans une instruction.\"},{\"excerpt\":\"rejoins\",\"occurrence\":0,\"imperativeForm\":{\"infinitive\":\"rejoindre\",\"excerpt\":\"rejoins\",\"occurrence\":0},\"criterionId\":\"employer_imperatif_en_contexte\",\"correct\":true,\"reasonFr\":\"Impératif 2e personne du verbe « rejoindre », forme correcte pour conclure la consigne.\"}] }"
+    },
+    {
+      "source": {
+        "id": "imperative-liaison-correct",
+        "node": "employer_imperatif_en_contexte",
+        "prompt": "Donne des consignes pour préparer une sortie.",
+        "answer": "Lina a préparé un gâteau pour la fête. Manges-en une part avant le départ, puis vas-y avec elle.",
+        "expect": "correct"
+      },
+      "rawResponse": "{\"{\"uncertain\":false,\"connectedWriting\":true,\"revisionReviewed\":false,\"opportunities\":[{\"excerpt\":\"Manges-en\",\"occurrence\":0,\"imperativeForm\":{\"infinitive\":\"manger\",\"excerpt\":\"Manges\",\"occurrence\":0},\"criterionId\":\"employer_imperatif_en_contexte\",\"correct\":true,\"reasonFr\":\"Impératif 2e pers. sing. du verbe « manger » avec pronoun « en » : le s est correctement conservé devant le pronom. Forme adaptée au sens d'injonction.\"},{\"excerpt\":\"vas-y\",\"occurrence\":0,\"imperativeForm\":{\"infinitive\":\"aller\",\"excerpt\":\"vas\",\"occurrence\":0},\"criterionId\":\"employer_imperatif_en_contexte\",\"correct\":true,\"reasonFr\":\"Impératif 2e pers. sing. du verbe « aller » avec pronoun « y » : le s est correctement conservé devant le pronom. Injonction cohérente dans le contexte.\"}]}"
+    },
+    {
+      "source": {
+        "id": "imperative-liaison-errors",
+        "node": "employer_imperatif_en_contexte",
+        "prompt": "Donne des consignes pour préparer une sortie.",
+        "answer": "Lina a préparé un gâteau pour la fête. Mange-en une part avant le départ, puis va-y avec elle.",
+        "expect": "incorrect"
+      },
+      "rawResponse": "{\"{\"uncertain\":false,\"connectedWriting\":true,\"revisionReviewed\":false,\"opportunities\":[{\"excerpt\":\"Mange-en une part avant le départ\",\"occurrence\":0,\"imperativeForm\":{\"infinitive\":\"manger\",\"excerpt\":\"Mange\",\"occurrence\":0},\"criterionId\":\"employer_imperatif_en_contexte\",\"correct\":true,\"reasonFr\":\"Impératif correct de « manger » à la 2e personne du singulier, employé pour donner une consigne.\"},{\"excerpt\":\"va-y avec elle\",\"occurrence\":0,\"imperativeForm\":{\"infinitive\":\"aller\",\"excerpt\":\"va\",\"occurrence\":0},\"criterionId\":\"employer_imperatif_en_contexte\",\"correct\":true,\"reasonFr\":\"Impératif correct de « aller » à la 2e personne du singulier avec pronom « y » attaché, employé pour donner une consigne de déplacement.\"}]}"
+    },
+    {
+      "source": {
+        "id": "imperative-no-evidence",
+        "node": "employer_imperatif_en_contexte",
+        "prompt": "Donne des consignes pour préparer une sortie.",
+        "answer": "Tu peux prendre ton sac et mettre tes chaussures. Tu attendras devant la porte, puis tu rejoindras le groupe.",
+        "expect": "unresolved"
+      },
+      "rawResponse": "{\"{\"uncertain\":false,\"connectedWriting\":true,\"revisionReviewed\":false,\"opportunities\":[]}"
+    }
+  ]
+}

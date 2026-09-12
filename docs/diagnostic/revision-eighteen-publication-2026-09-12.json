@@ -96,13 +96,12 @@
     }
   },
   "running": {
-    "fullJourney": 87667
+    "fullJourney": 87667,
+    "foundationFeatureJourney": 23979
   },
   "remaining": [
-    "Verify Ready deployment, audio, demo and pinned pathways.",
-    "Finish bank import, verify all relational records and publish immutable v19.",
-    "Verify fresh default and full timed diagnostic through results, learning and answer review; test real learning upgrade.",
-    "Verify answered-feature counts in the deployed results view.",
+    "Finish the full timed diagnostic through results, learning and answer review.",
+    "Finish the contrasting foundation profile and verify answered-feature counts in the deployed results view.",
     "Promote only after successful candidate checks and repeat public verification."
   ],
   "candidateUrl": "https://sigmawrite-2rrvpyxm2-jpkays-projects.vercel.app",
@@ -119,5 +118,12 @@
     "releaseId": "7513b5f5-3afa-435a-975e-a3353dec2c37",
     "releaseKey": "french-granular-diagnostic-v19",
     "bundleChecksum": "sha256:edc28f1bca886e1ea691a706f04b98d9eb13e71616076fb76069c614d66a51a6"
+  },
+  "foundationQa": {
+    "username": "doves.granular.r18.foundation.qa",
+    "credentialsFile": "tmp/plume-granular-r18-foundation-qa.json",
+    "profile": "foundational-contrast",
+    "syntheticOnly": true,
+    "outputPrefix": "tmp/plume-r18-foundation"
   }
 }

@@ -6,8 +6,8 @@ import {createWritingEvaluator,requestWritingJudgment} from "../../src/lib/diagn
 import {FRENCH_TAXONOMY_V3_CANDIDATE} from "../../src/lib/taxonomy/french-v3";
 import {resolveAIRuntimeConfig} from "../../src/lib/ai/runtime-config";
 const bank=JSON.parse(readFileSync("generated/diagnostic-bank-v3-draft.json","utf8"));
-let rawJudgment:unknown;
-const evaluate=createWritingEvaluator(async input=>{rawJudgment=await requestWritingJudgment(input);return rawJudgment;});
+let rawJudgment:unknown,rawResponse:string|undefined;
+const evaluate=createWritingEvaluator(async input=>{rawJudgment=await requestWritingJudgment(input,raw=>{rawResponse=raw;});return rawJudgment;});
 const cases:Array<{id:string;node:string;prompt:string;answer:string;firstDraft?:string;expect:string;rubric?:WritingRubric}>=[
  {id:"correct-imparfait",node:"employer_imparfait_en_contexte",prompt:"Décris les habitudes d’un personnage autrefois.",answer:"Chaque été, Lina jouait dehors. Elle retrouvait ses amis et ils exploraient le jardin.",expect:"correct"},
  {id:"incorrect-imparfait",node:"employer_imparfait_en_contexte",prompt:"Décris les habitudes d’un personnage autrefois.",answer:"Chaque été, Lina jouais dehors. Elle retrouvais ses amis et ils explorait le jardin.",expect:"incorrect"},
@@ -21,7 +21,7 @@ const selected:typeof cases=imperative?JSON.parse(readFileSync("docs/diagnostic/
 if(!selected.length)throw Error("No selected evaluator cases");
 const config=resolveAIRuntimeConfig(),results=[];
 for(const c of selected){
- rawJudgment=undefined;
+ rawJudgment=undefined;rawResponse=undefined;
  try{
   const result=await evaluate({skillId:`${c.node}::writing-independent-production`,item:{...bank.items[0].item,nodeKey:c.node,promptFr:c.prompt,instructionsFr:null,...(c.rubric?{validatorConfig:{writingRubric:c.rubric}}:{})},answer:c.answer,...(c.firstDraft?{firstDraft:c.firstDraft}:{})});
   const correct=result.tokens.filter(t=>t.correct).length,total=result.tokens.length;
@@ -33,7 +33,7 @@ for(const c of selected){
   const message=cause instanceof Error?cause.message:"";
   const httpStatus=message.match(/^LLM (\d{3}) /)?.[1];
   const reason=httpStatus?`provider_http_${httpStatus}`:/Could not extract JSON/.test(message)?"invalid_json":/response had no content/.test(message)?"empty_provider_response":/timeout|timed out|abort/i.test(message)?"timeout":/Uncertain writing judgment/.test(message)?"uncertain":/excerpt unavailable|Overlapping writing|outside rubric/.test(message)?"invalid_evidence":cause instanceof Error&&cause.name==="ZodError"?"invalid_schema":"provider_or_configuration";
-  results.push({id:c.id,caseChecksum:checksum(c),expected:c.expect,observed:"unavailable",reason,rawJudgment,matched:false});console.log(JSON.stringify({id:c.id,observed:"unavailable",reason}));
+  results.push({id:c.id,caseChecksum:checksum(c),expected:c.expect,observed:"unavailable",reason,rawJudgment,...(reason==="invalid_json"?{rawResponse}:{}),matched:false});console.log(JSON.stringify({id:c.id,observed:"unavailable",reason}));
  }
 }
 writeFileSync(imperative?"docs/diagnostic/writing/evaluator-imperative-report.json":counterexamples?"docs/diagnostic/writing/evaluator-counterexample-report.json":scoped?"docs/diagnostic/writing/evaluator-scoped-report.json":targets?"docs/diagnostic/writing/evaluator-target-report.json":adversarial?"docs/diagnostic/writing/evaluator-adversarial-report.json":process.argv[2]?"docs/diagnostic/writing/evaluator-smoke-detail.json":"docs/diagnostic/writing/evaluator-smoke.json",JSON.stringify({status:"experimental_not_calibrated",model:process.env.WRITING_GRADING_MODEL??config.model,syntheticOnly:true,casesChecksum:checksum(selected),results},null,2)+"\n");

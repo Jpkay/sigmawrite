@@ -1,8 +1,9 @@
+import {parseWritingProviderJson,WRITING_JSON_ENVELOPE_POLICY} from "./writing-provider-json";
 import {checkWritingImperativeForm} from "./writing-imperative-form";
 import {readWritingRubric,type WritingRubric} from "./writing-rubric";
 import {checksum} from "@/lib/taxonomy/validate";
 import {z} from "zod";
-import {chatComplete,extractJson} from "@/lib/ai/item-generation/openai-compatible";
+import {chatComplete} from "@/lib/ai/item-generation/openai-compatible";
 import {resolveAIRuntimeConfig} from "@/lib/ai/runtime-config";
 import {FRENCH_TAXONOMY_V3_CANDIDATE} from "@/lib/taxonomy/french-v3";
 import {requiresWritingRevision} from "./writing-evidence";
@@ -21,7 +22,7 @@ export function writingJudgmentSchema(rubric?:WritingRubric,nodeKey?:string){
  });
  return judgmentSchema.extend({opportunities:z.array(opportunity).max(1000)});
 }
-export const WRITING_EVALUATOR_VERSION="french-writing-evaluator-v6";
+export const WRITING_EVALUATOR_VERSION="french-writing-evaluator-v7";
 export type WritingJudgeInput={promptFr:string;instructionsFr:string;answer:string;firstDraft?:string;rubric?:WritingRubric;
  target:{nodeKey:string;labelFr:string;descriptionFr:string;actionFr:string;criteria:Record<string,unknown>}};
 export type WritingJudge=(input:WritingJudgeInput)=>Promise<unknown>;
@@ -37,13 +38,15 @@ Sépare le respect de la consigne et les preuves de maîtrise. Pour une cible em
 Pour une compétence de révision, compare obligatoirement firstDraft à answer : corrections justes, erreurs conservées et erreurs nouvelles. Des graphies déjà correctes inchangées ne prouvent pas la capacité de corriger. Ne qualifie pas une suppression de correction réussie si la difficulté a seulement été évitée. Si la première version ne fournit aucune occasion de révision, renvoie opportunities vide. revisionReviewed=true signifie que tu as réellement comparé les deux versions pour cette cible. Sans première version, revisionReviewed=false.
 Pour la cible employer_imperatif_en_contexte, chaque occasion doit inclure imperativeForm : infinitive identifie le verbe, excerpt cite exactement la forme verbale seule (sans les pronoms attachés), occurrence compte les répétitions de cette forme dans la réponse entière. Cette forme doit se trouver dans l’extrait de l’occasion. Signale une tentative fautive même si elle ressemble à une forme de l’indicatif.
 Si une ambiguïté empêche un jugement fiable ou si la tâche ne définit pas assez précisément les graphies ou règles à observer, uncertain=true. Une erreur claire est évaluable et ne rend pas le jugement incertain. Retourne uniquement le JSON du contrat.`;
-export async function requestWritingJudgment(input:WritingJudgeInput):Promise<unknown>{
+export async function requestWritingJudgment(input:WritingJudgeInput,onRawResponse?:(response:string)=>void):Promise<unknown>{
  const config=resolveAIRuntimeConfig();
  if(config.kind==="mock")throw Error("Writing assessment requires a configured provider");
- return extractJson(await chatComplete([
+ const raw=await chatComplete([
   {role:"system",content:`${system}\nContrat JSON : ${JSON.stringify(z.toJSONSchema(writingJudgmentSchema(input.rubric,input.target.nodeKey)))}`},
   {role:"user",content:JSON.stringify(input)},
- ],{baseUrl:config.baseUrl,apiKey:config.apiKey,model:process.env.WRITING_GRADING_MODEL??config.model,jsonMode:true,temperature:0,maxRetries:0,timeoutMs:25000}));
+ ],{baseUrl:config.baseUrl,apiKey:config.apiKey,model:process.env.WRITING_GRADING_MODEL??config.model,jsonMode:true,temperature:0,maxRetries:0,timeoutMs:25000});
+ onRawResponse?.(raw);
+ return parseWritingProviderJson(raw);
 }
 /** Candidate evaluator. Do not wire into published assessment until rubric and
  * adversarial calibration checks pass. Structural validation is not calibration. */
@@ -76,7 +79,7 @@ export function createWritingEvaluator(judge:WritingJudge=requestWritingJudgment
    }).sort((a,b)=>a.start-b.start);
    if(tokens.some((token,i)=>i>0&&token.start<tokens[i-1].end))throw Error("Overlapping writing opportunities");
    return {connectedWriting:result.connectedWriting,revisionReviewed:revision&&result.revisionReviewed,tokens,
-    evaluator:{version:WRITING_EVALUATOR_VERSION,protocolChecksum:checksum({version:WRITING_EVALUATOR_VERSION,system,schema:z.toJSONSchema(judgmentSchema)}),
+    evaluator:{version:WRITING_EVALUATOR_VERSION,protocolChecksum:checksum({version:WRITING_EVALUATOR_VERSION,envelopePolicy:WRITING_JSON_ENVELOPE_POLICY,system,schema:z.toJSONSchema(judgmentSchema)}),
      rubricChecksum:checksum({rubric,nodeKey:node.key,description:node.descriptionFr,evidence,prompt:input.item.promptFr,instructions:input.item.instructionsFr??""}),
      model:judge===requestWritingJudgment?(process.env.WRITING_GRADING_MODEL??resolveAIRuntimeConfig().model):"injected-judge"}};
   }catch(cause){throw new WritingAssessmentError(cause);}

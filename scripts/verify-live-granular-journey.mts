@@ -23,7 +23,10 @@ const releaseKey=option('--release-key');
 const expectedScope=Number(option('--expected-scope'));
 if(!Number.isSafeInteger(expectedScope)||expectedScope<1)throw Error('Invalid expected scope');
 const outputPrefix=option('--output-prefix');
+const profile=process.argv.includes('--profile')?option('--profile'):'mixed';
+if(!['mixed','foundational-contrast'].includes(profile))throw Error('Unknown QA profile');
 const credentials=JSON.parse(readFileSync(option('--credentials-file'),'utf8'));
+if(!/^doves\.granular\..*\.qa$/.test(credentials.username??''))throw Error('Only an explicitly provisioned technical QA account is allowed');
 
 
 
@@ -81,7 +84,10 @@ try {
   if(current.phase!=='assessing')break;
   if(current.question?.id!==question.id)throw Error('Question changed unexpectedly');
   const entry=bank.items.find(i=>i.itemKey===question.id)!.item;
-  const wantCorrect=skill.formFamily!=='compound'&&(current.answeredCount+1)%5!==0;
+  const knownFeature=probe.evidenceFeatures?.some(f=>f==='phoneme-graphie:ch'||f==='written-syllable:simple')??false;
+  const wantCorrect=profile==='foundational-contrast'
+   ? knownFeature||(skill.domain==='reading_comprehension'&&(current.answeredCount+1)%4!==0)
+   :skill.formFamily!=='compound'&&(current.answeredCount+1)%5!==0;
   if(question.responseType==='mcq')await page.getByRole('radio',{name:entry.choices!.find(c=>c.correct===wantCorrect)!.text,exact:true}).click();
   else await page.getByLabel('Ta réponse',{exact:true}).fill(wantCorrect?entry.correctAnswer!:'je ne sais pas');
   const support=readTextualSupport(entry);if(support)await page.getByRole('radio',{name:support.choices.find(c=>c.correct)!.quoteFr,exact:true}).click();
@@ -100,7 +106,7 @@ try {
  await page.reload();await page.getByRole('heading',{name:'Tes acquis et tes prochaines étapes',exact:true}).waitFor();
  current=await waitView(v=>v.phase==='learning');
  const final=await admin.from('granular_assessment_sessions').select('state').eq('id',current.sessionId).single();if(final.error)throw final.error;
- const summary={sessionId:current.sessionId,releaseId:release.data.id,scope:expectedScope,answers:current.answeredCount,correct:final.data.state.observations.filter((o:{correct:boolean})=>o.correct).length,activeSeconds:final.data.state.activeSeconds,completionReason:final.data.state.completionReason,results:current.results.length,activities:current.learningActivities.length,reloadPreserved:true,profile:'Existing history retained; subsequent compound-form responses deliberately wrong and every fifth other response wrong. Technical QA, not a calibrated student profile.'};
+ const summary={sessionId:current.sessionId,releaseId:release.data.id,scope:expectedScope,answers:current.answeredCount,correct:final.data.state.observations.filter((o:{correct:boolean})=>o.correct).length,activeSeconds:final.data.state.activeSeconds,completionReason:final.data.state.completionReason,results:current.results.length,activities:current.learningActivities.length,reloadPreserved:true,profile:profile==='foundational-contrast'?'Existing history retained; ch and simple written syllables answered correctly, short reading mostly correct, other skills deliberately incorrect. Technical QA, not a calibrated student profile.':'Existing history retained; subsequent compound-form responses deliberately wrong and every fifth other response wrong. Technical QA, not a calibrated student profile.'};
  writeFileSync(`${outputPrefix}-results.json`,JSON.stringify(summary,null,2),{mode:0o600});console.log('RESULTS_PASS',JSON.stringify(summary));
  if(current.learningCheck)throw Error('Finish or inspect existing independent check before this teaching test');
  const initialChecks:Array<{skillId:string;questionId:string;correct:boolean}>=[];
