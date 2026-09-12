@@ -8,10 +8,12 @@ Updated 2026-09-12. French only; Allotey is excluded. This document distinguishe
 - Public application source: `3e7cc67`, deployment `dpl_79zFrizpzVYDoQotio74vSjHE2V8`, promoted and inspected Ready on 2026-09-12. See `practice-feedback-capture-rollout-2026-09-12.json` for exact verification scope. Subsequent documentation commits do not imply another application deployment.
 - Candidate verification included one real reading reformulation and its optional grammar tip, matched exactly to saved delivery records. On the public site, the demo retains 11 accessible lessons and 48 reviewed answers, including 17 incorrect answers. This smoke check is not a new full diagnostic or full lesson test.
 - Reading, results, writing feedback and practice correction delivery recording have been expanded. Complete exposure-history certification remains disabled: alternate content sources, audio, historical baselines and concurrent presentation still require work. Recording delivered material does not prove attention or mastery.
-- The current generated backlog accounts for all 542 targets: 328 prepared scoped pathways in the unpublished revision 34 draft, 188 requiring question-pool completion, 20 requiring exact-target lessons, one requiring prerequisite-scope resolution, and five independent-writing targets outside scope. A backlog category identifies the next obstacle; it does not establish that every later obstacle is solved.
+- The current generated backlog accounts for all 542 targets: 328 prepared scoped pathways in the unpublished revision 34 draft, 187 requiring question-pool completion, 20 requiring exact-target lessons, two requiring prerequisite-scope resolution, and five independent-writing targets outside scope. A backlog category identifies the next obstacle; it does not establish that every later obstacle is solved.
 - Human content review and educational calibration remain pending and run in parallel under the owner's release authorization. Existing synthetic benchmarks must not be presented as classroom evidence.
 
 The unpublished revision 34 draft adds a pouvoir passé récent lesson, six guided exercises and twelve distinct check sentences. It has 328 prepared targets and 6,188 in-scope questions. See `passe-recent-pouvoir-draft-2026-09-12.md`. It has not replaced the public release.
+
+The same unpublished draft also includes 24 imperative-meaning situations and eight guided exercises. Its meaning target and contextual-writing target remain excluded because their prerequisite expansion includes unsupported savoir, vouloir and devoir production targets. This addition therefore does not increase the scoped target count. See `imperative-meaning-draft-2026-09-12.md`.
 
 ### Next content expansion
 
@@ -29,8 +31,8 @@ Before publishing any expansion: regenerate the draft and scoped candidate, veri
 | --- | ---: |
 | Prepared assessment, teaching and fresh-check pathway (unpublished draft) | 328 |
 | Question pools allocated; exact-target lesson still missing | 20 |
-| Complete initial and follow-up question pools | 188 |
-| Resolve prerequisite scope | 1 |
+| Complete initial and follow-up question pools | 187 |
+| Resolve prerequisite scope | 2 |
 | Connected-writing evidence outside prepared scope | 5 |
 | Total | 542 |
 
@@ -42,7 +44,7 @@ These categories partition the graph; they are not publication or approval label
 2. Validate the new verb-visit routing on real content and live mixed-profile journeys. The eight constructed contrasts now pass; educator/student calibration and broader granular profile validation remain required. Keep untested targets unresolved and refine them during learning.
 3. Subjunctive recognition, fourteen exact-verb lessons and four verb-family pathways have passed their service journeys. Three short-reading main-idea pathways and complex-negation meanings also have guided practice and fresh checks. Complete the remaining imperative and passé-simple exact-target lessons, using the 20 exact-target lesson gaps in the current inventory.
 4. Review the three remaining passé récent verb targets (vouloir, savoir, devoir) for natural contexts before authoring. Do not mechanically create awkward forms merely to reach a coverage count. Continue subjonctif, impératif and passé simple coverage with their own usage constraints.
-5. Fill the 188 question-pool gaps across all domains from the exact-target inventory, preserving distinct recognition, controlled production and contextual-use evidence. The written-syllable and sound-to-spelling prerequisites for cédille are now included in the prepared candidate. Complete the separate connected-writing pathway for the remaining five targets outside the prepared scope.
+5. Fill the 187 question-pool gaps across all domains from the exact-target inventory, preserving distinct recognition, controlled production and contextual-use evidence. The written-syllable and sound-to-spelling prerequisites for cédille are now included in the prepared candidate. Complete the separate connected-writing pathway for the remaining five targets outside the prepared scope.
 6. Continue the owner's review in parallel, recording actual decisions against content checksums. Validate difficulty, question duration, sufficient depth and the meaning of recommendations with educator and student evidence. Do not substitute technical tests for those judgments.
 
 ## Fixed foundation and product decisions

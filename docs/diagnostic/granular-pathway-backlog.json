@@ -1,13 +1,13 @@
 {
   "status": "prepared_inventory_not_release_or_review_approval",
-  "parallelCandidateChecksum": "sha256:3dea1d26cf2f3a665eaaf5e8624665d7173c1abc95cab758a79bf8148bf5477b",
-  "scopedCandidateChecksum": "sha256:ba62a6e9791a0820ef6ebab96350264d69d54b2ab447fd9b6359ff7f80b76d25",
+  "parallelCandidateChecksum": "sha256:4c14f19006c2bc6c71733911348d5ecbeddf2f569e402052ff59609df957bd97",
+  "scopedCandidateChecksum": "sha256:872f4e3fdfdc3d1e090b4501b4fc276354bad0099394e7ed455e06b6feabf8a5",
   "targets": 542,
   "counts": {
     "prepared_scoped_pathway": 328,
-    "complete_question_pools": 188,
+    "complete_question_pools": 187,
     "author_exact_target_lesson": 20,
-    "resolve_prerequisite_scope": 1,
+    "resolve_prerequisite_scope": 2,
     "connected_writing_evidence": 5
   },
   "limitations": [
@@ -4431,18 +4431,20 @@
       "skillId": "interpreter_valeur_imperatif::reading-receptive",
       "nodeKey": "interpreter_valeur_imperatif",
       "facetKey": null,
-      "action": "complete_question_pools",
+      "action": "resolve_prerequisite_scope",
       "pools": [
         {
           "skillId": "interpreter_valeur_imperatif::reading-receptive",
           "mode": "recognition",
-          "status": "insufficient_coverage",
-          "initialItems": 1,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 13,
+          "learningItems": 12
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:imperative:meaning"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": [
         "produire_imperatif::writing-controlled-production::verb:vouloir",
         "produire_imperatif::writing-controlled-production::verb:savoir",
