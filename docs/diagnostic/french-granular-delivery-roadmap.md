@@ -28,7 +28,7 @@ Root evidence: granular-pathway-backlog.json. Revision 36 evidence: revision-36-
 
 ## Next implementation packages
 
-1. Revision 35 and its completed-account progress correction are public and verified. Revision 36 live verification is in progress; revision 37 is a published candidate with 350 of 544 targets prepared. Preserve completed diagnostics and the demonstration account while extending coverage.
+1. Revision 35 and its completed-account progress correction are public and verified. Revision 36 is public with its complete journey verified; revision 37 is a published candidate with 350 of 544 targets prepared. Preserve completed diagnostics and the demonstration account while extending coverage.
 2. Complete revision 36 release preparation and deployment using its explicit question, lesson and refinement selection; preserve older sessions and immutable release identities.
 3. Resolve the four remaining exact-target lesson gaps and two prerequisite-scope gaps, respecting natural French usage rather than manufacturing awkward examples to increase coverage.
 4. Fill the 186 remaining revision 36 question-pool gaps across all domains, keeping recognition, controlled production and contextual-use evidence distinct. Complete the five connected-writing targets during learning.
