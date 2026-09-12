@@ -1,5 +1,5 @@
 {
-  "status": "draft_bank_import_verification_running_candidate_ready",
+  "status": "published_candidate_live_journey_running",
   "authoringOptions": [
     "--bank-revision",
     "36",
@@ -40,12 +40,34 @@
     "frozenArtifactsReproduced": true
   },
   "limitations": [
-    "A matching draft bank has been initialized and the insert-only import is running. Revision 36 is not published or activated.",
+    "Revision 36 is published as an immutable candidate. The public application remains on revision 35 pending live verification.",
     "Simulations use constructed profiles and synthetic history; they are not classroom calibration.",
     "Questions and lessons remain pending owner review.",
     "Revision 35 bank and frozen application are unchanged."
   ],
   "frozenSource": "97efb120d031f49f87e7ced01a6e922a9ef2e689",
   "draftBankId": "6384e9a5-b863-4a92-8773-f91f6b0aa39f",
-  "existingSessionBrowserCompatibility": "revision-36-existing-session-compatibility-2026-09-12.json"
+  "existingSessionBrowserCompatibility": "revision-36-existing-session-compatibility-2026-09-12.json",
+  "publication": {
+    "releaseId": "f6911b3f-5fd9-4ada-b6dd-bfe6da1303f8",
+    "releaseKey": "french-granular-diagnostic-v36-writing",
+    "bundleChecksum": "sha256:a9dad5a6220b5e8b03965a69daa4bef7ead026666ee36f774743ac1bf0fa5734"
+  },
+  "verifiedImportedItems": 7856,
+  "publicActivation": false,
+  "onboarding": {
+    "normalBrowserFlow": true,
+    "selectedInterests": [
+      "manga",
+      "anime",
+      "football"
+    ],
+    "diagnosticReady": true
+  },
+  "liveJourney": {
+    "studentId": "8cbad66a-58ca-4677-9d9d-42c210a25903",
+    "status": "running_not_verified",
+    "realElapsedTime": true,
+    "includesLessonAndReview": true
+  }
 }
