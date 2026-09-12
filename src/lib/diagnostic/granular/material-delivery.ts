@@ -6,6 +6,7 @@ import {stableUuid} from "@/lib/lexicon/baseline";
 import type {AssessmentStore} from "./service";
 import {questionMaterialKeys,teachingMaterialKeys} from "./material-annotations";
 import {teachingContentChecksum} from "./teaching-content";
+export type MaterialPresentation={presentationId:string;studentId:string;sourceChecksum:string;materialKeys:string[]};
 export interface MaterialDeliveryStore extends AssessmentStore{
  recordMaterialPresentation(input:{presentationId:string;studentId:string;sourceChecksum:string;materialKeys:string[]}):Promise<void>;
 }
@@ -18,14 +19,15 @@ const viewSchema=z.object({sessionId:z.string().min(1),question:question.nullabl
  * Failed writes withhold delivery; stable IDs make successful-write retries safe.
  * Lessons conservatively expose their whole reviewed material list at first open,
  * including answers/hints the student might not yet have reached. */
-export async function recordMaterialDelivery(store:MaterialDeliveryStore,studentId:string,result:unknown):Promise<void>{
- if(!result||typeof result!=="object"||!("view" in result)||!result.view)return;
+export async function collectMaterialPresentations(store:MaterialDeliveryStore,studentId:string,result:unknown):Promise<MaterialPresentation[]>{
+ const presentations:MaterialPresentation[]=[];
+ if(!result||typeof result!=="object"||!("view" in result)||!result.view)return presentations;
  const view=viewSchema.parse(result.view);
  const questionIds=[...new Set([view.question?.id,view.learningCheck?.question?.id].filter((id):id is string=>Boolean(id)))];
  // A start screen or results-only response exposes no question or lesson.
  // Its authenticated action already validated the session and release; there
  // is no delivery receipt to write and no need to load the whole bank again.
- if(!questionIds.length&&!view.teaching)return;
+ if(!questionIds.length&&!view.teaching)return presentations;
  const session=await store.load(studentId,view.sessionId);
  if(!session)throw Error("Material delivery session unavailable");
  const bundle=await store.release(session.releaseId);
@@ -41,14 +43,20 @@ export async function recordMaterialDelivery(store:MaterialDeliveryStore,student
    // for grading. A separate first write would make that same delivery appear
    // previously seen when the annotation receipt is written immediately after.
    // Keep the fallback identity for unannotated passages and existing receipts.
-   if(!keys.includes(passageKey))await store.recordMaterialPresentation({presentationId:stableUuid("granular-reading-presentation-v1",`${session.id}:question:${id}`),studentId,sourceChecksum:checksum(entry),materialKeys:[passageKey]});
+   if(!keys.includes(passageKey))presentations.push({presentationId:stableUuid("granular-reading-presentation-v1",`${session.id}:question:${id}`),studentId,sourceChecksum:checksum(entry),materialKeys:[passageKey]});
   }
-  if(keys.length)await store.recordMaterialPresentation({presentationId:stableUuid("granular-material-presentation",`${session.id}:question:${id}`),studentId,sourceChecksum:checksum(entry),materialKeys:keys});
+  if(keys.length)presentations.push({presentationId:stableUuid("granular-material-presentation",`${session.id}:question:${id}`),studentId,sourceChecksum:checksum(entry),materialKeys:keys});
  }
  if(view.teaching){
   const lesson=bundle.teachingContent?.find(content=>content.id===view.teaching!.contentId);
   if(!lesson)throw Error("Material delivery lesson unavailable");
   const keys=teachingMaterialKeys(lesson);
-  if(keys.length)await store.recordMaterialPresentation({presentationId:stableUuid("granular-material-presentation",`${session.id}:lesson:${lesson.id}`),studentId,sourceChecksum:teachingContentChecksum(lesson),materialKeys:keys});
+  if(keys.length)presentations.push({presentationId:stableUuid("granular-material-presentation",`${session.id}:lesson:${lesson.id}`),studentId,sourceChecksum:teachingContentChecksum(lesson),materialKeys:keys});
  }
+ return presentations;
+}
+
+export async function recordMaterialDelivery(store:MaterialDeliveryStore,studentId:string,result:unknown):Promise<void>{
+ const presentations=await collectMaterialPresentations(store,studentId,result);
+ for(const presentation of presentations)await store.recordMaterialPresentation(presentation);
 }

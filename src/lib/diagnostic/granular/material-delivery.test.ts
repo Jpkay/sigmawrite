@@ -1,3 +1,4 @@
+import {captureAssessmentDelivery,type CoveredMaterialDeliveryStore} from './covered-material-delivery';
 import {readingContextId,readingPassageText} from "./v3-adapter";
 import {readFileSync} from "node:fs";
 import {expect,it,vi} from "vitest";
@@ -125,4 +126,34 @@ it('does not certify novelty when the prior journal scan is incomplete',async()=
  f.store.materialHistoryComplete=async()=>true;
  f.store.loadPriorDeliveryText=async()=>({complete:false,rows:[]});
  expect((await readQuestionMaterialReceipt(f.store,f.session,f.bundle,f.entry.itemKey))?.historyComplete).toBe(false);
+});
+
+it('validates every delivered source before writing any presentation',async()=>{
+ const f=fixture();
+ await expect(recordMaterialDelivery(f.store,'student-a',{view:{...f.view,teaching:{contentId:'missing-lesson'}}})).rejects.toThrow('lesson unavailable');
+ expect(f.record).not.toHaveBeenCalled();
+});
+it('batches receipt identities and the whole final payload in one covered write',async()=>{
+ const f=fixture(),covered=vi.fn(async()=>{}),journal=vi.fn(async()=>{});
+ const store:CoveredMaterialDeliveryStore={...f.store,recordCoveredMaterialDelivery:covered,recordDeliveredText:journal};
+ const payload={view:{...f.view,teaching:{contentId:f.lesson.id}},studentState:{title:'Le sujet du verbe'}};
+ await captureAssessmentDelivery(store,'student-a','granular:teaching',payload,'test-contract');
+ await captureAssessmentDelivery(store,'student-a','granular:teaching',payload,'test-contract');
+ expect(covered).toHaveBeenCalledTimes(2);
+ expect(covered.mock.calls[0]).toEqual(covered.mock.calls[1]);
+ expect(covered).toHaveBeenCalledWith(expect.objectContaining({studentId:'student-a',contractKey:'test-contract',textFragments:expect.arrayContaining(['Le sujet du verbe']),presentations:expect.arrayContaining([expect.objectContaining({sourceChecksum:teachingContentChecksum(f.lesson)})])}));
+ expect(f.record).not.toHaveBeenCalled();expect(journal).not.toHaveBeenCalled();
+});
+it('never downgrades a failed or unavailable covered write to ordinary capture',async()=>{
+ const f=fixture(),journal=vi.fn(async()=>{}),covered=vi.fn(async()=>{throw Error('contract disabled');});
+ const store:CoveredMaterialDeliveryStore={...f.store,recordDeliveredText:journal,recordCoveredMaterialDelivery:covered};
+ await expect(captureAssessmentDelivery(store,'student-a','granular:start',{view:f.view},'test-contract')).rejects.toThrow('contract disabled');
+ await expect(captureAssessmentDelivery({...store,recordCoveredMaterialDelivery:undefined},'student-a','granular:start',{view:f.view},'test-contract')).rejects.toThrow('unavailable');
+ expect(f.record).not.toHaveBeenCalled();expect(journal).not.toHaveBeenCalled();
+});
+it('journals results-only payloads atomically without inventing presentations',async()=>{
+ const f=fixture(),covered=vi.fn(async()=>{});
+ await captureAssessmentDelivery({...f.store,recordCoveredMaterialDelivery:covered},'student-a','granular:start',{view:{sessionId:'session',question:null},title:'Tes progrès'},'test-contract');
+ expect(covered).toHaveBeenCalledWith(expect.objectContaining({presentations:[],textFragments:expect.arrayContaining(['Tes progrès'])}));
+ expect(f.record).not.toHaveBeenCalled();
 });

@@ -1,3 +1,4 @@
+import type {CoveredMaterialDelivery} from './covered-material-delivery';
 import type {PriorDeliveryHistory,PriorDeliveryText} from "./prior-delivery-material";
 import "server-only";
 import {prepareLearningSuccessor} from "./learning-successor";
@@ -109,6 +110,10 @@ export class SupabaseAssessmentStore implements AssessmentStore{
   // Pre-migration deployment has no coverage contract enabled. It remains
   // explicitly incomplete; availability does not manufacture a journal.
   if(error?.code==="PGRST202")return;
+  if(error)throw Error(error.message);
+ }
+ async recordCoveredMaterialDelivery(input:CoveredMaterialDelivery):Promise<void>{
+  const {error}=await this.db.rpc("record_covered_student_material_delivery",{p_student_id:input.studentId,p_boundary:input.boundary,p_payload_checksum:input.payloadChecksum,p_text_fragments:input.textFragments,p_presentations:input.presentations,p_contract_key:input.contractKey});
   if(error)throw Error(error.message);
  }
  async recordMaterialPresentation(input:{presentationId:string;studentId:string;sourceChecksum:string;materialKeys:string[]}):Promise<void>{

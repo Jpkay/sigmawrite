@@ -1,6 +1,5 @@
 "use server";
-import {journalMaterialDelivery} from "@/lib/diagnostic/granular/delivery-journal";
-import {recordMaterialDelivery} from "@/lib/diagnostic/granular/material-delivery";
+import {captureAssessmentDelivery} from "@/lib/diagnostic/granular/covered-material-delivery";
 import {requireRole} from "@/lib/auth";
 import {createClient,createServiceClient} from "@/lib/supabase/server";
 import {getCurrentStudentId,getStudentStateData} from "@/lib/db/student";
@@ -19,8 +18,7 @@ async function context(){
  return {studentId,client,store:new SupabaseAssessmentStore(createServiceClient(),{cache:sharedReleaseContentCache,namespace:process.env.NEXT_PUBLIC_SUPABASE_URL!})};
 }
 async function deliver<T>(store:SupabaseAssessmentStore,studentId:string,boundary:string,result:T):Promise<T>{
- await recordMaterialDelivery(store,studentId,result);
- await journalMaterialDelivery(store,studentId,boundary,result);
+ await captureAssessmentDelivery(store,studentId,boundary,result);
  return result;
 }
 export async function startGranularDiagnostic(){

@@ -33,3 +33,11 @@ it('reads prior text in bounded owner-scoped pages and keeps missing migration o
  expect((await fixture({data:[large,large,large],error:null}).store.loadPriorDeliveryText('s','p')).complete).toBe(false);
  await expect(fixture({data:[{...row,text_fragments:[1]}],error:null}).store.loadPriorDeliveryText('s','p')).rejects.toThrow('Invalid prior delivery history');
 });
+it('sends covered presentations and text in one RPC and refuses a missing migration',async()=>{
+ const input={studentId:'s',boundary:'granular:start',payloadChecksum:'sha256:payload',textFragments:['Les chevaux courent.'],presentations:[{presentationId:'p',sourceChecksum:'sha256:source',materialKeys:['word:cheval']}],contractKey:'audited-contract'};
+ const {store,rpc}=fixture({data:null,error:null});
+ await store.recordCoveredMaterialDelivery(input);
+ expect(rpc).toHaveBeenCalledTimes(1);
+ expect(rpc).toHaveBeenCalledWith('record_covered_student_material_delivery',{p_student_id:'s',p_boundary:input.boundary,p_payload_checksum:input.payloadChecksum,p_text_fragments:input.textFragments,p_presentations:input.presentations,p_contract_key:input.contractKey});
+ await expect(fixture({data:null,error:{code:'PGRST202',message:'missing function'}}).store.recordCoveredMaterialDelivery(input)).rejects.toThrow('missing function');
+});
