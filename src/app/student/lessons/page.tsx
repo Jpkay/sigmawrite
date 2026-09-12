@@ -1,3 +1,4 @@
+import {LESSONS_COPY as copy} from "@/lib/diagnostic/granular/lessons-copy";
 import {journalStudentPayload} from "@/lib/diagnostic/granular/server-delivery-journal";
 import {LearningUpgradeButton} from "@/components/diagnostic/learning-upgrade-button";
 import Link from "next/link";
@@ -36,19 +37,19 @@ export default async function StudentLessonsPage() {
       button: step.status === "in_progress" ? "Continuer la leçon" : "Commencer la leçon",
     }));
   const optional = view?.optionalLearningActivities ?? [];
-  await journalStudentPayload(studentId, "student:lessons", {available, optional});
+  await journalStudentPayload(studentId, "student:lessons", {available, optional, copy});
   return <>
     <PageHeader boundary="student:lessons-header" title="Mes leçons" description="Voici les prochaines étapes de ton parcours, à partir de tes réponses au diagnostic. Choisis une leçon pour commencer." />
     <div className="mb-6 flex flex-wrap gap-3">
-      <Link href="/student/diagnostic" className={buttonVariants({variant:"outline"})}>Voir mes résultats</Link>
-      {session.authUserId === "921b350e-61dc-4f0d-a8b7-a2717e94f902" && <Link href="/student/diagnostic/demo-review" className={buttonVariants({variant:"outline"})}>Revoir mes réponses au diagnostic</Link>}
+      <Link href="/student/diagnostic" className={buttonVariants({variant:"outline"})}>{copy.results}</Link>
+      {session.authUserId === "921b350e-61dc-4f0d-a8b7-a2717e94f902" && <Link href="/student/diagnostic/demo-review" className={buttonVariants({variant:"outline"})}>{copy.review}</Link>}
     </div>
     {canUpgrade && <LearningUpgradeButton />}
-    {optional.length > 0 && <section className="mb-8"><h2 className="text-xl font-semibold">Tu peux aussi découvrir ces leçons</h2><p className="mb-4 mt-2 text-muted-foreground">Ces points restent à vérifier. Tu peux commencer à apprendre et nous préciserons tes acquis ensuite.</p><div className="grid gap-4 md:grid-cols-2">{optional.map(lesson => <article key={lesson.activityId} className="rounded-lg border bg-card p-6"><h3 className="mb-4 text-lg font-semibold">{lesson.titleFr}</h3><Link href={lesson.href} className={buttonVariants()}>Ouvrir cette leçon <ArrowRight /></Link></article>)}</div></section>}
+    {optional.length > 0 && <section className="mb-8"><h2 className="text-xl font-semibold">{copy.optionalTitle}</h2><p className="mb-4 mt-2 text-muted-foreground">{copy.optionalHelp}</p><div className="grid gap-4 md:grid-cols-2">{optional.map(lesson => <article key={lesson.activityId} className="rounded-lg border bg-card p-6"><h3 className="mb-4 text-lg font-semibold">{lesson.titleFr}</h3><Link href={lesson.href} className={buttonVariants()}>{copy.open} <ArrowRight /></Link></article>)}</div></section>}
     {available.length ? <div className="grid gap-4 md:grid-cols-2">{available.map(step => <article key={step.id} className="rounded-lg border bg-card p-6">
       <h2 className="text-xl font-semibold">{step.label}</h2>
       <p className="mb-5 mt-2 text-sm text-muted-foreground">{step.description}</p>
       <Link href={step.href} className={buttonVariants()}>{step.button} <ArrowRight /></Link>
-    </article>)}</div> : optional.length ? null : <p>Les prochaines leçons de ton parcours ne sont pas encore disponibles. Tu peux consulter tes résultats en attendant.</p>}
+    </article>)}</div> : optional.length ? null : <p>{copy.unavailable}</p>}
   </>;
 }

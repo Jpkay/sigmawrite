@@ -51,7 +51,8 @@ it('resolves a retained answer using its original session after a learning upgra
 it('journals corrections and actual answers before returning the review and fails closed on journal failure',async()=>{
  const f=fixture(),journal=vi.fn(async()=>{});f.store.recordDeliveredText=journal;
  const result=await loadDiagnosticAnswerReview(f.store,'owner',id);
- expect(journal).toHaveBeenCalledWith(expect.objectContaining({boundary:'granular:answer-review',studentId:'owner',textFragments:expect.arrayContaining([result.rows[0].promptFr,result.rows[0].expectedAnswer])}));
+ expect(result).not.toHaveProperty('displayText');
+ expect(journal).toHaveBeenCalledWith(expect.objectContaining({boundary:'granular:answer-review',studentId:'owner',textFragments:expect.arrayContaining([result.rows[0].promptFr,result.rows[0].expectedAnswer,'Tes réponses au diagnostic','Question 1 · Réponse à revoir','1 questions · 1 réponse(s) incorrecte(s). Ce détail ne remplace pas ton bilan par compétence.'])}));
  journal.mockRejectedValueOnce(Error('journal unavailable'));
  await expect(loadDiagnosticAnswerReview(f.store,'owner',id)).rejects.toThrow('journal unavailable');
 });

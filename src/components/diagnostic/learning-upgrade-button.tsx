@@ -1,3 +1,4 @@
+import {LESSONS_COPY as copy} from "@/lib/diagnostic/granular/lessons-copy";
 import {redirect} from "next/navigation";
 import {upgradeGranularLearning} from "@/lib/actions/granular-learning-upgrade";
 import {buttonVariants} from "@/components/ui/button";
@@ -9,7 +10,7 @@ export function LearningUpgradeButton(){
   await upgradeGranularLearning();
   redirect("/student/lessons");
  }}>
-  <p className="mb-3">De nouvelles activités sont disponibles pour ton parcours. Tes réponses et tes progrès seront conservés.</p>
-  <button type="submit" className={buttonVariants()}>Ajouter les nouvelles activités</button>
+  <p className="mb-3">{copy.upgradeHelp}</p>
+  <button type="submit" className={buttonVariants()}>{copy.upgrade}</button>
  </form>;
 }

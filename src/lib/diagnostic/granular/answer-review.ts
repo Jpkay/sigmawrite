@@ -1,3 +1,4 @@
+import {answerReviewDisplayText} from "./answer-review-copy";
 import {journalMaterialDelivery} from "./delivery-journal";
 import {stableUuid} from "@/lib/lexicon/baseline";
 import {checksum} from "@/lib/taxonomy/validate";
@@ -42,7 +43,7 @@ export async function loadDiagnosticAnswerReview(store:MaterialDeliveryStore,stu
    presentationId:stableUuid("granular-answer-review-v1",`${id}:${sourceChecksum}`)});
  }
  const result={sessionId:id,rows};
- await journalMaterialDelivery(store,studentId,"granular:answer-review",result);
+ await journalMaterialDelivery(store,studentId,"granular:answer-review",{...result,displayText:answerReviewDisplayText(rows)});
  return result;
 }
 export type DiagnosticAnswerReview=Awaited<ReturnType<typeof loadDiagnosticAnswerReview>>;
