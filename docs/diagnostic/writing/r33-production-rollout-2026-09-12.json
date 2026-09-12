@@ -1,0 +1,138 @@
+{
+  "status": "promoted_and_publicly_verified",
+  "publicUrl": "https://app.trouvetaplume.com",
+  "deploymentId": "dpl_FfFgp9bMYUBDdM2RxxQ2Wq9hst4G",
+  "deploymentUrl": "https://sigmawrite-283rr5o04-jpkays-projects.vercel.app",
+  "sourceCommit": "975f3d345c287b7b958e1a7f332bfbff35499adb",
+  "releaseId": "8109ed53-2172-4c84-9116-970d1ae6751f",
+  "releaseKey": "french-granular-diagnostic-v33-writing",
+  "bundleChecksum": "sha256:010442566f83ad38afb5858229e3a1fa4c93ece7d9da14e794ab7fbe398a2ebc",
+  "bankReleaseId": "209ad8b5-ea7e-4aba-8ef3-dd083a007bcb",
+  "bankRevision": 33,
+  "verifiedBankItems": 7554,
+  "servedCoverage": {
+    "graphTargets": 542,
+    "assessmentTargets": 327,
+    "teachingTargets": 327,
+    "questions": 6168,
+    "missingInstructionTargets": 0
+  },
+  "writingEvaluationEnabled": true,
+  "writingModel": "z-ai/glm-5.2",
+  "productionProjectSettingsUpdated": true,
+  "candidateBrowser": {
+    "candidate": "https://sigmawrite-283rr5o04-jpkays-projects.vercel.app",
+    "releaseId": "8109ed53-2172-4c84-9116-970d1ae6751f",
+    "syntheticStartingState": true,
+    "noDiagnosticScoresSeeded": true,
+    "authenticatedProviderSubmissions": true,
+    "results": [
+      {
+        "itemId": "v3-connected-writing:imperfect-holidays",
+        "observed": "correct",
+        "feedback": {
+          "assessed": true,
+          "skillLabelFr": "Employer le imparfait en contexte",
+          "text": "Chaque été, Lina jouait dans le jardin. Elle retrouvait ses amis et ils construisaient une cabane.",
+          "checkedCount": 3,
+          "correctCount": 3,
+          "passages": [
+            {
+              "start": 17,
+              "end": 23,
+              "text": "jouait",
+              "correct": true,
+              "explanationFr": "« jouait » est l'imparfait 3e personne du singulier de « jouer », employé correctement pour décrire une habitude passée."
+            },
+            {
+              "start": 45,
+              "end": 55,
+              "text": "retrouvait",
+              "correct": true,
+              "explanationFr": "« retrouvait » est l'imparfait 3e personne du singulier de « retrouver », employé correctement pour une action habituelle passée."
+            },
+            {
+              "start": 72,
+              "end": 86,
+              "text": "construisaient",
+              "correct": true,
+              "explanationFr": "« construisaient » est l'imparfait 3e personne du pluriel de « construire », employé correctement pour une habitude passée."
+            }
+          ]
+        },
+        "reloadPreserved": true,
+        "sessionId": "8cb16e07-c20d-4e27-b2d6-ff47bb73d192"
+      },
+      {
+        "itemId": "v3-connected-writing:imperfect-place",
+        "observed": "incorrect",
+        "feedback": {
+          "assessed": true,
+          "skillLabelFr": "Employer le imparfait en contexte",
+          "text": "Autrefois, le village étais calme. Ses habitants vivait près de la rivière. La place accueillais le marché chaque matin.",
+          "checkedCount": 3,
+          "correctCount": 0,
+          "passages": [
+            {
+              "start": 22,
+              "end": 27,
+              "text": "étais",
+              "correct": false,
+              "explanationFr": "Tentative d'imparfait pour « le village » (3e personne du singulier), mais la forme « étais » est incorrecte (devrait être « était »)."
+            },
+            {
+              "start": 49,
+              "end": 55,
+              "text": "vivait",
+              "correct": false,
+              "explanationFr": "Tentative d'imparfait pour « Ses habitants » (3e personne du pluriel), mais la forme « vivait » est incorrecte (devrait être « vivaient »)."
+            },
+            {
+              "start": 85,
+              "end": 96,
+              "text": "accueillais",
+              "correct": false,
+              "explanationFr": "Tentative d'imparfait pour « La place » (3e personne du singulier), mais la forme « accueillais » est incorrecte (devrait être « accueillait »)."
+            }
+          ]
+        },
+        "reloadPreserved": true,
+        "sessionId": "8cb16e07-c20d-4e27-b2d6-ff47bb73d192"
+      },
+      {
+        "itemId": "v3-connected-writing:imperfect-before-event",
+        "observed": "unresolved",
+        "feedback": {
+          "assessed": false,
+          "skillLabelFr": "Employer le imparfait en contexte",
+          "text": "Le concert a commencé à vingt heures. Le public a applaudi et les musiciens ont salué la salle.",
+          "checkedCount": 0,
+          "correctCount": 0,
+          "passages": []
+        },
+        "reloadPreserved": true,
+        "sessionId": "8cb16e07-c20d-4e27-b2d6-ff47bb73d192"
+      }
+    ]
+  },
+  "publicVerification": {
+    "publicUrl": "https://app.trouvetaplume.com",
+    "writingFeedbackRetained": true,
+    "lessonOrCheckLinks": 5,
+    "pageErrors": [],
+    "syntheticQaAccount": true
+  },
+  "demoVerification": {
+    "lessons": 11,
+    "firstLessonOpened": true,
+    "reviewAnswers": 48,
+    "incorrectAnswers": 17,
+    "onboardingRedirectsToLessons": true
+  },
+  "limitations": [
+    "Writing browser checks used a declared synthetic starting state without diagnostic scores; they do not prove natural diagnostic-to-writing routing.",
+    "Full graph coverage remains incomplete: 327 of 542 evidence targets served.",
+    "Human content review and classroom calibration remain ongoing.",
+    "Complete material-history coverage remains disabled; these checks do not establish novelty histories."
+  ]
+}
