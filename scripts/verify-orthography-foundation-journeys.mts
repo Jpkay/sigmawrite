@@ -14,7 +14,7 @@ const read=(p:string)=>JSON.parse(readFileSync(p,'utf8'));
 const candidate=read('docs/diagnostic/v3-scoped-review-candidate.json');
 const bundle:AssessmentBundle={assessment:candidate.assessment,bank:read('generated/diagnostic-bank-v3-consolidated-draft.json'),taxonomyId:'fixture',bankId:'fixture',teachingContent:candidate.teachingContent,activities:candidate.activities.map((a:object)=>({...a,status:'published'}))};
 const revision35=process.argv.includes('--revision-35-additions');
-const revision35Ids=new Set(['dire','prendre'].map(verb=>'french-v3-teaching:passe-simple:verb:'+verb));
+const revision35Ids=new Set(['dire','prendre','voir','venir'].map(verb=>'french-v3-teaching:passe-simple:verb:'+verb));
 const revision34=process.argv.includes('--revision-34-additions');
 const revision34Ids=new Set(['french-v3-teaching:passe-recent:production:verb:pouvoir','french-v3-teaching:imperatif-present:verb:savoir','french-v3-teaching:imperatif-present:verb:vouloir',...['être','avoir','aller','faire'].map(verb=>'french-v3-teaching:passe-simple:verb:'+verb)]);
 const passeSimpleFamilies=process.argv.includes('--passe-simple-families');
@@ -27,7 +27,7 @@ const subjunctiveOnly=process.argv.includes('--subjonctif');
 const subjunctiveFamilies=process.argv.includes('--subjonctif-families');
 if([revision35,revision34,passeSimpleFamilies,imperativeVerbs,imperativeFamilies,complexNegationOnly,mainIdeaOnly,completiveOnly,subjunctiveOnly,subjunctiveFamilies].filter(Boolean).length>1)throw Error('Select one content family');
 const lessons=bundle.teachingContent!.filter(l=>revision35?revision35Ids.has(l.id):revision34?revision34Ids.has(l.id):passeSimpleFamilies?(l.id.startsWith('french-v3-teaching:passe-simple:pattern:')||l.id.startsWith('french-v3-teaching:past-foundation:')):imperativeVerbs?l.id.startsWith('french-v3-teaching:imperatif-present:verb:'):imperativeFamilies?(l.id.startsWith('french-v3-teaching:imperatif-present:pattern:')||l.id==='french-v3-teaching:imperatif:recognition'):complexNegationOnly?l.id==='french-v3-teaching:complex-negation:recognition':mainIdeaOnly?l.nodeKey==='identifier_idee_phrase':subjunctiveFamilies?l.id.startsWith('french-v3-teaching:subjonctif-present:pattern:'):subjunctiveOnly?(l.nodeKey==='reconnaitre_subjonctif_present'||(l.nodeKey==='produire_subjonctif_present_frequent'&&l.facetKey?.includes('::verb:'))):completiveOnly?l.id==='french-v3-teaching:completive:production':['segmenter_syllabes_ecrites','associer_phoneme_graphie_frequente','employer_cedille'].includes(l.nodeKey));
-if(lessons.length!==(revision35?2:revision34?7:passeSimpleFamilies?6:imperativeVerbs?12:imperativeFamilies?5:complexNegationOnly?1:mainIdeaOnly?3:subjunctiveFamilies?4:subjunctiveOnly?15:completiveOnly?1:6))throw Error('Unexpected number of selected lessons');
+if(lessons.length!==(revision35?4:revision34?7:passeSimpleFamilies?6:imperativeVerbs?12:imperativeFamilies?5:complexNegationOnly?1:mainIdeaOnly?3:subjunctiveFamilies?4:subjunctiveOnly?15:completiveOnly?1:6))throw Error('Unexpected number of selected lessons');
 const reports=[];
 for(const lesson of lessons){
  const skill=bundle.assessment.skills.find(s=>s.nodeKey===lesson.nodeKey&&s.facetKey===lesson.facetKey&&s.modes.includes(lesson.mode))!;

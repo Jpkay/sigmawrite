@@ -1,12 +1,12 @@
 {
   "status": "prepared_inventory_not_release_or_review_approval",
-  "parallelCandidateChecksum": "sha256:3568080369764735a9246290f4443f5bd678e8ee236fedc9a75b4c8c80e26abb",
-  "scopedCandidateChecksum": "sha256:39c7af9eebc2775176b6893464aa319092189c72d8fef99358e858b5722c7109",
+  "parallelCandidateChecksum": "sha256:e4c7c7ced8c909e51fd879c2bf94a4ca10afd66aa201f058bfe26562b9337988",
+  "scopedCandidateChecksum": "sha256:c2b83220139f85b8e2b4473404bc28079e50243d5618c560b33254098e6a3541",
   "targets": 542,
   "counts": {
-    "prepared_scoped_pathway": 336,
+    "prepared_scoped_pathway": 338,
     "complete_question_pools": 187,
-    "author_exact_target_lesson": 12,
+    "author_exact_target_lesson": 10,
     "resolve_prerequisite_scope": 2,
     "connected_writing_evidence": 5
   },
@@ -2457,10 +2457,8 @@
       "lessonIds": [],
       "freshCheckAvailable": false,
       "prerequisitesOutsidePreparedScope": [
-        "produire_passe_simple::writing-controlled-production::verb:venir",
         "produire_passe_simple::writing-controlled-production::verb:partir",
         "produire_passe_simple::writing-controlled-production::verb:sortir",
-        "produire_passe_simple::writing-controlled-production::verb:voir",
         "produire_passe_simple::writing-controlled-production::verb:pouvoir",
         "produire_passe_simple::writing-controlled-production::verb:vouloir",
         "produire_passe_simple::writing-controlled-production::verb:savoir",
@@ -10485,18 +10483,20 @@
       "skillId": "produire_passe_simple::writing-controlled-production::verb:venir",
       "nodeKey": "produire_passe_simple",
       "facetKey": "produire_passe_simple::verb:venir",
-      "action": "author_exact_target_lesson",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_passe_simple::writing-controlled-production::verb:venir",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 4,
-          "learningItems": 4
+          "initialItems": 6,
+          "learningItems": 6
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:passe-simple:verb:venir"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
@@ -10559,18 +10559,20 @@
       "skillId": "produire_passe_simple::writing-controlled-production::verb:voir",
       "nodeKey": "produire_passe_simple",
       "facetKey": "produire_passe_simple::verb:voir",
-      "action": "author_exact_target_lesson",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_passe_simple::writing-controlled-production::verb:voir",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 4,
-          "learningItems": 4
+          "initialItems": 6,
+          "learningItems": 6
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:passe-simple:verb:voir"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
