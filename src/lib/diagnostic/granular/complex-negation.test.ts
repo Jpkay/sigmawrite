@@ -8,9 +8,9 @@ import type {CanonicalDiagnosticBankItem} from '../item-bank';
 
 it('covers each meaning separately with fresh sentences and explicit counterexamples',()=>{
  const artifact=JSON.parse(readFileSync('generated/french-v3-complex-negation-expansion.json','utf8'));
- expect(artifact.items).toHaveLength(36);
+ expect(artifact.items).toHaveLength(46);
  const keys=new Set<string>();
- for(const feature of ['plus','jamais','rien','personne','guere'] as const)expect(COMPLEX_NEGATION_DRAFTS.filter(d=>d.feature===feature)).toHaveLength(6);
+ for(const feature of ['plus','jamais','rien','personne','guere'] as const)expect(COMPLEX_NEGATION_DRAFTS.filter(d=>d.feature===feature)).toHaveLength(8);
  expect(COMPLEX_NEGATION_DRAFTS.filter(d=>d.negativeExample)).toHaveLength(6);
  for(const entry of artifact.items as CanonicalDiagnosticBankItem[]){
   expect(entry.reviewStatus).toBe('needs_human_review');expect(entry.evidenceKey).toBe('reading-analysis');

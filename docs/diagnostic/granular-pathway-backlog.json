@@ -1,11 +1,11 @@
 {
   "status": "prepared_inventory_not_release_or_review_approval",
-  "parallelCandidateChecksum": "sha256:c53bbf9b8adf6ec1d816d0285fdb0c21389e532ccccd095d6f5c38cfaca5a341",
-  "scopedCandidateChecksum": "sha256:f4fd4d2b31da1e7e85b51e9b2a487b5624d6eb846c150c71c81237a3d67c0570",
+  "parallelCandidateChecksum": "sha256:add61f118c2b9b06ca51887939c6ef1e2bea5caaf222972ec3467a78f6a98251",
+  "scopedCandidateChecksum": "sha256:f6de3b32860818a23e25cc8d77539b82277f35279d4b89b4d777bcc29aa5e681",
   "targets": 542,
   "counts": {
-    "prepared_scoped_pathway": 260,
-    "complete_question_pools": 225,
+    "prepared_scoped_pathway": 261,
+    "complete_question_pools": 224,
     "author_exact_target_lesson": 39,
     "connected_writing_evidence": 18
   },
@@ -7134,18 +7134,20 @@
       "skillId": "construction_negation_complexe::reading-analysis",
       "nodeKey": "construction_negation_complexe",
       "facetKey": null,
-      "action": "complete_question_pools",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "construction_negation_complexe::reading-analysis",
           "mode": "recognition",
-          "status": "insufficient_coverage",
-          "initialItems": 1,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 23,
+          "learningItems": 23
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:complex-negation:recognition"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
@@ -7183,7 +7185,6 @@
       "lessonIds": [],
       "freshCheckAvailable": false,
       "prerequisitesOutsidePreparedScope": [
-        "construction_negation_complexe::reading-analysis",
         "construction_negation_complexe::writing-controlled-production"
       ]
     },
@@ -7204,7 +7205,6 @@
       "lessonIds": [],
       "freshCheckAvailable": false,
       "prerequisitesOutsidePreparedScope": [
-        "construction_negation_complexe::reading-analysis",
         "construction_negation_complexe::writing-controlled-production"
       ]
     },

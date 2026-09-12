@@ -13918,7 +13918,34 @@
             "negativeExamplesRequired": true,
             "novelWordsRequired": false,
             "novelSentencesRequired": false,
-            "unaidedRequired": false
+            "unaidedRequired": false,
+            "featureRequirements": [
+              {
+                "feature": "complex-negation:plus",
+                "minimumItems": 4,
+                "minimumContexts": 4
+              },
+              {
+                "feature": "complex-negation:jamais",
+                "minimumItems": 4,
+                "minimumContexts": 4
+              },
+              {
+                "feature": "complex-negation:rien",
+                "minimumItems": 4,
+                "minimumContexts": 4
+              },
+              {
+                "feature": "complex-negation:personne",
+                "minimumItems": 4,
+                "minimumContexts": 4
+              },
+              {
+                "feature": "complex-negation:guere",
+                "minimumItems": 4,
+                "minimumContexts": 4
+              }
+            ]
           }
         }
       },
@@ -21371,6 +21398,1000 @@
         "negativeExampleAssessed": false,
         "textType": "narrative",
         "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-complex-negation:plus:1",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:plus:1",
+        "evidenceFeatures": [
+          "complex-negation:plus"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:d3d3de09fdc32555934d87cd30611f8970a5c8f0e23fbdb1898452b47a8b7583"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:d3d3de09fdc32555934d87cd30611f8970a5c8f0e23fbdb1898452b47a8b7583"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-complex-negation:plus:2",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:plus:2",
+        "evidenceFeatures": [
+          "complex-negation:plus"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:fc0402032073a67f7106f86c00dc30536b9c56f07ff3d8d2acd3228f62030315"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:fc0402032073a67f7106f86c00dc30536b9c56f07ff3d8d2acd3228f62030315"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-complex-negation:plus:3",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:plus:3",
+        "evidenceFeatures": [
+          "complex-negation:plus"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:cc4da3c58b0934fa0f9ff4c9bd80f3d0b1ba10e29f22994d1955ab19ce63a6f8"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:cc4da3c58b0934fa0f9ff4c9bd80f3d0b1ba10e29f22994d1955ab19ce63a6f8"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-complex-negation:plus:4",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:plus:4",
+        "evidenceFeatures": [
+          "complex-negation:plus"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:b462a5ffdd89731f1d6d9303a756ba25e81e0fe14481e41b399602d3079af984"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:b462a5ffdd89731f1d6d9303a756ba25e81e0fe14481e41b399602d3079af984"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-complex-negation:plus:5",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:plus:5",
+        "evidenceFeatures": [
+          "complex-negation:plus"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:91c69da4245e7f147b235c83724bfc9dbe813d3dc8bbb64d170997027316a90a"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:91c69da4245e7f147b235c83724bfc9dbe813d3dc8bbb64d170997027316a90a"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-complex-negation:plus:6",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:plus:6",
+        "evidenceFeatures": [
+          "complex-negation:plus"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:4ff03ff3b7d1b913b89c615fbf7d15e5148fc7f7cea77429860c2fbee0d3bc5f"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:4ff03ff3b7d1b913b89c615fbf7d15e5148fc7f7cea77429860c2fbee0d3bc5f"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-complex-negation:plus:7",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:plus:7",
+        "evidenceFeatures": [
+          "complex-negation:plus"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:69465957fb53c873cccff8efe49918e41f399949eb3c4056c3f39bcf259d78df"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:69465957fb53c873cccff8efe49918e41f399949eb3c4056c3f39bcf259d78df"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-complex-negation:plus:8",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:plus:8",
+        "evidenceFeatures": [
+          "complex-negation:plus"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:ed005b06e997e990de5bc00083c0d5435064dae15111539660c72bfb63695485"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:ed005b06e997e990de5bc00083c0d5435064dae15111539660c72bfb63695485"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-complex-negation:jamais:1",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:jamais:1",
+        "evidenceFeatures": [
+          "complex-negation:jamais"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:bdcabeeb3580d7e56e5004d061bf1cf72401fd4f4f03d03e5783a6e293e4ac21"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:bdcabeeb3580d7e56e5004d061bf1cf72401fd4f4f03d03e5783a6e293e4ac21"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-complex-negation:jamais:2",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:jamais:2",
+        "evidenceFeatures": [
+          "complex-negation:jamais"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:74090ea8f4eebef1a80687d8eae5645ed621509dbcc4f5f4698bbc0826fd30cd"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:74090ea8f4eebef1a80687d8eae5645ed621509dbcc4f5f4698bbc0826fd30cd"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-complex-negation:jamais:3",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:jamais:3",
+        "evidenceFeatures": [
+          "complex-negation:jamais"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:54d339b781d6873e6765d48c4e4b735bb0edc97353dee63b37549c033850e2c4"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:54d339b781d6873e6765d48c4e4b735bb0edc97353dee63b37549c033850e2c4"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-complex-negation:jamais:4",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:jamais:4",
+        "evidenceFeatures": [
+          "complex-negation:jamais"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:d4a4f99061401ff9342ba2fb1d0a5977ef762889c64938a93964b8363577774f"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:d4a4f99061401ff9342ba2fb1d0a5977ef762889c64938a93964b8363577774f"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-complex-negation:jamais:5",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:jamais:5",
+        "evidenceFeatures": [
+          "complex-negation:jamais"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:6b55d65239c3f18666b07d9827ba888547a294a2e2091d3fe7961e9be5b9c3cd"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:6b55d65239c3f18666b07d9827ba888547a294a2e2091d3fe7961e9be5b9c3cd"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-complex-negation:jamais:6",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:jamais:6",
+        "evidenceFeatures": [
+          "complex-negation:jamais"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:19e2eca46c2ca4187f3ad4cd5320531be5da62a7a6e9113e8aab443fecd80fe7"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:19e2eca46c2ca4187f3ad4cd5320531be5da62a7a6e9113e8aab443fecd80fe7"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-complex-negation:jamais:7",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:jamais:7",
+        "evidenceFeatures": [
+          "complex-negation:jamais"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:3a9b4cf03aaa49c57a0372591e9d8350d1623a1e7e6767d4bc4ecd9175da75f1"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:3a9b4cf03aaa49c57a0372591e9d8350d1623a1e7e6767d4bc4ecd9175da75f1"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-complex-negation:jamais:8",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:jamais:8",
+        "evidenceFeatures": [
+          "complex-negation:jamais"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:0a02300135a3fb53617b35ba8faf97b9a4145cdd945a965af8b2f571d2ad81dd"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:0a02300135a3fb53617b35ba8faf97b9a4145cdd945a965af8b2f571d2ad81dd"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-complex-negation:rien:1",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:rien:1",
+        "evidenceFeatures": [
+          "complex-negation:rien"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:0045533c91d43a20d2f3750c1716b3cf8159551fb81f327effdb2fdd193a13e4"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:0045533c91d43a20d2f3750c1716b3cf8159551fb81f327effdb2fdd193a13e4"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-complex-negation:rien:2",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:rien:2",
+        "evidenceFeatures": [
+          "complex-negation:rien"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:9ed5d035d00b649e0d5644d804e13726c662c24cb654505c958d756e716b1c62"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:9ed5d035d00b649e0d5644d804e13726c662c24cb654505c958d756e716b1c62"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-complex-negation:rien:3",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:rien:3",
+        "evidenceFeatures": [
+          "complex-negation:rien"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:c337ce2858f93f937ea4376ca0187ae675f2515bcd5fe33cc70971629776c0ad"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:c337ce2858f93f937ea4376ca0187ae675f2515bcd5fe33cc70971629776c0ad"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-complex-negation:rien:4",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:rien:4",
+        "evidenceFeatures": [
+          "complex-negation:rien"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:f861441ccf55de724665843ffb58532d485beb6b8747a8d140a2c8871f4faac0"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:f861441ccf55de724665843ffb58532d485beb6b8747a8d140a2c8871f4faac0"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-complex-negation:rien:5",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:rien:5",
+        "evidenceFeatures": [
+          "complex-negation:rien"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:03e980c49d0ad028e2c4fb52afa211a064b9334fe1b75ba5a49d2454ee595628"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:03e980c49d0ad028e2c4fb52afa211a064b9334fe1b75ba5a49d2454ee595628"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-complex-negation:rien:6",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:rien:6",
+        "evidenceFeatures": [
+          "complex-negation:rien"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:c8e603e04c680f0d7e102847b6f54dc8c28a3d7d67ddfd3bd0df228ded4a4218"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:c8e603e04c680f0d7e102847b6f54dc8c28a3d7d67ddfd3bd0df228ded4a4218"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-complex-negation:rien:7",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:rien:7",
+        "evidenceFeatures": [
+          "complex-negation:rien"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:e6cdad0ad4fed05173817a474b4b48e47ea9fbad8f285e1af8ef7464afd224b4"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:e6cdad0ad4fed05173817a474b4b48e47ea9fbad8f285e1af8ef7464afd224b4"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-complex-negation:rien:8",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:rien:8",
+        "evidenceFeatures": [
+          "complex-negation:rien"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:6deafbea7328883d78c4f9daabed71cb93968d8c68adca851c4eca23e29a6ec0"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:6deafbea7328883d78c4f9daabed71cb93968d8c68adca851c4eca23e29a6ec0"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-complex-negation:personne:1",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:personne:1",
+        "evidenceFeatures": [
+          "complex-negation:personne"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:8f47661a253a05a662c1964d56150daef11b2e9cf095b4f3c437e2b3b84f1bdf"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:8f47661a253a05a662c1964d56150daef11b2e9cf095b4f3c437e2b3b84f1bdf"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-complex-negation:personne:2",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:personne:2",
+        "evidenceFeatures": [
+          "complex-negation:personne"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:249ba6849fe163273e0df0eb9c6d3edb869bd364314b22c0b56b7c2d8fc49032"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:249ba6849fe163273e0df0eb9c6d3edb869bd364314b22c0b56b7c2d8fc49032"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-complex-negation:personne:3",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:personne:3",
+        "evidenceFeatures": [
+          "complex-negation:personne"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:f118cb271cdbfcd1825d682095e6b0cb5ea90f67afb4211b4ce42c1150863bb5"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:f118cb271cdbfcd1825d682095e6b0cb5ea90f67afb4211b4ce42c1150863bb5"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-complex-negation:personne:4",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:personne:4",
+        "evidenceFeatures": [
+          "complex-negation:personne"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:1b81d75189c59f8e8af7b928d0b3d32b65a9d13582ee44eb78e282465ff3e0a5"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:1b81d75189c59f8e8af7b928d0b3d32b65a9d13582ee44eb78e282465ff3e0a5"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-complex-negation:personne:5",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:personne:5",
+        "evidenceFeatures": [
+          "complex-negation:personne"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:5d1129fe4b0d49e1fcac1f712408258dd805c84596ceb679b7e00ddf56535fc5"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:5d1129fe4b0d49e1fcac1f712408258dd805c84596ceb679b7e00ddf56535fc5"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-complex-negation:personne:6",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:personne:6",
+        "evidenceFeatures": [
+          "complex-negation:personne"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:de6dc757fafd59f32fad4855ce7c0e696be3c4ccc06c8728849033a9d68611af"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:de6dc757fafd59f32fad4855ce7c0e696be3c4ccc06c8728849033a9d68611af"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-complex-negation:personne:7",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:personne:7",
+        "evidenceFeatures": [
+          "complex-negation:personne"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:a7d5e3a6d1508e29a856c124a63a10aedbc140291440613b7bfac253d00865e1"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:a7d5e3a6d1508e29a856c124a63a10aedbc140291440613b7bfac253d00865e1"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-complex-negation:personne:8",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:personne:8",
+        "evidenceFeatures": [
+          "complex-negation:personne"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:e0104e58d4cc0f7536a7b6d096268b99f038f674c6ca32b1d6512dd2e766106c"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:e0104e58d4cc0f7536a7b6d096268b99f038f674c6ca32b1d6512dd2e766106c"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-complex-negation:guere:1",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:guere:1",
+        "evidenceFeatures": [
+          "complex-negation:guere"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:0159e9eed67dda71da295b4a77cbd25fe6352ff42743f0c99c6213d49bf2fac2"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:0159e9eed67dda71da295b4a77cbd25fe6352ff42743f0c99c6213d49bf2fac2"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-complex-negation:guere:2",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:guere:2",
+        "evidenceFeatures": [
+          "complex-negation:guere"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:9a201af408f75def98126f9c7a13aa4324a54b12eed81967f40219d1d4a5c7bc"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:9a201af408f75def98126f9c7a13aa4324a54b12eed81967f40219d1d4a5c7bc"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-complex-negation:guere:3",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:guere:3",
+        "evidenceFeatures": [
+          "complex-negation:guere"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:67247e6a8e4e32c5111ef068b7fa6a4071c4248e0493a2aeda30b8772908f035"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:67247e6a8e4e32c5111ef068b7fa6a4071c4248e0493a2aeda30b8772908f035"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-complex-negation:guere:4",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:guere:4",
+        "evidenceFeatures": [
+          "complex-negation:guere"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:eff0c6e3f2791fec2630b1a801e36247d30c0206e1402c8c60532b44b517415a"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:eff0c6e3f2791fec2630b1a801e36247d30c0206e1402c8c60532b44b517415a"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-complex-negation:guere:5",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:guere:5",
+        "evidenceFeatures": [
+          "complex-negation:guere"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:65e2f4a3d6d9d86c867b8752f8ac3de0c65a223d59b23b0741e5146ad591c702"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:65e2f4a3d6d9d86c867b8752f8ac3de0c65a223d59b23b0741e5146ad591c702"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-complex-negation:guere:6",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:guere:6",
+        "evidenceFeatures": [
+          "complex-negation:guere"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:9814fb8940b175eac6698e5088d4bd88b05a7495fb34234c783af1798ae5494d"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:9814fb8940b175eac6698e5088d4bd88b05a7495fb34234c783af1798ae5494d"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-complex-negation:guere:7",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:guere:7",
+        "evidenceFeatures": [
+          "complex-negation:guere"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:672452c295eca17f68bb798f431743fbf1a978acdd7c2d7b9fd04b473b410568"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:672452c295eca17f68bb798f431743fbf1a978acdd7c2d7b9fd04b473b410568"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-complex-negation:guere:8",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:guere:8",
+        "evidenceFeatures": [
+          "complex-negation:guere"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:682bec7fea77e45682bd20b4e398971ef8fcf024191039b2d547f2f0a9bdde4c"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:682bec7fea77e45682bd20b4e398971ef8fcf024191039b2d547f2f0a9bdde4c"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-complex-negation:simple:1",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:simple:1",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:b98e906dd2c498043669d49a4fc18f0fe2bb52a9568c0c487aa527e73e511603"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:b98e906dd2c498043669d49a4fc18f0fe2bb52a9568c0c487aa527e73e511603"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": true,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-complex-negation:simple:2",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:simple:2",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:5ca583f177c9a0a9bf9c309f9a2b6ddb1f478fdbcd0d02d7292b5fa31f0788d9"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:5ca583f177c9a0a9bf9c309f9a2b6ddb1f478fdbcd0d02d7292b5fa31f0788d9"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": true,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-complex-negation:simple:3",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:simple:3",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:0b03ef999b4dead28e07ca726deaa0b2bc2ca08d6cafc5c128dd56341d6638e7"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:0b03ef999b4dead28e07ca726deaa0b2bc2ca08d6cafc5c128dd56341d6638e7"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": true,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-complex-negation:restriction:1",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:restriction:1",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:0620c4f22a94ec2adf48888c0c3ad46446c5bb01d60d2833fa809701dd0c399b"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:0620c4f22a94ec2adf48888c0c3ad46446c5bb01d60d2833fa809701dd0c399b"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": true,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-complex-negation:restriction:2",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:restriction:2",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:94db1bb43f902fc9529c4b0660b786376e77aac0cfcea90627397723f4a4b71c"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:94db1bb43f902fc9529c4b0660b786376e77aac0cfcea90627397723f4a4b71c"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": true,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-complex-negation:restriction:3",
+        "skillId": "construction_negation_complexe::reading-analysis",
+        "mode": "recognition",
+        "contextId": "complex-negation:restriction:3",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:abe166c3aa849487b9e58a45b437e5f6b8a6960b9e6f6a5f238d682893a6fda1"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:abe166c3aa849487b9e58a45b437e5f6b8a6960b9e6f6a5f238d682893a6fda1"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": true,
         "usage": "learning"
       },
       {
@@ -131211,7 +132232,7 @@
       }
     ],
     "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
-    "bankChecksum": "sha256:1f54f1c1f4467c6ff62ce95da793ba2b8bb9945ce8822170628e1b966ee1038c",
+    "bankChecksum": "sha256:8c2184304edcdb484d6adda780bc855666fe4f9e66f681a567e1cbb569cfb40a",
     "unsupportedEvidenceItemKeys": [
       "local-reading-v1:inferer_chronologie_implicite:receptive:foundation",
       "local-reading-v1:inferer_chronologie_implicite:receptive:core",
@@ -131223,6 +132244,7 @@
       "local-reading-v1:distinguer_preuve_connaissance_externe:receptive:stretch",
       "local-conjugation-gap-v1:reconnaitre_subjonctif_present:receptive:stretch",
       "local-conjugation-gap-v1:reconnaitre_subjonctif_present:receptive:foundation",
+      "local-grammar-v1:construction_negation_complexe:receptive:stretch",
       "local-spelling-v1:associer_phoneme_graphie_frequente:controlled_production:foundation",
       "local-spelling-v1:associer_phoneme_graphie_frequente:receptive:core",
       "computed-conjugation-v1:produire_subjonctif_present_frequent:stretch",
@@ -131233,7 +132255,7 @@
       "mode": "parallel_review",
       "authorization": "product-owner-request-2026-09-11",
       "reviewOwner": "product_owner",
-      "bankChecksum": "sha256:1f54f1c1f4467c6ff62ce95da793ba2b8bb9945ce8822170628e1b966ee1038c",
+      "bankChecksum": "sha256:8c2184304edcdb484d6adda780bc855666fe4f9e66f681a567e1cbb569cfb40a",
       "questionChecksums": {
         "review-draft-v1:construction_pronom_relatif:controlled_production:foundation": "sha256:2731933f71f4a1408115b2457d07ee69469fdac2e7a6e57fb69c112e2a0c32dc",
         "review-draft-v1:construction_pronom_relatif:controlled_production:core": "sha256:d8b92f78c30ddfa7d1598405eb512dce2f2b476fdd151dd3a79c9476a729cc56",
@@ -131260,6 +132282,52 @@
         "local-reading-v1:inferer_chronologie_implicite:receptive:core": "sha256:1506b1e15cc6621d9641d32bc5492dedc8722adab2c2817e2d6275c4e3368d04",
         "local-reading-v1:inferer_chronologie_implicite:receptive:stretch": "sha256:7e58f0641d4689f6fc76075593b096545283f8b2420fe4b8993ef8b84c41e3d0",
         "local-reading-v1:comparer_points_de_vue:controlled_production:foundation": "sha256:ae4349e0976e050d52019208e3ff5a7e8d70685ac640242aadca852c6bed8e9d",
+        "v3-complex-negation:plus:1": "sha256:5eb3b63d148e19a714e41853e84684549f28b91ca0d037fee3b961b95171be3d",
+        "v3-complex-negation:plus:2": "sha256:d0ad828a22d409cf96f8481673573c8f4f4a5f55cad79b72af17974a0ebaf35a",
+        "v3-complex-negation:plus:3": "sha256:31ae4e4cfcdb7b10caf9489aeac4e46336c7effb347b24d9354f889ce1dd5c3f",
+        "v3-complex-negation:plus:4": "sha256:b22da5bc898a9251300b6cd327281fe6d64fd711bd6743ed70c18185385c83dd",
+        "v3-complex-negation:plus:5": "sha256:548dbc7a0af11f80d74a9374a0e739b4d970b767700e644e6b8d38d3fc7a703d",
+        "v3-complex-negation:plus:6": "sha256:a1af61219781d20636e792a4711cfc59cfc6f70238c6a06d2890684bf06962b7",
+        "v3-complex-negation:plus:7": "sha256:0a5b81efc62545dfe9035dd13773a3cb46cfb4f01996bf466d811fefafd3b551",
+        "v3-complex-negation:plus:8": "sha256:99d77802165386c2c8a5c712d963fe8531e9e8b91ea76ea462d88bda98ba8543",
+        "v3-complex-negation:jamais:1": "sha256:38d4c5ba66f59ebe15a4c9815d6e6cc4517da08cc736f15b576189534119a778",
+        "v3-complex-negation:jamais:2": "sha256:ec1c8db179ef108483164d0aaa8881aa36b2b19a24d9acc70acf9f99c5dd326d",
+        "v3-complex-negation:jamais:3": "sha256:4c9c5ad7f16da27bbe503852b8e3c56d071bb9454ef8859a1bee1a562cff012e",
+        "v3-complex-negation:jamais:4": "sha256:a04944c4fe46466f2551378fde1794d770a612b7257ffe9d419d467b2fae83c3",
+        "v3-complex-negation:jamais:5": "sha256:f360bdf275f9b0023853588a07fb59a00095e35530c67bfc0a2234a84c3d4b9d",
+        "v3-complex-negation:jamais:6": "sha256:cb0b5a94d04fea4c47991dc2a7f151b0e12ca0bff5ac5ff2e0e9852983740b70",
+        "v3-complex-negation:jamais:7": "sha256:7d34c0e77ef339ec1468619f6493c0587375eb94f333c611440f4c558a682ba5",
+        "v3-complex-negation:jamais:8": "sha256:796f373f8fc5f523f19da9db988a4c88f5aaff80ccc46b8159ee3024cc247dea",
+        "v3-complex-negation:rien:1": "sha256:8e94890051d51e6e9ce3f50531f1cc30ad3a1c65c7a0132e9215b30e9156fdc4",
+        "v3-complex-negation:rien:2": "sha256:b74e75f9f748ec9cf42d3fd95c381191d8e16a416e66bac19e456119cb6c0c49",
+        "v3-complex-negation:rien:3": "sha256:7ba7cdb50d9a7802b3eaa93b25aacbde244e07fa556de4bbfc6d34e2c8e930a2",
+        "v3-complex-negation:rien:4": "sha256:60f92af0e422494c88651b7ab7066d0ad7f5350ef1f5698dbc5d3f8e3b3dd100",
+        "v3-complex-negation:rien:5": "sha256:cc2448b2d928ec88e591bf27a9268144090b11cdc499683028160829b201845b",
+        "v3-complex-negation:rien:6": "sha256:3648d076955aad1fd2526284961e032b60b419aabb3f91b95e7f516921f8f2c6",
+        "v3-complex-negation:rien:7": "sha256:105da337858580b314c588d783fc350faabc34108bb2b8deab4a3bfb562f6fc9",
+        "v3-complex-negation:rien:8": "sha256:04d284aa754f008e4bac89ce820a0d5d8fbfc92cbb29365654ade94a28db0c55",
+        "v3-complex-negation:personne:1": "sha256:644325e981136785234fccf225aa0798ac052b3c617aafdd2693c78d124e8c91",
+        "v3-complex-negation:personne:2": "sha256:bf720e375abf7741ae0b73d5dc9bf34ed9f6214722310b347bfb3a4a1be54ca1",
+        "v3-complex-negation:personne:3": "sha256:f65ecfc03755d8c3f149d438e10fc222a19c4d65ef4e3b1c84c68b8a3a744817",
+        "v3-complex-negation:personne:4": "sha256:fb699094d8c3d6e60f8db137ceb8a68ab54e25a53b951f5d26b2da4a0ff5c1b8",
+        "v3-complex-negation:personne:5": "sha256:9e0f541f5a400fa4cf75ed5b8215c6f723c4a1be4d60b02b207499e95938e107",
+        "v3-complex-negation:personne:6": "sha256:32d7504d6689bb01582a5d9b15e4948c68dd6dfb23b785baf0750ad5d73bf10e",
+        "v3-complex-negation:personne:7": "sha256:a0efd96e85a8c7cd81786241f7d7e61584e9fe29486de3569ae9f0673aef1175",
+        "v3-complex-negation:personne:8": "sha256:00e42fd29bd25e91759754e352163f4b7bb3a52e9c72c47cebb191f44876fb08",
+        "v3-complex-negation:guere:1": "sha256:d314551a2cbe29f5a4e17ac455630890846084012940d2c9bee1f9f595bcb788",
+        "v3-complex-negation:guere:2": "sha256:eb2f7708eb3a94d8bb0ebe19fc0fce1b8c2294e3662c372c901a018095cbfff0",
+        "v3-complex-negation:guere:3": "sha256:59915da3714e166400c80b8150913e5ffe52f56504acf94827a30f3635db73fa",
+        "v3-complex-negation:guere:4": "sha256:a16167666ad9640d11cb034333572c95185647da6e2940ef6576883f33622cd4",
+        "v3-complex-negation:guere:5": "sha256:03a49f991ab2c436a6aa7a7e0ffdd9df3bea5d98534401d31b207f7c8a3babcf",
+        "v3-complex-negation:guere:6": "sha256:12d3639c831b3863db84a3cf8bc7ab70ebc43cb8531f65d0a47b13c28177935a",
+        "v3-complex-negation:guere:7": "sha256:eecc663d433a5f524230cb28398c2fa99cfacb81ba2e5bcd5abcd2b2d231384f",
+        "v3-complex-negation:guere:8": "sha256:e0763267e401d7e575512de73464e69a2a9d8542c970f9ca8cf805636e6ae69e",
+        "v3-complex-negation:simple:1": "sha256:df9784577c8c29fa9f29961c567aeb405fadee3844baf991a206d82eae57aac8",
+        "v3-complex-negation:simple:2": "sha256:abd5076885babc7234e933ec3cbee70aca06c5fda8d0154d38958037e548c64d",
+        "v3-complex-negation:simple:3": "sha256:55ae908fa737b6cb594e400b169033f77afba1d8c61622cceb3f5eae7d3dd9fb",
+        "v3-complex-negation:restriction:1": "sha256:3565140df62dacef335aee735b36c02bc285e09a30ce18423dd141aa75cd313a",
+        "v3-complex-negation:restriction:2": "sha256:5992011a718ec51be95828e8e4e807a9c74c2111a547a1defc39054a62795317",
+        "v3-complex-negation:restriction:3": "sha256:9be4fc48b389e792971eed9e6dc7489c13827010f08e5dfb5892058598e8aba1",
         "v3-sentence-main-idea:narrative:manga": "sha256:09e2d3feda0ea26241b125afb7d34eef0a8c4d87847984380963a98de2a2ee0e",
         "v3-sentence-main-idea:narrative:rain": "sha256:6844b342373daef3774be53cd099f6310d9305fe7704b51cbba5439dc5f1c243",
         "v3-sentence-main-idea:narrative:key": "sha256:35672bfd054f3e8f006bbc44031579952104dabb25dae6809e52ef97a11eb9ec",
@@ -137112,6 +138180,7 @@
         "v3-y-en:en_thing-18": "sha256:1de3bba6c34a338f57ee6b482b6a389ca0b053f6059a6c16d61d4a97fc48e58d"
       },
       "teachingChecksums": {
+        "french-v3-teaching:complex-negation:recognition": "sha256:a7f79bb3542e09945c935294eb6d00ab8546da23408dda9ef3230c6b41adaa4a",
         "french-v3-teaching:sentence-main-idea:narrative": "sha256:031a41aaf2ef1a6cc5113a2a5e974d9099f0be8161d0a5c78bcdff8fab988376",
         "french-v3-teaching:sentence-main-idea:informational": "sha256:c4bdc27ca2451ce0412d92153233c42d1db1e0a8899a67774c60b9e64d76dde6",
         "french-v3-teaching:sentence-main-idea:argumentative": "sha256:b3b222cc502c29bf71116c14a1bf4e66806b4ad123888722e05286414a51ef80",
@@ -137374,8 +138443,8 @@
         "french-v3-teaching:present:verb:devoir": "sha256:f5879379785ae64ca1a26faa2f3047ff546c5a16379c287bae9b941aa1f8d2de"
       }
     },
-    "facetChecksum": "sha256:77cea4a82c5bff0dc38dc484e862b185404a8de7fcc00316752b04af5dc277a0",
-    "poolChecksum": "sha256:bf754832e57502f5cc1a75783a04b6a685d7e358ab0b242758e7165d53bda92d",
+    "facetChecksum": "sha256:4fb180fc42a2a0358f2606e49a285e6c29aabe5a836c7d05071a7fb94ac10dd2",
+    "poolChecksum": "sha256:2fa782de5d72f64e2476266796dd381da2a818126669650994a634fd3dfde045",
     "releaseScope": {
       "version": "french-granular-release-scope-v1",
       "assessmentSkillIds": [
@@ -137402,6 +138471,7 @@
         "construction_accord_sujet_verbe::writing-controlled-production::construction:separated",
         "construction_coordination::reading-analysis",
         "construction_coordination::writing-controlled-production",
+        "construction_negation_complexe::reading-analysis",
         "construction_negation_simple::reading-analysis",
         "construction_negation_simple::writing-controlled-production",
         "construction_phrase_canonique::reading-analysis",
@@ -137664,6 +138734,7 @@
         "construction_accord_sujet_verbe::writing-controlled-production::construction:separated",
         "construction_coordination::reading-analysis",
         "construction_coordination::writing-controlled-production",
+        "construction_negation_complexe::reading-analysis",
         "construction_negation_simple::reading-analysis",
         "construction_negation_simple::writing-controlled-production",
         "construction_phrase_canonique::reading-analysis",
@@ -137906,6 +138977,148 @@
     }
   },
   "teachingContent": [
+    {
+      "id": "french-v3-teaching:complex-negation:recognition",
+      "nodeKey": "construction_negation_complexe",
+      "mode": "recognition",
+      "status": "published_pending_review",
+      "titleFr": "Comprendre plus, jamais, rien, personne et guère dans une négation",
+      "learnerQuestionFr": "Ces phrases sont négatives, mais est-ce qu’elles disent la même chose ?",
+      "steps": [
+        {
+          "exampleFr": "Le magasin n’ouvre pas le lundi. Le magasin n’ouvre plus le lundi.",
+          "explanationFr": "La première phrase nie une ouverture le lundi. La seconde ajoute un changement : le magasin ouvrait auparavant le lundi, mais cette situation a cessé. Le mot qui accompagne ne ou n’ précise le sens de la négation."
+        },
+        {
+          "exampleFr": "Durant cette semaine, le magasin n’a jamais ouvert le matin.",
+          "explanationFr": "Jamais veut dire à aucun moment dans la période indiquée. Ici, on parle seulement de cette semaine. Garde les limites données par la phrase."
+        },
+        {
+          "exampleFr": "Je n’ai rien entendu. Je n’ai entendu personne.",
+          "explanationFr": "Rien concerne ici les choses entendues : aucun son. Personne concerne les personnes entendues : aucune. Les deux phrases ne nient pas exactement la même chose."
+        },
+        {
+          "exampleFr": "Ce rideau ne cache guère la fenêtre.",
+          "explanationFr": "Guère signifie peu ou pas beaucoup. Le rideau peut cacher une petite partie de la fenêtre. N’en conclus pas automatiquement qu’il ne cache absolument rien."
+        },
+        {
+          "exampleFr": "Ce magasin ne vend que des cahiers.",
+          "explanationFr": "Ne…que veut dire seulement : le magasin vend des cahiers, et limite ce qu’il vend à cela. On parle d’une restriction. La présence de ne ne suffit donc pas à conclure que toute l’action est niée."
+        }
+      ],
+      "practice": [
+        {
+          "id": "complex-negation-guided:plus",
+          "promptFr": "Depuis lundi, Léo ne mange plus à la cantine.\n\nChoisis le sens de cette construction.",
+          "choices": [
+            "La situation a cessé : ce n’est plus le cas maintenant.",
+            "Cela ne se produit à aucun moment dans la situation décrite.",
+            "Cela se produit peu, ou dans une faible mesure, sans être forcément nul.",
+            "La phrase contient une négation simple avec ne…pas."
+          ],
+          "answerFr": "La situation a cessé : ce n’est plus le cas maintenant.",
+          "hintFr": "Lis la phrase entière, puis regarde quel mot accompagne ne ou n’. Vérifie si l’on parle d’un moment, d’une chose, d’une personne ou d’une faible quantité.",
+          "explanationFr": "Il y mangeait avant, mais cette situation a cessé. Ne…plus ne veut pas dire qu’il n’y a jamais mangé."
+        },
+        {
+          "id": "complex-negation-guided:jamais",
+          "promptFr": "Pendant ce séjour, Aya n’a jamais utilisé son téléphone.\n\nChoisis le sens de cette construction.",
+          "choices": [
+            "La situation a cessé : ce n’est plus le cas maintenant.",
+            "Cela se produit peu, ou dans une faible mesure, sans être forcément nul.",
+            "La phrase contient une négation simple avec ne…pas.",
+            "Cela ne se produit à aucun moment dans la situation décrite."
+          ],
+          "answerFr": "Cela ne se produit à aucun moment dans la situation décrite.",
+          "hintFr": "Lis la phrase entière, puis regarde quel mot accompagne ne ou n’. Vérifie si l’on parle d’un moment, d’une chose, d’une personne ou d’une faible quantité.",
+          "explanationFr": "Elle ne l’a utilisé à aucun moment de ce séjour. La phrase ne dit pas qu’elle ne l’a jamais utilisé de toute sa vie."
+        },
+        {
+          "id": "complex-negation-guided:rien",
+          "promptFr": "Nous n’avons rien déplacé dans la chambre.\n\nChoisis le sens de cette construction.",
+          "choices": [
+            "Cela se produit peu, ou dans une faible mesure, sans être forcément nul.",
+            "La phrase limite à un élément : ne…que signifie ici seulement.",
+            "Aucune chose n’est concernée par l’action décrite.",
+            "Aucune personne n’est concernée par l’action décrite."
+          ],
+          "answerFr": "Aucune chose n’est concernée par l’action décrite.",
+          "hintFr": "Lis la phrase entière, puis regarde quel mot accompagne ne ou n’. Vérifie si l’on parle d’un moment, d’une chose, d’une personne ou d’une faible quantité.",
+          "explanationFr": "Aucune chose n’a été déplacée par nous. La chambre peut contenir des objets : rien porte ici sur ce qui a été déplacé."
+        },
+        {
+          "id": "complex-negation-guided:personne",
+          "promptFr": "Je n’ai appelé personne cet après-midi.\n\nChoisis le sens de cette construction.",
+          "choices": [
+            "La phrase limite à un élément : ne…que signifie ici seulement.",
+            "Aucune personne n’est concernée par l’action décrite.",
+            "Aucune chose n’est concernée par l’action décrite.",
+            "Cela ne se produit à aucun moment dans la situation décrite."
+          ],
+          "answerFr": "Aucune personne n’est concernée par l’action décrite.",
+          "hintFr": "Lis la phrase entière, puis regarde quel mot accompagne ne ou n’. Vérifie si l’on parle d’un moment, d’une chose, d’une personne ou d’une faible quantité.",
+          "explanationFr": "Aucune personne n’a reçu d’appel de ma part cet après-midi. Cela ne veut pas dire que je ne connais personne."
+        },
+        {
+          "id": "complex-negation-guided:guere",
+          "promptFr": "Cette petite lampe n’éclaire guère le couloir.\n\nChoisis le sens de cette construction.",
+          "choices": [
+            "Cela se produit peu, ou dans une faible mesure, sans être forcément nul.",
+            "Cela ne se produit à aucun moment dans la situation décrite.",
+            "Aucune chose n’est concernée par l’action décrite.",
+            "La situation a cessé : ce n’est plus le cas maintenant."
+          ],
+          "answerFr": "Cela se produit peu, ou dans une faible mesure, sans être forcément nul.",
+          "hintFr": "Lis la phrase entière, puis regarde quel mot accompagne ne ou n’. Vérifie si l’on parle d’un moment, d’une chose, d’une personne ou d’une faible quantité.",
+          "explanationFr": "Elle éclaire peu le couloir. Ne…guère, plus fréquent à l’écrit, ne signifie pas forcément une absence totale de lumière."
+        },
+        {
+          "id": "complex-negation-guided:simple",
+          "promptFr": "La fenêtre n’est pas ouverte.\n\nChoisis le sens de cette construction.",
+          "choices": [
+            "La situation a cessé : ce n’est plus le cas maintenant.",
+            "Cela ne se produit à aucun moment dans la situation décrite.",
+            "La phrase limite à un élément : ne…que signifie ici seulement.",
+            "La phrase contient une négation simple avec ne…pas."
+          ],
+          "answerFr": "La phrase contient une négation simple avec ne…pas.",
+          "hintFr": "Lis la phrase entière, puis regarde quel mot accompagne ne ou n’. Vérifie si l’on parle d’un moment, d’une chose, d’une personne ou d’une faible quantité.",
+          "explanationFr": "N’…pas nie simplement le fait que la fenêtre soit ouverte. La phrase n’indique pas qu’elle ne l’est jamais ou qu’elle a cessé de l’être."
+        },
+        {
+          "id": "complex-negation-guided:restriction",
+          "promptFr": "Yara ne collectionne que les cartes de cette série.\n\nChoisis le sens de cette construction.",
+          "choices": [
+            "Aucune chose n’est concernée par l’action décrite.",
+            "Aucune personne n’est concernée par l’action décrite.",
+            "La phrase limite à un élément : ne…que signifie ici seulement.",
+            "La phrase contient une négation simple avec ne…pas."
+          ],
+          "answerFr": "La phrase limite à un élément : ne…que signifie ici seulement.",
+          "hintFr": "Lis la phrase entière, puis regarde quel mot accompagne ne ou n’. Vérifie si l’on parle d’un moment, d’une chose, d’une personne ou d’une faible quantité.",
+          "explanationFr": "Ici, ne…que signifie seulement : elle collectionne les cartes de cette série. Ce n’est pas une absence de cartes collectionnées."
+        }
+      ],
+      "takeawayFr": "Plus indique ici un arrêt ; jamais, aucun moment ; rien, aucune chose ; personne, aucune personne ; guère, peu. Vérifie toujours de quoi parle la phrase et la période qu’elle précise.",
+      "boundaryFr": "Cette leçon travaille le sens de ces constructions dans les phrases proposées. Elle ne vérifie pas encore que tu sais les écrire ni interpréter toutes les combinaisons possibles, comme ni…ni ou plusieurs négations dans une même phrase. À l’oral, ne est parfois absent ; ici, on lit des formes écrites complètes.",
+      "materialExposure": {
+        "sentences": [
+          "Depuis lundi, Léo ne mange plus à la cantine.",
+          "Pendant ce séjour, Aya n’a jamais utilisé son téléphone.",
+          "Nous n’avons rien déplacé dans la chambre.",
+          "Je n’ai appelé personne cet après-midi.",
+          "Cette petite lampe n’éclaire guère le couloir.",
+          "La fenêtre n’est pas ouverte.",
+          "Yara ne collectionne que les cartes de cette série.",
+          "Le magasin n’ouvre pas le lundi. Le magasin n’ouvre plus le lundi.",
+          "Durant cette semaine, le magasin n’a jamais ouvert le matin.",
+          "Je n’ai rien entendu. Je n’ai entendu personne.",
+          "Ce rideau ne cache guère la fenêtre.",
+          "Ce magasin ne vend que des cahiers."
+        ]
+      },
+      "assessmentExposureIds": []
+    },
     {
       "id": "french-v3-teaching:sentence-main-idea:narrative",
       "nodeKey": "identifier_idee_phrase",
@@ -188996,6 +190209,41 @@
       "estimatedMinutes": 1
     },
     {
+      "id": "2f1e9ae1-6351-510c-b5ad-cf195a0f31c2",
+      "nodeKey": "construction_negation_complexe",
+      "mode": "recognition",
+      "kind": "independent_check",
+      "status": "draft",
+      "titleFr": "Interpréter une négation complexe",
+      "href": "/student/diagnostic",
+      "probeIds": [
+        "v3-complex-negation:guere:1",
+        "v3-complex-negation:guere:3",
+        "v3-complex-negation:guere:5",
+        "v3-complex-negation:guere:7",
+        "v3-complex-negation:jamais:1",
+        "v3-complex-negation:jamais:3",
+        "v3-complex-negation:jamais:5",
+        "v3-complex-negation:jamais:7",
+        "v3-complex-negation:personne:1",
+        "v3-complex-negation:personne:3",
+        "v3-complex-negation:personne:5",
+        "v3-complex-negation:personne:7",
+        "v3-complex-negation:plus:1",
+        "v3-complex-negation:plus:3",
+        "v3-complex-negation:plus:5",
+        "v3-complex-negation:plus:7",
+        "v3-complex-negation:restriction:1",
+        "v3-complex-negation:restriction:3",
+        "v3-complex-negation:rien:1",
+        "v3-complex-negation:rien:3",
+        "v3-complex-negation:rien:5",
+        "v3-complex-negation:rien:7",
+        "v3-complex-negation:simple:2"
+      ],
+      "estimatedMinutes": 1
+    },
+    {
       "id": "74f068f3-750d-55d0-beb9-8d4b11924a64",
       "nodeKey": "segmenter_syllabes_ecrites",
       "mode": "recognition",
@@ -189569,6 +190817,28 @@
         "v3-y-en:en_thing-3"
       ],
       "estimatedMinutes": 1
+    },
+    {
+      "id": "482ae6c1-9c9f-5f88-a141-193bfef0003b",
+      "nodeKey": "construction_negation_complexe",
+      "mode": "recognition",
+      "kind": "instruction",
+      "status": "published",
+      "titleFr": "Comprendre plus, jamais, rien, personne et guère dans une négation",
+      "href": "/student/diagnostic",
+      "contentId": "french-v3-teaching:complex-negation:recognition",
+      "estimatedMinutes": 4
+    },
+    {
+      "id": "59d16676-95d1-5185-9891-252cca770a8d",
+      "nodeKey": "construction_negation_complexe",
+      "mode": "recognition",
+      "kind": "practice",
+      "status": "published",
+      "titleFr": "Comprendre plus, jamais, rien, personne et guère dans une négation",
+      "href": "/student/diagnostic",
+      "contentId": "french-v3-teaching:complex-negation:recognition",
+      "estimatedMinutes": 6
     },
     {
       "id": "d832cbf3-52b8-59a0-a1a3-a0fddc682a8b",
@@ -195721,12 +196991,12 @@
       "estimatedMinutes": 6
     }
   ],
-  "bankChecksum": "sha256:1f54f1c1f4467c6ff62ce95da793ba2b8bb9945ce8822170628e1b966ee1038c",
+  "bankChecksum": "sha256:8c2184304edcdb484d6adda780bc855666fe4f9e66f681a567e1cbb569cfb40a",
   "summary": {
     "graphTargets": 542,
-    "assessmentTargets": 260,
-    "teachingTargets": 260,
-    "questions": 5196,
+    "assessmentTargets": 261,
+    "teachingTargets": 261,
+    "questions": 5242,
     "missingInstructionTargets": 0
   },
   "missingInstructionSkillIds": [],
@@ -195737,5 +197007,5 @@
     "Missing prerequisite instruction must be completed",
     "Full graph question coverage remains incomplete"
   ],
-  "checksum": "sha256:f4fd4d2b31da1e7e85b51e9b2a487b5624d6eb846c150c71c81237a3d67c0570"
+  "checksum": "sha256:f6de3b32860818a23e25cc8d77539b82277f35279d4b89b4d777bcc29aa5e681"
 }

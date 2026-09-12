@@ -1,3 +1,4 @@
+import {complexNegationFeature} from "./complex-negation-coverage";
 import {writtenSyllableFeature} from "./written-syllable-coverage";
 import {phonemeGraphieFeature} from "./phoneme-graphie-coverage";
 import {readAudioStimulus} from './audio-stimulus';
@@ -25,7 +26,7 @@ export function canonicalProbeMetrics(entry:CanonicalDiagnosticBankItem){
  const audio=readAudioStimulus(entry.item);
  const writtenGuess=writtenGuessingFloor(entry.item);
  const category=samplingCategory(entry);
- const features=[phonemeGraphieFeature(entry),writtenSyllableFeature(entry)].filter((feature):feature is string=>Boolean(feature));
+ const features=[complexNegationFeature(entry),phonemeGraphieFeature(entry),writtenSyllableFeature(entry)].filter((feature):feature is string=>Boolean(feature));
  return {
   ...(features.length?{evidenceFeatures:features}:{}),
   ...(category?{samplingCategory:category}:{}),

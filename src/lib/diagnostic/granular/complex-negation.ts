@@ -17,6 +17,8 @@ const examples:Record<ComplexNegationFeature,readonly string[]>={
   'Après cette réparation, la porte ne grince plus.',
   'Tu ne joues plus dans cette équipe cette année.',
   'Les élèves n’utilisent plus ces anciens cahiers.',
+  'Depuis le remplacement des rouleaux, l’imprimante ne laisse plus de traces.',
+  'Depuis la fin du stage, Amel ne vient plus au centre le mercredi.',
  ],
  jamais:[
   'Pendant ses voyages, Sami ne prend jamais l’avion.',
@@ -25,6 +27,8 @@ const examples:Record<ComplexNegationFeature,readonly string[]>={
   'Nous ne rentrons jamais seuls après cet entraînement.',
   'Durant le tournoi, ce joueur n’a jamais contesté une décision.',
   'Au cours de cette visite, vous n’avez jamais quitté le groupe.',
+  'Durant ce voyage, les deux amis n’ont jamais pris le même train.',
+  'Dans ce jeu, le gardien ne quitte jamais sa zone.',
  ],
  rien:[
   'Lina n’a rien acheté au marché ce matin.',
@@ -33,6 +37,8 @@ const examples:Record<ComplexNegationFeature,readonly string[]>={
   'Le vent n’a rien cassé dans le jardin.',
   'Tu n’as rien oublié sur la table.',
   'Elle ne veut rien ajouter à son dessin.',
+  'Le mécanicien n’a rien remplacé dans ce moteur.',
+  'Les enfants n’ont rien laissé dans le vestiaire.',
  ],
  personne:[
   'Amir ne connaît personne dans cette nouvelle classe.',
@@ -41,6 +47,8 @@ const examples:Record<ComplexNegationFeature,readonly string[]>={
   'Tu n’as invité personne à cette répétition.',
   'Je ne vois personne devant le portail.',
   'Ces élèves n’attendent personne à la sortie.',
+  'Vous n’avez prévenu personne de ce changement.',
+  'Le guide n’a oublié personne au point de rendez-vous.',
  ],
  guere:[
   'Depuis la rentrée, Malik ne regarde guère la télévision.',
@@ -49,6 +57,8 @@ const examples:Record<ComplexNegationFeature,readonly string[]>={
   'Cette explication ne m’aide guère à comprendre le plan.',
   'Nous ne parlons guère durant les répétitions.',
   'Vous n’avez guère de place dans ce coffre.',
+  'Ce sac vide ne pèse guère.',
+  'Cette solution ne change guère notre organisation.',
  ],
  simple:[
   'Le paquet n’est pas arrivé ce matin.',
