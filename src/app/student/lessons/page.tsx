@@ -1,3 +1,4 @@
+import {journalStudentPayload} from "@/lib/diagnostic/granular/server-delivery-journal";
 import {LearningUpgradeButton} from "@/components/diagnostic/learning-upgrade-button";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
@@ -35,6 +36,7 @@ export default async function StudentLessonsPage() {
       button: step.status === "in_progress" ? "Continuer la leçon" : "Commencer la leçon",
     }));
   const optional = view?.optionalLearningActivities ?? [];
+  await journalStudentPayload(studentId, "student:lessons", {available, optional});
   return <>
     <PageHeader title="Mes leçons" description="Voici les prochaines étapes de ton parcours, à partir de tes réponses au diagnostic. Choisis une leçon pour commencer." />
     <div className="mb-6 flex flex-wrap gap-3">
