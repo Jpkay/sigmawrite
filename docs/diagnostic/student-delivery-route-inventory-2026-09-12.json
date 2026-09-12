@@ -188,6 +188,14 @@
       "change": "Fixed copy, notification kinds, UTC display dates and reachable unread counts recorded; owner-keyed client and controlled error wording.",
       "status": "implemented-not-deployed",
       "limits": "Global errors and old client versions remain in the cross-cutting contract."
+    },
+    {
+      "routes": [
+        "vocabulary/page.tsx"
+      ],
+      "change": "Shared review copy, correction wrappers, encounter counts and reachable due counts recorded; authenticated owner remount and controlled save error.",
+      "status": "implemented-not-deployed",
+      "limits": "Existing payload delivers the target word; no claim of unseen client-side answers. Global error/version contract still pending."
     }
   ]
 }
