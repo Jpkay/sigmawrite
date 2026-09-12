@@ -10,3 +10,8 @@ it('requires a new explicit revision for verb-pattern recognition',()=>{
  for(const args of [['--verb-family-recognition'],['--bank-revision','35','--verb-family-recognition'],['--bank-revision','36','--verb-family-recognition','--verb-family-recognition']])expect(()=>granularBankOptions(args)).toThrow();
  expect(granularBankOptions(['--bank-revision','36'])).toEqual({revision:36});
 });
+it('requires a new revision and retains the preceding refinement for agreement additions',()=>{
+ const args=['--bank-revision','37','--verb-family-recognition','--etre-participle-agreement'];
+ expect(granularBankOptions(args)).toEqual({revision:37,verbFamilyRecognition:true,etreParticipleAgreement:true});
+ for(const invalid of [['--etre-participle-agreement'],['--bank-revision','36','--verb-family-recognition','--etre-participle-agreement'],['--bank-revision','37','--etre-participle-agreement'],[...args,'--etre-participle-agreement']])expect(()=>granularBankOptions(invalid)).toThrow();
+});

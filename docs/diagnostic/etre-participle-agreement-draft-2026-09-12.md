@@ -8,6 +8,6 @@ Three matching lessons introduce the change through examples, name the participl
 
 Focused validation checks the existing target mappings, pending status, distinct prompts, ambiguous-subject clarification, response-space floor, exact lesson bindings and disjoint initial/follow-up allocation. Each target retains six initial and six follow-up questions after teaching exclusions. This establishes draft structure, not classroom validity, independently demonstrated mastery, or a complete history of material seen.
 
-These files are absent from default assembly and from the immutable revision 36 candidate. Full-candidate integration, prerequisite routing and complete learning journeys are still needed before a later release.
+These files are absent from default assembly and from the immutable revision 36 candidate. Explicit revision 37 assembly now includes the questions and lessons together. Three constructed prerequisite-success/target-gap journeys complete all guided exercises, preserve a deliberate error, answer a separate contextual check and preserve the result on reload. Older isolated-form probes remain historical but are excluded from these new sentence-based pathways. Import, deployment and live verification remain outstanding.
 
-Validation result: 388 test files / 1,720 tests passed, TypeScript passed, and the generated expansion reproduces exactly with --check. Lesson text contains no em dash.
+Validation result: 388 test files / 1,722 tests passed, TypeScript passed, and the generated expansion reproduces exactly with --check. Lesson text contains no em dash.

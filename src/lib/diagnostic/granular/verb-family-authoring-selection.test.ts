@@ -23,3 +23,12 @@ it('requires matching explicit facet metadata while leaving every question pendi
  expect(()=>assembleDraftBank(base,taxonomy,[expansion],{revision:36})).toThrow(/another competency/);
  expect(()=>assembleDraftBank(base,taxonomy,[read('generated/french-v3-verb-family-recognition-expansion.json')],{revision:36,verbFamilyRecognition:true})).toThrow(/collapsed parent/);
 });
+it('adds agreement questions and lessons together only in the next explicit revision',()=>{
+ const before=['--bank-revision','36','--verb-family-recognition'];
+ const after=['--bank-revision','37','--verb-family-recognition','--etre-participle-agreement'];
+ expect(selectedDraftExpansionSources(before)).not.toContain('etre-participle-agreement');
+ expect(selectedDraftExpansionSources(after)).toContain('etre-participle-agreement');
+ expect(selectedTeachingDrafts(before).filter(lesson=>lesson.nodeKey==='accorder_participe_etre')).toHaveLength(0);
+ expect(selectedTeachingDrafts(after).filter(lesson=>lesson.nodeKey==='accorder_participe_etre')).toHaveLength(3);
+ expect(selectedTeachingDrafts(after).filter(lesson=>lesson.nodeKey==='classer_famille_verbale')).toHaveLength(3);
+});

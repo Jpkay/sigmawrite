@@ -7,9 +7,10 @@ export type DraftExpansion={version:string;status:"draft_requires_review";parent
 /** Assemble authoring sources, never publish or transfer approval to an edit.
  * The unchanged base entries retain their own provenance; every added entry is
  * required to remain pending. Source and mapping drift fail before any write. */
-export function assembleDraftBank(base:CanonicalDiagnosticBankArtifact,taxonomy:TaxonomyCandidate,expansions:readonly DraftExpansion[],options:{revision?:number;verbFamilyRecognition?:boolean}={}){
+export function assembleDraftBank(base:CanonicalDiagnosticBankArtifact,taxonomy:TaxonomyCandidate,expansions:readonly DraftExpansion[],options:{revision?:number;verbFamilyRecognition?:boolean;etreParticipleAgreement?:boolean}={}){
  if(options.revision!==undefined&&(!Number.isSafeInteger(options.revision)||options.revision<1||base.bank.key!=="french-diagnostic-bank-v3"))throw Error("A bank revision needs a positive integer and the original French v3 base");
  if(options.verbFamilyRecognition&&(options.revision===undefined||options.revision<36))throw Error('Verb-family recognition requires bank revision 36 or later');
+ if(options.etreParticipleAgreement&&(options.revision===undefined||options.revision<37||!options.verbFamilyRecognition))throw Error('Etre agreement requires bank revision 37 or later and verb-family recognition');
  const baseline=validateCanonicalDiagnosticBank(base,taxonomy);
  if(baseline.issues.length)throw Error("Invalid source bank");
  const facets=buildV3Facets(taxonomy,options),keys=new Set(base.items.map(item=>item.itemKey));
