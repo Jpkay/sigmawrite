@@ -2,12 +2,12 @@
 
 The product owner authorized students to start while personally reviewing content (2026-09-11). This explicitly supersedes waiting for all human content review before an initial release. It does not certify the draft questions or alter the approved graph.
 
-6299 selected draft/repaired question versions, 238 canonically reviewed questions, 6514 mapped questions.
+6323 selected draft/repaired question versions, 238 canonically reviewed questions, 6538 mapped questions.
 
-324 of 542 targets have allocated initial and follow-up pools; 218 remain incomplete. The JSON lists each target and the proposed check bindings. This is a release preparation artifact, not proof of activation or full coverage.
+326 of 542 targets have allocated initial and follow-up pools; 216 remain incomplete. The JSON lists each target and the proposed check bindings. This is a release preparation artifact, not proof of activation or full coverage.
 
-321 lessons and 1765 guided exercises are pinned as published_pending_review. 303 lesson targets have allocated initial/follow-up pools; 303 retain enough check questions after exact teaching overlap exclusions and have proposed instruction/practice bindings. 36 prerequisite targets in their 360-target dependency scope still lack complete pools. Exact material matches populate exposure exclusions; semantic overlap review remains in progress.
+323 lessons and 1777 guided exercises are pinned as published_pending_review. 305 lesson targets have allocated initial/follow-up pools; 305 retain enough check questions after exact teaching overlap exclusions and have proposed instruction/practice bindings. 34 prerequisite targets in their 360-target dependency scope still lack complete pools. Exact material matches populate exposure exclusions; semantic overlap review remains in progress.
 
-Policy checksum: sha256:655536f9685f826c91d9ada1b6e7501eb66a936fadc9bb1902afe6eda11b4fb9.
+Policy checksum: sha256:2bd60eec16f27d891042a0ca12a02e68d2db14c4b63275a3140181b2f6f2d288.
 
-Reproduce: npx tsx scripts/build-parallel-review-candidate.mts --bank-revision 23; append --check to verify without writing.
+Reproduce: npx tsx scripts/build-parallel-review-candidate.mts --bank-revision 24; append --check to verify without writing.
