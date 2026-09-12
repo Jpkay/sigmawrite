@@ -1,5 +1,5 @@
 {
-  "status": "prepared_not_published",
+  "status": "frozen_draft_import_running",
   "authoringOptions": [
     "--bank-revision",
     "37",
@@ -35,12 +35,15 @@
     "tests": 1722,
     "simulatedProfiles": 10,
     "simulatedCommandJourneys": 2,
-    "newLessonJourneys": 3
+    "newLessonJourneys": 3,
+    "frozenArtifactsReproduced": true
   },
   "limitations": [
-    "Not imported, deployed or activated.",
+    "Draft bank import is running; no publication, deployment or activation.",
     "Constructed profiles and synthetic presentation history do not establish classroom validity or complete historical capture.",
     "Human content review remains pending.",
     "Older isolated agreement probes remain in the canonical bank and historical releases; the new contextual pathways exclude them."
-  ]
+  ],
+  "frozenSource": "562093b0b9efdf586a463c263133cf1855f832c1",
+  "draftBankId": "63d4f947-4863-44a6-a826-95e709d81bd4"
 }
