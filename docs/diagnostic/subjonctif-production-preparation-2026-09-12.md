@@ -23,3 +23,9 @@ Before catalogue registration and release preparation:
 Three focused tests pass: exact target validation and six exercises per lesson; difficult written distinctions and modal contexts; detection of exposed isolated-form checks. These are engineering checks, not educator approval.
 
 Reference consulted for the general formation rules and exceptions: [OQLF, Formes du subjonctif](https://vitrinelinguistique.oqlf.gouv.qc.ca/24237/la-grammaire/le-verbe/conjugaison/formes-du-subjonctif). The authored contexts and pedagogical suitability remain subject to owner review.
+
+## Sentence applications authored
+
+A subsequent preparation step adds 168 original sentence gaps to the conjugation expansion generator: two different situations for each of six grammatical persons, for each of the fourteen verbs. They use possibility and low-probability contexts that naturally take the subjunctive. The mode is explicitly supplied; these questions do not measure mode selection.
+
+Five focused tests now pass. The new generation test verifies all 168 questions retain their exact facet, computed form validation, pending-review status and assessed sentence identities, with no overlap against taught material or other application questions. The original isolated-form questions remain correctly marked as exposed by teaching. The generated release artifacts have not yet been rebuilt or activated: pool allocation, exact evidence sufficiency and service journeys are the next checks.

@@ -1,3 +1,4 @@
+import {SUBJONCTIF_APPLICATION_CONTEXTS} from "./subjonctif-application-contexts";
 import {COMPOUND_APPLICATION_CONTEXTS} from "./compound-application-contexts";
 import {conjugate,type Person,type Tense} from "@/lib/linguistic/conjugation";
 import {checksum,type TaxonomyCandidate} from "@/lib/taxonomy/validate";
@@ -66,6 +67,7 @@ export async function expandConjugationDraft(bank:CanonicalDiagnosticBankArtifac
  // Both independent pools need several actual -geons/-çons demonstrations.
  // More unchanged endings or gender variants cannot fill that feature gap.
  const sentenceCases=[
+  ...SUBJONCTIF_APPLICATION_CONTEXTS.map(([verb,person,sentence],index)=>({verb,person,sentence,tense:"subjonctif_present" as const,key:`v3-granular-forms:subjonctif_present-application-context:${verb}:${person}:${index}`})),
   ...(["passe_compose","plus_que_parfait"] as const).flatMap(tense=>COMPOUND_APPLICATION_CONTEXTS.map((row,index)=>({...row,tense,key:`v3-granular-forms:${tense}-application-context:${row.verb}:${row.person}:${index}`}))),
   ...PRESENT_SPELLING_CONTEXTS.map(([verb,sentence],index)=>({verb,sentence,tense:"present" as const,person:"1p" as Person,key:`v3-granular-forms:present-spelling-context:${verb}:${index}`})),
   ...PRESENT_APPLICATION_CONTEXTS.map(([verb,person,sentence],index)=>({verb,person,sentence,tense:"present" as const,key:`v3-granular-forms:present-application-context:${verb}:${person}:${index}`})),
@@ -91,7 +93,7 @@ export async function expandConjugationDraft(bank:CanonicalDiagnosticBankArtifac
   // detection merely because the question itself contains a blank.
   const individualVerb=target.facetKey.includes("::verb:");
   const raw:GeneratedItem={nodeKey:node.key,strand:"conjugaison",modality:"writing",learnerMode:"shared",responseType:"short_answer",
-   promptFr:`Complète la phrase avec ${verb} ${tense==="imparfait"?"à l’imparfait":tense==="futur_simple"?"au futur simple":tense==="conditionnel_present"?"au conditionnel présent":tense==="passe_compose"?"au passé composé":tense==="plus_que_parfait"?"au plus-que-parfait":"au présent de l’indicatif"} : ${sentence}`,
+   promptFr:`Complète la phrase avec ${verb} ${tense==="imparfait"?"à l’imparfait":tense==="futur_simple"?"au futur simple":tense==="conditionnel_present"?"au conditionnel présent":tense==="passe_compose"?"au passé composé":tense==="plus_que_parfait"?"au plus-que-parfait":tense==="subjonctif_present"?"au subjonctif présent":"au présent de l’indicatif"} : ${sentence}`,
    instructionsFr:"Écris seulement le verbe manquant."+("genderSpecified" in application&&application.genderSpecified?` Sujet ${gender==="f"?"féminin":"masculin"} ${person.endsWith("p")?"pluriel":"singulier"}.`:""),correctAnswer:answer,acceptableAnswers:[],validatorType:"conjugator",
    validatorConfig:{verb,tense,person,gender,...(auxiliaryUse?{auxiliaryUse}:{}),...(individualVerb?{sentenceApplication:sentence}:{}),materialExposure:{...(tense==="plus_que_parfait"?{elidedGapAliases:true}:{}),words:[{lemma:verb,form:verb}],sentences:individualVerb?[sentence,completedSentence]:[sentence],...(individualVerb?{assessed:{sentences:[sentence,completedSentence]}}:{})}},difficulty:50};
   const surface=`${node.key}:${diagnosticItemSurfaceIdentity(raw)}`;
