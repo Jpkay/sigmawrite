@@ -1,5 +1,6 @@
 import {beforeEach,expect,it,vi} from 'vitest';
-const f=vi.hoisted(()=>({guard:vi.fn(),record:vi.fn(),journal:vi.fn(),command:vi.fn(),view:{phase:'learning',question:{promptFr:'Les oiseaux chantent.'}},state:{lessonTitle:'Observer le sujet'}}));
+const f=vi.hoisted(()=>({guard:vi.fn(),record:vi.fn(),journal:vi.fn(),command:vi.fn(),writingFactory:vi.fn(),writingEvaluator:vi.fn(),view:{phase:'learning',question:{promptFr:'Les oiseaux chantent.'}},state:{lessonTitle:'Observer le sujet'}}));
+vi.mock('@/lib/diagnostic/granular/server-writing-evaluator',()=>({serverWritingEvaluator:f.writingFactory}));
 vi.mock('@/lib/auth',()=>({requireRole:f.guard}));
 vi.mock('@/lib/supabase/server',()=>({createClient:async()=>({}),createServiceClient:()=>({})}));
 vi.mock('@/lib/db/student',()=>({getCurrentStudentId:async()=> 'owner',getStudentStateData:async()=>f.state}));
@@ -12,7 +13,7 @@ vi.mock('@/lib/diagnostic/granular/teaching-service',()=>({runTeachingCommand:f.
 vi.mock('@/lib/diagnostic/granular/answer-review',()=>({loadDiagnosticAnswerReview:vi.fn()}));
 vi.mock('@/lib/diagnostic/granular/release-content-cache',()=>({sharedReleaseContentCache:{}}));
 import {updateGranularDiagnostic,updateGranularLearningCheck,updateGranularTeaching} from './granular-diagnostic';
-beforeEach(()=>{vi.clearAllMocks();f.guard.mockResolvedValue({});f.record.mockResolvedValue(undefined);f.journal.mockResolvedValue(undefined);f.command.mockResolvedValue({view:f.view});});
+beforeEach(()=>{vi.clearAllMocks();f.writingFactory.mockReturnValue(f.writingEvaluator);f.guard.mockResolvedValue({});f.record.mockResolvedValue(undefined);f.journal.mockResolvedValue(undefined);f.command.mockResolvedValue({view:f.view});});
 it('records the complete final delivery including appended student-state content under the authenticated owner',async()=>{
  for(const action of [updateGranularDiagnostic,updateGranularLearningCheck]){
   const result=await action({studentId:'forged-owner'});
@@ -29,4 +30,11 @@ it('does not run or journal commands when authorization fails',async()=>{
  f.guard.mockRejectedValueOnce(Error('unauthorized'));
  await expect(updateGranularDiagnostic({})).rejects.toThrow('unauthorized');
  expect(f.command).not.toHaveBeenCalled();expect(f.journal).not.toHaveBeenCalled();
+});
+
+it('supplies the server evaluator with authenticated ownership, never a browser owner',async()=>{
+ await updateGranularLearningCheck({studentId:'forged-owner'});
+ expect(f.writingFactory).toHaveBeenCalledWith({},'owner');
+ expect(f.command).toHaveBeenCalledWith(expect.anything(),'owner',{studentId:'forged-owner'},expect.any(Function),f.writingEvaluator);
+ expect(f.writingEvaluator).not.toHaveBeenCalled();
 });

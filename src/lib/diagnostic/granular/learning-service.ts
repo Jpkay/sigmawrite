@@ -1,3 +1,4 @@
+import {WritingAssessmentError} from "./writing-error";
 import {learningSeenQuestionIds} from "./learning-exposure";
 import {categoryExposurePriority} from "./category-exposure";
 import {withKnownMaterialHistory} from "./material-history";
@@ -86,7 +87,9 @@ export async function runLearningCheckCommand(store:AssessmentStore,studentId:st
    if(!probe)return {error:"Question indisponible."} as const;
    if(probe.mode==="independent_production"){
     if(!writingEvaluator||item.responseType==="mcq")return {error:"La vérification de ce texte n’est pas encore disponible."} as const;
-    const judgment=await writingEvaluator({answer:command.answer,...(check.firstDraft!==undefined?{firstDraft:check.firstDraft}:{}),skillId:probe.skillId,item});
+    let judgment:Awaited<ReturnType<WritingEvaluator>>;
+    try { judgment=await writingEvaluator({answer:command.answer,...(check.firstDraft!==undefined?{firstDraft:check.firstDraft}:{}),skillId:probe.skillId,item}); }
+    catch(error){if(error instanceof WritingAssessmentError)return {error:error.message} as const;throw error;}
     if(!judgment.connectedWriting||!judgment.tokens.length)return {error:"Ce texte ne permet pas encore de vérifier cette compétence."} as const;
     if(target&&requiresWritingRevision(target.nodeKey)&&judgment.revisionReviewed!==true)return {error:"La révision de ce texte doit encore être vérifiée."} as const;
     writingEvidence=createWritingEvidence({skillId:probe.skillId,answer:command.answer,connectedWriting:judgment.connectedWriting,

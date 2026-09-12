@@ -58,3 +58,13 @@ it("saves an immutable first draft before reviewing the second version",async()=
  expect(f.evaluator).toHaveBeenLastCalledWith(expect.objectContaining({answer:final.answer,firstDraft:f.command.answer}));
  expect(f.get().state.refinements[0].writingEvidence).toMatchObject({firstDraft:f.command.answer,responseText:final.answer,revisionReviewed:true});
 });
+
+it('keeps the active check and all evidence unchanged on a retryable provider failure',async()=>{
+ const {WritingAssessmentError}=await import('./writing-error');
+ const f=fixture(),before=structuredClone(f.get());
+ f.evaluator.mockRejectedValue(new WritingAssessmentError(Error('provider response')));
+ const result=await runLearningCheckCommand(f.store,'student-a',f.command,Date.now,f.evaluator);
+ expect(result).toMatchObject({error:expect.stringContaining('Aucun résultat')});
+ expect(f.save).not.toHaveBeenCalled();expect(f.get()).toEqual(before);
+ expect(JSON.stringify(result)).not.toContain('provider response');
+});

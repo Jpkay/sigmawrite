@@ -1,0 +1,29 @@
+{
+  "status": "implemented_off_by_default_not_deployed",
+  "purpose": "Connect source-bound writing evidence to the granular learning-check service instead of requiring a legacy student_learning_paths assignment.",
+  "activationSetting": "GRANULAR_WRITING_EVALUATION_ENABLED=true",
+  "activationConfigured": false,
+  "behavior": [
+    "Only a server-resolved, owned, current independent-production check invokes the adapter. Browser-supplied item selection or grading remains rejected by the learning service.",
+    "The signed-in client consumes the existing free-text action limit and authenticated student LLM budget before evaluation. Adapter creation is free and performs no provider request.",
+    "Provider or allowance failures return a generic retryable message; no response score or refinement is persisted.",
+    "Writing evidence continues to bind exact text spans, skill, pinned question and server-issued occasion.",
+    "No writing probes or evaluator calibration claims are added by this plumbing change."
+  ],
+  "checks": {
+    "testFiles": 341,
+    "tests": 1543,
+    "typescript": "passed",
+    "providerFailurePreservesActiveCheckAndEvidence": true,
+    "browserOwnedClaimsRejected": true,
+    "budgetDenialSkipsProvider": true,
+    "defaultDisabled": true
+  },
+  "remaining": [
+    "Expand correct, incorrect and unresolved grading cases across all 18 writing targets; independently review outcomes with the owner in parallel.",
+    "Resolve known provider and judgment reliability gaps before recording student mastery from affected targets.",
+    "Publish suitable writing tasks and connect them to the approved granular release coverage.",
+    "Run deployed writing and revision journeys through results, pathway updates and reloads.",
+    "Complete material-history coverage and preserve uncertainty where history is incomplete."
+  ]
+}

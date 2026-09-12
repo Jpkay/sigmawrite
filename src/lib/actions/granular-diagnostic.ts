@@ -8,6 +8,7 @@ import {requireStudentAccessAuthorized} from "@/lib/diagnostic/access";
 import {sharedReleaseContentCache} from "@/lib/diagnostic/granular/release-content-cache";
 import {SupabaseAssessmentStore} from "@/lib/diagnostic/granular/store";
 import {publicAssessmentView,runAssessmentCommand} from "@/lib/diagnostic/granular/service";
+import {serverWritingEvaluator} from "@/lib/diagnostic/granular/server-writing-evaluator";
 import {runLearningCheckCommand} from "@/lib/diagnostic/granular/learning-service";
 import {runTeachingCommand} from "@/lib/diagnostic/granular/teaching-service";
 import {loadDiagnosticAnswerReview} from "@/lib/diagnostic/granular/answer-review";
@@ -38,7 +39,7 @@ export async function updateGranularDiagnostic(input:unknown){
 }
 export async function updateGranularLearningCheck(input:unknown){
  const {studentId,store,client}=await context();
- const result=await runLearningCheckCommand(store,studentId,input);
+ const result=await runLearningCheckCommand(store,studentId,input,Date.now,serverWritingEvaluator(client,studentId));
  return deliver(store,studentId,"granular:independent-check",{...result,...("view" in result&&result.view?{studentState:await getStudentStateData(studentId,client)}:{})});
 }
 export async function updateGranularTeaching(input:unknown){
