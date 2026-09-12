@@ -11,6 +11,7 @@ import {AccentTextarea} from "@/components/accent-textarea";
 import {ExercisePrompt} from "@/components/exercise-prompt";
 import {startGranularDiagnostic,updateGranularDiagnostic,updateGranularLearningCheck,updateGranularTeaching} from "@/lib/actions/granular-diagnostic";
 import {reconcileAssessmentResponse,type AssessmentView,type AssessmentResponse} from "@/lib/diagnostic/granular/client-state";
+import {QuestionAudio} from "./question-audio";
 import {GuidedTeaching,type TeachingCommand} from "./guided-teaching";
 import {groupAssessmentResults} from "@/lib/diagnostic/granular/result-groups";
 const STATUS={mastered:"Bien acquis",missing:"À travailler",fragile:"À consolider",uncertain:"À confirmer",unknown:"Pas encore vérifié"};
@@ -18,6 +19,7 @@ const MODE={recognition:"Reconnaître",production:"Écrire la réponse",interpre
 
 export function GranularDiagnostic({initialActivityId,start=startGranularDiagnostic,update=updateGranularDiagnostic,updateLearning=updateGranularLearningCheck,updateTeaching=updateGranularTeaching}:{initialActivityId?:string;start?:()=>Promise<AssessmentResponse>;update?:(input:unknown)=>Promise<AssessmentResponse>;updateLearning?:(input:unknown)=>Promise<AssessmentResponse>;updateTeaching?:(input:unknown)=>Promise<AssessmentResponse>}){
  const [view,setView]=useState<AssessmentView|null>(null),[draft,setDraft]=useState(""),[error,setError]=useState<string|null>(null),[busy,setBusy]=useState(true),[notice,setNotice]=useState<string|null>(null);
+ const [audioPlayedKey,setAudioPlayedKey]=useState<string|null>(null);
  const [supportDraft,setSupportDraft]=useState<{questionId:string;choiceId:string}|null>(null);
  const supportRef=useRef<{questionId:string;choiceId:string}|null>(null);
  const current=useRef<AssessmentView|null>(null),draftRef=useRef(""),locked=useRef(false),pauseQueued=useRef(false),queuedAnswer=useRef<{itemId:string;type:"answer"|"skip"}|null>(null),mounted=useRef(true);
@@ -94,15 +96,16 @@ export function GranularDiagnostic({initialActivityId,start=startGranularDiagnos
     {!view.paused&&<Button variant="outline" disabled={busy} onClick={()=>void send("pause")}>Faire une pause</Button>}
    </div>}
    {view.paused&&!checking?<section className="rounded-xl border border-border p-6"><h2 className="mb-2 text-xl font-semibold">{view.answeredCount||(view.skippedCount??0)?"Ta progression est enregistrée":"Prêt à commencer ?"}</h2><p className="mb-5 text-muted-foreground">Prends ton temps. Tu peux quitter cette page et revenir plus tard.</p><Button disabled={busy} onClick={()=>void send("resume")}>{view.answeredCount||question?"Reprendre":"Commencer"}</Button></section>
-   :question?<form onSubmit={event=>{event.preventDefault();void send(checking?"answer_check":"answer");}} className="rounded-xl border border-border p-5 sm:p-7">
+   :question?<form onSubmit={event=>{event.preventDefault();if(question.audio&&audioPlayedKey!==`${view.sessionId}:${question.id}:${question.audio.src}`)return;void send(checking?"answer_check":"answer");}} className="rounded-xl border border-border p-5 sm:p-7">
     <h2 className="mb-4 text-sm font-semibold text-muted-foreground">{checking?"Une nouvelle vérification":`Question ${view.answeredCount+(view.skippedCount??0)+1}`}</h2>
     <ExercisePrompt promptFr={question.promptFr} instructionsFr={question.instructionsFr}/>
+    {question.audio&&<QuestionAudio key={`${view.sessionId}:${question.id}:${question.audio.src}`} src={question.audio.src} onComplete={()=>setAudioPlayedKey(`${view.sessionId}:${question.id}:${question.audio!.src}`)} onFailure={()=>setAudioPlayedKey(null)}/>}
     {view.learningCheck?.revisionRequired&&<p className="mt-4 text-sm">{view.learningCheck.firstDraft!==null?"Ta première version est enregistrée. Relis ton texte et améliore ce qui te semble nécessaire. Tu peux aussi le garder tel quel.":"Écris d’abord ta première version. Tu pourras ensuite la relire et la modifier."}</p>}
     {question.responseType==="mcq"?<fieldset disabled={busy} className="my-6 space-y-3"><legend className="sr-only">Choisis ta réponse</legend>{question.choices.map(choice=><label key={choice.id} className={`flex cursor-pointer items-start gap-3 rounded-lg border p-4 ${draft===choice.id?"border-primary bg-primary/5":"border-border"}`}><input type="radio" name="answer" value={choice.id} checked={draft===choice.id} onChange={()=>edit(choice.id)} className="mt-1"/><span>{choice.text}</span></label>)}</fieldset>
     :<div className="my-6"><label htmlFor="granular-answer" className="mb-2 block text-sm font-semibold">Ta réponse</label><AccentTextarea id="granular-answer" value={draft} onChange={edit} disabled={busy} maxLength={3000} rows={3} className="w-full rounded-md border border-border bg-background p-3"/></div>}
     {question.supportChoices&&<fieldset disabled={busy} className="my-6 space-y-3"><legend className="mb-3 font-semibold">Quel passage justifie ta réponse ?</legend>{question.supportChoices.map(choice=><label key={choice.id} className="flex cursor-pointer items-start gap-3 rounded-lg border border-border p-3"><input type="radio" name="textual-support" checked={supportDraft?.questionId===question.id&&supportDraft.choiceId===choice.id} onChange={()=>{const selected={questionId:question.id,choiceId:choice.id};supportRef.current=selected;setSupportDraft(selected);persistAssessmentDraft(current.current,draftRef.current,selected.choiceId);}} className="mt-1"/><span>{choice.text}</span></label>)}</fieldset>}
-    <div className="flex flex-wrap gap-3"><Button type="submit" disabled={busy||!draft.trim()||Boolean(question.supportChoices&&supportDraft?.questionId!==question.id)}>{busy?"Enregistrement…":view.learningCheck?.revisionRequired?(view.learningCheck.firstDraft===null?"Enregistrer ma première version":"Envoyer ma version relue"):"Valider"}</Button>
-    {!checking&&<Button type="button" variant="outline" disabled={busy} onClick={()=>void send("skip")}>Je ne sais pas</Button>}
+    <div className="flex flex-wrap gap-3"><Button type="submit" disabled={busy||Boolean(question.audio&&audioPlayedKey!==`${view.sessionId}:${question.id}:${question.audio.src}`)||!draft.trim()||Boolean(question.supportChoices&&supportDraft?.questionId!==question.id)}>{busy?"Enregistrement…":view.learningCheck?.revisionRequired?(view.learningCheck.firstDraft===null?"Enregistrer ma première version":"Envoyer ma version relue"):"Valider"}</Button>
+    {!checking&&<Button type="button" variant="outline" disabled={busy} onClick={()=>void send("skip")}>{question.audio?"Passer cette question":"Je ne sais pas"}</Button>}
     {checking&&<Button type="button" variant="outline" disabled={busy} onClick={()=>void send("abandon_check")}>Passer cette question</Button>}</div>
    </form>:<p role="status">Préparation de la prochaine question…</p>}
   </>:<>

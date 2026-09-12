@@ -1,3 +1,4 @@
+import {publicAudioQuestionFields} from './audio-stimulus';
 import {inspectReleaseScope} from "./release-scope";
 import {learningSeenQuestionIds} from "./learning-exposure";
 import {assessmentObservations} from "./session";
@@ -109,13 +110,13 @@ export function publicAssessmentView(session:StoredSession,bundle:AssessmentBund
   learningCheck:session.state.learningCheck?{id:session.state.learningCheck.id,activityId:session.state.learningCheck.activityId,firstDraft:session.state.learningCheck.firstDraft??null,revisionRequired:requiresWritingRevision(bundle.assessment.skills.find(skill=>skill.id===bundle.assessment.probes.find(probe=>probe.id===session.state.learningCheck!.itemId)?.skillId)?.nodeKey??""),question:publicQuestion(session.id,session.state.learningCheck.itemId,bundle)}:null,
   missingLearningActivityCount:learning?.missingActivitySkillIds.length??0,
   skillDetails:Object.fromEntries(bundle.assessment.skills.map(s=>[s.id,{labelFr:s.labelFr,nodeKey:s.nodeKey,...(scope?{assessmentAvailable:scope.assessmentSkillIds.has(s.id)}:{}),domain:s.domain??s.branch,...(s.samplingGroup?{samplingGroup:s.samplingGroup}:{}),mode:s.modes[0]}])),
-  question:item?{id:view.pendingItemId!,promptFr:item.promptFr,instructionsFr:item.instructionsFr??null,responseType:item.responseType,supportChoices:publicTextualSupport(session.id,view.pendingItemId!,item),
+  question:item?{id:view.pendingItemId!,promptFr:item.promptFr,instructionsFr:item.instructionsFr??null,responseType:item.responseType,...publicAudioQuestionFields(item),supportChoices:publicTextualSupport(session.id,view.pendingItemId!,item),
    choices:shuffleChoices(item.choices?.map((choice,index)=>({id:choiceId(session.id,view.pendingItemId!,index),text:choice.text}))??[],`${session.id}:${view.pendingItemId}`)}:null};
 }
 
 export function publicQuestion(sessionId:string,itemId:string,bundle:AssessmentBundle){
  const item=bundle.bank.items.find(entry=>entry.itemKey===itemId)?.item;
  if(!item)return null;
- return {id:itemId,promptFr:item.promptFr,instructionsFr:item.instructionsFr??null,responseType:item.responseType,supportChoices:publicTextualSupport(sessionId,itemId,item),
+ return {id:itemId,promptFr:item.promptFr,instructionsFr:item.instructionsFr??null,responseType:item.responseType,...publicAudioQuestionFields(item),supportChoices:publicTextualSupport(sessionId,itemId,item),
  choices:shuffleChoices(item.choices?.map((choice,index)=>({id:choiceId(sessionId,itemId,index),text:choice.text}))??[],`${sessionId}:${itemId}`)};
 }

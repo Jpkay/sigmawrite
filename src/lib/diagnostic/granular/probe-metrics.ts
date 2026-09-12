@@ -1,3 +1,4 @@
+import {readAudioStimulus} from './audio-stimulus';
 import type {CanonicalDiagnosticBankItem} from "../item-bank";
 import {writtenGuessingFloor} from "./response-space";
 import {PERSON_NUMBER_LABELS} from "./person-number-categories";
@@ -13,12 +14,13 @@ function samplingCategory(entry:CanonicalDiagnosticBankItem):string|undefined{
  * estimates still require calibration; a compiled bundle cannot change them
  * independently of the adapter's versioned content policy. */
 export function canonicalProbeMetrics(entry:CanonicalDiagnosticBankItem){
+ const audio=readAudioStimulus(entry.item);
  const writtenGuess=writtenGuessingFloor(entry.item);
  const category=samplingCategory(entry);
  return {
   ...(category?{samplingCategory:category}:{}),
   difficulty:({foundation:.25,core:.5,stretch:.75} as const)[entry.difficultyTier],
-  expectedSeconds:entry.sectionKey==="reading_comprehension"?60:30,
+  expectedSeconds:(entry.sectionKey==="reading_comprehension"?60:30)+(audio?Math.ceil(audio.durationMs/1000):0),
   // Answer and supporting-passage choices are correlated, not independent draws.
   guessProbability:entry.item.responseType==="mcq"?1/Math.max(2,entry.item.choices?.length??0):writtenGuess,
  };
