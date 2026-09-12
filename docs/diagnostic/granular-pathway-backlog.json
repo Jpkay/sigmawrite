@@ -1,12 +1,12 @@
 {
   "status": "prepared_inventory_not_release_or_review_approval",
-  "parallelCandidateChecksum": "sha256:e4c7c7ced8c909e51fd879c2bf94a4ca10afd66aa201f058bfe26562b9337988",
-  "scopedCandidateChecksum": "sha256:c2b83220139f85b8e2b4473404bc28079e50243d5618c560b33254098e6a3541",
+  "parallelCandidateChecksum": "sha256:e800cbee4dcf2bbab3258a6bc069f56f7108fe702f54cfd465d205588b59d782",
+  "scopedCandidateChecksum": "sha256:831809ee554808719eb0b050d20a6c56c9c066d597495dd8d4aa521da4f8739b",
   "targets": 542,
   "counts": {
-    "prepared_scoped_pathway": 338,
+    "prepared_scoped_pathway": 344,
     "complete_question_pools": 187,
-    "author_exact_target_lesson": 10,
+    "author_exact_target_lesson": 4,
     "resolve_prerequisite_scope": 2,
     "connected_writing_evidence": 5
   },
@@ -2456,14 +2456,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "produire_passe_simple::writing-controlled-production::verb:partir",
-        "produire_passe_simple::writing-controlled-production::verb:sortir",
-        "produire_passe_simple::writing-controlled-production::verb:pouvoir",
-        "produire_passe_simple::writing-controlled-production::verb:vouloir",
-        "produire_passe_simple::writing-controlled-production::verb:savoir",
-        "produire_passe_simple::writing-controlled-production::verb:devoir"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "reconnaitre_futur_simple::reading-receptive",
@@ -10503,36 +10496,40 @@
       "skillId": "produire_passe_simple::writing-controlled-production::verb:partir",
       "nodeKey": "produire_passe_simple",
       "facetKey": "produire_passe_simple::verb:partir",
-      "action": "author_exact_target_lesson",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_passe_simple::writing-controlled-production::verb:partir",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 4,
-          "learningItems": 4
+          "initialItems": 6,
+          "learningItems": 6
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:passe-simple:verb:partir"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_passe_simple::writing-controlled-production::verb:sortir",
       "nodeKey": "produire_passe_simple",
       "facetKey": "produire_passe_simple::verb:sortir",
-      "action": "author_exact_target_lesson",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_passe_simple::writing-controlled-production::verb:sortir",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 4,
-          "learningItems": 4
+          "initialItems": 6,
+          "learningItems": 6
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:passe-simple:verb:sortir"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
@@ -10579,72 +10576,80 @@
       "skillId": "produire_passe_simple::writing-controlled-production::verb:pouvoir",
       "nodeKey": "produire_passe_simple",
       "facetKey": "produire_passe_simple::verb:pouvoir",
-      "action": "author_exact_target_lesson",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_passe_simple::writing-controlled-production::verb:pouvoir",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 4,
-          "learningItems": 4
+          "initialItems": 6,
+          "learningItems": 6
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:passe-simple:verb:pouvoir"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_passe_simple::writing-controlled-production::verb:vouloir",
       "nodeKey": "produire_passe_simple",
       "facetKey": "produire_passe_simple::verb:vouloir",
-      "action": "author_exact_target_lesson",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_passe_simple::writing-controlled-production::verb:vouloir",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 4,
-          "learningItems": 4
+          "initialItems": 6,
+          "learningItems": 6
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:passe-simple:verb:vouloir"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_passe_simple::writing-controlled-production::verb:savoir",
       "nodeKey": "produire_passe_simple",
       "facetKey": "produire_passe_simple::verb:savoir",
-      "action": "author_exact_target_lesson",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_passe_simple::writing-controlled-production::verb:savoir",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 4,
-          "learningItems": 4
+          "initialItems": 6,
+          "learningItems": 6
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:passe-simple:verb:savoir"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_passe_simple::writing-controlled-production::verb:devoir",
       "nodeKey": "produire_passe_simple",
       "facetKey": "produire_passe_simple::verb:devoir",
-      "action": "author_exact_target_lesson",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_passe_simple::writing-controlled-production::verb:devoir",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 4,
-          "learningItems": 4
+          "initialItems": 6,
+          "learningItems": 6
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:passe-simple:verb:devoir"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
