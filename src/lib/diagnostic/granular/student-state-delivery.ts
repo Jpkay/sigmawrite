@@ -1,4 +1,5 @@
 import 'server-only';
+import {homeFallbackDisplay} from './home-recommendation-display';
 import {recentReadingDisplay} from './recent-reading-copy';
 import {getStudentStateData} from '@/lib/db/student';
 import {journalStudentPayload} from './server-delivery-journal';
@@ -10,6 +11,6 @@ export async function getDeliveredStudentState(
   ...args: Parameters<typeof getStudentStateData>
 ): ReturnType<typeof getStudentStateData> {
   const state = await getStudentStateData(...args);
-  await journalStudentPayload(args[0], 'legacy:student-state', {...state,recentReading:recentReadingDisplay(state.sessions)});
+  await journalStudentPayload(args[0], 'legacy:student-state', {...state,recentReading:recentReadingDisplay(state.sessions),homeFallback:homeFallbackDisplay(state.interests)});
   return state;
 }

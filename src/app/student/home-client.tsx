@@ -9,22 +9,19 @@ import { PageHeader } from "@/components/page";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
-import { SEED_TEXT_BY_ID } from "@/lib/content/texts";
-import { recommendTextId } from "@/lib/content/recommend";
-import type { SeedText } from "@/lib/content/types";
+import {homeFallbackText,homeReadingCardText,visibleHomeRecommendations,type HomeRecommendations} from "@/lib/diagnostic/granular/home-recommendation-display";
 import { hasStudentBackend, useStudentState } from "@/lib/student-store";
 import { loadStudentHome, markBadgesSeen, type ClassLeague, type SessionPlanEntry, type StudentMotivation } from "@/lib/actions/student";
 import { BadgeShelf, ClassGoalCard, WeekStrip, WeeklyRecapCard, type WeeklyRecap } from "@/components/motivation";
 import { LeagueCard } from "@/components/league";
 import { StudentAssignments } from "@/components/student-assignments";
 import { track } from "@/lib/analytics";
-import { difficultyBandLabel } from "@/lib/scoring/band";
 
 export default function StudentHome({copy}:{copy:typeof HOME_COPY}) {
   const state = useStudentState();
-  const fallback = SEED_TEXT_BY_ID[recommendTextId(state.interests)];
-  const [recommended, setRecommended] = useState<SeedText>(fallback);
-  const [recommendations, setRecommendations] = useState<SeedText[]>([fallback]);
+  const fallback = homeFallbackText(state.interests);
+  const recommendationKey=JSON.stringify(state.interests);
+  const [recommendations,setRecommendations]=useState<HomeRecommendations|null>(null);
   const [plan, setPlan] = useState<SessionPlanEntry[]>([]);
   const [motivation,setMotivation]=useState<StudentMotivation|null>(null);
   const [recap,setRecap]=useState<WeeklyRecap|null>(null);
@@ -34,24 +31,24 @@ export default function StudentHome({copy}:{copy:typeof HOME_COPY}) {
   const [assessment,setAssessment]=useState<{required:boolean;kind:string;reason:string}|null>(null);
 
   useEffect(() => {
-    const local = SEED_TEXT_BY_ID[recommendTextId(state.interests)];
     if (!hasStudentBackend || !state.hydrated || (!state.diagnostic && !state.granularDiagnosticReady)) return;
+    setRecommendations(current => current?.key === recommendationKey ? current : null);
     let active = true;
     loadStudentHome({}).then((home) => {
       if (!active) return;
-      if (home.texts?.length) { setRecommended(home.texts[0]); setRecommendations(home.texts); } else setRecommended(local);
+      setRecommendations({key:recommendationKey,texts:home.texts??[]});
       if (home.plan) setPlan(home.plan.slice(0, 6));
       else if (home.fallbackPlan) setPlan(home.fallbackPlan.slice(0, 3).map((step) => ({
         type: "practice", role: "new", nodeId: step.nodeId, label: step.label,
         mastery: step.mastery, estimatedMinutes: 7, href: `/student/practice/${step.nodeId}`,
       })));
       setMotivation(home.motivation); setResume(home.resume); setAssessment(home.assessment); setRecap(home.recap); setClassGoal(home.classGoal); setLeague(home.league);
-    }).catch(() => { if (active) setRecommended(local); });
+    }).catch(() => { if (active) setRecommendations(null); });
     return () => { active = false; };
-  }, [state.hydrated, state.diagnostic, state.granularDiagnosticReady, state.interests]);
+  }, [state.hydrated, state.diagnostic, state.granularDiagnosticReady, state.interests,recommendationKey]);
 
-  const displayedRecommendation = hasStudentBackend ? recommended : fallback;
-  const displayedRecommendations = useMemo(()=>recommendations.length ? recommendations : [displayedRecommendation],[recommendations,displayedRecommendation]);
+  const displayedRecommendations=useMemo(()=>visibleHomeRecommendations(hasStudentBackend?recommendations:null,recommendationKey,fallback),[recommendations,recommendationKey,fallback]);
+  const displayedRecommendation=displayedRecommendations[0];
   const planMinutes = plan.reduce((total, entry) => total + entry.estimatedMinutes, 0);
   const dailyGoalText=homeGoalText(motivation?.todayXp??0,motivation?.goalXp??10).split(" / ");
   useEffect(()=>{
@@ -155,7 +152,7 @@ export default function StudentHome({copy}:{copy:typeof HOME_COPY}) {
 
       {plan.length > 0 && <section className="mb-10"><div className="mb-4 flex items-end justify-between"><div><p className="font-display text-xs font-semibold uppercase tracking-[0.16em] text-success">{copy.plan}</p><h2 className="mt-1 text-xl font-semibold">{copy.planHelp}</h2></div><span className="text-sm text-muted-foreground">{homePlanSummary(plan.length,planMinutes)}</span></div><div className="border-y border-border">{plan.map((entry, index) => {const isReview=entry.role==="review";return <div key={entry.cardId ?? entry.nodeId ?? index} className="group grid gap-4 border-b border-border py-4 last:border-0 sm:grid-cols-[3rem_1fr_auto] sm:items-center"><span className={`grid size-10 place-items-center rounded-full border-2 font-display text-sm font-bold ${isReview?"border-secondary bg-secondary/15 text-secondary":"border-primary bg-primary text-primary-foreground"}`}>{index + 1}</span><div><p className="font-semibold">{entry.label}</p>{entry.mastery != null && <div className="mt-2 h-1.5 max-w-sm overflow-hidden rounded-full bg-rail"><div className="h-full rounded-full bg-success" style={{width:`${Math.round(entry.mastery*100)}%`}} /></div>}<p className="mt-1.5 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">{homePlanEntryText(entry)}</p></div><Link href={entry.href} className={buttonVariants({variant:index===0?"default":"outline",size:"sm"})}>{entry.type==="review_card"?copy.memory:entry.type==="dictation"?copy.dictation:entry.type==="production"?copy.write:isReview?copy.revise:copy.practice} <ArrowRight /></Link></div>})}</div></section>}
 
-      <section className="mb-10"><div className="mb-5 flex items-center gap-3"><Sparkles className="size-5 text-primary"/><h2 className="text-xl font-semibold">{copy.reading}</h2></div><div className="grid gap-4 lg:grid-cols-3">{displayedRecommendations.map((text, index) => <article key={text.id} className={`group flex min-h-64 flex-col justify-between rounded-lg border p-6 transition-all hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(60,50,30,.08)] ${index === 0 ? "border-primary/40 bg-accent" : "border-border bg-card"}`}><div><p className={`font-display text-[11px] font-semibold uppercase tracking-[.14em] ${index===0?"text-primary":"text-muted-foreground"}`}>{index === 0 ? copy.recommended : copy.alternative}</p><h3 className="mt-4 text-xl font-semibold leading-snug">{text.title}</h3><div className="mt-4 flex flex-wrap gap-2"><Badge>{difficultyBandLabel(text.difficultyBand)}</Badge>{text.concepts.slice(0,2).map((concept) => <Badge key={concept} variant="secondary">{concept}</Badge>)}</div></div><Link href={`/student/read/${text.id}`} onClick={() => { if (completed === 0) track("first_session_started", { text_id: text.id }); if (index > 0) track("topic_reselected", { text_id: text.id, interest: text.primaryInterest }); }} className="mt-8 flex items-center justify-between border-t border-current/10 pt-4 font-display text-sm font-bold text-foreground hover:text-primary">{copy.choose} <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" /></Link></article>)}</div></section>
+      <section className="mb-10"><div className="mb-5 flex items-center gap-3"><Sparkles className="size-5 text-primary"/><h2 className="text-xl font-semibold">{copy.reading}</h2></div><div className="grid gap-4 lg:grid-cols-3">{displayedRecommendations.map((text, index) => <article key={text.id} className={`group flex min-h-64 flex-col justify-between rounded-lg border p-6 transition-all hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(60,50,30,.08)] ${index === 0 ? "border-primary/40 bg-accent" : "border-border bg-card"}`}><div><p className={`font-display text-[11px] font-semibold uppercase tracking-[.14em] ${index===0?"text-primary":"text-muted-foreground"}`}>{index === 0 ? copy.recommended : copy.alternative}</p><h3 className="mt-4 text-xl font-semibold leading-snug">{homeReadingCardText(text).title}</h3><div className="mt-4 flex flex-wrap gap-2"><Badge>{homeReadingCardText(text).band}</Badge>{homeReadingCardText(text).concepts.map((concept) => <Badge key={concept} variant="secondary">{concept}</Badge>)}</div></div><Link href={`/student/read/${text.id}`} onClick={() => { if (completed === 0) track("first_session_started", { text_id: text.id }); if (index > 0) track("topic_reselected", { text_id: text.id, interest: text.primaryInterest }); }} className="mt-8 flex items-center justify-between border-t border-current/10 pt-4 font-display text-sm font-bold text-foreground hover:text-primary">{copy.choose} <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" /></Link></article>)}</div></section>
 
       <section><p className="mb-4 font-display text-xs font-semibold uppercase tracking-[.16em] text-muted-foreground">{copy.profile}</p><div className="grid grid-cols-2 border-y border-border sm:grid-cols-4">
         {stats.map((s) => (
