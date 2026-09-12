@@ -1,5 +1,5 @@
 {
-  "status": "candidate_published_default_and_upgrade_checks_running",
+  "status": "candidate_default_verified_full_journey_running",
   "sourceCommit": "d7848c9ccee9908d4af39ca8fbbc82ebad43d4bf",
   "frozenWorkspace": "/Users/jean-philippekayobotsi/.codex/release-workspaces/sigmawrite-r19-d7848c9",
   "candidateUrl": "https://sigmawrite-q0oufbczo-jpkays-projects.vercel.app",
@@ -13,8 +13,8 @@
   "candidateChecksum": "sha256:c6c0220aeb3fd5f805d5fdb852bb51c0988ae8a5118018fe5bcc75b6c9845f83",
   "frozenAssemblyChecks": "passed",
   "running": {
-    "freshDefault": 14052,
-    "learningUpgrade": 32095
+    "learningUpgrade": 32095,
+    "fullJourney": 21776
   },
   "remaining": [
     "Verify fresh default and real learning upgrade.",
@@ -496,6 +496,13 @@
       "instructionGapSkillIds": [],
       "freshCheckGapSkillIds": [],
       "verifiedItems": 6758
+    },
+    "freshDefault": {
+      "sessionId": "fb56fa77-8c93-499e-93d7-fe4901f1af00",
+      "releaseId": "19fc162c-12df-4387-9756-9e5635972dd0",
+      "scope": 270,
+      "defaultSelectedByApplication": true,
+      "reloadPreservedSession": true
     }
   },
   "bankReleaseId": "9ba52530-6d5f-4fd5-91b0-5db8743383fd",
@@ -503,7 +510,8 @@
     "username": "doves.granular.r19.default.qa",
     "studentId": "17a545e9-a478-4935-9e93-2c46992fae1d",
     "credentialsFile": "tmp/plume-granular-r19-default-qa.json",
-    "diagnosticStarted": false
+    "diagnosticStarted": true,
+    "sessionId": "fb56fa77-8c93-499e-93d7-fe4901f1af00"
   },
   "publicationAttempts": [
     {
