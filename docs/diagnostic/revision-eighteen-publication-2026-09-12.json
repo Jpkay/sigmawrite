@@ -1,5 +1,5 @@
 {
-  "status": "candidate_default_and_upgrade_verified_full_journey_running",
+  "status": "candidate_full_journey_verified_feature_display_check_outstanding",
   "sourceCommit": "c63a42d4456158edbd488053d6183a625bed5f8f",
   "frozenWorkspace": "/Users/jean-philippekayobotsi/.codex/release-workspaces/sigmawrite-r18-c63a42d",
   "plannedReleaseKey": "french-granular-diagnostic-v19",
@@ -96,11 +96,9 @@
     }
   },
   "running": {
-    "fullJourney": 87667,
     "foundationFeatureJourney": 23979
   },
   "remaining": [
-    "Finish the full timed diagnostic through results, learning and answer review.",
     "Finish the contrasting foundation profile and verify answered-feature counts in the deployed results view.",
     "Promote only after successful candidate checks and repeat public verification."
   ],
@@ -136,6 +134,552 @@
     "results": 542,
     "activities": 5,
     "reloadPreserved": true,
-    "learningAndReview": "running"
+    "learningAndReview": "passed"
+  },
+  "fullJourney": {
+    "results": {
+      "sessionId": "77f5be3b-38e1-4a56-834e-d9279397f4bf",
+      "releaseId": "7513b5f5-3afa-435a-975e-a3353dec2c37",
+      "scope": 266,
+      "answers": 59,
+      "correct": 47,
+      "activeSeconds": 2050.5299999999997,
+      "completionReason": "time_budget",
+      "results": 542,
+      "activities": 5,
+      "reloadPreserved": true,
+      "profile": "Existing history retained; subsequent compound-form responses deliberately wrong and every fifth other response wrong. Technical QA, not a calibrated student profile."
+    },
+    "learning": {
+      "sessionId": "77f5be3b-38e1-4a56-834e-d9279397f4bf",
+      "contentId": "french-v3-teaching:canonical-sentence:recognition",
+      "skillId": "construction_phrase_canonique::reading-analysis",
+      "initialChecks": [
+        {
+          "skillId": "construction_phrase_canonique::reading-analysis",
+          "questionId": "v3-canonical-sentence:recognition-12",
+          "correct": false
+        },
+        {
+          "skillId": "construction_phrase_canonique::reading-analysis",
+          "questionId": "v3-canonical-sentence:recognition-1",
+          "correct": false
+        },
+        {
+          "skillId": "construction_phrase_canonique::reading-analysis",
+          "questionId": "v3-canonical-sentence:recognition-10",
+          "correct": false
+        }
+      ],
+      "practiceAnswers": 6,
+      "independentQuestion": "v3-canonical-sentence:recognition-11",
+      "guidedEvidenceIsolated": true,
+      "refinementSaved": true,
+      "reloadPassed": true
+    },
+    "review": {
+      "sessionId": "77f5be3b-38e1-4a56-834e-d9279397f4bf",
+      "answers": 59,
+      "wrong": 12,
+      "submittedAnswersVerified": true,
+      "errorsFilter": true,
+      "reload": true
+    }
+  },
+  "resultAudit": {
+    "sessionId": "77f5be3b-38e1-4a56-834e-d9279397f4bf",
+    "releaseId": "7513b5f5-3afa-435a-975e-a3353dec2c37",
+    "completionReason": "time_budget",
+    "activeSeconds": 2050.5299999999997,
+    "graphTargets": 542,
+    "reportedTargets": 542,
+    "diagnosticAnswers": 59,
+    "statusCounts": {
+      "mastered": 0,
+      "missing": 0,
+      "fragile": 0,
+      "uncertain": 19,
+      "unknown": 523
+    },
+    "assessedSkills": [
+      {
+        "skillId": "distinguer_personne_nombre::reading-receptive",
+        "status": "uncertain",
+        "evidence": "direct",
+        "resolved": false,
+        "diagnosticAnswers": 3,
+        "diagnosticCorrect": 3,
+        "modes": [
+          {
+            "mode": "recognition",
+            "probability": 0.9936894184168013,
+            "distinctItems": 3,
+            "distinctContexts": 3,
+            "distinctOccasions": 1,
+            "accuracy": 1,
+            "unconfirmedFeatures": [],
+            "textTypes": [],
+            "contrastingErrorKeys": [],
+            "negativeExampleConfirmed": false,
+            "confirmed": false
+          }
+        ]
+      },
+      {
+        "skillId": "reconnaitre_radical_terminaison::reading-receptive",
+        "status": "uncertain",
+        "evidence": "direct",
+        "resolved": false,
+        "diagnosticAnswers": 1,
+        "diagnosticCorrect": 1,
+        "modes": [
+          {
+            "mode": "recognition",
+            "probability": 0.782608695652174,
+            "distinctItems": 1,
+            "distinctContexts": 1,
+            "distinctOccasions": 1,
+            "accuracy": 1,
+            "unconfirmedFeatures": [],
+            "textTypes": [],
+            "contrastingErrorKeys": [],
+            "negativeExampleConfirmed": false,
+            "confirmed": false
+          }
+        ]
+      },
+      {
+        "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
+        "status": "uncertain",
+        "evidence": "direct",
+        "resolved": false,
+        "diagnosticAnswers": 2,
+        "diagnosticCorrect": 1,
+        "modes": [
+          {
+            "mode": "production",
+            "probability": 0.6545454545454545,
+            "distinctItems": 2,
+            "distinctContexts": 1,
+            "distinctOccasions": 1,
+            "accuracy": 0.5,
+            "unconfirmedFeatures": [],
+            "textTypes": [],
+            "contrastingErrorKeys": [],
+            "negativeExampleConfirmed": false,
+            "confirmed": false
+          }
+        ]
+      },
+      {
+        "skillId": "produire_present_indicatif::writing-controlled-production::verb:aller",
+        "status": "uncertain",
+        "evidence": "direct",
+        "resolved": false,
+        "diagnosticAnswers": 5,
+        "diagnosticCorrect": 4,
+        "modes": [
+          {
+            "mode": "production",
+            "probability": 0.9999095113134672,
+            "distinctItems": 5,
+            "distinctContexts": 1,
+            "distinctOccasions": 1,
+            "accuracy": 0.8,
+            "unconfirmedFeatures": [],
+            "textTypes": [],
+            "contrastingErrorKeys": [],
+            "negativeExampleConfirmed": false,
+            "confirmed": false
+          }
+        ]
+      },
+      {
+        "skillId": "produire_futur_proche::writing-controlled-production::pattern:regular_er",
+        "status": "uncertain",
+        "evidence": "direct",
+        "resolved": false,
+        "diagnosticAnswers": 3,
+        "diagnosticCorrect": 3,
+        "modes": [
+          {
+            "mode": "production",
+            "probability": 0.9998285616320933,
+            "distinctItems": 3,
+            "distinctContexts": 3,
+            "distinctOccasions": 1,
+            "accuracy": 1,
+            "unconfirmedFeatures": [],
+            "textTypes": [],
+            "contrastingErrorKeys": [],
+            "negativeExampleConfirmed": false,
+            "confirmed": false
+          }
+        ]
+      },
+      {
+        "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
+        "status": "uncertain",
+        "evidence": "direct",
+        "resolved": false,
+        "diagnosticAnswers": 1,
+        "diagnosticCorrect": 0,
+        "modes": [
+          {
+            "mode": "production",
+            "probability": 0.09523809523809527,
+            "distinctItems": 1,
+            "distinctContexts": 1,
+            "distinctOccasions": 1,
+            "accuracy": 0,
+            "unconfirmedFeatures": [],
+            "textTypes": [],
+            "contrastingErrorKeys": [],
+            "negativeExampleConfirmed": false,
+            "confirmed": false
+          }
+        ]
+      },
+      {
+        "skillId": "localiser_information_explicite::all-receptive::text_type:informational",
+        "status": "uncertain",
+        "evidence": "direct",
+        "resolved": false,
+        "diagnosticAnswers": 1,
+        "diagnosticCorrect": 1,
+        "modes": [
+          {
+            "mode": "interpretation",
+            "probability": 0.782608695652174,
+            "distinctItems": 1,
+            "distinctContexts": 1,
+            "distinctOccasions": 1,
+            "accuracy": 1,
+            "unconfirmedFeatures": [],
+            "textTypes": [
+              "informational"
+            ],
+            "contrastingErrorKeys": [],
+            "negativeExampleConfirmed": false,
+            "confirmed": false
+          }
+        ]
+      },
+      {
+        "skillId": "ordonner_evenements_explicites::all-receptive::text_type:informational",
+        "status": "uncertain",
+        "evidence": "direct",
+        "resolved": false,
+        "diagnosticAnswers": 1,
+        "diagnosticCorrect": 0,
+        "modes": [
+          {
+            "mode": "interpretation",
+            "probability": 0.11764705882352941,
+            "distinctItems": 1,
+            "distinctContexts": 1,
+            "distinctOccasions": 1,
+            "accuracy": 0,
+            "unconfirmedFeatures": [],
+            "textTypes": [
+              "informational"
+            ],
+            "contrastingErrorKeys": [],
+            "negativeExampleConfirmed": false,
+            "confirmed": false
+          }
+        ]
+      },
+      {
+        "skillId": "ordonner_evenements_explicites::all-receptive::text_type:argumentative",
+        "status": "uncertain",
+        "evidence": "direct",
+        "resolved": false,
+        "diagnosticAnswers": 4,
+        "diagnosticCorrect": 4,
+        "modes": [
+          {
+            "mode": "interpretation",
+            "probability": 0.9940814954403842,
+            "distinctItems": 4,
+            "distinctContexts": 4,
+            "distinctOccasions": 1,
+            "accuracy": 1,
+            "unconfirmedFeatures": [],
+            "textTypes": [
+              "argumentative"
+            ],
+            "contrastingErrorKeys": [],
+            "negativeExampleConfirmed": false,
+            "confirmed": false
+          }
+        ]
+      },
+      {
+        "skillId": "resoudre_pronom_objet::all-receptive::text_type:narrative",
+        "status": "uncertain",
+        "evidence": "direct",
+        "resolved": false,
+        "diagnosticAnswers": 4,
+        "diagnosticCorrect": 4,
+        "modes": [
+          {
+            "mode": "interpretation",
+            "probability": 0.9940814954403842,
+            "distinctItems": 4,
+            "distinctContexts": 4,
+            "distinctOccasions": 1,
+            "accuracy": 1,
+            "unconfirmedFeatures": [],
+            "textTypes": [
+              "narrative"
+            ],
+            "contrastingErrorKeys": [],
+            "negativeExampleConfirmed": false,
+            "confirmed": false
+          }
+        ]
+      },
+      {
+        "skillId": "inferer_cause_locale::all-receptive::text_type:narrative",
+        "status": "uncertain",
+        "evidence": "direct",
+        "resolved": false,
+        "diagnosticAnswers": 1,
+        "diagnosticCorrect": 1,
+        "modes": [
+          {
+            "mode": "interpretation",
+            "probability": 0.782608695652174,
+            "distinctItems": 1,
+            "distinctContexts": 1,
+            "distinctOccasions": 1,
+            "accuracy": 1,
+            "unconfirmedFeatures": [],
+            "textTypes": [
+              "narrative"
+            ],
+            "contrastingErrorKeys": [],
+            "negativeExampleConfirmed": false,
+            "confirmed": false
+          }
+        ]
+      },
+      {
+        "skillId": "distinguer_fait_opinion::argumentative-receptive::text_type:argumentative",
+        "status": "uncertain",
+        "evidence": "direct",
+        "resolved": false,
+        "diagnosticAnswers": 3,
+        "diagnosticCorrect": 1,
+        "modes": [
+          {
+            "mode": "interpretation",
+            "probability": 0.06015037593984965,
+            "distinctItems": 3,
+            "distinctContexts": 3,
+            "distinctOccasions": 1,
+            "accuracy": 0.3333333333333333,
+            "unconfirmedFeatures": [],
+            "textTypes": [
+              "argumentative"
+            ],
+            "contrastingErrorKeys": [],
+            "negativeExampleConfirmed": false,
+            "confirmed": false
+          }
+        ]
+      },
+      {
+        "skillId": "construction_phrase_canonique::reading-analysis",
+        "status": "uncertain",
+        "evidence": "direct",
+        "resolved": false,
+        "diagnosticAnswers": 0,
+        "diagnosticCorrect": 0,
+        "modes": [
+          {
+            "mode": "recognition",
+            "probability": 0.782608695652174,
+            "distinctItems": 1,
+            "distinctContexts": 1,
+            "distinctOccasions": 1,
+            "accuracy": 1,
+            "unconfirmedFeatures": [],
+            "textTypes": [],
+            "contrastingErrorKeys": [],
+            "negativeExampleConfirmed": false,
+            "confirmed": false
+          }
+        ]
+      },
+      {
+        "skillId": "construction_accord_determinant_nom::reading-analysis",
+        "status": "uncertain",
+        "evidence": "direct",
+        "resolved": false,
+        "diagnosticAnswers": 4,
+        "diagnosticCorrect": 3,
+        "modes": [
+          {
+            "mode": "recognition",
+            "probability": 0.8615111898958564,
+            "distinctItems": 4,
+            "distinctContexts": 4,
+            "distinctOccasions": 1,
+            "accuracy": 0.75,
+            "unconfirmedFeatures": [],
+            "textTypes": [],
+            "contrastingErrorKeys": [],
+            "negativeExampleConfirmed": true,
+            "confirmed": false
+          }
+        ]
+      },
+      {
+        "skillId": "construction_accord_sujet_verbe::reading-analysis::construction:adjacent",
+        "status": "uncertain",
+        "evidence": "direct",
+        "resolved": false,
+        "diagnosticAnswers": 1,
+        "diagnosticCorrect": 1,
+        "modes": [
+          {
+            "mode": "recognition",
+            "probability": 0.782608695652174,
+            "distinctItems": 1,
+            "distinctContexts": 1,
+            "distinctOccasions": 1,
+            "accuracy": 1,
+            "unconfirmedFeatures": [],
+            "textTypes": [],
+            "contrastingErrorKeys": [],
+            "negativeExampleConfirmed": true,
+            "confirmed": false
+          }
+        ]
+      },
+      {
+        "skillId": "identifier_complement_direct::reading-receptive",
+        "status": "uncertain",
+        "evidence": "direct",
+        "resolved": false,
+        "diagnosticAnswers": 2,
+        "diagnosticCorrect": 2,
+        "modes": [
+          {
+            "mode": "recognition",
+            "probability": 0.9283667621776505,
+            "distinctItems": 2,
+            "distinctContexts": 2,
+            "distinctOccasions": 1,
+            "accuracy": 1,
+            "unconfirmedFeatures": [],
+            "textTypes": [],
+            "contrastingErrorKeys": [],
+            "negativeExampleConfirmed": false,
+            "confirmed": false
+          }
+        ]
+      },
+      {
+        "skillId": "produire_pronom_cod::writing-controlled-production::construction:la",
+        "status": "uncertain",
+        "evidence": "direct",
+        "resolved": false,
+        "diagnosticAnswers": 2,
+        "diagnosticCorrect": 1,
+        "modes": [
+          {
+            "mode": "production",
+            "probability": 0.3932038834951457,
+            "distinctItems": 2,
+            "distinctContexts": 2,
+            "distinctOccasions": 1,
+            "accuracy": 0.5,
+            "unconfirmedFeatures": [],
+            "textTypes": [],
+            "contrastingErrorKeys": [],
+            "negativeExampleConfirmed": false,
+            "confirmed": false
+          }
+        ]
+      },
+      {
+        "skillId": "produire_pronom_cod::writing-controlled-production::construction:elision",
+        "status": "uncertain",
+        "evidence": "direct",
+        "resolved": false,
+        "diagnosticAnswers": 4,
+        "diagnosticCorrect": 3,
+        "modes": [
+          {
+            "mode": "production",
+            "probability": 0.9497378325345001,
+            "distinctItems": 4,
+            "distinctContexts": 4,
+            "distinctOccasions": 1,
+            "accuracy": 0.75,
+            "unconfirmedFeatures": [],
+            "textTypes": [],
+            "contrastingErrorKeys": [],
+            "negativeExampleConfirmed": false,
+            "confirmed": false
+          }
+        ]
+      },
+      {
+        "skillId": "produire_pronom_coi_personne::writing-controlled-production::construction:leur",
+        "status": "uncertain",
+        "evidence": "direct",
+        "resolved": false,
+        "diagnosticAnswers": 1,
+        "diagnosticCorrect": 1,
+        "modes": [
+          {
+            "mode": "production",
+            "probability": 0.84375,
+            "distinctItems": 1,
+            "distinctContexts": 1,
+            "distinctOccasions": 1,
+            "accuracy": 1,
+            "unconfirmedFeatures": [],
+            "textTypes": [],
+            "contrastingErrorKeys": [],
+            "negativeExampleConfirmed": false,
+            "confirmed": false
+          }
+        ]
+      }
+    ],
+    "activities": [
+      {
+        "skillId": "construction_phrase_canonique::reading-analysis",
+        "kind": "independent_check",
+        "titleFr": "Reconna\u00eetre une phrase canonique"
+      },
+      {
+        "skillId": "deduire_mot_definition_locale::all-receptive::text_type:informational",
+        "kind": "independent_check",
+        "titleFr": "D\u00e9duire un mot gr\u00e2ce \u00e0 une d\u00e9finition locale \u2014 Texte informatif bref"
+      },
+      {
+        "skillId": "former_feminin_adjectif_regulier::writing-controlled-production",
+        "kind": "independent_check",
+        "titleFr": "Former le f\u00e9minin r\u00e9gulier d'un adjectif"
+      },
+      {
+        "skillId": "former_participe_passe::writing-controlled-production::construction:er",
+        "kind": "independent_check",
+        "titleFr": "Former un participe pass\u00e9 \u2014 Participes en -\u00e9"
+      },
+      {
+        "skillId": "construction_phrase_canonique::writing-controlled-production",
+        "kind": "independent_check",
+        "titleFr": "Reconna\u00eetre une phrase canonique"
+      }
+    ],
+    "findings": [],
+    "limitation": "Technical consistency audit, not psychometric validation. Diagnostic counts exclude later refinements; reported mode evidence may include them."
   }
 }
