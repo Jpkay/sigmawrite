@@ -4,6 +4,10 @@
  * Authenticated route visits record delivery, but no answers are submitted.
  */
 import {strict as assert} from 'node:assert';
+import {MEMORY_COPY} from '../src/lib/diagnostic/granular/memory-display';
+import {INBOX_COPY} from '../src/lib/diagnostic/granular/inbox-display';
+import {VOCABULARY_COPY} from '../src/lib/diagnostic/granular/vocabulary-display';
+import {RECUEIL_COPY} from '../src/lib/diagnostic/granular/recueil-display';
 import {readFileSync,writeFileSync} from 'node:fs';
 import {config} from 'dotenv';
 import {createClient} from '@supabase/supabase-js';
@@ -70,6 +74,23 @@ try {
   if(progress.error)throw progress.error;
   homeAndProgressVerified=true;
  }
+ const additionalPages:string[]=[];
+ if(process.env.PLUME_VERIFY_ADDITIONAL==='true'){
+  for(const [path,title,boundary,copy] of [
+   ['/student/memory','Mémoire','student:memory-copy',MEMORY_COPY],
+   ['/student/inbox','Boîte de réception','student:inbox-copy',INBOX_COPY],
+   ['/student/vocabulary','Vocabulaire','legacy:vocabulary',VOCABULARY_COPY],
+   ['/student/recueil','Mon recueil','student:recueil-display',RECUEIL_COPY],
+  ] as const){
+   const response=await page.goto(base+path,{waitUntil:'domcontentloaded',timeout:60000});assert.ok(response?.ok(),path);
+   await page.getByRole('heading',{name:title,exact:true}).first().waitFor({timeout:60000});
+   const copyFragments=deliveredTextFragments(copy);
+   const saved=await db.from('student_material_delivery_journal').select('text_fragments').eq('student_id',credential.studentId).eq('boundary',boundary);
+   if(saved.error)throw new Error(path+': '+saved.error.message);
+   assert.ok(saved.data.some(row=>copyFragments.every(fragment=>row.text_fragments.includes(fragment))),path+': complete copy missing');
+   additionalPages.push(path);
+  }
+ }
  const worker=await page.evaluate(async()=>{
   const registration=await navigator.serviceWorker.register('/sw.js',{type:'module',updateViaCache:'none'});
   let timeout:ReturnType<typeof setTimeout>|undefined;
@@ -81,6 +102,6 @@ try {
  await page.setViewportSize({width:390,height:844});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
  assert.deepEqual(await session(),before);assert.deepEqual(errors,[]);
  const report={base,studentId:credential.studentId,sessionId,diagnosticCopyChecksum:checksum(fragments),diagnosticCopyCaptured:true,reviewCopyCaptured:true,lessonListCopyCaptured:true,reviewAnswers:answers,serverOwnerHeaderVerified:true,moduleWorkerRegistered:true,mobileNoHorizontalOverflow:true,sessionUnchanged:true,pageErrors:errors,limits:'Existing completed technical account; no answers submitted and no complete-history activation. This checks deployed UI capture and worker registration, not a fresh diagnostic or full offline behavior.'};
- Object.assign(report,{homeAndProgressVerified});
+ Object.assign(report,{homeAndProgressVerified,additionalPages});
  writeFileSync(reportPath,JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));
 } finally {await browser.close();}
