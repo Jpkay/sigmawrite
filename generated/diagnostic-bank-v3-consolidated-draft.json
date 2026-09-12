@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "bank": {
-    "key": "french-diagnostic-bank-v3-r29",
-    "version": "3.0.0-r29"
+    "key": "french-diagnostic-bank-v3-r30",
+    "version": "3.0.0-r30"
   },
   "taxonomy": {
     "releaseKey": "french-taxonomy-v3",
@@ -37491,6 +37491,2102 @@
         "verdict": "needs_human_review"
       },
       "reviewStatus": "needs_human_review"
+    },
+    {
+      "itemKey": "v3-adjective-link:analysis-1",
+      "item": {
+        "nodeKey": "construction_accord_nom_adjectif",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "La robe de ma sœur est verte.\n\nQuel mot commande l’accord de « verte » ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "La robe de ma sœur est verte."
+            ],
+            "assessed": {
+              "sentences": [
+                "La robe de ma sœur est verte."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Le nom « robe », au féminin singulier.",
+            "correct": true
+          },
+          {
+            "text": "Le nom « sœur », parce qu’il est dans la même phrase.",
+            "correct": false
+          },
+          {
+            "text": "L’adjectif ne dépend d’aucun nom dans cette phrase.",
+            "correct": false
+          },
+          {
+            "text": "Le verbe détermine à lui seul le genre de l’adjectif.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "noun-adjective-link",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-adjective-link:analysis-2",
+      "item": {
+        "nodeKey": "construction_accord_nom_adjectif",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Les murs de la cabane sont blancs.\n\nQuel mot commande l’accord de « blancs » ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les murs de la cabane sont blancs."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les murs de la cabane sont blancs."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Le nom « murs », au masculin pluriel.",
+            "correct": true
+          },
+          {
+            "text": "Le nom « cabane », parce qu’il est dans la même phrase.",
+            "correct": false
+          },
+          {
+            "text": "L’adjectif ne dépend d’aucun nom dans cette phrase.",
+            "correct": false
+          },
+          {
+            "text": "Le verbe détermine à lui seul le genre de l’adjectif.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "noun-adjective-link",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-adjective-link:analysis-3",
+      "item": {
+        "nodeKey": "construction_accord_nom_adjectif",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Les chaussures du gardien sont mouillées.\n\nQuel mot commande l’accord de « mouillées » ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les chaussures du gardien sont mouillées."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les chaussures du gardien sont mouillées."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Le nom « chaussures », au féminin pluriel.",
+            "correct": true
+          },
+          {
+            "text": "Le nom « gardien », parce qu’il est dans la même phrase.",
+            "correct": false
+          },
+          {
+            "text": "L’adjectif ne dépend d’aucun nom dans cette phrase.",
+            "correct": false
+          },
+          {
+            "text": "Le verbe détermine à lui seul le genre de l’adjectif.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "noun-adjective-link",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-adjective-link:analysis-4",
+      "item": {
+        "nodeKey": "construction_accord_nom_adjectif",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le panier des voisines reste vide.\n\nQuel mot commande l’accord de « vide » ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le panier des voisines reste vide."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le panier des voisines reste vide."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Le nom « panier », au masculin singulier.",
+            "correct": true
+          },
+          {
+            "text": "Le nom « voisines », parce qu’il est dans la même phrase.",
+            "correct": false
+          },
+          {
+            "text": "L’adjectif ne dépend d’aucun nom dans cette phrase.",
+            "correct": false
+          },
+          {
+            "text": "Le verbe détermine à lui seul le genre de l’adjectif.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "noun-adjective-link",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-adjective-link:analysis-5",
+      "item": {
+        "nodeKey": "construction_accord_nom_adjectif",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Une épaisse fumée sort de la cheminée.\n\nQuel mot commande l’accord de « épaisse » ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Une épaisse fumée sort de la cheminée."
+            ],
+            "assessed": {
+              "sentences": [
+                "Une épaisse fumée sort de la cheminée."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Le nom « fumée », au féminin singulier.",
+            "correct": true
+          },
+          {
+            "text": "Le nom « cheminée », parce qu’il est dans la même phrase.",
+            "correct": false
+          },
+          {
+            "text": "L’adjectif ne dépend d’aucun nom dans cette phrase.",
+            "correct": false
+          },
+          {
+            "text": "Le verbe détermine à lui seul le genre de l’adjectif.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "noun-adjective-link",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-adjective-link:analysis-6",
+      "item": {
+        "nodeKey": "construction_accord_nom_adjectif",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "De petits oiseaux traversent le jardin.\n\nQuel mot commande l’accord de « petits » ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "De petits oiseaux traversent le jardin."
+            ],
+            "assessed": {
+              "sentences": [
+                "De petits oiseaux traversent le jardin."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Le nom « oiseaux », au masculin pluriel.",
+            "correct": true
+          },
+          {
+            "text": "Le nom « jardin », parce qu’il est dans la même phrase.",
+            "correct": false
+          },
+          {
+            "text": "L’adjectif ne dépend d’aucun nom dans cette phrase.",
+            "correct": false
+          },
+          {
+            "text": "Le verbe détermine à lui seul le genre de l’adjectif.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "noun-adjective-link",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-adjective-link:analysis-7",
+      "item": {
+        "nodeKey": "construction_accord_nom_adjectif",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Des fenêtres étroites donnent sur la cour.\n\nQuel mot commande l’accord de « étroites » ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Des fenêtres étroites donnent sur la cour."
+            ],
+            "assessed": {
+              "sentences": [
+                "Des fenêtres étroites donnent sur la cour."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Le nom « fenêtres », au féminin pluriel.",
+            "correct": true
+          },
+          {
+            "text": "Le nom « cour », parce qu’il est dans la même phrase.",
+            "correct": false
+          },
+          {
+            "text": "L’adjectif ne dépend d’aucun nom dans cette phrase.",
+            "correct": false
+          },
+          {
+            "text": "Le verbe détermine à lui seul le genre de l’adjectif.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "noun-adjective-link",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-adjective-link:analysis-8",
+      "item": {
+        "nodeKey": "construction_accord_nom_adjectif",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Un immense arbre domine les maisons.\n\nQuel mot commande l’accord de « immense » ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Un immense arbre domine les maisons."
+            ],
+            "assessed": {
+              "sentences": [
+                "Un immense arbre domine les maisons."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Le nom « arbre », au masculin singulier.",
+            "correct": true
+          },
+          {
+            "text": "Le nom « maisons », parce qu’il est dans la même phrase.",
+            "correct": false
+          },
+          {
+            "text": "L’adjectif ne dépend d’aucun nom dans cette phrase.",
+            "correct": false
+          },
+          {
+            "text": "Le verbe détermine à lui seul le genre de l’adjectif.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "noun-adjective-link",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-adjective-link:analysis-9",
+      "item": {
+        "nodeKey": "construction_accord_nom_adjectif",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "La statue, malgré ses défauts, paraît élégante.\n\nQuel mot commande l’accord de « élégante » ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "La statue, malgré ses défauts, paraît élégante."
+            ],
+            "assessed": {
+              "sentences": [
+                "La statue, malgré ses défauts, paraît élégante."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Le nom « statue », au féminin singulier.",
+            "correct": true
+          },
+          {
+            "text": "Le nom « défauts », parce qu’il est dans la même phrase.",
+            "correct": false
+          },
+          {
+            "text": "L’adjectif ne dépend d’aucun nom dans cette phrase.",
+            "correct": false
+          },
+          {
+            "text": "Le verbe détermine à lui seul le genre de l’adjectif.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "noun-adjective-link",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-adjective-link:analysis-10",
+      "item": {
+        "nodeKey": "construction_accord_nom_adjectif",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Les tiroirs, sous la tablette, semblent profonds.\n\nQuel mot commande l’accord de « profonds » ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les tiroirs, sous la tablette, semblent profonds."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les tiroirs, sous la tablette, semblent profonds."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Le nom « tiroirs », au masculin pluriel.",
+            "correct": true
+          },
+          {
+            "text": "Le nom « tablette », parce qu’il est dans la même phrase.",
+            "correct": false
+          },
+          {
+            "text": "L’adjectif ne dépend d’aucun nom dans cette phrase.",
+            "correct": false
+          },
+          {
+            "text": "Le verbe détermine à lui seul le genre de l’adjectif.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "noun-adjective-link",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-adjective-link:analysis-11",
+      "item": {
+        "nodeKey": "construction_accord_nom_adjectif",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Les affiches de ce film sont originales.\n\nQuel mot commande l’accord de « originales » ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les affiches de ce film sont originales."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les affiches de ce film sont originales."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Le nom « affiches », au féminin pluriel.",
+            "correct": true
+          },
+          {
+            "text": "Le nom « film », parce qu’il est dans la même phrase.",
+            "correct": false
+          },
+          {
+            "text": "L’adjectif ne dépend d’aucun nom dans cette phrase.",
+            "correct": false
+          },
+          {
+            "text": "Le verbe détermine à lui seul le genre de l’adjectif.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "noun-adjective-link",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-adjective-link:analysis-12",
+      "item": {
+        "nodeKey": "construction_accord_nom_adjectif",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le costume des acteurs paraît ancien.\n\nQuel mot commande l’accord de « ancien » ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le costume des acteurs paraît ancien."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le costume des acteurs paraît ancien."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Le nom « costume », au masculin singulier.",
+            "correct": true
+          },
+          {
+            "text": "Le nom « acteurs », parce qu’il est dans la même phrase.",
+            "correct": false
+          },
+          {
+            "text": "L’adjectif ne dépend d’aucun nom dans cette phrase.",
+            "correct": false
+          },
+          {
+            "text": "Le verbe détermine à lui seul le genre de l’adjectif.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "noun-adjective-link",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-adjective-link:analysis-absence-1",
+      "item": {
+        "nodeKey": "construction_accord_nom_adjectif",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Les cyclistes roulent vite.\n\nQuelle analyse de l’accord nom-adjectif est juste ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les cyclistes roulent vite."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les cyclistes roulent vite."
+              ]
+            }
+          },
+          "negativeExample": {
+            "excerptFr": "Les cyclistes roulent vite.",
+            "rationaleFr": "Il n’y a pas ici de relation nom-adjectif à analyser. Un verbe ou un adverbe n’est pas un adjectif simplement parce qu’il suit un nom."
+          }
+        },
+        "choices": [
+          {
+            "text": "Cette phrase ne contient pas d’adjectif à accorder avec un nom.",
+            "correct": true
+          },
+          {
+            "text": "Le verbe est un adjectif accordé avec le premier nom.",
+            "correct": false
+          },
+          {
+            "text": "Chaque mot placé après un nom est un adjectif.",
+            "correct": false
+          },
+          {
+            "text": "Tous les mots de cette phrase prennent le genre du premier nom.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "noun-adjective-link",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-adjective-link:analysis-absence-2",
+      "item": {
+        "nodeKey": "construction_accord_nom_adjectif",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le public applaudit.\n\nQuelle analyse de l’accord nom-adjectif est juste ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le public applaudit."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le public applaudit."
+              ]
+            }
+          },
+          "negativeExample": {
+            "excerptFr": "Le public applaudit.",
+            "rationaleFr": "Il n’y a pas ici de relation nom-adjectif à analyser. Un verbe ou un adverbe n’est pas un adjectif simplement parce qu’il suit un nom."
+          }
+        },
+        "choices": [
+          {
+            "text": "Cette phrase ne contient pas d’adjectif à accorder avec un nom.",
+            "correct": true
+          },
+          {
+            "text": "Le verbe est un adjectif accordé avec le premier nom.",
+            "correct": false
+          },
+          {
+            "text": "Chaque mot placé après un nom est un adjectif.",
+            "correct": false
+          },
+          {
+            "text": "Tous les mots de cette phrase prennent le genre du premier nom.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "noun-adjective-link",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-adjective-link:analysis-absence-3",
+      "item": {
+        "nodeKey": "construction_accord_nom_adjectif",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "La porte du garage grince.\n\nQuelle analyse de l’accord nom-adjectif est juste ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "La porte du garage grince."
+            ],
+            "assessed": {
+              "sentences": [
+                "La porte du garage grince."
+              ]
+            }
+          },
+          "negativeExample": {
+            "excerptFr": "La porte du garage grince.",
+            "rationaleFr": "Il n’y a pas ici de relation nom-adjectif à analyser. Un verbe ou un adverbe n’est pas un adjectif simplement parce qu’il suit un nom."
+          }
+        },
+        "choices": [
+          {
+            "text": "Cette phrase ne contient pas d’adjectif à accorder avec un nom.",
+            "correct": true
+          },
+          {
+            "text": "Le verbe est un adjectif accordé avec le premier nom.",
+            "correct": false
+          },
+          {
+            "text": "Chaque mot placé après un nom est un adjectif.",
+            "correct": false
+          },
+          {
+            "text": "Tous les mots de cette phrase prennent le genre du premier nom.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "noun-adjective-link",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-adjective-link:analysis-absence-4",
+      "item": {
+        "nodeKey": "construction_accord_nom_adjectif",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Les invités parlent doucement.\n\nQuelle analyse de l’accord nom-adjectif est juste ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les invités parlent doucement."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les invités parlent doucement."
+              ]
+            }
+          },
+          "negativeExample": {
+            "excerptFr": "Les invités parlent doucement.",
+            "rationaleFr": "Il n’y a pas ici de relation nom-adjectif à analyser. Un verbe ou un adverbe n’est pas un adjectif simplement parce qu’il suit un nom."
+          }
+        },
+        "choices": [
+          {
+            "text": "Cette phrase ne contient pas d’adjectif à accorder avec un nom.",
+            "correct": true
+          },
+          {
+            "text": "Le verbe est un adjectif accordé avec le premier nom.",
+            "correct": false
+          },
+          {
+            "text": "Chaque mot placé après un nom est un adjectif.",
+            "correct": false
+          },
+          {
+            "text": "Tous les mots de cette phrase prennent le genre du premier nom.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "noun-adjective-link",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-adjective-link:production-1",
+      "item": {
+        "nodeKey": "construction_accord_nom_adjectif",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la phrase avec l’adjectif « blanc » correctement accordé.\n\nLa nappe du restaurant reste ___.",
+        "instructionsFr": "Écris seulement l’adjectif accordé.",
+        "correctAnswer": "blanche",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "La nappe du restaurant reste ___."
+            ],
+            "assessed": {
+              "sentences": [
+                "La nappe du restaurant reste ___."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "blanche",
+              "blanc",
+              "blancs",
+              "blanches"
+            ],
+            "rationaleFr": "L’adjectif est fourni. Quatre formes de genre et de nombre sont possibles : plancher de hasard de 1/4, sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "noun-adjective-link",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-adjective-link:production-2",
+      "item": {
+        "nodeKey": "construction_accord_nom_adjectif",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la phrase avec l’adjectif « étroit » correctement accordé.\n\nLes rayons de la boutique sont ___.",
+        "instructionsFr": "Écris seulement l’adjectif accordé.",
+        "correctAnswer": "étroits",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les rayons de la boutique sont ___."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les rayons de la boutique sont ___."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "étroits",
+              "étroit",
+              "étroite",
+              "étroites"
+            ],
+            "rationaleFr": "L’adjectif est fourni. Quatre formes de genre et de nombre sont possibles : plancher de hasard de 1/4, sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "noun-adjective-link",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-adjective-link:production-3",
+      "item": {
+        "nodeKey": "construction_accord_nom_adjectif",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la phrase avec l’adjectif « chaud » correctement accordé.\n\nLes couvertures du bébé sont ___.",
+        "instructionsFr": "Écris seulement l’adjectif accordé.",
+        "correctAnswer": "chaudes",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les couvertures du bébé sont ___."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les couvertures du bébé sont ___."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "chaudes",
+              "chaud",
+              "chaude",
+              "chauds"
+            ],
+            "rationaleFr": "L’adjectif est fourni. Quatre formes de genre et de nombre sont possibles : plancher de hasard de 1/4, sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "noun-adjective-link",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-adjective-link:production-4",
+      "item": {
+        "nodeKey": "construction_accord_nom_adjectif",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la phrase avec l’adjectif « réussi » correctement accordé.\n\nLe dessin des enfants paraît ___.",
+        "instructionsFr": "Écris seulement l’adjectif accordé.",
+        "correctAnswer": "réussi",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le dessin des enfants paraît ___."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le dessin des enfants paraît ___."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "réussi",
+              "réussie",
+              "réussis",
+              "réussies"
+            ],
+            "rationaleFr": "L’adjectif est fourni. Quatre formes de genre et de nombre sont possibles : plancher de hasard de 1/4, sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "noun-adjective-link",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-adjective-link:production-5",
+      "item": {
+        "nodeKey": "construction_accord_nom_adjectif",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la phrase avec l’adjectif « lourd » correctement accordé.\n\nUne ___ valise bloque le passage.",
+        "instructionsFr": "Écris seulement l’adjectif accordé.",
+        "correctAnswer": "lourde",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Une ___ valise bloque le passage."
+            ],
+            "assessed": {
+              "sentences": [
+                "Une ___ valise bloque le passage."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "lourde",
+              "lourd",
+              "lourds",
+              "lourdes"
+            ],
+            "rationaleFr": "L’adjectif est fourni. Quatre formes de genre et de nombre sont possibles : plancher de hasard de 1/4, sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "noun-adjective-link",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-adjective-link:production-6",
+      "item": {
+        "nodeKey": "construction_accord_nom_adjectif",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la phrase avec l’adjectif « long » correctement accordé.\n\nDe ___ cordes relient les poteaux.",
+        "instructionsFr": "Écris seulement l’adjectif accordé.",
+        "correctAnswer": "longues",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "De ___ cordes relient les poteaux."
+            ],
+            "assessed": {
+              "sentences": [
+                "De ___ cordes relient les poteaux."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "longues",
+              "long",
+              "longs",
+              "longue"
+            ],
+            "rationaleFr": "L’adjectif est fourni. Quatre formes de genre et de nombre sont possibles : plancher de hasard de 1/4, sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "noun-adjective-link",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-adjective-link:production-7",
+      "item": {
+        "nodeKey": "construction_accord_nom_adjectif",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la phrase avec l’adjectif « froid » correctement accordé.\n\nUn vent ___ traverse les rues.",
+        "instructionsFr": "Écris seulement l’adjectif accordé.",
+        "correctAnswer": "froid",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Un vent ___ traverse les rues."
+            ],
+            "assessed": {
+              "sentences": [
+                "Un vent ___ traverse les rues."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "froid",
+              "froide",
+              "froids",
+              "froides"
+            ],
+            "rationaleFr": "L’adjectif est fourni. Quatre formes de genre et de nombre sont possibles : plancher de hasard de 1/4, sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "noun-adjective-link",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-adjective-link:production-8",
+      "item": {
+        "nodeKey": "construction_accord_nom_adjectif",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la phrase avec l’adjectif « petit » correctement accordé.\n\nDe ___ éclats couvrent le sol.",
+        "instructionsFr": "Écris seulement l’adjectif accordé.",
+        "correctAnswer": "petits",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "De ___ éclats couvrent le sol."
+            ],
+            "assessed": {
+              "sentences": [
+                "De ___ éclats couvrent le sol."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "petits",
+              "petit",
+              "petite",
+              "petites"
+            ],
+            "rationaleFr": "L’adjectif est fourni. Quatre formes de genre et de nombre sont possibles : plancher de hasard de 1/4, sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "noun-adjective-link",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-adjective-link:production-9",
+      "item": {
+        "nodeKey": "construction_accord_nom_adjectif",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la phrase avec l’adjectif « ouvert » correctement accordé.\n\nLa bibliothèque, malgré les travaux, reste ___.",
+        "instructionsFr": "Écris seulement l’adjectif accordé.",
+        "correctAnswer": "ouverte",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "La bibliothèque, malgré les travaux, reste ___."
+            ],
+            "assessed": {
+              "sentences": [
+                "La bibliothèque, malgré les travaux, reste ___."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ouverte",
+              "ouvert",
+              "ouverts",
+              "ouvertes"
+            ],
+            "rationaleFr": "L’adjectif est fourni. Quatre formes de genre et de nombre sont possibles : plancher de hasard de 1/4, sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "noun-adjective-link",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-adjective-link:production-10",
+      "item": {
+        "nodeKey": "construction_accord_nom_adjectif",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la phrase avec l’adjectif « léger » correctement accordé.\n\nLes boîtes de ce jeu paraissent ___.",
+        "instructionsFr": "Écris seulement l’adjectif accordé.",
+        "correctAnswer": "légères",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les boîtes de ce jeu paraissent ___."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les boîtes de ce jeu paraissent ___."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "légères",
+              "léger",
+              "légers",
+              "légère"
+            ],
+            "rationaleFr": "L’adjectif est fourni. Quatre formes de genre et de nombre sont possibles : plancher de hasard de 1/4, sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "noun-adjective-link",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-adjective-link:production-11",
+      "item": {
+        "nodeKey": "construction_accord_nom_adjectif",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la phrase avec l’adjectif « fermé » correctement accordé.\n\nLes portails, derrière la haie, sont ___.",
+        "instructionsFr": "Écris seulement l’adjectif accordé.",
+        "correctAnswer": "fermés",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les portails, derrière la haie, sont ___."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les portails, derrière la haie, sont ___."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "fermés",
+              "fermé",
+              "fermée",
+              "fermées"
+            ],
+            "rationaleFr": "L’adjectif est fourni. Quatre formes de genre et de nombre sont possibles : plancher de hasard de 1/4, sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "noun-adjective-link",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-adjective-link:production-12",
+      "item": {
+        "nodeKey": "construction_accord_nom_adjectif",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la phrase avec l’adjectif « isolé » correctement accordé.\n\nLe village des pêcheurs semble ___.",
+        "instructionsFr": "Écris seulement l’adjectif accordé.",
+        "correctAnswer": "isolé",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le village des pêcheurs semble ___."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le village des pêcheurs semble ___."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "isolé",
+              "isolée",
+              "isolés",
+              "isolées"
+            ],
+            "rationaleFr": "L’adjectif est fourni. Quatre formes de genre et de nombre sont possibles : plancher de hasard de 1/4, sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "noun-adjective-link",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-adjective-link:production-13",
+      "item": {
+        "nodeKey": "construction_accord_nom_adjectif",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la phrase avec l’adjectif « bleu » correctement accordé.\n\nLa lumière des lampions devient ___.",
+        "instructionsFr": "Écris seulement l’adjectif accordé.",
+        "correctAnswer": "bleue",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "La lumière des lampions devient ___."
+            ],
+            "assessed": {
+              "sentences": [
+                "La lumière des lampions devient ___."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "bleue",
+              "bleu",
+              "bleus",
+              "bleues"
+            ],
+            "rationaleFr": "L’adjectif est fourni. Quatre formes de genre et de nombre sont possibles : plancher de hasard de 1/4, sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "noun-adjective-link",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-adjective-link:production-14",
+      "item": {
+        "nodeKey": "construction_accord_nom_adjectif",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la phrase avec l’adjectif « beau » correctement accordé.\n\nLes fleurs du balcon restent ___.",
+        "instructionsFr": "Écris seulement l’adjectif accordé.",
+        "correctAnswer": "belles",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les fleurs du balcon restent ___."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les fleurs du balcon restent ___."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "belles",
+              "beau",
+              "beaux",
+              "belle"
+            ],
+            "rationaleFr": "L’adjectif est fourni. Quatre formes de genre et de nombre sont possibles : plancher de hasard de 1/4, sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "noun-adjective-link",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-adjective-link:production-15",
+      "item": {
+        "nodeKey": "construction_accord_nom_adjectif",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la phrase avec l’adjectif « plein » correctement accordé.\n\nLe sac des voyageurs paraît ___.",
+        "instructionsFr": "Écris seulement l’adjectif accordé.",
+        "correctAnswer": "plein",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le sac des voyageurs paraît ___."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le sac des voyageurs paraît ___."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "plein",
+              "pleine",
+              "pleins",
+              "pleines"
+            ],
+            "rationaleFr": "L’adjectif est fourni. Quatre formes de genre et de nombre sont possibles : plancher de hasard de 1/4, sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "noun-adjective-link",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-adjective-link:production-16",
+      "item": {
+        "nodeKey": "construction_accord_nom_adjectif",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète la phrase avec l’adjectif « glissant » correctement accordé.\n\nLes sentiers de la colline sont ___.",
+        "instructionsFr": "Écris seulement l’adjectif accordé.",
+        "correctAnswer": "glissants",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les sentiers de la colline sont ___."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les sentiers de la colline sont ___."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "glissants",
+              "glissant",
+              "glissante",
+              "glissantes"
+            ],
+            "rationaleFr": "L’adjectif est fourni. Quatre formes de genre et de nombre sont possibles : plancher de hasard de 1/4, sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "noun-adjective-link",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
     },
     {
       "itemKey": "v3-written-determiner:recognition-1",
@@ -470325,9 +472421,9 @@
     }
   ],
   "manifest": {
-    "itemCount": 7354,
+    "itemCount": 7386,
     "eligibleItemCount": 238,
-    "pendingItemCount": 7116,
+    "pendingItemCount": 7148,
     "publicationMode": "partial",
     "nodeCount": 114,
     "sectionReadiness": [
@@ -470376,6 +472472,6 @@
         "difficultyTierCount": 3
       }
     ],
-    "checksum": "sha256:b5de55c07ad3abfbd9c26ad1241df3304add40402b6357884acfa8d72f1d7099"
+    "checksum": "sha256:56012ab522287c8daf77d82e9b353acd73d63f58f9feaf857aae51cb7d1a487f"
   }
 }
