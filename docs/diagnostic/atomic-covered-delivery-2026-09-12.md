@@ -1,0 +1,7 @@
+# Atomic covered material delivery
+
+The new service-only database operation records a delivered text payload and its material presentations in one transaction. A failed journal identity check or invalid later batch member rolls back all new presentations, coverage receipts and journal entries. Presentation receipts precede the current payload journal so the prior-text reader excludes that payload.
+
+Validation: `sh scripts/testing/material-coverage-db.sh` passed on disposable PostgreSQL 17 on 2026-09-12. It covers disabled-contract refusal, owner isolation, retry receipt stability, journal mismatch rollback, multi-presentation rollback, current-text exclusion, earlier-text inclusion, legacy students without a baseline, later untracked deliveries, immutable earlier receipts and client-role restrictions. Separate database connections observed the coverage lock and verified that concurrent invalidation leaves the subsequent atomic batch unverified. The existing ordinary-recorder concurrency test also passed.
+
+This migration has not been applied remotely. The application does not call the new operation and the complete-capture contract remains disabled. These tests establish database transaction behavior, not complete capture across student routes, browser delivery acknowledgement, or classroom validity. Route audit and application integration remain required before enabling complete-history claims.
