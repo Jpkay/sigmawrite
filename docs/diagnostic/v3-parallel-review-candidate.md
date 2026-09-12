@@ -2,12 +2,12 @@
 
 The product owner authorized students to start while personally reviewing content (2026-09-11). This explicitly supersedes waiting for all human content review before an initial release. It does not certify the draft questions or alter the approved graph.
 
-5791 selected draft/repaired question versions, 238 canonically reviewed questions, 6007 mapped questions.
+5839 selected draft/repaired question versions, 238 canonically reviewed questions, 6055 mapped questions.
 
 296 of 542 targets have allocated initial and follow-up pools; 246 remain incomplete. The JSON lists each target and the proposed check bindings. This is a release preparation artifact, not proof of activation or full coverage.
 
-271 lessons and 1532 guided exercises are pinned as published_pending_review. 253 lesson targets have allocated initial/follow-up pools; 253 retain enough check questions after exact teaching overlap exclusions and have proposed instruction/practice bindings. 0 prerequisite targets in their 253-target dependency scope still lack complete pools. Exact material matches populate exposure exclusions; semantic overlap review remains in progress.
+275 lessons and 1560 guided exercises are pinned as published_pending_review. 257 lesson targets have allocated initial/follow-up pools; 257 retain enough check questions after exact teaching overlap exclusions and have proposed instruction/practice bindings. 0 prerequisite targets in their 257-target dependency scope still lack complete pools. Exact material matches populate exposure exclusions; semantic overlap review remains in progress.
 
-Policy checksum: sha256:7529b8c98369dd1deeaf325e441318e77c54338e17efcc092eb02dd55b7faddf.
+Policy checksum: sha256:4d34cc5ca369edfe960deb28b40e8dc6b4e5169740673384e3ea553ad8efd090.
 
 Reproduce: npx tsx scripts/build-parallel-review-candidate.mts; append --check to verify without writing.

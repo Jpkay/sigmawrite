@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "bank": {
-    "key": "french-diagnostic-bank-v3-r15",
-    "version": "3.0.0-r15"
+    "key": "french-diagnostic-bank-v3-r16",
+    "version": "3.0.0-r16"
   },
   "taxonomy": {
     "releaseKey": "french-taxonomy-v3",
@@ -37491,6 +37491,3606 @@
         "verdict": "needs_human_review"
       },
       "reviewStatus": "needs_human_review"
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:parler:1s:0",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec parler au subjonctif présent : Il faut que je ___ moins vite pour cet enregistrement.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "parle",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "parler",
+          "tense": "subjonctif_present",
+          "person": "1s",
+          "sentenceApplication": "Il faut que je ___ moins vite pour cet enregistrement.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "parle",
+              "parles",
+              "parlions",
+              "parliez",
+              "parlent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "parler",
+                "form": "parler"
+              }
+            ],
+            "sentences": [
+              "Il faut que je ___ moins vite pour cet enregistrement.",
+              "Il faut que je parle moins vite pour cet enregistrement."
+            ],
+            "assessed": {
+              "sentences": [
+                "Il faut que je ___ moins vite pour cet enregistrement.",
+                "Il faut que je parle moins vite pour cet enregistrement."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "parle"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:chercher:2s:1",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec chercher au subjonctif présent : Je souhaite que tu ___ la clé dans le tiroir.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "cherches",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "chercher",
+          "tense": "subjonctif_present",
+          "person": "2s",
+          "sentenceApplication": "Je souhaite que tu ___ la clé dans le tiroir.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "cherche",
+              "cherches",
+              "cherchions",
+              "cherchiez",
+              "cherchent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "chercher",
+                "form": "chercher"
+              }
+            ],
+            "sentences": [
+              "Je souhaite que tu ___ la clé dans le tiroir.",
+              "Je souhaite que tu cherches la clé dans le tiroir."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je souhaite que tu ___ la clé dans le tiroir.",
+                "Je souhaite que tu cherches la clé dans le tiroir."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "cherches"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:regarder:3s:2",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec regarder au subjonctif présent : Il faut que Lina ___ des deux côtés avant de traverser.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "regarde",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "regarder",
+          "tense": "subjonctif_present",
+          "person": "3s",
+          "sentenceApplication": "Il faut que Lina ___ des deux côtés avant de traverser.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "regarde",
+              "regardes",
+              "regardions",
+              "regardiez",
+              "regardent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "regarder",
+                "form": "regarder"
+              }
+            ],
+            "sentences": [
+              "Il faut que Lina ___ des deux côtés avant de traverser.",
+              "Il faut que Lina regarde des deux côtés avant de traverser."
+            ],
+            "assessed": {
+              "sentences": [
+                "Il faut que Lina ___ des deux côtés avant de traverser.",
+                "Il faut que Lina regarde des deux côtés avant de traverser."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "regarde"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:jouer:1p:3",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec jouer au subjonctif présent : Le règlement exige que nous ___ chacun notre tour.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "jouions",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "jouer",
+          "tense": "subjonctif_present",
+          "person": "1p",
+          "sentenceApplication": "Le règlement exige que nous ___ chacun notre tour.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "joue",
+              "joues",
+              "jouions",
+              "jouiez",
+              "jouent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "jouer",
+                "form": "jouer"
+              }
+            ],
+            "sentences": [
+              "Le règlement exige que nous ___ chacun notre tour.",
+              "Le règlement exige que nous jouions chacun notre tour."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le règlement exige que nous ___ chacun notre tour.",
+                "Le règlement exige que nous jouions chacun notre tour."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "jouions"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:porter:2p:4",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec porter au subjonctif présent : Il faut que vous ___ un casque sur ce chantier.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "portiez",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "porter",
+          "tense": "subjonctif_present",
+          "person": "2p",
+          "sentenceApplication": "Il faut que vous ___ un casque sur ce chantier.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "porte",
+              "portes",
+              "portions",
+              "portiez",
+              "portent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "porter",
+                "form": "porter"
+              }
+            ],
+            "sentences": [
+              "Il faut que vous ___ un casque sur ce chantier.",
+              "Il faut que vous portiez un casque sur ce chantier."
+            ],
+            "assessed": {
+              "sentences": [
+                "Il faut que vous ___ un casque sur ce chantier.",
+                "Il faut que vous portiez un casque sur ce chantier."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "portiez"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:rester:3p:5",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec rester au subjonctif présent : Je préfère que les fenêtres ___ fermées pendant l’orage.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "restent",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "rester",
+          "tense": "subjonctif_present",
+          "person": "3p",
+          "sentenceApplication": "Je préfère que les fenêtres ___ fermées pendant l’orage.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "reste",
+              "restes",
+              "restions",
+              "restiez",
+              "restent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "rester",
+                "form": "rester"
+              }
+            ],
+            "sentences": [
+              "Je préfère que les fenêtres ___ fermées pendant l’orage.",
+              "Je préfère que les fenêtres restent fermées pendant l’orage."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je préfère que les fenêtres ___ fermées pendant l’orage.",
+                "Je préfère que les fenêtres restent fermées pendant l’orage."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "restent"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:préparer:1s:6",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec préparer au subjonctif présent : Tu souhaites que je ___ la salle pour la réunion.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "prépare",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "préparer",
+          "tense": "subjonctif_present",
+          "person": "1s",
+          "sentenceApplication": "Tu souhaites que je ___ la salle pour la réunion.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "prépare",
+              "prépares",
+              "préparions",
+              "prépariez",
+              "préparent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "préparer",
+                "form": "préparer"
+              }
+            ],
+            "sentences": [
+              "Tu souhaites que je ___ la salle pour la réunion.",
+              "Tu souhaites que je prépare la salle pour la réunion."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu souhaites que je ___ la salle pour la réunion.",
+                "Tu souhaites que je prépare la salle pour la réunion."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "prépare"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:dessiner:2s:7",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec dessiner au subjonctif présent : Je voudrais que tu ___ le trajet sur cette carte.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "dessines",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "dessiner",
+          "tense": "subjonctif_present",
+          "person": "2s",
+          "sentenceApplication": "Je voudrais que tu ___ le trajet sur cette carte.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "dessine",
+              "dessines",
+              "dessinions",
+              "dessiniez",
+              "dessinent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "dessiner",
+                "form": "dessiner"
+              }
+            ],
+            "sentences": [
+              "Je voudrais que tu ___ le trajet sur cette carte.",
+              "Je voudrais que tu dessines le trajet sur cette carte."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je voudrais que tu ___ le trajet sur cette carte.",
+                "Je voudrais que tu dessines le trajet sur cette carte."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "dessines"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:raconter:3s:8",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec raconter au subjonctif présent : Nous souhaitons que Sami ___ la fin de son voyage.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "raconte",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "raconter",
+          "tense": "subjonctif_present",
+          "person": "3s",
+          "sentenceApplication": "Nous souhaitons que Sami ___ la fin de son voyage.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "raconte",
+              "racontes",
+              "racontions",
+              "racontiez",
+              "racontent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "raconter",
+                "form": "raconter"
+              }
+            ],
+            "sentences": [
+              "Nous souhaitons que Sami ___ la fin de son voyage.",
+              "Nous souhaitons que Sami raconte la fin de son voyage."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous souhaitons que Sami ___ la fin de son voyage.",
+                "Nous souhaitons que Sami raconte la fin de son voyage."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "raconte"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:travailler:1p:9",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec travailler au subjonctif présent : Il faut que nous ___ ensemble sur cette affiche.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "travaillions",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "travailler",
+          "tense": "subjonctif_present",
+          "person": "1p",
+          "sentenceApplication": "Il faut que nous ___ ensemble sur cette affiche.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "travaille",
+              "travailles",
+              "travaillions",
+              "travailliez",
+              "travaillent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "travailler",
+                "form": "travailler"
+              }
+            ],
+            "sentences": [
+              "Il faut que nous ___ ensemble sur cette affiche.",
+              "Il faut que nous travaillions ensemble sur cette affiche."
+            ],
+            "assessed": {
+              "sentences": [
+                "Il faut que nous ___ ensemble sur cette affiche.",
+                "Il faut que nous travaillions ensemble sur cette affiche."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "travaillions"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:écouter:2p:10",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec écouter au subjonctif présent : Je souhaite que vous ___ ce court message.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "écoutiez",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "écouter",
+          "tense": "subjonctif_present",
+          "person": "2p",
+          "sentenceApplication": "Je souhaite que vous ___ ce court message.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "écoute",
+              "écoutes",
+              "écoutions",
+              "écoutiez",
+              "écoutent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "écouter",
+                "form": "écouter"
+              }
+            ],
+            "sentences": [
+              "Je souhaite que vous ___ ce court message.",
+              "Je souhaite que vous écoutiez ce court message."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je souhaite que vous ___ ce court message.",
+                "Je souhaite que vous écoutiez ce court message."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "écoutiez"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:aider:3p:11",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec aider au subjonctif présent : Il faut que les bénévoles ___ les visiteurs à trouver leur place.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "aident",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "aider",
+          "tense": "subjonctif_present",
+          "person": "3p",
+          "sentenceApplication": "Il faut que les bénévoles ___ les visiteurs à trouver leur place.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "aide",
+              "aides",
+              "aidions",
+              "aidiez",
+              "aident"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "aider",
+                "form": "aider"
+              }
+            ],
+            "sentences": [
+              "Il faut que les bénévoles ___ les visiteurs à trouver leur place.",
+              "Il faut que les bénévoles aident les visiteurs à trouver leur place."
+            ],
+            "assessed": {
+              "sentences": [
+                "Il faut que les bénévoles ___ les visiteurs à trouver leur place.",
+                "Il faut que les bénévoles aident les visiteurs à trouver leur place."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "aident"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:finir:1s:12",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec finir au subjonctif présent : Il faut que je ___ cette maquette avant vendredi.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "finisse",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "finir",
+          "tense": "subjonctif_present",
+          "person": "1s",
+          "sentenceApplication": "Il faut que je ___ cette maquette avant vendredi.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "finisse",
+              "finisses",
+              "finissions",
+              "finissiez",
+              "finissent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "finir",
+                "form": "finir"
+              }
+            ],
+            "sentences": [
+              "Il faut que je ___ cette maquette avant vendredi.",
+              "Il faut que je finisse cette maquette avant vendredi."
+            ],
+            "assessed": {
+              "sentences": [
+                "Il faut que je ___ cette maquette avant vendredi.",
+                "Il faut que je finisse cette maquette avant vendredi."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "finisse"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:choisir:2s:13",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec choisir au subjonctif présent : Je préfère que tu ___ une autre couleur pour le titre.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "choisisses",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "choisir",
+          "tense": "subjonctif_present",
+          "person": "2s",
+          "sentenceApplication": "Je préfère que tu ___ une autre couleur pour le titre.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "choisisse",
+              "choisisses",
+              "choisissions",
+              "choisissiez",
+              "choisissent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "choisir",
+                "form": "choisir"
+              }
+            ],
+            "sentences": [
+              "Je préfère que tu ___ une autre couleur pour le titre.",
+              "Je préfère que tu choisisses une autre couleur pour le titre."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je préfère que tu ___ une autre couleur pour le titre.",
+                "Je préfère que tu choisisses une autre couleur pour le titre."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "choisisses"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:réussir:3s:14",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec réussir au subjonctif présent : Nous souhaitons que cette équipe ___ son premier essai.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "réussisse",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "réussir",
+          "tense": "subjonctif_present",
+          "person": "3s",
+          "sentenceApplication": "Nous souhaitons que cette équipe ___ son premier essai.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "réussisse",
+              "réussisses",
+              "réussissions",
+              "réussissiez",
+              "réussissent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "réussir",
+                "form": "réussir"
+              }
+            ],
+            "sentences": [
+              "Nous souhaitons que cette équipe ___ son premier essai.",
+              "Nous souhaitons que cette équipe réussisse son premier essai."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous souhaitons que cette équipe ___ son premier essai.",
+                "Nous souhaitons que cette équipe réussisse son premier essai."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "réussisse"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:remplir:1p:15",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec remplir au subjonctif présent : Il faut que nous ___ les gourdes avant le départ.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "remplissions",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "remplir",
+          "tense": "subjonctif_present",
+          "person": "1p",
+          "sentenceApplication": "Il faut que nous ___ les gourdes avant le départ.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "remplisse",
+              "remplisses",
+              "remplissions",
+              "remplissiez",
+              "remplissent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "remplir",
+                "form": "remplir"
+              }
+            ],
+            "sentences": [
+              "Il faut que nous ___ les gourdes avant le départ.",
+              "Il faut que nous remplissions les gourdes avant le départ."
+            ],
+            "assessed": {
+              "sentences": [
+                "Il faut que nous ___ les gourdes avant le départ.",
+                "Il faut que nous remplissions les gourdes avant le départ."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "remplissions"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:réfléchir:2p:16",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec réfléchir au subjonctif présent : Je souhaite que vous ___ à une deuxième solution.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "réfléchissiez",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "réfléchir",
+          "tense": "subjonctif_present",
+          "person": "2p",
+          "sentenceApplication": "Je souhaite que vous ___ à une deuxième solution.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "réfléchisse",
+              "réfléchisses",
+              "réfléchissions",
+              "réfléchissiez",
+              "réfléchissent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "réfléchir",
+                "form": "réfléchir"
+              }
+            ],
+            "sentences": [
+              "Je souhaite que vous ___ à une deuxième solution.",
+              "Je souhaite que vous réfléchissiez à une deuxième solution."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je souhaite que vous ___ à une deuxième solution.",
+                "Je souhaite que vous réfléchissiez à une deuxième solution."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "réfléchissiez"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:grandir:3p:17",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec grandir au subjonctif présent : Pour cette expérience, il faut que les plantes ___ à la lumière.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "grandissent",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "grandir",
+          "tense": "subjonctif_present",
+          "person": "3p",
+          "sentenceApplication": "Pour cette expérience, il faut que les plantes ___ à la lumière.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "grandisse",
+              "grandisses",
+              "grandissions",
+              "grandissiez",
+              "grandissent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "grandir",
+                "form": "grandir"
+              }
+            ],
+            "sentences": [
+              "Pour cette expérience, il faut que les plantes ___ à la lumière.",
+              "Pour cette expérience, il faut que les plantes grandissent à la lumière."
+            ],
+            "assessed": {
+              "sentences": [
+                "Pour cette expérience, il faut que les plantes ___ à la lumière.",
+                "Pour cette expérience, il faut que les plantes grandissent à la lumière."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "grandissent"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:nourrir:1s:18",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec nourrir au subjonctif présent : Il faut que je ___ le lapin pendant ton absence.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "nourrisse",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "nourrir",
+          "tense": "subjonctif_present",
+          "person": "1s",
+          "sentenceApplication": "Il faut que je ___ le lapin pendant ton absence.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "nourrisse",
+              "nourrisses",
+              "nourrissions",
+              "nourrissiez",
+              "nourrissent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "nourrir",
+                "form": "nourrir"
+              }
+            ],
+            "sentences": [
+              "Il faut que je ___ le lapin pendant ton absence.",
+              "Il faut que je nourrisse le lapin pendant ton absence."
+            ],
+            "assessed": {
+              "sentences": [
+                "Il faut que je ___ le lapin pendant ton absence.",
+                "Il faut que je nourrisse le lapin pendant ton absence."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "nourrisse"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:ralentir:2s:19",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec ralentir au subjonctif présent : Il faut que tu ___ à l’entrée du village.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "ralentisses",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "ralentir",
+          "tense": "subjonctif_present",
+          "person": "2s",
+          "sentenceApplication": "Il faut que tu ___ à l’entrée du village.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ralentisse",
+              "ralentisses",
+              "ralentissions",
+              "ralentissiez",
+              "ralentissent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "ralentir",
+                "form": "ralentir"
+              }
+            ],
+            "sentences": [
+              "Il faut que tu ___ à l’entrée du village.",
+              "Il faut que tu ralentisses à l’entrée du village."
+            ],
+            "assessed": {
+              "sentences": [
+                "Il faut que tu ___ à l’entrée du village.",
+                "Il faut que tu ralentisses à l’entrée du village."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "ralentisses"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:obéir:3s:20",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec obéir au subjonctif présent : Il faut que le robot ___ à cette nouvelle commande.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "obéisse",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "obéir",
+          "tense": "subjonctif_present",
+          "person": "3s",
+          "sentenceApplication": "Il faut que le robot ___ à cette nouvelle commande.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "obéisse",
+              "obéisses",
+              "obéissions",
+              "obéissiez",
+              "obéissent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "obéir",
+                "form": "obéir"
+              }
+            ],
+            "sentences": [
+              "Il faut que le robot ___ à cette nouvelle commande.",
+              "Il faut que le robot obéisse à cette nouvelle commande."
+            ],
+            "assessed": {
+              "sentences": [
+                "Il faut que le robot ___ à cette nouvelle commande.",
+                "Il faut que le robot obéisse à cette nouvelle commande."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "obéisse"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:applaudir:1p:21",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec applaudir au subjonctif présent : Elle souhaite que nous ___ tous les participants.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "applaudissions",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "applaudir",
+          "tense": "subjonctif_present",
+          "person": "1p",
+          "sentenceApplication": "Elle souhaite que nous ___ tous les participants.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "applaudisse",
+              "applaudisses",
+              "applaudissions",
+              "applaudissiez",
+              "applaudissent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "applaudir",
+                "form": "applaudir"
+              }
+            ],
+            "sentences": [
+              "Elle souhaite que nous ___ tous les participants.",
+              "Elle souhaite que nous applaudissions tous les participants."
+            ],
+            "assessed": {
+              "sentences": [
+                "Elle souhaite que nous ___ tous les participants.",
+                "Elle souhaite que nous applaudissions tous les participants."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "applaudissions"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:choisir:2p:22",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec choisir au subjonctif présent : Il faut que vous ___ les documents utiles pour votre dossier.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "choisissiez",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "choisir",
+          "tense": "subjonctif_present",
+          "person": "2p",
+          "sentenceApplication": "Il faut que vous ___ les documents utiles pour votre dossier.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "choisisse",
+              "choisisses",
+              "choisissions",
+              "choisissiez",
+              "choisissent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "choisir",
+                "form": "choisir"
+              }
+            ],
+            "sentences": [
+              "Il faut que vous ___ les documents utiles pour votre dossier.",
+              "Il faut que vous choisissiez les documents utiles pour votre dossier."
+            ],
+            "assessed": {
+              "sentences": [
+                "Il faut que vous ___ les documents utiles pour votre dossier.",
+                "Il faut que vous choisissiez les documents utiles pour votre dossier."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "choisissiez"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:rougir:3p:23",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec rougir au subjonctif présent : Pour les cueillir, il faut que ces tomates ___ encore un peu.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "rougissent",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "rougir",
+          "tense": "subjonctif_present",
+          "person": "3p",
+          "sentenceApplication": "Pour les cueillir, il faut que ces tomates ___ encore un peu.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "rougisse",
+              "rougisses",
+              "rougissions",
+              "rougissiez",
+              "rougissent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "rougir",
+                "form": "rougir"
+              }
+            ],
+            "sentences": [
+              "Pour les cueillir, il faut que ces tomates ___ encore un peu.",
+              "Pour les cueillir, il faut que ces tomates rougissent encore un peu."
+            ],
+            "assessed": {
+              "sentences": [
+                "Pour les cueillir, il faut que ces tomates ___ encore un peu.",
+                "Pour les cueillir, il faut que ces tomates rougissent encore un peu."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "rougissent"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:manger:1s:24",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec manger au subjonctif présent : Il faut que je ___ avant de prendre ce médicament.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "mange",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "manger",
+          "tense": "subjonctif_present",
+          "person": "1s",
+          "sentenceApplication": "Il faut que je ___ avant de prendre ce médicament.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "mange",
+              "manges",
+              "mangions",
+              "mangiez",
+              "mangent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "manger",
+                "form": "manger"
+              }
+            ],
+            "sentences": [
+              "Il faut que je ___ avant de prendre ce médicament.",
+              "Il faut que je mange avant de prendre ce médicament."
+            ],
+            "assessed": {
+              "sentences": [
+                "Il faut que je ___ avant de prendre ce médicament.",
+                "Il faut que je mange avant de prendre ce médicament."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "mange"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:nager:2s:25",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec nager au subjonctif présent : Il faut que tu ___ près du bord pour cet exercice.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "nages",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "nager",
+          "tense": "subjonctif_present",
+          "person": "2s",
+          "sentenceApplication": "Il faut que tu ___ près du bord pour cet exercice.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "nage",
+              "nages",
+              "nagions",
+              "nagiez",
+              "nagent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "nager",
+                "form": "nager"
+              }
+            ],
+            "sentences": [
+              "Il faut que tu ___ près du bord pour cet exercice.",
+              "Il faut que tu nages près du bord pour cet exercice."
+            ],
+            "assessed": {
+              "sentences": [
+                "Il faut que tu ___ près du bord pour cet exercice.",
+                "Il faut que tu nages près du bord pour cet exercice."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "nages"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:voyager:3s:26",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec voyager au subjonctif présent : La famille préfère que Nora ___ avec un accompagnateur.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "voyage",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "voyager",
+          "tense": "subjonctif_present",
+          "person": "3s",
+          "sentenceApplication": "La famille préfère que Nora ___ avec un accompagnateur.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "voyage",
+              "voyages",
+              "voyagions",
+              "voyagiez",
+              "voyagent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "voyager",
+                "form": "voyager"
+              }
+            ],
+            "sentences": [
+              "La famille préfère que Nora ___ avec un accompagnateur.",
+              "La famille préfère que Nora voyage avec un accompagnateur."
+            ],
+            "assessed": {
+              "sentences": [
+                "La famille préfère que Nora ___ avec un accompagnateur.",
+                "La famille préfère que Nora voyage avec un accompagnateur."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "voyage"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:bouger:1p:27",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec bouger au subjonctif présent : Il faut que nous ___ doucement pour ne pas réveiller le chat.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "bougions",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "bouger",
+          "tense": "subjonctif_present",
+          "person": "1p",
+          "sentenceApplication": "Il faut que nous ___ doucement pour ne pas réveiller le chat.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "bouge",
+              "bouges",
+              "bougions",
+              "bougiez",
+              "bougent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "bouger",
+                "form": "bouger"
+              }
+            ],
+            "sentences": [
+              "Il faut que nous ___ doucement pour ne pas réveiller le chat.",
+              "Il faut que nous bougions doucement pour ne pas réveiller le chat."
+            ],
+            "assessed": {
+              "sentences": [
+                "Il faut que nous ___ doucement pour ne pas réveiller le chat.",
+                "Il faut que nous bougions doucement pour ne pas réveiller le chat."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "bougions"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:ranger:2p:28",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec ranger au subjonctif présent : Je souhaite que vous ___ ces outils dans le placard.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "rangiez",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "ranger",
+          "tense": "subjonctif_present",
+          "person": "2p",
+          "sentenceApplication": "Je souhaite que vous ___ ces outils dans le placard.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "range",
+              "ranges",
+              "rangions",
+              "rangiez",
+              "rangent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "ranger",
+                "form": "ranger"
+              }
+            ],
+            "sentences": [
+              "Je souhaite que vous ___ ces outils dans le placard.",
+              "Je souhaite que vous rangiez ces outils dans le placard."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je souhaite que vous ___ ces outils dans le placard.",
+                "Je souhaite que vous rangiez ces outils dans le placard."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "rangiez"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:changer:3p:29",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec changer au subjonctif présent : Il faut que les joueurs ___ de côté à la pause.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "changent",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "changer",
+          "tense": "subjonctif_present",
+          "person": "3p",
+          "sentenceApplication": "Il faut que les joueurs ___ de côté à la pause.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "change",
+              "changes",
+              "changions",
+              "changiez",
+              "changent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "changer",
+                "form": "changer"
+              }
+            ],
+            "sentences": [
+              "Il faut que les joueurs ___ de côté à la pause.",
+              "Il faut que les joueurs changent de côté à la pause."
+            ],
+            "assessed": {
+              "sentences": [
+                "Il faut que les joueurs ___ de côté à la pause.",
+                "Il faut que les joueurs changent de côté à la pause."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "changent"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:partager:1s:30",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec partager au subjonctif présent : Tu souhaites que je ___ mon écran pendant la réunion.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "partage",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "partager",
+          "tense": "subjonctif_present",
+          "person": "1s",
+          "sentenceApplication": "Tu souhaites que je ___ mon écran pendant la réunion.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "partage",
+              "partages",
+              "partagions",
+              "partagiez",
+              "partagent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "partager",
+                "form": "partager"
+              }
+            ],
+            "sentences": [
+              "Tu souhaites que je ___ mon écran pendant la réunion.",
+              "Tu souhaites que je partage mon écran pendant la réunion."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu souhaites que je ___ mon écran pendant la réunion.",
+                "Tu souhaites que je partage mon écran pendant la réunion."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "partage"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:mélanger:2s:31",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec mélanger au subjonctif présent : Il faut que tu ___ la peinture avant de commencer.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "mélanges",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "mélanger",
+          "tense": "subjonctif_present",
+          "person": "2s",
+          "sentenceApplication": "Il faut que tu ___ la peinture avant de commencer.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "mélange",
+              "mélanges",
+              "mélangions",
+              "mélangiez",
+              "mélangent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "mélanger",
+                "form": "mélanger"
+              }
+            ],
+            "sentences": [
+              "Il faut que tu ___ la peinture avant de commencer.",
+              "Il faut que tu mélanges la peinture avant de commencer."
+            ],
+            "assessed": {
+              "sentences": [
+                "Il faut que tu ___ la peinture avant de commencer.",
+                "Il faut que tu mélanges la peinture avant de commencer."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "mélanges"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:charger:3s:32",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec charger au subjonctif présent : Il faut que le technicien ___ la batterie de secours.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "charge",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "charger",
+          "tense": "subjonctif_present",
+          "person": "3s",
+          "sentenceApplication": "Il faut que le technicien ___ la batterie de secours.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "charge",
+              "charges",
+              "chargions",
+              "chargiez",
+              "chargent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "charger",
+                "form": "charger"
+              }
+            ],
+            "sentences": [
+              "Il faut que le technicien ___ la batterie de secours.",
+              "Il faut que le technicien charge la batterie de secours."
+            ],
+            "assessed": {
+              "sentences": [
+                "Il faut que le technicien ___ la batterie de secours.",
+                "Il faut que le technicien charge la batterie de secours."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "charge"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:manger:1p:33",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec manger au subjonctif présent : Je préfère que nous ___ après la visite du musée.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "mangions",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "manger",
+          "tense": "subjonctif_present",
+          "person": "1p",
+          "sentenceApplication": "Je préfère que nous ___ après la visite du musée.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "mange",
+              "manges",
+              "mangions",
+              "mangiez",
+              "mangent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "manger",
+                "form": "manger"
+              }
+            ],
+            "sentences": [
+              "Je préfère que nous ___ après la visite du musée.",
+              "Je préfère que nous mangions après la visite du musée."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je préfère que nous ___ après la visite du musée.",
+                "Je préfère que nous mangions après la visite du musée."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "mangions"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:voyager:2p:34",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec voyager au subjonctif présent : Il faut que vous ___ avec vos billets et vos papiers.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "voyagiez",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "voyager",
+          "tense": "subjonctif_present",
+          "person": "2p",
+          "sentenceApplication": "Il faut que vous ___ avec vos billets et vos papiers.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "voyage",
+              "voyages",
+              "voyagions",
+              "voyagiez",
+              "voyagent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "voyager",
+                "form": "voyager"
+              }
+            ],
+            "sentences": [
+              "Il faut que vous ___ avec vos billets et vos papiers.",
+              "Il faut que vous voyagiez avec vos billets et vos papiers."
+            ],
+            "assessed": {
+              "sentences": [
+                "Il faut que vous ___ avec vos billets et vos papiers.",
+                "Il faut que vous voyagiez avec vos billets et vos papiers."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "voyagiez"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:nager:3p:35",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec nager au subjonctif présent : Le moniteur souhaite que les élèves ___ par groupes de trois.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "nagent",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "nager",
+          "tense": "subjonctif_present",
+          "person": "3p",
+          "sentenceApplication": "Le moniteur souhaite que les élèves ___ par groupes de trois.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "nage",
+              "nages",
+              "nagions",
+              "nagiez",
+              "nagent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "nager",
+                "form": "nager"
+              }
+            ],
+            "sentences": [
+              "Le moniteur souhaite que les élèves ___ par groupes de trois.",
+              "Le moniteur souhaite que les élèves nagent par groupes de trois."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le moniteur souhaite que les élèves ___ par groupes de trois.",
+                "Le moniteur souhaite que les élèves nagent par groupes de trois."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "nagent"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:commencer:1s:36",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec commencer au subjonctif présent : Il faut que je ___ par vérifier les mesures.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "commence",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "commencer",
+          "tense": "subjonctif_present",
+          "person": "1s",
+          "sentenceApplication": "Il faut que je ___ par vérifier les mesures.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "commence",
+              "commences",
+              "commencions",
+              "commenciez",
+              "commencent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "commencer",
+                "form": "commencer"
+              }
+            ],
+            "sentences": [
+              "Il faut que je ___ par vérifier les mesures.",
+              "Il faut que je commence par vérifier les mesures."
+            ],
+            "assessed": {
+              "sentences": [
+                "Il faut que je ___ par vérifier les mesures.",
+                "Il faut que je commence par vérifier les mesures."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "commence"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:lancer:2s:37",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec lancer au subjonctif présent : Je souhaite que tu ___ le dé au milieu de la table.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "lances",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "lancer",
+          "tense": "subjonctif_present",
+          "person": "2s",
+          "sentenceApplication": "Je souhaite que tu ___ le dé au milieu de la table.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "lance",
+              "lances",
+              "lancions",
+              "lanciez",
+              "lancent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "lancer",
+                "form": "lancer"
+              }
+            ],
+            "sentences": [
+              "Je souhaite que tu ___ le dé au milieu de la table.",
+              "Je souhaite que tu lances le dé au milieu de la table."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je souhaite que tu ___ le dé au milieu de la table.",
+                "Je souhaite que tu lances le dé au milieu de la table."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "lances"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:avancer:3s:38",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec avancer au subjonctif présent : Il faut que le bus ___ pour libérer le passage.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "avance",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "avancer",
+          "tense": "subjonctif_present",
+          "person": "3s",
+          "sentenceApplication": "Il faut que le bus ___ pour libérer le passage.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "avance",
+              "avances",
+              "avancions",
+              "avanciez",
+              "avancent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "avancer",
+                "form": "avancer"
+              }
+            ],
+            "sentences": [
+              "Il faut que le bus ___ pour libérer le passage.",
+              "Il faut que le bus avance pour libérer le passage."
+            ],
+            "assessed": {
+              "sentences": [
+                "Il faut que le bus ___ pour libérer le passage.",
+                "Il faut que le bus avance pour libérer le passage."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "avance"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:placer:1p:39",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec placer au subjonctif présent : Il faut que nous ___ la table près de la prise.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "placions",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "placer",
+          "tense": "subjonctif_present",
+          "person": "1p",
+          "sentenceApplication": "Il faut que nous ___ la table près de la prise.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "place",
+              "places",
+              "placions",
+              "placiez",
+              "placent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "placer",
+                "form": "placer"
+              }
+            ],
+            "sentences": [
+              "Il faut que nous ___ la table près de la prise.",
+              "Il faut que nous placions la table près de la prise."
+            ],
+            "assessed": {
+              "sentences": [
+                "Il faut que nous ___ la table près de la prise.",
+                "Il faut que nous placions la table près de la prise."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "placions"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:annoncer:2p:40",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec annoncer au subjonctif présent : Je souhaite que vous ___ le programme aux invités.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "annonciez",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "annoncer",
+          "tense": "subjonctif_present",
+          "person": "2p",
+          "sentenceApplication": "Je souhaite que vous ___ le programme aux invités.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "annonce",
+              "annonces",
+              "annoncions",
+              "annonciez",
+              "annoncent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "annoncer",
+                "form": "annoncer"
+              }
+            ],
+            "sentences": [
+              "Je souhaite que vous ___ le programme aux invités.",
+              "Je souhaite que vous annonciez le programme aux invités."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je souhaite que vous ___ le programme aux invités.",
+                "Je souhaite que vous annonciez le programme aux invités."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "annonciez"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:remplacer:3p:41",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec remplacer au subjonctif présent : Il faut que les mécaniciens ___ les pneus usés.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "remplacent",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "remplacer",
+          "tense": "subjonctif_present",
+          "person": "3p",
+          "sentenceApplication": "Il faut que les mécaniciens ___ les pneus usés.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "remplace",
+              "remplaces",
+              "remplacions",
+              "remplaciez",
+              "remplacent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "remplacer",
+                "form": "remplacer"
+              }
+            ],
+            "sentences": [
+              "Il faut que les mécaniciens ___ les pneus usés.",
+              "Il faut que les mécaniciens remplacent les pneus usés."
+            ],
+            "assessed": {
+              "sentences": [
+                "Il faut que les mécaniciens ___ les pneus usés.",
+                "Il faut que les mécaniciens remplacent les pneus usés."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "remplacent"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:effacer:1s:42",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec effacer au subjonctif présent : Tu préfères que j’___ ce trait de crayon.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "efface",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "effacer",
+          "tense": "subjonctif_present",
+          "person": "1s",
+          "sentenceApplication": "Tu préfères que j’___ ce trait de crayon.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "efface",
+              "effaces",
+              "effacions",
+              "effaciez",
+              "effacent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "effacer",
+                "form": "effacer"
+              }
+            ],
+            "sentences": [
+              "Tu préfères que j’___ ce trait de crayon.",
+              "Tu préfères que j’efface ce trait de crayon."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu préfères que j’___ ce trait de crayon.",
+                "Tu préfères que j’efface ce trait de crayon."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "efface"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:tracer:2s:43",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec tracer au subjonctif présent : Il faut que tu ___ un cercle autour du symbole.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "traces",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "tracer",
+          "tense": "subjonctif_present",
+          "person": "2s",
+          "sentenceApplication": "Il faut que tu ___ un cercle autour du symbole.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "trace",
+              "traces",
+              "tracions",
+              "traciez",
+              "tracent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "tracer",
+                "form": "tracer"
+              }
+            ],
+            "sentences": [
+              "Il faut que tu ___ un cercle autour du symbole.",
+              "Il faut que tu traces un cercle autour du symbole."
+            ],
+            "assessed": {
+              "sentences": [
+                "Il faut que tu ___ un cercle autour du symbole.",
+                "Il faut que tu traces un cercle autour du symbole."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "traces"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:commencer:3s:44",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec commencer au subjonctif présent : Nous souhaitons que le concert ___ à l’heure prévue.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "commence",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "commencer",
+          "tense": "subjonctif_present",
+          "person": "3s",
+          "sentenceApplication": "Nous souhaitons que le concert ___ à l’heure prévue.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "commence",
+              "commences",
+              "commencions",
+              "commenciez",
+              "commencent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "commencer",
+                "form": "commencer"
+              }
+            ],
+            "sentences": [
+              "Nous souhaitons que le concert ___ à l’heure prévue.",
+              "Nous souhaitons que le concert commence à l’heure prévue."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous souhaitons que le concert ___ à l’heure prévue.",
+                "Nous souhaitons que le concert commence à l’heure prévue."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "commence"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:lancer:1p:45",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec lancer au subjonctif présent : Il faut que nous ___ les invitations cette semaine.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "lancions",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "lancer",
+          "tense": "subjonctif_present",
+          "person": "1p",
+          "sentenceApplication": "Il faut que nous ___ les invitations cette semaine.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "lance",
+              "lances",
+              "lancions",
+              "lanciez",
+              "lancent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "lancer",
+                "form": "lancer"
+              }
+            ],
+            "sentences": [
+              "Il faut que nous ___ les invitations cette semaine.",
+              "Il faut que nous lancions les invitations cette semaine."
+            ],
+            "assessed": {
+              "sentences": [
+                "Il faut que nous ___ les invitations cette semaine.",
+                "Il faut que nous lancions les invitations cette semaine."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "lancions"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:avancer:2p:46",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec avancer au subjonctif présent : Il faut que vous ___ jusqu’à la ligne bleue.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "avanciez",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "avancer",
+          "tense": "subjonctif_present",
+          "person": "2p",
+          "sentenceApplication": "Il faut que vous ___ jusqu’à la ligne bleue.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "avance",
+              "avances",
+              "avancions",
+              "avanciez",
+              "avancent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "avancer",
+                "form": "avancer"
+              }
+            ],
+            "sentences": [
+              "Il faut que vous ___ jusqu’à la ligne bleue.",
+              "Il faut que vous avanciez jusqu’à la ligne bleue."
+            ],
+            "assessed": {
+              "sentences": [
+                "Il faut que vous ___ jusqu’à la ligne bleue.",
+                "Il faut que vous avanciez jusqu’à la ligne bleue."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "avanciez"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subjonctif-family-production:placer:3p:47",
+      "item": {
+        "nodeKey": "produire_subjonctif_present_frequent",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Complète avec placer au subjonctif présent : Je préfère que les élèves ___ leurs sacs sous les tables.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "placent",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "placer",
+          "tense": "subjonctif_present",
+          "person": "3p",
+          "sentenceApplication": "Je préfère que les élèves ___ leurs sacs sous les tables.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "place",
+              "places",
+              "placions",
+              "placiez",
+              "placent"
+            ],
+            "rationaleFr": "Le verbe et le temps sont fournis. Les cinq formes écrites distinctes (je et il partagent la même forme) donnent un plancher conservateur de hasard pour cette production contrôlée, pas une rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "placer",
+                "form": "placer"
+              }
+            ],
+            "sentences": [
+              "Je préfère que les élèves ___ leurs sacs sous les tables.",
+              "Je préfère que les élèves placent leurs sacs sous les tables."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je préfère que les élèves ___ leurs sacs sous les tables.",
+                "Je préfère que les élèves placent leurs sacs sous les tables."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "placent"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
     },
     {
       "itemKey": "v3-completive-production:1",
@@ -411489,9 +415089,9 @@
     }
   ],
   "manifest": {
-    "itemCount": 6496,
+    "itemCount": 6544,
     "eligibleItemCount": 238,
-    "pendingItemCount": 6258,
+    "pendingItemCount": 6306,
     "publicationMode": "partial",
     "nodeCount": 114,
     "sectionReadiness": [
@@ -411540,6 +415140,6 @@
         "difficultyTierCount": 3
       }
     ],
-    "checksum": "sha256:b1f238f2edff146c2b2d768186e219ba21f28ed3526ad57b2eb202a39bb5430a"
+    "checksum": "sha256:bd91549e882aca767026cadc44e272ee910355c4ff1d8082528b14f6da6a96d6"
   }
 }

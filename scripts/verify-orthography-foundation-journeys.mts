@@ -15,9 +15,10 @@ const candidate=read('docs/diagnostic/v3-scoped-review-candidate.json');
 const bundle:AssessmentBundle={assessment:candidate.assessment,bank:read('generated/diagnostic-bank-v3-consolidated-draft.json'),taxonomyId:'fixture',bankId:'fixture',teachingContent:candidate.teachingContent,activities:candidate.activities.map((a:object)=>({...a,status:'published'}))};
 const completiveOnly=process.argv.includes('--completive-production');
 const subjunctiveOnly=process.argv.includes('--subjonctif');
-if(completiveOnly&&subjunctiveOnly)throw Error('Select one content family');
-const lessons=bundle.teachingContent!.filter(l=>subjunctiveOnly?(l.nodeKey==='reconnaitre_subjonctif_present'||l.id.startsWith('french-v3-teaching:subjonctif-present:')):completiveOnly?l.id==='french-v3-teaching:completive:production':['segmenter_syllabes_ecrites','associer_phoneme_graphie_frequente','employer_cedille'].includes(l.nodeKey));
-if(lessons.length!==(subjunctiveOnly?15:completiveOnly?1:6))throw Error('Unexpected number of selected lessons');
+const subjunctiveFamilies=process.argv.includes('--subjonctif-families');
+if([completiveOnly,subjunctiveOnly,subjunctiveFamilies].filter(Boolean).length>1)throw Error('Select one content family');
+const lessons=bundle.teachingContent!.filter(l=>subjunctiveFamilies?l.id.startsWith('french-v3-teaching:subjonctif-present:pattern:'):subjunctiveOnly?(l.nodeKey==='reconnaitre_subjonctif_present'||(l.nodeKey==='produire_subjonctif_present_frequent'&&l.facetKey?.includes('::verb:'))):completiveOnly?l.id==='french-v3-teaching:completive:production':['segmenter_syllabes_ecrites','associer_phoneme_graphie_frequente','employer_cedille'].includes(l.nodeKey));
+if(lessons.length!==(subjunctiveFamilies?4:subjunctiveOnly?15:completiveOnly?1:6))throw Error('Unexpected number of selected lessons');
 const reports=[];
 for(const lesson of lessons){
  const skill=bundle.assessment.skills.find(s=>s.nodeKey===lesson.nodeKey&&s.facetKey===lesson.facetKey&&s.modes.includes(lesson.mode))!;
@@ -86,4 +87,4 @@ for(const lesson of lessons){
  reports.push({skillId:skill.id,lessonId:lesson.id,guidedExercises:guided,deliberateGuidedErrors:1,independentQuestionId:q.id,independentCorrect:true,independentChecks,freshReceiptsVerified:true,guidedEvidenceIsolated:true,reloadPreserved:true});
 }
 const output={method:'Constructed prerequisite-success/target-gap profiles, real scoped content and server commands in an isolated in-memory store. Synthetic presentation receipts with real delivery capture; not student data, browser playback proof, multi-occasion validation or educational calibration.',candidateChecksum:candidate.checksum,reports};
-writeFileSync(subjunctiveOnly?'docs/diagnostic/subjonctif-learning-journeys-2026-09-12.json':completiveOnly?'docs/diagnostic/completive-production-learning-journey-2026-09-12.json':'docs/diagnostic/orthography-foundation-learning-journeys-2026-09-12.json',JSON.stringify(output,null,2)+'\n');console.log(JSON.stringify(reports));
+writeFileSync(subjunctiveFamilies?'docs/diagnostic/subjonctif-family-learning-journeys-2026-09-12.json':subjunctiveOnly?'docs/diagnostic/subjonctif-learning-journeys-2026-09-12.json':completiveOnly?'docs/diagnostic/completive-production-learning-journey-2026-09-12.json':'docs/diagnostic/orthography-foundation-learning-journeys-2026-09-12.json',JSON.stringify(output,null,2)+'\n');console.log(JSON.stringify(reports));

@@ -34,3 +34,14 @@ it('checks written forms against independently stated family rules',()=>{
   expect(row.answer).toBe(stem+endings[row.person]);
  }
 });
+
+it('prepared family pools use distinct sentence applications in both phases',()=>{
+ const candidate=JSON.parse(readFileSync('docs/diagnostic/v3-parallel-review-candidate.json','utf8'));
+ for(const family of ['regular_er','regular_ir','spelling_ger','spelling_cer']){
+  const skillId=`produire_subjonctif_present_frequent::writing-controlled-production::pattern:${family}`;
+  const probes=candidate.assessment.probes.filter((p:{skillId:string})=>p.skillId===skillId);
+  expect(probes.length).toBeGreaterThanOrEqual(6);
+  for(const phase of ['initial','learning'])expect(probes.filter((p:{usage:string})=>p.usage===phase).length).toBeGreaterThanOrEqual(3);
+  expect(probes.every((p:{id:string;assessedMaterialKeys:string[]})=>p.id.startsWith('v3-subjonctif-family-production:')&&p.assessedMaterialKeys.every(k=>k.startsWith('sentence:')))).toBe(true);
+ }
+});

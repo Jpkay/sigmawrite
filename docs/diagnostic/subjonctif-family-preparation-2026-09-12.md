@@ -13,3 +13,11 @@ Reference for formation: [OQLF, Formes du subjonctif](https://vitrinelinguistiqu
 ## Fresh application draft
 
 Added 48 controlled-production sentence questions, 12 per family, covering every grammatical person twice. Explicit authored family assignments preserve the approved graph. All questions require human review. Five focused tests pass, including independent stem/endings checks and assessed-sentence separation from all four lessons. The expansion is not yet registered in the release compiler; reserve allocation and service journeys remain required. The frozen r15 bank is unchanged.
+
+## Candidate integration
+
+Registered the four lessons and 48 application questions in bank revision 16. Prepared scope is 257 of 542 graph targets, with 257 lessons and fresh-check pathways. This is not the published v16 release, which remains frozen at 253 targets.
+
+The initial service test caught an old isolated-form drill being offered with an already exposed verb. Preparation now uses sentence-application probes exclusively for these four newly added family targets, and fails if both pools cannot satisfy the existing graph requirements. The old items and historical releases are preserved. This addresses the observed application/repetition issue without changing mastery thresholds.
+
+Current checks: 630 granular tests pass, TypeScript passes, publication preflight passes with no instruction or fresh-check gaps. All four family service journeys pass: 28 guided exercises with four deliberate errors, four fresh independently recorded sentence checks, and reload preservation. The read-only comparison against the published 253-target release passes and preserves 59 observations and four refinements. Eight constructed profiles are still running.
