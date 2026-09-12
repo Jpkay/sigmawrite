@@ -1,3 +1,4 @@
+import {journalCurrentStudentPayload} from '@/lib/diagnostic/granular/server-delivery-journal';
 import { DashboardShell, type NavItem, type TabItem } from "@/components/dashboard-shell";
 import { getSessionProfile, requireRole } from "@/lib/auth";
 import { getStudentAccessGate } from "@/lib/db/lifecycle";
@@ -39,12 +40,19 @@ export default async function StudentLayout({
   const access = session?.role === "student" && isSupabaseConfigured
     ? await getStudentAccessGate()
     : null;
+  const user={name:session?.displayName??"Élève",role:session?.role??"student",analyticsId:session?.id};
+  // Capture only this layout's delivered labels and identity, not child pages.
+  // A cached layout reuses the already-recorded payload on client navigation.
+  await journalCurrentStudentPayload('student:shell',{
+    area:'Élève',navigation:nav.map(item=>item.label),tabs:tabs.map(item=>item.label),
+    displayName:user.name,role:user.role,
+  });
   return (
     <DashboardShell
       area="Élève"
       nav={nav}
       tabs={tabs}
-      user={{ name: session?.displayName ?? "Élève", role: session?.role ?? "student", analyticsId: session?.id }}
+      user={user}
     >
       {access && !access.authorized
         ? <StudentAccessPending />
