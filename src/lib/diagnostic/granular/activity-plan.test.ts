@@ -1,5 +1,5 @@
 import {expect,it} from "vitest";
-import {planGranularActivities,type LearningActivityBinding} from "./activity-plan";
+import {availableLearningBindings,planGranularActivities,type LearningActivityBinding} from "./activity-plan";
 import {assessSkills} from "./engine";
 import type {V3Assessment,EvidenceSkill} from "./v3-adapter";
 const skills:EvidenceSkill[]=["etre","avoir"].map(verb=>({id:verb,nodeKey:"present",evidenceKey:"production",facetKey:verb,labelFr:verb,branch:verb,level:0,modes:["production"],prerequisites:[]}));
@@ -85,4 +85,22 @@ it('keeps recent lesson follow-ups visible without removing other subject areas'
  expect(results).toEqual(before);
  const withoutFresh=bindings.filter(b=>b.id!=='check:z-spelling');
  expect(planGranularActivities(graph,results,withoutFresh,2,new Set(['content:z-spelling'])).activities.map(a=>a.skillId)).toEqual(['a-spelling','reading']);
+});
+
+it("keeps only a bound fresh check for the exact target and mode",()=>{
+ const probe=(id:string,skillId='etre',usage:'initial'|'learning'='learning',mode:'production'|'recognition'='production')=>({id,skillId,usage,mode,contextId:id,difficulty:.5,expectedSeconds:20,guessProbability:.1});
+ const graph={...assessment,probes:[probe('initial','etre','initial'),probe('seen'),probe('other-verb','avoir'),probe('other-mode','etre','learning','recognition'),probe('fresh')]};
+ const checks=[
+  {...binding('valid','etre','independent_check'),probeIds:['missing','initial','seen','other-verb','other-mode','fresh']},
+  {...binding('exhausted','etre','independent_check'),probeIds:['seen']},
+  {...binding('wrong-target','etre','independent_check'),probeIds:['other-verb']},
+  {...binding('wrong-mode','etre','independent_check'),probeIds:['other-mode']},
+  {...binding('unknown','etre','independent_check'),probeIds:['missing']},
+  {...binding('initial-only','etre','independent_check'),probeIds:['initial']},
+  binding('unbound','etre','independent_check'),binding('lesson','etre','instruction'),
+ ];
+ const snapshot=structuredClone({graph,checks});
+ expect(availableLearningBindings(graph,checks,new Set(['seen'])).map(b=>b.id)).toEqual(['valid','lesson']);
+ expect(availableLearningBindings(graph,checks,new Set(['seen','fresh'])).map(b=>b.id)).toEqual(['lesson']);
+ expect({graph,checks}).toEqual(snapshot);
 });

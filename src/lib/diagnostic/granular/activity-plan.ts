@@ -14,9 +14,15 @@ export type LearningActivityBinding={
  contentId?:string;
 };
 export function availableLearningBindings(assessment:V3Assessment,bindings:readonly LearningActivityBinding[],seen:ReadonlySet<string>){
- return bindings.filter(binding=>binding.kind!=="independent_check"||assessment.probes.some(probe=>{
-  const skill=assessment.skills.find(s=>s.id===probe.skillId);
-  return probe.usage!=="initial"&&binding.probeIds?.includes(probe.id)&&!seen.has(probe.id)&&probe.mode===binding.mode&&skill?.nodeKey===binding.nodeKey&&(skill.facetKey??null)===(binding.facetKey??null);
+ const skills=new Map(assessment.skills.map(skill=>[skill.id,skill]));
+ const probes=new Map(assessment.probes.map(probe=>[probe.id,probe]));
+ // Bindings already name their candidate probes. Inspect those IDs directly
+ // instead of scanning the entire bank and looking up a skill for every probe.
+ return bindings.filter(binding=>binding.kind!=="independent_check"||(binding.probeIds??[]).some(id=>{
+  const probe=probes.get(id);
+  if(!probe||probe.usage==="initial"||seen.has(id)||probe.mode!==binding.mode)return false;
+  const skill=skills.get(probe.skillId);
+  return skill?.nodeKey===binding.nodeKey&&(skill.facetKey??null)===(binding.facetKey??null);
  }));
 }
 /** Availability is checked at the same precision as the diagnostic claim. */
