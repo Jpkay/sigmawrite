@@ -1,5 +1,5 @@
 {
-  "status": "corrected_candidate_building_bank_import_running_not_published",
+  "status": "immutable_bundle_published_candidate_browser_checks_running_not_activated",
   "sourceCommit": "c315eed3473170b3b6892061ab3cfc25773e6f16",
   "frozenWorkspace": "/Users/jean-philippekayobotsi/.codex/release-workspaces/sigmawrite-r14-c315eed",
   "candidateUrl": "https://sigmawrite-1ajz822vd-jpkays-projects.vercel.app",
@@ -15,10 +15,10 @@
   "currentPublicScope": 231,
   "bankImportProgress": {
     "id": "ef3d24d2-6b90-4cb1-bc57-16ff8d210c7a",
-    "memberships": 4501,
+    "memberships": 6280,
     "status": "draft",
-    "observedAt": "2026-09-12T01:18:51.423Z",
-    "terminal": false
+    "terminal": true,
+    "observedAt": "2026-09-12T01:26:16.386277+00:00"
   },
   "checks": {
     "granularTests": 609,
@@ -47,7 +47,44 @@
         "refinements": 4
       }
     },
-    "databaseAudioMigration": "applied_and_verified"
+    "databaseAudioMigration": "applied_and_verified",
+    "relationalBank": {
+      "version": "french-granular-parallel-publication-v1",
+      "ready": true,
+      "authorization": "product-owner-request-2026-09-11",
+      "reviewOwner": "product_owner",
+      "bankChecksum": "sha256:de077ed8963025f2ed3c11e8c3aa5d3f9390e97f1dc94d3fe84f30ecd18ad7ab",
+      "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+      "bundleChecksum": "sha256:c92adf37bf0164b828e35eb3597dd7513c17069fcab791446d0012168c57b579",
+      "policyChecksum": "sha256:6cde1d6f14315bcd793b654318e015c32cce34e3d536657911def16649fdaf33",
+      "scopeChecksum": "sha256:59d9865bbd037731857b078169cff4507ca261da63b39b478aff8279b362476b",
+      "bankItemCount": 6280,
+      "assessmentTargets": 237,
+      "teachingTargets": 237,
+      "instructionGapSkillIds": [],
+      "freshCheckGapSkillIds": [],
+      "verifiedItems": 6280
+    },
+    "deployedAudio": {
+      "base": "https://sigmawrite-1ajz822vd-jpkays-projects.vercel.app",
+      "clips": 72,
+      "allHashesVerified": true,
+      "allPlaybackEnded": true,
+      "pronunciationReviewed": false,
+      "method": "SHA-256 checks of deployed assets plus real Chrome playback in a media fixture on the candidate origin. Not a student UI or pronunciation review."
+    },
+    "demoLessons": 11,
+    "pinnedPathway": {
+      "base": "https://sigmawrite-1ajz822vd-jpkays-projects.vercel.app",
+      "areas": [
+        "grammar",
+        "reading_comprehension",
+        "spelling",
+        "conjugation",
+        "grammar"
+      ],
+      "activities": 5
+    }
   },
   "previousCandidate": {
     "sourceCommit": "5574bdcdf5f35d86a6a15494dd93a719923b291d",
@@ -73,11 +110,13 @@
     }
   },
   "remaining": [
-    "Finish unchanged bank import and verify all relational memberships",
-    "Verify corrected deployment Ready and exact audio assets",
-    "Publish immutable v15 bundle",
     "Verify fresh candidate default and full live results/learning/review",
     "Verify real v14-to-v15 learning upgrade and original answer review",
     "Promote exact verified candidate and repeat public checks"
-  ]
+  ],
+  "publication": {
+    "releaseId": "b47efd20-2cc8-453c-9de0-fa41929876c7",
+    "releaseKey": "french-granular-diagnostic-v15",
+    "bundleChecksum": "sha256:c92adf37bf0164b828e35eb3597dd7513c17069fcab791446d0012168c57b579"
+  }
 }
