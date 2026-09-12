@@ -9,3 +9,5 @@ Revision lookups use a private database reader instead of calling the public fee
 Validation: 364 test files / 1,624 tests passed; TypeScript passed. Seven action tests exercise saved feedback, teacher comments, ownership filtering, exact rubric-only delivery, revision capture before persistence, retry after capture failure, withholding failed reads, collection delivery and unauthorized access. Tests use deterministic evaluator and database doubles; they are not deployed browser or provider validation.
 
 Remaining capture work includes other alternate/static sources, practice feedback returned after server validation, audio source coverage and a verified fresh-student baseline. These changes alone do not certify novelty or resolve the production eligibility gap for novelty-required skills.
+
+Subsequent deployment and live verification: [capture follow-up rollout](capture-followup-rollout-2026-09-12.md).
