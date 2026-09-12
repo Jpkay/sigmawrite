@@ -1,3 +1,4 @@
+import {inboxDisplay} from "@/lib/diagnostic/granular/inbox-display";
 import {beforeEach,expect,it,vi} from 'vitest';
 const f=vi.hoisted(()=>({guard:vi.fn(),access:vi.fn(),from:vi.fn(),eq:vi.fn(),journal:vi.fn(),error:null as {message:string}|null}));
 vi.mock('server-only',()=>({}));
@@ -18,7 +19,7 @@ it('records teacher examples and the full returned payload under the authenticat
  const result=await loadStudentNotifications({});
  expect(f.eq).toHaveBeenCalledWith('student_id','owner');
  expect(result[0]).toMatchObject({message:row.message_fr,payload:row.payload,readAt:null});
- expect(f.journal).toHaveBeenCalledWith('owner','legacy:notifications',result);
+ expect(f.journal).toHaveBeenCalledWith('owner','legacy:notifications',{rows:result,display:inboxDisplay(result)});
  expect(f.from).toHaveBeenCalledTimes(1);
 });
 it('withholds notifications after failed capture and allows retry',async()=>{

@@ -1,4 +1,5 @@
 "use server";
+import {inboxDisplay} from "@/lib/diagnostic/granular/inbox-display";
 import {leagueDisplay} from "@/lib/diagnostic/granular/league-display";
 import {motivationDisplay} from "@/lib/diagnostic/granular/motivation-display";
 import {homeDynamicDisplay} from "@/lib/diagnostic/granular/home-display-text";
@@ -2682,7 +2683,9 @@ export async function loadStudentNotifications(input: unknown): Promise<StudentN
   checked(emptySchema, input); const { supabase, studentId } = await context();
   const { data, error } = await supabase.from("student_notifications").select("id,kind,message_fr,payload,read_at,created_at").eq("student_id", studentId).order("created_at", { ascending: false }).limit(50);
   if (error) throw new Error(error.message);
-  return journalStudentPayload(studentId, "legacy:notifications", (data ?? []).map((row) => ({ id: row.id as string, kind: row.kind as string, message: row.message_fr as string, payload: (row.payload ?? {}) as Record<string, unknown>, readAt: row.read_at as string | null, createdAt: row.created_at as string })));
+  const rows=(data ?? []).map((row) => ({ id: row.id as string, kind: row.kind as string, message: row.message_fr as string, payload: (row.payload ?? {}) as Record<string, unknown>, readAt: row.read_at as string | null, createdAt: row.created_at as string }));
+  await journalStudentPayload(studentId,"legacy:notifications",{rows,display:inboxDisplay(rows)});
+  return rows;
 }
 
 export async function countUnreadStudentNotifications(): Promise<number> {
