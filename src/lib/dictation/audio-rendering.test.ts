@@ -36,3 +36,7 @@ it('keeps historical playback explicit and rejects stale new manifests',async()=
  await renderPendingDictationAudio(db);const ready=f.updates.find(u=>u.audio_status==='ready')!;
  expect(()=>resolveDictationAudioAssets({id,key:'horses',segments:[{...segments[0],text:'Un autre texte.'}],audioManifest:ready.audio_manifest})).toThrow('source changed');
 });
+
+it('can restrict an operator run to one explicit dictation',async()=>{
+ await renderPendingDictationAudio(db,{dictationId:id,limit:1});expect(f.filters[0]).toEqual(['review_status','human_approved']);expect(f.filters[1]).toEqual(['id',id]);
+});

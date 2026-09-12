@@ -15,12 +15,13 @@ type Segment = { text: string; audioPath: string | null };
  * stored in the private bucket. Fails closed: without a speech backend the
  * dictée stays unpublished rather than falling back to browser synthesis.
  */
-export async function renderPendingDictationAudio(db: SupabaseClient, options: { limit?: number } = {}) {
+export async function renderPendingDictationAudio(db: SupabaseClient, options: { limit?: number; dictationId?: string } = {}) {
   const limit = options.limit ?? 5;
-  const { data: rows, error } = await db.from("dictations")
+  let query = db.from("dictations")
     .select("id,key,segments,audio_status,updated_at")
-    .eq("review_status", "human_approved").in("audio_status", ["pending", "failed"])
-    .order("updated_at", { ascending: true }).limit(limit);
+    .eq("review_status", "human_approved").in("audio_status", ["pending", "failed"]);
+  if(options.dictationId)query=query.eq("id",options.dictationId);
+  const { data: rows, error } = await query.order("updated_at", { ascending: true }).limit(limit);
   if (error) throw new Error(error.message);
   const provider = getAIProvider();
   await ensureBucket(db);
