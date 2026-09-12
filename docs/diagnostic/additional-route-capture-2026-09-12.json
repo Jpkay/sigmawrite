@@ -2,24 +2,27 @@
   "status": "implemented_locally_not_deployed",
   "boundaries": [
     "legacy:repair",
-    "reference:verb-index"
+    "reference:verb-index",
+    "legacy:production-task",
+    "legacy:production-feedback"
   ],
   "changes": [
     "Repair content is selected on the server and journaled before client props are returned; the browser no longer imports the full lesson catalogue.",
     "The verb index journals its frequent verbs before rendering.",
     "Repair player is keyed by skill so navigation cannot reuse the previous lesson state.",
-    "Unknown and inherited property names resolve to the missing-lesson screen."
+    "Unknown and inherited property names resolve to the missing-lesson screen.",
+    "Writing task prompts are journaled under the authenticated owner before delivery.",
+    "Writing rubric, matched forms and feedback are journaled before inserting the submission, so a journal failure does not consume that text as a duplicate submission."
   ],
   "evidenceSemantics": "Conservative delivered-content record, including available correction text and prefetched payloads; not proof of attention, mastery, or a complete history.",
   "checks": {
-    "routeAndJournalTests": 12,
-    "testFiles": 3,
+    "testFiles": 340,
+    "tests": 1537,
     "typescript": "passed",
     "deployedBrowser": "pending"
   },
   "captureContractEnabled": false,
   "remaining": [
-    "Production task and feedback delivery",
     "Other static and alternate delivery paths",
     "Verified semantic and audio coverage",
     "Deployed browser checks before public rollout"

@@ -1367,7 +1367,7 @@ export async function loadIndependentProductionTask(input: unknown) {
   const service = createServiceClient();
   const node = await independentProductionNode(service, studentId, data.nodeId);
   const { genres, genre, spec } = await productionGenreContext(service, studentId, data.genre);
-  return {
+  return journalStudentPayload(studentId, "legacy:production-task", {
     nodeId: node.id,
     nodeKey: node.key,
     label: node.label_fr,
@@ -1379,7 +1379,7 @@ export async function loadIndependentProductionTask(input: unknown) {
     legacyPrompt: independentProductionPrompt(node.key, node.label_fr),
     minimumWords: spec.minimumWords,
     maximumWords: spec.maximumWords,
-  };
+  });
 }
 
 export async function submitIndependentProduction(input: unknown) {
@@ -1410,6 +1410,16 @@ export async function submitIndependentProduction(input: unknown) {
     const lesson = lessonForPracticeNode({ key: node.key, label: node.label_fr, description: node.description_fr, strand: node.strand });
     rubric = await scoreProductionWithAI({ text: data.text, genreLabel: spec.label, genreBrief: spec.brief, nodeLabel: node.label_fr, rulePattern: lesson.pattern, demonstrated, grammarErrorCount: grammarMatches.length, words, minimumWords: spec.minimumWords, maximumWords: spec.maximumWords });
   }
+  const feedback = !verified
+    ? "La vérification linguistique est momentanément indisponible. Ton texte est conservé, mais il ne compte pas encore comme preuve de maîtrise."
+    : !target.demonstrated
+      ? "Utilise au moins deux formes différentes de la compétence demandée."
+      : grammarErrorRate > 0.05
+        ? "Le texte utilise bien la compétence, mais corrige encore les erreurs signalées avant qu’il compte comme preuve."
+        : "Cette production compte comme une preuve autonome. Une seconde production réussie, dans un autre texte, confirmera la maîtrise.";
+  // Record linguistic feedback before committing the submission. A journal
+  // failure must leave the student able to retry the same text.
+  await journalStudentPayload(studentId, "legacy:production-feedback", { rubric, matchedForms: target.matchedForms, feedback });
   const { data: submission, error: submissionError } = await service.from("independent_production_submissions")
     .insert({
       student_id: studentId,
@@ -1463,13 +1473,7 @@ export async function submitIndependentProduction(input: unknown) {
     mastery,
     matchedForms: target.matchedForms,
     grammarErrorCount: grammarMatches.length,
-    feedback: !verified
-      ? "La vérification linguistique est momentanément indisponible. Ton texte est conservé, mais il ne compte pas encore comme preuve de maîtrise."
-      : !target.demonstrated
-        ? "Utilise au moins deux formes différentes de la compétence demandée."
-        : grammarErrorRate > 0.05
-          ? "Le texte utilise bien la compétence, mais corrige encore les erreurs signalées avant qu’il compte comme preuve."
-          : "Cette production compte comme une preuve autonome. Une seconde production réussie, dans un autre texte, confirmera la maîtrise.",
+    feedback,
   };
 }
 
