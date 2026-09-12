@@ -1,3 +1,4 @@
+import {writingWordIndex,indexedWritingSchema,resolveIndexedWritingJudgment} from "./writing-word-index";
 import {WritingAssessmentError} from "./writing-error";
 import {parseWritingProviderJson,WRITING_JSON_ENVELOPE_POLICY} from "./writing-provider-json";
 import {checkWritingImperativeForm} from "./writing-imperative-form";
@@ -34,9 +35,10 @@ export function writingTransportSchema(rubric?:WritingRubric,nodeKey?:string){
   ...(nodeKey==='employer_imperatif_en_contexte'?{imperativeForm:imperativeFormSchema}:{}),
   ...(nodeKey&&requiresWritingRevision(nodeKey)?{revisionEvidence:revisionEvidenceSchema}:{}),
  }).strict();
- return z.toJSONSchema(judgmentSchema.extend({opportunities:z.array(opportunity).max(1000)}));
+ const schema=z.toJSONSchema(judgmentSchema.extend({opportunities:z.array(opportunity).max(1000)}));
+ return indexedWritingSchema(schema) as typeof schema;
 }
-export const WRITING_EVALUATOR_VERSION="french-writing-evaluator-v12";
+export const WRITING_EVALUATOR_VERSION="french-writing-evaluator-v13";
 export type WritingJudgeInput={promptFr:string;instructionsFr:string;answer:string;firstDraft?:string;rubric?:WritingRubric;
  target:{nodeKey:string;labelFr:string;descriptionFr:string;actionFr:string;criteria:Record<string,unknown>}};
 export type WritingJudge=(input:WritingJudgeInput)=>Promise<unknown>;
@@ -54,11 +56,11 @@ export async function requestWritingJudgment(input:WritingJudgeInput,onRawRespon
  const config=resolveAIRuntimeConfig();
  if(config.kind==="mock")throw Error("Writing assessment requires a configured provider");
  const raw=await chatComplete([
-  {role:"system",content:`${system}\nContrat JSON : ${JSON.stringify(writingTransportSchema(input.rubric,input.target.nodeKey))}`},
-  {role:"user",content:JSON.stringify(input)},
+  {role:"system",content:`${system}\nTransport : ne recopie pas les extraits. Choisis startWord et endWord (inclus) dans answerWords. Pour before, utilise firstDraftWords. Pour imperativeForm, sélectionne le mot verbal seul. Les identifiants sont ceux fournis, jamais des positions de caractères. Les extraits et occurrences seront reconstruits exactement par le serveur. Ne sélectionne pas une forme voisine ou corrigée qui change ce que l’élève a écrit.\nContrat JSON : ${JSON.stringify(writingTransportSchema(input.rubric,input.target.nodeKey))}`},
+  {role:"user",content:JSON.stringify({...input,answerWords:writingWordIndex(input.answer).map(({id,text})=>({id,text})),...(input.firstDraft!==undefined?{firstDraftWords:writingWordIndex(input.firstDraft).map(({id,text})=>({id,text}))}:{})})},
  ],{baseUrl:config.baseUrl,apiKey:config.apiKey,model:process.env.WRITING_GRADING_MODEL??config.model,responseFormat:{type:"json_schema",json_schema:{name:"french_writing_judgment",strict:true,schema:writingTransportSchema(input.rubric,input.target.nodeKey)}},requireParameters:new URL(config.baseUrl).hostname==="openrouter.ai",temperature:0,maxRetries:0,timeoutMs:25000});
  onRawResponse?.(raw);
- return parseWritingProviderJson(raw);
+ return resolveIndexedWritingJudgment(parseWritingProviderJson(raw),input.answer,input.firstDraft);
 }
 /** Candidate evaluator. Do not wire into published assessment until rubric and
  * adversarial calibration checks pass. Structural validation is not calibration. */
@@ -104,7 +106,7 @@ export function createWritingEvaluator(judge:WritingJudge=requestWritingJudgment
    }).sort((a,b)=>a.start-b.start);
    if(tokens.some((token,i)=>i>0&&token.start<tokens[i-1].end))throw Error("Overlapping writing opportunities");
    return {connectedWriting:result.connectedWriting,revisionReviewed:revision&&result.revisionReviewed,tokens,
-    evaluator:{version:WRITING_EVALUATOR_VERSION,protocolChecksum:checksum({version:WRITING_EVALUATOR_VERSION,envelopePolicy:WRITING_JSON_ENVELOPE_POLICY,system,schema:writingTransportSchema(rubric,node.key),responseFormat:"json_schema_strict"}),
+    evaluator:{version:WRITING_EVALUATOR_VERSION,protocolChecksum:checksum({version:WRITING_EVALUATOR_VERSION,envelopePolicy:WRITING_JSON_ENVELOPE_POLICY,system,schema:writingTransportSchema(rubric,node.key),responseFormat:"json_schema_strict",sourceIndex:"unicode-word-ranges-v1"}),
      rubricChecksum:checksum({rubric,nodeKey:node.key,description:node.descriptionFr,evidence,prompt:input.item.promptFr,instructions:input.item.instructionsFr??""}),
      model:judge===requestWritingJudgment?(process.env.WRITING_GRADING_MODEL??resolveAIRuntimeConfig().model):"injected-judge"}};
   }catch(cause){throw new WritingAssessmentError(cause);}

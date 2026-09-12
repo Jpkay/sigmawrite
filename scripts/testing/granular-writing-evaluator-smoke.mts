@@ -38,7 +38,7 @@ for(const c of selected){
   const cause=error instanceof Error?error.cause:undefined;
   const message=cause instanceof Error?cause.message:"";
   const httpStatus=message.match(/^LLM (\d{3}) /)?.[1];
-  const reason=httpStatus?`provider_http_${httpStatus}`:cause instanceof Error&&cause.name==="UnsupportedWritingImperativeError"?"unsupported_morphology":(cause instanceof SyntaxError||/Could not extract JSON/.test(message))?"invalid_json":/response had no content/.test(message)?"empty_provider_response":/timeout|timed out|abort/i.test(message)?"timeout":/Uncertain writing judgment/.test(message)?"uncertain":/excerpt unavailable|Overlapping writing|outside rubric/.test(message)?"invalid_evidence":cause instanceof Error&&cause.name==="ZodError"?"invalid_schema":"provider_or_configuration";
+  const reason=httpStatus?`provider_http_${httpStatus}`:cause instanceof Error&&cause.name==="UnsupportedWritingImperativeError"?"unsupported_morphology":(cause instanceof SyntaxError||/Could not extract JSON/.test(message))?"invalid_json":/response had no content/.test(message)?"empty_provider_response":/timeout|timed out|abort/i.test(message)?"timeout":/Uncertain writing judgment/.test(message)?"uncertain":/excerpt unavailable|Overlapping writing|outside rubric|Invalid writing word range|Unindexed writing quotation/.test(message)?"invalid_evidence":cause instanceof Error&&cause.name==="ZodError"?"invalid_schema":"provider_or_configuration";
   results.push({id:c.id,caseChecksum:checksum(c),expected:c.expect,observed:"unavailable",reason,causeType:cause instanceof Error?cause.name:typeof cause,rawJudgment,...(reason==="invalid_json"?{rawResponse}:{}),matched:false});console.log(JSON.stringify({id:c.id,observed:"unavailable",reason}));
  }
 }

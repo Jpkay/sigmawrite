@@ -38,7 +38,7 @@ it("compares both versions and preserves the evaluator's explanation",async()=>{
 });
 it("binds evaluator provenance to the protocol and exact task rubric",async()=>{
  const f=fixture(),first=await f.evaluate(f.input);
- expect(first.evaluator).toMatchObject({version:"french-writing-evaluator-v12",model:"injected-judge",protocolChecksum:expect.stringMatching(/^sha256:/),rubricChecksum:expect.stringMatching(/^sha256:/)});
+ expect(first.evaluator).toMatchObject({version:"french-writing-evaluator-v13",model:"injected-judge",protocolChecksum:expect.stringMatching(/^sha256:/),rubricChecksum:expect.stringMatching(/^sha256:/)});
  const second=await f.evaluate({...f.input,item:{...f.input.item,promptFr:"Décris un lieu dans le passé."}});
  expect(second.evaluator?.rubricChecksum).not.toBe(first.evaluator?.rubricChecksum);
  expect(second.evaluator?.protocolChecksum).toBe(first.evaluator?.protocolChecksum);

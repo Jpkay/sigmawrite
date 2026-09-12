@@ -1,0 +1,238 @@
+{
+  "status": "experimental_not_calibrated",
+  "model": "z-ai/glm-5.2",
+  "syntheticOnly": true,
+  "casesChecksum": "sha256:18e65fad91f96ab4c1951d2c140a0820eb64ed0d25d78ba68435300d72789dbb",
+  "results": [
+    {
+      "id": "lexical-scoped-correct",
+      "caseChecksum": "sha256:c37c4c1f39c4e1d1d1d1cd80b80c5efefe1553d2e122074c1c390e50e5835367",
+      "expected": "correct",
+      "observed": "correct",
+      "matched": true,
+      "evidenceMatched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 3,
+            "end": 9,
+            "text": "cheval",
+            "criterionId": "word:cheval",
+            "correct": true,
+            "reasonFr": "« cheval » est correctement orthographié au singulier."
+          },
+          {
+            "start": 28,
+            "end": 36,
+            "text": "barrière",
+            "criterionId": "word:barriere",
+            "correct": true,
+            "reasonFr": "« barrière » est correctement orthographié avec l'accent grave."
+          },
+          {
+            "start": 41,
+            "end": 47,
+            "text": "jardin",
+            "criterionId": "word:jardin",
+            "correct": true,
+            "reasonFr": "« jardin » est correctement orthographié."
+          },
+          {
+            "start": 64,
+            "end": 70,
+            "text": "oiseau",
+            "criterionId": "word:oiseau",
+            "correct": true,
+            "reasonFr": "« oiseau » est correctement orthographié."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v13",
+          "protocolChecksum": "sha256:7e365673fd2a6e1a7808c0c69ba90e6d8f8476cefac16876b3ac5f3a9b71e7da",
+          "rubricChecksum": "sha256:5f52b133657692c4192f28e404e0db48e6f1ce6ae401192b21757576ea7f6655",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "lexical-scoped-errors",
+      "caseChecksum": "sha256:bb10539398f059a51dacc55144c074b5889709ce35372f306d26f857b69055f2",
+      "expected": "incorrect",
+      "observed": "incorrect",
+      "matched": true,
+      "evidenceMatched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 3,
+            "end": 10,
+            "text": "chevale",
+            "criterionId": "word:cheval",
+            "correct": false,
+            "reasonFr": "« cheale » est une graphie fautive du nom « cheval » ; l'élève a ajouté un e final."
+          },
+          {
+            "start": 29,
+            "end": 36,
+            "text": "barière",
+            "criterionId": "word:barriere",
+            "correct": false,
+            "reasonFr": "« barière » manque le double r de la graphie correcte « barrière »."
+          },
+          {
+            "start": 41,
+            "end": 48,
+            "text": "jardain",
+            "criterionId": "word:jardin",
+            "correct": false,
+            "reasonFr": "« jardain » est une graphie fautive du nom « jardin » ; le i a été remplacé par ai."
+          },
+          {
+            "start": 65,
+            "end": 69,
+            "text": "oiso",
+            "criterionId": "word:oiseau",
+            "correct": false,
+            "reasonFr": "« oiso » est une graphie fautive du nom « oiseau » ; la fin du mot est tronquée."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v13",
+          "protocolChecksum": "sha256:7e365673fd2a6e1a7808c0c69ba90e6d8f8476cefac16876b3ac5f3a9b71e7da",
+          "rubricChecksum": "sha256:5f52b133657692c4192f28e404e0db48e6f1ce6ae401192b21757576ea7f6655",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "grammar-scoped-correct",
+      "caseChecksum": "sha256:b28d02421670b09824ce993b6b87b12f444dedefc5a7e60e8118ab0e17e74b75",
+      "expected": "correct",
+      "observed": "correct",
+      "matched": true,
+      "evidenceMatched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 0,
+            "end": 18,
+            "text": "Les enfants jouent",
+            "criterionId": "subject_verb_agreement",
+            "correct": true,
+            "reasonFr": "Sujet pluriel « enfants » accordé correctement avec le verbe « jouent » au présent (3e personne du pluriel)."
+          },
+          {
+            "start": 36,
+            "end": 56,
+            "text": "Les filles apportent",
+            "criterionId": "subject_verb_agreement",
+            "correct": true,
+            "reasonFr": "Sujet pluriel « filles » accordé correctement avec le verbe « apportent » au présent (3e personne du pluriel)."
+          },
+          {
+            "start": 70,
+            "end": 91,
+            "text": "les garçons préparent",
+            "criterionId": "subject_verb_agreement",
+            "correct": true,
+            "reasonFr": "Sujet pluriel « garçons » accordé correctement avec le verbe « préparent » au présent (3e personne du pluriel)."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v13",
+          "protocolChecksum": "sha256:9d9ffae6296636bceb89d59b3eae1c3aa1cd961b4b871fc537cd051a24898be7",
+          "rubricChecksum": "sha256:eb57262798dc80ba2f439963a59e408ea3d41aa8e76938b928e04fb43951fbd7",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "grammar-scoped-errors",
+      "caseChecksum": "sha256:99efe7459993802fd84a328270c6a554f3ab4aa39b73cf2db92af989cc521e88",
+      "expected": "incorrect",
+      "observed": "incorrect",
+      "matched": true,
+      "evidenceMatched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 0,
+            "end": 16,
+            "text": "Les enfants joue",
+            "criterionId": "subject_verb_agreement",
+            "correct": false,
+            "reasonFr": "Sujet pluriel « Les enfants » avec verbe au présent écrit « joue » au lieu de « jouent »."
+          },
+          {
+            "start": 33,
+            "end": 51,
+            "text": "Les filles apporte",
+            "criterionId": "subject_verb_agreement",
+            "correct": false,
+            "reasonFr": "Sujet pluriel « Les filles » avec verbe au présent écrit « apporte » au lieu de « apportent »."
+          },
+          {
+            "start": 65,
+            "end": 84,
+            "text": "les garçons prépare",
+            "criterionId": "subject_verb_agreement",
+            "correct": false,
+            "reasonFr": "Sujet pluriel « les garçons » avec verbe au présent écrit « prépare » au lieu de « préparent »."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v13",
+          "protocolChecksum": "sha256:9d9ffae6296636bceb89d59b3eae1c3aa1cd961b4b871fc537cd051a24898be7",
+          "rubricChecksum": "sha256:eb57262798dc80ba2f439963a59e408ea3d41aa8e76938b928e04fb43951fbd7",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "lexical-scoped-no-target",
+      "caseChecksum": "sha256:3263f248ac4650881f9c9b1d990f5423f2f3ed733c95089724b084f60d436654",
+      "expected": "unresolved",
+      "observed": "unresolved",
+      "matched": true,
+      "evidenceMatched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [],
+        "evaluator": {
+          "version": "french-writing-evaluator-v13",
+          "protocolChecksum": "sha256:7e365673fd2a6e1a7808c0c69ba90e6d8f8476cefac16876b3ac5f3a9b71e7da",
+          "rubricChecksum": "sha256:5f52b133657692c4192f28e404e0db48e6f1ce6ae401192b21757576ea7f6655",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "grammar-scoped-no-target",
+      "caseChecksum": "sha256:c102cc831bf121d4e268441739f941f8d35809df0e1d0496e18b649b5249bf3f",
+      "expected": "unresolved",
+      "observed": "unresolved",
+      "matched": true,
+      "evidenceMatched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [],
+        "evaluator": {
+          "version": "french-writing-evaluator-v13",
+          "protocolChecksum": "sha256:9d9ffae6296636bceb89d59b3eae1c3aa1cd961b4b871fc537cd051a24898be7",
+          "rubricChecksum": "sha256:eb57262798dc80ba2f439963a59e408ea3d41aa8e76938b928e04fb43951fbd7",
+          "model": "injected-judge"
+        }
+      }
+    }
+  ]
+}

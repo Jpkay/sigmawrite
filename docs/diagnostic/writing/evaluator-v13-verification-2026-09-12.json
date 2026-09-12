@@ -1,0 +1,43 @@
+{
+  "status": "experimental_source_index_checks_passed_not_calibrated",
+  "version": "french-writing-evaluator-v13",
+  "publicWritingEnabled": false,
+  "changes": [
+    "Provider selects source word IDs; server reconstructs exact quotations and occurrence numbers.",
+    "First-draft revision evidence uses the first-draft word index, preserving original mistakes.",
+    "Unknown IDs, reversed or incomplete ranges, unindexed quotations and ambiguous overlapping phrase ordinals are rejected.",
+    "Existing criterion, contextual judgment, revision and imperative validation remains in force."
+  ],
+  "checks": {
+    "testFiles": 345,
+    "tests": 1554,
+    "typescript": "passed",
+    "liveSyntheticRuns": [
+      {
+        "report": "evaluator-v13-indexed-regressions.json",
+        "cases": 3,
+        "matched": 3
+      },
+      {
+        "report": "evaluator-v13-scoped.json",
+        "cases": 6,
+        "matched": 6
+      },
+      {
+        "report": "evaluator-v13-counterexamples.json",
+        "cases": 28,
+        "matched": 28
+      }
+    ]
+  },
+  "limitations": [
+    "Source indexing guarantees retrieved spelling, not correct educational judgment.",
+    "Most counterexamples currently assert the aggregate verdict; word-level expectations cover only a subset.",
+    "Single runs are not reliability estimates or educator calibration.",
+    "The evaluator remains disabled and this change has not been deployed."
+  ],
+  "remaining": [
+    "Complete positive and adversarial coverage for all writing targets.",
+    "Owner review, repeated reliability checks, and deployed granular writing journeys."
+  ]
+}
