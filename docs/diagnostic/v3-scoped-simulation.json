@@ -1,5 +1,5 @@
 {
-  "candidateChecksum": "sha256:7b7a86a43b510f770f54ed77eba095131f0992c965d0e058e1f7155d169175c4",
+  "candidateChecksum": "sha256:add7e7afe08004249962e9136babc8776c6772699be823c64e4e8e2db5fad38d",
   "method": "Pure server-state simulation using actual candidate pools, deterministic correct/incorrect skill profiles and expected response times; not browser, grading, database, or pedagogical validation",
   "runs": [
     {
@@ -8,24 +8,46 @@
       "activeMinutes": 35,
       "questions": 61,
       "correct": 61,
-      "sampledTargets": 20,
+      "sampledTargets": 24,
       "results": {
-        "unknown": 522,
-        "uncertain": 20
+        "unknown": 518,
+        "uncertain": 24
       },
       "sampledSkills": [
         {
-          "skillId": "reconnaitre_present_indicatif::reading-receptive",
-          "labelFr": "Reconnaître le présent de l'indicatif",
+          "skillId": "distinguer_personne_nombre::reading-receptive",
+          "labelFr": "Identifier les traits de personne-nombre",
           "mode": "recognition",
           "expectedKnown": true,
           "status": "uncertain",
           "modes": [
             {
               "mode": "recognition",
-              "probability": 0.9940814954403842,
-              "distinctItems": 4,
-              "distinctContexts": 4,
+              "probability": 0.9936894184168013,
+              "distinctItems": 3,
+              "distinctContexts": 3,
+              "distinctOccasions": 1,
+              "accuracy": 1,
+              "unconfirmedFeatures": [],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false
+            }
+          ]
+        },
+        {
+          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
+          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
+          "mode": "production",
+          "expectedKnown": true,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "production",
+              "probability": 0.9998285616320933,
+              "distinctItems": 3,
+              "distinctContexts": 1,
               "distinctOccasions": 1,
               "accuracy": 1,
               "unconfirmedFeatures": [],
@@ -81,15 +103,37 @@
           ]
         },
         {
-          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
-          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
+          "skillId": "produire_futur_proche::writing-controlled-production::verb:avoir",
+          "labelFr": "Produire le futur proche — Conjuguer avoir",
           "mode": "production",
           "expectedKnown": true,
           "status": "uncertain",
           "modes": [
             {
               "mode": "production",
-              "probability": 0.9998285616320933,
+              "probability": 0.84375,
+              "distinctItems": 1,
+              "distinctContexts": 1,
+              "distinctOccasions": 1,
+              "accuracy": 1,
+              "unconfirmedFeatures": [],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false
+            }
+          ]
+        },
+        {
+          "skillId": "produire_futur_proche::writing-controlled-production::verb:aller",
+          "labelFr": "Produire le futur proche — Conjuguer aller",
+          "mode": "production",
+          "expectedKnown": true,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "production",
+              "probability": 0.998098425496311,
               "distinctItems": 3,
               "distinctContexts": 3,
               "distinctOccasions": 1,
@@ -103,38 +147,16 @@
           ]
         },
         {
-          "skillId": "reconnaitre_futur_proche::reading-receptive",
-          "labelFr": "Reconnaître le futur proche",
-          "mode": "recognition",
-          "expectedKnown": true,
-          "status": "uncertain",
-          "modes": [
-            {
-              "mode": "recognition",
-              "probability": 0.9283667621776505,
-              "distinctItems": 2,
-              "distinctContexts": 2,
-              "distinctOccasions": 1,
-              "accuracy": 1,
-              "unconfirmedFeatures": [],
-              "textTypes": [],
-              "contrastingErrorKeys": [],
-              "negativeExampleConfirmed": false,
-              "confirmed": false
-            }
-          ]
-        },
-        {
-          "skillId": "produire_futur_simple::writing-controlled-production::verb:aller",
-          "labelFr": "Produire le futur simple — Conjuguer aller",
+          "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le passé composé — Verbes réguliers en -er",
           "mode": "production",
           "expectedKnown": true,
           "status": "uncertain",
           "modes": [
             {
               "mode": "production",
-              "probability": 0.9998285616320933,
-              "distinctItems": 3,
+              "probability": 0.9473684210526315,
+              "distinctItems": 1,
               "distinctContexts": 1,
               "distinctOccasions": 1,
               "accuracy": 1,
@@ -147,17 +169,39 @@
           ]
         },
         {
-          "skillId": "deduire_mot_definition_locale::all-receptive::text_type:informational",
-          "labelFr": "Déduire un mot grâce à une définition locale — Texte informatif bref",
+          "skillId": "interpreter_sequence_temporelle::reading-receptive",
+          "labelFr": "Interpréter une séquence temporelle",
+          "mode": "recognition",
+          "expectedKnown": true,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "recognition",
+              "probability": 0.7297297297297298,
+              "distinctItems": 1,
+              "distinctContexts": 1,
+              "distinctOccasions": 1,
+              "accuracy": 1,
+              "unconfirmedFeatures": [],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false
+            }
+          ]
+        },
+        {
+          "skillId": "ordonner_evenements_explicites::all-receptive::text_type:informational",
+          "labelFr": "Ordonner des événements explicitement datés — Texte informatif bref",
           "mode": "interpretation",
           "expectedKnown": true,
           "status": "uncertain",
           "modes": [
             {
               "mode": "interpretation",
-              "probability": 0.9940814954403842,
-              "distinctItems": 4,
-              "distinctContexts": 4,
+              "probability": 0.9283667621776505,
+              "distinctItems": 2,
+              "distinctContexts": 2,
               "distinctOccasions": 1,
               "accuracy": 1,
               "unconfirmedFeatures": [],
@@ -171,8 +215,8 @@
           ]
         },
         {
-          "skillId": "deduire_mot_exemple_contraste::all-receptive::text_type:informational",
-          "labelFr": "Déduire un mot grâce à un exemple ou un contraste — Texte informatif bref",
+          "skillId": "ordonner_evenements_explicites::all-receptive::text_type:argumentative",
+          "labelFr": "Ordonner des événements explicitement datés — Texte argumentatif bref",
           "mode": "interpretation",
           "expectedKnown": true,
           "status": "uncertain",
@@ -186,7 +230,55 @@
               "accuracy": 1,
               "unconfirmedFeatures": [],
               "textTypes": [
-                "informational"
+                "argumentative"
+              ],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false
+            }
+          ]
+        },
+        {
+          "skillId": "resoudre_pronom_objet::all-receptive::text_type:narrative",
+          "labelFr": "Résoudre la référence d'un pronom objet — Récit bref",
+          "mode": "interpretation",
+          "expectedKnown": true,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "interpretation",
+              "probability": 0.782608695652174,
+              "distinctItems": 1,
+              "distinctContexts": 1,
+              "distinctOccasions": 1,
+              "accuracy": 1,
+              "unconfirmedFeatures": [],
+              "textTypes": [
+                "narrative"
+              ],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false
+            }
+          ]
+        },
+        {
+          "skillId": "inferer_cause_locale::all-receptive::text_type:narrative",
+          "labelFr": "Inférer une cause locale — Récit bref",
+          "mode": "interpretation",
+          "expectedKnown": true,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "interpretation",
+              "probability": 0.782608695652174,
+              "distinctItems": 1,
+              "distinctContexts": 1,
+              "distinctOccasions": 1,
+              "accuracy": 1,
+              "unconfirmedFeatures": [],
+              "textTypes": [
+                "narrative"
               ],
               "contrastingErrorKeys": [],
               "negativeExampleConfirmed": false,
@@ -219,6 +311,50 @@
           ]
         },
         {
+          "skillId": "construction_subordonnee_completive::writing-controlled-production",
+          "labelFr": "Reconnaître une subordonnée complétive",
+          "mode": "production",
+          "expectedKnown": true,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "production",
+              "probability": 0.9940814954403842,
+              "distinctItems": 4,
+              "distinctContexts": 4,
+              "distinctOccasions": 1,
+              "accuracy": 1,
+              "unconfirmedFeatures": [],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false
+            }
+          ]
+        },
+        {
+          "skillId": "construction_reprise_demonstrative::writing-controlled-production",
+          "labelFr": "Interpréter une reprise démonstrative",
+          "mode": "production",
+          "expectedKnown": true,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "production",
+              "probability": 0.9283667621776505,
+              "distinctItems": 2,
+              "distinctContexts": 2,
+              "distinctOccasions": 1,
+              "accuracy": 1,
+              "unconfirmedFeatures": [],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false
+            }
+          ]
+        },
+        {
           "skillId": "construction_accord_determinant_nom::reading-analysis",
           "labelFr": "Analyser l'accord déterminant-nom",
           "mode": "recognition",
@@ -241,45 +377,23 @@
           ]
         },
         {
-          "skillId": "construction_accord_determinant_nom::writing-controlled-production",
-          "labelFr": "Analyser l'accord déterminant-nom",
-          "mode": "production",
+          "skillId": "construction_accord_sujet_verbe::reading-analysis::construction:adjacent",
+          "labelFr": "Analyser l'accord sujet-verbe — Sujet proche du verbe",
+          "mode": "recognition",
           "expectedKnown": true,
           "status": "uncertain",
           "modes": [
             {
-              "mode": "production",
-              "probability": 0.9283667621776505,
-              "distinctItems": 2,
-              "distinctContexts": 2,
+              "mode": "recognition",
+              "probability": 0.9790162833641095,
+              "distinctItems": 3,
+              "distinctContexts": 3,
               "distinctOccasions": 1,
               "accuracy": 1,
               "unconfirmedFeatures": [],
               "textTypes": [],
               "contrastingErrorKeys": [],
-              "negativeExampleConfirmed": false,
-              "confirmed": false
-            }
-          ]
-        },
-        {
-          "skillId": "orthographier_nasale_on_om::writing-controlled-production",
-          "labelFr": "Choisir les graphies on/om",
-          "mode": "production",
-          "expectedKnown": true,
-          "status": "uncertain",
-          "modes": [
-            {
-              "mode": "production",
-              "probability": 0.6428571428571428,
-              "distinctItems": 1,
-              "distinctContexts": 1,
-              "distinctOccasions": 1,
-              "accuracy": 1,
-              "unconfirmedFeatures": [],
-              "textTypes": [],
-              "contrastingErrorKeys": [],
-              "negativeExampleConfirmed": false,
+              "negativeExampleConfirmed": true,
               "confirmed": false
             }
           ]
@@ -307,17 +421,17 @@
           ]
         },
         {
-          "skillId": "accorder_sujet_verbe_ecrit::writing-controlled-production::construction:coordinated",
-          "labelFr": "Réaliser l'accord sujet-verbe — Plusieurs sujets coordonnés",
+          "skillId": "employer_cedille::writing-controlled-production",
+          "labelFr": "Employer la cédille",
           "mode": "production",
           "expectedKnown": true,
           "status": "uncertain",
           "modes": [
             {
               "mode": "production",
-              "probability": 0.8536299765807963,
-              "distinctItems": 3,
-              "distinctContexts": 3,
+              "probability": 0.6428571428571428,
+              "distinctItems": 1,
+              "distinctContexts": 1,
               "distinctOccasions": 1,
               "accuracy": 1,
               "unconfirmedFeatures": [],
@@ -329,22 +443,26 @@
           ]
         },
         {
-          "skillId": "identifier_complement_direct::reading-receptive",
-          "labelFr": "Identifier un complément direct",
+          "skillId": "accorder_determinant_nom_ecrit::reading-receptive",
+          "labelFr": "Réaliser l'accord déterminant-nom",
           "mode": "recognition",
           "expectedKnown": true,
           "status": "uncertain",
           "modes": [
             {
               "mode": "recognition",
-              "probability": 0.9940814954403842,
-              "distinctItems": 4,
-              "distinctContexts": 4,
+              "probability": 0.8793727382388421,
+              "distinctItems": 2,
+              "distinctContexts": 2,
               "distinctOccasions": 1,
               "accuracy": 1,
               "unconfirmedFeatures": [],
               "textTypes": [],
-              "contrastingErrorKeys": [],
+              "contrastingErrorKeys": [
+                "determiner-gender",
+                "determiner-number",
+                "noun-number"
+              ],
               "negativeExampleConfirmed": false,
               "confirmed": false
             }
@@ -437,31 +555,18 @@
               "confirmed": false
             }
           ]
-        },
-        {
-          "skillId": "distinguer_pronom_cod_coi::writing-controlled-production",
-          "labelFr": "Choisir entre COD et COI",
-          "mode": "production",
-          "expectedKnown": true,
-          "status": "uncertain",
-          "modes": [
-            {
-              "mode": "production",
-              "probability": 0.96684350132626,
-              "distinctItems": 2,
-              "distinctContexts": 2,
-              "distinctOccasions": 1,
-              "accuracy": 1,
-              "unconfirmedFeatures": [],
-              "textTypes": [],
-              "contrastingErrorKeys": [],
-              "negativeExampleConfirmed": false,
-              "confirmed": false
-            }
-          ]
         }
       ],
       "firstActivities": [
+        {
+          "skillId": "construction_accord_nom_adjectif::reading-analysis",
+          "activityId": "cbbc6312-82d2-5f16-9c2c-3b9f93134ed9",
+          "kind": "independent_check",
+          "action": "verify",
+          "titleFr": "Analyser l'accord nom-adjectif",
+          "href": "/student/diagnostic?activity=cbbc6312-82d2-5f16-9c2c-3b9f93134ed9",
+          "estimatedMinutes": 1
+        },
         {
           "skillId": "construction_phrase_canonique::reading-analysis",
           "activityId": "d9d54860-2d57-5757-8342-e6f87e55acd8",
@@ -472,39 +577,30 @@
           "estimatedMinutes": 1
         },
         {
-          "skillId": "construction_phrase_canonique::writing-controlled-production",
-          "activityId": "eb4f1cc0-53da-5455-879e-e0e7fd2e7e20",
+          "skillId": "deduire_mot_definition_locale::all-receptive::text_type:informational",
+          "activityId": "40aa9cef-49b0-5e36-9571-ec6efb33cfd9",
           "kind": "independent_check",
           "action": "verify",
-          "titleFr": "Reconnaître une phrase canonique",
-          "href": "/student/diagnostic?activity=eb4f1cc0-53da-5455-879e-e0e7fd2e7e20",
+          "titleFr": "Déduire un mot grâce à une définition locale — Texte informatif bref",
+          "href": "/student/diagnostic?activity=40aa9cef-49b0-5e36-9571-ec6efb33cfd9",
           "estimatedMinutes": 1
         },
         {
-          "skillId": "former_feminin_adjectif_regulier::writing-controlled-production",
-          "activityId": "a23d070e-3602-5605-8ffa-f54ca074b15a",
+          "skillId": "distinguer_infinitif_participe::reading-receptive",
+          "activityId": "a1e7821f-4878-5cbf-810d-96bfd87e7087",
           "kind": "independent_check",
           "action": "verify",
-          "titleFr": "Former le féminin régulier d'un adjectif",
-          "href": "/student/diagnostic?activity=a23d070e-3602-5605-8ffa-f54ca074b15a",
+          "titleFr": "Distinguer infinitif/participe passé",
+          "href": "/student/diagnostic?activity=a1e7821f-4878-5cbf-810d-96bfd87e7087",
           "estimatedMinutes": 1
         },
         {
-          "skillId": "former_participe_passe::writing-controlled-production::construction:er",
-          "activityId": "c17692fd-fea3-526d-8a94-524b23a56701",
+          "skillId": "construction_accord_nom_adjectif::writing-controlled-production",
+          "activityId": "86edb4bb-6999-5882-a6fd-e63ae512f024",
           "kind": "independent_check",
           "action": "verify",
-          "titleFr": "Former un participe passé — Participes en -é",
-          "href": "/student/diagnostic?activity=c17692fd-fea3-526d-8a94-524b23a56701",
-          "estimatedMinutes": 1
-        },
-        {
-          "skillId": "former_participe_passe::writing-controlled-production::construction:ir",
-          "activityId": "62d72479-3ec3-5aab-a8fe-7b40df7f0fc7",
-          "kind": "independent_check",
-          "action": "verify",
-          "titleFr": "Former un participe passé — Participes en -i",
-          "href": "/student/diagnostic?activity=62d72479-3ec3-5aab-a8fe-7b40df7f0fc7",
+          "titleFr": "Analyser l'accord nom-adjectif",
+          "href": "/student/diagnostic?activity=86edb4bb-6999-5882-a6fd-e63ae512f024",
           "estimatedMinutes": 1
         }
       ],
@@ -518,37 +614,15 @@
       "activeMinutes": 35,
       "questions": 61,
       "correct": 0,
-      "sampledTargets": 25,
+      "sampledTargets": 28,
       "results": {
-        "uncertain": 25,
-        "unknown": 517
+        "uncertain": 28,
+        "unknown": 514
       },
       "sampledSkills": [
         {
           "skillId": "identifier_sujet_verbe::reading-receptive",
           "labelFr": "Identifier le sujet du verbe",
-          "mode": "recognition",
-          "expectedKnown": false,
-          "status": "uncertain",
-          "modes": [
-            {
-              "mode": "recognition",
-              "probability": 0.017467248908296946,
-              "distinctItems": 2,
-              "distinctContexts": 2,
-              "distinctOccasions": 1,
-              "accuracy": 0,
-              "unconfirmedFeatures": [],
-              "textTypes": [],
-              "contrastingErrorKeys": [],
-              "negativeExampleConfirmed": false,
-              "confirmed": false
-            }
-          ]
-        },
-        {
-          "skillId": "reconnaitre_radical_terminaison::reading-receptive",
-          "labelFr": "Segmenter une forme verbale",
           "mode": "recognition",
           "expectedKnown": false,
           "status": "uncertain",
@@ -570,8 +644,30 @@
           ]
         },
         {
-          "skillId": "reconnaitre_present_indicatif::reading-receptive",
-          "labelFr": "Reconnaître le présent de l'indicatif",
+          "skillId": "distinguer_personne_nombre::reading-receptive",
+          "labelFr": "Identifier les traits de personne-nombre",
+          "mode": "recognition",
+          "expectedKnown": false,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "recognition",
+              "probability": 0.10714285714285715,
+              "distinctItems": 1,
+              "distinctContexts": 1,
+              "distinctOccasions": 1,
+              "accuracy": 0,
+              "unconfirmedFeatures": [],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false
+            }
+          ]
+        },
+        {
+          "skillId": "reconnaitre_radical_terminaison::reading-receptive",
+          "labelFr": "Segmenter une forme verbale",
           "mode": "recognition",
           "expectedKnown": false,
           "status": "uncertain",
@@ -580,6 +676,28 @@
               "mode": "recognition",
               "probability": 0.11764705882352941,
               "distinctItems": 1,
+              "distinctContexts": 1,
+              "distinctOccasions": 1,
+              "accuracy": 0,
+              "unconfirmedFeatures": [],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false
+            }
+          ]
+        },
+        {
+          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
+          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
+          "mode": "production",
+          "expectedKnown": false,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "production",
+              "probability": 0.010958904109589048,
+              "distinctItems": 2,
               "distinctContexts": 1,
               "distinctOccasions": 1,
               "accuracy": 0,
@@ -638,15 +756,15 @@
           ]
         },
         {
-          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
-          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
+          "skillId": "produire_futur_proche::writing-controlled-production::verb:aller",
+          "labelFr": "Produire le futur proche — Conjuguer aller",
           "mode": "production",
           "expectedKnown": false,
           "status": "uncertain",
           "modes": [
             {
               "mode": "production",
-              "probability": 0.001164991990680065,
+              "probability": 0.0015134953333893893,
               "distinctItems": 3,
               "distinctContexts": 3,
               "distinctOccasions": 1,
@@ -661,46 +779,21 @@
           ]
         },
         {
-          "skillId": "produire_futur_simple::writing-controlled-production::verb:aller",
-          "labelFr": "Produire le futur simple — Conjuguer aller",
+          "skillId": "produire_futur_proche::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le futur proche — Verbes réguliers en -er",
           "mode": "production",
           "expectedKnown": false,
           "status": "uncertain",
           "modes": [
             {
               "mode": "production",
-              "probability": 0.001164991990680065,
-              "distinctItems": 3,
-              "distinctContexts": 1,
-              "distinctOccasions": 1,
-              "accuracy": 0,
-              "unconfirmedFeatures": [],
-              "textTypes": [],
-              "contrastingErrorKeys": [],
-              "negativeExampleConfirmed": false,
-              "confirmed": false,
-              "provisionalGap": true
-            }
-          ]
-        },
-        {
-          "skillId": "localiser_information_explicite::all-receptive::text_type:argumentative",
-          "labelFr": "Localiser une information explicite — Texte argumentatif bref",
-          "mode": "interpretation",
-          "expectedKnown": false,
-          "status": "uncertain",
-          "modes": [
-            {
-              "mode": "interpretation",
-              "probability": 0.11764705882352941,
+              "probability": 0.09523809523809527,
               "distinctItems": 1,
               "distinctContexts": 1,
               "distinctOccasions": 1,
               "accuracy": 0,
               "unconfirmedFeatures": [],
-              "textTypes": [
-                "argumentative"
-              ],
+              "textTypes": [],
               "contrastingErrorKeys": [],
               "negativeExampleConfirmed": false,
               "confirmed": false
@@ -708,58 +801,30 @@
           ]
         },
         {
-          "skillId": "deduire_mot_definition_locale::all-receptive::text_type:informational",
-          "labelFr": "Déduire un mot grâce à une définition locale — Texte informatif bref",
-          "mode": "interpretation",
+          "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le passé composé — Verbes réguliers en -er",
+          "mode": "production",
           "expectedKnown": false,
           "status": "uncertain",
           "modes": [
             {
-              "mode": "interpretation",
-              "probability": 0.0023647650014779796,
-              "distinctItems": 3,
-              "distinctContexts": 3,
+              "mode": "production",
+              "probability": 0.09523809523809527,
+              "distinctItems": 1,
+              "distinctContexts": 1,
               "distinctOccasions": 1,
               "accuracy": 0,
               "unconfirmedFeatures": [],
-              "textTypes": [
-                "informational"
-              ],
+              "textTypes": [],
               "contrastingErrorKeys": [],
               "negativeExampleConfirmed": false,
-              "confirmed": false,
-              "provisionalGap": true
+              "confirmed": false
             }
           ]
         },
         {
-          "skillId": "deduire_mot_exemple_contraste::all-receptive::text_type:informational",
-          "labelFr": "Déduire un mot grâce à un exemple ou un contraste — Texte informatif bref",
-          "mode": "interpretation",
-          "expectedKnown": false,
-          "status": "uncertain",
-          "modes": [
-            {
-              "mode": "interpretation",
-              "probability": 0.0023647650014779796,
-              "distinctItems": 3,
-              "distinctContexts": 3,
-              "distinctOccasions": 1,
-              "accuracy": 0,
-              "unconfirmedFeatures": [],
-              "textTypes": [
-                "informational"
-              ],
-              "contrastingErrorKeys": [],
-              "negativeExampleConfirmed": false,
-              "confirmed": false,
-              "provisionalGap": true
-            }
-          ]
-        },
-        {
-          "skillId": "distinguer_fait_opinion::argumentative-receptive::text_type:argumentative",
-          "labelFr": "Distinguer un fait d'une opinion — Texte argumentatif bref",
+          "skillId": "localiser_information_explicite::all-receptive::text_type:argumentative",
+          "labelFr": "Localiser une information explicite — Texte argumentatif bref",
           "mode": "interpretation",
           "expectedKnown": false,
           "status": "uncertain",
@@ -774,6 +839,80 @@
               "unconfirmedFeatures": [],
               "textTypes": [
                 "argumentative"
+              ],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false
+            }
+          ]
+        },
+        {
+          "skillId": "ordonner_evenements_explicites::all-receptive::text_type:argumentative",
+          "labelFr": "Ordonner des événements explicitement datés — Texte argumentatif bref",
+          "mode": "interpretation",
+          "expectedKnown": false,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "interpretation",
+              "probability": 0.0023647650014779796,
+              "distinctItems": 3,
+              "distinctContexts": 3,
+              "distinctOccasions": 1,
+              "accuracy": 0,
+              "unconfirmedFeatures": [],
+              "textTypes": [
+                "argumentative"
+              ],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false,
+              "provisionalGap": true
+            }
+          ]
+        },
+        {
+          "skillId": "resoudre_pronom_objet::all-receptive::text_type:narrative",
+          "labelFr": "Résoudre la référence d'un pronom objet — Récit bref",
+          "mode": "interpretation",
+          "expectedKnown": false,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "interpretation",
+              "probability": 0.0023647650014779796,
+              "distinctItems": 3,
+              "distinctContexts": 3,
+              "distinctOccasions": 1,
+              "accuracy": 0,
+              "unconfirmedFeatures": [],
+              "textTypes": [
+                "narrative"
+              ],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false,
+              "provisionalGap": true
+            }
+          ]
+        },
+        {
+          "skillId": "inferer_cause_locale::all-receptive::text_type:narrative",
+          "labelFr": "Inférer une cause locale — Récit bref",
+          "mode": "interpretation",
+          "expectedKnown": false,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "interpretation",
+              "probability": 0.11764705882352941,
+              "distinctItems": 1,
+              "distinctContexts": 1,
+              "distinctOccasions": 1,
+              "accuracy": 0,
+              "unconfirmedFeatures": [],
+              "textTypes": [
+                "narrative"
               ],
               "contrastingErrorKeys": [],
               "negativeExampleConfirmed": false,
@@ -790,16 +929,17 @@
           "modes": [
             {
               "mode": "recognition",
-              "probability": 0.017467248908296946,
-              "distinctItems": 2,
-              "distinctContexts": 2,
+              "probability": 0.0023647650014779796,
+              "distinctItems": 3,
+              "distinctContexts": 3,
               "distinctOccasions": 1,
               "accuracy": 0,
               "unconfirmedFeatures": [],
               "textTypes": [],
               "contrastingErrorKeys": [],
               "negativeExampleConfirmed": true,
-              "confirmed": false
+              "confirmed": false,
+              "provisionalGap": true
             }
           ]
         },
@@ -827,6 +967,28 @@
           ]
         },
         {
+          "skillId": "construction_subordonnee_completive::writing-controlled-production",
+          "labelFr": "Reconnaître une subordonnée complétive",
+          "mode": "production",
+          "expectedKnown": false,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "production",
+              "probability": 0.11764705882352941,
+              "distinctItems": 1,
+              "distinctContexts": 1,
+              "distinctOccasions": 1,
+              "accuracy": 0,
+              "unconfirmedFeatures": [],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false
+            }
+          ]
+        },
+        {
           "skillId": "construction_accord_determinant_nom::reading-analysis",
           "labelFr": "Analyser l'accord déterminant-nom",
           "mode": "recognition",
@@ -849,17 +1011,17 @@
           ]
         },
         {
-          "skillId": "construction_accord_sujet_verbe::reading-analysis::construction:coordinated",
-          "labelFr": "Analyser l'accord sujet-verbe — Plusieurs sujets coordonnés",
+          "skillId": "construction_accord_nom_adjectif::reading-analysis",
+          "labelFr": "Analyser l'accord nom-adjectif",
           "mode": "recognition",
           "expectedKnown": false,
           "status": "uncertain",
           "modes": [
             {
               "mode": "recognition",
-              "probability": 0.11764705882352941,
-              "distinctItems": 1,
-              "distinctContexts": 1,
+              "probability": 0.017467248908296946,
+              "distinctItems": 2,
+              "distinctContexts": 2,
               "distinctOccasions": 1,
               "accuracy": 0,
               "unconfirmedFeatures": [],
@@ -867,6 +1029,72 @@
               "contrastingErrorKeys": [],
               "negativeExampleConfirmed": true,
               "confirmed": false
+            }
+          ]
+        },
+        {
+          "skillId": "construction_accord_sujet_verbe::reading-analysis::construction:adjacent",
+          "labelFr": "Analyser l'accord sujet-verbe — Sujet proche du verbe",
+          "mode": "recognition",
+          "expectedKnown": false,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "recognition",
+              "probability": 0.0023647650014779796,
+              "distinctItems": 3,
+              "distinctContexts": 3,
+              "distinctOccasions": 1,
+              "accuracy": 0,
+              "unconfirmedFeatures": [],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": true,
+              "confirmed": false,
+              "provisionalGap": true
+            }
+          ]
+        },
+        {
+          "skillId": "segmenter_syllabes_ecrites::writing-controlled-production",
+          "labelFr": "Segmenter un mot en syllabes écrites",
+          "mode": "production",
+          "expectedKnown": false,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "production",
+              "probability": 0.09638554216867472,
+              "distinctItems": 1,
+              "distinctContexts": 1,
+              "distinctOccasions": 1,
+              "accuracy": 0,
+              "unconfirmedFeatures": [
+                "written-syllable:simple",
+                "written-syllable:double_consonant",
+                "written-syllable:consonant_group"
+              ],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false,
+              "featureEvidence": [
+                {
+                  "feature": "written-syllable:simple",
+                  "distinctItems": 0,
+                  "correctItems": 0
+                },
+                {
+                  "feature": "written-syllable:double_consonant",
+                  "distinctItems": 1,
+                  "correctItems": 0
+                },
+                {
+                  "feature": "written-syllable:consonant_group",
+                  "distinctItems": 0,
+                  "correctItems": 0
+                }
+              ]
             }
           ]
         },
@@ -928,31 +1156,9 @@
           "modes": [
             {
               "mode": "production",
-              "probability": 0.038461538461538464,
-              "distinctItems": 2,
-              "distinctContexts": 2,
-              "distinctOccasions": 1,
-              "accuracy": 0,
-              "unconfirmedFeatures": [],
-              "textTypes": [],
-              "contrastingErrorKeys": [],
-              "negativeExampleConfirmed": false,
-              "confirmed": false
-            }
-          ]
-        },
-        {
-          "skillId": "marquer_pluriel_nom_regulier::writing-controlled-production",
-          "labelFr": "Marquer le pluriel régulier d'un nom",
-          "mode": "production",
-          "expectedKnown": false,
-          "status": "uncertain",
-          "modes": [
-            {
-              "mode": "production",
-              "probability": 0.010958904109589048,
-              "distinctItems": 2,
-              "distinctContexts": 2,
+              "probability": 0.16666666666666666,
+              "distinctItems": 1,
+              "distinctContexts": 1,
               "distinctOccasions": 1,
               "accuracy": 0,
               "unconfirmedFeatures": [],
@@ -983,28 +1189,6 @@
               "negativeExampleConfirmed": false,
               "confirmed": false,
               "provisionalGap": true
-            }
-          ]
-        },
-        {
-          "skillId": "accorder_sujet_verbe_ecrit::writing-controlled-production::construction:coordinated",
-          "labelFr": "Réaliser l'accord sujet-verbe — Plusieurs sujets coordonnés",
-          "mode": "production",
-          "expectedKnown": false,
-          "status": "uncertain",
-          "modes": [
-            {
-              "mode": "production",
-              "probability": 0.038461538461538464,
-              "distinctItems": 2,
-              "distinctContexts": 2,
-              "distinctOccasions": 1,
-              "accuracy": 0,
-              "unconfirmedFeatures": [],
-              "textTypes": [],
-              "contrastingErrorKeys": [],
-              "negativeExampleConfirmed": false,
-              "confirmed": false
             }
           ]
         },
@@ -1086,51 +1270,30 @@
           "modes": [
             {
               "mode": "production",
-              "probability": 0.0017250191668796325,
-              "distinctItems": 3,
-              "distinctContexts": 3,
+              "probability": 0.10714285714285715,
+              "distinctItems": 1,
+              "distinctContexts": 1,
               "distinctOccasions": 1,
               "accuracy": 0,
               "unconfirmedFeatures": [],
               "textTypes": [],
               "contrastingErrorKeys": [],
               "negativeExampleConfirmed": false,
-              "confirmed": false,
-              "provisionalGap": true
+              "confirmed": false
             }
           ]
         }
       ],
       "firstActivities": [
         {
-          "skillId": "construction_phrase_canonique::writing-controlled-production",
-          "activityId": "2c3cc1ce-6207-528e-99e3-9244e7a2daf3",
+          "skillId": "construction_phrase_canonique::reading-analysis",
+          "activityId": "ff1b162f-98e6-50a0-bd67-d0bc11f59cf2",
           "kind": "instruction",
           "action": "learn",
-          "titleFr": "Remettre les groupes d’une phrase dans l’ordre",
-          "href": "/student/diagnostic?activity=2c3cc1ce-6207-528e-99e3-9244e7a2daf3",
+          "titleFr": "Repérer l’ordre d’une phrase simple",
+          "href": "/student/diagnostic?activity=ff1b162f-98e6-50a0-bd67-d0bc11f59cf2",
           "estimatedMinutes": 4,
-          "contentId": "french-v3-teaching:canonical-sentence:production"
-        },
-        {
-          "skillId": "deduire_mot_definition_locale::all-receptive::text_type:informational",
-          "activityId": "75df956b-3d57-556e-abaf-f6a9ef753ec9",
-          "kind": "instruction",
-          "action": "learn",
-          "titleFr": "Trouver une définition dans le texte",
-          "href": "/student/diagnostic?activity=75df956b-3d57-556e-abaf-f6a9ef753ec9",
-          "estimatedMinutes": 4,
-          "contentId": "french-v3-teaching:reading:deduire_mot_definition_locale:informational"
-        },
-        {
-          "skillId": "deduire_mot_exemple_contraste::all-receptive::text_type:informational",
-          "activityId": "dee90a1d-ac9d-5947-bf8d-6cfac8027d5d",
-          "kind": "instruction",
-          "action": "learn",
-          "titleFr": "Déduire un mot grâce aux exemples",
-          "href": "/student/diagnostic?activity=dee90a1d-ac9d-5947-bf8d-6cfac8027d5d",
-          "estimatedMinutes": 4,
-          "contentId": "french-v3-teaching:reading:deduire_mot_exemple_contraste:informational"
+          "contentId": "french-v3-teaching:canonical-sentence:recognition"
         },
         {
           "skillId": "former_feminin_adjectif_regulier::writing-controlled-production",
@@ -1143,25 +1306,46 @@
           "contentId": "spelling-regular-feminine"
         },
         {
-          "skillId": "orthographier_nasale_on_om::reading-receptive",
-          "activityId": "98f824f6-88bc-5569-a182-4b7fde520eb5",
+          "skillId": "identifier_sujet_verbe::reading-receptive",
+          "activityId": "fb19bc72-2c05-53ea-b4e7-61112b86caab",
           "kind": "instruction",
           "action": "learn",
-          "titleFr": "Choisir entre on et om",
-          "href": "/student/diagnostic?activity=98f824f6-88bc-5569-a182-4b7fde520eb5",
+          "titleFr": "Trouver le sujet complet d’un verbe",
+          "href": "/student/diagnostic?activity=fb19bc72-2c05-53ea-b4e7-61112b86caab",
           "estimatedMinutes": 4,
-          "contentId": "french-v3-teaching:on-om:recognition"
+          "contentId": "french-v3-teaching:identifier_sujet_verbe"
+        },
+        {
+          "skillId": "resoudre_pronom_objet::all-receptive::text_type:narrative",
+          "activityId": "972cc1d6-1f45-56a2-bdb2-e184759be48f",
+          "kind": "instruction",
+          "action": "learn",
+          "titleFr": "Retrouver ce que remplace « le », « la » ou « lui »",
+          "href": "/student/diagnostic?activity=972cc1d6-1f45-56a2-bdb2-e184759be48f",
+          "estimatedMinutes": 4,
+          "contentId": "french-v3-teaching:reading:resoudre_pronom_objet:narrative"
+        },
+        {
+          "skillId": "construction_phrase_canonique::writing-controlled-production",
+          "activityId": "2c3cc1ce-6207-528e-99e3-9244e7a2daf3",
+          "kind": "instruction",
+          "action": "learn",
+          "titleFr": "Remettre les groupes d’une phrase dans l’ordre",
+          "href": "/student/diagnostic?activity=2c3cc1ce-6207-528e-99e3-9244e7a2daf3",
+          "estimatedMinutes": 4,
+          "contentId": "french-v3-teaching:canonical-sentence:production"
         }
       ],
       "missingActivitySkillIds": [],
       "blockedSkillIds": [
+        "construction_accord_sujet_verbe::reading-analysis::construction:adjacent",
         "identifier_complement_direct::reading-receptive",
-        "produire_futur_simple::writing-controlled-production::verb:aller",
+        "ordonner_evenements_explicites::all-receptive::text_type:argumentative",
         "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
-        "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
         "produire_present_indicatif::writing-controlled-production::verb:aller",
         "produire_pronom_cod::writing-controlled-production::construction:elision",
-        "produire_pronom_cod::writing-controlled-production::construction:la"
+        "produire_pronom_cod::writing-controlled-production::construction:la",
+        "produire_futur_proche::writing-controlled-production::verb:aller"
       ],
       "violations": []
     },
@@ -1171,37 +1355,15 @@
       "activeMinutes": 35,
       "questions": 61,
       "correct": 9,
-      "sampledTargets": 24,
+      "sampledTargets": 29,
       "results": {
-        "uncertain": 24,
-        "unknown": 518
+        "uncertain": 29,
+        "unknown": 513
       },
       "sampledSkills": [
         {
           "skillId": "identifier_sujet_verbe::reading-receptive",
           "labelFr": "Identifier le sujet du verbe",
-          "mode": "recognition",
-          "expectedKnown": false,
-          "status": "uncertain",
-          "modes": [
-            {
-              "mode": "recognition",
-              "probability": 0.017467248908296946,
-              "distinctItems": 2,
-              "distinctContexts": 2,
-              "distinctOccasions": 1,
-              "accuracy": 0,
-              "unconfirmedFeatures": [],
-              "textTypes": [],
-              "contrastingErrorKeys": [],
-              "negativeExampleConfirmed": false,
-              "confirmed": false
-            }
-          ]
-        },
-        {
-          "skillId": "reconnaitre_radical_terminaison::reading-receptive",
-          "labelFr": "Segmenter une forme verbale",
           "mode": "recognition",
           "expectedKnown": false,
           "status": "uncertain",
@@ -1223,8 +1385,30 @@
           ]
         },
         {
-          "skillId": "reconnaitre_present_indicatif::reading-receptive",
-          "labelFr": "Reconnaître le présent de l'indicatif",
+          "skillId": "distinguer_personne_nombre::reading-receptive",
+          "labelFr": "Identifier les traits de personne-nombre",
+          "mode": "recognition",
+          "expectedKnown": false,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "recognition",
+              "probability": 0.10714285714285715,
+              "distinctItems": 1,
+              "distinctContexts": 1,
+              "distinctOccasions": 1,
+              "accuracy": 0,
+              "unconfirmedFeatures": [],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false
+            }
+          ]
+        },
+        {
+          "skillId": "reconnaitre_radical_terminaison::reading-receptive",
+          "labelFr": "Segmenter une forme verbale",
           "mode": "recognition",
           "expectedKnown": false,
           "status": "uncertain",
@@ -1233,6 +1417,28 @@
               "mode": "recognition",
               "probability": 0.11764705882352941,
               "distinctItems": 1,
+              "distinctContexts": 1,
+              "distinctOccasions": 1,
+              "accuracy": 0,
+              "unconfirmedFeatures": [],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false
+            }
+          ]
+        },
+        {
+          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
+          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
+          "mode": "production",
+          "expectedKnown": false,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "production",
+              "probability": 0.010958904109589048,
+              "distinctItems": 2,
               "distinctContexts": 1,
               "distinctOccasions": 1,
               "accuracy": 0,
@@ -1291,15 +1497,15 @@
           ]
         },
         {
-          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
-          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
+          "skillId": "produire_futur_proche::writing-controlled-production::verb:aller",
+          "labelFr": "Produire le futur proche — Conjuguer aller",
           "mode": "production",
           "expectedKnown": false,
           "status": "uncertain",
           "modes": [
             {
               "mode": "production",
-              "probability": 0.001164991990680065,
+              "probability": 0.0015134953333893893,
               "distinctItems": 3,
               "distinctContexts": 3,
               "distinctOccasions": 1,
@@ -1314,16 +1520,16 @@
           ]
         },
         {
-          "skillId": "produire_futur_simple::writing-controlled-production::verb:aller",
-          "labelFr": "Produire le futur simple — Conjuguer aller",
+          "skillId": "produire_futur_proche::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le futur proche — Verbes réguliers en -er",
           "mode": "production",
           "expectedKnown": false,
           "status": "uncertain",
           "modes": [
             {
               "mode": "production",
-              "probability": 0.001164991990680065,
-              "distinctItems": 3,
+              "probability": 0.09523809523809527,
+              "distinctItems": 1,
               "distinctContexts": 1,
               "distinctOccasions": 1,
               "accuracy": 0,
@@ -1331,23 +1537,44 @@
               "textTypes": [],
               "contrastingErrorKeys": [],
               "negativeExampleConfirmed": false,
-              "confirmed": false,
-              "provisionalGap": true
+              "confirmed": false
             }
           ]
         },
         {
-          "skillId": "deduire_mot_definition_locale::all-receptive::text_type:informational",
-          "labelFr": "Déduire un mot grâce à une définition locale — Texte informatif bref",
+          "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le passé composé — Verbes réguliers en -er",
+          "mode": "production",
+          "expectedKnown": false,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "production",
+              "probability": 0.09523809523809527,
+              "distinctItems": 1,
+              "distinctContexts": 1,
+              "distinctOccasions": 1,
+              "accuracy": 0,
+              "unconfirmedFeatures": [],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false
+            }
+          ]
+        },
+        {
+          "skillId": "ordonner_evenements_explicites::all-receptive::text_type:informational",
+          "labelFr": "Ordonner des événements explicitement datés — Texte informatif bref",
           "mode": "interpretation",
           "expectedKnown": true,
           "status": "uncertain",
           "modes": [
             {
               "mode": "interpretation",
-              "probability": 0.9940814954403842,
-              "distinctItems": 4,
-              "distinctContexts": 4,
+              "probability": 0.9283667621776505,
+              "distinctItems": 2,
+              "distinctContexts": 2,
               "distinctOccasions": 1,
               "accuracy": 1,
               "unconfirmedFeatures": [],
@@ -1361,8 +1588,8 @@
           ]
         },
         {
-          "skillId": "deduire_mot_exemple_contraste::all-receptive::text_type:informational",
-          "labelFr": "Déduire un mot grâce à un exemple ou un contraste — Texte informatif bref",
+          "skillId": "ordonner_evenements_explicites::all-receptive::text_type:argumentative",
+          "labelFr": "Ordonner des événements explicitement datés — Texte argumentatif bref",
           "mode": "interpretation",
           "expectedKnown": true,
           "status": "uncertain",
@@ -1376,7 +1603,55 @@
               "accuracy": 1,
               "unconfirmedFeatures": [],
               "textTypes": [
-                "informational"
+                "argumentative"
+              ],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false
+            }
+          ]
+        },
+        {
+          "skillId": "resoudre_pronom_objet::all-receptive::text_type:narrative",
+          "labelFr": "Résoudre la référence d'un pronom objet — Récit bref",
+          "mode": "interpretation",
+          "expectedKnown": true,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "interpretation",
+              "probability": 0.782608695652174,
+              "distinctItems": 1,
+              "distinctContexts": 1,
+              "distinctOccasions": 1,
+              "accuracy": 1,
+              "unconfirmedFeatures": [],
+              "textTypes": [
+                "narrative"
+              ],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false
+            }
+          ]
+        },
+        {
+          "skillId": "inferer_cause_locale::all-receptive::text_type:narrative",
+          "labelFr": "Inférer une cause locale — Récit bref",
+          "mode": "interpretation",
+          "expectedKnown": true,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "interpretation",
+              "probability": 0.782608695652174,
+              "distinctItems": 1,
+              "distinctContexts": 1,
+              "distinctOccasions": 1,
+              "accuracy": 1,
+              "unconfirmedFeatures": [],
+              "textTypes": [
+                "narrative"
               ],
               "contrastingErrorKeys": [],
               "negativeExampleConfirmed": false,
@@ -1417,16 +1692,17 @@
           "modes": [
             {
               "mode": "recognition",
-              "probability": 0.017467248908296946,
-              "distinctItems": 2,
-              "distinctContexts": 2,
+              "probability": 0.0023647650014779796,
+              "distinctItems": 3,
+              "distinctContexts": 3,
               "distinctOccasions": 1,
               "accuracy": 0,
               "unconfirmedFeatures": [],
               "textTypes": [],
               "contrastingErrorKeys": [],
               "negativeExampleConfirmed": true,
-              "confirmed": false
+              "confirmed": false,
+              "provisionalGap": true
             }
           ]
         },
@@ -1454,6 +1730,28 @@
           ]
         },
         {
+          "skillId": "construction_subordonnee_completive::writing-controlled-production",
+          "labelFr": "Reconnaître une subordonnée complétive",
+          "mode": "production",
+          "expectedKnown": false,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "production",
+              "probability": 0.11764705882352941,
+              "distinctItems": 1,
+              "distinctContexts": 1,
+              "distinctOccasions": 1,
+              "accuracy": 0,
+              "unconfirmedFeatures": [],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false
+            }
+          ]
+        },
+        {
           "skillId": "construction_accord_determinant_nom::reading-analysis",
           "labelFr": "Analyser l'accord déterminant-nom",
           "mode": "recognition",
@@ -1476,17 +1774,17 @@
           ]
         },
         {
-          "skillId": "construction_accord_sujet_verbe::reading-analysis::construction:coordinated",
-          "labelFr": "Analyser l'accord sujet-verbe — Plusieurs sujets coordonnés",
+          "skillId": "construction_accord_nom_adjectif::reading-analysis",
+          "labelFr": "Analyser l'accord nom-adjectif",
           "mode": "recognition",
           "expectedKnown": false,
           "status": "uncertain",
           "modes": [
             {
               "mode": "recognition",
-              "probability": 0.11764705882352941,
-              "distinctItems": 1,
-              "distinctContexts": 1,
+              "probability": 0.017467248908296946,
+              "distinctItems": 2,
+              "distinctContexts": 2,
               "distinctOccasions": 1,
               "accuracy": 0,
               "unconfirmedFeatures": [],
@@ -1494,6 +1792,72 @@
               "contrastingErrorKeys": [],
               "negativeExampleConfirmed": true,
               "confirmed": false
+            }
+          ]
+        },
+        {
+          "skillId": "construction_accord_sujet_verbe::reading-analysis::construction:adjacent",
+          "labelFr": "Analyser l'accord sujet-verbe — Sujet proche du verbe",
+          "mode": "recognition",
+          "expectedKnown": false,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "recognition",
+              "probability": 0.0023647650014779796,
+              "distinctItems": 3,
+              "distinctContexts": 3,
+              "distinctOccasions": 1,
+              "accuracy": 0,
+              "unconfirmedFeatures": [],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": true,
+              "confirmed": false,
+              "provisionalGap": true
+            }
+          ]
+        },
+        {
+          "skillId": "segmenter_syllabes_ecrites::writing-controlled-production",
+          "labelFr": "Segmenter un mot en syllabes écrites",
+          "mode": "production",
+          "expectedKnown": false,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "production",
+              "probability": 0.09638554216867472,
+              "distinctItems": 1,
+              "distinctContexts": 1,
+              "distinctOccasions": 1,
+              "accuracy": 0,
+              "unconfirmedFeatures": [
+                "written-syllable:simple",
+                "written-syllable:double_consonant",
+                "written-syllable:consonant_group"
+              ],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false,
+              "featureEvidence": [
+                {
+                  "feature": "written-syllable:simple",
+                  "distinctItems": 0,
+                  "correctItems": 0
+                },
+                {
+                  "feature": "written-syllable:double_consonant",
+                  "distinctItems": 1,
+                  "correctItems": 0
+                },
+                {
+                  "feature": "written-syllable:consonant_group",
+                  "distinctItems": 0,
+                  "correctItems": 0
+                }
+              ]
             }
           ]
         },
@@ -1555,31 +1919,9 @@
           "modes": [
             {
               "mode": "production",
-              "probability": 0.038461538461538464,
-              "distinctItems": 2,
-              "distinctContexts": 2,
-              "distinctOccasions": 1,
-              "accuracy": 0,
-              "unconfirmedFeatures": [],
-              "textTypes": [],
-              "contrastingErrorKeys": [],
-              "negativeExampleConfirmed": false,
-              "confirmed": false
-            }
-          ]
-        },
-        {
-          "skillId": "marquer_pluriel_nom_regulier::writing-controlled-production",
-          "labelFr": "Marquer le pluriel régulier d'un nom",
-          "mode": "production",
-          "expectedKnown": false,
-          "status": "uncertain",
-          "modes": [
-            {
-              "mode": "production",
-              "probability": 0.010958904109589048,
-              "distinctItems": 2,
-              "distinctContexts": 2,
+              "probability": 0.16666666666666666,
+              "distinctItems": 1,
+              "distinctContexts": 1,
               "distinctOccasions": 1,
               "accuracy": 0,
               "unconfirmedFeatures": [],
@@ -1610,28 +1952,6 @@
               "negativeExampleConfirmed": false,
               "confirmed": false,
               "provisionalGap": true
-            }
-          ]
-        },
-        {
-          "skillId": "accorder_sujet_verbe_ecrit::writing-controlled-production::construction:coordinated",
-          "labelFr": "Réaliser l'accord sujet-verbe — Plusieurs sujets coordonnés",
-          "mode": "production",
-          "expectedKnown": false,
-          "status": "uncertain",
-          "modes": [
-            {
-              "mode": "production",
-              "probability": 0.038461538461538464,
-              "distinctItems": 2,
-              "distinctContexts": 2,
-              "distinctOccasions": 1,
-              "accuracy": 0,
-              "unconfirmedFeatures": [],
-              "textTypes": [],
-              "contrastingErrorKeys": [],
-              "negativeExampleConfirmed": false,
-              "confirmed": false
             }
           ]
         },
@@ -1713,31 +2033,30 @@
           "modes": [
             {
               "mode": "production",
-              "probability": 0.0017250191668796325,
-              "distinctItems": 3,
-              "distinctContexts": 3,
+              "probability": 0.10714285714285715,
+              "distinctItems": 1,
+              "distinctContexts": 1,
               "distinctOccasions": 1,
               "accuracy": 0,
               "unconfirmedFeatures": [],
               "textTypes": [],
               "contrastingErrorKeys": [],
               "negativeExampleConfirmed": false,
-              "confirmed": false,
-              "provisionalGap": true
+              "confirmed": false
             }
           ]
         }
       ],
       "firstActivities": [
         {
-          "skillId": "construction_phrase_canonique::writing-controlled-production",
-          "activityId": "2c3cc1ce-6207-528e-99e3-9244e7a2daf3",
+          "skillId": "construction_phrase_canonique::reading-analysis",
+          "activityId": "ff1b162f-98e6-50a0-bd67-d0bc11f59cf2",
           "kind": "instruction",
           "action": "learn",
-          "titleFr": "Remettre les groupes d’une phrase dans l’ordre",
-          "href": "/student/diagnostic?activity=2c3cc1ce-6207-528e-99e3-9244e7a2daf3",
+          "titleFr": "Repérer l’ordre d’une phrase simple",
+          "href": "/student/diagnostic?activity=ff1b162f-98e6-50a0-bd67-d0bc11f59cf2",
           "estimatedMinutes": 4,
-          "contentId": "french-v3-teaching:canonical-sentence:production"
+          "contentId": "french-v3-teaching:canonical-sentence:recognition"
         },
         {
           "skillId": "former_feminin_adjectif_regulier::writing-controlled-production",
@@ -1750,45 +2069,44 @@
           "contentId": "spelling-regular-feminine"
         },
         {
-          "skillId": "orthographier_nasale_on_om::reading-receptive",
-          "activityId": "98f824f6-88bc-5569-a182-4b7fde520eb5",
+          "skillId": "identifier_sujet_verbe::reading-receptive",
+          "activityId": "fb19bc72-2c05-53ea-b4e7-61112b86caab",
           "kind": "instruction",
           "action": "learn",
-          "titleFr": "Choisir entre on et om",
-          "href": "/student/diagnostic?activity=98f824f6-88bc-5569-a182-4b7fde520eb5",
+          "titleFr": "Trouver le sujet complet d’un verbe",
+          "href": "/student/diagnostic?activity=fb19bc72-2c05-53ea-b4e7-61112b86caab",
           "estimatedMinutes": 4,
-          "contentId": "french-v3-teaching:on-om:recognition"
+          "contentId": "french-v3-teaching:identifier_sujet_verbe"
         },
         {
-          "skillId": "orthographier_nasale_on_om::writing-controlled-production",
-          "activityId": "022a81f0-29de-5fc4-971c-a2e2240f9955",
-          "kind": "instruction",
-          "action": "learn",
-          "titleFr": "Compléter un mot avec on ou om",
-          "href": "/student/diagnostic?activity=022a81f0-29de-5fc4-971c-a2e2240f9955",
-          "estimatedMinutes": 4,
-          "contentId": "french-v3-teaching:on-om:production"
+          "skillId": "deduire_mot_definition_locale::all-receptive::text_type:informational",
+          "activityId": "40aa9cef-49b0-5e36-9571-ec6efb33cfd9",
+          "kind": "independent_check",
+          "action": "verify",
+          "titleFr": "Déduire un mot grâce à une définition locale — Texte informatif bref",
+          "href": "/student/diagnostic?activity=40aa9cef-49b0-5e36-9571-ec6efb33cfd9",
+          "estimatedMinutes": 1
         },
         {
-          "skillId": "produire_pronom_coi_personne::writing-controlled-production::construction:leur",
-          "activityId": "b7aa35f5-0062-5b8f-b6af-740fd2ec00f2",
+          "skillId": "construction_phrase_canonique::writing-controlled-production",
+          "activityId": "2c3cc1ce-6207-528e-99e3-9244e7a2daf3",
           "kind": "instruction",
           "action": "learn",
-          "titleFr": "Reprendre plusieurs personnes avec leur",
-          "href": "/student/diagnostic?activity=b7aa35f5-0062-5b8f-b6af-740fd2ec00f2",
+          "titleFr": "Remettre les groupes d’une phrase dans l’ordre",
+          "href": "/student/diagnostic?activity=2c3cc1ce-6207-528e-99e3-9244e7a2daf3",
           "estimatedMinutes": 4,
-          "contentId": "french-v3-teaching:coi-pronoun:leur"
+          "contentId": "french-v3-teaching:canonical-sentence:production"
         }
       ],
       "missingActivitySkillIds": [],
       "blockedSkillIds": [
+        "construction_accord_sujet_verbe::reading-analysis::construction:adjacent",
         "identifier_complement_direct::reading-receptive",
-        "produire_futur_simple::writing-controlled-production::verb:aller",
         "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
-        "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
         "produire_present_indicatif::writing-controlled-production::verb:aller",
         "produire_pronom_cod::writing-controlled-production::construction:elision",
-        "produire_pronom_cod::writing-controlled-production::construction:la"
+        "produire_pronom_cod::writing-controlled-production::construction:la",
+        "produire_futur_proche::writing-controlled-production::verb:aller"
       ],
       "violations": []
     },
@@ -1798,24 +2116,46 @@
       "activeMinutes": 35,
       "questions": 61,
       "correct": 18,
-      "sampledTargets": 24,
+      "sampledTargets": 27,
       "results": {
-        "unknown": 518,
-        "uncertain": 24
+        "unknown": 515,
+        "uncertain": 27
       },
       "sampledSkills": [
         {
-          "skillId": "reconnaitre_present_indicatif::reading-receptive",
-          "labelFr": "Reconnaître le présent de l'indicatif",
+          "skillId": "distinguer_personne_nombre::reading-receptive",
+          "labelFr": "Identifier les traits de personne-nombre",
           "mode": "recognition",
           "expectedKnown": true,
           "status": "uncertain",
           "modes": [
             {
               "mode": "recognition",
-              "probability": 0.9940814954403842,
-              "distinctItems": 4,
-              "distinctContexts": 4,
+              "probability": 0.9936894184168013,
+              "distinctItems": 3,
+              "distinctContexts": 3,
+              "distinctOccasions": 1,
+              "accuracy": 1,
+              "unconfirmedFeatures": [],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false
+            }
+          ]
+        },
+        {
+          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
+          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
+          "mode": "production",
+          "expectedKnown": true,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "production",
+              "probability": 0.9998285616320933,
+              "distinctItems": 3,
+              "distinctContexts": 1,
               "distinctOccasions": 1,
               "accuracy": 1,
               "unconfirmedFeatures": [],
@@ -1871,15 +2211,37 @@
           ]
         },
         {
-          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
-          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
+          "skillId": "produire_futur_proche::writing-controlled-production::verb:avoir",
+          "labelFr": "Produire le futur proche — Conjuguer avoir",
           "mode": "production",
           "expectedKnown": true,
           "status": "uncertain",
           "modes": [
             {
               "mode": "production",
-              "probability": 0.9998285616320933,
+              "probability": 0.84375,
+              "distinctItems": 1,
+              "distinctContexts": 1,
+              "distinctOccasions": 1,
+              "accuracy": 1,
+              "unconfirmedFeatures": [],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false
+            }
+          ]
+        },
+        {
+          "skillId": "produire_futur_proche::writing-controlled-production::verb:aller",
+          "labelFr": "Produire le futur proche — Conjuguer aller",
+          "mode": "production",
+          "expectedKnown": true,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "production",
+              "probability": 0.998098425496311,
               "distinctItems": 3,
               "distinctContexts": 3,
               "distinctOccasions": 1,
@@ -1893,17 +2255,17 @@
           ]
         },
         {
-          "skillId": "reconnaitre_futur_proche::reading-receptive",
-          "labelFr": "Reconnaître le futur proche",
-          "mode": "recognition",
+          "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le passé composé — Verbes réguliers en -er",
+          "mode": "production",
           "expectedKnown": true,
           "status": "uncertain",
           "modes": [
             {
-              "mode": "recognition",
-              "probability": 0.9283667621776505,
-              "distinctItems": 2,
-              "distinctContexts": 2,
+              "mode": "production",
+              "probability": 0.9473684210526315,
+              "distinctItems": 1,
+              "distinctContexts": 1,
               "distinctOccasions": 1,
               "accuracy": 1,
               "unconfirmedFeatures": [],
@@ -1915,16 +2277,16 @@
           ]
         },
         {
-          "skillId": "produire_futur_simple::writing-controlled-production::verb:aller",
-          "labelFr": "Produire le futur simple — Conjuguer aller",
-          "mode": "production",
+          "skillId": "interpreter_sequence_temporelle::reading-receptive",
+          "labelFr": "Interpréter une séquence temporelle",
+          "mode": "recognition",
           "expectedKnown": true,
           "status": "uncertain",
           "modes": [
             {
-              "mode": "production",
-              "probability": 0.9998285616320933,
-              "distinctItems": 3,
+              "mode": "recognition",
+              "probability": 0.7297297297297298,
+              "distinctItems": 1,
               "distinctContexts": 1,
               "distinctOccasions": 1,
               "accuracy": 1,
@@ -1945,9 +2307,9 @@
           "modes": [
             {
               "mode": "interpretation",
-              "probability": 0.11764705882352941,
-              "distinctItems": 1,
-              "distinctContexts": 1,
+              "probability": 0.017467248908296946,
+              "distinctItems": 2,
+              "distinctContexts": 2,
               "distinctOccasions": 1,
               "accuracy": 0,
               "unconfirmedFeatures": [],
@@ -1961,8 +2323,8 @@
           ]
         },
         {
-          "skillId": "deduire_mot_definition_locale::all-receptive::text_type:informational",
-          "labelFr": "Déduire un mot grâce à une définition locale — Texte informatif bref",
+          "skillId": "ordonner_evenements_explicites::all-receptive::text_type:argumentative",
+          "labelFr": "Ordonner des événements explicitement datés — Texte argumentatif bref",
           "mode": "interpretation",
           "expectedKnown": false,
           "status": "uncertain",
@@ -1972,61 +2334,61 @@
               "probability": 0.0023647650014779796,
               "distinctItems": 3,
               "distinctContexts": 3,
-              "distinctOccasions": 1,
-              "accuracy": 0,
-              "unconfirmedFeatures": [],
-              "textTypes": [
-                "informational"
-              ],
-              "contrastingErrorKeys": [],
-              "negativeExampleConfirmed": false,
-              "confirmed": false,
-              "provisionalGap": true
-            }
-          ]
-        },
-        {
-          "skillId": "deduire_mot_exemple_contraste::all-receptive::text_type:informational",
-          "labelFr": "Déduire un mot grâce à un exemple ou un contraste — Texte informatif bref",
-          "mode": "interpretation",
-          "expectedKnown": false,
-          "status": "uncertain",
-          "modes": [
-            {
-              "mode": "interpretation",
-              "probability": 0.0023647650014779796,
-              "distinctItems": 3,
-              "distinctContexts": 3,
-              "distinctOccasions": 1,
-              "accuracy": 0,
-              "unconfirmedFeatures": [],
-              "textTypes": [
-                "informational"
-              ],
-              "contrastingErrorKeys": [],
-              "negativeExampleConfirmed": false,
-              "confirmed": false,
-              "provisionalGap": true
-            }
-          ]
-        },
-        {
-          "skillId": "distinguer_fait_opinion::argumentative-receptive::text_type:argumentative",
-          "labelFr": "Distinguer un fait d'une opinion — Texte argumentatif bref",
-          "mode": "interpretation",
-          "expectedKnown": false,
-          "status": "uncertain",
-          "modes": [
-            {
-              "mode": "interpretation",
-              "probability": 0.017467248908296946,
-              "distinctItems": 2,
-              "distinctContexts": 2,
               "distinctOccasions": 1,
               "accuracy": 0,
               "unconfirmedFeatures": [],
               "textTypes": [
                 "argumentative"
+              ],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false,
+              "provisionalGap": true
+            }
+          ]
+        },
+        {
+          "skillId": "resoudre_pronom_objet::all-receptive::text_type:narrative",
+          "labelFr": "Résoudre la référence d'un pronom objet — Récit bref",
+          "mode": "interpretation",
+          "expectedKnown": false,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "interpretation",
+              "probability": 0.0023647650014779796,
+              "distinctItems": 3,
+              "distinctContexts": 3,
+              "distinctOccasions": 1,
+              "accuracy": 0,
+              "unconfirmedFeatures": [],
+              "textTypes": [
+                "narrative"
+              ],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false,
+              "provisionalGap": true
+            }
+          ]
+        },
+        {
+          "skillId": "inferer_cause_locale::all-receptive::text_type:narrative",
+          "labelFr": "Inférer une cause locale — Récit bref",
+          "mode": "interpretation",
+          "expectedKnown": false,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "interpretation",
+              "probability": 0.11764705882352941,
+              "distinctItems": 1,
+              "distinctContexts": 1,
+              "distinctOccasions": 1,
+              "accuracy": 0,
+              "unconfirmedFeatures": [],
+              "textTypes": [
+                "narrative"
               ],
               "contrastingErrorKeys": [],
               "negativeExampleConfirmed": false,
@@ -2043,16 +2405,17 @@
           "modes": [
             {
               "mode": "recognition",
-              "probability": 0.017467248908296946,
-              "distinctItems": 2,
-              "distinctContexts": 2,
+              "probability": 0.0023647650014779796,
+              "distinctItems": 3,
+              "distinctContexts": 3,
               "distinctOccasions": 1,
               "accuracy": 0,
               "unconfirmedFeatures": [],
               "textTypes": [],
               "contrastingErrorKeys": [],
               "negativeExampleConfirmed": true,
-              "confirmed": false
+              "confirmed": false,
+              "provisionalGap": true
             }
           ]
         },
@@ -2080,6 +2443,28 @@
           ]
         },
         {
+          "skillId": "construction_subordonnee_completive::writing-controlled-production",
+          "labelFr": "Reconnaître une subordonnée complétive",
+          "mode": "production",
+          "expectedKnown": false,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "production",
+              "probability": 0.11764705882352941,
+              "distinctItems": 1,
+              "distinctContexts": 1,
+              "distinctOccasions": 1,
+              "accuracy": 0,
+              "unconfirmedFeatures": [],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false
+            }
+          ]
+        },
+        {
           "skillId": "construction_accord_determinant_nom::reading-analysis",
           "labelFr": "Analyser l'accord déterminant-nom",
           "mode": "recognition",
@@ -2102,17 +2487,17 @@
           ]
         },
         {
-          "skillId": "construction_accord_sujet_verbe::reading-analysis::construction:coordinated",
-          "labelFr": "Analyser l'accord sujet-verbe — Plusieurs sujets coordonnés",
+          "skillId": "construction_accord_nom_adjectif::reading-analysis",
+          "labelFr": "Analyser l'accord nom-adjectif",
           "mode": "recognition",
           "expectedKnown": false,
           "status": "uncertain",
           "modes": [
             {
               "mode": "recognition",
-              "probability": 0.11764705882352941,
-              "distinctItems": 1,
-              "distinctContexts": 1,
+              "probability": 0.017467248908296946,
+              "distinctItems": 2,
+              "distinctContexts": 2,
               "distinctOccasions": 1,
               "accuracy": 0,
               "unconfirmedFeatures": [],
@@ -2120,6 +2505,72 @@
               "contrastingErrorKeys": [],
               "negativeExampleConfirmed": true,
               "confirmed": false
+            }
+          ]
+        },
+        {
+          "skillId": "construction_accord_sujet_verbe::reading-analysis::construction:adjacent",
+          "labelFr": "Analyser l'accord sujet-verbe — Sujet proche du verbe",
+          "mode": "recognition",
+          "expectedKnown": false,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "recognition",
+              "probability": 0.0023647650014779796,
+              "distinctItems": 3,
+              "distinctContexts": 3,
+              "distinctOccasions": 1,
+              "accuracy": 0,
+              "unconfirmedFeatures": [],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": true,
+              "confirmed": false,
+              "provisionalGap": true
+            }
+          ]
+        },
+        {
+          "skillId": "segmenter_syllabes_ecrites::writing-controlled-production",
+          "labelFr": "Segmenter un mot en syllabes écrites",
+          "mode": "production",
+          "expectedKnown": false,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "production",
+              "probability": 0.09638554216867472,
+              "distinctItems": 1,
+              "distinctContexts": 1,
+              "distinctOccasions": 1,
+              "accuracy": 0,
+              "unconfirmedFeatures": [
+                "written-syllable:simple",
+                "written-syllable:double_consonant",
+                "written-syllable:consonant_group"
+              ],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false,
+              "featureEvidence": [
+                {
+                  "feature": "written-syllable:simple",
+                  "distinctItems": 0,
+                  "correctItems": 0
+                },
+                {
+                  "feature": "written-syllable:double_consonant",
+                  "distinctItems": 1,
+                  "correctItems": 0
+                },
+                {
+                  "feature": "written-syllable:consonant_group",
+                  "distinctItems": 0,
+                  "correctItems": 0
+                }
+              ]
             }
           ]
         },
@@ -2181,31 +2632,9 @@
           "modes": [
             {
               "mode": "production",
-              "probability": 0.038461538461538464,
-              "distinctItems": 2,
-              "distinctContexts": 2,
-              "distinctOccasions": 1,
-              "accuracy": 0,
-              "unconfirmedFeatures": [],
-              "textTypes": [],
-              "contrastingErrorKeys": [],
-              "negativeExampleConfirmed": false,
-              "confirmed": false
-            }
-          ]
-        },
-        {
-          "skillId": "marquer_pluriel_nom_regulier::writing-controlled-production",
-          "labelFr": "Marquer le pluriel régulier d'un nom",
-          "mode": "production",
-          "expectedKnown": false,
-          "status": "uncertain",
-          "modes": [
-            {
-              "mode": "production",
-              "probability": 0.010958904109589048,
-              "distinctItems": 2,
-              "distinctContexts": 2,
+              "probability": 0.16666666666666666,
+              "distinctItems": 1,
+              "distinctContexts": 1,
               "distinctOccasions": 1,
               "accuracy": 0,
               "unconfirmedFeatures": [],
@@ -2236,28 +2665,6 @@
               "negativeExampleConfirmed": false,
               "confirmed": false,
               "provisionalGap": true
-            }
-          ]
-        },
-        {
-          "skillId": "accorder_sujet_verbe_ecrit::writing-controlled-production::construction:coordinated",
-          "labelFr": "Réaliser l'accord sujet-verbe — Plusieurs sujets coordonnés",
-          "mode": "production",
-          "expectedKnown": false,
-          "status": "uncertain",
-          "modes": [
-            {
-              "mode": "production",
-              "probability": 0.038461538461538464,
-              "distinctItems": 2,
-              "distinctContexts": 2,
-              "distinctOccasions": 1,
-              "accuracy": 0,
-              "unconfirmedFeatures": [],
-              "textTypes": [],
-              "contrastingErrorKeys": [],
-              "negativeExampleConfirmed": false,
-              "confirmed": false
             }
           ]
         },
@@ -2339,51 +2746,30 @@
           "modes": [
             {
               "mode": "production",
-              "probability": 0.0017250191668796325,
-              "distinctItems": 3,
-              "distinctContexts": 3,
+              "probability": 0.10714285714285715,
+              "distinctItems": 1,
+              "distinctContexts": 1,
               "distinctOccasions": 1,
               "accuracy": 0,
               "unconfirmedFeatures": [],
               "textTypes": [],
               "contrastingErrorKeys": [],
               "negativeExampleConfirmed": false,
-              "confirmed": false,
-              "provisionalGap": true
+              "confirmed": false
             }
           ]
         }
       ],
       "firstActivities": [
         {
-          "skillId": "construction_phrase_canonique::writing-controlled-production",
-          "activityId": "2c3cc1ce-6207-528e-99e3-9244e7a2daf3",
+          "skillId": "construction_phrase_canonique::reading-analysis",
+          "activityId": "ff1b162f-98e6-50a0-bd67-d0bc11f59cf2",
           "kind": "instruction",
           "action": "learn",
-          "titleFr": "Remettre les groupes d’une phrase dans l’ordre",
-          "href": "/student/diagnostic?activity=2c3cc1ce-6207-528e-99e3-9244e7a2daf3",
+          "titleFr": "Repérer l’ordre d’une phrase simple",
+          "href": "/student/diagnostic?activity=ff1b162f-98e6-50a0-bd67-d0bc11f59cf2",
           "estimatedMinutes": 4,
-          "contentId": "french-v3-teaching:canonical-sentence:production"
-        },
-        {
-          "skillId": "deduire_mot_definition_locale::all-receptive::text_type:informational",
-          "activityId": "75df956b-3d57-556e-abaf-f6a9ef753ec9",
-          "kind": "instruction",
-          "action": "learn",
-          "titleFr": "Trouver une définition dans le texte",
-          "href": "/student/diagnostic?activity=75df956b-3d57-556e-abaf-f6a9ef753ec9",
-          "estimatedMinutes": 4,
-          "contentId": "french-v3-teaching:reading:deduire_mot_definition_locale:informational"
-        },
-        {
-          "skillId": "deduire_mot_exemple_contraste::all-receptive::text_type:informational",
-          "activityId": "dee90a1d-ac9d-5947-bf8d-6cfac8027d5d",
-          "kind": "instruction",
-          "action": "learn",
-          "titleFr": "Déduire un mot grâce aux exemples",
-          "href": "/student/diagnostic?activity=dee90a1d-ac9d-5947-bf8d-6cfac8027d5d",
-          "estimatedMinutes": 4,
-          "contentId": "french-v3-teaching:reading:deduire_mot_exemple_contraste:informational"
+          "contentId": "french-v3-teaching:canonical-sentence:recognition"
         },
         {
           "skillId": "former_feminin_adjectif_regulier::writing-controlled-production",
@@ -2396,19 +2782,40 @@
           "contentId": "spelling-regular-feminine"
         },
         {
-          "skillId": "orthographier_nasale_on_om::reading-receptive",
-          "activityId": "98f824f6-88bc-5569-a182-4b7fde520eb5",
+          "skillId": "resoudre_pronom_objet::all-receptive::text_type:narrative",
+          "activityId": "972cc1d6-1f45-56a2-bdb2-e184759be48f",
           "kind": "instruction",
           "action": "learn",
-          "titleFr": "Choisir entre on et om",
-          "href": "/student/diagnostic?activity=98f824f6-88bc-5569-a182-4b7fde520eb5",
+          "titleFr": "Retrouver ce que remplace « le », « la » ou « lui »",
+          "href": "/student/diagnostic?activity=972cc1d6-1f45-56a2-bdb2-e184759be48f",
           "estimatedMinutes": 4,
-          "contentId": "french-v3-teaching:on-om:recognition"
+          "contentId": "french-v3-teaching:reading:resoudre_pronom_objet:narrative"
+        },
+        {
+          "skillId": "identifier_sujet_verbe::reading-receptive",
+          "activityId": "b7bc4a15-c40d-57b5-a8a0-90dcebbb9a7b",
+          "kind": "independent_check",
+          "action": "verify",
+          "titleFr": "Identifier le sujet du verbe",
+          "href": "/student/diagnostic?activity=b7bc4a15-c40d-57b5-a8a0-90dcebbb9a7b",
+          "estimatedMinutes": 1
+        },
+        {
+          "skillId": "construction_phrase_canonique::writing-controlled-production",
+          "activityId": "2c3cc1ce-6207-528e-99e3-9244e7a2daf3",
+          "kind": "instruction",
+          "action": "learn",
+          "titleFr": "Remettre les groupes d’une phrase dans l’ordre",
+          "href": "/student/diagnostic?activity=2c3cc1ce-6207-528e-99e3-9244e7a2daf3",
+          "estimatedMinutes": 4,
+          "contentId": "french-v3-teaching:canonical-sentence:production"
         }
       ],
       "missingActivitySkillIds": [],
       "blockedSkillIds": [
+        "construction_accord_sujet_verbe::reading-analysis::construction:adjacent",
         "identifier_complement_direct::reading-receptive",
+        "ordonner_evenements_explicites::all-receptive::text_type:argumentative",
         "produire_pronom_cod::writing-controlled-production::construction:elision",
         "produire_pronom_cod::writing-controlled-production::construction:la"
       ],
@@ -2419,27 +2826,49 @@
       "completionReason": "time_budget",
       "activeMinutes": 35,
       "questions": 61,
-      "correct": 20,
-      "sampledTargets": 25,
+      "correct": 24,
+      "sampledTargets": 26,
       "results": {
-        "unknown": 517,
-        "uncertain": 25
+        "unknown": 516,
+        "uncertain": 26
       },
       "sampledSkills": [
         {
-          "skillId": "reconnaitre_present_indicatif::reading-receptive",
-          "labelFr": "Reconnaître le présent de l'indicatif",
+          "skillId": "distinguer_personne_nombre::reading-receptive",
+          "labelFr": "Identifier les traits de personne-nombre",
           "mode": "recognition",
           "expectedKnown": true,
           "status": "uncertain",
           "modes": [
             {
               "mode": "recognition",
-              "probability": 0.9940814954403842,
-              "distinctItems": 4,
-              "distinctContexts": 4,
+              "probability": 0.9936894184168013,
+              "distinctItems": 3,
+              "distinctContexts": 3,
               "distinctOccasions": 1,
               "accuracy": 1,
+              "unconfirmedFeatures": [],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false
+            }
+          ]
+        },
+        {
+          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
+          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
+          "mode": "production",
+          "expectedKnown": false,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "production",
+              "probability": 0.010958904109589048,
+              "distinctItems": 2,
+              "distinctContexts": 1,
+              "distinctOccasions": 1,
+              "accuracy": 0,
               "unconfirmedFeatures": [],
               "textTypes": [],
               "contrastingErrorKeys": [],
@@ -2495,15 +2924,15 @@
           ]
         },
         {
-          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
-          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
+          "skillId": "produire_futur_proche::writing-controlled-production::verb:aller",
+          "labelFr": "Produire le futur proche — Conjuguer aller",
           "mode": "production",
           "expectedKnown": false,
           "status": "uncertain",
           "modes": [
             {
               "mode": "production",
-              "probability": 0.001164991990680065,
+              "probability": 0.0015134953333893893,
               "distinctItems": 3,
               "distinctContexts": 3,
               "distinctOccasions": 1,
@@ -2518,15 +2947,59 @@
           ]
         },
         {
-          "skillId": "reconnaitre_futur_proche::reading-receptive",
-          "labelFr": "Reconnaître le futur proche",
+          "skillId": "produire_futur_proche::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le futur proche — Verbes réguliers en -er",
+          "mode": "production",
+          "expectedKnown": false,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "production",
+              "probability": 0.09523809523809527,
+              "distinctItems": 1,
+              "distinctContexts": 1,
+              "distinctOccasions": 1,
+              "accuracy": 0,
+              "unconfirmedFeatures": [],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false
+            }
+          ]
+        },
+        {
+          "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le passé composé — Verbes réguliers en -er",
+          "mode": "production",
+          "expectedKnown": false,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "production",
+              "probability": 0.09523809523809527,
+              "distinctItems": 1,
+              "distinctContexts": 1,
+              "distinctOccasions": 1,
+              "accuracy": 0,
+              "unconfirmedFeatures": [],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false
+            }
+          ]
+        },
+        {
+          "skillId": "interpreter_sequence_temporelle::reading-receptive",
+          "labelFr": "Interpréter une séquence temporelle",
           "mode": "recognition",
           "expectedKnown": true,
           "status": "uncertain",
           "modes": [
             {
               "mode": "recognition",
-              "probability": 0.9283667621776505,
+              "probability": 0.8793727382388421,
               "distinctItems": 2,
               "distinctContexts": 2,
               "distinctOccasions": 1,
@@ -2540,105 +3013,8 @@
           ]
         },
         {
-          "skillId": "produire_futur_simple::writing-controlled-production::verb:aller",
-          "labelFr": "Produire le futur simple — Conjuguer aller",
-          "mode": "production",
-          "expectedKnown": false,
-          "status": "uncertain",
-          "modes": [
-            {
-              "mode": "production",
-              "probability": 0.001164991990680065,
-              "distinctItems": 3,
-              "distinctContexts": 1,
-              "distinctOccasions": 1,
-              "accuracy": 0,
-              "unconfirmedFeatures": [],
-              "textTypes": [],
-              "contrastingErrorKeys": [],
-              "negativeExampleConfirmed": false,
-              "confirmed": false,
-              "provisionalGap": true
-            }
-          ]
-        },
-        {
           "skillId": "localiser_information_explicite::all-receptive::text_type:argumentative",
           "labelFr": "Localiser une information explicite — Texte argumentatif bref",
-          "mode": "interpretation",
-          "expectedKnown": false,
-          "status": "uncertain",
-          "modes": [
-            {
-              "mode": "interpretation",
-              "probability": 0.11764705882352941,
-              "distinctItems": 1,
-              "distinctContexts": 1,
-              "distinctOccasions": 1,
-              "accuracy": 0,
-              "unconfirmedFeatures": [],
-              "textTypes": [
-                "argumentative"
-              ],
-              "contrastingErrorKeys": [],
-              "negativeExampleConfirmed": false,
-              "confirmed": false
-            }
-          ]
-        },
-        {
-          "skillId": "deduire_mot_definition_locale::all-receptive::text_type:informational",
-          "labelFr": "Déduire un mot grâce à une définition locale — Texte informatif bref",
-          "mode": "interpretation",
-          "expectedKnown": false,
-          "status": "uncertain",
-          "modes": [
-            {
-              "mode": "interpretation",
-              "probability": 0.0023647650014779796,
-              "distinctItems": 3,
-              "distinctContexts": 3,
-              "distinctOccasions": 1,
-              "accuracy": 0,
-              "unconfirmedFeatures": [],
-              "textTypes": [
-                "informational"
-              ],
-              "contrastingErrorKeys": [],
-              "negativeExampleConfirmed": false,
-              "confirmed": false,
-              "provisionalGap": true
-            }
-          ]
-        },
-        {
-          "skillId": "deduire_mot_exemple_contraste::all-receptive::text_type:informational",
-          "labelFr": "Déduire un mot grâce à un exemple ou un contraste — Texte informatif bref",
-          "mode": "interpretation",
-          "expectedKnown": false,
-          "status": "uncertain",
-          "modes": [
-            {
-              "mode": "interpretation",
-              "probability": 0.0023647650014779796,
-              "distinctItems": 3,
-              "distinctContexts": 3,
-              "distinctOccasions": 1,
-              "accuracy": 0,
-              "unconfirmedFeatures": [],
-              "textTypes": [
-                "informational"
-              ],
-              "contrastingErrorKeys": [],
-              "negativeExampleConfirmed": false,
-              "confirmed": false,
-              "provisionalGap": true
-            }
-          ]
-        },
-        {
-          "skillId": "distinguer_fait_opinion::argumentative-receptive::text_type:argumentative",
-          "labelFr": "Distinguer un fait d'une opinion — Texte argumentatif bref",
           "mode": "interpretation",
           "expectedKnown": false,
           "status": "uncertain",
@@ -2661,23 +3037,142 @@
           ]
         },
         {
-          "skillId": "construction_subordonnee_relative::reading-analysis",
-          "labelFr": "Reconnaître une subordonnée relative",
+          "skillId": "ordonner_evenements_explicites::all-receptive::text_type:argumentative",
+          "labelFr": "Ordonner des événements explicitement datés — Texte argumentatif bref",
+          "mode": "interpretation",
+          "expectedKnown": false,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "interpretation",
+              "probability": 0.0023647650014779796,
+              "distinctItems": 3,
+              "distinctContexts": 3,
+              "distinctOccasions": 1,
+              "accuracy": 0,
+              "unconfirmedFeatures": [],
+              "textTypes": [
+                "argumentative"
+              ],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false,
+              "provisionalGap": true
+            }
+          ]
+        },
+        {
+          "skillId": "resoudre_pronom_objet::all-receptive::text_type:narrative",
+          "labelFr": "Résoudre la référence d'un pronom objet — Récit bref",
+          "mode": "interpretation",
+          "expectedKnown": false,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "interpretation",
+              "probability": 0.0023647650014779796,
+              "distinctItems": 3,
+              "distinctContexts": 3,
+              "distinctOccasions": 1,
+              "accuracy": 0,
+              "unconfirmedFeatures": [],
+              "textTypes": [
+                "narrative"
+              ],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false,
+              "provisionalGap": true
+            }
+          ]
+        },
+        {
+          "skillId": "inferer_cause_locale::all-receptive::text_type:narrative",
+          "labelFr": "Inférer une cause locale — Récit bref",
+          "mode": "interpretation",
+          "expectedKnown": false,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "interpretation",
+              "probability": 0.11764705882352941,
+              "distinctItems": 1,
+              "distinctContexts": 1,
+              "distinctOccasions": 1,
+              "accuracy": 0,
+              "unconfirmedFeatures": [],
+              "textTypes": [
+                "narrative"
+              ],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false
+            }
+          ]
+        },
+        {
+          "skillId": "construction_phrase_canonique::reading-analysis",
+          "labelFr": "Reconnaître une phrase canonique",
           "mode": "recognition",
           "expectedKnown": true,
           "status": "uncertain",
           "modes": [
             {
               "mode": "recognition",
-              "probability": 0.782608695652174,
-              "distinctItems": 1,
-              "distinctContexts": 1,
+              "probability": 0.9283667621776505,
+              "distinctItems": 2,
+              "distinctContexts": 2,
               "distinctOccasions": 1,
               "accuracy": 1,
               "unconfirmedFeatures": [],
               "textTypes": [],
               "contrastingErrorKeys": [],
               "negativeExampleConfirmed": true,
+              "confirmed": false
+            }
+          ]
+        },
+        {
+          "skillId": "construction_phrase_canonique::writing-controlled-production",
+          "labelFr": "Reconnaître une phrase canonique",
+          "mode": "production",
+          "expectedKnown": false,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "production",
+              "probability": 0.0017250191668796325,
+              "distinctItems": 3,
+              "distinctContexts": 3,
+              "distinctOccasions": 1,
+              "accuracy": 0,
+              "unconfirmedFeatures": [],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false,
+              "provisionalGap": true
+            }
+          ]
+        },
+        {
+          "skillId": "construction_subordonnee_completive::writing-controlled-production",
+          "labelFr": "Reconnaître une subordonnée complétive",
+          "mode": "production",
+          "expectedKnown": false,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "production",
+              "probability": 0.11764705882352941,
+              "distinctItems": 1,
+              "distinctContexts": 1,
+              "distinctOccasions": 1,
+              "accuracy": 0,
+              "unconfirmedFeatures": [],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
               "confirmed": false
             }
           ]
@@ -2705,39 +3200,17 @@
           ]
         },
         {
-          "skillId": "construction_accord_determinant_nom::writing-controlled-production",
-          "labelFr": "Analyser l'accord déterminant-nom",
-          "mode": "production",
-          "expectedKnown": false,
-          "status": "uncertain",
-          "modes": [
-            {
-              "mode": "production",
-              "probability": 0.11764705882352941,
-              "distinctItems": 1,
-              "distinctContexts": 1,
-              "distinctOccasions": 1,
-              "accuracy": 0,
-              "unconfirmedFeatures": [],
-              "textTypes": [],
-              "contrastingErrorKeys": [],
-              "negativeExampleConfirmed": false,
-              "confirmed": false
-            }
-          ]
-        },
-        {
-          "skillId": "construction_accord_sujet_verbe::reading-analysis::construction:coordinated",
-          "labelFr": "Analyser l'accord sujet-verbe — Plusieurs sujets coordonnés",
+          "skillId": "construction_accord_sujet_verbe::reading-analysis::construction:adjacent",
+          "labelFr": "Analyser l'accord sujet-verbe — Sujet proche du verbe",
           "mode": "recognition",
           "expectedKnown": true,
           "status": "uncertain",
           "modes": [
             {
               "mode": "recognition",
-              "probability": 0.782608695652174,
-              "distinctItems": 1,
-              "distinctContexts": 1,
+              "probability": 0.9790162833641095,
+              "distinctItems": 3,
+              "distinctContexts": 3,
               "distinctOccasions": 1,
               "accuracy": 1,
               "unconfirmedFeatures": [],
@@ -2819,44 +3292,26 @@
           ]
         },
         {
-          "skillId": "former_feminin_adjectif_regulier::writing-controlled-production",
-          "labelFr": "Former le féminin régulier d'un adjectif",
-          "mode": "production",
-          "expectedKnown": false,
+          "skillId": "accorder_determinant_nom_ecrit::reading-receptive",
+          "labelFr": "Réaliser l'accord déterminant-nom",
+          "mode": "recognition",
+          "expectedKnown": true,
           "status": "uncertain",
           "modes": [
             {
-              "mode": "production",
-              "probability": 0.09523809523809527,
-              "distinctItems": 1,
-              "distinctContexts": 1,
-              "distinctOccasions": 1,
-              "accuracy": 0,
-              "unconfirmedFeatures": [],
-              "textTypes": [],
-              "contrastingErrorKeys": [],
-              "negativeExampleConfirmed": false,
-              "confirmed": false
-            }
-          ]
-        },
-        {
-          "skillId": "accorder_sujet_verbe_ecrit::writing-controlled-production::construction:coordinated",
-          "labelFr": "Réaliser l'accord sujet-verbe — Plusieurs sujets coordonnés",
-          "mode": "production",
-          "expectedKnown": false,
-          "status": "uncertain",
-          "modes": [
-            {
-              "mode": "production",
-              "probability": 0.038461538461538464,
+              "mode": "recognition",
+              "probability": 0.8793727382388421,
               "distinctItems": 2,
               "distinctContexts": 2,
               "distinctOccasions": 1,
-              "accuracy": 0,
+              "accuracy": 1,
               "unconfirmedFeatures": [],
               "textTypes": [],
-              "contrastingErrorKeys": [],
+              "contrastingErrorKeys": [
+                "determiner-gender",
+                "determiner-number",
+                "noun-number"
+              ],
               "negativeExampleConfirmed": false,
               "confirmed": false
             }
@@ -2885,6 +3340,28 @@
           ]
         },
         {
+          "skillId": "produire_pronom_cod::writing-controlled-production::construction:le",
+          "labelFr": "Employer le, la, l’ ou les — le",
+          "mode": "production",
+          "expectedKnown": false,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "production",
+              "probability": 0.014195583596214511,
+              "distinctItems": 2,
+              "distinctContexts": 2,
+              "distinctOccasions": 1,
+              "accuracy": 0,
+              "unconfirmedFeatures": [],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false
+            }
+          ]
+        },
+        {
           "skillId": "produire_pronom_cod::writing-controlled-production::construction:la",
           "labelFr": "Employer le, la, l’ ou les — la",
           "mode": "production",
@@ -2893,17 +3370,16 @@
           "modes": [
             {
               "mode": "production",
-              "probability": 0.0017250191668796325,
-              "distinctItems": 3,
-              "distinctContexts": 3,
+              "probability": 0.10714285714285715,
+              "distinctItems": 1,
+              "distinctContexts": 1,
               "distinctOccasions": 1,
               "accuracy": 0,
               "unconfirmedFeatures": [],
               "textTypes": [],
               "contrastingErrorKeys": [],
               "negativeExampleConfirmed": false,
-              "confirmed": false,
-              "provisionalGap": true
+              "confirmed": false
             }
           ]
         },
@@ -2931,53 +3407,8 @@
           ]
         },
         {
-          "skillId": "produire_pronom_coi_personne::writing-controlled-production::construction:lui",
-          "labelFr": "Employer lui ou leur — lui : une personne",
-          "mode": "production",
-          "expectedKnown": false,
-          "status": "uncertain",
-          "modes": [
-            {
-              "mode": "production",
-              "probability": 0.014195583596214511,
-              "distinctItems": 2,
-              "distinctContexts": 2,
-              "distinctOccasions": 1,
-              "accuracy": 0,
-              "unconfirmedFeatures": [],
-              "textTypes": [],
-              "contrastingErrorKeys": [],
-              "negativeExampleConfirmed": false,
-              "confirmed": false
-            }
-          ]
-        },
-        {
           "skillId": "produire_pronom_coi_personne::writing-controlled-production::construction:leur",
           "labelFr": "Employer lui ou leur — leur : plusieurs personnes",
-          "mode": "production",
-          "expectedKnown": false,
-          "status": "uncertain",
-          "modes": [
-            {
-              "mode": "production",
-              "probability": 0.0017250191668796325,
-              "distinctItems": 3,
-              "distinctContexts": 3,
-              "distinctOccasions": 1,
-              "accuracy": 0,
-              "unconfirmedFeatures": [],
-              "textTypes": [],
-              "contrastingErrorKeys": [],
-              "negativeExampleConfirmed": false,
-              "confirmed": false,
-              "provisionalGap": true
-            }
-          ]
-        },
-        {
-          "skillId": "distinguer_pronom_cod_coi::writing-controlled-production",
-          "labelFr": "Choisir entre COD et COI",
           "mode": "production",
           "expectedKnown": false,
           "status": "uncertain",
@@ -3000,24 +3431,14 @@
       ],
       "firstActivities": [
         {
-          "skillId": "deduire_mot_definition_locale::all-receptive::text_type:informational",
-          "activityId": "75df956b-3d57-556e-abaf-f6a9ef753ec9",
+          "skillId": "construction_phrase_canonique::writing-controlled-production",
+          "activityId": "2c3cc1ce-6207-528e-99e3-9244e7a2daf3",
           "kind": "instruction",
           "action": "learn",
-          "titleFr": "Trouver une définition dans le texte",
-          "href": "/student/diagnostic?activity=75df956b-3d57-556e-abaf-f6a9ef753ec9",
+          "titleFr": "Remettre les groupes d’une phrase dans l’ordre",
+          "href": "/student/diagnostic?activity=2c3cc1ce-6207-528e-99e3-9244e7a2daf3",
           "estimatedMinutes": 4,
-          "contentId": "french-v3-teaching:reading:deduire_mot_definition_locale:informational"
-        },
-        {
-          "skillId": "deduire_mot_exemple_contraste::all-receptive::text_type:informational",
-          "activityId": "dee90a1d-ac9d-5947-bf8d-6cfac8027d5d",
-          "kind": "instruction",
-          "action": "learn",
-          "titleFr": "Déduire un mot grâce aux exemples",
-          "href": "/student/diagnostic?activity=dee90a1d-ac9d-5947-bf8d-6cfac8027d5d",
-          "estimatedMinutes": 4,
-          "contentId": "french-v3-teaching:reading:deduire_mot_exemple_contraste:informational"
+          "contentId": "french-v3-teaching:canonical-sentence:production"
         },
         {
           "skillId": "orthographier_nasale_on_om::writing-controlled-production",
@@ -3030,31 +3451,41 @@
           "contentId": "french-v3-teaching:on-om:production"
         },
         {
-          "skillId": "produire_pronom_coi_personne::writing-controlled-production::construction:leur",
-          "activityId": "b7aa35f5-0062-5b8f-b6af-740fd2ec00f2",
+          "skillId": "resoudre_pronom_objet::all-receptive::text_type:narrative",
+          "activityId": "972cc1d6-1f45-56a2-bdb2-e184759be48f",
           "kind": "instruction",
           "action": "learn",
-          "titleFr": "Reprendre plusieurs personnes avec leur",
-          "href": "/student/diagnostic?activity=b7aa35f5-0062-5b8f-b6af-740fd2ec00f2",
+          "titleFr": "Retrouver ce que remplace « le », « la » ou « lui »",
+          "href": "/student/diagnostic?activity=972cc1d6-1f45-56a2-bdb2-e184759be48f",
           "estimatedMinutes": 4,
-          "contentId": "french-v3-teaching:coi-pronoun:leur"
+          "contentId": "french-v3-teaching:reading:resoudre_pronom_objet:narrative"
         },
         {
-          "skillId": "reconnaitre_futur_simple::reading-receptive",
-          "activityId": "5c0e0a41-293b-54f6-b24c-cca393770701",
+          "skillId": "reconnaitre_radical_terminaison::reading-receptive",
+          "activityId": "a239a632-93da-5d5a-96a2-a728df4fe7b0",
           "kind": "independent_check",
           "action": "verify",
-          "titleFr": "Reconnaître le futur simple",
-          "href": "/student/diagnostic?activity=5c0e0a41-293b-54f6-b24c-cca393770701",
+          "titleFr": "Segmenter une forme verbale",
+          "href": "/student/diagnostic?activity=a239a632-93da-5d5a-96a2-a728df4fe7b0",
           "estimatedMinutes": 1
+        },
+        {
+          "skillId": "produire_pronom_cod::writing-controlled-production::construction:elision",
+          "activityId": "8b4cfef8-1299-59ca-9222-15dab1379320",
+          "kind": "instruction",
+          "action": "learn",
+          "titleFr": "Utiliser l’ devant une voyelle",
+          "href": "/student/diagnostic?activity=8b4cfef8-1299-59ca-9222-15dab1379320",
+          "estimatedMinutes": 4,
+          "contentId": "french-v3-teaching:cod-pronoun:elision"
         }
       ],
       "missingActivitySkillIds": [],
       "blockedSkillIds": [
-        "produire_futur_simple::writing-controlled-production::verb:aller",
+        "ordonner_evenements_explicites::all-receptive::text_type:argumentative",
         "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
-        "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
-        "produire_present_indicatif::writing-controlled-production::verb:aller"
+        "produire_present_indicatif::writing-controlled-production::verb:aller",
+        "produire_futur_proche::writing-controlled-production::verb:aller"
       ],
       "violations": []
     },
@@ -3064,37 +3495,15 @@
       "activeMinutes": 35,
       "questions": 61,
       "correct": 17,
-      "sampledTargets": 25,
+      "sampledTargets": 27,
       "results": {
-        "uncertain": 25,
-        "unknown": 517
+        "uncertain": 27,
+        "unknown": 515
       },
       "sampledSkills": [
         {
           "skillId": "identifier_sujet_verbe::reading-receptive",
           "labelFr": "Identifier le sujet du verbe",
-          "mode": "recognition",
-          "expectedKnown": false,
-          "status": "uncertain",
-          "modes": [
-            {
-              "mode": "recognition",
-              "probability": 0.017467248908296946,
-              "distinctItems": 2,
-              "distinctContexts": 2,
-              "distinctOccasions": 1,
-              "accuracy": 0,
-              "unconfirmedFeatures": [],
-              "textTypes": [],
-              "contrastingErrorKeys": [],
-              "negativeExampleConfirmed": false,
-              "confirmed": false
-            }
-          ]
-        },
-        {
-          "skillId": "reconnaitre_radical_terminaison::reading-receptive",
-          "labelFr": "Segmenter une forme verbale",
           "mode": "recognition",
           "expectedKnown": false,
           "status": "uncertain",
@@ -3116,8 +3525,30 @@
           ]
         },
         {
-          "skillId": "reconnaitre_present_indicatif::reading-receptive",
-          "labelFr": "Reconnaître le présent de l'indicatif",
+          "skillId": "distinguer_personne_nombre::reading-receptive",
+          "labelFr": "Identifier les traits de personne-nombre",
+          "mode": "recognition",
+          "expectedKnown": false,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "recognition",
+              "probability": 0.10714285714285715,
+              "distinctItems": 1,
+              "distinctContexts": 1,
+              "distinctOccasions": 1,
+              "accuracy": 0,
+              "unconfirmedFeatures": [],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false
+            }
+          ]
+        },
+        {
+          "skillId": "reconnaitre_radical_terminaison::reading-receptive",
+          "labelFr": "Segmenter une forme verbale",
           "mode": "recognition",
           "expectedKnown": false,
           "status": "uncertain",
@@ -3126,6 +3557,28 @@
               "mode": "recognition",
               "probability": 0.11764705882352941,
               "distinctItems": 1,
+              "distinctContexts": 1,
+              "distinctOccasions": 1,
+              "accuracy": 0,
+              "unconfirmedFeatures": [],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false
+            }
+          ]
+        },
+        {
+          "skillId": "produire_present_indicatif::writing-controlled-production::verb:avoir",
+          "labelFr": "Produire le présent de l'indicatif — Conjuguer avoir",
+          "mode": "production",
+          "expectedKnown": false,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "production",
+              "probability": 0.010958904109589048,
+              "distinctItems": 2,
               "distinctContexts": 1,
               "distinctOccasions": 1,
               "accuracy": 0,
@@ -3184,15 +3637,15 @@
           ]
         },
         {
-          "skillId": "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
-          "labelFr": "Produire le présent de l'indicatif — Verbes en -ir comme finir",
+          "skillId": "produire_futur_proche::writing-controlled-production::verb:aller",
+          "labelFr": "Produire le futur proche — Conjuguer aller",
           "mode": "production",
           "expectedKnown": false,
           "status": "uncertain",
           "modes": [
             {
               "mode": "production",
-              "probability": 0.001164991990680065,
+              "probability": 0.0015134953333893893,
               "distinctItems": 3,
               "distinctContexts": 3,
               "distinctOccasions": 1,
@@ -3207,46 +3660,21 @@
           ]
         },
         {
-          "skillId": "produire_futur_simple::writing-controlled-production::verb:aller",
-          "labelFr": "Produire le futur simple — Conjuguer aller",
+          "skillId": "produire_futur_proche::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le futur proche — Verbes réguliers en -er",
           "mode": "production",
           "expectedKnown": false,
           "status": "uncertain",
           "modes": [
             {
               "mode": "production",
-              "probability": 0.001164991990680065,
-              "distinctItems": 3,
-              "distinctContexts": 1,
-              "distinctOccasions": 1,
-              "accuracy": 0,
-              "unconfirmedFeatures": [],
-              "textTypes": [],
-              "contrastingErrorKeys": [],
-              "negativeExampleConfirmed": false,
-              "confirmed": false,
-              "provisionalGap": true
-            }
-          ]
-        },
-        {
-          "skillId": "localiser_information_explicite::all-receptive::text_type:argumentative",
-          "labelFr": "Localiser une information explicite — Texte argumentatif bref",
-          "mode": "interpretation",
-          "expectedKnown": false,
-          "status": "uncertain",
-          "modes": [
-            {
-              "mode": "interpretation",
-              "probability": 0.11764705882352941,
+              "probability": 0.09523809523809527,
               "distinctItems": 1,
               "distinctContexts": 1,
               "distinctOccasions": 1,
               "accuracy": 0,
               "unconfirmedFeatures": [],
-              "textTypes": [
-                "argumentative"
-              ],
+              "textTypes": [],
               "contrastingErrorKeys": [],
               "negativeExampleConfirmed": false,
               "confirmed": false
@@ -3254,58 +3682,30 @@
           ]
         },
         {
-          "skillId": "deduire_mot_definition_locale::all-receptive::text_type:informational",
-          "labelFr": "Déduire un mot grâce à une définition locale — Texte informatif bref",
-          "mode": "interpretation",
+          "skillId": "produire_passe_compose::writing-controlled-production::pattern:regular_er",
+          "labelFr": "Produire le passé composé — Verbes réguliers en -er",
+          "mode": "production",
           "expectedKnown": false,
           "status": "uncertain",
           "modes": [
             {
-              "mode": "interpretation",
-              "probability": 0.0023647650014779796,
-              "distinctItems": 3,
-              "distinctContexts": 3,
+              "mode": "production",
+              "probability": 0.09523809523809527,
+              "distinctItems": 1,
+              "distinctContexts": 1,
               "distinctOccasions": 1,
               "accuracy": 0,
               "unconfirmedFeatures": [],
-              "textTypes": [
-                "informational"
-              ],
+              "textTypes": [],
               "contrastingErrorKeys": [],
               "negativeExampleConfirmed": false,
-              "confirmed": false,
-              "provisionalGap": true
+              "confirmed": false
             }
           ]
         },
         {
-          "skillId": "deduire_mot_exemple_contraste::all-receptive::text_type:informational",
-          "labelFr": "Déduire un mot grâce à un exemple ou un contraste — Texte informatif bref",
-          "mode": "interpretation",
-          "expectedKnown": false,
-          "status": "uncertain",
-          "modes": [
-            {
-              "mode": "interpretation",
-              "probability": 0.0023647650014779796,
-              "distinctItems": 3,
-              "distinctContexts": 3,
-              "distinctOccasions": 1,
-              "accuracy": 0,
-              "unconfirmedFeatures": [],
-              "textTypes": [
-                "informational"
-              ],
-              "contrastingErrorKeys": [],
-              "negativeExampleConfirmed": false,
-              "confirmed": false,
-              "provisionalGap": true
-            }
-          ]
-        },
-        {
-          "skillId": "distinguer_fait_opinion::argumentative-receptive::text_type:argumentative",
-          "labelFr": "Distinguer un fait d'une opinion — Texte argumentatif bref",
+          "skillId": "localiser_information_explicite::all-receptive::text_type:argumentative",
+          "labelFr": "Localiser une information explicite — Texte argumentatif bref",
           "mode": "interpretation",
           "expectedKnown": false,
           "status": "uncertain",
@@ -3321,6 +3721,124 @@
               "textTypes": [
                 "argumentative"
               ],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false
+            }
+          ]
+        },
+        {
+          "skillId": "ordonner_evenements_explicites::all-receptive::text_type:argumentative",
+          "labelFr": "Ordonner des événements explicitement datés — Texte argumentatif bref",
+          "mode": "interpretation",
+          "expectedKnown": false,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "interpretation",
+              "probability": 0.0023647650014779796,
+              "distinctItems": 3,
+              "distinctContexts": 3,
+              "distinctOccasions": 1,
+              "accuracy": 0,
+              "unconfirmedFeatures": [],
+              "textTypes": [
+                "argumentative"
+              ],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false,
+              "provisionalGap": true
+            }
+          ]
+        },
+        {
+          "skillId": "resoudre_pronom_objet::all-receptive::text_type:narrative",
+          "labelFr": "Résoudre la référence d'un pronom objet — Récit bref",
+          "mode": "interpretation",
+          "expectedKnown": false,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "interpretation",
+              "probability": 0.0023647650014779796,
+              "distinctItems": 3,
+              "distinctContexts": 3,
+              "distinctOccasions": 1,
+              "accuracy": 0,
+              "unconfirmedFeatures": [],
+              "textTypes": [
+                "narrative"
+              ],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false,
+              "provisionalGap": true
+            }
+          ]
+        },
+        {
+          "skillId": "inferer_cause_locale::all-receptive::text_type:narrative",
+          "labelFr": "Inférer une cause locale — Récit bref",
+          "mode": "interpretation",
+          "expectedKnown": false,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "interpretation",
+              "probability": 0.11764705882352941,
+              "distinctItems": 1,
+              "distinctContexts": 1,
+              "distinctOccasions": 1,
+              "accuracy": 0,
+              "unconfirmedFeatures": [],
+              "textTypes": [
+                "narrative"
+              ],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false
+            }
+          ]
+        },
+        {
+          "skillId": "construction_subordonnee_completive::writing-controlled-production",
+          "labelFr": "Reconnaître une subordonnée complétive",
+          "mode": "production",
+          "expectedKnown": true,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "production",
+              "probability": 0.9940814954403842,
+              "distinctItems": 4,
+              "distinctContexts": 4,
+              "distinctOccasions": 1,
+              "accuracy": 1,
+              "unconfirmedFeatures": [],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false
+            }
+          ]
+        },
+        {
+          "skillId": "construction_reprise_demonstrative::writing-controlled-production",
+          "labelFr": "Interpréter une reprise démonstrative",
+          "mode": "production",
+          "expectedKnown": true,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "production",
+              "probability": 0.9283667621776505,
+              "distinctItems": 2,
+              "distinctContexts": 2,
+              "distinctOccasions": 1,
+              "accuracy": 1,
+              "unconfirmedFeatures": [],
+              "textTypes": [],
               "contrastingErrorKeys": [],
               "negativeExampleConfirmed": false,
               "confirmed": false
@@ -3350,17 +3868,17 @@
           ]
         },
         {
-          "skillId": "construction_accord_sujet_verbe::reading-analysis::construction:coordinated",
-          "labelFr": "Analyser l'accord sujet-verbe — Plusieurs sujets coordonnés",
+          "skillId": "construction_accord_nom_adjectif::reading-analysis",
+          "labelFr": "Analyser l'accord nom-adjectif",
           "mode": "recognition",
           "expectedKnown": false,
           "status": "uncertain",
           "modes": [
             {
               "mode": "recognition",
-              "probability": 0.11764705882352941,
-              "distinctItems": 1,
-              "distinctContexts": 1,
+              "probability": 0.017467248908296946,
+              "distinctItems": 2,
+              "distinctContexts": 2,
               "distinctOccasions": 1,
               "accuracy": 0,
               "unconfirmedFeatures": [],
@@ -3368,6 +3886,72 @@
               "contrastingErrorKeys": [],
               "negativeExampleConfirmed": true,
               "confirmed": false
+            }
+          ]
+        },
+        {
+          "skillId": "construction_accord_sujet_verbe::reading-analysis::construction:adjacent",
+          "labelFr": "Analyser l'accord sujet-verbe — Sujet proche du verbe",
+          "mode": "recognition",
+          "expectedKnown": false,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "recognition",
+              "probability": 0.0023647650014779796,
+              "distinctItems": 3,
+              "distinctContexts": 3,
+              "distinctOccasions": 1,
+              "accuracy": 0,
+              "unconfirmedFeatures": [],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": true,
+              "confirmed": false,
+              "provisionalGap": true
+            }
+          ]
+        },
+        {
+          "skillId": "segmenter_syllabes_ecrites::writing-controlled-production",
+          "labelFr": "Segmenter un mot en syllabes écrites",
+          "mode": "production",
+          "expectedKnown": false,
+          "status": "uncertain",
+          "modes": [
+            {
+              "mode": "production",
+              "probability": 0.09638554216867472,
+              "distinctItems": 1,
+              "distinctContexts": 1,
+              "distinctOccasions": 1,
+              "accuracy": 0,
+              "unconfirmedFeatures": [
+                "written-syllable:simple",
+                "written-syllable:double_consonant",
+                "written-syllable:consonant_group"
+              ],
+              "textTypes": [],
+              "contrastingErrorKeys": [],
+              "negativeExampleConfirmed": false,
+              "confirmed": false,
+              "featureEvidence": [
+                {
+                  "feature": "written-syllable:simple",
+                  "distinctItems": 0,
+                  "correctItems": 0
+                },
+                {
+                  "feature": "written-syllable:double_consonant",
+                  "distinctItems": 1,
+                  "correctItems": 0
+                },
+                {
+                  "feature": "written-syllable:consonant_group",
+                  "distinctItems": 0,
+                  "correctItems": 0
+                }
+              ]
             }
           ]
         },
@@ -3429,31 +4013,9 @@
           "modes": [
             {
               "mode": "production",
-              "probability": 0.038461538461538464,
-              "distinctItems": 2,
-              "distinctContexts": 2,
-              "distinctOccasions": 1,
-              "accuracy": 0,
-              "unconfirmedFeatures": [],
-              "textTypes": [],
-              "contrastingErrorKeys": [],
-              "negativeExampleConfirmed": false,
-              "confirmed": false
-            }
-          ]
-        },
-        {
-          "skillId": "marquer_pluriel_nom_regulier::writing-controlled-production",
-          "labelFr": "Marquer le pluriel régulier d'un nom",
-          "mode": "production",
-          "expectedKnown": false,
-          "status": "uncertain",
-          "modes": [
-            {
-              "mode": "production",
-              "probability": 0.010958904109589048,
-              "distinctItems": 2,
-              "distinctContexts": 2,
+              "probability": 0.16666666666666666,
+              "distinctItems": 1,
+              "distinctContexts": 1,
               "distinctOccasions": 1,
               "accuracy": 0,
               "unconfirmedFeatures": [],
@@ -3484,50 +4046,6 @@
               "negativeExampleConfirmed": false,
               "confirmed": false,
               "provisionalGap": true
-            }
-          ]
-        },
-        {
-          "skillId": "accorder_sujet_verbe_ecrit::writing-controlled-production::construction:coordinated",
-          "labelFr": "Réaliser l'accord sujet-verbe — Plusieurs sujets coordonnés",
-          "mode": "production",
-          "expectedKnown": false,
-          "status": "uncertain",
-          "modes": [
-            {
-              "mode": "production",
-              "probability": 0.038461538461538464,
-              "distinctItems": 2,
-              "distinctContexts": 2,
-              "distinctOccasions": 1,
-              "accuracy": 0,
-              "unconfirmedFeatures": [],
-              "textTypes": [],
-              "contrastingErrorKeys": [],
-              "negativeExampleConfirmed": false,
-              "confirmed": false
-            }
-          ]
-        },
-        {
-          "skillId": "identifier_complement_direct::reading-receptive",
-          "labelFr": "Identifier un complément direct",
-          "mode": "recognition",
-          "expectedKnown": true,
-          "status": "uncertain",
-          "modes": [
-            {
-              "mode": "recognition",
-              "probability": 0.9940814954403842,
-              "distinctItems": 4,
-              "distinctContexts": 4,
-              "distinctOccasions": 1,
-              "accuracy": 1,
-              "unconfirmedFeatures": [],
-              "textTypes": [],
-              "contrastingErrorKeys": [],
-              "negativeExampleConfirmed": false,
-              "confirmed": false
             }
           ]
         },
@@ -3618,51 +4136,9 @@
               "confirmed": false
             }
           ]
-        },
-        {
-          "skillId": "distinguer_pronom_cod_coi::writing-controlled-production",
-          "labelFr": "Choisir entre COD et COI",
-          "mode": "production",
-          "expectedKnown": true,
-          "status": "uncertain",
-          "modes": [
-            {
-              "mode": "production",
-              "probability": 0.96684350132626,
-              "distinctItems": 2,
-              "distinctContexts": 2,
-              "distinctOccasions": 1,
-              "accuracy": 1,
-              "unconfirmedFeatures": [],
-              "textTypes": [],
-              "contrastingErrorKeys": [],
-              "negativeExampleConfirmed": false,
-              "confirmed": false
-            }
-          ]
         }
       ],
       "firstActivities": [
-        {
-          "skillId": "deduire_mot_definition_locale::all-receptive::text_type:informational",
-          "activityId": "75df956b-3d57-556e-abaf-f6a9ef753ec9",
-          "kind": "instruction",
-          "action": "learn",
-          "titleFr": "Trouver une définition dans le texte",
-          "href": "/student/diagnostic?activity=75df956b-3d57-556e-abaf-f6a9ef753ec9",
-          "estimatedMinutes": 4,
-          "contentId": "french-v3-teaching:reading:deduire_mot_definition_locale:informational"
-        },
-        {
-          "skillId": "deduire_mot_exemple_contraste::all-receptive::text_type:informational",
-          "activityId": "dee90a1d-ac9d-5947-bf8d-6cfac8027d5d",
-          "kind": "instruction",
-          "action": "learn",
-          "titleFr": "Déduire un mot grâce aux exemples",
-          "href": "/student/diagnostic?activity=dee90a1d-ac9d-5947-bf8d-6cfac8027d5d",
-          "estimatedMinutes": 4,
-          "contentId": "french-v3-teaching:reading:deduire_mot_exemple_contraste:informational"
-        },
         {
           "skillId": "former_feminin_adjectif_regulier::writing-controlled-production",
           "activityId": "9c933995-1957-5dbd-80db-32bd7f9d46d8",
@@ -3674,6 +4150,35 @@
           "contentId": "spelling-regular-feminine"
         },
         {
+          "skillId": "identifier_sujet_verbe::reading-receptive",
+          "activityId": "fb19bc72-2c05-53ea-b4e7-61112b86caab",
+          "kind": "instruction",
+          "action": "learn",
+          "titleFr": "Trouver le sujet complet d’un verbe",
+          "href": "/student/diagnostic?activity=fb19bc72-2c05-53ea-b4e7-61112b86caab",
+          "estimatedMinutes": 4,
+          "contentId": "french-v3-teaching:identifier_sujet_verbe"
+        },
+        {
+          "skillId": "resoudre_pronom_objet::all-receptive::text_type:narrative",
+          "activityId": "972cc1d6-1f45-56a2-bdb2-e184759be48f",
+          "kind": "instruction",
+          "action": "learn",
+          "titleFr": "Retrouver ce que remplace « le », « la » ou « lui »",
+          "href": "/student/diagnostic?activity=972cc1d6-1f45-56a2-bdb2-e184759be48f",
+          "estimatedMinutes": 4,
+          "contentId": "french-v3-teaching:reading:resoudre_pronom_objet:narrative"
+        },
+        {
+          "skillId": "construction_phrase_canonique::reading-analysis",
+          "activityId": "d9d54860-2d57-5757-8342-e6f87e55acd8",
+          "kind": "independent_check",
+          "action": "verify",
+          "titleFr": "Reconnaître une phrase canonique",
+          "href": "/student/diagnostic?activity=d9d54860-2d57-5757-8342-e6f87e55acd8",
+          "estimatedMinutes": 1
+        },
+        {
           "skillId": "orthographier_nasale_on_om::reading-receptive",
           "activityId": "98f824f6-88bc-5569-a182-4b7fde520eb5",
           "kind": "instruction",
@@ -3682,24 +4187,15 @@
           "href": "/student/diagnostic?activity=98f824f6-88bc-5569-a182-4b7fde520eb5",
           "estimatedMinutes": 4,
           "contentId": "french-v3-teaching:on-om:recognition"
-        },
-        {
-          "skillId": "orthographier_nasale_on_om::writing-controlled-production",
-          "activityId": "022a81f0-29de-5fc4-971c-a2e2240f9955",
-          "kind": "instruction",
-          "action": "learn",
-          "titleFr": "Compléter un mot avec on ou om",
-          "href": "/student/diagnostic?activity=022a81f0-29de-5fc4-971c-a2e2240f9955",
-          "estimatedMinutes": 4,
-          "contentId": "french-v3-teaching:on-om:production"
         }
       ],
       "missingActivitySkillIds": [],
       "blockedSkillIds": [
-        "produire_futur_simple::writing-controlled-production::verb:aller",
+        "construction_accord_sujet_verbe::reading-analysis::construction:adjacent",
+        "ordonner_evenements_explicites::all-receptive::text_type:argumentative",
         "produire_present_indicatif::writing-controlled-production::pattern:regular_er",
-        "produire_present_indicatif::writing-controlled-production::pattern:regular_ir",
-        "produire_present_indicatif::writing-controlled-production::verb:aller"
+        "produire_present_indicatif::writing-controlled-production::verb:aller",
+        "produire_futur_proche::writing-controlled-production::verb:aller"
       ],
       "violations": []
     }
