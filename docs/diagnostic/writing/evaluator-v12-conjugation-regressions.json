@@ -1,0 +1,205 @@
+{
+  "status": "experimental_not_calibrated",
+  "model": "z-ai/glm-5.2",
+  "syntheticOnly": true,
+  "casesChecksum": "sha256:a9b3989fa3f1268fc8ecb611b7b6d1e78cd6845d64513290e8f40438f73acd26",
+  "results": [
+    {
+      "id": "simple-future-context",
+      "caseChecksum": "sha256:0f7ba241703910bf71e3e53eaf938b7210f90f5d8f59bf9f66ba2f2169cb98f5",
+      "expected": "correct",
+      "observed": "correct",
+      "matched": true,
+      "evidenceMatched": null,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 13,
+            "end": 21,
+            "text": "visitera",
+            "correct": true,
+            "reasonFr": "Futur simple 3e personne singulier de « visiter », correct et adapté au repère « Demain »."
+          },
+          {
+            "start": 38,
+            "end": 48,
+            "text": "retrouvera",
+            "correct": true,
+            "reasonFr": "Futur simple 3e personne singulier de « retrouver », correct dans ce contexte futur."
+          },
+          {
+            "start": 65,
+            "end": 76,
+            "text": "prépareront",
+            "correct": true,
+            "reasonFr": "Futur simple 3e personne pluriel de « préparer », accord correct avec « ils »."
+          },
+          {
+            "start": 104,
+            "end": 114,
+            "text": "rejoindrai",
+            "correct": true,
+            "reasonFr": "Futur simple 1re personne singulier de « rejoindre », forme correcte et adaptée au contexte."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v12",
+          "protocolChecksum": "sha256:36859b7146fc7921117d0b9ee4bbeb6e16fc5d91203df63dc65f7c039d774953",
+          "rubricChecksum": "sha256:4c2de7e5315d15e5090d87067a6a571cf1b9f17b188c791ff17827a77bbddde1",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "pluperfect-context",
+      "caseChecksum": "sha256:22802ffc242507508d90f8a5a7e094350bd3bdc837d6469063b7d85b79209ecf",
+      "expected": "correct",
+      "observed": "correct",
+      "matched": true,
+      "evidenceMatched": null,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 33,
+            "end": 47,
+            "text": "avaient décoré",
+            "correct": true,
+            "reasonFr": "Plus-que-parfait correct (imparfait de l'auxiliaire « avoir » + participe passé « décoré »), action antérieure à l'arrivée au passé composé."
+          },
+          {
+            "start": 60,
+            "end": 73,
+            "text": "avais préparé",
+            "correct": true,
+            "reasonFr": "Plus-que-parfait correct à la 1re personne du singulier, exprimant une préparation achevée avant l'arrivée de Lina."
+          },
+          {
+            "start": 93,
+            "end": 104,
+            "text": "avait caché",
+            "correct": true,
+            "reasonFr": "Plus-que-parfait correct à la 3e personne du singulier, action de Malik antérieure au moment de l'arrivée."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v12",
+          "protocolChecksum": "sha256:36859b7146fc7921117d0b9ee4bbeb6e16fc5d91203df63dc65f7c039d774953",
+          "rubricChecksum": "sha256:47f937c16b2be161b0cbd09217a63c814b8cb4c752beb4f1e38956a8052833a7",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "conditional-context",
+      "caseChecksum": "sha256:235ca7eea6cd36338362e1b065165fe2067f3db752e2214723e47aaf7a3a35a3",
+      "expected": "correct",
+      "observed": "unavailable",
+      "reason": "invalid_evidence",
+      "causeType": "Error",
+      "rawJudgment": {
+        "uncertain": false,
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "opportunities": [
+          {
+            "excerpt": "aurions",
+            "occurrence": 0,
+            "correct": true,
+            "reasonFr": "Conditionnel présent du verbe avoir, 1re personne du pluriel, correctement formé et employé dans une hypothèse."
+          },
+          {
+            "excerpt": "planterions",
+            "occurrence": 0,
+            "correct": true,
+            "reasonFr": "Conditionnel présent du verbe planter, 1re personne du pluriel, forme et emploi corrects."
+          },
+          {
+            "excerpt": "installerait",
+            "occurrence": 0,
+            "correct": true,
+            "reasonFr": "Conditionnel présent du verbe installer, 3e personne du singulier, correctement employé."
+          },
+          {
+            "excerpt": "construirais",
+            "occurrence": 0,
+            "correct": true,
+            "reasonFr": "Conditionnel présent du verbe construire, 1re personne du singulier, forme correcte."
+          },
+          {
+            "excerpt": "pourrait",
+            "occurrence": 0,
+            "correct": true,
+            "reasonFr": "Conditionnel présent du verbe pouvoir, 3e personne du singulier, correctement employé."
+          }
+        ]
+      },
+      "matched": false
+    },
+    {
+      "id": "simple-past-context",
+      "caseChecksum": "sha256:caf717000ea30f4abe79e250d1395d843c2eebd71b27b5de0b55cdce1f831d64",
+      "expected": "correct",
+      "observed": "correct",
+      "matched": true,
+      "evidenceMatched": null,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 5,
+            "end": 11,
+            "text": "poussa",
+            "correct": true,
+            "reasonFr": "Passé simple correct du verbe pousser, 3e personne du singulier, employé pour faire avancer le récit."
+          },
+          {
+            "start": 24,
+            "end": 33,
+            "text": "découvrit",
+            "correct": true,
+            "reasonFr": "Passé simple correct du verbe découvrir, 3e personne du singulier, fait avancer l'événement."
+          },
+          {
+            "start": 55,
+            "end": 61,
+            "text": "avança",
+            "correct": true,
+            "reasonFr": "Passé simple correct du verbe avancer, 3e personne du singulier."
+          },
+          {
+            "start": 84,
+            "end": 92,
+            "text": "entendit",
+            "correct": true,
+            "reasonFr": "Passé simple correct du verbe entendre, 3e personne du singulier."
+          },
+          {
+            "start": 127,
+            "end": 132,
+            "text": "entra",
+            "correct": true,
+            "reasonFr": "Passé simple correct du verbe entrer, 3e personne du singulier."
+          },
+          {
+            "start": 136,
+            "end": 143,
+            "text": "se posa",
+            "correct": true,
+            "reasonFr": "Passé simple correct du verbe se poser, 3e personne du singulier, fait avancer le récit."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v12",
+          "protocolChecksum": "sha256:36859b7146fc7921117d0b9ee4bbeb6e16fc5d91203df63dc65f7c039d774953",
+          "rubricChecksum": "sha256:5198ffc67bf06b498478fab6bb7fe7bacbe1342049a9d89e2fa2194c9d898ff3",
+          "model": "injected-judge"
+        }
+      }
+    }
+  ]
+}

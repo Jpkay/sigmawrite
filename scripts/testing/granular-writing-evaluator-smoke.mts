@@ -20,7 +20,9 @@ const counterexamples=process.argv[2]==="counterexamples";
 const adversarial=process.argv[2]==="adversarial",targets=process.argv[2]==="targets",scoped=process.argv[2]==="scoped";
 const available:typeof cases=imperative?JSON.parse(readFileSync("docs/diagnostic/writing/evaluator-imperative-cases.json","utf8")):counterexamples?JSON.parse(readFileSync("docs/diagnostic/writing/evaluator-counterexample-cases.json","utf8")):scoped?JSON.parse(readFileSync("docs/diagnostic/writing/evaluator-scoped-cases.json","utf8")):targets?JSON.parse(readFileSync("docs/diagnostic/writing/evaluator-target-cases.json","utf8")):adversarial?JSON.parse(readFileSync("docs/diagnostic/writing/evaluator-adversarial-cases.json","utf8")):cases.filter(c=>!process.argv[2]||c.id===process.argv[2]);
 const caseId=process.argv.find(arg=>arg.startsWith("--case="))?.slice(7);
-const selected=caseId?available.filter(c=>c.id===caseId):available;
+const requestedIds=caseId?.split(",");
+if(requestedIds?.some(id=>!available.some(c=>c.id===id)))throw Error("Unknown evaluator case");
+const selected=requestedIds?available.filter(c=>requestedIds.includes(c.id)):available;
 if(!selected.length)throw Error("No selected evaluator cases");
 const config=resolveAIRuntimeConfig(),results=[];
 for(const c of selected){

@@ -1,0 +1,52 @@
+{
+  "status": "experimental_not_calibrated",
+  "model": "z-ai/glm-5.2",
+  "syntheticOnly": true,
+  "casesChecksum": "sha256:41119e7498c4570692708b3e0dad2352e043c5e323a714c10fdec038d2a2efee",
+  "results": [
+    {
+      "id": "grammar-scoped-errors",
+      "caseChecksum": "sha256:99efe7459993802fd84a328270c6a554f3ab4aa39b73cf2db92af989cc521e88",
+      "expected": "incorrect",
+      "observed": "incorrect",
+      "matched": true,
+      "evidenceMatched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 12,
+            "end": 16,
+            "text": "joue",
+            "criterionId": "subject_verb_agreement",
+            "correct": false,
+            "reasonFr": "Sujet pluriel « Les enfants » avec verbe au présent écrit au singulier « joue » au lieu de « jouent »."
+          },
+          {
+            "start": 44,
+            "end": 51,
+            "text": "apporte",
+            "criterionId": "subject_verb_agreement",
+            "correct": false,
+            "reasonFr": "Sujet pluriel « Les filles » avec verbe au présent écrit au singulier « apporte » au lieu de « apportent »."
+          },
+          {
+            "start": 77,
+            "end": 84,
+            "text": "prépare",
+            "criterionId": "subject_verb_agreement",
+            "correct": false,
+            "reasonFr": "Sujet pluriel « les garçons » avec verbe au présent écrit au singulier « prépare » au lieu de « préparent »."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v12",
+          "protocolChecksum": "sha256:81d12e3851e988099d951d7a5dcb2291fc4238b006a74a0fee0c4200bfb6b7f6",
+          "rubricChecksum": "sha256:eb57262798dc80ba2f439963a59e408ea3d41aa8e76938b928e04fb43951fbd7",
+          "model": "injected-judge"
+        }
+      }
+    }
+  ]
+}

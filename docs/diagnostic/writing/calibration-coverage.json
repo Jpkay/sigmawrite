@@ -3,7 +3,7 @@
   "scope": "Source-bound counterexamples, scoped, adversarial and expanded target datasets using the current evaluator; excludes stale results, initial smoke and repeated runs",
   "targetCount": 18,
   "targetsWithCases": 18,
-  "targetsWithAllOutcomeTypes": 1,
+  "targetsWithAllOutcomeTypes": 0,
   "targets": [
     {
       "nodeKey": "produire_contraste_pc_imparfait",
@@ -36,14 +36,15 @@
           "expected": "correct",
           "observed": "correct",
           "sourceBound": true,
-          "currentEvaluator": true,
+          "currentEvaluator": false,
           "opportunityChecked": false,
           "opportunityMatched": null,
-          "matched": true,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         }
       ],
       "missingExpectedOutcomes": [
+        "correct",
         "incorrect",
         "unresolved"
       ],
@@ -80,14 +81,15 @@
           "expected": "correct",
           "observed": "correct",
           "sourceBound": true,
-          "currentEvaluator": true,
+          "currentEvaluator": false,
           "opportunityChecked": false,
           "opportunityMatched": null,
-          "matched": true,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         }
       ],
       "missingExpectedOutcomes": [
+        "correct",
         "incorrect",
         "unresolved"
       ],
@@ -102,10 +104,10 @@
           "expected": "correct",
           "observed": "correct",
           "sourceBound": true,
-          "currentEvaluator": true,
+          "currentEvaluator": false,
           "opportunityChecked": true,
           "opportunityMatched": true,
-          "matched": true,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         },
         {
@@ -113,10 +115,10 @@
           "expected": "incorrect",
           "observed": "incorrect",
           "sourceBound": true,
-          "currentEvaluator": true,
+          "currentEvaluator": false,
           "opportunityChecked": true,
           "opportunityMatched": true,
-          "matched": true,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         },
         {
@@ -124,14 +126,18 @@
           "expected": "unresolved",
           "observed": "unresolved",
           "sourceBound": true,
-          "currentEvaluator": true,
+          "currentEvaluator": false,
           "opportunityChecked": true,
           "opportunityMatched": true,
-          "matched": true,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         }
       ],
-      "missingExpectedOutcomes": [],
+      "missingExpectedOutcomes": [
+        "correct",
+        "incorrect",
+        "unresolved"
+      ],
       "nextAction": "add_counterexamples_and_independent_review"
     },
     {
@@ -176,14 +182,15 @@
           "expected": "correct",
           "observed": "correct",
           "sourceBound": true,
-          "currentEvaluator": true,
+          "currentEvaluator": false,
           "opportunityChecked": false,
           "opportunityMatched": null,
-          "matched": true,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         }
       ],
       "missingExpectedOutcomes": [
+        "correct",
         "incorrect",
         "unresolved"
       ],
@@ -198,10 +205,10 @@
           "expected": "correct",
           "observed": "correct",
           "sourceBound": true,
-          "currentEvaluator": true,
+          "currentEvaluator": false,
           "opportunityChecked": true,
           "opportunityMatched": true,
-          "matched": true,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         },
         {
@@ -220,15 +227,17 @@
           "expected": "unresolved",
           "observed": "unresolved",
           "sourceBound": true,
-          "currentEvaluator": true,
+          "currentEvaluator": false,
           "opportunityChecked": true,
           "opportunityMatched": true,
-          "matched": true,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         }
       ],
       "missingExpectedOutcomes": [
-        "incorrect"
+        "correct",
+        "incorrect",
+        "unresolved"
       ],
       "nextAction": "add_counterexamples_and_independent_review"
     },
@@ -241,14 +250,15 @@
           "expected": "correct",
           "observed": "correct",
           "sourceBound": true,
-          "currentEvaluator": true,
+          "currentEvaluator": false,
           "opportunityChecked": false,
           "opportunityMatched": null,
-          "matched": true,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         }
       ],
       "missingExpectedOutcomes": [
+        "correct",
         "incorrect",
         "unresolved"
       ],
@@ -330,14 +340,15 @@
           "expected": "correct",
           "observed": "correct",
           "sourceBound": true,
-          "currentEvaluator": true,
+          "currentEvaluator": false,
           "opportunityChecked": false,
           "opportunityMatched": null,
-          "matched": true,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         }
       ],
       "missingExpectedOutcomes": [
+        "correct",
         "incorrect",
         "unresolved"
       ],
@@ -374,14 +385,15 @@
           "expected": "correct",
           "observed": "correct",
           "sourceBound": true,
-          "currentEvaluator": true,
+          "currentEvaluator": false,
           "opportunityChecked": false,
           "opportunityMatched": null,
-          "matched": true,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         }
       ],
       "missingExpectedOutcomes": [
+        "correct",
         "incorrect",
         "unresolved"
       ],
@@ -418,14 +430,15 @@
           "expected": "correct",
           "observed": "correct",
           "sourceBound": true,
-          "currentEvaluator": true,
+          "currentEvaluator": false,
           "opportunityChecked": false,
           "opportunityMatched": null,
-          "matched": true,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         }
       ],
       "missingExpectedOutcomes": [
+        "correct",
         "incorrect",
         "unresolved"
       ],
@@ -462,14 +475,15 @@
           "expected": "correct",
           "observed": "correct",
           "sourceBound": true,
-          "currentEvaluator": true,
+          "currentEvaluator": false,
           "opportunityChecked": false,
           "opportunityMatched": null,
-          "matched": true,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         }
       ],
       "missingExpectedOutcomes": [
+        "correct",
         "incorrect",
         "unresolved"
       ],
@@ -539,14 +553,15 @@
           "expected": "correct",
           "observed": "correct",
           "sourceBound": true,
-          "currentEvaluator": true,
+          "currentEvaluator": false,
           "opportunityChecked": false,
           "opportunityMatched": null,
-          "matched": true,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         }
       ],
       "missingExpectedOutcomes": [
+        "correct",
         "incorrect",
         "unresolved"
       ],
@@ -672,10 +687,10 @@
           "id": "conditional-context",
           "expected": "correct",
           "observed": "unavailable",
-          "sourceBound": true,
+          "sourceBound": false,
           "currentEvaluator": false,
-          "opportunityChecked": false,
-          "opportunityMatched": null,
+          "opportunityChecked": true,
+          "opportunityMatched": false,
           "matched": false,
           "model": "z-ai/glm-5.2"
         }
@@ -729,14 +744,15 @@
           "expected": "correct",
           "observed": "correct",
           "sourceBound": true,
-          "currentEvaluator": true,
+          "currentEvaluator": false,
           "opportunityChecked": false,
           "opportunityMatched": null,
-          "matched": true,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         }
       ],
       "missingExpectedOutcomes": [
+        "correct",
         "incorrect",
         "unresolved"
       ],
@@ -784,14 +800,15 @@
           "expected": "correct",
           "observed": "correct",
           "sourceBound": true,
-          "currentEvaluator": true,
+          "currentEvaluator": false,
           "opportunityChecked": false,
           "opportunityMatched": null,
-          "matched": true,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         }
       ],
       "missingExpectedOutcomes": [
+        "correct",
         "incorrect",
         "unresolved"
       ],

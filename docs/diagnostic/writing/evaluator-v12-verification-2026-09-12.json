@@ -1,0 +1,32 @@
+{
+  "status": "experimental_partial_improvement_not_calibrated",
+  "version": "french-writing-evaluator-v12",
+  "publicWritingEnabled": false,
+  "changes": [
+    "Writing requests send strict JSON Schema instead of generic JSON-object mode.",
+    "OpenRouter routing requires support for the requested parameters.",
+    "Transport schema contains only applicable proof fields and requires every field it offers.",
+    "Exact-source, criterion, revision and imperative validation remain enforced; no response healing or inferred fields."
+  ],
+  "checks": {
+    "testFiles": 344,
+    "tests": 1549,
+    "typescript": "passed",
+    "livePreviouslyFailingCases": 5,
+    "liveMatched": 4,
+    "liveRemainingFailure": "conditional-context: invented aurions and pourrait quotations absent from submitted answer"
+  },
+  "reports": [
+    "evaluator-v12-grammar-errors.json",
+    "evaluator-v12-conjugation-regressions.json"
+  ],
+  "limitations": [
+    "A single successful rerun does not establish reliability or calibration.",
+    "Conditional source hallucinations remain rejected as unavailable, never scored.",
+    "Broad current-version and incorrect/unresolved coverage remain incomplete."
+  ],
+  "sources": [
+    "https://openrouter.ai/docs/guides/features/structured-outputs",
+    "https://openrouter.ai/docs/guides/routing/provider-selection"
+  ]
+}

@@ -46,7 +46,25 @@
     "node": "employer_conditionnel_present_en_contexte",
     "prompt": "Imagine un projet si ton groupe disposait d’un grand jardin.",
     "answer": "Si nous avions un jardin, nous planterions des arbres. Lina installerait un banc et je construirais une petite cabane. Nos amis pourraient venir y lire.",
-    "expect": "correct"
+    "expect": "correct",
+    "expectedOpportunities": [
+      {
+        "text": "planterions",
+        "correct": true
+      },
+      {
+        "text": "installerait",
+        "correct": true
+      },
+      {
+        "text": "construirais",
+        "correct": true
+      },
+      {
+        "text": "pourraient",
+        "correct": true
+      }
+    ]
   },
   {
     "id": "simple-past-context",
