@@ -6,7 +6,7 @@ The unavailable-release response also passes through the ordinary delivery journ
 
 The shared fixed payload now also includes guided-teaching instructions, audio help and failure notices, writing-feedback labels, feature labels, result-group names and the reconciliation notice. Runtime progress, question numbering, exercise numbering, writing counts and feature counts use shared formatters on the client and in the server delivery journal. The journal adds those fragments alongside the original response, retaining top-level presentation identities; the action returns its original response shape.
 
-This is not a complete diagnostic UI capture contract. Shared accent controls, cached/offline flows, native browser controls and the wider delivery inventory still require audit. Recording copy conservatively includes branches that may not be painted. No historical student coverage is inferred, and the complete-history contract remains disabled.
+This is not a complete diagnostic UI capture contract. The diagnostic now records shared accent controls and prompt-section labels from their rendering source. Cached/offline flows, native browser controls and the wider delivery inventory still require audit; see the offline material-capture audit. Recording copy conservatively includes branches that may not be painted. No historical student coverage is inferred, and the complete-history contract remains disabled.
 
 The approved graph's inspected spelling rules explicitly require novel words, and the adapter passes those requirements through. Those rules were not relaxed by this change.
 

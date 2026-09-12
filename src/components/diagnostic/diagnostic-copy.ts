@@ -1,8 +1,10 @@
+import {EXERCISE_CONTROL_COPY} from "@/lib/content/exercise-control-copy";
 import {FEATURE_LABELS} from "@/lib/diagnostic/granular/feature-labels";
 import {RESULT_GROUPS} from "@/lib/diagnostic/granular/result-groups";
 import {ASSESSMENT_CONFLICT_MESSAGE} from "@/lib/diagnostic/granular/client-state";
 /** Fixed diagnostic wording recorded before the client is delivered. */
 export const DIAGNOSTIC_COPY = {
+  exerciseControls: EXERCISE_CONTROL_COPY,
   "startTitle": "Ton point de départ",
   "loadingDescription": "Quelques questions pour découvrir ce que tu sais déjà et préparer la suite.",
   "loading": "Chargement de ton diagnostic…",
