@@ -1,5 +1,5 @@
 {
-  "status": "frozen_candidate_ready_import_verified_publication_pending",
+  "status": "published_candidate_not_publicly_activated",
   "authoringOptions": [
     "--bank-revision",
     "38",
@@ -53,7 +53,7 @@
   "limitations": [
     "Constructed prerequisite-success and target-gap profiles with synthetic history; not classroom calibration.",
     "Older question versions without assessed passage records remain canonical and historical, but are excluded from the new contextual pathways.",
-    "Human review remains pending. Draft import is verified; the separate candidate build is ready. Publication is pending after a database timeout; it is not publicly activated.",
+    "Human review remains pending. Draft import is verified; the separate candidate build is ready. The release is published after verified chunk upload; it is not publicly activated.",
     "The reading chronology versus causal inference comparison did not sample the intended chronology targets. Other named comparisons cover sampled targets only, not every mode or construction."
   ],
   "releasePreparation": {
@@ -66,8 +66,11 @@
     "deploymentId": "dpl_4XajPwgJtMUQzMCrCWHnJcsBnmcH",
     "deploymentUrl": "https://sigmawrite-n6lndt4t6-jpkays-projects.vercel.app",
     "deploymentStatus": "Ready",
-    "published": false,
+    "published": true,
     "publiclyActivated": false,
-    "verifiedCanonicalItems": 7928
+    "verifiedCanonicalItems": 7928,
+    "releaseId": "e203adcd-b218-46f6-95a6-559ee49abf7b",
+    "publishedBundleChecksum": "sha256:10ed36543182eef7aca833747cd065eec97b6cefddf87b7e9ca040e4def1f69c",
+    "publicationTransport": "verified-chunk-upload-same-publication-function"
   }
 }
