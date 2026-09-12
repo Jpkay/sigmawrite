@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "bank": {
-    "key": "french-diagnostic-bank-v3-r13",
-    "version": "3.0.0-r13"
+    "key": "french-diagnostic-bank-v3-r14",
+    "version": "3.0.0-r14"
   },
   "taxonomy": {
     "releaseKey": "french-taxonomy-v3",
@@ -37491,6 +37491,2118 @@
         "verdict": "needs_human_review"
       },
       "reviewStatus": "needs_human_review"
+    },
+    {
+      "itemKey": "v3-cedille:recognition-garçon",
+      "item": {
+        "nodeKey": "employer_cedille",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le gar___on attend devant le portail.\n\nChoisis le mot correctement écrit.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "contrastingErrors": [
+            {
+              "errorKey": "missing_cedilla",
+              "incorrectChoiceFr": "garcon"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "garçon",
+                "form": "garçon"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "garçon"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "garçon",
+            "correct": true
+          },
+          {
+            "text": "garcon",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "cedille-in-context",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-cedille:recognition-leçon",
+      "item": {
+        "nodeKey": "employer_cedille",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Elle relit sa le___on avant le contrôle.\n\nChoisis le mot correctement écrit.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "contrastingErrors": [
+            {
+              "errorKey": "missing_cedilla",
+              "incorrectChoiceFr": "lecon"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "leçon",
+                "form": "leçon"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "leçon"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "leçon",
+            "correct": true
+          },
+          {
+            "text": "lecon",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "cedille-in-context",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-cedille:recognition-façade",
+      "item": {
+        "nodeKey": "employer_cedille",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "La fa___ade de la maison est blanche.\n\nChoisis le mot correctement écrit.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "contrastingErrors": [
+            {
+              "errorKey": "missing_cedilla",
+              "incorrectChoiceFr": "facade"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "façade",
+                "form": "façade"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "façade"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "façade",
+            "correct": true
+          },
+          {
+            "text": "facade",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "cedille-in-context",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-cedille:recognition-reçu",
+      "item": {
+        "nodeKey": "employer_cedille",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le vendeur lui donne un re___u après le paiement.\n\nChoisis le mot correctement écrit.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "contrastingErrors": [
+            {
+              "errorKey": "missing_cedilla",
+              "incorrectChoiceFr": "recu"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "reçu",
+                "form": "reçu"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "reçu"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "reçu",
+            "correct": true
+          },
+          {
+            "text": "recu",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "cedille-in-context",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-cedille:recognition-glaçon",
+      "item": {
+        "nodeKey": "employer_cedille",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Un gla___on flotte dans le verre.\n\nChoisis le mot correctement écrit.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "contrastingErrors": [
+            {
+              "errorKey": "missing_cedilla",
+              "incorrectChoiceFr": "glacon"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "glaçon",
+                "form": "glaçon"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "glaçon"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "glaçon",
+            "correct": true
+          },
+          {
+            "text": "glacon",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "cedille-in-context",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-cedille:recognition-balançoire",
+      "item": {
+        "nodeKey": "employer_cedille",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "La balan___oire se trouve près du toboggan.\n\nChoisis le mot correctement écrit.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "contrastingErrors": [
+            {
+              "errorKey": "missing_cedilla",
+              "incorrectChoiceFr": "balancoire"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "balançoire",
+                "form": "balançoire"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "balançoire"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "balançoire",
+            "correct": true
+          },
+          {
+            "text": "balancoire",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "cedille-in-context",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-cedille:recognition-déçu",
+      "item": {
+        "nodeKey": "employer_cedille",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Il est dé___u de ne pas avoir gagné.\n\nChoisis le mot correctement écrit.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "contrastingErrors": [
+            {
+              "errorKey": "missing_cedilla",
+              "incorrectChoiceFr": "décu"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "déçu",
+                "form": "déçu"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "déçu"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "déçu",
+            "correct": true
+          },
+          {
+            "text": "décu",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "cedille-in-context",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-cedille:recognition-façon",
+      "item": {
+        "nodeKey": "employer_cedille",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Elle trouve une autre fa___on de résoudre le problème.\n\nChoisis le mot correctement écrit.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "contrastingErrors": [
+            {
+              "errorKey": "missing_cedilla",
+              "incorrectChoiceFr": "facon"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "façon",
+                "form": "façon"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "façon"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "façon",
+            "correct": true
+          },
+          {
+            "text": "facon",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "cedille-in-context",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-cedille:recognition-citron",
+      "item": {
+        "nodeKey": "employer_cedille",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Je presse un ___itron pour son jus.\n\nChoisis le mot correctement écrit.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "contrastingErrors": [
+            {
+              "errorKey": "unneeded_cedilla",
+              "incorrectChoiceFr": "çitron"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "citron",
+                "form": "citron"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "citron"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "citron",
+            "correct": true
+          },
+          {
+            "text": "çitron",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "cedille-in-context",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-cedille:recognition-cerise",
+      "item": {
+        "nodeKey": "employer_cedille",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Une ___erise rouge pend à la branche.\n\nChoisis le mot correctement écrit.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "contrastingErrors": [
+            {
+              "errorKey": "unneeded_cedilla",
+              "incorrectChoiceFr": "çerise"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "cerise",
+                "form": "cerise"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "cerise"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "cerise",
+            "correct": true
+          },
+          {
+            "text": "çerise",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "cedille-in-context",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-cedille:recognition-racine",
+      "item": {
+        "nodeKey": "employer_cedille",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "La ra___ine de cet arbre dépasse du sol.\n\nChoisis le mot correctement écrit.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "contrastingErrors": [
+            {
+              "errorKey": "unneeded_cedilla",
+              "incorrectChoiceFr": "raçine"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "racine",
+                "form": "racine"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "racine"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "racine",
+            "correct": true
+          },
+          {
+            "text": "raçine",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "cedille-in-context",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-cedille:recognition-bracelet",
+      "item": {
+        "nodeKey": "employer_cedille",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Elle porte un bra___elet au poignet.\n\nChoisis le mot correctement écrit.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "contrastingErrors": [
+            {
+              "errorKey": "unneeded_cedilla",
+              "incorrectChoiceFr": "braçelet"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "bracelet",
+                "form": "bracelet"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "bracelet"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "bracelet",
+            "correct": true
+          },
+          {
+            "text": "braçelet",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "cedille-in-context",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-cedille:recognition-cadeau",
+      "item": {
+        "nodeKey": "employer_cedille",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Il ouvre son ___adeau d’anniversaire.\n\nChoisis le mot correctement écrit.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "contrastingErrors": [
+            {
+              "errorKey": "unneeded_cedilla",
+              "incorrectChoiceFr": "çadeau"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "cadeau",
+                "form": "cadeau"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "cadeau"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "cadeau",
+            "correct": true
+          },
+          {
+            "text": "çadeau",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "cedille-in-context",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-cedille:recognition-colis",
+      "item": {
+        "nodeKey": "employer_cedille",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le facteur apporte un ___olis.\n\nChoisis le mot correctement écrit.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "contrastingErrors": [
+            {
+              "errorKey": "unneeded_cedilla",
+              "incorrectChoiceFr": "çolis"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "colis",
+                "form": "colis"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "colis"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "colis",
+            "correct": true
+          },
+          {
+            "text": "çolis",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "cedille-in-context",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-cedille:recognition-cube",
+      "item": {
+        "nodeKey": "employer_cedille",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Ce ___ube possède six faces carrées.\n\nChoisis le mot correctement écrit.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "contrastingErrors": [
+            {
+              "errorKey": "unneeded_cedilla",
+              "incorrectChoiceFr": "çube"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "cube",
+                "form": "cube"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "cube"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "cube",
+            "correct": true
+          },
+          {
+            "text": "çube",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "cedille-in-context",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-cedille:recognition-école",
+      "item": {
+        "nodeKey": "employer_cedille",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Les élèves entrent dans l’é___ole.\n\nChoisis le mot correctement écrit.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "contrastingErrors": [
+            {
+              "errorKey": "unneeded_cedilla",
+              "incorrectChoiceFr": "éçole"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "école",
+                "form": "école"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "école"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "école",
+            "correct": true
+          },
+          {
+            "text": "éçole",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "cedille-in-context",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-cedille:production-français",
+      "item": {
+        "nodeKey": "employer_cedille",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Ce roman est écrit en fran___ais.\n\nComplète le mot. Écris le mot entier avec la lettre manquante.",
+        "instructionsFr": "Écris le mot entier.",
+        "correctAnswer": "français",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "finiteResponseSpace": {
+            "alternatives": [
+              "français",
+              "francais"
+            ],
+            "rationaleFr": "Le choix ciblé oppose c et ç. La saisie du mot ne supprime pas ce choix binaire."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "français",
+                "form": "français"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "français"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "cedille-in-context",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-cedille:production-maçon",
+      "item": {
+        "nodeKey": "employer_cedille",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Le ma___on construit un mur.\n\nComplète le mot. Écris le mot entier avec la lettre manquante.",
+        "instructionsFr": "Écris le mot entier.",
+        "correctAnswer": "maçon",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "finiteResponseSpace": {
+            "alternatives": [
+              "maçon",
+              "macon"
+            ],
+            "rationaleFr": "Le choix ciblé oppose c et ç. La saisie du mot ne supprime pas ce choix binaire."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "maçon",
+                "form": "maçon"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "maçon"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "cedille-in-context",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-cedille:production-hameçon",
+      "item": {
+        "nodeKey": "employer_cedille",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Le pêcheur accroche un appât à son hame___on.\n\nComplète le mot. Écris le mot entier avec la lettre manquante.",
+        "instructionsFr": "Écris le mot entier.",
+        "correctAnswer": "hameçon",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "finiteResponseSpace": {
+            "alternatives": [
+              "hameçon",
+              "hamecon"
+            ],
+            "rationaleFr": "Le choix ciblé oppose c et ç. La saisie du mot ne supprime pas ce choix binaire."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "hameçon",
+                "form": "hameçon"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "hameçon"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "cedille-in-context",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-cedille:production-soupçon",
+      "item": {
+        "nodeKey": "employer_cedille",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "La disparition du gâteau éveille un soup___on.\n\nComplète le mot. Écris le mot entier avec la lettre manquante.",
+        "instructionsFr": "Écris le mot entier.",
+        "correctAnswer": "soupçon",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "finiteResponseSpace": {
+            "alternatives": [
+              "soupçon",
+              "soupcon"
+            ],
+            "rationaleFr": "Le choix ciblé oppose c et ç. La saisie du mot ne supprime pas ce choix binaire."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "soupçon",
+                "form": "soupçon"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "soupçon"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "cedille-in-context",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-cedille:production-aperçu",
+      "item": {
+        "nodeKey": "employer_cedille",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "J’ai aper___u une étoile filante.\n\nComplète le mot. Écris le mot entier avec la lettre manquante.",
+        "instructionsFr": "Écris le mot entier.",
+        "correctAnswer": "aperçu",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "finiteResponseSpace": {
+            "alternatives": [
+              "aperçu",
+              "apercu"
+            ],
+            "rationaleFr": "Le choix ciblé oppose c et ç. La saisie du mot ne supprime pas ce choix binaire."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "aperçu",
+                "form": "aperçu"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "aperçu"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "cedille-in-context",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-cedille:production-gerçure",
+      "item": {
+        "nodeKey": "employer_cedille",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Le froid a laissé une ger___ure sur sa lèvre.\n\nComplète le mot. Écris le mot entier avec la lettre manquante.",
+        "instructionsFr": "Écris le mot entier.",
+        "correctAnswer": "gerçure",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "finiteResponseSpace": {
+            "alternatives": [
+              "gerçure",
+              "gercure"
+            ],
+            "rationaleFr": "Le choix ciblé oppose c et ç. La saisie du mot ne supprime pas ce choix binaire."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "gerçure",
+                "form": "gerçure"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "gerçure"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "cedille-in-context",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-cedille:production-remplaçant",
+      "item": {
+        "nodeKey": "employer_cedille",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Un joueur rempla___ant entre sur le terrain.\n\nComplète le mot. Écris le mot entier avec la lettre manquante.",
+        "instructionsFr": "Écris le mot entier.",
+        "correctAnswer": "remplaçant",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "finiteResponseSpace": {
+            "alternatives": [
+              "remplaçant",
+              "remplacant"
+            ],
+            "rationaleFr": "Le choix ciblé oppose c et ç. La saisie du mot ne supprime pas ce choix binaire."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "remplaçant",
+                "form": "remplaçant"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "remplaçant"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "cedille-in-context",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-cedille:production-effaçable",
+      "item": {
+        "nodeKey": "employer_cedille",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Ce feutre effa___able permet de corriger le dessin.\n\nComplète le mot. Écris le mot entier avec la lettre manquante.",
+        "instructionsFr": "Écris le mot entier.",
+        "correctAnswer": "effaçable",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "finiteResponseSpace": {
+            "alternatives": [
+              "effaçable",
+              "effacable"
+            ],
+            "rationaleFr": "Le choix ciblé oppose c et ç. La saisie du mot ne supprime pas ce choix binaire."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "effaçable",
+                "form": "effaçable"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "effaçable"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "cedille-in-context",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-cedille:production-cinéma",
+      "item": {
+        "nodeKey": "employer_cedille",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Nous regardons ce film au ___inéma.\n\nComplète le mot. Écris le mot entier avec la lettre manquante.",
+        "instructionsFr": "Écris le mot entier.",
+        "correctAnswer": "cinéma",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "finiteResponseSpace": {
+            "alternatives": [
+              "cinéma",
+              "çinéma"
+            ],
+            "rationaleFr": "Le choix ciblé oppose c et ç. La saisie du mot ne supprime pas ce choix binaire."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "cinéma",
+                "form": "cinéma"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "cinéma"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "cedille-in-context",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-cedille:production-ceinture",
+      "item": {
+        "nodeKey": "employer_cedille",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Elle attache sa ___einture de sécurité.\n\nComplète le mot. Écris le mot entier avec la lettre manquante.",
+        "instructionsFr": "Écris le mot entier.",
+        "correctAnswer": "ceinture",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ceinture",
+              "çeinture"
+            ],
+            "rationaleFr": "Le choix ciblé oppose c et ç. La saisie du mot ne supprime pas ce choix binaire."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "ceinture",
+                "form": "ceinture"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "ceinture"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "cedille-in-context",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-cedille:production-ficelle",
+      "item": {
+        "nodeKey": "employer_cedille",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Il ferme le paquet avec une fi___elle.\n\nComplète le mot. Écris le mot entier avec la lettre manquante.",
+        "instructionsFr": "Écris le mot entier.",
+        "correctAnswer": "ficelle",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ficelle",
+              "fiçelle"
+            ],
+            "rationaleFr": "Le choix ciblé oppose c et ç. La saisie du mot ne supprime pas ce choix binaire."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "ficelle",
+                "form": "ficelle"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "ficelle"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "cedille-in-context",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-cedille:production-police",
+      "item": {
+        "nodeKey": "employer_cedille",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "La poli___e règle la circulation.\n\nComplète le mot. Écris le mot entier avec la lettre manquante.",
+        "instructionsFr": "Écris le mot entier.",
+        "correctAnswer": "police",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "finiteResponseSpace": {
+            "alternatives": [
+              "police",
+              "poliçe"
+            ],
+            "rationaleFr": "Le choix ciblé oppose c et ç. La saisie du mot ne supprime pas ce choix binaire."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "police",
+                "form": "police"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "police"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "cedille-in-context",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-cedille:production-café",
+      "item": {
+        "nodeKey": "employer_cedille",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Une tasse de ___afé fume sur la table.\n\nComplète le mot. Écris le mot entier avec la lettre manquante.",
+        "instructionsFr": "Écris le mot entier.",
+        "correctAnswer": "café",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "finiteResponseSpace": {
+            "alternatives": [
+              "café",
+              "çafé"
+            ],
+            "rationaleFr": "Le choix ciblé oppose c et ç. La saisie du mot ne supprime pas ce choix binaire."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "café",
+                "form": "café"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "café"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "cedille-in-context",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-cedille:production-coussin",
+      "item": {
+        "nodeKey": "employer_cedille",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Elle pose un ___oussin sur le canapé.\n\nComplète le mot. Écris le mot entier avec la lettre manquante.",
+        "instructionsFr": "Écris le mot entier.",
+        "correctAnswer": "coussin",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "finiteResponseSpace": {
+            "alternatives": [
+              "coussin",
+              "çoussin"
+            ],
+            "rationaleFr": "Le choix ciblé oppose c et ç. La saisie du mot ne supprime pas ce choix binaire."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "coussin",
+                "form": "coussin"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "coussin"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "cedille-in-context",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-cedille:production-cuisine",
+      "item": {
+        "nodeKey": "employer_cedille",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Le repas se prépare dans la ___uisine.\n\nComplète le mot. Écris le mot entier avec la lettre manquante.",
+        "instructionsFr": "Écris le mot entier.",
+        "correctAnswer": "cuisine",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "finiteResponseSpace": {
+            "alternatives": [
+              "cuisine",
+              "çuisine"
+            ],
+            "rationaleFr": "Le choix ciblé oppose c et ç. La saisie du mot ne supprime pas ce choix binaire."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "cuisine",
+                "form": "cuisine"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "cuisine"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "cedille-in-context",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-cedille:production-carton",
+      "item": {
+        "nodeKey": "employer_cedille",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Nous rangeons les livres dans un ___arton.\n\nComplète le mot. Écris le mot entier avec la lettre manquante.",
+        "instructionsFr": "Écris le mot entier.",
+        "correctAnswer": "carton",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "finiteResponseSpace": {
+            "alternatives": [
+              "carton",
+              "çarton"
+            ],
+            "rationaleFr": "Le choix ciblé oppose c et ç. La saisie du mot ne supprime pas ce choix binaire."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "carton",
+                "form": "carton"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "carton"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "cedille-in-context",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
     },
     {
       "itemKey": "v3-plus-que-parfait-family-production:finir:1s:0",
@@ -385936,9 +388048,9 @@
     }
   ],
   "manifest": {
-    "itemCount": 6136,
+    "itemCount": 6168,
     "eligibleItemCount": 238,
-    "pendingItemCount": 5898,
+    "pendingItemCount": 5930,
     "publicationMode": "partial",
     "nodeCount": 114,
     "sectionReadiness": [
@@ -385987,6 +388099,6 @@
         "difficultyTierCount": 3
       }
     ],
-    "checksum": "sha256:1d30aa10ef3ec6acbdef69f630086ed64ff0a6920f704b201c9639babe77d952"
+    "checksum": "sha256:3b9a4a98984ce8cdfa1350ca0d3ed975a0758d2d5c3ee9e1560959c7716872fc"
   }
 }

@@ -2,20 +2,20 @@
   "status": "parallel_review_release_preparation",
   "reviewOwner": "product_owner",
   "authorization": "product-owner-request-2026-09-11",
-  "policyChecksum": "sha256:30ca9452ef0a92a8718b623a9c4e7c6a35154ce3b6999bbf8d84c88779865c2b",
+  "policyChecksum": "sha256:8b469fad82d70367e103e50a4ccc8b3bc8881a4a8165700baa82028ceff3d13c",
   "summary": {
-    "teachingScopeTargets": 231,
-    "teachingPrerequisiteGapTargets": 0,
-    "teachingLessons": 249,
-    "teachingTargetsWithPools": 231,
-    "teachingTargetsWithFreshChecks": 231,
-    "guidedExercises": 1404,
-    "selectedPendingOrRepairedQuestions": 5431,
+    "teachingScopeTargets": 237,
+    "teachingPrerequisiteGapTargets": 4,
+    "teachingLessons": 251,
+    "teachingTargetsWithPools": 233,
+    "teachingTargetsWithFreshChecks": 233,
+    "guidedExercises": 1416,
+    "selectedPendingOrRepairedQuestions": 5463,
     "canonicalReviewedQuestions": 238,
-    "mappedQuestions": 5654,
+    "mappedQuestions": 5686,
     "targets": 542,
-    "allocatedTargets": 288,
-    "incompleteTargets": 254,
+    "allocatedTargets": 290,
+    "incompleteTargets": 252,
     "fullPoolCoverage": false,
     "unsupportedEvidenceItemKeys": [
       "local-reading-v1:inferer_chronologie_implicite:receptive:foundation",
@@ -21994,21 +21994,6 @@
         "usage": "initial"
       },
       {
-        "id": "local-spelling-v1:employer_cedille:controlled_production:core",
-        "skillId": "employer_cedille::writing-controlled-production",
-        "mode": "production",
-        "contextId": "surface:sha256:1d12043fd36e27456827879bfcf57362ceaf5b418b70e2742ffc72956fd04855",
-        "difficulty": 0.5,
-        "expectedSeconds": 30,
-        "guessProbability": 0.05,
-        "textualSupportAssessed": false,
-        "materialKeys": [],
-        "assessedMaterialKeys": [],
-        "contrastingErrorKeys": [],
-        "negativeExampleAssessed": false,
-        "usage": "initial"
-      },
-      {
         "id": "local-spelling-v1:employer_trema:receptive:foundation",
         "skillId": "employer_trema::reading-receptive",
         "mode": "recognition",
@@ -24160,6 +24145,646 @@
         "negativeExampleAssessed": false,
         "textType": "narrative",
         "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-cedille:recognition-garçon",
+        "skillId": "employer_cedille::reading-receptive",
+        "mode": "recognition",
+        "contextId": "cedille:recognition-garçon",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:330bd7b2f842f88907093b07dbcfcb5988624058c29cd0f6513a7dffeb8fbfbd"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:330bd7b2f842f88907093b07dbcfcb5988624058c29cd0f6513a7dffeb8fbfbd"
+        ],
+        "contrastingErrorKeys": [
+          "missing_cedilla"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-cedille:recognition-leçon",
+        "skillId": "employer_cedille::reading-receptive",
+        "mode": "recognition",
+        "contextId": "cedille:recognition-leçon",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:ce52320d566476d0d28ce130a1c7d043b041c02dcccf60dc17da949baf1b11e0"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:ce52320d566476d0d28ce130a1c7d043b041c02dcccf60dc17da949baf1b11e0"
+        ],
+        "contrastingErrorKeys": [
+          "missing_cedilla"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-cedille:recognition-façade",
+        "skillId": "employer_cedille::reading-receptive",
+        "mode": "recognition",
+        "contextId": "cedille:recognition-façade",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:1d8ac643a1bf99d88e3677b39f5862ec2bd64f26971496dc5fb621803fd1c30f"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:1d8ac643a1bf99d88e3677b39f5862ec2bd64f26971496dc5fb621803fd1c30f"
+        ],
+        "contrastingErrorKeys": [
+          "missing_cedilla"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-cedille:recognition-reçu",
+        "skillId": "employer_cedille::reading-receptive",
+        "mode": "recognition",
+        "contextId": "cedille:recognition-reçu",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:5602d7f6c7d6329347e70b18982d12f8a4dd4c19f4620ac8d0234ada5536e247"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:5602d7f6c7d6329347e70b18982d12f8a4dd4c19f4620ac8d0234ada5536e247"
+        ],
+        "contrastingErrorKeys": [
+          "missing_cedilla"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-cedille:recognition-glaçon",
+        "skillId": "employer_cedille::reading-receptive",
+        "mode": "recognition",
+        "contextId": "cedille:recognition-glaçon",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:7718bda6054bfc673d6516d1e60a174eb8b505dd34307da279d814671731261e"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:7718bda6054bfc673d6516d1e60a174eb8b505dd34307da279d814671731261e"
+        ],
+        "contrastingErrorKeys": [
+          "missing_cedilla"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-cedille:recognition-balançoire",
+        "skillId": "employer_cedille::reading-receptive",
+        "mode": "recognition",
+        "contextId": "cedille:recognition-balançoire",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:bfef2c3f843ae75b433e817ad9f7b97bd044790ce6bd532f24c94f3065f8fa31"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:bfef2c3f843ae75b433e817ad9f7b97bd044790ce6bd532f24c94f3065f8fa31"
+        ],
+        "contrastingErrorKeys": [
+          "missing_cedilla"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-cedille:recognition-déçu",
+        "skillId": "employer_cedille::reading-receptive",
+        "mode": "recognition",
+        "contextId": "cedille:recognition-déçu",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:56ab9fbe5c0e654c8cc754e125c790ce9118cf5bd67aa53661ab7d78c90110e8"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:56ab9fbe5c0e654c8cc754e125c790ce9118cf5bd67aa53661ab7d78c90110e8"
+        ],
+        "contrastingErrorKeys": [
+          "missing_cedilla"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-cedille:recognition-façon",
+        "skillId": "employer_cedille::reading-receptive",
+        "mode": "recognition",
+        "contextId": "cedille:recognition-façon",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:104e2c1e5824a562e37be325c75a77921411d4391509911197e141d31b8274fc"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:104e2c1e5824a562e37be325c75a77921411d4391509911197e141d31b8274fc"
+        ],
+        "contrastingErrorKeys": [
+          "missing_cedilla"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-cedille:recognition-citron",
+        "skillId": "employer_cedille::reading-receptive",
+        "mode": "recognition",
+        "contextId": "cedille:recognition-citron",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:410f92293ee4a510e50d96774cfaec7785bb2f9889c9827ffe0d1f99ff5e46df"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:410f92293ee4a510e50d96774cfaec7785bb2f9889c9827ffe0d1f99ff5e46df"
+        ],
+        "contrastingErrorKeys": [
+          "unneeded_cedilla"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-cedille:recognition-cerise",
+        "skillId": "employer_cedille::reading-receptive",
+        "mode": "recognition",
+        "contextId": "cedille:recognition-cerise",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:51f3abc8278478ba56594414432b78a0334f84d86025687adf66ca6cbca64c1b"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:51f3abc8278478ba56594414432b78a0334f84d86025687adf66ca6cbca64c1b"
+        ],
+        "contrastingErrorKeys": [
+          "unneeded_cedilla"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-cedille:recognition-racine",
+        "skillId": "employer_cedille::reading-receptive",
+        "mode": "recognition",
+        "contextId": "cedille:recognition-racine",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:0b54c41438567d13fac751f323569f788343720bc142993bcb73cc7506374982"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:0b54c41438567d13fac751f323569f788343720bc142993bcb73cc7506374982"
+        ],
+        "contrastingErrorKeys": [
+          "unneeded_cedilla"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-cedille:recognition-bracelet",
+        "skillId": "employer_cedille::reading-receptive",
+        "mode": "recognition",
+        "contextId": "cedille:recognition-bracelet",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:58ea216c6924031d9cf363d41e4a2c0b006c62f775492333b934f4b1a9990bcb"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:58ea216c6924031d9cf363d41e4a2c0b006c62f775492333b934f4b1a9990bcb"
+        ],
+        "contrastingErrorKeys": [
+          "unneeded_cedilla"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-cedille:recognition-cadeau",
+        "skillId": "employer_cedille::reading-receptive",
+        "mode": "recognition",
+        "contextId": "cedille:recognition-cadeau",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:4025125860432fda1668ee6ceb5b40aba5a788236143b65fe2799c8753935bed"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:4025125860432fda1668ee6ceb5b40aba5a788236143b65fe2799c8753935bed"
+        ],
+        "contrastingErrorKeys": [
+          "unneeded_cedilla"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-cedille:recognition-colis",
+        "skillId": "employer_cedille::reading-receptive",
+        "mode": "recognition",
+        "contextId": "cedille:recognition-colis",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:cdbdd8186204b5c80fa0f9531df48ef30a82f50f081b10d0cd6b949aea45e4a9"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:cdbdd8186204b5c80fa0f9531df48ef30a82f50f081b10d0cd6b949aea45e4a9"
+        ],
+        "contrastingErrorKeys": [
+          "unneeded_cedilla"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-cedille:recognition-cube",
+        "skillId": "employer_cedille::reading-receptive",
+        "mode": "recognition",
+        "contextId": "cedille:recognition-cube",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:9c6c4a0032b525a9a731b3f414866ab9aa6cdca501ca1d36d05f188d7e552922"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:9c6c4a0032b525a9a731b3f414866ab9aa6cdca501ca1d36d05f188d7e552922"
+        ],
+        "contrastingErrorKeys": [
+          "unneeded_cedilla"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-cedille:recognition-école",
+        "skillId": "employer_cedille::reading-receptive",
+        "mode": "recognition",
+        "contextId": "cedille:recognition-école",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:679f03cc0c393e4ef2b092ab8c71bd4ee606e387c7871f9c76ef7301bb5fd60e"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:679f03cc0c393e4ef2b092ab8c71bd4ee606e387c7871f9c76ef7301bb5fd60e"
+        ],
+        "contrastingErrorKeys": [
+          "unneeded_cedilla"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-cedille:production-français",
+        "skillId": "employer_cedille::writing-controlled-production",
+        "mode": "production",
+        "contextId": "cedille:production-français",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:bc4bc7afb7ff20fd56e0ab2109dfaee5a5f10d9b284924d9cefd6687e3936984"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:bc4bc7afb7ff20fd56e0ab2109dfaee5a5f10d9b284924d9cefd6687e3936984"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-cedille:production-maçon",
+        "skillId": "employer_cedille::writing-controlled-production",
+        "mode": "production",
+        "contextId": "cedille:production-maçon",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:105b13cc3ba260cb12a0ca84757e7d188ffa6ef89f7762f59a9def2ba75f6815"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:105b13cc3ba260cb12a0ca84757e7d188ffa6ef89f7762f59a9def2ba75f6815"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-cedille:production-hameçon",
+        "skillId": "employer_cedille::writing-controlled-production",
+        "mode": "production",
+        "contextId": "cedille:production-hameçon",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:2f7bc261bdaebf1e17b51f421e091d2c9b66e8888a1dbd2b6d6db138cebe975a"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:2f7bc261bdaebf1e17b51f421e091d2c9b66e8888a1dbd2b6d6db138cebe975a"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-cedille:production-soupçon",
+        "skillId": "employer_cedille::writing-controlled-production",
+        "mode": "production",
+        "contextId": "cedille:production-soupçon",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:8f0569f7d3cb4b51f18238fa20a27d27cf19778b5a32eff89886e645766edfbd"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:8f0569f7d3cb4b51f18238fa20a27d27cf19778b5a32eff89886e645766edfbd"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-cedille:production-aperçu",
+        "skillId": "employer_cedille::writing-controlled-production",
+        "mode": "production",
+        "contextId": "cedille:production-aperçu",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:9d14fe04308a6dc1845c3d2fc77324e5ac1c054f31616540a8db5869d50c63e0"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:9d14fe04308a6dc1845c3d2fc77324e5ac1c054f31616540a8db5869d50c63e0"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-cedille:production-gerçure",
+        "skillId": "employer_cedille::writing-controlled-production",
+        "mode": "production",
+        "contextId": "cedille:production-gerçure",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:4b03bbbb27b9fd2939ed22860fca43e55c2bd7a4a057bf0cb7509c3fcc2d32cd"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:4b03bbbb27b9fd2939ed22860fca43e55c2bd7a4a057bf0cb7509c3fcc2d32cd"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-cedille:production-remplaçant",
+        "skillId": "employer_cedille::writing-controlled-production",
+        "mode": "production",
+        "contextId": "cedille:production-remplaçant",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:4441575ef5c4e9d6c166f395dcb92ac09879fc02a63cb44b15fda9b495dfeb46"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:4441575ef5c4e9d6c166f395dcb92ac09879fc02a63cb44b15fda9b495dfeb46"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-cedille:production-effaçable",
+        "skillId": "employer_cedille::writing-controlled-production",
+        "mode": "production",
+        "contextId": "cedille:production-effaçable",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:f42cd70a7781a2bd1ff8de69b401d5fde0bacf3610a8818b8292a29d6d5da023"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:f42cd70a7781a2bd1ff8de69b401d5fde0bacf3610a8818b8292a29d6d5da023"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-cedille:production-cinéma",
+        "skillId": "employer_cedille::writing-controlled-production",
+        "mode": "production",
+        "contextId": "cedille:production-cinéma",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:7cf29c1a3d94636fd2e580cf314438e9f3f72165df8301db24a7183ff6b84d27"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:7cf29c1a3d94636fd2e580cf314438e9f3f72165df8301db24a7183ff6b84d27"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-cedille:production-ceinture",
+        "skillId": "employer_cedille::writing-controlled-production",
+        "mode": "production",
+        "contextId": "cedille:production-ceinture",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:848e090ff529a9aad2032f61aaa6fb9c13093ac756f1b8948478d1217b0b4b5d"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:848e090ff529a9aad2032f61aaa6fb9c13093ac756f1b8948478d1217b0b4b5d"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-cedille:production-ficelle",
+        "skillId": "employer_cedille::writing-controlled-production",
+        "mode": "production",
+        "contextId": "cedille:production-ficelle",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:8c5838d99ddf16cb264489e415012c27c7b31623cfbb47b8612041f2c59af0ba"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:8c5838d99ddf16cb264489e415012c27c7b31623cfbb47b8612041f2c59af0ba"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-cedille:production-police",
+        "skillId": "employer_cedille::writing-controlled-production",
+        "mode": "production",
+        "contextId": "cedille:production-police",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:78224c638ef848ddd269ae02c58fbf5015bbe63fa270e51a25da2fd065e6e718"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:78224c638ef848ddd269ae02c58fbf5015bbe63fa270e51a25da2fd065e6e718"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-cedille:production-café",
+        "skillId": "employer_cedille::writing-controlled-production",
+        "mode": "production",
+        "contextId": "cedille:production-café",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:28380feb8724d669bc8d4cf5b5a5bb1adbdc61b81ebd06f3fabc567b4f3b0fc5"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:28380feb8724d669bc8d4cf5b5a5bb1adbdc61b81ebd06f3fabc567b4f3b0fc5"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-cedille:production-coussin",
+        "skillId": "employer_cedille::writing-controlled-production",
+        "mode": "production",
+        "contextId": "cedille:production-coussin",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:ec5f96a24628af8425fa0a7a4524cce986bbb193ece0f636f14c67c9a002db83"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:ec5f96a24628af8425fa0a7a4524cce986bbb193ece0f636f14c67c9a002db83"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-cedille:production-cuisine",
+        "skillId": "employer_cedille::writing-controlled-production",
+        "mode": "production",
+        "contextId": "cedille:production-cuisine",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:6e2c9e8a9c5ff7c547f137d423f42a222ce7838c02e6f88d2bef22e07f4284cc"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:6e2c9e8a9c5ff7c547f137d423f42a222ce7838c02e6f88d2bef22e07f4284cc"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-cedille:production-carton",
+        "skillId": "employer_cedille::writing-controlled-production",
+        "mode": "production",
+        "contextId": "cedille:production-carton",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:3d5e63824572a3dab041ed56536d26e59011afe30992fa15c5fdd2b562588956"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:3d5e63824572a3dab041ed56536d26e59011afe30992fa15c5fdd2b562588956"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
         "usage": "initial"
       },
       {
@@ -137972,7 +138597,7 @@
       }
     ],
     "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
-    "bankChecksum": "sha256:1d30aa10ef3ec6acbdef69f630086ed64ff0a6920f704b201c9639babe77d952",
+    "bankChecksum": "sha256:3b9a4a98984ce8cdfa1350ca0d3ed975a0758d2d5c3ee9e1560959c7716872fc",
     "unsupportedEvidenceItemKeys": [
       "local-reading-v1:inferer_chronologie_implicite:receptive:foundation",
       "local-reading-v1:inferer_chronologie_implicite:receptive:core",
@@ -137987,7 +138612,7 @@
       "mode": "parallel_review",
       "authorization": "product-owner-request-2026-09-11",
       "reviewOwner": "product_owner",
-      "bankChecksum": "sha256:1d30aa10ef3ec6acbdef69f630086ed64ff0a6920f704b201c9639babe77d952",
+      "bankChecksum": "sha256:3b9a4a98984ce8cdfa1350ca0d3ed975a0758d2d5c3ee9e1560959c7716872fc",
       "questionChecksums": {
         "review-draft-v1:construction_pronom_relatif:controlled_production:foundation": "sha256:2731933f71f4a1408115b2457d07ee69469fdac2e7a6e57fb69c112e2a0c32dc",
         "review-draft-v1:construction_pronom_relatif:controlled_production:core": "sha256:d8b92f78c30ddfa7d1598405eb512dce2f2b476fdd151dd3a79c9476a729cc56",
@@ -138014,6 +138639,38 @@
         "local-reading-v1:inferer_chronologie_implicite:receptive:core": "sha256:1506b1e15cc6621d9641d32bc5492dedc8722adab2c2817e2d6275c4e3368d04",
         "local-reading-v1:inferer_chronologie_implicite:receptive:stretch": "sha256:7e58f0641d4689f6fc76075593b096545283f8b2420fe4b8993ef8b84c41e3d0",
         "local-reading-v1:comparer_points_de_vue:controlled_production:foundation": "sha256:ae4349e0976e050d52019208e3ff5a7e8d70685ac640242aadca852c6bed8e9d",
+        "v3-cedille:recognition-garçon": "sha256:cd7f5647e1284bbc908f242c7e872916547f479244cadfcfc7ba628c4fdc79d2",
+        "v3-cedille:recognition-leçon": "sha256:781e3a5fba0c506b4079243f7bc3e8c4a4afa12ac9f408a5bfc0ab2345e72b29",
+        "v3-cedille:recognition-façade": "sha256:2f223d69f47e688a5adf479fe6bfe30b85e4ffdc84e3da139f7821ab83282ac3",
+        "v3-cedille:recognition-reçu": "sha256:a1af7390fce5c92c2a67e3dadddf1f5289a07d0bae6fad118bebcee82bd9b456",
+        "v3-cedille:recognition-glaçon": "sha256:8505ec41430e70cf1ce797c911252c81cb8bffa074e8ee458fe022c1e25f67b6",
+        "v3-cedille:recognition-balançoire": "sha256:4a58d22e8923e5bd2da26a73a226daa217de48d00c6d641c20c3a74bf43d64ad",
+        "v3-cedille:recognition-déçu": "sha256:a8f67bc95f83b6237deb56f4f00af3f0e5a3d51e79c47e7e3e6a6593fcbfeb8d",
+        "v3-cedille:recognition-façon": "sha256:6cc837bcd590ac459570f43423fe45a750ad1ed02893a83ff7ea46feca904444",
+        "v3-cedille:recognition-citron": "sha256:0b3ff02ee07ab3a92176ae818aacdc070139587f5143cb3525b7e4b6d9c60773",
+        "v3-cedille:recognition-cerise": "sha256:273830353db7941c3a8ce850124fffe979f4aa5976deb9cf9b68899acdf41ced",
+        "v3-cedille:recognition-racine": "sha256:00fd5cc1b58c7f3c29d1314ade1f7c1f8938f1b606c0b5456a809ef8f0502821",
+        "v3-cedille:recognition-bracelet": "sha256:7079f5b374fce8c62f7560051a1ae90951969c29bcccfd952087c9f3e1de8635",
+        "v3-cedille:recognition-cadeau": "sha256:530c711251bb2a94d727d97044f4952acd9d4d39d0d31c51fb4d9947978445a3",
+        "v3-cedille:recognition-colis": "sha256:82829813fcc7dbb2ea1708bc8d88ac6bd8c97d29f8e65a3fd31c9428a5a909a8",
+        "v3-cedille:recognition-cube": "sha256:4d22307d5dc7ba601c86113babf669f16ec78b1154222f2c89cbd300a0566211",
+        "v3-cedille:recognition-école": "sha256:afb03b2d042546c0ce3e31ac3f514439096585922767a22b114dc81d1ee15943",
+        "v3-cedille:production-français": "sha256:a878ef34102f2ee46aa18235e8cffcb427075d314e72912d07d3d5160f22ae3c",
+        "v3-cedille:production-maçon": "sha256:0ba82f57d84c96f30c057358196ea0419842d3bd6ee36cd482340d478c330713",
+        "v3-cedille:production-hameçon": "sha256:741e9649e330fa867a1067aaee9a58f3b601d332a84d1ac3a3e12493a7532835",
+        "v3-cedille:production-soupçon": "sha256:91ec07e45fd283170d8d406bb65b08e64c070d0b1367bbf067acf0906d18b078",
+        "v3-cedille:production-aperçu": "sha256:04928dca9c5c8ea60af89d473dd9d51cac4340b4abad62b9df0d4b1cf36c9bfb",
+        "v3-cedille:production-gerçure": "sha256:e09e00fc88a4c54af3541de1ebfdbf15846ee21359a073a4db71fdd33420ef7a",
+        "v3-cedille:production-remplaçant": "sha256:7c8ca3b317e5ba77281d21ee20342495e75210b8733c397f66f444e1cfb23cd2",
+        "v3-cedille:production-effaçable": "sha256:78847aad1503202be79e045a5e3db0172dc28f9acd3d4afb59eb19f0c1ef9d32",
+        "v3-cedille:production-cinéma": "sha256:747693f16c9e626053ce21ccac2e5eb0360c966216e2f781de0a3cd03624f04c",
+        "v3-cedille:production-ceinture": "sha256:87818f39c451f65caa88fab0d6502f75826152fd339fc60c3dc666e9286a5ea3",
+        "v3-cedille:production-ficelle": "sha256:9494927f247719855542281185e2762f4063119447c8d8eea212183c0ab9f415",
+        "v3-cedille:production-police": "sha256:ca74fdfc52921d7dbe90e92fa6d5f9efcd65a92c0084c69ef8b05d48e7102252",
+        "v3-cedille:production-café": "sha256:eb2ef83d508445cce88a931d4aaf4686dbf8959b1a31aceb11a354ef584e1ca5",
+        "v3-cedille:production-coussin": "sha256:12daed09f08d3428334d32deca6d455bc434abf271c62697ca1437e6e1841e3c",
+        "v3-cedille:production-cuisine": "sha256:9d8ffa9b99521b21f1b705424b38c45a9c57363a02606c997a050f9bb1657b94",
+        "v3-cedille:production-carton": "sha256:84bf3530071cb5981109bea3d918c7576f84355f8011ccc905c7b26a8f2ac1c5",
         "v3-plus-que-parfait-family-production:finir:1s:0": "sha256:9ed838125cc04de9fe518b4befecef9a71e6e8e212b8c890d3c4b7b8b85941ab",
         "v3-plus-que-parfait-family-production:choisir:2s:1": "sha256:29f7f6c14fa3b02e6291c8326991340e8e490ad5027e3b5af711e11895d4e67f",
         "v3-plus-que-parfait-family-production:réussir:3s:2": "sha256:aa5240721661ebda5bec0eaa65c8b7ccc1790e86d2739a0161bef6dcf72f21fa",
@@ -143422,6 +144079,8 @@
         "v3-y-en:en_thing-18": "sha256:1de3bba6c34a338f57ee6b482b6a389ca0b053f6059a6c16d61d4a97fc48e58d"
       },
       "teachingChecksums": {
+        "french-v3-teaching:cedille:recognition": "sha256:8fe485eec733abf7fc04bf5ced94ca1a741f3bda9f873e5f14cd0089b372e0ba",
+        "french-v3-teaching:cedille:production": "sha256:92770fcb3caef4927ecb873deb7b6953f7422d7aca7d1773b6c00de7abe19135",
         "french-v3-teaching:plus-que-parfait:pattern:regular_er": "sha256:5d099d20cbdf69c26015a8730d3ee8c1ae8da3f841f652263cbfe90ec55425ee",
         "french-v3-teaching:plus-que-parfait:pattern:regular_ir": "sha256:7980b6a88b7613f3d04dd1e72f19ba85f2862572426dec5e728a0e4ec4648954",
         "french-v3-teaching:plus-que-parfait:pattern:spelling_ger": "sha256:a4d8c8fe13f1a341e9d24d6be31358bffd6e73f9b0176e984ed239a09972f678",
@@ -143616,7 +144275,7 @@
         "french-v3-teaching:cod-pronoun:la": "sha256:a8f0fc0e666f1a13300804e85958ea08ccb4872a03974fccb6a9162010fd3413",
         "french-v3-teaching:cod-pronoun:les": "sha256:eb7ec08c0750023f8c82d0ab17454caddc619f4916e0396d0b1359751ae19a8c",
         "french-v3-teaching:cod-pronoun:elision": "sha256:ea006bf488336d89b8d46c0b83599c2864d1f153dcac1f3ba687b8c08d736d5d",
-        "french-v3-teaching:on-om:recognition": "sha256:9fb3901ef6e351caa57d93482858da124d1300a71a0f0bca625e1cb7e6e2f969",
+        "french-v3-teaching:on-om:recognition": "sha256:c5726a0c7afa4fc00456c1c995b60cf2ba2c7a04ebacb187d02e31004cd661a2",
         "french-v3-teaching:on-om:production": "sha256:c77e9a86abebc0ac4ad8d0523e9083e9bb31ae3c59fa3a12f84c48ae598c1650",
         "french-v3-teaching:canonical-sentence:recognition": "sha256:3aae8e54170f0461acc6e7bf0ed246b064b0ccd19144b7996b8b776bd54a55be",
         "french-v3-teaching:canonical-sentence:production": "sha256:7d1ce35e5146902e4334e766ed235c17887057a8a6eed9c6af3e935fbbbfafd3",
@@ -143673,8 +144332,8 @@
         "french-v3-teaching:present:verb:devoir": "sha256:c2235bf177eb98d976fe547ce3beff1d3ef3f2697fea741d08711af501851ae9"
       }
     },
-    "facetChecksum": "sha256:8f74adea55e165ee63de954f178b0812eff4a14dc47aa2572ad0672a509502d2",
-    "poolChecksum": "sha256:51510803ed31c698be1206343a3cc757369f810769b497f4055a767dcf438660"
+    "facetChecksum": "sha256:992870f268149d40a162da3b9ff4bd26c463678757f6855fb325e2957dde6768",
+    "poolChecksum": "sha256:78bc5f7dbb7bb957aa1a73bef02d558dd1ce58cf03d7110c8de93c5ac8a05a46"
   },
   "poolCoverage": [
     {
@@ -146638,16 +147297,20 @@
     {
       "skillId": "employer_cedille::reading-receptive",
       "mode": "recognition",
-      "status": "insufficient_coverage",
-      "initialItems": 0,
-      "learningItems": 0
+      "status": "allocated",
+      "initialItems": 8,
+      "learningItems": 8,
+      "excludedQuestionIds": []
     },
     {
       "skillId": "employer_cedille::writing-controlled-production",
       "mode": "production",
-      "status": "insufficient_coverage",
-      "initialItems": 1,
-      "learningItems": 0
+      "status": "allocated",
+      "initialItems": 8,
+      "learningItems": 8,
+      "excludedQuestionIds": [
+        "local-spelling-v1:employer_cedille:controlled_production:core"
+      ]
     },
     {
       "skillId": "employer_trema::reading-receptive",
@@ -153204,6 +153867,46 @@
       "estimatedMinutes": 1
     },
     {
+      "id": "79fca930-12d6-5078-b8ee-0d97565838b1",
+      "nodeKey": "employer_cedille",
+      "mode": "recognition",
+      "kind": "independent_check",
+      "status": "draft",
+      "titleFr": "Employer la cédille",
+      "href": "/student/diagnostic",
+      "probeIds": [
+        "v3-cedille:recognition-déçu",
+        "v3-cedille:recognition-école",
+        "v3-cedille:recognition-façade",
+        "v3-cedille:recognition-façon",
+        "v3-cedille:recognition-garçon",
+        "v3-cedille:recognition-glaçon",
+        "v3-cedille:recognition-leçon",
+        "v3-cedille:recognition-reçu"
+      ],
+      "estimatedMinutes": 1
+    },
+    {
+      "id": "c68b25a7-f3ba-5d85-87ee-cea309f364ca",
+      "nodeKey": "employer_cedille",
+      "mode": "production",
+      "kind": "independent_check",
+      "status": "draft",
+      "titleFr": "Employer la cédille",
+      "href": "/student/diagnostic",
+      "probeIds": [
+        "v3-cedille:production-effaçable",
+        "v3-cedille:production-ficelle",
+        "v3-cedille:production-français",
+        "v3-cedille:production-gerçure",
+        "v3-cedille:production-hameçon",
+        "v3-cedille:production-maçon",
+        "v3-cedille:production-police",
+        "v3-cedille:production-soupçon"
+      ],
+      "estimatedMinutes": 1
+    },
+    {
       "id": "4947cac5-474f-542c-bf92-2305fa659b44",
       "nodeKey": "marquer_pluriel_nom_regulier",
       "mode": "production",
@@ -153931,6 +154634,296 @@
     }
   ],
   "teachingContent": [
+    {
+      "id": "french-v3-teaching:cedille:recognition",
+      "nodeKey": "employer_cedille",
+      "mode": "recognition",
+      "status": "published_pending_review",
+      "titleFr": "Repérer quand écrire ç",
+      "learnerQuestionFr": "Pourquoi écrit-on « une place », mais « nous plaçons » ?",
+      "steps": [
+        {
+          "exampleFr": "une place → nous plaçons",
+          "explanationFr": "Dans les deux mots, la lettre c garde le son s. Mais la voyelle qui suit change. Devant o, le petit signe sous c, appelé cédille, permet de conserver ce son : ç."
+        },
+        {
+          "exampleFr": "plaçait ; plaçons ; conçu",
+          "explanationFr": "Pour faire le son s devant a, o ou u avec la lettre c, on écrit ç. La cédille se place sous le c."
+        },
+        {
+          "exampleFr": "place ; facile",
+          "explanationFr": "Devant e ou i, c fait déjà le son s. Il n’a pas besoin de cédille. N’en ajoute pas à ces mots."
+        },
+        {
+          "exampleFr": "canard ; décor ; calcul",
+          "explanationFr": "Devant a, o ou u, c peut aussi faire le son k. Dans ce cas, garde c sans cédille. Regarder la voyelle seule ne suffit pas : il faut aussi reconnaître le mot et le son attendu."
+        }
+      ],
+      "practice": [
+        {
+          "id": "cedille:recognition:guided-0",
+          "promptFr": "Une lima_e glisse sous une feuille.\nChoisis le mot correctement écrit.",
+          "choices": [
+            "limace",
+            "limaçe"
+          ],
+          "answerFr": "limace",
+          "hintFr": "Reconnais le mot dans la phrase, puis regarde la voyelle après c.",
+          "explanationFr": "limace : Devant e, c donne déjà le son s."
+        },
+        {
+          "id": "cedille:recognition:guided-1",
+          "promptFr": "Elle a per_u un bruit au loin.\nChoisis le mot correctement écrit.",
+          "choices": [
+            "perçu",
+            "percu"
+          ],
+          "answerFr": "perçu",
+          "hintFr": "Reconnais le mot dans la phrase, puis regarde la voyelle après c.",
+          "explanationFr": "perçu : Devant u, ç conserve ici le son s."
+        },
+        {
+          "id": "cedille:recognition:guided-2",
+          "promptFr": "Le ca_ao sert à préparer le chocolat.\nChoisis le mot correctement écrit.",
+          "choices": [
+            "cacao",
+            "caçao"
+          ],
+          "answerFr": "cacao",
+          "hintFr": "Reconnais le mot dans la phrase, puis regarde la voyelle après c.",
+          "explanationFr": "cacao : Le son attendu à cet endroit est k : garde c devant a."
+        },
+        {
+          "id": "cedille:recognition:guided-3",
+          "promptFr": "Ce tron_on de route est fermé.\nChoisis le mot correctement écrit.",
+          "choices": [
+            "tronçon",
+            "troncon"
+          ],
+          "answerFr": "tronçon",
+          "hintFr": "Reconnais le mot dans la phrase, puis regarde la voyelle après c.",
+          "explanationFr": "tronçon : Devant o, il faut ici ç pour le son s."
+        },
+        {
+          "id": "cedille:recognition:guided-4",
+          "promptFr": "La lettre re_ue hier était signée.\nChoisis le mot correctement écrit.",
+          "choices": [
+            "reçue",
+            "recue"
+          ],
+          "answerFr": "reçue",
+          "hintFr": "Reconnais le mot dans la phrase, puis regarde la voyelle après c.",
+          "explanationFr": "reçue : Devant u, écris ç pour conserver le son s."
+        },
+        {
+          "id": "cedille:recognition:guided-5",
+          "promptFr": "La flèche touche la _ible.\nChoisis le mot correctement écrit.",
+          "choices": [
+            "cible",
+            "çible"
+          ],
+          "answerFr": "cible",
+          "hintFr": "Reconnais le mot dans la phrase, puis regarde la voyelle après c.",
+          "explanationFr": "cible : Devant i, c donne déjà le son s, sans cédille."
+        }
+      ],
+      "takeawayFr": "Pour le son s, écris ç devant a, o ou u et c devant e ou i. Pour le son k, garde c devant a, o ou u.",
+      "boundaryFr": "Le reste du mot est fourni. Cet exercice vérifie le choix de c ou ç, pas une dictée complète ni la maîtrise de tous les mots français. Si le mot est inconnu, son orthographe reste à apprendre.",
+      "materialExposure": {
+        "words": [
+          {
+            "lemma": "place",
+            "form": "place"
+          },
+          {
+            "lemma": "plaçons",
+            "form": "plaçons"
+          },
+          {
+            "lemma": "plaçait",
+            "form": "plaçait"
+          },
+          {
+            "lemma": "conçu",
+            "form": "conçu"
+          },
+          {
+            "lemma": "facile",
+            "form": "facile"
+          },
+          {
+            "lemma": "canard",
+            "form": "canard"
+          },
+          {
+            "lemma": "décor",
+            "form": "décor"
+          },
+          {
+            "lemma": "calcul",
+            "form": "calcul"
+          },
+          {
+            "lemma": "limace",
+            "form": "limace"
+          },
+          {
+            "lemma": "perçu",
+            "form": "perçu"
+          },
+          {
+            "lemma": "cacao",
+            "form": "cacao"
+          },
+          {
+            "lemma": "tronçon",
+            "form": "tronçon"
+          },
+          {
+            "lemma": "reçue",
+            "form": "reçue"
+          },
+          {
+            "lemma": "cible",
+            "form": "cible"
+          }
+        ]
+      },
+      "assessmentExposureIds": []
+    },
+    {
+      "id": "french-v3-teaching:cedille:production",
+      "nodeKey": "employer_cedille",
+      "mode": "production",
+      "status": "published_pending_review",
+      "titleFr": "Écrire c ou ç dans un mot",
+      "learnerQuestionFr": "Pourquoi écrit-on « une place », mais « nous plaçons » ?",
+      "steps": [
+        {
+          "exampleFr": "une place → nous plaçons",
+          "explanationFr": "Dans les deux mots, la lettre c garde le son s. Mais la voyelle qui suit change. Devant o, le petit signe sous c, appelé cédille, permet de conserver ce son : ç."
+        },
+        {
+          "exampleFr": "plaçait ; plaçons ; conçu",
+          "explanationFr": "Pour faire le son s devant a, o ou u avec la lettre c, on écrit ç. La cédille se place sous le c."
+        },
+        {
+          "exampleFr": "place ; facile",
+          "explanationFr": "Devant e ou i, c fait déjà le son s. Il n’a pas besoin de cédille. N’en ajoute pas à ces mots."
+        },
+        {
+          "exampleFr": "canard ; décor ; calcul",
+          "explanationFr": "Devant a, o ou u, c peut aussi faire le son k. Dans ce cas, garde c sans cédille. Regarder la voyelle seule ne suffit pas : il faut aussi reconnaître le mot et le son attendu."
+        }
+      ],
+      "practice": [
+        {
+          "id": "cedille:production:guided-0",
+          "promptFr": "Une lima_e glisse sous une feuille.\nComplète la lettre manquante. Écris le mot entier.",
+          "answerFr": "limace",
+          "hintFr": "Reconnais le mot dans la phrase, puis regarde la voyelle après c.",
+          "explanationFr": "limace : Devant e, c donne déjà le son s."
+        },
+        {
+          "id": "cedille:production:guided-1",
+          "promptFr": "Elle a per_u un bruit au loin.\nComplète la lettre manquante. Écris le mot entier.",
+          "answerFr": "perçu",
+          "hintFr": "Reconnais le mot dans la phrase, puis regarde la voyelle après c.",
+          "explanationFr": "perçu : Devant u, ç conserve ici le son s."
+        },
+        {
+          "id": "cedille:production:guided-2",
+          "promptFr": "Le ca_ao sert à préparer le chocolat.\nComplète la lettre manquante. Écris le mot entier.",
+          "answerFr": "cacao",
+          "hintFr": "Reconnais le mot dans la phrase, puis regarde la voyelle après c.",
+          "explanationFr": "cacao : Le son attendu à cet endroit est k : garde c devant a."
+        },
+        {
+          "id": "cedille:production:guided-3",
+          "promptFr": "Ce tron_on de route est fermé.\nComplète la lettre manquante. Écris le mot entier.",
+          "answerFr": "tronçon",
+          "hintFr": "Reconnais le mot dans la phrase, puis regarde la voyelle après c.",
+          "explanationFr": "tronçon : Devant o, il faut ici ç pour le son s."
+        },
+        {
+          "id": "cedille:production:guided-4",
+          "promptFr": "La lettre re_ue hier était signée.\nComplète la lettre manquante. Écris le mot entier.",
+          "answerFr": "reçue",
+          "hintFr": "Reconnais le mot dans la phrase, puis regarde la voyelle après c.",
+          "explanationFr": "reçue : Devant u, écris ç pour conserver le son s."
+        },
+        {
+          "id": "cedille:production:guided-5",
+          "promptFr": "La flèche touche la _ible.\nComplète la lettre manquante. Écris le mot entier.",
+          "answerFr": "cible",
+          "hintFr": "Reconnais le mot dans la phrase, puis regarde la voyelle après c.",
+          "explanationFr": "cible : Devant i, c donne déjà le son s, sans cédille."
+        }
+      ],
+      "takeawayFr": "Pour le son s, écris ç devant a, o ou u et c devant e ou i. Pour le son k, garde c devant a, o ou u.",
+      "boundaryFr": "Le reste du mot est fourni. Cet exercice vérifie le choix de c ou ç, pas une dictée complète ni la maîtrise de tous les mots français. Si le mot est inconnu, son orthographe reste à apprendre.",
+      "materialExposure": {
+        "words": [
+          {
+            "lemma": "place",
+            "form": "place"
+          },
+          {
+            "lemma": "plaçons",
+            "form": "plaçons"
+          },
+          {
+            "lemma": "plaçait",
+            "form": "plaçait"
+          },
+          {
+            "lemma": "conçu",
+            "form": "conçu"
+          },
+          {
+            "lemma": "facile",
+            "form": "facile"
+          },
+          {
+            "lemma": "canard",
+            "form": "canard"
+          },
+          {
+            "lemma": "décor",
+            "form": "décor"
+          },
+          {
+            "lemma": "calcul",
+            "form": "calcul"
+          },
+          {
+            "lemma": "limace",
+            "form": "limace"
+          },
+          {
+            "lemma": "perçu",
+            "form": "perçu"
+          },
+          {
+            "lemma": "cacao",
+            "form": "cacao"
+          },
+          {
+            "lemma": "tronçon",
+            "form": "tronçon"
+          },
+          {
+            "lemma": "reçue",
+            "form": "reçue"
+          },
+          {
+            "lemma": "cible",
+            "form": "cible"
+          }
+        ]
+      },
+      "assessmentExposureIds": []
+    },
     {
       "id": "french-v3-teaching:plus-que-parfait:pattern:regular_er",
       "nodeKey": "produire_plus_que_parfait",
@@ -194252,6 +195245,7 @@
         ]
       },
       "assessmentExposureIds": [
+        "v3-cedille:recognition-citron",
         "v3-spelling:nasal-bonbon"
       ]
     },
@@ -202417,6 +203411,50 @@
   ],
   "teachingBindings": [
     {
+      "id": "26469cf3-ed5e-5d7b-b94f-22136f228bef",
+      "nodeKey": "employer_cedille",
+      "mode": "recognition",
+      "kind": "instruction",
+      "status": "published",
+      "titleFr": "Repérer quand écrire ç",
+      "href": "/student/diagnostic",
+      "contentId": "french-v3-teaching:cedille:recognition",
+      "estimatedMinutes": 4
+    },
+    {
+      "id": "e2b639f6-3d18-5692-ac9c-526db661a22e",
+      "nodeKey": "employer_cedille",
+      "mode": "recognition",
+      "kind": "practice",
+      "status": "published",
+      "titleFr": "Repérer quand écrire ç",
+      "href": "/student/diagnostic",
+      "contentId": "french-v3-teaching:cedille:recognition",
+      "estimatedMinutes": 6
+    },
+    {
+      "id": "64e39f00-a09c-5995-b95e-b21b07a78d7a",
+      "nodeKey": "employer_cedille",
+      "mode": "production",
+      "kind": "instruction",
+      "status": "published",
+      "titleFr": "Écrire c ou ç dans un mot",
+      "href": "/student/diagnostic",
+      "contentId": "french-v3-teaching:cedille:production",
+      "estimatedMinutes": 4
+    },
+    {
+      "id": "d78f20e6-b6f4-5d05-a3c4-b0617c6337d4",
+      "nodeKey": "employer_cedille",
+      "mode": "production",
+      "kind": "practice",
+      "status": "published",
+      "titleFr": "Écrire c ou ç dans un mot",
+      "href": "/student/diagnostic",
+      "contentId": "french-v3-teaching:cedille:production",
+      "estimatedMinutes": 6
+    },
+    {
       "id": "f14e705a-2a0b-5dec-a48c-a1acb62f74ec",
       "nodeKey": "produire_plus_que_parfait",
       "facetKey": "produire_plus_que_parfait::pattern:regular_er",
@@ -207889,6 +208927,20 @@
   ],
   "teachingReadiness": [
     {
+      "lessonId": "french-v3-teaching:cedille:recognition",
+      "skillId": "employer_cedille::reading-receptive",
+      "poolsAllocated": true,
+      "remainingCheckQuestions": 8,
+      "freshCheckAvailable": true
+    },
+    {
+      "lessonId": "french-v3-teaching:cedille:production",
+      "skillId": "employer_cedille::writing-controlled-production",
+      "poolsAllocated": true,
+      "remainingCheckQuestions": 8,
+      "freshCheckAvailable": true
+    },
+    {
       "lessonId": "french-v3-teaching:plus-que-parfait:pattern:regular_er",
       "skillId": "produire_plus_que_parfait::writing-controlled-production::pattern:regular_er",
       "poolsAllocated": true,
@@ -209632,12 +210684,17 @@
       "freshCheckAvailable": true
     }
   ],
-  "teachingPrerequisiteGaps": [],
+  "teachingPrerequisiteGaps": [
+    "associer_phoneme_graphie_frequente::reading-receptive",
+    "associer_phoneme_graphie_frequente::writing-controlled-production",
+    "segmenter_syllabes_ecrites::reading-receptive",
+    "segmenter_syllabes_ecrites::writing-controlled-production"
+  ],
   "limitations": [
     "Content remains pending review; release permission does not create human approval",
     "No database publication or activation is performed by this builder",
     "Incomplete target pools remain visible; release scope and fresh post-teaching check capacity still need verification",
     "Structurally rejected content remains ineligible; semantic review continues in parallel"
   ],
-  "checksum": "sha256:701f811908424473bd453fae6abb00c0cfc51bc1da24016bea81929f30866f08"
+  "checksum": "sha256:adb4dba5fb7d0e9563a3f3cb5101232b564ca15e4dbbfcedfc813f4790af1d43"
 }

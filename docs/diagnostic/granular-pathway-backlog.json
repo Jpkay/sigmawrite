@@ -1,13 +1,14 @@
 {
   "status": "prepared_inventory_not_release_or_review_approval",
-  "parallelCandidateChecksum": "sha256:701f811908424473bd453fae6abb00c0cfc51bc1da24016bea81929f30866f08",
-  "scopedCandidateChecksum": "sha256:9f87c56a2e156b80f98cf4c374659343bbfc765ea4161caaf3bb10ba9d66af17",
+  "parallelCandidateChecksum": "sha256:adb4dba5fb7d0e9563a3f3cb5101232b564ca15e4dbbfcedfc813f4790af1d43",
+  "scopedCandidateChecksum": "sha256:b9ac4060d2a15bd6ce0efa2e12a9d16981629370441cdd9a1ee04a2ca0eae57e",
   "targets": 542,
   "counts": {
     "prepared_scoped_pathway": 231,
-    "complete_question_pools": 236,
+    "complete_question_pools": 234,
     "author_exact_target_lesson": 57,
-    "connected_writing_evidence": 18
+    "connected_writing_evidence": 18,
+    "resolve_prerequisite_scope": 2
   },
   "limitations": [
     "Question allocation alone does not establish suitable teaching, novelty after instruction, human review or educational calibration.",
@@ -8282,18 +8283,21 @@
       "skillId": "employer_cedille::reading-receptive",
       "nodeKey": "employer_cedille",
       "facetKey": null,
-      "action": "complete_question_pools",
+      "action": "resolve_prerequisite_scope",
       "pools": [
         {
           "skillId": "employer_cedille::reading-receptive",
           "mode": "recognition",
-          "status": "insufficient_coverage",
-          "initialItems": 0,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 8,
+          "learningItems": 8,
+          "excludedQuestionIds": []
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:cedille:recognition"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": [
         "associer_phoneme_graphie_frequente::reading-receptive",
         "associer_phoneme_graphie_frequente::writing-controlled-production"
@@ -8303,18 +8307,23 @@
       "skillId": "employer_cedille::writing-controlled-production",
       "nodeKey": "employer_cedille",
       "facetKey": null,
-      "action": "complete_question_pools",
+      "action": "resolve_prerequisite_scope",
       "pools": [
         {
           "skillId": "employer_cedille::writing-controlled-production",
           "mode": "production",
-          "status": "insufficient_coverage",
-          "initialItems": 1,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 8,
+          "learningItems": 8,
+          "excludedQuestionIds": [
+            "local-spelling-v1:employer_cedille:controlled_production:core"
+          ]
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:cedille:production"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": [
         "associer_phoneme_graphie_frequente::reading-receptive",
         "associer_phoneme_graphie_frequente::writing-controlled-production"

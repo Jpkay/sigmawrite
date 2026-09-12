@@ -7,6 +7,7 @@ Updated 2026-09-12. French only; Allotey is excluded. This document distinguishe
 - Public deployment: v13, 215 supported targets, frozen source `3446b9f`. The complete candidate browser assessment, lesson practice, independent check and answer review pass; post-promotion new-account, demo and pinned-session checks pass and are tracked in `revision-twelve-publication-2026-09-12.json`.
 - Previous public release: v12, 197 supported targets, frozen source `0657d2a6`; retained as the rollback reference. See `revision-eleven-publication-2026-09-11.json`.
 - Frozen next candidate: bank revision 13, 231 supported targets and 4,752 scoped probes, source `ff8b84f`. It adds four family pathways each for passé composé, futur simple, conditionnel and plus-que-parfait to public v13. Bank import and a separate deployment are in progress; publication and activation are pending. See `revision-thirteen-publication-2026-09-12.json`.
+- Subsequent working draft: bank revision 14 adds 32 cédille questions and two lessons, pending their two approved sound-to-spelling prerequisites. Active prepared scope remains 231; this draft is separate from the frozen candidate.
 - Working-draft symbolic routing benchmark: 10/10 depth checks and 8/8 uneven-profile contrasts, with no invariant violations. See `confirmed-verb-visits-2026-09-12.md`. This later runtime change is not included in the frozen 215-target candidate and is not educational calibration.
 
 ## Complete target accounting
@@ -17,7 +18,8 @@ Updated 2026-09-12. French only; Allotey is excluded. This document distinguishe
 | --- | ---: |
 | Prepared assessment, teaching and fresh-check pathway | 231 |
 | Question pools allocated; exact-target lesson still missing | 57 |
-| Complete initial and follow-up question pools | 236 |
+| Complete initial and follow-up question pools | 234 |
+| Questions and lessons prepared; prerequisite scope unresolved | 2 |
 | Connected-writing evidence during learning | 18 |
 | Total | 542 |
 
@@ -29,7 +31,7 @@ These categories partition the graph; they are not publication or approval label
 2. Validate the new verb-visit routing on real content and live mixed-profile journeys. The eight constructed contrasts now pass; educator/student calibration and broader granular profile validation remain required. Keep untested targets unresolved and refine them during learning.
 3. Add the missing exact-target lessons for the remaining tenses and moods. The regular -er/-ir and -ger/-cer pathways for imparfait, passé composé, futur simple, conditionnel and plus-que-parfait are now prepared. Each needs suitable guided examples and fresh independent applications; existing form questions alone are insufficient.
 4. Review the four remaining passé récent verb targets (pouvoir, vouloir, savoir, devoir) for natural contexts before authoring. Do not mechanically create awkward forms merely to reach a coverage count. Continue subjonctif, impératif and passé simple coverage with their own usage constraints.
-5. Fill the 236 question-pool gaps across all domains from the exact-target inventory, preserving distinct recognition, controlled production and contextual-use evidence. Complete the separate connected-writing pathway for the remaining 18 targets.
+5. Fill the 234 question-pool gaps across all domains from the exact-target inventory, including the sound-to-spelling prerequisites needed by the two cédille targets, preserving distinct recognition, controlled production and contextual-use evidence. Complete the separate connected-writing pathway for the remaining 18 targets.
 6. Continue the owner's review in parallel, recording actual decisions against content checksums. Validate difficulty, question duration, sufficient depth and the meaning of recommendations with educator and student evidence. Do not substitute technical tests for those judgments.
 
 ## Fixed foundation and product decisions
