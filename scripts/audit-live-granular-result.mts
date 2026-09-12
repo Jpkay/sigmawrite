@@ -1,5 +1,6 @@
 /** Read-only audit of an explicitly supplied technical QA session. No learner writes. */
 import {config} from 'dotenv';
+import {auditNoveltyCoverage} from '../src/lib/diagnostic/granular/novelty-coverage-audit';
 import {writeFileSync} from 'node:fs';
 import {createClient} from '@supabase/supabase-js';
 import {publicAssessmentView,type AssessmentBundle} from '../src/lib/diagnostic/granular/service';
@@ -14,6 +15,8 @@ const state=row.data.state;
 const view=publicAssessmentView({id:row.data.id,studentId:row.data.student_id,releaseId:row.data.release_id,state},bundle);
 if(view.phase!=='learning')throw Error('Diagnostic has not reached final results; no result audit emitted');
 const findings:string[]=[];
+const noveltyCoverage=auditNoveltyCoverage(bundle.assessment.skills,[...state.observations,...(state.refinements??[])]);
+if(noveltyCoverage.incompleteHistoryObservations) findings.push(`${noveltyCoverage.incompleteHistoryObservations} novelty-required observations lack complete material history; delivery integration is not verified`);
 const entries=view.results.map(result=>{
  const skill=bundle.assessment.skills.find(s=>s.id===result.skillId)!;
  const observations=state.observations.filter((o:{skillId:string})=>o.skillId===skill.id);
@@ -25,7 +28,7 @@ const entries=view.results.map(result=>{
  }
  return {skillId:skill.id,status:result.status,evidence:result.evidence,resolved:result.resolved,diagnosticAnswers:observations.length,diagnosticCorrect:observations.filter((o:{correct:boolean})=>o.correct).length,modes:result.modes};
 });
-const report={sessionId,releaseId:row.data.release_id,completionReason:state.completionReason,activeSeconds:state.activeSeconds,graphTargets:bundle.assessment.skills.length,reportedTargets:entries.length,diagnosticAnswers:state.observations.length,statusCounts:Object.fromEntries(['mastered','missing','fragile','uncertain','unknown'].map(status=>[status,entries.filter(e=>e.status===status).length])),assessedSkills:entries.filter(e=>e.evidence==='direct'),activities:view.learningActivities.map(a=>({skillId:a.skillId,kind:a.kind,titleFr:a.titleFr})),findings,limitation:'Technical consistency audit, not psychometric validation. Diagnostic counts exclude later refinements; reported mode evidence may include them.'};
+const report={noveltyCoverage,sessionId,releaseId:row.data.release_id,completionReason:state.completionReason,activeSeconds:state.activeSeconds,graphTargets:bundle.assessment.skills.length,reportedTargets:entries.length,diagnosticAnswers:state.observations.length,statusCounts:Object.fromEntries(['mastered','missing','fragile','uncertain','unknown'].map(status=>[status,entries.filter(e=>e.status===status).length])),assessedSkills:entries.filter(e=>e.evidence==='direct'),activities:view.learningActivities.map(a=>({skillId:a.skillId,kind:a.kind,titleFr:a.titleFr})),findings,limitation:'Technical consistency audit, not psychometric validation. Diagnostic counts exclude later refinements; reported mode evidence may include them.'};
 if(entries.length!==bundle.assessment.skills.length)findings.push('Incomplete graph result map');
 writeFileSync(output,JSON.stringify(report,null,2)+'\n',{mode:0o600});
 console.log(JSON.stringify({sessionId,reportedTargets:entries.length,statusCounts:report.statusCounts,findings}));

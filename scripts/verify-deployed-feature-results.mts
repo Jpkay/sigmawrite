@@ -8,7 +8,8 @@ import {publicAssessmentView,type AssessmentBundle} from '../src/lib/diagnostic/
 import {featureLabel} from '../src/lib/diagnostic/granular/feature-labels';
 import {checksum} from '../src/lib/taxonomy/validate';
 config({path:'.env.local',quiet:true});
-const [base,credentialsPath,sessionId,output]=process.argv.slice(2);
+const requireAnswered=process.argv.includes("--require-answered");
+const [base,credentialsPath,sessionId,output]=process.argv.slice(2).filter(arg=>arg!=="--require-answered");
 if(!base||new URL(base).origin!==base||new URL(base).protocol!=='https:'||!credentialsPath||!sessionId||!output)throw Error('Expected HTTPS origin, QA credentials file, session UUID, output prefix');
 const credentials=JSON.parse(readFileSync(credentialsPath,'utf8'));if(!/^doves\.granular\..*\.qa$/.test(credentials.username))throw Error('Only an explicit technical QA account is allowed');
 const db=createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!,process.env.SUPABASE_SERVICE_ROLE_KEY!,{auth:{persistSession:false}});
@@ -16,7 +17,7 @@ const load=async()=>{const r=await db.from('granular_assessment_sessions').selec
 const before=await load();if(before.state.phase!=='learning')throw Error('Expected a completed diagnostic');
 const release=await db.from('granular_assessment_releases').select('bundle').eq('id',before.release_id).single();if(release.error)throw release.error;
 const view=publicAssessmentView({id:before.id,studentId:before.student_id,releaseId:before.release_id,state:before.state},release.data.bundle as AssessmentBundle);
-const expected=view.results.flatMap(r=>r.modes.flatMap(m=>(m.featureEvidence??[]).flatMap(f=>{const label=featureLabel(f.feature);return label?[{label,text:f.distinctItems===0?'Pas encore vérifié':`${f.correctItems} réponse${f.correctItems===1?'':'s'} réussie${f.correctItems===1?'':'s'} sur ${f.distinctItems}`}]:[]})));
+const expected=view.results.flatMap(r=>r.modes.flatMap(m=>(m.featureEvidence??[]).flatMap(f=>{const label=featureLabel(f.feature);return label?[{skillId:r.skillId,mode:m.mode,feature:f.feature,correctItems:f.correctItems,distinctItems:f.distinctItems,label,text:f.distinctItems===0?'Pas encore vérifié':`${f.correctItems} réponse${f.correctItems===1?'':'s'} réussie${f.correctItems===1?'':'s'} sur ${f.distinctItems}`}]:[]})));
 if(!expected.length)throw Error('QA release has no feature results to verify');
 const user=await db.auth.admin.getUserById(credentials.authUserId);if(user.error||!user.data.user)throw Error('QA auth unavailable');
 const link=await db.auth.admin.generateLink({type:'magiclink',email:user.data.user.email!});if(link.error)throw link.error;
@@ -38,6 +39,7 @@ try{
  await page.screenshot({path:output+'.png',fullPage:false});
  const after=await load();if(checksum([before.state.observations,before.state.refinements])!==checksum([after.state.observations,after.state.refinements]))throw Error('Result viewing changed student evidence');
  if(errors.length)throw Error(errors.join('; '));
- const report={base,sessionId,releaseId:before.release_id,featureRows:expected.length,answeredFeatureRows:expected.filter(r=>r.text!=='Pas encore vérifié').length,evidenceUnchanged:true,mobileWidth:390,noHorizontalOverflow:true};
+ const report={base,sessionId,releaseId:before.release_id,featureRows:expected.length,answeredFeatureRows:expected.filter(r=>r.text!=='Pas encore vérifié').length,evidenceUnchanged:true,mobileWidth:390,noHorizontalOverflow:true,expectedRows:expected,answeredEvidenceRequired:requireAnswered,answeredEvidenceVerified:expected.some(r=>r.distinctItems>0)};
  writeFileSync(output+'.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));
+ if(requireAnswered&&!report.answeredEvidenceVerified)throw Error('No eligible answered feature rows: rendering unknown rows does not verify answer counts');
 }finally{await browser.close();}

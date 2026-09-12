@@ -1,5 +1,5 @@
 {
-  "status": "candidate_full_journey_verified_feature_display_check_outstanding",
+  "status": "candidate_full_journey_verified_material_history_integration_gap",
   "sourceCommit": "c63a42d4456158edbd488053d6183a625bed5f8f",
   "frozenWorkspace": "/Users/jean-philippekayobotsi/.codex/release-workspaces/sigmawrite-r18-c63a42d",
   "plannedReleaseKey": "french-granular-diagnostic-v19",
@@ -617,12 +617,12 @@
         {
           "skillId": "resoudre_pronom_objet::all-receptive::text_type:narrative",
           "kind": "instruction",
-          "titleFr": "Retrouver ce que remplace \u00ab le \u00bb, \u00ab la \u00bb ou \u00ab lui \u00bb"
+          "titleFr": "Retrouver ce que remplace « le », « la » ou « lui »"
         },
         {
           "skillId": "construction_phrase_canonique::reading-analysis",
           "kind": "independent_check",
-          "titleFr": "Reconna\u00eetre une phrase canonique"
+          "titleFr": "Reconnaître une phrase canonique"
         },
         {
           "skillId": "identifier_sujet_verbe::reading-receptive",
@@ -632,12 +632,12 @@
         {
           "skillId": "former_feminin_adjectif_regulier::writing-controlled-production",
           "kind": "independent_check",
-          "titleFr": "Former le f\u00e9minin r\u00e9gulier d'un adjectif"
+          "titleFr": "Former le féminin régulier d'un adjectif"
         },
         {
           "skillId": "deduire_mot_definition_locale::all-receptive::text_type:informational",
           "kind": "independent_check",
-          "titleFr": "D\u00e9duire un mot gr\u00e2ce \u00e0 une d\u00e9finition locale \u2014 Texte informatif bref"
+          "titleFr": "Déduire un mot grâce à une définition locale — Texte informatif bref"
         }
       ],
       "findings": [],
@@ -1178,30 +1178,36 @@
       {
         "skillId": "construction_phrase_canonique::reading-analysis",
         "kind": "independent_check",
-        "titleFr": "Reconna\u00eetre une phrase canonique"
+        "titleFr": "Reconnaître une phrase canonique"
       },
       {
         "skillId": "deduire_mot_definition_locale::all-receptive::text_type:informational",
         "kind": "independent_check",
-        "titleFr": "D\u00e9duire un mot gr\u00e2ce \u00e0 une d\u00e9finition locale \u2014 Texte informatif bref"
+        "titleFr": "Déduire un mot grâce à une définition locale — Texte informatif bref"
       },
       {
         "skillId": "former_feminin_adjectif_regulier::writing-controlled-production",
         "kind": "independent_check",
-        "titleFr": "Former le f\u00e9minin r\u00e9gulier d'un adjectif"
+        "titleFr": "Former le féminin régulier d'un adjectif"
       },
       {
         "skillId": "former_participe_passe::writing-controlled-production::construction:er",
         "kind": "independent_check",
-        "titleFr": "Former un participe pass\u00e9 \u2014 Participes en -\u00e9"
+        "titleFr": "Former un participe passé — Participes en -é"
       },
       {
         "skillId": "construction_phrase_canonique::writing-controlled-production",
         "kind": "independent_check",
-        "titleFr": "Reconna\u00eetre une phrase canonique"
+        "titleFr": "Reconnaître une phrase canonique"
       }
     ],
     "findings": [],
     "limitation": "Technical consistency audit, not psychometric validation. Diagnostic counts exclude later refinements; reported mode evidence may include them."
+  },
+  "featureDisplayFinding": {
+    "report": "feature-rendering-qa-preparation-2026-09-12.json",
+    "eligibleAnsweredRows": 0,
+    "cause": "Production store omits complete material-history assertion; novelty-required observations are excluded.",
+    "publicActivation": "not performed"
   }
 }

@@ -1,12 +1,12 @@
 {
   "status": "prepared_inventory_not_release_or_review_approval",
-  "parallelCandidateChecksum": "sha256:b020c6f6c1dd73a55c5592aa93509d1e07f890840b49cf6831817e818c06e55e",
-  "scopedCandidateChecksum": "sha256:3660f5bbb2b9313ccda304db601445ddfa7624bd61f256816abb6917ac67d1db",
+  "parallelCandidateChecksum": "sha256:abc0ab814a2ad5cf7140c95d786e5bb32330dc73ed4048e22cfa15d64335f285",
+  "scopedCandidateChecksum": "sha256:7bdcba4970d8d8e19270571a997bb93b0642309e5fe024f114cd85316479b681",
   "targets": 542,
   "counts": {
-    "prepared_scoped_pathway": 276,
-    "complete_question_pools": 223,
-    "author_exact_target_lesson": 25,
+    "prepared_scoped_pathway": 282,
+    "complete_question_pools": 221,
+    "author_exact_target_lesson": 21,
     "connected_writing_evidence": 18
   },
   "limitations": [
@@ -1954,18 +1954,20 @@
       "skillId": "interpreter_passe_compose::reading-receptive",
       "nodeKey": "interpreter_passe_compose",
       "facetKey": null,
-      "action": "complete_question_pools",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "interpreter_passe_compose::reading-receptive",
           "mode": "recognition",
-          "status": "insufficient_coverage",
-          "initialItems": 2,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 6,
+          "learningItems": 6
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:past-foundation:passe-compose-value"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
@@ -2383,8 +2385,7 @@
       "lessonIds": [],
       "freshCheckAvailable": false,
       "prerequisitesOutsidePreparedScope": [
-        "interpreter_imparfait::reading-receptive",
-        "interpreter_passe_compose::reading-receptive"
+        "interpreter_imparfait::reading-receptive"
       ]
     },
     {
@@ -2411,21 +2412,21 @@
       "skillId": "reconnaitre_passe_simple::reading-receptive",
       "nodeKey": "reconnaitre_passe_simple",
       "facetKey": null,
-      "action": "complete_question_pools",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "reconnaitre_passe_simple::reading-receptive",
           "mode": "recognition",
-          "status": "insufficient_coverage",
-          "initialItems": 1,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 12,
+          "learningItems": 12
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "interpreter_passe_compose::reading-receptive"
-      ]
+      "lessonIds": [
+        "french-v3-teaching:past-foundation:passe-simple-recognition"
+      ],
+      "freshCheckAvailable": true,
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "interpreter_passe_simple::reading-receptive",
@@ -2444,7 +2445,6 @@
       "lessonIds": [],
       "freshCheckAvailable": false,
       "prerequisitesOutsidePreparedScope": [
-        "reconnaitre_passe_simple::reading-receptive",
         "produire_passe_simple::writing-controlled-production::verb:être",
         "produire_passe_simple::writing-controlled-production::verb:avoir",
         "produire_passe_simple::writing-controlled-production::verb:aller",
@@ -2458,11 +2458,7 @@
         "produire_passe_simple::writing-controlled-production::verb:pouvoir",
         "produire_passe_simple::writing-controlled-production::verb:vouloir",
         "produire_passe_simple::writing-controlled-production::verb:savoir",
-        "produire_passe_simple::writing-controlled-production::verb:devoir",
-        "produire_passe_simple::writing-controlled-production::pattern:regular_er",
-        "produire_passe_simple::writing-controlled-production::pattern:regular_ir",
-        "produire_passe_simple::writing-controlled-production::pattern:spelling_ger",
-        "produire_passe_simple::writing-controlled-production::pattern:spelling_cer"
+        "produire_passe_simple::writing-controlled-production::verb:devoir"
       ]
     },
     {
@@ -4490,7 +4486,6 @@
       "lessonIds": [],
       "freshCheckAvailable": false,
       "prerequisitesOutsidePreparedScope": [
-        "interpreter_passe_compose::reading-receptive",
         "interpreter_imparfait::reading-receptive",
         "interpreter_anteriorite_passee::reading-receptive"
       ]
@@ -10272,9 +10267,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "interpreter_passe_compose::reading-receptive"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "employer_imparfait_en_contexte::writing-independent-production",
@@ -10412,9 +10405,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "reconnaitre_passe_simple::reading-receptive"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_passe_simple::writing-controlled-production::verb:avoir",
@@ -10432,9 +10423,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "reconnaitre_passe_simple::reading-receptive"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_passe_simple::writing-controlled-production::verb:aller",
@@ -10452,9 +10441,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "reconnaitre_passe_simple::reading-receptive"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_passe_simple::writing-controlled-production::verb:faire",
@@ -10472,9 +10459,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "reconnaitre_passe_simple::reading-receptive"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_passe_simple::writing-controlled-production::verb:prendre",
@@ -10492,9 +10477,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "reconnaitre_passe_simple::reading-receptive"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_passe_simple::writing-controlled-production::verb:venir",
@@ -10512,9 +10495,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "reconnaitre_passe_simple::reading-receptive"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_passe_simple::writing-controlled-production::verb:partir",
@@ -10532,9 +10513,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "reconnaitre_passe_simple::reading-receptive"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_passe_simple::writing-controlled-production::verb:sortir",
@@ -10552,9 +10531,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "reconnaitre_passe_simple::reading-receptive"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_passe_simple::writing-controlled-production::verb:dire",
@@ -10572,9 +10549,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "reconnaitre_passe_simple::reading-receptive"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_passe_simple::writing-controlled-production::verb:voir",
@@ -10592,9 +10567,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "reconnaitre_passe_simple::reading-receptive"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_passe_simple::writing-controlled-production::verb:pouvoir",
@@ -10612,9 +10585,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "reconnaitre_passe_simple::reading-receptive"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_passe_simple::writing-controlled-production::verb:vouloir",
@@ -10632,9 +10603,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "reconnaitre_passe_simple::reading-receptive"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_passe_simple::writing-controlled-production::verb:savoir",
@@ -10652,9 +10621,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "reconnaitre_passe_simple::reading-receptive"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_passe_simple::writing-controlled-production::verb:devoir",
@@ -10672,89 +10639,87 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "reconnaitre_passe_simple::reading-receptive"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_passe_simple::writing-controlled-production::pattern:regular_er",
       "nodeKey": "produire_passe_simple",
       "facetKey": "produire_passe_simple::pattern:regular_er",
-      "action": "author_exact_target_lesson",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_passe_simple::writing-controlled-production::pattern:regular_er",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 28,
-          "learningItems": 28
+          "initialItems": 6,
+          "learningItems": 6
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "reconnaitre_passe_simple::reading-receptive"
-      ]
+      "lessonIds": [
+        "french-v3-teaching:passe-simple:pattern:regular_er"
+      ],
+      "freshCheckAvailable": true,
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_passe_simple::writing-controlled-production::pattern:regular_ir",
       "nodeKey": "produire_passe_simple",
       "facetKey": "produire_passe_simple::pattern:regular_ir",
-      "action": "author_exact_target_lesson",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_passe_simple::writing-controlled-production::pattern:regular_ir",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 16,
-          "learningItems": 16
+          "initialItems": 6,
+          "learningItems": 6
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "reconnaitre_passe_simple::reading-receptive"
-      ]
+      "lessonIds": [
+        "french-v3-teaching:passe-simple:pattern:regular_ir"
+      ],
+      "freshCheckAvailable": true,
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_passe_simple::writing-controlled-production::pattern:spelling_ger",
       "nodeKey": "produire_passe_simple",
       "facetKey": "produire_passe_simple::pattern:spelling_ger",
-      "action": "author_exact_target_lesson",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_passe_simple::writing-controlled-production::pattern:spelling_ger",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 12,
-          "learningItems": 12
+          "initialItems": 6,
+          "learningItems": 6
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "reconnaitre_passe_simple::reading-receptive"
-      ]
+      "lessonIds": [
+        "french-v3-teaching:passe-simple:pattern:spelling_ger"
+      ],
+      "freshCheckAvailable": true,
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_passe_simple::writing-controlled-production::pattern:spelling_cer",
       "nodeKey": "produire_passe_simple",
       "facetKey": "produire_passe_simple::pattern:spelling_cer",
-      "action": "author_exact_target_lesson",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_passe_simple::writing-controlled-production::pattern:spelling_cer",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 12,
-          "learningItems": 12
+          "initialItems": 6,
+          "learningItems": 6
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "reconnaitre_passe_simple::reading-receptive"
-      ]
+      "lessonIds": [
+        "french-v3-teaching:passe-simple:pattern:spelling_cer"
+      ],
+      "freshCheckAvailable": true,
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "employer_passe_simple_en_contexte::writing-independent-production",
