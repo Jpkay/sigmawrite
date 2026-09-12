@@ -1,6 +1,8 @@
+import {DIAGNOSTIC_COPY,featureCountText} from "./diagnostic-copy";
 import React from 'react';
 import type {SkillResult} from '@/lib/diagnostic/granular/engine';
 import {featureLabel} from '@/lib/diagnostic/granular/feature-labels';
+const copy=DIAGNOSTIC_COPY.child;
 
 export function SkillFeatureResults({result}:{result:SkillResult}){
  const rows=result.modes.flatMap(mode=>(mode.featureEvidence??[]).flatMap(row=>{
@@ -8,10 +10,10 @@ export function SkillFeatureResults({result}:{result:SkillResult}){
  }));
  if(!rows.length)return null;
  return <div className="mt-3 text-sm">
-  <p className="font-medium">Détail des réponses prises en compte</p>
+  <p className="font-medium">{copy.featureTitle}</p>
   <ul className="mt-1 space-y-1">
-   {rows.map(row=><li key={`${row.mode}:${row.feature}`}><span>{row.label} : </span><span className="text-muted-foreground">{row.distinctItems===0?'Pas encore vérifié':`${row.correctItems} réponse${row.correctItems===1?'':'s'} réussie${row.correctItems===1?'':'s'} sur ${row.distinctItems}`}</span></li>)}
+   {rows.map(row=><li key={`${row.mode}:${row.feature}`}><span>{row.label} : </span><span className="text-muted-foreground">{row.distinctItems===0?copy.featureUnknown:featureCountText(row.correctItems,row.distinctItems)}</span></li>)}
   </ul>
-  <p className="mt-2 text-muted-foreground">Le statut tient aussi compte de questions différentes et de vérifications à différents moments.</p>
+  <p className="mt-2 text-muted-foreground">{copy.featureScope}</p>
  </div>;
 }

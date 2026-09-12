@@ -1,5 +1,5 @@
 /** Display names only. They do not add evidence, requirements or mastery. */
-const LABELS:Readonly<Record<string,string>>={
+export const FEATURE_LABELS:Readonly<Record<string,string>>={
  'complex-negation:plus':'Ne…plus',
  'complex-negation:jamais':'Ne…jamais',
  'complex-negation:rien':'Ne…rien',
@@ -16,4 +16,4 @@ const LABELS:Readonly<Record<string,string>>={
  'no-direct-object-etre':'Cas avec être, sans complément direct',
  'spelling-adjustment':'Changements d’orthographe du verbe',
 };
-export function featureLabel(feature:string):string|undefined{return LABELS[feature];}
+export function featureLabel(feature:string):string|undefined{return FEATURE_LABELS[feature];}

@@ -1,4 +1,6 @@
 "use server";
+import type {AssessmentResponse} from "@/lib/diagnostic/granular/client-state";
+import {diagnosticDisplayText} from "@/lib/diagnostic/granular/diagnostic-display-text";
 import {captureAssessmentDelivery} from "@/lib/diagnostic/granular/covered-material-delivery";
 import {requireRole} from "@/lib/auth";
 import {createClient,createServiceClient} from "@/lib/supabase/server";
@@ -17,8 +19,8 @@ async function context(){
  await requireStudentAccessAuthorized(client,studentId);
  return {studentId,client,store:new SupabaseAssessmentStore(createServiceClient(),{cache:sharedReleaseContentCache,namespace:process.env.NEXT_PUBLIC_SUPABASE_URL!})};
 }
-async function deliver<T>(store:SupabaseAssessmentStore,studentId:string,boundary:string,result:T):Promise<T>{
- await captureAssessmentDelivery(store,studentId,boundary,result);
+async function deliver<T extends AssessmentResponse>(store:SupabaseAssessmentStore,studentId:string,boundary:string,result:T):Promise<T>{
+ await captureAssessmentDelivery(store,studentId,boundary,result.view?{...result,displayText:diagnosticDisplayText(result.view)}:result);
  return result;
 }
 export async function startGranularDiagnostic(){

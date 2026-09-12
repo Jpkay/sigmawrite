@@ -1,5 +1,5 @@
 import {beforeEach,expect,it,vi} from 'vitest';
-const f=vi.hoisted(()=>({guard:vi.fn(),latest:vi.fn(),start:vi.fn(),record:vi.fn(),journal:vi.fn(),command:vi.fn(),writingFactory:vi.fn(),writingEvaluator:vi.fn(),view:{phase:'learning',question:{promptFr:'Les oiseaux chantent.'}},state:{lessonTitle:'Observer le sujet'}}));
+const f=vi.hoisted(()=>({guard:vi.fn(),latest:vi.fn(),start:vi.fn(),record:vi.fn(),journal:vi.fn(),command:vi.fn(),writingFactory:vi.fn(),writingEvaluator:vi.fn(),view:{phase:'learning',answeredCount:3,skippedCount:1,remainingSeconds:90,results:[],question:{promptFr:'Les oiseaux chantent.'}},state:{lessonTitle:'Observer le sujet'}}));
 vi.mock('@/lib/diagnostic/granular/server-writing-evaluator',()=>({serverWritingEvaluator:f.writingFactory}));
 vi.mock('@/lib/auth',()=>({requireRole:f.guard}));
 vi.mock('@/lib/supabase/server',()=>({createClient:async()=>({}),createServiceClient:()=>({})}));
@@ -18,7 +18,8 @@ it('records the complete final delivery including appended student-state content
  for(const action of [updateGranularDiagnostic,updateGranularLearningCheck]){
   const result=await action({studentId:'forged-owner'});
   expect(result).toMatchObject({studentState:f.state});
-  expect(f.journal).toHaveBeenLastCalledWith(expect.objectContaining({studentId:'owner',textFragments:expect.arrayContaining(['Les oiseaux chantent.','Observer le sujet'])}));
+  expect(result).not.toHaveProperty('displayText');
+  expect(f.journal).toHaveBeenLastCalledWith(expect.objectContaining({studentId:'owner',textFragments:expect.arrayContaining(['Les oiseaux chantent.','Observer le sujet','3 réponses enregistrées · 1 question passée · environ 2 min restantes','Question 5'])}));
  }
  expect(f.record.mock.invocationCallOrder[0]).toBeLessThan(f.journal.mock.invocationCallOrder[0]);
 });

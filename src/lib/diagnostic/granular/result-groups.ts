@@ -1,6 +1,6 @@
 import type {Mode,SkillResult} from "./engine";
 export type ResultDetail={assessmentAvailable?:boolean;labelFr:string;domain:string;samplingGroup?:string;mode:Mode};
-const GROUPS=[
+export const RESULT_GROUPS=[
  {id:"reading_comprehension",labelFr:"Lecture"},
  {id:"grammar",labelFr:"Grammaire"},
  {id:"conjugation",labelFr:"Conjugaison"},
@@ -15,9 +15,9 @@ export function groupAssessmentResults(results:readonly SkillResult[],details:Re
  const groupOf=(result:SkillResult)=>{
   const detail=details[result.skillId];
   if(detail?.domain==="spelling"&&["orthographe_lexicale","orthographe_grammaticale"].includes(detail.samplingGroup??""))return detail.samplingGroup;
-  return GROUPS.some(group=>group.id===detail?.domain)?detail.domain:"other";
+  return RESULT_GROUPS.some(group=>group.id===detail?.domain)?detail.domain:"other";
  };
- return GROUPS.map(group=>({...group,results:results.filter(result=>groupOf(result)===group.id)
+ return RESULT_GROUPS.map(group=>({...group,results:results.filter(result=>groupOf(result)===group.id)
   .map(result=>({result,detail:details[result.skillId]}))
   .sort((a,b)=>Number(a.result.status==="unknown")-Number(b.result.status==="unknown")||
    (a.detail?.labelFr??"").localeCompare(b.detail?.labelFr??"","fr")||a.result.skillId.localeCompare(b.result.skillId))}))

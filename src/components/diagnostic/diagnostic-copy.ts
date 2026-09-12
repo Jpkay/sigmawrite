@@ -1,4 +1,7 @@
-/** Fixed main diagnostic UI copy. Dynamic counters and child components have separate capture boundaries. */
+import {FEATURE_LABELS} from "@/lib/diagnostic/granular/feature-labels";
+import {RESULT_GROUPS} from "@/lib/diagnostic/granular/result-groups";
+import {ASSESSMENT_CONFLICT_MESSAGE} from "@/lib/diagnostic/granular/client-state";
+/** Fixed diagnostic wording recorded before the client is delivered. */
 export const DIAGNOSTIC_COPY = {
   "startTitle": "Ton point de départ",
   "loadingDescription": "Quelques questions pour découvrir ce que tu sais déjà et préparer la suite.",
@@ -65,5 +68,49 @@ export const DIAGNOSTIC_COPY = {
     "production": "Écrire la réponse",
     "interpretation": "Comprendre",
     "independent_production": "Utiliser dans un texte personnel"
-  }
+  },
+  child: {
+  "beginPractice": "À moi d’essayer",
+  "chooseAnswer": "Choisis ta réponse",
+  "yourAnswer": "Ta réponse",
+  "saving": "Enregistrement…",
+  "checkAnswer": "Vérifier ma réponse",
+  "hint": "Un indice",
+  "correct": "Oui, c’est ça !",
+  "correction": "Regarde la correction.",
+  "answerPrefix": "Ta réponse :",
+  "finishPractice": "Terminer l’entraînement",
+  "nextExercise": "Exercice suivant",
+  "loadingExercise": "Chargement de l’exercice…",
+  "leaveHelp": "Tu peux fermer cette page et reprendre ici plus tard. Quitter l’activité maintenant te ramène au bilan.",
+  "leave": "Quitter l’activité",
+  "audioHelp": "Écoute le mot jusqu’au bout avant de répondre. Tu peux le réécouter.",
+  "audioLabel": "Écouter le mot",
+  "teachingAudioError": "Le son ne peut pas être lu. Tu peux réessayer ou quitter l’activité pour revenir à ton bilan.",
+  "assessmentAudioError": "Le son ne peut pas être lu. Tu peux passer cette question ; cela ne comptera pas comme une erreur.",
+  "writingTitle": "Retour sur ton texte",
+  "writingSkillPrefix": "Point travaillé :",
+  "writingUnassessed": "Ton texte est enregistré. Il ne permet pas encore de vérifier ce point. Tu peux continuer ton parcours ; nous le vérifierons avec une autre activité.",
+  "writingCorrectSingle": "Le passage vérifié est correct pour ce point.",
+  "writingScope": "Ce retour porte sur les passages vérifiés pour cette compétence. Tes prochains textes aideront à confirmer tes acquis.",
+  "reread": "Relire mon texte",
+  "passageCorrect": "Correct pour ce point",
+  "passageReview": "À revoir",
+  "featureTitle": "Détail des réponses prises en compte",
+  "featureUnknown": "Pas encore vérifié",
+  "featureScope": "Le statut tient aussi compte de questions différentes et de vérifications à différents moments."
+},
+  featureLabels:Object.values(FEATURE_LABELS),
+  resultGroups:RESULT_GROUPS.map(group=>group.labelFr),
+  conflict:ASSESSMENT_CONFLICT_MESSAGE,
 } as const;
+
+export const diagnosticProgressText=(answered:number,skipped:number,remainingSeconds:number)=>`${answered} réponse${answered===1?"":"s"} enregistrée${answered===1?"":"s"}${skipped>0?` · ${skipped} question${skipped===1?"":"s"} passée${skipped===1?"":"s"}`:""} · environ ${Math.ceil(remainingSeconds/60)} min restantes`;
+export const diagnosticQuestionText=(answered:number,skipped:number)=>`Question ${answered+skipped+1}`;
+export const diagnosticAnswerCountText=(count:number)=>`${count} réponse(s)`;
+export const teachingProgressText=(index:number,total:number)=>`Entraînement ${index+1} sur ${total} · Tu peux demander de l’aide.`;
+export const featureCountText=(correct:number,total:number)=>`${correct} réponse${correct===1?'':'s'} réussie${correct===1?'':'s'} sur ${total}`;
+export function writingCountText(checked:number,correct:number){
+ const mistakes=checked-correct;
+ return mistakes===0?(checked===1?DIAGNOSTIC_COPY.child.writingCorrectSingle:`Les ${checked} passages vérifiés sont corrects pour ce point.`):`${mistakes} passage${mistakes===1?'':'s'} à revoir parmi ${checked} vérifié${checked===1?'':'s'}.`;
+}
