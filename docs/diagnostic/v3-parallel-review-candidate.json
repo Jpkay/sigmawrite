@@ -446,20 +446,20 @@
   "status": "parallel_review_release_preparation",
   "reviewOwner": "product_owner",
   "authorization": "product-owner-request-2026-09-11",
-  "policyChecksum": "sha256:793cdcd185c6a4c278447533d45f4bd1fac60eb6355ef4afd278321eac60fdc3",
+  "policyChecksum": "sha256:8d90a4df7f8533de4fe1326a65da8cdd513e8da90a0ce0d85c8ddef06fb4dd44",
   "summary": {
     "teachingScopeTargets": 360,
-    "teachingPrerequisiteGapTargets": 15,
-    "teachingLessons": 338,
-    "teachingTargetsWithPools": 324,
-    "teachingTargetsWithFreshChecks": 324,
-    "guidedExercises": 1882,
-    "selectedPendingOrRepairedQuestions": 6681,
+    "teachingPrerequisiteGapTargets": 13,
+    "teachingLessons": 340,
+    "teachingTargetsWithPools": 326,
+    "teachingTargetsWithFreshChecks": 326,
+    "guidedExercises": 1894,
+    "selectedPendingOrRepairedQuestions": 6713,
     "canonicalReviewedQuestions": 238,
-    "mappedQuestions": 6896,
+    "mappedQuestions": 6928,
     "targets": 542,
-    "allocatedTargets": 345,
-    "incompleteTargets": 197,
+    "allocatedTargets": 347,
+    "incompleteTargets": 195,
     "fullPoolCoverage": false,
     "unsupportedEvidenceItemKeys": [
       "local-reading-v1:inferer_chronologie_implicite:receptive:foundation",
@@ -23560,36 +23560,6 @@
         "usage": "initial"
       },
       {
-        "id": "local-spelling-gap-v1:accorder_adjectif_nom_ecrit:receptive:core",
-        "skillId": "accorder_adjectif_nom_ecrit::reading-receptive",
-        "mode": "recognition",
-        "contextId": "surface:sha256:c7807b67bf1c27bca88ee5c4bbf41e07b1d52da0ac42dea14b21805dac709ce5",
-        "difficulty": 0.5,
-        "expectedSeconds": 30,
-        "guessProbability": 0.3333333333333333,
-        "textualSupportAssessed": false,
-        "materialKeys": [],
-        "assessedMaterialKeys": [],
-        "contrastingErrorKeys": [],
-        "negativeExampleAssessed": false,
-        "usage": "initial"
-      },
-      {
-        "id": "local-spelling-gap-v1:accorder_adjectif_nom_ecrit:receptive:stretch",
-        "skillId": "accorder_adjectif_nom_ecrit::reading-receptive",
-        "mode": "recognition",
-        "contextId": "surface:sha256:c7807b67bf1c27bca88ee5c4bbf41e07b1d52da0ac42dea14b21805dac709ce5",
-        "difficulty": 0.75,
-        "expectedSeconds": 30,
-        "guessProbability": 0.3333333333333333,
-        "textualSupportAssessed": false,
-        "materialKeys": [],
-        "assessedMaterialKeys": [],
-        "contrastingErrorKeys": [],
-        "negativeExampleAssessed": false,
-        "usage": "initial"
-      },
-      {
         "id": "local-spelling-gap-v1:accorder_sujet_verbe_ecrit:receptive:core",
         "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:separated",
         "mode": "recognition",
@@ -24397,6 +24367,671 @@
         "textType": "narrative",
         "evidenceFeatures": [],
         "usage": "initial"
+      },
+      {
+        "id": "v3-written-adjective:recognition-1",
+        "skillId": "accorder_adjectif_nom_ecrit::reading-receptive",
+        "mode": "recognition",
+        "contextId": "written-adjective:recognition-1",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:ec8eb519c48bf0e0765935af30946c1ee96e27dd560b8e34e5ac5c01e7b782b0"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:ec8eb519c48bf0e0765935af30946c1ee96e27dd560b8e34e5ac5c01e7b782b0"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-gender",
+          "wrong-gender-and-number",
+          "wrong-number"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-written-adjective:recognition-2",
+        "skillId": "accorder_adjectif_nom_ecrit::reading-receptive",
+        "mode": "recognition",
+        "contextId": "written-adjective:recognition-2",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:a06d0ee2049ed2be79e1b4f43e2d87d4382a3e5fa2731b7441076edfa8d08ae9"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:a06d0ee2049ed2be79e1b4f43e2d87d4382a3e5fa2731b7441076edfa8d08ae9"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-gender-and-number",
+          "wrong-gender"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-written-adjective:recognition-3",
+        "skillId": "accorder_adjectif_nom_ecrit::reading-receptive",
+        "mode": "recognition",
+        "contextId": "written-adjective:recognition-3",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:f400de3b00e19b8f9d46307f0d8a777c67eba04dd8beacbf45359f893049efb3"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:f400de3b00e19b8f9d46307f0d8a777c67eba04dd8beacbf45359f893049efb3"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-gender-and-number",
+          "wrong-number",
+          "wrong-gender"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-written-adjective:recognition-4",
+        "skillId": "accorder_adjectif_nom_ecrit::reading-receptive",
+        "mode": "recognition",
+        "contextId": "written-adjective:recognition-4",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:19ff21c20a9ca8bcccfabe57e01aff6ec762a3fd345694e3cf486102f87d7f02"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:19ff21c20a9ca8bcccfabe57e01aff6ec762a3fd345694e3cf486102f87d7f02"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-gender",
+          "wrong-number",
+          "wrong-gender-and-number"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-written-adjective:recognition-5",
+        "skillId": "accorder_adjectif_nom_ecrit::reading-receptive",
+        "mode": "recognition",
+        "contextId": "written-adjective:recognition-5",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:acaa74e04ae1f3eb23a2a527f5d6a9c2ea1eda2974f9d8f2832e5d2cb7f670c5"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:acaa74e04ae1f3eb23a2a527f5d6a9c2ea1eda2974f9d8f2832e5d2cb7f670c5"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-gender",
+          "wrong-number"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-written-adjective:recognition-6",
+        "skillId": "accorder_adjectif_nom_ecrit::reading-receptive",
+        "mode": "recognition",
+        "contextId": "written-adjective:recognition-6",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:89c82be49626784dd61389d7930e8496d3b64c3aa720f9421bab0e7b069169bd"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:89c82be49626784dd61389d7930e8496d3b64c3aa720f9421bab0e7b069169bd"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-gender",
+          "wrong-number"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-written-adjective:recognition-7",
+        "skillId": "accorder_adjectif_nom_ecrit::reading-receptive",
+        "mode": "recognition",
+        "contextId": "written-adjective:recognition-7",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:ccc1423a4e794fc781033812cf3b640cbf975ab195039c265b5c43ddca2d426b"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:ccc1423a4e794fc781033812cf3b640cbf975ab195039c265b5c43ddca2d426b"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-gender-and-number",
+          "wrong-gender"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-written-adjective:recognition-8",
+        "skillId": "accorder_adjectif_nom_ecrit::reading-receptive",
+        "mode": "recognition",
+        "contextId": "written-adjective:recognition-8",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:ca09ebd073cd806ec8b59c21bc70501f92ee1578a68377f7ea88664c473ddaa8"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:ca09ebd073cd806ec8b59c21bc70501f92ee1578a68377f7ea88664c473ddaa8"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-gender",
+          "wrong-gender-and-number",
+          "wrong-number"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-written-adjective:recognition-9",
+        "skillId": "accorder_adjectif_nom_ecrit::reading-receptive",
+        "mode": "recognition",
+        "contextId": "written-adjective:recognition-9",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:c4fe8680c1711d77631611faa89f319b24348ce90edab814547ad587035862bf"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:c4fe8680c1711d77631611faa89f319b24348ce90edab814547ad587035862bf"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-gender",
+          "wrong-number"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-written-adjective:recognition-10",
+        "skillId": "accorder_adjectif_nom_ecrit::reading-receptive",
+        "mode": "recognition",
+        "contextId": "written-adjective:recognition-10",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:d797f687ae9e534341f806aa1d503faf76a488c9cb021a00270993ddb20887be"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:d797f687ae9e534341f806aa1d503faf76a488c9cb021a00270993ddb20887be"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-gender",
+          "wrong-gender-and-number"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-written-adjective:recognition-11",
+        "skillId": "accorder_adjectif_nom_ecrit::reading-receptive",
+        "mode": "recognition",
+        "contextId": "written-adjective:recognition-11",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:40ad61b2a5d18b665a42e4022bde737674e6068ddc58531393a29b8fa633d835"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:40ad61b2a5d18b665a42e4022bde737674e6068ddc58531393a29b8fa633d835"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-gender-and-number",
+          "wrong-number",
+          "wrong-gender"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-written-adjective:recognition-12",
+        "skillId": "accorder_adjectif_nom_ecrit::reading-receptive",
+        "mode": "recognition",
+        "contextId": "written-adjective:recognition-12",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:55e281d54bafc8fe8ea5889c079244d7a2126cec3894eba764362fb397af0c83"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:55e281d54bafc8fe8ea5889c079244d7a2126cec3894eba764362fb397af0c83"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-gender",
+          "wrong-gender-and-number",
+          "wrong-number"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-written-adjective:recognition-13",
+        "skillId": "accorder_adjectif_nom_ecrit::reading-receptive",
+        "mode": "recognition",
+        "contextId": "written-adjective:recognition-13",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:d5285fc89f5f7c5fbab419932372e3c102eecbfdcd9d1cf1e6d05af8d5cfdbdb"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:d5285fc89f5f7c5fbab419932372e3c102eecbfdcd9d1cf1e6d05af8d5cfdbdb"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-gender-and-number",
+          "wrong-gender"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-written-adjective:recognition-14",
+        "skillId": "accorder_adjectif_nom_ecrit::reading-receptive",
+        "mode": "recognition",
+        "contextId": "written-adjective:recognition-14",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:79a3de21256028b72fb531c3f8dbf054d88fe0dad9fd133c183439d01f10f894"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:79a3de21256028b72fb531c3f8dbf054d88fe0dad9fd133c183439d01f10f894"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-gender",
+          "wrong-gender-and-number",
+          "wrong-number"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-written-adjective:recognition-15",
+        "skillId": "accorder_adjectif_nom_ecrit::reading-receptive",
+        "mode": "recognition",
+        "contextId": "written-adjective:recognition-15",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:5361bbe621dbb394eb7216952efb998ff603287a96b142b4250b52bf97a71b14"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:5361bbe621dbb394eb7216952efb998ff603287a96b142b4250b52bf97a71b14"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-gender-and-number",
+          "wrong-number",
+          "wrong-gender"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-written-adjective:recognition-16",
+        "skillId": "accorder_adjectif_nom_ecrit::reading-receptive",
+        "mode": "recognition",
+        "contextId": "written-adjective:recognition-16",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:cd91cf5336d6e5a20bc6c4908378921968bfa0595514b27e1bb2d5ca9e906c46"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:cd91cf5336d6e5a20bc6c4908378921968bfa0595514b27e1bb2d5ca9e906c46"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-gender-and-number",
+          "wrong-gender"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-written-adjective:production-17",
+        "skillId": "accorder_adjectif_nom_ecrit::writing-controlled-production",
+        "mode": "production",
+        "contextId": "written-adjective:production-17",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:3fcb124fd6dad81bf4fa12c4ce735c2e6590f1190ab190e3c48ea55662e26a5f"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:3fcb124fd6dad81bf4fa12c4ce735c2e6590f1190ab190e3c48ea55662e26a5f"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-written-adjective:production-18",
+        "skillId": "accorder_adjectif_nom_ecrit::writing-controlled-production",
+        "mode": "production",
+        "contextId": "written-adjective:production-18",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:c1d600fbe44a0d87aae5d31624cdb5771a4560327983ef029aad19affce77b0f"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:c1d600fbe44a0d87aae5d31624cdb5771a4560327983ef029aad19affce77b0f"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-written-adjective:production-19",
+        "skillId": "accorder_adjectif_nom_ecrit::writing-controlled-production",
+        "mode": "production",
+        "contextId": "written-adjective:production-19",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:0cfd4b4e15422018f744f01951e86fc74b7e74bb005e7d4ef2ec4ad7d5ee5f10"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:0cfd4b4e15422018f744f01951e86fc74b7e74bb005e7d4ef2ec4ad7d5ee5f10"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-written-adjective:production-20",
+        "skillId": "accorder_adjectif_nom_ecrit::writing-controlled-production",
+        "mode": "production",
+        "contextId": "written-adjective:production-20",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:361fe28a5cb7e74cdf344e41290e3c9792fad17242c1e71587a07cde107262bd"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:361fe28a5cb7e74cdf344e41290e3c9792fad17242c1e71587a07cde107262bd"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-written-adjective:production-21",
+        "skillId": "accorder_adjectif_nom_ecrit::writing-controlled-production",
+        "mode": "production",
+        "contextId": "written-adjective:production-21",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:c674cb7fe7c8df63ddb44ea012c5a91a2993d4e33aafa0d5cb063976f00dc043"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:c674cb7fe7c8df63ddb44ea012c5a91a2993d4e33aafa0d5cb063976f00dc043"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-written-adjective:production-22",
+        "skillId": "accorder_adjectif_nom_ecrit::writing-controlled-production",
+        "mode": "production",
+        "contextId": "written-adjective:production-22",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:ab037c09d7df9a3c7a164a9a6956575beaf29b2d7a12b75b4ac5ab8753e30663"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:ab037c09d7df9a3c7a164a9a6956575beaf29b2d7a12b75b4ac5ab8753e30663"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-written-adjective:production-23",
+        "skillId": "accorder_adjectif_nom_ecrit::writing-controlled-production",
+        "mode": "production",
+        "contextId": "written-adjective:production-23",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:3f76368d3b036df1f2cb6abbda56e0726e96e8856cfbebdcd64c59fc5f21bbd2"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:3f76368d3b036df1f2cb6abbda56e0726e96e8856cfbebdcd64c59fc5f21bbd2"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-written-adjective:production-24",
+        "skillId": "accorder_adjectif_nom_ecrit::writing-controlled-production",
+        "mode": "production",
+        "contextId": "written-adjective:production-24",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:392af9a2bee50bfe59b2adddd6fc12d071b7d2cc116ea339e5c8ab8c9d770810"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:392af9a2bee50bfe59b2adddd6fc12d071b7d2cc116ea339e5c8ab8c9d770810"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-written-adjective:production-25",
+        "skillId": "accorder_adjectif_nom_ecrit::writing-controlled-production",
+        "mode": "production",
+        "contextId": "written-adjective:production-25",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:45c3e57f7b65575383e79d09b4351bc4eca6db8fd0257d1dd94c6d77ce592405"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:45c3e57f7b65575383e79d09b4351bc4eca6db8fd0257d1dd94c6d77ce592405"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-written-adjective:production-26",
+        "skillId": "accorder_adjectif_nom_ecrit::writing-controlled-production",
+        "mode": "production",
+        "contextId": "written-adjective:production-26",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:62a0813ea284ba24ef1416edd1c9bb51488afb550a7bab87c10d3f45ed62f45b"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:62a0813ea284ba24ef1416edd1c9bb51488afb550a7bab87c10d3f45ed62f45b"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-written-adjective:production-27",
+        "skillId": "accorder_adjectif_nom_ecrit::writing-controlled-production",
+        "mode": "production",
+        "contextId": "written-adjective:production-27",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:554c529b19ee33960422d96c0bbc399ca4c722a74531cfec01188d087e66c709"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:554c529b19ee33960422d96c0bbc399ca4c722a74531cfec01188d087e66c709"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-written-adjective:production-28",
+        "skillId": "accorder_adjectif_nom_ecrit::writing-controlled-production",
+        "mode": "production",
+        "contextId": "written-adjective:production-28",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:788f082efe5345852fcad60e5656314c45a78377a425daf96438f02060a0b14e"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:788f082efe5345852fcad60e5656314c45a78377a425daf96438f02060a0b14e"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-written-adjective:production-29",
+        "skillId": "accorder_adjectif_nom_ecrit::writing-controlled-production",
+        "mode": "production",
+        "contextId": "written-adjective:production-29",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:b85782cc1f41a2815ade7c945d160157aa2b4ff01e0943a48b27ec2ec8f3aa5d"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:b85782cc1f41a2815ade7c945d160157aa2b4ff01e0943a48b27ec2ec8f3aa5d"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-written-adjective:production-30",
+        "skillId": "accorder_adjectif_nom_ecrit::writing-controlled-production",
+        "mode": "production",
+        "contextId": "written-adjective:production-30",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:855f91695360f2ee6a0ff25cd79e4c998728fdfd0233a8b3e4905d0510bc9827"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:855f91695360f2ee6a0ff25cd79e4c998728fdfd0233a8b3e4905d0510bc9827"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-written-adjective:production-31",
+        "skillId": "accorder_adjectif_nom_ecrit::writing-controlled-production",
+        "mode": "production",
+        "contextId": "written-adjective:production-31",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:b7ffa0c034ad54001c00b0a9888829a9c8a7b08d8610384c806d76a2d199528e"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:b7ffa0c034ad54001c00b0a9888829a9c8a7b08d8610384c806d76a2d199528e"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-written-adjective:production-32",
+        "skillId": "accorder_adjectif_nom_ecrit::writing-controlled-production",
+        "mode": "production",
+        "contextId": "written-adjective:production-32",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:2edd53b1c54ee7b412ce86a601acd7d1db1853c14bc1d80a410be979633a1f67"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:2edd53b1c54ee7b412ce86a601acd7d1db1853c14bc1d80a410be979633a1f67"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
       },
       {
         "id": "v3-adjective-link:analysis-1",
@@ -155192,7 +155827,7 @@
       }
     ],
     "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
-    "bankChecksum": "sha256:56012ab522287c8daf77d82e9b353acd73d63f58f9feaf857aae51cb7d1a487f",
+    "bankChecksum": "sha256:db44ba52beaac2a504f86d85a3474b9d1b10086aad069feaeb12d3a3dd789505",
     "unsupportedEvidenceItemKeys": [
       "local-reading-v1:inferer_chronologie_implicite:receptive:foundation",
       "local-reading-v1:inferer_chronologie_implicite:receptive:core",
@@ -155215,7 +155850,7 @@
       "mode": "parallel_review",
       "authorization": "product-owner-request-2026-09-11",
       "reviewOwner": "product_owner",
-      "bankChecksum": "sha256:56012ab522287c8daf77d82e9b353acd73d63f58f9feaf857aae51cb7d1a487f",
+      "bankChecksum": "sha256:db44ba52beaac2a504f86d85a3474b9d1b10086aad069feaeb12d3a3dd789505",
       "questionChecksums": {
         "review-draft-v1:construction_pronom_relatif:controlled_production:foundation": "sha256:2731933f71f4a1408115b2457d07ee69469fdac2e7a6e57fb69c112e2a0c32dc",
         "review-draft-v1:construction_pronom_relatif:controlled_production:core": "sha256:d8b92f78c30ddfa7d1598405eb512dce2f2b476fdd151dd3a79c9476a729cc56",
@@ -155242,6 +155877,38 @@
         "local-reading-v1:inferer_chronologie_implicite:receptive:core": "sha256:1506b1e15cc6621d9641d32bc5492dedc8722adab2c2817e2d6275c4e3368d04",
         "local-reading-v1:inferer_chronologie_implicite:receptive:stretch": "sha256:7e58f0641d4689f6fc76075593b096545283f8b2420fe4b8993ef8b84c41e3d0",
         "local-reading-v1:comparer_points_de_vue:controlled_production:foundation": "sha256:ae4349e0976e050d52019208e3ff5a7e8d70685ac640242aadca852c6bed8e9d",
+        "v3-written-adjective:recognition-1": "sha256:68fea1a6dc5daf20bfebb790678da3e934d846b80c3130f829929db9985a967f",
+        "v3-written-adjective:recognition-2": "sha256:2e612eedc658e34c25b94b1da13a349b8ffa9e3a170a29a1c14aafa17332ba04",
+        "v3-written-adjective:recognition-3": "sha256:85092630c62792adf6e5c8e889861476b8829992af189881f9b5dcb576c5eb77",
+        "v3-written-adjective:recognition-4": "sha256:ea16890dc7534e4bd0149229299e55d82314bd5b5bd6bd0358c62422686730b5",
+        "v3-written-adjective:recognition-5": "sha256:e6c788b8be57593249a3116c76af65743631eb450a0f26507f9245dacd206a85",
+        "v3-written-adjective:recognition-6": "sha256:c60793b2eb056868d16e0b7b6ddb67e19eca2e34c1ba620e8ac80bdf4b7cd146",
+        "v3-written-adjective:recognition-7": "sha256:53cf1933059bc19f7e9cb2173f64a3957409ef6d71b8220fb60ba5cadcddacc7",
+        "v3-written-adjective:recognition-8": "sha256:cb81184699e7d8a5047c988ec406d015bb11c5d8c929a3e947c10eb5e77aeb04",
+        "v3-written-adjective:recognition-9": "sha256:aab2066f2d8c6f9a58aae015dc7ccd1d5cce0375965bbda570a37032dc09aa7d",
+        "v3-written-adjective:recognition-10": "sha256:0b702da432b8b1584ab7313160bd559c5413512d4f14cc6272f125c48d0f9539",
+        "v3-written-adjective:recognition-11": "sha256:f04bb2b741a873beebd652ee4b0711aa4833e24bf255bf4d92cfff9cf469bbb4",
+        "v3-written-adjective:recognition-12": "sha256:b3ca236e1f5d177625e4224f77ae0a004833688e672104b01b01f3c960296b26",
+        "v3-written-adjective:recognition-13": "sha256:34aad0f7cc7fbeca9437ce2253be16c6fe7c4a78bc19932d6ae30b21b4f2e28d",
+        "v3-written-adjective:recognition-14": "sha256:5673e97156c32055e1414fc2e80f0890f9f0b522545e39ebddd6e0720e8f76d3",
+        "v3-written-adjective:recognition-15": "sha256:0d4e0aacdafd44778b41d9fe57c0ccc223e415176cd4e810d41f28744d8f81a5",
+        "v3-written-adjective:recognition-16": "sha256:18e4e614bf855fa15daab16e32fcdd6cf53df84124df27bb3c3ca0f7714f62fc",
+        "v3-written-adjective:production-17": "sha256:49bf736db3bfba85ccc14022bdbf56d247695b26d7322e64ee06d33858f36726",
+        "v3-written-adjective:production-18": "sha256:0cd1d6ca8cba219c66495eeb8ed97cae5ce22d349be4213b1082c27112d55560",
+        "v3-written-adjective:production-19": "sha256:76cb823bd3e725d7db954d4e5e8bfb248bbff5c34b5a0f15a631e73ee371e412",
+        "v3-written-adjective:production-20": "sha256:4540edeeb36e4739217171166802a0215ed1a8008c65d82d91b892aff4226e3a",
+        "v3-written-adjective:production-21": "sha256:583880a582383a7d8ef2f9869cf4174306738422c2a4399c09bc5e5cbf936977",
+        "v3-written-adjective:production-22": "sha256:839a87feb7bf4cd10bf51b3096c05b7378bc0075519af3cf453a2766f8cf7468",
+        "v3-written-adjective:production-23": "sha256:c45acf3e58c4cc92799dc2e36e52f10b9e25f183f41b612c2c211909e41e5586",
+        "v3-written-adjective:production-24": "sha256:84512f2bdb44a8adf33971e2135cffd00f4981f4245c26b0da67cd80bc52b556",
+        "v3-written-adjective:production-25": "sha256:2ccf06534b47af5a006bb9cf81d2355e0631cfa2339ddc882700a745b0e29094",
+        "v3-written-adjective:production-26": "sha256:2f7185b9559242bdf8139e3848d4c6033640f366c0f7cda675b52a26f5411b61",
+        "v3-written-adjective:production-27": "sha256:2987ba816a6176c2f8cb2efb819865e47192b5a65a29e50a16eee79d4025a118",
+        "v3-written-adjective:production-28": "sha256:1f4f5bf0d12f68f3b2c334d77ef4b4584bc8360817dad26466639b8200d96792",
+        "v3-written-adjective:production-29": "sha256:e61d3bafe3837a2bfbcf1b87a8f591fc5b7f44ac505c048de30d8dab7d9ebfd0",
+        "v3-written-adjective:production-30": "sha256:775b9f3ba54be6d734315093ac2b16b8ce13a7715b464cf2cb42ce74b8085541",
+        "v3-written-adjective:production-31": "sha256:7d0e23a9d6737711e21b945e9422b4538391e726836933d2ab96e092d8adccf0",
+        "v3-written-adjective:production-32": "sha256:de8d30889e8ac0717d61c8b233e017898e00d4e973b4aab4ba1655591c12c07e",
         "v3-adjective-link:analysis-1": "sha256:5d46ddc359bd06e9b1306b025d00688b9dc97a7fb478a81b7a759eae98f75f17",
         "v3-adjective-link:analysis-2": "sha256:baca35770c59aa59e95ed1e272c579b3e7bcbeea1608e1ef853aed237813dbb4",
         "v3-adjective-link:analysis-3": "sha256:f9469554887f002b382d31227ed3bf5cf6936b00b44e6e98eee7e02f9df40d72",
@@ -161900,12 +162567,14 @@
         "v3-y-en:en_thing-18": "sha256:1de3bba6c34a338f57ee6b482b6a389ca0b053f6059a6c16d61d4a97fc48e58d"
       },
       "teachingChecksums": {
+        "french-v3-teaching:written-adjective:recognition": "sha256:87376a7a1a8e359dd46389db13ead9b7c8c30a5226ba5b323de66ef8386c7f8e",
+        "french-v3-teaching:written-adjective:production": "sha256:a99a8e73d6a5836a7a45895a7dd5cb310f1de1a1f35aaa0c56982074dc7c37c7",
         "french-v3-teaching:adjective-link:recognition": "sha256:d3e7b56b99e79be323c573d4cdf2e5a08f7504e8d1fe8ddc73aa8ba9f6e94d24",
         "french-v3-teaching:adjective-link:production": "sha256:2e7453a42d64ae6f5a9c76362771e00868953c230983f6b02cd6a47be374c400",
         "french-v3-teaching:written-determiner:recognition": "sha256:59aacae3e97c2d92878d6219a1da6ea506b4289bc00fc3044070d2147d8e461f",
         "french-v3-teaching:written-determiner:production": "sha256:abde17329c717557f513abaed2e0f96cb57a971340e231cc4a61f00a2dd9a91f",
         "french-v3-teaching:inflection-recognition:plural": "sha256:668f3e3c692eb37f0018eefdc0a10c8d5b8eb594ab0e3f68cd12976a274f8f5c",
-        "french-v3-teaching:inflection-recognition:feminine": "sha256:2b2bb1af034752fdf06751ab6dc59bd8bd602dde472a00f26e967425cf1b0cd1",
+        "french-v3-teaching:inflection-recognition:feminine": "sha256:d11bb08d98464f28a6525987e3fc1f2a02c81b5ea58b14e9c0a57f21594dce33",
         "french-v3-teaching:double-pronoun-order:declarative": "sha256:3073a21124db18493dfc803504e6880669f74d923346258514cf17cd3a801bc9",
         "french-v3-teaching:double-pronoun-order:negative": "sha256:cabe2a73709d0f063d5054a2f49dc2e5afdd7e70893479261834ab256d721ce6",
         "french-v3-teaching:double-pronoun-order:imperative": "sha256:90d723b7a78f6d59db2ef0f2a051ea0745e69a34f9f19c1cd240057abb6f44b2",
@@ -162219,7 +162888,7 @@
         "french-v3-teaching:reading:deduire_mot_exemple_contraste:informational": "sha256:34779c9c2d5280db99a752ce3dfb5a7e5d60cc705f6a4df1492dd6bc2afdbaba",
         "spelling-m-before-mbp": "sha256:79cbda89c30a00a73cfd9fe2c6fd9dd0354a387d9fb0143de793126531cb7045",
         "spelling-regular-plural": "sha256:cbe1f9fa6766e7690c0c4fdc5c8235ef156df7103251dbf198a11eeaa502448f",
-        "spelling-regular-feminine": "sha256:998cc3a873427484c1f460cd5ff09a7720b2d56dd2aabc651f73e26a838ed660",
+        "spelling-regular-feminine": "sha256:514f310751a3bf44b94f48ff72cb55633a1d2750913545c7c3d689f121de991e",
         "french-v3-teaching:present:pattern:regular_er": "sha256:c96ff683dec3d79b8f10d91a0d151b7576dd6c719d0f20edd11e4de1155d01d0",
         "french-v3-teaching:present:pattern:regular_ir": "sha256:d4d9fff2545e9d0d79399a1e81a79292ca84cee77778291738d8c3f4a70ab8f0",
         "french-v3-teaching:present:pattern:spelling_ger": "sha256:9f721dd69e549a539222640ca1af34ad64239cfae786e4e2f606cc3edfb2c123",
@@ -162240,8 +162909,8 @@
         "french-v3-teaching:present:verb:devoir": "sha256:b5dc0dcbb7300e37d56ae0b5bddfa3eb2de8f5e647961fd7c9e2761ad9daa67b"
       }
     },
-    "facetChecksum": "sha256:ccca4707d6965b38e8e2a361a8c379cc4a75f276272d5ab1139d4762e0dd6e88",
-    "poolChecksum": "sha256:4df902146671dbf8ea4d46eff838c520bb6c48cbbac60e8bb095164c337f5746"
+    "facetChecksum": "sha256:284dc3d10a5ea1079ee3aa893a0389f4c02d9c763f155a3122e09dca8000ed86",
+    "poolChecksum": "sha256:248adeecb5f03192f5485df10f03db3f790291a8d57f50e125ad0086d0458a5e"
   },
   "teachingPoolRepairs": [
     {
@@ -165711,16 +166380,21 @@
     {
       "skillId": "accorder_adjectif_nom_ecrit::reading-receptive",
       "mode": "recognition",
-      "status": "insufficient_coverage",
-      "initialItems": 2,
-      "learningItems": 0
+      "status": "allocated",
+      "initialItems": 8,
+      "learningItems": 8,
+      "excludedQuestionIds": [
+        "local-spelling-gap-v1:accorder_adjectif_nom_ecrit:receptive:core",
+        "local-spelling-gap-v1:accorder_adjectif_nom_ecrit:receptive:stretch"
+      ]
     },
     {
       "skillId": "accorder_adjectif_nom_ecrit::writing-controlled-production",
       "mode": "production",
-      "status": "insufficient_coverage",
-      "initialItems": 0,
-      "learningItems": 0
+      "status": "allocated",
+      "initialItems": 8,
+      "learningItems": 8,
+      "excludedQuestionIds": []
     },
     {
       "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
@@ -172764,6 +173438,46 @@
       "estimatedMinutes": 1
     },
     {
+      "id": "ce8c7f57-36c0-5df3-b430-8f43a71934b5",
+      "nodeKey": "accorder_adjectif_nom_ecrit",
+      "mode": "recognition",
+      "kind": "independent_check",
+      "status": "draft",
+      "titleFr": "Réaliser l'accord nom-adjectif",
+      "href": "/student/diagnostic",
+      "probeIds": [
+        "v3-written-adjective:recognition-13",
+        "v3-written-adjective:recognition-14",
+        "v3-written-adjective:recognition-15",
+        "v3-written-adjective:recognition-16",
+        "v3-written-adjective:recognition-3",
+        "v3-written-adjective:recognition-5",
+        "v3-written-adjective:recognition-7",
+        "v3-written-adjective:recognition-9"
+      ],
+      "estimatedMinutes": 1
+    },
+    {
+      "id": "939a21ec-7cb8-5e88-9360-636c5151d727",
+      "nodeKey": "accorder_adjectif_nom_ecrit",
+      "mode": "production",
+      "kind": "independent_check",
+      "status": "draft",
+      "titleFr": "Réaliser l'accord nom-adjectif",
+      "href": "/student/diagnostic",
+      "probeIds": [
+        "v3-written-adjective:production-21",
+        "v3-written-adjective:production-22",
+        "v3-written-adjective:production-23",
+        "v3-written-adjective:production-24",
+        "v3-written-adjective:production-26",
+        "v3-written-adjective:production-28",
+        "v3-written-adjective:production-30",
+        "v3-written-adjective:production-32"
+      ],
+      "estimatedMinutes": 1
+    },
+    {
       "id": "54ea3b3e-e715-598d-ba96-45257ca81454",
       "nodeKey": "accorder_sujet_verbe_ecrit",
       "facetKey": "accorder_sujet_verbe_ecrit::construction:adjacent",
@@ -173799,6 +174513,238 @@
   ],
   "teachingContent": [
     {
+      "id": "french-v3-teaching:written-adjective:recognition",
+      "nodeKey": "accorder_adjectif_nom_ecrit",
+      "mode": "recognition",
+      "status": "published_pending_review",
+      "titleFr": "Choisir la bonne forme de l’adjectif",
+      "learnerQuestionFr": "Quelle forme faut-il écrire pour décrire ce nom ?",
+      "steps": [
+        {
+          "exampleFr": "Un mur blanc. Une porte blanche.",
+          "explanationFr": "Blanc décrit un nom masculin ; blanche décrit un nom féminin. Le féminin ne se forme pas toujours en ajoutant seulement e."
+        },
+        {
+          "exampleFr": "Un rideau bleu. Des rideaux bleus. Des tentures bleues.",
+          "explanationFr": "L’adjectif suit le genre et le nombre du nom. Bleus porte le pluriel ; bleues porte le féminin et le pluriel."
+        },
+        {
+          "exampleFr": "Un prix bas. Des prix bas.",
+          "explanationFr": "Bas garde ici la même forme écrite au singulier et au pluriel. On ne rajoute pas un second s."
+        }
+      ],
+      "takeawayFr": "Vérifie les deux informations : le genre et le nombre du nom.",
+      "boundaryFr": "Certains adjectifs changent beaucoup au féminin ; d’autres gardent la même forme au pluriel. Ces exemples ne couvrent pas toutes les exceptions.",
+      "practice": [
+        {
+          "id": "written-adjective:recognition:0",
+          "promptFr": "Choisis la forme correcte.\n\nLa valise est ___.",
+          "answerFr": "lourde",
+          "hintFr": "Repère le nom décrit. Est-il masculin ou féminin ? Singulier ou pluriel ?",
+          "explanationFr": "La valise est lourde. L’adjectif prend la forme qui convient au nom.",
+          "choices": [
+            "lourde",
+            "lourd",
+            "lourds"
+          ]
+        },
+        {
+          "id": "written-adjective:recognition:1",
+          "promptFr": "Choisis la forme correcte.\n\nLes tapis sont ___.",
+          "answerFr": "épais",
+          "hintFr": "Repère le nom décrit. Est-il masculin ou féminin ? Singulier ou pluriel ?",
+          "explanationFr": "Les tapis sont épais. L’adjectif prend la forme qui convient au nom.",
+          "choices": [
+            "épais",
+            "épaisse",
+            "épaisses"
+          ]
+        },
+        {
+          "id": "written-adjective:recognition:2",
+          "promptFr": "Choisis la forme correcte.\n\nLes fenêtres sont ___.",
+          "answerFr": "petites",
+          "hintFr": "Repère le nom décrit. Est-il masculin ou féminin ? Singulier ou pluriel ?",
+          "explanationFr": "Les fenêtres sont petites. L’adjectif prend la forme qui convient au nom.",
+          "choices": [
+            "petites",
+            "petit",
+            "petits"
+          ]
+        },
+        {
+          "id": "written-adjective:recognition:3",
+          "promptFr": "Choisis la forme correcte.\n\nLa couverture est ___.",
+          "answerFr": "douce",
+          "hintFr": "Repère le nom décrit. Est-il masculin ou féminin ? Singulier ou pluriel ?",
+          "explanationFr": "La couverture est douce. L’adjectif prend la forme qui convient au nom.",
+          "choices": [
+            "douce",
+            "doux",
+            "douces"
+          ]
+        },
+        {
+          "id": "written-adjective:recognition:4",
+          "promptFr": "Choisis la forme correcte.\n\nLes jardins sont ___.",
+          "answerFr": "fleuris",
+          "hintFr": "Repère le nom décrit. Est-il masculin ou féminin ? Singulier ou pluriel ?",
+          "explanationFr": "Les jardins sont fleuris. L’adjectif prend la forme qui convient au nom.",
+          "choices": [
+            "fleuris",
+            "fleurie",
+            "fleuries"
+          ]
+        },
+        {
+          "id": "written-adjective:recognition:5",
+          "promptFr": "Choisis la forme correcte.\n\nLes musiciennes sont ___.",
+          "answerFr": "talentueuses",
+          "hintFr": "Repère le nom décrit. Est-il masculin ou féminin ? Singulier ou pluriel ?",
+          "explanationFr": "Les musiciennes sont talentueuses. L’adjectif prend la forme qui convient au nom.",
+          "choices": [
+            "talentueuses",
+            "talentueux",
+            "talentueuse"
+          ]
+        }
+      ],
+      "materialExposure": {
+        "words": [
+          {
+            "lemma": "lourd",
+            "form": "lourde"
+          },
+          {
+            "lemma": "épais",
+            "form": "épais"
+          },
+          {
+            "lemma": "petit",
+            "form": "petites"
+          },
+          {
+            "lemma": "doux",
+            "form": "douce"
+          },
+          {
+            "lemma": "fleuri",
+            "form": "fleuris"
+          },
+          {
+            "lemma": "talentueux",
+            "form": "talentueuses"
+          }
+        ]
+      },
+      "assessmentExposureIds": [
+        "local-spelling-v1:justifier_lettre_finale_muette:receptive:core",
+        "v3-spelling:feminine-lourd",
+        "v3-spelling:feminine-petit"
+      ]
+    },
+    {
+      "id": "french-v3-teaching:written-adjective:production",
+      "nodeKey": "accorder_adjectif_nom_ecrit",
+      "mode": "production",
+      "status": "published_pending_review",
+      "titleFr": "Écrire la bonne forme de l’adjectif",
+      "learnerQuestionFr": "Quelle forme faut-il écrire pour décrire ce nom ?",
+      "steps": [
+        {
+          "exampleFr": "Un mur blanc. Une porte blanche.",
+          "explanationFr": "Blanc décrit un nom masculin ; blanche décrit un nom féminin. Le féminin ne se forme pas toujours en ajoutant seulement e."
+        },
+        {
+          "exampleFr": "Un rideau bleu. Des rideaux bleus. Des tentures bleues.",
+          "explanationFr": "L’adjectif suit le genre et le nombre du nom. Bleus porte le pluriel ; bleues porte le féminin et le pluriel."
+        },
+        {
+          "exampleFr": "Un prix bas. Des prix bas.",
+          "explanationFr": "Bas garde ici la même forme écrite au singulier et au pluriel. On ne rajoute pas un second s."
+        }
+      ],
+      "takeawayFr": "Vérifie les deux informations : le genre et le nombre du nom.",
+      "boundaryFr": "Certains adjectifs changent beaucoup au féminin ; d’autres gardent la même forme au pluriel. Ces exemples ne couvrent pas toutes les exceptions.",
+      "practice": [
+        {
+          "id": "written-adjective:production:0",
+          "promptFr": "Complète avec « lourd » correctement accordé.\n\nLa valise est ___.",
+          "answerFr": "lourde",
+          "hintFr": "Repère le nom décrit. Est-il masculin ou féminin ? Singulier ou pluriel ?",
+          "explanationFr": "La valise est lourde. L’adjectif prend la forme qui convient au nom."
+        },
+        {
+          "id": "written-adjective:production:1",
+          "promptFr": "Complète avec « épais » correctement accordé.\n\nLes tapis sont ___.",
+          "answerFr": "épais",
+          "hintFr": "Repère le nom décrit. Est-il masculin ou féminin ? Singulier ou pluriel ?",
+          "explanationFr": "Les tapis sont épais. L’adjectif prend la forme qui convient au nom."
+        },
+        {
+          "id": "written-adjective:production:2",
+          "promptFr": "Complète avec « petit » correctement accordé.\n\nLes fenêtres sont ___.",
+          "answerFr": "petites",
+          "hintFr": "Repère le nom décrit. Est-il masculin ou féminin ? Singulier ou pluriel ?",
+          "explanationFr": "Les fenêtres sont petites. L’adjectif prend la forme qui convient au nom."
+        },
+        {
+          "id": "written-adjective:production:3",
+          "promptFr": "Complète avec « doux » correctement accordé.\n\nLa couverture est ___.",
+          "answerFr": "douce",
+          "hintFr": "Repère le nom décrit. Est-il masculin ou féminin ? Singulier ou pluriel ?",
+          "explanationFr": "La couverture est douce. L’adjectif prend la forme qui convient au nom."
+        },
+        {
+          "id": "written-adjective:production:4",
+          "promptFr": "Complète avec « fleuri » correctement accordé.\n\nLes jardins sont ___.",
+          "answerFr": "fleuris",
+          "hintFr": "Repère le nom décrit. Est-il masculin ou féminin ? Singulier ou pluriel ?",
+          "explanationFr": "Les jardins sont fleuris. L’adjectif prend la forme qui convient au nom."
+        },
+        {
+          "id": "written-adjective:production:5",
+          "promptFr": "Complète avec « talentueux » correctement accordé.\n\nLes musiciennes sont ___.",
+          "answerFr": "talentueuses",
+          "hintFr": "Repère le nom décrit. Est-il masculin ou féminin ? Singulier ou pluriel ?",
+          "explanationFr": "Les musiciennes sont talentueuses. L’adjectif prend la forme qui convient au nom."
+        }
+      ],
+      "materialExposure": {
+        "words": [
+          {
+            "lemma": "lourd",
+            "form": "lourde"
+          },
+          {
+            "lemma": "épais",
+            "form": "épais"
+          },
+          {
+            "lemma": "petit",
+            "form": "petites"
+          },
+          {
+            "lemma": "doux",
+            "form": "douce"
+          },
+          {
+            "lemma": "fleuri",
+            "form": "fleuris"
+          },
+          {
+            "lemma": "talentueux",
+            "form": "talentueuses"
+          }
+        ]
+      },
+      "assessmentExposureIds": [
+        "local-spelling-v1:justifier_lettre_finale_muette:receptive:core",
+        "v3-spelling:feminine-lourd",
+        "v3-spelling:feminine-petit"
+      ]
+    },
+    {
       "id": "french-v3-teaching:adjective-link:recognition",
       "nodeKey": "construction_accord_nom_adjectif",
       "mode": "recognition",
@@ -174660,7 +175606,10 @@
           "un bel endroit → une belle place"
         ]
       },
-      "assessmentExposureIds": []
+      "assessmentExposureIds": [
+        "v3-written-adjective:production-22",
+        "v3-written-adjective:recognition-16"
+      ]
     },
     {
       "id": "french-v3-teaching:double-pronoun-order:declarative",
@@ -227022,7 +227971,9 @@
           "explanationFr": "Une ligne est féminin singulier. Droit devient droite."
         }
       ],
-      "assessmentExposureIds": []
+      "assessmentExposureIds": [
+        "v3-written-adjective:recognition-6"
+      ]
     },
     {
       "id": "french-v3-teaching:present:pattern:regular_er",
@@ -230762,6 +231713,50 @@
     }
   ],
   "teachingBindings": [
+    {
+      "id": "890584f3-39fc-5dec-bdea-c4d4c7aee1be",
+      "nodeKey": "accorder_adjectif_nom_ecrit",
+      "mode": "recognition",
+      "kind": "instruction",
+      "status": "published",
+      "titleFr": "Choisir la bonne forme de l’adjectif",
+      "href": "/student/diagnostic",
+      "contentId": "french-v3-teaching:written-adjective:recognition",
+      "estimatedMinutes": 4
+    },
+    {
+      "id": "32ecfa2f-d21e-5348-921f-d65e2101e058",
+      "nodeKey": "accorder_adjectif_nom_ecrit",
+      "mode": "recognition",
+      "kind": "practice",
+      "status": "published",
+      "titleFr": "Choisir la bonne forme de l’adjectif",
+      "href": "/student/diagnostic",
+      "contentId": "french-v3-teaching:written-adjective:recognition",
+      "estimatedMinutes": 6
+    },
+    {
+      "id": "f8b595cc-0560-5204-9017-a8e43ec05fcd",
+      "nodeKey": "accorder_adjectif_nom_ecrit",
+      "mode": "production",
+      "kind": "instruction",
+      "status": "published",
+      "titleFr": "Écrire la bonne forme de l’adjectif",
+      "href": "/student/diagnostic",
+      "contentId": "french-v3-teaching:written-adjective:production",
+      "estimatedMinutes": 4
+    },
+    {
+      "id": "6c72eafe-53b9-522c-9d79-0b5ab096c40a",
+      "nodeKey": "accorder_adjectif_nom_ecrit",
+      "mode": "production",
+      "kind": "practice",
+      "status": "published",
+      "titleFr": "Écrire la bonne forme de l’adjectif",
+      "href": "/student/diagnostic",
+      "contentId": "french-v3-teaching:written-adjective:production",
+      "estimatedMinutes": 6
+    },
     {
       "id": "9c961224-1376-55cb-a802-5fd594745651",
       "nodeKey": "construction_accord_nom_adjectif",
@@ -238373,6 +239368,20 @@
   ],
   "teachingReadiness": [
     {
+      "lessonId": "french-v3-teaching:written-adjective:recognition",
+      "skillId": "accorder_adjectif_nom_ecrit::reading-receptive",
+      "poolsAllocated": true,
+      "remainingCheckQuestions": 8,
+      "freshCheckAvailable": true
+    },
+    {
+      "lessonId": "french-v3-teaching:written-adjective:production",
+      "skillId": "accorder_adjectif_nom_ecrit::writing-controlled-production",
+      "poolsAllocated": true,
+      "remainingCheckQuestions": 8,
+      "freshCheckAvailable": true
+    },
+    {
       "lessonId": "french-v3-teaching:adjective-link:recognition",
       "skillId": "construction_accord_nom_adjectif::reading-analysis",
       "poolsAllocated": true,
@@ -240740,8 +241749,6 @@
     }
   ],
   "teachingPrerequisiteGaps": [
-    "accorder_adjectif_nom_ecrit::reading-receptive",
-    "accorder_adjectif_nom_ecrit::writing-controlled-production",
     "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
     "accorder_sujet_verbe_ecrit::reading-receptive::construction:coordinated",
     "accorder_sujet_verbe_ecrit::reading-receptive::construction:inverted",
@@ -240762,5 +241769,5 @@
     "Incomplete target pools remain visible; release scope and fresh post-teaching check capacity still need verification",
     "Structurally rejected content remains ineligible; semantic review continues in parallel"
   ],
-  "checksum": "sha256:f5d7ce6babdf48a166642bd60726aaa6e9cb35acf96abcc35b57d7770eea1b45"
+  "checksum": "sha256:28ba840292f7d538a56dfaa00a6ca3e86d844cf535f0ea4dd29bc664cdf67b01"
 }
