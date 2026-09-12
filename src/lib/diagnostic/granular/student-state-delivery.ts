@@ -1,4 +1,5 @@
 import 'server-only';
+import {memoryDisplay} from "@/lib/diagnostic/granular/memory-display";
 import {homeFallbackDisplay} from './home-recommendation-display';
 import {recentReadingDisplay} from './recent-reading-copy';
 import {getStudentStateData} from '@/lib/db/student';
@@ -11,6 +12,6 @@ export async function getDeliveredStudentState(
   ...args: Parameters<typeof getStudentStateData>
 ): ReturnType<typeof getStudentStateData> {
   const state = await getStudentStateData(...args);
-  await journalStudentPayload(args[0], 'legacy:student-state', {...state,recentReading:recentReadingDisplay(state.sessions),homeFallback:homeFallbackDisplay(state.interests)});
+  await journalStudentPayload(args[0], 'legacy:student-state', {...state,recentReading:recentReadingDisplay(state.sessions),homeFallback:homeFallbackDisplay(state.interests),memoryDisplay:memoryDisplay(state)});
   return state;
 }

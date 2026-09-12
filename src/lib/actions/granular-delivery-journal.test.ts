@@ -1,5 +1,5 @@
 import {beforeEach,expect,it,vi} from 'vitest';
-const f=vi.hoisted(()=>({guard:vi.fn(),latest:vi.fn(),start:vi.fn(),record:vi.fn(),journal:vi.fn(),command:vi.fn(),writingFactory:vi.fn(),writingEvaluator:vi.fn(),view:{phase:'learning',answeredCount:3,skippedCount:1,remainingSeconds:90,results:[],question:{promptFr:'Les oiseaux chantent.'}},state:{lessonTitle:'Observer le sujet',sessions:[],interests:[]}}));
+const f=vi.hoisted(()=>({guard:vi.fn(),latest:vi.fn(),start:vi.fn(),record:vi.fn(),journal:vi.fn(),command:vi.fn(),writingFactory:vi.fn(),writingEvaluator:vi.fn(),view:{phase:'learning',answeredCount:3,skippedCount:1,remainingSeconds:90,results:[],question:{promptFr:'Les oiseaux chantent.'}},state:{retrievalCards:[],vocab:{},lessonTitle:'Observer le sujet',sessions:[],interests:[]}}));
 vi.mock('@/lib/diagnostic/granular/server-writing-evaluator',()=>({serverWritingEvaluator:f.writingFactory}));
 vi.mock('@/lib/auth',()=>({requireRole:f.guard}));
 vi.mock('@/lib/supabase/server',()=>({createClient:async()=>({}),createServiceClient:()=>({})}));

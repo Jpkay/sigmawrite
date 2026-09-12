@@ -1,3 +1,4 @@
+import {memoryDisplay} from '@/lib/diagnostic/granular/memory-display';
 import {homeFallbackDisplay} from '@/lib/diagnostic/granular/home-recommendation-display';
 import {recentReadingDisplay} from '@/lib/diagnostic/granular/recent-reading-copy';
 import {beforeEach, expect, it, vi} from 'vitest';
@@ -14,7 +15,7 @@ import {loadStudentState, startAdaptiveDiagnostic} from './student';
 
 beforeEach(() => {
   vi.resetAllMocks();
-  f.read.mockResolvedValue({interests:[],sessions:[],retrievalCards: [{promptFr: 'Que font les chevaux ?'}]});
+  f.read.mockResolvedValue({vocab:{},interests:[],sessions:[],retrievalCards: [{conceptLabel:'Lecture',promptFr: 'Que font les chevaux ?'}]});
   f.journal.mockImplementation(async (_owner, _boundary, payload) => payload);
   f.completed.mockResolvedValue({runId: 'existing-run'});
 });
@@ -24,7 +25,7 @@ it('records state both on initial load and when returning an already completed d
   const result = await startAdaptiveDiagnostic({});
   expect(result).toMatchObject({done: true, runId: 'existing-run', state});
   expect(f.journal).toHaveBeenCalledTimes(2);
-  expect(f.journal).toHaveBeenLastCalledWith('authenticated-student', 'legacy:student-state', {...state,recentReading:recentReadingDisplay(state.sessions),homeFallback:homeFallbackDisplay(state.interests)});
+  expect(f.journal).toHaveBeenLastCalledWith('authenticated-student', 'legacy:student-state', {...state,memoryDisplay:memoryDisplay(state),recentReading:recentReadingDisplay(state.sessions),homeFallback:homeFallbackDisplay(state.interests)});
 });
 
 it('does not return the completed diagnostic snapshot if its material cannot be recorded', async () => {

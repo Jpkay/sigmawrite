@@ -8,7 +8,7 @@ const f=vi.hoisted(()=>({cards:[
 vi.mock('@/lib/student-store',()=>({hasStudentBackend:true,useStudentState:()=>({hydrated:true,retrievalCards:f.cards,vocab:{}}),recordRetrieval:vi.fn(),replaceStudentState:vi.fn()}));
 vi.mock('@/lib/actions/student',()=>({submitRetrievalAttempt:vi.fn()}));
 vi.mock('@/lib/analytics',()=>({track:vi.fn()}));
-import MemoryPage from './page';
+import MemoryPage from './memory-client';
 afterEach(()=>vi.restoreAllMocks());
 it('shows card inventory and due work without interpreting repetitions as mastery',()=>{
  vi.spyOn(Date,'now').mockReturnValue(Date.parse('2026-09-12T12:00:00Z'));

@@ -1,4 +1,5 @@
 "use server";
+import {memoryDisplay} from "@/lib/diagnostic/granular/memory-display";
 import {homeFallbackDisplay} from "@/lib/diagnostic/granular/home-recommendation-display";
 import {recentReadingDisplay} from "@/lib/diagnostic/granular/recent-reading-copy";
 import type {AssessmentResponse} from "@/lib/diagnostic/granular/client-state";
@@ -22,7 +23,7 @@ async function context(){
  return {studentId,client,store:new SupabaseAssessmentStore(createServiceClient(),{cache:sharedReleaseContentCache,namespace:process.env.NEXT_PUBLIC_SUPABASE_URL!})};
 }
 async function deliver<T extends AssessmentResponse>(store:SupabaseAssessmentStore,studentId:string,boundary:string,result:T):Promise<T>{
- const payload={...result,...(result.view?{displayText:diagnosticDisplayText(result.view)}:{}),...(result.studentState?{recentReading:recentReadingDisplay(result.studentState.sessions),homeFallback:homeFallbackDisplay(result.studentState.interests)}:{})};
+ const payload={...result,...(result.view?{displayText:diagnosticDisplayText(result.view)}:{}),...(result.studentState?{recentReading:recentReadingDisplay(result.studentState.sessions),homeFallback:homeFallbackDisplay(result.studentState.interests),memoryDisplay:memoryDisplay(result.studentState)}:{})};
  await captureAssessmentDelivery(store,studentId,boundary,payload);
  return result;
 }
