@@ -1,0 +1,2123 @@
+{
+  "version": "french-v3-verb-family-recognition-expansion-v1",
+  "status": "draft_requires_review",
+  "parentTaxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+  "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
+  "items": [
+    {
+      "itemKey": "v3-verb-family-recognition:parler",
+      "item": {
+        "nodeKey": "classer_famille_verbale",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Observe ces formes : « parler », « je parle », « nous parlons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+        "instructionsFr": "Choisis le modèle qui convient.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "parler",
+                "form": "parler"
+              },
+              {
+                "lemma": "parler",
+                "form": "parlons"
+              },
+              {
+                "lemma": "parler",
+                "form": "parle"
+              }
+            ],
+            "sentences": [
+              "Observe ces formes : « parler », « je parle », « nous parlons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+              "Comme chanter : chanter, nous chantons",
+              "Comme finir : finir, nous finissons",
+              "Une autre famille de verbes"
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Comme chanter : chanter, nous chantons",
+            "correct": true
+          },
+          {
+            "text": "Comme finir : finir, nous finissons",
+            "correct": false
+          },
+          {
+            "text": "Une autre famille de verbes",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "verb-family-recognition-er",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:jouer",
+      "item": {
+        "nodeKey": "classer_famille_verbale",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Observe ces formes : « jouer », « je joue », « nous jouons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+        "instructionsFr": "Choisis le modèle qui convient.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "jouer",
+                "form": "jouer"
+              },
+              {
+                "lemma": "jouer",
+                "form": "jouons"
+              },
+              {
+                "lemma": "jouer",
+                "form": "joue"
+              }
+            ],
+            "sentences": [
+              "Observe ces formes : « jouer », « je joue », « nous jouons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+              "Comme chanter : chanter, nous chantons",
+              "Comme finir : finir, nous finissons",
+              "Une autre famille de verbes"
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Comme chanter : chanter, nous chantons",
+            "correct": true
+          },
+          {
+            "text": "Comme finir : finir, nous finissons",
+            "correct": false
+          },
+          {
+            "text": "Une autre famille de verbes",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "verb-family-recognition-er",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:danser",
+      "item": {
+        "nodeKey": "classer_famille_verbale",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Observe ces formes : « danser », « je danse », « nous dansons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+        "instructionsFr": "Choisis le modèle qui convient.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "danser",
+                "form": "danser"
+              },
+              {
+                "lemma": "danser",
+                "form": "dansons"
+              },
+              {
+                "lemma": "danser",
+                "form": "danse"
+              }
+            ],
+            "sentences": [
+              "Observe ces formes : « danser », « je danse », « nous dansons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+              "Comme chanter : chanter, nous chantons",
+              "Comme finir : finir, nous finissons",
+              "Une autre famille de verbes"
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Comme chanter : chanter, nous chantons",
+            "correct": true
+          },
+          {
+            "text": "Comme finir : finir, nous finissons",
+            "correct": false
+          },
+          {
+            "text": "Une autre famille de verbes",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "verb-family-recognition-er",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:marcher",
+      "item": {
+        "nodeKey": "classer_famille_verbale",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Observe ces formes : « marcher », « je marche », « nous marchons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+        "instructionsFr": "Choisis le modèle qui convient.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "marcher",
+                "form": "marcher"
+              },
+              {
+                "lemma": "marcher",
+                "form": "marchons"
+              },
+              {
+                "lemma": "marcher",
+                "form": "marche"
+              }
+            ],
+            "sentences": [
+              "Observe ces formes : « marcher », « je marche », « nous marchons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+              "Comme chanter : chanter, nous chantons",
+              "Comme finir : finir, nous finissons",
+              "Une autre famille de verbes"
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Comme chanter : chanter, nous chantons",
+            "correct": true
+          },
+          {
+            "text": "Comme finir : finir, nous finissons",
+            "correct": false
+          },
+          {
+            "text": "Une autre famille de verbes",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "verb-family-recognition-er",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:dessiner",
+      "item": {
+        "nodeKey": "classer_famille_verbale",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Observe ces formes : « dessiner », « je dessine », « nous dessinons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+        "instructionsFr": "Choisis le modèle qui convient.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "dessiner",
+                "form": "dessiner"
+              },
+              {
+                "lemma": "dessiner",
+                "form": "dessinons"
+              },
+              {
+                "lemma": "dessiner",
+                "form": "dessine"
+              }
+            ],
+            "sentences": [
+              "Observe ces formes : « dessiner », « je dessine », « nous dessinons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+              "Comme chanter : chanter, nous chantons",
+              "Comme finir : finir, nous finissons",
+              "Une autre famille de verbes"
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Comme chanter : chanter, nous chantons",
+            "correct": true
+          },
+          {
+            "text": "Comme finir : finir, nous finissons",
+            "correct": false
+          },
+          {
+            "text": "Une autre famille de verbes",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "verb-family-recognition-er",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:écouter",
+      "item": {
+        "nodeKey": "classer_famille_verbale",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Observe ces formes : « écouter », « j’écoute », « nous écoutons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+        "instructionsFr": "Choisis le modèle qui convient.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "écouter",
+                "form": "écouter"
+              },
+              {
+                "lemma": "écouter",
+                "form": "écoutons"
+              },
+              {
+                "lemma": "écouter",
+                "form": "écoute"
+              }
+            ],
+            "sentences": [
+              "Observe ces formes : « écouter », « j’écoute », « nous écoutons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+              "Comme chanter : chanter, nous chantons",
+              "Comme finir : finir, nous finissons",
+              "Une autre famille de verbes"
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Comme chanter : chanter, nous chantons",
+            "correct": true
+          },
+          {
+            "text": "Comme finir : finir, nous finissons",
+            "correct": false
+          },
+          {
+            "text": "Une autre famille de verbes",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "verb-family-recognition-er",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:regarder",
+      "item": {
+        "nodeKey": "classer_famille_verbale",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Observe ces formes : « regarder », « je regarde », « nous regardons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+        "instructionsFr": "Choisis le modèle qui convient.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "regarder",
+                "form": "regarder"
+              },
+              {
+                "lemma": "regarder",
+                "form": "regardons"
+              },
+              {
+                "lemma": "regarder",
+                "form": "regarde"
+              }
+            ],
+            "sentences": [
+              "Observe ces formes : « regarder », « je regarde », « nous regardons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+              "Comme chanter : chanter, nous chantons",
+              "Comme finir : finir, nous finissons",
+              "Une autre famille de verbes"
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Comme chanter : chanter, nous chantons",
+            "correct": true
+          },
+          {
+            "text": "Comme finir : finir, nous finissons",
+            "correct": false
+          },
+          {
+            "text": "Une autre famille de verbes",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "verb-family-recognition-er",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:trouver",
+      "item": {
+        "nodeKey": "classer_famille_verbale",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Observe ces formes : « trouver », « je trouve », « nous trouvons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+        "instructionsFr": "Choisis le modèle qui convient.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "trouver",
+                "form": "trouver"
+              },
+              {
+                "lemma": "trouver",
+                "form": "trouvons"
+              },
+              {
+                "lemma": "trouver",
+                "form": "trouve"
+              }
+            ],
+            "sentences": [
+              "Observe ces formes : « trouver », « je trouve », « nous trouvons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+              "Comme chanter : chanter, nous chantons",
+              "Comme finir : finir, nous finissons",
+              "Une autre famille de verbes"
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Comme chanter : chanter, nous chantons",
+            "correct": true
+          },
+          {
+            "text": "Comme finir : finir, nous finissons",
+            "correct": false
+          },
+          {
+            "text": "Une autre famille de verbes",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "verb-family-recognition-er",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:choisir",
+      "item": {
+        "nodeKey": "classer_famille_verbale",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Observe ces formes : « choisir », « je choisis », « nous choisissons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+        "instructionsFr": "Choisis le modèle qui convient.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "choisir",
+                "form": "choisir"
+              },
+              {
+                "lemma": "choisir",
+                "form": "choisissons"
+              },
+              {
+                "lemma": "choisir",
+                "form": "choisis"
+              }
+            ],
+            "sentences": [
+              "Observe ces formes : « choisir », « je choisis », « nous choisissons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+              "Comme chanter : chanter, nous chantons",
+              "Comme finir : finir, nous finissons",
+              "Une autre famille de verbes"
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Comme chanter : chanter, nous chantons",
+            "correct": false
+          },
+          {
+            "text": "Comme finir : finir, nous finissons",
+            "correct": true
+          },
+          {
+            "text": "Une autre famille de verbes",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "verb-family-recognition-ir",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:grandir",
+      "item": {
+        "nodeKey": "classer_famille_verbale",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Observe ces formes : « grandir », « je grandis », « nous grandissons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+        "instructionsFr": "Choisis le modèle qui convient.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "grandir",
+                "form": "grandir"
+              },
+              {
+                "lemma": "grandir",
+                "form": "grandissons"
+              },
+              {
+                "lemma": "grandir",
+                "form": "grandis"
+              }
+            ],
+            "sentences": [
+              "Observe ces formes : « grandir », « je grandis », « nous grandissons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+              "Comme chanter : chanter, nous chantons",
+              "Comme finir : finir, nous finissons",
+              "Une autre famille de verbes"
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Comme chanter : chanter, nous chantons",
+            "correct": false
+          },
+          {
+            "text": "Comme finir : finir, nous finissons",
+            "correct": true
+          },
+          {
+            "text": "Une autre famille de verbes",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "verb-family-recognition-ir",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:réussir",
+      "item": {
+        "nodeKey": "classer_famille_verbale",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Observe ces formes : « réussir », « je réussis », « nous réussissons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+        "instructionsFr": "Choisis le modèle qui convient.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "réussir",
+                "form": "réussir"
+              },
+              {
+                "lemma": "réussir",
+                "form": "réussissons"
+              },
+              {
+                "lemma": "réussir",
+                "form": "réussis"
+              }
+            ],
+            "sentences": [
+              "Observe ces formes : « réussir », « je réussis », « nous réussissons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+              "Comme chanter : chanter, nous chantons",
+              "Comme finir : finir, nous finissons",
+              "Une autre famille de verbes"
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Comme chanter : chanter, nous chantons",
+            "correct": false
+          },
+          {
+            "text": "Comme finir : finir, nous finissons",
+            "correct": true
+          },
+          {
+            "text": "Une autre famille de verbes",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "verb-family-recognition-ir",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:remplir",
+      "item": {
+        "nodeKey": "classer_famille_verbale",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Observe ces formes : « remplir », « je remplis », « nous remplissons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+        "instructionsFr": "Choisis le modèle qui convient.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "remplir",
+                "form": "remplir"
+              },
+              {
+                "lemma": "remplir",
+                "form": "remplissons"
+              },
+              {
+                "lemma": "remplir",
+                "form": "remplis"
+              }
+            ],
+            "sentences": [
+              "Observe ces formes : « remplir », « je remplis », « nous remplissons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+              "Comme chanter : chanter, nous chantons",
+              "Comme finir : finir, nous finissons",
+              "Une autre famille de verbes"
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Comme chanter : chanter, nous chantons",
+            "correct": false
+          },
+          {
+            "text": "Comme finir : finir, nous finissons",
+            "correct": true
+          },
+          {
+            "text": "Une autre famille de verbes",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "verb-family-recognition-ir",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:rougir",
+      "item": {
+        "nodeKey": "classer_famille_verbale",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Observe ces formes : « rougir », « je rougis », « nous rougissons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+        "instructionsFr": "Choisis le modèle qui convient.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "rougir",
+                "form": "rougir"
+              },
+              {
+                "lemma": "rougir",
+                "form": "rougissons"
+              },
+              {
+                "lemma": "rougir",
+                "form": "rougis"
+              }
+            ],
+            "sentences": [
+              "Observe ces formes : « rougir », « je rougis », « nous rougissons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+              "Comme chanter : chanter, nous chantons",
+              "Comme finir : finir, nous finissons",
+              "Une autre famille de verbes"
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Comme chanter : chanter, nous chantons",
+            "correct": false
+          },
+          {
+            "text": "Comme finir : finir, nous finissons",
+            "correct": true
+          },
+          {
+            "text": "Une autre famille de verbes",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "verb-family-recognition-ir",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:réfléchir",
+      "item": {
+        "nodeKey": "classer_famille_verbale",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Observe ces formes : « réfléchir », « je réfléchis », « nous réfléchissons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+        "instructionsFr": "Choisis le modèle qui convient.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "réfléchir",
+                "form": "réfléchir"
+              },
+              {
+                "lemma": "réfléchir",
+                "form": "réfléchissons"
+              },
+              {
+                "lemma": "réfléchir",
+                "form": "réfléchis"
+              }
+            ],
+            "sentences": [
+              "Observe ces formes : « réfléchir », « je réfléchis », « nous réfléchissons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+              "Comme chanter : chanter, nous chantons",
+              "Comme finir : finir, nous finissons",
+              "Une autre famille de verbes"
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Comme chanter : chanter, nous chantons",
+            "correct": false
+          },
+          {
+            "text": "Comme finir : finir, nous finissons",
+            "correct": true
+          },
+          {
+            "text": "Une autre famille de verbes",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "verb-family-recognition-ir",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:nourrir",
+      "item": {
+        "nodeKey": "classer_famille_verbale",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Observe ces formes : « nourrir », « je nourris », « nous nourrissons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+        "instructionsFr": "Choisis le modèle qui convient.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "nourrir",
+                "form": "nourrir"
+              },
+              {
+                "lemma": "nourrir",
+                "form": "nourrissons"
+              },
+              {
+                "lemma": "nourrir",
+                "form": "nourris"
+              }
+            ],
+            "sentences": [
+              "Observe ces formes : « nourrir », « je nourris », « nous nourrissons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+              "Comme chanter : chanter, nous chantons",
+              "Comme finir : finir, nous finissons",
+              "Une autre famille de verbes"
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Comme chanter : chanter, nous chantons",
+            "correct": false
+          },
+          {
+            "text": "Comme finir : finir, nous finissons",
+            "correct": true
+          },
+          {
+            "text": "Une autre famille de verbes",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "verb-family-recognition-ir",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:applaudir",
+      "item": {
+        "nodeKey": "classer_famille_verbale",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Observe ces formes : « applaudir », « j’applaudis », « nous applaudissons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+        "instructionsFr": "Choisis le modèle qui convient.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "applaudir",
+                "form": "applaudir"
+              },
+              {
+                "lemma": "applaudir",
+                "form": "applaudissons"
+              },
+              {
+                "lemma": "applaudir",
+                "form": "applaudis"
+              }
+            ],
+            "sentences": [
+              "Observe ces formes : « applaudir », « j’applaudis », « nous applaudissons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+              "Comme chanter : chanter, nous chantons",
+              "Comme finir : finir, nous finissons",
+              "Une autre famille de verbes"
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Comme chanter : chanter, nous chantons",
+            "correct": false
+          },
+          {
+            "text": "Comme finir : finir, nous finissons",
+            "correct": true
+          },
+          {
+            "text": "Une autre famille de verbes",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "verb-family-recognition-ir",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:aller",
+      "item": {
+        "nodeKey": "classer_famille_verbale",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Observe ces formes : « aller », « je vais », « nous allons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+        "instructionsFr": "Choisis le modèle qui convient.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "aller",
+                "form": "aller"
+              },
+              {
+                "lemma": "aller",
+                "form": "allons"
+              },
+              {
+                "lemma": "aller",
+                "form": "vais"
+              }
+            ],
+            "sentences": [
+              "Observe ces formes : « aller », « je vais », « nous allons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+              "Comme chanter : chanter, nous chantons",
+              "Comme finir : finir, nous finissons",
+              "Une autre famille de verbes"
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Comme chanter : chanter, nous chantons",
+            "correct": false
+          },
+          {
+            "text": "Comme finir : finir, nous finissons",
+            "correct": false
+          },
+          {
+            "text": "Une autre famille de verbes",
+            "correct": true
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "verb-family-recognition-other",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:partir",
+      "item": {
+        "nodeKey": "classer_famille_verbale",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Observe ces formes : « partir », « je pars », « nous partons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+        "instructionsFr": "Choisis le modèle qui convient.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "partir",
+                "form": "partir"
+              },
+              {
+                "lemma": "partir",
+                "form": "partons"
+              },
+              {
+                "lemma": "partir",
+                "form": "pars"
+              }
+            ],
+            "sentences": [
+              "Observe ces formes : « partir », « je pars », « nous partons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+              "Comme chanter : chanter, nous chantons",
+              "Comme finir : finir, nous finissons",
+              "Une autre famille de verbes"
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Comme chanter : chanter, nous chantons",
+            "correct": false
+          },
+          {
+            "text": "Comme finir : finir, nous finissons",
+            "correct": false
+          },
+          {
+            "text": "Une autre famille de verbes",
+            "correct": true
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "verb-family-recognition-other",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:sortir",
+      "item": {
+        "nodeKey": "classer_famille_verbale",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Observe ces formes : « sortir », « je sors », « nous sortons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+        "instructionsFr": "Choisis le modèle qui convient.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "sortir",
+                "form": "sortir"
+              },
+              {
+                "lemma": "sortir",
+                "form": "sortons"
+              },
+              {
+                "lemma": "sortir",
+                "form": "sors"
+              }
+            ],
+            "sentences": [
+              "Observe ces formes : « sortir », « je sors », « nous sortons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+              "Comme chanter : chanter, nous chantons",
+              "Comme finir : finir, nous finissons",
+              "Une autre famille de verbes"
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Comme chanter : chanter, nous chantons",
+            "correct": false
+          },
+          {
+            "text": "Comme finir : finir, nous finissons",
+            "correct": false
+          },
+          {
+            "text": "Une autre famille de verbes",
+            "correct": true
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "verb-family-recognition-other",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:dormir",
+      "item": {
+        "nodeKey": "classer_famille_verbale",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Observe ces formes : « dormir », « je dors », « nous dormons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+        "instructionsFr": "Choisis le modèle qui convient.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "dormir",
+                "form": "dormir"
+              },
+              {
+                "lemma": "dormir",
+                "form": "dormons"
+              },
+              {
+                "lemma": "dormir",
+                "form": "dors"
+              }
+            ],
+            "sentences": [
+              "Observe ces formes : « dormir », « je dors », « nous dormons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+              "Comme chanter : chanter, nous chantons",
+              "Comme finir : finir, nous finissons",
+              "Une autre famille de verbes"
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Comme chanter : chanter, nous chantons",
+            "correct": false
+          },
+          {
+            "text": "Comme finir : finir, nous finissons",
+            "correct": false
+          },
+          {
+            "text": "Une autre famille de verbes",
+            "correct": true
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "verb-family-recognition-other",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:courir",
+      "item": {
+        "nodeKey": "classer_famille_verbale",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Observe ces formes : « courir », « je cours », « nous courons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+        "instructionsFr": "Choisis le modèle qui convient.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "courir",
+                "form": "courir"
+              },
+              {
+                "lemma": "courir",
+                "form": "courons"
+              },
+              {
+                "lemma": "courir",
+                "form": "cours"
+              }
+            ],
+            "sentences": [
+              "Observe ces formes : « courir », « je cours », « nous courons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+              "Comme chanter : chanter, nous chantons",
+              "Comme finir : finir, nous finissons",
+              "Une autre famille de verbes"
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Comme chanter : chanter, nous chantons",
+            "correct": false
+          },
+          {
+            "text": "Comme finir : finir, nous finissons",
+            "correct": false
+          },
+          {
+            "text": "Une autre famille de verbes",
+            "correct": true
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "verb-family-recognition-other",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:prendre",
+      "item": {
+        "nodeKey": "classer_famille_verbale",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Observe ces formes : « prendre », « je prends », « nous prenons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+        "instructionsFr": "Choisis le modèle qui convient.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "prendre",
+                "form": "prendre"
+              },
+              {
+                "lemma": "prendre",
+                "form": "prenons"
+              },
+              {
+                "lemma": "prendre",
+                "form": "prends"
+              }
+            ],
+            "sentences": [
+              "Observe ces formes : « prendre », « je prends », « nous prenons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+              "Comme chanter : chanter, nous chantons",
+              "Comme finir : finir, nous finissons",
+              "Une autre famille de verbes"
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Comme chanter : chanter, nous chantons",
+            "correct": false
+          },
+          {
+            "text": "Comme finir : finir, nous finissons",
+            "correct": false
+          },
+          {
+            "text": "Une autre famille de verbes",
+            "correct": true
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "verb-family-recognition-other",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:voir",
+      "item": {
+        "nodeKey": "classer_famille_verbale",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Observe ces formes : « voir », « je vois », « nous voyons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+        "instructionsFr": "Choisis le modèle qui convient.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "voir",
+                "form": "voir"
+              },
+              {
+                "lemma": "voir",
+                "form": "voyons"
+              },
+              {
+                "lemma": "voir",
+                "form": "vois"
+              }
+            ],
+            "sentences": [
+              "Observe ces formes : « voir », « je vois », « nous voyons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+              "Comme chanter : chanter, nous chantons",
+              "Comme finir : finir, nous finissons",
+              "Une autre famille de verbes"
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Comme chanter : chanter, nous chantons",
+            "correct": false
+          },
+          {
+            "text": "Comme finir : finir, nous finissons",
+            "correct": false
+          },
+          {
+            "text": "Une autre famille de verbes",
+            "correct": true
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "verb-family-recognition-other",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:faire",
+      "item": {
+        "nodeKey": "classer_famille_verbale",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Observe ces formes : « faire », « je fais », « nous faisons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+        "instructionsFr": "Choisis le modèle qui convient.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "faire",
+                "form": "faire"
+              },
+              {
+                "lemma": "faire",
+                "form": "faisons"
+              },
+              {
+                "lemma": "faire",
+                "form": "fais"
+              }
+            ],
+            "sentences": [
+              "Observe ces formes : « faire », « je fais », « nous faisons ».\n\nÀ quelle famille ce verbe appartient-il ?",
+              "Comme chanter : chanter, nous chantons",
+              "Comme finir : finir, nous finissons",
+              "Une autre famille de verbes"
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Comme chanter : chanter, nous chantons",
+            "correct": false
+          },
+          {
+            "text": "Comme finir : finir, nous finissons",
+            "correct": false
+          },
+          {
+            "text": "Une autre famille de verbes",
+            "correct": true
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "verb-family-recognition-other",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "itemKey": "v3-verb-family-recognition:parler",
+      "itemChecksum": "sha256:0306c13086c72d61b35c9ec03d939122f224c016c7cd27816e61f9f7b97062a7",
+      "kind": "evidence",
+      "evidenceTarget": {
+        "nodeKey": "classer_famille_verbale",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "v3-verb-family-recognition:parler",
+      "reason": "Supplied-form recognition of the er model; not conjugation production. Draft for a later release."
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:jouer",
+      "itemChecksum": "sha256:88bbce904745d765176880335d58eaa265ba158c75d2f35e79a6068ead40db53",
+      "kind": "evidence",
+      "evidenceTarget": {
+        "nodeKey": "classer_famille_verbale",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "v3-verb-family-recognition:jouer",
+      "reason": "Supplied-form recognition of the er model; not conjugation production. Draft for a later release."
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:danser",
+      "itemChecksum": "sha256:0392844d5f6c10464c83eac032320a69ed63572d2bfd2ba7bfd5fe8648201597",
+      "kind": "evidence",
+      "evidenceTarget": {
+        "nodeKey": "classer_famille_verbale",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "v3-verb-family-recognition:danser",
+      "reason": "Supplied-form recognition of the er model; not conjugation production. Draft for a later release."
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:marcher",
+      "itemChecksum": "sha256:8811d6e5c43f5e7e3dad52dbf4d2656c6dab91b6436451cf6a0772380bde3225",
+      "kind": "evidence",
+      "evidenceTarget": {
+        "nodeKey": "classer_famille_verbale",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "v3-verb-family-recognition:marcher",
+      "reason": "Supplied-form recognition of the er model; not conjugation production. Draft for a later release."
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:dessiner",
+      "itemChecksum": "sha256:c0fff0dce7a352332547f790ebf7d463f4731501d8b50194ba21bb9b2f1bccbd",
+      "kind": "evidence",
+      "evidenceTarget": {
+        "nodeKey": "classer_famille_verbale",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "v3-verb-family-recognition:dessiner",
+      "reason": "Supplied-form recognition of the er model; not conjugation production. Draft for a later release."
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:écouter",
+      "itemChecksum": "sha256:d52764d08a0e6d9fc9b9a1df4bc2ddd19dc5e27842c58d31ab2c4dcd719639a3",
+      "kind": "evidence",
+      "evidenceTarget": {
+        "nodeKey": "classer_famille_verbale",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "v3-verb-family-recognition:écouter",
+      "reason": "Supplied-form recognition of the er model; not conjugation production. Draft for a later release."
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:regarder",
+      "itemChecksum": "sha256:b2977516dcfcb394b721515964bc99ce9d12462473554840ece5a68aef048f54",
+      "kind": "evidence",
+      "evidenceTarget": {
+        "nodeKey": "classer_famille_verbale",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "v3-verb-family-recognition:regarder",
+      "reason": "Supplied-form recognition of the er model; not conjugation production. Draft for a later release."
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:trouver",
+      "itemChecksum": "sha256:e403082aa038b5d7edb2877bfe10b84b84895a1308c102bf8f4c9cdd454efba3",
+      "kind": "evidence",
+      "evidenceTarget": {
+        "nodeKey": "classer_famille_verbale",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "v3-verb-family-recognition:trouver",
+      "reason": "Supplied-form recognition of the er model; not conjugation production. Draft for a later release."
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:choisir",
+      "itemChecksum": "sha256:12650e03cd050f41dda57592d2bee43cc91a05307df879d997642d3cab99e3dd",
+      "kind": "evidence",
+      "evidenceTarget": {
+        "nodeKey": "classer_famille_verbale",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "v3-verb-family-recognition:choisir",
+      "reason": "Supplied-form recognition of the ir model; not conjugation production. Draft for a later release."
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:grandir",
+      "itemChecksum": "sha256:11cca405780bce539153cd6146ee9282d22b9f9d2e8b9c8ba07991ca1a8e984c",
+      "kind": "evidence",
+      "evidenceTarget": {
+        "nodeKey": "classer_famille_verbale",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "v3-verb-family-recognition:grandir",
+      "reason": "Supplied-form recognition of the ir model; not conjugation production. Draft for a later release."
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:réussir",
+      "itemChecksum": "sha256:f4c5c61c7295fdc4b6fb1dd8ed5a5c430bfccdd46f3c3bc160b1a48e897b22ab",
+      "kind": "evidence",
+      "evidenceTarget": {
+        "nodeKey": "classer_famille_verbale",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "v3-verb-family-recognition:réussir",
+      "reason": "Supplied-form recognition of the ir model; not conjugation production. Draft for a later release."
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:remplir",
+      "itemChecksum": "sha256:0a37c05a6feeea8510e380a041505ed1232dc768905ff70249d43d49f3de1292",
+      "kind": "evidence",
+      "evidenceTarget": {
+        "nodeKey": "classer_famille_verbale",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "v3-verb-family-recognition:remplir",
+      "reason": "Supplied-form recognition of the ir model; not conjugation production. Draft for a later release."
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:rougir",
+      "itemChecksum": "sha256:37580497a811eaa73df4f86bc8e0fbabb33b84e39eb445a7296a6f5a25fc9438",
+      "kind": "evidence",
+      "evidenceTarget": {
+        "nodeKey": "classer_famille_verbale",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "v3-verb-family-recognition:rougir",
+      "reason": "Supplied-form recognition of the ir model; not conjugation production. Draft for a later release."
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:réfléchir",
+      "itemChecksum": "sha256:802d385a3d7b126030df173f0cc6ebe554039fd587c1b47fd8290de61d3d2156",
+      "kind": "evidence",
+      "evidenceTarget": {
+        "nodeKey": "classer_famille_verbale",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "v3-verb-family-recognition:réfléchir",
+      "reason": "Supplied-form recognition of the ir model; not conjugation production. Draft for a later release."
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:nourrir",
+      "itemChecksum": "sha256:3b5079153b7f5191831b6fd07365e8cbd9d02849edb02d02b8e7cfaa4caaeec6",
+      "kind": "evidence",
+      "evidenceTarget": {
+        "nodeKey": "classer_famille_verbale",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "v3-verb-family-recognition:nourrir",
+      "reason": "Supplied-form recognition of the ir model; not conjugation production. Draft for a later release."
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:applaudir",
+      "itemChecksum": "sha256:2e4458fdfcacc3750d2c30f89b0ec54162e842a530c307e75c737d20838b51c4",
+      "kind": "evidence",
+      "evidenceTarget": {
+        "nodeKey": "classer_famille_verbale",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "v3-verb-family-recognition:applaudir",
+      "reason": "Supplied-form recognition of the ir model; not conjugation production. Draft for a later release."
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:aller",
+      "itemChecksum": "sha256:866aea4b7e40277944280e48c37a9e0f173a7bb858e85995fdb6c3084bc3855e",
+      "kind": "evidence",
+      "evidenceTarget": {
+        "nodeKey": "classer_famille_verbale",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "v3-verb-family-recognition:aller",
+      "reason": "Supplied-form recognition of the other model; not conjugation production. Draft for a later release."
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:partir",
+      "itemChecksum": "sha256:5cf6039138a7d0fbf29421849f9512027cfb8dff8a0b3d9c9dc4025c9515f983",
+      "kind": "evidence",
+      "evidenceTarget": {
+        "nodeKey": "classer_famille_verbale",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "v3-verb-family-recognition:partir",
+      "reason": "Supplied-form recognition of the other model; not conjugation production. Draft for a later release."
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:sortir",
+      "itemChecksum": "sha256:a4dc7c44112415453bd9809476bf367e11fe2a627bb3929911d9950d1caf6c9b",
+      "kind": "evidence",
+      "evidenceTarget": {
+        "nodeKey": "classer_famille_verbale",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "v3-verb-family-recognition:sortir",
+      "reason": "Supplied-form recognition of the other model; not conjugation production. Draft for a later release."
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:dormir",
+      "itemChecksum": "sha256:f5b230e88701d22fc0bdcb0960c7b3c41f45b4692669b21932a7726cc2b83844",
+      "kind": "evidence",
+      "evidenceTarget": {
+        "nodeKey": "classer_famille_verbale",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "v3-verb-family-recognition:dormir",
+      "reason": "Supplied-form recognition of the other model; not conjugation production. Draft for a later release."
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:courir",
+      "itemChecksum": "sha256:278317da7a0ba7ad7eecb78c167b476aee3458c402ae3def7206ec3c63441f7a",
+      "kind": "evidence",
+      "evidenceTarget": {
+        "nodeKey": "classer_famille_verbale",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "v3-verb-family-recognition:courir",
+      "reason": "Supplied-form recognition of the other model; not conjugation production. Draft for a later release."
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:prendre",
+      "itemChecksum": "sha256:340e6241a96c99d8a6f3cb0276ce154da0d5232870e2a98f468db8dde52741be",
+      "kind": "evidence",
+      "evidenceTarget": {
+        "nodeKey": "classer_famille_verbale",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "v3-verb-family-recognition:prendre",
+      "reason": "Supplied-form recognition of the other model; not conjugation production. Draft for a later release."
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:voir",
+      "itemChecksum": "sha256:d300559ddb3936e7576d76512d5542d4fe81204cd65a46d4d866309ff2a3f50e",
+      "kind": "evidence",
+      "evidenceTarget": {
+        "nodeKey": "classer_famille_verbale",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "v3-verb-family-recognition:voir",
+      "reason": "Supplied-form recognition of the other model; not conjugation production. Draft for a later release."
+    },
+    {
+      "itemKey": "v3-verb-family-recognition:faire",
+      "itemChecksum": "sha256:bebee81241999a5f2f0842fc03f58638ea010525b37ecb1fab8526302876ecb5",
+      "kind": "evidence",
+      "evidenceTarget": {
+        "nodeKey": "classer_famille_verbale",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "v3-verb-family-recognition:faire",
+      "reason": "Supplied-form recognition of the other model; not conjugation production. Draft for a later release."
+    }
+  ],
+  "checksum": "sha256:7e5935f2e42824e2f7122395d7ad778ae1844f1fbe4a7adf7504914442ca7957"
+}

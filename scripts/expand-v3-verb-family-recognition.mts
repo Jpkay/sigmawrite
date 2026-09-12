@@ -1,0 +1,32 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+import {VERB_FAMILY_LABELS,VERB_FAMILY_RECOGNITION_DRAFTS} from '../src/lib/diagnostic/granular/verb-family-recognition-drafts';
+import {checksum} from '../src/lib/taxonomy/validate';
+import {runGates} from '../src/lib/ai/item-generation/pipeline';
+import {validateCanonicalDiagnosticBank,type CanonicalDiagnosticBankArtifact,type CanonicalDiagnosticBankItem} from '../src/lib/diagnostic/item-bank';
+import {questionMaterialKeys} from '../src/lib/diagnostic/granular/material-annotations';
+import {canonicalProbeMetrics} from '../src/lib/diagnostic/granular/probe-metrics';
+import type {EvidenceAnnotation} from '../src/lib/diagnostic/granular/facet-adapter';
+const read=(path:string)=>JSON.parse(readFileSync(path,'utf8'));
+const artifact=read('generated/french-taxonomy-v3.json'),base=read('generated/diagnostic-bank-v3-draft.json') as CanonicalDiagnosticBankArtifact;
+const node=artifact.taxonomy.nodes.find((n:{key:string})=>n.key==='classer_famille_verbale');
+const evidence=node?.evidence.find((e:{key:string})=>e.key==='reading-receptive');
+if(!evidence)throw Error('Missing approved verb family recognition target');
+const items:CanonicalDiagnosticBankItem[]=[],annotations:Array<EvidenceAnnotation & {reason:string}>=[];
+for(const draft of VERB_FAMILY_RECOGNITION_DRAFTS){
+ const key=`v3-verb-family-recognition:${draft.infinitive}`;
+ const firstPerson=/^[aeiouéèêàâîïôûù]/i.test(draft.je)?`j’${draft.je}`:`je ${draft.je}`;
+ const promptFr=`Observe ces formes : « ${draft.infinitive} », « ${firstPerson} », « nous ${draft.nous} ».\n\nÀ quelle famille ce verbe appartient-il ?`;
+ const choices=Object.entries(VERB_FAMILY_LABELS).map(([family,text])=>({text,correct:family===draft.family}));
+ const checked=await runGates({nodeKey:node.key,strand:node.strand,modality:'reading',learnerMode:'shared',responseType:'mcq',promptFr,instructionsFr:'Choisis le modèle qui convient.',choices,validatorType:'exact',validatorConfig:{materialExposure:{words:[{lemma:draft.infinitive,form:draft.infinitive},{lemma:draft.infinitive,form:draft.nous},{lemma:draft.infinitive,form:draft.je}],sentences:[promptFr,...choices.map(choice=>choice.text)]}},difficulty:50},{knownNodeKeys:new Set([node.key]),knownMisconceptionKeys:new Set()});
+ if(!checked.item||checked.gates.verdict==='rejected')throw Error(`Rejected verb-family draft: ${key}`);
+ questionMaterialKeys(checked.item);
+ const entry:CanonicalDiagnosticBankItem={itemKey:key,item:checked.item,evidenceKey:evidence.key,evidenceExpectation:evidence.expectation,sectionKey:'conjugation',promptFamily:`verb-family-recognition-${draft.family}`,difficultyTier:'core',reviewStatus:'needs_human_review',qcGates:{...checked.gates,gate3_ensemble:{agrees:false,agreement:0},verdict:'needs_human_review'}};
+ canonicalProbeMetrics(entry);items.push(entry);annotations.push({itemKey:key,itemChecksum:checksum(entry),kind:'evidence',evidenceTarget:{nodeKey:node.key,evidenceKey:evidence.key},contextKey:key,reason:`Supplied-form recognition of the ${draft.family} model; not conjugation production. Draft for a later release.`});
+}
+const combined={...base,items:[...base.items,...items]};delete combined.manifest;
+const validation=validateCanonicalDiagnosticBank(combined,artifact.taxonomy);
+if(validation.issues.length||validation.eligibleItemKeys.some(key=>items.some(entry=>entry.itemKey===key)))throw Error(`Invalid or promoted family draft: ${validation.issues.join('; ')}`);
+const content={version:'french-v3-verb-family-recognition-expansion-v1',status:'draft_requires_review',parentTaxonomyChecksum:artifact.manifest.contentChecksum,sourceBankChecksum:validateCanonicalDiagnosticBank(base,artifact.taxonomy).manifest.checksum,items,annotations};
+const path='generated/french-v3-verb-family-recognition-expansion.json';const serialized=JSON.stringify({...content,checksum:checksum(content)},null,2)+'\n';
+if(process.argv.includes('--check')){if(readFileSync(path,'utf8')!==serialized)throw Error('Stale verb-family recognition expansion');}else writeFileSync(path,serialized);
+console.log(JSON.stringify({draftQuestions:items.length,target:node.key,perFamily:Object.fromEntries(Object.keys(VERB_FAMILY_LABELS).map(family=>[family,VERB_FAMILY_RECOGNITION_DRAFTS.filter(d=>d.family===family).length])),status:content.status,defaultAssemblyUnchanged:true}));
