@@ -5,7 +5,8 @@ import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { requireRole } from "@/lib/auth";
 import { createClient, createServiceClient } from "@/lib/supabase/server";
-import { getCurrentStudentId, getStudentStateData } from "@/lib/db/student";
+import { getCurrentStudentId } from "@/lib/db/student";
+import { getDeliveredStudentState } from "@/lib/diagnostic/granular/student-state-delivery";
 import { onboardingSchema, onboardingTarget } from "@/lib/onboarding";
 import { getContentLibrary, getPublishedReadingText, recommendPublishedTextKey } from "@/lib/db/content";
 import { rankInterestSignals } from "@/lib/content/recommend";
@@ -654,7 +655,7 @@ async function contentIds(
 
 export async function loadStudentState() {
   const { supabase, studentId } = await context();
-  return journalStudentPayload(studentId,"legacy:student-state",await getStudentStateData(studentId, supabase));
+  return getDeliveredStudentState(studentId, supabase);
 }
 
 export async function loadReadingText(input: unknown) {
@@ -733,7 +734,7 @@ export async function selectInterests(input: unknown) {
     metadata: { studentType, targetFramework: target.framework, targetLevel: target.level },
   });
   revalidatePath("/student");
-  return getStudentStateData(studentId, supabase);
+  return getDeliveredStudentState(studentId, supabase);
 }
 
 export async function startAdaptiveDiagnostic(input: unknown) {
@@ -743,7 +744,7 @@ export async function startAdaptiveDiagnostic(input: unknown) {
   const service = createServiceClient();
   if (!restart) {
     const completed = await loadCompletedDiagnostic(studentId, service);
-    if (completed) return { done: true as const, ...completed, state: await getStudentStateData(studentId, service) };
+    if (completed) return { done: true as const, ...completed, state: await getDeliveredStudentState(studentId, service) };
   }
   const { data: existingRun } = await supabase.from("diagnostic_runs")
     .select("id,started_at,current_section,taxonomy_release_id,item_bank_release_id,is_pilot")
@@ -2063,7 +2064,7 @@ async function finalizeAdaptiveDiagnostic(input: {
     grade,
     placement: summaryPayload.system.placement,
     progress,
-    state: await getStudentStateData(input.studentId, input.service),
+    state: await getDeliveredStudentState(input.studentId, input.service),
     learningPath: {
       id: persistedPath.id as string,
       stepCount: path.steps.length,
@@ -2300,7 +2301,7 @@ export async function completeReadingSession(input: unknown) {
   if(claimError)throw new Error(claimError.message);
   const claim=claims?.[0] as{claimed:boolean;status:string;result_payload:unknown}|undefined;
   if(!claim?.claimed){
-    if(claim?.status==="completed"&&claim.result_payload){const state=await getStudentStateData(studentId,supabase);return{result:claim.result_payload as ReturnType<typeof scoreSession>,state};}
+    if(claim?.status==="completed"&&claim.result_payload){const state=await getDeliveredStudentState(studentId,supabase);return{result:claim.result_payload as ReturnType<typeof scoreSession>,state};}
     throw new Error("Cette séance est déjà en cours de finalisation. Contacte le support si elle reste bloquée.");
   }
 
@@ -2439,7 +2440,7 @@ export async function completeReadingSession(input: unknown) {
   if (sessionsThisWeek === 3) await trackServer(studentId, "three_sessions_week_1", { window_days: 7 });
   const{error:finishError}=await service.rpc("finish_reading_completion",{p_session_id:data.sessionId,p_result:result});if(finishError)throw new Error(finishError.message);
   revalidatePath("/student"); revalidatePath("/parent"); revalidatePath("/teacher");
-  return { result, xp: readingXp, state: await getStudentStateData(studentId, supabase) };
+  return { result, xp: readingXp, state: await getDeliveredStudentState(studentId, supabase) };
   } catch(error) { const message=error instanceof Error?error.message:"Erreur inconnue";await service.rpc("fail_reading_completion",{p_session_id:data.sessionId,p_error:message});throw error; }
 }
 
@@ -2478,7 +2479,7 @@ export async function submitRetrievalAttempt(input: unknown) {
   if (updateError) throw new Error(updateError.message);
   await recordDailyActivity(service,studentId,data.attemptedAt,"retrieval");
   const xp = await awardXp(service,{studentId,eventKey:`retrieval_review:${data.cardId}:${data.attemptedAt.slice(0,10)}`,sourceType:"retrieval_review",sourceId:data.cardId,baseXp:XP_AWARDS.retrievalReview,at:data.attemptedAt});
-  return { result, xp, state: await getStudentStateData(studentId, supabase) };
+  return { result, xp, state: await getDeliveredStudentState(studentId, supabase) };
 }
 
 export async function loadReadingResume(input: unknown) {
@@ -2625,7 +2626,7 @@ export async function submitSkillPractice(input: unknown) {
     last_evidence_at: new Date().toISOString(),
   }, { onConflict: "student_id,skill_id" });
   if (error) throw new Error(error.message);
-  return { state: await getStudentStateData(studentId, supabase) };
+  return { state: await getDeliveredStudentState(studentId, supabase) };
 }
 
 const studentPasswordSchema=z.object({password:z.string().min(12).max(128)});
