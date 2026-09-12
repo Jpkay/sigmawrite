@@ -1,14 +1,13 @@
 {
   "status": "prepared_inventory_not_release_or_review_approval",
-  "parallelCandidateChecksum": "sha256:6400f0aa3b5c6a6a4fbaf31d554c6cf5512644d4da7639d7cc774e83225e66da",
-  "scopedCandidateChecksum": "sha256:9cc4191b0ef96a8d3625a632f577acffe3f5e63991a07a077c5a89c45dd24bc6",
+  "parallelCandidateChecksum": "sha256:6fd4b0018374115294ebd1fef980514e6746bf9412d2537cbd833aa9b10031ed",
+  "scopedCandidateChecksum": "sha256:cd76546a4d9e7fc0dc97bb841cddf44037f54b1cb38927240782be33fdc5c331",
   "targets": 542,
   "counts": {
-    "prepared_scoped_pathway": 231,
-    "complete_question_pools": 232,
+    "prepared_scoped_pathway": 237,
+    "complete_question_pools": 230,
     "author_exact_target_lesson": 57,
-    "connected_writing_evidence": 18,
-    "resolve_prerequisite_scope": 4
+    "connected_writing_evidence": 18
   },
   "limitations": [
     "Question allocation alone does not establish suitable teaching, novelty after instruction, human review or educational calibration.",
@@ -7725,43 +7724,49 @@
       "skillId": "segmenter_syllabes_ecrites::reading-receptive",
       "nodeKey": "segmenter_syllabes_ecrites",
       "facetKey": null,
-      "action": "complete_question_pools",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "segmenter_syllabes_ecrites::reading-receptive",
           "mode": "recognition",
-          "status": "insufficient_coverage",
-          "initialItems": 0,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 12,
+          "learningItems": 12,
+          "excludedQuestionIds": []
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:written-syllables:recognition"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "segmenter_syllabes_ecrites::writing-controlled-production",
       "nodeKey": "segmenter_syllabes_ecrites",
       "facetKey": null,
-      "action": "complete_question_pools",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "segmenter_syllabes_ecrites::writing-controlled-production",
           "mode": "production",
-          "status": "insufficient_coverage",
-          "initialItems": 0,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 12,
+          "learningItems": 12,
+          "excludedQuestionIds": []
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:written-syllables:production"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "associer_phoneme_graphie_frequente::reading-receptive",
       "nodeKey": "associer_phoneme_graphie_frequente",
       "facetKey": null,
-      "action": "resolve_prerequisite_scope",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "associer_phoneme_graphie_frequente::reading-receptive",
@@ -7776,16 +7781,13 @@
         "french-v3-teaching:phoneme-graphie:recognition"
       ],
       "freshCheckAvailable": true,
-      "prerequisitesOutsidePreparedScope": [
-        "segmenter_syllabes_ecrites::reading-receptive",
-        "segmenter_syllabes_ecrites::writing-controlled-production"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "associer_phoneme_graphie_frequente::writing-controlled-production",
       "nodeKey": "associer_phoneme_graphie_frequente",
       "facetKey": null,
-      "action": "resolve_prerequisite_scope",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "associer_phoneme_graphie_frequente::writing-controlled-production",
@@ -7800,10 +7802,7 @@
         "french-v3-teaching:phoneme-graphie:production"
       ],
       "freshCheckAvailable": true,
-      "prerequisitesOutsidePreparedScope": [
-        "segmenter_syllabes_ecrites::reading-receptive",
-        "segmenter_syllabes_ecrites::writing-controlled-production"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "orthographier_o_au_eau::reading-receptive",
@@ -8289,7 +8288,7 @@
       "skillId": "employer_cedille::reading-receptive",
       "nodeKey": "employer_cedille",
       "facetKey": null,
-      "action": "resolve_prerequisite_scope",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "employer_cedille::reading-receptive",
@@ -8304,16 +8303,13 @@
         "french-v3-teaching:cedille:recognition"
       ],
       "freshCheckAvailable": true,
-      "prerequisitesOutsidePreparedScope": [
-        "associer_phoneme_graphie_frequente::reading-receptive",
-        "associer_phoneme_graphie_frequente::writing-controlled-production"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "employer_cedille::writing-controlled-production",
       "nodeKey": "employer_cedille",
       "facetKey": null,
-      "action": "resolve_prerequisite_scope",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "employer_cedille::writing-controlled-production",
@@ -8330,10 +8326,7 @@
         "french-v3-teaching:cedille:production"
       ],
       "freshCheckAvailable": true,
-      "prerequisitesOutsidePreparedScope": [
-        "associer_phoneme_graphie_frequente::reading-receptive",
-        "associer_phoneme_graphie_frequente::writing-controlled-production"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "employer_trema::reading-receptive",

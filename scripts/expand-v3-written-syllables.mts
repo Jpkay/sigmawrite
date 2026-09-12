@@ -13,7 +13,8 @@ for(const draft of WRITTEN_SYLLABLE_DRAFTS){
  const node=artifact.taxonomy.nodes.find((node:{key:string})=>node.key==="segmenter_syllabes_ecrites"),evidence=node?.evidence.find((evidence:{key:string})=>evidence.key===(draft.mode==="recognition"?"reading-receptive":"writing-controlled-production"));
  if(!evidence)throw Error(`Missing approved target: segmenter_syllabes_ecrites`);
  const key=`v3-written-syllables:${draft.key}`;
- const alternatives=[draft.segmented,draft.word,`${draft.word[0]}/${draft.word.slice(1)}`,[...draft.word].join('/')];
+ const wrongBoundary=Array.from({length:draft.word.length-1},(_,i)=>`${draft.word.slice(0,i+1)}/${draft.word.slice(i+1)}`).find(value=>value!==draft.segmented)!;
+ const alternatives=[draft.segmented,draft.word,wrongBoundary,[...draft.word].join('/')];
  if(new Set(alternatives).size!==4||draft.segmented.replaceAll('/','')!==draft.word)throw Error(`Invalid segmentation alternatives: ${key}`);
  const finite=shortWordSegmentations(draft.word);
  const reason="Written syllable segmentation of regular words; not oral counting or line wrapping.";

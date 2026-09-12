@@ -37493,6 +37493,3679 @@
       "reviewStatus": "needs_human_review"
     },
     {
+      "itemKey": "v3-written-syllables:recognition-moto",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le mot est « moto ».\nChoisis son découpage en syllabes écrites.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "simple",
+          "contrastingErrors": [
+            {
+              "errorKey": "missing_boundary",
+              "incorrectChoiceFr": "moto"
+            },
+            {
+              "errorKey": "wrong_boundary",
+              "incorrectChoiceFr": "m/oto"
+            },
+            {
+              "errorKey": "letter_by_letter",
+              "incorrectChoiceFr": "m/o/t/o"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "moto",
+                "form": "moto"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "moto"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "mo/to",
+            "correct": true
+          },
+          {
+            "text": "moto",
+            "correct": false
+          },
+          {
+            "text": "m/oto",
+            "correct": false
+          },
+          {
+            "text": "m/o/t/o",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:recognition-lama",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le mot est « lama ».\nChoisis son découpage en syllabes écrites.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "simple",
+          "contrastingErrors": [
+            {
+              "errorKey": "missing_boundary",
+              "incorrectChoiceFr": "lama"
+            },
+            {
+              "errorKey": "wrong_boundary",
+              "incorrectChoiceFr": "l/ama"
+            },
+            {
+              "errorKey": "letter_by_letter",
+              "incorrectChoiceFr": "l/a/m/a"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "lama",
+                "form": "lama"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "lama"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "la/ma",
+            "correct": true
+          },
+          {
+            "text": "lama",
+            "correct": false
+          },
+          {
+            "text": "l/ama",
+            "correct": false
+          },
+          {
+            "text": "l/a/m/a",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:recognition-menu",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le mot est « menu ».\nChoisis son découpage en syllabes écrites.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "simple",
+          "contrastingErrors": [
+            {
+              "errorKey": "missing_boundary",
+              "incorrectChoiceFr": "menu"
+            },
+            {
+              "errorKey": "wrong_boundary",
+              "incorrectChoiceFr": "m/enu"
+            },
+            {
+              "errorKey": "letter_by_letter",
+              "incorrectChoiceFr": "m/e/n/u"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "menu",
+                "form": "menu"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "menu"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "me/nu",
+            "correct": true
+          },
+          {
+            "text": "menu",
+            "correct": false
+          },
+          {
+            "text": "m/enu",
+            "correct": false
+          },
+          {
+            "text": "m/e/n/u",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:recognition-vélo",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le mot est « vélo ».\nChoisis son découpage en syllabes écrites.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "simple",
+          "contrastingErrors": [
+            {
+              "errorKey": "missing_boundary",
+              "incorrectChoiceFr": "vélo"
+            },
+            {
+              "errorKey": "wrong_boundary",
+              "incorrectChoiceFr": "v/élo"
+            },
+            {
+              "errorKey": "letter_by_letter",
+              "incorrectChoiceFr": "v/é/l/o"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "vélo",
+                "form": "vélo"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "vélo"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "vé/lo",
+            "correct": true
+          },
+          {
+            "text": "vélo",
+            "correct": false
+          },
+          {
+            "text": "v/élo",
+            "correct": false
+          },
+          {
+            "text": "v/é/l/o",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:recognition-domino",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le mot est « domino ».\nChoisis son découpage en syllabes écrites.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "simple",
+          "contrastingErrors": [
+            {
+              "errorKey": "missing_boundary",
+              "incorrectChoiceFr": "domino"
+            },
+            {
+              "errorKey": "wrong_boundary",
+              "incorrectChoiceFr": "d/omino"
+            },
+            {
+              "errorKey": "letter_by_letter",
+              "incorrectChoiceFr": "d/o/m/i/n/o"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "domino",
+                "form": "domino"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "domino"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "do/mi/no",
+            "correct": true
+          },
+          {
+            "text": "domino",
+            "correct": false
+          },
+          {
+            "text": "d/omino",
+            "correct": false
+          },
+          {
+            "text": "d/o/m/i/n/o",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:recognition-lavabo",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le mot est « lavabo ».\nChoisis son découpage en syllabes écrites.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "simple",
+          "contrastingErrors": [
+            {
+              "errorKey": "missing_boundary",
+              "incorrectChoiceFr": "lavabo"
+            },
+            {
+              "errorKey": "wrong_boundary",
+              "incorrectChoiceFr": "l/avabo"
+            },
+            {
+              "errorKey": "letter_by_letter",
+              "incorrectChoiceFr": "l/a/v/a/b/o"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "lavabo",
+                "form": "lavabo"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "lavabo"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "la/va/bo",
+            "correct": true
+          },
+          {
+            "text": "lavabo",
+            "correct": false
+          },
+          {
+            "text": "l/avabo",
+            "correct": false
+          },
+          {
+            "text": "l/a/v/a/b/o",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:recognition-canapé",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le mot est « canapé ».\nChoisis son découpage en syllabes écrites.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "simple",
+          "contrastingErrors": [
+            {
+              "errorKey": "missing_boundary",
+              "incorrectChoiceFr": "canapé"
+            },
+            {
+              "errorKey": "wrong_boundary",
+              "incorrectChoiceFr": "c/anapé"
+            },
+            {
+              "errorKey": "letter_by_letter",
+              "incorrectChoiceFr": "c/a/n/a/p/é"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "canapé",
+                "form": "canapé"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "canapé"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "ca/na/pé",
+            "correct": true
+          },
+          {
+            "text": "canapé",
+            "correct": false
+          },
+          {
+            "text": "c/anapé",
+            "correct": false
+          },
+          {
+            "text": "c/a/n/a/p/é",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:recognition-numéro",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le mot est « numéro ».\nChoisis son découpage en syllabes écrites.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "simple",
+          "contrastingErrors": [
+            {
+              "errorKey": "missing_boundary",
+              "incorrectChoiceFr": "numéro"
+            },
+            {
+              "errorKey": "wrong_boundary",
+              "incorrectChoiceFr": "n/uméro"
+            },
+            {
+              "errorKey": "letter_by_letter",
+              "incorrectChoiceFr": "n/u/m/é/r/o"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "numéro",
+                "form": "numéro"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "numéro"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "nu/mé/ro",
+            "correct": true
+          },
+          {
+            "text": "numéro",
+            "correct": false
+          },
+          {
+            "text": "n/uméro",
+            "correct": false
+          },
+          {
+            "text": "n/u/m/é/r/o",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:recognition-ballon",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le mot est « ballon ».\nChoisis son découpage en syllabes écrites.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "double_consonant",
+          "contrastingErrors": [
+            {
+              "errorKey": "missing_boundary",
+              "incorrectChoiceFr": "ballon"
+            },
+            {
+              "errorKey": "wrong_boundary",
+              "incorrectChoiceFr": "b/allon"
+            },
+            {
+              "errorKey": "letter_by_letter",
+              "incorrectChoiceFr": "b/a/l/l/o/n"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "ballon",
+                "form": "ballon"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "ballon"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "bal/lon",
+            "correct": true
+          },
+          {
+            "text": "ballon",
+            "correct": false
+          },
+          {
+            "text": "b/allon",
+            "correct": false
+          },
+          {
+            "text": "b/a/l/l/o/n",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:recognition-pomme",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le mot est « pomme ».\nChoisis son découpage en syllabes écrites.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "double_consonant",
+          "contrastingErrors": [
+            {
+              "errorKey": "missing_boundary",
+              "incorrectChoiceFr": "pomme"
+            },
+            {
+              "errorKey": "wrong_boundary",
+              "incorrectChoiceFr": "p/omme"
+            },
+            {
+              "errorKey": "letter_by_letter",
+              "incorrectChoiceFr": "p/o/m/m/e"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "pomme",
+                "form": "pomme"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "pomme"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "pom/me",
+            "correct": true
+          },
+          {
+            "text": "pomme",
+            "correct": false
+          },
+          {
+            "text": "p/omme",
+            "correct": false
+          },
+          {
+            "text": "p/o/m/m/e",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:recognition-tasse",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le mot est « tasse ».\nChoisis son découpage en syllabes écrites.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "double_consonant",
+          "contrastingErrors": [
+            {
+              "errorKey": "missing_boundary",
+              "incorrectChoiceFr": "tasse"
+            },
+            {
+              "errorKey": "wrong_boundary",
+              "incorrectChoiceFr": "t/asse"
+            },
+            {
+              "errorKey": "letter_by_letter",
+              "incorrectChoiceFr": "t/a/s/s/e"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "tasse",
+                "form": "tasse"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "tasse"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "tas/se",
+            "correct": true
+          },
+          {
+            "text": "tasse",
+            "correct": false
+          },
+          {
+            "text": "t/asse",
+            "correct": false
+          },
+          {
+            "text": "t/a/s/s/e",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:recognition-somme",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le mot est « somme ».\nChoisis son découpage en syllabes écrites.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "double_consonant",
+          "contrastingErrors": [
+            {
+              "errorKey": "missing_boundary",
+              "incorrectChoiceFr": "somme"
+            },
+            {
+              "errorKey": "wrong_boundary",
+              "incorrectChoiceFr": "s/omme"
+            },
+            {
+              "errorKey": "letter_by_letter",
+              "incorrectChoiceFr": "s/o/m/m/e"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "somme",
+                "form": "somme"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "somme"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "som/me",
+            "correct": true
+          },
+          {
+            "text": "somme",
+            "correct": false
+          },
+          {
+            "text": "s/omme",
+            "correct": false
+          },
+          {
+            "text": "s/o/m/m/e",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:recognition-coller",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le mot est « coller ».\nChoisis son découpage en syllabes écrites.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "double_consonant",
+          "contrastingErrors": [
+            {
+              "errorKey": "missing_boundary",
+              "incorrectChoiceFr": "coller"
+            },
+            {
+              "errorKey": "wrong_boundary",
+              "incorrectChoiceFr": "c/oller"
+            },
+            {
+              "errorKey": "letter_by_letter",
+              "incorrectChoiceFr": "c/o/l/l/e/r"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "coller",
+                "form": "coller"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "coller"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "col/ler",
+            "correct": true
+          },
+          {
+            "text": "coller",
+            "correct": false
+          },
+          {
+            "text": "c/oller",
+            "correct": false
+          },
+          {
+            "text": "c/o/l/l/e/r",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:recognition-belle",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le mot est « belle ».\nChoisis son découpage en syllabes écrites.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "double_consonant",
+          "contrastingErrors": [
+            {
+              "errorKey": "missing_boundary",
+              "incorrectChoiceFr": "belle"
+            },
+            {
+              "errorKey": "wrong_boundary",
+              "incorrectChoiceFr": "b/elle"
+            },
+            {
+              "errorKey": "letter_by_letter",
+              "incorrectChoiceFr": "b/e/l/l/e"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "belle",
+                "form": "belle"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "belle"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "bel/le",
+            "correct": true
+          },
+          {
+            "text": "belle",
+            "correct": false
+          },
+          {
+            "text": "b/elle",
+            "correct": false
+          },
+          {
+            "text": "b/e/l/l/e",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:recognition-donner",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le mot est « donner ».\nChoisis son découpage en syllabes écrites.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "double_consonant",
+          "contrastingErrors": [
+            {
+              "errorKey": "missing_boundary",
+              "incorrectChoiceFr": "donner"
+            },
+            {
+              "errorKey": "wrong_boundary",
+              "incorrectChoiceFr": "d/onner"
+            },
+            {
+              "errorKey": "letter_by_letter",
+              "incorrectChoiceFr": "d/o/n/n/e/r"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "donner",
+                "form": "donner"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "donner"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "don/ner",
+            "correct": true
+          },
+          {
+            "text": "donner",
+            "correct": false
+          },
+          {
+            "text": "d/onner",
+            "correct": false
+          },
+          {
+            "text": "d/o/n/n/e/r",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:recognition-buffet",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le mot est « buffet ».\nChoisis son découpage en syllabes écrites.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "double_consonant",
+          "contrastingErrors": [
+            {
+              "errorKey": "missing_boundary",
+              "incorrectChoiceFr": "buffet"
+            },
+            {
+              "errorKey": "wrong_boundary",
+              "incorrectChoiceFr": "b/uffet"
+            },
+            {
+              "errorKey": "letter_by_letter",
+              "incorrectChoiceFr": "b/u/f/f/e/t"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "buffet",
+                "form": "buffet"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "buffet"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "buf/fet",
+            "correct": true
+          },
+          {
+            "text": "buffet",
+            "correct": false
+          },
+          {
+            "text": "b/uffet",
+            "correct": false
+          },
+          {
+            "text": "b/u/f/f/e/t",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:recognition-abri",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le mot est « abri ».\nChoisis son découpage en syllabes écrites.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "consonant_group",
+          "contrastingErrors": [
+            {
+              "errorKey": "missing_boundary",
+              "incorrectChoiceFr": "abri"
+            },
+            {
+              "errorKey": "wrong_boundary",
+              "incorrectChoiceFr": "ab/ri"
+            },
+            {
+              "errorKey": "letter_by_letter",
+              "incorrectChoiceFr": "a/b/r/i"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "abri",
+                "form": "abri"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "abri"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "a/bri",
+            "correct": true
+          },
+          {
+            "text": "abri",
+            "correct": false
+          },
+          {
+            "text": "ab/ri",
+            "correct": false
+          },
+          {
+            "text": "a/b/r/i",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:recognition-éclat",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le mot est « éclat ».\nChoisis son découpage en syllabes écrites.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "consonant_group",
+          "contrastingErrors": [
+            {
+              "errorKey": "missing_boundary",
+              "incorrectChoiceFr": "éclat"
+            },
+            {
+              "errorKey": "wrong_boundary",
+              "incorrectChoiceFr": "éc/lat"
+            },
+            {
+              "errorKey": "letter_by_letter",
+              "incorrectChoiceFr": "é/c/l/a/t"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "éclat",
+                "form": "éclat"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "éclat"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "é/clat",
+            "correct": true
+          },
+          {
+            "text": "éclat",
+            "correct": false
+          },
+          {
+            "text": "éc/lat",
+            "correct": false
+          },
+          {
+            "text": "é/c/l/a/t",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:recognition-patron",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le mot est « patron ».\nChoisis son découpage en syllabes écrites.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "consonant_group",
+          "contrastingErrors": [
+            {
+              "errorKey": "missing_boundary",
+              "incorrectChoiceFr": "patron"
+            },
+            {
+              "errorKey": "wrong_boundary",
+              "incorrectChoiceFr": "p/atron"
+            },
+            {
+              "errorKey": "letter_by_letter",
+              "incorrectChoiceFr": "p/a/t/r/o/n"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "patron",
+                "form": "patron"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "patron"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "pa/tron",
+            "correct": true
+          },
+          {
+            "text": "patron",
+            "correct": false
+          },
+          {
+            "text": "p/atron",
+            "correct": false
+          },
+          {
+            "text": "p/a/t/r/o/n",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:recognition-réglage",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le mot est « réglage ».\nChoisis son découpage en syllabes écrites.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "consonant_group",
+          "contrastingErrors": [
+            {
+              "errorKey": "missing_boundary",
+              "incorrectChoiceFr": "réglage"
+            },
+            {
+              "errorKey": "wrong_boundary",
+              "incorrectChoiceFr": "r/églage"
+            },
+            {
+              "errorKey": "letter_by_letter",
+              "incorrectChoiceFr": "r/é/g/l/a/g/e"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "réglage",
+                "form": "réglage"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "réglage"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "ré/gla/ge",
+            "correct": true
+          },
+          {
+            "text": "réglage",
+            "correct": false
+          },
+          {
+            "text": "r/églage",
+            "correct": false
+          },
+          {
+            "text": "r/é/g/l/a/g/e",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:recognition-pacha",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le mot est « pacha ».\nChoisis son découpage en syllabes écrites.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "consonant_group",
+          "contrastingErrors": [
+            {
+              "errorKey": "missing_boundary",
+              "incorrectChoiceFr": "pacha"
+            },
+            {
+              "errorKey": "wrong_boundary",
+              "incorrectChoiceFr": "p/acha"
+            },
+            {
+              "errorKey": "letter_by_letter",
+              "incorrectChoiceFr": "p/a/c/h/a"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "pacha",
+                "form": "pacha"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "pacha"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "pa/cha",
+            "correct": true
+          },
+          {
+            "text": "pacha",
+            "correct": false
+          },
+          {
+            "text": "p/acha",
+            "correct": false
+          },
+          {
+            "text": "p/a/c/h/a",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:recognition-machine",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le mot est « machine ».\nChoisis son découpage en syllabes écrites.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "consonant_group",
+          "contrastingErrors": [
+            {
+              "errorKey": "missing_boundary",
+              "incorrectChoiceFr": "machine"
+            },
+            {
+              "errorKey": "wrong_boundary",
+              "incorrectChoiceFr": "m/achine"
+            },
+            {
+              "errorKey": "letter_by_letter",
+              "incorrectChoiceFr": "m/a/c/h/i/n/e"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "machine",
+                "form": "machine"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "machine"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "ma/chi/ne",
+            "correct": true
+          },
+          {
+            "text": "machine",
+            "correct": false
+          },
+          {
+            "text": "m/achine",
+            "correct": false
+          },
+          {
+            "text": "m/a/c/h/i/n/e",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:recognition-signaler",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le mot est « signaler ».\nChoisis son découpage en syllabes écrites.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "consonant_group",
+          "contrastingErrors": [
+            {
+              "errorKey": "missing_boundary",
+              "incorrectChoiceFr": "signaler"
+            },
+            {
+              "errorKey": "wrong_boundary",
+              "incorrectChoiceFr": "s/ignaler"
+            },
+            {
+              "errorKey": "letter_by_letter",
+              "incorrectChoiceFr": "s/i/g/n/a/l/e/r"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "signaler",
+                "form": "signaler"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "signaler"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "si/gna/ler",
+            "correct": true
+          },
+          {
+            "text": "signaler",
+            "correct": false
+          },
+          {
+            "text": "s/ignaler",
+            "correct": false
+          },
+          {
+            "text": "s/i/g/n/a/l/e/r",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:recognition-diplôme",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le mot est « diplôme ».\nChoisis son découpage en syllabes écrites.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "consonant_group",
+          "contrastingErrors": [
+            {
+              "errorKey": "missing_boundary",
+              "incorrectChoiceFr": "diplôme"
+            },
+            {
+              "errorKey": "wrong_boundary",
+              "incorrectChoiceFr": "d/iplôme"
+            },
+            {
+              "errorKey": "letter_by_letter",
+              "incorrectChoiceFr": "d/i/p/l/ô/m/e"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "diplôme",
+                "form": "diplôme"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "diplôme"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "di/plô/me",
+            "correct": true
+          },
+          {
+            "text": "diplôme",
+            "correct": false
+          },
+          {
+            "text": "d/iplôme",
+            "correct": false
+          },
+          {
+            "text": "d/i/p/l/ô/m/e",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:production-papa",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Le mot est « papa ».\nDécoupe-le en syllabes écrites. Sépare les syllabes par /.",
+        "instructionsFr": "Garde toutes les lettres et sépare les syllabes par /.",
+        "correctAnswer": "pa/pa",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "simple",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "papa",
+              "p/apa",
+              "pa/pa",
+              "p/a/pa",
+              "pap/a",
+              "p/ap/a",
+              "pa/p/a",
+              "p/a/p/a"
+            ],
+            "rationaleFr": "Toutes les positions possibles des barres sont comptées pour ce mot court. Les lettres sont fournies."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "papa",
+                "form": "papa"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "papa"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:production-bébé",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Le mot est « bébé ».\nDécoupe-le en syllabes écrites. Sépare les syllabes par /.",
+        "instructionsFr": "Garde toutes les lettres et sépare les syllabes par /.",
+        "correctAnswer": "bé/bé",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "simple",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "bébé",
+              "b/ébé",
+              "bé/bé",
+              "b/é/bé",
+              "béb/é",
+              "b/éb/é",
+              "bé/b/é",
+              "b/é/b/é"
+            ],
+            "rationaleFr": "Toutes les positions possibles des barres sont comptées pour ce mot court. Les lettres sont fournies."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "bébé",
+                "form": "bébé"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "bébé"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:production-café",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Le mot est « café ».\nDécoupe-le en syllabes écrites. Sépare les syllabes par /.",
+        "instructionsFr": "Garde toutes les lettres et sépare les syllabes par /.",
+        "correctAnswer": "ca/fé",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "simple",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "café",
+              "c/afé",
+              "ca/fé",
+              "c/a/fé",
+              "caf/é",
+              "c/af/é",
+              "ca/f/é",
+              "c/a/f/é"
+            ],
+            "rationaleFr": "Toutes les positions possibles des barres sont comptées pour ce mot court. Les lettres sont fournies."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "café",
+                "form": "café"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "café"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:production-judo",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Le mot est « judo ».\nDécoupe-le en syllabes écrites. Sépare les syllabes par /.",
+        "instructionsFr": "Garde toutes les lettres et sépare les syllabes par /.",
+        "correctAnswer": "ju/do",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "simple",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "judo",
+              "j/udo",
+              "ju/do",
+              "j/u/do",
+              "jud/o",
+              "j/ud/o",
+              "ju/d/o",
+              "j/u/d/o"
+            ],
+            "rationaleFr": "Toutes les positions possibles des barres sont comptées pour ce mot court. Les lettres sont fournies."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "judo",
+                "form": "judo"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "judo"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:production-salade",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Le mot est « salade ».\nDécoupe-le en syllabes écrites. Sépare les syllabes par /.",
+        "instructionsFr": "Garde toutes les lettres et sépare les syllabes par /.",
+        "correctAnswer": "sa/la/de",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "simple",
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "salade",
+                "form": "salade"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "salade"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:production-tomate",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Le mot est « tomate ».\nDécoupe-le en syllabes écrites. Sépare les syllabes par /.",
+        "instructionsFr": "Garde toutes les lettres et sépare les syllabes par /.",
+        "correctAnswer": "to/ma/te",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "simple",
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "tomate",
+                "form": "tomate"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "tomate"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:production-caravane",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Le mot est « caravane ».\nDécoupe-le en syllabes écrites. Sépare les syllabes par /.",
+        "instructionsFr": "Garde toutes les lettres et sépare les syllabes par /.",
+        "correctAnswer": "ca/ra/va/ne",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "simple",
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "caravane",
+                "form": "caravane"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "caravane"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:production-locomotive",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Le mot est « locomotive ».\nDécoupe-le en syllabes écrites. Sépare les syllabes par /.",
+        "instructionsFr": "Garde toutes les lettres et sépare les syllabes par /.",
+        "correctAnswer": "lo/co/mo/ti/ve",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "simple",
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "locomotive",
+                "form": "locomotive"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "locomotive"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:production-balle",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Le mot est « balle ».\nDécoupe-le en syllabes écrites. Sépare les syllabes par /.",
+        "instructionsFr": "Garde toutes les lettres et sépare les syllabes par /.",
+        "correctAnswer": "bal/le",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "double_consonant",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "balle",
+              "b/alle",
+              "ba/lle",
+              "b/a/lle",
+              "bal/le",
+              "b/al/le",
+              "ba/l/le",
+              "b/a/l/le",
+              "ball/e",
+              "b/all/e",
+              "ba/ll/e",
+              "b/a/ll/e",
+              "bal/l/e",
+              "b/al/l/e",
+              "ba/l/l/e",
+              "b/a/l/l/e"
+            ],
+            "rationaleFr": "Toutes les positions possibles des barres sont comptées pour ce mot court. Les lettres sont fournies."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "balle",
+                "form": "balle"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "balle"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:production-nappe",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Le mot est « nappe ».\nDécoupe-le en syllabes écrites. Sépare les syllabes par /.",
+        "instructionsFr": "Garde toutes les lettres et sépare les syllabes par /.",
+        "correctAnswer": "nap/pe",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "double_consonant",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "nappe",
+              "n/appe",
+              "na/ppe",
+              "n/a/ppe",
+              "nap/pe",
+              "n/ap/pe",
+              "na/p/pe",
+              "n/a/p/pe",
+              "napp/e",
+              "n/app/e",
+              "na/pp/e",
+              "n/a/pp/e",
+              "nap/p/e",
+              "n/ap/p/e",
+              "na/p/p/e",
+              "n/a/p/p/e"
+            ],
+            "rationaleFr": "Toutes les positions possibles des barres sont comptées pour ce mot court. Les lettres sont fournies."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "nappe",
+                "form": "nappe"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "nappe"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:production-ville",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Le mot est « ville ».\nDécoupe-le en syllabes écrites. Sépare les syllabes par /.",
+        "instructionsFr": "Garde toutes les lettres et sépare les syllabes par /.",
+        "correctAnswer": "vil/le",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "double_consonant",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ville",
+              "v/ille",
+              "vi/lle",
+              "v/i/lle",
+              "vil/le",
+              "v/il/le",
+              "vi/l/le",
+              "v/i/l/le",
+              "vill/e",
+              "v/ill/e",
+              "vi/ll/e",
+              "v/i/ll/e",
+              "vil/l/e",
+              "v/il/l/e",
+              "vi/l/l/e",
+              "v/i/l/l/e"
+            ],
+            "rationaleFr": "Toutes les positions possibles des barres sont comptées pour ce mot court. Les lettres sont fournies."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "ville",
+                "form": "ville"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "ville"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:production-gomme",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Le mot est « gomme ».\nDécoupe-le en syllabes écrites. Sépare les syllabes par /.",
+        "instructionsFr": "Garde toutes les lettres et sépare les syllabes par /.",
+        "correctAnswer": "gom/me",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "double_consonant",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "gomme",
+              "g/omme",
+              "go/mme",
+              "g/o/mme",
+              "gom/me",
+              "g/om/me",
+              "go/m/me",
+              "g/o/m/me",
+              "gomm/e",
+              "g/omm/e",
+              "go/mm/e",
+              "g/o/mm/e",
+              "gom/m/e",
+              "g/om/m/e",
+              "go/m/m/e",
+              "g/o/m/m/e"
+            ],
+            "rationaleFr": "Toutes les positions possibles des barres sont comptées pour ce mot court. Les lettres sont fournies."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "gomme",
+                "form": "gomme"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "gomme"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:production-passer",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Le mot est « passer ».\nDécoupe-le en syllabes écrites. Sépare les syllabes par /.",
+        "instructionsFr": "Garde toutes les lettres et sépare les syllabes par /.",
+        "correctAnswer": "pas/ser",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "double_consonant",
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "passer",
+                "form": "passer"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "passer"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:production-dossier",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Le mot est « dossier ».\nDécoupe-le en syllabes écrites. Sépare les syllabes par /.",
+        "instructionsFr": "Garde toutes les lettres et sépare les syllabes par /.",
+        "correctAnswer": "dos/sier",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "double_consonant",
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "dossier",
+                "form": "dossier"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "dossier"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:production-messe",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Le mot est « messe ».\nDécoupe-le en syllabes écrites. Sépare les syllabes par /.",
+        "instructionsFr": "Garde toutes les lettres et sépare les syllabes par /.",
+        "correctAnswer": "mes/se",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "double_consonant",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "messe",
+              "m/esse",
+              "me/sse",
+              "m/e/sse",
+              "mes/se",
+              "m/es/se",
+              "me/s/se",
+              "m/e/s/se",
+              "mess/e",
+              "m/ess/e",
+              "me/ss/e",
+              "m/e/ss/e",
+              "mes/s/e",
+              "m/es/s/e",
+              "me/s/s/e",
+              "m/e/s/s/e"
+            ],
+            "rationaleFr": "Toutes les positions possibles des barres sont comptées pour ce mot court. Les lettres sont fournies."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "messe",
+                "form": "messe"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "messe"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:production-pelle",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Le mot est « pelle ».\nDécoupe-le en syllabes écrites. Sépare les syllabes par /.",
+        "instructionsFr": "Garde toutes les lettres et sépare les syllabes par /.",
+        "correctAnswer": "pel/le",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "double_consonant",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "pelle",
+              "p/elle",
+              "pe/lle",
+              "p/e/lle",
+              "pel/le",
+              "p/el/le",
+              "pe/l/le",
+              "p/e/l/le",
+              "pell/e",
+              "p/ell/e",
+              "pe/ll/e",
+              "p/e/ll/e",
+              "pel/l/e",
+              "p/el/l/e",
+              "pe/l/l/e",
+              "p/e/l/l/e"
+            ],
+            "rationaleFr": "Toutes les positions possibles des barres sont comptées pour ce mot court. Les lettres sont fournies."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "pelle",
+                "form": "pelle"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "pelle"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:production-livre",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Le mot est « livre ».\nDécoupe-le en syllabes écrites. Sépare les syllabes par /.",
+        "instructionsFr": "Garde toutes les lettres et sépare les syllabes par /.",
+        "correctAnswer": "li/vre",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "consonant_group",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "livre",
+              "l/ivre",
+              "li/vre",
+              "l/i/vre",
+              "liv/re",
+              "l/iv/re",
+              "li/v/re",
+              "l/i/v/re",
+              "livr/e",
+              "l/ivr/e",
+              "li/vr/e",
+              "l/i/vr/e",
+              "liv/r/e",
+              "l/iv/r/e",
+              "li/v/r/e",
+              "l/i/v/r/e"
+            ],
+            "rationaleFr": "Toutes les positions possibles des barres sont comptées pour ce mot court. Les lettres sont fournies."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "livre",
+                "form": "livre"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "livre"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:production-vitrine",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Le mot est « vitrine ».\nDécoupe-le en syllabes écrites. Sépare les syllabes par /.",
+        "instructionsFr": "Garde toutes les lettres et sépare les syllabes par /.",
+        "correctAnswer": "vi/tri/ne",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "consonant_group",
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "vitrine",
+                "form": "vitrine"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "vitrine"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:production-caprice",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Le mot est « caprice ».\nDécoupe-le en syllabes écrites. Sépare les syllabes par /.",
+        "instructionsFr": "Garde toutes les lettres et sépare les syllabes par /.",
+        "correctAnswer": "ca/pri/ce",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "consonant_group",
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "caprice",
+                "form": "caprice"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "caprice"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:production-église",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Le mot est « église ».\nDécoupe-le en syllabes écrites. Sépare les syllabes par /.",
+        "instructionsFr": "Garde toutes les lettres et sépare les syllabes par /.",
+        "correctAnswer": "é/gli/se",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "consonant_group",
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "église",
+                "form": "église"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "église"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:production-échalote",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Le mot est « échalote ».\nDécoupe-le en syllabes écrites. Sépare les syllabes par /.",
+        "instructionsFr": "Garde toutes les lettres et sépare les syllabes par /.",
+        "correctAnswer": "é/cha/lo/te",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "consonant_group",
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "échalote",
+                "form": "échalote"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "échalote"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:production-chagrin",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Le mot est « chagrin ».\nDécoupe-le en syllabes écrites. Sépare les syllabes par /.",
+        "instructionsFr": "Garde toutes les lettres et sépare les syllabes par /.",
+        "correctAnswer": "cha/grin",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "consonant_group",
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "chagrin",
+                "form": "chagrin"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "chagrin"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:production-tigre",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Le mot est « tigre ».\nDécoupe-le en syllabes écrites. Sépare les syllabes par /.",
+        "instructionsFr": "Garde toutes les lettres et sépare les syllabes par /.",
+        "correctAnswer": "ti/gre",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "consonant_group",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "tigre",
+              "t/igre",
+              "ti/gre",
+              "t/i/gre",
+              "tig/re",
+              "t/ig/re",
+              "ti/g/re",
+              "t/i/g/re",
+              "tigr/e",
+              "t/igr/e",
+              "ti/gr/e",
+              "t/i/gr/e",
+              "tig/r/e",
+              "t/ig/r/e",
+              "ti/g/r/e",
+              "t/i/g/r/e"
+            ],
+            "rationaleFr": "Toutes les positions possibles des barres sont comptées pour ce mot court. Les lettres sont fournies."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "tigre",
+                "form": "tigre"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "tigre"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-syllables:production-table",
+      "item": {
+        "nodeKey": "segmenter_syllabes_ecrites",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Le mot est « table ».\nDécoupe-le en syllabes écrites. Sépare les syllabes par /.",
+        "instructionsFr": "Garde toutes les lettres et sépare les syllabes par /.",
+        "correctAnswer": "ta/ble",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "writtenSyllablePattern": "consonant_group",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "table",
+              "t/able",
+              "ta/ble",
+              "t/a/ble",
+              "tab/le",
+              "t/ab/le",
+              "ta/b/le",
+              "t/a/b/le",
+              "tabl/e",
+              "t/abl/e",
+              "ta/bl/e",
+              "t/a/bl/e",
+              "tab/l/e",
+              "t/ab/l/e",
+              "ta/b/l/e",
+              "t/a/b/l/e"
+            ],
+            "rationaleFr": "Toutes les positions possibles des barres sont comptées pour ce mot court. Les lettres sont fournies."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "table",
+                "form": "table"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "table"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "written-syllable-segmentation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
       "itemKey": "v3-phoneme-graphie:recognition-chat",
       "item": {
         "nodeKey": "associer_phoneme_graphie_frequente",
@@ -393296,9 +396969,9 @@
     }
   ],
   "manifest": {
-    "itemCount": 6232,
+    "itemCount": 6280,
     "eligibleItemCount": 238,
-    "pendingItemCount": 5994,
+    "pendingItemCount": 6042,
     "publicationMode": "partial",
     "nodeCount": 114,
     "sectionReadiness": [
@@ -393347,6 +397020,6 @@
         "difficultyTierCount": 3
       }
     ],
-    "checksum": "sha256:67ccba90a07037c24544e3602fb2640667a1a48a36546829a389caf839c52966"
+    "checksum": "sha256:de077ed8963025f2ed3c11e8c3aa5d3f9390e97f1dc94d3fe84f30ecd18ad7ab"
   }
 }

@@ -8,7 +8,7 @@ import {canonicalProbeMetrics} from './probe-metrics';
 import type {DraftExpansion} from './assemble-drafts';
 const expansion=JSON.parse(readFileSync('generated/french-v3-written-syllables-expansion.json','utf8')) as DraftExpansion;
 it('preserves every letter and separates teaching words from both assessment modes',()=>{
- expect(drafts).toHaveLength(32);expect(new Set(drafts.map(d=>d.word)).size).toBe(32);
+ expect(drafts).toHaveLength(48);expect(new Set(drafts.map(d=>d.word)).size).toBe(48);
  const taught=new Set(lessons.flatMap(teachingMaterialKeys));
  for(const row of drafts)expect(row.segmented.replaceAll('/','')).toBe(row.word);
  for(const entry of expansion.items){expect(entry.reviewStatus).toBe('needs_human_review');expect(questionAssessedMaterialKeys(entry.item).some(k=>taught.has(k))).toBe(false);}
@@ -18,7 +18,7 @@ it('grades authored segmentations and rejects missing and misplaced boundaries',
  for(const entry of expansion.items){
   const row=drafts.find(d=>entry.itemKey===`v3-written-syllables:${d.key}`)!;
   if(entry.item.responseType==='mcq'){expect(entry.item.choices!.filter(c=>c.correct).map(c=>c.text)).toEqual([row.segmented]);continue;}
-  for(const answer of [row.segmented,row.word,`${row.word[0]}/${row.word.slice(1)}`]){
+  for(const answer of [row.segmented,row.word,...Array.from({length:row.word.length-1},(_,i)=>`${row.word.slice(0,i+1)}/${row.word.slice(i+1)}`)]){
    const result=await validateAnswer(answer,{validatorType:entry.item.validatorType,correctAnswer:entry.item.correctAnswer,config:entry.item.validatorConfig});
    expect(result.pass).toBe(answer===row.segmented);
   }

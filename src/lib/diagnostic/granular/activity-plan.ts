@@ -63,6 +63,15 @@ export function planGranularActivities(assessment:V3Assessment,results:readonly 
   const area=skill.domain??skill.samplingGroup??skill.branch;
   queues.set(area,[...(queues.get(area)??[]),activity]);
  }
+ // Keep the most recently taught, still-unresolved target visible inside its
+ // subject area while fresh checks remain. Domain rotation still applies.
+ const taughtOrder=new Map([...completedContentIds].map((id,index)=>[id,index]));
+ const continuationRank=(activity:typeof activities[number])=>{
+  if(activity.kind!=="independent_check")return -1;
+  const skill=byId.get(activity.skillId)!;
+  return Math.max(-1,...bindings.filter(b=>matching(skill,b)&&b.kind==="instruction"&&b.contentId&&taughtOrder.has(b.contentId)).map(b=>taughtOrder.get(b.contentId!)!));
+ };
+ for(const queue of queues.values())queue.sort((a,b)=>continuationRank(b)-continuationRank(a));
  const selected:typeof activities=[];
  for(let round=0;selected.length<limit;round++){
   let added=false;

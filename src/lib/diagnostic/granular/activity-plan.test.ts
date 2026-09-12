@@ -73,3 +73,16 @@ it('offers different areas while retaining priority order within each area',()=>
  expect(results).toEqual(snapshot);
  expect(results.every(r=>r.status==='unknown')).toBe(true);
 });
+it('keeps recent lesson follow-ups visible without removing other subject areas',()=>{
+ const graph:V3Assessment={...assessment,skills:['a-spelling','b-spelling','z-spelling','reading'].map(id=>({id,nodeKey:id,evidenceKey:'production',labelFr:id,branch:id,domain:id==='reading'?'reading':'spelling',level:0,modes:['production'],prerequisites:[]}))};
+ const bindings:LearningActivityBinding[]=graph.skills.flatMap(s=>[
+  {id:`check:${s.id}`,nodeKey:s.nodeKey,kind:'independent_check' as const,mode:'production' as const,status:'published' as const,titleFr:s.labelFr,href:'/student/check'},
+  {id:`lesson:${s.id}`,nodeKey:s.nodeKey,kind:'instruction' as const,contentId:`content:${s.id}`,mode:'production' as const,status:'published' as const,titleFr:s.labelFr,href:'/student/check'},
+ ]);
+ const results=assessSkills(graph.skills,[]),before=structuredClone(results);
+ const plan=planGranularActivities(graph,results,bindings,2,new Set(['content:a-spelling','content:z-spelling']));
+ expect(plan.activities.map(a=>a.skillId)).toEqual(['z-spelling','reading']);
+ expect(results).toEqual(before);
+ const withoutFresh=bindings.filter(b=>b.id!=='check:z-spelling');
+ expect(planGranularActivities(graph,results,withoutFresh,2,new Set(['content:z-spelling'])).activities.map(a=>a.skillId)).toEqual(['a-spelling','reading']);
+});

@@ -1,3 +1,4 @@
+import {applyWrittenSyllableCoverage} from "./written-syllable-coverage";
 import {applyPhonemeGraphieCoverage} from "./phoneme-graphie-coverage";
 import type {ReleaseScope} from "./release-scope";
 import {assessmentQuestionIds,type ParallelReviewPolicy} from "./parallel-review-policy";
@@ -100,6 +101,7 @@ export function adaptV3ForAssessment(input:{artifact:ReturnType<typeof buildFren
   if(auditoryTargets.has(probe.skillId)&&!probe.assessedMaterialKeys?.some(key=>key.startsWith("word:"))){unsupportedEvidenceItemKeys.push(probe.id);probes.splice(index,1);}
  }
  applyPhonemeGraphieCoverage(skills,probes);
+ applyWrittenSyllableCoverage(skills,probes);
  return {skills,probes,taxonomyChecksum:taxonomyChecksum,bankChecksum:validated.manifest.checksum,unsupportedEvidenceItemKeys,...(input.reviewPolicy?{reviewPolicy:structuredClone(input.reviewPolicy)}:{})};
 }
 
