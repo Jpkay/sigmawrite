@@ -39,3 +39,35 @@ it('requires the actual supporting passage and rejects a different session’s s
   }
  }
 });
+
+import {CAUSAL_READING_GENRES_TEACHING as lessons} from './causal-reading-genres-teaching';
+import {validateTeachingTargets} from './teaching-content';
+import {teachingMaterialKeys} from './material-annotations';
+import {materialIdentity} from './material-identity';
+it('teaches both exact genre targets with separate practice and assessment passages',()=>{
+ expect(()=>validateTeachingTargets(read('docs/diagnostic/v3-parallel-review-candidate.json').assessment,lessons)).not.toThrow();
+ expect(lessons).toHaveLength(2);
+ for(const lesson of lessons){
+  expect(lesson.practice).toHaveLength(6);expect(lesson.status).toBe('draft_requires_review');
+  expect(JSON.stringify(lesson)).not.toContain('—');
+  for(const draft of drafts)expect(JSON.stringify(lesson)).not.toContain(draft.passage);
+  for(let i=0;i<6;i+=2){
+   const question=lesson.practice[i],support=lesson.practice[i+1];
+   const passage=question.promptFr.split('\n\n')[0];
+   expect(support.promptFr.startsWith(passage)).toBe(true);
+   expect(passage).toContain(support.answerFr);
+   expect(teachingMaterialKeys(lesson)).toContain(materialIdentity('sentence',passage));
+   expect(passage.split(/\s+/).length).toBeLessThan(75);
+  }
+ }
+});
+import {granularBankOptions} from '../../../../scripts/lib/granular-bank-options';
+import {selectedDraftExpansionSources,selectedTeachingDrafts} from '../../../../scripts/lib/granular-authoring-selection';
+it('requires explicit compatible selection of questions and lessons together',()=>{
+ const args=['--bank-revision','41','--verb-family-recognition','--etre-participle-agreement','--question-detail-reading','--local-definition-reading','--avoir-participle-agreement','--causal-reading-genres'];
+ expect(granularBankOptions(args).causalReadingGenres).toBe(true);
+ expect(selectedDraftExpansionSources(args)).toContain('causal-reading-genres');
+ expect(selectedTeachingDrafts(args)).toEqual(expect.arrayContaining([...lessons]));
+ for(const invalid of [['--causal-reading-genres'],args.map(a=>a==='41'?'40':a),args.filter(a=>a!=='--avoir-participle-agreement'),[...args,'--causal-reading-genres']])expect(()=>granularBankOptions(invalid)).toThrow();
+ expect(selectedDraftExpansionSources([])).not.toContain('causal-reading-genres');
+});
