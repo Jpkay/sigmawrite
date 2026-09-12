@@ -1,9 +1,11 @@
+import { journalCurrentStudentPayload } from "@/lib/diagnostic/granular/server-delivery-journal";
 import Link from "next/link";
 import { PageHeader } from "@/components/page";
 import { FREQUENT_VERBS } from "@/lib/conjugation/table";
 import { VerbSearch } from "./verb-search";
 
-export default function Page() {
+export default async function Page() {
+  await journalCurrentStudentPayload("reference:verb-index", { verbs: FREQUENT_VERBS });
   return (
     <>
       <PageHeader eyebrow="Référence" title="Tables de conjugaison" description="Tous les temps d’un verbe, calculés par le même moteur qui corrige tes exercices." />
