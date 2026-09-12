@@ -95,6 +95,17 @@ export class SupabaseAssessmentStore implements AssessmentStore{
   if(error)throw Error(error.message);
   return parseMaterialReceipt(data,input.materialKeys);
  }
+ /** Read immutable presentation-time coverage, never infer it from a missing
+  * exposure or a current enrollment. Missing pre-migration proofs remain false. */
+ async materialHistoryComplete(studentId:string,presentationId:string):Promise<boolean>{
+  const {data,error}=await this.db.rpc("student_material_history_complete",{p_student_id:studentId,p_presentation_id:presentationId});
+  // Rolling deployment before the coverage migration: preserve conservative
+  // behavior, rather than granting novelty or breaking existing diagnostics.
+  if(error?.code==="PGRST202")return false;
+  if(error)throw Error(error.message);
+  if(typeof data!=="boolean")throw Error("Invalid material coverage response");
+  return data;
+ }
  async knownMaterialKeys(studentId:string,materialKeys:readonly string[]):Promise<string[]>{
   const keys=[...new Set(materialKeys)],found:string[]=[];
   // Bound each RPC below the default API row cap; use POST parameters rather

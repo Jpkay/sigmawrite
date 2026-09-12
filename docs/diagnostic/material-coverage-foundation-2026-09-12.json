@@ -1,0 +1,44 @@
+{
+  "status": "implemented_and_locally_verified_not_activated",
+  "migration": "20260912080000_material_coverage_receipts.sql",
+  "contract": "plume-material-capture-v1",
+  "contractEnabledByMigration": false,
+  "existingStudentsEnrolledByMigration": 0,
+  "historicalAnswersModified": false,
+  "historicalReceiptsModified": false,
+  "databaseChecks": {
+    "disposablePostgres": "passed",
+    "freshStudentBaselineOnlyAfterContractActivation": "passed",
+    "legacyStudentRemainsUnverified": "passed",
+    "ownerAndPresentationIsolation": "passed",
+    "idempotentImmutableReceipt": "passed",
+    "sourceSubstitutionRejected": "passed",
+    "untrackedDeliveryInvalidatesLaterProof": "passed",
+    "earlierProofPreservedAfterLaterGap": "passed",
+    "clientAndServiceProofOverwriteDenied": "passed",
+    "overlappingInvalidationAndPresentationLockObserved": "passed"
+  },
+  "storeChecks": {
+    "focusedTests": 18,
+    "passed": true,
+    "typescript": "passed",
+    "preMigrationMissingRpc": "conservatively false",
+    "invalidRpcValue": "rejected",
+    "databaseFailure": "rejected",
+    "granularSuite": {
+      "files": 196,
+      "tests": 677,
+      "passed": true
+    }
+  },
+  "activationPrerequisites": [
+    "Integrate complete delivered-payload capture and invalidation at every student content boundary.",
+    "Verify annotations against complete source coverage, including words/lemmas, sentences and audio; partial annotations cannot attest coverage.",
+    "Exercise fresh-account capture, untracked-route invalidation, correction review, guided teaching and independent checks through deployed endpoints.",
+    "Apply the migration with contract disabled, deploy the verified capture implementation, and only then enable fresh-student coverage.",
+    "Design audited historical backfill separately; do not relabel legacy answers or use an empty ledger as proof."
+  ],
+  "productionIssueResolved": false,
+  "publicDefaultChanged": false,
+  "demoModified": false
+}
