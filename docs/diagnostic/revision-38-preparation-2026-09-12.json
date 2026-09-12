@@ -1,5 +1,5 @@
 {
-  "status": "prepared_not_published",
+  "status": "frozen_candidate_ready_draft_import_running",
   "authoringOptions": [
     "--bank-revision",
     "38",
@@ -53,7 +53,20 @@
   "limitations": [
     "Constructed prerequisite-success and target-gap profiles with synthetic history; not classroom calibration.",
     "Older question versions without assessed passage records remain canonical and historical, but are excluded from the new contextual pathways.",
-    "Human review remains pending. No import, publication or deployment.",
+    "Human review remains pending. Draft import is in progress; the separate candidate build is ready but its release is not published or publicly activated.",
     "The reading chronology versus causal inference comparison did not sample the intended chronology targets. Other named comparisons cover sampled targets only, not every mode or construction."
-  ]
+  ],
+  "releasePreparation": {
+    "sourceCommit": "e8982c447a3ccd8748d1ded517096d1ea08dc0b4",
+    "frozenReproductionPassed": true,
+    "canonicalExportItems": 7928,
+    "bankId": "b29ff7a0-4299-428f-8061-64b671ae460c",
+    "bankStatus": "draft",
+    "importComplete": false,
+    "deploymentId": "dpl_4XajPwgJtMUQzMCrCWHnJcsBnmcH",
+    "deploymentUrl": "https://sigmawrite-n6lndt4t6-jpkays-projects.vercel.app",
+    "deploymentStatus": "Ready",
+    "published": false,
+    "publiclyActivated": false
+  }
 }
