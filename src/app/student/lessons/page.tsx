@@ -42,11 +42,11 @@ export default async function StudentLessonsPage() {
       {session.authUserId === "921b350e-61dc-4f0d-a8b7-a2717e94f902" && <Link href="/student/diagnostic/demo-review" className={buttonVariants({variant:"outline"})}>Revoir mes réponses au diagnostic</Link>}
     </div>
     {canUpgrade && <LearningUpgradeButton />}
+    {optional.length > 0 && <section className="mb-8"><h2 className="text-xl font-semibold">Tu peux aussi découvrir ces leçons</h2><p className="mb-4 mt-2 text-muted-foreground">Ces points restent à vérifier. Tu peux commencer à apprendre et nous préciserons tes acquis ensuite.</p><div className="grid gap-4 md:grid-cols-2">{optional.map(lesson => <article key={lesson.activityId} className="rounded-lg border bg-card p-6"><h3 className="mb-4 text-lg font-semibold">{lesson.titleFr}</h3><Link href={lesson.href} className={buttonVariants()}>Ouvrir cette leçon <ArrowRight /></Link></article>)}</div></section>}
     {available.length ? <div className="grid gap-4 md:grid-cols-2">{available.map(step => <article key={step.id} className="rounded-lg border bg-card p-6">
       <h2 className="text-xl font-semibold">{step.label}</h2>
       <p className="mb-5 mt-2 text-sm text-muted-foreground">{step.description}</p>
       <Link href={step.href} className={buttonVariants()}>{step.button} <ArrowRight /></Link>
     </article>)}</div> : optional.length ? null : <p>Les prochaines leçons de ton parcours ne sont pas encore disponibles. Tu peux consulter tes résultats en attendant.</p>}
-    {optional.length > 0 && <section className="mt-8"><h2 className="text-xl font-semibold">Tu peux aussi découvrir ces leçons</h2><p className="mb-4 mt-2 text-muted-foreground">Ces points restent à vérifier. Tu peux commencer à apprendre et nous préciserons tes acquis ensuite.</p><div className="grid gap-4 md:grid-cols-2">{optional.map(lesson => <article key={lesson.activityId} className="rounded-lg border bg-card p-6"><h3 className="mb-4 text-lg font-semibold">{lesson.titleFr}</h3><Link href={lesson.href} className={buttonVariants()}>Ouvrir cette leçon <ArrowRight /></Link></article>)}</div></section>}
   </>;
 }
