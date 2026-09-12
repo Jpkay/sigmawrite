@@ -197,4 +197,14 @@ it('opens optional teaching for an untested skill without adding assessment evid
  expect(f.get().state.observations).toEqual(before);
  expect(f.get().state.exposedLearningItemIds).toContain('overlapping-check');
  expect(publicTeachingView(f.get(),f.bundle)?.phase).toBe('lesson');
+ const resultsBefore=publicAssessmentView(f.get(),f.bundle).results;
+ await f.send({type:'begin_practice'});
+ for(const exercise of f.lesson.practice){
+  expect(await f.send({type:'answer_practice',exerciseId:exercise.id,answer:exercise.answerFr})).not.toHaveProperty('error');
+  await f.send({type:'next_exercise'});
+ }
+ expect(f.get().state.completedTeachingIds).toContain(f.lesson.id);
+ expect(f.get().state.observations).toEqual(before);
+ expect(publicAssessmentView(f.get(),f.bundle).results).toEqual(resultsBefore);
+ expect(publicAssessmentView(f.get(),f.bundle).optionalLearningActivities??[]).toEqual([]);
 });
