@@ -6,13 +6,16 @@ export const VERB_FAMILY_RECOGNITION_DRAFTS=[
  ...[
   ['parler','parlons','parle'],['jouer','jouons','joue'],['danser','dansons','danse'],['marcher','marchons','marche'],
   ['dessiner','dessinons','dessine'],['écouter','écoutons','écoute'],['regarder','regardons','regarde'],['trouver','trouvons','trouve'],
+  ['préparer','préparons','prépare'],['inviter','invitons','invite'],['raconter','racontons','raconte'],['utiliser','utilisons','utilise'],
  ].map(([infinitive,nous,je])=>({infinitive,nous,je,family:'er' as const})),
  ...[
   ['choisir','choisissons','choisis'],['grandir','grandissons','grandis'],['réussir','réussissons','réussis'],['remplir','remplissons','remplis'],
   ['rougir','rougissons','rougis'],['réfléchir','réfléchissons','réfléchis'],['nourrir','nourrissons','nourris'],['applaudir','applaudissons','applaudis'],
+  ['punir','punissons','punis'],['guérir','guérissons','guéris'],['grossir','grossissons','grossis'],['vieillir','vieillissons','vieillis'],
  ].map(([infinitive,nous,je])=>({infinitive,nous,je,family:'ir' as const})),
  ...[
   ['aller','allons','vais'],['partir','partons','pars'],['sortir','sortons','sors'],['dormir','dormons','dors'],
   ['courir','courons','cours'],['prendre','prenons','prends'],['voir','voyons','vois'],['faire','faisons','fais'],
+  ['savoir','savons','sais'],['devoir','devons','dois'],['pouvoir','pouvons','peux'],['vouloir','voulons','veux'],
  ].map(([infinitive,nous,je])=>({infinitive,nous,je,family:'other' as const})),
 ] as const;

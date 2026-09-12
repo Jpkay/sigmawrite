@@ -10,11 +10,11 @@ const items=artifact.items as CanonicalDiagnosticBankItem[];
 it('keeps later-release recognition drafts out of the frozen release and preserves honest review status',()=>{
  expect(FRENCH_DRAFT_EXPANSION_SOURCES as readonly string[]).not.toContain('verb-family-recognition');
  const {checksum:recorded,...content}=artifact;expect(checksum(content)).toBe(recorded);
- expect(items).toHaveLength(24);
+ expect(items).toHaveLength(36);
  for(const item of items){expect(item.reviewStatus).toBe('needs_human_review');expect(item.qcGates.verdict).toBe('needs_human_review');expect(item.evidenceExpectation).toBe('receptive');expect(item.evidenceKey).toBe('reading-receptive');expect(item.item.nodeKey).toBe('classer_famille_verbale');}
 });
 it('includes contrasting patterns and exposes the irregular form that distinguishes aller from the er model',()=>{
- for(const family of ['er','ir','other'])expect(VERB_FAMILY_RECOGNITION_DRAFTS.filter(d=>d.family===family)).toHaveLength(8);
+ for(const family of ['er','ir','other'])expect(VERB_FAMILY_RECOGNITION_DRAFTS.filter(d=>d.family===family)).toHaveLength(12);
  const aller=items.find(item=>item.itemKey.endsWith(':aller'))!;
  expect(aller.item.promptFr).toContain('je vais');expect(aller.item.promptFr).toContain('nous allons');
  expect(aller.item.choices?.find(choice=>choice.correct)?.text).toBe('Une autre famille de verbes');
