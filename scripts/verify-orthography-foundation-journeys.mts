@@ -22,7 +22,7 @@ const subjunctiveOnly=process.argv.includes('--subjonctif');
 const subjunctiveFamilies=process.argv.includes('--subjonctif-families');
 if([imperativeVerbs,imperativeFamilies,complexNegationOnly,mainIdeaOnly,completiveOnly,subjunctiveOnly,subjunctiveFamilies].filter(Boolean).length>1)throw Error('Select one content family');
 const lessons=bundle.teachingContent!.filter(l=>imperativeVerbs?l.id.startsWith('french-v3-teaching:imperatif-present:verb:'):imperativeFamilies?(l.id.startsWith('french-v3-teaching:imperatif-present:pattern:')||l.id==='french-v3-teaching:imperatif:recognition'):complexNegationOnly?l.id==='french-v3-teaching:complex-negation:recognition':mainIdeaOnly?l.nodeKey==='identifier_idee_phrase':subjunctiveFamilies?l.id.startsWith('french-v3-teaching:subjonctif-present:pattern:'):subjunctiveOnly?(l.nodeKey==='reconnaitre_subjonctif_present'||(l.nodeKey==='produire_subjonctif_present_frequent'&&l.facetKey?.includes('::verb:'))):completiveOnly?l.id==='french-v3-teaching:completive:production':['segmenter_syllabes_ecrites','associer_phoneme_graphie_frequente','employer_cedille'].includes(l.nodeKey));
-if(lessons.length!==(imperativeVerbs?4:imperativeFamilies?5:complexNegationOnly?1:mainIdeaOnly?3:subjunctiveFamilies?4:subjunctiveOnly?15:completiveOnly?1:6))throw Error('Unexpected number of selected lessons');
+if(lessons.length!==(imperativeVerbs?10:imperativeFamilies?5:complexNegationOnly?1:mainIdeaOnly?3:subjunctiveFamilies?4:subjunctiveOnly?15:completiveOnly?1:6))throw Error('Unexpected number of selected lessons');
 const reports=[];
 for(const lesson of lessons){
  const skill=bundle.assessment.skills.find(s=>s.nodeKey===lesson.nodeKey&&s.facetKey===lesson.facetKey&&s.modes.includes(lesson.mode))!;
