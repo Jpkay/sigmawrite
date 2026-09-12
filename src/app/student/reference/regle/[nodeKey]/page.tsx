@@ -1,3 +1,5 @@
+import {RULE_REFERENCE_COPY as copy,ruleTableSentence} from "@/lib/diagnostic/granular/rule-reference-copy";
+import {CURRICULUM_TAG_LABEL,curriculumTagDisplay} from "@/lib/curriculum/tag-display";
 import {journalCurrentStudentPayload} from "@/lib/diagnostic/granular/server-delivery-journal";
 import Link from "next/link";
 import { ArrowLeft, BookOpenCheck } from "lucide-react";
@@ -12,12 +14,13 @@ import { CurriculumTags } from "@/components/curriculum-tags";
 /** One rule card per competency: rule, pattern, examples, exceptions (roadmap 3.2). */
 export default async function Page({ params }: { params: Promise<{ nodeKey: string }> }) {
   await requireRole(["student"]);
+  await journalCurrentStudentPayload("reference:rule-copy",{...copy,tableSentence:ruleTableSentence()});
   const { nodeKey } = await params;
   const key = decodeURIComponent(nodeKey);
   const supabase = await createClient();
   const { data: node } = await supabase.from("competency_nodes").select("id,key,label_fr,description_fr,strand").eq("key", key).order("created_at", { ascending: false }).limit(1).maybeSingle();
   if (!node) {
-    return <><PageHeader boundary="reference:rule-header" eyebrow="Référence" title="Règle introuvable" description="Cette compétence n’est pas publiée." /><Link href="/student" className={buttonVariants({ variant: "outline" })}><ArrowLeft className="size-4" />Accueil</Link></>;
+    return <><PageHeader boundary="reference:rule-header" eyebrow="Référence" title="Règle introuvable" description="Cette compétence n’est pas publiée." /><Link href="/student" className={buttonVariants({ variant: "outline" })}><ArrowLeft className="size-4" />{copy.home}</Link></>;
   }
   const { data: approved } = await supabase.from("competency_lessons").select("explanation_fr,pattern_fr,examples_fr,exceptions_fr").eq("node_id", node.id as string).in("review_status", ["auto_approved", "human_approved"]).maybeSingle();
   const lesson = lessonForPracticeNode(
@@ -26,7 +29,7 @@ export default async function Page({ params }: { params: Promise<{ nodeKey: stri
   );
   const isConjugation = node.strand === "conjugaison";
   const tags = (await curriculumTagsFor(supabase, [node.key as string])).get(node.key as string) ?? [];
-  await journalCurrentStudentPayload("reference:rule",{node,lesson,tags});
+  await journalCurrentStudentPayload("reference:rule",{node,lesson,tags,tagDisplay:{label:CURRICULUM_TAG_LABEL,tags:tags.map(tag=>curriculumTagDisplay(tag))}});
   return (
     <>
       <PageHeader boundary="reference:rule-header" eyebrow={`Référence · ${lesson.family}`} title={node.label_fr as string} description={node.description_fr as string | undefined} actionText="S’entraîner" action={<Link href={`/student/practice/${node.id as string}`} className={buttonVariants()}><BookOpenCheck className="size-4" />S’entraîner</Link>} />
@@ -34,18 +37,18 @@ export default async function Page({ params }: { params: Promise<{ nodeKey: stri
         <div className="mb-4"><CurriculumTags tags={tags} /></div>
         <p className="text-lg leading-8">{lesson.explanation}</p>
         <section className="mt-6 rounded-lg border border-border bg-card p-5">
-          <p className="text-xs font-semibold uppercase tracking-[.14em] text-primary">La règle en une ligne</p>
+          <p className="text-xs font-semibold uppercase tracking-[.14em] text-primary">{copy.rule}</p>
           <p className="mt-2 font-medium">{lesson.pattern}</p>
         </section>
         <section className="mt-6">
-          <p className="text-xs font-semibold uppercase tracking-[.14em] text-muted-foreground">Exemples</p>
+          <p className="text-xs font-semibold uppercase tracking-[.14em] text-muted-foreground">{copy.examples}</p>
           <div className="mt-3 grid gap-2 sm:grid-cols-2">{lesson.examples.map((example) => <p key={example} className="border-l-2 border-primary pl-3 text-sm leading-6">{example}</p>)}</div>
         </section>
         <section className="mt-6">
-          <p className="text-xs font-semibold uppercase tracking-[.14em] text-muted-foreground">Exceptions et pièges</p>
+          <p className="text-xs font-semibold uppercase tracking-[.14em] text-muted-foreground">{copy.exceptions}</p>
           <ul className="mt-3 space-y-2 text-sm leading-6 text-muted-foreground">{lesson.exceptions.map((exception) => <li key={exception} className="flex gap-2"><span className="text-primary">•</span>{exception}</li>)}</ul>
         </section>
-        {isConjugation && <p className="mt-8 text-sm">Besoin de la table complète ? <Link href="/student/reference/verbe" className="font-medium text-primary underline-offset-4 hover:underline">Ouvrir les tables de conjugaison</Link>.</p>}
+        {isConjugation && <p className="mt-8 text-sm">{copy.tableHelp}<Link href="/student/reference/verbe" className="font-medium text-primary underline-offset-4 hover:underline">{copy.tables}</Link>.</p>}
       </article>
     </>
   );

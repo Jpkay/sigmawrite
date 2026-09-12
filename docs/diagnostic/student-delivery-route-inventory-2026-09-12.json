@@ -162,5 +162,24 @@
     "Establish fresh baseline with coverage enabled; do not backdate existing students.",
     "Verify owner changes, failed writes, offline replay, concurrent uncovered delivery and late requests invalidate or preserve history correctly.",
     "Run a fresh complete diagnostic and recommended learning journey with eligible independent evidence."
+  ],
+  "remediationsAfterBaseline": [
+    {
+      "routes": [
+        "reference/verbe/page.tsx",
+        "reference/verbe/[verb]/page.tsx"
+      ],
+      "change": "Shared verb search, accent controls, index heading and fallback navigation recorded.",
+      "commit": "37c5ad3",
+      "status": "implemented-not-deployed"
+    },
+    {
+      "routes": [
+        "reference/regle/[nodeKey]/page.tsx"
+      ],
+      "change": "Fixed rule headings, navigation help and rendered curriculum tags recorded, including unpublished-rule navigation.",
+      "status": "implemented-not-deployed",
+      "limits": "Does not resolve cross-cutting error and version contract requirements."
+    }
   ]
 }
