@@ -1,0 +1,377 @@
+{
+  "status": "real_provider_synthetic_service_check",
+  "syntheticOnly": true,
+  "persistence": "in-memory",
+  "deployed": false,
+  "evaluatorVersion": "french-writing-evaluator-v13",
+  "model": "z-ai/glm-5.2",
+  "candidateChecksum": "sha256:368ec5d94614ebeb077fff556c3522ac2fbe50a87bc4a07d10b807f60149cf45",
+  "results": [
+    {
+      "id": "imparfait-correct",
+      "itemId": "v3-connected-writing:imperfect-holidays",
+      "itemChecksum": "sha256:5d3ab46bbadb61fa367a14560dc4330cd3f660fa4531741ff6ba13f90a20b491",
+      "promptFr": "Raconte les habitudes d’un personnage pendant ses vacances autrefois : ce qu’il faisait régulièrement et avec qui il passait son temps.",
+      "answer": "Chaque été, Lina jouait dans le jardin. Elle retrouvait ses amis et ils construisaient une cabane.",
+      "expected": "correct",
+      "observed": "correct",
+      "matched": true,
+      "elapsedMs": 9223,
+      "feedback": {
+        "assessed": true,
+        "skillLabelFr": "Employer le imparfait en contexte",
+        "text": "Chaque été, Lina jouait dans le jardin. Elle retrouvait ses amis et ils construisaient une cabane.",
+        "checkedCount": 3,
+        "correctCount": 3,
+        "passages": [
+          {
+            "start": 17,
+            "end": 23,
+            "text": "jouait",
+            "correct": true,
+            "explanationFr": "« jouait » est l'imparfait de « jouer » à la 3e personne du singulier, correct pour décrire une habitude passée."
+          },
+          {
+            "start": 45,
+            "end": 55,
+            "text": "retrouvait",
+            "correct": true,
+            "explanationFr": "« retrouvait » est l'imparfait de « retrouver » à la 3e personne du singulier, correct pour décrire une action habituelle passée."
+          },
+          {
+            "start": 72,
+            "end": 86,
+            "text": "construisaient",
+            "correct": true,
+            "explanationFr": "« construisaient » est l'imparfait de « construire » à la 3e personne du pluriel, correct pour décrire une habitude passée avec « ils »."
+          }
+        ]
+      },
+      "writingEvidence": {
+        "skillId": "employer_imparfait_en_contexte::writing-independent-production",
+        "responseChecksum": "sha256:4de367136c2d850b00be1cfa205af3200443eb31e0983d5a986fb3632d7efd9d",
+        "evaluator": {
+          "version": "french-writing-evaluator-v13",
+          "model": "z-ai/glm-5.2",
+          "protocolChecksum": "sha256:06277f22d7ba60d3775a0a53e9a9c947c299c04c85fd7aec3e25dbc361ac3285",
+          "rubricChecksum": "sha256:16269ac6e0ed93fc4f03bb9d80464be22d222f53d9d67f05cce0bfc21acfc6fa"
+        },
+        "connectedWriting": true,
+        "unaided": true,
+        "eligibleTokens": 3,
+        "correctTokens": 3,
+        "responseText": "Chaque été, Lina jouait dans le jardin. Elle retrouvait ses amis et ils construisaient une cabane.",
+        "tokens": [
+          {
+            "start": 17,
+            "end": 23,
+            "text": "jouait",
+            "correct": true,
+            "reasonFr": "« jouait » est l'imparfait de « jouer » à la 3e personne du singulier, correct pour décrire une habitude passée."
+          },
+          {
+            "start": 45,
+            "end": 55,
+            "text": "retrouvait",
+            "correct": true,
+            "reasonFr": "« retrouvait » est l'imparfait de « retrouver » à la 3e personne du singulier, correct pour décrire une action habituelle passée."
+          },
+          {
+            "start": 72,
+            "end": 86,
+            "text": "construisaient",
+            "correct": true,
+            "reasonFr": "« construisaient » est l'imparfait de « construire » à la 3e personne du pluriel, correct pour décrire une habitude passée avec « ils »."
+          }
+        ]
+      }
+    },
+    {
+      "id": "imparfait-incorrect",
+      "itemId": "v3-connected-writing:imperfect-holidays",
+      "itemChecksum": "sha256:5d3ab46bbadb61fa367a14560dc4330cd3f660fa4531741ff6ba13f90a20b491",
+      "promptFr": "Raconte les habitudes d’un personnage pendant ses vacances autrefois : ce qu’il faisait régulièrement et avec qui il passait son temps.",
+      "answer": "Chaque été, Lina jouais dans le jardin. Elle retrouvais ses amis et ils construisait une cabane.",
+      "expected": "incorrect",
+      "observed": "incorrect",
+      "matched": true,
+      "elapsedMs": 8652,
+      "feedback": {
+        "assessed": true,
+        "skillLabelFr": "Employer le imparfait en contexte",
+        "text": "Chaque été, Lina jouais dans le jardin. Elle retrouvais ses amis et ils construisait une cabane.",
+        "checkedCount": 3,
+        "correctCount": 0,
+        "passages": [
+          {
+            "start": 17,
+            "end": 23,
+            "text": "jouais",
+            "correct": false,
+            "explanationFr": "Sujet « Lina » (3e pers. sing.) : l'imparfait correct est « jouait », la forme écrite « jouais » est fautive."
+          },
+          {
+            "start": 45,
+            "end": 55,
+            "text": "retrouvais",
+            "correct": false,
+            "explanationFr": "Sujet « Elle » (3e pers. sing.) : l'imparfait correct est « retrouvait », la forme écrite « retrouvais » est fautive."
+          },
+          {
+            "start": 72,
+            "end": 84,
+            "text": "construisait",
+            "correct": false,
+            "explanationFr": "Sujet « ils » (3e pers. plur.) : l'imparfait correct est « construisaient », la forme écrite « construisait » est fautive."
+          }
+        ]
+      },
+      "writingEvidence": {
+        "skillId": "employer_imparfait_en_contexte::writing-independent-production",
+        "responseChecksum": "sha256:54b58dee7d0d8ce03271b4b0d14493a818670c3c704773a1ec853d4e6f4a31c9",
+        "evaluator": {
+          "version": "french-writing-evaluator-v13",
+          "model": "z-ai/glm-5.2",
+          "protocolChecksum": "sha256:06277f22d7ba60d3775a0a53e9a9c947c299c04c85fd7aec3e25dbc361ac3285",
+          "rubricChecksum": "sha256:16269ac6e0ed93fc4f03bb9d80464be22d222f53d9d67f05cce0bfc21acfc6fa"
+        },
+        "connectedWriting": true,
+        "unaided": true,
+        "eligibleTokens": 3,
+        "correctTokens": 0,
+        "responseText": "Chaque été, Lina jouais dans le jardin. Elle retrouvais ses amis et ils construisait une cabane.",
+        "tokens": [
+          {
+            "start": 17,
+            "end": 23,
+            "text": "jouais",
+            "correct": false,
+            "reasonFr": "Sujet « Lina » (3e pers. sing.) : l'imparfait correct est « jouait », la forme écrite « jouais » est fautive."
+          },
+          {
+            "start": 45,
+            "end": 55,
+            "text": "retrouvais",
+            "correct": false,
+            "reasonFr": "Sujet « Elle » (3e pers. sing.) : l'imparfait correct est « retrouvait », la forme écrite « retrouvais » est fautive."
+          },
+          {
+            "start": 72,
+            "end": 84,
+            "text": "construisait",
+            "correct": false,
+            "reasonFr": "Sujet « ils » (3e pers. plur.) : l'imparfait correct est « construisaient », la forme écrite « construisait » est fautive."
+          }
+        ]
+      }
+    },
+    {
+      "id": "imparfait-unresolved",
+      "itemId": "v3-connected-writing:imperfect-holidays",
+      "itemChecksum": "sha256:5d3ab46bbadb61fa367a14560dc4330cd3f660fa4531741ff6ba13f90a20b491",
+      "promptFr": "Raconte les habitudes d’un personnage pendant ses vacances autrefois : ce qu’il faisait régulièrement et avec qui il passait son temps.",
+      "answer": "Lina a passé ses vacances au bord du lac. Elle a retrouvé ses amis et ils ont construit une cabane.",
+      "expected": "unresolved",
+      "observed": "unresolved",
+      "matched": true,
+      "elapsedMs": 8038,
+      "feedback": {
+        "assessed": false,
+        "skillLabelFr": "Employer le imparfait en contexte",
+        "text": "Lina a passé ses vacances au bord du lac. Elle a retrouvé ses amis et ils ont construit une cabane.",
+        "checkedCount": 0,
+        "correctCount": 0,
+        "passages": []
+      }
+    },
+    {
+      "id": "grammar-correct",
+      "itemId": "v3-connected-writing:grammar-team",
+      "itemChecksum": "sha256:b1b076b6526c873ad81a87ffd3551617a92344405e1cf2cc4aa8ab0da1b74aee",
+      "promptFr": "Décris au présent ce que font plusieurs groupes de personnes pendant une rencontre sportive. Utilise des noms pour identifier ces groupes.",
+      "answer": "Les joueurs avancent ensemble. Les arbitres surveillent le terrain. Les supporters chantent dans les gradins.",
+      "expected": "correct",
+      "observed": "correct",
+      "matched": true,
+      "elapsedMs": 9994,
+      "feedback": {
+        "assessed": true,
+        "skillLabelFr": "Maintenir l'orthographe grammaticale dans une phrase",
+        "text": "Les joueurs avancent ensemble. Les arbitres surveillent le terrain. Les supporters chantent dans les gradins.",
+        "checkedCount": 3,
+        "correctCount": 3,
+        "passages": [
+          {
+            "start": 0,
+            "end": 20,
+            "text": "Les joueurs avancent",
+            "correct": true,
+            "explanationFr": "Sujet nominal pluriel « joueurs » accordé correctement avec « avancent » au présent (3e personne du pluriel)."
+          },
+          {
+            "start": 31,
+            "end": 55,
+            "text": "Les arbitres surveillent",
+            "correct": true,
+            "explanationFr": "Sujet nominal pluriel « arbitres » accordé correctement avec « surveillent » au présent (3e personne du pluriel)."
+          },
+          {
+            "start": 68,
+            "end": 91,
+            "text": "Les supporters chantent",
+            "correct": true,
+            "explanationFr": "Sujet nominal pluriel « supporters » accordé correctement avec « chantent » au présent (3e personne du pluriel)."
+          }
+        ]
+      },
+      "writingEvidence": {
+        "skillId": "maintenir_orthographe_grammaticale_phrase::writing-independent-production",
+        "responseChecksum": "sha256:ce97559ae71352d1af26eb9a1e304a5013c08ba4cd9aaef58ee4a443355c8946",
+        "evaluator": {
+          "version": "french-writing-evaluator-v13",
+          "model": "z-ai/glm-5.2",
+          "protocolChecksum": "sha256:e58f98bd42efdbe4ba1f6a74316e6cfcee8569f558aae2350b601e75970f7fec",
+          "rubricChecksum": "sha256:0fe20ad76ffc5e4dd72f172ddeea6f35d0c9dc5ef4c185dc54db4d627e34ae5f"
+        },
+        "connectedWriting": true,
+        "unaided": true,
+        "eligibleTokens": 3,
+        "correctTokens": 3,
+        "responseText": "Les joueurs avancent ensemble. Les arbitres surveillent le terrain. Les supporters chantent dans les gradins.",
+        "tokens": [
+          {
+            "start": 0,
+            "end": 20,
+            "text": "Les joueurs avancent",
+            "criterionId": "subject-verb-plural",
+            "correct": true,
+            "reasonFr": "Sujet nominal pluriel « joueurs » accordé correctement avec « avancent » au présent (3e personne du pluriel)."
+          },
+          {
+            "start": 31,
+            "end": 55,
+            "text": "Les arbitres surveillent",
+            "criterionId": "subject-verb-plural",
+            "correct": true,
+            "reasonFr": "Sujet nominal pluriel « arbitres » accordé correctement avec « surveillent » au présent (3e personne du pluriel)."
+          },
+          {
+            "start": 68,
+            "end": 91,
+            "text": "Les supporters chantent",
+            "criterionId": "subject-verb-plural",
+            "correct": true,
+            "reasonFr": "Sujet nominal pluriel « supporters » accordé correctement avec « chantent » au présent (3e personne du pluriel)."
+          }
+        ]
+      }
+    },
+    {
+      "id": "grammar-incorrect",
+      "itemId": "v3-connected-writing:grammar-team",
+      "itemChecksum": "sha256:b1b076b6526c873ad81a87ffd3551617a92344405e1cf2cc4aa8ab0da1b74aee",
+      "promptFr": "Décris au présent ce que font plusieurs groupes de personnes pendant une rencontre sportive. Utilise des noms pour identifier ces groupes.",
+      "answer": "Les joueurs avance ensemble. Les arbitres surveille le terrain. Les supporters chante dans les gradins.",
+      "expected": "incorrect",
+      "observed": "incorrect",
+      "matched": true,
+      "elapsedMs": 5452,
+      "feedback": {
+        "assessed": true,
+        "skillLabelFr": "Maintenir l'orthographe grammaticale dans une phrase",
+        "text": "Les joueurs avance ensemble. Les arbitres surveille le terrain. Les supporters chante dans les gradins.",
+        "checkedCount": 3,
+        "correctCount": 0,
+        "passages": [
+          {
+            "start": 0,
+            "end": 18,
+            "text": "Les joueurs avance",
+            "correct": false,
+            "explanationFr": "Sujet pluriel « Les joueurs » avec verbe au singulier « avance » ; l'accord attendu est « avancent »."
+          },
+          {
+            "start": 29,
+            "end": 51,
+            "text": "Les arbitres surveille",
+            "correct": false,
+            "explanationFr": "Sujet pluriel « Les arbitres » avec verbe au singulier « surveille » ; l'accord attendu est « surveillent »."
+          },
+          {
+            "start": 64,
+            "end": 85,
+            "text": "Les supporters chante",
+            "correct": false,
+            "explanationFr": "Sujet pluriel « Les supporters » avec verbe au singulier « chante » ; l'accord attendu est « chantent »."
+          }
+        ]
+      },
+      "writingEvidence": {
+        "skillId": "maintenir_orthographe_grammaticale_phrase::writing-independent-production",
+        "responseChecksum": "sha256:aab0276bb86dd57a030e198bf4c5127f68e403a1a7accd358dc66c88e7fe2a1b",
+        "evaluator": {
+          "version": "french-writing-evaluator-v13",
+          "model": "z-ai/glm-5.2",
+          "protocolChecksum": "sha256:e58f98bd42efdbe4ba1f6a74316e6cfcee8569f558aae2350b601e75970f7fec",
+          "rubricChecksum": "sha256:0fe20ad76ffc5e4dd72f172ddeea6f35d0c9dc5ef4c185dc54db4d627e34ae5f"
+        },
+        "connectedWriting": true,
+        "unaided": true,
+        "eligibleTokens": 3,
+        "correctTokens": 0,
+        "responseText": "Les joueurs avance ensemble. Les arbitres surveille le terrain. Les supporters chante dans les gradins.",
+        "tokens": [
+          {
+            "start": 0,
+            "end": 18,
+            "text": "Les joueurs avance",
+            "criterionId": "subject-verb-plural",
+            "correct": false,
+            "reasonFr": "Sujet pluriel « Les joueurs » avec verbe au singulier « avance » ; l'accord attendu est « avancent »."
+          },
+          {
+            "start": 29,
+            "end": 51,
+            "text": "Les arbitres surveille",
+            "criterionId": "subject-verb-plural",
+            "correct": false,
+            "reasonFr": "Sujet pluriel « Les arbitres » avec verbe au singulier « surveille » ; l'accord attendu est « surveillent »."
+          },
+          {
+            "start": 64,
+            "end": 85,
+            "text": "Les supporters chante",
+            "criterionId": "subject-verb-plural",
+            "correct": false,
+            "reasonFr": "Sujet pluriel « Les supporters » avec verbe au singulier « chante » ; l'accord attendu est « chantent »."
+          }
+        ]
+      }
+    },
+    {
+      "id": "grammar-unresolved",
+      "itemId": "v3-connected-writing:grammar-team",
+      "itemChecksum": "sha256:b1b076b6526c873ad81a87ffd3551617a92344405e1cf2cc4aa8ab0da1b74aee",
+      "promptFr": "Décris au présent ce que font plusieurs groupes de personnes pendant une rencontre sportive. Utilise des noms pour identifier ces groupes.",
+      "answer": "Je suis sur le terrain. Tu es près du but. Il reste dans les gradins.",
+      "expected": "unresolved",
+      "observed": "unresolved",
+      "matched": true,
+      "elapsedMs": 7939,
+      "feedback": {
+        "assessed": false,
+        "skillLabelFr": "Maintenir l'orthographe grammaticale dans une phrase",
+        "text": "Je suis sur le terrain. Tu es près du but. Il reste dans les gradins.",
+        "checkedCount": 0,
+        "correctCount": 0,
+        "passages": []
+      }
+    }
+  ],
+  "postRunOpportunityAudit": {
+    "passed": true,
+    "assessedCases": 4,
+    "opportunities": 12,
+    "allIndividualVerdictsMatched": true
+  }
+}
