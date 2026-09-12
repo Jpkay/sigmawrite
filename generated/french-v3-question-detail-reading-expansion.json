@@ -1,0 +1,3035 @@
+{
+  "version": "french-v3-question-detail-reading-expansion-v1",
+  "status": "draft_requires_review",
+  "parentTaxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+  "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
+  "items": [
+    {
+      "itemKey": "v3-question-detail-reading:narrative-manga",
+      "item": {
+        "nodeKey": "associer_information_question",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nAya choisit un manga pour son frère. Elle emprunte un roman pour sa sœur. Pour elle-même, elle prend une bande dessinée.\n\nQuel livre Aya emprunte-t-elle pour sa sœur ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-question-detail-reading:narrative-manga",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Aya choisit un manga pour son frère. Elle emprunte un roman pour sa sœur. Pour elle-même, elle prend une bande dessinée.",
+            "choices": [
+              {
+                "quoteFr": "Elle emprunte un roman pour sa sœur.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Aya choisit un manga pour son frère.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Pour elle-même, elle prend une bande dessinée.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Un roman.",
+            "correct": true
+          },
+          {
+            "text": "Un manga.",
+            "correct": false
+          },
+          {
+            "text": "Une bande dessinée.",
+            "correct": false
+          },
+          {
+            "text": "Un dictionnaire.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-question-detail-reading:narrative-departure",
+      "item": {
+        "nodeKey": "associer_information_question",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLe car de Sami arrive à huit heures. Sami retrouve son cousin à huit heures trente. Le spectacle commence à neuf heures.\n\nÀ quelle heure Sami retrouve-t-il son cousin ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-question-detail-reading:narrative-departure",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Le car de Sami arrive à huit heures. Sami retrouve son cousin à huit heures trente. Le spectacle commence à neuf heures.",
+            "choices": [
+              {
+                "quoteFr": "Sami retrouve son cousin à huit heures trente.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Le car de Sami arrive à huit heures.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Le spectacle commence à neuf heures.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "À huit heures trente.",
+            "correct": true
+          },
+          {
+            "text": "À huit heures.",
+            "correct": false
+          },
+          {
+            "text": "À neuf heures.",
+            "correct": false
+          },
+          {
+            "text": "À neuf heures trente.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-question-detail-reading:narrative-delivery",
+      "item": {
+        "nodeKey": "associer_information_question",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLina laisse le pain chez sa grand-mère. Elle apporte les fleurs chez sa tante. Puis elle range les légumes chez elle.\n\nOù Lina apporte-t-elle les fleurs ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-question-detail-reading:narrative-delivery",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Lina laisse le pain chez sa grand-mère. Elle apporte les fleurs chez sa tante. Puis elle range les légumes chez elle.",
+            "choices": [
+              {
+                "quoteFr": "Elle apporte les fleurs chez sa tante.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Lina laisse le pain chez sa grand-mère.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Puis elle range les légumes chez elle.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Chez sa tante.",
+            "correct": true
+          },
+          {
+            "text": "Chez sa grand-mère.",
+            "correct": false
+          },
+          {
+            "text": "Chez elle.",
+            "correct": false
+          },
+          {
+            "text": "Au marché.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-question-detail-reading:narrative-team",
+      "item": {
+        "nodeKey": "associer_information_question",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nNoé porte le sac de ballons. Malo distribue les maillots aux joueurs. Jules remplit les gourdes.\n\nQui distribue les maillots ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-question-detail-reading:narrative-team",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Noé porte le sac de ballons. Malo distribue les maillots aux joueurs. Jules remplit les gourdes.",
+            "choices": [
+              {
+                "quoteFr": "Malo distribue les maillots aux joueurs.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Noé porte le sac de ballons.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Jules remplit les gourdes.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Malo.",
+            "correct": true
+          },
+          {
+            "text": "Noé.",
+            "correct": false
+          },
+          {
+            "text": "Jules.",
+            "correct": false
+          },
+          {
+            "text": "Les joueurs.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-question-detail-reading:narrative-coins",
+      "item": {
+        "nodeKey": "associer_information_question",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nInès dépense trois euros pour son trajet. Elle paie cinq euros pour une place de cinéma. Il lui reste deux euros pour une boisson.\n\nCombien Inès paie-t-elle pour la place de cinéma ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-question-detail-reading:narrative-coins",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Inès dépense trois euros pour son trajet. Elle paie cinq euros pour une place de cinéma. Il lui reste deux euros pour une boisson.",
+            "choices": [
+              {
+                "quoteFr": "Elle paie cinq euros pour une place de cinéma.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Inès dépense trois euros pour son trajet.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Il lui reste deux euros pour une boisson.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Cinq euros.",
+            "correct": true
+          },
+          {
+            "text": "Trois euros.",
+            "correct": false
+          },
+          {
+            "text": "Deux euros.",
+            "correct": false
+          },
+          {
+            "text": "Dix euros.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-question-detail-reading:narrative-keys",
+      "item": {
+        "nodeKey": "associer_information_question",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nYanis trouve une clé sous le canapé. Il la pose sur le bureau de sa mère. Il range ensuite son téléphone dans le tiroir.\n\nOù Yanis pose-t-il la clé ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-question-detail-reading:narrative-keys",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Yanis trouve une clé sous le canapé. Il la pose sur le bureau de sa mère. Il range ensuite son téléphone dans le tiroir.",
+            "choices": [
+              {
+                "quoteFr": "Il la pose sur le bureau de sa mère.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Yanis trouve une clé sous le canapé.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Il range ensuite son téléphone dans le tiroir.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Sur le bureau de sa mère.",
+            "correct": true
+          },
+          {
+            "text": "Sous le canapé.",
+            "correct": false
+          },
+          {
+            "text": "Dans le tiroir.",
+            "correct": false
+          },
+          {
+            "text": "Dans sa poche.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-question-detail-reading:narrative-rehearsal",
+      "item": {
+        "nodeKey": "associer_information_question",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLe matin, Zoé répète sa chanson seule. À midi, elle la chante devant son amie. Le soir, elle la présente à sa famille.\n\nQuand Zoé chante-t-elle devant son amie ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-question-detail-reading:narrative-rehearsal",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Le matin, Zoé répète sa chanson seule. À midi, elle la chante devant son amie. Le soir, elle la présente à sa famille.",
+            "choices": [
+              {
+                "quoteFr": "À midi, elle la chante devant son amie.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Le matin, Zoé répète sa chanson seule.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Le soir, elle la présente à sa famille.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "À midi.",
+            "correct": true
+          },
+          {
+            "text": "Le matin.",
+            "correct": false
+          },
+          {
+            "text": "Le soir.",
+            "correct": false
+          },
+          {
+            "text": "Toute la journée.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-question-detail-reading:narrative-drawing",
+      "item": {
+        "nodeKey": "associer_information_question",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nNassim dessine un pont au crayon. Il colorie la rivière avec un feutre bleu. Il ajoute le titre au stylo noir.\n\nAvec quoi Nassim colorie-t-il la rivière ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-question-detail-reading:narrative-drawing",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Nassim dessine un pont au crayon. Il colorie la rivière avec un feutre bleu. Il ajoute le titre au stylo noir.",
+            "choices": [
+              {
+                "quoteFr": "Il colorie la rivière avec un feutre bleu.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Nassim dessine un pont au crayon.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Il ajoute le titre au stylo noir.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Un feutre bleu.",
+            "correct": true
+          },
+          {
+            "text": "Un crayon.",
+            "correct": false
+          },
+          {
+            "text": "Un stylo noir.",
+            "correct": false
+          },
+          {
+            "text": "Un pinceau.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-question-detail-reading:narrative-rescue",
+      "item": {
+        "nodeKey": "associer_information_question",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nEmma appelle son père pour signaler la panne. Sa voisine vient la chercher en voiture. Son frère récupère le vélo le lendemain.\n\nQui vient chercher Emma en voiture ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-question-detail-reading:narrative-rescue",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Emma appelle son père pour signaler la panne. Sa voisine vient la chercher en voiture. Son frère récupère le vélo le lendemain.",
+            "choices": [
+              {
+                "quoteFr": "Sa voisine vient la chercher en voiture.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Emma appelle son père pour signaler la panne.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Son frère récupère le vélo le lendemain.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Sa voisine.",
+            "correct": true
+          },
+          {
+            "text": "Son père.",
+            "correct": false
+          },
+          {
+            "text": "Son frère.",
+            "correct": false
+          },
+          {
+            "text": "Emma elle-même.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-question-detail-reading:narrative-boxes",
+      "item": {
+        "nodeKey": "associer_information_question",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nDina prépare quatre boîtes pour les livres. Elle utilise deux boîtes pour les vêtements. Une dernière boîte contient ses chaussures.\n\nCombien de boîtes contiennent les vêtements ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-question-detail-reading:narrative-boxes",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Dina prépare quatre boîtes pour les livres. Elle utilise deux boîtes pour les vêtements. Une dernière boîte contient ses chaussures.",
+            "choices": [
+              {
+                "quoteFr": "Elle utilise deux boîtes pour les vêtements.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Dina prépare quatre boîtes pour les livres.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Une dernière boîte contient ses chaussures.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Deux.",
+            "correct": true
+          },
+          {
+            "text": "Quatre.",
+            "correct": false
+          },
+          {
+            "text": "Une.",
+            "correct": false
+          },
+          {
+            "text": "Sept.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-question-detail-reading:narrative-message",
+      "item": {
+        "nodeKey": "associer_information_question",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nAu réveil, Léo lit un message de Sara. Après le déjeuner, il lui répond. Avant de dormir, il reçoit sa réponse.\n\nQuand Léo répond-il à Sara ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-question-detail-reading:narrative-message",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Au réveil, Léo lit un message de Sara. Après le déjeuner, il lui répond. Avant de dormir, il reçoit sa réponse.",
+            "choices": [
+              {
+                "quoteFr": "Après le déjeuner, il lui répond.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Au réveil, Léo lit un message de Sara.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Avant de dormir, il reçoit sa réponse.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Après le déjeuner.",
+            "correct": true
+          },
+          {
+            "text": "Au réveil.",
+            "correct": false
+          },
+          {
+            "text": "Avant de dormir.",
+            "correct": false
+          },
+          {
+            "text": "Pendant la nuit.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-question-detail-reading:narrative-route",
+      "item": {
+        "nodeKey": "associer_information_question",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nAwa traverse le parc pour aller au théâtre. Pour rentrer, elle passe par la place du marché. Elle rejoint ensuite son immeuble près du stade.\n\nPar où Awa passe-t-elle pour rentrer ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-question-detail-reading:narrative-route",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Awa traverse le parc pour aller au théâtre. Pour rentrer, elle passe par la place du marché. Elle rejoint ensuite son immeuble près du stade.",
+            "choices": [
+              {
+                "quoteFr": "Pour rentrer, elle passe par la place du marché.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Awa traverse le parc pour aller au théâtre.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Elle rejoint ensuite son immeuble près du stade.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Par la place du marché.",
+            "correct": true
+          },
+          {
+            "text": "Par le parc.",
+            "correct": false
+          },
+          {
+            "text": "Par le stade.",
+            "correct": false
+          },
+          {
+            "text": "Par le théâtre.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-question-detail-reading:informational-club",
+      "item": {
+        "nodeKey": "associer_information_question",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLe club de manga se réunit le jeudi. Le club de dessin se réunit le lundi. Les deux clubs exposent leurs travaux le samedi.\n\nQuel jour le club de manga se réunit-il ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-question-detail-reading:informational-club",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Le club de manga se réunit le jeudi. Le club de dessin se réunit le lundi. Les deux clubs exposent leurs travaux le samedi.",
+            "choices": [
+              {
+                "quoteFr": "Le club de manga se réunit le jeudi.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Le club de dessin se réunit le lundi.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Les deux clubs exposent leurs travaux le samedi.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Le jeudi.",
+            "correct": true
+          },
+          {
+            "text": "Le lundi.",
+            "correct": false
+          },
+          {
+            "text": "Le samedi.",
+            "correct": false
+          },
+          {
+            "text": "Le dimanche.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-question-detail-reading:informational-fees",
+      "item": {
+        "nodeKey": "associer_information_question",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nL’entrée de l’exposition coûte quatre euros. La visite guidée coûte deux euros de plus. Le catalogue est vendu six euros.\n\nQuel est le prix du catalogue ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-question-detail-reading:informational-fees",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "L’entrée de l’exposition coûte quatre euros. La visite guidée coûte deux euros de plus. Le catalogue est vendu six euros.",
+            "choices": [
+              {
+                "quoteFr": "La visite guidée coûte deux euros de plus.",
+                "correct": true
+              },
+              {
+                "quoteFr": "L’entrée de l’exposition coûte quatre euros.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Le catalogue est vendu six euros.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Six euros.",
+            "correct": true
+          },
+          {
+            "text": "Quatre euros.",
+            "correct": false
+          },
+          {
+            "text": "Deux euros.",
+            "correct": false
+          },
+          {
+            "text": "Dix euros.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-question-detail-reading:informational-contacts",
+      "item": {
+        "nodeKey": "associer_information_question",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nPour réserver un terrain, contactez Idriss. Pour emprunter une raquette, adressez-vous à Nora. Les objets perdus sont conservés par Lucie.\n\nQui faut-il contacter pour réserver un terrain ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-question-detail-reading:informational-contacts",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Pour réserver un terrain, contactez Idriss. Pour emprunter une raquette, adressez-vous à Nora. Les objets perdus sont conservés par Lucie.",
+            "choices": [
+              {
+                "quoteFr": "Pour réserver un terrain, contactez Idriss.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Pour emprunter une raquette, adressez-vous à Nora.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Les objets perdus sont conservés par Lucie.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Idriss.",
+            "correct": true
+          },
+          {
+            "text": "Nora.",
+            "correct": false
+          },
+          {
+            "text": "Lucie.",
+            "correct": false
+          },
+          {
+            "text": "Tous les trois.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-question-detail-reading:informational-rooms",
+      "item": {
+        "nodeKey": "associer_information_question",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLes inscriptions ont lieu dans la salle verte. Les ateliers se déroulent dans la salle jaune. Les sacs doivent rester dans la salle bleue.\n\nOù faut-il laisser les sacs ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-question-detail-reading:informational-rooms",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Les inscriptions ont lieu dans la salle verte. Les ateliers se déroulent dans la salle jaune. Les sacs doivent rester dans la salle bleue.",
+            "choices": [
+              {
+                "quoteFr": "Les ateliers se déroulent dans la salle jaune.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Les inscriptions ont lieu dans la salle verte.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Les sacs doivent rester dans la salle bleue.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Dans la salle bleue.",
+            "correct": true
+          },
+          {
+            "text": "Dans la salle verte.",
+            "correct": false
+          },
+          {
+            "text": "Dans la salle jaune.",
+            "correct": false
+          },
+          {
+            "text": "Dans le couloir.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-question-detail-reading:informational-times",
+      "item": {
+        "nodeKey": "associer_information_question",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLe premier atelier commence à dix heures. Le bâtiment ouvre à neuf heures. Les portes ferment à dix-sept heures.\n\nÀ quelle heure le premier atelier commence-t-il ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-question-detail-reading:informational-times",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Le premier atelier commence à dix heures. Le bâtiment ouvre à neuf heures. Les portes ferment à dix-sept heures.",
+            "choices": [
+              {
+                "quoteFr": "Le premier atelier commence à dix heures.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Le bâtiment ouvre à neuf heures.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Les portes ferment à dix-sept heures.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "À dix heures.",
+            "correct": true
+          },
+          {
+            "text": "À neuf heures.",
+            "correct": false
+          },
+          {
+            "text": "À dix-sept heures.",
+            "correct": false
+          },
+          {
+            "text": "À midi.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-question-detail-reading:informational-portions",
+      "item": {
+        "nodeKey": "associer_information_question",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nChaque équipe reçoit huit feuilles blanches. Chaque équipe reçoit aussi trois feuilles rouges. Deux crayons sont fournis avec le papier.\n\nCombien de feuilles rouges reçoit chaque équipe ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-question-detail-reading:informational-portions",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Chaque équipe reçoit huit feuilles blanches. Chaque équipe reçoit aussi trois feuilles rouges. Deux crayons sont fournis avec le papier.",
+            "choices": [
+              {
+                "quoteFr": "Chaque équipe reçoit aussi trois feuilles rouges.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Chaque équipe reçoit huit feuilles blanches.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Deux crayons sont fournis avec le papier.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Trois.",
+            "correct": true
+          },
+          {
+            "text": "Huit.",
+            "correct": false
+          },
+          {
+            "text": "Deux.",
+            "correct": false
+          },
+          {
+            "text": "Onze.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-question-detail-reading:informational-equipment",
+      "item": {
+        "nodeKey": "associer_information_question",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nPour le collage, apportez des ciseaux. Pour le dessin, apportez un crayon. Pour la peinture, apportez une blouse.\n\nQuel objet faut-il apporter pour le collage ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-question-detail-reading:informational-equipment",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Pour le collage, apportez des ciseaux. Pour le dessin, apportez un crayon. Pour la peinture, apportez une blouse.",
+            "choices": [
+              {
+                "quoteFr": "Pour le collage, apportez des ciseaux.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Pour le dessin, apportez un crayon.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Pour la peinture, apportez une blouse.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Des ciseaux.",
+            "correct": true
+          },
+          {
+            "text": "Un crayon.",
+            "correct": false
+          },
+          {
+            "text": "Une blouse.",
+            "correct": false
+          },
+          {
+            "text": "Un pinceau.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-question-detail-reading:informational-deadlines",
+      "item": {
+        "nodeKey": "associer_information_question",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLes inscriptions ouvrent le 3 mai. Le paiement doit être effectué avant le 12 mai. La liste des participants sera publiée le 18 mai.\n\nAvant quelle date faut-il payer ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-question-detail-reading:informational-deadlines",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Les inscriptions ouvrent le 3 mai. Le paiement doit être effectué avant le 12 mai. La liste des participants sera publiée le 18 mai.",
+            "choices": [
+              {
+                "quoteFr": "Le paiement doit être effectué avant le 12 mai.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Les inscriptions ouvrent le 3 mai.",
+                "correct": false
+              },
+              {
+                "quoteFr": "La liste des participants sera publiée le 18 mai.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Le 12 mai.",
+            "correct": true
+          },
+          {
+            "text": "Le 3 mai.",
+            "correct": false
+          },
+          {
+            "text": "Le 18 mai.",
+            "correct": false
+          },
+          {
+            "text": "Le 31 mai.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-question-detail-reading:informational-library",
+      "item": {
+        "nodeKey": "associer_information_question",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLes bandes dessinées sont au rez-de-chaussée. Les romans se trouvent au premier étage. Les documentaires sont au deuxième étage.\n\nOù se trouvent les documentaires ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-question-detail-reading:informational-library",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Les bandes dessinées sont au rez-de-chaussée. Les romans se trouvent au premier étage. Les documentaires sont au deuxième étage.",
+            "choices": [
+              {
+                "quoteFr": "Les bandes dessinées sont au rez-de-chaussée.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Les romans se trouvent au premier étage.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Les documentaires sont au deuxième étage.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Au deuxième étage.",
+            "correct": true
+          },
+          {
+            "text": "Au premier étage.",
+            "correct": false
+          },
+          {
+            "text": "Au rez-de-chaussée.",
+            "correct": false
+          },
+          {
+            "text": "Au sous-sol.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-question-detail-reading:informational-transport",
+      "item": {
+        "nodeKey": "associer_information_question",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLe bus rouge dessert la gare. Le bus vert dessert la piscine. Le bus bleu dessert le musée.\n\nQuel bus dessert la piscine ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-question-detail-reading:informational-transport",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Le bus rouge dessert la gare. Le bus vert dessert la piscine. Le bus bleu dessert le musée.",
+            "choices": [
+              {
+                "quoteFr": "Le bus vert dessert la piscine.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Le bus rouge dessert la gare.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Le bus bleu dessert le musée.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Le bus vert.",
+            "correct": true
+          },
+          {
+            "text": "Le bus rouge.",
+            "correct": false
+          },
+          {
+            "text": "Le bus bleu.",
+            "correct": false
+          },
+          {
+            "text": "Tous les bus.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-question-detail-reading:informational-turns",
+      "item": {
+        "nodeKey": "associer_information_question",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLes joueurs confirmés jouent pendant vingt minutes. Les débutants jouent pendant quinze minutes. Une pause de cinq minutes sépare les parties.\n\nCombien de temps dure une partie pour les débutants ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-question-detail-reading:informational-turns",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Les joueurs confirmés jouent pendant vingt minutes. Les débutants jouent pendant quinze minutes. Une pause de cinq minutes sépare les parties.",
+            "choices": [
+              {
+                "quoteFr": "Les joueurs confirmés jouent pendant vingt minutes.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Les débutants jouent pendant quinze minutes.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Une pause de cinq minutes sépare les parties.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Quinze minutes.",
+            "correct": true
+          },
+          {
+            "text": "Vingt minutes.",
+            "correct": false
+          },
+          {
+            "text": "Cinq minutes.",
+            "correct": false
+          },
+          {
+            "text": "Trente minutes.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-question-detail-reading:informational-collection",
+      "item": {
+        "nodeKey": "associer_information_question",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLes piles usagées vont dans la boîte fermée. Le papier va dans le bac ouvert. Les vêtements sont déposés dans les sacs.\n\nOù faut-il déposer le papier ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-question-detail-reading:informational-collection",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Les piles usagées vont dans la boîte fermée. Le papier va dans le bac ouvert. Les vêtements sont déposés dans les sacs.",
+            "choices": [
+              {
+                "quoteFr": "Le papier va dans le bac ouvert.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Les piles usagées vont dans la boîte fermée.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Les vêtements sont déposés dans les sacs.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Dans le bac ouvert.",
+            "correct": true
+          },
+          {
+            "text": "Dans la boîte fermée.",
+            "correct": false
+          },
+          {
+            "text": "Dans les sacs.",
+            "correct": false
+          },
+          {
+            "text": "Sur le sol.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-question-detail-reading:argumentative-reading",
+      "item": {
+        "nodeKey": "associer_information_question",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nJe propose de placer les livres sous le préau et les jeux près du terrain. Je souhaite créer un coin lecture dans la cour. Chacun pourrait ainsi choisir son activité pendant la pause.\n\nOù la personne propose-t-elle de placer les livres ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-question-detail-reading:argumentative-reading",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Je propose de placer les livres sous le préau et les jeux près du terrain. Je souhaite créer un coin lecture dans la cour. Chacun pourrait ainsi choisir son activité pendant la pause.",
+            "choices": [
+              {
+                "quoteFr": "Je propose de placer les livres sous le préau et les jeux près du terrain.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Je souhaite créer un coin lecture dans la cour.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Chacun pourrait ainsi choisir son activité pendant la pause.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Sous le préau.",
+            "correct": true
+          },
+          {
+            "text": "Près du terrain.",
+            "correct": false
+          },
+          {
+            "text": "Dans les classes.",
+            "correct": false
+          },
+          {
+            "text": "À la bibliothèque.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-question-detail-reading:argumentative-music",
+      "item": {
+        "nodeKey": "associer_information_question",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nUn concert serait une bonne occasion de réunir les familles. Je propose une répétition le mardi et le concert le vendredi. Nous aurions le temps de corriger les derniers détails.\n\nQuel jour le concert est-il proposé ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-question-detail-reading:argumentative-music",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Un concert serait une bonne occasion de réunir les familles. Je propose une répétition le mardi et le concert le vendredi. Nous aurions le temps de corriger les derniers détails.",
+            "choices": [
+              {
+                "quoteFr": "Je propose une répétition le mardi et le concert le vendredi.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Un concert serait une bonne occasion de réunir les familles.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Nous aurions le temps de corriger les derniers détails.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Le vendredi.",
+            "correct": true
+          },
+          {
+            "text": "Le mardi.",
+            "correct": false
+          },
+          {
+            "text": "Le mercredi.",
+            "correct": false
+          },
+          {
+            "text": "Le dimanche.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-question-detail-reading:argumentative-bikes",
+      "item": {
+        "nodeKey": "associer_information_question",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nJe demande six nouveaux supports pour les vélos et deux bancs pour se reposer. Nous devrions améliorer l’accueil des cyclistes. Ces équipements rendraient l’entrée plus pratique.\n\nCombien de supports pour les vélos sont demandés ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-question-detail-reading:argumentative-bikes",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Je demande six nouveaux supports pour les vélos et deux bancs pour se reposer. Nous devrions améliorer l’accueil des cyclistes. Ces équipements rendraient l’entrée plus pratique.",
+            "choices": [
+              {
+                "quoteFr": "Je demande six nouveaux supports pour les vélos et deux bancs pour se reposer.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Nous devrions améliorer l’accueil des cyclistes.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Ces équipements rendraient l’entrée plus pratique.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Six.",
+            "correct": true
+          },
+          {
+            "text": "Deux.",
+            "correct": false
+          },
+          {
+            "text": "Huit.",
+            "correct": false
+          },
+          {
+            "text": "Quatre.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-question-detail-reading:argumentative-workshop",
+      "item": {
+        "nodeKey": "associer_information_question",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nUn atelier de cuisine permettrait de partager nos recettes. Je propose que les élèves choisissent les plats et que les adultes achètent les ingrédients. Cette répartition donnerait un rôle à chacun.\n\nQui choisirait les plats selon cette proposition ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-question-detail-reading:argumentative-workshop",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Un atelier de cuisine permettrait de partager nos recettes. Je propose que les élèves choisissent les plats et que les adultes achètent les ingrédients. Cette répartition donnerait un rôle à chacun.",
+            "choices": [
+              {
+                "quoteFr": "Je propose que les élèves choisissent les plats et que les adultes achètent les ingrédients.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Un atelier de cuisine permettrait de partager nos recettes.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Cette répartition donnerait un rôle à chacun.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Les élèves.",
+            "correct": true
+          },
+          {
+            "text": "Les adultes.",
+            "correct": false
+          },
+          {
+            "text": "Les commerçants.",
+            "correct": false
+          },
+          {
+            "text": "Les cuisiniers du quartier.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-question-detail-reading:argumentative-cinema",
+      "item": {
+        "nodeKey": "associer_information_question",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nJe propose un billet à trois euros pour les élèves et à cinq euros pour les adultes. Organisons une soirée cinéma accessible à tous. Le tarif réduit aiderait les jeunes à participer.\n\nQuel tarif est proposé pour les élèves ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-question-detail-reading:argumentative-cinema",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Je propose un billet à trois euros pour les élèves et à cinq euros pour les adultes. Organisons une soirée cinéma accessible à tous. Le tarif réduit aiderait les jeunes à participer.",
+            "choices": [
+              {
+                "quoteFr": "Je propose un billet à trois euros pour les élèves et à cinq euros pour les adultes.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Organisons une soirée cinéma accessible à tous.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Le tarif réduit aiderait les jeunes à participer.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Trois euros.",
+            "correct": true
+          },
+          {
+            "text": "Cinq euros.",
+            "correct": false
+          },
+          {
+            "text": "Huit euros.",
+            "correct": false
+          },
+          {
+            "text": "Deux euros.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-question-detail-reading:argumentative-recycling",
+      "item": {
+        "nodeKey": "associer_information_question",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nJe pense que notre école devrait mieux trier ses déchets. Plaçons un bac à papier dans chaque classe et un bac à piles à l’accueil. Il serait alors plus facile de trouver le bon endroit.\n\nOù serait placé le bac à piles ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-question-detail-reading:argumentative-recycling",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Je pense que notre école devrait mieux trier ses déchets. Plaçons un bac à papier dans chaque classe et un bac à piles à l’accueil. Il serait alors plus facile de trouver le bon endroit.",
+            "choices": [
+              {
+                "quoteFr": "Plaçons un bac à papier dans chaque classe et un bac à piles à l’accueil.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Je pense que notre école devrait mieux trier ses déchets.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Il serait alors plus facile de trouver le bon endroit.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "À l’accueil.",
+            "correct": true
+          },
+          {
+            "text": "Dans chaque classe.",
+            "correct": false
+          },
+          {
+            "text": "Dans la cour.",
+            "correct": false
+          },
+          {
+            "text": "À la cantine.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-question-detail-reading:argumentative-games",
+      "item": {
+        "nodeKey": "associer_information_question",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nJe propose de consacrer vingt minutes aux explications et quarante minutes aux parties. Un tournoi de jeux de société ferait découvrir de nouveaux jeux. Même les débutants pourraient comprendre les règles avant de jouer.\n\nCombien de temps serait consacré aux explications ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-question-detail-reading:argumentative-games",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Je propose de consacrer vingt minutes aux explications et quarante minutes aux parties. Un tournoi de jeux de société ferait découvrir de nouveaux jeux. Même les débutants pourraient comprendre les règles avant de jouer.",
+            "choices": [
+              {
+                "quoteFr": "Je propose de consacrer vingt minutes aux explications et quarante minutes aux parties.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Un tournoi de jeux de société ferait découvrir de nouveaux jeux.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Même les débutants pourraient comprendre les règles avant de jouer.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Vingt minutes.",
+            "correct": true
+          },
+          {
+            "text": "Quarante minutes.",
+            "correct": false
+          },
+          {
+            "text": "Soixante minutes.",
+            "correct": false
+          },
+          {
+            "text": "Dix minutes.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-question-detail-reading:argumentative-garden",
+      "item": {
+        "nodeKey": "associer_information_question",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nCréons un jardin que les élèves pourront entretenir ensemble. Je propose de planter les fleurs près du portail et les légumes derrière la cantine. Deux espaces distincts faciliteraient l’organisation.\n\nOù les légumes seraient-ils plantés ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-question-detail-reading:argumentative-garden",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Créons un jardin que les élèves pourront entretenir ensemble. Je propose de planter les fleurs près du portail et les légumes derrière la cantine. Deux espaces distincts faciliteraient l’organisation.",
+            "choices": [
+              {
+                "quoteFr": "Je propose de planter les fleurs près du portail et les légumes derrière la cantine.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Créons un jardin que les élèves pourront entretenir ensemble.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Deux espaces distincts faciliteraient l’organisation.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Derrière la cantine.",
+            "correct": true
+          },
+          {
+            "text": "Près du portail.",
+            "correct": false
+          },
+          {
+            "text": "Au centre de la cour.",
+            "correct": false
+          },
+          {
+            "text": "Devant les classes.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-question-detail-reading:argumentative-exchange",
+      "item": {
+        "nodeKey": "associer_information_question",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nJe propose d’apporter les livres le lundi et de choisir ceux des autres le mercredi. Un échange de mangas serait plus utile qu’une vente. Chacun pourrait découvrir une histoire sans dépenser d’argent.\n\nQuand pourrait-on choisir les livres des autres ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-question-detail-reading:argumentative-exchange",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Je propose d’apporter les livres le lundi et de choisir ceux des autres le mercredi. Un échange de mangas serait plus utile qu’une vente. Chacun pourrait découvrir une histoire sans dépenser d’argent.",
+            "choices": [
+              {
+                "quoteFr": "Je propose d’apporter les livres le lundi et de choisir ceux des autres le mercredi.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Un échange de mangas serait plus utile qu’une vente.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Chacun pourrait découvrir une histoire sans dépenser d’argent.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Le mercredi.",
+            "correct": true
+          },
+          {
+            "text": "Le lundi.",
+            "correct": false
+          },
+          {
+            "text": "Le vendredi.",
+            "correct": false
+          },
+          {
+            "text": "Tous les jours.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-question-detail-reading:argumentative-sports",
+      "item": {
+        "nodeKey": "associer_information_question",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nUne journée sportive devrait laisser du temps pour se reposer. Je propose des matchs le matin et des jeux calmes après le déjeuner. Ce programme conviendrait à des envies différentes.\n\nQuand les jeux calmes auraient-ils lieu ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-question-detail-reading:argumentative-sports",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Une journée sportive devrait laisser du temps pour se reposer. Je propose des matchs le matin et des jeux calmes après le déjeuner. Ce programme conviendrait à des envies différentes.",
+            "choices": [
+              {
+                "quoteFr": "Je propose des matchs le matin et des jeux calmes après le déjeuner.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Une journée sportive devrait laisser du temps pour se reposer.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Ce programme conviendrait à des envies différentes.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Après le déjeuner.",
+            "correct": true
+          },
+          {
+            "text": "Le matin.",
+            "correct": false
+          },
+          {
+            "text": "Avant le petit déjeuner.",
+            "correct": false
+          },
+          {
+            "text": "Pendant les matchs.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-question-detail-reading:argumentative-costumes",
+      "item": {
+        "nodeKey": "associer_information_question",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nJe propose de confier la couture à Salma et la peinture des décors à Hugo. Nous pourrions fabriquer les costumes de la pièce nous-mêmes. Nous utiliserions ainsi les talents de chacun.\n\nQuelle tâche serait confiée à Hugo ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-question-detail-reading:argumentative-costumes",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Je propose de confier la couture à Salma et la peinture des décors à Hugo. Nous pourrions fabriquer les costumes de la pièce nous-mêmes. Nous utiliserions ainsi les talents de chacun.",
+            "choices": [
+              {
+                "quoteFr": "Je propose de confier la couture à Salma et la peinture des décors à Hugo.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Nous pourrions fabriquer les costumes de la pièce nous-mêmes.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Nous utiliserions ainsi les talents de chacun.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "La peinture des décors.",
+            "correct": true
+          },
+          {
+            "text": "La couture des costumes.",
+            "correct": false
+          },
+          {
+            "text": "Le choix de la pièce.",
+            "correct": false
+          },
+          {
+            "text": "La vente des billets.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-question-detail-reading:argumentative-quiet",
+      "item": {
+        "nodeKey": "associer_information_question",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nJe souhaite que la salle d’étude reste calme sans interdire tout travail en groupe. Je propose une zone silencieuse à gauche et une zone de discussion à droite. Les élèves pourraient choisir l’espace adapté à leur travail.\n\nOù serait située la zone silencieuse ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-question-detail-reading:argumentative-quiet",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Je souhaite que la salle d’étude reste calme sans interdire tout travail en groupe. Je propose une zone silencieuse à gauche et une zone de discussion à droite. Les élèves pourraient choisir l’espace adapté à leur travail.",
+            "choices": [
+              {
+                "quoteFr": "Je propose une zone silencieuse à gauche et une zone de discussion à droite.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Je souhaite que la salle d’étude reste calme sans interdire tout travail en groupe.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Les élèves pourraient choisir l’espace adapté à leur travail.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "À gauche.",
+            "correct": true
+          },
+          {
+            "text": "À droite.",
+            "correct": false
+          },
+          {
+            "text": "Dans le couloir.",
+            "correct": false
+          },
+          {
+            "text": "Dans toute la salle.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "itemKey": "v3-question-detail-reading:narrative-manga",
+      "itemChecksum": "sha256:3a3566d01a31055c6b428b8fab40edbec96095dce411fe64edfd28dabb95c4c3",
+      "facetKey": "associer_information_question::text_type:narrative",
+      "contextKey": "passage:v3-question-detail-reading:narrative-manga",
+      "reason": "Choisir le détail qui répond exactement à la question en distinguant plusieurs personnes, moments, lieux ou quantités énoncés dans le même passage."
+    },
+    {
+      "itemKey": "v3-question-detail-reading:narrative-departure",
+      "itemChecksum": "sha256:5f139301cd78d72e7cfb7239a1099225cb1d380e0f5e31ab2b5e22e1ea868df8",
+      "facetKey": "associer_information_question::text_type:narrative",
+      "contextKey": "passage:v3-question-detail-reading:narrative-departure",
+      "reason": "Choisir le détail qui répond exactement à la question en distinguant plusieurs personnes, moments, lieux ou quantités énoncés dans le même passage."
+    },
+    {
+      "itemKey": "v3-question-detail-reading:narrative-delivery",
+      "itemChecksum": "sha256:dfdbdeebc58a52de8e366bb209a4cba1199d8f2779fc1258b7a67cfcb5f801ae",
+      "facetKey": "associer_information_question::text_type:narrative",
+      "contextKey": "passage:v3-question-detail-reading:narrative-delivery",
+      "reason": "Choisir le détail qui répond exactement à la question en distinguant plusieurs personnes, moments, lieux ou quantités énoncés dans le même passage."
+    },
+    {
+      "itemKey": "v3-question-detail-reading:narrative-team",
+      "itemChecksum": "sha256:c908aacafee27ce756fd77fce621f4699ef52622b9c1a4e6d966a010f6893972",
+      "facetKey": "associer_information_question::text_type:narrative",
+      "contextKey": "passage:v3-question-detail-reading:narrative-team",
+      "reason": "Choisir le détail qui répond exactement à la question en distinguant plusieurs personnes, moments, lieux ou quantités énoncés dans le même passage."
+    },
+    {
+      "itemKey": "v3-question-detail-reading:narrative-coins",
+      "itemChecksum": "sha256:cd71ec2b4c3fa96124d5ab77d35b1f153fa0504ae8133fb6d0f8476b59fb2046",
+      "facetKey": "associer_information_question::text_type:narrative",
+      "contextKey": "passage:v3-question-detail-reading:narrative-coins",
+      "reason": "Choisir le détail qui répond exactement à la question en distinguant plusieurs personnes, moments, lieux ou quantités énoncés dans le même passage."
+    },
+    {
+      "itemKey": "v3-question-detail-reading:narrative-keys",
+      "itemChecksum": "sha256:91b53603ad061a035fa9a7a81fedb3f37958cc8af8c430b349eadfd999c218b8",
+      "facetKey": "associer_information_question::text_type:narrative",
+      "contextKey": "passage:v3-question-detail-reading:narrative-keys",
+      "reason": "Choisir le détail qui répond exactement à la question en distinguant plusieurs personnes, moments, lieux ou quantités énoncés dans le même passage."
+    },
+    {
+      "itemKey": "v3-question-detail-reading:narrative-rehearsal",
+      "itemChecksum": "sha256:c8dd3e2f4cd56c5f36590c56ab6b9dff4796a210e52a2b943a1fe351eed254ba",
+      "facetKey": "associer_information_question::text_type:narrative",
+      "contextKey": "passage:v3-question-detail-reading:narrative-rehearsal",
+      "reason": "Choisir le détail qui répond exactement à la question en distinguant plusieurs personnes, moments, lieux ou quantités énoncés dans le même passage."
+    },
+    {
+      "itemKey": "v3-question-detail-reading:narrative-drawing",
+      "itemChecksum": "sha256:aabba11bf15101ff2d4040b096a10d644e50af7d9a9d8c51a78dc9ac34b44b19",
+      "facetKey": "associer_information_question::text_type:narrative",
+      "contextKey": "passage:v3-question-detail-reading:narrative-drawing",
+      "reason": "Choisir le détail qui répond exactement à la question en distinguant plusieurs personnes, moments, lieux ou quantités énoncés dans le même passage."
+    },
+    {
+      "itemKey": "v3-question-detail-reading:narrative-rescue",
+      "itemChecksum": "sha256:9d2a6940004d9af25f809735f5792c13063facb584ae80260944d948d7bf66e4",
+      "facetKey": "associer_information_question::text_type:narrative",
+      "contextKey": "passage:v3-question-detail-reading:narrative-rescue",
+      "reason": "Choisir le détail qui répond exactement à la question en distinguant plusieurs personnes, moments, lieux ou quantités énoncés dans le même passage."
+    },
+    {
+      "itemKey": "v3-question-detail-reading:narrative-boxes",
+      "itemChecksum": "sha256:e30a0dcb93bffc2de316ba54c51307d07a783adc48b3de608696138d88a5423a",
+      "facetKey": "associer_information_question::text_type:narrative",
+      "contextKey": "passage:v3-question-detail-reading:narrative-boxes",
+      "reason": "Choisir le détail qui répond exactement à la question en distinguant plusieurs personnes, moments, lieux ou quantités énoncés dans le même passage."
+    },
+    {
+      "itemKey": "v3-question-detail-reading:narrative-message",
+      "itemChecksum": "sha256:3642cca90655fa6b906da5f8d542d30f9b5e4e3a8b0b5e6fa2c8853b0433f899",
+      "facetKey": "associer_information_question::text_type:narrative",
+      "contextKey": "passage:v3-question-detail-reading:narrative-message",
+      "reason": "Choisir le détail qui répond exactement à la question en distinguant plusieurs personnes, moments, lieux ou quantités énoncés dans le même passage."
+    },
+    {
+      "itemKey": "v3-question-detail-reading:narrative-route",
+      "itemChecksum": "sha256:58e3ec58f2d2e06bc9d93624ee326fc5c82d15737f0035f9bdcec99f4d83fbc3",
+      "facetKey": "associer_information_question::text_type:narrative",
+      "contextKey": "passage:v3-question-detail-reading:narrative-route",
+      "reason": "Choisir le détail qui répond exactement à la question en distinguant plusieurs personnes, moments, lieux ou quantités énoncés dans le même passage."
+    },
+    {
+      "itemKey": "v3-question-detail-reading:informational-club",
+      "itemChecksum": "sha256:8376607de14552404b06111ae6e75136aee6a41b3b2a018e3de450dad6894a6e",
+      "facetKey": "associer_information_question::text_type:informational",
+      "contextKey": "passage:v3-question-detail-reading:informational-club",
+      "reason": "Choisir le détail qui répond exactement à la question en distinguant plusieurs personnes, moments, lieux ou quantités énoncés dans le même passage."
+    },
+    {
+      "itemKey": "v3-question-detail-reading:informational-fees",
+      "itemChecksum": "sha256:25729ab6316e8106e036a86b5cabb3b25ab7d61a70c53ef93b0de4f08e64dc10",
+      "facetKey": "associer_information_question::text_type:informational",
+      "contextKey": "passage:v3-question-detail-reading:informational-fees",
+      "reason": "Choisir le détail qui répond exactement à la question en distinguant plusieurs personnes, moments, lieux ou quantités énoncés dans le même passage."
+    },
+    {
+      "itemKey": "v3-question-detail-reading:informational-contacts",
+      "itemChecksum": "sha256:f64de7ab3fcc4e73a25a4af33e6c854c7d0e6de6a69093e4602b50c2b2291f05",
+      "facetKey": "associer_information_question::text_type:informational",
+      "contextKey": "passage:v3-question-detail-reading:informational-contacts",
+      "reason": "Choisir le détail qui répond exactement à la question en distinguant plusieurs personnes, moments, lieux ou quantités énoncés dans le même passage."
+    },
+    {
+      "itemKey": "v3-question-detail-reading:informational-rooms",
+      "itemChecksum": "sha256:636d33287c1cc56720bd71424f817585f18c1c43eeb674560d8dd26c1617737f",
+      "facetKey": "associer_information_question::text_type:informational",
+      "contextKey": "passage:v3-question-detail-reading:informational-rooms",
+      "reason": "Choisir le détail qui répond exactement à la question en distinguant plusieurs personnes, moments, lieux ou quantités énoncés dans le même passage."
+    },
+    {
+      "itemKey": "v3-question-detail-reading:informational-times",
+      "itemChecksum": "sha256:8b38c53e823fd068be9bf772203fd0409e060bd42ba3618ea265a6025da347f3",
+      "facetKey": "associer_information_question::text_type:informational",
+      "contextKey": "passage:v3-question-detail-reading:informational-times",
+      "reason": "Choisir le détail qui répond exactement à la question en distinguant plusieurs personnes, moments, lieux ou quantités énoncés dans le même passage."
+    },
+    {
+      "itemKey": "v3-question-detail-reading:informational-portions",
+      "itemChecksum": "sha256:70d11cd2a9ea7f0338c7a734bb4a94c2af05d2650cf9df88dff1094bfb148296",
+      "facetKey": "associer_information_question::text_type:informational",
+      "contextKey": "passage:v3-question-detail-reading:informational-portions",
+      "reason": "Choisir le détail qui répond exactement à la question en distinguant plusieurs personnes, moments, lieux ou quantités énoncés dans le même passage."
+    },
+    {
+      "itemKey": "v3-question-detail-reading:informational-equipment",
+      "itemChecksum": "sha256:9c20c9faba42e7bfbaf7b1084bd99f8d250490c3431940a08f22ec26077be698",
+      "facetKey": "associer_information_question::text_type:informational",
+      "contextKey": "passage:v3-question-detail-reading:informational-equipment",
+      "reason": "Choisir le détail qui répond exactement à la question en distinguant plusieurs personnes, moments, lieux ou quantités énoncés dans le même passage."
+    },
+    {
+      "itemKey": "v3-question-detail-reading:informational-deadlines",
+      "itemChecksum": "sha256:9cfbcbb9a7071327bd18f4a686cee49b7914f29e9e8a45e9e3a514eb2ff33437",
+      "facetKey": "associer_information_question::text_type:informational",
+      "contextKey": "passage:v3-question-detail-reading:informational-deadlines",
+      "reason": "Choisir le détail qui répond exactement à la question en distinguant plusieurs personnes, moments, lieux ou quantités énoncés dans le même passage."
+    },
+    {
+      "itemKey": "v3-question-detail-reading:informational-library",
+      "itemChecksum": "sha256:85287831818f27cda670117057807c5d6393baa2678040ac71ecfb5bca1321c0",
+      "facetKey": "associer_information_question::text_type:informational",
+      "contextKey": "passage:v3-question-detail-reading:informational-library",
+      "reason": "Choisir le détail qui répond exactement à la question en distinguant plusieurs personnes, moments, lieux ou quantités énoncés dans le même passage."
+    },
+    {
+      "itemKey": "v3-question-detail-reading:informational-transport",
+      "itemChecksum": "sha256:15dbf4db6ec141427a3aa6dbd16e685911b11e13724cbe9fc246a77ea44c17c5",
+      "facetKey": "associer_information_question::text_type:informational",
+      "contextKey": "passage:v3-question-detail-reading:informational-transport",
+      "reason": "Choisir le détail qui répond exactement à la question en distinguant plusieurs personnes, moments, lieux ou quantités énoncés dans le même passage."
+    },
+    {
+      "itemKey": "v3-question-detail-reading:informational-turns",
+      "itemChecksum": "sha256:751ca99d7a88d665618295fa0fdab3db84a28574370bc72d02048da5bb831e7e",
+      "facetKey": "associer_information_question::text_type:informational",
+      "contextKey": "passage:v3-question-detail-reading:informational-turns",
+      "reason": "Choisir le détail qui répond exactement à la question en distinguant plusieurs personnes, moments, lieux ou quantités énoncés dans le même passage."
+    },
+    {
+      "itemKey": "v3-question-detail-reading:informational-collection",
+      "itemChecksum": "sha256:b0d4f1581fbb25e2fad1d3935307d6545f3bf134363c83494dc2c47e85a7bb48",
+      "facetKey": "associer_information_question::text_type:informational",
+      "contextKey": "passage:v3-question-detail-reading:informational-collection",
+      "reason": "Choisir le détail qui répond exactement à la question en distinguant plusieurs personnes, moments, lieux ou quantités énoncés dans le même passage."
+    },
+    {
+      "itemKey": "v3-question-detail-reading:argumentative-reading",
+      "itemChecksum": "sha256:e9bdae9b1363d62398408cec0cf983bc5c41438737b66d74e1167e584cda6427",
+      "facetKey": "associer_information_question::text_type:argumentative",
+      "contextKey": "passage:v3-question-detail-reading:argumentative-reading",
+      "reason": "Choisir le détail qui répond exactement à la question en distinguant plusieurs personnes, moments, lieux ou quantités énoncés dans le même passage."
+    },
+    {
+      "itemKey": "v3-question-detail-reading:argumentative-music",
+      "itemChecksum": "sha256:8e736d3ec06c9d45c09f064eaa299924a80b1278b14cd3f5c9480ae511c85db8",
+      "facetKey": "associer_information_question::text_type:argumentative",
+      "contextKey": "passage:v3-question-detail-reading:argumentative-music",
+      "reason": "Choisir le détail qui répond exactement à la question en distinguant plusieurs personnes, moments, lieux ou quantités énoncés dans le même passage."
+    },
+    {
+      "itemKey": "v3-question-detail-reading:argumentative-bikes",
+      "itemChecksum": "sha256:09563fb7d66c16738354043d1a1e45c2a3e701f8c2d079d7be324cefe3c47f9a",
+      "facetKey": "associer_information_question::text_type:argumentative",
+      "contextKey": "passage:v3-question-detail-reading:argumentative-bikes",
+      "reason": "Choisir le détail qui répond exactement à la question en distinguant plusieurs personnes, moments, lieux ou quantités énoncés dans le même passage."
+    },
+    {
+      "itemKey": "v3-question-detail-reading:argumentative-workshop",
+      "itemChecksum": "sha256:0bea029a71e03e17822aea066f63f264de452120da6cf3e3529c0ad7511d09c0",
+      "facetKey": "associer_information_question::text_type:argumentative",
+      "contextKey": "passage:v3-question-detail-reading:argumentative-workshop",
+      "reason": "Choisir le détail qui répond exactement à la question en distinguant plusieurs personnes, moments, lieux ou quantités énoncés dans le même passage."
+    },
+    {
+      "itemKey": "v3-question-detail-reading:argumentative-cinema",
+      "itemChecksum": "sha256:8346820aee88a7cbaca0690381b6546f51aec6d0693dcc0fadad160f41f87f0c",
+      "facetKey": "associer_information_question::text_type:argumentative",
+      "contextKey": "passage:v3-question-detail-reading:argumentative-cinema",
+      "reason": "Choisir le détail qui répond exactement à la question en distinguant plusieurs personnes, moments, lieux ou quantités énoncés dans le même passage."
+    },
+    {
+      "itemKey": "v3-question-detail-reading:argumentative-recycling",
+      "itemChecksum": "sha256:d005d1d59da18c463764f1ac5b06f780bff3e15d73bc016ed6e6af23a00b4aa2",
+      "facetKey": "associer_information_question::text_type:argumentative",
+      "contextKey": "passage:v3-question-detail-reading:argumentative-recycling",
+      "reason": "Choisir le détail qui répond exactement à la question en distinguant plusieurs personnes, moments, lieux ou quantités énoncés dans le même passage."
+    },
+    {
+      "itemKey": "v3-question-detail-reading:argumentative-games",
+      "itemChecksum": "sha256:a0dc38580b5778cd684bf6c6f04df6559a00b36950c73117ec67f8b21af8f9c5",
+      "facetKey": "associer_information_question::text_type:argumentative",
+      "contextKey": "passage:v3-question-detail-reading:argumentative-games",
+      "reason": "Choisir le détail qui répond exactement à la question en distinguant plusieurs personnes, moments, lieux ou quantités énoncés dans le même passage."
+    },
+    {
+      "itemKey": "v3-question-detail-reading:argumentative-garden",
+      "itemChecksum": "sha256:6a267fdc6325b28468d8d846fb7b3bc4869be335779bc7bbcdfbe7a0deaeb7f5",
+      "facetKey": "associer_information_question::text_type:argumentative",
+      "contextKey": "passage:v3-question-detail-reading:argumentative-garden",
+      "reason": "Choisir le détail qui répond exactement à la question en distinguant plusieurs personnes, moments, lieux ou quantités énoncés dans le même passage."
+    },
+    {
+      "itemKey": "v3-question-detail-reading:argumentative-exchange",
+      "itemChecksum": "sha256:bb36491ab0f5f67b894d27401ecdcf79f6b372c802b0eb99d729f89c380859f9",
+      "facetKey": "associer_information_question::text_type:argumentative",
+      "contextKey": "passage:v3-question-detail-reading:argumentative-exchange",
+      "reason": "Choisir le détail qui répond exactement à la question en distinguant plusieurs personnes, moments, lieux ou quantités énoncés dans le même passage."
+    },
+    {
+      "itemKey": "v3-question-detail-reading:argumentative-sports",
+      "itemChecksum": "sha256:ab3c9c33256d926fd4b139020bf3c8be6e478e810f1db1cc697cedab4aa01e1a",
+      "facetKey": "associer_information_question::text_type:argumentative",
+      "contextKey": "passage:v3-question-detail-reading:argumentative-sports",
+      "reason": "Choisir le détail qui répond exactement à la question en distinguant plusieurs personnes, moments, lieux ou quantités énoncés dans le même passage."
+    },
+    {
+      "itemKey": "v3-question-detail-reading:argumentative-costumes",
+      "itemChecksum": "sha256:8965f38c478c4d3d01ebc77fa057f40175c1d8436f4c0cae4dee11e1b94fafb2",
+      "facetKey": "associer_information_question::text_type:argumentative",
+      "contextKey": "passage:v3-question-detail-reading:argumentative-costumes",
+      "reason": "Choisir le détail qui répond exactement à la question en distinguant plusieurs personnes, moments, lieux ou quantités énoncés dans le même passage."
+    },
+    {
+      "itemKey": "v3-question-detail-reading:argumentative-quiet",
+      "itemChecksum": "sha256:d7a8e8fd06d805f9314e34661470721ce54d6cbb3c4775171e92cb440cbd6ed1",
+      "facetKey": "associer_information_question::text_type:argumentative",
+      "contextKey": "passage:v3-question-detail-reading:argumentative-quiet",
+      "reason": "Choisir le détail qui répond exactement à la question en distinguant plusieurs personnes, moments, lieux ou quantités énoncés dans le même passage."
+    }
+  ],
+  "checksum": "sha256:faca8b64c84cc5a0e87a53719387e4b31fa4dff527fbe48652ed1d407d194c4b"
+}
