@@ -1,5 +1,5 @@
 {
-  "status": "frozen_candidate_build_and_bank_import_running",
+  "status": "candidate_ready_bank_import_and_compatibility_checks_running",
   "sourceCommit": "9435669e30eac1f96e96827c333af99e5cefcd7f",
   "frozenWorkspace": "/Users/jean-philippekayobotsi/.codex/release-workspaces/sigmawrite-r16-9435669",
   "candidateUrl": "https://sigmawrite-cri62gea2-jpkays-projects.vercel.app",
@@ -16,16 +16,26 @@
     "typescript": "passed",
     "readingServiceJourneys": 3,
     "constructedProfiles": 8,
-    "readOnlyUpgrade": "compatible, seven added targets, original history preserved"
+    "readOnlyUpgrade": "compatible, seven added targets, original history preserved",
+    "deployment": "Ready"
   },
   "running": {
-    "deployment": 80020,
-    "import": 76720
+    "import": 76720,
+    "audio": 5167,
+    "demo": 53296,
+    "pinnedPathway": 31766
   },
   "remaining": [
     "Verify Ready deployment, audio, demo and pinned pathways.",
     "Finish bank import, check relational consistency and publish immutable v17.",
     "Verify fresh default, full timed browser diagnostic through learning and review, and real learning upgrade.",
     "Promote only after successful checks and repeat public verification."
-  ]
+  ],
+  "deploymentId": "dpl_4hunvvGYXwjVPQs4PwhdsUrZuXe5",
+  "freshQa": {
+    "username": "doves.granular.r16.default.qa",
+    "studentId": "7b56d94e-71d9-45f8-a7de-f201c0f47fea",
+    "credentialsFile": "tmp/plume-granular-r16-default-qa.json",
+    "diagnosticStarted": false
+  }
 }
