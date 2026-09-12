@@ -1,0 +1,13 @@
+# Reading and results content delivered through the server
+
+The reading and results pages previously initialized from a browser-bundled sample passage before the server response arrived, and restored that sample if the response failed. That could expose text and corrections even when the delivery journal failed. Results also imported the sample passage and repair catalogues to choose a next activity in the browser.
+
+The route pages now select their passage on the authenticated server, record the exact payload, and pass it to keyed interactive players. Results compute the same next-step rule on the server and include its selected label in the recorded payload. The internal student snapshot used to choose that activity is not itself labelled as delivered content. The browser players no longer directly import those catalogues or fetch an alternative passage after render. A recording failure prevents their route payload from being returned. Changing passage keys resets the reader state.
+
+Keyless local previews still receive a selected server-side sample; their results use a generic lessons link because there is no authenticated server snapshot. Production remains based on the student's saved state. Existing in-page reader interactions, answer submission and reading-resume calls remain in the interactive player.
+
+Source `5410055` is live at https://app.trouvetaplume.com as deployment `dpl_2RNpBkqdGu8du12Qx9E6MTqVARD2`. Candidate and public browser checks opened two different published passages and confirmed each selected title in the owner's new reading-page journal. The existing completed results and first writing revision reloaded. The server-selected “Renforcer : Cause et conséquence” recommendation was visible and recorded. Mobile width checks passed without horizontal overflow; no page errors or new answers were submitted. The candidate demo retained 11 lessons, 48 diagnostic answers and 17 incorrect answers, and its first lesson opened.
+
+TypeScript and all 366 test files / 1,635 tests passed. The initial default-worker run timed out in two heavy existing graph tests; a complete rerun with four workers passed without changing them. Eleven focused tests cover authorization, selected payloads and corrections, server recommendation, missing or failed content, capture failure, keyless preview boundaries and keyed route delivery. The deployment built successfully and its canonical public alias was verified Ready.
+
+This closes these pages' browser sample fallback and direct catalogue imports. It does not prove that all other client bundles, offline or audio sources are covered. The completeness contract remains disabled; older histories, semantic coverage, remaining graph targets and educator review remain unfinished.
