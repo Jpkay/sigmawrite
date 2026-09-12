@@ -41,7 +41,10 @@ export function buildGranularPriorities(skills: readonly Skill[], results: reado
   const rank = (id: string) => {
     const result = evidence.get(id);
     return result?.resolved && result.status === "missing" || result?.modes.some(mode=>mode.provisionalGap===true&&mode.probability<=.2) ? 0
-      : result?.resolved && result.status === "fragile" ? 1 : 2;
+      : result?.resolved && result.status === "fragile" ? 1
+      // A weak direct signal deserves an early check, not a mastery/gap claim.
+      // Keep its prerequisite chain ahead of it and preserve action=verify.
+      : result?.evidence === "direct" && result.modes.some(mode=>mode.distinctItems>0&&Number.isFinite(mode.probability)&&mode.probability<.5) ? 2 : 3;
   };
   for (const skill of [...skills].sort((a,b) => rank(a.id)-rank(b.id) || a.level-b.level || a.id.localeCompare(b.id))) visit(skill);
   return priorities;
