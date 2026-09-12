@@ -82,7 +82,8 @@ export async function runLearningCheckCommand(store:AssessmentStore,studentId:st
    }else{
    const support=gradeTextualSupport(session.id,check.itemId,item,command.supportChoiceId);
    if(!support.valid)return {error:support.error} as const;
-   let correct:boolean;
+   let correct=false;
+   let unassessedWriting=false;
    let writingEvidence:WritingEvidence|undefined;
    const probe=bundle.assessment.probes.find(probe=>probe.id===check.itemId);
    if(!probe)return {error:"Question indisponible."} as const;
@@ -91,7 +92,7 @@ export async function runLearningCheckCommand(store:AssessmentStore,studentId:st
     let judgment:Awaited<ReturnType<WritingEvaluator>>;
     try { judgment=await writingEvaluator({answer:command.answer,...(check.firstDraft!==undefined?{firstDraft:check.firstDraft}:{}),skillId:probe.skillId,item}); }
     catch(error){if(error instanceof WritingAssessmentError)return {error:error.message} as const;throw error;}
-    if(!judgment.connectedWriting||!judgment.tokens.length)return {error:"Ce texte ne permet pas encore de vérifier cette compétence."} as const;
+    if(!judgment.connectedWriting||!judgment.tokens.length){unassessedWriting=true;}else{
     if(target&&requiresWritingRevision(target.nodeKey)&&judgment.revisionReviewed!==true)return {error:"La révision de ce texte doit encore être vérifiée."} as const;
     writingEvidence=createWritingEvidence({skillId:probe.skillId,answer:command.answer,connectedWriting:judgment.connectedWriting,
      // Only the fresh, server-issued check path can reach this point; guided
@@ -99,6 +100,7 @@ export async function runLearningCheckCommand(store:AssessmentStore,studentId:st
      unaided:true,evaluator:judgment.evaluator,...(check.firstDraft!==undefined&&judgment.revisionReviewed===true?{firstDraft:check.firstDraft,revisionReviewed:true as const}:{}),tokens:judgment.tokens});
     const rule=bundle.assessment.skills.find(skill=>skill.id===probe.skillId)?.evidenceRequirements?.independent_production;
     correct=writingEvidence.correctTokens/writingEvidence.eligibleTokens>=(rule?.minimumAccuracy??.8);
+    }
    }else if(item.responseType==="mcq"){
     const choice=publicQuestion(session.id,check.itemId,bundle)?.choices.find(c=>c.id===command.answer);
     if(!choice)return {error:"Choix invalide."} as const;
@@ -108,7 +110,7 @@ export async function runLearningCheckCommand(store:AssessmentStore,studentId:st
     try{correct=(await validateAnswer(command.answer,{validatorType:item.validatorType,correctAnswer:item.correctAnswer,acceptableAnswers:item.acceptableAnswers,config:item.validatorConfig,assessment:assessmentFromGeneratedItem(item)})).pass;}
     catch(error){if(error instanceof ReadingAssessmentError)return {error:error.message} as const;throw error;}
    }
-   event={type:"answer_check",checkId:check.id,correct:correct&&support.correct,writingEvidence,materialReceipt:await readQuestionMaterialReceipt(store,session,bundle,check.itemId)};
+   event=unassessedWriting?{type:"unassessed_writing",checkId:check.id,answer:command.answer}:{type:"answer_check",checkId:check.id,correct:correct&&support.correct,writingEvidence,materialReceipt:await readQuestionMaterialReceipt(store,session,bundle,check.itemId)};
    }
   }
  }

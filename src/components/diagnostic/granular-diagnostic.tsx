@@ -50,7 +50,7 @@ export function GranularDiagnostic({initialActivityId,start=startGranularDiagnos
    const response=await (teachingCommand?updateTeaching:type.endsWith("_check")?updateLearning:update)(command);
    accept(response);
    if(mounted.current&&type==="skip"&&!response.error&&!response.conflict&&response.view)setNotice("Question passée. Ce point reste à vérifier.");
-   if(mounted.current&&type==="answer_check"&&!response.error&&!response.conflict&&response.view&&!response.view.learningCheck)setNotice("Ta réponse est enregistrée et ton bilan a été mis à jour.");
+   if(mounted.current&&type==="answer_check"&&!response.error&&!response.conflict&&response.view&&!response.view.learningCheck)setNotice(response.view.writingFeedback?.assessed===false?"Ton texte est enregistré. Ce point reste à vérifier.":"Ta réponse est enregistrée et ton bilan a été mis à jour.");
    if(mounted.current&&type==="next_exercise"&&!response.error&&!response.conflict&&response.view&&!response.view.teaching)setNotice("Ton entraînement est enregistré. Une nouvelle vérification permettra de voir ce que tu sais faire sans aide.");
    if(pauseQueued.current){
     pauseQueued.current=false;

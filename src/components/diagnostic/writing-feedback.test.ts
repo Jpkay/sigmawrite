@@ -3,7 +3,7 @@ import {renderToStaticMarkup} from 'react-dom/server';
 import {expect,it} from 'vitest';
 import {WritingFeedbackCard} from './writing-feedback';
 import type {WritingFeedback} from '@/lib/diagnostic/granular/writing-feedback';
-const feedback:WritingFeedback={skillLabelFr:'Accorder le verbe',text:'Les chats joue.',checkedCount:1,correctCount:0,passages:[{start:10,end:14,text:'joue',correct:false,explanationFr:'Avec les chats, écris jouent.'}]};
+const feedback:WritingFeedback={assessed:true,skillLabelFr:'Accorder le verbe',text:'Les chats joue.',checkedCount:1,correctCount:0,passages:[{start:10,end:14,text:'joue',correct:false,explanationFr:'Avec les chats, écris jouent.'}]};
 it('shows the actual passage and explanation without calling one text mastery',()=>{
  const html=renderToStaticMarkup(React.createElement(WritingFeedbackCard,{feedback}));
  expect(html).toContain('Retour sur ton texte');expect(html).toContain('1 passage à revoir parmi 1 vérifié.');
@@ -15,4 +15,10 @@ it('renders student text as text and handles one correct passage',()=>{
  const html=renderToStaticMarkup(React.createElement(WritingFeedbackCard,{feedback:{...feedback,text:'<script>alert(1)</script>',correctCount:1,passages:[{...feedback.passages[0],correct:true}]}}));
  expect(html).not.toContain('<script>');expect(html).toContain('&lt;script&gt;');
  expect(html).toContain('Le passage vérifié est correct pour ce point.');
+});
+
+it('explains an unresolved submission without calling it an error or a success',()=>{
+ const html=renderToStaticMarkup(React.createElement(WritingFeedbackCard,{feedback:{...feedback,assessed:false,checkedCount:0,correctCount:0,passages:[]}}));
+ expect(html).toContain('Ton texte est enregistré.');expect(html).toContain('Tu peux continuer ton parcours');
+ expect(html).not.toContain('passages vérifiés sont corrects');expect(html).not.toContain('À revoir');
 });

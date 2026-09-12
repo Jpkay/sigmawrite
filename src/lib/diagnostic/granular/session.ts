@@ -24,6 +24,8 @@ export type AssessmentSession = {
   /** Immediate predecessor of a separately persisted learning successor. */
   learningPredecessor?: {sessionId:string;releaseId:string;revision:number};
   refinements: Observation[];
+  /** Submitted texts with no assessable target evidence. Never scoring observations. */
+  unassessedWritingResponses?: Array<{itemId:string;skillId:string;text:string;firstDraft?:string;afterRefinementCount:number}>;
   exposedLearningItemIds: string[];
   /** Actual reading passages presented in this session, even if unanswered. */
   exposedReadingContexts?: string[];
@@ -42,6 +44,7 @@ export type SessionEvent =
   | { type:"skip";at:number;itemId:string }
   | { type: "issue_check"; check:{id:string;activityId:string;itemId:string;occasionId:string} }
   | { type: "answer_check"; checkId:string; correct:boolean; materialReceipt?:ObservedMaterialReceipt;writingEvidence?:WritingEvidence }
+  | { type: "unassessed_writing";checkId:string;answer:string }
   | { type: "save_writing_draft";checkId:string;answer:string }
   | { type: "abandon_check"; checkId:string }
   | { type: "refine"; itemId: string; correct: boolean; independent: boolean; hintsUsed: boolean; firstAttempt: boolean; occasionId: string };
@@ -98,7 +101,7 @@ export function transitionSession(input: {
     next.pendingItemId = null; next.pendingActiveSeconds = 0;
     next.paused = true; next.lastPulseAt = null;
   };
-  if(event.type==="issue_check"||event.type==="answer_check"||event.type==="abandon_check"||event.type==="save_writing_draft"){
+  if(event.type==="issue_check"||event.type==="answer_check"||event.type==="abandon_check"||event.type==="save_writing_draft"||event.type==="unassessed_writing"){
     if(next.phase!=="learning"||next.completionReason==="coverage_gap")throw Error("Learning has not started");
     if(event.type==="issue_check"){
       if(next.teaching)throw Error("Finish or leave guided practice before an independent check");
@@ -114,6 +117,10 @@ export function transitionSession(input: {
       if(event.type==="save_writing_draft"){
         if(item.mode!=="independent_production"||check.firstDraft!==undefined||!event.answer.trim()||event.answer.length>3000)throw Error("Invalid initial writing draft");
         next.learningCheck={...check,firstDraft:event.answer};next.revision++;return next;
+      }
+      if(event.type==="unassessed_writing"){
+        if(item.mode!=="independent_production"||!event.answer.trim()||event.answer.length>3000)throw Error("Invalid unassessed writing response");
+        next.unassessedWritingResponses=[...(next.unassessedWritingResponses??[]),{itemId:item.id,skillId:item.skillId,text:event.answer,...(check.firstDraft!==undefined?{firstDraft:check.firstDraft}:{}),afterRefinementCount:next.refinements.length}];
       }
       next.exposedLearningItemIds.push(item.id);
       if(event.type==="answer_check"){

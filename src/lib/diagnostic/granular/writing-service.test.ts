@@ -29,12 +29,36 @@ it("saves writing evidence bound to the submitted text, skill and server occasio
  expect(view).not.toContain("responseText");expect(view).not.toContain("responseChecksum");
  expect(view).not.toContain("eligibleTokens");
 });
-it("preserves the active response when evaluation is unavailable or unassessable",async()=>{
+it("preserves the active response when evaluation is unavailable",async()=>{
  const f=fixture();expect(await runLearningCheckCommand(f.store,"student-a",f.command)).toHaveProperty("error");
- f.evaluator.mockResolvedValue({connectedWriting:false,tokens:[]});
- expect(await runLearningCheckCommand(f.store,"student-a",f.command,Date.now,f.evaluator)).toHaveProperty("error");
  expect(f.save).not.toHaveBeenCalled();expect(f.get().state.learningCheck).not.toBeNull();
 });
+it('saves an unassessable text without grading it and closes the question',async()=>{
+ for(const connectedWriting of [true,false]){
+  const f=fixture(),before=publicAssessmentView(f.get(),f.bundle).results;
+  f.evaluator.mockResolvedValue({connectedWriting,tokens:[]});
+  const result=await runLearningCheckCommand(f.store,'student-a',f.command,Date.now,f.evaluator);
+  expect(result).not.toHaveProperty('error');
+  expect(f.get().state.learningCheck).toBeNull();expect(f.get().state.refinements).toHaveLength(0);
+  expect(f.get().state.exposedLearningItemIds).toContain(f.bundle.assessment.probes[0].id);
+  expect(publicAssessmentView(f.get(),f.bundle).results).toEqual(before);
+  expect(publicAssessmentView(f.get(),f.bundle).writingFeedback).toMatchObject({assessed:false,text:f.command.answer,checkedCount:0,passages:[]});
+  expect(f.get().state.unassessedWritingResponses).toHaveLength(1);
+  expect(await runLearningCheckCommand(f.store,'student-a',{...f.command,revision:f.get().state.revision},Date.now,f.evaluator)).toHaveProperty('error');
+  expect(f.get().state.unassessedWritingResponses).toHaveLength(1);
+ }
+});
+it('keeps both revision versions when the submitted revision has no assessable opportunities',async()=>{
+ const f=fixture();f.bundle.assessment.skills[0].nodeKey='reviser_orthographe_lexicale_paragraphe';
+ await runLearningCheckCommand(f.store,'student-a',f.command,Date.now,f.evaluator);
+ f.evaluator.mockResolvedValue({connectedWriting:true,revisionReviewed:true,tokens:[]});
+ const final={...f.command,revision:f.get().state.revision,answer:'Les chevaux courent vite.'};
+ await runLearningCheckCommand(f.store,'student-a',final,Date.now,f.evaluator);
+ expect(f.get().state.unassessedWritingResponses?.[0]).toMatchObject({firstDraft:f.command.answer,text:final.answer});
+ expect(f.get().state.refinements).toHaveLength(0);expect(f.get().state.learningCheck).toBeNull();
+ expect(JSON.stringify(publicAssessmentView(f.get(),f.bundle).writingFeedback)).not.toContain('firstDraft');
+});
+
 it("rejects browser judgments, wrong ownership and malformed evaluator spans before saving",async()=>{
  const f=fixture();
  expect(await runLearningCheckCommand(f.store,"student-a",{...f.command,writingEvidence:{eligibleTokens:100}},Date.now,f.evaluator)).toHaveProperty("error");
