@@ -5,13 +5,14 @@ import {runGates} from '../src/lib/ai/item-generation/pipeline';
 import {validateCanonicalDiagnosticBank,type CanonicalDiagnosticBankArtifact,type CanonicalDiagnosticBankItem} from '../src/lib/diagnostic/item-bank';
 import {questionMaterialKeys} from '../src/lib/diagnostic/granular/material-annotations';
 import {canonicalProbeMetrics} from '../src/lib/diagnostic/granular/probe-metrics';
-import type {EvidenceAnnotation} from '../src/lib/diagnostic/granular/facet-adapter';
+import type {TargetAnnotation} from '../src/lib/diagnostic/granular/facet-adapter';
+const faceted=process.argv.includes('--facets');
 const read=(path:string)=>JSON.parse(readFileSync(path,'utf8'));
 const artifact=read('generated/french-taxonomy-v3.json'),base=read('generated/diagnostic-bank-v3-draft.json') as CanonicalDiagnosticBankArtifact;
 const node=artifact.taxonomy.nodes.find((n:{key:string})=>n.key==='classer_famille_verbale');
 const evidence=node?.evidence.find((e:{key:string})=>e.key==='reading-receptive');
 if(!evidence)throw Error('Missing approved verb family recognition target');
-const items:CanonicalDiagnosticBankItem[]=[],annotations:Array<EvidenceAnnotation & {reason:string}>=[];
+const items:CanonicalDiagnosticBankItem[]=[],annotations:Array<TargetAnnotation & {reason:string}>=[];
 for(const draft of VERB_FAMILY_RECOGNITION_DRAFTS){
  const key=`v3-verb-family-recognition:${draft.infinitive}`;
  const firstPerson=/^[aeiouéèêàâîïôûù]/i.test(draft.je)?`j’${draft.je}`:`je ${draft.je}`;
@@ -21,12 +22,12 @@ for(const draft of VERB_FAMILY_RECOGNITION_DRAFTS){
  if(!checked.item||checked.gates.verdict==='rejected')throw Error(`Rejected verb-family draft: ${key}`);
  questionMaterialKeys(checked.item);
  const entry:CanonicalDiagnosticBankItem={itemKey:key,item:checked.item,evidenceKey:evidence.key,evidenceExpectation:evidence.expectation,sectionKey:'conjugation',promptFamily:`verb-family-recognition-${draft.family}`,difficultyTier:'core',reviewStatus:'needs_human_review',qcGates:{...checked.gates,gate3_ensemble:{agrees:false,agreement:0},verdict:'needs_human_review'}};
- canonicalProbeMetrics(entry);items.push(entry);annotations.push({itemKey:key,itemChecksum:checksum(entry),kind:'evidence',evidenceTarget:{nodeKey:node.key,evidenceKey:evidence.key},contextKey:key,reason:`Supplied-form recognition of the ${draft.family} model; not conjugation production. Draft for a later release.`});
+ canonicalProbeMetrics(entry);items.push(entry);annotations.push({itemKey:key,itemChecksum:checksum(entry),...(faceted?{kind:'facet' as const,facetKey:`${node.key}::construction:${draft.family}`}:{kind:'evidence' as const,evidenceTarget:{nodeKey:node.key,evidenceKey:evidence.key}}),contextKey:key,reason:`Supplied-form recognition of the ${draft.family} model; not conjugation production. Draft for a later release.`});
 }
 const combined={...base,items:[...base.items,...items]};delete combined.manifest;
 const validation=validateCanonicalDiagnosticBank(combined,artifact.taxonomy);
 if(validation.issues.length||validation.eligibleItemKeys.some(key=>items.some(entry=>entry.itemKey===key)))throw Error(`Invalid or promoted family draft: ${validation.issues.join('; ')}`);
-const content={version:'french-v3-verb-family-recognition-expansion-v1',status:'draft_requires_review',parentTaxonomyChecksum:artifact.manifest.contentChecksum,sourceBankChecksum:validateCanonicalDiagnosticBank(base,artifact.taxonomy).manifest.checksum,items,annotations};
-const path='generated/french-v3-verb-family-recognition-expansion.json';const serialized=JSON.stringify({...content,checksum:checksum(content)},null,2)+'\n';
+const content={version:faceted?'french-v3-verb-family-recognition-faceted-expansion-v1':'french-v3-verb-family-recognition-expansion-v1',status:'draft_requires_review',parentTaxonomyChecksum:artifact.manifest.contentChecksum,sourceBankChecksum:validateCanonicalDiagnosticBank(base,artifact.taxonomy).manifest.checksum,items,annotations};
+const path=faceted?'generated/french-v3-verb-family-recognition-faceted-expansion.json':'generated/french-v3-verb-family-recognition-expansion.json';const serialized=JSON.stringify({...content,checksum:checksum(content)},null,2)+'\n';
 if(process.argv.includes('--check')){if(readFileSync(path,'utf8')!==serialized)throw Error('Stale verb-family recognition expansion');}else writeFileSync(path,serialized);
 console.log(JSON.stringify({draftQuestions:items.length,target:node.key,perFamily:Object.fromEntries(Object.keys(VERB_FAMILY_LABELS).map(family=>[family,VERB_FAMILY_RECOGNITION_DRAFTS.filter(d=>d.family===family).length])),status:content.status,defaultAssemblyUnchanged:true}));

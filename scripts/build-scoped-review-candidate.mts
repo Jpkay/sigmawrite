@@ -8,7 +8,8 @@ import {teachingContentChecksum,validatePublishedTeaching,type ParallelReviewTea
 import {validateActivityBindings} from "../src/lib/diagnostic/granular/activity-validation";
 import {buildLearningCheckRegistry} from "../src/lib/diagnostic/granular/check-registry";
 import {assembleDraftBank} from "../src/lib/diagnostic/granular/assemble-drafts";
-import {FRENCH_DRAFT_EXPANSION_SOURCES} from "../src/lib/diagnostic/granular/draft-expansion-sources";
+import {selectedDraftExpansionSources} from "./lib/granular-authoring-selection";
+const FRENCH_DRAFT_EXPANSION_SOURCES=selectedDraftExpansionSources(process.argv.slice(2));
 const read=(p:string)=>JSON.parse(readFileSync(p,"utf8"));
 const prepared=read("docs/diagnostic/v3-parallel-review-candidate.json");
 const {assessment:source,teachingReadiness}=prepared;

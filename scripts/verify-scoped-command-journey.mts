@@ -7,7 +7,8 @@ import {readTextualSupport} from "../src/lib/diagnostic/granular/textual-support
 import {createSession} from "../src/lib/diagnostic/granular/session";
 import {bindAssessmentRelease} from "../src/lib/diagnostic/granular/release-binding";
 import {assembleDraftBank} from "../src/lib/diagnostic/granular/assemble-drafts";
-import {FRENCH_DRAFT_EXPANSION_SOURCES} from "../src/lib/diagnostic/granular/draft-expansion-sources";
+import {selectedDraftExpansionSources} from "./lib/granular-authoring-selection";
+const FRENCH_DRAFT_EXPANSION_SOURCES=selectedDraftExpansionSources(process.argv.slice(2));
 const read=(p:string)=>JSON.parse(readFileSync(p,"utf8"));
 const candidate=read("docs/diagnostic/v3-scoped-review-candidate.json"),artifact=read("generated/french-taxonomy-v3.json");
 const {bank}=assembleDraftBank(read("generated/diagnostic-bank-v3-draft.json"),artifact.taxonomy,FRENCH_DRAFT_EXPANSION_SOURCES.map(name=>read(`generated/french-v3-${name}-expansion.json`)),granularBankOptions(process.argv.slice(2)));
