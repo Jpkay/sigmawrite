@@ -19,6 +19,10 @@ it('requires every meaning even when the overall accuracy would conceal one gap'
  expect(plusOnly.status).not.toBe('mastered');expect(plusOnly.modes[0].unconfirmedFeatures).toEqual(COMPLEX_NEGATION_FEATURES.slice(1));
  const gap=assessSkills([skill],observations.map(o=>({...o,correct:!o.evidenceFeatures?.includes('complex-negation:rien')})))[0];
  expect(gap.modes[0].accuracy).toBeGreaterThan(.8);expect(gap.status).not.toBe('mastered');expect(gap.modes[0].unconfirmedFeatures).toContain('complex-negation:rien');
+ expect(gap.modes[0].featureEvidence?.find(f=>f.feature==='complex-negation:rien')).toEqual({feature:'complex-negation:rien',distinctItems:8,correctItems:0});
+ expect(plusOnly.modes[0].featureEvidence?.find(f=>f.feature==='complex-negation:rien')).toEqual({feature:'complex-negation:rien',distinctItems:0,correctItems:0});
+ const counted=assessSkills([skill],[...observations,observations[0],{...observations[0],itemId:'assisted',unaided:false},{...observations[0],itemId:'skipped',skipped:true}])[0];
+ expect(counted.modes[0].featureEvidence).toEqual(all.modes[0].featureEvidence);
 });
 it('retains parent criteria and leaves historical formats unchanged',()=>{
  const {skill,probes}=fixture(),before=structuredClone(skill);

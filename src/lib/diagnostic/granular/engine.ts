@@ -82,7 +82,7 @@ export type Observation = {
 export type SkillResult = {
   skillId: string;
   status: "mastered" | "missing" | "fragile" | "uncertain" | "unknown";
-  modes: Array<{ mode: Mode; probability: number; distinctItems: number; distinctContexts: number; distinctOccasions: number; accuracy: number; confirmed: boolean; provisionalGap?:boolean; unconfirmedFeatures?:string[]; textTypes?:string[]; contrastingErrorKeys?:string[]; negativeExampleConfirmed?:boolean }>;
+  modes: Array<{ mode: Mode; probability: number; distinctItems: number; distinctContexts: number; distinctOccasions: number; accuracy: number; confirmed: boolean; provisionalGap?:boolean; unconfirmedFeatures?:string[]; featureEvidence?:Array<{feature:string;distinctItems:number;correctItems:number}>; textTypes?:string[]; contrastingErrorKeys?:string[]; negativeExampleConfirmed?:boolean }>;
   evidence: "direct" | "untested";
   resolved: boolean;
 };
@@ -193,6 +193,10 @@ export function assessSkills(skills: readonly Skill[], observations: readonly Ob
       // context, feature or response-quality requirement is removed.
       const provisionalGap=sufficientWithinOccasion&&!confirmed&&distinctOccasions>0&&evidence.at(-1)?.correct===false;
       return { mode, probability, distinctItems:evidence.length,distinctContexts,distinctOccasions,accuracy,unconfirmedFeatures,textTypes,contrastingErrorKeys,negativeExampleConfirmed,confirmed,
+        ...(requirement?.featureRequirements?.length?{featureEvidence:requirement.featureRequirements.map(({feature})=>{
+          const relevant=evidence.filter(o=>o.evidenceFeatures?.includes(feature));
+          return {feature,distinctItems:relevant.length,correctItems:relevant.filter(o=>o.correct).length};
+        })}:{}),
         ...(provisionalGap?{provisionalGap:true}:{}) };
       };
       const cumulative=summarize(evidence);
