@@ -497,10 +497,16 @@ async function recordDirectCompetencyEvidence(input: {
 async function evaluateAndStoreWriting(input: {
   service: SupabaseClient; studentId: string; summaryId: string; revisionNumber: number;
   sourceText: string; studentText: string; keywords: string[]; systemPrompt: string;
+  delivery?: "evaluation" | "rubric";
 }) {
   const { data: rows } = await input.service.from("error_node_mappings").select("rule_id,node_id,explanation_fr,evidence_weight,competency_nodes!inner(key,label_fr)");
   const mappings = (rows ?? []).map((row) => { const node = row.competency_nodes as unknown as { key: string; label_fr: string }; return { ruleId: row.rule_id as string, nodeId: row.node_id as string, nodeKey: node.key, nodeLabel: node.label_fr, explanationFr: row.explanation_fr as string, evidenceWeight: Number(row.evidence_weight) }; });
   const evaluation = await evaluateWriting({ textBody: input.sourceText, studentText: input.studentText, keywords: input.keywords, mappings, systemPrompt: input.systemPrompt });
+  // Only callers returning this feedback request delivery capture. Background
+  // scoring is not exposure. Record before persistence so a failed journal
+  // does not consume a revision the student has not received.
+  if (input.delivery) await journalStudentPayload(input.studentId, "legacy:summary-feedback",
+    input.delivery === "rubric" ? evaluation.rubric : evaluation);
   const { error } = await input.service.from("writing_evaluations").upsert({ student_summary_id: input.summaryId, student_id: input.studentId, revision_number: input.revisionNumber, submitted_text: input.studentText, rubric: evaluation.rubric, annotations: evaluation.annotations, revision_plan: evaluation.revisionPlan, degraded: evaluation.degraded }, { onConflict: "student_summary_id,revision_number" });
   if (error) throw new Error(error.message);
   const evaluatedAt = new Date().toISOString();
@@ -1666,8 +1672,14 @@ async function weakestPrerequisite(service: SupabaseClient, studentId: string, n
 
 export async function loadWritingFeedback(input: unknown) {
   const data = checked(writingFeedbackSchema, input); const { supabase, studentId } = await context();
+  const feedback = await readWritingFeedback(data.textKey, supabase, studentId);
+  return journalStudentPayload(studentId, "legacy:summary-feedback-history", feedback);
+}
+
+// Internal revision lookup is not a separate content delivery.
+async function readWritingFeedback(textKey: string, supabase: SupabaseClient, studentId: string) {
   if (process.env.WRITING_EVALUATION_ENABLED === "false") return null;
-  const { textVersionId } = await contentIds(supabase, data.textKey);
+  const { textVersionId } = await contentIds(supabase, textKey);
   const { data: session } = await supabase.from("reading_sessions").select("id").eq("student_id", studentId).eq("text_version_id", textVersionId).not("completed_at", "is", null).order("completed_at", { ascending: false }).limit(1).maybeSingle();
   if (!session) return null;
   const { data: summary } = await supabase.from("student_summaries").select("id,summary_text,teacher_score").eq("session_id", session.id).maybeSingle();
@@ -1684,7 +1696,7 @@ export async function reviseSummary(input: unknown) {
   const data = checked(writingRevisionSchema, input); const { supabase, studentId } = await context();
   await requireStudentLearningUnlocked(supabase, studentId);
   await moderateOrReject({ supabase, studentId, text: data.revisedText, field: "reading_summary" });
-  const current = await loadWritingFeedback({ textKey: data.textKey });
+  const current = await readWritingFeedback(data.textKey, supabase, studentId);
   if (!current) throw new Error("Résumé introuvable.");
   const revisionNumber = Math.max(0, ...current.evaluations.map((evaluation) => Number(evaluation.revision_number))) + 1;
   if (revisionNumber > MAX_WRITING_REVISIONS) throw new Error("Tu as déjà fait trois révisions. Passe à la suite : ton dernier texte est conservé.");
@@ -1692,7 +1704,7 @@ export async function reviseSummary(input: unknown) {
   if (previous && previous.submitted_text.trim() === data.revisedText.trim()) throw new Error("Modifie ton texte avant de le renvoyer.");
   const text = await getPublishedReadingText(data.textKey, supabase); if (!text) throw new Error("Texte introuvable.");
   const service = createServiceClient(); const prompt = await getActivePrompt("summary_scoring", service);
-  const evaluation = await evaluateAndStoreWriting({ service, studentId, summaryId: current.summaryId, revisionNumber, sourceText: text.body.join("\n\n"), studentText: data.revisedText, keywords: text.concepts, systemPrompt: prompt.promptText });
+  const evaluation = await evaluateAndStoreWriting({ service, studentId, summaryId: current.summaryId, revisionNumber, sourceText: text.body.join("\n\n"), studentText: data.revisedText, keywords: text.concepts, systemPrompt: prompt.promptText, delivery: "evaluation" });
   revalidatePath(`/student/results/${data.textKey}`); revalidatePath("/student/frontier");
   return evaluation;
 }
@@ -2279,7 +2291,7 @@ export async function submitSummary(input: unknown) {
   if (!session) throw new Error("Séance introuvable.");
   const { data: summaryRow, error } = await service.from("student_summaries").upsert({ session_id: data.sessionId, summary_text: data.summaryText, ai_score: {} }, { onConflict: "session_id" }).select("id").single();
   if (error || !summaryRow) throw new Error(error?.message ?? "Résumé non enregistré.");
-  const writing = await evaluateAndStoreWriting({ service, studentId, summaryId: summaryRow.id as string, revisionNumber: 0, sourceText: text.body.join("\n\n"), studentText: data.summaryText, keywords: text.concepts, systemPrompt: prompt.promptText });
+  const writing = await evaluateAndStoreWriting({ service, studentId, summaryId: summaryRow.id as string, revisionNumber: 0, sourceText: text.body.join("\n\n"), studentText: data.summaryText, keywords: text.concepts, systemPrompt: prompt.promptText, delivery: "rubric" });
   const evaluation = writing.rubric;
   await service.from("student_summaries").update({ ai_score: evaluation }).eq("id", summaryRow.id);
   await supabase.from("reading_sessions").update({ current_phase: "retrieval" }).eq("id", data.sessionId);
@@ -2902,7 +2914,7 @@ export async function loadStudentRecueil(input: unknown): Promise<{ since: strin
     ...(productions ?? []).filter((row) => row.demonstrated).map((row) => ({ kind: "production" as const, id: row.id as string, at: row.submitted_at as string, title: (row.competency_nodes as unknown as { label_fr: string }).label_fr, text: row.content as string, note: "Production libre · maîtrise démontrée" })),
     ...[...lastBySummary.values()].map((entry) => ({ kind: "summary" as const, id: entry.id, at: entry.at, title: `Résumé de lecture (version ${entry.revision + 1})`, text: entry.text, note: entry.score != null ? `Rubrique ${entry.score}/100` : null })),
   ].sort((a, b) => Date.parse(a.at) - Date.parse(b.at));
-  return { since: since.slice(0, 10), entries };
+  return journalStudentPayload(studentId, "legacy:recueil", { since: since.slice(0, 10), entries });
 }
 
 const justificationEventSchema = z.object({ sessionId: uuidSchema, questionKey: z.string().min(1).max(120), correct: z.boolean(), answerCorrect: z.boolean() });
