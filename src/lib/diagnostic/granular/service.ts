@@ -1,3 +1,4 @@
+import type {PriorDeliveryHistory} from "./prior-delivery-material";
 import {publicAudioQuestionFields} from './audio-stimulus';
 import {inspectReleaseScope} from "./release-scope";
 import {learningSeenQuestionIds} from "./learning-exposure";
@@ -24,6 +25,7 @@ import {publicTeachingView} from "./teaching-view";
 export type AssessmentBundle={assessment:V3Assessment;bank:CanonicalDiagnosticBankArtifact;taxonomyId:string;bankId:string;activities?:LearningActivityBinding[];teachingContent?:ReleasedTeachingContent[]};
 export type StoredSession={id:string;studentId:string;releaseId:string;state:AssessmentSession};
 export interface AssessmentStore {
+ loadPriorDeliveryText?(studentId:string,presentationId:string):Promise<PriorDeliveryHistory>;
  recordDeliveredText?(input:{studentId:string;boundary:string;payloadChecksum:string;textFragments:string[]}):Promise<void>;
  load(studentId:string,sessionId:string):Promise<StoredSession|null>;
  release(id:string):Promise<AssessmentBundle|null>;

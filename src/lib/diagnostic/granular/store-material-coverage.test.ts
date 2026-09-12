@@ -22,3 +22,14 @@ it('records text with the authenticated owner and propagates journal storage fai
  expect(rpc).toHaveBeenCalledWith('record_student_material_delivery_text',{p_student_id:'s',p_boundary:'granular:diagnostic',p_payload_checksum:'sha256:payload',p_text_fragments:['Texte']});
  await expect(fixture({data:null,error:{message:'write failed'}}).store.recordDeliveredText(input)).rejects.toThrow('write failed');
 });
+it('reads prior text in bounded owner-scoped pages and keeps missing migration or truncated history incomplete',async()=>{
+ const row={boundary:'legacy:reading-text',payload_checksum:'sha256:'+'a'.repeat(64),text_fragments:['Earlier text']};
+ const {store,rpc}=fixture({data:[],error:null});
+ rpc.mockResolvedValueOnce({data:Array.from({length:100},()=>row),error:null});
+ expect(await store.loadPriorDeliveryText('owner','presentation')).toMatchObject({complete:true,rows:expect.any(Array)});
+ expect(rpc).toHaveBeenNthCalledWith(2,'prior_student_material_delivery_text',{p_student_id:'owner',p_presentation_id:'presentation',p_offset:100,p_limit:100});
+ expect(await fixture({data:null,error:{code:'PGRST202'}}).store.loadPriorDeliveryText('s','p')).toEqual({rows:[],complete:false});
+ const large={...row,text_fragments:['x'.repeat(1_900_000)]};
+ expect((await fixture({data:[large,large,large],error:null}).store.loadPriorDeliveryText('s','p')).complete).toBe(false);
+ await expect(fixture({data:[{...row,text_fragments:[1]}],error:null}).store.loadPriorDeliveryText('s','p')).rejects.toThrow('Invalid prior delivery history');
+});

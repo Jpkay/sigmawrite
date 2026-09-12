@@ -1,3 +1,4 @@
+import type {PriorMaterialMatch} from "./prior-delivery-material";
 import {z} from "zod";
 const keySchema=z.string().regex(/^(word|sentence|audio):sha256:[a-f0-9]{64}$/);
 const receiptSchema=z.array(z.object({material_key:keySchema,first_recorded_exposure:z.boolean()}).strict()).max(1000);
@@ -14,7 +15,7 @@ export function parseMaterialReceipt(input:unknown,expectedKeys:readonly string[
   previouslySeenKeys:rows.filter(row=>!row.first_recorded_exposure).map(row=>row.material_key)};
 }
 
-export type ObservedMaterialReceipt=MaterialReceipt&{presentationId:string;sourceChecksum:string;historyComplete:boolean;assessedMaterialKeys?:string[]};
+export type ObservedMaterialReceipt=MaterialReceipt&{presentationId:string;sourceChecksum:string;historyComplete:boolean;assessedMaterialKeys?:string[];priorJournalMatches?:PriorMaterialMatch[]};
 export function hasVerifiedNovelMaterial(receipt:ObservedMaterialReceipt|undefined,kind:"word"|"sentence"):boolean{
  const targets=(receipt?.assessedMaterialKeys??[...(receipt?.firstRecordedKeys??[]),...(receipt?.previouslySeenKeys??[])]).filter(key=>key.startsWith(`${kind}:`));
  return receipt?.historyComplete===true&&targets.length>0

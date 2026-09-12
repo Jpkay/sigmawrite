@@ -15,7 +15,9 @@ create table students(id uuid primary key);
 \i ${repo_root}/supabase/migrations/20260912024000_audio_material_exposure.sql
 \i ${repo_root}/supabase/migrations/20260912080000_material_coverage_receipts.sql
 \i ${repo_root}/supabase/migrations/20260912083000_material_delivery_journal.sql
+\i ${repo_root}/supabase/migrations/20260912090000_prior_material_delivery_text.sql
 \i ${repo_root}/scripts/testing/sql/material-coverage-test.sql
 \i ${repo_root}/scripts/testing/sql/material-delivery-journal-test.sql
+\i ${repo_root}/scripts/testing/sql/prior-material-delivery-test.sql
 SQL
 sh "$repo_root/scripts/testing/material-coverage-concurrency.sh" "$pg_bin" "$task_pg"

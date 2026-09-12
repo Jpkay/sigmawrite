@@ -1,3 +1,4 @@
+import {priorDeliveredMaterial} from "./prior-delivery-material";
 import {checksum} from "@/lib/taxonomy/validate";
 import {stableUuid} from "@/lib/lexicon/baseline";
 import {questionMaterialKeys,questionAssessedMaterialKeys} from "./material-annotations";
@@ -14,6 +15,9 @@ export async function readQuestionMaterialReceipt(store:AssessmentStore,session:
  const presentationId=stableUuid("granular-material-presentation",`${session.id}:question:${itemId}`),sourceChecksum=checksum(entry);
  const receipt=await store.loadMaterialReceipt({studentId:session.studentId,presentationId,sourceChecksum,materialKeys});
  if(!receipt)return undefined;
- const historyComplete=store.materialHistoryComplete?await store.materialHistoryComplete(session.studentId,presentationId):false;
- return {...receipt,presentationId,sourceChecksum,historyComplete,assessedMaterialKeys:questionAssessedMaterialKeys(entry.item)};
+ const prior=store.loadPriorDeliveryText?await store.loadPriorDeliveryText(session.studentId,presentationId):null;
+ const matches=prior?priorDeliveredMaterial(entry.item,prior.rows):[];
+ const previouslySeen=new Set([...receipt.previouslySeenKeys,...matches.map(match=>match.materialKey)]);
+ const historyComplete=(!prior||prior.complete)&&(store.materialHistoryComplete?await store.materialHistoryComplete(session.studentId,presentationId):false);
+ return {...receipt,firstRecordedKeys:receipt.firstRecordedKeys.filter(key=>!previouslySeen.has(key)),previouslySeenKeys:[...previouslySeen],presentationId,sourceChecksum,historyComplete,assessedMaterialKeys:questionAssessedMaterialKeys(entry.item),...(matches.length?{priorJournalMatches:matches}:{})};
 }

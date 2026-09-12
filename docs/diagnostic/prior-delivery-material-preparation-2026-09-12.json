@@ -1,0 +1,29 @@
+{
+  "status": "implemented_verified_migration_pending",
+  "migration": "20260912090000_prior_material_delivery_text.sql",
+  "changes": [
+    "Look up only journal entries earlier than the student's immutable question presentation.",
+    "Match anchored word forms, lemmas and sentences to existing material identities; never guess morphology or strip accents.",
+    "Keep source boundary and journal checksum with each new receipt's positive prior-exposure match.",
+    "Exclude matched earlier material from first-recorded credit without changing older receipts or answers.",
+    "Bound journal scans to 1000 rows and 5 million text characters. Truncated/missing scans cannot certify history completeness."
+  ],
+  "checks": {
+    "fullSuite": {"files":338,"tests":1529,"passed":true},
+    "typescript":"passed",
+    "disposablePostgres":"passed",
+    "priorPayloadIncludedCurrentPayloadExcluded":"passed",
+    "ownerAndPresentationIsolation":"passed",
+    "sourceProvenanceRetained":"passed",
+    "noSubstringWordFalseMatch":"passed",
+    "noRetroactiveObservationWrites":"passed",
+    "truncatedHistoryFailsClosed":"passed"
+  },
+  "limitations": [
+    "Positive matches establish prior exposure only; absence does not prove novelty.",
+    "Source capture, reviewed variant coverage and audio identity still need completion before the capture contract can be enabled.",
+    "The application integrations are not yet deployed. The public diagnostic retains its current incomplete material-history limitation."
+  ],
+  "productionIssueResolved":false,
+  "demoModified":false
+}

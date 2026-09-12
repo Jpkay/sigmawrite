@@ -108,3 +108,21 @@ it("still records material carried by a paused response",async()=>{
  const f=fixture();await recordMaterialDelivery(f.store,"student-a",{view:{...f.view,paused:true}});
  expect(f.record).toHaveBeenCalledTimes(1);
 });
+it('excludes earlier journaled material from a new receipt without modifying historical records',async()=>{
+ const f=fixture(),key=materialIdentity('sentence',f.entry.item.promptFr);
+ const receipt={firstRecordedKeys:[key],previouslySeenKeys:[]};
+ f.store.loadMaterialReceipt=async()=>receipt;
+ f.store.materialHistoryComplete=async()=>true;
+ f.store.loadPriorDeliveryText=async()=>({complete:true,rows:[{boundary:'legacy:reading-text',payloadChecksum:'sha256:earlier',textFragments:[f.entry.item.promptFr]}]});
+ const result=await readQuestionMaterialReceipt(f.store,f.session,f.bundle,f.entry.itemKey);
+ expect(result).toMatchObject({firstRecordedKeys:[],previouslySeenKeys:[key],priorJournalMatches:[{materialKey:key,boundary:'legacy:reading-text',payloadChecksum:'sha256:earlier'}]});
+ expect(receipt).toEqual({firstRecordedKeys:[key],previouslySeenKeys:[]});
+ expect(f.record).not.toHaveBeenCalled();
+});
+it('does not certify novelty when the prior journal scan is incomplete',async()=>{
+ const f=fixture(),key=materialIdentity('sentence',f.entry.item.promptFr);
+ f.store.loadMaterialReceipt=async()=>({firstRecordedKeys:[key],previouslySeenKeys:[]});
+ f.store.materialHistoryComplete=async()=>true;
+ f.store.loadPriorDeliveryText=async()=>({complete:false,rows:[]});
+ expect((await readQuestionMaterialReceipt(f.store,f.session,f.bundle,f.entry.itemKey))?.historyComplete).toBe(false);
+});

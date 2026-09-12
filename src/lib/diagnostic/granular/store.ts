@@ -1,3 +1,4 @@
+import type {PriorDeliveryHistory,PriorDeliveryText} from "./prior-delivery-material";
 import "server-only";
 import {prepareLearningSuccessor} from "./learning-successor";
 import type {ReleaseContentCache} from "./release-content-cache";
@@ -85,6 +86,23 @@ export class SupabaseAssessmentStore implements AssessmentStore{
   }
   if(!cached)this.immutableContent?.cache.set(cacheKey,{bundle:data.bundle as AssessmentBundle,preflight:validation.preflight});
   return data.bundle as AssessmentBundle;
+ }
+ async loadPriorDeliveryText(studentId:string,presentationId:string):Promise<PriorDeliveryHistory>{
+  const rows:PriorDeliveryText[]=[];let characters=0;
+  for(let offset=0;offset<1000;offset+=100){
+   const {data,error}=await this.db.rpc("prior_student_material_delivery_text",{p_student_id:studentId,p_presentation_id:presentationId,p_offset:offset,p_limit:100});
+   if(error?.code==="PGRST202")return {rows,complete:false};
+   if(error)throw Error(error.message);
+   if(!Array.isArray(data)||data.length>100)throw Error("Invalid prior delivery history");
+   for(const row of data){
+    if(!row||typeof row.boundary!=="string"||!/^[a-z][a-z0-9:_-]{1,99}$/.test(row.boundary)||typeof row.payload_checksum!=="string"||!/^sha256:[a-f0-9]{64}$/.test(row.payload_checksum)||!Array.isArray(row.text_fragments)||row.text_fragments.length>20000||row.text_fragments.some((text:unknown)=>typeof text!=="string"))throw Error("Invalid prior delivery history");
+    const added=row.text_fragments.reduce((sum:number,text:string)=>sum+text.length,0);
+    if(characters+added>5_000_000)return {rows,complete:false};
+    characters+=added;rows.push({boundary:row.boundary,payloadChecksum:row.payload_checksum,textFragments:row.text_fragments});
+   }
+   if(data.length<100)return {rows,complete:true};
+  }
+  return {rows,complete:false};
  }
  async recordDeliveredText(input:{studentId:string;boundary:string;payloadChecksum:string;textFragments:string[]}):Promise<void>{
   const {error}=await this.db.rpc("record_student_material_delivery_text",{p_student_id:input.studentId,p_boundary:input.boundary,p_payload_checksum:input.payloadChecksum,p_text_fragments:input.textFragments});
