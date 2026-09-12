@@ -1,5 +1,5 @@
 {
-  "status": "candidate_full_journey_verified_ready_for_promotion",
+  "status": "activated_and_publicly_verified",
   "sourceCommit": "9435669e30eac1f96e96827c333af99e5cefcd7f",
   "frozenWorkspace": "/Users/jean-philippekayobotsi/.codex/release-workspaces/sigmawrite-r16-9435669",
   "candidateUrl": "https://sigmawrite-cri62gea2-jpkays-projects.vercel.app",
@@ -9,8 +9,8 @@
   "bankItems": 6580,
   "scope": 260,
   "candidateChecksum": "sha256:f4fd4d2b31da1e7e85b51e9b2a487b5624d6eb846c150c71c81237a3d67c0570",
-  "currentPublicRelease": "french-granular-diagnostic-v16",
-  "currentPublicScope": 253,
+  "currentPublicRelease": "french-granular-diagnostic-v17",
+  "currentPublicScope": 260,
   "checks": {
     "tests": 634,
     "typescript": "passed",
@@ -1018,12 +1018,40 @@
       ],
       "findings": [],
       "limitation": "Technical consistency audit, not psychometric validation. Diagnostic counts exclude later refinements; reported mode evidence may include them."
+    },
+    "publicDefault": {
+      "sessionId": "f12b4242-1dfc-4258-95af-137813acc7bf",
+      "releaseId": "3d60e876-5a2f-41bd-a2c5-06348882a615",
+      "scope": 260,
+      "defaultSelectedByApplication": true,
+      "reloadPreservedSession": true
+    },
+    "publicDemo": {
+      "onboardingRedirect": "/student/lessons",
+      "lessons": 11,
+      "firstLessonOpened": true,
+      "reviewAnswers": 48,
+      "reviewWrong": 17
+    },
+    "publicPinnedPathway": {
+      "base": "https://app.trouvetaplume.com",
+      "areas": [
+        "grammar",
+        "reading_comprehension",
+        "spelling",
+        "conjugation",
+        "grammar"
+      ],
+      "activities": 5
+    },
+    "publicDeployment": {
+      "deploymentId": "dpl_4hunvvGYXwjVPQs4PwhdsUrZuXe5",
+      "status": "Ready",
+      "inspectedAlias": "sigmawrite.vercel.app"
     }
   },
   "running": {},
-  "remaining": [
-    "Inspect current public deployment, promote the exactly tested v17 deployment, then repeat fresh-account, demo and pinned-session checks on the public domain."
-  ],
+  "remaining": [],
   "deploymentId": "dpl_4hunvvGYXwjVPQs4PwhdsUrZuXe5",
   "freshQa": {
     "username": "doves.granular.r16.default.qa",
@@ -1037,5 +1065,13 @@
     "releaseId": "3d60e876-5a2f-41bd-a2c5-06348882a615",
     "releaseKey": "french-granular-diagnostic-v17",
     "bundleChecksum": "sha256:10756f1606ed46d7e28bd9acfb167a8c10ed8169245cbe4f7d96ade67e8a7c34"
+  },
+  "promotion": {
+    "deploymentId": "dpl_4hunvvGYXwjVPQs4PwhdsUrZuXe5",
+    "cliExitCode": 0,
+    "environmentDefault": "french-granular-diagnostic-v17",
+    "previousDeploymentId": "dpl_Br714mxXYwMbFwrraMF4EJQMqdeD",
+    "previousRelease": "french-granular-diagnostic-v16",
+    "previousScope": 253
   }
 }
