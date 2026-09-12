@@ -12,7 +12,9 @@ const rows=candidate.assessment.skills.map((skill:{id:string,nodeKey:string,face
  const action=scope.has(skill.id)?'prepared_scoped_pathway':skill.assessmentStage==='learning'?'connected_writing_evidence':!allocated?'complete_question_pools':!teaching.length?'author_exact_target_lesson':!fresh?'add_fresh_independent_checks':'resolve_prerequisite_scope';
  return {skillId:skill.id,nodeKey:skill.nodeKey,facetKey:skill.facetKey??null,action,pools,lessonIds:teaching.map((row:{lessonId:string})=>row.lessonId),freshCheckAvailable:fresh,prerequisitesOutsidePreparedScope:skill.prerequisites.filter(id=>!scope.has(id))};
 });
-if(new Set(rows.map((row:{skillId:string})=>row.skillId)).size!==rows.length||rows.length!==542)throw Error('Incomplete or duplicated graph accounting');
+const graphIds=new Set<string>(scoped.assessment.skills.map((skill:{id:string})=>skill.id));
+const rowIds=new Set<string>(rows.map((row:{skillId:string})=>row.skillId));
+if(!rows.length||rowIds.size!==rows.length||graphIds.size!==scoped.assessment.skills.length||rows.length!==graphIds.size||[...graphIds].some(id=>!rowIds.has(id))||[...scope].some(id=>!rowIds.has(id)))throw Error('Incomplete or duplicated graph accounting');
 const counts:Record<string,number>={};for(const row of rows)counts[row.action]=(counts[row.action]??0)+1;
 if(counts.prepared_scoped_pathway!==scoped.summary.assessmentTargets)throw Error('Scope mismatch');
 const output={status:'prepared_inventory_not_release_or_review_approval',parallelCandidateChecksum:candidate.checksum,scopedCandidateChecksum:scoped.checksum,targets:rows.length,counts,limitations:['Question allocation alone does not establish suitable teaching, novelty after instruction, human review or educational calibration.','Draft refinements retain their approved parent node; they do not inherit human approval.','Connected writing is verified during learning, not replaced by isolated form questions.'],rows};

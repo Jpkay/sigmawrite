@@ -4,46 +4,36 @@ Updated 2026-09-12. French only; Allotey is excluded. This document distinguishe
 
 ## Current delivery state
 
-- Public bank release: **french-granular-diagnostic-v34-writing**, revision 34, serving 334 of 542 targets with 6,266 in-scope questions. Human review remains in progress.
-- Public application source: `f3f9669`, deployment `dpl_GNbTNX9GB5uMno4KhhPSvbNA7HJK`. Activity lookup now uses indexed question IDs; candidate/public rendered output matched and the public lesson smoke passed. See `activity-index-public-rollout-2026-09-12.json`. Promoted, canonical alias inspected Ready, public lesson-list recording and demo smoke checks passed. See `revision-34-public-rollout-2026-09-12.json`. The complete technical journey covered 59 diagnostic answers in 34m54s, then six guided exercises, one independent check and answer review. This is not classroom calibration.
-- Candidate verification included one real reading reformulation and its optional grammar tip, matched exactly to saved delivery records. On the public site, the demo retains 11 accessible lessons and 48 reviewed answers, including 17 incorrect answers. This smoke check is not a new full diagnostic or full lesson test.
-- Reading, results, writing feedback and practice correction delivery recording have been expanded. Complete exposure-history certification remains disabled: alternate content sources, audio, historical baselines and concurrent presentation still require work. Recording delivered material does not prove attention or mastery.
-- The current generated backlog accounts for all 542 targets: 336 prepared scoped pathways in the unpublished revision 35 draft, 187 requiring question-pool completion, 12 requiring exact-target lessons, two requiring prerequisite-scope resolution, and five independent-writing targets outside scope. A backlog category identifies the next obstacle; it does not establish that every later obstacle is solved.
-- Human content review and educational calibration remain pending and run in parallel under the owner's release authorization. Existing synthetic benchmarks must not be presented as classroom evidence.
-
-The published revision 34 candidate adds pouvoir passé récent and savoir imperative production, each with six guided exercises and twelve checks. It also prepares 24 imperative-meaning situations and eight guided exercises, but that meaning target and contextual imperative writing remain excluded because the devoir production prerequisite is unsupported. The candidate also adds a vouloir lesson with eight guided exercises and eighteen context-specific checks. It also adds separate passé simple lessons for être, avoir, aller and faire, with 24 guided exercises and 48 checks. Current candidate totals are 334 scoped targets, 6,266 in-scope questions and 7,668 bank items. See `passe-recent-pouvoir-draft-2026-09-12.md`, `imperative-meaning-draft-2026-09-12.md` and `imperative-savoir-draft-2026-09-12.md` and `vouloir-imperative-content-2026-09-12.md` and `passe-simple-verbs-draft-2026-09-12.md` for the successive changes and their verification limits. Production is revision 34.
-
-### Next content expansion
-
-The 12 targets with question pools but no exact-target lesson are three passé récent verb targets (vouloir, savoir, devoir), one imperative verb target (devoir), and eight passé simple verb targets. Review appropriateness and usage before authoring rare imperative forms; do not manufacture everyday examples for unusual forms simply to fill a target.
-
-Five independent-writing targets remain outside the prepared scope: lexical paragraph revision, grammatical paragraph revision, and contextual use of passé récent, imperative and passé simple. Their outstanding prerequisite targets are listed individually in `granular-pathway-backlog.json`. The next release must retain recognition, controlled production and contextual writing as separate evidence, and provide the missing prerequisite teaching/checks before expanding their pathways.
-
-Before publishing any expansion: regenerate the draft and scoped candidate, verify source mappings and answer keys, exercise uneven-profile routing through the added targets, run authenticated assessment-to-learning checks, and publish a new immutable bank revision. Revisions 33 and 34 are published and immutable; further authoring must use revision 35 or later.
+- Public release: **french-granular-diagnostic-v34-writing**, with 334 of 542 detailed targets and 6,266 in-scope questions. The last verified public application is source `5891bf0`, deployment `dpl_HDAP4vEpENzYEC9v3rpGgJnXznib`.
+- Published candidate: **french-granular-diagnostic-v35-writing**, with 344 of 542 targets, 6,386 in-scope questions and 7,820 canonical items. Its frozen application is source `74301ec`, deployment `dpl_6eBAW9LdmFCgfsANiTVBxU6SgocF`. Database publication is complete; the live diagnostic-to-lesson-and-review journey is still running. It has not replaced the public release. See revision-35-publication-2026-09-12.json.
+- Next preparation: revision 36 with the explicit verb-family-recognition option contains 347 of 544 targets, 6,422 in-scope questions and 7,856 canonical items. The approved family-recognition parent has three draft refinements instead of one broad target, increasing the map by two. It has not been imported, published or activated. See revision-36-preparation-2026-09-12.json.
+- Revision 36 adds separate recognition questions and lessons for regular -er patterns, finir patterns and other patterns. It does not claim that recognition establishes independent conjugation. Ten uneven-profile simulations, two server-command journeys and all three new lesson journeys passed; these use constructed profiles and are not classroom calibration.
+- Complete material-history certification remains disabled. Recent code prepares atomic recording and adds inbox recording. Static sources, audio, historical baselines and remaining routes still need verification. Recording delivery does not prove attention, mastery or a complete history.
+- Human review and educational calibration continue in parallel under the owner's release authorization. Preserve pending review labels and the existing demo account.
 
 ## Complete target accounting
 
-`granular-pathway-backlog.json` accounts for every one of the 542 targets and records exact pool status, existing lesson IDs and prerequisites outside the prepared scope. Regenerate it with `node --import tsx scripts/build-granular-pathway-backlog.mts`; use `--check` to reject stale output.
+The revision 35 root inventory and isolated revision 36 inventory each account for every target in their own map. The inventory validates exact target identities against the selected scoped candidate; it does not assume a fixed graph size. A category identifies the next obstacle, not proof that all subsequent obstacles are solved.
 
-| Required work | Targets |
-| --- | ---: |
-| Prepared assessment, teaching and fresh-check pathway (unpublished draft) | 334 |
-| Question pools allocated; exact-target lesson still missing | 14 |
-| Complete initial and follow-up question pools | 187 |
-| Resolve prerequisite scope | 2 |
-| Connected-writing evidence outside prepared scope | 5 |
-| Total | 542 |
+| Required work | Revision 35 candidate | Revision 36 preparation |
+| --- | ---: | ---: |
+| Prepared assessment, teaching and fresh-check pathway | 344 | 347 |
+| Question pools allocated; exact-target lesson still missing | 4 | 4 |
+| Complete initial and follow-up question pools | 187 | 186 |
+| Resolve prerequisite scope | 2 | 2 |
+| Connected-writing evidence outside prepared scope | 5 | 5 |
+| Total | 542 | 544 |
 
-These categories partition the graph; they are not publication or approval labels. Pool allocation does not prove instructional suitability or novelty after teaching. Draft refinements remain separate from approval of their parent nodes.
+Root evidence: granular-pathway-backlog.json. Revision 36 evidence: revision-36-pathway-backlog-2026-09-12.json. Reproduce with `node --import tsx scripts/build-granular-pathway-backlog.mts` in the corresponding prepared artifact directory; add `--check` for exact reproduction. These inventories are neither publication nor approval records.
 
 ## Next implementation packages
 
-1. Expand from the public revision 33 baseline using immutable bundles and preserved historical sessions. Verify each expansion through assessment, learning and answer review on its exact deployment before activation, then repeat public verification.
-2. Validate the new verb-visit routing on real content and live mixed-profile journeys. The eight constructed contrasts now pass; educator/student calibration and broader granular profile validation remain required. Keep untested targets unresolved and refine them during learning.
-3. Subjunctive recognition, fourteen exact-verb lessons and four verb-family pathways have passed their service journeys. Three short-reading main-idea pathways and complex-negation meanings also have guided practice and fresh checks. Complete the remaining imperative and passé-simple exact-target lessons, using the 14 exact-target lesson gaps in the current inventory.
-4. Review the three remaining passé récent verb targets (vouloir, savoir, devoir) for natural contexts before authoring. Do not mechanically create awkward forms merely to reach a coverage count. Continue subjonctif, impératif and passé simple coverage with their own usage constraints.
-5. Fill the 187 question-pool gaps across all domains from the exact-target inventory, preserving distinct recognition, controlled production and contextual-use evidence. The written-syllable and sound-to-spelling prerequisites for cédille are now included in the prepared candidate. Complete the separate connected-writing pathway for the remaining five targets outside the prepared scope.
-6. Continue the owner's review in parallel, recording actual decisions against content checksums. Validate difficulty, question duration, sufficient depth and the meaning of recommendations with educator and student evidence. Do not substitute technical tests for those judgments.
+1. Finish the live revision 35 diagnostic, final results, guided lesson, independent check and answer-review verification. Promote its exact frozen application only after passing, then verify the public routes and preserved demo.
+2. Complete revision 36 release preparation and deployment using its explicit question, lesson and refinement selection; preserve older sessions and immutable release identities.
+3. Resolve the four remaining exact-target lesson gaps and two prerequisite-scope gaps, respecting natural French usage rather than manufacturing awkward examples to increase coverage.
+4. Fill the 186 remaining revision 36 question-pool gaps across all domains, keeping recognition, controlled production and contextual-use evidence distinct. Complete the five connected-writing targets during learning.
+5. Finish the material-capture route and audio audit, integrate verified recording where appropriate, and validate with deployed fresh-account journeys before enabling a complete-history contract. Do not relabel older observations.
+6. Continue the owner's content review and educator/student calibration of difficulty, timing, depth and recommendations. Keep unsampled or insufficiently supported skills unresolved; use learning to refine them.
 
 ## Fixed foundation and product decisions
 
