@@ -1,5 +1,5 @@
 {
-  "status": "immutable_bundle_published_candidate_browser_checks_running_not_activated",
+  "status": "candidate_default_and_upgrade_verified_full_journey_running_not_activated",
   "sourceCommit": "c315eed3473170b3b6892061ab3cfc25773e6f16",
   "frozenWorkspace": "/Users/jean-philippekayobotsi/.codex/release-workspaces/sigmawrite-r14-c315eed",
   "candidateUrl": "https://sigmawrite-1ajz822vd-jpkays-projects.vercel.app",
@@ -84,6 +84,37 @@
         "grammar"
       ],
       "activities": 5
+    },
+    "candidateDefault": {
+      "sessionId": "a8a0170e-41ec-4542-bf68-8b950ea6b074",
+      "releaseId": "b47efd20-2cc8-453c-9de0-fa41929876c7",
+      "scope": 237,
+      "defaultSelectedByApplication": true,
+      "reloadPreservedSession": true
+    },
+    "liveLearningUpgrade": {
+      "base": "https://sigmawrite-1ajz822vd-jpkays-projects.vercel.app",
+      "sourceId": "276c7578-8f53-482b-aeb0-79d5cc16b40f",
+      "successorId": "31fba536-2fb2-4c48-b87b-2bee926c34ff",
+      "targetRelease": "b47efd20-2cc8-453c-9de0-fa41929876c7",
+      "targetKey": "french-granular-diagnostic-v15",
+      "answers": 59,
+      "wrong": 12,
+      "preserved": {
+        "observations": true,
+        "refinements": true,
+        "activeSeconds": true,
+        "completedTeachingIds": true,
+        "exposedMaterialKeys": true,
+        "exposedLearningItemIds": true,
+        "exposedReadingContexts": true,
+        "phase": true,
+        "paused": true,
+        "completionReason": true
+      },
+      "answerOriginsPreserved": true,
+      "originalUnchanged": true,
+      "reload": true
     }
   },
   "previousCandidate": {
@@ -110,13 +141,18 @@
     }
   },
   "remaining": [
-    "Verify fresh candidate default and full live results/learning/review",
-    "Verify real v14-to-v15 learning upgrade and original answer review",
+    "Finish full candidate diagnostic, results, lessons, and answer review",
     "Promote exact verified candidate and repeat public checks"
   ],
   "publication": {
     "releaseId": "b47efd20-2cc8-453c-9de0-fa41929876c7",
     "releaseKey": "french-granular-diagnostic-v15",
     "bundleChecksum": "sha256:c92adf37bf0164b828e35eb3597dd7513c17069fcab791446d0012168c57b579"
+  },
+  "fullJourney": {
+    "status": "running",
+    "processHandle": 37294,
+    "outputPrefix": "tmp/plume-r14-full",
+    "sessionId": "a8a0170e-41ec-4542-bf68-8b950ea6b074"
   }
 }
