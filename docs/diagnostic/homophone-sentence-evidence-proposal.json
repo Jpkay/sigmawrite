@@ -1,0 +1,140 @@
+{
+  "status": "proposal_requires_owner_decision",
+  "sourceChecksum": "sha256:63579a1fb6679f2f235f324bf93a9b31576a709ed02847b3c62f85b582c2d5d6",
+  "changes": [
+    {
+      "skillId": "distinguer_homophones_son_sont::reading-receptive",
+      "before": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 2,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": true,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false
+      },
+      "after": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 2,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": true,
+        "unaidedRequired": false
+      },
+      "questionIds": [
+        "v3-homophone-recognition:son_sont:0",
+        "v3-homophone-recognition:son_sont:1",
+        "v3-homophone-recognition:son_sont:2",
+        "v3-homophone-recognition:son_sont:3",
+        "v3-homophone-recognition:son_sont:4",
+        "v3-homophone-recognition:son_sont:5",
+        "v3-homophone-recognition:son_sont:6",
+        "v3-homophone-recognition:son_sont:7",
+        "v3-homophone-recognition:son_sont:8",
+        "v3-homophone-recognition:son_sont:9",
+        "v3-homophone-recognition:son_sont:10",
+        "v3-homophone-recognition:son_sont:11",
+        "v3-homophone-recognition:son_sont:12",
+        "v3-homophone-recognition:son_sont:13",
+        "v3-homophone-recognition:son_sont:14",
+        "v3-homophone-recognition:son_sont:15"
+      ],
+      "excludedQuestionIds": [
+        "review-draft-v1:distinguer_homophones_son_sont:receptive:foundation"
+      ]
+    },
+    {
+      "skillId": "distinguer_homophones_on_ont::reading-receptive",
+      "before": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 2,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": true,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false
+      },
+      "after": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 2,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": true,
+        "unaidedRequired": false
+      },
+      "questionIds": [
+        "v3-homophone-recognition:on_ont:0",
+        "v3-homophone-recognition:on_ont:1",
+        "v3-homophone-recognition:on_ont:2",
+        "v3-homophone-recognition:on_ont:3",
+        "v3-homophone-recognition:on_ont:4",
+        "v3-homophone-recognition:on_ont:5",
+        "v3-homophone-recognition:on_ont:6",
+        "v3-homophone-recognition:on_ont:7",
+        "v3-homophone-recognition:on_ont:8",
+        "v3-homophone-recognition:on_ont:9",
+        "v3-homophone-recognition:on_ont:10",
+        "v3-homophone-recognition:on_ont:11",
+        "v3-homophone-recognition:on_ont:12",
+        "v3-homophone-recognition:on_ont:13",
+        "v3-homophone-recognition:on_ont:14",
+        "v3-homophone-recognition:on_ont:15"
+      ],
+      "excludedQuestionIds": [
+        "review-draft-v1:distinguer_homophones_on_ont:receptive:core"
+      ]
+    }
+  ],
+  "coverage": [
+    {
+      "skillId": "distinguer_homophones_son_sont::reading-receptive",
+      "mode": "recognition",
+      "status": "allocated",
+      "initialItems": 8,
+      "learningItems": 8,
+      "excludedQuestionIds": []
+    },
+    {
+      "skillId": "distinguer_homophones_on_ont::reading-receptive",
+      "mode": "recognition",
+      "status": "allocated",
+      "initialItems": 8,
+      "learningItems": 8,
+      "excludedQuestionIds": []
+    }
+  ],
+  "proposalAssessmentChecksum": "sha256:ba7bcc6a872e76cbf9604ac1c8e91518ba5315da815fc0a98f7d2ea335194eb1",
+  "limitations": [
+    "Not an approved graph amendment or live release.",
+    "Retains all delivered words; changes assessed material only in this isolated experiment.",
+    "No claim of complete student exposure history, semantic novelty or calibrated accuracy.",
+    "Existing student sessions retain their pinned release and evidence requirements."
+  ],
+  "checksum": "sha256:0af6a064b66ad3030c190193e5e6d54562a70b4097be6226043ddf83590681b5"
+}

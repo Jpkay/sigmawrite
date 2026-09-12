@@ -1,0 +1,12 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+import {proposeHomophoneSentenceEvidence,HOMOPHONE_SENTENCE_TARGETS} from '../src/lib/diagnostic/granular/homophone-sentence-proposal';
+import {allocateTeachingQuestionPools} from '../src/lib/diagnostic/granular/teaching-question-pools';
+import {HOMOPHONE_TEACHING} from '../src/lib/diagnostic/granular/homophone-teaching';
+import {checksum} from '../src/lib/taxonomy/validate';
+const source=JSON.parse(readFileSync('docs/diagnostic/v3-parallel-review-candidate.json','utf8')).assessment;
+const proposal=proposeHomophoneSentenceEvidence(source),allocation=allocateTeachingQuestionPools(proposal.assessment,HOMOPHONE_TEACHING);
+const coverage=allocation.coverage.filter(c=>HOMOPHONE_SENTENCE_TARGETS.some(id=>id===c.skillId));
+if(coverage.length!==2||coverage.some(c=>c.status!=='allocated'))throw Error('Proposed sentence evidence lacks sufficient pools');
+const body={status:proposal.status,sourceChecksum:proposal.sourceChecksum,changes:proposal.changes,coverage,proposalAssessmentChecksum:checksum(proposal.assessment),limitations:['Not an approved graph amendment or live release.','Retains all delivered words; changes assessed material only in this isolated experiment.','No claim of complete student exposure history, semantic novelty or calibrated accuracy.','Existing student sessions retain their pinned release and evidence requirements.']};
+writeFileSync('docs/diagnostic/homophone-sentence-evidence-proposal.json',JSON.stringify({...body,checksum:checksum(body)},null,2)+'\n');
+console.log(JSON.stringify({status:body.status,coverage}));
