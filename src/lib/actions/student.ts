@@ -2729,12 +2729,12 @@ export async function loadDictationCatalog(input: unknown): Promise<DictationCat
     const id = attempt.dictation_id as string; const existing = byDictation.get(id);
     if (existing) existing.count++; else byDictation.set(id, { score: attempt.score == null ? null : Number(attempt.score), at: attempt.submitted_at as string, count: 1 });
   }
-  return rows.map((row) => ({
+  return journalStudentPayload<DictationCatalogEntry[]>(studentId, "legacy:dictation-catalog", rows.map((row) => ({
     id: row.id, key: row.key, title: row.title_fr, kind: row.kind, wordCount: row.word_count, gradeMin: row.grade_min, gradeMax: row.grade_max, focus: row.focus_fr,
     estimatedMinutes: row.kind === "brevet" ? 20 : Math.max(5, Math.min(10, Math.round(row.word_count / 8))),
     lastScore: byDictation.get(row.id)?.score ?? null, lastAt: byDictation.get(row.id)?.at ?? null, attempts: byDictation.get(row.id)?.count ?? 0,
     audioMode: row.audio_status === "ready" ? "server" : "browser",
-  }));
+  })));
 }
 
 const startDictationSchema = z.object({ dictationId: z.string().uuid(), mode: z.enum(DICTATION_MODES).optional(), clientRequestId: z.string().uuid() });
