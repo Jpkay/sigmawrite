@@ -1,3 +1,4 @@
+import {checkWritingImperativeForm} from "./writing-imperative-form";
 import {readWritingRubric,type WritingRubric} from "./writing-rubric";
 import {checksum} from "@/lib/taxonomy/validate";
 import {z} from "zod";
@@ -7,17 +8,20 @@ import {FRENCH_TAXONOMY_V3_CANDIDATE} from "@/lib/taxonomy/french-v3";
 import {requiresWritingRevision} from "./writing-evidence";
 import type {WritingEvaluator} from "./learning-service";
 
+const imperativeFormSchema=z.object({infinitive:z.string().trim().min(1),excerpt:z.string().min(1),occurrence:z.number().int().nonnegative()}).strict();
 const judgmentSchema=z.object({
  uncertain:z.boolean(),connectedWriting:z.boolean(),revisionReviewed:z.boolean(),
  opportunities:z.array(z.object({excerpt:z.string().min(1).max(3000),occurrence:z.number().int().nonnegative().describe("Numéro de répétition du même extrait exact : 0 pour sa première apparition, 1 pour sa deuxième. Jamais une position de caractère."),
-  criterionId:z.string().min(1).optional(),correct:z.boolean(),reasonFr:z.string().trim().min(1).max(1000)}).strict()).max(1000),
+  imperativeForm:imperativeFormSchema.optional(),criterionId:z.string().min(1).optional(),correct:z.boolean(),reasonFr:z.string().trim().min(1).max(1000)}).strict()).max(1000),
 }).strict();
-export function writingJudgmentSchema(rubric?:WritingRubric){
- return rubric?judgmentSchema.extend({opportunities:z.array(judgmentSchema.shape.opportunities.element.extend({
-  criterionId:z.enum(rubric.criteria.map(criterion=>criterion.id) as [string,...string[]]),
- })).max(1000)}):judgmentSchema;
+export function writingJudgmentSchema(rubric?:WritingRubric,nodeKey?:string){
+ const opportunity=judgmentSchema.shape.opportunities.element.extend({
+  criterionId:rubric?z.enum(rubric.criteria.map(criterion=>criterion.id) as [string,...string[]]):judgmentSchema.shape.opportunities.element.shape.criterionId,
+  imperativeForm:nodeKey==='employer_imperatif_en_contexte'?imperativeFormSchema:imperativeFormSchema.optional(),
+ });
+ return judgmentSchema.extend({opportunities:z.array(opportunity).max(1000)});
 }
-export const WRITING_EVALUATOR_VERSION="french-writing-evaluator-v5";
+export const WRITING_EVALUATOR_VERSION="french-writing-evaluator-v6";
 export type WritingJudgeInput={promptFr:string;instructionsFr:string;answer:string;firstDraft?:string;rubric?:WritingRubric;
  target:{nodeKey:string;labelFr:string;descriptionFr:string;actionFr:string;criteria:Record<string,unknown>}};
 export type WritingJudge=(input:WritingJudgeInput)=>Promise<unknown>;
@@ -31,12 +35,13 @@ Ne compte pas tous les mots comme des occasions. Pour la conjugaison, juge la fo
 Sépare le respect de la consigne et les preuves de maîtrise. Pour une cible employer_un_temps_en_contexte, une réponse peut ne pas réaliser la situation demandée tout en étant grammaticalement cohérente. Ce manque de preuve ne devient pas une erreur de conjugaison. Juge les repères effectivement écrits par l’élève, sans les remplacer par ceux imaginés dans la consigne. Exemples : pour la cible imparfait, « Hier, nous avons joué puis nous sommes rentrés » ne fournit pas d’occasion d’imparfait ; pour le plus-que-parfait, « Nous avons préparé la salle. Ensuite, Lina est arrivée » est une succession correcte au passé composé et ne fournit pas d’occasion de plus-que-parfait. Un récit au passé composé ne prouve pas le passé simple mais n’est pas fautif pour cette seule raison. Un texte cohérent décrivant un jardin réel au présent ne prouve pas le conditionnel, même si la consigne invitait à imaginer un jardin. Dans ces cas, opportunities reste vide pour la cible concernée. En revanche, une tentative fautive identifiable du temps ciblé ou un emploi incompatible avec les repères écrits dans la réponse reste une occasion incorrecte. Ne supprime pas ces tentatives pour améliorer le score.
 Énumère toutes les occasions pertinentes, correctes et incorrectes, sans sélection favorable. Chaque occasion doit correspondre à un extrait exact contigu de la VERSION FINALE, sans chevauchement entre occasions. occurrence est le NUMÉRO DE RÉPÉTITION de cet extrait exact : 0 pour sa première apparition, 1 pour sa deuxième, etc. Ce n'est JAMAIS la position d'un caractère dans le texte. Si l'extrait n'apparaît qu'une fois, occurrence=0, quelle que soit sa position. Exemple : pour « Il jouait, puis il jouait encore », les deux extraits « jouait » ont occurrence=0 et occurrence=1. Donne une justification courte et précise en français pour chaque verdict. Ne crée pas de texte modèle.
 Pour une compétence de révision, compare obligatoirement firstDraft à answer : corrections justes, erreurs conservées et erreurs nouvelles. Des graphies déjà correctes inchangées ne prouvent pas la capacité de corriger. Ne qualifie pas une suppression de correction réussie si la difficulté a seulement été évitée. Si la première version ne fournit aucune occasion de révision, renvoie opportunities vide. revisionReviewed=true signifie que tu as réellement comparé les deux versions pour cette cible. Sans première version, revisionReviewed=false.
+Pour la cible employer_imperatif_en_contexte, chaque occasion doit inclure imperativeForm : infinitive identifie le verbe, excerpt cite exactement la forme verbale seule (sans les pronoms attachés), occurrence compte les répétitions de cette forme dans la réponse entière. Cette forme doit se trouver dans l’extrait de l’occasion. Signale une tentative fautive même si elle ressemble à une forme de l’indicatif.
 Si une ambiguïté empêche un jugement fiable ou si la tâche ne définit pas assez précisément les graphies ou règles à observer, uncertain=true. Une erreur claire est évaluable et ne rend pas le jugement incertain. Retourne uniquement le JSON du contrat.`;
 export async function requestWritingJudgment(input:WritingJudgeInput):Promise<unknown>{
  const config=resolveAIRuntimeConfig();
  if(config.kind==="mock")throw Error("Writing assessment requires a configured provider");
  return extractJson(await chatComplete([
-  {role:"system",content:`${system}\nContrat JSON : ${JSON.stringify(z.toJSONSchema(writingJudgmentSchema(input.rubric)))}`},
+  {role:"system",content:`${system}\nContrat JSON : ${JSON.stringify(z.toJSONSchema(writingJudgmentSchema(input.rubric,input.target.nodeKey)))}`},
   {role:"user",content:JSON.stringify(input)},
  ],{baseUrl:config.baseUrl,apiKey:config.apiKey,model:process.env.WRITING_GRADING_MODEL??config.model,jsonMode:true,temperature:0,maxRetries:0,timeoutMs:25000}));
 }
@@ -51,7 +56,7 @@ export function createWritingEvaluator(judge:WritingJudge=requestWritingJudgment
    const rubric=readWritingRubric(node.key,input.item.validatorConfig?.writingRubric);
    const revision=requiresWritingRevision(node.key);
    if(revision&&input.firstDraft===undefined)throw Error("First draft required");
-   const result=writingJudgmentSchema(rubric).parse(await judge({promptFr:input.item.promptFr,instructionsFr:input.item.instructionsFr??"",answer:input.answer,...(rubric?{rubric}:{}),
+   const result=writingJudgmentSchema(rubric,node.key).parse(await judge({promptFr:input.item.promptFr,instructionsFr:input.item.instructionsFr??"",answer:input.answer,...(rubric?{rubric}:{}),
     ...(input.firstDraft!==undefined?{firstDraft:input.firstDraft}:{}),target:{nodeKey:node.key,labelFr:node.labelFr,descriptionFr:node.descriptionFr,
      actionFr:evidence.actionFr,criteria:evidence.successCriteria}}));
    if(result.uncertain)throw Error("Uncertain writing judgment");
@@ -59,7 +64,15 @@ export function createWritingEvaluator(judge:WritingJudge=requestWritingJudgment
    if(rubric&&result.opportunities.some(opportunity=>!rubric.criteria.some(criterion=>criterion.id===opportunity.criterionId)))throw Error("Writing opportunity outside rubric");
    const tokens=result.opportunities.map(opportunity=>{
     const span=resolveWritingExcerpt(input.answer,opportunity.excerpt,opportunity.occurrence);
-    return {...span,criterionId:opportunity.criterionId,correct:opportunity.correct,reasonFr:opportunity.reasonFr};
+    let correct=opportunity.correct,reasonFr=opportunity.reasonFr;
+    if(node.key==='employer_imperatif_en_contexte'){
+     const proof=opportunity.imperativeForm;if(!proof)throw Error("Missing imperative form evidence");
+     const form=resolveWritingExcerpt(input.answer,proof.excerpt,proof.occurrence);
+     if(form.start<span.start||form.end>span.end)throw Error("Imperative form lies outside its writing opportunity");
+     const checked=checkWritingImperativeForm({infinitive:proof.infinitive,form:form.text,suffix:input.answer.slice(form.end)});
+     if(!checked.valid){correct=false;reasonFr=checked.liaison?`Devant en ou y directement attaché, la forme ${checked.forms[0]} prend un s : ${checked.forms[0]}s. Vérifie aussi à qui tu t’adresses.`:`« ${form.text} » n’est pas une forme de l’impératif de ${proof.infinitive}. Les formes sont : ${checked.forms.join(', ')}.`;}
+    }else if(opportunity.imperativeForm)throw Error("Imperative form evidence outside its target");
+    return {...span,criterionId:opportunity.criterionId,correct,reasonFr};
    }).sort((a,b)=>a.start-b.start);
    if(tokens.some((token,i)=>i>0&&token.start<tokens[i-1].end))throw Error("Overlapping writing opportunities");
    return {connectedWriting:result.connectedWriting,revisionReviewed:revision&&result.revisionReviewed,tokens,

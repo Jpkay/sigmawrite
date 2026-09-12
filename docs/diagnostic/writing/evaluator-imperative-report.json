@@ -1,0 +1,144 @@
+{
+  "status": "experimental_not_calibrated",
+  "model": "z-ai/glm-5.2",
+  "syntheticOnly": true,
+  "casesChecksum": "sha256:e743ef6a0b77e13888ae610d79e09c376ad606bc39abe2b2eb615ca101b18a14",
+  "results": [
+    {
+      "id": "imperative-forms-correct",
+      "caseChecksum": "sha256:604834796a0633e62051bf6415412c2c8b73ca50642a6f365c246e2f108b1c71",
+      "expected": "correct",
+      "observed": "correct",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 0,
+            "end": 6,
+            "text": "Prends",
+            "criterionId": "employer_imperatif_en_contexte",
+            "correct": true,
+            "reasonFr": "Impératif 2e personne du verbe « prendre », correct et adapté au contexte de consignes."
+          },
+          {
+            "start": 18,
+            "end": 22,
+            "text": "mets",
+            "criterionId": "employer_imperatif_en_contexte",
+            "correct": true,
+            "reasonFr": "Impératif 2e personne du verbe « mettre », correct dans une consigne d'action."
+          },
+          {
+            "start": 39,
+            "end": 46,
+            "text": "Attends",
+            "criterionId": "employer_imperatif_en_contexte",
+            "correct": true,
+            "reasonFr": "Impératif 2e personne du verbe « attendre », correct et cohérent avec la situation."
+          },
+          {
+            "start": 69,
+            "end": 76,
+            "text": "rejoins",
+            "criterionId": "employer_imperatif_en_contexte",
+            "correct": true,
+            "reasonFr": "Impératif 2e personne du verbe « rejoindre », correct et adapté au contexte."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v6",
+          "protocolChecksum": "sha256:c8bf0b8bb355429caf49c2de5344e44871f2f735bf905fca1b9a85f39e0a37bf",
+          "rubricChecksum": "sha256:b8b878657aa752c616764968143550c598aa579b68b4ea068363f1e68c7d9bd5",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "imperative-forms-errors",
+      "caseChecksum": "sha256:fb27d2f75ee9d80d426cecd00ee51ba9f0d664e54853559cd4b0f7c336a14556",
+      "expected": "incorrect",
+      "observed": "unavailable",
+      "reason": "invalid_json",
+      "matched": false
+    },
+    {
+      "id": "imperative-liaison-correct",
+      "caseChecksum": "sha256:770b46c4244fe4a03dcac03774cc55a014f75f042d7ec006e1a6e7cf9fd837e7",
+      "expected": "correct",
+      "observed": "unavailable",
+      "reason": "invalid_json",
+      "matched": false
+    },
+    {
+      "id": "imperative-liaison-errors",
+      "caseChecksum": "sha256:ed378f157b0673d1065376688443ec106b9ced1bd5ead5ee42ee855ee0c45c7e",
+      "expected": "incorrect",
+      "observed": "unavailable",
+      "reason": "invalid_json",
+      "matched": false
+    },
+    {
+      "id": "imperative-no-evidence",
+      "caseChecksum": "sha256:e7126651face9adb9acd8c8b6fbae14c84852f250940e848f735fcd799a02fed",
+      "expected": "unresolved",
+      "observed": "unresolved",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [],
+        "evaluator": {
+          "version": "french-writing-evaluator-v6",
+          "protocolChecksum": "sha256:c8bf0b8bb355429caf49c2de5344e44871f2f735bf905fca1b9a85f39e0a37bf",
+          "rubricChecksum": "sha256:b8b878657aa752c616764968143550c598aa579b68b4ea068363f1e68c7d9bd5",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "imperative-plural-correct",
+      "caseChecksum": "sha256:d02406656d9cde1ca526748a05574fb44a8a3bb4947674c4d09e8960e14bad27",
+      "expected": "correct",
+      "observed": "correct",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 0,
+            "end": 30,
+            "text": "Mettons nos sacs près du banc.",
+            "criterionId": "employer_imperatif_en_contexte",
+            "correct": true,
+            "reasonFr": "Impératif 1re personne du pluriel de « mettre », correctement formé et employé pour donner une consigne."
+          },
+          {
+            "start": 31,
+            "end": 85,
+            "text": "Mes amis, attendez ici pendant que je prends la carte.",
+            "criterionId": "employer_imperatif_en_contexte",
+            "correct": true,
+            "reasonFr": "Impératif 2e personne du pluriel de « attendre », forme correcte et adaptée au contexte d'instruction."
+          },
+          {
+            "start": 86,
+            "end": 127,
+            "text": "Rejoignez ensuite Lina devant le portail.",
+            "criterionId": "employer_imperatif_en_contexte",
+            "correct": true,
+            "reasonFr": "Impératif 2e personne du pluriel de « rejoindre », correctement formé et pertinent dans la consigne."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v6",
+          "protocolChecksum": "sha256:c8bf0b8bb355429caf49c2de5344e44871f2f735bf905fca1b9a85f39e0a37bf",
+          "rubricChecksum": "sha256:b8b878657aa752c616764968143550c598aa579b68b4ea068363f1e68c7d9bd5",
+          "model": "injected-judge"
+        }
+      }
+    }
+  ]
+}

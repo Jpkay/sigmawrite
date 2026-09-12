@@ -1,0 +1,44 @@
+[
+  {
+    "id": "imperative-forms-correct",
+    "node": "employer_imperatif_en_contexte",
+    "prompt": "Donne des consignes pour préparer une sortie.",
+    "answer": "Prends ton sac et mets tes chaussures. Attends devant la porte, puis rejoins le groupe.",
+    "expect": "correct"
+  },
+  {
+    "id": "imperative-forms-errors",
+    "node": "employer_imperatif_en_contexte",
+    "prompt": "Donne des consignes pour préparer une sortie.",
+    "answer": "Prend ton sac et met tes chaussures. Attend devant la porte, puis rejoint le groupe.",
+    "expect": "incorrect"
+  },
+  {
+    "id": "imperative-liaison-correct",
+    "node": "employer_imperatif_en_contexte",
+    "prompt": "Donne des consignes pour préparer une sortie.",
+    "answer": "Lina a préparé un gâteau pour la fête. Manges-en une part avant le départ, puis vas-y avec elle.",
+    "expect": "correct"
+  },
+  {
+    "id": "imperative-liaison-errors",
+    "node": "employer_imperatif_en_contexte",
+    "prompt": "Donne des consignes pour préparer une sortie.",
+    "answer": "Lina a préparé un gâteau pour la fête. Mange-en une part avant le départ, puis va-y avec elle.",
+    "expect": "incorrect"
+  },
+  {
+    "id": "imperative-no-evidence",
+    "node": "employer_imperatif_en_contexte",
+    "prompt": "Donne des consignes pour préparer une sortie.",
+    "answer": "Tu peux prendre ton sac et mettre tes chaussures. Tu attendras devant la porte, puis tu rejoindras le groupe.",
+    "expect": "unresolved"
+  },
+  {
+    "id": "imperative-plural-correct",
+    "node": "employer_imperatif_en_contexte",
+    "prompt": "Donne des consignes pour préparer une sortie.",
+    "answer": "Mettons nos sacs près du banc. Mes amis, attendez ici pendant que je prends la carte. Rejoignez ensuite Lina devant le portail.",
+    "expect": "correct"
+  }
+]

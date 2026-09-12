@@ -38,7 +38,7 @@ it("compares both versions and preserves the evaluator's explanation",async()=>{
 });
 it("binds evaluator provenance to the protocol and exact task rubric",async()=>{
  const f=fixture(),first=await f.evaluate(f.input);
- expect(first.evaluator).toMatchObject({version:"french-writing-evaluator-v5",model:"injected-judge",protocolChecksum:expect.stringMatching(/^sha256:/),rubricChecksum:expect.stringMatching(/^sha256:/)});
+ expect(first.evaluator).toMatchObject({version:"french-writing-evaluator-v6",model:"injected-judge",protocolChecksum:expect.stringMatching(/^sha256:/),rubricChecksum:expect.stringMatching(/^sha256:/)});
  const second=await f.evaluate({...f.input,item:{...f.input.item,promptFr:"Décris un lieu dans le passé."}});
  expect(second.evaluator?.rubricChecksum).not.toBe(first.evaluator?.rubricChecksum);
  expect(second.evaluator?.protocolChecksum).toBe(first.evaluator?.protocolChecksum);
@@ -81,4 +81,27 @@ it("makes rubric criterion IDs mandatory in the provider schema",()=>{
  expect(schema.safeParse(base).success).toBe(false);
  expect(schema.safeParse({...base,opportunities:[{...base.opportunities[0],criterionId:"word:cheval"}]}).success).toBe(true);
  expect(schema.safeParse({...base,opportunities:[{...base.opportunities[0],criterionId:"unlisted"}]}).success).toBe(false);
+});
+
+it("overrules false imperative correctness only with anchored conjugator evidence",async()=>{
+ const f=fixture();f.input.item.nodeKey="employer_imperatif_en_contexte";
+ f.input.answer="Prend ton sac. Mets tes chaussures.";
+ f.judge.mockResolvedValue({uncertain:false,connectedWriting:true,revisionReviewed:false,opportunities:[
+  {excerpt:"Prend",occurrence:0,correct:true,reasonFr:"Le modèle accepte à tort cette forme.",imperativeForm:{infinitive:"prendre",excerpt:"Prend",occurrence:0}},
+  {excerpt:"Mets",occurrence:0,correct:false,reasonFr:"Contexte jugé incorrect.",imperativeForm:{infinitive:"mettre",excerpt:"Mets",occurrence:0}},
+ ]});
+ const result=await f.evaluate(f.input);
+ expect(result.tokens.map(t=>t.correct)).toEqual([false,false]);
+ expect(result.tokens[0].reasonFr).toContain('prends, prenons, prenez');
+ expect(result.tokens[1].reasonFr).toBe('Contexte jugé incorrect.');
+});
+it("requires source-bound imperative proof and refuses unknown paradigms",async()=>{
+ const f=fixture();f.input.item.nodeKey="employer_imperatif_en_contexte";f.input.answer="Prends ton sac. Appelle Lina.";
+ const opportunity={excerpt:"Prends",occurrence:0,correct:true,reasonFr:"Consigne."};
+ for(const proof of [undefined,{infinitive:"appeler",excerpt:"Prends",occurrence:0},{infinitive:"prendre",excerpt:"Appelle",occurrence:0}]){
+  f.judge.mockResolvedValue({uncertain:false,connectedWriting:true,revisionReviewed:false,opportunities:[{...opportunity,...(proof?{imperativeForm:proof}:{})}]});
+  await expect(f.evaluate(f.input)).rejects.toBeInstanceOf(WritingAssessmentError);
+ }
+ const schema=writingJudgmentSchema(undefined,'employer_imperatif_en_contexte');
+ expect(schema.safeParse({uncertain:false,connectedWriting:true,revisionReviewed:false,opportunities:[opportunity]}).success).toBe(false);
 });

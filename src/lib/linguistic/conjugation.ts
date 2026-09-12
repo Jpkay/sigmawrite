@@ -56,6 +56,9 @@ const IRREGULAR_PRESENT: Record<string, string[]> = {
   dormir: ["dors", "dors", "dort", "dormons", "dormez", "dorment"],
   courir: ["cours", "cours", "court", "courons", "courez", "courent"],
   découvrir: ["découvre", "découvres", "découvre", "découvrons", "découvrez", "découvrent"],
+  mettre: ["mets", "mets", "met", "mettons", "mettez", "mettent"],
+  attendre: ["attends", "attends", "attend", "attendons", "attendez", "attendent"],
+  rejoindre: ["rejoins", "rejoins", "rejoint", "rejoignons", "rejoignez", "rejoignent"],
 };
 
 const IRREGULAR_PP: Record<string, string> = {

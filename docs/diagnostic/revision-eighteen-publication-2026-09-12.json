@@ -1,5 +1,5 @@
 {
-  "status": "candidate_published_default_and_upgrade_verification_running",
+  "status": "candidate_default_and_upgrade_verified_full_journey_running",
   "sourceCommit": "c63a42d4456158edbd488053d6183a625bed5f8f",
   "frozenWorkspace": "/Users/jean-philippekayobotsi/.codex/release-workspaces/sigmawrite-r18-c63a42d",
   "plannedReleaseKey": "french-granular-diagnostic-v19",
@@ -62,11 +62,41 @@
       "terminal": "statement timeout",
       "releaseAbsentAfterRecovery": true,
       "databaseHealthAfterRecovery": 200
+    },
+    "freshDefault": {
+      "sessionId": "77f5be3b-38e1-4a56-834e-d9279397f4bf",
+      "releaseId": "7513b5f5-3afa-435a-975e-a3353dec2c37",
+      "scope": 266,
+      "defaultSelectedByApplication": true,
+      "reloadPreservedSession": true
+    },
+    "realUpgrade": {
+      "base": "https://sigmawrite-2rrvpyxm2-jpkays-projects.vercel.app",
+      "sourceId": "0a60c9c7-5147-4a19-844c-0db205d80b9e",
+      "successorId": "6d94e286-8677-47ae-b0c6-961fdf9f7bff",
+      "targetRelease": "7513b5f5-3afa-435a-975e-a3353dec2c37",
+      "targetKey": "french-granular-diagnostic-v19",
+      "answers": 59,
+      "wrong": 12,
+      "preserved": {
+        "observations": true,
+        "refinements": true,
+        "activeSeconds": true,
+        "completedTeachingIds": true,
+        "exposedMaterialKeys": true,
+        "exposedLearningItemIds": true,
+        "exposedReadingContexts": true,
+        "phase": true,
+        "paused": true,
+        "completionReason": true
+      },
+      "answerOriginsPreserved": true,
+      "originalUnchanged": true,
+      "reload": true
     }
   },
   "running": {
-    "freshDefault": 28520,
-    "realUpgrade": 21426
+    "fullJourney": 87667
   },
   "remaining": [
     "Verify Ready deployment, audio, demo and pinned pathways.",
@@ -81,7 +111,8 @@
     "username": "doves.granular.r18.default.qa",
     "studentId": "3cfe48cb-bcca-4fa2-95fc-3d29abb6c835",
     "credentialsFile": "tmp/plume-granular-r18-default-qa.json",
-    "diagnosticStarted": false
+    "diagnosticStarted": true,
+    "sessionId": "77f5be3b-38e1-4a56-834e-d9279397f4bf"
   },
   "bankReleaseId": "dcb77353-b7bc-4a6c-bdce-609762c7d748",
   "publication": {
