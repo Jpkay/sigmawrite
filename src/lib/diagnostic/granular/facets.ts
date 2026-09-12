@@ -1,3 +1,4 @@
+import {VERB_FAMILY_RECOGNITION_FACETS} from './verb-family-recognition-facets';
 import {PRESENT_SPELLING_TRANSFER} from "./present-spelling-transfer";
 import type {TaxonomyCandidate} from "@/lib/taxonomy/validate";
 import type {FeatureRequirement} from "./engine";
@@ -47,7 +48,7 @@ const SPLITS:Record<string,readonly [string,string][]>={
  choisir_e_accent_aigu_grave:[["acute","Choisir é"],["grave","Choisir è"],["none","Choisir e sans accent"]],
  orthographier_g_ge_gu:[["soft","Maintenir le son doux avec ge"],["hard","Maintenir le son dur avec gu"]],
 };
-export function buildV3Facets(taxonomy:TaxonomyCandidate):AssessmentFacet[]{
+export function buildV3Facets(taxonomy:TaxonomyCandidate,options:{verbFamilyRecognition?:boolean}={}):AssessmentFacet[]{
  const nodes=new Map(taxonomy.nodes.map(n=>[n.key,n]));const facets:AssessmentFacet[]=[];
  const add=(nodeKey:string,dimension:string,value:string,labelFr:string)=>{
   if(!nodes.has(nodeKey))throw Error(`Facet parent absent from approved graph: ${nodeKey}`);
@@ -73,6 +74,7 @@ export function buildV3Facets(taxonomy:TaxonomyCandidate):AssessmentFacet[]{
   if(!declared.includes("all")&&!declared.some(prefix=>genreForPrefix[prefix]===genre))continue;
   add(node.key,"text_type",genre,label);
  }
+ if(options.verbFamilyRecognition)for(const facet of VERB_FAMILY_RECOGNITION_FACETS)add(facet.nodeKey,facet.dimension,facet.value,facet.labelFr);
  return facets;
 }
 /** Only structured conjugator metadata can support automatic facet assignment. */

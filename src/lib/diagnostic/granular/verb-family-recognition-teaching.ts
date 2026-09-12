@@ -1,13 +1,8 @@
-import type {AssessmentFacet} from './facets';
+import {VERB_FAMILY_RECOGNITION_FACETS} from './verb-family-recognition-facets';
+export {VERB_FAMILY_RECOGNITION_FACETS} from './verb-family-recognition-facets';
 import type {TargetTeachingContent} from './teaching-content';
 import {VERB_FAMILY_LABELS} from './verb-family-recognition-drafts';
 const nodeKey='classer_famille_verbale';
-/** Standalone authoring refinement, not included in the runtime facet catalogue. */
-export const VERB_FAMILY_RECOGNITION_FACETS:readonly AssessmentFacet[]=[
- {key:`${nodeKey}::construction:er`,nodeKey,dimension:'construction',value:'er',labelFr:'Reconnaître le modèle chanter'},
- {key:`${nodeKey}::construction:ir`,nodeKey,dimension:'construction',value:'ir',labelFr:'Reconnaître le modèle finir'},
- {key:`${nodeKey}::construction:other`,nodeKey,dimension:'construction',value:'other',labelFr:'Reconnaître les autres modèles'},
-];
 type Family=keyof typeof VERB_FAMILY_LABELS;
 const guided:Record<Family,Array<[string,string,string,Family]>>={
  er:[['crier','crie','crions','er'],['visiter','visite','visitons','er'],['fermer','ferme','fermons','er'],['prêter','prête','prêtons','er'],['bâtir','bâtis','bâtissons','ir'],['venir','viens','venons','other']],

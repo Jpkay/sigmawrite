@@ -1,3 +1,4 @@
+import {VERB_FAMILY_RECOGNITION_FACETS} from './verb-family-recognition-facets';
 import {conjugationFormFamily} from "./conjugation-form-family";
 import {FRENCH_TAXONOMY_V3_CANDIDATE as graph} from "@/lib/taxonomy/french-v3";
 import type {EvidenceSkill} from "./v3-adapter";
@@ -9,7 +10,7 @@ import {conjugationChallengeOrder,conjugationNodeChallengeOrder} from "./conjuga
  * This does not grant pedagogical approval to any draft refinement. */
 export function inspectAssessmentGraph(skills:readonly EvidenceSkill[]):boolean{
  try{
-  const facets=new Map(buildV3Facets(graph).map(facet=>[facet.key,facet]));
+  const facets=new Map(buildV3Facets(graph,{verbFamilyRecognition:true}).map(facet=>[facet.key,facet]));
   const nodes=new Map(graph.nodes.map(node=>[node.key,node]));
   if(new Set(skills.map(skill=>skill.id)).size!==skills.length)return false;
   const slots=skills.map(skill=>JSON.stringify([skill.nodeKey,skill.evidenceKey,skill.facetKey??null]));
@@ -24,6 +25,11 @@ export function inspectAssessmentGraph(skills:readonly EvidenceSkill[]):boolean{
    const key=JSON.stringify([skill.nodeKey,skill.evidenceKey]);
    byEvidence.set(key,[...(byEvidence.get(key)??[]),skill]);
   }
+  // Older releases keep their single parent target. A release that adopts
+  // this refinement must include all three patterns, not a favourable subset.
+  const familyKeys=new Set(VERB_FAMILY_RECOGNITION_FACETS.map(facet=>facet.key));
+  const familySkills=skills.filter(skill=>skill.facetKey&&familyKeys.has(skill.facetKey));
+  if(familySkills.length&&familySkills.length!==familyKeys.size)return false;
   // A parent and its refinements cannot coexist as competing mastery records.
   for(const alternatives of byEvidence.values())if(alternatives.length>1&&alternatives.some(skill=>skill.facetKey===undefined))return false;
   for(const node of graph.nodes)for(const evidence of node.evidence){
