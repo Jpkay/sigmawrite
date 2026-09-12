@@ -1,0 +1,83 @@
+{
+  "status": "corrected_candidate_building_bank_import_running_not_published",
+  "sourceCommit": "c315eed3473170b3b6892061ab3cfc25773e6f16",
+  "frozenWorkspace": "/Users/jean-philippekayobotsi/.codex/release-workspaces/sigmawrite-r14-c315eed",
+  "candidateUrl": "https://sigmawrite-1ajz822vd-jpkays-projects.vercel.app",
+  "candidateDeploymentId": "dpl_24yeri15KnRyVcXQpfAVkUVrHhfF",
+  "plannedReleaseKey": "french-granular-diagnostic-v15",
+  "bankKey": "french-diagnostic-bank-v3-r14",
+  "bankId": "ef3d24d2-6b90-4cb1-bc57-16ff8d210c7a",
+  "bankChecksum": "sha256:de077ed8963025f2ed3c11e8c3aa5d3f9390e97f1dc94d3fe84f30ecd18ad7ab",
+  "expectedBankItems": 6280,
+  "preparedScope": 237,
+  "candidateChecksum": "sha256:cd76546a4d9e7fc0dc97bb841cddf44037f54b1cb38927240782be33fdc5c331",
+  "currentPublicRelease": "french-granular-diagnostic-v14",
+  "currentPublicScope": 231,
+  "bankImportProgress": {
+    "id": "ef3d24d2-6b90-4cb1-bc57-16ff8d210c7a",
+    "memberships": 4501,
+    "status": "draft",
+    "observedAt": "2026-09-12T01:18:51.423Z",
+    "terminal": false
+  },
+  "checks": {
+    "granularTests": 609,
+    "typescript": "passed",
+    "foundationJourneys": 6,
+    "constructedProfiles": 8,
+    "readOnlyUpgrade": {
+      "compatible": true,
+      "preservation": {
+        "prepared": true,
+        "preservedFields": {
+          "observations": true,
+          "refinements": true,
+          "completedTeachingIds": true,
+          "exposedMaterialKeys": true,
+          "exposedLearningItemIds": true,
+          "exposedReadingContexts": true,
+          "activeSeconds": true,
+          "completionReason": true,
+          "phase": true,
+          "paused": true
+        },
+        "responsesPreserved": true,
+        "sourceObjectUnchanged": true,
+        "observations": 59,
+        "refinements": 4
+      }
+    },
+    "databaseAudioMigration": "applied_and_verified"
+  },
+  "previousCandidate": {
+    "sourceCommit": "5574bdcdf5f35d86a6a15494dd93a719923b291d",
+    "url": "https://sigmawrite-1qc0cc9gs-jpkays-projects.vercel.app",
+    "status": "superseded_before_publication_for_upgrade_compatibility_fix",
+    "deployedAudio": {
+      "clips": 72,
+      "allHashesVerified": true,
+      "allPlaybackEnded": true,
+      "pronunciationReviewed": false
+    },
+    "demoLessons": 11,
+    "pinnedPathway": {
+      "base": "https://sigmawrite-1qc0cc9gs-jpkays-projects.vercel.app",
+      "areas": [
+        "grammar",
+        "reading_comprehension",
+        "spelling",
+        "conjugation",
+        "grammar"
+      ],
+      "activities": 5
+    }
+  },
+  "remaining": [
+    "Finish unchanged bank import and verify all relational memberships",
+    "Verify corrected deployment Ready and exact audio assets",
+    "Publish immutable v15 bundle",
+    "Verify fresh candidate default and full live results/learning/review",
+    "Verify real v14-to-v15 learning upgrade and original answer review",
+    "Promote exact verified candidate and repeat public checks"
+  ]
+}
