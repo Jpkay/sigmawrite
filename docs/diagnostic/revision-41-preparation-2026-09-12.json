@@ -1,0 +1,54 @@
+{
+  "status": "prepared_not_frozen_or_published",
+  "candidateChecksum": "sha256:5e1a6ce496b93e4fd5d5bafc93caa6f26b68070e0ee103218bf7127f66cac8ab",
+  "preflight": {
+    "version": "french-granular-parallel-publication-v1",
+    "ready": true,
+    "authorization": "product-owner-request-2026-09-11",
+    "reviewOwner": "product_owner",
+    "bankChecksum": "sha256:6510bab77112a94c977c8d4d261f3b40327b9e06fc87ea5445c4e02e64d50c63",
+    "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+    "bundleChecksum": "sha256:21578c3799d44d425218043063f130df54ad65e97f97563da0cca3a7d39a2372",
+    "policyChecksum": "sha256:39260e687154bb8d5c6048a756aee4badb10daea7205e576801cbaf159fa36b6",
+    "scopeChecksum": "sha256:8fe30237b66432611c2b1f5bc6ce4ebec71051cffdfb1c39ed2f6c6531a0284b",
+    "bankItemCount": 8024,
+    "assessmentTargets": 360,
+    "teachingTargets": 360,
+    "instructionGapSkillIds": [],
+    "freshCheckGapSkillIds": [],
+    "limitation": "Preparation only. IDs are placeholders; the publisher must revalidate with actual parent IDs and persist the exact resulting bundle checksum. No human review is recorded."
+  },
+  "validation": {
+    "newLessonJourneys": 2,
+    "profileSimulations": 10,
+    "commandJourneys": 2,
+    "typeScriptPassed": true,
+    "fullSuite": {
+      "files": 400,
+      "passedTests": 1770,
+      "timeouts": 3,
+      "timeoutRerun": {
+        "passed": true,
+        "files": 2,
+        "tests": 4,
+        "durationSeconds": 3.59
+      },
+      "result": "1770 tests passed in the broad run; all three timed-out tests passed in the isolated four-test rerun. No assertion failures."
+    },
+    "namedContrastCoverage": {
+      "intendedComparisons": 4,
+      "bothSidesSampled": 3,
+      "separatedSampledComparisons": 3,
+      "unexercisedComparisons": [
+        "literal_chronology_known_causal_inference_weak"
+      ],
+      "limitation": "Both sides sampled means at least one target per side; inspect contrastCoverage for untested modes and constructions. Probability separation is not confirmed mastery or classroom validation."
+    }
+  },
+  "limitations": [
+    "Synthetic lesson histories do not prove complete production history.",
+    "Owner content review remains pending.",
+    "The bounded diagnostic did not sample both sides of the chronology/causal contrast.",
+    "Not published or deployed."
+  ]
+}
