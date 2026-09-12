@@ -1,0 +1,65 @@
+{
+  "status": "implemented_locally_verified_not_deployed",
+  "migration": "20260912083000_material_delivery_journal.sql",
+  "purpose": "Capture exact returned text fragments as audit sources, including incidental text absent from material annotations. Recording a source never establishes lemma identity, complete semantic coverage or novelty.",
+  "boundaries": [
+    "granular:start",
+    "granular:diagnostic",
+    "granular:independent-check",
+    "granular:teaching",
+    "granular:answer-review",
+    "legacy:practice",
+    "legacy:student-state",
+    "legacy:reading-text",
+    "legacy:reading-recommendation",
+    "legacy:reading-recommendations",
+    "legacy:vocabulary",
+    "legacy:dictation",
+    "legacy:dictation-result",
+    "reference:verb",
+    "reference:rule"
+  ],
+  "semantics": {
+    "records": "Distinct exact string values from returned JSON payloads, before delivery, under the authenticated student ID.",
+    "preserves": "Original spelling, accents, case, options, hints, corrections and actual response text present in the delivered payload.",
+    "doesNotInfer": "Lemmas, sentence boundaries, unheard audio transcription, outside-app familiarity or semantic completeness.",
+    "deduplication": "Student, server-owned boundary and ordered text-fragment checksum; numeric clock ticks do not duplicate unchanged text.",
+    "failure": "Storage errors withhold delivery. Missing pre-migration RPC retains existing behavior without claiming capture; coverage remains disabled.",
+    "coverage": "Unverified journal writes invalidate later coverage, preserving immutable earlier presentation proofs.",
+    "access": "No anonymous/authenticated direct access; service role can read but cannot overwrite records. Only the server recorder writes.",
+    "excludes": "Transport URLs, including signed audio URLs and access tokens. Audio bytes and transcript coverage require separate verification."
+  },
+  "checks": {
+    "fullSuite": {
+      "files": 337,
+      "tests": 1522,
+      "passed": true
+    },
+    "typescript": "passed",
+    "disposablePostgres": "passed",
+    "concurrentCoverageInvalidation": "passed",
+    "authenticatedOwnerActionTests": "passed",
+    "appendedStudentStateIncluded": "passed",
+    "journalFailureWithholdsLessonAndReview": "passed",
+    "noCoverageProofCreatedByRawJournal": "passed",
+    "livePayloadShape": {
+      "sessionId": "fb56fa77-8c93-499e-93d7-fe4901f1af00",
+      "phase": "learning",
+      "distinctTextFragments": 1224,
+      "textCharacters": 61590,
+      "fullFinalPayloadSerializable": true,
+      "databaseWrites": false,
+      "exposuresRecorded": false
+    }
+  },
+  "remainingBeforeActivation": [
+    "Audit all student routes/actions, including client-bundled educational content, static reference text, production/repair pages and alternate legacy response paths.",
+    "Account for audio bytes and authoritative transcripts separately; a signed URL does not certify heard material.",
+    "Build verified semantic capture from source text to reviewed word/lemma, sentence and audio identities. Partial annotations and raw snapshots remain unverified.",
+    "Verify content-boundary invalidation and capture through a deployed fresh-account journey, then enable the capture contract only after that contract is complete.",
+    "Keep older students unverified until audited historical reconstruction is available; never relabel prior observations."
+  ],
+  "productionIssueResolved": false,
+  "publicDefaultChanged": false,
+  "demoModified": false
+}

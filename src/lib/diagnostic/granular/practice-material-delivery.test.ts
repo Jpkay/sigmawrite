@@ -38,3 +38,10 @@ it("does not invent exposure coverage for unannotated legacy content",async()=>{
  await recordPracticeMaterialDelivery(f.store,"student-a",f.practice);
  expect(f.record).not.toHaveBeenCalled();
 });
+it('journals unannotated legacy explanations, options and feedback without certifying novelty',async()=>{
+ const f=fixture(),recordDeliveredText=vi.fn(async()=>{});
+ delete f.practice.lesson.materialExposure;f.practice.items[0].validatorConfig=null;
+ await recordPracticeMaterialDelivery({...f.store,recordDeliveredText},'student-a',f.practice);
+ expect(f.record).not.toHaveBeenCalled();
+ expect(recordDeliveredText).toHaveBeenCalledWith(expect.objectContaining({studentId:'student-a',boundary:'legacy:practice',textFragments:expect.arrayContaining(['Observe.','Les chevaux courent.','chevaux','Accord'])}));
+});

@@ -24,6 +24,7 @@ import {publicTeachingView} from "./teaching-view";
 export type AssessmentBundle={assessment:V3Assessment;bank:CanonicalDiagnosticBankArtifact;taxonomyId:string;bankId:string;activities?:LearningActivityBinding[];teachingContent?:ReleasedTeachingContent[]};
 export type StoredSession={id:string;studentId:string;releaseId:string;state:AssessmentSession};
 export interface AssessmentStore {
+ recordDeliveredText?(input:{studentId:string;boundary:string;payloadChecksum:string;textFragments:string[]}):Promise<void>;
  load(studentId:string,sessionId:string):Promise<StoredSession|null>;
  release(id:string):Promise<AssessmentBundle|null>;
  knownMaterialKeys?(studentId:string,materialKeys:readonly string[]):Promise<string[]>;

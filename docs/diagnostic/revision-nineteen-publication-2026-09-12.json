@@ -1,5 +1,5 @@
 {
-  "status": "candidate_initial_results_verified_material_history_gap_confirmed",
+  "status": "candidate_full_journey_verified_material_history_integration_incomplete",
   "sourceCommit": "d7848c9ccee9908d4af39ca8fbbc82ebad43d4bf",
   "frozenWorkspace": "/Users/jean-philippekayobotsi/.codex/release-workspaces/sigmawrite-r19-d7848c9",
   "candidateUrl": "https://sigmawrite-q0oufbczo-jpkays-projects.vercel.app",
@@ -12,9 +12,7 @@
   "bankChecksum": "sha256:b433e98c9d0335aa4f2635c481ac9338e4464266037cd7eb10e4077572a90e3a",
   "candidateChecksum": "sha256:c6c0220aeb3fd5f805d5fdb852bb51c0988ae8a5118018fe5bcc75b6c9845f83",
   "frozenAssemblyChecks": "passed",
-  "running": {
-    "fullJourney": 21776
-  },
+  "running": {},
   "remaining": [
     "Verify fresh default and real learning upgrade.",
     "Complete a timed diagnostic through lessons and answer review.",
@@ -1176,5 +1174,57 @@
     ],
     "limitation": "Technical consistency audit, not psychometric validation. Diagnostic counts exclude later refinements; reported mode evidence may include them."
   },
-  "productionActivation": "not performed; material-history delivery integration remains incomplete"
+  "productionActivation": "not performed; material-history delivery integration remains incomplete",
+  "fullJourney": {
+    "results": {
+      "sessionId": "fb56fa77-8c93-499e-93d7-fe4901f1af00",
+      "releaseId": "19fc162c-12df-4387-9756-9e5635972dd0",
+      "scope": 270,
+      "answers": 58,
+      "correct": 46,
+      "activeSeconds": 2052.818,
+      "completionReason": "time_budget",
+      "results": 542,
+      "activities": 5,
+      "reloadPreserved": true,
+      "profile": "Existing history retained; subsequent compound-form responses deliberately wrong and every fifth other response wrong. Technical QA, not a calibrated student profile."
+    },
+    "learning": {
+      "sessionId": "fb56fa77-8c93-499e-93d7-fe4901f1af00",
+      "contentId": "french-v3-teaching:canonical-sentence:recognition",
+      "skillId": "construction_phrase_canonique::reading-analysis",
+      "initialChecks": [
+        {
+          "skillId": "construction_phrase_canonique::reading-analysis",
+          "questionId": "v3-canonical-sentence:recognition-12",
+          "correct": false
+        },
+        {
+          "skillId": "construction_phrase_canonique::reading-analysis",
+          "questionId": "v3-canonical-sentence:recognition-1",
+          "correct": false
+        },
+        {
+          "skillId": "construction_phrase_canonique::reading-analysis",
+          "questionId": "v3-canonical-sentence:recognition-10",
+          "correct": false
+        }
+      ],
+      "practiceAnswers": 6,
+      "independentQuestion": "v3-canonical-sentence:recognition-11",
+      "guidedEvidenceIsolated": true,
+      "refinementSaved": true,
+      "reloadPassed": true
+    },
+    "review": {
+      "sessionId": "fb56fa77-8c93-499e-93d7-fe4901f1af00",
+      "answers": 58,
+      "wrong": 12,
+      "submittedAnswersVerified": true,
+      "errorsFilter": true,
+      "reload": true
+    },
+    "commandExitCode": 0,
+    "noveltyDependentLearningVerified": false
+  }
 }

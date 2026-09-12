@@ -1,3 +1,4 @@
+import {journalMaterialDelivery,type DeliveryJournalStore} from "./delivery-journal";
 import {checksum} from "@/lib/taxonomy/validate";
 import {stableUuid} from "@/lib/lexicon/baseline";
 import type {getNodePractice} from "@/lib/db/practice";
@@ -8,7 +9,7 @@ import {annotatedMaterialKeys} from "./material-annotations";
  * keys and feedback shipped with practice. Missing annotations are unknown
  * coverage, never proof that the learner has not seen a word or sentence. */
 export async function recordPracticeMaterialDelivery(
- store:Pick<MaterialDeliveryStore,"recordMaterialPresentation">,
+ store:Pick<MaterialDeliveryStore,"recordMaterialPresentation"> & DeliveryJournalStore,
  studentId:string,
  practice:Awaited<ReturnType<typeof getNodePractice>>,
 ):Promise<void>{
@@ -33,4 +34,5 @@ export async function recordPracticeMaterialDelivery(
   await store.recordMaterialPresentation({studentId,sourceChecksum,materialKeys:source.keys,
    presentationId:stableUuid("practice-material-presentation",`${studentId}:${source.id}:${sourceChecksum}`)});
  }
+ await journalMaterialDelivery(store,studentId,"legacy:practice",practice);
 }

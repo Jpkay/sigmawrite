@@ -1,3 +1,4 @@
+import {journalMaterialDelivery} from "./delivery-journal";
 import {stableUuid} from "@/lib/lexicon/baseline";
 import {checksum} from "@/lib/taxonomy/validate";
 import {z} from "zod";
@@ -40,6 +41,8 @@ export async function loadDiagnosticAnswerReview(store:MaterialDeliveryStore,stu
   await store.recordMaterialPresentation({studentId,sourceChecksum,materialKeys,
    presentationId:stableUuid("granular-answer-review-v1",`${id}:${sourceChecksum}`)});
  }
- return {sessionId:id,rows};
+ const result={sessionId:id,rows};
+ await journalMaterialDelivery(store,studentId,"granular:answer-review",result);
+ return result;
 }
 export type DiagnosticAnswerReview=Awaited<ReturnType<typeof loadDiagnosticAnswerReview>>;

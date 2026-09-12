@@ -1,3 +1,4 @@
+import {journalCurrentStudentPayload} from "@/lib/diagnostic/granular/server-delivery-journal";
 import Link from "next/link";
 import { ArrowLeft, BookOpenCheck } from "lucide-react";
 import { PageHeader } from "@/components/page";
@@ -25,6 +26,7 @@ export default async function Page({ params }: { params: Promise<{ nodeKey: stri
   );
   const isConjugation = node.strand === "conjugaison";
   const tags = (await curriculumTagsFor(supabase, [node.key as string])).get(node.key as string) ?? [];
+  await journalCurrentStudentPayload("reference:rule",{node,lesson,tags});
   return (
     <>
       <PageHeader eyebrow={`Référence · ${lesson.family}`} title={node.label_fr as string} description={node.description_fr as string | undefined} action={<Link href={`/student/practice/${node.id as string}`} className={buttonVariants()}><BookOpenCheck className="size-4" />S’entraîner</Link>} />

@@ -1,4 +1,5 @@
 "use server";
+import {journalStudentPayload} from "@/lib/diagnostic/granular/server-delivery-journal";
 
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
@@ -653,15 +654,15 @@ async function contentIds(
 
 export async function loadStudentState() {
   const { supabase, studentId } = await context();
-  return getStudentStateData(studentId, supabase);
+  return journalStudentPayload(studentId,"legacy:student-state",await getStudentStateData(studentId, supabase));
 }
 
 export async function loadReadingText(input: unknown) {
   const data = checked(textKeySchema, input);
-  const { supabase } = await context();
+  const { supabase, studentId } = await context();
   const text = await getPublishedReadingText(data.textKey, supabase);
   if (!text) throw new Error("Texte introuvable.");
-  return text;
+  return journalStudentPayload(studentId,"legacy:reading-text",text);
 }
 
 export async function recommendReadingText(input: unknown) {
@@ -671,7 +672,7 @@ export async function recommendReadingText(input: unknown) {
   const key = await recommendPublishedTextKey((data ?? []).map((row) => row.interest_key as string), supabase);
   const text = await getPublishedReadingText(key, supabase);
   if (!text) throw new Error("Aucun texte disponible.");
-  return text;
+  return journalStudentPayload(studentId,"legacy:reading-recommendation",text);
 }
 
 export async function recommendReadingTexts(input: unknown) {
@@ -698,7 +699,7 @@ export async function recommendReadingTexts(input: unknown) {
     captureError(error, { operation: "calibrated_reuse_recommendation", studentId });
   }
   return Promise.all(selected.map((item) => getPublishedReadingText(item.slug, supabase)))
-    .then((rows) => rows.filter((row): row is NonNullable<typeof row> => !!row));
+    .then((rows) => journalStudentPayload(studentId,"legacy:reading-recommendations",rows.filter((row): row is NonNullable<typeof row> => !!row)));
 }
 
 export async function selectInterests(input: unknown) {
@@ -2739,7 +2740,7 @@ export async function startDictation(input: unknown): Promise<DictationSession> 
   const paths = audioMode === "server" ? [...row.segments.map((segment) => segment.audioPath), `${row.key}/full.mp3`] : [];
   const urls = audioMode === "server" ? await signDictationAudio(service, paths) : [];
   const withTemplates = mode === "trous" || mode === "choix";
-  return {
+  return journalStudentPayload<DictationSession>(studentId,"legacy:dictation",{
     attemptId: attempt.id as string, dictationId: row.id, title: row.title_fr, mode, focus: row.focus_fr, wordCount: row.word_count, audioMode,
     fullAudioUrl: audioMode === "server" ? urls[urls.length - 1] ?? null : null,
     segments: row.segments.map((segment, index) => ({
@@ -2748,7 +2749,7 @@ export async function startDictation(input: unknown): Promise<DictationSession> 
       browserText: audioMode === "browser" ? speakableSegment(segment.text) : null,
       template: withTemplates ? publicTemplate(buildTemplate(segment.text, index), mode === "choix") : null,
     })),
-  };
+  });
 }
 
 const submitDictationSchema = z.object({
@@ -2784,7 +2785,7 @@ export async function submitDictation(input: unknown): Promise<DictationResult> 
   const joined = answers.join(" ").trim();
   if (joined.length > 0) await moderateOrReject({ supabase, studentId, text: joined, field: "memory_retrieval" });
   if (attempt.submitted_at) {
-    return buildDictationResult(attempt.id as string, row, attempt.answers as string[], attempt.errors as DictationError[], Number(attempt.score), Number(attempt.accuracy), null);
+    return journalStudentPayload(studentId,"legacy:dictation-result",buildDictationResult(attempt.id as string, row, attempt.answers as string[], attempt.errors as DictationError[], Number(attempt.score), Number(attempt.accuracy), null));
   }
   const outcome = classifyDictation(row.segments.map((segment) => segment.text), answers);
   const submittedAt = new Date().toISOString();
@@ -2811,7 +2812,7 @@ export async function submitDictation(input: unknown): Promise<DictationResult> 
   const xp = await awardXp(service, { studentId, eventKey: `dictation:${attempt.id as string}`, sourceType: "dictation", sourceId: attempt.id as string, baseXp: mode === "brevet" ? XP_AWARDS.dictationBase * 2 : XP_AWARDS.dictationBase, bonusXp: outcome.errors.length === 0 ? XP_AWARDS.dictationCleanBonus : 0, at: submittedAt });
   await service.from("dictation_attempts").update({ xp_awarded: xp.xp }).eq("id", attempt.id);
   revalidatePath("/student"); revalidatePath("/student/dictee");
-  return buildDictationResult(attempt.id as string, row, answers, outcome.errors, outcome.score, outcome.accuracy, xp);
+  return journalStudentPayload(studentId,"legacy:dictation-result",buildDictationResult(attempt.id as string, row, answers, outcome.errors, outcome.score, outcome.accuracy, xp));
 }
 
 function buildDictationResult(attemptId: string, row: DictationRow, answers: string[], errors: DictationError[], score: number, accuracy: number, xp: XpAward | null): DictationResult {

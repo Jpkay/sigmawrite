@@ -16,3 +16,9 @@ it('does not turn malformed responses or database failures into coverage proof',
  for(const data of [null,'true',1,{}])await expect(fixture({data,error:null}).store.materialHistoryComplete('s','p')).rejects.toThrow('Invalid material coverage response');
  await expect(fixture({data:null,error:{code:'XX001',message:'database unavailable'}}).store.materialHistoryComplete('s','p')).rejects.toThrow('database unavailable');
 });
+it('records text with the authenticated owner and propagates journal storage failures',async()=>{
+ const input={studentId:'s',boundary:'granular:diagnostic',payloadChecksum:'sha256:payload',textFragments:['Texte']};
+ const {store,rpc}=fixture({data:null,error:null});await store.recordDeliveredText(input);
+ expect(rpc).toHaveBeenCalledWith('record_student_material_delivery_text',{p_student_id:'s',p_boundary:'granular:diagnostic',p_payload_checksum:'sha256:payload',p_text_fragments:['Texte']});
+ await expect(fixture({data:null,error:{message:'write failed'}}).store.recordDeliveredText(input)).rejects.toThrow('write failed');
+});
