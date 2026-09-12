@@ -22,6 +22,6 @@ it('uses direct prerequisite readiness while retaining uncertain skill results',
  expect(optionalLessons(graph,results,bindings,new Set(['foundation']),new Set()).map(a=>a.skillId)).toEqual(['dependent']);
 });
 it('respects the published teaching scope even when a lesson binding exists',()=>{
- const scoped={...graph,releaseScope:{version:'french-granular-release-scope-v1',assessmentSkillIds:['foundation'],teachingSkillIds:[],limitationFr:'Autres points à vérifier.'}};
+ const scoped:V3Assessment={...graph,releaseScope:{version:'french-granular-release-scope-v1',assessmentSkillIds:['foundation'],teachingSkillIds:[],limitationFr:'Autres points à vérifier.'}};
  expect(optionalLessons(scoped,assessSkills(skills,[]),bindings,new Set(),new Set())).toEqual([]);
 });
