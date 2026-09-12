@@ -30,7 +30,7 @@ describe("student assessment-first route gate", () => {
 
 it("allows learning from a completed granular assessment without fabricating legacy section scores",()=>{
  expect(studentAssessmentRedirect({pathname:"/student/memory",onboarded:true,diagnosticComplete:false,diagnosticProvisional:true,granularDiagnosticReady:true})).toBeNull();
- expect(studentAssessmentRedirect({pathname:"/student/memory",onboarded:false,diagnosticComplete:false,granularDiagnosticReady:true})).toBe("/student/onboarding");
+ expect(studentAssessmentRedirect({pathname:"/student/memory",onboarded:false,diagnosticComplete:false,granularDiagnosticReady:true})).toBeNull();
 });
 
 it("defers the lessons route to its authenticated server learning guard",()=>{
@@ -43,4 +43,11 @@ it("allows read-only progress previews after onboarding without unlocking learni
   expect(studentAssessmentRedirect({pathname,onboarded:false,diagnosticComplete:false})).toBe('/student/onboarding');
  }
  for(const pathname of ['/student/memory','/student/vocabulary'])expect(studentAssessmentRedirect({pathname,onboarded:true,diagnosticComplete:false,granularDiagnosticReady:false})).toBe('/student/diagnostic');
+});
+
+it('keeps completed granular progress reachable without creating an onboarding marker',()=>{
+ for(const pathname of ['/student/progress','/student/frontier','/student/memory']){
+  expect(studentAssessmentRedirect({pathname,onboarded:false,diagnosticComplete:false,granularDiagnosticReady:true})).toBeNull();
+  expect(studentAssessmentRedirect({pathname,onboarded:false,diagnosticComplete:false,granularDiagnosticReady:false})).toBe('/student/onboarding');
+ }
 });

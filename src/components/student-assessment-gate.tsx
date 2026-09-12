@@ -21,11 +21,14 @@ export function studentAssessmentRedirect(input: {
   granularDiagnosticReady?: boolean;
 }) {
   if (ALWAYS_AVAILABLE.has(input.pathname)) return null;
+  // Server-confirmed granular readiness also governs onboarding's redirect.
+  // Honour it first so completed imported/technical accounts are not bounced
+  // from progress to onboarding and immediately back to lessons.
+  if (input.granularDiagnosticReady) return null;
   if (!input.onboarded) return "/student/onboarding";
   // Read-only evidence pages may show a paused, incomplete assessment. They
   // do not issue learning commands or mark the diagnostic complete.
   if (RESULT_PREVIEW_AVAILABLE.has(input.pathname)) return null;
-  if (input.granularDiagnosticReady) return null;
   if (input.diagnosticProvisional) {
     return "/student/diagnostic";
   }

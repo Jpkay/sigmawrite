@@ -25,9 +25,9 @@
     "releaseKey": "french-granular-diagnostic-v35-writing",
     "bundleChecksum": "sha256:6ee2c4e2bd3e15064267bebed292a624176d397a5e15b81b390c85c5c3dceeed"
   },
-  "publicActivation": false,
+  "publicActivation": true,
   "liveJourney": {
-    "status": "diagnostic_results_verified_learning_and_review_running",
+    "status": "complete_verified",
     "studentId": "dd97f65f-e59a-4623-ace7-070b95d35041",
     "sessionId": "dfb7f989-fd07-4d4c-88b2-e6a05cfac2ad",
     "realElapsedTime": true,
@@ -45,13 +45,32 @@
       "activities": 5,
       "reloadPreserved": true,
       "profile": "Existing history retained; subsequent compound-form responses deliberately wrong and every fifth other response wrong. Technical QA, not a calibrated student profile."
+    },
+    "exitCode": 0,
+    "learning": {
+      "sessionId": "dfb7f989-fd07-4d4c-88b2-e6a05cfac2ad",
+      "contentId": "french-v3-teaching:identifier_sujet_verbe",
+      "skillId": "identifier_sujet_verbe::reading-receptive",
+      "initialChecks": [],
+      "practiceAnswers": 6,
+      "independentQuestion": "review-draft-v1:identifier_sujet_verbe:receptive:core",
+      "guidedEvidenceIsolated": true,
+      "refinementSaved": true,
+      "reloadPassed": true
+    },
+    "review": {
+      "sessionId": "dfb7f989-fd07-4d4c-88b2-e6a05cfac2ad",
+      "answers": 60,
+      "wrong": 13,
+      "submittedAnswersVerified": true,
+      "errorsFilter": true,
+      "reload": true
     }
   },
   "limits": [
     "Publication follows the owner-authorized parallel-review policy; human review is still pending.",
-    "The full real-time journey is not yet complete.",
-    "The public deployment remains on revision 34.",
-    "The separate verb-family drafts are not included."
+    "The separate verb-family drafts are not included.",
+    "Public progress check found a redirect for completed accounts without an onboarding marker; correction prepared, deployment pending."
   ],
   "candidateDemo": {
     "lessons": 11,
