@@ -1,4 +1,5 @@
 "use server";
+import {homeDynamicDisplay} from "@/lib/diagnostic/granular/home-display-text";
 import {journalStudentPayload} from "@/lib/diagnostic/granular/server-delivery-journal";
 
 import { revalidatePath } from "next/cache";
@@ -2654,6 +2655,7 @@ export async function updateStudentPassword(input:unknown){const data=checked(st
  */
 export async function loadStudentHome(input: unknown) {
   checked(emptySchema, input);
+  const {studentId}=await context();
   const settle = async <T,>(promise: Promise<T>): Promise<T | null> => { try { return await promise; } catch { return null; } };
   const [texts, plan, motivation, resume, assessment, recap, classGoal, league] = await Promise.all([
     settle(recommendReadingTexts({})),
@@ -2666,7 +2668,9 @@ export async function loadStudentHome(input: unknown) {
     settle(loadStudentLeague({})),
   ]);
   const fallbackPlan = plan ? null : await settle(loadStudentCatchUpPlan({}));
-  return { texts, plan, fallbackPlan, motivation, resume, assessment, recap, classGoal, league };
+  const result={texts,plan,fallbackPlan,motivation,resume,assessment,recap,classGoal,league};
+  await journalStudentPayload(studentId,"student:home",{...result,displayText:homeDynamicDisplay(result)});
+  return result;
 }
 
 export type StudentNotification = { id: string; kind: string; message: string; payload: Record<string, unknown>; readAt: string | null; createdAt: string };
