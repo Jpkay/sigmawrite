@@ -1,3 +1,4 @@
+import {isSourceBoundWritingItem} from "./granular/writing-item-contract";
 import {
   generatedItemSchema,
   type GateResults,
@@ -99,7 +100,8 @@ export function validateCanonicalDiagnosticBank(
     if (!entry.qcGates.gate1_schema || !entry.qcGates.gate1_invariants.ok || !entry.qcGates.gate2_answer_key.ok) {
       issues.push(`items.${index}: hard QC gate did not pass`);
     }
-    if (!["exact", "regex", "conjugator"].includes(entry.item.validatorType)) {
+    if (!["exact", "regex", "conjugator"].includes(entry.item.validatorType)
+      && !(entry.evidenceExpectation === "independent_production" && isSourceBoundWritingItem(entry.item))) {
       issues.push(`items.${index}: validator is not supported by the live diagnostic`);
     }
     if (entry.qcGates.verdict === "rejected" || entry.reviewStatus === "rejected") {

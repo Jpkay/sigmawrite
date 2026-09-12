@@ -1,3 +1,4 @@
+import {isSourceBoundWritingItem} from "@/lib/diagnostic/granular/writing-item-contract";
 /**
  * Competency-item generation pipeline — the 6 QC gates (Roadmap Phase 9).
  *
@@ -166,6 +167,7 @@ async function checkAnswerKey(
   ctx: GateContext
 ): Promise<AnswerKeyCheck> {
   const deps = { grammarChecker: ctx.grammarChecker };
+  if(isSourceBoundWritingItem(item))return {ok:true,hard:false,softReview:true,reason:"Source-bound writing has no exact answer; task and rubric require review."};
 
   // Conjugator: the (now Gate-0-computed) answer must verify true.
   if (item.validatorType === "conjugator") {
@@ -230,6 +232,7 @@ export async function runItemGenerationPipeline(
           : null,
         typeof diagnosticExpectation === "string"
           && !["exact", "regex", "conjugator"].includes(result.item.validatorType)
+          && !(diagnosticExpectation === "independent_production" && isSourceBoundWritingItem(result.item))
           ? `validator ${result.item.validatorType} is unavailable in the live diagnostic`
           : null,
       ].filter((value): value is string => !!value);
