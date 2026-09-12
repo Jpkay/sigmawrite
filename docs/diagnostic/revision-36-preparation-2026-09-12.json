@@ -1,5 +1,5 @@
 {
-  "status": "published_candidate_live_journey_running",
+  "status": "complete_live_journey_verified_candidate_routes_in_progress",
   "authoringOptions": [
     "--bank-revision",
     "36",
@@ -40,7 +40,7 @@
     "frozenArtifactsReproduced": true
   },
   "limitations": [
-    "Revision 36 is published as an immutable candidate. The public application remains on revision 35 pending live verification.",
+    "Revision 36 candidate completed its live diagnostic, lesson, independent check and answer review. Final route checks precede public activation.",
     "Simulations use constructed profiles and synthetic history; they are not classroom calibration.",
     "Questions and lessons remain pending owner review.",
     "Revision 35 bank and frozen application are unchanged."
@@ -66,8 +66,9 @@
   },
   "liveJourney": {
     "studentId": "8cbad66a-58ca-4677-9d9d-42c210a25903",
-    "status": "running_not_verified",
+    "status": "complete_verified",
     "realElapsedTime": true,
-    "includesLessonAndReview": true
+    "includesLessonAndReview": true,
+    "evidence": "revision-36-live-results-2026-09-12.json"
   }
 }
