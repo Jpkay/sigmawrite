@@ -1,3 +1,4 @@
+import {optionalLessons} from "./optional-lessons";
 import {latestWritingFeedback} from "./writing-feedback";
 import {assessmentFromGeneratedItem} from "@/lib/linguistic/assessment-policy";
 import type {PriorDeliveryHistory} from "./prior-delivery-material";
@@ -103,6 +104,7 @@ export function publicAssessmentView(session:StoredSession,bundle:AssessmentBund
  }
  const readiness=learningReadiness(bundle.assessment.skills,assessmentObservations(session.state),at);
  const learning=view.phase==="learning"?planGranularActivities(bundle.assessment,readiness.planningResults,availableLearningBindings(bundle.assessment,bundle.activities??[],seen),5,new Set(session.state.completedTeachingIds??[])):null;
+ const optional=view.phase==="learning"?optionalLessons(bundle.assessment,view.results,bundle.activities??[],new Set(session.state.completedTeachingIds??[]),new Set(learning?.activities.map(a=>a.activityId)??[])):[];
  const item=view.pendingItemId?bundle.bank.items.find(i=>i.itemKey===view.pendingItemId)?.item:null;
  const writingFeedback=latestWritingFeedback(session.state,bundle.assessment.skills);
  return {...view,sessionId:session.id,revision:session.state.revision,
@@ -112,6 +114,7 @@ export function publicAssessmentView(session:StoredSession,bundle:AssessmentBund
   answeredCount:session.state.observations.filter(o=>!o.skipped).length,
   skippedCount:session.state.observations.filter(o=>o.skipped).length,
   learningActivities:learning?.activities??[],
+  ...(optional.length?{optionalLearningActivities:optional}:{}),
   deferredReviewCount:readiness.deferredSkillIds.length,
   teaching:publicTeachingView(session,bundle),
   learningCheck:session.state.learningCheck?{id:session.state.learningCheck.id,activityId:session.state.learningCheck.activityId,firstDraft:session.state.learningCheck.firstDraft??null,revisionRequired:requiresWritingRevision(bundle.assessment.skills.find(skill=>skill.id===bundle.assessment.probes.find(probe=>probe.id===session.state.learningCheck!.itemId)?.skillId)?.nodeKey??""),question:publicQuestion(session.id,session.state.learningCheck.itemId,bundle)}:null,

@@ -185,3 +185,16 @@ it("projects teaching audio without authoring metadata and records lesson exposu
  expect(exercise.audio?.src).toBe(`/diagnostic-audio/${"b".repeat(64)}.mp3`);
  expect(exercise).not.toHaveProperty("audioStimulus");expect(exercise).not.toHaveProperty("answerFr");
 });
+
+it('opens optional teaching for an untested skill without adding assessment evidence',async()=>{
+ const f=setup();f.get().state.observations=[];
+ const before=structuredClone(f.get().state.observations);
+ const view=publicAssessmentView(f.get(),f.bundle);
+ expect(view.optionalLearningActivities?.map(a=>a.activityId)).toContain('placement-lesson');
+ expect(await runTeachingCommand(f.store,'other-student',{type:'start_teaching',sessionId:id,revision:f.get().state.revision,activityId:'placement-lesson'})).toHaveProperty('error');
+ expect(await f.send({type:'start_teaching',activityId:'forged'})).toHaveProperty('error');
+ expect(await f.send({type:'start_teaching',activityId:'placement-lesson'})).not.toHaveProperty('error');
+ expect(f.get().state.observations).toEqual(before);
+ expect(f.get().state.exposedLearningItemIds).toContain('overlapping-check');
+ expect(publicTeachingView(f.get(),f.bundle)?.phase).toBe('lesson');
+});

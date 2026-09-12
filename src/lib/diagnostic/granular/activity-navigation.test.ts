@@ -24,3 +24,8 @@ it("does not launch unknown activities, unfinished assessments or interrupt acti
  expect(linkedActivityCommand({...view,learningCheck:{id:"active"} as NonNullable<AssessmentView["learningCheck"]>},"check")).toBeNull();
  expect(linkedActivityCommand(null,"check")).toBeNull();
 });
+it('launches a separately offered optional lesson while rejecting arbitrary lesson IDs',()=>{
+ const optional={...view,learningActivities:[],optionalLearningActivities:[{activityId:'optional',skillId:'skill',kind:'instruction' as const,contentId:'content',titleFr:'Leçon',href:'/student/diagnostic?activity=optional'}]};
+ expect(linkedActivityCommand(optional,'optional')).toEqual({type:'start_teaching',activityId:'optional'});
+ expect(linkedActivityCommand(optional,'unoffered')).toBeNull();
+});

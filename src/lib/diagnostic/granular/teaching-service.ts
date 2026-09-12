@@ -40,7 +40,8 @@ export async function runTeachingCommand(store:AssessmentStore,studentId:string,
   if(command.type==="start_teaching"){
     if(state.teaching)return result(session);
     const binding=bundle.activities?.find(item=>item.id===command.activityId&&item.status==="published"&&(item.kind==="instruction"||item.kind==="practice"));
-    const planned=publicAssessmentView(session,bundle).learningActivities.find(item=>item.activityId===command.activityId);
+    const view=publicAssessmentView(session,bundle);
+    const planned=[...view.learningActivities,...(view.optionalLearningActivities??[])].find(item=>item.activityId===command.activityId);
     const lesson=bundle.teachingContent?.find(item=>item.id===binding?.contentId);
     if(!binding||!planned||!lesson)return {error:"Cette leçon n’est pas proposée dans ton parcours."} as const;
     validatePublishedTeaching(bundle.assessment,[lesson]);

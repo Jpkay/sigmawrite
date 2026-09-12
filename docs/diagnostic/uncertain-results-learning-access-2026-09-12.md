@@ -25,3 +25,7 @@ Add a clearly separate, optional lesson choice alongside the evidence-based next
 ## Verification required before release
 
 Cover absent history, fully untested foundations, mixed correct/incorrect answers, prerequisite blocking, completed lessons, exhausted checks, unsupported/draft content, and forged cross-student activity IDs. Verify that optional lesson access never changes diagnostic evidence on its own. Run a real post-diagnostic lesson and independent check, including reload, on the candidate. This note is a proposed implementation requirement, not evidence that this behavior is implemented or deployed.
+
+## Implementation checkpoint
+
+Optional exact-target lessons are implemented separately from recommended checks in the assessment view and Mes leçons. The server recomputes eligibility before starting teaching. Scope, prerequisites, completed lessons and owner checks remain enforced. Navigation supports the separately offered lesson IDs. All 374 test files / 1,671 tests passed, and TypeScript passed after the lesson-list integration. No candidate containing this change has yet been built or browser-verified; the running r34 diagnostic still uses the earlier frozen application. Full guided-practice-to-independent-check verification remains outstanding.
