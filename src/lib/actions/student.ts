@@ -1,4 +1,5 @@
 "use server";
+import {motivationDisplay} from "@/lib/diagnostic/granular/motivation-display";
 import {homeDynamicDisplay} from "@/lib/diagnostic/granular/home-display-text";
 import {journalStudentPayload} from "@/lib/diagnostic/granular/server-delivery-journal";
 
@@ -2669,7 +2670,7 @@ export async function loadStudentHome(input: unknown) {
   ]);
   const fallbackPlan = plan ? null : await settle(loadStudentCatchUpPlan({}));
   const result={texts,plan,fallbackPlan,motivation,resume,assessment,recap,classGoal,league};
-  await journalStudentPayload(studentId,"student:home",{...result,displayText:homeDynamicDisplay(result)});
+  await journalStudentPayload(studentId,"student:home",{...result,displayText:homeDynamicDisplay(result),motivationDisplay:motivationDisplay(result)});
   return result;
 }
 
