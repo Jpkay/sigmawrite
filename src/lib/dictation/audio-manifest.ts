@@ -50,5 +50,6 @@ export function validateDictationAudioManifest(raw:unknown,dictationId:string,so
  return parsed;
 }
 export function verifyDictationAudioBytes(asset:DictationAudioAsset,bytes:Uint8Array){
+ if(asset.path!==assetPath(asset))throw Error('Dictation audio path is not immutable');
  if(asset.byteLength!==bytes.byteLength||asset.byteChecksum!==byteDigest(bytes))throw Error('Dictation audio bytes changed');
 }

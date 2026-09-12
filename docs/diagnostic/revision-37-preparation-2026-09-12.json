@@ -1,5 +1,5 @@
 {
-  "status": "import_verified_publication_and_build_running",
+  "status": "published_candidate_awaiting_live_verification",
   "authoringOptions": [
     "--bank-revision",
     "37",
@@ -39,12 +39,19 @@
     "frozenArtifactsReproduced": true
   },
   "limitations": [
-    "Import verified. Candidate publication and separate deployment are running; public activation remains false.",
+    "Candidate publication and deployment succeeded. Public activation remains false pending live verification.",
     "Constructed profiles and synthetic presentation history do not establish classroom validity or complete historical capture.",
     "Human content review remains pending.",
     "Older isolated agreement probes remain in the canonical bank and historical releases; the new contextual pathways exclude them."
   ],
   "frozenSource": "562093b0b9efdf586a463c263133cf1855f832c1",
   "draftBankId": "63d4f947-4863-44a6-a826-95e709d81bd4",
-  "verifiedImportedItems": 7892
+  "verifiedImportedItems": 7892,
+  "publication": {
+    "releaseId": "d92a308a-7183-4d48-98a3-6fdea7dd0550",
+    "releaseKey": "french-granular-diagnostic-v37-writing",
+    "bundleChecksum": "sha256:7e59518075625ee5010f68bb0182eeadecce738700356c5aeccb89aed880b53b"
+  },
+  "publicActivation": false,
+  "deploymentUrl": "https://sigmawrite-ip630u81l-jpkays-projects.vercel.app"
 }

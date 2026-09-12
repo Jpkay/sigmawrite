@@ -28,7 +28,7 @@ Root evidence: granular-pathway-backlog.json. Revision 36 evidence: revision-36-
 
 ## Next implementation packages
 
-1. Revision 35 and its completed-account progress correction are public and verified. Preserve the completed diagnostic, learning and review records and the demonstration account while extending coverage.
+1. Revision 35 and its completed-account progress correction are public and verified. Revision 36 live verification is in progress; revision 37 is a published candidate with 350 of 544 targets prepared. Preserve completed diagnostics and the demonstration account while extending coverage.
 2. Complete revision 36 release preparation and deployment using its explicit question, lesson and refinement selection; preserve older sessions and immutable release identities.
 3. Resolve the four remaining exact-target lesson gaps and two prerequisite-scope gaps, respecting natural French usage rather than manufacturing awkward examples to increase coverage.
 4. Fill the 186 remaining revision 36 question-pool gaps across all domains, keeping recognition, controlled production and contextual-use evidence distinct. Complete the five connected-writing targets during learning.
@@ -80,4 +80,4 @@ corrected: futur proche uses present-tense aller, and passé récent uses
 present-tense venir. See `docs/diagnostic/v3-prerequisite-audit.md`; the remaining
 flags are review candidates, not proof that approved graph edges are wrong.
 
-Revision 35 draft adds separate dire and prendre passé simple pathways (12 guided exercises, 24 sentence checks). Its prepared scope is 336 targets and 6,290 questions; the published r34 candidate remains 334 targets. See `passe-simple-dire-prendre-draft-2026-09-12.md`.
+Revision 35 is public with 344 of 542 targets and 6,386 in-scope questions. Revision 36 adds verb-family distinctions (347 of 544 targets); revision 37 adds separate feminine, plural and combined participle agreement (350 of 544 targets, 6,458 in-scope questions). Revision 37 accounting: 350 prepared pathways, 183 question-pool gaps, four exact-lesson gaps, two prerequisite-scope gaps and five connected-writing targets. Candidate publication does not establish public activation, educator review or complete material-history capture. See the revision-specific preparation and backlog reports.
