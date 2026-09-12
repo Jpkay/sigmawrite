@@ -1,5 +1,5 @@
 {
-  "status": "frozen_candidate_build_and_bank_import_running",
+  "status": "candidate_built_bank_import_and_compatibility_checks_running",
   "sourceCommit": "c63a42d4456158edbd488053d6183a625bed5f8f",
   "frozenWorkspace": "/Users/jean-philippekayobotsi/.codex/release-workspaces/sigmawrite-r18-c63a42d",
   "plannedReleaseKey": "french-granular-diagnostic-v19",
@@ -16,11 +16,15 @@
     "typescript": "passed",
     "imperativeServiceJourneys": 5,
     "constructedProfiles": 8,
-    "readOnlyUpgrade": "compatible; historical evidence preserved"
+    "readOnlyUpgrade": "compatible; historical evidence preserved",
+    "deploymentCommandExitCode": 0
   },
   "running": {
-    "deployment": 26688,
-    "bankImport": 11435
+    "bankImport": 11435,
+    "inspect": 74882,
+    "demo": 44728,
+    "pinnedPathway": 2344,
+    "audio": 66386
   },
   "remaining": [
     "Verify Ready deployment, audio, demo and pinned pathways.",
@@ -28,5 +32,13 @@
     "Verify fresh default and full timed diagnostic through results, learning and answer review; test real learning upgrade.",
     "Verify answered-feature counts in the deployed results view.",
     "Promote only after successful candidate checks and repeat public verification."
-  ]
+  ],
+  "candidateUrl": "https://sigmawrite-2rrvpyxm2-jpkays-projects.vercel.app",
+  "deploymentId": "dpl_6u5pbSoymc595JyZoznmmuXa7tRR",
+  "freshQa": {
+    "username": "doves.granular.r18.default.qa",
+    "studentId": "3cfe48cb-bcca-4fa2-95fc-3d29abb6c835",
+    "credentialsFile": "tmp/plume-granular-r18-default-qa.json",
+    "diagnosticStarted": false
+  }
 }
