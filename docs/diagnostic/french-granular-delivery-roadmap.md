@@ -4,14 +4,20 @@ Updated 2026-09-12. French only; Allotey is excluded. This document distinguishe
 
 ## Current delivery state
 
-- Public deployment: v17, 260 supported targets, frozen source `9435669`. A complete timed diagnostic (60 answers, 47 correct and 13 incorrect), results, guided lesson, fresh independent check, answer review and reload passed. After promotion, public new-account, demo and pinned-session checks passed. The demo retains 11 lessons and 48 reviewed answers. See `revision-sixteen-publication-2026-09-12.json`.
-- Previous public release: v16, 253 supported targets, frozen source `37de48a`; retained as the rollback reference. See `revision-fifteen-publication-2026-09-12.json`.
-- Published candidate v18: 261 targets and 6,626 bank items, frozen source `cddc4ae`. Adds complex-negation meaning checks and finer feature evidence in results. All stored bank items passed the consistency check. Fresh-default, real learning-upgrade and full timed journey checks passed; deployed answered-feature verification and public activation remain outstanding. See `revision-seventeen-publication-2026-09-12.json`.
-- Published candidate v19: 266 targets, adding imperative recognition and four imperative verb families. Fresh-default and real learning-upgrade checks pass. The full timed diagnostic reached 59 answers, 47 correct, 12 incorrect, 542 result rows and five activities; guided practice, a fresh independent check, answer review and reload all pass. Deployed answered-feature verification remains outstanding. See `revision-eighteen-publication-2026-09-12.json`.
-- Ready candidate v20: 270 targets, frozen source `d7848c9`. The Vercel build, audio, demo and pinned-pathway checks pass; bank import and full candidate verification are in progress. See `revision-nineteen-publication-2026-09-12.json`.
-- Separate working draft: 276 prepared pathways. Six more exact imperative lessons cover prendre, venir, partir, sortir, dire and voir, adding 36 guided exercises and 72 fresh sentence checks. All 706 assessment/conjugation tests and TypeScript pass; all eight constructed-profile checks and all ten imperative service journeys pass. It is not published.
-- All 72 v18 candidate audio assets passed byte-integrity and actual Chrome playback checks. This is technical verification; pronunciation review remains pending. Feature display was verified at a 390-pixel viewport without horizontal overflow, but that live account only supplied untested feature rows; deployed answered-count coverage remains outstanding.
-- Working-draft symbolic routing benchmark: 10/10 depth checks and 8/8 uneven-profile contrasts, with no invariant violations. See `confirmed-verb-visits-2026-09-12.md`. Eight prepared-profile checks cover the 276-target working draft. These are constructed tests, not educational calibration.
+- Public bank release: **french-granular-diagnostic-v33-writing**, bank revision 33. It serves 327 of 542 skill targets with 6,168 questions in scope, from a bank of 7,554 verified stored items. Independent-writing evaluation is enabled. These are release and technical verification facts, not educator approval or classroom calibration.
+- Public application source: `3e7cc67`, deployment `dpl_79zFrizpzVYDoQotio74vSjHE2V8`, promoted and inspected Ready on 2026-09-12. See `practice-feedback-capture-rollout-2026-09-12.json` for exact verification scope. Subsequent documentation commits do not imply another application deployment.
+- Candidate verification included one real reading reformulation and its optional grammar tip, matched exactly to saved delivery records. On the public site, the demo retains 11 accessible lessons and 48 reviewed answers, including 17 incorrect answers. This smoke check is not a new full diagnostic or full lesson test.
+- Reading, results, writing feedback and practice correction delivery recording have been expanded. Complete exposure-history certification remains disabled: alternate content sources, audio, historical baselines and concurrent presentation still require work. Recording delivered material does not prove attention or mastery.
+- The current generated backlog accounts for all 542 targets: 327 prepared scoped pathways, 188 requiring question-pool completion, 21 requiring exact-target lessons, one requiring prerequisite-scope resolution, and five independent-writing targets outside scope. A backlog category identifies the next obstacle; it does not establish that every later obstacle is solved.
+- Human content review and educational calibration remain pending and run in parallel under the owner's release authorization. Existing synthetic benchmarks must not be presented as classroom evidence.
+
+### Next content expansion
+
+The 21 targets with question pools but no exact-target lesson are four passé récent verb targets (pouvoir, vouloir, savoir, devoir), three imperative verb targets (vouloir, savoir, devoir), and fourteen passé simple verb targets. Review appropriateness and usage before authoring rare imperative forms; do not manufacture everyday examples for unusual forms simply to fill a target.
+
+Five independent-writing targets remain outside the prepared scope: lexical paragraph revision, grammatical paragraph revision, and contextual use of passé récent, imperative and passé simple. Their outstanding prerequisite targets are listed individually in `granular-pathway-backlog.json`. The next release must retain recognition, controlled production and contextual writing as separate evidence, and provide the missing prerequisite teaching/checks before expanding their pathways.
+
+Before publishing any expansion: regenerate the draft and scoped candidate, verify source mappings and answer keys, exercise uneven-profile routing through the added targets, run authenticated assessment-to-learning checks, and publish a new immutable bank revision. Do not replace revision 33 in place.
 
 ## Complete target accounting
 
@@ -19,21 +25,22 @@ Updated 2026-09-12. French only; Allotey is excluded. This document distinguishe
 
 | Required work | Targets |
 | --- | ---: |
-| Prepared assessment, teaching and fresh-check pathway | 276 |
-| Question pools allocated; exact-target lesson still missing | 25 |
-| Complete initial and follow-up question pools | 223 |
-| Connected-writing evidence during learning | 18 |
+| Prepared assessment, teaching and fresh-check pathway | 327 |
+| Question pools allocated; exact-target lesson still missing | 21 |
+| Complete initial and follow-up question pools | 188 |
+| Resolve prerequisite scope | 1 |
+| Connected-writing evidence outside prepared scope | 5 |
 | Total | 542 |
 
 These categories partition the graph; they are not publication or approval labels. Pool allocation does not prove instructional suitability or novelty after teaching. Draft refinements remain separate from approval of their parent nodes.
 
 ## Next implementation packages
 
-1. Finish the full timed candidate journeys through learning and answer review, then activate only an exactly tested deployment and repeat public verification. The public v17 release supports 260 targets; the published v19 candidate supports 266 and the separate working draft prepares 276. Preserve immutable bundles and historical sessions.
+1. Expand from the public revision 33 baseline using immutable bundles and preserved historical sessions. Verify each expansion through assessment, learning and answer review on its exact deployment before activation, then repeat public verification.
 2. Validate the new verb-visit routing on real content and live mixed-profile journeys. The eight constructed contrasts now pass; educator/student calibration and broader granular profile validation remain required. Keep untested targets unresolved and refine them during learning.
-3. Subjunctive recognition, fourteen exact-verb lessons and four verb-family pathways have passed their service journeys. Three short-reading main-idea pathways and complex-negation meanings also have guided practice and fresh checks. Complete the remaining imperative and passé-simple exact-target lessons, using the 25 exact-target lesson gaps in the current inventory.
+3. Subjunctive recognition, fourteen exact-verb lessons and four verb-family pathways have passed their service journeys. Three short-reading main-idea pathways and complex-negation meanings also have guided practice and fresh checks. Complete the remaining imperative and passé-simple exact-target lessons, using the 21 exact-target lesson gaps in the current inventory.
 4. Review the four remaining passé récent verb targets (pouvoir, vouloir, savoir, devoir) for natural contexts before authoring. Do not mechanically create awkward forms merely to reach a coverage count. Continue subjonctif, impératif and passé simple coverage with their own usage constraints.
-5. Fill the 223 question-pool gaps across all domains from the exact-target inventory, preserving distinct recognition, controlled production and contextual-use evidence. The written-syllable and sound-to-spelling prerequisites for cédille are now included in the prepared candidate. Complete the separate connected-writing pathway for the remaining 18 targets.
+5. Fill the 188 question-pool gaps across all domains from the exact-target inventory, preserving distinct recognition, controlled production and contextual-use evidence. The written-syllable and sound-to-spelling prerequisites for cédille are now included in the prepared candidate. Complete the separate connected-writing pathway for the remaining five targets outside the prepared scope.
 6. Continue the owner's review in parallel, recording actual decisions against content checksums. Validate difficulty, question duration, sufficient depth and the meaning of recommendations with educator and student evidence. Do not substitute technical tests for those judgments.
 
 ## Fixed foundation and product decisions

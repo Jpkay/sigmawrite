@@ -1,13 +1,14 @@
 {
   "status": "prepared_inventory_not_release_or_review_approval",
-  "parallelCandidateChecksum": "sha256:abc0ab814a2ad5cf7140c95d786e5bb32330dc73ed4048e22cfa15d64335f285",
-  "scopedCandidateChecksum": "sha256:7bdcba4970d8d8e19270571a997bb93b0642309e5fe024f114cd85316479b681",
+  "parallelCandidateChecksum": "sha256:e88d382d94142abcc2d84c36b1026d0ecd772fa875b7e9f766809eaaf001434b",
+  "scopedCandidateChecksum": "sha256:368ec5d94614ebeb077fff556c3522ac2fbe50a87bc4a07d10b807f60149cf45",
   "targets": 542,
   "counts": {
-    "prepared_scoped_pathway": 282,
-    "complete_question_pools": 221,
+    "prepared_scoped_pathway": 327,
+    "complete_question_pools": 188,
     "author_exact_target_lesson": 21,
-    "connected_writing_evidence": 18
+    "resolve_prerequisite_scope": 1,
+    "connected_writing_evidence": 5
   },
   "limitations": [
     "Question allocation alone does not establish suitable teaching, novelty after instruction, human review or educational calibration.",
@@ -365,18 +366,20 @@
       "skillId": "interpreter_marqueur_temporel::reading-receptive",
       "nodeKey": "interpreter_marqueur_temporel",
       "facetKey": null,
-      "action": "complete_question_pools",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "interpreter_marqueur_temporel::reading-receptive",
           "mode": "recognition",
-          "status": "insufficient_coverage",
-          "initialItems": 2,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 7,
+          "learningItems": 7
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:narrative-time:markers"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
@@ -763,18 +766,20 @@
       "skillId": "interpreter_usages_present::reading-receptive",
       "nodeKey": "interpreter_usages_present",
       "facetKey": null,
-      "action": "complete_question_pools",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "interpreter_usages_present::reading-receptive",
           "mode": "recognition",
-          "status": "insufficient_coverage",
-          "initialItems": 1,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 7,
+          "learningItems": 6
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:present-subjunctive-meaning:present"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
@@ -1161,18 +1166,20 @@
       "skillId": "interpreter_futur_proche::reading-receptive",
       "nodeKey": "interpreter_futur_proche",
       "facetKey": null,
-      "action": "complete_question_pools",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "interpreter_futur_proche::reading-receptive",
           "mode": "recognition",
-          "status": "insufficient_coverage",
-          "initialItems": 1,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 7,
+          "learningItems": 6
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:periphrastic-meaning:near-future"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
@@ -1551,18 +1558,20 @@
       "skillId": "interpreter_passe_recent::reading-receptive",
       "nodeKey": "interpreter_passe_recent",
       "facetKey": null,
-      "action": "complete_question_pools",
+      "action": "resolve_prerequisite_scope",
       "pools": [
         {
           "skillId": "interpreter_passe_recent::reading-receptive",
           "mode": "recognition",
-          "status": "insufficient_coverage",
-          "initialItems": 2,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 7,
+          "learningItems": 7
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:periphrastic-meaning:recent-past"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": [
         "produire_passe_recent::writing-controlled-production::verb:pouvoir",
         "produire_passe_recent::writing-controlled-production::verb:vouloir",
@@ -2354,59 +2363,61 @@
       "skillId": "interpreter_imparfait::reading-receptive",
       "nodeKey": "interpreter_imparfait",
       "facetKey": null,
-      "action": "complete_question_pools",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "interpreter_imparfait::reading-receptive",
           "mode": "recognition",
-          "status": "insufficient_coverage",
-          "initialItems": 2,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 7,
+          "learningItems": 7
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:tense-meaning:imperfect"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "contraster_pc_imparfait::reading-receptive",
       "nodeKey": "contraster_pc_imparfait",
       "facetKey": null,
-      "action": "complete_question_pools",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "contraster_pc_imparfait::reading-receptive",
           "mode": "recognition",
-          "status": "insufficient_coverage",
-          "initialItems": 3,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 8,
+          "learningItems": 7
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "interpreter_imparfait::reading-receptive"
-      ]
+      "lessonIds": [
+        "french-v3-teaching:narrative-time:contrast"
+      ],
+      "freshCheckAvailable": true,
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_contraste_pc_imparfait::writing-independent-production",
       "nodeKey": "produire_contraste_pc_imparfait",
       "facetKey": null,
-      "action": "connected_writing_evidence",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_contraste_pc_imparfait::writing-independent-production",
           "mode": "independent_production",
-          "status": "insufficient_coverage",
+          "status": "allocated",
           "initialItems": 0,
-          "learningItems": 0
+          "learningItems": 3
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "contraster_pc_imparfait::reading-receptive"
-      ]
+      "lessonIds": [
+        "french-v3-teaching:connected-writing:contrast"
+      ],
+      "freshCheckAvailable": true,
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "reconnaitre_passe_simple::reading-receptive",
@@ -2845,18 +2856,20 @@
       "skillId": "interpreter_futur_simple::reading-receptive",
       "nodeKey": "interpreter_futur_simple",
       "facetKey": null,
-      "action": "complete_question_pools",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "interpreter_futur_simple::reading-receptive",
           "mode": "recognition",
-          "status": "insufficient_coverage",
-          "initialItems": 2,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 7,
+          "learningItems": 7
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:tense-meaning:future"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
@@ -3243,21 +3256,21 @@
       "skillId": "interpreter_anteriorite_passee::reading-receptive",
       "nodeKey": "interpreter_anteriorite_passee",
       "facetKey": null,
-      "action": "complete_question_pools",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "interpreter_anteriorite_passee::reading-receptive",
           "mode": "recognition",
-          "status": "insufficient_coverage",
-          "initialItems": 2,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 7,
+          "learningItems": 7
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "interpreter_marqueur_temporel::reading-receptive"
-      ]
+      "lessonIds": [
+        "french-v3-teaching:narrative-time:anteriority"
+      ],
+      "freshCheckAvailable": true,
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "reconnaitre_conditionnel_present::reading-receptive",
@@ -3643,18 +3656,20 @@
       "skillId": "interpreter_conditionnel_present::reading-receptive",
       "nodeKey": "interpreter_conditionnel_present",
       "facetKey": null,
-      "action": "complete_question_pools",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "interpreter_conditionnel_present::reading-receptive",
           "mode": "recognition",
-          "status": "insufficient_coverage",
-          "initialItems": 1,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 7,
+          "learningItems": 6
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:tense-meaning:conditional"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
@@ -4041,18 +4056,20 @@
       "skillId": "interpreter_declencheur_subjonctif::reading-receptive",
       "nodeKey": "interpreter_declencheur_subjonctif",
       "facetKey": null,
-      "action": "complete_question_pools",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "interpreter_declencheur_subjonctif::reading-receptive",
           "mode": "recognition",
-          "status": "insufficient_coverage",
-          "initialItems": 0,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 9,
+          "learningItems": 9
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:present-subjunctive-meaning:subjunctive-trigger"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
@@ -4435,18 +4452,20 @@
       "skillId": "distinguer_infinitif_participe::reading-receptive",
       "nodeKey": "distinguer_infinitif_participe",
       "facetKey": null,
-      "action": "complete_question_pools",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "distinguer_infinitif_participe::reading-receptive",
           "mode": "recognition",
-          "status": "insufficient_coverage",
-          "initialItems": 2,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 13,
+          "learningItems": 13
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:distinguer_infinitif_participe:recognition"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
@@ -4465,51 +4484,47 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "distinguer_infinitif_participe::reading-receptive"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "interpreter_sequence_temporelle::reading-receptive",
       "nodeKey": "interpreter_sequence_temporelle",
       "facetKey": null,
-      "action": "complete_question_pools",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "interpreter_sequence_temporelle::reading-receptive",
           "mode": "recognition",
-          "status": "insufficient_coverage",
-          "initialItems": 1,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 7,
+          "learningItems": 6
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "interpreter_imparfait::reading-receptive",
-        "interpreter_anteriorite_passee::reading-receptive"
-      ]
+      "lessonIds": [
+        "french-v3-teaching:narrative-time:sequence"
+      ],
+      "freshCheckAvailable": true,
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_sequence_temporelle::writing-independent-production",
       "nodeKey": "produire_sequence_temporelle",
       "facetKey": null,
-      "action": "connected_writing_evidence",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_sequence_temporelle::writing-independent-production",
           "mode": "independent_production",
-          "status": "insufficient_coverage",
+          "status": "allocated",
           "initialItems": 0,
-          "learningItems": 0
+          "learningItems": 3
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "produire_contraste_pc_imparfait::writing-independent-production",
-        "interpreter_sequence_temporelle::reading-receptive"
-      ]
+      "lessonIds": [
+        "french-v3-teaching:connected-writing:sequence"
+      ],
+      "freshCheckAvailable": true,
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "localiser_information_explicite::all-receptive::text_type:narrative",
@@ -6723,8 +6738,7 @@
       "freshCheckAvailable": false,
       "prerequisitesOutsidePreparedScope": [
         "construction_pronom_relatif::reading-analysis",
-        "construction_pronom_relatif::writing-controlled-production",
-        "employer_pronoms_complements_en_contexte::writing-independent-production"
+        "construction_pronom_relatif::writing-controlled-production"
       ]
     },
     {
@@ -6745,8 +6759,7 @@
       "freshCheckAvailable": false,
       "prerequisitesOutsidePreparedScope": [
         "construction_pronom_relatif::reading-analysis",
-        "construction_pronom_relatif::writing-controlled-production",
-        "employer_pronoms_complements_en_contexte::writing-independent-production"
+        "construction_pronom_relatif::writing-controlled-production"
       ]
     },
     {
@@ -6833,36 +6846,43 @@
       "skillId": "construction_accord_nom_adjectif::reading-analysis",
       "nodeKey": "construction_accord_nom_adjectif",
       "facetKey": null,
-      "action": "complete_question_pools",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "construction_accord_nom_adjectif::reading-analysis",
           "mode": "recognition",
-          "status": "insufficient_coverage",
-          "initialItems": 1,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 9,
+          "learningItems": 8
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:adjective-link:recognition"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "construction_accord_nom_adjectif::writing-controlled-production",
       "nodeKey": "construction_accord_nom_adjectif",
       "facetKey": null,
-      "action": "complete_question_pools",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "construction_accord_nom_adjectif::writing-controlled-production",
           "mode": "production",
-          "status": "insufficient_coverage",
-          "initialItems": 1,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 8,
+          "learningItems": 8,
+          "excludedQuestionIds": [
+            "local-spelling-gap-v1:construction_accord_nom_adjectif:controlled_production:core"
+          ]
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:adjective-link:production"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
@@ -8636,18 +8656,20 @@
       "skillId": "maintenir_orthographe_lexicale_phrase::writing-independent-production",
       "nodeKey": "maintenir_orthographe_lexicale_phrase",
       "facetKey": null,
-      "action": "connected_writing_evidence",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "maintenir_orthographe_lexicale_phrase::writing-independent-production",
           "mode": "independent_production",
-          "status": "insufficient_coverage",
+          "status": "allocated",
           "initialItems": 0,
-          "learningItems": 0
+          "learningItems": 3
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:connected-writing:lexical"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
@@ -8668,8 +8690,7 @@
       "freshCheckAvailable": false,
       "prerequisitesOutsidePreparedScope": [
         "maintenir_orthographe_lexicale_phrase::reading-receptive",
-        "maintenir_orthographe_lexicale_phrase::writing-controlled-production",
-        "maintenir_orthographe_lexicale_phrase::writing-independent-production"
+        "maintenir_orthographe_lexicale_phrase::writing-controlled-production"
       ]
     },
     {
@@ -8690,8 +8711,7 @@
       "freshCheckAvailable": false,
       "prerequisitesOutsidePreparedScope": [
         "maintenir_orthographe_lexicale_phrase::reading-receptive",
-        "maintenir_orthographe_lexicale_phrase::writing-controlled-production",
-        "maintenir_orthographe_lexicale_phrase::writing-independent-production"
+        "maintenir_orthographe_lexicale_phrase::writing-controlled-production"
       ]
     },
     {
@@ -8703,35 +8723,41 @@
         {
           "skillId": "reviser_orthographe_lexicale_paragraphe::writing-independent-production",
           "mode": "independent_production",
-          "status": "insufficient_coverage",
+          "status": "allocated",
           "initialItems": 0,
-          "learningItems": 0
+          "learningItems": 3
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:connected-writing:revise-lexical"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": [
         "maintenir_orthographe_lexicale_phrase::reading-receptive",
-        "maintenir_orthographe_lexicale_phrase::writing-controlled-production",
-        "maintenir_orthographe_lexicale_phrase::writing-independent-production"
+        "maintenir_orthographe_lexicale_phrase::writing-controlled-production"
       ]
     },
     {
       "skillId": "marquer_pluriel_nom_regulier::reading-receptive",
       "nodeKey": "marquer_pluriel_nom_regulier",
       "facetKey": null,
-      "action": "complete_question_pools",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "marquer_pluriel_nom_regulier::reading-receptive",
           "mode": "recognition",
-          "status": "insufficient_coverage",
-          "initialItems": 1,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 8,
+          "learningItems": 8,
+          "excludedQuestionIds": [
+            "review-draft-v1:marquer_pluriel_nom_regulier:receptive:foundation"
+          ]
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:inflection-recognition:plural"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
@@ -8774,9 +8800,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "marquer_pluriel_nom_regulier::reading-receptive"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "former_pluriel_noms_al_aux::reading-receptive::construction:exceptions",
@@ -8794,9 +8818,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "marquer_pluriel_nom_regulier::reading-receptive"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "former_pluriel_noms_al_aux::writing-controlled-production::construction:regular",
@@ -8814,9 +8836,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "marquer_pluriel_nom_regulier::reading-receptive"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "former_pluriel_noms_al_aux::writing-controlled-production::construction:exceptions",
@@ -8834,9 +8854,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "marquer_pluriel_nom_regulier::reading-receptive"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "former_pluriel_noms_au_eu::reading-receptive::construction:au",
@@ -8854,9 +8872,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "marquer_pluriel_nom_regulier::reading-receptive"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "former_pluriel_noms_au_eu::reading-receptive::construction:eu",
@@ -8874,9 +8890,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "marquer_pluriel_nom_regulier::reading-receptive"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "former_pluriel_noms_au_eu::reading-receptive::construction:exceptions",
@@ -8894,9 +8908,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "marquer_pluriel_nom_regulier::reading-receptive"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "former_pluriel_noms_au_eu::writing-controlled-production::construction:au",
@@ -8914,9 +8926,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "marquer_pluriel_nom_regulier::reading-receptive"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "former_pluriel_noms_au_eu::writing-controlled-production::construction:eu",
@@ -8934,9 +8944,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "marquer_pluriel_nom_regulier::reading-receptive"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "former_pluriel_noms_au_eu::writing-controlled-production::construction:exceptions",
@@ -8954,26 +8962,27 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "marquer_pluriel_nom_regulier::reading-receptive"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "former_feminin_adjectif_regulier::reading-receptive",
       "nodeKey": "former_feminin_adjectif_regulier",
       "facetKey": null,
-      "action": "complete_question_pools",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "former_feminin_adjectif_regulier::reading-receptive",
           "mode": "recognition",
-          "status": "insufficient_coverage",
-          "initialItems": 1,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 9,
+          "learningItems": 8,
+          "excludedQuestionIds": []
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:inflection-recognition:feminine"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
@@ -9003,156 +9012,173 @@
       "skillId": "accorder_determinant_nom_ecrit::reading-receptive",
       "nodeKey": "accorder_determinant_nom_ecrit",
       "facetKey": null,
-      "action": "complete_question_pools",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "accorder_determinant_nom_ecrit::reading-receptive",
           "mode": "recognition",
-          "status": "insufficient_coverage",
-          "initialItems": 3,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 11,
+          "learningItems": 10,
+          "excludedQuestionIds": []
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "marquer_pluriel_nom_regulier::reading-receptive"
-      ]
+      "lessonIds": [
+        "french-v3-teaching:written-determiner:recognition"
+      ],
+      "freshCheckAvailable": true,
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "accorder_determinant_nom_ecrit::writing-controlled-production",
       "nodeKey": "accorder_determinant_nom_ecrit",
       "facetKey": null,
-      "action": "complete_question_pools",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "accorder_determinant_nom_ecrit::writing-controlled-production",
           "mode": "production",
-          "status": "insufficient_coverage",
-          "initialItems": 3,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 11,
+          "learningItems": 10,
+          "excludedQuestionIds": []
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "marquer_pluriel_nom_regulier::reading-receptive"
-      ]
+      "lessonIds": [
+        "french-v3-teaching:written-determiner:production"
+      ],
+      "freshCheckAvailable": true,
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "accorder_adjectif_nom_ecrit::reading-receptive",
       "nodeKey": "accorder_adjectif_nom_ecrit",
       "facetKey": null,
-      "action": "complete_question_pools",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "accorder_adjectif_nom_ecrit::reading-receptive",
           "mode": "recognition",
-          "status": "insufficient_coverage",
-          "initialItems": 2,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 8,
+          "learningItems": 8,
+          "excludedQuestionIds": [
+            "local-spelling-gap-v1:accorder_adjectif_nom_ecrit:receptive:core",
+            "local-spelling-gap-v1:accorder_adjectif_nom_ecrit:receptive:stretch"
+          ]
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "former_feminin_adjectif_regulier::reading-receptive",
-        "construction_accord_nom_adjectif::reading-analysis",
-        "construction_accord_nom_adjectif::writing-controlled-production"
-      ]
+      "lessonIds": [
+        "french-v3-teaching:written-adjective:recognition"
+      ],
+      "freshCheckAvailable": true,
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "accorder_adjectif_nom_ecrit::writing-controlled-production",
       "nodeKey": "accorder_adjectif_nom_ecrit",
       "facetKey": null,
-      "action": "complete_question_pools",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "accorder_adjectif_nom_ecrit::writing-controlled-production",
           "mode": "production",
-          "status": "insufficient_coverage",
-          "initialItems": 0,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 8,
+          "learningItems": 8,
+          "excludedQuestionIds": []
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "former_feminin_adjectif_regulier::reading-receptive",
-        "construction_accord_nom_adjectif::reading-analysis",
-        "construction_accord_nom_adjectif::writing-controlled-production"
-      ]
+      "lessonIds": [
+        "french-v3-teaching:written-adjective:production"
+      ],
+      "freshCheckAvailable": true,
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
       "nodeKey": "accorder_sujet_verbe_ecrit",
       "facetKey": "accorder_sujet_verbe_ecrit::construction:adjacent",
-      "action": "complete_question_pools",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
           "mode": "recognition",
-          "status": "insufficient_coverage",
-          "initialItems": 0,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 8,
+          "learningItems": 8,
+          "excludedQuestionIds": []
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:agreement:adjacent:recognition"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:separated",
       "nodeKey": "accorder_sujet_verbe_ecrit",
       "facetKey": "accorder_sujet_verbe_ecrit::construction:separated",
-      "action": "complete_question_pools",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:separated",
           "mode": "recognition",
-          "status": "insufficient_coverage",
-          "initialItems": 1,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 8,
+          "learningItems": 8,
+          "excludedQuestionIds": [
+            "local-spelling-gap-v1:accorder_sujet_verbe_ecrit:receptive:core"
+          ]
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:agreement:separated:recognition"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:inverted",
       "nodeKey": "accorder_sujet_verbe_ecrit",
       "facetKey": "accorder_sujet_verbe_ecrit::construction:inverted",
-      "action": "complete_question_pools",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:inverted",
           "mode": "recognition",
-          "status": "insufficient_coverage",
-          "initialItems": 0,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 8,
+          "learningItems": 8,
+          "excludedQuestionIds": []
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:agreement:inverted:recognition"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:coordinated",
       "nodeKey": "accorder_sujet_verbe_ecrit",
       "facetKey": "accorder_sujet_verbe_ecrit::construction:coordinated",
-      "action": "complete_question_pools",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:coordinated",
           "mode": "recognition",
-          "status": "insufficient_coverage",
-          "initialItems": 0,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 8,
+          "learningItems": 8,
+          "excludedQuestionIds": []
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:agreement:coordinated:recognition"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
@@ -9525,41 +9551,47 @@
       "skillId": "distinguer_infinitif_participe_ecrit::reading-receptive",
       "nodeKey": "distinguer_infinitif_participe_ecrit",
       "facetKey": null,
-      "action": "complete_question_pools",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "distinguer_infinitif_participe_ecrit::reading-receptive",
           "mode": "recognition",
-          "status": "insufficient_coverage",
-          "initialItems": 1,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 12,
+          "learningItems": 12,
+          "excludedQuestionIds": [
+            "review-draft-v1:distinguer_infinitif_participe_ecrit:receptive:core"
+          ]
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "distinguer_infinitif_participe::reading-receptive"
-      ]
+      "lessonIds": [
+        "french-v3-teaching:distinguer_infinitif_participe_ecrit:recognition"
+      ],
+      "freshCheckAvailable": true,
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "distinguer_infinitif_participe_ecrit::writing-controlled-production",
       "nodeKey": "distinguer_infinitif_participe_ecrit",
       "facetKey": null,
-      "action": "complete_question_pools",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "distinguer_infinitif_participe_ecrit::writing-controlled-production",
           "mode": "production",
-          "status": "insufficient_coverage",
-          "initialItems": 1,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 12,
+          "learningItems": 12,
+          "excludedQuestionIds": [
+            "review-draft-v1:distinguer_infinitif_participe_ecrit:controlled_production:core"
+          ]
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "distinguer_infinitif_participe::reading-receptive"
-      ]
+      "lessonIds": [
+        "french-v3-teaching:distinguer_infinitif_participe_ecrit:production"
+      ],
+      "freshCheckAvailable": true,
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "maintenir_orthographe_grammaticale_phrase::reading-receptive",
@@ -9577,18 +9609,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "accorder_determinant_nom_ecrit::reading-receptive",
-        "accorder_determinant_nom_ecrit::writing-controlled-production",
-        "accorder_adjectif_nom_ecrit::reading-receptive",
-        "accorder_adjectif_nom_ecrit::writing-controlled-production",
-        "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
-        "accorder_sujet_verbe_ecrit::reading-receptive::construction:separated",
-        "accorder_sujet_verbe_ecrit::reading-receptive::construction:inverted",
-        "accorder_sujet_verbe_ecrit::reading-receptive::construction:coordinated",
-        "distinguer_infinitif_participe_ecrit::reading-receptive",
-        "distinguer_infinitif_participe_ecrit::writing-controlled-production"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "maintenir_orthographe_grammaticale_phrase::writing-controlled-production",
@@ -9606,47 +9627,27 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "accorder_determinant_nom_ecrit::reading-receptive",
-        "accorder_determinant_nom_ecrit::writing-controlled-production",
-        "accorder_adjectif_nom_ecrit::reading-receptive",
-        "accorder_adjectif_nom_ecrit::writing-controlled-production",
-        "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
-        "accorder_sujet_verbe_ecrit::reading-receptive::construction:separated",
-        "accorder_sujet_verbe_ecrit::reading-receptive::construction:inverted",
-        "accorder_sujet_verbe_ecrit::reading-receptive::construction:coordinated",
-        "distinguer_infinitif_participe_ecrit::reading-receptive",
-        "distinguer_infinitif_participe_ecrit::writing-controlled-production"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "maintenir_orthographe_grammaticale_phrase::writing-independent-production",
       "nodeKey": "maintenir_orthographe_grammaticale_phrase",
       "facetKey": null,
-      "action": "connected_writing_evidence",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "maintenir_orthographe_grammaticale_phrase::writing-independent-production",
           "mode": "independent_production",
-          "status": "insufficient_coverage",
+          "status": "allocated",
           "initialItems": 0,
-          "learningItems": 0
+          "learningItems": 3
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "accorder_determinant_nom_ecrit::reading-receptive",
-        "accorder_determinant_nom_ecrit::writing-controlled-production",
-        "accorder_adjectif_nom_ecrit::reading-receptive",
-        "accorder_adjectif_nom_ecrit::writing-controlled-production",
-        "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
-        "accorder_sujet_verbe_ecrit::reading-receptive::construction:separated",
-        "accorder_sujet_verbe_ecrit::reading-receptive::construction:inverted",
-        "accorder_sujet_verbe_ecrit::reading-receptive::construction:coordinated",
-        "distinguer_infinitif_participe_ecrit::reading-receptive",
-        "distinguer_infinitif_participe_ecrit::writing-controlled-production"
-      ]
+      "lessonIds": [
+        "french-v3-teaching:connected-writing:grammar"
+      ],
+      "freshCheckAvailable": true,
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "reviser_orthographe_grammaticale_paragraphe::reading-receptive",
@@ -9666,8 +9667,7 @@
       "freshCheckAvailable": false,
       "prerequisitesOutsidePreparedScope": [
         "maintenir_orthographe_grammaticale_phrase::reading-receptive",
-        "maintenir_orthographe_grammaticale_phrase::writing-controlled-production",
-        "maintenir_orthographe_grammaticale_phrase::writing-independent-production"
+        "maintenir_orthographe_grammaticale_phrase::writing-controlled-production"
       ]
     },
     {
@@ -9688,8 +9688,7 @@
       "freshCheckAvailable": false,
       "prerequisitesOutsidePreparedScope": [
         "maintenir_orthographe_grammaticale_phrase::reading-receptive",
-        "maintenir_orthographe_grammaticale_phrase::writing-controlled-production",
-        "maintenir_orthographe_grammaticale_phrase::writing-independent-production"
+        "maintenir_orthographe_grammaticale_phrase::writing-controlled-production"
       ]
     },
     {
@@ -9701,17 +9700,18 @@
         {
           "skillId": "reviser_orthographe_grammaticale_paragraphe::writing-independent-production",
           "mode": "independent_production",
-          "status": "insufficient_coverage",
+          "status": "allocated",
           "initialItems": 0,
-          "learningItems": 0
+          "learningItems": 3
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:connected-writing:revise-grammar"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": [
         "maintenir_orthographe_grammaticale_phrase::reading-receptive",
-        "maintenir_orthographe_grammaticale_phrase::writing-controlled-production",
-        "maintenir_orthographe_grammaticale_phrase::writing-independent-production"
+        "maintenir_orthographe_grammaticale_phrase::writing-controlled-production"
       ]
     },
     {
@@ -9978,80 +9978,80 @@
       "skillId": "placer_pronom_complement::writing-controlled-production::construction:finite",
       "nodeKey": "placer_pronom_complement",
       "facetKey": "placer_pronom_complement::construction:finite",
-      "action": "complete_question_pools",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "placer_pronom_complement::writing-controlled-production::construction:finite",
           "mode": "production",
-          "status": "insufficient_coverage",
-          "initialItems": 0,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 12,
+          "learningItems": 12
         }
       ],
       "lessonIds": [
         "french-v3-teaching:pronoun-placement:finite"
       ],
-      "freshCheckAvailable": false,
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "placer_pronom_complement::writing-controlled-production::construction:infinitive",
       "nodeKey": "placer_pronom_complement",
       "facetKey": "placer_pronom_complement::construction:infinitive",
-      "action": "complete_question_pools",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "placer_pronom_complement::writing-controlled-production::construction:infinitive",
           "mode": "production",
-          "status": "insufficient_coverage",
-          "initialItems": 0,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 12,
+          "learningItems": 12
         }
       ],
       "lessonIds": [
         "french-v3-teaching:pronoun-placement:infinitive"
       ],
-      "freshCheckAvailable": false,
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "placer_pronom_complement::writing-controlled-production::construction:negative",
       "nodeKey": "placer_pronom_complement",
       "facetKey": "placer_pronom_complement::construction:negative",
-      "action": "complete_question_pools",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "placer_pronom_complement::writing-controlled-production::construction:negative",
           "mode": "production",
-          "status": "insufficient_coverage",
-          "initialItems": 0,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 12,
+          "learningItems": 12
         }
       ],
       "lessonIds": [
         "french-v3-teaching:pronoun-placement:negative"
       ],
-      "freshCheckAvailable": false,
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "placer_pronom_complement::writing-controlled-production::construction:imperative",
       "nodeKey": "placer_pronom_complement",
       "facetKey": "placer_pronom_complement::construction:imperative",
-      "action": "complete_question_pools",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "placer_pronom_complement::writing-controlled-production::construction:imperative",
           "mode": "production",
-          "status": "insufficient_coverage",
-          "initialItems": 0,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 12,
+          "learningItems": 12
         }
       ],
       "lessonIds": [
         "french-v3-teaching:pronoun-placement:imperative"
       ],
-      "freshCheckAvailable": false,
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
@@ -10071,10 +10071,6 @@
       "lessonIds": [],
       "freshCheckAvailable": false,
       "prerequisitesOutsidePreparedScope": [
-        "placer_pronom_complement::writing-controlled-production::construction:finite",
-        "placer_pronom_complement::writing-controlled-production::construction:infinitive",
-        "placer_pronom_complement::writing-controlled-production::construction:negative",
-        "placer_pronom_complement::writing-controlled-production::construction:imperative",
         "accorder_participe_avoir_cod::writing-controlled-production::construction:preceding",
         "accorder_participe_avoir_cod::writing-controlled-production::construction:following",
         "accorder_participe_avoir_cod::writing-controlled-production::construction:absent"
@@ -10097,10 +10093,6 @@
       "lessonIds": [],
       "freshCheckAvailable": false,
       "prerequisitesOutsidePreparedScope": [
-        "placer_pronom_complement::writing-controlled-production::construction:finite",
-        "placer_pronom_complement::writing-controlled-production::construction:infinitive",
-        "placer_pronom_complement::writing-controlled-production::construction:negative",
-        "placer_pronom_complement::writing-controlled-production::construction:imperative",
         "accorder_participe_avoir_cod::writing-controlled-production::construction:preceding",
         "accorder_participe_avoir_cod::writing-controlled-production::construction:following",
         "accorder_participe_avoir_cod::writing-controlled-production::construction:absent"
@@ -10110,126 +10102,121 @@
       "skillId": "ordonner_doubles_pronoms::writing-controlled-production::construction:declarative",
       "nodeKey": "ordonner_doubles_pronoms",
       "facetKey": "ordonner_doubles_pronoms::construction:declarative",
-      "action": "complete_question_pools",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "ordonner_doubles_pronoms::writing-controlled-production::construction:declarative",
           "mode": "production",
-          "status": "insufficient_coverage",
-          "initialItems": 0,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 14,
+          "learningItems": 14
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "placer_pronom_complement::writing-controlled-production::construction:finite",
-        "placer_pronom_complement::writing-controlled-production::construction:infinitive",
-        "placer_pronom_complement::writing-controlled-production::construction:negative",
-        "placer_pronom_complement::writing-controlled-production::construction:imperative"
-      ]
+      "lessonIds": [
+        "french-v3-teaching:double-pronoun-order:declarative"
+      ],
+      "freshCheckAvailable": true,
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "ordonner_doubles_pronoms::writing-controlled-production::construction:negative",
       "nodeKey": "ordonner_doubles_pronoms",
       "facetKey": "ordonner_doubles_pronoms::construction:negative",
-      "action": "complete_question_pools",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "ordonner_doubles_pronoms::writing-controlled-production::construction:negative",
           "mode": "production",
-          "status": "insufficient_coverage",
-          "initialItems": 0,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 14,
+          "learningItems": 14
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "placer_pronom_complement::writing-controlled-production::construction:negative"
-      ]
+      "lessonIds": [
+        "french-v3-teaching:double-pronoun-order:negative"
+      ],
+      "freshCheckAvailable": true,
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "ordonner_doubles_pronoms::writing-controlled-production::construction:imperative",
       "nodeKey": "ordonner_doubles_pronoms",
       "facetKey": "ordonner_doubles_pronoms::construction:imperative",
-      "action": "complete_question_pools",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "ordonner_doubles_pronoms::writing-controlled-production::construction:imperative",
           "mode": "production",
-          "status": "insufficient_coverage",
-          "initialItems": 0,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 14,
+          "learningItems": 14
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "placer_pronom_complement::writing-controlled-production::construction:imperative"
-      ]
+      "lessonIds": [
+        "french-v3-teaching:double-pronoun-order:imperative"
+      ],
+      "freshCheckAvailable": true,
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "employer_pronoms_complements_en_contexte::writing-independent-production",
       "nodeKey": "employer_pronoms_complements_en_contexte",
       "facetKey": null,
-      "action": "connected_writing_evidence",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "employer_pronoms_complements_en_contexte::writing-independent-production",
           "mode": "independent_production",
-          "status": "insufficient_coverage",
+          "status": "allocated",
           "initialItems": 0,
-          "learningItems": 0
+          "learningItems": 3
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "ordonner_doubles_pronoms::writing-controlled-production::construction:declarative",
-        "ordonner_doubles_pronoms::writing-controlled-production::construction:negative",
-        "ordonner_doubles_pronoms::writing-controlled-production::construction:imperative"
-      ]
+      "lessonIds": [
+        "french-v3-teaching:connected-writing:pronouns"
+      ],
+      "freshCheckAvailable": true,
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "employer_present_indicatif_en_contexte::writing-independent-production",
       "nodeKey": "employer_present_indicatif_en_contexte",
       "facetKey": null,
-      "action": "connected_writing_evidence",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "employer_present_indicatif_en_contexte::writing-independent-production",
           "mode": "independent_production",
-          "status": "insufficient_coverage",
+          "status": "allocated",
           "initialItems": 0,
-          "learningItems": 0
+          "learningItems": 3
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "interpreter_usages_present::reading-receptive"
-      ]
+      "lessonIds": [
+        "french-v3-teaching:connected-writing:present"
+      ],
+      "freshCheckAvailable": true,
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "employer_futur_proche_en_contexte::writing-independent-production",
       "nodeKey": "employer_futur_proche_en_contexte",
       "facetKey": null,
-      "action": "connected_writing_evidence",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "employer_futur_proche_en_contexte::writing-independent-production",
           "mode": "independent_production",
-          "status": "insufficient_coverage",
+          "status": "allocated",
           "initialItems": 0,
-          "learningItems": 0
+          "learningItems": 3
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "interpreter_futur_proche::reading-receptive"
-      ]
+      "lessonIds": [
+        "french-v3-teaching:connected-writing:near-future"
+      ],
+      "freshCheckAvailable": true,
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "employer_passe_recent_en_contexte::writing-independent-production",
@@ -10240,13 +10227,15 @@
         {
           "skillId": "employer_passe_recent_en_contexte::writing-independent-production",
           "mode": "independent_production",
-          "status": "insufficient_coverage",
+          "status": "allocated",
           "initialItems": 0,
-          "learningItems": 0
+          "learningItems": 3
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:connected-writing:recent-past"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": [
         "interpreter_passe_recent::reading-receptive"
       ]
@@ -10255,119 +10244,121 @@
       "skillId": "employer_passe_compose_en_contexte::writing-independent-production",
       "nodeKey": "employer_passe_compose_en_contexte",
       "facetKey": null,
-      "action": "connected_writing_evidence",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "employer_passe_compose_en_contexte::writing-independent-production",
           "mode": "independent_production",
-          "status": "insufficient_coverage",
+          "status": "allocated",
           "initialItems": 0,
-          "learningItems": 0
+          "learningItems": 3
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:connected-writing:perfect"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "employer_imparfait_en_contexte::writing-independent-production",
       "nodeKey": "employer_imparfait_en_contexte",
       "facetKey": null,
-      "action": "connected_writing_evidence",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "employer_imparfait_en_contexte::writing-independent-production",
           "mode": "independent_production",
-          "status": "insufficient_coverage",
+          "status": "allocated",
           "initialItems": 0,
-          "learningItems": 0
+          "learningItems": 3
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "interpreter_imparfait::reading-receptive"
-      ]
+      "lessonIds": [
+        "french-v3-teaching:connected-writing:imperfect"
+      ],
+      "freshCheckAvailable": true,
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "employer_futur_simple_en_contexte::writing-independent-production",
       "nodeKey": "employer_futur_simple_en_contexte",
       "facetKey": null,
-      "action": "connected_writing_evidence",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "employer_futur_simple_en_contexte::writing-independent-production",
           "mode": "independent_production",
-          "status": "insufficient_coverage",
+          "status": "allocated",
           "initialItems": 0,
-          "learningItems": 0
+          "learningItems": 3
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "interpreter_futur_simple::reading-receptive"
-      ]
+      "lessonIds": [
+        "french-v3-teaching:connected-writing:future"
+      ],
+      "freshCheckAvailable": true,
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "employer_plus_que_parfait_en_contexte::writing-independent-production",
       "nodeKey": "employer_plus_que_parfait_en_contexte",
       "facetKey": null,
-      "action": "connected_writing_evidence",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "employer_plus_que_parfait_en_contexte::writing-independent-production",
           "mode": "independent_production",
-          "status": "insufficient_coverage",
+          "status": "allocated",
           "initialItems": 0,
-          "learningItems": 0
+          "learningItems": 3
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "interpreter_anteriorite_passee::reading-receptive"
-      ]
+      "lessonIds": [
+        "french-v3-teaching:connected-writing:pluperfect"
+      ],
+      "freshCheckAvailable": true,
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "employer_conditionnel_present_en_contexte::writing-independent-production",
       "nodeKey": "employer_conditionnel_present_en_contexte",
       "facetKey": null,
-      "action": "connected_writing_evidence",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "employer_conditionnel_present_en_contexte::writing-independent-production",
           "mode": "independent_production",
-          "status": "insufficient_coverage",
+          "status": "allocated",
           "initialItems": 0,
-          "learningItems": 0
+          "learningItems": 3
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "interpreter_conditionnel_present::reading-receptive"
-      ]
+      "lessonIds": [
+        "french-v3-teaching:connected-writing:conditional"
+      ],
+      "freshCheckAvailable": true,
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "employer_subjonctif_present_en_contexte::writing-independent-production",
       "nodeKey": "employer_subjonctif_present_en_contexte",
       "facetKey": null,
-      "action": "connected_writing_evidence",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "employer_subjonctif_present_en_contexte::writing-independent-production",
           "mode": "independent_production",
-          "status": "insufficient_coverage",
+          "status": "allocated",
           "initialItems": 0,
-          "learningItems": 0
+          "learningItems": 3
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "interpreter_declencheur_subjonctif::reading-receptive"
-      ]
+      "lessonIds": [
+        "french-v3-teaching:connected-writing:subjunctive"
+      ],
+      "freshCheckAvailable": true,
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "employer_imperatif_en_contexte::writing-independent-production",
@@ -10378,13 +10369,15 @@
         {
           "skillId": "employer_imperatif_en_contexte::writing-independent-production",
           "mode": "independent_production",
-          "status": "insufficient_coverage",
+          "status": "allocated",
           "initialItems": 0,
-          "learningItems": 0
+          "learningItems": 3
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:connected-writing:imperative"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": [
         "interpreter_valeur_imperatif::reading-receptive"
       ]
@@ -10730,13 +10723,15 @@
         {
           "skillId": "employer_passe_simple_en_contexte::writing-independent-production",
           "mode": "independent_production",
-          "status": "insufficient_coverage",
+          "status": "allocated",
           "initialItems": 0,
-          "learningItems": 0
+          "learningItems": 3
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:connected-writing:simple-past"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": [
         "interpreter_passe_simple::reading-receptive"
       ]
