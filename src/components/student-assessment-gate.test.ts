@@ -36,3 +36,11 @@ it("allows learning from a completed granular assessment without fabricating leg
 it("defers the lessons route to its authenticated server learning guard",()=>{
  expect(studentAssessmentRedirect({pathname:"/student/lessons",onboarded:false,diagnosticComplete:false})).toBeNull();
 });
+
+it("allows read-only progress previews after onboarding without unlocking learning",()=>{
+ for(const pathname of ['/student/frontier','/student/progress']){
+  expect(studentAssessmentRedirect({pathname,onboarded:true,diagnosticComplete:false,granularDiagnosticReady:false})).toBeNull();
+  expect(studentAssessmentRedirect({pathname,onboarded:false,diagnosticComplete:false})).toBe('/student/onboarding');
+ }
+ for(const pathname of ['/student/memory','/student/vocabulary'])expect(studentAssessmentRedirect({pathname,onboarded:true,diagnosticComplete:false,granularDiagnosticReady:false})).toBe('/student/diagnostic');
+});

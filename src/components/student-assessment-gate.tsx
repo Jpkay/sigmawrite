@@ -11,7 +11,7 @@ const ALWAYS_AVAILABLE = new Set([
   "/student/lessons",
   "/student/settings",
 ]);
-const PILOT_PREVIEW_AVAILABLE = new Set(["/student/frontier"]);
+const RESULT_PREVIEW_AVAILABLE = new Set(["/student/frontier", "/student/progress"]);
 
 export function studentAssessmentRedirect(input: {
   pathname: string;
@@ -22,9 +22,12 @@ export function studentAssessmentRedirect(input: {
 }) {
   if (ALWAYS_AVAILABLE.has(input.pathname)) return null;
   if (!input.onboarded) return "/student/onboarding";
+  // Read-only evidence pages may show a paused, incomplete assessment. They
+  // do not issue learning commands or mark the diagnostic complete.
+  if (RESULT_PREVIEW_AVAILABLE.has(input.pathname)) return null;
   if (input.granularDiagnosticReady) return null;
   if (input.diagnosticProvisional) {
-    return PILOT_PREVIEW_AVAILABLE.has(input.pathname) ? null : "/student/diagnostic";
+    return "/student/diagnostic";
   }
   if (!input.diagnosticComplete) return "/student/diagnostic";
   return null;
