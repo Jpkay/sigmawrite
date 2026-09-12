@@ -56,3 +56,14 @@ it('journals corrections and actual answers before returning the review and fail
  journal.mockRejectedValueOnce(Error('journal unavailable'));
  await expect(loadDiagnosticAnswerReview(f.store,'owner',id)).rejects.toThrow('journal unavailable');
 });
+it('can capture review corrections atomically with stable identities without changing the response',async()=>{
+ const f=fixture(),atomic=vi.fn(async(_input:import('./covered-material-delivery').CoveredMaterialDelivery)=>{}),journal=vi.fn(async()=>{});
+ const store={...f.store,recordCoveredMaterialDelivery:atomic,recordDeliveredText:journal};
+ const result=await loadDiagnosticAnswerReview(store,'owner',id,'trusted-test-contract');
+ expect(result).not.toHaveProperty('displayText');
+ expect(atomic).toHaveBeenCalledWith(expect.objectContaining({studentId:'owner',boundary:'granular:answer-review',contractKey:'trusted-test-contract',textFragments:expect.arrayContaining([result.rows[0].expectedAnswer])}));
+ expect(atomic.mock.calls[0][0].presentations.length).toBeGreaterThan(0);
+ expect(f.receipt).not.toHaveBeenCalled();expect(journal).not.toHaveBeenCalled();
+ const original=JSON.stringify(atomic.mock.calls[0]);await loadDiagnosticAnswerReview(store,'owner',id,'trusted-test-contract');expect(JSON.stringify(atomic.mock.calls[1])).toBe(original);
+ atomic.mockRejectedValueOnce(Error('atomic unavailable'));await expect(loadDiagnosticAnswerReview(store,'owner',id,'trusted-test-contract')).rejects.toThrow('atomic unavailable');
+});

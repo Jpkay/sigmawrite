@@ -1,9 +1,9 @@
 import {answerReviewDisplayText} from "./answer-review-copy";
-import {journalMaterialDelivery} from "./delivery-journal";
+import {capturePreparedMaterialDelivery,type CoveredMaterialDeliveryStore} from "./covered-material-delivery";
 import {stableUuid} from "@/lib/lexicon/baseline";
 import {checksum} from "@/lib/taxonomy/validate";
 import {z} from "zod";
-import type {MaterialDeliveryStore} from "./material-delivery";
+import type {MaterialPresentation} from "./material-delivery";
 import {questionMaterialKeys} from "./material-annotations";
 import {materialIdentity} from "./material-identity";
 import {publicQuestion} from "./service";
@@ -11,7 +11,7 @@ import {publicTextualSupport,readTextualSupport} from "./textual-support";
 
 /** Only the authenticated student's completed initial sitting can be reviewed.
  * Corrections are delivered only after their material receipts have succeeded. */
-export async function loadDiagnosticAnswerReview(store:MaterialDeliveryStore,studentId:string,input:unknown){
+export async function loadDiagnosticAnswerReview(store:CoveredMaterialDeliveryStore,studentId:string,input:unknown,captureContractKey?:string){
  const id=z.uuid().parse(input),session=await store.load(studentId,id);
  if(!session)throw Error("Diagnostic introuvable.");
  if(session.state.phase!=="learning")throw Error("Termine le diagnostic avant de consulter les réponses.");
@@ -36,14 +36,14 @@ export async function loadDiagnosticAnswerReview(store:MaterialDeliveryStore,stu
    submittedSupport:response?.supportChoiceId?publicTextualSupport(responseSessionId,observation.itemId,item)?.find(choice=>choice.id===response.supportChoiceId)?.text??null:null,
    expectedSupport:support?.choices.find(choice=>choice.correct)?.quoteFr??null};
  });
- const keys=[...materials].sort();
+ const keys=[...materials].sort(),presentations:MaterialPresentation[]=[];
  for(let offset=0;offset<keys.length;offset+=500){
   const materialKeys=keys.slice(offset,offset+500),sourceChecksum=checksum({release:session.state.release,rows,materialKeys});
-  await store.recordMaterialPresentation({studentId,sourceChecksum,materialKeys,
+  presentations.push({studentId,sourceChecksum,materialKeys,
    presentationId:stableUuid("granular-answer-review-v1",`${id}:${sourceChecksum}`)});
  }
  const result={sessionId:id,rows};
- await journalMaterialDelivery(store,studentId,"granular:answer-review",{...result,displayText:answerReviewDisplayText(rows)});
+ await capturePreparedMaterialDelivery(store,studentId,"granular:answer-review",{...result,displayText:answerReviewDisplayText(rows)},presentations,captureContractKey);
  return result;
 }
 export type DiagnosticAnswerReview=Awaited<ReturnType<typeof loadDiagnosticAnswerReview>>;
