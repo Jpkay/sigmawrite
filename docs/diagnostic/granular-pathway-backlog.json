@@ -1,12 +1,12 @@
 {
   "status": "prepared_inventory_not_release_or_review_approval",
-  "parallelCandidateChecksum": "sha256:4c14f19006c2bc6c71733911348d5ecbeddf2f569e402052ff59609df957bd97",
-  "scopedCandidateChecksum": "sha256:872f4e3fdfdc3d1e090b4501b4fc276354bad0099394e7ed455e06b6feabf8a5",
+  "parallelCandidateChecksum": "sha256:73e7cc4e3456bfeff071aa5def506dd3908edb2a572a602abe56861b33f39c81",
+  "scopedCandidateChecksum": "sha256:41ac5b3f02cc87f5bb8177e781a4ad0661dc80f9ecb4e1b502ac42d6452069a3",
   "targets": 542,
   "counts": {
-    "prepared_scoped_pathway": 328,
+    "prepared_scoped_pathway": 329,
     "complete_question_pools": 187,
-    "author_exact_target_lesson": 20,
+    "author_exact_target_lesson": 19,
     "resolve_prerequisite_scope": 2,
     "connected_writing_evidence": 5
   },
@@ -4315,18 +4315,20 @@
       "skillId": "produire_imperatif::writing-controlled-production::verb:savoir",
       "nodeKey": "produire_imperatif",
       "facetKey": "produire_imperatif::verb:savoir",
-      "action": "author_exact_target_lesson",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_imperatif::writing-controlled-production::verb:savoir",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 3,
-          "learningItems": 3
+          "initialItems": 6,
+          "learningItems": 6
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:imperatif-present:verb:savoir"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
@@ -4447,7 +4449,6 @@
       "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": [
         "produire_imperatif::writing-controlled-production::verb:vouloir",
-        "produire_imperatif::writing-controlled-production::verb:savoir",
         "produire_imperatif::writing-controlled-production::verb:devoir"
       ]
     },

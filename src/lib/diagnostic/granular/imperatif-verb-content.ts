@@ -56,6 +56,12 @@ export const IMPERATIF_VERB_CONTENT:VerbContent[]=[
  boundary:'Ne copie pas il voit : la consigne vois a un s final. Voyons et voyez peuvent inviter à examiner quelque chose, sans demander un déplacement.',
  guided:['___ avec Lina pour le rendez-vous.','___ le responsable à l’accueil.','___ comment résoudre ce problème.','___ ce que montre cette photo.','___ les exemples dans la marge.','___ avec votre groupe pour le matériel.'],
  checks:['___ avec ton partenaire qui commence.','___ le professeur après la séance.','___ si ton nom figure sur la liste.','___ ce que tu peux ajouter à ton affiche.','___ ensemble ce qui manque à notre maquette.','___ comment partager les tâches équitablement.','___ si notre hypothèse explique le résultat.','___ ce que nous pouvons améliorer avant demain.','___ le schéma au dos de votre feuille.','___ avec le bibliothécaire pour prolonger vos prêts.','___ si vos réponses correspondent aux indices.','___ les horaires indiqués près de la porte.']},
+ {verb:'savoir',forms:['sache','sachons','sachez'],hook:'Sache que tu peux demander de l’aide. Sachons écouter les autres. Sachez que la salle ferme à dix-huit heures.',
+ rule:'Avec savoir, les trois formes sont sache, sachons et sachez. On utilise sach-, pas le début de tu sais ou de nous savons. Sache ne prend pas de s final.',
+ boundary:'Sache que sert notamment à attirer l’attention sur une information. Sachons écouter invite à adopter une attitude ensemble. Ces phrases ne signifient pas que l’on peut acquérir instantanément une connaissance sur commande. Ne confonds pas sachons avec le subjonctif sachions.',
+ guided:['___ que ton avis compte.','___ reconnaître tes progrès.','___ accueillir les nouveaux élèves.','___ garder notre calme pendant le débat.','___ que le départ est avancé à neuf heures.','___ demander une précision si nécessaire.'],
+ checks:['___ que la bibliothèque est ouverte ce soir.','___ que nous apprécions ton aide.','___ prendre le temps de vérifier tes sources.','___ reconnaître une erreur sans te décourager.','___ apprécier les efforts de chacun.','___ distinguer une plaisanterie d’une moquerie.','___ tirer une leçon de notre première tentative.','___ laisser une place aux idées nouvelles.','___ que la réunion se tient au deuxième étage.','___ que vos dessins seront exposés demain.','___ écouter un avis différent du vôtre.','___ reconnaître les limites de cette comparaison.']},
+
 ];
 function rows(content:VerbContent,gaps:string[]){
  if(gaps.length%3)throw Error('Unbalanced imperative persons');
