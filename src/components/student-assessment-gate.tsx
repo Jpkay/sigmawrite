@@ -1,4 +1,5 @@
 "use client";
+import {STUDENT_INTERFACE_COPY as copy} from "@/lib/student-interface-copy";
 
 import { useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
@@ -64,12 +65,12 @@ export function StudentAssessmentGate({ children, ownerKey }: { children: React.
 
   if (state.hydrationError) {
     return <div role="alert" className="space-y-3">
-      <p>Impossible de charger ton parcours pour le moment. Réessaie pour retrouver tes résultats et tes leçons.</p>
-      <button type="button" className="rounded-md border border-input px-4 py-2 text-sm font-medium" onClick={() => void retryStudentHydration()}>Réessayer</button>
+      <p>{copy.loadError}</p>
+      <button type="button" className="rounded-md border border-input px-4 py-2 text-sm font-medium" onClick={() => void retryStudentHydration()}>{copy.retry}</button>
     </div>;
   }
   if (!state.hydrated || destination) {
-    return <p className="text-sm text-muted-foreground">Préparation de ton parcours…</p>;
+    return <p className="text-sm text-muted-foreground">{copy.loading}</p>;
   }
   return children;
 }

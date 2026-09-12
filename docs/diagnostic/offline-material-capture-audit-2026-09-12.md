@@ -29,3 +29,13 @@ Activation removes earlier pack versions. The worker fallback HTML is still a se
 The real Chromium fixture verified online prefetch, offline replay and reload, rejection after account switching, and rejection after an acknowledged worker sign-out clear. It uses local simulated authenticated responses, not production student accounts. `scripts/verify-offline-owner-cache.mjs` and `offline-owner-browser-2026-09-12.json` preserve the reproducible check and its scope. Unit checks additionally cover late downloads, unknown clients, exact query matching, unsigned/redirected/RSC content, and worker restart. Middleware checks verify validated-owner stamping and redirect exclusions.
 
 After the owner-cache repair, TypeScript passes and the full regression suite passes with two workers: 408 files, 1,795 tests. No timeout thresholds or assertions were relaxed.
+
+## Shared worker fallback and student shell
+
+The worker fallback now imports its HTML from `public/offline-fallback.js`, whose title, heading and message are also imported by the authenticated student layout and recorded before returning the shell. The worker is registered as a module with imported-script HTTP cache bypass on update. The local Chromium verifier upgrades the actual previous classic worker from commit `0e8af48`, then repeats replay, reload, account-switch and sign-out checks; the result is in `offline-shared-copy-browser-2026-09-12.json`.
+
+The layout also records the shared French skip link, quick-navigation label, brand, theme and sign-out controls, loading/retry/error wording, and inactive-invitation text. Those components render the same constants. This does not traverse child page bodies or establish prior-version coverage. It conservatively records possible interface states before they appear.
+
+The rendered-shell/access/loading test and route/worker tests pass (18 tests across four files). The module-worker migration is verified in local Chromium only, not every supported browser or deployed installation. Full-history activation still requires the remaining page/action capture inventory and deployed fresh-student evidence. Metadata, unsupported error states and older cached app code must not be assumed covered.
+
+The shared-copy batch also passes TypeScript and the full two-worker regression suite: 409 files, 1,796 tests. The final layout fixture was rerun after removing unrelated mock properties. Production remains unchanged.

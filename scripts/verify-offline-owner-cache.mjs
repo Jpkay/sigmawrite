@@ -2,13 +2,17 @@
 import {createServer} from 'node:http';
 import {readFileSync,writeFileSync} from 'node:fs';
 import {once} from 'node:events';
+import {execFileSync} from 'node:child_process';
 import assert from 'node:assert/strict';
 import {chromium} from 'playwright';
 const A='aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',B='bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb';
-let owner=A;
+let owner=A,legacyWorker=true;
+const previousWorker=execFileSync('git',['show','0e8af48:public/sw.js']);
 const server=createServer((request,response)=>{
  response.setHeader('Cache-Control','no-store');
- if(request.url==='/sw.js'){response.setHeader('Content-Type','text/javascript');response.end(readFileSync('public/sw.js'));return;}
+ if(request.url==='/offline-fallback.js'){response.setHeader('Content-Type','text/javascript');response.end(readFileSync('public/offline-fallback.js'));return;}
+ if(request.url==='/sw.js'){response.setHeader('Content-Type','text/javascript');response.end(legacyWorker?previousWorker:readFileSync('public/sw.js'));return;}
+ if(request.url==='/upgrade-worker'){legacyWorker=false;response.end('updated');return;}
  if(request.url==='/switch'){owner=B;response.end('changed');return;}
  response.setHeader('Content-Type','text/html');
  if(request.url.startsWith('/student'))response.setHeader('X-Plume-Offline-Owner',owner);
@@ -21,7 +25,14 @@ try{
  browser=await chromium.launch({headless:true,channel:'chrome'});const context=await browser.newContext();const page=await context.newPage();
  await page.goto(base);
  await page.evaluate(async()=>{await navigator.serviceWorker.register('/sw.js');await navigator.serviceWorker.ready;});
- await page.reload();await page.goto(base+'/student');
+ await page.reload();
+ await page.evaluate(async()=>{
+  await fetch('/upgrade-worker');
+  const changed=new Promise(resolve=>navigator.serviceWorker.addEventListener('controllerchange',resolve,{once:true}));
+  await navigator.serviceWorker.register('/sw.js',{type:'module',updateViaCache:'none'});
+  await changed;
+ });
+ await page.goto(base+'/student');
  await page.evaluate(async()=>{await fetch('/student/read/one?version=1',{headers:{'X-Plume-Offline-Prefetch':'1'}});});
  await context.setOffline(true);
  assert.equal((await page.goto(base+'/student/read/one?version=1')).status(),200);
@@ -40,7 +51,7 @@ try{
  });
  await context.setOffline(true);
  assert.equal((await page.goto(base+'/student/read/two')).status(),503);
- const result={fixture:'local-real-chromium',ownerReplay:true,offlineReload:true,accountSwitchRejected:true,signOutReplayRejected:true,productionVerified:false};
+ const result={fixture:'local-real-chromium',classicWorkerUpgraded:true,ownerReplay:true,offlineReload:true,accountSwitchRejected:true,signOutReplayRejected:true,productionVerified:false};
  if(process.argv[2])writeFileSync(process.argv[2],JSON.stringify(result,null,2)+'\n');
  console.log(JSON.stringify(result));
 }finally{await browser?.close();await new Promise(resolve=>server.close(resolve));}

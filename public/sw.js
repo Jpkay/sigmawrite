@@ -1,4 +1,5 @@
-const CACHE="plume-public-v5";
+import {OFFLINE_FALLBACK_HTML} from "./offline-fallback.js";
+const CACHE="plume-public-v6";
 const OFFLINE_PACK="plume-offline-pack-v2-";
 const PRIVATE_CACHE_PREFIXES=["plume-","sigmawrite-"];
 const PUBLIC_ASSET=/^\/_next\/static\/|\.(?:css|js|woff2?|png|jpg|jpeg|gif|webp|svg|ico)$/i;
@@ -40,7 +41,7 @@ async function acceptStudentResponse(event,request,response,started){
   });
 }
 function offlineResponse(){return new Response(
- "<!doctype html><html lang=fr><meta charset=utf-8><meta name=viewport content='width=device-width'><title>Hors ligne</title><main><h1>Connexion indisponible</h1><p>Reconnecte-toi pour accéder en toute sécurité à tes données.</p></main>",
+ OFFLINE_FALLBACK_HTML,
  {status:503,headers:{"Content-Type":"text/html; charset=utf-8","Cache-Control":"no-store"}}
 );}
 self.addEventListener("install",event=>event.waitUntil(self.skipWaiting()));

@@ -1,3 +1,5 @@
+import {DASHBOARD_COPY,STUDENT_INTERFACE_COPY} from "@/lib/student-interface-copy";
+import {OFFLINE_FALLBACK_COPY} from "../../../public/offline-fallback.js";
 import {beforeEach,expect,it,vi} from 'vitest';
 const f=vi.hoisted(()=>({role:vi.fn(),session:vi.fn(),access:vi.fn(),journal:vi.fn()}));
 vi.mock('@/lib/auth',()=>({requireRole:f.role,getSessionProfile:f.session}));
@@ -12,7 +14,7 @@ beforeEach(()=>{vi.resetAllMocks();f.role.mockResolvedValue({id:'profile',authUs
 it('records the exact shell labels and displayed identity before returning the shell',async()=>{
  const output=await Layout({children:'page content'});
  expect(f.role).toHaveBeenCalledWith(['student']);
- expect(f.journal).toHaveBeenCalledWith('student:shell',{area:'Élève',navigation:output.props.nav.map((n:{label:string})=>n.label),tabs:output.props.tabs.map((n:{label:string})=>n.label),displayName:'Élise',role:'student'});
+ expect(f.journal).toHaveBeenCalledWith('student:shell',{area:'Élève',navigation:output.props.nav.map((n:{label:string})=>n.label),tabs:output.props.tabs.map((n:{label:string})=>n.label),displayName:'Élise',role:'student',offlineFallback:OFFLINE_FALLBACK_COPY,controls:STUDENT_INTERFACE_COPY,brand:DASHBOARD_COPY.brand,shell:DASHBOARD_COPY.fr});
  expect(JSON.stringify(f.journal.mock.calls)).not.toContain('page content');
  expect(output.props.user.name).toBe('Élise');
 });

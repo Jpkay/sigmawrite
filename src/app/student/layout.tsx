@@ -1,3 +1,5 @@
+import {DASHBOARD_COPY,STUDENT_INTERFACE_COPY} from "@/lib/student-interface-copy";
+import {OFFLINE_FALLBACK_COPY} from "../../../public/offline-fallback.js";
 import {journalCurrentStudentPayload} from '@/lib/diagnostic/granular/server-delivery-journal';
 import { DashboardShell, type NavItem, type TabItem } from "@/components/dashboard-shell";
 import { getSessionProfile, requireRole } from "@/lib/auth";
@@ -45,7 +47,8 @@ export default async function StudentLayout({
   // A cached layout reuses the already-recorded payload on client navigation.
   await journalCurrentStudentPayload('student:shell',{
     area:'Élève',navigation:nav.map(item=>item.label),tabs:tabs.map(item=>item.label),
-    displayName:user.name,role:user.role,
+    displayName:user.name,role:user.role,offlineFallback:OFFLINE_FALLBACK_COPY,
+    controls:STUDENT_INTERFACE_COPY,brand:DASHBOARD_COPY.brand,shell:DASHBOARD_COPY.fr,
   });
   return (
     <DashboardShell

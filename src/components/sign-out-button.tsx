@@ -1,4 +1,5 @@
 "use client";
+import {STUDENT_INTERFACE_COPY as copy} from "@/lib/student-interface-copy";
 
 import { useRouter } from "next/navigation";
 import { LogOut } from "lucide-react";
@@ -7,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { clearOfflineQueue } from "@/lib/offline-queue";
 import { resetStudentState } from "@/lib/student-store";
 
-export function SignOutButton({ label = "Se déconnecter" }: { label?: string }) {
+export function SignOutButton({ label = copy.signOut }: { label?: string }) {
   const router = useRouter();
 
   async function signOut() {

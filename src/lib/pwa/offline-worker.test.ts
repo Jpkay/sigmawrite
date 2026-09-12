@@ -1,3 +1,4 @@
+import {OFFLINE_FALLBACK_HTML} from "../../../public/offline-fallback.js";
 import {readFileSync} from 'node:fs';
 import {runInNewContext} from 'node:vm';
 import {expect,it,vi} from 'vitest';
@@ -10,7 +11,7 @@ function harness(stores=new Map<string,Map<string,Response>>()){
   if(!stores.has(key))stores.set(key,new Map());const rows=stores.get(key)!;
   return {put:async(request:string|Request,response:Response)=>{rows.set(typeof request==='string'?request:request.url,response.clone());},match:async(request:string|Request)=>rows.get(typeof request==='string'?request:request.url)?.clone()};
  }};
- runInNewContext(readFileSync('public/sw.js','utf8'),{URL,Response,Headers,Map,Promise,caches,fetch,self:{location:{origin},addEventListener:(name:string,fn:any)=>{listeners[name]=fn;},skipWaiting:async()=>{},clients:{claim:async()=>{}}}});
+ runInNewContext(readFileSync('public/sw.js','utf8').replace('import {OFFLINE_FALLBACK_HTML} from "./offline-fallback.js";',''),{OFFLINE_FALLBACK_HTML,URL,Response,Headers,Map,Promise,caches,fetch,self:{location:{origin},addEventListener:(name:string,fn:any)=>{listeners[name]=fn;},skipWaiting:async()=>{},clients:{claim:async()=>{}}}});
  async function get(path:string,{client='tab',mode='navigate',prefetch=false,resulting=''}={}){
   let response!:Promise<Response>;
   listeners.fetch({clientId:client,resultingClientId:resulting,request:{url:origin+path,method:'GET',mode,headers:new Headers(prefetch?{'X-Plume-Offline-Prefetch':'1'}:{})},respondWith:(value:Promise<Response>)=>{response=value;}});
