@@ -71,6 +71,7 @@ import { getCatchUpPlan } from "@/lib/db/practice";
 import { evaluateWriting } from "@/lib/writing/evaluate";
 import { buildTemplate, publicTemplate, reconstruct, type DictationMode, type SegmentTemplate } from "@/lib/dictation/modes";
 import { classifyDictation, CATEGORY_LABELS, type DictationError, type ErrorCategory } from "@/lib/dictation/classify";
+import { resolveDictationAudioAssets } from "@/lib/dictation/audio-manifest";
 import { signDictationAudio } from "@/lib/dictation/audio";
 import { speakableSegment } from "@/lib/dictation/speech-text";
 import { BADGE_BY_KEY, earnedBadges, type BadgeKey } from "@/lib/badges";
@@ -2703,10 +2704,10 @@ export async function markStudentNotificationsRead(input: unknown) {
 const DICTATION_MODES = ["flash", "trous", "choix", "negociee", "brevet"] as const;
 const browserTtsFallbackAllowed = () => process.env.DICTATION_BROWSER_TTS_FALLBACK === "true" && process.env.NODE_ENV !== "production";
 
-type DictationRow = { id: string; key: string; title_fr: string; kind: DictationMode; text_fr: string; segments: { text: string; audioPath: string | null }[]; word_count: number; grade_min: number; grade_max: number; target_node_keys: string[]; focus_fr: string | null; review_status: string; audio_status: string };
+type DictationRow = { id: string; key: string; title_fr: string; kind: DictationMode; text_fr: string; segments: { text: string; audioPath: string | null }[]; word_count: number; grade_min: number; grade_max: number; target_node_keys: string[]; focus_fr: string | null; review_status: string; audio_status: string; audio_manifest?: unknown };
 
 async function visibleDictations(service: SupabaseClient, filter?: { id?: string }) {
-  let query = service.from("dictations").select("id,key,title_fr,kind,text_fr,segments,word_count,grade_min,grade_max,target_node_keys,focus_fr,review_status,audio_status").eq("review_status", "human_approved");
+  let query = service.from("dictations").select("id,key,title_fr,kind,text_fr,segments,word_count,grade_min,grade_max,target_node_keys,focus_fr,review_status,audio_status,audio_manifest").eq("review_status", "human_approved");
   if (!browserTtsFallbackAllowed()) query = query.eq("audio_status", "ready");
   if (filter?.id) query = query.eq("id", filter.id);
   const { data, error } = await query.order("grade_min").order("word_count");
@@ -2757,8 +2758,14 @@ export async function startDictation(input: unknown): Promise<DictationSession> 
   if (error || !attempt) throw new Error(error?.message ?? "La dictée n’a pas pu démarrer.");
   if (attempt.submitted_at) throw new Error("Cette dictée est déjà terminée. Relance-la pour recommencer.");
   const audioMode: "server" | "browser" = row.audio_status === "ready" ? "server" : "browser";
-  const paths = audioMode === "server" ? [...row.segments.map((segment) => segment.audioPath), `${row.key}/full.mp3`] : [];
+  const audioAssets=audioMode === "server" ? resolveDictationAudioAssets({id:row.id,key:row.key,segments:row.segments,audioManifest:row.audio_manifest}) : null;
+  const paths = audioAssets ? [...audioAssets.segmentPaths, audioAssets.fullPath] : [];
   const urls = audioMode === "server" ? await signDictationAudio(service, paths) : [];
+  if(audioAssets?.manifest){
+    if(urls.length!==paths.length||urls.some(url=>!url))throw Error('Audio de la dictée indisponible. Réessaie.');
+    // Server-only provenance: never return the expected transcript to the player.
+    await journalStudentPayload(studentId,"legacy:dictation-audio-offered",audioAssets.manifest);
+  }
   const withTemplates = mode === "trous" || mode === "choix";
   return journalStudentPayload<DictationSession>(studentId,"legacy:dictation",{
     attemptId: attempt.id as string, dictationId: row.id, title: row.title_fr, mode, focus: row.focus_fr, wordCount: row.word_count, audioMode,

@@ -2,6 +2,9 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import { getAIProvider } from "@/lib/ai";
 import { buildSpeechPlan, guardLiaisons, speakableFullText, speakableSegment } from "./speech-text";
 
+import {buildDictationAudioManifest,describeDictationAudio,type DictationAudioAsset} from './audio-manifest';
+import {storeImmutableDictationAudio} from './immutable-audio-storage';
+
 export const DICTATION_AUDIO_BUCKET = "dictation-audio";
 
 type Segment = { text: string; audioPath: string | null };
@@ -15,7 +18,7 @@ type Segment = { text: string; audioPath: string | null };
 export async function renderPendingDictationAudio(db: SupabaseClient, options: { limit?: number } = {}) {
   const limit = options.limit ?? 5;
   const { data: rows, error } = await db.from("dictations")
-    .select("id,key,segments,audio_status")
+    .select("id,key,segments,audio_status,updated_at")
     .eq("review_status", "human_approved").in("audio_status", ["pending", "failed"])
     .order("updated_at", { ascending: true }).limit(limit);
   if (error) throw new Error(error.message);
@@ -24,34 +27,38 @@ export async function renderPendingDictationAudio(db: SupabaseClient, options: {
   let rendered = 0, failed = 0;
   for (const row of rows ?? []) {
     const id = row.id as string;
-    const { data: claimed } = await db.from("dictations").update({ audio_status: "rendering", audio_error: null }).eq("id", id).in("audio_status", ["pending", "failed"]).select("id").maybeSingle();
+    const { data: claimed } = await db.from("dictations").update({ audio_status: "rendering", audio_error: null }).eq("id", id).eq("updated_at", row.updated_at).in("audio_status", ["pending", "failed"]).select("id,updated_at").maybeSingle();
     if (!claimed) continue;
     try {
       const segments = (row.segments as Segment[]).map((segment) => ({ ...segment }));
+      const assets:DictationAudioAsset[]=[];
       let provenance: { provider: string; model: string; voice: string } | null = null;
       for (let index = 0; index < segments.length; index++) {
         // "point final" only on the last segment: it tells the class the dictée is over.
         const plan = buildSpeechPlan(speakableSegment(segments[index].text, { final: index === segments.length - 1 }));
         const speech = await provider.synthesizeSpeechPlan(plan, { speed: 0.85 });
-        const path = `${row.key as string}/segment-${String(index).padStart(2, "0")}.${speech.mimeType === "audio/wav" ? "wav" : "mp3"}`;
-        await upload(db, path, speech.audio, speech.mimeType);
-        const previous = segments[index].audioPath;
-        if (previous && previous !== path) await db.storage.from(DICTATION_AUDIO_BUCKET).remove([previous]);
-        segments[index].audioPath = path;
+        const asset=describeDictationAudio({role:'segment',index,sourceText:segments[index].text,speechPlan:plan,speed:0.85,speech});
+        await storeImmutableDictationAudio(db,asset,speech.audio);
+        assets.push(asset);
+        segments[index].audioPath = asset.path;
         provenance = { provider: speech.provider, model: speech.model, voice: speech.voice };
       }
-      const full = await provider.synthesizeSpeech({ text: guardLiaisons(speakableFullText(segments.map((segment) => segment.text))), speed: 0.9 });
-      const fullPath = `${row.key as string}/full.mp3`;
-      await upload(db, fullPath, full.audio, full.mimeType);
-      const { error: doneError } = await db.from("dictations").update({
-        segments, audio_status: "ready", audio_rendered_at: new Date().toISOString(),
+      const fullSource=speakableFullText(segments.map(segment=>segment.text));
+      const fullSpeech=guardLiaisons(fullSource);
+      const full = await provider.synthesizeSpeech({ text: fullSpeech, speed: 0.9 });
+      const fullAsset=describeDictationAudio({role:'full',index:0,sourceText:fullSource,speechPlan:[{kind:'text',text:fullSpeech}],speed:0.9,speech:full});
+      await storeImmutableDictationAudio(db,fullAsset,full.audio);
+      assets.push(fullAsset);
+      const manifest=buildDictationAudioManifest(id,assets,segments.map(segment=>segment.text));
+      const { data: done, error: doneError } = await db.from("dictations").update({
+        segments, audio_manifest:manifest, audio_status: "ready", audio_rendered_at: new Date().toISOString(),
         audio_provider: provenance?.provider ?? full.provider, audio_model: provenance?.model ?? full.model, audio_voice: provenance?.voice ?? full.voice,
-      }).eq("id", id);
-      if (doneError) throw new Error(doneError.message);
+      }).eq("id", id).eq("updated_at", claimed.updated_at).eq("audio_status", "rendering").select("id").maybeSingle();
+      if (doneError || !done) throw new Error(doneError?.message ?? 'Dictation changed while audio was rendering');
       rendered++;
     } catch (caught) {
       failed++;
-      await db.from("dictations").update({ audio_status: "failed", audio_error: caught instanceof Error ? caught.message.slice(0, 500) : "unknown" }).eq("id", id);
+      await db.from("dictations").update({ audio_status: "failed", audio_error: caught instanceof Error ? caught.message.slice(0, 500) : "unknown" }).eq("id", id).eq("updated_at", claimed.updated_at).eq("audio_status", "rendering");
     }
   }
   return { rendered, failed, considered: rows?.length ?? 0 };
@@ -62,11 +69,6 @@ async function ensureBucket(db: SupabaseClient) {
   if (data) return;
   const { error } = await db.storage.createBucket(DICTATION_AUDIO_BUCKET, { public: false, fileSizeLimit: 5 * 1024 * 1024, allowedMimeTypes: ["audio/mpeg", "audio/mp4", "audio/ogg", "audio/wav"] });
   if (error && !/already exists/iu.test(error.message)) throw new Error(error.message);
-}
-
-async function upload(db: SupabaseClient, path: string, bytes: Uint8Array, contentType: string) {
-  const { error } = await db.storage.from(DICTATION_AUDIO_BUCKET).upload(path, bytes, { contentType, upsert: true });
-  if (error) throw new Error(`${path}: ${error.message}`);
 }
 
 /** Short-lived signed URLs for one dictée session. */

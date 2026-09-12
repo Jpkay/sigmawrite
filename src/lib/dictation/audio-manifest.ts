@@ -53,3 +53,10 @@ export function verifyDictationAudioBytes(asset:DictationAudioAsset,bytes:Uint8A
  if(asset.path!==assetPath(asset))throw Error('Dictation audio path is not immutable');
  if(asset.byteLength!==bytes.byteLength||asset.byteChecksum!==byteDigest(bytes))throw Error('Dictation audio bytes changed');
 }
+
+/** Old recordings remain playable but carry no certified source manifest. */
+export function resolveDictationAudioAssets(input:{id:string;key:string;segments:readonly {text:string;audioPath:string|null}[];audioManifest?:unknown}){
+ if(input.audioManifest==null)return {manifest:null,segmentPaths:input.segments.map(s=>s.audioPath),fullPath:`${input.key}/full.mp3`};
+ const manifest=validateDictationAudioManifest(input.audioManifest,input.id,input.segments.map(s=>s.text));
+ return {manifest,segmentPaths:manifest.assets.slice(0,-1).map(a=>a.path),fullPath:manifest.assets.at(-1)!.path};
+}
