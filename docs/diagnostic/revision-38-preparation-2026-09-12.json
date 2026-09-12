@@ -37,11 +37,23 @@
     "tests": 1752,
     "newLessonJourneys": 3,
     "typeScriptPassed": true,
-    "profileAndCommandSimulations": "running"
+    "profileAndCommandSimulations": "completed",
+    "simulatedProfiles": 10,
+    "commandJourneys": 2,
+    "namedContrastCoverage": {
+      "intendedComparisons": 4,
+      "bothSidesSampled": 3,
+      "separatedSampledComparisons": 3,
+      "unexercisedComparisons": [
+        "literal_chronology_known_causal_inference_weak"
+      ],
+      "limitation": "Both sides sampled means at least one target per side; inspect contrastCoverage for untested modes and constructions. Probability separation is not confirmed mastery or classroom validation."
+    }
   },
   "limitations": [
     "Constructed prerequisite-success and target-gap profiles with synthetic history; not classroom calibration.",
     "Older question versions without assessed passage records remain canonical and historical, but are excluded from the new contextual pathways.",
-    "Human review remains pending. No import, publication or deployment."
+    "Human review remains pending. No import, publication or deployment.",
+    "The reading chronology versus causal inference comparison did not sample the intended chronology targets. Other named comparisons cover sampled targets only, not every mode or construction."
   ]
 }

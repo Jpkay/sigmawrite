@@ -66,10 +66,26 @@ const runs=profiles.map(profile=>{
   return {skillId:skill.id,resultStatus:result.status,directlyPlanned:plan.activities.filter(a=>a.skillId===skill.id).map(a=>a.titleFr),prerequisiteActivities:plan.activities.filter(a=>ancestors.has(a.skillId)).map(a=>({skillId:a.skillId,titleFr:a.titleFr})),blocked:plan.blockedSkillIds.includes(skill.id)};
  }):undefined;
  const contrastStatus=contrastCoverage?(contrastCoverage.known.sampled.length&&contrastCoverage.weak.sampled.length?"both_sides_sampled":"not_fully_exercised"):undefined;
- return {profile:profile.id,contrastStatus,contrastCoverage,targetedFollowup,completionReason:state.completionReason,activeMinutes:state.activeSeconds/60,questions:state.observations.length,correct:state.observations.filter(o=>o.correct).length,sampledTargets:new Set(state.observations.map(o=>o.skillId)).size,results: view.results.reduce<Record<string,number>>((acc,r)=>(acc[r.status]=(acc[r.status]??0)+1,acc),{}),sampledSkills:view.results.filter(result=>result.evidence==="direct").map(result=>{const skill=assessment.skills.find(s=>s.id===result.skillId)!;return {skillId:skill.id,labelFr:skill.labelFr,mode:skill.modes[0],expectedKnown:profile.knows(skill),status:result.status,modes:result.modes};}),firstActivities:plan.activities,missingActivitySkillIds:plan.missingActivitySkillIds,blockedSkillIds:plan.blockedSkillIds,violations};
+ // A named contrast must be evaluated against its intended targets, not every
+ // other successful answer in the session. Unsampled targets provide no proof.
+ const contrastProbabilities=profile.contrast?Object.fromEntries((["known","weak"] as const).map(side=>[side,view.results.filter(result=>sampled.has(result.skillId)&&profile.contrast![side](assessment.skills.find(skill=>skill.id===result.skillId)!)).flatMap(result=>result.modes.map(mode=>({skillId:result.skillId,mode:mode.mode,probability:mode.probability}))) ])):undefined;
+ const contrastProbabilitySeparation=contrastProbabilities?.known.length&&contrastProbabilities.weak.length
+  ? Math.min(...contrastProbabilities.known.map(value=>value.probability))>Math.max(...contrastProbabilities.weak.map(value=>value.probability))
+  : null;
+ if(contrastProbabilitySeparation===false)violations.push("named_contrast_probabilities_not_separated");
+ return {profile:profile.id,contrastStatus,contrastCoverage,contrastProbabilities,contrastProbabilitySeparation,targetedFollowup,completionReason:state.completionReason,activeMinutes:state.activeSeconds/60,questions:state.observations.length,correct:state.observations.filter(o=>o.correct).length,sampledTargets:new Set(state.observations.map(o=>o.skillId)).size,results: view.results.reduce<Record<string,number>>((acc,r)=>(acc[r.status]=(acc[r.status]??0)+1,acc),{}),sampledSkills:view.results.filter(result=>result.evidence==="direct").map(result=>{const skill=assessment.skills.find(s=>s.id===result.skillId)!;return {skillId:skill.id,labelFr:skill.labelFr,mode:skill.modes[0],expectedKnown:profile.knows(skill),status:result.status,modes:result.modes};}),firstActivities:plan.activities,missingActivitySkillIds:plan.missingActivitySkillIds,blockedSkillIds:plan.blockedSkillIds,violations};
 });
-const report={candidateChecksum:candidate.checksum,method:"Pure server-state simulation using actual candidate pools, deterministic correct/incorrect skill profiles and expected response times; synthetic complete starting history with a ledger retaining repeated exposures; not browser, grading, database, or pedagogical validation",runs};
+const contrastRuns=runs.filter(run=>run.contrastCoverage);
+const contrastSummary={
+ intendedComparisons:contrastRuns.length,
+ bothSidesSampled:contrastRuns.filter(run=>run.contrastStatus==="both_sides_sampled").length,
+ separatedSampledComparisons:contrastRuns.filter(run=>run.contrastProbabilitySeparation===true).length,
+ unexercisedComparisons:contrastRuns.filter(run=>run.contrastStatus!=="both_sides_sampled").map(run=>run.profile),
+ limitation:"Both sides sampled means at least one target per side; inspect contrastCoverage for untested modes and constructions. Probability separation is not confirmed mastery or classroom validation.",
+};
+const report={candidateChecksum:candidate.checksum,contrastSummary,method:"Pure server-state simulation using actual candidate pools, deterministic correct/incorrect skill profiles and expected response times; synthetic complete starting history with a ledger retaining repeated exposures; not browser, grading, database, or pedagogical validation",runs};
 const outputIndex=process.argv.indexOf("--output"),outputPath=outputIndex<0?"docs/diagnostic/v3-scoped-simulation.json":process.argv[outputIndex+1];if(!outputPath||outputPath.startsWith("--"))throw Error("Missing --output path");
 writeFileSync(outputPath,JSON.stringify(report,null,2)+"\n");
+console.log(JSON.stringify(contrastSummary));
 console.log(JSON.stringify(runs.map(({profile,completionReason,activeMinutes,questions,correct,sampledTargets,missingActivitySkillIds,violations})=>({profile,completionReason,activeMinutes,questions,correct,sampledTargets,missingActivities:missingActivitySkillIds.length,violations}))));
 if(runs.some(r=>r.violations.length))process.exitCode=1;
