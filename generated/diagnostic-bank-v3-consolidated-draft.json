@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "bank": {
-    "key": "french-diagnostic-bank-v3-r21",
-    "version": "3.0.0-r21"
+    "key": "french-diagnostic-bank-v3-r22",
+    "version": "3.0.0-r22"
   },
   "taxonomy": {
     "releaseKey": "french-taxonomy-v3",
@@ -37491,6 +37491,2736 @@
         "verdict": "needs_human_review"
       },
       "reviewStatus": "needs_human_review"
+    },
+    {
+      "itemKey": "v3-connected-writing:present-club",
+      "item": {
+        "nodeKey": "employer_present_indicatif_en_contexte",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Présente un club réel ou inventé : ce que ses membres font habituellement et comment les rencontres se passent.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Présente un club réel ou inventé : ce que ses membres font habituellement et comment les rencontres se passent.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:present-scene",
+      "item": {
+        "nodeKey": "employer_present_indicatif_en_contexte",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Imagine une scène dans une gare, un parc ou une convention de mangas. Raconte ce qui se passe en ce moment, comme si tu y étais.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Imagine une scène dans une gare, un parc ou une convention de mangas. Raconte ce qui se passe en ce moment, comme si tu y étais.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:present-character",
+      "item": {
+        "nodeKey": "employer_present_indicatif_en_contexte",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Présente un personnage : son quotidien, ses goûts et ses habitudes. Relie tes idées pour former un petit paragraphe.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Présente un personnage : son quotidien, ses goûts et ses habitudes. Relie tes idées pour former un petit paragraphe.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:imperfect-holidays",
+      "item": {
+        "nodeKey": "employer_imparfait_en_contexte",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Raconte les habitudes d’un personnage pendant ses vacances autrefois : ce qu’il faisait régulièrement et avec qui il passait son temps.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Raconte les habitudes d’un personnage pendant ses vacances autrefois : ce qu’il faisait régulièrement et avec qui il passait son temps.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:imperfect-place",
+      "item": {
+        "nodeKey": "employer_imparfait_en_contexte",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Décris un lieu tel qu’il était autrefois : son ambiance, ce qu’on y voyait et ce que les personnes y faisaient habituellement.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Décris un lieu tel qu’il était autrefois : son ambiance, ce qu’on y voyait et ce que les personnes y faisaient habituellement.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:imperfect-before-event",
+      "item": {
+        "nodeKey": "employer_imparfait_en_contexte",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Imagine les minutes avant le début d’un spectacle passé. Décris l’ambiance et les actions qui étaient en cours pendant l’attente.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Imagine les minutes avant le début d’un spectacle passé. Décris l’ambiance et les actions qui étaient en cours pendant l’attente.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:contrast-trip",
+      "item": {
+        "nodeKey": "produire_contraste_pc_imparfait",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Raconte un trajet pendant lequel un imprévu est survenu. Décris la situation au départ, puis ce qui a changé et la réaction des personnages. Utilise le passé composé et l’imparfait.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Raconte un trajet pendant lequel un imprévu est survenu. Décris la situation au départ, puis ce qui a changé et la réaction des personnages. Utilise le passé composé et l’imparfait.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:contrast-match",
+      "item": {
+        "nodeKey": "produire_contraste_pc_imparfait",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Raconte un match passé : décris l’ambiance et les actions en cours, puis un événement qui a changé le jeu. Utilise le passé composé et l’imparfait.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Raconte un match passé : décris l’ambiance et les actions en cours, puis un événement qui a changé le jeu. Utilise le passé composé et l’imparfait.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:contrast-outage",
+      "item": {
+        "nodeKey": "produire_contraste_pc_imparfait",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Imagine une soirée interrompue par une coupure de courant. Raconte ce qui se passait, la coupure et la suite. Utilise le passé composé et l’imparfait.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Imagine une soirée interrompue par une coupure de courant. Raconte ce qui se passait, la coupure et la suite. Utilise le passé composé et l’imparfait.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:sequence-project",
+      "item": {
+        "nodeKey": "produire_sequence_temporelle",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Raconte comment un groupe a réalisé un projet, du début à la fin. Fais comprendre dans quel ordre les étapes se sont déroulées, y compris deux actions menées en même temps.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Raconte comment un groupe a réalisé un projet, du début à la fin. Fais comprendre dans quel ordre les étapes se sont déroulées, y compris deux actions menées en même temps.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:sequence-rescue",
+      "item": {
+        "nodeKey": "produire_sequence_temporelle",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Imagine le sauvetage d’un animal. Raconte les étapes dans l’ordre et précise ce qui se passe pendant qu’une personne cherche de l’aide.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Imagine le sauvetage d’un animal. Raconte les étapes dans l’ordre et précise ce qui se passe pendant qu’une personne cherche de l’aide.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:sequence-event",
+      "item": {
+        "nodeKey": "produire_sequence_temporelle",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Raconte la préparation puis le déroulement d’une fête. Fais comprendre l’ordre des étapes et ce que différents personnages font au même moment.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Raconte la préparation puis le déroulement d’une fête. Fais comprendre l’ordre des étapes et ce que différents personnages font au même moment.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:pronouns-loan",
+      "item": {
+        "nodeKey": "employer_pronoms_complements_en_contexte",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Tu as emprunté un objet à une amie. Raconte comment tu l’as utilisé, ce que tu as dit à cette amie et comment tu as rendu l’objet. Évite les répétitions en utilisant des pronoms.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Tu as emprunté un objet à une amie. Raconte comment tu l’as utilisé, ce que tu as dit à cette amie et comment tu as rendu l’objet. Évite les répétitions en utilisant des pronoms.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "grammar",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:pronouns-team",
+      "item": {
+        "nodeKey": "employer_pronoms_complements_en_contexte",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Raconte comment une équipe a préparé une surprise pour son entraîneuse : les objets choisis, les personnes contactées et la surprise offerte. Utilise des pronoms pour éviter les répétitions.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Raconte comment une équipe a préparé une surprise pour son entraîneuse : les objets choisis, les personnes contactées et la surprise offerte. Utilise des pronoms pour éviter les répétitions.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "grammar",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:pronouns-pet",
+      "item": {
+        "nodeKey": "employer_pronoms_complements_en_contexte",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Raconte comment un personnage s’occupe d’un animal et échange avec sa propriétaire. Utilise des pronoms pour éviter de répéter les mêmes noms.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Raconte comment un personnage s’occupe d’un animal et échange avec sa propriétaire. Utilise des pronoms pour éviter de répéter les mêmes noms.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "grammar",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:near-future-stage",
+      "item": {
+        "nodeKey": "employer_futur_proche_en_contexte",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Le spectacle commence dans quelques minutes. Raconte ce que toi et les autres membres du groupe allez faire juste après. Utilise le futur proche.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Le spectacle commence dans quelques minutes. Raconte ce que toi et les autres membres du groupe allez faire juste après. Utilise le futur proche.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:near-future-weekend",
+      "item": {
+        "nodeKey": "employer_futur_proche_en_contexte",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Présente les préparatifs et les activités prévus pour le week-end qui arrive. Parle de toi et d’autres personnes en utilisant le futur proche.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Présente les préparatifs et les activités prévus pour le week-end qui arrive. Parle de toi et d’autres personnes en utilisant le futur proche.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:near-future-workshop",
+      "item": {
+        "nodeKey": "employer_futur_proche_en_contexte",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Un atelier créatif va commencer. Explique ce que les participants feront dans les prochaines minutes et comment tu les aideras. Utilise le futur proche.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Un atelier créatif va commencer. Explique ce que les participants feront dans les prochaines minutes et comment tu les aideras. Utilise le futur proche.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:recent-arrival",
+      "item": {
+        "nodeKey": "employer_passe_recent_en_contexte",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Tu arrives dans un nouveau lieu. Raconte à un proche plusieurs choses que toi et les personnes avec toi avez faites il y a quelques instants. Utilise le passé récent.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Tu arrives dans un nouveau lieu. Raconte à un proche plusieurs choses que toi et les personnes avec toi avez faites il y a quelques instants. Utilise le passé récent.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:recent-training",
+      "item": {
+        "nodeKey": "employer_passe_recent_en_contexte",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "L’entraînement se termine à l’instant. Raconte plusieurs actions que ton équipe et toi avez tout juste terminées. Utilise le passé récent.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "L’entraînement se termine à l’instant. Raconte plusieurs actions que ton équipe et toi avez tout juste terminées. Utilise le passé récent.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:recent-discovery",
+      "item": {
+        "nodeKey": "employer_passe_recent_en_contexte",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Un groupe fait une découverte surprenante. Raconte les actions que ses membres ont accomplies il y a quelques instants. Utilise le passé récent.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Un groupe fait une découverte surprenante. Raconte les actions que ses membres ont accomplies il y a quelques instants. Utilise le passé récent.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:perfect-outing",
+      "item": {
+        "nodeKey": "employer_passe_compose_en_contexte",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Raconte une sortie réelle ou inventée, en précisant plusieurs actions terminées de différents participants. Utilise le passé composé.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Raconte une sortie réelle ou inventée, en précisant plusieurs actions terminées de différents participants. Utilise le passé composé.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:perfect-challenge",
+      "item": {
+        "nodeKey": "employer_passe_compose_en_contexte",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Raconte comment un groupe a relevé un défi hier. Présente les actions accomplies par différentes personnes au passé composé.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Raconte comment un groupe a relevé un défi hier. Présente les actions accomplies par différentes personnes au passé composé.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:perfect-lost-object",
+      "item": {
+        "nodeKey": "employer_passe_compose_en_contexte",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Raconte comment un personnage a retrouvé un objet perdu. Présente les actions terminées du personnage et des personnes qui l’ont aidé, au passé composé.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Raconte comment un personnage a retrouvé un objet perdu. Présente les actions terminées du personnage et des personnes qui l’ont aidé, au passé composé.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:future-city",
+      "item": {
+        "nodeKey": "employer_futur_simple_en_contexte",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Imagine ta ville dans vingt ans. Explique comment les habitants y vivront et ce que tu y feras. Utilise le futur simple.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Imagine ta ville dans vingt ans. Explique comment les habitants y vivront et ce que tu y feras. Utilise le futur simple.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:future-club",
+      "item": {
+        "nodeKey": "employer_futur_simple_en_contexte",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Présente les projets de ton club pour l’année prochaine. Explique ce que différentes personnes feront en utilisant le futur simple.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Présente les projets de ton club pour l’année prochaine. Explique ce que différentes personnes feront en utilisant le futur simple.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:future-journey",
+      "item": {
+        "nodeKey": "employer_futur_simple_en_contexte",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Imagine une expédition dans plusieurs années. Raconte ce que ton équipe et toi ferez une fois sur place, au futur simple.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Imagine une expédition dans plusieurs années. Raconte ce que ton équipe et toi ferez une fois sur place, au futur simple.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:pluperfect-surprise",
+      "item": {
+        "nodeKey": "employer_plus_que_parfait_en_contexte",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Hier, une surprise a réussi. Raconte ce que plusieurs personnes avaient préparé avant l’arrivée de l’invité. Utilise le plus-que-parfait pour ces préparatifs.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Hier, une surprise a réussi. Raconte ce que plusieurs personnes avaient préparé avant l’arrivée de l’invité. Utilise le plus-que-parfait pour ces préparatifs.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:pluperfect-missed-train",
+      "item": {
+        "nodeKey": "employer_plus_que_parfait_en_contexte",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Un personnage a raté son train hier. Explique plusieurs événements qui s’étaient produits avant son arrivée à la gare. Utilise le plus-que-parfait pour ces événements antérieurs.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Un personnage a raté son train hier. Explique plusieurs événements qui s’étaient produits avant son arrivée à la gare. Utilise le plus-que-parfait pour ces événements antérieurs.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:pluperfect-exhibition",
+      "item": {
+        "nodeKey": "employer_plus_que_parfait_en_contexte",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Une exposition a ouvert hier. Raconte ce que les organisateurs et les artistes avaient accompli avant l’ouverture. Utilise le plus-que-parfait pour ces actions antérieures.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Une exposition a ouvert hier. Raconte ce que les organisateurs et les artistes avaient accompli avant l’ouverture. Utilise le plus-que-parfait pour ces actions antérieures.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:conditional-budget",
+      "item": {
+        "nodeKey": "employer_conditionnel_present_en_contexte",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Imagine que ton groupe dispose d’un budget illimité pour améliorer son quartier. Explique ce que différentes personnes feraient et pourquoi, au conditionnel présent.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Imagine que ton groupe dispose d’un budget illimité pour améliorer son quartier. Explique ce que différentes personnes feraient et pourquoi, au conditionnel présent.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:conditional-power",
+      "item": {
+        "nodeKey": "employer_conditionnel_present_en_contexte",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Imagine qu’un personnage possède un pouvoir extraordinaire. Raconte ce qu’il ferait et comment les autres réagiraient, au conditionnel présent.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Imagine qu’un personnage possède un pouvoir extraordinaire. Raconte ce qu’il ferait et comment les autres réagiraient, au conditionnel présent.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:conditional-island",
+      "item": {
+        "nodeKey": "employer_conditionnel_present_en_contexte",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Imagine que tes amis et toi puissiez aménager une île. Explique vos choix et ce que chacun y construirait ou y ferait, au conditionnel présent.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Imagine que tes amis et toi puissiez aménager une île. Explique vos choix et ce que chacun y construirait ou y ferait, au conditionnel présent.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:subjunctive-trip",
+      "item": {
+        "nodeKey": "employer_subjonctif_present_en_contexte",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Une sortie de groupe se prépare. Exprime plusieurs souhaits et choses nécessaires concernant les participants. Utilise le subjonctif présent dans des phrases reliées.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Une sortie de groupe se prépare. Exprime plusieurs souhaits et choses nécessaires concernant les participants. Utilise le subjonctif présent dans des phrases reliées.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:subjunctive-show",
+      "item": {
+        "nodeKey": "employer_subjonctif_present_en_contexte",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Un spectacle approche. Exprime les souhaits, les craintes et les exigences de l’organisatrice concernant différentes personnes. Utilise le subjonctif présent.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Un spectacle approche. Exprime les souhaits, les craintes et les exigences de l’organisatrice concernant différentes personnes. Utilise le subjonctif présent.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:subjunctive-garden",
+      "item": {
+        "nodeKey": "employer_subjonctif_present_en_contexte",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Un groupe veut créer un jardin partagé. Exprime plusieurs souhaits et conditions nécessaires à la réussite du projet, en utilisant le subjonctif présent.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Un groupe veut créer un jardin partagé. Exprime plusieurs souhaits et conditions nécessaires à la réussite du projet, en utilisant le subjonctif présent.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:imperative-game",
+      "item": {
+        "nodeKey": "employer_imperatif_en_contexte",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Explique à un ami comment participer à un jeu inventé. Adresse-lui directement plusieurs consignes au singulier, dont une interdiction. Utilise l’impératif et relie tes phrases.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Explique à un ami comment participer à un jeu inventé. Adresse-lui directement plusieurs consignes au singulier, dont une interdiction. Utilise l’impératif et relie tes phrases.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:imperative-team",
+      "item": {
+        "nodeKey": "employer_imperatif_en_contexte",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Adresse un bref message à une équipe avant un défi. Donne plusieurs consignes au pluriel, dont une interdiction, en utilisant l’impératif.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Adresse un bref message à une équipe avant un défi. Donne plusieurs consignes au pluriel, dont une interdiction, en utilisant l’impératif.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:imperative-together",
+      "item": {
+        "nodeKey": "employer_imperatif_en_contexte",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Propose à ton groupe un plan d’action que vous réaliserez ensemble. Utilise l’impératif avec « nous » pour proposer plusieurs actions, dont une chose à éviter.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Propose à ton groupe un plan d’action que vous réaliserez ensemble. Utilise l’impératif avec « nous » pour proposer plusieurs actions, dont une chose à éviter.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:simple-past-door",
+      "item": {
+        "nodeKey": "employer_passe_simple_en_contexte",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Écris un bref récit dans lequel un personnage découvre une porte mystérieuse. Raconte plusieurs actions successives au passé simple.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Écris un bref récit dans lequel un personnage découvre une porte mystérieuse. Raconte plusieurs actions successives au passé simple.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:simple-past-messenger",
+      "item": {
+        "nodeKey": "employer_passe_simple_en_contexte",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Écris un bref récit dans lequel un messager apporte une nouvelle inattendue. Raconte ses actions et celles des destinataires au passé simple.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Écris un bref récit dans lequel un messager apporte une nouvelle inattendue. Raconte ses actions et celles des destinataires au passé simple.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:simple-past-creature",
+      "item": {
+        "nodeKey": "employer_passe_simple_en_contexte",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Écris un bref récit dans lequel deux personnages rencontrent une créature inconnue. Raconte leurs actions et celles de la créature au passé simple.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Écris un bref récit dans lequel deux personnages rencontrent une créature inconnue. Raconte leurs actions et celles de la créature au passé simple.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:revise-lexical-memory",
+      "item": {
+        "nodeKey": "reviser_orthographe_lexicale_paragraphe",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Raconte un souvenir réel ou inventé dans un court paragraphe. Tu reliras ensuite ta première version pour vérifier l’écriture des mots.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Raconte un souvenir réel ou inventé dans un court paragraphe. Tu reliras ensuite ta première version pour vérifier l’écriture des mots.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "spelling",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:revise-lexical-discovery",
+      "item": {
+        "nodeKey": "reviser_orthographe_lexicale_paragraphe",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Raconte la découverte d’un endroit surprenant dans un court paragraphe. Tu reliras ensuite ta première version pour vérifier l’écriture des mots.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Raconte la découverte d’un endroit surprenant dans un court paragraphe. Tu reliras ensuite ta première version pour vérifier l’écriture des mots.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "spelling",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:revise-lexical-invention",
+      "item": {
+        "nodeKey": "reviser_orthographe_lexicale_paragraphe",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Présente une invention imaginaire et son utilité dans un court paragraphe. Tu reliras ensuite ta première version pour vérifier l’écriture des mots.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Présente une invention imaginaire et son utilité dans un court paragraphe. Tu reliras ensuite ta première version pour vérifier l’écriture des mots.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "spelling",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:revise-grammar-camp",
+      "item": {
+        "nodeKey": "reviser_orthographe_grammaticale_paragraphe",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Raconte une journée dans un camp avec plusieurs participants. Tu reliras ensuite ta première version pour vérifier les accords et les formes des verbes.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Raconte une journée dans un camp avec plusieurs participants. Tu reliras ensuite ta première version pour vérifier les accords et les formes des verbes.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "spelling",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:revise-grammar-market",
+      "item": {
+        "nodeKey": "reviser_orthographe_grammaticale_paragraphe",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Décris une scène de marché avec plusieurs personnages et leurs actions. Tu reliras ensuite ta première version pour vérifier les accords et les formes des verbes.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Décris une scène de marché avec plusieurs personnages et leurs actions. Tu reliras ensuite ta première version pour vérifier les accords et les formes des verbes.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "spelling",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:revise-grammar-filming",
+      "item": {
+        "nodeKey": "reviser_orthographe_grammaticale_paragraphe",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Raconte un tournage avec plusieurs acteurs et actrices. Tu reliras ensuite ta première version pour vérifier les accords et les formes des verbes.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "materialExposure": {
+            "sentences": [
+              "Raconte un tournage avec plusieurs acteurs et actrices. Tu reliras ensuite ta première version pour vérifier les accords et les formes des verbes.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "spelling",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:lexical-woods",
+      "item": {
+        "nodeKey": "maintenir_orthographe_lexicale_phrase",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Raconte une promenade dans un lieu boisé et la découverte d’une ancienne demeure fortifiée.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "writingRubric": {
+            "version": 1,
+            "nodeKey": "maintenir_orthographe_lexicale_phrase",
+            "criteria": [
+              {
+                "id": "lexical-context-words",
+                "descriptionFr": "Évaluer uniquement la graphie lexicale des mots suivants, si le texte les emploie ou tente clairement de les écrire : forêt, château, chemin, arbre. Accepter leurs formes fléchies correctes, mais ne pas compter les marques grammaticales comme erreurs lexicales."
+              }
+            ],
+            "exclusionsFr": [
+              "Ne pas évaluer les autres mots, les accords, la conjugaison ou la ponctuation.",
+              "L’absence de ces mots ne constitue pas une erreur : sans occasion observable, la compétence reste non évaluée."
+            ]
+          },
+          "materialExposure": {
+            "sentences": [
+              "Raconte une promenade dans un lieu boisé et la découverte d’une ancienne demeure fortifiée.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "spelling",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:lexical-cycling",
+      "item": {
+        "nodeKey": "maintenir_orthographe_lexicale_phrase",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Raconte une sortie à deux roues sans moteur : les préparatifs, le trajet et un arrêt.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "writingRubric": {
+            "version": 1,
+            "nodeKey": "maintenir_orthographe_lexicale_phrase",
+            "criteria": [
+              {
+                "id": "lexical-context-words",
+                "descriptionFr": "Évaluer uniquement la graphie lexicale des mots suivants, si le texte les emploie ou tente clairement de les écrire : vélo, bicyclette, casque, roue, route. Accepter leurs formes fléchies correctes, mais ne pas compter les marques grammaticales comme erreurs lexicales."
+              }
+            ],
+            "exclusionsFr": [
+              "Ne pas évaluer les autres mots, les accords, la conjugaison ou la ponctuation.",
+              "L’absence de ces mots ne constitue pas une erreur : sans occasion observable, la compétence reste non évaluée."
+            ]
+          },
+          "materialExposure": {
+            "sentences": [
+              "Raconte une sortie à deux roues sans moteur : les préparatifs, le trajet et un arrêt.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "spelling",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:lexical-birthday",
+      "item": {
+        "nodeKey": "maintenir_orthographe_lexicale_phrase",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Raconte une fête organisée pour célébrer l’âge d’un personnage, avec ses préparatifs et ses surprises.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "writingRubric": {
+            "version": 1,
+            "nodeKey": "maintenir_orthographe_lexicale_phrase",
+            "criteria": [
+              {
+                "id": "lexical-context-words",
+                "descriptionFr": "Évaluer uniquement la graphie lexicale des mots suivants, si le texte les emploie ou tente clairement de les écrire : anniversaire, cadeau, gâteau, bougie. Accepter leurs formes fléchies correctes, mais ne pas compter les marques grammaticales comme erreurs lexicales."
+              }
+            ],
+            "exclusionsFr": [
+              "Ne pas évaluer les autres mots, les accords, la conjugaison ou la ponctuation.",
+              "L’absence de ces mots ne constitue pas une erreur : sans occasion observable, la compétence reste non évaluée."
+            ]
+          },
+          "materialExposure": {
+            "sentences": [
+              "Raconte une fête organisée pour célébrer l’âge d’un personnage, avec ses préparatifs et ses surprises.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "spelling",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:grammar-team",
+      "item": {
+        "nodeKey": "maintenir_orthographe_grammaticale_phrase",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Décris au présent ce que font plusieurs groupes de personnes pendant une rencontre sportive. Utilise des noms pour identifier ces groupes.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "writingRubric": {
+            "version": 1,
+            "nodeKey": "maintenir_orthographe_grammaticale_phrase",
+            "criteria": [
+              {
+                "id": "subject-verb-plural",
+                "descriptionFr": "Évaluer uniquement l’accord au présent entre un sujet nominal pluriel et son verbe conjugué. Compter chaque relation sujet-verbe observable, y compris une terminaison erronée."
+              }
+            ],
+            "exclusionsFr": [
+              "Ne pas évaluer les autres règles grammaticales, la graphie lexicale, le style ou la ponctuation.",
+              "Sans occasion observable pour cette règle, la compétence reste non évaluée."
+            ]
+          },
+          "materialExposure": {
+            "sentences": [
+              "Décris au présent ce que font plusieurs groupes de personnes pendant une rencontre sportive. Utilise des noms pour identifier ces groupes.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "spelling",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:grammar-costumes",
+      "item": {
+        "nodeKey": "maintenir_orthographe_grammaticale_phrase",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Décris les tenues de plusieurs personnages imaginaires. Précise les couleurs et les caractéristiques de leurs vêtements.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "writingRubric": {
+            "version": 1,
+            "nodeKey": "maintenir_orthographe_grammaticale_phrase",
+            "criteria": [
+              {
+                "id": "noun-adjective-agreement",
+                "descriptionFr": "Évaluer uniquement les accords en genre et en nombre entre un nom et son adjectif qualificatif. Ne pas compter deux fois la même relation."
+              }
+            ],
+            "exclusionsFr": [
+              "Ne pas évaluer les autres règles grammaticales, la graphie lexicale, le style ou la ponctuation.",
+              "Sans occasion observable pour cette règle, la compétence reste non évaluée."
+            ]
+          },
+          "materialExposure": {
+            "sentences": [
+              "Décris les tenues de plusieurs personnages imaginaires. Précise les couleurs et les caractéristiques de leurs vêtements.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "spelling",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-connected-writing:grammar-collection",
+      "item": {
+        "nodeKey": "maintenir_orthographe_grammaticale_phrase",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Présente une collection réelle ou inventée. Décris les différents objets et explique comment ils sont rangés.",
+        "instructionsFr": "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation.",
+        "acceptableAnswers": [],
+        "validatorType": "rubric",
+        "validatorConfig": {
+          "writingEvaluation": "source-bound-v1",
+          "writingRubric": {
+            "version": 1,
+            "nodeKey": "maintenir_orthographe_grammaticale_phrase",
+            "criteria": [
+              {
+                "id": "determiner-noun-number",
+                "descriptionFr": "Évaluer uniquement l’accord en nombre entre un déterminant et le nom qu’il introduit. Compter chaque relation observable, y compris une marque du pluriel manquante."
+              }
+            ],
+            "exclusionsFr": [
+              "Ne pas évaluer les autres règles grammaticales, la graphie lexicale, le style ou la ponctuation.",
+              "Sans occasion observable pour cette règle, la compétence reste non évaluée."
+            ]
+          },
+          "materialExposure": {
+            "sentences": [
+              "Présente une collection réelle ou inventée. Décris les différents objets et explique comment ils sont rangés.",
+              "Écris un court paragraphe avec des phrases reliées entre elles. Utilise tes propres idées, sans modèle. Tu peux inventer la situation."
+            ]
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-independent-production",
+      "evidenceExpectation": "independent_production",
+      "sectionKey": "spelling",
+      "promptFamily": "independent-connected-writing",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true,
+          "reason": "Source-bound writing has no exact answer; task and rubric require review."
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
     },
     {
       "itemKey": "v3-past-tense-foundations:recognition-1",
@@ -442069,9 +444799,9 @@
     }
   ],
   "manifest": {
-    "itemCount": 6914,
+    "itemCount": 6968,
     "eligibleItemCount": 238,
-    "pendingItemCount": 6676,
+    "pendingItemCount": 6730,
     "publicationMode": "partial",
     "nodeCount": 114,
     "sectionReadiness": [
@@ -442120,6 +444850,6 @@
         "difficultyTierCount": 3
       }
     ],
-    "checksum": "sha256:b9427f72fde5ad2cd6174315c869568a6d12d565273fa5c290b67593077e040f"
+    "checksum": "sha256:e6c6e1972c3e124fd673c55520cf5ff02724094710159418ee7b9e14c5b36cc0"
   }
 }
