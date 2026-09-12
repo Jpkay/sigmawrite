@@ -133,14 +133,19 @@ try {
  }
 
  if(!current.teaching){
-  const lesson=current.learningActivities.find(a=>a.kind==='instruction');if(!lesson)throw Error('No guided lesson offered');
-  await page.goto(base+'/student/diagnostic?activity='+encodeURIComponent(lesson.activityId));
+  const lesson=process.argv.includes('--optional-lessons')?current.optionalLearningActivities?.[0]:current.learningActivities.find(a=>a.kind==='instruction');if(!lesson)throw Error('No guided lesson offered');
+  if(process.argv.includes('--optional-lessons')){
+   await page.goto(base+'/student/lessons');
+   await page.getByRole('heading',{name:'Tu peux aussi découvrir ces leçons',exact:true}).waitFor();
+   await page.locator('a').filter({hasText:'Ouvrir cette leçon'}).and(page.locator(`a[href="${lesson.href}"]`)).click();
+  }else await page.goto(base+'/student/diagnostic?activity='+encodeURIComponent(lesson.activityId));
   current=await waitView(v=>!!v.teaching);
  }
  const contentId=current.teaching!.contentId;
  const lesson=bundle.teachingContent!.find(l=>l.id===contentId)!;
  const before=await retryQaRead(() => admin.from('granular_assessment_sessions').select('state').eq('id',current.sessionId).single());if(before.error)throw before.error;
  const evidenceBefore=JSON.stringify(before.data.state.observations);
+ const refinementsBefore=JSON.stringify(before.data.state.refinements);
  if(current.teaching!.phase==='lesson'){
   await page.getByRole('button',{name:'À moi d’essayer',exact:true}).click();
   current=await waitView(v=>v.teaching?.phase==='practice');
@@ -163,7 +168,7 @@ try {
  }
  const after=await retryQaRead(() => admin.from('granular_assessment_sessions').select('state').eq('id',current.sessionId).single());if(after.error)throw after.error;
  if(!after.data.state.completedTeachingIds.includes(contentId))throw Error('Completed lesson not saved');
- if(JSON.stringify(after.data.state.observations)!==evidenceBefore)throw Error('Guided practice altered unaided diagnostic evidence');
+ if(JSON.stringify(after.data.state.observations)!==evidenceBefore||JSON.stringify(after.data.state.refinements)!==refinementsBefore)throw Error('Guided practice altered independent evidence');
  await page.reload();current=await waitView(v=>v.phase==='learning'&&!v.teaching);
  const skillId=bundle.assessment.skills.find(skill=>skill.nodeKey===lesson.nodeKey&&skill.facetKey===lesson.facetKey&&skill.modes.includes(lesson.mode))!.id;
  const next=current.learningActivities.find(a=>a.kind==='independent_check'&&a.skillId===skillId);if(!next)throw Error('No independent verification offered');
