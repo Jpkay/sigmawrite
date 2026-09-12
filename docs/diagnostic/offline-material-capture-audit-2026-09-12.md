@@ -17,3 +17,15 @@ No complete-history contract is enabled by these changes. No old student history
 ## Verification
 
 TypeScript and the seven focused checks pass. The broad run passed 1,785 tests and hit the default five-second timeout in three content-validation tests (two files). Both files passed in an isolated single-worker rerun: four tests, unchanged assertions and timeouts. This is not a claim that the initial broad run was all green. No deployment or complete-history activation was performed.
+
+## Owner-bound cache repair (subsequent implementation)
+
+The URL-only pack described above has been replaced in source. Authenticated student responses now carry a server-derived owner header after role and password-change redirects. Client-supplied owner headers do not establish identity. The home page requests prefetches; only the service worker writes their successful, non-redirected HTML responses into an owner-specific pack.
+
+The worker tracks the client that received the server response, matches the complete URL including its query, and verifies the stored response owner before offline replay. An online navigation for another owner removes the previous pack and client bindings. A generation check rejects prefetches that finish after sign-out; serialized writes ensure clearing runs after any already-started cache write. An unknown client or restarted worker must reconnect before replaying private content. This is an explicit limitation: offline replay is not restored from an unverified persisted owner marker.
+
+Activation removes earlier pack versions. The worker fallback HTML is still a separate exposure-capture gap. The owner header proves account association only; it does not certify complete page-body capture, a material-history baseline, or mastery evidence. Browser deployment/version rollout remains pending.
+
+The real Chromium fixture verified online prefetch, offline replay and reload, rejection after account switching, and rejection after an acknowledged worker sign-out clear. It uses local simulated authenticated responses, not production student accounts. `scripts/verify-offline-owner-cache.mjs` and `offline-owner-browser-2026-09-12.json` preserve the reproducible check and its scope. Unit checks additionally cover late downloads, unknown clients, exact query matching, unsigned/redirected/RSC content, and worker restart. Middleware checks verify validated-owner stamping and redirect exclusions.
+
+After the owner-cache repair, TypeScript passes and the full regression suite passes with two workers: 408 files, 1,795 tests. No timeout thresholds or assertions were relaxed.

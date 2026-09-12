@@ -90,6 +90,10 @@ export async function updateSession(request: NextRequest) {
         return NextResponse.redirect(url);
       }
     }
+    if (role === "student" && (pathname === "/student" || pathname.startsWith("/student/"))) {
+      // Response identity comes from validated auth, never a request header.
+      response.headers.set("X-Plume-Offline-Owner", user.id);
+    }
   }
 
   void PUBLIC_PREFIXES;

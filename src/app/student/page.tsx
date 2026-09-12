@@ -51,7 +51,14 @@ export default function StudentHome() {
   const displayedRecommendation = hasStudentBackend ? recommended : fallback;
   const displayedRecommendations = useMemo(()=>recommendations.length ? recommendations : [displayedRecommendation],[recommendations,displayedRecommendation]);
   const planMinutes = plan.reduce((total, entry) => total + entry.estimatedMinutes, 0);
-  useEffect(()=>{if(typeof window==="undefined"||!("caches"in window))return;const urls=[...displayedRecommendations.map(text=>`/student/read/${text.id}`),...plan.filter(entry=>entry.type!=="review_card").map(entry=>entry.href)];void caches.open("plume-offline-pack-v1").then(cache=>Promise.all(urls.map(url=>cache.add(url).catch(()=>undefined))));},[displayedRecommendations,plan]);
+  useEffect(()=>{
+    if(!state.hydrated||typeof navigator==="undefined"||!navigator.serviceWorker?.controller)return;
+    const controller=new AbortController();
+    const urls=[...displayedRecommendations.map(text=>`/student/read/${text.id}`),...plan.filter(entry=>entry.type!=="review_card").map(entry=>entry.href)];
+    // The worker alone writes owner-verified responses into the private pack.
+    void Promise.all(urls.map(url=>fetch(url,{headers:{"X-Plume-Offline-Prefetch":"1"},signal:controller.signal}).catch(()=>undefined)));
+    return()=>controller.abort();
+  },[state.hydrated,displayedRecommendations,plan]);
 
   if (!state.hydrated) {
     return <PageHeader title="Bonjour 👋" description="Chargement…" />;
