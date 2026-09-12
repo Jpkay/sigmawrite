@@ -1,4 +1,5 @@
 "use client";
+import {REPAIR_COPY as copy,repairProgress,repairCompletion} from "@/lib/diagnostic/granular/repair-display";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -29,9 +30,9 @@ export function RepairPlayer({ skillKey, lesson }: { skillKey: string; lesson: M
   if (!lesson) {
     return (
       <>
-        <PageHeader title="Micro-leçon introuvable" />
+        <PageHeader title={copy.missing} />
         <Link href="/student" className={buttonVariants({ variant: "outline" })}>
-          Retour à l&apos;accueil
+          {copy.home}
         </Link>
       </>
     );
@@ -43,30 +44,29 @@ export function RepairPlayer({ skillKey, lesson }: { skillKey: string; lesson: M
     : lesson.questions[qIndex];
 
   function check() {
-    if (picked === null || !current) return;
+    if (picked === null || !current || reveal || pending) return;
     setReveal(true);
     setCorrects((c) => [...c, picked === current.correctIndex]);
   }
 
   async function advance() {
-    if (!lesson) return;
-    setReveal(false);
-    setPicked(null);
+    if (!lesson || pending) return;
     if (!isReturn) {
+      setReveal(false);
+      setPicked(null);
       if (qIndex + 1 < lesson.questions.length) setQIndex(qIndex + 1);
       else setPhase("return");
     } else {
-      applySkillResults(skillKey, corrects);
       setPending(true);
       setError("");
       try {
         if (hasStudentBackend) {
           const response = await submitSkillPractice({ skillKey, corrects });
           replaceStudentState(response.state);
-        }
+        } else applySkillResults(skillKey, corrects);
         setPhase("done");
       } catch {
-        setError("Le résultat n'a pas pu être enregistré. Réessaie.");
+        setError(copy.error);
       } finally {
         setPending(false);
       }
@@ -76,11 +76,11 @@ export function RepairPlayer({ skillKey, lesson }: { skillKey: string; lesson: M
   if (phase === "explain") {
     return (
       <>
-        <PageHeader title={lesson.title} description="Réparation des bases — 2 minutes." />
+        <PageHeader title={lesson.title} description={copy.description} />
         <Card>
           <CardContent className="space-y-4 pt-6">
             <p className="flex items-center gap-2 text-sm font-medium">
-              <Wrench className="size-4 text-primary" /> Ce qu&apos;il faut retenir
+              <Wrench className="size-4 text-primary" /> {copy.remember}
             </p>
             <p className="leading-relaxed">{lesson.explanationFr}</p>
             <div className="flex flex-wrap gap-2">
@@ -91,7 +91,7 @@ export function RepairPlayer({ skillKey, lesson }: { skillKey: string; lesson: M
               ))}
             </div>
             <Button onClick={() => setPhase("practice")}>
-              Je m&apos;entraîne <ArrowRight />
+              {copy.practice} <ArrowRight />
             </Button>
           </CardContent>
         </Card>
@@ -104,19 +104,19 @@ export function RepairPlayer({ skillKey, lesson }: { skillKey: string; lesson: M
     const total = corrects.length;
     return (
       <>
-        <PageHeader title="Micro-leçon terminée 👍" />
+        <PageHeader title={copy.done} />
         <Card className="mb-4">
           <CardContent className="pt-6">
             <p className="text-2xl font-semibold">
               {score} / {total}
             </p>
             <p className="text-sm text-muted-foreground">
-              Ton estimation de compétence « {lesson.title} » a été mise à jour.
+              {repairCompletion(lesson.title)}
             </p>
           </CardContent>
         </Card>
         <Link href="/student" className={buttonVariants()}>
-          Continuer <ArrowRight />
+          {copy.next} <ArrowRight />
         </Link>
       </>
     );
@@ -127,7 +127,7 @@ export function RepairPlayer({ skillKey, lesson }: { skillKey: string; lesson: M
     <>
       <PageHeader
         title={lesson.title}
-        description={isReturn ? "Retour au texte" : `Entraînement ${qIndex + 1} / ${lesson.questions.length}`}
+        description={isReturn ? copy.return : repairProgress(qIndex,lesson.questions.length)}
       />
       <Card>
         <CardContent className="pt-6">
@@ -145,11 +145,11 @@ export function RepairPlayer({ skillKey, lesson }: { skillKey: string; lesson: M
           <div className="mt-5">
             {!reveal ? (
               <Button onClick={check} disabled={picked === null}>
-                Vérifier <Check />
+                {copy.verify} <Check />
               </Button>
             ) : (
               <Button onClick={advance} disabled={pending}>
-                {pending ? "Enregistrement…" : isReturn ? "Terminer" : "Suivant"} <ArrowRight />
+                {pending ? copy.saving : isReturn ? copy.finish : copy.following} <ArrowRight />
               </Button>
             )}
           </div>

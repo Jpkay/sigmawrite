@@ -161,7 +161,8 @@
     "Apply and use atomic covered-delivery operation only after the route contract is verified.",
     "Establish fresh baseline with coverage enabled; do not backdate existing students.",
     "Verify owner changes, failed writes, offline replay, concurrent uncovered delivery and late requests invalidate or preserve history correctly.",
-    "Run a fresh complete diagnostic and recommended learning journey with eligible independent evidence."
+    "Run a fresh complete diagnostic and recommended learning journey with eligible independent evidence.",
+    "Legacy repair submissions need durable retry identity: unchanged answer payload does not itself prevent duplicate server updates after an uncertain response."
   ],
   "remediationsAfterBaseline": [
     {
@@ -212,6 +213,14 @@
       "change": "Printed author, count, type labels, UTC dates, header description and empty state recorded from shared display projection.",
       "status": "implemented-not-deployed",
       "limits": "Global error/version coverage remains outside this page fix."
+    },
+    {
+      "routes": [
+        "repair/[skillKey]/page.tsx"
+      ],
+      "change": "Shared fixed copy, exercise positions, valid scores and completion text recorded; rejected final save retains answers and skips premature local skill update.",
+      "status": "implemented-not-deployed",
+      "limits": "Legacy submitSkillPractice still lacks a durable submission id for retry after an uncertain server response; owner/version and global error contracts remain to verify."
     }
   ]
 }

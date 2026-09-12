@@ -8,6 +8,7 @@ vi.mock('./reference/verbe/verb-search', () => ({ VerbSearch: () => null }));
 import RepairPage from './repair/[skillKey]/page';
 import VerbIndex from './reference/verbe/page';
 import { MICRO_LESSONS } from '@/lib/content/micro-lessons';
+import {repairDisplay} from '@/lib/diagnostic/granular/repair-display';
 import { FREQUENT_VERBS } from '@/lib/conjugation/table';
 import { deliveredTextFragments } from '@/lib/diagnostic/granular/delivery-journal';
 
@@ -17,6 +18,7 @@ it('records the exact repair payload, including correction text delivered to the
   const payload = f.journal.mock.calls[0][1];
   expect(f.journal.mock.calls[0][0]).toBe('legacy:repair');
   expect(payload.lesson).toBe(page.props.lesson);
+  expect(payload.display).toEqual(repairDisplay(page.props.lesson));
   expect(deliveredTextFragments(payload)).toContain(MICRO_LESSONS.cause_consequence.returnToText.explanationFr);
   expect(page.key).toBe('cause_consequence');
 });
