@@ -1,12 +1,12 @@
 {
   "status": "prepared_inventory_not_release_or_review_approval",
-  "parallelCandidateChecksum": "sha256:76de270b92ee1b69a17080fbbac5b50fa48e51352eea93ef571a8cd27f2c8179",
-  "scopedCandidateChecksum": "sha256:975f765fb8b04a8eb7631091af5780cc4b3d9d78f9ec5b4940a4fbb59995f586",
+  "parallelCandidateChecksum": "sha256:3568080369764735a9246290f4443f5bd678e8ee236fedc9a75b4c8c80e26abb",
+  "scopedCandidateChecksum": "sha256:39c7af9eebc2775176b6893464aa319092189c72d8fef99358e858b5722c7109",
   "targets": 542,
   "counts": {
-    "prepared_scoped_pathway": 334,
+    "prepared_scoped_pathway": 336,
     "complete_question_pools": 187,
-    "author_exact_target_lesson": 14,
+    "author_exact_target_lesson": 12,
     "resolve_prerequisite_scope": 2,
     "connected_writing_evidence": 5
   },
@@ -2457,11 +2457,9 @@
       "lessonIds": [],
       "freshCheckAvailable": false,
       "prerequisitesOutsidePreparedScope": [
-        "produire_passe_simple::writing-controlled-production::verb:prendre",
         "produire_passe_simple::writing-controlled-production::verb:venir",
         "produire_passe_simple::writing-controlled-production::verb:partir",
         "produire_passe_simple::writing-controlled-production::verb:sortir",
-        "produire_passe_simple::writing-controlled-production::verb:dire",
         "produire_passe_simple::writing-controlled-production::verb:voir",
         "produire_passe_simple::writing-controlled-production::verb:pouvoir",
         "produire_passe_simple::writing-controlled-production::verb:vouloir",
@@ -10467,18 +10465,20 @@
       "skillId": "produire_passe_simple::writing-controlled-production::verb:prendre",
       "nodeKey": "produire_passe_simple",
       "facetKey": "produire_passe_simple::verb:prendre",
-      "action": "author_exact_target_lesson",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_passe_simple::writing-controlled-production::verb:prendre",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 4,
-          "learningItems": 4
+          "initialItems": 6,
+          "learningItems": 6
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:passe-simple:verb:prendre"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
@@ -10539,18 +10539,20 @@
       "skillId": "produire_passe_simple::writing-controlled-production::verb:dire",
       "nodeKey": "produire_passe_simple",
       "facetKey": "produire_passe_simple::verb:dire",
-      "action": "author_exact_target_lesson",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_passe_simple::writing-controlled-production::verb:dire",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 4,
-          "learningItems": 4
+          "initialItems": 6,
+          "learningItems": 6
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:passe-simple:verb:dire"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
