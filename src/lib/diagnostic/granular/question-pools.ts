@@ -297,9 +297,9 @@ export function allocateQuestionPools(source:V3Assessment,maxSearchStates=20000)
   const skill=assessment.skills.find(skill=>skill.id===row.skillId)!;
   if(skill.assessmentStage==="learning")continue;
   const group=assessment.probes.filter(probe=>probe.skillId===row.skillId&&probe.mode===row.mode);
-  if(!group.length||group.some(probe=>!probe.samplingCategory))continue;
-  const categories=[...new Set(group.map(probe=>probe.samplingCategory))].sort();
-  const balanced=categories.flatMap(category=>group.filter(probe=>probe.samplingCategory===category).sort((a,b)=>a.id.localeCompare(b.id)).map((probe,index)=>({...probe,usage:index%2===0?"initial" as const:"learning" as const})));
+  if(!group.some(probe=>probe.samplingCategory))continue;
+  const categories=[...new Set(group.flatMap(probe=>probe.samplingCategory?[probe.samplingCategory]:[]))].sort();
+  const balanced=[...group.filter(probe=>!probe.samplingCategory),...categories.flatMap(category=>group.filter(probe=>probe.samplingCategory===category).sort((a,b)=>a.id.localeCompare(b.id)).map((probe,index)=>({...probe,usage:index%2===0?"initial" as const:"learning" as const})))];
   if(!categories.every(category=>["initial","learning"].every(usage=>balanced.some(probe=>probe.samplingCategory===category&&probe.usage===usage))))continue;
   if(isQuestionPoolSufficient(balanced.filter(probe=>probe.usage==="initial"),skill,row.mode,false)&&isQuestionPoolSufficient(balanced.filter(probe=>probe.usage==="learning"),skill,row.mode,true)){
    const usage=new Map(balanced.map(probe=>[probe.id,probe.usage]));

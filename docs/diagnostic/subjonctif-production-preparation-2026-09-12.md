@@ -1,6 +1,6 @@
 # Present subjunctive production preparation
 
-Status: unpublished teaching drafts registered in the working catalogue, with fresh question pools verified but prerequisite scope unresolved. The frozen 237-target candidate is unchanged.
+Status: unpublished teaching drafts registered in the working catalogue, with fresh question pools and prerequisite scope verified, pending the complete service journeys. The frozen 237-target candidate is unchanged.
 
 Fourteen exact-verb lessons now cover être, avoir, aller, faire, prendre, venir, partir, sortir, dire, voir, pouvoir, vouloir, savoir and devoir. Each contains four explanation steps and six guided exercises, one per grammatical person. The forms are authored explicitly and checked against the conjugator. Subject selection, irregular stems and written distinctions such as voyions/voyiez are explained separately. Guided contexts naturally call for the subjunctive; vouloir and devoir use possibility rather than mechanically imposing redundant obligations.
 
@@ -37,3 +37,5 @@ The draft catalogue now registers the fourteen lessons, and bank revision 15 pre
 All fourteen lesson targets now pass fresh-check readiness. The prepared released scope nevertheless remains 237 targets: `reconnaitre_subjonctif_present::reading-receptive` has only two questions and no lesson. Its approved prerequisites are `construction_subordonnee_completive::reading-analysis` and `construction_subordonnee_completive::writing-controlled-production`. Complete and verify that prerequisite path before admitting the production lessons. Do not bypass the graph to inflate coverage.
 
 Validation: 617 granular tests across 178 files and TypeScript checking pass. This preparation is separate from the immutable v15 bank-revision-14 deployment undergoing its timed browser test. Production lesson service journeys are still pending prerequisite completion.
+
+Subsequent recognition preparation closes the prerequisite scope and brings the working candidate to 253 targets. Fifteen service journeys are rerunning after excluding untracked legacy subjunctive items; see `subjonctif-recognition-preparation-2026-09-12.md`.

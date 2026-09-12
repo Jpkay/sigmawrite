@@ -2,20 +2,20 @@
   "status": "parallel_review_release_preparation",
   "reviewOwner": "product_owner",
   "authorization": "product-owner-request-2026-09-11",
-  "policyChecksum": "sha256:b51dc6cb5fb0f5cd9166211f6272e48087d44f5805df5dc435d5e9a08ae5277b",
+  "policyChecksum": "sha256:7529b8c98369dd1deeaf325e441318e77c54338e17efcc092eb02dd55b7faddf",
   "summary": {
     "teachingScopeTargets": 253,
-    "teachingPrerequisiteGapTargets": 1,
-    "teachingLessons": 270,
-    "teachingTargetsWithPools": 252,
-    "teachingTargetsWithFreshChecks": 252,
-    "guidedExercises": 1526,
-    "selectedPendingOrRepairedQuestions": 5767,
+    "teachingPrerequisiteGapTargets": 0,
+    "teachingLessons": 271,
+    "teachingTargetsWithPools": 253,
+    "teachingTargetsWithFreshChecks": 253,
+    "guidedExercises": 1532,
+    "selectedPendingOrRepairedQuestions": 5791,
     "canonicalReviewedQuestions": 238,
-    "mappedQuestions": 5988,
+    "mappedQuestions": 6007,
     "targets": 542,
-    "allocatedTargets": 295,
-    "incompleteTargets": 247,
+    "allocatedTargets": 296,
+    "incompleteTargets": 246,
     "fullPoolCoverage": false,
     "unsupportedEvidenceItemKeys": [
       "local-reading-v1:inferer_chronologie_implicite:receptive:foundation",
@@ -26,8 +26,13 @@
       "local-reading-v1:distinguer_preuve_connaissance_externe:receptive:foundation",
       "local-reading-v1:distinguer_preuve_connaissance_externe:receptive:core",
       "local-reading-v1:distinguer_preuve_connaissance_externe:receptive:stretch",
+      "local-conjugation-gap-v1:reconnaitre_subjonctif_present:receptive:stretch",
+      "local-conjugation-gap-v1:reconnaitre_subjonctif_present:receptive:foundation",
       "local-spelling-v1:associer_phoneme_graphie_frequente:controlled_production:foundation",
-      "local-spelling-v1:associer_phoneme_graphie_frequente:receptive:core"
+      "local-spelling-v1:associer_phoneme_graphie_frequente:receptive:core",
+      "computed-conjugation-v1:produire_subjonctif_present_frequent:stretch",
+      "computed-conjugation-v1:produire_subjonctif_present_frequent:core",
+      "computed-conjugation-v1:produire_subjonctif_present_frequent:foundation"
     ],
     "unassignedQuestionIds": [
       "review-draft-v1:construction_accord_sujet_verbe:receptive:stretch",
@@ -20956,54 +20961,6 @@
         "usage": "learning"
       },
       {
-        "id": "computed-conjugation-v1:produire_subjonctif_present_frequent:foundation",
-        "skillId": "produire_subjonctif_present_frequent::writing-controlled-production::verb:être",
-        "mode": "production",
-        "contextId": "verb:être",
-        "difficulty": 0.25,
-        "expectedSeconds": 30,
-        "guessProbability": 0.05,
-        "textualSupportAssessed": false,
-        "materialKeys": [],
-        "assessedMaterialKeys": [],
-        "contrastingErrorKeys": [],
-        "negativeExampleAssessed": false,
-        "evidenceFeatures": [],
-        "usage": "learning"
-      },
-      {
-        "id": "computed-conjugation-v1:produire_subjonctif_present_frequent:core",
-        "skillId": "produire_subjonctif_present_frequent::writing-controlled-production::verb:avoir",
-        "mode": "production",
-        "contextId": "verb:avoir",
-        "difficulty": 0.5,
-        "expectedSeconds": 30,
-        "guessProbability": 0.05,
-        "textualSupportAssessed": false,
-        "materialKeys": [],
-        "assessedMaterialKeys": [],
-        "contrastingErrorKeys": [],
-        "negativeExampleAssessed": false,
-        "evidenceFeatures": [],
-        "usage": "learning"
-      },
-      {
-        "id": "computed-conjugation-v1:produire_subjonctif_present_frequent:stretch",
-        "skillId": "produire_subjonctif_present_frequent::writing-controlled-production::verb:faire",
-        "mode": "production",
-        "contextId": "verb:faire",
-        "difficulty": 0.75,
-        "expectedSeconds": 30,
-        "guessProbability": 0.05,
-        "textualSupportAssessed": false,
-        "materialKeys": [],
-        "assessedMaterialKeys": [],
-        "contrastingErrorKeys": [],
-        "negativeExampleAssessed": false,
-        "evidenceFeatures": [],
-        "usage": "learning"
-      },
-      {
         "id": "computed-conjugation-v1:produire_imperatif:foundation",
         "skillId": "produire_imperatif::writing-controlled-production::pattern:regular_er",
         "mode": "production",
@@ -23696,36 +23653,6 @@
         "mode": "recognition",
         "contextId": "surface:sha256:a940e7baf61fca7a252347d183b04de9791137d0dca081fed885eca80d0d12a4",
         "difficulty": 0.25,
-        "expectedSeconds": 30,
-        "guessProbability": 0.3333333333333333,
-        "textualSupportAssessed": false,
-        "materialKeys": [],
-        "assessedMaterialKeys": [],
-        "contrastingErrorKeys": [],
-        "negativeExampleAssessed": false,
-        "usage": "initial"
-      },
-      {
-        "id": "local-conjugation-gap-v1:reconnaitre_subjonctif_present:receptive:foundation",
-        "skillId": "reconnaitre_subjonctif_present::reading-receptive",
-        "mode": "recognition",
-        "contextId": "surface:sha256:62046c150caf2de74c86a87ceda3fae24c85a9c4e9c33eb1d1afec62a123938a",
-        "difficulty": 0.25,
-        "expectedSeconds": 30,
-        "guessProbability": 0.3333333333333333,
-        "textualSupportAssessed": false,
-        "materialKeys": [],
-        "assessedMaterialKeys": [],
-        "contrastingErrorKeys": [],
-        "negativeExampleAssessed": false,
-        "usage": "initial"
-      },
-      {
-        "id": "local-conjugation-gap-v1:reconnaitre_subjonctif_present:receptive:stretch",
-        "skillId": "reconnaitre_subjonctif_present::reading-receptive",
-        "mode": "recognition",
-        "contextId": "surface:sha256:08389bb30bd89e43119da7069aef41e6de28566d60a3cea2915021baef2356d3",
-        "difficulty": 0.75,
         "expectedSeconds": 30,
         "guessProbability": 0.3333333333333333,
         "textualSupportAssessed": false,
@@ -54507,7 +54434,7 @@
         ],
         "contrastingErrorKeys": [],
         "negativeExampleAssessed": false,
-        "usage": "learning"
+        "usage": "initial"
       },
       {
         "id": "v3-person-number:je-negation",
@@ -54559,7 +54486,7 @@
         ],
         "contrastingErrorKeys": [],
         "negativeExampleAssessed": false,
-        "usage": "learning"
+        "usage": "initial"
       },
       {
         "id": "v3-person-number:tu-choisis",
@@ -54585,7 +54512,7 @@
         ],
         "contrastingErrorKeys": [],
         "negativeExampleAssessed": false,
-        "usage": "learning"
+        "usage": "initial"
       },
       {
         "id": "v3-person-number:tu-question",
@@ -54637,7 +54564,7 @@
         ],
         "contrastingErrorKeys": [],
         "negativeExampleAssessed": false,
-        "usage": "learning"
+        "usage": "initial"
       },
       {
         "id": "v3-person-number:tu-future",
@@ -54689,7 +54616,7 @@
         ],
         "contrastingErrorKeys": [],
         "negativeExampleAssessed": false,
-        "usage": "learning"
+        "usage": "initial"
       },
       {
         "id": "v3-person-number:elle",
@@ -54741,7 +54668,7 @@
         ],
         "contrastingErrorKeys": [],
         "negativeExampleAssessed": false,
-        "usage": "initial"
+        "usage": "learning"
       },
       {
         "id": "v3-person-number:collectif",
@@ -54767,7 +54694,7 @@
         ],
         "contrastingErrorKeys": [],
         "negativeExampleAssessed": false,
-        "usage": "learning"
+        "usage": "initial"
       },
       {
         "id": "v3-person-number:nous",
@@ -54793,7 +54720,7 @@
         ],
         "contrastingErrorKeys": [],
         "negativeExampleAssessed": false,
-        "usage": "initial"
+        "usage": "learning"
       },
       {
         "id": "v3-person-number:toi-moi",
@@ -54871,7 +54798,7 @@
         ],
         "contrastingErrorKeys": [],
         "negativeExampleAssessed": false,
-        "usage": "initial"
+        "usage": "learning"
       },
       {
         "id": "v3-person-number:vous-groupe",
@@ -54923,7 +54850,7 @@
         ],
         "contrastingErrorKeys": [],
         "negativeExampleAssessed": false,
-        "usage": "initial"
+        "usage": "learning"
       },
       {
         "id": "v3-person-number:toi-elle",
@@ -54949,7 +54876,7 @@
         ],
         "contrastingErrorKeys": [],
         "negativeExampleAssessed": false,
-        "usage": "initial"
+        "usage": "learning"
       },
       {
         "id": "v3-person-number:lui-toi",
@@ -55053,7 +54980,7 @@
         ],
         "contrastingErrorKeys": [],
         "negativeExampleAssessed": false,
-        "usage": "initial"
+        "usage": "learning"
       },
       {
         "id": "v3-person-number:lui-elle",
@@ -55079,7 +55006,7 @@
         ],
         "contrastingErrorKeys": [],
         "negativeExampleAssessed": false,
-        "usage": "initial"
+        "usage": "learning"
       },
       {
         "id": "v3-granular-forms:produire_present_indicatif:être:1s:m:affirmative",
@@ -106334,7 +106261,7 @@
         "contrastingErrorKeys": [],
         "negativeExampleAssessed": false,
         "evidenceFeatures": [],
-        "usage": "initial"
+        "usage": "learning"
       },
       {
         "id": "v3-granular-forms:subjonctif_present-application-context:être:3p:5",
@@ -106610,7 +106537,7 @@
         "contrastingErrorKeys": [],
         "negativeExampleAssessed": false,
         "evidenceFeatures": [],
-        "usage": "initial"
+        "usage": "learning"
       },
       {
         "id": "v3-granular-forms:subjonctif_present-application-context:avoir:3p:17",
@@ -107162,7 +107089,7 @@
         "contrastingErrorKeys": [],
         "negativeExampleAssessed": false,
         "evidenceFeatures": [],
-        "usage": "initial"
+        "usage": "learning"
       },
       {
         "id": "v3-granular-forms:subjonctif_present-application-context:faire:3p:41",
@@ -138998,6 +138925,606 @@
         "usage": "initial"
       },
       {
+        "id": "v3-tense-recognition:subjonctif-recognition-1",
+        "skillId": "reconnaitre_subjonctif_present::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:subjonctif-recognition-1",
+        "samplingCategory": "subjonctif-recognition:0",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:46bf8fe270d5dfa790802b90ff8a1c71a958857b86a54f9a966ead00723b92f6",
+          "sentence:sha256:633e682ed3f12b182de367009a123ea95c76df276264616065704c0c0625c8fe",
+          "sentence:sha256:8ac76224e23a9ba0b5d7b6676ffe2a2f8c959f43d01ba31302a1afe990a7ac58",
+          "sentence:sha256:97f896802c28d93c1227259233e04a7061c619b8148b6ca86cd575b6a254cd2f",
+          "sentence:sha256:c96347555a7ef1dbb4378c366d9516e046d73cfca4bb04407f06caecb2f02e50",
+          "sentence:sha256:d8ac1b4742f352570ca86d34e88a2d6e5ef2e37bdf0d7f87ec0d2ea4025d9e38"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:8ac76224e23a9ba0b5d7b6676ffe2a2f8c959f43d01ba31302a1afe990a7ac58"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-tense-recognition:subjonctif-recognition-2",
+        "skillId": "reconnaitre_subjonctif_present::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:subjonctif-recognition-2",
+        "samplingCategory": "subjonctif-recognition:0",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:46bf8fe270d5dfa790802b90ff8a1c71a958857b86a54f9a966ead00723b92f6",
+          "sentence:sha256:633e682ed3f12b182de367009a123ea95c76df276264616065704c0c0625c8fe",
+          "sentence:sha256:882d1666eaa4500670da25821826cff0cfce34762954aaf1aadb800f6c0404d4",
+          "sentence:sha256:c96347555a7ef1dbb4378c366d9516e046d73cfca4bb04407f06caecb2f02e50",
+          "sentence:sha256:d447ed5c836069896d2ce5eb7c816f00f62a92a610ae5e420c160305f75f347c",
+          "sentence:sha256:d8ac1b4742f352570ca86d34e88a2d6e5ef2e37bdf0d7f87ec0d2ea4025d9e38"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:882d1666eaa4500670da25821826cff0cfce34762954aaf1aadb800f6c0404d4"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-tense-recognition:subjonctif-recognition-3",
+        "skillId": "reconnaitre_subjonctif_present::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:subjonctif-recognition-3",
+        "samplingCategory": "subjonctif-recognition:0",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:3ae8965d4e62baa1b59254a868a30e78c7a13e16a98ee9752d17652ce082d5aa",
+          "sentence:sha256:46bf8fe270d5dfa790802b90ff8a1c71a958857b86a54f9a966ead00723b92f6",
+          "sentence:sha256:606377fae75bc35243bed0a6efbe53c0c0152f50233de041bc765adf503a780f",
+          "sentence:sha256:633e682ed3f12b182de367009a123ea95c76df276264616065704c0c0625c8fe",
+          "sentence:sha256:c96347555a7ef1dbb4378c366d9516e046d73cfca4bb04407f06caecb2f02e50",
+          "sentence:sha256:d8ac1b4742f352570ca86d34e88a2d6e5ef2e37bdf0d7f87ec0d2ea4025d9e38"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:3ae8965d4e62baa1b59254a868a30e78c7a13e16a98ee9752d17652ce082d5aa"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-tense-recognition:subjonctif-recognition-4",
+        "skillId": "reconnaitre_subjonctif_present::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:subjonctif-recognition-4",
+        "samplingCategory": "subjonctif-recognition:0",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:46bf8fe270d5dfa790802b90ff8a1c71a958857b86a54f9a966ead00723b92f6",
+          "sentence:sha256:46df3ee3508a6398fb53c19c9c70b85ff769b96de8a64b737f3cd6365e882361",
+          "sentence:sha256:633e682ed3f12b182de367009a123ea95c76df276264616065704c0c0625c8fe",
+          "sentence:sha256:8a7b5a9aa765f9ebd23a2a085fe7222fdcf378f01b6bb90bf0f1b115aab0a60a",
+          "sentence:sha256:c96347555a7ef1dbb4378c366d9516e046d73cfca4bb04407f06caecb2f02e50",
+          "sentence:sha256:d8ac1b4742f352570ca86d34e88a2d6e5ef2e37bdf0d7f87ec0d2ea4025d9e38"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:46df3ee3508a6398fb53c19c9c70b85ff769b96de8a64b737f3cd6365e882361"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-tense-recognition:subjonctif-recognition-5",
+        "skillId": "reconnaitre_subjonctif_present::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:subjonctif-recognition-5",
+        "samplingCategory": "subjonctif-recognition:0",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:46bf8fe270d5dfa790802b90ff8a1c71a958857b86a54f9a966ead00723b92f6",
+          "sentence:sha256:633e682ed3f12b182de367009a123ea95c76df276264616065704c0c0625c8fe",
+          "sentence:sha256:7f4c1ccf4de5404d3505fc244ec7c7f21835599d07c4cad54b319e27fdeaff81",
+          "sentence:sha256:c96347555a7ef1dbb4378c366d9516e046d73cfca4bb04407f06caecb2f02e50",
+          "sentence:sha256:d1a79a7ffcfcea383cbd2ed43c6f833aec63a24ac94a11e4865568f4e6359d7e",
+          "sentence:sha256:d8ac1b4742f352570ca86d34e88a2d6e5ef2e37bdf0d7f87ec0d2ea4025d9e38"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:d1a79a7ffcfcea383cbd2ed43c6f833aec63a24ac94a11e4865568f4e6359d7e"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-tense-recognition:subjonctif-recognition-6",
+        "skillId": "reconnaitre_subjonctif_present::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:subjonctif-recognition-6",
+        "samplingCategory": "subjonctif-recognition:0",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:46bf8fe270d5dfa790802b90ff8a1c71a958857b86a54f9a966ead00723b92f6",
+          "sentence:sha256:633e682ed3f12b182de367009a123ea95c76df276264616065704c0c0625c8fe",
+          "sentence:sha256:7656003207348ab9bf07b292106b27d24bbb46aef475faea3038016df28814dd",
+          "sentence:sha256:8e5b03c73b0d789433bb54e5431631e3c99213ad4252360eedd2cc045ead29ef",
+          "sentence:sha256:c96347555a7ef1dbb4378c366d9516e046d73cfca4bb04407f06caecb2f02e50",
+          "sentence:sha256:d8ac1b4742f352570ca86d34e88a2d6e5ef2e37bdf0d7f87ec0d2ea4025d9e38"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:7656003207348ab9bf07b292106b27d24bbb46aef475faea3038016df28814dd"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-tense-recognition:subjonctif-recognition-7",
+        "skillId": "reconnaitre_subjonctif_present::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:subjonctif-recognition-7",
+        "samplingCategory": "subjonctif-recognition:0",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:46bf8fe270d5dfa790802b90ff8a1c71a958857b86a54f9a966ead00723b92f6",
+          "sentence:sha256:633e682ed3f12b182de367009a123ea95c76df276264616065704c0c0625c8fe",
+          "sentence:sha256:75bcedcb1019ea5f1cd2d1d046377a041c7f97e30f5ec63d21d5d33143b689fc",
+          "sentence:sha256:86d1784d03923d258f46f42365f06e09877b3be02690867eac744e4a7d0635a4",
+          "sentence:sha256:c96347555a7ef1dbb4378c366d9516e046d73cfca4bb04407f06caecb2f02e50",
+          "sentence:sha256:d8ac1b4742f352570ca86d34e88a2d6e5ef2e37bdf0d7f87ec0d2ea4025d9e38"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:75bcedcb1019ea5f1cd2d1d046377a041c7f97e30f5ec63d21d5d33143b689fc"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-tense-recognition:subjonctif-recognition-8",
+        "skillId": "reconnaitre_subjonctif_present::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:subjonctif-recognition-8",
+        "samplingCategory": "subjonctif-recognition:0",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:19956f0695d46fd2ec13fee922495991577ceb0fb67da385368db1f7651eb99d",
+          "sentence:sha256:46bf8fe270d5dfa790802b90ff8a1c71a958857b86a54f9a966ead00723b92f6",
+          "sentence:sha256:633e682ed3f12b182de367009a123ea95c76df276264616065704c0c0625c8fe",
+          "sentence:sha256:79a06abd4fdf96fcbbab0f2dd975729632b33fb7b0247dd1f2b3cf30a3a9958d",
+          "sentence:sha256:c96347555a7ef1dbb4378c366d9516e046d73cfca4bb04407f06caecb2f02e50",
+          "sentence:sha256:d8ac1b4742f352570ca86d34e88a2d6e5ef2e37bdf0d7f87ec0d2ea4025d9e38"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:79a06abd4fdf96fcbbab0f2dd975729632b33fb7b0247dd1f2b3cf30a3a9958d"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-tense-recognition:subjonctif-recognition-9",
+        "skillId": "reconnaitre_subjonctif_present::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:subjonctif-recognition-9",
+        "samplingCategory": "subjonctif-recognition:0",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:46bf8fe270d5dfa790802b90ff8a1c71a958857b86a54f9a966ead00723b92f6",
+          "sentence:sha256:633e682ed3f12b182de367009a123ea95c76df276264616065704c0c0625c8fe",
+          "sentence:sha256:70f9e0009853ce9c5494557cb60cd38c700ed59d2b5c791b7af276a18a2545f3",
+          "sentence:sha256:c457340bb55d40652a14ee58b3ed82bc58a52aac5dfcdb5dc8f8add6516006ad",
+          "sentence:sha256:c96347555a7ef1dbb4378c366d9516e046d73cfca4bb04407f06caecb2f02e50",
+          "sentence:sha256:d8ac1b4742f352570ca86d34e88a2d6e5ef2e37bdf0d7f87ec0d2ea4025d9e38"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:c457340bb55d40652a14ee58b3ed82bc58a52aac5dfcdb5dc8f8add6516006ad"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-tense-recognition:subjonctif-recognition-10",
+        "skillId": "reconnaitre_subjonctif_present::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:subjonctif-recognition-10",
+        "samplingCategory": "subjonctif-recognition:0",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:46bf8fe270d5dfa790802b90ff8a1c71a958857b86a54f9a966ead00723b92f6",
+          "sentence:sha256:48e673270fc92c42c88df55fb582ac996bfa4ba3f77f12966d590c650c1d4353",
+          "sentence:sha256:633e682ed3f12b182de367009a123ea95c76df276264616065704c0c0625c8fe",
+          "sentence:sha256:9578066db04e3420baadd4cfbc083f0ea39c6805299b98d8849929a9b7cde9cf",
+          "sentence:sha256:c96347555a7ef1dbb4378c366d9516e046d73cfca4bb04407f06caecb2f02e50",
+          "sentence:sha256:d8ac1b4742f352570ca86d34e88a2d6e5ef2e37bdf0d7f87ec0d2ea4025d9e38"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:48e673270fc92c42c88df55fb582ac996bfa4ba3f77f12966d590c650c1d4353"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-tense-recognition:subjonctif-recognition-11",
+        "skillId": "reconnaitre_subjonctif_present::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:subjonctif-recognition-11",
+        "samplingCategory": "subjonctif-recognition:0",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:46bf8fe270d5dfa790802b90ff8a1c71a958857b86a54f9a966ead00723b92f6",
+          "sentence:sha256:633e682ed3f12b182de367009a123ea95c76df276264616065704c0c0625c8fe",
+          "sentence:sha256:a3100c3ad2c20d0a9c7469dd3dee2e228c0a994e4c364dfc576570b8170626cb",
+          "sentence:sha256:c1dedbb701b7ba3f917aaf6d08839fa19ccca348d958dd917f2930e470f79d15",
+          "sentence:sha256:c96347555a7ef1dbb4378c366d9516e046d73cfca4bb04407f06caecb2f02e50",
+          "sentence:sha256:d8ac1b4742f352570ca86d34e88a2d6e5ef2e37bdf0d7f87ec0d2ea4025d9e38"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:c1dedbb701b7ba3f917aaf6d08839fa19ccca348d958dd917f2930e470f79d15"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-tense-recognition:subjonctif-recognition-12",
+        "skillId": "reconnaitre_subjonctif_present::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:subjonctif-recognition-12",
+        "samplingCategory": "subjonctif-recognition:0",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:46bf8fe270d5dfa790802b90ff8a1c71a958857b86a54f9a966ead00723b92f6",
+          "sentence:sha256:633e682ed3f12b182de367009a123ea95c76df276264616065704c0c0625c8fe",
+          "sentence:sha256:728511ea48ec1da1c32dc2c9c719e6472fd726125cba3014021847bc2a443285",
+          "sentence:sha256:c96347555a7ef1dbb4378c366d9516e046d73cfca4bb04407f06caecb2f02e50",
+          "sentence:sha256:d8ac1b4742f352570ca86d34e88a2d6e5ef2e37bdf0d7f87ec0d2ea4025d9e38",
+          "sentence:sha256:e477430eba61c090c5338e558e1d3f77229dd3f56410b1260ce52a10b2d2acec"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:728511ea48ec1da1c32dc2c9c719e6472fd726125cba3014021847bc2a443285"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-tense-recognition:subjonctif-recognition-13",
+        "skillId": "reconnaitre_subjonctif_present::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:subjonctif-recognition-13",
+        "samplingCategory": "subjonctif-recognition:1",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:3816f12637103b28b97d9d936be534698d041f0ed4371e37ca09012b845a4c26",
+          "sentence:sha256:46bf8fe270d5dfa790802b90ff8a1c71a958857b86a54f9a966ead00723b92f6",
+          "sentence:sha256:633e682ed3f12b182de367009a123ea95c76df276264616065704c0c0625c8fe",
+          "sentence:sha256:7e0aa2657604d4960e3f1e64272ca1dd45acedd6dd9d031919bdcde84b03aac7",
+          "sentence:sha256:c96347555a7ef1dbb4378c366d9516e046d73cfca4bb04407f06caecb2f02e50",
+          "sentence:sha256:d8ac1b4742f352570ca86d34e88a2d6e5ef2e37bdf0d7f87ec0d2ea4025d9e38"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:3816f12637103b28b97d9d936be534698d041f0ed4371e37ca09012b845a4c26"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-tense-recognition:subjonctif-recognition-14",
+        "skillId": "reconnaitre_subjonctif_present::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:subjonctif-recognition-14",
+        "samplingCategory": "subjonctif-recognition:1",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:25d49c8dfaefb6d53105e28b20d4362b1b251b6961ed409a77ecdeb747378049",
+          "sentence:sha256:46bf8fe270d5dfa790802b90ff8a1c71a958857b86a54f9a966ead00723b92f6",
+          "sentence:sha256:633e682ed3f12b182de367009a123ea95c76df276264616065704c0c0625c8fe",
+          "sentence:sha256:7c925842e37481efa3f3eb67b990a4d6b0634129a2aa9e239884a4d3db95c9af",
+          "sentence:sha256:c96347555a7ef1dbb4378c366d9516e046d73cfca4bb04407f06caecb2f02e50",
+          "sentence:sha256:d8ac1b4742f352570ca86d34e88a2d6e5ef2e37bdf0d7f87ec0d2ea4025d9e38"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:7c925842e37481efa3f3eb67b990a4d6b0634129a2aa9e239884a4d3db95c9af"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-tense-recognition:subjonctif-recognition-15",
+        "skillId": "reconnaitre_subjonctif_present::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:subjonctif-recognition-15",
+        "samplingCategory": "subjonctif-recognition:1",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:3929c4b05e823d24768aa49ab7c391ef0678ce9c1f463f9905967bc39d498d6d",
+          "sentence:sha256:413b292f7caf19453d4329b7c8fc2f49322f06ba69ef661964faaef35a216243",
+          "sentence:sha256:46bf8fe270d5dfa790802b90ff8a1c71a958857b86a54f9a966ead00723b92f6",
+          "sentence:sha256:633e682ed3f12b182de367009a123ea95c76df276264616065704c0c0625c8fe",
+          "sentence:sha256:c96347555a7ef1dbb4378c366d9516e046d73cfca4bb04407f06caecb2f02e50",
+          "sentence:sha256:d8ac1b4742f352570ca86d34e88a2d6e5ef2e37bdf0d7f87ec0d2ea4025d9e38"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:413b292f7caf19453d4329b7c8fc2f49322f06ba69ef661964faaef35a216243"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-tense-recognition:subjonctif-recognition-16",
+        "skillId": "reconnaitre_subjonctif_present::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:subjonctif-recognition-16",
+        "samplingCategory": "subjonctif-recognition:1",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:46bf8fe270d5dfa790802b90ff8a1c71a958857b86a54f9a966ead00723b92f6",
+          "sentence:sha256:633e682ed3f12b182de367009a123ea95c76df276264616065704c0c0625c8fe",
+          "sentence:sha256:63c18d16a882ed288f5fb3031fac19c3637e33462afe6ae92a6e47a018ade38f",
+          "sentence:sha256:be657af0e0a90bc3313651a69b89a817b0530add633e6bc6731e5f6e1f868dd6",
+          "sentence:sha256:c96347555a7ef1dbb4378c366d9516e046d73cfca4bb04407f06caecb2f02e50",
+          "sentence:sha256:d8ac1b4742f352570ca86d34e88a2d6e5ef2e37bdf0d7f87ec0d2ea4025d9e38"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:63c18d16a882ed288f5fb3031fac19c3637e33462afe6ae92a6e47a018ade38f"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-tense-recognition:subjonctif-recognition-17",
+        "skillId": "reconnaitre_subjonctif_present::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:subjonctif-recognition-17",
+        "samplingCategory": "subjonctif-recognition:2",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:46bf8fe270d5dfa790802b90ff8a1c71a958857b86a54f9a966ead00723b92f6",
+          "sentence:sha256:633e682ed3f12b182de367009a123ea95c76df276264616065704c0c0625c8fe",
+          "sentence:sha256:781639446f8de892c40bb4684a97a649530116c6b3c0cacc9c5aeb4819b94308",
+          "sentence:sha256:bb7ec893a94bcbd864acc99395f5bb63893a3c04924fa94290df24e1983b8316",
+          "sentence:sha256:c96347555a7ef1dbb4378c366d9516e046d73cfca4bb04407f06caecb2f02e50",
+          "sentence:sha256:d8ac1b4742f352570ca86d34e88a2d6e5ef2e37bdf0d7f87ec0d2ea4025d9e38"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:bb7ec893a94bcbd864acc99395f5bb63893a3c04924fa94290df24e1983b8316"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-tense-recognition:subjonctif-recognition-18",
+        "skillId": "reconnaitre_subjonctif_present::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:subjonctif-recognition-18",
+        "samplingCategory": "subjonctif-recognition:2",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:2820feee4fdea4f4c9fc60902126cb922bbe3a852e2bf51a25b3731da604b24a",
+          "sentence:sha256:46bf8fe270d5dfa790802b90ff8a1c71a958857b86a54f9a966ead00723b92f6",
+          "sentence:sha256:633e682ed3f12b182de367009a123ea95c76df276264616065704c0c0625c8fe",
+          "sentence:sha256:b2925e4999debcd6f6e669cbaea174ad39047619398fe22f40e9335ddb40b943",
+          "sentence:sha256:c96347555a7ef1dbb4378c366d9516e046d73cfca4bb04407f06caecb2f02e50",
+          "sentence:sha256:d8ac1b4742f352570ca86d34e88a2d6e5ef2e37bdf0d7f87ec0d2ea4025d9e38"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:b2925e4999debcd6f6e669cbaea174ad39047619398fe22f40e9335ddb40b943"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-tense-recognition:subjonctif-recognition-19",
+        "skillId": "reconnaitre_subjonctif_present::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:subjonctif-recognition-19",
+        "samplingCategory": "subjonctif-recognition:2",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:1303bfcf5501af70c9a93b592d2d16793be4da331408b0105e182803bcae97d1",
+          "sentence:sha256:46bf8fe270d5dfa790802b90ff8a1c71a958857b86a54f9a966ead00723b92f6",
+          "sentence:sha256:5196f8d0b9f40b4795dc8220519c1480fe434725aefcfa00c9700104a5c20a8f",
+          "sentence:sha256:633e682ed3f12b182de367009a123ea95c76df276264616065704c0c0625c8fe",
+          "sentence:sha256:c96347555a7ef1dbb4378c366d9516e046d73cfca4bb04407f06caecb2f02e50",
+          "sentence:sha256:d8ac1b4742f352570ca86d34e88a2d6e5ef2e37bdf0d7f87ec0d2ea4025d9e38"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:1303bfcf5501af70c9a93b592d2d16793be4da331408b0105e182803bcae97d1"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-tense-recognition:subjonctif-recognition-20",
+        "skillId": "reconnaitre_subjonctif_present::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:subjonctif-recognition-20",
+        "samplingCategory": "subjonctif-recognition:2",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:0c94d7ae87b3df428125ccec0844271d1213b0da6290b3835e1157150c9d753a",
+          "sentence:sha256:46bf8fe270d5dfa790802b90ff8a1c71a958857b86a54f9a966ead00723b92f6",
+          "sentence:sha256:4c19e64d07272977e4b90062313807a63f0d67fc6e881a5f1e38d2c03243949f",
+          "sentence:sha256:633e682ed3f12b182de367009a123ea95c76df276264616065704c0c0625c8fe",
+          "sentence:sha256:c96347555a7ef1dbb4378c366d9516e046d73cfca4bb04407f06caecb2f02e50",
+          "sentence:sha256:d8ac1b4742f352570ca86d34e88a2d6e5ef2e37bdf0d7f87ec0d2ea4025d9e38"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:0c94d7ae87b3df428125ccec0844271d1213b0da6290b3835e1157150c9d753a"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-tense-recognition:subjonctif-recognition-21",
+        "skillId": "reconnaitre_subjonctif_present::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:subjonctif-recognition-21",
+        "samplingCategory": "subjonctif-recognition:3",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:46bf8fe270d5dfa790802b90ff8a1c71a958857b86a54f9a966ead00723b92f6",
+          "sentence:sha256:633e682ed3f12b182de367009a123ea95c76df276264616065704c0c0625c8fe",
+          "sentence:sha256:99506873bf17f5c8cc069f9a4e2c41fe21b8f3b31d5a792485f63733fc44a552",
+          "sentence:sha256:c786bf7693274a2673741c01e7d043c856614fc5ee200fb07b741d125ab4b21a",
+          "sentence:sha256:c96347555a7ef1dbb4378c366d9516e046d73cfca4bb04407f06caecb2f02e50",
+          "sentence:sha256:d8ac1b4742f352570ca86d34e88a2d6e5ef2e37bdf0d7f87ec0d2ea4025d9e38"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:99506873bf17f5c8cc069f9a4e2c41fe21b8f3b31d5a792485f63733fc44a552"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-tense-recognition:subjonctif-recognition-22",
+        "skillId": "reconnaitre_subjonctif_present::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:subjonctif-recognition-22",
+        "samplingCategory": "subjonctif-recognition:3",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:12d4fe5a7c4b633188b8ef237ec27e4464a7787d02d38c316d432ec39d5578d6",
+          "sentence:sha256:46bf8fe270d5dfa790802b90ff8a1c71a958857b86a54f9a966ead00723b92f6",
+          "sentence:sha256:633e682ed3f12b182de367009a123ea95c76df276264616065704c0c0625c8fe",
+          "sentence:sha256:c96347555a7ef1dbb4378c366d9516e046d73cfca4bb04407f06caecb2f02e50",
+          "sentence:sha256:d10130dc13abd13b46c9ee4e35e2bf4a3ada4178db1a0896833558b285daf395",
+          "sentence:sha256:d8ac1b4742f352570ca86d34e88a2d6e5ef2e37bdf0d7f87ec0d2ea4025d9e38"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:d10130dc13abd13b46c9ee4e35e2bf4a3ada4178db1a0896833558b285daf395"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-tense-recognition:subjonctif-recognition-23",
+        "skillId": "reconnaitre_subjonctif_present::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:subjonctif-recognition-23",
+        "samplingCategory": "subjonctif-recognition:3",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:232b0f9f7d753baa3621151cdc1c50287526439e9793554058126ff233114e73",
+          "sentence:sha256:46bf8fe270d5dfa790802b90ff8a1c71a958857b86a54f9a966ead00723b92f6",
+          "sentence:sha256:633e682ed3f12b182de367009a123ea95c76df276264616065704c0c0625c8fe",
+          "sentence:sha256:7ae1ea847acee808e180514d49d09c2aef1ef867d7000e7b13f7c3a8ba877b0b",
+          "sentence:sha256:c96347555a7ef1dbb4378c366d9516e046d73cfca4bb04407f06caecb2f02e50",
+          "sentence:sha256:d8ac1b4742f352570ca86d34e88a2d6e5ef2e37bdf0d7f87ec0d2ea4025d9e38"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:7ae1ea847acee808e180514d49d09c2aef1ef867d7000e7b13f7c3a8ba877b0b"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-tense-recognition:subjonctif-recognition-24",
+        "skillId": "reconnaitre_subjonctif_present::reading-receptive",
+        "mode": "recognition",
+        "contextId": "tense-sentence:subjonctif-recognition-24",
+        "samplingCategory": "subjonctif-recognition:3",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:3a6cb2a6bb2da28767f9964a3cf7f9595ae7694f79fdd26ad0087f16c3de681e",
+          "sentence:sha256:46bf8fe270d5dfa790802b90ff8a1c71a958857b86a54f9a966ead00723b92f6",
+          "sentence:sha256:633e682ed3f12b182de367009a123ea95c76df276264616065704c0c0625c8fe",
+          "sentence:sha256:6b73387b751cbf03e63d5c09fea573ecaacc0dfefdff892f59a51b192168f43b",
+          "sentence:sha256:c96347555a7ef1dbb4378c366d9516e046d73cfca4bb04407f06caecb2f02e50",
+          "sentence:sha256:d8ac1b4742f352570ca86d34e88a2d6e5ef2e37bdf0d7f87ec0d2ea4025d9e38"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:3a6cb2a6bb2da28767f9964a3cf7f9595ae7694f79fdd26ad0087f16c3de681e"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
         "id": "v3-tense-recognition:auxiliary-form-1",
         "skillId": "reconnaitre_auxiliaire::reading-receptive",
         "mode": "recognition",
@@ -143561,7 +144088,7 @@
       }
     ],
     "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
-    "bankChecksum": "sha256:e55cc47b43d57e95e895068529160797a5dfe4e46a5e521695e36e2bc1570266",
+    "bankChecksum": "sha256:b1f238f2edff146c2b2d768186e219ba21f28ed3526ad57b2eb202a39bb5430a",
     "unsupportedEvidenceItemKeys": [
       "local-reading-v1:inferer_chronologie_implicite:receptive:foundation",
       "local-reading-v1:inferer_chronologie_implicite:receptive:core",
@@ -143571,14 +144098,19 @@
       "local-reading-v1:distinguer_preuve_connaissance_externe:receptive:foundation",
       "local-reading-v1:distinguer_preuve_connaissance_externe:receptive:core",
       "local-reading-v1:distinguer_preuve_connaissance_externe:receptive:stretch",
+      "local-conjugation-gap-v1:reconnaitre_subjonctif_present:receptive:stretch",
+      "local-conjugation-gap-v1:reconnaitre_subjonctif_present:receptive:foundation",
       "local-spelling-v1:associer_phoneme_graphie_frequente:controlled_production:foundation",
-      "local-spelling-v1:associer_phoneme_graphie_frequente:receptive:core"
+      "local-spelling-v1:associer_phoneme_graphie_frequente:receptive:core",
+      "computed-conjugation-v1:produire_subjonctif_present_frequent:stretch",
+      "computed-conjugation-v1:produire_subjonctif_present_frequent:core",
+      "computed-conjugation-v1:produire_subjonctif_present_frequent:foundation"
     ],
     "reviewPolicy": {
       "mode": "parallel_review",
       "authorization": "product-owner-request-2026-09-11",
       "reviewOwner": "product_owner",
-      "bankChecksum": "sha256:e55cc47b43d57e95e895068529160797a5dfe4e46a5e521695e36e2bc1570266",
+      "bankChecksum": "sha256:b1f238f2edff146c2b2d768186e219ba21f28ed3526ad57b2eb202a39bb5430a",
       "questionChecksums": {
         "review-draft-v1:construction_pronom_relatif:controlled_production:foundation": "sha256:2731933f71f4a1408115b2457d07ee69469fdac2e7a6e57fb69c112e2a0c32dc",
         "review-draft-v1:construction_pronom_relatif:controlled_production:core": "sha256:d8b92f78c30ddfa7d1598405eb512dce2f2b476fdd151dd3a79c9476a729cc56",
@@ -149153,6 +149685,30 @@
         "v3-spelling:nasal-lent": "sha256:66aa3cf028f3b2acbf3acbc4f9d5e2dd1ce6e8360de3c2a011d894c772af5a03",
         "v3-spelling:nasal-bonbon": "sha256:ffa321e32029c4d30da68fd5ecf10c58f0ca4a6cf95d6801ee564e208edf2ecc",
         "v3-spelling:nasal-bonbonne": "sha256:0db9e1b83998f4a41627815325e1361783e3ce8ebe14c6b05481329d2d1d7083",
+        "v3-tense-recognition:subjonctif-recognition-1": "sha256:f4cd389b0802beb9259b01eead3036a9721045ba2e8ad8c110b4728f010997ab",
+        "v3-tense-recognition:subjonctif-recognition-2": "sha256:1827f29a9129c6f6667d9273e7c60b5a0074e8e0502229cc99b058bf5d00efb0",
+        "v3-tense-recognition:subjonctif-recognition-3": "sha256:d979fbb0c2c647a61ab7dd4385667138e1b0c3f68c65c6f7b914b801dc2011d5",
+        "v3-tense-recognition:subjonctif-recognition-4": "sha256:5bac2505e185d7b67a1a79264cc861616954459eef361bdcef21ab47b454897b",
+        "v3-tense-recognition:subjonctif-recognition-5": "sha256:b6e1b3a77b709c6c71b3eff3c726a5f768f9424c4e1610f4eb8e87eb03c1e992",
+        "v3-tense-recognition:subjonctif-recognition-6": "sha256:766370c0a2c0bbce9882cb9f3d324dd7d63f3cf399d63fb58c205c6bea07c18c",
+        "v3-tense-recognition:subjonctif-recognition-7": "sha256:c7d7a0929bbe244d9b4269e92b4fbb39f0b013210061b83c5cc0e429f0d36db0",
+        "v3-tense-recognition:subjonctif-recognition-8": "sha256:d3aa00d4199d56faa58494fe5c70a08c8b308767976c0d264b84b77e28e67062",
+        "v3-tense-recognition:subjonctif-recognition-9": "sha256:3bcf9fdc6b80bb1d0fdaff6d2dc99acef808e1ec6066c4441fa788a4f000c0a7",
+        "v3-tense-recognition:subjonctif-recognition-10": "sha256:36ad352955950f269cceb5cf19b389b484473ba21542826add802d74d0c6da42",
+        "v3-tense-recognition:subjonctif-recognition-11": "sha256:68761a343666fb301a28826326a73d754a69ecf0813f62364c282abb48c9620e",
+        "v3-tense-recognition:subjonctif-recognition-12": "sha256:e04ecd1ba19e046461e868420e321433ad4b2a0af32b604311a5fd66a0e37f0d",
+        "v3-tense-recognition:subjonctif-recognition-13": "sha256:3a6561c85839bd179ffec94d0cd073d39b193c9716451b0fc9f0bb37e33ab69d",
+        "v3-tense-recognition:subjonctif-recognition-14": "sha256:1a7fdb62029a6edfdb4cdaa94556c3b500024c838a62e86c337d8b04f7809dd0",
+        "v3-tense-recognition:subjonctif-recognition-15": "sha256:39d75bd0a8c78ca9a335a533572083443737d8ed9eba93af4a3e39a6a87faca1",
+        "v3-tense-recognition:subjonctif-recognition-16": "sha256:c1252e50dd5c23e669d990e1b864974497b9d98a15c32ab98ece94d295c9a9c3",
+        "v3-tense-recognition:subjonctif-recognition-17": "sha256:c8b6b04fafdd75d1a17cc2375db1603f274b2a1c9367fbd82d30178443930e9a",
+        "v3-tense-recognition:subjonctif-recognition-18": "sha256:576691570c43bed975465e61d944096e27b2fc67e9ec6903c3685fb55b86ffab",
+        "v3-tense-recognition:subjonctif-recognition-19": "sha256:1bfe96818ca4e45fe5963e95fbf53d098fba7c882479697c93aa33ed4c73294b",
+        "v3-tense-recognition:subjonctif-recognition-20": "sha256:82d76bbb23e7d60a7e765239e6ed20cc0148550e551225eb4059ee863ede19cf",
+        "v3-tense-recognition:subjonctif-recognition-21": "sha256:96e79e0c923a36aea72ce062f3cc56a7d9794c112b5663761bede07aad17c758",
+        "v3-tense-recognition:subjonctif-recognition-22": "sha256:fe3c22b7aceb7aa5430bb5f87e6d48c5b64693246a5c6021e5bcfd84e028d7eb",
+        "v3-tense-recognition:subjonctif-recognition-23": "sha256:9029aaf854e0a43e47bd267f33bcfd94ca529c3794ba70efab5756f6c06af64d",
+        "v3-tense-recognition:subjonctif-recognition-24": "sha256:52a8bdc78fc1cedddbda1625e5e6fcba6365a9e5c4a04ce8b4857ab722dd5b65",
         "v3-tense-recognition:auxiliary-form-1": "sha256:43110fed889ed7905636dc43049d723ae4422141a0d206786357bc5b720e4ca4",
         "v3-tense-recognition:auxiliary-form-2": "sha256:11ba4011f812ddedace991936c9140d93c0791cda91cd223e2ff2992753fa658",
         "v3-tense-recognition:auxiliary-form-3": "sha256:ff1e996e0bb5bccc840f2252c55327ae4cc865e00d15460efdd319c211d32762",
@@ -149349,6 +149905,7 @@
         "v3-y-en:en_thing-18": "sha256:1de3bba6c34a338f57ee6b482b6a389ca0b053f6059a6c16d61d4a97fc48e58d"
       },
       "teachingChecksums": {
+        "french-v3-teaching:subjonctif:recognition": "sha256:8f51d204e715dba553cbe5a4cb310645ad2dae3d4e033ea3ef8ac09a9b08cc4d",
         "french-v3-teaching:completive:production": "sha256:91c0a3a947e308ed81aea4faf273ef06f39b00c599703e10aa38870202805853",
         "french-v3-teaching:subjonctif-present:être": "sha256:d59c82e0ee5e3147b8d4f576cb34b34c70a894fb8c7a09a1e037d8821fd8966d",
         "french-v3-teaching:subjonctif-present:avoir": "sha256:6c2348446b789cb336d02fb9a7372be8d2950a9b97cc6665845ce3a727aa0fa1",
@@ -149621,8 +150178,8 @@
         "french-v3-teaching:present:verb:devoir": "sha256:b5dc0dcbb7300e37d56ae0b5bddfa3eb2de8f5e647961fd7c9e2761ad9daa67b"
       }
     },
-    "facetChecksum": "sha256:ed69818544d0db22b9a962b52b586bc15f563b2ab00cb6de62f4cf58ac79f7b8",
-    "poolChecksum": "sha256:42cf911b3e2bd2b6359af6ba98a175a53bcf00911b95be48a1cfecd0b1fdd3d7"
+    "facetChecksum": "sha256:55747d3f32063228d5f52326bb084446022b5e006f3509307652e04c134d1d0a",
+    "poolChecksum": "sha256:3e705711504033235f3547e3fca6e6315abaf0ab40ef7d305b81ec256e3a976f"
   },
   "teachingPoolRepairs": [
     {
@@ -149834,8 +150391,8 @@
       "skillId": "distinguer_personne_nombre::reading-receptive",
       "mode": "recognition",
       "status": "allocated",
-      "initialItems": 13,
-      "learningItems": 12
+      "initialItems": 12,
+      "learningItems": 13
     },
     {
       "skillId": "reconnaitre_radical_terminaison::reading-receptive",
@@ -151107,22 +151664,22 @@
     {
       "skillId": "reconnaitre_subjonctif_present::reading-receptive",
       "mode": "recognition",
-      "status": "insufficient_coverage",
-      "initialItems": 2,
-      "learningItems": 0
+      "status": "allocated",
+      "initialItems": 12,
+      "learningItems": 12
     },
     {
       "skillId": "produire_subjonctif_present_frequent::writing-controlled-production::verb:être",
       "mode": "production",
       "status": "allocated",
-      "initialItems": 7,
+      "initialItems": 6,
       "learningItems": 6
     },
     {
       "skillId": "produire_subjonctif_present_frequent::writing-controlled-production::verb:avoir",
       "mode": "production",
       "status": "allocated",
-      "initialItems": 7,
+      "initialItems": 6,
       "learningItems": 6
     },
     {
@@ -151136,7 +151693,7 @@
       "skillId": "produire_subjonctif_present_frequent::writing-controlled-production::verb:faire",
       "mode": "production",
       "status": "allocated",
-      "initialItems": 7,
+      "initialItems": 6,
       "learningItems": 6
     },
     {
@@ -153706,17 +154263,18 @@
       "href": "/student/diagnostic",
       "probeIds": [
         "local-conjugation-gap-v1:distinguer_personne_nombre:receptive:foundation",
-        "v3-person-number:collectif",
         "v3-person-number:elle",
-        "v3-person-number:j-ecoute",
         "v3-person-number:je-dessine",
-        "v3-person-number:je-incise",
         "v3-person-number:je-negation",
-        "v3-person-number:nom-singulier",
-        "v3-person-number:tu-choisis",
+        "v3-person-number:lui-elle",
+        "v3-person-number:nous",
+        "v3-person-number:objets-pluriels",
+        "v3-person-number:on-nous",
+        "v3-person-number:toi-elle",
         "v3-person-number:tu-future",
-        "v3-person-number:tu-negative",
-        "v3-person-number:tu-question"
+        "v3-person-number:tu-question",
+        "v3-person-number:vous-moi",
+        "v3-person-number:vous-politesse"
       ],
       "estimatedMinutes": 1
     },
@@ -157718,6 +158276,30 @@
       "estimatedMinutes": 1
     },
     {
+      "id": "19a6841b-359e-5913-8596-6222da5a45f5",
+      "nodeKey": "reconnaitre_subjonctif_present",
+      "mode": "recognition",
+      "kind": "independent_check",
+      "status": "draft",
+      "titleFr": "Reconnaître le subjonctif présent",
+      "href": "/student/diagnostic",
+      "probeIds": [
+        "v3-tense-recognition:subjonctif-recognition-10",
+        "v3-tense-recognition:subjonctif-recognition-12",
+        "v3-tense-recognition:subjonctif-recognition-14",
+        "v3-tense-recognition:subjonctif-recognition-16",
+        "v3-tense-recognition:subjonctif-recognition-18",
+        "v3-tense-recognition:subjonctif-recognition-20",
+        "v3-tense-recognition:subjonctif-recognition-22",
+        "v3-tense-recognition:subjonctif-recognition-24",
+        "v3-tense-recognition:subjonctif-recognition-3",
+        "v3-tense-recognition:subjonctif-recognition-5",
+        "v3-tense-recognition:subjonctif-recognition-7",
+        "v3-tense-recognition:subjonctif-recognition-9"
+      ],
+      "estimatedMinutes": 1
+    },
+    {
       "id": "23de0de4-74ad-570d-b314-555609b4505d",
       "nodeKey": "produire_subjonctif_present_frequent",
       "facetKey": "produire_subjonctif_present_frequent::verb:être",
@@ -157727,10 +158309,10 @@
       "titleFr": "Produire un subjonctif présent fréquent — Conjuguer être",
       "href": "/student/diagnostic",
       "probeIds": [
-        "computed-conjugation-v1:produire_subjonctif_present_frequent:foundation",
         "v3-granular-forms:subjonctif_present-application-context:être:1p:3",
         "v3-granular-forms:subjonctif_present-application-context:être:1p:9",
         "v3-granular-forms:subjonctif_present-application-context:être:1s:0",
+        "v3-granular-forms:subjonctif_present-application-context:être:2p:4",
         "v3-granular-forms:subjonctif_present-application-context:être:2s:1",
         "v3-granular-forms:subjonctif_present-application-context:être:3s:2"
       ],
@@ -157746,10 +158328,10 @@
       "titleFr": "Produire un subjonctif présent fréquent — Conjuguer avoir",
       "href": "/student/diagnostic",
       "probeIds": [
-        "computed-conjugation-v1:produire_subjonctif_present_frequent:core",
         "v3-granular-forms:subjonctif_present-application-context:avoir:1p:15",
         "v3-granular-forms:subjonctif_present-application-context:avoir:1p:21",
         "v3-granular-forms:subjonctif_present-application-context:avoir:1s:12",
+        "v3-granular-forms:subjonctif_present-application-context:avoir:2p:16",
         "v3-granular-forms:subjonctif_present-application-context:avoir:2s:13",
         "v3-granular-forms:subjonctif_present-application-context:avoir:3s:14"
       ],
@@ -157784,10 +158366,10 @@
       "titleFr": "Produire un subjonctif présent fréquent — Conjuguer faire",
       "href": "/student/diagnostic",
       "probeIds": [
-        "computed-conjugation-v1:produire_subjonctif_present_frequent:stretch",
         "v3-granular-forms:subjonctif_present-application-context:faire:1p:39",
         "v3-granular-forms:subjonctif_present-application-context:faire:1p:45",
         "v3-granular-forms:subjonctif_present-application-context:faire:1s:36",
+        "v3-granular-forms:subjonctif_present-application-context:faire:2p:40",
         "v3-granular-forms:subjonctif_present-application-context:faire:2s:37",
         "v3-granular-forms:subjonctif_present-application-context:faire:3s:38"
       ],
@@ -160285,6 +160867,129 @@
     }
   ],
   "teachingContent": [
+    {
+      "id": "french-v3-teaching:subjonctif:recognition",
+      "nodeKey": "reconnaitre_subjonctif_present",
+      "mode": "recognition",
+      "status": "published_pending_review",
+      "titleFr": "Reconnaître le subjonctif présent dans une phrase",
+      "learnerQuestionFr": "Comment distinguer « nous partions » au subjonctif et à l’imparfait ?",
+      "steps": [
+        {
+          "exampleFr": "Tu fais une pause. Il faut que tu fasses une pause.",
+          "explanationFr": "Fais devient fasses après il faut que. Cette forme est au subjonctif présent. Ici, la phrase présente ce qui est nécessaire."
+        },
+        {
+          "exampleFr": "Je veux que nous partions ensemble. Nous partions tôt à cette époque.",
+          "explanationFr": "Partions a la même orthographe dans les deux phrases. Après je veux que, c’est le subjonctif présent. Dans le souvenir d’une habitude passée, c’est l’imparfait de l’indicatif. Lis la phrase entière."
+        },
+        {
+          "exampleFr": "Elle confirme que tu es inscrit. Il faut que tu sois inscrit.",
+          "explanationFr": "Que apparaît dans les deux phrases. Le verbe es est à l’indicatif, sois au subjonctif. Que seul n’est donc pas un test suffisant."
+        },
+        {
+          "exampleFr": "Il faut que tu termines. Je suis contente que tu aies terminé.",
+          "explanationFr": "Termines est au subjonctif présent. Aies terminé est au subjonctif passé : il combine l’auxiliaire aies avec le participe terminé. Observe tout le groupe demandé."
+        }
+      ],
+      "practice": [
+        {
+          "id": "subjonctif-recognition-guided-1",
+          "promptFr": "Il faut que tu fasses une pause.\n\nDans cette phrase, à quel mode et à quel temps est « fasses » ?",
+          "choices": [
+            "Subjonctif présent",
+            "Indicatif présent",
+            "Indicatif imparfait",
+            "Subjonctif passé"
+          ],
+          "answerFr": "Subjonctif présent",
+          "hintFr": "Lis le début de la phrase et observe tout le groupe verbal demandé.",
+          "explanationFr": "Fasses est le subjonctif présent de faire."
+        },
+        {
+          "id": "subjonctif-recognition-guided-2",
+          "promptFr": "Je veux que nous partions ensemble.\n\nDans cette phrase, à quel mode et à quel temps est « partions » ?",
+          "choices": [
+            "Subjonctif présent",
+            "Indicatif présent",
+            "Indicatif imparfait",
+            "Subjonctif passé"
+          ],
+          "answerFr": "Subjonctif présent",
+          "hintFr": "Lis le début de la phrase et observe tout le groupe verbal demandé.",
+          "explanationFr": "Veux que appelle ici le subjonctif."
+        },
+        {
+          "id": "subjonctif-recognition-guided-3",
+          "promptFr": "Je sais que nous partions tôt à cette époque.\n\nDans cette phrase, à quel mode et à quel temps est « partions » ?",
+          "choices": [
+            "Subjonctif présent",
+            "Indicatif présent",
+            "Indicatif imparfait",
+            "Subjonctif passé"
+          ],
+          "answerFr": "Indicatif imparfait",
+          "hintFr": "Lis le début de la phrase et observe tout le groupe verbal demandé.",
+          "explanationFr": "À cette époque situe ici une habitude passée."
+        },
+        {
+          "id": "subjonctif-recognition-guided-4",
+          "promptFr": "Elle confirme que tu es inscrit.\n\nDans cette phrase, à quel mode et à quel temps est « es » ?",
+          "choices": [
+            "Subjonctif présent",
+            "Indicatif présent",
+            "Indicatif imparfait",
+            "Subjonctif passé"
+          ],
+          "answerFr": "Indicatif présent",
+          "hintFr": "Lis le début de la phrase et observe tout le groupe verbal demandé.",
+          "explanationFr": "Es est au présent de l’indicatif ; sois serait au subjonctif."
+        },
+        {
+          "id": "subjonctif-recognition-guided-5",
+          "promptFr": "Il est souhaitable que chacun participe.\n\nDans cette phrase, à quel mode et à quel temps est « participe » ?",
+          "choices": [
+            "Subjonctif présent",
+            "Indicatif présent",
+            "Indicatif imparfait",
+            "Subjonctif passé"
+          ],
+          "answerFr": "Subjonctif présent",
+          "hintFr": "Lis le début de la phrase et observe tout le groupe verbal demandé.",
+          "explanationFr": "Le contexte appelle le subjonctif, même si la forme ressemble à l’indicatif."
+        },
+        {
+          "id": "subjonctif-recognition-guided-6",
+          "promptFr": "Je regrette que tu aies oublié ton manteau.\n\nDans cette phrase, à quel mode et à quel temps est « aies oublié » ?",
+          "choices": [
+            "Subjonctif présent",
+            "Indicatif présent",
+            "Indicatif imparfait",
+            "Subjonctif passé"
+          ],
+          "answerFr": "Subjonctif passé",
+          "hintFr": "Lis le début de la phrase et observe tout le groupe verbal demandé.",
+          "explanationFr": "Aies oublié est un groupe composé, au subjonctif passé."
+        }
+      ],
+      "takeawayFr": "Croise la forme du verbe avec le contexte. Que ne suffit pas, et une forme composée comme aies terminé n’est pas un subjonctif présent.",
+      "boundaryFr": "Tu identifies ici un mode et un temps dans une phrase déjà écrite. Cela ne prouve pas encore que tu sais choisir ce mode dans ton propre texte ni conjuguer chaque verbe. Le subjonctif présent peut évoquer un événement futur.",
+      "materialExposure": {
+        "sentences": [
+          "Tu fais une pause. Il faut que tu fasses une pause.",
+          "Je veux que nous partions ensemble. Nous partions tôt à cette époque.",
+          "Elle confirme que tu es inscrit. Il faut que tu sois inscrit.",
+          "Il faut que tu termines. Je suis contente que tu aies terminé.",
+          "Il faut que tu fasses une pause.",
+          "Je veux que nous partions ensemble.",
+          "Je sais que nous partions tôt à cette époque.",
+          "Elle confirme que tu es inscrit.",
+          "Il est souhaitable que chacun participe.",
+          "Je regrette que tu aies oublié ton manteau."
+        ]
+      },
+      "assessmentExposureIds": []
+    },
     {
       "id": "french-v3-teaching:completive:production",
       "nodeKey": "construction_subordonnee_completive",
@@ -210828,6 +211533,28 @@
   ],
   "teachingBindings": [
     {
+      "id": "8a90198f-74e5-5b07-842f-d88e685261aa",
+      "nodeKey": "reconnaitre_subjonctif_present",
+      "mode": "recognition",
+      "kind": "instruction",
+      "status": "published",
+      "titleFr": "Reconnaître le subjonctif présent dans une phrase",
+      "href": "/student/diagnostic",
+      "contentId": "french-v3-teaching:subjonctif:recognition",
+      "estimatedMinutes": 4
+    },
+    {
+      "id": "86c0f418-1689-58b6-aeec-68a41ef0c0a3",
+      "nodeKey": "reconnaitre_subjonctif_present",
+      "mode": "recognition",
+      "kind": "practice",
+      "status": "published",
+      "titleFr": "Reconnaître le subjonctif présent dans une phrase",
+      "href": "/student/diagnostic",
+      "contentId": "french-v3-teaching:subjonctif:recognition",
+      "estimatedMinutes": 6
+    },
+    {
       "id": "bba9caf6-3a01-51c3-803b-0ac606510949",
       "nodeKey": "construction_subordonnee_completive",
       "mode": "production",
@@ -216790,6 +217517,13 @@
   ],
   "teachingReadiness": [
     {
+      "lessonId": "french-v3-teaching:subjonctif:recognition",
+      "skillId": "reconnaitre_subjonctif_present::reading-receptive",
+      "poolsAllocated": true,
+      "remainingCheckQuestions": 12,
+      "freshCheckAvailable": true
+    },
+    {
       "lessonId": "french-v3-teaching:completive:production",
       "skillId": "construction_subordonnee_completive::writing-controlled-production",
       "poolsAllocated": true,
@@ -218354,7 +219088,7 @@
       "lessonId": "french-v3-teaching:person-number",
       "skillId": "distinguer_personne_nombre::reading-receptive",
       "poolsAllocated": true,
-      "remainingCheckQuestions": 12,
+      "remainingCheckQuestions": 13,
       "freshCheckAvailable": true
     },
     {
@@ -218680,14 +219414,12 @@
       "freshCheckAvailable": true
     }
   ],
-  "teachingPrerequisiteGaps": [
-    "reconnaitre_subjonctif_present::reading-receptive"
-  ],
+  "teachingPrerequisiteGaps": [],
   "limitations": [
     "Content remains pending review; release permission does not create human approval",
     "No database publication or activation is performed by this builder",
     "Incomplete target pools remain visible; release scope and fresh post-teaching check capacity still need verification",
     "Structurally rejected content remains ineligible; semantic review continues in parallel"
   ],
-  "checksum": "sha256:42b974350cc0e25c6be404107c2d62e3bab9b73488f2c7d7a2862669241341f7"
+  "checksum": "sha256:f7814d1144dea20d23d5fc82ef913b7638ca49e6d69264d0c4fb0c12d2f2a5b4"
 }

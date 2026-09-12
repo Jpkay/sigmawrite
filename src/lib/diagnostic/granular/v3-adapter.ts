@@ -95,10 +95,11 @@ export function adaptV3ForAssessment(input:{artifact:ReturnType<typeof buildFren
  });
  // Legacy unannotated sound items cannot establish the approved novel-word contract.
  // Only retire them when this bank supplies the replacement auditory format.
+ const trackedSubjunctiveTargets=new Set(probes.filter(p=>(p.samplingCategory?.startsWith("subjonctif-recognition:")||p.skillId==="produire_subjonctif_present_frequent::writing-controlled-production")&&p.assessedMaterialKeys?.some(k=>k.startsWith("sentence:"))).map(p=>p.skillId));
  const auditoryTargets=new Set(probes.filter(p=>p.evidenceFeatures?.some(f=>f.startsWith("phoneme-graphie:"))).map(p=>p.skillId));
  for(let index=probes.length-1;index>=0;index--){
   const probe=probes[index];
-  if(auditoryTargets.has(probe.skillId)&&!probe.assessedMaterialKeys?.some(key=>key.startsWith("word:"))){unsupportedEvidenceItemKeys.push(probe.id);probes.splice(index,1);}
+  if((auditoryTargets.has(probe.skillId)&&!probe.assessedMaterialKeys?.some(key=>key.startsWith("word:")))||(trackedSubjunctiveTargets.has(probe.skillId)&&!probe.assessedMaterialKeys?.length)){unsupportedEvidenceItemKeys.push(probe.id);probes.splice(index,1);}
  }
  applyPhonemeGraphieCoverage(skills,probes);
  applyWrittenSyllableCoverage(skills,probes);

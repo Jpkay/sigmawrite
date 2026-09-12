@@ -5,6 +5,1782 @@
   "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
   "items": [
     {
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-1",
+      "item": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Il faut que je sois disponible demain.\n\nDans cette phrase, à quel mode et à quel temps est « sois » ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Il faut que je sois disponible demain.\n\nDans cette phrase, à quel mode et à quel temps est « sois » ?",
+              "Indicatif présent",
+              "Indicatif imparfait",
+              "Subjonctif passé",
+              "Subjonctif présent",
+              "Il faut que je sois disponible demain."
+            ],
+            "assessed": {
+              "sentences": [
+                "Il faut que je sois disponible demain."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Subjonctif présent",
+            "correct": true
+          },
+          {
+            "text": "Indicatif présent",
+            "correct": false
+          },
+          {
+            "text": "Indicatif imparfait",
+            "correct": false
+          },
+          {
+            "text": "Subjonctif passé",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-2",
+      "item": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Je souhaite que tu aies une bonne surprise.\n\nDans cette phrase, à quel mode et à quel temps est « aies » ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Je souhaite que tu aies une bonne surprise.\n\nDans cette phrase, à quel mode et à quel temps est « aies » ?",
+              "Indicatif présent",
+              "Indicatif imparfait",
+              "Subjonctif passé",
+              "Subjonctif présent",
+              "Je souhaite que tu aies une bonne surprise."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je souhaite que tu aies une bonne surprise."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Subjonctif présent",
+            "correct": true
+          },
+          {
+            "text": "Indicatif présent",
+            "correct": false
+          },
+          {
+            "text": "Indicatif imparfait",
+            "correct": false
+          },
+          {
+            "text": "Subjonctif passé",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-3",
+      "item": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "La coach veut que Léa fasse le premier essai.\n\nDans cette phrase, à quel mode et à quel temps est « fasse » ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "La coach veut que Léa fasse le premier essai.\n\nDans cette phrase, à quel mode et à quel temps est « fasse » ?",
+              "Indicatif présent",
+              "Indicatif imparfait",
+              "Subjonctif passé",
+              "Subjonctif présent",
+              "La coach veut que Léa fasse le premier essai."
+            ],
+            "assessed": {
+              "sentences": [
+                "La coach veut que Léa fasse le premier essai."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Subjonctif présent",
+            "correct": true
+          },
+          {
+            "text": "Indicatif présent",
+            "correct": false
+          },
+          {
+            "text": "Indicatif imparfait",
+            "correct": false
+          },
+          {
+            "text": "Subjonctif passé",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-4",
+      "item": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Il est important que nous prenions le bon dossier.\n\nDans cette phrase, à quel mode et à quel temps est « prenions » ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Il est important que nous prenions le bon dossier.\n\nDans cette phrase, à quel mode et à quel temps est « prenions » ?",
+              "Indicatif présent",
+              "Indicatif imparfait",
+              "Subjonctif passé",
+              "Subjonctif présent",
+              "Il est important que nous prenions le bon dossier."
+            ],
+            "assessed": {
+              "sentences": [
+                "Il est important que nous prenions le bon dossier."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Subjonctif présent",
+            "correct": true
+          },
+          {
+            "text": "Indicatif présent",
+            "correct": false
+          },
+          {
+            "text": "Indicatif imparfait",
+            "correct": false
+          },
+          {
+            "text": "Subjonctif passé",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-5",
+      "item": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Je préfère que vous veniez mardi.\n\nDans cette phrase, à quel mode et à quel temps est « veniez » ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Je préfère que vous veniez mardi.\n\nDans cette phrase, à quel mode et à quel temps est « veniez » ?",
+              "Indicatif présent",
+              "Indicatif imparfait",
+              "Subjonctif passé",
+              "Subjonctif présent",
+              "Je préfère que vous veniez mardi."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je préfère que vous veniez mardi."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Subjonctif présent",
+            "correct": true
+          },
+          {
+            "text": "Indicatif présent",
+            "correct": false
+          },
+          {
+            "text": "Indicatif imparfait",
+            "correct": false
+          },
+          {
+            "text": "Subjonctif passé",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-6",
+      "item": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le groupe attend que les portes s’ouvrent.\n\nDans cette phrase, à quel mode et à quel temps est « ouvrent » ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le groupe attend que les portes s’ouvrent.\n\nDans cette phrase, à quel mode et à quel temps est « ouvrent » ?",
+              "Indicatif présent",
+              "Indicatif imparfait",
+              "Subjonctif passé",
+              "Subjonctif présent",
+              "Le groupe attend que les portes s’ouvrent."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le groupe attend que les portes s’ouvrent."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Subjonctif présent",
+            "correct": true
+          },
+          {
+            "text": "Indicatif présent",
+            "correct": false
+          },
+          {
+            "text": "Indicatif imparfait",
+            "correct": false
+          },
+          {
+            "text": "Subjonctif passé",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-7",
+      "item": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Il est possible que je puisse aider au montage.\n\nDans cette phrase, à quel mode et à quel temps est « puisse » ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Il est possible que je puisse aider au montage.\n\nDans cette phrase, à quel mode et à quel temps est « puisse » ?",
+              "Indicatif présent",
+              "Indicatif imparfait",
+              "Subjonctif passé",
+              "Subjonctif présent",
+              "Il est possible que je puisse aider au montage."
+            ],
+            "assessed": {
+              "sentences": [
+                "Il est possible que je puisse aider au montage."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Subjonctif présent",
+            "correct": true
+          },
+          {
+            "text": "Indicatif présent",
+            "correct": false
+          },
+          {
+            "text": "Indicatif imparfait",
+            "correct": false
+          },
+          {
+            "text": "Subjonctif passé",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-8",
+      "item": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Il vaut mieux que tu saches le numéro de la salle.\n\nDans cette phrase, à quel mode et à quel temps est « saches » ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Il vaut mieux que tu saches le numéro de la salle.\n\nDans cette phrase, à quel mode et à quel temps est « saches » ?",
+              "Indicatif présent",
+              "Indicatif imparfait",
+              "Subjonctif passé",
+              "Subjonctif présent",
+              "Il vaut mieux que tu saches le numéro de la salle."
+            ],
+            "assessed": {
+              "sentences": [
+                "Il vaut mieux que tu saches le numéro de la salle."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Subjonctif présent",
+            "correct": true
+          },
+          {
+            "text": "Indicatif présent",
+            "correct": false
+          },
+          {
+            "text": "Indicatif imparfait",
+            "correct": false
+          },
+          {
+            "text": "Subjonctif passé",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-9",
+      "item": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Je demande que le bus parte après la visite.\n\nDans cette phrase, à quel mode et à quel temps est « parte » ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Je demande que le bus parte après la visite.\n\nDans cette phrase, à quel mode et à quel temps est « parte » ?",
+              "Indicatif présent",
+              "Indicatif imparfait",
+              "Subjonctif passé",
+              "Subjonctif présent",
+              "Je demande que le bus parte après la visite."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je demande que le bus parte après la visite."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Subjonctif présent",
+            "correct": true
+          },
+          {
+            "text": "Indicatif présent",
+            "correct": false
+          },
+          {
+            "text": "Indicatif imparfait",
+            "correct": false
+          },
+          {
+            "text": "Subjonctif passé",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-10",
+      "item": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "La guide souhaite que nous voyions les fresques.\n\nDans cette phrase, à quel mode et à quel temps est « voyions » ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "La guide souhaite que nous voyions les fresques.\n\nDans cette phrase, à quel mode et à quel temps est « voyions » ?",
+              "Indicatif présent",
+              "Indicatif imparfait",
+              "Subjonctif passé",
+              "Subjonctif présent",
+              "La guide souhaite que nous voyions les fresques."
+            ],
+            "assessed": {
+              "sentences": [
+                "La guide souhaite que nous voyions les fresques."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Subjonctif présent",
+            "correct": true
+          },
+          {
+            "text": "Indicatif présent",
+            "correct": false
+          },
+          {
+            "text": "Indicatif imparfait",
+            "correct": false
+          },
+          {
+            "text": "Subjonctif passé",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-11",
+      "item": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Il est nécessaire que vous lisiez la consigne entière.\n\nDans cette phrase, à quel mode et à quel temps est « lisiez » ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Il est nécessaire que vous lisiez la consigne entière.\n\nDans cette phrase, à quel mode et à quel temps est « lisiez » ?",
+              "Indicatif présent",
+              "Indicatif imparfait",
+              "Subjonctif passé",
+              "Subjonctif présent",
+              "Il est nécessaire que vous lisiez la consigne entière."
+            ],
+            "assessed": {
+              "sentences": [
+                "Il est nécessaire que vous lisiez la consigne entière."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Subjonctif présent",
+            "correct": true
+          },
+          {
+            "text": "Indicatif présent",
+            "correct": false
+          },
+          {
+            "text": "Indicatif imparfait",
+            "correct": false
+          },
+          {
+            "text": "Subjonctif passé",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-12",
+      "item": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le public veut que les artistes reviennent.\n\nDans cette phrase, à quel mode et à quel temps est « reviennent » ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le public veut que les artistes reviennent.\n\nDans cette phrase, à quel mode et à quel temps est « reviennent » ?",
+              "Indicatif présent",
+              "Indicatif imparfait",
+              "Subjonctif passé",
+              "Subjonctif présent",
+              "Le public veut que les artistes reviennent."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le public veut que les artistes reviennent."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Subjonctif présent",
+            "correct": true
+          },
+          {
+            "text": "Indicatif présent",
+            "correct": false
+          },
+          {
+            "text": "Indicatif imparfait",
+            "correct": false
+          },
+          {
+            "text": "Subjonctif passé",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-13",
+      "item": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Je sais que le magasin vend des carnets.\n\nDans cette phrase, à quel mode et à quel temps est « vend » ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Je sais que le magasin vend des carnets.\n\nDans cette phrase, à quel mode et à quel temps est « vend » ?",
+              "Subjonctif présent",
+              "Indicatif imparfait",
+              "Subjonctif passé",
+              "Indicatif présent",
+              "Je sais que le magasin vend des carnets."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je sais que le magasin vend des carnets."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Indicatif présent",
+            "correct": true
+          },
+          {
+            "text": "Subjonctif présent",
+            "correct": false
+          },
+          {
+            "text": "Indicatif imparfait",
+            "correct": false
+          },
+          {
+            "text": "Subjonctif passé",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-14",
+      "item": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Elle affirme que nous avons les bonnes clés.\n\nDans cette phrase, à quel mode et à quel temps est « avons » ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Elle affirme que nous avons les bonnes clés.\n\nDans cette phrase, à quel mode et à quel temps est « avons » ?",
+              "Subjonctif présent",
+              "Indicatif imparfait",
+              "Subjonctif passé",
+              "Indicatif présent",
+              "Elle affirme que nous avons les bonnes clés."
+            ],
+            "assessed": {
+              "sentences": [
+                "Elle affirme que nous avons les bonnes clés."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Indicatif présent",
+            "correct": true
+          },
+          {
+            "text": "Subjonctif présent",
+            "correct": false
+          },
+          {
+            "text": "Indicatif imparfait",
+            "correct": false
+          },
+          {
+            "text": "Subjonctif passé",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-15",
+      "item": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Je constate que vous êtes dans le bon couloir.\n\nDans cette phrase, à quel mode et à quel temps est « êtes » ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Je constate que vous êtes dans le bon couloir.\n\nDans cette phrase, à quel mode et à quel temps est « êtes » ?",
+              "Subjonctif présent",
+              "Indicatif imparfait",
+              "Subjonctif passé",
+              "Indicatif présent",
+              "Je constate que vous êtes dans le bon couloir."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je constate que vous êtes dans le bon couloir."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Indicatif présent",
+            "correct": true
+          },
+          {
+            "text": "Subjonctif présent",
+            "correct": false
+          },
+          {
+            "text": "Indicatif imparfait",
+            "correct": false
+          },
+          {
+            "text": "Subjonctif passé",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-16",
+      "item": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le panneau indique que les cars passent ici.\n\nDans cette phrase, à quel mode et à quel temps est « passent » ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le panneau indique que les cars passent ici.\n\nDans cette phrase, à quel mode et à quel temps est « passent » ?",
+              "Subjonctif présent",
+              "Indicatif imparfait",
+              "Subjonctif passé",
+              "Indicatif présent",
+              "Le panneau indique que les cars passent ici."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le panneau indique que les cars passent ici."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Indicatif présent",
+            "correct": true
+          },
+          {
+            "text": "Subjonctif présent",
+            "correct": false
+          },
+          {
+            "text": "Indicatif imparfait",
+            "correct": false
+          },
+          {
+            "text": "Subjonctif passé",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-17",
+      "item": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Je me souviens que nous prenions ce chemin chaque été.\n\nDans cette phrase, à quel mode et à quel temps est « prenions » ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Je me souviens que nous prenions ce chemin chaque été.\n\nDans cette phrase, à quel mode et à quel temps est « prenions » ?",
+              "Subjonctif présent",
+              "Indicatif présent",
+              "Subjonctif passé",
+              "Indicatif imparfait",
+              "Je me souviens que nous prenions ce chemin chaque été."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je me souviens que nous prenions ce chemin chaque été."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Indicatif imparfait",
+            "correct": true
+          },
+          {
+            "text": "Subjonctif présent",
+            "correct": false
+          },
+          {
+            "text": "Indicatif présent",
+            "correct": false
+          },
+          {
+            "text": "Subjonctif passé",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-18",
+      "item": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Il racontait que vous veniez souvent autrefois.\n\nDans cette phrase, à quel mode et à quel temps est « veniez » ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Il racontait que vous veniez souvent autrefois.\n\nDans cette phrase, à quel mode et à quel temps est « veniez » ?",
+              "Subjonctif présent",
+              "Indicatif présent",
+              "Subjonctif passé",
+              "Indicatif imparfait",
+              "Il racontait que vous veniez souvent autrefois."
+            ],
+            "assessed": {
+              "sentences": [
+                "Il racontait que vous veniez souvent autrefois."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Indicatif imparfait",
+            "correct": true
+          },
+          {
+            "text": "Subjonctif présent",
+            "correct": false
+          },
+          {
+            "text": "Indicatif présent",
+            "correct": false
+          },
+          {
+            "text": "Subjonctif passé",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-19",
+      "item": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Elle se rappelait que nous voyions la mer depuis le balcon.\n\nDans cette phrase, à quel mode et à quel temps est « voyions » ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Elle se rappelait que nous voyions la mer depuis le balcon.\n\nDans cette phrase, à quel mode et à quel temps est « voyions » ?",
+              "Subjonctif présent",
+              "Indicatif présent",
+              "Subjonctif passé",
+              "Indicatif imparfait",
+              "Elle se rappelait que nous voyions la mer depuis le balcon."
+            ],
+            "assessed": {
+              "sentences": [
+                "Elle se rappelait que nous voyions la mer depuis le balcon."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Indicatif imparfait",
+            "correct": true
+          },
+          {
+            "text": "Subjonctif présent",
+            "correct": false
+          },
+          {
+            "text": "Indicatif présent",
+            "correct": false
+          },
+          {
+            "text": "Subjonctif passé",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-20",
+      "item": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Je savais que vous lisiez ce journal tous les matins.\n\nDans cette phrase, à quel mode et à quel temps est « lisiez » ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Je savais que vous lisiez ce journal tous les matins.\n\nDans cette phrase, à quel mode et à quel temps est « lisiez » ?",
+              "Subjonctif présent",
+              "Indicatif présent",
+              "Subjonctif passé",
+              "Indicatif imparfait",
+              "Je savais que vous lisiez ce journal tous les matins."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je savais que vous lisiez ce journal tous les matins."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Indicatif imparfait",
+            "correct": true
+          },
+          {
+            "text": "Subjonctif présent",
+            "correct": false
+          },
+          {
+            "text": "Indicatif présent",
+            "correct": false
+          },
+          {
+            "text": "Subjonctif passé",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-21",
+      "item": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Je suis heureux que tu aies gagné cette course.\n\nDans cette phrase, à quel mode et à quel temps est « aies gagné » ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Je suis heureux que tu aies gagné cette course.\n\nDans cette phrase, à quel mode et à quel temps est « aies gagné » ?",
+              "Subjonctif présent",
+              "Indicatif présent",
+              "Indicatif imparfait",
+              "Subjonctif passé",
+              "Je suis heureux que tu aies gagné cette course."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je suis heureux que tu aies gagné cette course."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Subjonctif passé",
+            "correct": true
+          },
+          {
+            "text": "Subjonctif présent",
+            "correct": false
+          },
+          {
+            "text": "Indicatif présent",
+            "correct": false
+          },
+          {
+            "text": "Indicatif imparfait",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-22",
+      "item": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Il est dommage que nous ayons perdu la carte.\n\nDans cette phrase, à quel mode et à quel temps est « ayons perdu » ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Il est dommage que nous ayons perdu la carte.\n\nDans cette phrase, à quel mode et à quel temps est « ayons perdu » ?",
+              "Subjonctif présent",
+              "Indicatif présent",
+              "Indicatif imparfait",
+              "Subjonctif passé",
+              "Il est dommage que nous ayons perdu la carte."
+            ],
+            "assessed": {
+              "sentences": [
+                "Il est dommage que nous ayons perdu la carte."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Subjonctif passé",
+            "correct": true
+          },
+          {
+            "text": "Subjonctif présent",
+            "correct": false
+          },
+          {
+            "text": "Indicatif présent",
+            "correct": false
+          },
+          {
+            "text": "Indicatif imparfait",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-23",
+      "item": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Elle regrette que le train soit parti sans nous.\n\nDans cette phrase, à quel mode et à quel temps est « soit parti » ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Elle regrette que le train soit parti sans nous.\n\nDans cette phrase, à quel mode et à quel temps est « soit parti » ?",
+              "Subjonctif présent",
+              "Indicatif présent",
+              "Indicatif imparfait",
+              "Subjonctif passé",
+              "Elle regrette que le train soit parti sans nous."
+            ],
+            "assessed": {
+              "sentences": [
+                "Elle regrette que le train soit parti sans nous."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Subjonctif passé",
+            "correct": true
+          },
+          {
+            "text": "Subjonctif présent",
+            "correct": false
+          },
+          {
+            "text": "Indicatif présent",
+            "correct": false
+          },
+          {
+            "text": "Indicatif imparfait",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-24",
+      "item": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Je suis ravi que vous soyez venus à cette fête.\n\nDans cette phrase, à quel mode et à quel temps est « soyez venus » ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Je suis ravi que vous soyez venus à cette fête.\n\nDans cette phrase, à quel mode et à quel temps est « soyez venus » ?",
+              "Subjonctif présent",
+              "Indicatif présent",
+              "Indicatif imparfait",
+              "Subjonctif passé",
+              "Je suis ravi que vous soyez venus à cette fête."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je suis ravi que vous soyez venus à cette fête."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Subjonctif passé",
+            "correct": true
+          },
+          {
+            "text": "Subjonctif présent",
+            "correct": false
+          },
+          {
+            "text": "Indicatif présent",
+            "correct": false
+          },
+          {
+            "text": "Indicatif imparfait",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "recognize-simple-tense",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
       "itemKey": "v3-tense-recognition:auxiliary-form-1",
       "item": {
         "nodeKey": "reconnaitre_auxiliaire",
@@ -6568,6 +8344,270 @@
   "annotations": [
     {
       "kind": "evidence",
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-1",
+      "itemChecksum": "sha256:f4cd389b0802beb9259b01eead3036a9721045ba2e8ad8c110b4728f010997ab",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:subjonctif-recognition-1",
+      "reason": "Sois est une forme simple du subjonctif présent de être."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-2",
+      "itemChecksum": "sha256:1827f29a9129c6f6667d9273e7c60b5a0074e8e0502229cc99b058bf5d00efb0",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:subjonctif-recognition-2",
+      "reason": "Aies est le subjonctif présent de avoir avec tu."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-3",
+      "itemChecksum": "sha256:d979fbb0c2c647a61ab7dd4385667138e1b0c3f68c65c6f7b914b801dc2011d5",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:subjonctif-recognition-3",
+      "reason": "Fasse est le subjonctif présent de faire."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-4",
+      "itemChecksum": "sha256:5bac2505e185d7b67a1a79264cc861616954459eef361bdcef21ab47b454897b",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:subjonctif-recognition-4",
+      "reason": "La construction il est important que appelle ici le subjonctif."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-5",
+      "itemChecksum": "sha256:b6e1b3a77b709c6c71b3eff3c726a5f768f9424c4e1610f4eb8e87eb03c1e992",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:subjonctif-recognition-5",
+      "reason": "Après je préfère que, veniez est ici au subjonctif présent."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-6",
+      "itemChecksum": "sha256:766370c0a2c0bbce9882cb9f3d324dd7d63f3cf399d63fb58c205c6bea07c18c",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:subjonctif-recognition-6",
+      "reason": "Attendre que appelle ici le subjonctif, malgré une forme identique à celle de l’indicatif présent."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-7",
+      "itemChecksum": "sha256:c7d7a0929bbe244d9b4269e92b4fbb39f0b013210061b83c5cc0e429f0d36db0",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:subjonctif-recognition-7",
+      "reason": "Puisse est le subjonctif présent de pouvoir."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-8",
+      "itemChecksum": "sha256:d3aa00d4199d56faa58494fe5c70a08c8b308767976c0d264b84b77e28e67062",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:subjonctif-recognition-8",
+      "reason": "Saches est une forme simple du subjonctif présent."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-9",
+      "itemChecksum": "sha256:3bcf9fdc6b80bb1d0fdaff6d2dc99acef808e1ec6066c4441fa788a4f000c0a7",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:subjonctif-recognition-9",
+      "reason": "Parte est ici au subjonctif présent après la demande."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-10",
+      "itemChecksum": "sha256:36ad352955950f269cceb5cf19b389b484473ba21542826add802d74d0c6da42",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:subjonctif-recognition-10",
+      "reason": "Souhaiter que appelle le subjonctif ; voyions n’est pas ici un imparfait."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-11",
+      "itemChecksum": "sha256:68761a343666fb301a28826326a73d754a69ecf0813f62364c282abb48c9620e",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:subjonctif-recognition-11",
+      "reason": "Le contexte appelle le subjonctif, même si lisiez peut aussi être une forme de l’imparfait."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-12",
+      "itemChecksum": "sha256:e04ecd1ba19e046461e868420e321433ad4b2a0af32b604311a5fd66a0e37f0d",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:subjonctif-recognition-12",
+      "reason": "Reviennent dépend ici de veut que : le mode est le subjonctif."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-13",
+      "itemChecksum": "sha256:3a6561c85839bd179ffec94d0cd073d39b193c9716451b0fc9f0bb37e33ab69d",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:subjonctif-recognition-13",
+      "reason": "Savoir que n’impose pas le subjonctif : vend est au présent de l’indicatif."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-14",
+      "itemChecksum": "sha256:1a7fdb62029a6edfdb4cdaa94556c3b500024c838a62e86c337d8b04f7809dd0",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:subjonctif-recognition-14",
+      "reason": "Avons est à l’indicatif présent ; le subjonctif serait ayons."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-15",
+      "itemChecksum": "sha256:39d75bd0a8c78ca9a335a533572083443737d8ed9eba93af4a3e39a6a87faca1",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:subjonctif-recognition-15",
+      "reason": "Êtes est à l’indicatif présent ; le subjonctif serait soyez."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-16",
+      "itemChecksum": "sha256:c1252e50dd5c23e669d990e1b864974497b9d98a15c32ab98ece94d295c9a9c3",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:subjonctif-recognition-16",
+      "reason": "Le panneau énonce un fait ; passent est ici au présent de l’indicatif."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-17",
+      "itemChecksum": "sha256:c8b6b04fafdd75d1a17cc2375db1603f274b2a1c9367fbd82d30178443930e9a",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:subjonctif-recognition-17",
+      "reason": "Le souvenir porte sur une habitude passée : prenions est ici à l’imparfait."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-18",
+      "itemChecksum": "sha256:576691570c43bed975465e61d944096e27b2fc67e9ec6903c3685fb55b86ffab",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:subjonctif-recognition-18",
+      "reason": "Autrefois et la répétition situent ici veniez à l’imparfait."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-19",
+      "itemChecksum": "sha256:1bfe96818ca4e45fe5963e95fbf53d098fba7c882479697c93aa33ed4c73294b",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:subjonctif-recognition-19",
+      "reason": "Le souvenir décrit une situation passée : voyions est ici à l’imparfait."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-20",
+      "itemChecksum": "sha256:82d76bbb23e7d60a7e765239e6ed20cc0148550e551225eb4059ee863ede19cf",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:subjonctif-recognition-20",
+      "reason": "Lisiez décrit ici une habitude passée à l’imparfait."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-21",
+      "itemChecksum": "sha256:96e79e0c923a36aea72ce062f3cc56a7d9794c112b5663761bede07aad17c758",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:subjonctif-recognition-21",
+      "reason": "Aies suivi du participe gagné forme le subjonctif passé."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-22",
+      "itemChecksum": "sha256:fe3c22b7aceb7aa5430bb5f87e6d48c5b64693246a5c6021e5bcfd84e028d7eb",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:subjonctif-recognition-22",
+      "reason": "Le groupe comporte un auxiliaire et un participe passé."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-23",
+      "itemChecksum": "sha256:9029aaf854e0a43e47bd267f33bcfd94ca529c3794ba70efab5756f6c06af64d",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:subjonctif-recognition-23",
+      "reason": "Soit parti est une forme composée du subjonctif passé."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-tense-recognition:subjonctif-recognition-24",
+      "itemChecksum": "sha256:52a8bdc78fc1cedddbda1625e5e6fcba6365a9e5c4a04ce8b4857ab722dd5b65",
+      "evidenceTarget": {
+        "nodeKey": "reconnaitre_subjonctif_present",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "tense-sentence:subjonctif-recognition-24",
+      "reason": "Il faut considérer tout le groupe soyez venus, pas seulement soyez."
+    },
+    {
+      "kind": "evidence",
       "itemKey": "v3-tense-recognition:auxiliary-form-1",
       "itemChecksum": "sha256:43110fed889ed7905636dc43049d723ae4422141a0d206786357bc5b720e4ca4",
       "evidenceTarget": {
@@ -7535,5 +9575,5 @@
       "reason": "La forme conjuguée est au futur simple. Les autres phrases sont au présent, à l’imparfait et au futur proche. Le moment annoncé ne suffit pas à nommer le temps."
     }
   ],
-  "checksum": "sha256:659fc1616480b24a76628f05aeab63fa12e471538a0cf5678f69c60d970560d9"
+  "checksum": "sha256:143e077644b80f1f046f4594cddf6a0484568c3dc9de3f880ba3781c2a8fda1a"
 }

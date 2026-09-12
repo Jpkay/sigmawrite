@@ -7,6 +7,12 @@ import {PERSON_NUMBER_LABELS} from "./person-number-categories";
 /** Sampling metadata from a reviewed question's explicit answer choices. This
  * does not add a mastery criterion or grant approval to authoring drafts. */
 function samplingCategory(entry:CanonicalDiagnosticBankItem):string|undefined{
+ if(entry.item.nodeKey==='reconnaitre_subjonctif_present'&&entry.evidenceKey==='reading-receptive'&&entry.item.responseType==='mcq'){
+  const labels=['Subjonctif présent','Indicatif présent','Indicatif imparfait','Subjonctif passé'];
+  const choices=entry.item.choices??[],correct=choices.filter(c=>c.correct);
+  if(choices.length===4&&correct.length===1&&labels.every(label=>choices.filter(c=>c.text===label).length===1))return `subjonctif-recognition:${labels.indexOf(correct[0].text)}`;
+ }
+
  if(entry.item.nodeKey!=="distinguer_personne_nombre"||entry.evidenceKey!=="reading-receptive"||entry.item.responseType!=="mcq")return;
  const choices=entry.item.choices??[],correct=choices.filter(choice=>choice.correct);
  if(choices.length!==6||correct.length!==1||!PERSON_NUMBER_LABELS.every(label=>choices.filter(choice=>choice.text===label).length===1))return;

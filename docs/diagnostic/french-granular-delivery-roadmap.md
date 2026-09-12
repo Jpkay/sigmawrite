@@ -16,10 +16,9 @@ Updated 2026-09-12. French only; Allotey is excluded. This document distinguishe
 
 | Required work | Targets |
 | --- | ---: |
-| Prepared assessment, teaching and fresh-check pathway | 238 |
+| Prepared assessment, teaching and fresh-check pathway | 253 |
 | Question pools allocated; exact-target lesson still missing | 43 |
-| Questions and lessons prepared; prerequisite scope unresolved | 14 |
-| Complete initial and follow-up question pools | 229 |
+| Complete initial and follow-up question pools | 228 |
 | Connected-writing evidence during learning | 18 |
 | Total | 542 |
 
@@ -29,9 +28,9 @@ These categories partition the graph; they are not publication or approval label
 
 1. Finish the timed diagnostic-to-learning browser verification of the frozen 237-target v15 candidate; the 231-target v14 release is publicly verified. Keep published bundles immutable and repeat full candidate and public verification before activating another version.
 2. Validate the new verb-visit routing on real content and live mixed-profile journeys. The eight constructed contrasts now pass; educator/student calibration and broader granular profile validation remain required. Keep untested targets unresolved and refine them during learning.
-3. Complete subjunctive recognition; its completive-clause production prerequisite now has a prepared lesson, pools and service journey, bringing the working draft to 238 targets. fourteen individual-verb production lessons now have fresh question pools but remain outside scope pending that path. See `subjonctif-production-preparation-2026-09-12.md`. Add the missing exact-target lessons for the remaining tenses and moods. The regular -er/-ir and -ger/-cer pathways for imparfait, passé composé, futur simple, conditionnel and plus-que-parfait are now prepared. Each needs suitable guided examples and fresh independent applications; existing form questions alone are insufficient.
+3. Finish the fifteen subjunctive service journeys after excluding legacy questions without material identities. Recognition and fourteen exact-verb lessons now have complete prerequisite scope and fresh pools, bringing the separate working draft to 253 targets. See `subjonctif-recognition-preparation-2026-09-12.md`. Then complete the remaining imperative and passé-simple exact-target lessons.
 4. Review the four remaining passé récent verb targets (pouvoir, vouloir, savoir, devoir) for natural contexts before authoring. Do not mechanically create awkward forms merely to reach a coverage count. Continue subjonctif, impératif and passé simple coverage with their own usage constraints.
-5. Fill the 229 question-pool gaps across all domains from the exact-target inventory, preserving distinct recognition, controlled production and contextual-use evidence. The written-syllable and sound-to-spelling prerequisites for cédille are now included in the prepared candidate. Complete the separate connected-writing pathway for the remaining 18 targets.
+5. Fill the 228 question-pool gaps across all domains from the exact-target inventory, preserving distinct recognition, controlled production and contextual-use evidence. The written-syllable and sound-to-spelling prerequisites for cédille are now included in the prepared candidate. Complete the separate connected-writing pathway for the remaining 18 targets.
 6. Continue the owner's review in parallel, recording actual decisions against content checksums. Validate difficulty, question duration, sufficient depth and the meaning of recommendations with educator and student evidence. Do not substitute technical tests for those judgments.
 
 ## Fixed foundation and product decisions
