@@ -51,7 +51,13 @@
         "grammar"
       ],
       "activities": 5
-    }
+    },
+    "bankImport": {
+      "completed": true,
+      "storedStatus": "draft",
+      "checksum": "sha256:8c2184304edcdb484d6adda780bc855666fe4f9e66f681a567e1cbb569cfb40a"
+    },
+    "answeredFeatureQaSearch": "Read-only scan of existing named technical QA accounts completed; no eligible answered-feature rows found. Deployed answered-count verification remains outstanding."
   },
   "freshQa": {
     "username": "doves.granular.r17.default.qa",
@@ -60,12 +66,13 @@
     "diagnosticStarted": false
   },
   "running": {
-    "import": 90779
+    "relationalCheck": 33859
   },
   "remaining": [
     "Finish bank import, relational consistency check and immutable v18 publication.",
     "Verify correct and incorrect feature counts on a deployed session with eligible feature evidence.",
     "Verify fresh default, full timed diagnostic through learning and review, and real upgrade.",
     "Promote the tested deployment and repeat public checks."
-  ]
+  ],
+  "bankReleaseId": "b14825c4-d36b-4cb5-8b55-ac22e7d9fd6f"
 }
