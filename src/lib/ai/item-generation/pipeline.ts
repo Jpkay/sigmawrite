@@ -1,3 +1,4 @@
+import {vouloirImperativeAnswers} from '@/lib/linguistic/vouloir-imperative';
 import {isSourceBoundWritingItem} from "@/lib/diagnostic/granular/writing-item-contract";
 /**
  * Competency-item generation pipeline — the 6 QC gates (Roadmap Phase 9).
@@ -114,8 +115,11 @@ export async function runGates(
           codBefore: cfg.codBefore as { gender?: "m" | "f"; number?: "s" | "p" } | undefined,
         }
       );
-      gate0 = { applied: true, correctedAnswer: computed };
-      item = { ...item, correctAnswer: computed }; // authoritative override
+      const contextual = cfg.vouloirImperativeUse === undefined ? undefined
+        : vouloirImperativeAnswers(String(cfg.verb), String(cfg.tense), cfg.person as Person, cfg.vouloirImperativeUse);
+      const correctAnswer = contextual?.[0] ?? computed;
+      gate0 = { applied: true, correctedAnswer: correctAnswer };
+      item = { ...item, correctAnswer, ...(contextual ? {acceptableAnswers:contextual.slice(1)} : {}) }; // authoritative override
     } catch (e) {
       return rejected(raw, {
         gate0_computed: { applied: false },

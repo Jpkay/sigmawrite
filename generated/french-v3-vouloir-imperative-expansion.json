@@ -1,0 +1,1547 @@
+{
+  "version": "french-v3-vouloir-imperative-expansion-v1",
+  "status": "draft_requires_review",
+  "parentTaxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+  "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
+  "items": [
+    {
+      "itemKey": "v3-vouloir-imperative:00:vouloir:2s",
+      "item": {
+        "nodeKey": "produire_imperatif",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Tu t’adresses à une personne que tu tutoies. En vouloir signifie ici garder de la rancune envers quelqu’un. Complète avec vouloir à l’impératif présent : Ne m’en ___ pas pour ce retard.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "veux",
+        "acceptableAnswers": [
+          "veuille"
+        ],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "vouloir",
+          "tense": "imperatif_present",
+          "person": "2s",
+          "vouloirImperativeUse": "resentment",
+          "sentenceApplication": "Ne m’en ___ pas pour ce retard.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "veux",
+              "veuille",
+              "voulons",
+              "veuillons",
+              "voulez",
+              "veuillez"
+            ],
+            "rationaleFr": "Le verbe, l’usage et la personne sont fournis. Les formules de politesse ont deux formes ici, dont une correcte. En vouloir a six formes proposées, dont deux correctes pour la personne demandée. Ce plancher de hasard conservateur ne mesure pas la rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "vouloir",
+                "form": "vouloir"
+              }
+            ],
+            "sentences": [
+              "Ne m’en ___ pas pour ce retard.",
+              "Ne m’en veux pas pour ce retard.",
+              "Ne m’en veuille pas pour ce retard."
+            ],
+            "assessed": {
+              "sentences": [
+                "Ne m’en ___ pas pour ce retard.",
+                "Ne m’en veux pas pour ce retard.",
+                "Ne m’en veuille pas pour ce retard."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "veux"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-vouloir-imperative:01:vouloir:1p",
+      "item": {
+        "nodeKey": "produire_imperatif",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Tu inclus les personnes auxquelles tu parles et toi-même. En vouloir signifie ici garder de la rancune envers quelqu’un. Complète avec vouloir à l’impératif présent : Ne lui en ___ pas pour cette petite erreur.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "voulons",
+        "acceptableAnswers": [
+          "veuillons"
+        ],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "vouloir",
+          "tense": "imperatif_present",
+          "person": "1p",
+          "vouloirImperativeUse": "resentment",
+          "sentenceApplication": "Ne lui en ___ pas pour cette petite erreur.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "veux",
+              "veuille",
+              "voulons",
+              "veuillons",
+              "voulez",
+              "veuillez"
+            ],
+            "rationaleFr": "Le verbe, l’usage et la personne sont fournis. Les formules de politesse ont deux formes ici, dont une correcte. En vouloir a six formes proposées, dont deux correctes pour la personne demandée. Ce plancher de hasard conservateur ne mesure pas la rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "vouloir",
+                "form": "vouloir"
+              }
+            ],
+            "sentences": [
+              "Ne lui en ___ pas pour cette petite erreur.",
+              "Ne lui en voulons pas pour cette petite erreur.",
+              "Ne lui en veuillons pas pour cette petite erreur."
+            ],
+            "assessed": {
+              "sentences": [
+                "Ne lui en ___ pas pour cette petite erreur.",
+                "Ne lui en voulons pas pour cette petite erreur.",
+                "Ne lui en veuillons pas pour cette petite erreur."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "voulons"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-vouloir-imperative:02:vouloir:2p",
+      "item": {
+        "nodeKey": "produire_imperatif",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Tu t’adresses à plusieurs personnes ou à une personne que tu vouvoies. En vouloir signifie ici garder de la rancune envers quelqu’un. Complète avec vouloir à l’impératif présent : Ne m’en ___ pas si je refuse cette invitation.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "voulez",
+        "acceptableAnswers": [
+          "veuillez"
+        ],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "vouloir",
+          "tense": "imperatif_present",
+          "person": "2p",
+          "vouloirImperativeUse": "resentment",
+          "sentenceApplication": "Ne m’en ___ pas si je refuse cette invitation.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "veux",
+              "veuille",
+              "voulons",
+              "veuillons",
+              "voulez",
+              "veuillez"
+            ],
+            "rationaleFr": "Le verbe, l’usage et la personne sont fournis. Les formules de politesse ont deux formes ici, dont une correcte. En vouloir a six formes proposées, dont deux correctes pour la personne demandée. Ce plancher de hasard conservateur ne mesure pas la rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "vouloir",
+                "form": "vouloir"
+              }
+            ],
+            "sentences": [
+              "Ne m’en ___ pas si je refuse cette invitation.",
+              "Ne m’en voulez pas si je refuse cette invitation.",
+              "Ne m’en veuillez pas si je refuse cette invitation."
+            ],
+            "assessed": {
+              "sentences": [
+                "Ne m’en ___ pas si je refuse cette invitation.",
+                "Ne m’en voulez pas si je refuse cette invitation.",
+                "Ne m’en veuillez pas si je refuse cette invitation."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "voulez"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-vouloir-imperative:03:vouloir:2s",
+      "item": {
+        "nodeKey": "produire_imperatif",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Tu t’adresses à une personne que tu tutoies. Tu écris une formule de politesse. Complète avec vouloir à l’impératif présent : ___ accepter mes excuses pour cet oubli.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "veuille",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "vouloir",
+          "tense": "imperatif_present",
+          "person": "2s",
+          "vouloirImperativeUse": "polite_request",
+          "sentenceApplication": "___ accepter mes excuses pour cet oubli.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "veuille",
+              "veuillez"
+            ],
+            "rationaleFr": "Le verbe, l’usage et la personne sont fournis. Les formules de politesse ont deux formes ici, dont une correcte. En vouloir a six formes proposées, dont deux correctes pour la personne demandée. Ce plancher de hasard conservateur ne mesure pas la rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "vouloir",
+                "form": "vouloir"
+              }
+            ],
+            "sentences": [
+              "___ accepter mes excuses pour cet oubli.",
+              "veuille accepter mes excuses pour cet oubli."
+            ],
+            "assessed": {
+              "sentences": [
+                "___ accepter mes excuses pour cet oubli.",
+                "veuille accepter mes excuses pour cet oubli."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "veuille"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-vouloir-imperative:04:vouloir:2p",
+      "item": {
+        "nodeKey": "produire_imperatif",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Tu t’adresses à plusieurs personnes ou à une personne que tu vouvoies. Tu écris une formule de politesse. Complète avec vouloir à l’impératif présent : ___ déposer vos dossiers à l’accueil.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "veuillez",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "vouloir",
+          "tense": "imperatif_present",
+          "person": "2p",
+          "vouloirImperativeUse": "polite_request",
+          "sentenceApplication": "___ déposer vos dossiers à l’accueil.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "veuille",
+              "veuillez"
+            ],
+            "rationaleFr": "Le verbe, l’usage et la personne sont fournis. Les formules de politesse ont deux formes ici, dont une correcte. En vouloir a six formes proposées, dont deux correctes pour la personne demandée. Ce plancher de hasard conservateur ne mesure pas la rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "vouloir",
+                "form": "vouloir"
+              }
+            ],
+            "sentences": [
+              "___ déposer vos dossiers à l’accueil.",
+              "veuillez déposer vos dossiers à l’accueil."
+            ],
+            "assessed": {
+              "sentences": [
+                "___ déposer vos dossiers à l’accueil.",
+                "veuillez déposer vos dossiers à l’accueil."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "veuillez"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-vouloir-imperative:05:vouloir:2s",
+      "item": {
+        "nodeKey": "produire_imperatif",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Tu t’adresses à une personne que tu tutoies. En vouloir signifie ici garder de la rancune envers quelqu’un. Complète avec vouloir à l’impératif présent : Ne lui en ___ pas d’avoir oublié ton prénom.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "veux",
+        "acceptableAnswers": [
+          "veuille"
+        ],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "vouloir",
+          "tense": "imperatif_present",
+          "person": "2s",
+          "vouloirImperativeUse": "resentment",
+          "sentenceApplication": "Ne lui en ___ pas d’avoir oublié ton prénom.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "veux",
+              "veuille",
+              "voulons",
+              "veuillons",
+              "voulez",
+              "veuillez"
+            ],
+            "rationaleFr": "Le verbe, l’usage et la personne sont fournis. Les formules de politesse ont deux formes ici, dont une correcte. En vouloir a six formes proposées, dont deux correctes pour la personne demandée. Ce plancher de hasard conservateur ne mesure pas la rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "vouloir",
+                "form": "vouloir"
+              }
+            ],
+            "sentences": [
+              "Ne lui en ___ pas d’avoir oublié ton prénom.",
+              "Ne lui en veux pas d’avoir oublié ton prénom.",
+              "Ne lui en veuille pas d’avoir oublié ton prénom."
+            ],
+            "assessed": {
+              "sentences": [
+                "Ne lui en ___ pas d’avoir oublié ton prénom.",
+                "Ne lui en veux pas d’avoir oublié ton prénom.",
+                "Ne lui en veuille pas d’avoir oublié ton prénom."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "veux"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-vouloir-imperative:06:vouloir:1p",
+      "item": {
+        "nodeKey": "produire_imperatif",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Tu inclus les personnes auxquelles tu parles et toi-même. En vouloir signifie ici garder de la rancune envers quelqu’un. Complète avec vouloir à l’impératif présent : Ne leur en ___ plus pour le ballon perdu.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "voulons",
+        "acceptableAnswers": [
+          "veuillons"
+        ],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "vouloir",
+          "tense": "imperatif_present",
+          "person": "1p",
+          "vouloirImperativeUse": "resentment",
+          "sentenceApplication": "Ne leur en ___ plus pour le ballon perdu.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "veux",
+              "veuille",
+              "voulons",
+              "veuillons",
+              "voulez",
+              "veuillez"
+            ],
+            "rationaleFr": "Le verbe, l’usage et la personne sont fournis. Les formules de politesse ont deux formes ici, dont une correcte. En vouloir a six formes proposées, dont deux correctes pour la personne demandée. Ce plancher de hasard conservateur ne mesure pas la rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "vouloir",
+                "form": "vouloir"
+              }
+            ],
+            "sentences": [
+              "Ne leur en ___ plus pour le ballon perdu.",
+              "Ne leur en voulons plus pour le ballon perdu.",
+              "Ne leur en veuillons plus pour le ballon perdu."
+            ],
+            "assessed": {
+              "sentences": [
+                "Ne leur en ___ plus pour le ballon perdu.",
+                "Ne leur en voulons plus pour le ballon perdu.",
+                "Ne leur en veuillons plus pour le ballon perdu."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "voulons"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-vouloir-imperative:07:vouloir:2s",
+      "item": {
+        "nodeKey": "produire_imperatif",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Tu t’adresses à une personne que tu tutoies. Tu écris une formule de politesse. Complète avec vouloir à l’impératif présent : ___ transmettre ce message à ta famille.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "veuille",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "vouloir",
+          "tense": "imperatif_present",
+          "person": "2s",
+          "vouloirImperativeUse": "polite_request",
+          "sentenceApplication": "___ transmettre ce message à ta famille.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "veuille",
+              "veuillez"
+            ],
+            "rationaleFr": "Le verbe, l’usage et la personne sont fournis. Les formules de politesse ont deux formes ici, dont une correcte. En vouloir a six formes proposées, dont deux correctes pour la personne demandée. Ce plancher de hasard conservateur ne mesure pas la rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "vouloir",
+                "form": "vouloir"
+              }
+            ],
+            "sentences": [
+              "___ transmettre ce message à ta famille.",
+              "veuille transmettre ce message à ta famille."
+            ],
+            "assessed": {
+              "sentences": [
+                "___ transmettre ce message à ta famille.",
+                "veuille transmettre ce message à ta famille."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "veuille"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-vouloir-imperative:08:vouloir:2p",
+      "item": {
+        "nodeKey": "produire_imperatif",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Tu t’adresses à plusieurs personnes ou à une personne que tu vouvoies. Tu écris une formule de politesse. Complète avec vouloir à l’impératif présent : ___ patienter jusqu’à l’ouverture des portes.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "veuillez",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "vouloir",
+          "tense": "imperatif_present",
+          "person": "2p",
+          "vouloirImperativeUse": "polite_request",
+          "sentenceApplication": "___ patienter jusqu’à l’ouverture des portes.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "veuille",
+              "veuillez"
+            ],
+            "rationaleFr": "Le verbe, l’usage et la personne sont fournis. Les formules de politesse ont deux formes ici, dont une correcte. En vouloir a six formes proposées, dont deux correctes pour la personne demandée. Ce plancher de hasard conservateur ne mesure pas la rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "vouloir",
+                "form": "vouloir"
+              }
+            ],
+            "sentences": [
+              "___ patienter jusqu’à l’ouverture des portes.",
+              "veuillez patienter jusqu’à l’ouverture des portes."
+            ],
+            "assessed": {
+              "sentences": [
+                "___ patienter jusqu’à l’ouverture des portes.",
+                "veuillez patienter jusqu’à l’ouverture des portes."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "veuillez"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-vouloir-imperative:09:vouloir:2s",
+      "item": {
+        "nodeKey": "produire_imperatif",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Tu t’adresses à une personne que tu tutoies. En vouloir signifie ici garder de la rancune envers quelqu’un. Complète avec vouloir à l’impératif présent : Ne leur en ___ pas pour cette maladresse.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "veux",
+        "acceptableAnswers": [
+          "veuille"
+        ],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "vouloir",
+          "tense": "imperatif_present",
+          "person": "2s",
+          "vouloirImperativeUse": "resentment",
+          "sentenceApplication": "Ne leur en ___ pas pour cette maladresse.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "veux",
+              "veuille",
+              "voulons",
+              "veuillons",
+              "voulez",
+              "veuillez"
+            ],
+            "rationaleFr": "Le verbe, l’usage et la personne sont fournis. Les formules de politesse ont deux formes ici, dont une correcte. En vouloir a six formes proposées, dont deux correctes pour la personne demandée. Ce plancher de hasard conservateur ne mesure pas la rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "vouloir",
+                "form": "vouloir"
+              }
+            ],
+            "sentences": [
+              "Ne leur en ___ pas pour cette maladresse.",
+              "Ne leur en veux pas pour cette maladresse.",
+              "Ne leur en veuille pas pour cette maladresse."
+            ],
+            "assessed": {
+              "sentences": [
+                "Ne leur en ___ pas pour cette maladresse.",
+                "Ne leur en veux pas pour cette maladresse.",
+                "Ne leur en veuille pas pour cette maladresse."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "veux"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-vouloir-imperative:10:vouloir:1p",
+      "item": {
+        "nodeKey": "produire_imperatif",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Tu inclus les personnes auxquelles tu parles et toi-même. En vouloir signifie ici garder de la rancune envers quelqu’un. Complète avec vouloir à l’impératif présent : N’en ___ pas à Lina d’avoir changé d’avis.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "voulons",
+        "acceptableAnswers": [
+          "veuillons"
+        ],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "vouloir",
+          "tense": "imperatif_present",
+          "person": "1p",
+          "vouloirImperativeUse": "resentment",
+          "sentenceApplication": "N’en ___ pas à Lina d’avoir changé d’avis.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "veux",
+              "veuille",
+              "voulons",
+              "veuillons",
+              "voulez",
+              "veuillez"
+            ],
+            "rationaleFr": "Le verbe, l’usage et la personne sont fournis. Les formules de politesse ont deux formes ici, dont une correcte. En vouloir a six formes proposées, dont deux correctes pour la personne demandée. Ce plancher de hasard conservateur ne mesure pas la rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "vouloir",
+                "form": "vouloir"
+              }
+            ],
+            "sentences": [
+              "N’en ___ pas à Lina d’avoir changé d’avis.",
+              "N’en voulons pas à Lina d’avoir changé d’avis.",
+              "N’en veuillons pas à Lina d’avoir changé d’avis."
+            ],
+            "assessed": {
+              "sentences": [
+                "N’en ___ pas à Lina d’avoir changé d’avis.",
+                "N’en voulons pas à Lina d’avoir changé d’avis.",
+                "N’en veuillons pas à Lina d’avoir changé d’avis."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "voulons"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-vouloir-imperative:11:vouloir:2p",
+      "item": {
+        "nodeKey": "produire_imperatif",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Tu t’adresses à plusieurs personnes ou à une personne que tu vouvoies. En vouloir signifie ici garder de la rancune envers quelqu’un. Complète avec vouloir à l’impératif présent : Ne lui en ___ pas pour son absence.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "voulez",
+        "acceptableAnswers": [
+          "veuillez"
+        ],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "vouloir",
+          "tense": "imperatif_present",
+          "person": "2p",
+          "vouloirImperativeUse": "resentment",
+          "sentenceApplication": "Ne lui en ___ pas pour son absence.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "veux",
+              "veuille",
+              "voulons",
+              "veuillons",
+              "voulez",
+              "veuillez"
+            ],
+            "rationaleFr": "Le verbe, l’usage et la personne sont fournis. Les formules de politesse ont deux formes ici, dont une correcte. En vouloir a six formes proposées, dont deux correctes pour la personne demandée. Ce plancher de hasard conservateur ne mesure pas la rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "vouloir",
+                "form": "vouloir"
+              }
+            ],
+            "sentences": [
+              "Ne lui en ___ pas pour son absence.",
+              "Ne lui en voulez pas pour son absence.",
+              "Ne lui en veuillez pas pour son absence."
+            ],
+            "assessed": {
+              "sentences": [
+                "Ne lui en ___ pas pour son absence.",
+                "Ne lui en voulez pas pour son absence.",
+                "Ne lui en veuillez pas pour son absence."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "voulez"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-vouloir-imperative:12:vouloir:2s",
+      "item": {
+        "nodeKey": "produire_imperatif",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Tu t’adresses à une personne que tu tutoies. Tu écris une formule de politesse. Complète avec vouloir à l’impératif présent : ___ recevoir mes remerciements pour ton aide.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "veuille",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "vouloir",
+          "tense": "imperatif_present",
+          "person": "2s",
+          "vouloirImperativeUse": "polite_request",
+          "sentenceApplication": "___ recevoir mes remerciements pour ton aide.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "veuille",
+              "veuillez"
+            ],
+            "rationaleFr": "Le verbe, l’usage et la personne sont fournis. Les formules de politesse ont deux formes ici, dont une correcte. En vouloir a six formes proposées, dont deux correctes pour la personne demandée. Ce plancher de hasard conservateur ne mesure pas la rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "vouloir",
+                "form": "vouloir"
+              }
+            ],
+            "sentences": [
+              "___ recevoir mes remerciements pour ton aide.",
+              "veuille recevoir mes remerciements pour ton aide."
+            ],
+            "assessed": {
+              "sentences": [
+                "___ recevoir mes remerciements pour ton aide.",
+                "veuille recevoir mes remerciements pour ton aide."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "veuille"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-vouloir-imperative:13:vouloir:2p",
+      "item": {
+        "nodeKey": "produire_imperatif",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Tu t’adresses à plusieurs personnes ou à une personne que tu vouvoies. Tu écris une formule de politesse. Complète avec vouloir à l’impératif présent : ___ indiquer votre nom en haut de la feuille.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "veuillez",
+        "acceptableAnswers": [],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "vouloir",
+          "tense": "imperatif_present",
+          "person": "2p",
+          "vouloirImperativeUse": "polite_request",
+          "sentenceApplication": "___ indiquer votre nom en haut de la feuille.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "veuille",
+              "veuillez"
+            ],
+            "rationaleFr": "Le verbe, l’usage et la personne sont fournis. Les formules de politesse ont deux formes ici, dont une correcte. En vouloir a six formes proposées, dont deux correctes pour la personne demandée. Ce plancher de hasard conservateur ne mesure pas la rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "vouloir",
+                "form": "vouloir"
+              }
+            ],
+            "sentences": [
+              "___ indiquer votre nom en haut de la feuille.",
+              "veuillez indiquer votre nom en haut de la feuille."
+            ],
+            "assessed": {
+              "sentences": [
+                "___ indiquer votre nom en haut de la feuille.",
+                "veuillez indiquer votre nom en haut de la feuille."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "veuillez"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-vouloir-imperative:14:vouloir:2s",
+      "item": {
+        "nodeKey": "produire_imperatif",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Tu t’adresses à une personne que tu tutoies. En vouloir signifie ici garder de la rancune envers quelqu’un. Complète avec vouloir à l’impératif présent : Ne nous en ___ pas si nous partons tôt.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "veux",
+        "acceptableAnswers": [
+          "veuille"
+        ],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "vouloir",
+          "tense": "imperatif_present",
+          "person": "2s",
+          "vouloirImperativeUse": "resentment",
+          "sentenceApplication": "Ne nous en ___ pas si nous partons tôt.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "veux",
+              "veuille",
+              "voulons",
+              "veuillons",
+              "voulez",
+              "veuillez"
+            ],
+            "rationaleFr": "Le verbe, l’usage et la personne sont fournis. Les formules de politesse ont deux formes ici, dont une correcte. En vouloir a six formes proposées, dont deux correctes pour la personne demandée. Ce plancher de hasard conservateur ne mesure pas la rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "vouloir",
+                "form": "vouloir"
+              }
+            ],
+            "sentences": [
+              "Ne nous en ___ pas si nous partons tôt.",
+              "Ne nous en veux pas si nous partons tôt.",
+              "Ne nous en veuille pas si nous partons tôt."
+            ],
+            "assessed": {
+              "sentences": [
+                "Ne nous en ___ pas si nous partons tôt.",
+                "Ne nous en veux pas si nous partons tôt.",
+                "Ne nous en veuille pas si nous partons tôt."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "veux"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-vouloir-imperative:15:vouloir:1p",
+      "item": {
+        "nodeKey": "produire_imperatif",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Tu inclus les personnes auxquelles tu parles et toi-même. En vouloir signifie ici garder de la rancune envers quelqu’un. Complète avec vouloir à l’impératif présent : Ne nous en ___ pas mutuellement pour ce malentendu.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "voulons",
+        "acceptableAnswers": [
+          "veuillons"
+        ],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "vouloir",
+          "tense": "imperatif_present",
+          "person": "1p",
+          "vouloirImperativeUse": "resentment",
+          "sentenceApplication": "Ne nous en ___ pas mutuellement pour ce malentendu.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "veux",
+              "veuille",
+              "voulons",
+              "veuillons",
+              "voulez",
+              "veuillez"
+            ],
+            "rationaleFr": "Le verbe, l’usage et la personne sont fournis. Les formules de politesse ont deux formes ici, dont une correcte. En vouloir a six formes proposées, dont deux correctes pour la personne demandée. Ce plancher de hasard conservateur ne mesure pas la rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "vouloir",
+                "form": "vouloir"
+              }
+            ],
+            "sentences": [
+              "Ne nous en ___ pas mutuellement pour ce malentendu.",
+              "Ne nous en voulons pas mutuellement pour ce malentendu.",
+              "Ne nous en veuillons pas mutuellement pour ce malentendu."
+            ],
+            "assessed": {
+              "sentences": [
+                "Ne nous en ___ pas mutuellement pour ce malentendu.",
+                "Ne nous en voulons pas mutuellement pour ce malentendu.",
+                "Ne nous en veuillons pas mutuellement pour ce malentendu."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "voulons"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-vouloir-imperative:16:vouloir:2p",
+      "item": {
+        "nodeKey": "produire_imperatif",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Tu t’adresses à plusieurs personnes ou à une personne que tu vouvoies. En vouloir signifie ici garder de la rancune envers quelqu’un. Complète avec vouloir à l’impératif présent : Ne leur en ___ plus après leurs excuses.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "voulez",
+        "acceptableAnswers": [
+          "veuillez"
+        ],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "vouloir",
+          "tense": "imperatif_present",
+          "person": "2p",
+          "vouloirImperativeUse": "resentment",
+          "sentenceApplication": "Ne leur en ___ plus après leurs excuses.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "veux",
+              "veuille",
+              "voulons",
+              "veuillons",
+              "voulez",
+              "veuillez"
+            ],
+            "rationaleFr": "Le verbe, l’usage et la personne sont fournis. Les formules de politesse ont deux formes ici, dont une correcte. En vouloir a six formes proposées, dont deux correctes pour la personne demandée. Ce plancher de hasard conservateur ne mesure pas la rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "vouloir",
+                "form": "vouloir"
+              }
+            ],
+            "sentences": [
+              "Ne leur en ___ plus après leurs excuses.",
+              "Ne leur en voulez plus après leurs excuses.",
+              "Ne leur en veuillez plus après leurs excuses."
+            ],
+            "assessed": {
+              "sentences": [
+                "Ne leur en ___ plus après leurs excuses.",
+                "Ne leur en voulez plus après leurs excuses.",
+                "Ne leur en veuillez plus après leurs excuses."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "voulez"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-vouloir-imperative:17:vouloir:2p",
+      "item": {
+        "nodeKey": "produire_imperatif",
+        "strand": "conjugaison",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "short_answer",
+        "promptFr": "Tu t’adresses à plusieurs personnes ou à une personne que tu vouvoies. En vouloir signifie ici garder de la rancune envers quelqu’un. Complète avec vouloir à l’impératif présent : Ne nous en ___ pas pour cette annulation.",
+        "instructionsFr": "Écris seulement le verbe manquant.",
+        "correctAnswer": "voulez",
+        "acceptableAnswers": [
+          "veuillez"
+        ],
+        "validatorType": "conjugator",
+        "validatorConfig": {
+          "verb": "vouloir",
+          "tense": "imperatif_present",
+          "person": "2p",
+          "vouloirImperativeUse": "resentment",
+          "sentenceApplication": "Ne nous en ___ pas pour cette annulation.",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "veux",
+              "veuille",
+              "voulons",
+              "veuillons",
+              "voulez",
+              "veuillez"
+            ],
+            "rationaleFr": "Le verbe, l’usage et la personne sont fournis. Les formules de politesse ont deux formes ici, dont une correcte. En vouloir a six formes proposées, dont deux correctes pour la personne demandée. Ce plancher de hasard conservateur ne mesure pas la rédaction libre."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "vouloir",
+                "form": "vouloir"
+              }
+            ],
+            "sentences": [
+              "Ne nous en ___ pas pour cette annulation.",
+              "Ne nous en voulez pas pour cette annulation.",
+              "Ne nous en veuillez pas pour cette annulation."
+            ],
+            "assessed": {
+              "sentences": [
+                "Ne nous en ___ pas pour cette annulation.",
+                "Ne nous en voulez pas pour cette annulation.",
+                "Ne nous en veuillez pas pour cette annulation."
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "conjugation",
+      "promptFamily": "sentence-form-application",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": true,
+          "correctedAnswer": "voulez"
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "itemKey": "v3-vouloir-imperative:00:vouloir:2s",
+      "itemChecksum": "sha256:f2210a5bc14ffbf342db8314d72ae661159d630a192a1cf49df95e84d5a8ff5f",
+      "facetKey": "produire_imperatif::verb:vouloir",
+      "contextKey": "imperatif-verb-application:0",
+      "evidenceFeatures": []
+    },
+    {
+      "itemKey": "v3-vouloir-imperative:01:vouloir:1p",
+      "itemChecksum": "sha256:3b9402275c0a88ef26d4e3263fd3a24fe6a019b90f7225ffbbc35ba573618801",
+      "facetKey": "produire_imperatif::verb:vouloir",
+      "contextKey": "imperatif-verb-application:1",
+      "evidenceFeatures": []
+    },
+    {
+      "itemKey": "v3-vouloir-imperative:02:vouloir:2p",
+      "itemChecksum": "sha256:bea2c55c7a48896466a6b4557c8ec2266c7371e9a6bc1a7037c7c9a122774d8f",
+      "facetKey": "produire_imperatif::verb:vouloir",
+      "contextKey": "imperatif-verb-application:2",
+      "evidenceFeatures": []
+    },
+    {
+      "itemKey": "v3-vouloir-imperative:03:vouloir:2s",
+      "itemChecksum": "sha256:cb0cb86f4007a7d4d23f86b0566855690dd1ad850faf6c0280e63391029a8e38",
+      "facetKey": "produire_imperatif::verb:vouloir",
+      "contextKey": "imperatif-verb-application:3",
+      "evidenceFeatures": []
+    },
+    {
+      "itemKey": "v3-vouloir-imperative:04:vouloir:2p",
+      "itemChecksum": "sha256:55d08459ecc0888d989626d254ea0de7abc2c794f8cd1d0ebb92401c5a8d859f",
+      "facetKey": "produire_imperatif::verb:vouloir",
+      "contextKey": "imperatif-verb-application:4",
+      "evidenceFeatures": []
+    },
+    {
+      "itemKey": "v3-vouloir-imperative:05:vouloir:2s",
+      "itemChecksum": "sha256:f6870e44a4b03a793c59741bba618515ed83b2bd112a9f304dd236ee937266f7",
+      "facetKey": "produire_imperatif::verb:vouloir",
+      "contextKey": "imperatif-verb-application:5",
+      "evidenceFeatures": []
+    },
+    {
+      "itemKey": "v3-vouloir-imperative:06:vouloir:1p",
+      "itemChecksum": "sha256:add4424f967092d561d8c10d5bbb7f3350ccde4c4ff19ad0b54b88400ebfad1e",
+      "facetKey": "produire_imperatif::verb:vouloir",
+      "contextKey": "imperatif-verb-application:6",
+      "evidenceFeatures": []
+    },
+    {
+      "itemKey": "v3-vouloir-imperative:07:vouloir:2s",
+      "itemChecksum": "sha256:75756091f4d554fb5b69066bd05f5a079367e5e719187ee24ab7c30f09462dfe",
+      "facetKey": "produire_imperatif::verb:vouloir",
+      "contextKey": "imperatif-verb-application:7",
+      "evidenceFeatures": []
+    },
+    {
+      "itemKey": "v3-vouloir-imperative:08:vouloir:2p",
+      "itemChecksum": "sha256:36850c4f559cc556683ef20c6ecc9b49563c342e23f89996a7876b7c77da9499",
+      "facetKey": "produire_imperatif::verb:vouloir",
+      "contextKey": "imperatif-verb-application:8",
+      "evidenceFeatures": []
+    },
+    {
+      "itemKey": "v3-vouloir-imperative:09:vouloir:2s",
+      "itemChecksum": "sha256:d53a96d2b0e53e817d550d3d942d5e74c7ec392ee32ae1fbf45a8aa86adf447f",
+      "facetKey": "produire_imperatif::verb:vouloir",
+      "contextKey": "imperatif-verb-application:9",
+      "evidenceFeatures": []
+    },
+    {
+      "itemKey": "v3-vouloir-imperative:10:vouloir:1p",
+      "itemChecksum": "sha256:7e35dae8b7d0837b8d2fd8d7dbdf1a727ac51ac2a260a1fcc3915cd1aa6c5614",
+      "facetKey": "produire_imperatif::verb:vouloir",
+      "contextKey": "imperatif-verb-application:10",
+      "evidenceFeatures": []
+    },
+    {
+      "itemKey": "v3-vouloir-imperative:11:vouloir:2p",
+      "itemChecksum": "sha256:eb38d4bb7a4c793953e329de77cc65b734c478038d2ee9fefbadba598c8e1b24",
+      "facetKey": "produire_imperatif::verb:vouloir",
+      "contextKey": "imperatif-verb-application:11",
+      "evidenceFeatures": []
+    },
+    {
+      "itemKey": "v3-vouloir-imperative:12:vouloir:2s",
+      "itemChecksum": "sha256:2e8fe54dfea30af3ad7f85d8176e689ee9a3faf5fa7ffee991c2b0db46921f99",
+      "facetKey": "produire_imperatif::verb:vouloir",
+      "contextKey": "imperatif-verb-application:12",
+      "evidenceFeatures": []
+    },
+    {
+      "itemKey": "v3-vouloir-imperative:13:vouloir:2p",
+      "itemChecksum": "sha256:d2220e45f3c49d1ecd6f4681228f8a5d0e985003e1dd9adc35f403e609c6b441",
+      "facetKey": "produire_imperatif::verb:vouloir",
+      "contextKey": "imperatif-verb-application:13",
+      "evidenceFeatures": []
+    },
+    {
+      "itemKey": "v3-vouloir-imperative:14:vouloir:2s",
+      "itemChecksum": "sha256:c7b2c51f0e8a931932e87d6046f0b6d1f64cf60cfd6f3bcbe22fe597ddabe7ce",
+      "facetKey": "produire_imperatif::verb:vouloir",
+      "contextKey": "imperatif-verb-application:14",
+      "evidenceFeatures": []
+    },
+    {
+      "itemKey": "v3-vouloir-imperative:15:vouloir:1p",
+      "itemChecksum": "sha256:ac64471d3bd2d192f3954db2638e105240a66b9dada0c04c7826f67a011a9d24",
+      "facetKey": "produire_imperatif::verb:vouloir",
+      "contextKey": "imperatif-verb-application:15",
+      "evidenceFeatures": []
+    },
+    {
+      "itemKey": "v3-vouloir-imperative:16:vouloir:2p",
+      "itemChecksum": "sha256:34a94a8c91f0f53927c3e9bd972e8b1998e5c27884a9712f6acc83c391c2ed56",
+      "facetKey": "produire_imperatif::verb:vouloir",
+      "contextKey": "imperatif-verb-application:16",
+      "evidenceFeatures": []
+    },
+    {
+      "itemKey": "v3-vouloir-imperative:17:vouloir:2p",
+      "itemChecksum": "sha256:99bb1b6571fda4274c0b4b1f4eb1f9931f089a4281d0b05357ff0c1b5294f780",
+      "facetKey": "produire_imperatif::verb:vouloir",
+      "contextKey": "imperatif-verb-application:17",
+      "evidenceFeatures": []
+    }
+  ],
+  "checksum": "sha256:511744a532483e0a84215c324254a57877a46f43dd4318a8beb268705e8ca949"
+}

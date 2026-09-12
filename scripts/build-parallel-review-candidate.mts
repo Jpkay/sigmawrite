@@ -32,7 +32,7 @@ const annotations=[...validateAnnotationReviewDraft(read("docs/diagnostic/v3-fac
 const adapted=applyFacetTargets(adaptV3ForAssessment({artifact,bank,reviewPolicy:policy}),buildV3Facets(artifact.taxonomy),bank,annotations);
 // New tense-recognition and form-family pathways assess sentences. Older isolated
 // form drills remain in the canonical bank and in historical published releases.
-const sentenceFamilyTargets=new Set(adapted.assessment.probes.filter(p=>(p.id.startsWith("v3-past-tense-foundations:")||p.id.startsWith("v3-subjonctif-family-production:")||p.id.startsWith("v3-imperatif-family-production:")||p.id.startsWith("v3-passe-simple-family-production:")||p.id.startsWith("v3-imperatif-verb-production:")||p.id.startsWith("v3-imperatif-recognition:"))).map(p=>p.skillId));
+const sentenceFamilyTargets=new Set(adapted.assessment.probes.filter(p=>(p.id.startsWith("v3-past-tense-foundations:")||p.id.startsWith("v3-subjonctif-family-production:")||p.id.startsWith("v3-imperatif-family-production:")||p.id.startsWith("v3-passe-simple-family-production:")||p.id.startsWith("v3-imperatif-verb-production:")||p.id.startsWith("v3-vouloir-imperative:")||p.id.startsWith("v3-imperatif-recognition:"))).map(p=>p.skillId));
 const retiredIsolatedFamilyQuestions=adapted.assessment.probes.filter(p=>sentenceFamilyTargets.has(p.skillId)&&!p.assessedMaterialKeys?.some(k=>k.startsWith("sentence:"))).map(p=>p.id);
 const retiredFamilyIds=new Set(retiredIsolatedFamilyQuestions);
 const allocation=allocateTeachingQuestionPools({...adapted.assessment,probes:adapted.assessment.probes.filter(p=>!retiredFamilyIds.has(p.id))},FRENCH_TEACHING_DRAFTS);

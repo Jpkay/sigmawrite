@@ -26,7 +26,7 @@ it('keeps balanced meaning contexts separate from worked examples and guided pra
 });
 it('keeps meaning and contextual writing out of scope until their actual prerequisites are ready',()=>{
  const candidate=JSON.parse(readFileSync('docs/diagnostic/v3-scoped-review-candidate.json','utf8'));
- const missing=['devoir','vouloir'].map(verb=>'produire_imperatif::writing-controlled-production::verb:'+verb);
+ const missing=['devoir'].map(verb=>'produire_imperatif::writing-controlled-production::verb:'+verb);
  for(const id of ['interpreter_valeur_imperatif::reading-receptive','employer_imperatif_en_contexte::writing-independent-production']){
   expect(candidate.assessment.releaseScope.assessmentSkillIds).not.toContain(id);
   const blocked=candidate.blockedTeachingTargets.find((row:{skillId:string})=>row.skillId===id);

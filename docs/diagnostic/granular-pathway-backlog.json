@@ -1,12 +1,12 @@
 {
   "status": "prepared_inventory_not_release_or_review_approval",
-  "parallelCandidateChecksum": "sha256:73e7cc4e3456bfeff071aa5def506dd3908edb2a572a602abe56861b33f39c81",
-  "scopedCandidateChecksum": "sha256:41ac5b3f02cc87f5bb8177e781a4ad0661dc80f9ecb4e1b502ac42d6452069a3",
+  "parallelCandidateChecksum": "sha256:689027b2fae4ef12197a087911c9b47d5c3ba82cdd73ce0b65f5311a8043b488",
+  "scopedCandidateChecksum": "sha256:02a72fd708e2e20bd1cec49eba7d646ecddd8d82b67db61e9ff8ff5cd1a7d4d8",
   "targets": 542,
   "counts": {
-    "prepared_scoped_pathway": 329,
+    "prepared_scoped_pathway": 330,
     "complete_question_pools": 187,
-    "author_exact_target_lesson": 19,
+    "author_exact_target_lesson": 18,
     "resolve_prerequisite_scope": 2,
     "connected_writing_evidence": 5
   },
@@ -4297,18 +4297,20 @@
       "skillId": "produire_imperatif::writing-controlled-production::verb:vouloir",
       "nodeKey": "produire_imperatif",
       "facetKey": "produire_imperatif::verb:vouloir",
-      "action": "author_exact_target_lesson",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_imperatif::writing-controlled-production::verb:vouloir",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 3,
-          "learningItems": 3
+          "initialItems": 9,
+          "learningItems": 9
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:imperatif-present:verb:vouloir"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
@@ -4448,7 +4450,6 @@
       ],
       "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": [
-        "produire_imperatif::writing-controlled-production::verb:vouloir",
         "produire_imperatif::writing-controlled-production::verb:devoir"
       ]
     },

@@ -52,8 +52,9 @@ function questionAudioMaterialKeys(item:CanonicalDiagnosticBankItem["item"]){
 }
 export function questionMaterialKeys(item:CanonicalDiagnosticBankItem["item"]){
  const sentence=item.validatorConfig?.sentenceApplication;
- const completed=typeof sentence==="string"&&item.validatorType==="conjugator"&&item.responseType==="short_answer"&&item.correctAnswer&&item.promptFr.includes(sentence)&&sentence.split("___").length===2?sentence.replace("___",item.correctAnswer):"";
- return [...new Set([...questionAudioMaterialKeys(item),...annotatedMaterialKeys(item.validatorConfig?.materialExposure,[item.promptFr,item.instructionsFr??"",item.correctAnswer??"",completed,...(item.acceptableAnswers??[]),...(item.choices??[]).map(choice=>choice.text)])])].sort();
+ const completed=typeof sentence==="string"&&item.validatorType==="conjugator"&&item.responseType==="short_answer"&&item.correctAnswer&&item.promptFr.includes(sentence)&&sentence.split("___").length===2
+  ?[item.correctAnswer,...(item.acceptableAnswers??[])].map(answer=>sentence.replace("___",answer)):[];
+ return [...new Set([...questionAudioMaterialKeys(item),...annotatedMaterialKeys(item.validatorConfig?.materialExposure,[item.promptFr,item.instructionsFr??"",item.correctAnswer??"",...completed,...(item.acceptableAnswers??[]),...(item.choices??[]).map(choice=>choice.text)])])].sort();
 }
 export function teachingMaterialKeys(lesson:TargetTeachingContent|Omit<TargetTeachingContent,"status">){
  const audioKeys=[...lesson.steps,...lesson.practice].flatMap(part=>{const audio=parseAudioStimulus(part.audioStimulus);return audio?[`audio:${audio.sha256}`]:[];});

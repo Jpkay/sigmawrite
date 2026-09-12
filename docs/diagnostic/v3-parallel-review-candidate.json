@@ -204,6 +204,12 @@
     "v3-granular-forms:produire_imperatif:voir:1p:m:negative",
     "v3-granular-forms:produire_imperatif:voir:2p:m:affirmative",
     "v3-granular-forms:produire_imperatif:voir:2p:m:negative",
+    "v3-granular-forms:produire_imperatif:vouloir:2s:m:affirmative",
+    "v3-granular-forms:produire_imperatif:vouloir:2s:m:negative",
+    "v3-granular-forms:produire_imperatif:vouloir:1p:m:affirmative",
+    "v3-granular-forms:produire_imperatif:vouloir:1p:m:negative",
+    "v3-granular-forms:produire_imperatif:vouloir:2p:m:affirmative",
+    "v3-granular-forms:produire_imperatif:vouloir:2p:m:negative",
     "v3-granular-forms:produire_imperatif:savoir:2s:m:affirmative",
     "v3-granular-forms:produire_imperatif:savoir:2s:m:negative",
     "v3-granular-forms:produire_imperatif:savoir:1p:m:affirmative",
@@ -452,17 +458,17 @@
   "status": "parallel_review_release_preparation",
   "reviewOwner": "product_owner",
   "authorization": "product-owner-request-2026-09-11",
-  "policyChecksum": "sha256:3f91695423243c2fc2c74f6999dcfec972dbb84173addbe31ee049bea517c760",
+  "policyChecksum": "sha256:08a07daece2582df8a69e3b01cf80c173eaa29fd8573b1a7cc0bc9f2012d0aeb",
   "summary": {
     "teachingScopeTargets": 360,
     "teachingPrerequisiteGapTargets": 5,
-    "teachingLessons": 350,
-    "teachingTargetsWithPools": 336,
-    "teachingTargetsWithFreshChecks": 336,
-    "guidedExercises": 1948,
-    "selectedPendingOrRepairedQuestions": 6897,
+    "teachingLessons": 351,
+    "teachingTargetsWithPools": 337,
+    "teachingTargetsWithFreshChecks": 337,
+    "guidedExercises": 1956,
+    "selectedPendingOrRepairedQuestions": 6915,
     "canonicalReviewedQuestions": 238,
-    "mappedQuestions": 7112,
+    "mappedQuestions": 7130,
     "targets": 542,
     "allocatedTargets": 355,
     "incompleteTargets": 187,
@@ -24325,6 +24331,444 @@
         "contrastingErrorKeys": [],
         "negativeExampleAssessed": false,
         "textType": "narrative",
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-vouloir-imperative:00:vouloir:2s",
+        "skillId": "produire_imperatif::writing-controlled-production::verb:vouloir",
+        "mode": "production",
+        "contextId": "imperatif-verb-application:0",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:3b65e1428944b626ca8209c6a7b89bc10bfd5bc252d818c949427c23595fa6b4",
+          "sentence:sha256:5f0a64d55f188eac8baa5bd902dd444e053853567e74066837eb7dd5d3378b6d",
+          "sentence:sha256:61ec51bb8e35d556ae99637764db939f5933f061fb78273bb1f21e50eec9ff7f",
+          "word:sha256:489914beff2d4575266911e79fd2e447beebf86608412d02eeea869cb533a078"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:3b65e1428944b626ca8209c6a7b89bc10bfd5bc252d818c949427c23595fa6b4",
+          "sentence:sha256:5f0a64d55f188eac8baa5bd902dd444e053853567e74066837eb7dd5d3378b6d",
+          "sentence:sha256:61ec51bb8e35d556ae99637764db939f5933f061fb78273bb1f21e50eec9ff7f"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-vouloir-imperative:01:vouloir:1p",
+        "skillId": "produire_imperatif::writing-controlled-production::verb:vouloir",
+        "mode": "production",
+        "contextId": "imperatif-verb-application:1",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:3ee09ba29f60d49ff8cb671aaa0ec5d741a6d2cf2e0c2699fcc4830551480a8f",
+          "sentence:sha256:67a3ee014907783737a9f8f39874a8aa08ae7f1cdb0abd1380fed9e41687c2ea",
+          "sentence:sha256:916fb7a4042c1893629c0e68f2989aabcda33837a967df7a8d76c00b3744ad2c",
+          "word:sha256:489914beff2d4575266911e79fd2e447beebf86608412d02eeea869cb533a078"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:3ee09ba29f60d49ff8cb671aaa0ec5d741a6d2cf2e0c2699fcc4830551480a8f",
+          "sentence:sha256:67a3ee014907783737a9f8f39874a8aa08ae7f1cdb0abd1380fed9e41687c2ea",
+          "sentence:sha256:916fb7a4042c1893629c0e68f2989aabcda33837a967df7a8d76c00b3744ad2c"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-vouloir-imperative:02:vouloir:2p",
+        "skillId": "produire_imperatif::writing-controlled-production::verb:vouloir",
+        "mode": "production",
+        "contextId": "imperatif-verb-application:2",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:8936f1c048927204c41cec146000830320403ea1968e9d5baee3eda844a8d629",
+          "sentence:sha256:d69777c29a29f565ace36170577b3c81edea4d73e8ed9701814c6358ec6e30a2",
+          "sentence:sha256:e989ccdf0364192cdc65284da83be11b51eaa231cfc79176a9ac3c286f893f58",
+          "word:sha256:489914beff2d4575266911e79fd2e447beebf86608412d02eeea869cb533a078"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:8936f1c048927204c41cec146000830320403ea1968e9d5baee3eda844a8d629",
+          "sentence:sha256:d69777c29a29f565ace36170577b3c81edea4d73e8ed9701814c6358ec6e30a2",
+          "sentence:sha256:e989ccdf0364192cdc65284da83be11b51eaa231cfc79176a9ac3c286f893f58"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-vouloir-imperative:03:vouloir:2s",
+        "skillId": "produire_imperatif::writing-controlled-production::verb:vouloir",
+        "mode": "production",
+        "contextId": "imperatif-verb-application:3",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:0c48aacc9ce68fba43c90b70589a7fe2eccee31fa1cad05c3874becdd3aee01f",
+          "sentence:sha256:6ee0eb533b370a97b8066af573c893fd370bb609468fc5898f893ec9fe1c01c9",
+          "word:sha256:489914beff2d4575266911e79fd2e447beebf86608412d02eeea869cb533a078"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:0c48aacc9ce68fba43c90b70589a7fe2eccee31fa1cad05c3874becdd3aee01f",
+          "sentence:sha256:6ee0eb533b370a97b8066af573c893fd370bb609468fc5898f893ec9fe1c01c9"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-vouloir-imperative:04:vouloir:2p",
+        "skillId": "produire_imperatif::writing-controlled-production::verb:vouloir",
+        "mode": "production",
+        "contextId": "imperatif-verb-application:4",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:83940485a34fcaec43155088cc633e883021a8ef06708aa34c7890bfa0b3b26c",
+          "sentence:sha256:c9de0a3d1ca44db1a92ef2fde7113e254cc937f7cc33472daccea0ef00c06a52",
+          "word:sha256:489914beff2d4575266911e79fd2e447beebf86608412d02eeea869cb533a078"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:83940485a34fcaec43155088cc633e883021a8ef06708aa34c7890bfa0b3b26c",
+          "sentence:sha256:c9de0a3d1ca44db1a92ef2fde7113e254cc937f7cc33472daccea0ef00c06a52"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-vouloir-imperative:05:vouloir:2s",
+        "skillId": "produire_imperatif::writing-controlled-production::verb:vouloir",
+        "mode": "production",
+        "contextId": "imperatif-verb-application:5",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:2273b2dc27c942d6b33dd61372bdf29a9260a5ab4f1369714de36b97f993bdc7",
+          "sentence:sha256:4614a71f50fbe2174fd9439dc17b672412ebb79cd6b43e77797e1c2e27bbe432",
+          "sentence:sha256:7e1074f29115e8ce58b2fe8e8dcd260b0ff64f1a5b5baddb3d2b2857471072a7",
+          "word:sha256:489914beff2d4575266911e79fd2e447beebf86608412d02eeea869cb533a078"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:2273b2dc27c942d6b33dd61372bdf29a9260a5ab4f1369714de36b97f993bdc7",
+          "sentence:sha256:4614a71f50fbe2174fd9439dc17b672412ebb79cd6b43e77797e1c2e27bbe432",
+          "sentence:sha256:7e1074f29115e8ce58b2fe8e8dcd260b0ff64f1a5b5baddb3d2b2857471072a7"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-vouloir-imperative:06:vouloir:1p",
+        "skillId": "produire_imperatif::writing-controlled-production::verb:vouloir",
+        "mode": "production",
+        "contextId": "imperatif-verb-application:6",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:b33bcdeff8452aaaeb3f1808997aac832fb94e4969cc552059586c0bedfd32bf",
+          "sentence:sha256:ee4a831c4bf3cb6a4d0cd13f0ec85c4ff4a75327eef2c3a450293e4eec296ad8",
+          "sentence:sha256:ef60e1b2159f2df3c4daccb6486f938cca096aedd2675bfee6c3ce55dd529102",
+          "word:sha256:489914beff2d4575266911e79fd2e447beebf86608412d02eeea869cb533a078"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:b33bcdeff8452aaaeb3f1808997aac832fb94e4969cc552059586c0bedfd32bf",
+          "sentence:sha256:ee4a831c4bf3cb6a4d0cd13f0ec85c4ff4a75327eef2c3a450293e4eec296ad8",
+          "sentence:sha256:ef60e1b2159f2df3c4daccb6486f938cca096aedd2675bfee6c3ce55dd529102"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-vouloir-imperative:07:vouloir:2s",
+        "skillId": "produire_imperatif::writing-controlled-production::verb:vouloir",
+        "mode": "production",
+        "contextId": "imperatif-verb-application:7",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:4ecccf02fe9defa80b57953ec9d5e446943b40a048e0900ef073902503550c82",
+          "sentence:sha256:7dd9f05f10878a3cb3c0f08ca9e3bd140a6b95afad835abd165f7fbf028c71dd",
+          "word:sha256:489914beff2d4575266911e79fd2e447beebf86608412d02eeea869cb533a078"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:4ecccf02fe9defa80b57953ec9d5e446943b40a048e0900ef073902503550c82",
+          "sentence:sha256:7dd9f05f10878a3cb3c0f08ca9e3bd140a6b95afad835abd165f7fbf028c71dd"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-vouloir-imperative:08:vouloir:2p",
+        "skillId": "produire_imperatif::writing-controlled-production::verb:vouloir",
+        "mode": "production",
+        "contextId": "imperatif-verb-application:8",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:4a2ace0b5ecb1a42666c67ded8d7d009d68cca3cd95a46019e10b8f4d23ed194",
+          "sentence:sha256:6efc93f783a381825d39141bcc04b8ca97249d3b5bad57b9452f142fcaafcca6",
+          "word:sha256:489914beff2d4575266911e79fd2e447beebf86608412d02eeea869cb533a078"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:4a2ace0b5ecb1a42666c67ded8d7d009d68cca3cd95a46019e10b8f4d23ed194",
+          "sentence:sha256:6efc93f783a381825d39141bcc04b8ca97249d3b5bad57b9452f142fcaafcca6"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-vouloir-imperative:09:vouloir:2s",
+        "skillId": "produire_imperatif::writing-controlled-production::verb:vouloir",
+        "mode": "production",
+        "contextId": "imperatif-verb-application:9",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:45890a3f7611a373afed82f78fc990ddaea7adbe01e401f0a33631df027d776f",
+          "sentence:sha256:59661aad50c03df34da2f5a7fc1912cfac3f5bcd86f506dd4262f5b830dec126",
+          "sentence:sha256:ba8d97b9a02194d06e8f3039259e9694b5ce14929472ffbab8b5ace9c6e2c803",
+          "word:sha256:489914beff2d4575266911e79fd2e447beebf86608412d02eeea869cb533a078"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:45890a3f7611a373afed82f78fc990ddaea7adbe01e401f0a33631df027d776f",
+          "sentence:sha256:59661aad50c03df34da2f5a7fc1912cfac3f5bcd86f506dd4262f5b830dec126",
+          "sentence:sha256:ba8d97b9a02194d06e8f3039259e9694b5ce14929472ffbab8b5ace9c6e2c803"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-vouloir-imperative:10:vouloir:1p",
+        "skillId": "produire_imperatif::writing-controlled-production::verb:vouloir",
+        "mode": "production",
+        "contextId": "imperatif-verb-application:10",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:4c8a28593302b7b7a4143fc79b2ce65db1be41051ef52e0ede752a4e0a116220",
+          "sentence:sha256:56ed8636529803a9067eb6f7f18fba2123c1128ced6884b2f7c17a85a2ce4463",
+          "sentence:sha256:888fca51b7fe5661d13d918ca8a630f713d961d9fa09b2ae2f538afe381085bc",
+          "word:sha256:489914beff2d4575266911e79fd2e447beebf86608412d02eeea869cb533a078"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:4c8a28593302b7b7a4143fc79b2ce65db1be41051ef52e0ede752a4e0a116220",
+          "sentence:sha256:56ed8636529803a9067eb6f7f18fba2123c1128ced6884b2f7c17a85a2ce4463",
+          "sentence:sha256:888fca51b7fe5661d13d918ca8a630f713d961d9fa09b2ae2f538afe381085bc"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-vouloir-imperative:11:vouloir:2p",
+        "skillId": "produire_imperatif::writing-controlled-production::verb:vouloir",
+        "mode": "production",
+        "contextId": "imperatif-verb-application:11",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:955ed3cdc45e47e4078dcf08efb2478ce7f15cd4a2a3e07737615148881c4fc4",
+          "sentence:sha256:de55c51b44780e3c973541db5fbbad2908171ebdc06eefcf7174fc108c4619a5",
+          "sentence:sha256:f2622d32e9007647ae4309913adf6b17aa4354d2a7d2809b98dbfbdc041f061c",
+          "word:sha256:489914beff2d4575266911e79fd2e447beebf86608412d02eeea869cb533a078"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:955ed3cdc45e47e4078dcf08efb2478ce7f15cd4a2a3e07737615148881c4fc4",
+          "sentence:sha256:de55c51b44780e3c973541db5fbbad2908171ebdc06eefcf7174fc108c4619a5",
+          "sentence:sha256:f2622d32e9007647ae4309913adf6b17aa4354d2a7d2809b98dbfbdc041f061c"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-vouloir-imperative:12:vouloir:2s",
+        "skillId": "produire_imperatif::writing-controlled-production::verb:vouloir",
+        "mode": "production",
+        "contextId": "imperatif-verb-application:12",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:943d402128a931208f8320b4b4ea3e0bd120a824dbf63968030c1ca7bcba9681",
+          "sentence:sha256:b33626f4f831bf8889fbe95355cc1e87a200d751e72ad4c1fda369472fa1286b",
+          "word:sha256:489914beff2d4575266911e79fd2e447beebf86608412d02eeea869cb533a078"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:943d402128a931208f8320b4b4ea3e0bd120a824dbf63968030c1ca7bcba9681",
+          "sentence:sha256:b33626f4f831bf8889fbe95355cc1e87a200d751e72ad4c1fda369472fa1286b"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-vouloir-imperative:13:vouloir:2p",
+        "skillId": "produire_imperatif::writing-controlled-production::verb:vouloir",
+        "mode": "production",
+        "contextId": "imperatif-verb-application:13",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.5,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:116f05f7052edb7accdc160840dc90542fcad8b6f2163c51efbc1e3dbfcae4c2",
+          "sentence:sha256:e4bbdb211df23308b29a14a7811bac8ec875fd7b0a8b5be434b695bbcb4f25ad",
+          "word:sha256:489914beff2d4575266911e79fd2e447beebf86608412d02eeea869cb533a078"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:116f05f7052edb7accdc160840dc90542fcad8b6f2163c51efbc1e3dbfcae4c2",
+          "sentence:sha256:e4bbdb211df23308b29a14a7811bac8ec875fd7b0a8b5be434b695bbcb4f25ad"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-vouloir-imperative:14:vouloir:2s",
+        "skillId": "produire_imperatif::writing-controlled-production::verb:vouloir",
+        "mode": "production",
+        "contextId": "imperatif-verb-application:14",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:af651d21b11ba62f5a9e5162b57a27708f733c07521bd9405bf92ea589f7e426",
+          "sentence:sha256:dbc9fb113da3f738c846335e05384ebf6a123dc96bf57549563234030bc13832",
+          "sentence:sha256:ee6da02055e77b620ae14437f87d49e0b4d164ab07dcfa2f5ffe4139b6586b97",
+          "word:sha256:489914beff2d4575266911e79fd2e447beebf86608412d02eeea869cb533a078"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:af651d21b11ba62f5a9e5162b57a27708f733c07521bd9405bf92ea589f7e426",
+          "sentence:sha256:dbc9fb113da3f738c846335e05384ebf6a123dc96bf57549563234030bc13832",
+          "sentence:sha256:ee6da02055e77b620ae14437f87d49e0b4d164ab07dcfa2f5ffe4139b6586b97"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-vouloir-imperative:15:vouloir:1p",
+        "skillId": "produire_imperatif::writing-controlled-production::verb:vouloir",
+        "mode": "production",
+        "contextId": "imperatif-verb-application:15",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:882da1b07ccf721d88cc45ce2e6477fa1c999bfc3b2059996efe546fca985a01",
+          "sentence:sha256:9aeaa0d38029394b378616a7219437204d35f0f592227d3b373dcc9982a4fd90",
+          "sentence:sha256:a91029a68b895e9e76c3dea8fe26b97111203700d825ce064d9653246ad71bb4",
+          "word:sha256:489914beff2d4575266911e79fd2e447beebf86608412d02eeea869cb533a078"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:882da1b07ccf721d88cc45ce2e6477fa1c999bfc3b2059996efe546fca985a01",
+          "sentence:sha256:9aeaa0d38029394b378616a7219437204d35f0f592227d3b373dcc9982a4fd90",
+          "sentence:sha256:a91029a68b895e9e76c3dea8fe26b97111203700d825ce064d9653246ad71bb4"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-vouloir-imperative:16:vouloir:2p",
+        "skillId": "produire_imperatif::writing-controlled-production::verb:vouloir",
+        "mode": "production",
+        "contextId": "imperatif-verb-application:16",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:4e92857f363c1f8faaad51c08ed70707a89ea84b34d33a6d4c3bc0ec70b59516",
+          "sentence:sha256:698dbe1ba92bf200bb5507267439d1228f6d68f2bf78cd22691eb811076947a2",
+          "sentence:sha256:e124bee348c01e6f5019338ee37eb4d89195da0af0e7407254baae43da389a63",
+          "word:sha256:489914beff2d4575266911e79fd2e447beebf86608412d02eeea869cb533a078"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:4e92857f363c1f8faaad51c08ed70707a89ea84b34d33a6d4c3bc0ec70b59516",
+          "sentence:sha256:698dbe1ba92bf200bb5507267439d1228f6d68f2bf78cd22691eb811076947a2",
+          "sentence:sha256:e124bee348c01e6f5019338ee37eb4d89195da0af0e7407254baae43da389a63"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-vouloir-imperative:17:vouloir:2p",
+        "skillId": "produire_imperatif::writing-controlled-production::verb:vouloir",
+        "mode": "production",
+        "contextId": "imperatif-verb-application:17",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "sentence:sha256:02a706120fea32f9613cd141e10be657579d7ad93ff27cb8de0d7262becfaf39",
+          "sentence:sha256:4a4a41d6542005db68c9fd8b78f6b206172d3cee9caa34ab7cef9402a2dd9968",
+          "sentence:sha256:c7a747d8ae2bacf01586906835111988727596c46a049779bc2a02dad3e8368b",
+          "word:sha256:489914beff2d4575266911e79fd2e447beebf86608412d02eeea869cb533a078"
+        ],
+        "assessedMaterialKeys": [
+          "sentence:sha256:02a706120fea32f9613cd141e10be657579d7ad93ff27cb8de0d7262becfaf39",
+          "sentence:sha256:4a4a41d6542005db68c9fd8b78f6b206172d3cee9caa34ab7cef9402a2dd9968",
+          "sentence:sha256:c7a747d8ae2bacf01586906835111988727596c46a049779bc2a02dad3e8368b"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
         "evidenceFeatures": [],
         "usage": "initial"
       },
@@ -119264,126 +119708,6 @@
         "usage": "initial"
       },
       {
-        "id": "v3-granular-forms:produire_imperatif:vouloir:2s:m:affirmative",
-        "skillId": "produire_imperatif::writing-controlled-production::verb:vouloir",
-        "mode": "production",
-        "contextId": "verb:vouloir",
-        "difficulty": 0.5,
-        "expectedSeconds": 30,
-        "guessProbability": 0.05,
-        "textualSupportAssessed": false,
-        "materialKeys": [
-          "word:sha256:489914beff2d4575266911e79fd2e447beebf86608412d02eeea869cb533a078"
-        ],
-        "assessedMaterialKeys": [
-          "word:sha256:489914beff2d4575266911e79fd2e447beebf86608412d02eeea869cb533a078"
-        ],
-        "contrastingErrorKeys": [],
-        "negativeExampleAssessed": false,
-        "evidenceFeatures": [],
-        "usage": "initial"
-      },
-      {
-        "id": "v3-granular-forms:produire_imperatif:vouloir:2s:m:negative",
-        "skillId": "produire_imperatif::writing-controlled-production::verb:vouloir",
-        "mode": "production",
-        "contextId": "verb:vouloir",
-        "difficulty": 0.5,
-        "expectedSeconds": 30,
-        "guessProbability": 0.05,
-        "textualSupportAssessed": false,
-        "materialKeys": [
-          "word:sha256:489914beff2d4575266911e79fd2e447beebf86608412d02eeea869cb533a078"
-        ],
-        "assessedMaterialKeys": [
-          "word:sha256:489914beff2d4575266911e79fd2e447beebf86608412d02eeea869cb533a078"
-        ],
-        "contrastingErrorKeys": [],
-        "negativeExampleAssessed": false,
-        "evidenceFeatures": [],
-        "usage": "initial"
-      },
-      {
-        "id": "v3-granular-forms:produire_imperatif:vouloir:1p:m:affirmative",
-        "skillId": "produire_imperatif::writing-controlled-production::verb:vouloir",
-        "mode": "production",
-        "contextId": "verb:vouloir",
-        "difficulty": 0.5,
-        "expectedSeconds": 30,
-        "guessProbability": 0.05,
-        "textualSupportAssessed": false,
-        "materialKeys": [
-          "word:sha256:489914beff2d4575266911e79fd2e447beebf86608412d02eeea869cb533a078"
-        ],
-        "assessedMaterialKeys": [
-          "word:sha256:489914beff2d4575266911e79fd2e447beebf86608412d02eeea869cb533a078"
-        ],
-        "contrastingErrorKeys": [],
-        "negativeExampleAssessed": false,
-        "evidenceFeatures": [],
-        "usage": "learning"
-      },
-      {
-        "id": "v3-granular-forms:produire_imperatif:vouloir:1p:m:negative",
-        "skillId": "produire_imperatif::writing-controlled-production::verb:vouloir",
-        "mode": "production",
-        "contextId": "verb:vouloir",
-        "difficulty": 0.5,
-        "expectedSeconds": 30,
-        "guessProbability": 0.05,
-        "textualSupportAssessed": false,
-        "materialKeys": [
-          "word:sha256:489914beff2d4575266911e79fd2e447beebf86608412d02eeea869cb533a078"
-        ],
-        "assessedMaterialKeys": [
-          "word:sha256:489914beff2d4575266911e79fd2e447beebf86608412d02eeea869cb533a078"
-        ],
-        "contrastingErrorKeys": [],
-        "negativeExampleAssessed": false,
-        "evidenceFeatures": [],
-        "usage": "learning"
-      },
-      {
-        "id": "v3-granular-forms:produire_imperatif:vouloir:2p:m:affirmative",
-        "skillId": "produire_imperatif::writing-controlled-production::verb:vouloir",
-        "mode": "production",
-        "contextId": "verb:vouloir",
-        "difficulty": 0.5,
-        "expectedSeconds": 30,
-        "guessProbability": 0.05,
-        "textualSupportAssessed": false,
-        "materialKeys": [
-          "word:sha256:489914beff2d4575266911e79fd2e447beebf86608412d02eeea869cb533a078"
-        ],
-        "assessedMaterialKeys": [
-          "word:sha256:489914beff2d4575266911e79fd2e447beebf86608412d02eeea869cb533a078"
-        ],
-        "contrastingErrorKeys": [],
-        "negativeExampleAssessed": false,
-        "evidenceFeatures": [],
-        "usage": "learning"
-      },
-      {
-        "id": "v3-granular-forms:produire_imperatif:vouloir:2p:m:negative",
-        "skillId": "produire_imperatif::writing-controlled-production::verb:vouloir",
-        "mode": "production",
-        "contextId": "verb:vouloir",
-        "difficulty": 0.5,
-        "expectedSeconds": 30,
-        "guessProbability": 0.05,
-        "textualSupportAssessed": false,
-        "materialKeys": [
-          "word:sha256:489914beff2d4575266911e79fd2e447beebf86608412d02eeea869cb533a078"
-        ],
-        "assessedMaterialKeys": [
-          "word:sha256:489914beff2d4575266911e79fd2e447beebf86608412d02eeea869cb533a078"
-        ],
-        "contrastingErrorKeys": [],
-        "negativeExampleAssessed": false,
-        "evidenceFeatures": [],
-        "usage": "initial"
-      },
-      {
         "id": "v3-granular-forms:produire_imperatif:devoir:2s:m:affirmative",
         "skillId": "produire_imperatif::writing-controlled-production::verb:devoir",
         "mode": "production",
@@ -159683,7 +160007,7 @@
       }
     ],
     "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
-    "bankChecksum": "sha256:0ffd94b340d79fb438328502164bb47bba645409f7e8d9682fe384ce61efd90f",
+    "bankChecksum": "sha256:7d70fa85cfe7a89d7e2a4f23b15c9392af37ea6efb9a2ff6027c307c4d1b1540",
     "unsupportedEvidenceItemKeys": [
       "local-reading-v1:inferer_chronologie_implicite:receptive:foundation",
       "local-reading-v1:inferer_chronologie_implicite:receptive:core",
@@ -159706,7 +160030,7 @@
       "mode": "parallel_review",
       "authorization": "product-owner-request-2026-09-11",
       "reviewOwner": "product_owner",
-      "bankChecksum": "sha256:0ffd94b340d79fb438328502164bb47bba645409f7e8d9682fe384ce61efd90f",
+      "bankChecksum": "sha256:7d70fa85cfe7a89d7e2a4f23b15c9392af37ea6efb9a2ff6027c307c4d1b1540",
       "questionChecksums": {
         "review-draft-v1:construction_pronom_relatif:controlled_production:foundation": "sha256:2731933f71f4a1408115b2457d07ee69469fdac2e7a6e57fb69c112e2a0c32dc",
         "review-draft-v1:construction_pronom_relatif:controlled_production:core": "sha256:d8b92f78c30ddfa7d1598405eb512dce2f2b476fdd151dd3a79c9476a729cc56",
@@ -159733,6 +160057,24 @@
         "local-reading-v1:inferer_chronologie_implicite:receptive:core": "sha256:1506b1e15cc6621d9641d32bc5492dedc8722adab2c2817e2d6275c4e3368d04",
         "local-reading-v1:inferer_chronologie_implicite:receptive:stretch": "sha256:7e58f0641d4689f6fc76075593b096545283f8b2420fe4b8993ef8b84c41e3d0",
         "local-reading-v1:comparer_points_de_vue:controlled_production:foundation": "sha256:ae4349e0976e050d52019208e3ff5a7e8d70685ac640242aadca852c6bed8e9d",
+        "v3-vouloir-imperative:00:vouloir:2s": "sha256:f2210a5bc14ffbf342db8314d72ae661159d630a192a1cf49df95e84d5a8ff5f",
+        "v3-vouloir-imperative:01:vouloir:1p": "sha256:3b9402275c0a88ef26d4e3263fd3a24fe6a019b90f7225ffbbc35ba573618801",
+        "v3-vouloir-imperative:02:vouloir:2p": "sha256:bea2c55c7a48896466a6b4557c8ec2266c7371e9a6bc1a7037c7c9a122774d8f",
+        "v3-vouloir-imperative:03:vouloir:2s": "sha256:cb0cb86f4007a7d4d23f86b0566855690dd1ad850faf6c0280e63391029a8e38",
+        "v3-vouloir-imperative:04:vouloir:2p": "sha256:55d08459ecc0888d989626d254ea0de7abc2c794f8cd1d0ebb92401c5a8d859f",
+        "v3-vouloir-imperative:05:vouloir:2s": "sha256:f6870e44a4b03a793c59741bba618515ed83b2bd112a9f304dd236ee937266f7",
+        "v3-vouloir-imperative:06:vouloir:1p": "sha256:add4424f967092d561d8c10d5bbb7f3350ccde4c4ff19ad0b54b88400ebfad1e",
+        "v3-vouloir-imperative:07:vouloir:2s": "sha256:75756091f4d554fb5b69066bd05f5a079367e5e719187ee24ab7c30f09462dfe",
+        "v3-vouloir-imperative:08:vouloir:2p": "sha256:36850c4f559cc556683ef20c6ecc9b49563c342e23f89996a7876b7c77da9499",
+        "v3-vouloir-imperative:09:vouloir:2s": "sha256:d53a96d2b0e53e817d550d3d942d5e74c7ec392ee32ae1fbf45a8aa86adf447f",
+        "v3-vouloir-imperative:10:vouloir:1p": "sha256:7e35dae8b7d0837b8d2fd8d7dbdf1a727ac51ac2a260a1fcc3915cd1aa6c5614",
+        "v3-vouloir-imperative:11:vouloir:2p": "sha256:eb38d4bb7a4c793953e329de77cc65b734c478038d2ee9fefbadba598c8e1b24",
+        "v3-vouloir-imperative:12:vouloir:2s": "sha256:2e8fe54dfea30af3ad7f85d8176e689ee9a3faf5fa7ffee991c2b0db46921f99",
+        "v3-vouloir-imperative:13:vouloir:2p": "sha256:d2220e45f3c49d1ecd6f4681228f8a5d0e985003e1dd9adc35f403e609c6b441",
+        "v3-vouloir-imperative:14:vouloir:2s": "sha256:c7b2c51f0e8a931932e87d6046f0b6d1f64cf60cfd6f3bcbe22fe597ddabe7ce",
+        "v3-vouloir-imperative:15:vouloir:1p": "sha256:ac64471d3bd2d192f3954db2638e105240a66b9dada0c04c7826f67a011a9d24",
+        "v3-vouloir-imperative:16:vouloir:2p": "sha256:34a94a8c91f0f53927c3e9bd972e8b1998e5c27884a9712f6acc83c391c2ed56",
+        "v3-vouloir-imperative:17:vouloir:2p": "sha256:99bb1b6571fda4274c0b4b1f4eb1f9931f089a4281d0b05357ff0c1b5294f780",
         "v3-imperative-meaning:imperative-meaning-1": "sha256:329b4021462980cee66bf194d108525b419015045914f94f3b4e6beb16e338ce",
         "v3-imperative-meaning:imperative-meaning-2": "sha256:8ea3f9e172a8a707a910fbae42340faf916c61c66a21562ee357fbfe1a58cd90",
         "v3-imperative-meaning:imperative-meaning-3": "sha256:c39b1447d3b9275556e7e45d099c1d750925d9db24d707d2e187eb2e643cc847",
@@ -166607,6 +166949,7 @@
         "v3-y-en:en_thing-18": "sha256:1de3bba6c34a338f57ee6b482b6a389ca0b053f6059a6c16d61d4a97fc48e58d"
       },
       "teachingChecksums": {
+        "french-v3-teaching:imperatif-present:verb:vouloir": "sha256:94ade1f7bc79f0a7ac185c6b02c015702553c43076c98a780fd2221ae56e6e58",
         "french-v3-teaching:imperative:meaning": "sha256:5e9e487f8b3c69d040429da1d2149c89d5c37859092901084397b63a8077b612",
         "french-v3-teaching:distinguer_infinitif_participe:recognition": "sha256:4cc16cffc284e50fa5f2e57aa6f7471b89fee6a664de93819ac5c66840762474",
         "french-v3-teaching:distinguer_infinitif_participe_ecrit:recognition": "sha256:8aba51245608ecfe1cda44f9e4241fb85acb93a6b19b3c1951d2e5391fd205e5",
@@ -166698,7 +167041,7 @@
         "french-v3-teaching:subjonctif-present:dire": "sha256:b94e9288034910a9b3b44eb8cd12973d00f4f7de31e23f9840c30330529eb450",
         "french-v3-teaching:subjonctif-present:voir": "sha256:8deab3b9ed5540a8d5cf7c1be38721a97518e237d1ce0b8ab25500c7a55f6c69",
         "french-v3-teaching:subjonctif-present:pouvoir": "sha256:147417d31e137865a4b13f96288812ef375495f4e3a8911656386987a7e1e10d",
-        "french-v3-teaching:subjonctif-present:vouloir": "sha256:5d22a26262b32ecad450c5974417568fdb46b6c43223d63c43daae2b4ec8da62",
+        "french-v3-teaching:subjonctif-present:vouloir": "sha256:8a67b5ba863d510d16bac1953dcbabaa0ea2cc9682be4b2bbdd708e2e713fc57",
         "french-v3-teaching:subjonctif-present:savoir": "sha256:e273ca39cea469fb7377dabc22d091d0b36ab40e28fe6ac1abf4bf6906803474",
         "french-v3-teaching:subjonctif-present:devoir": "sha256:3631eaf241e309fab13eaf417d2ac0a10c790ce18061d9195cb23d5a4cf4ed4d",
         "french-v3-teaching:written-syllables:recognition": "sha256:2b5ba5f6d72f10eda3ffc809926fc503c1efc18fa8cad0975f1429839aeab866",
@@ -166757,7 +167100,7 @@
         "french-v3-teaching:futur-proche:production:dire": "sha256:737b09d0ff005d428a58e32b602b4f86465d832a3ef3f982c3d7135d0cb4fddb",
         "french-v3-teaching:futur-proche:production:voir": "sha256:2880b688b1c6252184e992ab3394489664dbd57b13c1a5d9158096dd2173c9c6",
         "french-v3-teaching:futur-proche:production:pouvoir": "sha256:6e3f94e1d25c9ff19aa7960fd1a341566ae118190c9bea5566dd8ec1cfa9a593",
-        "french-v3-teaching:futur-proche:production:vouloir": "sha256:6c21b70533a80a7027695d56aee4ef0a717ba8370dd2b952ef529895a8b96ee2",
+        "french-v3-teaching:futur-proche:production:vouloir": "sha256:6c691746317b286ae87a4a98295cab8abdbcd992d14c0f63f5caa164b652af9c",
         "french-v3-teaching:futur-proche:production:savoir": "sha256:781bab01816f4daaa10651822d6cb5137a8ec0825cf8ddc0ac090c18f74b87b6",
         "french-v3-teaching:futur-proche:production:devoir": "sha256:1bc13e9086286dd165cae4ac196457856daf39a34ae28eeb052343d08b6540df",
         "french-v3-teaching:lexical-chain:narrative": "sha256:34e93a36e8448534a91c5833e017f9e0f0505f5e78edb384a5cb07a00b767697",
@@ -166808,7 +167151,7 @@
         "french-v3-teaching:passe-compose:dire": "sha256:1778a792a4dca1b7756073f6160b7de8602c05c9e91a57fa7e0b9de100ba719f",
         "french-v3-teaching:passe-compose:voir": "sha256:65412850a5648ebbcc769f82cb81f74a6fcb35a2931ebbff6e4a81d3e60b432c",
         "french-v3-teaching:passe-compose:pouvoir": "sha256:3957d3367f7fd570248cad114dc7808083a9c682e6e3e15c36db0a28efd04be2",
-        "french-v3-teaching:passe-compose:vouloir": "sha256:3575755304870c4260cbe52b965f8f0068fd9a4f40ca98b828625542f26ff2a3",
+        "french-v3-teaching:passe-compose:vouloir": "sha256:a2c3350b88f7e9fcb1b22225df33502cac8d9ab1b4c42e29708869efce56a5ad",
         "french-v3-teaching:passe-compose:savoir": "sha256:1c5f85533765b0e23df294ff72b112f6ea7e043b1795adeeb996b591c0a68cad",
         "french-v3-teaching:passe-compose:devoir": "sha256:274272c647181a7d35dd5b085564c75c9e1c5608cf83c89e48931e1761983bad",
         "french-v3-teaching:plus-que-parfait:aller": "sha256:1889170794aea18b80436fceb31c6be40568173af87b9270007d3d43179baac3",
@@ -166822,7 +167165,7 @@
         "french-v3-teaching:plus-que-parfait:dire": "sha256:a5e0ffc83874b47019569bc1a7341a62e5f70a132efaf5fb2acef4078d3bb0f8",
         "french-v3-teaching:plus-que-parfait:voir": "sha256:309365b3662cd36c2bb00419cb70d39ba8e8a957b557f92760474a4995681f9f",
         "french-v3-teaching:plus-que-parfait:pouvoir": "sha256:ffec333ea36e08a0603e74bb2e4a6144d9291580d1b62a8ac288db360b75c9ee",
-        "french-v3-teaching:plus-que-parfait:vouloir": "sha256:75d9f5d4a556385fb88acc086e38a2dfd9de8f64d982a242992b6eccf8475dbd",
+        "french-v3-teaching:plus-que-parfait:vouloir": "sha256:5c8f102a7cbd6845c6dadbbb9d39040e399abafe18c3907afe16afeb327a68fb",
         "french-v3-teaching:plus-que-parfait:savoir": "sha256:3d543ab3451c5865aa327926f065ab173197a881f8d5ac2c92e5c947976853e9",
         "french-v3-teaching:plus-que-parfait:devoir": "sha256:4280de690b3b8d1de76c1016f67ba7e9cce5bc7a55194099e8831d55e53b5851",
         "french-v3-teaching:participle-formation:er": "sha256:e62825f064974bd9db49e4b35cfde4b0d31f3300811932272183578409daeab8",
@@ -166846,7 +167189,7 @@
         "french-v3-teaching:conditionnel-present:dire": "sha256:335c4f756f6f7b44d799a4f0c3612c562e304a6de2d803dd25c2b60aa869fdcc",
         "french-v3-teaching:conditionnel-present:voir": "sha256:ef1e03ee6263df201a427a9495ce9403ea73324af96cbba3eb5058c5971a09d9",
         "french-v3-teaching:conditionnel-present:pouvoir": "sha256:62d62cabe92624b8b2a46b871b082d35f63076b66eba4794e9013b1387ee4381",
-        "french-v3-teaching:conditionnel-present:vouloir": "sha256:ebb2af7f8723e803a70e25c6d4362eadabd365b49b8ecf0a91443e5a10404922",
+        "french-v3-teaching:conditionnel-present:vouloir": "sha256:795edcbb714d6d80b0f93709dc7957abf44c35530d2d1b42f462a0eb5a50144a",
         "french-v3-teaching:conditionnel-present:savoir": "sha256:36a8a6d521abbd92da5f819d81a39b8fc97a2109fd41f203655a1a0e77fcd8c5",
         "french-v3-teaching:conditionnel-present:devoir": "sha256:4cf4f9c2dc4d81ee7a88fe2b812ed2e2ab3e8e2f9b27ee387dbde31adf63af3e",
         "french-v3-teaching:conditionnel:recognition": "sha256:28c3959da998dabcf4eec99e2c8af7955a2b4a0b6a08868b605b8a0159ff48e1",
@@ -166866,7 +167209,7 @@
         "french-v3-teaching:futur-simple:dire": "sha256:f186610998b8f9f848a46d95a17475cde84d2e7d3b5c79ddf8791970a366db58",
         "french-v3-teaching:futur-simple:voir": "sha256:67c6baa256e44cee10195ca3410ebf8e70febdd4d3e44f7370bc1089bc8df976",
         "french-v3-teaching:futur-simple:pouvoir": "sha256:ca9e1a7702324b5d8261b91f742849c5956ef9053506fd281211a44d9df39909",
-        "french-v3-teaching:futur-simple:vouloir": "sha256:43ecc38e3f8cbb5de8b65df76b8779e17964d6028f9d67b5e587ee38ccf6172a",
+        "french-v3-teaching:futur-simple:vouloir": "sha256:4c668825b6f206e927570701177748a931c22dca399266ee627dbf5727347fce",
         "french-v3-teaching:futur-simple:savoir": "sha256:1d4333034c062eaddd936b57f48fc720209a6dc8cc2af816b4eed501748da228",
         "french-v3-teaching:futur-simple:devoir": "sha256:398b195dada7632f8b3dbc4fb7e5549f1cec0f5b6827930d1b146a4779799d4a",
         "french-v3-teaching:imparfait:aller": "sha256:226e8f4fda7b72e1de96cccff4954459eb252b6a6b7ef263c6fff6e8f98a6a2f",
@@ -166880,7 +167223,7 @@
         "french-v3-teaching:imparfait:dire": "sha256:f43017cb0dca5dfb4d4519519f022001744cfc765214ca4010abd40d19a4c78e",
         "french-v3-teaching:imparfait:voir": "sha256:28f61df311bd668adcf9a21de3cc30538f36525416b93e46bc5b089760bcaf0c",
         "french-v3-teaching:imparfait:pouvoir": "sha256:fd3bba91962b5b30045a93af42caf5ea6145cc31db7387fae439b147e032a988",
-        "french-v3-teaching:imparfait:vouloir": "sha256:3c1cf51cfc55547cb2f88305c948901db7da32594544ef1dca06db0e207d6f22",
+        "french-v3-teaching:imparfait:vouloir": "sha256:5c1002b30628e009cb4c763dc401350e73a2bd59670f347dd2950c339f1837de",
         "french-v3-teaching:imparfait:savoir": "sha256:129ff9768670f3fe6887c187d1a175cde800033d5de6154f2396674f8b812a85",
         "french-v3-teaching:imparfait:devoir": "sha256:931d7a7069390b54268e54bbe301a618c416f6e04b9d7c0cf31c9e2e6b80a1ab",
         "french-v3-teaching:recognition:imparfait": "sha256:70999a2910c44b3b93f089a9b92525786d89d2923ae13386ac5da222d29234ec",
@@ -166954,13 +167297,13 @@
         "french-v3-teaching:present:verb:dire": "sha256:96c79f75f4023e63212bd1020f7ec8f43fef1ebe4dc0dd7da1280fe9db47f81f",
         "french-v3-teaching:present:verb:voir": "sha256:44870212ac8f9f51462bb1a6611e8a8e47c604990f458050b813eadfea77d3f3",
         "french-v3-teaching:present:verb:pouvoir": "sha256:96d0b9613bfe2d84a0fd763817b355ee1aacee528017ec7ce30d57a6e64ba632",
-        "french-v3-teaching:present:verb:vouloir": "sha256:189c2fe1388a917d4fa0aba83a8f99000ef36b230a32a7ac8e0cea9defea85a8",
+        "french-v3-teaching:present:verb:vouloir": "sha256:f5602333809f071085d285e1ba2c1765d6f5d90c17edbf8441cdb9af26be58ac",
         "french-v3-teaching:present:verb:savoir": "sha256:334ea06f5381f90b16e880d89620fd3909d8902d522049949a98c9daea9c40b7",
         "french-v3-teaching:present:verb:devoir": "sha256:b5dc0dcbb7300e37d56ae0b5bddfa3eb2de8f5e647961fd7c9e2761ad9daa67b"
       }
     },
-    "facetChecksum": "sha256:6004a0126e5d1a26bf174976d597d90bb9bc77c106d28d5d1ffbea920d7a2c95",
-    "poolChecksum": "sha256:79f18c81203b3671f4a1e9aad5aa8c82298d7a6cd53d67b18f064dcd19d9f547"
+    "facetChecksum": "sha256:b60e0b728a8c3d0afa8b927c0c97207725289fe08be0eb67c0e86c8d6f008046",
+    "poolChecksum": "sha256:ab90e6c0ceb3f0e7e031963d92d872b6d1ba10cc6255af39aae3d806505b1b75"
   },
   "teachingPoolRepairs": [
     {
@@ -168663,8 +169006,8 @@
       "skillId": "produire_imperatif::writing-controlled-production::verb:vouloir",
       "mode": "production",
       "status": "allocated",
-      "initialItems": 3,
-      "learningItems": 3
+      "initialItems": 9,
+      "learningItems": 9
     },
     {
       "skillId": "produire_imperatif::writing-controlled-production::verb:savoir",
@@ -175923,9 +176266,15 @@
       "titleFr": "Produire l'impératif — Conjuguer vouloir",
       "href": "/student/diagnostic",
       "probeIds": [
-        "v3-granular-forms:produire_imperatif:vouloir:1p:m:affirmative",
-        "v3-granular-forms:produire_imperatif:vouloir:1p:m:negative",
-        "v3-granular-forms:produire_imperatif:vouloir:2p:m:affirmative"
+        "v3-vouloir-imperative:00:vouloir:2s",
+        "v3-vouloir-imperative:01:vouloir:1p",
+        "v3-vouloir-imperative:02:vouloir:2p",
+        "v3-vouloir-imperative:03:vouloir:2s",
+        "v3-vouloir-imperative:04:vouloir:2p",
+        "v3-vouloir-imperative:05:vouloir:2s",
+        "v3-vouloir-imperative:06:vouloir:1p",
+        "v3-vouloir-imperative:07:vouloir:2s",
+        "v3-vouloir-imperative:08:vouloir:2p"
       ],
       "estimatedMinutes": 1
     },
@@ -178764,6 +179113,235 @@
     }
   ],
   "teachingContent": [
+    {
+      "id": "french-v3-teaching:imperatif-present:verb:vouloir",
+      "nodeKey": "produire_imperatif",
+      "facetKey": "produire_imperatif::verb:vouloir",
+      "mode": "production",
+      "status": "published_pending_review",
+      "titleFr": "Écrire vouloir dans une demande ou une excuse",
+      "learnerQuestionFr": "Pourquoi écrit-on veuillez entrer, mais ne m’en veux pas ?",
+      "steps": [
+        {
+          "exampleFr": "Veuillez entrer. Ne m’en veux pas.",
+          "explanationFr": "La première phrase invite poliment quelqu’un à entrer. La seconde demande à quelqu’un de ne pas garder de rancune. Les deux emploient vouloir à l’impératif, mais dans des usages différents."
+        },
+        {
+          "exampleFr": "Une formule de politesse : veuille ou veuillez, selon la personne.",
+          "explanationFr": "Avec une personne tutoyée, la forme est veuille, dans une formule soutenue. Avec vous, on écrit veuillez, suivi d’un verbe à l’infinitif. Le u après le premier e est nécessaire : veillez vient d’un autre verbe, veiller."
+        },
+        {
+          "exampleFr": "Tu : veux ou veuille. Nous : voulons ou veuillons. Vous : voulez ou veuillez.",
+          "explanationFr": "Avec en vouloir, les deux séries sont possibles. Les formes veux, voulons et voulez sont courantes dans cet emploi négatif. Les autres formes appartiennent à un usage plus soutenu."
+        },
+        {
+          "exampleFr": "Que tu veuilles. Ne m’en veuille pas.",
+          "explanationFr": "Ne copie pas la terminaison du subjonctif : à l’impératif, veuille ne prend pas de s. La personne visée et l’usage indiqué t’aident à choisir la forme."
+        }
+      ],
+      "practice": [
+        {
+          "id": "vouloir-imperative-guided-1",
+          "promptFr": "Tu t’adresses à une personne que tu tutoies. En vouloir signifie ici garder de la rancune envers quelqu’un. Complète avec vouloir à l’impératif présent : Ne m’en ___ pas pour mon hésitation. Choisis la réponse qui donne la ou les formes possibles.",
+          "choices": [
+            "veux ou veuille",
+            "veut",
+            "veuilles"
+          ],
+          "answerFr": "veux ou veuille",
+          "hintFr": "En vouloir signifie ici garder de la rancune envers quelqu’un.",
+          "explanationFr": "Ne m’en veux pas pour mon hésitation. Ne m’en veuille pas pour mon hésitation. Les deux formes sont acceptées dans cet emploi."
+        },
+        {
+          "id": "vouloir-imperative-guided-2",
+          "promptFr": "Tu t’adresses à une personne que tu tutoies. En vouloir signifie ici garder de la rancune envers quelqu’un. Complète avec vouloir à l’impératif présent : Ne lui en ___ plus pour sa remarque. Choisis la réponse qui donne la ou les formes possibles.",
+          "choices": [
+            "veux ou veuille",
+            "veut",
+            "veuilles"
+          ],
+          "answerFr": "veux ou veuille",
+          "hintFr": "En vouloir signifie ici garder de la rancune envers quelqu’un.",
+          "explanationFr": "Ne lui en veux plus pour sa remarque. Ne lui en veuille plus pour sa remarque. Les deux formes sont acceptées dans cet emploi."
+        },
+        {
+          "id": "vouloir-imperative-guided-3",
+          "promptFr": "Tu inclus les personnes auxquelles tu parles et toi-même. En vouloir signifie ici garder de la rancune envers quelqu’un. Complète avec vouloir à l’impératif présent : Ne leur en ___ pas pour leur départ précipité. Choisis la réponse qui donne la ou les formes possibles.",
+          "choices": [
+            "voulons ou veuillons",
+            "voulions",
+            "veulent"
+          ],
+          "answerFr": "voulons ou veuillons",
+          "hintFr": "En vouloir signifie ici garder de la rancune envers quelqu’un.",
+          "explanationFr": "Ne leur en voulons pas pour leur départ précipité. Ne leur en veuillons pas pour leur départ précipité. Les deux formes sont acceptées dans cet emploi."
+        },
+        {
+          "id": "vouloir-imperative-guided-4",
+          "promptFr": "Tu inclus les personnes auxquelles tu parles et toi-même. En vouloir signifie ici garder de la rancune envers quelqu’un. Complète avec vouloir à l’impératif présent : N’en ___ pas à notre ami pour son silence. Choisis la réponse qui donne la ou les formes possibles.",
+          "choices": [
+            "voulons ou veuillons",
+            "voulions",
+            "veulent"
+          ],
+          "answerFr": "voulons ou veuillons",
+          "hintFr": "En vouloir signifie ici garder de la rancune envers quelqu’un.",
+          "explanationFr": "N’en voulons pas à notre ami pour son silence. N’en veuillons pas à notre ami pour son silence. Les deux formes sont acceptées dans cet emploi."
+        },
+        {
+          "id": "vouloir-imperative-guided-5",
+          "promptFr": "Tu t’adresses à plusieurs personnes ou à une personne que tu vouvoies. En vouloir signifie ici garder de la rancune envers quelqu’un. Complète avec vouloir à l’impératif présent : Ne m’en ___ pas de poser cette question. Choisis la réponse qui donne la ou les formes possibles.",
+          "choices": [
+            "voulez ou veuillez",
+            "vouliez",
+            "veillez"
+          ],
+          "answerFr": "voulez ou veuillez",
+          "hintFr": "En vouloir signifie ici garder de la rancune envers quelqu’un.",
+          "explanationFr": "Ne m’en voulez pas de poser cette question. Ne m’en veuillez pas de poser cette question. Les deux formes sont acceptées dans cet emploi."
+        },
+        {
+          "id": "vouloir-imperative-guided-6",
+          "promptFr": "Tu t’adresses à plusieurs personnes ou à une personne que tu vouvoies. En vouloir signifie ici garder de la rancune envers quelqu’un. Complète avec vouloir à l’impératif présent : Ne lui en ___ plus pour le verre cassé. Choisis la réponse qui donne la ou les formes possibles.",
+          "choices": [
+            "voulez ou veuillez",
+            "vouliez",
+            "veillez"
+          ],
+          "answerFr": "voulez ou veuillez",
+          "hintFr": "En vouloir signifie ici garder de la rancune envers quelqu’un.",
+          "explanationFr": "Ne lui en voulez plus pour le verre cassé. Ne lui en veuillez plus pour le verre cassé. Les deux formes sont acceptées dans cet emploi."
+        },
+        {
+          "id": "vouloir-imperative-guided-7",
+          "promptFr": "Tu t’adresses à une personne que tu tutoies. Tu écris une formule de politesse. Complète avec vouloir à l’impératif présent : ___ croire à mon amitié. Choisis la réponse qui donne la ou les formes possibles.",
+          "choices": [
+            "veuille",
+            "veut",
+            "veuilles"
+          ],
+          "answerFr": "veuille",
+          "hintFr": "Tu écris une formule de politesse.",
+          "explanationFr": "veuille croire à mon amitié. Cette formule de politesse utilise la forme en veuill-."
+        },
+        {
+          "id": "vouloir-imperative-guided-8",
+          "promptFr": "Tu t’adresses à plusieurs personnes ou à une personne que tu vouvoies. Tu écris une formule de politesse. Complète avec vouloir à l’impératif présent : ___ présenter votre billet au contrôle. Choisis la réponse qui donne la ou les formes possibles.",
+          "choices": [
+            "veuillez",
+            "vouliez",
+            "veillez"
+          ],
+          "answerFr": "veuillez",
+          "hintFr": "Tu écris une formule de politesse.",
+          "explanationFr": "veuillez présenter votre billet au contrôle. Cette formule de politesse utilise la forme en veuill-."
+        }
+      ],
+      "takeawayFr": "Dans une demande polie, utilise veuille ou veuillez. Avec en vouloir, veux, voulons et voulez sont aussi possibles. Vérifie à qui tu parles.",
+      "boundaryFr": "Ces expressions ne couvrent pas tous les sens de vouloir. L’usage affirmatif exprimant une ferme volonté est rare et n’est pas travaillé ici. Les pronoms sont déjà fournis : leur placement n’est pas évalué.",
+      "materialExposure": {
+        "words": [
+          {
+            "lemma": "vouloir",
+            "form": "vouloir"
+          }
+        ],
+        "sentences": [
+          "Veuillez entrer. Ne m’en veux pas.",
+          "Une formule de politesse : veuille ou veuillez, selon la personne.",
+          "Tu : veux ou veuille. Nous : voulons ou veuillons. Vous : voulez ou veuillez.",
+          "Que tu veuilles. Ne m’en veuille pas.",
+          "Ne m’en veux pas pour mon hésitation.",
+          "Ne m’en veuille pas pour mon hésitation.",
+          "Ne lui en veux plus pour sa remarque.",
+          "Ne lui en veuille plus pour sa remarque.",
+          "Ne leur en voulons pas pour leur départ précipité.",
+          "Ne leur en veuillons pas pour leur départ précipité.",
+          "N’en voulons pas à notre ami pour son silence.",
+          "N’en veuillons pas à notre ami pour son silence.",
+          "Ne m’en voulez pas de poser cette question.",
+          "Ne m’en veuillez pas de poser cette question.",
+          "Ne lui en voulez plus pour le verre cassé.",
+          "Ne lui en veuillez plus pour le verre cassé.",
+          "veuille croire à mon amitié.",
+          "veuillez présenter votre billet au contrôle."
+        ]
+      },
+      "assessmentExposureIds": [
+        "v3-granular-forms:produire_conditionnel_present:vouloir:1p:m:affirmative",
+        "v3-granular-forms:produire_conditionnel_present:vouloir:1s:m:affirmative",
+        "v3-granular-forms:produire_conditionnel_present:vouloir:2p:m:affirmative",
+        "v3-granular-forms:produire_conditionnel_present:vouloir:2s:m:affirmative",
+        "v3-granular-forms:produire_conditionnel_present:vouloir:3p:f:affirmative",
+        "v3-granular-forms:produire_conditionnel_present:vouloir:3p:m:affirmative",
+        "v3-granular-forms:produire_conditionnel_present:vouloir:3s:f:affirmative",
+        "v3-granular-forms:produire_conditionnel_present:vouloir:3s:m:affirmative",
+        "v3-granular-forms:produire_futur_proche:vouloir:1p:m:affirmative",
+        "v3-granular-forms:produire_futur_proche:vouloir:1s:m:affirmative",
+        "v3-granular-forms:produire_futur_proche:vouloir:2p:m:affirmative",
+        "v3-granular-forms:produire_futur_proche:vouloir:2s:m:affirmative",
+        "v3-granular-forms:produire_futur_proche:vouloir:3p:f:affirmative",
+        "v3-granular-forms:produire_futur_proche:vouloir:3p:m:affirmative",
+        "v3-granular-forms:produire_futur_proche:vouloir:3s:f:affirmative",
+        "v3-granular-forms:produire_futur_proche:vouloir:3s:m:affirmative",
+        "v3-granular-forms:produire_futur_simple:vouloir:1p:m:affirmative",
+        "v3-granular-forms:produire_futur_simple:vouloir:1s:m:affirmative",
+        "v3-granular-forms:produire_futur_simple:vouloir:2p:m:affirmative",
+        "v3-granular-forms:produire_futur_simple:vouloir:2s:m:affirmative",
+        "v3-granular-forms:produire_futur_simple:vouloir:3p:f:affirmative",
+        "v3-granular-forms:produire_futur_simple:vouloir:3p:m:affirmative",
+        "v3-granular-forms:produire_futur_simple:vouloir:3s:f:affirmative",
+        "v3-granular-forms:produire_futur_simple:vouloir:3s:m:affirmative",
+        "v3-granular-forms:produire_imparfait:vouloir:1p:m:affirmative",
+        "v3-granular-forms:produire_imparfait:vouloir:1s:m:affirmative",
+        "v3-granular-forms:produire_imparfait:vouloir:2p:m:affirmative",
+        "v3-granular-forms:produire_imparfait:vouloir:2s:m:affirmative",
+        "v3-granular-forms:produire_imparfait:vouloir:3p:f:affirmative",
+        "v3-granular-forms:produire_imparfait:vouloir:3p:m:affirmative",
+        "v3-granular-forms:produire_imparfait:vouloir:3s:f:affirmative",
+        "v3-granular-forms:produire_imparfait:vouloir:3s:m:affirmative",
+        "v3-granular-forms:produire_passe_compose:vouloir:1p:m:affirmative",
+        "v3-granular-forms:produire_passe_compose:vouloir:1s:m:affirmative",
+        "v3-granular-forms:produire_passe_compose:vouloir:2p:m:affirmative",
+        "v3-granular-forms:produire_passe_compose:vouloir:2s:m:affirmative",
+        "v3-granular-forms:produire_passe_compose:vouloir:3p:f:affirmative",
+        "v3-granular-forms:produire_passe_compose:vouloir:3p:m:affirmative",
+        "v3-granular-forms:produire_passe_compose:vouloir:3s:f:affirmative",
+        "v3-granular-forms:produire_passe_compose:vouloir:3s:m:affirmative",
+        "v3-granular-forms:produire_passe_recent:vouloir:1p:m:affirmative",
+        "v3-granular-forms:produire_passe_recent:vouloir:1s:m:affirmative",
+        "v3-granular-forms:produire_passe_recent:vouloir:2p:m:affirmative",
+        "v3-granular-forms:produire_passe_recent:vouloir:2s:m:affirmative",
+        "v3-granular-forms:produire_passe_recent:vouloir:3p:f:affirmative",
+        "v3-granular-forms:produire_passe_recent:vouloir:3p:m:affirmative",
+        "v3-granular-forms:produire_passe_recent:vouloir:3s:f:affirmative",
+        "v3-granular-forms:produire_passe_recent:vouloir:3s:m:affirmative",
+        "v3-granular-forms:produire_passe_simple:vouloir:1p:m:affirmative",
+        "v3-granular-forms:produire_passe_simple:vouloir:1s:m:affirmative",
+        "v3-granular-forms:produire_passe_simple:vouloir:2p:m:affirmative",
+        "v3-granular-forms:produire_passe_simple:vouloir:2s:m:affirmative",
+        "v3-granular-forms:produire_passe_simple:vouloir:3p:f:affirmative",
+        "v3-granular-forms:produire_passe_simple:vouloir:3p:m:affirmative",
+        "v3-granular-forms:produire_passe_simple:vouloir:3s:f:affirmative",
+        "v3-granular-forms:produire_passe_simple:vouloir:3s:m:affirmative",
+        "v3-granular-forms:produire_plus_que_parfait:vouloir:1p:m:affirmative",
+        "v3-granular-forms:produire_plus_que_parfait:vouloir:1s:m:affirmative",
+        "v3-granular-forms:produire_plus_que_parfait:vouloir:2p:m:affirmative",
+        "v3-granular-forms:produire_plus_que_parfait:vouloir:2s:m:affirmative",
+        "v3-granular-forms:produire_plus_que_parfait:vouloir:3p:f:affirmative",
+        "v3-granular-forms:produire_plus_que_parfait:vouloir:3p:m:affirmative",
+        "v3-granular-forms:produire_plus_que_parfait:vouloir:3s:f:affirmative",
+        "v3-granular-forms:produire_plus_que_parfait:vouloir:3s:m:affirmative",
+        "v3-granular-forms:produire_present_indicatif:vouloir:1p:m:affirmative",
+        "v3-granular-forms:produire_present_indicatif:vouloir:1s:m:affirmative",
+        "v3-granular-forms:produire_present_indicatif:vouloir:2p:m:affirmative",
+        "v3-granular-forms:produire_present_indicatif:vouloir:2s:m:affirmative",
+        "v3-granular-forms:produire_present_indicatif:vouloir:3p:f:affirmative",
+        "v3-granular-forms:produire_present_indicatif:vouloir:3p:m:affirmative",
+        "v3-granular-forms:produire_present_indicatif:vouloir:3s:f:affirmative",
+        "v3-granular-forms:produire_present_indicatif:vouloir:3s:m:affirmative"
+      ]
+    },
     {
       "id": "french-v3-teaching:imperative:meaning",
       "nodeKey": "interpreter_valeur_imperatif",
@@ -191939,12 +192517,6 @@
         "v3-granular-forms:produire_imparfait:vouloir:3p:m:affirmative",
         "v3-granular-forms:produire_imparfait:vouloir:3s:f:affirmative",
         "v3-granular-forms:produire_imparfait:vouloir:3s:m:affirmative",
-        "v3-granular-forms:produire_imperatif:vouloir:1p:m:affirmative",
-        "v3-granular-forms:produire_imperatif:vouloir:1p:m:negative",
-        "v3-granular-forms:produire_imperatif:vouloir:2p:m:affirmative",
-        "v3-granular-forms:produire_imperatif:vouloir:2p:m:negative",
-        "v3-granular-forms:produire_imperatif:vouloir:2s:m:affirmative",
-        "v3-granular-forms:produire_imperatif:vouloir:2s:m:negative",
         "v3-granular-forms:produire_passe_compose:vouloir:1p:m:affirmative",
         "v3-granular-forms:produire_passe_compose:vouloir:1s:m:affirmative",
         "v3-granular-forms:produire_passe_compose:vouloir:2p:m:affirmative",
@@ -210753,12 +211325,6 @@
         "v3-granular-forms:produire_imparfait:vouloir:3p:m:affirmative",
         "v3-granular-forms:produire_imparfait:vouloir:3s:f:affirmative",
         "v3-granular-forms:produire_imparfait:vouloir:3s:m:affirmative",
-        "v3-granular-forms:produire_imperatif:vouloir:1p:m:affirmative",
-        "v3-granular-forms:produire_imperatif:vouloir:1p:m:negative",
-        "v3-granular-forms:produire_imperatif:vouloir:2p:m:affirmative",
-        "v3-granular-forms:produire_imperatif:vouloir:2p:m:negative",
-        "v3-granular-forms:produire_imperatif:vouloir:2s:m:affirmative",
-        "v3-granular-forms:produire_imperatif:vouloir:2s:m:negative",
         "v3-granular-forms:produire_passe_compose:aller:1p:m:affirmative",
         "v3-granular-forms:produire_passe_compose:aller:1s:m:affirmative",
         "v3-granular-forms:produire_passe_compose:aller:2p:m:affirmative",
@@ -216582,12 +217148,6 @@
         "v3-granular-forms:produire_imparfait:vouloir:3p:m:affirmative",
         "v3-granular-forms:produire_imparfait:vouloir:3s:f:affirmative",
         "v3-granular-forms:produire_imparfait:vouloir:3s:m:affirmative",
-        "v3-granular-forms:produire_imperatif:vouloir:1p:m:affirmative",
-        "v3-granular-forms:produire_imperatif:vouloir:1p:m:negative",
-        "v3-granular-forms:produire_imperatif:vouloir:2p:m:affirmative",
-        "v3-granular-forms:produire_imperatif:vouloir:2p:m:negative",
-        "v3-granular-forms:produire_imperatif:vouloir:2s:m:affirmative",
-        "v3-granular-forms:produire_imperatif:vouloir:2s:m:negative",
         "v3-granular-forms:produire_passe_compose:vouloir:1p:m:affirmative",
         "v3-granular-forms:produire_passe_compose:vouloir:1s:m:affirmative",
         "v3-granular-forms:produire_passe_compose:vouloir:2p:m:affirmative",
@@ -219007,12 +219567,6 @@
         "v3-granular-forms:produire_imparfait:vouloir:3p:m:affirmative",
         "v3-granular-forms:produire_imparfait:vouloir:3s:f:affirmative",
         "v3-granular-forms:produire_imparfait:vouloir:3s:m:affirmative",
-        "v3-granular-forms:produire_imperatif:vouloir:1p:m:affirmative",
-        "v3-granular-forms:produire_imperatif:vouloir:1p:m:negative",
-        "v3-granular-forms:produire_imperatif:vouloir:2p:m:affirmative",
-        "v3-granular-forms:produire_imperatif:vouloir:2p:m:negative",
-        "v3-granular-forms:produire_imperatif:vouloir:2s:m:affirmative",
-        "v3-granular-forms:produire_imperatif:vouloir:2s:m:negative",
         "v3-granular-forms:produire_passe_compose:vouloir:1p:m:affirmative",
         "v3-granular-forms:produire_passe_compose:vouloir:1s:m:affirmative",
         "v3-granular-forms:produire_passe_compose:vouloir:2p:m:affirmative",
@@ -222361,12 +222915,6 @@
         "v3-granular-forms:produire_imparfait:vouloir:3p:m:affirmative",
         "v3-granular-forms:produire_imparfait:vouloir:3s:f:affirmative",
         "v3-granular-forms:produire_imparfait:vouloir:3s:m:affirmative",
-        "v3-granular-forms:produire_imperatif:vouloir:1p:m:affirmative",
-        "v3-granular-forms:produire_imperatif:vouloir:1p:m:negative",
-        "v3-granular-forms:produire_imperatif:vouloir:2p:m:affirmative",
-        "v3-granular-forms:produire_imperatif:vouloir:2p:m:negative",
-        "v3-granular-forms:produire_imperatif:vouloir:2s:m:affirmative",
-        "v3-granular-forms:produire_imperatif:vouloir:2s:m:negative",
         "v3-granular-forms:produire_passe_compose:vouloir:1p:m:affirmative",
         "v3-granular-forms:produire_passe_compose:vouloir:1s:m:affirmative",
         "v3-granular-forms:produire_passe_compose:vouloir:2p:m:affirmative",
@@ -225473,12 +226021,6 @@
         "v3-granular-forms:produire_imparfait:vouloir:3p:m:affirmative",
         "v3-granular-forms:produire_imparfait:vouloir:3s:f:affirmative",
         "v3-granular-forms:produire_imparfait:vouloir:3s:m:affirmative",
-        "v3-granular-forms:produire_imperatif:vouloir:1p:m:affirmative",
-        "v3-granular-forms:produire_imperatif:vouloir:1p:m:negative",
-        "v3-granular-forms:produire_imperatif:vouloir:2p:m:affirmative",
-        "v3-granular-forms:produire_imperatif:vouloir:2p:m:negative",
-        "v3-granular-forms:produire_imperatif:vouloir:2s:m:affirmative",
-        "v3-granular-forms:produire_imperatif:vouloir:2s:m:negative",
         "v3-granular-forms:produire_passe_compose:vouloir:1p:m:affirmative",
         "v3-granular-forms:produire_passe_compose:vouloir:1s:m:affirmative",
         "v3-granular-forms:produire_passe_compose:vouloir:2p:m:affirmative",
@@ -227824,12 +228366,6 @@
         "v3-granular-forms:produire_imparfait:vouloir:3p:m:affirmative",
         "v3-granular-forms:produire_imparfait:vouloir:3s:f:affirmative",
         "v3-granular-forms:produire_imparfait:vouloir:3s:m:affirmative",
-        "v3-granular-forms:produire_imperatif:vouloir:1p:m:affirmative",
-        "v3-granular-forms:produire_imperatif:vouloir:1p:m:negative",
-        "v3-granular-forms:produire_imperatif:vouloir:2p:m:affirmative",
-        "v3-granular-forms:produire_imperatif:vouloir:2p:m:negative",
-        "v3-granular-forms:produire_imperatif:vouloir:2s:m:affirmative",
-        "v3-granular-forms:produire_imperatif:vouloir:2s:m:negative",
         "v3-granular-forms:produire_passe_compose:vouloir:1p:m:affirmative",
         "v3-granular-forms:produire_passe_compose:vouloir:1s:m:affirmative",
         "v3-granular-forms:produire_passe_compose:vouloir:2p:m:affirmative",
@@ -237453,12 +237989,6 @@
         "v3-granular-forms:produire_imparfait:vouloir:3p:m:affirmative",
         "v3-granular-forms:produire_imparfait:vouloir:3s:f:affirmative",
         "v3-granular-forms:produire_imparfait:vouloir:3s:m:affirmative",
-        "v3-granular-forms:produire_imperatif:vouloir:1p:m:affirmative",
-        "v3-granular-forms:produire_imperatif:vouloir:1p:m:negative",
-        "v3-granular-forms:produire_imperatif:vouloir:2p:m:affirmative",
-        "v3-granular-forms:produire_imperatif:vouloir:2p:m:negative",
-        "v3-granular-forms:produire_imperatif:vouloir:2s:m:affirmative",
-        "v3-granular-forms:produire_imperatif:vouloir:2s:m:negative",
         "v3-granular-forms:produire_passe_compose:vouloir:1p:m:affirmative",
         "v3-granular-forms:produire_passe_compose:vouloir:1s:m:affirmative",
         "v3-granular-forms:produire_passe_compose:vouloir:2p:m:affirmative",
@@ -237831,6 +238361,30 @@
     }
   ],
   "teachingBindings": [
+    {
+      "id": "68e26036-6eee-5cf6-8fcb-76aaf37d5a70",
+      "nodeKey": "produire_imperatif",
+      "facetKey": "produire_imperatif::verb:vouloir",
+      "mode": "production",
+      "kind": "instruction",
+      "status": "published",
+      "titleFr": "Écrire vouloir dans une demande ou une excuse",
+      "href": "/student/diagnostic",
+      "contentId": "french-v3-teaching:imperatif-present:verb:vouloir",
+      "estimatedMinutes": 4
+    },
+    {
+      "id": "c7ffb925-e166-5e3d-9fea-b0f55c5d89c3",
+      "nodeKey": "produire_imperatif",
+      "facetKey": "produire_imperatif::verb:vouloir",
+      "mode": "production",
+      "kind": "practice",
+      "status": "published",
+      "titleFr": "Écrire vouloir dans une demande ou une excuse",
+      "href": "/student/diagnostic",
+      "contentId": "french-v3-teaching:imperatif-present:verb:vouloir",
+      "estimatedMinutes": 6
+    },
     {
       "id": "9cb30458-70a1-570e-8875-a90f2fa6f3da",
       "nodeKey": "interpreter_valeur_imperatif",
@@ -245718,6 +246272,13 @@
   ],
   "teachingReadiness": [
     {
+      "lessonId": "french-v3-teaching:imperatif-present:verb:vouloir",
+      "skillId": "produire_imperatif::writing-controlled-production::verb:vouloir",
+      "poolsAllocated": true,
+      "remainingCheckQuestions": 9,
+      "freshCheckAvailable": true
+    },
+    {
       "lessonId": "french-v3-teaching:imperative:meaning",
       "skillId": "interpreter_valeur_imperatif::reading-receptive",
       "poolsAllocated": true,
@@ -248181,5 +248742,5 @@
     "Incomplete target pools remain visible; release scope and fresh post-teaching check capacity still need verification",
     "Structurally rejected content remains ineligible; semantic review continues in parallel"
   ],
-  "checksum": "sha256:73e7cc4e3456bfeff071aa5def506dd3908edb2a572a602abe56861b33f39c81"
+  "checksum": "sha256:689027b2fae4ef12197a087911c9b47d5c3ba82cdd73ce0b65f5311a8043b488"
 }
