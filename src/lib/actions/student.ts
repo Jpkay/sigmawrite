@@ -1,4 +1,5 @@
 "use server";
+import {gradeRepairSubmission} from "@/lib/diagnostic/granular/repair-submission";
 import {inboxDisplay} from "@/lib/diagnostic/granular/inbox-display";
 import {leagueDisplay} from "@/lib/diagnostic/granular/league-display";
 import {motivationDisplay} from "@/lib/diagnostic/granular/motivation-display";
@@ -16,7 +17,7 @@ import { getContentLibrary, getPublishedReadingText, recommendPublishedTextKey }
 import { rankInterestSignals } from "@/lib/content/recommend";
 import { rankByInterestAndVocabulary } from "@/lib/content/vocabulary-fit";
 import { scoreSession } from "@/lib/scoring/session";
-import { updateSkillEstimate, updateSkillsFromSession } from "@/lib/scoring/skill-estimate";
+import { updateSkillsFromSession } from "@/lib/scoring/skill-estimate";
 import { buildRetrievalCards } from "@/lib/content/retrieval-cards";
 import { dueAtFrom, gradeRetrieval, INITIAL_SCHEDULE, type RetrievalResult } from "@/lib/scoring/retrieval";
 import { scheduleFsrs } from "@/lib/scoring/fsrs";
@@ -112,7 +113,6 @@ const completeSessionSchema = z.object({
   completedAt: dateTimeSchema,
 });
 const retrievalSchema = z.object({ cardId: uuidSchema, answerText: z.string().trim().min(1).max(5000), attemptedAt: dateTimeSchema });
-const skillPracticeSchema = z.object({ skillKey: z.string().min(1).max(100), corrects: z.array(z.boolean()).min(1).max(30) });
 const textKeySchema = z.object({ textKey: z.string().min(1).max(100) });
 const emptySchema = z.object({}).strict();
 const adaptiveProbeSchema = z.object({
@@ -2632,19 +2632,14 @@ export async function loadStudentWeeklyRecap(input: unknown) {
 }
 
 export async function submitSkillPractice(input: unknown) {
-  const data = checked(skillPracticeSchema, input);
+  const data = gradeRepairSubmission(input);
   const { supabase, studentId } = await context();
   await requireStudentLearningUnlocked(supabase, studentId);
-  const { data: skill, error: skillError } = await supabase.from("skills").select("id").eq("key", data.skillKey).single();
-  if (skillError || !skill) throw new Error("Compétence introuvable.");
-  const { data: current } = await supabase.from("student_skill_estimates").select("ability,uncertainty,evidence_count").eq("student_id", studentId).eq("skill_id", skill.id).maybeSingle();
-  let estimate = current ? { ability: Number(current.ability), uncertainty: Number(current.uncertainty), evidenceCount: current.evidence_count as number } : undefined;
-  for (const correct of data.corrects) estimate = updateSkillEstimate(estimate, correct);
-  const { error } = await supabase.from("student_skill_estimates").upsert({
-    student_id: studentId, skill_id: skill.id, ability: estimate!.ability,
-    uncertainty: estimate!.uncertainty, evidence_count: estimate!.evidenceCount,
-    last_evidence_at: new Date().toISOString(),
-  }, { onConflict: "student_id,skill_id" });
+  const { error } = await createServiceClient().rpc("record_student_repair_completion", {
+    p_student_id: studentId, p_submission_id: data.submissionId,
+    p_skill_key: data.skillKey, p_lesson_checksum: data.lessonChecksum,
+    p_answers: data.answers, p_corrects: data.corrects,
+  });
   if (error) throw new Error(error.message);
   return { state: await getDeliveredStudentState(studentId, supabase) };
 }

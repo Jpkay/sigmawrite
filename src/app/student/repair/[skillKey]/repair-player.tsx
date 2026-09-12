@@ -1,7 +1,7 @@
 "use client";
 import {REPAIR_COPY as copy,repairProgress,repairCompletion} from "@/lib/diagnostic/granular/repair-display";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, Check, Wrench } from "lucide-react";
 import { PageHeader } from "@/components/page";
@@ -10,7 +10,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ChoiceList } from "@/components/choice-list";
 import type { MicroLesson, MicroQuestion } from "@/lib/content/micro-lessons";
-import { applySkillResults, hasStudentBackend, replaceStudentState } from "@/lib/student-store";
+import { hasStudentBackend, replaceStudentState } from "@/lib/student-store";
 import { submitSkillPractice } from "@/lib/actions/student";
 import { track } from "@/lib/analytics";
 
@@ -22,6 +22,8 @@ export function RepairPlayer({ skillKey, lesson }: { skillKey: string; lesson: M
   const [qIndex, setQIndex] = useState(0);
   const [picked, setPicked] = useState<number | null>(null);
   const [reveal, setReveal] = useState(false);
+  const submissionId = useRef<string | null>(null);
+  const [answers, setAnswers] = useState<number[]>([]);
   const [corrects, setCorrects] = useState<boolean[]>([]);
   const [pending, setPending] = useState(false);
   const [error, setError] = useState("");
@@ -46,6 +48,7 @@ export function RepairPlayer({ skillKey, lesson }: { skillKey: string; lesson: M
   function check() {
     if (picked === null || !current || reveal || pending) return;
     setReveal(true);
+    setAnswers((answers) => [...answers, picked]);
     setCorrects((c) => [...c, picked === current.correctIndex]);
   }
 
@@ -61,9 +64,10 @@ export function RepairPlayer({ skillKey, lesson }: { skillKey: string; lesson: M
       setError("");
       try {
         if (hasStudentBackend) {
-          const response = await submitSkillPractice({ skillKey, corrects });
+          submissionId.current ??= crypto.randomUUID();
+          const response = await submitSkillPractice({ submissionId: submissionId.current, skillKey, answers });
           replaceStudentState(response.state);
-        } else applySkillResults(skillKey, corrects);
+        }
         setPhase("done");
       } catch {
         setError(copy.error);

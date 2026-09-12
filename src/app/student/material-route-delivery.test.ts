@@ -1,7 +1,9 @@
 import {VERB_REFERENCE_COPY} from "@/lib/diagnostic/granular/verb-reference-copy";
 vi.mock('server-only',()=>({}));
+vi.mock('@/lib/auth',()=>({requireRole:f.auth}));
+vi.mock('@/lib/supabase/server',()=>({isSupabaseConfigured:true}));
 import { beforeEach, expect, it, vi } from 'vitest';
-const f = vi.hoisted(() => ({ journal: vi.fn() }));
+const f = vi.hoisted(() => ({ journal: vi.fn(),auth:vi.fn() }));
 vi.mock('@/lib/diagnostic/granular/server-delivery-journal', () => ({ journalCurrentStudentPayload: f.journal }));
 vi.mock('./repair/[skillKey]/repair-player', () => ({ RepairPlayer: () => null }));
 vi.mock('./reference/verbe/verb-search', () => ({ VerbSearch: () => null }));
@@ -12,7 +14,7 @@ import {repairDisplay} from '@/lib/diagnostic/granular/repair-display';
 import { FREQUENT_VERBS } from '@/lib/conjugation/table';
 import { deliveredTextFragments } from '@/lib/diagnostic/granular/delivery-journal';
 
-beforeEach(() => { vi.clearAllMocks(); f.journal.mockResolvedValue(undefined); });
+beforeEach(() => { vi.clearAllMocks(); f.auth.mockResolvedValue({id:"owner-a"}); f.journal.mockResolvedValue(undefined); });
 it('records the exact repair payload, including correction text delivered to the browser', async () => {
   const page = await RepairPage({ params: Promise.resolve({ skillKey: 'cause_consequence' }) });
   const payload = f.journal.mock.calls[0][1];
@@ -20,7 +22,7 @@ it('records the exact repair payload, including correction text delivered to the
   expect(payload.lesson).toBe(page.props.lesson);
   expect(payload.display).toEqual(repairDisplay(page.props.lesson));
   expect(deliveredTextFragments(payload)).toContain(MICRO_LESSONS.cause_consequence.returnToText.explanationFr);
-  expect(page.key).toBe('cause_consequence');
+  expect(page.key).toBe('owner-a:cause_consequence');
 });
 it('does not interpret inherited object properties as lessons', async () => {
   const page = await RepairPage({ params: Promise.resolve({ skillKey: 'constructor' }) });
@@ -34,4 +36,11 @@ it('withholds either route payload when recording fails', async () => {
   f.journal.mockRejectedValue(Error('journal unavailable'));
   await expect(RepairPage({ params: Promise.resolve({ skillKey: 'cause_consequence' }) })).rejects.toThrow('journal unavailable');
   await expect(VerbIndex()).rejects.toThrow('journal unavailable');
+});
+
+it('resets the repair player when the authenticated student changes',async()=>{
+ const first=await RepairPage({params:Promise.resolve({skillKey:'cause_consequence'})});
+ f.auth.mockResolvedValue({id:'owner-b'});
+ const second=await RepairPage({params:Promise.resolve({skillKey:'cause_consequence'})});
+ expect(first.key).not.toBe(second.key);
 });
