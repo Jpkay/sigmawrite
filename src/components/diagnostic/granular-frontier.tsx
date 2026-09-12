@@ -6,13 +6,13 @@ import {SkillFeatureResults} from './skill-feature-results';
 import type {GranularFrontierView} from '@/lib/diagnostic/granular/frontier-view';
 const STATUS={mastered:'Bien acquis',missing:'À travailler',fragile:'À consolider',uncertain:'À confirmer',unknown:'Pas encore vérifié'};
 const MODE={recognition:'Reconnaître',production:'Écrire la réponse',interpretation:'Comprendre',independent_production:'Utiliser dans un texte personnel'};
-export function GranularFrontier({data}:{data:GranularFrontierView}){
+export function GranularFrontier({data,title='Ma carte des compétences'}:{data:GranularFrontierView;title?:string}){
  const [search,setSearch]=useState(''),[status,setStatus]=useState('all'),[focused,setFocused]=useState<string|null>(null);
  const byId=new Map(data.nodes.map(node=>[node.id,node]));
  const visible=data.nodes.filter(node=>focused?node.id===focused:(status==='all'||node.result.status===status)&&node.labelFr.toLocaleLowerCase('fr').includes(search.toLocaleLowerCase('fr')));
  function show(id:string){setFocused(id);setSearch('');setStatus('all');}
  return <>
-  <PageHeader title="Ma carte des compétences" description="Chaque point a son propre bilan. Reconnaître une règle et l’utiliser sans aide sont vérifiés séparément."/>
+  <PageHeader title={title} description="Chaque point a son propre bilan. Reconnaître une règle et l’utiliser sans aide sont vérifiés séparément."/>
   <p className="mb-4 text-sm text-muted-foreground">Les points encore incertains seront précisés pendant tes activités. Une base acquise ne suffit pas à prouver que la suite est maîtrisée.</p>
   {data.phase==='assessing'&&<p className="mb-5">Ton diagnostic est encore en cours. <Link className="underline" href="/student/diagnostic">Reprendre le diagnostic</Link></p>}
   {data.coverage&&<p className="mb-5 text-sm text-muted-foreground">{data.coverage.supportedSkillCount} points peuvent être évalués actuellement ; les questions pour {data.coverage.deferredSkillCount} autres points restent à venir.</p>}
