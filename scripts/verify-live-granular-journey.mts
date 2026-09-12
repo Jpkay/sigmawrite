@@ -1,3 +1,4 @@
+import {retryQaRead} from "./lib/retry-qa-read";
 import {playVerifiedAudio} from "./lib/play-verified-audio";
 /** Explicit live QA runner: resumes an existing technical test account, submits
  * deliberately mixed answers using actual browser time, then verifies results,
@@ -51,13 +52,13 @@ try {
  await context.addCookies([...cookies].map(([name,value])=>({name,value,domain:new URL(base).hostname,path:'/',secure:true,sameSite:'Lax' as const})));
  const page=await context.newPage();const state:{view:AssessmentView|null}={view:null};const errors:string[]=[];
  page.on('pageerror',error=>errors.push(error.message));
- const release=await admin.from('granular_assessment_releases').select('id,bundle').eq('release_key',releaseKey).single();if(release.error)throw release.error;
+ const release=await retryQaRead(() => admin.from('granular_assessment_releases').select('id,bundle').eq('release_key',releaseKey).single());if(release.error)throw release.error;
  const bundle=release.data.bundle as AssessmentBundle; const bank=bundle.bank;
  const waitView=async(predicate:(view:AssessmentView)=>boolean,timeout=60000)=>{
   const until=Date.now()+timeout;
   while(Date.now()<until){
    if(errors.length)throw Error(errors.join('; '));
-   const row=await admin.from('granular_assessment_sessions').select('id,student_id,release_id,state').eq('student_id',credentials.studentId).eq('release_id',release.data.id).maybeSingle();if(row.error)throw row.error;
+   const row=await retryQaRead(() => admin.from('granular_assessment_sessions').select('id,student_id,release_id,state').eq('student_id',credentials.studentId).eq('release_id',release.data.id).maybeSingle());if(row.error)throw row.error;
    if(row.data){state.view=publicAssessmentView({id:row.data.id,studentId:row.data.student_id,releaseId:row.data.release_id,state:row.data.state},bundle);
     writeFileSync(`${outputPrefix}-progress.json`,JSON.stringify({sessionId:state.view.sessionId,phase:state.view.phase,answered:state.view.answeredCount,remainingSeconds:state.view.remainingSeconds,at:new Date().toISOString()}),{mode:0o600});
     if(predicate(state.view))return state.view;
@@ -96,7 +97,7 @@ try {
   await page.getByRole('button',{name:'Valider',exact:true}).click();
   current=await waitView(v=>v.answeredCount>count||v.phase==='learning');
   if(current.answeredCount>count){
-   const row=await admin.from('granular_assessment_sessions').select('state').eq('id',current.sessionId).single();if(row.error)throw row.error;
+   const row=await retryQaRead(() => admin.from('granular_assessment_sessions').select('state').eq('id',current.sessionId).single());if(row.error)throw row.error;
    const observation=row.data.state.observations.find((o:{itemId:string})=>o.itemId===question.id);
    if(!observation||observation.correct!==wantCorrect)throw Error('Unexpected persisted grading');
    submitted++;console.log(JSON.stringify({answered:current.answeredCount,skillId:skill.id,correct:wantCorrect,remainingSeconds:current.remainingSeconds}));
@@ -105,7 +106,7 @@ try {
  if(current.phase!=='learning'||current.results.length!==bundle.assessment.skills.length||!current.learningActivities.length)throw Error('Missing final skill map or pathway');
  await page.reload();await page.getByRole('heading',{name:'Tes acquis et tes prochaines étapes',exact:true}).waitFor();
  current=await waitView(v=>v.phase==='learning');
- const final=await admin.from('granular_assessment_sessions').select('state').eq('id',current.sessionId).single();if(final.error)throw final.error;
+ const final=await retryQaRead(() => admin.from('granular_assessment_sessions').select('state').eq('id',current.sessionId).single());if(final.error)throw final.error;
  const summary={sessionId:current.sessionId,releaseId:release.data.id,scope:expectedScope,answers:current.answeredCount,correct:final.data.state.observations.filter((o:{correct:boolean})=>o.correct).length,activeSeconds:final.data.state.activeSeconds,completionReason:final.data.state.completionReason,results:current.results.length,activities:current.learningActivities.length,reloadPreserved:true,profile:profile==='foundational-contrast'?'Existing history retained. Answer policy: respond correctly to ch or simple written-syllable items if presented; answer most short-reading items correctly and other items incorrectly. This policy does not claim those features were actually presented. Technical QA, not a calibrated student profile.':'Existing history retained; subsequent compound-form responses deliberately wrong and every fifth other response wrong. Technical QA, not a calibrated student profile.'};
  writeFileSync(`${outputPrefix}-results.json`,JSON.stringify(summary,null,2),{mode:0o600});console.log('RESULTS_PASS',JSON.stringify(summary));
  if(current.learningCheck)throw Error('Finish or inspect existing independent check before this teaching test');
@@ -124,7 +125,7 @@ try {
   await playVerifiedAudio(page,question.audio);
   await page.getByRole('button',{name:'Valider',exact:true}).click();
   current=await waitView(v=>!v.learningCheck);
-  const saved=await admin.from('granular_assessment_sessions').select('state').eq('id',current.sessionId).single();if(saved.error)throw saved.error;
+  const saved=await retryQaRead(() => admin.from('granular_assessment_sessions').select('state').eq('id',current.sessionId).single());if(saved.error)throw saved.error;
   if(!saved.data.state.refinements.some((r:{itemId:string;correct:boolean})=>r.itemId===question.id&&r.correct===false))throw Error('Failed initial check was not saved correctly');
   initialChecks.push({skillId:activity.skillId,questionId:question.id,correct:false});
   writeFileSync(`${outputPrefix}-initial-checks.json`,JSON.stringify({scenario:'Additional technical QA scenario: intentionally wrong answers to the proposed checks after the completed diagnostic.',initialChecks},null,2),{mode:0o600});
@@ -138,7 +139,7 @@ try {
  }
  const contentId=current.teaching!.contentId;
  const lesson=bundle.teachingContent!.find(l=>l.id===contentId)!;
- const before=await admin.from('granular_assessment_sessions').select('state').eq('id',current.sessionId).single();if(before.error)throw before.error;
+ const before=await retryQaRead(() => admin.from('granular_assessment_sessions').select('state').eq('id',current.sessionId).single());if(before.error)throw before.error;
  const evidenceBefore=JSON.stringify(before.data.state.observations);
  if(current.teaching!.phase==='lesson'){
   await page.getByRole('button',{name:'À moi d’essayer',exact:true}).click();
@@ -160,7 +161,7 @@ try {
   await page.getByRole('button',{name:index+1===current.teaching!.totalExercises?'Terminer l’entraînement':'Exercice suivant',exact:true}).click();
   current=await waitView(v=>!v.teaching||v.teaching.exerciseIndex>index);
  }
- const after=await admin.from('granular_assessment_sessions').select('state').eq('id',current.sessionId).single();if(after.error)throw after.error;
+ const after=await retryQaRead(() => admin.from('granular_assessment_sessions').select('state').eq('id',current.sessionId).single());if(after.error)throw after.error;
  if(!after.data.state.completedTeachingIds.includes(contentId))throw Error('Completed lesson not saved');
  if(JSON.stringify(after.data.state.observations)!==evidenceBefore)throw Error('Guided practice altered unaided diagnostic evidence');
  await page.reload();current=await waitView(v=>v.phase==='learning'&&!v.teaching);
@@ -177,7 +178,7 @@ try {
  await playVerifiedAudio(page,question.audio);
  await page.getByRole('button',{name:'Valider',exact:true}).click();
  current=await waitView(v=>!v.learningCheck);
- const refined=await admin.from('granular_assessment_sessions').select('state').eq('id',current.sessionId).single();if(refined.error)throw refined.error;
+ const refined=await retryQaRead(() => admin.from('granular_assessment_sessions').select('state').eq('id',current.sessionId).single());if(refined.error)throw refined.error;
  if(!refined.data.state.refinements.some((o:{itemId:string;skillId:string;correct:boolean})=>o.itemId===question.id&&o.skillId===skillId&&o.correct))throw Error('Independent evidence not saved');
  await page.reload();await page.getByRole('heading',{name:'Tes acquis et tes prochaines étapes',exact:true}).waitFor();
  const learningSummary={sessionId:current.sessionId,contentId,skillId,initialChecks,practiceAnswers,independentQuestion:question.id,guidedEvidenceIsolated:true,refinementSaved:true,reloadPassed:true};
