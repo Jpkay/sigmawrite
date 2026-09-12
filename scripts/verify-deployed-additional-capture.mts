@@ -25,8 +25,9 @@ try{
  await goto('/student/reference/verbe');await page.getByRole('heading',{name:'Tables de conjugaison',exact:true}).waitFor();
  for(const verb of FREQUENT_VERBS)await page.getByRole('link',{name:verb,exact:true}).waitFor();
  const indexRows=await rows('reference:verb-index');if(!indexRows.some(r=>FREQUENT_VERBS.every(v=>r.text_fragments.includes(v))))throw Error('Verb index source incomplete');
- const lesson=MICRO_LESSONS.cause_consequence;
- await goto('/student/repair/cause_consequence');await page.getByRole('heading',{name:lesson.title,exact:true}).waitFor();
+ const skillKey=process.argv[4]??'cause_consequence';if(!Object.hasOwn(MICRO_LESSONS,skillKey))throw Error('Unknown repair skill');const lesson=MICRO_LESSONS[skillKey];
+ const beforeRepair=await rows('legacy:repair');const priorRepairSource=beforeRepair.some(r=>r.text_fragments.includes(lesson.explanationFr));
+ await goto('/student/repair/'+encodeURIComponent(skillKey));await page.getByRole('heading',{name:lesson.title,exact:true}).waitFor();
  await page.getByText(lesson.explanationFr,{exact:true}).waitFor();
  const repairRows=await rows('legacy:repair');if(!repairRows.some(r=>[lesson.explanationFr,...lesson.questions.flatMap(q=>[q.prompt,q.explanationFr,...q.choices]),lesson.returnToText.explanationFr].every(t=>r.text_fragments.includes(t))))throw Error('Repair source incomplete');
  await page.getByRole('button',{name:/^Je m.entraîne$/}).click();
@@ -37,6 +38,6 @@ try{
  await page.getByRole('button',{name:/Suivant/}).click();await page.getByText(lesson.questions[1].prompt,{exact:true}).waitFor();
  await page.reload();await page.getByText(lesson.explanationFr,{exact:true}).waitFor();
  if(errors.length)throw Error(errors.join('; '));
- const report={base,studentId:c.studentId,verbIndexVisibleAndJournaled:true,repairExplanationVisibleAndJournaled:true,repairQuestionAndCorrectionWork:true,repairReloadWorks:true,indexRecords:indexRows.length,repairRecords:repairRows.length,pageErrors:errors,scope:'Route delivery and interaction QA; no mastery or complete-history claim. Writing task and feedback deployed QA remains pending.'};
- writeFileSync('docs/diagnostic/additional-capture-browser-2026-09-12.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));
+ const report={base,studentId:c.studentId,verbIndexVisibleAndJournaled:true,repairExplanationVisibleAndJournaled:true,skillKey,newRepairSourceRecorded:!priorRepairSource,repairQuestionAndCorrectionWork:true,repairReloadWorks:true,indexRecords:indexRows.length,repairRecords:repairRows.length,pageErrors:errors,scope:'Route delivery and interaction QA; no mastery or complete-history claim. Writing task and feedback deployed QA remains pending.'};
+ writeFileSync(process.argv[3]??'docs/diagnostic/additional-capture-browser-2026-09-12.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));
 }finally{await browser.close();}
