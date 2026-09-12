@@ -446,20 +446,20 @@
   "status": "parallel_review_release_preparation",
   "reviewOwner": "product_owner",
   "authorization": "product-owner-request-2026-09-11",
-  "policyChecksum": "sha256:8d90a4df7f8533de4fe1326a65da8cdd513e8da90a0ce0d85c8ddef06fb4dd44",
+  "policyChecksum": "sha256:d9ba0d98e026af9b08845af7b3cff4f20eecb547806e4060bb3f5cad75d7e4d2",
   "summary": {
     "teachingScopeTargets": 360,
-    "teachingPrerequisiteGapTargets": 13,
-    "teachingLessons": 340,
-    "teachingTargetsWithPools": 326,
-    "teachingTargetsWithFreshChecks": 326,
-    "guidedExercises": 1894,
-    "selectedPendingOrRepairedQuestions": 6713,
+    "teachingPrerequisiteGapTargets": 9,
+    "teachingLessons": 344,
+    "teachingTargetsWithPools": 330,
+    "teachingTargetsWithFreshChecks": 330,
+    "guidedExercises": 1910,
+    "selectedPendingOrRepairedQuestions": 6777,
     "canonicalReviewedQuestions": 238,
-    "mappedQuestions": 6928,
+    "mappedQuestions": 6992,
     "targets": 542,
-    "allocatedTargets": 347,
-    "incompleteTargets": 195,
+    "allocatedTargets": 351,
+    "incompleteTargets": 191,
     "fullPoolCoverage": false,
     "unsupportedEvidenceItemKeys": [
       "local-reading-v1:inferer_chronologie_implicite:receptive:foundation",
@@ -23560,22 +23560,6 @@
         "usage": "initial"
       },
       {
-        "id": "local-spelling-gap-v1:accorder_sujet_verbe_ecrit:receptive:core",
-        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:separated",
-        "mode": "recognition",
-        "contextId": "sentence:boîte-crayons",
-        "difficulty": 0.5,
-        "expectedSeconds": 30,
-        "guessProbability": 0.3333333333333333,
-        "textualSupportAssessed": false,
-        "materialKeys": [],
-        "assessedMaterialKeys": [],
-        "contrastingErrorKeys": [],
-        "negativeExampleAssessed": false,
-        "evidenceFeatures": [],
-        "usage": "initial"
-      },
-      {
         "id": "local-spelling-gap-v1:reviser_orthographe_grammaticale_paragraphe:receptive:foundation",
         "skillId": "reviser_orthographe_grammaticale_paragraphe::reading-receptive",
         "mode": "recognition",
@@ -24367,6 +24351,1478 @@
         "textType": "narrative",
         "evidenceFeatures": [],
         "usage": "initial"
+      },
+      {
+        "id": "v3-subject-verb-recognition:adjacent-1",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:adjacent-1",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:2042604a8627e6b062ae18fba92f275066c8f349eb9ed1e0c1c4cf64fead0234"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:2042604a8627e6b062ae18fba92f275066c8f349eb9ed1e0c1c4cf64fead0234"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-subject-verb-recognition:adjacent-2",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:adjacent-2",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:5dad91d7d382913aa367cd059f6b93f5f2d74fcc462791451ffc1fa19807f495"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:5dad91d7d382913aa367cd059f6b93f5f2d74fcc462791451ffc1fa19807f495"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-subject-verb-recognition:adjacent-3",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:adjacent-3",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:022eaa3cb0b4cf2c795d26da292c23819ab146d2b8cd1888770be1a1960d3722"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:022eaa3cb0b4cf2c795d26da292c23819ab146d2b8cd1888770be1a1960d3722"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-subject-verb-recognition:adjacent-4",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:adjacent-4",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:b40fc8446b508b15a5b1c1cc0c285f7071a4878d5928f1db3122ebc694d9c4e6"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:b40fc8446b508b15a5b1c1cc0c285f7071a4878d5928f1db3122ebc694d9c4e6"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-subject-verb-recognition:adjacent-5",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:adjacent-5",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:396a101dd76fba7ad5c9a9f677cd6fde3e8a05f13393b66f948f0712763cdc62"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:396a101dd76fba7ad5c9a9f677cd6fde3e8a05f13393b66f948f0712763cdc62"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-subject-verb-recognition:adjacent-6",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:adjacent-6",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:5c1d46ec305a6a2b5897f38a867a2d505e8050b9ad82eeb3e74600eaf06606b2"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:5c1d46ec305a6a2b5897f38a867a2d505e8050b9ad82eeb3e74600eaf06606b2"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-subject-verb-recognition:adjacent-7",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:adjacent-7",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:d359389c31a3c44a2055fd38d36a1157397e463f09a848b8259b2a99485c5c8d"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:d359389c31a3c44a2055fd38d36a1157397e463f09a848b8259b2a99485c5c8d"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-subject-verb-recognition:adjacent-8",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:adjacent-8",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:e774bc1a3fe16026e2c5c2ccf4b5b316afb569d89b26546bf670675375389939"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:e774bc1a3fe16026e2c5c2ccf4b5b316afb569d89b26546bf670675375389939"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-subject-verb-recognition:adjacent-9",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:adjacent-9",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:f93422f5c0996122b38822942b4ce4ff5500da9772dea52b5c481040adc8cc79"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:f93422f5c0996122b38822942b4ce4ff5500da9772dea52b5c481040adc8cc79"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-subject-verb-recognition:adjacent-10",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:adjacent-10",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:6a474a76a59cda5b5999fef328fbe75a7183847c2e181c46206eb241e9f06be2"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:6a474a76a59cda5b5999fef328fbe75a7183847c2e181c46206eb241e9f06be2"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-subject-verb-recognition:adjacent-11",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:adjacent-11",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:34da26df0a81d8c42e8f226d7076ce4e1c3521893ae01922d15e1961e7bb2ef5"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:34da26df0a81d8c42e8f226d7076ce4e1c3521893ae01922d15e1961e7bb2ef5"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-subject-verb-recognition:adjacent-12",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:adjacent-12",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:55e569818085f6d569e7bce015e9eaf978a4f884b5602205aa0f31b29be59db9"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:55e569818085f6d569e7bce015e9eaf978a4f884b5602205aa0f31b29be59db9"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-subject-verb-recognition:adjacent-13",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:adjacent-13",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:cdee2ec94a82a5467bcbfc7cfcbca99ffacb051af2ba6bd85325c9b591475daf"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:cdee2ec94a82a5467bcbfc7cfcbca99ffacb051af2ba6bd85325c9b591475daf"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-subject-verb-recognition:adjacent-14",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:adjacent-14",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:78401ce71b675f8233ad9c8842d6394d48934d3d2aeac317da398a348019cc19"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:78401ce71b675f8233ad9c8842d6394d48934d3d2aeac317da398a348019cc19"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-subject-verb-recognition:adjacent-15",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:adjacent-15",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:8e4a7746c5159b6a0fbaf67ace1e6e38e90ed268c1d9b3e9a848dab8dfc2df09"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:8e4a7746c5159b6a0fbaf67ace1e6e38e90ed268c1d9b3e9a848dab8dfc2df09"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-subject-verb-recognition:adjacent-16",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:adjacent-16",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:03c50260dc390bb684108933d865379eff532a7b985112e6d6bcc4c26ce46475"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:03c50260dc390bb684108933d865379eff532a7b985112e6d6bcc4c26ce46475"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-subject-verb-recognition:separated-1",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:separated",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:separated-1",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:913392e3e5eb17035f7fba4f161cceb75c2698797ad9c0dd095d8711befc7e52"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:913392e3e5eb17035f7fba4f161cceb75c2698797ad9c0dd095d8711befc7e52"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-subject-verb-recognition:separated-2",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:separated",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:separated-2",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:2cf63446321bf7df93d51f11e7963d4ab8152fc7314f1c41dd414bebac1b0da4"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:2cf63446321bf7df93d51f11e7963d4ab8152fc7314f1c41dd414bebac1b0da4"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-subject-verb-recognition:separated-3",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:separated",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:separated-3",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:179cd79d67db76a7d275c39b34bb3b2a2fbc9c869389b4d9993f34e7d1db14bf"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:179cd79d67db76a7d275c39b34bb3b2a2fbc9c869389b4d9993f34e7d1db14bf"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-subject-verb-recognition:separated-4",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:separated",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:separated-4",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:573ff4747f2a49cfa6ef3e96b9b89221f6f3aa9b4d35bb873a7325400b48981e"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:573ff4747f2a49cfa6ef3e96b9b89221f6f3aa9b4d35bb873a7325400b48981e"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-subject-verb-recognition:separated-5",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:separated",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:separated-5",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:f8fa15ef9ae46a9abc2548d996badd3d396b3db70295069ed983d655b2aac67d"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:f8fa15ef9ae46a9abc2548d996badd3d396b3db70295069ed983d655b2aac67d"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-subject-verb-recognition:separated-6",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:separated",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:separated-6",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:3274148bc534d42b19b3c1910051892a60d0bf36847dbb8606dcab3d1c722c99"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:3274148bc534d42b19b3c1910051892a60d0bf36847dbb8606dcab3d1c722c99"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-subject-verb-recognition:separated-7",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:separated",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:separated-7",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:b6a4e311576db0cd644ef3fe315125e300cd84d02d29732fb85d0d6904c7d76b"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:b6a4e311576db0cd644ef3fe315125e300cd84d02d29732fb85d0d6904c7d76b"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-subject-verb-recognition:separated-8",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:separated",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:separated-8",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:11c53f555ad9c5d924b751336007082ff40df2db3dbbe6a7968d4a480da3335e"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:11c53f555ad9c5d924b751336007082ff40df2db3dbbe6a7968d4a480da3335e"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-subject-verb-recognition:separated-9",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:separated",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:separated-9",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:02257896ea47fc1d6be1070ae6ae950177b850900c960a6c0d101972008323ca"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:02257896ea47fc1d6be1070ae6ae950177b850900c960a6c0d101972008323ca"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-subject-verb-recognition:separated-10",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:separated",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:separated-10",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:f306fd207cf1148b3ce8b4229e0ed6f1bcc86380e49a7e5fd05cb7f3375df721"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:f306fd207cf1148b3ce8b4229e0ed6f1bcc86380e49a7e5fd05cb7f3375df721"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-subject-verb-recognition:separated-11",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:separated",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:separated-11",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:63cb3c08946bd4905fb1ec1abf5993bc13883322c23a92191715710a8a7ac781"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:63cb3c08946bd4905fb1ec1abf5993bc13883322c23a92191715710a8a7ac781"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-subject-verb-recognition:separated-12",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:separated",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:separated-12",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:bf9a8381abdbd582a5a9cd09ab5ebc19603293af20c596c95e873ab9a8795322"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:bf9a8381abdbd582a5a9cd09ab5ebc19603293af20c596c95e873ab9a8795322"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-subject-verb-recognition:separated-13",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:separated",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:separated-13",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:6f68c940090efc00a528fd62b13956a31086961bdfe079b2eb3c29a3ad925a35"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:6f68c940090efc00a528fd62b13956a31086961bdfe079b2eb3c29a3ad925a35"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-subject-verb-recognition:separated-14",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:separated",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:separated-14",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:65e81ce5cfa0f2fca50cfc8f7f8944a235c53a764e08389100f69a31853042a7"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:65e81ce5cfa0f2fca50cfc8f7f8944a235c53a764e08389100f69a31853042a7"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-subject-verb-recognition:separated-15",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:separated",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:separated-15",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:2f1b8116c7ab064ea219552442016cbce1f53e206fa6aa2b89bb123c7b30c663"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:2f1b8116c7ab064ea219552442016cbce1f53e206fa6aa2b89bb123c7b30c663"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-subject-verb-recognition:separated-16",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:separated",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:separated-16",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:eb9811d42ac9bad31118596d97597a7ea167a381c05ab088588686a689ce7953"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:eb9811d42ac9bad31118596d97597a7ea167a381c05ab088588686a689ce7953"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-subject-verb-recognition:inverted-1",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:inverted",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:inverted-1",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:b32f057863f511240668a3783f3e762d87bb388ef1a8bc4ddcacb678d8b75477"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:b32f057863f511240668a3783f3e762d87bb388ef1a8bc4ddcacb678d8b75477"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-subject-verb-recognition:inverted-2",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:inverted",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:inverted-2",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:af4c24e682f0519e65985d2e42ff77b6fcc24497f91b60dc4fc48bf276f55dca"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:af4c24e682f0519e65985d2e42ff77b6fcc24497f91b60dc4fc48bf276f55dca"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-subject-verb-recognition:inverted-3",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:inverted",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:inverted-3",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:6e9c20c4fdf348eb7efb20c12ba457453928b26548961119fac8c24a82ce7463"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:6e9c20c4fdf348eb7efb20c12ba457453928b26548961119fac8c24a82ce7463"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-subject-verb-recognition:inverted-4",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:inverted",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:inverted-4",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:863fa9172e3ce0e33b84a71deff05e8ea5d5bfae2181b22ad354104c01956d3d"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:863fa9172e3ce0e33b84a71deff05e8ea5d5bfae2181b22ad354104c01956d3d"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-subject-verb-recognition:inverted-5",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:inverted",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:inverted-5",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:fa2d47f055148af90afa02fbeeca752cd135f6694e785747598c6f3987265454"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:fa2d47f055148af90afa02fbeeca752cd135f6694e785747598c6f3987265454"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-subject-verb-recognition:inverted-6",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:inverted",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:inverted-6",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:37e153f7df56b22dd42c2e58271466a13b521beace6e4fdbe6024d70266ed931"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:37e153f7df56b22dd42c2e58271466a13b521beace6e4fdbe6024d70266ed931"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-subject-verb-recognition:inverted-7",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:inverted",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:inverted-7",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:c07af7e1b622f75233d2bb942c98f34a74c078ce6ff9011a0ae13bcf2cd89230"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:c07af7e1b622f75233d2bb942c98f34a74c078ce6ff9011a0ae13bcf2cd89230"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-subject-verb-recognition:inverted-8",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:inverted",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:inverted-8",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:847ee32b94def2155cfe80fea5cddf076d0f41493531042ef97dbf9db9827a03"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:847ee32b94def2155cfe80fea5cddf076d0f41493531042ef97dbf9db9827a03"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-subject-verb-recognition:inverted-9",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:inverted",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:inverted-9",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:4e00f41fc169c270794e8318e5e1b76c48340996a57b5728afefc23f221779ea"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:4e00f41fc169c270794e8318e5e1b76c48340996a57b5728afefc23f221779ea"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-subject-verb-recognition:inverted-10",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:inverted",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:inverted-10",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:700e91647f091770ddfa4555c6ab21912c956c1b1c6dbd746f62880b5f8fed99"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:700e91647f091770ddfa4555c6ab21912c956c1b1c6dbd746f62880b5f8fed99"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-subject-verb-recognition:inverted-11",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:inverted",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:inverted-11",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:cab0242f40cfa13b593549f4882a3808c67e7512a7eceaf86f3619899b0af0b0"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:cab0242f40cfa13b593549f4882a3808c67e7512a7eceaf86f3619899b0af0b0"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-subject-verb-recognition:inverted-12",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:inverted",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:inverted-12",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:f72428412271c3ca6f1791a7542c19b9d36a286fd100df19b478af1383a6cab8"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:f72428412271c3ca6f1791a7542c19b9d36a286fd100df19b478af1383a6cab8"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-subject-verb-recognition:inverted-13",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:inverted",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:inverted-13",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:112a505a0bbd7a7d31305e0773ef6f53b3679f37d02d067bccf9e06cc5582fc0"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:112a505a0bbd7a7d31305e0773ef6f53b3679f37d02d067bccf9e06cc5582fc0"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-subject-verb-recognition:inverted-14",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:inverted",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:inverted-14",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:1979190c62cd039af0de322234534cca46302d87b96e7878f6be85fc3e74dd07"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:1979190c62cd039af0de322234534cca46302d87b96e7878f6be85fc3e74dd07"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-subject-verb-recognition:inverted-15",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:inverted",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:inverted-15",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:b9695dfd874ef5475c18f9e2494d2b0e0551d32b74c86dcda6b2b7b51b7a4f64"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:b9695dfd874ef5475c18f9e2494d2b0e0551d32b74c86dcda6b2b7b51b7a4f64"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-subject-verb-recognition:inverted-16",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:inverted",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:inverted-16",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:51ce197a6ec10324e7e72689919a14c6122388e051261603b5a0f6d96745abc3"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:51ce197a6ec10324e7e72689919a14c6122388e051261603b5a0f6d96745abc3"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-subject-verb-recognition:coordinated-1",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:coordinated",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:coordinated-1",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:3bcd3653f9264be3977371381443c5eb6f344688d9d8573c649c7a13169e0e92"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:3bcd3653f9264be3977371381443c5eb6f344688d9d8573c649c7a13169e0e92"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-subject-verb-recognition:coordinated-2",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:coordinated",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:coordinated-2",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:ba19f214790ce020a580b8281d633f7ab9c189a15e29c44a863b0b4418a9d603"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:ba19f214790ce020a580b8281d633f7ab9c189a15e29c44a863b0b4418a9d603"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-subject-verb-recognition:coordinated-3",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:coordinated",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:coordinated-3",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:0753893b1e0fa2ebcf6d441b658c00c23d7a35816cb4d1e97f029ae470476a8a"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:0753893b1e0fa2ebcf6d441b658c00c23d7a35816cb4d1e97f029ae470476a8a"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-subject-verb-recognition:coordinated-4",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:coordinated",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:coordinated-4",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:4a16c4e60840f5f5b6cc01eca277e62360d3fe5059865ed6137d5ff9d4c1c310"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:4a16c4e60840f5f5b6cc01eca277e62360d3fe5059865ed6137d5ff9d4c1c310"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-subject-verb-recognition:coordinated-5",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:coordinated",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:coordinated-5",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:a99c20e062233394e9209fb78238a4918eb254177108da089569787b36ddf455"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:a99c20e062233394e9209fb78238a4918eb254177108da089569787b36ddf455"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-subject-verb-recognition:coordinated-6",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:coordinated",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:coordinated-6",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:b669aa27b08a475716d2a4dfbacc1b849d961ab3fbae01ab1b26fe3dc8b212b4"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:b669aa27b08a475716d2a4dfbacc1b849d961ab3fbae01ab1b26fe3dc8b212b4"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-subject-verb-recognition:coordinated-7",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:coordinated",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:coordinated-7",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:03f2f10b30feed60c1dbb53d789fa620cec6541a52b66210bb0407a44a6b0efc"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:03f2f10b30feed60c1dbb53d789fa620cec6541a52b66210bb0407a44a6b0efc"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-subject-verb-recognition:coordinated-8",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:coordinated",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:coordinated-8",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:0bbd5e7e9fb18497acc24a169dcb46543d5ffdde9c7316c0418864032aa4f33e"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:0bbd5e7e9fb18497acc24a169dcb46543d5ffdde9c7316c0418864032aa4f33e"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-subject-verb-recognition:coordinated-9",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:coordinated",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:coordinated-9",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:812eb825cd8e4d1100d58597addd7e3526e85787df7a49b55476184b5fc06140"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:812eb825cd8e4d1100d58597addd7e3526e85787df7a49b55476184b5fc06140"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-subject-verb-recognition:coordinated-10",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:coordinated",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:coordinated-10",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:8dfec0a7bb5e8c7c097cbea059814a3476e59a33ea3de80181662d0de6a0289b"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:8dfec0a7bb5e8c7c097cbea059814a3476e59a33ea3de80181662d0de6a0289b"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-subject-verb-recognition:coordinated-11",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:coordinated",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:coordinated-11",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:1c186cfa0921176ee23ee081ebdc017cc3cb1e622c847aad38a8939c9ba06ec3"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:1c186cfa0921176ee23ee081ebdc017cc3cb1e622c847aad38a8939c9ba06ec3"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-subject-verb-recognition:coordinated-12",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:coordinated",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:coordinated-12",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:c22d82817cc95a24943f954db2af41a7a9b612415568de695c019ba8df9697b5"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:c22d82817cc95a24943f954db2af41a7a9b612415568de695c019ba8df9697b5"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-subject-verb-recognition:coordinated-13",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:coordinated",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:coordinated-13",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:8d4ea3cbe49127f14510ae39286d926abb5e99dba675947a68c2fda222b8f14a"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:8d4ea3cbe49127f14510ae39286d926abb5e99dba675947a68c2fda222b8f14a"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "initial"
+      },
+      {
+        "id": "v3-subject-verb-recognition:coordinated-14",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:coordinated",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:coordinated-14",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:c9d819b9818a6ae9c867170df6dac2618ed3bfee089722ac49a9e78367d96487"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:c9d819b9818a6ae9c867170df6dac2618ed3bfee089722ac49a9e78367d96487"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-subject-verb-recognition:coordinated-15",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:coordinated",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:coordinated-15",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:06b446c46872f9a1c6a52a068eee5801f58535775af6b867db852732ab8245fc"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:06b446c46872f9a1c6a52a068eee5801f58535775af6b867db852732ab8245fc"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
+      },
+      {
+        "id": "v3-subject-verb-recognition:coordinated-16",
+        "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:coordinated",
+        "mode": "recognition",
+        "contextId": "subject-verb-recognition:coordinated-16",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "guessProbability": 0.3333333333333333,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "word:sha256:633ad3c2b8201a2f8c59d8dd7204ae1159bb3dc4f5a73d4667fac5ed77f63578"
+        ],
+        "assessedMaterialKeys": [
+          "word:sha256:633ad3c2b8201a2f8c59d8dd7204ae1159bb3dc4f5a73d4667fac5ed77f63578"
+        ],
+        "contrastingErrorKeys": [
+          "wrong-number",
+          "wrong-person"
+        ],
+        "negativeExampleAssessed": false,
+        "evidenceFeatures": [],
+        "usage": "learning"
       },
       {
         "id": "v3-written-adjective:recognition-1",
@@ -155827,7 +157283,7 @@
       }
     ],
     "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
-    "bankChecksum": "sha256:db44ba52beaac2a504f86d85a3474b9d1b10086aad069feaeb12d3a3dd789505",
+    "bankChecksum": "sha256:ac2cfe6e32efc4fe0f33ce49c6603c93c9da872e301971dc92bac45ada7e9a2b",
     "unsupportedEvidenceItemKeys": [
       "local-reading-v1:inferer_chronologie_implicite:receptive:foundation",
       "local-reading-v1:inferer_chronologie_implicite:receptive:core",
@@ -155850,7 +157306,7 @@
       "mode": "parallel_review",
       "authorization": "product-owner-request-2026-09-11",
       "reviewOwner": "product_owner",
-      "bankChecksum": "sha256:db44ba52beaac2a504f86d85a3474b9d1b10086aad069feaeb12d3a3dd789505",
+      "bankChecksum": "sha256:ac2cfe6e32efc4fe0f33ce49c6603c93c9da872e301971dc92bac45ada7e9a2b",
       "questionChecksums": {
         "review-draft-v1:construction_pronom_relatif:controlled_production:foundation": "sha256:2731933f71f4a1408115b2457d07ee69469fdac2e7a6e57fb69c112e2a0c32dc",
         "review-draft-v1:construction_pronom_relatif:controlled_production:core": "sha256:d8b92f78c30ddfa7d1598405eb512dce2f2b476fdd151dd3a79c9476a729cc56",
@@ -155877,6 +157333,70 @@
         "local-reading-v1:inferer_chronologie_implicite:receptive:core": "sha256:1506b1e15cc6621d9641d32bc5492dedc8722adab2c2817e2d6275c4e3368d04",
         "local-reading-v1:inferer_chronologie_implicite:receptive:stretch": "sha256:7e58f0641d4689f6fc76075593b096545283f8b2420fe4b8993ef8b84c41e3d0",
         "local-reading-v1:comparer_points_de_vue:controlled_production:foundation": "sha256:ae4349e0976e050d52019208e3ff5a7e8d70685ac640242aadca852c6bed8e9d",
+        "v3-subject-verb-recognition:adjacent-1": "sha256:4f45533f99c2b12b98fd972b9f7dec6e516d52da67ea12bd7ba02c977472af38",
+        "v3-subject-verb-recognition:adjacent-2": "sha256:aaa15fc205f50ccd3b76899ceb669db469c23fabff66c491b22d454ed10ea1f1",
+        "v3-subject-verb-recognition:adjacent-3": "sha256:64bd749fa1c5596e13bb8f801a10009814991fa4fb17c245369dbfa839d06c48",
+        "v3-subject-verb-recognition:adjacent-4": "sha256:3e70464616e164c54bbed726a6ff5332b8b8affc30fc4ca51e0d2881a56140ce",
+        "v3-subject-verb-recognition:adjacent-5": "sha256:c2674263b910423875f366c674a5367d7a47c68db8ac7caac24a4ca04d40aa86",
+        "v3-subject-verb-recognition:adjacent-6": "sha256:7d4863dd337fa0b7be8067a919c160dbc54178a5d67a83f5cf773a04d1fd99ff",
+        "v3-subject-verb-recognition:adjacent-7": "sha256:241b372229ca77bf01cf6262bca0a45f43fc09a3cc54294d1aaba9f661ebc494",
+        "v3-subject-verb-recognition:adjacent-8": "sha256:9e7745fd1d67038e3bb3834045e3e21f268c6a21a453375c56d7b3f48dcd91e0",
+        "v3-subject-verb-recognition:adjacent-9": "sha256:927f010bc5544056326bc1156de996370762d300dbebf5709f0b00120ec3c986",
+        "v3-subject-verb-recognition:adjacent-10": "sha256:2fe60051f31316906cdb5b8b4e219d4917f042d6816b12fb7db723f8cb883d1a",
+        "v3-subject-verb-recognition:adjacent-11": "sha256:94d284d5a1594ed05249e3650dc51958a27aad888da54f6f81d3bab04eeec053",
+        "v3-subject-verb-recognition:adjacent-12": "sha256:f0304405f7d8fe66d48082e3730ddbc8622be053fd538caa6751772ac126b4f0",
+        "v3-subject-verb-recognition:adjacent-13": "sha256:e1a0cb0b8ff4db47fbce437d962dd5ad9d975e56f5bdd566795ca79b022c8d4d",
+        "v3-subject-verb-recognition:adjacent-14": "sha256:3df2d0ed4a0580120f9cd6112ec662c3e433c123c1ce98f74802942b6f147d38",
+        "v3-subject-verb-recognition:adjacent-15": "sha256:e672db0e37a75676a2085ba9ed6fdd51c83923deda846d132b27bd62badf964c",
+        "v3-subject-verb-recognition:adjacent-16": "sha256:6a4becf11f6727f96dbe1d4c56d13392022b344f675ce66d6ed9a49be03262db",
+        "v3-subject-verb-recognition:separated-1": "sha256:8f35e7f8fe937bfd9e048d82162fbc569d44ece674176b8ab65ee7dd6549d471",
+        "v3-subject-verb-recognition:separated-2": "sha256:5b44fec940126e647f5eb676d338ea68d9fb1664451afb502f77a5f37dab4b7d",
+        "v3-subject-verb-recognition:separated-3": "sha256:2ea9c8681e0f8bc8d5bdce848e0964776fe90ad0d5b9fe7bcb232752136275ba",
+        "v3-subject-verb-recognition:separated-4": "sha256:155a39e27d7e028c82912fa813ebd9c3892f799f43bbefe8b9915f91ed87e13d",
+        "v3-subject-verb-recognition:separated-5": "sha256:65e52bada2cbbba7e87adc2d2acc7254e4f5d195e891361fb31aef0d8acee397",
+        "v3-subject-verb-recognition:separated-6": "sha256:7ed51da06662cc0bb3a0fb231cb27b9c8f4e2c08b0109854ad81145110f4240e",
+        "v3-subject-verb-recognition:separated-7": "sha256:fdd7215b8e188802081f02bdc5595a4f74d81f0e158f521b63fb78e070fbe259",
+        "v3-subject-verb-recognition:separated-8": "sha256:848e8add6d53d3246793e37efe8138bbe6103112dc838ff987687478cf81919d",
+        "v3-subject-verb-recognition:separated-9": "sha256:b447884527988ab1b67d20fca45a90fece3a802509ad4edb35a033edb3ec19fa",
+        "v3-subject-verb-recognition:separated-10": "sha256:13f875a4fdbd52af4f53102add57fe3d5f2197ab6f061911f4398400e6e3da9f",
+        "v3-subject-verb-recognition:separated-11": "sha256:bfcca07dbc6cd033fe391609a63bce64886b9bc18bc8bfe789fe6defe6c5cd35",
+        "v3-subject-verb-recognition:separated-12": "sha256:49dbabb16cfde751e104df9c966dd1b92340711b86a8e8a754657e13f7488173",
+        "v3-subject-verb-recognition:separated-13": "sha256:0d7949a7d020c4915d063bd0a54ba9d74e12f86231aece58015e7ac5a3c847be",
+        "v3-subject-verb-recognition:separated-14": "sha256:80b34e45c52310fbf02f7d3fad71dd1466b85e360a9c1a6f0d93bf59eb514913",
+        "v3-subject-verb-recognition:separated-15": "sha256:f02dadc388aa968970c6703eadee51ae0fab23f2142b92c2cf96edf98ee9ce86",
+        "v3-subject-verb-recognition:separated-16": "sha256:0539f5668934280c78e4234d3bc6d5651db18172cdc5e79d888762074aa08b46",
+        "v3-subject-verb-recognition:inverted-1": "sha256:eba5ff481b434d3933272053cbca02bc93ff8ea8862f75b01cb8977238f723fc",
+        "v3-subject-verb-recognition:inverted-2": "sha256:6c78e958539e757de11ea4c9a7d96208c14f611f65afbcb8ebf45d55d3f679fd",
+        "v3-subject-verb-recognition:inverted-3": "sha256:cf560df07802a6ddc8f395a41e20f870605a7e32c747570d7c104d93e82df889",
+        "v3-subject-verb-recognition:inverted-4": "sha256:4d396fe243d2316f85d8bed9a7d6cda7ee18a9882570fdd7644942ca913baf79",
+        "v3-subject-verb-recognition:inverted-5": "sha256:d4b8c34cfb96ac21053c23dc0e2c6a94488dac100034cc614f3094809ae316a8",
+        "v3-subject-verb-recognition:inverted-6": "sha256:cc11f1f6f536a62261df5fb2c6aacf8270fa4dc20e67dd7c77252229a983426c",
+        "v3-subject-verb-recognition:inverted-7": "sha256:84be1d42ab456c6e2f501869368a63b0d2de00132e07a8117713f0d3a0a2b400",
+        "v3-subject-verb-recognition:inverted-8": "sha256:9d5b07b71769c4b5d6a8e54c686e7e5e4b51ba332f5d22b84b95a2d57ce18221",
+        "v3-subject-verb-recognition:inverted-9": "sha256:7ecb5fb8d8452789e004f60844aca89783d250eb1c8440ccb6583d3f7dde7216",
+        "v3-subject-verb-recognition:inverted-10": "sha256:7072f7ebbb5f501f712be998f83d5152a33ec735ade3517356c5da42afa65cea",
+        "v3-subject-verb-recognition:inverted-11": "sha256:ae10b36e2e6f8be7bc1d9e582ecf4d5ac407ec47e62f6ed3534de093866f9b0a",
+        "v3-subject-verb-recognition:inverted-12": "sha256:f0df10304df486256b85556957398d9606b1c8f705b3a87a2f082435553795ae",
+        "v3-subject-verb-recognition:inverted-13": "sha256:d0e2ff08ebb75d3faa9f84c4890f3942c6aee37949e7c452bb354735249f03c3",
+        "v3-subject-verb-recognition:inverted-14": "sha256:a0ba88493da8bc246d630fcc0c922c5e7d0cd2357d81d44955942ddb1e113ef0",
+        "v3-subject-verb-recognition:inverted-15": "sha256:df39dffbc8b77b28897417b6e5907fe9efa53424aa0a7a1189c622d840997952",
+        "v3-subject-verb-recognition:inverted-16": "sha256:37073fa013e00607c50858301bea51d05bde2fa19345e92c2a5d46d17cb33073",
+        "v3-subject-verb-recognition:coordinated-1": "sha256:a3e150c2dada241cc8c9730d3b2c75a8613e6968a16002feb321af14bfced3c9",
+        "v3-subject-verb-recognition:coordinated-2": "sha256:250e0e0802e95681a98d63d7ffe94d4d4772dd1861ea01ec19a693c56863999b",
+        "v3-subject-verb-recognition:coordinated-3": "sha256:c9b19fcd7466d1ba2f231c929862fe71fe1ce90f170bd7ddf28a1e2db4613799",
+        "v3-subject-verb-recognition:coordinated-4": "sha256:297b2d027e65782018aa332e641bcb4eb903bd673525df84bdb6ab139e727384",
+        "v3-subject-verb-recognition:coordinated-5": "sha256:cefca7588733167b32aec1c248ae3999a9f2052faacc27ce9986b68ce7d17a70",
+        "v3-subject-verb-recognition:coordinated-6": "sha256:f0ab7a77bc3445198fb43e6855e7fdfa7e6502af83d0a9d73a08e37d99785f60",
+        "v3-subject-verb-recognition:coordinated-7": "sha256:adda9577abea2fd4c6982d6952b3c7ac33adb54a91808ba73ba87e9361587d17",
+        "v3-subject-verb-recognition:coordinated-8": "sha256:1d3e040ec7f6990bbff3a055e562b4cd45b9507ddb05a5c983762adba74f11d0",
+        "v3-subject-verb-recognition:coordinated-9": "sha256:bc21469103ba4d2d1634ca56faa6f5995b699f74d7ef5f130e32538cf84449b7",
+        "v3-subject-verb-recognition:coordinated-10": "sha256:516669ce61df1dd920314d89c978c2bf531527019323dbb066342a2d02f875a3",
+        "v3-subject-verb-recognition:coordinated-11": "sha256:8cea9768392474b90bb43f875d857346506fdcdb79704adf104c7da294aeddce",
+        "v3-subject-verb-recognition:coordinated-12": "sha256:a427b125f69df55b4ccc19b1aada301f983d85f16ee4c15cdf466732a4a5e7df",
+        "v3-subject-verb-recognition:coordinated-13": "sha256:809e7dc9b1322f2deb6ca17f493b281094e5b2e0bb69f305c52915cadc05a42d",
+        "v3-subject-verb-recognition:coordinated-14": "sha256:150f19fbba2ee8922c8930750a7db802bed5ce4816608b8e27e1d33e8fa5898a",
+        "v3-subject-verb-recognition:coordinated-15": "sha256:9fbc59a45dcade42127d7483212456c39e6fc73a68564be5bd7a592e169a72c1",
+        "v3-subject-verb-recognition:coordinated-16": "sha256:8591345149cb5ae94306677e364a04e4511d80ffd2acf0cf9989d3910f9a7d8a",
         "v3-written-adjective:recognition-1": "sha256:68fea1a6dc5daf20bfebb790678da3e934d846b80c3130f829929db9985a967f",
         "v3-written-adjective:recognition-2": "sha256:2e612eedc658e34c25b94b1da13a349b8ffa9e3a170a29a1c14aafa17332ba04",
         "v3-written-adjective:recognition-3": "sha256:85092630c62792adf6e5c8e889861476b8829992af189881f9b5dcb576c5eb77",
@@ -162567,6 +164087,10 @@
         "v3-y-en:en_thing-18": "sha256:1de3bba6c34a338f57ee6b482b6a389ca0b053f6059a6c16d61d4a97fc48e58d"
       },
       "teachingChecksums": {
+        "french-v3-teaching:agreement:adjacent:recognition": "sha256:f5786bc5fc503ce5e3486a6bf6bb5754edcd000f19d874d15a35b5124f2852e8",
+        "french-v3-teaching:agreement:separated:recognition": "sha256:0de8e6bfff3d37fcaf2611f235ea097983cbf270ca0f3556ed912c1ec9441086",
+        "french-v3-teaching:agreement:inverted:recognition": "sha256:dc04aa5589b34279bae38ca15ed77b8a0a15f9e7c52bd94c51fdd0edd8928bd5",
+        "french-v3-teaching:agreement:coordinated:recognition": "sha256:694e4935981671bab5d811b281e20d02cb23328da09e4368c46f3a35bd3e5fa6",
         "french-v3-teaching:written-adjective:recognition": "sha256:87376a7a1a8e359dd46389db13ead9b7c8c30a5226ba5b323de66ef8386c7f8e",
         "french-v3-teaching:written-adjective:production": "sha256:a99a8e73d6a5836a7a45895a7dd5cb310f1de1a1f35aaa0c56982074dc7c37c7",
         "french-v3-teaching:adjective-link:recognition": "sha256:d3e7b56b99e79be323c573d4cdf2e5a08f7504e8d1fe8ddc73aa8ba9f6e94d24",
@@ -162609,9 +164133,9 @@
         "french-v3-teaching:connected-writing:revise-grammar": "sha256:0383f7c5b3af07c178a15e8d2296e666ac78e81c758de4c8ac5a18b51c1dc200",
         "french-v3-teaching:past-foundation:passe-simple-recognition": "sha256:476b3215a452da3376e16ce32cde1cd246bee4e3cec66c0549f219ba58121fe1",
         "french-v3-teaching:past-foundation:passe-compose-value": "sha256:5be4850b81505d87456e5df77f6bdff3413a7e4e7a36a5a5e3618fd5dfe50751",
-        "french-v3-teaching:passe-simple:pattern:regular_er": "sha256:26879fbbdd21f9bc9c4d886020d3dae27d3400f03fbd3423cedbed5d03ac442d",
-        "french-v3-teaching:passe-simple:pattern:regular_ir": "sha256:e318482714a5d46c52de379c4a1bb0d308ddf5bc16ce97e63b591b1a7997d0fb",
-        "french-v3-teaching:passe-simple:pattern:spelling_ger": "sha256:983c280c77ed22005ef6bbdf937b19283a904859163d46a4995ca379eb41332a",
+        "french-v3-teaching:passe-simple:pattern:regular_er": "sha256:dda30ac7fbc56be1baaf214a54c0b0d69c6911f093a2e3a0507c7a9dcd0f6c01",
+        "french-v3-teaching:passe-simple:pattern:regular_ir": "sha256:231f9ef426ea1f18111cdf14a701f60a42bcd34db70f20e04dcdcb7a54c7006d",
+        "french-v3-teaching:passe-simple:pattern:spelling_ger": "sha256:6e903ee517416ac1bd1e257f8ecf0381332797e6c787cbba52967a07b5a3bc39",
         "french-v3-teaching:passe-simple:pattern:spelling_cer": "sha256:5af71c09582e5a9e03edf5b5d693cdbcb986300923055ef70187875dd58a5255",
         "french-v3-teaching:imperatif-present:verb:être": "sha256:fc762c8c6cf4ceb05dc4ddcfeb6171215cf2f01052083b8e49e4ca4fad487bcc",
         "french-v3-teaching:imperatif-present:verb:avoir": "sha256:dceca48a45d2559703e38f79605c3c4d511b649336054c0e24d1de5f16e04ff1",
@@ -162620,22 +164144,22 @@
         "french-v3-teaching:imperatif-present:verb:prendre": "sha256:4ad28e28da0e1bcce2f3e5a18e677444b350dcc7a0c4ace9cbf2e5a838e8ae92",
         "french-v3-teaching:imperatif-present:verb:venir": "sha256:930c3032c40b6552447253ead83cbdce9eff49c7dd5ac90a1f4bc7817af81eef",
         "french-v3-teaching:imperatif-present:verb:partir": "sha256:b2f9aaec22d24a73e516d9dc08d63d30dc96546eb168a054ee4a33f0201eea41",
-        "french-v3-teaching:imperatif-present:verb:sortir": "sha256:b418339a89fa79785c6a357a54e4ab76eb446873c277dea2f73ac4514995a6e8",
+        "french-v3-teaching:imperatif-present:verb:sortir": "sha256:7f36814e9978da76abe0a6d62317f8fe50e1018699af06f6cb6123a44d5621cf",
         "french-v3-teaching:imperatif-present:verb:dire": "sha256:52779bf7bb23e088cb64d1fb1941c023f62f8e8897dce960a8d46a28af481492",
         "french-v3-teaching:imperatif-present:verb:voir": "sha256:ba8cf34dca8b87087df7f07aa2bdb833077d5c17a022827273c158a892c43a5f",
         "french-v3-teaching:imperatif:recognition": "sha256:a08971f24004fe913eeeffb04a9fb925c656b44f2aca4db153b84097f90ea7e7",
-        "french-v3-teaching:imperatif-present:pattern:regular_er": "sha256:460db78dd8572bbda50113430331f98c73b9f28791002325619172d6186dfcc9",
-        "french-v3-teaching:imperatif-present:pattern:regular_ir": "sha256:523d8e1eb580a06f98f5f17f0f74643004a4f22af6bcc7b48eb7e7da6d943322",
-        "french-v3-teaching:imperatif-present:pattern:spelling_ger": "sha256:00a201ba692864ff389cfd8e5ada21de7c2c8c109ee93e9edc0748205d2588fa",
+        "french-v3-teaching:imperatif-present:pattern:regular_er": "sha256:aa57f2710a656da1b14b5e316308c41f9f3eec4e688eb53363fd082052474958",
+        "french-v3-teaching:imperatif-present:pattern:regular_ir": "sha256:78a59b26e7951fd90acd90e3c4a4713f18284ea9228a969506e46689afa4ff70",
+        "french-v3-teaching:imperatif-present:pattern:spelling_ger": "sha256:218a0fb05ee6ba3254c5282d789d0295317c133b6f8d6ee11b8500bfea56ef72",
         "french-v3-teaching:imperatif-present:pattern:spelling_cer": "sha256:f21dc33b953c00a5cf6cf160e93c84fd01e3fc2173bc554fce67ec5e0c98fcbd",
         "french-v3-teaching:complex-negation:recognition": "sha256:a7f79bb3542e09945c935294eb6d00ab8546da23408dda9ef3230c6b41adaa4a",
         "french-v3-teaching:sentence-main-idea:narrative": "sha256:031a41aaf2ef1a6cc5113a2a5e974d9099f0be8161d0a5c78bcdff8fab988376",
         "french-v3-teaching:sentence-main-idea:informational": "sha256:c4bdc27ca2451ce0412d92153233c42d1db1e0a8899a67774c60b9e64d76dde6",
         "french-v3-teaching:sentence-main-idea:argumentative": "sha256:b3b222cc502c29bf71116c14a1bf4e66806b4ad123888722e05286414a51ef80",
-        "french-v3-teaching:subjonctif-present:pattern:regular_er": "sha256:df318089dec0ccc45021636959c0424d80776c72a7e28b03f60d4b96d1300a2d",
-        "french-v3-teaching:subjonctif-present:pattern:regular_ir": "sha256:8ad4e96a624bf7fc80a28ebdbeb82dd9b19b49828bada4699c90ac93a010b011",
-        "french-v3-teaching:subjonctif-present:pattern:spelling_ger": "sha256:9afbede544c11c4e286c1a4c0e62ed0f3b7ab281954fcf0309bb85d896a5a3a1",
-        "french-v3-teaching:subjonctif-present:pattern:spelling_cer": "sha256:29fd5476a386705ec6b447ffc48690cc4ca670d8d9d449eaff64e548aca0a2fd",
+        "french-v3-teaching:subjonctif-present:pattern:regular_er": "sha256:a471a2a099f6ee7be88fdf9885cc2fbe5f1830eaf31a0244797e2b6d3b78de91",
+        "french-v3-teaching:subjonctif-present:pattern:regular_ir": "sha256:50963a848c253f851238a016447870d3dc87ff71e0fd3fa9eb4226033598e236",
+        "french-v3-teaching:subjonctif-present:pattern:spelling_ger": "sha256:cc4df8285bf45b04e5c38a40033bf56dfc6697a551f08b32263eb4c7ab6ab4f3",
+        "french-v3-teaching:subjonctif-present:pattern:spelling_cer": "sha256:61e7a4bdb78a25949810a4fc8fb75ac5fd200acd0f8618b7f090d4fadfe4df80",
         "french-v3-teaching:subjonctif:recognition": "sha256:8f51d204e715dba553cbe5a4cb310645ad2dae3d4e033ea3ef8ac09a9b08cc4d",
         "french-v3-teaching:completive:production": "sha256:91c0a3a947e308ed81aea4faf273ef06f39b00c599703e10aa38870202805853",
         "french-v3-teaching:subjonctif-present:être": "sha256:e7e9c401a0a6ab961ad23d21e6c40644d7f521ca2282f3797b8e4fa206742a7b",
@@ -162645,7 +164169,7 @@
         "french-v3-teaching:subjonctif-present:prendre": "sha256:2a35ae16fa35efcab3a090e7fd6f0ef4522ddf873276b862f983a1ed5e3d0dc4",
         "french-v3-teaching:subjonctif-present:venir": "sha256:0cca4be22f9382e5c469fa2d042d3302e656626bd475bcf3f209f7e390ec2a6e",
         "french-v3-teaching:subjonctif-present:partir": "sha256:8080d09f7d587f7c72a1624c35fc5b166c6921091909eda44f5bf7e6e579e77f",
-        "french-v3-teaching:subjonctif-present:sortir": "sha256:25f3e57a38edc27f8ec3e36a446bfbeda2a8532f2999406bbc9e32f03718e4fc",
+        "french-v3-teaching:subjonctif-present:sortir": "sha256:9da497deacc3be7f67590b7954914d2d425fb0eb3b9b256198ed96f2bc492932",
         "french-v3-teaching:subjonctif-present:dire": "sha256:b94e9288034910a9b3b44eb8cd12973d00f4f7de31e23f9840c30330529eb450",
         "french-v3-teaching:subjonctif-present:voir": "sha256:8deab3b9ed5540a8d5cf7c1be38721a97518e237d1ce0b8ab25500c7a55f6c69",
         "french-v3-teaching:subjonctif-present:pouvoir": "sha256:147417d31e137865a4b13f96288812ef375495f4e3a8911656386987a7e1e10d",
@@ -162658,30 +164182,30 @@
         "french-v3-teaching:phoneme-graphie:production": "sha256:52714cc74e05cc945c0e46574026ee2c614ccc733f46acaa39a2f10dd8f56022",
         "french-v3-teaching:cedille:recognition": "sha256:97beafccfd96ef25c41f53adb77c1ca40895d60bb130b9661380e9df59eba0c8",
         "french-v3-teaching:cedille:production": "sha256:6ea80605cfb55cc2a05d76a959c27327e80e2074dd24df42ea872bc95a0d062f",
-        "french-v3-teaching:plus-que-parfait:pattern:regular_er": "sha256:68d99a89c804b8aa1c1127a463038c6b6a9aea05aba09d3c1ef9560fb0854402",
-        "french-v3-teaching:plus-que-parfait:pattern:regular_ir": "sha256:76a25a17c789aea1dfb44f7a883c19bc974b40a4d0d3d7b05e3234291fe4a7d8",
-        "french-v3-teaching:plus-que-parfait:pattern:spelling_ger": "sha256:eccbfd1b98059867a194281ed6fe364ad5f69c5044ca9a23814cea9c32475ffd",
-        "french-v3-teaching:plus-que-parfait:pattern:spelling_cer": "sha256:df7f2e1f74d6ddd64e534454ccd3c1f54659bdcdcda8f12e67d96901f76a7950",
-        "french-v3-teaching:conditionnel-present:pattern:regular_er": "sha256:7a38c6883f0412052eeaf52bd3f0948212e654ffe9272f20b2331548fc5af553",
-        "french-v3-teaching:conditionnel-present:pattern:regular_ir": "sha256:10990a23130407a643cb356c29e4368368209122939c39233b00d98f88e5450c",
-        "french-v3-teaching:conditionnel-present:pattern:spelling_ger": "sha256:5e244e449c26a79a1033d22febd93af70bc775dcd049abf6d7c8d1123dacbd59",
-        "french-v3-teaching:conditionnel-present:pattern:spelling_cer": "sha256:32b2d8c64f3a35ea17e1793dddbfaf7c87e34c1485c790668f92683d21254bbc",
-        "french-v3-teaching:futur-simple:pattern:regular_er": "sha256:7b1a460c458bccde44e784180ef04b67c7bcb8959a9a7c50286996da104a55be",
-        "french-v3-teaching:futur-simple:pattern:regular_ir": "sha256:b7adab783176b3535e466feb053ea8e5b71eef062f11a05a559cf05d2b3f9a13",
-        "french-v3-teaching:futur-simple:pattern:spelling_ger": "sha256:933bbc05fed681644a303bc08fa89eec44c5c728054d85f5a34c91ceee0c4cfc",
-        "french-v3-teaching:futur-simple:pattern:spelling_cer": "sha256:7ce22f9fb9ddbf65c34f84726db24b26ff628642d48be070699cbba7d8ab8a0a",
-        "french-v3-teaching:passe-compose:pattern:regular_er": "sha256:99893e833b9d6b80bc59311935687d8b839ce942e447796c1621265bfd2fdb28",
-        "french-v3-teaching:passe-compose:pattern:regular_ir": "sha256:b0f14a8046a14786842f7a105b77ee846c32353cbb5b7151c49b1cfcc1432193",
-        "french-v3-teaching:passe-compose:pattern:spelling_ger": "sha256:68d09cf7be16075cddf9bd68998be11b13cfa73a3f291a0a439bde80086235ec",
-        "french-v3-teaching:passe-compose:pattern:spelling_cer": "sha256:2c0a458e66ba913e922fb244d154b4171530380dcad0f9b7c4ad532195b4cf52",
-        "french-v3-teaching:imparfait:pattern:regular_er": "sha256:1d629605fc881be7ace12f0075a195052a4851fc4c378e5a7e3c1082ab670700",
-        "french-v3-teaching:imparfait:pattern:regular_ir": "sha256:f632dd2a226c60b0c00e2975f63648158b5aeb44bf2e203cf2eddd187d409fd2",
-        "french-v3-teaching:imparfait:pattern:spelling_ger": "sha256:fc52bd9277fdc75491d62dcf31f54d47b55f3e157f19de3569078d9956004df6",
-        "french-v3-teaching:imparfait:pattern:spelling_cer": "sha256:438a55d86136fbffcbdd10f31142bed7a6a0fba5a4588aa92a09737c8ae0d13f",
-        "french-v3-teaching:passe-recent:production:pattern:regular_er": "sha256:b1679f94aa25adf731807f8bffe8ae629ffbf3296f253c6c42050161a20155da",
-        "french-v3-teaching:passe-recent:production:pattern:regular_ir": "sha256:e7c25d04d5483bb957ce1d1916421679dfe20e01318a3972268db549b9a172f1",
-        "french-v3-teaching:passe-recent:production:pattern:spelling_ger": "sha256:21420af12c0e286563c379a5be7cc87b53c4c5e555ba7897bbd788bd55ec0346",
-        "french-v3-teaching:passe-recent:production:pattern:spelling_cer": "sha256:587e43462c237dc86c974bb75ab4ab6239f98324ebe0f3d429c346046137aabf",
+        "french-v3-teaching:plus-que-parfait:pattern:regular_er": "sha256:739c57b209fb16f89ba8751d796a96ed0d08832065576fd2efcbe601a7ae080b",
+        "french-v3-teaching:plus-que-parfait:pattern:regular_ir": "sha256:a035728830883422965256bfa42635ae8595782d232d19ea95bc2805818185c6",
+        "french-v3-teaching:plus-que-parfait:pattern:spelling_ger": "sha256:dd28bdb2d215bef2fa02fd01d5e65499bab09c4d1c5f92c47884cbb012bacb8b",
+        "french-v3-teaching:plus-que-parfait:pattern:spelling_cer": "sha256:72c23dfbe9d1ab54de6d2ee3c95461d384071f5c71bbf2290e1d9622ee71786d",
+        "french-v3-teaching:conditionnel-present:pattern:regular_er": "sha256:399172c94bede6695a014af5b1527c079126f88507880c5109be8932e916bf4a",
+        "french-v3-teaching:conditionnel-present:pattern:regular_ir": "sha256:646f06561d547dc0c96cd6649774faed696ee10073ea4b5c1d0e50bc89dd278c",
+        "french-v3-teaching:conditionnel-present:pattern:spelling_ger": "sha256:5f5d6cd0b118a5d7aae497a9b6d16d84af748a402e533244ccb66674d5fef5f2",
+        "french-v3-teaching:conditionnel-present:pattern:spelling_cer": "sha256:a827e092a01af3e51e9bca819558d1366b5c2cdbede8bca6acebc2250a0d94ba",
+        "french-v3-teaching:futur-simple:pattern:regular_er": "sha256:0c74bceae20168ac01016b690b507deac8f277f095909113e6d65be7b0229e3d",
+        "french-v3-teaching:futur-simple:pattern:regular_ir": "sha256:cd9d5d9855d1b2430b81306cefec97ca11f995af242fe0f74948a7aa6277feb1",
+        "french-v3-teaching:futur-simple:pattern:spelling_ger": "sha256:dfba26625f14debd2e2b5ee9958519cd5097d3b38c6b085bab2ac81577035bb1",
+        "french-v3-teaching:futur-simple:pattern:spelling_cer": "sha256:d75994eaeaa847eeb90ad5e85699b528620855e7d8997038089100dc2bb17229",
+        "french-v3-teaching:passe-compose:pattern:regular_er": "sha256:bc8e571977219657c0ca7ea9edf8702c7cc7b56df5bdd8a8ab19bed5fff01fee",
+        "french-v3-teaching:passe-compose:pattern:regular_ir": "sha256:2b5c00cbd2feef1ac12acc4a0cc8001a6f7c90af84e28fa5080b34ea77207a0c",
+        "french-v3-teaching:passe-compose:pattern:spelling_ger": "sha256:5f17ebb8098d587105894b823df0736434b445710f4af64cc843a73a94ad8cef",
+        "french-v3-teaching:passe-compose:pattern:spelling_cer": "sha256:fb4e79ca7087dc149a702ee6a7f38187966c107c9351a1032e0f038e1595c601",
+        "french-v3-teaching:imparfait:pattern:regular_er": "sha256:4260a0762df54266b5d9d588bf22f051ff95d843ab32861c277211fe2162935c",
+        "french-v3-teaching:imparfait:pattern:regular_ir": "sha256:b0215abc42bc7f5365b52b6e6fbb781379118d44876c80fdec863990d2360f14",
+        "french-v3-teaching:imparfait:pattern:spelling_ger": "sha256:932fa560cf682bc86d4f981ce0a319717d04863507d5bea719fcf860776b592c",
+        "french-v3-teaching:imparfait:pattern:spelling_cer": "sha256:0e6c55ca8516ae7e94ea0636a171bfdb324c5c6783a98d4644f7ddfca948736b",
+        "french-v3-teaching:passe-recent:production:pattern:regular_er": "sha256:d5718fde8a945d95003dc3b0e3123105b1f3dcab2c5cdac707ec4a60b13797a6",
+        "french-v3-teaching:passe-recent:production:pattern:regular_ir": "sha256:03383d266c64e127c5debf3d566c96aec9855e49c1fbedcfeeaa8b4db885b021",
+        "french-v3-teaching:passe-recent:production:pattern:spelling_ger": "sha256:387cb9e2eabb0ec32d5161365dcb0796afbc08ec5d13a1fb551a0ff280ddb932",
+        "french-v3-teaching:passe-recent:production:pattern:spelling_cer": "sha256:d39790b2ef8f1346a324a62736610cf76e1369e1b9f18fa79c802a99f7838e07",
         "french-v3-teaching:passe-recent:production:verb:aller": "sha256:82bfbdfc56193712ba0a651676a83040769d09eb320e79d8c5d4a9a317f3057e",
         "french-v3-teaching:passe-recent:production:verb:faire": "sha256:40bb1943e7e6a87b9aff1a6630e6776cadfc03091d54320bfa714fc427faf3e3",
         "french-v3-teaching:passe-recent:production:verb:être": "sha256:b82e7e655045482cad24d195f1d710cb908e6c3d3949c879dd3fc5e33ae17d9f",
@@ -162689,13 +164213,13 @@
         "french-v3-teaching:passe-recent:production:verb:prendre": "sha256:95e3bb3cbd082943851614df70c910f30e41e84fb67b455105656f87bdc4b61f",
         "french-v3-teaching:passe-recent:production:verb:venir": "sha256:d5811b5130bff817e52b247c75ca07162eb653bda4c758e40617691b94ace332",
         "french-v3-teaching:passe-recent:production:verb:partir": "sha256:6e66c0a5ee3db5de9747a0f45abc12686fd7b4a7b6a63e6656def4f07acbbf12",
-        "french-v3-teaching:passe-recent:production:verb:sortir": "sha256:7501ebc0ef00e05dbd49b13774a31526925e7f5b4ade41ad82bcd97fb33f5e1c",
+        "french-v3-teaching:passe-recent:production:verb:sortir": "sha256:39593fe0d4ab5fb0d8ee67bb003fe2708ee135388510a4ba48524fc38fd08445",
         "french-v3-teaching:passe-recent:production:verb:dire": "sha256:1c23b992c4a0d6b778569359983bc8ccf99e115def061990afedd0916335d4df",
         "french-v3-teaching:passe-recent:production:verb:voir": "sha256:3d70851adb08f6ee6c8d246780688254f469333388dac57b3580f4942088cee1",
-        "french-v3-teaching:futur-proche:production:pattern:regular_er": "sha256:ff87842bf7d465d43bec1d4aa22f3a6b3d3165a4482748daf75a410f72293159",
-        "french-v3-teaching:futur-proche:production:pattern:regular_ir": "sha256:348773a65ec07ffce044afce04e2f1e23398d69761a25a30a685dd40ce47478c",
-        "french-v3-teaching:futur-proche:production:pattern:spelling_ger": "sha256:1e09069e0554b13aabd14dfa3f07e346fd822b67e1132037455774d286b69faf",
-        "french-v3-teaching:futur-proche:production:pattern:spelling_cer": "sha256:5133644393cba54414fb9cdf9c3ade49298f50e6a632027eacdfdfea1fc3b2fe",
+        "french-v3-teaching:futur-proche:production:pattern:regular_er": "sha256:560ca4027fd083826211ff3d7e792be5af05ab20f833478104d2617d436ae8db",
+        "french-v3-teaching:futur-proche:production:pattern:regular_ir": "sha256:37cbabcb241340270e43c9de14815f852582e92a379c12d173c6c53866e8075c",
+        "french-v3-teaching:futur-proche:production:pattern:spelling_ger": "sha256:27858f089d5227c2050f03f6ec559823850f6860906f9d4871f3274b33844912",
+        "french-v3-teaching:futur-proche:production:pattern:spelling_cer": "sha256:7ca2196a9ed606ea8d77bc0d27aa3dae8322bbb19ddf32ae94c464f937172f05",
         "french-v3-teaching:futur-proche:production:aller": "sha256:a4c89f49fdd7ee69df686aebc3f7cbb43223d89366e4458409ed91192317567c",
         "french-v3-teaching:futur-proche:production:faire": "sha256:8d6d58d652ab48deb4f50ec9c2cb9a44201380ed5e5146af66b68d40ae402cb7",
         "french-v3-teaching:futur-proche:production:être": "sha256:de07d0c63acf6939f732f566d634a97d7bfe9eed7dae20116eef970c5463252c",
@@ -162703,7 +164227,7 @@
         "french-v3-teaching:futur-proche:production:prendre": "sha256:40f10ec19226887d2f09976379e1d3b0c8a23b68e98b91617d93518eea7032cf",
         "french-v3-teaching:futur-proche:production:venir": "sha256:faaec2091b3c4999c22d2787bbc5256bc2e2f85725f3d3b9413d3f87aaa5a22f",
         "french-v3-teaching:futur-proche:production:partir": "sha256:f447a55d12f1229c5278e4944cc94982d30ca28c61a40ebbadd75c5796878955",
-        "french-v3-teaching:futur-proche:production:sortir": "sha256:9ba18f4e80a44413dc55e2a1beef1388bb4c5bd6e984d4f0f54f9f824d839e4d",
+        "french-v3-teaching:futur-proche:production:sortir": "sha256:6fbec26906e13646948446718600ffb9180d252d9df12a3cff4d68e2df5a7d04",
         "french-v3-teaching:futur-proche:production:dire": "sha256:737b09d0ff005d428a58e32b602b4f86465d832a3ef3f982c3d7135d0cb4fddb",
         "french-v3-teaching:futur-proche:production:voir": "sha256:2880b688b1c6252184e992ab3394489664dbd57b13c1a5d9158096dd2173c9c6",
         "french-v3-teaching:futur-proche:production:pouvoir": "sha256:6e3f94e1d25c9ff19aa7960fd1a341566ae118190c9bea5566dd8ec1cfa9a593",
@@ -162754,7 +164278,7 @@
         "french-v3-teaching:passe-compose:prendre": "sha256:1b65920a4fa40b2777752c349c44d03c7a1ed403342c78430c04a2bfa5d63661",
         "french-v3-teaching:passe-compose:venir": "sha256:8138f3a095449bf0a80f2820dbd72c2fc023203699c5717e1e997780384cd575",
         "french-v3-teaching:passe-compose:partir": "sha256:7ce577f17fc333db88a52a63350bd11efe537d58430a7b99d710c9893450d8c5",
-        "french-v3-teaching:passe-compose:sortir": "sha256:bed8efaaf22d50c5977984a3cb470a5318dcdd02994c9afa229c331caee780b4",
+        "french-v3-teaching:passe-compose:sortir": "sha256:d4121cb39aaaaa6f2768423a85efbcb7c4577b9e27470282fc96ff5ff5ace5c8",
         "french-v3-teaching:passe-compose:dire": "sha256:1778a792a4dca1b7756073f6160b7de8602c05c9e91a57fa7e0b9de100ba719f",
         "french-v3-teaching:passe-compose:voir": "sha256:65412850a5648ebbcc769f82cb81f74a6fcb35a2931ebbff6e4a81d3e60b432c",
         "french-v3-teaching:passe-compose:pouvoir": "sha256:3957d3367f7fd570248cad114dc7808083a9c682e6e3e15c36db0a28efd04be2",
@@ -162768,7 +164292,7 @@
         "french-v3-teaching:plus-que-parfait:prendre": "sha256:2e443d2d63f7639c4aa3f03fa42c5aa321a7096e8658806f8a13087b79e6fdbb",
         "french-v3-teaching:plus-que-parfait:venir": "sha256:4aa20fcb942ac4c33f9d6197b3bb3d44c603326d90c0bec239cbca3fb7246874",
         "french-v3-teaching:plus-que-parfait:partir": "sha256:576c6a288933cc5435ba92717d8b0cee82cdc41ae64aae8f4450993177e82e3a",
-        "french-v3-teaching:plus-que-parfait:sortir": "sha256:37fd46591d0c9871cf4d61e2f36a132fd0ed6c06905c3b691131be761f274527",
+        "french-v3-teaching:plus-que-parfait:sortir": "sha256:8b9031034a9cf3a54601b00ced378f72088be0cb0242919fb047ac6366ccd05a",
         "french-v3-teaching:plus-que-parfait:dire": "sha256:a5e0ffc83874b47019569bc1a7341a62e5f70a132efaf5fb2acef4078d3bb0f8",
         "french-v3-teaching:plus-que-parfait:voir": "sha256:309365b3662cd36c2bb00419cb70d39ba8e8a957b557f92760474a4995681f9f",
         "french-v3-teaching:plus-que-parfait:pouvoir": "sha256:ffec333ea36e08a0603e74bb2e4a6144d9291580d1b62a8ac288db360b75c9ee",
@@ -162792,7 +164316,7 @@
         "french-v3-teaching:conditionnel-present:prendre": "sha256:3e2c3a6ada8a7316022eac8a2f255da04a820a2334d7ddc1073360c8a13674ae",
         "french-v3-teaching:conditionnel-present:venir": "sha256:264b1a4b75ab27cb03e6d802f74ec7eff8cb1c8db23fa7417f7fec4f3ee4fdf0",
         "french-v3-teaching:conditionnel-present:partir": "sha256:ea4253ca40682c5047b3a603643416b98eece6b326e10c4a9286e45fee25f51d",
-        "french-v3-teaching:conditionnel-present:sortir": "sha256:518f18f51a2071fe32aedfeb96dea9afab157f370bdf78323c3920ccbca344db",
+        "french-v3-teaching:conditionnel-present:sortir": "sha256:8f61576b80b7d4398ad496d4d858488bafa485a5c9cc8f26459f49642001079c",
         "french-v3-teaching:conditionnel-present:dire": "sha256:335c4f756f6f7b44d799a4f0c3612c562e304a6de2d803dd25c2b60aa869fdcc",
         "french-v3-teaching:conditionnel-present:voir": "sha256:ef1e03ee6263df201a427a9495ce9403ea73324af96cbba3eb5058c5971a09d9",
         "french-v3-teaching:conditionnel-present:pouvoir": "sha256:62d62cabe92624b8b2a46b871b082d35f63076b66eba4794e9013b1387ee4381",
@@ -162812,7 +164336,7 @@
         "french-v3-teaching:futur-simple:prendre": "sha256:1fedb36c88769072ad6722d728f3af5f8c7a491964b23c3b719c56d18c7e401b",
         "french-v3-teaching:futur-simple:venir": "sha256:d76defa6a4ce220163496527aaf9e07dea65d489ca92a5a65275af995d3d35e2",
         "french-v3-teaching:futur-simple:partir": "sha256:c50fbfdf98fa99286c73cf92765e84eaf6b927c4aefba4d181348d4084f4f77e",
-        "french-v3-teaching:futur-simple:sortir": "sha256:eeade4b432126a38673e962a0dd855c70ba48fae52233f99de976dd5dd08e574",
+        "french-v3-teaching:futur-simple:sortir": "sha256:3f75b4ce7cfb7d018eb579aa58a4c14efa451e12d8a68c682381fa5d15f1b36f",
         "french-v3-teaching:futur-simple:dire": "sha256:f186610998b8f9f848a46d95a17475cde84d2e7d3b5c79ddf8791970a366db58",
         "french-v3-teaching:futur-simple:voir": "sha256:67c6baa256e44cee10195ca3410ebf8e70febdd4d3e44f7370bc1089bc8df976",
         "french-v3-teaching:futur-simple:pouvoir": "sha256:ca9e1a7702324b5d8261b91f742849c5956ef9053506fd281211a44d9df39909",
@@ -162826,7 +164350,7 @@
         "french-v3-teaching:imparfait:prendre": "sha256:a0f158c0171691a913ca5d18f054b1fa326a5eba7625152f0a090be12ddda464",
         "french-v3-teaching:imparfait:venir": "sha256:3a9ebb2233e7e0c6119e78d4b14afa0783536c96b0ad97d4b2b204315591ba57",
         "french-v3-teaching:imparfait:partir": "sha256:c16e3e7a1bdc47cda6c80b9275022d05d785aa9858deea0d02f5fda5fe6579ff",
-        "french-v3-teaching:imparfait:sortir": "sha256:b84e1fcf56b6f73854aba7b18f35e26b7ab43db6effa91b1896dee2ac90fa757",
+        "french-v3-teaching:imparfait:sortir": "sha256:3bc3f8b3f16fa81a3d29e86d875b8cbd6863a29768f93d7b13664fca7c67f085",
         "french-v3-teaching:imparfait:dire": "sha256:f43017cb0dca5dfb4d4519519f022001744cfc765214ca4010abd40d19a4c78e",
         "french-v3-teaching:imparfait:voir": "sha256:28f61df311bd668adcf9a21de3cc30538f36525416b93e46bc5b089760bcaf0c",
         "french-v3-teaching:imparfait:pouvoir": "sha256:fd3bba91962b5b30045a93af42caf5ea6145cc31db7387fae439b147e032a988",
@@ -162886,13 +164410,13 @@
         "french-v3-teaching:reading:distinguer_fait_opinion:argumentative": "sha256:cd1e2ce78e3eb24b34ac0bed984db2dc12392e835b75fd3e8a4af4fd54bdaf12",
         "french-v3-teaching:reading:deduire_mot_definition_locale:informational": "sha256:c4dee6b893c5f68f878d6636edae0a93da16eb925bc06935c746d5014acca6ea",
         "french-v3-teaching:reading:deduire_mot_exemple_contraste:informational": "sha256:34779c9c2d5280db99a752ce3dfb5a7e5d60cc705f6a4df1492dd6bc2afdbaba",
-        "spelling-m-before-mbp": "sha256:79cbda89c30a00a73cfd9fe2c6fd9dd0354a387d9fb0143de793126531cb7045",
+        "spelling-m-before-mbp": "sha256:b10d396a50c4ee1340211de1798d6f1b4e80fe80df8bcaef3f9413319da6cb0c",
         "spelling-regular-plural": "sha256:cbe1f9fa6766e7690c0c4fdc5c8235ef156df7103251dbf198a11eeaa502448f",
         "spelling-regular-feminine": "sha256:514f310751a3bf44b94f48ff72cb55633a1d2750913545c7c3d689f121de991e",
-        "french-v3-teaching:present:pattern:regular_er": "sha256:c96ff683dec3d79b8f10d91a0d151b7576dd6c719d0f20edd11e4de1155d01d0",
-        "french-v3-teaching:present:pattern:regular_ir": "sha256:d4d9fff2545e9d0d79399a1e81a79292ca84cee77778291738d8c3f4a70ab8f0",
-        "french-v3-teaching:present:pattern:spelling_ger": "sha256:9f721dd69e549a539222640ca1af34ad64239cfae786e4e2f606cc3edfb2c123",
-        "french-v3-teaching:present:pattern:spelling_cer": "sha256:5786c80e83e32ea0aaa8151e2d0fbee604e66c7cd64ca26691d8e3ff3a1d58fa",
+        "french-v3-teaching:present:pattern:regular_er": "sha256:b62a34e952434f066dfe237e6f1a934cae5ae1a6e25e212b74e2181c4c90c053",
+        "french-v3-teaching:present:pattern:regular_ir": "sha256:dc780babc60950758cedb96107a8feb35c5ee09df2762eadee16d9d8a50272f5",
+        "french-v3-teaching:present:pattern:spelling_ger": "sha256:66f4731c44b0ff7ba3c94d500cd61ac671955d965a633d36477d363609412ebe",
+        "french-v3-teaching:present:pattern:spelling_cer": "sha256:081fd6c5946865938e18996e95901c288b2d1fe6c925c1add9242515b63ea082",
         "french-v3-teaching:present:verb:aller": "sha256:d15b210820058002d3eeb6e1603eb6fbe1bdb783e903fdf6b11aa4b537b799eb",
         "french-v3-teaching:present:verb:faire": "sha256:92ac994bbcc5d9ce6cbbbe62c36795e06ad2ce3f883229fc8ef547e43b42111d",
         "french-v3-teaching:present:verb:être": "sha256:c7c99e1dfaa0ee00088569de576c1dca94e986cfac24805f677373a595f215a6",
@@ -162900,7 +164424,7 @@
         "french-v3-teaching:present:verb:prendre": "sha256:0429d1f5294978af82763343221bc7655a7724476292dce4701f387a6c2c1626",
         "french-v3-teaching:present:verb:venir": "sha256:2e25817a4918614ca043b5c606addf448742ef2479fd82afb3d0012b8dc41539",
         "french-v3-teaching:present:verb:partir": "sha256:7c331e2318e702d4e326e5fc04512de92c4001799a25023d9bcc94f7e292d697",
-        "french-v3-teaching:present:verb:sortir": "sha256:75796e4c24566722d25ca324f4126f070dc5351e65011077363fd552a5edf086",
+        "french-v3-teaching:present:verb:sortir": "sha256:e768a2784e76f9c251a9e0709ac5a809b1f3b06d6313b18d4ab215d1b209356d",
         "french-v3-teaching:present:verb:dire": "sha256:96c79f75f4023e63212bd1020f7ec8f43fef1ebe4dc0dd7da1280fe9db47f81f",
         "french-v3-teaching:present:verb:voir": "sha256:44870212ac8f9f51462bb1a6611e8a8e47c604990f458050b813eadfea77d3f3",
         "french-v3-teaching:present:verb:pouvoir": "sha256:96d0b9613bfe2d84a0fd763817b355ee1aacee528017ec7ce30d57a6e64ba632",
@@ -162909,8 +164433,8 @@
         "french-v3-teaching:present:verb:devoir": "sha256:b5dc0dcbb7300e37d56ae0b5bddfa3eb2de8f5e647961fd7c9e2761ad9daa67b"
       }
     },
-    "facetChecksum": "sha256:284dc3d10a5ea1079ee3aa893a0389f4c02d9c763f155a3122e09dca8000ed86",
-    "poolChecksum": "sha256:248adeecb5f03192f5485df10f03db3f790291a8d57f50e125ad0086d0458a5e"
+    "facetChecksum": "sha256:cca3272a71d9d8372251d89578029a4a18c199c5bc348390fe8c1458a62dc388",
+    "poolChecksum": "sha256:7af8a0876e09eaa3979eb8f03354a0ec07c2c710d7421a47828207f3100f17bc"
   },
   "teachingPoolRepairs": [
     {
@@ -166399,30 +167923,36 @@
     {
       "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
       "mode": "recognition",
-      "status": "insufficient_coverage",
-      "initialItems": 0,
-      "learningItems": 0
+      "status": "allocated",
+      "initialItems": 8,
+      "learningItems": 8,
+      "excludedQuestionIds": []
     },
     {
       "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:separated",
       "mode": "recognition",
-      "status": "insufficient_coverage",
-      "initialItems": 1,
-      "learningItems": 0
+      "status": "allocated",
+      "initialItems": 8,
+      "learningItems": 8,
+      "excludedQuestionIds": [
+        "local-spelling-gap-v1:accorder_sujet_verbe_ecrit:receptive:core"
+      ]
     },
     {
       "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:inverted",
       "mode": "recognition",
-      "status": "insufficient_coverage",
-      "initialItems": 0,
-      "learningItems": 0
+      "status": "allocated",
+      "initialItems": 8,
+      "learningItems": 8,
+      "excludedQuestionIds": []
     },
     {
       "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:coordinated",
       "mode": "recognition",
-      "status": "insufficient_coverage",
-      "initialItems": 0,
-      "learningItems": 0
+      "status": "allocated",
+      "initialItems": 8,
+      "learningItems": 8,
+      "excludedQuestionIds": []
     },
     {
       "skillId": "accorder_sujet_verbe_ecrit::writing-controlled-production::construction:adjacent",
@@ -173478,6 +175008,90 @@
       "estimatedMinutes": 1
     },
     {
+      "id": "7243584c-5c2a-5832-918a-c817536265fa",
+      "nodeKey": "accorder_sujet_verbe_ecrit",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:adjacent",
+      "mode": "recognition",
+      "kind": "independent_check",
+      "status": "draft",
+      "titleFr": "Réaliser l'accord sujet-verbe — Sujet proche du verbe",
+      "href": "/student/diagnostic",
+      "probeIds": [
+        "v3-subject-verb-recognition:adjacent-14",
+        "v3-subject-verb-recognition:adjacent-15",
+        "v3-subject-verb-recognition:adjacent-16",
+        "v3-subject-verb-recognition:adjacent-2",
+        "v3-subject-verb-recognition:adjacent-3",
+        "v3-subject-verb-recognition:adjacent-5",
+        "v3-subject-verb-recognition:adjacent-7",
+        "v3-subject-verb-recognition:adjacent-9"
+      ],
+      "estimatedMinutes": 1
+    },
+    {
+      "id": "6b0b32ac-1a15-529f-86df-01e7e596c575",
+      "nodeKey": "accorder_sujet_verbe_ecrit",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:separated",
+      "mode": "recognition",
+      "kind": "independent_check",
+      "status": "draft",
+      "titleFr": "Réaliser l'accord sujet-verbe — Sujet éloigné du verbe",
+      "href": "/student/diagnostic",
+      "probeIds": [
+        "v3-subject-verb-recognition:separated-14",
+        "v3-subject-verb-recognition:separated-15",
+        "v3-subject-verb-recognition:separated-16",
+        "v3-subject-verb-recognition:separated-2",
+        "v3-subject-verb-recognition:separated-3",
+        "v3-subject-verb-recognition:separated-5",
+        "v3-subject-verb-recognition:separated-7",
+        "v3-subject-verb-recognition:separated-9"
+      ],
+      "estimatedMinutes": 1
+    },
+    {
+      "id": "f3ec89aa-f1ba-5628-adf9-5eaa532fb44c",
+      "nodeKey": "accorder_sujet_verbe_ecrit",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:inverted",
+      "mode": "recognition",
+      "kind": "independent_check",
+      "status": "draft",
+      "titleFr": "Réaliser l'accord sujet-verbe — Sujet placé après le verbe",
+      "href": "/student/diagnostic",
+      "probeIds": [
+        "v3-subject-verb-recognition:inverted-14",
+        "v3-subject-verb-recognition:inverted-15",
+        "v3-subject-verb-recognition:inverted-16",
+        "v3-subject-verb-recognition:inverted-2",
+        "v3-subject-verb-recognition:inverted-3",
+        "v3-subject-verb-recognition:inverted-5",
+        "v3-subject-verb-recognition:inverted-7",
+        "v3-subject-verb-recognition:inverted-9"
+      ],
+      "estimatedMinutes": 1
+    },
+    {
+      "id": "8cb6678e-1292-5224-924e-54c1a41ba2e0",
+      "nodeKey": "accorder_sujet_verbe_ecrit",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:coordinated",
+      "mode": "recognition",
+      "kind": "independent_check",
+      "status": "draft",
+      "titleFr": "Réaliser l'accord sujet-verbe — Plusieurs sujets coordonnés",
+      "href": "/student/diagnostic",
+      "probeIds": [
+        "v3-subject-verb-recognition:coordinated-14",
+        "v3-subject-verb-recognition:coordinated-15",
+        "v3-subject-verb-recognition:coordinated-16",
+        "v3-subject-verb-recognition:coordinated-2",
+        "v3-subject-verb-recognition:coordinated-3",
+        "v3-subject-verb-recognition:coordinated-5",
+        "v3-subject-verb-recognition:coordinated-7",
+        "v3-subject-verb-recognition:coordinated-9"
+      ],
+      "estimatedMinutes": 1
+    },
+    {
       "id": "54ea3b3e-e715-598d-ba96-45257ca81454",
       "nodeKey": "accorder_sujet_verbe_ecrit",
       "facetKey": "accorder_sujet_verbe_ecrit::construction:adjacent",
@@ -174512,6 +176126,699 @@
     }
   ],
   "teachingContent": [
+    {
+      "id": "french-v3-teaching:agreement:adjacent:recognition",
+      "nodeKey": "accorder_sujet_verbe_ecrit",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:adjacent",
+      "mode": "recognition",
+      "status": "published_pending_review",
+      "titleFr": "Accorder le verbe avec le sujet placé juste avant",
+      "learnerQuestionFr": "Pourquoi écrit-on « elle dessine », mais « elles dessinent » ?",
+      "steps": [
+        {
+          "exampleFr": "La voisine dessine. Les voisines dessinent.",
+          "explanationFr": "La première phrase parle d’une seule voisine; la seconde, de plusieurs. La fin du verbe change à l’écrit, même si dessine et dessinent se prononcent de la même façon."
+        },
+        {
+          "exampleFr": "La voisine → elle → dessine\nLes voisines → elles → dessinent",
+          "explanationFr": "Le sujet indique ici qui dessine. Remplace le groupe sujet par elle ou elles : ce pronom aide à choisir la forme du verbe. On appelle ce lien l’accord du verbe avec son sujet."
+        },
+        {
+          "exampleFr": "Le rideau bouge. Les rideaux bougent.",
+          "explanationFr": "Le sujet peut aussi désigner un objet. Avec il, bouger s’écrit bouge; avec ils, bougent. On ne met pas un s au verbe simplement parce que le nom est au pluriel."
+        }
+      ],
+      "takeawayFr": "Repère le sujet, remplace-le par il, elle, ils ou elles, puis choisis la forme correspondante du verbe.",
+      "boundaryFr": "Ces exercices portent sur un sujet placé juste avant un verbe au présent, à la troisième personne. Les terminaisons ne sont pas les mêmes pour tous les verbes : elles finissent, elles vont. Savoir accorder ces phrases ne prouve pas encore que tu sais le faire dans un texte entier.",
+      "practice": [
+        {
+          "id": "agreement-adjacent-guide-1:recognition",
+          "promptFr": "Choisis la forme de « aspirer » au présent. Choisis une réponse.\n\nLe robot ___ les miettes.",
+          "answerFr": "aspire",
+          "hintFr": "Le sujet est « Le robot ». Le robot peut être remplacé par il, au singulier.",
+          "explanationFr": "Le robot aspire les miettes.\nLe robot peut être remplacé par il, au singulier. On écrit donc « aspire ».",
+          "choices": [
+            "aspire",
+            "aspirent",
+            "aspirez"
+          ]
+        },
+        {
+          "id": "agreement-adjacent-guide-2:recognition",
+          "promptFr": "Choisis la forme de « visiter » au présent. Choisis une réponse.\n\nLes touristes ___ le musée.",
+          "answerFr": "visitent",
+          "hintFr": "Le sujet est « Les touristes ». Le groupe « Les touristes » peut être remplacé par ils, au pluriel.",
+          "explanationFr": "Les touristes visitent le musée.\nLe groupe « Les touristes » peut être remplacé par ils, au pluriel. On écrit donc « visitent ».",
+          "choices": [
+            "visitent",
+            "visite",
+            "visitez"
+          ]
+        },
+        {
+          "id": "agreement-adjacent-guide-3:recognition",
+          "promptFr": "Choisis la forme de « éclairer » au présent. Choisis une réponse.\n\nCette lampe ___ le couloir.",
+          "answerFr": "éclaire",
+          "hintFr": "Le sujet est « Cette lampe ». Le groupe « Cette lampe » peut être remplacé par elle, au singulier.",
+          "explanationFr": "Cette lampe éclaire le couloir.\nLe groupe « Cette lampe » peut être remplacé par elle, au singulier. On écrit donc « éclaire ».",
+          "choices": [
+            "éclaire",
+            "éclairent",
+            "éclairez"
+          ]
+        },
+        {
+          "id": "agreement-adjacent-guide-4:recognition",
+          "promptFr": "Choisis la forme de « trembler » au présent. Choisis une réponse.\n\nLes branches ___ au vent.",
+          "answerFr": "tremblent",
+          "hintFr": "Le sujet est « Les branches ». Le groupe « Les branches » peut être remplacé par elles, au pluriel.",
+          "explanationFr": "Les branches tremblent au vent.\nLe groupe « Les branches » peut être remplacé par elles, au pluriel. On écrit donc « tremblent ».",
+          "choices": [
+            "tremblent",
+            "tremble",
+            "tremblez"
+          ]
+        }
+      ],
+      "materialExposure": {
+        "words": [
+          {
+            "lemma": "dessiner",
+            "form": "dessine"
+          },
+          {
+            "lemma": "bouger",
+            "form": "bouge"
+          },
+          {
+            "lemma": "finir",
+            "form": "finissent"
+          },
+          {
+            "lemma": "aller",
+            "form": "vont"
+          },
+          {
+            "lemma": "aspirer",
+            "form": "aspirer"
+          },
+          {
+            "lemma": "visiter",
+            "form": "visiter"
+          },
+          {
+            "lemma": "éclairer",
+            "form": "éclairer"
+          },
+          {
+            "lemma": "trembler",
+            "form": "trembler"
+          }
+        ],
+        "sentences": [
+          "La voisine dessine. Les voisines dessinent.",
+          "La voisine → elle → dessine\nLes voisines → elles → dessinent",
+          "Le rideau bouge. Les rideaux bougent.",
+          "Le robot aspire les miettes.",
+          "Les touristes visitent le musée.",
+          "Cette lampe éclaire le couloir.",
+          "Les branches tremblent au vent."
+        ]
+      },
+      "assessmentExposureIds": [
+        "v3-granular-forms:present-application-context:finir:1s:12",
+        "v3-granular-forms:present-application-context:finir:2p:16",
+        "v3-granular-forms:present-application-context:finir:3s:20",
+        "v3-granular-forms:produire_conditionnel_present:aller:1p:m:affirmative",
+        "v3-granular-forms:produire_conditionnel_present:aller:1s:m:affirmative",
+        "v3-granular-forms:produire_conditionnel_present:aller:2p:m:affirmative",
+        "v3-granular-forms:produire_conditionnel_present:aller:2s:m:affirmative",
+        "v3-granular-forms:produire_conditionnel_present:aller:3p:f:affirmative",
+        "v3-granular-forms:produire_conditionnel_present:aller:3p:m:affirmative",
+        "v3-granular-forms:produire_conditionnel_present:aller:3s:f:affirmative",
+        "v3-granular-forms:produire_conditionnel_present:aller:3s:m:affirmative",
+        "v3-granular-forms:produire_conditionnel_present:finir:1p:m:affirmative",
+        "v3-granular-forms:produire_conditionnel_present:finir:1s:m:affirmative",
+        "v3-granular-forms:produire_conditionnel_present:finir:2p:m:affirmative",
+        "v3-granular-forms:produire_conditionnel_present:finir:2s:m:affirmative",
+        "v3-granular-forms:produire_conditionnel_present:finir:3p:f:affirmative",
+        "v3-granular-forms:produire_conditionnel_present:finir:3p:m:affirmative",
+        "v3-granular-forms:produire_conditionnel_present:finir:3s:f:affirmative",
+        "v3-granular-forms:produire_conditionnel_present:finir:3s:m:affirmative",
+        "v3-granular-forms:produire_futur_proche:aller:1p:m:affirmative",
+        "v3-granular-forms:produire_futur_proche:aller:1s:m:affirmative",
+        "v3-granular-forms:produire_futur_proche:aller:2p:m:affirmative",
+        "v3-granular-forms:produire_futur_proche:aller:2s:m:affirmative",
+        "v3-granular-forms:produire_futur_proche:aller:3p:f:affirmative",
+        "v3-granular-forms:produire_futur_proche:aller:3p:m:affirmative",
+        "v3-granular-forms:produire_futur_proche:aller:3s:f:affirmative",
+        "v3-granular-forms:produire_futur_proche:aller:3s:m:affirmative",
+        "v3-granular-forms:produire_futur_proche:finir:1p:m:affirmative",
+        "v3-granular-forms:produire_futur_proche:finir:1s:m:affirmative",
+        "v3-granular-forms:produire_futur_proche:finir:2p:m:affirmative",
+        "v3-granular-forms:produire_futur_proche:finir:2s:m:affirmative",
+        "v3-granular-forms:produire_futur_proche:finir:3p:f:affirmative",
+        "v3-granular-forms:produire_futur_proche:finir:3p:m:affirmative",
+        "v3-granular-forms:produire_futur_proche:finir:3s:f:affirmative",
+        "v3-granular-forms:produire_futur_proche:finir:3s:m:affirmative",
+        "v3-granular-forms:produire_futur_simple:aller:1p:m:affirmative",
+        "v3-granular-forms:produire_futur_simple:aller:1s:m:affirmative",
+        "v3-granular-forms:produire_futur_simple:aller:2p:m:affirmative",
+        "v3-granular-forms:produire_futur_simple:aller:2s:m:affirmative",
+        "v3-granular-forms:produire_futur_simple:aller:3p:f:affirmative",
+        "v3-granular-forms:produire_futur_simple:aller:3p:m:affirmative",
+        "v3-granular-forms:produire_futur_simple:aller:3s:f:affirmative",
+        "v3-granular-forms:produire_futur_simple:aller:3s:m:affirmative",
+        "v3-granular-forms:produire_futur_simple:finir:1p:m:affirmative",
+        "v3-granular-forms:produire_futur_simple:finir:1s:m:affirmative",
+        "v3-granular-forms:produire_futur_simple:finir:2p:m:affirmative",
+        "v3-granular-forms:produire_futur_simple:finir:2s:m:affirmative",
+        "v3-granular-forms:produire_futur_simple:finir:3p:f:affirmative",
+        "v3-granular-forms:produire_futur_simple:finir:3p:m:affirmative",
+        "v3-granular-forms:produire_futur_simple:finir:3s:f:affirmative",
+        "v3-granular-forms:produire_futur_simple:finir:3s:m:affirmative",
+        "v3-granular-forms:produire_imparfait:aller:1p:m:affirmative",
+        "v3-granular-forms:produire_imparfait:aller:1s:m:affirmative",
+        "v3-granular-forms:produire_imparfait:aller:2p:m:affirmative",
+        "v3-granular-forms:produire_imparfait:aller:2s:m:affirmative",
+        "v3-granular-forms:produire_imparfait:aller:3p:f:affirmative",
+        "v3-granular-forms:produire_imparfait:aller:3p:m:affirmative",
+        "v3-granular-forms:produire_imparfait:aller:3s:f:affirmative",
+        "v3-granular-forms:produire_imparfait:aller:3s:m:affirmative",
+        "v3-granular-forms:produire_imparfait:finir:1p:m:affirmative",
+        "v3-granular-forms:produire_imparfait:finir:1s:m:affirmative",
+        "v3-granular-forms:produire_imparfait:finir:2p:m:affirmative",
+        "v3-granular-forms:produire_imparfait:finir:2s:m:affirmative",
+        "v3-granular-forms:produire_imparfait:finir:3p:f:affirmative",
+        "v3-granular-forms:produire_imparfait:finir:3p:m:affirmative",
+        "v3-granular-forms:produire_imparfait:finir:3s:f:affirmative",
+        "v3-granular-forms:produire_imparfait:finir:3s:m:affirmative",
+        "v3-granular-forms:produire_passe_compose:aller:1p:m:affirmative",
+        "v3-granular-forms:produire_passe_compose:aller:1s:m:affirmative",
+        "v3-granular-forms:produire_passe_compose:aller:2p:m:affirmative",
+        "v3-granular-forms:produire_passe_compose:aller:2s:m:affirmative",
+        "v3-granular-forms:produire_passe_compose:aller:3p:f:affirmative",
+        "v3-granular-forms:produire_passe_compose:aller:3p:m:affirmative",
+        "v3-granular-forms:produire_passe_compose:aller:3s:f:affirmative",
+        "v3-granular-forms:produire_passe_compose:aller:3s:m:affirmative",
+        "v3-granular-forms:produire_passe_compose:finir:1p:m:affirmative",
+        "v3-granular-forms:produire_passe_compose:finir:1s:m:affirmative",
+        "v3-granular-forms:produire_passe_compose:finir:2p:m:affirmative",
+        "v3-granular-forms:produire_passe_compose:finir:2s:m:affirmative",
+        "v3-granular-forms:produire_passe_compose:finir:3p:f:affirmative",
+        "v3-granular-forms:produire_passe_compose:finir:3p:m:affirmative",
+        "v3-granular-forms:produire_passe_compose:finir:3s:f:affirmative",
+        "v3-granular-forms:produire_passe_compose:finir:3s:m:affirmative",
+        "v3-granular-forms:produire_passe_recent:aller:1p:m:affirmative",
+        "v3-granular-forms:produire_passe_recent:aller:1s:m:affirmative",
+        "v3-granular-forms:produire_passe_recent:aller:2p:m:affirmative",
+        "v3-granular-forms:produire_passe_recent:aller:2s:m:affirmative",
+        "v3-granular-forms:produire_passe_recent:aller:3p:f:affirmative",
+        "v3-granular-forms:produire_passe_recent:aller:3p:m:affirmative",
+        "v3-granular-forms:produire_passe_recent:aller:3s:f:affirmative",
+        "v3-granular-forms:produire_passe_recent:aller:3s:m:affirmative",
+        "v3-granular-forms:produire_passe_recent:finir:1p:m:affirmative",
+        "v3-granular-forms:produire_passe_recent:finir:1s:m:affirmative",
+        "v3-granular-forms:produire_passe_recent:finir:2p:m:affirmative",
+        "v3-granular-forms:produire_passe_recent:finir:2s:m:affirmative",
+        "v3-granular-forms:produire_passe_recent:finir:3p:f:affirmative",
+        "v3-granular-forms:produire_passe_recent:finir:3p:m:affirmative",
+        "v3-granular-forms:produire_passe_recent:finir:3s:f:affirmative",
+        "v3-granular-forms:produire_passe_recent:finir:3s:m:affirmative",
+        "v3-granular-forms:produire_passe_simple:aller:1p:m:affirmative",
+        "v3-granular-forms:produire_passe_simple:aller:1s:m:affirmative",
+        "v3-granular-forms:produire_passe_simple:aller:2p:m:affirmative",
+        "v3-granular-forms:produire_passe_simple:aller:2s:m:affirmative",
+        "v3-granular-forms:produire_passe_simple:aller:3p:f:affirmative",
+        "v3-granular-forms:produire_passe_simple:aller:3p:m:affirmative",
+        "v3-granular-forms:produire_passe_simple:aller:3s:f:affirmative",
+        "v3-granular-forms:produire_passe_simple:aller:3s:m:affirmative",
+        "v3-granular-forms:produire_plus_que_parfait:aller:1p:m:affirmative",
+        "v3-granular-forms:produire_plus_que_parfait:aller:1s:m:affirmative",
+        "v3-granular-forms:produire_plus_que_parfait:aller:2p:m:affirmative",
+        "v3-granular-forms:produire_plus_que_parfait:aller:2s:m:affirmative",
+        "v3-granular-forms:produire_plus_que_parfait:aller:3p:f:affirmative",
+        "v3-granular-forms:produire_plus_que_parfait:aller:3p:m:affirmative",
+        "v3-granular-forms:produire_plus_que_parfait:aller:3s:f:affirmative",
+        "v3-granular-forms:produire_plus_que_parfait:aller:3s:m:affirmative",
+        "v3-granular-forms:produire_plus_que_parfait:finir:1p:m:affirmative",
+        "v3-granular-forms:produire_plus_que_parfait:finir:1s:m:affirmative",
+        "v3-granular-forms:produire_plus_que_parfait:finir:2p:m:affirmative",
+        "v3-granular-forms:produire_plus_que_parfait:finir:2s:m:affirmative",
+        "v3-granular-forms:produire_plus_que_parfait:finir:3p:f:affirmative",
+        "v3-granular-forms:produire_plus_que_parfait:finir:3p:m:affirmative",
+        "v3-granular-forms:produire_plus_que_parfait:finir:3s:f:affirmative",
+        "v3-granular-forms:produire_plus_que_parfait:finir:3s:m:affirmative",
+        "v3-granular-forms:produire_present_indicatif:aller:1p:m:affirmative",
+        "v3-granular-forms:produire_present_indicatif:aller:1s:m:affirmative",
+        "v3-granular-forms:produire_present_indicatif:aller:2p:m:affirmative",
+        "v3-granular-forms:produire_present_indicatif:aller:2s:m:affirmative",
+        "v3-granular-forms:produire_present_indicatif:aller:3p:f:affirmative",
+        "v3-granular-forms:produire_present_indicatif:aller:3p:m:affirmative",
+        "v3-granular-forms:produire_present_indicatif:aller:3s:f:affirmative",
+        "v3-granular-forms:produire_present_indicatif:aller:3s:m:affirmative",
+        "v3-granular-forms:produire_present_indicatif:finir:1p:m:affirmative",
+        "v3-granular-forms:produire_present_indicatif:finir:1s:m:affirmative",
+        "v3-granular-forms:produire_present_indicatif:finir:2p:m:affirmative",
+        "v3-granular-forms:produire_present_indicatif:finir:2s:m:affirmative",
+        "v3-granular-forms:produire_present_indicatif:finir:3p:f:affirmative",
+        "v3-granular-forms:produire_present_indicatif:finir:3p:m:affirmative",
+        "v3-granular-forms:produire_present_indicatif:finir:3s:f:affirmative",
+        "v3-granular-forms:produire_present_indicatif:finir:3s:m:affirmative"
+      ]
+    },
+    {
+      "id": "french-v3-teaching:agreement:separated:recognition",
+      "nodeKey": "accorder_sujet_verbe_ecrit",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:separated",
+      "mode": "recognition",
+      "status": "published_pending_review",
+      "titleFr": "Retrouver le sujet malgré les mots entre les deux",
+      "learnerQuestionFr": "Dans « Le panier de pommes tombe », faut-il suivre panier ou pommes ?",
+      "steps": [
+        {
+          "exampleFr": "Le panier de pommes tombe.",
+          "explanationFr": "C’est le panier qui tombe. Le groupe de pommes précise son contenu. Le mot principal du groupe sujet, appelé noyau, est panier : il est singulier. On écrit tombe, même si pommes est pluriel."
+        },
+        {
+          "exampleFr": "Les paniers de la marchande tombent.",
+          "explanationFr": "Cette fois, le noyau est paniers. Tout le groupe sujet peut être remplacé par ils. Marchande est plus proche du verbe, mais ce nom ne commande pas son accord."
+        },
+        {
+          "exampleFr": "La gardienne, près des portes, patiente.",
+          "explanationFr": "Près des portes indique un lieu. En retirant cette précision, on obtient La gardienne patiente. Le sujet reste au singulier : la proximité du mot portes ne change rien."
+        }
+      ],
+      "takeawayFr": "Ne choisis pas automatiquement le nom le plus proche. Retrouve le groupe sujet et son noyau; vérifie quel pronom peut remplacer tout le groupe.",
+      "boundaryFr": "Cette leçon utilise des groupes avec un noyau clairement singulier ou pluriel. Les expressions de quantité comme beaucoup de et les accords avec des noms collectifs demandent d’autres repères.",
+      "practice": [
+        {
+          "id": "agreement-separated-guide-1:recognition",
+          "promptFr": "Choisis la forme de « rouler » au présent. Choisis une réponse.\n\nLe sac de billes ___ dans l’escalier.",
+          "answerFr": "roule",
+          "hintFr": "Le sujet est « Le sac de billes ». Le noyau sac est singulier : on peut remplacer le groupe par il.",
+          "explanationFr": "Le sac de billes roule dans l’escalier.\nLe noyau sac est singulier : on peut remplacer le groupe par il. On écrit donc « roule ».",
+          "choices": [
+            "roule",
+            "roulent",
+            "roulez"
+          ]
+        },
+        {
+          "id": "agreement-separated-guide-2:recognition",
+          "promptFr": "Choisis la forme de « bouger » au présent. Choisis une réponse.\n\nLes touches du piano ___ sous ses doigts.",
+          "answerFr": "bougent",
+          "hintFr": "Le sujet est « Les touches du piano ». Le noyau touches est pluriel : on peut remplacer le groupe par elles.",
+          "explanationFr": "Les touches du piano bougent sous ses doigts.\nLe noyau touches est pluriel : on peut remplacer le groupe par elles. On écrit donc « bougent ».",
+          "choices": [
+            "bougent",
+            "bouge",
+            "bougez"
+          ]
+        },
+        {
+          "id": "agreement-separated-guide-3:recognition",
+          "promptFr": "Choisis la forme de « accorder » au présent. Choisis une réponse.\n\nLa musicienne, devant les enfants, ___ sa guitare.",
+          "answerFr": "accorde",
+          "hintFr": "Le sujet est « La musicienne ». Devant les enfants précise le lieu. Le sujet peut être remplacé par elle.",
+          "explanationFr": "La musicienne, devant les enfants, accorde sa guitare.\nDevant les enfants précise le lieu. Le sujet peut être remplacé par elle. On écrit donc « accorde ».",
+          "choices": [
+            "accorde",
+            "accordent",
+            "accordez"
+          ]
+        },
+        {
+          "id": "agreement-separated-guide-4:recognition",
+          "promptFr": "Choisis la forme de « rouiller » au présent. Choisis une réponse.\n\nLes vélos de ma sœur ___ sous la pluie.",
+          "answerFr": "rouillent",
+          "hintFr": "Le sujet est « Les vélos de ma sœur ». Le noyau vélos est pluriel. Sœur ne commande pas l’accord.",
+          "explanationFr": "Les vélos de ma sœur rouillent sous la pluie.\nLe noyau vélos est pluriel. Sœur ne commande pas l’accord. On écrit donc « rouillent ».",
+          "choices": [
+            "rouillent",
+            "rouille",
+            "rouillez"
+          ]
+        }
+      ],
+      "materialExposure": {
+        "words": [
+          {
+            "lemma": "tomber",
+            "form": "tombe"
+          },
+          {
+            "lemma": "patienter",
+            "form": "patiente"
+          },
+          {
+            "lemma": "rouler",
+            "form": "rouler"
+          },
+          {
+            "lemma": "bouger",
+            "form": "bouger"
+          },
+          {
+            "lemma": "accorder",
+            "form": "accorder"
+          },
+          {
+            "lemma": "rouiller",
+            "form": "rouiller"
+          }
+        ],
+        "sentences": [
+          "Le panier de pommes tombe.",
+          "Les paniers de la marchande tombent.",
+          "La gardienne, près des portes, patiente.",
+          "Le sac de billes roule dans l’escalier.",
+          "Les touches du piano bougent sous ses doigts.",
+          "La musicienne, devant les enfants, accorde sa guitare.",
+          "Les vélos de ma sœur rouillent sous la pluie."
+        ]
+      },
+      "assessmentExposureIds": [
+        "v3-agreement:additional-leaf",
+        "v3-on-om:production-tomber",
+        "v3-spelling:nasal-tomber"
+      ]
+    },
+    {
+      "id": "french-v3-teaching:agreement:inverted:recognition",
+      "nodeKey": "accorder_sujet_verbe_ecrit",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:inverted",
+      "mode": "recognition",
+      "status": "published_pending_review",
+      "titleFr": "Accorder quand le sujet vient après le verbe",
+      "learnerQuestionFr": "Dans « Où habitent tes cousins ? », quel mot commande habitent ?",
+      "steps": [
+        {
+          "exampleFr": "Où habitent tes cousins ? Tes cousins habitent ici.",
+          "explanationFr": "La question place le sujet tes cousins après le verbe. Remettre le sujet devant aide à voir le lien : tes cousins correspond à ils, donc habitent."
+        },
+        {
+          "exampleFr": "Au fond des grottes coule une rivière. Une rivière coule au fond des grottes.",
+          "explanationFr": "Une rivière est le sujet, au singulier. Au fond des grottes indique un lieu. Le pluriel de grottes ne commande pas l’accord du verbe coule."
+        },
+        {
+          "exampleFr": "Sous le pont passent deux péniches. Deux péniches passent sous le pont.",
+          "explanationFr": "La position change, mais le nombre du sujet reste le même. Deux péniches correspond à elles : on écrit passent."
+        }
+      ],
+      "takeawayFr": "Cherche aussi le sujet après le verbe. Remets-le mentalement devant, puis choisis la forme du verbe qui lui correspond.",
+      "boundaryFr": "Ces exercices portent sur un sujet nominal placé après le verbe. Les questions avec un pronom et un trait d’union, comme vient-elle, nécessitent aussi des règles de ponctuation qui ne sont pas travaillées ici.",
+      "practice": [
+        {
+          "id": "agreement-inverted-guide-1:recognition",
+          "promptFr": "Choisis la forme de « patienter » au présent. Choisis une réponse.\n\nPrès des rochers ___ un pêcheur.",
+          "answerFr": "patiente",
+          "hintFr": "Le sujet est « un pêcheur ». Un pêcheur patiente : le sujet est singulier, même après le verbe.",
+          "explanationFr": "Près des rochers patiente un pêcheur.\nUn pêcheur patiente : le sujet est singulier, même après le verbe. On écrit donc « patiente ».",
+          "choices": [
+            "patiente",
+            "patientent",
+            "patientez"
+          ]
+        },
+        {
+          "id": "agreement-inverted-guide-2:recognition",
+          "promptFr": "Choisis la forme de « briller » au présent. Choisis une réponse.\n\nDans la vitrine ___ les bijoux.",
+          "answerFr": "brillent",
+          "hintFr": "Le sujet est « les bijoux ». Les bijoux brillent : le sujet est pluriel. Vitrine indique un lieu.",
+          "explanationFr": "Dans la vitrine brillent les bijoux.\nLes bijoux brillent : le sujet est pluriel. Vitrine indique un lieu. On écrit donc « brillent ».",
+          "choices": [
+            "brillent",
+            "brille",
+            "brillez"
+          ]
+        },
+        {
+          "id": "agreement-inverted-guide-3:recognition",
+          "promptFr": "Choisis la forme de « débuter » au présent. Choisis une réponse.\n\nQuand ___ la répétition ?",
+          "answerFr": "débute",
+          "hintFr": "Le sujet est « la répétition ». La répétition débute à une certaine heure : le sujet est singulier.",
+          "explanationFr": "Quand débute la répétition ?\nLa répétition débute à une certaine heure : le sujet est singulier. On écrit donc « débute ».",
+          "choices": [
+            "débute",
+            "débutent",
+            "débutez"
+          ]
+        },
+        {
+          "id": "agreement-inverted-guide-4:recognition",
+          "promptFr": "Choisis la forme de « scintiller » au présent. Choisis une réponse.\n\nAu loin ___ les lumières du village.",
+          "answerFr": "scintillent",
+          "hintFr": "Le sujet est « les lumières du village ». Le noyau lumières est pluriel; on peut remplacer le groupe par elles.",
+          "explanationFr": "Au loin scintillent les lumières du village.\nLe noyau lumières est pluriel; on peut remplacer le groupe par elles. On écrit donc « scintillent ».",
+          "choices": [
+            "scintillent",
+            "scintille",
+            "scintillez"
+          ]
+        }
+      ],
+      "materialExposure": {
+        "words": [
+          {
+            "lemma": "habiter",
+            "form": "habitent"
+          },
+          {
+            "lemma": "couler",
+            "form": "coule"
+          },
+          {
+            "lemma": "passer",
+            "form": "passent"
+          },
+          {
+            "lemma": "venir",
+            "form": "vient"
+          },
+          {
+            "lemma": "patienter",
+            "form": "patienter"
+          },
+          {
+            "lemma": "briller",
+            "form": "briller"
+          },
+          {
+            "lemma": "débuter",
+            "form": "débuter"
+          },
+          {
+            "lemma": "scintiller",
+            "form": "scintiller"
+          }
+        ],
+        "sentences": [
+          "Où habitent tes cousins ? Tes cousins habitent ici.",
+          "Au fond des grottes coule une rivière. Une rivière coule au fond des grottes.",
+          "Sous le pont passent deux péniches. Deux péniches passent sous le pont.",
+          "Près des rochers patiente un pêcheur.",
+          "Dans la vitrine brillent les bijoux.",
+          "Quand débute la répétition ?",
+          "Au loin scintillent les lumières du village."
+        ]
+      },
+      "assessmentExposureIds": [
+        "v3-granular-forms:produire_conditionnel_present:venir:1p:m:affirmative",
+        "v3-granular-forms:produire_conditionnel_present:venir:1s:m:affirmative",
+        "v3-granular-forms:produire_conditionnel_present:venir:2p:m:affirmative",
+        "v3-granular-forms:produire_conditionnel_present:venir:2s:m:affirmative",
+        "v3-granular-forms:produire_conditionnel_present:venir:3p:f:affirmative",
+        "v3-granular-forms:produire_conditionnel_present:venir:3p:m:affirmative",
+        "v3-granular-forms:produire_conditionnel_present:venir:3s:f:affirmative",
+        "v3-granular-forms:produire_conditionnel_present:venir:3s:m:affirmative",
+        "v3-granular-forms:produire_futur_proche:venir:1p:m:affirmative",
+        "v3-granular-forms:produire_futur_proche:venir:1s:m:affirmative",
+        "v3-granular-forms:produire_futur_proche:venir:2p:m:affirmative",
+        "v3-granular-forms:produire_futur_proche:venir:2s:m:affirmative",
+        "v3-granular-forms:produire_futur_proche:venir:3p:f:affirmative",
+        "v3-granular-forms:produire_futur_proche:venir:3p:m:affirmative",
+        "v3-granular-forms:produire_futur_proche:venir:3s:f:affirmative",
+        "v3-granular-forms:produire_futur_proche:venir:3s:m:affirmative",
+        "v3-granular-forms:produire_futur_simple:venir:1p:m:affirmative",
+        "v3-granular-forms:produire_futur_simple:venir:1s:m:affirmative",
+        "v3-granular-forms:produire_futur_simple:venir:2p:m:affirmative",
+        "v3-granular-forms:produire_futur_simple:venir:2s:m:affirmative",
+        "v3-granular-forms:produire_futur_simple:venir:3p:f:affirmative",
+        "v3-granular-forms:produire_futur_simple:venir:3p:m:affirmative",
+        "v3-granular-forms:produire_futur_simple:venir:3s:f:affirmative",
+        "v3-granular-forms:produire_futur_simple:venir:3s:m:affirmative",
+        "v3-granular-forms:produire_imparfait:venir:1p:m:affirmative",
+        "v3-granular-forms:produire_imparfait:venir:1s:m:affirmative",
+        "v3-granular-forms:produire_imparfait:venir:2p:m:affirmative",
+        "v3-granular-forms:produire_imparfait:venir:2s:m:affirmative",
+        "v3-granular-forms:produire_imparfait:venir:3p:f:affirmative",
+        "v3-granular-forms:produire_imparfait:venir:3p:m:affirmative",
+        "v3-granular-forms:produire_imparfait:venir:3s:f:affirmative",
+        "v3-granular-forms:produire_imparfait:venir:3s:m:affirmative",
+        "v3-granular-forms:produire_passe_compose:venir:1p:m:affirmative",
+        "v3-granular-forms:produire_passe_compose:venir:1s:m:affirmative",
+        "v3-granular-forms:produire_passe_compose:venir:2p:m:affirmative",
+        "v3-granular-forms:produire_passe_compose:venir:2s:m:affirmative",
+        "v3-granular-forms:produire_passe_compose:venir:3p:f:affirmative",
+        "v3-granular-forms:produire_passe_compose:venir:3p:m:affirmative",
+        "v3-granular-forms:produire_passe_compose:venir:3s:f:affirmative",
+        "v3-granular-forms:produire_passe_compose:venir:3s:m:affirmative",
+        "v3-granular-forms:produire_passe_recent:venir:1p:m:affirmative",
+        "v3-granular-forms:produire_passe_recent:venir:1s:m:affirmative",
+        "v3-granular-forms:produire_passe_recent:venir:2p:m:affirmative",
+        "v3-granular-forms:produire_passe_recent:venir:2s:m:affirmative",
+        "v3-granular-forms:produire_passe_recent:venir:3p:f:affirmative",
+        "v3-granular-forms:produire_passe_recent:venir:3p:m:affirmative",
+        "v3-granular-forms:produire_passe_recent:venir:3s:f:affirmative",
+        "v3-granular-forms:produire_passe_recent:venir:3s:m:affirmative",
+        "v3-granular-forms:produire_passe_simple:venir:1p:m:affirmative",
+        "v3-granular-forms:produire_passe_simple:venir:1s:m:affirmative",
+        "v3-granular-forms:produire_passe_simple:venir:2p:m:affirmative",
+        "v3-granular-forms:produire_passe_simple:venir:2s:m:affirmative",
+        "v3-granular-forms:produire_passe_simple:venir:3p:f:affirmative",
+        "v3-granular-forms:produire_passe_simple:venir:3p:m:affirmative",
+        "v3-granular-forms:produire_passe_simple:venir:3s:f:affirmative",
+        "v3-granular-forms:produire_passe_simple:venir:3s:m:affirmative",
+        "v3-granular-forms:produire_plus_que_parfait:venir:1p:m:affirmative",
+        "v3-granular-forms:produire_plus_que_parfait:venir:1s:m:affirmative",
+        "v3-granular-forms:produire_plus_que_parfait:venir:2p:m:affirmative",
+        "v3-granular-forms:produire_plus_que_parfait:venir:2s:m:affirmative",
+        "v3-granular-forms:produire_plus_que_parfait:venir:3p:f:affirmative",
+        "v3-granular-forms:produire_plus_que_parfait:venir:3p:m:affirmative",
+        "v3-granular-forms:produire_plus_que_parfait:venir:3s:f:affirmative",
+        "v3-granular-forms:produire_plus_que_parfait:venir:3s:m:affirmative",
+        "v3-granular-forms:produire_present_indicatif:venir:1p:m:affirmative",
+        "v3-granular-forms:produire_present_indicatif:venir:1s:m:affirmative",
+        "v3-granular-forms:produire_present_indicatif:venir:2p:m:affirmative",
+        "v3-granular-forms:produire_present_indicatif:venir:2s:m:affirmative",
+        "v3-granular-forms:produire_present_indicatif:venir:3p:f:affirmative",
+        "v3-granular-forms:produire_present_indicatif:venir:3p:m:affirmative",
+        "v3-granular-forms:produire_present_indicatif:venir:3s:f:affirmative",
+        "v3-granular-forms:produire_present_indicatif:venir:3s:m:affirmative",
+        "v3-written-syllables:production-passer"
+      ]
+    },
+    {
+      "id": "french-v3-teaching:agreement:coordinated:recognition",
+      "nodeKey": "accorder_sujet_verbe_ecrit",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:coordinated",
+      "mode": "recognition",
+      "status": "published_pending_review",
+      "titleFr": "Accorder avec deux sujets reliés par et",
+      "learnerQuestionFr": "Pourquoi « Nora et Malik discutent » prend-il un verbe au pluriel ?",
+      "steps": [
+        {
+          "exampleFr": "Nora discute. Malik discute. Nora et Malik discutent.",
+          "explanationFr": "La troisième phrase réunit deux personnes distinctes avec et. Le groupe Nora et Malik peut être remplacé par ils : on écrit discutent."
+        },
+        {
+          "exampleFr": "La radio et la télévision fonctionnent.",
+          "explanationFr": "Chaque nom est singulier, mais les deux appareils forment ensemble un sujet pluriel. L’accord concerne tout le groupe, pas seulement télévision."
+        },
+        {
+          "exampleFr": "Le cousin et la cousine marchent. Le cousin, avec sa cousine, marche.",
+          "explanationFr": "Et relie ici deux sujets : ils marchent. Dans la seconde phrase, avec sa cousine est une précision détachée; le sujet reste le cousin : il marche. Les deux constructions ne fonctionnent pas de la même façon."
+        }
+      ],
+      "takeawayFr": "Quand et réunit deux personnes ou choses distinctes dans le sujet, prends-les ensemble pour choisir le pluriel du verbe.",
+      "boundaryFr": "On travaille ici des sujets à la troisième personne qui désignent des êtres ou choses distincts. Toi et moi, les groupes reliés par ou, et deux noms désignant une seule personne demandent d’autres règles.",
+      "practice": [
+        {
+          "id": "agreement-coordinated-guide-1:recognition",
+          "promptFr": "Choisis la forme de « fabriquer » au présent. Choisis une réponse.\n\nLe frère et la sœur ___ une cabane.",
+          "answerFr": "fabriquent",
+          "hintFr": "Le sujet est « Le frère et la sœur ». Deux personnes distinctes sont réunies par et : le sujet correspond à ils.",
+          "explanationFr": "Le frère et la sœur fabriquent une cabane.\nDeux personnes distinctes sont réunies par et : le sujet correspond à ils. On écrit donc « fabriquent ».",
+          "choices": [
+            "fabriquent",
+            "fabrique",
+            "fabriquez"
+          ]
+        },
+        {
+          "id": "agreement-coordinated-guide-2:recognition",
+          "promptFr": "Choisis la forme de « éclairer » au présent. Choisis une réponse.\n\nLa lune et les étoiles ___ le ciel.",
+          "answerFr": "éclairent",
+          "hintFr": "Le sujet est « La lune et les étoiles ». Les deux groupes sont réunis dans un sujet pluriel.",
+          "explanationFr": "La lune et les étoiles éclairent le ciel.\nLes deux groupes sont réunis dans un sujet pluriel. On écrit donc « éclairent ».",
+          "choices": [
+            "éclairent",
+            "éclaire",
+            "éclairez"
+          ]
+        },
+        {
+          "id": "agreement-coordinated-guide-3:recognition",
+          "promptFr": "Choisis la forme de « rester » au présent. Choisis une réponse.\n\nLa veste et l’écharpe ___ près du radiateur.",
+          "answerFr": "restent",
+          "hintFr": "Le sujet est « La veste et l’écharpe ». Deux vêtements distincts forment ensemble un sujet pluriel.",
+          "explanationFr": "La veste et l’écharpe restent près du radiateur.\nDeux vêtements distincts forment ensemble un sujet pluriel. On écrit donc « restent ».",
+          "choices": [
+            "restent",
+            "reste",
+            "restez"
+          ]
+        },
+        {
+          "id": "agreement-coordinated-guide-4:recognition",
+          "promptFr": "Choisis la forme de « inventer » au présent. Choisis une réponse.\n\nInès et Jade ___ la chorégraphie.",
+          "answerFr": "inventent",
+          "hintFr": "Le sujet est « Inès et Jade ». Les deux personnes peuvent être remplacées par elles, au pluriel.",
+          "explanationFr": "Inès et Jade inventent la chorégraphie.\nLes deux personnes peuvent être remplacées par elles, au pluriel. On écrit donc « inventent ».",
+          "choices": [
+            "inventent",
+            "invente",
+            "inventez"
+          ]
+        }
+      ],
+      "materialExposure": {
+        "words": [
+          {
+            "lemma": "discuter",
+            "form": "discute"
+          },
+          {
+            "lemma": "fonctionner",
+            "form": "fonctionnent"
+          },
+          {
+            "lemma": "marcher",
+            "form": "marchent"
+          },
+          {
+            "lemma": "fabriquer",
+            "form": "fabriquer"
+          },
+          {
+            "lemma": "éclairer",
+            "form": "éclairer"
+          },
+          {
+            "lemma": "rester",
+            "form": "rester"
+          },
+          {
+            "lemma": "inventer",
+            "form": "inventer"
+          }
+        ],
+        "sentences": [
+          "Nora discute. Malik discute. Nora et Malik discutent.",
+          "La radio et la télévision fonctionnent.",
+          "Le cousin et la cousine marchent. Le cousin, avec sa cousine, marche.",
+          "Le frère et la sœur fabriquent une cabane.",
+          "La lune et les étoiles éclairent le ciel.",
+          "La veste et l’écharpe restent près du radiateur.",
+          "Inès et Jade inventent la chorégraphie."
+        ]
+      },
+      "assessmentExposureIds": [
+        "v3-agreement:adjacent-manga",
+        "v3-agreement:separated-box"
+      ]
+    },
     {
       "id": "french-v3-teaching:written-adjective:recognition",
       "nodeKey": "accorder_adjectif_nom_ecrit",
@@ -178848,7 +181155,10 @@
         "v3-granular-forms:produire_present_indicatif:regarder:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:regarder:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:regarder:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:regarder:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:regarder:3s:m:affirmative",
+        "v3-subject-verb-recognition:adjacent-10",
+        "v3-subject-verb-recognition:coordinated-7",
+        "v3-subject-verb-recognition:separated-3"
       ]
     },
     {
@@ -179100,7 +181410,9 @@
         "v3-granular-forms:produire_present_indicatif:finir:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:finir:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:finir:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:finir:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:finir:3s:m:affirmative",
+        "v3-subject-verb-recognition:adjacent-14",
+        "v3-subject-verb-recognition:adjacent-9"
       ]
     },
     {
@@ -179354,7 +181666,8 @@
         "v3-granular-forms:produire_present_indicatif:nager:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:nager:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:nager:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:nager:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:nager:3s:m:affirmative",
+        "v3-subject-verb-recognition:inverted-2"
       ]
     },
     {
@@ -180984,7 +183297,8 @@
         "v3-granular-forms:produire_present_indicatif:sortir:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:sortir:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:sortir:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:sortir:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:sortir:3s:m:affirmative",
+        "v3-subject-verb-recognition:inverted-5"
       ]
     },
     {
@@ -181693,7 +184007,9 @@
         "v3-granular-forms:produire_present_indicatif:regarder:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:regarder:3s:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:regarder:3s:m:affirmative",
-        "v3-negation-recognition:5"
+        "v3-negation-recognition:5",
+        "v3-subject-verb-recognition:coordinated-7",
+        "v3-subject-verb-recognition:separated-11"
       ]
     },
     {
@@ -181946,7 +184262,9 @@
         "v3-granular-forms:produire_present_indicatif:finir:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:finir:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:finir:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:finir:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:finir:3s:m:affirmative",
+        "v3-subject-verb-recognition:adjacent-14",
+        "v3-subject-verb-recognition:adjacent-9"
       ]
     },
     {
@@ -182201,7 +184519,8 @@
         "v3-granular-forms:produire_present_indicatif:nager:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:nager:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:nager:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:nager:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:nager:3s:m:affirmative",
+        "v3-subject-verb-recognition:inverted-2"
       ]
     },
     {
@@ -183195,6 +185514,7 @@
         "v3-granular-forms:produire_present_indicatif:parler:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:parler:3s:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:parler:3s:m:affirmative",
+        "v3-subject-verb-recognition:separated-11",
         "v3-written-syllables:recognition-coller"
       ]
     },
@@ -183387,7 +185707,9 @@
         "v3-granular-forms:produire_present_indicatif:finir:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:finir:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:finir:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:finir:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:finir:3s:m:affirmative",
+        "v3-subject-verb-recognition:adjacent-14",
+        "v3-subject-verb-recognition:adjacent-9"
       ]
     },
     {
@@ -183730,7 +186052,8 @@
         "v3-granular-forms:produire_present_indicatif:voyager:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:voyager:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:voyager:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:voyager:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:voyager:3s:m:affirmative",
+        "v3-subject-verb-recognition:inverted-2"
       ]
     },
     {
@@ -184074,7 +186397,8 @@
         "v3-granular-forms:produire_present_indicatif:lancer:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:lancer:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:lancer:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:lancer:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:lancer:3s:m:affirmative",
+        "v3-subject-verb-recognition:separated-7"
       ]
     },
     {
@@ -185628,7 +187952,8 @@
         "v3-granular-forms:produire_present_indicatif:sortir:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:sortir:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:sortir:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:sortir:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:sortir:3s:m:affirmative",
+        "v3-subject-verb-recognition:inverted-5"
       ]
     },
     {
@@ -187943,6 +190268,7 @@
         "v3-granular-forms:produire_present_indicatif:être:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:être:3s:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:être:3s:m:affirmative",
+        "v3-subject-verb-recognition:separated-11",
         "v3-written-syllables:recognition-coller"
       ]
     },
@@ -188286,7 +190612,9 @@
         "v3-granular-forms:produire_present_indicatif:être:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:être:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:être:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:être:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:être:3s:m:affirmative",
+        "v3-subject-verb-recognition:adjacent-14",
+        "v3-subject-verb-recognition:adjacent-9"
       ]
     },
     {
@@ -188861,7 +191189,8 @@
         "v3-granular-forms:produire_present_indicatif:être:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:être:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:être:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:être:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:être:3s:m:affirmative",
+        "v3-subject-verb-recognition:inverted-2"
       ]
     },
     {
@@ -189437,7 +191766,8 @@
         "v3-granular-forms:produire_present_indicatif:être:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:être:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:être:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:être:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:être:3s:m:affirmative",
+        "v3-subject-verb-recognition:separated-7"
       ]
     },
     {
@@ -189629,6 +191959,7 @@
         "v3-granular-forms:produire_present_indicatif:parler:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:parler:3s:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:parler:3s:m:affirmative",
+        "v3-subject-verb-recognition:separated-11",
         "v3-written-syllables:recognition-coller"
       ]
     },
@@ -189821,7 +192152,9 @@
         "v3-granular-forms:produire_present_indicatif:finir:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:finir:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:finir:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:finir:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:finir:3s:m:affirmative",
+        "v3-subject-verb-recognition:adjacent-14",
+        "v3-subject-verb-recognition:adjacent-9"
       ]
     },
     {
@@ -190164,7 +192497,8 @@
         "v3-granular-forms:produire_present_indicatif:voyager:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:voyager:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:voyager:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:voyager:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:voyager:3s:m:affirmative",
+        "v3-subject-verb-recognition:inverted-2"
       ]
     },
     {
@@ -190508,7 +192842,8 @@
         "v3-granular-forms:produire_present_indicatif:lancer:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:lancer:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:lancer:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:lancer:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:lancer:3s:m:affirmative",
+        "v3-subject-verb-recognition:separated-7"
       ]
     },
     {
@@ -190700,6 +193035,7 @@
         "v3-granular-forms:produire_present_indicatif:parler:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:parler:3s:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:parler:3s:m:affirmative",
+        "v3-subject-verb-recognition:separated-11",
         "v3-written-syllables:recognition-coller"
       ]
     },
@@ -190892,7 +193228,9 @@
         "v3-granular-forms:produire_present_indicatif:finir:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:finir:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:finir:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:finir:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:finir:3s:m:affirmative",
+        "v3-subject-verb-recognition:adjacent-14",
+        "v3-subject-verb-recognition:adjacent-9"
       ]
     },
     {
@@ -191235,7 +193573,8 @@
         "v3-granular-forms:produire_present_indicatif:voyager:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:voyager:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:voyager:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:voyager:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:voyager:3s:m:affirmative",
+        "v3-subject-verb-recognition:inverted-2"
       ]
     },
     {
@@ -191579,7 +193918,8 @@
         "v3-granular-forms:produire_present_indicatif:lancer:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:lancer:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:lancer:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:lancer:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:lancer:3s:m:affirmative",
+        "v3-subject-verb-recognition:separated-7"
       ]
     },
     {
@@ -191994,6 +194334,7 @@
         "v3-granular-forms:produire_present_indicatif:être:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:être:3s:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:être:3s:m:affirmative",
+        "v3-subject-verb-recognition:separated-11",
         "v3-written-syllables:recognition-coller"
       ]
     },
@@ -192333,7 +194674,9 @@
         "v3-granular-forms:produire_present_indicatif:être:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:être:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:être:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:être:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:être:3s:m:affirmative",
+        "v3-subject-verb-recognition:adjacent-14",
+        "v3-subject-verb-recognition:adjacent-9"
       ]
     },
     {
@@ -192904,7 +195247,8 @@
         "v3-granular-forms:produire_present_indicatif:être:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:être:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:être:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:être:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:être:3s:m:affirmative",
+        "v3-subject-verb-recognition:inverted-2"
       ]
     },
     {
@@ -193476,7 +195820,8 @@
         "v3-granular-forms:produire_present_indicatif:être:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:être:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:être:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:être:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:être:3s:m:affirmative",
+        "v3-subject-verb-recognition:separated-7"
       ]
     },
     {
@@ -193815,6 +196160,8 @@
         "v3-granular-forms:produire_present_indicatif:être:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:être:3s:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:être:3s:m:affirmative",
+        "v3-subject-verb-recognition:inverted-13",
+        "v3-subject-verb-recognition:separated-11",
         "v3-written-syllables:recognition-coller"
       ]
     },
@@ -194154,7 +196501,9 @@
         "v3-granular-forms:produire_present_indicatif:partir:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:partir:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:partir:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:partir:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:partir:3s:m:affirmative",
+        "v3-subject-verb-recognition:adjacent-14",
+        "v3-subject-verb-recognition:adjacent-9"
       ]
     },
     {
@@ -194573,7 +196922,8 @@
         "v3-granular-forms:produire_present_indicatif:être:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:être:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:être:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:être:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:être:3s:m:affirmative",
+        "v3-subject-verb-recognition:inverted-2"
       ]
     },
     {
@@ -194993,7 +197343,8 @@
         "v3-granular-forms:produire_present_indicatif:être:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:être:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:être:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:être:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:être:3s:m:affirmative",
+        "v3-subject-verb-recognition:separated-7"
       ]
     },
     {
@@ -195398,6 +197749,7 @@
         "v3-granular-forms:produire_present_indicatif:venir:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:venir:3s:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:venir:3s:m:affirmative",
+        "v3-subject-verb-recognition:separated-11",
         "v3-written-syllables:recognition-coller"
       ]
     },
@@ -195732,7 +198084,9 @@
         "v3-granular-forms:produire_present_indicatif:venir:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:venir:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:venir:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:venir:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:venir:3s:m:affirmative",
+        "v3-subject-verb-recognition:adjacent-14",
+        "v3-subject-verb-recognition:adjacent-9"
       ]
     },
     {
@@ -196288,7 +198642,8 @@
         "v3-granular-forms:produire_present_indicatif:voyager:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:voyager:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:voyager:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:voyager:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:voyager:3s:m:affirmative",
+        "v3-subject-verb-recognition:inverted-2"
       ]
     },
     {
@@ -196774,7 +199129,8 @@
         "v3-granular-forms:produire_present_indicatif:venir:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:venir:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:venir:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:venir:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:venir:3s:m:affirmative",
+        "v3-subject-verb-recognition:separated-7"
       ]
     },
     {
@@ -199783,7 +202139,8 @@
         "v3-granular-forms:produire_present_indicatif:venir:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:venir:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:venir:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:venir:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:venir:3s:m:affirmative",
+        "v3-subject-verb-recognition:inverted-5"
       ]
     },
     {
@@ -200816,6 +203173,7 @@
         "v3-granular-forms:produire_present_indicatif:parler:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:parler:3s:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:parler:3s:m:affirmative",
+        "v3-subject-verb-recognition:separated-11",
         "v3-written-syllables:recognition-coller"
       ]
     },
@@ -201079,7 +203437,9 @@
         "v3-granular-forms:produire_present_indicatif:finir:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:finir:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:finir:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:finir:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:finir:3s:m:affirmative",
+        "v3-subject-verb-recognition:adjacent-14",
+        "v3-subject-verb-recognition:adjacent-9"
       ]
     },
     {
@@ -201493,7 +203853,8 @@
         "v3-granular-forms:produire_present_indicatif:voyager:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:voyager:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:voyager:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:voyager:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:voyager:3s:m:affirmative",
+        "v3-subject-verb-recognition:inverted-2"
       ]
     },
     {
@@ -201908,7 +204269,8 @@
         "v3-granular-forms:produire_present_indicatif:lancer:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:lancer:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:lancer:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:lancer:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:lancer:3s:m:affirmative",
+        "v3-subject-verb-recognition:separated-7"
       ]
     },
     {
@@ -203741,7 +206103,8 @@
         "v3-granular-forms:produire_present_indicatif:sortir:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:sortir:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:sortir:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:sortir:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:sortir:3s:m:affirmative",
+        "v3-subject-verb-recognition:inverted-5"
       ]
     },
     {
@@ -209819,7 +212182,8 @@
         "v3-granular-forms:produire_present_indicatif:sortir:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:sortir:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:sortir:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:sortir:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:sortir:3s:m:affirmative",
+        "v3-subject-verb-recognition:inverted-5"
       ]
     },
     {
@@ -212229,7 +214593,8 @@
         "v3-granular-forms:produire_present_indicatif:sortir:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:sortir:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:sortir:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:sortir:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:sortir:3s:m:affirmative",
+        "v3-subject-verb-recognition:inverted-5"
       ]
     },
     {
@@ -215608,7 +217973,8 @@
         "v3-granular-forms:produire_present_indicatif:sortir:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:sortir:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:sortir:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:sortir:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:sortir:3s:m:affirmative",
+        "v3-subject-verb-recognition:inverted-5"
       ]
     },
     {
@@ -218725,7 +221091,8 @@
         "v3-granular-forms:produire_present_indicatif:sortir:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:sortir:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:sortir:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:sortir:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:sortir:3s:m:affirmative",
+        "v3-subject-verb-recognition:inverted-5"
       ]
     },
     {
@@ -221081,7 +223448,8 @@
         "v3-granular-forms:produire_present_indicatif:sortir:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:sortir:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:sortir:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:sortir:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:sortir:3s:m:affirmative",
+        "v3-subject-verb-recognition:inverted-5"
       ]
     },
     {
@@ -227773,7 +230141,8 @@
       "assessmentExposureIds": [
         "v3-agreement:separated-coach",
         "v3-on-om:recognition-compote",
-        "v3-on-om:recognition-nombre"
+        "v3-on-om:recognition-nombre",
+        "v3-subject-verb-recognition:inverted-4"
       ]
     },
     {
@@ -228369,6 +230738,7 @@
         "v3-granular-forms:produire_present_indicatif:parler:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:parler:3s:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:parler:3s:m:affirmative",
+        "v3-subject-verb-recognition:separated-11",
         "v3-written-syllables:recognition-coller"
       ]
     },
@@ -228697,7 +231067,9 @@
         "v3-granular-forms:produire_present_indicatif:partir:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:partir:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:partir:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:partir:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:partir:3s:m:affirmative",
+        "v3-subject-verb-recognition:adjacent-14",
+        "v3-subject-verb-recognition:adjacent-9"
       ]
     },
     {
@@ -229029,7 +231401,8 @@
         "v3-granular-forms:produire_present_indicatif:voyager:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:voyager:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:voyager:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:voyager:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:voyager:3s:m:affirmative",
+        "v3-subject-verb-recognition:inverted-2"
       ]
     },
     {
@@ -229362,7 +231735,8 @@
         "v3-granular-forms:produire_present_indicatif:lancer:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:lancer:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:lancer:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:lancer:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:lancer:3s:m:affirmative",
+        "v3-subject-verb-recognition:separated-7"
       ]
     },
     {
@@ -230724,7 +233098,8 @@
         "v3-granular-forms:produire_present_indicatif:sortir:3p:f:affirmative",
         "v3-granular-forms:produire_present_indicatif:sortir:3p:m:affirmative",
         "v3-granular-forms:produire_present_indicatif:sortir:3s:f:affirmative",
-        "v3-granular-forms:produire_present_indicatif:sortir:3s:m:affirmative"
+        "v3-granular-forms:produire_present_indicatif:sortir:3s:m:affirmative",
+        "v3-subject-verb-recognition:inverted-5"
       ]
     },
     {
@@ -231713,6 +234088,102 @@
     }
   ],
   "teachingBindings": [
+    {
+      "id": "5b5bdc4c-e5b0-5e3b-a8e7-cd8c1205f4a1",
+      "nodeKey": "accorder_sujet_verbe_ecrit",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:adjacent",
+      "mode": "recognition",
+      "kind": "instruction",
+      "status": "published",
+      "titleFr": "Accorder le verbe avec le sujet placé juste avant",
+      "href": "/student/diagnostic",
+      "contentId": "french-v3-teaching:agreement:adjacent:recognition",
+      "estimatedMinutes": 4
+    },
+    {
+      "id": "8f975138-34cb-53b5-af7b-b19e88e5665b",
+      "nodeKey": "accorder_sujet_verbe_ecrit",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:adjacent",
+      "mode": "recognition",
+      "kind": "practice",
+      "status": "published",
+      "titleFr": "Accorder le verbe avec le sujet placé juste avant",
+      "href": "/student/diagnostic",
+      "contentId": "french-v3-teaching:agreement:adjacent:recognition",
+      "estimatedMinutes": 6
+    },
+    {
+      "id": "88c3e5b7-eab8-52a2-bc14-9593cc818dd5",
+      "nodeKey": "accorder_sujet_verbe_ecrit",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:separated",
+      "mode": "recognition",
+      "kind": "instruction",
+      "status": "published",
+      "titleFr": "Retrouver le sujet malgré les mots entre les deux",
+      "href": "/student/diagnostic",
+      "contentId": "french-v3-teaching:agreement:separated:recognition",
+      "estimatedMinutes": 4
+    },
+    {
+      "id": "4b1fa994-8b89-5776-8cf4-ac5587e94580",
+      "nodeKey": "accorder_sujet_verbe_ecrit",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:separated",
+      "mode": "recognition",
+      "kind": "practice",
+      "status": "published",
+      "titleFr": "Retrouver le sujet malgré les mots entre les deux",
+      "href": "/student/diagnostic",
+      "contentId": "french-v3-teaching:agreement:separated:recognition",
+      "estimatedMinutes": 6
+    },
+    {
+      "id": "2582bf89-0798-5978-b5d3-e85072a13c2f",
+      "nodeKey": "accorder_sujet_verbe_ecrit",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:inverted",
+      "mode": "recognition",
+      "kind": "instruction",
+      "status": "published",
+      "titleFr": "Accorder quand le sujet vient après le verbe",
+      "href": "/student/diagnostic",
+      "contentId": "french-v3-teaching:agreement:inverted:recognition",
+      "estimatedMinutes": 4
+    },
+    {
+      "id": "b90377a3-5951-53f0-a512-ac957db53b13",
+      "nodeKey": "accorder_sujet_verbe_ecrit",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:inverted",
+      "mode": "recognition",
+      "kind": "practice",
+      "status": "published",
+      "titleFr": "Accorder quand le sujet vient après le verbe",
+      "href": "/student/diagnostic",
+      "contentId": "french-v3-teaching:agreement:inverted:recognition",
+      "estimatedMinutes": 6
+    },
+    {
+      "id": "7895a054-5e27-5b37-a0bb-262d0355adb1",
+      "nodeKey": "accorder_sujet_verbe_ecrit",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:coordinated",
+      "mode": "recognition",
+      "kind": "instruction",
+      "status": "published",
+      "titleFr": "Accorder avec deux sujets reliés par et",
+      "href": "/student/diagnostic",
+      "contentId": "french-v3-teaching:agreement:coordinated:recognition",
+      "estimatedMinutes": 4
+    },
+    {
+      "id": "412c324a-83d5-5bf3-a159-49c506e633de",
+      "nodeKey": "accorder_sujet_verbe_ecrit",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:coordinated",
+      "mode": "recognition",
+      "kind": "practice",
+      "status": "published",
+      "titleFr": "Accorder avec deux sujets reliés par et",
+      "href": "/student/diagnostic",
+      "contentId": "french-v3-teaching:agreement:coordinated:recognition",
+      "estimatedMinutes": 6
+    },
     {
       "id": "890584f3-39fc-5dec-bdea-c4d4c7aee1be",
       "nodeKey": "accorder_adjectif_nom_ecrit",
@@ -239368,6 +241839,34 @@
   ],
   "teachingReadiness": [
     {
+      "lessonId": "french-v3-teaching:agreement:adjacent:recognition",
+      "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
+      "poolsAllocated": true,
+      "remainingCheckQuestions": 8,
+      "freshCheckAvailable": true
+    },
+    {
+      "lessonId": "french-v3-teaching:agreement:separated:recognition",
+      "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:separated",
+      "poolsAllocated": true,
+      "remainingCheckQuestions": 8,
+      "freshCheckAvailable": true
+    },
+    {
+      "lessonId": "french-v3-teaching:agreement:inverted:recognition",
+      "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:inverted",
+      "poolsAllocated": true,
+      "remainingCheckQuestions": 8,
+      "freshCheckAvailable": true
+    },
+    {
+      "lessonId": "french-v3-teaching:agreement:coordinated:recognition",
+      "skillId": "accorder_sujet_verbe_ecrit::reading-receptive::construction:coordinated",
+      "poolsAllocated": true,
+      "remainingCheckQuestions": 8,
+      "freshCheckAvailable": true
+    },
+    {
       "lessonId": "french-v3-teaching:written-adjective:recognition",
       "skillId": "accorder_adjectif_nom_ecrit::reading-receptive",
       "poolsAllocated": true,
@@ -241749,10 +244248,6 @@
     }
   ],
   "teachingPrerequisiteGaps": [
-    "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
-    "accorder_sujet_verbe_ecrit::reading-receptive::construction:coordinated",
-    "accorder_sujet_verbe_ecrit::reading-receptive::construction:inverted",
-    "accorder_sujet_verbe_ecrit::reading-receptive::construction:separated",
     "distinguer_infinitif_participe::reading-receptive",
     "distinguer_infinitif_participe_ecrit::reading-receptive",
     "distinguer_infinitif_participe_ecrit::writing-controlled-production",
@@ -241769,5 +244264,5 @@
     "Incomplete target pools remain visible; release scope and fresh post-teaching check capacity still need verification",
     "Structurally rejected content remains ineligible; semantic review continues in parallel"
   ],
-  "checksum": "sha256:28ba840292f7d538a56dfaa00a6ca3e86d844cf535f0ea4dd29bc664cdf67b01"
+  "checksum": "sha256:2ceee8217d07c0dbca43c3619059fb60c4d43f7cab6a89c31a56860e00d8468a"
 }

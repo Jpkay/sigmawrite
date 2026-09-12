@@ -1,0 +1,5963 @@
+{
+  "version": "french-v3-subject-verb-recognition-expansion-v1",
+  "status": "draft_requires_review",
+  "parentTaxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+  "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
+  "items": [
+    {
+      "itemKey": "v3-subject-verb-recognition:adjacent-1",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLa couturière ___ une manche.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "raccourcir",
+                "form": "raccourcit"
+              },
+              {
+                "lemma": "raccourcir",
+                "form": "raccourcissent"
+              },
+              {
+                "lemma": "raccourcir",
+                "form": "raccourcissez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "raccourcir"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "raccourcissent",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "raccourcissez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "raccourcit",
+            "correct": true
+          },
+          {
+            "text": "raccourcissent",
+            "correct": false
+          },
+          {
+            "text": "raccourcissez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:adjacent-2",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLes agriculteurs ___ les tomates.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "récolter",
+                "form": "récoltent"
+              },
+              {
+                "lemma": "récolter",
+                "form": "récolte"
+              },
+              {
+                "lemma": "récolter",
+                "form": "récoltez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "récolter"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "récolte",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "récoltez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "récoltent",
+            "correct": true
+          },
+          {
+            "text": "récolte",
+            "correct": false
+          },
+          {
+            "text": "récoltez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:adjacent-3",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLe libraire ___ les nouveautés.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "présenter",
+                "form": "présente"
+              },
+              {
+                "lemma": "présenter",
+                "form": "présentent"
+              },
+              {
+                "lemma": "présenter",
+                "form": "présentez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "présenter"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "présentent",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "présentez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "présente",
+            "correct": true
+          },
+          {
+            "text": "présentent",
+            "correct": false
+          },
+          {
+            "text": "présentez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:adjacent-4",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLes hirondelles ___ le toit.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "frôler",
+                "form": "frôlent"
+              },
+              {
+                "lemma": "frôler",
+                "form": "frôle"
+              },
+              {
+                "lemma": "frôler",
+                "form": "frôlez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "frôler"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "frôle",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "frôlez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "frôlent",
+            "correct": true
+          },
+          {
+            "text": "frôle",
+            "correct": false
+          },
+          {
+            "text": "frôlez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:adjacent-5",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLa jardinière ___ les roses.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "arroser",
+                "form": "arrose"
+              },
+              {
+                "lemma": "arroser",
+                "form": "arrosent"
+              },
+              {
+                "lemma": "arroser",
+                "form": "arrosez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "arroser"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "arrosent",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "arrosez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "arrose",
+            "correct": true
+          },
+          {
+            "text": "arrosent",
+            "correct": false
+          },
+          {
+            "text": "arrosez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:adjacent-6",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLes élèves ___ le problème.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "résoudre",
+                "form": "résolvent"
+              },
+              {
+                "lemma": "résoudre",
+                "form": "résout"
+              },
+              {
+                "lemma": "résoudre",
+                "form": "résolvez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "résoudre"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "résout",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "résolvez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "résolvent",
+            "correct": true
+          },
+          {
+            "text": "résout",
+            "correct": false
+          },
+          {
+            "text": "résolvez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:adjacent-7",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLe gardien ___ les visiteurs.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "accueillir",
+                "form": "accueille"
+              },
+              {
+                "lemma": "accueillir",
+                "form": "accueillent"
+              },
+              {
+                "lemma": "accueillir",
+                "form": "accueillez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "accueillir"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "accueillent",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "accueillez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "accueille",
+            "correct": true
+          },
+          {
+            "text": "accueillent",
+            "correct": false
+          },
+          {
+            "text": "accueillez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:adjacent-8",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLes renards ___ dans leur terrier.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "rentrer",
+                "form": "rentrent"
+              },
+              {
+                "lemma": "rentrer",
+                "form": "rentre"
+              },
+              {
+                "lemma": "rentrer",
+                "form": "rentrez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "rentrer"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "rentre",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "rentrez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "rentrent",
+            "correct": true
+          },
+          {
+            "text": "rentre",
+            "correct": false
+          },
+          {
+            "text": "rentrez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:adjacent-9",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLe vendeur ___ les bocaux.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "remplir",
+                "form": "remplit"
+              },
+              {
+                "lemma": "remplir",
+                "form": "remplissent"
+              },
+              {
+                "lemma": "remplir",
+                "form": "remplissez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "remplir"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "remplissent",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "remplissez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "remplit",
+            "correct": true
+          },
+          {
+            "text": "remplissent",
+            "correct": false
+          },
+          {
+            "text": "remplissez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:adjacent-10",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLes passantes ___ la place.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "traverser",
+                "form": "traversent"
+              },
+              {
+                "lemma": "traverser",
+                "form": "traverse"
+              },
+              {
+                "lemma": "traverser",
+                "form": "traversez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "traverser"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "traverse",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "traversez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "traversent",
+            "correct": true
+          },
+          {
+            "text": "traverse",
+            "correct": false
+          },
+          {
+            "text": "traversez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:adjacent-11",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLa bénévole ___ un colis.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "recevoir",
+                "form": "reçoit"
+              },
+              {
+                "lemma": "recevoir",
+                "form": "reçoivent"
+              },
+              {
+                "lemma": "recevoir",
+                "form": "recevez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "recevoir"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "reçoivent",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "recevez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "reçoit",
+            "correct": true
+          },
+          {
+            "text": "reçoivent",
+            "correct": false
+          },
+          {
+            "text": "recevez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:adjacent-12",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLes ouvrières ___ la charpente.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "assembler",
+                "form": "assemblent"
+              },
+              {
+                "lemma": "assembler",
+                "form": "assemble"
+              },
+              {
+                "lemma": "assembler",
+                "form": "assemblez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "assembler"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "assemble",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "assemblez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "assemblent",
+            "correct": true
+          },
+          {
+            "text": "assemble",
+            "correct": false
+          },
+          {
+            "text": "assemblez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:adjacent-13",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLe mécanicien ___ la panne.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "repérer",
+                "form": "repère"
+              },
+              {
+                "lemma": "repérer",
+                "form": "repèrent"
+              },
+              {
+                "lemma": "repérer",
+                "form": "repérez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "repérer"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "repèrent",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "repérez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "repère",
+            "correct": true
+          },
+          {
+            "text": "repèrent",
+            "correct": false
+          },
+          {
+            "text": "repérez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:adjacent-14",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLes spectateurs ___ les acrobates.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "applaudir",
+                "form": "applaudissent"
+              },
+              {
+                "lemma": "applaudir",
+                "form": "applaudit"
+              },
+              {
+                "lemma": "applaudir",
+                "form": "applaudissez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "applaudir"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "applaudit",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "applaudissez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "applaudissent",
+            "correct": true
+          },
+          {
+            "text": "applaudit",
+            "correct": false
+          },
+          {
+            "text": "applaudissez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:adjacent-15",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLe cuisinier ___ les ingrédients.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "peser",
+                "form": "pèse"
+              },
+              {
+                "lemma": "peser",
+                "form": "pèsent"
+              },
+              {
+                "lemma": "peser",
+                "form": "pesez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "peser"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "pèsent",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "pesez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "pèse",
+            "correct": true
+          },
+          {
+            "text": "pèsent",
+            "correct": false
+          },
+          {
+            "text": "pesez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:adjacent-16",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLes amis ___ leurs nouvelles.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "échanger",
+                "form": "échangent"
+              },
+              {
+                "lemma": "échanger",
+                "form": "échange"
+              },
+              {
+                "lemma": "échanger",
+                "form": "échangez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "échanger"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "échange",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "échangez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "échangent",
+            "correct": true
+          },
+          {
+            "text": "échange",
+            "correct": false
+          },
+          {
+            "text": "échangez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:separated-1",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLe parfum des roses ___ la terrasse.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "embaumer",
+                "form": "embaume"
+              },
+              {
+                "lemma": "embaumer",
+                "form": "embaument"
+              },
+              {
+                "lemma": "embaumer",
+                "form": "embaumez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "embaumer"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "embaument",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "embaumez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "embaume",
+            "correct": true
+          },
+          {
+            "text": "embaument",
+            "correct": false
+          },
+          {
+            "text": "embaumez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:separated-2",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLes élèves de cette classe ___ un album.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "illustrer",
+                "form": "illustrent"
+              },
+              {
+                "lemma": "illustrer",
+                "form": "illustre"
+              },
+              {
+                "lemma": "illustrer",
+                "form": "illustrez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "illustrer"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "illustre",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "illustrez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "illustrent",
+            "correct": true
+          },
+          {
+            "text": "illustre",
+            "correct": false
+          },
+          {
+            "text": "illustrez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:separated-3",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLa tante des jumeaux ___ une histoire.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "raconter",
+                "form": "raconte"
+              },
+              {
+                "lemma": "raconter",
+                "form": "racontent"
+              },
+              {
+                "lemma": "raconter",
+                "form": "racontez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "raconter"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "racontent",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "racontez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "raconte",
+            "correct": true
+          },
+          {
+            "text": "racontent",
+            "correct": false
+          },
+          {
+            "text": "racontez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:separated-4",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLes tableaux du peintre ___ une foule.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "attirer",
+                "form": "attirent"
+              },
+              {
+                "lemma": "attirer",
+                "form": "attire"
+              },
+              {
+                "lemma": "attirer",
+                "form": "attirez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "attirer"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "attire",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "attirez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "attirent",
+            "correct": true
+          },
+          {
+            "text": "attire",
+            "correct": false
+          },
+          {
+            "text": "attirez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:separated-5",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLe guide, devant les ruines, ___ les fouilles.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "expliquer",
+                "form": "explique"
+              },
+              {
+                "lemma": "expliquer",
+                "form": "expliquent"
+              },
+              {
+                "lemma": "expliquer",
+                "form": "expliquez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "expliquer"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "expliquent",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "expliquez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "explique",
+            "correct": true
+          },
+          {
+            "text": "expliquent",
+            "correct": false
+          },
+          {
+            "text": "expliquez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:separated-6",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLes vagues de la mer ___ les rochers.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "frapper",
+                "form": "frappent"
+              },
+              {
+                "lemma": "frapper",
+                "form": "frappe"
+              },
+              {
+                "lemma": "frapper",
+                "form": "frappez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "frapper"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "frappe",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "frappez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "frappent",
+            "correct": true
+          },
+          {
+            "text": "frappe",
+            "correct": false
+          },
+          {
+            "text": "frappez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:separated-7",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLe capitaine des équipes ___ la décision.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "annoncer",
+                "form": "annonce"
+              },
+              {
+                "lemma": "annoncer",
+                "form": "annoncent"
+              },
+              {
+                "lemma": "annoncer",
+                "form": "annoncez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "annoncer"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "annoncent",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "annoncez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "annonce",
+            "correct": true
+          },
+          {
+            "text": "annoncent",
+            "correct": false
+          },
+          {
+            "text": "annoncez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:separated-8",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLes graines de cette plante ___ rapidement.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "germer",
+                "form": "germent"
+              },
+              {
+                "lemma": "germer",
+                "form": "germe"
+              },
+              {
+                "lemma": "germer",
+                "form": "germez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "germer"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "germe",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "germez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "germent",
+            "correct": true
+          },
+          {
+            "text": "germe",
+            "correct": false
+          },
+          {
+            "text": "germez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:separated-9",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLa sœur des voisins ___ un vélo.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "réparer",
+                "form": "répare"
+              },
+              {
+                "lemma": "réparer",
+                "form": "réparent"
+              },
+              {
+                "lemma": "réparer",
+                "form": "réparez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "réparer"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "réparent",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "réparez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "répare",
+            "correct": true
+          },
+          {
+            "text": "réparent",
+            "correct": false
+          },
+          {
+            "text": "réparez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:separated-10",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLes ombres de la forêt ___ les enfants.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "effrayer",
+                "form": "effraient"
+              },
+              {
+                "lemma": "effrayer",
+                "form": "effraie"
+              },
+              {
+                "lemma": "effrayer",
+                "form": "effrayez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "effrayer"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "effraie",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "effrayez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "effraient",
+            "correct": true
+          },
+          {
+            "text": "effraie",
+            "correct": false
+          },
+          {
+            "text": "effrayez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:separated-11",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLe responsable des visiteurs ___ une chanson.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "écouter",
+                "form": "écoute"
+              },
+              {
+                "lemma": "écouter",
+                "form": "écoutent"
+              },
+              {
+                "lemma": "écouter",
+                "form": "écoutez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "écouter"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "écoutent",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "écoutez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "écoute",
+            "correct": true
+          },
+          {
+            "text": "écoutent",
+            "correct": false
+          },
+          {
+            "text": "écoutez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:separated-12",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLes portes du garage ___ facilement.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "glisser",
+                "form": "glissent"
+              },
+              {
+                "lemma": "glisser",
+                "form": "glisse"
+              },
+              {
+                "lemma": "glisser",
+                "form": "glissez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "glisser"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "glisse",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "glissez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "glissent",
+            "correct": true
+          },
+          {
+            "text": "glisse",
+            "correct": false
+          },
+          {
+            "text": "glissez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:separated-13",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLa reine des abeilles ___ dans la ruche.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "pondre",
+                "form": "pond"
+              },
+              {
+                "lemma": "pondre",
+                "form": "pondent"
+              },
+              {
+                "lemma": "pondre",
+                "form": "pondez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "pondre"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "pondent",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "pondez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "pond",
+            "correct": true
+          },
+          {
+            "text": "pondent",
+            "correct": false
+          },
+          {
+            "text": "pondez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:separated-14",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLes feuilles du cahier ___ sous les doigts.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "craquer",
+                "form": "craquent"
+              },
+              {
+                "lemma": "craquer",
+                "form": "craque"
+              },
+              {
+                "lemma": "craquer",
+                "form": "craquez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "craquer"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "craque",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "craquez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "craquent",
+            "correct": true
+          },
+          {
+            "text": "craque",
+            "correct": false
+          },
+          {
+            "text": "craquez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:separated-15",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLe propriétaire des terres ___ du blé.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "cultiver",
+                "form": "cultive"
+              },
+              {
+                "lemma": "cultiver",
+                "form": "cultivent"
+              },
+              {
+                "lemma": "cultiver",
+                "form": "cultivez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "cultiver"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "cultivent",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "cultivez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "cultive",
+            "correct": true
+          },
+          {
+            "text": "cultivent",
+            "correct": false
+          },
+          {
+            "text": "cultivez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:separated-16",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLes joueurs de ce club ___ le trophée.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "remporter",
+                "form": "remportent"
+              },
+              {
+                "lemma": "remporter",
+                "form": "remporte"
+              },
+              {
+                "lemma": "remporter",
+                "form": "remportez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "remporter"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "remporte",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "remportez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "remportent",
+            "correct": true
+          },
+          {
+            "text": "remporte",
+            "correct": false
+          },
+          {
+            "text": "remportez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:inverted-1",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nAu bord des routes ___ une herbe haute.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "grandir",
+                "form": "grandit"
+              },
+              {
+                "lemma": "grandir",
+                "form": "grandissent"
+              },
+              {
+                "lemma": "grandir",
+                "form": "grandissez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "grandir"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "grandissent",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "grandissez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "grandit",
+            "correct": true
+          },
+          {
+            "text": "grandissent",
+            "correct": false
+          },
+          {
+            "text": "grandissez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:inverted-2",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nDans le bassin ___ deux dauphins.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "nager",
+                "form": "nagent"
+              },
+              {
+                "lemma": "nager",
+                "form": "nage"
+              },
+              {
+                "lemma": "nager",
+                "form": "nagez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "nager"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "nage",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "nagez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "nagent",
+            "correct": true
+          },
+          {
+            "text": "nage",
+            "correct": false
+          },
+          {
+            "text": "nagez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:inverted-3",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nDerrière les maisons ___ un potager.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "subsister",
+                "form": "subsiste"
+              },
+              {
+                "lemma": "subsister",
+                "form": "subsistent"
+              },
+              {
+                "lemma": "subsister",
+                "form": "subsistez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "subsister"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "subsistent",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "subsistez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "subsiste",
+            "correct": true
+          },
+          {
+            "text": "subsistent",
+            "correct": false
+          },
+          {
+            "text": "subsistez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:inverted-4",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nSur le mur ___ les lézards.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "grimper",
+                "form": "grimpent"
+              },
+              {
+                "lemma": "grimper",
+                "form": "grimpe"
+              },
+              {
+                "lemma": "grimper",
+                "form": "grimpez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "grimper"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "grimpe",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "grimpez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "grimpent",
+            "correct": true
+          },
+          {
+            "text": "grimpe",
+            "correct": false
+          },
+          {
+            "text": "grimpez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:inverted-5",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nDe ces haut-parleurs ___ une musique douce.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "sortir",
+                "form": "sort"
+              },
+              {
+                "lemma": "sortir",
+                "form": "sortent"
+              },
+              {
+                "lemma": "sortir",
+                "form": "sortez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "sortir"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "sortent",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "sortez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "sort",
+            "correct": true
+          },
+          {
+            "text": "sortent",
+            "correct": false
+          },
+          {
+            "text": "sortez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:inverted-6",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nDans le grenier ___ des souris.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "trotter",
+                "form": "trottent"
+              },
+              {
+                "lemma": "trotter",
+                "form": "trotte"
+              },
+              {
+                "lemma": "trotter",
+                "form": "trottez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "trotter"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "trotte",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "trottez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "trottent",
+            "correct": true
+          },
+          {
+            "text": "trotte",
+            "correct": false
+          },
+          {
+            "text": "trottez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:inverted-7",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nSous les pieds ___ le parquet.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "grincer",
+                "form": "grince"
+              },
+              {
+                "lemma": "grincer",
+                "form": "grincent"
+              },
+              {
+                "lemma": "grincer",
+                "form": "grincez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "grincer"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "grincent",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "grincez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "grince",
+            "correct": true
+          },
+          {
+            "text": "grincent",
+            "correct": false
+          },
+          {
+            "text": "grincez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:inverted-8",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nAu pied du pommier ___ les paniers.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "reposer",
+                "form": "reposent"
+              },
+              {
+                "lemma": "reposer",
+                "form": "repose"
+              },
+              {
+                "lemma": "reposer",
+                "form": "reposez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "reposer"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "repose",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "reposez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "reposent",
+            "correct": true
+          },
+          {
+            "text": "repose",
+            "correct": false
+          },
+          {
+            "text": "reposez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:inverted-9",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nAu-dessus des vallées ___ un aigle.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "planer",
+                "form": "plane"
+              },
+              {
+                "lemma": "planer",
+                "form": "planent"
+              },
+              {
+                "lemma": "planer",
+                "form": "planez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "planer"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "planent",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "planez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "plane",
+            "correct": true
+          },
+          {
+            "text": "planent",
+            "correct": false
+          },
+          {
+            "text": "planez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:inverted-10",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nDans la cuisine ___ des cris.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "retentir",
+                "form": "retentissent"
+              },
+              {
+                "lemma": "retentir",
+                "form": "retentit"
+              },
+              {
+                "lemma": "retentir",
+                "form": "retentissez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "retentir"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "retentit",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "retentissez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "retentissent",
+            "correct": true
+          },
+          {
+            "text": "retentit",
+            "correct": false
+          },
+          {
+            "text": "retentissez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:inverted-11",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nAu bout des couloirs ___ une bougie.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "vaciller",
+                "form": "vacille"
+              },
+              {
+                "lemma": "vaciller",
+                "form": "vacillent"
+              },
+              {
+                "lemma": "vaciller",
+                "form": "vacillez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "vaciller"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "vacillent",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "vacillez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "vacille",
+            "correct": true
+          },
+          {
+            "text": "vacillent",
+            "correct": false
+          },
+          {
+            "text": "vacillez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:inverted-12",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nDans la cour ___ les recrues.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "défiler",
+                "form": "défilent"
+              },
+              {
+                "lemma": "défiler",
+                "form": "défile"
+              },
+              {
+                "lemma": "défiler",
+                "form": "défilez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "défiler"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "défile",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "défilez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "défilent",
+            "correct": true
+          },
+          {
+            "text": "défile",
+            "correct": false
+          },
+          {
+            "text": "défilez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:inverted-13",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nSous les arcades ___ un violoniste.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "jouer",
+                "form": "joue"
+              },
+              {
+                "lemma": "jouer",
+                "form": "jouent"
+              },
+              {
+                "lemma": "jouer",
+                "form": "jouez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "jouer"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "jouent",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "jouez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "joue",
+            "correct": true
+          },
+          {
+            "text": "jouent",
+            "correct": false
+          },
+          {
+            "text": "jouez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:inverted-14",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nDans le verger ___ les fruits.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "mûrir",
+                "form": "mûrissent"
+              },
+              {
+                "lemma": "mûrir",
+                "form": "mûrit"
+              },
+              {
+                "lemma": "mûrir",
+                "form": "mûrissez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "mûrir"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "mûrit",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "mûrissez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "mûrissent",
+            "correct": true
+          },
+          {
+            "text": "mûrit",
+            "correct": false
+          },
+          {
+            "text": "mûrissez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:inverted-15",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nDevant les grilles ___ un chien.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "aboyer",
+                "form": "aboie"
+              },
+              {
+                "lemma": "aboyer",
+                "form": "aboient"
+              },
+              {
+                "lemma": "aboyer",
+                "form": "aboyez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "aboyer"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "aboient",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "aboyez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "aboie",
+            "correct": true
+          },
+          {
+            "text": "aboient",
+            "correct": false
+          },
+          {
+            "text": "aboyez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:inverted-16",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nSur cette île ___ des tortues.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "vivre",
+                "form": "vivent"
+              },
+              {
+                "lemma": "vivre",
+                "form": "vit"
+              },
+              {
+                "lemma": "vivre",
+                "form": "vivez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "vivre"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "vit",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "vivez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "vivent",
+            "correct": true
+          },
+          {
+            "text": "vit",
+            "correct": false
+          },
+          {
+            "text": "vivez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:coordinated-1",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLa maire et le directeur ___ la salle.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "inaugurer",
+                "form": "inaugurent"
+              },
+              {
+                "lemma": "inaugurer",
+                "form": "inaugure"
+              },
+              {
+                "lemma": "inaugurer",
+                "form": "inaugurez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "inaugurer"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "inaugure",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "inaugurez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "inaugurent",
+            "correct": true
+          },
+          {
+            "text": "inaugure",
+            "correct": false
+          },
+          {
+            "text": "inaugurez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:coordinated-2",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLe père et la fille ___ la table.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "dresser",
+                "form": "dressent"
+              },
+              {
+                "lemma": "dresser",
+                "form": "dresse"
+              },
+              {
+                "lemma": "dresser",
+                "form": "dressez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "dresser"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "dresse",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "dressez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "dressent",
+            "correct": true
+          },
+          {
+            "text": "dresse",
+            "correct": false
+          },
+          {
+            "text": "dressez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:coordinated-3",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLe boulanger et la boulangère ___ la pâte.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "pétrir",
+                "form": "pétrissent"
+              },
+              {
+                "lemma": "pétrir",
+                "form": "pétrit"
+              },
+              {
+                "lemma": "pétrir",
+                "form": "pétrissez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "pétrir"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "pétrit",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "pétrissez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "pétrissent",
+            "correct": true
+          },
+          {
+            "text": "pétrit",
+            "correct": false
+          },
+          {
+            "text": "pétrissez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:coordinated-4",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLe médecin et l’infirmière ___ le patient.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "examiner",
+                "form": "examinent"
+              },
+              {
+                "lemma": "examiner",
+                "form": "examine"
+              },
+              {
+                "lemma": "examiner",
+                "form": "examinez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "examiner"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "examine",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "examinez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "examinent",
+            "correct": true
+          },
+          {
+            "text": "examine",
+            "correct": false
+          },
+          {
+            "text": "examinez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:coordinated-5",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLa pluie et la neige ___ les pistes.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "recouvrir",
+                "form": "recouvrent"
+              },
+              {
+                "lemma": "recouvrir",
+                "form": "recouvre"
+              },
+              {
+                "lemma": "recouvrir",
+                "form": "recouvrez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "recouvrir"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "recouvre",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "recouvrez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "recouvrent",
+            "correct": true
+          },
+          {
+            "text": "recouvre",
+            "correct": false
+          },
+          {
+            "text": "recouvrez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:coordinated-6",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLe rat et la souris ___ le carton.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "ronger",
+                "form": "rongent"
+              },
+              {
+                "lemma": "ronger",
+                "form": "ronge"
+              },
+              {
+                "lemma": "ronger",
+                "form": "rongez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "ronger"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "ronge",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "rongez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "rongent",
+            "correct": true
+          },
+          {
+            "text": "ronge",
+            "correct": false
+          },
+          {
+            "text": "rongez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:coordinated-7",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLe frère et la sœur ___ une émission.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "regarder",
+                "form": "regardent"
+              },
+              {
+                "lemma": "regarder",
+                "form": "regarde"
+              },
+              {
+                "lemma": "regarder",
+                "form": "regardez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "regarder"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "regarde",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "regardez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "regardent",
+            "correct": true
+          },
+          {
+            "text": "regarde",
+            "correct": false
+          },
+          {
+            "text": "regardez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:coordinated-8",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLe jardinier et son aide ___ les haies.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "tailler",
+                "form": "taillent"
+              },
+              {
+                "lemma": "tailler",
+                "form": "taille"
+              },
+              {
+                "lemma": "tailler",
+                "form": "taillez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "tailler"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "taille",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "taillez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "taillent",
+            "correct": true
+          },
+          {
+            "text": "taille",
+            "correct": false
+          },
+          {
+            "text": "taillez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:coordinated-9",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLe tissu et le papier ___ facilement.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "brûler",
+                "form": "brûlent"
+              },
+              {
+                "lemma": "brûler",
+                "form": "brûle"
+              },
+              {
+                "lemma": "brûler",
+                "form": "brûlez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "brûler"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "brûle",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "brûlez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "brûlent",
+            "correct": true
+          },
+          {
+            "text": "brûle",
+            "correct": false
+          },
+          {
+            "text": "brûlez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:coordinated-10",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLe nageur et la nageuse ___ le bassin.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "rejoindre",
+                "form": "rejoignent"
+              },
+              {
+                "lemma": "rejoindre",
+                "form": "rejoint"
+              },
+              {
+                "lemma": "rejoindre",
+                "form": "rejoignez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "rejoindre"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "rejoint",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "rejoignez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "rejoignent",
+            "correct": true
+          },
+          {
+            "text": "rejoint",
+            "correct": false
+          },
+          {
+            "text": "rejoignez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:coordinated-11",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLa trompette et le tambour ___ le silence.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "rompre",
+                "form": "rompent"
+              },
+              {
+                "lemma": "rompre",
+                "form": "rompt"
+              },
+              {
+                "lemma": "rompre",
+                "form": "rompez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "rompre"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "rompt",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "rompez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "rompent",
+            "correct": true
+          },
+          {
+            "text": "rompt",
+            "correct": false
+          },
+          {
+            "text": "rompez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:coordinated-12",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLa voisine et son fils ___ des crêpes.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "vendre",
+                "form": "vendent"
+              },
+              {
+                "lemma": "vendre",
+                "form": "vend"
+              },
+              {
+                "lemma": "vendre",
+                "form": "vendez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "vendre"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "vend",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "vendez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "vendent",
+            "correct": true
+          },
+          {
+            "text": "vend",
+            "correct": false
+          },
+          {
+            "text": "vendez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:coordinated-13",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLe couteau et les ciseaux ___ le carton.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "découper",
+                "form": "découpent"
+              },
+              {
+                "lemma": "découper",
+                "form": "découpe"
+              },
+              {
+                "lemma": "découper",
+                "form": "découpez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "découper"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "découpe",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "découpez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "découpent",
+            "correct": true
+          },
+          {
+            "text": "découpe",
+            "correct": false
+          },
+          {
+            "text": "découpez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:coordinated-14",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLa robe et le manteau ___ sur un cintre.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "pendre",
+                "form": "pendent"
+              },
+              {
+                "lemma": "pendre",
+                "form": "pend"
+              },
+              {
+                "lemma": "pendre",
+                "form": "pendez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "pendre"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "pend",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "pendez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "pendent",
+            "correct": true
+          },
+          {
+            "text": "pend",
+            "correct": false
+          },
+          {
+            "text": "pendez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:coordinated-15",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLa championne et son entraîneur ___ leur joie.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "exprimer",
+                "form": "expriment"
+              },
+              {
+                "lemma": "exprimer",
+                "form": "exprime"
+              },
+              {
+                "lemma": "exprimer",
+                "form": "exprimez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "exprimer"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "exprime",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "exprimez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "expriment",
+            "correct": true
+          },
+          {
+            "text": "exprime",
+            "correct": false
+          },
+          {
+            "text": "exprimez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:coordinated-16",
+      "item": {
+        "nodeKey": "accorder_sujet_verbe_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis le verbe correctement accordé au présent.\n\nLe chien et le chiot ___ la barrière.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "franchir",
+                "form": "franchissent"
+              },
+              {
+                "lemma": "franchir",
+                "form": "franchit"
+              },
+              {
+                "lemma": "franchir",
+                "form": "franchissez"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "franchir"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "franchit",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "franchissez",
+              "errorKey": "wrong-person"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "franchissent",
+            "correct": true
+          },
+          {
+            "text": "franchit",
+            "correct": false
+          },
+          {
+            "text": "franchissez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "subject-verb-recognition",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "itemKey": "v3-subject-verb-recognition:adjacent-1",
+      "itemChecksum": "sha256:4f45533f99c2b12b98fd972b9f7dec6e516d52da67ea12bd7ba02c977472af38",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:adjacent",
+      "contextKey": "subject-verb-recognition:adjacent-1",
+      "reason": "Le sujet est « La couturière ». La forme attendue est « raccourcit »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:adjacent-2",
+      "itemChecksum": "sha256:aaa15fc205f50ccd3b76899ceb669db469c23fabff66c491b22d454ed10ea1f1",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:adjacent",
+      "contextKey": "subject-verb-recognition:adjacent-2",
+      "reason": "Le sujet est « Les agriculteurs ». La forme attendue est « récoltent »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:adjacent-3",
+      "itemChecksum": "sha256:64bd749fa1c5596e13bb8f801a10009814991fa4fb17c245369dbfa839d06c48",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:adjacent",
+      "contextKey": "subject-verb-recognition:adjacent-3",
+      "reason": "Le sujet est « Le libraire ». La forme attendue est « présente »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:adjacent-4",
+      "itemChecksum": "sha256:3e70464616e164c54bbed726a6ff5332b8b8affc30fc4ca51e0d2881a56140ce",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:adjacent",
+      "contextKey": "subject-verb-recognition:adjacent-4",
+      "reason": "Le sujet est « Les hirondelles ». La forme attendue est « frôlent »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:adjacent-5",
+      "itemChecksum": "sha256:c2674263b910423875f366c674a5367d7a47c68db8ac7caac24a4ca04d40aa86",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:adjacent",
+      "contextKey": "subject-verb-recognition:adjacent-5",
+      "reason": "Le sujet est « La jardinière ». La forme attendue est « arrose »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:adjacent-6",
+      "itemChecksum": "sha256:7d4863dd337fa0b7be8067a919c160dbc54178a5d67a83f5cf773a04d1fd99ff",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:adjacent",
+      "contextKey": "subject-verb-recognition:adjacent-6",
+      "reason": "Le sujet est « Les élèves ». La forme attendue est « résolvent »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:adjacent-7",
+      "itemChecksum": "sha256:241b372229ca77bf01cf6262bca0a45f43fc09a3cc54294d1aaba9f661ebc494",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:adjacent",
+      "contextKey": "subject-verb-recognition:adjacent-7",
+      "reason": "Le sujet est « Le gardien ». La forme attendue est « accueille »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:adjacent-8",
+      "itemChecksum": "sha256:9e7745fd1d67038e3bb3834045e3e21f268c6a21a453375c56d7b3f48dcd91e0",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:adjacent",
+      "contextKey": "subject-verb-recognition:adjacent-8",
+      "reason": "Le sujet est « Les renards ». La forme attendue est « rentrent »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:adjacent-9",
+      "itemChecksum": "sha256:927f010bc5544056326bc1156de996370762d300dbebf5709f0b00120ec3c986",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:adjacent",
+      "contextKey": "subject-verb-recognition:adjacent-9",
+      "reason": "Le sujet est « Le vendeur ». La forme attendue est « remplit »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:adjacent-10",
+      "itemChecksum": "sha256:2fe60051f31316906cdb5b8b4e219d4917f042d6816b12fb7db723f8cb883d1a",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:adjacent",
+      "contextKey": "subject-verb-recognition:adjacent-10",
+      "reason": "Le sujet est « Les passantes ». La forme attendue est « traversent »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:adjacent-11",
+      "itemChecksum": "sha256:94d284d5a1594ed05249e3650dc51958a27aad888da54f6f81d3bab04eeec053",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:adjacent",
+      "contextKey": "subject-verb-recognition:adjacent-11",
+      "reason": "Le sujet est « La bénévole ». La forme attendue est « reçoit »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:adjacent-12",
+      "itemChecksum": "sha256:f0304405f7d8fe66d48082e3730ddbc8622be053fd538caa6751772ac126b4f0",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:adjacent",
+      "contextKey": "subject-verb-recognition:adjacent-12",
+      "reason": "Le sujet est « Les ouvrières ». La forme attendue est « assemblent »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:adjacent-13",
+      "itemChecksum": "sha256:e1a0cb0b8ff4db47fbce437d962dd5ad9d975e56f5bdd566795ca79b022c8d4d",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:adjacent",
+      "contextKey": "subject-verb-recognition:adjacent-13",
+      "reason": "Le sujet est « Le mécanicien ». La forme attendue est « repère »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:adjacent-14",
+      "itemChecksum": "sha256:3df2d0ed4a0580120f9cd6112ec662c3e433c123c1ce98f74802942b6f147d38",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:adjacent",
+      "contextKey": "subject-verb-recognition:adjacent-14",
+      "reason": "Le sujet est « Les spectateurs ». La forme attendue est « applaudissent »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:adjacent-15",
+      "itemChecksum": "sha256:e672db0e37a75676a2085ba9ed6fdd51c83923deda846d132b27bd62badf964c",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:adjacent",
+      "contextKey": "subject-verb-recognition:adjacent-15",
+      "reason": "Le sujet est « Le cuisinier ». La forme attendue est « pèse »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:adjacent-16",
+      "itemChecksum": "sha256:6a4becf11f6727f96dbe1d4c56d13392022b344f675ce66d6ed9a49be03262db",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:adjacent",
+      "contextKey": "subject-verb-recognition:adjacent-16",
+      "reason": "Le sujet est « Les amis ». La forme attendue est « échangent »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:separated-1",
+      "itemChecksum": "sha256:8f35e7f8fe937bfd9e048d82162fbc569d44ece674176b8ab65ee7dd6549d471",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:separated",
+      "contextKey": "subject-verb-recognition:separated-1",
+      "reason": "Le sujet est « Le parfum des roses ». La forme attendue est « embaume »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:separated-2",
+      "itemChecksum": "sha256:5b44fec940126e647f5eb676d338ea68d9fb1664451afb502f77a5f37dab4b7d",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:separated",
+      "contextKey": "subject-verb-recognition:separated-2",
+      "reason": "Le sujet est « Les élèves de cette classe ». La forme attendue est « illustrent »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:separated-3",
+      "itemChecksum": "sha256:2ea9c8681e0f8bc8d5bdce848e0964776fe90ad0d5b9fe7bcb232752136275ba",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:separated",
+      "contextKey": "subject-verb-recognition:separated-3",
+      "reason": "Le sujet est « La tante des jumeaux ». La forme attendue est « raconte »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:separated-4",
+      "itemChecksum": "sha256:155a39e27d7e028c82912fa813ebd9c3892f799f43bbefe8b9915f91ed87e13d",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:separated",
+      "contextKey": "subject-verb-recognition:separated-4",
+      "reason": "Le sujet est « Les tableaux du peintre ». La forme attendue est « attirent »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:separated-5",
+      "itemChecksum": "sha256:65e52bada2cbbba7e87adc2d2acc7254e4f5d195e891361fb31aef0d8acee397",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:separated",
+      "contextKey": "subject-verb-recognition:separated-5",
+      "reason": "Le sujet est « Le guide ». La forme attendue est « explique »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:separated-6",
+      "itemChecksum": "sha256:7ed51da06662cc0bb3a0fb231cb27b9c8f4e2c08b0109854ad81145110f4240e",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:separated",
+      "contextKey": "subject-verb-recognition:separated-6",
+      "reason": "Le sujet est « Les vagues de la mer ». La forme attendue est « frappent »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:separated-7",
+      "itemChecksum": "sha256:fdd7215b8e188802081f02bdc5595a4f74d81f0e158f521b63fb78e070fbe259",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:separated",
+      "contextKey": "subject-verb-recognition:separated-7",
+      "reason": "Le sujet est « Le capitaine des équipes ». La forme attendue est « annonce »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:separated-8",
+      "itemChecksum": "sha256:848e8add6d53d3246793e37efe8138bbe6103112dc838ff987687478cf81919d",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:separated",
+      "contextKey": "subject-verb-recognition:separated-8",
+      "reason": "Le sujet est « Les graines de cette plante ». La forme attendue est « germent »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:separated-9",
+      "itemChecksum": "sha256:b447884527988ab1b67d20fca45a90fece3a802509ad4edb35a033edb3ec19fa",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:separated",
+      "contextKey": "subject-verb-recognition:separated-9",
+      "reason": "Le sujet est « La sœur des voisins ». La forme attendue est « répare »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:separated-10",
+      "itemChecksum": "sha256:13f875a4fdbd52af4f53102add57fe3d5f2197ab6f061911f4398400e6e3da9f",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:separated",
+      "contextKey": "subject-verb-recognition:separated-10",
+      "reason": "Le sujet est « Les ombres de la forêt ». La forme attendue est « effraient »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:separated-11",
+      "itemChecksum": "sha256:bfcca07dbc6cd033fe391609a63bce64886b9bc18bc8bfe789fe6defe6c5cd35",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:separated",
+      "contextKey": "subject-verb-recognition:separated-11",
+      "reason": "Le sujet est « Le responsable des visiteurs ». Responsable commande le singulier : écoute."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:separated-12",
+      "itemChecksum": "sha256:49dbabb16cfde751e104df9c966dd1b92340711b86a8e8a754657e13f7488173",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:separated",
+      "contextKey": "subject-verb-recognition:separated-12",
+      "reason": "Le sujet est « Les portes du garage ». La forme attendue est « glissent »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:separated-13",
+      "itemChecksum": "sha256:0d7949a7d020c4915d063bd0a54ba9d74e12f86231aece58015e7ac5a3c847be",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:separated",
+      "contextKey": "subject-verb-recognition:separated-13",
+      "reason": "Le sujet est « La reine des abeilles ». La forme attendue est « pond »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:separated-14",
+      "itemChecksum": "sha256:80b34e45c52310fbf02f7d3fad71dd1466b85e360a9c1a6f0d93bf59eb514913",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:separated",
+      "contextKey": "subject-verb-recognition:separated-14",
+      "reason": "Le sujet est « Les feuilles du cahier ». La forme attendue est « craquent »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:separated-15",
+      "itemChecksum": "sha256:f02dadc388aa968970c6703eadee51ae0fab23f2142b92c2cf96edf98ee9ce86",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:separated",
+      "contextKey": "subject-verb-recognition:separated-15",
+      "reason": "Le sujet est « Le propriétaire des terres ». La forme attendue est « cultive »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:separated-16",
+      "itemChecksum": "sha256:0539f5668934280c78e4234d3bc6d5651db18172cdc5e79d888762074aa08b46",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:separated",
+      "contextKey": "subject-verb-recognition:separated-16",
+      "reason": "Le sujet est « Les joueurs de ce club ». La forme attendue est « remportent »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:inverted-1",
+      "itemChecksum": "sha256:eba5ff481b434d3933272053cbca02bc93ff8ea8862f75b01cb8977238f723fc",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:inverted",
+      "contextKey": "subject-verb-recognition:inverted-1",
+      "reason": "Le sujet est « une herbe haute ». La forme attendue est « grandit »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:inverted-2",
+      "itemChecksum": "sha256:6c78e958539e757de11ea4c9a7d96208c14f611f65afbcb8ebf45d55d3f679fd",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:inverted",
+      "contextKey": "subject-verb-recognition:inverted-2",
+      "reason": "Le sujet est « deux dauphins ». La forme attendue est « nagent »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:inverted-3",
+      "itemChecksum": "sha256:cf560df07802a6ddc8f395a41e20f870605a7e32c747570d7c104d93e82df889",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:inverted",
+      "contextKey": "subject-verb-recognition:inverted-3",
+      "reason": "Le sujet est « un potager ». La forme attendue est « subsiste »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:inverted-4",
+      "itemChecksum": "sha256:4d396fe243d2316f85d8bed9a7d6cda7ee18a9882570fdd7644942ca913baf79",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:inverted",
+      "contextKey": "subject-verb-recognition:inverted-4",
+      "reason": "Le sujet est « les lézards ». La forme attendue est « grimpent »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:inverted-5",
+      "itemChecksum": "sha256:d4b8c34cfb96ac21053c23dc0e2c6a94488dac100034cc614f3094809ae316a8",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:inverted",
+      "contextKey": "subject-verb-recognition:inverted-5",
+      "reason": "Le sujet est « une musique douce ». La forme attendue est « sort »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:inverted-6",
+      "itemChecksum": "sha256:cc11f1f6f536a62261df5fb2c6aacf8270fa4dc20e67dd7c77252229a983426c",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:inverted",
+      "contextKey": "subject-verb-recognition:inverted-6",
+      "reason": "Le sujet est « des souris ». La forme attendue est « trottent »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:inverted-7",
+      "itemChecksum": "sha256:84be1d42ab456c6e2f501869368a63b0d2de00132e07a8117713f0d3a0a2b400",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:inverted",
+      "contextKey": "subject-verb-recognition:inverted-7",
+      "reason": "Le sujet est « le parquet ». La forme attendue est « grince »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:inverted-8",
+      "itemChecksum": "sha256:9d5b07b71769c4b5d6a8e54c686e7e5e4b51ba332f5d22b84b95a2d57ce18221",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:inverted",
+      "contextKey": "subject-verb-recognition:inverted-8",
+      "reason": "Le sujet est « les paniers ». La forme attendue est « reposent »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:inverted-9",
+      "itemChecksum": "sha256:7ecb5fb8d8452789e004f60844aca89783d250eb1c8440ccb6583d3f7dde7216",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:inverted",
+      "contextKey": "subject-verb-recognition:inverted-9",
+      "reason": "Le sujet est « un aigle ». La forme attendue est « plane »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:inverted-10",
+      "itemChecksum": "sha256:7072f7ebbb5f501f712be998f83d5152a33ec735ade3517356c5da42afa65cea",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:inverted",
+      "contextKey": "subject-verb-recognition:inverted-10",
+      "reason": "Le sujet est « des cris ». La forme attendue est « retentissent »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:inverted-11",
+      "itemChecksum": "sha256:ae10b36e2e6f8be7bc1d9e582ecf4d5ac407ec47e62f6ed3534de093866f9b0a",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:inverted",
+      "contextKey": "subject-verb-recognition:inverted-11",
+      "reason": "Le sujet est « une bougie ». La forme attendue est « vacille »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:inverted-12",
+      "itemChecksum": "sha256:f0df10304df486256b85556957398d9606b1c8f705b3a87a2f082435553795ae",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:inverted",
+      "contextKey": "subject-verb-recognition:inverted-12",
+      "reason": "Le sujet est « les recrues ». La forme attendue est « défilent »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:inverted-13",
+      "itemChecksum": "sha256:d0e2ff08ebb75d3faa9f84c4890f3942c6aee37949e7c452bb354735249f03c3",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:inverted",
+      "contextKey": "subject-verb-recognition:inverted-13",
+      "reason": "Le sujet est « un violoniste ». La forme attendue est « joue »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:inverted-14",
+      "itemChecksum": "sha256:a0ba88493da8bc246d630fcc0c922c5e7d0cd2357d81d44955942ddb1e113ef0",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:inverted",
+      "contextKey": "subject-verb-recognition:inverted-14",
+      "reason": "Le sujet est « les fruits ». La forme attendue est « mûrissent »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:inverted-15",
+      "itemChecksum": "sha256:df39dffbc8b77b28897417b6e5907fe9efa53424aa0a7a1189c622d840997952",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:inverted",
+      "contextKey": "subject-verb-recognition:inverted-15",
+      "reason": "Le sujet est « un chien ». La forme attendue est « aboie »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:inverted-16",
+      "itemChecksum": "sha256:37073fa013e00607c50858301bea51d05bde2fa19345e92c2a5d46d17cb33073",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:inverted",
+      "contextKey": "subject-verb-recognition:inverted-16",
+      "reason": "Le sujet est « des tortues ». La forme attendue est « vivent »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:coordinated-1",
+      "itemChecksum": "sha256:a3e150c2dada241cc8c9730d3b2c75a8613e6968a16002feb321af14bfced3c9",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:coordinated",
+      "contextKey": "subject-verb-recognition:coordinated-1",
+      "reason": "Le sujet est « La maire et le directeur ». La forme attendue est « inaugurent »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:coordinated-2",
+      "itemChecksum": "sha256:250e0e0802e95681a98d63d7ffe94d4d4772dd1861ea01ec19a693c56863999b",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:coordinated",
+      "contextKey": "subject-verb-recognition:coordinated-2",
+      "reason": "Le sujet est « Le père et la fille ». La forme attendue est « dressent »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:coordinated-3",
+      "itemChecksum": "sha256:c9b19fcd7466d1ba2f231c929862fe71fe1ce90f170bd7ddf28a1e2db4613799",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:coordinated",
+      "contextKey": "subject-verb-recognition:coordinated-3",
+      "reason": "Le sujet est « Le boulanger et la boulangère ». La forme attendue est « pétrissent »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:coordinated-4",
+      "itemChecksum": "sha256:297b2d027e65782018aa332e641bcb4eb903bd673525df84bdb6ab139e727384",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:coordinated",
+      "contextKey": "subject-verb-recognition:coordinated-4",
+      "reason": "Le sujet est « Le médecin et l’infirmière ». La forme attendue est « examinent »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:coordinated-5",
+      "itemChecksum": "sha256:cefca7588733167b32aec1c248ae3999a9f2052faacc27ce9986b68ce7d17a70",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:coordinated",
+      "contextKey": "subject-verb-recognition:coordinated-5",
+      "reason": "Le sujet est « La pluie et la neige ». La forme attendue est « recouvrent »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:coordinated-6",
+      "itemChecksum": "sha256:f0ab7a77bc3445198fb43e6855e7fdfa7e6502af83d0a9d73a08e37d99785f60",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:coordinated",
+      "contextKey": "subject-verb-recognition:coordinated-6",
+      "reason": "Le sujet est « Le rat et la souris ». La forme attendue est « rongent »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:coordinated-7",
+      "itemChecksum": "sha256:adda9577abea2fd4c6982d6952b3c7ac33adb54a91808ba73ba87e9361587d17",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:coordinated",
+      "contextKey": "subject-verb-recognition:coordinated-7",
+      "reason": "Le sujet est « Le frère et la sœur ». La forme attendue est « regardent »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:coordinated-8",
+      "itemChecksum": "sha256:1d3e040ec7f6990bbff3a055e562b4cd45b9507ddb05a5c983762adba74f11d0",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:coordinated",
+      "contextKey": "subject-verb-recognition:coordinated-8",
+      "reason": "Le sujet est « Le jardinier et son aide ». La forme attendue est « taillent »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:coordinated-9",
+      "itemChecksum": "sha256:bc21469103ba4d2d1634ca56faa6f5995b699f74d7ef5f130e32538cf84449b7",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:coordinated",
+      "contextKey": "subject-verb-recognition:coordinated-9",
+      "reason": "Le sujet est « Le tissu et le papier ». La forme attendue est « brûlent »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:coordinated-10",
+      "itemChecksum": "sha256:516669ce61df1dd920314d89c978c2bf531527019323dbb066342a2d02f875a3",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:coordinated",
+      "contextKey": "subject-verb-recognition:coordinated-10",
+      "reason": "Le sujet est « Le nageur et la nageuse ». La forme attendue est « rejoignent »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:coordinated-11",
+      "itemChecksum": "sha256:8cea9768392474b90bb43f875d857346506fdcdb79704adf104c7da294aeddce",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:coordinated",
+      "contextKey": "subject-verb-recognition:coordinated-11",
+      "reason": "Le sujet est « La trompette et le tambour ». La forme attendue est « rompent »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:coordinated-12",
+      "itemChecksum": "sha256:a427b125f69df55b4ccc19b1aada301f983d85f16ee4c15cdf466732a4a5e7df",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:coordinated",
+      "contextKey": "subject-verb-recognition:coordinated-12",
+      "reason": "Le sujet est « La voisine et son fils ». La forme attendue est « vendent »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:coordinated-13",
+      "itemChecksum": "sha256:809e7dc9b1322f2deb6ca17f493b281094e5b2e0bb69f305c52915cadc05a42d",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:coordinated",
+      "contextKey": "subject-verb-recognition:coordinated-13",
+      "reason": "Le sujet est « Le couteau et les ciseaux ». La forme attendue est « découpent »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:coordinated-14",
+      "itemChecksum": "sha256:150f19fbba2ee8922c8930750a7db802bed5ce4816608b8e27e1d33e8fa5898a",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:coordinated",
+      "contextKey": "subject-verb-recognition:coordinated-14",
+      "reason": "Le sujet est « La robe et le manteau ». La forme attendue est « pendent »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:coordinated-15",
+      "itemChecksum": "sha256:9fbc59a45dcade42127d7483212456c39e6fc73a68564be5bd7a592e169a72c1",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:coordinated",
+      "contextKey": "subject-verb-recognition:coordinated-15",
+      "reason": "Le sujet est « La championne et son entraîneur ». La forme attendue est « expriment »."
+    },
+    {
+      "itemKey": "v3-subject-verb-recognition:coordinated-16",
+      "itemChecksum": "sha256:8591345149cb5ae94306677e364a04e4511d80ffd2acf0cf9989d3910f9a7d8a",
+      "facetKey": "accorder_sujet_verbe_ecrit::construction:coordinated",
+      "contextKey": "subject-verb-recognition:coordinated-16",
+      "reason": "Le sujet est « Le chien et le chiot ». La forme attendue est « franchissent »."
+    }
+  ],
+  "checksum": "sha256:a5c5769f3d1d7567c429c19d2f2fa86699cf9bddd009cb8bd476d0761ff32187"
+}
