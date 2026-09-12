@@ -44,7 +44,7 @@ const families:Family[]=[
  ]},
 ];
 
-/** Authoring drafts. Fresh assessment material must be checked before catalogue inclusion. */
+/** Authoring drafts. Guided examples are exposure, never independent checks. */
 export const IMPERATIF_FAMILY_TEACHING:readonly TargetTeachingContent[]=families.map(f=>{
  const persons:ImperativePerson[]=['2s','1p','2p'];
  for(const [i,person] of persons.entries())if(conjugate(f.model,'imperatif_present',person)!==f.forms[i])throw Error(`Imperative model disagreement: ${f.model}/${person}`);

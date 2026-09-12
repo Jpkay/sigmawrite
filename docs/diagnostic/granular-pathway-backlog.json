@@ -1,12 +1,12 @@
 {
   "status": "prepared_inventory_not_release_or_review_approval",
-  "parallelCandidateChecksum": "sha256:add61f118c2b9b06ca51887939c6ef1e2bea5caaf222972ec3467a78f6a98251",
-  "scopedCandidateChecksum": "sha256:f6de3b32860818a23e25cc8d77539b82277f35279d4b89b4d777bcc29aa5e681",
+  "parallelCandidateChecksum": "sha256:abe2af48dec47aab07f992302a2d86385eb802ebb12b72d719df7d79c46263bd",
+  "scopedCandidateChecksum": "sha256:3bd949fe0b10e5fe1c4dcf3313b2d8813d339a5e15e47ec82ff481f32ec78d11",
   "targets": 542,
   "counts": {
-    "prepared_scoped_pathway": 261,
-    "complete_question_pools": 224,
-    "author_exact_target_lesson": 39,
+    "prepared_scoped_pathway": 266,
+    "complete_question_pools": 223,
+    "author_exact_target_lesson": 35,
     "connected_writing_evidence": 18
   },
   "limitations": [
@@ -4063,18 +4063,20 @@
       "skillId": "reconnaitre_imperatif::reading-receptive",
       "nodeKey": "reconnaitre_imperatif",
       "facetKey": null,
-      "action": "complete_question_pools",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "reconnaitre_imperatif::reading-receptive",
           "mode": "recognition",
-          "status": "insufficient_coverage",
-          "initialItems": 2,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 12,
+          "learningItems": 12
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:imperatif:recognition"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
@@ -4093,9 +4095,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "reconnaitre_imperatif::reading-receptive"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_imperatif::writing-controlled-production::verb:avoir",
@@ -4113,9 +4113,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "reconnaitre_imperatif::reading-receptive"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_imperatif::writing-controlled-production::verb:aller",
@@ -4133,9 +4131,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "reconnaitre_imperatif::reading-receptive"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_imperatif::writing-controlled-production::verb:faire",
@@ -4153,9 +4149,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "reconnaitre_imperatif::reading-receptive"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_imperatif::writing-controlled-production::verb:prendre",
@@ -4173,9 +4167,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "reconnaitre_imperatif::reading-receptive"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_imperatif::writing-controlled-production::verb:venir",
@@ -4193,9 +4185,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "reconnaitre_imperatif::reading-receptive"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_imperatif::writing-controlled-production::verb:partir",
@@ -4213,9 +4203,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "reconnaitre_imperatif::reading-receptive"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_imperatif::writing-controlled-production::verb:sortir",
@@ -4233,9 +4221,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "reconnaitre_imperatif::reading-receptive"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_imperatif::writing-controlled-production::verb:dire",
@@ -4253,9 +4239,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "reconnaitre_imperatif::reading-receptive"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_imperatif::writing-controlled-production::verb:voir",
@@ -4273,9 +4257,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "reconnaitre_imperatif::reading-receptive"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_imperatif::writing-controlled-production::verb:vouloir",
@@ -4293,9 +4275,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "reconnaitre_imperatif::reading-receptive"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_imperatif::writing-controlled-production::verb:savoir",
@@ -4313,9 +4293,7 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "reconnaitre_imperatif::reading-receptive"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_imperatif::writing-controlled-production::verb:devoir",
@@ -4333,55 +4311,53 @@
       ],
       "lessonIds": [],
       "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "reconnaitre_imperatif::reading-receptive"
-      ]
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_imperatif::writing-controlled-production::pattern:regular_er",
       "nodeKey": "produire_imperatif",
       "facetKey": "produire_imperatif::pattern:regular_er",
-      "action": "author_exact_target_lesson",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_imperatif::writing-controlled-production::pattern:regular_er",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 22,
-          "learningItems": 21
+          "initialItems": 6,
+          "learningItems": 6
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "reconnaitre_imperatif::reading-receptive"
-      ]
+      "lessonIds": [
+        "french-v3-teaching:imperatif-present:pattern:regular_er"
+      ],
+      "freshCheckAvailable": true,
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_imperatif::writing-controlled-production::pattern:regular_ir",
       "nodeKey": "produire_imperatif",
       "facetKey": "produire_imperatif::pattern:regular_ir",
-      "action": "author_exact_target_lesson",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_imperatif::writing-controlled-production::pattern:regular_ir",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 13,
-          "learningItems": 12
+          "initialItems": 6,
+          "learningItems": 6
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "reconnaitre_imperatif::reading-receptive"
-      ]
+      "lessonIds": [
+        "french-v3-teaching:imperatif-present:pattern:regular_ir"
+      ],
+      "freshCheckAvailable": true,
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_imperatif::writing-controlled-production::pattern:spelling_ger",
       "nodeKey": "produire_imperatif",
       "facetKey": "produire_imperatif::pattern:spelling_ger",
-      "action": "author_exact_target_lesson",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_imperatif::writing-controlled-production::pattern:spelling_ger",
@@ -4391,17 +4367,17 @@
           "learningItems": 9
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "reconnaitre_imperatif::reading-receptive"
-      ]
+      "lessonIds": [
+        "french-v3-teaching:imperatif-present:pattern:spelling_ger"
+      ],
+      "freshCheckAvailable": true,
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_imperatif::writing-controlled-production::pattern:spelling_cer",
       "nodeKey": "produire_imperatif",
       "facetKey": "produire_imperatif::pattern:spelling_cer",
-      "action": "author_exact_target_lesson",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_imperatif::writing-controlled-production::pattern:spelling_cer",
@@ -4411,11 +4387,11 @@
           "learningItems": 9
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
-      "prerequisitesOutsidePreparedScope": [
-        "reconnaitre_imperatif::reading-receptive"
-      ]
+      "lessonIds": [
+        "french-v3-teaching:imperatif-present:pattern:spelling_cer"
+      ],
+      "freshCheckAvailable": true,
+      "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "interpreter_valeur_imperatif::reading-receptive",
@@ -4434,7 +4410,6 @@
       "lessonIds": [],
       "freshCheckAvailable": false,
       "prerequisitesOutsidePreparedScope": [
-        "reconnaitre_imperatif::reading-receptive",
         "produire_imperatif::writing-controlled-production::verb:être",
         "produire_imperatif::writing-controlled-production::verb:avoir",
         "produire_imperatif::writing-controlled-production::verb:aller",
@@ -4447,11 +4422,7 @@
         "produire_imperatif::writing-controlled-production::verb:voir",
         "produire_imperatif::writing-controlled-production::verb:vouloir",
         "produire_imperatif::writing-controlled-production::verb:savoir",
-        "produire_imperatif::writing-controlled-production::verb:devoir",
-        "produire_imperatif::writing-controlled-production::pattern:regular_er",
-        "produire_imperatif::writing-controlled-production::pattern:regular_ir",
-        "produire_imperatif::writing-controlled-production::pattern:spelling_ger",
-        "produire_imperatif::writing-controlled-production::pattern:spelling_cer"
+        "produire_imperatif::writing-controlled-production::verb:devoir"
       ]
     },
     {
