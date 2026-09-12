@@ -40,3 +40,12 @@ it('allocates the real novel-word inventory into four-pattern initial and reserv
   for(const phase of ['initial','learning'])for(const feature of PHONEME_GRAPHIE_FEATURES)expect(rows.filter((p:Probe)=>p.usage===phase&&p.evidenceFeatures?.includes(feature))).toHaveLength(4);
  }
 });
+
+it('rejects pooled duplicate recordings even when every written identity is different',()=>{
+ const s=skill();s.evidenceRequirements!.recognition!.novelWordsRequired=true;
+ const audio=`audio:sha256:${'a'.repeat(64)}`;
+ const pool=probes.slice(0,4).map((p,index)=>{const word=`word:sha256:${String(index+1).repeat(64)}`;return {...p,materialKeys:[word,audio],assessedMaterialKeys:[word,audio]};});
+ expect(isQuestionPoolSufficient(pool,s,'recognition',true)).toBe(false);
+ const unique=pool.map((p,index)=>({...p,materialKeys:[p.materialKeys[0],`audio:sha256:${String(index+1).repeat(64)}`],assessedMaterialKeys:[p.materialKeys[0],`audio:sha256:${String(index+1).repeat(64)}`]}));
+ expect(isQuestionPoolSufficient(unique,s,'recognition',true)).toBe(true);
+});

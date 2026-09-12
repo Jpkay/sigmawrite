@@ -44,6 +44,17 @@ function freshTogether(probes:readonly Probe[],skill:Skill,mode:Mode){
    exposureKeys.forEach(key=>exposed.add(key));targetKeys.forEach(key=>assessed.add(key));
   }
  }
+ // Identical recordings cannot be fresh under different written labels.
+ // Text-only items require no audio identity; existing pools stay unchanged.
+ if(rule?.novelWordsRequired||rule?.novelSentencesRequired){
+  const exposed=new Set<string>(),assessed=new Set<string>();
+  for(const probe of probes){
+   const exposureKeys=[...new Set((probe.materialKeys??[]).filter(key=>key.startsWith("audio:")))];
+   const targetKeys=[...new Set((probe.assessedMaterialKeys??probe.materialKeys??[]).filter(key=>key.startsWith("audio:")))];
+   if(targetKeys.some(key=>!exposureKeys.includes(key)||exposed.has(key))||exposureKeys.some(key=>assessed.has(key)))return false;
+   exposureKeys.forEach(key=>exposed.add(key));targetKeys.forEach(key=>assessed.add(key));
+  }
+ }
  return true;
 }
 

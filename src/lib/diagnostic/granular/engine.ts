@@ -230,7 +230,7 @@ export function knownExposedMaterialKeys(bank:readonly Probe[],observations:read
 export function probeRepeatsKnownTarget(probe:Probe,skill:Skill,known:ReadonlySet<string>):boolean{
  const rule=skill.evidenceRequirements?.[probe.mode];
  return (probe.assessedMaterialKeys??probe.materialKeys??[]).some(key=>known.has(key)
-  &&(key.startsWith("word:")?rule?.novelWordsRequired:key.startsWith("sentence:")?rule?.novelSentencesRequired:false));
+  &&(key.startsWith("word:")?rule?.novelWordsRequired:key.startsWith("sentence:")?rule?.novelSentencesRequired:key.startsWith("audio:")?(rule?.novelWordsRequired||rule?.novelSentencesRequired):false));
 }
 
 /** Internal routing/readiness view only. Never publish these as mastery results. */

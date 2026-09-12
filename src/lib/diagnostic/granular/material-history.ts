@@ -16,7 +16,7 @@ export async function withKnownMaterialHistory(store:AssessmentStore,session:Sto
  }
  const targets=[...new Set([...readingKeys.keys(),...bundle.assessment.probes.flatMap(probe=>{
   const rule=skills.get(probe.skillId)?.evidenceRequirements?.[probe.mode];
-  return (probe.assessedMaterialKeys??probe.materialKeys??[]).filter(key=>key.startsWith("word:")?rule?.novelWordsRequired:key.startsWith("sentence:")?rule?.novelSentencesRequired:false);
+  return (probe.assessedMaterialKeys??probe.materialKeys??[]).filter(key=>key.startsWith("word:")?rule?.novelWordsRequired:key.startsWith("sentence:")?rule?.novelSentencesRequired:key.startsWith("audio:")?(rule?.novelWordsRequired||rule?.novelSentencesRequired):false);
  })])];
  if(!targets.length)return session;
  const known=await store.knownMaterialKeys(session.studentId,targets);

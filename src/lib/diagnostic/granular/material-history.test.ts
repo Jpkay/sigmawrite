@@ -62,3 +62,13 @@ it("carries passage exposure across releases despite changed question and source
  expect(f.session.state.exposedReadingContexts).toBeUndefined();
  await expect(withKnownMaterialHistory(f.store,f.session,{assessment})).rejects.toThrow(/source unavailable/);
 });
+
+it('excludes a recording heard in an earlier session even under a fresh written label',async()=>{
+ const f=fixture(),audio=`audio:sha256:${'d'.repeat(64)}`;
+ f.bundle.assessment.probes[0].materialKeys!.push(audio);f.bundle.assessment.probes[0].assessedMaterialKeys!.push(audio);
+ f.lookup.mockResolvedValue([audio]);
+ const loaded=await withKnownMaterialHistory(f.store,f.session,f.bundle);
+ expect(f.lookup).toHaveBeenCalledWith('student-a',[old,audio,fresh]);
+ expect(selectProbe(f.bundle.assessment.skills,f.bundle.assessment.probes,[],undefined,loaded.state.exposedMaterialKeys)).toMatchObject({kind:'question',item:{id:'q1'}});
+ expect(loaded.state.observations).toHaveLength(0);
+});
