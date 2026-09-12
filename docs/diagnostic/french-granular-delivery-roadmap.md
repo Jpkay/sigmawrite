@@ -6,8 +6,9 @@ Updated 2026-09-12. French only; Allotey is excluded. This document distinguishe
 
 - Public deployment: v17, 260 supported targets, frozen source `9435669`. A complete timed diagnostic (60 answers, 47 correct and 13 incorrect), results, guided lesson, fresh independent check, answer review and reload passed. After promotion, public new-account, demo and pinned-session checks passed. The demo retains 11 lessons and 48 reviewed answers. See `revision-sixteen-publication-2026-09-12.json`.
 - Previous public release: v16, 253 supported targets, frozen source `37de48a`; retained as the rollback reference. See `revision-fifteen-publication-2026-09-12.json`.
-- Published candidate v18: 261 targets and 6,626 bank items, frozen source `cddc4ae`. Adds complex-negation meaning checks and finer feature evidence in results. All stored bank items passed the consistency check. Fresh-default and real learning-upgrade checks passed; full timed validation and public activation remain outstanding. See `revision-seventeen-publication-2026-09-12.json`.
-- Separate working draft: 266 prepared pathways, adding imperative recognition and four imperative verb families. Its five service journeys, 648 granular tests and eight constructed profile checks pass. It is not published. See `imperative-family-preparation-2026-09-12.json`.
+- Published candidate v18: 261 targets and 6,626 bank items, frozen source `cddc4ae`. Adds complex-negation meaning checks and finer feature evidence in results. All stored bank items passed the consistency check. Fresh-default, real learning-upgrade and full timed journey checks passed; deployed answered-feature verification and public activation remain outstanding. See `revision-seventeen-publication-2026-09-12.json`.
+- Published candidate v19: 266 targets, adding imperative recognition and four imperative verb families. Fresh-default and real learning-upgrade checks pass. The full timed diagnostic reached 59 answers, 47 correct, 12 incorrect, 542 result rows and five activities; lesson follow-up and review remain running. See `revision-eighteen-publication-2026-09-12.json`.
+- Separate working draft: 270 prepared pathways, adding exact imperative lessons for être, avoir, aller and faire, with 24 guided exercises and 48 fresh sentence checks. All 706 assessment/conjugation tests and TypeScript pass; all four service journeys pass and constructed-profile checks are running. It is not published.
 - All 72 v18 candidate audio assets passed byte-integrity and actual Chrome playback checks. This is technical verification; pronunciation review remains pending. Feature display was verified at a 390-pixel viewport without horizontal overflow, but that live account only supplied untested feature rows; deployed answered-count coverage remains outstanding.
 - Working-draft symbolic routing benchmark: 10/10 depth checks and 8/8 uneven-profile contrasts, with no invariant violations. See `confirmed-verb-visits-2026-09-12.md`. Eight prepared-profile checks cover the 261-target candidate. These are constructed tests, not educational calibration.
 
@@ -17,8 +18,8 @@ Updated 2026-09-12. French only; Allotey is excluded. This document distinguishe
 
 | Required work | Targets |
 | --- | ---: |
-| Prepared assessment, teaching and fresh-check pathway | 266 |
-| Question pools allocated; exact-target lesson still missing | 35 |
+| Prepared assessment, teaching and fresh-check pathway | 270 |
+| Question pools allocated; exact-target lesson still missing | 31 |
 | Complete initial and follow-up question pools | 223 |
 | Connected-writing evidence during learning | 18 |
 | Total | 542 |
@@ -27,9 +28,9 @@ These categories partition the graph; they are not publication or approval label
 
 ## Next implementation packages
 
-1. Finish the full timed candidate journeys through learning and answer review, then activate only an exactly tested deployment and repeat public verification. The public v17 release supports 260 targets; the published v18 candidate supports 261 and the separate working draft prepares 266. Preserve immutable bundles and historical sessions.
+1. Finish the full timed candidate journeys through learning and answer review, then activate only an exactly tested deployment and repeat public verification. The public v17 release supports 260 targets; the published v19 candidate supports 266 and the separate working draft prepares 270. Preserve immutable bundles and historical sessions.
 2. Validate the new verb-visit routing on real content and live mixed-profile journeys. The eight constructed contrasts now pass; educator/student calibration and broader granular profile validation remain required. Keep untested targets unresolved and refine them during learning.
-3. Subjunctive recognition, fourteen exact-verb lessons and four verb-family pathways have passed their service journeys. Three short-reading main-idea pathways and complex-negation meanings also have guided practice and fresh checks. Complete the remaining imperative and passé-simple exact-target lessons, using the 35 exact-target lesson gaps in the current inventory.
+3. Subjunctive recognition, fourteen exact-verb lessons and four verb-family pathways have passed their service journeys. Three short-reading main-idea pathways and complex-negation meanings also have guided practice and fresh checks. Complete the remaining imperative and passé-simple exact-target lessons, using the 31 exact-target lesson gaps in the current inventory.
 4. Review the four remaining passé récent verb targets (pouvoir, vouloir, savoir, devoir) for natural contexts before authoring. Do not mechanically create awkward forms merely to reach a coverage count. Continue subjonctif, impératif and passé simple coverage with their own usage constraints.
 5. Fill the 223 question-pool gaps across all domains from the exact-target inventory, preserving distinct recognition, controlled production and contextual-use evidence. The written-syllable and sound-to-spelling prerequisites for cédille are now included in the prepared candidate. Complete the separate connected-writing pathway for the remaining 18 targets.
 6. Continue the owner's review in parallel, recording actual decisions against content checksums. Validate difficulty, question duration, sufficient depth and the meaning of recommendations with educator and student evidence. Do not substitute technical tests for those judgments.
