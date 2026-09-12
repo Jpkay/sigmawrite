@@ -1,7 +1,9 @@
 import {checksum} from "@/lib/taxonomy/validate";
 import {z} from "zod";
 
-const tokenSchema=z.object({start:z.number().int().nonnegative(),end:z.number().int().positive(),text:z.string().min(1),criterionId:z.string().min(1).optional(),correct:z.boolean(),reasonFr:z.string().trim().min(1).max(1000).optional()}).strict();
+const sourceSpanSchema=z.object({start:z.number().int().nonnegative(),end:z.number().int().positive(),text:z.string().min(1)}).strict();
+const revisionProofSchema=z.object({kind:z.enum(['corrected','retained','introduced']),before:sourceSpanSchema.nullable()}).strict();
+const tokenSchema=sourceSpanSchema.extend({criterionId:z.string().min(1).optional(),correct:z.boolean(),reasonFr:z.string().trim().min(1).max(1000).optional(),revisionProof:revisionProofSchema.optional()}).strict();
 const schema=z.object({
  skillId:z.string().min(1),responseChecksum:z.string().regex(/^sha256:[a-f0-9]{64}$/),
  evaluator:z.object({version:z.string().min(1),model:z.string().min(1),protocolChecksum:z.string().regex(/^sha256:[a-f0-9]{64}$/),rubricChecksum:z.string().regex(/^sha256:[a-f0-9]{64}$/)}).strict().optional(),
@@ -15,12 +17,26 @@ const schema=z.object({
   ctx.addIssue({code:"custom",message:"Writing evidence source or counts mismatch"});
  }
  let end=0;
+ const evaluatorRevision=Number(value.evaluator?.version.match(/^french-writing-evaluator-v(\d+)$/)?.[1]??0);
+ if(value.revisionReviewed&&evaluatorRevision>=10&&value.tokens.some(token=>!token.revisionProof)){
+  ctx.addIssue({code:'custom',message:'Revision proof required by evaluator protocol'});
+ }
  for(const token of [...value.tokens].sort((a,b)=>a.start-b.start)){
   if(token.start<end||token.end<=token.start||token.end>value.responseText.length||
    value.responseText.slice(token.start,token.end)!==token.text||!token.text.trim()){
    ctx.addIssue({code:"custom",message:"Invalid eligible writing token span"});
   }
   end=token.end;
+  if(token.revisionProof){
+   const {kind,before}=token.revisionProof;
+   if(!value.revisionReviewed||value.firstDraft===undefined
+    ||(before&&(before.end<=before.start||before.end>value.firstDraft.length||value.firstDraft.slice(before.start,before.end)!==before.text))
+    ||(kind==='corrected'&&(!before||before.text===token.text||!token.correct))
+    ||(kind==='retained'&&(!before||before.text!==token.text||token.correct))
+    ||(kind==='introduced'&&(token.correct||before?.text===token.text))){
+    ctx.addIssue({code:'custom',message:'Invalid revision source or change verdict'});
+   }
+  }
  }
 });
 export type WritingEvidence=z.infer<typeof schema>;
@@ -30,7 +46,7 @@ export type WritingEvidence=z.infer<typeof schema>;
  * does not supply this judgment. Never accept these fields from browser input.
  * Store the source and judgments for audit; public results expose aggregates only. */
 export function createWritingEvidence(input:{skillId:string;answer:string;connectedWriting:boolean;unaided:boolean;
- evaluator?:WritingEvidence["evaluator"];firstDraft?:string;revisionReviewed?:true;tokens:Array<{start:number;end:number;text:string;correct:boolean;criterionId?:string;reasonFr?:string}>}):WritingEvidence{
+ evaluator?:WritingEvidence["evaluator"];firstDraft?:string;revisionReviewed?:true;tokens:Array<z.infer<typeof tokenSchema>>}):WritingEvidence{
  if(!input.connectedWriting||!input.unaided)throw Error("Independent connected writing required");
  return schema.parse({skillId:input.skillId,responseChecksum:checksum(input.answer),connectedWriting:true,unaided:true,
   evaluator:input.evaluator,responseText:input.answer,tokens:input.tokens,firstDraft:input.firstDraft,revisionReviewed:input.revisionReviewed,

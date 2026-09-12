@@ -54,3 +54,14 @@ it("does not count typography-only changes as a new writing sample",()=>{
  rows[1].writingEvidence=createWritingEvidence({skillId:skill.id,answer:"Les chevaux courent vite !",connectedWriting:true,unaided:true,tokens});
  expect(assessSkills([skill],rows)[0].resolved).toBe(false);
 });
+
+it("preserves revision source proof and rejects tampering after serialization",()=>{
+ const base={skillId:'revision',answer:'Les chevaux arrivent.',firstDraft:'Les cheveaux arrivent.',revisionReviewed:true as const,connectedWriting:true,unaided:true};
+ const token={start:4,end:11,text:'chevaux',correct:true,revisionProof:{kind:'corrected' as const,before:{start:4,end:12,text:'cheveaux'}}};
+ const evidence=createWritingEvidence({...base,tokens:[token]});
+ expect(verifiedWritingEvidence(JSON.parse(JSON.stringify(evidence)),'revision')).not.toBeNull();
+ for(const changed of [{...evidence,firstDraft:'Les chevaux arrivent.'},{...evidence,tokens:[{...token,correct:false}]},{...evidence,tokens:[{...token,revisionProof:{kind:'retained',before:token.revisionProof.before}}]}])expect(verifiedWritingEvidence(changed,'revision')).toBeNull();
+ const evaluator={version:'french-writing-evaluator-v10',model:'injected-judge',protocolChecksum:evidence.responseChecksum,rubricChecksum:evidence.responseChecksum};
+ expect(()=>createWritingEvidence({...base,evaluator,tokens:[{start:4,end:11,text:'chevaux',correct:true}]})).toThrow(/Revision proof/);
+ expect(()=>createWritingEvidence({...base,tokens:[{...token,revisionProof:{kind:'corrected',before:{start:0,end:999,text:base.firstDraft}}}]})).toThrow(/revision source/);
+});

@@ -31,14 +31,14 @@ it("rejects uncertainty, missing excerpts, overlap and missing revision comparis
 });
 it("compares both versions and preserves the evaluator's explanation",async()=>{
  const f=fixture();f.input.item.nodeKey="reviser_orthographe_lexicale_paragraphe";
- f.judge.mockResolvedValue({uncertain:false,connectedWriting:true,revisionReviewed:true,opportunities:[{excerpt:"chevaux",occurrence:0,correct:true,reasonFr:"La graphie incorrecte a été corrigée."}]});
+ f.judge.mockResolvedValue({uncertain:false,connectedWriting:true,revisionReviewed:true,opportunities:[{excerpt:"chevaux",occurrence:0,correct:true,reasonFr:"La graphie incorrecte a été corrigée.",revisionEvidence:{kind:"corrected",before:{excerpt:"cheveaux",occurrence:0}}}]});
  const result=await f.evaluate({...f.input,answer:"Les chevaux courent.",firstDraft:"Les cheveaux courent."});
  expect(result.revisionReviewed).toBe(true);expect(result.tokens[0].text).toBe("chevaux");
  expect(f.judge).toHaveBeenCalledWith(expect.objectContaining({firstDraft:"Les cheveaux courent."}));
 });
 it("binds evaluator provenance to the protocol and exact task rubric",async()=>{
  const f=fixture(),first=await f.evaluate(f.input);
- expect(first.evaluator).toMatchObject({version:"french-writing-evaluator-v9",model:"injected-judge",protocolChecksum:expect.stringMatching(/^sha256:/),rubricChecksum:expect.stringMatching(/^sha256:/)});
+ expect(first.evaluator).toMatchObject({version:"french-writing-evaluator-v10",model:"injected-judge",protocolChecksum:expect.stringMatching(/^sha256:/),rubricChecksum:expect.stringMatching(/^sha256:/)});
  const second=await f.evaluate({...f.input,item:{...f.input.item,promptFr:"Décris un lieu dans le passé."}});
  expect(second.evaluator?.rubricChecksum).not.toBe(first.evaluator?.rubricChecksum);
  expect(second.evaluator?.protocolChecksum).toBe(first.evaluator?.protocolChecksum);
@@ -128,4 +128,31 @@ it("preserves exact opportunity text while resolving case-only imperative proofs
  f.input.answer="Prends ton sac. prends le train.";
  f.judge.mockResolvedValue({...base,opportunities:[{excerpt:"prends le train",occurrence:0,correct:true,reasonFr:"Consigne.",imperativeForm:{infinitive:"prendre",excerpt:"prends",occurrence:0}}]});
  expect((await f.evaluate(f.input)).tokens[0]).toMatchObject({start:16,text:"prends le train",correct:true});
+});
+
+it("anchors revision changes to both versions and rejects invented correction credit",async()=>{
+ const f=fixture();f.input.item.nodeKey="reviser_orthographe_lexicale_paragraphe";
+ const base={uncertain:false,connectedWriting:true,revisionReviewed:true};
+ for(const [firstDraft,answer,kind,before,correct] of [
+  ['Les cheveaux arrivent.','Les chevaux arrivent.','corrected','cheveaux',true],
+  ['Les cheveaux arrivent.','Les cheveaux arrivent.','retained','cheveaux',false],
+  ['Les chevaux arrivent.','Les cheveaux arrivent.','introduced','chevaux',false],
+  ['Le jardin est calme.','Le jardin est calme. Des cheveaux arrivent.','introduced',null,false],
+ ] as const){
+  const excerpt=correct?'chevaux':'cheveaux';
+  f.judge.mockResolvedValue({...base,opportunities:[{excerpt,occurrence:0,correct,reasonFr:'Comparaison des deux versions.',revisionEvidence:{kind,before:before?{excerpt:before,occurrence:0}:null}}]});
+  const result=await f.evaluate({...f.input,firstDraft,answer});
+  expect(result.tokens[0].revisionProof).toMatchObject({kind,before:before?{text:before}:null});
+ }
+ const opportunity={excerpt:'chevaux',occurrence:0,correct:true,reasonFr:'Correction annoncée.'};
+ for(const revisionEvidence of [undefined,{kind:'corrected',before:{excerpt:'chevaux',occurrence:0}},{kind:'corrected',before:{excerpt:'inventé',occurrence:0}},{kind:'introduced',before:null}]){
+  f.judge.mockResolvedValue({...base,opportunities:[{...opportunity,...(revisionEvidence?{revisionEvidence}:{})}]});
+  await expect(f.evaluate({...f.input,firstDraft:'Les chevaux arrivent.',answer:'Les chevaux arrivent.'})).rejects.toBeInstanceOf(WritingAssessmentError);
+ }
+});
+
+it("rejects the live revision response that substitutes the corrected spelling for the submitted error",async()=>{
+ const {source,judgment}=JSON.parse(readFileSync('docs/diagnostic/writing/revision-source-regression.json','utf8'));
+ const f=fixture();f.judge.mockResolvedValue(judgment);
+ await expect(f.evaluate({...f.input,answer:source.answer,firstDraft:source.firstDraft,item:{...f.input.item,nodeKey:source.node,promptFr:source.prompt}})).rejects.toBeInstanceOf(WritingAssessmentError);
 });

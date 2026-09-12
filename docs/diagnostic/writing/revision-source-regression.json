@@ -1,0 +1,44 @@
+{
+  "source": {
+    "id": "introduced-revision-errors",
+    "node": "reviser_orthographe_lexicale_paragraphe",
+    "prompt": "Raconte une découverte puis relis ton texte.",
+    "firstDraft": "Les chevaux attendaient près de la barrière. Le jardin semblait calme.",
+    "answer": "Les cheveaux attendaient près de la barière. Le jardin semblait calme.",
+    "expect": "incorrect"
+  },
+  "judgment": {
+    "uncertain": false,
+    "connectedWriting": true,
+    "revisionReviewed": true,
+    "opportunities": [
+      {
+        "excerpt": "cheveaux",
+        "occurrence": 0,
+        "revisionEvidence": {
+          "kind": "introduced",
+          "before": {
+            "excerpt": "chevaux",
+            "occurrence": 0
+          }
+        },
+        "correct": false,
+        "reasonFr": "Le brouillon comportait la graphie correcte « chevaux » ; la version finale introduit l'erreur lexicale « cheveaux »."
+      },
+      {
+        "excerpt": "barrière",
+        "occurrence": 0,
+        "revisionEvidence": {
+          "kind": "introduced",
+          "before": {
+            "excerpt": "barrière",
+            "occurrence": 0
+          }
+        },
+        "correct": false,
+        "reasonFr": "Le brouillon comportait la graphie correcte « barrière » avec double « r » ; la version finale introduit l'erreur lexicale « barrière »."
+      }
+    ]
+  },
+  "expected": "reject_unanchored_final_excerpt"
+}

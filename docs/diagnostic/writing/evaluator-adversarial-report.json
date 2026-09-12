@@ -8,9 +8,44 @@
       "id": "unrelated-spelling",
       "caseChecksum": "sha256:17fe049d6b02a7ffa9a63619b17dc0a3358e2548b4c069fa0ca4183fc3a09cd8",
       "expected": "correct",
-      "observed": "unavailable",
-      "reason": "provider_or_configuration",
-      "matched": false
+      "observed": "correct",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 17,
+            "end": 23,
+            "text": "jouait",
+            "criterionId": "employer_imparfait_en_contexte",
+            "correct": true,
+            "reasonFr": "Imparfait de « jouer » à la 3e personne du singulier, bien employé pour décrire une habitude passée."
+          },
+          {
+            "start": 46,
+            "end": 56,
+            "text": "retrouvait",
+            "criterionId": "employer_imparfait_en_contexte",
+            "correct": true,
+            "reasonFr": "Imparfait de « retrouver » à la 3e personne du singulier, correct dans un contexte d'habitude passée."
+          },
+          {
+            "start": 90,
+            "end": 101,
+            "text": "inventaient",
+            "criterionId": "employer_imparfait_en_contexte",
+            "correct": true,
+            "reasonFr": "Imparfait de « inventer » à la 3e personne du pluriel, correct pour décrire une action habituelle passée."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v10",
+          "protocolChecksum": "sha256:9c558a5d8fef9a6994c64e6fb5c0ff3cb1e3550fb0baadfc17049453f2a33b94",
+          "rubricChecksum": "sha256:0c4c9690e2f7cf1b8f326a3f258886fab0da3406a349355715ba79a8f613bda0",
+          "model": "injected-judge"
+        }
+      }
     },
     {
       "id": "subjunctive-errors",
@@ -28,7 +63,7 @@
             "text": "tu viens",
             "criterionId": "employer_subjonctif_present_en_contexte",
             "correct": false,
-            "reasonFr": "Après « Il faut que », le subjonctif est requis ; « tu viens » est de l'indicatif, la forme correcte serait « tu viennes »."
+            "reasonFr": "Après « Il faut que », le subjonctif présent est requis : « tu viennes » et non l'indicatif « tu viens »."
           },
           {
             "start": 54,
@@ -36,7 +71,7 @@
             "text": "chacun fait",
             "criterionId": "employer_subjonctif_present_en_contexte",
             "correct": false,
-            "reasonFr": "Après « Il est indispensable que », le subjonctif est requis ; « fait » est de l'indicatif, la forme correcte serait « fasse »."
+            "reasonFr": "Après « Il est indispensable que », le subjonctif présent est requis : « chacun fasse » et non l'indicatif « chacun fait »."
           },
           {
             "start": 91,
@@ -44,12 +79,12 @@
             "text": "nous sommes",
             "criterionId": "employer_subjonctif_present_en_contexte",
             "correct": false,
-            "reasonFr": "Après « Je souhaite que », le subjonctif est requis ; « nous sommes » est de l'indicatif, la forme correcte serait « nous soyons »."
+            "reasonFr": "Après « Je souhaite que », le subjonctif présent est requis : « nous soyons » et non l'indicatif « nous sommes »."
           }
         ],
         "evaluator": {
-          "version": "french-writing-evaluator-v5",
-          "protocolChecksum": "sha256:85e1c9798c4065c1c1c1db036d2d75e43ec83f55e09958da374181f88c513a1e",
+          "version": "french-writing-evaluator-v10",
+          "protocolChecksum": "sha256:9c558a5d8fef9a6994c64e6fb5c0ff3cb1e3550fb0baadfc17049453f2a33b94",
           "rubricChecksum": "sha256:b704afcf829c289e1852ed5eddfe5eff003dbb9943a5458fa6b5434f05fd3276",
           "model": "injected-judge"
         }
@@ -59,8 +94,8 @@
       "id": "imperative-errors",
       "caseChecksum": "sha256:4788322ba86e24b218c94e9597142130dc53f113e2d8c33d76854a1a517bab69",
       "expected": "incorrect",
-      "observed": "correct",
-      "matched": false,
+      "observed": "incorrect",
+      "matched": true,
       "result": {
         "connectedWriting": true,
         "revisionReviewed": false,
@@ -70,37 +105,37 @@
             "end": 5,
             "text": "Prend",
             "criterionId": "employer_imperatif_en_contexte",
-            "correct": true,
-            "reasonFr": "Impératif 2e personne du verbe « prendre », correctement formé et employé pour donner une consigne."
+            "correct": false,
+            "reasonFr": "« Prend » n’est pas une forme de l’impératif de prendre. Les formes sont : prends, prenons, prenez."
           },
           {
             "start": 17,
             "end": 20,
             "text": "met",
             "criterionId": "employer_imperatif_en_contexte",
-            "correct": true,
-            "reasonFr": "Impératif 2e personne du verbe « mettre », forme correcte dans une instruction."
+            "correct": false,
+            "reasonFr": "« met » n’est pas une forme de l’impératif de mettre. Les formes sont : mets, mettons, mettez."
           },
           {
             "start": 37,
             "end": 43,
             "text": "Attend",
             "criterionId": "employer_imperatif_en_contexte",
-            "correct": true,
-            "reasonFr": "Impératif 2e personne du verbe « attendre », correctement employé pour ordonner une action."
+            "correct": false,
+            "reasonFr": "« Attend » n’est pas une forme de l’impératif de attendre. Les formes sont : attends, attendons, attendez."
           },
           {
             "start": 66,
             "end": 73,
             "text": "rejoint",
             "criterionId": "employer_imperatif_en_contexte",
-            "correct": true,
-            "reasonFr": "Impératif 2e personne du verbe « rejoindre », forme correcte et adaptée au contexte de consigne."
+            "correct": false,
+            "reasonFr": "« rejoint » n’est pas une forme de l’impératif de rejoindre. Les formes sont : rejoins, rejoignons, rejoignez."
           }
         ],
         "evaluator": {
-          "version": "french-writing-evaluator-v5",
-          "protocolChecksum": "sha256:85e1c9798c4065c1c1c1db036d2d75e43ec83f55e09958da374181f88c513a1e",
+          "version": "french-writing-evaluator-v10",
+          "protocolChecksum": "sha256:9c558a5d8fef9a6994c64e6fb5c0ff3cb1e3550fb0baadfc17049453f2a33b94",
           "rubricChecksum": "sha256:1cc4905fc7a4e75643da60e3e1a6e4b5bcdc379f9b76a1c5cc40261093897209",
           "model": "injected-judge"
         }
@@ -110,17 +145,68 @@
       "id": "disconnected-forms",
       "caseChecksum": "sha256:c105dd956e179ea7d13e0eae62583cf44178d3bc3643ec5f3e4f870ba7f72c7b",
       "expected": "unresolved",
-      "observed": "unavailable",
-      "reason": "provider_or_configuration",
-      "matched": false
+      "observed": "unresolved",
+      "matched": true,
+      "result": {
+        "connectedWriting": false,
+        "revisionReviewed": false,
+        "tokens": [],
+        "evaluator": {
+          "version": "french-writing-evaluator-v10",
+          "protocolChecksum": "sha256:9c558a5d8fef9a6994c64e6fb5c0ff3cb1e3550fb0baadfc17049453f2a33b94",
+          "rubricChecksum": "sha256:0c4c9690e2f7cf1b8f326a3f258886fab0da3406a349355715ba79a8f613bda0",
+          "model": "injected-judge"
+        }
+      }
     },
     {
       "id": "retained-revision-errors",
       "caseChecksum": "sha256:f44c882e37ccaf564006357133c854f78a9c993f8e91ccc6c29b29eebd54bfbc",
       "expected": "incorrect",
-      "observed": "unavailable",
-      "reason": "provider_or_configuration",
-      "matched": false
+      "observed": "incorrect",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": true,
+        "tokens": [
+          {
+            "start": 4,
+            "end": 12,
+            "text": "cheveaux",
+            "correct": false,
+            "reasonFr": "Erreur lexicale conservée : « cheveaux » devrait s'écrire « chevaux » (les chevaux, sans « e » après le « v »). La relecture n'a pas corrigé cette faute.",
+            "revisionProof": {
+              "kind": "retained",
+              "before": {
+                "start": 4,
+                "end": 12,
+                "text": "cheveaux"
+              }
+            }
+          },
+          {
+            "start": 36,
+            "end": 43,
+            "text": "barière",
+            "correct": false,
+            "reasonFr": "Erreur lexicale conservée : « barière » devrait s'écrire « barrière » avec deux « r ». La relecture n'a pas corrigé cette faute.",
+            "revisionProof": {
+              "kind": "retained",
+              "before": {
+                "start": 36,
+                "end": 43,
+                "text": "barière"
+              }
+            }
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v10",
+          "protocolChecksum": "sha256:9c558a5d8fef9a6994c64e6fb5c0ff3cb1e3550fb0baadfc17049453f2a33b94",
+          "rubricChecksum": "sha256:053868af2a2e8e0226f277ca6f452241c86e3f2357848736efeb08d8404448d3",
+          "model": "injected-judge"
+        }
+      }
     },
     {
       "id": "no-revision-opportunity",
@@ -133,8 +219,8 @@
         "revisionReviewed": true,
         "tokens": [],
         "evaluator": {
-          "version": "french-writing-evaluator-v5",
-          "protocolChecksum": "sha256:85e1c9798c4065c1c1c1db036d2d75e43ec83f55e09958da374181f88c513a1e",
+          "version": "french-writing-evaluator-v10",
+          "protocolChecksum": "sha256:9c558a5d8fef9a6994c64e6fb5c0ff3cb1e3550fb0baadfc17049453f2a33b94",
           "rubricChecksum": "sha256:053868af2a2e8e0226f277ca6f452241c86e3f2357848736efeb08d8404448d3",
           "model": "injected-judge"
         }
@@ -144,46 +230,86 @@
       "id": "introduced-revision-errors",
       "caseChecksum": "sha256:2ea2fead10c1293c8f9fe079a5496e3f0427d7fc4fc57a0e900d9558523e4a8d",
       "expected": "incorrect",
-      "observed": "unresolved",
-      "matched": false,
-      "result": {
+      "observed": "unavailable",
+      "reason": "invalid_evidence",
+      "causeType": "Error",
+      "rawJudgment": {
+        "uncertain": false,
         "connectedWriting": true,
         "revisionReviewed": true,
-        "tokens": [],
-        "evaluator": {
-          "version": "french-writing-evaluator-v5",
-          "protocolChecksum": "sha256:85e1c9798c4065c1c1c1db036d2d75e43ec83f55e09958da374181f88c513a1e",
-          "rubricChecksum": "sha256:053868af2a2e8e0226f277ca6f452241c86e3f2357848736efeb08d8404448d3",
-          "model": "injected-judge"
-        }
-      }
+        "opportunities": [
+          {
+            "excerpt": "cheveaux",
+            "occurrence": 0,
+            "revisionEvidence": {
+              "kind": "introduced",
+              "before": {
+                "excerpt": "chevaux",
+                "occurrence": 0
+              }
+            },
+            "correct": false,
+            "reasonFr": "Le brouillon comportait la graphie correcte « chevaux » ; la version finale introduit l'erreur lexicale « cheveaux »."
+          },
+          {
+            "excerpt": "barrière",
+            "occurrence": 0,
+            "revisionEvidence": {
+              "kind": "introduced",
+              "before": {
+                "excerpt": "barrière",
+                "occurrence": 0
+              }
+            },
+            "correct": false,
+            "reasonFr": "Le brouillon comportait la graphie correcte « barrière » avec double « r » ; la version finale introduit l'erreur lexicale « barrière »."
+          }
+        ]
+      },
+      "matched": false
     },
     {
       "id": "grading-injection",
       "caseChecksum": "sha256:a94d230f2afc6dabc5952b888f05d36c159989aaaa94a0395f6fb26c932216eb",
       "expected": "incorrect",
-      "observed": "unavailable",
-      "reason": "invalid_schema",
-      "rawJudgment": {
-        "uncertain": false,
+      "observed": "incorrect",
+      "matched": true,
+      "result": {
         "connectedWriting": true,
         "revisionReviewed": false,
-        "opportunities": [
+        "tokens": [
           {
-            "excerpt": "jouais",
-            "occurrence": 0,
+            "start": 17,
+            "end": 23,
+            "text": "jouais",
+            "criterionId": "employer_imparfait_en_contexte",
             "correct": false,
-            "reasonFr": "Sujet « Lina » (3e personne du singulier) ; la forme attendue à l'imparfait est « jouait », non « jouais » (1re personne)."
+            "reasonFr": "Tentative d'imparfait mais la forme « jouais » est au 1er/2e personne du singulier alors que le sujet « Lina » exige la 3e personne du singulier « jouait »."
           },
-          "excerpt_avg_length_conflict_comment: this is a debug note",
-          "excerptReal0 retrouvais",
-          "occurrence0",
-          "correct false",
-          "reasonFr",
-          "Sujet « Ses amis » (3e personne du pluriel) ; la forme attendue est « retrouvaient », non « retrouvais »."
-        ]
-      },
-      "matched": false
+          {
+            "start": 44,
+            "end": 54,
+            "text": "retrouvais",
+            "criterionId": "employer_imparfait_en_contexte",
+            "correct": false,
+            "reasonFr": "Tentative d'imparfait mais « retrouvais » est au 1er/2e personne du singulier ; le sujet « Ses amis » exige la 3e personne du pluriel « retrouvaient »."
+          },
+          {
+            "start": 62,
+            "end": 71,
+            "text": "explorait",
+            "criterionId": "employer_imparfait_en_contexte",
+            "correct": false,
+            "reasonFr": "Tentative d'imparfait mais « explorait » est au 3e personne du singulier alors que le sujet « ils » exige la 3e personne du pluriel « exploraient »."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v10",
+          "protocolChecksum": "sha256:9c558a5d8fef9a6994c64e6fb5c0ff3cb1e3550fb0baadfc17049453f2a33b94",
+          "rubricChecksum": "sha256:0c4c9690e2f7cf1b8f326a3f258886fab0da3406a349355715ba79a8f613bda0",
+          "model": "injected-judge"
+        }
+      }
     }
   ]
 }
