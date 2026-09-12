@@ -1,5 +1,5 @@
 {
-  "status": "prepared_not_published",
+  "status": "draft_bank_import_running_candidate_build_running",
   "authoringOptions": [
     "--bank-revision",
     "36",
@@ -31,17 +31,20 @@
     "limitation": "Preparation only. IDs are placeholders; the publisher must revalidate with actual parent IDs and persist the exact resulting bundle checksum. No human review is recorded."
   },
   "validation": {
-    "testFiles": 386,
-    "tests": 1705,
+    "testFiles": 387,
+    "tests": 1717,
     "simulatedProfiles": 10,
     "simulatedCommandJourneys": 2,
     "newLessonJourneys": 3,
-    "revision35ReproductionPassed": true
+    "revision35ReproductionPassed": true,
+    "frozenArtifactsReproduced": true
   },
   "limitations": [
-    "No revision 36 database import, publication or public activation has occurred.",
+    "A matching draft bank has been initialized and the insert-only import is running. Revision 36 is not published or activated.",
     "Simulations use constructed profiles and synthetic history; they are not classroom calibration.",
     "Questions and lessons remain pending owner review.",
     "Revision 35 bank and frozen application are unchanged."
-  ]
+  ],
+  "frozenSource": "97efb120d031f49f87e7ced01a6e922a9ef2e689",
+  "draftBankId": "6384e9a5-b863-4a92-8773-f91f6b0aa39f"
 }
