@@ -1,5 +1,5 @@
 {
-  "status": "prepared_not_frozen_or_published",
+  "status": "published_candidate_not_public",
   "authoringOptions": [
     "--bank-revision",
     "40",
@@ -47,11 +47,45 @@
         "literal_chronology_known_causal_inference_weak"
       ],
       "limitation": "Both sides sampled means at least one target per side; inspect contrastCoverage for untested modes and constructions. Probability separation is not confirmed mastery or classroom validation."
+    },
+    "frozenReproductionPassed": true,
+    "relationalBankItemsVerified": 8000,
+    "existingSessionCompatibility": "revision-40-existing-session-compatibility-2026-09-12.json",
+    "demo": {
+      "lessons": 11,
+      "firstLessonOpened": true,
+      "reviewAnswers": 48,
+      "reviewIncorrect": 17,
+      "answersSubmitted": 0
+    },
+    "readingContrastInvestigation": {
+      "chronologyTargetsInScope": 3,
+      "chronologyTargetsSampled": 0,
+      "causalTargetsInScope": 1,
+      "causalTargetsSampled": 1,
+      "causalTargetsDeferred": [
+        "informational",
+        "argumentative"
+      ],
+      "finding": "The bounded session did not reach explicit chronology. The comparison is not proven; two causal genres also lack released coverage. Do not count this as a successful six-target contrast."
     }
   },
   "limitations": [
     "Three guided-to-independent fixtures passed with synthetic history; this is not classroom validation.",
     "Participle bases are supplied, so the new questions assess agreement rather than base recall.",
-    "Human review remains pending; no revision 40 publication or deployment."
-  ]
+    "Human review remains pending; the candidate has not been promoted to the public domain.",
+    "The candidate source is 51b456c; the subsequent settings-copy capture at 8f3a628 is not included."
+  ],
+  "release": {
+    "sourceCommit": "51b456c78026f1ef1f779918903af0d155adc1b5",
+    "releaseKey": "french-granular-diagnostic-v40-writing",
+    "releaseId": "7a3bea77-cb77-46c1-ab4d-a256221e6793",
+    "bankId": "81668687-e607-43d0-b1e7-3196bbf52da2",
+    "bankChecksum": "sha256:a6fbe8f9020c5eb575a425330866fd4aa1979460dd201a6fc065e151fc58bdf9",
+    "bundleChecksum": "sha256:2d990355d490966e368339b589f8c911633a0b6429c03400b0069cff4de64479",
+    "deploymentId": "dpl_HH3qUB5mJZfeVFP6aDq9WWTPpVXL",
+    "deploymentUrl": "https://sigmawrite-gtjti06om-jpkays-projects.vercel.app",
+    "deploymentReady": true,
+    "promoted": false
+  }
 }
