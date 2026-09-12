@@ -33,12 +33,16 @@ export async function recordMaterialDelivery(store:MaterialDeliveryStore,student
  for(const id of questionIds){
   const entry=bundle.bank.items.find(item=>item.itemKey===id);
   if(!entry||!bundle.assessment.probes.some(probe=>probe.id===id))throw Error("Material delivery question unavailable");
+  const keys=questionMaterialKeys(entry.item);
   if(entry.sectionKey==="reading_comprehension"){
    // Separate versioned receipt preserves immutable earlier annotation receipts.
    const passageKey=materialIdentity("sentence",readingPassageText(entry.item.validatorConfig,entry.item.promptFr));
-   await store.recordMaterialPresentation({presentationId:stableUuid("granular-reading-presentation-v1",`${session.id}:question:${id}`),studentId,sourceChecksum:checksum(entry),materialKeys:[passageKey]});
+   // An explicit annotation already records this passage in the receipt used
+   // for grading. A separate first write would make that same delivery appear
+   // previously seen when the annotation receipt is written immediately after.
+   // Keep the fallback identity for unannotated passages and existing receipts.
+   if(!keys.includes(passageKey))await store.recordMaterialPresentation({presentationId:stableUuid("granular-reading-presentation-v1",`${session.id}:question:${id}`),studentId,sourceChecksum:checksum(entry),materialKeys:[passageKey]});
   }
-  const keys=questionMaterialKeys(entry.item);
   if(keys.length)await store.recordMaterialPresentation({presentationId:stableUuid("granular-material-presentation",`${session.id}:question:${id}`),studentId,sourceChecksum:checksum(entry),materialKeys:keys});
  }
  if(view.teaching){

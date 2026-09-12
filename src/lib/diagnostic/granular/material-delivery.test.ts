@@ -2,6 +2,8 @@ import {readingContextId,readingPassageText} from "./v3-adapter";
 import {readFileSync} from "node:fs";
 import {expect,it,vi} from "vitest";
 import {recordMaterialDelivery,type MaterialDeliveryStore} from "./material-delivery";
+import {readQuestionMaterialReceipt} from './question-material-receipt';
+import type {MaterialReceipt} from './material-receipt';
 import {annotatedMaterialKeys} from "./material-annotations";
 import {materialIdentity} from "./material-identity";
 import {createSession} from "./session";
@@ -70,6 +72,31 @@ it("records whole reading passages even without optional annotations and keeps r
  expect(f.record).toHaveBeenCalledTimes(2);
  expect(f.record.mock.calls[0]).toEqual(f.record.mock.calls[1]);
  expect(f.record).toHaveBeenCalledWith(expect.objectContaining({studentId:"student-a",materialKeys:[materialIdentity("sentence",readingPassageText(entry.item.validatorConfig,entry.item.promptFr))]}));
+});
+
+it('records an explicitly annotated passage once, preserving first and prior exposure on retry',async()=>{
+ for(const previouslySeen of [false,true]){
+  const f=fixture(),entry=f.bundle.bank.items.find(e=>e.sectionKey==='reading_comprehension')!;
+  const passage=readingPassageText(entry.item.validatorConfig,entry.item.promptFr),key=materialIdentity('sentence',passage);
+  entry.item.validatorConfig={...entry.item.validatorConfig,materialExposure:{sentences:[passage],assessed:{sentences:[passage]}}};
+  f.bundle.assessment.probes=[{...f.bundle.assessment.probes[0],id:entry.itemKey,contextId:readingContextId(entry.item.validatorConfig,entry.item.promptFr)}];
+  const known=new Set(previouslySeen?[key]:[]),receipts=new Map<string,MaterialReceipt>();
+  f.store.recordMaterialPresentation=async input=>{
+   if(receipts.has(input.presentationId))return;
+   receipts.set(input.presentationId,{firstRecordedKeys:input.materialKeys.filter(k=>!known.has(k)),previouslySeenKeys:input.materialKeys.filter(k=>known.has(k))});
+   input.materialKeys.forEach(k=>known.add(k));
+  };
+  f.store.loadMaterialReceipt=async input=>receipts.get(input.presentationId)??null;
+  f.store.materialHistoryComplete=async()=>true;
+  const result={view:{...f.view,question:{id:entry.itemKey}}};
+  await recordMaterialDelivery(f.store,'student-a',result);
+  await recordMaterialDelivery(f.store,'student-a',result);
+  expect(receipts.size).toBe(1);
+  const receipt=await readQuestionMaterialReceipt(f.store,f.session,f.bundle,entry.itemKey);
+  expect(receipt?.firstRecordedKeys).toEqual(previouslySeen?[]:[key]);
+  expect(receipt?.previouslySeenKeys).toEqual(previouslySeen?[key]:[]);
+  expect(receipt?.assessedMaterialKeys).toEqual([key]);
+ }
 });
 
 it("does not reload a bank or write receipts for a start screen without exposed material",async()=>{

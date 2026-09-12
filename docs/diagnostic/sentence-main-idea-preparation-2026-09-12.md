@@ -1,6 +1,6 @@
 # Central idea of a complex sentence: preparation
 
-Status: draft, not registered, not published, no human approval recorded.
+Status: registered in the prepared 260-target bank revision 16; not published and no human approval recorded.
 
 The approved node `identifier_idee_phrase` has separate narrative, informational and argumentative facets. This draft supplies 12 original one-sentence passages per facet, with four answer choices. Distractors separate a true but incomplete detail from a changed or invented meaning. Conditions, negation, proposals and limited claims are preserved in the keyed paraphrases. All passages are at most 40 whitespace-delimited words.
 
@@ -10,4 +10,13 @@ The question generator retains distinct passage-content identities and explicit 
 
 Three focused tests pass: genre and choice integrity, distinct short passages with no assessed overlap with these lessons, exact approved teaching bindings, and representative conditions in the answer keys. Deterministic generation passes. These checks do not establish pedagogical calibration or eliminate semantic ambiguity; owner review remains parallel work.
 
-Next: register the expansion and lessons in the next prepared candidate, verify initial and independent pool sufficiency without weakening the graph criteria, exercise the three real service journeys including deliberate guided mistakes and fresh material receipts, and rerun candidate profile and upgrade compatibility checks. The currently published v16 candidate and its running browser diagnostic are unchanged.
+
+## Integration verification
+
+Prepared scope: 260 targets; 634 granular tests and TypeScript pass. All three reading service journeys pass with 18 guided exercises, three deliberate guided errors, three fresh independent checks and reload preservation. The read-only upgrade audit preserves 59 answers, four refinements and all historical fields while adding seven targets to the published 253-target candidate.
+
+The service test identified duplicate exposure writes for an explicitly annotated whole reading passage. Recording now uses the existing annotation receipt when it already includes the whole passage; unannotated passages retain their separate fallback receipt. Regression coverage distinguishes first exposure from genuinely prior exposure and verifies retries. Existing persisted receipts are not rewritten.
+
+A choice-length audit found 26 of 36 correct answers were uniquely longest. Authored distractor revisions reduced that to 11 of 36 while preserving the keys and passage identities. This is a cue audit, not a calibration result.
+
+The final eight-profile simulation remains running. The public deployment and the frozen 253-target candidate remain unchanged.
