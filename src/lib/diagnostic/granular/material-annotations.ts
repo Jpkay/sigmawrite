@@ -1,3 +1,4 @@
+import {readAudioStimulus} from "./audio-stimulus";
 import {z} from "zod";
 import {materialIdentity} from "./material-identity";
 import type {CanonicalDiagnosticBankItem} from "../item-bank";
@@ -43,12 +44,16 @@ function assessedKeys(annotation:z.output<typeof schema>):string[]{
  * material counts as target material. An explicit subset can exclude context. */
 export function questionAssessedMaterialKeys(item:CanonicalDiagnosticBankItem["item"]){
  questionMaterialKeys(item);
- return item.validatorConfig?.materialExposure===undefined?[]:assessedKeys(schema.parse(item.validatorConfig.materialExposure));
+ return [...new Set([...(item.validatorConfig?.materialExposure===undefined?[]:assessedKeys(schema.parse(item.validatorConfig.materialExposure))),...questionAudioMaterialKeys(item)])].sort();
+}
+function questionAudioMaterialKeys(item:CanonicalDiagnosticBankItem["item"]){
+ const audio=readAudioStimulus(item);
+ return audio?[`audio:${audio.sha256}`]:[];
 }
 export function questionMaterialKeys(item:CanonicalDiagnosticBankItem["item"]){
  const sentence=item.validatorConfig?.sentenceApplication;
  const completed=typeof sentence==="string"&&item.validatorType==="conjugator"&&item.responseType==="short_answer"&&item.correctAnswer&&item.promptFr.includes(sentence)&&sentence.split("___").length===2?sentence.replace("___",item.correctAnswer):"";
- return annotatedMaterialKeys(item.validatorConfig?.materialExposure,[item.promptFr,item.instructionsFr??"",item.correctAnswer??"",completed,...(item.acceptableAnswers??[]),...(item.choices??[]).map(choice=>choice.text)]);
+ return [...new Set([...questionAudioMaterialKeys(item),...annotatedMaterialKeys(item.validatorConfig?.materialExposure,[item.promptFr,item.instructionsFr??"",item.correctAnswer??"",completed,...(item.acceptableAnswers??[]),...(item.choices??[]).map(choice=>choice.text)])])].sort();
 }
 export function teachingMaterialKeys(lesson:TargetTeachingContent|Omit<TargetTeachingContent,"status">){
  return annotatedMaterialKeys(lesson.materialExposure,[lesson.titleFr,lesson.learnerQuestionFr,lesson.takeawayFr,lesson.boundaryFr,

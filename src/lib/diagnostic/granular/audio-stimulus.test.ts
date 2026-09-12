@@ -36,3 +36,13 @@ it('requires the exact audio bytes before publication',()=>{
   writeFileSync(asset,Buffer.alloc(256,2));expect(()=>assertDiagnosticAudioAssets(b,dir)).toThrow(/mismatch/);
  }finally{rmSync(dir,{recursive:true,force:true});}
 });
+
+it('records exact audio identity even when written target annotations differ',async()=>{
+ const {questionMaterialKeys,questionAssessedMaterialKeys}=await import('./material-annotations');
+ const first={...item(audio),validatorConfig:{audioStimulus:audio}};
+ const second={...first,promptFr:'Une autre consigne pour le même enregistrement.'};
+ const key=`audio:${audio.sha256}`;
+ expect(questionMaterialKeys(first)).toEqual([key]);
+ expect(questionAssessedMaterialKeys(second)).toEqual([key]);
+ expect(questionMaterialKeys(entry.item)).not.toContain(key);
+});

@@ -1,5 +1,5 @@
 import {z} from "zod";
-const keySchema=z.string().regex(/^(word|sentence):sha256:[a-f0-9]{64}$/);
+const keySchema=z.string().regex(/^(word|sentence|audio):sha256:[a-f0-9]{64}$/);
 const receiptSchema=z.array(z.object({material_key:keySchema,first_recorded_exposure:z.boolean()}).strict()).max(1000);
 export type MaterialReceipt={firstRecordedKeys:string[];previouslySeenKeys:string[]};
 /** A receipt concerns the first recorded presentation, not complete historical
@@ -18,5 +18,7 @@ export type ObservedMaterialReceipt=MaterialReceipt&{presentationId:string;sourc
 export function hasVerifiedNovelMaterial(receipt:ObservedMaterialReceipt|undefined,kind:"word"|"sentence"):boolean{
  const targets=(receipt?.assessedMaterialKeys??[...(receipt?.firstRecordedKeys??[]),...(receipt?.previouslySeenKeys??[])]).filter(key=>key.startsWith(`${kind}:`));
  return receipt?.historyComplete===true&&targets.length>0
-  &&targets.every(key=>receipt.firstRecordedKeys.includes(key)&&!receipt.previouslySeenKeys.includes(key));
+  &&targets.every(key=>receipt.firstRecordedKeys.includes(key)&&!receipt.previouslySeenKeys.includes(key))
+  // A new written label cannot make an already heard recording fresh.
+  &&(receipt.assessedMaterialKeys??[...receipt.firstRecordedKeys,...receipt.previouslySeenKeys]).filter(key=>key.startsWith("audio:")).every(key=>receipt.firstRecordedKeys.includes(key)&&!receipt.previouslySeenKeys.includes(key));
 }

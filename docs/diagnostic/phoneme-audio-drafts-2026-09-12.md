@@ -14,3 +14,9 @@ Verification:
 - Playback and decoding do not establish correct pronunciation. Every asset remains `draft_requires_pronunciation_review`.
 
 Before these targets enter a released pathway, implement and verify canonical questions, guided teaching playback, coverage across sound groups, and novelty protection for audio as well as written material. Then run the complete question → results → teaching → independent follow-up journey. Existing diagnostic sessions and the demo account are unchanged by this draft.
+
+## Recorded-audio novelty
+
+Question material annotations now include `audio:sha256:<digest>` for the exact validated recording, even without written annotations. A previously recorded audio exposure prevents a question from claiming novel words or sentences merely by changing its written label. Missing audio receipt evidence also prevents that novelty claim. This does not prove that the student listened, and different recordings of the same word still need reviewed word identity annotations.
+
+Migration `20260912024000_audio_material_exposure.sql` extends the existing append-only exposure ledger and recording RPC to admit audio identities. It retains ownership checks, idempotent presentation IDs, existing histories and service-only access. Apply this migration before publishing any audio questions. It has not been applied remotely as part of this change. Teaching audio projection and lesson exposure registration remain to implement.

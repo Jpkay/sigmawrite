@@ -37,6 +37,16 @@ begin
  then raise exception 'Mismatched receipt yielded evidence'; end if;
  select count(*) into n from student_material_presentations;
  if n<>3 then raise exception 'Receipt lookup created a presentation'; end if;
+ -- Exact sound clips share identity across different prompts and written labels.
+ select bool_and(first_recorded_exposure) into fresh
+ from record_student_material_presentation('14300000-0000-4000-8000-000000000014',a,'audio-one',array['audio:sha256:'||repeat('c',64)]);
+ if not fresh then raise exception 'First audio presentation not recorded'; end if;
+ select bool_or(first_recorded_exposure) into fresh
+ from record_student_material_presentation('14300000-0000-4000-8000-000000000015',a,'audio-another-prompt',array['audio:sha256:'||repeat('c',64)]);
+ if fresh then raise exception 'Same recording treated as novel'; end if;
+ select bool_and(first_recorded_exposure) into fresh
+ from record_student_material_presentation('14300000-0000-4000-8000-000000000016',b,'audio-one',array['audio:sha256:'||repeat('c',64)]);
+ if not fresh then raise exception 'Audio exposure leaked across students'; end if;
  begin
   perform * from record_student_material_presentation(p,b,'source-one',array[word_key,sentence_key]);
   raise exception 'Owner substitution accepted';

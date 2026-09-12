@@ -13,3 +13,14 @@ it("rejects partial, extra, duplicate or malformed receipt data",()=>{
  expect(()=>parseMaterialReceipt([{...row,first_recorded_exposure:"true"}],[word])).toThrow();
  expect(()=>parseMaterialReceipt([{...row,material_key:"unhashed"}],[word])).toThrow();
 });
+
+it('does not count a reused recording as novel under a new word annotation',async()=>{
+ const {hasVerifiedNovelMaterial}=await import('./material-receipt');
+ const audio=`audio:sha256:${'c'.repeat(64)}`;
+ const parsed=parseMaterialReceipt([{material_key:word,first_recorded_exposure:true},{material_key:audio,first_recorded_exposure:false}],[word,audio])!;
+ const receipt={...parsed,presentationId:'fixture',sourceChecksum:'fixture',historyComplete:true,assessedMaterialKeys:[word,audio]};
+ expect(hasVerifiedNovelMaterial(receipt,'word')).toBe(false);
+ expect(hasVerifiedNovelMaterial({...receipt,firstRecordedKeys:[word,audio],previouslySeenKeys:[]},'word')).toBe(true);
+ expect(hasVerifiedNovelMaterial({...receipt,assessedMaterialKeys:[word]},'word')).toBe(true);
+ expect(hasVerifiedNovelMaterial({...receipt,firstRecordedKeys:[word],previouslySeenKeys:[]},'word')).toBe(false);
+});
