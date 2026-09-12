@@ -46,3 +46,23 @@ export function withOptionalFinalPeriod(answer: string, assessment?: AssessmentC
 }
 
 export const OPTIONAL_PERIOD_FEEDBACK = "Le point final n’est pas évalué ici.";
+
+/** An explicit task-owned exception for imperative pronoun transformations only.
+ * Internal punctuation remains part of the answer, including pronoun hyphens. */
+export function withOptionalImperativeEnding(answer:string, expected:string, assessment?:AssessmentContext, config?:Record<string,unknown>):string|null {
+ if(config?.punctuationPolicy!=="optional_imperative_ending"
+  ||!assessment||!["placer_pronom_complement","ordonner_doubles_pronoms"].includes(assessment.nodeKey??"")
+  ||assessment.modality!=="writing"||assessment.responseType!=="transform"
+  ||!assessment.promptFr?.trim()
+  ||punctuationTask.test(fold(`${assessment.promptFr} ${assessment.instructionsFr??""}`)))return null;
+ const expectedEnding=expected.trim().match(/\s*[.!]$/u);
+ if(!expectedEnding)return null;
+ const body=answer.trim().replace(/\s*[.!]$/u,"").trimEnd();
+ if(!/\p{L}/u.test(body)||/[.!?…,:;]$/u.test(body))return null;
+ return body+expectedEnding[0];
+}
+export const OPTIONAL_IMPERATIVE_ENDING_FEEDBACK="Le point ou le point d’exclamation final n’est pas évalué ici.";
+
+export function assessmentFromGeneratedItem(item:{nodeKey:string;promptFr:string;instructionsFr?:string;modality:string;responseType:string}):AssessmentContext {
+ return {nodeKey:item.nodeKey,promptFr:item.promptFr,instructionsFr:item.instructionsFr,modality:item.modality,responseType:item.responseType};
+}

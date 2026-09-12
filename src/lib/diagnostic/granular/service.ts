@@ -1,3 +1,4 @@
+import {assessmentFromGeneratedItem} from "@/lib/linguistic/assessment-policy";
 import type {PriorDeliveryHistory} from "./prior-delivery-material";
 import {publicAudioQuestionFields} from './audio-stimulus';
 import {inspectReleaseScope} from "./release-scope";
@@ -62,7 +63,7 @@ export async function runAssessmentCommand(store:AssessmentStore,studentId:strin
    correct=choice.correct;
   }else{
    try{
-    const result=await validateAnswer(command.answer,{validatorType:item.validatorType,correctAnswer:item.correctAnswer,acceptableAnswers:item.acceptableAnswers,config:item.validatorConfig});
+    const result=await validateAnswer(command.answer,{validatorType:item.validatorType,correctAnswer:item.correctAnswer,acceptableAnswers:item.acceptableAnswers,config:item.validatorConfig,assessment:assessmentFromGeneratedItem(item)});
     correct=result.pass;
    }catch(error){if(error instanceof ReadingAssessmentError)return {error:error.message} as const;throw error;}
   }

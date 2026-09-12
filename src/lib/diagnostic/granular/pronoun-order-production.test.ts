@@ -1,6 +1,7 @@
 import {readFileSync} from 'node:fs';
 import {expect,it} from 'vitest';
 import {PRONOUN_ORDER_DRAFTS as drafts,DOUBLE_PRONOUN_ORDER_TEACHING as lessons} from './pronoun-order-production';
+import {assessmentFromGeneratedItem} from '@/lib/linguistic/assessment-policy';
 import {validateAnswer} from '@/lib/linguistic/validator';
 import {canonicalProbeMetrics} from './probe-metrics';
 import type {CanonicalDiagnosticBankItem} from '../item-bank';
@@ -10,8 +11,9 @@ it('grades the supplied word order without treating typed transformations as ope
  expect(artifact.items).toHaveLength(84);
  for(const entry of artifact.items as CanonicalDiagnosticBankItem[]){
   const draft=drafts.find(d=>'v3-pronoun-order:'+d.key===entry.itemKey)!;
-  const spec={validatorType:'exact' as const,correctAnswer:entry.item.correctAnswer};
+  const spec={validatorType:'exact' as const,correctAnswer:entry.item.correctAnswer,config:entry.item.validatorConfig,assessment:assessmentFromGeneratedItem(entry.item)};
   expect((await validateAnswer(draft.answer,spec)).pass).toBe(true);
+  expect((await validateAnswer(draft.answer.replace(/\s*[.!]$/,''),spec)).pass).toBe(true);
   expect((await validateAnswer(draft.wrong,spec)).pass).toBe(false);
   expect(canonicalProbeMetrics(entry).guessProbability).toBe(.5);
   expect(entry.reviewStatus).toBe('needs_human_review');

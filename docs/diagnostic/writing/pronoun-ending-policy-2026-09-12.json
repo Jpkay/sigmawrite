@@ -1,0 +1,20 @@
+{
+  "status": "implemented_not_deployed",
+  "changes": [
+    "Initial diagnostic and follow-up grading now pass pinned exercise context to the shared validator.",
+    "Explicit optional_imperative_ending policy applies only to writing transformations targeting pronoun placement or double-pronoun order.",
+    "Period, exclamation mark or omitted ending tolerated for these configured tasks; internal punctuation, hyphens, apostrophes, word order and spelling remain graded."
+  ],
+  "expansionChecksum": "sha256:1faacb08bc4dae2bebdaedf207884ce6fc9cb4d48994925b8c5b0762e8d8a055",
+  "checks": {
+    "testFiles": 354,
+    "tests": 1588,
+    "typescript": "passed",
+    "regeneration": "passed",
+    "draftAnswersWithoutEndingAccepted": 84
+  },
+  "limitations": [
+    "No deployed browser verification yet.",
+    "Remaining double-pronoun combinations and the complete writing pathway still need implementation."
+  ]
+}

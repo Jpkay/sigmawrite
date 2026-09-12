@@ -1,3 +1,4 @@
+import {assessmentFromGeneratedItem} from "@/lib/linguistic/assessment-policy";
 import {WritingAssessmentError} from "./writing-error";
 import {learningSeenQuestionIds} from "./learning-exposure";
 import {categoryExposurePriority} from "./category-exposure";
@@ -104,7 +105,7 @@ export async function runLearningCheckCommand(store:AssessmentStore,studentId:st
     const index=item.choices?.findIndex((_,i)=>stableUuid("granular-choice",`${session.id}:${check.itemId}:${i}`)===choice.id)??-1;
     correct=item.choices?.[index]?.correct===true;
    }else{
-    try{correct=(await validateAnswer(command.answer,{validatorType:item.validatorType,correctAnswer:item.correctAnswer,acceptableAnswers:item.acceptableAnswers,config:item.validatorConfig})).pass;}
+    try{correct=(await validateAnswer(command.answer,{validatorType:item.validatorType,correctAnswer:item.correctAnswer,acceptableAnswers:item.acceptableAnswers,config:item.validatorConfig,assessment:assessmentFromGeneratedItem(item)})).pass;}
     catch(error){if(error instanceof ReadingAssessmentError)return {error:error.message} as const;throw error;}
    }
    event={type:"answer_check",checkId:check.id,correct:correct&&support.correct,writingEvidence,materialReceipt:await readQuestionMaterialReceipt(store,session,bundle,check.itemId)};

@@ -29,7 +29,7 @@ import type {
   ValidationResult,
   ValidationSpec,
 } from "./types";
-import { OPTIONAL_PERIOD_FEEDBACK, withOptionalFinalPeriod } from "./assessment-policy";
+import { OPTIONAL_PERIOD_FEEDBACK, withOptionalFinalPeriod, withOptionalImperativeEnding, OPTIONAL_IMPERATIVE_ENDING_FEEDBACK } from "./assessment-policy";
 
 /** Lowercase, collapse whitespace, unify apostrophe typography, optional case/punctuation. Accents kept —
  *  they are meaningful in French and frequently the thing under test. */
@@ -181,10 +181,15 @@ function exactMatch(answer: string, spec: ValidationSpec): ValidationResult {
   const exact = candidates.includes(got);
   const alternative = withOptionalFinalPeriod(answer, spec.assessment, spec.config);
   const toleratedPeriod = !exact && alternative !== null && candidates.includes(normalize(alternative, opts));
+  const toleratedImperative = !exact && !toleratedPeriod && [spec.correctAnswer,...(spec.acceptableAnswers??[])].some(expected=>{
+    if(typeof expected!=="string")return false;
+    const ending=withOptionalImperativeEnding(answer,expected,spec.assessment,spec.config);
+    return ending!==null&&normalize(ending,opts)===normalize(expected,opts);
+  });
   return {
-    pass: exact || toleratedPeriod,
+    pass: exact || toleratedPeriod || toleratedImperative,
     validator: "exact",
     normalized: got,
-    ...(toleratedPeriod ? { reason: OPTIONAL_PERIOD_FEEDBACK } : {}),
+    ...(toleratedPeriod ? { reason: OPTIONAL_PERIOD_FEEDBACK } : toleratedImperative ? {reason: OPTIONAL_IMPERATIVE_ENDING_FEEDBACK} : {}),
   };
 }

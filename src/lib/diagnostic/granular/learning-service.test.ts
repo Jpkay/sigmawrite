@@ -1,5 +1,6 @@
 import {readFileSync} from "node:fs";
-import {expect,it} from "vitest";
+import {expect,it,vi} from "vitest";
+import * as answerValidator from "@/lib/linguistic/validator";
 import {adaptV3ForAssessment} from "./v3-adapter";
 import {bindAssessmentRelease} from "./release-binding";
 import {createSession} from "./session";
@@ -93,4 +94,16 @@ it("varies follow-up categories after an abandoned check without recording an an
  expect(next).not.toHaveProperty("error");
  expect(f.bundle.assessment.probes.find(probe=>probe.id===f.get().state.learningCheck!.itemId)?.samplingCategory).toBe("unseen");
  expect(f.get().state.refinements).toEqual([]);
+});
+
+it("passes the pinned question context to the shared answer validator",async()=>{
+ const spy=vi.spyOn(answerValidator,"validateAnswer");
+ try {
+  const f=setup();await f.send({type:"start_check",activityId:"check-present"});
+  const check=f.get().state.learningCheck!;
+  const item=f.bundle.bank.items.find(entry=>entry.itemKey===check.itemId)!.item;
+  const answer=f.answer();
+  await f.send({type:"answer_check",checkId:check.id,answer:f.answer()});
+  expect(spy).toHaveBeenCalledWith(answer,expect.objectContaining({assessment:{nodeKey:item.nodeKey,promptFr:item.promptFr,instructionsFr:item.instructionsFr,modality:item.modality,responseType:item.responseType}}));
+ } finally {spy.mockRestore();}
 });
