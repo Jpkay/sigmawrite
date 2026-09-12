@@ -1,3 +1,4 @@
+import {LOCAL_DEFINITION_READING_TEACHING} from '../../src/lib/diagnostic/granular/local-definition-reading-teaching';
 import {QUESTION_DETAIL_READING_TEACHING} from '../../src/lib/diagnostic/granular/question-detail-reading-teaching';
 import {ETRE_PARTICIPLE_AGREEMENT_TEACHING} from '../../src/lib/diagnostic/granular/etre-participle-agreement-teaching';
 import {FRENCH_DRAFT_EXPANSION_SOURCES} from '../../src/lib/diagnostic/granular/draft-expansion-sources';
@@ -9,10 +10,10 @@ import {granularBankOptions} from './granular-bank-options';
 export function selectedDraftExpansionSources(args:readonly string[]):readonly string[]{
  const options=granularBankOptions(args);
  if(!options.verbFamilyRecognition&&!options.etreParticipleAgreement)return FRENCH_DRAFT_EXPANSION_SOURCES;
- return [...FRENCH_DRAFT_EXPANSION_SOURCES,...(options.verbFamilyRecognition?['verb-family-recognition-faceted']:[]),...(options.etreParticipleAgreement?['etre-participle-agreement']:[]),...(options.questionDetailReading?['question-detail-reading']:[])];
+ return [...FRENCH_DRAFT_EXPANSION_SOURCES,...(options.verbFamilyRecognition?['verb-family-recognition-faceted']:[]),...(options.etreParticipleAgreement?['etre-participle-agreement']:[]),...(options.questionDetailReading?['question-detail-reading']:[]),...(options.localDefinitionReading?['local-definition-reading']:[])];
 }
 export function selectedTeachingDrafts(args:readonly string[]){
  const options=granularBankOptions(args);
  if(!options.verbFamilyRecognition&&!options.etreParticipleAgreement)return FRENCH_TEACHING_DRAFTS;
- return [...FRENCH_TEACHING_DRAFTS,...(options.verbFamilyRecognition?VERB_FAMILY_RECOGNITION_TEACHING:[]),...(options.etreParticipleAgreement?ETRE_PARTICIPLE_AGREEMENT_TEACHING:[]),...(options.questionDetailReading?QUESTION_DETAIL_READING_TEACHING:[])];
+ return [...FRENCH_TEACHING_DRAFTS.filter(lesson=>!options.localDefinitionReading||lesson.nodeKey!=='deduire_mot_definition_locale'),...(options.verbFamilyRecognition?VERB_FAMILY_RECOGNITION_TEACHING:[]),...(options.etreParticipleAgreement?ETRE_PARTICIPLE_AGREEMENT_TEACHING:[]),...(options.questionDetailReading?QUESTION_DETAIL_READING_TEACHING:[]),...(options.localDefinitionReading?LOCAL_DEFINITION_READING_TEACHING:[])];
 }

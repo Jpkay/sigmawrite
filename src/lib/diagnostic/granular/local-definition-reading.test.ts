@@ -36,3 +36,13 @@ it('binds each lesson to its exact existing target and separates teaching passag
   for(let i=0;i<6;i+=2){const answer=lesson.practice[i],support=lesson.practice[i+1],passage=answer.promptFr.split('\n\n')[0];expect(support.promptFr.startsWith(passage)).toBe(true);expect(passage).toContain(support.answerFr);expect(keys).toContain(materialIdentity('sentence',passage));expect(passage.split(/\s+/).length).toBeLessThan(65);}
  }
 });
+import {granularBankOptions} from '../../../../scripts/lib/granular-bank-options';
+import {selectedDraftExpansionSources,selectedTeachingDrafts} from '../../../../scripts/lib/granular-authoring-selection';
+it('selects the new questions and lessons together only with an explicit compatible revision',()=>{
+ const args=['--bank-revision','39','--verb-family-recognition','--etre-participle-agreement','--question-detail-reading','--local-definition-reading'];
+ expect(granularBankOptions(args).localDefinitionReading).toBe(true);
+ expect(selectedDraftExpansionSources(args)).toContain('local-definition-reading');
+ expect(selectedTeachingDrafts(args)).toEqual(expect.arrayContaining([...LOCAL_DEFINITION_READING_TEACHING]));
+ for(const invalid of [['--local-definition-reading'],['--bank-revision','39','--local-definition-reading'],args.map(a=>a==='39'?'38':a),[...args,'--local-definition-reading']])expect(()=>granularBankOptions(invalid)).toThrow();
+ expect(selectedDraftExpansionSources([])).not.toContain('local-definition-reading');
+});

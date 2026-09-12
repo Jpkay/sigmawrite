@@ -7,10 +7,11 @@ export type DraftExpansion={version:string;status:"draft_requires_review";parent
 /** Assemble authoring sources, never publish or transfer approval to an edit.
  * The unchanged base entries retain their own provenance; every added entry is
  * required to remain pending. Source and mapping drift fail before any write. */
-export function assembleDraftBank(base:CanonicalDiagnosticBankArtifact,taxonomy:TaxonomyCandidate,expansions:readonly DraftExpansion[],options:{revision?:number;verbFamilyRecognition?:boolean;etreParticipleAgreement?:boolean;questionDetailReading?:boolean}={}){
+export function assembleDraftBank(base:CanonicalDiagnosticBankArtifact,taxonomy:TaxonomyCandidate,expansions:readonly DraftExpansion[],options:{revision?:number;verbFamilyRecognition?:boolean;etreParticipleAgreement?:boolean;questionDetailReading?:boolean;localDefinitionReading?:boolean}={}){
  if(options.revision!==undefined&&(!Number.isSafeInteger(options.revision)||options.revision<1||base.bank.key!=="french-diagnostic-bank-v3"))throw Error("A bank revision needs a positive integer and the original French v3 base");
  if(options.verbFamilyRecognition&&(options.revision===undefined||options.revision<36))throw Error('Verb-family recognition requires bank revision 36 or later');
  if(options.etreParticipleAgreement&&(options.revision===undefined||options.revision<37||!options.verbFamilyRecognition))throw Error('Etre agreement requires bank revision 37 or later and verb-family recognition');
+ if(options.localDefinitionReading&&(options.revision===undefined||options.revision<39||!options.questionDetailReading||!options.etreParticipleAgreement||!options.verbFamilyRecognition))throw Error("Local-definition reading requires bank revision 39 or later and preceding refinements");
  if(options.questionDetailReading&&(options.revision===undefined||options.revision<38||!options.etreParticipleAgreement||!options.verbFamilyRecognition))throw Error("Question-detail reading requires bank revision 38 or later and preceding refinements");
  const baseline=validateCanonicalDiagnosticBank(base,taxonomy);
  if(baseline.issues.length)throw Error("Invalid source bank");
