@@ -32,7 +32,10 @@ it('requires the exact audio bytes before publication',()=>{
   const asset=join(dir,'diagnostic-audio',`${hash}.mp3`);
   const b={...bank,items:[{...entry,item:item({...audio,sha256:`sha256:${hash}`})}]};
   expect(()=>assertDiagnosticAudioAssets(b,dir)).toThrow();
+  const teaching=[{steps:[{exampleFr:"Modèle",explanationFr:"Écoute.",audioStimulus:{...audio,sha256:`sha256:${hash}`} as import("./audio-stimulus").AudioStimulus}],practice:[]}];
+  expect(()=>assertDiagnosticAudioAssets({...bank,items:[]},dir,teaching)).toThrow();
   writeFileSync(asset,bytes);expect(assertDiagnosticAudioAssets(b,dir)).toEqual({verifiedAudioAssets:1});
+  expect(assertDiagnosticAudioAssets({...bank,items:[]},dir,teaching)).toEqual({verifiedAudioAssets:1});
   writeFileSync(asset,Buffer.alloc(256,2));expect(()=>assertDiagnosticAudioAssets(b,dir)).toThrow(/mismatch/);
  }finally{rmSync(dir,{recursive:true,force:true});}
 });

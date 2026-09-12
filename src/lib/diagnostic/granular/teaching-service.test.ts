@@ -17,11 +17,15 @@ const full=applyFacetTargets(adaptV3ForAssessment({artifact,bank}),buildV3Facets
 const lessonDraft=PRONOUN_PLACEMENT_TEACHING[0];
 const skill={...full.skills.find(s=>s.facetKey===lessonDraft.facetKey)!,prerequisites:[]};
 const id="11111111-1111-4111-8111-111111111111";
-function setup(){
+function setup(withAudio=false){
   const assessment={...full,skills:[skill],probes:[{id:"overlapping-check",skillId:skill.id,mode:lessonDraft.mode,contextId:"story",difficulty:.5,expectedSeconds:30,guessProbability:.05,usage:"learning" as const}]};
   // Test-only publication fixture. This never writes a content approval artifact.
   const lesson:PublishedTeachingContent={...structuredClone(lessonDraft),status:"published",assessmentExposureIds:["overlapping-check"],materialExposure:{sentences:[lessonDraft.steps[0].exampleFr]},
     review:{reviewerId:"test-only-reviewer",reviewedAt:"2026-09-10T00:00:00Z",contentChecksum:"",exposureMappingReviewed:true}};
+  if(withAudio){
+    lesson.steps[0].audioStimulus={sha256:`sha256:${"a".repeat(64)}`,durationMs:1800,locale:"fr-FR",format:"mp3"};
+    lesson.practice[0].audioStimulus={sha256:`sha256:${"b".repeat(64)}`,durationMs:1800,locale:"fr-FR",format:"mp3"};
+  }
   lesson.review.contentChecksum=teachingContentChecksum(lesson);
   const bundle:AssessmentBundle={assessment,bank:structuredClone(bank),taxonomyId:"taxonomy",bankId:"bank",teachingContent:[lesson],activities:[{
     id:"placement-lesson",nodeKey:lesson.nodeKey,facetKey:lesson.facetKey,mode:lesson.mode,kind:"instruction",status:"published",titleFr:lesson.titleFr,href:"/student/diagnostic",contentId:lesson.id,
@@ -166,4 +170,18 @@ it("runs an explicitly permitted pending-review lesson without inventing approva
  expect(publicAssessmentView(f.get(),f.bundle).results).toEqual(before);
  expect(pending).not.toHaveProperty("review");
  expect(pending.status).toBe("published_pending_review");
+});
+
+it("projects teaching audio without authoring metadata and records lesson exposure",async()=>{
+ const f=setup(true);
+ await f.send({type:"start_teaching",activityId:"placement-lesson"});
+ const view=publicTeachingView(f.get(),f.bundle)!;
+ expect(view.steps[0].audio?.src).toBe(`/diagnostic-audio/${"a".repeat(64)}.mp3`);
+ expect(view.steps[0]).not.toHaveProperty("audioStimulus");
+ expect(f.get().state.exposedMaterialKeys).toContain(`audio:sha256:${"a".repeat(64)}`);
+ expect(f.get().state.exposedMaterialKeys).toContain(`audio:sha256:${"b".repeat(64)}`);
+ await f.send({type:"begin_practice"});
+ const exercise=publicTeachingView(f.get(),f.bundle)!.exercise!;
+ expect(exercise.audio?.src).toBe(`/diagnostic-audio/${"b".repeat(64)}.mp3`);
+ expect(exercise).not.toHaveProperty("audioStimulus");expect(exercise).not.toHaveProperty("answerFr");
 });

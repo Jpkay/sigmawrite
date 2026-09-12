@@ -1,3 +1,4 @@
+import {parseAudioStimulus,type AudioStimulus} from "./audio-stimulus";
 import {inspectReleaseScope} from "./release-scope";
 import {parseParallelReviewPolicy} from "./parallel-review-policy";
 import {teachingMaterialKeys,type MaterialExposureAnnotation} from "./material-annotations";
@@ -16,10 +17,10 @@ export type TargetTeachingContent = {
   materialExposure?:MaterialExposureAnnotation;
   titleFr:string;
   learnerQuestionFr:string;
-  steps:Array<{exampleFr:string;explanationFr:string}>;
+  steps:Array<{exampleFr:string;explanationFr:string;audioStimulus?:AudioStimulus}>;
   takeawayFr:string;
   boundaryFr:string;
-  practice:Array<{id:string;promptFr:string;choices?:string[];answerFr:string;hintFr:string;explanationFr:string}>;
+  practice:Array<{audioStimulus?:AudioStimulus;id:string;promptFr:string;choices?:string[];answerFr:string;hintFr:string;explanationFr:string}>;
 };
 
 export type PublishedTeachingContent=Omit<TargetTeachingContent,"status">&{
@@ -69,7 +70,9 @@ export function validateTeachingTargets(assessment:V3Assessment,content:readonly
     if(!assessment.skills.some(skill=>skill.nodeKey===lesson.nodeKey&&skill.facetKey===lesson.facetKey&&skill.modes.includes(lesson.mode)))
       throw Error(`Teaching content has no exact assessment target: ${lesson.id}`);
     if(!lesson.steps.length||!lesson.practice.length)throw Error(`Teaching content is incomplete: ${lesson.id}`);
+    for(const step of lesson.steps)parseAudioStimulus(step.audioStimulus);
     for(const exercise of lesson.practice){
+      parseAudioStimulus(exercise.audioStimulus);
       if(exerciseIds.has(exercise.id)||assessment.probes.some(probe=>probe.id===exercise.id))
         throw Error(`Guided exercise identity overlaps: ${exercise.id}`);
       if(exercise.choices&&(exercise.choices.length<2||exercise.choices.length>6

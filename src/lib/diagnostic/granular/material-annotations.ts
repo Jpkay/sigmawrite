@@ -1,4 +1,4 @@
-import {readAudioStimulus} from "./audio-stimulus";
+import {readAudioStimulus,parseAudioStimulus} from "./audio-stimulus";
 import {z} from "zod";
 import {materialIdentity} from "./material-identity";
 import type {CanonicalDiagnosticBankItem} from "../item-bank";
@@ -56,8 +56,9 @@ export function questionMaterialKeys(item:CanonicalDiagnosticBankItem["item"]){
  return [...new Set([...questionAudioMaterialKeys(item),...annotatedMaterialKeys(item.validatorConfig?.materialExposure,[item.promptFr,item.instructionsFr??"",item.correctAnswer??"",completed,...(item.acceptableAnswers??[]),...(item.choices??[]).map(choice=>choice.text)])])].sort();
 }
 export function teachingMaterialKeys(lesson:TargetTeachingContent|Omit<TargetTeachingContent,"status">){
- return annotatedMaterialKeys(lesson.materialExposure,[lesson.titleFr,lesson.learnerQuestionFr,lesson.takeawayFr,lesson.boundaryFr,
+ const audioKeys=[...lesson.steps,...lesson.practice].flatMap(part=>{const audio=parseAudioStimulus(part.audioStimulus);return audio?[`audio:${audio.sha256}`]:[];});
+ return [...new Set([...audioKeys,...annotatedMaterialKeys(lesson.materialExposure,[lesson.titleFr,lesson.learnerQuestionFr,lesson.takeawayFr,lesson.boundaryFr,
   ...lesson.steps.flatMap(step=>[step.exampleFr,step.explanationFr]),
   ...lesson.practice.flatMap(exercise=>[exercise.promptFr,exercise.answerFr,exercise.hintFr,exercise.explanationFr,...(exercise.choices??[])]),
- ]);
+ ])])].sort();
 }

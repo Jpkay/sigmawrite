@@ -8,7 +8,7 @@ import type {AssessmentBundle} from "../src/lib/diagnostic/granular/service";
 const read=(p:string)=>JSON.parse(readFileSync(p,"utf8"));
 const candidate=read("docs/diagnostic/v3-scoped-review-candidate.json"),artifact=read("generated/french-taxonomy-v3.json");
 const {bank}=assembleDraftBank(read("generated/diagnostic-bank-v3-draft.json"),artifact.taxonomy,FRENCH_DRAFT_EXPANSION_SOURCES.map(name=>read(`generated/french-v3-${name}-expansion.json`)),granularBankOptions(process.argv.slice(2)));
-assertDiagnosticAudioAssets(bank);
+assertDiagnosticAudioAssets(bank,undefined,candidate.teachingContent);
 // Proposed publication statuses only. This script has no database credentials or writes.
 const bundle:AssessmentBundle={assessment:candidate.assessment,bank,taxonomyId:"unpublished",bankId:"unpublished",teachingContent:candidate.teachingContent,activities:candidate.activities.map((a:object)=>({...a,status:"published"}))};
 const report=prepareParallelPublication(bundle);
