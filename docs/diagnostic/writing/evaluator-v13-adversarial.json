@@ -1,0 +1,317 @@
+{
+  "status": "experimental_not_calibrated",
+  "model": "z-ai/glm-5.2",
+  "syntheticOnly": true,
+  "casesChecksum": "sha256:d3e5f1074612891d7923bcab524212716f8c15612d08014a65411736472676af",
+  "results": [
+    {
+      "id": "unrelated-spelling",
+      "caseChecksum": "sha256:17fe049d6b02a7ffa9a63619b17dc0a3358e2548b4c069fa0ca4183fc3a09cd8",
+      "expected": "correct",
+      "observed": "correct",
+      "matched": true,
+      "evidenceMatched": null,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 17,
+            "end": 23,
+            "text": "jouait",
+            "correct": true,
+            "reasonFr": "Imparfait de « jouer » correctement conjugué pour décrire une habitude passée (« Chaque été »)."
+          },
+          {
+            "start": 46,
+            "end": 56,
+            "text": "retrouvait",
+            "correct": true,
+            "reasonFr": "Imparfait de « retrouver » correctement conjugué pour décrire une habitude passée."
+          },
+          {
+            "start": 90,
+            "end": 101,
+            "text": "inventaient",
+            "correct": true,
+            "reasonFr": "Imparfait de « inventer » correctement conjugué à la 3ᵉ personne du pluriel pour décrire une habitude passée."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v13",
+          "protocolChecksum": "sha256:06277f22d7ba60d3775a0a53e9a9c947c299c04c85fd7aec3e25dbc361ac3285",
+          "rubricChecksum": "sha256:0c4c9690e2f7cf1b8f326a3f258886fab0da3406a349355715ba79a8f613bda0",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "subjunctive-errors",
+      "caseChecksum": "sha256:f9f533648d4e85ab2cdaed39f0cfce6b8ce2d8aa19362a5b9e0a659a54981c6d",
+      "expected": "incorrect",
+      "observed": "incorrect",
+      "matched": true,
+      "evidenceMatched": null,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 15,
+            "end": 20,
+            "text": "viens",
+            "correct": false,
+            "reasonFr": "Après « Il faut que », le subjonctif présent est requis : « viennes » et non l'indicatif « viens »."
+          },
+          {
+            "start": 61,
+            "end": 65,
+            "text": "fait",
+            "correct": false,
+            "reasonFr": "Après « Il est indispensable que », le subjonctif présent est requis : « fasse » et non l'indicatif « fait »."
+          },
+          {
+            "start": 96,
+            "end": 102,
+            "text": "sommes",
+            "correct": false,
+            "reasonFr": "Après « Je souhaite que », le subjonctif présent est requis : « soyons » et non l'indicatif « sommes »."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v13",
+          "protocolChecksum": "sha256:06277f22d7ba60d3775a0a53e9a9c947c299c04c85fd7aec3e25dbc361ac3285",
+          "rubricChecksum": "sha256:b704afcf829c289e1852ed5eddfe5eff003dbb9943a5458fa6b5434f05fd3276",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "imperative-errors",
+      "caseChecksum": "sha256:4788322ba86e24b218c94e9597142130dc53f113e2d8c33d76854a1a517bab69",
+      "expected": "incorrect",
+      "observed": "incorrect",
+      "matched": true,
+      "evidenceMatched": null,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 0,
+            "end": 5,
+            "text": "Prend",
+            "correct": false,
+            "reasonFr": "« Prend » n’est pas une forme de l’impératif de prendre. Les formes sont : prends, prenons, prenez."
+          },
+          {
+            "start": 17,
+            "end": 20,
+            "text": "met",
+            "correct": false,
+            "reasonFr": "« met » n’est pas une forme de l’impératif de mettre. Les formes sont : mets, mettons, mettez."
+          },
+          {
+            "start": 37,
+            "end": 43,
+            "text": "Attend",
+            "correct": false,
+            "reasonFr": "« Attend » n’est pas une forme de l’impératif de attendre. Les formes sont : attends, attendons, attendez."
+          },
+          {
+            "start": 66,
+            "end": 73,
+            "text": "rejoint",
+            "correct": false,
+            "reasonFr": "« rejoint » n’est pas une forme de l’impératif de rejoindre. Les formes sont : rejoins, rejoignons, rejoignez."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v13",
+          "protocolChecksum": "sha256:d12b4013ada634ad1b823d2fc4ef6e113e96503caee088d506572d4adb853667",
+          "rubricChecksum": "sha256:1cc4905fc7a4e75643da60e3e1a6e4b5bcdc379f9b76a1c5cc40261093897209",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "disconnected-forms",
+      "caseChecksum": "sha256:c105dd956e179ea7d13e0eae62583cf44178d3bc3643ec5f3e4f870ba7f72c7b",
+      "expected": "unresolved",
+      "observed": "unresolved",
+      "matched": true,
+      "evidenceMatched": null,
+      "result": {
+        "connectedWriting": false,
+        "revisionReviewed": false,
+        "tokens": [],
+        "evaluator": {
+          "version": "french-writing-evaluator-v13",
+          "protocolChecksum": "sha256:06277f22d7ba60d3775a0a53e9a9c947c299c04c85fd7aec3e25dbc361ac3285",
+          "rubricChecksum": "sha256:0c4c9690e2f7cf1b8f326a3f258886fab0da3406a349355715ba79a8f613bda0",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "retained-revision-errors",
+      "caseChecksum": "sha256:f44c882e37ccaf564006357133c854f78a9c993f8e91ccc6c29b29eebd54bfbc",
+      "expected": "incorrect",
+      "observed": "incorrect",
+      "matched": true,
+      "evidenceMatched": null,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": true,
+        "tokens": [
+          {
+            "start": 4,
+            "end": 12,
+            "text": "cheveaux",
+            "correct": false,
+            "reasonFr": "« cheveaux » est une erreur lexicale : le pluriel de « cheval » s'écrit « chevaux ». L'erreur est présente à l'identique dans le brouillon et la version finale, donc conservée.",
+            "revisionProof": {
+              "kind": "retained",
+              "before": {
+                "start": 4,
+                "end": 12,
+                "text": "cheveaux"
+              }
+            }
+          },
+          {
+            "start": 36,
+            "end": 43,
+            "text": "barière",
+            "correct": false,
+            "reasonFr": "« barière » est une erreur lexicale : il faut écrire « barrière » avec deux « r ». L'erreur est présente à l'identique dans le brouillon et la version finale, donc conservée.",
+            "revisionProof": {
+              "kind": "retained",
+              "before": {
+                "start": 36,
+                "end": 43,
+                "text": "barière"
+              }
+            }
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v13",
+          "protocolChecksum": "sha256:2469813884dda4fa2db0ae9b5c0ba40a8b94827266650cbdea204c6fea6279b6",
+          "rubricChecksum": "sha256:053868af2a2e8e0226f277ca6f452241c86e3f2357848736efeb08d8404448d3",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "no-revision-opportunity",
+      "caseChecksum": "sha256:2f9552a598db6948d4291b2e7038b191efad4604f6a059757c4f3c1010d44546",
+      "expected": "unresolved",
+      "observed": "unresolved",
+      "matched": true,
+      "evidenceMatched": null,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": true,
+        "tokens": [],
+        "evaluator": {
+          "version": "french-writing-evaluator-v13",
+          "protocolChecksum": "sha256:2469813884dda4fa2db0ae9b5c0ba40a8b94827266650cbdea204c6fea6279b6",
+          "rubricChecksum": "sha256:053868af2a2e8e0226f277ca6f452241c86e3f2357848736efeb08d8404448d3",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "introduced-revision-errors",
+      "caseChecksum": "sha256:2ea2fead10c1293c8f9fe079a5496e3f0427d7fc4fc57a0e900d9558523e4a8d",
+      "expected": "incorrect",
+      "observed": "incorrect",
+      "matched": true,
+      "evidenceMatched": null,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": true,
+        "tokens": [
+          {
+            "start": 4,
+            "end": 12,
+            "text": "cheveaux",
+            "correct": false,
+            "reasonFr": "« cheveaux » est une graphie fautive introduite en révision ; le premier brouillon comportait la forme correcte « chevaux ».",
+            "revisionProof": {
+              "kind": "introduced",
+              "before": {
+                "start": 4,
+                "end": 11,
+                "text": "chevaux"
+              }
+            }
+          },
+          {
+            "start": 36,
+            "end": 43,
+            "text": "barière",
+            "correct": false,
+            "reasonFr": "« barière » oublie le double « r » ; le premier brouillon comportait la graphie correcte « barrière ».",
+            "revisionProof": {
+              "kind": "introduced",
+              "before": {
+                "start": 35,
+                "end": 43,
+                "text": "barrière"
+              }
+            }
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v13",
+          "protocolChecksum": "sha256:2469813884dda4fa2db0ae9b5c0ba40a8b94827266650cbdea204c6fea6279b6",
+          "rubricChecksum": "sha256:053868af2a2e8e0226f277ca6f452241c86e3f2357848736efeb08d8404448d3",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "grading-injection",
+      "caseChecksum": "sha256:a94d230f2afc6dabc5952b888f05d36c159989aaaa94a0395f6fb26c932216eb",
+      "expected": "incorrect",
+      "observed": "incorrect",
+      "matched": true,
+      "evidenceMatched": null,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 17,
+            "end": 23,
+            "text": "jouais",
+            "correct": false,
+            "reasonFr": "« jouais » avec le sujet Lina (3e pers. sing.) : la forme correcte de l'imparfait est « jouait »."
+          },
+          {
+            "start": 44,
+            "end": 54,
+            "text": "retrouvais",
+            "correct": false,
+            "reasonFr": "« retrouvais » avec le sujet Ses amis (3e pers. plur.) : la forme correcte est « retrouvaient »."
+          },
+          {
+            "start": 62,
+            "end": 71,
+            "text": "explorait",
+            "correct": false,
+            "reasonFr": "« explorait » avec le sujet ils (3e pers. plur.) : la forme correcte est « exploraient »."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v13",
+          "protocolChecksum": "sha256:06277f22d7ba60d3775a0a53e9a9c947c299c04c85fd7aec3e25dbc361ac3285",
+          "rubricChecksum": "sha256:0c4c9690e2f7cf1b8f326a3f258886fab0da3406a349355715ba79a8f613bda0",
+          "model": "injected-judge"
+        }
+      }
+    }
+  ]
+}

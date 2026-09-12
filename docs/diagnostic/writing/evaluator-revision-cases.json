@@ -1,0 +1,26 @@
+[
+  {
+    "id": "grammar-revision-retained",
+    "node": "reviser_orthographe_grammaticale_paragraphe",
+    "prompt": "Relis ton paragraphe et corrige les accords si nécessaire.",
+    "firstDraft": "Les filles apporte un ballon. Les garçons joue dans la cour et les enfants chante près du portail.",
+    "answer": "Les filles apporte un ballon. Les garçons joue dans la cour et les enfants chante près du portail.",
+    "expect": "incorrect"
+  },
+  {
+    "id": "grammar-revision-no-opportunity",
+    "node": "reviser_orthographe_grammaticale_paragraphe",
+    "prompt": "Relis ton paragraphe et corrige les accords si nécessaire.",
+    "firstDraft": "Les filles apportent un ballon. Les garçons jouent dans la cour et les enfants chantent près du portail.",
+    "answer": "Les filles apportent un ballon. Les garçons jouent dans la cour et les enfants chantent près du portail.",
+    "expect": "unresolved"
+  },
+  {
+    "id": "grammar-revision-introduced",
+    "node": "reviser_orthographe_grammaticale_paragraphe",
+    "prompt": "Relis ton paragraphe et corrige les accords si nécessaire.",
+    "firstDraft": "Les filles apportent un ballon. Les garçons jouent dans la cour et les enfants chantent près du portail.",
+    "answer": "Les filles apporte un ballon. Les garçons joue dans la cour et les enfants chante près du portail.",
+    "expect": "incorrect"
+  }
+]

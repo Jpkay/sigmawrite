@@ -5,10 +5,11 @@ import {readFileSync,writeFileSync} from "node:fs";
 import {FRENCH_TAXONOMY_V3_CANDIDATE} from "../../src/lib/taxonomy/french-v3";
 const read=(file:string)=>JSON.parse(readFileSync(`docs/diagnostic/writing/${file}`,"utf8"));
 const inputs=[
+ {cases:read("evaluator-revision-cases.json"),report:read("evaluator-v13-revision.json")},
  {cases:read("evaluator-counterexample-cases.json"),report:read("evaluator-v13-counterexamples.json")},
  {cases:read("evaluator-scoped-cases.json"),report:read("evaluator-v13-scoped.json")},
- {cases:read("evaluator-adversarial-cases.json"),report:read("evaluator-adversarial-report.json")},
- {cases:read("evaluator-target-cases.json"),report:read("evaluator-v13-indexed-regressions.json")},
+ {cases:read("evaluator-adversarial-cases.json"),report:read("evaluator-v13-adversarial.json")},
+ {cases:read("evaluator-target-cases.json"),report:read("evaluator-v13-targets.json")},
 ];
 const rows=FRENCH_TAXONOMY_V3_CANDIDATE.nodes.filter(node=>node.evidence.some(e=>e.expectation==="independent_production")).map(node=>{
  const cases=inputs.flatMap(input=>input.cases.filter((c:{node:string})=>c.node===node.key).map((c:{id:string;expect:string})=>{

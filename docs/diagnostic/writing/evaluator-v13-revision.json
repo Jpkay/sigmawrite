@@ -1,0 +1,157 @@
+{
+  "status": "experimental_not_calibrated",
+  "model": "z-ai/glm-5.2",
+  "syntheticOnly": true,
+  "casesChecksum": "sha256:fa32f3a884691b3001e11e294d1f3b4d299b5291d23d7740d402be85571bc946",
+  "results": [
+    {
+      "id": "grammar-revision-retained",
+      "caseChecksum": "sha256:b8a57239ba990bc76aed98ea0725804423a7e09f5e7d06ec22aee47f70a40090",
+      "expected": "incorrect",
+      "observed": "incorrect",
+      "matched": true,
+      "evidenceMatched": null,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": true,
+        "tokens": [
+          {
+            "start": 11,
+            "end": 18,
+            "text": "apporte",
+            "correct": false,
+            "reasonFr": "« apporte » reste au singulier au lieu de s'accorder avec le sujet pluriel « Les filles » ; l'erreur du brouillon est conservée.",
+            "revisionProof": {
+              "kind": "retained",
+              "before": {
+                "start": 11,
+                "end": 18,
+                "text": "apporte"
+              }
+            }
+          },
+          {
+            "start": 42,
+            "end": 46,
+            "text": "joue",
+            "correct": false,
+            "reasonFr": "« joue » reste au singulier au lieu de s'accorder avec « Les garçons » ; erreur conservée.",
+            "revisionProof": {
+              "kind": "retained",
+              "before": {
+                "start": 42,
+                "end": 46,
+                "text": "joue"
+              }
+            }
+          },
+          {
+            "start": 75,
+            "end": 81,
+            "text": "chante",
+            "correct": false,
+            "reasonFr": "« chante » reste au singulier au lieu de s'accorder avec « les enfants » ; erreur conservée.",
+            "revisionProof": {
+              "kind": "retained",
+              "before": {
+                "start": 75,
+                "end": 81,
+                "text": "chante"
+              }
+            }
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v13",
+          "protocolChecksum": "sha256:2469813884dda4fa2db0ae9b5c0ba40a8b94827266650cbdea204c6fea6279b6",
+          "rubricChecksum": "sha256:33ae4583b8f6cc1af77a5a040c3c65ae7bad2de7fd57ff5209245cfb9d5d3d63",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "grammar-revision-no-opportunity",
+      "caseChecksum": "sha256:d1caaea1fe8dd0cf30f69ee74426d8d4d7580ff3e7205d55d0a510c14afa9927",
+      "expected": "unresolved",
+      "observed": "unresolved",
+      "matched": true,
+      "evidenceMatched": null,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": true,
+        "tokens": [],
+        "evaluator": {
+          "version": "french-writing-evaluator-v13",
+          "protocolChecksum": "sha256:2469813884dda4fa2db0ae9b5c0ba40a8b94827266650cbdea204c6fea6279b6",
+          "rubricChecksum": "sha256:33ae4583b8f6cc1af77a5a040c3c65ae7bad2de7fd57ff5209245cfb9d5d3d63",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "grammar-revision-introduced",
+      "caseChecksum": "sha256:5967e518724b2426d43ccff484a572108732704f0fc36104eb9c80ad546b6f1c",
+      "expected": "incorrect",
+      "observed": "incorrect",
+      "matched": true,
+      "evidenceMatched": null,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": true,
+        "tokens": [
+          {
+            "start": 11,
+            "end": 18,
+            "text": "apporte",
+            "correct": false,
+            "reasonFr": "Sujet pluriel « Les filles » : le verbe devrait être « apportent ». L'élève a introduit cette erreur en modifiant la forme correcte du brouillon.",
+            "revisionProof": {
+              "kind": "introduced",
+              "before": {
+                "start": 11,
+                "end": 20,
+                "text": "apportent"
+              }
+            }
+          },
+          {
+            "start": 42,
+            "end": 46,
+            "text": "joue",
+            "correct": false,
+            "reasonFr": "Sujet pluriel « Les garçons » : le verbe devrait être « jouent ». Erreur nouvellement introduite à partir d'une forme correcte.",
+            "revisionProof": {
+              "kind": "introduced",
+              "before": {
+                "start": 44,
+                "end": 50,
+                "text": "jouent"
+              }
+            }
+          },
+          {
+            "start": 75,
+            "end": 81,
+            "text": "chante",
+            "correct": false,
+            "reasonFr": "Sujet pluriel « les enfants » : le verbe devrait être « chantent ». Erreur nouvellement introduite à partir d'une forme correcte.",
+            "revisionProof": {
+              "kind": "introduced",
+              "before": {
+                "start": 79,
+                "end": 87,
+                "text": "chantent"
+              }
+            }
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v13",
+          "protocolChecksum": "sha256:2469813884dda4fa2db0ae9b5c0ba40a8b94827266650cbdea204c6fea6279b6",
+          "rubricChecksum": "sha256:33ae4583b8f6cc1af77a5a040c3c65ae7bad2de7fd57ff5209245cfb9d5d3d63",
+          "model": "injected-judge"
+        }
+      }
+    }
+  ]
+}
