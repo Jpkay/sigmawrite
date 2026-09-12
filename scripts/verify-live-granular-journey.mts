@@ -1,3 +1,4 @@
+import {playVerifiedAudio} from "./lib/play-verified-audio";
 /** Explicit live QA runner: resumes an existing technical test account, submits
  * deliberately mixed answers using actual browser time, then verifies results,
  * guided teaching and a fresh independent check. Never use a real learner account.
@@ -85,6 +86,7 @@ try {
   else await page.getByLabel('Ta réponse',{exact:true}).fill(wantCorrect?entry.correctAnswer!:'je ne sais pas');
   const support=readTextualSupport(entry);if(support)await page.getByRole('radio',{name:support.choices.find(c=>c.correct)!.quoteFr,exact:true}).click();
   const count=current.answeredCount;
+  await playVerifiedAudio(page,question.audio);
   await page.getByRole('button',{name:'Valider',exact:true}).click();
   current=await waitView(v=>v.answeredCount>count||v.phase==='learning');
   if(current.answeredCount>count){
@@ -113,6 +115,7 @@ try {
   if(question.responseType==='mcq')await page.getByRole('radio',{name:entry.choices!.find(c=>!c.correct)!.text,exact:true}).click();
   else await page.getByLabel('Ta réponse',{exact:true}).fill('je ne sais pas');
   const support=readTextualSupport(entry);if(support)await page.getByRole('radio',{name:support.choices.find(c=>c.correct)!.quoteFr,exact:true}).click();
+  await playVerifiedAudio(page,question.audio);
   await page.getByRole('button',{name:'Valider',exact:true}).click();
   current=await waitView(v=>!v.learningCheck);
   const saved=await admin.from('granular_assessment_sessions').select('state').eq('id',current.sessionId).single();if(saved.error)throw saved.error;
@@ -141,6 +144,7 @@ try {
   if(!t.exercise!.feedback){
    if(exercise.choices)await page.getByRole('radio',{name:exercise.answerFr,exact:true}).click();
    else await page.getByLabel('Ta réponse',{exact:true}).fill(exercise.answerFr);
+   await playVerifiedAudio(page,t.exercise?.audio);
    await page.getByRole('button',{name:'Vérifier ma réponse',exact:true}).click();
    current=await waitView(v=>!!v.teaching?.exercise?.feedback);
    if(!current.teaching!.exercise!.feedback!.correct)throw Error('Reviewed guided answer incorrectly graded');
@@ -164,6 +168,7 @@ try {
  if(question.responseType==='mcq')await page.getByRole('radio',{name:entry.choices!.find(c=>c.correct)!.text,exact:true}).click();
  else await page.getByLabel('Ta réponse',{exact:true}).fill(entry.correctAnswer!);
  const support=readTextualSupport(entry);if(support)await page.getByRole('radio',{name:support.choices.find(c=>c.correct)!.quoteFr,exact:true}).click();
+ await playVerifiedAudio(page,question.audio);
  await page.getByRole('button',{name:'Valider',exact:true}).click();
  current=await waitView(v=>!v.learningCheck);
  const refined=await admin.from('granular_assessment_sessions').select('state').eq('id',current.sessionId).single();if(refined.error)throw refined.error;

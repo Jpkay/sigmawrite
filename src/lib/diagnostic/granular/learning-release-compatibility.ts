@@ -34,8 +34,25 @@ export function inspectLearningReleaseCompatibility(source:AssessmentBundle,targ
   }))return true;
   expandedTeachingExposure.push(lesson.id);return false;
  }).map(lesson=>lesson.id);
+ // A previously deferred target may acquire additional feature coverage when
+ // first entering scope. Never reinterpret any previously assessable target.
+ const newlyScopedStrengthenedSkills=source.assessment.skills.filter(skill=>{
+  if(sourceScope.includes(skill.id)||!targetScope.has(skill.id)||source.assessment.probes.some(probe=>probe.skillId===skill.id))return false;
+  const next=target.assessment.skills.find(value=>value.id===skill.id);if(!next)return false;
+  const {evidenceRequirements:before,...oldBody}=skill,{evidenceRequirements:after,...newBody}=next;
+  if(checksum(oldBody)!==checksum(newBody)||!before||!after||checksum(Object.keys(before).sort())!==checksum(Object.keys(after).sort()))return false;
+  let added=false;
+  for(const mode of skill.modes){
+   const oldRule=before[mode],newRule=after[mode];if(!oldRule||!newRule)return false;
+   const {featureRequirements:oldFeatures=[],...oldRest}=oldRule,{featureRequirements:newFeatures=[],...newRest}=newRule;
+   if(checksum(oldRest)!==checksum(newRest)||oldFeatures.some(feature=>!newFeatures.some(value=>checksum(value)===checksum(feature))))return false;
+   if(new Set(newFeatures.map(f=>f.feature)).size!==newFeatures.length||newFeatures.some(f=>!f.feature.trim()||!Number.isInteger(f.minimumItems)||f.minimumItems<1||!Number.isInteger(f.minimumContexts)||f.minimumContexts<1))return false;
+   added ||= newFeatures.length>oldFeatures.length;
+  }
+  return added;
+ }).map(skill=>skill.id);
  const report={
-  addedItems,addedProbes,
+  addedItems,addedProbes,newlyScopedStrengthenedSkills,
   taxonomyUnchanged:source.taxonomyId===target.taxonomyId&&source.assessment.taxonomyChecksum===target.assessment.taxonomyChecksum,
   facetsUnchanged:source.assessment.facetChecksum===target.assessment.facetChecksum,
   changedSkills:changed(source.assessment.skills,target.assessment.skills,skill=>skill.id),
@@ -51,6 +68,6 @@ export function inspectLearningReleaseCompatibility(source:AssessmentBundle,targ
  const targetItems=new Set(target.bank.items.map(item=>item.itemKey));
  const facetExpansion=addedProbes.length>0&&addedProbes.every(id=>targetItems.has(id));
  return {...report,compatible:report.taxonomyUnchanged&&(report.facetsUnchanged||facetExpansion)&&[
-  report.changedSkills,report.changedItems,report.changedProbes,report.changedTeaching,report.changedActivities,report.removedScopeTargets,
+  report.changedSkills.filter(id=>!newlyScopedStrengthenedSkills.includes(id)),report.changedItems,report.changedProbes,report.changedTeaching,report.changedActivities,report.removedScopeTargets,
  ].every(changes=>changes.length===0)};
 }

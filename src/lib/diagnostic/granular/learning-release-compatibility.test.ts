@@ -70,3 +70,20 @@ it('accepts only additive exposure bindings backed by unchanged lesson material'
  const absent=structuredClone(b);absent.teachingContent![0].assessmentExposureIds=['invented'];
  expect(inspectLearningReleaseCompatibility(a,absent).compatible).toBe(false);
 });
+it('permits additive feature rules only for newly scoped targets with no previous probes',()=>{
+ const a=structuredClone(source),skill=a.assessment.skills.find(s=>s.evidenceRequirements?.[s.modes[0]])!,mode=skill.modes[0];
+ a.assessment.releaseScope={version:'french-granular-release-scope-v1',assessmentSkillIds:[],teachingSkillIds:[],limitationFr:'Deferred'};
+ a.assessment.probes=a.assessment.probes.filter(p=>p.skillId!==skill.id);
+ const b=structuredClone(a);b.assessment.releaseScope!.assessmentSkillIds=[skill.id];
+ b.assessment.skills.find(s=>s.id===skill.id)!.evidenceRequirements![mode]!.featureRequirements=[{feature:'new-pattern',minimumItems:4,minimumContexts:4}];
+ expect(inspectLearningReleaseCompatibility(a,b)).toMatchObject({compatible:true,newlyScopedStrengthenedSkills:[skill.id],changedSkills:[skill.id]});
+ const alreadyScoped=structuredClone(a);alreadyScoped.assessment.releaseScope!.assessmentSkillIds=[skill.id];
+ expect(inspectLearningReleaseCompatibility(alreadyScoped,b).compatible).toBe(false);
+ const hadProbes=structuredClone(a);hadProbes.assessment.probes.push({id:'old',skillId:skill.id,mode,contextId:'old',difficulty:.5,expectedSeconds:30,guessProbability:.25});
+ const keptProbe=structuredClone(b);keptProbe.assessment.probes=hadProbes.assessment.probes;
+ expect(inspectLearningReleaseCompatibility(hadProbes,keptProbe).compatible).toBe(false);
+ const lowered=structuredClone(b);lowered.assessment.skills.find(s=>s.id===skill.id)!.evidenceRequirements![mode]!.minimumAccuracy=.1;
+ expect(inspectLearningReleaseCompatibility(a,lowered).compatible).toBe(false);
+ const renamed=structuredClone(b);renamed.assessment.skills.find(s=>s.id===skill.id)!.labelFr='Different meaning';
+ expect(inspectLearningReleaseCompatibility(a,renamed).compatible).toBe(false);
+});

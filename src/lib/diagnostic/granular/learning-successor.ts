@@ -16,6 +16,7 @@ export function prepareLearningSuccessor(session:StoredSession,source:Assessment
  if(checksum(state.release)!==checksum(bindAssessmentRelease(source.assessment,source)))throw Error("Predecessor release binding mismatch");
  const compatibility=inspectLearningReleaseCompatibility(source,target);
  if(!compatibility.compatible)throw Error("Learning release content is incompatible");
+ if([...state.observations,...state.refinements].some(observation=>compatibility.newlyScopedStrengthenedSkills.includes(observation.skillId)))throw Error("Newly scoped target already has historical evidence");
  if(compatibility.expandedTeachingExposure.length){
   // Never invent historical receipts to unlock an upgrade. Older sessions
   // without material tracking stay pinned to their existing release.
