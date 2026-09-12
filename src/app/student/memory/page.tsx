@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Brain, Check } from "lucide-react";
 import { PageHeader } from "@/components/page";
 import { Button } from "@/components/ui/button";
@@ -51,11 +52,12 @@ export default function MemoryPage() {
     if (!card || !graded) return;
     setPending(true);
     setError("");
-    recordRetrieval(card.id, graded, Date.now());
     try {
       if (hasStudentBackend) {
         const response = await submitRetrievalAttempt({ cardId: card.id, answerText: answer, attemptedAt: new Date().toISOString() });
         replaceStudentState(response.state);
+      } else {
+        recordRetrieval(card.id, graded, Date.now());
       }
       track("retrieval_completed", { card_id: card.id, result: graded });
       setAnswer("");
@@ -67,16 +69,17 @@ export default function MemoryPage() {
     }
   }
 
-  // Concept mastery = how far each concept's cards have climbed the ladder.
-  const byConcept = new Map<string, { reps: number; n: number }>();
-  for (const c of state.retrievalCards) {
-    const e = byConcept.get(c.conceptLabel) ?? { reps: 0, n: 0 };
-    byConcept.set(c.conceptLabel, { reps: e.reps + c.repetitions, n: e.n + 1 });
+  // Scheduling repetitions reset after a forgotten answer; they are neither
+  // a lifetime review count nor evidence of competency mastery.
+  const byConcept = new Map<string, { cards: number; due: number }>();
+  for (const card of state.retrievalCards) {
+    const current = byConcept.get(card.conceptLabel) ?? { cards: 0, due: 0 };
+    byConcept.set(card.conceptLabel, {
+      cards: current.cards + 1,
+      due: current.due + (Date.parse(card.dueAt) <= nowMs ? 1 : 0),
+    });
   }
-  const concepts = [...byConcept.entries()].map(([label, { reps, n }]) => ({
-    label,
-    mastery: Math.min(100, Math.round((reps / n / 5) * 100)),
-  }));
+  const concepts = [...byConcept.entries()].map(([label, counts]) => ({label, ...counts}));
 
   const vocab = Object.entries(state.vocab).sort((a, b) => b[1].exposures - a[1].exposures);
 
@@ -84,7 +87,7 @@ export default function MemoryPage() {
     <>
       <PageHeader
         title="Mémoire"
-        description="Les notions reviennent à intervalles croissants : 1, 3, 7, 21 puis 45 jours."
+        description="Les cartes reviennent selon tes réponses, pour t’aider à retenir ce que tu as lu."
       />
 
       {/* Review */}
@@ -136,19 +139,17 @@ export default function MemoryPage() {
         </Card>
       )}
 
-      {/* Concept mastery */}
+      {/* Card inventory, distinct from the competency assessment. */}
       {concepts.length > 0 && (
         <>
-          <h2 className="mb-3 text-lg font-semibold">Maîtrise des concepts</h2>
+          <h2 className="mb-3 text-lg font-semibold">Tes cartes par notion</h2>
+          <p className="mb-3 text-sm text-muted-foreground">Le nombre de cartes ne mesure pas tes acquis. <Link href="/student/diagnostic" className="text-primary underline">Voir mon bilan de compétences</Link></p>
           <div className="mb-8 space-y-2">
             {concepts.map((c) => (
-              <div key={c.label} className="flex items-center gap-3">
-                <span className="w-48 shrink-0 text-sm text-muted-foreground">{c.label}</span>
-                <div className="h-2 flex-1 overflow-hidden rounded-full bg-muted">
-                  <div className="h-full bg-primary" style={{ width: `${c.mastery}%` }} />
-                </div>
-                <span className="w-10 shrink-0 text-right text-sm tabular-nums">
-                  {c.mastery}
+              <div key={c.label} className="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-border p-3 text-sm">
+                <span className="font-medium">{c.label}</span>
+                <span className="text-muted-foreground">
+                  {c.cards} carte{c.cards > 1 ? "s" : ""} · {c.due} à revoir aujourd’hui
                 </span>
               </div>
             ))}
