@@ -6,4 +6,4 @@ Applied to nine server routes: lessons, dictation catalog, vocabulary, inbox, re
 
 This change does not capture entire pages, client-generated states, arbitrary error output, button internals or offline content. It enables no coverage contract and creates no baseline. Current receipts remain conservative.
 
-Validation: 13 focused tests passed across the header and existing route delivery suites; TypeScript passed. Browser verification of this header change remains pending. The previously deployed revision 41 source d27b0fe does not contain this later change.
+Validation: 13 focused tests passed across the header and existing route delivery suites; TypeScript passed. Browser verification passed on nine route cases against source b2436b8, including conjugation and a missing-rule case; the legacy frontier branch was not exercised. All 401 test files and 1,776 tests pass. The earlier candidate source d27b0fe does not contain this change.

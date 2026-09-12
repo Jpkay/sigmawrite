@@ -1,5 +1,5 @@
 {
-  "status": "prepared_not_frozen_or_published",
+  "status": "publicly_activated",
   "candidateChecksum": "sha256:5e1a6ce496b93e4fd5d5bafc93caa6f26b68070e0ee103218bf7127f66cac8ab",
   "preflight": {
     "version": "french-granular-parallel-publication-v1",
@@ -43,12 +43,46 @@
         "literal_chronology_known_causal_inference_weak"
       ],
       "limitation": "Both sides sampled means at least one target per side; inspect contrastCoverage for untested modes and constructions. Probability separation is not confirmed mastery or classroom validation."
-    }
+    },
+    "fullSuiteAfterHeaderChange": {
+      "files": 401,
+      "tests": 1776,
+      "passed": true
+    },
+    "bankItemsVerified": 8024,
+    "settingsCapture": "revision-41-settings-capture-2026-09-12.json",
+    "existingSessionCompatibility": "revision-41-existing-session-compatibility-2026-09-12.json"
   },
   "limitations": [
     "Synthetic lesson histories do not prove complete production history.",
     "Owner content review remains pending.",
-    "The bounded diagnostic did not sample both sides of the chronology/causal contrast.",
-    "Not published or deployed."
-  ]
+    "The bounded diagnostic did not sample both sides of the chronology/causal contrast."
+  ],
+  "release": {
+    "sourceCommit": "d27b0fe1d82bd26ac9d19b0935a0545609fb08d5",
+    "releaseId": "ec46e0ac-94b7-425c-903b-d33a82ce0378",
+    "releaseKey": "french-granular-diagnostic-v41-writing",
+    "bankId": "f32acac3-8b3e-49c1-8e36-bf5a045b8106",
+    "bankChecksum": "sha256:6510bab77112a94c977c8d4d261f3b40327b9e06fc87ea5445c4e02e64d50c63",
+    "bundleChecksum": "sha256:78f22b12b00b0c4a10be18a24d5dac693059392f10472a51ad659ab3a62b817b",
+    "deploymentId": "dpl_5urzxAb4vD5vQGYbzdVqvoC3uRNE",
+    "deploymentUrl": "https://sigmawrite-mx96keqtt-jpkays-projects.vercel.app"
+  },
+  "headerCandidate": {
+    "sourceCommit": "b2436b87d4d3ca7e08b907f8c9c3b397a392f099",
+    "path": "/Users/jean-philippekayobotsi/.codex/release-workspaces/sigmawrite-r41-headers-b2436b8",
+    "releaseKey": "french-granular-diagnostic-v41-writing",
+    "promoted": true,
+    "fullSuite": {
+      "files": 401,
+      "tests": 1776,
+      "passed": true
+    },
+    "deploymentId": "dpl_AMKGBYgtYJahJnnsLJQtKtB8rwnL",
+    "deploymentUrl": "https://sigmawrite-qftw26b8t-jpkays-projects.vercel.app",
+    "deploymentReady": true,
+    "publicUrl": "https://app.trouvetaplume.com",
+    "canonicalAliasReady": true
+  },
+  "publicRolloutReport": "revision-41-public-rollout-2026-09-12.json"
 }
