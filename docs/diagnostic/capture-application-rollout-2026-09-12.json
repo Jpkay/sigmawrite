@@ -1,0 +1,64 @@
+{
+  "status": "candidate_ready_focused_browser_check_running",
+  "sourceCommit": "fa00d3401ecf4f989d524a41c3753f1d2ecffd2c",
+  "frozenWorkspace": "/Users/jean-philippekayobotsi/.codex/release-workspaces/sigmawrite-capture-fa00d34",
+  "candidateUrl": "https://sigmawrite-6c8t6jp31-jpkays-projects.vercel.app",
+  "deploymentId": "dpl_6msrFeAdWbsvh3Q3f1xRm5vHuesm",
+  "defaultReleaseKey": "french-granular-diagnostic-v17",
+  "defaultScope": 260,
+  "publicDeploymentBefore": "dpl_4hunvvGYXwjVPQs4PwhdsUrZuXe5",
+  "publicUrlBefore": "https://sigmawrite-cri62gea2-jpkays-projects.vercel.app",
+  "coverageContractEnabled": false,
+  "publicAliasChanged": false,
+  "focusedQa": {
+    "username": "doves.granular.capture.qa",
+    "studentId": "860f7f04-b9ba-492a-8aec-1545fb71542e",
+    "releaseKey": "french-granular-feature-rendering-qa-v1",
+    "purpose": "Verify actual journal writes and exclusion of a word displayed earlier on a reference page. Not a whole-graph diagnostic or educational calibration."
+  },
+  "running": {
+    "focusedBrowser": 29017
+  },
+  "requiredChecks": [
+    "Candidate Ready",
+    "Normal onboarding and focused diagnostic through UI",
+    "Actual reference text journal record",
+    "Prior-journal source saved on new independent answer",
+    "Reload preserves evidence",
+    "Pinned existing student and legacy demo compatibility",
+    "Public promotion and public verification only after checks pass"
+  ],
+  "checks": {
+    "candidateReady": true,
+    "legacyDemoLessons": 11,
+    "pinnedPathway": {
+      "base": "https://sigmawrite-6c8t6jp31-jpkays-projects.vercel.app",
+      "areas": [
+        "grammar",
+        "reading_comprehension",
+        "spelling",
+        "conjugation",
+        "grammar"
+      ],
+      "activities": 5
+    }
+  },
+  "remainingRouteFindings": [
+    {
+      "source": "src/app/student/repair/[skillKey]/page.tsx",
+      "finding": "Client imports MICRO_LESSONS directly and renders explanations, markers, questions and corrections without server delivery journal. Requires server-owned content delivery before capture completeness can be enabled."
+    },
+    {
+      "source": "src/app/student/reference/verbe/page.tsx",
+      "finding": "Frequent verb index renders FREQUENT_VERBS without journaling. Viewing this index can expose an exact target word before opening its individual table."
+    },
+    {
+      "source": "src/lib/actions/student.ts:loadIndependentProductionTask",
+      "finding": "Returns genre prompts and descriptions without journaling."
+    },
+    {
+      "source": "src/lib/actions/student.ts:submitIndependentProduction",
+      "finding": "Returns rubric, matched forms and feedback without journaling."
+    }
+  ]
+}
