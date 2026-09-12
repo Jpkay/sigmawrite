@@ -4,7 +4,7 @@ import {SupabaseAssessmentStore} from '@/lib/diagnostic/granular/store';
 import {sharedReleaseContentCache} from '@/lib/diagnostic/granular/release-content-cache';
 import {requireStudentAccessAuthorized} from '@/lib/diagnostic/access';
 import { journalStudentPayload } from "@/lib/diagnostic/granular/server-delivery-journal";
-import { PageHeader } from "@/components/page";
+import {StudentPageHeader as PageHeader} from "@/components/student-page-header";
 import { FrontierReportView } from "@/components/frontier-report";
 import { StudentCompetencyGraph } from "@/components/student-competency-graph";
 import { requireRole } from "@/lib/auth";
@@ -37,7 +37,7 @@ export default async function StudentFrontierPage() {
   const data = await frontierForStudent(studentId, graphDb);
   await journalStudentPayload(studentId, "student:frontier", data);
   return <>
-    <PageHeader title="Ma frontière d’apprentissage" description="Ouvre une compétence pour comprendre les bases nécessaires, les preuves observées et la prochaine étape accessible." />
+    <PageHeader boundary="student:frontier-header" title="Ma frontière d’apprentissage" description="Ouvre une compétence pour comprendre les bases nécessaires, les preuves observées et la prochaine étape accessible." />
     <StudentCompetencyGraph graph={data.graphView} />
     <section aria-labelledby="frontier-details-title" className="mt-10">
       <div className="mb-5 max-w-2xl">

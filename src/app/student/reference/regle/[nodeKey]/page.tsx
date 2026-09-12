@@ -1,7 +1,7 @@
 import {journalCurrentStudentPayload} from "@/lib/diagnostic/granular/server-delivery-journal";
 import Link from "next/link";
 import { ArrowLeft, BookOpenCheck } from "lucide-react";
-import { PageHeader } from "@/components/page";
+import {StudentPageHeader as PageHeader} from "@/components/student-page-header";
 import { buttonVariants } from "@/components/ui/button";
 import { requireRole } from "@/lib/auth";
 import { createClient } from "@/lib/supabase/server";
@@ -17,7 +17,7 @@ export default async function Page({ params }: { params: Promise<{ nodeKey: stri
   const supabase = await createClient();
   const { data: node } = await supabase.from("competency_nodes").select("id,key,label_fr,description_fr,strand").eq("key", key).order("created_at", { ascending: false }).limit(1).maybeSingle();
   if (!node) {
-    return <><PageHeader eyebrow="Référence" title="Règle introuvable" description="Cette compétence n’est pas publiée." /><Link href="/student" className={buttonVariants({ variant: "outline" })}><ArrowLeft className="size-4" />Accueil</Link></>;
+    return <><PageHeader boundary="reference:rule-header" eyebrow="Référence" title="Règle introuvable" description="Cette compétence n’est pas publiée." /><Link href="/student" className={buttonVariants({ variant: "outline" })}><ArrowLeft className="size-4" />Accueil</Link></>;
   }
   const { data: approved } = await supabase.from("competency_lessons").select("explanation_fr,pattern_fr,examples_fr,exceptions_fr").eq("node_id", node.id as string).in("review_status", ["auto_approved", "human_approved"]).maybeSingle();
   const lesson = lessonForPracticeNode(
@@ -29,7 +29,7 @@ export default async function Page({ params }: { params: Promise<{ nodeKey: stri
   await journalCurrentStudentPayload("reference:rule",{node,lesson,tags});
   return (
     <>
-      <PageHeader eyebrow={`Référence · ${lesson.family}`} title={node.label_fr as string} description={node.description_fr as string | undefined} action={<Link href={`/student/practice/${node.id as string}`} className={buttonVariants()}><BookOpenCheck className="size-4" />S’entraîner</Link>} />
+      <PageHeader boundary="reference:rule-header" eyebrow={`Référence · ${lesson.family}`} title={node.label_fr as string} description={node.description_fr as string | undefined} actionText="S’entraîner" action={<Link href={`/student/practice/${node.id as string}`} className={buttonVariants()}><BookOpenCheck className="size-4" />S’entraîner</Link>} />
       <article className="max-w-3xl">
         <div className="mb-4"><CurriculumTags tags={tags} /></div>
         <p className="text-lg leading-8">{lesson.explanation}</p>

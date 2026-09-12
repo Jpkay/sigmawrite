@@ -1,3 +1,4 @@
+vi.mock('server-only',()=>({}));
 import {afterEach,beforeEach,expect,it,vi} from 'vitest';
 const f=vi.hoisted(()=>({access:vi.fn(),latest:vi.fn(),project:vi.fn(),auth:vi.fn(),owner:vi.fn(),journal:vi.fn(),frontier:vi.fn(),maybe:vi.fn(),db:{from:vi.fn()},service:{name:'service'},payload:{graphView:{nodes:[{labelFr:'Employer la cédille',explanationFr:'Comparer garçon et citron.'}]},missing:[{labelFr:'Reconnaître le sujet'}]}}));
 vi.mock('@/lib/diagnostic/granular/server-delivery-journal',()=>({journalStudentPayload:f.journal}));

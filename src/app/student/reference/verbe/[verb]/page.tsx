@@ -1,7 +1,7 @@
 import {journalCurrentStudentPayload} from "@/lib/diagnostic/granular/server-delivery-journal";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { PageHeader } from "@/components/page";
+import {StudentPageHeader as PageHeader} from "@/components/student-page-header";
 import { buttonVariants } from "@/components/ui/button";
 import { buildConjugationTable, type ConjugationTable } from "@/lib/conjugation/table";
 import { UnsupportedVerbError } from "@/lib/linguistic/conjugation";
@@ -21,7 +21,7 @@ export default async function Page({ params }: { params: Promise<{ verb: string 
   if (!table) {
     return (
       <>
-        <PageHeader eyebrow="Référence" title={`« ${requested} »`} description={failure} />
+        <PageHeader boundary="reference:verb-header" eyebrow="Référence" title={`« ${requested} »`} description={failure} />
         <VerbSearch initial={requested} />
         <Link href="/student/reference/verbe" className={`${buttonVariants({ variant: "outline" })} mt-6`}><ArrowLeft className="size-4" />Tous les verbes</Link>
       </>
@@ -31,7 +31,7 @@ export default async function Page({ params }: { params: Promise<{ verb: string 
   const modes = Array.from(new Set(table.tenses.map((tense) => tense.mode)));
   return (
     <>
-      <PageHeader eyebrow={`Référence · ${table.group}${table.group === 1 ? "er" : "e"} groupe · auxiliaire ${table.auxiliary}`} title={table.infinitive} description={`Participe passé : ${table.participle}.`} action={<Link href="/student/reference/verbe" className={buttonVariants({ variant: "outline" })}><ArrowLeft className="size-4" />Autre verbe</Link>} />
+      <PageHeader boundary="reference:verb-header" eyebrow={`Référence · ${table.group}${table.group === 1 ? "er" : "e"} groupe · auxiliaire ${table.auxiliary}`} title={table.infinitive} description={`Participe passé : ${table.participle}.`} actionText="Autre verbe" action={<Link href="/student/reference/verbe" className={buttonVariants({ variant: "outline" })}><ArrowLeft className="size-4" />Autre verbe</Link>} />
       <ul className="mb-8 grid gap-2 text-sm leading-6 text-muted-foreground sm:grid-cols-2">{table.notes.map((note) => <li key={note} className="border-l-2 border-primary pl-3">{note}</li>)}</ul>
       {modes.map((mode) => (
         <section key={mode} className="mb-10">

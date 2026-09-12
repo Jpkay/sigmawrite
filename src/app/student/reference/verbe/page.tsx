@@ -1,6 +1,6 @@
 import { journalCurrentStudentPayload } from "@/lib/diagnostic/granular/server-delivery-journal";
 import Link from "next/link";
-import { PageHeader } from "@/components/page";
+import {StudentPageHeader as PageHeader} from "@/components/student-page-header";
 import { FREQUENT_VERBS } from "@/lib/conjugation/table";
 import { VerbSearch } from "./verb-search";
 
@@ -8,7 +8,7 @@ export default async function Page() {
   await journalCurrentStudentPayload("reference:verb-index", { verbs: FREQUENT_VERBS });
   return (
     <>
-      <PageHeader eyebrow="Référence" title="Tables de conjugaison" description="Tous les temps d’un verbe, calculés par le même moteur qui corrige tes exercices." />
+      <PageHeader boundary="reference:verb-index-header" eyebrow="Référence" title="Tables de conjugaison" description="Tous les temps d’un verbe, calculés par le même moteur qui corrige tes exercices." />
       <VerbSearch />
       <section className="mt-8">
         <p className="mb-3 text-xs font-semibold uppercase tracking-[.14em] text-muted-foreground">Verbes fréquents</p>

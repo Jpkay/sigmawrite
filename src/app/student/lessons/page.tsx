@@ -2,7 +2,7 @@ import {journalStudentPayload} from "@/lib/diagnostic/granular/server-delivery-j
 import {LearningUpgradeButton} from "@/components/diagnostic/learning-upgrade-button";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { PageHeader } from "@/components/page";
+import {StudentPageHeader as PageHeader} from "@/components/student-page-header";
 import { buttonVariants } from "@/components/ui/button";
 import { SupabaseAssessmentStore } from "@/lib/diagnostic/granular/store";
 import { publicAssessmentView } from "@/lib/diagnostic/granular/service";
@@ -38,7 +38,7 @@ export default async function StudentLessonsPage() {
   const optional = view?.optionalLearningActivities ?? [];
   await journalStudentPayload(studentId, "student:lessons", {available, optional});
   return <>
-    <PageHeader title="Mes leçons" description="Voici les prochaines étapes de ton parcours, à partir de tes réponses au diagnostic. Choisis une leçon pour commencer." />
+    <PageHeader boundary="student:lessons-header" title="Mes leçons" description="Voici les prochaines étapes de ton parcours, à partir de tes réponses au diagnostic. Choisis une leçon pour commencer." />
     <div className="mb-6 flex flex-wrap gap-3">
       <Link href="/student/diagnostic" className={buttonVariants({variant:"outline"})}>Voir mes résultats</Link>
       {session.authUserId === "921b350e-61dc-4f0d-a8b7-a2717e94f902" && <Link href="/student/diagnostic/demo-review" className={buttonVariants({variant:"outline"})}>Revoir mes réponses au diagnostic</Link>}

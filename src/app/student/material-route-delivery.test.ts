@@ -1,3 +1,4 @@
+vi.mock('server-only',()=>({}));
 import { beforeEach, expect, it, vi } from 'vitest';
 const f = vi.hoisted(() => ({ journal: vi.fn() }));
 vi.mock('@/lib/diagnostic/granular/server-delivery-journal', () => ({ journalCurrentStudentPayload: f.journal }));

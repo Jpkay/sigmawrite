@@ -1,2 +1,2 @@
-import{PageHeader}from"@/components/page";import{VocabularyPractice}from"./vocabulary-practice";import{loadVocabularyMemories}from"@/lib/actions/vocabulary";
-export default async function Page(){const memories=await loadVocabularyMemories();return <><PageHeader title="Vocabulaire" description="Retrouve les mots rencontrés en lecture au moment où ta mémoire en a besoin."/><VocabularyPractice initial={memories}/></>}
+import {StudentPageHeader as PageHeader} from "@/components/student-page-header";import{VocabularyPractice}from"./vocabulary-practice";import{loadVocabularyMemories}from"@/lib/actions/vocabulary";
+export default async function Page(){const memories=await loadVocabularyMemories();return <><PageHeader boundary="student:vocabulary-header" title="Vocabulaire" description="Retrouve les mots rencontrés en lecture au moment où ta mémoire en a besoin."/><VocabularyPractice initial={memories}/></>}
