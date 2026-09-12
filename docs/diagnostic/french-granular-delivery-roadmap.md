@@ -6,7 +6,7 @@ Updated 2026-09-12. French only; Allotey is excluded. This document distinguishe
 
 - Public deployment: v13, 215 supported targets, frozen source `3446b9f`. The complete candidate browser assessment, lesson practice, independent check and answer review pass; post-promotion new-account, demo and pinned-session checks pass and are tracked in `revision-twelve-publication-2026-09-12.json`.
 - Previous public release: v12, 197 supported targets, frozen source `0657d2a6`; retained as the rollback reference. See `revision-eleven-publication-2026-09-11.json`.
-- Working draft: bank revision 13, 231 supported targets and 4,752 scoped probes. It adds four family pathways each for passé composé, futur simple, conditionnel and plus-que-parfait to the frozen candidate. It is not imported, published or deployed.
+- Frozen next candidate: bank revision 13, 231 supported targets and 4,752 scoped probes, source `ff8b84f`. It adds four family pathways each for passé composé, futur simple, conditionnel and plus-que-parfait to public v13. Bank import and a separate deployment are in progress; publication and activation are pending. See `revision-thirteen-publication-2026-09-12.json`.
 - Working-draft symbolic routing benchmark: 10/10 depth checks and 8/8 uneven-profile contrasts, with no invariant violations. See `confirmed-verb-visits-2026-09-12.md`. This later runtime change is not included in the frozen 215-target candidate and is not educational calibration.
 
 ## Complete target accounting
@@ -25,7 +25,7 @@ These categories partition the graph; they are not publication or approval label
 
 ## Next implementation packages
 
-1. Prepare the expanded working draft with its later verb-visit routing; the 215-target v13 release is publicly verified. Keep published bundles immutable and repeat full candidate and public verification before activating another version.
+1. Complete preparation and independent verification of the frozen 231-target candidate with its later verb-visit routing; the 215-target v13 release is publicly verified. Keep published bundles immutable and repeat full candidate and public verification before activating another version.
 2. Validate the new verb-visit routing on real content and live mixed-profile journeys. The eight constructed contrasts now pass; educator/student calibration and broader granular profile validation remain required. Keep untested targets unresolved and refine them during learning.
 3. Add the missing exact-target lessons for the remaining tenses and moods. The regular -er/-ir and -ger/-cer pathways for imparfait, passé composé, futur simple, conditionnel and plus-que-parfait are now prepared. Each needs suitable guided examples and fresh independent applications; existing form questions alone are insufficient.
 4. Review the four remaining passé récent verb targets (pouvoir, vouloir, savoir, devoir) for natural contexts before authoring. Do not mechanically create awkward forms merely to reach a coverage count. Continue subjonctif, impératif and passé simple coverage with their own usage constraints.
