@@ -2,151 +2,35 @@
   "status": "experimental_not_calibrated",
   "model": "z-ai/glm-5.2",
   "syntheticOnly": true,
+  "casesChecksum": "sha256:5fe9e5997d795025a3a4d5232545d41b82b62bbfc8e9d4d0c08e070870a29c83",
   "results": [
     {
       "id": "lexical-scoped-correct",
+      "caseChecksum": "sha256:7dae376a963f9d61ee334913e8e94d064f061b0280e4e75736575c6570d8e906",
       "expected": "correct",
-      "observed": "correct",
-      "matched": true,
-      "result": {
-        "connectedWriting": true,
-        "revisionReviewed": false,
-        "tokens": [
-          {
-            "start": 3,
-            "end": 9,
-            "text": "cheval",
-            "criterionId": "word:cheval",
-            "correct": true,
-            "reasonFr": "Le nom « cheval » est correctement orthographié au singulier dans le contexte « Un cheval attend »."
-          },
-          {
-            "start": 28,
-            "end": 36,
-            "text": "barrière",
-            "criterionId": "word:barriere",
-            "correct": true,
-            "reasonFr": "Le nom « barrière » est correctement orthographié avec l'accent grave dans « près de la barrière »."
-          },
-          {
-            "start": 41,
-            "end": 47,
-            "text": "jardin",
-            "criterionId": "word:jardin",
-            "correct": true,
-            "reasonFr": "Le nom « jardin » est correctement orthographié au singulier dans « Le jardin est calme »."
-          },
-          {
-            "start": 64,
-            "end": 70,
-            "text": "oiseau",
-            "criterionId": "word:oiseau",
-            "correct": true,
-            "reasonFr": "Le nom « oiseau » est correctement orthographié au singulier dans « un oiseau chante »."
-          }
-        ],
-        "evaluator": {
-          "version": "french-writing-evaluator-v4",
-          "protocolChecksum": "sha256:dea0e8fc37df1bb5d5f763ff5130872d3745121b0cf5ab693d9bb932dbe76110",
-          "rubricChecksum": "sha256:5f52b133657692c4192f28e404e0db48e6f1ce6ae401192b21757576ea7f6655",
-          "model": "injected-judge"
-        }
-      }
+      "observed": "unavailable",
+      "reason": "provider_or_configuration",
+      "matched": false
     },
     {
       "id": "lexical-scoped-errors",
+      "caseChecksum": "sha256:cdf8f60e3f3204deacc84e5fae8b5b07a7a7522d0a83e23414a67205c121a064",
       "expected": "incorrect",
-      "observed": "incorrect",
-      "matched": true,
-      "result": {
-        "connectedWriting": true,
-        "revisionReviewed": false,
-        "tokens": [
-          {
-            "start": 3,
-            "end": 10,
-            "text": "chevale",
-            "criterionId": "word:cheval",
-            "correct": false,
-            "reasonFr": "« chevale » est une graphie fautive du nom « cheval » : présence d'un « e » final parasite."
-          },
-          {
-            "start": 29,
-            "end": 36,
-            "text": "barière",
-            "criterionId": "word:barriere",
-            "correct": false,
-            "reasonFr": "« barière » manque d'un « r » ; la graphie correcte est « barrière » avec deux « r »."
-          },
-          {
-            "start": 41,
-            "end": 48,
-            "text": "jardain",
-            "criterionId": "word:jardin",
-            "correct": false,
-            "reasonFr": "« jardain » est mal orthographié : la terminaison correcte est « -in » et non « -ain »."
-          },
-          {
-            "start": 65,
-            "end": 69,
-            "text": "oiso",
-            "criterionId": "word:oiseau",
-            "correct": false,
-            "reasonFr": "« oiso » est une graphie tronquée et fautive du nom « oiseau »."
-          }
-        ],
-        "evaluator": {
-          "version": "french-writing-evaluator-v4",
-          "protocolChecksum": "sha256:dea0e8fc37df1bb5d5f763ff5130872d3745121b0cf5ab693d9bb932dbe76110",
-          "rubricChecksum": "sha256:5f52b133657692c4192f28e404e0db48e6f1ce6ae401192b21757576ea7f6655",
-          "model": "injected-judge"
-        }
-      }
+      "observed": "unavailable",
+      "reason": "timeout",
+      "matched": false
     },
     {
       "id": "grammar-scoped-correct",
+      "caseChecksum": "sha256:17101cb8933c8cc574a6cddeec478d55575174a37d0b2656e54fa578283259a2",
       "expected": "correct",
-      "observed": "correct",
-      "matched": true,
-      "result": {
-        "connectedWriting": true,
-        "revisionReviewed": false,
-        "tokens": [
-          {
-            "start": 12,
-            "end": 18,
-            "text": "jouent",
-            "criterionId": "subject_verb_agreement",
-            "correct": true,
-            "reasonFr": "Sujet pluriel « Les enfants » accordé correctement avec le verbe au présent « jouent » (3e personne du pluriel)."
-          },
-          {
-            "start": 47,
-            "end": 56,
-            "text": "apportent",
-            "criterionId": "subject_verb_agreement",
-            "correct": true,
-            "reasonFr": "Sujet pluriel « Les filles » accordé correctement avec le verbe au présent « apportent » (3e personne du pluriel)."
-          },
-          {
-            "start": 82,
-            "end": 91,
-            "text": "préparent",
-            "criterionId": "subject_verb_agreement",
-            "correct": true,
-            "reasonFr": "Sujet pluriel « les garçons » accordé correctement avec le verbe au présent « préparent » (3e personne du pluriel)."
-          }
-        ],
-        "evaluator": {
-          "version": "french-writing-evaluator-v4",
-          "protocolChecksum": "sha256:dea0e8fc37df1bb5d5f763ff5130872d3745121b0cf5ab693d9bb932dbe76110",
-          "rubricChecksum": "sha256:eb57262798dc80ba2f439963a59e408ea3d41aa8e76938b928e04fb43951fbd7",
-          "model": "injected-judge"
-        }
-      }
+      "observed": "unavailable",
+      "reason": "provider_or_configuration",
+      "matched": false
     },
     {
       "id": "grammar-scoped-errors",
+      "caseChecksum": "sha256:e6c16838266b1ee056ad05fa340275aac16f603baf5c1d3ef2465938d936f22b",
       "expected": "incorrect",
       "observed": "incorrect",
       "matched": true,
@@ -160,7 +44,7 @@
             "text": "joue",
             "criterionId": "subject_verb_agreement",
             "correct": false,
-            "reasonFr": "Sujet « Les enfants » (3e personne du pluriel) avec verbe au singulier « joue » au lieu de « jouent »."
+            "reasonFr": "Sujet pluriel « Les enfants » avec verbe au singulier « joue » ; l'accord correct serait « jouent »."
           },
           {
             "start": 44,
@@ -168,7 +52,7 @@
             "text": "apporte",
             "criterionId": "subject_verb_agreement",
             "correct": false,
-            "reasonFr": "Sujet « Les filles » (3e personne du pluriel) avec verbe au singulier « apporte » au lieu de « apportent »."
+            "reasonFr": "Sujet pluriel « Les filles » avec verbe au singulier « apporte » ; l'accord correct serait « apportent »."
           },
           {
             "start": 77,
@@ -176,12 +60,12 @@
             "text": "prépare",
             "criterionId": "subject_verb_agreement",
             "correct": false,
-            "reasonFr": "Sujet « les garçons » (3e personne du pluriel) avec verbe au singulier « prépare » au lieu de « préparent »."
+            "reasonFr": "Sujet pluriel « les garçons » avec verbe au singulier « prépare » ; l'accord correct serait « préparent »."
           }
         ],
         "evaluator": {
-          "version": "french-writing-evaluator-v4",
-          "protocolChecksum": "sha256:dea0e8fc37df1bb5d5f763ff5130872d3745121b0cf5ab693d9bb932dbe76110",
+          "version": "french-writing-evaluator-v5",
+          "protocolChecksum": "sha256:85e1c9798c4065c1c1c1db036d2d75e43ec83f55e09958da374181f88c513a1e",
           "rubricChecksum": "sha256:eb57262798dc80ba2f439963a59e408ea3d41aa8e76938b928e04fb43951fbd7",
           "model": "injected-judge"
         }

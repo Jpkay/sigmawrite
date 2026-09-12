@@ -1,26 +1,43 @@
 {
   "status": "synthetic_coverage_only_not_calibrated",
-  "scope": "Scoped, adversarial and expanded target datasets; excludes initial smoke and repeated runs",
+  "scope": "Source-bound counterexamples, scoped, adversarial and expanded target datasets using the current evaluator; excludes stale results, initial smoke and repeated runs",
   "targetCount": 18,
   "targetsWithCases": 18,
-  "targetsWithAllOutcomeTypes": 1,
+  "targetsWithAllOutcomeTypes": 4,
   "targets": [
     {
       "nodeKey": "produire_contraste_pc_imparfait",
       "labelFr": "Produire le contraste passé composé-imparfait",
       "cases": [
         {
+          "id": "past-contrast-incorrect",
+          "expected": "incorrect",
+          "observed": "incorrect",
+          "sourceBound": true,
+          "currentEvaluator": true,
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        },
+        {
+          "id": "past-contrast-unresolved",
+          "expected": "unresolved",
+          "observed": "unresolved",
+          "sourceBound": true,
+          "currentEvaluator": true,
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        },
+        {
           "id": "past-contrast",
           "expected": "correct",
           "observed": "correct",
+          "sourceBound": true,
+          "currentEvaluator": true,
           "matched": true,
           "model": "z-ai/glm-5.2"
         }
       ],
-      "missingExpectedOutcomes": [
-        "incorrect",
-        "unresolved"
-      ],
+      "missingExpectedOutcomes": [],
       "nextAction": "add_counterexamples_and_independent_review"
     },
     {
@@ -28,9 +45,57 @@
       "labelFr": "Produire une séquence temporelle cohérente",
       "cases": [
         {
+          "id": "temporal-sequence-incorrect",
+          "expected": "incorrect",
+          "observed": "incorrect",
+          "sourceBound": true,
+          "currentEvaluator": true,
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        },
+        {
+          "id": "temporal-sequence-unresolved",
+          "expected": "unresolved",
+          "observed": "unresolved",
+          "sourceBound": true,
+          "currentEvaluator": true,
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        },
+        {
           "id": "temporal-sequence",
           "expected": "correct",
           "observed": "unavailable",
+          "sourceBound": true,
+          "currentEvaluator": false,
+          "matched": false,
+          "model": "z-ai/glm-5.2"
+        }
+      ],
+      "missingExpectedOutcomes": [
+        "correct"
+      ],
+      "nextAction": "add_counterexamples_and_independent_review"
+    },
+    {
+      "nodeKey": "maintenir_orthographe_lexicale_phrase",
+      "labelFr": "Maintenir l'orthographe lexicale dans une phrase",
+      "cases": [
+        {
+          "id": "lexical-scoped-correct",
+          "expected": "correct",
+          "observed": "unavailable",
+          "sourceBound": true,
+          "currentEvaluator": false,
+          "matched": false,
+          "model": "z-ai/glm-5.2"
+        },
+        {
+          "id": "lexical-scoped-errors",
+          "expected": "incorrect",
+          "observed": "unavailable",
+          "sourceBound": true,
+          "currentEvaluator": false,
           "matched": false,
           "model": "z-ai/glm-5.2"
         }
@@ -43,57 +108,40 @@
       "nextAction": "add_counterexamples_and_independent_review"
     },
     {
-      "nodeKey": "maintenir_orthographe_lexicale_phrase",
-      "labelFr": "Maintenir l'orthographe lexicale dans une phrase",
-      "cases": [
-        {
-          "id": "lexical-scoped-correct",
-          "expected": "correct",
-          "observed": "correct",
-          "matched": true,
-          "model": "z-ai/glm-5.2"
-        },
-        {
-          "id": "lexical-scoped-errors",
-          "expected": "incorrect",
-          "observed": "incorrect",
-          "matched": true,
-          "model": "z-ai/glm-5.2"
-        }
-      ],
-      "missingExpectedOutcomes": [
-        "unresolved"
-      ],
-      "nextAction": "add_counterexamples_and_independent_review"
-    },
-    {
       "nodeKey": "reviser_orthographe_lexicale_paragraphe",
       "labelFr": "Réviser l'orthographe lexicale d'un paragraphe",
       "cases": [
         {
           "id": "retained-revision-errors",
           "expected": "incorrect",
-          "observed": "incorrect",
-          "matched": true,
+          "observed": "unavailable",
+          "sourceBound": true,
+          "currentEvaluator": false,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         },
         {
           "id": "no-revision-opportunity",
           "expected": "unresolved",
           "observed": "unresolved",
+          "sourceBound": true,
+          "currentEvaluator": true,
           "matched": true,
           "model": "z-ai/glm-5.2"
         },
         {
           "id": "introduced-revision-errors",
           "expected": "incorrect",
-          "observed": "incorrect",
-          "matched": true,
+          "observed": "unresolved",
+          "sourceBound": true,
+          "currentEvaluator": true,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         }
       ],
       "missingExpectedOutcomes": [
-        "correct"
+        "correct",
+        "incorrect"
       ],
       "nextAction": "add_counterexamples_and_independent_review"
     },
@@ -104,19 +152,24 @@
         {
           "id": "grammar-scoped-correct",
           "expected": "correct",
-          "observed": "correct",
-          "matched": true,
+          "observed": "unavailable",
+          "sourceBound": true,
+          "currentEvaluator": false,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         },
         {
           "id": "grammar-scoped-errors",
           "expected": "incorrect",
           "observed": "incorrect",
+          "sourceBound": true,
+          "currentEvaluator": true,
           "matched": true,
           "model": "z-ai/glm-5.2"
         }
       ],
       "missingExpectedOutcomes": [
+        "correct",
         "unresolved"
       ],
       "nextAction": "add_counterexamples_and_independent_review"
@@ -129,6 +182,8 @@
           "id": "grammar-revision",
           "expected": "correct",
           "observed": "correct",
+          "sourceBound": true,
+          "currentEvaluator": true,
           "matched": true,
           "model": "z-ai/glm-5.2"
         }
@@ -144,17 +199,35 @@
       "labelFr": "Employer les pronoms compléments en contexte",
       "cases": [
         {
+          "id": "pronouns-incorrect",
+          "expected": "incorrect",
+          "observed": "unavailable",
+          "sourceBound": true,
+          "currentEvaluator": false,
+          "matched": false,
+          "model": "z-ai/glm-5.2"
+        },
+        {
+          "id": "pronouns-unresolved",
+          "expected": "unresolved",
+          "observed": "unresolved",
+          "sourceBound": true,
+          "currentEvaluator": true,
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        },
+        {
           "id": "pronoun-context",
           "expected": "correct",
-          "observed": "unavailable",
-          "matched": false,
+          "observed": "correct",
+          "sourceBound": true,
+          "currentEvaluator": true,
+          "matched": true,
           "model": "z-ai/glm-5.2"
         }
       ],
       "missingExpectedOutcomes": [
-        "correct",
-        "incorrect",
-        "unresolved"
+        "incorrect"
       ],
       "nextAction": "add_counterexamples_and_independent_review"
     },
@@ -163,16 +236,35 @@
       "labelFr": "Employer le présent de l’indicatif en contexte",
       "cases": [
         {
+          "id": "present-incorrect",
+          "expected": "incorrect",
+          "observed": "incorrect",
+          "sourceBound": true,
+          "currentEvaluator": true,
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        },
+        {
+          "id": "present-unresolved",
+          "expected": "unresolved",
+          "observed": "unresolved",
+          "sourceBound": true,
+          "currentEvaluator": true,
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        },
+        {
           "id": "present-context",
           "expected": "correct",
-          "observed": "correct",
-          "matched": true,
+          "observed": "unavailable",
+          "sourceBound": true,
+          "currentEvaluator": false,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         }
       ],
       "missingExpectedOutcomes": [
-        "incorrect",
-        "unresolved"
+        "correct"
       ],
       "nextAction": "add_counterexamples_and_independent_review"
     },
@@ -181,77 +273,29 @@
       "labelFr": "Employer le futur proche en contexte",
       "cases": [
         {
+          "id": "near-future-incorrect",
+          "expected": "incorrect",
+          "observed": "incorrect",
+          "sourceBound": true,
+          "currentEvaluator": true,
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        },
+        {
+          "id": "near-future-unresolved",
+          "expected": "unresolved",
+          "observed": "unresolved",
+          "sourceBound": true,
+          "currentEvaluator": true,
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        },
+        {
           "id": "future-near-context",
           "expected": "correct",
           "observed": "correct",
-          "matched": true,
-          "model": "z-ai/glm-5.2"
-        }
-      ],
-      "missingExpectedOutcomes": [
-        "incorrect",
-        "unresolved"
-      ],
-      "nextAction": "add_counterexamples_and_independent_review"
-    },
-    {
-      "nodeKey": "employer_passe_recent_en_contexte",
-      "labelFr": "Employer le passé récent en contexte",
-      "cases": [
-        {
-          "id": "recent-past-context",
-          "expected": "correct",
-          "observed": "correct",
-          "matched": true,
-          "model": "z-ai/glm-5.2"
-        }
-      ],
-      "missingExpectedOutcomes": [
-        "incorrect",
-        "unresolved"
-      ],
-      "nextAction": "add_counterexamples_and_independent_review"
-    },
-    {
-      "nodeKey": "employer_passe_compose_en_contexte",
-      "labelFr": "Employer le passé composé en contexte",
-      "cases": [
-        {
-          "id": "compound-past-context",
-          "expected": "correct",
-          "observed": "correct",
-          "matched": true,
-          "model": "z-ai/glm-5.2"
-        }
-      ],
-      "missingExpectedOutcomes": [
-        "incorrect",
-        "unresolved"
-      ],
-      "nextAction": "add_counterexamples_and_independent_review"
-    },
-    {
-      "nodeKey": "employer_imparfait_en_contexte",
-      "labelFr": "Employer le imparfait en contexte",
-      "cases": [
-        {
-          "id": "unrelated-spelling",
-          "expected": "correct",
-          "observed": "correct",
-          "matched": true,
-          "model": "z-ai/glm-5.2"
-        },
-        {
-          "id": "disconnected-forms",
-          "expected": "unresolved",
-          "observed": "unresolved",
-          "matched": true,
-          "model": "z-ai/glm-5.2"
-        },
-        {
-          "id": "grading-injection",
-          "expected": "incorrect",
-          "observed": "incorrect",
+          "sourceBound": true,
+          "currentEvaluator": true,
           "matched": true,
           "model": "z-ai/glm-5.2"
         }
@@ -260,21 +304,165 @@
       "nextAction": "add_counterexamples_and_independent_review"
     },
     {
-      "nodeKey": "employer_futur_simple_en_contexte",
-      "labelFr": "Employer le futur simple en contexte",
+      "nodeKey": "employer_passe_recent_en_contexte",
+      "labelFr": "Employer le passé récent en contexte",
       "cases": [
         {
-          "id": "simple-future-context",
-          "expected": "correct",
-          "observed": "correct",
+          "id": "recent-past-incorrect",
+          "expected": "incorrect",
+          "observed": "incorrect",
+          "sourceBound": true,
+          "currentEvaluator": true,
           "matched": true,
+          "model": "z-ai/glm-5.2"
+        },
+        {
+          "id": "recent-past-unresolved",
+          "expected": "unresolved",
+          "observed": "unresolved",
+          "sourceBound": true,
+          "currentEvaluator": true,
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        },
+        {
+          "id": "recent-past-context",
+          "expected": "correct",
+          "observed": "unavailable",
+          "sourceBound": true,
+          "currentEvaluator": false,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         }
       ],
       "missingExpectedOutcomes": [
-        "incorrect",
-        "unresolved"
+        "correct"
       ],
+      "nextAction": "add_counterexamples_and_independent_review"
+    },
+    {
+      "nodeKey": "employer_passe_compose_en_contexte",
+      "labelFr": "Employer le passé composé en contexte",
+      "cases": [
+        {
+          "id": "compound-past-incorrect",
+          "expected": "incorrect",
+          "observed": "incorrect",
+          "sourceBound": true,
+          "currentEvaluator": true,
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        },
+        {
+          "id": "compound-past-unresolved",
+          "expected": "unresolved",
+          "observed": "unresolved",
+          "sourceBound": true,
+          "currentEvaluator": true,
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        },
+        {
+          "id": "compound-past-context",
+          "expected": "correct",
+          "observed": "correct",
+          "sourceBound": true,
+          "currentEvaluator": true,
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        }
+      ],
+      "missingExpectedOutcomes": [],
+      "nextAction": "add_counterexamples_and_independent_review"
+    },
+    {
+      "nodeKey": "employer_imparfait_en_contexte",
+      "labelFr": "Employer le imparfait en contexte",
+      "cases": [
+        {
+          "id": "imperfect-incorrect",
+          "expected": "incorrect",
+          "observed": "incorrect",
+          "sourceBound": true,
+          "currentEvaluator": true,
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        },
+        {
+          "id": "imperfect-unresolved",
+          "expected": "unresolved",
+          "observed": "unresolved",
+          "sourceBound": true,
+          "currentEvaluator": true,
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        },
+        {
+          "id": "unrelated-spelling",
+          "expected": "correct",
+          "observed": "unavailable",
+          "sourceBound": true,
+          "currentEvaluator": false,
+          "matched": false,
+          "model": "z-ai/glm-5.2"
+        },
+        {
+          "id": "disconnected-forms",
+          "expected": "unresolved",
+          "observed": "unavailable",
+          "sourceBound": true,
+          "currentEvaluator": false,
+          "matched": false,
+          "model": "z-ai/glm-5.2"
+        },
+        {
+          "id": "grading-injection",
+          "expected": "incorrect",
+          "observed": "unavailable",
+          "sourceBound": true,
+          "currentEvaluator": false,
+          "matched": false,
+          "model": "z-ai/glm-5.2"
+        }
+      ],
+      "missingExpectedOutcomes": [
+        "correct"
+      ],
+      "nextAction": "add_counterexamples_and_independent_review"
+    },
+    {
+      "nodeKey": "employer_futur_simple_en_contexte",
+      "labelFr": "Employer le futur simple en contexte",
+      "cases": [
+        {
+          "id": "simple-future-incorrect",
+          "expected": "incorrect",
+          "observed": "incorrect",
+          "sourceBound": true,
+          "currentEvaluator": true,
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        },
+        {
+          "id": "simple-future-unresolved",
+          "expected": "unresolved",
+          "observed": "unresolved",
+          "sourceBound": true,
+          "currentEvaluator": true,
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        },
+        {
+          "id": "simple-future-context",
+          "expected": "correct",
+          "observed": "correct",
+          "sourceBound": true,
+          "currentEvaluator": true,
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        }
+      ],
+      "missingExpectedOutcomes": [],
       "nextAction": "add_counterexamples_and_independent_review"
     },
     {
@@ -282,16 +470,35 @@
       "labelFr": "Employer le plus-que-parfait en contexte",
       "cases": [
         {
+          "id": "pluperfect-incorrect",
+          "expected": "incorrect",
+          "observed": "incorrect",
+          "sourceBound": true,
+          "currentEvaluator": true,
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        },
+        {
+          "id": "pluperfect-unresolved",
+          "expected": "unresolved",
+          "observed": "unresolved",
+          "sourceBound": true,
+          "currentEvaluator": true,
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        },
+        {
           "id": "pluperfect-context",
           "expected": "correct",
-          "observed": "correct",
-          "matched": true,
+          "observed": "unavailable",
+          "sourceBound": true,
+          "currentEvaluator": false,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         }
       ],
       "missingExpectedOutcomes": [
-        "incorrect",
-        "unresolved"
+        "correct"
       ],
       "nextAction": "add_counterexamples_and_independent_review"
     },
@@ -300,16 +507,35 @@
       "labelFr": "Employer le conditionnel présent en contexte",
       "cases": [
         {
+          "id": "conditional-incorrect",
+          "expected": "incorrect",
+          "observed": "incorrect",
+          "sourceBound": true,
+          "currentEvaluator": true,
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        },
+        {
+          "id": "conditional-unresolved",
+          "expected": "unresolved",
+          "observed": "unresolved",
+          "sourceBound": true,
+          "currentEvaluator": true,
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        },
+        {
           "id": "conditional-context",
           "expected": "correct",
-          "observed": "correct",
-          "matched": true,
+          "observed": "unavailable",
+          "sourceBound": true,
+          "currentEvaluator": false,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         }
       ],
       "missingExpectedOutcomes": [
-        "incorrect",
-        "unresolved"
+        "correct"
       ],
       "nextAction": "add_counterexamples_and_independent_review"
     },
@@ -318,16 +544,35 @@
       "labelFr": "Employer le subjonctif présent en contexte",
       "cases": [
         {
+          "id": "subjunctive-incorrect",
+          "expected": "incorrect",
+          "observed": "incorrect",
+          "sourceBound": true,
+          "currentEvaluator": true,
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        },
+        {
+          "id": "subjunctive-unresolved",
+          "expected": "unresolved",
+          "observed": "unresolved",
+          "sourceBound": true,
+          "currentEvaluator": true,
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        },
+        {
           "id": "subjunctive-errors",
           "expected": "incorrect",
           "observed": "incorrect",
+          "sourceBound": true,
+          "currentEvaluator": true,
           "matched": true,
           "model": "z-ai/glm-5.2"
         }
       ],
       "missingExpectedOutcomes": [
-        "correct",
-        "unresolved"
+        "correct"
       ],
       "nextAction": "add_counterexamples_and_independent_review"
     },
@@ -336,16 +581,35 @@
       "labelFr": "Employer le impératif en contexte",
       "cases": [
         {
-          "id": "imperative-errors",
+          "id": "imperative-incorrect",
           "expected": "incorrect",
           "observed": "incorrect",
+          "sourceBound": true,
+          "currentEvaluator": true,
           "matched": true,
+          "model": "z-ai/glm-5.2"
+        },
+        {
+          "id": "imperative-unresolved",
+          "expected": "unresolved",
+          "observed": "unresolved",
+          "sourceBound": true,
+          "currentEvaluator": true,
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        },
+        {
+          "id": "imperative-errors",
+          "expected": "incorrect",
+          "observed": "correct",
+          "sourceBound": true,
+          "currentEvaluator": true,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         }
       ],
       "missingExpectedOutcomes": [
-        "correct",
-        "unresolved"
+        "correct"
       ],
       "nextAction": "add_counterexamples_and_independent_review"
     },
@@ -354,16 +618,35 @@
       "labelFr": "Employer le passé simple en contexte",
       "cases": [
         {
+          "id": "simple-past-incorrect",
+          "expected": "incorrect",
+          "observed": "unavailable",
+          "sourceBound": true,
+          "currentEvaluator": false,
+          "matched": false,
+          "model": "z-ai/glm-5.2"
+        },
+        {
+          "id": "simple-past-unresolved",
+          "expected": "unresolved",
+          "observed": "unresolved",
+          "sourceBound": true,
+          "currentEvaluator": true,
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        },
+        {
           "id": "simple-past-context",
           "expected": "correct",
           "observed": "correct",
+          "sourceBound": true,
+          "currentEvaluator": true,
           "matched": true,
           "model": "z-ai/glm-5.2"
         }
       ],
       "missingExpectedOutcomes": [
-        "incorrect",
-        "unresolved"
+        "incorrect"
       ],
       "nextAction": "add_counterexamples_and_independent_review"
     }

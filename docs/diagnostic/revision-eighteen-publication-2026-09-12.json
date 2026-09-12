@@ -1,5 +1,5 @@
 {
-  "status": "candidate_built_bank_import_and_compatibility_checks_running",
+  "status": "candidate_compatibility_verified_relational_check_running",
   "sourceCommit": "c63a42d4456158edbd488053d6183a625bed5f8f",
   "frozenWorkspace": "/Users/jean-philippekayobotsi/.codex/release-workspaces/sigmawrite-r18-c63a42d",
   "plannedReleaseKey": "french-granular-diagnostic-v19",
@@ -17,14 +17,33 @@
     "imperativeServiceJourneys": 5,
     "constructedProfiles": 8,
     "readOnlyUpgrade": "compatible; historical evidence preserved",
-    "deploymentCommandExitCode": 0
+    "deploymentCommandExitCode": 0,
+    "deployment": "Ready",
+    "audio": {
+      "assets": 72,
+      "hashVerified": true,
+      "chromePlaybackEnded": true,
+      "pronunciationReviewed": false
+    },
+    "demo": {
+      "lessons": 11,
+      "onboardingRedirect": "passed"
+    },
+    "pinnedPathway": {
+      "base": "https://sigmawrite-2rrvpyxm2-jpkays-projects.vercel.app",
+      "areas": [
+        "grammar",
+        "reading_comprehension",
+        "spelling",
+        "conjugation",
+        "grammar"
+      ],
+      "activities": 5
+    },
+    "bankImport": "completed"
   },
   "running": {
-    "bankImport": 11435,
-    "inspect": 74882,
-    "demo": 44728,
-    "pinnedPathway": 2344,
-    "audio": 66386
+    "relationalCheck": 15208
   },
   "remaining": [
     "Verify Ready deployment, audio, demo and pinned pathways.",
@@ -40,5 +59,6 @@
     "studentId": "3cfe48cb-bcca-4fa2-95fc-3d29abb6c835",
     "credentialsFile": "tmp/plume-granular-r18-default-qa.json",
     "diagnosticStarted": false
-  }
+  },
+  "bankReleaseId": "dcb77353-b7bc-4a6c-bdce-609762c7d748"
 }
