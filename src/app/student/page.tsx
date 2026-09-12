@@ -4,11 +4,13 @@ import {journalStudentPayload} from '@/lib/diagnostic/granular/server-delivery-j
 import {requireRole} from '@/lib/auth';
 import {getCurrentStudentId} from '@/lib/db/student';
 import {createClient,isSupabaseConfigured} from '@/lib/supabase/server';
+import {deliveredStudentAssignments} from '@/lib/diagnostic/granular/assignment-delivery';
 export default async function StudentHomePage(){
  if(!isSupabaseConfigured)return <StudentHome key="local" copy={HOME_COPY}/>;
  await requireRole(['student']);
- const owner=await getCurrentStudentId(await createClient());
+ const client=await createClient(),owner=await getCurrentStudentId(client);
+ const assignments=await deliveredStudentAssignments(owner,client);
  await journalStudentPayload(owner,'student:home-copy',HOME_COPY);
  // Changing accounts remounts all dashboard state, not just recommendations.
- return <StudentHome key={owner} copy={HOME_COPY}/>;
+ return <StudentHome key={owner} copy={HOME_COPY} assignments={assignments}/>;
 }

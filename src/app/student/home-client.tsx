@@ -15,9 +15,10 @@ import { loadStudentHome, markBadgesSeen, type ClassLeague, type SessionPlanEntr
 import { BadgeShelf, ClassGoalCard, WeekStrip, WeeklyRecapCard, type WeeklyRecap } from "@/components/motivation";
 import { LeagueCard } from "@/components/league";
 import { StudentAssignments } from "@/components/student-assignments";
+import type {Assignment} from "@/lib/diagnostic/granular/assignment-display";
 import { track } from "@/lib/analytics";
 
-export default function StudentHome({copy}:{copy:typeof HOME_COPY}) {
+export default function StudentHome({copy,assignments=[]}:{copy:typeof HOME_COPY;assignments?:Assignment[]}) {
   const state = useStudentState();
   const fallback = homeFallbackText(state.interests);
   const recommendationKey=JSON.stringify(state.interests);
@@ -128,7 +129,7 @@ export default function StudentHome({copy}:{copy:typeof HOME_COPY}) {
         action={<div className="flex items-center gap-3 rounded-full bg-secondary/15 px-4 py-2 font-display text-sm font-semibold text-secondary"><span className="inline-flex items-center gap-1.5"><Flame className="size-4" />{homeStreakText(motivation?.streak??0)}</span>{(motivation?.freezesAvailable ?? 0) > 0 && <span className="inline-flex items-center gap-1 text-secondary" title={copy.freeze}><Snowflake className="size-4" />{motivation?.freezesAvailable}</span>}<span className="text-foreground">{homeXpText(motivation?.totalXp??0)}</span></div>}
       />
 
-      <StudentAssignments />
+      <StudentAssignments assignments={assignments}/>
 
       <div className="mb-6 flex flex-wrap gap-3"><Link href="/student/lessons" className={buttonVariants()}>{copy.lessons} <ArrowRight /></Link><Link href="/student/diagnostic" className={buttonVariants({variant:"outline"})}>{copy.results}</Link></div>
 
