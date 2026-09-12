@@ -1,5 +1,5 @@
 {
-  "status": "prepared_service_verified_profile_checks_running_not_published",
+  "status": "prepared_verified_not_published",
   "scope": 270,
   "graphTargets": 542,
   "candidateChecksum": "sha256:c6c0220aeb3fd5f805d5fdb852bb51c0988ae8a5118018fe5bcc75b6c9845f83",
@@ -68,13 +68,17 @@
           "reloadPreserved": true
         }
       ]
+    },
+    "constructedProfiles": {
+      "count": 8,
+      "allContrastsPassed": true,
+      "allPathwaysAvailable": true,
+      "allReloadsPreserved": true,
+      "report": "prepared-profile-diagnostics-2026-09-12.json"
     }
   },
-  "running": {
-    "constructedProfiles": 50294
-  },
+  "running": {},
   "remaining": [
-    "Finish the eight constructed-profile checks.",
     "Freeze, publish and verify an exact candidate before public activation.",
     "Owner review and educational calibration remain parallel work."
   ]
