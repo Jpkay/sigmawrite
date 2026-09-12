@@ -4,7 +4,7 @@ Updated 2026-09-12. French only; Allotey is excluded. This document distinguishe
 
 ## Current delivery state
 
-- Public release: **french-granular-diagnostic-v35-writing**, with 344 of 542 detailed targets and 6,386 in-scope questions. The public application is source `74301ec`, deployment `dpl_6eBAW9LdmFCgfsANiTVBxU6SgocF`. Canonical alias promotion and the public demo passed. A progress redirect affecting completed accounts without an onboarding marker was found; correction `192fc93` is being deployed separately on the same bank.
+- Public release: **french-granular-diagnostic-v35-writing**, with 344 of 542 detailed targets and 6,386 in-scope questions. The public application combines base `74301ec` with route correction `192fc93`, deployment `dpl_9eZpZizYXsv4Y68T92YHthTJdMLV`. Public progress search, filters, prerequisites, mobile layout, reload and unchanged session checks passed, as did the preserved demo. See revision-35-public-rollout-2026-09-12.json.
 - Published candidate: **french-granular-diagnostic-v35-writing**, with 344 of 542 targets, 6,386 in-scope questions and 7,820 canonical items. Its frozen application is source `74301ec`, deployment `dpl_6eBAW9LdmFCgfsANiTVBxU6SgocF`. The live journey completed 60 diagnostic answers (47 correct, 13 incorrect) in 2,079.101 active seconds, then six guided exercises, a fresh independent check and all-answer review. This candidate has been promoted. See revision-35-publication-2026-09-12.json.
 - Next preparation: revision 36 with the explicit verb-family-recognition option contains 347 of 544 targets, 6,422 in-scope questions and 7,856 canonical items. The approved family-recognition parent has three draft refinements instead of one broad target, increasing the map by two. It has not been imported, published or activated. See revision-36-preparation-2026-09-12.json.
 - Revision 36 adds separate recognition questions and lessons for regular -er patterns, finir patterns and other patterns. It does not claim that recognition establishes independent conjugation. Ten uneven-profile simulations, two server-command journeys and all three new lesson journeys passed; these use constructed profiles and are not classroom calibration.
@@ -28,7 +28,7 @@ Root evidence: granular-pathway-backlog.json. Revision 36 evidence: revision-36-
 
 ## Next implementation packages
 
-1. Finish deployment and public verification of the completed-account progress redirect correction. Revision 35 diagnostic, final results, guided lesson, independent check and answer review have passed; preserve those records and the demo.
+1. Revision 35 and its completed-account progress correction are public and verified. Preserve the completed diagnostic, learning and review records and the demonstration account while extending coverage.
 2. Complete revision 36 release preparation and deployment using its explicit question, lesson and refinement selection; preserve older sessions and immutable release identities.
 3. Resolve the four remaining exact-target lesson gaps and two prerequisite-scope gaps, respecting natural French usage rather than manufacturing awkward examples to increase coverage.
 4. Fill the 186 remaining revision 36 question-pool gaps across all domains, keeping recognition, controlled production and contextual-use evidence distinct. Complete the five connected-writing targets during learning.
