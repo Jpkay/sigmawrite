@@ -13,6 +13,8 @@ import {checksum} from '../src/lib/taxonomy/validate';
 import {DIAGNOSTIC_COPY} from '../src/components/diagnostic/diagnostic-copy';
 import {ANSWER_REVIEW_COPY} from '../src/lib/diagnostic/granular/answer-review-copy';
 import {LESSONS_COPY} from '../src/lib/diagnostic/granular/lessons-copy';
+import {HOME_COPY} from '../src/app/student/home-copy';
+import {FRONTIER_COPY} from '../src/lib/diagnostic/granular/frontier-copy';
 import {deliveredTextFragments} from '../src/lib/diagnostic/granular/delivery-journal';
 config({path:'.env.local',quiet:true});
 const base=process.env.PLUME_VERIFY_URL!;assert.ok(base,'Origin required');
@@ -54,6 +56,20 @@ try {
  const lessons=await db.from('student_material_delivery_journal').select('text_fragments').eq('student_id',credential.studentId).eq('boundary','student:lessons').contains('text_fragments',[LESSONS_COPY.optionalHelp,LESSONS_COPY.unavailable]).limit(1).single();
  if(lessons.error)throw lessons.error;
  for(const text of deliveredTextFragments(LESSONS_COPY))assert.ok(lessons.data.text_fragments.includes(text));
+ let homeAndProgressVerified=false;
+ if(process.env.PLUME_VERIFY_HOME==='true'){
+  await page.goto(base+'/student',{waitUntil:'domcontentloaded',timeout:60000});
+  await page.getByRole('heading',{name:HOME_COPY.reading,exact:true}).waitFor({timeout:60000});
+  await page.locator('#main-content').getByRole('link',{name:HOME_COPY.lessons,exact:true}).waitFor();
+  const homeFragments=deliveredTextFragments(HOME_COPY);
+  const homeCopy=await db.from('student_material_delivery_journal').select('text_fragments').eq('student_id',credential.studentId).eq('boundary','student:home-copy').eq('payload_checksum',checksum(homeFragments)).single();
+  if(homeCopy.error)throw homeCopy.error;assert.deepEqual(homeCopy.data.text_fragments,homeFragments);
+  await page.goto(base+'/student/progress',{waitUntil:'domcontentloaded',timeout:60000});
+  await page.getByRole('heading',{name:FRONTIER_COPY.progressTitle,exact:true}).waitFor({timeout:60000});
+  const progress=await db.from('student_material_delivery_journal').select('text_fragments').eq('student_id',credential.studentId).eq('boundary','student:granular-progress').contains('text_fragments',[FRONTIER_COPY.progressTitle]).limit(1).single();
+  if(progress.error)throw progress.error;
+  homeAndProgressVerified=true;
+ }
  const worker=await page.evaluate(async()=>{
   const registration=await navigator.serviceWorker.register('/sw.js',{type:'module',updateViaCache:'none'});
   let timeout:ReturnType<typeof setTimeout>|undefined;
@@ -65,5 +81,6 @@ try {
  await page.setViewportSize({width:390,height:844});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
  assert.deepEqual(await session(),before);assert.deepEqual(errors,[]);
  const report={base,studentId:credential.studentId,sessionId,diagnosticCopyChecksum:checksum(fragments),diagnosticCopyCaptured:true,reviewCopyCaptured:true,lessonListCopyCaptured:true,reviewAnswers:answers,serverOwnerHeaderVerified:true,moduleWorkerRegistered:true,mobileNoHorizontalOverflow:true,sessionUnchanged:true,pageErrors:errors,limits:'Existing completed technical account; no answers submitted and no complete-history activation. This checks deployed UI capture and worker registration, not a fresh diagnostic or full offline behavior.'};
+ Object.assign(report,{homeAndProgressVerified});
  writeFileSync(reportPath,JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));
 } finally {await browser.close();}
