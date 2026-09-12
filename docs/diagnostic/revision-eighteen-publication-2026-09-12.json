@@ -1,0 +1,32 @@
+{
+  "status": "frozen_candidate_build_and_bank_import_running",
+  "sourceCommit": "c63a42d4456158edbd488053d6183a625bed5f8f",
+  "frozenWorkspace": "/Users/jean-philippekayobotsi/.codex/release-workspaces/sigmawrite-r18-c63a42d",
+  "plannedReleaseKey": "french-granular-diagnostic-v19",
+  "bankKey": "french-diagnostic-bank-v3-r18",
+  "bankChecksum": "sha256:dbc0b79f0c29c6a2a14f9417abf6f048fe0370f1bcbd314a8d6710bd7b2b7226",
+  "bankItems": 6710,
+  "scope": 266,
+  "candidateChecksum": "sha256:069b9c218462a77a2f6b50c59f51cc93f0caf6d3fb3ec59cb8b96f0047a3a192",
+  "currentPublicRelease": "french-granular-diagnostic-v17",
+  "currentPublicScope": 260,
+  "checks": {
+    "publicationPreflight": "passed",
+    "granularTests": 648,
+    "typescript": "passed",
+    "imperativeServiceJourneys": 5,
+    "constructedProfiles": 8,
+    "readOnlyUpgrade": "compatible; historical evidence preserved"
+  },
+  "running": {
+    "deployment": 26688,
+    "bankImport": 11435
+  },
+  "remaining": [
+    "Verify Ready deployment, audio, demo and pinned pathways.",
+    "Finish bank import, verify all relational records and publish immutable v19.",
+    "Verify fresh default and full timed diagnostic through results, learning and answer review; test real learning upgrade.",
+    "Verify answered-feature counts in the deployed results view.",
+    "Promote only after successful candidate checks and repeat public verification."
+  ]
+}
