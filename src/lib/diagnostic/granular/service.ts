@@ -1,3 +1,4 @@
+import {latestWritingFeedback} from "./writing-feedback";
 import {assessmentFromGeneratedItem} from "@/lib/linguistic/assessment-policy";
 import type {PriorDeliveryHistory} from "./prior-delivery-material";
 import {publicAudioQuestionFields} from './audio-stimulus';
@@ -103,7 +104,9 @@ export function publicAssessmentView(session:StoredSession,bundle:AssessmentBund
  const readiness=learningReadiness(bundle.assessment.skills,assessmentObservations(session.state),at);
  const learning=view.phase==="learning"?planGranularActivities(bundle.assessment,readiness.planningResults,availableLearningBindings(bundle.assessment,bundle.activities??[],seen),5,new Set(session.state.completedTeachingIds??[])):null;
  const item=view.pendingItemId?bundle.bank.items.find(i=>i.itemKey===view.pendingItemId)?.item:null;
+ const writingFeedback=latestWritingFeedback(session.state,bundle.assessment.skills);
  return {...view,sessionId:session.id,revision:session.state.revision,
+  ...(writingFeedback?{writingFeedback}:{}),
   ...(bundle.assessment.reviewPolicy?.mode==="parallel_review"?{contentReviewStatus:"ongoing" as const}:{}),
   ...(scope?{coverage:{supportedSkillCount:scope.assessmentSkillIds.size,deferredSkillCount:scope.deferredSkillIds.length,teachingSkillCount:scope.teachingSkillIds.size,limitationFr:scope.scope.limitationFr}}:{}),
   answeredCount:session.state.observations.filter(o=>!o.skipped).length,

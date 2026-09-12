@@ -1,3 +1,4 @@
+import {latestWritingFeedback} from "./writing-feedback";
 import {readFileSync} from "node:fs";
 import {expect,it,vi} from "vitest";
 import {runLearningCheckCommand,type WritingEvaluator} from "./learning-service";
@@ -67,4 +68,31 @@ it('keeps the active check and all evidence unchanged on a retryable provider fa
  expect(result).toMatchObject({error:expect.stringContaining('Aucun résultat')});
  expect(f.save).not.toHaveBeenCalled();expect(f.get()).toEqual(before);
  expect(JSON.stringify(result)).not.toContain('provider response');
+});
+
+it('returns source-bound writing feedback after saving and on reload, without audit internals',async()=>{
+ const f=fixture();
+ f.evaluator.mockResolvedValue({connectedWriting:true,tokens:[{start:4,end:11,text:'chevaux',correct:true,reasonFr:'Le nom est au pluriel.'},{start:12,end:19,text:'courent',correct:false,reasonFr:'Explication de test.'}]});
+ const result=await runLearningCheckCommand(f.store,'student-a',f.command,Date.now,f.evaluator);
+ const feedback='view' in result?result.view?.writingFeedback:undefined;
+ expect(feedback).toMatchObject({text:f.command.answer,checkedCount:2,correctCount:1,passages:[{text:'chevaux',correct:true},{text:'courent',correct:false,explanationFr:'Explication de test.'}]});
+ expect(publicAssessmentView(f.get(),f.bundle).writingFeedback).toEqual(feedback);
+ const serialized=JSON.stringify(feedback);
+ for(const field of ['responseChecksum','firstDraft','protocolChecksum','rubricChecksum','criterionId','evaluator'])expect(serialized).not.toContain(field);
+ f.get().state.learningCheck={id:'new-check',activityId:'writing-check',itemId:'next',occasionId:'day-2'};
+ expect(publicAssessmentView(f.get(),f.bundle).writingFeedback).toBeUndefined();
+});
+it('does not show unverified or superseded writing feedback',async()=>{
+ const f=fixture();
+ expect(publicAssessmentView(f.get(),f.bundle).writingFeedback).toBeUndefined();
+ await runLearningCheckCommand(f.store,'student-a',f.command,Date.now,f.evaluator);
+ f.get().state.refinements[0].writingEvidence!.tokens[0].text='invented';
+ expect(publicAssessmentView(f.get(),f.bundle).writingFeedback).toBeUndefined();
+});
+
+it('does not resurrect an older writing result after another type of check',async()=>{
+ const f=fixture();await runLearningCheckCommand(f.store,'student-a',f.command,Date.now,f.evaluator);
+ const writing=f.get().state.refinements[0];
+ f.get().state.refinements.push({...writing,mode:'production',writingEvidence:undefined});
+ expect(latestWritingFeedback(f.get().state,f.bundle.assessment.skills)).toBeNull();
 });

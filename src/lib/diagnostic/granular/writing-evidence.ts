@@ -44,7 +44,8 @@ export type WritingEvidence=z.infer<typeof schema>;
 /** Server-side adjudication boundary. Spans identify actual opportunities to use
  * this skill, not every word in the response. A grammar check reporting no errors
  * does not supply this judgment. Never accept these fields from browser input.
- * Store the source and judgments for audit; public results expose aggregates only. */
+ * Store the source and judgments for audit. Owned-session feedback exposes only
+ * verified passages and learner explanations, never evaluator protocol metadata. */
 export function createWritingEvidence(input:{skillId:string;answer:string;connectedWriting:boolean;unaided:boolean;
  evaluator?:WritingEvidence["evaluator"];firstDraft?:string;revisionReviewed?:true;tokens:Array<z.infer<typeof tokenSchema>>}):WritingEvidence{
  if(!input.connectedWriting||!input.unaided)throw Error("Independent connected writing required");
