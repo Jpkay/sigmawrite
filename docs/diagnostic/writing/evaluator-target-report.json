@@ -2,15 +2,54 @@
   "status": "experimental_not_calibrated",
   "model": "z-ai/glm-5.2",
   "syntheticOnly": true,
-  "casesChecksum": "sha256:d1b89efc9b339d5bf6e437da71723586f500b6ed8349167bec6216063288f127",
+  "casesChecksum": "sha256:0f9f59336db6ab852a2ece9b73a037d71f73c1337594d1e31fbb8d69f6c10ac9",
   "results": [
     {
       "id": "present-context",
       "caseChecksum": "sha256:5e99d9cc5995c6f729942910fe3908fb31f0d889c7882059044ffe57c6382833",
       "expected": "correct",
-      "observed": "unavailable",
-      "reason": "provider_or_configuration",
-      "matched": false
+      "observed": "correct",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 20,
+            "end": 28,
+            "text": "retrouve",
+            "correct": true,
+            "reasonFr": "Présent de l'indicatif 1re personne du singulier, adapté au contexte d'une activité habituelle."
+          },
+          {
+            "start": 52,
+            "end": 58,
+            "text": "jouons",
+            "correct": true,
+            "reasonFr": "Présent de l'indicatif 1re personne du pluriel, adapté au contexte d'une activité habituelle."
+          },
+          {
+            "start": 77,
+            "end": 87,
+            "text": "partageons",
+            "correct": true,
+            "reasonFr": "Présent de l'indicatif 1re personne du pluriel, adapté au contexte d'une activité habituelle."
+          },
+          {
+            "start": 106,
+            "end": 112,
+            "text": "rentre",
+            "correct": true,
+            "reasonFr": "Présent de l'indicatif 3e personne du singulier, adapté au contexte d'une activité habituelle."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v11",
+          "protocolChecksum": "sha256:560302ea64820ce9cf72b49cc4a23636059536447e7f75fae9275da3101e6986",
+          "rubricChecksum": "sha256:8d32084d3ee10bb18279f75118956259377f062943bb719e74c7a99d2f4b2789",
+          "model": "injected-judge"
+        }
+      }
     },
     {
       "id": "future-near-context",
@@ -23,12 +62,12 @@
         "revisionReviewed": false,
         "tokens": [
           {
-            "start": 0,
+            "start": 5,
             "end": 20,
-            "text": "Nous allons préparer",
+            "text": "allons préparer",
             "criterionId": "employer_futur_proche_en_contexte",
             "correct": true,
-            "reasonFr": "Futur proche bien formé (aller + infinitif) adapté au contexte d'annonce d'une action à venir."
+            "reasonFr": "Futur proche correctement formé : « allons » (aller au présent, 1re personne du pluriel) + infinitif « préparer »."
           },
           {
             "start": 36,
@@ -36,28 +75,28 @@
             "text": "va installer",
             "criterionId": "employer_futur_proche_en_contexte",
             "correct": true,
-            "reasonFr": "Futur proche correct avec sujet « Lina », forme « va + infinitif » adaptée à l'annonce."
+            "reasonFr": "Futur proche correctement formé : « va » (aller au présent, 3e personne du singulier) + infinitif « installer »."
           },
           {
-            "start": 64,
+            "start": 67,
             "end": 80,
-            "text": "je vais vérifier",
+            "text": "vais vérifier",
             "criterionId": "employer_futur_proche_en_contexte",
             "correct": true,
-            "reasonFr": "Futur proche à la 1re personne du singulier, bien formé et cohérent avec le contexte."
+            "reasonFr": "Futur proche correctement formé : « vais » (aller au présent, 1re personne du singulier) + infinitif « vérifier »."
           },
           {
-            "start": 104,
+            "start": 109,
             "end": 126,
-            "text": "nous allons accueillir",
+            "text": "allons accueillir",
             "criterionId": "employer_futur_proche_en_contexte",
             "correct": true,
-            "reasonFr": "Futur proche à la 1re personne du pluriel, correct et adapté à l'annonce d'une action future."
+            "reasonFr": "Futur proche correctement formé : « allons » (aller au présent, 1re personne du pluriel) + infinitif « accueillir »."
           }
         ],
         "evaluator": {
-          "version": "french-writing-evaluator-v5",
-          "protocolChecksum": "sha256:85e1c9798c4065c1c1c1db036d2d75e43ec83f55e09958da374181f88c513a1e",
+          "version": "french-writing-evaluator-v11",
+          "protocolChecksum": "sha256:560302ea64820ce9cf72b49cc4a23636059536447e7f75fae9275da3101e6986",
           "rubricChecksum": "sha256:c073b73740ce145bcc0143a7d60ed975edbe458684e97042efadcb56aeb35ed6",
           "model": "injected-judge"
         }
@@ -67,9 +106,41 @@
       "id": "recent-past-context",
       "caseChecksum": "sha256:62516584d55665e311291828deb538368ff64db21c07157ed56a56f7042df253",
       "expected": "correct",
-      "observed": "unavailable",
-      "reason": "provider_or_configuration",
-      "matched": false
+      "observed": "correct",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 3,
+            "end": 21,
+            "text": "viens de retrouver",
+            "correct": true,
+            "reasonFr": "Passé récent correctement formé (venir au présent + de + infinitif) adapté au sujet Je."
+          },
+          {
+            "start": 36,
+            "end": 53,
+            "text": "vient de terminer",
+            "correct": true,
+            "reasonFr": "Passé récent correctement formé (venir au présent + de + infinitif) adapté au sujet Lina."
+          },
+          {
+            "start": 76,
+            "end": 102,
+            "text": "viennent de nous rejoindre",
+            "correct": true,
+            "reasonFr": "Passé récent correctement formé (venir au présent + de + infinitif) adapté au sujet nos amis, avec pronom complément placé correctement."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v11",
+          "protocolChecksum": "sha256:560302ea64820ce9cf72b49cc4a23636059536447e7f75fae9275da3101e6986",
+          "rubricChecksum": "sha256:2a937fbc8f92aec0c15a065e1834ad5ec6c847b076ad1946b03597dc018b3eae",
+          "model": "injected-judge"
+        }
+      }
     },
     {
       "id": "compound-past-context",
@@ -87,7 +158,7 @@
             "text": "avons visité",
             "criterionId": "employer_passe_compose_en_contexte",
             "correct": true,
-            "reasonFr": "Passé composé avec avoir, correctement conjugué et adapté au récit passé introduit par « Hier »."
+            "reasonFr": "Passé composé correctement formé avec l'auxiliaire « avoir » au présent et le participe passé « visité », adapté au récit d'une sortie passée."
           },
           {
             "start": 39,
@@ -95,7 +166,7 @@
             "text": "a choisi",
             "criterionId": "employer_passe_compose_en_contexte",
             "correct": true,
-            "reasonFr": "Passé composé avec avoir, forme correcte et cohérente dans la narration d'événements passés."
+            "reasonFr": "Passé composé avec « avoir » et le participe passé « choisi », emploi cohérent dans le récit au passé."
           },
           {
             "start": 68,
@@ -103,7 +174,7 @@
             "text": "ai photographié",
             "criterionId": "employer_passe_compose_en_contexte",
             "correct": true,
-            "reasonFr": "Passé composé à la 1re personne du singulier avec avoir, correct et pertinent dans le contexte."
+            "reasonFr": "Passé composé à la première personne avec « avoir » et le participe passé « photographié », correct et adapté au contexte."
           },
           {
             "start": 105,
@@ -111,12 +182,12 @@
             "text": "sommes rentrés",
             "criterionId": "employer_passe_compose_en_contexte",
             "correct": true,
-            "reasonFr": "Passé composé avec être, accord du participe passé correct avec le sujet « nous », adapté au récit passé."
+            "reasonFr": "Passé composé avec l'auxiliaire « être » et le participe passé « rentrés » accordé au masculin pluriel avec « nous », emploi correct dans ce récit."
           }
         ],
         "evaluator": {
-          "version": "french-writing-evaluator-v5",
-          "protocolChecksum": "sha256:85e1c9798c4065c1c1c1db036d2d75e43ec83f55e09958da374181f88c513a1e",
+          "version": "french-writing-evaluator-v11",
+          "protocolChecksum": "sha256:560302ea64820ce9cf72b49cc4a23636059536447e7f75fae9275da3101e6986",
           "rubricChecksum": "sha256:a974f5418d75e2b0215fce50acbb005198a13ca5cdecb4416679bb19d74778a6",
           "model": "injected-judge"
         }
@@ -126,55 +197,18 @@
       "id": "simple-future-context",
       "caseChecksum": "sha256:0f7ba241703910bf71e3e53eaf938b7210f90f5d8f59bf9f66ba2f2169cb98f5",
       "expected": "correct",
-      "observed": "correct",
-      "matched": true,
-      "result": {
-        "connectedWriting": true,
-        "revisionReviewed": false,
-        "tokens": [
-          {
-            "start": 13,
-            "end": 21,
-            "text": "visitera",
-            "correct": true,
-            "reasonFr": "Futur simple de visiter, 3e personne du singulier, correct et adapté au repère temporel « Demain »."
-          },
-          {
-            "start": 38,
-            "end": 48,
-            "text": "retrouvera",
-            "correct": true,
-            "reasonFr": "Futur simple de retrouver, 3e personne du singulier, correct dans ce contexte futur."
-          },
-          {
-            "start": 65,
-            "end": 76,
-            "text": "prépareront",
-            "correct": true,
-            "reasonFr": "Futur simple de préparer, 3e personne du pluriel, accord correct avec « ils » et adapté au contexte."
-          },
-          {
-            "start": 104,
-            "end": 114,
-            "text": "rejoindrai",
-            "correct": true,
-            "reasonFr": "Futur simple de rejoindre, 1re personne du singulier, forme correcte et adaptée au contexte futur."
-          }
-        ],
-        "evaluator": {
-          "version": "french-writing-evaluator-v5",
-          "protocolChecksum": "sha256:85e1c9798c4065c1c1c1db036d2d75e43ec83f55e09958da374181f88c513a1e",
-          "rubricChecksum": "sha256:4c2de7e5315d15e5090d87067a6a571cf1b9f17b188c791ff17827a77bbddde1",
-          "model": "injected-judge"
-        }
-      }
+      "observed": "unavailable",
+      "reason": "timeout",
+      "causeType": "AbortError",
+      "matched": false
     },
     {
       "id": "pluperfect-context",
       "caseChecksum": "sha256:22802ffc242507508d90f8a5a7e094350bd3bdc837d6469063b7d85b79209ecf",
       "expected": "correct",
       "observed": "unavailable",
-      "reason": "provider_or_configuration",
+      "reason": "timeout",
+      "causeType": "AbortError",
       "matched": false
     },
     {
@@ -182,142 +216,117 @@
       "caseChecksum": "sha256:a6a674915e6b398cf36d4ae2db0871d26d37fe1d579e94e841846f78bac2acd4",
       "expected": "correct",
       "observed": "unavailable",
-      "reason": "provider_or_configuration",
+      "reason": "invalid_evidence",
+      "causeType": "Error",
+      "rawJudgment": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "uncertain": false,
+        "opportunities": [
+          {
+            "excerpt": "aurions",
+            "occurrence": 0,
+            "correct": true,
+            "criterionId": "employer_conditionnel_present_en_contexte",
+            "reasonFr": "Conditionnel présent du verbe avoir à la 1re personne du pluriel, correctement formé et employé dans une hypothèse au conditionnel."
+          },
+          {
+            "excerpt": "planterions",
+            "occurrence": 0,
+            "correct": true,
+            "criterionId": "employer_conditionnel_present_en_contexte",
+            "reasonFr": "Conditionnel présent du verbe planter à la 1re personne du pluriel, forme correcte et sens adapté."
+          },
+          {
+            "excerpt": "installerait",
+            "occurrence": 0,
+            "correct": true,
+            "criterionId": "employer_conditionnel_present_en_contexte",
+            "reasonFr": "Conditionnel présent du verbe installer à la 3e personne du singulier, forme et emploi corrects."
+          },
+          {
+            "excerpt": "construirais",
+            "occurrence": 0,
+            "correct": true,
+            "criterionId": "employer_conditionnel_present_en_contexte",
+            "reasonFr": "Conditionnel présent du verbe construire à la 1re personne du singulier, forme correcte et sens adapté."
+          },
+          {
+            "excerpt": "pourraient",
+            "occurrence": 0,
+            "correct": true,
+            "criterionId": "employer_conditionnel_present_en_contexte",
+            "reasonFr": "Conditionnel présent du verbe pouvoir à la 3e personne du pluriel, forme et emploi corrects."
+          }
+        ]
+      },
       "matched": false
     },
     {
       "id": "simple-past-context",
       "caseChecksum": "sha256:caf717000ea30f4abe79e250d1395d843c2eebd71b27b5de0b55cdce1f831d64",
       "expected": "correct",
-      "observed": "correct",
-      "matched": true,
-      "result": {
+      "observed": "unavailable",
+      "reason": "invalid_schema",
+      "causeType": "ZodError",
+      "rawJudgment": {
         "connectedWriting": true,
         "revisionReviewed": false,
-        "tokens": [
+        "opportunities": [
           {
-            "start": 5,
-            "end": 11,
-            "text": "poussa",
-            "criterionId": "employer_passe_simple_en_contexte",
+            "excerpt": "poussa",
+            "occurrence": 0,
             "correct": true,
-            "reasonFr": "Passé simple de « pousser » (3e pers. sing.) correctement conjugué pour faire avancer l'action du récit."
+            "reasonFr": "Passé simple du verbe pousser, 3e personne du singulier, correctement conjugué pour faire avancer le récit.",
+            "criterionId": "employer_passe_simple_en_contexte"
           },
           {
-            "start": 24,
-            "end": 33,
-            "text": "découvrit",
-            "criterionId": "employer_passe_simple_en_contexte",
+            "excerpt": "découvrit",
+            "occurrence": 0,
             "correct": true,
-            "reasonFr": "Passé simple de « découvrir » (3e pers. sing.) bien formé et employé pour narrer l'événement."
+            "reasonFr": "Passé simple du verbe découvrir, 3e personne du singulier, forme correcte dans la narration.",
+            "criterionId": "employer_passe_simple_en_contexte"
           },
           {
-            "start": 55,
-            "end": 61,
-            "text": "avança",
-            "criterionId": "employer_passe_simple_en_contexte",
+            "excerpt": "avança",
+            "occurrence": 0,
             "correct": true,
-            "reasonFr": "Passé simple de « avancer » (3e pers. sing.) correct, avec la cédille attendue, pour progresser le récit."
+            "reasonFr": "Passé simple du verbe avancer, 3e personne du singulier, conjugué correctement.",
+            "criterionId": "employer_passe_simple_en_contexte"
           },
           {
-            "start": 84,
-            "end": 92,
-            "text": "entendit",
-            "criterionId": "employer_passe_simple_en_contexte",
+            "excerpt": "entendit",
+            "occurrence": 0,
             "correct": true,
-            "reasonFr": "Passé simple de « entendre » (3e pers. sing.) correctement conjugué dans la narration."
+            "reasonFr": "Passé simple du verbe entendre, 3e personne du singulier, forme correcte.",
+            "criterionId": "employer_passe_simple_en_contexte"
           },
           {
-            "start": 127,
-            "end": 132,
-            "text": "entra",
-            "criterionId": "employer_passe_simple_en_contexte",
+            "excerpt": "entra",
+            "occurrence": 0,
             "correct": true,
-            "reasonFr": "Passé simple de « entrer » (3e pers. sing.) bien formé pour relater l'action de l'oiseau."
+            "reasonFr": "Passé simple du verbe entrer, 3e personne du singulier, conjugué correctement.",
+            "criterionId": "employer_passe_simple_en_contexte"
           },
           {
-            "start": 136,
-            "end": 143,
-            "text": "se posa",
-            "criterionId": "employer_passe_simple_en_contexte",
+            "excerpt": "se posa",
+            "occurrence": 0,
             "correct": true,
-            "reasonFr": "Passé simple de « se poser » (3e pers. sing.) correctement conjugué pour conclure l'action du récit."
+            "reasonFr": "Passé simple du verbe se poser, 3e personne du singulier, forme correcte pour l'action ponctuelle.",
+            "criterionId": "employer_passe_simple_en_contexte"
           }
-        ],
-        "evaluator": {
-          "version": "french-writing-evaluator-v5",
-          "protocolChecksum": "sha256:85e1c9798c4065c1c1c1db036d2d75e43ec83f55e09958da374181f88c513a1e",
-          "rubricChecksum": "sha256:5198ffc67bf06b498478fab6bb7fe7bacbe1342049a9d89e2fa2194c9d898ff3",
-          "model": "injected-judge"
-        }
-      }
+        ]
+      },
+      "matched": false
     },
     {
       "id": "pronoun-context",
       "caseChecksum": "sha256:719a47a8ca2947f5da8b59d1d2e6fbc966ad206827d8a4de365eaa53d83686b7",
       "expected": "correct",
-      "observed": "correct",
-      "matched": true,
-      "result": {
-        "connectedWriting": true,
-        "revisionReviewed": false,
-        "tokens": [
-          {
-            "start": 28,
-            "end": 30,
-            "text": "le",
-            "criterionId": "employer_pronoms_complements_en_contexte",
-            "correct": true,
-            "reasonFr": "COD masculin singulier référant à « un livre », correctement placé devant le verbe."
-          },
-          {
-            "start": 31,
-            "end": 34,
-            "text": "lui",
-            "criterionId": "employer_pronoms_complements_en_contexte",
-            "correct": true,
-            "reasonFr": "COI référant à Lina (prêter à Lina), forme et placement corrects."
-          },
-          {
-            "start": 52,
-            "end": 54,
-            "text": "m’",
-            "criterionId": "employer_pronoms_complements_en_contexte",
-            "correct": true,
-            "reasonFr": "COI référant à « je » (remercier qqn), élision correcte devant une voyelle."
-          },
-          {
-            "start": 85,
-            "end": 87,
-            "text": "me",
-            "criterionId": "employer_pronoms_complements_en_contexte",
-            "correct": true,
-            "reasonFr": "COI référant à « je » (rendre à qqn), placé correctement devant le COD."
-          },
-          {
-            "start": 88,
-            "end": 90,
-            "text": "l’",
-            "criterionId": "employer_pronoms_complements_en_contexte",
-            "correct": true,
-            "reasonFr": "COD référant au livre, élision correcte, placé après le COI « me »."
-          },
-          {
-            "start": 104,
-            "end": 106,
-            "text": "l’",
-            "criterionId": "employer_pronoms_complements_en_contexte",
-            "correct": true,
-            "reasonFr": "COD référant au livre, élision correcte devant « ai rangé »."
-          }
-        ],
-        "evaluator": {
-          "version": "french-writing-evaluator-v5",
-          "protocolChecksum": "sha256:85e1c9798c4065c1c1c1db036d2d75e43ec83f55e09958da374181f88c513a1e",
-          "rubricChecksum": "sha256:184ca2bb7aa3bbef1e9e50598ba81830a87f2018529d288037ca92cdb4815823",
-          "model": "injected-judge"
-        }
-      }
+      "observed": "unavailable",
+      "reason": "timeout",
+      "causeType": "AbortError",
+      "matched": false
     },
     {
       "id": "past-contrast",
@@ -335,7 +344,7 @@
             "text": "jouions",
             "criterionId": "produire_contraste_pc_imparfait",
             "correct": true,
-            "reasonFr": "Imparfait d'arrière-plan, action en cours correctement conjuguée à la 1re personne du pluriel."
+            "reasonFr": "Imparfait correct pour l'action en cours (arrière-plan) « Nous jouions dans le jardin », premier plan de l'activité interrompue."
           },
           {
             "start": 43,
@@ -343,7 +352,7 @@
             "text": "a commencé",
             "criterionId": "produire_contraste_pc_imparfait",
             "correct": true,
-            "reasonFr": "Passé composé ponctuel, événement interruptif correctement conjugué avec l'auxiliaire « avoir »."
+            "reasonFr": "Passé composé correct pour l'événement ponctuel qui interrompt l'action en cours : « la pluie a commencé ». Contraste avec l'imparfait précédent."
           },
           {
             "start": 60,
@@ -351,7 +360,7 @@
             "text": "rangeait",
             "criterionId": "produire_contraste_pc_imparfait",
             "correct": true,
-            "reasonFr": "Imparfait d'arrière-plan, action simultanée correctement conjuguée à la 3e personne du singulier."
+            "reasonFr": "Imparfait correct pour une action de second plan simultanée : « Lina rangeait les ballons »."
           },
           {
             "start": 96,
@@ -359,7 +368,7 @@
             "text": "fermais",
             "criterionId": "produire_contraste_pc_imparfait",
             "correct": true,
-            "reasonFr": "Imparfait d'arrière-plan, action simultanée correctement conjuguée à la 1re personne du singulier."
+            "reasonFr": "Imparfait correct pour une action en cours simultanée introduite par « pendant que » : « je fermais la porte »."
           },
           {
             "start": 124,
@@ -367,7 +376,7 @@
             "text": "a illuminé",
             "criterionId": "produire_contraste_pc_imparfait",
             "correct": true,
-            "reasonFr": "Passé composé ponctuel, événement soudain correctement conjugué avec l'auxiliaire « avoir »."
+            "reasonFr": "Passé composé correct pour un événement ponctuel soudain : « Un éclair a illuminé le ciel »."
           },
           {
             "start": 151,
@@ -375,12 +384,12 @@
             "text": "avons couru",
             "criterionId": "produire_contraste_pc_imparfait",
             "correct": true,
-            "reasonFr": "Passé composé ponctuel, réaction immédiate correctement conjuguée avec l'auxiliaire « avoir »."
+            "reasonFr": "Passé composé correct pour l'événement ponctuel consécutif : « nous avons couru vers la maison »."
           }
         ],
         "evaluator": {
-          "version": "french-writing-evaluator-v5",
-          "protocolChecksum": "sha256:85e1c9798c4065c1c1c1db036d2d75e43ec83f55e09958da374181f88c513a1e",
+          "version": "french-writing-evaluator-v11",
+          "protocolChecksum": "sha256:560302ea64820ce9cf72b49cc4a23636059536447e7f75fae9275da3101e6986",
           "rubricChecksum": "sha256:13a6a29667ad805fce47dc17441b8a68de8d8460d6324ddf48a9f24499c37868",
           "model": "injected-judge"
         }
@@ -390,9 +399,41 @@
       "id": "temporal-sequence",
       "caseChecksum": "sha256:a1a3b5e807b330ec22259126b1f63e8e7fd900caf6f17180fe8bee2befe38644",
       "expected": "correct",
-      "observed": "unavailable",
-      "reason": "provider_or_configuration",
-      "matched": false
+      "observed": "correct",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 0,
+            "end": 53,
+            "text": "Avant de sortir, Lina avait posé sa clé sur la table.",
+            "correct": true,
+            "reasonFr": "Antériorité cohérente exprimée par le plus-que-parfait « avait posé » par rapport au repère implicite de la sortie."
+          },
+          {
+            "start": 54,
+            "end": 126,
+            "text": "Elle l’a cherchée dans son sac, puis elle est retournée dans la cuisine.",
+            "correct": true,
+            "reasonFr": "Succession temporelle claire marquée par « puis » entre deux actions au passé composé."
+          },
+          {
+            "start": 127,
+            "end": 176,
+            "text": "Quand elle l’a retrouvée, elle a enfin pu partir.",
+            "correct": true,
+            "reasonFr": "Relation de postériorité cohérente : la subordonnée temporelle « Quand elle l’a retrouvée » situe correctement l’action finale."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v11",
+          "protocolChecksum": "sha256:560302ea64820ce9cf72b49cc4a23636059536447e7f75fae9275da3101e6986",
+          "rubricChecksum": "sha256:158e89bbc2f68fa692dd1d49952e8846acad36135a8d4cbffb0986cfc9a1574c",
+          "model": "injected-judge"
+        }
+      }
     },
     {
       "id": "grammar-revision",
@@ -408,31 +449,234 @@
             "start": 12,
             "end": 18,
             "text": "jouent",
-            "criterionId": "reviser_orthographe_grammaticale_paragraphe",
             "correct": true,
-            "reasonFr": "Accord du verbe avec le sujet pluriel « Les enfants », corrigé depuis « joue »."
+            "reasonFr": "Le sujet « Les enfants » est pluriel ; le verbe doit s'accorder en nombre. « joue » a été corrigé en « jouent ».",
+            "revisionProof": {
+              "kind": "corrected",
+              "before": {
+                "start": 12,
+                "end": 16,
+                "text": "joue"
+              }
+            }
           },
           {
             "start": 39,
             "end": 46,
             "text": "petites",
-            "criterionId": "reviser_orthographe_grammaticale_paragraphe",
             "correct": true,
-            "reasonFr": "Accord de l'adjectif au pluriel avec « filles », corrigé depuis « petite »."
+            "reasonFr": "L'adjectif « petite » s'accorde avec le nom pluriel « filles » ; il a été corrigé en « petites ».",
+            "revisionProof": {
+              "kind": "corrected",
+              "before": {
+                "start": 37,
+                "end": 43,
+                "text": "petite"
+              }
+            }
           },
           {
             "start": 54,
             "end": 63,
             "text": "apportent",
-            "criterionId": "reviser_orthographe_grammaticale_paragraphe",
             "correct": true,
-            "reasonFr": "Accord du verbe avec le sujet pluriel « Les petites filles », corrigé depuis « apporte »."
+            "reasonFr": "Le sujet « Les petites filles » est pluriel ; le verbe « apporte » a été corrigé en « apportent ».",
+            "revisionProof": {
+              "kind": "corrected",
+              "before": {
+                "start": 51,
+                "end": 58,
+                "text": "apporte"
+              }
+            }
           }
         ],
         "evaluator": {
-          "version": "french-writing-evaluator-v5",
-          "protocolChecksum": "sha256:85e1c9798c4065c1c1c1db036d2d75e43ec83f55e09958da374181f88c513a1e",
+          "version": "french-writing-evaluator-v11",
+          "protocolChecksum": "sha256:560302ea64820ce9cf72b49cc4a23636059536447e7f75fae9275da3101e6986",
           "rubricChecksum": "sha256:a049a34963d13b02ce253b13fa31d5b858bed4dbe31280e710274d8a50d7cfa2",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "imperfect-context",
+      "caseChecksum": "sha256:2b54d66e10f45a34f837a7cd93cdf50f60a6f378db3ec8d3b0c5c75820bd337f",
+      "expected": "correct",
+      "observed": "correct",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 17,
+            "end": 23,
+            "text": "jouait",
+            "criterionId": "employer_imparfait_en_contexte",
+            "correct": true,
+            "reasonFr": "Imparfait correctement conjugué à la 3e personne du singulier pour décrire une habitude passée."
+          },
+          {
+            "start": 37,
+            "end": 47,
+            "text": "retrouvait",
+            "criterionId": "employer_imparfait_en_contexte",
+            "correct": true,
+            "reasonFr": "Imparfait correctement conjugué à la 3e personne du singulier, conforme au contexte d'habitude passée."
+          },
+          {
+            "start": 64,
+            "end": 75,
+            "text": "exploraient",
+            "criterionId": "employer_imparfait_en_contexte",
+            "correct": true,
+            "reasonFr": "Imparfait correctement conjugué à la 3e personne du pluriel pour décrire une action habituelle passée."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v11",
+          "protocolChecksum": "sha256:560302ea64820ce9cf72b49cc4a23636059536447e7f75fae9275da3101e6986",
+          "rubricChecksum": "sha256:0c4c9690e2f7cf1b8f326a3f258886fab0da3406a349355715ba79a8f613bda0",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "subjunctive-context",
+      "caseChecksum": "sha256:90b0f4d882cd8a77a67ca6e33f881194fdd061e283bd1d751c0c18fc651eee19",
+      "expected": "correct",
+      "observed": "correct",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 17,
+            "end": 23,
+            "text": "vienne",
+            "criterionId": "employer_subjonctif_present_en_contexte",
+            "correct": true,
+            "reasonFr": "Subjonctif présent du verbe venir à la 3e personne du singulier, correctement employé après « Il faut que »."
+          },
+          {
+            "start": 45,
+            "end": 52,
+            "text": "apporte",
+            "criterionId": "employer_subjonctif_present_en_contexte",
+            "correct": true,
+            "reasonFr": "Subjonctif présent du verbe apporter à la 3e personne du singulier, correctement employé après la conjonction de subordination « que » coordonnée à « Il faut que »."
+          },
+          {
+            "start": 94,
+            "end": 100,
+            "text": "puisse",
+            "criterionId": "employer_subjonctif_present_en_contexte",
+            "correct": true,
+            "reasonFr": "Subjonctif présent du verbe pouvoir à la 3e personne du singulier, correctement employé après l'expression « Nous souhaitons que »."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v11",
+          "protocolChecksum": "sha256:560302ea64820ce9cf72b49cc4a23636059536447e7f75fae9275da3101e6986",
+          "rubricChecksum": "sha256:f53169099ce224ca885df697279776f1e667873a5602321a11adbf80956ee5d2",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "imperative-context",
+      "caseChecksum": "sha256:a56acbcb31006070a24ede47a9ff87fdbfe9f792e0697349dfe164354a26069d",
+      "expected": "correct",
+      "observed": "correct",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 0,
+            "end": 5,
+            "text": "Viens",
+            "correct": true,
+            "reasonFr": "Impératif 2e personne de « venir », correct et adapté pour donner une instruction à un ami."
+          },
+          {
+            "start": 33,
+            "end": 39,
+            "text": "Prends",
+            "correct": true,
+            "reasonFr": "Impératif 2e personne de « prendre », forme correcte dans une instruction."
+          },
+          {
+            "start": 52,
+            "end": 54,
+            "text": "va",
+            "correct": true,
+            "reasonFr": "Impératif 2e personne de « aller », forme correcte « va » employée pour une consigne."
+          },
+          {
+            "start": 79,
+            "end": 86,
+            "text": "Attends",
+            "correct": true,
+            "reasonFr": "Impératif 2e personne de « attendre », forme correcte et pertinente dans le contexte."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v11",
+          "protocolChecksum": "sha256:560302ea64820ce9cf72b49cc4a23636059536447e7f75fae9275da3101e6986",
+          "rubricChecksum": "sha256:94d8722035f52df6f96df4e1825d3ed49884dea08baa7c65d168e129b722864e",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "lexical-revision-correct",
+      "caseChecksum": "sha256:a7d6c4e1042398b2ce376b189fe7c3b7d20849751799e98cfafce97d24aca00c",
+      "expected": "correct",
+      "observed": "correct",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": true,
+        "tokens": [
+          {
+            "start": 31,
+            "end": 37,
+            "text": "cheval",
+            "correct": true,
+            "reasonFr": "« cheale » corrigé en « cheval » : erreur lexicale rectifiée.",
+            "revisionProof": {
+              "kind": "corrected",
+              "before": {
+                "start": 31,
+                "end": 38,
+                "text": "chevale"
+              }
+            }
+          },
+          {
+            "start": 66,
+            "end": 74,
+            "text": "barrière",
+            "correct": true,
+            "reasonFr": "« barière » corrigé en « barrière » : double r rétabli.",
+            "revisionProof": {
+              "kind": "corrected",
+              "before": {
+                "start": 67,
+                "end": 74,
+                "text": "barière"
+              }
+            }
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v11",
+          "protocolChecksum": "sha256:560302ea64820ce9cf72b49cc4a23636059536447e7f75fae9275da3101e6986",
+          "rubricChecksum": "sha256:053868af2a2e8e0226f277ca6f452241c86e3f2357848736efeb08d8404448d3",
           "model": "injected-judge"
         }
       }

@@ -1,14 +1,116 @@
 [
- {"id":"present-context","node":"employer_present_indicatif_en_contexte","prompt":"Décris une activité habituelle.","answer":"Chaque mercredi, je retrouve mes amis au parc. Nous jouons au ballon et nous partageons un goûter. Chacun rentre ensuite chez soi.","expect":"correct"},
- {"id":"future-near-context","node":"employer_futur_proche_en_contexte","prompt":"Annonce les prochaines actions de ton groupe.","answer":"Nous allons préparer la salle. Lina va installer les chaises et je vais vérifier les lumières. Ensuite, nous allons accueillir les visiteurs.","expect":"correct"},
- {"id":"recent-past-context","node":"employer_passe_recent_en_contexte","prompt":"Annonce ce qui s’est passé à l’instant.","answer":"Je viens de retrouver mon sac. Lina vient de terminer son appel et nos amis viennent de nous rejoindre. Nous pouvons enfin partir ensemble.","expect":"correct"},
- {"id":"compound-past-context","node":"employer_passe_compose_en_contexte","prompt":"Raconte ta dernière sortie.","answer":"Hier, nous avons visité un musée. Lina a choisi une exposition et j’ai photographié les sculptures. Nous sommes rentrés avant la pluie.","expect":"correct"},
- {"id":"simple-future-context","node":"employer_futur_simple_en_contexte","prompt":"Imagine la prochaine journée de ton personnage.","answer":"Demain, Lina visitera le jardin. Elle retrouvera ses amis et ils prépareront un petit spectacle. Je les rejoindrai après mon cours.","expect":"correct"},
- {"id":"pluperfect-context","node":"employer_plus_que_parfait_en_contexte","prompt":"Raconte une arrivée et les préparatifs déjà terminés.","answer":"Quand Lina est arrivée, ses amis avaient décoré la salle. J’avais préparé le gâteau et Malik avait caché les cadeaux. Elle a découvert la surprise en ouvrant la porte.","expect":"correct"},
- {"id":"conditional-context","node":"employer_conditionnel_present_en_contexte","prompt":"Imagine un projet si ton groupe disposait d’un grand jardin.","answer":"Si nous avions un jardin, nous planterions des arbres. Lina installerait un banc et je construirais une petite cabane. Nos amis pourraient venir y lire.","expect":"correct"},
- {"id":"simple-past-context","node":"employer_passe_simple_en_contexte","prompt":"Écris un court récit pour un recueil de contes.","answer":"Lina poussa la porte et découvrit une salle vide. Elle avança vers la fenêtre, puis entendit un bruit derrière elle. Un oiseau entra et se posa sur son épaule.","expect":"correct"},
- {"id":"pronoun-context","node":"employer_pronoms_complements_en_contexte","prompt":"Raconte comment tu prêtes puis récupères un objet.","answer":"Lina cherchait un livre. Je le lui ai prêté et elle m’a remercié. Le lendemain, elle me l’a rendu et je l’ai rangé.","expect":"correct"},
- {"id":"past-contrast","node":"produire_contraste_pc_imparfait","prompt":"Raconte une activité interrompue par un imprévu.","answer":"Nous jouions dans le jardin quand la pluie a commencé. Lina rangeait les ballons pendant que je fermais la porte. Un éclair a illuminé le ciel et nous avons couru vers la maison.","expect":"correct"},
- {"id":"temporal-sequence","node":"produire_sequence_temporelle","prompt":"Raconte comment un objet perdu a été retrouvé.","answer":"Avant de sortir, Lina avait posé sa clé sur la table. Elle l’a cherchée dans son sac, puis elle est retournée dans la cuisine. Quand elle l’a retrouvée, elle a enfin pu partir.","expect":"correct"},
- {"id":"grammar-revision","node":"reviser_orthographe_grammaticale_paragraphe","prompt":"Raconte une activité de groupe et relis ton texte.","firstDraft":"Les enfants joue dans le jardin. Les petite filles apporte un ballon.","answer":"Les enfants jouent dans le jardin. Les petites filles apportent un ballon.","expect":"correct"}
+  {
+    "id": "present-context",
+    "node": "employer_present_indicatif_en_contexte",
+    "prompt": "Décris une activité habituelle.",
+    "answer": "Chaque mercredi, je retrouve mes amis au parc. Nous jouons au ballon et nous partageons un goûter. Chacun rentre ensuite chez soi.",
+    "expect": "correct"
+  },
+  {
+    "id": "future-near-context",
+    "node": "employer_futur_proche_en_contexte",
+    "prompt": "Annonce les prochaines actions de ton groupe.",
+    "answer": "Nous allons préparer la salle. Lina va installer les chaises et je vais vérifier les lumières. Ensuite, nous allons accueillir les visiteurs.",
+    "expect": "correct"
+  },
+  {
+    "id": "recent-past-context",
+    "node": "employer_passe_recent_en_contexte",
+    "prompt": "Annonce ce qui s’est passé à l’instant.",
+    "answer": "Je viens de retrouver mon sac. Lina vient de terminer son appel et nos amis viennent de nous rejoindre. Nous pouvons enfin partir ensemble.",
+    "expect": "correct"
+  },
+  {
+    "id": "compound-past-context",
+    "node": "employer_passe_compose_en_contexte",
+    "prompt": "Raconte ta dernière sortie.",
+    "answer": "Hier, nous avons visité un musée. Lina a choisi une exposition et j’ai photographié les sculptures. Nous sommes rentrés avant la pluie.",
+    "expect": "correct"
+  },
+  {
+    "id": "simple-future-context",
+    "node": "employer_futur_simple_en_contexte",
+    "prompt": "Imagine la prochaine journée de ton personnage.",
+    "answer": "Demain, Lina visitera le jardin. Elle retrouvera ses amis et ils prépareront un petit spectacle. Je les rejoindrai après mon cours.",
+    "expect": "correct"
+  },
+  {
+    "id": "pluperfect-context",
+    "node": "employer_plus_que_parfait_en_contexte",
+    "prompt": "Raconte une arrivée et les préparatifs déjà terminés.",
+    "answer": "Quand Lina est arrivée, ses amis avaient décoré la salle. J’avais préparé le gâteau et Malik avait caché les cadeaux. Elle a découvert la surprise en ouvrant la porte.",
+    "expect": "correct"
+  },
+  {
+    "id": "conditional-context",
+    "node": "employer_conditionnel_present_en_contexte",
+    "prompt": "Imagine un projet si ton groupe disposait d’un grand jardin.",
+    "answer": "Si nous avions un jardin, nous planterions des arbres. Lina installerait un banc et je construirais une petite cabane. Nos amis pourraient venir y lire.",
+    "expect": "correct"
+  },
+  {
+    "id": "simple-past-context",
+    "node": "employer_passe_simple_en_contexte",
+    "prompt": "Écris un court récit pour un recueil de contes.",
+    "answer": "Lina poussa la porte et découvrit une salle vide. Elle avança vers la fenêtre, puis entendit un bruit derrière elle. Un oiseau entra et se posa sur son épaule.",
+    "expect": "correct"
+  },
+  {
+    "id": "pronoun-context",
+    "node": "employer_pronoms_complements_en_contexte",
+    "prompt": "Raconte comment tu prêtes puis récupères un objet.",
+    "answer": "Lina cherchait un livre. Je le lui ai prêté et elle m’a remercié. Le lendemain, elle me l’a rendu et je l’ai rangé.",
+    "expect": "correct"
+  },
+  {
+    "id": "past-contrast",
+    "node": "produire_contraste_pc_imparfait",
+    "prompt": "Raconte une activité interrompue par un imprévu.",
+    "answer": "Nous jouions dans le jardin quand la pluie a commencé. Lina rangeait les ballons pendant que je fermais la porte. Un éclair a illuminé le ciel et nous avons couru vers la maison.",
+    "expect": "correct"
+  },
+  {
+    "id": "temporal-sequence",
+    "node": "produire_sequence_temporelle",
+    "prompt": "Raconte comment un objet perdu a été retrouvé.",
+    "answer": "Avant de sortir, Lina avait posé sa clé sur la table. Elle l’a cherchée dans son sac, puis elle est retournée dans la cuisine. Quand elle l’a retrouvée, elle a enfin pu partir.",
+    "expect": "correct"
+  },
+  {
+    "id": "grammar-revision",
+    "node": "reviser_orthographe_grammaticale_paragraphe",
+    "prompt": "Raconte une activité de groupe et relis ton texte.",
+    "firstDraft": "Les enfants joue dans le jardin. Les petite filles apporte un ballon.",
+    "answer": "Les enfants jouent dans le jardin. Les petites filles apportent un ballon.",
+    "expect": "correct"
+  },
+  {
+    "id": "imperfect-context",
+    "node": "employer_imparfait_en_contexte",
+    "prompt": "Décris les habitudes d’un personnage autrefois.",
+    "answer": "Chaque été, Lina jouait dehors. Elle retrouvait ses amis et ils exploraient le jardin.",
+    "expect": "correct"
+  },
+  {
+    "id": "subjunctive-context",
+    "node": "employer_subjonctif_present_en_contexte",
+    "prompt": "Explique ce qui est nécessaire pour préparer une fête.",
+    "answer": "Il faut que Lina vienne plus tôt et que Paul apporte les boissons. Nous souhaitons que chacun puisse participer.",
+    "expect": "correct"
+  },
+  {
+    "id": "imperative-context",
+    "node": "employer_imperatif_en_contexte",
+    "prompt": "Donne à un ami des instructions pour te retrouver.",
+    "answer": "Viens au parc après le déjeuner. Prends ton vélo et va jusqu’au grand portail. Attends près du banc, je te rejoindrai.",
+    "expect": "correct"
+  },
+  {
+    "id": "lexical-revision-correct",
+    "node": "reviser_orthographe_lexicale_paragraphe",
+    "prompt": "Raconte une découverte puis relis ton texte.",
+    "firstDraft": "Dans le jardin, j’ai trouvé un chevale. Il se cachait derrière une barière.",
+    "answer": "Dans le jardin, j’ai trouvé un cheval. Il se cachait derrière une barrière.",
+    "expect": "correct"
+  }
 ]

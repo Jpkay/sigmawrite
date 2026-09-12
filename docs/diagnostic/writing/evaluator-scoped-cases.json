@@ -29,7 +29,29 @@
       "exclusionsFr": [
         "Ne pas compter les autres mots ni les accords verbaux."
       ]
-    }
+    },
+    "expectedOpportunities": [
+      {
+        "text": "cheval",
+        "correct": true,
+        "criterionId": "word:cheval"
+      },
+      {
+        "text": "barrière",
+        "correct": true,
+        "criterionId": "word:barriere"
+      },
+      {
+        "text": "jardin",
+        "correct": true,
+        "criterionId": "word:jardin"
+      },
+      {
+        "text": "oiseau",
+        "correct": true,
+        "criterionId": "word:oiseau"
+      }
+    ]
   },
   {
     "id": "lexical-scoped-errors",
@@ -61,7 +83,29 @@
       "exclusionsFr": [
         "Ne pas compter les autres mots ni les accords verbaux."
       ]
-    }
+    },
+    "expectedOpportunities": [
+      {
+        "text": "chevale",
+        "correct": false,
+        "criterionId": "word:cheval"
+      },
+      {
+        "text": "barière",
+        "correct": false,
+        "criterionId": "word:barriere"
+      },
+      {
+        "text": "jardain",
+        "correct": false,
+        "criterionId": "word:jardin"
+      },
+      {
+        "text": "oiso",
+        "correct": false,
+        "criterionId": "word:oiseau"
+      }
+    ]
   },
   {
     "id": "grammar-scoped-correct",
@@ -81,7 +125,24 @@
       "exclusionsFr": [
         "Ne pas compter les graphies lexicales des noms, les adjectifs ou les déterminants."
       ]
-    }
+    },
+    "expectedOpportunities": [
+      {
+        "text": "jouent",
+        "correct": true,
+        "criterionId": "subject_verb_agreement"
+      },
+      {
+        "text": "apportent",
+        "correct": true,
+        "criterionId": "subject_verb_agreement"
+      },
+      {
+        "text": "préparent",
+        "correct": true,
+        "criterionId": "subject_verb_agreement"
+      }
+    ]
   },
   {
     "id": "grammar-scoped-errors",
@@ -101,6 +162,77 @@
       "exclusionsFr": [
         "Ne pas compter les graphies lexicales des noms, les adjectifs ou les déterminants."
       ]
-    }
+    },
+    "expectedOpportunities": [
+      {
+        "text": "joue",
+        "correct": false,
+        "criterionId": "subject_verb_agreement"
+      },
+      {
+        "text": "apporte",
+        "correct": false,
+        "criterionId": "subject_verb_agreement"
+      },
+      {
+        "text": "prépare",
+        "correct": false,
+        "criterionId": "subject_verb_agreement"
+      }
+    ]
+  },
+  {
+    "id": "lexical-scoped-no-target",
+    "node": "maintenir_orthographe_lexicale_phrase",
+    "prompt": "Décris ce qui se passe dans un jardin.",
+    "answer": "Lina se repose sous un arbre. Elle écoute le vent et regarde les nuages.",
+    "expect": "unresolved",
+    "rubric": {
+      "version": 1,
+      "nodeKey": "maintenir_orthographe_lexicale_phrase",
+      "criteria": [
+        {
+          "id": "word:cheval",
+          "descriptionFr": "Évaluer la graphie du nom cheval (singulier cheval, pluriel chevaux), y compris les tentatives mal orthographiées."
+        },
+        {
+          "id": "word:barriere",
+          "descriptionFr": "Évaluer la graphie du nom barrière et de son pluriel barrières, y compris les tentatives fautives."
+        },
+        {
+          "id": "word:jardin",
+          "descriptionFr": "Évaluer la graphie du nom jardin et de son pluriel jardins, y compris les tentatives fautives."
+        },
+        {
+          "id": "word:oiseau",
+          "descriptionFr": "Évaluer la graphie du nom oiseau et de son pluriel oiseaux, y compris les tentatives fautives."
+        }
+      ],
+      "exclusionsFr": [
+        "Ne pas compter les autres mots ni les accords verbaux."
+      ]
+    },
+    "expectedOpportunities": []
+  },
+  {
+    "id": "grammar-scoped-no-target",
+    "node": "maintenir_orthographe_grammaticale_phrase",
+    "prompt": "Décris ce qui se passe dans un jardin.",
+    "answer": "Lina joue dehors. Elle apporte un ballon puis elle prépare le terrain.",
+    "expect": "unresolved",
+    "rubric": {
+      "version": 1,
+      "nodeKey": "maintenir_orthographe_grammaticale_phrase",
+      "criteria": [
+        {
+          "id": "subject_verb_agreement",
+          "descriptionFr": "Évaluer uniquement l’accord en personne et en nombre entre un sujet nominal pluriel explicite et son verbe au présent, y compris les formes fautives. Un verbe fournit une occasion."
+        }
+      ],
+      "exclusionsFr": [
+        "Ne pas compter les graphies lexicales des noms, les adjectifs ou les déterminants."
+      ]
+    },
+    "expectedOpportunities": []
   }
 ]

@@ -2,14 +2,15 @@
   "status": "experimental_not_calibrated",
   "model": "z-ai/glm-5.2",
   "syntheticOnly": true,
-  "casesChecksum": "sha256:8861653d0382749b2a4e1364ec406b6e373996ac82d6e2f0fc24ba5aff6b2ca6",
+  "casesChecksum": "sha256:18e65fad91f96ab4c1951d2c140a0820eb64ed0d25d78ba68435300d72789dbb",
   "results": [
     {
       "id": "lexical-scoped-correct",
-      "caseChecksum": "sha256:7dae376a963f9d61ee334913e8e94d064f061b0280e4e75736575c6570d8e906",
+      "caseChecksum": "sha256:c37c4c1f39c4e1d1d1d1cd80b80c5efefe1553d2e122074c1c390e50e5835367",
       "expected": "correct",
       "observed": "correct",
       "matched": true,
+      "evidenceMatched": true,
       "result": {
         "connectedWriting": true,
         "revisionReviewed": false,
@@ -20,7 +21,7 @@
             "text": "cheval",
             "criterionId": "word:cheval",
             "correct": true,
-            "reasonFr": "Le nom « cheval » est correctement orthographié."
+            "reasonFr": "Graphie correcte du nom « cheval » au singulier."
           },
           {
             "start": 28,
@@ -28,7 +29,7 @@
             "text": "barrière",
             "criterionId": "word:barriere",
             "correct": true,
-            "reasonFr": "Le nom « barrière » est correctement orthographié avec l'accent circonflexe."
+            "reasonFr": "Graphie correcte du nom « barrière » avec l'accent grave."
           },
           {
             "start": 41,
@@ -36,7 +37,7 @@
             "text": "jardin",
             "criterionId": "word:jardin",
             "correct": true,
-            "reasonFr": "Le nom « jardin » est correctement orthographié."
+            "reasonFr": "Graphie correcte du nom « jardin » au singulier."
           },
           {
             "start": 64,
@@ -44,7 +45,7 @@
             "text": "oiseau",
             "criterionId": "word:oiseau",
             "correct": true,
-            "reasonFr": "Le nom « oiseau » est correctement orthographié."
+            "reasonFr": "Graphie correcte du nom « oiseau » au singulier."
           }
         ],
         "evaluator": {
@@ -57,10 +58,11 @@
     },
     {
       "id": "lexical-scoped-errors",
-      "caseChecksum": "sha256:cdf8f60e3f3204deacc84e5fae8b5b07a7a7522d0a83e23414a67205c121a064",
+      "caseChecksum": "sha256:bb10539398f059a51dacc55144c074b5889709ce35372f306d26f857b69055f2",
       "expected": "incorrect",
       "observed": "incorrect",
       "matched": true,
+      "evidenceMatched": true,
       "result": {
         "connectedWriting": true,
         "revisionReviewed": false,
@@ -71,7 +73,7 @@
             "text": "chevale",
             "criterionId": "word:cheval",
             "correct": false,
-            "reasonFr": "Graphie fautive : « chevale » au lieu de « cheval »."
+            "reasonFr": "Tentative fautive : « chevale » au lieu de « cheval »."
           },
           {
             "start": 29,
@@ -79,7 +81,7 @@
             "text": "barière",
             "criterionId": "word:barriere",
             "correct": false,
-            "reasonFr": "Graphie fautive : « barière » manque un 'r' ; la forme correcte est « barrière »."
+            "reasonFr": "Tentative fautive : « barière » manque un « r » ; la graphie correcte est « barrière »."
           },
           {
             "start": 41,
@@ -87,7 +89,7 @@
             "text": "jardain",
             "criterionId": "word:jardin",
             "correct": false,
-            "reasonFr": "Graphie fautive : « jardain » au lieu de « jardin »."
+            "reasonFr": "Tentative fautive : « jardain » au lieu de « jardin »."
           },
           {
             "start": 65,
@@ -95,7 +97,7 @@
             "text": "oiso",
             "criterionId": "word:oiseau",
             "correct": false,
-            "reasonFr": "Graphie fautive : « oiso » au lieu de « oiseau »."
+            "reasonFr": "Tentative fautive : « oiso » au lieu de « oiseau »."
           }
         ],
         "evaluator": {
@@ -108,37 +110,38 @@
     },
     {
       "id": "grammar-scoped-correct",
-      "caseChecksum": "sha256:17101cb8933c8cc574a6cddeec478d55575174a37d0b2656e54fa578283259a2",
+      "caseChecksum": "sha256:b28d02421670b09824ce993b6b87b12f444dedefc5a7e60e8118ab0e17e74b75",
       "expected": "correct",
       "observed": "correct",
       "matched": true,
+      "evidenceMatched": true,
       "result": {
         "connectedWriting": true,
         "revisionReviewed": false,
         "tokens": [
           {
-            "start": 12,
+            "start": 0,
             "end": 18,
-            "text": "jouent",
+            "text": "Les enfants jouent",
             "criterionId": "subject_verb_agreement",
             "correct": true,
-            "reasonFr": "Le sujet pluriel « Les enfants » est correctement accordé avec le verbe « jouent » au présent (3e personne du pluriel)."
+            "reasonFr": "Sujet pluriel « Les enfants » accordé correctement avec le verbe au présent « jouent » (3e personne du pluriel)."
           },
           {
-            "start": 47,
+            "start": 36,
             "end": 56,
-            "text": "apportent",
+            "text": "Les filles apportent",
             "criterionId": "subject_verb_agreement",
             "correct": true,
-            "reasonFr": "Le sujet pluriel « Les filles » est correctement accordé avec le verbe « apportent » au présent (3e personne du pluriel)."
+            "reasonFr": "Sujet pluriel « Les filles » accordé correctement avec le verbe au présent « apportent » (3e personne du pluriel)."
           },
           {
-            "start": 82,
+            "start": 70,
             "end": 91,
-            "text": "préparent",
+            "text": "les garçons préparent",
             "criterionId": "subject_verb_agreement",
             "correct": true,
-            "reasonFr": "Le sujet pluriel « les garçons » est correctement accordé avec le verbe « préparent » au présent (3e personne du pluriel)."
+            "reasonFr": "Sujet pluriel « les garçons » accordé correctement avec le verbe au présent « préparent » (3e personne du pluriel)."
           }
         ],
         "evaluator": {
@@ -151,53 +154,57 @@
     },
     {
       "id": "grammar-scoped-errors",
-      "caseChecksum": "sha256:e6c16838266b1ee056ad05fa340275aac16f603baf5c1d3ef2465938d936f22b",
+      "caseChecksum": "sha256:99efe7459993802fd84a328270c6a554f3ab4aa39b73cf2db92af989cc521e88",
       "expected": "incorrect",
-      "observed": "incorrect",
-      "matched": true,
-      "result": {
-        "connectedWriting": true,
-        "revisionReviewed": false,
-        "tokens": [
-          {
-            "start": 12,
-            "end": 16,
-            "text": "joue",
-            "criterionId": "subject_verb_agreement",
-            "correct": false,
-            "reasonFr": "Sujet pluriel « Les enfants » avec verbe au singulier « joue » ; la forme correcte serait « jouent »."
-          },
-          {
-            "start": 44,
-            "end": 51,
-            "text": "apporte",
-            "criterionId": "subject_verb_agreement",
-            "correct": false,
-            "reasonFr": "Sujet pluriel « Les filles » avec verbe au singulier « apporte » ; la forme correcte serait « apportent »."
-          },
-          {
-            "start": 77,
-            "end": 84,
-            "text": "prépare",
-            "criterionId": "subject_verb_agreement",
-            "correct": false,
-            "reasonFr": "Sujet pluriel « les garçons » avec verbe au singulier « prépare » ; la forme correcte serait « préparent »."
+      "observed": "unavailable",
+      "reason": "invalid_schema",
+      "causeType": "ZodError",
+      "rawJudgment": {
+        "promptFr": "Décris ce qui se passe dans un jardin.",
+        "instructionsFr": "",
+        "answer": "Les enfants joue dans le jardin. Les filles apporte un ballon et les garçons prépare les buts.",
+        "rubric": {
+          "version": 1,
+          "nodeKey": "maintenir_orthographe_grammaticale_phrase",
+          "criteria": [
+            {
+              "id": "subject_verb_agreement",
+              "descriptionFr": "Évaluer uniquement l'accord en personne et en nombre entre un sujet nominal pluriel explicite et son verbe au présent, y compris les formes fautives. Un verbe fournit une occasion."
+            }
+          ],
+          "exclusionsFr": [
+            "Ne pas compter les graphies lexicales des noms, les adjectifs ou les déterminants."
+          ]
+        },
+        "target": {
+          "nodeKey": "maintenir_orthographe_grammaticale_phrase",
+          "labelFr": "Maintenir l'orthographe grammaticale dans une phrase",
+          "descriptionFr": "Produire une phrase nouvelle en réalisant les accords et distinctions grammaticales déjà travaillées.",
+          "actionFr": "Maintenir puis réviser cette compétence dans deux productions nouvelles sans rappel de la règle : maintenir l'orthographe grammaticale dans une phrase.",
+          "criteria": {
+            "minimumAccuracy": 0.75,
+            "minimumDistinctTexts": 2,
+            "minimumOccasions": 2,
+            "minimumEligibleTokens": 8,
+            "unaidedTransferRequired": true
           }
-        ],
-        "evaluator": {
-          "version": "french-writing-evaluator-v11",
-          "protocolChecksum": "sha256:560302ea64820ce9cf72b49cc4a23636059536447e7f75fae9275da3101e6986",
-          "rubricChecksum": "sha256:eb57262798dc80ba2f439963a59e408ea3d41aa8e76938b928e04fb43951fbd7",
-          "model": "injected-judge"
-        }
-      }
+        },
+        "firstDraft": null,
+        "studentId": null,
+        "studentName": null,
+        "date": null,
+        "teacherFr": null,
+        "schoolClass": null
+      },
+      "matched": false
     },
     {
       "id": "lexical-scoped-no-target",
-      "caseChecksum": "sha256:28992d8fe3162dfac163b8e813b616d2e52fe29f854ef31a93ff4719ea844069",
+      "caseChecksum": "sha256:3263f248ac4650881f9c9b1d990f5423f2f3ed733c95089724b084f60d436654",
       "expected": "unresolved",
       "observed": "unresolved",
       "matched": true,
+      "evidenceMatched": true,
       "result": {
         "connectedWriting": true,
         "revisionReviewed": false,
@@ -212,10 +219,11 @@
     },
     {
       "id": "grammar-scoped-no-target",
-      "caseChecksum": "sha256:2408b9cbc33cd72af2945f9ce92f03668e2c155019e30ef87028ee152bbecbec",
+      "caseChecksum": "sha256:c102cc831bf121d4e268441739f941f8d35809df0e1d0496e18b649b5249bf3f",
       "expected": "unresolved",
       "observed": "unresolved",
       "matched": true,
+      "evidenceMatched": true,
       "result": {
         "connectedWriting": true,
         "revisionReviewed": false,

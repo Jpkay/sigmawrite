@@ -3,7 +3,7 @@
   "scope": "Source-bound counterexamples, scoped, adversarial and expanded target datasets using the current evaluator; excludes stale results, initial smoke and repeated runs",
   "targetCount": 18,
   "targetsWithCases": 18,
-  "targetsWithAllOutcomeTypes": 4,
+  "targetsWithAllOutcomeTypes": 1,
   "targets": [
     {
       "nodeKey": "produire_contraste_pc_imparfait",
@@ -12,10 +12,12 @@
         {
           "id": "past-contrast-incorrect",
           "expected": "incorrect",
-          "observed": "incorrect",
+          "observed": "unavailable",
           "sourceBound": true,
-          "currentEvaluator": true,
-          "matched": true,
+          "currentEvaluator": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         },
         {
@@ -23,8 +25,10 @@
           "expected": "unresolved",
           "observed": "unresolved",
           "sourceBound": true,
-          "currentEvaluator": true,
-          "matched": true,
+          "currentEvaluator": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         },
         {
@@ -33,11 +37,16 @@
           "observed": "correct",
           "sourceBound": true,
           "currentEvaluator": true,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
           "matched": true,
           "model": "z-ai/glm-5.2"
         }
       ],
-      "missingExpectedOutcomes": [],
+      "missingExpectedOutcomes": [
+        "incorrect",
+        "unresolved"
+      ],
       "nextAction": "add_counterexamples_and_independent_review"
     },
     {
@@ -49,8 +58,10 @@
           "expected": "incorrect",
           "observed": "incorrect",
           "sourceBound": true,
-          "currentEvaluator": true,
-          "matched": true,
+          "currentEvaluator": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         },
         {
@@ -58,22 +69,27 @@
           "expected": "unresolved",
           "observed": "unresolved",
           "sourceBound": true,
-          "currentEvaluator": true,
-          "matched": true,
+          "currentEvaluator": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         },
         {
           "id": "temporal-sequence",
           "expected": "correct",
-          "observed": "unavailable",
+          "observed": "correct",
           "sourceBound": true,
-          "currentEvaluator": false,
-          "matched": false,
+          "currentEvaluator": true,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
+          "matched": true,
           "model": "z-ai/glm-5.2"
         }
       ],
       "missingExpectedOutcomes": [
-        "correct"
+        "incorrect",
+        "unresolved"
       ],
       "nextAction": "add_counterexamples_and_independent_review"
     },
@@ -84,27 +100,38 @@
         {
           "id": "lexical-scoped-correct",
           "expected": "correct",
-          "observed": "unavailable",
+          "observed": "correct",
           "sourceBound": true,
-          "currentEvaluator": false,
-          "matched": false,
+          "currentEvaluator": true,
+          "opportunityChecked": true,
+          "opportunityMatched": true,
+          "matched": true,
           "model": "z-ai/glm-5.2"
         },
         {
           "id": "lexical-scoped-errors",
           "expected": "incorrect",
-          "observed": "unavailable",
+          "observed": "incorrect",
           "sourceBound": true,
-          "currentEvaluator": false,
-          "matched": false,
+          "currentEvaluator": true,
+          "opportunityChecked": true,
+          "opportunityMatched": true,
+          "matched": true,
+          "model": "z-ai/glm-5.2"
+        },
+        {
+          "id": "lexical-scoped-no-target",
+          "expected": "unresolved",
+          "observed": "unresolved",
+          "sourceBound": true,
+          "currentEvaluator": true,
+          "opportunityChecked": true,
+          "opportunityMatched": true,
+          "matched": true,
           "model": "z-ai/glm-5.2"
         }
       ],
-      "missingExpectedOutcomes": [
-        "correct",
-        "incorrect",
-        "unresolved"
-      ],
+      "missingExpectedOutcomes": [],
       "nextAction": "add_counterexamples_and_independent_review"
     },
     {
@@ -114,9 +141,11 @@
         {
           "id": "retained-revision-errors",
           "expected": "incorrect",
-          "observed": "unavailable",
+          "observed": "incorrect",
           "sourceBound": true,
           "currentEvaluator": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
           "matched": false,
           "model": "z-ai/glm-5.2"
         },
@@ -125,23 +154,38 @@
           "expected": "unresolved",
           "observed": "unresolved",
           "sourceBound": true,
-          "currentEvaluator": true,
-          "matched": true,
+          "currentEvaluator": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         },
         {
           "id": "introduced-revision-errors",
           "expected": "incorrect",
-          "observed": "unresolved",
+          "observed": "unavailable",
+          "sourceBound": true,
+          "currentEvaluator": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
+          "matched": false,
+          "model": "z-ai/glm-5.2"
+        },
+        {
+          "id": "lexical-revision-correct",
+          "expected": "correct",
+          "observed": "correct",
           "sourceBound": true,
           "currentEvaluator": true,
-          "matched": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
+          "matched": true,
           "model": "z-ai/glm-5.2"
         }
       ],
       "missingExpectedOutcomes": [
-        "correct",
-        "incorrect"
+        "incorrect",
+        "unresolved"
       ],
       "nextAction": "add_counterexamples_and_independent_review"
     },
@@ -152,25 +196,39 @@
         {
           "id": "grammar-scoped-correct",
           "expected": "correct",
-          "observed": "unavailable",
+          "observed": "correct",
           "sourceBound": true,
-          "currentEvaluator": false,
-          "matched": false,
+          "currentEvaluator": true,
+          "opportunityChecked": true,
+          "opportunityMatched": true,
+          "matched": true,
           "model": "z-ai/glm-5.2"
         },
         {
           "id": "grammar-scoped-errors",
           "expected": "incorrect",
-          "observed": "incorrect",
+          "observed": "unavailable",
+          "sourceBound": true,
+          "currentEvaluator": false,
+          "opportunityChecked": true,
+          "opportunityMatched": false,
+          "matched": false,
+          "model": "z-ai/glm-5.2"
+        },
+        {
+          "id": "grammar-scoped-no-target",
+          "expected": "unresolved",
+          "observed": "unresolved",
           "sourceBound": true,
           "currentEvaluator": true,
+          "opportunityChecked": true,
+          "opportunityMatched": true,
           "matched": true,
           "model": "z-ai/glm-5.2"
         }
       ],
       "missingExpectedOutcomes": [
-        "correct",
-        "unresolved"
+        "incorrect"
       ],
       "nextAction": "add_counterexamples_and_independent_review"
     },
@@ -184,6 +242,8 @@
           "observed": "correct",
           "sourceBound": true,
           "currentEvaluator": true,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
           "matched": true,
           "model": "z-ai/glm-5.2"
         }
@@ -201,9 +261,11 @@
         {
           "id": "pronouns-incorrect",
           "expected": "incorrect",
-          "observed": "unavailable",
+          "observed": "incorrect",
           "sourceBound": true,
           "currentEvaluator": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
           "matched": false,
           "model": "z-ai/glm-5.2"
         },
@@ -212,22 +274,28 @@
           "expected": "unresolved",
           "observed": "unresolved",
           "sourceBound": true,
-          "currentEvaluator": true,
-          "matched": true,
+          "currentEvaluator": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         },
         {
           "id": "pronoun-context",
           "expected": "correct",
-          "observed": "correct",
+          "observed": "unavailable",
           "sourceBound": true,
-          "currentEvaluator": true,
-          "matched": true,
+          "currentEvaluator": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         }
       ],
       "missingExpectedOutcomes": [
-        "incorrect"
+        "correct",
+        "incorrect",
+        "unresolved"
       ],
       "nextAction": "add_counterexamples_and_independent_review"
     },
@@ -240,8 +308,10 @@
           "expected": "incorrect",
           "observed": "incorrect",
           "sourceBound": true,
-          "currentEvaluator": true,
-          "matched": true,
+          "currentEvaluator": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         },
         {
@@ -249,22 +319,27 @@
           "expected": "unresolved",
           "observed": "unresolved",
           "sourceBound": true,
-          "currentEvaluator": true,
-          "matched": true,
+          "currentEvaluator": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         },
         {
           "id": "present-context",
           "expected": "correct",
-          "observed": "unavailable",
+          "observed": "correct",
           "sourceBound": true,
-          "currentEvaluator": false,
-          "matched": false,
+          "currentEvaluator": true,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
+          "matched": true,
           "model": "z-ai/glm-5.2"
         }
       ],
       "missingExpectedOutcomes": [
-        "correct"
+        "incorrect",
+        "unresolved"
       ],
       "nextAction": "add_counterexamples_and_independent_review"
     },
@@ -277,8 +352,10 @@
           "expected": "incorrect",
           "observed": "incorrect",
           "sourceBound": true,
-          "currentEvaluator": true,
-          "matched": true,
+          "currentEvaluator": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         },
         {
@@ -286,8 +363,10 @@
           "expected": "unresolved",
           "observed": "unresolved",
           "sourceBound": true,
-          "currentEvaluator": true,
-          "matched": true,
+          "currentEvaluator": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         },
         {
@@ -296,11 +375,16 @@
           "observed": "correct",
           "sourceBound": true,
           "currentEvaluator": true,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
           "matched": true,
           "model": "z-ai/glm-5.2"
         }
       ],
-      "missingExpectedOutcomes": [],
+      "missingExpectedOutcomes": [
+        "incorrect",
+        "unresolved"
+      ],
       "nextAction": "add_counterexamples_and_independent_review"
     },
     {
@@ -312,8 +396,10 @@
           "expected": "incorrect",
           "observed": "incorrect",
           "sourceBound": true,
-          "currentEvaluator": true,
-          "matched": true,
+          "currentEvaluator": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         },
         {
@@ -321,22 +407,27 @@
           "expected": "unresolved",
           "observed": "unresolved",
           "sourceBound": true,
-          "currentEvaluator": true,
-          "matched": true,
+          "currentEvaluator": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         },
         {
           "id": "recent-past-context",
           "expected": "correct",
-          "observed": "unavailable",
+          "observed": "correct",
           "sourceBound": true,
-          "currentEvaluator": false,
-          "matched": false,
+          "currentEvaluator": true,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
+          "matched": true,
           "model": "z-ai/glm-5.2"
         }
       ],
       "missingExpectedOutcomes": [
-        "correct"
+        "incorrect",
+        "unresolved"
       ],
       "nextAction": "add_counterexamples_and_independent_review"
     },
@@ -349,8 +440,10 @@
           "expected": "incorrect",
           "observed": "incorrect",
           "sourceBound": true,
-          "currentEvaluator": true,
-          "matched": true,
+          "currentEvaluator": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         },
         {
@@ -358,8 +451,10 @@
           "expected": "unresolved",
           "observed": "unresolved",
           "sourceBound": true,
-          "currentEvaluator": true,
-          "matched": true,
+          "currentEvaluator": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         },
         {
@@ -368,11 +463,16 @@
           "observed": "correct",
           "sourceBound": true,
           "currentEvaluator": true,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
           "matched": true,
           "model": "z-ai/glm-5.2"
         }
       ],
-      "missingExpectedOutcomes": [],
+      "missingExpectedOutcomes": [
+        "incorrect",
+        "unresolved"
+      ],
       "nextAction": "add_counterexamples_and_independent_review"
     },
     {
@@ -384,8 +484,10 @@
           "expected": "incorrect",
           "observed": "incorrect",
           "sourceBound": true,
-          "currentEvaluator": true,
-          "matched": true,
+          "currentEvaluator": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         },
         {
@@ -393,40 +495,60 @@
           "expected": "unresolved",
           "observed": "unresolved",
           "sourceBound": true,
-          "currentEvaluator": true,
-          "matched": true,
+          "currentEvaluator": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         },
         {
           "id": "unrelated-spelling",
           "expected": "correct",
-          "observed": "unavailable",
+          "observed": "correct",
           "sourceBound": true,
           "currentEvaluator": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
           "matched": false,
           "model": "z-ai/glm-5.2"
         },
         {
           "id": "disconnected-forms",
           "expected": "unresolved",
-          "observed": "unavailable",
+          "observed": "unresolved",
           "sourceBound": true,
           "currentEvaluator": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
           "matched": false,
           "model": "z-ai/glm-5.2"
         },
         {
           "id": "grading-injection",
           "expected": "incorrect",
-          "observed": "unavailable",
+          "observed": "incorrect",
           "sourceBound": true,
           "currentEvaluator": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
           "matched": false,
+          "model": "z-ai/glm-5.2"
+        },
+        {
+          "id": "imperfect-context",
+          "expected": "correct",
+          "observed": "correct",
+          "sourceBound": true,
+          "currentEvaluator": true,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
+          "matched": true,
           "model": "z-ai/glm-5.2"
         }
       ],
       "missingExpectedOutcomes": [
-        "correct"
+        "incorrect",
+        "unresolved"
       ],
       "nextAction": "add_counterexamples_and_independent_review"
     },
@@ -437,10 +559,12 @@
         {
           "id": "simple-future-incorrect",
           "expected": "incorrect",
-          "observed": "incorrect",
+          "observed": "unavailable",
           "sourceBound": true,
-          "currentEvaluator": true,
-          "matched": true,
+          "currentEvaluator": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         },
         {
@@ -448,21 +572,29 @@
           "expected": "unresolved",
           "observed": "unresolved",
           "sourceBound": true,
-          "currentEvaluator": true,
-          "matched": true,
+          "currentEvaluator": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         },
         {
           "id": "simple-future-context",
           "expected": "correct",
-          "observed": "correct",
+          "observed": "unavailable",
           "sourceBound": true,
-          "currentEvaluator": true,
-          "matched": true,
+          "currentEvaluator": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         }
       ],
-      "missingExpectedOutcomes": [],
+      "missingExpectedOutcomes": [
+        "correct",
+        "incorrect",
+        "unresolved"
+      ],
       "nextAction": "add_counterexamples_and_independent_review"
     },
     {
@@ -474,8 +606,10 @@
           "expected": "incorrect",
           "observed": "incorrect",
           "sourceBound": true,
-          "currentEvaluator": true,
-          "matched": true,
+          "currentEvaluator": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         },
         {
@@ -483,8 +617,10 @@
           "expected": "unresolved",
           "observed": "unresolved",
           "sourceBound": true,
-          "currentEvaluator": true,
-          "matched": true,
+          "currentEvaluator": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         },
         {
@@ -493,12 +629,16 @@
           "observed": "unavailable",
           "sourceBound": true,
           "currentEvaluator": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
           "matched": false,
           "model": "z-ai/glm-5.2"
         }
       ],
       "missingExpectedOutcomes": [
-        "correct"
+        "correct",
+        "incorrect",
+        "unresolved"
       ],
       "nextAction": "add_counterexamples_and_independent_review"
     },
@@ -511,8 +651,10 @@
           "expected": "incorrect",
           "observed": "incorrect",
           "sourceBound": true,
-          "currentEvaluator": true,
-          "matched": true,
+          "currentEvaluator": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         },
         {
@@ -520,8 +662,10 @@
           "expected": "unresolved",
           "observed": "unresolved",
           "sourceBound": true,
-          "currentEvaluator": true,
-          "matched": true,
+          "currentEvaluator": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         },
         {
@@ -530,12 +674,16 @@
           "observed": "unavailable",
           "sourceBound": true,
           "currentEvaluator": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
           "matched": false,
           "model": "z-ai/glm-5.2"
         }
       ],
       "missingExpectedOutcomes": [
-        "correct"
+        "correct",
+        "incorrect",
+        "unresolved"
       ],
       "nextAction": "add_counterexamples_and_independent_review"
     },
@@ -548,8 +696,10 @@
           "expected": "incorrect",
           "observed": "incorrect",
           "sourceBound": true,
-          "currentEvaluator": true,
-          "matched": true,
+          "currentEvaluator": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         },
         {
@@ -557,8 +707,10 @@
           "expected": "unresolved",
           "observed": "unresolved",
           "sourceBound": true,
-          "currentEvaluator": true,
-          "matched": true,
+          "currentEvaluator": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         },
         {
@@ -566,13 +718,27 @@
           "expected": "incorrect",
           "observed": "incorrect",
           "sourceBound": true,
+          "currentEvaluator": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
+          "matched": false,
+          "model": "z-ai/glm-5.2"
+        },
+        {
+          "id": "subjunctive-context",
+          "expected": "correct",
+          "observed": "correct",
+          "sourceBound": true,
           "currentEvaluator": true,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
           "matched": true,
           "model": "z-ai/glm-5.2"
         }
       ],
       "missingExpectedOutcomes": [
-        "correct"
+        "incorrect",
+        "unresolved"
       ],
       "nextAction": "add_counterexamples_and_independent_review"
     },
@@ -583,10 +749,12 @@
         {
           "id": "imperative-incorrect",
           "expected": "incorrect",
-          "observed": "incorrect",
+          "observed": "unavailable",
           "sourceBound": true,
-          "currentEvaluator": true,
-          "matched": true,
+          "currentEvaluator": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         },
         {
@@ -594,22 +762,38 @@
           "expected": "unresolved",
           "observed": "unresolved",
           "sourceBound": true,
-          "currentEvaluator": true,
-          "matched": true,
+          "currentEvaluator": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         },
         {
           "id": "imperative-errors",
           "expected": "incorrect",
+          "observed": "incorrect",
+          "sourceBound": true,
+          "currentEvaluator": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
+          "matched": false,
+          "model": "z-ai/glm-5.2"
+        },
+        {
+          "id": "imperative-context",
+          "expected": "correct",
           "observed": "correct",
           "sourceBound": true,
           "currentEvaluator": true,
-          "matched": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
+          "matched": true,
           "model": "z-ai/glm-5.2"
         }
       ],
       "missingExpectedOutcomes": [
-        "correct"
+        "incorrect",
+        "unresolved"
       ],
       "nextAction": "add_counterexamples_and_independent_review"
     },
@@ -623,6 +807,8 @@
           "observed": "unavailable",
           "sourceBound": true,
           "currentEvaluator": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
           "matched": false,
           "model": "z-ai/glm-5.2"
         },
@@ -631,22 +817,28 @@
           "expected": "unresolved",
           "observed": "unresolved",
           "sourceBound": true,
-          "currentEvaluator": true,
-          "matched": true,
+          "currentEvaluator": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         },
         {
           "id": "simple-past-context",
           "expected": "correct",
-          "observed": "correct",
+          "observed": "unavailable",
           "sourceBound": true,
-          "currentEvaluator": true,
-          "matched": true,
+          "currentEvaluator": false,
+          "opportunityChecked": false,
+          "opportunityMatched": null,
+          "matched": false,
           "model": "z-ai/glm-5.2"
         }
       ],
       "missingExpectedOutcomes": [
-        "incorrect"
+        "correct",
+        "incorrect",
+        "unresolved"
       ],
       "nextAction": "add_counterexamples_and_independent_review"
     }
