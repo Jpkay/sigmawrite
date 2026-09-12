@@ -1,3 +1,4 @@
+import { journalStudentPayload } from "@/lib/diagnostic/granular/server-delivery-journal";
 import { PageHeader } from "@/components/page";
 import { FrontierReportView } from "@/components/frontier-report";
 import { StudentCompetencyGraph } from "@/components/student-competency-graph";
@@ -19,6 +20,7 @@ export default async function StudentFrontierPage() {
   // The authenticated student id still scopes every service-side graph query.
   const graphDb = latestRun?.is_pilot ? createServiceClient() : supabase;
   const data = await frontierForStudent(studentId, graphDb);
+  await journalStudentPayload(studentId, "student:frontier", data);
   return <>
     <PageHeader title="Ma frontière d’apprentissage" description="Ouvre une compétence pour comprendre les bases nécessaires, les preuves observées et la prochaine étape accessible." />
     <StudentCompetencyGraph graph={data.graphView} />
