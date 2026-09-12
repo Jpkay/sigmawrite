@@ -1,3 +1,5 @@
+import {DIAGNOSTIC_COPY} from "@/components/diagnostic/diagnostic-copy";
+import {journalStudentPayload} from "@/lib/diagnostic/granular/server-delivery-journal";
 import LegacyDiagnostic from "./legacy-diagnostic";
 import {GranularDiagnostic} from "@/components/diagnostic/granular-diagnostic";
 import {requireRole} from "@/lib/auth";
@@ -17,5 +19,6 @@ export default async function DiagnosticPage({searchParams}:{searchParams:Promis
  if(legacy.error||granular.error)throw Error("Impossible de retrouver ton diagnostic. Réessaie.");
  const selected=selectGranularRuntime({enabled:true,hasLegacyResult:!!legacy.data,hasGranularSession:!!granular.data,restart:params.restart==="1"});
  const activityId=typeof params.activity==="string"?params.activity:undefined;
+ if(selected)await journalStudentPayload(studentId,"granular:ui-copy",DIAGNOSTIC_COPY);
  return selected?<GranularDiagnostic initialActivityId={activityId}/>:<LegacyDiagnostic/>;
 }

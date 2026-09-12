@@ -25,7 +25,7 @@ export async function startGranularDiagnostic(){
  const {studentId,store,client}=await context();
  const current=await store.latestSession(studentId)
   ?? await store.start(studentId,process.env.GRANULAR_DIAGNOSTIC_RELEASE_KEY??"french-granular-diagnostic-v1");
- if(!current)return {error:"Ce diagnostic n’est pas encore disponible."};
+ if(!current)return deliver(store,studentId,"granular:start",{error:"Ce diagnostic n’est pas encore disponible."});
  const result={view:publicAssessmentView(current.session,current.bundle),...(current.session.state.phase==="learning"?{studentState:await getStudentStateData(studentId,client)}:{})};
  return deliver(store,studentId,"granular:start",result);
 }
