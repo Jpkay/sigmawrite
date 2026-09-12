@@ -1,0 +1,9 @@
+# Context-specific vouloir imperative validation
+
+Prepared, not deployed. The conjugator previously compared every answer with a single table form. New authored questions may now set `validatorConfig.vouloirImperativeUse` to `polite_request` or `resentment`. The validator uses a closed, deterministic set of forms for the stated usage. It does not infer usage from the student's answer or trust arbitrary acceptable-answer overrides.
+
+For polite requests, supported second-person forms are veuille and veuillez. For en vouloir, the supported alternatives are veux/veuille, voulons/veuillons and voulez/veuillez according to person. Wrong persons, subjunctive substitutions and veillez are rejected. Unsupported usage metadata and first-person polite-request configurations fail closed. Unannotated historical items keep their existing grading; this addition does not repair those items retroactively.
+
+Sources: [Académie française, Pierre V., 1 July 2021](https://www.academie-francaise.fr/pierre-v-france-1), [Académie française, vouloir](https://www.dictionnaire-academie.fr/article/A9V1230), and [OQLF, veuillez and veillez](https://vitrinelinguistique.oqlf.gouv.qc.ca/21939/le-vocabulaire/paronymes/sens-et-emploi-de-veuillez-et-de-veillez). The correspondence explicitly illustrates the two second-person series with en vouloir; the dictionary supplies both full imperative series. Reference consultation is not human review of new questions.
+
+All 370 test files and 1,654 tests passed, along with TypeScript. Dedicated tests cover both usages, alternatives, incorrect forms, invalid metadata, unchanged legacy behavior and rejection of arbitrary answer overrides. Before publishing the vouloir pathway, its lesson and question authoring must use these explicit contexts, and response-space calculations must account for accepted alternatives. No target-count increase or production deployment is claimed by this change.

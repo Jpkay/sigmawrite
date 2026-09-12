@@ -1,3 +1,4 @@
+import {vouloirImperativeAnswers} from './vouloir-imperative';
 /**
  * Unified answer validator (Roadmap Phase 8) — the contract QC Gate 2 and live
  * grading both call. Routes on validator_type (migration 0008):
@@ -131,12 +132,16 @@ export async function validateAnswer(
         };
       }
       let expected: string;
+      let expectedForms: readonly string[];
       try {
         expected = conjugate(verb, tense, person, {
           gender: c.gender as Gender | undefined,
           auxiliaryUse: c.auxiliaryUse as "transitive" | "intransitive" | undefined,
           codBefore: c.codBefore as Agreement | undefined,
         });
+        expectedForms = c.vouloirImperativeUse === undefined
+          ? [expected]
+          : vouloirImperativeAnswers(verb, tense, person, c.vouloirImperativeUse);
       } catch (e) {
         if (e instanceof UnsupportedVerbError || e instanceof InvalidConjugationContextError) {
           return { pass: false, validator: "conjugator", reason: e.message };
@@ -144,11 +149,12 @@ export async function validateAnswer(
         throw e;
       }
       const got = normalize(answer);
+      const pass = expectedForms.some(form => got === normalize(form));
       return {
-        pass: got === normalize(expected),
+        pass,
         validator: "conjugator",
         normalized: got,
-        reason: got === normalize(expected) ? undefined : `attendu: ${expected}`,
+        reason: pass ? undefined : `attendu: ${expectedForms.join(" ou ")}`,
       };
     }
 
