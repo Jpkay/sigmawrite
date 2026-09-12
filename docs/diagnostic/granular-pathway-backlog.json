@@ -1,13 +1,14 @@
 {
   "status": "prepared_inventory_not_release_or_review_approval",
-  "parallelCandidateChecksum": "sha256:6fd4b0018374115294ebd1fef980514e6746bf9412d2537cbd833aa9b10031ed",
-  "scopedCandidateChecksum": "sha256:cd76546a4d9e7fc0dc97bb841cddf44037f54b1cb38927240782be33fdc5c331",
+  "parallelCandidateChecksum": "sha256:533d9ec13e00921077cb82de259dcbd5cf9c089b972bfdedc4ff25d17c50ff2c",
+  "scopedCandidateChecksum": "sha256:fd1ab8c802f7dd6465b94abfac2ae94c421d5a2cde62c15b1df30efd6a727b17",
   "targets": 542,
   "counts": {
     "prepared_scoped_pathway": 237,
     "complete_question_pools": 230,
-    "author_exact_target_lesson": 57,
-    "connected_writing_evidence": 18
+    "author_exact_target_lesson": 43,
+    "connected_writing_evidence": 18,
+    "resolve_prerequisite_scope": 14
   },
   "limitations": [
     "Question allocation alone does not establish suitable teaching, novelty after instruction, human review or educational calibration.",
@@ -3685,18 +3686,20 @@
       "skillId": "produire_subjonctif_present_frequent::writing-controlled-production::verb:être",
       "nodeKey": "produire_subjonctif_present_frequent",
       "facetKey": "produire_subjonctif_present_frequent::verb:être",
-      "action": "author_exact_target_lesson",
+      "action": "resolve_prerequisite_scope",
       "pools": [
         {
           "skillId": "produire_subjonctif_present_frequent::writing-controlled-production::verb:être",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 5,
-          "learningItems": 4
+          "initialItems": 7,
+          "learningItems": 6
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:subjonctif-present:être"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": [
         "reconnaitre_subjonctif_present::reading-receptive"
       ]
@@ -3705,18 +3708,20 @@
       "skillId": "produire_subjonctif_present_frequent::writing-controlled-production::verb:avoir",
       "nodeKey": "produire_subjonctif_present_frequent",
       "facetKey": "produire_subjonctif_present_frequent::verb:avoir",
-      "action": "author_exact_target_lesson",
+      "action": "resolve_prerequisite_scope",
       "pools": [
         {
           "skillId": "produire_subjonctif_present_frequent::writing-controlled-production::verb:avoir",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 5,
-          "learningItems": 4
+          "initialItems": 7,
+          "learningItems": 6
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:subjonctif-present:avoir"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": [
         "reconnaitre_subjonctif_present::reading-receptive"
       ]
@@ -3725,18 +3730,20 @@
       "skillId": "produire_subjonctif_present_frequent::writing-controlled-production::verb:aller",
       "nodeKey": "produire_subjonctif_present_frequent",
       "facetKey": "produire_subjonctif_present_frequent::verb:aller",
-      "action": "author_exact_target_lesson",
+      "action": "resolve_prerequisite_scope",
       "pools": [
         {
           "skillId": "produire_subjonctif_present_frequent::writing-controlled-production::verb:aller",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 4,
-          "learningItems": 4
+          "initialItems": 6,
+          "learningItems": 6
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:subjonctif-present:aller"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": [
         "reconnaitre_subjonctif_present::reading-receptive"
       ]
@@ -3745,18 +3752,20 @@
       "skillId": "produire_subjonctif_present_frequent::writing-controlled-production::verb:faire",
       "nodeKey": "produire_subjonctif_present_frequent",
       "facetKey": "produire_subjonctif_present_frequent::verb:faire",
-      "action": "author_exact_target_lesson",
+      "action": "resolve_prerequisite_scope",
       "pools": [
         {
           "skillId": "produire_subjonctif_present_frequent::writing-controlled-production::verb:faire",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 5,
-          "learningItems": 4
+          "initialItems": 7,
+          "learningItems": 6
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:subjonctif-present:faire"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": [
         "reconnaitre_subjonctif_present::reading-receptive"
       ]
@@ -3765,18 +3774,20 @@
       "skillId": "produire_subjonctif_present_frequent::writing-controlled-production::verb:prendre",
       "nodeKey": "produire_subjonctif_present_frequent",
       "facetKey": "produire_subjonctif_present_frequent::verb:prendre",
-      "action": "author_exact_target_lesson",
+      "action": "resolve_prerequisite_scope",
       "pools": [
         {
           "skillId": "produire_subjonctif_present_frequent::writing-controlled-production::verb:prendre",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 4,
-          "learningItems": 4
+          "initialItems": 6,
+          "learningItems": 6
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:subjonctif-present:prendre"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": [
         "reconnaitre_subjonctif_present::reading-receptive"
       ]
@@ -3785,18 +3796,20 @@
       "skillId": "produire_subjonctif_present_frequent::writing-controlled-production::verb:venir",
       "nodeKey": "produire_subjonctif_present_frequent",
       "facetKey": "produire_subjonctif_present_frequent::verb:venir",
-      "action": "author_exact_target_lesson",
+      "action": "resolve_prerequisite_scope",
       "pools": [
         {
           "skillId": "produire_subjonctif_present_frequent::writing-controlled-production::verb:venir",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 4,
-          "learningItems": 4
+          "initialItems": 6,
+          "learningItems": 6
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:subjonctif-present:venir"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": [
         "reconnaitre_subjonctif_present::reading-receptive"
       ]
@@ -3805,18 +3818,20 @@
       "skillId": "produire_subjonctif_present_frequent::writing-controlled-production::verb:partir",
       "nodeKey": "produire_subjonctif_present_frequent",
       "facetKey": "produire_subjonctif_present_frequent::verb:partir",
-      "action": "author_exact_target_lesson",
+      "action": "resolve_prerequisite_scope",
       "pools": [
         {
           "skillId": "produire_subjonctif_present_frequent::writing-controlled-production::verb:partir",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 4,
-          "learningItems": 4
+          "initialItems": 6,
+          "learningItems": 6
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:subjonctif-present:partir"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": [
         "reconnaitre_subjonctif_present::reading-receptive"
       ]
@@ -3825,18 +3840,20 @@
       "skillId": "produire_subjonctif_present_frequent::writing-controlled-production::verb:sortir",
       "nodeKey": "produire_subjonctif_present_frequent",
       "facetKey": "produire_subjonctif_present_frequent::verb:sortir",
-      "action": "author_exact_target_lesson",
+      "action": "resolve_prerequisite_scope",
       "pools": [
         {
           "skillId": "produire_subjonctif_present_frequent::writing-controlled-production::verb:sortir",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 4,
-          "learningItems": 4
+          "initialItems": 6,
+          "learningItems": 6
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:subjonctif-present:sortir"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": [
         "reconnaitre_subjonctif_present::reading-receptive"
       ]
@@ -3845,18 +3862,20 @@
       "skillId": "produire_subjonctif_present_frequent::writing-controlled-production::verb:dire",
       "nodeKey": "produire_subjonctif_present_frequent",
       "facetKey": "produire_subjonctif_present_frequent::verb:dire",
-      "action": "author_exact_target_lesson",
+      "action": "resolve_prerequisite_scope",
       "pools": [
         {
           "skillId": "produire_subjonctif_present_frequent::writing-controlled-production::verb:dire",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 4,
-          "learningItems": 4
+          "initialItems": 6,
+          "learningItems": 6
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:subjonctif-present:dire"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": [
         "reconnaitre_subjonctif_present::reading-receptive"
       ]
@@ -3865,18 +3884,20 @@
       "skillId": "produire_subjonctif_present_frequent::writing-controlled-production::verb:voir",
       "nodeKey": "produire_subjonctif_present_frequent",
       "facetKey": "produire_subjonctif_present_frequent::verb:voir",
-      "action": "author_exact_target_lesson",
+      "action": "resolve_prerequisite_scope",
       "pools": [
         {
           "skillId": "produire_subjonctif_present_frequent::writing-controlled-production::verb:voir",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 4,
-          "learningItems": 4
+          "initialItems": 6,
+          "learningItems": 6
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:subjonctif-present:voir"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": [
         "reconnaitre_subjonctif_present::reading-receptive"
       ]
@@ -3885,18 +3906,20 @@
       "skillId": "produire_subjonctif_present_frequent::writing-controlled-production::verb:pouvoir",
       "nodeKey": "produire_subjonctif_present_frequent",
       "facetKey": "produire_subjonctif_present_frequent::verb:pouvoir",
-      "action": "author_exact_target_lesson",
+      "action": "resolve_prerequisite_scope",
       "pools": [
         {
           "skillId": "produire_subjonctif_present_frequent::writing-controlled-production::verb:pouvoir",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 4,
-          "learningItems": 4
+          "initialItems": 6,
+          "learningItems": 6
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:subjonctif-present:pouvoir"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": [
         "reconnaitre_subjonctif_present::reading-receptive"
       ]
@@ -3905,18 +3928,20 @@
       "skillId": "produire_subjonctif_present_frequent::writing-controlled-production::verb:vouloir",
       "nodeKey": "produire_subjonctif_present_frequent",
       "facetKey": "produire_subjonctif_present_frequent::verb:vouloir",
-      "action": "author_exact_target_lesson",
+      "action": "resolve_prerequisite_scope",
       "pools": [
         {
           "skillId": "produire_subjonctif_present_frequent::writing-controlled-production::verb:vouloir",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 4,
-          "learningItems": 4
+          "initialItems": 6,
+          "learningItems": 6
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:subjonctif-present:vouloir"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": [
         "reconnaitre_subjonctif_present::reading-receptive"
       ]
@@ -3925,18 +3950,20 @@
       "skillId": "produire_subjonctif_present_frequent::writing-controlled-production::verb:savoir",
       "nodeKey": "produire_subjonctif_present_frequent",
       "facetKey": "produire_subjonctif_present_frequent::verb:savoir",
-      "action": "author_exact_target_lesson",
+      "action": "resolve_prerequisite_scope",
       "pools": [
         {
           "skillId": "produire_subjonctif_present_frequent::writing-controlled-production::verb:savoir",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 4,
-          "learningItems": 4
+          "initialItems": 6,
+          "learningItems": 6
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:subjonctif-present:savoir"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": [
         "reconnaitre_subjonctif_present::reading-receptive"
       ]
@@ -3945,18 +3972,20 @@
       "skillId": "produire_subjonctif_present_frequent::writing-controlled-production::verb:devoir",
       "nodeKey": "produire_subjonctif_present_frequent",
       "facetKey": "produire_subjonctif_present_frequent::verb:devoir",
-      "action": "author_exact_target_lesson",
+      "action": "resolve_prerequisite_scope",
       "pools": [
         {
           "skillId": "produire_subjonctif_present_frequent::writing-controlled-production::verb:devoir",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 4,
-          "learningItems": 4
+          "initialItems": 6,
+          "learningItems": 6
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:subjonctif-present:devoir"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": [
         "reconnaitre_subjonctif_present::reading-receptive"
       ]

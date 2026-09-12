@@ -1,3 +1,4 @@
+import {allocateTeachingQuestionPools} from "../src/lib/diagnostic/granular/teaching-question-pools";
 import {granularBankOptions} from "./lib/granular-bank-options";
 import {FRENCH_TEACHING_DRAFTS} from "../src/lib/diagnostic/granular/draft-teaching-catalogue";
 import {teachingContentChecksum,validatePublishedTeaching,type ParallelReviewTeachingContent} from "../src/lib/diagnostic/granular/teaching-content";
@@ -14,7 +15,7 @@ import {validateAnnotationReviewDraft} from "../src/lib/diagnostic/granular/anno
 import {adaptV3ForAssessment} from "../src/lib/diagnostic/granular/v3-adapter";
 import {applyFacetTargets} from "../src/lib/diagnostic/granular/facet-adapter";
 import {buildV3Facets} from "../src/lib/diagnostic/granular/facets";
-import {allocateQuestionPools,isQuestionPoolSufficient} from "../src/lib/diagnostic/granular/question-pools";
+import {isQuestionPoolSufficient} from "../src/lib/diagnostic/granular/question-pools";
 import {buildLearningCheckRegistry} from "../src/lib/diagnostic/granular/check-registry";
 import type {ParallelReviewPolicy} from "../src/lib/diagnostic/granular/parallel-review-policy";
 const read=(path:string)=>JSON.parse(readFileSync(path,"utf8"));
@@ -28,7 +29,7 @@ const policy:ParallelReviewPolicy={mode:"parallel_review",authorization:"product
 if(Object.keys(policy.questionChecksums).length!==selected.size)throw Error("Parallel review selection is incomplete");
 const annotations=[...validateAnnotationReviewDraft(read("docs/diagnostic/v3-facet-annotations.json"),base),...assembled.annotations];
 const adapted=applyFacetTargets(adaptV3ForAssessment({artifact,bank,reviewPolicy:policy}),buildV3Facets(artifact.taxonomy),bank,annotations);
-const allocation=allocateQuestionPools(adapted.assessment);
+const allocation=allocateTeachingQuestionPools(adapted.assessment,FRENCH_TEACHING_DRAFTS);
 const entries=new Map(bank.items.map(entry=>[entry.itemKey,entry]));
 const materialQuestions=new Map<string,Set<string>>();
 for(const probe of allocation.assessment.probes){
@@ -70,7 +71,7 @@ const summary={teachingScopeTargets:teachingScope.size,teachingPrerequisiteGapTa
  targets:allocation.assessment.skills.length,allocatedTargets:allocation.coverage.filter(row=>row.status==="allocated").length,
  incompleteTargets:allocation.coverage.filter(row=>row.status!=="allocated").length,fullPoolCoverage:allocation.ready,unsupportedEvidenceItemKeys:adapted.assessment.unsupportedEvidenceItemKeys??[],unassignedQuestionIds:adapted.unassignedItemKeys};
 const content={status:"parallel_review_release_preparation",reviewOwner:"product_owner",authorization:policy.authorization,policyChecksum:checksum(policy),summary,
- assessment:allocation.assessment,poolCoverage:allocation.coverage,checkBindings:checks.bindings,teachingContent,teachingBindings,teachingReadiness,teachingPrerequisiteGaps,
+ assessment:allocation.assessment,teachingPoolRepairs:allocation.teachingPoolRepairs,poolCoverage:allocation.coverage,checkBindings:checks.bindings,teachingContent,teachingBindings,teachingReadiness,teachingPrerequisiteGaps,
  limitations:["Content remains pending review; release permission does not create human approval", "No database publication or activation is performed by this builder", "Incomplete target pools remain visible; release scope and fresh post-teaching check capacity still need verification", "Structurally rejected content remains ineligible; semantic review continues in parallel"]};
 const markdown=`# Parallel-review release preparation\n\nThe product owner authorized students to start while personally reviewing content (2026-09-11). This explicitly supersedes waiting for all human content review before an initial release. It does not certify the draft questions or alter the approved graph.\n\n${summary.selectedPendingOrRepairedQuestions} selected draft/repaired question versions, ${summary.canonicalReviewedQuestions} canonically reviewed questions, ${summary.mappedQuestions} mapped questions.\n\n${summary.allocatedTargets} of ${summary.targets} targets have allocated initial and follow-up pools; ${summary.incompleteTargets} remain incomplete. The JSON lists each target and the proposed check bindings. This is a release preparation artifact, not proof of activation or full coverage.\n\n${summary.teachingLessons} lessons and ${summary.guidedExercises} guided exercises are pinned as published_pending_review. ${summary.teachingTargetsWithPools} lesson targets have allocated initial/follow-up pools; ${summary.teachingTargetsWithFreshChecks} retain enough check questions after exact teaching overlap exclusions and have proposed instruction/practice bindings. ${summary.teachingPrerequisiteGapTargets} prerequisite targets in their ${summary.teachingScopeTargets}-target dependency scope still lack complete pools. Exact material matches populate exposure exclusions; semantic overlap review remains in progress.\n\nPolicy checksum: ${checksum(policy)}.\n\nReproduce: npx tsx scripts/build-parallel-review-candidate.mts; append --check to verify without writing.\n`;
 for(const [path,value] of [["generated/french-v3-parallel-review-policy.json",JSON.stringify(policy,null,2)+"\n"],["docs/diagnostic/v3-parallel-review-candidate.json",JSON.stringify({...content,checksum:checksum(content)},null,2)+"\n"],["docs/diagnostic/v3-parallel-review-candidate.md",markdown]]){

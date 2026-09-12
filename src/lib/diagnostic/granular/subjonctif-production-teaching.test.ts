@@ -34,7 +34,7 @@ it('identifies existing isolated forms as exposed, so these drafts cannot claim 
  const expansion=JSON.parse(readFileSync('generated/french-v3-conjugation-expansion.json','utf8')) as DraftExpansion;
  for(const lesson of SUBJONCTIF_PRODUCTION_TEACHING){
   const verb=lesson.facetKey!.split('::verb:')[1];
-  const items=expansion.items.filter(i=>i.item.nodeKey==='produire_subjonctif_present_frequent'&&i.item.validatorConfig?.verb===verb);
+  const items=expansion.items.filter(i=>i.item.nodeKey==='produire_subjonctif_present_frequent'&&i.item.validatorConfig?.verb===verb&&i.promptFamily==='controlled-form');
   expect(items.length,verb).toBeGreaterThanOrEqual(6);
   const keys=teachingMaterialKeys(lesson);
   for(const item of items)expect(questionAssessedMaterialKeys(item.item).some(k=>keys.includes(k)),item.itemKey).toBe(true);
