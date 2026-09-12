@@ -1,3 +1,4 @@
+import {VERB_REFERENCE_COPY} from "@/lib/diagnostic/granular/verb-reference-copy";
 vi.mock('server-only',()=>({}));
 import { beforeEach, expect, it, vi } from 'vitest';
 const f = vi.hoisted(() => ({ journal: vi.fn() }));
@@ -25,7 +26,7 @@ it('does not interpret inherited object properties as lessons', async () => {
 });
 it('journals verbs on the index even without opening a conjugation table', async () => {
   await VerbIndex();
-  expect(f.journal).toHaveBeenCalledWith('reference:verb-index', { verbs: FREQUENT_VERBS });
+  expect(f.journal).toHaveBeenCalledWith('reference:verb-index', { verbs: FREQUENT_VERBS,copy:VERB_REFERENCE_COPY });
 });
 it('withholds either route payload when recording fails', async () => {
   f.journal.mockRejectedValue(Error('journal unavailable'));

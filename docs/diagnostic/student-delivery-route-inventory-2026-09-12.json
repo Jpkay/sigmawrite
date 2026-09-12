@@ -1,0 +1,166 @@
+{
+  "sourceCommit": "28cb2d7e0df5bb38e8037e076a89a98f8a054e54",
+  "studentPageCount": 23,
+  "completeHistoryProven": false,
+  "classification": "Manual code inspection of page, component and delivery boundaries; implemented is not certified complete.",
+  "routes": [
+    {
+      "source": "src/app/student/diagnostic/page.tsx",
+      "sha256": "2e81d08ecaeb006cdee42be2cabd5723088756aed9e15ae13a9284a9b52b39bd",
+      "status": "implemented",
+      "finding": "Granular fixed copy and runtime view recorded; legacy diagnostic branch and arbitrary runtime errors remain to review."
+    },
+    {
+      "source": "src/app/student/diagnostic/review/page.tsx",
+      "sha256": "30ffe4dc84733d17ba78b8e45c13b28645776df59b8956daca6f73a5499d4bd0",
+      "status": "implemented",
+      "finding": "Review payload and shared copy recorded; missing-session help recorded."
+    },
+    {
+      "source": "src/app/student/dictee/[dictationId]/page.tsx",
+      "sha256": "6cffdfbd5166e448b4a9d71976c191d59de50212bd1fce63570bdbe4369d404f",
+      "status": "confirmed-gap",
+      "finding": "Session, offered audio and result payload recorded; player preparation, instructions, buttons and error wording remain outside shared capture."
+    },
+    {
+      "source": "src/app/student/dictee/page.tsx",
+      "sha256": "138add599d312b5a7ceaedc1cd8156d8a903f64034e94bce85e06fb09df10a30",
+      "status": "confirmed-gap",
+      "finding": "Header and catalog data recorded; catalog client labels and empty/error states remain to capture."
+    },
+    {
+      "source": "src/app/student/frontier/page.tsx",
+      "sha256": "33dec4949cacc820f65df185ab483cf0824e5a66444f1ed6afd232dc81a3f98e",
+      "status": "partial",
+      "finding": "Granular display projection recorded; legacy branch derived labels require review."
+    },
+    {
+      "source": "src/app/student/inbox/page.tsx",
+      "sha256": "0a955da28911a0014c2619f1e535127ef984b9d8e89d34560a8ffc283921f06a",
+      "status": "confirmed-gap",
+      "finding": "Header and notification payload recorded; inbox client state labels and formatted dates need capture."
+    },
+    {
+      "source": "src/app/student/lessons/page.tsx",
+      "sha256": "012eef53088b7f407a4a6708fb5262a9499a337dc30abf139aa85a642742df2d",
+      "status": "implemented",
+      "finding": "List/header and shared fixed wording recorded; no full-history certification implied."
+    },
+    {
+      "source": "src/app/student/memory/page.tsx",
+      "sha256": "6c2ad982b9584fe518db93f2ed2ed83cb47299cd6a9540e6276db92ff113dc95",
+      "status": "confirmed-gap",
+      "finding": "Cards arrive through recorded student state; memory page fixed copy, local grading labels and count phrases need capture."
+    },
+    {
+      "source": "src/app/student/offline/page.tsx",
+      "sha256": "8fc77c27035c79348f3c28cb4e97cd2710f28544b8c1d7359120313b47d6a218",
+      "status": "implemented",
+      "finding": "Shared fixed copy and worker fallback recorded; cached client versions remain a separate issue."
+    },
+    {
+      "source": "src/app/student/onboarding/page.tsx",
+      "sha256": "f2a67d938cbbda77a483f4c22c54cc55eb9528176a0186ad6d2c239580a2de88",
+      "status": "implemented",
+      "finding": "Shared copy and interest choices recorded."
+    },
+    {
+      "source": "src/app/student/page.tsx",
+      "sha256": "549d372e578a2c0505b36f56c6efc279090afa61b25e1c3965a46ebbc9470dc6",
+      "status": "implemented-not-deployed",
+      "finding": "Home display, assignment, motivation and league projections implemented; latest three areas not yet deployed."
+    },
+    {
+      "source": "src/app/student/practice/[nodeId]/page.tsx",
+      "sha256": "f393b44ce96faf211b575f0781c5e6cd5f016cf38239a795cd98ecde6945af81",
+      "status": "confirmed-gap",
+      "finding": "Practice and feedback payloads recorded; player instructions, completion text, counts and arbitrary errors need capture."
+    },
+    {
+      "source": "src/app/student/production/[nodeId]/page.tsx",
+      "sha256": "b646d753b32d4606bb707a68a758d2de851892b9aa5a5af9906cb9f024c1882b",
+      "status": "partial",
+      "finding": "Task and feedback data recorded; independent production player fixed/runtime display audit remains."
+    },
+    {
+      "source": "src/app/student/progress/page.tsx",
+      "sha256": "51c814bb1fba7896a06e59169b56ab9588cd7f26101ee18b6a3bfa1bc8b920b5",
+      "status": "partial",
+      "finding": "Granular map and recent reading projection recorded; legacy branch needs audit."
+    },
+    {
+      "source": "src/app/student/read/[sessionId]/page.tsx",
+      "sha256": "08ee59144ae735861e45a8b1d12eb4358b26b8968152f38e43e718be87abe061",
+      "status": "confirmed-gap",
+      "finding": "Text/next material recorded; locally constructed correction and justification sentences, controls and error messages need capture."
+    },
+    {
+      "source": "src/app/student/recueil/page.tsx",
+      "sha256": "c4f7513f8063455f539da7d1cd4036a9c5f377b085e8fb5e879a5c09cc3dfbe2",
+      "status": "confirmed-gap",
+      "finding": "Entries and header recorded; empty state, count, type labels and per-entry formatted dates need capture."
+    },
+    {
+      "source": "src/app/student/reference/regle/[nodeKey]/page.tsx",
+      "sha256": "5e16661312581bccfd1db1edf7d000a1adf5df08b2b8fb5029361924e5c6527c",
+      "status": "confirmed-gap",
+      "finding": "Rule content, tags and header recorded; section headings, link help and rendered curriculum-tag labels need capture."
+    },
+    {
+      "source": "src/app/student/reference/verbe/[verb]/page.tsx",
+      "sha256": "cdd04dc8304ac6601e7081b33275036e8c88bc1e3a5fda0c60d7ca9fb8cb6c89",
+      "status": "confirmed-gap",
+      "finding": "Table, failure and header recorded; search labels and fallback navigation remain unrecorded."
+    },
+    {
+      "source": "src/app/student/reference/verbe/page.tsx",
+      "sha256": "d3e5b7548c3b7ec4c06116b94ff44450cf1a5b7a1f7fd28e86363a20d3aa0822",
+      "status": "confirmed-gap",
+      "finding": "Verb list/header recorded; search controls and frequent-verbs heading need capture."
+    },
+    {
+      "source": "src/app/student/repair/[skillKey]/page.tsx",
+      "sha256": "57f8ed87088c00f2bc7c4ffe61dd1e40454171e7bbf2a28fb5cc47c7745c30ad",
+      "status": "partial",
+      "finding": "Lesson payload recorded including delivered answers; player display audit remains."
+    },
+    {
+      "source": "src/app/student/results/[sessionId]/page.tsx",
+      "sha256": "2dd4df537fb0b3736d19cf9c2d48e827abdfdbdf5cbf2dc95ffb7cb3f2edd533",
+      "status": "confirmed-gap",
+      "finding": "Text, next step and recorded student-state results exist; result labels, zone wording and correction formatting need capture."
+    },
+    {
+      "source": "src/app/student/settings/page.tsx",
+      "sha256": "26bf6aa8b6f6f0b074e28e9e6101105588781ce4cd640d0327ec521fd76f4182",
+      "status": "partial",
+      "finding": "Shared fixed copy recorded; arbitrary server exception text is explicitly unresolved."
+    },
+    {
+      "source": "src/app/student/vocabulary/page.tsx",
+      "sha256": "0e8c5ccc972f5a9fab62fa8ad80b8a465c1486f1e0b668d0616d034c714cb240",
+      "status": "partial",
+      "finding": "Header and vocabulary entries recorded; practice controls, review feedback and errors require audit."
+    }
+  ],
+  "otherSurfaces": [
+    {
+      "source": "src/app/student/diagnostic/demo-review/route.ts",
+      "status": "confirmed-gap",
+      "finding": "Raw saved HTML is not journaled; demo-only account restriction does not cover the forbidden response for other students."
+    },
+    {
+      "source": "src/app/student/layout.tsx",
+      "status": "partial",
+      "finding": "Shared shell copy is recorded; inherited client version, global errors and access transition behavior need contract proof."
+    }
+  ],
+  "crossCutting": [
+    "Finish fixed and derived text capture on confirmed gaps; audit partial paths.",
+    "Define accepted client/build versions and reject or invalidate unsupported old-client deliveries.",
+    "Apply and use atomic covered-delivery operation only after the route contract is verified.",
+    "Establish fresh baseline with coverage enabled; do not backdate existing students.",
+    "Verify owner changes, failed writes, offline replay, concurrent uncovered delivery and late requests invalidate or preserve history correctly.",
+    "Run a fresh complete diagnostic and recommended learning journey with eligible independent evidence."
+  ]
+}

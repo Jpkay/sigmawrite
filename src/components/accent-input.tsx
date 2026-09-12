@@ -1,8 +1,9 @@
 "use client";
 import { useRef } from "react";
 import { unassistedInputProps } from "@/lib/unassisted-input";
+import {EXERCISE_CONTROL_COPY} from '@/lib/content/exercise-control-copy';
 
-export const FRENCH_ACCENTS = ["é", "è", "ê", "ë", "à", "â", "î", "ï", "ô", "ù", "û", "ü", "ç", "œ", "’"] as const;
+export const FRENCH_ACCENTS = EXERCISE_CONTROL_COPY.accents;
 
 /** Single-line counterpart of AccentTextarea for recall inputs (roadmap 8.6). */
 export function AccentInput({ value, onChange, ...props }: Omit<React.InputHTMLAttributes<HTMLInputElement>, "value" | "onChange"> & { value: string; onChange: (value: string) => void }) {
@@ -17,7 +18,7 @@ export function AccentInput({ value, onChange, ...props }: Omit<React.InputHTMLA
   return (
     <div>
       <input ref={ref} value={value} onChange={(event) => onChange(event.target.value)} {...props} {...unassistedInputProps} />
-      <div className="mt-2 flex flex-wrap gap-1" aria-label="Caractères français">
+      <div className="mt-2 flex flex-wrap gap-1" aria-label={EXERCISE_CONTROL_COPY.accentsLabel}>
         {FRENCH_ACCENTS.map((char) => <button type="button" key={char} onClick={() => insert(char)} className="min-h-9 min-w-9 rounded-md border border-border bg-muted px-2 text-sm hover:border-primary">{char}</button>)}
       </div>
     </div>

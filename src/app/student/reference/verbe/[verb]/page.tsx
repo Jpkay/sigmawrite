@@ -1,3 +1,4 @@
+import {VERB_REFERENCE_COPY as copy} from "@/lib/diagnostic/granular/verb-reference-copy";
 import {journalCurrentStudentPayload} from "@/lib/diagnostic/granular/server-delivery-journal";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
@@ -17,13 +18,13 @@ export default async function Page({ params }: { params: Promise<{ verb: string 
   try { table = buildConjugationTable(requested); }
   catch (caught) { failure = caught instanceof UnsupportedVerbError ? "Ce verbe n’est pas encore dans le moteur. Plutôt qu’une table inventée, choisis un verbe proche ou demande-le à ton enseignant." : "Verbe introuvable."; }
 
-  await journalCurrentStudentPayload("reference:verb",{requested,table,failure});
+  await journalCurrentStudentPayload("reference:verb",{requested,table,failure,copy});
   if (!table) {
     return (
       <>
         <PageHeader boundary="reference:verb-header" eyebrow="Référence" title={`« ${requested} »`} description={failure} />
         <VerbSearch initial={requested} />
-        <Link href="/student/reference/verbe" className={`${buttonVariants({ variant: "outline" })} mt-6`}><ArrowLeft className="size-4" />Tous les verbes</Link>
+        <Link href="/student/reference/verbe" className={`${buttonVariants({ variant: "outline" })} mt-6`}><ArrowLeft className="size-4" />{copy.all}</Link>
       </>
     );
   }
