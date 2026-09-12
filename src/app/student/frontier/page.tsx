@@ -1,3 +1,4 @@
+import {FRONTIER_COPY,frontierDisplayText} from '@/lib/diagnostic/granular/frontier-copy';
 import {GranularFrontier} from '@/components/diagnostic/granular-frontier';
 import {granularFrontierView} from '@/lib/diagnostic/granular/frontier-view';
 import {SupabaseAssessmentStore} from '@/lib/diagnostic/granular/store';
@@ -20,7 +21,7 @@ export default async function StudentFrontierPage() {
     const current=await store.latestSession(studentId);
     if(current){
       const data=granularFrontierView(current.session,current.bundle);
-      await journalStudentPayload(studentId,'student:granular-frontier',data);
+      await journalStudentPayload(studentId,'student:granular-frontier',{...data,displayText:frontierDisplayText(data,FRONTIER_COPY.title)});
       return <GranularFrontier data={data}/>;
     }
   }

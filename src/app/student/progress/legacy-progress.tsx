@@ -5,8 +5,7 @@ import { PageHeader } from "@/components/page";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
-import { SEED_TEXT_BY_ID } from "@/lib/content/texts";
-import { NEXT_ACTION_LABEL } from "@/lib/scoring/session";
+import {recentReadingDisplay} from "@/lib/diagnostic/granular/recent-reading-copy";
 import { useStudentState } from "@/lib/student-store";
 import type { DiagnosticResult } from "@/lib/types";
 import type { DiagnosticSectionProfileKey } from "@/lib/student-state";
@@ -148,31 +147,14 @@ export default function ProgressPage() {
 export function RecentReadingSessions() {
   const state = useStudentState();
   if (!state.hydrated) return null;
+  const display=recentReadingDisplay(state.sessions);
   return <>
-      <h2 className="mb-3 text-lg font-semibold">Séances récentes</h2>
-      {state.sessions.length === 0 ? (
-        <p className="text-sm text-muted-foreground">Aucune séance pour l&apos;instant.</p>
-      ) : (
-        <div className="space-y-3">
-          {[...state.sessions].reverse().map((s, i) => {
-            const text = SEED_TEXT_BY_ID[s.textVersionId];
-            return (
-              <Card key={`${s.textVersionId}-${i}`}>
-                <CardContent className="flex flex-wrap items-center justify-between gap-3 pt-6">
-                  <div>
-                    <p className="font-medium">{text?.title ?? s.textVersionId}</p>
-                    <p className="text-sm text-muted-foreground">
-                      {NEXT_ACTION_LABEL[s.recommendedNextAction]}
-                    </p>
-                  </div>
-                  <Badge variant="secondary">
-                    {Math.round(s.successRate * 100)}%
-                  </Badge>
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
-      )}
+    <h2 className="mb-3 text-lg font-semibold">{display.copy.title}</h2>
+    {display.rows.length===0?<p className="text-sm text-muted-foreground">{display.copy.empty}</p>:<div className="space-y-3">
+      {display.rows.map(row=><Card key={row.key}><CardContent className="flex flex-wrap items-center justify-between gap-3 pt-6">
+        <div><p className="font-medium">{row.title}</p><p className="text-sm text-muted-foreground">{row.nextAction}</p></div>
+        <Badge variant="secondary">{row.success}</Badge>
+      </CardContent></Card>)}
+    </div>}
   </>;
 }

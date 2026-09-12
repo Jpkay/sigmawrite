@@ -30,7 +30,7 @@ it('reads prior text in bounded owner-scoped pages and keeps missing migration o
  expect(rpc).toHaveBeenNthCalledWith(2,'prior_student_material_delivery_text',{p_student_id:'owner',p_presentation_id:'presentation',p_offset:100,p_limit:100});
  expect(await fixture({data:null,error:{code:'PGRST202'}}).store.loadPriorDeliveryText('s','p')).toEqual({rows:[],complete:false});
  const large={...row,text_fragments:['x'.repeat(1_900_000)]};
- expect((await fixture({data:[large,large,large],error:null}).store.loadPriorDeliveryText('s','p')).complete).toBe(false);
+ expect((await fixture({data:[large,{...large,text_fragments:["y".repeat(1_900_000)]},{...large,text_fragments:["z".repeat(1_900_000)]}],error:null}).store.loadPriorDeliveryText('s','p')).complete).toBe(false);
  await expect(fixture({data:[{...row,text_fragments:[1]}],error:null}).store.loadPriorDeliveryText('s','p')).rejects.toThrow('Invalid prior delivery history');
 });
 it('sends covered presentations and text in one RPC and refuses a missing migration',async()=>{
@@ -40,4 +40,13 @@ it('sends covered presentations and text in one RPC and refuses a missing migrat
  expect(rpc).toHaveBeenCalledTimes(1);
  expect(rpc).toHaveBeenCalledWith('record_covered_student_material_delivery',{p_student_id:'s',p_boundary:input.boundary,p_payload_checksum:input.payloadChecksum,p_text_fragments:input.textFragments,p_presentations:input.presentations,p_contract_key:input.contractKey});
  await expect(fixture({data:null,error:{code:'PGRST202',message:'missing function'}}).store.recordCoveredMaterialDelivery(input)).rejects.toThrow('missing function');
+});
+
+it('shares repeated snapshot text while preserving every source reference beyond five million aggregate characters',async()=>{
+ const text='La même copie. '.repeat(120000);
+ const data=Array.from({length:3},(_,i)=>({boundary:'student:progress',payload_checksum:'sha256:'+String(i).repeat(64),text_fragments:[text]}));
+ const result=await fixture({data,error:null}).store.loadPriorDeliveryText('owner','presentation');
+ expect(result.complete).toBe(true);expect(result.rows).toHaveLength(3);
+ expect(result.rows.map(row=>row.payloadChecksum)).toEqual(data.map(row=>row.payload_checksum));
+ for(const row of result.rows)expect(row.textFragments).toEqual([text]);
 });

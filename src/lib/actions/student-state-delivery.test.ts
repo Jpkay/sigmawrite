@@ -1,3 +1,4 @@
+import {recentReadingDisplay} from '@/lib/diagnostic/granular/recent-reading-copy';
 import {beforeEach, expect, it, vi} from 'vitest';
 const f = vi.hoisted(() => ({guard: vi.fn(), access: vi.fn(), read: vi.fn(), journal: vi.fn(), completed: vi.fn()}));
 vi.mock('server-only', () => ({}));
@@ -12,7 +13,7 @@ import {loadStudentState, startAdaptiveDiagnostic} from './student';
 
 beforeEach(() => {
   vi.resetAllMocks();
-  f.read.mockResolvedValue({retrievalCards: [{promptFr: 'Que font les chevaux ?'}]});
+  f.read.mockResolvedValue({sessions:[],retrievalCards: [{promptFr: 'Que font les chevaux ?'}]});
   f.journal.mockImplementation(async (_owner, _boundary, payload) => payload);
   f.completed.mockResolvedValue({runId: 'existing-run'});
 });
@@ -22,7 +23,7 @@ it('records state both on initial load and when returning an already completed d
   const result = await startAdaptiveDiagnostic({});
   expect(result).toMatchObject({done: true, runId: 'existing-run', state});
   expect(f.journal).toHaveBeenCalledTimes(2);
-  expect(f.journal).toHaveBeenLastCalledWith('authenticated-student', 'legacy:student-state', state);
+  expect(f.journal).toHaveBeenLastCalledWith('authenticated-student', 'legacy:student-state', {...state,recentReading:recentReadingDisplay(state.sessions)});
 });
 
 it('does not return the completed diagnostic snapshot if its material cannot be recorded', async () => {

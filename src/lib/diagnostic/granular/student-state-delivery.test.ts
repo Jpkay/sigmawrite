@@ -1,3 +1,4 @@
+import {recentReadingDisplay} from './recent-reading-copy';
 import {beforeEach, expect, it, vi} from 'vitest';
 const f = vi.hoisted(() => ({read: vi.fn(), journal: vi.fn()}));
 vi.mock('server-only', () => ({}));
@@ -11,27 +12,27 @@ beforeEach(() => {
 });
 
 it('records each fresh snapshot, including new memory cards returned after an activity', async () => {
-  const first = {retrievalCards: [], vocab: {}};
-  const updated = {retrievalCards: [{promptFr: 'Pourquoi les chevaux sont-ils partis ?', keywords: ['orage']}], vocab: {chevaux: {exposures: 1}}};
+  const first = {sessions:[],retrievalCards: [], vocab: {}};
+  const updated = {sessions:[],retrievalCards: [{promptFr: 'Pourquoi les chevaux sont-ils partis ?', keywords: ['orage']}], vocab: {chevaux: {exposures: 1}}};
   f.read.mockResolvedValueOnce(first).mockResolvedValueOnce(updated);
   expect(await getDeliveredStudentState('student-a')).toBe(first);
   expect(await getDeliveredStudentState('student-a')).toBe(updated);
-  expect(f.journal).toHaveBeenNthCalledWith(1, 'student-a', 'legacy:student-state', first);
-  expect(f.journal).toHaveBeenNthCalledWith(2, 'student-a', 'legacy:student-state', updated);
+  expect(f.journal).toHaveBeenNthCalledWith(1, 'student-a', 'legacy:student-state', {...first,recentReading:recentReadingDisplay([])});
+  expect(f.journal).toHaveBeenNthCalledWith(2, 'student-a', 'legacy:student-state', {...updated,recentReading:recentReadingDisplay([])});
 });
 
 it('keeps the owner of separate deliveries and forwards the caller database client', async () => {
   const client = {} as NonNullable<Parameters<typeof getDeliveredStudentState>[1]>;
-  f.read.mockImplementation(async (owner) => ({retrievalCards: [{promptFr: owner}]}));
+  f.read.mockImplementation(async (owner) => ({sessions:[],retrievalCards: [{promptFr: owner}]}));
   await Promise.all([getDeliveredStudentState('student-a', client), getDeliveredStudentState('student-b', client)]);
   for (const owner of ['student-a', 'student-b']) {
     expect(f.read).toHaveBeenCalledWith(owner, client);
-    expect(f.journal).toHaveBeenCalledWith(owner, 'legacy:student-state', {retrievalCards: [{promptFr: owner}]});
+    expect(f.journal).toHaveBeenCalledWith(owner, 'legacy:student-state', {sessions:[],retrievalCards: [{promptFr: owner}],recentReading:recentReadingDisplay([])});
   }
 });
 
 it('withholds fresh material when journaling fails and allows the delivery to be retried', async () => {
-  const state = {retrievalCards: [{promptFr: 'Les oiseaux chantent.'}]};
+  const state = {sessions:[],retrievalCards: [{promptFr: 'Les oiseaux chantent.'}]};
   f.read.mockResolvedValue(state);
   f.journal.mockRejectedValueOnce(Error('journal unavailable'));
   await expect(getDeliveredStudentState('student-a')).rejects.toThrow('journal unavailable');

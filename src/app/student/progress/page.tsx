@@ -1,3 +1,4 @@
+import {FRONTIER_COPY,frontierDisplayText} from '@/lib/diagnostic/granular/frontier-copy';
 import LegacyProgress, {RecentReadingSessions} from './legacy-progress';
 import {GranularFrontier} from '@/components/diagnostic/granular-frontier';
 import {granularFrontierView} from '@/lib/diagnostic/granular/frontier-view';
@@ -18,6 +19,6 @@ export default async function ProgressPage(){
  const current=await store.latestSession(studentId);
  if(!current)return <LegacyProgress/>;
  const data=granularFrontierView(current.session,current.bundle);
- await journalStudentPayload(studentId,'student:granular-progress',data);
- return <><GranularFrontier data={data} title="Mes progrès"/><section className="mt-10"><RecentReadingSessions/></section></>;
+ await journalStudentPayload(studentId,'student:granular-progress',{...data,displayText:frontierDisplayText(data,FRONTIER_COPY.progressTitle)});
+ return <><GranularFrontier data={data} title={FRONTIER_COPY.progressTitle}/><section className="mt-10"><RecentReadingSessions/></section></>;
 }

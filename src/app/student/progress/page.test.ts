@@ -1,3 +1,4 @@
+import {frontierDisplayText,FRONTIER_COPY} from '@/lib/diagnostic/granular/frontier-copy';
 import {afterEach,beforeEach,expect,it,vi} from 'vitest';
 const f=vi.hoisted(()=>({auth:vi.fn(),owner:vi.fn(),access:vi.fn(),latest:vi.fn(),project:vi.fn(),journal:vi.fn(),db:{name:'authenticated'},service:{name:'service'}}));
 vi.mock('@/lib/auth',()=>({requireRole:f.auth}));
@@ -11,10 +12,10 @@ vi.mock('./legacy-progress',()=>({default:()=>null,RecentReadingSessions:()=>nul
 vi.mock('@/components/diagnostic/granular-frontier',()=>({GranularFrontier:()=>null}));
 import Page from './page';
 import LegacyProgress from './legacy-progress';
-beforeEach(()=>{vi.clearAllMocks();vi.stubEnv('GRANULAR_DIAGNOSTIC_ENABLED','true');f.auth.mockResolvedValue({});f.owner.mockResolvedValue('owner');f.access.mockResolvedValue(undefined);f.latest.mockResolvedValue({session:{id:'pinned'},bundle:{}});f.project.mockReturnValue({nodes:[]});f.journal.mockResolvedValue(undefined);});
+beforeEach(()=>{vi.clearAllMocks();vi.stubEnv('GRANULAR_DIAGNOSTIC_ENABLED','true');f.auth.mockResolvedValue({});f.owner.mockResolvedValue('owner');f.access.mockResolvedValue(undefined);f.latest.mockResolvedValue({session:{id:'pinned'},bundle:{}});f.project.mockReturnValue({nodes:[],activities:[]});f.journal.mockResolvedValue(undefined);});
 afterEach(()=>vi.unstubAllEnvs());
 it('uses the same current skill projection as the frontier and captures the delivered progress',async()=>{
- await Page();expect(f.auth).toHaveBeenCalledWith(['student']);expect(f.access).toHaveBeenCalledWith(f.db,'owner');expect(f.latest).toHaveBeenCalledWith('owner');expect(f.project).toHaveBeenCalledWith({id:'pinned'},{});expect(f.journal).toHaveBeenCalledWith('owner','student:granular-progress',{nodes:[]});
+ await Page();expect(f.auth).toHaveBeenCalledWith(['student']);expect(f.access).toHaveBeenCalledWith(f.db,'owner');expect(f.latest).toHaveBeenCalledWith('owner');expect(f.project).toHaveBeenCalledWith({id:'pinned'},{});expect(f.journal).toHaveBeenCalledWith('owner','student:granular-progress',{nodes:[],activities:[],displayText:frontierDisplayText(f.project.mock.results[0].value,FRONTIER_COPY.progressTitle)});
 });
 it('retains legacy progress without a granular session or when granular runtime is disabled',async()=>{
  f.latest.mockResolvedValue(null);expect((await Page()).type).toBe(LegacyProgress);expect(f.journal).not.toHaveBeenCalled();

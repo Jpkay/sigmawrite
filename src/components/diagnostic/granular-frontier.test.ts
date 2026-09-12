@@ -1,3 +1,5 @@
+import {frontierDisplayText} from '@/lib/diagnostic/granular/frontier-copy';
+import {deliveredTextFragments} from '@/lib/diagnostic/granular/delivery-journal';
 import React from 'react';
 import {renderToStaticMarkup} from 'react-dom/server';
 import {expect,it} from 'vitest';
@@ -16,4 +18,12 @@ it('shows uncertainty, separate modes and prerequisite status without inventing 
 it('links learning students to the exact planned activity without offering to restart their diagnostic',()=>{
  const html=renderToStaticMarkup(React.createElement(GranularFrontier,{data:{...data,phase:'learning',activities:[{skillId:'production',activityId:'next-check',kind:'independent_check',action:'verify',titleFr:'Vérifier le présent',href:'/student/diagnostic?activity=next-check',estimatedMinutes:3}]}}));
  expect(html).toContain('href="/student/diagnostic?activity=next-check"');expect(html).toContain('Vérifier le présent');expect(html).not.toContain('Reprendre le diagnostic');
+});
+
+it('records all possible filter counts and the exact expanded detail wording without changing the map',()=>{
+ const before=JSON.stringify(data),display=frontierDisplayText(data),text=deliveredTextFragments(display);
+ expect(display.counts).toEqual(['0 point(s) affiché(s)','1 point(s) affiché(s)','2 point(s) affiché(s)']);
+ const html=renderToStaticMarkup(React.createElement(GranularFrontier,{data}));
+ for(const line of ['1 réponse(s) prise(s) en compte.','Écrire la réponse · Pas encore vérifié · Questions à venir','Employer le présent — Reconnaître — À confirmer']){expect(html).toContain(line);expect(text).toContain(line);}
+ expect(JSON.stringify(data)).toBe(before);
 });

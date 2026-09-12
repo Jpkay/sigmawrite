@@ -90,6 +90,7 @@ export class SupabaseAssessmentStore implements AssessmentStore{
  }
  async loadPriorDeliveryText(studentId:string,presentationId:string):Promise<PriorDeliveryHistory>{
   const rows:PriorDeliveryText[]=[];let characters=0;
+  const fragments=new Map<string,string>();
   for(let offset=0;offset<1000;offset+=100){
    const {data,error}=await this.db.rpc("prior_student_material_delivery_text",{p_student_id:studentId,p_presentation_id:presentationId,p_offset:offset,p_limit:100});
    if(error?.code==="PGRST202")return {rows,complete:false};
@@ -97,9 +98,14 @@ export class SupabaseAssessmentStore implements AssessmentStore{
    if(!Array.isArray(data)||data.length>100)throw Error("Invalid prior delivery history");
    for(const row of data){
     if(!row||typeof row.boundary!=="string"||!/^[a-z][a-z0-9:_-]{1,99}$/.test(row.boundary)||typeof row.payload_checksum!=="string"||!/^sha256:[a-f0-9]{64}$/.test(row.payload_checksum)||!Array.isArray(row.text_fragments)||row.text_fragments.length>20000||row.text_fragments.some((text:unknown)=>typeof text!=="string"))throw Error("Invalid prior delivery history");
-    const added=row.text_fragments.reduce((sum:number,text:string)=>sum+text.length,0);
+    // Repeated UI snapshots contain the same immutable string leaves. Retain
+    // every source row, but share its text storage and charge the memory budget
+    // once per distinct string; duplication is not missing exposure history.
+    const fresh=new Set<string>(row.text_fragments.filter((text:string)=>!fragments.has(text)));
+    const added=[...fresh].reduce((sum,text)=>sum+text.length,0);
     if(characters+added>5_000_000)return {rows,complete:false};
-    characters+=added;rows.push({boundary:row.boundary,payloadChecksum:row.payload_checksum,textFragments:row.text_fragments});
+    for(const text of fresh)fragments.set(text,text);
+    characters+=added;rows.push({boundary:row.boundary,payloadChecksum:row.payload_checksum,textFragments:row.text_fragments.map((text:string)=>fragments.get(text)!)});
    }
    if(data.length<100)return {rows,complete:true};
   }

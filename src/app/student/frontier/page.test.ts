@@ -1,3 +1,4 @@
+import {frontierDisplayText} from '@/lib/diagnostic/granular/frontier-copy';
 vi.mock('server-only',()=>({}));
 import {afterEach,beforeEach,expect,it,vi} from 'vitest';
 const f=vi.hoisted(()=>({access:vi.fn(),latest:vi.fn(),project:vi.fn(),auth:vi.fn(),owner:vi.fn(),journal:vi.fn(),frontier:vi.fn(),maybe:vi.fn(),db:{from:vi.fn()},service:{name:'service'},payload:{graphView:{nodes:[{labelFr:'Employer la cédille',explanationFr:'Comparer garçon et citron.'}]},missing:[{labelFr:'Reconnaître le sujet'}]}}));
@@ -33,13 +34,13 @@ it('keeps pilot graph loading scoped to the authenticated student',async()=>{
 
 it('uses the authenticated student granular session and journals only its projected map',async()=>{
  vi.stubEnv('GRANULAR_DIAGNOSTIC_ENABLED','true');
- const current={session:{id:'current-session'},bundle:{}};const map={nodes:[{id:'separate-production-target'}]};
+ const current={session:{id:'current-session'},bundle:{}};const map={activities:[],nodes:[{id:'separate-production-target',labelFr:'Écrire',assessmentAvailable:false,result:{status:'unknown',modes:[]}}]};
  f.latest.mockResolvedValue(current);f.project.mockReturnValue(map);
  await Page();
  expect(f.access).toHaveBeenCalledWith(f.db,'authenticated-student');
  expect(f.latest).toHaveBeenCalledWith('authenticated-student');
  expect(f.project).toHaveBeenCalledWith(current.session,current.bundle);
- expect(f.journal).toHaveBeenCalledWith('authenticated-student','student:granular-frontier',map);
+ expect(f.journal).toHaveBeenCalledWith('authenticated-student','student:granular-frontier',{...map,displayText:frontierDisplayText(f.project.mock.results[0].value)});
  expect(f.frontier).not.toHaveBeenCalled();
 });
 it('keeps older students on their existing map when there is no granular session',async()=>{
@@ -50,6 +51,6 @@ it('withholds the granular page on access, load or journal failure',async()=>{
  vi.stubEnv('GRANULAR_DIAGNOSTIC_ENABLED','true');f.access.mockRejectedValueOnce(Error('inactive'));
  await expect(Page()).rejects.toThrow('inactive');expect(f.latest).not.toHaveBeenCalled();
  f.latest.mockRejectedValueOnce(Error('load failed'));await expect(Page()).rejects.toThrow('load failed');expect(f.frontier).not.toHaveBeenCalled();
- f.latest.mockResolvedValue({session:{},bundle:{}});f.project.mockReturnValue({nodes:[]});f.journal.mockRejectedValueOnce(Error('capture failed'));
+ f.latest.mockResolvedValue({session:{},bundle:{}});f.project.mockReturnValue({nodes:[],activities:[]});f.journal.mockRejectedValueOnce(Error('capture failed'));
  await expect(Page()).rejects.toThrow('capture failed');expect(f.frontier).not.toHaveBeenCalled();
 });
