@@ -4,11 +4,11 @@ Updated 2026-09-12. French only; Allotey is excluded. This document distinguishe
 
 ## Current delivery state
 
-- Public deployment: v13, 215 supported targets, frozen source `3446b9f`. The complete candidate browser assessment, lesson practice, independent check and answer review pass; post-promotion new-account, demo and pinned-session checks pass and are tracked in `revision-twelve-publication-2026-09-12.json`.
-- Previous public release: v12, 197 supported targets, frozen source `0657d2a6`; retained as the rollback reference. See `revision-eleven-publication-2026-09-11.json`.
-- Frozen next candidate: bank revision 13, 231 supported targets and 4,752 scoped probes, source `ff8b84f`. It adds four family pathways each for passé composé, futur simple, conditionnel and plus-que-parfait to public v13. Bank import, database verification and separate candidate publication have passed. The full timed browser journey is running; public activation is pending. See `revision-thirteen-publication-2026-09-12.json`.
-- Subsequent working draft: bank revision 14 adds 32 cédille questions and two lessons, pending their two approved sound-to-spelling prerequisites. Active prepared scope remains 231; this draft is separate from the frozen candidate.
-- Working-draft symbolic routing benchmark: 10/10 depth checks and 8/8 uneven-profile contrasts, with no invariant violations. See `confirmed-verb-visits-2026-09-12.md`. This later runtime change is not included in the frozen 215-target candidate and is not educational calibration.
+- Public deployment: v14, 231 supported targets, frozen source `ff8b84f`. The complete timed candidate diagnostic, results, lesson practice, independent check and answer review passed, followed by public new-account, demo and pinned-session checks. See `revision-thirteen-publication-2026-09-12.json`.
+- Previous public release: v13, 215 supported targets, frozen source `3446b9f`; retained as the rollback reference. See `revision-twelve-publication-2026-09-12.json`.
+- Frozen next candidate: v15, bank revision 14, 237 supported targets and 4,896 scoped probes, source `c315eed`. It adds written-syllable, sound-to-spelling and cédille pathways in recognition and controlled production. All 6,280 bank memberships match the artifact; the immutable bundle is published but not publicly activated. Candidate default selection, reload and a real v14-to-v15 learning upgrade passed, preserving all 59 diagnostic answers and prior learning evidence. The full timed browser journey is running. See `revision-fourteen-publication-2026-09-12.json`.
+- All 72 candidate audio assets passed byte-integrity and actual Chrome playback checks. This is technical verification; pronunciation review remains pending. Six constructed foundation learning journeys passed with guided practice and fresh independent checks.
+- Working-draft symbolic routing benchmark: 10/10 depth checks and 8/8 uneven-profile contrasts, with no invariant violations. See `confirmed-verb-visits-2026-09-12.md`. Eight additional prepared-profile diagnostic checks cover the 237-target candidate. These are constructed tests, not educational calibration.
 
 ## Complete target accounting
 
@@ -16,10 +16,9 @@ Updated 2026-09-12. French only; Allotey is excluded. This document distinguishe
 
 | Required work | Targets |
 | --- | ---: |
-| Prepared assessment, teaching and fresh-check pathway | 231 |
+| Prepared assessment, teaching and fresh-check pathway | 237 |
 | Question pools allocated; exact-target lesson still missing | 57 |
-| Complete initial and follow-up question pools | 234 |
-| Questions and lessons prepared; prerequisite scope unresolved | 2 |
+| Complete initial and follow-up question pools | 230 |
 | Connected-writing evidence during learning | 18 |
 | Total | 542 |
 
@@ -27,11 +26,11 @@ These categories partition the graph; they are not publication or approval label
 
 ## Next implementation packages
 
-1. Complete preparation and independent verification of the frozen 231-target candidate with its later verb-visit routing; the 215-target v13 release is publicly verified. Keep published bundles immutable and repeat full candidate and public verification before activating another version.
+1. Finish the timed diagnostic-to-learning browser verification of the frozen 237-target v15 candidate; the 231-target v14 release is publicly verified. Keep published bundles immutable and repeat full candidate and public verification before activating another version.
 2. Validate the new verb-visit routing on real content and live mixed-profile journeys. The eight constructed contrasts now pass; educator/student calibration and broader granular profile validation remain required. Keep untested targets unresolved and refine them during learning.
 3. Add the missing exact-target lessons for the remaining tenses and moods. The regular -er/-ir and -ger/-cer pathways for imparfait, passé composé, futur simple, conditionnel and plus-que-parfait are now prepared. Each needs suitable guided examples and fresh independent applications; existing form questions alone are insufficient.
 4. Review the four remaining passé récent verb targets (pouvoir, vouloir, savoir, devoir) for natural contexts before authoring. Do not mechanically create awkward forms merely to reach a coverage count. Continue subjonctif, impératif and passé simple coverage with their own usage constraints.
-5. Fill the 234 question-pool gaps across all domains from the exact-target inventory, including the sound-to-spelling prerequisites needed by the two cédille targets, preserving distinct recognition, controlled production and contextual-use evidence. Complete the separate connected-writing pathway for the remaining 18 targets.
+5. Fill the 230 question-pool gaps across all domains from the exact-target inventory, preserving distinct recognition, controlled production and contextual-use evidence. The written-syllable and sound-to-spelling prerequisites for cédille are now included in the prepared candidate. Complete the separate connected-writing pathway for the remaining 18 targets.
 6. Continue the owner's review in parallel, recording actual decisions against content checksums. Validate difficulty, question duration, sufficient depth and the meaning of recommendations with educator and student evidence. Do not substitute technical tests for those judgments.
 
 ## Fixed foundation and product decisions
