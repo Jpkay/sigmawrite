@@ -19,7 +19,7 @@ for(const draft of drafts){
  const key=`v3-question-detail-reading:${draft.key}`;
  const raw={nodeKey:node.key,strand:node.strand,modality:"reading",learnerMode:"shared",responseType:"mcq",promptFr:`Lis le texte.\n\n${draft.passage}\n\n${draft.question}`,acceptableAnswers:[],validatorType:"exact",difficulty:50,
   choices:[{text:draft.answer,correct:true},...draft.distractors.map(text=>({text,correct:false}))],
-  validatorConfig:{sourceTextKey:key,sourceTextType:draft.genre==="narrative"?"literary":draft.genre,textualSupport:{passageText:draft.passage,choices:[{quoteFr:draft.support,correct:true},...draft.otherSpans.map(quoteFr=>({quoteFr,correct:false}))]}}};
+  validatorConfig:{materialExposure:{sentences:[draft.passage],assessed:{sentences:[draft.passage]}},sourceTextKey:key,sourceTextType:draft.genre==="narrative"?"literary":draft.genre,textualSupport:{passageText:draft.passage,choices:[{quoteFr:draft.support,correct:true},...draft.otherSpans.map(quoteFr=>({quoteFr,correct:false}))]}}};
  const checked=await runGates(raw,{knownNodeKeys:new Set([node.key]),knownMisconceptionKeys:new Set()});
  if(!checked.item||checked.gates.verdict==="rejected")throw Error(`Invalid reading draft: ${key}`);
  readTextualSupport(checked.item);

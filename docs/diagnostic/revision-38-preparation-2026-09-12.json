@@ -1,0 +1,47 @@
+{
+  "status": "prepared_not_published",
+  "authoringOptions": [
+    "--bank-revision",
+    "38",
+    "--verb-family-recognition",
+    "--etre-participle-agreement",
+    "--question-detail-reading"
+  ],
+  "scope": {
+    "graphTargets": 544,
+    "assessmentTargets": 353,
+    "teachingTargets": 353,
+    "questions": 6494,
+    "missingInstructionTargets": 0
+  },
+  "candidateChecksum": "sha256:d14f1fc783634e11c874821b8b3ded02842b5bb942a4b690399db88eaf83e20b",
+  "preflight": {
+    "version": "french-granular-parallel-publication-v1",
+    "ready": true,
+    "authorization": "product-owner-request-2026-09-11",
+    "reviewOwner": "product_owner",
+    "bankChecksum": "sha256:5ee189c6c57402709484d0eeb2fd03a20082f447e922a87f93587ed58921da04",
+    "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+    "bundleChecksum": "sha256:44b9fdd66a64e8bd751a99d910b65e4821763acf86226df301dea911203c05f4",
+    "policyChecksum": "sha256:4ac14fed96b5eb0b8148bc802520be4ace3afef7fc73582b4067ca5c0186ff73",
+    "scopeChecksum": "sha256:3ab91c93588d602d9d63452fd68ce3674e4c55003b36aa50ffde6445e66b98d9",
+    "bankItemCount": 7928,
+    "assessmentTargets": 353,
+    "teachingTargets": 353,
+    "instructionGapSkillIds": [],
+    "freshCheckGapSkillIds": [],
+    "limitation": "Preparation only. IDs are placeholders; the publisher must revalidate with actual parent IDs and persist the exact resulting bundle checksum. No human review is recorded."
+  },
+  "validation": {
+    "testFiles": 394,
+    "tests": 1752,
+    "newLessonJourneys": 3,
+    "typeScriptPassed": true,
+    "profileAndCommandSimulations": "running"
+  },
+  "limitations": [
+    "Constructed prerequisite-success and target-gap profiles with synthetic history; not classroom calibration.",
+    "Older question versions without assessed passage records remain canonical and historical, but are excluded from the new contextual pathways.",
+    "Human review remains pending. No import, publication or deployment."
+  ]
+}
