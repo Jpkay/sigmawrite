@@ -1559,6 +1559,9 @@ export async function submitNodePractice(input: unknown) {
     validator_config: item.validator_config, correct_answer: item.correct_answer,
     acceptable_answers: item.acceptable_answers ?? [],
   }, choices, data);
+  // Validator explanations can contain new corrected forms not present in the
+  // lesson payload. Capture them before consuming the attempt or its evidence.
+  await journalStudentPayload(studentId, "legacy:practice-feedback", {itemId: item.id, feedbackFr});
   const now = new Date().toISOString();
   const hintsUsed = data.hintsUsed ?? 0;
   const { data: attempt, error: attemptError } = await service.from("competency_attempts").insert({ student_id: studentId, item_id: item.id, node_id: data.nodeId, practice_session_id: data.practiceSessionId, exercise_position: data.exercisePosition, learner_mode: item.learner_mode, modality: item.modality, answer_text: data.answerText ?? null, selected_choice_id: data.selectedChoiceId ?? null, is_correct: correct, score: correct ? 1 : 0, latency_ms: Math.max(0, Date.now()-Date.parse(data.startedAt)), hints_used: hintsUsed, context: "practice", attempted_at: now }).select("id").single();
