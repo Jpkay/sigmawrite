@@ -32,3 +32,13 @@ it('matches each lesson to its approved case and keeps guided contexts separate 
  expect(drafts.some(d=>d.sentence.startsWith('Quels exercices'))).toBe(true);
  expect(drafts.some(d=>d.sentence.includes('Noé l’a'))).toBe(true);
 });
+import {granularBankOptions} from '../../../../scripts/lib/granular-bank-options';
+import {selectedDraftExpansionSources,selectedTeachingDrafts} from '../../../../scripts/lib/granular-authoring-selection';
+it('enables matching lessons and questions only for a compatible explicit revision',()=>{
+ const args=['--bank-revision','40','--verb-family-recognition','--etre-participle-agreement','--question-detail-reading','--local-definition-reading','--avoir-participle-agreement'];
+ expect(granularBankOptions(args).avoirParticipleAgreement).toBe(true);
+ expect(selectedDraftExpansionSources(args)).toContain('avoir-participle-agreement');
+ expect(selectedTeachingDrafts(args)).toEqual(expect.arrayContaining([...lessons]));
+ for(const invalid of [['--avoir-participle-agreement'],args.map(a=>a==='40'?'39':a),args.filter(a=>a!=='--local-definition-reading'),[...args,'--avoir-participle-agreement']])expect(()=>granularBankOptions(invalid)).toThrow();
+ expect(selectedDraftExpansionSources([])).not.toContain('avoir-participle-agreement');
+});

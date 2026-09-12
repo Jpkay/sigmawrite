@@ -1,0 +1,42 @@
+{
+  "status": "prepared_not_frozen_or_published",
+  "authoringOptions": [
+    "--bank-revision",
+    "40",
+    "--verb-family-recognition",
+    "--etre-participle-agreement",
+    "--question-detail-reading",
+    "--local-definition-reading",
+    "--avoir-participle-agreement"
+  ],
+  "candidateChecksum": "sha256:de9f3f19dfe8b3dcdad0daac168107d9d5ec39dc92112ef62615c25fca6c287a",
+  "preflight": {
+    "version": "french-granular-parallel-publication-v1",
+    "ready": true,
+    "authorization": "product-owner-request-2026-09-11",
+    "reviewOwner": "product_owner",
+    "bankChecksum": "sha256:a6fbe8f9020c5eb575a425330866fd4aa1979460dd201a6fc065e151fc58bdf9",
+    "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+    "bundleChecksum": "sha256:4a2870eb6dfa4e49cc0edfb35b12650ba6007dcfe0597d7335552dbb293249d9",
+    "policyChecksum": "sha256:ae9049c88f3b60c87d42cc407a22844e11a099987a4c0186d3560f65be3ced43",
+    "scopeChecksum": "sha256:0e44cc14936a3ae78d400bb851f15f93849906ad4b38fd018d3184459b0b648e",
+    "bankItemCount": 8000,
+    "assessmentTargets": 358,
+    "teachingTargets": 358,
+    "instructionGapSkillIds": [],
+    "freshCheckGapSkillIds": [],
+    "limitation": "Preparation only. IDs are placeholders; the publisher must revalidate with actual parent IDs and persist the exact resulting bundle checksum. No human review is recorded."
+  },
+  "validation": {
+    "focusedTestsPassed": true,
+    "typeScriptPassed": true,
+    "newLessonJourneys": 3,
+    "fullSuite": "running",
+    "profileAndCommandSimulations": "running"
+  },
+  "limitations": [
+    "Three guided-to-independent fixtures passed with synthetic history; this is not classroom validation.",
+    "Participle bases are supplied, so the new questions assess agreement rather than base recall.",
+    "Human review remains pending; no revision 40 publication or deployment."
+  ]
+}
