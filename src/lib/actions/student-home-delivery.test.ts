@@ -13,7 +13,7 @@ beforeEach(()=>{vi.resetAllMocks();const query:unknown=new Proxy({}, {get:(_targ
 it('records the combined fallback response when optional sections are unavailable',async()=>{
  const result=await loadStudentHome({});
  expect(result).toEqual({texts:null,plan:null,fallbackPlan:null,motivation:null,resume:null,assessment:null,recap:null,classGoal:null,league:null});
- expect(f.journal).toHaveBeenLastCalledWith('authenticated-owner','student:home',{...result,displayText:homeDynamicDisplay(result),motivationDisplay:null});
+ expect(f.journal).toHaveBeenLastCalledWith('authenticated-owner','student:home',{...result,displayText:homeDynamicDisplay(result),motivationDisplay:null,leagueDisplay:null});
 });
 it('does not swallow failure of the final recording step',async()=>{
  f.journal.mockRejectedValue(Error('journal unavailable'));await expect(loadStudentHome({})).rejects.toThrow('journal unavailable');
