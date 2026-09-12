@@ -1,12 +1,12 @@
 {
   "status": "prepared_inventory_not_release_or_review_approval",
-  "parallelCandidateChecksum": "sha256:689027b2fae4ef12197a087911c9b47d5c3ba82cdd73ce0b65f5311a8043b488",
-  "scopedCandidateChecksum": "sha256:02a72fd708e2e20bd1cec49eba7d646ecddd8d82b67db61e9ff8ff5cd1a7d4d8",
+  "parallelCandidateChecksum": "sha256:76de270b92ee1b69a17080fbbac5b50fa48e51352eea93ef571a8cd27f2c8179",
+  "scopedCandidateChecksum": "sha256:975f765fb8b04a8eb7631091af5780cc4b3d9d78f9ec5b4940a4fbb59995f586",
   "targets": 542,
   "counts": {
-    "prepared_scoped_pathway": 330,
+    "prepared_scoped_pathway": 334,
     "complete_question_pools": 187,
-    "author_exact_target_lesson": 18,
+    "author_exact_target_lesson": 14,
     "resolve_prerequisite_scope": 2,
     "connected_writing_evidence": 5
   },
@@ -2457,10 +2457,6 @@
       "lessonIds": [],
       "freshCheckAvailable": false,
       "prerequisitesOutsidePreparedScope": [
-        "produire_passe_simple::writing-controlled-production::verb:être",
-        "produire_passe_simple::writing-controlled-production::verb:avoir",
-        "produire_passe_simple::writing-controlled-production::verb:aller",
-        "produire_passe_simple::writing-controlled-production::verb:faire",
         "produire_passe_simple::writing-controlled-production::verb:prendre",
         "produire_passe_simple::writing-controlled-production::verb:venir",
         "produire_passe_simple::writing-controlled-production::verb:partir",
@@ -10391,72 +10387,80 @@
       "skillId": "produire_passe_simple::writing-controlled-production::verb:être",
       "nodeKey": "produire_passe_simple",
       "facetKey": "produire_passe_simple::verb:être",
-      "action": "author_exact_target_lesson",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_passe_simple::writing-controlled-production::verb:être",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 4,
-          "learningItems": 4
+          "initialItems": 6,
+          "learningItems": 6
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:passe-simple:verb:être"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_passe_simple::writing-controlled-production::verb:avoir",
       "nodeKey": "produire_passe_simple",
       "facetKey": "produire_passe_simple::verb:avoir",
-      "action": "author_exact_target_lesson",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_passe_simple::writing-controlled-production::verb:avoir",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 4,
-          "learningItems": 4
+          "initialItems": 6,
+          "learningItems": 6
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:passe-simple:verb:avoir"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_passe_simple::writing-controlled-production::verb:aller",
       "nodeKey": "produire_passe_simple",
       "facetKey": "produire_passe_simple::verb:aller",
-      "action": "author_exact_target_lesson",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_passe_simple::writing-controlled-production::verb:aller",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 4,
-          "learningItems": 4
+          "initialItems": 6,
+          "learningItems": 6
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:passe-simple:verb:aller"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
       "skillId": "produire_passe_simple::writing-controlled-production::verb:faire",
       "nodeKey": "produire_passe_simple",
       "facetKey": "produire_passe_simple::verb:faire",
-      "action": "author_exact_target_lesson",
+      "action": "prepared_scoped_pathway",
       "pools": [
         {
           "skillId": "produire_passe_simple::writing-controlled-production::verb:faire",
           "mode": "production",
           "status": "allocated",
-          "initialItems": 4,
-          "learningItems": 4
+          "initialItems": 6,
+          "learningItems": 6
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:passe-simple:verb:faire"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": []
     },
     {
