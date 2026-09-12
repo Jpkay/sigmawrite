@@ -1,0 +1,13 @@
+# Agreement of the past participle with être
+
+Standalone drafts add twelve original short-answer questions for each existing target: feminine singular, masculine plural, and feminine plural. The masculine singular participle is supplied, separating agreement from recalling its formation. Items use aller, venir, partir and sortir, matching the existing facet metadata. Epicene subjects such as journalistes and capitaines include explicit gender context when the plural article alone is insufficient.
+
+The questions retain four plausible agreement forms in their response-space metadata, producing a conservative guessing floor of one quarter despite typed answers. They remain needs_human_review; neither their approved parent nor the generation checks grant content approval. Their source sentences are recorded as assessed material, without invented lemma or history claims.
+
+Three matching lessons introduce the change through examples, name the participle and auxiliary, explain subject agreement, and contrast the subject with a nearby noun. Eighteen guided exercises use different verbs and sentences from the diagnostic questions. The boundary distinguishes non-pronominal être constructions from pronominal and avoir agreement. The general rule and its boundaries were checked against [OQLF: accord du participe passé employé avec être](https://vitrinelinguistique.oqlf.gouv.qc.ca/21547/la-grammaire/le-verbe/accord-du-participe-passe/avec-lauxiliaire-etre) and its [synthesis of special cases](https://vitrinelinguistique.oqlf.gouv.qc.ca/24222/la-grammaire/le-verbe/accord-du-participe-passe/avec-lauxiliaire-etre/synthese-des-regles-daccord-du-participe-passe-employe-avec-etre). All questions and lesson prose are original.
+
+Focused validation checks the existing target mappings, pending status, distinct prompts, ambiguous-subject clarification, response-space floor, exact lesson bindings and disjoint initial/follow-up allocation. Each target retains six initial and six follow-up questions after teaching exclusions. This establishes draft structure, not classroom validity, independently demonstrated mastery, or a complete history of material seen.
+
+These files are absent from default assembly and from the immutable revision 36 candidate. Full-candidate integration, prerequisite routing and complete learning journeys are still needed before a later release.
+
+Validation result: 388 test files / 1,720 tests passed, TypeScript passed, and the generated expansion reproduces exactly with --check. Lesson text contains no em dash.
