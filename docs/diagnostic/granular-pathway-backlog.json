@@ -1,14 +1,14 @@
 {
   "status": "prepared_inventory_not_release_or_review_approval",
-  "parallelCandidateChecksum": "sha256:adb4dba5fb7d0e9563a3f3cb5101232b564ca15e4dbbfcedfc813f4790af1d43",
-  "scopedCandidateChecksum": "sha256:b9ac4060d2a15bd6ce0efa2e12a9d16981629370441cdd9a1ee04a2ca0eae57e",
+  "parallelCandidateChecksum": "sha256:6400f0aa3b5c6a6a4fbaf31d554c6cf5512644d4da7639d7cc774e83225e66da",
+  "scopedCandidateChecksum": "sha256:9cc4191b0ef96a8d3625a632f577acffe3f5e63991a07a077c5a89c45dd24bc6",
   "targets": 542,
   "counts": {
     "prepared_scoped_pathway": 231,
-    "complete_question_pools": 234,
+    "complete_question_pools": 232,
     "author_exact_target_lesson": 57,
     "connected_writing_evidence": 18,
-    "resolve_prerequisite_scope": 2
+    "resolve_prerequisite_scope": 4
   },
   "limitations": [
     "Question allocation alone does not establish suitable teaching, novelty after instruction, human review or educational calibration.",
@@ -7761,18 +7761,21 @@
       "skillId": "associer_phoneme_graphie_frequente::reading-receptive",
       "nodeKey": "associer_phoneme_graphie_frequente",
       "facetKey": null,
-      "action": "complete_question_pools",
+      "action": "resolve_prerequisite_scope",
       "pools": [
         {
           "skillId": "associer_phoneme_graphie_frequente::reading-receptive",
           "mode": "recognition",
-          "status": "insufficient_coverage",
-          "initialItems": 1,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 16,
+          "learningItems": 16,
+          "excludedQuestionIds": []
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:phoneme-graphie:recognition"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": [
         "segmenter_syllabes_ecrites::reading-receptive",
         "segmenter_syllabes_ecrites::writing-controlled-production"
@@ -7782,18 +7785,21 @@
       "skillId": "associer_phoneme_graphie_frequente::writing-controlled-production",
       "nodeKey": "associer_phoneme_graphie_frequente",
       "facetKey": null,
-      "action": "complete_question_pools",
+      "action": "resolve_prerequisite_scope",
       "pools": [
         {
           "skillId": "associer_phoneme_graphie_frequente::writing-controlled-production",
           "mode": "production",
-          "status": "insufficient_coverage",
-          "initialItems": 1,
-          "learningItems": 0
+          "status": "allocated",
+          "initialItems": 16,
+          "learningItems": 16,
+          "excludedQuestionIds": []
         }
       ],
-      "lessonIds": [],
-      "freshCheckAvailable": false,
+      "lessonIds": [
+        "french-v3-teaching:phoneme-graphie:production"
+      ],
+      "freshCheckAvailable": true,
       "prerequisitesOutsidePreparedScope": [
         "segmenter_syllabes_ecrites::reading-receptive",
         "segmenter_syllabes_ecrites::writing-controlled-production"

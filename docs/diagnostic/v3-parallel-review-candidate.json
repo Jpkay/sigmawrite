@@ -2,20 +2,20 @@
   "status": "parallel_review_release_preparation",
   "reviewOwner": "product_owner",
   "authorization": "product-owner-request-2026-09-11",
-  "policyChecksum": "sha256:8b469fad82d70367e103e50a4ccc8b3bc8881a4a8165700baa82028ceff3d13c",
+  "policyChecksum": "sha256:cafcc6878e54d2fc9a85f615d7bbc933e0f953b48d5b05076271c5b2035c0bf1",
   "summary": {
     "teachingScopeTargets": 237,
-    "teachingPrerequisiteGapTargets": 4,
-    "teachingLessons": 251,
-    "teachingTargetsWithPools": 233,
-    "teachingTargetsWithFreshChecks": 233,
-    "guidedExercises": 1416,
-    "selectedPendingOrRepairedQuestions": 5463,
+    "teachingPrerequisiteGapTargets": 2,
+    "teachingLessons": 253,
+    "teachingTargetsWithPools": 235,
+    "teachingTargetsWithFreshChecks": 235,
+    "guidedExercises": 1424,
+    "selectedPendingOrRepairedQuestions": 5527,
     "canonicalReviewedQuestions": 238,
-    "mappedQuestions": 5686,
+    "mappedQuestions": 5748,
     "targets": 542,
-    "allocatedTargets": 290,
-    "incompleteTargets": 252,
+    "allocatedTargets": 292,
+    "incompleteTargets": 250,
     "fullPoolCoverage": false,
     "unsupportedEvidenceItemKeys": [
       "local-reading-v1:inferer_chronologie_implicite:receptive:foundation",
@@ -25,7 +25,9 @@
       "local-reading-v1:relier_preuve_interpretation:controlled_production:stretch",
       "local-reading-v1:distinguer_preuve_connaissance_externe:receptive:foundation",
       "local-reading-v1:distinguer_preuve_connaissance_externe:receptive:core",
-      "local-reading-v1:distinguer_preuve_connaissance_externe:receptive:stretch"
+      "local-reading-v1:distinguer_preuve_connaissance_externe:receptive:stretch",
+      "local-spelling-v1:associer_phoneme_graphie_frequente:controlled_production:foundation",
+      "local-spelling-v1:associer_phoneme_graphie_frequente:receptive:core"
     ],
     "unassignedQuestionIds": [
       "review-draft-v1:construction_accord_sujet_verbe:receptive:stretch",
@@ -15035,7 +15037,29 @@
             "negativeExamplesRequired": false,
             "novelWordsRequired": true,
             "novelSentencesRequired": false,
-            "unaidedRequired": false
+            "unaidedRequired": false,
+            "featureRequirements": [
+              {
+                "feature": "phoneme-graphie:ch",
+                "minimumItems": 4,
+                "minimumContexts": 4
+              },
+              {
+                "feature": "phoneme-graphie:ou",
+                "minimumItems": 4,
+                "minimumContexts": 4
+              },
+              {
+                "feature": "phoneme-graphie:gn",
+                "minimumItems": 4,
+                "minimumContexts": 4
+              },
+              {
+                "feature": "phoneme-graphie:f",
+                "minimumItems": 4,
+                "minimumContexts": 4
+              }
+            ]
           }
         }
       },
@@ -15070,7 +15094,29 @@
             "negativeExamplesRequired": false,
             "novelWordsRequired": true,
             "novelSentencesRequired": false,
-            "unaidedRequired": true
+            "unaidedRequired": true,
+            "featureRequirements": [
+              {
+                "feature": "phoneme-graphie:ch",
+                "minimumItems": 4,
+                "minimumContexts": 4
+              },
+              {
+                "feature": "phoneme-graphie:ou",
+                "minimumItems": 4,
+                "minimumContexts": 4
+              },
+              {
+                "feature": "phoneme-graphie:gn",
+                "minimumItems": 4,
+                "minimumContexts": 4
+              },
+              {
+                "feature": "phoneme-graphie:f",
+                "minimumItems": 4,
+                "minimumContexts": 4
+              }
+            ]
           }
         }
       },
@@ -21744,36 +21790,6 @@
         "usage": "initial"
       },
       {
-        "id": "local-spelling-v1:associer_phoneme_graphie_frequente:receptive:core",
-        "skillId": "associer_phoneme_graphie_frequente::reading-receptive",
-        "mode": "recognition",
-        "contextId": "surface:sha256:ca4c15db5312c47acee7992b57dafcbecf0e349aca80829581706bd0af1283c1",
-        "difficulty": 0.5,
-        "expectedSeconds": 30,
-        "guessProbability": 0.3333333333333333,
-        "textualSupportAssessed": false,
-        "materialKeys": [],
-        "assessedMaterialKeys": [],
-        "contrastingErrorKeys": [],
-        "negativeExampleAssessed": false,
-        "usage": "initial"
-      },
-      {
-        "id": "local-spelling-v1:associer_phoneme_graphie_frequente:controlled_production:foundation",
-        "skillId": "associer_phoneme_graphie_frequente::writing-controlled-production",
-        "mode": "production",
-        "contextId": "surface:sha256:06bf63d611058c9887ab4a9e2fcce16c7766f37c6d486dfc42d54bcbe1d4e87b",
-        "difficulty": 0.25,
-        "expectedSeconds": 30,
-        "guessProbability": 0.05,
-        "textualSupportAssessed": false,
-        "materialKeys": [],
-        "assessedMaterialKeys": [],
-        "contrastingErrorKeys": [],
-        "negativeExampleAssessed": false,
-        "usage": "initial"
-      },
-      {
         "id": "local-spelling-v1:orthographier_o_au_eau:controlled_production:stretch",
         "skillId": "orthographier_o_au_eau::writing-controlled-production",
         "mode": "production",
@@ -24146,6 +24162,1670 @@
         "textType": "narrative",
         "evidenceFeatures": [],
         "usage": "initial"
+      },
+      {
+        "id": "v3-phoneme-graphie:recognition-chat",
+        "skillId": "associer_phoneme_graphie_frequente::reading-receptive",
+        "mode": "recognition",
+        "contextId": "phoneme-graphie:recognition-chat",
+        "evidenceFeatures": [
+          "phoneme-graphie:ch"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:b12c16128e2b9f25f166683de43158502231295e311254ef2b2d161d12352a39",
+          "word:sha256:dff0bd1de0982319b8f746e57331349f38930dc350f48c28177dfd87ca5ccb67"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:b12c16128e2b9f25f166683de43158502231295e311254ef2b2d161d12352a39",
+          "word:sha256:dff0bd1de0982319b8f746e57331349f38930dc350f48c28177dfd87ca5ccb67"
+        ],
+        "contrastingErrorKeys": [
+          "sound_ch_confused_with_ou",
+          "sound_ch_confused_with_gn",
+          "sound_ch_confused_with_f"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-phoneme-graphie:recognition-chou",
+        "skillId": "associer_phoneme_graphie_frequente::reading-receptive",
+        "mode": "recognition",
+        "contextId": "phoneme-graphie:recognition-chou",
+        "evidenceFeatures": [
+          "phoneme-graphie:ch"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:9ddb48a1919c9e32cd9ab5e4431fe30b73ffcab33aaf7c32b97eddaa06a73df0",
+          "word:sha256:71f902919b5c13ad76b586fb2cba2268423712029b7161a49d4e7c98795a8089"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:9ddb48a1919c9e32cd9ab5e4431fe30b73ffcab33aaf7c32b97eddaa06a73df0",
+          "word:sha256:71f902919b5c13ad76b586fb2cba2268423712029b7161a49d4e7c98795a8089"
+        ],
+        "contrastingErrorKeys": [
+          "sound_ch_confused_with_ou",
+          "sound_ch_confused_with_gn",
+          "sound_ch_confused_with_f"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-phoneme-graphie:recognition-chemin",
+        "skillId": "associer_phoneme_graphie_frequente::reading-receptive",
+        "mode": "recognition",
+        "contextId": "phoneme-graphie:recognition-chemin",
+        "evidenceFeatures": [
+          "phoneme-graphie:ch"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:cdebb741637ae37bdda4a8b6f518bc7c5a443e7dd81f292d9153c9f86bb65ba2",
+          "word:sha256:829305142d956879bb02fe06ed9f9c58e741a1287f4ddf106c5ee2bea4d54ad7"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:cdebb741637ae37bdda4a8b6f518bc7c5a443e7dd81f292d9153c9f86bb65ba2",
+          "word:sha256:829305142d956879bb02fe06ed9f9c58e741a1287f4ddf106c5ee2bea4d54ad7"
+        ],
+        "contrastingErrorKeys": [
+          "sound_ch_confused_with_ou",
+          "sound_ch_confused_with_gn",
+          "sound_ch_confused_with_f"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-phoneme-graphie:recognition-mouche",
+        "skillId": "associer_phoneme_graphie_frequente::reading-receptive",
+        "mode": "recognition",
+        "contextId": "phoneme-graphie:recognition-mouche",
+        "evidenceFeatures": [
+          "phoneme-graphie:ch"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:257ae80a03277a554c0078946bed4fa7904b5940700c839f256fcb0fb53fc5c5",
+          "word:sha256:ba78ca48be15a70f00ea8f035cc130afef3d54712ae2f815a5e8ab934d5134c2"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:257ae80a03277a554c0078946bed4fa7904b5940700c839f256fcb0fb53fc5c5",
+          "word:sha256:ba78ca48be15a70f00ea8f035cc130afef3d54712ae2f815a5e8ab934d5134c2"
+        ],
+        "contrastingErrorKeys": [
+          "sound_ch_confused_with_ou",
+          "sound_ch_confused_with_gn",
+          "sound_ch_confused_with_f"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-phoneme-graphie:recognition-loup",
+        "skillId": "associer_phoneme_graphie_frequente::reading-receptive",
+        "mode": "recognition",
+        "contextId": "phoneme-graphie:recognition-loup",
+        "evidenceFeatures": [
+          "phoneme-graphie:ou"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:e1c69a121713f24cdcfe8f7d8e434613d978b91a29f2a0b6ca5464c52faa2e65",
+          "word:sha256:dfea8992240156ff08c18bf53e0b7012adff0ca6befe27ae60d954f267a0792a"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:e1c69a121713f24cdcfe8f7d8e434613d978b91a29f2a0b6ca5464c52faa2e65",
+          "word:sha256:dfea8992240156ff08c18bf53e0b7012adff0ca6befe27ae60d954f267a0792a"
+        ],
+        "contrastingErrorKeys": [
+          "sound_ou_confused_with_ch",
+          "sound_ou_confused_with_gn",
+          "sound_ou_confused_with_f"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-phoneme-graphie:recognition-roue",
+        "skillId": "associer_phoneme_graphie_frequente::reading-receptive",
+        "mode": "recognition",
+        "contextId": "phoneme-graphie:recognition-roue",
+        "evidenceFeatures": [
+          "phoneme-graphie:ou"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:aa9a277435373ed0d692fedb80389042440c4869fbd9291e07de69acccfe75e5",
+          "word:sha256:1cca53043c278aea80bb61339f29e95c75142b5013fdcfbdb35c7d53ede5c3a0"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:aa9a277435373ed0d692fedb80389042440c4869fbd9291e07de69acccfe75e5",
+          "word:sha256:1cca53043c278aea80bb61339f29e95c75142b5013fdcfbdb35c7d53ede5c3a0"
+        ],
+        "contrastingErrorKeys": [
+          "sound_ou_confused_with_ch",
+          "sound_ou_confused_with_gn",
+          "sound_ou_confused_with_f"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-phoneme-graphie:recognition-poule",
+        "skillId": "associer_phoneme_graphie_frequente::reading-receptive",
+        "mode": "recognition",
+        "contextId": "phoneme-graphie:recognition-poule",
+        "evidenceFeatures": [
+          "phoneme-graphie:ou"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:be412fd7c02ea700a0bbcc077f34b4fe51850a1a886306637d1b1a25fe9b84c6",
+          "word:sha256:50bdf6015e15914fcb98bb320842cfd26657b2deadb92f73355b81117adf6af8"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:be412fd7c02ea700a0bbcc077f34b4fe51850a1a886306637d1b1a25fe9b84c6",
+          "word:sha256:50bdf6015e15914fcb98bb320842cfd26657b2deadb92f73355b81117adf6af8"
+        ],
+        "contrastingErrorKeys": [
+          "sound_ou_confused_with_ch",
+          "sound_ou_confused_with_gn",
+          "sound_ou_confused_with_f"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-phoneme-graphie:recognition-mouton",
+        "skillId": "associer_phoneme_graphie_frequente::reading-receptive",
+        "mode": "recognition",
+        "contextId": "phoneme-graphie:recognition-mouton",
+        "evidenceFeatures": [
+          "phoneme-graphie:ou"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:c3213828283a253c3d9ce7eddf4a36d194b6342e2a5e3183d00ddda7b908e43c",
+          "word:sha256:130c682c6c09f047634cce40af68e05f2acacf898a8751ea28d3fafdf580bc8c"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:c3213828283a253c3d9ce7eddf4a36d194b6342e2a5e3183d00ddda7b908e43c",
+          "word:sha256:130c682c6c09f047634cce40af68e05f2acacf898a8751ea28d3fafdf580bc8c"
+        ],
+        "contrastingErrorKeys": [
+          "sound_ou_confused_with_ch",
+          "sound_ou_confused_with_gn",
+          "sound_ou_confused_with_f"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-phoneme-graphie:recognition-ligne",
+        "skillId": "associer_phoneme_graphie_frequente::reading-receptive",
+        "mode": "recognition",
+        "contextId": "phoneme-graphie:recognition-ligne",
+        "evidenceFeatures": [
+          "phoneme-graphie:gn"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:b259f0143f71f2b06f6cc787befb33e0665402c25fe47628e49028b029707b0e",
+          "word:sha256:3b030774c21fde575d75a2693cc178cbdbf523188d91ae3a18148859f988d6f3"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:b259f0143f71f2b06f6cc787befb33e0665402c25fe47628e49028b029707b0e",
+          "word:sha256:3b030774c21fde575d75a2693cc178cbdbf523188d91ae3a18148859f988d6f3"
+        ],
+        "contrastingErrorKeys": [
+          "sound_gn_confused_with_ch",
+          "sound_gn_confused_with_ou",
+          "sound_gn_confused_with_f"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-phoneme-graphie:recognition-vigne",
+        "skillId": "associer_phoneme_graphie_frequente::reading-receptive",
+        "mode": "recognition",
+        "contextId": "phoneme-graphie:recognition-vigne",
+        "evidenceFeatures": [
+          "phoneme-graphie:gn"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:540c1f241d838ce885061cb71248bc3e6b930db26268d99bf661e437ab703a9b",
+          "word:sha256:457e645bfbc0f49f1557f502df578af826f8cbf63bbe62bcd37b8d11d6485e4b"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:540c1f241d838ce885061cb71248bc3e6b930db26268d99bf661e437ab703a9b",
+          "word:sha256:457e645bfbc0f49f1557f502df578af826f8cbf63bbe62bcd37b8d11d6485e4b"
+        ],
+        "contrastingErrorKeys": [
+          "sound_gn_confused_with_ch",
+          "sound_gn_confused_with_ou",
+          "sound_gn_confused_with_f"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-phoneme-graphie:recognition-signe",
+        "skillId": "associer_phoneme_graphie_frequente::reading-receptive",
+        "mode": "recognition",
+        "contextId": "phoneme-graphie:recognition-signe",
+        "evidenceFeatures": [
+          "phoneme-graphie:gn"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:08d2f124a18cbf3a7d95466f1a565f7eddeeb6a24929301fe85fd4541d1400dd",
+          "word:sha256:e972897cef8c31fffef29e766bc233334c1d9721404c7a5f7df70c05c5748d84"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:08d2f124a18cbf3a7d95466f1a565f7eddeeb6a24929301fe85fd4541d1400dd",
+          "word:sha256:e972897cef8c31fffef29e766bc233334c1d9721404c7a5f7df70c05c5748d84"
+        ],
+        "contrastingErrorKeys": [
+          "sound_gn_confused_with_ch",
+          "sound_gn_confused_with_ou",
+          "sound_gn_confused_with_f"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-phoneme-graphie:recognition-peigne",
+        "skillId": "associer_phoneme_graphie_frequente::reading-receptive",
+        "mode": "recognition",
+        "contextId": "phoneme-graphie:recognition-peigne",
+        "evidenceFeatures": [
+          "phoneme-graphie:gn"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:4e7afdcff487b7dc00b9c347bebf46a449415588f9e780d6a3ff1252c2f17a48",
+          "word:sha256:905dbf5547c8af1aa09b750e2eeea355f06ca0f01cc95aa7ab16a4a508ea8079"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:4e7afdcff487b7dc00b9c347bebf46a449415588f9e780d6a3ff1252c2f17a48",
+          "word:sha256:905dbf5547c8af1aa09b750e2eeea355f06ca0f01cc95aa7ab16a4a508ea8079"
+        ],
+        "contrastingErrorKeys": [
+          "sound_gn_confused_with_ch",
+          "sound_gn_confused_with_ou",
+          "sound_gn_confused_with_f"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-phoneme-graphie:recognition-fumée",
+        "skillId": "associer_phoneme_graphie_frequente::reading-receptive",
+        "mode": "recognition",
+        "contextId": "phoneme-graphie:recognition-fumée",
+        "evidenceFeatures": [
+          "phoneme-graphie:f"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:5365fa7d70d46c5242da7e7c77f0dc6672888b6a833e7cc3107b288958356b9a",
+          "word:sha256:6ae0d03ad874e6c3736d5affedf6cffea95f1a31d9a16b14388b42186b6cc0e9"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:5365fa7d70d46c5242da7e7c77f0dc6672888b6a833e7cc3107b288958356b9a",
+          "word:sha256:6ae0d03ad874e6c3736d5affedf6cffea95f1a31d9a16b14388b42186b6cc0e9"
+        ],
+        "contrastingErrorKeys": [
+          "sound_f_confused_with_ch",
+          "sound_f_confused_with_ou",
+          "sound_f_confused_with_gn"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-phoneme-graphie:recognition-fée",
+        "skillId": "associer_phoneme_graphie_frequente::reading-receptive",
+        "mode": "recognition",
+        "contextId": "phoneme-graphie:recognition-fée",
+        "evidenceFeatures": [
+          "phoneme-graphie:f"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:8a53dfb0c7f8b3911b636da886d4afe5d69184572d9ad4b5ef77033ac42f212e",
+          "word:sha256:222b20cd01ddcc047bd4a4248e09b2d25ebbf49eb1218c82290ae82337bf4e44"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:8a53dfb0c7f8b3911b636da886d4afe5d69184572d9ad4b5ef77033ac42f212e",
+          "word:sha256:222b20cd01ddcc047bd4a4248e09b2d25ebbf49eb1218c82290ae82337bf4e44"
+        ],
+        "contrastingErrorKeys": [
+          "sound_f_confused_with_ch",
+          "sound_f_confused_with_ou",
+          "sound_f_confused_with_gn"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-phoneme-graphie:recognition-fourmi",
+        "skillId": "associer_phoneme_graphie_frequente::reading-receptive",
+        "mode": "recognition",
+        "contextId": "phoneme-graphie:recognition-fourmi",
+        "evidenceFeatures": [
+          "phoneme-graphie:f"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:f014b920e604ca34840276d8318be3b63a0c2ba0048a1951f8844b2025d490ad",
+          "word:sha256:1b67afc036fecb81e4099d10bcaf0a441f583bb980b413cd8ab922ac4d6978ab"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:f014b920e604ca34840276d8318be3b63a0c2ba0048a1951f8844b2025d490ad",
+          "word:sha256:1b67afc036fecb81e4099d10bcaf0a441f583bb980b413cd8ab922ac4d6978ab"
+        ],
+        "contrastingErrorKeys": [
+          "sound_f_confused_with_ch",
+          "sound_f_confused_with_ou",
+          "sound_f_confused_with_gn"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-phoneme-graphie:recognition-filet",
+        "skillId": "associer_phoneme_graphie_frequente::reading-receptive",
+        "mode": "recognition",
+        "contextId": "phoneme-graphie:recognition-filet",
+        "evidenceFeatures": [
+          "phoneme-graphie:f"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:3327b456427ea6fee32a3000463b6d38d4b3d4985247b7346948a73b3000908e",
+          "word:sha256:55a44aa6310a3548515fc48772602496d2d2bf88d4f686ab40731ca82b8241f5"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:3327b456427ea6fee32a3000463b6d38d4b3d4985247b7346948a73b3000908e",
+          "word:sha256:55a44aa6310a3548515fc48772602496d2d2bf88d4f686ab40731ca82b8241f5"
+        ],
+        "contrastingErrorKeys": [
+          "sound_f_confused_with_ch",
+          "sound_f_confused_with_ou",
+          "sound_f_confused_with_gn"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-phoneme-graphie:recognition-chaise",
+        "skillId": "associer_phoneme_graphie_frequente::reading-receptive",
+        "mode": "recognition",
+        "contextId": "phoneme-graphie:recognition-chaise",
+        "evidenceFeatures": [
+          "phoneme-graphie:ch"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:bc82b119622426578d97d63090ae983a32f2a65a58ec1bac3deebbc821bd6120",
+          "word:sha256:5e1fe42de6e8421172a5ec7a20837732c3c46b72dce0ccc4fbaf218ade3336d9"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:bc82b119622426578d97d63090ae983a32f2a65a58ec1bac3deebbc821bd6120",
+          "word:sha256:5e1fe42de6e8421172a5ec7a20837732c3c46b72dce0ccc4fbaf218ade3336d9"
+        ],
+        "contrastingErrorKeys": [
+          "sound_ch_confused_with_ou",
+          "sound_ch_confused_with_gn",
+          "sound_ch_confused_with_f"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-phoneme-graphie:recognition-chaton",
+        "skillId": "associer_phoneme_graphie_frequente::reading-receptive",
+        "mode": "recognition",
+        "contextId": "phoneme-graphie:recognition-chaton",
+        "evidenceFeatures": [
+          "phoneme-graphie:ch"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:3b506d94e6fc6e3b6c3ca04c169c6747af896c84a5dc0c80453e710d426e66a4",
+          "word:sha256:9416bcfc1b1f76e709db6164d5631ef47e218b34d7141c39f7aaa5c73b6f16cb"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:3b506d94e6fc6e3b6c3ca04c169c6747af896c84a5dc0c80453e710d426e66a4",
+          "word:sha256:9416bcfc1b1f76e709db6164d5631ef47e218b34d7141c39f7aaa5c73b6f16cb"
+        ],
+        "contrastingErrorKeys": [
+          "sound_ch_confused_with_ou",
+          "sound_ch_confused_with_gn",
+          "sound_ch_confused_with_f"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-phoneme-graphie:recognition-roche",
+        "skillId": "associer_phoneme_graphie_frequente::reading-receptive",
+        "mode": "recognition",
+        "contextId": "phoneme-graphie:recognition-roche",
+        "evidenceFeatures": [
+          "phoneme-graphie:ch"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:d152a39a51fc375e191cc0cbf79d6d361fe858fe7f7b9cdcdf951d69780dc941",
+          "word:sha256:63b8648d5f62dde85b93481ead303236bac5bdefe05b420d11d8f4958d85faa6"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:d152a39a51fc375e191cc0cbf79d6d361fe858fe7f7b9cdcdf951d69780dc941",
+          "word:sha256:63b8648d5f62dde85b93481ead303236bac5bdefe05b420d11d8f4958d85faa6"
+        ],
+        "contrastingErrorKeys": [
+          "sound_ch_confused_with_ou",
+          "sound_ch_confused_with_gn",
+          "sound_ch_confused_with_f"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-phoneme-graphie:recognition-vache",
+        "skillId": "associer_phoneme_graphie_frequente::reading-receptive",
+        "mode": "recognition",
+        "contextId": "phoneme-graphie:recognition-vache",
+        "evidenceFeatures": [
+          "phoneme-graphie:ch"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:e381e2dc3f7b108cc6d725f54bcdd0828dd32c91ad31f6984015258eca7f4911",
+          "word:sha256:adf1dac1a30b72f222a42d28291ad5411cedef33aee79ee8c5ba905ba1cd3275"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:e381e2dc3f7b108cc6d725f54bcdd0828dd32c91ad31f6984015258eca7f4911",
+          "word:sha256:adf1dac1a30b72f222a42d28291ad5411cedef33aee79ee8c5ba905ba1cd3275"
+        ],
+        "contrastingErrorKeys": [
+          "sound_ch_confused_with_ou",
+          "sound_ch_confused_with_gn",
+          "sound_ch_confused_with_f"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-phoneme-graphie:recognition-bouche",
+        "skillId": "associer_phoneme_graphie_frequente::reading-receptive",
+        "mode": "recognition",
+        "contextId": "phoneme-graphie:recognition-bouche",
+        "evidenceFeatures": [
+          "phoneme-graphie:ou"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:fd1539fff3b8df6215b98e554f97dbb7a3993755ded60a21364b3515fd6d16c3",
+          "word:sha256:5a52e0708e2f74e0d8e0a407889227a09d508b7c6e72b7790cc08a8fcda2d69f"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:fd1539fff3b8df6215b98e554f97dbb7a3993755ded60a21364b3515fd6d16c3",
+          "word:sha256:5a52e0708e2f74e0d8e0a407889227a09d508b7c6e72b7790cc08a8fcda2d69f"
+        ],
+        "contrastingErrorKeys": [
+          "sound_ou_confused_with_ch",
+          "sound_ou_confused_with_gn",
+          "sound_ou_confused_with_f"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-phoneme-graphie:recognition-soupe",
+        "skillId": "associer_phoneme_graphie_frequente::reading-receptive",
+        "mode": "recognition",
+        "contextId": "phoneme-graphie:recognition-soupe",
+        "evidenceFeatures": [
+          "phoneme-graphie:ou"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:af3d33c19791eae08f7006239e1754fbca6646187ddfc1defc47b76598aaa07d",
+          "word:sha256:8924dd7d3593840190316ea5d3670afa67423e3df0c6e610fc1007c2d46d0e7d"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:af3d33c19791eae08f7006239e1754fbca6646187ddfc1defc47b76598aaa07d",
+          "word:sha256:8924dd7d3593840190316ea5d3670afa67423e3df0c6e610fc1007c2d46d0e7d"
+        ],
+        "contrastingErrorKeys": [
+          "sound_ou_confused_with_ch",
+          "sound_ou_confused_with_gn",
+          "sound_ou_confused_with_f"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-phoneme-graphie:recognition-tour",
+        "skillId": "associer_phoneme_graphie_frequente::reading-receptive",
+        "mode": "recognition",
+        "contextId": "phoneme-graphie:recognition-tour",
+        "evidenceFeatures": [
+          "phoneme-graphie:ou"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:448d41ae9dac310c60eaff280e4133c4f3bd435427b1c94aba78b6c0b05f0094",
+          "word:sha256:eacbe12276681ac21267df4c6bbea8a8821a56604abb415d16bba4e9541c1d16"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:448d41ae9dac310c60eaff280e4133c4f3bd435427b1c94aba78b6c0b05f0094",
+          "word:sha256:eacbe12276681ac21267df4c6bbea8a8821a56604abb415d16bba4e9541c1d16"
+        ],
+        "contrastingErrorKeys": [
+          "sound_ou_confused_with_ch",
+          "sound_ou_confused_with_gn",
+          "sound_ou_confused_with_f"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-phoneme-graphie:recognition-ours",
+        "skillId": "associer_phoneme_graphie_frequente::reading-receptive",
+        "mode": "recognition",
+        "contextId": "phoneme-graphie:recognition-ours",
+        "evidenceFeatures": [
+          "phoneme-graphie:ou"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:ec8351ea31406841c12a7121f1d6774001c14c7ae79d4af22c36fe5b3ad3e797",
+          "word:sha256:4a20907a5bb3c2555c89398892d6b992feba7119a37890aa2d1f912f9a637066"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:ec8351ea31406841c12a7121f1d6774001c14c7ae79d4af22c36fe5b3ad3e797",
+          "word:sha256:4a20907a5bb3c2555c89398892d6b992feba7119a37890aa2d1f912f9a637066"
+        ],
+        "contrastingErrorKeys": [
+          "sound_ou_confused_with_ch",
+          "sound_ou_confused_with_gn",
+          "sound_ou_confused_with_f"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-phoneme-graphie:recognition-agneau",
+        "skillId": "associer_phoneme_graphie_frequente::reading-receptive",
+        "mode": "recognition",
+        "contextId": "phoneme-graphie:recognition-agneau",
+        "evidenceFeatures": [
+          "phoneme-graphie:gn"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:ac4911ff91a4c6253d694d3eb6f8e16ae44d40b0db1c1a1c39b4d752cf36d8df",
+          "word:sha256:3809ee88d4f0f2c10c9a35814d8984344d227674398856b370b2a17525e4375b"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:ac4911ff91a4c6253d694d3eb6f8e16ae44d40b0db1c1a1c39b4d752cf36d8df",
+          "word:sha256:3809ee88d4f0f2c10c9a35814d8984344d227674398856b370b2a17525e4375b"
+        ],
+        "contrastingErrorKeys": [
+          "sound_gn_confused_with_ch",
+          "sound_gn_confused_with_ou",
+          "sound_gn_confused_with_f"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-phoneme-graphie:recognition-araignée",
+        "skillId": "associer_phoneme_graphie_frequente::reading-receptive",
+        "mode": "recognition",
+        "contextId": "phoneme-graphie:recognition-araignée",
+        "evidenceFeatures": [
+          "phoneme-graphie:gn"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:10aa38045abaf03feb68003b28f1324d2850be76d1a8cdf73b4905b4cef6afae",
+          "word:sha256:d0d5c0e3063ffea9d1c8b2559fb266ad2e7114f7bf4adbdd7193754481114d21"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:10aa38045abaf03feb68003b28f1324d2850be76d1a8cdf73b4905b4cef6afae",
+          "word:sha256:d0d5c0e3063ffea9d1c8b2559fb266ad2e7114f7bf4adbdd7193754481114d21"
+        ],
+        "contrastingErrorKeys": [
+          "sound_gn_confused_with_ch",
+          "sound_gn_confused_with_ou",
+          "sound_gn_confused_with_f"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-phoneme-graphie:recognition-poignet",
+        "skillId": "associer_phoneme_graphie_frequente::reading-receptive",
+        "mode": "recognition",
+        "contextId": "phoneme-graphie:recognition-poignet",
+        "evidenceFeatures": [
+          "phoneme-graphie:gn"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:8d8e796d824eb3c250e90ae4b0b822fedf2af608aafd034ec31e7ffa7939e615",
+          "word:sha256:a898da53cfd40ef4db415af43a04fdb0919f3b4db2ad6f270aaf8bcd18278df1"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:8d8e796d824eb3c250e90ae4b0b822fedf2af608aafd034ec31e7ffa7939e615",
+          "word:sha256:a898da53cfd40ef4db415af43a04fdb0919f3b4db2ad6f270aaf8bcd18278df1"
+        ],
+        "contrastingErrorKeys": [
+          "sound_gn_confused_with_ch",
+          "sound_gn_confused_with_ou",
+          "sound_gn_confused_with_f"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-phoneme-graphie:recognition-beignet",
+        "skillId": "associer_phoneme_graphie_frequente::reading-receptive",
+        "mode": "recognition",
+        "contextId": "phoneme-graphie:recognition-beignet",
+        "evidenceFeatures": [
+          "phoneme-graphie:gn"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:c86c1ae8ef0466e528fc5f7e4f9d12b2135b210adf5d06ceecd5a24a91da35f2",
+          "word:sha256:907499cc03ded9bb7a02a0ae05f66f30f4fb0787001827bb1a6ddc25cc344424"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:c86c1ae8ef0466e528fc5f7e4f9d12b2135b210adf5d06ceecd5a24a91da35f2",
+          "word:sha256:907499cc03ded9bb7a02a0ae05f66f30f4fb0787001827bb1a6ddc25cc344424"
+        ],
+        "contrastingErrorKeys": [
+          "sound_gn_confused_with_ch",
+          "sound_gn_confused_with_ou",
+          "sound_gn_confused_with_f"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-phoneme-graphie:recognition-fromage",
+        "skillId": "associer_phoneme_graphie_frequente::reading-receptive",
+        "mode": "recognition",
+        "contextId": "phoneme-graphie:recognition-fromage",
+        "evidenceFeatures": [
+          "phoneme-graphie:f"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:04dff0572782f06a0af28b0068cc862a53736d59dc7db23f05f1065f4f2e52c0",
+          "word:sha256:a79705ef9ee07999a69293dde5763ceadb73d858443da280f6a423c59c04d93c"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:04dff0572782f06a0af28b0068cc862a53736d59dc7db23f05f1065f4f2e52c0",
+          "word:sha256:a79705ef9ee07999a69293dde5763ceadb73d858443da280f6a423c59c04d93c"
+        ],
+        "contrastingErrorKeys": [
+          "sound_f_confused_with_ch",
+          "sound_f_confused_with_ou",
+          "sound_f_confused_with_gn"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-phoneme-graphie:recognition-fenêtre",
+        "skillId": "associer_phoneme_graphie_frequente::reading-receptive",
+        "mode": "recognition",
+        "contextId": "phoneme-graphie:recognition-fenêtre",
+        "evidenceFeatures": [
+          "phoneme-graphie:f"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:535a09f59546abba7e738bc4049444739452b455efc70ce8c8829bcab86c8620",
+          "word:sha256:d4f8058d0cc7a03dc9ac72491380549d063fd1bf90c4cfa48bf2bed0a665d96b"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:535a09f59546abba7e738bc4049444739452b455efc70ce8c8829bcab86c8620",
+          "word:sha256:d4f8058d0cc7a03dc9ac72491380549d063fd1bf90c4cfa48bf2bed0a665d96b"
+        ],
+        "contrastingErrorKeys": [
+          "sound_f_confused_with_ch",
+          "sound_f_confused_with_ou",
+          "sound_f_confused_with_gn"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-phoneme-graphie:recognition-fleur",
+        "skillId": "associer_phoneme_graphie_frequente::reading-receptive",
+        "mode": "recognition",
+        "contextId": "phoneme-graphie:recognition-fleur",
+        "evidenceFeatures": [
+          "phoneme-graphie:f"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:ac030c7aec947b46f8fe4f8b50d2acac8872a0242b5db880b50f649ed6080a50",
+          "word:sha256:c2e0de08b478b3168527b05df4b883365b0fe021fe8ee9e2313bf7ba2326b1ce"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:ac030c7aec947b46f8fe4f8b50d2acac8872a0242b5db880b50f649ed6080a50",
+          "word:sha256:c2e0de08b478b3168527b05df4b883365b0fe021fe8ee9e2313bf7ba2326b1ce"
+        ],
+        "contrastingErrorKeys": [
+          "sound_f_confused_with_ch",
+          "sound_f_confused_with_ou",
+          "sound_f_confused_with_gn"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-phoneme-graphie:recognition-fruit",
+        "skillId": "associer_phoneme_graphie_frequente::reading-receptive",
+        "mode": "recognition",
+        "contextId": "phoneme-graphie:recognition-fruit",
+        "evidenceFeatures": [
+          "phoneme-graphie:f"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:414e9d4805fddfac6a27e795c679b7da8082188c3f1c030acdd405f09927b3a7",
+          "word:sha256:ebb185407d4afb598bb3c4bc138ff12a3247bbe76b7fd77eb560b405c55ac865"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:414e9d4805fddfac6a27e795c679b7da8082188c3f1c030acdd405f09927b3a7",
+          "word:sha256:ebb185407d4afb598bb3c4bc138ff12a3247bbe76b7fd77eb560b405c55ac865"
+        ],
+        "contrastingErrorKeys": [
+          "sound_f_confused_with_ch",
+          "sound_f_confused_with_ou",
+          "sound_f_confused_with_gn"
+        ],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-phoneme-graphie:production-riche",
+        "skillId": "associer_phoneme_graphie_frequente::writing-controlled-production",
+        "mode": "production",
+        "contextId": "phoneme-graphie:production-riche",
+        "evidenceFeatures": [
+          "phoneme-graphie:ch"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:81ba1bdb886c36785c5f58ef7b84c4e4b6fa0b7bda1fd9089235e2be8428f248",
+          "word:sha256:2019e999a4cf1cf9498439268c12899b5f897aaba7ee8ad91fbbbd6cdb6080f2"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:81ba1bdb886c36785c5f58ef7b84c4e4b6fa0b7bda1fd9089235e2be8428f248",
+          "word:sha256:2019e999a4cf1cf9498439268c12899b5f897aaba7ee8ad91fbbbd6cdb6080f2"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-phoneme-graphie:production-ruche",
+        "skillId": "associer_phoneme_graphie_frequente::writing-controlled-production",
+        "mode": "production",
+        "contextId": "phoneme-graphie:production-ruche",
+        "evidenceFeatures": [
+          "phoneme-graphie:ch"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:0351da5f83fdbf7565ce1a00d6b80daef3dc7109439b1ea9a2e207bba064f43e",
+          "word:sha256:fedb3fdf9fbf3381e0ed7a95974df8bf75859670c9c058ed2b758c3f54d97459"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:0351da5f83fdbf7565ce1a00d6b80daef3dc7109439b1ea9a2e207bba064f43e",
+          "word:sha256:fedb3fdf9fbf3381e0ed7a95974df8bf75859670c9c058ed2b758c3f54d97459"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-phoneme-graphie:production-poche",
+        "skillId": "associer_phoneme_graphie_frequente::writing-controlled-production",
+        "mode": "production",
+        "contextId": "phoneme-graphie:production-poche",
+        "evidenceFeatures": [
+          "phoneme-graphie:ch"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:a8fe556c3723415c4812814d6c73fe20ce9784af36de1e6a92b857ba887d68a1",
+          "word:sha256:dd0705e12e65c753fb56e258894fd92e9df05c6f064021b298bc1ef42999f7ce"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:a8fe556c3723415c4812814d6c73fe20ce9784af36de1e6a92b857ba887d68a1",
+          "word:sha256:dd0705e12e65c753fb56e258894fd92e9df05c6f064021b298bc1ef42999f7ce"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-phoneme-graphie:production-branche",
+        "skillId": "associer_phoneme_graphie_frequente::writing-controlled-production",
+        "mode": "production",
+        "contextId": "phoneme-graphie:production-branche",
+        "evidenceFeatures": [
+          "phoneme-graphie:ch"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:3520aa970871f34588778d936bb3d00039ff2c0a08d6457325ab88af2ae8219e",
+          "word:sha256:3dd573cff816534646500f83a120e5f42529b9eb1a28e38521240fb839e052d2"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:3520aa970871f34588778d936bb3d00039ff2c0a08d6457325ab88af2ae8219e",
+          "word:sha256:3dd573cff816534646500f83a120e5f42529b9eb1a28e38521240fb839e052d2"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-phoneme-graphie:production-route",
+        "skillId": "associer_phoneme_graphie_frequente::writing-controlled-production",
+        "mode": "production",
+        "contextId": "phoneme-graphie:production-route",
+        "evidenceFeatures": [
+          "phoneme-graphie:ou"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:894f606fa9c41c315909fa51314f1cc5815c29096837b7707d25e699d9b41e38",
+          "word:sha256:e050efd0a0e23d85c6a1f4dc256aaf88bc6179d0a5a69a50fe274c3e414ddda7"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:894f606fa9c41c315909fa51314f1cc5815c29096837b7707d25e699d9b41e38",
+          "word:sha256:e050efd0a0e23d85c6a1f4dc256aaf88bc6179d0a5a69a50fe274c3e414ddda7"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-phoneme-graphie:production-genou",
+        "skillId": "associer_phoneme_graphie_frequente::writing-controlled-production",
+        "mode": "production",
+        "contextId": "phoneme-graphie:production-genou",
+        "evidenceFeatures": [
+          "phoneme-graphie:ou"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:0b48ed344102a217d83557ff27cbcebedb875ffc36dc4e8f67fd8144128c0ed2",
+          "word:sha256:8228cad55dd21dc2f27ceb666a19f412cd477c48019c8726713a8c2aa7485db6"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:0b48ed344102a217d83557ff27cbcebedb875ffc36dc4e8f67fd8144128c0ed2",
+          "word:sha256:8228cad55dd21dc2f27ceb666a19f412cd477c48019c8726713a8c2aa7485db6"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-phoneme-graphie:production-hibou",
+        "skillId": "associer_phoneme_graphie_frequente::writing-controlled-production",
+        "mode": "production",
+        "contextId": "phoneme-graphie:production-hibou",
+        "evidenceFeatures": [
+          "phoneme-graphie:ou"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:7c391c15da5dbc92da8f84f6df223734ef736ce439356ea0eca6991c4902c448",
+          "word:sha256:8a0218ebf9206795d77faaad46027295a2cab864b7a0453c0c0625851b0134d5"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:7c391c15da5dbc92da8f84f6df223734ef736ce439356ea0eca6991c4902c448",
+          "word:sha256:8a0218ebf9206795d77faaad46027295a2cab864b7a0453c0c0625851b0134d5"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-phoneme-graphie:production-bougie",
+        "skillId": "associer_phoneme_graphie_frequente::writing-controlled-production",
+        "mode": "production",
+        "contextId": "phoneme-graphie:production-bougie",
+        "evidenceFeatures": [
+          "phoneme-graphie:ou"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:34788440a65b5445b464d5d8c082451617f97c9c000a2f3fe85f003186819b9e",
+          "word:sha256:3508fa0640b5a3ce8a49a476f98325c906bfa818b6aff5a2dedae73b6e293291"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:34788440a65b5445b464d5d8c082451617f97c9c000a2f3fe85f003186819b9e",
+          "word:sha256:3508fa0640b5a3ce8a49a476f98325c906bfa818b6aff5a2dedae73b6e293291"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-phoneme-graphie:production-montagne",
+        "skillId": "associer_phoneme_graphie_frequente::writing-controlled-production",
+        "mode": "production",
+        "contextId": "phoneme-graphie:production-montagne",
+        "evidenceFeatures": [
+          "phoneme-graphie:gn"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:e83c77d1591ecf7a20672fb39f558cfd51080d67b9376f88217bb7ce38240201",
+          "word:sha256:64d6a03ffb8c846fd6af7439086b4fe64904442588a0edc10565c084c747727e"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:e83c77d1591ecf7a20672fb39f558cfd51080d67b9376f88217bb7ce38240201",
+          "word:sha256:64d6a03ffb8c846fd6af7439086b4fe64904442588a0edc10565c084c747727e"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-phoneme-graphie:production-champignon",
+        "skillId": "associer_phoneme_graphie_frequente::writing-controlled-production",
+        "mode": "production",
+        "contextId": "phoneme-graphie:production-champignon",
+        "evidenceFeatures": [
+          "phoneme-graphie:gn"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:e41b7ec7bc73d6b55c5c5daf7787502aa4f04b68e5001987469ff1dd7223281b",
+          "word:sha256:e3564089d2211deeca5bc994d204951d40ffa4501a23a8f968a89fa6c129117f"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:e41b7ec7bc73d6b55c5c5daf7787502aa4f04b68e5001987469ff1dd7223281b",
+          "word:sha256:e3564089d2211deeca5bc994d204951d40ffa4501a23a8f968a89fa6c129117f"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-phoneme-graphie:production-baignoire",
+        "skillId": "associer_phoneme_graphie_frequente::writing-controlled-production",
+        "mode": "production",
+        "contextId": "phoneme-graphie:production-baignoire",
+        "evidenceFeatures": [
+          "phoneme-graphie:gn"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:887d4b0f14003f2d690983ed785799f746f29e56567f3c16772b69627763a62d",
+          "word:sha256:c2afe043b055622d5deab04a628253e657fe67a564ef83652fd6575ae5a39967"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:887d4b0f14003f2d690983ed785799f746f29e56567f3c16772b69627763a62d",
+          "word:sha256:c2afe043b055622d5deab04a628253e657fe67a564ef83652fd6575ae5a39967"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-phoneme-graphie:production-poignée",
+        "skillId": "associer_phoneme_graphie_frequente::writing-controlled-production",
+        "mode": "production",
+        "contextId": "phoneme-graphie:production-poignée",
+        "evidenceFeatures": [
+          "phoneme-graphie:gn"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:1277e943bb886852c8ae161d21f0b51e4f4452ef80311f47d2129cb418e63bb0",
+          "word:sha256:d4ee45cf67cd2bebe9ba72295a4089b50ce5aaa45862e829efff75b067ae2773"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:1277e943bb886852c8ae161d21f0b51e4f4452ef80311f47d2129cb418e63bb0",
+          "word:sha256:d4ee45cf67cd2bebe9ba72295a4089b50ce5aaa45862e829efff75b067ae2773"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-phoneme-graphie:production-farine",
+        "skillId": "associer_phoneme_graphie_frequente::writing-controlled-production",
+        "mode": "production",
+        "contextId": "phoneme-graphie:production-farine",
+        "evidenceFeatures": [
+          "phoneme-graphie:f"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:b7537406b6a11c2652278997d52f44c1c87093328b509ecc0d271ab2cc9e7f0d",
+          "word:sha256:09966ef032226dd0ad638d7689c5e81ee73468476a7a787c8e1dd4bd9d3b3fcb"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:b7537406b6a11c2652278997d52f44c1c87093328b509ecc0d271ab2cc9e7f0d",
+          "word:sha256:09966ef032226dd0ad638d7689c5e81ee73468476a7a787c8e1dd4bd9d3b3fcb"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-phoneme-graphie:production-forêt",
+        "skillId": "associer_phoneme_graphie_frequente::writing-controlled-production",
+        "mode": "production",
+        "contextId": "phoneme-graphie:production-forêt",
+        "evidenceFeatures": [
+          "phoneme-graphie:f"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:3d974cd12acd984aeddbcf106ea050776d21fc542200657c48291305cb966fbb",
+          "word:sha256:a7acde44b865d45e8451eafe4d4c0eebb4fbb07efbf0232df177188ab6c4ccc5"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:3d974cd12acd984aeddbcf106ea050776d21fc542200657c48291305cb966fbb",
+          "word:sha256:a7acde44b865d45e8451eafe4d4c0eebb4fbb07efbf0232df177188ab6c4ccc5"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-phoneme-graphie:production-ferme",
+        "skillId": "associer_phoneme_graphie_frequente::writing-controlled-production",
+        "mode": "production",
+        "contextId": "phoneme-graphie:production-ferme",
+        "evidenceFeatures": [
+          "phoneme-graphie:f"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:4fda02e2ac38b899b75484b563a0a26922d0eec782e7d6a50f5cab483697c45a",
+          "word:sha256:6d7d6398a09e2c88d4b937a5951946f3c67a6d93c9d7b22993df9676c4f774a9"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:4fda02e2ac38b899b75484b563a0a26922d0eec782e7d6a50f5cab483697c45a",
+          "word:sha256:6d7d6398a09e2c88d4b937a5951946f3c67a6d93c9d7b22993df9676c4f774a9"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-phoneme-graphie:production-flaque",
+        "skillId": "associer_phoneme_graphie_frequente::writing-controlled-production",
+        "mode": "production",
+        "contextId": "phoneme-graphie:production-flaque",
+        "evidenceFeatures": [
+          "phoneme-graphie:f"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:0222bf514f90885f1a9d414e114c50e3fba1b3a31da5e0314ad8ed4212444290",
+          "word:sha256:0123c746688384410c2e709612ea7935f1ad17a5705a10b0d8a29f15eab7515a"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:0222bf514f90885f1a9d414e114c50e3fba1b3a31da5e0314ad8ed4212444290",
+          "word:sha256:0123c746688384410c2e709612ea7935f1ad17a5705a10b0d8a29f15eab7515a"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-phoneme-graphie:production-chute",
+        "skillId": "associer_phoneme_graphie_frequente::writing-controlled-production",
+        "mode": "production",
+        "contextId": "phoneme-graphie:production-chute",
+        "evidenceFeatures": [
+          "phoneme-graphie:ch"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:0f966dec48d64921a3389b59b37dd9b09d62f498e6ebf889ad9ea8726633b8e6",
+          "word:sha256:33f09268d5daa8c29798668f4bf20720268c2cfdbaaa97ffc1dd680484475b59"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:0f966dec48d64921a3389b59b37dd9b09d62f498e6ebf889ad9ea8726633b8e6",
+          "word:sha256:33f09268d5daa8c29798668f4bf20720268c2cfdbaaa97ffc1dd680484475b59"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-phoneme-graphie:production-chasse",
+        "skillId": "associer_phoneme_graphie_frequente::writing-controlled-production",
+        "mode": "production",
+        "contextId": "phoneme-graphie:production-chasse",
+        "evidenceFeatures": [
+          "phoneme-graphie:ch"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:20568812e548088274ba6614736f7dd141ea627eb6b88f8c0238c02ff175788c",
+          "word:sha256:59d9d820929fe9e2ef3a14a8aa6606dc2c25ae08b626b45750f7d9af4a032adc"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:20568812e548088274ba6614736f7dd141ea627eb6b88f8c0238c02ff175788c",
+          "word:sha256:59d9d820929fe9e2ef3a14a8aa6606dc2c25ae08b626b45750f7d9af4a032adc"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-phoneme-graphie:production-cloche",
+        "skillId": "associer_phoneme_graphie_frequente::writing-controlled-production",
+        "mode": "production",
+        "contextId": "phoneme-graphie:production-cloche",
+        "evidenceFeatures": [
+          "phoneme-graphie:ch"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:424e59b6a7d71e6bb17d22eb0f997223b718acd6411b138191ec9c11750fe5b9",
+          "word:sha256:51467d5b61f811efaac2aed97380fd1e484fc3ee2b4151bd3511b83a9c674736"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:424e59b6a7d71e6bb17d22eb0f997223b718acd6411b138191ec9c11750fe5b9",
+          "word:sha256:51467d5b61f811efaac2aed97380fd1e484fc3ee2b4151bd3511b83a9c674736"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-phoneme-graphie:production-planche",
+        "skillId": "associer_phoneme_graphie_frequente::writing-controlled-production",
+        "mode": "production",
+        "contextId": "phoneme-graphie:production-planche",
+        "evidenceFeatures": [
+          "phoneme-graphie:ch"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:c9f87aeccb80319ad8f3ae3632a0c61974ba647152d40ff2bac5abd26a713697",
+          "word:sha256:5d94797ed9533895c54386e3a6d74925a0771f1229bed76c0e0ab3c2c86bdf52"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:c9f87aeccb80319ad8f3ae3632a0c61974ba647152d40ff2bac5abd26a713697",
+          "word:sha256:5d94797ed9533895c54386e3a6d74925a0771f1229bed76c0e0ab3c2c86bdf52"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-phoneme-graphie:production-coude",
+        "skillId": "associer_phoneme_graphie_frequente::writing-controlled-production",
+        "mode": "production",
+        "contextId": "phoneme-graphie:production-coude",
+        "evidenceFeatures": [
+          "phoneme-graphie:ou"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:4a2e0e3359d2e526390652b537d671e6aeefec9ab4e40d8fc1d43e6de3c109ed",
+          "word:sha256:cc2bf7323ec7a2c363de9b9feb56c3c1df5cd73601c310b9d1ba9cf747aa0ad9"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:4a2e0e3359d2e526390652b537d671e6aeefec9ab4e40d8fc1d43e6de3c109ed",
+          "word:sha256:cc2bf7323ec7a2c363de9b9feb56c3c1df5cd73601c310b9d1ba9cf747aa0ad9"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-phoneme-graphie:production-foule",
+        "skillId": "associer_phoneme_graphie_frequente::writing-controlled-production",
+        "mode": "production",
+        "contextId": "phoneme-graphie:production-foule",
+        "evidenceFeatures": [
+          "phoneme-graphie:ou"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:fb966f0649896cdab99815c0d15f6f3c62fd4bcfa7d33f81894bfccd7979b117",
+          "word:sha256:aa17300d0d433f0943760706f4866a3c825cd26aeae3ef566dda06cb4b8d0b61"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:fb966f0649896cdab99815c0d15f6f3c62fd4bcfa7d33f81894bfccd7979b117",
+          "word:sha256:aa17300d0d433f0943760706f4866a3c825cd26aeae3ef566dda06cb4b8d0b61"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-phoneme-graphie:production-jour",
+        "skillId": "associer_phoneme_graphie_frequente::writing-controlled-production",
+        "mode": "production",
+        "contextId": "phoneme-graphie:production-jour",
+        "evidenceFeatures": [
+          "phoneme-graphie:ou"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:408abb696dbe652008797ae8d5490c8921c486bde9ad63c9504c29231689dad7",
+          "word:sha256:8ffe762deda863de5671e64e8cf3a93436162d2a782c9e7f8f4fbbd89357cca1"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:408abb696dbe652008797ae8d5490c8921c486bde9ad63c9504c29231689dad7",
+          "word:sha256:8ffe762deda863de5671e64e8cf3a93436162d2a782c9e7f8f4fbbd89357cca1"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-phoneme-graphie:production-boule",
+        "skillId": "associer_phoneme_graphie_frequente::writing-controlled-production",
+        "mode": "production",
+        "contextId": "phoneme-graphie:production-boule",
+        "evidenceFeatures": [
+          "phoneme-graphie:ou"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:6e057c239b4d6017cbc5b4e994724a69144daf9ba7987f9bf5dd5b0d1969641f",
+          "word:sha256:3b0021d6cb2fb12c286c0192087abe78f49f8c016a262cbead69cfc3b517dac3"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:6e057c239b4d6017cbc5b4e994724a69144daf9ba7987f9bf5dd5b0d1969641f",
+          "word:sha256:3b0021d6cb2fb12c286c0192087abe78f49f8c016a262cbead69cfc3b517dac3"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-phoneme-graphie:production-pignon",
+        "skillId": "associer_phoneme_graphie_frequente::writing-controlled-production",
+        "mode": "production",
+        "contextId": "phoneme-graphie:production-pignon",
+        "evidenceFeatures": [
+          "phoneme-graphie:gn"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:a4df48de67d2a7d3695861763868cc197056cef8bb2b7230a9af3eb6105665e3",
+          "word:sha256:aaaea917da31ca4f25ae80f8f85e068ca7320623d6c841af1ab2431d4bf4a811"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:a4df48de67d2a7d3695861763868cc197056cef8bb2b7230a9af3eb6105665e3",
+          "word:sha256:aaaea917da31ca4f25ae80f8f85e068ca7320623d6c841af1ab2431d4bf4a811"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-phoneme-graphie:production-rossignol",
+        "skillId": "associer_phoneme_graphie_frequente::writing-controlled-production",
+        "mode": "production",
+        "contextId": "phoneme-graphie:production-rossignol",
+        "evidenceFeatures": [
+          "phoneme-graphie:gn"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:d0d4a948dcc0fb352476da9f392c2e1881986acdce3557ac65acf7482394ed2c",
+          "word:sha256:7f4e7a3398d3e72191f658409506254fe6b558bf477133724e1570ccec78d70a"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:d0d4a948dcc0fb352476da9f392c2e1881986acdce3557ac65acf7482394ed2c",
+          "word:sha256:7f4e7a3398d3e72191f658409506254fe6b558bf477133724e1570ccec78d70a"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-phoneme-graphie:production-compagnon",
+        "skillId": "associer_phoneme_graphie_frequente::writing-controlled-production",
+        "mode": "production",
+        "contextId": "phoneme-graphie:production-compagnon",
+        "evidenceFeatures": [
+          "phoneme-graphie:gn"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:f676c06804c5c0c637e216b1b58b3214ef8c5a4e9d36c80a857efa963bdf5ff8",
+          "word:sha256:d6259821ce44725ba19ebe98fbd81ba51a1b5ea3d2541e6a0a44b991ef2cc018"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:f676c06804c5c0c637e216b1b58b3214ef8c5a4e9d36c80a857efa963bdf5ff8",
+          "word:sha256:d6259821ce44725ba19ebe98fbd81ba51a1b5ea3d2541e6a0a44b991ef2cc018"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-phoneme-graphie:production-soigner",
+        "skillId": "associer_phoneme_graphie_frequente::writing-controlled-production",
+        "mode": "production",
+        "contextId": "phoneme-graphie:production-soigner",
+        "evidenceFeatures": [
+          "phoneme-graphie:gn"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:07c7ce26f6d4b68307abefbb04a909483e9a7fe1ea7a39140c5e8ddca3cb9dea",
+          "word:sha256:3863421639383881dd6a08a1d9fe2ee1c3e71070fec5dd6b8407ba731b6721a7"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:07c7ce26f6d4b68307abefbb04a909483e9a7fe1ea7a39140c5e8ddca3cb9dea",
+          "word:sha256:3863421639383881dd6a08a1d9fe2ee1c3e71070fec5dd6b8407ba731b6721a7"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-phoneme-graphie:production-facile",
+        "skillId": "associer_phoneme_graphie_frequente::writing-controlled-production",
+        "mode": "production",
+        "contextId": "phoneme-graphie:production-facile",
+        "evidenceFeatures": [
+          "phoneme-graphie:f"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:96199e7604623e6eea38de9da08203fa770220a8d22775f0f7e208accbd24e7b",
+          "word:sha256:75bb8455dc8fc77d3054ee1744c91f1684d0927c021879106e83fca092734265"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:96199e7604623e6eea38de9da08203fa770220a8d22775f0f7e208accbd24e7b",
+          "word:sha256:75bb8455dc8fc77d3054ee1744c91f1684d0927c021879106e83fca092734265"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "initial"
+      },
+      {
+        "id": "v3-phoneme-graphie:production-figure",
+        "skillId": "associer_phoneme_graphie_frequente::writing-controlled-production",
+        "mode": "production",
+        "contextId": "phoneme-graphie:production-figure",
+        "evidenceFeatures": [
+          "phoneme-graphie:f"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:361c9d9d31a6c282a8d5be9da0be29bc3009c8d78114d29c465baad0cda13fbf",
+          "word:sha256:85385c11e1397b76df2bbbca5c762478e9838e1e7406cc7ede9acae1d3a03535"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:361c9d9d31a6c282a8d5be9da0be29bc3009c8d78114d29c465baad0cda13fbf",
+          "word:sha256:85385c11e1397b76df2bbbca5c762478e9838e1e7406cc7ede9acae1d3a03535"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-phoneme-graphie:production-force",
+        "skillId": "associer_phoneme_graphie_frequente::writing-controlled-production",
+        "mode": "production",
+        "contextId": "phoneme-graphie:production-force",
+        "evidenceFeatures": [
+          "phoneme-graphie:f"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:c054c96c10580ab63c7710dca34f8a61b19a01ccd937653ea1d47499890e4628",
+          "word:sha256:34b3b0c3e1494767d063ef953e44243206ee61a81730dd0c6440a069e8e45040"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:c054c96c10580ab63c7710dca34f8a61b19a01ccd937653ea1d47499890e4628",
+          "word:sha256:34b3b0c3e1494767d063ef953e44243206ee61a81730dd0c6440a069e8e45040"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
+      },
+      {
+        "id": "v3-phoneme-graphie:production-froid",
+        "skillId": "associer_phoneme_graphie_frequente::writing-controlled-production",
+        "mode": "production",
+        "contextId": "phoneme-graphie:production-froid",
+        "evidenceFeatures": [
+          "phoneme-graphie:f"
+        ],
+        "difficulty": 0.5,
+        "expectedSeconds": 32,
+        "guessProbability": 0.25,
+        "textualSupportAssessed": false,
+        "materialKeys": [
+          "audio:sha256:46da5b4cdee6bc7f72b2dd1c707fe2eebf6ee1b1d947b79ad1f7e9246b9c935a",
+          "word:sha256:0004b6f3275bc1d6eec23fdbcb00d5a708db151d87831d2655de839421e764d7"
+        ],
+        "assessedMaterialKeys": [
+          "audio:sha256:46da5b4cdee6bc7f72b2dd1c707fe2eebf6ee1b1d947b79ad1f7e9246b9c935a",
+          "word:sha256:0004b6f3275bc1d6eec23fdbcb00d5a708db151d87831d2655de839421e764d7"
+        ],
+        "contrastingErrorKeys": [],
+        "negativeExampleAssessed": false,
+        "usage": "learning"
       },
       {
         "id": "v3-cedille:recognition-garçon",
@@ -138597,7 +140277,7 @@
       }
     ],
     "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
-    "bankChecksum": "sha256:3b9a4a98984ce8cdfa1350ca0d3ed975a0758d2d5c3ee9e1560959c7716872fc",
+    "bankChecksum": "sha256:67ccba90a07037c24544e3602fb2640667a1a48a36546829a389caf839c52966",
     "unsupportedEvidenceItemKeys": [
       "local-reading-v1:inferer_chronologie_implicite:receptive:foundation",
       "local-reading-v1:inferer_chronologie_implicite:receptive:core",
@@ -138606,13 +140286,15 @@
       "local-reading-v1:relier_preuve_interpretation:controlled_production:stretch",
       "local-reading-v1:distinguer_preuve_connaissance_externe:receptive:foundation",
       "local-reading-v1:distinguer_preuve_connaissance_externe:receptive:core",
-      "local-reading-v1:distinguer_preuve_connaissance_externe:receptive:stretch"
+      "local-reading-v1:distinguer_preuve_connaissance_externe:receptive:stretch",
+      "local-spelling-v1:associer_phoneme_graphie_frequente:controlled_production:foundation",
+      "local-spelling-v1:associer_phoneme_graphie_frequente:receptive:core"
     ],
     "reviewPolicy": {
       "mode": "parallel_review",
       "authorization": "product-owner-request-2026-09-11",
       "reviewOwner": "product_owner",
-      "bankChecksum": "sha256:3b9a4a98984ce8cdfa1350ca0d3ed975a0758d2d5c3ee9e1560959c7716872fc",
+      "bankChecksum": "sha256:67ccba90a07037c24544e3602fb2640667a1a48a36546829a389caf839c52966",
       "questionChecksums": {
         "review-draft-v1:construction_pronom_relatif:controlled_production:foundation": "sha256:2731933f71f4a1408115b2457d07ee69469fdac2e7a6e57fb69c112e2a0c32dc",
         "review-draft-v1:construction_pronom_relatif:controlled_production:core": "sha256:d8b92f78c30ddfa7d1598405eb512dce2f2b476fdd151dd3a79c9476a729cc56",
@@ -138639,6 +140321,70 @@
         "local-reading-v1:inferer_chronologie_implicite:receptive:core": "sha256:1506b1e15cc6621d9641d32bc5492dedc8722adab2c2817e2d6275c4e3368d04",
         "local-reading-v1:inferer_chronologie_implicite:receptive:stretch": "sha256:7e58f0641d4689f6fc76075593b096545283f8b2420fe4b8993ef8b84c41e3d0",
         "local-reading-v1:comparer_points_de_vue:controlled_production:foundation": "sha256:ae4349e0976e050d52019208e3ff5a7e8d70685ac640242aadca852c6bed8e9d",
+        "v3-phoneme-graphie:recognition-chat": "sha256:698aa2c73e3100f461594c6d13577df1cc1c4dade2245ead91aa0ed73d2c2880",
+        "v3-phoneme-graphie:recognition-chou": "sha256:029ea6ad051142436a9c1b77947cd6d38912e34feb0f697383809214d444eca4",
+        "v3-phoneme-graphie:recognition-chemin": "sha256:295b1525b65faa46af5fda4a52d3d56e8f071d3d5547922b7be665fdc17a5fd9",
+        "v3-phoneme-graphie:recognition-mouche": "sha256:69d8eb4ae27c3402ff36faf49eb187c798d96a58b44f28b58c8909ebd2a546a0",
+        "v3-phoneme-graphie:recognition-loup": "sha256:e08546f4c494b25454b330cda242680738b75a82326c6f78f0767f62cc7b289d",
+        "v3-phoneme-graphie:recognition-roue": "sha256:d816b5178e92b61ee20afa45c25a54128b23a969eff18b52010a8fb0426215de",
+        "v3-phoneme-graphie:recognition-poule": "sha256:c38479a8d017b7b019b9267eb2df97e5d31efde01e986cac92654c25cfb7d586",
+        "v3-phoneme-graphie:recognition-mouton": "sha256:88c0702971097afe2fda4d3a348ef71f661c40e1082e25c74cf8d0c58c5c9f93",
+        "v3-phoneme-graphie:recognition-ligne": "sha256:3a848c964829ec07131586ea1c7808cb204e6a919632ec71a9a9b50576b10292",
+        "v3-phoneme-graphie:recognition-vigne": "sha256:653eaf58b419bc3dad29b863bd9238315ae2a8fb7f602bf2d608c0687ac0b904",
+        "v3-phoneme-graphie:recognition-signe": "sha256:be9f8a1394190a282f1fe7fe41fe357682acdc26333d88dbbfe437d70fa9b581",
+        "v3-phoneme-graphie:recognition-peigne": "sha256:27981f51ada8c6ed2e7ae525e917d639d1ecf4391d03eb2305903e311def5bda",
+        "v3-phoneme-graphie:recognition-fumée": "sha256:bb4d8ada83c39cfa4256668dc5863aa089fe4faf58c98adeb74c95116f21ebe6",
+        "v3-phoneme-graphie:recognition-fée": "sha256:bf898f459c1a93f08a025c9923d3e9a49faf1c81caf4abe99548292da7e6612d",
+        "v3-phoneme-graphie:recognition-fourmi": "sha256:5a6924557c5174120fd09600e7eaaafb1907c08a7cd44614c5221c81912967ae",
+        "v3-phoneme-graphie:recognition-filet": "sha256:f2c2e1cba7d419dcc7123d3742eac145d45ea6c93daf07c50248bd1f2a2e1b17",
+        "v3-phoneme-graphie:recognition-chaise": "sha256:81d27fc27a036683357306439a0d5fc15d2aca5061276524b21d5864c36c1b76",
+        "v3-phoneme-graphie:recognition-chaton": "sha256:2d1fcc7a327bb2bd80386331ef792e33982826cdd9c444a038bf5728d3d1fc88",
+        "v3-phoneme-graphie:recognition-roche": "sha256:4c2df271177f6305982eb1c625ca29f06b87c481a4bd602f4d0f87fe44310666",
+        "v3-phoneme-graphie:recognition-vache": "sha256:9a1845101db6e60d0ecf2caa377e7f76f5e502bf57d117a76633f4dcadc64746",
+        "v3-phoneme-graphie:recognition-bouche": "sha256:8a556d6305ea87b25e5827eaae932a7e10cad28a3347e31eee5a6e42b021beaa",
+        "v3-phoneme-graphie:recognition-soupe": "sha256:5ce31544eb25f2c97989d42734ed7b785d9e8eb28f2ea8b888316f43687bb84e",
+        "v3-phoneme-graphie:recognition-tour": "sha256:4ac6552d2f55a29e27e5f806a81314f2f0bc216b37904d04a10d8de037c56e45",
+        "v3-phoneme-graphie:recognition-ours": "sha256:f97c2640cb7f59c536b92cb66870402b87048f37c29c391ffd9342886537e4eb",
+        "v3-phoneme-graphie:recognition-agneau": "sha256:dcd8f714d0fd209021c180b2e4afb9ec0d3fc41ff5ebc6e35d0635b9d12c5e8a",
+        "v3-phoneme-graphie:recognition-araignée": "sha256:d93c5bcf489349374735a7d2b0dcdeb87db2e6d3327de59591dbb04089e645a9",
+        "v3-phoneme-graphie:recognition-poignet": "sha256:35008fddf928b0736aab8af55c438e8f43cded1081feaad362296f008612d385",
+        "v3-phoneme-graphie:recognition-beignet": "sha256:60181d36c81e08e0cf22c0ee74ab284dcd3989e3443c563c14964f13c9b0d24e",
+        "v3-phoneme-graphie:recognition-fromage": "sha256:03a6768f371da73762fd55268038f5a07952939a0db70c956f063ad1de13514b",
+        "v3-phoneme-graphie:recognition-fenêtre": "sha256:0c2d330c097950f38381e424777f470363721e6adb4e7943c660588cbe675c83",
+        "v3-phoneme-graphie:recognition-fleur": "sha256:e43ba11d900ca80d269764384e69d11a89f15712ccb3a0fb5e0b222e3ebb7018",
+        "v3-phoneme-graphie:recognition-fruit": "sha256:b22291585e1797401703c06e588f8ee3c57d1d091f61032fd71160faed1f5185",
+        "v3-phoneme-graphie:production-riche": "sha256:91419dd7938c3ab436a9e1b490dc99429dd9456399cbd82175a12ba8cc45e342",
+        "v3-phoneme-graphie:production-ruche": "sha256:15f543716aa11f26a70cb50a4fe2ab9c30551d945756f73748f3941780df1044",
+        "v3-phoneme-graphie:production-poche": "sha256:63b5c929afd2ad635947f480fe7a9c9e0b066b30d2b76cc3fcd12d439f379bb1",
+        "v3-phoneme-graphie:production-branche": "sha256:64e1ae22ca86d638b837fe28acd4933b77f5f1508798970ca760f72560bd1959",
+        "v3-phoneme-graphie:production-route": "sha256:023ad9304a371ccd28f00bc8a6d6cc063ca647f554a51ffd156640f45a90be79",
+        "v3-phoneme-graphie:production-genou": "sha256:63be3019a76295c49d1d6bb7e83b112455e06a70792d54126680f086ac798e22",
+        "v3-phoneme-graphie:production-hibou": "sha256:89de41a0087cdb50008d8e183dafecf9ddaad721038ca873b5b82e0fba8c4dc6",
+        "v3-phoneme-graphie:production-bougie": "sha256:457fe90f597a3c46206f7e0b8421a7ffb62dafcbc3637dd84be6c253235b4f3d",
+        "v3-phoneme-graphie:production-montagne": "sha256:d07e8bd2c5a1e449d79389f523318697824081bb9d8c9e676f2964fb7f9f1420",
+        "v3-phoneme-graphie:production-champignon": "sha256:018c79c30c507255bb5bf887aaea56912d75688c16c1f2f9802dd125399434ed",
+        "v3-phoneme-graphie:production-baignoire": "sha256:0f9651823fd1d32aa3b857f26b80be7128e8726c849b2c1c44dd292e384892dd",
+        "v3-phoneme-graphie:production-poignée": "sha256:25385842978046339686d75c7e8ead488bb153a397d3104f24c8af909f9bae40",
+        "v3-phoneme-graphie:production-farine": "sha256:11775b1a095318d4e24e8187b4307b5b46aa9c10032a169e60b41cffce2bce4b",
+        "v3-phoneme-graphie:production-forêt": "sha256:279025a0bb42172132c4dada7d1624d2ab22d6fa931c7bac233930b29fa5db59",
+        "v3-phoneme-graphie:production-ferme": "sha256:107ef6e583656d38b9dd115c793d107f7d2c6fa9bdfbedf1bf1c9d26b1ff0ec2",
+        "v3-phoneme-graphie:production-flaque": "sha256:fe78682c9d9bf954bfad4dcfbd8f9882be7e28972422e642a0f344eb5e3fd4d7",
+        "v3-phoneme-graphie:production-chute": "sha256:20b6e0cae12ce6516800736ceb42b259ca9408fa99812d127fb3e9f30ad2af16",
+        "v3-phoneme-graphie:production-chasse": "sha256:04a394c9d7e03076b834f4c801feb55f0a5ea01e753f97e9eac580e794669c89",
+        "v3-phoneme-graphie:production-cloche": "sha256:c8666b4f2cb3bf535f95030ec2618a3dd013f15037a0b8defb0b383ecc21fb61",
+        "v3-phoneme-graphie:production-planche": "sha256:f122f548e609e4bf7376394db74ed247b87b6824ac52bce0731b9dd2b470db9c",
+        "v3-phoneme-graphie:production-coude": "sha256:39aaf2d84fc826588b26fad6d808ed215e2181f346c48f22c4934017e172ef52",
+        "v3-phoneme-graphie:production-foule": "sha256:2b961b0b67219ffd9ce623660732849fe9ea69fc4df8a58182d57a727dbb2b6d",
+        "v3-phoneme-graphie:production-jour": "sha256:465ddaf392914b4c4d18e5e85e3b42a2d8e77b6c8f19351422d6d5a55764a979",
+        "v3-phoneme-graphie:production-boule": "sha256:6da8fdf559a2cf2689ccb015d72b41ff6c62350b1d53e0ded1cc216e52ec79b3",
+        "v3-phoneme-graphie:production-pignon": "sha256:70899c3dca1017ec22acce0990990ea5af69e61148cc1066afdb0a01394334cd",
+        "v3-phoneme-graphie:production-rossignol": "sha256:9fbbf32a486340b68171f4d32e08226742127dac5c2decf166daf260ea696eb7",
+        "v3-phoneme-graphie:production-compagnon": "sha256:ca46141aeb6518c055da2f29d999268f7da427a5b78195a53cc3002fc0828543",
+        "v3-phoneme-graphie:production-soigner": "sha256:6c9e99710f2dfc1979d7b4fdc0edddea4a1e33b520322c5b9c6735d342dcd090",
+        "v3-phoneme-graphie:production-facile": "sha256:518c8f5919f501ce51b699d861b67ef4ebb4c5e057960e930f8c4d2b653d1ca1",
+        "v3-phoneme-graphie:production-figure": "sha256:c062d991510bd3f7d298ee0082410e9a117d72fc2477df9e8fcda598c2ef2326",
+        "v3-phoneme-graphie:production-force": "sha256:baa7fe2334eabb71aecb08f1512e923fe0a3286839e80e13bf7c2051ce2f64ca",
+        "v3-phoneme-graphie:production-froid": "sha256:236962be574ee5c1b3df1861194c411fb86f38ee1b4c36b7a08ad7156736e2f9",
         "v3-cedille:recognition-garçon": "sha256:cd7f5647e1284bbc908f242c7e872916547f479244cadfcfc7ba628c4fdc79d2",
         "v3-cedille:recognition-leçon": "sha256:781e3a5fba0c506b4079243f7bc3e8c4a4afa12ac9f408a5bfc0ab2345e72b29",
         "v3-cedille:recognition-façade": "sha256:2f223d69f47e688a5adf479fe6bfe30b85e4ffdc84e3da139f7821ab83282ac3",
@@ -144079,8 +145825,10 @@
         "v3-y-en:en_thing-18": "sha256:1de3bba6c34a338f57ee6b482b6a389ca0b053f6059a6c16d61d4a97fc48e58d"
       },
       "teachingChecksums": {
-        "french-v3-teaching:cedille:recognition": "sha256:8fe485eec733abf7fc04bf5ced94ca1a741f3bda9f873e5f14cd0089b372e0ba",
-        "french-v3-teaching:cedille:production": "sha256:92770fcb3caef4927ecb873deb7b6953f7422d7aca7d1773b6c00de7abe19135",
+        "french-v3-teaching:phoneme-graphie:recognition": "sha256:26afc453b6417bebd9d3a752cdae9f830441166abc4fe45b5b8ae1fe715474b4",
+        "french-v3-teaching:phoneme-graphie:production": "sha256:52714cc74e05cc945c0e46574026ee2c614ccc733f46acaa39a2f10dd8f56022",
+        "french-v3-teaching:cedille:recognition": "sha256:97beafccfd96ef25c41f53adb77c1ca40895d60bb130b9661380e9df59eba0c8",
+        "french-v3-teaching:cedille:production": "sha256:6ea80605cfb55cc2a05d76a959c27327e80e2074dd24df42ea872bc95a0d062f",
         "french-v3-teaching:plus-que-parfait:pattern:regular_er": "sha256:5d099d20cbdf69c26015a8730d3ee8c1ae8da3f841f652263cbfe90ec55425ee",
         "french-v3-teaching:plus-que-parfait:pattern:regular_ir": "sha256:7980b6a88b7613f3d04dd1e72f19ba85f2862572426dec5e728a0e4ec4648954",
         "french-v3-teaching:plus-que-parfait:pattern:spelling_ger": "sha256:a4d8c8fe13f1a341e9d24d6be31358bffd6e73f9b0176e984ed239a09972f678",
@@ -144310,7 +146058,7 @@
         "french-v3-teaching:reading:deduire_mot_definition_locale:informational": "sha256:c4dee6b893c5f68f878d6636edae0a93da16eb925bc06935c746d5014acca6ea",
         "french-v3-teaching:reading:deduire_mot_exemple_contraste:informational": "sha256:34779c9c2d5280db99a752ce3dfb5a7e5d60cc705f6a4df1492dd6bc2afdbaba",
         "spelling-m-before-mbp": "sha256:79cbda89c30a00a73cfd9fe2c6fd9dd0354a387d9fb0143de793126531cb7045",
-        "spelling-regular-plural": "sha256:b9099b68aa2a457dbe742b788aa2d99b73bf4b8d140360e63e655e4c8cfdb6f7",
+        "spelling-regular-plural": "sha256:89bcf3e57e460a5dfaf78b9d63a6a7037b907d935537ffe5a37ffe37868bf4a4",
         "spelling-regular-feminine": "sha256:998cc3a873427484c1f460cd5ff09a7720b2d56dd2aabc651f73e26a838ed660",
         "french-v3-teaching:present:pattern:regular_er": "sha256:673dba63414e59cc18690b036299e94993adfdcde9325d8f5cb13128aba8e8f6",
         "french-v3-teaching:present:pattern:regular_ir": "sha256:f60d92ee4bd3a8e7833e00c2de5645ab5070686e51730c56fe79ab173f5c3997",
@@ -144332,8 +146080,8 @@
         "french-v3-teaching:present:verb:devoir": "sha256:c2235bf177eb98d976fe547ce3beff1d3ef3f2697fea741d08711af501851ae9"
       }
     },
-    "facetChecksum": "sha256:992870f268149d40a162da3b9ff4bd26c463678757f6855fb325e2957dde6768",
-    "poolChecksum": "sha256:78bc5f7dbb7bb957aa1a73bef02d558dd1ce58cf03d7110c8de93c5ac8a05a46"
+    "facetChecksum": "sha256:af0a849c9f49821ced7b8e803680ce8f25989a6a7c0f031336295d2be4e3a669",
+    "poolChecksum": "sha256:ffa8b97cbf81bf78c8c8397775b77b2d587899cfb8b824c5a311d53902aacc09"
   },
   "poolCoverage": [
     {
@@ -147095,16 +148843,18 @@
     {
       "skillId": "associer_phoneme_graphie_frequente::reading-receptive",
       "mode": "recognition",
-      "status": "insufficient_coverage",
-      "initialItems": 1,
-      "learningItems": 0
+      "status": "allocated",
+      "initialItems": 16,
+      "learningItems": 16,
+      "excludedQuestionIds": []
     },
     {
       "skillId": "associer_phoneme_graphie_frequente::writing-controlled-production",
       "mode": "production",
-      "status": "insufficient_coverage",
-      "initialItems": 1,
-      "learningItems": 0
+      "status": "allocated",
+      "initialItems": 16,
+      "learningItems": 16,
+      "excludedQuestionIds": []
     },
     {
       "skillId": "orthographier_o_au_eau::reading-receptive",
@@ -153804,6 +155554,62 @@
       "estimatedMinutes": 1
     },
     {
+      "id": "b052812a-9c9f-592d-aa2a-3fb4d9fac6a5",
+      "nodeKey": "associer_phoneme_graphie_frequente",
+      "mode": "recognition",
+      "kind": "independent_check",
+      "status": "draft",
+      "titleFr": "Associer un phonème à une graphie fréquente",
+      "href": "/student/diagnostic",
+      "probeIds": [
+        "v3-phoneme-graphie:recognition-araignée",
+        "v3-phoneme-graphie:recognition-chat",
+        "v3-phoneme-graphie:recognition-chemin",
+        "v3-phoneme-graphie:recognition-fenêtre",
+        "v3-phoneme-graphie:recognition-fleur",
+        "v3-phoneme-graphie:recognition-fromage",
+        "v3-phoneme-graphie:recognition-fumée",
+        "v3-phoneme-graphie:recognition-ligne",
+        "v3-phoneme-graphie:recognition-loup",
+        "v3-phoneme-graphie:recognition-mouche",
+        "v3-phoneme-graphie:recognition-ours",
+        "v3-phoneme-graphie:recognition-poignet",
+        "v3-phoneme-graphie:recognition-roue",
+        "v3-phoneme-graphie:recognition-tour",
+        "v3-phoneme-graphie:recognition-vache",
+        "v3-phoneme-graphie:recognition-vigne"
+      ],
+      "estimatedMinutes": 1
+    },
+    {
+      "id": "f00d144a-8204-5108-82da-d3c548079641",
+      "nodeKey": "associer_phoneme_graphie_frequente",
+      "mode": "production",
+      "kind": "independent_check",
+      "status": "draft",
+      "titleFr": "Associer un phonème à une graphie fréquente",
+      "href": "/student/diagnostic",
+      "probeIds": [
+        "v3-phoneme-graphie:production-boule",
+        "v3-phoneme-graphie:production-champignon",
+        "v3-phoneme-graphie:production-chasse",
+        "v3-phoneme-graphie:production-cloche",
+        "v3-phoneme-graphie:production-farine",
+        "v3-phoneme-graphie:production-figure",
+        "v3-phoneme-graphie:production-force",
+        "v3-phoneme-graphie:production-foule",
+        "v3-phoneme-graphie:production-froid",
+        "v3-phoneme-graphie:production-hibou",
+        "v3-phoneme-graphie:production-montagne",
+        "v3-phoneme-graphie:production-poche",
+        "v3-phoneme-graphie:production-poignée",
+        "v3-phoneme-graphie:production-route",
+        "v3-phoneme-graphie:production-ruche",
+        "v3-phoneme-graphie:production-soigner"
+      ],
+      "estimatedMinutes": 1
+    },
+    {
       "id": "b11c49a1-ebbe-5fdd-a54c-14f8aa60d1ad",
       "nodeKey": "orthographier_nasale_on_om",
       "mode": "recognition",
@@ -154635,6 +156441,316 @@
   ],
   "teachingContent": [
     {
+      "id": "french-v3-teaching:phoneme-graphie:recognition",
+      "nodeKey": "associer_phoneme_graphie_frequente",
+      "mode": "recognition",
+      "status": "published_pending_review",
+      "titleFr": "Relier un son aux lettres du mot",
+      "learnerQuestionFr": "Quelles lettres correspondent au son que tu entends ?",
+      "steps": [
+        {
+          "exampleFr": "cheval → ch",
+          "audioStimulus": {
+            "sha256": "sha256:1530c37de8af8a924d74430d69fbb860575d0ef5a299722f33e2fd8616d73c9b",
+            "durationMs": 1598,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "explanationFr": "Écoute « cheval » en regardant le mot. Les lettres ch représentent le son que tu vas retrouver dans un autre mot. Plusieurs lettres peuvent représenter un seul son."
+        },
+        {
+          "exampleFr": "souris → ou",
+          "audioStimulus": {
+            "sha256": "sha256:04b40ba7bb68c5b6cb4ebcc50aeb5c21d054d3ea6bd78241d3730618fa3e04f7",
+            "durationMs": 1389,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "explanationFr": "Écoute « souris » en regardant le mot. Les lettres ou représentent le son que tu vas retrouver dans un autre mot. Plusieurs lettres peuvent représenter un seul son."
+        },
+        {
+          "exampleFr": "campagne → gn",
+          "audioStimulus": {
+            "sha256": "sha256:4195e5db165db54202dd1d9115f900e430003977bdcf9e5e7790004ac7c427cc",
+            "durationMs": 1714,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "explanationFr": "Écoute « campagne » en regardant le mot. Les lettres gn représentent le son que tu vas retrouver dans un autre mot. Plusieurs lettres peuvent représenter un seul son."
+        },
+        {
+          "exampleFr": "fusée → f",
+          "audioStimulus": {
+            "sha256": "sha256:3a04725fa59bf8343ea3d056dd72898e3595d4eeb1b98c53775430847e0829eb",
+            "durationMs": 1459,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "explanationFr": "Écoute « fusée » en regardant le mot. Les lettres f représentent le son que tu vas retrouver dans un autre mot. Ici, une seule lettre représente ce son."
+        }
+      ],
+      "practice": [
+        {
+          "id": "phoneme-graphie:recognition:guided-0",
+          "audioStimulus": {
+            "sha256": "sha256:d220c93ea5e8d273d32234addc251df17949098be58ab43f03c3e6c58f53b077",
+            "durationMs": 1494,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "promptFr": "Écoute le mot, puis complète : ni___e\nChoisis le mot entendu.",
+          "choices": [
+            "niche",
+            "nioue",
+            "nigne",
+            "nife"
+          ],
+          "answerFr": "niche",
+          "hintFr": "Réécoute le mot. Compare le son manquant aux exemples de la leçon : ch, ou, gn ou f.",
+          "explanationFr": "Le mot entendu est « niche ». À la place du blanc, on écrit ch."
+        },
+        {
+          "id": "phoneme-graphie:recognition:guided-1",
+          "audioStimulus": {
+            "sha256": "sha256:84f4efd47850d569185c6dcb502b8e5aa9d8bd91d7840b993253f0ff7f0fe32e",
+            "durationMs": 1424,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "promptFr": "Écoute le mot, puis complète : ___rson\nChoisis le mot entendu.",
+          "choices": [
+            "chrson",
+            "ourson",
+            "gnrson",
+            "frson"
+          ],
+          "answerFr": "ourson",
+          "hintFr": "Réécoute le mot. Compare le son manquant aux exemples de la leçon : ch, ou, gn ou f.",
+          "explanationFr": "Le mot entendu est « ourson ». À la place du blanc, on écrit ou."
+        },
+        {
+          "id": "phoneme-graphie:recognition:guided-2",
+          "audioStimulus": {
+            "sha256": "sha256:1e29127b71a8d3056496b5f373e8117c7ce76113e176823de045381e2da5f35a",
+            "durationMs": 1703,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "promptFr": "Écoute le mot, puis complète : châtai___e\nChoisis le mot entendu.",
+          "choices": [
+            "châtaiche",
+            "châtaioue",
+            "châtaigne",
+            "châtaife"
+          ],
+          "answerFr": "châtaigne",
+          "hintFr": "Réécoute le mot. Compare le son manquant aux exemples de la leçon : ch, ou, gn ou f.",
+          "explanationFr": "Le mot entendu est « châtaigne ». À la place du blanc, on écrit gn."
+        },
+        {
+          "id": "phoneme-graphie:recognition:guided-3",
+          "audioStimulus": {
+            "sha256": "sha256:c3dd21a4c4be68e6913decaacde3737f7a6d5c75edfda944c85574ecaf4f0231",
+            "durationMs": 1552,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "promptFr": "Écoute le mot, puis complète : ___lûte\nChoisis le mot entendu.",
+          "choices": [
+            "chlûte",
+            "oulûte",
+            "gnlûte",
+            "flûte"
+          ],
+          "answerFr": "flûte",
+          "hintFr": "Réécoute le mot. Compare le son manquant aux exemples de la leçon : ch, ou, gn ou f.",
+          "explanationFr": "Le mot entendu est « flûte ». À la place du blanc, on écrit f."
+        }
+      ],
+      "takeawayFr": "Écoute le mot, repère le son à la place du blanc, puis retrouve les lettres qui le représentent.",
+      "boundaryFr": "Cet entraînement porte sur ch, ou, gn et f dans quelques mots. Il ne vérifie pas tous les sons du français, les autres façons de les écrire, ni une dictée complète.",
+      "materialExposure": {
+        "words": [
+          {
+            "lemma": "cheval",
+            "form": "cheval"
+          },
+          {
+            "lemma": "niche",
+            "form": "niche"
+          },
+          {
+            "lemma": "souris",
+            "form": "souris"
+          },
+          {
+            "lemma": "ourson",
+            "form": "ourson"
+          },
+          {
+            "lemma": "campagne",
+            "form": "campagne"
+          },
+          {
+            "lemma": "châtaigne",
+            "form": "châtaigne"
+          },
+          {
+            "lemma": "fusée",
+            "form": "fusée"
+          },
+          {
+            "lemma": "flûte",
+            "form": "flûte"
+          }
+        ]
+      },
+      "assessmentExposureIds": []
+    },
+    {
+      "id": "french-v3-teaching:phoneme-graphie:production",
+      "nodeKey": "associer_phoneme_graphie_frequente",
+      "mode": "production",
+      "status": "published_pending_review",
+      "titleFr": "Compléter les lettres d’un mot entendu",
+      "learnerQuestionFr": "Quelles lettres correspondent au son que tu entends ?",
+      "steps": [
+        {
+          "exampleFr": "cheval → ch",
+          "audioStimulus": {
+            "sha256": "sha256:1530c37de8af8a924d74430d69fbb860575d0ef5a299722f33e2fd8616d73c9b",
+            "durationMs": 1598,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "explanationFr": "Écoute « cheval » en regardant le mot. Les lettres ch représentent le son que tu vas retrouver dans un autre mot. Plusieurs lettres peuvent représenter un seul son."
+        },
+        {
+          "exampleFr": "souris → ou",
+          "audioStimulus": {
+            "sha256": "sha256:04b40ba7bb68c5b6cb4ebcc50aeb5c21d054d3ea6bd78241d3730618fa3e04f7",
+            "durationMs": 1389,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "explanationFr": "Écoute « souris » en regardant le mot. Les lettres ou représentent le son que tu vas retrouver dans un autre mot. Plusieurs lettres peuvent représenter un seul son."
+        },
+        {
+          "exampleFr": "campagne → gn",
+          "audioStimulus": {
+            "sha256": "sha256:4195e5db165db54202dd1d9115f900e430003977bdcf9e5e7790004ac7c427cc",
+            "durationMs": 1714,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "explanationFr": "Écoute « campagne » en regardant le mot. Les lettres gn représentent le son que tu vas retrouver dans un autre mot. Plusieurs lettres peuvent représenter un seul son."
+        },
+        {
+          "exampleFr": "fusée → f",
+          "audioStimulus": {
+            "sha256": "sha256:3a04725fa59bf8343ea3d056dd72898e3595d4eeb1b98c53775430847e0829eb",
+            "durationMs": 1459,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "explanationFr": "Écoute « fusée » en regardant le mot. Les lettres f représentent le son que tu vas retrouver dans un autre mot. Ici, une seule lettre représente ce son."
+        }
+      ],
+      "practice": [
+        {
+          "id": "phoneme-graphie:production:guided-0",
+          "audioStimulus": {
+            "sha256": "sha256:d220c93ea5e8d273d32234addc251df17949098be58ab43f03c3e6c58f53b077",
+            "durationMs": 1494,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "promptFr": "Écoute le mot, puis complète : ni___e\nÉcris le mot entier.",
+          "answerFr": "niche",
+          "hintFr": "Réécoute le mot. Compare le son manquant aux exemples de la leçon : ch, ou, gn ou f.",
+          "explanationFr": "Le mot entendu est « niche ». À la place du blanc, on écrit ch."
+        },
+        {
+          "id": "phoneme-graphie:production:guided-1",
+          "audioStimulus": {
+            "sha256": "sha256:84f4efd47850d569185c6dcb502b8e5aa9d8bd91d7840b993253f0ff7f0fe32e",
+            "durationMs": 1424,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "promptFr": "Écoute le mot, puis complète : ___rson\nÉcris le mot entier.",
+          "answerFr": "ourson",
+          "hintFr": "Réécoute le mot. Compare le son manquant aux exemples de la leçon : ch, ou, gn ou f.",
+          "explanationFr": "Le mot entendu est « ourson ». À la place du blanc, on écrit ou."
+        },
+        {
+          "id": "phoneme-graphie:production:guided-2",
+          "audioStimulus": {
+            "sha256": "sha256:1e29127b71a8d3056496b5f373e8117c7ce76113e176823de045381e2da5f35a",
+            "durationMs": 1703,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "promptFr": "Écoute le mot, puis complète : châtai___e\nÉcris le mot entier.",
+          "answerFr": "châtaigne",
+          "hintFr": "Réécoute le mot. Compare le son manquant aux exemples de la leçon : ch, ou, gn ou f.",
+          "explanationFr": "Le mot entendu est « châtaigne ». À la place du blanc, on écrit gn."
+        },
+        {
+          "id": "phoneme-graphie:production:guided-3",
+          "audioStimulus": {
+            "sha256": "sha256:c3dd21a4c4be68e6913decaacde3737f7a6d5c75edfda944c85574ecaf4f0231",
+            "durationMs": 1552,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "promptFr": "Écoute le mot, puis complète : ___lûte\nÉcris le mot entier.",
+          "answerFr": "flûte",
+          "hintFr": "Réécoute le mot. Compare le son manquant aux exemples de la leçon : ch, ou, gn ou f.",
+          "explanationFr": "Le mot entendu est « flûte ». À la place du blanc, on écrit f."
+        }
+      ],
+      "takeawayFr": "Écoute le mot, repère le son à la place du blanc, puis retrouve les lettres qui le représentent.",
+      "boundaryFr": "Cet entraînement porte sur ch, ou, gn et f dans quelques mots. Il ne vérifie pas tous les sons du français, les autres façons de les écrire, ni une dictée complète.",
+      "materialExposure": {
+        "words": [
+          {
+            "lemma": "cheval",
+            "form": "cheval"
+          },
+          {
+            "lemma": "niche",
+            "form": "niche"
+          },
+          {
+            "lemma": "souris",
+            "form": "souris"
+          },
+          {
+            "lemma": "ourson",
+            "form": "ourson"
+          },
+          {
+            "lemma": "campagne",
+            "form": "campagne"
+          },
+          {
+            "lemma": "châtaigne",
+            "form": "châtaigne"
+          },
+          {
+            "lemma": "fusée",
+            "form": "fusée"
+          },
+          {
+            "lemma": "flûte",
+            "form": "flûte"
+          }
+        ]
+      },
+      "assessmentExposureIds": []
+    },
+    {
       "id": "french-v3-teaching:cedille:recognition",
       "nodeKey": "employer_cedille",
       "mode": "recognition",
@@ -154789,7 +156905,9 @@
           }
         ]
       },
-      "assessmentExposureIds": []
+      "assessmentExposureIds": [
+        "v3-phoneme-graphie:production-facile"
+      ]
     },
     {
       "id": "french-v3-teaching:cedille:production",
@@ -154922,7 +157040,9 @@
           }
         ]
       },
-      "assessmentExposureIds": []
+      "assessmentExposureIds": [
+        "v3-phoneme-graphie:production-facile"
+      ]
     },
     {
       "id": "french-v3-teaching:plus-que-parfait:pattern:regular_er",
@@ -199111,7 +201231,9 @@
         }
       ],
       "assessmentExposureIds": [
-        "v3-on-om:production-ballon"
+        "v3-on-om:production-ballon",
+        "v3-phoneme-graphie:production-bougie",
+        "v3-phoneme-graphie:recognition-fleur"
       ]
     },
     {
@@ -203410,6 +205532,50 @@
     }
   ],
   "teachingBindings": [
+    {
+      "id": "71e664f7-4fef-5b6b-980a-243ebcdceff1",
+      "nodeKey": "associer_phoneme_graphie_frequente",
+      "mode": "recognition",
+      "kind": "instruction",
+      "status": "published",
+      "titleFr": "Relier un son aux lettres du mot",
+      "href": "/student/diagnostic",
+      "contentId": "french-v3-teaching:phoneme-graphie:recognition",
+      "estimatedMinutes": 4
+    },
+    {
+      "id": "3ffafd93-f821-5a70-ae32-8bac05f6c442",
+      "nodeKey": "associer_phoneme_graphie_frequente",
+      "mode": "recognition",
+      "kind": "practice",
+      "status": "published",
+      "titleFr": "Relier un son aux lettres du mot",
+      "href": "/student/diagnostic",
+      "contentId": "french-v3-teaching:phoneme-graphie:recognition",
+      "estimatedMinutes": 6
+    },
+    {
+      "id": "076e5856-ac15-58ec-8522-b2e27f2bb8bd",
+      "nodeKey": "associer_phoneme_graphie_frequente",
+      "mode": "production",
+      "kind": "instruction",
+      "status": "published",
+      "titleFr": "Compléter les lettres d’un mot entendu",
+      "href": "/student/diagnostic",
+      "contentId": "french-v3-teaching:phoneme-graphie:production",
+      "estimatedMinutes": 4
+    },
+    {
+      "id": "cafed09b-c255-539e-9861-6883677e1291",
+      "nodeKey": "associer_phoneme_graphie_frequente",
+      "mode": "production",
+      "kind": "practice",
+      "status": "published",
+      "titleFr": "Compléter les lettres d’un mot entendu",
+      "href": "/student/diagnostic",
+      "contentId": "french-v3-teaching:phoneme-graphie:production",
+      "estimatedMinutes": 6
+    },
     {
       "id": "26469cf3-ed5e-5d7b-b94f-22136f228bef",
       "nodeKey": "employer_cedille",
@@ -208927,6 +211093,20 @@
   ],
   "teachingReadiness": [
     {
+      "lessonId": "french-v3-teaching:phoneme-graphie:recognition",
+      "skillId": "associer_phoneme_graphie_frequente::reading-receptive",
+      "poolsAllocated": true,
+      "remainingCheckQuestions": 16,
+      "freshCheckAvailable": true
+    },
+    {
+      "lessonId": "french-v3-teaching:phoneme-graphie:production",
+      "skillId": "associer_phoneme_graphie_frequente::writing-controlled-production",
+      "poolsAllocated": true,
+      "remainingCheckQuestions": 16,
+      "freshCheckAvailable": true
+    },
+    {
       "lessonId": "french-v3-teaching:cedille:recognition",
       "skillId": "employer_cedille::reading-receptive",
       "poolsAllocated": true,
@@ -210685,8 +212865,6 @@
     }
   ],
   "teachingPrerequisiteGaps": [
-    "associer_phoneme_graphie_frequente::reading-receptive",
-    "associer_phoneme_graphie_frequente::writing-controlled-production",
     "segmenter_syllabes_ecrites::reading-receptive",
     "segmenter_syllabes_ecrites::writing-controlled-production"
   ],
@@ -210696,5 +212874,5 @@
     "Incomplete target pools remain visible; release scope and fresh post-teaching check capacity still need verification",
     "Structurally rejected content remains ineligible; semantic review continues in parallel"
   ],
-  "checksum": "sha256:adb4dba5fb7d0e9563a3f3cb5101232b564ca15e4dbbfcedfc813f4790af1d43"
+  "checksum": "sha256:6400f0aa3b5c6a6a4fbaf31d554c6cf5512644d4da7639d7cc774e83225e66da"
 }

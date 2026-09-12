@@ -36,3 +36,13 @@ Validation: 594 granular tests, TypeScript, and the actual guided React componen
 `build-phoneme-graphie-teaching.mts` binds the eight teaching recordings to two draft lessons. Each has four illustrated/audio examples and four guided exercises. Teaching and assessment words and recording hashes do not overlap. Lessons explicitly limit their claim to the four patterns and do not present this as full phonology or dictation mastery.
 
 Three focused tests verify exact assets for all 40 recordings, material separation, grading of every written alternative, one correct recognition choice, restricted guessing estimates, missing-asset rejection, and lesson coverage. TypeScript passes. The generated expansion and lessons are frozen in Git but are not registered in the global candidate catalogue yet. Next: enforce evidence across all four groups (so success on one group cannot certify the whole target), reserve fresh checks in each group, register the content, and verify complete learning journeys before publication.
+
+## Coverage contract and expanded inventory
+
+The inventory now contains 64 assessment words plus eight teaching words, with 72 frozen recordings. The expanded playback report verifies every recording and replay in Chrome; pronunciation remains pending review.
+
+Source-bound auditory questions add four evidence features (`ch`, `ou`, `gn`, `f`). Each feature requires four distinct items/contexts, retaining the approved graph's occasion, accuracy and novelty requirements. This prevents pooled success on one group from confirming the whole target. Existing banks without the auditory format retain their former requirements. Two older unannotated items are excluded only in candidate banks containing the replacement auditory format, because they cannot establish the required novel-word evidence.
+
+The fresh-material allocator now tries a balanced feature partition before its bounded search. It accepts that partition only if the existing cross-pool novelty and both pool sufficiency checks pass. This avoids a search-limit result caused by assigning all early examples of one feature to the first pool. The real candidate allocates 16 initial and 16 learning questions per response mode, with four of each feature in each pool.
+
+Both audio lessons are registered in the draft catalogue and have 16 fresh checks each. The releasable scope remains 231 targets: the graph also requires `segmenter_syllabes_ecrites` in recognition and production before these audio targets. Those prerequisite pathways still need preparation. Subsequent learning-journey verification must also check the per-skill question cap against this 16-item feature contract; the initial diagnostic may legitimately leave it unresolved within its time budget.

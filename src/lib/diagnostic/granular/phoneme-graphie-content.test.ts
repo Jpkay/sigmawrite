@@ -12,7 +12,7 @@ const expansion=read('generated/french-v3-phoneme-graphie-expansion.json') as Dr
 const lessons=buildPhonemeGraphieTeaching(read('generated/french-phoneme-graphie-audio-draft.json').assets);
 it('keeps teaching words and recordings out of independent assessment material',()=>{
  const taught=new Set(lessons.flatMap(teachingMaterialKeys));
- expect(lessons).toHaveLength(2);expect(expansion.items).toHaveLength(32);
+ expect(lessons).toHaveLength(2);expect(expansion.items).toHaveLength(64);
  for(const entry of expansion.items){
   expect(entry.reviewStatus).toBe('needs_human_review');expect(entry.review).toBeUndefined();
   const keys=questionAssessedMaterialKeys(entry.item);
@@ -21,7 +21,7 @@ it('keeps teaching words and recordings out of independent assessment material',
   expect(canonicalProbeMetrics(entry).guessProbability).toBe(.25);
  }
  const bank={...read('generated/diagnostic-bank-v3-draft.json'),items:expansion.items} as CanonicalDiagnosticBankArtifact;
- expect(assertDiagnosticAudioAssets(bank,undefined,lessons).verifiedAudioAssets).toBe(40);
+ expect(assertDiagnosticAudioAssets(bank,undefined,lessons).verifiedAudioAssets).toBe(72);
 });
 it('grades each written sound contrast and has one correct recognition choice',async()=>{
  for(const entry of expansion.items){

@@ -4,13 +4,13 @@ import {expect,it} from 'vitest';
 import {PHONEME_GRAPHIE_DRAFTS as drafts,PHONEME_GRAPHIE_TEACHING_WORDS as teaching} from './phoneme-graphie-drafts';
 const manifest=JSON.parse(readFileSync('generated/french-phoneme-graphie-audio-draft.json','utf8'));
 it('uses distinct words and sound groups in recognition and production',()=>{
- expect(drafts).toHaveLength(32);expect(new Set(drafts.map(d=>d.word)).size).toBe(32);
- for(const mode of ['recognition','production'])for(const group of ['ch','ou','gn','f'])expect(drafts.filter(d=>d.mode===mode&&d.group===group)).toHaveLength(4);
+ expect(drafts).toHaveLength(64);expect(new Set(drafts.map(d=>d.word)).size).toBe(64);
+ for(const mode of ['recognition','production'])for(const group of ['ch','ou','gn','f'])expect(drafts.filter(d=>d.mode===mode&&d.group===group)).toHaveLength(8);
  for(const row of drafts)expect(row.masked.replace('___',row.group)).toBe(row.word);
  expect(teaching.some(([word])=>drafts.some(d=>d.word===word))).toBe(false);
 });
 it('has exact versioned audio bytes without homophone reuse across teaching and assessment',()=>{
- expect(manifest.assets).toHaveLength(40);
+ expect(manifest.assets).toHaveLength(72);
  expect(manifest.assets.map((row:{word:string})=>row.word).sort()).toEqual([...drafts.map(row=>row.word),...teaching.map(([word])=>word)].sort());
  const hashes=new Set<string>();
  for(const row of manifest.assets){

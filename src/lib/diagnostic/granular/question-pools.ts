@@ -100,6 +100,20 @@ export function inspectQuestionPools(input:unknown):{ok:boolean;issues:string[]}
 function allocateFreshPools(probes:readonly Probe[],skill:Skill,mode:Mode,maxStates:number){
  const candidates=probes.filter(probe=>freshTogether([probe],skill,mode));
  const learningOnly=skill.assessmentStage==="learning";
+ // Multi-feature banks otherwise exhaust depth-first search by filling the
+ // first pool with every example of an early feature. Try a balanced split,
+ // but accept it only with the same novelty and sufficiency checks as search.
+ const features=skill.evidenceRequirements?.[mode]?.featureRequirements??[];
+ if(!learningOnly&&features.length>1){
+  const groups=new Map<string,Probe[]>();
+  for(const probe of candidates){
+   const signature=JSON.stringify(features.filter(f=>probe.evidenceFeatures?.includes(f.feature)).map(f=>f.feature).sort());
+   groups.set(signature,[...(groups.get(signature)??[]),probe]);
+  }
+  const initial=[...groups.values()].flatMap(group=>group.filter((_,index)=>index%2===0));
+  const ids=new Set(initial.map(p=>p.id)),learning=candidates.filter(p=>!ids.has(p.id));
+  if(freshTogether([...initial,...learning],skill,mode)&&isQuestionPoolSufficient(initial,skill,mode,false)&&isQuestionPoolSufficient(learning,skill,mode,true))return {selection:{initial,learning},limited:false};
+ }
  let visited=0,limited=false;
  function search(index:number,initial:Probe[],learning:Probe[]):{initial:Probe[];learning:Probe[]}|null{
   if(++visited>maxStates){limited=true;return null;}

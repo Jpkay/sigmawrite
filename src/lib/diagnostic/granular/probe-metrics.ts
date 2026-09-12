@@ -1,3 +1,4 @@
+import {phonemeGraphieFeature} from "./phoneme-graphie-coverage";
 import {readAudioStimulus} from './audio-stimulus';
 import type {CanonicalDiagnosticBankItem} from "../item-bank";
 import {writtenGuessingFloor} from "./response-space";
@@ -17,7 +18,9 @@ export function canonicalProbeMetrics(entry:CanonicalDiagnosticBankItem){
  const audio=readAudioStimulus(entry.item);
  const writtenGuess=writtenGuessingFloor(entry.item);
  const category=samplingCategory(entry);
+ const auditoryFeature=phonemeGraphieFeature(entry);
  return {
+  ...(auditoryFeature?{evidenceFeatures:[auditoryFeature]}:{}),
   ...(category?{samplingCategory:category}:{}),
   difficulty:({foundation:.25,core:.5,stretch:.75} as const)[entry.difficultyTier],
   expectedSeconds:(entry.sectionKey==="reading_comprehension"?60:30)+(audio?Math.ceil(audio.durationMs/1000):0),

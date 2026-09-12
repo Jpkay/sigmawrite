@@ -1,3 +1,4 @@
+import {applyPhonemeGraphieCoverage} from "./phoneme-graphie-coverage";
 import type {ReleaseScope} from "./release-scope";
 import {assessmentQuestionIds,type ParallelReviewPolicy} from "./parallel-review-policy";
 import {requiresWritingRevision} from "./writing-evidence";
@@ -91,6 +92,14 @@ export function adaptV3ForAssessment(input:{artifact:ReturnType<typeof buildFren
   return [{id:i.itemKey,skillId:skill.id,mode:skill.modes[0],contextId:i.sectionKey==="reading_comprehension"?readingContextId(i.item.validatorConfig,i.item.promptFr):`surface:${checksum(i.item.promptFr)}`,
    ...canonicalProbeMetrics(i),textualSupportAssessed:Boolean(support),materialKeys:questionMaterialKeys(i.item),assessedMaterialKeys:questionAssessedMaterialKeys(i.item),contrastingErrorKeys:contrastingErrorKeys(i.item),negativeExampleAssessed:assessesNegativeExample(i.item),textType:i.sectionKey==="reading_comprehension"?readingTextType(i.item.validatorConfig):undefined}];
  });
+ // Legacy unannotated sound items cannot establish the approved novel-word contract.
+ // Only retire them when this bank supplies the replacement auditory format.
+ const auditoryTargets=new Set(probes.filter(p=>p.evidenceFeatures?.some(f=>f.startsWith("phoneme-graphie:"))).map(p=>p.skillId));
+ for(let index=probes.length-1;index>=0;index--){
+  const probe=probes[index];
+  if(auditoryTargets.has(probe.skillId)&&!probe.assessedMaterialKeys?.some(key=>key.startsWith("word:"))){unsupportedEvidenceItemKeys.push(probe.id);probes.splice(index,1);}
+ }
+ applyPhonemeGraphieCoverage(skills,probes);
  return {skills,probes,taxonomyChecksum:taxonomyChecksum,bankChecksum:validated.manifest.checksum,unsupportedEvidenceItemKeys,...(input.reviewPolicy?{reviewPolicy:structuredClone(input.reviewPolicy)}:{})};
 }
 

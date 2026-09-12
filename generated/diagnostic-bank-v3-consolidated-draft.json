@@ -37493,6 +37493,5254 @@
       "reviewStatus": "needs_human_review"
     },
     {
+      "itemKey": "v3-phoneme-graphie:recognition-chat",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Écoute le mot, puis complète : ___at\n\nChoisis le mot qui correspond à ce que tu entends.",
+        "instructionsFr": "Écoute, puis choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:b12c16128e2b9f25f166683de43158502231295e311254ef2b2d161d12352a39",
+            "durationMs": 1262,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "ch",
+          "contrastingErrors": [
+            {
+              "errorKey": "sound_ch_confused_with_ou",
+              "incorrectChoiceFr": "ouat"
+            },
+            {
+              "errorKey": "sound_ch_confused_with_gn",
+              "incorrectChoiceFr": "gnat"
+            },
+            {
+              "errorKey": "sound_ch_confused_with_f",
+              "incorrectChoiceFr": "fat"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "chat",
+                "form": "chat"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "chat"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "chat",
+            "correct": true
+          },
+          {
+            "text": "ouat",
+            "correct": false
+          },
+          {
+            "text": "gnat",
+            "correct": false
+          },
+          {
+            "text": "fat",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:recognition-chou",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Écoute le mot, puis complète : ___ou\n\nChoisis le mot qui correspond à ce que tu entends.",
+        "instructionsFr": "Écoute, puis choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:9ddb48a1919c9e32cd9ab5e4431fe30b73ffcab33aaf7c32b97eddaa06a73df0",
+            "durationMs": 1262,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "ch",
+          "contrastingErrors": [
+            {
+              "errorKey": "sound_ch_confused_with_ou",
+              "incorrectChoiceFr": "ouou"
+            },
+            {
+              "errorKey": "sound_ch_confused_with_gn",
+              "incorrectChoiceFr": "gnou"
+            },
+            {
+              "errorKey": "sound_ch_confused_with_f",
+              "incorrectChoiceFr": "fou"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "chou",
+                "form": "chou"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "chou"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "chou",
+            "correct": true
+          },
+          {
+            "text": "ouou",
+            "correct": false
+          },
+          {
+            "text": "gnou",
+            "correct": false
+          },
+          {
+            "text": "fou",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:recognition-chemin",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Écoute le mot, puis complète : ___emin\n\nChoisis le mot qui correspond à ce que tu entends.",
+        "instructionsFr": "Écoute, puis choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:cdebb741637ae37bdda4a8b6f518bc7c5a443e7dd81f292d9153c9f86bb65ba2",
+            "durationMs": 1424,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "ch",
+          "contrastingErrors": [
+            {
+              "errorKey": "sound_ch_confused_with_ou",
+              "incorrectChoiceFr": "ouemin"
+            },
+            {
+              "errorKey": "sound_ch_confused_with_gn",
+              "incorrectChoiceFr": "gnemin"
+            },
+            {
+              "errorKey": "sound_ch_confused_with_f",
+              "incorrectChoiceFr": "femin"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "chemin",
+                "form": "chemin"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "chemin"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "chemin",
+            "correct": true
+          },
+          {
+            "text": "ouemin",
+            "correct": false
+          },
+          {
+            "text": "gnemin",
+            "correct": false
+          },
+          {
+            "text": "femin",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:recognition-mouche",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Écoute le mot, puis complète : mou___e\n\nChoisis le mot qui correspond à ce que tu entends.",
+        "instructionsFr": "Écoute, puis choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:257ae80a03277a554c0078946bed4fa7904b5940700c839f256fcb0fb53fc5c5",
+            "durationMs": 1494,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "ch",
+          "contrastingErrors": [
+            {
+              "errorKey": "sound_ch_confused_with_ou",
+              "incorrectChoiceFr": "mououe"
+            },
+            {
+              "errorKey": "sound_ch_confused_with_gn",
+              "incorrectChoiceFr": "mougne"
+            },
+            {
+              "errorKey": "sound_ch_confused_with_f",
+              "incorrectChoiceFr": "moufe"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "mouche",
+                "form": "mouche"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "mouche"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "mouche",
+            "correct": true
+          },
+          {
+            "text": "mououe",
+            "correct": false
+          },
+          {
+            "text": "mougne",
+            "correct": false
+          },
+          {
+            "text": "moufe",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:recognition-loup",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Écoute le mot, puis complète : l___p\n\nChoisis le mot qui correspond à ce que tu entends.",
+        "instructionsFr": "Écoute, puis choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:e1c69a121713f24cdcfe8f7d8e434613d978b91a29f2a0b6ca5464c52faa2e65",
+            "durationMs": 1262,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "ou",
+          "contrastingErrors": [
+            {
+              "errorKey": "sound_ou_confused_with_ch",
+              "incorrectChoiceFr": "lchp"
+            },
+            {
+              "errorKey": "sound_ou_confused_with_gn",
+              "incorrectChoiceFr": "lgnp"
+            },
+            {
+              "errorKey": "sound_ou_confused_with_f",
+              "incorrectChoiceFr": "lfp"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "loup",
+                "form": "loup"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "loup"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "lchp",
+            "correct": false
+          },
+          {
+            "text": "loup",
+            "correct": true
+          },
+          {
+            "text": "lgnp",
+            "correct": false
+          },
+          {
+            "text": "lfp",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:recognition-roue",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Écoute le mot, puis complète : r___e\n\nChoisis le mot qui correspond à ce que tu entends.",
+        "instructionsFr": "Écoute, puis choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:aa9a277435373ed0d692fedb80389042440c4869fbd9291e07de69acccfe75e5",
+            "durationMs": 1180,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "ou",
+          "contrastingErrors": [
+            {
+              "errorKey": "sound_ou_confused_with_ch",
+              "incorrectChoiceFr": "rche"
+            },
+            {
+              "errorKey": "sound_ou_confused_with_gn",
+              "incorrectChoiceFr": "rgne"
+            },
+            {
+              "errorKey": "sound_ou_confused_with_f",
+              "incorrectChoiceFr": "rfe"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "roue",
+                "form": "roue"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "roue"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "rche",
+            "correct": false
+          },
+          {
+            "text": "roue",
+            "correct": true
+          },
+          {
+            "text": "rgne",
+            "correct": false
+          },
+          {
+            "text": "rfe",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:recognition-poule",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Écoute le mot, puis complète : p___le\n\nChoisis le mot qui correspond à ce que tu entends.",
+        "instructionsFr": "Écoute, puis choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:be412fd7c02ea700a0bbcc077f34b4fe51850a1a886306637d1b1a25fe9b84c6",
+            "durationMs": 1354,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "ou",
+          "contrastingErrors": [
+            {
+              "errorKey": "sound_ou_confused_with_ch",
+              "incorrectChoiceFr": "pchle"
+            },
+            {
+              "errorKey": "sound_ou_confused_with_gn",
+              "incorrectChoiceFr": "pgnle"
+            },
+            {
+              "errorKey": "sound_ou_confused_with_f",
+              "incorrectChoiceFr": "pfle"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "poule",
+                "form": "poule"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "poule"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "pchle",
+            "correct": false
+          },
+          {
+            "text": "poule",
+            "correct": true
+          },
+          {
+            "text": "pgnle",
+            "correct": false
+          },
+          {
+            "text": "pfle",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:recognition-mouton",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Écoute le mot, puis complète : m___ton\n\nChoisis le mot qui correspond à ce que tu entends.",
+        "instructionsFr": "Écoute, puis choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:c3213828283a253c3d9ce7eddf4a36d194b6342e2a5e3183d00ddda7b908e43c",
+            "durationMs": 1424,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "ou",
+          "contrastingErrors": [
+            {
+              "errorKey": "sound_ou_confused_with_ch",
+              "incorrectChoiceFr": "mchton"
+            },
+            {
+              "errorKey": "sound_ou_confused_with_gn",
+              "incorrectChoiceFr": "mgnton"
+            },
+            {
+              "errorKey": "sound_ou_confused_with_f",
+              "incorrectChoiceFr": "mfton"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "mouton",
+                "form": "mouton"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "mouton"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "mchton",
+            "correct": false
+          },
+          {
+            "text": "mouton",
+            "correct": true
+          },
+          {
+            "text": "mgnton",
+            "correct": false
+          },
+          {
+            "text": "mfton",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:recognition-ligne",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Écoute le mot, puis complète : li___e\n\nChoisis le mot qui correspond à ce que tu entends.",
+        "instructionsFr": "Écoute, puis choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:b259f0143f71f2b06f6cc787befb33e0665402c25fe47628e49028b029707b0e",
+            "durationMs": 1517,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "gn",
+          "contrastingErrors": [
+            {
+              "errorKey": "sound_gn_confused_with_ch",
+              "incorrectChoiceFr": "liche"
+            },
+            {
+              "errorKey": "sound_gn_confused_with_ou",
+              "incorrectChoiceFr": "lioue"
+            },
+            {
+              "errorKey": "sound_gn_confused_with_f",
+              "incorrectChoiceFr": "life"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "ligne",
+                "form": "ligne"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "ligne"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "liche",
+            "correct": false
+          },
+          {
+            "text": "lioue",
+            "correct": false
+          },
+          {
+            "text": "ligne",
+            "correct": true
+          },
+          {
+            "text": "life",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:recognition-vigne",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Écoute le mot, puis complète : vi___e\n\nChoisis le mot qui correspond à ce que tu entends.",
+        "instructionsFr": "Écoute, puis choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:540c1f241d838ce885061cb71248bc3e6b930db26268d99bf661e437ab703a9b",
+            "durationMs": 1436,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "gn",
+          "contrastingErrors": [
+            {
+              "errorKey": "sound_gn_confused_with_ch",
+              "incorrectChoiceFr": "viche"
+            },
+            {
+              "errorKey": "sound_gn_confused_with_ou",
+              "incorrectChoiceFr": "vioue"
+            },
+            {
+              "errorKey": "sound_gn_confused_with_f",
+              "incorrectChoiceFr": "vife"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "vigne",
+                "form": "vigne"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "vigne"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "viche",
+            "correct": false
+          },
+          {
+            "text": "vioue",
+            "correct": false
+          },
+          {
+            "text": "vigne",
+            "correct": true
+          },
+          {
+            "text": "vife",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:recognition-signe",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Écoute le mot, puis complète : si___e\n\nChoisis le mot qui correspond à ce que tu entends.",
+        "instructionsFr": "Écoute, puis choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:08d2f124a18cbf3a7d95466f1a565f7eddeeb6a24929301fe85fd4541d1400dd",
+            "durationMs": 1540,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "gn",
+          "contrastingErrors": [
+            {
+              "errorKey": "sound_gn_confused_with_ch",
+              "incorrectChoiceFr": "siche"
+            },
+            {
+              "errorKey": "sound_gn_confused_with_ou",
+              "incorrectChoiceFr": "sioue"
+            },
+            {
+              "errorKey": "sound_gn_confused_with_f",
+              "incorrectChoiceFr": "sife"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "signe",
+                "form": "signe"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "signe"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "siche",
+            "correct": false
+          },
+          {
+            "text": "sioue",
+            "correct": false
+          },
+          {
+            "text": "signe",
+            "correct": true
+          },
+          {
+            "text": "sife",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:recognition-peigne",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Écoute le mot, puis complète : pei___e\n\nChoisis le mot qui correspond à ce que tu entends.",
+        "instructionsFr": "Écoute, puis choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:4e7afdcff487b7dc00b9c347bebf46a449415588f9e780d6a3ff1252c2f17a48",
+            "durationMs": 1494,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "gn",
+          "contrastingErrors": [
+            {
+              "errorKey": "sound_gn_confused_with_ch",
+              "incorrectChoiceFr": "peiche"
+            },
+            {
+              "errorKey": "sound_gn_confused_with_ou",
+              "incorrectChoiceFr": "peioue"
+            },
+            {
+              "errorKey": "sound_gn_confused_with_f",
+              "incorrectChoiceFr": "peife"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "peigne",
+                "form": "peigne"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "peigne"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "peiche",
+            "correct": false
+          },
+          {
+            "text": "peioue",
+            "correct": false
+          },
+          {
+            "text": "peigne",
+            "correct": true
+          },
+          {
+            "text": "peife",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:recognition-fumée",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Écoute le mot, puis complète : ___umée\n\nChoisis le mot qui correspond à ce que tu entends.",
+        "instructionsFr": "Écoute, puis choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:5365fa7d70d46c5242da7e7c77f0dc6672888b6a833e7cc3107b288958356b9a",
+            "durationMs": 1447,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "f",
+          "contrastingErrors": [
+            {
+              "errorKey": "sound_f_confused_with_ch",
+              "incorrectChoiceFr": "chumée"
+            },
+            {
+              "errorKey": "sound_f_confused_with_ou",
+              "incorrectChoiceFr": "ouumée"
+            },
+            {
+              "errorKey": "sound_f_confused_with_gn",
+              "incorrectChoiceFr": "gnumée"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "fumée",
+                "form": "fumée"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "fumée"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "chumée",
+            "correct": false
+          },
+          {
+            "text": "ouumée",
+            "correct": false
+          },
+          {
+            "text": "gnumée",
+            "correct": false
+          },
+          {
+            "text": "fumée",
+            "correct": true
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:recognition-fée",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Écoute le mot, puis complète : ___ée\n\nChoisis le mot qui correspond à ce que tu entends.",
+        "instructionsFr": "Écoute, puis choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:8a53dfb0c7f8b3911b636da886d4afe5d69184572d9ad4b5ef77033ac42f212e",
+            "durationMs": 1250,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "f",
+          "contrastingErrors": [
+            {
+              "errorKey": "sound_f_confused_with_ch",
+              "incorrectChoiceFr": "chée"
+            },
+            {
+              "errorKey": "sound_f_confused_with_ou",
+              "incorrectChoiceFr": "ouée"
+            },
+            {
+              "errorKey": "sound_f_confused_with_gn",
+              "incorrectChoiceFr": "gnée"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "fée",
+                "form": "fée"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "fée"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "chée",
+            "correct": false
+          },
+          {
+            "text": "ouée",
+            "correct": false
+          },
+          {
+            "text": "gnée",
+            "correct": false
+          },
+          {
+            "text": "fée",
+            "correct": true
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:recognition-fourmi",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Écoute le mot, puis complète : ___ourmi\n\nChoisis le mot qui correspond à ce que tu entends.",
+        "instructionsFr": "Écoute, puis choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:f014b920e604ca34840276d8318be3b63a0c2ba0048a1951f8844b2025d490ad",
+            "durationMs": 1517,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "f",
+          "contrastingErrors": [
+            {
+              "errorKey": "sound_f_confused_with_ch",
+              "incorrectChoiceFr": "chourmi"
+            },
+            {
+              "errorKey": "sound_f_confused_with_ou",
+              "incorrectChoiceFr": "ouourmi"
+            },
+            {
+              "errorKey": "sound_f_confused_with_gn",
+              "incorrectChoiceFr": "gnourmi"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "fourmi",
+                "form": "fourmi"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "fourmi"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "chourmi",
+            "correct": false
+          },
+          {
+            "text": "ouourmi",
+            "correct": false
+          },
+          {
+            "text": "gnourmi",
+            "correct": false
+          },
+          {
+            "text": "fourmi",
+            "correct": true
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:recognition-filet",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Écoute le mot, puis complète : ___ilet\n\nChoisis le mot qui correspond à ce que tu entends.",
+        "instructionsFr": "Écoute, puis choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:3327b456427ea6fee32a3000463b6d38d4b3d4985247b7346948a73b3000908e",
+            "durationMs": 1401,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "f",
+          "contrastingErrors": [
+            {
+              "errorKey": "sound_f_confused_with_ch",
+              "incorrectChoiceFr": "chilet"
+            },
+            {
+              "errorKey": "sound_f_confused_with_ou",
+              "incorrectChoiceFr": "ouilet"
+            },
+            {
+              "errorKey": "sound_f_confused_with_gn",
+              "incorrectChoiceFr": "gnilet"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "filet",
+                "form": "filet"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "filet"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "chilet",
+            "correct": false
+          },
+          {
+            "text": "ouilet",
+            "correct": false
+          },
+          {
+            "text": "gnilet",
+            "correct": false
+          },
+          {
+            "text": "filet",
+            "correct": true
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:recognition-chaise",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Écoute le mot, puis complète : ___aise\n\nChoisis le mot qui correspond à ce que tu entends.",
+        "instructionsFr": "Écoute, puis choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:bc82b119622426578d97d63090ae983a32f2a65a58ec1bac3deebbc821bd6120",
+            "durationMs": 1529,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "ch",
+          "contrastingErrors": [
+            {
+              "errorKey": "sound_ch_confused_with_ou",
+              "incorrectChoiceFr": "ouaise"
+            },
+            {
+              "errorKey": "sound_ch_confused_with_gn",
+              "incorrectChoiceFr": "gnaise"
+            },
+            {
+              "errorKey": "sound_ch_confused_with_f",
+              "incorrectChoiceFr": "faise"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "chaise",
+                "form": "chaise"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "chaise"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "chaise",
+            "correct": true
+          },
+          {
+            "text": "ouaise",
+            "correct": false
+          },
+          {
+            "text": "gnaise",
+            "correct": false
+          },
+          {
+            "text": "faise",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:recognition-chaton",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Écoute le mot, puis complète : ___aton\n\nChoisis le mot qui correspond à ce que tu entends.",
+        "instructionsFr": "Écoute, puis choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:3b506d94e6fc6e3b6c3ca04c169c6747af896c84a5dc0c80453e710d426e66a4",
+            "durationMs": 1459,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "ch",
+          "contrastingErrors": [
+            {
+              "errorKey": "sound_ch_confused_with_ou",
+              "incorrectChoiceFr": "ouaton"
+            },
+            {
+              "errorKey": "sound_ch_confused_with_gn",
+              "incorrectChoiceFr": "gnaton"
+            },
+            {
+              "errorKey": "sound_ch_confused_with_f",
+              "incorrectChoiceFr": "faton"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "chaton",
+                "form": "chaton"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "chaton"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "chaton",
+            "correct": true
+          },
+          {
+            "text": "ouaton",
+            "correct": false
+          },
+          {
+            "text": "gnaton",
+            "correct": false
+          },
+          {
+            "text": "faton",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:recognition-roche",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Écoute le mot, puis complète : ro___e\n\nChoisis le mot qui correspond à ce que tu entends.",
+        "instructionsFr": "Écoute, puis choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:d152a39a51fc375e191cc0cbf79d6d361fe858fe7f7b9cdcdf951d69780dc941",
+            "durationMs": 1459,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "ch",
+          "contrastingErrors": [
+            {
+              "errorKey": "sound_ch_confused_with_ou",
+              "incorrectChoiceFr": "rooue"
+            },
+            {
+              "errorKey": "sound_ch_confused_with_gn",
+              "incorrectChoiceFr": "rogne"
+            },
+            {
+              "errorKey": "sound_ch_confused_with_f",
+              "incorrectChoiceFr": "rofe"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "roche",
+                "form": "roche"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "roche"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "roche",
+            "correct": true
+          },
+          {
+            "text": "rooue",
+            "correct": false
+          },
+          {
+            "text": "rogne",
+            "correct": false
+          },
+          {
+            "text": "rofe",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:recognition-vache",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Écoute le mot, puis complète : va___e\n\nChoisis le mot qui correspond à ce que tu entends.",
+        "instructionsFr": "Écoute, puis choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:e381e2dc3f7b108cc6d725f54bcdd0828dd32c91ad31f6984015258eca7f4911",
+            "durationMs": 1447,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "ch",
+          "contrastingErrors": [
+            {
+              "errorKey": "sound_ch_confused_with_ou",
+              "incorrectChoiceFr": "vaoue"
+            },
+            {
+              "errorKey": "sound_ch_confused_with_gn",
+              "incorrectChoiceFr": "vagne"
+            },
+            {
+              "errorKey": "sound_ch_confused_with_f",
+              "incorrectChoiceFr": "vafe"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "vache",
+                "form": "vache"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "vache"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "vache",
+            "correct": true
+          },
+          {
+            "text": "vaoue",
+            "correct": false
+          },
+          {
+            "text": "vagne",
+            "correct": false
+          },
+          {
+            "text": "vafe",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:recognition-bouche",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Écoute le mot, puis complète : b___che\n\nChoisis le mot qui correspond à ce que tu entends.",
+        "instructionsFr": "Écoute, puis choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:fd1539fff3b8df6215b98e554f97dbb7a3993755ded60a21364b3515fd6d16c3",
+            "durationMs": 1447,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "ou",
+          "contrastingErrors": [
+            {
+              "errorKey": "sound_ou_confused_with_ch",
+              "incorrectChoiceFr": "bchche"
+            },
+            {
+              "errorKey": "sound_ou_confused_with_gn",
+              "incorrectChoiceFr": "bgnche"
+            },
+            {
+              "errorKey": "sound_ou_confused_with_f",
+              "incorrectChoiceFr": "bfche"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "bouche",
+                "form": "bouche"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "bouche"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "bchche",
+            "correct": false
+          },
+          {
+            "text": "bouche",
+            "correct": true
+          },
+          {
+            "text": "bgnche",
+            "correct": false
+          },
+          {
+            "text": "bfche",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:recognition-soupe",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Écoute le mot, puis complète : s___pe\n\nChoisis le mot qui correspond à ce que tu entends.",
+        "instructionsFr": "Écoute, puis choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:af3d33c19791eae08f7006239e1754fbca6646187ddfc1defc47b76598aaa07d",
+            "durationMs": 1517,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "ou",
+          "contrastingErrors": [
+            {
+              "errorKey": "sound_ou_confused_with_ch",
+              "incorrectChoiceFr": "schpe"
+            },
+            {
+              "errorKey": "sound_ou_confused_with_gn",
+              "incorrectChoiceFr": "sgnpe"
+            },
+            {
+              "errorKey": "sound_ou_confused_with_f",
+              "incorrectChoiceFr": "sfpe"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "soupe",
+                "form": "soupe"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "soupe"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "schpe",
+            "correct": false
+          },
+          {
+            "text": "soupe",
+            "correct": true
+          },
+          {
+            "text": "sgnpe",
+            "correct": false
+          },
+          {
+            "text": "sfpe",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:recognition-tour",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Écoute le mot, puis complète : t___r\n\nChoisis le mot qui correspond à ce que tu entends.",
+        "instructionsFr": "Écoute, puis choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:448d41ae9dac310c60eaff280e4133c4f3bd435427b1c94aba78b6c0b05f0094",
+            "durationMs": 1459,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "ou",
+          "contrastingErrors": [
+            {
+              "errorKey": "sound_ou_confused_with_ch",
+              "incorrectChoiceFr": "tchr"
+            },
+            {
+              "errorKey": "sound_ou_confused_with_gn",
+              "incorrectChoiceFr": "tgnr"
+            },
+            {
+              "errorKey": "sound_ou_confused_with_f",
+              "incorrectChoiceFr": "tfr"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "tour",
+                "form": "tour"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "tour"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "tchr",
+            "correct": false
+          },
+          {
+            "text": "tour",
+            "correct": true
+          },
+          {
+            "text": "tgnr",
+            "correct": false
+          },
+          {
+            "text": "tfr",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:recognition-ours",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Écoute le mot, puis complète : ___rs\n\nChoisis le mot qui correspond à ce que tu entends.",
+        "instructionsFr": "Écoute, puis choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:ec8351ea31406841c12a7121f1d6774001c14c7ae79d4af22c36fe5b3ad3e797",
+            "durationMs": 1459,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "ou",
+          "contrastingErrors": [
+            {
+              "errorKey": "sound_ou_confused_with_ch",
+              "incorrectChoiceFr": "chrs"
+            },
+            {
+              "errorKey": "sound_ou_confused_with_gn",
+              "incorrectChoiceFr": "gnrs"
+            },
+            {
+              "errorKey": "sound_ou_confused_with_f",
+              "incorrectChoiceFr": "frs"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "ours",
+                "form": "ours"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "ours"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "chrs",
+            "correct": false
+          },
+          {
+            "text": "ours",
+            "correct": true
+          },
+          {
+            "text": "gnrs",
+            "correct": false
+          },
+          {
+            "text": "frs",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:recognition-agneau",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Écoute le mot, puis complète : a___eau\n\nChoisis le mot qui correspond à ce que tu entends.",
+        "instructionsFr": "Écoute, puis choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:ac4911ff91a4c6253d694d3eb6f8e16ae44d40b0db1c1a1c39b4d752cf36d8df",
+            "durationMs": 1354,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "gn",
+          "contrastingErrors": [
+            {
+              "errorKey": "sound_gn_confused_with_ch",
+              "incorrectChoiceFr": "acheau"
+            },
+            {
+              "errorKey": "sound_gn_confused_with_ou",
+              "incorrectChoiceFr": "aoueau"
+            },
+            {
+              "errorKey": "sound_gn_confused_with_f",
+              "incorrectChoiceFr": "afeau"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "agneau",
+                "form": "agneau"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "agneau"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "acheau",
+            "correct": false
+          },
+          {
+            "text": "aoueau",
+            "correct": false
+          },
+          {
+            "text": "agneau",
+            "correct": true
+          },
+          {
+            "text": "afeau",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:recognition-araignée",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Écoute le mot, puis complète : arai___ée\n\nChoisis le mot qui correspond à ce que tu entends.",
+        "instructionsFr": "Écoute, puis choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:10aa38045abaf03feb68003b28f1324d2850be76d1a8cdf73b4905b4cef6afae",
+            "durationMs": 1494,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "gn",
+          "contrastingErrors": [
+            {
+              "errorKey": "sound_gn_confused_with_ch",
+              "incorrectChoiceFr": "araichée"
+            },
+            {
+              "errorKey": "sound_gn_confused_with_ou",
+              "incorrectChoiceFr": "araiouée"
+            },
+            {
+              "errorKey": "sound_gn_confused_with_f",
+              "incorrectChoiceFr": "araifée"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "araignée",
+                "form": "araignée"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "araignée"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "araichée",
+            "correct": false
+          },
+          {
+            "text": "araiouée",
+            "correct": false
+          },
+          {
+            "text": "araignée",
+            "correct": true
+          },
+          {
+            "text": "araifée",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:recognition-poignet",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Écoute le mot, puis complète : poi___et\n\nChoisis le mot qui correspond à ce que tu entends.",
+        "instructionsFr": "Écoute, puis choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:8d8e796d824eb3c250e90ae4b0b822fedf2af608aafd034ec31e7ffa7939e615",
+            "durationMs": 1563,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "gn",
+          "contrastingErrors": [
+            {
+              "errorKey": "sound_gn_confused_with_ch",
+              "incorrectChoiceFr": "poichet"
+            },
+            {
+              "errorKey": "sound_gn_confused_with_ou",
+              "incorrectChoiceFr": "poiouet"
+            },
+            {
+              "errorKey": "sound_gn_confused_with_f",
+              "incorrectChoiceFr": "poifet"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "poignet",
+                "form": "poignet"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "poignet"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "poichet",
+            "correct": false
+          },
+          {
+            "text": "poiouet",
+            "correct": false
+          },
+          {
+            "text": "poignet",
+            "correct": true
+          },
+          {
+            "text": "poifet",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:recognition-beignet",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Écoute le mot, puis complète : bei___et\n\nChoisis le mot qui correspond à ce que tu entends.",
+        "instructionsFr": "Écoute, puis choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:c86c1ae8ef0466e528fc5f7e4f9d12b2135b210adf5d06ceecd5a24a91da35f2",
+            "durationMs": 1459,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "gn",
+          "contrastingErrors": [
+            {
+              "errorKey": "sound_gn_confused_with_ch",
+              "incorrectChoiceFr": "beichet"
+            },
+            {
+              "errorKey": "sound_gn_confused_with_ou",
+              "incorrectChoiceFr": "beiouet"
+            },
+            {
+              "errorKey": "sound_gn_confused_with_f",
+              "incorrectChoiceFr": "beifet"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "beignet",
+                "form": "beignet"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "beignet"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "beichet",
+            "correct": false
+          },
+          {
+            "text": "beiouet",
+            "correct": false
+          },
+          {
+            "text": "beignet",
+            "correct": true
+          },
+          {
+            "text": "beifet",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:recognition-fromage",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Écoute le mot, puis complète : ___romage\n\nChoisis le mot qui correspond à ce que tu entends.",
+        "instructionsFr": "Écoute, puis choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:04dff0572782f06a0af28b0068cc862a53736d59dc7db23f05f1065f4f2e52c0",
+            "durationMs": 1680,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "f",
+          "contrastingErrors": [
+            {
+              "errorKey": "sound_f_confused_with_ch",
+              "incorrectChoiceFr": "chromage"
+            },
+            {
+              "errorKey": "sound_f_confused_with_ou",
+              "incorrectChoiceFr": "ouromage"
+            },
+            {
+              "errorKey": "sound_f_confused_with_gn",
+              "incorrectChoiceFr": "gnromage"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "fromage",
+                "form": "fromage"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "fromage"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "chromage",
+            "correct": false
+          },
+          {
+            "text": "ouromage",
+            "correct": false
+          },
+          {
+            "text": "gnromage",
+            "correct": false
+          },
+          {
+            "text": "fromage",
+            "correct": true
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:recognition-fenêtre",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Écoute le mot, puis complète : ___enêtre\n\nChoisis le mot qui correspond à ce que tu entends.",
+        "instructionsFr": "Écoute, puis choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:535a09f59546abba7e738bc4049444739452b455efc70ce8c8829bcab86c8620",
+            "durationMs": 1621,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "f",
+          "contrastingErrors": [
+            {
+              "errorKey": "sound_f_confused_with_ch",
+              "incorrectChoiceFr": "chenêtre"
+            },
+            {
+              "errorKey": "sound_f_confused_with_ou",
+              "incorrectChoiceFr": "ouenêtre"
+            },
+            {
+              "errorKey": "sound_f_confused_with_gn",
+              "incorrectChoiceFr": "gnenêtre"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "fenêtre",
+                "form": "fenêtre"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "fenêtre"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "chenêtre",
+            "correct": false
+          },
+          {
+            "text": "ouenêtre",
+            "correct": false
+          },
+          {
+            "text": "gnenêtre",
+            "correct": false
+          },
+          {
+            "text": "fenêtre",
+            "correct": true
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:recognition-fleur",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Écoute le mot, puis complète : ___leur\n\nChoisis le mot qui correspond à ce que tu entends.",
+        "instructionsFr": "Écoute, puis choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:ac030c7aec947b46f8fe4f8b50d2acac8872a0242b5db880b50f649ed6080a50",
+            "durationMs": 1482,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "f",
+          "contrastingErrors": [
+            {
+              "errorKey": "sound_f_confused_with_ch",
+              "incorrectChoiceFr": "chleur"
+            },
+            {
+              "errorKey": "sound_f_confused_with_ou",
+              "incorrectChoiceFr": "ouleur"
+            },
+            {
+              "errorKey": "sound_f_confused_with_gn",
+              "incorrectChoiceFr": "gnleur"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "fleur",
+                "form": "fleur"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "fleur"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "chleur",
+            "correct": false
+          },
+          {
+            "text": "ouleur",
+            "correct": false
+          },
+          {
+            "text": "gnleur",
+            "correct": false
+          },
+          {
+            "text": "fleur",
+            "correct": true
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:recognition-fruit",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Écoute le mot, puis complète : ___ruit\n\nChoisis le mot qui correspond à ce que tu entends.",
+        "instructionsFr": "Écoute, puis choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:414e9d4805fddfac6a27e795c679b7da8082188c3f1c030acdd405f09927b3a7",
+            "durationMs": 1331,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "f",
+          "contrastingErrors": [
+            {
+              "errorKey": "sound_f_confused_with_ch",
+              "incorrectChoiceFr": "chruit"
+            },
+            {
+              "errorKey": "sound_f_confused_with_ou",
+              "incorrectChoiceFr": "ouruit"
+            },
+            {
+              "errorKey": "sound_f_confused_with_gn",
+              "incorrectChoiceFr": "gnruit"
+            }
+          ],
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "fruit",
+                "form": "fruit"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "fruit"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "chruit",
+            "correct": false
+          },
+          {
+            "text": "ouruit",
+            "correct": false
+          },
+          {
+            "text": "gnruit",
+            "correct": false
+          },
+          {
+            "text": "fruit",
+            "correct": true
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:production-riche",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Écoute le mot, puis complète : ri___e\n\nÉcris le mot entier avec les lettres manquantes.",
+        "instructionsFr": "Écoute, puis écris le mot entier.",
+        "correctAnswer": "riche",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:81ba1bdb886c36785c5f58ef7b84c4e4b6fa0b7bda1fd9089235e2be8428f248",
+            "durationMs": 1459,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "ch",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "riche",
+              "rioue",
+              "rigne",
+              "rife"
+            ],
+            "rationaleFr": "Les exemples ciblent quatre graphies : ch, ou, gn et f. Le reste du mot est fourni ; cette réponse ne prouve pas une dictée complète."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "riche",
+                "form": "riche"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "riche"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:production-ruche",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Écoute le mot, puis complète : ru___e\n\nÉcris le mot entier avec les lettres manquantes.",
+        "instructionsFr": "Écoute, puis écris le mot entier.",
+        "correctAnswer": "ruche",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:0351da5f83fdbf7565ce1a00d6b80daef3dc7109439b1ea9a2e207bba064f43e",
+            "durationMs": 1459,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "ch",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ruche",
+              "ruoue",
+              "rugne",
+              "rufe"
+            ],
+            "rationaleFr": "Les exemples ciblent quatre graphies : ch, ou, gn et f. Le reste du mot est fourni ; cette réponse ne prouve pas une dictée complète."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "ruche",
+                "form": "ruche"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "ruche"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:production-poche",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Écoute le mot, puis complète : po___e\n\nÉcris le mot entier avec les lettres manquantes.",
+        "instructionsFr": "Écoute, puis écris le mot entier.",
+        "correctAnswer": "poche",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:a8fe556c3723415c4812814d6c73fe20ce9784af36de1e6a92b857ba887d68a1",
+            "durationMs": 1482,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "ch",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "poche",
+              "pooue",
+              "pogne",
+              "pofe"
+            ],
+            "rationaleFr": "Les exemples ciblent quatre graphies : ch, ou, gn et f. Le reste du mot est fourni ; cette réponse ne prouve pas une dictée complète."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "poche",
+                "form": "poche"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "poche"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:production-branche",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Écoute le mot, puis complète : bran___e\n\nÉcris le mot entier avec les lettres manquantes.",
+        "instructionsFr": "Écoute, puis écris le mot entier.",
+        "correctAnswer": "branche",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:3520aa970871f34588778d936bb3d00039ff2c0a08d6457325ab88af2ae8219e",
+            "durationMs": 1575,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "ch",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "branche",
+              "branoue",
+              "brangne",
+              "branfe"
+            ],
+            "rationaleFr": "Les exemples ciblent quatre graphies : ch, ou, gn et f. Le reste du mot est fourni ; cette réponse ne prouve pas une dictée complète."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "branche",
+                "form": "branche"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "branche"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:production-route",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Écoute le mot, puis complète : r___te\n\nÉcris le mot entier avec les lettres manquantes.",
+        "instructionsFr": "Écoute, puis écris le mot entier.",
+        "correctAnswer": "route",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:894f606fa9c41c315909fa51314f1cc5815c29096837b7707d25e699d9b41e38",
+            "durationMs": 1436,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "ou",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "rchte",
+              "route",
+              "rgnte",
+              "rfte"
+            ],
+            "rationaleFr": "Les exemples ciblent quatre graphies : ch, ou, gn et f. Le reste du mot est fourni ; cette réponse ne prouve pas une dictée complète."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "route",
+                "form": "route"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "route"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:production-genou",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Écoute le mot, puis complète : gen___\n\nÉcris le mot entier avec les lettres manquantes.",
+        "instructionsFr": "Écoute, puis écris le mot entier.",
+        "correctAnswer": "genou",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:0b48ed344102a217d83557ff27cbcebedb875ffc36dc4e8f67fd8144128c0ed2",
+            "durationMs": 1366,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "ou",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "gench",
+              "genou",
+              "gengn",
+              "genf"
+            ],
+            "rationaleFr": "Les exemples ciblent quatre graphies : ch, ou, gn et f. Le reste du mot est fourni ; cette réponse ne prouve pas une dictée complète."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "genou",
+                "form": "genou"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "genou"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:production-hibou",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Écoute le mot, puis complète : hib___\n\nÉcris le mot entier avec les lettres manquantes.",
+        "instructionsFr": "Écoute, puis écris le mot entier.",
+        "correctAnswer": "hibou",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:7c391c15da5dbc92da8f84f6df223734ef736ce439356ea0eca6991c4902c448",
+            "durationMs": 1296,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "ou",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "hibch",
+              "hibou",
+              "hibgn",
+              "hibf"
+            ],
+            "rationaleFr": "Les exemples ciblent quatre graphies : ch, ou, gn et f. Le reste du mot est fourni ; cette réponse ne prouve pas une dictée complète."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "hibou",
+                "form": "hibou"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "hibou"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:production-bougie",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Écoute le mot, puis complète : b___gie\n\nÉcris le mot entier avec les lettres manquantes.",
+        "instructionsFr": "Écoute, puis écris le mot entier.",
+        "correctAnswer": "bougie",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:34788440a65b5445b464d5d8c082451617f97c9c000a2f3fe85f003186819b9e",
+            "durationMs": 1459,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "ou",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "bchgie",
+              "bougie",
+              "bgngie",
+              "bfgie"
+            ],
+            "rationaleFr": "Les exemples ciblent quatre graphies : ch, ou, gn et f. Le reste du mot est fourni ; cette réponse ne prouve pas une dictée complète."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "bougie",
+                "form": "bougie"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "bougie"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:production-montagne",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Écoute le mot, puis complète : monta___e\n\nÉcris le mot entier avec les lettres manquantes.",
+        "instructionsFr": "Écoute, puis écris le mot entier.",
+        "correctAnswer": "montagne",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:e83c77d1591ecf7a20672fb39f558cfd51080d67b9376f88217bb7ce38240201",
+            "durationMs": 1714,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "gn",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "montache",
+              "montaoue",
+              "montagne",
+              "montafe"
+            ],
+            "rationaleFr": "Les exemples ciblent quatre graphies : ch, ou, gn et f. Le reste du mot est fourni ; cette réponse ne prouve pas une dictée complète."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "montagne",
+                "form": "montagne"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "montagne"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:production-champignon",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Écoute le mot, puis complète : champi___on\n\nÉcris le mot entier avec les lettres manquantes.",
+        "instructionsFr": "Écoute, puis écris le mot entier.",
+        "correctAnswer": "champignon",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:e41b7ec7bc73d6b55c5c5daf7787502aa4f04b68e5001987469ff1dd7223281b",
+            "durationMs": 1656,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "gn",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "champichon",
+              "champiouon",
+              "champignon",
+              "champifon"
+            ],
+            "rationaleFr": "Les exemples ciblent quatre graphies : ch, ou, gn et f. Le reste du mot est fourni ; cette réponse ne prouve pas une dictée complète."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "champignon",
+                "form": "champignon"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "champignon"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:production-baignoire",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Écoute le mot, puis complète : bai___oire\n\nÉcris le mot entier avec les lettres manquantes.",
+        "instructionsFr": "Écoute, puis écris le mot entier.",
+        "correctAnswer": "baignoire",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:887d4b0f14003f2d690983ed785799f746f29e56567f3c16772b69627763a62d",
+            "durationMs": 1807,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "gn",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "baichoire",
+              "baiouoire",
+              "baignoire",
+              "baifoire"
+            ],
+            "rationaleFr": "Les exemples ciblent quatre graphies : ch, ou, gn et f. Le reste du mot est fourni ; cette réponse ne prouve pas une dictée complète."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "baignoire",
+                "form": "baignoire"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "baignoire"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:production-poignée",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Écoute le mot, puis complète : poi___ée\n\nÉcris le mot entier avec les lettres manquantes.",
+        "instructionsFr": "Écoute, puis écris le mot entier.",
+        "correctAnswer": "poignée",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:1277e943bb886852c8ae161d21f0b51e4f4452ef80311f47d2129cb418e63bb0",
+            "durationMs": 1575,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "gn",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "poichée",
+              "poiouée",
+              "poignée",
+              "poifée"
+            ],
+            "rationaleFr": "Les exemples ciblent quatre graphies : ch, ou, gn et f. Le reste du mot est fourni ; cette réponse ne prouve pas une dictée complète."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "poignée",
+                "form": "poignée"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "poignée"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:production-farine",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Écoute le mot, puis complète : ___arine\n\nÉcris le mot entier avec les lettres manquantes.",
+        "instructionsFr": "Écoute, puis écris le mot entier.",
+        "correctAnswer": "farine",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:b7537406b6a11c2652278997d52f44c1c87093328b509ecc0d271ab2cc9e7f0d",
+            "durationMs": 1552,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "f",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "charine",
+              "ouarine",
+              "gnarine",
+              "farine"
+            ],
+            "rationaleFr": "Les exemples ciblent quatre graphies : ch, ou, gn et f. Le reste du mot est fourni ; cette réponse ne prouve pas une dictée complète."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "farine",
+                "form": "farine"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "farine"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:production-forêt",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Écoute le mot, puis complète : ___orêt\n\nÉcris le mot entier avec les lettres manquantes.",
+        "instructionsFr": "Écoute, puis écris le mot entier.",
+        "correctAnswer": "forêt",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:3d974cd12acd984aeddbcf106ea050776d21fc542200657c48291305cb966fbb",
+            "durationMs": 1424,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "f",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "chorêt",
+              "ouorêt",
+              "gnorêt",
+              "forêt"
+            ],
+            "rationaleFr": "Les exemples ciblent quatre graphies : ch, ou, gn et f. Le reste du mot est fourni ; cette réponse ne prouve pas une dictée complète."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "forêt",
+                "form": "forêt"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "forêt"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:production-ferme",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Écoute le mot, puis complète : ___erme\n\nÉcris le mot entier avec les lettres manquantes.",
+        "instructionsFr": "Écoute, puis écris le mot entier.",
+        "correctAnswer": "ferme",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:4fda02e2ac38b899b75484b563a0a26922d0eec782e7d6a50f5cab483697c45a",
+            "durationMs": 1517,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "f",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "cherme",
+              "ouerme",
+              "gnerme",
+              "ferme"
+            ],
+            "rationaleFr": "Les exemples ciblent quatre graphies : ch, ou, gn et f. Le reste du mot est fourni ; cette réponse ne prouve pas une dictée complète."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "ferme",
+                "form": "ferme"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "ferme"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:production-flaque",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Écoute le mot, puis complète : ___laque\n\nÉcris le mot entier avec les lettres manquantes.",
+        "instructionsFr": "Écoute, puis écris le mot entier.",
+        "correctAnswer": "flaque",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:0222bf514f90885f1a9d414e114c50e3fba1b3a31da5e0314ad8ed4212444290",
+            "durationMs": 1552,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "f",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "chlaque",
+              "oulaque",
+              "gnlaque",
+              "flaque"
+            ],
+            "rationaleFr": "Les exemples ciblent quatre graphies : ch, ou, gn et f. Le reste du mot est fourni ; cette réponse ne prouve pas une dictée complète."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "flaque",
+                "form": "flaque"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "flaque"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:production-chute",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Écoute le mot, puis complète : ___ute\n\nÉcris le mot entier avec les lettres manquantes.",
+        "instructionsFr": "Écoute, puis écris le mot entier.",
+        "correctAnswer": "chute",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:0f966dec48d64921a3389b59b37dd9b09d62f498e6ebf889ad9ea8726633b8e6",
+            "durationMs": 1529,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "ch",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "chute",
+              "ouute",
+              "gnute",
+              "fute"
+            ],
+            "rationaleFr": "Les exemples ciblent quatre graphies : ch, ou, gn et f. Le reste du mot est fourni ; cette réponse ne prouve pas une dictée complète."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "chute",
+                "form": "chute"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "chute"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:production-chasse",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Écoute le mot, puis complète : ___asse\n\nÉcris le mot entier avec les lettres manquantes.",
+        "instructionsFr": "Écoute, puis écris le mot entier.",
+        "correctAnswer": "chasse",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:20568812e548088274ba6614736f7dd141ea627eb6b88f8c0238c02ff175788c",
+            "durationMs": 1575,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "ch",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "chasse",
+              "ouasse",
+              "gnasse",
+              "fasse"
+            ],
+            "rationaleFr": "Les exemples ciblent quatre graphies : ch, ou, gn et f. Le reste du mot est fourni ; cette réponse ne prouve pas une dictée complète."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "chasse",
+                "form": "chasse"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "chasse"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:production-cloche",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Écoute le mot, puis complète : clo___e\n\nÉcris le mot entier avec les lettres manquantes.",
+        "instructionsFr": "Écoute, puis écris le mot entier.",
+        "correctAnswer": "cloche",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:424e59b6a7d71e6bb17d22eb0f997223b718acd6411b138191ec9c11750fe5b9",
+            "durationMs": 1552,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "ch",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "cloche",
+              "clooue",
+              "clogne",
+              "clofe"
+            ],
+            "rationaleFr": "Les exemples ciblent quatre graphies : ch, ou, gn et f. Le reste du mot est fourni ; cette réponse ne prouve pas une dictée complète."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "cloche",
+                "form": "cloche"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "cloche"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:production-planche",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Écoute le mot, puis complète : plan___e\n\nÉcris le mot entier avec les lettres manquantes.",
+        "instructionsFr": "Écoute, puis écris le mot entier.",
+        "correctAnswer": "planche",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:c9f87aeccb80319ad8f3ae3632a0c61974ba647152d40ff2bac5abd26a713697",
+            "durationMs": 1598,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "ch",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "planche",
+              "planoue",
+              "plangne",
+              "planfe"
+            ],
+            "rationaleFr": "Les exemples ciblent quatre graphies : ch, ou, gn et f. Le reste du mot est fourni ; cette réponse ne prouve pas une dictée complète."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "planche",
+                "form": "planche"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "planche"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:production-coude",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Écoute le mot, puis complète : c___de\n\nÉcris le mot entier avec les lettres manquantes.",
+        "instructionsFr": "Écoute, puis écris le mot entier.",
+        "correctAnswer": "coude",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:4a2e0e3359d2e526390652b537d671e6aeefec9ab4e40d8fc1d43e6de3c109ed",
+            "durationMs": 1366,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "ou",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "cchde",
+              "coude",
+              "cgnde",
+              "cfde"
+            ],
+            "rationaleFr": "Les exemples ciblent quatre graphies : ch, ou, gn et f. Le reste du mot est fourni ; cette réponse ne prouve pas une dictée complète."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "coude",
+                "form": "coude"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "coude"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:production-foule",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Écoute le mot, puis complète : f___le\n\nÉcris le mot entier avec les lettres manquantes.",
+        "instructionsFr": "Écoute, puis écris le mot entier.",
+        "correctAnswer": "foule",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:fb966f0649896cdab99815c0d15f6f3c62fd4bcfa7d33f81894bfccd7979b117",
+            "durationMs": 1389,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "ou",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "fchle",
+              "foule",
+              "fgnle",
+              "ffle"
+            ],
+            "rationaleFr": "Les exemples ciblent quatre graphies : ch, ou, gn et f. Le reste du mot est fourni ; cette réponse ne prouve pas une dictée complète."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "foule",
+                "form": "foule"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "foule"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:production-jour",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Écoute le mot, puis complète : j___r\n\nÉcris le mot entier avec les lettres manquantes.",
+        "instructionsFr": "Écoute, puis écris le mot entier.",
+        "correctAnswer": "jour",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:408abb696dbe652008797ae8d5490c8921c486bde9ad63c9504c29231689dad7",
+            "durationMs": 1459,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "ou",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "jchr",
+              "jour",
+              "jgnr",
+              "jfr"
+            ],
+            "rationaleFr": "Les exemples ciblent quatre graphies : ch, ou, gn et f. Le reste du mot est fourni ; cette réponse ne prouve pas une dictée complète."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "jour",
+                "form": "jour"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "jour"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:production-boule",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Écoute le mot, puis complète : b___le\n\nÉcris le mot entier avec les lettres manquantes.",
+        "instructionsFr": "Écoute, puis écris le mot entier.",
+        "correctAnswer": "boule",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:6e057c239b4d6017cbc5b4e994724a69144daf9ba7987f9bf5dd5b0d1969641f",
+            "durationMs": 1308,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "ou",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "bchle",
+              "boule",
+              "bgnle",
+              "bfle"
+            ],
+            "rationaleFr": "Les exemples ciblent quatre graphies : ch, ou, gn et f. Le reste du mot est fourni ; cette réponse ne prouve pas une dictée complète."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "boule",
+                "form": "boule"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "boule"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:production-pignon",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Écoute le mot, puis complète : pi___on\n\nÉcris le mot entier avec les lettres manquantes.",
+        "instructionsFr": "Écoute, puis écris le mot entier.",
+        "correctAnswer": "pignon",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:a4df48de67d2a7d3695861763868cc197056cef8bb2b7230a9af3eb6105665e3",
+            "durationMs": 1505,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "gn",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "pichon",
+              "piouon",
+              "pignon",
+              "pifon"
+            ],
+            "rationaleFr": "Les exemples ciblent quatre graphies : ch, ou, gn et f. Le reste du mot est fourni ; cette réponse ne prouve pas une dictée complète."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "pignon",
+                "form": "pignon"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "pignon"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:production-rossignol",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Écoute le mot, puis complète : rossi___ol\n\nÉcris le mot entier avec les lettres manquantes.",
+        "instructionsFr": "Écoute, puis écris le mot entier.",
+        "correctAnswer": "rossignol",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:d0d4a948dcc0fb352476da9f392c2e1881986acdce3557ac65acf7482394ed2c",
+            "durationMs": 1830,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "gn",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "rossichol",
+              "rossiouol",
+              "rossignol",
+              "rossifol"
+            ],
+            "rationaleFr": "Les exemples ciblent quatre graphies : ch, ou, gn et f. Le reste du mot est fourni ; cette réponse ne prouve pas une dictée complète."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "rossignol",
+                "form": "rossignol"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "rossignol"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:production-compagnon",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Écoute le mot, puis complète : compa___on\n\nÉcris le mot entier avec les lettres manquantes.",
+        "instructionsFr": "Écoute, puis écris le mot entier.",
+        "correctAnswer": "compagnon",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:f676c06804c5c0c637e216b1b58b3214ef8c5a4e9d36c80a857efa963bdf5ff8",
+            "durationMs": 1680,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "gn",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "compachon",
+              "compaouon",
+              "compagnon",
+              "compafon"
+            ],
+            "rationaleFr": "Les exemples ciblent quatre graphies : ch, ou, gn et f. Le reste du mot est fourni ; cette réponse ne prouve pas une dictée complète."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "compagnon",
+                "form": "compagnon"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "compagnon"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:production-soigner",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Écoute le mot, puis complète : soi___er\n\nÉcris le mot entier avec les lettres manquantes.",
+        "instructionsFr": "Écoute, puis écris le mot entier.",
+        "correctAnswer": "soigner",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:07c7ce26f6d4b68307abefbb04a909483e9a7fe1ea7a39140c5e8ddca3cb9dea",
+            "durationMs": 1529,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "gn",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "soicher",
+              "soiouer",
+              "soigner",
+              "soifer"
+            ],
+            "rationaleFr": "Les exemples ciblent quatre graphies : ch, ou, gn et f. Le reste du mot est fourni ; cette réponse ne prouve pas une dictée complète."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "soigner",
+                "form": "soigner"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "soigner"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:production-facile",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Écoute le mot, puis complète : ___acile\n\nÉcris le mot entier avec les lettres manquantes.",
+        "instructionsFr": "Écoute, puis écris le mot entier.",
+        "correctAnswer": "facile",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:96199e7604623e6eea38de9da08203fa770220a8d22775f0f7e208accbd24e7b",
+            "durationMs": 1656,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "f",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "chacile",
+              "ouacile",
+              "gnacile",
+              "facile"
+            ],
+            "rationaleFr": "Les exemples ciblent quatre graphies : ch, ou, gn et f. Le reste du mot est fourni ; cette réponse ne prouve pas une dictée complète."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "facile",
+                "form": "facile"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "facile"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:production-figure",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Écoute le mot, puis complète : ___igure\n\nÉcris le mot entier avec les lettres manquantes.",
+        "instructionsFr": "Écoute, puis écris le mot entier.",
+        "correctAnswer": "figure",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:361c9d9d31a6c282a8d5be9da0be29bc3009c8d78114d29c465baad0cda13fbf",
+            "durationMs": 1703,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "f",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "chigure",
+              "ouigure",
+              "gnigure",
+              "figure"
+            ],
+            "rationaleFr": "Les exemples ciblent quatre graphies : ch, ou, gn et f. Le reste du mot est fourni ; cette réponse ne prouve pas une dictée complète."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "figure",
+                "form": "figure"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "figure"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:production-force",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Écoute le mot, puis complète : ___orce\n\nÉcris le mot entier avec les lettres manquantes.",
+        "instructionsFr": "Écoute, puis écris le mot entier.",
+        "correctAnswer": "force",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:c054c96c10580ab63c7710dca34f8a61b19a01ccd937653ea1d47499890e4628",
+            "durationMs": 1575,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "f",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "chorce",
+              "ouorce",
+              "gnorce",
+              "force"
+            ],
+            "rationaleFr": "Les exemples ciblent quatre graphies : ch, ou, gn et f. Le reste du mot est fourni ; cette réponse ne prouve pas une dictée complète."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "force",
+                "form": "force"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "force"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-phoneme-graphie:production-froid",
+      "item": {
+        "nodeKey": "associer_phoneme_graphie_frequente",
+        "strand": "orthographe_lexicale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Écoute le mot, puis complète : ___roid\n\nÉcris le mot entier avec les lettres manquantes.",
+        "instructionsFr": "Écoute, puis écris le mot entier.",
+        "correctAnswer": "froid",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "audioStimulus": {
+            "sha256": "sha256:46da5b4cdee6bc7f72b2dd1c707fe2eebf6ee1b1d947b79ad1f7e9246b9c935a",
+            "durationMs": 1192,
+            "locale": "fr-FR",
+            "format": "mp3"
+          },
+          "phonemeGraphieGroup": "f",
+          "finiteResponseSpace": {
+            "alternatives": [
+              "chroid",
+              "ouroid",
+              "gnroid",
+              "froid"
+            ],
+            "rationaleFr": "Les exemples ciblent quatre graphies : ch, ou, gn et f. Le reste du mot est fourni ; cette réponse ne prouve pas une dictée complète."
+          },
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "froid",
+                "form": "froid"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "froid"
+              ]
+            }
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "heard-word-missing-grapheme",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
       "itemKey": "v3-cedille:recognition-garçon",
       "item": {
         "nodeKey": "employer_cedille",
@@ -388048,9 +393296,9 @@
     }
   ],
   "manifest": {
-    "itemCount": 6168,
+    "itemCount": 6232,
     "eligibleItemCount": 238,
-    "pendingItemCount": 5930,
+    "pendingItemCount": 5994,
     "publicationMode": "partial",
     "nodeCount": 114,
     "sectionReadiness": [
@@ -388099,6 +393347,6 @@
         "difficultyTierCount": 3
       }
     ],
-    "checksum": "sha256:3b9a4a98984ce8cdfa1350ca0d3ed975a0758d2d5c3ee9e1560959c7716872fc"
+    "checksum": "sha256:67ccba90a07037c24544e3602fb2640667a1a48a36546829a389caf839c52966"
   }
 }
