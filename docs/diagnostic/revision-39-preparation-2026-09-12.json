@@ -29,11 +29,30 @@
   "validation": {
     "focusedTestsPassed": true,
     "typeScriptPassed": true,
-    "newLessonJourneys": 3
+    "newLessonJourneys": 3,
+    "fullSuite": {
+      "files": 395,
+      "tests": 1756,
+      "initialPassed": 1755,
+      "initialTimeouts": 1,
+      "isolatedRetestPassed": true,
+      "timeoutTest": "teaching-overlap-audit.test.ts"
+    },
+    "profileSimulations": 10,
+    "commandJourneys": 2,
+    "namedContrastCoverage": {
+      "intendedComparisons": 4,
+      "bothSidesSampled": 3,
+      "separatedSampledComparisons": 3,
+      "unexercisedComparisons": [
+        "literal_chronology_known_causal_inference_weak"
+      ],
+      "limitation": "Both sides sampled means at least one target per side; inspect contrastCoverage for untested modes and constructions. Probability separation is not confirmed mastery or classroom validation."
+    }
   },
   "limitations": [
     "One informational target already existed; this adds two genre targets and replaces that lesson only in the explicit new candidate.",
     "Synthetic history in lesson journeys does not establish complete production history.",
-    "Full suite and profile simulations remain pending. Human review remains pending."
+    "One test timed out in the full parallel run and passed in isolation. Human review remains pending."
   ]
 }
