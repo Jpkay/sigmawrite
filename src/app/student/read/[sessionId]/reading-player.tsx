@@ -1,7 +1,6 @@
 "use client";
 
 import { SyllableText } from "@/components/syllable-text";
-import { buildEvidenceChallenge } from "@/lib/content/evidence";
 import { recordReadingJustification } from "@/lib/actions/student";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -14,7 +13,6 @@ import { Badge } from "@/components/ui/badge";
 import { ChoiceList } from "@/components/choice-list";
 import type { SeedText } from "@/lib/content/types";
 import { scoreSession } from "@/lib/scoring/session";
-import { difficultyBandLabel } from "@/lib/scoring/band";
 import { updateSkillsFromSession } from "@/lib/scoring/skill-estimate";
 import { buildRetrievalCards } from "@/lib/content/retrieval-cards";
 import { track } from "@/lib/analytics";
@@ -34,6 +32,12 @@ import {
   submitAnswer,
   submitSummary,
 } from "@/lib/actions/student";
+import {
+  READING_PLAYER_COPY as copy,
+  readingParagraphLabel,
+  readingPlayerDisplay,
+  readingQuestionDisplay,
+} from "@/lib/diagnostic/granular/reading-display";
 
 type Phase = "read" | "questions" | "summary" | "retrieval";
 
@@ -72,9 +76,9 @@ export function ReadingPlayer({textKey, text}: {textKey: string; text: SeedText 
   if (!text) {
     return (
       <>
-        <PageHeader title="Texte introuvable" />
+        <PageHeader title={copy.missingTitle} />
         <Link href="/student" className={buttonVariants({ variant: "outline" })}>
-          Retour à l&apos;accueil
+          {copy.returnHome}
         </Link>
       </>
     );
@@ -82,6 +86,8 @@ export function ReadingPlayer({textKey, text}: {textKey: string; text: SeedText 
 
   const activeText = text;
   const question = activeText.questions[qIndex];
+  const display = readingPlayerDisplay(activeText);
+  const questionDisplay = readingQuestionDisplay(activeText, question, qIndex);
 
   async function beginQuestions() {
     setPending(true);
@@ -93,7 +99,7 @@ export function ReadingPlayer({textKey, text}: {textKey: string; text: SeedText 
       }
       setPhase("questions");
     } catch {
-      setError("La séance n'a pas pu démarrer. Réessaie.");
+      setError(copy.startError);
     } finally {
       setPending(false);
     }
@@ -110,7 +116,7 @@ export function ReadingPlayer({textKey, text}: {textKey: string; text: SeedText 
       if (qIndex + 1 < activeText.questions.length) setQIndex(qIndex + 1);
       else setPhase("summary");
     } catch {
-      if(hasStudentBackend&&dbSessionId&&typeof navigator!=="undefined"&&!navigator.onLine){queueAnswer({sessionId:dbSessionId,textKey:activeText.id,questionKey:question.id,choiceIndex:answers[question.id],nextPhase:qIndex+1<activeText.questions.length?"questions":"summary"});setError("Réponse gardée hors connexion. Elle sera envoyée automatiquement.");if(qIndex+1<activeText.questions.length)setQIndex(qIndex+1);else setPhase("summary");}else setError("Ta réponse n'a pas pu être enregistrée. Réessaie.");
+      if(hasStudentBackend&&dbSessionId&&typeof navigator!=="undefined"&&!navigator.onLine){queueAnswer({sessionId:dbSessionId,textKey:activeText.id,questionKey:question.id,choiceIndex:answers[question.id],nextPhase:qIndex+1<activeText.questions.length?"questions":"summary"});setError(copy.answerOffline);if(qIndex+1<activeText.questions.length)setQIndex(qIndex+1);else setPhase("summary");}else setError(copy.answerError);
     } finally {
       setPending(false);
     }
@@ -126,7 +132,7 @@ export function ReadingPlayer({textKey, text}: {textKey: string; text: SeedText 
       }
       setPhase("retrieval");
     } catch {
-      setError("Ta réponse n'a pas pu être enregistrée. Réessaie plus tard.");
+      setError(copy.summaryError);
     } finally {
       setPending(false);
     }
@@ -175,7 +181,7 @@ export function ReadingPlayer({textKey, text}: {textKey: string; text: SeedText 
       finished.current = true;
       router.push(`/student/results/${activeText.id}`);
     } catch {
-      setError("La séance n'a pas pu être terminée. Tes réponses restent affichées.");
+      setError(copy.finishError);
       setPending(false);
     }
   }
@@ -184,7 +190,7 @@ export function ReadingPlayer({textKey, text}: {textKey: string; text: SeedText 
     <>
       <PageHeader title={activeText.title} />
       <div className="mb-5 flex flex-wrap gap-2">
-        <Badge>{difficultyBandLabel(activeText.difficultyBand)}</Badge>
+        <Badge>{display.text!.difficultyLabel}</Badge>
         {concepts.map((c) => (
           <Badge key={c} variant="secondary">
             {c}
@@ -195,15 +201,15 @@ export function ReadingPlayer({textKey, text}: {textKey: string; text: SeedText 
       {phase === "read" && (
         <Card>
           <CardContent className="space-y-4 pt-6">
-            <div className="flex flex-wrap gap-2 rounded-md border border-border p-3 text-sm"><button aria-pressed={readerMode.friendly} onClick={()=>setReaderMode(value=>({...value,friendly:!value.friendly}))} className="min-h-11 rounded-md border border-border px-3">Police lisible</button><button aria-pressed={readerMode.spacing} onClick={()=>setReaderMode(value=>({...value,spacing:!value.spacing}))} className="min-h-11 rounded-md border border-border px-3">Espacement</button><button aria-pressed={readerMode.lineFocus} onClick={()=>setReaderMode(value=>({...value,lineFocus:!value.lineFocus}))} className="min-h-11 rounded-md border border-border px-3">Focus ligne</button><button aria-pressed={readerMode.syllables} onClick={()=>setReaderMode(value=>({...value,syllables:!value.syllables}))} className="min-h-11 rounded-md border border-border px-3">Syllabes</button></div>
+            <div className="flex flex-wrap gap-2 rounded-md border border-border p-3 text-sm"><button aria-pressed={readerMode.friendly} onClick={()=>setReaderMode(value=>({...value,friendly:!value.friendly}))} className="min-h-11 rounded-md border border-border px-3">{copy.readableFont}</button><button aria-pressed={readerMode.spacing} onClick={()=>setReaderMode(value=>({...value,spacing:!value.spacing}))} className="min-h-11 rounded-md border border-border px-3">{copy.spacing}</button><button aria-pressed={readerMode.lineFocus} onClick={()=>setReaderMode(value=>({...value,lineFocus:!value.lineFocus}))} className="min-h-11 rounded-md border border-border px-3">{copy.lineFocus}</button><button aria-pressed={readerMode.syllables} onClick={()=>setReaderMode(value=>({...value,syllables:!value.syllables}))} className="min-h-11 rounded-md border border-border px-3">{copy.syllables}</button></div>
             <div className={`space-y-4 leading-relaxed ${readerMode.friendly?"font-[family-name:var(--font-legible)]":""} ${readerMode.spacing?"text-lg leading-9 tracking-wide":""}`}>
               {activeText.body.map((p, i) => (
-                <div key={i} className={`group flex items-start gap-2 rounded-md p-2 ${readerMode.lineFocus&&focusedParagraph!==null&&focusedParagraph!==i?"opacity-30":""}`}><p tabIndex={readerMode.lineFocus?0:undefined} onClick={()=>setFocusedParagraph(i)} onKeyDown={event=>{if(event.key==="Enter"||event.key===" "){event.preventDefault();setFocusedParagraph(i);}}} className="flex-1"><SyllableText text={p} syllables={readerMode.syllables} spokenCharIndex={spoken?.paragraph===i?spoken.char:null} /></p><button aria-label={`Lire le paragraphe ${i+1}`} onClick={()=>readAloud(p,i)} className="min-h-11 min-w-11 rounded-md border border-border p-2 opacity-70 hover:opacity-100"><Volume2 className="size-4"/></button></div>
+                <div key={i} className={`group flex items-start gap-2 rounded-md p-2 ${readerMode.lineFocus&&focusedParagraph!==null&&focusedParagraph!==i?"opacity-30":""}`}><p tabIndex={readerMode.lineFocus?0:undefined} onClick={()=>setFocusedParagraph(i)} onKeyDown={event=>{if(event.key==="Enter"||event.key===" "){event.preventDefault();setFocusedParagraph(i);}}} className="flex-1"><SyllableText text={p} syllables={readerMode.syllables} spokenCharIndex={spoken?.paragraph===i?spoken.char:null} /></p><button aria-label={readingParagraphLabel(i)} onClick={()=>readAloud(p,i)} className="min-h-11 min-w-11 rounded-md border border-border p-2 opacity-70 hover:opacity-100"><Volume2 className="size-4"/></button></div>
               ))}
             </div>
             <div className="rounded-md border border-border bg-muted/40 p-4">
               <p className="mb-2 flex items-center gap-2 text-sm font-medium">
-                <BookOpen className="size-4 text-primary" /> Mots à retenir
+                <BookOpen className="size-4 text-primary" /> {copy.vocabulary}
               </p>
               <ul className="space-y-1 text-sm text-muted-foreground">
                 {activeText.targetVocabulary.map((v) => (
@@ -215,7 +221,7 @@ export function ReadingPlayer({textKey, text}: {textKey: string; text: SeedText 
               </ul>
             </div>
             <Button onClick={beginQuestions} disabled={pending}>
-              Passons aux questions <ArrowRight />
+              {copy.beginQuestions} <ArrowRight />
             </Button>
           </CardContent>
         </Card>
@@ -224,7 +230,7 @@ export function ReadingPlayer({textKey, text}: {textKey: string; text: SeedText 
       {phase === "questions" && (
         <>
           <p className="mb-3 text-sm text-muted-foreground">
-            Question {qIndex + 1} / {activeText.questions.length}
+            {questionDisplay.position}
           </p>
           <Card>
             <CardContent className="pt-6">
@@ -236,32 +242,32 @@ export function ReadingPlayer({textKey, text}: {textKey: string; text: SeedText 
               />
               {checked[question.id] && (() => {
                 const answerCorrect = answers[question.id] === question.correctIndex;
-                const challenge = buildEvidenceChallenge(activeText.body, question.choices[question.correctIndex] ?? "", question.explanationFr, `${activeText.id}:${question.id}`);
+                const challenge = questionDisplay.evidence;
                 const picked = evidencePick[question.id];
                 return (
                   <div className="mt-5 space-y-4">
                     <div className={`flex gap-3 border-l-2 py-2 pl-3 text-sm ${answerCorrect ? "border-emerald-500" : "border-amber-500"}`} role="status">
-                      <div><p className="font-medium">{answerCorrect ? "Bonne réponse." : `Pas tout à fait : la bonne réponse est « ${question.choices[question.correctIndex]} ».`}</p><p className="mt-1 text-muted-foreground">{question.explanationFr}</p></div>
+                      <div><p className="font-medium">{answerCorrect ? questionDisplay.correct : questionDisplay.incorrect}</p><p className="mt-1 text-muted-foreground">{question.explanationFr}</p></div>
                     </div>
                     {challenge && !evidenceDone[question.id] && (
                       <div>
-                        <p className="text-sm font-medium">Quelle phrase du texte justifie cette réponse ?</p>
-                        <div role="radiogroup" aria-label="Phrase justificative" className="mt-2 grid gap-2">
-                          {challenge.candidates.map((sentence, index) => <button key={index} type="button" role="radio" aria-checked={picked === index} onClick={() => setEvidencePick((current) => ({ ...current, [question.id]: index }))} className={`rounded-md border px-3 py-2 text-left text-sm leading-6 ${picked === index ? "border-primary bg-primary/10" : "border-border hover:border-primary/50"}`}>« {sentence} »</button>)}
+                        <p className="text-sm font-medium">{copy.evidenceQuestion}</p>
+                        <div role="radiogroup" aria-label={copy.evidenceLabel} className="mt-2 grid gap-2">
+                          {challenge.displayedCandidates.map((sentence, index) => <button key={index} type="button" role="radio" aria-checked={picked === index} onClick={() => setEvidencePick((current) => ({ ...current, [question.id]: index }))} className={`rounded-md border px-3 py-2 text-left text-sm leading-6 ${picked === index ? "border-primary bg-primary/10" : "border-border hover:border-primary/50"}`}>{sentence}</button>)}
                         </div>
-                        <Button className="mt-3" variant="outline" disabled={picked === undefined} onClick={() => { const correct = picked === challenge.answerIndex; setEvidenceDone((current) => ({ ...current, [question.id]: true })); if (hasStudentBackend && dbSessionId) void recordReadingJustification({ sessionId: dbSessionId, questionKey: question.id, correct, answerCorrect }).catch(() => undefined); }}>Valider la justification</Button>
+                        <Button className="mt-3" variant="outline" disabled={picked === undefined} onClick={() => { const correct = picked === challenge.answerIndex; setEvidenceDone((current) => ({ ...current, [question.id]: true })); if (hasStudentBackend && dbSessionId) void recordReadingJustification({ sessionId: dbSessionId, questionKey: question.id, correct, answerCorrect }).catch(() => undefined); }}>{copy.validateEvidence}</Button>
                       </div>
                     )}
-                    {challenge && evidenceDone[question.id] && <p className="text-sm" role="status">{picked === challenge.answerIndex ? "Justification exacte : c’est bien cette phrase qui porte l’information." : <>La phrase qui justifie la réponse est : <span className="font-medium">« {challenge.candidates[challenge.answerIndex]} »</span>.</>}</p>}
+                    {challenge && evidenceDone[question.id] && <p className="text-sm" role="status">{picked === challenge.answerIndex ? challenge.exact : <>La phrase qui justifie la réponse est : <span className="font-medium">{challenge.displayedCandidates[challenge.answerIndex]}</span>.</>}</p>}
                   </div>
                 );
               })()}
               <div className="mt-5">
                 {!checked[question.id] ? (
-                  <Button onClick={() => setChecked((current) => ({ ...current, [question.id]: true }))} disabled={answers[question.id] === undefined || pending}>Vérifier</Button>
+                  <Button onClick={() => setChecked((current) => ({ ...current, [question.id]: true }))} disabled={answers[question.id] === undefined || pending}>{copy.verify}</Button>
                 ) : (
                   <Button onClick={nextQuestion} disabled={pending}>
-                    {qIndex + 1 < text.questions.length ? "Suivant" : "Continuer"}{" "}
+                    {qIndex + 1 < text.questions.length ? copy.next : copy.continue}{" "}
                     <ArrowRight />
                   </Button>
                 )}
@@ -279,11 +285,11 @@ export function ReadingPlayer({textKey, text}: {textKey: string; text: SeedText 
               value={summary}
               onChange={setSummary}
               rows={4}
-              placeholder="Ton résumé…"
+              placeholder={copy.summaryPlaceholder}
               className="w-full rounded-md border border-input bg-background p-3 text-sm outline-none ring-ring focus:ring-2"
             />
             <Button onClick={saveSummaryAndContinue} disabled={!summary.trim() || pending}>
-              Continuer <ArrowRight />
+              {copy.continue} <ArrowRight />
             </Button>
           </CardContent>
         </Card>
@@ -292,17 +298,17 @@ export function ReadingPlayer({textKey, text}: {textKey: string; text: SeedText 
       {phase === "retrieval" && (
         <Card>
           <CardContent className="space-y-4 pt-6">
-            <p className="text-sm font-medium">Une dernière question de mémoire</p>
+            <p className="text-sm font-medium">{copy.retrievalHeading}</p>
             <p className="text-sm text-muted-foreground">{text.retrievalPrompt}</p>
             <AccentTextarea
               value={retrieval}
               onChange={setRetrieval}
               rows={3}
-              placeholder="Réponds avec tes mots…"
+              placeholder={copy.retrievalPlaceholder}
               className="w-full rounded-md border border-input bg-background p-3 text-sm outline-none ring-ring focus:ring-2"
             />
             <Button onClick={finish} disabled={!retrieval.trim() || !state.hydrated || pending}>
-              Terminer la séance <ArrowRight />
+              {copy.finish} <ArrowRight />
             </Button>
           </CardContent>
         </Card>

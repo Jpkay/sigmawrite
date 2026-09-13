@@ -9,6 +9,8 @@ import {journalStudentPayload} from '@/lib/diagnostic/granular/server-delivery-j
 import {SEED_TEXT_BY_ID} from '@/lib/content/texts';
 import {MICRO_LESSONS} from '@/lib/content/micro-lessons';
 import {selectNextStep} from '@/lib/scoring/adaptive';
+import {readingPlayerDisplay,readingResultsDisplay} from '@/lib/diagnostic/granular/reading-display';
+import type {ReadingSessionResult} from '@/lib/types';
 
 /** Select and record server-side. The browser receives one passage and its
  * corrections, not the bundled sample passage and repair catalogues. */
@@ -25,11 +27,12 @@ export async function loadReadingPagePayload(rawTextKey: string, results = false
   await requireStudentAccessAuthorized(db, studentId);
   const text = await getPublishedReadingText(textKey, db);
   let nextStep = defaultStep;
+  let result: ReadingSessionResult | null = null;
   if (results && text) {
     // This snapshot is used for selection only; do not label the entire
     // internal database read as content delivered to the student.
     const state = await getStudentStateData(studentId, db);
-    const result = state.sessions.findLast(session => session.textVersionId === textKey);
+    result = state.sessions.findLast(session => session.textVersionId === textKey) ?? null;
     if (result) {
       const step = selectNextStep({interests: state.interests,
         currentBand: text.difficultyBand, action: result.recommendedNextAction,
@@ -39,6 +42,8 @@ export async function loadReadingPagePayload(rawTextKey: string, results = false
         : {href: `/student/read/${step.textId}`, label: result.recommendedNextAction === 'change_topic' ? 'Changer de sujet' : `Lecture suivante (${step.band})`};
     }
   }
-  await journalStudentPayload(studentId, results ? 'legacy:reading-results-page' : 'legacy:reading-page', results ? {text, nextStep} : {text});
+  await journalStudentPayload(studentId, results ? 'legacy:reading-results-page' : 'legacy:reading-page', results
+    ? {text, nextStep, display: readingResultsDisplay({text, result, nextStep, hydrated: true})}
+    : {text, display: readingPlayerDisplay(text)});
   return {text, nextStep};
 }

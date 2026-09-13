@@ -10,16 +10,18 @@ vi.mock('@/lib/diagnostic/granular/server-delivery-journal', () => ({journalStud
 import {loadReadingPagePayload} from './page-delivery';
 import {SEED_TEXT_BY_ID} from '@/lib/content/texts';
 import {deliveredTextFragments} from '@/lib/diagnostic/granular/delivery-journal';
+import {readingPlayerDisplay,readingResultsDisplay} from '@/lib/diagnostic/granular/reading-display';
 const text = SEED_TEXT_BY_ID['football-migration'];
+const session = {studentId:'owner',textVersionId:text.id,startedAt:'2026-09-13T08:00:00.000Z',completedAt:'2026-09-13T08:10:00.000Z',abandoned:false,successRate:.82,literalScore:1,inferenceScore:.5,vocabularyScore:.75,summaryScore:.8,retrievalScore:1,timeOnTaskSeconds:600,hintsUsed:0,targetSuccessZone:{min:.8,max:.85},recommendedNextAction:'foundation_repair' as const};
 beforeEach(() => {
   vi.resetAllMocks(); f.configured = true;
   f.text.mockResolvedValue(text);
-  f.state.mockResolvedValue({sessions: [{textVersionId: 'football-migration', recommendedNextAction: 'foundation_repair'}], interests: ['football'], skillEstimates: {cause_consequence: {ability: 10, uncertainty: 1, evidenceCount: 3}}});
+  f.state.mockResolvedValue({sessions: [session], interests: ['football'], skillEstimates: {cause_consequence: {ability: 10, uncertainty: 1, evidenceCount: 3}}});
 });
 it('records exactly the selected reading payload, including its supplied corrections', async () => {
   const result = await loadReadingPagePayload('football-migration');
   expect(result.text).toBe(text);
-  expect(f.journal).toHaveBeenCalledWith('owner', 'legacy:reading-page', {text});
+  expect(f.journal).toHaveBeenCalledWith('owner', 'legacy:reading-page', {text,display:readingPlayerDisplay(text)});
   const fragments = deliveredTextFragments(f.journal.mock.calls[0][2]);
   expect(fragments).toContain(text.questions[0].explanationFr);
   expect(f.state).not.toHaveBeenCalled();
@@ -28,7 +30,7 @@ it('computes the existing repair recommendation on the server and journals its d
   const result = await loadReadingPagePayload('football-migration', true);
   expect(result.nextStep.href).toBe('/student/repair/cause_consequence');
   expect(result.nextStep.label).toMatch(/^Renforcer : /);
-  expect(f.journal).toHaveBeenCalledWith('owner', 'legacy:reading-results-page', result);
+  expect(f.journal).toHaveBeenCalledWith('owner', 'legacy:reading-results-page', {...result,display:readingResultsDisplay({text,result:session,nextStep:result.nextStep,hydrated:true})});
   expect(f.journal.mock.calls[0][2]).not.toHaveProperty('state');
 });
 it('does not replace a failed or empty server response with a bundled sample', async () => {

@@ -1,12 +1,12 @@
-# Material workstream — P3.01–P3.03
+# Material workstream — P3.01–P3.04
 
-Updated: 2026-09-13 09:45 Africa/Kigali
+Updated: 2026-09-13 10:03 Africa/Kigali
 
 ## Scope and invariants
 
 - Owner: `material`.
-- Roadmap items: P3.01 (reconcile remaining delivery gaps), P3.02 (practice-player capture), and P3.03 (production-player capture).
-- Owned implementation: the practice and production student route/player files, their dedicated display-projection helpers, and focused tests.
+- Roadmap items: P3.01 (reconcile remaining delivery gaps), P3.02 (practice-player capture), P3.03 (production-player capture), and P3.04 (reading/results capture).
+- Owned implementation: the practice, production, reading, and results student route/player files, their dedicated display-projection helpers, and focused tests.
 - Shared action integration in `src/lib/actions/student.ts` is coordinated with the workstream owner because that file contains unrelated work.
 - Guided practice remains guided evidence. None of this work changes its evidence expectation or promotes it to independent mastery.
 - Complete history remains off. Migration `20260912130000_atomic_covered_material_delivery.sql` remains unapplied. Existing students are not backdated and this work does not establish complete prior-material history.
@@ -15,11 +15,10 @@ Updated: 2026-09-13 09:45 Africa/Kigali
 
 The 2026-09-12 route inventory was reconciled against `remediationsAfterBaseline` and the current source. Verb references, rule references, inbox, vocabulary, memory, recueil, repair, and home have subsequent capture work and are no longer the route-level gaps listed in the baseline. Their cross-cutting version/global-error limits remain.
 
-The concrete remaining work after P3.03 is:
+The concrete remaining work after P3.04 is:
 
 | Roadmap | Surface | Current boundary/evidence | Remaining gap |
 | --- | --- | --- | --- |
-| P3.04 | `student/read/[sessionId]`, `student/results/[sessionId]` | Reading text, next recommendation, and stored result payloads are journaled. | Capture locally assembled correction/justification sentences, result labels and zone wording, controls, formatted counts, and finite error states. Recheck the legacy progress/frontier projections that link to these routes. |
 | P3.05 | `student/dictee`, `student/dictee/[dictationId]` | Catalog, selected session, offered audio metadata, and result payloads have delivery boundaries. | Capture catalog/player headings, preparation and playback instructions, buttons, empty states, result formatting, finite error states, and the authoritative audio/transcript relationship. Signed URLs remain excluded from text capture. |
 | P3.06 | Legacy diagnostic/result branches and `student/diagnostic/demo-review` | Granular diagnostic/review copy is captured. | Capture legacy diagnostic/result client copy and dynamic corrections; journal authorized saved demo HTML before returning it; record the forbidden response shown to non-demo students. |
 | P3.07 | Student layout, settings, offline/cache and all route errors | Shell, settings, and offline fixed copy have partial or subsequent capture. | Bind history to an accepted client/build version; invalidate unsupported cached/offline deliveries; prove owner changes and access transitions; eliminate or capture arbitrary server errors; test late requests and uncovered concurrent delivery. |
@@ -78,3 +77,21 @@ P3.03 validation:
 `scripts/.verify-production-player-capture.mts` is the bounded deployed check for P3.03. It requires `PLUME_VERIFY_URL`, `PLUME_VERIFY_REPORT`, and an eligible `PLUME_VERIFY_PRODUCTION_NODE`; `PLUME_VERIFY_QA_FILE` may select a non-demo QA fixture. It renders one authorized task, compares browser source strings and all fixed player copy with `legacy:production-task`, asserts that the independent-submission count does not change, and emits a sanitized failure artifact. It never fills or submits the writing textarea. The existing granular-capture QA fixture currently has no active independent-production path, so no remote production-player verification has been claimed.
 
 The P3.02 public verification also exposed an existing practice validation mismatch: the UI can send three support steps (two hints plus the worked example), while `timedPracticeAttemptSchema` accepted at most two. The public action rejected the request before inserting an attempt and the player showed the finite generic error. The coordinator owns that action/schema fix and the next candidate verification. The verifier now records sanitized main text, nonempty learner alerts, recent session/attempt state on failure, and accepts `PLUME_VERIFY_SUBMIT_RETRIES=0` for a mutation-bounded diagnostic run.
+
+## P3.04 implementation status
+
+Implemented in the reading and results delivery path:
+
+- `readingPlayerDisplay(...)` records the fixed reader controls, paragraph speech labels, displayed difficulty label, joined vocabulary rows, summary/retrieval prompts and controls, accent keyboard, offline and online failure strings, and every question-position/outcome variant. It deterministically records the same shuffled answer order and cited-evidence candidates used by the browser, including the quoted candidates and both correct and corrective justification sentences.
+- `loadReadingPagePayload` now journals `{ text, display }` at `legacy:reading-page` before returning route props. A journal failure withholds the page. The client imports the same copy and construction helpers; reading evidence remains receptive, and justification remains a supporting event rather than independent production.
+- `readingResultsDisplay(...)` records missing/loading/empty states and the authoritative result rendering: rounded overall and category percentages, learning-zone label, next-action label, selected CTA, schedule sentence, correction heading, and deterministic correction choice order. `legacy:reading-results-page` receives `{ text, nextStep, display }` before the route renders.
+- `writingFeedbackDisplay(...)` and `writingEvaluationDisplay(...)` construct the exact annotated-summary score, degraded-mode suffix, non-overlapping correction excerpts, replacement suggestions, teacher score/comment, change heading, rubric dimensions, priority sentence, per-plan counts and links, remaining-revision count, controls, accent keyboard, and finite revision error. `loadWritingFeedback` captures the full history projection before returning it. A newly evaluated revision captures its result projection before the evaluation row is persisted, leaving the same revision retryable when capture fails.
+- The linked progress surfaces were rechecked: legacy recent-reading titles, percentages, and next-action labels already share `recentReadingDisplay(...)` with `legacy:student-state`; granular progress/frontier pages already journal `frontierDisplayText(...)`. Other legacy progress/profile copy is a general shell/history concern for P3.07 rather than reading-result material.
+
+The result projection uses the authoritative server state selected during page delivery. Unsupported cached or offline client versions can still show stale local state; client/build version binding remains P3.07. Reading completion itself remains a multi-write claim/finalize workflow, so P3.04 makes no global transactional or complete-history claim. The atomic migration remains unapplied.
+
+P3.04 validation:
+
+- `npx vitest run src/lib/actions/summary-feedback-delivery.test.ts src/lib/diagnostic/granular/reading-display.test.ts src/lib/diagnostic/granular/writing-feedback-display.test.ts src/lib/reading/page-delivery.test.ts 'src/app/student/read/[sessionId]/reading-player.test.ts' 'src/app/student/results/[sessionId]/reading-results.test.ts' --reporter=verbose` — passed, 6 files / 25 tests.
+- `npx eslint src/lib/actions/student.ts src/lib/actions/summary-feedback-delivery.test.ts src/lib/diagnostic/granular/reading-display.ts src/lib/diagnostic/granular/reading-display.test.ts src/lib/diagnostic/granular/writing-feedback-display.ts src/lib/diagnostic/granular/writing-feedback-display.test.ts src/lib/reading/page-delivery.ts src/lib/reading/page-delivery.test.ts 'src/app/student/read/[sessionId]/reading-player.tsx' 'src/app/student/read/[sessionId]/reading-player.test.ts' 'src/app/student/results/[sessionId]/reading-results.tsx' 'src/app/student/results/[sessionId]/reading-results.test.ts' src/components/writing-feedback.tsx` — passed.
+- `npm run typecheck` — passed.

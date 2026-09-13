@@ -5,12 +5,13 @@ import type {V3Assessment} from "../v3-adapter";
 
 export type MixedProfileTarget={skillId:string;expected:"known"|"weak"};
 export type MixedProfileTraceInput={assessment:V3Assessment;activities:readonly LearningActivityBinding[];candidateChecksum:string;
- profile:string;targets:readonly MixedProfileTarget[];policy?:Policy;maxQuestions?:number};
+ profile:string;targets:readonly MixedProfileTarget[];defaultResponse?:"correct"|"incorrect";policy?:Policy;maxQuestions?:number};
 
 /** One full-budget replay through the unchanged production selector. There are
  * no per-domain quotas: the allocation is measured from the selected probes. */
 export function runMixedProfileTrace(input:MixedProfileTraceInput){
  const policy=input.policy??DEFAULT_POLICY;
+ const defaultResponse=input.defaultResponse??"correct";
  if(policy.activeSeconds!==2100)throw Error("Mixed profile trace must use the 2,100-second policy budget");
  const byId=new Map(input.assessment.skills.map(skill=>[skill.id,skill]));
  const expected=new Map(input.targets.map(target=>[target.skillId,target.expected]));
@@ -23,7 +24,8 @@ export function runMixedProfileTrace(input:MixedProfileTraceInput){
   const selection=selectProbe(input.assessment.skills,input.assessment.probes,observations,policy,[],input.assessment.releaseScope);
   if(selection.kind!=="question"){ending=selection;break;}
   const probe=selection.item,skill=byId.get(probe.skillId)!;
-  const response=probe.mode==="independent_production"?"skip":expected.get(probe.skillId)==="weak"?"incorrect":"correct";
+  const response=probe.mode==="independent_production"?"skip":expected.get(probe.skillId)==="weak"?"incorrect":
+   expected.get(probe.skillId)==="known"?"correct":defaultResponse;
   const observation:Observation={itemId:probe.id,skillId:probe.skillId,mode:probe.mode,contextId:probe.contextId,correct:response==="correct",
    ...(response==="skip"?{skipped:true as const}:{}),guessProbability:probe.guessProbability,activeSeconds:probe.expectedSeconds,unaided:true,
    occasionId:"synthetic-diagnostic-day",evidenceFeatures:probe.evidenceFeatures,textualSupportAssessed:probe.textualSupportAssessed,
@@ -49,7 +51,7 @@ export function runMixedProfileTrace(input:MixedProfileTraceInput){
   return {...target,questions:trace.filter(step=>step.skillId===target.skillId).length,result,withinOccasionResolved:routing.resolved};});
  const plan=planGranularActivities(input.assessment,results,input.activities,5);
  return {version:"mixed-profile-trace-v1",profile:input.profile,candidateChecksum:input.candidateChecksum,
-  fixedInputs:{activeSeconds:policy.activeSeconds,defaultResponse:"correct",independentProductionResponse:"skip",targets:input.targets},trace,
+  fixedInputs:{activeSeconds:policy.activeSeconds,defaultResponse,independentProductionResponse:"skip",targets:input.targets},trace,
   activeSeconds:observations.reduce((sum,item)=>sum+item.activeSeconds,0),answeredCount:observations.filter(item=>!item.skipped).length,
   skippedCount:observations.filter(item=>item.skipped).length,ending,actualAllocation:{byDomain:allocation("domain"),bySamplingGroup:allocation("samplingGroup"),byBranch:allocation("branch")},
   releaseScope:{declaredSkillCount:scopedIds.length,directEvidenceSkillCount:scopedResults.filter(result=>result.evidence==="direct").length,

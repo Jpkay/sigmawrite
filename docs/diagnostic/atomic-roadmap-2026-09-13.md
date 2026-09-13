@@ -56,7 +56,7 @@ flowchart LR
 | P3.01 | Reconcile current delivery gaps against route inventory | None | material | validated |
 | P3.02 | Complete capture of practice-player material | P3.01 | material | production |
 | P3.03 | Complete capture of production-player material | P3.01 | material | implemented |
-| P3.04 | Complete capture of reading and feedback material | P3.01 | material | planned |
+| P3.04 | Complete capture of reading and feedback material | P3.01 | material | validated |
 | P3.05 | Complete capture of dictation material | P3.01 | material | planned |
 | P3.06 | Complete capture of legacy diagnostic and demonstration material | P3.01 | material | planned |
 | P3.07 | Complete client-version and offline accounting | P3.01 | material | planned |
@@ -98,7 +98,7 @@ flowchart LR
 - **P3.01** — Each remaining student route/version has a concrete missing-material list. Evidence: workstreams/material.md.
 - **P3.02** — Record exact visible and pre-delivered material before exposure; rendering and failure tests cover the route. Evidence: atomic-roadmap-rollout-2026-09-13.json, workstreams/material.md.
 - **P3.03** — Record exact visible and pre-delivered material before exposure; rendering and failure tests cover the route. Evidence: workstreams/material.md.
-- **P3.04** — Record exact visible and pre-delivered material before exposure; rendering and failure tests cover the route.
+- **P3.04** — Record exact visible and pre-delivered material before exposure; rendering and failure tests cover the route. Evidence: workstreams/material.md: 25 tests across six files, TypeScript and focused lint; live display verification remains pending..
 - **P3.05** — Record exact visible and pre-delivered material before exposure; rendering and failure tests cover the route.
 - **P3.06** — Record exact visible and pre-delivered material before exposure; rendering and failure tests cover the route.
 - **P3.07** — Old clients, account switches, offline packs and errors cannot silently establish complete history.
@@ -132,6 +132,7 @@ The registry contains 184 targets and 920 target-level tasks. Status counts: awa
 - **P3.02** (2026-09-13): Third-help answer save fixed in399a674. Candidate and public checks saved exactly one wrong answer; public record confirms hintsUsed=3 and exact feedback capture.
 - **P4.02** (2026-09-13): 64 draft questions and5 lessons across5 targets prepared; cause family is next provisional release candidate. Drafts are not production coverage.
 - **P2.10** (2026-09-13): CORRECTION: the no-activity result used a pre-publication candidate with draft bindings. Runtime-validated publishedR41 returns5 independent checks and0 missing bindings. Its unchanged61-question/2100-second simulation samples25/360 skills, leaves335 untested and8/12 declared profile contrasts unmet. No runtime publication/planner fix is justified by the candidate-stage result.
+- **P2.10** (2026-09-13): Published R41 full-budget all-wrong counterpart: 61 incorrect responses, 15 provisional direct gaps, 332 unknown targets and five published prerequisite-free lessons; zero official resolutions. Declared targets not reached remain explicit. This is a runtime-bundle simulation, not live student calibration.
 
 ## Workstream reports
 

@@ -1,4 +1,5 @@
 "use server";
+import {writingFeedbackDisplay,writingEvaluationDisplay} from "@/lib/diagnostic/granular/writing-feedback-display";
 import {productionTaskDisplay,productionResultDisplay,productionLengthError} from "@/lib/diagnostic/granular/production-player-display";
 import {practiceFeedbackDisplay,practiceCompletionDisplay} from "@/lib/diagnostic/granular/practice-player-display";
 import {gradeRepairSubmission} from "@/lib/diagnostic/granular/repair-submission";
@@ -513,7 +514,7 @@ async function evaluateAndStoreWriting(input: {
   // scoring is not exposure. Record before persistence so a failed journal
   // does not consume a revision the student has not received.
   if (input.delivery) await journalStudentPayload(input.studentId, "legacy:summary-feedback",
-    input.delivery === "rubric" ? evaluation.rubric : evaluation);
+    input.delivery === "rubric" ? evaluation.rubric : {evaluation,display:writingEvaluationDisplay({revision_number:input.revisionNumber,submitted_text:input.studentText,rubric:evaluation.rubric,annotations:evaluation.annotations,revision_plan:evaluation.revisionPlan,degraded:evaluation.degraded},input.revisionNumber)});
   const { error } = await input.service.from("writing_evaluations").upsert({ student_summary_id: input.summaryId, student_id: input.studentId, revision_number: input.revisionNumber, submitted_text: input.studentText, rubric: evaluation.rubric, annotations: evaluation.annotations, revision_plan: evaluation.revisionPlan, degraded: evaluation.degraded }, { onConflict: "student_summary_id,revision_number" });
   if (error) throw new Error(error.message);
   const evaluatedAt = new Date().toISOString();
@@ -1688,7 +1689,8 @@ async function weakestPrerequisite(service: SupabaseClient, studentId: string, n
 export async function loadWritingFeedback(input: unknown) {
   const data = checked(writingFeedbackSchema, input); const { supabase, studentId } = await context();
   const feedback = await readWritingFeedback(data.textKey, supabase, studentId);
-  return journalStudentPayload(studentId, "legacy:summary-feedback-history", feedback);
+  await journalStudentPayload(studentId, "legacy:summary-feedback-history", {feedback,display:writingFeedbackDisplay(feedback)});
+  return feedback;
 }
 
 // Internal revision lookup is not a separate content delivery.

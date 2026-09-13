@@ -232,7 +232,7 @@
         "P2.09",
         "P2.11"
       ],
-      "acceptance": "Fresh profiles finish in 30\u201340 active minutes, resume correctly, retain separate skill signals and receive suitable activities.",
+      "acceptance": "Fresh profiles finish in 30–40 active minutes, resume correctly, retain separate skill signals and receive suitable activities.",
       "status": "in_progress",
       "owner": "coordinator",
       "evidence": [
@@ -288,9 +288,11 @@
         "P3.01"
       ],
       "acceptance": "Record exact visible and pre-delivered material before exposure; rendering and failure tests cover the route.",
-      "status": "planned",
+      "status": "validated",
       "owner": "material",
-      "evidence": []
+      "evidence": [
+        "workstreams/material.md: 25 tests across six files, TypeScript and focused lint; live display verification remains pending."
+      ]
     },
     {
       "id": "P3.05",
@@ -568,6 +570,11 @@
       "date": "2026-09-13",
       "task": "P2.10",
       "finding": "CORRECTION: the no-activity result used a pre-publication candidate with draft bindings. Runtime-validated publishedR41 returns5 independent checks and0 missing bindings. Its unchanged61-question/2100-second simulation samples25/360 skills, leaves335 untested and8/12 declared profile contrasts unmet. No runtime publication/planner fix is justified by the candidate-stage result."
+    },
+    {
+      "task": "P2.10",
+      "date": "2026-09-13",
+      "finding": "Published R41 full-budget all-wrong counterpart: 61 incorrect responses, 15 provisional direct gaps, 332 unknown targets and five published prerequisite-free lessons; zero official resolutions. Declared targets not reached remain explicit. This is a runtime-bundle simulation, not live student calibration."
     }
   ]
 }

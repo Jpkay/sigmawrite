@@ -15,3 +15,8 @@ export const REVISION_41_MIXED_TARGETS:MixedProfileTarget[]=[
  {skillId:"localiser_information_explicite::all-receptive::text_type:narrative",expected:"weak"},
  {skillId:"inferer_cause_locale::all-receptive::text_type:narrative",expected:"known"},
 ];
+
+/** The same declared contrasts under a broad struggling response pattern. */
+export const REVISION_41_BROAD_STRUGGLING_TARGETS:MixedProfileTarget[]=REVISION_41_MIXED_TARGETS.map(target=>({
+ skillId:target.skillId,expected:"weak",
+}));

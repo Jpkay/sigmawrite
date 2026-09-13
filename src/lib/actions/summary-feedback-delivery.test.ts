@@ -12,10 +12,10 @@ vi.mock('@/lib/db/content', () => ({getPublishedReadingText: async () => ({body:
 vi.mock('@/lib/db/ai', () => ({getActivePrompt: async () => ({promptText: 'instructions'})}));
 vi.mock('@/lib/writing/evaluate', () => ({evaluateWriting: f.evaluate}));
 import {loadWritingFeedback, reviseSummary, loadStudentRecueil, submitSummary} from './student';
-const evaluation = {segments: ['Les chevaux galopent.'], annotations: [{message: 'Écris « chevaux ».', replacements: ['chevaux']}], rubric: {score: 60, rubric: {language: 60}}, revisionPlan: [], degraded: true};
+const evaluation = {segments: ['Les chevaux galopent.'], annotations: [{offset:4,length:7,explanationFr: 'Écris « chevaux ».', replacements: ['chevaux']}], rubric: {score: 60, rubric: {content:null,structure:null,language: 60}}, revisionPlan: [], degraded: true};
 beforeEach(() => {
   vi.resetAllMocks();
-  f.evaluations = [{revision_number: 0, submitted_text: 'Mon premier résumé.', rubric: {feedback: 'Observe les accords.'}}];
+  f.evaluations = [{revision_number: 0, submitted_text: 'Mon premier résumé.', rubric: {feedbackFr: 'Observe les accords.'},annotations:[],revision_plan:[],degraded:false}];
   f.evaluate.mockResolvedValue(evaluation);
   f.journal.mockImplementation(async (_owner, _boundary, payload) => payload);
   f.persist.mockResolvedValue({error: null});
@@ -35,12 +35,12 @@ it('captures saved corrections, original text and teacher comments under the aut
   const result = await loadWritingFeedback({textKey: 'story', studentId: 'forged'});
   expect(result?.teacherScore?.commentFr).toBe('Compare cheval et chevaux.');
   expect(f.eq).toHaveBeenCalledWith('reading_sessions', 'student_id', 'owner');
-  expect(f.journal).toHaveBeenCalledWith('owner', 'legacy:summary-feedback-history', result);
+  expect(f.journal).toHaveBeenCalledWith('owner', 'legacy:summary-feedback-history', expect.objectContaining({feedback:result,display:expect.objectContaining({teacherScore:expect.objectContaining({text:'Note de ton enseignant : 7/100. Compare cheval et chevaux.'})})}));
 });
 it('captures only the new revision feedback, before saving that revision', async () => {
   expect(await reviseSummary({textKey: 'story', revisedText: 'Les chevaux galopent.'})).toBe(evaluation);
   expect(f.journal).toHaveBeenCalledTimes(1);
-  expect(f.journal).toHaveBeenCalledWith('owner', 'legacy:summary-feedback', evaluation);
+  expect(f.journal).toHaveBeenCalledWith('owner', 'legacy:summary-feedback', expect.objectContaining({evaluation,display:expect.objectContaining({changedHeading:'Ce qui a changé (révision 1)',annotations:[expect.objectContaining({quotedExcerpt:'« chevaux »',suggestions:'Suggestions : chevaux'})]})}));
   expect(f.journal.mock.invocationCallOrder[0]).toBeLessThan(f.persist.mock.invocationCallOrder[0]);
 });
 it('leaves the revision unsaved when capture fails, so the same revision can be submitted again', async () => {
