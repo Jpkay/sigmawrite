@@ -34,3 +34,6 @@ echo "Teacher assignment, shared access, revocation, cross-school denial and dea
 sed '/^create extension if not exists pgtap/d' "$repo_root/supabase/tests/20260914102000_school_invitations_test.sql" >"$task_pg/invitation-test.sql"
 apply_sql "$task_pg/invitation-test.sql"
 echo "Invitation rotation, expiry and role-boundary assertions passed."
+sed '/^create extension if not exists pgtap/d' "$repo_root/supabase/tests/20260914103000_review_rls_initplans_test.sql" >"$task_pg/review-rls-test.sql"
+apply_sql "$task_pg/review-rls-test.sql"
+echo "Review query performance and unchanged authorization assertions passed."
