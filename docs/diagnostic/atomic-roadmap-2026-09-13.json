@@ -302,9 +302,9 @@
         "P3.01"
       ],
       "acceptance": "Record exact visible and pre-delivered material before exposure; rendering and failure tests cover the route.",
-      "status": "in_progress",
+      "status": "validated",
       "owner": "material",
-      "evidence": []
+      "evidence": ["workstreams/material.md", "revision-43-integration-rollout-2026-09-13.json"]
     },
     {
       "id": "P3.06",
@@ -314,9 +314,9 @@
         "P3.01"
       ],
       "acceptance": "Record exact visible and pre-delivered material before exposure; rendering and failure tests cover the route.",
-      "status": "planned",
+      "status": "validated",
       "owner": "material",
-      "evidence": []
+      "evidence": ["workstreams/material.md: 21 tests across six files; committed c55c2a3, application deployment pending."]
     },
     {
       "id": "P3.07",
@@ -564,6 +564,14 @@
   "releaseRule": "Coordinator integrates only validated changes; candidate verification precedes promotion and public verification. Owner review continues in parallel and is not fabricated.",
   "releases": [
     {
+      "deploymentId": "dpl_Gh52yKFBBdcfU3SnSZdzJBrzA25a",
+      "sourceCommit": "403b9cb",
+      "releaseKey": "french-granular-diagnostic-v43-modal",
+      "status": "production_verified",
+      "evidence": "revision-43-integration-rollout-2026-09-13.json",
+      "scope": "367/544 targets; published runtime bundle and candidate/public opening/reload verified. Includes P2.13 instrumentation and P3.05 dictation capture."
+    },
+    {
       "deploymentId": "dpl_HnYDpWUnR6CHnj1tK6RnxgNXwYaS",
       "sourceCommit": "af6316c",
       "releaseKey": "french-granular-diagnostic-v42-cause",
@@ -589,6 +597,11 @@
     }
   ],
   "executionNotes": [
+    {
+      "date": "2026-09-13",
+      "task": "P4.04",
+      "finding": "R43 promoted and public opening/reload verified at dpl_Gh52yKFBBdcfU3SnSZdzJBrzA25a. Both forward integration migrations applied atomically and recorded; existing enabled review policy, IDs and 5/10/100 bounds unchanged and valid. Native PostgreSQL tests passed162 migrations,47review and11school assertions plus persistence/access/concurrency. P3.06 committed after21tests. P2.14 final integration review checks exhausted-tier continuation."
+    },
     {
       "date": "2026-09-13",
       "task": "P4.04",

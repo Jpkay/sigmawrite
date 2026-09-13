@@ -57,8 +57,8 @@ flowchart LR
 | P3.02 | Complete capture of practice-player material | P3.01 | material | production |
 | P3.03 | Complete capture of production-player material | P3.01 | material | implemented |
 | P3.04 | Complete capture of reading and feedback material | P3.01 | material | validated |
-| P3.05 | Complete capture of dictation material | P3.01 | material | in_progress |
-| P3.06 | Complete capture of legacy diagnostic and demonstration material | P3.01 | material | planned |
+| P3.05 | Complete capture of dictation material | P3.01 | material | validated |
+| P3.06 | Complete capture of legacy diagnostic and demonstration material | P3.01 | material | validated |
 | P3.07 | Complete client-version and offline accounting | P3.01 | material | planned |
 | P3.08 | Validate and release atomic covered delivery | P3.02, P3.03, P3.04, P3.05, P3.06, P3.07 | coordinator | planned |
 | P3.09 | Verify a fresh covered student baseline | P3.08 | coordinator | planned |
@@ -101,8 +101,8 @@ flowchart LR
 - **P3.02** — Record exact visible and pre-delivered material before exposure; rendering and failure tests cover the route. Evidence: atomic-roadmap-rollout-2026-09-13.json, workstreams/material.md.
 - **P3.03** — Record exact visible and pre-delivered material before exposure; rendering and failure tests cover the route. Evidence: workstreams/material.md.
 - **P3.04** — Record exact visible and pre-delivered material before exposure; rendering and failure tests cover the route. Evidence: workstreams/material.md: 25 tests across six files, TypeScript and focused lint; live display verification remains pending..
-- **P3.05** — Record exact visible and pre-delivered material before exposure; rendering and failure tests cover the route.
-- **P3.06** — Record exact visible and pre-delivered material before exposure; rendering and failure tests cover the route.
+- **P3.05** — Record exact visible and pre-delivered material before exposure; rendering and failure tests cover the route. Evidence: workstreams/material.md, revision-43-integration-rollout-2026-09-13.json.
+- **P3.06** — Record exact visible and pre-delivered material before exposure; rendering and failure tests cover the route. Evidence: workstreams/material.md: 21 tests across six files; committed c55c2a3, application deployment pending..
 - **P3.07** — Old clients, account switches, offline packs and errors cannot silently establish complete history.
 - **P3.08** — Native database concurrency/rollback checks and deployed route evidence pass; apply only verified migration.
 - **P3.09** — Known versus unseen words/sentences have source receipts; interrupted deliveries fail closed; historical students remain incomplete.
@@ -133,6 +133,7 @@ The registry contains 184 targets and 920 target-level tasks. Status counts: awa
 
 ## Current findings
 
+- **P4.04** (2026-09-13): R43 promoted and public opening/reload verified at dpl_Gh52yKFBBdcfU3SnSZdzJBrzA25a. Both forward integration migrations applied atomically and recorded; existing enabled review policy, IDs and 5/10/100 bounds unchanged and valid. Native PostgreSQL tests passed162 migrations,47review and11school assertions plus persistence/access/concurrency. P3.06 committed after21tests. P2.14 final integration review checks exhausted-tier continuation.
 - **P4.04** (2026-09-13): R43 published and runtime-validated: 367 targets, 6,663 scoped questions, 8,088 exact relational bank items; no instruction/fresh-check gaps. Application candidate403b9cb passed1,936 tests, types, lint and build from a clean detached checkout. Generated fixture prerequisites fixed in574ec62; candidate browser opening remains in progress. Review-automation deployment is held while post-activation reviewer drift is assessed; no reviewer or policy configuration has been changed.
 - **P4.04** (2026-09-13): R42 cause release is published and promoted; 362 supported targets. Candidate/public opening and reload verified, runtime export supplied to adaptive lane. R43 modal candidate is next. See revision-42-integration-rollout-2026-09-13.json.
 - **P3.05** (2026-09-13): Dictation capture and saved justification retry committed in 758feb9 after 23 focused tests, lint and TypeScript passed. Awaiting matching application deployment and hosted dictation verification.
@@ -151,6 +152,7 @@ The registry contains 184 targets and 920 target-level tasks. Status counts: awa
 
 ## Release log
 
+- `dpl_Gh52yKFBBdcfU3SnSZdzJBrzA25a` · `403b9cb` · production_verified: 367/544 targets; published runtime bundle and candidate/public opening/reload verified. Includes P2.13 instrumentation and P3.05 dictation capture. Evidence: revision-43-integration-rollout-2026-09-13.json.
 - `dpl_HnYDpWUnR6CHnj1tK6RnxgNXwYaS` · `af6316c` · production_verified: 362/544 targets. Runtime-validated parallel-review publication; candidate and public diagnostic opening/reload passed. Full hosted cause-learning completion remains pending. Evidence: revision-42-integration-rollout-2026-09-13.json.
 - `dpl_H5Y1JqcrviYMhQP9kzNw4a6H5gKU` · `773d3f7` · production_verified: Existing baseline: 360/544 targets; results and progress counts verified on 19 eligible skills. Evidence: skill-evidence-rollout-2026-09-13.json.
 - `dpl_5Dsg1ZzaYkieT7Kaper26svvvJny` · `399a674` · production_verified: Lesson-routing correction, exact practice display/feedback capture, and third-help save correction; scope remains360/544. Evidence: atomic-roadmap-rollout-2026-09-13.json.
