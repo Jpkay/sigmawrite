@@ -121,7 +121,7 @@ const adaptiveProbeSchema = z.object({
   selectedChoiceId: uuidSchema.optional(), answerText: z.string().trim().max(2000).optional(),
   startedAt: dateTimeSchema,
 }).refine((value) => value.selectedChoiceId || value.answerText, "Réponse requise");
-const practiceAttemptSchema = z.object({ nodeId: uuidSchema, itemId: uuidSchema, selectedChoiceId: uuidSchema.optional(), answerText: z.string().trim().max(2000).optional(), startedAt: dateTimeSchema, hintsUsed: z.number().int().min(0).max(2).optional() }).refine((value) => value.selectedChoiceId || value.answerText, "Réponse requise");
+const practiceAttemptSchema = z.object({ nodeId: uuidSchema, itemId: uuidSchema, selectedChoiceId: uuidSchema.optional(), answerText: z.string().trim().max(2000).optional(), startedAt: dateTimeSchema, hintsUsed: z.number().int().min(0).max(3).optional() }).refine((value) => value.selectedChoiceId || value.answerText, "Réponse requise");
 const timedPracticeAttemptSchema = practiceAttemptSchema.and(z.object({ practiceSessionId: uuidSchema, exercisePosition: z.number().int().min(0).max(5) }));
 const startPracticeSessionSchema = z.object({ nodeId: uuidSchema, clientRequestId: uuidSchema });
 const completePracticeSessionSchema = z.object({ practiceSessionId: uuidSchema });

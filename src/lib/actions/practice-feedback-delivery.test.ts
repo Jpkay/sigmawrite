@@ -38,3 +38,12 @@ it('withholds feedback and the attempt when formatted display capture fails',asy
  await expect(submitNodePractice(input)).rejects.toThrow('display unavailable');
  expect(f.insert).not.toHaveBeenCalled();
 });
+
+it('accepts all three help items offered by the practice player',async()=>{
+ await expect(submitNodePractice({...input,hintsUsed:3})).rejects.toThrow('test storage boundary');
+ expect(f.insert).toHaveBeenCalledWith(expect.objectContaining({hints_used:3}));
+});
+it('rejects a fabricated help count above the three available items',async()=>{
+ await expect(submitNodePractice({...input,hintsUsed:4})).rejects.toThrow('Données invalides.');
+ expect(f.insert).not.toHaveBeenCalled();expect(f.journal).not.toHaveBeenCalled();
+});
