@@ -1,19 +1,19 @@
 # Self-service school onboarding and teacher supervision
 
 Goal started 2026-09-13. This ledger concerns onboarding and access, not curriculum
-completion or educational calibration. The existing production application is
-unchanged until an explicitly verified release is recorded below.
+completion or educational calibration. The onboarding release is now public;
+full multi-account browser acceptance remains incomplete (latest checkpoint below).
 
 ## Acceptance ledger
 
 | Requirement | Required proof | Current state |
 | --- | --- | --- |
-| School and class setup | Platform admin creates a school and appoints its admin; school admin manages only that school and creates/edits classes through the UI | Implemented; action/data and native database checks passed; hosted UI pending |
+| School and class setup | Platform admin creates a school and appoints its admin; school admin manages only that school and creates/edits classes through the UI | Public UI school and two-class creation passed; scoped admin appointment and school-admin journey pending |
 | Student onboarding and recovery | Valid invitation joins the right class; invalid/expired/revoked invitations fail; login, resume and recovery verified without changing real credentials | Implemented; focused action and native invitation checks passed; hosted login/recovery pending |
 | Many-to-many teacher assignments | Two teachers, two classes and at least three students; shared class and direct-student assignments work; separate grants remain distinguishable | Implemented; synthetic database assertions passed; hosted UI pending |
 | Teacher reports | Assigned teacher sees diagnostic results, per-skill evidence, activity and progress; direct assignment works without granting an entire class | Current granular diagnostic/activity DTO implemented; authorization/privacy tests passed; hosted report pending |
-| Access boundaries and revocation | Cross-school grants, self-grants and direct table-write bypass denied; removing last assignment and deactivation revoke access | Database assertions passed locally; hosted evidence pending |
-| Verified delivery | Reviewed diff; relevant/integration tests, types, lint, build; forward migration preflight; candidate and public end-to-end verification; commit/push/deploy | Candidate Ready; checks/commits/push passed; public cutover and authenticated end-to-end pending |
+| Access boundaries and revocation | Cross-school grants, self-grants and direct table-write bypass denied; removing last assignment and deactivation revoke access | Native and hosted rollback SQL assertions passed; browser multi-account denial/revocation pending |
+| Verified delivery | Reviewed diff; relevant/integration tests, types, lint, build; forward migration preflight; candidate and public end-to-end verification; commit/push/deploy | Public cutover completed; checks/commits/push passed; full authenticated multi-account end-to-end pending |
 
 ## Execution ownership
 
@@ -147,6 +147,39 @@ This checkpoint supersedes the earlier missing-sign-in notes above.
 - Verification/rehearsal work is in `a23f581`; the public SQL fix is in `56834e5`.
   Only the rebuildable `.next/cache` was removed to recover local disk space;
   source files and existing test artifacts were preserved.
+
+## Public onboarding cutover and initial UI acceptance — 2026-09-13
+
+This checkpoint supersedes the earlier unpromoted/missing-browser notes.
+
+- A fresh Chrome tab restored browser inspection. `/admin/items/review` now
+  renders the review queue for the owner: **review-page hotfix verified in UI**.
+- Re-inspected the Ready candidate and reran the three-migration preflight.
+  Applied exactly `20260914100000`, `20260914101000`, `20260914102000`, then
+  immediately promoted `dpl_DA6zpXShDiYKoCPyJUfwFgv84wmV`. The public alias
+  `https://sigmawrite.vercel.app` now resolves to that candidate (source `e1ec056`).
+- Hosted `--confirm-public-pilot=pwztnrirtrnicywvdbpz` passed all **3 rollback-only
+  SQL suites** against the installed release. A separate read confirmed all
+  three permanent onboarding ledger entries. The review RLS hotfix remains applied.
+- Public `/login`, `/join`, `/signup`, `/reset-password` returned 200;
+  unauthenticated `/admin/schools` and `/teacher` returned 307 to their login route.
+- Through the **public browser UI**, created organisation
+  `Plume QA — onboarding 2026-09-13`, school `QA Onboarding — 2026-09-13`
+  (`8f9da60a-ed0e-47f4-9050-4cda2448a2dc`), and two classes:
+  `QA Classe A` (`a69840cd-7bf3-4f77-b783-17c794136fd8`) and
+  `QA Classe B` (`91c58c61-9d20-4394-9dea-bad371bb9f6b`). UI success messages,
+  class counts, and a separate database read confirmed persistence.
+- Opened the school-specific administrator-appointment form. Prepared a clearly
+  synthetic administrator identity but **did not submit credential creation**.
+  Requested action-time approval for one QA school administrator, two teachers,
+  three students and school-confined assignment tests, plus the proposed owner
+  QA email destination. No new account or access grant has been created yet.
+- The school and classes contain only synthetic QA data. No existing school,
+  real membership, credential or invitation was modified.
+- Remaining acceptance: administrator appointment; school-admin management;
+  teacher/student invitation and login; shared/direct visibility with actual
+  diagnostic/activity reports; recovery/resume; revocation and foreign-school
+  denials in the browser. Successful SQL fixtures do not substitute for these.
 
 ## Release gates
 
