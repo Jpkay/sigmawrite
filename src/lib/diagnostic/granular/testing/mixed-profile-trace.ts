@@ -18,7 +18,8 @@ export function runMixedProfileTrace(input:MixedProfileTraceInput){
  if(expected.size!==input.targets.length||input.targets.some(target=>!byId.has(target.skillId)))throw Error("Mixed profile targets must be unique released skills");
  const observations:Observation[]=[],trace:Array<{index:number;questionId:string;skillId:string;domain:string;samplingGroup:string;branch:string;
   mode:Probe["mode"];selectionReason:string;difficulty:number;guessProbability:number;expectedSeconds:number;response:"correct"|"incorrect"|"skip";
-  elapsedSeconds:number;evidence:{status:string;source:string;probability:number;distinctItems:number;confirmed:boolean;provisionalGap:boolean;withinOccasionResolved:boolean}}>=[];
+  selectionTransition:Extract<ReturnType<typeof selectProbe>,{kind:"question"}>["transition"];elapsedSeconds:number;
+  evidence:{status:string;source:string;probability:number;distinctItems:number;confirmed:boolean;provisionalGap:boolean;withinOccasionResolved:boolean}}>=[];
  let ending:Exclude<ReturnType<typeof selectProbe>,{kind:"question"}>|undefined;
  for(let index=0;index<(input.maxQuestions??200);index++){
   const selection=selectProbe(input.assessment.skills,input.assessment.probes,observations,policy,[],input.assessment.releaseScope);
@@ -36,7 +37,8 @@ export function runMixedProfileTrace(input:MixedProfileTraceInput){
   const result=assessSkills([skill],observations,policy)[0],within=assessWithinOccasion([skill],observations,policy)[0],mode=result.modes.find(item=>item.mode===probe.mode)!;
   trace.push({index:index+1,questionId:probe.id,skillId:probe.skillId,domain:skill.domain??"unspecified",samplingGroup:skill.samplingGroup??"unspecified",
    branch:skill.branch,mode:probe.mode,selectionReason:selection.reason,difficulty:probe.difficulty,guessProbability:probe.guessProbability,
-   expectedSeconds:probe.expectedSeconds,response,elapsedSeconds:observations.reduce((sum,item)=>sum+item.activeSeconds,0),evidence:{status:result.status,
+   expectedSeconds:probe.expectedSeconds,response,selectionTransition:selection.transition,
+   elapsedSeconds:observations.reduce((sum,item)=>sum+item.activeSeconds,0),evidence:{status:result.status,
     source:result.evidence,probability:mode.probability,distinctItems:mode.distinctItems,confirmed:mode.confirmed,
     provisionalGap:mode.provisionalGap===true,withinOccasionResolved:within.resolved}});
  }

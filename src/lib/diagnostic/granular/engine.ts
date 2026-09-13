@@ -220,8 +220,14 @@ export function assessSkills(skills: readonly Skill[], observations: readonly Ob
   });
 }
 
+export type SelectionTransition={
+  axis:"coverage"|"graph"|"item_difficulty"|"confirmation";
+  relation:"branch_entry"|"prerequisite"|"successor"|"lower_challenge"|"higher_challenge"|"same_skill_lower_difficulty"|"same_skill"|"boundary_recheck"|"gap_check";
+  source:{skillId:string;challenge:number;difficulty:number}|null;
+  target:{skillId:string;challenge:number;difficulty:number};
+};
 export type Selection =
-  | { kind: "question"; item: Probe; reason: "branch_coverage" | "step_down" | "step_up" | "recheck_boundary" | "confirmation" | "gap_check" }
+  | { kind: "question"; item: Probe; reason: "branch_coverage" | "step_down" | "step_up" | "recheck_boundary" | "confirmation" | "gap_check";transition:SelectionTransition }
   | { kind: "provisional"; reason: "time_budget" | "later_evidence_required"; unresolvedSkillIds: string[] }
   | { kind: "finished"; reason: "evidence_complete" }
   | { kind: "coverage_gap"; unresolvedSkillIds: string[] };
@@ -280,6 +286,7 @@ export function selectProbe(skills: readonly Skill[], bank: readonly Probe[], ob
   const spent = observed.reduce((sum, o) => sum + Math.max(0, o.activeSeconds), 0);
   if (spent >= policy.activeSeconds) return { kind: "provisional", reason: "time_budget", unresolvedSkillIds: unresolved };
   const asked = new Set(observed.map(o => o.itemId));
+  const probeById=new Map(bank.map(probe=>[probe.id,probe]));
   const knownMaterial=knownExposedMaterialKeys(bank,observed,[],extraKnownMaterialKeys);
   const available = bank.filter(item => {
     const skill = skillById.get(item.skillId);
@@ -457,52 +464,58 @@ export function selectProbe(skills: readonly Skill[], bank: readonly Probe[], ob
   const lastSkill = last ? skillById.get(last.skillId) : undefined;
   let reason: Extract<Selection, {kind: "question"}>["reason"] = "gap_check";
   let pool = branchItems;
-  const restrict = (predicate: (item: Probe) => boolean, nextReason: typeof reason) => {
+  let transitionSeed:{axis:SelectionTransition["axis"];relation:SelectionTransition["relation"];source?:Observation}|undefined;
+  const restrict = (predicate: (item: Probe) => boolean, nextReason: typeof reason,nextTransition?:typeof transitionSeed) => {
     const matches = branchItems.filter(predicate);
     if (!matches.length) return false;
-    pool = matches; reason = nextReason; return true;
+    pool = matches; reason = nextReason;transitionSeed=nextTransition;return true;
   };
   const recoveryIds=new Set(recovery.filter(item=>skillById.get(item.skillId)!.branch===branch&&formOf(skillById.get(item.skillId)!)===form).map(item=>item.skillId));
   const boundaryIds=new Set(boundaryItems.map(item=>item.skillId));
-  if(recoveryIds.size&&restrict(i=>recoveryIds.has(i.skillId),'step_down')){
+  if(recoveryIds.size&&restrict(i=>recoveryIds.has(i.skillId),'step_down',{axis:"graph",
+    relation:[...recoveryIds].every(id=>lastFamilySkill?.prerequisites.includes(id))?"prerequisite":"lower_challenge",source:lastFamilyAnswer})){
     // Recover across tense categories while preserving exact skill evidence.
-  }else if(recoveryConfirmationItems.length&&restrict(i=>i.skillId===recoveryConfirmationItems[0].skillId,'confirmation')){
+  }else if(recoveryConfirmationItems.length&&restrict(i=>i.skillId===recoveryConfirmationItems[0].skillId,'confirmation',{axis:"confirmation",relation:"same_skill",source:lastFamilyAnswer})){
     // Finish checking the easier target before revisiting the failed boundary.
-  }else if(boundaryIds.size&&restrict(i=>boundaryIds.has(i.skillId),'recheck_boundary')){
+  }else if(boundaryIds.size&&restrict(i=>boundaryIds.has(i.skillId),'recheck_boundary',{axis:"graph",relation:"boundary_recheck",source:previousHigherFailure})){
     // The easier target now has its own evidence; revisit the harder failure.
-  }else if (crossPrerequisiteIds.size && restrict(i => crossPrerequisiteIds.has(i.skillId), "step_down")) {
+  }else if (crossPrerequisiteIds.size && restrict(i => crossPrerequisiteIds.has(i.skillId), "step_down",{axis:"graph",relation:"prerequisite",source:recent})) {
     // Probe the prerequisite; a failed advanced item does not score it as weak.
-  } else if (crossSuccessorIds.size && restrict(i => crossSuccessorIds.has(i.skillId), "step_up")) {
+  } else if (crossSuccessorIds.size && restrict(i => crossSuccessorIds.has(i.skillId), "step_up",{axis:"graph",relation:"successor",source:recent})) {
     // Ask the next graph target; prerequisite evidence never scores it.
-  } else if (restrict(i => skillById.get(i.skillId)!.anchor === true, "branch_coverage")) {
+  } else if (restrict(i => skillById.get(i.skillId)!.anchor === true, "branch_coverage",{axis:"coverage",relation:"branch_entry"})) {
     // Explicit essentials are measured even when challenge routing would start higher.
-  } else if (verbErrorItems.length && restrict(i=>i.skillId===verbErrorItems[0].skillId,'confirmation')) {
+  } else if (verbErrorItems.length && restrict(i=>i.skillId===verbErrorItems[0].skillId,'confirmation',{axis:"confirmation",relation:"same_skill",source:lastFamilyAnswer})) {
     // Verify an observed gap within the bounded verb visit.
-  } else if (verbVisitItems.length && restrict(i=>i.skillId===verbVisitItems[0].skillId,verbVisitReason)) {
+  } else if (verbVisitItems.length && restrict(i=>i.skillId===verbVisitItems[0].skillId,verbVisitReason,verbVisitReason==="step_up"
+    ?{axis:"graph",relation:"higher_challenge",source:[...allFamilyHistory].reverse().find(o=>skillById.get(o.skillId)?.branch===skillById.get(verbVisitItems[0].skillId)?.branch
+      &&routingById.get(o.skillId)?.status==="mastered"&&challengeOf(skillById.get(o.skillId)!)<challengeOf(skillById.get(verbVisitItems[0].skillId)!))}
+    :allFamilyHistory.some(o=>o.skillId===verbVisitItems[0].skillId)?{axis:"confirmation",relation:"same_skill",
+      source:[...allFamilyHistory].reverse().find(o=>o.skillId===verbVisitItems[0].skillId)}:{axis:"coverage",relation:"branch_entry"})) {
     // Confirm this exact target; another tense receives no inferred evidence.
   } else if (!lastSkill) {
     reason = "branch_coverage";
   } else if (!last?.correct) {
     // Prefer real prerequisites, then easier tasks in the same branch; no inference is recorded.
-    if (!restrict(i => lastSkill.prerequisites.includes(i.skillId), "step_down")) {
-      if (!restrict(i => challengeOf(skillById.get(i.skillId)!) < challengeOf(lastSkill), "step_down")) {
-        if (!restrict(i => i.skillId === lastSkill.id && i.difficulty < (bank.find(p => p.id === last?.itemId)?.difficulty ?? 1), "step_down")) {
+    if (!restrict(i => lastSkill.prerequisites.includes(i.skillId), "step_down",{axis:"graph",relation:"prerequisite",source:last})) {
+      if (!restrict(i => challengeOf(skillById.get(i.skillId)!) < challengeOf(lastSkill), "step_down",{axis:"graph",relation:"lower_challenge",source:last})) {
+        if (!restrict(i => i.skillId === lastSkill.id && i.difficulty < (probeById.get(last?.itemId??"")?.difficulty ?? 1), "step_down",{axis:"item_difficulty",relation:"same_skill_lower_difficulty",source:last})) {
           // Already at the available floor: verify the difficulty on a fresh
           // context instead of drifting to another same-level target after a
           // single failure. Resolved targets are already absent from available.
-          restrict(i => i.skillId === lastSkill.id, "confirmation");
+          restrict(i => i.skillId === lastSkill.id, "confirmation",{axis:"confirmation",relation:"same_skill",source:last});
         }
       }
     }
   } else {
     const lowerResolved = routingById.get(lastSkill.id)?.status === "mastered";
     const failedAbove = [...history].reverse().find(o => !o.skipped && !o.correct && challengeOf(skillById.get(o.skillId)!) > challengeOf(lastSkill));
-    if (lowerResolved && failedAbove && restrict(i => i.skillId === failedAbove.skillId, "recheck_boundary")) {
+    if (lowerResolved && failedAbove && restrict(i => i.skillId === failedAbove.skillId, "recheck_boundary",{axis:"graph",relation:"boundary_recheck",source:failedAbove})) {
       // The recovered foundation is confirmed; probe the earlier failure with a new item.
-    } else if (lowerResolved && restrict(i => challengeOf(skillById.get(i.skillId)!) > challengeOf(lastSkill), "step_up")) {
+    } else if (lowerResolved && restrict(i => challengeOf(skillById.get(i.skillId)!) > challengeOf(lastSkill), "step_up",{axis:"graph",relation:"higher_challenge",source:last})) {
       // Move up one available challenge level, not to a global proficiency band.
     } else {
-      restrict(i => i.skillId === lastSkill.id, "confirmation");
+      restrict(i => i.skillId === lastSkill.id, "confirmation",{axis:"confirmation",relation:"same_skill",source:last});
     }
   }
   const selectedReason = reason as Extract<Selection, { kind: "question" }>["reason"];
@@ -528,5 +541,10 @@ export function selectProbe(skills: readonly Skill[], bank: readonly Probe[], ob
     return a.id.localeCompare(b.id);
   });
   if (pool[0].expectedSeconds > policy.activeSeconds - spent) return { kind: "provisional", reason: "time_budget", unresolvedSkillIds: unresolved };
-  return { kind: "question", item: pool[0], reason };
+  const item=pool[0],source=transitionSeed?.source??(transitionSeed?undefined:last),sourceProbe=source?probeById.get(source.itemId):undefined;
+  const transition:SelectionTransition={axis:transitionSeed?.axis??(last?item.skillId===last.skillId?"confirmation":"graph":"coverage"),
+    relation:transitionSeed?.relation??(last?item.skillId===last.skillId?"same_skill":"gap_check":"branch_entry"),
+    source:source&&sourceProbe?{skillId:source.skillId,challenge:challengeOf(skillById.get(source.skillId)!),difficulty:sourceProbe.difficulty}:null,
+    target:{skillId:item.skillId,challenge:challengeOf(skillById.get(item.skillId)!),difficulty:item.difficulty}};
+  return { kind: "question", item, reason,transition };
 }
