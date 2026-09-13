@@ -13,7 +13,7 @@ unchanged until an explicitly verified release is recorded below.
 | Many-to-many teacher assignments | Two teachers, two classes and at least three students; shared class and direct-student assignments work; separate grants remain distinguishable | Implemented; synthetic database assertions passed; hosted UI pending |
 | Teacher reports | Assigned teacher sees diagnostic results, per-skill evidence, activity and progress; direct assignment works without granting an entire class | Current granular diagnostic/activity DTO implemented; authorization/privacy tests passed; hosted report pending |
 | Access boundaries and revocation | Cross-school grants, self-grants and direct table-write bypass denied; removing last assignment and deactivation revoke access | Database assertions passed locally; hosted evidence pending |
-| Verified delivery | Reviewed diff; relevant/integration tests, types, lint, build; forward migration preflight; candidate and public end-to-end verification; commit/push/deploy | Pending |
+| Verified delivery | Reviewed diff; relevant/integration tests, types, lint, build; forward migration preflight; candidate and public end-to-end verification; commit/push/deploy | Candidate Ready; checks/commits/push passed; public cutover and authenticated end-to-end pending |
 
 ## Execution ownership
 
@@ -66,6 +66,32 @@ send real invitations, rotate real passwords or deploy independently.
   It has **not** been executed against the public-pilot database.
 - School management/invitations (`8d90544`), recovery and legacy boundaries
   (`1c23e8a`), and teacher supervision (`e1ec056`) are committed and pushed.
+
+## Candidate release — 2026-09-13
+
+- Frozen application source: `e1ec056`. Subsequent commits contain the QA helper
+  and evidence documentation, not additional application changes.
+- Vercel candidate: `dpl_DA6zpXShDiYKoCPyJUfwFgv84wmV`, status **Ready** after
+  the Production-environment build with R43 retained. URL:
+  <https://sigmawrite-k14sf4xg1-jpkays-projects.vercel.app>.
+- Candidate unauthenticated HTTP checks: `/login`, `/join`, `/signup` and
+  `/reset-password` returned 200; `/admin/schools`, `/admin/users` and `/teacher`
+  returned 307 to login with their intended next route. No server-error pages.
+  The deployment-protection bypass was used only for these technical requests;
+  application authentication and Turnstile were not bypassed.
+- **Not promoted.** `sigmawrite.vercel.app` still resolves to previous public
+  deployment `dpl_G6zc25UMJwHzMixpNi4KAWEsqApc`. No onboarding migrations have been
+  applied to the public-pilot database. The candidate is not ready for real
+  onboarding until its matching migrations and authenticated checks are completed.
+- Remaining owner input: sign into Plume in Chrome with the platform-administrator
+  account. The observed Plume tab is still at login. Do not reset the owner's
+  credentials, create a substitute privileged account, or alter real school
+  membership to work around this missing session.
+- Remaining verification: coordinated database/application cutover; rollback-only
+  hosted SQL checks; actual UI school and class creation, administrator appointment,
+  two teachers/two classes/three synthetic students, shared/direct access and
+  revocation, real-widget login, invitation join, recovery and student resume.
+  Local SQL fixtures and anonymous HTTP checks do not satisfy those UI requirements.
 
 ## Release gates
 
