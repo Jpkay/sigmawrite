@@ -58,6 +58,16 @@ do $$ begin
   raise exception 'foreign class grant accepted';
  exception when insufficient_privilege then assert sqlerrm='forbidden'; end;
  assert not exists(select 1 from public.students where id='14100000-0000-0000-0000-000000000024');
+ begin
+  perform public.assign_student_class('14100000-0000-0000-0000-000000000024','14100000-0000-0000-0000-000000000011');
+  raise exception 'school administrator moved a foreign student';
+ exception when insufficient_privilege then assert sqlerrm='student_school_mismatch'; end;
+ begin
+  perform public.assign_student_class('14100000-0000-0000-0000-000000000022','14100000-0000-0000-0000-000000000012',current_setting('test.foreign_teacher')::uuid);
+  raise exception 'invalid optional teacher assignment accepted';
+ exception when insufficient_privilege then assert sqlerrm='teacher_school_mismatch'; end;
+ assert not exists(select 1 from public.enrollments where student_id='14100000-0000-0000-0000-000000000022' and class_id='14100000-0000-0000-0000-000000000012'), 'failed direct grant must not partially enroll student';
+ assert public.assign_student_class('14100000-0000-0000-0000-000000000021','14100000-0000-0000-0000-000000000012',current_setting('test.teacher1')::uuid);
 end $$;
 
 select set_config('request.jwt.claim.sub','14100000-0000-4000-8000-000000000002',true);

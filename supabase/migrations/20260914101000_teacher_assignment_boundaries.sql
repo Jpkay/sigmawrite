@@ -93,6 +93,36 @@ begin
   return p_assigned;
 end $$;
 
+-- Existing students may join an additional class in their school; this is not
+-- a school-transfer API. All checks precede an atomic enrollment/direct grant.
+create or replace function public.assign_student_class(p_student_id uuid, p_class_id uuid, p_teacher_profile_id uuid default null)
+returns boolean language plpgsql security definer set search_path = public as $$
+declare v_school uuid;
+begin
+  select school_id into v_school from public.classes where id = p_class_id for update;
+  if v_school is null then raise exception 'class_not_found'; end if;
+  if not (public.is_platform_admin() or coalesce(public.is_school_admin_of(v_school),false)) then
+    raise exception 'forbidden' using errcode = '42501';
+  end if;
+  perform 1 from public.students where id = p_student_id for update;
+  if not public.student_belongs_to_school(p_student_id, v_school) then
+    raise exception 'student_school_mismatch' using errcode = '42501';
+  end if;
+  if p_teacher_profile_id is not null then
+    perform 1 from public.profiles where id = p_teacher_profile_id for update;
+    if not public.teacher_belongs_to_school(p_teacher_profile_id, v_school) then
+      raise exception 'teacher_school_mismatch' using errcode = '42501';
+    end if;
+  end if;
+  insert into public.enrollments(student_id,class_id,status) values(p_student_id,p_class_id,'active')
+  on conflict(student_id,class_id) do update set status = 'active';
+  update public.students set school_id = v_school where id = p_student_id and school_id is null;
+  if p_teacher_profile_id is not null then
+    perform public.set_teacher_student(p_teacher_profile_id,p_student_id,true);
+  end if;
+  return true;
+end $$;
+
 create or replace function public.set_class_enrollment(p_class_id uuid, p_student_id uuid, p_status text)
 returns void language plpgsql security definer set search_path = public as $$
 declare v_school uuid;
@@ -115,7 +145,7 @@ end $$;
 drop policy if exists teacher_students_select on public.teacher_students;
 create policy teacher_students_select on public.teacher_students for select using (
   (teacher_profile_id = public.current_profile_id() and public.teaches_student(student_id))
-  or public.administers_student(student_id) or public.is_platform_admin()
+  or public.administers_student(student_id) or public.supervises_student(student_id) or public.is_platform_admin()
 );
 drop policy if exists teacher_classes_select on public.teacher_classes;
 create policy teacher_classes_select on public.teacher_classes for select using (
@@ -139,7 +169,7 @@ create policy classes_select on public.classes for select using (
 revoke insert, update, delete on public.teacher_students, public.teacher_classes from anon, authenticated;
 revoke all on function public.teacher_belongs_to_school(uuid,uuid), public.student_belongs_to_school(uuid,uuid),
   public.set_teacher_student(uuid,uuid,boolean), public.set_teacher_class(uuid,uuid,boolean),
-  public.set_class_enrollment(uuid,uuid,text) from public, anon;
+  public.assign_student_class(uuid,uuid,uuid), public.set_class_enrollment(uuid,uuid,text) from public, anon;
 grant execute on function public.teacher_belongs_to_school(uuid,uuid), public.student_belongs_to_school(uuid,uuid),
   public.set_teacher_student(uuid,uuid,boolean), public.set_teacher_class(uuid,uuid,boolean),
-  public.set_class_enrollment(uuid,uuid,text) to authenticated, service_role;
+  public.assign_student_class(uuid,uuid,uuid), public.set_class_enrollment(uuid,uuid,text) to authenticated, service_role;
