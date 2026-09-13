@@ -39,7 +39,7 @@
     {
       "id": "P1.03",
       "priority": 1,
-      "title": "Keep guided practice separate from independent mastery",
+      "title": "Save guided repair separately from independent mastery",
       "dependsOn": [
         "P1.01"
       ],
@@ -58,9 +58,12 @@
         "P1.01"
       ],
       "acceptance": "Every state/mode has student-readable wording; unsupported targets are not shown as weaknesses.",
-      "status": "planned",
+      "status": "production",
       "owner": "coordinator",
-      "evidence": []
+      "evidence": [
+        "result-language-audit-2026-09-13.md",
+        "atomic-roadmap-rollout-2026-09-13.json"
+      ]
     },
     {
       "id": "P1.05",
@@ -70,6 +73,18 @@
         "P1.02"
       ],
       "acceptance": "A teacher can identify which independent answers support one specific skill, including later checks.",
+      "status": "planned",
+      "owner": "coordinator",
+      "evidence": []
+    },
+    {
+      "id": "P1.06",
+      "priority": 1,
+      "title": "Audit evidence from every guided learning flow",
+      "dependsOn": [
+        "P1.03"
+      ],
+      "acceptance": "Check legacy practice, guided lessons and repair separately; record actual evidence expectations and fix any assisted response that can falsely confirm independent mastery.",
       "status": "planned",
       "owner": "coordinator",
       "evidence": []
@@ -112,7 +127,9 @@
       "acceptance": "Both known and weak sides are exercised independently; unresolved targets cannot pass by omission; failures become fixes.",
       "status": "in_progress",
       "owner": "adaptive",
-      "evidence": []
+      "evidence": [
+        "revision-41-etre-avoir-trace-2026-09-13.json"
+      ]
     },
     {
       "id": "P2.04",
@@ -124,7 +141,9 @@
       "acceptance": "Both known and weak sides are exercised independently; unresolved targets cannot pass by omission; failures become fixes.",
       "status": "in_progress",
       "owner": "adaptive",
-      "evidence": []
+      "evidence": [
+        "revision-41-aller-tense-trace-2026-09-13.json"
+      ]
     },
     {
       "id": "P2.05",
@@ -134,9 +153,12 @@
         "P2.02"
       ],
       "acceptance": "Both known and weak sides are exercised independently; unresolved targets cannot pass by omission; failures become fixes.",
-      "status": "planned",
+      "status": "in_progress",
       "owner": "adaptive",
-      "evidence": []
+      "evidence": [
+        "revision-41-grammar-construction-trace-2026-09-13.json",
+        "workstreams/adaptive.md"
+      ]
     },
     {
       "id": "P2.06",
@@ -146,9 +168,12 @@
         "P2.02"
       ],
       "acceptance": "Both known and weak sides are exercised independently; unresolved targets cannot pass by omission; failures become fixes.",
-      "status": "planned",
+      "status": "in_progress",
       "owner": "adaptive",
-      "evidence": []
+      "evidence": [
+        "revision-41-spelling-trace-2026-09-13.json",
+        "workstreams/adaptive.md"
+      ]
     },
     {
       "id": "P2.07",
@@ -158,9 +183,12 @@
         "P2.02"
       ],
       "acceptance": "Both known and weak sides are exercised independently; unresolved targets cannot pass by omission; failures become fixes.",
-      "status": "planned",
+      "status": "in_progress",
       "owner": "adaptive",
-      "evidence": []
+      "evidence": [
+        "revision-41-short-reading-trace-2026-09-13.json",
+        "workstreams/adaptive.md"
+      ]
     },
     {
       "id": "P2.08",
@@ -170,7 +198,7 @@
         "P2.02"
       ],
       "acceptance": "Both known and weak sides are exercised independently; unresolved targets cannot pass by omission; failures become fixes.",
-      "status": "planned",
+      "status": "in_progress",
       "owner": "adaptive",
       "evidence": []
     },
@@ -180,12 +208,15 @@
       "title": "Verify learning-driven refinement",
       "dependsOn": [
         "P2.02",
-        "P1.03"
+        "P1.03",
+        "P2.12"
       ],
       "acceptance": "Guided success alone cannot confirm mastery; independent post-lesson evidence can refine the exact target.",
-      "status": "planned",
+      "status": "in_progress",
       "owner": "adaptive",
-      "evidence": []
+      "evidence": [
+        "revision-41-learning-refinement-trace-2026-09-13.json"
+      ]
     },
     {
       "id": "P2.10",
@@ -198,12 +229,15 @@
         "P2.06",
         "P2.07",
         "P2.08",
-        "P2.09"
+        "P2.09",
+        "P2.11"
       ],
       "acceptance": "Fresh profiles finish in 30\u201340 active minutes, resume correctly, retain separate skill signals and receive suitable activities.",
-      "status": "planned",
+      "status": "in_progress",
       "owner": "coordinator",
-      "evidence": []
+      "evidence": [
+        "revision-41-mixed-profile-trace-2026-09-13.json"
+      ]
     },
     {
       "id": "P3.01",
@@ -225,9 +259,10 @@
         "P3.01"
       ],
       "acceptance": "Record exact visible and pre-delivered material before exposure; rendering and failure tests cover the route.",
-      "status": "validated",
+      "status": "production",
       "owner": "material",
       "evidence": [
+        "atomic-roadmap-rollout-2026-09-13.json",
         "workstreams/material.md"
       ]
     },
@@ -239,9 +274,11 @@
         "P3.01"
       ],
       "acceptance": "Record exact visible and pre-delivered material before exposure; rendering and failure tests cover the route.",
-      "status": "planned",
+      "status": "implemented",
       "owner": "material",
-      "evidence": []
+      "evidence": [
+        "workstreams/material.md"
+      ]
     },
     {
       "id": "P3.04",
@@ -466,6 +503,34 @@
       "status": "planned",
       "owner": "coordinator",
       "evidence": []
+    },
+    {
+      "id": "P2.11",
+      "priority": 2,
+      "title": "Restore a suitable next activity for the full mixed profile",
+      "dependsOn": [
+        "P2.02"
+      ],
+      "acceptance": "The unchanged35-minute mixed learner profile receives a deliverable foundational lesson or independent check; do not erase unmet targets or weaken mastery requirements to pass.",
+      "status": "in_progress",
+      "owner": "adaptive",
+      "evidence": [
+        "revision-41-mixed-profile-trace-2026-09-13.json"
+      ]
+    },
+    {
+      "id": "P2.12",
+      "priority": 2,
+      "title": "Make reserved follow-up checks deliverable for supported skills",
+      "dependsOn": [
+        "P4.03"
+      ],
+      "acceptance": "Trace and fix draft/unavailable independent-check bindings in published skill scope; exact reserved fresh questions are available after guided lessons, with truthful review provenance.",
+      "status": "in_progress",
+      "owner": "adaptive + coordinator",
+      "evidence": [
+        "revision-41-learning-refinement-trace-2026-09-13.json"
+      ]
     }
   ],
   "releaseRule": "Coordinator integrates only validated changes; candidate verification precedes promotion and public verification. Owner review continues in parallel and is not fabricated.",
@@ -477,6 +542,32 @@
       "status": "production_verified",
       "evidence": "skill-evidence-rollout-2026-09-13.json",
       "scope": "Existing baseline: 360/544 targets; results and progress counts verified on 19 eligible skills."
+    },
+    {
+      "deploymentId": "dpl_5Dsg1ZzaYkieT7Kaper26svvvJny",
+      "sourceCommit": "399a674",
+      "releaseKey": "french-granular-diagnostic-v41-writing",
+      "status": "production_verified",
+      "evidence": "atomic-roadmap-rollout-2026-09-13.json",
+      "scope": "Lesson-routing correction, exact practice display/feedback capture, and third-help save correction; scope remains360/544."
+    }
+  ],
+  "executionNotes": [
+    {
+      "date": "2026-09-13",
+      "task": "P3.02",
+      "finding": "Third-help answer save fixed in399a674. Candidate and public checks saved exactly one wrong answer; public record confirms hintsUsed=3 and exact feedback capture.",
+      "status": "production_verified"
+    },
+    {
+      "date": "2026-09-13",
+      "task": "P4.02",
+      "finding": "64 draft questions and5 lessons across5 targets prepared; cause family is next provisional release candidate. Drafts are not production coverage."
+    },
+    {
+      "date": "2026-09-13",
+      "task": "P2.10",
+      "finding": "Full production selector simulation used61 questions/2100 seconds and sampled25/360 supported targets. It left335 untested and returned no next activity. This is a failed pathway acceptance check; P2.11 and P2.12 track fixes without weakening assessment claims."
     }
   ]
 }

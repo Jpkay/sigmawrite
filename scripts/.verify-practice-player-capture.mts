@@ -203,7 +203,7 @@ try {
     if (afterError) throw afterError;
     assert.equal(attemptsAfter, (attemptsBefore ?? 0) + 1, "Exactly one QA attempt must be stored");
     const { data: attempt, error: attemptError } = await db.from("competency_attempts")
-    .select("id,item_id,is_correct,answer_text")
+    .select("id,item_id,is_correct,answer_text,hints_used")
     .eq("student_id", qa.studentId)
     .eq("node_id", practiceNodeId)
     .eq("answer_text", answer)
@@ -212,6 +212,7 @@ try {
     .single();
     if (attemptError) throw attemptError;
     assert.equal(attempt.is_correct, false);
+    if(process.env.PLUME_VERIFY_EXPECT_THREE_HINTS==="true")assert.equal(attempt.hints_used,3,"All three offered help items must be accepted");
 
     const boundaries = ["legacy:practice", "legacy:practice-player", "legacy:practice-feedback", "legacy:practice-feedback-display"];
     const { data: journal, error: journalError } = await db.from("student_material_delivery_journal")
@@ -244,6 +245,7 @@ try {
     },
     submittedAttempt: {
       countDelta: 1,
+      hintsUsed: attempt.hints_used,
       incorrect: true,
       feedbackFr,
       feedbackPanelText,

@@ -39,22 +39,23 @@ flowchart LR
 |---|---|---|---|---|
 | P1.01 | Display per-skill successes separately from mastery | None | coordinator | production |
 | P1.02 | Preserve answer review and correction history | None | coordinator | production |
-| P1.03 | Keep guided practice separate from independent mastery | P1.01 | coordinator | production |
-| P1.04 | Explain assessed, untested and unsupported targets | P1.01 | coordinator | planned |
+| P1.03 | Save guided repair separately from independent mastery | P1.01 | coordinator | production |
+| P1.04 | Explain assessed, untested and unsupported targets | P1.01 | coordinator | production |
 | P1.05 | Trace a result to its supporting answers | P1.02 | coordinator | planned |
+| P1.06 | Audit evidence from every guided learning flow | P1.03 | coordinator | planned |
 | P2.01 | Inventory existing granular profile tests | None | adaptive | validated |
 | P2.02 | Implement reproducible profile trace runner | P2.01 | adaptive | validated |
 | P2.03 | Verify verb-family and individual-verb contrasts | P2.02 | adaptive | in_progress |
 | P2.04 | Verify tense and agreement contrasts | P2.02 | adaptive | in_progress |
-| P2.05 | Verify grammar-construction contrasts | P2.02 | adaptive | planned |
-| P2.06 | Verify spelling contrasts | P2.02 | adaptive | planned |
-| P2.07 | Verify short-reading contrasts | P2.02 | adaptive | planned |
-| P2.08 | Verify guessing, skipping and contradictory responses | P2.02 | adaptive | planned |
-| P2.09 | Verify learning-driven refinement | P2.02, P1.03 | adaptive | planned |
-| P2.10 | Run contrasting complete deployed journeys | P2.03, P2.04, P2.05, P2.06, P2.07, P2.08, P2.09 | coordinator | planned |
+| P2.05 | Verify grammar-construction contrasts | P2.02 | adaptive | in_progress |
+| P2.06 | Verify spelling contrasts | P2.02 | adaptive | in_progress |
+| P2.07 | Verify short-reading contrasts | P2.02 | adaptive | in_progress |
+| P2.08 | Verify guessing, skipping and contradictory responses | P2.02 | adaptive | in_progress |
+| P2.09 | Verify learning-driven refinement | P2.02, P1.03, P2.12 | adaptive | in_progress |
+| P2.10 | Run contrasting complete deployed journeys | P2.03, P2.04, P2.05, P2.06, P2.07, P2.08, P2.09, P2.11 | coordinator | in_progress |
 | P3.01 | Reconcile current delivery gaps against route inventory | None | material | validated |
-| P3.02 | Complete capture of practice-player material | P3.01 | material | validated |
-| P3.03 | Complete capture of production-player material | P3.01 | material | planned |
+| P3.02 | Complete capture of practice-player material | P3.01 | material | production |
+| P3.03 | Complete capture of production-player material | P3.01 | material | implemented |
 | P3.04 | Complete capture of reading and feedback material | P3.01 | material | planned |
 | P3.05 | Complete capture of dictation material | P3.01 | material | planned |
 | P3.06 | Complete capture of legacy diagnostic and demonstration material | P3.01 | material | planned |
@@ -73,27 +74,30 @@ flowchart LR
 | P5.04 | Collect owner content review in parallel | P5.01 | user | awaiting_real_review |
 | P5.05 | Observe real students and compare teacher judgments | P5.03, P5.01 | user + coordinator | awaiting_real_students |
 | P5.06 | Fix and recheck pilot findings | P5.05 | coordinator | planned |
+| P2.11 | Restore a suitable next activity for the full mixed profile | P2.02 | adaptive | in_progress |
+| P2.12 | Make reserved follow-up checks deliverable for supported skills | P4.03 | adaptive + coordinator | in_progress |
 
 ## Acceptance criteria
 
 - **P1.01** — Saved eligible counts match the result and progress views; no mastery-state mutation. Evidence: skill-evidence-rollout-2026-09-13.json.
 - **P1.02** — Saved diagnostic answers and wrong-answer filter survive reload. Evidence: revision-41-fresh-recommended-journey-2026-09-12.json.
 - **P1.03** — Lost successful response retries exactly once, without changing diagnostic or skill estimates. Evidence: guided-repair-completion-rollout-2026-09-13.json.
-- **P1.04** — Every state/mode has student-readable wording; unsupported targets are not shown as weaknesses.
+- **P1.04** — Every state/mode has student-readable wording; unsupported targets are not shown as weaknesses. Evidence: result-language-audit-2026-09-13.md, atomic-roadmap-rollout-2026-09-13.json.
 - **P1.05** — A teacher can identify which independent answers support one specific skill, including later checks.
+- **P1.06** — Check legacy practice, guided lessons and repair separately; record actual evidence expectations and fix any assisted response that can falsely confirm independent mastery.
 - **P2.01** — Map tests to explicit distinctions and identify missing contrasts. Evidence: workstreams/adaptive.md, revision-41-aller-tense-trace-2026-09-13.json.
 - **P2.02** — Fixed inputs reproduce target, mode, difficulty, time, evidence and next-activity traces. Evidence: workstreams/adaptive.md, revision-41-aller-tense-trace-2026-09-13.json.
-- **P2.03** — Both known and weak sides are exercised independently; unresolved targets cannot pass by omission; failures become fixes.
-- **P2.04** — Both known and weak sides are exercised independently; unresolved targets cannot pass by omission; failures become fixes.
-- **P2.05** — Both known and weak sides are exercised independently; unresolved targets cannot pass by omission; failures become fixes.
-- **P2.06** — Both known and weak sides are exercised independently; unresolved targets cannot pass by omission; failures become fixes.
-- **P2.07** — Both known and weak sides are exercised independently; unresolved targets cannot pass by omission; failures become fixes.
+- **P2.03** — Both known and weak sides are exercised independently; unresolved targets cannot pass by omission; failures become fixes. Evidence: revision-41-etre-avoir-trace-2026-09-13.json.
+- **P2.04** — Both known and weak sides are exercised independently; unresolved targets cannot pass by omission; failures become fixes. Evidence: revision-41-aller-tense-trace-2026-09-13.json.
+- **P2.05** — Both known and weak sides are exercised independently; unresolved targets cannot pass by omission; failures become fixes. Evidence: revision-41-grammar-construction-trace-2026-09-13.json, workstreams/adaptive.md.
+- **P2.06** — Both known and weak sides are exercised independently; unresolved targets cannot pass by omission; failures become fixes. Evidence: revision-41-spelling-trace-2026-09-13.json, workstreams/adaptive.md.
+- **P2.07** — Both known and weak sides are exercised independently; unresolved targets cannot pass by omission; failures become fixes. Evidence: revision-41-short-reading-trace-2026-09-13.json, workstreams/adaptive.md.
 - **P2.08** — Both known and weak sides are exercised independently; unresolved targets cannot pass by omission; failures become fixes.
-- **P2.09** — Guided success alone cannot confirm mastery; independent post-lesson evidence can refine the exact target.
-- **P2.10** — Fresh profiles finish in 30–40 active minutes, resume correctly, retain separate skill signals and receive suitable activities.
+- **P2.09** — Guided success alone cannot confirm mastery; independent post-lesson evidence can refine the exact target. Evidence: revision-41-learning-refinement-trace-2026-09-13.json.
+- **P2.10** — Fresh profiles finish in 30–40 active minutes, resume correctly, retain separate skill signals and receive suitable activities. Evidence: revision-41-mixed-profile-trace-2026-09-13.json.
 - **P3.01** — Each remaining student route/version has a concrete missing-material list. Evidence: workstreams/material.md.
-- **P3.02** — Record exact visible and pre-delivered material before exposure; rendering and failure tests cover the route. Evidence: workstreams/material.md.
-- **P3.03** — Record exact visible and pre-delivered material before exposure; rendering and failure tests cover the route.
+- **P3.02** — Record exact visible and pre-delivered material before exposure; rendering and failure tests cover the route. Evidence: atomic-roadmap-rollout-2026-09-13.json, workstreams/material.md.
+- **P3.03** — Record exact visible and pre-delivered material before exposure; rendering and failure tests cover the route. Evidence: workstreams/material.md.
 - **P3.04** — Record exact visible and pre-delivered material before exposure; rendering and failure tests cover the route.
 - **P3.05** — Record exact visible and pre-delivered material before exposure; rendering and failure tests cover the route.
 - **P3.06** — Record exact visible and pre-delivered material before exposure; rendering and failure tests cover the route.
@@ -112,14 +116,22 @@ flowchart LR
 - **P5.04** — Actual owner decisions recorded with content version and comments; never substitute automated review.
 - **P5.05** — Document actual use, timing, skill-level disagreements and recommended-lesson suitability.
 - **P5.06** — Each discrepancy has a reproducible case, validated resolution and deployed version.
+- **P2.11** — The unchanged35-minute mixed learner profile receives a deliverable foundational lesson or independent check; do not erase unmet targets or weaken mastery requirements to pass. Evidence: revision-41-mixed-profile-trace-2026-09-13.json.
+- **P2.12** — Trace and fix draft/unavailable independent-check bindings in published skill scope; exact reserved fresh questions are available after guided lessons, with truthful review provenance. Evidence: revision-41-learning-refinement-trace-2026-09-13.json.
 
 ## Remaining content: 184 individually tracked targets
 
 Each approved target has five atomic records: **Q** assessment question pool, **L** guided lesson, **V** binding/separation validation, **R** verified production publication, and **O** actual owner review. Q and L can run in parallel; V requires both; R requires V; O can run alongside release after Q/L exist. Shared content may satisfy several targets only when each target’s own requirements pass.
 
-The registry contains 184 targets and 920 target-level tasks. Status counts: awaiting_real_review: 184, in_progress: 6, planned: 730.
+The registry contains 184 targets and 920 target-level tasks. Status counts: awaiting_real_review: 184, implemented: 10, planned: 726.
 
 [Exact target IDs, labels, evidence requirements and task dependencies](remaining-target-goals-2026-09-13.json).
+
+## Current findings
+
+- **P3.02** (2026-09-13): Third-help answer save fixed in399a674. Candidate and public checks saved exactly one wrong answer; public record confirms hintsUsed=3 and exact feedback capture.
+- **P4.02** (2026-09-13): 64 draft questions and5 lessons across5 targets prepared; cause family is next provisional release candidate. Drafts are not production coverage.
+- **P2.10** (2026-09-13): Full production selector simulation used61 questions/2100 seconds and sampled25/360 supported targets. It left335 untested and returned no next activity. This is a failed pathway acceptance check; P2.11 and P2.12 track fixes without weakening assessment claims.
 
 ## Workstream reports
 
@@ -130,6 +142,7 @@ The registry contains 184 targets and 920 target-level tasks. Status counts: awa
 ## Release log
 
 - `dpl_H5Y1JqcrviYMhQP9kzNw4a6H5gKU` · `773d3f7` · production_verified: Existing baseline: 360/544 targets; results and progress counts verified on 19 eligible skills. Evidence: skill-evidence-rollout-2026-09-13.json.
+- `dpl_5Dsg1ZzaYkieT7Kaper26svvvJny` · `399a674` · production_verified: Lesson-routing correction, exact practice display/feedback capture, and third-help save correction; scope remains360/544. Evidence: atomic-roadmap-rollout-2026-09-13.json.
 - New agent work is not deployed until an explicit validated release entry is added.
 
 No completion date is invented. Scope coverage, acceptance evidence and actual releases determine progress.
