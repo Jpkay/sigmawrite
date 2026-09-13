@@ -1,5 +1,6 @@
 "use server";
 import {dictationCatalogDisplay,dictationSessionDisplay,dictationResultDisplay,dictationJustificationOutcomeDisplay} from "@/lib/diagnostic/granular/dictation-display";
+import {legacyDiagnosticResponseDisplay} from "@/lib/diagnostic/granular/legacy-diagnostic-display";
 import {writingFeedbackDisplay,writingEvaluationDisplay} from "@/lib/diagnostic/granular/writing-feedback-display";
 import {productionTaskDisplay,productionResultDisplay,productionLengthError} from "@/lib/diagnostic/granular/production-player-display";
 import {practiceFeedbackDisplay,practiceCompletionDisplay} from "@/lib/diagnostic/granular/practice-player-display";
@@ -756,10 +757,17 @@ export async function startAdaptiveDiagnostic(input: unknown) {
   const { restart } = checked(z.object({ restart: z.boolean().optional() }).strict(), input);
   if (process.env.ADAPTIVE_DIAGNOSTIC_ENABLED === "false") throw new Error("Diagnostic adaptatif désactivé pour cet environnement.");
   const { supabase, studentId } = await context();
+  const deliver = async <T>(result: T): Promise<T> => {
+    await journalStudentPayload(studentId, "legacy:diagnostic-start", {
+      result,
+      display: legacyDiagnosticResponseDisplay(result),
+    });
+    return result;
+  };
   const service = createServiceClient();
   if (!restart) {
     const completed = await loadCompletedDiagnostic(studentId, service);
-    if (completed) return { done: true as const, ...completed, state: await getDeliveredStudentState(studentId, service) };
+    if (completed) return deliver({ done: true as const, ...completed, state: await getDeliveredStudentState(studentId, service) });
   }
   const { data: existingRun } = await supabase.from("diagnostic_runs")
     .select("id,started_at,current_section,taxonomy_release_id,item_bank_release_id,is_pilot")
@@ -811,7 +819,7 @@ export async function startAdaptiveDiagnostic(input: unknown) {
             completedAt: new Date().toISOString(),
             probeCount: currentProgress.reduce((total, section) => total + section.probeCount, 0),
           });
-          return { done: true as const, ...completed };
+          return deliver({ done: true as const, ...completed });
         }
         const reconciledAt = new Date().toISOString();
         const reconciled = await reconcileDiagnosticSection({
@@ -833,7 +841,7 @@ export async function startAdaptiveDiagnostic(input: unknown) {
             await abandonDiagnosticRun(service, existingRun.id as string);
             throw new Error("La banque ne permet pas de reprendre cette section.");
           }
-          return {
+          return deliver({
             runId: existingRun.id as string,
             startedAt: existingRun.started_at as string,
             item,
@@ -843,7 +851,7 @@ export async function startAdaptiveDiagnostic(input: unknown) {
             resumed: true,
             isPilot: Boolean(existingRun.is_pilot),
             done: false as const,
-          };
+          });
         }
         if (reconciled.decision.reason === "insufficient_items") {
           throw new Error("Ce diagnostic est suspendu : une section manque encore de questions validées.");
@@ -902,7 +910,7 @@ export async function startAdaptiveDiagnostic(input: unknown) {
   const releaseError = isPilot ? pilotReleaseLookup?.error : publishedReleaseLookup.error;
   if (releaseError) throw new Error(releaseError.message);
   if (!release?.id) {
-    return { startupError: DIAGNOSTIC_UNAVAILABLE_MESSAGE };
+    return deliver({ startupError: DIAGNOSTIC_UNAVAILABLE_MESSAGE });
   }
   const [itemBankLookup, priorRunLookup] = await Promise.all([
     (pilotContext
@@ -935,7 +943,7 @@ export async function startAdaptiveDiagnostic(input: unknown) {
     throw new Error(itemBankError?.message ?? priorRunError?.message);
   }
   if (!itemBank) {
-    return { startupError: DIAGNOSTIC_UNAVAILABLE_MESSAGE };
+    return deliver({ startupError: DIAGNOSTIC_UNAVAILABLE_MESSAGE });
   }
   const { data: priorDiagnosticRows, error: priorDiagnosticError } = latestCompatibleRun
     ? await service.from("diagnostic_node_results")
@@ -965,7 +973,7 @@ export async function startAdaptiveDiagnostic(input: unknown) {
   const rawReadiness = readinessResult.data as { ready?: boolean; sections?: DiagnosticBankSectionReadiness[] } | null;
   const readiness = assessDiagnosticBankReadiness(rawReadiness?.sections ?? []);
   if (!rawReadiness?.ready || !readiness.ready) {
-    return { startupError: DIAGNOSTIC_UNAVAILABLE_MESSAGE };
+    return deliver({ startupError: DIAGNOSTIC_UNAVAILABLE_MESSAGE });
   }
   const { data: memberships, error: membershipError } = await service
     .from("taxonomy_release_memberships")
@@ -1114,7 +1122,7 @@ export async function startAdaptiveDiagnostic(input: unknown) {
     await abandonDiagnosticRun(service, run.id as string);
     throw new Error("La banque d’items ne contient pas encore assez de questions.");
   }
-  return {
+  return deliver({
     runId: run.id as string,
     startedAt: run.started_at as string,
     item,
@@ -1124,7 +1132,7 @@ export async function startAdaptiveDiagnostic(input: unknown) {
     resumed: false,
     isPilot,
     done: false as const,
-  };
+  });
 }
 
 export async function loadDiagnosticRequirement(input: unknown) {
@@ -2107,6 +2115,13 @@ async function finalizeAdaptiveDiagnostic(input: {
 export async function submitAdaptiveDiagnosticProbe(input: unknown) {
   const data = checked(adaptiveProbeSchema, input);
   const { supabase, studentId } = await context();
+  const deliver = async <T>(result: T): Promise<T> => {
+    await journalStudentPayload(studentId, "legacy:diagnostic-response", {
+      result,
+      display: legacyDiagnosticResponseDisplay(result),
+    });
+    return result;
+  };
   const service = createServiceClient();
   const { data: run } = await supabase.from("diagnostic_runs")
     .select("id,probe_count,status,current_section,taxonomy_release_id,is_pilot")
@@ -2162,7 +2177,7 @@ export async function submitAdaptiveDiagnosticProbe(input: unknown) {
       },{grammarChecker:validatorType==="agreement"||validatorType==="grammalecte"?new LanguageToolChecker():undefined});
       correct = validation.pass;
     } catch (error) {
-      if (error instanceof ReadingAssessmentError) return { submissionError: READING_RETRY_MESSAGE };
+      if (error instanceof ReadingAssessmentError) return deliver({ submissionError: READING_RETRY_MESSAGE });
       throw error;
     }
   }
@@ -2214,24 +2229,24 @@ export async function submitAdaptiveDiagnosticProbe(input: unknown) {
   if (!decision.stop) {
     const nextItem = await assignDiagnosticItem({ db: service, studentId, runId: data.runId, sectionKey, candidate });
     if (!nextItem) throw new Error("Aucune question adaptée n’est disponible.");
-    return {
+    return deliver({
       correct,
       done: false as const,
       item: nextItem,
       probeCount,
       progress: await loadDiagnosticProgress(data.runId, service),
       sectionTransition: false,
-    };
+    });
   }
   if (decision.reason === "insufficient_items") {
-    return {
+    return deliver({
       correct,
       done: false as const,
       blocked: true as const,
       reason: "insufficient_items" as const,
       probeCount,
       progress: await loadDiagnosticProgress(data.runId, service),
-    };
+    });
   }
   const progress = await loadDiagnosticProgress(data.runId, service);
   const nextSectionKey = nextDiagnosticSection(progress);
@@ -2245,18 +2260,18 @@ export async function submitAdaptiveDiagnosticProbe(input: unknown) {
     }
     const nextItem = await assignDiagnosticItem({ db: service, studentId, runId: data.runId, sectionKey: nextSectionKey });
     if (!nextItem) throw new Error(`La section ${diagnosticSection(nextSectionKey).labelFr} manque de questions.`);
-    return {
+    return deliver({
       correct,
       done: false as const,
       item: nextItem,
       probeCount,
       progress: await loadDiagnosticProgress(data.runId, service),
       sectionTransition: true,
-    };
+    });
   }
   const completed = await finalizeAdaptiveDiagnostic({ service, studentId, runId: data.runId, completedAt: attemptedAt, probeCount });
   revalidatePath("/student"); revalidatePath("/student/frontier"); revalidatePath("/parent");
-  return { correct, done: true as const, probeCount, ...completed };
+  return deliver({ correct, done: true as const, probeCount, ...completed });
 }
 
 export async function startReadingSession(input: unknown) {

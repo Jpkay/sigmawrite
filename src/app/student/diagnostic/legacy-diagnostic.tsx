@@ -1,6 +1,5 @@
 "use client";
 
-import { shuffleChoices } from "@/lib/content/choice-order";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, Check, CheckCircle2, Circle, LoaderCircle, XCircle } from "lucide-react";
@@ -21,7 +20,16 @@ import type { GoalScope } from "@/lib/graph/types";
 import { ExercisePrompt } from "@/components/exercise-prompt";
 import { AccentTextarea } from "@/components/accent-textarea";
 import { replaceStudentState } from "@/lib/student-store";
-import { DIAGNOSTIC_START_FAILED_MESSAGE } from "@/lib/diagnostic/startup";
+import {
+  LEGACY_DIAGNOSTIC_COPY,
+  legacyDiagnosticCompletionDisplay,
+  legacyDiagnosticItemDisplay,
+  legacyDiagnosticQuestionMeta,
+  legacyDiagnosticRunDescription,
+  legacyDiagnosticSectionRange,
+  legacyDiagnosticSectionStatus,
+  legacyDiagnosticSectionTransition,
+} from "@/lib/diagnostic/granular/legacy-diagnostic-display";
 
 type AssignedItem = LiveDiagnosticItem & { runItemId: string; assignedAt: string };
 type Run = {
@@ -75,7 +83,7 @@ export default function DiagnosticPage() {
     startAdaptiveDiagnostic({ restart })
       .then((value) => {
         if ("startupError" in value) {
-          setError(value.startupError ?? DIAGNOSTIC_START_FAILED_MESSAGE);
+          setError(value.startupError ?? LEGACY_DIAGNOSTIC_COPY.unavailable.fallback);
           return;
         }
         setIsPilot(Boolean(value.isPilot));
@@ -90,7 +98,7 @@ export default function DiagnosticPage() {
         setRun(value as Run);
         setProbeCount(value.progress.reduce((total, section) => total + section.probeCount, 0));
       })
-      .catch(() => setError(DIAGNOSTIC_START_FAILED_MESSAGE))
+      .catch(() => setError(LEGACY_DIAGNOSTIC_COPY.unavailable.fallback))
       .finally(() => setPending(false));
   }, [startAttempt]);
 
@@ -109,7 +117,7 @@ export default function DiagnosticPage() {
         startedAt: run.item.assignedAt,
       });
       if ("submissionError" in result) {
-        setError(result.submissionError ?? "Ta réponse n’a pas pu être évaluée. Réessaie.");
+        setError(result.submissionError ?? LEGACY_DIAGNOSTIC_COPY.run.submissionFallback);
         return;
       }
       setFeedback(result.correct);
@@ -129,7 +137,7 @@ export default function DiagnosticPage() {
           path_steps: result.learningPath.stepCount,
         });
       } else if ("blocked" in result && result.blocked) {
-        setError("Cette section n’a pas encore assez de questions validées pour produire un résultat fiable.");
+        setError(LEGACY_DIAGNOSTIC_COPY.blocked.response);
         setBlocked(true);
         setRun((current) => current ? { ...current, progress: result.progress as DiagnosticSectionProgress[] } : current);
       } else if ("item" in result && result.item) {
@@ -151,32 +159,27 @@ export default function DiagnosticPage() {
         }
       }
     } catch {
-      setError("Ta réponse n’a pas pu être enregistrée. Réessaie.");
+      setError(LEGACY_DIAGNOSTIC_COPY.run.submissionError);
     } finally {
       setPending(false);
     }
   }
 
   if (frontier) {
-    const outcomes = [
-      ["mastered", "Maîtrisé"],
-      ["fragile", "À consolider"],
-      ["missing", "À construire"],
-      ["unknown", "À vérifier"],
-    ] as const;
+    const display = legacyDiagnosticCompletionDisplay({ frontier, learningPath, isPilot });
     return (
       <>
         {isPilot && <PilotNotice completed />}
         <PageHeader
-          eyebrow="Diagnostic terminé"
-          title="Ton parcours est prêt"
-          description="Les résultats sont organisés par compétence et les prérequis viennent avant ce qu’ils permettent d’apprendre."
+          eyebrow={display.header.eyebrow}
+          title={display.header.title}
+          description={display.header.description}
         />
         <div className="grid border-y border-border sm:grid-cols-4">
-          {outcomes.map(([key, label]) => (
-            <div key={key} className="border-b border-r border-border p-5 last:border-r-0 sm:border-b-0">
-              <p className="text-sm text-muted-foreground">{label}</p>
-              <p className="mt-2 font-display text-3xl font-semibold">{frontier.report[key].length}</p>
+          {display.outcomes.map((outcome) => (
+            <div key={outcome.key} className="border-b border-r border-border p-5 last:border-r-0 sm:border-b-0">
+              <p className="text-sm text-muted-foreground">{outcome.label}</p>
+              <p className="mt-2 font-display text-3xl font-semibold">{outcome.count}</p>
             </div>
           ))}
         </div>
@@ -184,10 +187,10 @@ export default function DiagnosticPage() {
           <section className="mt-10">
             <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
               <div>
-                <p className="font-display text-xs font-semibold uppercase tracking-[.16em] text-primary">Premières étapes</p>
-                <h2 className="mt-1 text-xl font-semibold">Un parcours de {learningPath.stepCount} compétences</h2>
+                <p className="font-display text-xs font-semibold uppercase tracking-[.16em] text-primary">{display.path?.eyebrow}</p>
+                <h2 className="mt-1 text-xl font-semibold">{display.path?.heading}</h2>
               </div>
-              <p className="text-sm text-muted-foreground">Fondations d’abord</p>
+              <p className="text-sm text-muted-foreground">{display.path?.ordering}</p>
             </div>
             <ol className="border-y border-border">
               {learningPath.firstSteps.slice(0, 5).map((step) => (
@@ -204,50 +207,50 @@ export default function DiagnosticPage() {
           </section>
         )}
         <div className="mt-7 flex flex-wrap gap-3">
-          {!isPilot && <Link href="/student" className={buttonVariants()}>Commencer mon parcours <ArrowRight /></Link>}
-          <Link href="/student/frontier" className={buttonVariants({ variant: "outline" })}>Voir toute ma carte</Link>
+          {!isPilot && <Link href="/student" className={buttonVariants()}>{LEGACY_DIAGNOSTIC_COPY.completed.startPath} <ArrowRight /></Link>}
+          <Link href="/student/frontier" className={buttonVariants({ variant: "outline" })}>{LEGACY_DIAGNOSTIC_COPY.completed.viewMap}</Link>
         </div>
       </>
     );
   }
 
   if (pending && !run) {
-    return <PageHeader title="Diagnostic adaptatif" description="Préparation des quatre sections…" />;
+    return <PageHeader title={LEGACY_DIAGNOSTIC_COPY.loading.title} description={LEGACY_DIAGNOSTIC_COPY.loading.description} />;
   }
   if (blocked) {
     return <>
-      <PageHeader title="Diagnostic en pause" description="Tes réponses sont enregistrées, mais cette section ne dispose pas encore d’assez de questions validées pour conclure sans deviner." />
-      <p className="max-w-2xl text-sm leading-6 text-muted-foreground">Tu n’as rien à refaire maintenant. Un adulte ou l’équipe de la plateforme doit compléter la banque avant que tu reprennes.</p>
-      <Link href="/student/settings" className={`${buttonVariants({ variant: "outline" })} mt-5`}>Ouvrir mes paramètres</Link>
+      <PageHeader title={LEGACY_DIAGNOSTIC_COPY.blocked.title} description={LEGACY_DIAGNOSTIC_COPY.blocked.description} />
+      <p className="max-w-2xl text-sm leading-6 text-muted-foreground">{LEGACY_DIAGNOSTIC_COPY.blocked.help}</p>
+      <Link href="/student/settings" className={`${buttonVariants({ variant: "outline" })} mt-5`}>{LEGACY_DIAGNOSTIC_COPY.blocked.settings}</Link>
     </>;
   }
   if (!run) {
     return (
       <>
-        <PageHeader title="Le diagnostic ne peut pas encore démarrer" description="Tu n’as pas besoin de recommencer ton inscription." />
+        <PageHeader title={LEGACY_DIAGNOSTIC_COPY.unavailable.title} description={LEGACY_DIAGNOSTIC_COPY.unavailable.description} />
         {error && <p role="alert" className="max-w-2xl text-sm leading-6 text-muted-foreground">{error}</p>}
         <Button className="mt-4" onClick={() => {
           setError("");
           setPending(true);
           setStartAttempt((attempt) => attempt + 1);
-        }}>Réessayer</Button>
+        }}>{LEGACY_DIAGNOSTIC_COPY.unavailable.retry}</Button>
       </>
     );
   }
 
   const item = run.item;
-  const choices = shuffleChoices(item.choices, `exercise:${item.id}`);
   const currentSection = diagnosticSection(item.sectionKey);
   const currentProgress = run.progress.find((section) => section.key === item.sectionKey);
   const canSubmit = item.choices.length ? !!choice : !!answer.trim();
+  const display = legacyDiagnosticItemDisplay(run, probeCount);
 
   return (
     <>
       {run.isPilot && <PilotNotice />}
       <PageHeader
-        eyebrow={run.resumed ? "Diagnostic repris" : "Diagnostic initial"}
-        title="Trouvons ton point de départ"
-        description={`Chaque domaine s’adapte séparément. Il faut au moins ${run.minTotalProbes} réponses au total; le diagnostic s’arrête dès que le profil est assez précis.`}
+        eyebrow={run.resumed ? LEGACY_DIAGNOSTIC_COPY.run.resumed : LEGACY_DIAGNOSTIC_COPY.run.initial}
+        title={LEGACY_DIAGNOSTIC_COPY.run.title}
+        description={legacyDiagnosticRunDescription(run.minTotalProbes)}
       />
 
       <div className="mb-8 grid gap-px overflow-hidden rounded-lg border border-border bg-border sm:grid-cols-4">
@@ -266,7 +269,7 @@ export default function DiagnosticPage() {
                 <span className={`font-display text-sm font-semibold ${active ? "text-foreground" : "text-muted-foreground"}`}>{section.shortLabelFr}</span>
               </div>
               <p className="mt-1 pl-6 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
-                {complete ? "Section terminée" : active ? `${currentProgress?.probeCount ?? 0}/${section.minProbes} minimum` : `Section ${index + 1}`}
+                {legacyDiagnosticSectionStatus(index, section, state, active)}
               </p>
             </div>
           );
@@ -275,7 +278,7 @@ export default function DiagnosticPage() {
 
       {transitionLabel && (
         <div className="mb-5 rounded-md bg-primary px-4 py-3 text-sm font-medium text-primary-foreground animate-in fade-in slide-in-from-bottom-2">
-          Section suivante : {transitionLabel}
+          {legacyDiagnosticSectionTransition(transitionLabel)}
         </div>
       )}
 
@@ -284,16 +287,16 @@ export default function DiagnosticPage() {
           <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
             <div>
               <p className="font-display text-xs font-semibold uppercase tracking-[.16em] text-primary">{currentSection.labelFr}</p>
-              <p className="mt-1 text-sm text-muted-foreground">Question {probeCount + 1} · difficulté ajustée en continu</p>
+              <p className="mt-1 text-sm text-muted-foreground">{legacyDiagnosticQuestionMeta(probeCount)}</p>
             </div>
-            <Badge variant="secondary">Question adaptative</Badge>
+            <Badge variant="secondary">{LEGACY_DIAGNOSTIC_COPY.run.adaptiveQuestion}</Badge>
           </div>
 
           <section className="rounded-lg border border-border bg-card p-6 shadow-[0_2px_12px_rgba(60,50,30,.05)] sm:p-8">
             <ExercisePrompt promptFr={item.promptFr} instructionsFr={item.instructionsFr} />
             {item.choices.length ? (
               <div className="mt-6 grid gap-2.5">
-                {choices.map((option) => (
+                {display.question.choices.map((option) => (
                   <button
                     key={option.id}
                     type="button"
@@ -311,22 +314,22 @@ export default function DiagnosticPage() {
               </div>
             ) : (
               <AccentTextarea
-                aria-label="Ta réponse"
+                aria-label={LEGACY_DIAGNOSTIC_COPY.run.answerLabel}
                 value={answer}
                 onChange={setAnswer}
                 rows={4}
                 className="mt-6 w-full rounded-md border border-input bg-background p-3 text-sm"
-                placeholder="Écris ta réponse…"
+                placeholder={LEGACY_DIAGNOSTIC_COPY.run.answerPlaceholder}
               />
             )}
             <div className="mt-6 flex flex-wrap items-center gap-4 border-t border-border pt-5">
               <Button onClick={submit} disabled={pending || !canSubmit}>
-                {pending ? "Analyse…" : "Valider"} <ArrowRight />
+                {pending ? LEGACY_DIAGNOSTIC_COPY.run.analyzing : LEGACY_DIAGNOSTIC_COPY.run.validate} <ArrowRight />
               </Button>
               {feedback !== null && (
                 <p className={`flex items-center gap-2 text-sm ${feedback ? "text-[color:var(--success)]" : "text-muted-foreground"}`}>
                   {feedback ? <CheckCircle2 className="size-4" /> : <XCircle className="size-4" />}
-                  {feedback ? "Bonne réponse." : "Cette réponse affine le niveau de cette compétence."}
+                  {feedback ? LEGACY_DIAGNOSTIC_COPY.run.correct : LEGACY_DIAGNOSTIC_COPY.run.informative}
                 </p>
               )}
             </div>
@@ -335,23 +338,23 @@ export default function DiagnosticPage() {
         </main>
 
         <aside className="border-t border-border pt-6 lg:border-l lg:border-t-0 lg:pl-7 lg:pt-0">
-          <p className="font-display text-xs font-semibold uppercase tracking-[.16em] text-muted-foreground">Pourquoi cette question ?</p>
+          <p className="font-display text-xs font-semibold uppercase tracking-[.16em] text-muted-foreground">{LEGACY_DIAGNOSTIC_COPY.run.why}</p>
           <p className="mt-3 text-sm leading-6 text-muted-foreground">{currentSection.descriptionFr}</p>
           <dl className="mt-6 space-y-4 border-y border-border py-5 text-sm">
             <div>
-              <dt className="text-muted-foreground">Réponses dans cette section</dt>
+              <dt className="text-muted-foreground">{LEGACY_DIAGNOSTIC_COPY.run.responsesInSection}</dt>
               <dd className="mt-1 font-display text-xl font-semibold">{currentProgress?.probeCount ?? 0}</dd>
             </div>
             <div>
-              <dt className="text-muted-foreground">Compétences testées directement</dt>
+              <dt className="text-muted-foreground">{LEGACY_DIAGNOSTIC_COPY.run.testedDirectly}</dt>
               <dd className="mt-1 font-display text-xl font-semibold">{currentProgress?.distinctNodesTested ?? 0}</dd>
             </div>
             <div>
-              <dt className="text-muted-foreground">Compétences confirmées</dt>
+              <dt className="text-muted-foreground">{LEGACY_DIAGNOSTIC_COPY.run.confirmed}</dt>
               <dd className="mt-1 font-display text-xl font-semibold">{currentProgress?.confirmedNodeCount ?? 0}</dd>
             </div>
           </dl>
-          <p className="mt-5 text-xs leading-5 text-muted-foreground">Une section peut prendre de {currentSection.minProbes} à {currentSection.maxProbes} questions. Une compétence n’est confirmée qu’après les types de preuves nécessaires, par exemple reconnaître puis produire. La section s’arrête selon la couverture du graphe et l’incertitude restante.</p>
+          <p className="mt-5 text-xs leading-5 text-muted-foreground">{legacyDiagnosticSectionRange(currentSection.minProbes, currentSection.maxProbes)}</p>
         </aside>
       </div>
     </>
@@ -359,5 +362,5 @@ export default function DiagnosticPage() {
 }
 
 function PilotNotice({ completed = false }: { completed?: boolean }) {
-  return <div role="status" className="mb-5 rounded-md border border-amber-500/40 bg-amber-500/10 px-4 py-3 text-sm leading-6 text-foreground"><span className="font-semibold">Essai expérimental.</span> {completed ? "Ce parcours est un aperçu provisoire et ne débloque pas encore les activités normales." : "Les questions ne sont pas encore publiées. Tes réponses servent uniquement à vérifier le diagnostic et ne modifient pas ton niveau permanent."}</div>;
+  return <div role="status" className="mb-5 rounded-md border border-amber-500/40 bg-amber-500/10 px-4 py-3 text-sm leading-6 text-foreground"><span className="font-semibold">{LEGACY_DIAGNOSTIC_COPY.pilot.label}</span> {completed ? LEGACY_DIAGNOSTIC_COPY.pilot.completed : LEGACY_DIAGNOSTIC_COPY.pilot.active}</div>;
 }

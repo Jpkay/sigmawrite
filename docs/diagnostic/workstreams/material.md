@@ -1,12 +1,12 @@
-# Material workstream — P3.01–P3.05
+# Material workstream — P3.01–P3.06
 
-Updated: 2026-09-13 10:49 Africa/Kigali
+Updated: 2026-09-13 11:01 Africa/Kigali
 
 ## Scope and invariants
 
 - Owner: `material`.
-- Roadmap items: P3.01 (reconcile remaining delivery gaps), P3.02 (practice-player capture), P3.03 (production-player capture), P3.04 (reading/results capture), and P3.05 (dictation capture).
-- Owned implementation: the practice, production, reading, results, and dictation student route/player files, their dedicated display-projection helpers, and focused tests.
+- Roadmap items: P3.01 (reconcile remaining delivery gaps), P3.02 (practice-player capture), P3.03 (production-player capture), P3.04 (reading/results capture), P3.05 (dictation capture), and P3.06 (legacy diagnostic/demo capture).
+- Owned implementation: the practice, production, reading, results, dictation, and bounded legacy diagnostic/demo student surfaces, their dedicated display-projection helpers, and focused tests.
 - Shared action integration in `src/lib/actions/student.ts` is coordinated with the workstream owner because that file contains unrelated work.
 - Guided practice remains guided evidence. None of this work changes its evidence expectation or promotes it to independent mastery.
 - Complete history remains off. Migration `20260912130000_atomic_covered_material_delivery.sql` remains unapplied. Existing students are not backdated and this work does not establish complete prior-material history.
@@ -114,3 +114,26 @@ P3.05 validation:
 - `git diff --check -- src/app/student/dictee src/lib/diagnostic/granular/dictation-display.ts src/lib/diagnostic/granular/dictation-display.test.ts src/lib/actions/dictation-audio-delivery.test.ts src/lib/actions/dictation-catalog-delivery.test.ts src/lib/actions/dictation-justification-delivery.test.ts src/lib/actions/student.ts docs/diagnostic/workstreams/material.md` — passed.
 
 No deployment, live-student mutation, migration, complete-history activation, commit or push was performed. Candidate/public browser verification and integration remain coordinator-owned.
+
+## P3.06 implementation status
+
+P3.06 is locally ready for coordinator integration:
+
+- The diagnostic route authenticates and resolves the student before returning either client. When the legacy runtime is selected or the granular feature is disabled, `legacy:diagnostic-ui-copy` records all fixed loading, unavailable, blocked, active-question, transient-feedback, pilot and completed-result copy; section labels/descriptions/ranges and shared exercise-control labels are included. A capture failure withholds the client route.
+- `legacyDiagnosticItemDisplay(...)` constructs the exact start/resume heading, minimum-probe explanation, deterministic choice order, parsed instruction/passage/question hierarchy, section status/count wording, question position, input/control copy and rationale counts/range used by the legacy client. Continuation responses deliberately omit start-only state they do not carry, avoiding invented values such as a zero minimum.
+- `legacyDiagnosticCompletionDisplay(...)` constructs the authoritative result headings, four classification counts, pilot qualification, path count, first five labels/rationales/section badges and result controls from the saved frontier/path response.
+- `startAdaptiveDiagnostic` records every returned completed, resumed, fresh, or finite startup-error payload at `legacy:diagnostic-start` with its dynamic display projection. `submitAdaptiveDiagnosticProbe` does the same for finite validation errors, same-section questions, blocked sections, section transitions and completion at `legacy:diagnostic-response`. These changes are confined to those two exported return boundaries; scoring, evidence, mastery and finalization internals are unchanged.
+- The demo-review route resolves the authenticated profile role and uses the mapped `students.id`, never the distinct auth-user UUID, as journal owner. It records the exact forbidden response for an authenticated non-demo student at `legacy:diagnostic-demo-review-forbidden`. Authenticated nonstudents retain the prior 403 without a journal row because no student owner exists. For the authorized demonstration student, it records the complete saved HTML document—including the authoritative stored answer/correction text—at `legacy:diagnostic-demo-review` before constructing the response. Capture failure withholds either student response. The route still exports only the supported `dynamic` segment option and `GET` handler.
+
+P3.06 validation:
+
+- `npx vitest run src/lib/diagnostic/granular/legacy-diagnostic-display.test.ts src/lib/diagnostic/granular/demo-review-display.test.ts src/app/student/diagnostic/page.test.ts src/app/student/diagnostic/review/page.test.ts src/app/student/diagnostic/demo-review/route.test.ts src/lib/actions/student-state-delivery.test.ts --reporter=verbose` — passed, 6 files / 21 tests.
+- `npx eslint src/app/student/diagnostic/legacy-diagnostic.tsx src/app/student/diagnostic/page.tsx src/app/student/diagnostic/page.test.ts src/app/student/diagnostic/review/page.tsx src/app/student/diagnostic/review/page.test.ts src/app/student/diagnostic/demo-review/route.ts src/app/student/diagnostic/demo-review/route.test.ts src/lib/diagnostic/granular/legacy-diagnostic-display.ts src/lib/diagnostic/granular/legacy-diagnostic-display.test.ts src/lib/diagnostic/granular/demo-review-display.ts src/lib/diagnostic/granular/demo-review-display.test.ts src/lib/actions/student-state-delivery.test.ts src/lib/actions/student.ts` — passed.
+- `npm run typecheck` — passed.
+
+Route limits and non-claims:
+
+- Journaling precedes server return construction, but it proves neither that the browser received/rendered the response nor that the learner read it. The 420 ms transient answer feedback remains conservatively represented by captured finite copy rather than claimed as observed.
+- The authorized demo journal contains the whole saved HTML response once; subsequent in-document filter clicks do not create separate delivery records. The unauthenticated redirect and authenticated nonstudent 403 are not journaled because no authenticated student owner exists.
+- Diagnostic response persistence/evidence can complete before its return journal. A journal failure withholds the browser response but does not roll back prior domain writes; transactional capture remains P3.08.
+- Unsupported cached clients, build/version binding, global route errors and post-response access transitions remain P3.07. No complete prior-material history, deployment, live-student mutation, migration, commit or push is claimed.
