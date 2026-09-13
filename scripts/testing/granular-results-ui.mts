@@ -6,6 +6,7 @@ try{
  page.on("pageerror",error=>errors.push(error.message));
  await page.goto("http://127.0.0.1:4179");
  await page.getByRole("button",{name:"Commencer",exact:true}).click();
+ await page.getByLabel("Ta réponse",{exact:true}).waitFor();
  await page.evaluate(()=>{
   const view=JSON.parse(localStorage.getItem("granular-ui-fixture")!);
   const targets=[{id:"words",label:"Choisir les accents",group:"orthographe_lexicale",status:"mastered"},{id:"agreement",label:"Accorder le sujet et le verbe",group:"orthographe_grammaticale",status:"missing"},{id:"pending",label:"Écrire les consonnes doubles",group:"orthographe_lexicale",status:"unknown"}];
@@ -30,7 +31,7 @@ try{
  // Older records lack strand metadata and must remain visible after upgrading.
  await page.evaluate(()=>{const view=JSON.parse(localStorage.getItem("granular-ui-fixture")!);for(const detail of Object.values(view.skillDetails) as Array<{samplingGroup?:string}>)delete detail.samplingGroup;localStorage.setItem("granular-ui-fixture",JSON.stringify(view));});
  await page.reload();assert.equal(await page.locator("details").count(),1);
- await page.locator("summary").getByText("Orthographe",{exact:true}).click();assert.equal(await page.locator("details li").count(),3);
+ await page.locator("summary").getByText("Orthographe",{exact:true}).click();assert.equal(await page.locator("details > ul > li").count(),3);
  assert.deepEqual(errors,[]);
  console.log("Results browser checks passed: separate spelling strands, opposite outcomes, unresolved skills, keyboard, refresh, legacy metadata and mobile layout.");
 }finally{await browser.close();}
