@@ -9,6 +9,7 @@ import type { UserManagementData } from "@/lib/db/users";
 type Account = UserManagementData["accounts"][number];
 type Actions = {
   setTeacherClass: (input: { teacherProfileId: string; classId: string; assigned: boolean }) => Promise<unknown>;
+  setTeacherStudent: (input: { teacherProfileId: string; studentId: string; assigned: boolean }) => Promise<unknown>;
   changeUserRole: (input: { profileId: string; role: string; schoolId?: string | null }) => Promise<unknown>;
   setUserDeactivated: (input: { profileId: string; deactivated: boolean }) => Promise<unknown>;
   attachEmailToAccount: (input: { profileId: string; email: string }) => Promise<unknown>;
@@ -23,11 +24,12 @@ export function AccountRow({ account, data, busy, onBusy, onError, onResetPasswo
   account: Account; data: UserManagementData; busy: boolean;
   onBusy: (value: boolean) => void; onError: (message: string) => void; onCredentials: (value: null) => void; onResetPassword: () => void; actions: Actions;
 }) {
-  const [open, setOpen] = useState<"classes" | "email" | "role" | "guardian" | null>(null);
+  const [open, setOpen] = useState<"classes" | "students" | "email" | "role" | "guardian" | null>(null);
   const [email, setEmail] = useState("");
   const [newRole, setNewRole] = useState(account.role as string);
   const [newSchool, setNewSchool] = useState(account.schoolId ?? "");
   const [classIds, setClassIds] = useState<string[]>(account.classIds);
+  const [directStudentIds, setDirectStudentIds] = useState<string[]>(account.directStudentIds);
   const [status, setStatus] = useState("");
   const [deactivated, setDeactivated] = useState(account.deactivated);
   const platformAdmin = data.viewerRole === "platform_admin";
@@ -51,7 +53,7 @@ export function AccountRow({ account, data, busy, onBusy, onError, onResetPasswo
           </div>
           <p className="mt-1 text-xs text-muted-foreground">
             {account.username}
-            {account.role === "teacher" && ` · ${account.classIds.length} classe(s)`}
+            {account.role === "teacher" && ` · ${classIds.length} classe(s) · ${directStudentIds.length} élève(s) en direct`}
             {account.role === "student" && ` · ${account.classIds.length} classe(s) · ${account.guardianCount} parent(s)`}
           </p>
         </div>
@@ -59,6 +61,7 @@ export function AccountRow({ account, data, busy, onBusy, onError, onResetPasswo
           <Button type="button" size="sm" variant="outline" disabled={busy} onClick={onResetPassword}><KeyRound className="size-4" />Mot de passe</Button>
           {!account.emailRecoveryEnabled && <Button type="button" size="sm" variant="outline" disabled={busy} onClick={() => setOpen(open === "email" ? null : "email")}><Mail className="size-4" />E-mail</Button>}
           {account.role === "teacher" && <Button type="button" size="sm" variant="outline" disabled={busy} onClick={() => setOpen(open === "classes" ? null : "classes")}><School className="size-4" />Classes</Button>}
+          {account.role === "teacher" && <Button type="button" size="sm" variant="outline" disabled={busy} onClick={() => setOpen(open === "students" ? null : "students")}><Users className="size-4" />Élèves directs</Button>}
           {account.role === "student" && <Button type="button" size="sm" variant="outline" disabled={busy} onClick={() => setOpen(open === "guardian" ? null : "guardian")}><Users className="size-4" />Parent</Button>}
           {platformAdmin && <Button type="button" size="sm" variant="outline" disabled={busy} onClick={() => setOpen(open === "role" ? null : "role")}><UserCog className="size-4" />Rôle</Button>}
           <Button type="button" size="sm" variant={deactivated ? "default" : "ghost"} disabled={busy} onClick={() => run(deactivated ? "Compte réactivé." : "Compte désactivé : connexion bloquée, données conservées.", async () => { await actions.setUserDeactivated({ profileId: account.profileId, deactivated: !deactivated }); setDeactivated(!deactivated); })}><Power className="size-4" />{deactivated ? "Réactiver" : "Désactiver"}</Button>
@@ -74,12 +77,35 @@ export function AccountRow({ account, data, busy, onBusy, onError, onResetPasswo
       )}
 
       {open === "classes" && (
-        <div className="mt-3 flex flex-wrap gap-2">
+        <div className="mt-3">
+          <p className="mb-2 text-xs text-muted-foreground">Retirer une classe supprime uniquement ce droit de classe. Les autres classes et liens directs restent actifs.</p>
+          <div className="flex flex-wrap gap-2">
           {data.classes.map((cls) => {
             const assigned = classIds.includes(cls.id);
-            return <button key={cls.id} type="button" disabled={busy} onClick={() => run(assigned ? `Retiré de ${cls.name}.` : `Affecté à ${cls.name}.`, async () => { await actions.setTeacherClass({ teacherProfileId: account.profileId, classId: cls.id, assigned: !assigned }); setClassIds((current) => assigned ? current.filter((id) => id !== cls.id) : [...current, cls.id]); })} className={`rounded-full border px-3 py-1 text-sm ${assigned ? "border-primary bg-primary/10 text-primary" : "border-border hover:border-primary/50"}`} aria-pressed={assigned}>{cls.name}</button>;
+            const affected = data.students.filter((student) => student.classIds.includes(cls.id));
+            const retained = affected.filter((student) => directStudentIds.includes(student.id) || student.classIds.some((id) => id !== cls.id && classIds.includes(id)));
+            const removedMessage = `${cls.name} retirée. ${retained.length} élève(s) conservent un autre droit connu ; ${affected.length - retained.length} perdent ce droit de classe.`;
+            return <button key={cls.id} type="button" disabled={busy} onClick={() => run(assigned ? removedMessage : `Affecté à ${cls.name}.`, async () => { await actions.setTeacherClass({ teacherProfileId: account.profileId, classId: cls.id, assigned: !assigned }); setClassIds((current) => assigned ? current.filter((id) => id !== cls.id) : [...current, cls.id]); })} className={`rounded-full border px-3 py-1 text-sm ${assigned ? "border-primary bg-primary/10 text-primary" : "border-border hover:border-primary/50"}`} aria-pressed={assigned}>{cls.name}</button>;
           })}
           {data.classes.length === 0 && <p className="text-sm text-muted-foreground">Aucune classe.</p>}
+          </div>
+        </div>
+      )}
+
+      {open === "students" && account.role === "teacher" && (
+        <div className="mt-3">
+          <p className="mb-2 text-xs text-muted-foreground">Un lien direct est indépendant des classes. Le retirer laisse en place tout accès obtenu par une classe enseignée.</p>
+          <div className="flex flex-wrap gap-2">
+            {data.students.filter((student) => !account.schoolId || student.schoolId === account.schoolId).map((student) => {
+              const assigned = directStudentIds.includes(student.id);
+              const classGrantNames = data.classes.filter((selectedClass) => classIds.includes(selectedClass.id) && student.classIds.includes(selectedClass.id)).map((selectedClass) => selectedClass.name);
+              const removedMessage = classGrantNames.length
+                ? `Lien direct retiré pour ${student.name}. Accès conservé via ${classGrantNames.join(", ")}.`
+                : `Lien direct retiré pour ${student.name}. Aucun autre droit connu ne subsiste.`;
+              return <button key={student.id} type="button" disabled={busy} onClick={() => run(assigned ? removedMessage : `${student.name} est maintenant affecté(e) directement.`, async () => { await actions.setTeacherStudent({ teacherProfileId: account.profileId, studentId: student.id, assigned: !assigned }); setDirectStudentIds((current) => assigned ? current.filter((id) => id !== student.id) : [...current, student.id]); })} className={`rounded-full border px-3 py-1 text-sm ${assigned ? "border-primary bg-primary/10 text-primary" : "border-border hover:border-primary/50"}`} aria-pressed={assigned}>{student.name}</button>;
+            })}
+            {data.students.filter((student) => !account.schoolId || student.schoolId === account.schoolId).length === 0 && <p className="text-sm text-muted-foreground">Aucun élève de cette école.</p>}
+          </div>
         </div>
       )}
 
