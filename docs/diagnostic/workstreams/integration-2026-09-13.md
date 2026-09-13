@@ -60,10 +60,13 @@ Real owner review and real-student observation remain separate pending tasks.
   Two reviewers remain eligible; the preserved one-eligible-reviewer rule passes.
 - Complete-history migration `20260912130000` remains unapplied. No human review,
   independent learner success, or real-student observation was fabricated.
-- Production has `NEXT_PUBLIC_TURNSTILE_SITE_KEY` but no `TURNSTILE_SECRET_KEY`.
-  School inquiries remain fail-closed until the matching secret is configured
-  in Vercel Production. The coordinator requested that configuration; no real
-  inquiry or notification email was submitted for testing.
+- Follow-up: the matching `TURNSTILE_SECRET_KEY` is now saved as a Production-only
+  Vercel secret. The existing Cloudflare widget was not rotated or modified.
+  Source `8488125` was rebuilt as `dpl_G6zc25UMJwHzMixpNi4KAWEsqApc`; build,
+  TypeScript, production alias and public HTTP checks passed. The live school
+  form shows automatic Turnstile success. No inquiry or notification email was
+  submitted; server-side Siteverify and email delivery still need an authorized
+  end-to-end test. See `turnstile-production-rollout-2026-09-13.json`.
 - A disk-full isolated install was recovered by removing only this session's
   disposable `node_modules` and `.next` directories. Source and QA evidence were
   preserved; these dependency/build artifacts are reproducible. Local fixture

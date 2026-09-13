@@ -1,0 +1,42 @@
+{
+  "date": "2026-09-13",
+  "applicationSourceCommit": "8488125",
+  "project": "sigmawrite",
+  "environment": "production",
+  "configuration": {
+    "variable": "TURNSTILE_SECRET_KEY",
+    "storageType": "secret",
+    "productionOnly": true,
+    "dashboardSaveConfirmed": true,
+    "cliPresenceConfirmed": true,
+    "existingWidget": "Trouvetaplume",
+    "publicSiteKeyMatched": true,
+    "secretRotated": false,
+    "widgetSettingsChanged": false,
+    "secretWrittenToRepository": false
+  },
+  "deploymentId": "dpl_G6zc25UMJwHzMixpNi4KAWEsqApc",
+  "deploymentUrl": "https://sigmawrite-m7whn6kfd-jpkays-projects.vercel.app",
+  "previousDeploymentId": "dpl_DJzNyM8JrtyFyD6RZ89bYVJtjBAq",
+  "publicUrl": "https://app.trouvetaplume.com",
+  "status": "production_configuration_deployed",
+  "verification": {
+    "productionBuildPassed": true,
+    "productionTypecheckPassed": true,
+    "productionAliasResolvesToDeployment": true,
+    "homepageStatus": 200,
+    "schoolsStatus": 200,
+    "liveTurnstileWidget": "Success!",
+    "inquiryButtonEnabledAfterAutomaticChallenge": true,
+    "unauthenticatedJobStatus": 401,
+    "unauthenticatedAdminStatus": 307,
+    "unauthenticatedAdminRedirect": "/login?next=%2Fadmin%2Fschools",
+    "launchConfigurationTestsPassed": 2,
+    "schoolInquiriesSubmitted": 0,
+    "notificationEmailsSent": 0
+  },
+  "limits": [
+    "A successful school-inquiry submission, server-side Siteverify response and email delivery were not exercised. They require a separately authorized end-to-end test.",
+    "Vercel displays an overdue-payment warning; billing was not changed."
+  ]
+}

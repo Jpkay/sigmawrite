@@ -12,6 +12,7 @@
   "releaseId": "b6f62722-c913-4d64-9ffd-59027eefc73b",
   "bundleChecksum": "sha256:10b4009e59acb78cefe2890d609caec6e83033d9416002be6b027de3a7a102de",
   "contentEvidence": "revision-43-integration-rollout-2026-09-13.json",
+  "configurationFollowupEvidence": "turnstile-production-rollout-2026-09-13.json",
   "supportedTargets": 367,
   "fullGraphTargets": 544,
   "includedWork": [
@@ -65,7 +66,7 @@
     "completeHistoryMigrationApplied": false
   },
   "remainingGates": [
-    "Vercel Production has a Turnstile site key but no matching TURNSTILE_SECRET_KEY; school inquiry submissions remain fail-closed until it is configured and a permitted end-to-end submission is verified.",
+    "Turnstile configuration gate resolved in the subsequent dpl_G6zc25UMJwHzMixpNi4KAWEsqApc redeployment: matching TURNSTILE_SECRET_KEY saved as a Production-only secret. A permitted end-to-end school inquiry and email-delivery test remains pending; see configurationFollowupEvidence.",
     "Full 544-target scope remains unfinished; eight newly authored discourse targets are drafts, not published coverage.",
     "Exact hosted cause/modal lesson/check completions, real owner review and real-student observation remain separate pending evidence.",
     "Complete prior-material history, client-version/offline accounting and transactional legacy capture remain open roadmap gates."
