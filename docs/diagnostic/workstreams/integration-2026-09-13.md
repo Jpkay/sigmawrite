@@ -36,3 +36,39 @@ eligible for review and commits. A clean status does not imply deletion of local
 work or completion of the full 544-target roadmap.
 
 Real owner review and real-student observation remain separate pending tasks.
+
+## Final integration checkpoint
+
+- R42 and R43 were published through the existing parallel-review contract,
+  runtime-exported and verified before candidate promotion. R43 supports
+  367/544 targets with 6,663 scoped questions and 8,088 exact bank items.
+- Application source `8488125` integrates dictation and legacy diagnostic
+  capture, within-skill authored-tier routing, schools/admin marketing changes,
+  and guarded review automation. All delegated work is stopped after handoff.
+- Main suite: 469 files / 1,978 tests passed with four workers. A concurrent
+  build/test run timed out three expensive tests; the unchanged suite passed
+  when rerun without competing build work. No timeouts or assertions were weakened.
+- Detached clean checkout: 1,968 tests passed; 10 private-export-dependent tests
+  skipped. These ten passed in the main checkout with the validated exports.
+  Dependency install, TypeScript and production build passed; audit found zero
+  vulnerabilities. Main lint has zero errors and 11 pre-existing warnings.
+- Native PostgreSQL: 162 migrations, 47 review assertions, 11 school-inquiry
+  assertions, persistence/access checks and concurrent-exposure/learning checks
+  passed. Only forward migrations `20260913110000` and `20260913111000` were
+  applied remotely, atomically with their ledger entries. The active 5/10/100
+  policy, evaluator, calibration and three configured reviewers are unchanged.
+  Two reviewers remain eligible; the preserved one-eligible-reviewer rule passes.
+- Complete-history migration `20260912130000` remains unapplied. No human review,
+  independent learner success, or real-student observation was fabricated.
+- Production has `NEXT_PUBLIC_TURNSTILE_SITE_KEY` but no `TURNSTILE_SECRET_KEY`.
+  School inquiries remain fail-closed until the matching secret is configured
+  in Vercel Production. The coordinator requested that configuration; no real
+  inquiry or notification email was submitted for testing.
+- A disk-full isolated install was recovered by removing only this session's
+  disposable `node_modules` and `.next` directories. Source and QA evidence were
+  preserved; these dependency/build artifacts are reproducible. Local fixture
+  servers were stopped after their browser checks.
+
+Deployment IDs and final hosted evidence are maintained in the release report
+and the atomic roadmap; the application-source commit is distinct from later
+documentation/verifier-only commits.

@@ -26,4 +26,9 @@ Material annotations remain strictly source-anchored. The production builder der
 
 ## Handoff boundary
 
+Coordinator follow-up: committed in `f98a190`. The concurrent TypeScript issue
+was resolved during integration; the final repository suite passes 1,978 tests
+and TypeScript. C083–C090 question/lesson tasks are recorded as implemented,
+not published or owner-reviewed.
+
 The family source, expansion builder, focused tests and bounded generator are locally ready for coordinator integration. Revision selection and R42/R43 integration remain with the main workstream. No shared generated artifact was created or updated here, and no approval or publication state was asserted.
