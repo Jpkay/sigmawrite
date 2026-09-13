@@ -1,4 +1,5 @@
 "use server";
+import {productionTaskDisplay,productionResultDisplay,productionLengthError} from "@/lib/diagnostic/granular/production-player-display";
 import {practiceFeedbackDisplay,practiceCompletionDisplay} from "@/lib/diagnostic/granular/practice-player-display";
 import {gradeRepairSubmission} from "@/lib/diagnostic/granular/repair-submission";
 import {inboxDisplay} from "@/lib/diagnostic/granular/inbox-display";
@@ -1380,7 +1381,7 @@ export async function loadIndependentProductionTask(input: unknown) {
   const service = createServiceClient();
   const node = await independentProductionNode(service, studentId, data.nodeId);
   const { genres, genre, spec } = await productionGenreContext(service, studentId, data.genre);
-  return journalStudentPayload(studentId, "legacy:production-task", {
+  const task = {
     nodeId: node.id,
     nodeKey: node.key,
     label: node.label_fr,
@@ -1392,7 +1393,9 @@ export async function loadIndependentProductionTask(input: unknown) {
     legacyPrompt: independentProductionPrompt(node.key, node.label_fr),
     minimumWords: spec.minimumWords,
     maximumWords: spec.maximumWords,
-  });
+  };
+  await journalStudentPayload(studentId, "legacy:production-task", {task,display:productionTaskDisplay(task)});
+  return task;
 }
 
 export async function submitIndependentProduction(input: unknown) {
@@ -1403,7 +1406,7 @@ export async function submitIndependentProduction(input: unknown) {
   const words = data.text.trim().split(/\s+/u).filter(Boolean).length;
   const service = createServiceClient();
   const { spec } = await productionGenreContext(service, studentId, data.genre);
-  if (words < spec.minimumWords || words > spec.maximumWords) throw new Error(`Écris entre ${spec.minimumWords} et ${spec.maximumWords} mots pour que la production soit vérifiable.`);
+  if (words < spec.minimumWords || words > spec.maximumWords) throw new Error(productionLengthError(spec));
   const node = await independentProductionNode(service, studentId, data.nodeId);
   const target = detectIndependentProduction(node.key, data.text);
   let grammarMatches: Awaited<ReturnType<LanguageToolChecker["check"]>>["matches"] = [];
@@ -1432,7 +1435,7 @@ export async function submitIndependentProduction(input: unknown) {
         : "Cette production compte comme une preuve autonome. Une seconde production réussie, dans un autre texte, confirmera la maîtrise.";
   // Record linguistic feedback before committing the submission. A journal
   // failure must leave the student able to retry the same text.
-  await journalStudentPayload(studentId, "legacy:production-feedback", { rubric, matchedForms: target.matchedForms, feedback });
+  await journalStudentPayload(studentId, "legacy:production-feedback", { rubric, matchedForms: target.matchedForms, feedback, display:productionResultDisplay({demonstrated,feedback,matchedForms:target.matchedForms,rubric}) });
   const { data: submission, error: submissionError } = await service.from("independent_production_submissions")
     .insert({
       student_id: studentId,
