@@ -221,6 +221,14 @@
       "change": "Shared fixed copy, exercise positions, valid scores and completion text recorded; rejected final save retains answers and skips premature local skill update.",
       "status": "implemented-not-deployed",
       "limits": "Legacy submitSkillPractice still lacks a durable submission id for retry after an uncertain server response; owner/version and global error contracts remain to verify."
+    },
+    {
+      "date": "2026-09-13",
+      "area": "Legacy repair completion",
+      "sourceCommit": "b04e354",
+      "change": "Guided repair saves server-graded completion separately from mastery estimates, uses an immutable submission ID for retries, and remounts for account changes.",
+      "evidence": "guided-repair-completion-2026-09-12.md",
+      "limits": "Historical legacy estimates were not rewritten. Remaining material-history and other route coverage work continues."
     }
   ]
 }
