@@ -1,0 +1,262 @@
+{
+  "reviewOutcome": {
+    "puddle": "approve",
+    "shadows": "approve",
+    "rootsVersion2": "needs_revision"
+  },
+  "correction": "Removed the unsupported final sentence of the reserves paragraph. Questions unchanged.",
+  "rootsVersion3": {
+    "versionId": "20c73e5d-5dbc-402e-8842-1a49ad10a3f8",
+    "assignmentId": "cb2cba41-eea1-4658-ad90-56937e44f1ab"
+  },
+  "humanApprovalPending": true,
+  "automatedQA": {
+    "pipelineVersion": "selective-passage-2",
+    "grammarMatches": [
+      {
+        "message": "Un point est requis pour indiquer la fin de cette phrase.",
+        "shortMessage": "",
+        "offset": 31,
+        "length": 6,
+        "ruleId": "POINT",
+        "ruleDescription": "point",
+        "category": "PONCTUATION_POINT",
+        "issueType": "uncategorized",
+        "replacements": [
+          "plante ?",
+          "plante."
+        ]
+      }
+    ],
+    "evidence": {
+      "generatorModel": "openai/gpt-5.4",
+      "evaluatorModel": "openai/gpt-5.4-mini",
+      "moderationPassed": true,
+      "grammarIssueCount": 0,
+      "duplicateChecked": true,
+      "nearDuplicate": false,
+      "judgment": {
+        "risk": "low",
+        "naturalness": 0.92,
+        "ageAppropriate": true,
+        "factualGroundingSufficient": true,
+        "concerns": [],
+        "questions": [
+          {
+            "index": 0,
+            "correct": true,
+            "unambiguous": true,
+            "supportedByPassage": true,
+            "reason": "Le passage dit explicitement que les racines ancrent la plante et la maintiennent en place. Les distracteurs ne correspondent pas au texte."
+          },
+          {
+            "index": 1,
+            "correct": true,
+            "unambiguous": true,
+            "supportedByPassage": true,
+            "reason": "Le texte affirme clairement que les racines absorbent l’eau et les nutriments solubles autour d’elles."
+          },
+          {
+            "index": 2,
+            "correct": true,
+            "unambiguous": true,
+            "supportedByPassage": true,
+            "reason": "L’inférence est justifiée par le passage : si les racines aident la plante à recevoir ce qui lui est nécessaire pour vivre, leur absence d’absorption impliquerait un manque de ce qui lui est nécessaire."
+          }
+        ]
+      }
+    },
+    "decision": "pass",
+    "reasons": [],
+    "sampled": false
+  },
+  "revisedPayload": {
+    "id": "9b273520-89b8-4ef1-b79e-deea4cf93be9",
+    "flags": {
+      "sensitive": false,
+      "nearDuplicate": false,
+      "moderationPassed": true,
+      "difficultyMismatch": false,
+      "factualNeedsReview": false
+    },
+    "input": {
+      "tone": "curious_explainer",
+      "avoid": [
+        "statistiques non sourcées",
+        "publicité"
+      ],
+      "topic": "Comment les racines aident une plante",
+      "language": "fr",
+      "textType": "expository",
+      "studentGrade": 8,
+      "targetSkills": [
+        "literal_comprehension",
+        "inference"
+      ],
+      "targetConcepts": [],
+      "primaryInterest": "nature",
+      "wordCountTarget": 240,
+      "knowledgeDomains": [],
+      "targetVocabulary": [],
+      "targetReadingBand": "Secondary 8A",
+      "maxNewAcademicWords": 4,
+      "maxAverageSentenceLength": 18
+    },
+    "createdAt": "2026-09-10T10:38:49.662Z",
+    "generated": {
+      "body": "Les racines sont une partie importante de la plante. On les voit moins que les feuilles ou les fleurs, mais elles ont des rôles essentiels. Elles agissent dans la partie cachée de la plante et l’aident à vivre chaque jour. En observant une plante entière, on comprend que ce qui est sous le sol compte aussi beaucoup.\n\nD’abord, les racines ancrent la plante. Cela signifie qu’elles la maintiennent en place dans son milieu. Grâce à elles, la plante ne dépend pas seulement de sa tige pour rester stable. Cette fonction de soutien est utile à l’ensemble de la plante.\n\nEnsuite, les racines absorbent l’eau et les nutriments solubles autour d’elles. La plante a besoin de ces éléments pour vivre. Les racines ne servent donc pas uniquement à tenir la plante en place. Elles l’aident aussi à recevoir ce qui lui est nécessaire.\n\nCertaines racines ont encore un autre rôle. Elles stockent des réserves. Ces réserves sont gardées pour être utilisées plus tard par la plante.\n\nEn résumé, les racines remplissent plusieurs fonctions simples et essentielles. Elles ancrent la plante, elles absorbent l’eau et les nutriments solubles, et certaines stockent des réserves. Même discrètes, elles participent directement à la vie de la plante.",
+      "title": "Comment les racines aident une plante",
+      "questions": [
+        {
+          "rubric": "La bonne réponse est entièrement justifiée par le passage : « D’abord, les racines ancrent la plante. Cela signifie qu’elles la maintiennent en place dans son milieu. » Les deux autres choix ne sont pas mentionnés dans le texte.",
+          "choices": [
+            "Elles ancrent la plante.",
+            "Elles fabriquent les fleurs.",
+            "Elles changent la forme des feuilles."
+          ],
+          "skillIds": [
+            "literal_comprehension"
+          ],
+          "difficulty": 18,
+          "answerFormat": "multiple_choice",
+          "questionText": "Selon le texte, quelle fonction des racines maintient la plante en place dans son milieu ?",
+          "questionType": "literal",
+          "correctAnswer": "Elles ancrent la plante."
+        },
+        {
+          "rubric": "La réponse correcte reprend exactement l’information du texte : « Ensuite, les racines absorbent l’eau et les nutriments solubles autour d’elles. » Les autres choix ajoutent des éléments absents du passage.",
+          "choices": [
+            "De l’eau et des nutriments solubles",
+            "De la lumière et du vent",
+            "Des feuilles et des fleurs"
+          ],
+          "skillIds": [
+            "literal_comprehension"
+          ],
+          "difficulty": 16,
+          "answerFormat": "multiple_choice",
+          "questionText": "D’après le passage, qu’absorbent les racines autour d’elles ?",
+          "questionType": "literal",
+          "correctAnswer": "De l’eau et des nutriments solubles"
+        },
+        {
+          "rubric": "Cette réponse est entièrement justifiée par le passage : « La plante a besoin de ces éléments pour vivre » et « Elles l’aident aussi à recevoir ce qui lui est nécessaire. » On peut donc déduire que, sans cette absorption, la plante manquerait de ce qui lui est nécessaire. Les autres choix ne sont pas appuyés par le texte.",
+          "choices": [
+            "Elle manquerait de ce qui lui est nécessaire.",
+            "Elle stockerait toujours plus de réserves.",
+            "Elle deviendrait visible sous le sol."
+          ],
+          "skillIds": [
+            "inference"
+          ],
+          "difficulty": 26,
+          "answerFormat": "multiple_choice",
+          "questionText": "Si les racines n’absorbaient plus l’eau et les nutriments solubles, que peut-on déduire du texte sur la plante ?",
+          "questionType": "inference",
+          "correctAnswer": "Elle manquerait de ce qui lui est nécessaire."
+        }
+      ],
+      "safetyNotes": [
+        "Le texte reste dans le cadre de connaissances botaniques élémentaires.",
+        "Aucune statistique non sourcée ni affirmation spécialisée n’est ajoutée.",
+        "Aucun exemple particulier ni détail incertain n’est utilisé."
+      ],
+      "factualClaims": [
+        {
+          "claim": "Les racines ancrent la plante.",
+          "confidence": "high",
+          "sourcePacketIds": [],
+          "needsHumanReview": false
+        },
+        {
+          "claim": "Les racines absorbent l’eau et les nutriments solubles.",
+          "confidence": "high",
+          "sourcePacketIds": [],
+          "needsHumanReview": false
+        },
+        {
+          "claim": "Certaines racines stockent des réserves.",
+          "confidence": "high",
+          "sourcePacketIds": [],
+          "needsHumanReview": false
+        },
+        {
+          "claim": "Les racines ont plusieurs fonctions essentielles pour la plante.",
+          "confidence": "high",
+          "sourcePacketIds": [],
+          "needsHumanReview": false
+        }
+      ],
+      "skillsPracticed": [
+        "Repérer des informations explicites dans un texte documentaire.",
+        "Faire une inférence simple à partir d’informations du texte."
+      ],
+      "targetVocabulary": [
+        {
+          "word": "ancrent",
+          "definitionFr": "maintiennent solidement en place",
+          "exampleSentenceFr": "Les racines ancrent la plante dans son milieu."
+        },
+        {
+          "word": "absorbent",
+          "definitionFr": "font entrer en elles une substance",
+          "exampleSentenceFr": "Les racines absorbent l’eau autour d’elles."
+        },
+        {
+          "word": "nutriments solubles",
+          "definitionFr": "substances utiles à la plante qui peuvent être absorbées avec l’eau",
+          "exampleSentenceFr": "Les racines absorbent des nutriments solubles."
+        },
+        {
+          "word": "réserves",
+          "definitionFr": "quantités gardées pour être utilisées plus tard",
+          "exampleSentenceFr": "Certaines racines stockent des réserves."
+        }
+      ],
+      "knowledgeConcepts": [
+        "Les racines ancrent la plante.",
+        "Les racines absorbent l’eau et les nutriments solubles.",
+        "Certaines racines stockent des réserves.",
+        "Les racines ont plusieurs fonctions essentielles pour la plante."
+      ],
+      "estimatedReadingBand": "Secondary 8A"
+    },
+    "difficulty": {
+      "features": {
+        "wordCount": 210,
+        "sentenceCount": 18,
+        "avgSentenceLength": 11.7,
+        "maxSentenceLength": 17,
+        "paragraphCount": 5,
+        "avgWordLength": 4.7,
+        "longWordRatio": 0.1,
+        "connectorCount": 3,
+        "subordinateCount": 4,
+        "abstractDensity": 0.019,
+        "constructionCount": 59,
+        "constructionVariety": 13,
+        "constructionComplexity": 100
+      },
+      "lexical": 23,
+      "syntax": 55,
+      "knowledge": 80,
+      "inference": 40,
+      "stamina": 1,
+      "overall": 42,
+      "band": "Secondary 7B",
+      "estimatedGradeMin": 7.5,
+      "estimatedGradeMax": 8.1
+    },
+    "moderation": {
+      "passed": true,
+      "needsHumanReview": false,
+      "flaggedCategories": []
+    },
+    "reviewStatus": "needs_human_review",
+    "questionDifficulties": [
+      20,
+      20,
+      70
+    ]
+  }
+}

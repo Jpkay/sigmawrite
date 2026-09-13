@@ -1,0 +1,609 @@
+{
+  "pipeline_version": "selective-passage-3",
+  "evaluator_model": "openai/gpt-5.4-mini",
+  "report": {
+    "requiredHumanReviewsPerReference": 1,
+    "reviewedCases": 6,
+    "negativeCases": 2,
+    "acceptedCases": 3,
+    "falseAccepts": 0,
+    "errors": 0,
+    "cases": [
+      {
+        "label": "1e30dc8f-5013-4d4e-b350-b3375905b62c",
+        "negative": false,
+        "report": {
+          "pipelineVersion": "selective-passage-3",
+          "grammarMatches": [
+            {
+              "message": "Un point est requis pour indiquer la fin de cette phrase.",
+              "shortMessage": "",
+              "offset": 32,
+              "length": 5,
+              "ruleId": "POINT",
+              "ruleDescription": "point",
+              "category": "PONCTUATION_POINT",
+              "issueType": "uncategorized",
+              "replacements": [
+                "place ?",
+                "place."
+              ]
+            }
+          ],
+          "evidence": {
+            "moderationModel": "openai/gpt-5.4-mini",
+            "generatorModel": "openai/gpt-5.4",
+            "evaluatorModel": "openai/gpt-5.4-mini",
+            "moderationPassed": true,
+            "grammarIssueCount": 0,
+            "duplicateChecked": true,
+            "nearDuplicate": false,
+            "judgment": {
+              "risk": "low",
+              "naturalness": 0.93,
+              "ageAppropriate": true,
+              "factualGroundingSufficient": true,
+              "concerns": [],
+              "questions": [
+                {
+                  "index": 0,
+                  "correct": true,
+                  "unambiguous": true,
+                  "supportedByPassage": true,
+                  "reason": "Le passage dit que le Soleil semble changer de position dans le ciel et que ce mouvement apparent s’explique par la rotation de la Terre."
+                },
+                {
+                  "index": 1,
+                  "correct": true,
+                  "unambiguous": true,
+                  "supportedByPassage": true,
+                  "reason": "Le texte affirme explicitement que si le Soleil paraît plus haut dans le ciel, l’ombre devient plus courte."
+                },
+                {
+                  "index": 2,
+                  "correct": true,
+                  "unambiguous": true,
+                  "supportedByPassage": true,
+                  "reason": "Le dernier paragraphe propose de planter un bâton bien droit dans un sol plat et d’observer son ombre à plusieurs moments."
+                }
+              ]
+            }
+          },
+          "decision": "pass",
+          "reasons": [],
+          "sampled": false
+        }
+      },
+      {
+        "label": "610ffa04-f8af-46e2-8ec2-29c15e190945",
+        "negative": false,
+        "report": {
+          "pipelineVersion": "selective-passage-3",
+          "grammarMatches": [
+            {
+              "message": "Un point est requis pour indiquer la fin de cette phrase.",
+              "shortMessage": "",
+              "offset": 30,
+              "length": 6,
+              "ruleId": "POINT",
+              "ruleDescription": "point",
+              "category": "PONCTUATION_POINT",
+              "issueType": "uncategorized",
+              "replacements": [
+                "sécher ?",
+                "sécher."
+              ]
+            }
+          ],
+          "evidence": {
+            "moderationModel": "openai/gpt-5.4-mini",
+            "generatorModel": "openai/gpt-5.4",
+            "evaluatorModel": "openai/gpt-5.4-mini",
+            "moderationPassed": true,
+            "grammarIssueCount": 0,
+            "duplicateChecked": true,
+            "nearDuplicate": false,
+            "judgment": {
+              "risk": "low",
+              "naturalness": 0.96,
+              "ageAppropriate": true,
+              "factualGroundingSufficient": true,
+              "concerns": [],
+              "questions": [
+                {
+                  "index": 0,
+                  "correct": true,
+                  "unambiguous": true,
+                  "supportedByPassage": true,
+                  "reason": "La définition de l’évaporation est donnée explicitement dans le texte : l’eau liquide devient une vapeur invisible et va dans l’air."
+                },
+                {
+                  "index": 1,
+                  "correct": true,
+                  "unambiguous": true,
+                  "supportedByPassage": true,
+                  "reason": "Le passage dit qu’un sol imperméable laisse très peu entrer l’eau dans le sol, ce qui permet de mieux observer l’évaporation."
+                },
+                {
+                  "index": 2,
+                  "correct": true,
+                  "unambiguous": true,
+                  "supportedByPassage": true,
+                  "reason": "Le texte indique clairement que si l’air est déjà humide, l’évaporation peut être plus lente."
+                }
+              ]
+            }
+          },
+          "decision": "pass",
+          "reasons": [],
+          "sampled": false
+        }
+      },
+      {
+        "label": "20c73e5d-5dbc-402e-8842-1a49ad10a3f8",
+        "negative": false,
+        "report": {
+          "pipelineVersion": "selective-passage-3",
+          "grammarMatches": [
+            {
+              "message": "Un point est requis pour indiquer la fin de cette phrase.",
+              "shortMessage": "",
+              "offset": 31,
+              "length": 6,
+              "ruleId": "POINT",
+              "ruleDescription": "point",
+              "category": "PONCTUATION_POINT",
+              "issueType": "uncategorized",
+              "replacements": [
+                "plante ?",
+                "plante."
+              ]
+            }
+          ],
+          "evidence": {
+            "moderationModel": "openai/gpt-5.4-mini",
+            "generatorModel": "openai/gpt-5.4",
+            "evaluatorModel": "openai/gpt-5.4-mini",
+            "moderationPassed": true,
+            "grammarIssueCount": 0,
+            "duplicateChecked": true,
+            "nearDuplicate": false,
+            "judgment": {
+              "risk": "low",
+              "naturalness": 0.95,
+              "ageAppropriate": true,
+              "factualGroundingSufficient": true,
+              "concerns": [],
+              "questions": [
+                {
+                  "index": 0,
+                  "correct": true,
+                  "unambiguous": true,
+                  "supportedByPassage": true,
+                  "reason": "Le passage dit explicitement que les racines ancrent la plante et la maintiennent en place."
+                },
+                {
+                  "index": 1,
+                  "correct": true,
+                  "unambiguous": true,
+                  "supportedByPassage": true,
+                  "reason": "Le texte mentionne clairement l’eau et les nutriments solubles comme ce que les racines absorbent autour d’elles."
+                },
+                {
+                  "index": 2,
+                  "correct": true,
+                  "unambiguous": true,
+                  "supportedByPassage": true,
+                  "reason": "L’inférence est bien soutenue : si les racines n’absorbaient plus l’eau et les nutriments, la plante manquerait de ce qui lui est nécessaire."
+                }
+              ]
+            }
+          },
+          "decision": "pass",
+          "reasons": [],
+          "sampled": false
+        }
+      },
+      {
+        "label": "fdf75bd5-11ab-4eaa-99eb-410823b3c8fe",
+        "negative": false,
+        "report": {
+          "pipelineVersion": "selective-passage-3",
+          "grammarMatches": [
+            {
+              "message": "Les chiffres s’écrivent généralement en lettres.",
+              "shortMessage": "",
+              "offset": 1037,
+              "length": 1,
+              "ruleId": "NOMBRES_EN_LETTRES_2",
+              "ruleDescription": "nombres en lettres 2",
+              "category": "STYLE",
+              "issueType": "style",
+              "replacements": [
+                "deux"
+              ]
+            }
+          ],
+          "evidence": {
+            "moderationModel": "openai/gpt-5.4-mini",
+            "generatorModel": "z-ai/glm-5.2",
+            "evaluatorModel": "openai/gpt-5.4-mini",
+            "moderationPassed": true,
+            "grammarIssueCount": 1,
+            "duplicateChecked": true,
+            "nearDuplicate": false,
+            "judgment": {
+              "risk": "medium",
+              "naturalness": 0.86,
+              "ageAppropriate": true,
+              "factualGroundingSufficient": false,
+              "concerns": [
+                "Plusieurs détails chiffrés du texte sont invérifiables à partir du passage et ne devraient pas être présentés comme des faits exacts sans source (année 2023, 50 micros, 5000 spectateurs, 2 heures).",
+                "La question 2 repose sur une interprétation causale trop déterministe : le texte dit que la lumière bleue peut faire ressentir de la tristesse, mais ce n'est pas une conséquence certaine et unique.",
+                "La question 3 contient une réponse partiellement inférable mais formulée avec une justification plus large que le texte; le terme 'dans l'ombre' est métaphorique et la réponse attendue n'est pas strictement étayée mot à mot.",
+                "Les affirmations factuelles listées comme sûres dans le bloc de référence dépendent d'un contenu narratif non vérifiable et ne doivent pas être considérées comme établies.",
+                "Le passage utilise des héros de l'ombre et des effets émotionnels des couleurs comme généralités non sourcées; cela reste acceptable pour un texte fictionnalisé, mais pas comme connaissance factuelle stable."
+              ],
+              "questions": [
+                {
+                  "index": 0,
+                  "correct": true,
+                  "unambiguous": true,
+                  "supportedByPassage": true,
+                  "reason": "Le passage dit explicitement que la régisseuse 'place les 50 micros' avant le début."
+                },
+                {
+                  "index": 1,
+                  "correct": true,
+                  "unambiguous": false,
+                  "supportedByPassage": true,
+                  "reason": "Le texte affirme que si l'éclairagiste choisit le bleu, le public ressent de la tristesse. La réponse proposée reprend cette idée, mais elle est formulée comme une causalité absolue alors que le texte reste général et subjectif."
+                },
+                {
+                  "index": 2,
+                  "correct": true,
+                  "unambiguous": false,
+                  "supportedByPassage": true,
+                  "reason": "Le texte présente ces métiers comme 'derrière le chanteur' et 'héros de l'ombre', donc l'inférence est plausible. Cependant, la formulation attendue n'est pas unique et 'invisibles' est métaphorique, ce qui laisse plusieurs réponses acceptables."
+                }
+              ]
+            }
+          },
+          "decision": "human_review",
+          "reasons": [
+            "risk_requires_editor",
+            "format_not_calibrated",
+            "grounding_requires_editor",
+            "grammar_requires_editor",
+            "quality_requires_editor",
+            "question_qa_failed"
+          ],
+          "sampled": false
+        }
+      },
+      {
+        "label": "cae8e2cd-2abf-4575-88da-f84de6bfd072",
+        "negative": false,
+        "report": {
+          "pipelineVersion": "selective-passage-3",
+          "grammarMatches": [
+            {
+              "message": "Ce mot apparaît déjà dans l’une des phrases précédant immédiatement celle-ci. Utilisez un synonyme pour apporter plus de variété à votre texte, excepté si la répétition est intentionnelle.",
+              "shortMessage": "Style : Mot répété",
+              "offset": 1713,
+              "length": 7,
+              "ruleId": "FR_REPEATEDWORDS_ENVIRON",
+              "ruleDescription": "Synonymes de mots répétés.",
+              "category": "REPETITIONS_STYLE",
+              "issueType": "style",
+              "replacements": [
+                "approximativement"
+              ]
+            }
+          ],
+          "evidence": {
+            "moderationModel": "openai/gpt-5.4-mini",
+            "generatorModel": "z-ai/glm-5.2",
+            "evaluatorModel": "openai/gpt-5.4-mini",
+            "moderationPassed": true,
+            "grammarIssueCount": 1,
+            "duplicateChecked": true,
+            "nearDuplicate": false,
+            "judgment": {
+              "risk": "medium",
+              "naturalness": 0.9,
+              "ageAppropriate": true,
+              "factualGroundingSufficient": false,
+              "concerns": [
+                "Le texte affirme des effets physiologiques et cognitifs généraux du rythme musical sans sources; plusieurs formulations sont présentées comme certaines alors qu'elles sont invérifiables ici ou trop simplifiées (par exemple l'accélération du cœur, le ralentissement de l'activité cérébrale, l'amélioration de la mémorisation).",
+                "Les valeurs chiffrées « environ 120 battements par minute » et « autour de 60 battements par minute » sont spécifiques et non justifiées par le passage; elles devraient être sourcées ou présentées comme exemples approximatifs.",
+                "Le vocabulaire « Le rythme, qui est la vitesse à laquelle les sons se succèdent » est simplificateur et peut confondre rythme, tempo et durée; cela peut nuire à la précision conceptuelle pour un élève.",
+                "La question 3 suppose qu'une musique lente est recommandée pour réviser une leçon difficile, mais le texte dit seulement que ce type de rythme est souvent utilisé pour aider les élèves à se concentrer pendant les devoirs et à s'endormir; la réponse est donc une inférence plausible mais pas strictement unique.",
+                "La question 2 attend une explication qui ajoute deux idées du texte, mais la formulation de réponse correcte est trop courte par rapport à la causalité demandée; elle peut être jugée incomplète selon le barème.",
+                "La question 1 est bien appuyée par le texte, mais la tournure « Quel est l'effet » peut admettre plusieurs formulations équivalentes; la réponse proposée n'est pas unique au mot près."
+              ],
+              "questions": [
+                {
+                  "index": 0,
+                  "correct": true,
+                  "unambiguous": true,
+                  "supportedByPassage": true,
+                  "reason": "Le passage dit explicitement : « Le cerveau devient plus alerte. » La réponse attendue est directement formulée dans le texte, avec des équivalents acceptables possibles."
+                },
+                {
+                  "index": 1,
+                  "correct": true,
+                  "unambiguous": false,
+                  "supportedByPassage": true,
+                  "reason": "Le texte explique que le rythme lent « ralentit l'activité » du cerveau et que les sons réguliers et lents « créent un environnement stable qui facilite la mémorisation ». La réponse proposée reprend une partie du lien causal, mais elle est un peu incomplète par rapport à la formulation de la question."
+                },
+                {
+                  "index": 2,
+                  "correct": true,
+                  "unambiguous": false,
+                  "supportedByPassage": true,
+                  "reason": "Le texte indique qu'un rythme lent aide à se concentrer pendant les devoirs et favorise la mémorisation et la réflexion. L'option choisie est compatible avec cette idée, mais la recommandation n'est pas formulée de manière explicite pour « réviser une leçon difficile », donc l'inférence n'est pas totalement unique."
+                }
+              ]
+            }
+          },
+          "decision": "human_review",
+          "reasons": [
+            "risk_requires_editor",
+            "format_not_calibrated",
+            "grounding_requires_editor",
+            "grammar_requires_editor",
+            "difficulty_mismatch",
+            "quality_requires_editor",
+            "question_qa_failed"
+          ],
+          "sampled": false
+        }
+      },
+      {
+        "label": "5b027e5b-d007-4071-b002-0476e6a8ea90",
+        "negative": false,
+        "report": {
+          "pipelineVersion": "selective-passage-3",
+          "grammarMatches": [
+            {
+              "message": "Un point est requis pour indiquer la fin de cette phrase.",
+              "shortMessage": "",
+              "offset": 34,
+              "length": 3,
+              "ruleId": "POINT",
+              "ruleDescription": "point",
+              "category": "PONCTUATION_POINT",
+              "issueType": "uncategorized",
+              "replacements": [
+                "fil ?",
+                "fil."
+              ]
+            }
+          ],
+          "evidence": {
+            "moderationModel": "openai/gpt-5.4-mini",
+            "generatorModel": "z-ai/glm-5.2",
+            "evaluatorModel": "openai/gpt-5.4-mini",
+            "moderationPassed": true,
+            "grammarIssueCount": 0,
+            "duplicateChecked": true,
+            "nearDuplicate": false,
+            "judgment": {
+              "risk": "low",
+              "naturalness": 0.95,
+              "ageAppropriate": true,
+              "factualGroundingSufficient": true,
+              "concerns": [],
+              "questions": [
+                {
+                  "index": 0,
+                  "correct": true,
+                  "unambiguous": true,
+                  "supportedByPassage": true,
+                  "reason": "Le texte dit explicitement qu'un réseau sans fil utilise des ondes radio pour transmettre des informations."
+                },
+                {
+                  "index": 1,
+                  "correct": true,
+                  "unambiguous": true,
+                  "supportedByPassage": true,
+                  "reason": "Le passage précise que le routeur reçoit les données depuis Internet puis les convertit en signaux radio."
+                },
+                {
+                  "index": 2,
+                  "correct": true,
+                  "unambiguous": true,
+                  "supportedByPassage": true,
+                  "reason": "Le texte explique que la distance affaiblit le signal et que les murs épais ou les objets métalliques peuvent bloquer ou affaiblir les ondes radio."
+                },
+                {
+                  "index": 3,
+                  "correct": true,
+                  "unambiguous": true,
+                  "supportedByPassage": true,
+                  "reason": "Le passage indique que si un appareil est trop loin du routeur, le signal devient faible."
+                },
+                {
+                  "index": 4,
+                  "correct": true,
+                  "unambiguous": true,
+                  "supportedByPassage": true,
+                  "reason": "Le texte dit que le mot de passe sert à protéger les données en permettant seulement aux appareils autorisés de se connecter."
+                },
+                {
+                  "index": 5,
+                  "correct": true,
+                  "unambiguous": true,
+                  "supportedByPassage": true,
+                  "reason": "Dans le texte, l'antenne est la pièce de l'appareil qui capte les signaux radio envoyés par le routeur."
+                }
+              ]
+            }
+          },
+          "decision": "human_review",
+          "reasons": [
+            "format_not_calibrated",
+            "difficulty_mismatch"
+          ],
+          "sampled": false
+        }
+      },
+      {
+        "label": "wrong_key",
+        "negative": true,
+        "report": {
+          "pipelineVersion": "selective-passage-3",
+          "grammarMatches": [
+            {
+              "message": "Un point est requis pour indiquer la fin de cette phrase.",
+              "shortMessage": "",
+              "offset": 32,
+              "length": 5,
+              "ruleId": "POINT",
+              "ruleDescription": "point",
+              "category": "PONCTUATION_POINT",
+              "issueType": "uncategorized",
+              "replacements": [
+                "place ?",
+                "place."
+              ]
+            }
+          ],
+          "evidence": {
+            "moderationModel": "openai/gpt-5.4-mini",
+            "generatorModel": "openai/gpt-5.4",
+            "evaluatorModel": "openai/gpt-5.4-mini",
+            "moderationPassed": true,
+            "grammarIssueCount": 0,
+            "duplicateChecked": true,
+            "nearDuplicate": false,
+            "judgment": {
+              "risk": "low",
+              "naturalness": 0.97,
+              "ageAppropriate": true,
+              "factualGroundingSufficient": true,
+              "concerns": [
+                "La réponse correcte de la question 0 est incohérente avec la question et le passage : elle indique que le vent pousse l’ombre, alors que le texte dit que la rotation de la Terre explique le changement de place.",
+                "Le choix correct de la question 1 est unique et cohérent, mais l’option « Le Soleil est forcément au zénith » introduit une formulation absolue qui peut prêter à confusion sans être directement reprise dans le passage.",
+                "Le texte et les questions utilisent des notions exactes mais certaines affirmations générales sur le midi solaire et le zénith restent formulées de manière simplifiée pour des élèves de 7e; ce n’est pas bloquant, mais cela mérite prudence si l’on attend une précision scientifique complète."
+              ],
+              "questions": [
+                {
+                  "index": 0,
+                  "correct": false,
+                  "unambiguous": true,
+                  "supportedByPassage": false,
+                  "reason": "La bonne réponse proposée contredit le passage. Le texte explique que l’ombre change de place parce que le Soleil semble changer de position dans le ciel, ce qui s’explique par la rotation de la Terre, pas par le vent."
+                },
+                {
+                  "index": 1,
+                  "correct": true,
+                  "unambiguous": true,
+                  "supportedByPassage": true,
+                  "reason": "Le passage dit explicitement que si le Soleil paraît plus haut dans le ciel, l’ombre d’un objet vertical sur un sol horizontal devient plus courte."
+                },
+                {
+                  "index": 2,
+                  "correct": true,
+                  "unambiguous": true,
+                  "supportedByPassage": true,
+                  "reason": "Le dernier paragraphe propose de planter un bâton bien droit dans un sol plat et d’observer son ombre à plusieurs moments."
+                }
+              ]
+            }
+          },
+          "decision": "human_review",
+          "reasons": [
+            "quality_requires_editor",
+            "question_qa_failed"
+          ],
+          "sampled": false
+        }
+      },
+      {
+        "label": "ambiguous_choices",
+        "negative": true,
+        "report": {
+          "pipelineVersion": "selective-passage-3",
+          "grammarMatches": [
+            {
+              "message": "Un point est requis pour indiquer la fin de cette phrase.",
+              "shortMessage": "",
+              "offset": 32,
+              "length": 5,
+              "ruleId": "POINT",
+              "ruleDescription": "point",
+              "category": "PONCTUATION_POINT",
+              "issueType": "uncategorized",
+              "replacements": [
+                "place ?",
+                "place."
+              ]
+            },
+            {
+              "message": "Ce mot apparaît déjà dans l’une des phrases précédant immédiatement celle-ci. Utilisez un synonyme pour apporter plus de variété à votre texte, excepté si la répétition est intentionnelle.",
+              "shortMessage": "Style : Mot répété",
+              "offset": 1654,
+              "length": 6,
+              "ruleId": "FR_REPEATEDWORDS_SEMBLER",
+              "ruleDescription": "Synonymes de mots répétés.",
+              "category": "REPETITIONS_STYLE",
+              "issueType": "style",
+              "replacements": [
+                "parais"
+              ]
+            }
+          ],
+          "evidence": {
+            "moderationModel": "openai/gpt-5.4-mini",
+            "generatorModel": "openai/gpt-5.4",
+            "evaluatorModel": "openai/gpt-5.4-mini",
+            "moderationPassed": true,
+            "grammarIssueCount": 1,
+            "duplicateChecked": true,
+            "nearDuplicate": false,
+            "judgment": {
+              "risk": "low",
+              "naturalness": 0.95,
+              "ageAppropriate": true,
+              "factualGroundingSufficient": true,
+              "concerns": [],
+              "questions": [
+                {
+                  "index": 0,
+                  "correct": true,
+                  "unambiguous": true,
+                  "supportedByPassage": true,
+                  "reason": "La question correspond à une idée explicitement formulée dans le premier paragraphe. Les autres choix sont faux et non soutenus par le texte."
+                },
+                {
+                  "index": 1,
+                  "correct": true,
+                  "unambiguous": true,
+                  "supportedByPassage": true,
+                  "reason": "La bonne réponse est directement déductible du deuxième paragraphe. L’énoncé vise une inférence simple et une seule réponse est correcte."
+                },
+                {
+                  "index": 2,
+                  "correct": true,
+                  "unambiguous": true,
+                  "supportedByPassage": true,
+                  "reason": "La réponse correcte est proposée explicitement dans le dernier paragraphe. Les distracteurs ne conviennent pas et l’un contredit le passage."
+                }
+              ]
+            }
+          },
+          "decision": "human_review",
+          "reasons": [
+            "grammar_requires_editor",
+            "answer_key_invalid"
+          ],
+          "sampled": false
+        }
+      }
+    ]
+  },
+  "passed": true,
+  "calibrationId": "000125a6-dc2a-41a4-8ff8-9700f6c5b923"
+}
