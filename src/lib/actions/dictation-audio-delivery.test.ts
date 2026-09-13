@@ -9,24 +9,33 @@ vi.mock('@/lib/diagnostic/granular/server-delivery-journal',()=>({journalStudent
 vi.mock('@/lib/dictation/audio',()=>({signDictationAudio:f.sign}));
 import {startDictation} from './student';
 import {buildDictationAudioManifest,describeDictationAudio} from '@/lib/dictation/audio-manifest';
+import {deliveredTextFragments} from '@/lib/diagnostic/granular/delivery-journal';
+import {dictationSessionDisplay} from '@/lib/diagnostic/granular/dictation-display';
 const id='11111111-1111-4111-8111-111111111111',text='Les chevaux arrivent.';
 const speech={audio:new Uint8Array([1,2,3]),mimeType:'audio/mpeg',provider:'fixture',model:'fixture',voice:'fr'};
 const input={dictationId:id,clientRequestId:'22222222-2222-4222-8222-222222222222'};
 beforeEach(()=>{
  vi.clearAllMocks();f.manifest=buildDictationAudioManifest(id,(['segment','full'] as const).map(role=>describeDictationAudio({role,index:0,sourceText:text,speechPlan:[{kind:'text',text}],speed:.9,speech})),[text]);
  f.journal.mockImplementation(async(_owner,_boundary,payload)=>payload);f.sign.mockImplementation(async(_db,paths:string[])=>paths.map(p=>'https://audio.example/'+p));
- f.from.mockImplementation((table:string)=>{const q={select:()=>q,eq:()=>q,upsert:()=>q,order:()=>q,single:async()=>({data:{id:'attempt',submitted_at:null},error:null}),then:(resolve:(v:unknown)=>unknown)=>Promise.resolve(resolve({data:table==='dictations'?[{id,key:'horses',title_fr:'Dictée',kind:'flash',text_fr:text,segments:[{text,audioPath:'old/segment.mp3'}],audio_status:'ready',audio_manifest:f.manifest}]:[],error:null}))};return q;});
+ f.from.mockImplementation((table:string)=>{const q={select:()=>q,eq:()=>q,upsert:()=>q,order:()=>q,single:async()=>({data:{id:'attempt',submitted_at:null},error:null}),then:(resolve:(v:unknown)=>unknown)=>Promise.resolve(resolve({data:table==='dictations'?[{id,key:'horses',title_fr:'Dictée',kind:'flash',text_fr:text,segments:[{text,audioPath:'old/segment.mp3'}],word_count:3,grade_min:6,grade_max:9,target_node_keys:[],focus_fr:'Le pluriel',review_status:'human_approved',audio_status:'ready',audio_manifest:f.manifest}]:[],error:null}))};return q;});
 });
 it('records offered audio provenance server-side without exposing the answer text to the player',async()=>{
  const session=await startDictation(input);
  expect(f.journal).toHaveBeenCalledWith('owner','legacy:dictation-audio-offered',f.manifest);
- expect(f.journal).toHaveBeenLastCalledWith('owner','legacy:dictation',session);
+ expect(f.journal).toHaveBeenLastCalledWith('owner','legacy:dictation',{session,display:dictationSessionDisplay(session)});
+ expect(f.journal.mock.invocationCallOrder[0]).toBeLessThan(f.journal.mock.invocationCallOrder[1]);
+ const playerPayload=f.journal.mock.calls.at(-1)?.[2];
+ expect(deliveredTextFragments(playerPayload)).not.toContain(text);
+ expect(deliveredTextFragments(playerPayload).some(fragment=>fragment.startsWith('https://audio.example/'))).toBe(false);
  expect(session.segments[0].browserText).toBeNull();expect(JSON.stringify(session)).not.toContain(text);
  expect(session.fullAudioUrl).toContain('/immutable/');
 });
 it('does not certify legacy audio with no manifest',async()=>{
  f.manifest=null;const session=await startDictation(input);
- expect(session.fullAudioUrl).toContain('horses/full.mp3');expect(f.journal).toHaveBeenCalledTimes(1);
+ expect(session.fullAudioUrl).toContain('horses/full.mp3');
+ expect(f.journal).toHaveBeenCalledTimes(1);
+ expect(f.journal).toHaveBeenCalledWith('owner','legacy:dictation',{session,display:dictationSessionDisplay(session)});
+ expect(JSON.stringify(session)).not.toContain(text);
 });
 it('withholds audio URLs when provenance cannot be recorded',async()=>{
  f.journal.mockRejectedValue(Error('journal unavailable'));

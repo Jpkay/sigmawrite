@@ -8,6 +8,7 @@ vi.mock('@/lib/db/student',()=>({getCurrentStudentId:async()=> 'owner'}));
 vi.mock('@/lib/diagnostic/access',()=>({requireStudentAccessAuthorized:f.access,requireStudentLearningUnlocked:vi.fn()}));
 vi.mock('@/lib/diagnostic/granular/server-delivery-journal',()=>({journalStudentPayload:f.journal}));
 import {loadDictationCatalog} from './student';
+import {dictationCatalogDisplay} from '@/lib/diagnostic/granular/dictation-display';
 const row={id:'dictation',key:'horses',title_fr:'Les chevaux dans le pré',kind:'flash',word_count:40,grade_min:6,grade_max:9,focus_fr:'Accorder les noms au pluriel',audio_status:'ready'};
 beforeEach(()=>{
  vi.resetAllMocks();f.error=null;
@@ -18,7 +19,7 @@ it('records only the delivered catalog and scopes prior attempts to the authenti
  const result=await loadDictationCatalog({});
  expect(f.eq).toHaveBeenCalledWith('student_id','owner');
  expect(result[0]).toMatchObject({title:row.title_fr,focus:row.focus_fr});
- expect(f.journal).toHaveBeenCalledWith('owner','legacy:dictation-catalog',result);
+ expect(f.journal).toHaveBeenCalledWith('owner','legacy:dictation-catalog',{rows:result,display:dictationCatalogDisplay(result)});
  expect(result[0]).not.toHaveProperty('text_fr');
 });
 it('withholds the catalog after failed capture and permits retry',async()=>{

@@ -1,12 +1,12 @@
-# Material workstream — P3.01–P3.04
+# Material workstream — P3.01–P3.05
 
-Updated: 2026-09-13 10:03 Africa/Kigali
+Updated: 2026-09-13 10:49 Africa/Kigali
 
 ## Scope and invariants
 
 - Owner: `material`.
-- Roadmap items: P3.01 (reconcile remaining delivery gaps), P3.02 (practice-player capture), P3.03 (production-player capture), and P3.04 (reading/results capture).
-- Owned implementation: the practice, production, reading, and results student route/player files, their dedicated display-projection helpers, and focused tests.
+- Roadmap items: P3.01 (reconcile remaining delivery gaps), P3.02 (practice-player capture), P3.03 (production-player capture), P3.04 (reading/results capture), and P3.05 (dictation capture).
+- Owned implementation: the practice, production, reading, results, and dictation student route/player files, their dedicated display-projection helpers, and focused tests.
 - Shared action integration in `src/lib/actions/student.ts` is coordinated with the workstream owner because that file contains unrelated work.
 - Guided practice remains guided evidence. None of this work changes its evidence expectation or promotes it to independent mastery.
 - Complete history remains off. Migration `20260912130000_atomic_covered_material_delivery.sql` remains unapplied. Existing students are not backdated and this work does not establish complete prior-material history.
@@ -95,3 +95,22 @@ P3.04 validation:
 - `npx vitest run src/lib/actions/summary-feedback-delivery.test.ts src/lib/diagnostic/granular/reading-display.test.ts src/lib/diagnostic/granular/writing-feedback-display.test.ts src/lib/reading/page-delivery.test.ts 'src/app/student/read/[sessionId]/reading-player.test.ts' 'src/app/student/results/[sessionId]/reading-results.test.ts' --reporter=verbose` — passed, 6 files / 25 tests.
 - `npx eslint src/lib/actions/student.ts src/lib/actions/summary-feedback-delivery.test.ts src/lib/diagnostic/granular/reading-display.ts src/lib/diagnostic/granular/reading-display.test.ts src/lib/diagnostic/granular/writing-feedback-display.ts src/lib/diagnostic/granular/writing-feedback-display.test.ts src/lib/reading/page-delivery.ts src/lib/reading/page-delivery.test.ts 'src/app/student/read/[sessionId]/reading-player.tsx' 'src/app/student/read/[sessionId]/reading-player.test.ts' 'src/app/student/results/[sessionId]/reading-results.tsx' 'src/app/student/results/[sessionId]/reading-results.test.ts' src/components/writing-feedback.tsx` — passed.
 - `npm run typecheck` — passed.
+
+## P3.05 implementation status
+
+P3.05 is locally ready for coordinator integration:
+
+- `dictationCatalogDisplay(...)` records loading, empty and finite error states plus every delivered row title, focus, kind, grade range, word/time summary, latest score state and start/retry control. The catalog client renders from the same copy and formatters. `loadDictationCatalog` journals `{ rows, display }` before returning; a failed capture withholds the catalog and remains retryable without mutation.
+- `dictationSessionDisplay(...)` records preparation, headings, focus/segment summary, instructions, browser-voice disclosure, playback and navigation controls, transcript placeholder, accent controls, template blank labels/choices, replay counter, negotiation controls, result controls and the finite learner-visible failure vocabulary. Arbitrary infrastructure messages are replaced with stage-specific generic copy; only enumerated server-authored failures pass through.
+- For immutable server audio, `legacy:dictation-audio-offered` records the validated manifest before `legacy:dictation` records and returns the selected session. The manifest binds ordered source transcripts and speech plans to content-addressed byte checksums. Signed URLs are excluded by the delivery-text extractor, and neither the expected transcript nor manifest enters the player session. Legacy audio remains explicitly playable but uncertified; browser TTS remains development-only and its browser-delivered text is present in the session journal.
+- `dictationResultDisplay(...)` records the authoritative expected transcript, score/XP variants, category counts, clean/exact states, omitted/extra replacements, explanations, rule links, negotiation prompts/options and all result controls before the result is exposed. An idempotent saved-result test proves a journal failure withholds that transcript and a mutation-free retry can return it.
+- `submitDictationJustifications` journals both fresh and already-saved outcome displays before returning them. If the post-write capture fails, the retry follows the saved idempotent branch, journals the same correct/total result and does not write evidence again. As with the other multi-write legacy actions, this is fail-closed at browser exposure, not a claim of transactional journal-plus-domain mutation; P3.08 retains that atomicity gate.
+
+P3.05 validation:
+
+- `npx vitest run src/lib/diagnostic/granular/dictation-display.test.ts src/app/student/dictee/catalog-client.test.ts 'src/app/student/dictee/[dictationId]/dictation-player.test.ts' src/lib/actions/dictation-audio-delivery.test.ts src/lib/actions/dictation-catalog-delivery.test.ts src/lib/actions/dictation-justification-delivery.test.ts --reporter=verbose` — passed, 6 files / 23 tests.
+- `npx eslint src/app/student/dictee/catalog-client.tsx src/app/student/dictee/catalog-client.test.ts 'src/app/student/dictee/[dictationId]/dictation-player.tsx' 'src/app/student/dictee/[dictationId]/dictation-player.test.ts' src/lib/diagnostic/granular/dictation-display.ts src/lib/diagnostic/granular/dictation-display.test.ts src/lib/actions/dictation-audio-delivery.test.ts src/lib/actions/dictation-catalog-delivery.test.ts src/lib/actions/dictation-justification-delivery.test.ts src/lib/actions/student.ts` — passed.
+- `npm run typecheck` — passed.
+- `git diff --check -- src/app/student/dictee src/lib/diagnostic/granular/dictation-display.ts src/lib/diagnostic/granular/dictation-display.test.ts src/lib/actions/dictation-audio-delivery.test.ts src/lib/actions/dictation-catalog-delivery.test.ts src/lib/actions/dictation-justification-delivery.test.ts src/lib/actions/student.ts docs/diagnostic/workstreams/material.md` — passed.
+
+No deployment, live-student mutation, migration, complete-history activation, commit or push was performed. Candidate/public browser verification and integration remain coordinator-owned.

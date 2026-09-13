@@ -1,4 +1,5 @@
 "use server";
+import {dictationCatalogDisplay,dictationSessionDisplay,dictationResultDisplay,dictationJustificationOutcomeDisplay} from "@/lib/diagnostic/granular/dictation-display";
 import {writingFeedbackDisplay,writingEvaluationDisplay} from "@/lib/diagnostic/granular/writing-feedback-display";
 import {productionTaskDisplay,productionResultDisplay,productionLengthError} from "@/lib/diagnostic/granular/production-player-display";
 import {practiceFeedbackDisplay,practiceCompletionDisplay} from "@/lib/diagnostic/granular/practice-player-display";
@@ -2743,12 +2744,14 @@ export async function loadDictationCatalog(input: unknown): Promise<DictationCat
     const id = attempt.dictation_id as string; const existing = byDictation.get(id);
     if (existing) existing.count++; else byDictation.set(id, { score: attempt.score == null ? null : Number(attempt.score), at: attempt.submitted_at as string, count: 1 });
   }
-  return journalStudentPayload<DictationCatalogEntry[]>(studentId, "legacy:dictation-catalog", rows.map((row) => ({
+  const catalog: DictationCatalogEntry[] = rows.map((row) => ({
     id: row.id, key: row.key, title: row.title_fr, kind: row.kind, wordCount: row.word_count, gradeMin: row.grade_min, gradeMax: row.grade_max, focus: row.focus_fr,
     estimatedMinutes: row.kind === "brevet" ? 20 : Math.max(5, Math.min(10, Math.round(row.word_count / 8))),
     lastScore: byDictation.get(row.id)?.score ?? null, lastAt: byDictation.get(row.id)?.at ?? null, attempts: byDictation.get(row.id)?.count ?? 0,
     audioMode: row.audio_status === "ready" ? "server" : "browser",
-  })));
+  }));
+  await journalStudentPayload(studentId,"legacy:dictation-catalog",{rows:catalog,display:dictationCatalogDisplay(catalog)});
+  return catalog;
 }
 
 const startDictationSchema = z.object({ dictationId: z.string().uuid(), mode: z.enum(DICTATION_MODES).optional(), clientRequestId: z.string().uuid() });
@@ -2780,7 +2783,7 @@ export async function startDictation(input: unknown): Promise<DictationSession> 
     await journalStudentPayload(studentId,"legacy:dictation-audio-offered",audioAssets.manifest);
   }
   const withTemplates = mode === "trous" || mode === "choix";
-  return journalStudentPayload<DictationSession>(studentId,"legacy:dictation",{
+  const session: DictationSession = {
     attemptId: attempt.id as string, dictationId: row.id, title: row.title_fr, mode, focus: row.focus_fr, wordCount: row.word_count, audioMode,
     fullAudioUrl: audioMode === "server" ? urls[urls.length - 1] ?? null : null,
     segments: row.segments.map((segment, index) => ({
@@ -2789,7 +2792,9 @@ export async function startDictation(input: unknown): Promise<DictationSession> 
       browserText: audioMode === "browser" ? speakableSegment(segment.text) : null,
       template: withTemplates ? publicTemplate(buildTemplate(segment.text, index), mode === "choix") : null,
     })),
-  });
+  };
+  await journalStudentPayload(studentId,"legacy:dictation",{session,display:dictationSessionDisplay(session)});
+  return session;
 }
 
 const submitDictationSchema = z.object({
@@ -2825,7 +2830,9 @@ export async function submitDictation(input: unknown): Promise<DictationResult> 
   const joined = answers.join(" ").trim();
   if (joined.length > 0) await moderateOrReject({ supabase, studentId, text: joined, field: "memory_retrieval" });
   if (attempt.submitted_at) {
-    return journalStudentPayload(studentId,"legacy:dictation-result",buildDictationResult(attempt.id as string, row, attempt.answers as string[], attempt.errors as DictationError[], Number(attempt.score), Number(attempt.accuracy), null));
+    const result=buildDictationResult(attempt.id as string, row, attempt.answers as string[], attempt.errors as DictationError[], Number(attempt.score), Number(attempt.accuracy), null);
+    await journalStudentPayload(studentId,"legacy:dictation-result",{result,display:dictationResultDisplay(result)});
+    return result;
   }
   const outcome = classifyDictation(row.segments.map((segment) => segment.text), answers);
   const submittedAt = new Date().toISOString();
@@ -2852,7 +2859,9 @@ export async function submitDictation(input: unknown): Promise<DictationResult> 
   const xp = await awardXp(service, { studentId, eventKey: `dictation:${attempt.id as string}`, sourceType: "dictation", sourceId: attempt.id as string, baseXp: mode === "brevet" ? XP_AWARDS.dictationBase * 2 : XP_AWARDS.dictationBase, bonusXp: outcome.errors.length === 0 ? XP_AWARDS.dictationCleanBonus : 0, at: submittedAt });
   await service.from("dictation_attempts").update({ xp_awarded: xp.xp }).eq("id", attempt.id);
   revalidatePath("/student"); revalidatePath("/student/dictee");
-  return journalStudentPayload(studentId,"legacy:dictation-result",buildDictationResult(attempt.id as string, row, answers, outcome.errors, outcome.score, outcome.accuracy, xp));
+  const result=buildDictationResult(attempt.id as string, row, answers, outcome.errors, outcome.score, outcome.accuracy, xp);
+  await journalStudentPayload(studentId,"legacy:dictation-result",{result,display:dictationResultDisplay(result)});
+  return result;
 }
 
 function buildDictationResult(attemptId: string, row: DictationRow, answers: string[], errors: DictationError[], score: number, accuracy: number, xp: XpAward | null): DictationResult {
@@ -2882,9 +2891,13 @@ const justifySchema = z.object({ attemptId: z.string().uuid(), choices: z.array(
 export async function submitDictationJustifications(input: unknown) {
   const data = checked(justifySchema, input); const { studentId } = await context();
   const service = createServiceClient();
-  const { data: attempt, error } = await service.from("dictation_attempts").select("id,errors,submitted_at,justifications").eq("id", data.attemptId).eq("student_id", studentId).single();
+  const { data: attempt, error } = await service.from("dictation_attempts").select("id,errors,submitted_at,justifications,justification_correct").eq("id", data.attemptId).eq("student_id", studentId).single();
   if (error || !attempt || !attempt.submitted_at) throw new Error("Tentative introuvable.");
-  if ((attempt.justifications as unknown[]).length > 0) return { correct: Number((attempt as { justification_correct?: number }).justification_correct ?? 0), total: (attempt.justifications as unknown[]).length };
+  if ((attempt.justifications as unknown[]).length > 0) {
+    const outcome={correct:Number(attempt.justification_correct??0),total:(attempt.justifications as unknown[]).length};
+    await journalStudentPayload(studentId,"legacy:dictation-justification-result",{outcome,display:dictationJustificationOutcomeDisplay(outcome)});
+    return outcome;
+  }
   const errors = attempt.errors as DictationError[];
   const results = data.choices.map((choice) => ({ ...choice, correct: errors[choice.errorIndex]?.category === choice.category }));
   const correct = results.filter((r) => r.correct).length;
@@ -2897,7 +2910,9 @@ export async function submitDictationJustifications(input: unknown) {
       await recordDirectCompetencyEvidence({ service, studentId, nodeId: node.id as string, at, evidenceExpectation: "receptive", occurrenceKey: `dictation:${attempt.id as string}:justified`, sourceType: "dictation", sourceId: attempt.id as string, hintsUsed: 1, updateMastery: (prior) => bktUpdateWeighted(prior, true, 0.5), correct: true, memoryResult: "hard", pathMastery: (value) => Math.min(value, 0.84) });
     }
   }
-  return { correct, total: results.length };
+  const outcome={correct,total:results.length};
+  await journalStudentPayload(studentId,"legacy:dictation-justification-result",{outcome,display:dictationJustificationOutcomeDisplay(outcome)});
+  return outcome;
 }
 
 /** Class aggregate for the cooperative goal; no per-student figures leave the server (roadmap 6.5). */
