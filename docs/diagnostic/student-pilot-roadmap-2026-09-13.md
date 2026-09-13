@@ -15,7 +15,7 @@ The objective remains a granular, adaptive diagnostic built on the approved Fren
 
 Show the evidence supporting each assessed skill, alongside its provisional status. Preserve separate modes and specific graph targets. Distinguish correct answers from confirmed mastery and untested skills from difficulties. Writing-token accuracy must not become a fictitious count of correct essays.
 
-Completion evidence: render mixed, successful, untested and writing cases; verify the displayed counts against the saved eligible evidence; record the exact displayed wording before delivery; verify the deployed result and progress pages. Initial implementation is in the worktree, not yet deployed.
+Completion evidence: render mixed, successful, untested and writing cases; verify the displayed counts against the saved eligible evidence; record the exact displayed wording before delivery; verify the deployed result and progress pages. Deployed on 13 September: the technical-account check verified counts for 19 skills on results and progress without changing assessment state. See `skill-evidence-display-2026-09-13.md`. Teacher and student interpretation still needs pilot feedback.
 
 ### 2. Verify adaptive behavior across granular learner profiles
 

@@ -4,6 +4,9 @@
  * Authenticated route visits record delivery, but no answers are submitted.
  */
 import {strict as assert} from 'node:assert';
+import {SupabaseAssessmentStore} from '../src/lib/diagnostic/granular/store';
+import {publicAssessmentView} from '../src/lib/diagnostic/granular/service';
+import {skillEvidenceDisplay} from '../src/lib/diagnostic/granular/skill-evidence-display';
 import {MEMORY_COPY} from '../src/lib/diagnostic/granular/memory-display';
 import {INBOX_COPY} from '../src/lib/diagnostic/granular/inbox-display';
 import {VOCABULARY_COPY} from '../src/lib/diagnostic/granular/vocabulary-display';
@@ -45,6 +48,25 @@ try {
  const response=await page.goto(base+'/student/diagnostic',{waitUntil:'domcontentloaded',timeout:60000});
  assert.equal(response?.headers()['x-plume-offline-owner'],credential.authUserId);
  await page.getByRole('heading',{name:DIAGNOSTIC_COPY.resultsTitle,exact:true}).waitFor({timeout:60000});
+ let skillEvidenceVerified=0;
+ const evidenceExpectations:Array<{label:string;rows:string[]}>=[];
+ if(process.env.PLUME_VERIFY_EVIDENCE==='true'){
+  const store=new SupabaseAssessmentStore(db);const stored=await store.load(credential.studentId,sessionId);assert.ok(stored);
+  const bundle=await store.release(before.release_id);assert.ok(bundle);
+  const view=publicAssessmentView(stored,bundle);
+  for(const summary of await page.locator('section details > summary').all())await summary.click();
+  const expected:string[]=[];
+  for(const result of view.results){
+   const rows=skillEvidenceDisplay(result,DIAGNOSTIC_COPY.mode);if(!rows.length)continue;
+   const label=view.skillDetails[result.skillId]?.labelFr;assert.ok(label);
+   const containers=await page.getByText(label,{exact:true}).locator('..').allTextContents();
+   assert.ok(containers.some(text=>rows.every(row=>text.includes(row))),label+': evidence mismatch');
+   expected.push(...rows);evidenceExpectations.push({label,rows});skillEvidenceVerified++;
+  }
+  assert.ok(skillEvidenceVerified>0);
+  const recorded=await db.from('student_material_delivery_journal').select('text_fragments').eq('student_id',credential.studentId).eq('boundary','granular:start');if(recorded.error)throw recorded.error;
+  assert.ok(recorded.data.some(row=>expected.every(text=>row.text_fragments.includes(text))));
+ }
  const fragments=deliveredTextFragments(DIAGNOSTIC_COPY);
  const fixed=await db.from('student_material_delivery_journal').select('payload_checksum,text_fragments').eq('student_id',credential.studentId).eq('boundary','granular:ui-copy').eq('payload_checksum',checksum(fragments)).single();
  if(fixed.error)throw fixed.error;assert.deepEqual(fixed.data.text_fragments,fragments);
@@ -72,6 +94,10 @@ try {
   await page.getByRole('heading',{name:FRONTIER_COPY.progressTitle,exact:true}).waitFor({timeout:60000});
   const progress=await db.from('student_material_delivery_journal').select('text_fragments').eq('student_id',credential.studentId).eq('boundary','student:granular-progress').contains('text_fragments',[FRONTIER_COPY.progressTitle]).limit(1).single();
   if(progress.error)throw progress.error;
+  for(const {label,rows} of evidenceExpectations){
+   const nodes=page.locator('summary').getByText(label,{exact:true}).locator('xpath=ancestor::details[1]');
+   const text=await nodes.allTextContents();assert.ok(text.some(value=>rows.every(row=>value.includes(row))),label+': progress evidence mismatch');
+  }
   homeAndProgressVerified=true;
  }
  const additionalPages:string[]=[];
@@ -102,6 +128,6 @@ try {
  await page.setViewportSize({width:390,height:844});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
  assert.deepEqual(await session(),before);assert.deepEqual(errors,[]);
  const report={base,studentId:credential.studentId,sessionId,diagnosticCopyChecksum:checksum(fragments),diagnosticCopyCaptured:true,reviewCopyCaptured:true,lessonListCopyCaptured:true,reviewAnswers:answers,serverOwnerHeaderVerified:true,moduleWorkerRegistered:true,mobileNoHorizontalOverflow:true,sessionUnchanged:true,pageErrors:errors,limits:'Existing completed technical account; no answers submitted and no complete-history activation. This checks deployed UI capture and worker registration, not a fresh diagnostic or full offline behavior.'};
- Object.assign(report,{homeAndProgressVerified,additionalPages});
+ Object.assign(report,{homeAndProgressVerified,additionalPages,skillEvidenceVerified});
  writeFileSync(reportPath,JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));
 } finally {await browser.close();}
