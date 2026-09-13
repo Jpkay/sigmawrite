@@ -181,6 +181,28 @@ This checkpoint supersedes the earlier unpromoted/missing-browser notes.
   diagnostic/activity reports; recovery/resume; revocation and foreign-school
   denials in the browser. Successful SQL fixtures do not substitute for these.
 
+## UI follow-up and current public build — 2026-09-13
+
+- Edited the synthetic second class through the public UI to
+  `QA Classe B — vérifiée`. The UI returned `Enregistré`; an independent database
+  read of class `91c58c61-9d20-4394-9dea-bad371bb9f6b` confirmed the name persisted.
+- A bounded SOL High follow-up corrected obsolete teacher-signup guidance: an
+  invalid school code is rejected, not converted into a parent signup. The text
+  now explains the valid-code requirement and administrator-managed alternative.
+- Code/test commit `4a82211` is pushed. **5 focused tests passed**, focused lint,
+  TypeScript and whitespace checks passed. Vercel built the candidate Ready;
+  candidate login returned 200 and protected management routes redirected to login.
+- Promoted **`dpl_5FNA2ipXcihhmAiTc4NGcwPPR4fA`**, source **`4a82211`**.
+  Current public app: <https://sigmawrite.vercel.app>.
+  Immutable deployment: <https://sigmawrite-gkrvisnaf-jpkays-projects.vercel.app>.
+  A fresh authenticated public `/admin/users` page displays the corrected text.
+  No further database migration was required for this copy-only build.
+- QA-account approval has not yet been received. The current-build scoped
+  administrator form is left prepared with the synthetic name/username and no
+  email entered. No account creation or permission-grant submission occurred.
+  Browser connectivity is restored; the remaining input is approval for the
+  six QA accounts, their school-scoped assignment tests and QA email destination.
+
 ## Release gates
 
 1. Integrate the three agent slices; review all service-role paths and RPC checks.
