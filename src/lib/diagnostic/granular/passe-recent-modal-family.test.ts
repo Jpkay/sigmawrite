@@ -12,6 +12,8 @@ import { validateTeachingTargets } from "./teaching-content";
 import { PASSE_RECENT_MODAL_QUESTIONS, PASSE_RECENT_MODAL_TARGETS, PASSE_RECENT_MODAL_TEACHING } from "./passe-recent-modal-family";
 import { buildPasseRecentModalExpansion, type PasseRecentModalExpansion } from "./passe-recent-modal-expansion";
 import type { V3Assessment } from "./v3-adapter";
+import { granularBankOptions } from "../../../../scripts/lib/granular-bank-options";
+import { selectedDraftExpansionSources, selectedTeachingDrafts } from "../../../../scripts/lib/granular-authoring-selection";
 
 const read = (path: string) => JSON.parse(readFileSync(path, "utf8"));
 const frozenCandidatePath = `${homedir()}/.codex/release-workspaces/sigmawrite-r41-evidence-773d3f7/docs/diagnostic/v3-scoped-review-candidate.json`;
@@ -143,4 +145,14 @@ it("retains deterministic answer keys and rejects incomplete or wrongly conjugat
   expect(checksum(content)).toBe(recorded);
   expect(artifact.claimScope).toBe("controlled_form_only");
   expect(artifact.naturalnessReview.every((row: { status: string }) => row.status === "awaiting_real_review")).toBe(true);
+});
+
+it("selects modal passe recent content only through the complete revision 43 chain", () => {
+  const r42 = ["--bank-revision", "42", "--verb-family-recognition", "--etre-participle-agreement", "--question-detail-reading", "--local-definition-reading", "--avoir-participle-agreement", "--causal-reading-genres", "--cause-relation-family"];
+  const r43 = [r42[0], "43", ...r42.slice(2), "--passe-recent-modal-family"];
+  expect(granularBankOptions(r43).passeRecentModalFamily).toBe(true);
+  expect(selectedDraftExpansionSources(r42)).not.toContain("passe-recent-modal-family");
+  expect(selectedTeachingDrafts(r42)).not.toEqual(expect.arrayContaining([...PASSE_RECENT_MODAL_TEACHING]));
+  expect(selectedDraftExpansionSources(r43)).toContain("passe-recent-modal-family");
+  expect(selectedTeachingDrafts(r43)).toEqual(expect.arrayContaining([...PASSE_RECENT_MODAL_TEACHING]));
 });

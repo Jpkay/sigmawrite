@@ -42,3 +42,9 @@ it("requires the complete prior refinement chain before assembling revision 42 c
  expect(()=>assembleDraftBank(bank,taxonomy,[expansion],{revision:42,causeRelationFamily:true})).toThrow(/preceding refinements/);
  expect(assembleDraftBank(bank,taxonomy,[expansion],{revision:42,...refinements,causeRelationFamily:true}).bank.bank.key).toBe("french-diagnostic-bank-v3-r42");
 });
+it("requires revision 43 and the complete cause chain before modal passe recent content",()=>{
+ const refinements={verbFamilyRecognition:true,etreParticipleAgreement:true,questionDetailReading:true,localDefinitionReading:true,avoirParticipleAgreement:true,causalReadingGenres:true,causeRelationFamily:true};
+ expect(()=>assembleDraftBank(bank,taxonomy,[expansion],{revision:42,...refinements,passeRecentModalFamily:true})).toThrow(/revision 43/);
+ expect(()=>assembleDraftBank(bank,taxonomy,[expansion],{revision:43,passeRecentModalFamily:true})).toThrow(/preceding refinements/);
+ expect(assembleDraftBank(bank,taxonomy,[expansion],{revision:43,...refinements,passeRecentModalFamily:true}).bank.bank.key).toBe("french-diagnostic-bank-v3-r43");
+});

@@ -302,7 +302,7 @@
         "P3.01"
       ],
       "acceptance": "Record exact visible and pre-delivered material before exposure; rendering and failure tests cover the route.",
-      "status": "planned",
+      "status": "in_progress",
       "owner": "material",
       "evidence": []
     },
@@ -533,6 +533,32 @@
       "evidence": [
         "published-r41-learning-refinement-trace-2026-09-13.json"
       ]
+    },
+    {
+      "id": "P2.13",
+      "priority": 2,
+      "title": "Distinguish skill-graph changes from question-difficulty changes",
+      "dependsOn": [
+        "P2.02"
+      ],
+      "acceptance": "Every trace records source/target skill, graph challenge and item difficulty; same-difficulty graph transitions cannot be reported as easier/harder questions. Deterministic selection stays unchanged.",
+      "status": "in_progress",
+      "owner": "adaptive",
+      "evidence": [
+        "workstreams/adaptive.md"
+      ]
+    },
+    {
+      "id": "P2.14",
+      "priority": 2,
+      "title": "Implement and validate easier/harder question selection within skills",
+      "dependsOn": [
+        "P2.13"
+      ],
+      "acceptance": "Use explicit authored difficulty tiers where sufficient disjoint pools exist; successes and errors drive verified ascent/descent with confirmation. No fabricated calibration; sparse skills remain explicit. Preserve time budget and cross-domain coverage.",
+      "status": "planned",
+      "owner": "adaptive",
+      "evidence": []
     }
   ],
   "releaseRule": "Coordinator integrates only validated changes; candidate verification precedes promotion and public verification. Owner review continues in parallel and is not fabricated.",
@@ -575,6 +601,11 @@
       "task": "P2.10",
       "date": "2026-09-13",
       "finding": "Published R41 full-budget all-wrong counterpart: 61 incorrect responses, 15 provisional direct gaps, 332 unknown targets and five published prerequisite-free lessons; zero official resolutions. Declared targets not reached remain explicit. This is a runtime-bundle simulation, not live student calibration."
+    },
+    {
+      "task": "P2.13",
+      "date": "2026-09-13",
+      "finding": "R41 full-budget traces select only difficulty .5. Their step-up/down events mainly traverse the skill graph. R42 cause has actual difficulty tiers and error-driven descent, but a symmetric within-skill ascent policy is not established. P2.13 records truthful transitions; P2.14 implements and validates that remaining behavior."
     }
   ]
 }

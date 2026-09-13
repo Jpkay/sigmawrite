@@ -84,6 +84,32 @@ Each of the first four builders must then pass again with `--check`. The cause-s
 
 The frozen draft is expected to retain internal checksum `sha256:ead51a8a216702400f6d59600b8b51e919cb3edd47cb79ca26741c3fe01293de` and raw JSON SHA-256 `adf3621a0d992987f91f0e4ff9d0c423f25b8d88bed80edeb81848731a6aded7`. In-memory assembly with the complete R42 option chain yields 8,052 bank items and checksum `sha256:e698c225c1960e608d7a3460491e5441f3e5f0fec1f5e1698a1779277650377a`. A mismatch must stop the chain for investigation rather than silently create a different immutable revision.
 
+The frozen R42 build at source `af6316c` has 362 assessment and teaching targets, 6,610 scoped questions and no instruction or fresh-check gaps.
+
+## Revision 43 modal passé récent integration
+
+C001 to C003 are wired behind `--passe-recent-modal-family`. The option requires bank revision 43 and the complete R42 chain, including `--cause-relation-family`. Omitting it reproduces the R42 bank exactly and excludes all three modal lessons. The approved target requirements remain unchanged: each target retains the two prerequisites recorded above, six independent initial forms, six independent learning forms, six distinct contexts per pool and all six grammatical persons per pool.
+
+The evidence is controlled form production only. The prompt supplies both the tense and the modal infinitive, and `unaidedRequired`, sentence novelty and word novelty are all false in the approved contracts. The integration therefore does not claim that a learner would independently choose a natural modal passé récent in context. The especially delicate `venir de savoir` wording remains explicitly compared with the more spontaneous `venir d’apprendre` during owner review; the target itself is not silently changed to `apprendre`.
+
+```zsh
+npx tsx scripts/expand-v3-passe-recent-modal-family.mts --output=tmp/coverage-r43-passe-recent-modal-family.json
+npx tsx scripts/expand-v3-passe-recent-modal-family.mts --output=tmp/coverage-r43-passe-recent-modal-family.json --check
+shasum -a 256 tmp/coverage-r43-passe-recent-modal-family.json
+cp tmp/coverage-r43-passe-recent-modal-family.json generated/french-v3-passe-recent-modal-family-expansion.json
+R43_FLAGS=(--bank-revision 43 --verb-family-recognition --etre-participle-agreement --question-detail-reading --local-definition-reading --avoir-participle-agreement --causal-reading-genres --cause-relation-family --passe-recent-modal-family)
+npx tsx scripts/assemble-v3-review-candidate.mts "${R43_FLAGS[@]}"
+npx tsx scripts/build-parallel-review-candidate.mts "${R43_FLAGS[@]}"
+npx tsx scripts/build-scoped-review-candidate.mts "${R43_FLAGS[@]}"
+npx tsx scripts/prepare-scoped-publication.mts "${R43_FLAGS[@]}"
+npx tsx scripts/verify-scoped-command-journey.mts "${R43_FLAGS[@]}"
+node --conditions=react-server --import tsx scripts/publish-scoped-diagnostic.mts export-bank /tmp/french-v3-r43-passe-recent-modal-bank.json "${R43_FLAGS[@]}"
+```
+
+The first four builders must subsequently pass with `--check`. The isolated service journey command is `npx tsx scripts/verify-orthography-foundation-journeys.mts --passe-recent-modal-family` after the coordinator has built the R43 scoped artifacts.
+
+The modal draft has internal checksum `sha256:344e7fd6d823247b0457f0a5c30431c77227c61fec7e0a9c6722c1190ff68920` and raw JSON SHA-256 `de49a2c2eea081d843267b2a22baeda587211a3fa605268dc99f9985ab70984f`. It contains 36 questions, 36 annotations, 18 authored initial items and 18 authored learning items. In-memory R43 assembly yields 8,088 bank items and checksum `sha256:6639103de03cc7af51f41d1d129f98fddc290f943ddbd2012415dd65448649e0`. Any mismatch must stop integration.
+
 ## Exact registry task status
 
 The shared registry currently records the following exact states:
@@ -116,6 +142,6 @@ The cause tests verify exact registry requirements, pool sufficiency, three nega
 
 ## Remaining limits
 
-The experimental artifacts contain no approval provenance and every new item remains `needs_human_review`. Every lesson remains `draft_requires_review`. The release scope remains 360 of 544 targets. No shared generated bank, candidate file, package file, engine, publication assembly, database or production environment was changed by this workstream.
+The experimental modal artifact contains no approval provenance and every new item remains `needs_human_review`. Every modal lesson remains `draft_requires_review`. The current frozen R42 scope remains 362 of 544 targets until the coordinator builds R43. This R43 integration work did not change a shared generated bank, candidate file, package file, engine, database or production environment.
 
 The homophone family C161 to C174 was investigated but not selected. Its approved contract requires three novel words per target while each fixed homophone pair contains only two target words. Resolving that mismatch would require an approved contract change, so this workstream did not weaken the evidence rule or create placeholder coverage.

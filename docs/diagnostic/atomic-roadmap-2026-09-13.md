@@ -57,7 +57,7 @@ flowchart LR
 | P3.02 | Complete capture of practice-player material | P3.01 | material | production |
 | P3.03 | Complete capture of production-player material | P3.01 | material | implemented |
 | P3.04 | Complete capture of reading and feedback material | P3.01 | material | validated |
-| P3.05 | Complete capture of dictation material | P3.01 | material | planned |
+| P3.05 | Complete capture of dictation material | P3.01 | material | in_progress |
 | P3.06 | Complete capture of legacy diagnostic and demonstration material | P3.01 | material | planned |
 | P3.07 | Complete client-version and offline accounting | P3.01 | material | planned |
 | P3.08 | Validate and release atomic covered delivery | P3.02, P3.03, P3.04, P3.05, P3.06, P3.07 | coordinator | planned |
@@ -76,6 +76,8 @@ flowchart LR
 | P5.06 | Fix and recheck pilot findings | P5.05 | coordinator | planned |
 | P2.11 | Verify next activities using the published full mixed profile | P2.02 | adaptive | validated |
 | P2.12 | Verify candidate-to-published follow-up check lifecycle | P4.03 | adaptive + coordinator | validated |
+| P2.13 | Distinguish skill-graph changes from question-difficulty changes | P2.02 | adaptive | in_progress |
+| P2.14 | Implement and validate easier/harder question selection within skills | P2.13 | adaptive | planned |
 
 ## Acceptance criteria
 
@@ -118,6 +120,8 @@ flowchart LR
 - **P5.06** — Each discrepancy has a reproducible case, validated resolution and deployed version.
 - **P2.11** — Use the runtime-validated published bundle. The full35-minute profile receives deliverable next activities while untested skills remain unknown. Evidence: published-r41-mixed-profile-trace-2026-09-13.json.
 - **P2.12** — Source candidate drafts remain drafts; actual published release has published pool-valid independent checks with truthful parallel-review provenance. Evidence: published-r41-learning-refinement-trace-2026-09-13.json.
+- **P2.13** — Every trace records source/target skill, graph challenge and item difficulty; same-difficulty graph transitions cannot be reported as easier/harder questions. Deterministic selection stays unchanged. Evidence: workstreams/adaptive.md.
+- **P2.14** — Use explicit authored difficulty tiers where sufficient disjoint pools exist; successes and errors drive verified ascent/descent with confirmation. No fabricated calibration; sparse skills remain explicit. Preserve time budget and cross-domain coverage.
 
 ## Remaining content: 184 individually tracked targets
 
@@ -133,6 +137,7 @@ The registry contains 184 targets and 920 target-level tasks. Status counts: awa
 - **P4.02** (2026-09-13): 64 draft questions and5 lessons across5 targets prepared; cause family is next provisional release candidate. Drafts are not production coverage.
 - **P2.10** (2026-09-13): CORRECTION: the no-activity result used a pre-publication candidate with draft bindings. Runtime-validated publishedR41 returns5 independent checks and0 missing bindings. Its unchanged61-question/2100-second simulation samples25/360 skills, leaves335 untested and8/12 declared profile contrasts unmet. No runtime publication/planner fix is justified by the candidate-stage result.
 - **P2.10** (2026-09-13): Published R41 full-budget all-wrong counterpart: 61 incorrect responses, 15 provisional direct gaps, 332 unknown targets and five published prerequisite-free lessons; zero official resolutions. Declared targets not reached remain explicit. This is a runtime-bundle simulation, not live student calibration.
+- **P2.13** (2026-09-13): R41 full-budget traces select only difficulty .5. Their step-up/down events mainly traverse the skill graph. R42 cause has actual difficulty tiers and error-driven descent, but a symmetric within-skill ascent policy is not established. P2.13 records truthful transitions; P2.14 implements and validates that remaining behavior.
 
 ## Workstream reports
 

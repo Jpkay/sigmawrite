@@ -22,3 +22,10 @@ it('requires revision 42 and the complete preceding chain for cause relations',(
  const r41=args.filter(value=>value!=='--cause-relation-family').map(value=>value==='42'?'41':value);
  expect(granularBankOptions(r41)).toEqual({revision:41,verbFamilyRecognition:true,etreParticipleAgreement:true,questionDetailReading:true,localDefinitionReading:true,avoirParticipleAgreement:true,causalReadingGenres:true});
 });
+it('requires revision 43 and the complete cause chain for passe recent modal forms',()=>{
+ const args=['--bank-revision','43','--verb-family-recognition','--etre-participle-agreement','--question-detail-reading','--local-definition-reading','--avoir-participle-agreement','--causal-reading-genres','--cause-relation-family','--passe-recent-modal-family'];
+ expect(granularBankOptions(args)).toEqual({revision:43,verbFamilyRecognition:true,etreParticipleAgreement:true,questionDetailReading:true,localDefinitionReading:true,avoirParticipleAgreement:true,causalReadingGenres:true,causeRelationFamily:true,passeRecentModalFamily:true});
+ for(const invalid of [['--passe-recent-modal-family'],args.map(value=>value==='43'?'42':value),args.filter(value=>value!=='--cause-relation-family'),[...args,'--passe-recent-modal-family']])expect(()=>granularBankOptions(invalid)).toThrow(/Passe recent|Duplicate passe recent/);
+ const r42=args.filter(value=>value!=='--passe-recent-modal-family').map(value=>value==='43'?'42':value);
+ expect(granularBankOptions(r42)).toEqual({revision:42,verbFamilyRecognition:true,etreParticipleAgreement:true,questionDetailReading:true,localDefinitionReading:true,avoirParticipleAgreement:true,causalReadingGenres:true,causeRelationFamily:true});
+});
