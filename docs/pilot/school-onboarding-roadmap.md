@@ -122,6 +122,32 @@ This checkpoint supersedes the earlier missing-sign-in notes above.
 - No public application promotion or permanent onboarding migration occurred
   at this checkpoint. The coordinated cutover gate remains required.
 
+## Review-query SQL hotfix deployed — 2026-09-13
+
+- `56834e5` adds `20260914103000_review_rls_initplans.sql`: eight existing
+  review-path policies evaluate their stable staff-role check through InitPlans.
+  Commands, role targets, approval predicates and write checks are preserved.
+- SOL High's focused regression covers **17 assertions**, including active and
+  deactivated administrators, student/reviewer/anonymous denials, authenticated
+  approved-content reads, denied writes and a 2,000-item review count.
+- The integrated native PostgreSQL 18 runner passed **all 166 migrations** plus
+  school, teacher, invitation and review-performance/authorization suites.
+  TypeScript and whitespace checks passed; implementation is committed and pushed.
+- `apply-review-rls-migration.mts --check <existing-admin-email>` passed on the
+  linked public-pilot project. The helper rejects target/policy drift and an
+  existing ledger entry, tests the authenticated query under the unchanged
+  eight-second limit, and checks missing-identity denial before committing.
+- The exact targeted `--apply` passed. A separate read verified **one** recorded
+  hotfix migration and **eight** optimized policies. The previously timing-out
+  query ran in **270.857 ms** after deployment (rollback trial: 947.464 ms).
+- This is a **database-only release**. The public Vercel application is still
+  `dpl_G6zc25UMJwHzMixpNi4KAWEsqApc`; zero onboarding migrations are retained.
+  A browser revisit must still establish whether the entire review page now
+  renders. Full onboarding cutover and authenticated UI acceptance remain open.
+- Verification/rehearsal work is in `a23f581`; the public SQL fix is in `56834e5`.
+  Only the rebuildable `.next/cache` was removed to recover local disk space;
+  source files and existing test artifacts were preserved.
+
 ## Release gates
 
 1. Integrate the three agent slices; review all service-role paths and RPC checks.
