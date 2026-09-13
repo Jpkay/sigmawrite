@@ -47,3 +47,19 @@ This migration intentionally precedes `20260914101000_teacher_assignment_boundar
 ## Verification scope
 
 Run the focused Vitest files for school actions and school data shaping, plus the matching native transactional SQL assertions on a disposable local Supabase database. No remote mutations, deployment, full build, or account provisioning are part of this workstream.
+
+### Hosted database smoke test
+
+`scripts/verify-school-onboarding-hosted.mts` is a guarded, rollback-only check for the linked public-pilot production project `pwztnrirtrnicywvdbpz`. It requires an exact command-line confirmation, an exact linked-project ref, and a matching configured Supabase hostname. It verifies all three onboarding migration ledger entries before fixtures run.
+
+The script executes the school, teacher-assignment, and invitation database checks in one transaction whose SQL contains no `COMMIT`. It validates and strips only the existing tests' outer `BEGIN`/`ROLLBACK`, reuses synthetic Auth fixtures with suite-specific `.invalid` addresses, uses bounded native invitation assertions, and imports the maintained native student signup/expiry/full-code tail by stable markers. Fixed UUID-prefix and invitation-code preflight checks fail before fixture creation if a collision exists. Database output is suppressed; successful output contains only the project ref, passed ledger/suite counts, and an explicit statement that browser UI was not verified. A failed or uncertain command reports that its outcome is unconfirmed; it does not claim that a remote rollback was observed.
+
+Run only after the three reviewed migrations have been deployed and recorded:
+
+```bash
+npx tsx scripts/verify-school-onboarding-hosted.mts --confirm-public-pilot=pwztnrirtrnicywvdbpz
+```
+
+`npx tsx scripts/verify-school-onboarding-hosted.mts --check` applies all migrations to a disposable private-socket PostgreSQL cluster, seeds a synthetic three-entry migration ledger, executes the exact composed rollback-only SQL, and checks for fixture residue without contacting Supabase.
+
+Preparing this verifier does not establish that it has been run against the public-pilot production database and does not prove the browser UI.

@@ -48,6 +48,24 @@ send real invitations, rotate real passwords or deploy independently.
   rolled back; no remote migration has been applied at this checkpoint.
 - Owner Chrome Plume tab remains at login. An administrator-authenticated UI
   journey is still required; unit/database tests do not prove that journey.
+- Final frozen application checkpoint (`e1ec056`): **479 files / 2,020 tests
+  passed**, typecheck passed, lint has zero errors / the same 11 existing
+  warnings, and the dependency audit reports zero vulnerabilities.
+- Password recovery now independently verifies Turnstile before account lookup
+  or mail handling when the server secret is configured. Missing/failed token
+  and explicit Supabase-delegation cases are tested.
+- Invitation SQL acceptance includes actual synthetic student signup,
+  enrollment and consent, exactly one consumed use, revoked/expired/full-code
+  rejection without a retained profile, and a teacher code reused by two teachers.
+- Legacy null-home records spanning multiple schools fail closed. Explicit home
+  schools override stale enrollment/class links. Native regression checks and
+  the expanded remote read-only preflight passed; no historical rows were changed.
+- `node --import tsx scripts/verify-school-onboarding-hosted.mts --check` executes
+  the exact composed, rollback-only hosted verifier in disposable PostgreSQL:
+  **3 suites passed**, synthetic migration ledger checked, no fixture residue.
+  It has **not** been executed against the public-pilot database.
+- School management/invitations (`8d90544`), recovery and legacy boundaries
+  (`1c23e8a`), and teacher supervision (`e1ec056`) are committed and pushed.
 
 ## Release gates
 
