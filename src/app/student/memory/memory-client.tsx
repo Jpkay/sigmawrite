@@ -51,14 +51,15 @@ export default function MemoryPage() {
 
   async function next() {
     if (!card || !graded) return;
+    const attemptedAt = new Date();
     setPending(true);
     setError("");
     try {
       if (hasStudentBackend) {
-        const response = await submitRetrievalAttempt({ cardId: card.id, answerText: answer, attemptedAt: new Date().toISOString() });
+        const response = await submitRetrievalAttempt({ cardId: card.id, answerText: answer, attemptedAt: attemptedAt.toISOString() });
         replaceStudentState(response.state);
       } else {
-        recordRetrieval(card.id, graded, Date.now());
+        recordRetrieval(card.id, graded, attemptedAt.getTime());
       }
       track("retrieval_completed", { card_id: card.id, result: graded });
       setAnswer("");

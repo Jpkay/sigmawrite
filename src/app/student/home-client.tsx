@@ -33,7 +33,6 @@ export default function StudentHome({copy,assignments=[]}:{copy:typeof HOME_COPY
 
   useEffect(() => {
     if (!hasStudentBackend || !state.hydrated || (!state.diagnostic && !state.granularDiagnosticReady)) return;
-    setRecommendations(current => current?.key === recommendationKey ? current : null);
     let active = true;
     loadStudentHome({}).then((home) => {
       if (!active) return;
