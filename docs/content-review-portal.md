@@ -12,7 +12,7 @@ RLS, database workflow functions, and append-only audit entries.
 - `platform_admin` uses `/admin/reviews` for progress, `/admin/reviews/assign`
   for assignment, `/admin/reviews/disagreements` for editorial resolution,
   `/admin/reviews/reviewers` for access, and `/admin/benchmarks` for gold texts.
-  An admin may also participate as one of the three reviewers through `/review`.
+  An admin may also participate as the required reviewer through `/review`.
 
 ## Preparing reviewers
 
@@ -38,9 +38,9 @@ production educators and must not be counted toward human content sign-off.
 
 ## Assigning the pilot
 
-Open `/admin/reviews/assign`, select the principal account and both invited
-reviewers, then use **Sélectionner les 60** and **Auto-attribuer équitablement**.
-Each selected passage is assigned to all three reviewers. Duplicate assignments
+Open `/admin/reviews/assign`, select the principal account and at least one other independent
+reviewer, then use **Sélectionner les 60** and **Auto-attribuer équitablement**.
+Each selected passage is assigned to the selected reviewers. Under the current policy, one favorable review unlocks editorial approval. Remaining reviews continue after publication; an additional review updates agreement metrics and notifies the editor without resetting publication. Explicit requests for further evidence retain their higher threshold. Duplicate assignments
 are rejected by a unique database constraint, and submitted reviews are retained.
 
 The first immutable review snapshot is created from every candidate in
@@ -167,3 +167,21 @@ Language coaching is separate from correctness, score, mastery and XP. After a c
 Migration 0132 stores per-attempt coaching results with service-only access, student ownership checked by the action, and deletion cascading from attempts/students. Cached results prevent a repeated help request from producing a new rewrite each time. Coaching data is included in student exports. No coaching is added to the diagnostic flow. The semantic grader explicitly checks actor/action attribution, including the distinction between those digitising a document and researchers later using it.
 
 Live smoke checks: `DOTENV_CONFIG_PATH=.env.local npx tsx scripts/verify-reading-coaching.mts --live`; the grading corpus also includes actor-swapping counterexamples.
+
+## Historical two-review policy rollout — 9 September 2026 (superseded)
+
+Migration `0134_two_review_publication_policy.sql` was tested in a rolled-back staging transaction, then applied and recorded in the migration ledger of `sigmawrite-staging` (`pwztnrirtrnicywvdbpz`), the database holding the review queue. At that checkpoint, all 60 active passage versions required two reviews: six were `review_complete`, 54 were `in_review`, and all 150 outstanding assignments were preserved. No passage was editorially approved or published by that migration.
+
+This paragraph records the state at that date. Migration `0138` later changed the default to one favorable review without deleting the `0134` history or explicit per-version escalations.
+
+Verification: 16 behavioral database assertions, 781 unit tests, TypeScript, ESLint, and the production Webpack build pass. Assignment-screen defaults and progress wording are updated in source and take effect on the next application deployment.
+
+## Selective automation — 9 September 2026
+
+The one-review threshold applies to the manual editorial queue. It is not a requirement for every generated passage. The implemented automated route uses independent QA, exception review and a 5% sample, with separate automated provenance and bounded learner exposure. Its database migration is applied with publication disabled; the application deployment and successful in-scope calibration remain pending. See [selective passage automation](./selective-passage-automation.md) for the exact state and rollout steps.
+
+Deployment follow-up: the selective-review workflow is live on https://app.trouvetaplume.com with QA v2 in shadow mode, three generated reference samples, 791 passing tests and zero audited dependency vulnerabilities. Automatic publication is still disabled pending successful calibration. See [release report](./release-selective-review-2026-09-09.md).
+
+## One-review policy — 10 September 2026
+
+One favorable human review per reference or manual passage now suffices for editorial approval and calibration eligibility. Additional reviews continue in parallel. Explicit editorial escalations remain possible. Automated publication still requires successful calibration; this policy does not require reviewing every generated text. Migration: 0138_one_review_publication_policy.sql.

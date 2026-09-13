@@ -1,0 +1,41 @@
+# Passage automation and review cleanup
+
+Updated: 2026-09-13
+
+## Readiness checkpoint
+
+The application batch is ready for integration behind one forward-database prerequisite: apply and verify migration `20260913111000_passage_automation_fail_closed.sql` before deploying the tightened worker. Migrations `0134` through `0139` are already in the live ledger and remain historical; none of them is relied on to rerun. No live policy, reviewer, calibration, candidate, publication or learner row was mutated during this cleanup.
+
+The read-only live checkpoint supplied by the coordinator reports an enabled policy with pipeline `selective-passage-3`, evaluator `openai/gpt-5.4-mini`, calibration `000125a6-dc2a-41a4-8ff8-9700f6c5b923`, 5% sampling, a 10% cohort and a 100-session cap. Migration `20260913111000` preserves those values. It replaces only the policy guard and automated-publication authorization function so that calibration, model/version, bounds, reviewer access and exact candidate evidence are checked again at publication time.
+
+The live reviewer preflight reports three configured reviewer IDs, of which two reviewer profiles are active with `invite_status = 'active'`. Historical migration `0135` required at least two configured active/active-invite reviewers; migration `0138` intentionally relaxed that guard to at least one active configured reviewer when the application moved to the one-review default. Requiring every configured reviewer to remain active would therefore be a newly restrictive contract and would halt the currently enabled policy. The forward guard instead requires distinct configured IDs and at least one configured reviewer who is both active and has an active invite. The reported live 3-configured/2-active state passes without removing, reactivating or changing any reviewer or policy row.
+
+## Findings closed
+
+- Current guidance now states the `0138` one-favorable-review default. The `0134` two-review rule remains documented and tested as historical behavior and as an available explicit per-version escalation.
+- Enabled automation fails before candidate processing when private evaluator/grammar configuration is missing, when the configured evaluator differs from policy, or when bounded settings/reviewer identifiers drift.
+- Database authorization now rechecks enabled V3 calibration and all bounded-pilot invariants at publication time. Publication fails closed if no configured reviewer remains both active and active-invited, even if policy activation happened earlier; inactive extra configured reviewers do not stop the policy while another configured reviewer remains eligible.
+- The calibrated MCQ path requires at least three distinct choices and rejects malformed or aliased self-evaluator provenance.
+- The protected job route rejects unauthorized requests before claiming a job. The route remains behind the existing `CRON_SECRET` bearer check and service-role job/publication RPC boundaries.
+- Content reviewers must still be active to open the catalogue, receive only candidates represented by review versions visible through reviewer RLS, and are not shown admin generation/edit/moderation/rejection controls. Admins cannot edit or directly reject a candidate after an immutable review version exists; they follow the editorial workflow.
+- The `contentIds` hunk in `src/lib/actions/student.ts` was reviewed in isolation. Adding `auto_approved` matches the RLS-controlled library lookup and session-cap trigger: a new learner can resolve an automated version only while cohort/cap policy allows it, while an existing session remains resumable. No other `student.ts` hunk belongs to this workstream.
+- Historical pgTAP files now assert the final schema used by `supabase test db`: current one-review defaults and V3 policy, with a deliberate two-review escalation case. The new `20260913111000` test covers bounded updates and post-activation reviewer drift.
+
+## Verification
+
+- `npx vitest run src/app/api/jobs/passage-automation/route.test.ts src/lib/content/automation/policy.test.ts src/lib/content/automation/grammar.test.ts src/lib/launch/content-readiness.test.ts` — PASS, 4 files / 19 tests.
+- `npm run typecheck` — PASS.
+- Focused ESLint over the owned TypeScript/TSX paths — PASS with zero errors. Three automation `.mts` scripts are ignored by the repository ESLint pattern and produced warnings only.
+- Coordinator-reported full suite before the final route-test fix: 1,960 tests passed; the only failing module was `route.test.ts`. The test now uses `vi.hoisted` and passes in the focused run above.
+- Coordinator-reported fresh-schema checkpoint before forward migration `20260913111000`: all 160 migrations applied.
+- `sh scripts/testing/granular-full-schema-db.sh` on native PostgreSQL 18 — PASS (exit 0). Applied all 162 current application migrations, then executed the exact changed `0134`, `0135`, `0137` and `20260913111000` SQL test files through the local pgTAP-compatible assertion helper: 47/47 passage automation and review assertions passed. The forward test's enable case mirrors the live reviewer shape with three configured reviewers and two active/active-invite reviewers. The unchanged school-inquiry SQL test also passed 11/11 assertions. All granular persistence/access, complete French graph, material exposure, practice annotation and concurrent-learning checks passed.
+- The native PostgreSQL installation does not provide the pgTAP extension. `scripts/testing/sql/pgtap-lite.sql` supplies only the `plan`, `is`, `ok`, `lives_ok`, `throws_ok` and `finish` forms used by these tests and raises immediately on a failed assertion or plan mismatch. Docker and a global extension install are not required for this bounded verification.
+
+## Integration order and commit groups
+
+1. **Review policy and portal** — `src/app/admin/content/review/page.tsx`, `src/app/admin/content/review/review-client.tsx`, `src/app/admin/reviews/assign/page.tsx`, `src/app/admin/reviews/assign/assignment-manager.tsx`, `src/app/admin/reviews/page.tsx`, `src/app/admin/reviews/reviewers/page.tsx`, `src/app/admin/reviews/reviewers/reviewer-manager.tsx`, `src/lib/actions/reviews.ts`, `docs/content-review-portal.md`, `docs/implementation-status.md`, `docs/launch-gates.md`.
+2. **Selective automation application path** — `src/lib/content/automation/policy.ts`, `src/lib/content/automation/policy.test.ts`, `src/lib/content/automation/evaluate.ts`, `src/lib/content/automation/grammar.test.ts`, `src/lib/content/automation/worker.ts`, `src/lib/content/publish.ts`, `src/app/api/jobs/passage-automation/route.ts`, `src/app/api/jobs/passage-automation/route.test.ts`, `src/lib/db/content.ts`, `src/lib/launch/content-readiness.ts`, `src/lib/launch/content-readiness.test.ts`, `scripts/calibrate-passage-automation.mts`, `scripts/prepare-passage-calibration-sample.mts`, `scripts/run-passage-shadow.mts`, `docs/selective-passage-automation.md`. Selectively include only the `contentIds` `auto_approved` hunk at `src/lib/actions/student.ts`; preserve all other user-owned hunks in that file. The existing companion generation changes in `src/lib/actions/admin.ts` are outside this workstream and require coordinator ownership when staging.
+3. **Historical schema/tests** — ledger migrations `supabase/migrations/0134_two_review_publication_policy.sql` through `supabase/migrations/0139_passage_moderation_v3.sql` remain historical, plus their pgTAP tests through `supabase/tests/0138_one_review_publication_policy_test.sql`. Stage the final-schema test compatibility edits, but do not modify or reapply the already-live historical migrations.
+4. **Forward fail-closed boundary and native verification** — `supabase/migrations/20260913111000_passage_automation_fail_closed.sql`, `supabase/tests/20260913111000_passage_automation_fail_closed_test.sql`, `scripts/testing/granular-full-schema-db.sh`, and `scripts/testing/sql/pgtap-lite.sql`. Apply `20260913111000`, verify the policy remains enabled with the same calibration/model, three configured reviewer IDs, two active/active-invite reviewers and 5/10/100 bounds, then deploy group 2. No automatic publication needs to be triggered as part of deployment verification.
+
+Do not include coordinator-owned environment examples, `vercel.json`, package files or generated diagnostic artifacts in these groups.
