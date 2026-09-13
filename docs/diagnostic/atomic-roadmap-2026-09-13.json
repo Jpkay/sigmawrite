@@ -302,9 +302,9 @@
         "P3.01"
       ],
       "acceptance": "Record exact visible and pre-delivered material before exposure; rendering and failure tests cover the route.",
-      "status": "validated",
+      "status": "production",
       "owner": "material",
-      "evidence": ["workstreams/material.md", "revision-43-integration-rollout-2026-09-13.json"]
+      "evidence": ["workstreams/material.md", "revision-43-integration-rollout-2026-09-13.json", "cleanup-integration-rollout-2026-09-13.json"]
     },
     {
       "id": "P3.06",
@@ -314,9 +314,9 @@
         "P3.01"
       ],
       "acceptance": "Record exact visible and pre-delivered material before exposure; rendering and failure tests cover the route.",
-      "status": "validated",
+      "status": "production",
       "owner": "material",
-      "evidence": ["workstreams/material.md: 21 tests across six files; committed c55c2a3, application deployment pending."]
+      "evidence": ["workstreams/material.md: 21 tests across six files; committed c55c2a3.", "cleanup-integration-rollout-2026-09-13.json: deployed in8488125; hosted student-owned demo denial verified."]
     },
     {
       "id": "P3.07",
@@ -542,10 +542,11 @@
         "P2.02"
       ],
       "acceptance": "Every trace records source/target skill, graph challenge and item difficulty; same-difficulty graph transitions cannot be reported as easier/harder questions. Deterministic selection stays unchanged.",
-      "status": "validated",
+      "status": "production",
       "owner": "adaptive",
       "evidence": [
-        "workstreams/adaptive.md"
+        "workstreams/adaptive.md",
+        "cleanup-integration-rollout-2026-09-13.json"
       ]
     },
     {
@@ -556,13 +557,21 @@
         "P2.13"
       ],
       "acceptance": "Use explicit authored difficulty tiers where sufficient disjoint pools exist; successes and errors drive verified ascent/descent with confirmation. No fabricated calibration; sparse skills remain explicit. Preserve time budget and cross-domain coverage.",
-      "status": "in_progress",
+      "status": "production",
       "owner": "adaptive",
-      "evidence": []
+      "evidence": ["workstreams/adaptive.md", "8488125: full suite 1,978 tests; exhausted-tier continuation regression included.", "cleanup-integration-rollout-2026-09-13.json"]
     }
   ],
   "releaseRule": "Coordinator integrates only validated changes; candidate verification precedes promotion and public verification. Owner review continues in parallel and is not fabricated.",
   "releases": [
+    {
+      "deploymentId": "dpl_DJzNyM8JrtyFyD6RZ89bYVJtjBAq",
+      "sourceCommit": "8488125",
+      "releaseKey": "french-granular-diagnostic-v43-modal",
+      "status": "production_verified",
+      "evidence": "cleanup-integration-rollout-2026-09-13.json",
+      "scope": "Final integrated app: P2.13/P2.14, P3.05/P3.06, review guards, schools/admin. Candidate/public checks passed. School submissions remain gated on the missing Turnstile server secret. Scope367/544."
+    },
     {
       "deploymentId": "dpl_Gh52yKFBBdcfU3SnSZdzJBrzA25a",
       "sourceCommit": "403b9cb",
@@ -597,6 +606,11 @@
     }
   ],
   "executionNotes": [
+    {
+      "date": "2026-09-13",
+      "task": "P4.04",
+      "finding": "Final source8488125 deployed and public alias verified at dpl_DJzNyM8JrtyFyD6RZ89bYVJtjBAq. Candidate/public diagnostic reload, dictation display, student-owned demo denial, mobile marketing, job401 and admin redirect checks all passed. Main1,978 tests; clean checkout1,968passed/10private-export skips. Source is committed/pushed; agents stopped. One deployment-configuration gate remains: school inquiries need TURNSTILE_SECRET_KEY in Vercel Production; protection was not weakened. See cleanup-integration-rollout-2026-09-13.json."
+    },
     {
       "date": "2026-09-13",
       "task": "P4.04",

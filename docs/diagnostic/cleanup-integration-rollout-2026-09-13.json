@@ -1,0 +1,79 @@
+{
+  "date": "2026-09-13",
+  "applicationSourceCommit": "8488125",
+  "branch": "develop",
+  "deploymentId": "dpl_DJzNyM8JrtyFyD6RZ89bYVJtjBAq",
+  "deploymentUrl": "https://sigmawrite-2x6tn2ysn-jpkays-projects.vercel.app",
+  "publicUrl": "https://app.trouvetaplume.com",
+  "publicAliasVerified": true,
+  "promoted": true,
+  "rollbackDeploymentId": "dpl_Gh52yKFBBdcfU3SnSZdzJBrzA25a",
+  "releaseKey": "french-granular-diagnostic-v43-modal",
+  "releaseId": "b6f62722-c913-4d64-9ffd-59027eefc73b",
+  "bundleChecksum": "sha256:10b4009e59acb78cefe2890d609caec6e83033d9416002be6b027de3a7a102de",
+  "contentEvidence": "revision-43-integration-rollout-2026-09-13.json",
+  "supportedTargets": 367,
+  "fullGraphTargets": 544,
+  "includedWork": [
+    "P2.13 truthful graph/item transition provenance",
+    "P2.14 adjacent authored-tier ascent/descent with confirmation and unrelated-branch continuation",
+    "P3.05 exact dictation display and retry capture",
+    "P3.06 legacy diagnostic and student-owned demo response capture",
+    "Schools marketing and guarded administrative reads",
+    "Review portal and bounded passage-publication revalidation",
+    "Dependency patch updates and reproducible test inputs"
+  ],
+  "verification": {
+    "mainTestFiles": 469,
+    "mainTestsPassed": 1978,
+    "cleanCheckoutTestsPassed": 1968,
+    "cleanCheckoutExportDependentTestsSkipped": 10,
+    "cleanCheckoutTypecheck": true,
+    "cleanCheckoutBuild": true,
+    "lintErrors": 0,
+    "existingLintWarnings": 11,
+    "dependencyVulnerabilities": 0,
+    "freshSchemaMigrations": 162,
+    "reviewSqlAssertions": 47,
+    "schoolSqlAssertions": 11,
+    "persistenceAccessAndConcurrency": true,
+    "candidateAndPublic": {
+      "diagnosticOpening": true,
+      "reloadPreservedQaSessionAndAnswers": true,
+      "dictationCatalogEntries": 8,
+      "dictationCatalogAndInitialPlayerCaptured": true,
+      "demoForbiddenTextCapturedUnderStudentId": true,
+      "homepageAndSchoolsRendered": true,
+      "mobileHorizontalOverflow": false,
+      "unauthenticatedJobStatus": 401,
+      "unauthenticatedAdminRedirect": "/login",
+      "pageErrors": [],
+      "answersSubmitted": 0,
+      "schoolInquiriesSubmitted": 0,
+      "jobsManuallyTriggered": 0
+    }
+  },
+  "database": {
+    "appliedForwardMigrations": ["20260913110000", "20260913111000"],
+    "migrationLedgerRecordedAtomically": true,
+    "existingPolicyUnchangedAndValid": true,
+    "samplePercent": 5,
+    "cohortPercent": 10,
+    "exposureCap": 100,
+    "configuredReviewers": 3,
+    "eligibleReviewers": 2,
+    "completeHistoryMigrationApplied": false
+  },
+  "remainingGates": [
+    "Vercel Production has a Turnstile site key but no matching TURNSTILE_SECRET_KEY; school inquiry submissions remain fail-closed until it is configured and a permitted end-to-end submission is verified.",
+    "Full 544-target scope remains unfinished; eight newly authored discourse targets are drafts, not published coverage.",
+    "Exact hosted cause/modal lesson/check completions, real owner review and real-student observation remain separate pending evidence.",
+    "Complete prior-material history, client-version/offline accounting and transactional legacy capture remain open roadmap gates."
+  ],
+  "limits": [
+    "Browser checks use technical QA accounts and do not establish learner calibration or outcomes.",
+    "Ten private-export-dependent tests passed in the main checkout; their absence in the clean checkout is explicitly reported, not replaced with fabricated exports.",
+    "School inquiry email delivery and authenticated admin operations were not exercised; protected jobs were checked without authorization and never manually run.",
+    "Only disposable dependency/build artifacts created for this session were removed after a disk-full install; source and QA evidence were retained."
+  ]
+}
