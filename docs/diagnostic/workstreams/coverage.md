@@ -56,6 +56,34 @@ Files:
 - `scripts/expand-v3-cause-relation-family.mts`
 - experimental artifact: `tmp/coverage-cause-relation-family.json`
 
+## Revision 42 cause integration
+
+The cause family is wired behind the explicit `--cause-relation-family` option. It requires bank revision 42 and the complete revision-41 refinement chain. Omitting the new option preserves revision 41: the cause expansion and its two lessons are not selected. The option does not add C001 to C003.
+
+The reviewable learning-check registry deliberately emits `draft` activity bindings. The scoped candidate preserves those draft states so candidate generation cannot claim publication. Release preparation and the publisher create a separate immutable envelope in which those same exact bindings and probe IDs have `status: published`; `prepareParallelPublication` then validates the published statuses, target mappings, fresh pools and teaching exposure before the database publisher persists the checksum-bound bundle. This is the existing provisional `parallel_review` release mechanism. It records authorization to serve the content while owner review proceeds; it does not record human content approval.
+
+The frozen revision-41 scoped release has 360 supported assessment and teaching targets with published runtime checks. Draft bindings observed in its preparation artifacts are not a deployed runtime defect. The broader unscoped preparation can contain more ready teaching entries, but only the checksum-bound scoped publication bundle defines what students can receive.
+
+The exact generation and preparation chain for the coordinator is:
+
+```zsh
+npx tsx scripts/expand-v3-cause-relation-family.mts --output=tmp/coverage-r42-cause-relation-family.json
+npx tsx scripts/expand-v3-cause-relation-family.mts --output=tmp/coverage-r42-cause-relation-family.json --check
+shasum -a 256 tmp/coverage-r42-cause-relation-family.json
+cp tmp/coverage-r42-cause-relation-family.json generated/french-v3-cause-relation-family-expansion.json
+R42_FLAGS=(--bank-revision 42 --verb-family-recognition --etre-participle-agreement --question-detail-reading --local-definition-reading --avoir-participle-agreement --causal-reading-genres --cause-relation-family)
+npx tsx scripts/assemble-v3-review-candidate.mts "${R42_FLAGS[@]}"
+npx tsx scripts/build-parallel-review-candidate.mts "${R42_FLAGS[@]}"
+npx tsx scripts/build-scoped-review-candidate.mts "${R42_FLAGS[@]}"
+npx tsx scripts/prepare-scoped-publication.mts "${R42_FLAGS[@]}"
+npx tsx scripts/verify-scoped-command-journey.mts "${R42_FLAGS[@]}"
+node --conditions=react-server --import tsx scripts/publish-scoped-diagnostic.mts export-bank /tmp/french-v3-r42-cause-bank.json "${R42_FLAGS[@]}"
+```
+
+Each of the first four builders must then pass again with `--check`. The cause-specific real-service journey uses `npx tsx scripts/verify-orthography-foundation-journeys.mts --cause-relation-family` after the shared R42 scoped artifacts exist. These commands are recorded for coordinator execution; this workstream did not run shared generators, import a bank, publish a release or activate production.
+
+The frozen draft is expected to retain internal checksum `sha256:ead51a8a216702400f6d59600b8b51e919cb3edd47cb79ca26741c3fe01293de` and raw JSON SHA-256 `adf3621a0d992987f91f0e4ff9d0c423f25b8d88bed80edeb81848731a6aded7`. In-memory assembly with the complete R42 option chain yields 8,052 bank items and checksum `sha256:e698c225c1960e608d7a3460491e5441f3e5f0fec1f5e1698a1779277650377a`. A mismatch must stop the chain for investigation rather than silently create a different immutable revision.
+
 ## Exact registry task status
 
 The shared registry currently records the following exact states:
@@ -80,11 +108,11 @@ The cause tests verify exact registry requirements, pool sufficiency, three nega
 
 ## Integration required from the coordinator
 
-1. After deciding that the cause draft is ready for the review pipeline, place its artifact at the versioned generated path expected by assembly and add `cause-relation-family` to `FRENCH_DRAFT_EXPANSION_SOURCES` in `src/lib/diagnostic/granular/draft-expansion-sources.ts`.
-2. Import `CAUSE_RELATION_TEACHING` into `src/lib/diagnostic/granular/draft-teaching-catalogue.ts` and include its two lessons in `FRENCH_TEACHING_DRAFTS`.
-3. Add an explicit selection flag in `scripts/lib/granular-authoring-selection.ts` if the new source must remain opt-in for the next revision. The default assembly must keep reproducing revision 41 until the coordinator intentionally advances it.
-4. Assemble a review candidate, apply the evidence annotations, allocate pools and verify that C081 retains 6 initial plus 6 learning items and C082 retains 8 initial plus 8 learning items with no repeated assessed sentence.
-5. Run independent teacher review for all questions and both lessons. Record approvals only through the normal review workflow, then run P4.03 publication and deployed-path checks before adding C081 or C082 to production scope.
+1. Generate the cause artifact under `tmp/coverage-*`, verify its internal checksum and raw file checksum, then copy those exact bytes to `generated/french-v3-cause-relation-family-expansion.json`.
+2. Run the complete revision-42 command chain above. Do not add the cause source or lessons to the default catalogues; their explicit option preserves revision-41 reproduction.
+3. Verify that allocation retains seven initial and six learning probes for C081, including the existing eligible sentence probe, and eight initial plus eight learning probes for C082. The two old C082 probes without assessed sentence material must remain retired from allocation.
+4. Verify the scoped candidate keeps exact check bindings as `draft`, while the separately prepared publication envelope contains the same binding IDs and probe IDs as `published`, has no instruction or fresh-check gap, and remains checksum-bound to the `parallel_review` policy.
+5. Publish through the existing locked parallel-review mechanism and verify the deployed cause learning paths. Owner review proceeds independently in parallel; publication must preserve pending review metadata and must not fabricate approvals.
 
 ## Remaining limits
 

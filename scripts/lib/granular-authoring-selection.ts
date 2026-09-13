@@ -1,4 +1,5 @@
 import {CAUSAL_READING_GENRES_TEACHING} from '../../src/lib/diagnostic/granular/causal-reading-genres-teaching';
+import {CAUSE_RELATION_TEACHING} from '../../src/lib/diagnostic/granular/cause-relation-family';
 import {AVOIR_PARTICIPLE_AGREEMENT_TEACHING} from '../../src/lib/diagnostic/granular/avoir-participle-agreement-teaching';
 import {LOCAL_DEFINITION_READING_TEACHING} from '../../src/lib/diagnostic/granular/local-definition-reading-teaching';
 import {QUESTION_DETAIL_READING_TEACHING} from '../../src/lib/diagnostic/granular/question-detail-reading-teaching';
@@ -12,10 +13,10 @@ import {granularBankOptions} from './granular-bank-options';
 export function selectedDraftExpansionSources(args:readonly string[]):readonly string[]{
  const options=granularBankOptions(args);
  if(!options.verbFamilyRecognition&&!options.etreParticipleAgreement)return FRENCH_DRAFT_EXPANSION_SOURCES;
- return [...FRENCH_DRAFT_EXPANSION_SOURCES,...(options.verbFamilyRecognition?['verb-family-recognition-faceted']:[]),...(options.etreParticipleAgreement?['etre-participle-agreement']:[]),...(options.questionDetailReading?['question-detail-reading']:[]),...(options.localDefinitionReading?['local-definition-reading']:[]),...(options.avoirParticipleAgreement?['avoir-participle-agreement']:[]),...(options.causalReadingGenres?['causal-reading-genres']:[])];
+ return [...FRENCH_DRAFT_EXPANSION_SOURCES,...(options.verbFamilyRecognition?['verb-family-recognition-faceted']:[]),...(options.etreParticipleAgreement?['etre-participle-agreement']:[]),...(options.questionDetailReading?['question-detail-reading']:[]),...(options.localDefinitionReading?['local-definition-reading']:[]),...(options.avoirParticipleAgreement?['avoir-participle-agreement']:[]),...(options.causalReadingGenres?['causal-reading-genres']:[]),...(options.causeRelationFamily?['cause-relation-family']:[])];
 }
 export function selectedTeachingDrafts(args:readonly string[]){
  const options=granularBankOptions(args);
  if(!options.verbFamilyRecognition&&!options.etreParticipleAgreement)return FRENCH_TEACHING_DRAFTS;
- return [...FRENCH_TEACHING_DRAFTS.filter(lesson=>!options.localDefinitionReading||lesson.nodeKey!=='deduire_mot_definition_locale'),...(options.verbFamilyRecognition?VERB_FAMILY_RECOGNITION_TEACHING:[]),...(options.etreParticipleAgreement?ETRE_PARTICIPLE_AGREEMENT_TEACHING:[]),...(options.questionDetailReading?QUESTION_DETAIL_READING_TEACHING:[]),...(options.localDefinitionReading?LOCAL_DEFINITION_READING_TEACHING:[]),...(options.avoirParticipleAgreement?AVOIR_PARTICIPLE_AGREEMENT_TEACHING:[]),...(options.causalReadingGenres?CAUSAL_READING_GENRES_TEACHING:[])];
+ return [...FRENCH_TEACHING_DRAFTS.filter(lesson=>!options.localDefinitionReading||lesson.nodeKey!=='deduire_mot_definition_locale'),...(options.verbFamilyRecognition?VERB_FAMILY_RECOGNITION_TEACHING:[]),...(options.etreParticipleAgreement?ETRE_PARTICIPLE_AGREEMENT_TEACHING:[]),...(options.questionDetailReading?QUESTION_DETAIL_READING_TEACHING:[]),...(options.localDefinitionReading?LOCAL_DEFINITION_READING_TEACHING:[]),...(options.avoirParticipleAgreement?AVOIR_PARTICIPLE_AGREEMENT_TEACHING:[]),...(options.causalReadingGenres?CAUSAL_READING_GENRES_TEACHING:[]),...(options.causeRelationFamily?CAUSE_RELATION_TEACHING:[])];
 }

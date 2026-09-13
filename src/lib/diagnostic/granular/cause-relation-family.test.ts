@@ -11,6 +11,8 @@ import { canonicalProbeMetrics } from "./probe-metrics";
 import { isQuestionPoolSufficient } from "./question-pools";
 import { validateTeachingTargets } from "./teaching-content";
 import type { V3Assessment } from "./v3-adapter";
+import { granularBankOptions } from "../../../../scripts/lib/granular-bank-options";
+import { selectedDraftExpansionSources, selectedTeachingDrafts } from "../../../../scripts/lib/granular-authoring-selection";
 
 const read = (path: string) => JSON.parse(readFileSync(path, "utf8"));
 const taxonomyArtifact = read("generated/french-taxonomy-v3.json");
@@ -143,4 +145,14 @@ it("keeps guided material disjoint and leaves teaching and item review pending",
   expect(artifact.claimScope).toBe("sentence_level_recognition_and_controlled_combination");
   const { checksum: recorded, ...content } = artifact;
   expect(checksum(content)).toBe(recorded);
+});
+
+it("selects the cause questions and lessons only through the complete revision 42 option chain", () => {
+  const r41 = ["--bank-revision", "41", "--verb-family-recognition", "--etre-participle-agreement", "--question-detail-reading", "--local-definition-reading", "--avoir-participle-agreement", "--causal-reading-genres"];
+  const r42 = [r41[0], "42", ...r41.slice(2), "--cause-relation-family"];
+  expect(granularBankOptions(r42).causeRelationFamily).toBe(true);
+  expect(selectedDraftExpansionSources(r41)).not.toContain("cause-relation-family");
+  expect(selectedTeachingDrafts(r41)).not.toEqual(expect.arrayContaining([...CAUSE_RELATION_TEACHING]));
+  expect(selectedDraftExpansionSources(r42)).toContain("cause-relation-family");
+  expect(selectedTeachingDrafts(r42)).toEqual(expect.arrayContaining([...CAUSE_RELATION_TEACHING]));
 });

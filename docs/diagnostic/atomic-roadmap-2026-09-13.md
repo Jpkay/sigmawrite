@@ -74,8 +74,8 @@ flowchart LR
 | P5.04 | Collect owner content review in parallel | P5.01 | user | awaiting_real_review |
 | P5.05 | Observe real students and compare teacher judgments | P5.03, P5.01 | user + coordinator | awaiting_real_students |
 | P5.06 | Fix and recheck pilot findings | P5.05 | coordinator | planned |
-| P2.11 | Restore a suitable next activity for the full mixed profile | P2.02 | adaptive | in_progress |
-| P2.12 | Make reserved follow-up checks deliverable for supported skills | P4.03 | adaptive + coordinator | in_progress |
+| P2.11 | Verify next activities using the published full mixed profile | P2.02 | adaptive | validated |
+| P2.12 | Verify candidate-to-published follow-up check lifecycle | P4.03 | adaptive + coordinator | validated |
 
 ## Acceptance criteria
 
@@ -93,8 +93,8 @@ flowchart LR
 - **P2.06** — Both known and weak sides are exercised independently; unresolved targets cannot pass by omission; failures become fixes. Evidence: revision-41-spelling-trace-2026-09-13.json, workstreams/adaptive.md.
 - **P2.07** — Both known and weak sides are exercised independently; unresolved targets cannot pass by omission; failures become fixes. Evidence: revision-41-short-reading-trace-2026-09-13.json, workstreams/adaptive.md.
 - **P2.08** — Both known and weak sides are exercised independently; unresolved targets cannot pass by omission; failures become fixes.
-- **P2.09** — Guided success alone cannot confirm mastery; independent post-lesson evidence can refine the exact target. Evidence: revision-41-learning-refinement-trace-2026-09-13.json.
-- **P2.10** — Fresh profiles finish in 30–40 active minutes, resume correctly, retain separate skill signals and receive suitable activities. Evidence: revision-41-mixed-profile-trace-2026-09-13.json.
+- **P2.09** — Guided success alone cannot confirm mastery; independent post-lesson evidence can refine the exact target. Evidence: published-r41-learning-refinement-trace-2026-09-13.json.
+- **P2.10** — Fresh profiles finish in 30–40 active minutes, resume correctly, retain separate skill signals and receive suitable activities. Evidence: published-r41-mixed-profile-trace-2026-09-13.json.
 - **P3.01** — Each remaining student route/version has a concrete missing-material list. Evidence: workstreams/material.md.
 - **P3.02** — Record exact visible and pre-delivered material before exposure; rendering and failure tests cover the route. Evidence: atomic-roadmap-rollout-2026-09-13.json, workstreams/material.md.
 - **P3.03** — Record exact visible and pre-delivered material before exposure; rendering and failure tests cover the route. Evidence: workstreams/material.md.
@@ -116,8 +116,8 @@ flowchart LR
 - **P5.04** — Actual owner decisions recorded with content version and comments; never substitute automated review.
 - **P5.05** — Document actual use, timing, skill-level disagreements and recommended-lesson suitability.
 - **P5.06** — Each discrepancy has a reproducible case, validated resolution and deployed version.
-- **P2.11** — The unchanged35-minute mixed learner profile receives a deliverable foundational lesson or independent check; do not erase unmet targets or weaken mastery requirements to pass. Evidence: revision-41-mixed-profile-trace-2026-09-13.json.
-- **P2.12** — Trace and fix draft/unavailable independent-check bindings in published skill scope; exact reserved fresh questions are available after guided lessons, with truthful review provenance. Evidence: revision-41-learning-refinement-trace-2026-09-13.json.
+- **P2.11** — Use the runtime-validated published bundle. The full35-minute profile receives deliverable next activities while untested skills remain unknown. Evidence: published-r41-mixed-profile-trace-2026-09-13.json.
+- **P2.12** — Source candidate drafts remain drafts; actual published release has published pool-valid independent checks with truthful parallel-review provenance. Evidence: published-r41-learning-refinement-trace-2026-09-13.json.
 
 ## Remaining content: 184 individually tracked targets
 
@@ -131,7 +131,7 @@ The registry contains 184 targets and 920 target-level tasks. Status counts: awa
 
 - **P3.02** (2026-09-13): Third-help answer save fixed in399a674. Candidate and public checks saved exactly one wrong answer; public record confirms hintsUsed=3 and exact feedback capture.
 - **P4.02** (2026-09-13): 64 draft questions and5 lessons across5 targets prepared; cause family is next provisional release candidate. Drafts are not production coverage.
-- **P2.10** (2026-09-13): Full production selector simulation used61 questions/2100 seconds and sampled25/360 supported targets. It left335 untested and returned no next activity. This is a failed pathway acceptance check; P2.11 and P2.12 track fixes without weakening assessment claims.
+- **P2.10** (2026-09-13): CORRECTION: the no-activity result used a pre-publication candidate with draft bindings. Runtime-validated publishedR41 returns5 independent checks and0 missing bindings. Its unchanged61-question/2100-second simulation samples25/360 skills, leaves335 untested and8/12 declared profile contrasts unmet. No runtime publication/planner fix is justified by the candidate-stage result.
 
 ## Workstream reports
 

@@ -15,3 +15,10 @@ it('requires a new revision and retains the preceding refinement for agreement a
  expect(granularBankOptions(args)).toEqual({revision:37,verbFamilyRecognition:true,etreParticipleAgreement:true});
  for(const invalid of [['--etre-participle-agreement'],['--bank-revision','36','--verb-family-recognition','--etre-participle-agreement'],['--bank-revision','37','--etre-participle-agreement'],[...args,'--etre-participle-agreement']])expect(()=>granularBankOptions(invalid)).toThrow();
 });
+it('requires revision 42 and the complete preceding chain for cause relations',()=>{
+ const args=['--bank-revision','42','--verb-family-recognition','--etre-participle-agreement','--question-detail-reading','--local-definition-reading','--avoir-participle-agreement','--causal-reading-genres','--cause-relation-family'];
+ expect(granularBankOptions(args)).toEqual({revision:42,verbFamilyRecognition:true,etreParticipleAgreement:true,questionDetailReading:true,localDefinitionReading:true,avoirParticipleAgreement:true,causalReadingGenres:true,causeRelationFamily:true});
+ for(const invalid of [['--cause-relation-family'],args.map(value=>value==='42'?'41':value),args.filter(value=>value!=='--causal-reading-genres'),[...args,'--cause-relation-family']])expect(()=>granularBankOptions(invalid)).toThrow(/Cause relation|Duplicate cause relation/);
+ const r41=args.filter(value=>value!=='--cause-relation-family').map(value=>value==='42'?'41':value);
+ expect(granularBankOptions(r41)).toEqual({revision:41,verbFamilyRecognition:true,etreParticipleAgreement:true,questionDetailReading:true,localDefinitionReading:true,avoirParticipleAgreement:true,causalReadingGenres:true});
+});

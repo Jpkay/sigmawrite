@@ -2,7 +2,8 @@ import {existsSync,readFileSync} from "node:fs";
 import {homedir} from "node:os";
 import {join} from "node:path";
 import {describe,expect,it} from "vitest";
-import type {LearningActivityBinding} from "./activity-plan";
+import {planGranularActivities,type LearningActivityBinding} from "./activity-plan";
+import {assessSkills,type Observation} from "./engine";
 import {runLearningRefinementTrace} from "./testing/learning-refinement-trace";
 import type {V3Assessment} from "./v3-adapter";
 
@@ -35,5 +36,24 @@ describe.skipIf(!available)("revision 41 guided learning and independent refinem
   expect(new Set(report.independentCheck.questions.map(step=>step.occasionId))).toEqual(new Set(["learning-day:2026-09-14","learning-day:2026-09-15"]));
   expect(report.independentCheck.nextActivity).toBeNull();
   expect(report.independentCheck.missingActivitySkillIds).toEqual([]);
+ });
+
+ it("keeps the foundational lesson reachable in full scope and models publication-envelope promotion for its check",()=>{
+  const report=run(),skillId=report.skillId;
+  const observations:Observation[]=report.initialDiagnostic.questions.map(question=>{
+   const probe=candidate!.assessment.probes.find(item=>item.id===question.questionId)!;
+   return {itemId:probe.id,skillId:probe.skillId,mode:probe.mode,contextId:probe.contextId,correct:false,guessProbability:probe.guessProbability,
+    activeSeconds:probe.expectedSeconds,unaided:true,occasionId:"synthetic-diagnostic-day",materialReceipt:{presentationId:`full-scope:${probe.id}`,
+     sourceChecksum:candidate!.checksum,historyComplete:true,firstRecordedKeys:probe.materialKeys??[],previouslySeenKeys:[],assessedMaterialKeys:probe.assessedMaterialKeys}};
+  });
+  const results=assessSkills(candidate!.assessment.skills,observations);
+  expect(results.filter(result=>result.skillId!==skillId).every(result=>result.status==="unknown"&&!result.resolved)).toBe(true);
+  expect(planGranularActivities(candidate!.assessment,results,candidate!.activities,5).activities[0]).toMatchObject({
+   skillId,activityId:"022a81f0-29de-5fc4-971c-a2e2240f9955",kind:"instruction",action:"learn"});
+  const publicationEnvelope=candidate!.activities.map(binding=>binding.id==="0695008f-8cca-52d9-8baa-964b80988d54"
+   ?{...binding,status:"published" as const}:binding);
+  const afterTeaching=planGranularActivities(candidate!.assessment,results,publicationEnvelope,5,new Set(["french-v3-teaching:on-om:production"]));
+  expect(afterTeaching.activities[0]).toMatchObject({skillId,activityId:"0695008f-8cca-52d9-8baa-964b80988d54",kind:"independent_check",action:"verify"});
+  expect(assessSkills(candidate!.assessment.skills,observations)).toEqual(results);
  });
 });

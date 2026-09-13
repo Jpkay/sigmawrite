@@ -36,3 +36,9 @@ it("creates a separate immutable bank identity without rewriting items or approv
  expect(bank.bank).toEqual({key:"french-diagnostic-bank-v3",version:"3.0.0"});
  for(const value of [0,-1,1.5,NaN,Infinity,Number.MAX_SAFE_INTEGER+1])expect(()=>assembleDraftBank(bank,taxonomy,[expansion],{revision:value})).toThrow(/positive integer/);
 });
+it("requires the complete prior refinement chain before assembling revision 42 cause content",()=>{
+ const refinements={verbFamilyRecognition:true,etreParticipleAgreement:true,questionDetailReading:true,localDefinitionReading:true,avoirParticipleAgreement:true,causalReadingGenres:true};
+ expect(()=>assembleDraftBank(bank,taxonomy,[expansion],{revision:41,...refinements,causeRelationFamily:true})).toThrow(/revision 42/);
+ expect(()=>assembleDraftBank(bank,taxonomy,[expansion],{revision:42,causeRelationFamily:true})).toThrow(/preceding refinements/);
+ expect(assembleDraftBank(bank,taxonomy,[expansion],{revision:42,...refinements,causeRelationFamily:true}).bank.bank.key).toBe("french-diagnostic-bank-v3-r42");
+});

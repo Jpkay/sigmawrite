@@ -215,7 +215,7 @@
       "status": "in_progress",
       "owner": "adaptive",
       "evidence": [
-        "revision-41-learning-refinement-trace-2026-09-13.json"
+        "published-r41-learning-refinement-trace-2026-09-13.json"
       ]
     },
     {
@@ -236,7 +236,7 @@
       "status": "in_progress",
       "owner": "coordinator",
       "evidence": [
-        "revision-41-mixed-profile-trace-2026-09-13.json"
+        "published-r41-mixed-profile-trace-2026-09-13.json"
       ]
     },
     {
@@ -507,29 +507,29 @@
     {
       "id": "P2.11",
       "priority": 2,
-      "title": "Restore a suitable next activity for the full mixed profile",
+      "title": "Verify next activities using the published full mixed profile",
       "dependsOn": [
         "P2.02"
       ],
-      "acceptance": "The unchanged35-minute mixed learner profile receives a deliverable foundational lesson or independent check; do not erase unmet targets or weaken mastery requirements to pass.",
-      "status": "in_progress",
+      "acceptance": "Use the runtime-validated published bundle. The full35-minute profile receives deliverable next activities while untested skills remain unknown.",
+      "status": "validated",
       "owner": "adaptive",
       "evidence": [
-        "revision-41-mixed-profile-trace-2026-09-13.json"
+        "published-r41-mixed-profile-trace-2026-09-13.json"
       ]
     },
     {
       "id": "P2.12",
       "priority": 2,
-      "title": "Make reserved follow-up checks deliverable for supported skills",
+      "title": "Verify candidate-to-published follow-up check lifecycle",
       "dependsOn": [
         "P4.03"
       ],
-      "acceptance": "Trace and fix draft/unavailable independent-check bindings in published skill scope; exact reserved fresh questions are available after guided lessons, with truthful review provenance.",
-      "status": "in_progress",
+      "acceptance": "Source candidate drafts remain drafts; actual published release has published pool-valid independent checks with truthful parallel-review provenance.",
+      "status": "validated",
       "owner": "adaptive + coordinator",
       "evidence": [
-        "revision-41-learning-refinement-trace-2026-09-13.json"
+        "published-r41-learning-refinement-trace-2026-09-13.json"
       ]
     }
   ],
@@ -567,7 +567,7 @@
     {
       "date": "2026-09-13",
       "task": "P2.10",
-      "finding": "Full production selector simulation used61 questions/2100 seconds and sampled25/360 supported targets. It left335 untested and returned no next activity. This is a failed pathway acceptance check; P2.11 and P2.12 track fixes without weakening assessment claims."
+      "finding": "CORRECTION: the no-activity result used a pre-publication candidate with draft bindings. Runtime-validated publishedR41 returns5 independent checks and0 missing bindings. Its unchanged61-question/2100-second simulation samples25/360 skills, leaves335 untested and8/12 declared profile contrasts unmet. No runtime publication/planner fix is justified by the candidate-stage result."
     }
   ]
 }
