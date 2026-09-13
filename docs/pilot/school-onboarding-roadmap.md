@@ -93,6 +93,35 @@ send real invitations, rotate real passwords or deploy independently.
   revocation, real-widget login, invitation join, recovery and student resume.
   Local SQL fixtures and anonymous HTTP checks do not satisfy those UI requirements.
 
+## Resumed verification — 2026-09-13
+
+This checkpoint supersedes the earlier missing-sign-in notes above.
+
+- The owner's `/admin` dashboard rendered with the Platform Admin role. The
+  administrator sign-in blocker is cleared; do not reset credentials or create
+  a substitute privileged account. The separate review-page failure is not a
+  failed sign-in.
+- A read-only review query under that account's authenticated database context
+  exceeded the live eight-second statement timeout (`57014`, context
+  `app_role` / `is_staff`). Privileged REST and shape checks passed. A SOL High
+  worker is preparing a semantics-preserving policy performance fix, without
+  increasing the timeout or bypassing permissions.
+- The existing candidate remains Ready. The migration preflight passed again.
+- Added `--candidate-preflight=pwztnrirtrnicywvdbpz` to the hosted verifier:
+  only the three named migrations and ledger entries are applied inside the
+  assertion transaction, then all changes roll back. Local `--check` now tests
+  installed and pending schema modes: **6 SQL suites passed**, including schema,
+  ledger and fixture rollback. TypeScript and `git diff --check` passed.
+- The candidate preflight passed on the **public-pilot database**: all **3 SQL
+  suites passed**. A separate read confirmed zero retained onboarding ledger
+  entries, zero synthetic auth accounts, and no retained school-creation RPC.
+  No real accounts or memberships were changed.
+- Chrome inspection subsequently timed out through supported accessibility and
+  DOM interfaces. This does not mean the owner must sign in again; authenticated
+  UI acceptance remains unproven.
+- No public application promotion or permanent onboarding migration occurred
+  at this checkpoint. The coordinated cutover gate remains required.
+
 ## Release gates
 
 1. Integrate the three agent slices; review all service-role paths and RPC checks.

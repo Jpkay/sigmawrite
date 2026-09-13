@@ -16,10 +16,11 @@ const EXPECTED_MIGRATIONS = [
   ["20260914102000", "school_invitations"],
 ] as const;
 const CONFIRMATION = `--confirm-public-pilot=${EXPECTED_PROJECT_REF}`;
+const CANDIDATE_PREFLIGHT = `--candidate-preflight=${EXPECTED_PROJECT_REF}`;
 const repositoryRoot = join(dirname(fileURLToPath(import.meta.url)), "..");
 
 function usage() {
-  return `Usage: npx tsx scripts/verify-school-onboarding-hosted.mts ${CONFIRMATION}\n       npx tsx scripts/verify-school-onboarding-hosted.mts --check`;
+  return `Usage: npx tsx scripts/verify-school-onboarding-hosted.mts ${CONFIRMATION}\n       npx tsx scripts/verify-school-onboarding-hosted.mts ${CANDIDATE_PREFLIGHT}\n       npx tsx scripts/verify-school-onboarding-hosted.mts --check`;
 }
 
 /** Remove exactly one outer transaction without touching nested SQL blocks. */
@@ -88,7 +89,7 @@ function quoted(value: string) {
   return `'${value.replaceAll("'", "''")}'`;
 }
 
-function buildHostedSql() {
+function buildHostedSql(candidatePreflight = false) {
   const schoolTest = readRawTest("supabase/tests/20260914100000_school_self_service_test.sql")
     .replaceAll("@example.invalid", "@school-self-service.example.invalid");
   const assignmentTest = readRawTest("supabase/tests/20260914101000_teacher_assignment_boundaries_test.sql")
@@ -107,6 +108,21 @@ set local statement_timeout = '120s';
 set local search_path = public;
 select pg_advisory_xact_lock(hashtext('plume-school-hosted-smoke'));
 create temporary table hosted_school_verification_suites(name text primary key);
+
+${candidatePreflight ? `
+-- Rehearse the exact pending release and all assertions atomically. Even the
+-- migration ledger entries disappear at the final ROLLBACK.
+do $pending$ begin
+  if exists(select 1 from supabase_migrations.schema_migrations
+    where version in (${EXPECTED_MIGRATIONS.map(([version]) => quoted(version)).join(",")})) then
+    raise exception 'candidate_migration_already_applied';
+  end if;
+end $pending$;
+${EXPECTED_MIGRATIONS.map(([version, name]) => {
+  const migration = readFileSync(join(repositoryRoot, `supabase/migrations/${version}_${name}.sql`), "utf8");
+  return `${migration}\ninsert into supabase_migrations.schema_migrations(version,name,statements) values (${quoted(version)},${quoted(name)},array[${quoted(migration)}]);`;
+}).join("\n")}
+` : ""}
 
 do $ledger$ begin
   if (
@@ -300,7 +316,7 @@ function runSilently(command: string, args: string[], label: string) {
   if (result.error || result.status !== 0) throw new Error(`${label} failed; command output was suppressed.`);
 }
 
-function verifyInDisposablePostgres(sql: string) {
+function verifyInDisposablePostgres(sql: string, candidatePreflight = false) {
   const pgBin = process.env.PLUME_SCHOOL_PG_BIN ?? "/opt/homebrew/opt/postgresql@18/bin";
   for (const executable of ["initdb", "pg_ctl", "psql"]) {
     if (!existsSync(join(pgBin, executable))) {
@@ -329,6 +345,7 @@ function verifyInDisposablePostgres(sql: string) {
       .filter((name) => name.endsWith(".sql"))
       .sort();
     for (const migration of migrations) {
+      if (candidatePreflight && EXPECTED_MIGRATIONS.some(([version, name]) => migration === `${version}_${name}.sql`)) continue;
       runSilently(join(pgBin, "psql"), [...psql, "-f", join(repositoryRoot, "supabase/migrations", migration)], `Migration ${migration}`);
     }
 
@@ -338,14 +355,15 @@ function verifyInDisposablePostgres(sql: string) {
     runSilently(join(pgBin, "psql"), [...psql, "-c", `
       create schema if not exists supabase_migrations;
       create table supabase_migrations.schema_migrations(version text primary key,name text not null,statements text[]);
-      insert into supabase_migrations.schema_migrations(version,name,statements) values ${ledgerRows};
+      ${candidatePreflight ? "" : `insert into supabase_migrations.schema_migrations(version,name,statements) values ${ledgerRows};`}
     `], "Synthetic migration ledger setup");
 
     writeFileSync(sqlPath, sql, { encoding: "utf8", mode: 0o600 });
     runSilently(join(pgBin, "psql"), [...psql, "-f", sqlPath], "Composed rollback verification");
     runSilently(join(pgBin, "psql"), [...psql, "-c", `
       do $$ begin
-        assert (select count(*) from supabase_migrations.schema_migrations)=${EXPECTED_MIGRATIONS.length};
+        assert (select count(*) from supabase_migrations.schema_migrations)=${candidatePreflight ? 0 : EXPECTED_MIGRATIONS.length};
+        ${candidatePreflight ? "assert to_regprocedure('public.create_school_with_organization(text,uuid,text,text,text,text)') is null;" : ""}
         assert not exists(select 1 from public.organizations where id::text like '91400000-%');
         assert not exists(select 1 from public.schools where id::text like any(array['91400000-%','14100000-%','14200000-%']));
         assert not exists(select 1 from auth.users where id::text like any(array['91400000-%','14100000-%','14200000-%']));
@@ -366,15 +384,18 @@ function main() {
     return;
   }
   if (argument === "--check") {
-    const sql = buildHostedSql();
-    if (!sql.startsWith("begin;") || !sql.trimEnd().endsWith("rollback;") || /\bcommit\b/i.test(sql) || /create\s+extension[^;]*pgtap/i.test(sql)) {
-      throw new Error("Hosted SQL composition is not one pgTAP-free rollback transaction.");
+    for (const candidatePreflight of [false, true]) {
+      const sql = buildHostedSql(candidatePreflight);
+      if (!sql.startsWith("begin;") || !sql.trimEnd().endsWith("rollback;") || /\bcommit\b/i.test(sql) || /create\s+extension[^;]*pgtap/i.test(sql)) {
+        throw new Error("Hosted SQL composition is not one pgTAP-free rollback transaction.");
+      }
+      verifyInDisposablePostgres(sql, candidatePreflight);
     }
-    verifyInDisposablePostgres(sql);
-    console.log(JSON.stringify({ localDisposableSqlSuitesPassed: 3, syntheticMigrationLedgerEntries: 3, remoteExecuted: false }));
+    console.log(JSON.stringify({ localDisposableSqlSuitesPassed: 6, candidateMigrationRollbackVerified: true, remoteExecuted: false }));
     return;
   }
-  if (argument !== CONFIRMATION) throw new Error(`Explicit public-pilot production confirmation required. ${usage()}`);
+  if (argument !== CONFIRMATION && argument !== CANDIDATE_PREFLIGHT) throw new Error(`Explicit public-pilot production confirmation required. ${usage()}`);
+  const candidatePreflight = argument === CANDIDATE_PREFLIGHT;
 
   config({ path: join(repositoryRoot, ".env.local"), quiet: true });
   let linkedProject = "";
@@ -400,7 +421,11 @@ function main() {
   const temporaryDirectory = mkdtempSync(join(tmpdir(), "plume-school-hosted-"));
   const sqlPath = join(temporaryDirectory, "verification.sql");
   try {
-    writeFileSync(sqlPath, buildHostedSql(), { encoding: "utf8", mode: 0o600 });
+    const sql = buildHostedSql(candidatePreflight);
+    if (!sql.startsWith("begin;") || !sql.trimEnd().endsWith("rollback;") || /\bcommit\b/i.test(sql)) {
+      throw new Error("Hosted verification must be one rollback-only transaction.");
+    }
+    writeFileSync(sqlPath, sql, { encoding: "utf8", mode: 0o600 });
     const result = spawnSync(
       "supabase",
       ["db", "query", "--linked", "--file", sqlPath, "--output-format", "json", "--log-level", "error"],
@@ -415,6 +440,8 @@ function main() {
 
   console.log(JSON.stringify({
     projectRef: EXPECTED_PROJECT_REF,
+    candidatePreflight,
+    migrationsPersisted: false,
     migrationLedgerEntriesVerified: EXPECTED_MIGRATIONS.length,
     rollbackOnlySqlSuitesPassed: 3,
     browserUiVerified: false,
