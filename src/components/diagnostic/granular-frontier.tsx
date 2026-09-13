@@ -1,4 +1,5 @@
 "use client";
+import {SkillEvidenceResults} from "./skill-evidence-results";
 import {FRONTIER_COPY as copy,frontierCountText,frontierAnswerText,frontierDurationText,frontierCoverageText,frontierNodeStatus,frontierPrerequisiteText} from "@/lib/diagnostic/granular/frontier-copy";
 import {useState} from 'react';
 import Link from 'next/link';
@@ -25,7 +26,7 @@ export function GranularFrontier({data,title=copy.title}:{data:GranularFrontierV
   </div>
   <p role="status" className="mb-3 text-sm text-muted-foreground">{frontierCountText(visible.length)}</p>
   <div className="space-y-3">{visible.map(node=><details key={node.id} open={focused===node.id||undefined} className="rounded-lg border border-border p-4"><summary className="cursor-pointer"><span className="font-semibold">{node.labelFr}</span><span className="mt-1 block text-sm text-muted-foreground">{frontierNodeStatus(node)}</span></summary>
-   <div className="mt-4 space-y-3"><p className="text-sm">{frontierAnswerText(node.result.modes.reduce((total,mode)=>total+mode.distinctItems,0))}</p><SkillFeatureResults result={node.result}/>
+   <div className="mt-4 space-y-3"><p className="text-sm">{frontierAnswerText(node.result.modes.reduce((total,mode)=>total+mode.distinctItems,0))}</p><SkillEvidenceResults result={node.result}/><SkillFeatureResults result={node.result}/>
     {node.prerequisites.length>0&&<div><h3 className="font-medium">{copy.prerequisites}</h3><ul className="mt-2 space-y-2">{node.prerequisites.map(id=>{const base=byId.get(id);return base?<li key={id}><button className="text-left underline" onClick={()=>show(id)}>{frontierPrerequisiteText(base)}</button></li>:null;})}</ul></div>}
    </div>
   </details>)}</div>
