@@ -37,7 +37,9 @@ function prerequisiteHistory(skills:readonly V3Assessment["skills"][number][],ta
   const count=Math.max(requirementCount(skill,mode),featureMinimum,3);
   const contexts=Math.max(rule?.minimumContexts??DEFAULT_POLICY.minimumContextsPerMode,...(rule?.featureRequirements??[]).map(feature=>feature.minimumContexts),1);
   return Array.from({length:count},(_,index)=>{
-   const materialKey=`sentence:sha256:${(index+1).toString(16).padStart(64,"0")}`;
+   const hash=(index+1).toString(16).padStart(64,"0");
+   const materialKeys=[...(rule?.novelWordsRequired?[`word:sha256:${hash}`]:[]),...(rule?.novelSentencesRequired?[`sentence:sha256:${hash}`]:[])];
+   if(!materialKeys.length)materialKeys.push(`sentence:sha256:${hash}`);
    return {itemId:`synthetic-prerequisite:${skill.id}:${mode}:${index}`,skillId:skill.id,mode,
     contextId:`synthetic-prerequisite-context:${index%contexts}`,correct:true,guessProbability:.01,activeSeconds:0,
     unaided:true,occasionId:`synthetic-prior-day-${index%Math.max(rule?.minimumOccasions??2,2)}`,
@@ -45,7 +47,7 @@ function prerequisiteHistory(skills:readonly V3Assessment["skills"][number][],ta
     textualSupportAssessed:rule?.textualSupportRequired===true,negativeExampleAssessed:rule?.negativeExamplesRequired===true,
     contrastingErrorKeys:Array.from({length:rule?.minimumContrastingErrors??0},(_,error)=>`synthetic-prerequisite-error:${error}`),
     materialReceipt:{presentationId:`synthetic-prerequisite:${skill.id}:${index}`,sourceChecksum:"synthetic-prerequisite",
-     historyComplete:true,firstRecordedKeys:[materialKey],previouslySeenKeys:[],assessedMaterialKeys:[materialKey]}} satisfies Observation;
+     historyComplete:true,firstRecordedKeys:materialKeys,previouslySeenKeys:[],assessedMaterialKeys:materialKeys}} satisfies Observation;
   });
  }));
 }
