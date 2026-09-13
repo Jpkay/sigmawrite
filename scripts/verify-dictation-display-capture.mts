@@ -59,9 +59,21 @@ try {
   assert.ok(session.data.some(row => expected.every(text => row.text_fragments.includes(text))));
   assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth), true);
   assert.equal(await submittedCount(), before);
+  let forbiddenDemoCaptured = false;
+  if (process.env.PLUME_VERIFY_LEGACY_FORBIDDEN === 'true') {
+    const denied = await page.goto(base + '/student/diagnostic/demo-review', {waitUntil: 'domcontentloaded'});
+    assert.equal(denied?.status(), 403);
+    const text = await page.locator('body').innerText();
+    assert.equal(text.trim(), 'Cette démonstration est accessible avec le compte doves.demo.');
+    const journal = await db.from('student_material_delivery_journal').select('text_fragments').eq('student_id', qa.studentId)
+      .eq('boundary', 'legacy:diagnostic-demo-review-forbidden');
+    if (journal.error) throw journal.error;
+    assert.ok(journal.data.some(row => row.text_fragments.includes(text.trim())));
+    forbiddenDemoCaptured = true;
+  }
   assert.deepEqual(errors, []);
   const report = {base, catalogTitles: titles.length, catalogDisplayCaptured: true, sessionDisplayCaptured: true, dictationPath: path,
-    answersSubmitted: 0, submittedCountUnchanged: true, mobileOverflow: false, pageErrors: errors,
+    answersSubmitted: 0, submittedCountUnchanged: true, mobileOverflow: false, forbiddenDemoCaptured, pageErrors: errors,
     limits: 'Catalog and initial player display on technical QA. One unsubmitted attempt may be created. No scoring, justification, playback or complete-history claim.'};
   writeFileSync(required('PLUME_VERIFY_REPORT'), JSON.stringify(report, null, 2) + '\n');
   console.log(JSON.stringify(report));
