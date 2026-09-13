@@ -2,6 +2,20 @@
 
 The objective remains a granular, adaptive diagnostic built on the approved French graph, followed by an appropriate learning pathway. The initial sitting lasts 30–40 active minutes, supports pause/resume, and produces a provisional map. Learning starts immediately and continues to refine unresolved skills. The owner reviews content alongside student use. A technical end-to-end pass is not proof of educational accuracy.
 
+## Active school-onboarding delivery track
+
+The owner-created school/class and many-to-many teacher supervision goal is
+tracked separately in [the school onboarding acceptance ledger](../pilot/school-onboarding-roadmap.md).
+It covers self-service setup, student invitations/recovery, class and direct
+teacher assignments, current granular reports, and access revocation. The owner
+controls real student invitations; technical implementation and verification do
+not require the owner to perform database setup.
+
+The implementation has passed local integration checks, but the deployed
+administrator/teacher/student UI journey and coordinated database/application
+cutover remain open. This track does not claim curriculum completion or replace
+the adaptive-profile, prior-material and content-coverage milestones below.
+
 ## Verified baseline
 
 - Production uses revision 41 and supports 360 of 544 assessment targets. The other 184 are not classified as student weaknesses.

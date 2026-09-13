@@ -59,8 +59,8 @@ The function must:
 
 ## CAPTCHA and consent invariants
 
-- Student signup, adult signup, password login, magic-link request, password recovery, and no-email class join retain their managed Turnstile token requirement when the public site key is configured.
-- `loginWithPassword`, `requestPasswordRecovery`, and `joinClassWithoutEmail` retain independent server verification when `TURNSTILE_SECRET_KEY` is configured. A failed submit resets the client widget so a single-use token is never retried.
+- Student signup, adult signup, password login, magic-link request, password recovery, and no-email class join retain their managed Turnstile token requirement when the public site key is configured. E-mail signup and magic-link requests supply their tokens directly to Supabase.
+- `loginWithPassword`, `requestPasswordRecovery`, and `joinClassWithoutEmail` perform independent server verification before credential, recovery-identifier, or invitation lookup when `TURNSTILE_SECRET_KEY` is configured. A failed submit resets the client widget so a single-use token is never retried.
 - When Supabase native CAPTCHA is deliberately enabled, `SUPABASE_CAPTCHA_ENABLED=true` delegates token consumption to Supabase to avoid consuming one token twice. Hosted verification must use the real automatic widget; it must not disable the site key, fake a token, or set a skip flag just for the check.
 - Class enrollment continues to create school authorization through the database. These forms do not bypass or replace consent records.
 

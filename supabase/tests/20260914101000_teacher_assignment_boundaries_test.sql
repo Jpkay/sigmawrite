@@ -132,4 +132,30 @@ do $$ begin
  exception when insufficient_privilege then assert sqlerrm='forbidden'; end;
 end $$;
 reset role;
+-- Stale links cannot override an explicit home school or make a null-home
+-- legacy record a member of two schools at once.
+insert into public.enrollments(student_id,class_id,status) values
+ ('14100000-0000-0000-0000-000000000024','14100000-0000-0000-0000-000000000011','active'),
+ ('14100000-0000-0000-0000-000000000022','14100000-0000-0000-0000-000000000013','active');
+update public.students set school_id=null where id='14100000-0000-0000-0000-000000000022';
+update public.profiles set school_id=null where id=current_setting('test.teacher2')::uuid;
+insert into public.teacher_classes(teacher_profile_id,class_id) values
+ (current_setting('test.teacher2')::uuid,'14100000-0000-0000-0000-000000000011'),
+ (current_setting('test.teacher2')::uuid,'14100000-0000-0000-0000-000000000013');
+select set_config('request.jwt.claim.role','authenticated',true);
+select set_config('request.jwt.claim.sub','14100000-0000-4000-8000-000000000001',true);
+set local role authenticated;
+do $$ begin
+ assert not public.administers_student('14100000-0000-0000-0000-000000000024'), 'foreign home school overrides stale enrollment';
+ assert not public.can_view_student('14100000-0000-0000-0000-000000000024');
+ assert not public.administers_student('14100000-0000-0000-0000-000000000022'), 'ambiguous legacy student denied';
+ assert not public.profile_in_admin_school(current_setting('test.teacher2')::uuid), 'ambiguous legacy teacher profile denied';
+end $$;
+select set_config('request.jwt.claim.sub','14100000-0000-4000-8000-000000000003',true);
+do $$ begin
+ assert not public.teacher_belongs_to_school(current_setting('test.teacher2')::uuid,'14100000-0000-0000-0000-000000000001');
+ assert not public.teaches_in_school('14100000-0000-0000-0000-000000000002');
+ assert not public.can_view_student('14100000-0000-0000-0000-000000000021');
+end $$;
+reset role;
 rollback;

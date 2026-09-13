@@ -126,6 +126,7 @@ export async function requestPasswordRecovery(input: unknown): Promise<{ message
   if (!parsed.success) throw new Error("Saisissez un e-mail ou un nom d’utilisateur valide.");
   const identifier = parsed.data.identifier.trim().toLowerCase();
   await enforceAuthRateLimit(identifier);
+  await verifyTurnstile(parsed.data.captchaToken);
 
   let email: string | null = null;
   if (identifier.includes("@")) {

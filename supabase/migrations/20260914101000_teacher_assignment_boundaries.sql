@@ -9,7 +9,8 @@ returns boolean language sql stable security definer set search_path = public as
       and (p.school_id = p_school_id or (p.school_id is null and exists (
         select 1 from public.teacher_classes tc join public.classes c on c.id = tc.class_id
         where tc.teacher_profile_id = p.id and c.school_id = p_school_id
-      )))
+      ) and (select count(distinct c.school_id) from public.teacher_classes tc
+        join public.classes c on c.id = tc.class_id where tc.teacher_profile_id = p.id) = 1))
   )
 $$;
 
@@ -20,8 +21,32 @@ returns boolean language sql stable security definer set search_path = public as
       and (s.school_id = p_school_id or (s.school_id is null and exists (
         select 1 from public.enrollments e join public.classes c on c.id = e.class_id
         where e.student_id = s.id and e.status = 'active' and c.school_id = p_school_id
-      )))
+      ) and (select count(distinct c.school_id) from public.enrollments e
+        join public.classes c on c.id = e.class_id where e.student_id = s.id and e.status = 'active') = 1))
   )
+$$;
+
+-- Explicit home schools override stale historical links. Legacy null-home
+-- records are readable only when their active links resolve to one school.
+create or replace function public.administers_student(p_student_id uuid)
+returns boolean language sql stable security definer set search_path = public as $$
+  select public.student_belongs_to_school(p_student_id, public.admin_school_id())
+$$;
+
+create or replace function public.teaches_in_school(p_school_id uuid)
+returns boolean language sql stable security definer set search_path = public as $$
+  select public.teacher_belongs_to_school(public.current_profile_id(), p_school_id)
+    and exists (select 1 from public.teacher_classes tc join public.classes c on c.id = tc.class_id
+      where tc.teacher_profile_id = public.current_profile_id() and c.school_id = p_school_id)
+$$;
+
+create or replace function public.profile_in_admin_school(p_profile_id uuid)
+returns boolean language sql stable security definer set search_path = public as $$
+  select exists (select 1 from public.profiles p where p.id = p_profile_id
+    and public.admin_school_id() is not null and case when p.role = 'student' then
+      exists (select 1 from public.students s where s.profile_id = p.id and public.administers_student(s.id))
+    else p.school_id = public.admin_school_id()
+      or (p.school_id is null and public.teacher_belongs_to_school(p.id, public.admin_school_id())) end)
 $$;
 
 create or replace function public.teaches_student(p_student_id uuid)

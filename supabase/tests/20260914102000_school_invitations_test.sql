@@ -92,6 +92,16 @@ select is(
   (select count(*) from public.profiles where auth_user_id='14200000-0000-4000-8000-000000000007'),
   0::bigint,'The rejected teacher signup leaves no profile'
 );
+do $$
+begin
+  insert into auth.users(id,email,raw_user_meta_data) values
+    ('14200000-0000-4000-8000-000000000009','invite-valid-teacher-two@example.invalid','{"role":"teacher","teacher_code":"TEACH-ACTIVE"}');
+  assert (select role from public.profiles where auth_user_id='14200000-0000-4000-8000-000000000009') = 'teacher',
+    'the active teacher code was not reusable by a second teacher';
+  assert (select school_id from public.profiles where auth_user_id='14200000-0000-4000-8000-000000000009') = '14200000-0000-0000-0000-000000000001'::uuid,
+    'the second teacher was not scoped to the code school';
+end
+$$;
 
 select set_config('request.jwt.claim.role','authenticated',true);
 select set_config('request.jwt.claim.sub','14200000-0000-4000-8000-000000000003',true);
@@ -221,6 +231,79 @@ select ok(
     and not has_table_privilege('authenticated','public.class_join_codes','DELETE'),
   'Authenticated clients can read scoped codes but cannot mutate invitation rows directly'
 );
+
+-- Exercise the real 0126 auth-user trigger contract. The valid class code is
+-- consumed once; every unusable-code insert must roll back its profile too.
+insert into public.classes(id,school_id,name) values
+  ('14200000-0000-0000-0000-000000000013','14200000-0000-0000-0000-000000000001','Revoked-code class'),
+  ('14200000-0000-0000-0000-000000000014','14200000-0000-0000-0000-000000000001','Expired-code class'),
+  ('14200000-0000-0000-0000-000000000015','14200000-0000-0000-0000-000000000001','Full-code class');
+insert into public.class_join_codes(code,class_id,expires_at,max_uses,uses,revoked_at) values
+  ('SW-REVOKED-STUDENT','14200000-0000-0000-0000-000000000013',now()+interval '1 day',5,0,now()),
+  ('SW-EXPIRED-STUDENT','14200000-0000-0000-0000-000000000014',now()-interval '1 second',5,0,null),
+  ('SW-FULL-STUDENT','14200000-0000-0000-0000-000000000015',now()+interval '1 day',1,1,null);
+
+do $$
+declare
+  v_active_code text;
+  v_student_id uuid;
+  v_case record;
+begin
+  select code into strict v_active_code
+  from public.class_join_codes
+  where class_id='14200000-0000-0000-0000-000000000011' and revoked_at is null;
+
+  insert into auth.users(id,email,raw_user_meta_data) values (
+    '14200000-0000-4000-8000-000000000010',
+    'invite-valid-student@example.invalid',
+    jsonb_build_object(
+      'role','student',
+      'display_name','Valid invited student',
+      'username','valid.invited.student',
+      'date_of_birth','2012-05-10',
+      'join_code',v_active_code
+    )
+  );
+
+  select student.id into strict v_student_id
+  from public.students student
+  join public.profiles profile on profile.id=student.profile_id
+  where profile.auth_user_id='14200000-0000-4000-8000-000000000010';
+  assert (select uses from public.class_join_codes where code=v_active_code) = 1,
+    'valid student signup did not consume exactly one code use';
+  assert (select count(*) from public.enrollments where student_id=v_student_id and class_id='14200000-0000-0000-0000-000000000011' and status='active') = 1,
+    'valid student signup did not create exactly one active enrollment';
+  assert (select count(*) from public.consent_records where student_id=v_student_id and consent_type='school' and revoked_at is null) = 1,
+    'valid student signup did not create exactly one school authorization record';
+
+  for v_case in
+    select * from (values
+      ('14200000-0000-4000-8000-000000000011'::uuid,'revoked.student','SW-REVOKED-STUDENT'),
+      ('14200000-0000-4000-8000-000000000012'::uuid,'expired.student','SW-EXPIRED-STUDENT'),
+      ('14200000-0000-4000-8000-000000000013'::uuid,'full.student','SW-FULL-STUDENT')
+    ) as unusable(auth_user_id, username, join_code)
+  loop
+    begin
+      insert into auth.users(id,email,raw_user_meta_data) values (
+        v_case.auth_user_id,
+        v_case.username || '@example.invalid',
+        jsonb_build_object(
+          'role','student',
+          'display_name',v_case.username,
+          'username',v_case.username,
+          'date_of_birth','2012-05-10',
+          'join_code',v_case.join_code
+        )
+      );
+      raise exception 'unusable class code accepted: %', v_case.join_code;
+    exception when invalid_parameter_value then
+      assert sqlerrm = 'invalid_or_expired_join_code';
+    end;
+    assert not exists(select 1 from public.profiles where auth_user_id=v_case.auth_user_id),
+      'failed class-code signup left a profile for ' || v_case.join_code;
+  end loop;
+end
+$$;
 
 select * from finish();
 rollback;

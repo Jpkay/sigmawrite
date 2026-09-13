@@ -7,6 +7,7 @@ const f = vi.hoisted(() => ({
   serviceFrom: vi.fn(),
   createUser: vi.fn(),
   signIn: vi.fn(),
+  resetPassword: vi.fn(),
 }));
 
 vi.mock("server-only", () => ({}));
@@ -14,7 +15,7 @@ vi.mock("next/headers", () => ({ headers: async () => ({ get: f.headerGet }) }))
 vi.mock("@/lib/supabase/server", () => ({
   createClient: async () => ({
     rpc: f.dbRpc,
-    auth: { signInWithPassword: f.signIn },
+    auth: { signInWithPassword: f.signIn, resetPasswordForEmail: f.resetPassword },
   }),
   createServiceClient: () => ({
     rpc: f.serviceRpc,
@@ -23,7 +24,7 @@ vi.mock("@/lib/supabase/server", () => ({
   }),
 }));
 
-import { joinClassWithoutEmail } from "./auth";
+import { joinClassWithoutEmail, requestPasswordRecovery } from "./auth";
 
 const baseInput = {
   code: `SW-${"a".repeat(32)}`,
@@ -35,6 +36,7 @@ const baseInput = {
 };
 const previousSecret = process.env.TURNSTILE_SECRET_KEY;
 const previousSupabaseCaptcha = process.env.SUPABASE_CAPTCHA_ENABLED;
+const previousAppUrl = process.env.NEXT_PUBLIC_APP_URL;
 
 describe("no-email class join", () => {
   beforeEach(() => {
@@ -54,6 +56,7 @@ describe("no-email class join", () => {
     });
     f.createUser.mockResolvedValue({ data: { user: { id: "auth-user" } }, error: null });
     f.signIn.mockResolvedValue({ error: null });
+    f.resetPassword.mockResolvedValue({ error: null });
   });
 
   afterEach(() => {
@@ -61,6 +64,8 @@ describe("no-email class join", () => {
     else process.env.TURNSTILE_SECRET_KEY = previousSecret;
     if (previousSupabaseCaptcha === undefined) delete process.env.SUPABASE_CAPTCHA_ENABLED;
     else process.env.SUPABASE_CAPTCHA_ENABLED = previousSupabaseCaptcha;
+    if (previousAppUrl === undefined) delete process.env.NEXT_PUBLIC_APP_URL;
+    else process.env.NEXT_PUBLIC_APP_URL = previousAppUrl;
     vi.unstubAllGlobals();
   });
 
@@ -87,5 +92,51 @@ describe("no-email class join", () => {
     await expect(joinClassWithoutEmail({ ...baseInput, captchaToken: null })).rejects.toThrow("vérification anti-robot");
     expect(f.serviceRpc).not.toHaveBeenCalled();
     expect(f.createUser).not.toHaveBeenCalled();
+  });
+});
+
+describe("password recovery Turnstile boundary", () => {
+  beforeEach(() => {
+    vi.resetAllMocks();
+    process.env.TURNSTILE_SECRET_KEY = "configured-secret";
+    delete process.env.SUPABASE_CAPTCHA_ENABLED;
+    process.env.NEXT_PUBLIC_APP_URL = "https://plume.example.invalid";
+    f.headerGet.mockReturnValue(null);
+    f.dbRpc.mockResolvedValue({ data: [{ allowed: true }], error: null });
+    f.resetPassword.mockResolvedValue({ error: null });
+  });
+
+  afterEach(() => {
+    if (previousSecret === undefined) delete process.env.TURNSTILE_SECRET_KEY;
+    else process.env.TURNSTILE_SECRET_KEY = previousSecret;
+    if (previousSupabaseCaptcha === undefined) delete process.env.SUPABASE_CAPTCHA_ENABLED;
+    else process.env.SUPABASE_CAPTCHA_ENABLED = previousSupabaseCaptcha;
+    if (previousAppUrl === undefined) delete process.env.NEXT_PUBLIC_APP_URL;
+    else process.env.NEXT_PUBLIC_APP_URL = previousAppUrl;
+    vi.unstubAllGlobals();
+  });
+
+  it("requires a token before resolving a recovery username or sending mail", async () => {
+    await expect(requestPasswordRecovery({ identifier: "eleve.test", captchaToken: null })).rejects.toThrow("vérification anti-robot");
+    expect(f.serviceFrom).not.toHaveBeenCalled();
+    expect(f.resetPassword).not.toHaveBeenCalled();
+  });
+
+  it("stops a failed token before identifier lookup or recovery mail", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue({ json: async () => ({ success: false }) }));
+    await expect(requestPasswordRecovery({ identifier: "eleve.test", captchaToken: "failed-token" })).rejects.toThrow("vérification anti-robot a échoué");
+    expect(f.serviceFrom).not.toHaveBeenCalled();
+    expect(f.resetPassword).not.toHaveBeenCalled();
+  });
+
+  it("delegates one token to Supabase when native CAPTCHA is explicitly enabled", async () => {
+    process.env.SUPABASE_CAPTCHA_ENABLED = "true";
+    const fetchSpy = vi.fn();
+    vi.stubGlobal("fetch", fetchSpy);
+
+    await expect(requestPasswordRecovery({ identifier: "adult@example.invalid", captchaToken: "supabase-token" })).resolves.toMatchObject({ message: expect.any(String) });
+    expect(fetchSpy).not.toHaveBeenCalled();
+    expect(f.serviceFrom).not.toHaveBeenCalled();
+    expect(f.resetPassword).toHaveBeenCalledWith("adult@example.invalid", expect.objectContaining({ captchaToken: "supabase-token" }));
   });
 });

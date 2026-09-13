@@ -27,9 +27,16 @@ const checks = `
     where p.role='teacher' and p.deactivated_at is null and p.school_id is not null and p.school_id is distinct from c.school_id)
     or exists(select 1 from teacher_students ts join profiles p on p.id=ts.teacher_profile_id join students s on s.id=ts.student_id
       where p.role='teacher' and p.deactivated_at is null and (p.school_id is null or s.school_id is null or p.school_id is distinct from s.school_id))
-    or exists(select 1 from teacher_classes tc join enrollments e on e.class_id=tc.class_id join classes c on c.id=tc.class_id join students s on s.id=e.student_id
+    or exists(select 1 from enrollments e join classes c on c.id=e.class_id join students s on s.id=e.student_id
       where e.status='active' and s.school_id is not null and s.school_id is distinct from c.school_id) then
     raise exception 'Existing ambiguous or cross-school assignments require owner review';
+  end if;
+  if exists(select 1 from teacher_classes tc join profiles p on p.id=tc.teacher_profile_id join classes c on c.id=tc.class_id
+      where p.role='teacher' and p.deactivated_at is null and p.school_id is null
+      group by p.id having count(distinct c.school_id) > 1)
+    or exists(select 1 from enrollments e join students s on s.id=e.student_id join classes c on c.id=e.class_id
+      where e.status='active' and s.school_id is null group by s.id having count(distinct c.school_id) > 1) then
+    raise exception 'Ambiguous legacy home school requires owner review';
   end if;
 `;
 const sql = `begin;
