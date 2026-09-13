@@ -166,7 +166,7 @@ export function UserManagementConsole({ data, initialRole = "student", initialSc
 
       <section className="border-t border-border pt-7">
         <h2 className="text-lg font-semibold">Code enseignant de l’école</h2>
-        <p className="mt-1 text-sm text-muted-foreground">Un enseignant qui s’inscrit lui-même doit saisir ce code ; sans code valide, le compte est créé comme parent et peut être promu ici.</p>
+        <p className="mt-1 text-sm text-muted-foreground">Un enseignant qui s’inscrit lui-même doit saisir le code valide de son école. L’administration peut aussi créer son compte ici et lui transmettre des identifiants temporaires.</p>
         <div className="mt-4 grid gap-3 md:grid-cols-2">
           {data.schools.map((school) => <div key={school.id} className="flex flex-wrap items-center justify-between gap-3 rounded-md border border-border p-3 text-sm"><span className="font-medium">{school.name}</span><span className="font-mono">{school.teacherCode ?? "aucun code"}</span><Button type="button" size="sm" variant="outline" disabled={busy} onClick={async () => { setBusy(true); setError(""); try { const result = await rotateSchoolTeacherCode({ schoolId: school.id }); setAssignmentMessage(`Nouveau code pour ${school.name} : ${result.code}`); } catch (caught) { setError(caught instanceof Error ? caught.message : "Rotation impossible."); } finally { setBusy(false); } }}>{school.teacherCode ? "Renouveler" : "Générer"}</Button></div>)}
         </div>
