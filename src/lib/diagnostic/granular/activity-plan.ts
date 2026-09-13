@@ -55,7 +55,13 @@ export function planGranularActivities(assessment:V3Assessment,results:readonly 
   const choices=bindings.filter(b=>matching(skill,b)&&priority.modes.includes(b.mode)&&kinds.includes(b.kind));
   choices.sort((a,b)=>kinds.indexOf(a.kind)-kinds.indexOf(b.kind)||a.id.localeCompare(b.id));
   const activity=choices[0];
-  if(!activity){missingActivitySkillIds.push(skill.id);blockedSkillIds.add(skill.id);unavailableSkillIds.add(skill.id);continue;}
+  if(!activity){
+   missingActivitySkillIds.push(skill.id);blockedSkillIds.add(skill.id);
+   // Missing verification content must remain visible, but a prerequisite with
+   // enough direct evidence for teaching access must not poison its dependents.
+   if(!ready(skill.id))unavailableSkillIds.add(skill.id);
+   continue;
+  }
   if(!activity.href.startsWith("/student/")||activity.href.includes("\\")||/[\r\n]/.test(activity.href))throw Error("Invalid student activity destination");
   const estimatedMinutes=activity.estimatedMinutes??5;
   if(!Number.isFinite(estimatedMinutes)||estimatedMinutes<=0)throw Error("Invalid activity duration");

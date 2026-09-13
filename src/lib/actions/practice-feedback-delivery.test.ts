@@ -13,8 +13,8 @@ beforeEach(()=>{
  vi.resetAllMocks();
  f.from.mockImplementation((table:string)=>{
   const data=table==='practice_learning_sessions'?{id,node_id:id,status:'active',expires_at:'2099-01-01T00:00:00Z'}:table==='competency_items'?{id,response_type:'mcq',validator_type:'exact',validator_config:{},correct_answer:'chevaux',acceptable_answers:[],competency_item_choices:[{id,is_correct:false,feedback_fr:'Au pluriel, écris « chevaux ».'}]}:null;
-  const q:Record<string,unknown>={};for(const method of ['select','eq','in'])q[method]=()=>q;
-  q.single=async()=>({data});q.insert=f.insert;return q;
+  const q:Record<string,unknown>={};for(const method of ['select','eq','in','lt','order'])q[method]=()=>q;
+  q.single=async()=>({data});q.limit=async()=>({data:[]});q.insert=f.insert;return q;
  });
  f.insert.mockImplementation(()=>{throw Error('test storage boundary');});
 });
@@ -31,4 +31,10 @@ it('does not consume the attempt or change mastery if capture fails',async()=>{
 it('does not record feedback for an invalid selected choice',async()=>{
  await expect(submitNodePractice({...input,selectedChoiceId:'22222222-2222-4222-8222-222222222222'})).rejects.toThrow('Choix invalide');
  expect(f.journal).not.toHaveBeenCalled();expect(f.insert).not.toHaveBeenCalled();
+});
+
+it('withholds feedback and the attempt when formatted display capture fails',async()=>{
+ f.journal.mockImplementation(async(_owner,boundary)=>{if(boundary==='legacy:practice-feedback-display')throw Error('display unavailable');});
+ await expect(submitNodePractice(input)).rejects.toThrow('display unavailable');
+ expect(f.insert).not.toHaveBeenCalled();
 });

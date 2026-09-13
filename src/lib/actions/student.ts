@@ -1,4 +1,5 @@
 "use server";
+import {practiceFeedbackDisplay,practiceCompletionDisplay} from "@/lib/diagnostic/granular/practice-player-display";
 import {gradeRepairSubmission} from "@/lib/diagnostic/granular/repair-submission";
 import {inboxDisplay} from "@/lib/diagnostic/granular/inbox-display";
 import {leagueDisplay} from "@/lib/diagnostic/granular/league-display";
@@ -1540,11 +1541,13 @@ export async function completeNodePracticeSession(input: unknown) {
     p_session_id: data.practiceSessionId, p_student_id: studentId, p_completed_at: new Date().toISOString(),
   });
   if (error) throw new Error(error.message);
-  revalidatePath("/student");
-  return result as {
+  const completion = result as {
     completed: boolean; expired: boolean; exercisesCompleted: number; plannedExercises: number;
     firstTryCorrect: number; baseXp: number; bonusXp: number; totalXp: number;
   };
+  await journalStudentPayload(studentId,"legacy:practice-completion",practiceCompletionDisplay(completion));
+  revalidatePath("/student");
+  return completion;
 }
 
 export async function submitNodePractice(input: unknown) {
@@ -1556,7 +1559,7 @@ export async function submitNodePractice(input: unknown) {
     .select("id,node_id,status,expires_at").eq("id", data.practiceSessionId).eq("student_id", studentId).single();
   if (!practiceSession || practiceSession.node_id !== data.nodeId || practiceSession.status !== "active") throw new Error("Cette leçon n’est plus active.");
   if (Date.parse(practiceSession.expires_at as string) <= Date.now()) throw new Error("Les sept minutes sont écoulées.");
-  const { data: item } = await service.from("competency_items").select("id,primary_node_id,prompt_fr,instructions_fr,learner_mode,modality,response_type,validator_type,validator_config,correct_answer,acceptable_answers,competency_nodes(key),competency_item_choices(id,is_correct,feedback_fr)").eq("id", data.itemId).eq("primary_node_id", data.nodeId).in("review_status", ["auto_approved", "human_approved"]).in("validator_type", ["exact", "regex", "conjugator", "agreement", "grammalecte"]).single();
+  const { data: item } = await service.from("competency_items").select("id,primary_node_id,prompt_fr,instructions_fr,learner_mode,modality,response_type,validator_type,validator_config,correct_answer,acceptable_answers,competency_nodes(key,strand),competency_item_choices(id,is_correct,feedback_fr)").eq("id", data.itemId).eq("primary_node_id", data.nodeId).in("review_status", ["auto_approved", "human_approved"]).in("validator_type", ["exact", "regex", "conjugator", "agreement", "grammalecte"]).single();
   if (!item) throw new Error("Exercice introuvable.");
   const choices = item.competency_item_choices as unknown as Array<{ id: string; is_correct: boolean; feedback_fr: string | null }>;
   const { correct, feedbackFr } = await gradePracticeResponse({
@@ -1569,6 +1572,19 @@ export async function submitNodePractice(input: unknown) {
   await journalStudentPayload(studentId, "legacy:practice-feedback", {itemId: item.id, feedbackFr});
   const now = new Date().toISOString();
   const hintsUsed = data.hintsUsed ?? 0;
+  // Failure protocol: a second consecutive miss on this node routes the
+  // student to its weakest prerequisite (graph-guided remediation).
+  let remediation: { nodeId: string; label: string } | null = null;
+  if (!correct) {
+    const { data: previousAttempts } = await service.from("competency_attempts")
+      .select("is_correct").eq("student_id", studentId).eq("node_id", data.nodeId)
+      .eq("context", "practice").lt("attempted_at", now)
+      .order("attempted_at", { ascending: false }).limit(1);
+    if (previousAttempts?.length && previousAttempts[0].is_correct === false) {
+      remediation = await weakestPrerequisite(service, studentId, data.nodeId);
+    }
+  }
+  await journalStudentPayload(studentId,"legacy:practice-feedback-display",{itemId:item.id,...practiceFeedbackDisplay({correct,feedbackFr,remediation,conjugation:(item.competency_nodes as unknown as {strand?:string}|null)?.strand==="conjugaison"})});
   const { data: attempt, error: attemptError } = await service.from("competency_attempts").insert({ student_id: studentId, item_id: item.id, node_id: data.nodeId, practice_session_id: data.practiceSessionId, exercise_position: data.exercisePosition, learner_mode: item.learner_mode, modality: item.modality, answer_text: data.answerText ?? null, selected_choice_id: data.selectedChoiceId ?? null, is_correct: correct, score: correct ? 1 : 0, latency_ms: Math.max(0, Date.now()-Date.parse(data.startedAt)), hints_used: hintsUsed, context: "practice", attempted_at: now }).select("id").single();
   if (attemptError || !attempt) throw new Error(attemptError?.message ?? "La réponse n’a pas pu être enregistrée.");
   const { mastery } = await recordDirectCompetencyEvidence({
@@ -1597,18 +1613,6 @@ export async function submitNodePractice(input: unknown) {
   const{error:scaffoldError}=await service.from("student_competency_estimates").update({scaffold_level:scaffoldState.level,unaided_success_streak:scaffoldState.unaidedSuccessStreak}).eq("student_id",studentId).eq("node_id",data.nodeId);if(scaffoldError)throw new Error(scaffoldError.message);
   await propagateImplicitRepetitions(service, studentId, data.nodeId, correct, now);
   await updateEloRatings(service, studentId, item.id, data.nodeId, correct, now);
-  // Failure protocol: a second consecutive miss on this node routes the
-  // student to its weakest prerequisite (graph-guided remediation).
-  let remediation: { nodeId: string; label: string } | null = null;
-  if (!correct) {
-    const { data: previousAttempts } = await service.from("competency_attempts")
-      .select("is_correct").eq("student_id", studentId).eq("node_id", data.nodeId)
-      .eq("context", "practice").lt("attempted_at", now)
-      .order("attempted_at", { ascending: false }).limit(1);
-    if (previousAttempts?.length && previousAttempts[0].is_correct === false) {
-      remediation = await weakestPrerequisite(service, studentId, data.nodeId);
-    }
-  }
   if (mastery >= 0.85) {
     const { data: node } = await service.from("competency_nodes").select("label_fr").eq("id", data.nodeId).single();
     const { data: card } = await service.from("retrieval_cards").upsert({ student_id: studentId, node_id: data.nodeId, card_type: "competency_node", prompt_fr: `Explique avec tes mots : ${node?.label_fr ?? "cette compétence"}.`, rubric: { node_id: data.nodeId } }, { onConflict: "student_id,node_id" }).select("id").single();

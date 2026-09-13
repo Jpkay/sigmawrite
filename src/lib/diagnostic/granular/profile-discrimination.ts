@@ -14,6 +14,8 @@ export function inspectProfileDiscrimination(
   knownTargetsWithEvidence:knownWithEvidence.map(target=>target.skillId),weakTargetsWithEvidence:weakWithEvidence.map(target=>target.skillId),
   knownTargetsUnresolved:known.filter(target=>!resolved.has(target.skillId)).map(target=>target.skillId),weakTargetsUnresolved:weak.filter(target=>!resolved.has(target.skillId)).map(target=>target.skillId),
   sameBranchBoundaries:boundaries,requireSameBranch,
-  passed:knownWithEvidence.length>0&&weakWithEvidence.length>0&&(!requireSameBranch||boundaries.length>0),
+  passed:knownWithEvidence.length>0&&weakWithEvidence.length>0
+   &&knownWithEvidence.length===known.length&&weakWithEvidence.length===weak.length
+   &&(!requireSameBranch||boundaries.length>0),
  };
 }

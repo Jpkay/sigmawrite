@@ -1,0 +1,482 @@
+{
+  "objective": "Granular approved-French-graph diagnostic and student learning pathway",
+  "updated": "2026-09-13",
+  "model": "gpt-5.6-sol",
+  "reasoningEffort": "high",
+  "statusFlow": [
+    "planned",
+    "assigned",
+    "in_progress",
+    "implemented",
+    "validated",
+    "production"
+  ],
+  "tasks": [
+    {
+      "id": "P1.01",
+      "priority": 1,
+      "title": "Display per-skill successes separately from mastery",
+      "dependsOn": [],
+      "acceptance": "Saved eligible counts match the result and progress views; no mastery-state mutation.",
+      "status": "production",
+      "owner": "coordinator",
+      "evidence": [
+        "skill-evidence-rollout-2026-09-13.json"
+      ]
+    },
+    {
+      "id": "P1.02",
+      "priority": 1,
+      "title": "Preserve answer review and correction history",
+      "dependsOn": [],
+      "acceptance": "Saved diagnostic answers and wrong-answer filter survive reload.",
+      "status": "production",
+      "owner": "coordinator",
+      "evidence": [
+        "revision-41-fresh-recommended-journey-2026-09-12.json"
+      ]
+    },
+    {
+      "id": "P1.03",
+      "priority": 1,
+      "title": "Keep guided practice separate from independent mastery",
+      "dependsOn": [
+        "P1.01"
+      ],
+      "acceptance": "Lost successful response retries exactly once, without changing diagnostic or skill estimates.",
+      "status": "production",
+      "owner": "coordinator",
+      "evidence": [
+        "guided-repair-completion-rollout-2026-09-13.json"
+      ]
+    },
+    {
+      "id": "P1.04",
+      "priority": 1,
+      "title": "Explain assessed, untested and unsupported targets",
+      "dependsOn": [
+        "P1.01"
+      ],
+      "acceptance": "Every state/mode has student-readable wording; unsupported targets are not shown as weaknesses.",
+      "status": "planned",
+      "owner": "coordinator",
+      "evidence": []
+    },
+    {
+      "id": "P1.05",
+      "priority": 1,
+      "title": "Trace a result to its supporting answers",
+      "dependsOn": [
+        "P1.02"
+      ],
+      "acceptance": "A teacher can identify which independent answers support one specific skill, including later checks.",
+      "status": "planned",
+      "owner": "coordinator",
+      "evidence": []
+    },
+    {
+      "id": "P2.01",
+      "priority": 2,
+      "title": "Inventory existing granular profile tests",
+      "dependsOn": [],
+      "acceptance": "Map tests to explicit distinctions and identify missing contrasts.",
+      "status": "validated",
+      "owner": "adaptive",
+      "evidence": [
+        "workstreams/adaptive.md",
+        "revision-41-aller-tense-trace-2026-09-13.json"
+      ]
+    },
+    {
+      "id": "P2.02",
+      "priority": 2,
+      "title": "Implement reproducible profile trace runner",
+      "dependsOn": [
+        "P2.01"
+      ],
+      "acceptance": "Fixed inputs reproduce target, mode, difficulty, time, evidence and next-activity traces.",
+      "status": "validated",
+      "owner": "adaptive",
+      "evidence": [
+        "workstreams/adaptive.md",
+        "revision-41-aller-tense-trace-2026-09-13.json"
+      ]
+    },
+    {
+      "id": "P2.03",
+      "priority": 2,
+      "title": "Verify verb-family and individual-verb contrasts",
+      "dependsOn": [
+        "P2.02"
+      ],
+      "acceptance": "Both known and weak sides are exercised independently; unresolved targets cannot pass by omission; failures become fixes.",
+      "status": "in_progress",
+      "owner": "adaptive",
+      "evidence": []
+    },
+    {
+      "id": "P2.04",
+      "priority": 2,
+      "title": "Verify tense and agreement contrasts",
+      "dependsOn": [
+        "P2.02"
+      ],
+      "acceptance": "Both known and weak sides are exercised independently; unresolved targets cannot pass by omission; failures become fixes.",
+      "status": "in_progress",
+      "owner": "adaptive",
+      "evidence": []
+    },
+    {
+      "id": "P2.05",
+      "priority": 2,
+      "title": "Verify grammar-construction contrasts",
+      "dependsOn": [
+        "P2.02"
+      ],
+      "acceptance": "Both known and weak sides are exercised independently; unresolved targets cannot pass by omission; failures become fixes.",
+      "status": "planned",
+      "owner": "adaptive",
+      "evidence": []
+    },
+    {
+      "id": "P2.06",
+      "priority": 2,
+      "title": "Verify spelling contrasts",
+      "dependsOn": [
+        "P2.02"
+      ],
+      "acceptance": "Both known and weak sides are exercised independently; unresolved targets cannot pass by omission; failures become fixes.",
+      "status": "planned",
+      "owner": "adaptive",
+      "evidence": []
+    },
+    {
+      "id": "P2.07",
+      "priority": 2,
+      "title": "Verify short-reading contrasts",
+      "dependsOn": [
+        "P2.02"
+      ],
+      "acceptance": "Both known and weak sides are exercised independently; unresolved targets cannot pass by omission; failures become fixes.",
+      "status": "planned",
+      "owner": "adaptive",
+      "evidence": []
+    },
+    {
+      "id": "P2.08",
+      "priority": 2,
+      "title": "Verify guessing, skipping and contradictory responses",
+      "dependsOn": [
+        "P2.02"
+      ],
+      "acceptance": "Both known and weak sides are exercised independently; unresolved targets cannot pass by omission; failures become fixes.",
+      "status": "planned",
+      "owner": "adaptive",
+      "evidence": []
+    },
+    {
+      "id": "P2.09",
+      "priority": 2,
+      "title": "Verify learning-driven refinement",
+      "dependsOn": [
+        "P2.02",
+        "P1.03"
+      ],
+      "acceptance": "Guided success alone cannot confirm mastery; independent post-lesson evidence can refine the exact target.",
+      "status": "planned",
+      "owner": "adaptive",
+      "evidence": []
+    },
+    {
+      "id": "P2.10",
+      "priority": 2,
+      "title": "Run contrasting complete deployed journeys",
+      "dependsOn": [
+        "P2.03",
+        "P2.04",
+        "P2.05",
+        "P2.06",
+        "P2.07",
+        "P2.08",
+        "P2.09"
+      ],
+      "acceptance": "Fresh profiles finish in 30\u201340 active minutes, resume correctly, retain separate skill signals and receive suitable activities.",
+      "status": "planned",
+      "owner": "coordinator",
+      "evidence": []
+    },
+    {
+      "id": "P3.01",
+      "priority": 3,
+      "title": "Reconcile current delivery gaps against route inventory",
+      "dependsOn": [],
+      "acceptance": "Each remaining student route/version has a concrete missing-material list.",
+      "status": "validated",
+      "owner": "material",
+      "evidence": [
+        "workstreams/material.md"
+      ]
+    },
+    {
+      "id": "P3.02",
+      "priority": 3,
+      "title": "Complete capture of practice-player material",
+      "dependsOn": [
+        "P3.01"
+      ],
+      "acceptance": "Record exact visible and pre-delivered material before exposure; rendering and failure tests cover the route.",
+      "status": "validated",
+      "owner": "material",
+      "evidence": [
+        "workstreams/material.md"
+      ]
+    },
+    {
+      "id": "P3.03",
+      "priority": 3,
+      "title": "Complete capture of production-player material",
+      "dependsOn": [
+        "P3.01"
+      ],
+      "acceptance": "Record exact visible and pre-delivered material before exposure; rendering and failure tests cover the route.",
+      "status": "planned",
+      "owner": "material",
+      "evidence": []
+    },
+    {
+      "id": "P3.04",
+      "priority": 3,
+      "title": "Complete capture of reading and feedback material",
+      "dependsOn": [
+        "P3.01"
+      ],
+      "acceptance": "Record exact visible and pre-delivered material before exposure; rendering and failure tests cover the route.",
+      "status": "planned",
+      "owner": "material",
+      "evidence": []
+    },
+    {
+      "id": "P3.05",
+      "priority": 3,
+      "title": "Complete capture of dictation material",
+      "dependsOn": [
+        "P3.01"
+      ],
+      "acceptance": "Record exact visible and pre-delivered material before exposure; rendering and failure tests cover the route.",
+      "status": "planned",
+      "owner": "material",
+      "evidence": []
+    },
+    {
+      "id": "P3.06",
+      "priority": 3,
+      "title": "Complete capture of legacy diagnostic and demonstration material",
+      "dependsOn": [
+        "P3.01"
+      ],
+      "acceptance": "Record exact visible and pre-delivered material before exposure; rendering and failure tests cover the route.",
+      "status": "planned",
+      "owner": "material",
+      "evidence": []
+    },
+    {
+      "id": "P3.07",
+      "priority": 3,
+      "title": "Complete client-version and offline accounting",
+      "dependsOn": [
+        "P3.01"
+      ],
+      "acceptance": "Old clients, account switches, offline packs and errors cannot silently establish complete history.",
+      "status": "planned",
+      "owner": "material",
+      "evidence": []
+    },
+    {
+      "id": "P3.08",
+      "priority": 3,
+      "title": "Validate and release atomic covered delivery",
+      "dependsOn": [
+        "P3.02",
+        "P3.03",
+        "P3.04",
+        "P3.05",
+        "P3.06",
+        "P3.07"
+      ],
+      "acceptance": "Native database concurrency/rollback checks and deployed route evidence pass; apply only verified migration.",
+      "status": "planned",
+      "owner": "coordinator",
+      "evidence": []
+    },
+    {
+      "id": "P3.09",
+      "priority": 3,
+      "title": "Verify a fresh covered student baseline",
+      "dependsOn": [
+        "P3.08"
+      ],
+      "acceptance": "Known versus unseen words/sentences have source receipts; interrupted deliveries fail closed; historical students remain incomplete.",
+      "status": "planned",
+      "owner": "coordinator",
+      "evidence": []
+    },
+    {
+      "id": "P3.10",
+      "priority": 3,
+      "title": "Activate complete-history contract",
+      "dependsOn": [
+        "P3.09"
+      ],
+      "acceptance": "Enable only supported versions/routes, then verify fresh independent evidence and rollback behavior.",
+      "status": "planned",
+      "owner": "coordinator",
+      "evidence": []
+    },
+    {
+      "id": "P4.01",
+      "priority": 4,
+      "title": "Inventory all remaining graph targets",
+      "dependsOn": [],
+      "acceptance": "Exactly 184 unsupported approved target IDs have requirements, dependencies and individually tracked work.",
+      "status": "validated",
+      "owner": "coverage",
+      "evidence": [
+        "workstreams/coverage.md"
+      ]
+    },
+    {
+      "id": "P4.02",
+      "priority": 4,
+      "title": "Implement the first missing target family",
+      "dependsOn": [
+        "P4.01"
+      ],
+      "acceptance": "Questions, lessons and independent checks satisfy the approved target contracts; preserve owner review status.",
+      "status": "in_progress",
+      "owner": "coverage",
+      "evidence": []
+    },
+    {
+      "id": "P4.03",
+      "priority": 4,
+      "title": "Validate each content batch before release",
+      "dependsOn": [
+        "P4.01",
+        "P2.02"
+      ],
+      "acceptance": "Bundle checksums, target bindings, difficulty range and teaching/question separation pass.",
+      "status": "planned",
+      "owner": "coverage",
+      "evidence": []
+    },
+    {
+      "id": "P4.04",
+      "priority": 4,
+      "title": "Publish verified content batches",
+      "dependsOn": [
+        "P4.03"
+      ],
+      "acceptance": "Immutable bank and application deploy together; new target is exercised publicly; coverage registry updates.",
+      "status": "planned",
+      "owner": "coordinator",
+      "evidence": []
+    },
+    {
+      "id": "P4.05",
+      "priority": 4,
+      "title": "Verify complete 544-target coverage",
+      "dependsOn": [
+        "P4.04"
+      ],
+      "acceptance": "Every target has released questions, independent checks and a usable pathway; no placeholders counted as coverage.",
+      "status": "planned",
+      "owner": "coordinator",
+      "evidence": []
+    },
+    {
+      "id": "P5.01",
+      "priority": 5,
+      "title": "Prepare teacher review and observation record",
+      "dependsOn": [],
+      "acceptance": "Teacher can record target-level agreement, disagreement, confusing wording and inappropriate activities.",
+      "status": "validated",
+      "owner": "coordinator",
+      "evidence": [
+        "pilot-observation-template-2026-09-13.md"
+      ]
+    },
+    {
+      "id": "P5.02",
+      "priority": 5,
+      "title": "Define and verify the supervised pilot scope",
+      "dependsOn": [
+        "P1.04",
+        "P2.02"
+      ],
+      "acceptance": "State supported targets, provisional evidence limits, data persistence and support workflow; scope is explicit.",
+      "status": "planned",
+      "owner": "coordinator",
+      "evidence": []
+    },
+    {
+      "id": "P5.03",
+      "priority": 5,
+      "title": "Prepare student pilot access and recovery",
+      "dependsOn": [
+        "P5.02"
+      ],
+      "acceptance": "Dedicated accounts enter the correct stage, can resume and open lessons without affecting the demo.",
+      "status": "planned",
+      "owner": "coordinator",
+      "evidence": []
+    },
+    {
+      "id": "P5.04",
+      "priority": 5,
+      "title": "Collect owner content review in parallel",
+      "dependsOn": [
+        "P5.01"
+      ],
+      "acceptance": "Actual owner decisions recorded with content version and comments; never substitute automated review.",
+      "status": "awaiting_real_review",
+      "owner": "user",
+      "evidence": []
+    },
+    {
+      "id": "P5.05",
+      "priority": 5,
+      "title": "Observe real students and compare teacher judgments",
+      "dependsOn": [
+        "P5.03",
+        "P5.01"
+      ],
+      "acceptance": "Document actual use, timing, skill-level disagreements and recommended-lesson suitability.",
+      "status": "awaiting_real_students",
+      "owner": "user + coordinator",
+      "evidence": []
+    },
+    {
+      "id": "P5.06",
+      "priority": 5,
+      "title": "Fix and recheck pilot findings",
+      "dependsOn": [
+        "P5.05"
+      ],
+      "acceptance": "Each discrepancy has a reproducible case, validated resolution and deployed version.",
+      "status": "planned",
+      "owner": "coordinator",
+      "evidence": []
+    }
+  ],
+  "releaseRule": "Coordinator integrates only validated changes; candidate verification precedes promotion and public verification. Owner review continues in parallel and is not fabricated.",
+  "releases": [
+    {
+      "deploymentId": "dpl_H5Y1JqcrviYMhQP9kzNw4a6H5gKU",
+      "sourceCommit": "773d3f7",
+      "releaseKey": "french-granular-diagnostic-v41-writing",
+      "status": "production_verified",
+      "evidence": "skill-evidence-rollout-2026-09-13.json",
+      "scope": "Existing baseline: 360/544 targets; results and progress counts verified on 19 eligible skills."
+    }
+  ]
+}

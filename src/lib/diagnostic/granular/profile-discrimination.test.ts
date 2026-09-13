@@ -5,12 +5,13 @@ it("does not pass from merely visiting targets or from strong evidence outside t
  const sampled=[{skillId:"a-present",withinOccasionResolved:true},{skillId:"a-past",withinOccasionResolved:false},{skillId:"unrelated",withinOccasionResolved:true}];
  const result=inspectProfileDiscrimination(targets,sampled);
  expect(result.passed).toBe(false);expect(result.weakTargetsUnresolved).toEqual(["a-past","b-present"]);
- expect(inspectProfileDiscrimination(targets,[...sampled,{skillId:"b-present",withinOccasionResolved:true}]).passed).toBe(true);
+ expect(inspectProfileDiscrimination(targets,[...sampled,{skillId:"a-past",withinOccasionResolved:true},{skillId:"b-present",withinOccasionResolved:true}]).passed).toBe(true);
 });
 it("requires a same-verb contrast for a tense-boundary claim, and does not hide other unresolved targets",()=>{
  const sampled=[{skillId:"a-present",withinOccasionResolved:true},{skillId:"b-present",withinOccasionResolved:true}];
  expect(inspectProfileDiscrimination(targets,sampled,true).passed).toBe(false);
  const result=inspectProfileDiscrimination(targets,[{skillId:"a-present",withinOccasionResolved:true},{skillId:"a-past",withinOccasionResolved:true}],true);
- expect(result.passed).toBe(true);expect(result.sameBranchBoundaries).toEqual(["verb-a"]);expect(result.weakTargetsUnresolved).toEqual(["b-present"]);
+ expect(result.passed).toBe(false);expect(result.sameBranchBoundaries).toEqual(["verb-a"]);expect(result.weakTargetsUnresolved).toEqual(["b-present"]);
+ expect(inspectProfileDiscrimination(targets,[...sampled,{skillId:"a-past",withinOccasionResolved:true}],true).passed).toBe(true);
  expect(inspectProfileDiscrimination([],[],true).passed).toBe(false);
 });

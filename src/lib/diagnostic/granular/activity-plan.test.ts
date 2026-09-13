@@ -39,6 +39,22 @@ it("allows advancement at readiness without marking the prerequisite mastered",(
  results[0].modes[0].probability=.99;results[0].modes[0].distinctItems=0;
  expect(planGranularActivities(graph,results,bindings).activities.map(a=>a.activityId)).toEqual(["foundation-check"]);
 });
+it("reports a missing prerequisite check without hiding a ready dependent lesson",()=>{
+ const foundation={...skills[0],evidenceRequirements:{production:{minimumItems:3,minimumContexts:2,minimumOccasions:2,minimumAccuracy:.8,unaidedRequired:false}}};
+ const graph={...assessment,skills:[foundation,{...skills[1],prerequisites:["etre"]}]};
+ const observations=graph.skills.flatMap(s=>Array.from({length:3},(_,i)=>({itemId:`${s.id}-${i}`,skillId:s.id,mode:"production" as const,contextId:`context-${i}`,correct:s.id==="etre",guessProbability:.05,activeSeconds:10})));
+ const results=assessSkills(graph.skills,observations);
+ const readyPlan=planGranularActivities(graph,results,[binding("dependent-lesson","avoir","instruction")]);
+ expect(readyPlan.activities.map(activity=>activity.activityId)).toEqual(["dependent-lesson"]);
+ expect(readyPlan.missingActivitySkillIds).toContain("etre");
+ expect(readyPlan.blockedSkillIds).toContain("etre");
+ expect(readyPlan.blockedSkillIds).not.toContain("avoir");
+ expect(results[0]).toMatchObject({status:"uncertain",resolved:false});
+ const insufficient=structuredClone(results);insufficient[0].modes[0].probability=.64;
+ const blockedPlan=planGranularActivities(graph,insufficient,[binding("dependent-lesson","avoir","instruction")]);
+ expect(blockedPlan.activities).toHaveLength(0);
+ expect(blockedPlan.blockedSkillIds).toContain("avoir");
+});
 it("can independently verify an advanced skill even when its prerequisite is weak",()=>{
  const graph={...assessment,skills:[skills[0],{...skills[1],prerequisites:["etre"]}]};
  const evidence=Array.from({length:3},(_,i)=>({itemId:`base-${i}`,skillId:"etre",mode:"production" as const,contextId:`context-${i}`,correct:false,guessProbability:.05,activeSeconds:10}));
