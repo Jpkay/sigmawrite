@@ -1,0 +1,45 @@
+/** Read-only export of the explicitly authorized synthetic demonstration account.
+ * No writes/RPCs; credentials are read locally and never included in the output.
+ * Run: node --import tsx scripts/export-doves-demo-diagnostic.mts
+ */
+import {config} from "dotenv";
+import {createClient} from "@supabase/supabase-js";
+import {mkdirSync,writeFileSync} from "node:fs";
+config({path:".env.local",quiet:true});
+const studentId="c0a033fc-2b2a-480e-b3d1-28d562901fd7";
+const url=process.env.NEXT_PUBLIC_SUPABASE_URL,key=process.env.SUPABASE_SERVICE_ROLE_KEY;
+if(!url||!key)throw Error("Local Supabase configuration is missing");
+const db=createClient(url,key,{auth:{persistSession:false,autoRefreshToken:false}});
+const {data:runs,error:runError}=await db.from("diagnostic_runs").select("id,status,probe_count,started_at,completed_at").eq("student_id",studentId).order("started_at",{ascending:false}).limit(1);
+if(runError)throw Error(`Could not read demonstration run: ${runError.message}`);
+const run=runs?.[0];if(!run)throw Error("No diagnostic run recorded for the demonstration account");
+const {data:responses,error:responseError}=await db.from("diagnostic_responses").select("run_item_id,selected_choice_id,answer_text,is_correct,score,answered_at").eq("student_id",studentId).eq("run_id",run.id).order("answered_at");
+if(responseError)throw Error(`Could not read demonstration responses: ${responseError.message}`);
+const {data:assignments,error:assignmentError}=await db.from("diagnostic_run_items").select("id,item_id,position,section_key,item_snapshot").eq("run_id",run.id).order("position");
+if(assignmentError)throw Error(`Could not read demonstration assignments: ${assignmentError.message}`);
+const answeredIds=new Set((responses??[]).map(r=>r.run_item_id));
+const answered=(assignments??[]).filter(a=>answeredIds.has(a.id));
+const itemIds=[...new Set(answered.map(a=>a.item_id))];
+const itemResult=itemIds.length?await db.from("competency_items").select("id,correct_answer,acceptable_answers,validator_config,competency_item_choices(id,choice_text,is_correct)").in("id",itemIds):{data:[],error:null};
+if(itemResult.error)throw Error(`Could not read demonstration answer keys: ${itemResult.error.message}`);
+const esc=(value:unknown)=>String(value??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#39;");
+const sections:Record<string,string>={reading_comprehension:"Compréhension écrite",grammar:"Grammaire",spelling:"Orthographe",conjugation:"Conjugaison"};
+const cards=answered.map(assignment=>{
+ const response=responses!.find(r=>r.run_item_id===assignment.id)!;
+ const snapshot=assignment.item_snapshot as {promptFr?:string;instructionsFr?:string;nodeLabel?:string;choices?:Array<{id:string;text:string}>};
+ const item=itemResult.data?.find(i=>i.id===assignment.item_id);if(!item)throw Error("Missing answer key for an answered demonstration item");
+ const choices=item.competency_item_choices??[];
+ const selected=response.selected_choice_id?snapshot.choices?.find(c=>c.id===response.selected_choice_id)?.text??choices.find(c=>c.id===response.selected_choice_id)?.choice_text:response.answer_text;
+ const expected=choices.filter(c=>c.is_correct).map(c=>snapshot.choices?.find(s=>s.id===c.id)?.text??c.choice_text);
+ if(!expected.length&&item.correct_answer)expected.push(item.correct_answer);
+ const config=item.validator_config as {readingRubric?:{requiredIdeas?:string[]};explanationFr?:string;rationaleFr?:string}|null;
+ const explanation=[...(config?.readingRubric?.requiredIdeas??[]),...([config?.explanationFr,config?.rationaleFr].filter(Boolean) as string[])];
+ return `<article data-result="${response.is_correct?"correct":"wrong"}"><div class="meta">Question ${assignment.position} · ${esc(sections[assignment.section_key]??assignment.section_key)} <span class="badge ${response.is_correct?"ok":"wrong"}">${response.is_correct?"Correcte":"Incorrecte"}</span></div><h2>${esc(snapshot.nodeLabel)}</h2><div class="question">${esc(snapshot.promptFr)}</div>${snapshot.instructionsFr?`<p class="muted">${esc(snapshot.instructionsFr)}</p>`:""}<div class="answers"><section><h3>Réponse donnée</h3><p>${esc(selected??"Aucune réponse textuelle enregistrée")}</p></section><section><h3>Réponse attendue enregistrée</h3><p>${expected.map(esc).join("<br>")||"Aucune réponse modèle enregistrée"}</p>${item.acceptable_answers?.length?`<details><summary>Autres formulations acceptées</summary><ul>${item.acceptable_answers.map((a:string)=>`<li>${esc(a)}</li>`).join("")}</ul></details>`:""}</section></div>${explanation.length?`<aside><h3>Critères enregistrés</h3><ul>${explanation.map(t=>`<li>${esc(t)}</li>`).join("")}</ul></aside>`:""}</article>`;
+}).join("\n");
+const correct=(responses??[]).filter(r=>r.is_correct).length;
+const html=`<!doctype html><html lang="fr"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Diagnostic de démonstration · doves.demo</title><style>
+*{box-sizing:border-box}body{margin:0;background:#f7f3e7;color:#242137;font:16px/1.6 system-ui,sans-serif}main{max-width:1000px;margin:48px auto;padding:0 24px}h1{font-size:36px;line-height:1.2;margin:10px 0}h2{font-size:20px;margin:12px 0}h3{font-size:14px;margin:0 0 8px}p{margin:0 0 12px}.eyebrow{color:#aa2050;font-weight:700}.muted{color:#6c685d;font-size:14px}.notice{padding:18px;background:#fff1ce;border-radius:12px;margin:24px 0}.stats{display:flex;gap:20px;flex-wrap:wrap;margin:22px 0}.stats b{font-size:24px}article{background:#fffdf7;border:1px solid #e8dfc9;padding:24px;margin:20px 0;border-radius:16px;break-inside:avoid}.meta{font-size:14px;color:#686359}.badge{float:right;padding:2px 12px;border-radius:20px;font-weight:650}.badge.ok{background:#dbefdf;color:#215c35}.badge.wrong{background:#f7e0e4;color:#962a45}.question{white-space:pre-wrap;padding:16px 0}.answers{display:grid;grid-template-columns:1fr 1fr;gap:16px}.answers section{padding:16px;border-radius:10px;background:#f3eee2}.answers p{white-space:pre-wrap}aside{margin-top:16px;border-left:3px solid #c993a6;padding-left:16px}button{padding:10px 16px;margin:0 8px 8px 0;border:1px solid #d5c8af;border-radius:8px;background:#fffdf7;color:inherit;cursor:pointer}button.active{background:#aa2050;color:white;border-color:#aa2050}ul{padding-left:20px}footer{margin:30px 0;color:#6c685d;font-size:13px}@media(max-width:640px){.answers{grid-template-columns:1fr}.badge{float:none;display:inline-block}h1{font-size:28px}}@media print{body{background:white}main{margin:0;max-width:none}.filters{display:none}article{border-color:#aaa}}
+</style><main><div class="eyebrow">Compte de démonstration · doves.demo</div><h1>Voir les réponses du diagnostic</h1><p>Une lecture question par question, avec les réponses correctes et les erreurs.</p><div class="notice"><strong>Démonstration synthétique.</strong> Ce compte a été créé pour présenter le produit. Les réponses ont été données intentionnellement avec des réussites et des erreurs. Elles ne décrivent pas un élève réel.</div><p class="muted">État du diagnostic : ${run.status==="completed"?"terminé":run.status==="running"?"en cours":"interrompu"}. Export du ${esc(new Date().toLocaleString("fr-FR",{timeZone:"Africa/Kigali"}))} (Kigali). Seules les réponses déjà enregistrées sont affichées.</p><div class="stats"><div><b>${responses?.length??0}</b> réponses</div><div><b>${correct}</b> correctes</div><div><b>${(responses?.length??0)-correct}</b> incorrectes</div></div><p class="muted">Ces nombres décrivent cette séance. Ils ne constituent pas un niveau global en français. Les verdicts et les réponses attendues proviennent des données enregistrées ; les formulations libres sont à interpréter avec le professeur.</p><p><a href="https://app.trouvetaplume.com/student/diagnostic">Ouvrir le diagnostic et ses résultats</a> · <a href="https://app.trouvetaplume.com/student">Ouvrir le parcours et les leçons</a></p><div class="filters"><button class="active" data-filter="all">Toutes les réponses</button><button data-filter="wrong">Les erreurs</button><button data-filter="correct">Les réussites</button><button onclick="window.print()">Imprimer / PDF</button></div>${cards||"<p>Aucune réponse enregistrée pour le moment.</p>"}<footer>Document local réservé à la démonstration. Aucun autre compte élève n’est inclus. Régénérer cet export après la fin du diagnostic pour disposer de toutes les réponses.</footer></main><script>document.querySelectorAll('[data-filter]').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('[data-filter]').forEach(b=>b.classList.toggle('active',b===button));document.querySelectorAll('article').forEach(a=>a.hidden=button.dataset.filter!=='all'&&a.dataset.result!==button.dataset.filter)}));</script></html>`;
+mkdirSync("docs/demos",{recursive:true});
+writeFileSync("docs/demos/doves-demo-diagnostic.html",html);
+console.log(JSON.stringify({path:"docs/demos/doves-demo-diagnostic.html",status:run.status,responses:responses?.length??0,correct,incorrect:(responses?.length??0)-correct}));
