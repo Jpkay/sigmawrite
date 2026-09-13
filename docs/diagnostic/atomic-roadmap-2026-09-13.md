@@ -133,6 +133,8 @@ The registry contains 184 targets and 920 target-level tasks. Status counts: awa
 
 ## Current findings
 
+- **P4.04** (2026-09-13): R42 cause release is published and promoted; 362 supported targets. Candidate/public opening and reload verified, runtime export supplied to adaptive lane. R43 modal candidate is next. See revision-42-integration-rollout-2026-09-13.json.
+- **P3.05** (2026-09-13): Dictation capture and saved justification retry committed in 758feb9 after 23 focused tests, lint and TypeScript passed. Awaiting matching application deployment and hosted dictation verification.
 - **P4.04** (2026-09-13): Integration resumed from 3ab81a4 with bounded GPT-5.6 SOL High agents. Local QA artifacts are preserved and excluded from Git/deployment. Fresh schema verification applied all 160 migrations and passed persistence/access/concurrency checks; dependency audit found zero vulnerabilities. R42 publication is being verified through the existing parallel-review contract. Public app remains on R41 until candidate verification and promotion finish. See workstreams/integration-2026-09-13.md.
 - **P3.02** (2026-09-13): Third-help answer save fixed in399a674. Candidate and public checks saved exactly one wrong answer; public record confirms hintsUsed=3 and exact feedback capture.
 - **P4.02** (2026-09-13): 64 draft questions and5 lessons across5 targets prepared; cause family is next provisional release candidate. Drafts are not production coverage.
@@ -148,6 +150,7 @@ The registry contains 184 targets and 920 target-level tasks. Status counts: awa
 
 ## Release log
 
+- `dpl_HnYDpWUnR6CHnj1tK6RnxgNXwYaS` · `af6316c` · production_verified: 362/544 targets. Runtime-validated parallel-review publication; candidate and public diagnostic opening/reload passed. Full hosted cause-learning completion remains pending. Evidence: revision-42-integration-rollout-2026-09-13.json.
 - `dpl_H5Y1JqcrviYMhQP9kzNw4a6H5gKU` · `773d3f7` · production_verified: Existing baseline: 360/544 targets; results and progress counts verified on 19 eligible skills. Evidence: skill-evidence-rollout-2026-09-13.json.
 - `dpl_5Dsg1ZzaYkieT7Kaper26svvvJny` · `399a674` · production_verified: Lesson-routing correction, exact practice display/feedback capture, and third-help save correction; scope remains360/544. Evidence: atomic-roadmap-rollout-2026-09-13.json.
 - New agent work is not deployed until an explicit validated release entry is added.
