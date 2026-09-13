@@ -22,7 +22,7 @@ export default async function AdminLayout({
   return (
     <DashboardShell
       area="Administration"
-      nav={session.role === "school_admin" ? [{ href: "/admin/users", label: "Comptes et accès" }, { href: "/teacher", label: "Établissement" }] : nav}
+      nav={session.role === "school_admin" ? [{ href: "/admin/schools", label: "Établissement" }, { href: "/admin/users", label: "Comptes et accès" }, { href: "/teacher/classes", label: "Classes et suivi" }] : nav}
       user={{ name: session.displayName ?? "Admin", role: session.role, analyticsId: session.id }}
       modeSwitch={<AdminReviewerSwitch reviewerActive={Boolean(reviewerAccess?.active)} />}
     >

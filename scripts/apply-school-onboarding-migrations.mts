@@ -1,4 +1,4 @@
-/** Explicit reviewed migration pair; never pushes unrelated pending migrations. */
+/** Explicit reviewed onboarding migrations; never pushes unrelated pending migrations. */
 import {readFileSync} from 'node:fs';
 import {execFileSync} from 'node:child_process';
 import {config} from 'dotenv';
@@ -10,10 +10,13 @@ const project = readFileSync('supabase/.temp/project-ref', 'utf8').trim();
 if (project !== 'pwztnrirtrnicywvdbpz' || new URL(process.env.NEXT_PUBLIC_SUPABASE_URL!).hostname !== `${project}.supabase.co`) {
   throw Error('Not the reviewed Plume public pilot database.');
 }
-const names = ['20260914100000_school_self_service', '20260914101000_teacher_assignment_boundaries'];
+const names = ['20260914100000_school_self_service', '20260914101000_teacher_assignment_boundaries', '20260914102000_school_invitations'];
 const literal = (value: string) => `'${value.replaceAll("'", "''")}'`;
 const migrations = names.map(name => ({name, version: name.split('_')[0], sql: readFileSync(`supabase/migrations/${name}.sql`, 'utf8')}));
 const checks = `
+  if exists(select 1 from class_join_codes where revoked_at is null group by class_id having count(*) > 1) then
+    raise exception 'Duplicate live invitation codes require owner review';
+  end if;
   if (select count(*) from supabase_migrations.schema_migrations where version in ('0100','0126','20260913110000','20260913111000')) <> 4 then
     raise exception 'Missing reviewed historical prerequisite';
   end if;

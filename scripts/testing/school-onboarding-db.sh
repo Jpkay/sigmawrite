@@ -19,11 +19,18 @@ apply_sql() {
   fi
 }
 apply_sql "$repo_root/scripts/testing/sql/supabase-auth-bootstrap.sql"
+apply_sql "$repo_root/scripts/testing/sql/pgtap-lite.sql"
 count=0
 for migration in "$repo_root"/supabase/migrations/*.sql; do
   apply_sql "$migration"
   count=$((count + 1))
 done
 echo "Applied $count migrations to disposable PostgreSQL (private socket only)."
+sed '/^create extension if not exists pgtap/d' "$repo_root/supabase/tests/20260914100000_school_self_service_test.sql" >"$task_pg/school-test.sql"
+apply_sql "$task_pg/school-test.sql"
+echo "School creation, management and authorization assertions passed."
 apply_sql "$repo_root/supabase/tests/20260914101000_teacher_assignment_boundaries_test.sql"
 echo "Teacher assignment, shared access, revocation, cross-school denial and deactivation assertions passed."
+sed '/^create extension if not exists pgtap/d' "$repo_root/supabase/tests/20260914102000_school_invitations_test.sql" >"$task_pg/invitation-test.sql"
+apply_sql "$task_pg/invitation-test.sql"
+echo "Invitation rotation, expiry and role-boundary assertions passed."

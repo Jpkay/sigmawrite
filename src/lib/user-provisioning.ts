@@ -91,7 +91,9 @@ export async function provisionManagedAccount(input: ProvisionManagedAccountInpu
   const email = input.email?.trim().toLowerCase() || null;
   const authEmail = email ?? internalAuthEmail();
   const temporaryPassword = generateTemporaryPassword();
-  const triggerRole = input.role === "supervisor" || input.role === "school_admin" ? "parent" : input.role;
+  // Managed teachers are promoted explicitly below by the trusted service
+  // boundary; they must not impersonate the public teacher-code signup path.
+  const triggerRole = input.role === "teacher" || input.role === "supervisor" || input.role === "school_admin" ? "parent" : input.role;
   const { data: created, error: authError } = await service.auth.admin.createUser({
     email: authEmail,
     password: temporaryPassword,

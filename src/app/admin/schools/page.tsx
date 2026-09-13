@@ -1,8 +1,12 @@
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { PageHeader } from "@/components/page";
-import { Card, CardContent } from "@/components/ui/card";
+import { SchoolManagementConsole } from "@/components/school-management-console";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { requireRole } from "@/lib/auth";
-import { getSchoolInquiries, getSchoolTree } from "@/lib/db/admin";
+import { getSchoolInquiries } from "@/lib/db/admin";
+import { getSchoolManagementData } from "@/lib/db/schools";
 
 const statusLabels = {
   new: "Nouvelle",
@@ -22,87 +26,52 @@ const needLabels: Record<string, string> = {
 };
 
 export default async function AdminSchoolsPage() {
-  await requireRole(["platform_admin"]);
-  const [orgs, inquiries] = await Promise.all([
-    getSchoolTree(),
-    getSchoolInquiries(),
+  const session = await requireRole(["platform_admin", "school_admin"]);
+  const [data, inquiries] = await Promise.all([
+    getSchoolManagementData(),
+    session.role === "platform_admin" ? getSchoolInquiries() : Promise.resolve([]),
   ]);
 
   return (
     <>
       <PageHeader
-        title="Écoles"
-        description="Demandes entrantes, organisations, écoles et classes."
+        title={session.role === "school_admin" ? "Mon établissement" : "Écoles"}
+        description={session.role === "school_admin"
+          ? "Gérez les classes et les comptes de votre établissement."
+          : "Créez les structures scolaires, leurs classes et leurs accès administrateur."}
+        action={<Button asChild variant="outline" size="sm"><Link href="/admin/users">Comptes et accès <ArrowRight /></Link></Button>}
       />
-      <section className="mb-10">
-        <div className="mb-4 flex items-end justify-between gap-4">
-          <div>
-            <h2 className="text-lg font-semibold">Demandes d’établissement</h2>
-            <p className="mt-1 text-sm text-muted-foreground">Formulaires reçus depuis le site Plume.</p>
+
+      {session.role === "platform_admin" && (
+        <section className="mb-10">
+          <div className="mb-4 flex items-end justify-between gap-4">
+            <div><h2 className="text-lg font-semibold">Demandes d’établissement</h2><p className="mt-1 text-sm text-muted-foreground">Formulaires reçus depuis le site Plume.</p></div>
+            <Badge variant="secondary">{inquiries.length}</Badge>
           </div>
-          <Badge variant="secondary">{inquiries.length}</Badge>
-        </div>
-        {inquiries.length === 0 ? (
-          <p className="border-y border-border py-5 text-sm text-muted-foreground">Aucune demande reçue.</p>
-        ) : (
-          <div className="divide-y divide-border border-y border-border">
-            {inquiries.map((inquiry) => (
-              <article key={inquiry.id} className="grid gap-4 py-5 lg:grid-cols-[minmax(14rem,.8fr)_minmax(18rem,1.2fr)_auto]">
-                <div>
-                  <div className="flex flex-wrap items-center gap-2">
-                    <h3 className="font-semibold">{inquiry.organization_name}</h3>
-                    <Badge variant={inquiry.status === "new" ? "default" : "outline"}>{statusLabels[inquiry.status]}</Badge>
+          {inquiries.length === 0 ? (
+            <p className="border-y border-border py-5 text-sm text-muted-foreground">Aucune demande reçue.</p>
+          ) : (
+            <div className="divide-y divide-border border-y border-border">
+              {inquiries.map((inquiry) => (
+                <article key={inquiry.id} className="grid gap-4 py-5 lg:grid-cols-[minmax(14rem,.8fr)_minmax(18rem,1.2fr)_auto]">
+                  <div>
+                    <div className="flex flex-wrap items-center gap-2"><h3 className="font-semibold">{inquiry.organization_name}</h3><Badge variant={inquiry.status === "new" ? "default" : "outline"}>{statusLabels[inquiry.status]}</Badge></div>
+                    <p className="mt-1 text-sm text-muted-foreground">{inquiry.country} · {inquiry.student_count} élèves{inquiry.teacher_count ? ` · ${inquiry.teacher_count} enseignants` : ""}</p>
                   </div>
-                  <p className="mt-1 text-sm text-muted-foreground">{inquiry.country} · {inquiry.student_count} élèves{inquiry.teacher_count ? ` · ${inquiry.teacher_count} enseignants` : ""}</p>
-                </div>
-                <div className="text-sm">
-                  <p><a className="font-medium text-primary hover:underline" href={`mailto:${inquiry.contact_email}`}>{inquiry.contact_name}</a> · {inquiry.contact_role}</p>
-                  <p className="mt-1 text-muted-foreground">{needLabels[inquiry.primary_need] ?? inquiry.primary_need}</p>
-                  {inquiry.message ? <p className="mt-2 max-w-2xl text-muted-foreground">{inquiry.message}</p> : null}
-                </div>
-                <time className="text-xs text-muted-foreground" dateTime={inquiry.created_at}>{new Intl.DateTimeFormat("fr-FR", { dateStyle: "medium", timeStyle: "short" }).format(new Date(inquiry.created_at))}</time>
-              </article>
-            ))}
-          </div>
-        )}
-      </section>
-      {orgs.length === 0 ? (
-        <p className="text-sm text-muted-foreground">Aucune organisation.</p>
-      ) : (
-        <div className="space-y-4">
-          {orgs.map((org) => (
-            <Card key={org.id}>
-              <CardContent className="pt-6">
-                <p className="font-semibold">{org.name}</p>
-                {org.schools.length === 0 ? (
-                  <p className="mt-2 text-sm text-muted-foreground">Aucune école.</p>
-                ) : (
-                  <div className="mt-3 space-y-3">
-                    {org.schools.map((school) => (
-                      <div key={school.id} className="rounded-md border border-border p-3">
-                        <p className="text-sm font-medium">
-                          {school.name}
-                          {school.city ? (
-                            <span className="text-muted-foreground"> · {school.city}</span>
-                          ) : null}
-                        </p>
-                        <div className="mt-2 flex flex-wrap gap-2">
-                          {school.classes.map((c) => (
-                            <Badge key={c.id} variant="secondary">
-                              {c.name}
-                              {c.grade_level ? ` · niveau ${c.grade_level}` : ""}
-                            </Badge>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
+                  <div className="text-sm">
+                    <p><a className="font-medium text-primary hover:underline" href={`mailto:${inquiry.contact_email}`}>{inquiry.contact_name}</a> · {inquiry.contact_role}</p>
+                    <p className="mt-1 text-muted-foreground">{needLabels[inquiry.primary_need] ?? inquiry.primary_need}</p>
+                    {inquiry.message ? <p className="mt-2 max-w-2xl text-muted-foreground">{inquiry.message}</p> : null}
                   </div>
-                )}
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+                  <time className="text-xs text-muted-foreground" dateTime={inquiry.created_at}>{new Intl.DateTimeFormat("fr-FR", { dateStyle: "medium", timeStyle: "short" }).format(new Date(inquiry.created_at))}</time>
+                </article>
+              ))}
+            </div>
+          )}
+        </section>
       )}
+
+      <SchoolManagementConsole data={data} />
     </>
   );
 }

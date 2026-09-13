@@ -28,6 +28,17 @@ function LoginForm() {
   const [message,setMessage]=useState<string|null>(null);
   const [captchaToken,setCaptchaToken]=useState<string|null>(null);
   const [captchaReset,setCaptchaReset]=useState(0);
+  const callbackError = params.get("error");
+  const callbackMessage = callbackError === "missing_code"
+    ? "Ce lien de connexion est incomplet. Demandez un nouveau lien."
+    : callbackError === "auth_callback"
+      ? "Ce lien est invalide, a expiré ou a déjà été utilisé. Demandez un nouveau lien."
+      : callbackError === "profile_missing"
+        ? "Le compte existe, mais son profil n’est pas actif. Contactez votre enseignant ou l’administration."
+        : callbackError === "reviewer_inactive"
+          ? "Cet accès n’est plus actif. Contactez l’administration."
+          : null;
+  const joinedWithoutSession = params.get("joined") === "1";
 
   async function sendMagicLink(){setError(null);setMessage(null);setLoading(true);try{if(!identifier.includes("@"))throw new Error("Saisissez votre e-mail pour recevoir un lien magique.");if(turnstileSiteKey&&!captchaToken)throw new Error("Terminez la vérification anti-robot.");const{error}=await createClient().auth.signInWithOtp({email:identifier.trim(),options:{shouldCreateUser:false,emailRedirectTo:`${window.location.origin}/auth/callback`,captchaToken:captchaToken??undefined}});if(error)throw error;setMessage("Lien envoyé. Ouvrez votre e-mail pour vous connecter.");}catch(err){setError(err instanceof Error?err.message:"Lien impossible.");}finally{setLoading(false);setCaptchaReset(value=>value+1);}}
   async function signInGoogle(){setError(null);const{error}=await createClient().auth.signInWithOAuth({provider:"google",options:{redirectTo:`${window.location.origin}/auth/callback`}});if(error)setError(error.message);}
@@ -72,6 +83,8 @@ function LoginForm() {
       }
     >
       <form onSubmit={onSubmit} className="space-y-4">
+        {joinedWithoutSession && <p role="status" className="rounded-md border border-primary/30 bg-accent/40 p-3 text-sm">Ton compte a été créé. Connecte-toi avec le nom d’utilisateur et le mot de passe que tu viens de choisir.</p>}
+        {callbackMessage && <p role="alert" className="rounded-md border border-destructive/30 bg-destructive/5 p-3 text-sm text-destructive">{callbackMessage}</p>}
         <Field
           label="E-mail ou nom d’utilisateur"
           name="identifier"
@@ -80,6 +93,7 @@ function LoginForm() {
           value={identifier}
           onChange={(e) => setIdentifier(e.target.value)}
         />
+        {identifier.trim() && !identifier.includes("@") && <p className="-mt-2 text-xs text-muted-foreground">Compte sans e-mail de récupération ? Ton enseignant ou l’administration peut te fournir un mot de passe temporaire.</p>}
         <TurnstileChallenge action="adult_login" onToken={setCaptchaToken} resetSignal={captchaReset}/>
         <PasswordField
           label="Mot de passe"
@@ -98,7 +112,7 @@ function LoginForm() {
         {process.env.NEXT_PUBLIC_GOOGLE_AUTH_ENABLED==="true"&&<Button type="button" variant="outline" className="w-full" onClick={signInGoogle}>Continuer avec Google (adultes)</Button>}
         <div className="flex justify-between text-xs text-muted-foreground">
           <Link href="/reset-password" className="hover:text-foreground">
-            Mot de passe oublié ?
+            Réinitialiser le mot de passe
           </Link>
           <Link href="/join" className="hover:text-foreground">
             Rejoindre avec un code

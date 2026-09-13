@@ -4,6 +4,7 @@ import { createHash } from "node:crypto";
 import { headers } from "next/headers";
 import { z } from "zod";
 import { safeAuthRedirect } from "@/lib/auth-redirect";
+import { CLASS_INVITE_CONFIG, normalizeInviteCode } from "@/lib/invite-config";
 import { createClient, createServiceClient } from "@/lib/supabase/server";
 import { internalAuthEmail, isInternalAuthEmail, USERNAME_PATTERN } from "@/lib/user-credentials";
 import { ROLE_HOME, type Role } from "@/lib/types";
@@ -186,7 +187,7 @@ export async function completePasswordSetup(input: unknown): Promise<{ redirectT
 // ---------------------------------------------------------------------------
 
 const joinWithoutEmailInput = z.object({
-  code: z.string().trim().min(6).max(20),
+  code: z.string().trim().min(6).max(CLASS_INVITE_CONFIG.acceptedLegacyCodeMaxLength),
   displayName: z.string().trim().min(2).max(120),
   username: z.string().trim().toLowerCase().regex(USERNAME_PATTERN),
   dateOfBirth: z.string().date(),
@@ -197,7 +198,7 @@ const joinWithoutEmailInput = z.object({
 export async function joinClassWithoutEmail(input: unknown): Promise<{ username: string; signedIn: boolean }> {
   const parsed = joinWithoutEmailInput.safeParse(input);
   if (!parsed.success) throw new Error(parsed.error.issues[0]?.message ?? "Informations invalides.");
-  const data = parsed.data;
+  const data = { ...parsed.data, code: normalizeInviteCode(parsed.data.code) };
   await enforceAuthRateLimit(`join:${data.username}`);
   await verifyTurnstile(data.captchaToken);
   const service = createServiceClient();
