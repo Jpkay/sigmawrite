@@ -2,7 +2,7 @@
 
 Updated: 2026-09-13. Coordinator maintains this file from the JSON ledger; agents update their own workstream reports.
 
-**Execution:** three GPT‑5.6 Sol agents, High reasoning. The coordinator integrates and releases validated changes. The objective still covers all five priorities and all 544 approved targets.
+**Execution:** bounded GPT‑5.6 SOL agents, High reasoning. The coordinator integrates and releases validated changes. The objective still covers all five priorities and all 544 approved targets.
 
 ## Order and parallel work
 
@@ -133,6 +133,7 @@ The registry contains 184 targets and 920 target-level tasks. Status counts: awa
 
 ## Current findings
 
+- **P4.04** (2026-09-13): Integration resumed from 3ab81a4 with bounded GPT-5.6 SOL High agents. Local QA artifacts are preserved and excluded from Git/deployment. Fresh schema verification applied all 160 migrations and passed persistence/access/concurrency checks; dependency audit found zero vulnerabilities. R42 publication is being verified through the existing parallel-review contract. Public app remains on R41 until candidate verification and promotion finish. See workstreams/integration-2026-09-13.md.
 - **P3.02** (2026-09-13): Third-help answer save fixed in399a674. Candidate and public checks saved exactly one wrong answer; public record confirms hintsUsed=3 and exact feedback capture.
 - **P4.02** (2026-09-13): 64 draft questions and5 lessons across5 targets prepared; cause family is next provisional release candidate. Drafts are not production coverage.
 - **P2.10** (2026-09-13): CORRECTION: the no-activity result used a pre-publication candidate with draft bindings. Runtime-validated publishedR41 returns5 independent checks and0 missing bindings. Its unchanged61-question/2100-second simulation samples25/360 skills, leaves335 untested and8/12 declared profile contrasts unmet. No runtime publication/planner fix is justified by the candidate-stage result.
