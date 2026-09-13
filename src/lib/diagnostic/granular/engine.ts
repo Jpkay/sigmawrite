@@ -100,8 +100,30 @@ export const DEFAULT_POLICY: Policy = {
   maxItemsPerSkill: 12, startingLevel: 1, itemsPerBranchVisit: 6,
 };
 export const MAX_CONFIRMATION_GUESS_CHANCE=.01;
+const ITEM_DIFFICULTY_CONFIRMATION_COUNT=2;
+const AUTHORED_ITEM_DIFFICULTIES=[.25,.5,.75] as const;
 export function correctGuessChance(items:readonly {guessProbability:number}[]):number{
  return items.reduce((chance,item)=>chance*Math.max(.01,Math.min(.5,item.guessProbability)),1);
+}
+
+function authoredDifficultyTiers(bank:readonly Probe[],skillId:string,mode:Mode){
+ const tiers=new Map<number,Probe[]>();
+ for(const item of bank)if(item.skillId===skillId&&item.mode===mode&&item.usage!=="learning"
+  &&AUTHORED_ITEM_DIFFICULTIES.includes(item.difficulty as typeof AUTHORED_ITEM_DIFFICULTIES[number]))
+   tiers.set(item.difficulty,[...(tiers.get(item.difficulty)??[]),item]);
+ return tiers;
+}
+
+function supportsDifficultyAscent(tiers:ReadonlyMap<number,readonly Probe[]>,source:number,target:number){
+ const sourceItems=tiers.get(source)??[],targetItems=tiers.get(target)??[];
+ if(new Set(sourceItems.map(item=>item.id)).size<ITEM_DIFFICULTY_CONFIRMATION_COUNT+1
+  ||new Set(sourceItems.map(item=>item.contextId)).size<ITEM_DIFFICULTY_CONFIRMATION_COUNT+1
+  ||new Set(targetItems.map(item=>item.id)).size<ITEM_DIFFICULTY_CONFIRMATION_COUNT
+  ||new Set(targetItems.map(item=>item.contextId)).size<ITEM_DIFFICULTY_CONFIRMATION_COUNT)return false;
+ const sourceContexts=new Set(sourceItems.map(item=>item.contextId));
+ if(targetItems.some(item=>sourceContexts.has(item.contextId)))return false;
+ const sourceMaterial=new Set(sourceItems.flatMap(item=>item.assessedMaterialKeys??[]));
+ return !targetItems.some(item=>(item.assessedMaterialKeys??[]).some(key=>sourceMaterial.has(key)));
 }
 
 function uniqueObservations(observations: readonly Observation[]) {
@@ -222,7 +244,7 @@ export function assessSkills(skills: readonly Skill[], observations: readonly Ob
 
 export type SelectionTransition={
   axis:"coverage"|"graph"|"item_difficulty"|"confirmation";
-  relation:"branch_entry"|"prerequisite"|"successor"|"lower_challenge"|"higher_challenge"|"same_skill_lower_difficulty"|"same_skill"|"boundary_recheck"|"gap_check";
+  relation:"branch_entry"|"prerequisite"|"successor"|"lower_challenge"|"higher_challenge"|"same_skill_lower_difficulty"|"same_skill_higher_difficulty"|"same_skill_pool_fallback"|"same_skill"|"boundary_recheck"|"gap_check";
   source:{skillId:string;challenge:number;difficulty:number}|null;
   target:{skillId:string;challenge:number;difficulty:number};
 };
@@ -271,6 +293,10 @@ export function learningReadiness(skills:readonly Skill[],observations:readonly 
 }
 
 export function selectProbe(skills: readonly Skill[], bank: readonly Probe[], observations: readonly Observation[], policy: Policy = DEFAULT_POLICY,extraKnownMaterialKeys:readonly string[]=[],releaseScope?:ReleaseScope): Selection {
+ return selectProbeWithTierFallbacks(skills,bank,observations,policy,extraKnownMaterialKeys,releaseScope,new Set());
+}
+function selectProbeWithTierFallbacks(skills: readonly Skill[], bank: readonly Probe[], observations: readonly Observation[], policy: Policy,
+ extraKnownMaterialKeys:readonly string[],releaseScope:ReleaseScope|undefined,tierBlockedSkillIds:ReadonlySet<string>):Selection {
   const scope=releaseScope===undefined?undefined:inspectReleaseScope(skills,releaseScope);
   const observed = uniqueObservations(observations);
   const categoryPriority=categoryExposurePriority(bank,observed.map(observation=>observation.itemId));
@@ -290,11 +316,12 @@ export function selectProbe(skills: readonly Skill[], bank: readonly Probe[], ob
   const knownMaterial=knownExposedMaterialKeys(bank,observed,[],extraKnownMaterialKeys);
   const available = bank.filter(item => {
     const skill = skillById.get(item.skillId);
-    return skill && (!scope||scope.assessmentSkillIds.has(skill.id)) && skill.assessmentStage !== "learning" && item.usage!=="learning" && skill.modes.includes(item.mode) && !asked.has(item.id)
+    return skill && !tierBlockedSkillIds.has(skill.id) && (!scope||scope.assessmentSkillIds.has(skill.id)) && skill.assessmentStage !== "learning" && item.usage!=="learning" && skill.modes.includes(item.mode) && !asked.has(item.id)
       && unresolved.includes(skill.id) && !routingById.get(skill.id)?.resolved && !probeRepeatsKnownTarget(item,skill,knownMaterial)
       && observed.filter(o => o.skillId === skill.id).length < policy.maxItemsPerSkill;
   });
   if (!available.length) {
+    if(tierBlockedSkillIds.size)return {kind:"provisional",reason:"later_evidence_required",unresolvedSkillIds:unresolved};
     const initialUnresolved = unresolved.filter(id => (!scope||scope.assessmentSkillIds.has(id)) && skillById.get(id)?.assessmentStage !== "learning");
     const canRefineLater=initialUnresolved.every(id=>resultById.get(id)!.modes.filter(mode=>!mode.confirmed).every(mode=>bank.some(probe=>probe.skillId===id&&probe.mode===mode.mode&&probe.usage==="learning"&&!asked.has(probe.id)&&!probeRepeatsKnownTarget(probe,skillById.get(id)!,knownMaterial))));
     return initialUnresolved.length&&!canRefineLater ? { kind: "coverage_gap", unresolvedSkillIds: unresolved }
@@ -464,6 +491,7 @@ export function selectProbe(skills: readonly Skill[], bank: readonly Probe[], ob
   const lastSkill = last ? skillById.get(last.skillId) : undefined;
   let reason: Extract<Selection, {kind: "question"}>["reason"] = "gap_check";
   let pool = branchItems;
+  let tierProgressBlockedSkillId:string|undefined;
   let transitionSeed:{axis:SelectionTransition["axis"];relation:SelectionTransition["relation"];source?:Observation}|undefined;
   const restrict = (predicate: (item: Probe) => boolean, nextReason: typeof reason,nextTransition?:typeof transitionSeed) => {
     const matches = branchItems.filter(predicate);
@@ -495,11 +523,33 @@ export function selectProbe(skills: readonly Skill[], bank: readonly Probe[], ob
     // Confirm this exact target; another tense receives no inferred evidence.
   } else if (!lastSkill) {
     reason = "branch_coverage";
-  } else if (!last?.correct) {
+    const lastExposure=history.at(-1),sourceProbe=lastExposure?probeById.get(lastExposure.itemId):undefined;
+    if(lastExposure?.skipped&&sourceProbe){
+      const tiers=authoredDifficultyTiers(bank,lastExposure.skillId,lastExposure.mode);
+      const levels=[...tiers.keys()].sort((a,b)=>a-b),sourceIndex=levels.indexOf(sourceProbe.difficulty);
+      const nextLevel=levels[sourceIndex+1];
+      const hasSupportedHigher=sourceIndex>=0&&nextLevel!==undefined&&supportsDifficultyAscent(tiers,sourceProbe.difficulty,nextLevel);
+      if(hasSupportedHigher&&!restrict(item=>item.skillId===lastExposure.skillId&&item.mode===lastExposure.mode
+        &&item.difficulty===sourceProbe.difficulty,"branch_coverage",{axis:"coverage",relation:"branch_entry"})){
+        const lower=[...levels.slice(0,sourceIndex)].reverse().find(level=>branchItems.some(item=>item.skillId===lastExposure.skillId
+          &&item.mode===lastExposure.mode&&item.difficulty===level));
+        if(lower!==undefined)restrict(item=>item.skillId===lastExposure.skillId&&item.mode===lastExposure.mode&&item.difficulty===lower,
+          "branch_coverage",{axis:"coverage",relation:"branch_entry"});
+        else tierProgressBlockedSkillId=lastExposure.skillId;
+      }
+    }
+  } else if (last&&!last.correct) {
     // Prefer real prerequisites, then easier tasks in the same branch; no inference is recorded.
     if (!restrict(i => lastSkill.prerequisites.includes(i.skillId), "step_down",{axis:"graph",relation:"prerequisite",source:last})) {
       if (!restrict(i => challengeOf(skillById.get(i.skillId)!) < challengeOf(lastSkill), "step_down",{axis:"graph",relation:"lower_challenge",source:last})) {
-        if (!restrict(i => i.skillId === lastSkill.id && i.difficulty < (probeById.get(last?.itemId??"")?.difficulty ?? 1), "step_down",{axis:"item_difficulty",relation:"same_skill_lower_difficulty",source:last})) {
+        const sourceProbe=probeById.get(last.itemId),tiers=authoredDifficultyTiers(bank,lastSkill.id,last.mode);
+        const levels=[...tiers.keys()].sort((a,b)=>a-b),sourceIndex=sourceProbe?levels.indexOf(sourceProbe.difficulty):-1;
+        const lowerLevel=levels[sourceIndex-1];
+        const eligibleError=last.unaided===true&&assessSkills([lastSkill],[last],policy)[0].modes.find(mode=>mode.mode===last.mode)?.distinctItems===1;
+        const supportedDescent=sourceProbe&&lowerLevel!==undefined&&eligibleError&&supportsDifficultyAscent(tiers,lowerLevel,sourceProbe.difficulty)
+          &&restrict(i=>i.skillId===lastSkill.id&&i.mode===last.mode&&i.difficulty===lowerLevel,"step_down",
+            {axis:"item_difficulty",relation:"same_skill_lower_difficulty",source:last});
+        if (!supportedDescent&&!restrict(i => i.skillId === lastSkill.id && i.difficulty < (sourceProbe?.difficulty ?? 1), "step_down",{axis:"item_difficulty",relation:"same_skill_lower_difficulty",source:last})) {
           // Already at the available floor: verify the difficulty on a fresh
           // context instead of drifting to another same-level target after a
           // single failure. Resolved targets are already absent from available.
@@ -507,7 +557,7 @@ export function selectProbe(skills: readonly Skill[], bank: readonly Probe[], ob
         }
       }
     }
-  } else {
+  } else if(last) {
     const lowerResolved = routingById.get(lastSkill.id)?.status === "mastered";
     const failedAbove = [...history].reverse().find(o => !o.skipped && !o.correct && challengeOf(skillById.get(o.skillId)!) > challengeOf(lastSkill));
     if (lowerResolved && failedAbove && restrict(i => i.skillId === failedAbove.skillId, "recheck_boundary",{axis:"graph",relation:"boundary_recheck",source:failedAbove})) {
@@ -515,8 +565,46 @@ export function selectProbe(skills: readonly Skill[], bank: readonly Probe[], ob
     } else if (lowerResolved && restrict(i => challengeOf(skillById.get(i.skillId)!) > challengeOf(lastSkill), "step_up",{axis:"graph",relation:"higher_challenge",source:last})) {
       // Move up one available challenge level, not to a global proficiency band.
     } else {
-      restrict(i => i.skillId === lastSkill.id, "confirmation",{axis:"confirmation",relation:"same_skill",source:last});
+      const sourceProbe=probeById.get(last.itemId),tiers=authoredDifficultyTiers(bank,lastSkill.id,last.mode);
+      const levels=[...tiers.keys()].sort((a,b)=>a-b),sourceIndex=sourceProbe?levels.indexOf(sourceProbe.difficulty):-1;
+      const fitting=(item:Probe)=>item.expectedSeconds<=policy.activeSeconds-spent;
+      const freshAt=(difficulty:number)=>branchItems.filter(item=>item.skillId===lastSkill.id&&item.mode===last.mode
+        &&item.difficulty===difficulty&&fitting(item));
+      const nextLevel=levels[sourceIndex+1],previousLevel=levels[sourceIndex-1];
+      const higher=sourceProbe&&nextLevel!==undefined&&supportsDifficultyAscent(tiers,sourceProbe.difficulty,nextLevel)
+        &&new Set(freshAt(nextLevel).map(item=>item.contextId)).size>=ITEM_DIFFICULTY_CONFIRMATION_COUNT?nextLevel:undefined;
+      const participates=sourceProbe&&sourceIndex>=0&&((nextLevel!==undefined&&supportsDifficultyAscent(tiers,sourceProbe.difficulty,nextLevel))
+        ||(previousLevel!==undefined&&supportsDifficultyAscent(tiers,previousLevel,sourceProbe.difficulty)));
+      const sameModeHistory=history.filter(observation=>observation.skillId===lastSkill.id&&observation.mode===last.mode);
+      const successes:Observation[]=[];
+      for(const observation of [...sameModeHistory].reverse()){
+        const observedProbe=probeById.get(observation.itemId);
+        const eligible=observation.correct&&observation.unaided===true&&observedProbe?.difficulty===sourceProbe?.difficulty
+          &&assessSkills([lastSkill],[observation],policy)[0].modes.find(mode=>mode.mode===last.mode)?.distinctItems===1;
+        if(!eligible)break;
+        successes.push(observation);
+      }
+      if(participates&&successes.length>=ITEM_DIFFICULTY_CONFIRMATION_COUNT&&higher!==undefined
+        &&restrict(item=>item.skillId===lastSkill.id&&item.mode===last.mode&&item.difficulty===higher,"step_up",
+          {axis:"item_difficulty",relation:"same_skill_higher_difficulty",source:last})){
+        // This is a routing signal only. Skill evidence and mastery remain unchanged.
+      }else if(participates&&sourceProbe&&freshAt(sourceProbe.difficulty).length
+        &&restrict(item=>item.skillId===lastSkill.id&&item.mode===last.mode&&item.difficulty===sourceProbe.difficulty,"confirmation",
+          {axis:"confirmation",relation:"same_skill",source:last})){
+        // Gather a second eligible success before moving to a harder authored tier.
+      }else if(participates&&sourceProbe){
+        const lower=[...levels.slice(0,sourceIndex)].reverse().find(level=>freshAt(level).length);
+        if(lower!==undefined)restrict(item=>item.skillId===lastSkill.id&&item.mode===last.mode&&item.difficulty===lower,"confirmation",
+          {axis:"item_difficulty",relation:"same_skill_pool_fallback",source:last});
+        else tierProgressBlockedSkillId=lastSkill.id;
+      }else{
+        restrict(i => i.skillId === lastSkill.id, "confirmation",{axis:"confirmation",relation:"same_skill",source:last});
+      }
     }
+  }
+  if(tierProgressBlockedSkillId){
+    const nextBlocked=new Set(tierBlockedSkillIds).add(tierProgressBlockedSkillId);
+    return selectProbeWithTierFallbacks(skills,bank,observations,policy,extraKnownMaterialKeys,releaseScope,nextBlocked);
   }
   const selectedReason = reason as Extract<Selection, { kind: "question" }>["reason"];
   const targetLevel = selectedReason === "step_up" || selectedReason === "recheck_boundary"
@@ -542,8 +630,10 @@ export function selectProbe(skills: readonly Skill[], bank: readonly Probe[], ob
   });
   if (pool[0].expectedSeconds > policy.activeSeconds - spent) return { kind: "provisional", reason: "time_budget", unresolvedSkillIds: unresolved };
   const item=pool[0],source=transitionSeed?.source??(transitionSeed?undefined:last),sourceProbe=source?probeById.get(source.itemId):undefined;
-  const transition:SelectionTransition={axis:transitionSeed?.axis??(last?item.skillId===last.skillId?"confirmation":"graph":"coverage"),
-    relation:transitionSeed?.relation??(last?item.skillId===last.skillId?"same_skill":"gap_check":"branch_entry"),
+  const fallbackDifficultyChange=source&&sourceProbe&&source.skillId===item.skillId&&sourceProbe.difficulty!==item.difficulty
+    &&transitionSeed?.axis==="confirmation";
+  const transition:SelectionTransition={axis:fallbackDifficultyChange?"item_difficulty":transitionSeed?.axis??(last?item.skillId===last.skillId?"confirmation":"graph":"coverage"),
+    relation:fallbackDifficultyChange?"same_skill_pool_fallback":transitionSeed?.relation??(last?item.skillId===last.skillId?"same_skill":"gap_check":"branch_entry"),
     source:source&&sourceProbe?{skillId:source.skillId,challenge:challengeOf(skillById.get(source.skillId)!),difficulty:sourceProbe.difficulty}:null,
     target:{skillId:item.skillId,challenge:challengeOf(skillById.get(item.skillId)!),difficulty:item.difficulty}};
   return { kind: "question", item, reason,transition };

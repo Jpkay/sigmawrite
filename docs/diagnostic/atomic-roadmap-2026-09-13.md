@@ -127,7 +127,7 @@ flowchart LR
 
 Each approved target has five atomic records: **Q** assessment question pool, **L** guided lesson, **V** binding/separation validation, **R** verified production publication, and **O** actual owner review. Q and L can run in parallel; V requires both; R requires V; O can run alongside release after Q/L exist. Shared content may satisfy several targets only when each target’s own requirements pass.
 
-The registry contains 184 targets and 920 target-level tasks. Status counts: awaiting_real_review: 184, implemented: 10, planned: 726.
+The registry contains 184 targets and 920 target-level tasks. Status counts: awaiting_real_review: 184, implemented: 21, planned: 700, validated: 15.
 
 [Exact target IDs, labels, evidence requirements and task dependencies](remaining-target-goals-2026-09-13.json).
 
