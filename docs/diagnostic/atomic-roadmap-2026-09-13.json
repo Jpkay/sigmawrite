@@ -542,7 +542,7 @@
         "P2.02"
       ],
       "acceptance": "Every trace records source/target skill, graph challenge and item difficulty; same-difficulty graph transitions cannot be reported as easier/harder questions. Deterministic selection stays unchanged.",
-      "status": "in_progress",
+      "status": "validated",
       "owner": "adaptive",
       "evidence": [
         "workstreams/adaptive.md"
@@ -556,7 +556,7 @@
         "P2.13"
       ],
       "acceptance": "Use explicit authored difficulty tiers where sufficient disjoint pools exist; successes and errors drive verified ascent/descent with confirmation. No fabricated calibration; sparse skills remain explicit. Preserve time budget and cross-domain coverage.",
-      "status": "planned",
+      "status": "in_progress",
       "owner": "adaptive",
       "evidence": []
     }
@@ -589,6 +589,11 @@
     }
   ],
   "executionNotes": [
+    {
+      "date": "2026-09-13",
+      "task": "P4.04",
+      "finding": "R43 published and runtime-validated: 367 targets, 6,663 scoped questions, 8,088 exact relational bank items; no instruction/fresh-check gaps. Application candidate403b9cb passed1,936 tests, types, lint and build from a clean detached checkout. Generated fixture prerequisites fixed in574ec62; candidate browser opening remains in progress. Review-automation deployment is held while post-activation reviewer drift is assessed; no reviewer or policy configuration has been changed."
+    },
     {
       "date": "2026-09-13",
       "task": "P4.04",

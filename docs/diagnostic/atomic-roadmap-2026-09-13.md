@@ -76,8 +76,8 @@ flowchart LR
 | P5.06 | Fix and recheck pilot findings | P5.05 | coordinator | planned |
 | P2.11 | Verify next activities using the published full mixed profile | P2.02 | adaptive | validated |
 | P2.12 | Verify candidate-to-published follow-up check lifecycle | P4.03 | adaptive + coordinator | validated |
-| P2.13 | Distinguish skill-graph changes from question-difficulty changes | P2.02 | adaptive | in_progress |
-| P2.14 | Implement and validate easier/harder question selection within skills | P2.13 | adaptive | planned |
+| P2.13 | Distinguish skill-graph changes from question-difficulty changes | P2.02 | adaptive | validated |
+| P2.14 | Implement and validate easier/harder question selection within skills | P2.13 | adaptive | in_progress |
 
 ## Acceptance criteria
 
@@ -133,6 +133,7 @@ The registry contains 184 targets and 920 target-level tasks. Status counts: awa
 
 ## Current findings
 
+- **P4.04** (2026-09-13): R43 published and runtime-validated: 367 targets, 6,663 scoped questions, 8,088 exact relational bank items; no instruction/fresh-check gaps. Application candidate403b9cb passed1,936 tests, types, lint and build from a clean detached checkout. Generated fixture prerequisites fixed in574ec62; candidate browser opening remains in progress. Review-automation deployment is held while post-activation reviewer drift is assessed; no reviewer or policy configuration has been changed.
 - **P4.04** (2026-09-13): R42 cause release is published and promoted; 362 supported targets. Candidate/public opening and reload verified, runtime export supplied to adaptive lane. R43 modal candidate is next. See revision-42-integration-rollout-2026-09-13.json.
 - **P3.05** (2026-09-13): Dictation capture and saved justification retry committed in 758feb9 after 23 focused tests, lint and TypeScript passed. Awaiting matching application deployment and hosted dictation verification.
 - **P4.04** (2026-09-13): Integration resumed from 3ab81a4 with bounded GPT-5.6 SOL High agents. Local QA artifacts are preserved and excluded from Git/deployment. Fresh schema verification applied all 160 migrations and passed persistence/access/concurrency checks; dependency audit found zero vulnerabilities. R42 publication is being verified through the existing parallel-review contract. Public app remains on R41 until candidate verification and promotion finish. See workstreams/integration-2026-09-13.md.

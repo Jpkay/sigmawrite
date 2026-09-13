@@ -60,6 +60,15 @@ try {
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
   await page.goto(base + '/student/diagnostic', {waitUntil: 'domcontentloaded', timeout: 60000});
+  let qaOnboarded = false;
+  if (new URL(page.url()).pathname === '/student/onboarding' && process.env.PLUME_VERIFY_ONBOARD === 'true') {
+    assert.equal(before.length, 0, 'Onboarding is only allowed for a fresh technical QA account');
+    await page.getByRole('button', {name: 'Continuer', exact: true}).click();
+    for (const name of [/Mangas/, /Animés/, /Football/]) await page.getByRole('button', {name}).click();
+    await page.getByRole('button', {name: 'Commencer le diagnostic', exact: true}).click();
+    await page.waitForURL('**/student/diagnostic', {timeout: 60000});
+    qaOnboarded = true;
+  }
   await page.getByRole('button', {name: /^(Commencer|Reprendre)$/}).waitFor({timeout: 60000});
   const opened = await sessions();
   assert.equal(opened.length, 1);
@@ -77,7 +86,7 @@ try {
   assert.deepEqual(errors, []);
   const report = {base, releaseKey, releaseId: row.release_id, sessionId: row.id,
     bundleChecksum: proof.bundleChecksum, supportedTargets: expectedScope,
-    opened: true, reloadPreservedSession: true, answersSubmitted: 0, pageErrors: errors,
+    opened: true, reloadPreservedSession: true, qaOnboarded, answersSubmitted: 0, pageErrors: errors,
     limits: 'Technical QA opening and reload only; no completed sitting, lesson completion, calibration or real-student evidence.'};
   writeFileSync(required('PLUME_VERIFY_REPORT'), JSON.stringify(report, null, 2) + '\n', {mode: 0o600});
   console.log(JSON.stringify(report));
