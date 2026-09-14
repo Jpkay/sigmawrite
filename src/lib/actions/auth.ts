@@ -29,6 +29,8 @@ const passwordInput = z.object({
   path: ["confirmation"],
 });
 
+class ExpectedAuthError extends Error {}
+
 function subjectHash(identifier: string): string {
   return createHash("sha256").update(identifier.trim().toLowerCase()).digest("hex");
 }
@@ -46,8 +48,8 @@ async function enforceAuthRateLimit(identifier: string) {
   for (const subject of subjects) {
     const { data, error } = await db.rpc("consume_auth_attempt", { p_subject_hash: subject });
     const rate = Array.isArray(data) ? data[0] : data;
-    if (error) throw new Error("Service d’authentification momentanément indisponible.");
-    if (!rate?.allowed) throw new Error("Trop de tentatives. Attendez quelques minutes avant de réessayer.");
+    if (error) throw new ExpectedAuthError("Service d’authentification momentanément indisponible.");
+    if (!rate?.allowed) throw new ExpectedAuthError("Trop de tentatives. Attendez quelques minutes avant de réessayer.");
   }
 }
 
@@ -59,11 +61,11 @@ async function enforceAuthRateLimit(identifier: string) {
 async function verifyTurnstile(token: string | null | undefined) {
   const secret = process.env.TURNSTILE_SECRET_KEY;
   if (!secret || process.env.SUPABASE_CAPTCHA_ENABLED === "true") return;
-  if (!token) throw new Error("Terminez la vérification anti-robot.");
+  if (!token) throw new ExpectedAuthError("Terminez la vérification anti-robot.");
   const address = await clientAddress();
   const response = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ secret, response: token, remoteip: address ?? undefined }) });
   const result = (await response.json().catch(() => ({}))) as { success?: boolean };
-  if (!result.success) throw new Error("La vérification anti-robot a échoué. Réessayez.");
+  if (!result.success) throw new ExpectedAuthError("La vérification anti-robot a échoué. Réessayez.");
 }
 
 async function emailForIdentifier(identifier: string): Promise<string | null> {
@@ -81,14 +83,23 @@ async function emailForIdentifier(identifier: string): Promise<string | null> {
   return data.user.email.toLowerCase();
 }
 
-export async function loginWithPassword(input: unknown): Promise<{ redirectTo: string }> {
+export type LoginResult =
+  | { ok: true; redirectTo: string }
+  | { ok: false; error: string };
+
+export async function loginWithPassword(input: unknown): Promise<LoginResult> {
   const parsed = loginInput.safeParse(input);
-  if (!parsed.success) throw new Error("Identifiant ou mot de passe invalide.");
+  if (!parsed.success) return { ok: false, error: "Identifiant ou mot de passe invalide." };
   const identifier = parsed.data.identifier.trim().toLowerCase();
-  await enforceAuthRateLimit(identifier);
-  await verifyTurnstile(parsed.data.captchaToken);
+  try {
+    await enforceAuthRateLimit(identifier);
+    await verifyTurnstile(parsed.data.captchaToken);
+  } catch (error) {
+    if (error instanceof ExpectedAuthError) return { ok: false, error: error.message };
+    throw error;
+  }
   const email = await emailForIdentifier(identifier);
-  if (!email) throw new Error("Identifiant ou mot de passe incorrect.");
+  if (!email) return { ok: false, error: "Identifiant ou mot de passe incorrect." };
 
   const db = await createClient();
   const { data, error } = await db.auth.signInWithPassword({
@@ -96,7 +107,10 @@ export async function loginWithPassword(input: unknown): Promise<{ redirectTo: s
     password: parsed.data.password,
     options: { captchaToken: parsed.data.captchaToken ?? undefined },
   });
-  if (error || !data.user) throw new Error("Identifiant ou mot de passe incorrect.");
+  if (error?.code === "captcha_failed") {
+    return { ok: false, error: "La vérification anti-robot a échoué. Réessayez." };
+  }
+  if (error || !data.user) return { ok: false, error: "Identifiant ou mot de passe incorrect." };
   const { data: profile } = await db.from("profiles")
     .select("role,must_change_password")
     .eq("auth_user_id", data.user.id)
@@ -104,10 +118,10 @@ export async function loginWithPassword(input: unknown): Promise<{ redirectTo: s
   const role = profile?.role as Role | undefined;
   if (!role || !(role in ROLE_HOME)) {
     await db.auth.signOut();
-    throw new Error("Ce compte n’a pas de profil actif.");
+    return { ok: false, error: "Ce compte n’a pas de profil actif." };
   }
-  if (profile?.must_change_password) return { redirectTo: "/set-password?first=1" };
-  return { redirectTo: safeAuthRedirect(parsed.data.next, ROLE_HOME[role]) };
+  if (profile?.must_change_password) return { ok: true, redirectTo: "/set-password?first=1" };
+  return { ok: true, redirectTo: safeAuthRedirect(parsed.data.next, ROLE_HOME[role]) };
 }
 
 async function applicationOrigin(): Promise<string> {

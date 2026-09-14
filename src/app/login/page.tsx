@@ -55,6 +55,10 @@ function LoginForm() {
         captchaToken,
         next: params.get("next"),
       });
+      if (!result.ok) {
+        setError(result.error);
+        return;
+      }
       router.push(result.redirectTo);
       router.refresh();
     } catch (err) {
