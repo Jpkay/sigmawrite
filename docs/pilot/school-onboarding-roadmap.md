@@ -406,6 +406,36 @@ This checkpoint supersedes the administrator password handoff above.
   login/recovery/resume, populated report evidence, deactivation and foreign-
   school browser checks. Teacher A and QA administrator sessions are preserved.
 
+## Unassigned-class denial fix deployed — 2026-09-14
+
+- Bounded GPT-5.6 SOL High implementation **`8bd589a`** adds an authenticated,
+  RLS-bound `classes` lookup before any roster, goal, league, join-code or
+  credential loaders. A missing/inaccessible class uses Next.js `notFound()`;
+  database errors still propagate. No service-role bypass or broader grant was
+  introduced, and no migration or environment setting changed.
+- Main review confirmed `classes_select` requires an actual teacher-class grant
+  in the same school (or scoped school administration); a direct student grant
+  alone cannot pass. **25 tests across 5 focused files**, TypeScript, scoped
+  ESLint and whitespace checks passed. Page tests prove denied lookup results
+  stop all class loaders; the separate SQL/live checks establish grant semantics.
+- Committed and pushed the source. Candidate
+  **`dpl_EMHLSsfGJxcwf9VPU2ASvSJEvg5z`** built Ready; `/login` and `/join`
+  returned 200, and an unauthenticated class request redirected to login.
+  Promoted this exact candidate to the public pilot. Immutable URL:
+  <https://sigmawrite-61ntuou4o-jpkays-projects.vercel.app>.
+- Public regression: removed only Teacher A's class B grant while retaining
+  direct Student C access. A fresh class B request now renders the normal
+  `404 / This page could not be found.` response, without class content or the
+  generic error page. Student C's report still opens with only the direct label.
+- Restored class B, then verified its full teacher page, Student C roster entry
+  and credential controls render normally. Independently checked the school
+  administrator's empty QA administration class: it also renders without error.
+  Teacher A's original two class grants and direct Student C grant are restored.
+- Next account: `QA Enseignant B` (`qa.teacher.b.20260914`). Its temporary
+  credential still needs a user-controlled reset through the administrator
+  account page, followed by login and first-password setup. No further reset or
+  new password was performed by the agent. Full-goal gates remain open.
+
 ## Release gates
 
 1. Integrate the three agent slices; review all service-role paths and RPC checks.
