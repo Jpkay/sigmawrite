@@ -8,8 +8,8 @@ full multi-account browser acceptance remains incomplete (latest checkpoint belo
 
 | Requirement | Required proof | Current state |
 | --- | --- | --- |
-| School and class setup | Platform admin creates a school and appoints its admin; school admin manages only that school and creates/edits classes through the UI | Public UI school/two-class creation and QA admin appointment passed; school-admin-scoped journey pending |
-| Student onboarding and recovery | Valid invitation joins the right class; invalid/expired/revoked invitations fail; login, resume and recovery verified without changing real credentials | Implemented; focused action and native invitation checks passed; hosted login/recovery pending |
+| School and class setup | Platform admin creates a school and appoints its admin; school admin manages only that school and creates/edits classes through the UI | Public UI school creation/admin appointment and school-admin-scoped account management/class creation/edit passed; QA school now has three classes, one empty |
+| Student onboarding and recovery | Valid invitation joins the right class; invalid/expired/revoked invitations fail; login, resume and recovery verified without changing real credentials | Admin login/password setup passed; public invitation validation/rotation passed; student signup, login, recovery and resume remain pending |
 | Many-to-many teacher assignments | Two teachers, two classes and at least three students; shared class and direct-student assignments work; separate grants remain distinguishable | Owner UI created six QA accounts and shared class/direct grants; class removal retained a direct grant; teacher-view acceptance pending |
 | Teacher reports | Assigned teacher sees diagnostic results, per-skill evidence, activity and progress; direct assignment works without granting an entire class | Current granular diagnostic/activity DTO implemented; authorization/privacy tests passed; hosted report pending |
 | Access boundaries and revocation | Cross-school grants, self-grants and direct table-write bypass denied; removing last assignment and deactivation revoke access | Native and hosted rollback SQL assertions passed; browser multi-account denial/revocation pending |
@@ -316,6 +316,50 @@ This checkpoint supersedes the earlier pending-account-approval notes.
 - Remaining full-goal evidence: school-admin-scoped management, teacher/student
   onboarding and actual report visibility, invitations, recovery/resume, and
   browser-level last-grant revocation/deactivation/foreign-school denials.
+
+## School administrator acceptance and routing fix — 2026-09-14
+
+This checkpoint supersedes the administrator password handoff above.
+
+- Owner completed the QA administrator's password setup. The public `/teacher`
+  page renders as `QA Administrateur Onboarding`; an independent profile read
+  confirms `must_change_password=false`. No chosen password was collected.
+- `/admin/users` shows exactly the six QA accounts within the QA school.
+  As this school administrator, removed Teacher B's direct grant to Student C,
+  observed the no-remaining-grant status, then restored the original grant.
+  This verifies management controls, not the teacher's own post-revocation view.
+- Created empty `QA Classe Administration` through `/teacher/classes` (grade 7,
+  2026–2027). Independent DB read confirms class
+  `30a93ff3-41cf-4e03-aa7b-4cffc2df58cc` belongs to QA school
+  `8f9da60a-ed0e-47f4-9050-4cda2448a2dc`. The fixture now has three classes
+  and the same six accounts/three students; existing enrollments are unchanged.
+- Public signed-out `/join` accepted this class's seven-day, one-use code and
+  displayed the correct QA class/school. Replaced it through the administrator
+  UI: the old code was rejected, and the new code accepted. No seventh account
+  was created or invitation sent; signup/use consumption is not yet verified.
+  Codes were kept out of tool logs and repository files.
+- Live testing found `/admin/schools` incorrectly redirected a school admin to
+  `/teacher`. Bounded GPT-5.6 SOL High fix **`fc91ffd`** allows only the exact
+  `/admin/users` and `/admin/schools` route families, rejects lookalikes, and
+  retains password setup and teacher/student restrictions. Main review passed
+  **37 tests across 4 focused files**, TypeScript, scoped ESLint and diff checks.
+- Source committed/pushed; candidate **`dpl_CkgKLrrFDBhKXyzSbbbkrnDN7tvK`**
+  built Ready. Candidate `/login` and `/join` returned 200; unauthenticated
+  `/teacher` and `/admin/schools` redirected to login. Promoted that exact
+  candidate and independently resolved the public alias to it. Immutable URL:
+  <https://sigmawrite-law0xx6kx-jpkays-projects.vercel.app>.
+- Fresh public page load now shows `Mon établissement`, exactly one QA school,
+  and its three classes. Edited the empty class to
+  `QA Classe Administration — vérifiée`; UI returned `Enregistré`. An unrelated
+  `/admin/items/review` request still redirects this school admin to `/teacher`.
+  The refreshed teacher sidebar's École link then navigates correctly.
+- Remaining gates: teacher/student authentication, real activity/report evidence,
+  signup/recovery/resume, and teacher-view denial/revocation/deactivation and
+  foreign-school browser checks. The other five QA accounts still require
+  first-password setup. Their one-time credentials are no longer available in
+  the current browser-tool session; use a user-controlled QA password-reset
+  handoff, never a database/API credential bypass. Administrator setup is no
+  longer blocked. The goal remains active and is not complete.
 
 ## Release gates
 
