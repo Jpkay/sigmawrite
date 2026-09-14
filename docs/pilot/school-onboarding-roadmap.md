@@ -10,9 +10,9 @@ full multi-account browser acceptance remains incomplete (latest checkpoint belo
 | --- | --- | --- |
 | School and class setup | Platform admin creates a school and appoints its admin; school admin manages only that school and creates/edits classes through the UI | Public UI school creation/admin appointment and school-admin-scoped account management/class creation/edit passed; QA school now has three classes, one empty |
 | Student onboarding and recovery | Valid invitation joins the right class; invalid/expired/revoked invitations fail; login, resume and recovery verified without changing real credentials | Admin login/password setup passed; public invitation validation/rotation passed; student signup, login, recovery and resume remain pending |
-| Many-to-many teacher assignments | Two teachers, two classes and at least three students; shared class and direct-student assignments work; separate grants remain distinguishable | Owner UI created six QA accounts and shared class/direct grants; class removal retained a direct grant; teacher-view acceptance pending |
-| Teacher reports | Assigned teacher sees diagnostic results, per-skill evidence, activity and progress; direct assignment works without granting an entire class | Current granular diagnostic/activity DTO implemented; authorization/privacy tests passed; hosted report pending |
-| Access boundaries and revocation | Cross-school grants, self-grants and direct table-write bypass denied; removing last assignment and deactivation revoke access | Native and hosted rollback SQL assertions passed; browser multi-account denial/revocation pending |
+| Many-to-many teacher assignments | Two teachers, two classes and at least three students; shared class and direct-student assignments work; separate grants remain distinguishable | Six QA accounts and shared class/direct grants created; Teacher A browser verifies two classes/three students and direct-only access; Teacher B acceptance pending |
+| Teacher reports | Assigned teacher sees diagnostic results, per-skill evidence, activity and progress; direct assignment works without granting an entire class | Teacher A opens Student C's granular/activity report with class+direct and direct-only grants; empty states verified, populated activity/report evidence pending |
+| Access boundaries and revocation | Cross-school grants, self-grants and direct table-write bypass denied; removing last assignment and deactivation revoke access | Native/hosted SQL passed; Teacher A browser last-grant denial and roster removal passed; deactivation and cross-school browser gates pending |
 | Verified delivery | Reviewed diff; relevant/integration tests, types, lint, build; forward migration preflight; candidate and public end-to-end verification; commit/push/deploy | Public cutover completed; checks/commits/push passed; full authenticated multi-account end-to-end pending |
 
 ## Execution ownership
@@ -376,6 +376,35 @@ This checkpoint supersedes the administrator password handoff above.
   this mandatory setup is completed. The other four QA accounts remain pending.
 - No application code, database configuration or deployment changed for this
   check. Public application source remains `fc91ffd`.
+
+## Teacher A scope and last-grant acceptance — 2026-09-14
+
+- Owner completed Teacher A's password setup. Chrome renders `/teacher` as
+  `QA Enseignant A`; the refreshed administrator console no longer shows its
+  password-renewal badge. Its dashboard lists exactly two assigned classes,
+  three QA students and one direct student assignment. `/teacher/classes`
+  excludes the unassigned, empty administration QA class.
+- Student C's detail renders diagnostic, per-skill evidence and activity regions,
+  with class B and direct-grant labels. These QA students have no recorded
+  activity: empty states are correct but do not prove populated report accuracy.
+- Removed Teacher A's class B grant through the QA administrator UI. A fresh
+  teacher page still renders Student C, labelled only `Affectation directe`.
+  Removed the remaining direct grant: fresh student detail shows
+  `Élève introuvable`, and the dashboard lists only Students A/B, one class and
+  zero direct assignments. No Student C report content is rendered.
+- Restored the original direct grant, tested class B's URL while class B was
+  still unassigned, then restored the original class B grant. The unassigned
+  class did not expose content but showed a generic global error instead of a
+  normal access-denied/not-found page. A bounded SOL High fix is being prepared;
+  its release evidence must be recorded separately.
+- After restoration, class B renders normally with Student C, its username and
+  the expected class controls. Teacher A again has the original two class
+  assignments and direct Student C assignment. No real membership changed.
+- `/teacher/reports` renders the three QA students with their empty activity
+  summaries. Navigating to `/admin/users` redirects Teacher A to `/teacher`.
+- Remaining full-goal gates include Teacher B's actual view, student signup,
+  login/recovery/resume, populated report evidence, deactivation and foreign-
+  school browser checks. Teacher A and QA administrator sessions are preserved.
 
 ## Release gates
 
