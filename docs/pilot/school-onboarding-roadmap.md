@@ -203,6 +203,38 @@ This checkpoint supersedes the earlier unpromoted/missing-browser notes.
   Browser connectivity is restored; the remaining input is approval for the
   six QA accounts, their school-scoped assignment tests and QA email destination.
 
+## Approved QA accounts and authenticated acceptance — 2026-09-14
+
+This checkpoint supersedes the earlier pending-account-approval notes.
+
+- Owner approved six synthetic QA accounts, school-confined assignment tests,
+  and test credential/recovery email to `jkayobotsi+plume-qa@gmail.com`.
+- Created all six accounts through the deployed public administrator UI in
+  school `8f9da60a-ed0e-47f4-9050-4cda2448a2dc`. A separate read confirmed
+  exactly one school administrator, two teachers and three students:
+  `qa.onboarding.admin.20260913`, `qa.teacher.a.20260914`,
+  `qa.teacher.b.20260914`, and `qa.student.{a,b,c}.20260914`.
+- The administrator has email recovery enabled; the UI reported credentials
+  sent to the approved address. Inbox delivery has not been independently
+  confirmed. The other five accounts use usernames without recovery email.
+  Temporary passwords are not recorded in this roadmap or committed files.
+- Students A and B are actively enrolled in QA Class A; C is enrolled in
+  QA Class B. Both teachers share Class A. Teacher A was additionally assigned
+  Class B through the UI; an independent read confirmed all three class grants.
+  Teacher B has a direct assignment to student C. No real memberships changed,
+  and the voluntary feedback-pilot checkbox was not selected.
+- All six accounts correctly retain the first-login password-change flag.
+  Password setup requires user handoff; no flag or credential bypass was used.
+- First-login attempts exposed a production error, so authenticated acceptance
+  is **not passed**. The UI displays React error 441; a runtime log on the
+  verified public deployment records `Identifiant ou mot de passe incorrect`
+  for `/login`. A bounded SOL High investigation is checking the underlying
+  login failure and safe handling of expected authentication errors.
+- Remaining: successful first login/password setup, school-admin-scoped UI,
+  teacher-visible diagnostic/activity reports, invitation/recovery/resume, and
+  browser-level revocation/deactivation/foreign-school denial evidence.
+  Account and assignment persistence do not substitute for these checks.
+
 ## Release gates
 
 1. Integrate the three agent slices; review all service-role paths and RPC checks.
