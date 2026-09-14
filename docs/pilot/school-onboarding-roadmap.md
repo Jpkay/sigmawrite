@@ -477,6 +477,36 @@ This checkpoint supersedes the administrator password handoff above.
   Chrome is signed out by the deactivation test; the administrator session is
   preserved. All three students still need first-password setup.
 
+## Teacher deactivation display correction — 2026-09-14
+
+- SOL High change **`74d2e1a`** clears the account row's local class/direct
+  assignment collections after successful teacher deactivation. Reactivation
+  does not recreate stale grants. Teacher-specific status text explains that
+  assignments were removed and must be assigned again. Backend semantics,
+  password controls and access permissions are unchanged.
+- Main diff review and TypeScript passed. Initial test attempts failed before
+  running tests because the workstation could not create temporary directories
+  (`ENOSPC`). Confirmed no local Next.js server was running, then removed only
+  this repository's untracked, regenerable `.next` build output (88 MB). No
+  source, QA credential or saved evidence file was removed.
+- Serial rerun passed **12 tests across 4 files**, followed by scoped ESLint and
+  whitespace checks. New UI tests check source contracts; the deployed browser
+  check below is required to prove actual state transitions.
+- Source committed and pushed. Candidate
+  **`dpl_DSxb1wworYN3uDYJmGp71vnHWD5t`** built Ready. Candidate `/login`
+  returned 200; unauthenticated `/admin/users` and `/teacher` redirected to
+  login. Promoted this exact candidate. Immutable URL:
+  <https://sigmawrite-ghv59goqe-jpkays-projects.vercel.app>.
+- Fresh public administrator page showed Teacher B at 1 class/1 direct grant.
+  With its class controls expanded, deactivation immediately changed both
+  counts to zero, cleared the class A selected state, and explained that
+  assignments had been removed. No reload was used to establish those changes.
+  Reactivation kept both counts at zero and displayed reassignment guidance.
+- Restored only class A and direct Student C through the UI, then refreshed the
+  account page to verify persistence. The QA teacher is active again with its
+  original scope. Student C's password handoff remains the next step; full-goal
+  student activity, populated reports and foreign-school browser gates are open.
+
 ## Release gates
 
 1. Integrate the three agent slices; review all service-role paths and RPC checks.
