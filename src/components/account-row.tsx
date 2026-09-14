@@ -39,6 +39,26 @@ export function AccountRow({ account, data, busy, onBusy, onError, onResetPasswo
     try { await work(); setStatus(label); } catch (caught) { onError(caught instanceof Error ? caught.message : "Action impossible."); } finally { onBusy(false); }
   }
 
+  async function toggleDeactivated() {
+    const nextDeactivated = !deactivated;
+    const label = account.role === "teacher"
+      ? nextDeactivated
+        ? "Compte enseignant désactivé : connexion bloquée. Les affectations aux classes et aux élèves directs ont été supprimées ; elles devront être réattribuées après réactivation."
+        : "Compte enseignant réactivé. Les affectations supprimées doivent être réattribuées."
+      : nextDeactivated
+        ? "Compte désactivé : connexion bloquée, données conservées."
+        : "Compte réactivé.";
+
+    await run(label, async () => {
+      await actions.setUserDeactivated({ profileId: account.profileId, deactivated: nextDeactivated });
+      setDeactivated(nextDeactivated);
+      if (account.role === "teacher" && nextDeactivated) {
+        setClassIds([]);
+        setDirectStudentIds([]);
+      }
+    });
+  }
+
   return (
     <div className={`py-4 ${deactivated ? "opacity-60" : ""}`}>
       <div className="flex flex-wrap items-center justify-between gap-3">
@@ -64,7 +84,7 @@ export function AccountRow({ account, data, busy, onBusy, onError, onResetPasswo
           {account.role === "teacher" && <Button type="button" size="sm" variant="outline" disabled={busy} onClick={() => setOpen(open === "students" ? null : "students")}><Users className="size-4" />Élèves directs</Button>}
           {account.role === "student" && <Button type="button" size="sm" variant="outline" disabled={busy} onClick={() => setOpen(open === "guardian" ? null : "guardian")}><Users className="size-4" />Parent</Button>}
           {platformAdmin && <Button type="button" size="sm" variant="outline" disabled={busy} onClick={() => setOpen(open === "role" ? null : "role")}><UserCog className="size-4" />Rôle</Button>}
-          <Button type="button" size="sm" variant={deactivated ? "default" : "ghost"} disabled={busy} onClick={() => run(deactivated ? "Compte réactivé." : "Compte désactivé : connexion bloquée, données conservées.", async () => { await actions.setUserDeactivated({ profileId: account.profileId, deactivated: !deactivated }); setDeactivated(!deactivated); })}><Power className="size-4" />{deactivated ? "Réactiver" : "Désactiver"}</Button>
+          <Button type="button" size="sm" variant={deactivated ? "default" : "ghost"} disabled={busy} onClick={() => void toggleDeactivated()}><Power className="size-4" />{deactivated ? "Réactiver" : "Désactiver"}</Button>
         </div>
       </div>
       {status && <p role="status" className="mt-2 text-sm text-success">{status}</p>}
