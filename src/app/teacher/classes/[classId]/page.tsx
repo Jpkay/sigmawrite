@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { PageHeader } from "@/components/page";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -16,6 +17,7 @@ import { requireRole } from "@/lib/auth";
 import { ClassGoalControl } from "@/components/class-goal-control";
 import { loadClassGoal, loadClassLeague } from "@/lib/actions/teacher";
 import { ClassLeagueControl } from "@/components/class-league-control";
+import { createClient } from "@/lib/supabase/server";
 
 export default async function ClassDetailPage({
   params,
@@ -24,8 +26,18 @@ export default async function ClassDetailPage({
 }) {
   const { classId } = await params;
   const session = await requireRole(["teacher", "school_admin"]);
-  const [classGoal, classLeague] = await Promise.all([loadClassGoal(classId).catch(() => null), loadClassLeague(classId).catch(() => null)]);
-  const [students, joinCode, managedAccounts] = await Promise.all([
+  const supabase = await createClient();
+  const { data: accessibleClass, error: accessError } = await supabase
+    .from("classes")
+    .select("id")
+    .eq("id", classId)
+    .maybeSingle();
+  if (accessError) throw new Error(accessError.message);
+  if (!accessibleClass) notFound();
+
+  const [classGoal, classLeague, students, joinCode, managedAccounts] = await Promise.all([
+    loadClassGoal(classId),
+    loadClassLeague(classId),
     getClassStudents(classId),
     getActiveJoinCode(classId),
     getClassManagedAccounts(classId),
