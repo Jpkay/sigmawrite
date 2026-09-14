@@ -361,6 +361,22 @@ This checkpoint supersedes the administrator password handoff above.
   handoff, never a database/API credential bypass. Administrator setup is no
   longer blocked. The goal remains active and is not complete.
 
+## Teacher A credential recovery and first login — 2026-09-14
+
+- Owner used `Mot de passe` for `QA Enseignant A`. The administrator UI displayed
+  that account's new temporary credentials; the previous missing-credential
+  handoff is resolved for this account only.
+- Entered the existing temporary credentials into the public Plume login in a
+  separate Chrome tab, preserving the in-app administrator session. Login
+  succeeded and rendered `Choisir un nouveau mot de passe`. No credential value
+  was printed, saved in a file or committed.
+- Handed the first-login form to the owner before entering a new password.
+  Owner must fill both password fields and submit `Enregistrer et continuer`.
+  Teacher dashboard/report and access-boundary acceptance remains unproven until
+  this mandatory setup is completed. The other four QA accounts remain pending.
+- No application code, database configuration or deployment changed for this
+  check. Public application source remains `fc91ffd`.
+
 ## Release gates
 
 1. Integrate the three agent slices; review all service-role paths and RPC checks.
