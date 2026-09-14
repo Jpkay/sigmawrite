@@ -436,6 +436,19 @@ This checkpoint supersedes the administrator password handoff above.
   account page, followed by login and first-password setup. No further reset or
   new password was performed by the agent. Full-goal gates remain open.
 
+## Teacher B reset and first login — 2026-09-14
+
+- Owner reset `QA Enseignant B` (`qa.teacher.b.20260914`) through the account
+  page. Its temporary credential notice was verified and used privately for
+  login; no password value was printed or persisted.
+- Signed out the tested QA Teacher A Chrome session and signed in Teacher B on
+  the public site. The login succeeded and displayed `Choisir un nouveau mot
+  de passe`. The in-app QA administrator session remains authenticated.
+- Handed Teacher B's new-password form to the owner before entering anything.
+  Its shared-class/direct-student view remains pending this mandatory setup.
+  Teacher A's password and restored assignments were not changed. No code or
+  deployment change was needed; application source remains `8bd589a`.
+
 ## Release gates
 
 1. Integrate the three agent slices; review all service-role paths and RPC checks.
