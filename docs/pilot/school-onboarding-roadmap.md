@@ -289,6 +289,34 @@ This checkpoint supersedes the earlier pending-account-approval notes.
   production configuration/deployment and successful login need the following
   release checkpoint before being counted as passed.
 
+## CAPTCHA correction deployed; first login passed — 2026-09-14
+
+- Source **`bcc3c08`** is committed and pushed. Main review passed **50 tests
+  across 7 focused files**, TypeScript, scoped ESLint and whitespace checks.
+  Coverage includes delegated CAPTCHA denial, rate budgets, first-password
+  routing, mandatory verification before privileged student creation, missing
+  secret refusal, invalid invitations, recovery rejection, and password limits.
+- Added production `SUPABASE_CAPTCHA_ENABLED=true` in the existing Vercel
+  project. Supabase's enabled Turnstile configuration and Plume's independent
+  secret remain unchanged. No database migration or password update was made.
+- Built candidate **`dpl_Cfj5FWeNnyn8227dY6qf72etAmBd`** to Ready. Candidate
+  `/login` and `/join` returned 200; unauthenticated `/admin/users` and `/teacher`
+  redirected to login. Promoted this exact candidate to the public pilot.
+  Immutable URL: <https://sigmawrite-d8h7ajnpo-jpkays-projects.vercel.app>.
+- Fresh browser login at <https://sigmawrite.vercel.app> with the QA
+  administrator's original temporary credentials **succeeded** and displayed
+  `Choisir un nouveau mot de passe`. An independent Auth read confirmed
+  `last_sign_in_at = 2026-09-14 06:58:28.882669+00`; `must_change_password`
+  remains true. This verifies the CAPTCHA correction and mandatory setup gate,
+  not a completed school-administrator journey.
+- Handed the password form to the owner before entering any new credential.
+  The next required interaction is choosing/confirming a password for
+  `qa.onboarding.admin.20260913` and submitting `Enregistrer et continuer`.
+  Do not ask the owner to disclose that password in chat.
+- Remaining full-goal evidence: school-admin-scoped management, teacher/student
+  onboarding and actual report visibility, invitations, recovery/resume, and
+  browser-level last-grant revocation/deactivation/foreign-school denials.
+
 ## Release gates
 
 1. Integrate the three agent slices; review all service-role paths and RPC checks.
