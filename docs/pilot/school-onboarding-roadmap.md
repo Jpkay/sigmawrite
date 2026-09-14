@@ -10,9 +10,9 @@ full multi-account browser acceptance remains incomplete (latest checkpoint belo
 | --- | --- | --- |
 | School and class setup | Platform admin creates a school and appoints its admin; school admin manages only that school and creates/edits classes through the UI | Public UI school creation/admin appointment and school-admin-scoped account management/class creation/edit passed; QA school now has three classes, one empty |
 | Student onboarding and recovery | Valid invitation joins the right class; invalid/expired/revoked invitations fail; login, resume and recovery verified without changing real credentials | Admin login/password setup passed; public invitation validation/rotation passed; student signup, login, recovery and resume remain pending |
-| Many-to-many teacher assignments | Two teachers, two classes and at least three students; shared class and direct-student assignments work; separate grants remain distinguishable | Six QA accounts and shared class/direct grants created; Teacher A browser verifies two classes/three students and direct-only access; Teacher B acceptance pending |
-| Teacher reports | Assigned teacher sees diagnostic results, per-skill evidence, activity and progress; direct assignment works without granting an entire class | Teacher A opens Student C's granular/activity report with class+direct and direct-only grants; empty states verified, populated activity/report evidence pending |
-| Access boundaries and revocation | Cross-school grants, self-grants and direct table-write bypass denied; removing last assignment and deactivation revoke access | Native/hosted SQL passed; Teacher A browser last-grant denial and roster removal passed; deactivation and cross-school browser gates pending |
+| Many-to-many teacher assignments | Two teachers, two classes and at least three students; shared class and direct-student assignments work; separate grants remain distinguishable | Both teachers' public browser views passed: shared class A, Teacher A across A/B, and both teachers' direct Student C access |
+| Teacher reports | Assigned teacher sees diagnostic results, per-skill evidence, activity and progress; direct assignment works without granting an entire class | Both teachers open Student C's granular/activity report; direct-only access excludes the full class; empty states verified, populated activity/report evidence pending |
+| Access boundaries and revocation | Cross-school grants, self-grants and direct table-write bypass denied; removing last assignment and deactivation revoke access | Native/hosted SQL passed; public browser last-grant denial/roster removal and Teacher B session revocation on deactivation passed; cross-school browser gate pending |
 | Verified delivery | Reviewed diff; relevant/integration tests, types, lint, build; forward migration preflight; candidate and public end-to-end verification; commit/push/deploy | Public cutover completed; checks/commits/push passed; full authenticated multi-account end-to-end pending |
 
 ## Execution ownership
@@ -448,6 +448,34 @@ This checkpoint supersedes the administrator password handoff above.
   Its shared-class/direct-student view remains pending this mandatory setup.
   Teacher A's password and restored assignments were not changed. No code or
   deployment change was needed; application source remains `8bd589a`.
+
+## Teacher B shared/direct access and deactivation — 2026-09-14
+
+- Owner completed Teacher B's password setup. Its authenticated dashboard shows
+  one class, three QA students and one direct assignment. Students A/B are
+  labelled class A; Student C is labelled only `Affectation directe`.
+- Teacher B opens Student C's granular diagnostic/activity report through its
+  direct grant. Class B's URL returns the normal 404. Shared class A renders
+  Students A/B, not Student C. The reports page includes all three authorised
+  students with correct empty activity states. Both teacher account views have
+  now been exercised; populated student/report evidence remains pending.
+- Through the approved QA administrator controls, deactivated Teacher B while
+  its Chrome session was active. Refreshing `/teacher/reports` redirected to
+  `/login?next=%2Fteacher%2Freports`; no report content remained visible.
+- Reactivated Teacher B. Backend `setUserDeactivated` intentionally deletes
+  teacher class/direct grants during deactivation; reactivation does not restore
+  them. Restored only its original class A and direct Student C grants through
+  the UI, then refreshed: Teacher B is active with 1 class/1 direct assignment;
+  Teacher A remains at 2 classes/1 direct assignment. No real account changed.
+- Found a display inconsistency: the unrefreshed account row retained the old
+  assignment counts after deactivation/reactivation even though the server had
+  removed them. A bounded SOL High UI fix is in progress to clear those local
+  counts and explain that teacher assignments must be added again. Backend
+  deactivation/security behaviour will remain unchanged.
+- Next account handoff is `QA Élève C` (`qa.student.c.20260914`) so actual
+  student activity can be tested before validating populated teacher reports.
+  Chrome is signed out by the deactivation test; the administrator session is
+  preserved. All three students still need first-password setup.
 
 ## Release gates
 
