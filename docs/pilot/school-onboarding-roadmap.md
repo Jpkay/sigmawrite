@@ -235,6 +235,40 @@ This checkpoint supersedes the earlier pending-account-approval notes.
   browser-level revocation/deactivation/foreign-school denial evidence.
   Account and assignment persistence do not substitute for these checks.
 
+## Login error hotfix deployed; CAPTCHA investigation — 2026-09-14
+
+- Further owner-UI assignment checks passed on synthetic teacher A: added a
+  direct link to student C, removed Class B, observed the message that one pupil
+  retained another known right, and restored Class B. Both QA teachers now have
+  direct links to C. These are management-UI checks, not teacher-view proof.
+- All six QA Auth records are confirmed, not banned/deleted, and have no
+  successful sign-in recorded at the checkpoint. No password was reset.
+- Bounded SOL High change `1982c3e` returns typed expected login errors instead
+  of throwing them through the production Server Action boundary. Only explicit
+  safe errors are returned; unexpected exceptions remain opaque. Supabase
+  `captcha_failed` maps to a fixed anti-robot message without provider details.
+- Review verification: **29 focused tests**, TypeScript, scoped ESLint and
+  whitespace checks passed. The full run passed **2,012 tests** but encountered
+  four disk-space failures and two five-second timeouts. A serial rerun of all
+  six affected suites passed **21 tests**; the full invocation itself was not
+  green. No unrelated tests, timeouts or security checks were weakened.
+- Candidate `dpl_9chfNkEfuV2KDsKXzxwoXF3c7SAJ` built **Ready**. Candidate login
+  returned 200; unauthenticated administrator/teacher routes redirected to login.
+  Promoted this exact deployment, source **`1982c3e`**, to the public pilot.
+  Immutable URL: <https://sigmawrite-fn5dfcnms-jpkays-projects.vercel.app>.
+  No migration or environment/security-setting change accompanied this release.
+- Fresh public-browser QA administrator login now displays
+  `La vérification anti-robot a échoué. Réessayez.` instead of React error 441.
+  Error-message delivery is verified; **successful authentication is not**.
+- Production has `TURNSTILE_SECRET_KEY` but no `SUPABASE_CAPTCHA_ENABLED` flag.
+  The leading hypothesis is duplicate validation of a single-use token by Plume
+  and Supabase Auth. Supabase Auth's CAPTCHA setting still needs direct
+  confirmation; do not disable protection or assume that hypothesis is proven.
+  Its dashboard opened at a sign-in screen. Owner asked to sign in to that
+  Chrome tab so the configuration can be inspected read-only.
+- Remaining acceptance gates above are unchanged. The account-creation approval
+  is resolved; CAPTCHA diagnosis and eventual user password-setup handoff remain.
+
 ## Release gates
 
 1. Integrate the three agent slices; review all service-role paths and RPC checks.
