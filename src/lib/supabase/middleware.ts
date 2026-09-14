@@ -10,6 +10,9 @@ const isConfigured =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
   !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
+const isRouteFamily = (pathname: string, root: string) =>
+  pathname === root || pathname.startsWith(`${root}/`);
+
 /**
  * Refreshes the Supabase session cookie on every request and enforces
  * coarse role-based routing. Fine-grained authorization still lives in
@@ -82,8 +85,9 @@ export async function updateSession(request: NextRequest) {
       const allowed = home.split("/")[1];
       const target = pathname.split("/")[1];
       const platformReviewerAccess = role === "platform_admin" && target === "review";
-      // A school administrator works from the teacher area and manages accounts in /admin/users only.
-      const schoolAdminAccess = role === "school_admin" && pathname.startsWith("/admin/users");
+      // A school administrator works from the teacher area and has two bounded admin route families.
+      const schoolAdminAccess = role === "school_admin"
+        && ["/admin/users", "/admin/schools"].some((root) => isRouteFamily(pathname, root));
       if (allowed !== target && !platformReviewerAccess && !schoolAdminAccess) {
         const url = request.nextUrl.clone();
         url.pathname = home;

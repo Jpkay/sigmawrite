@@ -13,3 +13,29 @@ it('never stamps unauthenticated, wrong-role or password-change redirects',async
  f.user={id:'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'};f.role='teacher';expect((await request('/student')).headers.has('X-Plume-Offline-Owner')).toBe(false);
  f.role='student';f.mustChange=true;expect((await request('/student')).headers.has('X-Plume-Offline-Owner')).toBe(false);
 });
+it.each([
+ ['/admin/users'],
+ ['/admin/users/new'],
+ ['/admin/schools'],
+ ['/admin/schools/example'],
+])('allows school administrators into their bounded admin route families: %s',async(path)=>{
+ f.role='school_admin';
+ expect((await request(path)).headers.get('location')).toBeNull();
+});
+it.each([
+ ['/admin'],
+ ['/admin/reports'],
+ ['/admin/users-evil'],
+ ['/admin/schools-evil'],
+])('redirects school administrators away from other or lookalike admin routes: %s',async(path)=>{
+ f.role='school_admin';
+ expect((await request(path)).headers.get('location')).toBe('https://plume.test/teacher');
+});
+it.each(['teacher','student'])('blocks %s from school administration routes',async(role)=>{
+ f.role=role;
+ expect((await request('/admin/schools')).headers.get('location')).toBe(`https://plume.test/${role}`);
+});
+it('preserves mandatory password setup before school administration access',async()=>{
+ f.role='school_admin';f.mustChange=true;
+ expect((await request('/admin/schools')).headers.get('location')).toBe('https://plume.test/set-password?first=1');
+});
