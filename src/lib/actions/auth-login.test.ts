@@ -171,4 +171,46 @@ describe("password login result boundary", () => {
       redirectTo: "/teacher/classes",
     });
   });
+
+  describe("delegated Supabase CAPTCHA", () => {
+    beforeEach(() => {
+      process.env.TURNSTILE_SECRET_KEY = "configured-secret";
+      process.env.SUPABASE_CAPTCHA_ENABLED = "true";
+      vi.stubGlobal("fetch", vi.fn());
+    });
+
+    it("passes the original token once and preserves mandatory first-password routing", async () => {
+      f.headerGet.mockImplementation((name) => name === "x-forwarded-for" ? "192.0.2.1" : null);
+      await expect(loginWithPassword({ ...input, next: "/teacher" })).resolves.toEqual({
+        ok: true, redirectTo: "/set-password?first=1",
+      });
+      expect(fetch).not.toHaveBeenCalled();
+      expect(f.signIn).toHaveBeenCalledExactlyOnceWith({
+        email: "admin@example.test", password: input.password,
+        options: { captchaToken: input.captchaToken },
+      });
+      expect(f.rateLimit).toHaveBeenCalledTimes(2);
+      expect(f.rateLimit.mock.invocationCallOrder[1]).toBeLessThan(f.signIn.mock.invocationCallOrder[0]);
+    });
+
+    it.each(["turnstile-token", null])("blocks provider rejection with token %s", async (captchaToken) => {
+      f.signIn.mockResolvedValue({ data: { user: null }, error: { code: "captcha_failed", message: "private provider detail" } });
+      await expect(loginWithPassword({ ...input, captchaToken })).resolves.toEqual({
+        ok: false, error: "La vérification anti-robot a échoué. Réessayez.",
+      });
+      expect(fetch).not.toHaveBeenCalled();
+      expect(f.signIn).toHaveBeenCalledWith(expect.objectContaining({ options: { captchaToken: captchaToken ?? undefined } }));
+      expect(f.sessionProfile).not.toHaveBeenCalled();
+    });
+
+    it("blocks a denied rate budget before lookup or provider authentication", async () => {
+      f.rateLimit.mockResolvedValue({ data: [{ allowed: false }], error: null });
+      await expect(loginWithPassword(input)).resolves.toEqual({
+        ok: false, error: "Trop de tentatives. Attendez quelques minutes avant de réessayer.",
+      });
+      expect(fetch).not.toHaveBeenCalled();
+      expect(f.serviceProfile).not.toHaveBeenCalled();
+      expect(f.signIn).not.toHaveBeenCalled();
+    });
+  });
 });

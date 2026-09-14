@@ -56,11 +56,16 @@ async function enforceAuthRateLimit(identifier: string) {
 /**
  * Independent Turnstile check; a no-op unless TURNSTILE_SECRET_KEY is set.
  * Turnstile tokens are single-use, so when the Supabase project verifies the
- * captcha itself set SUPABASE_CAPTCHA_ENABLED=true and this check steps aside.
+ * captcha itself set SUPABASE_CAPTCHA_ENABLED=true and this check steps aside
+ * only for public Auth endpoints. Privileged creation must verify here first.
  */
-async function verifyTurnstile(token: string | null | undefined) {
+async function verifyTurnstile(token: string | null | undefined, privilegedCreation = false) {
   const secret = process.env.TURNSTILE_SECRET_KEY;
-  if (!secret || process.env.SUPABASE_CAPTCHA_ENABLED === "true") return;
+  const delegated = process.env.SUPABASE_CAPTCHA_ENABLED === "true";
+  if (privilegedCreation && delegated && !secret) {
+    throw new ExpectedAuthError("Service d’authentification momentanément indisponible.");
+  }
+  if (!secret || (delegated && !privilegedCreation)) return;
   if (!token) throw new ExpectedAuthError("Terminez la vérification anti-robot.");
   const address = await clientAddress();
   const response = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ secret, response: token, remoteip: address ?? undefined }) });
@@ -206,7 +211,7 @@ const joinWithoutEmailInput = z.object({
   displayName: z.string().trim().min(2).max(120),
   username: z.string().trim().toLowerCase().regex(USERNAME_PATTERN),
   dateOfBirth: z.string().date(),
-  password: z.string().min(12).max(200),
+  password: z.string().min(12).max(128),
   captchaToken: z.string().optional().nullable(),
 });
 
@@ -215,7 +220,7 @@ export async function joinClassWithoutEmail(input: unknown): Promise<{ username:
   if (!parsed.success) throw new Error(parsed.error.issues[0]?.message ?? "Informations invalides.");
   const data = { ...parsed.data, code: normalizeInviteCode(parsed.data.code) };
   await enforceAuthRateLimit(`join:${data.username}`);
-  await verifyTurnstile(data.captchaToken);
+  await verifyTurnstile(data.captchaToken, true);
   const service = createServiceClient();
   const { data: codes, error: codeError } = await service.rpc("validate_class_join_code", { p_code: data.code.toUpperCase() });
   if (codeError || !(Array.isArray(codes) ? codes[0] : codes)) throw new Error("Ce code est invalide, expiré ou complet.");
@@ -232,7 +237,12 @@ export async function joinClassWithoutEmail(input: unknown): Promise<{ username:
     const message = error?.message ?? "";
     throw new Error(/join_code/u.test(message) ? "Ce code est invalide, expiré ou complet." : /username|duplicate/u.test(message) ? "Ce nom d’utilisateur est déjà pris." : "Le compte n’a pas pu être créé.");
   }
-  // Sign the new student in through the cookie-backed server client so no second captcha is needed.
+  // Admin creation required local verification. A public Auth sign-in would
+  // consume that token again; the existing login handoff obtains a fresh one.
+  if (process.env.SUPABASE_CAPTCHA_ENABLED === "true") {
+    return { username: data.username, signedIn: false };
+  }
+  // Without native CAPTCHA, retain the cookie-backed automatic sign-in.
   const db = await createClient();
   const { error: signInError } = await db.auth.signInWithPassword({ email: authEmail, password: data.password, options: { captchaToken: data.captchaToken ?? undefined } });
   return { username: data.username, signedIn: !signInError };

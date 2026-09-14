@@ -8,9 +8,9 @@ full multi-account browser acceptance remains incomplete (latest checkpoint belo
 
 | Requirement | Required proof | Current state |
 | --- | --- | --- |
-| School and class setup | Platform admin creates a school and appoints its admin; school admin manages only that school and creates/edits classes through the UI | Public UI school and two-class creation passed; scoped admin appointment and school-admin journey pending |
+| School and class setup | Platform admin creates a school and appoints its admin; school admin manages only that school and creates/edits classes through the UI | Public UI school/two-class creation and QA admin appointment passed; school-admin-scoped journey pending |
 | Student onboarding and recovery | Valid invitation joins the right class; invalid/expired/revoked invitations fail; login, resume and recovery verified without changing real credentials | Implemented; focused action and native invitation checks passed; hosted login/recovery pending |
-| Many-to-many teacher assignments | Two teachers, two classes and at least three students; shared class and direct-student assignments work; separate grants remain distinguishable | Implemented; synthetic database assertions passed; hosted UI pending |
+| Many-to-many teacher assignments | Two teachers, two classes and at least three students; shared class and direct-student assignments work; separate grants remain distinguishable | Owner UI created six QA accounts and shared class/direct grants; class removal retained a direct grant; teacher-view acceptance pending |
 | Teacher reports | Assigned teacher sees diagnostic results, per-skill evidence, activity and progress; direct assignment works without granting an entire class | Current granular diagnostic/activity DTO implemented; authorization/privacy tests passed; hosted report pending |
 | Access boundaries and revocation | Cross-school grants, self-grants and direct table-write bypass denied; removing last assignment and deactivation revoke access | Native and hosted rollback SQL assertions passed; browser multi-account denial/revocation pending |
 | Verified delivery | Reviewed diff; relevant/integration tests, types, lint, build; forward migration preflight; candidate and public end-to-end verification; commit/push/deploy | Public cutover completed; checks/commits/push passed; full authenticated multi-account end-to-end pending |
@@ -268,6 +268,26 @@ This checkpoint supersedes the earlier pending-account-approval notes.
   Chrome tab so the configuration can be inspected read-only.
 - Remaining acceptance gates above are unchanged. The account-creation approval
   is resolved; CAPTCHA diagnosis and eventual user password-setup handoff remain.
+
+## CAPTCHA ownership confirmed — 2026-09-14
+
+- The Supabase dashboard still required sign-in, but the already-authenticated
+  CLI credential provided a safe read-only alternative. The official Management
+  API returned HTTP 200 for this exact public-pilot project's Auth configuration:
+  CAPTCHA **enabled**, provider **Turnstile**, secret configured. No credential
+  value or full configuration response was logged or written to the repository.
+  Dashboard sign-in is no longer required to establish this configuration.
+- Plume must set `SUPABASE_CAPTCHA_ENABLED=true` for login/recovery so Supabase
+  receives the token before it is consumed. Supabase protection remains enabled;
+  the independent `TURNSTILE_SECRET_KEY` must remain configured as well.
+- Review found that no-email class joining uses privileged Auth account creation,
+  which cannot delegate its pre-creation CAPTCHA check. A bounded SOL High fix
+  keeps that verification mandatory, fails closed in delegated mode without the
+  local secret, and returns the existing fresh-login handoff after creation.
+  It also aligns the join password limit with the login limit.
+- This checkpoint records the verified cause and reviewed release requirements;
+  production configuration/deployment and successful login need the following
+  release checkpoint before being counted as passed.
 
 ## Release gates
 

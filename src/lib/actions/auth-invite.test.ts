@@ -93,6 +93,83 @@ describe("no-email class join", () => {
     expect(f.serviceRpc).not.toHaveBeenCalled();
     expect(f.createUser).not.toHaveBeenCalled();
   });
+
+  describe("privileged creation with delegated public Auth CAPTCHA", () => {
+    beforeEach(() => {
+      process.env.TURNSTILE_SECRET_KEY = "configured-secret";
+      process.env.SUPABASE_CAPTCHA_ENABLED = "true";
+      vi.stubGlobal("fetch", vi.fn().mockResolvedValue({ json: async () => ({ success: true }) }));
+    });
+
+    it("requires a token before checking the invitation or creating an account", async () => {
+      await expect(joinClassWithoutEmail({ ...baseInput, captchaToken: null })).rejects.toThrow("vérification anti-robot");
+      expect(fetch).not.toHaveBeenCalled();
+      expect(f.serviceRpc).not.toHaveBeenCalled();
+      expect(f.createUser).not.toHaveBeenCalled();
+      expect(f.signIn).not.toHaveBeenCalled();
+    });
+
+    it("rejects passwords longer than the login limit before any privileged operation", async () => {
+      await expect(joinClassWithoutEmail({ ...baseInput, password: "a".repeat(129) })).rejects.toThrow();
+      expect(f.dbRpc).not.toHaveBeenCalled();
+      expect(fetch).not.toHaveBeenCalled();
+      expect(f.serviceRpc).not.toHaveBeenCalled();
+      expect(f.createUser).not.toHaveBeenCalled();
+    });
+
+    it("blocks a failed independent token before any privileged operation", async () => {
+      vi.mocked(fetch).mockResolvedValue({ json: async () => ({ success: false }) } as Response);
+      await expect(joinClassWithoutEmail(baseInput)).rejects.toThrow("vérification anti-robot a échoué");
+      expect(fetch).toHaveBeenCalledOnce();
+      expect(f.serviceRpc).not.toHaveBeenCalled();
+      expect(f.createUser).not.toHaveBeenCalled();
+      expect(f.signIn).not.toHaveBeenCalled();
+    });
+
+    it("fails closed without a local secret even though public Auth delegates", async () => {
+      delete process.env.TURNSTILE_SECRET_KEY;
+      await expect(joinClassWithoutEmail(baseInput)).rejects.toThrow("momentanément indisponible");
+      expect(fetch).not.toHaveBeenCalled();
+      expect(f.serviceRpc).not.toHaveBeenCalled();
+      expect(f.createUser).not.toHaveBeenCalled();
+    });
+
+    it("verifies before creating the invited student and hands off to a fresh login", async () => {
+      await expect(joinClassWithoutEmail(baseInput)).resolves.toEqual({ username: baseInput.username, signedIn: false });
+      expect(fetch).toHaveBeenCalledExactlyOnceWith("https://challenges.cloudflare.com/turnstile/v0/siteverify", expect.objectContaining({
+        method: "POST",
+        body: JSON.stringify({ secret: "configured-secret", response: baseInput.captchaToken }),
+      }));
+      expect(f.serviceRpc).toHaveBeenCalledWith("validate_class_join_code", { p_code: baseInput.code.toUpperCase() });
+      expect(f.createUser).toHaveBeenCalledExactlyOnceWith({
+        email: expect.stringMatching(/^account\+.+@accounts\.sigmawrite\.app$/),
+        password: baseInput.password, email_confirm: true,
+        user_metadata: {
+          role: "student", display_name: baseInput.displayName, username: baseInput.username,
+          date_of_birth: baseInput.dateOfBirth, join_code: baseInput.code.toUpperCase(), password_set: true,
+        },
+      });
+      expect(f.dbRpc.mock.invocationCallOrder[0]).toBeLessThan(vi.mocked(fetch).mock.invocationCallOrder[0]);
+      expect(vi.mocked(fetch).mock.invocationCallOrder[0]).toBeLessThan(f.serviceRpc.mock.invocationCallOrder[0]);
+      expect(f.serviceRpc.mock.invocationCallOrder[0]).toBeLessThan(f.createUser.mock.invocationCallOrder[0]);
+      expect(f.signIn).not.toHaveBeenCalled();
+    });
+
+    it("still refuses an invalid invitation after successful CAPTCHA", async () => {
+      f.serviceRpc.mockResolvedValue({ data: [], error: null });
+      await expect(joinClassWithoutEmail(baseInput)).rejects.toThrow("code est invalide");
+      expect(f.createUser).not.toHaveBeenCalled();
+      expect(f.signIn).not.toHaveBeenCalled();
+    });
+
+    it("still enforces the rate budget before verification or creation", async () => {
+      f.dbRpc.mockResolvedValue({ data: [{ allowed: false }], error: null });
+      await expect(joinClassWithoutEmail(baseInput)).rejects.toThrow("Trop de tentatives");
+      expect(fetch).not.toHaveBeenCalled();
+      expect(f.serviceRpc).not.toHaveBeenCalled();
+      expect(f.createUser).not.toHaveBeenCalled();
+    });
+  });
 });
 
 describe("password recovery Turnstile boundary", () => {
@@ -138,5 +215,14 @@ describe("password recovery Turnstile boundary", () => {
     expect(fetchSpy).not.toHaveBeenCalled();
     expect(f.serviceFrom).not.toHaveBeenCalled();
     expect(f.resetPassword).toHaveBeenCalledWith("adult@example.invalid", expect.objectContaining({ captchaToken: "supabase-token" }));
+  });
+
+  it("does not report recovery success when the delegated provider rejects CAPTCHA", async () => {
+    process.env.SUPABASE_CAPTCHA_ENABLED = "true";
+    vi.stubGlobal("fetch", vi.fn());
+    f.resetPassword.mockResolvedValue({ error: { code: "captcha_failed", message: "private provider detail" } });
+    await expect(requestPasswordRecovery({ identifier: "adult@example.invalid", captchaToken: "rejected-token" })).rejects.toThrow("Le lien n’a pas pu être envoyé.");
+    expect(fetch).not.toHaveBeenCalled();
+    expect(f.resetPassword).toHaveBeenCalledWith("adult@example.invalid", expect.objectContaining({ captchaToken: "rejected-token" }));
   });
 });
