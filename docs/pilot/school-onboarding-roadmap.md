@@ -525,11 +525,31 @@ This checkpoint supersedes the administrator password handoff above.
   <https://sigmawrite.vercel.app>, and aligned `develop` / `origin/develop` at
   `cc8eb8385572d641ae0fe2990617caee265af791`. This entry does not claim a fresh
   production deployment verification.
+- Owner subsequently completed Student C's first-password form. The authenticated
+  student identity was accepted, onboarding saved three interests and routed to
+  the diagnostic. A bounded read-only production query confirmed
+  `must_change_password=false`, a completed onboarding timestamp and exactly
+  three interest rows for student `41506dc0-590a-4c00-9a1a-17c83e628631`.
+- The production diagnostic then displayed `Ce diagnostic n’est pas encore
+  disponible.` The configured non-secret release key was exactly
+  `french-granular-diagnostic-v43-modal\n`, with an actual trailing newline.
+  That value has no exact release-row match; the whitespace-trimmed key resolves
+  to published release `b6f62722-c913-4d64-9ffd-59027eefc73b`, whose taxonomy,
+  bank, provenance identifiers and parent checksums all match and are published.
+- A deployment worker is correcting only the newline in the production
+  environment and preparing a fresh candidate. At this checkpoint the correction
+  is still under verification and has not been counted as deployed. No successful
+  diagnostic start, response or completion is claimed.
+- `/student` redirected back to the unavailable diagnostic, while
+  `/student/lessons` reached its normal locked-state full-page error because the
+  diagnostic gate had not opened. The same bounded production read confirmed
+  zero granular sessions, zero reading sessions and zero daily-activity rows for
+  Student C. Populated teacher evidence therefore remains unproven.
 
 ### Shortest remaining acceptance checklist
 
-1. Owner completes Student C's first-password form without sharing or recording
-   the chosen password; confirm the student landing page renders.
+1. Verify the fresh candidate and production deployment after the release-key
+   newline correction, then confirm Student C can actually start the diagnostic.
 2. As Student C, complete `/student/diagnostic`; start a reading at
    `/student/read/[textSlug]`, leave it unfinished, reopen it to prove resume,
    then complete it.
