@@ -557,6 +557,32 @@ This checkpoint supersedes the administrator password handoff above.
   sessions. This proves start, persistence and pause/resume, not diagnostic
   completion, reading completion or populated teacher reports.
 
+## Additional isolation fixture authorization and invitation UI gap — 2026-09-22
+
+- Owner authorized exactly one additional synthetic school, class and student
+  account, bringing the approved account ceiling to seven, for invitation signup
+  and cross-school browser acceptance. Authorization does not mean the seventh
+  account has been created.
+- Through the public platform-administrator UI, created school
+  `QA Isolation — 2026-09-22` (`cb5326e3-fed0-4b42-a561-7eeffac36cc0`) and class
+  `QA Classe Isolation — 2026-09-22`
+  (`9718b70d-dd82-4e4c-9e1d-b7d565bafbff`). A scoped read confirmed the class
+  belongs to that school.
+- At the checkpoint, the original QA school still had exactly six profiles and
+  `qa.student.isolation.20260922` had zero profiles. The existing six accounts
+  were unchanged; no seventh student account or class enrollment had been
+  created.
+- The application UI/role mismatch is implemented: the invitation action now
+  admits platform administrators, the school console links to a scoped
+  administrator invitation page, and the page retains the authenticated client
+  plus `can_manage_class_invitations` database authorization. Main review and
+  integration passed **41 tests across 5 files**, changed-file lint, full
+  TypeScript and whitespace checks. Deployment is pending; invitation generation,
+  signup, one-use consumption and foreign-school browser denial remain unproven.
+- Student C remains unchanged at the last verified checkpoint: session
+  `08bdc0f8-04cc-4c85-b484-21252a0df38b` is paused at revision 20 with five
+  answered observations and no reading sessions.
+
 ### Shortest remaining acceptance checklist
 
 1. As Student C, complete `/student/diagnostic`; start a reading at
@@ -566,13 +592,14 @@ This checkpoint supersedes the administrator password handoff above.
    `/teacher/reports`; confirm populated granular/per-skill evidence, the
    completed reading activity, and the resulting daily/weekly XP metrics.
 3. Invitation signup remains a separate gate: consume a fresh invitation through
-   the public signup journey and verify class membership. This requires explicit
-   approval for an additional synthetic account/invitation fixture; the existing
+   the public signup journey and verify class membership. The owner-approved
+   seventh synthetic account has not yet been created or enrolled; the existing
    six-account fixture must not be repurposed or mutated for it.
-4. Foreign-school browser denial also remains a separate gate and requires an
-   approved second-school identity/assignment fixture. Do not count the already
-   passed last-grant removal, unassigned-class 404, roster removal or active-
-   session deactivation checks as foreign-school proof.
+4. Foreign-school browser denial also remains a separate gate. The approved
+   isolation school and class exist, but the seventh identity, scoped assignment
+   and browser denial evidence remain pending. Do not count the already passed
+   last-grant removal, unassigned-class 404, roster removal or active-session
+   deactivation checks as foreign-school proof.
 
 ## Release gates
 

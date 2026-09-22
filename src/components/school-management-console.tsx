@@ -82,7 +82,10 @@ function ClassEditor({ selectedClass }: { selectedClass: SchoolManagementClass }
       <label className="text-sm">Nom<input className={inputClass} required minLength={2} maxLength={100} value={name} onChange={(event) => setName(event.target.value)} /></label>
       <label className="text-sm">Niveau<input className={inputClass} required type="number" min={5} max={12} value={gradeLevel} onChange={(event) => setGradeLevel(Number(event.target.value))} /></label>
       <label className="text-sm">Année scolaire<input className={inputClass} required minLength={4} maxLength={20} placeholder="2026–2027" value={academicYear} onChange={(event) => setAcademicYear(event.target.value)} /></label>
-      <Button type="submit" size="sm" variant="outline" disabled={busy}><Save />{busy ? "Enregistrement…" : "Enregistrer"}</Button>
+      <div className="flex flex-wrap gap-2">
+        <Button type="submit" size="sm" variant="outline" disabled={busy}><Save />{busy ? "Enregistrement…" : "Enregistrer"}</Button>
+        <Button asChild size="sm" variant="outline"><Link href={`/admin/schools/classes/${selectedClass.id}/invitations`}>Inviter des élèves <ArrowRight /></Link></Button>
+      </div>
       {(message || error) && <p role={error ? "alert" : "status"} className={`text-sm md:col-span-4 ${error ? "text-destructive" : "text-success"}`}>{error || message}</p>}
     </form>
   );

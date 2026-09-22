@@ -21,7 +21,7 @@ export async function createClass(input: unknown) {
 }
 
 export async function inviteStudents(input: unknown) {
-  const session = await requireRole(["teacher", "school_admin"]);
+  const session = await requireRole(["teacher", "school_admin", "platform_admin"]);
   const parsed = classInviteInputSchema.safeParse(input);
   if (!parsed.success) throw new Error("Paramètres du code invalides.");
   const data = parsed.data;
@@ -47,6 +47,7 @@ export async function inviteStudents(input: unknown) {
     metadata: { expiresAt, maxUses: data.maxUses, accessBasis: "school_invitation", createdByRole: session.role },
   });
   revalidatePath(`/teacher/classes/${data.classId}`);
+  revalidatePath(`/admin/schools/classes/${data.classId}/invitations`);
   return {
     id: created.id as string,
     code: created.code as string,
