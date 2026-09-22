@@ -536,31 +536,40 @@ This checkpoint supersedes the administrator password handoff above.
   That value has no exact release-row match; the whitespace-trimmed key resolves
   to published release `b6f62722-c913-4d64-9ffd-59027eefc73b`, whose taxonomy,
   bank, provenance identifiers and parent checksums all match and are published.
-- A deployment worker is correcting only the newline in the production
-  environment and preparing a fresh candidate. At this checkpoint the correction
-  is still under verification and has not been counted as deployed. No successful
-  diagnostic start, response or completion is claimed.
-- `/student` redirected back to the unavailable diagnostic, while
-  `/student/lessons` reached its normal locked-state full-page error because the
-  diagnostic gate had not opened. The same bounded production read confirmed
-  zero granular sessions, zero reading sessions and zero daily-activity rows for
-  Student C. Populated teacher evidence therefore remains unproven.
+- Corrected only the production release-key newline. The exact configured key is
+  now `french-granular-diagnostic-v43-modal`: 36 characters, ending in `l`
+  (character code 108). Code fix `dc0667d` redirects a locked student from
+  `/student/lessons` to the diagnostic instead of rendering the generic error.
+  Promoted deployment `dpl_AuydUuMowWnkUDdmvT9Xa99a3Emb`, source `573a1ac`, and
+  independently confirmed the public alias resolves to it.
+- Final public-browser QA at 21:07:22 CAT confirmed Student C remained
+  authenticated, `/student/lessons` redirected to the diagnostic without a
+  generic error, and the diagnostic start screen loaded with zero answers and a
+  35-minute estimate. Student C answered four real questions, paused, reloaded
+  and resumed at the same fifth question. The fifth answer persisted; the paused
+  screen then showed five answers, zero skips, a 32-minute estimate,
+  `Progression enregistrée` and `Reprendre`.
+- A read-only production checkpoint at `2026-09-22 19:08:23.901033+00` confirmed
+  granular session `08bdc0f8-04cc-4c85-b484-21252a0df38b`, release
+  `b6f62722-c913-4d64-9ffd-59027eefc73b`, revision 20, phase `assessing`, paused,
+  with five observations, five answered and zero skipped. Its last persisted
+  update was `2026-09-22 19:07:10.105636+00`; Student C still had zero reading
+  sessions. This proves start, persistence and pause/resume, not diagnostic
+  completion, reading completion or populated teacher reports.
 
 ### Shortest remaining acceptance checklist
 
-1. Verify the fresh candidate and production deployment after the release-key
-   newline correction, then confirm Student C can actually start the diagnostic.
-2. As Student C, complete `/student/diagnostic`; start a reading at
+1. As Student C, complete `/student/diagnostic`; start a reading at
    `/student/read/[textSlug]`, leave it unfinished, reopen it to prove resume,
    then complete it.
-3. In both authorised teacher accounts, open Student C's detail and
+2. In both authorised teacher accounts, open Student C's detail and
    `/teacher/reports`; confirm populated granular/per-skill evidence, the
    completed reading activity, and the resulting daily/weekly XP metrics.
-4. Invitation signup remains a separate gate: consume a fresh invitation through
+3. Invitation signup remains a separate gate: consume a fresh invitation through
    the public signup journey and verify class membership. This requires explicit
    approval for an additional synthetic account/invitation fixture; the existing
    six-account fixture must not be repurposed or mutated for it.
-5. Foreign-school browser denial also remains a separate gate and requires an
+4. Foreign-school browser denial also remains a separate gate and requires an
    approved second-school identity/assignment fixture. Do not count the already
    passed last-grant removal, unassigned-class 404, roster removal or active-
    session deactivation checks as foreign-school proof.
