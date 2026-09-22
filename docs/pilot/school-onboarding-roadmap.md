@@ -572,13 +572,31 @@ This checkpoint supersedes the administrator password handoff above.
   `qa.student.isolation.20260922` had zero profiles. The existing six accounts
   were unchanged; no seventh student account or class enrollment had been
   created.
-- The application UI/role mismatch is implemented: the invitation action now
+- The application UI/role mismatch is fixed and live: the invitation action now
   admits platform administrators, the school console links to a scoped
   administrator invitation page, and the page retains the authenticated client
   plus `can_manage_class_invitations` database authorization. Main review and
   integration passed **41 tests across 5 files**, changed-file lint, full
-  TypeScript and whitespace checks. Deployment is pending; invitation generation,
-  signup, one-use consumption and foreign-school browser denial remain unproven.
+  TypeScript and whitespace checks. Promoted deployment
+  `dpl_2BFF7tjfQR2vFnd899DZXqm3nrvW`, source
+  `53d50818d02e3e58767e8a51497877bb19978daf`, to
+  <https://sigmawrite.vercel.app>.
+- The live administrator route
+  `/admin/schools/classes/9718b70d-dd82-4e4c-9e1d-b7d565bafbff/invitations`
+  rendered the correct class and initially showed no code. Generated one
+  seven-day, one-use invitation; refreshing retained the same private code, so
+  no replacement occurred. A single read-only checkpoint confirmed invitation
+  `0571d5f8-9bea-4591-80c2-1bbbc9ab1724` for the expected class, created
+  `2026-09-22 19:37:10.353948+00`, expiring
+  `2026-09-29 19:37:10.353948+00`, with `uses=0`, `max_uses=1` and no revocation.
+  The private code was not queried or recorded.
+- No account creation or signup has started. The original QA school remains at
+  six profiles and `qa.student.isolation.20260922` remains absent. The seventh
+  account is approved, not awaiting fixture approval. Its signup handoff is now
+  gated by browser/model access: this agent cannot operate the parent-owned
+  in-app browser, and the user requested Astra permission before further UI work.
+  One-use consumption and foreign-school browser denial therefore remain
+  unproven.
 - Student C remains unchanged at the last verified checkpoint: session
   `08bdc0f8-04cc-4c85-b484-21252a0df38b` is paused at revision 20 with five
   answered observations and no reading sessions.
