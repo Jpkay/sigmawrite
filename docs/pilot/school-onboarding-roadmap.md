@@ -590,16 +590,36 @@ This checkpoint supersedes the administrator password handoff above.
   `2026-09-22 19:37:10.353948+00`, expiring
   `2026-09-29 19:37:10.353948+00`, with `uses=0`, `max_uses=1` and no revocation.
   The private code was not queried or recorded.
-- No account creation or signup has started. The original QA school remains at
-  six profiles and `qa.student.isolation.20260922` remains absent. The seventh
-  account is approved, not awaiting fixture approval. Its signup handoff is now
-  gated by browser/model access: this agent cannot operate the parent-owned
-  in-app browser, and the user requested Astra permission before further UI work.
-  One-use consumption and foreign-school browser denial therefore remain
-  unproven.
+- At that checkpoint, no account creation or signup had started. The original QA
+  school remained at six profiles and `qa.student.isolation.20260922` remained
+  absent. The seventh account was approved, not awaiting fixture approval. Its
+  signup handoff was then gated by browser/model access: this agent could not
+  operate the parent-owned in-app browser, and the user had requested Astra
+  permission before further UI work. One-use consumption and foreign-school
+  browser denial were therefore still unproven at that time.
 - Student C remains unchanged at the last verified checkpoint: session
   `08bdc0f8-04cc-4c85-b484-21252a0df38b` is paused at revision 20 with five
   answered observations and no reading sessions.
+
+### Owner invitation-signup checkpoint — 2026-09-22
+
+- The owner completed password setup on public `/join` for the synthetic username
+  `qa.student.isolation.20260922`, using the isolation school and class recorded
+  above. The public app redirected to `/login?joined=1` and explicitly confirmed
+  `Ton compte a été créé`.
+- A fresh public `/join` revalidation of that exact one-use invitation was rejected
+  as invalid, expired, revoked or full. No invitation code or password is recorded
+  here.
+- Independent read-only production verification at `2026-09-22 20:28:09+00`
+  found exactly one Auth account, profile and student row for
+  `qa.student.isolation.20260922`: school
+  `cb5326e3-fed0-4b42-a561-7eeffac36cc0`, grade 7, and exactly one active
+  enrollment in class `9718b70d-dd82-4e4c-9e1d-b7d565bafbff`. Invitation
+  `0571d5f8-9bea-4591-80c2-1bbbc9ab1724` had `uses=1` and `max_uses=1`.
+  The original QA school still had six profiles; across the approved two-school
+  QA scope there were exactly seven active profiles and seven distinct Auth
+  accounts. Browser login/recovery, populated teacher reports and cross-school
+  browser denial remain pending.
 
 ### Shortest remaining acceptance checklist
 
@@ -609,13 +629,11 @@ This checkpoint supersedes the administrator password handoff above.
 2. In both authorised teacher accounts, open Student C's detail and
    `/teacher/reports`; confirm populated granular/per-skill evidence, the
    completed reading activity, and the resulting daily/weekly XP metrics.
-3. Invitation signup remains a separate gate: consume a fresh invitation through
-   the public signup journey and verify class membership. The owner-approved
-   seventh synthetic account has not yet been created or enrolled; the existing
-   six-account fixture must not be repurposed or mutated for it.
+3. Complete browser login and recovery checks for the database-verified seventh
+   synthetic account.
 4. Foreign-school browser denial also remains a separate gate. The approved
-   isolation school and class exist, but the seventh identity, scoped assignment
-   and browser denial evidence remain pending. Do not count the already passed
+   isolation school, class, seventh identity and its enrollment are verified,
+   but browser denial evidence remains pending. Do not count the already passed
    last-grant removal, unassigned-class 404, roster removal or active-session
    deactivation checks as foreign-school proof.
 
