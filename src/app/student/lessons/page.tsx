@@ -11,13 +11,17 @@ import { requireRole } from "@/lib/auth";
 import { createClient, createServiceClient } from "@/lib/supabase/server";
 import { getCurrentStudentId } from "@/lib/db/student";
 import { getCatchUpPlan } from "@/lib/db/practice";
-import { requireStudentLearningUnlocked } from "@/lib/diagnostic/access";
+import { redirect } from "next/navigation";
 
 export default async function StudentLessonsPage() {
   const session = await requireRole(["student"]);
   const db = await createClient();
   const studentId = await getCurrentStudentId(db);
-  await requireStudentLearningUnlocked(db, studentId);
+  const {data: learningUnlocked, error: learningUnlockError} = await db.rpc("student_learning_is_unlocked", {
+    p_student_id: studentId,
+  });
+  if (learningUnlockError) throw new Error("La vérification du diagnostic a échoué. Réessaie.");
+  if (learningUnlocked !== true) redirect("/student/diagnostic");
   const assessmentStore = new SupabaseAssessmentStore(createServiceClient());
   const granular = process.env.GRANULAR_DIAGNOSTIC_ENABLED === "true"
     ? await assessmentStore.latestLearning(studentId) : null;
