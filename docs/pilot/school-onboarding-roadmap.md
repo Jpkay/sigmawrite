@@ -507,6 +507,44 @@ This checkpoint supersedes the administrator password handoff above.
   original scope. Student C's password handoff remains the next step; full-goal
   student activity, populated reports and foreign-school browser gates are open.
 
+## Student C handoff and remaining browser acceptance — 2026-09-22
+
+- Using the existing temporary credential for `qa.student.c.20260914`, the
+  public login reached `/set-password?first=1` in the in-app browser. Both
+  password fields were left untouched and the Chrome administrator session was
+  preserved. Owner completion of the password handoff has not been confirmed,
+  so Student C authentication and activity acceptance have not passed.
+- The intended evidence path is already implemented: `/student/diagnostic`
+  records granular observations and refinements in
+  `granular_assessment_sessions.state`, while a completed
+  `/student/read/[textSlug]` session records `reading_sessions`, `dailyactivity`
+  and XP used by weekly metrics; an unfinished reading session can be resumed.
+  Student C still has no proven populated teacher-detail or reports evidence.
+- Last verified release baseline before this checkpoint was application source
+  `74d2e1a`, production deployment `dpl_DSxb1wworYN3uDYJmGp71vnHWD5t` at
+  <https://sigmawrite.vercel.app>, and aligned `develop` / `origin/develop` at
+  `cc8eb8385572d641ae0fe2990617caee265af791`. This entry does not claim a fresh
+  production deployment verification.
+
+### Shortest remaining acceptance checklist
+
+1. Owner completes Student C's first-password form without sharing or recording
+   the chosen password; confirm the student landing page renders.
+2. As Student C, complete `/student/diagnostic`; start a reading at
+   `/student/read/[textSlug]`, leave it unfinished, reopen it to prove resume,
+   then complete it.
+3. In both authorised teacher accounts, open Student C's detail and
+   `/teacher/reports`; confirm populated granular/per-skill evidence, the
+   completed reading activity, and the resulting daily/weekly XP metrics.
+4. Invitation signup remains a separate gate: consume a fresh invitation through
+   the public signup journey and verify class membership. This requires explicit
+   approval for an additional synthetic account/invitation fixture; the existing
+   six-account fixture must not be repurposed or mutated for it.
+5. Foreign-school browser denial also remains a separate gate and requires an
+   approved second-school identity/assignment fixture. Do not count the already
+   passed last-grant removal, unassigned-class 404, roster removal or active-
+   session deactivation checks as foreign-school proof.
+
 ## Release gates
 
 1. Integrate the three agent slices; review all service-role paths and RPC checks.
