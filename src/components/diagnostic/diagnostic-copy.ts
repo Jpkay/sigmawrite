@@ -3,9 +3,11 @@ import {EXERCISE_CONTROL_COPY} from "@/lib/content/exercise-control-copy";
 import {FEATURE_LABELS} from "@/lib/diagnostic/granular/feature-labels";
 import {RESULT_GROUPS} from "@/lib/diagnostic/granular/result-groups";
 import {ASSESSMENT_CONFLICT_MESSAGE} from "@/lib/diagnostic/granular/client-state";
+import {STUDENT_RESULT_SUMMARY_COPY} from "@/lib/diagnostic/granular/student-results-display";
 /** Fixed diagnostic wording recorded before the client is delivered. */
 export const DIAGNOSTIC_COPY = {
   skillEvidence:SKILL_EVIDENCE_COPY,
+  resultSummary:STUDENT_RESULT_SUMMARY_COPY,
   exerciseControls: EXERCISE_CONTROL_COPY,
   "startTitle": "Ton point de départ",
   "loadingDescription": "Quelques questions pour découvrir ce que tu sais déjà et préparer la suite.",
@@ -14,7 +16,7 @@ export const DIAGNOSTIC_COPY = {
   "resultsTitle": "Tes acquis et tes prochaines étapes",
   "teachingDescription": "Une explication, puis quelques essais pour apprendre à ton rythme.",
   "checkDescription": "Réponds sans aide. Cette nouvelle question permettra de préciser ton bilan.",
-  "resultsDescription": "Tu peux commencer à apprendre. Nous vérifierons les points encore incertains au fil de tes activités.",
+  "resultsDescription": "Tu peux commencer à apprendre. Certaines réponses montrent déjà tes points forts ; d’autres points restent à travailler ou à vérifier.",
   "assessmentDescription": "Environ 35 minutes, avec des pauses quand tu veux. Les questions s’adaptent à tes réponses.",
   "reviewNotice": "Nous vérifions encore les questions et les activités de ce parcours. Tu peux apprendre dès maintenant ; ton bilan pourra être ajusté.",
   "skippedNotice": "Question passée. Ce point reste à vérifier.",
@@ -42,7 +44,7 @@ export const DIAGNOSTIC_COPY = {
   "skip": "Passer cette question",
   "dontKnow": "Je ne sais pas",
   "preparing": "Préparation de la prochaine question…",
-  "provisionalHelp": "Ce premier bilan est provisoire. « Pas encore vérifié » ne veut pas dire que tu ne sais pas le faire.",
+  "provisionalHelp": "Ce premier bilan peut encore changer. « Pas encore vérifié » ne veut pas dire que tu ne sais pas le faire.",
   "coverageHelp": "Les questions disponibles ne couvrent pas encore tous les points de ce bilan. Les points indiqués « Questions à venir » n’ont pas été évalués et ne sont pas considérés comme des difficultés.",
   "firstActivities": "Pour commencer",
   "verifyDescription": "Vérifier ce point avec une nouvelle question.",
@@ -57,14 +59,14 @@ export const DIAGNOSTIC_COPY = {
   "openLesson": "Ouvrir cette leçon",
   "viewPathway": "Voir mon parcours",
   "reviewAnswers": "Revoir mes réponses au diagnostic",
-  "detailsTitle": "Ton bilan détaillé",
+  "detailsTitle": "Voir ton bilan détaillé",
   "unverifiedPoint": "Point à vérifier",
   "questionsComing": "Questions à venir",
   "status": {
     "mastered": "Bien acquis",
     "missing": "À travailler",
     "fragile": "Encore à travailler",
-    "uncertain": "À confirmer",
+    "uncertain": "Encore à vérifier",
     "unknown": "Pas encore vérifié"
   },
   "mode": {

@@ -11,19 +11,20 @@ const data:GranularFrontierView={sessionId:'session',releaseId:'release',phase:'
 ]};
 it('shows uncertainty, separate modes and prerequisite status without inventing a mastery percentage',()=>{
  const html=renderToStaticMarkup(React.createElement(GranularFrontier,{data}));
- for(const text of ['À confirmer','Pas encore vérifié','Reconnaître','Écrire la réponse','Questions à venir','Les bases liées à ce point','Reprendre le diagnostic'])expect(html).toContain(text);
+ for(const text of ['Encore à vérifier','Pas encore vérifié','Reconnaître','Écrire la réponse','Questions à venir','Les bases liées à ce point','Reprendre le diagnostic'])expect(html).toContain(text);
  expect(html).not.toContain('50%');expect(html).not.toContain('Bien acquis</span>');
  expect(html).toContain('href="/student/diagnostic"');
 });
 it('links learning students to the exact planned activity without offering to restart their diagnostic',()=>{
  const html=renderToStaticMarkup(React.createElement(GranularFrontier,{data:{...data,phase:'learning',activities:[{skillId:'production',activityId:'next-check',kind:'independent_check',action:'verify',titleFr:'Vérifier le présent',href:'/student/diagnostic?activity=next-check',estimatedMinutes:3}]}}));
- expect(html).toContain('href="/student/diagnostic?activity=next-check"');expect(html).toContain('Vérifier le présent');expect(html).not.toContain('Reprendre le diagnostic');
+ expect(html).toContain('href="/student/diagnostic?activity=next-check"');expect(html).toContain('Question : repérer le présent');expect(html).toContain('Ce que nous te proposons de travailler ensuite');expect(html).not.toContain('Reprendre le diagnostic');
 });
 
 it('records all possible filter counts and the exact expanded detail wording without changing the map',()=>{
  const before=JSON.stringify(data),display=frontierDisplayText(data),text=deliveredTextFragments(display);
- expect(display.counts).toEqual(['0 point(s) affiché(s)','1 point(s) affiché(s)','2 point(s) affiché(s)']);
+ expect(display.counts).toEqual(['0 points affichés','1 point affiché','2 points affichés']);
  const html=renderToStaticMarkup(React.createElement(GranularFrontier,{data}));
- for(const line of ['1 réponse(s) prise(s) en compte.','Écrire la réponse · Pas encore vérifié · Questions à venir','Employer le présent — Reconnaître — À confirmer']){expect(html).toContain(line);expect(text).toContain(line);}
+ for(const line of ['1 réponse prise en compte.','Écrire la réponse · Pas encore vérifié · Questions à venir','Utiliser le présent · Reconnaître · Encore à vérifier']){expect(html).toContain(line);expect(text).toContain(line);}
+ for(const line of ['Ce que tu sais déjà faire','Ce que tu peux encore améliorer','Ce qu’il faut encore vérifier','Pas encore vérifié','Voir le détail de tous les points'])expect(html).toContain(line);
  expect(JSON.stringify(data)).toBe(before);
 });

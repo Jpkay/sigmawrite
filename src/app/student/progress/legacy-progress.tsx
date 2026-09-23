@@ -9,6 +9,7 @@ import {recentReadingDisplay} from "@/lib/diagnostic/granular/recent-reading-cop
 import { useStudentState } from "@/lib/student-store";
 import type { DiagnosticResult } from "@/lib/types";
 import type { DiagnosticSectionProfileKey } from "@/lib/student-state";
+import {studentSkillTitle} from "@/lib/diagnostic/granular/student-results-display";
 
 const SECTION_LABELS: Record<DiagnosticSectionProfileKey, string> = {
   reading_comprehension: "Compréhension écrite",
@@ -55,7 +56,7 @@ export default function ProgressPage() {
   if (!state.diagnostic) {
     return (
       <>
-        <PageHeader title="Progrès" description="Fais d'abord le diagnostic." />
+        <PageHeader title="Mes progrès" description="Fais d'abord le diagnostic." />
         <Link href="/student/diagnostic" className={buttonVariants()}>
           Faire le diagnostic
         </Link>
@@ -73,16 +74,16 @@ export default function ProgressPage() {
 
   return (
     <>
-      <PageHeader title="Progrès" description="Ton profil de français et ton historique." />
+      <PageHeader title="Mes progrès" description="Voici ce que tu sais déjà faire et ce que tu peux travailler ensuite." />
 
       {sectionProfile.length > 0 && <section className="mb-8">
-        <h2 className="mb-1 text-lg font-semibold">Profil du diagnostic</h2>
-        <p className="mb-4 text-sm text-muted-foreground">Chaque domaine distingue les compétences confirmées, fragiles, à reprendre et encore inconnues.</p>
+        <h2 className="mb-1 text-lg font-semibold">Mon bilan en bref</h2>
+        <p className="mb-4 text-sm text-muted-foreground">Chaque domaine montre les points réussis, ceux à travailler et ceux qui ne sont pas encore vérifiés.</p>
         <div className="border-y border-border">
           {sectionProfile.map(([key, section]) => <div key={key} className="grid gap-3 border-b border-border py-4 last:border-b-0 sm:grid-cols-[12rem_1fr_auto] sm:items-center">
-            <div><p className="font-medium">{SECTION_LABELS[key]}</p><p className="mt-1 text-xs text-muted-foreground">{section.confirmed} preuve(s) complète(s) · {section.total} compétence(s) ciblée(s)</p></div>
+            <div><p className="font-medium">{SECTION_LABELS[key]}</p><p className="mt-1 text-xs text-muted-foreground">{section.confirmed} point{section.confirmed===1?"":"s"} vérifié{section.confirmed===1?"":"s"} sur {section.total}</p></div>
             <div className="h-2 overflow-hidden rounded-full bg-muted"><div className="h-full bg-primary" style={{ width: `${Math.round((section.meanMastery ?? .5) * 100)}%` }} /></div>
-            <div className="flex flex-wrap gap-1.5 text-xs"><Badge variant="success">{section.mastered} maîtrisée(s)</Badge><Badge variant="secondary">{section.fragile} fragile(s)</Badge><Badge variant="outline">{section.missing} à reprendre</Badge><Badge variant="outline">{section.unknown} à vérifier</Badge></div>
+            <div className="flex flex-wrap gap-1.5 text-xs"><Badge variant="success">{section.mastered} point{section.mastered===1?"":"s"} bien acquis</Badge><Badge variant="secondary">{section.fragile} point{section.fragile===1?"":"s"} encore à travailler</Badge><Badge variant="outline">{section.missing} point{section.missing===1?"":"s"} à travailler</Badge><Badge variant="outline">{section.unknown} point{section.unknown===1?"":"s"} pas encore vérifié{section.unknown===1?"":"s"}</Badge></div>
           </div>)}
         </div>
       </section>}
@@ -99,15 +100,15 @@ export default function ProgressPage() {
 
       {live.length > 0 && (
         <>
-          <h2 className="mb-1 text-lg font-semibold">Compétences (mises à jour)</h2>
+          <h2 className="mb-1 text-lg font-semibold">Points mis à jour</h2>
           <p className="mb-3 text-sm text-muted-foreground">
-            Affinées à chaque séance par le moteur adaptatif.
+            Mis à jour après chaque activité.
           </p>
           <div className="mb-8 space-y-2">
             {live.map(([k, est]) => (
               <div key={k} className="flex items-center gap-3">
                 <span className="w-52 shrink-0 text-sm text-muted-foreground">
-                  {SKILL_KEY_LABELS[k] ?? k}
+                  {studentSkillTitle(SKILL_KEY_LABELS[k] ?? k)}
                 </span>
                 <div className="h-2 flex-1 overflow-hidden rounded-full bg-muted">
                   <div className="h-full bg-primary" style={{ width: `${est.ability}%` }} />
@@ -121,12 +122,12 @@ export default function ProgressPage() {
         </>
       )}
 
-      {sectionProfile.length === 0 && <><h2 className="mb-3 text-lg font-semibold">Profil initial (ancien diagnostic de lecture)</h2>
+      {sectionProfile.length === 0 && <><h2 className="mb-3 text-lg font-semibold">Bilan de départ en lecture</h2>
       <div className="mb-8 space-y-2">
         {Object.entries(skills).map(([k, v]) => (
           <div key={k} className="flex items-center gap-3">
             <span className="w-52 shrink-0 text-sm text-muted-foreground">
-              {SKILL_LABELS[k as keyof typeof SKILL_LABELS]}
+              {studentSkillTitle(SKILL_LABELS[k as keyof typeof SKILL_LABELS])}
             </span>
             <div className="h-2 flex-1 overflow-hidden rounded-full bg-muted">
               <div

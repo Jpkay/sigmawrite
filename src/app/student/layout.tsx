@@ -17,7 +17,7 @@ const nav: NavItem[] = [
   { href: "/student/memory", label: "Mémoire" },
   { href: "/student/progress", label: "Progrès" },
   { href: "/student/recueil", label: "Mon recueil" },
-  { href: "/student/frontier", label: "Frontière" },
+  { href: "/student/frontier", label: "Mon parcours" },
   { href: "/student/inbox", label: "Messages" },
   { href: "/student/reference/verbe", label: "Référence", matchPrefixes: ["/student/reference"] },
   { href: "/student/settings", label: "Paramètres" },
