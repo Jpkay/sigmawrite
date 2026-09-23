@@ -8,7 +8,7 @@ import {learningSeenQuestionIds} from "./learning-exposure";
 import {assessmentObservations} from "./session";
 import {requiresWritingRevision} from "./writing-evidence";
 import {withKnownMaterialHistory} from "./material-history";
-import {knownExposedMaterialKeys,probeRepeatsKnownTarget,learningReadiness} from "./engine";
+import {knownExposedMaterialKeys,probeRepeatsKnownTarget,learningReadiness,DEFAULT_POLICY,type Probe} from "./engine";
 import {readQuestionMaterialReceipt} from "./question-material-receipt";
 import type {MaterialReceipt} from "./material-receipt";
 import {z} from "zod";
@@ -16,6 +16,7 @@ import {gradeTextualSupport,publicTextualSupport} from "./textual-support";
 import {planGranularActivities,availableLearningBindings,type LearningActivityBinding} from "./activity-plan";
 import {stableUuid} from "@/lib/lexicon/baseline";
 import {shuffleChoices} from "@/lib/content/choice-order";
+import {R45_ROUTE_COVERAGE_POLICY,withRouteCoverageMetadata} from "./route-coverage";
 const choiceId=(sessionId:string,itemId:string,index:number)=>stableUuid("granular-choice",`${sessionId}:${itemId}:${index}`);
 import {validateAnswer} from "@/lib/linguistic/validator";
 import {ReadingAssessmentError} from "@/lib/linguistic/reading-ideas";
@@ -38,6 +39,15 @@ export interface AssessmentStore {
  materialHistoryComplete?(studentId:string,presentationId:string):Promise<boolean>;
  save(studentId:string,sessionId:string,expectedRevision:number,state:AssessmentSession):Promise<boolean>;
 }
+const routeProbeCache=new Map<string,readonly Probe[]>();
+function routeProbesForRelease(releaseChecksum:string,bundle:AssessmentBundle):readonly Probe[]{
+ const configured=bundle.assessment.routeCoveragePolicy;
+ if(configured?.version!==R45_ROUTE_COVERAGE_POLICY.version)return bundle.assessment.probes;
+ const cached=routeProbeCache.get(releaseChecksum);if(cached)return cached;
+ const routed=withRouteCoverageMetadata(bundle.assessment.probes,bundle.bank);
+ if(routeProbeCache.size>=8)routeProbeCache.delete(routeProbeCache.keys().next().value!);
+ routeProbeCache.set(releaseChecksum,routed);return routed;
+}
 const commandSchema=z.discriminatedUnion("type",[
  z.object({type:z.literal("skip"),sessionId:z.uuid(),revision:z.number().int().nonnegative(),itemId:z.string().min(1)}).strict(),
  z.object({type:z.literal("answer"),sessionId:z.uuid(),revision:z.number().int().nonnegative(),itemId:z.string().min(1),answer:z.string().trim().min(1).max(3000),supportChoiceId:z.uuid().optional()}).strict(),
@@ -49,6 +59,11 @@ export async function runAssessmentCommand(store:AssessmentStore,studentId:strin
  const command=parsed.data;
  let session=await store.load(studentId,command.sessionId);if(!session)return {error:"Diagnostic introuvable."} as const;
  const bundle=await store.release(session.releaseId);if(!bundle)return {error:"Ce diagnostic n’est pas disponible."} as const;
+ const configuredRoutePolicy=bundle.assessment.routeCoveragePolicy;
+ const routePolicy=configuredRoutePolicy?.version===R45_ROUTE_COVERAGE_POLICY.version?configuredRoutePolicy:undefined;
+ const maySelect=session.state.phase==="assessing"&&(["resume","answer","skip"].includes(command.type)
+  ||command.type==="pulse"&&!session.state.paused&&!session.state.pendingItemId);
+ const routeProbes=routePolicy&&maySelect?routeProbesForRelease(session.state.release.checksum,bundle):bundle.assessment.probes;
  session=await withKnownMaterialHistory(store,session,bundle);
  if(session.state.revision!==command.revision)return {conflict:true,view:publicAssessmentView(session,bundle,receivedAt)} as const;
  if((command.type==="answer"||command.type==="skip")&&(session.state.paused||session.state.pendingItemId!==command.itemId))return {error:"Cette question n’est plus active.",view:publicAssessmentView(session,bundle,receivedAt)} as const;
@@ -73,7 +88,8 @@ export async function runAssessmentCommand(store:AssessmentStore,studentId:strin
   materialReceipt=await readQuestionMaterialReceipt(store,session,bundle,command.itemId);
  }
  const state=transitionSession({state:session.state,release:bindAssessmentRelease(bundle.assessment,{taxonomyId:bundle.taxonomyId,bankId:bundle.bankId}),expectedRevision:command.revision,
-  event:command.type==="answer"?{type:"answer",itemId:command.itemId,correct,at:receivedAt,materialReceipt}:command.type==="skip"?{type:"skip",itemId:command.itemId,at:receivedAt}:{type:command.type,at:receivedAt},skills:bundle.assessment.skills,bank:bundle.assessment.probes,releaseScope:bundle.assessment.releaseScope});
+  event:command.type==="answer"?{type:"answer",itemId:command.itemId,correct,at:receivedAt,materialReceipt}:command.type==="skip"?{type:"skip",itemId:command.itemId,at:receivedAt}:{type:command.type,at:receivedAt},skills:bundle.assessment.skills,bank:routeProbes,releaseScope:bundle.assessment.releaseScope,
+  ...(routePolicy?{policy:{...DEFAULT_POLICY,minimumExerciseFormatsPerCoreDomain:routePolicy.minimumExerciseFormatsPerCoreDomain,requiredVerbTenseBands:routePolicy.requiredVerbTenseBands,maxSpellingTopicVisit:routePolicy.maxSpellingTopicVisit}}:{})});
  if(state===session.state)return {view:publicAssessmentView(session,bundle,receivedAt)} as const;
  if(command.type==="answer"&&state.observations.length>session.state.observations.length){
   state.diagnosticResponses=[...(session.state.diagnosticResponses??[]),{

@@ -4,15 +4,16 @@ import {createSession,transitionSession} from "./session";
 import {bindAssessmentRelease} from "./release-binding";
 import {readFileSync} from "node:fs";
 import {adaptV3ForAssessment} from "./v3-adapter";
+import {R45_ROUTE_COVERAGE_POLICY} from "./route-coverage";
 const read=(p:string)=>JSON.parse(readFileSync(p,"utf8"));
 const bank=read("generated/diagnostic-bank-v3-draft.json"),assessment=adaptV3ForAssessment({artifact:read("generated/french-taxonomy-v3.json"),bank});
 const bundle:AssessmentBundle={bank,assessment,taxonomyId:"taxonomy-id",bankId:"bank-id"};
 const id="11111111-1111-4111-8111-111111111111";
-function setup(){
- let stored:StoredSession={id,studentId:"student-a",releaseId:"release-a",state:createSession(bindAssessmentRelease(assessment,bundle))};
+function setup(activeBundle:AssessmentBundle=bundle){
+ let stored:StoredSession={id,studentId:"student-a",releaseId:"release-a",state:createSession(bindAssessmentRelease(activeBundle.assessment,activeBundle))};
  const store:AssessmentStore={
   load:async(studentId,sessionId)=>studentId===stored.studentId&&sessionId===id?structuredClone(stored):null,
-  release:async()=>bundle,
+  release:async()=>activeBundle,
   save:async(studentId,sessionId,revision,state)=>{if(studentId!==stored.studentId||sessionId!==id||revision!==stored.state.revision)return false;stored={...stored,state};return true;},
  };
  return {store,get:()=>stored};
@@ -28,6 +29,20 @@ it("does not expose correct choices, validators or answer keys",async()=>{
  expect(view.question).not.toBeNull();
  const serialized=JSON.stringify(view);
  for(const field of ['"correctAnswer"','"validatorConfig"','"correct"','"acceptableAnswers"'])expect(serialized).not.toContain(field);
+});
+it("derives route metadata from the pinned bank and pins the policy in the release",async()=>{
+ expect(assessment.probes.every(probe=>probe.exerciseFormat===undefined&&probe.routePurpose===undefined&&probe.verbTenseBand===undefined)).toBe(true);
+ const routed:AssessmentBundle={...bundle,assessment:{...assessment,routeCoveragePolicy:structuredClone(R45_ROUTE_COVERAGE_POLICY)}};
+ expect(bindAssessmentRelease(routed.assessment,routed).checksum).not.toBe(bindAssessmentRelease(assessment,bundle).checksum);
+ const {store,get}=setup(routed);await runAssessmentCommand(store,"student-a",{type:"resume",sessionId:id,revision:0},()=>0);
+ const entry=bank.items.find((item:{itemKey:string})=>item.itemKey===get().state.pendingItemId)!;
+ expect(entry).toMatchObject({sectionKey:"conjugation",evidenceExpectation:"controlled_production",item:{validatorConfig:{tense:"present"}}});
+ expect(bindAssessmentRelease(routed.assessment,routed)).toEqual(get().state.release);
+});
+it("keeps an older pinned release on its original selector route",async()=>{
+ const {store,get}=setup();await runAssessmentCommand(store,"student-a",{type:"resume",sessionId:id,revision:0},()=>0);
+ const entry=bank.items.find((item:{itemKey:string})=>item.itemKey===get().state.pendingItemId)!;
+ expect(entry).not.toMatchObject({sectionKey:"conjugation",evidenceExpectation:"controlled_production",item:{validatorConfig:{tense:"present"}}});
 });
 it("only one concurrent revision can commit and stale requests cannot add evidence",async()=>{
  const {store,get}=setup();

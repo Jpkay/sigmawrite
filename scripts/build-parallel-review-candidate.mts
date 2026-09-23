@@ -20,6 +20,7 @@ import {buildV3Facets} from "../src/lib/diagnostic/granular/facets";
 import {isQuestionPoolSufficient} from "../src/lib/diagnostic/granular/question-pools";
 import {buildLearningCheckRegistry} from "../src/lib/diagnostic/granular/check-registry";
 import type {ParallelReviewPolicy} from "../src/lib/diagnostic/granular/parallel-review-policy";
+import {R45_ROUTE_COVERAGE_POLICY} from "../src/lib/diagnostic/granular/route-coverage";
 const read=(path:string)=>JSON.parse(readFileSync(path,"utf8"));
 const artifact=read("generated/french-taxonomy-v3.json"),base=read("generated/diagnostic-bank-v3-draft.json");
 const assembled=assembleDraftBank(base,artifact.taxonomy,FRENCH_DRAFT_EXPANSION_SOURCES.map(name=>read(`generated/french-v3-${name}-expansion.json`)),granularBankOptions(process.argv.slice(2)));
@@ -53,6 +54,7 @@ const teachingContent:ParallelReviewTeachingContent[]=FRENCH_TEACHING_DRAFTS.map
  assessmentExposureIds:[...new Set(teachingMaterialKeys(lesson).flatMap(key=>[...(materialQuestions.get(key)??[])]))].sort()}));
 policy.teachingChecksums=Object.fromEntries(teachingContent.map(lesson=>[lesson.id,teachingContentChecksum(lesson)]));
 allocation.assessment.reviewPolicy=structuredClone(policy);
+allocation.assessment.routeCoveragePolicy=structuredClone(R45_ROUTE_COVERAGE_POLICY);
 validatePublishedTeaching(allocation.assessment,teachingContent);
 const teachingReadiness=teachingContent.map(lesson=>{
  const targets=allocation.assessment.skills.filter(skill=>skill.nodeKey===lesson.nodeKey&&skill.facetKey===lesson.facetKey&&skill.modes.includes(lesson.mode));

@@ -6,6 +6,9 @@ import {categoryExposurePriority} from "./category-exposure";
 import {verifiedWritingEvidence,writingSampleIdentity,type WritingEvidence} from "./writing-evidence";
 /** Per-skill adaptive assessment. Challenge order guides probes, never mastery inference. */
 export type Mode = "recognition" | "production" | "interpretation" | "independent_production";
+export type ExerciseFormat = "mcq" | "short_answer" | "cloze" | "transform";
+export type RoutePurpose = "verb_tense_use" | "grammar_use";
+export type VerbTenseBand = "present" | "past" | "future";
 export type FeatureRequirement={feature:string;minimumItems:number;minimumContexts:number};
 export type Skill = {
   id: string;
@@ -50,6 +53,17 @@ export type Probe = {
   difficulty: number;
   expectedSeconds: number;
   guessProbability: number;
+  /** Server-derived presentation shape. It guides bounded route variety but is
+   * never evidence and never changes how an answer is scored. */
+  exerciseFormat?:ExerciseFormat;
+  /** Release-derived use task used only to secure early route breadth. */
+  routePurpose?:RoutePurpose;
+  /** Coarse coverage band from the canonical tense identifier. This schedules
+   * separate tasks; it never shares evidence between tenses. */
+  verbTenseBand?:VerbTenseBand;
+  /** Canonical competency node used to avoid repeating recognition and
+   * production variants of the same visible topic in one long visit. */
+  routeTopic?:string;
   evidenceFeatures?:string[];
   textualSupportAssessed?:boolean;
   textType?:string;
@@ -93,15 +107,25 @@ export type Policy = {
   maxItemsPerSkill: number;
   /** Bounded follow-up within a branch before rotating to another branch. */
   itemsPerBranchVisit?: number;
+  /** Bounded breadth goal for grammar and conjugation. Adaptive confirmation
+   * keeps precedence when the active target has no unseen format. */
+  minimumExerciseFormatsPerCoreDomain?:number;
+  requiredVerbTenseBands?:readonly VerbTenseBand[];
+  /** Rotate to another available spelling topic after this many same-topic
+   * domain visits. Unresolved skills remain eligible for a later visit. */
+  maxSpellingTopicVisit?:number;
   startingLevel: number;
 };
 export const DEFAULT_POLICY: Policy = {
   activeSeconds: 35 * 60, minimumItemsPerMode: 3, minimumContextsPerMode: 2,
   maxItemsPerSkill: 12, startingLevel: 1, itemsPerBranchVisit: 6,
+  minimumExerciseFormatsPerCoreDomain:2,
+  requiredVerbTenseBands:["present","past","future"],
 };
 export const MAX_CONFIRMATION_GUESS_CHANCE=.01;
 const ITEM_DIFFICULTY_CONFIRMATION_COUNT=2;
 const AUTHORED_ITEM_DIFFICULTIES=[.25,.5,.75] as const;
+const EXERCISE_FORMAT_COVERAGE_ORDER:Record<ExerciseFormat,number>={transform:0,short_answer:1,cloze:2,mcq:3};
 export function correctGuessChance(items:readonly {guessProbability:number}[]):number{
  return items.reduce((chance,item)=>chance*Math.max(.01,Math.min(.5,item.guessProbability)),1);
 }
@@ -311,8 +335,8 @@ function selectProbeWithTierFallbacks(skills: readonly Skill[], bank: readonly P
   if (!unresolved.length) return { kind: "finished", reason: "evidence_complete" };
   const spent = observed.reduce((sum, o) => sum + Math.max(0, o.activeSeconds), 0);
   if (spent >= policy.activeSeconds) return { kind: "provisional", reason: "time_budget", unresolvedSkillIds: unresolved };
-  const asked = new Set(observed.map(o => o.itemId));
   const probeById=new Map(bank.map(probe=>[probe.id,probe]));
+  const asked = new Set(observed.map(o => o.itemId));
   const knownMaterial=knownExposedMaterialKeys(bank,observed,[],extraKnownMaterialKeys);
   const available = bank.filter(item => {
     const skill = skillById.get(item.skillId);
@@ -337,8 +361,66 @@ function selectProbeWithTierFallbacks(skills: readonly Skill[], bank: readonly P
     return seconds(left)-seconds(right)||left.length-right.length||tieRank(a)-tieRank(b)||a.localeCompare(b);
   });
   const domain=balance([...new Set(available.map(item=>domainOf(skillById.get(item.skillId)!)))],observed,domainOf)[0];
-  const domainItems=available.filter(item=>domainOf(skillById.get(item.skillId)!)===domain);
+  let domainItems=available.filter(item=>domainOf(skillById.get(item.skillId)!)===domain);
   const domainHistory=observed.filter(observation=>domainOf(skillById.get(observation.skillId)!)===domain);
+  if(domain==="spelling"&&policy.maxSpellingTopicVisit!==undefined){
+    const visitLimit=Math.max(1,Math.floor(policy.maxSpellingTopicVisit));
+    const lastTopic=probeById.get(domainHistory.at(-1)?.itemId??"")?.routeTopic;
+    let visitCount=0;
+    for(const observation of [...domainHistory].reverse()){
+      if(probeById.get(observation.itemId)?.routeTopic!==lastTopic)break;
+      visitCount++;
+    }
+    const topics=[...new Set(domainItems.map(item=>item.routeTopic).filter((value):value is string=>Boolean(value)))];
+    const topicCount=(topic:string)=>domainHistory.filter(observation=>probeById.get(observation.itemId)?.routeTopic===topic).length;
+    const lastSkillId=domainHistory.at(-1)?.skillId;
+    const continueUnresolved=lastTopic&&lastSkillId&&visitCount<visitLimit&&!routingById.get(lastSkillId)?.resolved&&topics.includes(lastTopic);
+    topics.sort((left,right)=>Math.floor(topicCount(left)/visitLimit)-Math.floor(topicCount(right)/visitLimit)||topicCount(left)-topicCount(right)||left.localeCompare(right));
+    const targetTopic=continueUnresolved?lastTopic:topics[0];
+    if(targetTopic)domainItems=domainItems.filter(item=>item.routeTopic===targetTopic);
+  }
+  const requiredPurpose:RoutePurpose|undefined=domain==="conjugation"?"verb_tense_use":domain==="grammar"?"grammar_use":undefined;
+  if(requiredPurpose&&!domainHistory.some(observation=>probeById.get(observation.itemId)?.routePurpose===requiredPurpose)){
+    const useItems=domainItems.filter(item=>item.routePurpose===requiredPurpose);
+    const lastAnswer=domainHistory.filter(observation=>!observation.skipped).at(-1);
+    const activeSkill=lastAnswer&&!routingById.get(lastAnswer.skillId)?.resolved?lastAnswer.skillId:undefined;
+    const sameTarget=activeSkill?useItems.filter(item=>item.skillId===activeSkill):[];
+    if(sameTarget.length)domainItems=sameTarget;
+    else if(!activeSkill&&useItems.length)domainItems=useItems;
+  }
+  if(domain==="conjugation"){
+    const eligibleBands=new Set(domainItems.filter(item=>item.routePurpose==="verb_tense_use").map(item=>item.verbTenseBand).filter((value):value is VerbTenseBand=>Boolean(value)));
+    const seenBands=new Set(domainHistory.map(observation=>probeById.get(observation.itemId)).filter(probe=>probe?.routePurpose==="verb_tense_use")
+      .map(probe=>probe?.verbTenseBand).filter((value):value is VerbTenseBand=>Boolean(value)));
+    const missing=(policy.requiredVerbTenseBands??DEFAULT_POLICY.requiredVerbTenseBands!).find(band=>eligibleBands.has(band)&&!seenBands.has(band));
+    if(missing){
+      const tenseItems=domainItems.filter(item=>item.routePurpose==="verb_tense_use"&&item.verbTenseBand===missing);
+      const lastAnswer=domainHistory.filter(observation=>!observation.skipped).at(-1);
+      const activeSkill=lastAnswer&&!routingById.get(lastAnswer.skillId)?.resolved?lastAnswer.skillId:undefined;
+      const sameTarget=activeSkill?tenseItems.filter(item=>item.skillId===activeSkill):[];
+      if(sameTarget.length)domainItems=sameTarget;
+      else if(!activeSkill&&tenseItems.length)domainItems=tenseItems;
+    }
+  }
+  // Once an adaptive target is resolved, spend at most one entry probe on an
+  // unseen interaction shape before normal graph/confirmation routing resumes.
+  // If the current target itself offers an unseen shape, use it without leaving
+  // that target. This keeps the evidence contract intact while preventing a
+  // full sitting made only of choice reading and sentence completion.
+  if(domain==="grammar"||domain==="conjugation"){
+    const minimum=Math.max(1,Math.floor(policy.minimumExerciseFormatsPerCoreDomain??2));
+    const availableFormats=[...new Set(domainItems.map(item=>item.exerciseFormat).filter((value):value is ExerciseFormat=>Boolean(value)))];
+    const seenFormats=new Set(domainHistory.map(observation=>probeById.get(observation.itemId)?.exerciseFormat).filter((value):value is ExerciseFormat=>Boolean(value)));
+    if(seenFormats.size>0&&seenFormats.size<Math.min(minimum,availableFormats.length)){
+      const nextFormat=availableFormats.filter(format=>!seenFormats.has(format)).sort((left,right)=>EXERCISE_FORMAT_COVERAGE_ORDER[left]-EXERCISE_FORMAT_COVERAGE_ORDER[right])[0];
+      const unseen=domainItems.filter(item=>item.exerciseFormat===nextFormat);
+      const lastAnswer=domainHistory.filter(observation=>!observation.skipped).at(-1);
+      const activeSkill=lastAnswer&&!routingById.get(lastAnswer.skillId)?.resolved?lastAnswer.skillId:undefined;
+      const sameTarget=activeSkill?unseen.filter(item=>item.skillId===activeSkill):[];
+      if(sameTarget.length)domainItems=sameTarget;
+      else if(!activeSkill&&unseen.length)domainItems=unseen;
+    }
+  }
   const group=balance([...new Set(domainItems.map(item=>groupOf(skillById.get(item.skillId)!)))],domainHistory,groupOf)[0];
   const groupItems=domainItems.filter(item=>groupOf(skillById.get(item.skillId)!)===group);
   const groupHistory=domainHistory.filter(observation=>groupOf(skillById.get(observation.skillId)!)===group);

@@ -15,8 +15,9 @@ import type { buildFrenchTaxonomyV3 } from "@/lib/taxonomy/french-v3";
 import type {Mode,Probe,Skill,SkillResult} from "./engine";
 import {readTextualSupport} from "./textual-support";
 import {splitExercisePrompt} from "@/lib/content/exercise-prompt";
+import type {RouteCoveragePolicy} from "./route-coverage";
 export type EvidenceSkill=Skill & {nodeKey:string;evidenceKey:string;labelFr:string;facetKey?:string};
-export type V3Assessment={skills:EvidenceSkill[];probes:Probe[];taxonomyChecksum:string;bankChecksum:string;facetChecksum?:string;poolChecksum?:string;unsupportedEvidenceItemKeys?:string[];reviewPolicy?:ParallelReviewPolicy;releaseScope?:ReleaseScope};
+export type V3Assessment={skills:EvidenceSkill[];probes:Probe[];taxonomyChecksum:string;bankChecksum:string;facetChecksum?:string;poolChecksum?:string;unsupportedEvidenceItemKeys?:string[];reviewPolicy?:ParallelReviewPolicy;releaseScope?:ReleaseScope;routeCoveragePolicy?:RouteCoveragePolicy};
 
 /** Several questions or source IDs for identical text remain one context.
  * Source IDs retain provenance; they cannot manufacture independent texts. */
