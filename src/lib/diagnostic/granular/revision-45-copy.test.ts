@@ -24,10 +24,12 @@ it("rewrites selected authored lesson titles without changing their bindings",()
 it("rewrites only known guided-practice prompts while preserving teaching answers and support",()=>{
  const output=revision45TeachingCopy(FRENCH_TEACHING_DRAFTS);
  const changedByNode:Record<string,number>={};
- const allowedAnswerChanges=new Set(["canonical-recognition-guide-1","canonical-recognition-guide-3","canonical-recognition-guide-5","direct-object-guide-6","direct-object-guide-7","direct-object-guide-8"]);
- const allowedChoiceChanges=new Set(["canonical-recognition-guide-1","canonical-recognition-guide-3","canonical-recognition-guide-5","direct-object-guide-1","direct-object-guide-2","direct-object-guide-4","direct-object-guide-5","direct-object-guide-6","direct-object-guide-7","direct-object-guide-8"]);
+ const plainRecognitionIds=[...Array.from({length:6},(_,index)=>`past-recognition-guided-${index}`),...Array.from({length:6},(_,index)=>`subjonctif-recognition-guided-${index+1}`),"imparfait-guide-2","futur-simple-guide-2","present-foundation-3","present-foundation-6"];
+ const allowedAnswerChanges=new Set(["canonical-recognition-guide-1","canonical-recognition-guide-3","canonical-recognition-guide-5","direct-object-guide-6","direct-object-guide-7","direct-object-guide-8",...plainRecognitionIds]);
+ const allowedChoiceChanges=new Set(["canonical-recognition-guide-1","canonical-recognition-guide-3","canonical-recognition-guide-5","direct-object-guide-1","direct-object-guide-2","direct-object-guide-4","direct-object-guide-5","direct-object-guide-6","direct-object-guide-7","direct-object-guide-8",...plainRecognitionIds]);
  for(const [lessonIndex,lesson] of FRENCH_TEACHING_DRAFTS.entries()){
   const copied=output[lessonIndex];
+  expect({facetKey:copied.facetKey,id:copied.id,mode:copied.mode,nodeKey:copied.nodeKey}).toEqual({facetKey:lesson.facetKey,id:lesson.id,mode:lesson.mode,nodeKey:lesson.nodeKey});
   expect(copied.steps).toEqual(lesson.steps);
   expect(copied.practice).toHaveLength(lesson.practice.length);
   for(const [practiceIndex,practice] of lesson.practice.entries()){
@@ -55,15 +57,29 @@ it("rewrites only known guided-practice prompts while preserving teaching answer
   reconnaitre_passe_compose:6,
   reconnaitre_plus_que_parfait:6,
   reconnaitre_conditionnel_present:6,
-  reconnaitre_imparfait:5,
-  reconnaitre_futur_simple:5,
+  reconnaitre_passe_simple:6,
+  reconnaitre_subjonctif_present:6,
+  reconnaitre_imparfait:6,
+  reconnaitre_futur_simple:6,
   construction_phrase_canonique:10,
-  reconnaitre_present_indicatif:4,
+  reconnaitre_present_indicatif:6,
   reconnaitre_radical_terminaison:5,
   identifier_complement_direct:8,
   identifier_sujet_verbe:6,
  });
  expect(FRENCH_TEACHING_DRAFTS[0].practice[0].promptFr).not.toBe(output[0].practice[0].promptFr);
+});
+
+it("replaces the sixteen remaining school-name answers with observable descriptions",()=>{
+ const ids=new Set([...Array.from({length:6},(_,index)=>`past-recognition-guided-${index}`),...Array.from({length:6},(_,index)=>`subjonctif-recognition-guided-${index+1}`),"imparfait-guide-2","futur-simple-guide-2","present-foundation-3","present-foundation-6"]);
+ const practices=revision45TeachingCopy(FRENCH_TEACHING_DRAFTS).flatMap(lesson=>lesson.practice).filter(practice=>ids.has(practice.id));
+ expect(practices).toHaveLength(16);
+ const displayed=practices.flatMap(practice=>[practice.promptFr,practice.answerFr,...practice.choices??[]]).join(" ");
+ expect(displayed).not.toMatch(/passé simple|\bimparfait\b|passé composé|présent de l’indicatif|futur simple|subjonctif|indicatif|conditionnel présent|\binfinitif\b/i);
+ for(const practice of practices){
+  expect(practice.promptFr).toContain("Quelle description correspond");
+  expect(practice.choices?.filter(choice=>choice===practice.answerFr)).toHaveLength(1);
+ }
 });
 
 it("removes the requested grammar labels without breaking multiple-choice answers",()=>{

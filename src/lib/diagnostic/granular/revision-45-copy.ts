@@ -60,6 +60,28 @@ type TeachingLessonCopy={
  titleFr:string;
 };
 
+const PAST_FORM_CHOICES:Readonly<Record<string,string>>={
+ "Passé simple":"Une action terminée dans un récit, en un seul mot comme « elle marcha ».",
+ "Imparfait":"Une habitude ou une situation passée, en un seul mot comme « elle marchait ».",
+ "Passé composé":"Une action terminée avec deux mots, comme « elle a marché ».",
+ "Présent":"Ce qui se passe maintenant ou d’habitude, comme « elle marche ».",
+};
+
+const QUE_FORM_CHOICES:Readonly<Record<string,string>>={
+ "Subjonctif présent":"Une action souhaitée ou nécessaire après « que », comme dans « Je veux qu’il vienne ».",
+ "Indicatif présent":"Un fait présenté comme certain maintenant, comme dans « Je sais qu’il vient ».",
+ "Indicatif imparfait":"Une habitude ou une situation passée, comme dans « Je savais qu’il venait ».",
+ "Subjonctif passé":"Une action déjà terminée après « que », comme dans « Je regrette qu’il soit venu ».",
+};
+
+const SIMPLE_TIME_CHOICES:Readonly<Record<string,string>>={
+ "À l’imparfait.":"Une action ou une habitude passée en un mot, comme « elle marchait ».",
+ "Au présent.":"Une forme comme « elle marche », même si la phrase peut parler de demain.",
+ "Au présent de l’indicatif.":"Une forme comme « elle marche », même si la phrase peut parler de demain.",
+ "Au futur simple.":"Ce qui arrivera plus tard en un mot, comme « elle marchera ».",
+ "Au passé composé.":"Une action terminée avec deux mots, comme « elle a marché ».",
+};
+
 function revision45PracticePrompt(nodeKey:string,promptFr:string):string{
  if(nodeKey==="produire_subjonctif_present_frequent")return promptFr.replace(
   /^Complète avec (.+?) au subjonctif présent\. Écris seulement le verbe : /,
@@ -120,28 +142,58 @@ function revision45PracticePrompt(nodeKey:string,promptFr:string):string{
   "Quelle forme est au conditionnel présent ?",
   "Quelle forme dit ce qui se passerait, comme « je rêverais » ou « nous rêverions » ?",
  );
+ if(nodeKey==="reconnaitre_passe_simple")return promptFr.replace(
+  /À quel temps est le verbe « ([^»]+) » \?/,
+  "Quelle description correspond au verbe « $1 » dans cette phrase ?",
+ );
+ if(nodeKey==="reconnaitre_subjonctif_present")return promptFr.replace(
+  /Dans cette phrase, à quel mode et à quel temps est « ([^»]+) » \?/,
+  "Quelle description correspond au groupe « $1 » dans cette phrase ?",
+ );
  if(nodeKey==="reconnaitre_imparfait")return promptFr
   .replace("Quelle phrase contient un verbe à l’imparfait ?","Quelle phrase décrit une situation ou une habitude passée avec un seul verbe, comme « rêvait » ?")
   .replace("Quelle forme est à l’imparfait ?","Quelle forme décrit une situation ou une habitude passée, comme « rêvait » ?")
   .replace("Quel verbe est à l’imparfait ?","Quel mot décrit la situation passée ?")
   .replace("Quelle phrase emploie l’imparfait seul ?","Quelle phrase décrit la situation passée avec un seul verbe ?")
-  .replace("Quelle forme est à l’imparfait, et non au conditionnel présent ?","Quelle forme décrit une situation passée, sans dire ce qui se passerait ?");
+  .replace("Quelle forme est à l’imparfait, et non au conditionnel présent ?","Quelle forme décrit une situation passée, sans dire ce qui se passerait ?")
+  .replace("Nous marchions le long du canal. À quel temps marchions est-il conjugué ?","Nous marchions le long du canal. Quelle description correspond à « marchions » ?");
  if(nodeKey==="reconnaitre_present_indicatif")return promptFr
   .replace("Quelle phrase contient le présent de l’indicatif ?","Quelle phrase parle de ce qui se passe maintenant ou d’habitude, avec un seul verbe ?")
   .replace("Quelle phrase contient un verbe au présent ?","Quelle phrase parle de ce qui se passe maintenant ou d’habitude, avec un seul verbe ?")
+  .replace("Demain, elle tricote chez sa grand-mère.\n\nÀ quel temps le verbe tricote est-il conjugué ?","Demain, elle tricote chez sa grand-mère.\n\nQuelle description correspond à « tricote » dans cette phrase ?")
   .replace("Quel groupe est au passé composé, et non au présent ?","Quel groupe de deux mots raconte l’action terminée ?")
-  .replace("Quelle phrase est au présent ?","Quelle phrase parle de ce qui se passe maintenant ou d’habitude, avec un seul verbe ?");
+  .replace("Quelle phrase est au présent ?","Quelle phrase parle de ce qui se passe maintenant ou d’habitude, avec un seul verbe ?")
+  .replace("Que peux-tu dire de bricolent ?","Quelle description correspond à « bricolent » dans cette phrase ?");
  if(nodeKey==="reconnaitre_futur_simple")return promptFr
   .replace("Quelle phrase contient un futur simple ?","Quelle phrase parle de plus tard avec une forme comme « chanteras » ?")
   .replace("Quelle phrase emploie le futur simple ?","Quelle phrase parle de plus tard avec une forme comme « auras » ?")
+  .replace("Nous serons à l’accueil. À quel temps serons est-il conjugué ?","Nous serons à l’accueil. Quelle description correspond à « serons » ?")
   .replace("Quelle forme est au futur simple ?","Quelle forme dit ce qui arrivera plus tard ?")
   .replace("Quelle forme est au futur simple avec je ?","Quelle forme avec « je » dit ce qui arrivera plus tard ?")
   .replace("Quel groupe est au futur simple ?","Quel mot dit ce qui arrivera plus tard ?");
  return promptFr;
 }
 
+function replaceChoiceLabels<T extends TeachingPracticeCopy>(practice:T,labels:Readonly<Record<string,string>>):T{
+ return {...practice,answerFr:labels[practice.answerFr]??practice.answerFr,choices:practice.choices?.map(choice=>labels[choice]??choice)};
+}
+
 function revision45PracticeCopy<T extends TeachingPracticeCopy>(nodeKey:string,practice:T):T{
  const rewritten={...practice,promptFr:revision45PracticePrompt(nodeKey,practice.promptFr)};
+ if(nodeKey==="reconnaitre_passe_simple")return replaceChoiceLabels(rewritten,PAST_FORM_CHOICES);
+ if(nodeKey==="reconnaitre_subjonctif_present")return replaceChoiceLabels(rewritten,QUE_FORM_CHOICES);
+ if(nodeKey==="reconnaitre_imparfait"&&practice.id==="imparfait-guide-2")return replaceChoiceLabels(rewritten,SIMPLE_TIME_CHOICES);
+ if(nodeKey==="reconnaitre_futur_simple"&&practice.id==="futur-simple-guide-2")return replaceChoiceLabels(rewritten,SIMPLE_TIME_CHOICES);
+ if(nodeKey==="reconnaitre_present_indicatif"&&practice.id==="present-foundation-3")return replaceChoiceLabels(rewritten,SIMPLE_TIME_CHOICES);
+ if(nodeKey==="reconnaitre_present_indicatif"&&practice.id==="present-foundation-6")return {...rewritten,
+  answerFr:"La phrase parle d’une habitude actuelle : ils bricolent régulièrement.",
+  choices:[
+   "La phrase parle d’une habitude actuelle : ils bricolent régulièrement.",
+   "La phrase annonce seulement ce qu’ils feront plus tard.",
+   "La phrase raconte une action déjà terminée.",
+   "Le mot « bricolent » donne le nom du verbe, comme « bricoler ».",
+  ],
+ };
  if(nodeKey==="identifier_complement_direct")return {...rewritten,
   answerFr:practice.answerFr==="Aucun COD"?"Aucun":practice.answerFr,
   choices:practice.choices?.map(choice=>choice==="Aucun COD"?"Aucun":choice),
