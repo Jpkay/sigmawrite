@@ -11,8 +11,8 @@ full multi-account browser acceptance remains incomplete (latest checkpoint belo
 | School and class setup | Platform admin creates a school and appoints its admin; school admin manages only that school and creates/edits classes through the UI | Public UI school creation/admin appointment and school-admin-scoped account management/class creation/edit passed; QA school now has three classes, one empty |
 | Student onboarding and recovery | Valid invitation joins the right class; invalid/expired/revoked invitations fail; login, resume and recovery verified without changing real credentials | Admin login/password setup and public invitation validation/rotation passed; isolation-student signup, login and onboarding passed; Student C diagnostic/reading and recovery remain pending |
 | Many-to-many teacher assignments | Two teachers, two classes and at least three students; shared class and direct-student assignments work; separate grants remain distinguishable | Both teachers' public browser views passed: shared class A, Teacher A across A/B, and both teachers' direct Student C access |
-| Teacher reports | Assigned teacher sees diagnostic results, per-skill evidence, activity and progress; direct assignment works without granting an entire class | Both teachers open Student C's granular/activity report; direct-only access excludes the full class; empty states verified, populated activity/report evidence pending |
-| Access boundaries and revocation | Cross-school grants, self-grants and direct table-write bypass denied; removing last assignment and deactivation revoke access | Native/hosted SQL passed; public browser last-grant denial/roster removal and Teacher B session revocation on deactivation passed; cross-school browser gate pending |
+| Teacher reports | Assigned teacher sees diagnostic results, per-skill evidence, activity and progress; direct assignment works without granting an entire class | Both teachers open Student C's granular/activity report; direct-only access excludes the full class; school admin sees five provisional answers and per-skill evidence; completed reading and populated teacher activity/weekly metrics pending |
+| Access boundaries and revocation | Cross-school grants, self-grants and direct table-write bypass denied; removing last assignment and deactivation revoke access | Native/hosted SQL passed; public browser last-grant denial/roster removal, Teacher B session revocation on deactivation, and foreign-school denial passed |
 | Verified delivery | Reviewed diff; relevant/integration tests, types, lint, build; forward migration preflight; candidate and public end-to-end verification; commit/push/deploy | Public cutover completed; checks/commits/push passed; full authenticated multi-account end-to-end pending |
 
 ## Execution ownership
@@ -641,6 +641,36 @@ This checkpoint supersedes the administrator password handoff above.
   denial remain pending. Isolation-school membership does not itself prove
   foreign-school denial. No password or token was recorded.
 
+### Public-browser foreign-school denial — 2026-09-23
+
+- The approved QA school administrator `qa.onboarding.admin.20260913` signed in
+  through a fresh one-time email link in the public in-app browser. The live UI
+  showed `QA Administrateur Onboarding School Admin`. No password, link, token
+  or private invitation code is recorded here.
+- `/admin/schools` showed exactly the original school
+  `QA Onboarding — 2026-09-13` and its classes; the separate
+  `QA Isolation — 2026-09-22` school was absent. The administrator's own class
+  A route `/teacher/classes/a69840cd-7bf3-4f77-b783-17c794136fd8` rendered the
+  expected Students A and B.
+- The foreign isolation invitation route
+  `/admin/schools/classes/9718b70d-dd82-4e4c-9e1d-b7d565bafbff/invitations`
+  returned a non-disclosing 404. The corresponding foreign teacher-class route
+  `/teacher/classes/9718b70d-dd82-4e4c-9e1d-b7d565bafbff` also returned 404.
+  Neither route exposed isolation-school content.
+- A read-only Auth checkpoint confirmed `last_sign_in_at =
+  2026-09-23 15:15:13Z`, role `school_admin`, and the original QA school as the
+  account's own school. Chrome retained a separate Platform Admin session; the
+  school-admin evidence came from the fresh in-app-browser session.
+- In the same authorised school-admin session, Student C's detail showed a
+  provisional diagnostic with five saved answers, zero skips, four active
+  minutes and at least one admissible per-skill observation. The reading panel
+  still said no activity, and `/teacher/reports` still showed zero weekly texts
+  for Student C. This is partial diagnostic visibility, not completed
+  diagnostic/reading or populated teacher-report acceptance.
+- The public-browser foreign-school gate is now **passed**. Student C diagnostic
+  completion and reading, populated teacher reports, and recovery remain open;
+  this checkpoint does not claim the total onboarding goal is complete.
+
 ### Shortest remaining acceptance checklist
 
 1. As Student C, complete `/student/diagnostic`; start a reading at
@@ -651,11 +681,9 @@ This checkpoint supersedes the administrator password handoff above.
    completed reading activity, and the resulting daily/weekly XP metrics.
 3. Complete the browser recovery check for the seventh synthetic account; its
    browser login and onboarding are now verified.
-4. Foreign-school browser denial also remains a separate gate. The approved
-   isolation school, class, seventh identity and its enrollment are verified,
-   but browser denial evidence remains pending. Do not count the already passed
-   last-grant removal, unassigned-class 404, roster removal or active-session
-   deactivation checks as foreign-school proof.
+
+The separate foreign-school browser gate passed on 2026-09-23. The three items
+above remain open, so the total goal is not yet complete.
 
 ## Release gates
 
