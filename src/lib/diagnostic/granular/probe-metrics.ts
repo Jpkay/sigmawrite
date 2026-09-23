@@ -16,8 +16,9 @@ function samplingCategory(entry:CanonicalDiagnosticBankItem):string|undefined{
 
  if(entry.item.nodeKey!=="distinguer_personne_nombre"||entry.evidenceKey!=="reading-receptive"||entry.item.responseType!=="mcq")return;
  const choices=entry.item.choices??[],correct=choices.filter(choice=>choice.correct);
- if(choices.length!==6||correct.length!==1||!PERSON_NUMBER_LABELS.every(label=>choices.filter(choice=>choice.text===label).length===1))return;
- return `person-number:${PERSON_NUMBER_LABELS.indexOf(correct[0].text as typeof PERSON_NUMBER_LABELS[number])}`;
+ const group=entry.item.validatorConfig?.personNumberGroup;
+ if(choices.length!==6||correct.length!==1||typeof group!=="string"||!PERSON_NUMBER_LABELS.some(label=>label===group))return;
+ return `person-number:${PERSON_NUMBER_LABELS.indexOf(group as typeof PERSON_NUMBER_LABELS[number])}`;
 }
 /** Current source-derived routing estimates. Written-answer guessing and time
  * estimates still require calibration; a compiled bundle cannot change them

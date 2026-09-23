@@ -1,7 +1,7 @@
 import type {TargetTeachingContent} from "./teaching-content";
 
 /** Recognition and controlled transformations; no independent-writing approval. */
-export const WRITTEN_DETERMINER_DRAFTS = [
+const RAW_WRITTEN_DETERMINER_DRAFTS = [
   {
     "key": "recognition-1",
     "nodeKey": "accorder_determinant_nom_ecrit",
@@ -385,7 +385,7 @@ export const WRITTEN_DETERMINER_DRAFTS = [
     "nodeKey": "accorder_determinant_nom_ecrit",
     "mode": "production",
     "lemma": "lézard",
-    "prompt": "Mets le groupe « un lézard » au pluriel. Garde la même famille de déterminants (un/une/des, ce/cette/ces ou son/sa/ses).",
+    "prompt": "Mets le groupe « un lézard » au pluriel. Garde le même type de petit mot (un/une/des, ce/cette/ces ou son/sa/ses).",
     "answer": "des lézards",
     "distractors": [
       "un lézards",
@@ -402,7 +402,7 @@ export const WRITTEN_DETERMINER_DRAFTS = [
     "nodeKey": "accorder_determinant_nom_ecrit",
     "mode": "production",
     "lemma": "tempête",
-    "prompt": "Mets le groupe « une tempête » au pluriel. Garde la même famille de déterminants (un/une/des, ce/cette/ces ou son/sa/ses).",
+    "prompt": "Mets le groupe « une tempête » au pluriel. Garde le même type de petit mot (un/une/des, ce/cette/ces ou son/sa/ses).",
     "answer": "des tempêtes",
     "distractors": [
       "une tempêtes",
@@ -419,7 +419,7 @@ export const WRITTEN_DETERMINER_DRAFTS = [
     "nodeKey": "accorder_determinant_nom_ecrit",
     "mode": "production",
     "lemma": "papillon",
-    "prompt": "Mets le groupe « ce papillon » au pluriel. Garde la même famille de déterminants (un/une/des, ce/cette/ces ou son/sa/ses).",
+    "prompt": "Mets le groupe « ce papillon » au pluriel. Garde le même type de petit mot (un/une/des, ce/cette/ces ou son/sa/ses).",
     "answer": "ces papillons",
     "distractors": [
       "ce papillons",
@@ -436,7 +436,7 @@ export const WRITTEN_DETERMINER_DRAFTS = [
     "nodeKey": "accorder_determinant_nom_ecrit",
     "mode": "production",
     "lemma": "boucle",
-    "prompt": "Mets le groupe « cette boucle » au pluriel. Garde la même famille de déterminants (un/une/des, ce/cette/ces ou son/sa/ses).",
+    "prompt": "Mets le groupe « cette boucle » au pluriel. Garde le même type de petit mot (un/une/des, ce/cette/ces ou son/sa/ses).",
     "answer": "ces boucles",
     "distractors": [
       "cette boucles",
@@ -453,7 +453,7 @@ export const WRITTEN_DETERMINER_DRAFTS = [
     "nodeKey": "accorder_determinant_nom_ecrit",
     "mode": "production",
     "lemma": "parapluie",
-    "prompt": "Mets le groupe « son parapluie » au pluriel. Garde la même famille de déterminants (un/une/des, ce/cette/ces ou son/sa/ses).",
+    "prompt": "Mets le groupe « son parapluie » au pluriel. Garde le même type de petit mot (un/une/des, ce/cette/ces ou son/sa/ses).",
     "answer": "ses parapluies",
     "distractors": [
       "son parapluies",
@@ -470,7 +470,7 @@ export const WRITTEN_DETERMINER_DRAFTS = [
     "nodeKey": "accorder_determinant_nom_ecrit",
     "mode": "production",
     "lemma": "ceinture",
-    "prompt": "Mets le groupe « sa ceinture » au pluriel. Garde la même famille de déterminants (un/une/des, ce/cette/ces ou son/sa/ses).",
+    "prompt": "Mets le groupe « sa ceinture » au pluriel. Garde le même type de petit mot (un/une/des, ce/cette/ces ou son/sa/ses).",
     "answer": "ses ceintures",
     "distractors": [
       "sa ceintures",
@@ -487,7 +487,7 @@ export const WRITTEN_DETERMINER_DRAFTS = [
     "nodeKey": "accorder_determinant_nom_ecrit",
     "mode": "production",
     "lemma": "dépliant",
-    "prompt": "Mets le groupe « un dépliant » au pluriel. Garde la même famille de déterminants (un/une/des, ce/cette/ces ou son/sa/ses).",
+    "prompt": "Mets le groupe « un dépliant » au pluriel. Garde le même type de petit mot (un/une/des, ce/cette/ces ou son/sa/ses).",
     "answer": "des dépliants",
     "distractors": [
       "un dépliants",
@@ -504,7 +504,7 @@ export const WRITTEN_DETERMINER_DRAFTS = [
     "nodeKey": "accorder_determinant_nom_ecrit",
     "mode": "production",
     "lemma": "falaise",
-    "prompt": "Mets le groupe « une falaise » au pluriel. Garde la même famille de déterminants (un/une/des, ce/cette/ces ou son/sa/ses).",
+    "prompt": "Mets le groupe « une falaise » au pluriel. Garde le même type de petit mot (un/une/des, ce/cette/ces ou son/sa/ses).",
     "answer": "des falaises",
     "distractors": [
       "une falaises",
@@ -521,7 +521,7 @@ export const WRITTEN_DETERMINER_DRAFTS = [
     "nodeKey": "accorder_determinant_nom_ecrit",
     "mode": "production",
     "lemma": "ruche",
-    "prompt": "Mets le groupe « cette ruche » au pluriel. Garde la même famille de déterminants (un/une/des, ce/cette/ces ou son/sa/ses).",
+    "prompt": "Mets le groupe « cette ruche » au pluriel. Garde le même type de petit mot (un/une/des, ce/cette/ces ou son/sa/ses).",
     "answer": "ces ruches",
     "distractors": [
       "cette ruches",
@@ -538,7 +538,7 @@ export const WRITTEN_DETERMINER_DRAFTS = [
     "nodeKey": "accorder_determinant_nom_ecrit",
     "mode": "production",
     "lemma": "tunnel",
-    "prompt": "Mets le groupe « des tunnels » au singulier. Garde la même famille de déterminants (un/une/des, ce/cette/ces ou son/sa/ses).",
+    "prompt": "Mets le groupe « des tunnels » au singulier. Garde le même type de petit mot (un/une/des, ce/cette/ces ou son/sa/ses).",
     "answer": "un tunnel",
     "distractors": [
       "des tunnel",
@@ -555,7 +555,7 @@ export const WRITTEN_DETERMINER_DRAFTS = [
     "nodeKey": "accorder_determinant_nom_ecrit",
     "mode": "production",
     "lemma": "galerie",
-    "prompt": "Mets le groupe « des galeries » au singulier. Garde la même famille de déterminants (un/une/des, ce/cette/ces ou son/sa/ses).",
+    "prompt": "Mets le groupe « des galeries » au singulier. Garde le même type de petit mot (un/une/des, ce/cette/ces ou son/sa/ses).",
     "answer": "une galerie",
     "distractors": [
       "des galerie",
@@ -572,7 +572,7 @@ export const WRITTEN_DETERMINER_DRAFTS = [
     "nodeKey": "accorder_determinant_nom_ecrit",
     "mode": "production",
     "lemma": "moulin",
-    "prompt": "Mets le groupe « ces moulins » au singulier. Garde la même famille de déterminants (un/une/des, ce/cette/ces ou son/sa/ses).",
+    "prompt": "Mets le groupe « ces moulins » au singulier. Garde le même type de petit mot (un/une/des, ce/cette/ces ou son/sa/ses).",
     "answer": "ce moulin",
     "distractors": [
       "ces moulin",
@@ -589,7 +589,7 @@ export const WRITTEN_DETERMINER_DRAFTS = [
     "nodeKey": "accorder_determinant_nom_ecrit",
     "mode": "production",
     "lemma": "terrasse",
-    "prompt": "Mets le groupe « ces terrasses » au singulier. Garde la même famille de déterminants (un/une/des, ce/cette/ces ou son/sa/ses).",
+    "prompt": "Mets le groupe « ces terrasses » au singulier. Garde le même type de petit mot (un/une/des, ce/cette/ces ou son/sa/ses).",
     "answer": "cette terrasse",
     "distractors": [
       "ces terrasse",
@@ -606,7 +606,7 @@ export const WRITTEN_DETERMINER_DRAFTS = [
     "nodeKey": "accorder_determinant_nom_ecrit",
     "mode": "production",
     "lemma": "blouson",
-    "prompt": "Mets le groupe « ses blousons » au singulier. Garde la même famille de déterminants (un/une/des, ce/cette/ces ou son/sa/ses).",
+    "prompt": "Mets le groupe « ses blousons » au singulier. Garde le même type de petit mot (un/une/des, ce/cette/ces ou son/sa/ses).",
     "answer": "son blouson",
     "distractors": [
       "ses blouson",
@@ -623,7 +623,7 @@ export const WRITTEN_DETERMINER_DRAFTS = [
     "nodeKey": "accorder_determinant_nom_ecrit",
     "mode": "production",
     "lemma": "sacoche",
-    "prompt": "Mets le groupe « ses sacoches » au singulier. Garde la même famille de déterminants (un/une/des, ce/cette/ces ou son/sa/ses).",
+    "prompt": "Mets le groupe « ses sacoches » au singulier. Garde le même type de petit mot (un/une/des, ce/cette/ces ou son/sa/ses).",
     "answer": "sa sacoche",
     "distractors": [
       "ses sacoche",
@@ -640,7 +640,7 @@ export const WRITTEN_DETERMINER_DRAFTS = [
     "nodeKey": "accorder_determinant_nom_ecrit",
     "mode": "production",
     "lemma": "piston",
-    "prompt": "Mets le groupe « des pistons » au singulier. Garde la même famille de déterminants (un/une/des, ce/cette/ces ou son/sa/ses).",
+    "prompt": "Mets le groupe « des pistons » au singulier. Garde le même type de petit mot (un/une/des, ce/cette/ces ou son/sa/ses).",
     "answer": "un piston",
     "distractors": [
       "des piston",
@@ -657,7 +657,7 @@ export const WRITTEN_DETERMINER_DRAFTS = [
     "nodeKey": "accorder_determinant_nom_ecrit",
     "mode": "production",
     "lemma": "prairie",
-    "prompt": "Mets le groupe « des prairies » au singulier. Garde la même famille de déterminants (un/une/des, ce/cette/ces ou son/sa/ses).",
+    "prompt": "Mets le groupe « des prairies » au singulier. Garde le même type de petit mot (un/une/des, ce/cette/ces ou son/sa/ses).",
     "answer": "une prairie",
     "distractors": [
       "des prairie",
@@ -674,7 +674,7 @@ export const WRITTEN_DETERMINER_DRAFTS = [
     "nodeKey": "accorder_determinant_nom_ecrit",
     "mode": "production",
     "lemma": "sphère",
-    "prompt": "Mets le groupe « ces sphères » au singulier. Garde la même famille de déterminants (un/une/des, ce/cette/ces ou son/sa/ses).",
+    "prompt": "Mets le groupe « ces sphères » au singulier. Garde le même type de petit mot (un/une/des, ce/cette/ces ou son/sa/ses).",
     "answer": "cette sphère",
     "distractors": [
       "ces sphère",
@@ -688,13 +688,18 @@ export const WRITTEN_DETERMINER_DRAFTS = [
   }
 ] as const;
 
+export const WRITTEN_DETERMINER_DRAFTS = RAW_WRITTEN_DETERMINER_DRAFTS.map(draft=>({
+ ...draft,
+ prompt:draft.prompt.replace("Quel groupe respecte le sens indiqué et l’accord du déterminant avec le nom ?","Quel groupe de mots complète correctement l’idée ?"),
+}));
+
 export const WRITTEN_DETERMINER_TEACHING: readonly TargetTeachingContent[] = [
   {
     "id": "french-v3-teaching:written-determiner:recognition",
     "nodeKey": "accorder_determinant_nom_ecrit",
     "mode": "recognition",
     "status": "draft_requires_review",
-    "titleFr": "Reconnaître un groupe déterminant-nom bien accordé",
+    "titleFr": "Choisir les deux mots qui vont ensemble",
     "learnerQuestionFr": "Quels mots dois-je changer quand je passe du singulier au pluriel ?",
     "steps": [
       {
@@ -715,7 +720,7 @@ export const WRITTEN_DETERMINER_TEACHING: readonly TargetTeachingContent[] = [
     "practice": [
       {
         "id": "written-determiner-guide:recognition:0",
-        "promptFr": "Mets « une cloche » au pluriel, en gardant la même famille de déterminants.",
+        "promptFr": "Mets « une cloche » au pluriel, en gardant le même type de petit mot.",
         "answerFr": "des cloches",
         "hintFr": "Vérifie le déterminant et le nom, pas seulement un des deux.",
         "explanationFr": "Le groupe attendu est « des cloches ». Les deux mots portent des marques compatibles.",
@@ -727,7 +732,7 @@ export const WRITTEN_DETERMINER_TEACHING: readonly TargetTeachingContent[] = [
       },
       {
         "id": "written-determiner-guide:recognition:1",
-        "promptFr": "Mets « ce sachet » au pluriel, en gardant la même famille de déterminants.",
+        "promptFr": "Mets « ce sachet » au pluriel, en gardant le même type de petit mot.",
         "answerFr": "ces sachets",
         "hintFr": "Vérifie le déterminant et le nom, pas seulement un des deux.",
         "explanationFr": "Le groupe attendu est « ces sachets ». Les deux mots portent des marques compatibles.",
@@ -739,7 +744,7 @@ export const WRITTEN_DETERMINER_TEACHING: readonly TargetTeachingContent[] = [
       },
       {
         "id": "written-determiner-guide:recognition:2",
-        "promptFr": "Mets « sa médaille » au pluriel, en gardant la même famille de déterminants.",
+        "promptFr": "Mets « sa médaille » au pluriel, en gardant le même type de petit mot.",
         "answerFr": "ses médailles",
         "hintFr": "Vérifie le déterminant et le nom, pas seulement un des deux.",
         "explanationFr": "Le groupe attendu est « ses médailles ». Les deux mots portent des marques compatibles.",
@@ -751,7 +756,7 @@ export const WRITTEN_DETERMINER_TEACHING: readonly TargetTeachingContent[] = [
       },
       {
         "id": "written-determiner-guide:recognition:3",
-        "promptFr": "Mets « des visages » au singulier, en gardant la même famille de déterminants.",
+        "promptFr": "Mets « des visages » au singulier, en gardant le même type de petit mot.",
         "answerFr": "un visage",
         "hintFr": "Vérifie le déterminant et le nom, pas seulement un des deux.",
         "explanationFr": "Le groupe attendu est « un visage ». Les deux mots portent des marques compatibles.",
@@ -763,7 +768,7 @@ export const WRITTEN_DETERMINER_TEACHING: readonly TargetTeachingContent[] = [
       },
       {
         "id": "written-determiner-guide:recognition:4",
-        "promptFr": "Mets « ces pancartes » au singulier, en gardant la même famille de déterminants.",
+        "promptFr": "Mets « ces pancartes » au singulier, en gardant le même type de petit mot.",
         "answerFr": "cette pancarte",
         "hintFr": "Vérifie le déterminant et le nom, pas seulement un des deux.",
         "explanationFr": "Le groupe attendu est « cette pancarte ». Les deux mots portent des marques compatibles.",
@@ -775,7 +780,7 @@ export const WRITTEN_DETERMINER_TEACHING: readonly TargetTeachingContent[] = [
       },
       {
         "id": "written-determiner-guide:recognition:5",
-        "promptFr": "Mets « ses bracelets » au singulier, en gardant la même famille de déterminants.",
+        "promptFr": "Mets « ses bracelets » au singulier, en gardant le même type de petit mot.",
         "answerFr": "son bracelet",
         "hintFr": "Vérifie le déterminant et le nom, pas seulement un des deux.",
         "explanationFr": "Le groupe attendu est « son bracelet ». Les deux mots portent des marques compatibles.",
@@ -849,7 +854,7 @@ export const WRITTEN_DETERMINER_TEACHING: readonly TargetTeachingContent[] = [
     "nodeKey": "accorder_determinant_nom_ecrit",
     "mode": "production",
     "status": "draft_requires_review",
-    "titleFr": "Écrire les deux mots avec les bons accords",
+    "titleFr": "Écrire correctement le petit mot et le nom",
     "learnerQuestionFr": "Quels mots dois-je changer quand je passe du singulier au pluriel ?",
     "steps": [
       {
@@ -870,42 +875,42 @@ export const WRITTEN_DETERMINER_TEACHING: readonly TargetTeachingContent[] = [
     "practice": [
       {
         "id": "written-determiner-guide:production:0",
-        "promptFr": "Mets « une cloche » au pluriel, en gardant la même famille de déterminants.",
+        "promptFr": "Mets « une cloche » au pluriel, en gardant le même type de petit mot.",
         "answerFr": "des cloches",
         "hintFr": "Vérifie le déterminant et le nom, pas seulement un des deux.",
         "explanationFr": "Le groupe attendu est « des cloches ». Les deux mots portent des marques compatibles."
       },
       {
         "id": "written-determiner-guide:production:1",
-        "promptFr": "Mets « ce sachet » au pluriel, en gardant la même famille de déterminants.",
+        "promptFr": "Mets « ce sachet » au pluriel, en gardant le même type de petit mot.",
         "answerFr": "ces sachets",
         "hintFr": "Vérifie le déterminant et le nom, pas seulement un des deux.",
         "explanationFr": "Le groupe attendu est « ces sachets ». Les deux mots portent des marques compatibles."
       },
       {
         "id": "written-determiner-guide:production:2",
-        "promptFr": "Mets « sa médaille » au pluriel, en gardant la même famille de déterminants.",
+        "promptFr": "Mets « sa médaille » au pluriel, en gardant le même type de petit mot.",
         "answerFr": "ses médailles",
         "hintFr": "Vérifie le déterminant et le nom, pas seulement un des deux.",
         "explanationFr": "Le groupe attendu est « ses médailles ». Les deux mots portent des marques compatibles."
       },
       {
         "id": "written-determiner-guide:production:3",
-        "promptFr": "Mets « des visages » au singulier, en gardant la même famille de déterminants.",
+        "promptFr": "Mets « des visages » au singulier, en gardant le même type de petit mot.",
         "answerFr": "un visage",
         "hintFr": "Vérifie le déterminant et le nom, pas seulement un des deux.",
         "explanationFr": "Le groupe attendu est « un visage ». Les deux mots portent des marques compatibles."
       },
       {
         "id": "written-determiner-guide:production:4",
-        "promptFr": "Mets « ces pancartes » au singulier, en gardant la même famille de déterminants.",
+        "promptFr": "Mets « ces pancartes » au singulier, en gardant le même type de petit mot.",
         "answerFr": "cette pancarte",
         "hintFr": "Vérifie le déterminant et le nom, pas seulement un des deux.",
         "explanationFr": "Le groupe attendu est « cette pancarte ». Les deux mots portent des marques compatibles."
       },
       {
         "id": "written-determiner-guide:production:5",
-        "promptFr": "Mets « ses bracelets » au singulier, en gardant la même famille de déterminants.",
+        "promptFr": "Mets « ses bracelets » au singulier, en gardant le même type de petit mot.",
         "answerFr": "son bracelet",
         "hintFr": "Vérifie le déterminant et le nom, pas seulement un des deux.",
         "explanationFr": "Le groupe attendu est « son bracelet ». Les deux mots portent des marques compatibles."

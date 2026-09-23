@@ -11,7 +11,38 @@ import {questionMaterialKeys} from "./material-annotations";
 import {PRESENT_APPLICATION_CONTEXTS} from "./present-application-contexts";
 import {conjugationSentenceGap} from "./conjugation-sentence";
 
-const LABELS:Record<string,string>={present:"présent de l’indicatif",imparfait:"imparfait",futur_proche:"futur proche",passe_recent:"passé récent",passe_compose:"passé composé",futur_simple:"futur simple",plus_que_parfait:"plus-que-parfait",conditionnel_present:"conditionnel présent",subjonctif_present:"subjonctif présent",imperatif_present:"impératif présent",passe_simple:"passé simple"};
+function fixedFormPrompt(tense:Tense,verb:string,subject:string){
+ const lead=`Avec le sujet « ${subject} », `;
+ const singular=["je","tu","il","elle"].includes(subject);
+ switch(tense){
+  case "present":return `${lead}écris « ${verb} » pour parler de ce qui se passe maintenant.`;
+  case "imparfait":return `${lead}écris « ${verb} » en un seul mot pour parler de ce qui se passait ou se répétait, comme dans « ${singular?"nous regardions":"elle regardait"} ».`;
+  case "futur_proche":return `${lead}écris une forme d’aller suivie de « ${verb} » pour annoncer ce qui va se passer.`;
+  case "passe_recent":return `${lead}écris une forme de « venir », puis « de » ou « d’ » et « ${verb} », pour dire ce qui vient de se passer.`;
+  case "passe_compose":return `${lead}écris « ${verb} » avec avoir ou être pour raconter une action terminée, comme dans « elle a fini ».`;
+  case "futur_simple":return `${lead}écris « ${verb} » en un seul mot pour dire ce qui se passera, comme dans « ${singular?"nous chanterons":"elle chantera"} ».`;
+  case "plus_que_parfait":return `${lead}écris « ${verb} » avec avoir ou être pour dire ce qui s’était déjà passé, comme dans « elle avait fini ».`;
+  case "conditionnel_present":return `${lead}écris « ${verb} » en un seul mot pour dire ce qui pourrait se passer, comme dans « ${singular?"nous aimerions":"elle aimerait"} ».`;
+  case "subjonctif_present":return `Après « il faut que », écris « ${verb} » avec le sujet « ${subject} ».`;
+  case "passe_simple":return `${lead}écris « ${verb} » en un seul mot pour raconter une action brève dans un récit, comme dans « soudain, elle entra ».`;
+  case "imperatif_present":throw Error("Imperative prompts need an audience");
+ }
+}
+function sentenceFormPrompt(tense:Tense,verb:string,sentence:string){
+ switch(tense){
+  case "present":return `Complète la phrase avec « ${verb} » pour parler de ce qui se passe maintenant : ${sentence}`;
+  case "imparfait":return `Complète en un seul mot avec « ${verb} » pour parler de ce qui se passait ou se répétait, comme dans « nous regardions » : ${sentence}`;
+  case "futur_proche":return `Complète avec une forme d’aller suivie de « ${verb} » pour annoncer ce qui va se passer : ${sentence}`;
+  case "passe_recent":return `Complète avec une forme de « venir », puis « de » ou « d’ » et « ${verb} », pour dire ce qui vient de se passer : ${sentence}`;
+  case "passe_compose":return `Complète avec « ${verb} » et avoir ou être pour raconter une action terminée, comme dans « elle a fini » : ${sentence}`;
+  case "futur_simple":return `Complète en un seul mot avec « ${verb} » pour dire ce qui se passera, comme dans « nous chanterons » : ${sentence}`;
+  case "plus_que_parfait":return `Complète avec « ${verb} » et avoir ou être pour dire ce qui s’était déjà passé, comme dans « elle avait fini » : ${sentence}`;
+  case "conditionnel_present":return `Complète en un seul mot avec « ${verb} » pour dire ce qui pourrait se passer, comme dans « nous aimerions » : ${sentence}`;
+  case "subjonctif_present":return `Complète la phrase avec « ${verb} ». Le début de la phrase indique la forme à employer : ${sentence}`;
+  case "passe_simple":return `Complète en un seul mot avec « ${verb} » pour raconter une action brève dans un récit, comme dans « soudain, elle entra » : ${sentence}`;
+  case "imperatif_present":throw Error("Imperative prompts need an audience");
+ }
+}
 const SUBJECTS:Array<{person:Person;gender:"m"|"f";subject:string}>=[
  {person:"1s",gender:"m",subject:"je"},{person:"2s",gender:"m",subject:"tu"},{person:"3s",gender:"m",subject:"il"},{person:"3s",gender:"f",subject:"elle"},
  {person:"1p",gender:"m",subject:"nous"},{person:"2p",gender:"m",subject:"vous"},{person:"3p",gender:"m",subject:"ils"},{person:"3p",gender:"f",subject:"elles"},
@@ -49,8 +80,9 @@ export async function expandConjugationDraft(bank:CanonicalDiagnosticBankArtifac
    const compound=["passe_compose","plus_que_parfait"].includes(target.tense);
    const agreementHint=compound&&["1s","2s","1p","2p"].includes(subject.person)?` Le sujet désigne ${subject.person.endsWith("p")?"plusieurs garçons":"un garçon"}.`:"";
    const instructions=imperative?"Écris la consigne sans pronom sujet. N’ajoute pas d’autres mots.":`Écris seulement le verbe ou le groupe verbal, sans le sujet.${agreementHint}`;
-   const prompt=imperative?`Écris « ${target.verb} » à l’impératif présent ${negative?"négatif (ne… pas)":"affirmatif"}, à la ${subject.person==="2s"?"2e personne du singulier":subject.person==="1p"?"1re personne du pluriel":"2e personne du pluriel"}.`:
-    `Sujet : « ${subject.subject} ». Verbe : « ${target.verb} ». Temps demandé : ${LABELS[target.tense]}. Quelle forme faut-il écrire ?`;
+   const audience=subject.person==="2s"?"une personne que tu tutoies":subject.person==="1p"?"un groupe dont tu fais partie":"plusieurs personnes ou une personne que tu vouvoies";
+   const prompt=imperative?`Écris une consigne ${negative?"qui interdit l’action":"qui demande de faire l’action"} à ${audience}, avec « ${target.verb} ».`:
+    fixedFormPrompt(target.tense as Tense,target.verb,subject.subject);
    const raw:GeneratedItem={nodeKey:node.key,strand:"conjugaison",modality:"writing",learnerMode:"shared",responseType:"short_answer",promptFr:prompt,instructionsFr:instructions,correctAnswer:answer,
     acceptableAnswers:negative&&answer.includes("’")?[answer.replaceAll("’","'")]:[],validatorType:negative?"exact":"conjugator",validatorConfig:{verb:target.verb,tense:target.tense,person:subject.person,gender:subject.gender,
      materialExposure:{words:[{lemma:target.verb,form:target.verb}],assessed:{words:[target.verb]}}},difficulty:50};
@@ -93,7 +125,7 @@ export async function expandConjugationDraft(bank:CanonicalDiagnosticBankArtifac
   // detection merely because the question itself contains a blank.
   const individualVerb=target.facetKey.includes("::verb:");
   const raw:GeneratedItem={nodeKey:node.key,strand:"conjugaison",modality:"writing",learnerMode:"shared",responseType:"short_answer",
-   promptFr:`Complète la phrase avec ${verb} ${tense==="imparfait"?"à l’imparfait":tense==="futur_simple"?"au futur simple":tense==="conditionnel_present"?"au conditionnel présent":tense==="passe_compose"?"au passé composé":tense==="plus_que_parfait"?"au plus-que-parfait":tense==="subjonctif_present"?"au subjonctif présent":"au présent de l’indicatif"} : ${sentence}`,
+   promptFr:sentenceFormPrompt(tense,verb,sentence),
    instructionsFr:"Écris seulement le verbe manquant."+("genderSpecified" in application&&application.genderSpecified?` Sujet ${gender==="f"?"féminin":"masculin"} ${person.endsWith("p")?"pluriel":"singulier"}.`:""),correctAnswer:answer,acceptableAnswers:[],validatorType:"conjugator",
    validatorConfig:{verb,tense,person,gender,...(auxiliaryUse?{auxiliaryUse}:{}),...(individualVerb?{sentenceApplication:sentence}:{}),materialExposure:{...(tense==="plus_que_parfait"?{elidedGapAliases:true}:{}),words:[{lemma:verb,form:verb}],sentences:individualVerb?[sentence,completedSentence]:[sentence],...(individualVerb?{assessed:{sentences:[sentence,completedSentence]}}:{})}},difficulty:50};
   const surface=`${node.key}:${diagnosticItemSurfaceIdentity(raw)}`;

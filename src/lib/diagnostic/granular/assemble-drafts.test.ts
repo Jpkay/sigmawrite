@@ -49,13 +49,14 @@ it("requires revision 43 and the complete cause chain before modal passe recent 
  expect(()=>assembleDraftBank(bank,taxonomy,[expansion],{revision:43,passeRecentModalFamily:true})).toThrow(/preceding refinements/);
  expect(assembleDraftBank(bank,taxonomy,[expansion],{revision:43,...refinements,passeRecentModalFamily:true}).bank.bank.key).toBe("french-diagnostic-bank-v3-r43");
 });
-it("applies the two guarded local grammar prompt fixes only to revision 44",()=>{
+it("carries the guarded revision 44 prompt fixes into later revisions",()=>{
  const keys=[
   "local-grammar-v1:construction_negation_simple:receptive:foundation",
   "local-grammar-v1:construction_subordonnee_relative:receptive:core",
  ];
  const revision43=assembleDraftBank(bank,taxonomy,[],{revision:43});
  const revision44=assembleDraftBank(bank,taxonomy,[],{revision:44});
+ const revision45=assembleDraftBank(bank,taxonomy,[],{revision:45});
  expect(keys.map(key=>revision43.bank.items.find(entry=>entry.itemKey===key)?.item.promptFr)).toEqual([
   "Quelle phrase contient une négation simple ?",
   "Dans quelle phrase « dont » introduit-il une relative ?",
@@ -64,7 +65,18 @@ it("applies the two guarded local grammar prompt fixes only to revision 44",()=>
   "Quelle phrase dit qu’une action ne se produit pas ?",
   "Dans quelle phrase le mot « dont » ajoute-t-il une précision sur un nom ?",
  ]);
+ expect(keys.map(key=>revision45.bank.items.find(entry=>entry.itemKey===key)?.item.promptFr)).toEqual(keys.map(key=>revision44.bank.items.find(entry=>entry.itemKey===key)?.item.promptFr));
  const drifted=structuredClone(bank);delete drifted.manifest;
  drifted.items.find((entry:CanonicalDiagnosticBankItem)=>entry.itemKey===keys[0])!.item.promptFr="Unexpected source copy";
  expect(()=>assembleDraftBank(drifted,taxonomy,[],{revision:44})).toThrow(/prompt override source mismatch/);
+});
+it("applies guarded revision 45 wording without changing answers, validators or bindings",()=>{
+ const key="computed-conjugation-v1:produire_futur_proche:foundation";
+ const before=bank.items.find((entry:CanonicalDiagnosticBankItem)=>entry.itemKey===key)!;
+ const revision45=assembleDraftBank(bank,taxonomy,[],{revision:45});
+ const after=revision45.bank.items.find(entry=>entry.itemKey===key)!;
+ expect(after.item.promptFr).toContain("une forme d’aller suivie de « parler »");
+ expect({...after,item:{...after.item,promptFr:before.item.promptFr}}).toEqual(before);
+ const revision44=assembleDraftBank(bank,taxonomy,[],{revision:44});
+ expect(revision44.bank.items.find(entry=>entry.itemKey===key)).toEqual(before);
 });

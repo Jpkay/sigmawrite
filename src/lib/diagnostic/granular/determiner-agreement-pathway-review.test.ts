@@ -22,13 +22,18 @@ it("keeps recognition and counterexample evidence distinct from production or ap
   expect(pool.some(id=>assessesNegativeExample(bank.items.find(entry=>entry.itemKey===id)!.item))).toBe(true);
  }
  expect(new Set([...row.proposedInitialQuestions,...row.proposedLaterQuestions]).size).toBe(16);
+ for(const entry of expansion.items){
+  expect(entry.item.promptFr).not.toContain("analyse de l’accord déterminant-nom");
+  expect(entry.item.choices?.some((choice:{text:string})=>choice.text.includes("s’accorde avec"))).toBe(false);
+ }
  expect(validateCanonicalDiagnosticBank(bank,artifact.taxonomy).eligibleItemKeys.some(id=>id.startsWith("v3-determiner-agreement:"))).toBe(false);
  expect(checksum({assessment,bank,annotations,lessons:DETERMINER_AGREEMENT_TEACHING})).toBe(before);
 });
 it("cannot replace required counterexamples with twelve positive constructions and their wrong options",()=>{
  const lessons=structuredClone(DETERMINER_AGREEMENT_TEACHING);
  for(const draft of DETERMINER_AGREEMENT_DRAFTS.filter(draft=>draft.negative)){
-  lessons[0].steps.push({exampleFr:draft.sentence,explanationFr:"Contre-exemple déjà montré."});lessons[0].materialExposure!.sentences!.push(draft.sentence);
+  const assessedSentence=draft.prompt.split("\n\n")[0];
+  lessons[0].steps.push({exampleFr:assessedSentence,explanationFr:"Contre-exemple déjà montré."});lessons[0].materialExposure!.sentences!.push(assessedSentence);
  }
  const row=reviewDeterminerAgreementPathways(assessment,bank,artifact.taxonomy,annotations,lessons).rows[0];
  expect(row.excludedTeachingOverlapQuestionIds).toHaveLength(4);

@@ -16,7 +16,7 @@ for(const row of PRESENT_SPELLING_TRANSFER){
  const config={verb:row.verb,tense:'present',person:'1p'};
  const answer=conjugate(row.verb,'present','1p');if(answer!==row.answer)throw Error(`Authored and computed form disagree: ${row.verb}`);
  const completed=row.sentence.replace('___',answer);
- const raw={nodeKey:node.key,strand:node.strand,modality:'writing',learnerMode:'shared',responseType:'short_answer',promptFr:`Complète avec ${row.verb} au présent de l’indicatif : ${row.sentence}`,instructionsFr:'Écris seulement le verbe manquant.',correctAnswer:answer,acceptableAnswers:[],validatorType:'conjugator',difficulty:50,validatorConfig:{...config,sentenceApplication:row.sentence,materialExposure:{words:[{lemma:row.verb,form:row.verb}],sentences:[row.sentence,completed]}}};
+ const raw={nodeKey:node.key,strand:node.strand,modality:'writing',learnerMode:'shared',responseType:'short_answer',promptFr:`Complète la phrase avec « ${row.verb} » pour parler de ce qui se passe maintenant : ${row.sentence}`,instructionsFr:'Écris seulement le verbe manquant.',correctAnswer:answer,acceptableAnswers:[],validatorType:'conjugator',difficulty:50,validatorConfig:{...config,sentenceApplication:row.sentence,materialExposure:{words:[{lemma:row.verb,form:row.verb}],sentences:[row.sentence,completed]}}};
  const checked=await runGates(raw,{knownNodeKeys:new Set([node.key]),knownMisconceptionKeys:new Set()});
  if(!checked.item||checked.gates.verdict==='rejected')throw Error(`Rejected spelling transfer: ${row.verb}`);
  questionMaterialKeys(checked.item);

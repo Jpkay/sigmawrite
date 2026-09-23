@@ -21,6 +21,7 @@ import {isQuestionPoolSufficient} from "../src/lib/diagnostic/granular/question-
 import {buildLearningCheckRegistry} from "../src/lib/diagnostic/granular/check-registry";
 import type {ParallelReviewPolicy} from "../src/lib/diagnostic/granular/parallel-review-policy";
 import {R45_ROUTE_COVERAGE_POLICY} from "../src/lib/diagnostic/granular/route-coverage";
+import {applyRevision45AssessmentCopy,revision45TeachingCopy} from "../src/lib/diagnostic/granular/revision-45-copy";
 const read=(path:string)=>JSON.parse(readFileSync(path,"utf8"));
 const artifact=read("generated/french-taxonomy-v3.json"),base=read("generated/diagnostic-bank-v3-draft.json");
 const assembled=assembleDraftBank(base,artifact.taxonomy,FRENCH_DRAFT_EXPANSION_SOURCES.map(name=>read(`generated/french-v3-${name}-expansion.json`)),granularBankOptions(process.argv.slice(2)));
@@ -33,10 +34,16 @@ const policy:ParallelReviewPolicy={mode:"parallel_review",authorization:"product
 if(Object.keys(policy.questionChecksums).length!==selected.size)throw Error("Parallel review selection is incomplete");
 const annotations=[...validateAnnotationReviewDraft(read("docs/diagnostic/v3-facet-annotations.json"),base),...assembled.annotations];
 const adapted=applyFacetTargets(adaptV3ForAssessment({artifact,bank,reviewPolicy:policy}),buildV3Facets(artifact.taxonomy,granularBankOptions(process.argv.slice(2))),bank,annotations);
+if(bankRevision!==undefined&&bankRevision>=45)adapted.assessment=applyRevision45AssessmentCopy(adapted.assessment);
 // New tense-recognition and form-family pathways assess sentences. Older isolated
 // form drills remain in the canonical bank and in historical published releases.
 const sentenceFamilyTargets=new Set(adapted.assessment.probes.filter(p=>(p.id.startsWith("v3-past-tense-foundations:")||p.id.startsWith("v3-subjonctif-family-production:")||p.id.startsWith("v3-imperatif-family-production:")||p.id.startsWith("v3-passe-simple-family-production:")||p.id.startsWith("v3-passe-simple-verb-production:")||p.id.startsWith("v3-imperatif-verb-production:")||p.id.startsWith("v3-vouloir-imperative:")||p.id.startsWith("v3-imperatif-recognition:")||p.id.startsWith("v3-etre-participle-agreement:")||p.id.startsWith("v3-question-detail-reading:")||p.id.startsWith("v3-local-definition-reading:")||p.id.startsWith("v3-avoir-participle-agreement:")||p.id.startsWith("v3-causal-reading-genres:")||p.id.startsWith("coverage-cause-relation:")||p.id.startsWith("coverage-passe-recent-modal:"))).map(p=>p.skillId));
-const retiredIsolatedFamilyQuestions=adapted.assessment.probes.filter(p=>sentenceFamilyTargets.has(p.skillId)&&!p.assessedMaterialKeys?.some(k=>k.startsWith("sentence:"))).map(p=>p.id);
+const retiredPlainLanguageQuestions=bankRevision!==undefined&&bankRevision>=45?[
+ "local-conjugation-gap-v1:distinguer_personne_nombre:receptive:foundation",
+ "review-draft-v1:reconnaitre_imparfait:receptive:core",
+ "review-draft-v1:reconnaitre_imparfait:receptive:stretch",
+]:[];
+const retiredIsolatedFamilyQuestions=[...adapted.assessment.probes.filter(p=>sentenceFamilyTargets.has(p.skillId)&&!p.assessedMaterialKeys?.some(k=>k.startsWith("sentence:"))).map(p=>p.id),...retiredPlainLanguageQuestions];
 const retiredFamilyIds=new Set(retiredIsolatedFamilyQuestions);
 const allocation=allocateTeachingQuestionPools({...adapted.assessment,probes:adapted.assessment.probes.filter(p=>!retiredFamilyIds.has(p.id))},FRENCH_TEACHING_DRAFTS);
 for(const id of sentenceFamilyTargets){
@@ -50,11 +57,12 @@ for(const probe of allocation.assessment.probes){
  if(entry.sectionKey==="reading_comprehension")keys.push(materialIdentity("sentence",readingPassageText(entry.item.validatorConfig,entry.item.promptFr)));
  for(const key of keys){const ids=materialQuestions.get(key)??new Set<string>();ids.add(probe.id);materialQuestions.set(key,ids);}
 }
-const teachingContent:ParallelReviewTeachingContent[]=FRENCH_TEACHING_DRAFTS.map(lesson=>({...structuredClone(lesson),status:"published_pending_review",
+const authoredTeachingContent:ParallelReviewTeachingContent[]=FRENCH_TEACHING_DRAFTS.map(lesson=>({...structuredClone(lesson),status:"published_pending_review",
  assessmentExposureIds:[...new Set(teachingMaterialKeys(lesson).flatMap(key=>[...(materialQuestions.get(key)??[])]))].sort()}));
+const teachingContent=bankRevision!==undefined&&bankRevision>=45?revision45TeachingCopy(authoredTeachingContent):authoredTeachingContent;
 policy.teachingChecksums=Object.fromEntries(teachingContent.map(lesson=>[lesson.id,teachingContentChecksum(lesson)]));
 allocation.assessment.reviewPolicy=structuredClone(policy);
-allocation.assessment.routeCoveragePolicy=structuredClone(R45_ROUTE_COVERAGE_POLICY);
+if(bankRevision!==undefined&&bankRevision>=45)allocation.assessment.routeCoveragePolicy=structuredClone(R45_ROUTE_COVERAGE_POLICY);
 validatePublishedTeaching(allocation.assessment,teachingContent);
 const teachingReadiness=teachingContent.map(lesson=>{
  const targets=allocation.assessment.skills.filter(skill=>skill.nodeKey===lesson.nodeKey&&skill.facetKey===lesson.facetKey&&skill.modes.includes(lesson.mode));

@@ -10,7 +10,7 @@ const exercises:Array<[string,string,string,string]>=[
  ["Leurs chien joue dehors.","Leurs","Leur","Chien est singulier : leur chien, même si plusieurs personnes le possèdent."],
 ];
 const lesson:TargetTeachingContent={id:"french-v3-teaching:determiner-production",nodeKey:"construction_accord_determinant_nom",mode:"production",status:"draft_requires_review",
- titleFr:"Corriger le déterminant",learnerQuestionFr:"Le nom est correct : quel déterminant faut-il écrire devant lui ?",
+ titleFr:"Corriger le petit mot devant le nom",learnerQuestionFr:"Le nom est correct : quel déterminant faut-il écrire devant lui ?",
  steps:[
  {exampleFr:"À corriger : Les vélo est rouge.\nCorrection : Le vélo est rouge.",explanationFr:"On te demande de garder le nom vélo, masculin singulier. Les appartient à la famille de le, la, l’, les. Choisis la forme qui convient au nom : le. Écris seulement ce déterminant, sans transformer vélo en vélos."},
  {exampleFr:"À corriger : Un assiettes sont propres.\nCorrection : Des assiettes sont propres.",explanationFr:"Assiettes est pluriel. Dans la famille de un et une, la forme plurielle est des. Les pourrait former un groupe grammatical, mais changerait la famille demandée et le sens; ici, la correction attendue est des."},
@@ -19,6 +19,6 @@ const lesson:TargetTeachingContent={id:"french-v3-teaching:determiner-production
  ],
  takeawayFr:"Trouve le nom concerné et garde-le tel quel. Vérifie son nombre et son genre, puis choisis la forme dans la même famille que le déterminant à corriger. Avec un possessif, garde aussi la personne qui possède.",
  boundaryFr:"Cette correction guidée par une consigne ne prouve pas encore l’accord spontané dans un texte libre. Attention à l’élision, comme l’école, et aux formes mon amie, ton adresse ou son idée devant une voyelle. Le genre du nom n’est pas toujours visible dans sa terminaison; dans un cas inconnu, il faut le vérifier.",
- practice:exercises.map(([sentence,marked,answerFr,explanationFr],index)=>({id:`determiner-production-guide-${index+1}`,promptFr:`${sentence}\n\nCorrige seulement « ${marked} ». Garde la même famille et la même personne qui possède. Écris uniquement le déterminant corrigé.`,answerFr,hintFr:"Repère le nom, son genre et son nombre. Ne change ni ce nom ni la famille du déterminant.",explanationFr})),
+ practice:exercises.map(([sentence,marked,answerFr,explanationFr],index)=>({id:`determiner-production-guide-${index+1}`,promptFr:`${sentence}\n\nCorrige seulement « ${marked} ». Garde le même type de petit mot et la même personne qui possède. Écris uniquement le mot corrigé.`,answerFr,hintFr:"Repère le nom, son genre et son nombre. Ne change ni ce nom ni le type de petit mot.",explanationFr})),
 };
 export const DETERMINER_PRODUCTION_TEACHING:readonly TargetTeachingContent[]=[{...lesson,materialExposure:{sentences:[...lesson.steps.flatMap(step=>step.exampleFr.split("\n").map(line=>line.replace(/^(À corriger|Correction) : /,""))),...exercises.map(([sentence])=>sentence)]}}];

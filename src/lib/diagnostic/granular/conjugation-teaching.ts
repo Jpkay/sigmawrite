@@ -310,7 +310,7 @@ export const CONJUGATION_TEACHING_CASES: readonly LessonDraft[] = [
 export const CONJUGATION_TEACHING: readonly TargetTeachingContent[] = CONJUGATION_TEACHING_CASES.map(draft => {
   const practice = draft.cases.map((item, i) => {
     const answerFr = form(item.verb, item.person);
-    return { id: `guided:present:${draft.key}:${i + 1}`, promptFr: `Conjugue ${item.verb} au présent. Écris seulement le verbe : ${item.sentence}`,
+    return { id: `guided:present:${draft.key}:${i + 1}`, promptFr: `Complète avec « ${item.verb} » pour parler de ce qui se passe maintenant. Écris seulement le verbe : ${item.sentence}`,
       answerFr, hintFr: item.hint, explanationFr: `${item.sentence.replace("___", answerFr)} ${item.why}` };
   });
   const paradigms = PERSONS.map(person => `${subjects[person]} : ${form(draft.model, person)}`).join("\n");

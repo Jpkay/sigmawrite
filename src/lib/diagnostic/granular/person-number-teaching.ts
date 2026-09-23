@@ -1,16 +1,16 @@
 import type {TargetTeachingContent} from "./teaching-content";
-import {PERSON_NUMBER_LABELS} from "./person-number-drafts";
-const practice: Array<[string,string,number,string]> = [
- ["J’apporte les feutres.","J’",0,"J’ remplace je devant une voyelle : première personne du singulier."],
- ["Tu portes le sac.","Tu",1,"Tu désigne la personne à qui l’on parle : deuxième personne du singulier."],
- ["On travaille ensemble. Ici, on désigne mes amis et moi.","On",2,"On peut désigner notre groupe, mais il commande un verbe à la troisième personne du singulier."],
- ["Mon frère et moi cuisinons.","Mon frère et moi",3,"Le groupe comprend moi; on le remplace par nous : première personne du pluriel."],
- ["Monsieur, vous avez oublié votre écharpe.","vous",4,"Même pour un seul monsieur, le vous de politesse commande la deuxième personne du pluriel au verbe."],
- ["Les vélos restent dehors.","Les vélos",5,"Les vélos se remplace par ils : troisième personne du pluriel. Personne grammaticale ne signifie pas être humain."],
+import {PERSON_NUMBER_VERB_FORMS} from "./person-number-categories";
+const practice: Array<[string,string,number,keyof typeof PERSON_NUMBER_VERB_FORMS,string,string]> = [
+ ["J’apporte les feutres.","Je",0,"avoir","aussi du papier","Je commande la forme ai."],
+ ["Tu portes le sac.","Tu",1,"être","près de la porte","Tu commande la forme es."],
+ ["On travaille ensemble. Ici, on désigne mes amis et moi.","On",2,"aller","finir avant midi","On commande va, même lorsqu’il désigne plusieurs personnes."],
+ ["Mon frère et moi cuisinons.","Mon frère et moi",3,"avoir","tous les ingrédients","Mon frère et moi commande la même forme que nous : avons."],
+ ["Monsieur, vous avez oublié votre écharpe.","vous",4,"être","déjà attendu dehors","Même pour un seul monsieur, vous commande êtes."],
+ ["Les vélos restent dehors.","Les vélos",5,"aller","rester sous l’abri","Les vélos commande la même forme que ils : vont."],
 ];
 const lesson:TargetTeachingContent={
  id:"french-v3-teaching:person-number",nodeKey:"distinguer_personne_nombre",mode:"recognition",status:"draft_requires_review",
- titleFr:"Qui parle, à qui, et de qui ?",learnerQuestionFr:"Pourquoi dit-on je chante, tu chantes et nous chantons ?",
+ titleFr:"Choisir la forme du verbe qui va avec le sujet",learnerQuestionFr:"Pourquoi dit-on je chante, tu chantes et nous chantons ?",
  steps:[
   {exampleFr:"Je chante. Tu danses. Elle filme.",explanationFr:"Je désigne la personne qui parle : première personne. Tu désigne celle à qui l’on parle : deuxième personne. Elle désigne celle dont on parle : troisième personne. Ici, les trois sujets sont au singulier."},
   {exampleFr:"Nous chantons. Vous dansez. Ils filment.",explanationFr:"Nous inclut la personne qui parle : première personne du pluriel. Vous désigne ceux à qui l’on parle : deuxième personne du pluriel. Ils et elles désignent ceux dont on parle : troisième personne du pluriel. Singulier et pluriel sont les deux nombres grammaticaux."},
@@ -19,6 +19,6 @@ const lesson:TargetTeachingContent={
  ],
  takeawayFr:"Pour accorder le verbe, associe le sujet à je, tu, il/elle/on, nous, vous ou ils/elles. Vérifie à la fois sa personne et son nombre grammaticaux. Si le groupe comprend moi, pense à nous; s’il comprend toi sans moi, pense à vous.",
  boundaryFr:"Cette leçon te donne le sujet et t’aide à trouver ses traits pour le verbe. Elle ne vérifie pas encore que tu sais trouver le sujet dans toute phrase ni écrire toutes les formes du verbe. Avec on ou un vous de politesse, l’accord d’un adjectif ou d’un participe peut dépendre des personnes désignées; ne lui applique pas automatiquement le nombre du verbe.",
- practice:practice.map(([sentence,subject,index,explanationFr],i)=>({id:`person-number-guide-${i+1}`,promptFr:`${sentence}\n\nQuelle personne et quel nombre grammaticaux correspondent au sujet « ${subject} » pour le verbe ?`,choices:[...PERSON_NUMBER_LABELS],answerFr:PERSON_NUMBER_LABELS[index],hintFr:"Compare le sujet à je, tu, il/elle/on, nous, vous et ils/elles. Attention à on et au vous de politesse.",explanationFr})),
+ practice:practice.map(([sentence,subject,index,verb,tail,explanationFr],i)=>{const choices=[...PERSON_NUMBER_VERB_FORMS[verb]],answerFr=choices[index];return {id:`person-number-guide-${i+1}`,promptFr:`${sentence}\n\nComplète avec la bonne forme de « ${verb} » : « ${subject} ___ ${tail}. »`,choices,answerFr,hintFr:"Regarde qui fait l’action, puis choisis la forme qui va avec. Attention à on et au vous de politesse.",explanationFr};}),
 };
 export const PERSON_NUMBER_TEACHING:readonly TargetTeachingContent[]=[{...lesson,materialExposure:{sentences:[...lesson.steps.flatMap(step=>step.exampleFr.split(/(?<=[.!?])\s+/)),...practice.map(([sentence])=>sentence)]}}];

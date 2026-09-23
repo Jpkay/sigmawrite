@@ -1,35 +1,37 @@
 /** The subject is supplied: this assesses grammatical person/number, not subject
  * identification, verb spelling or the number of real-world people alone. */
-import {PERSON_NUMBER_LABELS} from "./person-number-categories";
+import {PERSON_NUMBER_LABELS,PERSON_NUMBER_VERB_FORMS} from "./person-number-categories";
 export {PERSON_NUMBER_LABELS} from "./person-number-categories";
-const cases: Array<[string,string,string,number,string]> = [
- ["je-dessine","Je dessine un paysage.","Je",0,"Je désigne la personne qui parle : première personne du singulier."],
- ["j-ecoute","J’écoute cette chanson.","J’",0,"J’ est la forme de je devant une voyelle; la personne et le nombre ne changent pas."],
- ["je-negation","Je ne regarde pas la série.","Je",0,"La négation ne change pas les traits du sujet je."],
- ["je-incise","Demain, je préparerai le repas.","je",0,"Le moment de l’action ne change pas la personne et le nombre de je."],
- ["tu-choisis","Tu choisis un livre.","Tu",1,"Tu désigne une seule personne à qui l’on parle."],
- ["tu-question","Pourquoi hésites-tu ?","tu",1,"Même après le verbe dans une question, tu reste à la deuxième personne du singulier."],
- ["tu-negative","Tu ne connais pas ce chemin.","Tu",1,"La négation ne modifie pas les traits de tu."],
- ["tu-future","Ce soir, tu présenteras ton dessin.","tu",1,"Le futur du verbe ne modifie pas les traits de tu."],
- ["nom-singulier","Le robot avance sur la piste.","Le robot",2,"Ce groupe se remplace par il : troisième personne du singulier, même si le robot n’est pas humain."],
- ["elle","Elle range les pinceaux.","Elle",2,"Elle désigne un être dont on parle : troisième personne du singulier."],
- ["on-nous","On prépare notre spectacle. Ici, on désigne toute notre équipe.","On",2,"Même quand on désigne plusieurs personnes, sa personne grammaticale reste la troisième du singulier."],
- ["collectif","La foule applaudit.","La foule",2,"Le nom foule est singulier. Le groupe se remplace par elle, même s’il désigne de nombreuses personnes."],
- ["nous","Nous inventons une histoire.","Nous",3,"Nous comprend la personne qui parle et au moins une autre personne."],
- ["toi-moi","Toi et moi partageons cette table.","Toi et moi",3,"La personne qui parle, moi, fait partie du groupe : on le remplace par nous."],
- ["elle-moi","Elle et moi dessinons les costumes.","Elle et moi",3,"Un groupe comprenant moi se remplace ici par nous, pas par elles."],
- ["vous-moi","Vous et moi organiserons la rencontre.","Vous et moi",3,"Le groupe inclut moi : la première personne commande l’accord au pluriel."],
- ["vous-groupe","Vous cherchez vos places. Je parle à trois amis.","Vous",4,"Vous s’adresse ici à plusieurs personnes : deuxième personne du pluriel."],
- ["vous-politesse","Madame, vous pouvez entrer. Je parle à une seule personne.","vous",4,"Le vous de politesse garde les traits grammaticaux de la deuxième personne du pluriel pour le verbe."],
- ["toi-elle","Toi et elle préparerez les affiches.","Toi et elle",4,"Le groupe inclut la personne à qui l’on parle, toi, sans inclure moi : il se remplace par vous."],
- ["lui-toi","Lui et toi jouez dans la même équipe.","Lui et toi",4,"Lui et toi se remplace par vous : deuxième personne du pluriel."],
- ["elles","Elles arrivent avant le début du film.","Elles",5,"Elles désigne plusieurs êtres dont on parle : troisième personne du pluriel."],
- ["noms-coordonnes","Lina et Sami ferment la porte.","Lina et Sami",5,"Ces deux personnes sont celles dont on parle : le groupe se remplace par ils."],
- ["objets-pluriels","Les lampes éclairent la scène.","Les lampes",5,"Les lampes se remplace par elles : troisième personne du pluriel, même pour des objets."],
- ["lui-elle","Lui et elle repeignent le banc.","Lui et elle",5,"Ni moi ni toi ne figure dans ce groupe : il se remplace par ils."],
+type Verb=keyof typeof PERSON_NUMBER_VERB_FORMS;
+const cases: Array<[string,string,string,number,Verb,string,string]> = [
+ ["je-dessine","Je dessine un paysage.","Je",0,"aller","chercher un pinceau","Je commande la forme vais."],
+ ["j-ecoute","J’écoute cette chanson.","Je",0,"avoir","un casque sur les oreilles","Je commande la forme ai."],
+ ["je-negation","Je ne regarde pas la série.","Je",0,"être","encore occupé","La négation de la première phrase ne change pas la forme attendue avec je."],
+ ["je-incise","Demain, je préparerai le repas.","je",0,"aller","acheter les ingrédients","Le moment indiqué ne change pas la forme attendue avec je."],
+ ["tu-choisis","Tu choisis un livre.","Tu",1,"avoir","plusieurs choix","Tu commande la forme as."],
+ ["tu-question","Pourquoi hésites-tu ?","tu",1,"être","presque prêt","Même après le verbe dans la première question, tu commande la forme es."],
+ ["tu-negative","Tu ne connais pas ce chemin.","Tu",1,"aller","suivre le panneau","Tu commande la forme vas."],
+ ["tu-future","Ce soir, tu présenteras ton dessin.","tu",1,"avoir","cinq minutes pour parler","Le moment de l’action ne change pas la forme attendue avec tu."],
+ ["nom-singulier","Le robot avance sur la piste.","Le robot",2,"aller","tourner à gauche","Le robot commande la même forme que il : va."],
+ ["elle","Elle range les pinceaux.","Elle",2,"avoir","encore de la peinture","Elle commande la forme a."],
+ ["on-nous","On prépare notre spectacle. Ici, on désigne toute notre équipe.","On",2,"être","prêts à commencer","Même quand on désigne plusieurs personnes, on commande ici la forme est."],
+ ["collectif","La foule applaudit.","La foule",2,"aller","quitter la salle","Le nom foule commande ici la forme va, même s’il désigne de nombreuses personnes."],
+ ["nous","Nous inventons une histoire.","Nous",3,"avoir","beaucoup d’idées","Nous commande la forme avons."],
+ ["toi-moi","Toi et moi partageons cette table.","Toi et moi",3,"être","près de la fenêtre","Toi et moi commande la même forme que nous : sommes."],
+ ["elle-moi","Elle et moi dessinons les costumes.","Elle et moi",3,"aller","choisir les tissus","Elle et moi commande la même forme que nous : allons."],
+ ["vous-moi","Vous et moi organiserons la rencontre.","Vous et moi",3,"avoir","le même programme","Vous et moi inclut la personne qui parle et commande avons."],
+ ["vous-groupe","Vous cherchez vos places. Je parle à trois amis.","Vous",4,"aller","entrer ensemble","Vous commande la forme allez."],
+ ["vous-politesse","Madame, vous pouvez entrer. Je parle à une seule personne.","vous",4,"être","attendue dans le bureau","Même adressé à une seule personne poliment, vous commande êtes."],
+ ["toi-elle","Toi et elle préparerez les affiches.","Toi et elle",4,"avoir","tout le matériel","Toi et elle commande la même forme que vous : avez."],
+ ["lui-toi","Lui et toi jouez dans la même équipe.","Lui et toi",4,"être","sur le terrain","Lui et toi commande la même forme que vous : êtes."],
+ ["elles","Elles arrivent avant le début du film.","Elles",5,"avoir","des places au premier rang","Elles commande la forme ont."],
+ ["noms-coordonnes","Lina et Sami ferment la porte.","Lina et Sami",5,"aller","rejoindre le groupe","Lina et Sami commande la même forme que ils : vont."],
+ ["objets-pluriels","Les lampes éclairent la scène.","Les lampes",5,"être","près des rideaux","Les lampes commande la même forme que elles : sont."],
+ ["lui-elle","Lui et elle repeignent le banc.","Lui et elle",5,"avoir","deux pots de peinture","Lui et elle commande la même forme que ils : ont."],
 ];
-export const PERSON_NUMBER_DRAFTS = cases.map(([key,sentence,subject,index,reason])=>({
- key,nodeKey:"distinguer_personne_nombre" as const,sentence,subject,
- prompt:`${sentence}\n\nQuelle personne et quel nombre grammaticaux correspondent au sujet « ${subject} » pour l’accord du verbe ?`,
- answer:PERSON_NUMBER_LABELS[index],distractors:PERSON_NUMBER_LABELS.filter((_,i)=>i!==index),reason,
-}));
+export const PERSON_NUMBER_DRAFTS = cases.map(([key,sentence,subject,index,verb,tail,reason])=>{
+ const forms=PERSON_NUMBER_VERB_FORMS[verb],answer=forms[index],exerciseSentence=`${subject} ___ ${tail}.`;
+ return {key,nodeKey:"distinguer_personne_nombre" as const,sentence,subject,personNumberGroup:PERSON_NUMBER_LABELS[index],exerciseSentence,
+ prompt:`${sentence}\n\nComplète avec la bonne forme de « ${verb} » : « ${exerciseSentence} »`,
+ answer,distractors:forms.filter(form=>form!==answer),reason};
+});

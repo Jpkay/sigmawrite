@@ -44,7 +44,7 @@ it('keeps each guided family verb and its infinitive instead of substituting the
  for(const lesson of lessons.filter(l=>l.facetKey!.includes('::pattern:'))){
   expect(lesson.practice.length).toBeGreaterThanOrEqual(6);
   for(const exercise of lesson.practice){
-   const verb=exercise.promptFr.match(/^Complète avec (.+) au futur proche\./)![1];
+   const verb=exercise.promptFr.match(/^Complète avec une forme d’aller suivie de « (.+) »/)![1];
    expect(exercise.answerFr.split(' ').at(-1)).toBe(verb);
    expect(exercise.answerFr).toMatch(/^(vais|vas|va|allons|allez|vont) /);
   }
