@@ -7,7 +7,7 @@ import {PageHeader} from '@/components/page';
 import {SkillFeatureResults} from './skill-feature-results';
 import type {GranularFrontierView} from '@/lib/diagnostic/granular/frontier-view';
 import {StudentResultSummary} from './student-result-summary';
-import {studentActivityTitle,studentSkillTitle} from '@/lib/diagnostic/granular/student-results-display';
+import {studentActivityTitle,studentSkillTitle,studentSummaryLabel} from '@/lib/diagnostic/granular/student-results-display';
 const STATUS=copy.status;
 
 export function GranularFrontier({data,title=copy.title}:{data:GranularFrontierView;title?:string}){
@@ -20,7 +20,7 @@ export function GranularFrontier({data,title=copy.title}:{data:GranularFrontierV
   <p className="mb-4 text-sm text-muted-foreground">{copy.help}</p>
   {data.phase==='assessing'&&<p className="mb-5">{copy.ongoing} <Link className="underline" href="/student/diagnostic">{copy.resume}</Link></p>}
   {data.coverage&&<p className="mb-5 text-sm text-muted-foreground">{frontierCoverageText(data.coverage.supportedSkillCount,data.coverage.deferredSkillCount)}</p>}
-  <StudentResultSummary results={data.nodes.map(node=>node.result)}/>
+  <StudentResultSummary results={data.nodes.map(node=>({...node.result,label:studentSummaryLabel(node.labelFr,node.result.modes[0].mode),assessmentAvailable:node.assessmentAvailable}))}/>
   {data.activities.length>0&&<section className="mb-8"><h2 className="mb-3 text-xl font-semibold">{copy.next}</h2><div className="rounded-lg border border-border p-4"><Link className="font-medium underline" href={data.activities[0].href}>{studentActivityTitle(data.activities[0])}</Link><span className="ml-2 text-sm text-muted-foreground">{frontierDurationText(data.activities[0].estimatedMinutes)}</span></div>{data.activities.length>1&&<details className="mt-3 rounded-lg border border-border p-4"><summary className="cursor-pointer font-medium">{copy.moreActivities}</summary><ul className="mt-3 space-y-3">{data.activities.slice(1).map(activity=><li key={activity.activityId}><Link className="underline" href={activity.href}>{studentActivityTitle(activity)}</Link><span className="ml-2 text-sm text-muted-foreground">{frontierDurationText(activity.estimatedMinutes)}</span></li>)}</ul></details>}</section>}
   <details className="rounded-lg border border-border p-4"><summary className="cursor-pointer font-semibold">{copy.summary.details}</summary><div className="mb-5 mt-5 flex flex-wrap gap-4">
    <label className="grid gap-1 text-sm">{copy.search}<input className="rounded-md border border-border bg-background p-2" value={search} onChange={event=>{setSearch(event.target.value);setFocused(null);}}/></label>

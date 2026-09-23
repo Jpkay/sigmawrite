@@ -26,6 +26,8 @@ export const DIAGNOSTIC_COPY = {
   "connectionError": "La connexion a été interrompue. Ta réponse est conservée ; réessaie.",
   "loadingError": "Impossible de charger ton diagnostic. Recharge la page pour réessayer.",
   "pause": "Faire une pause",
+  "adaptiveProgressHelp": "Le nombre de questions change selon tes réponses.",
+  "timeProgressLabel": "Temps utilisé dans le diagnostic",
   "progressSaved": "Ta progression est enregistrée",
   "ready": "Prêt à commencer ?",
   "pauseHelp": "Prends ton temps. Tu peux quitter cette page et revenir plus tard.",
@@ -112,6 +114,7 @@ export const DIAGNOSTIC_COPY = {
 } as const;
 
 export const diagnosticProgressText=(answered:number,skipped:number,remainingSeconds:number)=>`${answered} réponse${answered===1?"":"s"} enregistrée${answered===1?"":"s"}${skipped>0?` · ${skipped} question${skipped===1?"":"s"} passée${skipped===1?"":"s"}`:""} · environ ${Math.ceil(remainingSeconds/60)} min restantes`;
+export const diagnosticProgressPercent=(remainingSeconds:number,totalSeconds=35*60)=>Math.max(0,Math.min(100,Math.round((1-remainingSeconds/totalSeconds)*100)));
 export const diagnosticQuestionText=(answered:number,skipped:number)=>`Question ${answered+skipped+1}`;
 export const diagnosticAnswerCountText=(count:number)=>`${count} réponse(s)`;
 export const teachingProgressText=(index:number,total:number)=>`Entraînement ${index+1} sur ${total} · Tu peux demander de l’aide.`;

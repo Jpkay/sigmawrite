@@ -9,7 +9,7 @@ import {recentReadingDisplay} from "@/lib/diagnostic/granular/recent-reading-cop
 import { useStudentState } from "@/lib/student-store";
 import type { DiagnosticResult } from "@/lib/types";
 import type { DiagnosticSectionProfileKey } from "@/lib/student-state";
-import {studentSkillTitle} from "@/lib/diagnostic/granular/student-results-display";
+import {studentEvidenceCoverageText,studentSkillTitle} from "@/lib/diagnostic/granular/student-results-display";
 
 const SECTION_LABELS: Record<DiagnosticSectionProfileKey, string> = {
   reading_comprehension: "Compréhension écrite",
@@ -81,7 +81,7 @@ export default function ProgressPage() {
         <p className="mb-4 text-sm text-muted-foreground">Chaque domaine montre les points réussis, ceux à travailler et ceux qui ne sont pas encore vérifiés.</p>
         <div className="border-y border-border">
           {sectionProfile.map(([key, section]) => <div key={key} className="grid gap-3 border-b border-border py-4 last:border-b-0 sm:grid-cols-[12rem_1fr_auto] sm:items-center">
-            <div><p className="font-medium">{SECTION_LABELS[key]}</p><p className="mt-1 text-xs text-muted-foreground">{section.confirmed} point{section.confirmed===1?"":"s"} vérifié{section.confirmed===1?"":"s"} sur {section.total}</p></div>
+            <div><p className="font-medium">{SECTION_LABELS[key]}</p><p className="mt-1 text-xs text-muted-foreground">{studentEvidenceCoverageText(section.confirmed,section.total)}</p></div>
             <div className="h-2 overflow-hidden rounded-full bg-muted"><div className="h-full bg-primary" style={{ width: `${Math.round((section.meanMastery ?? .5) * 100)}%` }} /></div>
             <div className="flex flex-wrap gap-1.5 text-xs"><Badge variant="success">{section.mastered} point{section.mastered===1?"":"s"} bien acquis</Badge><Badge variant="secondary">{section.fragile} point{section.fragile===1?"":"s"} encore à travailler</Badge><Badge variant="outline">{section.missing} point{section.missing===1?"":"s"} à travailler</Badge><Badge variant="outline">{section.unknown} point{section.unknown===1?"":"s"} pas encore vérifié{section.unknown===1?"":"s"}</Badge></div>
           </div>)}

@@ -25,6 +25,7 @@ it('records all possible filter counts and the exact expanded detail wording wit
  expect(display.counts).toEqual(['0 points affichés','1 point affiché','2 points affichés']);
  const html=renderToStaticMarkup(React.createElement(GranularFrontier,{data}));
  for(const line of ['1 réponse prise en compte.','Écrire la réponse · Pas encore vérifié · Questions à venir','Utiliser le présent · Reconnaître · Encore à vérifier']){expect(html).toContain(line);expect(text).toContain(line);}
- for(const line of ['Ce que tu sais déjà faire','Ce que tu peux encore améliorer','Ce qu’il faut encore vérifier','Pas encore vérifié','Voir le détail de tous les points'])expect(html).toContain(line);
+ for(const line of ['Ce qu’il faut encore vérifier','Utiliser le présent','D’autres points n’ont pas encore été vérifiés. Cela ne veut pas dire que tu ne sais pas les faire.','Voir le détail de tous les points'])expect(html).toContain(line);
+ expect(html).not.toContain('Ce que tu sais déjà faire</dt>');expect(html).not.toContain('544 points');
  expect(JSON.stringify(data)).toBe(before);
 });

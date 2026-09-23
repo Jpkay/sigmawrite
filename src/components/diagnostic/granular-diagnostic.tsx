@@ -1,6 +1,6 @@
 "use client";
 import {SkillEvidenceResults} from "./skill-evidence-results";
-import {diagnosticProgressText,diagnosticQuestionText,diagnosticAnswerCountText} from "./diagnostic-copy";
+import {diagnosticProgressPercent,diagnosticProgressText,diagnosticQuestionText,diagnosticAnswerCountText} from "./diagnostic-copy";
 import {DIAGNOSTIC_COPY as copy} from "./diagnostic-copy";
 import {WritingFeedbackCard} from "./writing-feedback";
 import {SkillFeatureResults} from "./skill-feature-results";
@@ -20,7 +20,7 @@ import {QuestionAudio} from "./question-audio";
 import {GuidedTeaching,type TeachingCommand} from "./guided-teaching";
 import {groupAssessmentResults} from "@/lib/diagnostic/granular/result-groups";
 import {StudentResultSummary} from "./student-result-summary";
-import {STUDENT_RESULT_SUMMARY_COPY as resultCopy,studentActivityTitle,studentSkillTitle} from "@/lib/diagnostic/granular/student-results-display";
+import {STUDENT_RESULT_SUMMARY_COPY as resultCopy,studentActivityTitle,studentSkillTitle,studentSummaryLabel} from "@/lib/diagnostic/granular/student-results-display";
 
 export function GranularDiagnostic({initialActivityId,start=startGranularDiagnostic,update=updateGranularDiagnostic,updateLearning=updateGranularLearningCheck,updateTeaching=updateGranularTeaching}:{initialActivityId?:string;start?:()=>Promise<AssessmentResponse>;update?:(input:unknown)=>Promise<AssessmentResponse>;updateLearning?:(input:unknown)=>Promise<AssessmentResponse>;updateTeaching?:(input:unknown)=>Promise<AssessmentResponse>}){
  const [view,setView]=useState<AssessmentView|null>(null),[draft,setDraft]=useState(""),[error,setError]=useState<string|null>(null),[busy,setBusy]=useState(true),[notice,setNotice]=useState<string|null>(null);
@@ -95,10 +95,7 @@ export function GranularDiagnostic({initialActivityId,start=startGranularDiagnos
   {notice&&<p role="status" className="mb-5 rounded-md border border-border p-4">{notice}</p>}
   {error&&<p role="alert" className="mb-5 rounded-md border border-border p-4">{error}</p>}
   {view.teaching?<GuidedTeaching teaching={view.teaching} busy={busy} draft={draft} edit={edit} send={type=>void send(type)}/>:view.phase==="assessing"||checking?<>
-   {!checking&&<div className="mb-6 flex flex-wrap items-center justify-between gap-3 text-sm text-muted-foreground">
-    <p>{diagnosticProgressText(view.answeredCount,view.skippedCount??0,view.remainingSeconds)}</p>
-    {!view.paused&&<Button variant="outline" disabled={busy} onClick={()=>void send("pause")}>{copy.pause}</Button>}
-   </div>}
+   {!checking&&<div className="mb-6 grid gap-3 text-sm text-muted-foreground"><div className="flex flex-wrap items-center justify-between gap-3"><p>{diagnosticProgressText(view.answeredCount,view.skippedCount??0,view.remainingSeconds)}</p>{!view.paused&&<Button variant="outline" disabled={busy} onClick={()=>void send("pause")}>{copy.pause}</Button>}</div><div className="h-2 overflow-hidden rounded-full bg-muted" role="progressbar" aria-label={copy.timeProgressLabel} aria-valuemin={0} aria-valuemax={100} aria-valuenow={diagnosticProgressPercent(view.remainingSeconds)} aria-valuetext={`Environ ${Math.ceil(view.remainingSeconds/60)} min restantes`}><div className="h-full rounded-full bg-primary" style={{width:`${diagnosticProgressPercent(view.remainingSeconds)}%`}}/></div><p className="text-xs">{copy.adaptiveProgressHelp}</p></div>}
    {view.paused&&!checking?<section className="rounded-xl border border-border p-6"><h2 className="mb-2 text-xl font-semibold">{view.answeredCount||(view.skippedCount??0)?copy.progressSaved:copy.ready}</h2><p className="mb-5 text-muted-foreground">{copy.pauseHelp}</p><Button disabled={busy} onClick={()=>void send("resume")}>{view.answeredCount||question?copy.resume:copy.begin}</Button></section>
    :question?<form onSubmit={event=>{event.preventDefault();if(question.audio&&audioPlayedKey!==`${view.sessionId}:${question.id}:${question.audio.src}`)return;void send(checking?"answer_check":"answer");}} className="rounded-xl border border-border p-5 sm:p-7">
     <h2 className="mb-4 text-sm font-semibold text-muted-foreground">{checking?copy.newCheck:diagnosticQuestionText(view.answeredCount,view.skippedCount??0)}</h2>
@@ -114,7 +111,7 @@ export function GranularDiagnostic({initialActivityId,start=startGranularDiagnos
    </form>:<p role="status">{copy.preparing}</p>}
   </>:<>
    {view.writingFeedback&&<WritingFeedbackCard feedback={view.writingFeedback}/>}
-   <StudentResultSummary results={view.results}/>
+   <StudentResultSummary results={view.results.map(result=>{const detail=view.skillDetails[result.skillId];return {...result,label:studentSummaryLabel(detail?.labelFr??copy.unverifiedPoint,detail?.mode??result.modes[0].mode),assessmentAvailable:detail?.assessmentAvailable};})}/>
    {view.provisional&&<p className="mb-6 text-muted-foreground">{copy.provisionalHelp}</p>}
    {view.coverage&&view.coverage.deferredSkillCount>0&&<p className="mb-6 rounded-lg border border-border p-4 text-sm text-muted-foreground">{copy.coverageHelp}</p>}
    <section className="mb-8"><h2 className="mb-3 text-xl font-semibold">{resultCopy.nextActivity}</h2>{view.learningActivities?.[0]?<ActivityCard activity={view.learningActivities[0]} busy={busy} send={send}/>:null}{(view.learningActivities?.length??0)>1&&<details className="mt-3 rounded-lg border border-border p-4"><summary className="cursor-pointer font-medium">{resultCopy.moreActivities}</summary><div className="mt-3 space-y-3">{view.learningActivities!.slice(1).map(activity=><ActivityCard key={activity.activityId} activity={activity} busy={busy} send={send}/>)}</div></details>}{view.deferredReviewCount>0&&<p className="mt-3 text-sm text-muted-foreground">{copy.deferredHelp}</p>}{!view.learningActivities?.length&&!view.optionalLearningActivities?.length&&(view.deferredReviewCount===0||view.missingLearningActivityCount>0)&&<p className="text-muted-foreground">{copy.activitiesUnavailable}</p>}{Boolean(view.optionalLearningActivities?.length)&&<section className="mt-6"><h3 className="text-lg font-semibold">{copy.optionalTitle}</h3><p className="my-2 text-sm text-muted-foreground">{copy.optionalHelp}</p><ul className="space-y-3">{view.optionalLearningActivities?.map(activity=><li key={activity.activityId} className="rounded-lg border border-border p-4"><p className="mb-3 font-semibold">{studentActivityTitle({...activity,action:'learn'})}</p><Button variant="outline" disabled={busy} onClick={()=>void send("start_teaching",activity.activityId)}>{copy.openLesson}</Button></li>)}</ul></section>}<Link href="/student" className={`${buttonVariants()} mt-5`}>{copy.viewPathway}</Link></section>

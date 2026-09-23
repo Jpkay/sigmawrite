@@ -1,11 +1,20 @@
 import {expect,it} from "vitest";
-import {studentActivityTitle,studentResultSummary,studentSkillTitle} from "./student-results-display";
+import {studentActivityTitle,studentEvidenceCoverageText,studentResultSummary,studentSkillTitle,studentSummaryLabel} from "./student-results-display";
 
-it("keeps demonstrated, needs-work, partial and untested results separate",()=>{
- const results=[{status:"mastered" as const},{status:"missing" as const},{status:"fragile" as const},{status:"uncertain" as const},{status:"unknown" as const}];
+it("names only direct results and reduces hundreds of untouched targets to a gentle flag",()=>{
+ const direct=(status:"mastered"|"missing"|"fragile"|"uncertain",label:string)=>({status,evidence:"direct" as const,label});
+ const results=[direct("mastered","Repérer le sujet"),direct("missing","Écrire le verbe"),direct("fragile","Accorder les mots"),direct("uncertain","Comprendre le texte"),...Array.from({length:544},(_,index)=>({status:"unknown" as const,evidence:"untested" as const,label:`Point ${index}`}))];
  const before=structuredClone(results);
- expect(studentResultSummary(results)).toEqual({mastered:1,needsWork:2,checking:1,notChecked:1});
+ expect(studentResultSummary(results)).toEqual({mastered:["Repérer le sujet"],needsWork:["Écrire le verbe","Accorder les mots"],checking:["Comprendre le texte"],hasUnassessed:true,hasConfirmed:true,hasDirect:true});
  expect(results).toEqual(before);
+});
+
+it("handles empty and partial results without claiming a strength or difficulty",()=>{
+ expect(studentResultSummary([{status:"unknown",evidence:"untested",label:"Point non vu"}])).toEqual({mastered:[],needsWork:[],checking:[],hasUnassessed:true,hasConfirmed:false,hasDirect:false});
+ expect(studentResultSummary([{status:"uncertain",evidence:"direct",label:"Point commencé"}])).toEqual({mastered:[],needsWork:[],checking:["Point commencé"],hasUnassessed:false,hasConfirmed:false,hasDirect:true});
+ expect(studentResultSummary([{status:"mastered",evidence:"direct",label:"Hors bilan",assessmentAvailable:false}])).toEqual({mastered:[],needsWork:[],checking:[],hasUnassessed:true,hasConfirmed:false,hasDirect:false});
+ expect(studentEvidenceCoverageText(1,8)).toBe("1 point avec assez de réponses prises en compte sur 8");
+ expect(studentSummaryLabel("Employer le présent","production")).toBe("Utiliser le présent (écrire)");
 });
 
 it("uses plain display titles without changing the source activity",()=>{
