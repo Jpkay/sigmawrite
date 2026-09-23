@@ -7,6 +7,7 @@ import { logAudit } from "@/lib/audit";
 import { createClient, createServiceClient } from "@/lib/supabase/server";
 import {
   deliverProvisionedCredentials,
+  ManagedAccountEmailInUseError,
   provisionManagedAccount,
   rotateManagedPassword,
 } from "@/lib/user-provisioning";
@@ -189,16 +190,22 @@ export async function createManagedUser(input: unknown) {
     }
   }
 
-  const credentials = await provisionManagedAccount({
-    role: data.role,
-    displayName: data.displayName,
-    requestedUsername: data.username || null,
-    email: data.email || null,
-    grade: data.grade ?? null,
-    provisionedByProfileId: session.id,
-    schoolId: accountSchoolId,
-    deliverEmail: false,
-  });
+  let credentials;
+  try {
+    credentials = await provisionManagedAccount({
+      role: data.role,
+      displayName: data.displayName,
+      requestedUsername: data.username || null,
+      email: data.email || null,
+      grade: data.grade ?? null,
+      provisionedByProfileId: session.id,
+      schoolId: accountSchoolId,
+      deliverEmail: false,
+    });
+  } catch (error) {
+    if (error instanceof ManagedAccountEmailInUseError) return { ok: false as const, error: error.message };
+    throw error;
+  }
   const service = createServiceClient();
 
   try {
@@ -289,7 +296,7 @@ export async function createManagedUser(input: unknown) {
     revalidatePath("/teacher");
     revalidatePath("/teacher/classes");
     for (const classId of classIds) revalidatePath(`/teacher/classes/${classId}`);
-    return { ...credentials, emailDelivered };
+    return { ok: true as const, ...credentials, emailDelivered };
   } catch (error) {
     await service.auth.admin.deleteUser(credentials.authUserId);
     throw error;

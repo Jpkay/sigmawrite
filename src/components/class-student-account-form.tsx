@@ -30,6 +30,10 @@ export function ClassStudentAccountForm({ classId }: { classId: string }) {
         teacherIds: [],
         studentIds: [],
       });
+      if (!result.ok) {
+        setError(result.error);
+        return;
+      }
       setCredentials({ username: result.username, password: result.temporaryPassword, emailDelivered: result.emailDelivered });
     } catch (caught) { setError(caught instanceof Error ? caught.message : "Le compte n’a pas pu être créé."); }
     finally { setBusy(false); }

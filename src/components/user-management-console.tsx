@@ -85,6 +85,10 @@ export function UserManagementConsole({ data, initialRole = "student", initialSc
         teacherIds: role === "student" && teacherId ? [teacherId] : [],
         studentIds: (role === "supervisor" || role === "teacher") && selectedStudentId ? [selectedStudentId] : [],
       });
+      if (!result.ok) {
+        setError(result.error);
+        return;
+      }
       setCredentials({
         label: displayName,
         username: result.username,

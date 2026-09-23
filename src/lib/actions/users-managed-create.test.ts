@@ -23,12 +23,18 @@ vi.mock("@/lib/supabase/server", () => ({
   createServiceClient: f.createServiceClient,
 }));
 vi.mock("@/lib/user-provisioning", () => ({
+  ManagedAccountEmailInUseError: class ManagedAccountEmailInUseError extends Error {
+    constructor() {
+      super("Cette adresse e-mail est déjà utilisée. Utilisez une autre adresse, ou laissez ce champ vide si l’e-mail est facultatif.");
+    }
+  },
   deliverProvisionedCredentials: f.deliver,
   provisionManagedAccount: f.provision,
   rotateManagedPassword: vi.fn(),
 }));
 
 import { createManagedUser } from "./users";
+import { ManagedAccountEmailInUseError } from "@/lib/user-provisioning";
 
 describe("managed student creation", () => {
   beforeEach(() => {
@@ -98,6 +104,25 @@ describe("managed student creation", () => {
     expect(f.audit).toHaveBeenCalledWith("user.managed_account_created", expect.objectContaining({
       metadata: { role: "student", emailDelivered: false, classCount: 1 },
     }));
+    expect(result).toMatchObject({ ok: true, username: "managed.student" });
     expect(result).not.toHaveProperty("feedbackPilotEnrollment");
+  });
+
+  it("returns a useful error when the email already belongs to another account", async () => {
+    f.provision.mockRejectedValue(new ManagedAccountEmailInUseError());
+
+    const result = await createManagedUser({
+      role: "student",
+      displayName: "Managed Student",
+      email: "already@example.test",
+      username: "",
+      grade: 7,
+      classIds: [CLASS_ID],
+    });
+
+    expect(result).toMatchObject({ ok: false, error: expect.stringContaining("déjà utilisée") });
+    expect(f.deliver).not.toHaveBeenCalled();
+    expect(f.audit).not.toHaveBeenCalled();
+    expect(f.createServiceClient.mock.results[0].value.from).not.toHaveBeenCalledWith("enrollments");
   });
 });

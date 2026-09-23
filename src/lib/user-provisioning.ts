@@ -10,6 +10,13 @@ import {
 
 export type ManagedAccountRole = "student" | "teacher" | "supervisor" | "school_admin" | "parent";
 
+export class ManagedAccountEmailInUseError extends Error {
+  constructor() {
+    super("Cette adresse e-mail est déjà utilisée. Utilisez une autre adresse, ou laissez ce champ vide si l’e-mail est facultatif.");
+    this.name = "ManagedAccountEmailInUseError";
+  }
+}
+
 export type ProvisionedCredentials = {
   authUserId: string;
   profileId: string;
@@ -105,6 +112,7 @@ export async function provisionManagedAccount(input: ProvisionManagedAccountInpu
       password_set: false,
     },
   });
+  if (authError?.code === "email_exists") throw new ManagedAccountEmailInUseError();
   if (authError || !created.user) throw new Error(authError?.message ?? "Le compte n’a pas pu être créé.");
 
   try {
