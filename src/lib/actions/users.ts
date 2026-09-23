@@ -10,7 +10,6 @@ import {
   provisionManagedAccount,
   rotateManagedPassword,
 } from "@/lib/user-provisioning";
-import { createDiagnosticPilotEnrollment } from "@/lib/diagnostic/pilot-enrollment";
 
 const uuid = z.string().uuid();
 const managedUserInput = z.object({
@@ -18,21 +17,14 @@ const managedUserInput = z.object({
   displayName: z.string().trim().min(2).max(120),
   email: z.union([z.string().trim().email(), z.literal("")]).optional(),
   username: z.string().trim().max(32).optional(),
-  dateOfBirth: z.union([z.string().date(), z.literal("")]).optional(),
   grade: z.number().int().min(5).max(12).nullable().optional(),
   schoolIds: z.array(uuid).max(20).default([]),
   classIds: z.array(uuid).max(20).default([]),
   teacherIds: z.array(uuid).max(20).default([]),
   studentIds: z.array(uuid).max(100).default([]),
-  feedbackPilot: z.object({
-    agreementSource: z.enum(["student", "guardian"]),
-    agreementConfirmed: z.literal(true),
-    agreedAt: z.string().datetime(),
-    durationDays: z.number().int().min(1).max(30).default(30),
-  }).nullable().optional(),
 }).superRefine((value, context) => {
-  if (value.role === "student" && (!value.dateOfBirth || value.grade == null)) {
-    context.addIssue({ code: "custom", message: "La date de naissance et le niveau sont requis pour un élève." });
+  if (value.role === "student" && value.grade == null) {
+    context.addIssue({ code: "custom", message: "Le niveau est requis pour un élève." });
   }
   if (value.role === "student" && value.classIds.length === 0) {
     context.addIssue({ code: "custom", message: "Choisissez une classe pour autoriser l’accès de l’élève." });
@@ -48,9 +40,6 @@ const managedUserInput = z.object({
   }
   if (value.role === "parent" && !value.email) {
     context.addIssue({ code: "custom", message: "Un compte parent a besoin d’une adresse e-mail." });
-  }
-  if (value.feedbackPilot && value.role !== "student") {
-    context.addIssue({ code: "custom", message: "Le pilote de feedback est réservé aux comptes élèves." });
   }
   if (value.teacherIds.length > 0 && value.role !== "student") {
     context.addIssue({ code: "custom", message: "Les enseignants directs s’appliquent uniquement à un compte élève." });
@@ -160,13 +149,11 @@ export async function createManagedUser(input: unknown) {
   const scope = await adminScope(session);
   if (session.role === "teacher") {
     if (data.role !== "student") throw new Error("Un enseignant peut uniquement créer des comptes élèves.");
-    if (data.feedbackPilot) throw new Error("Seul un administrateur peut inscrire un élève au pilote de feedback.");
     if (teacherIds.length) throw new Error("Un enseignant ne peut pas s’accorder lui-même un lien direct.");
     await verifyTeacherClasses(session.id, classIds);
     teacherIds = [];
   } else if (session.role === "school_admin") {
     if (!["student", "teacher", "parent"].includes(data.role)) throw new Error("Un administrateur d’établissement crée des comptes élèves, enseignants et parents.");
-    if (data.feedbackPilot) throw new Error("Seul un administrateur de la plateforme peut inscrire un élève au pilote de feedback.");
     await assertClassesInSchool(classIds, scope.schoolId);
     for (const teacherId of teacherIds) await assertProfileInSchool(teacherId, scope.schoolId);
     await validateProfileRoles(teacherIds, "teacher");
@@ -207,7 +194,6 @@ export async function createManagedUser(input: unknown) {
     displayName: data.displayName,
     requestedUsername: data.username || null,
     email: data.email || null,
-    dateOfBirth: data.dateOfBirth || null,
     grade: data.grade ?? null,
     provisionedByProfileId: session.id,
     schoolId: accountSchoolId,
@@ -289,19 +275,6 @@ export async function createManagedUser(input: unknown) {
       if (error) throw new Error(error.message);
     }
 
-    let feedbackPilotEnrollment: { enrollmentId: string; expiresAt: string } | null = null;
-    if (data.role === "student" && credentials.studentId && data.feedbackPilot) {
-      feedbackPilotEnrollment = await createDiagnosticPilotEnrollment({
-        studentId: credentials.studentId,
-        enrolledBy: session.id,
-        durationDays: data.feedbackPilot.durationDays,
-        cohortKind: "feedback_participant",
-        feedbackAgreementSource: data.feedbackPilot.agreementSource,
-        feedbackAgreedAt: data.feedbackPilot.agreedAt,
-        note: "Créé depuis Utilisateurs et accès",
-      });
-    }
-
     const emailDelivered = await deliverProvisionedCredentials(credentials, data.displayName);
     await logAudit("user.managed_account_created", {
       targetType: "profile",
@@ -310,15 +283,13 @@ export async function createManagedUser(input: unknown) {
         role: data.role,
         emailDelivered,
         classCount: classIds.length,
-        feedbackPilotEnrollmentId: feedbackPilotEnrollment?.enrollmentId,
-        feedbackAgreementSource: data.feedbackPilot?.agreementSource,
       },
     });
     revalidatePath("/admin/users");
     revalidatePath("/teacher");
     revalidatePath("/teacher/classes");
     for (const classId of classIds) revalidatePath(`/teacher/classes/${classId}`);
-    return { ...credentials, emailDelivered, feedbackPilotEnrollment };
+    return { ...credentials, emailDelivered };
   } catch (error) {
     await service.auth.admin.deleteUser(credentials.authUserId);
     throw error;

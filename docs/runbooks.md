@@ -27,15 +27,15 @@ not delete evidence unless a separate deletion request exists.
 
 ## Feedback-pilot student setup or withdrawal
 
-In `/admin/users`, create the managed student in a class and select **Inscrire
-au pilote de feedback** only after the student (15+) or their responsible adult
-has voluntarily agreed. Record the correct source; ordinary school invitation
-authorization is not feedback agreement. The account, active enrollment,
-temporary credentials and expiring pilot enrollment are created as one
-operator flow. Existing students can be enrolled from
-`/admin/diagnostic-pilot`. To withdraw, revoke the pilot enrollment there; this
-stops the provisional diagnostic without removing the student’s normal class
-access. Use the global switch to stop every pilot immediately.
+Create the managed student and their class access in `/admin/users`. Then enroll
+the existing student from `/admin/diagnostic-pilot` after voluntary agreement.
+A managed student created without a recorded birth date must use responsible
+adult agreement; student self-agreement is accepted only when the existing
+student record proves an age of 15 or older. Ordinary school invitation
+authorization is not feedback agreement. To withdraw, revoke the pilot
+enrollment there; this stops the provisional diagnostic without removing the
+student’s normal class access. Use the global switch to stop every pilot
+immediately.
 
 ## Deletion request
 

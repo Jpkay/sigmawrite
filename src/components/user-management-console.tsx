@@ -6,7 +6,6 @@ import { AccountRow } from "@/components/account-row";
 import { assignStudentAccess, attachEmailToAccount, changeUserRole, createManagedUser, linkGuardian, resetManagedUserPassword, rotateSchoolTeacherCode, setTeacherClass, setTeacherStudent, setUserDeactivated } from "@/lib/actions/users";
 import type { UserManagementData } from "@/lib/db/users";
 import type { ManagedAccountRole } from "@/lib/user-provisioning";
-import type { FeedbackAgreementSource } from "@/lib/diagnostic/pilot-enrollment";
 import { Button } from "@/components/ui/button";
 
 type VisibleCredentials = {
@@ -15,7 +14,6 @@ type VisibleCredentials = {
   temporaryPassword: string;
   email: string | null;
   emailDelivered: boolean;
-  feedbackPilotExpiresAt?: string | null;
 };
 
 const inputClass = "mt-1 h-10 w-full rounded-md border border-input bg-background px-3 text-sm";
@@ -31,7 +29,6 @@ function CredentialsNotice({ credentials }: { credentials: VisibleCredentials })
           <p className="mt-1 text-sm text-muted-foreground">
             {credentials.emailDelivered ? `Une copie a été envoyée à ${credentials.email}.` : "Copiez-les maintenant et transmettez-les par un canal sécurisé."} Le mot de passe devra être remplacé à la première connexion.
           </p>
-          {credentials.feedbackPilotExpiresAt && <p className="mt-1 text-sm text-muted-foreground">Pilote de feedback actif jusqu’au {new Date(credentials.feedbackPilotExpiresAt).toLocaleDateString("fr-FR")}.</p>}
         </div>
         <Button type="button" variant="outline" size="sm" onClick={async () => { await navigator.clipboard.writeText(text); setCopied(true); }}>
           {copied ? <Check /> : <Copy />} {copied ? "Copié" : "Copier"}
@@ -50,14 +47,11 @@ export function UserManagementConsole({ data, initialRole = "student", initialSc
   const [displayName, setDisplayName] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const [dateOfBirth, setDateOfBirth] = useState("");
   const [grade, setGrade] = useState(7);
   const [schoolId, setSchoolId] = useState(initialSchoolId);
   const [classId, setClassId] = useState("");
   const [teacherId, setTeacherId] = useState("");
   const [selectedStudentId, setSelectedStudentId] = useState("");
-  const [feedbackPilot, setFeedbackPilot] = useState(false);
-  const [feedbackAgreementSource, setFeedbackAgreementSource] = useState<FeedbackAgreementSource>("student");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [credentials, setCredentials] = useState<VisibleCredentials | null>(null);
@@ -85,18 +79,11 @@ export function UserManagementConsole({ data, initialRole = "student", initialSc
         displayName,
         username,
         email,
-        dateOfBirth: role === "student" ? dateOfBirth : "",
         grade: role === "student" ? grade : null,
         schoolIds: (role === "supervisor" || role === "school_admin" || (role === "teacher" && data.viewerRole === "platform_admin")) && schoolId ? [schoolId] : [],
         classIds: classId ? [classId] : [],
         teacherIds: role === "student" && teacherId ? [teacherId] : [],
         studentIds: (role === "supervisor" || role === "teacher") && selectedStudentId ? [selectedStudentId] : [],
-        feedbackPilot: role === "student" && feedbackPilot ? {
-          agreementSource: feedbackAgreementSource,
-          agreementConfirmed: true as const,
-          agreedAt: new Date().toISOString(),
-          durationDays: 30,
-        } : null,
       });
       setCredentials({
         label: displayName,
@@ -104,7 +91,6 @@ export function UserManagementConsole({ data, initialRole = "student", initialSc
         temporaryPassword: result.temporaryPassword,
         email: result.email,
         emailDelivered: result.emailDelivered,
-        feedbackPilotExpiresAt: result.feedbackPilotEnrollment?.expiresAt ?? null,
       });
       setDisplayName(""); setUsername(""); setEmail("");
     } catch (caught) {
@@ -139,7 +125,7 @@ export function UserManagementConsole({ data, initialRole = "student", initialSc
           <label className="text-sm">Nom complet<input className={inputClass} required minLength={2} value={displayName} onChange={(event) => setDisplayName(event.target.value)} /></label>
           <label className="text-sm">Nom d’utilisateur <span className="text-muted-foreground">(facultatif)</span><input className={inputClass} pattern="[a-z0-9][a-z0-9._-]{1,30}[a-z0-9]" value={username} onChange={(event) => setUsername(event.target.value.toLowerCase())} placeholder="Généré automatiquement" /></label>
           <label className="text-sm">E-mail <span className="text-muted-foreground">{role === "parent" || role === "school_admin" ? "(requis)" : "(facultatif)"}</span><input className={inputClass} type="email" required={role === "parent" || role === "school_admin"} value={email} onChange={(event) => setEmail(event.target.value)} /></label>
-          {role === "student" && <><label className="text-sm">Date de naissance<input className={inputClass} type="date" required value={dateOfBirth} onChange={(event) => setDateOfBirth(event.target.value)} /></label><label className="text-sm">Niveau<input className={inputClass} type="number" min={5} max={12} required value={grade} onChange={(event) => setGrade(Number(event.target.value))} /></label></>}
+          {role === "student" && <label className="text-sm">Niveau<input className={inputClass} type="number" min={5} max={12} required value={grade} onChange={(event) => setGrade(Number(event.target.value))} /></label>}
           {role === "school_admin" && <label className="text-sm">École administrée<select className={inputClass} required value={schoolId} onChange={(event) => { setSchoolId(event.target.value); setClassId(""); setSelectedStudentId(""); }}><option value="">Choisir une école</option>{data.schools.map((school) => <option key={school.id} value={school.id}>{school.name}</option>)}</select></label>}
           {role === "teacher" && data.viewerRole === "platform_admin" && <label className="text-sm">École de l’enseignant<select className={inputClass} required value={schoolId} onChange={(event) => { setSchoolId(event.target.value); setClassId(""); setSelectedStudentId(""); }}><option value="">Choisir une école</option>{data.schools.map((school) => <option key={school.id} value={school.id}>{school.name}</option>)}</select></label>}
           {role === "supervisor" && <label className="text-sm">École supervisée<select className={inputClass} value={schoolId} onChange={(event) => { setSchoolId(event.target.value); setClassId(""); setSelectedStudentId(""); }}><option value="">Aucune</option>{data.schools.map((school) => <option key={school.id} value={school.id}>{school.name}</option>)}</select></label>}
@@ -147,7 +133,6 @@ export function UserManagementConsole({ data, initialRole = "student", initialSc
           {role === "student" && <label className="text-sm">Enseignant direct <span className="text-muted-foreground">(facultatif)</span><select className={inputClass} value={teacherId} onChange={(event) => setTeacherId(event.target.value)}><option value="">Aucun</option>{data.teachers.map((teacher) => <option key={teacher.id} value={teacher.id}>{teacher.name}</option>)}</select></label>}
           {(role === "supervisor" || role === "teacher") && <label className="text-sm">{role === "teacher" ? "Élève affecté directement" : "Élève suivi"} <span className="text-muted-foreground">(facultatif)</span><select className={inputClass} value={selectedStudentId} onChange={(event) => setSelectedStudentId(event.target.value)}><option value="">Aucun</option>{directStudents.map((student) => <option key={student.id} value={student.id}>{student.name}</option>)}</select></label>}
           {role === "student" && <p className="text-sm text-muted-foreground md:col-span-2 xl:col-span-3">L’affectation à la classe active immédiatement l’accès de l’élève.</p>}
-          {role === "student" && <div className="space-y-3 border-y border-border py-4 md:col-span-2 xl:col-span-3"><label className="flex items-start gap-3 text-sm"><input type="checkbox" className="mt-0.5 size-4 accent-primary" checked={feedbackPilot} onChange={(event) => setFeedbackPilot(event.target.checked)} /><span><span className="font-medium">Inscrire au pilote de feedback pendant 30 jours</span><span className="mt-1 block text-muted-foreground">J’atteste que l’accord volontaire indiqué ci-dessous a été obtenu. Cet accord est distinct de l’accès scolaire normal.</span></span></label>{feedbackPilot && <label className="block max-w-sm text-sm">Accord donné par<select className={inputClass} value={feedbackAgreementSource} onChange={(event) => setFeedbackAgreementSource(event.target.value as FeedbackAgreementSource)}><option value="student">L’élève (15 ans ou plus)</option><option value="guardian">Le responsable de l’élève</option></select></label>}</div>}
           {error && <p role="alert" className="text-sm text-destructive md:col-span-2 xl:col-span-3">{error}</p>}
           <div className="md:col-span-2 xl:col-span-3"><Button disabled={busy}>{busy ? "Création…" : email ? "Créer et envoyer les identifiants" : "Créer les identifiants"}</Button></div>
         </form>

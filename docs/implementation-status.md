@@ -17,7 +17,7 @@
 - Human review portal, guarded/balanced diagnostic-item allocation, independent passage assignments, editorial resolution and exact-six benchmark governance.
 - Security hardening migrations 0077+, PWA cache isolation, password recovery, job idempotency and dependency remediation.
 - Browser smoke/accessibility checks plus a seeded under-15 invitation → onboarding → account-switch isolation journey and full application/SQL CI gates.
-- Auditable feedback-participant provisioning: an administrator can create a managed student, record student/guardian agreement and grant an expiring isolated diagnostic pilot in one operation; withdrawal does not remove normal class access.
+- Auditable feedback-participant provisioning: after creating a managed student, an administrator records responsible-adult agreement and grants an expiring isolated diagnostic pilot from `/admin/diagnostic-pilot`; existing students may self-agree only when their recorded birth date proves they are at least 15, and withdrawal does not remove normal class access.
 - Flat per-word vocabulary review and persistent scaffold fading.
 - Recoverable at-most-once reading/content boundaries, leased jobs, service-only audit writes and parent/student password rotation.
 - Typed vocabulary recall, vocabulary-fit recommendations, lexical launch thresholds, corrective retests and strand-specific scaffolds.

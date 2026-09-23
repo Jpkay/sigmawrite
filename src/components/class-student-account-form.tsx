@@ -10,7 +10,6 @@ export function ClassStudentAccountForm({ classId }: { classId: string }) {
   const [displayName, setDisplayName] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const [dateOfBirth, setDateOfBirth] = useState("");
   const [grade, setGrade] = useState(7);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
@@ -25,7 +24,6 @@ export function ClassStudentAccountForm({ classId }: { classId: string }) {
         displayName,
         username,
         email,
-        dateOfBirth,
         grade,
         schoolIds: [],
         classIds: [classId],
@@ -45,7 +43,6 @@ export function ClassStudentAccountForm({ classId }: { classId: string }) {
         <label className="text-sm">Nom complet<input className="mt-1 h-10 w-full rounded-md border border-input bg-background px-3" required minLength={2} value={displayName} onChange={(event) => setDisplayName(event.target.value)} /></label>
         <label className="text-sm">Nom d’utilisateur <span className="text-muted-foreground">(facultatif)</span><input className="mt-1 h-10 w-full rounded-md border border-input bg-background px-3" pattern="[a-z0-9][a-z0-9._-]{1,30}[a-z0-9]" value={username} onChange={(event) => setUsername(event.target.value.toLowerCase())} placeholder="Généré si vide" /></label>
         <label className="text-sm">E-mail <span className="text-muted-foreground">(facultatif)</span><input className="mt-1 h-10 w-full rounded-md border border-input bg-background px-3" type="email" value={email} onChange={(event) => setEmail(event.target.value)} /></label>
-        <label className="text-sm">Date de naissance<input className="mt-1 h-10 w-full rounded-md border border-input bg-background px-3" type="date" required value={dateOfBirth} onChange={(event) => setDateOfBirth(event.target.value)} /></label>
         <label className="text-sm">Niveau<input className="mt-1 h-10 w-full rounded-md border border-input bg-background px-3" type="number" min={5} max={12} required value={grade} onChange={(event) => setGrade(Number(event.target.value))} /></label>
         <p className="text-sm text-muted-foreground sm:col-span-2 lg:col-span-3">L’inscription dans cette classe active immédiatement l’accès de l’élève.</p>
         {error && <p role="alert" className="text-sm text-destructive sm:col-span-2 lg:col-span-3">{error}</p>}
