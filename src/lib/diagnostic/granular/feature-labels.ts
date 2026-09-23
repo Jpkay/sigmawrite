@@ -12,8 +12,8 @@ export const FEATURE_LABELS:Readonly<Record<string,string>>={
  'phoneme-graphie:ou':'Le son « ou »',
  'phoneme-graphie:gn':'Le son « gn »',
  'phoneme-graphie:f':'Le son « f »',
- 'direct-object-avoir':'Cas avec avoir et un complément direct',
- 'no-direct-object-etre':'Cas avec être, sans complément direct',
+ 'direct-object-avoir':'Avec avoir : « Elle a sorti son cahier »',
+ 'no-direct-object-etre':'Avec être : « Elle est sortie »',
  'spelling-adjustment':'Changements d’orthographe du verbe',
 };
 export function featureLabel(feature:string):string|undefined{return FEATURE_LABELS[feature];}

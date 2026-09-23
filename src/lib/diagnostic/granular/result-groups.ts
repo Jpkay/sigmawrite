@@ -3,7 +3,7 @@ export type ResultDetail={assessmentAvailable?:boolean;labelFr:string;domain:str
 export const RESULT_GROUPS=[
  {id:"reading_comprehension",labelFr:"Lecture"},
  {id:"grammar",labelFr:"Grammaire"},
- {id:"conjugation",labelFr:"Conjugaison"},
+ {id:"conjugation",labelFr:"Formes des verbes"},
  {id:"orthographe_lexicale",labelFr:"Orthographe des mots"},
  {id:"orthographe_grammaticale",labelFr:"Accords et homophones"},
  {id:"spelling",labelFr:"Orthographe"},
