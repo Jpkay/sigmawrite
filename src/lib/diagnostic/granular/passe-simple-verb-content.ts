@@ -44,10 +44,10 @@ export const PASSE_SIMPLE_VERB_TEACHING:readonly TargetTeachingContent[]=PASSE_S
  const steps=[
   {exampleFr:c.guided[0].replace('___',form(c,0)),explanationFr:'Cette phrase appartient à un récit écrit au passé. Le verbe raconte ici un fait de l’histoire. La forme demandée s’appelle le passé simple. On la rencontre surtout dans les récits écrits.'},
   {exampleFr:PERSONS.map((_,i)=>`${['je','tu','il ou elle','nous','vous','ils ou elles'][i]} : ${form(c,i)}`).join('\n'),explanationFr:c.rule},
-  {exampleFr:`nous : ${form(c,3)}\nvous : ${form(c,4)}\nils ou elles : ${form(c,5)}`,explanationFr:'Commence par repérer le sujet. Vérifie ensuite la terminaison et les accents. Le narrateur peut raconter avec je ou nous ; un récit peut aussi s’adresser à un personnage ou à son lecteur avec tu ou vous.'},
+  {exampleFr:`nous : ${form(c,3)}\nvous : ${form(c,4)}\nils ou elles : ${form(c,5)}`,explanationFr:'Commence par chercher qui fait l’action. Vérifie ensuite la fin du mot et ses accents. Dans un récit, on peut parler avec je ou nous. On peut aussi s’adresser à quelqu’un avec tu ou vous.'},
  ];
  return {id:`french-v3-teaching:passe-simple:verb:${c.verb}`,nodeKey:'produire_passe_simple',facetKey:`produire_passe_simple::verb:${c.verb}`,mode:'production',status:'draft_requires_review',titleFr:`Raconter au passé simple avec ${c.verb}`,learnerQuestionFr:`Comment écrire ${c.verb} au passé simple ?`,steps,
- practice:c.guided.map((gap,i)=>({id:`passe-simple-verb:${c.verb}:${i}`,promptFr:`Complète ce récit avec ${c.verb} au passé simple. Écris seulement le verbe : ${gap}`,answerFr:form(c,i),hintFr:c.rule,explanationFr:`${gap.replace('___',form(c,i))} La forme attendue est ${form(c,i)}.`})),
- takeawayFr:'Repère le sujet, choisis la forme du passé simple et vérifie ses accents.',boundaryFr:`${c.boundary} Le temps est donné : choisir le temps approprié dans une rédaction se travaille séparément.`,
+ practice:c.guided.map((gap,i)=>({id:`passe-simple-verb:${c.verb}:${i}`,promptFr:`Complète ce récit avec ${c.verb} au passé simple. Écris seulement le verbe : ${gap}`,answerFr:form(c,i),hintFr:c.rule,explanationFr:`${gap.replace('___',form(c,i))} Il fallait écrire ${form(c,i)}.`})),
+ takeawayFr:'Cherche qui fait l’action. Choisis le mot qui convient et vérifie les accents.',boundaryFr:`${c.boundary} Le temps est donné : choisir le temps approprié dans une rédaction se travaille séparément.`,
  materialExposure:{words:[{lemma:c.verb,form:c.verb}],sentences:[...steps.flatMap(s=>s.exampleFr.split('\n')),...c.guided.map((gap,i)=>gap.replace('___',form(c,i)))]}};
 });

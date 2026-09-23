@@ -185,7 +185,7 @@ export const PRESENT_SUBJUNCTIVE_MEANING_DRAFTS = [
   {
     "key": "subjunctive-trigger-1",
     "nodeKey": "interpreter_declencheur_subjonctif",
-    "prompt": "Il faut que chacun puisse entendre la consigne.\n\nQuel rôle joue ici « Il faut que » dans le choix du mode ?",
+    "prompt": "Il faut que chacun puisse entendre la consigne.\n\nChoisis une réponse. Qu’exprime ici « Il faut que » ?",
     "answer": "La construction exprime une nécessité",
     "distractors": [
       "Une simple description d’un fait tenu pour certain",
@@ -200,7 +200,7 @@ export const PRESENT_SUBJUNCTIVE_MEANING_DRAFTS = [
   {
     "key": "subjunctive-trigger-2",
     "nodeKey": "interpreter_declencheur_subjonctif",
-    "prompt": "Il est nécessaire que vous soyez à l’heure.\n\nQuel rôle joue ici « Il est nécessaire que » dans le choix du mode ?",
+    "prompt": "Il est nécessaire que vous soyez à l’heure.\n\nChoisis une réponse. Qu’exprime ici « Il est nécessaire que » ?",
     "answer": "La construction exprime une nécessité",
     "distractors": [
       "Une simple description d’un fait tenu pour certain",
@@ -215,7 +215,7 @@ export const PRESENT_SUBJUNCTIVE_MEANING_DRAFTS = [
   {
     "key": "subjunctive-trigger-3",
     "nodeKey": "interpreter_declencheur_subjonctif",
-    "prompt": "Il est indispensable que nous ayons une autorisation.\n\nQuel rôle joue ici « Il est indispensable que » dans le choix du mode ?",
+    "prompt": "Il est indispensable que nous ayons une autorisation.\n\nChoisis une réponse. Qu’exprime ici « Il est indispensable que » ?",
     "answer": "La construction exprime une nécessité",
     "distractors": [
       "Une simple description d’un fait tenu pour certain",
@@ -230,7 +230,7 @@ export const PRESENT_SUBJUNCTIVE_MEANING_DRAFTS = [
   {
     "key": "subjunctive-trigger-4",
     "nodeKey": "interpreter_declencheur_subjonctif",
-    "prompt": "Je souhaite que tu viennes à la rencontre.\n\nQuel rôle joue ici « Je souhaite que » dans le choix du mode ?",
+    "prompt": "Je souhaite que tu viennes à la rencontre.\n\nChoisis une réponse. Qu’exprime ici « Je souhaite que » ?",
     "answer": "La construction exprime un souhait ou une volonté",
     "distractors": [
       "Une prévision tenue pour certaine",
@@ -245,7 +245,7 @@ export const PRESENT_SUBJUNCTIVE_MEANING_DRAFTS = [
   {
     "key": "subjunctive-trigger-5",
     "nodeKey": "interpreter_declencheur_subjonctif",
-    "prompt": "La responsable veut que nous prenions le temps de vérifier.\n\nQuel rôle joue ici « veut que » dans le choix du mode ?",
+    "prompt": "La responsable veut que nous prenions le temps de vérifier.\n\nChoisis une réponse. Qu’exprime ici « veut que » ?",
     "answer": "La construction exprime un souhait ou une volonté",
     "distractors": [
       "Une prévision tenue pour certaine",
@@ -260,7 +260,7 @@ export const PRESENT_SUBJUNCTIVE_MEANING_DRAFTS = [
   {
     "key": "subjunctive-trigger-6",
     "nodeKey": "interpreter_declencheur_subjonctif",
-    "prompt": "Nous désirons que chacun ait une place.\n\nQuel rôle joue ici « Nous désirons que » dans le choix du mode ?",
+    "prompt": "Nous désirons que chacun ait une place.\n\nChoisis une réponse. Qu’exprime ici « Nous désirons que » ?",
     "answer": "La construction exprime un souhait ou une volonté",
     "distractors": [
       "Une prévision tenue pour certaine",
@@ -275,7 +275,7 @@ export const PRESENT_SUBJUNCTIVE_MEANING_DRAFTS = [
   {
     "key": "subjunctive-trigger-7",
     "nodeKey": "interpreter_declencheur_subjonctif",
-    "prompt": "Je suis heureuse que tu sois revenu.\n\nQuel rôle joue ici « Je suis heureuse que » dans le choix du mode ?",
+    "prompt": "Je suis heureuse que tu sois revenu.\n\nChoisis une réponse. Qu’exprime ici « Je suis heureuse que » ?",
     "answer": "La construction exprime une émotion à propos d’un fait",
     "distractors": [
       "Une consigne donnant un ordre direct",
@@ -290,7 +290,7 @@ export const PRESENT_SUBJUNCTIVE_MEANING_DRAFTS = [
   {
     "key": "subjunctive-trigger-8",
     "nodeKey": "interpreter_declencheur_subjonctif",
-    "prompt": "Nous regrettons que le musée soit fermé.\n\nQuel rôle joue ici « Nous regrettons que » dans le choix du mode ?",
+    "prompt": "Nous regrettons que le musée soit fermé.\n\nChoisis une réponse. Qu’exprime ici « Nous regrettons que » ?",
     "answer": "La construction exprime une émotion à propos d’un fait",
     "distractors": [
       "Une consigne donnant un ordre direct",
@@ -305,7 +305,7 @@ export const PRESENT_SUBJUNCTIVE_MEANING_DRAFTS = [
   {
     "key": "subjunctive-trigger-9",
     "nodeKey": "interpreter_declencheur_subjonctif",
-    "prompt": "Il est triste que ce bâtiment disparaisse.\n\nQuel rôle joue ici « Il est triste que » dans le choix du mode ?",
+    "prompt": "Il est triste que ce bâtiment disparaisse.\n\nChoisis une réponse. Qu’exprime ici « Il est triste que » ?",
     "answer": "La construction exprime une émotion à propos d’un fait",
     "distractors": [
       "Une consigne donnant un ordre direct",
@@ -320,7 +320,7 @@ export const PRESENT_SUBJUNCTIVE_MEANING_DRAFTS = [
   {
     "key": "subjunctive-trigger-10",
     "nodeKey": "interpreter_declencheur_subjonctif",
-    "prompt": "Je doute qu’il puisse finir avant midi.\n\nQuel rôle joue ici « Je doute que » dans le choix du mode ?",
+    "prompt": "Je doute qu’il puisse finir avant midi.\n\nChoisis une réponse. Qu’exprime ici « Je doute que » ?",
     "answer": "La construction exprime un doute ou une possibilité",
     "distractors": [
       "Une affirmation présentée comme certaine",
@@ -335,7 +335,7 @@ export const PRESENT_SUBJUNCTIVE_MEANING_DRAFTS = [
   {
     "key": "subjunctive-trigger-11",
     "nodeKey": "interpreter_declencheur_subjonctif",
-    "prompt": "Il est possible que nous soyons en retard.\n\nQuel rôle joue ici « Il est possible que » dans le choix du mode ?",
+    "prompt": "Il est possible que nous soyons en retard.\n\nChoisis une réponse. Qu’exprime ici « Il est possible que » ?",
     "answer": "La construction exprime un doute ou une possibilité",
     "distractors": [
       "Une affirmation présentée comme certaine",
@@ -350,7 +350,7 @@ export const PRESENT_SUBJUNCTIVE_MEANING_DRAFTS = [
   {
     "key": "subjunctive-trigger-12",
     "nodeKey": "interpreter_declencheur_subjonctif",
-    "prompt": "Il se peut que tu aies besoin d’aide.\n\nQuel rôle joue ici « Il se peut que » dans le choix du mode ?",
+    "prompt": "Il se peut que tu aies besoin d’aide.\n\nChoisis une réponse. Qu’exprime ici « Il se peut que » ?",
     "answer": "La construction exprime un doute ou une possibilité",
     "distractors": [
       "Une affirmation présentée comme certaine",
@@ -365,7 +365,7 @@ export const PRESENT_SUBJUNCTIVE_MEANING_DRAFTS = [
   {
     "key": "subjunctive-trigger-13",
     "nodeKey": "interpreter_declencheur_subjonctif",
-    "prompt": "Je parle lentement pour que chacun comprenne.\n\nQuel rôle joue ici « pour que » dans le choix du mode ?",
+    "prompt": "Je parle lentement pour que chacun comprenne.\n\nChoisis une réponse. Qu’exprime ici « pour que » ?",
     "answer": "La construction exprime le but recherché",
     "distractors": [
       "Le récit d’une cause déjà certaine",
@@ -380,7 +380,7 @@ export const PRESENT_SUBJUNCTIVE_MEANING_DRAFTS = [
   {
     "key": "subjunctive-trigger-14",
     "nodeKey": "interpreter_declencheur_subjonctif",
-    "prompt": "Nous ajoutons une lampe afin que vous puissiez lire.\n\nQuel rôle joue ici « afin que » dans le choix du mode ?",
+    "prompt": "Nous ajoutons une lampe afin que vous puissiez lire.\n\nChoisis une réponse. Qu’exprime ici « afin que » ?",
     "answer": "La construction exprime le but recherché",
     "distractors": [
       "Le récit d’une cause déjà certaine",
@@ -395,7 +395,7 @@ export const PRESENT_SUBJUNCTIVE_MEANING_DRAFTS = [
   {
     "key": "subjunctive-trigger-15",
     "nodeKey": "interpreter_declencheur_subjonctif",
-    "prompt": "Elle ouvre le portail pour que les cyclistes passent.\n\nQuel rôle joue ici « pour que » dans le choix du mode ?",
+    "prompt": "Elle ouvre le portail pour que les cyclistes passent.\n\nChoisis une réponse. Qu’exprime ici « pour que » ?",
     "answer": "La construction exprime le but recherché",
     "distractors": [
       "Le récit d’une cause déjà certaine",
@@ -410,7 +410,7 @@ export const PRESENT_SUBJUNCTIVE_MEANING_DRAFTS = [
   {
     "key": "subjunctive-trigger-16",
     "nodeKey": "interpreter_declencheur_subjonctif",
-    "prompt": "Je sais que tu viens demain.\n\nQuel rôle joue ici « Je sais que » dans le choix du mode ?",
+    "prompt": "Je sais que tu viens demain.\n\nChoisis une réponse. Qu’exprime ici « Je sais que » ?",
     "answer": "La construction affirme un fait et emploie ici l’indicatif",
     "distractors": [
       "La présence de que impose toujours le subjonctif",
@@ -425,7 +425,7 @@ export const PRESENT_SUBJUNCTIVE_MEANING_DRAFTS = [
   {
     "key": "subjunctive-trigger-17",
     "nodeKey": "interpreter_declencheur_subjonctif",
-    "prompt": "Nous constatons que la lumière fonctionne.\n\nQuel rôle joue ici « Nous constatons que » dans le choix du mode ?",
+    "prompt": "Nous constatons que la lumière fonctionne.\n\nChoisis une réponse. Qu’exprime ici « Nous constatons que » ?",
     "answer": "La construction affirme un fait et emploie ici l’indicatif",
     "distractors": [
       "La présence de que impose toujours le subjonctif",
@@ -440,7 +440,7 @@ export const PRESENT_SUBJUNCTIVE_MEANING_DRAFTS = [
   {
     "key": "subjunctive-trigger-18",
     "nodeKey": "interpreter_declencheur_subjonctif",
-    "prompt": "Elle affirme que les portes sont ouvertes.\n\nQuel rôle joue ici « affirme que » dans le choix du mode ?",
+    "prompt": "Elle affirme que les portes sont ouvertes.\n\nChoisis une réponse. Qu’exprime ici « affirme que » ?",
     "answer": "La construction affirme un fait et emploie ici l’indicatif",
     "distractors": [
       "La présence de que impose toujours le subjonctif",
@@ -592,7 +592,7 @@ export const PRESENT_SUBJUNCTIVE_MEANING_TEACHING: readonly TargetTeachingConten
     "practice": [
       {
         "id": "present-subjunctive-meaning-guided:subjunctive-trigger:1",
-        "promptFr": "Il faut que tu fasses une pause.\n\nQuel rôle joue ici « Il faut que » dans le choix du mode ?",
+        "promptFr": "Il faut que tu fasses une pause.\n\nChoisis une réponse. Qu’exprime ici « Il faut que » ?",
         "choices": [
           "La construction exprime une nécessité",
           "Une simple description d’un fait tenu pour certain",
@@ -604,7 +604,7 @@ export const PRESENT_SUBJUNCTIVE_MEANING_TEACHING: readonly TargetTeachingConten
       },
       {
         "id": "present-subjunctive-meaning-guided:subjunctive-trigger:2",
-        "promptFr": "Il est essentiel que les visiteurs restent ensemble.\n\nQuel rôle joue ici « Il est essentiel que » dans le choix du mode ?",
+        "promptFr": "Il est essentiel que les visiteurs restent ensemble.\n\nChoisis une réponse. Qu’exprime ici « Il est essentiel que » ?",
         "choices": [
           "La construction exprime une nécessité",
           "Une simple description d’un fait tenu pour certain",
@@ -616,7 +616,7 @@ export const PRESENT_SUBJUNCTIVE_MEANING_TEACHING: readonly TargetTeachingConten
       },
       {
         "id": "present-subjunctive-meaning-guided:subjunctive-trigger:3",
-        "promptFr": "Lina souhaite que ses amis puissent participer.\n\nQuel rôle joue ici « souhaite que » dans le choix du mode ?",
+        "promptFr": "Lina souhaite que ses amis puissent participer.\n\nChoisis une réponse. Qu’exprime ici « souhaite que » ?",
         "choices": [
           "La construction exprime un souhait ou une volonté",
           "Une prévision tenue pour certaine",
@@ -628,7 +628,7 @@ export const PRESENT_SUBJUNCTIVE_MEANING_TEACHING: readonly TargetTeachingConten
       },
       {
         "id": "present-subjunctive-meaning-guided:subjunctive-trigger:4",
-        "promptFr": "Je veux que vous sachiez la vérité.\n\nQuel rôle joue ici « Je veux que » dans le choix du mode ?",
+        "promptFr": "Je veux que vous sachiez la vérité.\n\nChoisis une réponse. Qu’exprime ici « Je veux que » ?",
         "choices": [
           "La construction exprime un souhait ou une volonté",
           "Une prévision tenue pour certaine",
@@ -640,7 +640,7 @@ export const PRESENT_SUBJUNCTIVE_MEANING_TEACHING: readonly TargetTeachingConten
       },
       {
         "id": "present-subjunctive-meaning-guided:subjunctive-trigger:5",
-        "promptFr": "Je suis ravi que vous ayez du temps.\n\nQuel rôle joue ici « Je suis ravi que » dans le choix du mode ?",
+        "promptFr": "Je suis ravi que vous ayez du temps.\n\nChoisis une réponse. Qu’exprime ici « Je suis ravi que » ?",
         "choices": [
           "La construction exprime une émotion à propos d’un fait",
           "Une consigne donnant un ordre direct",
@@ -652,7 +652,7 @@ export const PRESENT_SUBJUNCTIVE_MEANING_TEACHING: readonly TargetTeachingConten
       },
       {
         "id": "present-subjunctive-meaning-guided:subjunctive-trigger:6",
-        "promptFr": "Nous sommes surpris qu’elle connaisse déjà l’histoire.\n\nQuel rôle joue ici « Nous sommes surpris que » dans le choix du mode ?",
+        "promptFr": "Nous sommes surpris qu’elle connaisse déjà l’histoire.\n\nChoisis une réponse. Qu’exprime ici « Nous sommes surpris que » ?",
         "choices": [
           "La construction exprime une émotion à propos d’un fait",
           "Une consigne donnant un ordre direct",
@@ -664,7 +664,7 @@ export const PRESENT_SUBJUNCTIVE_MEANING_TEACHING: readonly TargetTeachingConten
       },
       {
         "id": "present-subjunctive-meaning-guided:subjunctive-trigger:7",
-        "promptFr": "Je doute que cette clé ouvre le coffre.\n\nQuel rôle joue ici « Je doute que » dans le choix du mode ?",
+        "promptFr": "Je doute que cette clé ouvre le coffre.\n\nChoisis une réponse. Qu’exprime ici « Je doute que » ?",
         "choices": [
           "La construction exprime un doute ou une possibilité",
           "Une affirmation présentée comme certaine",
@@ -676,7 +676,7 @@ export const PRESENT_SUBJUNCTIVE_MEANING_TEACHING: readonly TargetTeachingConten
       },
       {
         "id": "present-subjunctive-meaning-guided:subjunctive-trigger:8",
-        "promptFr": "Il est possible que les invités viennent demain.\n\nQuel rôle joue ici « Il est possible que » dans le choix du mode ?",
+        "promptFr": "Il est possible que les invités viennent demain.\n\nChoisis une réponse. Qu’exprime ici « Il est possible que » ?",
         "choices": [
           "La construction exprime un doute ou une possibilité",
           "Une affirmation présentée comme certaine",
@@ -688,7 +688,7 @@ export const PRESENT_SUBJUNCTIVE_MEANING_TEACHING: readonly TargetTeachingConten
       },
       {
         "id": "present-subjunctive-meaning-guided:subjunctive-trigger:9",
-        "promptFr": "Il dessine un plan pour que nous trouvions l’entrée.\n\nQuel rôle joue ici « pour que » dans le choix du mode ?",
+        "promptFr": "Il dessine un plan pour que nous trouvions l’entrée.\n\nChoisis une réponse. Qu’exprime ici « pour que » ?",
         "choices": [
           "La construction exprime le but recherché",
           "Le récit d’une cause déjà certaine",
@@ -700,7 +700,7 @@ export const PRESENT_SUBJUNCTIVE_MEANING_TEACHING: readonly TargetTeachingConten
       },
       {
         "id": "present-subjunctive-meaning-guided:subjunctive-trigger:10",
-        "promptFr": "Nous écrivons les noms afin que tu saches où t’asseoir.\n\nQuel rôle joue ici « afin que » dans le choix du mode ?",
+        "promptFr": "Nous écrivons les noms afin que tu saches où t’asseoir.\n\nChoisis une réponse. Qu’exprime ici « afin que » ?",
         "choices": [
           "La construction exprime le but recherché",
           "Le récit d’une cause déjà certaine",
@@ -712,7 +712,7 @@ export const PRESENT_SUBJUNCTIVE_MEANING_TEACHING: readonly TargetTeachingConten
       },
       {
         "id": "present-subjunctive-meaning-guided:subjunctive-trigger:11",
-        "promptFr": "Je vois que vous êtes prêts.\n\nQuel rôle joue ici « Je vois que » dans le choix du mode ?",
+        "promptFr": "Je vois que vous êtes prêts.\n\nChoisis une réponse. Qu’exprime ici « Je vois que » ?",
         "choices": [
           "La construction affirme un fait et emploie ici l’indicatif",
           "La présence de que impose toujours le subjonctif",
@@ -724,7 +724,7 @@ export const PRESENT_SUBJUNCTIVE_MEANING_TEACHING: readonly TargetTeachingConten
       },
       {
         "id": "present-subjunctive-meaning-guided:subjunctive-trigger:12",
-        "promptFr": "Nous savons que le bus arrive à huit heures.\n\nQuel rôle joue ici « Nous savons que » dans le choix du mode ?",
+        "promptFr": "Nous savons que le bus arrive à huit heures.\n\nChoisis une réponse. Qu’exprime ici « Nous savons que » ?",
         "choices": [
           "La construction affirme un fait et emploie ici l’indicatif",
           "La présence de que impose toujours le subjonctif",

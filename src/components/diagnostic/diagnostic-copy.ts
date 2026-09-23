@@ -47,7 +47,7 @@ export const DIAGNOSTIC_COPY = {
   "firstActivities": "Pour commencer",
   "verifyDescription": "Vérifier ce point avec une nouvelle question.",
   "learnDescription": "Découvrir l’explication, puis s’entraîner.",
-  "consolidateDescription": "Consolider cet acquis.",
+  "consolidateDescription": "Encore un peu d’entraînement.",
   "verifyPoint": "Vérifier ce point",
   "startActivity": "Commencer cette activité",
   "deferredHelp": "Tu as déjà donné assez de réponses aujourd’hui sur certains points. Nous les vérifierons un autre jour pour confirmer tes acquis.",
@@ -63,7 +63,7 @@ export const DIAGNOSTIC_COPY = {
   "status": {
     "mastered": "Bien acquis",
     "missing": "À travailler",
-    "fragile": "À consolider",
+    "fragile": "Encore à travailler",
     "uncertain": "À confirmer",
     "unknown": "Pas encore vérifié"
   },

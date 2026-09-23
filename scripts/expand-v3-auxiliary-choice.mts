@@ -14,9 +14,9 @@ for(const draft of AUXILIARY_CHOICE_DRAFTS){
  if(!evidence)throw Error(`Missing approved target: choisir_auxiliaire_compose`);
  const key=`v3-auxiliary-choice:${draft.key}`;
  const shown=draft.sentence;
- const prompt=`${shown}\n\nComplète au passé composé. Écris seulement l’auxiliaire conjugué ; le participe est déjà correctement écrit.`;
+ const prompt=`${shown}\n\nComplète la phrase.`;
  const reason=draft.reason;
- const checked=await runGates({nodeKey:node.key,strand:node.strand,modality:"writing",learnerMode:"shared",responseType:"cloze",promptFr:prompt,instructionsFr:"Écris la forme d’avoir ou d’être qui convient.",correctAnswer:draft.answer,validatorType:"exact",validatorConfig:{finiteResponseSpace:{alternatives:[draft.answer,draft.other],rationaleFr:"Le sujet et le temps sont imposés ; le choix oppose les formes correspondantes d’avoir et d’être. La saisie ne supprime pas ce choix binaire."},materialExposure:{sentences:[shown],assessed:{sentences:[shown]}}},difficulty:50},{knownNodeKeys:new Set([node.key]),knownMisconceptionKeys:new Set()});
+ const checked=await runGates({nodeKey:node.key,strand:node.strand,modality:"writing",learnerMode:"shared",responseType:"cloze",promptFr:prompt,instructionsFr:"Écris seulement la forme d’avoir ou d’être qui manque ; l’autre verbe est déjà écrit.",correctAnswer:draft.answer,validatorType:"exact",validatorConfig:{finiteResponseSpace:{alternatives:[draft.answer,draft.other],rationaleFr:"Le sujet et le temps sont imposés ; le choix oppose les formes correspondantes d’avoir et d’être. La saisie ne supprime pas ce choix binaire."},materialExposure:{sentences:[shown],assessed:{sentences:[shown]}}},difficulty:50},{knownNodeKeys:new Set([node.key]),knownMisconceptionKeys:new Set()});
  if(!checked.item||checked.gates.verdict==="rejected")throw Error(`Rejected correction draft: ${key}`);
  questionMaterialKeys(checked.item);
  const entry:CanonicalDiagnosticBankItem={itemKey:key,item:checked.item,evidenceKey:evidence.key,evidenceExpectation:evidence.expectation,sectionKey:"conjugation",promptFamily:"choose-compound-auxiliary",difficultyTier:"core",reviewStatus:"needs_human_review",qcGates:{...checked.gates,gate3_ensemble:{agrees:false,agreement:0},verdict:"needs_human_review"}};

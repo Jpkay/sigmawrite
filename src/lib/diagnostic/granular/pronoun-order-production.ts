@@ -573,8 +573,8 @@ export const PRONOUN_ORDER_DRAFTS = [
     "key": "double-negative-4",
     "nodeKey": "ordonner_doubles_pronoms",
     "construction": "negative",
-    "source": "Vous ne envoyez pas le message aux responsables.",
-    "prompt": "Réécris la phrase en remplaçant « le message » par « le » et « aux responsables » par « leur ». Garde les autres mots et le même type de phrase.\n\nVous ne envoyez pas le message aux responsables.",
+    "source": "Vous n’envoyez pas le message aux responsables.",
+    "prompt": "Réécris la phrase en remplaçant « le message » par « le » et « aux responsables » par « leur ». Garde les autres mots et le même type de phrase.\n\nVous n’envoyez pas le message aux responsables.",
     "answer": "Vous ne le leur envoyez pas.",
     "wrong": "Vous ne leur le envoyez pas."
   },
@@ -609,8 +609,8 @@ export const PRONOUN_ORDER_DRAFTS = [
     "key": "double-negative-8",
     "nodeKey": "ordonner_doubles_pronoms",
     "construction": "negative",
-    "source": "Nous ne apportons pas le panier aux amis.",
-    "prompt": "Réécris la phrase en remplaçant « le panier » par « le » et « aux amis » par « leur ». Garde les autres mots et le même type de phrase.\n\nNous ne apportons pas le panier aux amis.",
+    "source": "Nous n’apportons pas le panier aux amis.",
+    "prompt": "Réécris la phrase en remplaçant « le panier » par « le » et « aux amis » par « leur ». Garde les autres mots et le même type de phrase.\n\nNous n’apportons pas le panier aux amis.",
     "answer": "Nous ne le leur apportons pas.",
     "wrong": "Nous ne leur le apportons pas."
   },
@@ -1667,42 +1667,42 @@ export const DOUBLE_PRONOUN_ORDER_TEACHING: readonly TargetTeachingContent[] = [
         "promptFr": "Réécris la phrase en remplaçant « la liste » par « la » et « à Malik » par « lui ». Garde les autres mots et le même type de phrase.\n\nJe donne la liste à Malik.",
         "answerFr": "Je la lui donne.",
         "hintFr": "Place le, la ou les avant lui ou leur, devant le verbe.",
-        "explanationFr": "La phrase conserve les deux compléments sous forme de pronoms : Je la lui donne."
+        "explanationFr": "On évite de répéter les mêmes mots. Il fallait écrire : Je la lui donne."
       },
       {
         "id": "double-pronoun-order-guided:declarative:1",
         "promptFr": "Réécris la phrase en remplaçant « le dossier » par « le » et « aux employés » par « leur ». Garde les autres mots et le même type de phrase.\n\nNous rendons le dossier aux employés.",
         "answerFr": "Nous le leur rendons.",
         "hintFr": "Place le, la ou les avant lui ou leur, devant le verbe.",
-        "explanationFr": "La phrase conserve les deux compléments sous forme de pronoms : Nous le leur rendons."
+        "explanationFr": "On évite de répéter les mêmes mots. Il fallait écrire : Nous le leur rendons."
       },
       {
         "id": "double-pronoun-order-guided:declarative:2",
         "promptFr": "Réécris la phrase en remplaçant « les croquis » par « les » et « à ta sœur » par « lui ». Garde les autres mots et le même type de phrase.\n\nTu montres les croquis à ta sœur.",
         "answerFr": "Tu les lui montres.",
         "hintFr": "Place le, la ou les avant lui ou leur, devant le verbe.",
-        "explanationFr": "La phrase conserve les deux compléments sous forme de pronoms : Tu les lui montres."
+        "explanationFr": "On évite de répéter les mêmes mots. Il fallait écrire : Tu les lui montres."
       },
       {
         "id": "double-pronoun-order-guided:declarative:3",
         "promptFr": "Réécris la phrase en remplaçant « la lampe » par « la » et « aux campeurs » par « leur ». Garde les autres mots et le même type de phrase.\n\nVous prêtez la lampe aux campeurs.",
         "answerFr": "Vous la leur prêtez.",
         "hintFr": "Place le, la ou les avant lui ou leur, devant le verbe.",
-        "explanationFr": "La phrase conserve les deux compléments sous forme de pronoms : Vous la leur prêtez."
+        "explanationFr": "On évite de répéter les mêmes mots. Il fallait écrire : Vous la leur prêtez."
       },
       {
         "id": "double-pronoun-order-guided:declarative:4",
         "promptFr": "Réécris la phrase en remplaçant « le colis » par « le » et « à la gardienne » par « lui ». Garde les autres mots et le même type de phrase.\n\nElle confie le colis à la gardienne.",
         "answerFr": "Elle le lui confie.",
         "hintFr": "Place le, la ou les avant lui ou leur, devant le verbe.",
-        "explanationFr": "La phrase conserve les deux compléments sous forme de pronoms : Elle le lui confie."
+        "explanationFr": "On évite de répéter les mêmes mots. Il fallait écrire : Elle le lui confie."
       },
       {
         "id": "double-pronoun-order-guided:declarative:5",
         "promptFr": "Réécris la phrase en remplaçant « les invitations » par « les » et « aux familles » par « leur ». Garde les autres mots et le même type de phrase.\n\nIls envoient les invitations aux familles.",
         "answerFr": "Ils les leur envoient.",
         "hintFr": "Place le, la ou les avant lui ou leur, devant le verbe.",
-        "explanationFr": "La phrase conserve les deux compléments sous forme de pronoms : Ils les leur envoient."
+        "explanationFr": "On évite de répéter les mêmes mots. Il fallait écrire : Ils les leur envoient."
       },
       {
         "id": "double-pronoun-order-guided:declarative:extra-0",
@@ -1803,42 +1803,42 @@ export const DOUBLE_PRONOUN_ORDER_TEACHING: readonly TargetTeachingContent[] = [
         "promptFr": "Réécris la phrase en remplaçant « la liste » par « la » et « à Malik » par « lui ». Garde les autres mots et le même type de phrase.\n\nJe ne donne pas la liste à Malik.",
         "answerFr": "Je ne la lui donne pas.",
         "hintFr": "Place le, la ou les avant lui ou leur, devant le verbe.",
-        "explanationFr": "La phrase conserve les deux compléments sous forme de pronoms : Je ne la lui donne pas."
+        "explanationFr": "On évite de répéter les mêmes mots. Il fallait écrire : Je ne la lui donne pas."
       },
       {
         "id": "double-pronoun-order-guided:negative:1",
         "promptFr": "Réécris la phrase en remplaçant « le dossier » par « le » et « aux employés » par « leur ». Garde les autres mots et le même type de phrase.\n\nNous ne rendons pas le dossier aux employés.",
         "answerFr": "Nous ne le leur rendons pas.",
         "hintFr": "Place le, la ou les avant lui ou leur, devant le verbe.",
-        "explanationFr": "La phrase conserve les deux compléments sous forme de pronoms : Nous ne le leur rendons pas."
+        "explanationFr": "On évite de répéter les mêmes mots. Il fallait écrire : Nous ne le leur rendons pas."
       },
       {
         "id": "double-pronoun-order-guided:negative:2",
         "promptFr": "Réécris la phrase en remplaçant « les croquis » par « les » et « à ta sœur » par « lui ». Garde les autres mots et le même type de phrase.\n\nTu ne montres pas les croquis à ta sœur.",
         "answerFr": "Tu ne les lui montres pas.",
         "hintFr": "Place le, la ou les avant lui ou leur, devant le verbe.",
-        "explanationFr": "La phrase conserve les deux compléments sous forme de pronoms : Tu ne les lui montres pas."
+        "explanationFr": "On évite de répéter les mêmes mots. Il fallait écrire : Tu ne les lui montres pas."
       },
       {
         "id": "double-pronoun-order-guided:negative:3",
         "promptFr": "Réécris la phrase en remplaçant « la lampe » par « la » et « aux campeurs » par « leur ». Garde les autres mots et le même type de phrase.\n\nVous ne prêtez pas la lampe aux campeurs.",
         "answerFr": "Vous ne la leur prêtez pas.",
         "hintFr": "Place le, la ou les avant lui ou leur, devant le verbe.",
-        "explanationFr": "La phrase conserve les deux compléments sous forme de pronoms : Vous ne la leur prêtez pas."
+        "explanationFr": "On évite de répéter les mêmes mots. Il fallait écrire : Vous ne la leur prêtez pas."
       },
       {
         "id": "double-pronoun-order-guided:negative:4",
         "promptFr": "Réécris la phrase en remplaçant « le colis » par « le » et « à la gardienne » par « lui ». Garde les autres mots et le même type de phrase.\n\nElle ne confie pas le colis à la gardienne.",
         "answerFr": "Elle ne le lui confie pas.",
         "hintFr": "Place le, la ou les avant lui ou leur, devant le verbe.",
-        "explanationFr": "La phrase conserve les deux compléments sous forme de pronoms : Elle ne le lui confie pas."
+        "explanationFr": "On évite de répéter les mêmes mots. Il fallait écrire : Elle ne le lui confie pas."
       },
       {
         "id": "double-pronoun-order-guided:negative:5",
-        "promptFr": "Réécris la phrase en remplaçant « les invitations » par « les » et « aux familles » par « leur ». Garde les autres mots et le même type de phrase.\n\nIls ne envoient pas les invitations aux familles.",
+        "promptFr": "Réécris la phrase en remplaçant « les invitations » par « les » et « aux familles » par « leur ». Garde les autres mots et le même type de phrase.\n\nIls n’envoient pas les invitations aux familles.",
         "answerFr": "Ils ne les leur envoient pas.",
         "hintFr": "Place le, la ou les avant lui ou leur, devant le verbe.",
-        "explanationFr": "La phrase conserve les deux compléments sous forme de pronoms : Ils ne les leur envoient pas."
+        "explanationFr": "On évite de répéter les mêmes mots. Il fallait écrire : Ils ne les leur envoient pas."
       },
       {
         "id": "double-pronoun-order-guided:negative:extra-0",
@@ -1879,7 +1879,7 @@ export const DOUBLE_PRONOUN_ORDER_TEACHING: readonly TargetTeachingContent[] = [
         "Vous ne la leur prêtez pas.",
         "Elle ne confie pas le colis à la gardienne.",
         "Elle ne le lui confie pas.",
-        "Ils ne envoient pas les invitations aux familles.",
+        "Ils n’envoient pas les invitations aux familles.",
         "Ils ne les leur envoient pas.",
         "Il ne te prête pas les jumelles.",
         "Il ne te les prête pas.",
@@ -1938,42 +1938,42 @@ export const DOUBLE_PRONOUN_ORDER_TEACHING: readonly TargetTeachingContent[] = [
         "promptFr": "Réécris la phrase en remplaçant « la liste » par « la » et « à Malik » par « lui ». Garde les autres mots et le même type de phrase.\n\nDonne la liste à Malik !",
         "answerFr": "Donne-la-lui !",
         "hintFr": "Le verbe vient d’abord, puis les deux pronoms reliés par des traits d’union.",
-        "explanationFr": "La phrase conserve les deux compléments sous forme de pronoms : Donne-la-lui !"
+        "explanationFr": "On évite de répéter les mêmes mots. Il fallait écrire : Donne-la-lui !"
       },
       {
         "id": "double-pronoun-order-guided:imperative:1",
         "promptFr": "Réécris la phrase en remplaçant « le dossier » par « le » et « aux employés » par « leur ». Garde les autres mots et le même type de phrase.\n\nRendons le dossier aux employés !",
         "answerFr": "Rendons-le-leur !",
         "hintFr": "Le verbe vient d’abord, puis les deux pronoms reliés par des traits d’union.",
-        "explanationFr": "La phrase conserve les deux compléments sous forme de pronoms : Rendons-le-leur !"
+        "explanationFr": "On évite de répéter les mêmes mots. Il fallait écrire : Rendons-le-leur !"
       },
       {
         "id": "double-pronoun-order-guided:imperative:2",
         "promptFr": "Réécris la phrase en remplaçant « les croquis » par « les » et « à ta sœur » par « lui ». Garde les autres mots et le même type de phrase.\n\nMontre les croquis à ta sœur !",
         "answerFr": "Montre-les-lui !",
         "hintFr": "Le verbe vient d’abord, puis les deux pronoms reliés par des traits d’union.",
-        "explanationFr": "La phrase conserve les deux compléments sous forme de pronoms : Montre-les-lui !"
+        "explanationFr": "On évite de répéter les mêmes mots. Il fallait écrire : Montre-les-lui !"
       },
       {
         "id": "double-pronoun-order-guided:imperative:3",
         "promptFr": "Réécris la phrase en remplaçant « la lampe » par « la » et « aux campeurs » par « leur ». Garde les autres mots et le même type de phrase.\n\nPrêtez la lampe aux campeurs !",
         "answerFr": "Prêtez-la-leur !",
         "hintFr": "Le verbe vient d’abord, puis les deux pronoms reliés par des traits d’union.",
-        "explanationFr": "La phrase conserve les deux compléments sous forme de pronoms : Prêtez-la-leur !"
+        "explanationFr": "On évite de répéter les mêmes mots. Il fallait écrire : Prêtez-la-leur !"
       },
       {
         "id": "double-pronoun-order-guided:imperative:4",
         "promptFr": "Réécris la phrase en remplaçant « le colis » par « le » et « à la gardienne » par « lui ». Garde les autres mots et le même type de phrase.\n\nConfie le colis à la gardienne !",
         "answerFr": "Confie-le-lui !",
         "hintFr": "Le verbe vient d’abord, puis les deux pronoms reliés par des traits d’union.",
-        "explanationFr": "La phrase conserve les deux compléments sous forme de pronoms : Confie-le-lui !"
+        "explanationFr": "On évite de répéter les mêmes mots. Il fallait écrire : Confie-le-lui !"
       },
       {
         "id": "double-pronoun-order-guided:imperative:5",
         "promptFr": "Réécris la phrase en remplaçant « les invitations » par « les » et « aux familles » par « leur ». Garde les autres mots et le même type de phrase.\n\nEnvoyez les invitations aux familles !",
         "answerFr": "Envoyez-les-leur !",
         "hintFr": "Le verbe vient d’abord, puis les deux pronoms reliés par des traits d’union.",
-        "explanationFr": "La phrase conserve les deux compléments sous forme de pronoms : Envoyez-les-leur !"
+        "explanationFr": "On évite de répéter les mêmes mots. Il fallait écrire : Envoyez-les-leur !"
       },
       {
         "id": "double-pronoun-order-guided:imperative:extra-0",

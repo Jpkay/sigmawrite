@@ -34,6 +34,22 @@ it('binds draft teaching to the approved construction targets and uses separate 
   expect(rows).toHaveLength(count);expect(new Set(rows.map(r=>r.source)).size).toBe(count);
  }
 });
+it('uses required elisions in student-visible negative prompts while preserving answers',()=>{
+ const send=drafts.find(d=>d.key==='double-negative-4')!;
+ expect(send.source).toBe('Vous n’envoyez pas le message aux responsables.');
+ expect(send.prompt).toContain('\n\nVous n’envoyez pas le message aux responsables.');
+ expect(send.answer).toBe('Vous ne le leur envoyez pas.');
+ const bring=drafts.find(d=>d.key==='double-negative-8')!;
+ expect(bring.source).toBe('Nous n’apportons pas le panier aux amis.');
+ expect(bring.prompt).toContain('\n\nNous n’apportons pas le panier aux amis.');
+ expect(bring.answer).toBe('Nous ne le leur apportons pas.');
+ const negativeLesson=lessons.find(lesson=>lesson.id==='french-v3-teaching:double-pronoun-order:negative')!;
+ const invitation=negativeLesson.practice.find(practice=>practice.id==='double-pronoun-order-guided:negative:5')!;
+ expect(invitation.promptFr).toContain('\n\nIls n’envoient pas les invitations aux familles.');
+ expect(invitation.answerFr).toBe('Ils ne les leur envoient pas.');
+ expect(negativeLesson.materialExposure?.sentences).toContain('Ils n’envoient pas les invitations aux familles.');
+ expect(JSON.stringify({drafts,lessons})).not.toMatch(/\b(?:Vous|Nous|Ils) ne (?:envoy|apport)/);
+});
 it('reserves sufficient follow-up questions at every pronoun construction and retains its writing pathway',()=>{
  const prepared=JSON.parse(readFileSync('docs/diagnostic/v3-parallel-review-candidate.json','utf8'));
  const scoped=JSON.parse(readFileSync('docs/diagnostic/v3-scoped-review-candidate.json','utf8'));

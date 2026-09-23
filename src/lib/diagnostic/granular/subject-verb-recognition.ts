@@ -9,7 +9,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "La couturière ___ une manche.",
     "lemma": "raccourcir",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLa couturière ___ une manche.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLa couturière ___ une manche.",
     "answer": "raccourcit",
     "distractors": [
       "raccourcissent",
@@ -33,7 +33,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Les agriculteurs ___ les tomates.",
     "lemma": "récolter",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLes agriculteurs ___ les tomates.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLes agriculteurs ___ les tomates.",
     "answer": "récoltent",
     "distractors": [
       "récolte",
@@ -57,7 +57,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Le libraire ___ les nouveautés.",
     "lemma": "présenter",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLe libraire ___ les nouveautés.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLe libraire ___ les nouveautés.",
     "answer": "présente",
     "distractors": [
       "présentent",
@@ -81,7 +81,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Les hirondelles ___ le toit.",
     "lemma": "frôler",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLes hirondelles ___ le toit.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLes hirondelles ___ le toit.",
     "answer": "frôlent",
     "distractors": [
       "frôle",
@@ -105,7 +105,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "La jardinière ___ les roses.",
     "lemma": "arroser",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLa jardinière ___ les roses.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLa jardinière ___ les roses.",
     "answer": "arrose",
     "distractors": [
       "arrosent",
@@ -129,7 +129,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Les élèves ___ le problème.",
     "lemma": "résoudre",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLes élèves ___ le problème.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLes élèves ___ le problème.",
     "answer": "résolvent",
     "distractors": [
       "résout",
@@ -153,7 +153,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Le gardien ___ les visiteurs.",
     "lemma": "accueillir",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLe gardien ___ les visiteurs.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLe gardien ___ les visiteurs.",
     "answer": "accueille",
     "distractors": [
       "accueillent",
@@ -177,7 +177,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Les renards ___ dans leur terrier.",
     "lemma": "rentrer",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLes renards ___ dans leur terrier.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLes renards ___ dans leur terrier.",
     "answer": "rentrent",
     "distractors": [
       "rentre",
@@ -201,7 +201,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Le vendeur ___ les bocaux.",
     "lemma": "remplir",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLe vendeur ___ les bocaux.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLe vendeur ___ les bocaux.",
     "answer": "remplit",
     "distractors": [
       "remplissent",
@@ -225,7 +225,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Les passantes ___ la place.",
     "lemma": "traverser",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLes passantes ___ la place.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLes passantes ___ la place.",
     "answer": "traversent",
     "distractors": [
       "traverse",
@@ -249,7 +249,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "La bénévole ___ un colis.",
     "lemma": "recevoir",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLa bénévole ___ un colis.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLa bénévole ___ un colis.",
     "answer": "reçoit",
     "distractors": [
       "reçoivent",
@@ -273,7 +273,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Les ouvrières ___ la charpente.",
     "lemma": "assembler",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLes ouvrières ___ la charpente.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLes ouvrières ___ la charpente.",
     "answer": "assemblent",
     "distractors": [
       "assemble",
@@ -297,7 +297,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Le mécanicien ___ la panne.",
     "lemma": "repérer",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLe mécanicien ___ la panne.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLe mécanicien ___ la panne.",
     "answer": "repère",
     "distractors": [
       "repèrent",
@@ -321,7 +321,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Les spectateurs ___ les acrobates.",
     "lemma": "applaudir",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLes spectateurs ___ les acrobates.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLes spectateurs ___ les acrobates.",
     "answer": "applaudissent",
     "distractors": [
       "applaudit",
@@ -345,7 +345,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Le cuisinier ___ les ingrédients.",
     "lemma": "peser",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLe cuisinier ___ les ingrédients.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLe cuisinier ___ les ingrédients.",
     "answer": "pèse",
     "distractors": [
       "pèsent",
@@ -369,7 +369,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Les amis ___ leurs nouvelles.",
     "lemma": "échanger",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLes amis ___ leurs nouvelles.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLes amis ___ leurs nouvelles.",
     "answer": "échangent",
     "distractors": [
       "échange",
@@ -393,7 +393,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Le parfum des roses ___ la terrasse.",
     "lemma": "embaumer",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLe parfum des roses ___ la terrasse.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLe parfum des roses ___ la terrasse.",
     "answer": "embaume",
     "distractors": [
       "embaument",
@@ -417,7 +417,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Les élèves de cette classe ___ un album.",
     "lemma": "illustrer",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLes élèves de cette classe ___ un album.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLes élèves de cette classe ___ un album.",
     "answer": "illustrent",
     "distractors": [
       "illustre",
@@ -441,7 +441,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "La tante des jumeaux ___ une histoire.",
     "lemma": "raconter",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLa tante des jumeaux ___ une histoire.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLa tante des jumeaux ___ une histoire.",
     "answer": "raconte",
     "distractors": [
       "racontent",
@@ -465,7 +465,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Les tableaux du peintre ___ une foule.",
     "lemma": "attirer",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLes tableaux du peintre ___ une foule.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLes tableaux du peintre ___ une foule.",
     "answer": "attirent",
     "distractors": [
       "attire",
@@ -489,7 +489,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Le guide, devant les ruines, ___ les fouilles.",
     "lemma": "expliquer",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLe guide, devant les ruines, ___ les fouilles.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLe guide, devant les ruines, ___ les fouilles.",
     "answer": "explique",
     "distractors": [
       "expliquent",
@@ -513,7 +513,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Les vagues de la mer ___ les rochers.",
     "lemma": "frapper",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLes vagues de la mer ___ les rochers.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLes vagues de la mer ___ les rochers.",
     "answer": "frappent",
     "distractors": [
       "frappe",
@@ -537,7 +537,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Le capitaine des équipes ___ la décision.",
     "lemma": "annoncer",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLe capitaine des équipes ___ la décision.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLe capitaine des équipes ___ la décision.",
     "answer": "annonce",
     "distractors": [
       "annoncent",
@@ -561,7 +561,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Les graines de cette plante ___ rapidement.",
     "lemma": "germer",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLes graines de cette plante ___ rapidement.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLes graines de cette plante ___ rapidement.",
     "answer": "germent",
     "distractors": [
       "germe",
@@ -585,7 +585,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "La sœur des voisins ___ un vélo.",
     "lemma": "réparer",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLa sœur des voisins ___ un vélo.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLa sœur des voisins ___ un vélo.",
     "answer": "répare",
     "distractors": [
       "réparent",
@@ -609,7 +609,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Les ombres de la forêt ___ les enfants.",
     "lemma": "effrayer",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLes ombres de la forêt ___ les enfants.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLes ombres de la forêt ___ les enfants.",
     "answer": "effraient",
     "distractors": [
       "effraie",
@@ -633,7 +633,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Le responsable des visiteurs ___ une chanson.",
     "lemma": "écouter",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLe responsable des visiteurs ___ une chanson.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLe responsable des visiteurs ___ une chanson.",
     "answer": "écoute",
     "distractors": [
       "écoutent",
@@ -657,7 +657,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Les portes du garage ___ facilement.",
     "lemma": "glisser",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLes portes du garage ___ facilement.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLes portes du garage ___ facilement.",
     "answer": "glissent",
     "distractors": [
       "glisse",
@@ -681,7 +681,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "La reine des abeilles ___ dans la ruche.",
     "lemma": "pondre",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLa reine des abeilles ___ dans la ruche.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLa reine des abeilles ___ dans la ruche.",
     "answer": "pond",
     "distractors": [
       "pondent",
@@ -705,7 +705,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Les feuilles du cahier ___ sous les doigts.",
     "lemma": "craquer",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLes feuilles du cahier ___ sous les doigts.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLes feuilles du cahier ___ sous les doigts.",
     "answer": "craquent",
     "distractors": [
       "craque",
@@ -729,7 +729,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Le propriétaire des terres ___ du blé.",
     "lemma": "cultiver",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLe propriétaire des terres ___ du blé.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLe propriétaire des terres ___ du blé.",
     "answer": "cultive",
     "distractors": [
       "cultivent",
@@ -753,7 +753,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Les joueurs de ce club ___ le trophée.",
     "lemma": "remporter",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLes joueurs de ce club ___ le trophée.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLes joueurs de ce club ___ le trophée.",
     "answer": "remportent",
     "distractors": [
       "remporte",
@@ -777,7 +777,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Au bord des routes ___ une herbe haute.",
     "lemma": "grandir",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nAu bord des routes ___ une herbe haute.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nAu bord des routes ___ une herbe haute.",
     "answer": "grandit",
     "distractors": [
       "grandissent",
@@ -801,7 +801,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Dans le bassin ___ deux dauphins.",
     "lemma": "nager",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nDans le bassin ___ deux dauphins.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nDans le bassin ___ deux dauphins.",
     "answer": "nagent",
     "distractors": [
       "nage",
@@ -825,7 +825,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Derrière les maisons ___ un potager.",
     "lemma": "subsister",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nDerrière les maisons ___ un potager.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nDerrière les maisons ___ un potager.",
     "answer": "subsiste",
     "distractors": [
       "subsistent",
@@ -849,7 +849,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Sur le mur ___ les lézards.",
     "lemma": "grimper",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nSur le mur ___ les lézards.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nSur le mur ___ les lézards.",
     "answer": "grimpent",
     "distractors": [
       "grimpe",
@@ -873,7 +873,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "De ces haut-parleurs ___ une musique douce.",
     "lemma": "sortir",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nDe ces haut-parleurs ___ une musique douce.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nDe ces haut-parleurs ___ une musique douce.",
     "answer": "sort",
     "distractors": [
       "sortent",
@@ -897,7 +897,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Dans le grenier ___ des souris.",
     "lemma": "trotter",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nDans le grenier ___ des souris.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nDans le grenier ___ des souris.",
     "answer": "trottent",
     "distractors": [
       "trotte",
@@ -921,7 +921,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Sous les pieds ___ le parquet.",
     "lemma": "grincer",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nSous les pieds ___ le parquet.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nSous les pieds ___ le parquet.",
     "answer": "grince",
     "distractors": [
       "grincent",
@@ -945,7 +945,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Au pied du pommier ___ les paniers.",
     "lemma": "reposer",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nAu pied du pommier ___ les paniers.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nAu pied du pommier ___ les paniers.",
     "answer": "reposent",
     "distractors": [
       "repose",
@@ -969,7 +969,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Au-dessus des vallées ___ un aigle.",
     "lemma": "planer",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nAu-dessus des vallées ___ un aigle.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nAu-dessus des vallées ___ un aigle.",
     "answer": "plane",
     "distractors": [
       "planent",
@@ -993,7 +993,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Dans la cuisine ___ des cris.",
     "lemma": "retentir",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nDans la cuisine ___ des cris.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nDans la cuisine ___ des cris.",
     "answer": "retentissent",
     "distractors": [
       "retentit",
@@ -1017,7 +1017,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Au bout des couloirs ___ une bougie.",
     "lemma": "vaciller",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nAu bout des couloirs ___ une bougie.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nAu bout des couloirs ___ une bougie.",
     "answer": "vacille",
     "distractors": [
       "vacillent",
@@ -1041,7 +1041,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Dans la cour ___ les recrues.",
     "lemma": "défiler",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nDans la cour ___ les recrues.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nDans la cour ___ les recrues.",
     "answer": "défilent",
     "distractors": [
       "défile",
@@ -1065,7 +1065,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Sous les arcades ___ un violoniste.",
     "lemma": "jouer",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nSous les arcades ___ un violoniste.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nSous les arcades ___ un violoniste.",
     "answer": "joue",
     "distractors": [
       "jouent",
@@ -1089,7 +1089,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Dans le verger ___ les fruits.",
     "lemma": "mûrir",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nDans le verger ___ les fruits.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nDans le verger ___ les fruits.",
     "answer": "mûrissent",
     "distractors": [
       "mûrit",
@@ -1113,7 +1113,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Devant les grilles ___ un chien.",
     "lemma": "aboyer",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nDevant les grilles ___ un chien.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nDevant les grilles ___ un chien.",
     "answer": "aboie",
     "distractors": [
       "aboient",
@@ -1137,7 +1137,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Sur cette île ___ des tortues.",
     "lemma": "vivre",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nSur cette île ___ des tortues.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nSur cette île ___ des tortues.",
     "answer": "vivent",
     "distractors": [
       "vit",
@@ -1161,7 +1161,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "La maire et le directeur ___ la salle.",
     "lemma": "inaugurer",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLa maire et le directeur ___ la salle.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLa maire et le directeur ___ la salle.",
     "answer": "inaugurent",
     "distractors": [
       "inaugure",
@@ -1185,7 +1185,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Le père et la fille ___ la table.",
     "lemma": "dresser",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLe père et la fille ___ la table.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLe père et la fille ___ la table.",
     "answer": "dressent",
     "distractors": [
       "dresse",
@@ -1209,7 +1209,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Le boulanger et la boulangère ___ la pâte.",
     "lemma": "pétrir",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLe boulanger et la boulangère ___ la pâte.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLe boulanger et la boulangère ___ la pâte.",
     "answer": "pétrissent",
     "distractors": [
       "pétrit",
@@ -1233,7 +1233,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Le médecin et l’infirmière ___ le patient.",
     "lemma": "examiner",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLe médecin et l’infirmière ___ le patient.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLe médecin et l’infirmière ___ le patient.",
     "answer": "examinent",
     "distractors": [
       "examine",
@@ -1257,7 +1257,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "La pluie et la neige ___ les pistes.",
     "lemma": "recouvrir",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLa pluie et la neige ___ les pistes.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLa pluie et la neige ___ les pistes.",
     "answer": "recouvrent",
     "distractors": [
       "recouvre",
@@ -1281,7 +1281,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Le rat et la souris ___ le carton.",
     "lemma": "ronger",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLe rat et la souris ___ le carton.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLe rat et la souris ___ le carton.",
     "answer": "rongent",
     "distractors": [
       "ronge",
@@ -1305,7 +1305,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Le frère et la sœur ___ une émission.",
     "lemma": "regarder",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLe frère et la sœur ___ une émission.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLe frère et la sœur ___ une émission.",
     "answer": "regardent",
     "distractors": [
       "regarde",
@@ -1329,7 +1329,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Le jardinier et son aide ___ les haies.",
     "lemma": "tailler",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLe jardinier et son aide ___ les haies.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLe jardinier et son aide ___ les haies.",
     "answer": "taillent",
     "distractors": [
       "taille",
@@ -1353,7 +1353,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Le tissu et le papier ___ facilement.",
     "lemma": "brûler",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLe tissu et le papier ___ facilement.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLe tissu et le papier ___ facilement.",
     "answer": "brûlent",
     "distractors": [
       "brûle",
@@ -1377,7 +1377,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Le nageur et la nageuse ___ le bassin.",
     "lemma": "rejoindre",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLe nageur et la nageuse ___ le bassin.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLe nageur et la nageuse ___ le bassin.",
     "answer": "rejoignent",
     "distractors": [
       "rejoint",
@@ -1401,7 +1401,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "La trompette et le tambour ___ le silence.",
     "lemma": "rompre",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLa trompette et le tambour ___ le silence.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLa trompette et le tambour ___ le silence.",
     "answer": "rompent",
     "distractors": [
       "rompt",
@@ -1425,7 +1425,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "La voisine et son fils ___ des crêpes.",
     "lemma": "vendre",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLa voisine et son fils ___ des crêpes.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLa voisine et son fils ___ des crêpes.",
     "answer": "vendent",
     "distractors": [
       "vend",
@@ -1449,7 +1449,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Le couteau et les ciseaux ___ le carton.",
     "lemma": "découper",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLe couteau et les ciseaux ___ le carton.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLe couteau et les ciseaux ___ le carton.",
     "answer": "découpent",
     "distractors": [
       "découpe",
@@ -1473,7 +1473,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "La robe et le manteau ___ sur un cintre.",
     "lemma": "pendre",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLa robe et le manteau ___ sur un cintre.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLa robe et le manteau ___ sur un cintre.",
     "answer": "pendent",
     "distractors": [
       "pend",
@@ -1497,7 +1497,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "La championne et son entraîneur ___ leur joie.",
     "lemma": "exprimer",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLa championne et son entraîneur ___ leur joie.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLa championne et son entraîneur ___ leur joie.",
     "answer": "expriment",
     "distractors": [
       "exprime",
@@ -1521,7 +1521,7 @@ export const SUBJECT_VERB_RECOGNITION_DRAFTS = [
     "mode": "recognition",
     "source": "Le chien et le chiot ___ la barrière.",
     "lemma": "franchir",
-    "prompt": "Choisis le verbe correctement accordé au présent.\n\nLe chien et le chiot ___ la barrière.",
+    "prompt": "Choisis la forme qui complète la phrase.\n\nLe chien et le chiot ___ la barrière.",
     "answer": "franchissent",
     "distractors": [
       "franchit",

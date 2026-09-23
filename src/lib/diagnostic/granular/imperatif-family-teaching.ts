@@ -54,7 +54,7 @@ export const IMPERATIF_FAMILY_TEACHING:readonly TargetTeachingContent[]=families
   promptFr:`${audience[c.person]} Complète avec ${c.verb} à l’impératif présent. Écris seulement le verbe : ${c.gap}`,
   answerFr:c.answer,
   hintFr:`Choisis la forme correspondant à ${c.person==='2s'?'tu':c.person==='1p'?'nous':'vous'}, sans écrire ce pronom. ${f.rule}`,
-  explanationFr:`${c.gap.replace('___',c.answer[0].toLocaleUpperCase('fr')+c.answer.slice(1))} ${audience[c.person]} La forme attendue est ${c.answer}.`,
+  explanationFr:`${c.gap.replace('___',c.answer[0].toLocaleUpperCase('fr')+c.answer.slice(1))} ${audience[c.person]} Il fallait écrire ${c.answer}.`,
  }));
  const steps:TargetTeachingContent['steps']=[
   {exampleFr:'Écoute la consigne. Préparons notre affiche. Fermez vos cahiers.',explanationFr:'Pour donner une consigne ou proposer une action à faire ensemble, on peut commencer directement par le verbe. Cette forme s’appelle l’impératif présent. Le pronom sujet tu, nous ou vous n’est pas écrit.'},

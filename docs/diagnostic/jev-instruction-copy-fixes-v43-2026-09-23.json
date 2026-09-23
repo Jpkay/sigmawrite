@@ -1,0 +1,567 @@
+{
+  "status": "source_candidates_only",
+  "publishedReleaseChanged": false,
+  "publishedSnapshotReleaseId": "b6f62722-c913-4d64-9ffd-59027eefc73b",
+  "publishedSnapshotChecksum": "sha256:10b4009e59acb78cefe2890d609caec6e83033d9416002be6b027de3a7a102de",
+  "jevModel": "jev-1.13.0",
+  "rubricVersion": "sigmawrite-french-instruction-readability-v1",
+  "instructionScan": {
+    "reportJson": "output/jev-v43-full.json",
+    "reportCsv": "output/jev-v43-full.csv",
+    "recordCount": 8759,
+    "pending": 0,
+    "pass": 1500,
+    "review": 5706,
+    "likelyRewrite": 1553,
+    "uniqueFlaggedTemplates": 1629,
+    "note": "Counts describe immutable published snapshot v43. Source fixes below are candidates for a later release and are not included in those counts."
+  },
+  "copyOnlyFixes": [
+    {
+      "itemKey": "local-grammar-v1:construction_negation_simple:receptive:foundation",
+      "sourcePath": "src/lib/diagnostic/local-grammar-items.ts",
+      "before": "Quelle phrase contient une négation simple ?",
+      "after": "Quelle phrase dit qu’une action ne se produit pas ?",
+      "beforeEvaluation": {
+        "route": "likely_rewrite",
+        "riskProbability": 0.81,
+        "actionIsClear": 0.69,
+        "requiresUnexplainedGrammarJargon": 0.81,
+        "incidentalVocabularyIsBarrier": 0.35
+      },
+      "afterEvaluation": {
+        "route": "pass",
+        "riskProbability": 0.19,
+        "actionIsClear": 0.81,
+        "requiresUnexplainedGrammarJargon": 0.11,
+        "incidentalVocabularyIsBarrier": 0.16
+      },
+      "answerSetChanged": false
+    },
+    {
+      "itemKey": "local-grammar-v1:construction_subordonnee_relative:receptive:core",
+      "sourcePath": "src/lib/diagnostic/local-grammar-items.ts",
+      "before": "Dans quelle phrase « dont » introduit-il une relative ?",
+      "after": "Dans quelle phrase le mot « dont » ajoute-t-il une précision sur un nom ?",
+      "beforeEvaluation": {
+        "route": "likely_rewrite",
+        "riskProbability": 0.83,
+        "actionIsClear": 0.45,
+        "requiresUnexplainedGrammarJargon": 0.83,
+        "incidentalVocabularyIsBarrier": 0.58
+      },
+      "afterEvaluation": {
+        "route": "pass",
+        "riskProbability": 0.28,
+        "actionIsClear": 0.75,
+        "requiresUnexplainedGrammarJargon": 0.26,
+        "incidentalVocabularyIsBarrier": 0.28
+      },
+      "answerSetChanged": false
+    },
+    {
+      "itemFamily": "interpreter_declencheur_subjonctif",
+      "sourcePath": "src/lib/diagnostic/granular/present-subjunctive-meaning.ts",
+      "sourceOccurrenceCount": 30,
+      "sourceBreakdown": {
+        "diagnosticDrafts": 18,
+        "guidedPractice": 12
+      },
+      "beforeTemplate": "Quel rôle joue ici « … » dans le choix du mode ?",
+      "afterTemplate": "Choisis une réponse. Qu’exprime ici « … » ?",
+      "beforeEvaluation": {
+        "route": "likely_rewrite",
+        "riskProbability": 0.76,
+        "actionIsClear": 0.65,
+        "requiresUnexplainedGrammarJargon": 0.76,
+        "incidentalVocabularyIsBarrier": 0.39
+      },
+      "afterEvaluation": {
+        "route": "pass",
+        "riskProbability": 0.19,
+        "actionIsClear": 0.81,
+        "requiresUnexplainedGrammarJargon": 0.13,
+        "incidentalVocabularyIsBarrier": 0.15
+      },
+      "answerSetChanged": false,
+      "assessmentTargetChanged": false
+    },
+    {
+      "itemFamily": "choisir_auxiliaire_compose",
+      "sourcePaths": [
+        "scripts/expand-v3-auxiliary-choice.mts",
+        "src/lib/diagnostic/granular/auxiliary-choice.ts"
+      ],
+      "sourceOccurrenceCount": 86,
+      "sourceBreakdown": {
+        "diagnosticDrafts": 70,
+        "guidedPractice": 16
+      },
+      "beforeDirections": [
+        "Complète au passé composé. Écris seulement l’auxiliaire conjugué ; le participe est déjà correctement écrit.",
+        "Écris la forme d’avoir ou d’être qui convient."
+      ],
+      "afterDirections": [
+        "Complète la phrase.",
+        "Écris seulement la forme d’avoir ou d’être qui manque ; l’autre verbe est déjà écrit."
+      ],
+      "beforeEvaluation": {
+        "route": "review",
+        "riskProbability": 0.56,
+        "actionIsClear": 0.84,
+        "requiresUnexplainedGrammarJargon": 0.56,
+        "incidentalVocabularyIsBarrier": 0.36
+      },
+      "afterEvaluation": {
+        "route": "pass",
+        "riskProbability": 0.18,
+        "actionIsClear": 0.89,
+        "requiresUnexplainedGrammarJargon": 0.17,
+        "incidentalVocabularyIsBarrier": 0.18
+      },
+      "answerSetChanged": false,
+      "validatorChanged": false,
+      "assessmentTargetChanged": false
+    },
+    {
+      "itemFamily": "accorder_sujet_verbe_ecrit",
+      "sourcePath": "src/lib/diagnostic/granular/subject-verb-recognition.ts",
+      "sourceOccurrenceCount": 64,
+      "beforeTemplate": "Choisis le verbe correctement accordé au présent.",
+      "afterTemplate": "Choisis la forme qui complète la phrase.",
+      "beforeEvaluation": {
+        "route": "review",
+        "riskProbability": 0.54,
+        "actionIsClear": 0.82,
+        "requiresUnexplainedGrammarJargon": 0.54,
+        "incidentalVocabularyIsBarrier": 0.18
+      },
+      "afterEvaluation": {
+        "route": "pass",
+        "riskProbability": 0.11,
+        "actionIsClear": 0.92,
+        "requiresUnexplainedGrammarJargon": 0.07,
+        "incidentalVocabularyIsBarrier": 0.11
+      },
+      "answerSetChanged": false,
+      "validatorChanged": false,
+      "assessmentTargetChanged": false
+    },
+    {
+      "itemFamily": "accorder_participe_etre_guided_practice",
+      "sourcePath": "src/lib/diagnostic/granular/etre-participle-agreement-teaching.ts",
+      "sourceOccurrenceCount": 18,
+      "beforeTemplate": "Le participe au masculin singulier est « … ». Complète :",
+      "afterTemplate": "La forme de départ est « … ». Complète la phrase :",
+      "beforeEvaluation": {
+        "route": "likely_rewrite",
+        "riskProbability": 0.8,
+        "actionIsClear": 0.67,
+        "requiresUnexplainedGrammarJargon": 0.8,
+        "incidentalVocabularyIsBarrier": 0.42
+      },
+      "afterEvaluation": {
+        "route": "pass",
+        "riskProbability": 0.22,
+        "actionIsClear": 0.78,
+        "requiresUnexplainedGrammarJargon": 0.15,
+        "incidentalVocabularyIsBarrier": 0.17
+      },
+      "answerSetChanged": false,
+      "assessmentTargetChanged": false
+    },
+    {
+      "itemFamily": "object_pronoun_controlled_production",
+      "sourcePath": "scripts/expand-v3-pronouns.mts",
+      "sourceOccurrenceCount": 56,
+      "beforeDirections": [
+        "Complète la deuxième phrase pour remplacer « … » par un pronom.",
+        "Écris seulement le pronom manquant, avec son apostrophe si nécessaire."
+      ],
+      "afterDirections": [
+        "Complète la deuxième phrase sans répéter « … ».",
+        "Écris seulement le mot manquant, avec l’apostrophe si nécessaire."
+      ],
+      "beforeEvaluation": {
+        "route": "review",
+        "riskProbability": 0.59,
+        "actionIsClear": 0.9,
+        "requiresUnexplainedGrammarJargon": 0.59,
+        "incidentalVocabularyIsBarrier": 0.21
+      },
+      "afterEvaluation": {
+        "route": "pass",
+        "riskProbability": 0.18,
+        "actionIsClear": 0.82,
+        "requiresUnexplainedGrammarJargon": 0.12,
+        "incidentalVocabularyIsBarrier": 0.18
+      },
+      "answerSetChanged": false,
+      "validatorChanged": false,
+      "assessmentTargetChanged": false
+    }
+  ],
+  "lessonProseFixes": [
+    {
+      "lessonFamily": "passe_simple_verb_lessons",
+      "sourcePath": "src/lib/diagnostic/granular/passe-simple-verb-content.ts",
+      "sourceOccurrenceCountPerField": 14,
+      "fields": [
+        {
+          "field": "steps[2].explanationFr",
+          "before": "Commence par repérer le sujet. Vérifie ensuite la terminaison et les accents. Le narrateur peut raconter avec je ou nous ; un récit peut aussi s’adresser à un personnage ou à son lecteur avec tu ou vous.",
+          "after": "Commence par chercher qui fait l’action. Vérifie ensuite la fin du mot et ses accents. Dans un récit, on peut parler avec je ou nous. On peut aussi s’adresser à quelqu’un avec tu ou vous.",
+          "beforeEvaluation": {
+            "route": "likely_rewrite",
+            "riskProbability": 0.77
+          },
+          "afterEvaluation": {
+            "route": "pass",
+            "riskProbability": 0.3
+          }
+        },
+        {
+          "field": "takeawayFr",
+          "before": "Repère le sujet, choisis la forme du passé simple et vérifie ses accents.",
+          "after": "Cherche qui fait l’action. Choisis le mot qui convient et vérifie les accents.",
+          "beforeEvaluation": {
+            "route": "likely_rewrite",
+            "riskProbability": 0.92
+          },
+          "afterEvaluation": {
+            "route": "pass",
+            "riskProbability": 0.2
+          }
+        }
+      ],
+      "examplesChanged": false,
+      "practiceAnswersChanged": false,
+      "assessmentTargetChanged": false
+    },
+    {
+      "lessonFamily": "conjugation_practice_feedback",
+      "sourcePaths": [
+        "src/lib/diagnostic/granular/passe-simple-verb-content.ts",
+        "src/lib/diagnostic/granular/passe-simple-family-content.ts",
+        "src/lib/diagnostic/granular/imperatif-verb-content.ts",
+        "src/lib/diagnostic/granular/imperatif-family-teaching.ts"
+      ],
+      "publishedOccurrenceCount": 108,
+      "beforeTemplate": "La forme attendue est « … ».",
+      "afterTemplate": "Il fallait écrire « … ».",
+      "beforeEvaluation": {
+        "route": "review",
+        "riskProbability": 0.48
+      },
+      "afterEvaluation": {
+        "route": "pass",
+        "riskProbability": 0.31
+      },
+      "practiceAnswersChanged": false,
+      "assessmentTargetChanged": false
+    },
+    {
+      "lessonFamily": "compound_tense_lessons_using_avoir",
+      "sourcePaths": [
+        "src/lib/diagnostic/granular/passe-compose-teaching.ts",
+        "src/lib/diagnostic/granular/plus-que-parfait-teaching.ts"
+      ],
+      "publishedOccurrenceCount": 20,
+      "before": "Avoir change avec le sujet. Dans ces phrases sans complément direct placé avant, le participe garde la forme donnée.",
+      "after": "Dans ce tableau, avoir change selon qui fait l’action. L’autre mot reste le même à chaque ligne.",
+      "beforeEvaluation": {
+        "route": "likely_rewrite",
+        "riskProbability": 0.91
+      },
+      "afterEvaluation": {
+        "route": "pass",
+        "riskProbability": 0.28
+      },
+      "examplesChanged": false,
+      "practiceAnswersChanged": false,
+      "assessmentTargetChanged": false
+    },
+    {
+      "lessonFamily": "infinitive_participle_practice_hints",
+      "sourcePath": "src/lib/diagnostic/granular/infinitive-participle-foundations.ts",
+      "publishedOccurrenceCount": 18,
+      "before": "Regarde ce qui précède le verbe. Repère notamment les auxiliaires.",
+      "after": "Regarde les mots placés juste avant. Avoir ou être donnent souvent un indice.",
+      "beforeEvaluation": {
+        "route": "likely_rewrite",
+        "riskProbability": 0.9
+      },
+      "afterEvaluation": {
+        "route": "pass",
+        "riskProbability": 0.23
+      },
+      "examplesChanged": false,
+      "practiceAnswersChanged": false,
+      "assessmentTargetChanged": false
+    },
+    {
+      "lessonFamily": "passe_recent_production_lessons",
+      "sourcePath": "src/lib/diagnostic/granular/passe-recent-production.ts",
+      "publishedOccurrenceCount": 15,
+      "before": "Seul venir change avec le sujet : viens, viens, vient, venons, venez, viennent. Le second verbe garde sa forme du dictionnaire, l’infinitif. Ne le conjugue pas au présent et ne le remplace pas par un participe passé.",
+      "after": "Choisis viens, vient, venons, venez ou viennent selon qui fait l’action. Le mot après de ne change pas. On écrit je viens de finir, et non je viens de finis ou je viens de fini.",
+      "beforeEvaluation": {
+        "route": "likely_rewrite",
+        "riskProbability": 0.84
+      },
+      "afterEvaluation": {
+        "route": "pass",
+        "riskProbability": 0.22
+      },
+      "examplesChanged": false,
+      "practiceAnswersChanged": false,
+      "assessmentTargetChanged": false
+    },
+    {
+      "lessonFamily": "double_pronoun_practice_feedback",
+      "sourcePath": "src/lib/diagnostic/granular/pronoun-order-production.ts",
+      "publishedOccurrenceCount": 18,
+      "beforeTemplate": "La phrase conserve les deux compléments sous forme de pronoms : « … »",
+      "afterTemplate": "On évite de répéter les mêmes mots. Il fallait écrire : « … »",
+      "beforeEvaluation": {
+        "route": "likely_rewrite",
+        "riskProbability": 0.89
+      },
+      "afterEvaluation": {
+        "route": "pass",
+        "riskProbability": 0.18
+      },
+      "examplesChanged": false,
+      "practiceAnswersChanged": false,
+      "assessmentTargetChanged": false
+    },
+    {
+      "lessonFamily": "compound_tense_lesson_boundaries",
+      "sourcePaths": [
+        "src/lib/diagnostic/granular/passe-compose-teaching.ts",
+        "src/lib/diagnostic/granular/plus-que-parfait-teaching.ts"
+      ],
+      "publishedOccurrenceCount": 28,
+      "before": "Cette leçon demande un temps précis dans des phrases fournies. Elle ne démontre pas que tu sais choisir les temps dans un texte autonome ni traiter toutes les constructions avec un complément placé avant.",
+      "beforeEvaluation": {
+        "route": "likely_rewrite",
+        "riskProbability": 0.82
+      },
+      "examplesChanged": false,
+      "practiceAnswersChanged": false,
+      "assessmentTargetChanged": false,
+      "afterByTense": {
+        "passeCompose": "Ici, tu complètes des phrases préparées. On te dit comment parler du passé. Tu ne fais pas encore ce choix toi-même dans un texte. Dans « les fleurs que j’ai cueillies », la fin du mot change.",
+        "plusQueParfait": "Ici, tu complètes des phrases préparées. On te dit comment parler du passé. Tu ne fais pas encore ce choix toi-même dans un texte. Dans « les fleurs que j’avais cueillies », la fin du mot change."
+      },
+      "afterEvaluationByTense": {
+        "passeCompose": {
+          "route": "pass",
+          "riskProbability": 0.34
+        },
+        "plusQueParfait": {
+          "route": "pass",
+          "riskProbability": 0.38
+        }
+      }
+    },
+    {
+      "lessonFamily": "passe_recent_production_takeaways",
+      "sourcePath": "src/lib/diagnostic/granular/passe-recent-production.ts",
+      "publishedOccurrenceCount": 15,
+      "before": "Écris venir au présent avec le sujet, puis de ou d’, puis le verbe à l’infinitif.",
+      "after": "Pour parler d’une action qui vient de se terminer, choisis d’abord viens, vient, venons, venez ou viennent selon qui fait l’action. Ajoute de ou d’, puis le mot qui vient après sans le changer : je viens de finir.",
+      "beforeEvaluation": {
+        "route": "likely_rewrite",
+        "riskProbability": 0.87
+      },
+      "afterEvaluation": {
+        "route": "pass",
+        "riskProbability": 0.27
+      },
+      "examplesChanged": false,
+      "practiceAnswersChanged": false,
+      "assessmentTargetChanged": false
+    },
+    {
+      "lessonFamily": "passe_recent_apostrophe_and_scope",
+      "sourcePath": "src/lib/diagnostic/granular/passe-recent-production.ts",
+      "publishedOccurrenceCountPerField": 15,
+      "fields": [
+        {
+          "field": "steps[2].explanationFr",
+          "before": "De devient d’ devant un infinitif qui commence par une voyelle. La préposition reste nécessaire : venons finir ne signifie pas la même chose que venons de finir.",
+          "after": "On écrit d’ quand le mot suivant commence par une voyelle : nous venons d’avancer. Il faut toujours garder de ou d’ : nous venons finir ne veut pas dire la même chose que nous venons de finir.",
+          "beforeEvaluation": {
+            "route": "likely_rewrite",
+            "riskProbability": 0.76
+          },
+          "afterEvaluation": {
+            "route": "pass",
+            "riskProbability": 0.36
+          }
+        },
+        {
+          "field": "boundaryFr",
+          "before": "Le temps est donné ici. Ces exercices ne vérifient pas encore ton choix entre passé récent et passé composé dans un texte. Venir peut aussi indiquer un déplacement : je viens au club n’est pas un passé récent.",
+          "after": "Ici, on te dit comment parler du passé. Tu ne choisis pas encore toi-même entre « je viens de finir » et « j’ai fini » dans un texte. Attention : dans « je viens au club », viens indique un déplacement.",
+          "beforeEvaluation": {
+            "route": "likely_rewrite",
+            "riskProbability": 0.78
+          },
+          "afterEvaluation": {
+            "route": "pass",
+            "riskProbability": 0.28
+          }
+        }
+      ],
+      "examplesChanged": false,
+      "practiceAnswersChanged": false,
+      "assessmentTargetChanged": false
+    },
+    {
+      "lessonFamily": "sortir_auxiliary_choice_hints",
+      "sourcePaths": [
+        "src/lib/diagnostic/granular/passe-compose-teaching.ts",
+        "src/lib/diagnostic/granular/plus-que-parfait-teaching.ts"
+      ],
+      "publishedOccurrenceCount": 12,
+      "before": "Observe si sortir possède un complément direct. Choisis ensuite la forme de l’auxiliaire.",
+      "after": "Demande-toi si la personne quitte un lieu ou si elle fait sortir quelque chose. Choisis ensuite avoir ou être.",
+      "beforeEvaluation": {
+        "route": "likely_rewrite",
+        "riskProbability": 0.93
+      },
+      "afterEvaluation": {
+        "route": "pass",
+        "riskProbability": 0.3
+      },
+      "practiceAnswersChanged": false,
+      "assessmentTargetChanged": false
+    },
+    {
+      "lessonFamily": "compound_tense_practice_feedback",
+      "sourcePaths": [
+        "src/lib/diagnostic/granular/passe-compose-teaching.ts",
+        "src/lib/diagnostic/granular/plus-que-parfait-teaching.ts"
+      ],
+      "publishedOccurrenceCount": 120,
+      "sourceOccurrenceCount": 168,
+      "beforeTemplate": "Le groupe « … » est la forme demandée dans cette construction.",
+      "afterTemplate": "Il fallait écrire « … ».",
+      "beforeEvaluation": {
+        "route": "likely_rewrite",
+        "riskProbability": 0.79
+      },
+      "afterEvaluation": {
+        "route": "pass",
+        "riskProbability": 0.31
+      },
+      "practiceAnswersChanged": false,
+      "validatorsChanged": false,
+      "targetBindingsChanged": false
+    }
+  ],
+  "sharedUiCopyFixes": [
+    {
+      "sourcePath": "src/components/diagnostic/diagnostic-copy.ts",
+      "field": "consolidateDescription",
+      "before": "Consolider cet acquis.",
+      "after": "Encore un peu d’entraînement.",
+      "beforeEvaluation": {
+        "route": "likely_rewrite",
+        "riskProbability": 0.76
+      },
+      "afterEvaluation": {
+        "route": "pass",
+        "riskProbability": 0.13
+      }
+    },
+    {
+      "sourcePath": "src/components/diagnostic/diagnostic-copy.ts",
+      "field": "status.fragile",
+      "before": "À consolider",
+      "after": "Encore à travailler",
+      "beforeEvaluation": {
+        "route": "likely_rewrite",
+        "riskProbability": 0.78
+      },
+      "afterEvaluation": {
+        "route": "pass",
+        "riskProbability": 0.34
+      }
+    }
+  ],
+  "needsContentDesignReview": [
+    {
+      "itemKey": "review-draft-v1:identifier_sujet_verbe:receptive:core",
+      "reason": "A plain-language rewrite still routed to review because understanding subject and verb is part of the assessed construct."
+    },
+    {
+      "itemKey": "local-grammar-v1:construction_voix_passive:receptive:core",
+      "reason": "A plain-language rewrite improved the risk score but still routed to review; removing more terminology may change the assessed construct."
+    },
+    {
+      "itemFamily": "granular_named_tense_production",
+      "representativePublishedOccurrenceCount": 224,
+      "representativeDirection": "Sujet : « … ». Verbe : « … ». Temps demandé : passé récent. Quelle forme faut-il écrire ?",
+      "reason": "The tense name specifies the production target. Replacing it with a definition could teach or cue the answer and therefore needs assessment-design review."
+    },
+    {
+      "itemFamily": "participle_past_production",
+      "representativePublishedOccurrenceCount": 36,
+      "representativeDirection": "Complète avec le participe passé de « … ». Écris seulement le mot manquant.",
+      "reason": "The grammar label names the form being assessed. A copy-only paraphrase may change the construct or supply a cue."
+    },
+    {
+      "itemFamily": "mode_and_tense_identification",
+      "representativePublishedOccurrenceCount": 24,
+      "representativeDirection": "Dans cette phrase, à quel mode et à quel temps est « … » ?",
+      "reason": "Identifying the grammatical labels is the response target, so removing those labels would change the question."
+    },
+    {
+      "itemFamily": "named_tense_recognition",
+      "representativePublishedOccurrenceCount": 12,
+      "representativeDirection": "Quelle phrase contient un verbe au plus-que-parfait ?",
+      "reason": "The named tense is the assessed distinction; a definition in the direction could make the recognition task easier."
+    }
+  ],
+  "correctnessFixes": [
+    {
+      "sourcePath": "src/lib/diagnostic/granular/pronoun-order-production.ts",
+      "exerciseCaseCount": 3,
+      "changes": [
+        {
+          "itemKey": "v3-pronoun-order:double-negative-4",
+          "before": "Vous ne envoyez pas le message aux responsables.",
+          "after": "Vous n’envoyez pas le message aux responsables.",
+          "surfaces": [
+            "diagnostic source",
+            "diagnostic prompt"
+          ]
+        },
+        {
+          "itemKey": "v3-pronoun-order:double-negative-8",
+          "before": "Nous ne apportons pas le panier aux amis.",
+          "after": "Nous n’apportons pas le panier aux amis.",
+          "surfaces": [
+            "diagnostic source",
+            "diagnostic prompt"
+          ]
+        },
+        {
+          "itemKey": "double-pronoun-order-guided:negative:5",
+          "before": "Ils ne envoient pas les invitations aux familles.",
+          "after": "Ils n’envoient pas les invitations aux familles.",
+          "surfaces": [
+            "guided prompt",
+            "lesson materialExposure"
+          ]
+        }
+      ],
+      "answersChanged": false,
+      "validatorsChanged": false,
+      "artifactRegenerated": "generated/french-v3-pronoun-order-production-expansion.json"
+    }
+  ]
+}

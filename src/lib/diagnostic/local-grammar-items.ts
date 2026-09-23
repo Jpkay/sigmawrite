@@ -30,7 +30,7 @@ const EXAMPLES: Readonly<Record<string, readonly [GrammarExample, GrammarExample
   ],
   construction_subordonnee_relative: [
     grammar("Quelle phrase contient une subordonnée relative ?", "Le livre que tu lis appartient à Mina.", ["Tu lis ce livre parce qu’il est court.", "Tu lis que le livre est court."], "Réunis avec « qui » : « Le voisin sourit. Le voisin arrose les fleurs. »", "Le voisin qui arrose les fleurs sourit."),
-    grammar("Dans quelle phrase « dont » introduit-il une relative ?", "Voici l’article dont je t’ai parlé.", ["Je parle de cet article parce qu’il est utile.", "Je dis que cet article est utile."], "Réunis avec « que » : « Nous visitons une maison. Mon grand-père a construit cette maison. »", "Nous visitons la maison que mon grand-père a construite."),
+    grammar("Dans quelle phrase le mot « dont » ajoute-t-il une précision sur un nom ?", "Voici l’article dont je t’ai parlé.", ["Je parle de cet article parce qu’il est utile.", "Je dis que cet article est utile."], "Réunis avec « que » : « Nous visitons une maison. Mon grand-père a construit cette maison. »", "Nous visitons la maison que mon grand-père a construite."),
     grammar("Quelle phrase contient une relative introduite par « où » ?", "La ville où je suis né se trouve au nord.", ["Je suis né quand mes parents vivaient au nord.", "Je sais que cette ville se trouve au nord."], "Réunis avec « où » : « Cette salle est calme. Nous travaillons dans cette salle. »", "La salle où nous travaillons est calme."),
   ],
   construction_subordonnee_completive: [
@@ -74,7 +74,7 @@ const EXAMPLES: Readonly<Record<string, readonly [GrammarExample, GrammarExample
     grammar("Quelle phrase maintient une chaîne lexicale sur la météo ?", "Le vent se lève et de gros nuages annoncent l’orage.", ["Le vent se lève et la bibliothèque ferme.", "Les nuages arrivent et le moteur démarre."], "Remplace la répétition dans « Le bateau quitte le port. Le bateau affronte les vagues. » par un terme maritime proche.", "Le bateau quitte le port. L’embarcation affronte les vagues."),
   ],
   construction_negation_simple: [
-    grammar("Quelle phrase contient une négation simple ?", "Lina ne vient pas ce soir.", ["Lina vient ce soir.", "Lina vient-elle ce soir ?"], "Mets à la forme négative : « Il comprend la consigne. »", "Il ne comprend pas la consigne."),
+    grammar("Quelle phrase dit qu’une action ne se produit pas ?", "Lina ne vient pas ce soir.", ["Lina vient ce soir.", "Lina vient-elle ce soir ?"], "Mets à la forme négative : « Il comprend la consigne. »", "Il ne comprend pas la consigne."),
     grammar("Quelle phrase nie l’action de partir ?", "Nous ne partons pas demain.", ["Nous partons demain.", "Partons-nous demain ?"], "Mets à la forme négative : « Elles regardent le film. »", "Elles ne regardent pas le film."),
     grammar("Quelle phrase contient « ne…pas » correctement placé ?", "Tu n’oublies pas ton carnet.", ["Tu ne pas oublies ton carnet.", "Tu oublies ne ton carnet pas."], "Mets à la forme négative : « Vous avez terminé. »", "Vous n’avez pas terminé."),
   ],

@@ -18,8 +18,8 @@ for(const draft of [...PRONOUN_DRAFTS,...PRONOUN_DISCRIMINATION_DRAFTS]){
  if(!draft.answer.includes(needle))throw Error(`Missing target pronoun: ${key}`);
  const gap=draft.answer.replace(needle,` ___${draft.construction==="elision"?"":" "}`);
  const checked=await runGates({nodeKey:node.key,strand:node.strand,modality:"writing",learnerMode:"shared",responseType:"cloze",
-  promptFr:`Complète la deuxième phrase pour remplacer « ${draft.target} » par un pronom.\n\n${draft.sentence}\n${gap}`,
-  instructionsFr:"Écris seulement le pronom manquant, avec son apostrophe si nécessaire.",correctAnswer:pronoun,acceptableAnswers:[],validatorType:"exact",difficulty:50,
+  promptFr:`Complète la deuxième phrase sans répéter « ${draft.target} ».\n\n${draft.sentence}\n${gap}`,
+  instructionsFr:"Écris seulement le mot manquant, avec l’apostrophe si nécessaire.",correctAnswer:pronoun,acceptableAnswers:[],validatorType:"exact",difficulty:50,
   validatorConfig:{materialExposure:{sentences:[draft.sentence,gap],assessed:{sentences:[draft.sentence]}},
    finiteResponseSpace:{alternatives:["le","la","les","l’","lui","leur"],rationaleFr:"La tâche demande un pronom complément de troisième personne dans une phrase déjà construite. La saisie ne rend pas cet espace ouvert; les indices grammaticaux peuvent encore faciliter le choix."}},
  },{knownNodeKeys:new Set([node.key]),knownMisconceptionKeys:new Set()});

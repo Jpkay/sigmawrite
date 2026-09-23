@@ -79,7 +79,7 @@ export const IMPERATIF_VERB_TEACHING:readonly TargetTeachingContent[]=IMPERATIF_
   {exampleFr:c.hook,explanationFr:c.rule},
  ];
  return {id:`french-v3-teaching:imperatif-present:verb:${c.verb}`,nodeKey:'produire_imperatif',facetKey:`produire_imperatif::verb:${c.verb}`,mode:'production',status:'draft_requires_review',titleFr:`Donner une consigne avec ${c.verb}`,learnerQuestionFr:`Comment écrire ${c.verb} quand je donne un conseil ou une consigne ?`,steps,
-  practice:examples.map((r,i)=>({id:`imperatif-verb:${c.verb}:${i+1}`,promptFr:`${r.audience} Complète avec ${c.verb} à l’impératif présent. Écris seulement le verbe : ${r.sentence}`,answerFr:r.answer,hintFr:`Repère à qui tu parles. ${c.rule}`,explanationFr:`${r.sentence.replace('___',r.answer[0].toLocaleUpperCase('fr')+r.answer.slice(1))} ${r.audience} La forme attendue est ${r.answer}.`})),
+  practice:examples.map((r,i)=>({id:`imperatif-verb:${c.verb}:${i+1}`,promptFr:`${r.audience} Complète avec ${c.verb} à l’impératif présent. Écris seulement le verbe : ${r.sentence}`,answerFr:r.answer,hintFr:`Repère à qui tu parles. ${c.rule}`,explanationFr:`${r.sentence.replace('___',r.answer[0].toLocaleUpperCase('fr')+r.answer.slice(1))} ${r.audience} Il fallait écrire ${r.answer}.`})),
   takeawayFr:`Repère à qui tu parles, puis choisis ${c.forms.join(', ')}. N’écris pas le pronom sujet.`,boundaryFr:`${c.boundary} Tu travailles ici la forme demandée, pas le choix du mode dans un texte.`,
   materialExposure:{words:[{lemma:c.verb,form:c.verb}],sentences:[...steps.flatMap(s=>s.exampleFr.split('\n')),...examples.map(r=>r.sentence.replace('___',r.answer[0].toLocaleUpperCase('fr')+r.answer.slice(1)))]},
  };

@@ -1120,7 +1120,7 @@ export const INFINITIVE_PARTICIPLE_TEACHING:readonly TargetTeachingContent[] = [
         "id": "infinitive-participle:distinguer_infinitif_participe:recognition:0",
         "promptFr": "Elle veut attraper le ballon.\n\n« attraper » est-il un infinitif ou un participe passé ?",
         "answerFr": "infinitif",
-        "hintFr": "Regarde ce qui précède le verbe. Repère notamment les auxiliaires.",
+        "hintFr": "Regarde les mots placés juste avant. Avoir ou être donnent souvent un indice.",
         "explanationFr": "Elle veut attraper le ballon. La construction demande ici un infinitif.",
         "choices": [
           "infinitif",
@@ -1131,7 +1131,7 @@ export const INFINITIVE_PARTICIPLE_TEACHING:readonly TargetTeachingContent[] = [
         "id": "infinitive-participle:distinguer_infinitif_participe:recognition:1",
         "promptFr": "Il a porté le panier.\n\n« porté » est-il un infinitif ou un participe passé ?",
         "answerFr": "participe passé",
-        "hintFr": "Regarde ce qui précède le verbe. Repère notamment les auxiliaires.",
+        "hintFr": "Regarde les mots placés juste avant. Avoir ou être donnent souvent un indice.",
         "explanationFr": "Il a porté le panier. Le participe passé est employé avec un auxiliaire.",
         "choices": [
           "participe passé",
@@ -1142,7 +1142,7 @@ export const INFINITIVE_PARTICIPLE_TEACHING:readonly TargetTeachingContent[] = [
         "id": "infinitive-participle:distinguer_infinitif_participe:recognition:2",
         "promptFr": "Elle sort pour appeler le chat.\n\n« appeler » est-il un infinitif ou un participe passé ?",
         "answerFr": "infinitif",
-        "hintFr": "Regarde ce qui précède le verbe. Repère notamment les auxiliaires.",
+        "hintFr": "Regarde les mots placés juste avant. Avoir ou être donnent souvent un indice.",
         "explanationFr": "Elle sort pour appeler le chat. La construction demande ici un infinitif.",
         "choices": [
           "infinitif",
@@ -1153,7 +1153,7 @@ export const INFINITIVE_PARTICIPLE_TEACHING:readonly TargetTeachingContent[] = [
         "id": "infinitive-participle:distinguer_infinitif_participe:recognition:3",
         "promptFr": "Il avait aidé son équipe.\n\n« aidé » est-il un infinitif ou un participe passé ?",
         "answerFr": "participe passé",
-        "hintFr": "Regarde ce qui précède le verbe. Repère notamment les auxiliaires.",
+        "hintFr": "Regarde les mots placés juste avant. Avoir ou être donnent souvent un indice.",
         "explanationFr": "Il avait aidé son équipe. Le participe passé est employé avec un auxiliaire.",
         "choices": [
           "participe passé",
@@ -1164,7 +1164,7 @@ export const INFINITIVE_PARTICIPLE_TEACHING:readonly TargetTeachingContent[] = [
         "id": "infinitive-participle:distinguer_infinitif_participe:recognition:4",
         "promptFr": "Il faut fermer la porte.\n\n« fermer » est-il un infinitif ou un participe passé ?",
         "answerFr": "infinitif",
-        "hintFr": "Regarde ce qui précède le verbe. Repère notamment les auxiliaires.",
+        "hintFr": "Regarde les mots placés juste avant. Avoir ou être donnent souvent un indice.",
         "explanationFr": "Il faut fermer la porte. La construction demande ici un infinitif.",
         "choices": [
           "infinitif",
@@ -1175,7 +1175,7 @@ export const INFINITIVE_PARTICIPLE_TEACHING:readonly TargetTeachingContent[] = [
         "id": "infinitive-participle:distinguer_infinitif_participe:recognition:5",
         "promptFr": "Elle a balayé le sol.\n\n« balayé » est-il un infinitif ou un participe passé ?",
         "answerFr": "participe passé",
-        "hintFr": "Regarde ce qui précède le verbe. Repère notamment les auxiliaires.",
+        "hintFr": "Regarde les mots placés juste avant. Avoir ou être donnent souvent un indice.",
         "explanationFr": "Elle a balayé le sol. Le participe passé est employé avec un auxiliaire.",
         "choices": [
           "participe passé",
@@ -1255,7 +1255,7 @@ export const INFINITIVE_PARTICIPLE_TEACHING:readonly TargetTeachingContent[] = [
         "id": "infinitive-participle:distinguer_infinitif_participe_ecrit:recognition:0",
         "promptFr": "Choisis la forme correcte.\n\nElle veut ___ le ballon.",
         "answerFr": "attraper",
-        "hintFr": "Regarde ce qui précède le verbe. Repère notamment les auxiliaires.",
+        "hintFr": "Regarde les mots placés juste avant. Avoir ou être donnent souvent un indice.",
         "explanationFr": "Elle veut attraper le ballon. La construction demande ici un infinitif.",
         "choices": [
           "attraper",
@@ -1266,7 +1266,7 @@ export const INFINITIVE_PARTICIPLE_TEACHING:readonly TargetTeachingContent[] = [
         "id": "infinitive-participle:distinguer_infinitif_participe_ecrit:recognition:1",
         "promptFr": "Choisis la forme correcte.\n\nIl a ___ le panier.",
         "answerFr": "porté",
-        "hintFr": "Regarde ce qui précède le verbe. Repère notamment les auxiliaires.",
+        "hintFr": "Regarde les mots placés juste avant. Avoir ou être donnent souvent un indice.",
         "explanationFr": "Il a porté le panier. Le participe passé est employé avec un auxiliaire.",
         "choices": [
           "porté",
@@ -1277,7 +1277,7 @@ export const INFINITIVE_PARTICIPLE_TEACHING:readonly TargetTeachingContent[] = [
         "id": "infinitive-participle:distinguer_infinitif_participe_ecrit:recognition:2",
         "promptFr": "Choisis la forme correcte.\n\nElle sort pour ___ le chat.",
         "answerFr": "appeler",
-        "hintFr": "Regarde ce qui précède le verbe. Repère notamment les auxiliaires.",
+        "hintFr": "Regarde les mots placés juste avant. Avoir ou être donnent souvent un indice.",
         "explanationFr": "Elle sort pour appeler le chat. La construction demande ici un infinitif.",
         "choices": [
           "appeler",
@@ -1288,7 +1288,7 @@ export const INFINITIVE_PARTICIPLE_TEACHING:readonly TargetTeachingContent[] = [
         "id": "infinitive-participle:distinguer_infinitif_participe_ecrit:recognition:3",
         "promptFr": "Choisis la forme correcte.\n\nIl avait ___ son équipe.",
         "answerFr": "aidé",
-        "hintFr": "Regarde ce qui précède le verbe. Repère notamment les auxiliaires.",
+        "hintFr": "Regarde les mots placés juste avant. Avoir ou être donnent souvent un indice.",
         "explanationFr": "Il avait aidé son équipe. Le participe passé est employé avec un auxiliaire.",
         "choices": [
           "aidé",
@@ -1299,7 +1299,7 @@ export const INFINITIVE_PARTICIPLE_TEACHING:readonly TargetTeachingContent[] = [
         "id": "infinitive-participle:distinguer_infinitif_participe_ecrit:recognition:4",
         "promptFr": "Choisis la forme correcte.\n\nIl faut ___ la porte.",
         "answerFr": "fermer",
-        "hintFr": "Regarde ce qui précède le verbe. Repère notamment les auxiliaires.",
+        "hintFr": "Regarde les mots placés juste avant. Avoir ou être donnent souvent un indice.",
         "explanationFr": "Il faut fermer la porte. La construction demande ici un infinitif.",
         "choices": [
           "fermer",
@@ -1310,7 +1310,7 @@ export const INFINITIVE_PARTICIPLE_TEACHING:readonly TargetTeachingContent[] = [
         "id": "infinitive-participle:distinguer_infinitif_participe_ecrit:recognition:5",
         "promptFr": "Choisis la forme correcte.\n\nElle a ___ le sol.",
         "answerFr": "balayé",
-        "hintFr": "Regarde ce qui précède le verbe. Repère notamment les auxiliaires.",
+        "hintFr": "Regarde les mots placés juste avant. Avoir ou être donnent souvent un indice.",
         "explanationFr": "Elle a balayé le sol. Le participe passé est employé avec un auxiliaire.",
         "choices": [
           "balayé",
@@ -1390,42 +1390,42 @@ export const INFINITIVE_PARTICIPLE_TEACHING:readonly TargetTeachingContent[] = [
         "id": "infinitive-participle:distinguer_infinitif_participe_ecrit:production:0",
         "promptFr": "Complète avec « attraper ».\n\nElle veut ___ le ballon.",
         "answerFr": "attraper",
-        "hintFr": "Regarde ce qui précède le verbe. Repère notamment les auxiliaires.",
+        "hintFr": "Regarde les mots placés juste avant. Avoir ou être donnent souvent un indice.",
         "explanationFr": "Elle veut attraper le ballon. La construction demande ici un infinitif."
       },
       {
         "id": "infinitive-participle:distinguer_infinitif_participe_ecrit:production:1",
         "promptFr": "Complète avec « porter ».\n\nIl a ___ le panier.",
         "answerFr": "porté",
-        "hintFr": "Regarde ce qui précède le verbe. Repère notamment les auxiliaires.",
+        "hintFr": "Regarde les mots placés juste avant. Avoir ou être donnent souvent un indice.",
         "explanationFr": "Il a porté le panier. Le participe passé est employé avec un auxiliaire."
       },
       {
         "id": "infinitive-participle:distinguer_infinitif_participe_ecrit:production:2",
         "promptFr": "Complète avec « appeler ».\n\nElle sort pour ___ le chat.",
         "answerFr": "appeler",
-        "hintFr": "Regarde ce qui précède le verbe. Repère notamment les auxiliaires.",
+        "hintFr": "Regarde les mots placés juste avant. Avoir ou être donnent souvent un indice.",
         "explanationFr": "Elle sort pour appeler le chat. La construction demande ici un infinitif."
       },
       {
         "id": "infinitive-participle:distinguer_infinitif_participe_ecrit:production:3",
         "promptFr": "Complète avec « aider ».\n\nIl avait ___ son équipe.",
         "answerFr": "aidé",
-        "hintFr": "Regarde ce qui précède le verbe. Repère notamment les auxiliaires.",
+        "hintFr": "Regarde les mots placés juste avant. Avoir ou être donnent souvent un indice.",
         "explanationFr": "Il avait aidé son équipe. Le participe passé est employé avec un auxiliaire."
       },
       {
         "id": "infinitive-participle:distinguer_infinitif_participe_ecrit:production:4",
         "promptFr": "Complète avec « fermer ».\n\nIl faut ___ la porte.",
         "answerFr": "fermer",
-        "hintFr": "Regarde ce qui précède le verbe. Repère notamment les auxiliaires.",
+        "hintFr": "Regarde les mots placés juste avant. Avoir ou être donnent souvent un indice.",
         "explanationFr": "Il faut fermer la porte. La construction demande ici un infinitif."
       },
       {
         "id": "infinitive-participle:distinguer_infinitif_participe_ecrit:production:5",
         "promptFr": "Complète avec « balayer ».\n\nElle a ___ le sol.",
         "answerFr": "balayé",
-        "hintFr": "Regarde ce qui précède le verbe. Repère notamment les auxiliaires.",
+        "hintFr": "Regarde les mots placés juste avant. Avoir ou être donnent souvent un indice.",
         "explanationFr": "Elle a balayé le sol. Le participe passé est employé avec un auxiliaire."
       }
     ],

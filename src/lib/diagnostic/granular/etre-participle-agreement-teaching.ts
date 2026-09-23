@@ -23,7 +23,7 @@ const guided=[['arrivé','au refuge'],['resté','à l’abri'],['tombé','dans l
 export const ETRE_PARTICIPLE_AGREEMENT_TEACHING:readonly TargetTeachingContent[]=Object.entries(definitions).map(([construction,d])=>{
  const practice=guided.map(([base,ending],index)=>{
   const answer=base+d.suffix,sentence=`${d.subject} ${d.auxiliary} ___ ${ending}.`;
-  return {id:`etre-agreement-guided:${construction}:${index}`,promptFr:`Le participe au masculin singulier est « ${base} ». Complète : ${sentence}`,answerFr:answer,hintFr:'Qui fait l’action ? Vérifie le genre et le nombre de ce sujet.',explanationFr:`${d.reason} Avec être, on écrit ${answer} : ${sentence.replace('___',answer)}`};
+  return {id:`etre-agreement-guided:${construction}:${index}`,promptFr:`La forme de départ est « ${base} ». Complète la phrase : ${sentence}`,answerFr:answer,hintFr:'Qui fait l’action ? Vérifie le genre et le nombre de ce sujet.',explanationFr:`${d.reason} Avec être, on écrit ${answer} : ${sentence.replace('___',answer)}`};
  });
  const lesson:TargetTeachingContent={id:`french-v3-teaching:etre-participle-agreement:${construction}`,nodeKey,facetKey:`${nodeKey}::construction:${construction}`,mode:'production',status:'draft_requires_review',titleFr:d.title,learnerQuestionFr:d.question,steps:d.steps,takeawayFr:d.takeaway,boundaryFr,practice};
  return {...lesson,materialExposure:{sentences:[...lesson.steps.flatMap(step=>[step.exampleFr,step.explanationFr]),lesson.takeawayFr,lesson.boundaryFr,...practice.flatMap(exercise=>[exercise.promptFr,exercise.answerFr,exercise.hintFr,exercise.explanationFr])]}};
