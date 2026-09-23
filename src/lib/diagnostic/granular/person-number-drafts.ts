@@ -5,7 +5,7 @@ export {PERSON_NUMBER_LABELS} from "./person-number-categories";
 type Verb=keyof typeof PERSON_NUMBER_VERB_FORMS;
 const cases: Array<[string,string,string,number,Verb,string,string]> = [
  ["je-dessine","Je dessine un paysage.","Je",0,"aller","chercher un pinceau","Je commande la forme vais."],
- ["j-ecoute","J’écoute cette chanson.","Je",0,"avoir","un casque sur les oreilles","Je commande la forme ai."],
+ ["j-ecoute","J’écoute cette chanson.","Je",0,"être","près des enceintes","Je commande la forme suis."],
  ["je-negation","Je ne regarde pas la série.","Je",0,"être","encore occupé","La négation de la première phrase ne change pas la forme attendue avec je."],
  ["je-incise","Demain, je préparerai le repas.","je",0,"aller","acheter les ingrédients","Le moment indiqué ne change pas la forme attendue avec je."],
  ["tu-choisis","Tu choisis un livre.","Tu",1,"avoir","plusieurs choix","Tu commande la forme as."],
@@ -30,7 +30,7 @@ const cases: Array<[string,string,string,number,Verb,string,string]> = [
  ["lui-elle","Lui et elle repeignent le banc.","Lui et elle",5,"avoir","deux pots de peinture","Lui et elle commande la même forme que ils : ont."],
 ];
 export const PERSON_NUMBER_DRAFTS = cases.map(([key,sentence,subject,index,verb,tail,reason])=>{
- const forms=PERSON_NUMBER_VERB_FORMS[verb],answer=forms[index],exerciseSentence=`${subject} ___ ${tail}.`;
+ const forms=PERSON_NUMBER_VERB_FORMS[verb],answer=forms[index],exerciseSubject=subject[0].toUpperCase()+subject.slice(1),exerciseSentence=`${exerciseSubject} ___ ${tail}.`;
  return {key,nodeKey:"distinguer_personne_nombre" as const,sentence,subject,personNumberGroup:PERSON_NUMBER_LABELS[index],exerciseSentence,
  prompt:`${sentence}\n\nComplète avec la bonne forme de « ${verb} » : « ${exerciseSentence} »`,
  answer,distractors:forms.filter(form=>form!==answer),reason};

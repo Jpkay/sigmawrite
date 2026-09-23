@@ -8,6 +8,6 @@ The product owner authorized students to start while personally reviewing conten
 
 386 lessons and 2168 guided exercises are pinned as published_pending_review. 372 lesson targets have allocated initial/follow-up pools; 372 retain enough check questions after exact teaching overlap exclusions and have proposed instruction/practice bindings. 5 prerequisite targets in their 378-target dependency scope still lack complete pools. Exact material matches populate exposure exclusions; semantic overlap review remains in progress.
 
-Policy checksum: sha256:0a3888ca5344e4f554d53f25e0be03cb487a9274c82f1a769dc35ff5515a32d3.
+Policy checksum: sha256:0fe81eb64dc58c8ef835471b4ebea24ec7b0e205854bb43ae5da65a123ba9ddb.
 
 Reproduce: npx tsx scripts/build-parallel-review-candidate.mts --bank-revision 45 --verb-family-recognition --etre-participle-agreement --question-detail-reading --local-definition-reading --avoir-participle-agreement --causal-reading-genres --cause-relation-family --passe-recent-modal-family; append --check to verify without writing.

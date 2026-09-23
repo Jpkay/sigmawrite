@@ -2,9 +2,9 @@
 
 ## Result
 
-Revision 45 keeps the revision 44 bank immutable and builds a new candidate, `french-diagnostic-bank-v3-r45`, from the same taxonomy. The new bank contains 8,088 questions. Its checksum is `sha256:19902a297643e50733953060885c4ab9b83ab1b243847d2c2e3c6c46cee852ed`.
+Revision 45 keeps the revision 44 bank immutable and builds a new candidate, `french-diagnostic-bank-v3-r45`, from the same taxonomy. The new bank contains 8,088 questions. Its checksum is `sha256:e5e88c8523632aae3516d50989b5186ec259687f087535378830965e66eee17a`.
 
-Compared with revision 44, 4,216 bank items have revised instructions. The scoped student candidate uses 3,516 of those revised items across 13 skills. The changes preserve every item key, evidence key, evidence expectation, validator type, and skill binding. No controlled or short-answer `correctAnswer` or `acceptableAnswers` changed. Forty multiple-choice sets were intentionally rewritten for concrete determiner or replacement-pronoun choices; all 40 retain the same correct/incorrect option pattern and exactly one correct option.
+Compared with revision 44, 4,216 bank items have revised instructions. The scoped student candidate uses 3,516 of those revised items across 13 skills. The changes preserve every item key, evidence key, evidence expectation, validator type, and skill binding. No controlled or short-answer `correctAnswer` or `acceptableAnswers` changed. Forty multiple-choice items were intentionally rewritten: 24 now ask learners to complete a sentence with a concrete verb form, and 16 ask them to choose a concrete determiner or contrast it with a replacement pronoun. Every item still has exactly one correct choice. The completed person-number sentences were checked individually; the reviewed source now uses `Je suis près des enceintes` instead of the invalid `Je ai...`, and exercise sentences consistently begin with a capital letter. Four determiner contrasts now name the concrete following word instead of asking about a `nom`.
 
 The content changes cover:
 
@@ -18,7 +18,7 @@ Advanced passages, source sentences, challenge ordering, evidence thresholds, an
 
 ## Scoped candidate
 
-The frozen scoped candidate contains 367 assessment targets, 367 teaching targets, and 6,660 questions. It has no missing instruction target and passed publication preflight with no instruction or fresh-check gap. Its checksum is `sha256:f1aa2283d157f346f408cb1615338451cab4ac17005a9fc4b2dc382970a26acd`.
+The frozen scoped candidate contains 367 assessment targets, 367 teaching targets, and 6,660 questions. It has no missing instruction target and passed publication preflight with no instruction or fresh-check gap. Its checksum is `sha256:c218f949996ceddfcc071aa894241ccf60443eb6efd3c3968fe600bc64f893da`.
 
 Three old probes are absent from the scoped candidate:
 
@@ -43,10 +43,10 @@ These remaining terms name the form being recognized or distinguish two grammati
 
 ## Verification
 
-- focused pathway and copy tests: 6 files, 19 tests;
+- focused pathway, route-policy and copy tests: 6 files, 33 tests;
 - generated expansion checks for the seven touched expansion families;
 - revision 45 assembly and parallel/scoped candidate reproducibility checks;
 - scoped publication preflight: ready, 0 instruction gaps, 0 fresh-check gaps;
-- scoped command journeys: 61-question all-wrong and mixed profiles, both completed without a runtime failure;
+- scoped command journeys: 60-question all-wrong and mixed profiles, both completed without a runtime failure;
 - TypeScript compilation and JSON parsing;
 - no publication, activation, or deployment command was run.

@@ -4,7 +4,7 @@ Draft feasibility only. No approval, publication or activation.
 
 | Lesson | Eligible | Drafts | Distinct target sentences | Exposed by lesson | Guess floor | Minimum correct per pool | Initial / later | Allocation |
 | --- | ---: | ---: | ---: | ---: | --- | ---: | --- | --- |
-| Qui parle, à qui, et de qui ? | 0 | 24 | 24 | 0 | 0.16666666666666666 | 3 | 12 / 12 | allocated |
+| Choisir la forme du verbe qui va avec le sujet | 0 | 24 | 24 | 0 | 0.16666666666666666 | 3 | 12 / 12 | allocated |
 
 Questions use the assessed sentence as their context identity, independently of task wording or question IDs. Repeated assessed sentences are retained at most once across the proposed pools, even if item IDs or instructions differ. Candidates whose annotated assessed sentence occurs in the lesson are excluded from both proposed pools. This detects exact normalized sentence reuse, not semantic paraphrases, complete exposure history or unannotated teaching material.
 
@@ -20,12 +20,12 @@ Balance: balanced.
 
 | Category | Initial | Later |
 | --- | ---: | ---: |
-| 1re personne du pluriel | 2 | 2 |
-| 1re personne du singulier | 2 | 2 |
-| 2e personne du pluriel | 2 | 2 |
-| 2e personne du singulier | 2 | 2 |
-| 3e personne du pluriel | 2 | 2 |
-| 3e personne du singulier | 2 | 2 |
+| listener-group | 2 | 2 |
+| listener-one | 2 | 2 |
+| other-group | 2 | 2 |
+| other-one | 2 | 2 |
+| speaker-group | 2 | 2 |
+| speaker-one | 2 | 2 |
 
 A balance failure remains explicit even if the generic pool has enough questions overall. Taught or discarded questions are never restored to fill a category. The runtime adapter independently derives sampling categories from the same complete six-choice format. Its allocator balances available categories when the evidence contract permits, and its selector prefers less-tested categories within a skill/mode. It does not import this draft review packet. Category sampling does not require testing all six categories before the existing target-level stopping rule can be met.
 
@@ -35,413 +35,413 @@ A balance failure remains explicit even if the generic pool has enough questions
 
 Je dessine un paysage.
 
-Quelle personne et quel nombre grammaticaux correspondent au sujet « Je » pour l’accord du verbe ?
+Complète avec la bonne forme de « aller » : « Je ___ chercher un pinceau. »
 
-- 1re personne du singulier
-- 2e personne du singulier
-- 3e personne du singulier
-- 1re personne du pluriel
-- 2e personne du pluriel
-- 3e personne du pluriel
+- vais
+- vas
+- va
+- allons
+- allez
+- vont
 
-Answer: 1re personne du singulier
+Answer: vais
 
-Review rationale: Je désigne la personne qui parle : première personne du singulier.
+Review rationale: Je commande la forme vais.
 
 ### j-ecoute
 
 J’écoute cette chanson.
 
-Quelle personne et quel nombre grammaticaux correspondent au sujet « J’ » pour l’accord du verbe ?
+Complète avec la bonne forme de « être » : « Je ___ près des enceintes. »
 
-- 1re personne du singulier
-- 2e personne du singulier
-- 3e personne du singulier
-- 1re personne du pluriel
-- 2e personne du pluriel
-- 3e personne du pluriel
+- suis
+- es
+- est
+- sommes
+- êtes
+- sont
 
-Answer: 1re personne du singulier
+Answer: suis
 
-Review rationale: J’ est la forme de je devant une voyelle; la personne et le nombre ne changent pas.
+Review rationale: Je commande la forme suis.
 
 ### je-negation
 
 Je ne regarde pas la série.
 
-Quelle personne et quel nombre grammaticaux correspondent au sujet « Je » pour l’accord du verbe ?
+Complète avec la bonne forme de « être » : « Je ___ encore occupé. »
 
-- 1re personne du singulier
-- 2e personne du singulier
-- 3e personne du singulier
-- 1re personne du pluriel
-- 2e personne du pluriel
-- 3e personne du pluriel
+- suis
+- es
+- est
+- sommes
+- êtes
+- sont
 
-Answer: 1re personne du singulier
+Answer: suis
 
-Review rationale: La négation ne change pas les traits du sujet je.
+Review rationale: La négation de la première phrase ne change pas la forme attendue avec je.
 
 ### je-incise
 
 Demain, je préparerai le repas.
 
-Quelle personne et quel nombre grammaticaux correspondent au sujet « je » pour l’accord du verbe ?
+Complète avec la bonne forme de « aller » : « Je ___ acheter les ingrédients. »
 
-- 1re personne du singulier
-- 2e personne du singulier
-- 3e personne du singulier
-- 1re personne du pluriel
-- 2e personne du pluriel
-- 3e personne du pluriel
+- vais
+- vas
+- va
+- allons
+- allez
+- vont
 
-Answer: 1re personne du singulier
+Answer: vais
 
-Review rationale: Le moment de l’action ne change pas la personne et le nombre de je.
+Review rationale: Le moment indiqué ne change pas la forme attendue avec je.
 
 ### tu-choisis
 
 Tu choisis un livre.
 
-Quelle personne et quel nombre grammaticaux correspondent au sujet « Tu » pour l’accord du verbe ?
+Complète avec la bonne forme de « avoir » : « Tu ___ plusieurs choix. »
 
-- 2e personne du singulier
-- 1re personne du singulier
-- 3e personne du singulier
-- 1re personne du pluriel
-- 2e personne du pluriel
-- 3e personne du pluriel
+- as
+- ai
+- a
+- avons
+- avez
+- ont
 
-Answer: 2e personne du singulier
+Answer: as
 
-Review rationale: Tu désigne une seule personne à qui l’on parle.
+Review rationale: Tu commande la forme as.
 
 ### tu-question
 
 Pourquoi hésites-tu ?
 
-Quelle personne et quel nombre grammaticaux correspondent au sujet « tu » pour l’accord du verbe ?
+Complète avec la bonne forme de « être » : « Tu ___ presque prêt. »
 
-- 2e personne du singulier
-- 1re personne du singulier
-- 3e personne du singulier
-- 1re personne du pluriel
-- 2e personne du pluriel
-- 3e personne du pluriel
+- es
+- suis
+- est
+- sommes
+- êtes
+- sont
 
-Answer: 2e personne du singulier
+Answer: es
 
-Review rationale: Même après le verbe dans une question, tu reste à la deuxième personne du singulier.
+Review rationale: Même après le verbe dans la première question, tu commande la forme es.
 
 ### tu-negative
 
 Tu ne connais pas ce chemin.
 
-Quelle personne et quel nombre grammaticaux correspondent au sujet « Tu » pour l’accord du verbe ?
+Complète avec la bonne forme de « aller » : « Tu ___ suivre le panneau. »
 
-- 2e personne du singulier
-- 1re personne du singulier
-- 3e personne du singulier
-- 1re personne du pluriel
-- 2e personne du pluriel
-- 3e personne du pluriel
+- vas
+- vais
+- va
+- allons
+- allez
+- vont
 
-Answer: 2e personne du singulier
+Answer: vas
 
-Review rationale: La négation ne modifie pas les traits de tu.
+Review rationale: Tu commande la forme vas.
 
 ### tu-future
 
 Ce soir, tu présenteras ton dessin.
 
-Quelle personne et quel nombre grammaticaux correspondent au sujet « tu » pour l’accord du verbe ?
+Complète avec la bonne forme de « avoir » : « Tu ___ cinq minutes pour parler. »
 
-- 2e personne du singulier
-- 1re personne du singulier
-- 3e personne du singulier
-- 1re personne du pluriel
-- 2e personne du pluriel
-- 3e personne du pluriel
+- as
+- ai
+- a
+- avons
+- avez
+- ont
 
-Answer: 2e personne du singulier
+Answer: as
 
-Review rationale: Le futur du verbe ne modifie pas les traits de tu.
+Review rationale: Le moment de l’action ne change pas la forme attendue avec tu.
 
 ### nom-singulier
 
 Le robot avance sur la piste.
 
-Quelle personne et quel nombre grammaticaux correspondent au sujet « Le robot » pour l’accord du verbe ?
+Complète avec la bonne forme de « aller » : « Le robot ___ tourner à gauche. »
 
-- 3e personne du singulier
-- 1re personne du singulier
-- 2e personne du singulier
-- 1re personne du pluriel
-- 2e personne du pluriel
-- 3e personne du pluriel
+- va
+- vais
+- vas
+- allons
+- allez
+- vont
 
-Answer: 3e personne du singulier
+Answer: va
 
-Review rationale: Ce groupe se remplace par il : troisième personne du singulier, même si le robot n’est pas humain.
+Review rationale: Le robot commande la même forme que il : va.
 
 ### elle
 
 Elle range les pinceaux.
 
-Quelle personne et quel nombre grammaticaux correspondent au sujet « Elle » pour l’accord du verbe ?
+Complète avec la bonne forme de « avoir » : « Elle ___ encore de la peinture. »
 
-- 3e personne du singulier
-- 1re personne du singulier
-- 2e personne du singulier
-- 1re personne du pluriel
-- 2e personne du pluriel
-- 3e personne du pluriel
+- a
+- ai
+- as
+- avons
+- avez
+- ont
 
-Answer: 3e personne du singulier
+Answer: a
 
-Review rationale: Elle désigne un être dont on parle : troisième personne du singulier.
+Review rationale: Elle commande la forme a.
 
 ### on-nous
 
 On prépare notre spectacle. Ici, on désigne toute notre équipe.
 
-Quelle personne et quel nombre grammaticaux correspondent au sujet « On » pour l’accord du verbe ?
+Complète avec la bonne forme de « être » : « On ___ prêts à commencer. »
 
-- 3e personne du singulier
-- 1re personne du singulier
-- 2e personne du singulier
-- 1re personne du pluriel
-- 2e personne du pluriel
-- 3e personne du pluriel
+- est
+- suis
+- es
+- sommes
+- êtes
+- sont
 
-Answer: 3e personne du singulier
+Answer: est
 
-Review rationale: Même quand on désigne plusieurs personnes, sa personne grammaticale reste la troisième du singulier.
+Review rationale: Même quand on désigne plusieurs personnes, on commande ici la forme est.
 
 ### collectif
 
 La foule applaudit.
 
-Quelle personne et quel nombre grammaticaux correspondent au sujet « La foule » pour l’accord du verbe ?
+Complète avec la bonne forme de « aller » : « La foule ___ quitter la salle. »
 
-- 3e personne du singulier
-- 1re personne du singulier
-- 2e personne du singulier
-- 1re personne du pluriel
-- 2e personne du pluriel
-- 3e personne du pluriel
+- va
+- vais
+- vas
+- allons
+- allez
+- vont
 
-Answer: 3e personne du singulier
+Answer: va
 
-Review rationale: Le nom foule est singulier. Le groupe se remplace par elle, même s’il désigne de nombreuses personnes.
+Review rationale: Le nom foule commande ici la forme va, même s’il désigne de nombreuses personnes.
 
 ### nous
 
 Nous inventons une histoire.
 
-Quelle personne et quel nombre grammaticaux correspondent au sujet « Nous » pour l’accord du verbe ?
+Complète avec la bonne forme de « avoir » : « Nous ___ beaucoup d’idées. »
 
-- 1re personne du pluriel
-- 1re personne du singulier
-- 2e personne du singulier
-- 3e personne du singulier
-- 2e personne du pluriel
-- 3e personne du pluriel
+- avons
+- ai
+- as
+- a
+- avez
+- ont
 
-Answer: 1re personne du pluriel
+Answer: avons
 
-Review rationale: Nous comprend la personne qui parle et au moins une autre personne.
+Review rationale: Nous commande la forme avons.
 
 ### toi-moi
 
 Toi et moi partageons cette table.
 
-Quelle personne et quel nombre grammaticaux correspondent au sujet « Toi et moi » pour l’accord du verbe ?
+Complète avec la bonne forme de « être » : « Toi et moi ___ près de la fenêtre. »
 
-- 1re personne du pluriel
-- 1re personne du singulier
-- 2e personne du singulier
-- 3e personne du singulier
-- 2e personne du pluriel
-- 3e personne du pluriel
+- sommes
+- suis
+- es
+- est
+- êtes
+- sont
 
-Answer: 1re personne du pluriel
+Answer: sommes
 
-Review rationale: La personne qui parle, moi, fait partie du groupe : on le remplace par nous.
+Review rationale: Toi et moi commande la même forme que nous : sommes.
 
 ### elle-moi
 
 Elle et moi dessinons les costumes.
 
-Quelle personne et quel nombre grammaticaux correspondent au sujet « Elle et moi » pour l’accord du verbe ?
+Complète avec la bonne forme de « aller » : « Elle et moi ___ choisir les tissus. »
 
-- 1re personne du pluriel
-- 1re personne du singulier
-- 2e personne du singulier
-- 3e personne du singulier
-- 2e personne du pluriel
-- 3e personne du pluriel
+- allons
+- vais
+- vas
+- va
+- allez
+- vont
 
-Answer: 1re personne du pluriel
+Answer: allons
 
-Review rationale: Un groupe comprenant moi se remplace ici par nous, pas par elles.
+Review rationale: Elle et moi commande la même forme que nous : allons.
 
 ### vous-moi
 
 Vous et moi organiserons la rencontre.
 
-Quelle personne et quel nombre grammaticaux correspondent au sujet « Vous et moi » pour l’accord du verbe ?
+Complète avec la bonne forme de « avoir » : « Vous et moi ___ le même programme. »
 
-- 1re personne du pluriel
-- 1re personne du singulier
-- 2e personne du singulier
-- 3e personne du singulier
-- 2e personne du pluriel
-- 3e personne du pluriel
+- avons
+- ai
+- as
+- a
+- avez
+- ont
 
-Answer: 1re personne du pluriel
+Answer: avons
 
-Review rationale: Le groupe inclut moi : la première personne commande l’accord au pluriel.
+Review rationale: Vous et moi inclut la personne qui parle et commande avons.
 
 ### vous-groupe
 
 Vous cherchez vos places. Je parle à trois amis.
 
-Quelle personne et quel nombre grammaticaux correspondent au sujet « Vous » pour l’accord du verbe ?
+Complète avec la bonne forme de « aller » : « Vous ___ entrer ensemble. »
 
-- 2e personne du pluriel
-- 1re personne du singulier
-- 2e personne du singulier
-- 3e personne du singulier
-- 1re personne du pluriel
-- 3e personne du pluriel
+- allez
+- vais
+- vas
+- va
+- allons
+- vont
 
-Answer: 2e personne du pluriel
+Answer: allez
 
-Review rationale: Vous s’adresse ici à plusieurs personnes : deuxième personne du pluriel.
+Review rationale: Vous commande la forme allez.
 
 ### vous-politesse
 
 Madame, vous pouvez entrer. Je parle à une seule personne.
 
-Quelle personne et quel nombre grammaticaux correspondent au sujet « vous » pour l’accord du verbe ?
+Complète avec la bonne forme de « être » : « Vous ___ attendue dans le bureau. »
 
-- 2e personne du pluriel
-- 1re personne du singulier
-- 2e personne du singulier
-- 3e personne du singulier
-- 1re personne du pluriel
-- 3e personne du pluriel
+- êtes
+- suis
+- es
+- est
+- sommes
+- sont
 
-Answer: 2e personne du pluriel
+Answer: êtes
 
-Review rationale: Le vous de politesse garde les traits grammaticaux de la deuxième personne du pluriel pour le verbe.
+Review rationale: Même adressé à une seule personne poliment, vous commande êtes.
 
 ### toi-elle
 
 Toi et elle préparerez les affiches.
 
-Quelle personne et quel nombre grammaticaux correspondent au sujet « Toi et elle » pour l’accord du verbe ?
+Complète avec la bonne forme de « avoir » : « Toi et elle ___ tout le matériel. »
 
-- 2e personne du pluriel
-- 1re personne du singulier
-- 2e personne du singulier
-- 3e personne du singulier
-- 1re personne du pluriel
-- 3e personne du pluriel
+- avez
+- ai
+- as
+- a
+- avons
+- ont
 
-Answer: 2e personne du pluriel
+Answer: avez
 
-Review rationale: Le groupe inclut la personne à qui l’on parle, toi, sans inclure moi : il se remplace par vous.
+Review rationale: Toi et elle commande la même forme que vous : avez.
 
 ### lui-toi
 
 Lui et toi jouez dans la même équipe.
 
-Quelle personne et quel nombre grammaticaux correspondent au sujet « Lui et toi » pour l’accord du verbe ?
+Complète avec la bonne forme de « être » : « Lui et toi ___ sur le terrain. »
 
-- 2e personne du pluriel
-- 1re personne du singulier
-- 2e personne du singulier
-- 3e personne du singulier
-- 1re personne du pluriel
-- 3e personne du pluriel
+- êtes
+- suis
+- es
+- est
+- sommes
+- sont
 
-Answer: 2e personne du pluriel
+Answer: êtes
 
-Review rationale: Lui et toi se remplace par vous : deuxième personne du pluriel.
+Review rationale: Lui et toi commande la même forme que vous : êtes.
 
 ### elles
 
 Elles arrivent avant le début du film.
 
-Quelle personne et quel nombre grammaticaux correspondent au sujet « Elles » pour l’accord du verbe ?
+Complète avec la bonne forme de « avoir » : « Elles ___ des places au premier rang. »
 
-- 3e personne du pluriel
-- 1re personne du singulier
-- 2e personne du singulier
-- 3e personne du singulier
-- 1re personne du pluriel
-- 2e personne du pluriel
+- ont
+- ai
+- as
+- a
+- avons
+- avez
 
-Answer: 3e personne du pluriel
+Answer: ont
 
-Review rationale: Elles désigne plusieurs êtres dont on parle : troisième personne du pluriel.
+Review rationale: Elles commande la forme ont.
 
 ### noms-coordonnes
 
 Lina et Sami ferment la porte.
 
-Quelle personne et quel nombre grammaticaux correspondent au sujet « Lina et Sami » pour l’accord du verbe ?
+Complète avec la bonne forme de « aller » : « Lina et Sami ___ rejoindre le groupe. »
 
-- 3e personne du pluriel
-- 1re personne du singulier
-- 2e personne du singulier
-- 3e personne du singulier
-- 1re personne du pluriel
-- 2e personne du pluriel
+- vont
+- vais
+- vas
+- va
+- allons
+- allez
 
-Answer: 3e personne du pluriel
+Answer: vont
 
-Review rationale: Ces deux personnes sont celles dont on parle : le groupe se remplace par ils.
+Review rationale: Lina et Sami commande la même forme que ils : vont.
 
 ### objets-pluriels
 
 Les lampes éclairent la scène.
 
-Quelle personne et quel nombre grammaticaux correspondent au sujet « Les lampes » pour l’accord du verbe ?
+Complète avec la bonne forme de « être » : « Les lampes ___ près des rideaux. »
 
-- 3e personne du pluriel
-- 1re personne du singulier
-- 2e personne du singulier
-- 3e personne du singulier
-- 1re personne du pluriel
-- 2e personne du pluriel
+- sont
+- suis
+- es
+- est
+- sommes
+- êtes
 
-Answer: 3e personne du pluriel
+Answer: sont
 
-Review rationale: Les lampes se remplace par elles : troisième personne du pluriel, même pour des objets.
+Review rationale: Les lampes commande la même forme que elles : sont.
 
 ### lui-elle
 
 Lui et elle repeignent le banc.
 
-Quelle personne et quel nombre grammaticaux correspondent au sujet « Lui et elle » pour l’accord du verbe ?
+Complète avec la bonne forme de « avoir » : « Lui et elle ___ deux pots de peinture. »
 
-- 3e personne du pluriel
-- 1re personne du singulier
-- 2e personne du singulier
-- 3e personne du singulier
-- 1re personne du pluriel
-- 2e personne du pluriel
+- ont
+- ai
+- as
+- a
+- avons
+- avez
 
-Answer: 3e personne du pluriel
+Answer: ont
 
-Review rationale: Ni moi ni toi ne figure dans ce groupe : il se remplace par ils.
+Review rationale: Lui et elle commande la même forme que ils : ont.
 
 ## Teaching draft
 
-### Qui parle, à qui, et de qui ?
+### Choisir la forme du verbe qui va avec le sujet
 
 Pourquoi dit-on je chante, tu chantes et nous chantons ?
 
@@ -467,60 +467,60 @@ Boundary: Cette leçon te donne le sujet et t’aide à trouver ses traits pour 
 
 J’apporte les feutres.
 
-Quelle personne et quel nombre grammaticaux correspondent au sujet « J’ » pour le verbe ?
+Complète avec la bonne forme de « avoir » : « Je ___ aussi du papier. »
 
-1re personne du singulier / 2e personne du singulier / 3e personne du singulier / 1re personne du pluriel / 2e personne du pluriel / 3e personne du pluriel
+ai / as / a / avons / avez / ont
 
-Answer: 1re personne du singulier
-Hint: Compare le sujet à je, tu, il/elle/on, nous, vous et ils/elles. Attention à on et au vous de politesse.
-J’ remplace je devant une voyelle : première personne du singulier.
+Answer: ai
+Hint: Regarde qui fait l’action, puis choisis la forme qui va avec. Attention à on et au vous de politesse.
+Je commande la forme ai.
 
 Tu portes le sac.
 
-Quelle personne et quel nombre grammaticaux correspondent au sujet « Tu » pour le verbe ?
+Complète avec la bonne forme de « être » : « Tu ___ près de la porte. »
 
-1re personne du singulier / 2e personne du singulier / 3e personne du singulier / 1re personne du pluriel / 2e personne du pluriel / 3e personne du pluriel
+suis / es / est / sommes / êtes / sont
 
-Answer: 2e personne du singulier
-Hint: Compare le sujet à je, tu, il/elle/on, nous, vous et ils/elles. Attention à on et au vous de politesse.
-Tu désigne la personne à qui l’on parle : deuxième personne du singulier.
+Answer: es
+Hint: Regarde qui fait l’action, puis choisis la forme qui va avec. Attention à on et au vous de politesse.
+Tu commande la forme es.
 
 On travaille ensemble. Ici, on désigne mes amis et moi.
 
-Quelle personne et quel nombre grammaticaux correspondent au sujet « On » pour le verbe ?
+Complète avec la bonne forme de « aller » : « On ___ finir avant midi. »
 
-1re personne du singulier / 2e personne du singulier / 3e personne du singulier / 1re personne du pluriel / 2e personne du pluriel / 3e personne du pluriel
+vais / vas / va / allons / allez / vont
 
-Answer: 3e personne du singulier
-Hint: Compare le sujet à je, tu, il/elle/on, nous, vous et ils/elles. Attention à on et au vous de politesse.
-On peut désigner notre groupe, mais il commande un verbe à la troisième personne du singulier.
+Answer: va
+Hint: Regarde qui fait l’action, puis choisis la forme qui va avec. Attention à on et au vous de politesse.
+On commande va, même lorsqu’il désigne plusieurs personnes.
 
 Mon frère et moi cuisinons.
 
-Quelle personne et quel nombre grammaticaux correspondent au sujet « Mon frère et moi » pour le verbe ?
+Complète avec la bonne forme de « avoir » : « Mon frère et moi ___ tous les ingrédients. »
 
-1re personne du singulier / 2e personne du singulier / 3e personne du singulier / 1re personne du pluriel / 2e personne du pluriel / 3e personne du pluriel
+ai / as / a / avons / avez / ont
 
-Answer: 1re personne du pluriel
-Hint: Compare le sujet à je, tu, il/elle/on, nous, vous et ils/elles. Attention à on et au vous de politesse.
-Le groupe comprend moi; on le remplace par nous : première personne du pluriel.
+Answer: avons
+Hint: Regarde qui fait l’action, puis choisis la forme qui va avec. Attention à on et au vous de politesse.
+Mon frère et moi commande la même forme que nous : avons.
 
 Monsieur, vous avez oublié votre écharpe.
 
-Quelle personne et quel nombre grammaticaux correspondent au sujet « vous » pour le verbe ?
+Complète avec la bonne forme de « être » : « vous ___ déjà attendu dehors. »
 
-1re personne du singulier / 2e personne du singulier / 3e personne du singulier / 1re personne du pluriel / 2e personne du pluriel / 3e personne du pluriel
+suis / es / est / sommes / êtes / sont
 
-Answer: 2e personne du pluriel
-Hint: Compare le sujet à je, tu, il/elle/on, nous, vous et ils/elles. Attention à on et au vous de politesse.
-Même pour un seul monsieur, le vous de politesse commande la deuxième personne du pluriel au verbe.
+Answer: êtes
+Hint: Regarde qui fait l’action, puis choisis la forme qui va avec. Attention à on et au vous de politesse.
+Même pour un seul monsieur, vous commande êtes.
 
 Les vélos restent dehors.
 
-Quelle personne et quel nombre grammaticaux correspondent au sujet « Les vélos » pour le verbe ?
+Complète avec la bonne forme de « aller » : « Les vélos ___ rester sous l’abri. »
 
-1re personne du singulier / 2e personne du singulier / 3e personne du singulier / 1re personne du pluriel / 2e personne du pluriel / 3e personne du pluriel
+vais / vas / va / allons / allez / vont
 
-Answer: 3e personne du pluriel
-Hint: Compare le sujet à je, tu, il/elle/on, nous, vous et ils/elles. Attention à on et au vous de politesse.
-Les vélos se remplace par ils : troisième personne du pluriel. Personne grammaticale ne signifie pas être humain.
+Answer: vont
+Hint: Regarde qui fait l’action, puis choisis la forme qui va avec. Attention à on et au vous de politesse.
+Les vélos commande la même forme que ils : vont.

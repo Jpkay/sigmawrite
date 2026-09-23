@@ -29,6 +29,34 @@ it("maps every subject pattern to a plain replacement-pronoun choice",()=>{
  const eligible=validateCanonicalDiagnosticBank(bank,artifact.taxonomy).eligibleItemKeys;
  expect(eligible.some(key=>key.startsWith("v3-person-number:"))).toBe(false);
 });
+it("builds natural, capitalized sentences when each answer is inserted",()=>{
+ expect(PERSON_NUMBER_DRAFTS.map(draft=>draft.exerciseSentence.replace("___",draft.answer))).toEqual([
+  "Je vais chercher un pinceau.",
+  "Je suis près des enceintes.",
+  "Je suis encore occupé.",
+  "Je vais acheter les ingrédients.",
+  "Tu as plusieurs choix.",
+  "Tu es presque prêt.",
+  "Tu vas suivre le panneau.",
+  "Tu as cinq minutes pour parler.",
+  "Le robot va tourner à gauche.",
+  "Elle a encore de la peinture.",
+  "On est prêts à commencer.",
+  "La foule va quitter la salle.",
+  "Nous avons beaucoup d’idées.",
+  "Toi et moi sommes près de la fenêtre.",
+  "Elle et moi allons choisir les tissus.",
+  "Vous et moi avons le même programme.",
+  "Vous allez entrer ensemble.",
+  "Vous êtes attendue dans le bureau.",
+  "Toi et elle avez tout le matériel.",
+  "Lui et toi êtes sur le terrain.",
+  "Elles ont des places au premier rang.",
+  "Lina et Sami vont rejoindre le groupe.",
+  "Les lampes sont près des rideaux.",
+  "Lui et elle ont deux pots de peinture.",
+ ]);
+});
 it("reserves disjoint checks, excludes taught sentences and never promotes the draft",()=>{
  const before=checksum({assessment,bank,annotations,lessons:PERSON_NUMBER_TEACHING});
  const row=reviewPersonNumberPathways(assessment,bank,artifact.taxonomy,annotations,PERSON_NUMBER_TEACHING).rows[0];
