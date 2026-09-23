@@ -21,6 +21,17 @@ it('links learning students to the exact planned activity without offering to re
  expect(html).toContain('href="/student/diagnostic?activity=next-check"');expect(html).toContain('Question : repérer le présent');expect(html).toContain('Ce que nous te proposons de travailler ensuite');expect(html).not.toContain('Reprendre le diagnostic');
 });
 
+it('keeps exact graph coverage inside the collapsed detail section',()=>{
+ const coverage={supportedSkillCount:367,deferredSkillCount:177,teachingSkillCount:0,limitationFr:'Test coverage'};
+ const html=renderToStaticMarkup(React.createElement(GranularFrontier,{data:{...data,coverage}}));
+ const summaryIndex=html.indexOf('Ton bilan en bref');
+ const detailIndex=html.indexOf('Voir le détail de tous les points');
+ const coverageIndex=html.indexOf('367 points peuvent être vérifiés maintenant. 177 autres restent à vérifier plus tard.');
+ expect(summaryIndex).toBeGreaterThan(-1);
+ expect(detailIndex).toBeGreaterThan(summaryIndex);
+ expect(coverageIndex).toBeGreaterThan(detailIndex);
+});
+
 it('records all possible filter counts and the exact expanded detail wording without changing the map',()=>{
  const before=JSON.stringify(data),display=frontierDisplayText(data),text=deliveredTextFragments(display);
  expect(display.counts).toEqual(['0 points affichés','1 point affiché','2 points affichés']);
