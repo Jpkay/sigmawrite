@@ -9,7 +9,7 @@ full multi-account browser acceptance remains incomplete (latest checkpoint belo
 | Requirement | Required proof | Current state |
 | --- | --- | --- |
 | School and class setup | Platform admin creates a school and appoints its admin; school admin manages only that school and creates/edits classes through the UI | Public UI school creation/admin appointment and school-admin-scoped account management/class creation/edit passed; QA school now has three classes, one empty |
-| Student onboarding and recovery | Valid invitation joins the right class; invalid/expired/revoked invitations fail; login, resume and recovery verified without changing real credentials | Admin login/password setup passed; public invitation validation/rotation passed; student signup, login, recovery and resume remain pending |
+| Student onboarding and recovery | Valid invitation joins the right class; invalid/expired/revoked invitations fail; login, resume and recovery verified without changing real credentials | Admin login/password setup and public invitation validation/rotation passed; isolation-student signup, login and onboarding passed; Student C diagnostic/reading and recovery remain pending |
 | Many-to-many teacher assignments | Two teachers, two classes and at least three students; shared class and direct-student assignments work; separate grants remain distinguishable | Both teachers' public browser views passed: shared class A, Teacher A across A/B, and both teachers' direct Student C access |
 | Teacher reports | Assigned teacher sees diagnostic results, per-skill evidence, activity and progress; direct assignment works without granting an entire class | Both teachers open Student C's granular/activity report; direct-only access excludes the full class; empty states verified, populated activity/report evidence pending |
 | Access boundaries and revocation | Cross-school grants, self-grants and direct table-write bypass denied; removing last assignment and deactivation revoke access | Native/hosted SQL passed; public browser last-grant denial/roster removal and Teacher B session revocation on deactivation passed; cross-school browser gate pending |
@@ -621,6 +621,26 @@ This checkpoint supersedes the administrator password handoff above.
   accounts. Browser login/recovery, populated teacher reports and cross-school
   browser denial remain pending.
 
+### Isolation student login and onboarding checkpoint — 2026-09-23
+
+- Public in-app-browser login as the synthetic
+  `qa.student.isolation.20260922` account succeeded and showed the student
+  identity `QA Élève Isolation` at `/student/onboarding`. The class-provided
+  grade 7 was locked.
+- Completed onboarding with three synthetic interests: science, technology and
+  African history. The app routed to `/student/diagnostic`, which showed zero
+  answers and `Commencer`. The diagnostic was **not started**.
+- An independent read-only production checkpoint at
+  `2026-09-23 14:22:22 UTC` confirmed Auth `last_sign_in_at` at
+  `2026-09-23 14:18:12 UTC`, `onboarding_completed_at` at
+  `2026-09-23 14:20:07 UTC`, exactly three interests, an active student linked
+  to the intended isolation school, and exactly one active enrollment in the
+  intended isolation class.
+- Browser login and onboarding are now verified. Recovery, Student C diagnostic
+  completion and reading, populated teacher reports, and cross-school browser
+  denial remain pending. Isolation-school membership does not itself prove
+  foreign-school denial. No password or token was recorded.
+
 ### Shortest remaining acceptance checklist
 
 1. As Student C, complete `/student/diagnostic`; start a reading at
@@ -629,8 +649,8 @@ This checkpoint supersedes the administrator password handoff above.
 2. In both authorised teacher accounts, open Student C's detail and
    `/teacher/reports`; confirm populated granular/per-skill evidence, the
    completed reading activity, and the resulting daily/weekly XP metrics.
-3. Complete browser login and recovery checks for the database-verified seventh
-   synthetic account.
+3. Complete the browser recovery check for the seventh synthetic account; its
+   browser login and onboarding are now verified.
 4. Foreign-school browser denial also remains a separate gate. The approved
    isolation school, class, seventh identity and its enrollment are verified,
    but browser denial evidence remains pending. Do not count the already passed
