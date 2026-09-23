@@ -1,6 +1,8 @@
 # Never upload workstation evidence, QA credentials, or local agent configuration.
 .git
 .env*
+!.env.example
+!.env.staging.example
 tmp
 output
 .claude
