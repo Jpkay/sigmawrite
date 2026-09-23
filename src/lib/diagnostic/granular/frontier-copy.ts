@@ -6,7 +6,7 @@ import {STUDENT_RESULT_SUMMARY_COPY} from './student-results-display';
 export const FRONTIER_COPY={
  title:'Mon parcours',progressTitle:'Mes progrès',
  description:'Le bilan montre ce que tu réussis déjà, ce qu’il faut travailler et ce qui reste à vérifier.',
- help:'Ouvre un point pour voir les réponses prises en compte. Un point pas encore vérifié n’est pas une difficulté.',
+ help:'Ouvre un point pour voir les réponses utilisées. Si un point n’a pas encore été vérifié, cela ne veut pas dire que tu as des difficultés.',
  ongoing:'Ton diagnostic est encore en cours.',resume:'Reprendre le diagnostic',
  next:'Ce que nous te proposons de travailler ensuite',moreActivities:'Voir les autres activités proposées',search:'Chercher un point',filter:'Afficher',all:'Tous les points',reset:'Revoir tous les points',
  coming:'Questions à venir',prerequisites:'Les bases liées à ce point',

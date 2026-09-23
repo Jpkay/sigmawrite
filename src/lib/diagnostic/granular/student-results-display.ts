@@ -26,7 +26,20 @@ export function studentResultSummary(results:readonly StudentResultEntry[]){
  return {mastered,needsWork,checking,hasUnassessed:results.some(result=>result.evidence!=="direct"||result.assessmentAvailable===false||result.status==="unknown"),hasConfirmed:mastered.length+needsWork.length>0,hasDirect:direct.length>0};
 }
 
-export const studentEvidenceCoverageText=(confirmed:number,total:number)=>`${confirmed} point${confirmed===1?"":"s"} avec assez de réponses prises en compte sur ${total}`;
+export const studentEvidenceCoverageText=(confirmed:number,total:number)=>`${confirmed} point${confirmed===1?"":"s"} vérifié${confirmed===1?"":"s"} sur ${total}`;
+
+const PINNED_SKILL_TITLE_BASES:Readonly<Record<string,string>>={
+ "Analyser l'accord déterminant-nom":"Choisir le bon petit mot devant un nom",
+ "Identifier les traits de personne-nombre":"Choisir le mot qui peut remplacer le sujet",
+ "Analyser l'accord nom-adjectif":"Choisir la bonne forme du nom et de l’adjectif",
+ "Reconnaître une subordonnée relative":"Repérer les mots qui ajoutent une précision sur un nom",
+ "Accorder le participe passé avec un COD antéposé":"Choisir la bonne forme du verbe avec avoir",
+};
+const PINNED_COD_FACETS:Readonly<Record<string,string>>={
+ "Absence de COD":"Aucun mot à reprendre",
+ "COD placé après":"Mot à reprendre placé après",
+ "COD placé avant":"Mot à reprendre placé avant",
+};
 
 /** Plain display wording for existing pinned releases. Source labels and IDs stay unchanged. */
 export function studentSkillTitle(label:string){
@@ -42,12 +55,21 @@ export function studentSkillTitle(label:string){
   [/^Analyser\b/u,"Observer"],
  ];
  const trimmed=label.trim();
+ const [pinnedBase,...pinnedFacets]=trimmed.replaceAll("’","'").split(" — ");
+ const plainPinnedBase=PINNED_SKILL_TITLE_BASES[pinnedBase];
+ if(plainPinnedBase){
+  const plainFacets=pinnedBase==="Accorder le participe passé avec un COD antéposé"
+   ?pinnedFacets.map(facet=>PINNED_COD_FACETS[facet]??facet)
+   :pinnedFacets;
+  return [plainPinnedBase,...plainFacets].join(" — ");
+ }
  for(const [pattern,replacement] of replacements)if(pattern.test(trimmed))return trimmed.replace(pattern,replacement);
  return trimmed;
 }
 
 export function studentSummaryLabel(label:string,mode:Mode){
  const title=studentSkillTitle(label),plainMode={recognition:"repérer",production:"écrire",interpretation:"comprendre",independent_production:"utiliser dans ton texte"}[mode];
+ if(/^(?:Choisir|Comprendre)\b/u.test(title))return title;
  const matchingStart={recognition:/^Repérer\b/u,production:/^(?:Écrire|Accorder|Corriger|Construire)\b/u,interpretation:/^Comprendre\b/u,independent_production:/^Utiliser\b/u}[mode];
  return matchingStart.test(title)?title:`${title} (${plainMode})`;
 }
