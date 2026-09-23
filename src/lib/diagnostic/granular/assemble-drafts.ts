@@ -3,6 +3,25 @@ import {validateCanonicalDiagnosticBank,type CanonicalDiagnosticBankArtifact,typ
 import {buildV3Facets} from "./facets";
 import {validateAnnotationTarget,type TargetAnnotation} from "./facet-adapter";
 export type DraftExpansion={version:string;status:"draft_requires_review";parentTaxonomyChecksum:string;sourceBankChecksum:string;items:CanonicalDiagnosticBankItem[];annotations:TargetAnnotation[];checksum:string};
+const R44_LOCAL_GRAMMAR_PROMPT_OVERRIDES=[
+ {itemKey:"local-grammar-v1:construction_negation_simple:receptive:foundation",before:"Quelle phrase contient une négation simple ?",after:"Quelle phrase dit qu’une action ne se produit pas ?"},
+ {itemKey:"local-grammar-v1:construction_subordonnee_relative:receptive:core",before:"Dans quelle phrase « dont » introduit-il une relative ?",after:"Dans quelle phrase le mot « dont » ajoute-t-il une précision sur un nom ?"},
+] as const;
+
+/** Revision 44 carries two reviewed copy fixes whose canonical authoring source is
+ * newer than the frozen v3 base artifact. Apply them only after expansion
+ * provenance has been checked against that base, and fail if the expected source
+ * text has drifted. */
+function applyRevision44PromptOverrides(items:readonly CanonicalDiagnosticBankItem[]){
+ const byKey=new Map(items.map((entry,index)=>[entry.itemKey,{entry,index}]));
+ const next=[...items];
+ for(const override of R44_LOCAL_GRAMMAR_PROMPT_OVERRIDES){
+  const match=byKey.get(override.itemKey);
+  if(!match||match.entry.item.promptFr!==override.before)throw Error(`Revision 44 prompt override source mismatch: ${override.itemKey}`);
+  next[match.index]={...match.entry,item:{...match.entry.item,promptFr:override.after}};
+ }
+ return next;
+}
 
 /** Assemble authoring sources, never publish or transfer approval to an edit.
  * The unchanged base entries retain their own provenance; every added entry is
@@ -39,7 +58,8 @@ export function assembleDraftBank(base:CanonicalDiagnosticBankArtifact,taxonomy:
   }
   sources.push({version:expansion.version,checksum:expected,addedItems:expansion.items.length});
  }
- const bank:CanonicalDiagnosticBankArtifact={...base,items};delete bank.manifest;
+ const revisedItems=options.revision===44?applyRevision44PromptOverrides(items):items;
+ const bank:CanonicalDiagnosticBankArtifact={...base,items:revisedItems};delete bank.manifest;
  if(options.revision!==undefined)bank.bank={key:`french-diagnostic-bank-v3-r${options.revision}`,version:`${base.bank.version}-r${options.revision}`};
  const validation=validateCanonicalDiagnosticBank(bank,taxonomy);
  if(validation.issues.length)throw Error(`Invalid assembled draft: ${validation.issues.join("; ")}`);
