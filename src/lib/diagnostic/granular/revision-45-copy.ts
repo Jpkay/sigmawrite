@@ -55,6 +55,7 @@ type TeachingPracticeCopy={
 };
 
 type TeachingLessonCopy={
+ materialExposure?:{sentences?:string[];[key:string]:unknown};
  nodeKey:string;
  practice?:TeachingPracticeCopy[];
  titleFr:string;
@@ -232,7 +233,18 @@ export function revision45SkillCopy(skills:readonly EvidenceSkill[]):EvidenceSki
 export function revision45TeachingCopy<T extends TeachingLessonCopy>(lessons:readonly T[]):T[]{
  return lessons.map(lesson=>{
   const practice=lesson.practice?.map(item=>revision45PracticeCopy(lesson.nodeKey,item));
-  return {...lesson,titleFr:PLAIN_TEACHING_TITLES[lesson.titleFr]??lesson.titleFr,...(practice?{practice}:{})};
+  const replacements=new Map<string,string>();
+  for(const [index,before] of (lesson.practice??[]).entries()){
+   const after=practice?.[index];if(!after)continue;
+   for(const [source,revised] of [[before.promptFr,after.promptFr],[before.answerFr,after.answerFr],...[...(before.choices??[])].map((choice,choiceIndex)=>[choice,after.choices?.[choiceIndex]??choice] as const)] as const){
+    if(source===revised)continue;
+    const existing=replacements.get(source);
+    if(existing!==undefined&&existing!==revised)throw Error(`Revision 45 copy drift: conflicting material rewrite in ${lesson.nodeKey}`);
+    replacements.set(source,revised);
+   }
+  }
+  const materialExposure=lesson.materialExposure?.sentences?{...lesson.materialExposure,sentences:lesson.materialExposure.sentences.map(sentence=>replacements.get(sentence)??sentence)}:lesson.materialExposure;
+  return {...lesson,titleFr:PLAIN_TEACHING_TITLES[lesson.titleFr]??lesson.titleFr,...(practice?{practice}:{}),...(materialExposure?{materialExposure}:{})} as T;
  });
 }
 

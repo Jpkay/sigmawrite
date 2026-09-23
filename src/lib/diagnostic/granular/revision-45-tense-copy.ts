@@ -211,7 +211,9 @@ export function rewriteRevision45TenseItem(
     if (!match) throw Error(`Revision 45 copy drift: unexpected ${itemKey}`);
     return rewrite(
       entry,
-      `Écris une forme d’« aller », puis le verbe « ${match[1]} », pour annoncer ce qui va se passer : ${match[2]}`,
+      match[1] === "aller"
+        ? `Écris deux mots pour annoncer ce qui va se passer : une forme d’« aller », puis « aller » : ${match[2]}`
+        : `Écris une forme d’« aller », puis le verbe « ${match[1]} », pour annoncer ce qui va se passer : ${match[2]}`,
     );
   }
 

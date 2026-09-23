@@ -4,13 +4,27 @@ import {
   validateCanonicalDiagnosticBank,
   type CanonicalDiagnosticBankArtifact,
 } from "../item-bank";
+import { FRENCH_DRAFT_EXPANSION_SOURCES } from "./draft-expansion-sources";
 import { rewriteRevision45TenseItem } from "./revision-45-tense-copy";
 
 const read = <T>(path: string): T =>
   JSON.parse(readFileSync(path, "utf8")) as T;
-const bank = read<CanonicalDiagnosticBankArtifact>(
-  "generated/diagnostic-bank-v3-consolidated-draft.json",
+const base = read<CanonicalDiagnosticBankArtifact>(
+  "generated/diagnostic-bank-v3-draft.json",
 );
+const bank: CanonicalDiagnosticBankArtifact = {
+  ...base,
+  items: [
+    ...base.items,
+    ...FRENCH_DRAFT_EXPANSION_SOURCES.flatMap(
+      (source) =>
+        read<{ items: CanonicalDiagnosticBankArtifact["items"] }>(
+          `generated/french-v3-${source}-expansion.json`,
+        ).items,
+    ),
+  ],
+};
+delete bank.manifest;
 const taxonomy = read<{
   taxonomy: Parameters<typeof validateCanonicalDiagnosticBank>[1];
 }>("generated/french-taxonomy-v3.json").taxonomy;
@@ -147,6 +161,11 @@ describe("revision 45 tense copy", () => {
       expect(rewriteRevision45TenseItem(byKey(key)).item.promptFr).toContain(
         cue,
       );
+    expect(
+      rewriteRevision45TenseItem(
+        byKey("v3-futur-proche-production:aller:1s:0"),
+      ).item.promptFr,
+    ).toContain("Écris deux mots");
 
     for (const key of [
       "v3-tense-recognition:future-name",

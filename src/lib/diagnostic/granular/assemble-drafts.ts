@@ -3,6 +3,7 @@ import {validateCanonicalDiagnosticBank,type CanonicalDiagnosticBankArtifact,typ
 import {buildV3Facets} from "./facets";
 import {validateAnnotationTarget,type TargetAnnotation} from "./facet-adapter";
 import {applyRevision45BankCopy} from "./revision-45-bank-copy";
+import {rewriteRevision45TenseItem} from "./revision-45-tense-copy";
 export type DraftExpansion={version:string;status:"draft_requires_review";parentTaxonomyChecksum:string;sourceBankChecksum:string;items:CanonicalDiagnosticBankItem[];annotations:TargetAnnotation[];checksum:string};
 const R44_LOCAL_GRAMMAR_PROMPT_OVERRIDES=[
  {itemKey:"local-grammar-v1:construction_negation_simple:receptive:foundation",before:"Quelle phrase contient une négation simple ?",after:"Quelle phrase dit qu’une action ne se produit pas ?"},
@@ -76,12 +77,21 @@ export function assembleDraftBank(base:CanonicalDiagnosticBankArtifact,taxonomy:
  const revision44Items=options.revision!==undefined&&options.revision>=44?applyPromptOverrides(items,R44_LOCAL_GRAMMAR_PROMPT_OVERRIDES,44):items;
  const promptRevisedItems=options.revision!==undefined&&options.revision>=45?applyPromptOverrides(revision44Items,R45_PLAIN_LANGUAGE_PROMPT_OVERRIDES,45):revision44Items;
  const copied=options.revision!==undefined&&options.revision>=45?applyRevision45BankCopy(promptRevisedItems,annotations):{items:promptRevisedItems,annotations};
- const revisedItems=copied.items;
+ const tenseChanged=new Map<string,CanonicalDiagnosticBankItem>();
+ const revisedItems=options.revision!==undefined&&options.revision>=45?copied.items.map(entry=>{
+  const revised=rewriteRevision45TenseItem(entry);
+  if(revised!==entry)tenseChanged.set(entry.itemKey,revised);
+  return revised;
+ }):copied.items;
+ const revisedAnnotations=copied.annotations.map(annotation=>{
+  const entry=tenseChanged.get(annotation.itemKey);
+  return entry?{...annotation,itemChecksum:checksum(entry)}:annotation;
+ });
  const bank:CanonicalDiagnosticBankArtifact={...base,items:revisedItems};delete bank.manifest;
  if(options.revision!==undefined)bank.bank={key:`french-diagnostic-bank-v3-r${options.revision}`,version:`${base.bank.version}-r${options.revision}`};
  const validation=validateCanonicalDiagnosticBank(bank,taxonomy);
  if(validation.issues.length)throw Error(`Invalid assembled draft: ${validation.issues.join("; ")}`);
  if(validation.eligibleItemKeys.some(key=>!baseline.eligibleItemKeys.includes(key)))throw Error("Assembly promoted draft content");
  bank.manifest=validation.manifest;
- return {bank,annotations:copied.annotations,sources,sourceBankChecksum:baseline.manifest.checksum};
+ return {bank,annotations:revisedAnnotations,sources,sourceBankChecksum:baseline.manifest.checksum};
 }

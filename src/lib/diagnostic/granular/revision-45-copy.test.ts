@@ -2,6 +2,7 @@ import {readFileSync} from "node:fs";
 import {expect,it} from "vitest";
 import {FRENCH_TEACHING_DRAFTS} from "./draft-teaching-catalogue";
 import {featureLabel} from "./feature-labels";
+import {teachingMaterialKeys} from "./material-annotations";
 import {RESULT_GROUPS} from "./result-groups";
 import type {EvidenceSkill} from "./v3-adapter";
 import {revision45SkillCopy,revision45TeachingCopy} from "./revision-45-copy";
@@ -68,6 +69,7 @@ it("rewrites only known guided-practice prompts while preserving teaching answer
   identifier_sujet_verbe:6,
  });
  expect(FRENCH_TEACHING_DRAFTS[0].practice[0].promptFr).not.toBe(output[0].practice[0].promptFr);
+ for(const lesson of output)expect(()=>teachingMaterialKeys(lesson)).not.toThrow();
 });
 
 it("replaces the sixteen remaining school-name answers with observable descriptions",()=>{

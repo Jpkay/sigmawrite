@@ -71,6 +71,11 @@ it("uses plain functional wording while preserving every answer and validator",(
   for(const choice of entry.item.choices??[])expect(exposure.sentences).toContain(choice.text);
  }
  expect(direct.filter(entry=>entry.item.choices?.find(choice=>choice.correct)?.text==="Aucun")).toHaveLength(4);
+ expect(item(r45.bank,"v3-direct-object:indirect-only").item.promptFr).toContain("compléter « Zoé téléphone ___ » sans ajouter « à »");
+ expect(item(r45.bank,"v3-direct-object:indirect-only").item.choices?.map(choice=>choice.text)).toEqual(["Aucun","son cousin","Zoé","téléphone"]);
+ expect(item(r45.bank,"v3-direct-object:sleep").item.choices?.map(choice=>choice.text)).toEqual(["Aucun","sa chambre","Le bébé","dort"]);
+ expect(item(r45.bank,"v3-direct-object:provenance").item.choices?.map(choice=>choice.text)).toEqual(["Aucun","Bruxelles","Le car","arrive"]);
+ expect(item(r45.bank,"v3-direct-object:attribute").item.promptFr).toContain("La musicienne fait-elle quelque chose à une autre personne ou à une chose ?");
 });
 
 it("hardens the additional selected prompts without changing their answers",()=>{
