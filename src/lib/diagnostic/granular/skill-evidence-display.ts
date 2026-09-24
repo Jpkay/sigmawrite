@@ -1,5 +1,5 @@
 import type {Mode,SkillResult} from './engine';
-export const SKILL_EVIDENCE_COPY={title:'Tes réponses prises en compte',help:'Ces réponses servent au bilan actuel. Elles ne suffisent pas toujours à confirmer un acquis.'};
+export const SKILL_EVIDENCE_COPY={title:'Les réponses que nous avons regardées',help:'Ces réponses montrent ce que tu as fait jusqu’ici. Pour être sûrs que tu sais le refaire, il faudra parfois d’autres questions.'};
 /** Accuracy for free writing counts language opportunities, not whole answers.
  * Never turn that rate into a fictitious number of correct texts. */
 export function skillEvidenceDisplay(result:SkillResult,labels:Record<Mode,string>):string[]{

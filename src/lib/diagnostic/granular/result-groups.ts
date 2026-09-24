@@ -5,7 +5,7 @@ export const RESULT_GROUPS=[
  {id:"grammar",labelFr:"Grammaire"},
  {id:"conjugation",labelFr:"Formes des verbes"},
  {id:"orthographe_lexicale",labelFr:"Orthographe des mots"},
- {id:"orthographe_grammaticale",labelFr:"Accords et homophones"},
+ {id:"orthographe_grammaticale",labelFr:"Choisir la bonne forme des mots dans une phrase"},
  {id:"spelling",labelFr:"Orthographe"},
  {id:"other",labelFr:"Autres points"},
 ] as const;

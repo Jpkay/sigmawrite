@@ -11,7 +11,7 @@ const details:Record<string,ResultDetail>={
 it("shows opposite spelling outcomes in separate sections without changing evidence",()=>{
  const input=[result("pending","unknown"),result("agreement","missing"),result("lexical","mastered")];
  const snapshot=structuredClone(input),groups=groupAssessmentResults(input,details);
- expect(groups.map(group=>group.labelFr)).toEqual(["Orthographe des mots","Accords et homophones"]);
+ expect(groups.map(group=>group.labelFr)).toEqual(["Orthographe des mots","Choisir la bonne forme des mots dans une phrase"]);
  expect(groups[0].results.map(row=>row.result.skillId)).toEqual(["lexical","pending"]);
  expect(groups[1].results[0].result.status).toBe("missing");
  expect(input).toEqual(snapshot);

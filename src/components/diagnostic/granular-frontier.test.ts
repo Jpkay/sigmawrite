@@ -13,7 +13,7 @@ it('shows uncertainty, separate modes and prerequisite status without inventing 
  const html=renderToStaticMarkup(React.createElement(GranularFrontier,{data}));
  for(const text of ['Encore à vérifier','Pas encore vérifié','Reconnaître','Écrire la réponse','Questions à venir','Les bases liées à ce point','Reprendre le diagnostic'])expect(html).toContain(text);
  expect(html).toContain('Ouvre un point pour voir les réponses utilisées. Si un point n’a pas encore été vérifié, cela ne veut pas dire que tu as des difficultés.');
- expect(html).not.toContain('50%');expect(html).not.toContain('Bien acquis</span>');
+ expect(html).not.toContain('50%');expect(html).not.toContain('Tu sais le faire</span>');
  expect(html).toContain('href="/student/diagnostic"');
 });
 it('links learning students to the exact planned activity without offering to restart their diagnostic',()=>{

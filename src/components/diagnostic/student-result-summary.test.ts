@@ -6,7 +6,7 @@ import {StudentResultSummary} from "./student-result-summary";
 it("describes untouched graph targets without showing a wall of zeroes or counts",()=>{
  const results=Array.from({length:544},(_,index)=>({status:"unknown" as const,evidence:"untested" as const,label:`Point ${index}`}));
  const html=renderToStaticMarkup(React.createElement(StudentResultSummary,{results}));
- expect(html).toContain("Nous n’avons pas encore assez de réponses pour montrer un point précis.");
+ expect(html).toContain("Il faut encore quelques réponses pour voir ce que tu sais faire.");
  expect(html).toContain("D’autres points n’ont pas encore été vérifiés.");
  expect(html).not.toContain("544");expect(html).not.toContain("Ce que tu sais déjà faire</dt>");
 });

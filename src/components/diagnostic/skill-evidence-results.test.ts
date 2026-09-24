@@ -10,7 +10,7 @@ const observations:Observation[]=[true,true,false].map((correct,index)=>({skillI
 it('distinguishes mixed responses from success without changing an uncertain mastery result',()=>{
  const result=assessSkills([skill],observations)[0];expect(result.status).toBe('uncertain');
  const html=renderToStaticMarkup(React.createElement(SkillEvidenceResults,{result}));
- expect(html).toContain('2 réponses réussies sur 3.');expect(html).toContain('ne suffisent pas toujours');expect(html).not.toContain('%');
+ expect(html).toContain('2 réponses réussies sur 3.');expect(html).toContain('il faudra parfois d’autres questions');expect(html).not.toContain('%');
  const successful=assessSkills([skill],observations.map(o=>({...o,correct:true})))[0];expect(skillEvidenceDisplay(successful,DIAGNOSTIC_COPY.mode)[0]).toContain('3 réponses réussies sur 3.');
 });
 it('counts neither assisted answers nor repeated copies as additional evidence',()=>{

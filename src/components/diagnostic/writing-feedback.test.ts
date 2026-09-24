@@ -8,8 +8,8 @@ it('shows the actual passage and explanation without calling one text mastery',(
  const html=renderToStaticMarkup(React.createElement(WritingFeedbackCard,{feedback}));
  expect(html).toContain('Retour sur ton texte');expect(html).toContain('1 passage à revoir parmi 1 vérifié.');
  expect(html).toContain('joue');expect(html).toContain('Avec les chats, écris jouent.');
- expect(html).toContain('Relire mon texte');expect(html).toContain('Tes prochains textes aideront à confirmer tes acquis.');
- expect(html).not.toContain('Bien acquis');
+ expect(html).toContain('Relire mon texte');expect(html).toContain('D’autres textes nous aideront à voir si tu sais refaire la même chose.');
+ expect(html).not.toContain('Tu sais le faire');
 });
 it('renders student text as text and handles one correct passage',()=>{
  const html=renderToStaticMarkup(React.createElement(WritingFeedbackCard,{feedback:{...feedback,text:'<script>alert(1)</script>',correctCount:1,passages:[{...feedback.passages[0],correct:true}]}}));
@@ -19,6 +19,6 @@ it('renders student text as text and handles one correct passage',()=>{
 
 it('explains an unresolved submission without calling it an error or a success',()=>{
  const html=renderToStaticMarkup(React.createElement(WritingFeedbackCard,{feedback:{...feedback,assessed:false,checkedCount:0,correctCount:0,passages:[]}}));
- expect(html).toContain('Ton texte est enregistré.');expect(html).toContain('Tu peux continuer ton parcours');
+ expect(html).toContain('Ton texte est enregistré.');expect(html).toContain('Tu peux continuer ; une autre activité aidera à le vérifier.');
  expect(html).not.toContain('passages vérifiés sont corrects');expect(html).not.toContain('À revoir');
 });

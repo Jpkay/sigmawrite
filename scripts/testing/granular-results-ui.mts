@@ -19,10 +19,10 @@ try{
  await page.getByRole("heading",{name:"Ton bilan détaillé"}).waitFor();
  assert.equal(await page.locator("details").count(),2);
  const lexical=page.locator("details").filter({has:page.locator("summary",{hasText:"Orthographe des mots"})});
- const grammar=page.locator("details").filter({has:page.locator("summary",{hasText:"Accords et homophones"})});
+ const grammar=page.locator("details").filter({has:page.locator("summary",{hasText:"Choisir la bonne forme des mots dans une phrase"})});
  await lexical.locator("summary").focus();await page.keyboard.press("Enter");
  await lexical.getByText("Choisir les accents",{exact:true}).waitFor();
- assert.match(await lexical.innerText(),/Bien acquis/);assert.match(await lexical.innerText(),/Pas encore vérifié/);
+ assert.match(await lexical.innerText(),/Tu sais le faire/);assert.match(await lexical.innerText(),/Pas encore vérifié/);
  assert.doesNotMatch(await lexical.innerText(),/Accorder le sujet/);
  await grammar.locator("summary").click();assert.match(await grammar.innerText(),/À travailler/);
  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth),true);
