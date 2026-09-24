@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Check, Copy, UserPlus } from "lucide-react";
 import { AccountRow } from "@/components/account-row";
 import { assignStudentAccess, attachEmailToAccount, changeUserRole, createManagedUser, linkGuardian, resetManagedUserPassword, rotateSchoolTeacherCode, setTeacherClass, setTeacherStudent, setUserDeactivated } from "@/lib/actions/users";
 import type { UserManagementData } from "@/lib/db/users";
 import type { ManagedAccountRole } from "@/lib/user-provisioning";
+import { isMissingServerActionError } from "@/lib/server-action-recovery";
 import { Button } from "@/components/ui/button";
 
 type VisibleCredentials = {
@@ -17,6 +18,7 @@ type VisibleCredentials = {
 };
 
 const inputClass = "mt-1 h-10 w-full rounded-md border border-input bg-background px-3 text-sm";
+const draftKey = "plume-admin-users-retry-draft-v1";
 
 function CredentialsNotice({ credentials }: { credentials: VisibleCredentials }) {
   const [copied, setCopied] = useState(false);
@@ -58,6 +60,47 @@ export function UserManagementConsole({ data, initialRole = "student", initialSc
   const [assignmentStudentId, setAssignmentStudentId] = useState(data.students[0]?.id ?? "");
   const [assignmentClassId, setAssignmentClassId] = useState("");
   const [assignmentMessage, setAssignmentMessage] = useState("");
+  const missingAction = isMissingServerActionError(error);
+
+  useEffect(() => {
+    try {
+      const saved = sessionStorage.getItem(draftKey);
+      sessionStorage.removeItem(draftKey);
+      if (!saved) return;
+      const draft = JSON.parse(saved);
+      if (draft.viewerRole !== data.viewerRole || draft.viewerSchoolId !== data.viewerSchoolId) return;
+      // Restore after hydration: a saved role changes the form's server-rendered shape.
+      const timeout = window.setTimeout(() => {
+        if (["student", "teacher", "parent", "supervisor", "school_admin"].includes(draft.role)) setRole(draft.role);
+        if (typeof draft.displayName === "string") setDisplayName(draft.displayName);
+        if (typeof draft.username === "string") setUsername(draft.username);
+        if (typeof draft.email === "string") setEmail(draft.email);
+        if (typeof draft.grade === "number") setGrade(draft.grade);
+        if (typeof draft.schoolId === "string") setSchoolId(draft.schoolId);
+        if (typeof draft.classId === "string") setClassId(draft.classId);
+        if (typeof draft.teacherId === "string") setTeacherId(draft.teacherId);
+        if (typeof draft.selectedStudentId === "string") setSelectedStudentId(draft.selectedStudentId);
+        if (typeof draft.assignmentStudentId === "string") setAssignmentStudentId(draft.assignmentStudentId);
+        if (typeof draft.assignmentClassId === "string") setAssignmentClassId(draft.assignmentClassId);
+      }, 0);
+      return () => window.clearTimeout(timeout);
+    } catch {
+      // Storage may be disabled; the page can still be refreshed safely.
+    }
+  }, [data.viewerRole, data.viewerSchoolId]);
+
+  function reloadAfterMissingAction() {
+    try {
+      sessionStorage.setItem(draftKey, JSON.stringify({
+        viewerRole: data.viewerRole, viewerSchoolId: data.viewerSchoolId,
+        role, displayName, username, email, grade, schoolId, classId,
+        teacherId, selectedStudentId, assignmentStudentId, assignmentClassId,
+      }));
+    } catch {
+      // Continue with a fresh page even when session storage is unavailable.
+    }
+    window.location.reload();
+  }
   const teacherSchoolId = role === "teacher" ? (data.viewerSchoolId ?? schoolId) : null;
   const creationClasses = role === "teacher"
     ? teacherSchoolId ? data.classes.filter((selectedClass) => selectedClass.schoolId === teacherSchoolId) : []
@@ -137,7 +180,12 @@ export function UserManagementConsole({ data, initialRole = "student", initialSc
           {role === "student" && <label className="text-sm">Enseignant direct <span className="text-muted-foreground">(facultatif)</span><select className={inputClass} value={teacherId} onChange={(event) => setTeacherId(event.target.value)}><option value="">Aucun</option>{data.teachers.map((teacher) => <option key={teacher.id} value={teacher.id}>{teacher.name}</option>)}</select></label>}
           {(role === "supervisor" || role === "teacher") && <label className="text-sm">{role === "teacher" ? "Élève affecté directement" : "Élève suivi"} <span className="text-muted-foreground">(facultatif)</span><select className={inputClass} value={selectedStudentId} onChange={(event) => setSelectedStudentId(event.target.value)}><option value="">Aucun</option>{directStudents.map((student) => <option key={student.id} value={student.id}>{student.name}</option>)}</select></label>}
           {role === "student" && <p className="text-sm text-muted-foreground md:col-span-2 xl:col-span-3">L’affectation à la classe active immédiatement l’accès de l’élève.</p>}
-          {error && <p role="alert" className="text-sm text-destructive md:col-span-2 xl:col-span-3">{error}</p>}
+          {error && (missingAction ? (
+            <div role="alert" className="flex flex-wrap items-center gap-3 text-sm text-destructive md:col-span-2 xl:col-span-3">
+              <p>La page a été mise à jour depuis son ouverture. Actualisez-la puis réessayez.</p>
+              <Button type="button" variant="outline" onClick={reloadAfterMissingAction}>Actualiser la page</Button>
+            </div>
+          ) : <p role="alert" className="text-sm text-destructive md:col-span-2 xl:col-span-3">{error}</p>)}
           <div className="md:col-span-2 xl:col-span-3"><Button disabled={busy}>{busy ? "Création…" : email ? "Créer et envoyer les identifiants" : "Créer les identifiants"}</Button></div>
         </form>
         {credentials && <div className="mt-6"><CredentialsNotice credentials={credentials} /></div>}
