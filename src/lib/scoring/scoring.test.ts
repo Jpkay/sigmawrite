@@ -41,8 +41,8 @@ describe("gradeToBand (PRD §G)", () => {
     expect(gradeToBand(2)).toBe("Foundation 5A");
   });
   it("presents internal bands in plain French", () => {
-    expect(difficultyBandLabel("Secondary 7A")).toBe("Lecture : 7e année · palier 1");
-    expect(difficultyBandLabel("Foundation 6B")).toBe("Lecture : 6e année · palier 2");
+    expect(difficultyBandLabel("Secondary 7A")).toBe("Lecture : 7e année · palier 1 (repère scolaire ≈ MYP 2)");
+    expect(difficultyBandLabel("Foundation 6B")).toBe("Lecture : 6e année · palier 2 (repère scolaire ≈ MYP 1)");
     expect(difficultyBandLabel("Advanced 11-12")).toBe("Lecture : 11e–12e année · avancé");
   });
 });

@@ -5,6 +5,7 @@ import { getReviewerAccess } from "@/lib/db/reviews";
 
 const nav: NavItem[] = [
   { href: "/admin", label: "Accueil" },
+  { href: "/admin/catalogue", label: "Catalogue pédagogique" },
   { href: "/admin/content/review", label: "Textes", matchPrefixes: ["/admin/content", "/admin/texts"] },
   { href: "/admin/dictations", label: "Dictées" },
   { href: "/admin/reviews", label: "Évaluations", matchPrefixes: ["/admin/benchmarks"] },

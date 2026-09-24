@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { schoolGradeLabel } from "@/lib/school-grade";
 import { Check, Copy, UserPlus } from "lucide-react";
 import { AccountRow } from "@/components/account-row";
 import { assignStudentAccess, attachEmailToAccount, changeUserRole, createManagedUser, linkGuardian, resetManagedUserPassword, rotateSchoolTeacherCode, setTeacherClass, setTeacherStudent, setUserDeactivated } from "@/lib/actions/users";
@@ -172,7 +173,7 @@ export function UserManagementConsole({ data, initialRole = "student", initialSc
           <label className="text-sm">Nom complet<input className={inputClass} required minLength={2} value={displayName} onChange={(event) => setDisplayName(event.target.value)} /></label>
           <label className="text-sm">Nom d’utilisateur <span className="text-muted-foreground">(facultatif)</span><input className={inputClass} pattern="[a-z0-9][a-z0-9._-]{1,30}[a-z0-9]" value={username} onChange={(event) => setUsername(event.target.value.toLowerCase())} placeholder="Généré automatiquement" /></label>
           <label className="text-sm">E-mail <span className="text-muted-foreground">{role === "parent" || role === "school_admin" ? "(requis)" : "(facultatif)"}</span><input className={inputClass} type="email" required={role === "parent" || role === "school_admin"} value={email} onChange={(event) => setEmail(event.target.value)} /></label>
-          {role === "student" && <label className="text-sm">Niveau<input className={inputClass} type="number" min={5} max={12} required value={grade} onChange={(event) => setGrade(Number(event.target.value))} /></label>}
+          {role === "student" && <label className="text-sm">Classe scolaire<input className={inputClass} type="number" min={5} max={12} required value={grade} onChange={(event) => setGrade(Number(event.target.value))} /><span className="mt-1 block text-xs text-muted-foreground">{schoolGradeLabel(grade)}</span></label>}
           {role === "school_admin" && <label className="text-sm">École administrée<select className={inputClass} required value={schoolId} onChange={(event) => { setSchoolId(event.target.value); setClassId(""); setSelectedStudentId(""); }}><option value="">Choisir une école</option>{data.schools.map((school) => <option key={school.id} value={school.id}>{school.name}</option>)}</select></label>}
           {role === "teacher" && data.viewerRole === "platform_admin" && <label className="text-sm">École de l’enseignant<select className={inputClass} required value={schoolId} onChange={(event) => { setSchoolId(event.target.value); setClassId(""); setSelectedStudentId(""); }}><option value="">Choisir une école</option>{data.schools.map((school) => <option key={school.id} value={school.id}>{school.name}</option>)}</select></label>}
           {role === "supervisor" && <label className="text-sm">École supervisée<select className={inputClass} value={schoolId} onChange={(event) => { setSchoolId(event.target.value); setClassId(""); setSelectedStudentId(""); }}><option value="">Aucune</option>{data.schools.map((school) => <option key={school.id} value={school.id}>{school.name}</option>)}</select></label>}

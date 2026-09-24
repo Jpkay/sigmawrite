@@ -6,6 +6,7 @@ import { getViewableStudents } from "@/lib/db/dashboard";
 import { classSummary } from "@/lib/reports";
 import { nowMs } from "@/lib/clock";
 import { getAdultLanguage } from "@/lib/i18n";
+import { studentSchoolGradeLabel } from "@/lib/school-grade";
 
 export default async function TeacherReportsPage() {
   const [students, language] = await Promise.all([getViewableStudents(), getAdultLanguage()]);
@@ -22,11 +23,15 @@ export default async function TeacherReportsPage() {
         <p className="text-sm text-muted-foreground">{language === "en" ? "No student to report yet." : "Aucun élève à rapporter."}</p>
       ) : (
         <div className="space-y-2">
-          {summary.map((s) => (
+          {summary.map((s) => {
+            const student = students.find((row) => row.id === s.id);
+            const gradeLabel = studentSchoolGradeLabel(student?.snap.grade, student?.snap.frenchBackground, language);
+            return (
             <Card key={s.id}>
               <CardContent className="flex flex-wrap items-center justify-between gap-3 pt-6">
                 <div>
                   <p className="font-medium">{s.name}</p>
+                  {gradeLabel && <p className="mt-1 text-xs text-muted-foreground">{gradeLabel}</p>}
                   <p className="text-sm text-muted-foreground">
                     {s.band} · {s.textsThisWeek} {language === "en" ? "text(s) this week" : "texte(s) cette semaine"}
                   </p>
@@ -39,7 +44,8 @@ export default async function TeacherReportsPage() {
                 </div>
               </CardContent>
             </Card>
-          ))}
+            );
+          })}
         </div>
       )}
     </>

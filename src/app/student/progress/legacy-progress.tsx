@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import {recentReadingDisplay} from "@/lib/diagnostic/granular/recent-reading-copy";
 import { useStudentState } from "@/lib/student-store";
+import { studentSchoolGradeLabel } from "@/lib/school-grade";
 import type { DiagnosticResult } from "@/lib/types";
 import type { DiagnosticSectionProfileKey } from "@/lib/student-state";
 import {studentEvidenceCoverageText,studentSkillTitle} from "@/lib/diagnostic/granular/student-results-display";
@@ -75,6 +76,7 @@ export default function ProgressPage() {
   return (
     <>
       <PageHeader title="Mes progrès" description="Voici ce que tu sais déjà faire et ce que tu peux travailler ensuite." />
+      {studentSchoolGradeLabel(state.grade, state.frenchBackground) && <p className="mb-5 text-sm font-medium text-muted-foreground">{studentSchoolGradeLabel(state.grade, state.frenchBackground)}</p>}
 
       {sectionProfile.length > 0 && <section className="mb-8">
         <h2 className="mb-1 text-lg font-semibold">Mon bilan en bref</h2>

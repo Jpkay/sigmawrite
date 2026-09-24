@@ -31,23 +31,23 @@ export const ONBOARDING_GRADES = [
   },
   {
     "value": 6,
-    "label": "6e · 6e année (BE) · 6e année (QC)"
+    "label": "6e · 6e année (BE) · 6e année (QC) · MYP 1 (Grade 6)"
   },
   {
     "value": 7,
-    "label": "5e · 1re secondaire (BE) · 1re secondaire (QC)"
+    "label": "5e · 1re secondaire (BE) · 1re secondaire (QC) · MYP 2 (Grade 7)"
   },
   {
     "value": 8,
-    "label": "4e · 2e secondaire (BE) · 2e secondaire (QC)"
+    "label": "4e · 2e secondaire (BE) · 2e secondaire (QC) · MYP 3 (Grade 8)"
   },
   {
     "value": 9,
-    "label": "3e · 3e secondaire (BE) · 3e secondaire (QC)"
+    "label": "3e · 3e secondaire (BE) · 3e secondaire (QC) · MYP 4 (Grade 9)"
   },
   {
     "value": 10,
-    "label": "2de · 4e secondaire (BE) · 4e secondaire (QC)"
+    "label": "2de · 4e secondaire (BE) · 4e secondaire (QC) · MYP 5 (Grade 10)"
   },
   {
     "value": 11,

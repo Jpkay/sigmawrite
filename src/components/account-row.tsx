@@ -5,6 +5,7 @@ import { KeyRound, Mail, Power, School, UserCog, Users } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import type { UserManagementData } from "@/lib/db/users";
+import { studentSchoolGradeLabel } from "@/lib/school-grade";
 
 type Account = UserManagementData["accounts"][number];
 type Actions = {
@@ -76,6 +77,7 @@ export function AccountRow({ account, data, busy, onBusy, onError, onResetPasswo
             {account.role === "teacher" && ` · ${classIds.length} classe(s) · ${directStudentIds.length} élève(s) en direct`}
             {account.role === "student" && ` · ${account.classIds.length} classe(s) · ${account.guardianCount} parent(s)`}
           </p>
+          {account.role === "student" && studentSchoolGradeLabel(account.grade, account.frenchBackground) && <p className="mt-1 text-xs text-muted-foreground">{studentSchoolGradeLabel(account.grade, account.frenchBackground)}</p>}
         </div>
         <div className="flex flex-wrap gap-2">
           <Button type="button" size="sm" variant="outline" disabled={busy} onClick={onResetPassword}><KeyRound className="size-4" />Mot de passe</Button>

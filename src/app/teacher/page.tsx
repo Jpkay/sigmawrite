@@ -9,6 +9,7 @@ import { nowMs } from "@/lib/clock";
 import { getAdultLanguage } from "@/lib/i18n";
 import { getSessionProfile } from "@/lib/auth";
 import { trackServer } from "@/lib/analytics-server";
+import { studentSchoolGradeLabel } from "@/lib/school-grade";
 
 export default async function TeacherHome() {
   const now = nowMs();
@@ -88,6 +89,7 @@ export default async function TeacherHome() {
                 <Link key={row.id} href={`/teacher/students/${row.id}`} className="grid gap-3 py-4 transition-colors hover:bg-muted/40 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:px-3">
                   <div>
                     <p className="font-medium">{row.name}</p>
+                    {studentSchoolGradeLabel(student.snap.grade, student.snap.frenchBackground, language) && <p className="mt-1 text-xs text-muted-foreground">{studentSchoolGradeLabel(student.snap.grade, student.snap.frenchBackground, language)}</p>}
                     <div className="mt-2 flex flex-wrap gap-2">
                       {student.access.classes.map((selectedClass) => <Badge key={selectedClass.id} variant="secondary">{selectedClass.name}</Badge>)}
                       {student.access.direct && <Badge variant="outline">{language === "en" ? "Direct assignment" : "Affectation directe"}</Badge>}

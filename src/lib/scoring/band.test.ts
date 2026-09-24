@@ -4,7 +4,7 @@ import { targetLevelProfile } from "./band";
 describe("targetLevelProfile", () => {
   it("turns an internal secondary band into clear reviewer context", () => {
     expect(targetLevelProfile("Secondary 7A")).toEqual({
-      gradeLabel: "7e année",
+      gradeLabel: "7e année (repère scolaire ≈ MYP 2)",
       readerLabel: "Lecteur de 12–13 ans",
       stageLabel: "Début du secondaire · début d’année",
       guidance: "Vocabulaire scolaire intermédiaire et quelques inférences simples.",

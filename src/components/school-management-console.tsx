@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { schoolGradeLabel } from "@/lib/school-grade";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { ArrowRight, Building2, Plus, Save, School, Users } from "lucide-react";
@@ -80,7 +81,7 @@ function ClassEditor({ selectedClass }: { selectedClass: SchoolManagementClass }
   return (
     <form onSubmit={submit} className="grid gap-3 py-4 md:grid-cols-[minmax(12rem,1.6fr)_7rem_minmax(9rem,1fr)_auto] md:items-end">
       <label className="text-sm">Nom<input className={inputClass} required minLength={2} maxLength={100} value={name} onChange={(event) => setName(event.target.value)} /></label>
-      <label className="text-sm">Niveau<input className={inputClass} required type="number" min={5} max={12} value={gradeLevel} onChange={(event) => setGradeLevel(Number(event.target.value))} /></label>
+      <label className="text-sm">Classe scolaire<input className={inputClass} required type="number" min={5} max={12} value={gradeLevel} onChange={(event) => setGradeLevel(Number(event.target.value))} /><span className="mt-1 block text-xs text-muted-foreground">{schoolGradeLabel(gradeLevel)}</span></label>
       <label className="text-sm">Année scolaire<input className={inputClass} required minLength={4} maxLength={20} placeholder="2026–2027" value={academicYear} onChange={(event) => setAcademicYear(event.target.value)} /></label>
       <div className="flex flex-wrap gap-2">
         <Button type="submit" size="sm" variant="outline" disabled={busy}><Save />{busy ? "Enregistrement…" : "Enregistrer"}</Button>
@@ -199,7 +200,7 @@ export function SchoolManagementConsole({ data }: { data: SchoolManagementData }
 
               <form onSubmit={submitClass} className="grid gap-3 border-b border-border py-5 md:grid-cols-[minmax(12rem,1.6fr)_7rem_minmax(9rem,1fr)_auto] md:items-end">
                 <label className="text-sm">Nouvelle classe<input className={inputClass} required minLength={2} maxLength={100} placeholder="5e A" value={className} onChange={(event) => setClassName(event.target.value)} /></label>
-                <label className="text-sm">Niveau<input className={inputClass} required type="number" min={5} max={12} value={classGrade} onChange={(event) => setClassGrade(Number(event.target.value))} /></label>
+                <label className="text-sm">Classe scolaire<input className={inputClass} required type="number" min={5} max={12} value={classGrade} onChange={(event) => setClassGrade(Number(event.target.value))} /><span className="mt-1 block text-xs text-muted-foreground">{schoolGradeLabel(classGrade)}</span></label>
                 <label className="text-sm">Année scolaire<input className={inputClass} required minLength={4} maxLength={20} value={classYear} onChange={(event) => setClassYear(event.target.value)} /></label>
                 <Button type="submit" size="sm" disabled={busy === "class"}><Plus />{busy === "class" ? "Ajout…" : "Ajouter"}</Button>
               </form>

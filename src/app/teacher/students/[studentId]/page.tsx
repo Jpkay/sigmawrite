@@ -15,6 +15,7 @@ import { TeacherStudentReport } from "@/components/teacher-student-report";
 import { loadTeacherGranularReport } from "@/lib/db/teacher-supervision";
 import { getTeacherStudentAccess } from "@/lib/db/dashboard";
 import { Badge } from "@/components/ui/badge";
+import { studentSchoolGradeLabel } from "@/lib/school-grade";
 
 export default async function TeacherStudentPage({
   params,
@@ -47,6 +48,7 @@ export default async function TeacherStudentPage({
   return (
     <>
       <PageHeader title={student.name} description={language === "en" ? "Competency pathway, evidence, and weekly reading activity." : "Parcours de compétences, preuves et activité de lecture hebdomadaire."} />
+      {studentSchoolGradeLabel(student.snap.grade, student.snap.frenchBackground, language) && <p className="mb-5 text-sm font-medium text-muted-foreground">{studentSchoolGradeLabel(student.snap.grade, student.snap.frenchBackground, language)}</p>}
       {access && (
         <div className="mb-7 flex flex-wrap items-center gap-2 border-y border-border py-3 text-sm">
           <span className="text-muted-foreground">{language === "en" ? "Active access:" : "Accès actif :"}</span>

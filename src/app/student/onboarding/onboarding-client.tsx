@@ -10,6 +10,7 @@ import type {OnboardingPayload} from "./onboarding-copy";
 import { hasStudentBackend, replaceStudentState, saveOnboarding, useStudentState } from "@/lib/student-store";
 import { selectInterests } from "@/lib/actions/student";
 import { track } from "@/lib/analytics";
+import { studentSchoolGradeLabel } from "@/lib/school-grade";
 
 
 
@@ -86,6 +87,7 @@ export default function OnboardingPage({payload}:{payload:OnboardingPayload}) {
               {payload.grades.map(option=><option key={option.value} value={option.value}>{option.label}</option>)}
             </select>
             {authoritativeGrade && <p className="mt-2 text-xs text-muted-foreground">{copy.gradeHelp}</p>}
+            <p className="mt-2 text-xs text-muted-foreground">{studentSchoolGradeLabel(grade, studentType)}</p>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">

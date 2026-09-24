@@ -18,6 +18,7 @@ import { ClassGoalControl } from "@/components/class-goal-control";
 import { loadClassGoal, loadClassLeague } from "@/lib/actions/teacher";
 import { ClassLeagueControl } from "@/components/class-league-control";
 import { createClient } from "@/lib/supabase/server";
+import { studentSchoolGradeLabel } from "@/lib/school-grade";
 
 export default async function ClassDetailPage({
   params,
@@ -64,11 +65,15 @@ export default async function ClassDetailPage({
         <p className="mb-8 text-sm text-muted-foreground">Aucun élève inscrit.</p>
       ) : (
         <div className="mb-8 space-y-2">
-          {summary.map((s) => (
+          {summary.map((s) => {
+            const student = students.find((row) => row.id === s.id);
+            const gradeLabel = studentSchoolGradeLabel(student?.snap.grade, student?.snap.frenchBackground);
+            return (
               <Card key={s.id} className="transition-colors hover:border-primary/50">
                 <CardContent className="flex flex-wrap items-center justify-between gap-3 pt-6">
                   <div>
                     <Link className="font-medium hover:underline" href={`/teacher/students/${s.id}`}>{s.name}</Link>
+                    {gradeLabel && <p className="mt-1 text-xs text-muted-foreground">{gradeLabel}</p>}
                     <div className="mt-1 flex flex-wrap items-center gap-2">
                       <Badge>{s.band}</Badge>
                       {s.lowEngagement && <Badge variant="secondary">Faible engagement</Badge>}
@@ -80,7 +85,8 @@ export default async function ClassDetailPage({
                   <EnrollmentControl classId={classId} studentId={s.id} />
                 </CardContent>
               </Card>
-          ))}
+            );
+          })}
         </div>
       )}
 

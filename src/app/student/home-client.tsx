@@ -17,6 +17,7 @@ import { LeagueCard } from "@/components/league";
 import { StudentAssignments } from "@/components/student-assignments";
 import type {Assignment} from "@/lib/diagnostic/granular/assignment-display";
 import { track } from "@/lib/analytics";
+import { studentSchoolGradeLabel } from "@/lib/school-grade";
 
 export default function StudentHome({copy,assignments=[]}:{copy:typeof HOME_COPY;assignments?:Assignment[]}) {
   const state = useStudentState();
@@ -127,6 +128,8 @@ export default function StudentHome({copy,assignments=[]}:{copy:typeof HOME_COPY
         description={copy.description}
         action={<div className="flex items-center gap-3 rounded-full bg-secondary/15 px-4 py-2 font-display text-sm font-semibold text-secondary"><span className="inline-flex items-center gap-1.5"><Flame className="size-4" />{homeStreakText(motivation?.streak??0)}</span>{(motivation?.freezesAvailable ?? 0) > 0 && <span className="inline-flex items-center gap-1 text-secondary" title={copy.freeze}><Snowflake className="size-4" />{motivation?.freezesAvailable}</span>}<span className="text-foreground">{homeXpText(motivation?.totalXp??0)}</span></div>}
       />
+
+      {studentSchoolGradeLabel(state.grade, state.frenchBackground) && <p className="mb-5 text-sm font-medium text-muted-foreground">{studentSchoolGradeLabel(state.grade, state.frenchBackground)}</p>}
 
       <StudentAssignments assignments={assignments}/>
 

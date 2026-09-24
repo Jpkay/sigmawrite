@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { getClassStudents, getTeacherClasses } from "@/lib/db/dashboard";
 import { ClassCreateForm } from "@/components/class-create-form";
 import { getAdultLanguage } from "@/lib/i18n";
+import { schoolGradeLabel } from "@/lib/school-grade";
 
 export default async function TeacherClassesPage() {
   const [classes, language] = await Promise.all([getTeacherClasses(), getAdultLanguage()]);
@@ -29,7 +30,7 @@ export default async function TeacherClassesPage() {
                   <div>
                     <p className="font-medium">{c.name}</p>
                     <p className="text-sm text-muted-foreground">
-                      {c.grade_level ? `${language === "en" ? "Grade" : "Niveau"} ${c.grade_level} · ` : ""}
+                      {c.grade_level ? `${schoolGradeLabel(c.grade_level, language)} · ` : ""}
                       {counts[i].length} {language === "en" ? "student(s)" : "élève(s)"}
                     </p>
                   </div>

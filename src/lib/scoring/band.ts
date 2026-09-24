@@ -1,4 +1,10 @@
 import type { DifficultyBand } from "@/lib/types";
+import { mypYearForGrade } from "@/lib/school-grade";
+
+function approximateMypReadingContext(grade: number): string {
+  const mypYear = mypYearForGrade(grade);
+  return mypYear === null ? "" : ` (repère scolaire ≈ MYP ${mypYear})`;
+}
 
 /**
  * Maps an estimated reading grade to an internal difficulty band
@@ -24,7 +30,7 @@ export function difficultyBandLabel(band: string | null | undefined): string {
   const match = /^(?:Foundation|Secondary) (\d+)([AB])$/.exec(band);
   if (!match) return `Niveau de lecture : ${band}`;
   const [, grade, step] = match;
-  return `Lecture : ${grade}e année · palier ${step === "A" ? "1" : "2"}`;
+  return `Lecture : ${grade}e année · palier ${step === "A" ? "1" : "2"}${approximateMypReadingContext(Number(grade))}`;
 }
 
 export type TargetLevelProfile = {
@@ -58,21 +64,21 @@ export function targetLevelProfile(band: string | null | undefined): TargetLevel
   const step = match[2] === "A" ? "début d’année" : "fin d’année";
   const ages = `${grade + 5}–${grade + 6} ans`;
   if (grade <= 6) return {
-    gradeLabel: `${grade}e année`,
+    gradeLabel: `${grade}e année${approximateMypReadingContext(grade)}`,
     readerLabel: `Lecteur de ${ages}`,
     stageLabel: `Primaire · ${step}`,
     guidance: "Phrases accessibles, vocabulaire concret et compréhension principalement explicite.",
     color: "green",
   };
   if (grade <= 9) return {
-    gradeLabel: `${grade}e année`,
+    gradeLabel: `${grade}e année${approximateMypReadingContext(grade)}`,
     readerLabel: `Lecteur de ${ages}`,
     stageLabel: `Début du secondaire · ${step}`,
     guidance: "Vocabulaire scolaire intermédiaire et quelques inférences simples.",
     color: "blue",
   };
   return {
-    gradeLabel: `${grade}e année`,
+    gradeLabel: `${grade}e année${approximateMypReadingContext(grade)}`,
     readerLabel: `Lecteur de ${ages}`,
     stageLabel: `Secondaire avancé · ${step}`,
     guidance: "Vocabulaire académique, phrases plus longues et raisonnement implicite soutenu.",

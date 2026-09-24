@@ -9,6 +9,8 @@ export type UserManagementData = {
   accounts: Array<{
     profileId: string;
     studentId: string | null;
+    grade: number | null;
+    frenchBackground: string | null;
     displayName: string;
     username: string;
     role: ManagedAccountRole;
@@ -43,7 +45,7 @@ export async function getUserManagementData(): Promise<UserManagementData> {
   const service = createServiceClient();
   const [profilesResult, studentsResult, schoolsResult, classesResult, pilotResult, teacherClassesResult, teacherStudentsResult, enrollmentsResult, guardiansResult] = await Promise.all([
     service.from("profiles").select("id,display_name,username,role,must_change_password,school_id,deactivated_at,email_recovery_enabled").in("role", ["student", "teacher", "supervisor", "parent", "school_admin"]).order("display_name"),
-    service.from("students").select("id,profile_id,display_name,school_id").order("display_name"),
+    service.from("students").select("id,profile_id,display_name,school_id,current_grade,french_background").order("display_name"),
     viewerSchoolId ? service.from("schools").select("id,name,teacher_code").eq("id", viewerSchoolId) : service.from("schools").select("id,name,teacher_code").order("name"),
     viewerSchoolId ? service.from("classes").select("id,name,school_id").eq("school_id", viewerSchoolId).order("name") : service.from("classes").select("id,name,school_id").order("name"),
     service.from("diagnostic_pilot_enrollments").select("student_id").eq("active", true).eq("cohort_kind", "feedback_participant").gt("expires_at", new Date().toISOString()),
@@ -73,6 +75,8 @@ export async function getUserManagementData(): Promise<UserManagementData> {
     return {
       profileId: profile.id as string,
       studentId,
+      grade: (student?.current_grade as number | null) ?? null,
+      frenchBackground: (student?.french_background as string | null) ?? null,
       displayName: (profile.display_name as string | null) ?? (profile.username as string),
       username: profile.username as string,
       role: profile.role as ManagedAccountRole,

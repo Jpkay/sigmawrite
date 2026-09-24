@@ -7,6 +7,7 @@ import { FrontierReportView } from "@/components/frontier-report";
 import { AdultCompetencyGraph } from "@/components/adult-competency-graph";
 import { getAdultLanguage } from "@/lib/i18n";
 import { loadAdultStudentGraph } from "@/lib/graph/adult-access";
+import { studentSchoolGradeLabel } from "@/lib/school-grade";
 
 export default async function ParentStudentPage({
   params,
@@ -35,6 +36,7 @@ export default async function ParentStudentPage({
         title={child.name}
         description={language === "en" ? "Learning pathway and weekly evidence." : "Parcours d'apprentissage et preuves hebdomadaires."}
       />
+      {studentSchoolGradeLabel(child.snap.grade, child.snap.frenchBackground, language) && <p className="mb-5 text-sm font-medium text-muted-foreground">{studentSchoolGradeLabel(child.snap.grade, child.snap.frenchBackground, language)}</p>}
       <AdultCompetencyGraph graph={frontier.graphView} audience="parent" language={language} studentName={child.name} />
       <h2 className="mb-3 mt-9 text-lg font-semibold">{language === "en" ? "Weekly activity" : "Activité de la semaine"}</h2>
       <WeeklyReportView snap={child.snap} nowMs={nowMs()} />
