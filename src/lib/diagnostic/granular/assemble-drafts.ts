@@ -4,6 +4,7 @@ import {buildV3Facets} from "./facets";
 import {validateAnnotationTarget,type TargetAnnotation} from "./facet-adapter";
 import {applyRevision45BankCopy} from "./revision-45-bank-copy";
 import {rewriteRevision45TenseItem} from "./revision-45-tense-copy";
+import {rewriteRevision45ResidualItem} from "./revision-45-residual-copy";
 export type DraftExpansion={version:string;status:"draft_requires_review";parentTaxonomyChecksum:string;sourceBankChecksum:string;items:CanonicalDiagnosticBankItem[];annotations:TargetAnnotation[];checksum:string};
 const R44_LOCAL_GRAMMAR_PROMPT_OVERRIDES=[
  {itemKey:"local-grammar-v1:construction_negation_simple:receptive:foundation",before:"Quelle phrase contient une négation simple ?",after:"Quelle phrase dit qu’une action ne se produit pas ?"},
@@ -79,7 +80,7 @@ export function assembleDraftBank(base:CanonicalDiagnosticBankArtifact,taxonomy:
  const copied=options.revision!==undefined&&options.revision>=45?applyRevision45BankCopy(promptRevisedItems,annotations):{items:promptRevisedItems,annotations};
  const tenseChanged=new Map<string,CanonicalDiagnosticBankItem>();
  const revisedItems=options.revision!==undefined&&options.revision>=45?copied.items.map(entry=>{
-  const revised=rewriteRevision45TenseItem(entry);
+  const revised=rewriteRevision45ResidualItem(rewriteRevision45TenseItem(entry));
   if(revised!==entry)tenseChanged.set(entry.itemKey,revised);
   return revised;
  }):copied.items;

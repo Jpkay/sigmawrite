@@ -2,52 +2,30 @@
 
 ## Result
 
-Revision 45 keeps the revision 44 bank immutable and builds a new candidate, `french-diagnostic-bank-v3-r45`, from the same taxonomy. The new bank contains 8,088 questions. Its checksum is `sha256:8926a6f8cf8b788fc3463d623d2e35123963fdfa3fb19a8b9c5b38f7ba59ef02`.
+Revision 45 builds a new immutable bank, `french-diagnostic-bank-v3-r45`, while revision 44 remains available for existing sessions. The new bank contains 8,088 questions and has checksum `sha256:78e4bd8814ce109591af571a438288f8156c53ee73e3ac3e071bf1881ea4b978`.
 
-Compared with revision 44, 4,346 bank items have revised instructions. The scoped student candidate uses 3,645 of those revised items across 13 skills. The changes preserve every item key, evidence key, evidence expectation, validator type, and skill binding. No controlled or short-answer `correctAnswer` or `acceptableAnswers` changed. In total, 109 multiple-choice items were intentionally rewritten: the earlier 40 sentence-completion and determiner items, plus 69 subject, sentence-structure, present-time, word-segment and direct-object items in this hardening pass. Every item still has exactly one correct choice. The completed person-number sentences were checked individually; the reviewed source now uses `Je suis près des enceintes` instead of the invalid `Je ai...`, and exercise sentences consistently begin with a capital letter. Four determiner contrasts now name the concrete following word instead of asking about a `nom`.
+Compared with revision 44, 5,672 bank items have revised student-facing copy. The scoped candidate uses 4,970 of those items. Question identity, skill and evidence bindings, response type, validator, and controlled or short-answer keys remain fixed. Multiple-choice rewrites keep one distinct correct choice and its index. The copy gives a time cue, a short example, or a concrete action in place of a grammar label when that label is not itself what the question assesses. It also simplifies guided practice, lesson titles, assessment labels, and shared diagnostic result screens.
 
-The content changes cover:
+The diagnostic still asks students to **use** verb forms and grammar in several formats. Its route policy samples present, past, and future verb forms, sentence structure, agreement, and reading evidence. An earlier 60-question route simulation reached verb-use and grammar-use questions in all-correct, mixed, and all-wrong profiles; the route policy and question IDs have not changed in this copy pass.
 
-- 24 subject-and-verb agreement questions using six distinct forms of `aller`, `avoir`, or `être`, with an internal six-group sampling category;
-- 40 determiner-choice questions and 42 written determiner questions;
-- 471 present-production questions and 467 near-future-production questions;
-- 2,472 production questions for the imperfect, recent past, compound past, simple future, pluperfect, conditional, and frequent subjunctive;
-- 130 guarded revision-45-only assessment rewrites covering subjects, reference words, sentence order, present-time recognition, verb segments, direct objects, selected adjective and linking-word prompts, agreement, and one passive rewrite;
-- 256 guided-practice prompts, 27 authored lesson titles, and 74 assessment labels across 22 nodes.
+## Scoped candidate and known exclusions
 
-Advanced passages, source sentences, challenge ordering, evidence thresholds, and validators remain unchanged. Faceted assessment labels keep the verb or pattern suffix, including `venir`, `être`, `-ger`, and `-cer`.
+The scoped candidate has 367 assessment targets, 367 teaching targets, and 6,662 questions. Its checksum is `sha256:a57dc1481f8a34f1852570ffb88f1f15795e4be4f87ec448a66d5245ec9aea8c`. Publication preflight reports zero missing instruction targets and zero fresh-check gaps.
 
-## Scoped candidate
+Three old probes remain outside the scoped candidate:
 
-The frozen scoped candidate contains 367 assessment targets, 367 teaching targets, and 6,660 questions. It has no missing instruction target and passed publication preflight with no instruction or fresh-check gap. Its checksum is `sha256:7c2ac9aa5063c1e765e7f2afe785e4602989dacd699b719496479af9f52c0665`. The prepared publication bundle checksum is `sha256:66cd00f58e0493c591742bd94975b8015c5cc3713f9e84dee93dbfdb14316843`.
+- `local-conjugation-gap-v1:distinguer_personne_nombre:receptive:foundation` asks for person-number labels; 24 sentence-based questions remain for that evidence target.
+- `review-draft-v1:reconnaitre_imparfait:receptive:core` and `review-draft-v1:reconnaitre_imparfait:receptive:stretch` contain duplicate choices with conflicting correctness; 12 other active probes remain for each level.
 
-Three old probes are absent from the scoped candidate:
+These exclusions remove no verb or grammar evidence target.
 
-- `local-conjugation-gap-v1:distinguer_personne_nombre:receptive:foundation` asked for “traits personne-nombre” and used category-name choices. Twenty-four sentence-completion questions remain for the same evidence target, balanced as four questions in each of six internal groups.
-- `review-draft-v1:reconnaitre_imparfait:receptive:core` had the correct answer `nous finissions` twice, once marked correct and once marked incorrect. Twelve other active imperfect-recognition probes remain.
-- `review-draft-v1:reconnaitre_imparfait:receptive:stretch` had the correct answer `était` three times with conflicting correctness. Twelve other active imperfect-recognition probes remain.
+## Jev review
 
-The three removals therefore remove no requested verb or grammar evidence target.
-
-## Technical wording retained for a later pass
-
-An active prompt-and-choice scan of the 6,660 scoped questions found:
-
-- 0 person-number nomenclature items;
-- 1 use of `déterminant`, in a contrast whose assessed skill is distinguishing a demonstrative before a noun from a pronoun;
-- 13 uses of `futur proche`: 8 recognition questions, 3 contextual-use questions, 1 meaning question, and 1 recent-past distractor;
-- the 10 conjugation-foundation recognition prompts now use present-time cues instead of `présent de l’indicatif`; other tense-recognition families remain for their dedicated copy pass;
-- 48 direct tense-naming questions: 24 simple-past recognition and 24 subjunctive recognition;
-- 135 uses of `participe passé`: 37 formation, 25 infinitive-versus-participle, 36 agreement with `être`, 36 agreement with `avoir`, and 1 recent-past distractor.
-
-These remaining terms name the form being recognized or distinguish two grammatical forms. They were retained rather than replacing an assessed naming construct with a different skill. Production directions for the same tense families now use time cues, construction cues, or short non-answer examples.
+Jev is used to flag wording that may need work, rather than to certify a French grade level. On a varied 91-instruction sample from the final bank and guided practice, it marked 60 pass, 31 review, and 0 likely rewrite. The 31 review flags include dense but necessary examples and a few grammar distinctions; these remain candidates for later learner-led improvement. A separate audit of 134 shared diagnostic UI strings improved from 81 to 98 pass, with zero likely rewrite after the UI edits.
 
 ## Verification
 
-- focused pathway, route-policy and copy tests, including revision 44 immutability and revision 45 answer-preservation assertions;
-- generated expansion checks for the seven touched expansion families;
-- revision 45 assembly and parallel/scoped candidate reproducibility checks;
-- scoped publication preflight: ready, 0 instruction gaps, 0 fresh-check gaps;
-- scoped command journeys: 60-question all-wrong and mixed profiles, both completed without a runtime failure;
-- TypeScript compilation and JSON parsing;
-- no publication, activation, or deployment command was run.
+- Focused revision 45 copy tests assert 1,147 residual family rewrites and preserve identity, answer keys, validator behavior, assessed material, and one correct multiple-choice option.
+- Revision 45 assembly, parallel candidate, scoped candidate, publication preflight, and command journey generation succeeded on the final source.
+- Focused tests and TypeScript compilation passed. The final artifact reproducibility checks and deployment verification are recorded with the release operation.
+- Jev flags are a fast filter. No real learner reading test or session-replay validation has been completed for this revision.

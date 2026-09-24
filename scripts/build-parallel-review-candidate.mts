@@ -11,6 +11,7 @@ import type {LearningActivityBinding} from "../src/lib/diagnostic/granular/activ
 import {readFileSync,writeFileSync} from "node:fs";
 import {checksum} from "../src/lib/taxonomy/validate";
 import {assembleDraftBank} from "../src/lib/diagnostic/granular/assemble-drafts";
+import {resignRevision45BaseAnnotations} from "../src/lib/diagnostic/granular/revision-45-residual-copy";
 import {selectedDraftExpansionSources} from "./lib/granular-authoring-selection";
 const FRENCH_DRAFT_EXPANSION_SOURCES=selectedDraftExpansionSources(process.argv.slice(2));
 import {validateAnnotationReviewDraft} from "../src/lib/diagnostic/granular/annotation-review";
@@ -32,7 +33,8 @@ const selected=new Set([...assembled.annotations.map(row=>row.itemKey),...correc
 const policy:ParallelReviewPolicy={mode:"parallel_review",authorization:"product-owner-request-2026-09-11",reviewOwner:"product_owner",bankChecksum:bank.manifest!.checksum,
  questionChecksums:Object.fromEntries(bank.items.filter(entry=>selected.has(entry.itemKey)).map(entry=>[entry.itemKey,checksum(entry)]))};
 if(Object.keys(policy.questionChecksums).length!==selected.size)throw Error("Parallel review selection is incomplete");
-const annotations=[...validateAnnotationReviewDraft(read("docs/diagnostic/v3-facet-annotations.json"),base),...assembled.annotations];
+const baseAnnotations=validateAnnotationReviewDraft(read("docs/diagnostic/v3-facet-annotations.json"),base);
+const annotations=[...(bankRevision!==undefined&&bankRevision>=45?resignRevision45BaseAnnotations(baseAnnotations,bank):baseAnnotations),...assembled.annotations];
 const adapted=applyFacetTargets(adaptV3ForAssessment({artifact,bank,reviewPolicy:policy}),buildV3Facets(artifact.taxonomy,granularBankOptions(process.argv.slice(2))),bank,annotations);
 if(bankRevision!==undefined&&bankRevision>=45)adapted.assessment=applyRevision45AssessmentCopy(adapted.assessment);
 // New tense-recognition and form-family pathways assess sentences. Older isolated
