@@ -14,16 +14,17 @@ import {PageHeader} from "@/components/page";
 import {Button,buttonVariants} from "@/components/ui/button";
 import {AccentTextarea} from "@/components/accent-textarea";
 import {ExercisePrompt} from "@/components/exercise-prompt";
-import {startGranularDiagnostic,updateGranularDiagnostic,updateGranularLearningCheck,updateGranularTeaching} from "@/lib/actions/granular-diagnostic";
-import {reconcileAssessmentResponse,type AssessmentView,type AssessmentResponse} from "@/lib/diagnostic/granular/client-state";
+import {startGranularDiagnostic,retakeGranularDiagnostic,updateGranularDiagnostic,updateGranularLearningCheck,updateGranularTeaching} from "@/lib/actions/granular-diagnostic";
+import {reconcileAssessmentResponse,type AssessmentView,type AssessmentResponse,type DiagnosticHistoryEntry} from "@/lib/diagnostic/granular/client-state";
 import {QuestionAudio} from "./question-audio";
 import {GuidedTeaching,type TeachingCommand} from "./guided-teaching";
 import {groupAssessmentResults} from "@/lib/diagnostic/granular/result-groups";
 import {StudentResultSummary} from "./student-result-summary";
 import {STUDENT_RESULT_SUMMARY_COPY as resultCopy,studentActivityTitle,studentSkillTitle,studentSummaryLabel} from "@/lib/diagnostic/granular/student-results-display";
 
-export function GranularDiagnostic({initialActivityId,start=startGranularDiagnostic,update=updateGranularDiagnostic,updateLearning=updateGranularLearningCheck,updateTeaching=updateGranularTeaching}:{initialActivityId?:string;start?:()=>Promise<AssessmentResponse>;update?:(input:unknown)=>Promise<AssessmentResponse>;updateLearning?:(input:unknown)=>Promise<AssessmentResponse>;updateTeaching?:(input:unknown)=>Promise<AssessmentResponse>}){
+export function GranularDiagnostic({initialActivityId,start=startGranularDiagnostic,retake=retakeGranularDiagnostic,update=updateGranularDiagnostic,updateLearning=updateGranularLearningCheck,updateTeaching=updateGranularTeaching}:{initialActivityId?:string;start?:()=>Promise<AssessmentResponse>;retake?:()=>Promise<AssessmentResponse>;update?:(input:unknown)=>Promise<AssessmentResponse>;updateLearning?:(input:unknown)=>Promise<AssessmentResponse>;updateTeaching?:(input:unknown)=>Promise<AssessmentResponse>}){
  const [view,setView]=useState<AssessmentView|null>(null),[draft,setDraft]=useState(""),[error,setError]=useState<string|null>(null),[busy,setBusy]=useState(true),[notice,setNotice]=useState<string|null>(null);
+ const [history,setHistory]=useState<DiagnosticHistoryEntry[]>([]);
  const [audioPlayedKey,setAudioPlayedKey]=useState<string|null>(null);
  const [supportDraft,setSupportDraft]=useState<{questionId:string;choiceId:string}|null>(null);
  const supportRef=useRef<{questionId:string;choiceId:string}|null>(null);
@@ -31,6 +32,7 @@ export function GranularDiagnostic({initialActivityId,start=startGranularDiagnos
  const accept=useCallback((response:AssessmentResponse)=>{
   if(!mounted.current)return;
   if(response.studentState)replaceStudentState(response.studentState);
+  if(response.history)setHistory(response.history);
   const next=reconcileAssessmentResponse(current.current,draftRef.current,response);
   if(!current.current)next.draft=restoreGuidedDraft(next.view)??next.draft;
   persistGuidedDraft(next.view,next.draft);
@@ -86,6 +88,12 @@ export function GranularDiagnostic({initialActivityId,start=startGranularDiagnos
   return()=>{clearInterval(timer);document.removeEventListener("visibilitychange",visibility);};
  },[send]);
  const edit=(value:string)=>{draftRef.current=value;setDraft(value);persistGuidedDraft(current.current,value);persistAssessmentDraft(current.current,value,supportRef.current?.choiceId??null);};
+ const beginRetake=async()=>{
+  if(locked.current)return;
+  locked.current=true;setBusy(true);setError(null);
+  try{accept(await retake());}catch{if(mounted.current)setError(copy.retakeError);}
+  finally{locked.current=false;if(mounted.current)setBusy(false);}
+ };
  if(!view)return <><PageHeader title={copy.startTitle} description={copy.loadingDescription}/><p role={error?"alert":"status"}>{error??copy.loading}</p></>;
  const checking=Boolean(view.learningCheck);
  const question=view.learningCheck?.question??view.question;
@@ -116,8 +124,10 @@ export function GranularDiagnostic({initialActivityId,start=startGranularDiagnos
    {view.coverage&&view.coverage.deferredSkillCount>0&&<p className="mb-6 rounded-lg border border-border p-4 text-sm text-muted-foreground">{copy.coverageHelp}</p>}
    <section className="mb-8"><h2 className="mb-3 text-xl font-semibold">{resultCopy.nextActivity}</h2>{view.learningActivities?.[0]?<ActivityCard activity={view.learningActivities[0]} busy={busy} send={send}/>:null}{(view.learningActivities?.length??0)>1&&<details className="mt-3 rounded-lg border border-border p-4"><summary className="cursor-pointer font-medium">{resultCopy.moreActivities}</summary><div className="mt-3 space-y-3">{view.learningActivities!.slice(1).map(activity=><ActivityCard key={activity.activityId} activity={activity} busy={busy} send={send}/>)}</div></details>}{view.deferredReviewCount>0&&<p className="mt-3 text-sm text-muted-foreground">{copy.deferredHelp}</p>}{!view.learningActivities?.length&&!view.optionalLearningActivities?.length&&(view.deferredReviewCount===0||view.missingLearningActivityCount>0)&&<p className="text-muted-foreground">{copy.activitiesUnavailable}</p>}{Boolean(view.optionalLearningActivities?.length)&&<section className="mt-6"><h3 className="text-lg font-semibold">{copy.optionalTitle}</h3><p className="my-2 text-sm text-muted-foreground">{copy.optionalHelp}</p><ul className="space-y-3">{view.optionalLearningActivities?.map(activity=><li key={activity.activityId} className="rounded-lg border border-border p-4"><p className="mb-3 font-semibold">{studentActivityTitle({...activity,action:'learn'})}</p><Button variant="outline" disabled={busy} onClick={()=>void send("start_teaching",activity.activityId)}>{copy.openLesson}</Button></li>)}</ul></section>}<Link href="/student" className={`${buttonVariants()} mt-5`}>{copy.viewPathway}</Link></section>
    <p className="mb-6"><Link href={`/student/diagnostic/review?session=${view.sessionId}`} className="text-primary underline">{copy.reviewAnswers}</Link></p>
+   <section className="mb-8 rounded-lg border border-border p-5"><h2 className="text-lg font-semibold">{copy.retakeTitle}</h2><p className="my-2 text-sm text-muted-foreground">{copy.retakeHelp}</p><Button variant="outline" disabled={busy} onClick={()=>void beginRetake()}>{copy.retakeButton}</Button></section>
    <details className="rounded-lg border border-border p-4"><summary className="cursor-pointer text-xl font-semibold">{copy.detailsTitle}</summary><div className="mt-4">{groupAssessmentResults(view.results,view.skillDetails).map(group=><details key={group.id} className="mb-3 rounded-lg border border-border p-4"><summary className="cursor-pointer font-semibold">{group.labelFr}</summary><ul className="mt-4 divide-y divide-border">{group.results.map(({result,detail})=><li key={result.skillId} className="py-3"><p>{studentSkillTitle(detail?.labelFr??copy.unverifiedPoint)}</p><p className="text-sm text-muted-foreground">{copy.mode[detail?.mode??result.modes[0]?.mode]??""} · {detail?.assessmentAvailable===false?copy.questionsComing:copy.status[result.status]} · {diagnosticAnswerCountText(result.modes.reduce((sum,mode)=>sum+mode.distinctItems,0))}</p><SkillEvidenceResults result={result}/><SkillFeatureResults result={result}/></li>)}</ul></details>)}</div></details>
   </>}
+  {history.length>0&&<section className="mt-8 border-t border-border pt-6"><h2 className="mb-3 text-lg font-semibold">{copy.historyTitle}</h2><ul className="divide-y divide-border">{history.map(entry=><li key={entry.sessionId} className="flex flex-wrap items-center justify-between gap-3 py-3"><div><p className="font-medium">{entry.sessionId===view.sessionId?copy.historyCurrent:new Date(entry.createdAt).toLocaleDateString("fr-FR",{day:"numeric",month:"long",year:"numeric"})}</p><p className="text-xs text-muted-foreground">{copy.historyVersion} {entry.releaseKey.match(/v\d+(?:\.\d+)?/i)?.[0]??entry.releaseKey}</p></div><Link href={`/student/diagnostic/review?session=${entry.sessionId}`} className="text-sm text-primary underline">{copy.historyReview}</Link></li>)}</ul></section>}
  </div>;
 }
 

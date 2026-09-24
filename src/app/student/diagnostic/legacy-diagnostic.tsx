@@ -58,7 +58,7 @@ function responseId() {
   return globalThis.crypto?.randomUUID?.() ?? `${Date.now()}-${Math.random()}`;
 }
 
-export default function DiagnosticPage() {
+export default function DiagnosticPage({retakeAvailable=false}:{retakeAvailable?:boolean}) {
   const started = useRef<number | null>(null);
   const [startAttempt, setStartAttempt] = useState(0);
   const responseKey = useRef(responseId());
@@ -209,6 +209,7 @@ export default function DiagnosticPage() {
         <div className="mt-7 flex flex-wrap gap-3">
           {!isPilot && <Link href="/student" className={buttonVariants()}>{LEGACY_DIAGNOSTIC_COPY.completed.startPath} <ArrowRight /></Link>}
           <Link href="/student/frontier" className={buttonVariants({ variant: "outline" })}>{LEGACY_DIAGNOSTIC_COPY.completed.viewMap}</Link>
+          {retakeAvailable && <Link href="/student/diagnostic?restart=1" className={buttonVariants({ variant: "outline" })}>{LEGACY_DIAGNOSTIC_COPY.completed.retake}</Link>}
         </div>
       </>
     );

@@ -1,7 +1,8 @@
 import type {StudentState} from "@/lib/student-state";
 import type {publicAssessmentView} from "./service";
 export type AssessmentView=ReturnType<typeof publicAssessmentView>;
-export type AssessmentResponse={view?:AssessmentView;error?:string;conflict?:boolean;studentState?:Omit<StudentState,"hydrated">};
+export type DiagnosticHistoryEntry={sessionId:string;createdAt:string;releaseKey:string};
+export type AssessmentResponse={view?:AssessmentView;error?:string;conflict?:boolean;studentState?:Omit<StudentState,"hydrated">;history?:DiagnosticHistoryEntry[]};
 export const ASSESSMENT_CONFLICT_MESSAGE="Ta réponse est conservée. Tu peux la valider à nouveau.";
 const questionIdentity=(view:AssessmentView|null)=>view?.teaching?.exercise?`guided:${view.teaching.contentId}:${view.teaching.exercise.id}:${Boolean(view.teaching.exercise.feedback)}`:view?.learningCheck?`learning:${view.learningCheck.id}`:view?.question?.id;
 /** Preserve the draft only while it still belongs to the same question. */

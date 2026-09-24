@@ -11,11 +11,11 @@ import {publicTextualSupport,readTextualSupport} from "./textual-support";
 
 /** Only the authenticated student's completed initial sitting can be reviewed.
  * Corrections are delivered only after their material receipts have succeeded. */
-export async function loadDiagnosticAnswerReview(store:CoveredMaterialDeliveryStore,studentId:string,input:unknown,captureContractKey?:string){
+export async function loadDiagnosticAnswerReview(store:CoveredMaterialDeliveryStore,studentId:string,input:unknown,captureContractKey?:string,allowSupersededBusy=false){
  const id=z.uuid().parse(input),session=await store.load(studentId,id);
  if(!session)throw Error("Diagnostic introuvable.");
  if(session.state.phase!=="learning")throw Error("Termine le diagnostic avant de consulter les réponses.");
- if(session.state.learningCheck||session.state.teaching)throw Error("Termine ou quitte l’activité en cours avant de consulter les réponses.");
+ if(!allowSupersededBusy&&(session.state.learningCheck||session.state.teaching))throw Error("Termine ou quitte l’activité en cours avant de consulter les réponses.");
  const bundle=await store.release(session.releaseId);
  if(!bundle)throw Error("Ce diagnostic n’est plus disponible.");
  const materials=new Set<string>();

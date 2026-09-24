@@ -187,14 +187,14 @@ export class SupabaseAssessmentStore implements AssessmentStore{
   return successor;
  }
  async latestLearning(studentId:string):Promise<{session:StoredSession;bundle:AssessmentBundle}|null>{
-  const {data,error}=await this.db.from("granular_active_assessment_sessions").select("id,release_id").eq("student_id",studentId).eq("state->>phase","learning").order("updated_at",{ascending:false}).limit(10);
+  const {data,error}=await this.db.from("granular_active_assessment_sessions").select("id,release_id").eq("student_id",studentId).eq("state->>phase","learning").order("created_at",{ascending:false}).limit(10);
   if(error)throw Error(error.message);
   for(const row of data){const bundle=await this.release(row.release_id);if(!bundle)continue;const session=await this.load(studentId,row.id);if(session&&session.state.completionReason!=="coverage_gap")return {session:await withKnownMaterialHistory(this,session,bundle),bundle};}
   return null;
  }
  /** Resume the student's pinned release even after a newer default is published. */
  async latestSession(studentId:string):Promise<{session:StoredSession;bundle:AssessmentBundle}|null>{
-  const {data,error}=await this.db.from("granular_active_assessment_sessions").select("id,release_id").eq("student_id",studentId).order("updated_at",{ascending:false}).limit(10);
+  const {data,error}=await this.db.from("granular_active_assessment_sessions").select("id,release_id").eq("student_id",studentId).order("created_at",{ascending:false}).limit(10);
   if(error)throw Error(error.message);
   for(const row of data??[]){
    const bundle=await this.release(row.release_id);if(!bundle)continue;
@@ -203,21 +203,68 @@ export class SupabaseAssessmentStore implements AssessmentStore{
   }
   return null;
  }
+ async currentSessionId(studentId:string):Promise<string|null>{
+  const {data,error}=await this.db.from("granular_active_assessment_sessions").select("id")
+   .eq("student_id",studentId).order("created_at",{ascending:false}).limit(1).maybeSingle();
+  if(error)throw Error(error.message);
+  return data?.id??null;
+ }
+ async isActiveSession(studentId:string,sessionId:string):Promise<boolean>{
+  const {data,error}=await this.db.from("granular_active_assessment_sessions").select("id")
+   .eq("student_id",studentId).eq("id",sessionId).maybeSingle();
+  if(error)throw Error(error.message);
+  return !!data;
+ }
+ async completedSessions(studentId:string):Promise<Array<{sessionId:string;createdAt:string;releaseKey:string}>>{
+  const {data,error}=await this.db.from("granular_assessment_sessions")
+   .select("id,created_at,granular_assessment_releases!inner(release_key)")
+   .eq("student_id",studentId).eq("state->>phase","learning")
+   .order("created_at",{ascending:false}).limit(50);
+  if(error)throw Error(error.message);
+  return (data??[]).map(row=>{
+   const relation:unknown=row.granular_assessment_releases;
+   const release=Array.isArray(relation)?relation[0]:relation;
+   const releaseKey=release&&typeof release==="object"&&"release_key" in release&&typeof release.release_key==="string"?release.release_key:"";
+   return {sessionId:row.id,createdAt:row.created_at,releaseKey};
+  });
+ }
+ async publishedReleaseId(releaseKey:string):Promise<string|null>{
+  const {data,error}=await this.db.from("granular_assessment_releases").select("id")
+   .eq("release_key",releaseKey).eq("status","published").maybeSingle();
+  if(error)throw Error(error.message);
+  return data?.id??null;
+ }
+ /** The source and its results stay intact. The database creates a fresh
+  * sitting and switches the active view in one transaction. */
+ async createRetake(studentId:string,sourceSessionId:string,targetReleaseId:string):Promise<StoredSession>{
+  const source=await this.load(studentId,sourceSessionId);
+  if(!source)throw Error("Diagnostic predecessor unavailable");
+  const bundle=await this.release(targetReleaseId);
+  if(!bundle)throw Error("Diagnostic target release unavailable");
+  const state={...createSession(bindAssessmentRelease(bundle.assessment,{taxonomyId:bundle.taxonomyId,bankId:bundle.bankId})),
+   priorDiagnosticItemIds:[...new Set([...(source.state.priorDiagnosticItemIds??[]),...source.state.observations.map(observation=>observation.itemId)])]};
+  const {data,error}=await this.db.rpc("create_granular_assessment_retake",{
+   p_student_id:studentId,p_source_session_id:sourceSessionId,p_source_revision:source.state.revision,
+   p_target_release_id:targetReleaseId,p_target_bundle_checksum:checksum(bundle),p_target_state:state,
+  });
+  if(error)throw Error(error.message);
+  if(typeof data!=="string")throw Error("Invalid diagnostic retake response");
+  const successor=await this.load(studentId,data);
+  if(!successor||successor.releaseId!==targetReleaseId)throw Error("Diagnostic retake unavailable");
+  return successor;
+ }
  async start(studentId:string,releaseKey:string):Promise<{session:StoredSession;bundle:AssessmentBundle}|null>{
-  const {data:release,error}=await this.db.from("granular_assessment_releases").select("id").eq("release_key",releaseKey).eq("status","published").maybeSingle();
-  if(error)throw Error(error.message);if(!release)return null;
-  const bundle=await this.release(release.id);if(!bundle)return null;
-  const find=async()=>{
-   const {data,error}=await this.db.from("granular_assessment_sessions").select("id").eq("student_id",studentId).eq("release_id",release.id).maybeSingle();
-   if(error)throw Error(error.message);return data?this.load(studentId,data.id):null;
-  };
-  const existing=await find();if(existing)return {session:await withKnownMaterialHistory(this,existing,bundle),bundle};
+  const releaseId=await this.publishedReleaseId(releaseKey);
+  if(!releaseId)return null;
+  const bundle=await this.release(releaseId);if(!bundle)return null;
   const state=createSession(bindAssessmentRelease(bundle.assessment,{taxonomyId:bundle.taxonomyId,bankId:bundle.bankId}));
-  const {data, error:insertError}=await this.db.from("granular_assessment_sessions").insert({student_id:studentId,release_id:release.id,revision:0,state}).select("id").single();
-  if(insertError){
-   if(insertError.code!=="23505")throw Error(insertError.message);
-   const concurrent=await find();if(!concurrent)throw Error("Concurrent session creation failed");return {session:await withKnownMaterialHistory(this,concurrent,bundle),bundle};
-  }
-  return {session:await withKnownMaterialHistory(this,{id:data.id,studentId,releaseId:release.id,state},bundle),bundle};
+  const {data,error:startError}=await this.db.rpc("start_granular_assessment_session",{
+   p_student_id:studentId,p_target_release_id:releaseId,p_target_bundle_checksum:checksum(bundle),p_target_state:state,
+  });
+  if(startError)throw Error(startError.message);
+  if(typeof data!=="string")throw Error("Invalid diagnostic start response");
+  const session=await this.load(studentId,data);
+  if(!session||session.releaseId!==releaseId)throw Error("Diagnostic session unavailable");
+  return {session:await withKnownMaterialHistory(this,session,bundle),bundle};
  }
 }

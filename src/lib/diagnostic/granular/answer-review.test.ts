@@ -26,6 +26,11 @@ it('restricts review to the owner and a completed sitting without an active chec
  f.session.state.phase='learning';f.session.state.learningCheck={id:'check',activityId:'a',itemId:'q',occasionId:'later'};
  await expect(loadDiagnosticAnswerReview(f.store,'owner',id)).rejects.toThrow('activité');expect(f.receipt).not.toHaveBeenCalled();
 });
+it('keeps a superseded completed sitting reviewable even when its saved learning check was open',async()=>{
+ const f=fixture();f.session.state.learningCheck={id:'check',activityId:'a',itemId:'q',occasionId:'later'};
+ expect((await loadDiagnosticAnswerReview(f.store,'owner',id,undefined,true)).sessionId).toBe(id);
+ expect(f.receipt).toHaveBeenCalled();
+});
 it('shows the actual selected choice and preserves the server grade',async()=>{
  const f=fixture(),question=publicQuestion(id,f.probe.id,bundle)!;
  f.session.state.diagnosticResponses=[{itemId:f.probe.id,answer:question.choices[0].id}];

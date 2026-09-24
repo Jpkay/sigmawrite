@@ -23,3 +23,9 @@ it("does not turn a failed session lookup into a new assessment",async()=>{
  const store=new SupabaseAssessmentStore({from:()=>query} as unknown as SupabaseClient);
  await expect(store.latestSession("student")).rejects.toThrow("database unavailable");
 });
+it("orders active sittings by creation so an older tab update cannot replace a retake",async()=>{
+ const order=vi.fn();const query={select:()=>query,eq:()=>query,order:(...args:unknown[])=>{order(...args);return query;},limit:async()=>({data:[],error:null})};
+ const store=new SupabaseAssessmentStore({from:()=>query} as unknown as SupabaseClient);
+ expect(await store.latestSession("student")).toBeNull();
+ expect(order).toHaveBeenCalledWith("created_at",{ascending:false});
+});

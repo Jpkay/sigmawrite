@@ -25,5 +25,5 @@ export default async function DiagnosticPage({searchParams}:{searchParams:Promis
  const activityId=typeof params.activity==="string"?params.activity:undefined;
  if(selected)await journalStudentPayload(studentId,"granular:ui-copy",DIAGNOSTIC_COPY);
  else await journalStudentPayload(studentId,"legacy:diagnostic-ui-copy",legacyDiagnosticFixedDisplay());
- return selected?<GranularDiagnostic initialActivityId={activityId}/>:<LegacyDiagnostic/>;
+ return selected?<GranularDiagnostic initialActivityId={activityId}/>:<LegacyDiagnostic retakeAvailable/>;
 }

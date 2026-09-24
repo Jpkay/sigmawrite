@@ -21,6 +21,7 @@ export const LEGACY_DIAGNOSTIC_COPY = {
     foundationsFirst: "Fondations d’abord",
     startPath: "Commencer mon parcours",
     viewMap: "Voir toute ma carte",
+    retake: "Repasser le diagnostic",
   },
   outcomes: {
     mastered: "Maîtrisé",

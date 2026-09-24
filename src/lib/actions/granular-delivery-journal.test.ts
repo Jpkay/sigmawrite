@@ -1,11 +1,11 @@
 import {beforeEach,expect,it,vi} from 'vitest';
-const f=vi.hoisted(()=>({guard:vi.fn(),latest:vi.fn(),start:vi.fn(),record:vi.fn(),journal:vi.fn(),command:vi.fn(),writingFactory:vi.fn(),writingEvaluator:vi.fn(),view:{phase:'learning',answeredCount:3,skippedCount:1,remainingSeconds:90,results:[],question:{promptFr:'Les oiseaux chantent.'}},state:{retrievalCards:[],vocab:{},lessonTitle:'Observer le sujet',sessions:[],interests:[]}}));
+const f=vi.hoisted(()=>({guard:vi.fn(),latest:vi.fn(),start:vi.fn(),current:vi.fn(),record:vi.fn(),journal:vi.fn(),command:vi.fn(),writingFactory:vi.fn(),writingEvaluator:vi.fn(),view:{phase:'learning',answeredCount:3,skippedCount:1,remainingSeconds:90,results:[],question:{promptFr:'Les oiseaux chantent.'}},state:{retrievalCards:[],vocab:{},lessonTitle:'Observer le sujet',sessions:[],interests:[]}}));
 vi.mock('@/lib/diagnostic/granular/server-writing-evaluator',()=>({serverWritingEvaluator:f.writingFactory}));
 vi.mock('@/lib/auth',()=>({requireRole:f.guard}));
 vi.mock('@/lib/supabase/server',()=>({createClient:async()=>({}),createServiceClient:()=>({})}));
 vi.mock('@/lib/db/student',()=>({getCurrentStudentId:async()=> 'owner',getStudentStateData:async()=>f.state}));
 vi.mock('@/lib/diagnostic/access',()=>({requireStudentAccessAuthorized:async()=>{}}));
-vi.mock('@/lib/diagnostic/granular/store',()=>({SupabaseAssessmentStore:class{recordDeliveredText=f.journal;latestSession=f.latest;start=f.start;}}));
+vi.mock('@/lib/diagnostic/granular/store',()=>({SupabaseAssessmentStore:class{recordDeliveredText=f.journal;latestSession=f.latest;start=f.start;currentSessionId=f.current;}}));
 vi.mock('@/lib/diagnostic/granular/material-delivery',()=>({recordMaterialDelivery:f.record}));
 vi.mock('@/lib/diagnostic/granular/service',()=>({runAssessmentCommand:f.command,publicAssessmentView:vi.fn()}));
 vi.mock('@/lib/diagnostic/granular/learning-service',()=>({runLearningCheckCommand:f.command}));
@@ -44,4 +44,11 @@ it('records the unavailable message without claiming a question presentation',as
  f.latest.mockResolvedValue(null);f.start.mockResolvedValue(null);
  expect(await startGranularDiagnostic()).toEqual({error:'Ce diagnostic n’est pas encore disponible.'});
  expect(f.journal).toHaveBeenCalledWith(expect.objectContaining({studentId:'owner',boundary:'granular:start',textFragments:['Ce diagnostic n’est pas encore disponible.']}));
+});
+it('rejects commands from a superseded sitting before grading or writing it',async()=>{
+ f.current.mockResolvedValue('new-session');
+ const result=await updateGranularDiagnostic({sessionId:'old-session',type:'answer'});
+ expect(result).toEqual({error:'Ce diagnostic a été remplacé. Recharge la page pour reprendre le nouveau.'});
+ expect(f.command).not.toHaveBeenCalled();
+ expect(f.journal).toHaveBeenCalledWith(expect.objectContaining({studentId:'owner',boundary:'granular:diagnostic'}));
 });

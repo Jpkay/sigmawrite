@@ -21,6 +21,9 @@ export type AssessmentSession = {
   /** Submitted answers for review; absent on historical sessions. Never infer
    * missing answers from the grade or use this record as mastery evidence. */
   diagnosticResponses?: Array<{itemId:string;answer:string;supportChoiceId?:string;sourceSessionId?:string}>;
+  /** Items shown in the immediately preceding sitting. Prefer fresh items on
+   * a retake while allowing repeats if the released bank lacks alternatives. */
+  priorDiagnosticItemIds?:string[];
   /** Immediate predecessor of a separately persisted learning successor. */
   learningPredecessor?: {sessionId:string;releaseId:string;revision:number};
   refinements: Observation[];
@@ -163,7 +166,10 @@ export function transitionSession(input: {
     }
     if (next.activeSeconds >= policy.activeSeconds) complete("time_budget");
     else if (!next.paused && !next.pendingItemId) {
-      const selection = selectProbe(skills, bank.filter(probe=>!next.exposedReadingContexts?.includes(probe.contextId)), next.observations, policy,next.exposedMaterialKeys??[],input.releaseScope);
+      const available=bank.filter(probe=>!next.exposedReadingContexts?.includes(probe.contextId));
+      const prior=new Set(next.priorDiagnosticItemIds??[]);
+      const fresh=prior.size?selectProbe(skills,available.filter(probe=>!prior.has(probe.id)),next.observations,policy,next.exposedMaterialKeys??[],input.releaseScope):null;
+      const selection=fresh?.kind==="question"?fresh:selectProbe(skills,available,next.observations,policy,next.exposedMaterialKeys??[],input.releaseScope);
       if (selection.kind === "question") next.pendingItemId = selection.item.id;
       else complete(selection.kind === "finished" ? "evidence_complete" : selection.kind === "provisional" ? selection.reason : "coverage_gap");
     }

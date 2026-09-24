@@ -56,6 +56,16 @@ describe("granular diagnostic to learning lifecycle", () => {
     state = apply(state, answer);
     expect(apply(state, { ...answer, at: 10_000 })).toBe(state);
   });
+  it("prefers unseen retake questions but reuses the released bank when fresh questions run out", () => {
+    const oneSkill=[skills[0]],oneBank=bank.filter(item=>item.skillId===oneSkill[0].id);
+    const prior=oneBank.slice(0,-1).map(item=>item.id);
+    const resume=(priorDiagnosticItemIds:string[])=>transitionSession({
+      state:{...createSession(release),priorDiagnosticItemIds},release,expectedRevision:0,
+      event:{type:"resume",at:0},skills:oneSkill,bank:oneBank,policy,
+    });
+    expect(resume(prior).pendingItemId).toBe(oneBank.at(-1)?.id);
+    expect(oneBank.some(item=>item.id===resume(oneBank.map(item=>item.id)).pendingItemId)).toBe(true);
+  });
   it("refines unresolved skills during learning only from new independent evidence", () => {
     let state = apply(createSession(release), { type: "resume", at: 0 });
     state = apply(state, { type: "pulse", at: 30_000 });
