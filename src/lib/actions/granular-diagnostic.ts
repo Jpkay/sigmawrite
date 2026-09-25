@@ -17,15 +17,16 @@ import {runLearningCheckCommand} from "@/lib/diagnostic/granular/learning-servic
 import {runTeachingCommand} from "@/lib/diagnostic/granular/teaching-service";
 import {loadDiagnosticAnswerReview} from "@/lib/diagnostic/granular/answer-review";
 import {revalidatePath} from "next/cache";
+import {span,timedStore,traceCommand} from "@/lib/diagnostic/granular/latency-trace";
 async function context(){
- await requireRole(["student"]);
- const client=await createClient(),studentId=await getCurrentStudentId(client);
- await requireStudentAccessAuthorized(client,studentId);
- return {studentId,client,store:new SupabaseAssessmentStore(createServiceClient(),{cache:sharedReleaseContentCache,namespace:process.env.NEXT_PUBLIC_SUPABASE_URL!})};
+ await span("auth.role",()=>requireRole(["student"]));
+ const client=await createClient(),studentId=await span("auth.student",()=>getCurrentStudentId(client));
+ await span("auth.access",()=>requireStudentAccessAuthorized(client,studentId));
+ return {studentId,client,store:timedStore(new SupabaseAssessmentStore(createServiceClient(),{cache:sharedReleaseContentCache,namespace:process.env.NEXT_PUBLIC_SUPABASE_URL!}))};
 }
 async function deliver<T extends AssessmentResponse>(store:SupabaseAssessmentStore,studentId:string,boundary:string,result:T):Promise<T>{
  const payload={...result,...(result.view?{displayText:diagnosticDisplayText(result.view)}:{}),...(result.studentState?{recentReading:recentReadingDisplay(result.studentState.sessions),homeFallback:homeFallbackDisplay(result.studentState.interests),memoryDisplay:memoryDisplay(result.studentState)}:{})};
- await captureAssessmentDelivery(store,studentId,boundary,payload);
+ await span("delivery",()=>captureAssessmentDelivery(store,studentId,boundary,payload));
  return result;
 }
 async function staleSessionResponse(store:SupabaseAssessmentStore,studentId:string,input:unknown,boundary:string){
@@ -35,6 +36,9 @@ async function staleSessionResponse(store:SupabaseAssessmentStore,studentId:stri
  return deliver(store,studentId,boundary,{error:"Ce diagnostic a été remplacé. Recharge la page pour reprendre le nouveau."});
 }
 export async function startGranularDiagnostic(){
+ return traceCommand("granular:start",startDiagnostic);
+}
+async function startDiagnostic(){
  const {studentId,store,client}=await context();
  const current=await store.latestSession(studentId)
   ?? await store.start(studentId,process.env.GRANULAR_DIAGNOSTIC_RELEASE_KEY??"french-granular-diagnostic-v1");
@@ -63,11 +67,14 @@ export async function retakeGranularDiagnostic(){
 }
 export async function updateGranularDiagnostic(input:unknown){
  const receivedAt=Date.now();
- const {studentId,store,client}=await context();
- const stale=await staleSessionResponse(store,studentId,input,"granular:diagnostic");
- if(stale)return stale;
- const result=await runAssessmentCommand(store,studentId,input,Date.now,receivedAt);
- return deliver(store,studentId,"granular:diagnostic",{...result,...("view" in result&&result.view?.phase==="learning"?{studentState:await getStudentStateData(studentId,client)}:{})});
+ const type=input&&typeof input==="object"&&"type" in input&&typeof input.type==="string"?input.type:"unknown";
+ return traceCommand(`granular:diagnostic:${type}`,async()=>{
+  const {studentId,store,client}=await context();
+  const stale=await span("stale",()=>staleSessionResponse(store,studentId,input,"granular:diagnostic"));
+  if(stale)return stale;
+  const result=await span("command",()=>runAssessmentCommand(store,studentId,input,Date.now,receivedAt));
+  return deliver(store,studentId,"granular:diagnostic",{...result,...("view" in result&&result.view?.phase==="learning"?{studentState:await span("studentState",()=>getStudentStateData(studentId,client))}:{})});
+ });
 }
 export async function updateGranularLearningCheck(input:unknown){
  const {studentId,store,client}=await context();

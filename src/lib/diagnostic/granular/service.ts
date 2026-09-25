@@ -26,6 +26,7 @@ import type {V3Assessment} from "./v3-adapter";
 import {bindAssessmentRelease} from "./release-binding";
 import type {ReleasedTeachingContent} from "./teaching-content";
 import {publicTeachingView} from "./teaching-view";
+import {span,spanSync} from "./latency-trace";
 export type AssessmentBundle={assessment:V3Assessment;bank:CanonicalDiagnosticBankArtifact;taxonomyId:string;bankId:string;activities?:LearningActivityBinding[];teachingContent?:ReleasedTeachingContent[]};
 export type StoredSession={id:string;studentId:string;releaseId:string;state:AssessmentSession};
 export interface AssessmentStore {
@@ -64,11 +65,11 @@ export async function runAssessmentCommand(store:AssessmentStore,studentId:strin
  const maySelect=session.state.phase==="assessing"&&(["resume","answer","skip"].includes(command.type)
   ||command.type==="pulse"&&!session.state.paused&&!session.state.pendingItemId);
  const routeProbes=routePolicy&&maySelect?routeProbesForRelease(session.state.release.checksum,bundle):bundle.assessment.probes;
- session=await withKnownMaterialHistory(store,session,bundle);
+ session=await span("materialHistory",()=>withKnownMaterialHistory(store,session!,bundle));
  if(session.state.revision!==command.revision)return {conflict:true,view:publicAssessmentView(session,bundle,receivedAt)} as const;
  if((command.type==="answer"||command.type==="skip")&&(session.state.paused||session.state.pendingItemId!==command.itemId))return {error:"Cette question n’est plus active.",view:publicAssessmentView(session,bundle,receivedAt)} as const;
  let correct=false;
- let materialReceipt;
+ let materialReceipt:Awaited<ReturnType<typeof readQuestionMaterialReceipt>>;
  if(command.type==="answer"){
   const entry=bundle.bank.items.find(i=>i.itemKey===command.itemId);
   if(!entry||!bundle.assessment.probes.some(p=>p.id===command.itemId))return {error:"Question indisponible."} as const;
@@ -80,16 +81,17 @@ export async function runAssessmentCommand(store:AssessmentStore,studentId:strin
    correct=choice.correct;
   }else{
    try{
-    const result=await validateAnswer(command.answer,{validatorType:item.validatorType,correctAnswer:item.correctAnswer,acceptableAnswers:item.acceptableAnswers,config:item.validatorConfig,assessment:assessmentFromGeneratedItem(item)});
+    const result=await span("grade",()=>validateAnswer(command.answer,{validatorType:item.validatorType,correctAnswer:item.correctAnswer,acceptableAnswers:item.acceptableAnswers,config:item.validatorConfig,assessment:assessmentFromGeneratedItem(item)}));
     correct=result.pass;
    }catch(error){if(error instanceof ReadingAssessmentError)return {error:error.message} as const;throw error;}
   }
   correct=correct&&support.correct;
-  materialReceipt=await readQuestionMaterialReceipt(store,session,bundle,command.itemId);
+  const current=session;
+  materialReceipt=await span("materialReceipt",()=>readQuestionMaterialReceipt(store,current,bundle,command.itemId));
  }
- const state=transitionSession({state:session.state,release:bindAssessmentRelease(bundle.assessment,{taxonomyId:bundle.taxonomyId,bankId:bundle.bankId}),expectedRevision:command.revision,
+ const state=spanSync("select",()=>transitionSession({state:session.state,release:bindAssessmentRelease(bundle.assessment,{taxonomyId:bundle.taxonomyId,bankId:bundle.bankId}),expectedRevision:command.revision,
   event:command.type==="answer"?{type:"answer",itemId:command.itemId,correct,at:receivedAt,materialReceipt}:command.type==="skip"?{type:"skip",itemId:command.itemId,at:receivedAt}:{type:command.type,at:receivedAt},skills:bundle.assessment.skills,bank:routeProbes,releaseScope:bundle.assessment.releaseScope,
-  ...(routePolicy?{policy:{...DEFAULT_POLICY,minimumExerciseFormatsPerCoreDomain:routePolicy.minimumExerciseFormatsPerCoreDomain,requiredVerbTenseBands:routePolicy.requiredVerbTenseBands,maxSpellingTopicVisit:routePolicy.maxSpellingTopicVisit}}:{})});
+  ...(routePolicy?{policy:{...DEFAULT_POLICY,minimumExerciseFormatsPerCoreDomain:routePolicy.minimumExerciseFormatsPerCoreDomain,requiredVerbTenseBands:routePolicy.requiredVerbTenseBands,maxSpellingTopicVisit:routePolicy.maxSpellingTopicVisit}}:{})}));
  if(state===session.state)return {view:publicAssessmentView(session,bundle,receivedAt)} as const;
  if(command.type==="answer"&&state.observations.length>session.state.observations.length){
   state.diagnosticResponses=[...(session.state.diagnosticResponses??[]),{
@@ -107,7 +109,8 @@ export async function runAssessmentCommand(store:AssessmentStore,studentId:strin
   const latest=await store.load(studentId,session.id);
   return {conflict:true,...(latest?{view:publicAssessmentView(latest,bundle,receivedAt)}:{})} as const;
  }
- return {view:publicAssessmentView({...session,state},bundle,receivedAt)} as const;
+ const saved={...session,state};
+ return {view:await span("view",()=>publicAssessmentView(saved,bundle,receivedAt))} as const;
 }
 export function publicAssessmentView(session:StoredSession,bundle:AssessmentBundle,at:number=Date.now()){
  const view=sessionView(session.state,bundle.assessment.skills);
