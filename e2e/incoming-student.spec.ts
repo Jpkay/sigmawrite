@@ -79,7 +79,7 @@ test.describe("incoming invited student", () => {
     await page.goto("/join");
     await page.getByLabel("Code de classe").fill(firstCode);
     await page.getByRole("button", { name: "Vérifier le code" }).click();
-    await expect(page.getByText("Invitation validée : ton accès sera actif dès la création du compte.")).toBeVisible();
+    await expect(page.getByText("Invitation validée. Le code sera revérifié à la création du compte et l’autorisation scolaire sera enregistrée avec ton inscription.")).toBeVisible();
 
     await page.getByLabel("Ton nom").fill("Élève invité");
     await page.getByLabel("Date de naissance").fill("2013-01-02");

@@ -1,10 +1,21 @@
 import {afterEach,describe,expect,it,vi} from "vitest";
-import {span,spanSync,timedStore,traceCommand} from "./latency-trace";
+import {span,spanSync,timedStore,traceCommand,traceCommandDetailed} from "./latency-trace";
 
 afterEach(()=>{vi.restoreAllMocks();vi.unstubAllEnvs();});
 const logged=(spy:ReturnType<typeof vi.spyOn>)=>JSON.parse(String(spy.mock.calls[0]![0]));
 
 describe("latency trace",()=>{
+ it("returns ordered individual spans for a preview without treating nested time as additive",async()=>{
+  const {result,server}=await traceCommandDetailed("test:answer",()=>span("outer",async()=>{
+   await span("inner",async()=>{});
+   await span("inner",async()=>{});
+   return "done";
+  }));
+  expect(result).toBe("done");
+  expect(server.spans.map(step=>step.name)).toEqual(["outer","inner","inner"]);
+  expect(server.spans.every(step=>step.startMs>=0&&step.ms>=0)).toBe(true);
+  expect(server.totalMs).toBeGreaterThanOrEqual(0);
+ });
  it("logs one aggregated record per traced command",async()=>{
   const log=vi.spyOn(console,"info").mockImplementation(()=>{});
   class Store{calls=0;async load(){this.calls++;return this.inner();}async inner(){return "row";}count(){return this.calls;}}

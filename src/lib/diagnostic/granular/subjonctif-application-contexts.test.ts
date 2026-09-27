@@ -29,7 +29,8 @@ it('generates valid exact-target questions with fresh assessed sentences and no 
   expect(selected).toHaveLength(12);
   for(const item of selected){
    expect(item.item.nodeKey).toBe('produire_subjonctif_present_frequent');
-   expect(item.item.promptFr).toContain('au subjonctif présent');
+   expect(item.item.promptFr).toContain('Le début de la phrase indique la forme à employer');
+   expect(item.item.promptFr).not.toContain('au subjonctif présent');
    expect(item.item.validatorConfig?.sentenceApplication).toBeTruthy();
    expect(item.reviewStatus).toBe('needs_human_review');expect(item.review).toBeUndefined();
    if(verb==='avoir'||verb==='aller')expect(item.item.promptFr).not.toContain('que je ___');

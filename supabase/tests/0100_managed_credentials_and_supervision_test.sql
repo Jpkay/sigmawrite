@@ -27,12 +27,14 @@ insert into auth.users(id,instance_id,aud,role,email,encrypted_password,email_co
 values
 ('a2000000-0000-4000-8000-000000000001','00000000-0000-0000-0000-000000000000','authenticated','authenticated','one@test.local','',now(),'{}','{"role":"student","display_name":"Student One"}',now(),now()),
 ('a2000000-0000-4000-8000-000000000002','00000000-0000-0000-0000-000000000000','authenticated','authenticated','two@test.local','',now(),'{}','{"role":"student","display_name":"Student Two"}',now(),now()),
-('a2000000-0000-4000-8000-000000000003','00000000-0000-0000-0000-000000000000','authenticated','authenticated','teacher@test.local','',now(),'{}','{"role":"teacher","display_name":"Teacher"}',now(),now()),
+('a2000000-0000-4000-8000-000000000003','00000000-0000-0000-0000-000000000000','authenticated','authenticated','teacher@test.local','',now(),'{}','{"role":"parent","display_name":"Teacher"}',now(),now()),
 ('a2000000-0000-4000-8000-000000000004','00000000-0000-0000-0000-000000000000','authenticated','authenticated','supervisor@test.local','',now(),'{}','{"role":"parent","display_name":"Supervisor"}',now(),now());
 
 select is((select count(distinct username) from public.profiles where auth_user_id::text like 'a2000000-%'),4::bigint,'Auth trigger gives every account a unique username');
 select is((select count(*) from public.profiles where auth_user_id::text like 'a2000000-%' and email_recovery_enabled),4::bigint,'Real email accounts are recovery-enabled');
 
+update public.profiles set role='teacher', school_id='a1000000-0000-4000-8000-000000000002'
+where auth_user_id='a2000000-0000-4000-8000-000000000003';
 update public.profiles set role='supervisor' where auth_user_id='a2000000-0000-4000-8000-000000000004';
 select is((select role from public.profiles where auth_user_id='a2000000-0000-4000-8000-000000000004'),'supervisor','Supervisor role is accepted by the authorization constraint');
 

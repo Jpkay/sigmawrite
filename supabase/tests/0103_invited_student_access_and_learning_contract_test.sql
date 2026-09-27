@@ -149,15 +149,16 @@ select is(
 );
 
 select extensions.ok(
-  pg_get_functiondef('public.student_learning_is_unlocked(uuid)'::regprocedure) like '%student_access_is_authorized%',
+  pg_get_functiondef('public.student_legacy_learning_is_unlocked(uuid)'::regprocedure) like '%student_access_is_authorized%'
+  and pg_get_functiondef('public.student_granular_learning_ready(uuid)'::regprocedure) like '%student_access_is_authorized%',
   'Every guarded learning mutation now also requires active student access'
 );
 select extensions.ok(
-  pg_get_functiondef('public.student_learning_is_unlocked(uuid)'::regprocedure) like '%french-v2-to-v3-stable-key-v1%',
+  pg_get_functiondef('public.student_legacy_learning_is_unlocked(uuid)'::regprocedure) like '%french-v2-to-v3-stable-key-v1%',
   'Learning unlock recognizes only the explicit checksum-bound v2-to-v3 transition'
 );
 select extensions.ok(
-  pg_get_functiondef('public.student_learning_is_unlocked(uuid)'::regprocedure) like '%taxonomy_release_memberships%',
+  pg_get_functiondef('public.student_legacy_learning_is_unlocked(uuid)'::regprocedure) like '%taxonomy_release_memberships%',
   'A transitioned path proves that every persisted step belongs to its destination release'
 );
 select function_privs_are(

@@ -88,7 +88,9 @@ async function ensureUser(account: (typeof DEMO.accounts)[keyof typeof DEMO.acco
     email: account.email,
     password,
     email_confirm: true,
-    user_metadata: { role: account.role, display_name: account.displayName },
+    // Managed teachers are promoted through the service-owned profile write.
+    // A teacher signup claim without a school code is rejected by the auth trigger.
+    user_metadata: { role: account.role === "teacher" ? "parent" : account.role, display_name: account.displayName },
   };
 
   if (existing) {
@@ -499,6 +501,10 @@ async function main() {
     curriculum_type: "Collège français",
   });
   if (schoolError) fail("Impossible de préparer l'établissement", schoolError);
+
+  const { error: teacherSchoolError } = await supabase.from("profiles")
+    .update({ school_id: DEMO.schoolId }).eq("id", profiles.teacher);
+  if (teacherSchoolError) fail("Impossible de rattacher l'enseignant démo à l'établissement", teacherSchoolError);
 
   const { error: classError } = await supabase.from("classes").upsert({
     id: DEMO.classId,

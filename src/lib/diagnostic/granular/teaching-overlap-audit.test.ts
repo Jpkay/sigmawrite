@@ -9,7 +9,7 @@ const read=(path:string)=>JSON.parse(readFileSync(path,"utf8"));
 const artifact=read("generated/french-taxonomy-v3.json"),bank=read("generated/diagnostic-bank-v3-consolidated-draft.json") as CanonicalDiagnosticBankArtifact;
 it("detects a sentence taught under another target without treating incidental words as the tested material",()=>{
  const lesson=structuredClone(FRENCH_TEACHING_DRAFTS[0]);lesson.id="cross-target-fixture";
- lesson.steps=[{exampleFr:"Je dessine un paysage.",explanationFr:"Exemple de la fixture."}];lesson.materialExposure={sentences:["Je dessine un paysage."]};
+ lesson.steps=[{exampleFr:"Je dessine un paysage. Je ___ chercher un pinceau.",explanationFr:"Exemple de la fixture."}];lesson.materialExposure={sentences:["Je ___ chercher un pinceau."]};
  const before=checksum({bank,lesson}),report=auditTeachingOverlap(bank,artifact.taxonomy,[lesson]);
  const row=report.rows.find(row=>row.questionId==="v3-person-number:je-dessine")!;
  expect(row.nodeKey).not.toBe(lesson.nodeKey);expect(row.overlaps).toHaveLength(1);expect(row.overlaps[0].lessonId).toBe(lesson.id);

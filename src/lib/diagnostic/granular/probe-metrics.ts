@@ -4,7 +4,7 @@ import {phonemeGraphieFeature} from "./phoneme-graphie-coverage";
 import {readAudioStimulus} from './audio-stimulus';
 import type {CanonicalDiagnosticBankItem} from "../item-bank";
 import {writtenGuessingFloor} from "./response-space";
-import {PERSON_NUMBER_LABELS} from "./person-number-categories";
+import {PERSON_NUMBER_LABELS,PERSON_NUMBER_VERB_FORMS} from "./person-number-categories";
 /** Sampling metadata from a reviewed question's explicit answer choices. This
  * does not add a mastery criterion or grant approval to authoring drafts. */
 function samplingCategory(entry:CanonicalDiagnosticBankItem):string|undefined{
@@ -18,7 +18,10 @@ function samplingCategory(entry:CanonicalDiagnosticBankItem):string|undefined{
  const choices=entry.item.choices??[],correct=choices.filter(choice=>choice.correct);
  const group=entry.item.validatorConfig?.personNumberGroup;
  if(choices.length!==6||correct.length!==1||typeof group!=="string"||!PERSON_NUMBER_LABELS.some(label=>label===group))return;
- return `person-number:${PERSON_NUMBER_LABELS.indexOf(group as typeof PERSON_NUMBER_LABELS[number])}`;
+ const category=PERSON_NUMBER_LABELS.indexOf(group as typeof PERSON_NUMBER_LABELS[number]);
+ const answerSet=new Set(choices.map(choice=>choice.text));
+ if(answerSet.size!==6||!Object.values(PERSON_NUMBER_VERB_FORMS).some(forms=>forms.every(form=>answerSet.has(form))&&correct[0].text===forms[category]))return;
+ return `person-number:${category}`;
 }
 /** Current source-derived routing estimates. Written-answer guessing and time
  * estimates still require calibration; a compiled bundle cannot change them

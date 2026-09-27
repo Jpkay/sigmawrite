@@ -19,7 +19,7 @@ it('keeps all questions unapproved and attached to the approved controlled-produ
  expect(expansion.items).toHaveLength(36);
  for(const entry of expansion.items){expect(entry.reviewStatus).toBe('needs_human_review');expect(entry.review).toBeUndefined();expect(entry.item.nodeKey).toBe('accorder_participe_avoir_cod');expect(entry.evidenceKey).toBe('writing-controlled-production');expect(questionAssessedMaterialKeys(entry.item)).toHaveLength(1);expect(canonicalProbeMetrics(entry)).toBeTruthy();}
  for(const annotation of expansion.annotations)expect(annotation.facetKey).toMatch(/^accorder_participe_avoir_cod::construction:(preceding|following|absent)$/);
- expect(read('generated/diagnostic-bank-v3-consolidated-draft.json').items.some((entry:{itemKey:string})=>entry.itemKey.startsWith('v3-avoir-participle-agreement:'))).toBe(false);
+ expect(read('generated/diagnostic-bank-v3-consolidated-draft.json').items.filter((entry:{itemKey:string})=>entry.itemKey.startsWith('v3-avoir-participle-agreement:'))).toHaveLength(36);
 });
 
 import {AVOIR_PARTICIPLE_AGREEMENT_TEACHING as lessons} from './avoir-participle-agreement-teaching';

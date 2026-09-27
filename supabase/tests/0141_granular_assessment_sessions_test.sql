@@ -1,14 +1,30 @@
--- Runs in a disposable database after migration 0141 and minimal parent tables.
 begin;
+set local role postgres;
+create extension if not exists pgtap with schema extensions;
+select extensions.plan(1);
+insert into auth.users(id,email,raw_user_meta_data) values
+ ('10000000-0000-4000-8000-000000000002','granular-publisher-141@example.invalid','{"role":"parent"}');
+insert into ontology_versions(id,version,document_path) values
+ ('20000000-0000-4000-8000-000000000099','granular-test-141','tests/0141');
 insert into students(id) values ('10000000-0000-4000-8000-000000000001');
-insert into taxonomy_releases(id,status) values ('20000000-0000-4000-8000-000000000001','published');
-insert into diagnostic_item_bank_releases(id,status,taxonomy_release_id) values ('30000000-0000-4000-8000-000000000001','published','20000000-0000-4000-8000-000000000001');
+insert into taxonomy_releases(id,release_key,version,ontology_version_id,status,manifest,manifest_checksum,validation_report,published_by,published_at)
+values ('20000000-0000-4000-8000-000000000001','granular-test-141','granular-test-141','20000000-0000-4000-8000-000000000099','published','{"fixture":true}','granular-test-141','{"valid":true}',
+ (select id from profiles where auth_user_id='10000000-0000-4000-8000-000000000002'),now());
+-- Bank publication readiness is tested in 0066/0124. This fixture exercises
+-- the granular release and session guards with a pinned published bank.
+alter table diagnostic_item_bank_releases disable trigger diagnostic_bank_publication_guard;
+insert into diagnostic_item_bank_releases(id,bank_key,version,status,taxonomy_release_id,manifest,manifest_checksum,validation_report,published_by,published_at)
+values ('30000000-0000-4000-8000-000000000001','granular-test-bank-141','granular-test-141','published','20000000-0000-4000-8000-000000000001',
+ '{"checksum":"granular-test-141"}','granular-test-141','{"valid":true}',(select id from profiles where auth_user_id='10000000-0000-4000-8000-000000000002'),now());
+alter table diagnostic_item_bank_releases enable trigger diagnostic_bank_publication_guard;
 insert into granular_assessment_releases(id,release_key,taxonomy_release_id,bank_release_id,status,content_checksum,bundle)
-values ('40000000-0000-4000-8000-000000000001','test-granular','20000000-0000-4000-8000-000000000001','30000000-0000-4000-8000-000000000001','published','test-checksum','{}');
+values ('40000000-0000-4000-8000-000000000001','test-granular','20000000-0000-4000-8000-000000000001','30000000-0000-4000-8000-000000000001','published','test-checksum',
+ '{"assessment":{"taxonomyChecksum":"granular-test-141","bankChecksum":"granular-test-141"}}');
 insert into granular_assessment_sessions(id,student_id,release_id,state)
 values ('50000000-0000-4000-8000-000000000001','10000000-0000-4000-8000-000000000001','40000000-0000-4000-8000-000000000001','{"revision":0,"phase":"assessing","release":{"checksum":"pinned"}}');
 do $$ declare affected integer; begin
- insert into taxonomy_releases(id,status) values ('20000000-0000-4000-8000-000000000002','published');
+ insert into taxonomy_releases(id,release_key,version,ontology_version_id,status)
+ values ('20000000-0000-4000-8000-000000000002','granular-test-unpublished-141','granular-test-unpublished-141','20000000-0000-4000-8000-000000000099','draft');
  begin
   insert into granular_assessment_releases(release_key,taxonomy_release_id,bank_release_id,status,content_checksum,bundle)
   values('wrong-taxonomy','20000000-0000-4000-8000-000000000002','30000000-0000-4000-8000-000000000001','published','test','{}');
@@ -38,4 +54,6 @@ do $$ declare affected integer; begin
   raise exception 'WITHDRAWN_RELEASE_ACCEPTED';
  exception when others then if SQLERRM <> 'Assessment release unavailable' then raise; end if; end;
 end $$;
+select extensions.pass('Granular release and session guards hold');
+select * from extensions.finish();
 rollback;
