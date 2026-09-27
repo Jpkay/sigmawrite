@@ -6,7 +6,8 @@ import {AsyncLocalStorage} from "node:async_hooks";
  * method calling another) appear as separate entries. Outside a trace,
  * span() only runs the work.
  */
-type Span={name:string;ms:number};
+export type DetailedSpan={name:string;startMs:number;ms:number};
+type Span=DetailedSpan;
 type Trace={command:string;startedAt:number;spans:Span[]};
 const storage=new AsyncLocalStorage<Trace>();
 const enabled=()=>process.env.GRANULAR_LATENCY_LOG!=="off";
@@ -16,7 +17,7 @@ export async function span<T>(name:string,work:()=>Promise<T>|T):Promise<T>{
  if(!trace)return work();
  const started=performance.now();
  try{return await work();}
- finally{trace.spans.push({name,ms:Math.round(performance.now()-started)});}
+ finally{trace.spans.push({name,startMs:started-trace.startedAt,ms:Math.round(performance.now()-started)});}
 }
 
 export function spanSync<T>(name:string,work:()=>T):T{
@@ -24,7 +25,14 @@ export function spanSync<T>(name:string,work:()=>T):T{
  if(!trace)return work();
  const started=performance.now();
  try{return work();}
- finally{trace.spans.push({name,ms:Math.round(performance.now()-started)});}
+ finally{trace.spans.push({name,startMs:started-trace.startedAt,ms:Math.round(performance.now()-started)});}
+}
+
+/** Returns each ordered server span to an authorized diagnostic preview. */
+export async function traceCommandDetailed<T>(command:string,work:()=>Promise<T>):Promise<{result:T;server:{command:string;totalMs:number;spans:DetailedSpan[]}}>{
+ const trace:Trace={command,startedAt:performance.now(),spans:[]};
+ const result=await storage.run(trace,work);
+ return {result,server:{command,totalMs:Math.round(performance.now()-trace.startedAt),spans:trace.spans.sort((a,b)=>a.startMs-b.startMs)}};
 }
 
 export async function traceCommand<T>(command:string,work:()=>Promise<T>):Promise<T>{
@@ -59,7 +67,7 @@ export function timedStore<T extends object>(store:T):T{
     const trace=storage.getStore(),started=performance.now();
     const result=value.apply(receiver,args);
     if(!trace||!(result instanceof Promise))return result;
-    const record=()=>{trace.spans.push({name:`store.${property}`,ms:Math.round(performance.now()-started)});};
+    const record=()=>{trace.spans.push({name:`store.${property}`,startMs:started-trace.startedAt,ms:Math.round(performance.now()-started)});};
     return result.finally(record);
    };
   },

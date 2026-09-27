@@ -16,6 +16,7 @@ const initial={phase:"assessing",paused:true,provisional:true,remainingSeconds:2
 function load():AssessmentView{return JSON.parse(localStorage.getItem("granular-ui-fixture")??JSON.stringify(initial));}
 function save(view:AssessmentView){localStorage.setItem("granular-ui-fixture",JSON.stringify(view));}
 export async function startGranularDiagnostic():Promise<AssessmentResponse>{return{view:load()};}
+export async function retakeGranularDiagnostic():Promise<AssessmentResponse>{return startGranularDiagnostic();}
 export async function updateGranularDiagnostic(input:unknown):Promise<AssessmentResponse>{
  const command=input as {type:string;revision:number;answer?:string;supportChoiceId?:string};const view=load();
  await new Promise(resolve=>setTimeout(resolve,30));
